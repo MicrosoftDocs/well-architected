@@ -97,7 +97,7 @@ All these identities should be authenticated by your IdP.
 
 Here's an example of how identity can be implemented in an architecture:
 
-:::image type="content" source="images/identity-access/architecture-identity.png" alt-text="Diagram that shows how identity can be implemented in an architecture." border="false" lightbox="images/identity-access/architecture-identity.png":::
+:::image type="content" source="images/identity-access/architecture-identity.svg" alt-text="Diagram that shows how identity can be implemented in an architecture." border="false" lightbox="images/identity-access/architecture-identity-highres.png":::
 
 ### Determine actions for authorization
 
@@ -316,7 +316,7 @@ For information about filtering in Microsoft Entra ID, see [Microsoft Entra Conn
 
 The following example shows an identity implementation. Different types of identities are used together to provide the required levels of access.
 
-:::image type="content" source="images/identity-access/identity-architecture-design.png" alt-text="Diagram that shows an identity implementation." border="false" lightbox="images/identity-access/identity-architecture-design.png":::
+:::image type="content" source="images/identity-access/identity-architecture-design.svg" alt-text="Diagram that shows an identity implementation." border="false" lightbox="images/identity-access/identity-architecture-design-highres.png":::
 
 ### Identity components
 

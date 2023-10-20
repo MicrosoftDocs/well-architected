@@ -75,7 +75,7 @@ Even with public workloads, **strive to keep as much of the workload private as 
 
 - **Egress**. Egress is outbound traffic that flows away from a workload or its components. To check egress, determine where the traffic is headed and whether the destination is expected, allowed, and safe. The destination might be malicious or associated with data exfiltration risks.
 
-:::image type="content" source="images/networking/internet-network-flow-public-cloud.png" alt-text="Diagram that shows the flow of network traffic flow between Azure deployments and the internet." border="false" lightbox="images/networking/internet-network-flow-public-cloud.png":::
+:::image type="content" source="images/networking/internet-network-public.svg" alt-text="Diagram that shows the flow of network traffic flow between Azure deployments and the internet." border="false" lightbox="images/networking/internet-network-public-highres.png":::
 
 You can also **determine your level of exposure by considering your workload's proximity to the public internet**. For example, the application platform typically serves public IP addresses. The workload component is the face of the solution.
 
@@ -91,7 +91,7 @@ You can also **determine your level of exposure by considering your workload's p
 
 To provide defense in depth, maintain **end-to-end control of security affordances that are included in each hop or that you use when packets cross internal segments**. Different risk levels require different risk remediation methods.
 
-:::image type="content" source="images/networking/network-defense-depth-private-cloud.png" alt-text="Diagram that shows network defense in depth for a private cloud." border="false" lightbox="images/networking/network-defense-depth-private-cloud.png":::
+:::image type="content" source="images/networking/network-defense-in-depth-private.svg" alt-text="Diagram that shows network defense in depth for a private cloud." border="false" lightbox="images/networking/network-defense-in-depth-private-highres.png":::
 
 The preceding diagram illustrates network defense in depth in the private cloud. In this diagram, the border between the public and private IP address spaces is significantly farther from the workload than in the public cloud diagram. Multiple layers separate the Azure deployments from the public IP address space.
 
@@ -175,7 +175,7 @@ A tunnel from the PaaS service into one of your subnets creates a private channe
 
 In this example, the image on the left shows the flow for publicly exposed endpoints. On the right, that flow is secured by using private endpoints.
 
-:::image type="content" source="images/networking/private-endpoints.png" alt-text="Diagram that shows how a private endpoint helps protect a database from internet users." border="false" lightbox="images/networking/private-endpoints.png":::
+:::image type="content" source="images/networking/private-endpoints-101.svg" alt-text="Diagram that shows how a private endpoint helps protect a database from internet users." border="false" lightbox="images/networking/private-endpoints-101-highres.png":::
 
 For more information, see the [Private endpoints](#private-endpoints) section in this article.
 
@@ -283,7 +283,7 @@ But for Azure services, you can use [service tags](/azure/virtual-network/servic
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Service tag ranges are very broad so that they accommodate the widest possible range of customers. Updates to service tags lag behind changes in the service.
 
-:::image type="content" source="images/networking/virtual-network-default-isolation-peering.png" alt-text="Diagram that shows virtual network default isolation with peering." border="false" lightbox="images/networking/virtual-network-default-isolation-peering.png":::
+:::image type="content" source="images/networking/vnet-isolation-peer.svg" alt-text="Diagram that shows virtual network default isolation with peering." border="false" lightbox="images/networking/vnet-isolation-peer-highres.png":::
 
 In the preceding image, network security groups are applied at the NIC. Internet traffic and subnet-to-subnet traffic are denied. The network security groups are applied with the `VirtualNetwork` tag. So in this case, the subnets of peered networks have a direct line of sight. The broad definition of the `VirtualNetwork` tag can have a significant security impact.
 
@@ -372,7 +372,7 @@ For more information, see [Azure DDoS Protection overview](/azure/ddos-protectio
 
 This example architecture combines the network controls that are described in this article. The example doesn't show the complete architecture. Instead, it focuses on ingress controls on the private cloud.
 
-:::image type="content" source="images/networking/controlled-ingress.png" alt-text="Diagram that shows controlled ingress, including Application Gateway, a network security group, Azure Bastion, and Azure DDoS Protection." border="false" lightbox="images/networking/controlled-ingress.png":::
+:::image type="content" source="images/networking/controlled-ingress.svg" alt-text="Diagram that shows controlled ingress, including Application Gateway, a network security group, Azure Bastion, and Azure DDoS Protection." border="false" lightbox="images/networking/controlled-ingress-highres.png":::
 
 ### Highlights
 
@@ -382,7 +382,7 @@ Communication with all PaaS services is conducted through **private endpoints**.
 
 **Management traffic is restricted through Azure Bastion**, which helps provide secure and seamless RDP and SSH connectivity to your VMs directly from the Azure portal over TLS. Build agents are placed in the virtual network so that they have a network view to workload resources such as compute resources, container registries, and databases. This approach helps provide a secure and isolated environment for your build agents, which boosts protection for your code and artifacts.
 
-:::image type="content" source="images/networking/controlled-egress.png" alt-text="Diagram that shows controlled egress for a network security group and Azure Firewall." border="false" lightbox="images/networking/controlled-egress.png":::
+:::image type="content" source="images/networking/controlled-egress.svg" alt-text="Diagram that shows controlled egress for a network security group and Azure Firewall." border="false" lightbox="images/networking/controlled-egress.png":::
 
 ### Highlights
 
