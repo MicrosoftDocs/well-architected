@@ -57,7 +57,7 @@ Billing increments determine how resource usage is measured and billed. Familiar
 
 ### Map usage to billing increments
 
-Take advantage of online pricing calculators and total cost of ownership (TCO) calculators to get a granular summary of billing factors and increments. You can also use these tools to simulate scenarios without incurring costs.
+Take advantage of online pricing calculators and total cost of ownership (TCO) calculators to get a granular summary of billing factors and increments. You can also use these tools to simulate scenarios without incurring costs. Consider the following guidance when you map your usage:
 
 - *Create an inventory of resources*. List the resources in the workload, such as compute, storage, and networking.
 
