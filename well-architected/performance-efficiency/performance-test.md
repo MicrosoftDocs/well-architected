@@ -30,7 +30,7 @@ Testing helps to prevent performance issues. It also helps ensure that your work
 
 ## Key design strategies
 
-Performance testing helps you gather measurable data on a workload. When you run tests early enough, their data also helps you build workloads to the right specifications. You should conduct performance tests as early as possible in the software development lifecycle. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof of concept (POC) if production code isn't ready.
+Performance testing helps you gather measurable data on a workload. When you run tests early enough, they also help you build workloads to the right specifications. You should conduct performance tests as early as possible in the software development lifecycle. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof of concept (POC) if production code isn't ready.
 
 ### Prepare the test
 
