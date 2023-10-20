@@ -129,7 +129,11 @@ Load balancing ensures that network traffic is distributed evenly and prevents a
 
 - *Understand features*: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency layer-4 load balancing.
 
-### Evaluate database requirements
+### Evaluate data store requirements
+
+Evaluating data store requirements is about assessing the specific needs and conditions for storing, retrieving, and managing data. This assessment considers factors like data volume, access speed, consistency, and durability. A workload might require multiple types of data stores based on varying business and technical requirements. Identifying the right data store services and proper implementation helps prevent bottlenecks and ensures quick data access.
+
+#### Evaluate database requirements
 
 The database can affect factors such as data storage and retrieval, transaction processing, consistency guarantees, and handling of large or rapidly changing data. Assess the needs and criteria for your database. Select a database system that can meet those requirements. Evaluate the database requirements before you choose a database. To evaluate the database requirements and choose the appropriate database, follow these steps:
 
@@ -141,13 +145,13 @@ The database can affect factors such as data storage and retrieval, transaction 
 
 - *Assess the load.* Consider factors such as data volume, transaction rates, read/write ratios, and expected growth. Choose a database that can handle the anticipated workload to ensure smooth operation and prevent performance bottlenecks as your workload is scaled. Consider the scalability requirements of your workload. These requirements include anticipated data growth, concurrent user access, and the need for horizontal or vertical scaling. Evaluate the scalability options and availability features that different database systems provide.
 
-### Evaluate cache requirements
-
-A cache stores frequently accessed data. Caching reduces data access latency and lowers the load on data storage components. It allows the workload to handle more requests without scaling. It's common to cache workload data and static content. A Redis cache can store session data, database results, API responses, and reference data, such as configuration settings. A content delivery network or static web app can cache and serve static content. Consider caching data to improve your workload performance. Choose the right caching option for your workload, preferring the platform caching services, such as Azure Redis Cache, over custom or self-hosted ones.
-
 ### Evaluate storage requirements
 
 Choose storage services that align with your data access patterns, durability requirements, and performance needs. Most cloud workloads use a combination of storage technologies. This technique is known as the polyglot persistence approach. Determine the appropriate combination of storage services for your workload. You might also want to separate data to avoid contamination. For example, you might have separate storage accounts for monitoring data and business data. Choosing the right mix and correct implementation is important for optimizing application performance.
+
+### Evaluate cache requirements
+
+A cache stores frequently accessed data. Caching reduces data access latency and lowers the load on data storage components. It allows the workload to handle more requests without scaling. It's common to cache workload data and static content. A Redis cache can store session data, database results, API responses, and reference data, such as configuration settings. A content delivery network or static web app can cache and serve static content. Consider caching data to improve your workload performance. Choose the right caching option for your workload, preferring the platform caching services, such as Azure Redis Cache, over custom or self-hosted ones.
 
 ## Azure facilitation
 
