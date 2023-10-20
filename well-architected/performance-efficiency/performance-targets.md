@@ -1,5 +1,5 @@
 ---
-title: Recommendations for establishing and exposing performance targets
+title: Recommendations for defining performance targets
 description: Learn how to drive continuous improvement by setting and exposing performance targets for your workload. Identify workload objectives, key metrics, and performance targets. Monitor performance and evaluate customer feedback to drive improvement.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for defining performance targets 
+# Recommendations for defining performance targets
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

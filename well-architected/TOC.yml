@@ -200,7 +200,7 @@
             - name: PE:03 Select the appropriate services 
               href: performance-efficiency/select-services.md
             - name: PE:04 Collect metrics and logs 
-              href: performance-efficiency/collect-metrics-logs.md
+              href: performance-efficiency/collect-performance-data.md
             - name: PE:05 Scale and partition 
               href: performance-efficiency/scale-partition.md
             - name: PE:06 Performance testing
