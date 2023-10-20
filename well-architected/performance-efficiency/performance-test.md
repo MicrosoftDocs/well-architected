@@ -40,9 +40,9 @@ Preparing performance tests refers to setting up and arranging the resources, co
 
 Acceptance criteria specify the performance requirements that a workload needs to meet to be considered acceptable or successful. Define criteria that align with the performance targets.
 
-**Review performance targets:** Performance targets define your desired level of performance for your workload. Review the performance targets that are established for the workload. Performance targets are metrics that can involve response time, throughput, resource utilization, or any other relevant performance indicators. For example, you might have a target for your response time to be under a certain threshold, such as less than 2 seconds.
+*Review performance targets.* Performance targets define your desired level of performance for your workload. Review the performance targets that are established for the workload. Performance targets are metrics that can involve response time, throughput, resource utilization, or any other relevant performance indicators. For example, you might have a target for your response time to be under a certain threshold, such as less than 2 seconds.
 
-**Define acceptance criteria:** Translate the performance targets into specific acceptance criteria that you can use to evaluate the performance of your workload. For example, suppose your performance target for response time is 2 seconds or less. Your acceptance criterion could be *The average response time of the workload should be less than 2 seconds*. Use these acceptance criteria to determine whether the workload meets the desired level of performance.
+*Define acceptance criteria.* Translate the performance targets into specific acceptance criteria that you can use to evaluate the performance of your workload. For example, suppose your performance target for response time is 2 seconds or less. Your acceptance criterion could be *The average response time of the workload should be less than 2 seconds*. Use these acceptance criteria to determine whether the workload meets the desired level of performance.
 
 When you define acceptance criteria, it's important to focus on users and their expectations. Acceptance criteria help ensure that the delivered work meets user needs and requirements. Keep in mind the following considerations for incorporating the user perspective into acceptance criteria:
 
@@ -51,9 +51,9 @@ When you define acceptance criteria, it's important to focus on users and their 
 - *Functional requirements*: Address the specific functionality that the user expects to see in the workload. Define acceptance criteria around these functional requirements to help ensure that they're met.
 - *Use cases*: Consider different scenarios or use cases that the user might encounter. Define acceptance criteria based on these use cases to validate the workload's performance in real-world situations.
 
-**Set acceptance thresholds:** Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, suppose the acceptance criterion for response time is less than 2 seconds. You can set the threshold at 2.5 seconds. This level indicates that any response time over 2.5 seconds is considered a performance issue.
+*Set acceptance thresholds.* Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, suppose the acceptance criterion for response time is less than 2 seconds. You can set the threshold at 2.5 seconds. This level indicates that any response time over 2.5 seconds is considered a performance issue.
 
-**Define passing criteria:** Establish the criteria for determining whether the workload has passed or failed the performance test. You might define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
+*Define passing criteria.* Establish the criteria for determining whether the workload has passed or failed the performance test. You might define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
 
 #### Select the test type
 

@@ -70,7 +70,7 @@ Preferring platform features is about using built-in functionalities provided by
 
 ### Evaluate infrastructure requirements
 
-The performance efficiency of services is tied to the infrastructure they reside on. It makes the selection of the right infrastructure critical to service performance efficiency. Evaluating infrastructure requirements means to identify the geographical region and availability zones best suited to support your workload. Key considerations in this decision-making include:
+The performance efficiency of resources is tied to the infrastructure they reside on. It makes the selection of the right infrastructure critical to service performance efficiency. Evaluating infrastructure requirements means to identify the geographical region and availability zones best suited to support your workload. Key considerations in this decision-making include:
 
 - *Understand regions and availability zones.* Every region corresponds to a distinct geographic location. Availability zones represent individual physical datacenters within a given region.
 
