@@ -15,11 +15,11 @@ Use this matrix to familiarize yourself with the key concepts:
 
 | Pillar | Workload concern | Apply the principles | Strike a balance
 |--------|-------------|-------------------|-----------
-| [**Reliability**][resiliency-pillar] | Resiliency, availability, recovery | Design for business requirements, resilience, recovery, and operations, while keeping it simple. <br> [Design principles](reliability/principles.md) | [Tradeoffs](reliability/tradeoffs.md) |
-| [**Security**][security-pillar] | Data protection, threat detection, and mitigation | Protect confidentiality, integrity, and availability. <br> [Design principles](security/principles.md)|[Tradeoffs](security/tradeoffs.md) |
-| [**Cost Optimization**][cost-pillar] | Cost modeling, budgets, reduce waste | Optimize on usage and rate utilization while keeping a cost-efficient mindset. <br> [Design principles](./cost-optimization/principles.md) | [Tradeoffs](cost-optimization/tradeoffs.md) |
-| [**Operational Excellence**][devops-pillar] | Holistic observability, DevOps practices | Streamline operations with standards, comprehensive monitoring, and safe deployment practices. <br> [Design principles](operational-excellence/principles.md)|[Tradeoffs](operational-excellence/tradeoffs.md) |
-| [**Performance Efficiency**][scalability-pillar] | Scalability, load testing | Scale horizontally, test early and often, and monitor the health of the solution. <br>[Design principles](./performance-efficiency/principles.md)|[Tradeoffs](performance-efficiency/tradeoffs.md) |
+| [**Reliability**](reliability/index.yml) | Resiliency, availability, recovery | Design for business requirements, resilience, recovery, and operations, while keeping it simple. <br> [Design principles](reliability/principles.md) | [Tradeoffs](reliability/tradeoffs.md) |
+| [**Security**](security/index.yml) | Data protection, threat detection, and mitigation | Protect confidentiality, integrity, and availability. <br> [Design principles](security/principles.md)|[Tradeoffs](security/tradeoffs.md) |
+| [**Cost Optimization**](cost-optimization/index.yml) | Cost modeling, budgets, reduce waste | Optimize on usage and rate utilization while keeping a cost-efficient mindset. <br> [Design principles](cost-optimization/principles.md) | [Tradeoffs](cost-optimization/tradeoffs.md) |
+| [**Operational Excellence**](operational-excellence/index.yml) | Holistic observability, DevOps practices | Streamline operations with standards, comprehensive monitoring, and safe deployment practices. <br> [Design principles](operational-excellence/principles.md)|[Tradeoffs](operational-excellence/tradeoffs.md) |
+| [**Performance Efficiency**](performance-efficiency/index.yml) | Scalability, load testing | Scale horizontally, test early and often, and monitor the health of the solution. <br>[Design principles](performance-efficiency/principles.md)|[Tradeoffs](performance-efficiency/tradeoffs.md) |
 
 > [!IMPORTANT]
 >
@@ -43,29 +43,16 @@ Start your assessment with the [**Azure Well-Architected Review**](/assessments/
 
 Learn how to architect successful workloads on Azure by using the Well-Architected Framework:
 
-<!-- markdownlint-disable MD034 -->
 > [Architect successful workloads on Azure](/shows/azure-enablement/architect-successful-workloads-on-azure--introduction-ep-1-well-architected-series/player)
 
 For more information about resiliency, see:
-
-<!-- markdownlint-disable MD034 -->
 
 > [Improve the reliability of your Azure workloads](/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player)
 
 Learn to ask the right questions about secure application development on Azure:
 
-<!-- markdownlint-disable MD034 -->
 > [Secure application development on Azure](/shows/azure-enablement/ask-the-right-questions-about-secure-application-development-on-azure/player)
 
 Adopt an optimization mindset and start evaluating your Azure costs:
 
-<!-- markdownlint-disable MD034 -->
-
 > [Optimize your Azure costs](/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player)
-
-<!-- links -->
-[cost-pillar]: ./cost-optimization/index.yml
-[security-pillar]: ./security/index.yml
-[resiliency-pillar]: ./resiliency/index.yml
-[scalability-pillar]: ./scalability/index.yml
-[devops-pillar]: ./devops/index.yml
