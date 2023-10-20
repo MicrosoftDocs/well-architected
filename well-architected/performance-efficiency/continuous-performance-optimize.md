@@ -28,6 +28,16 @@ This guide describes the recommendations for continuous performance optimization
 
 Performance efficiency is when workload capacity aligns to actual usage. A workload that overperforms is as problematic as one that underperforms. The tradeoffs differ. Overperformance affects cost optimization. Poor performance affects users. The key to performance efficiency is monitoring, adjusting, and testing over time. You need to regularly review performance metrics and make adjustments as necessary to ensure that the workload is efficient. Testing all changes pre- and post-implementation is required to reach performance targets.
 
+### Develop a performance culture
+
+A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
+
+### Evaluate new platform features
+
+Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're using the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
+
 ### Prioritize optimization efforts
 
 Proactively optimizing performance means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
@@ -41,14 +51,6 @@ It's important to make continuous efforts to optimize the performance of these c
 #### Prioritize critical flows
 
 Critical flows are the most important and high-priority processes or workflows in the workload. By prioritizing these critical flows, you ensure that the most essential parts of the workload are optimized for performance. Knowing which flows are critical helps prioritize optimization efforts. Optimizing the performance efficiency of the most important areas of your application provides the highest return on investment. You should monitor critical flows and the most popular pages. Look for ways to make them more efficient.
-
-#### Address technical debt
-
-Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
-
-### Evaluate new platform features
-
-Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're using the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
 ### Automate performance optimization
 
@@ -67,6 +69,10 @@ Automation can eliminate repetitive and time-consuming manual processes, allowin
 - *Automated remediation actions*: Define and implement automated remediation actions that can be triggered when specific performance issues are detected. These actions can include restarting services, adjusting resource allocation, clearing caches, or implementing other performance optimization techniques.
 
 - *Self-healing systems*: Build self-healing capabilities into your system by automating the recovery process for known performance issues. This capability can involve automatically fixing or adjusting the system configuration to restore optimal performance.
+
+#### Address technical debt
+
+Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
 
 ### Optimize databases
 
@@ -89,12 +95,6 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 - *Implement time-to-live*: Time-to-live is a mechanism that sets an expiration time for data. Time-to-live allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate time-to-live, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for the time-to-live. Database entries can also have a time-to-live.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: A time-to-live that's too short can create performance issues.
-
-### Develop a performance culture
-
-A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
 
 ## Azure facilitation
 
