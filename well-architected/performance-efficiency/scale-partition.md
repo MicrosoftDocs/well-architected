@@ -1,13 +1,13 @@
 ---
-title: Recommendations for scaling and partitioning
-description: Learn best practices for scaling and partitioning to achieve performance efficiency in workloads.
+title: Recommendations for optimizing scaling and partitioning
+description: Learn best practices for optimizing scaling and partitioning to achieve performance efficiency in workloads.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for scaling and partitioning
+# Recommendations for optimizing scaling and partitioning
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
