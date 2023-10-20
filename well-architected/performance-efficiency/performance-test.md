@@ -124,7 +124,11 @@ To set up your testing environment in a way that boosts performance efficiency, 
 
 ### Perform the test
 
-Run the performance tests by using the chosen testing tool. Monitor and collect performance metrics such as response time, throughput, CPU and memory utilization, and other relevant indicators. Execute the defined test scenarios to put the workload under expected loads. Testing involves measuring and recording performance metrics, monitoring health, and capturing any performance issues that arise. Conduct tests under varying load conditions, such as normal, peak, and stress levels, to analyze the behavior of the workload in different scenarios.
+Run the performance tests by using the chosen testing tool. Testing involves measuring and recording performance metrics, monitoring health, and capturing any performance issues that arise.
+
+Monitor and collect performance metrics such as response time, throughput, CPU and memory utilization, and other relevant indicators.
+
+Use the defined test scenarios to put the workload under expected loads.  Conduct tests under these varying load conditions. For example, use levels, such as normal, peak, and stress levels, to analyze the behavior of the workload in various scenarios.
 
 ### Analyze the results
 
@@ -143,7 +147,11 @@ Based on the analysis of the test results, prioritize identified performance iss
 
 ### Establish baselines
 
-Baselines provide a reference point for comparing performance results over time. Baselines should be meaningful snapshots of workload performance, meaning you don't need to use every test as a baseline. Consider the workload objectives and document performance snapshots that allow you to learn over time and optimize. Use these baseline measurements as a benchmark for future performance tests, and use them to identify any degradation or improvement. To establish baselines for performance testing and use them as a benchmark for future performance tests, follow these steps:
+Baselines provide a reference point for comparing performance results over time. Baselines should be meaningful snapshots of workload performance—you don't need to use every test as a baseline.
+
+Consider the workload objectives, and document performance snapshots that allow you to learn over time and optimize. Use these baseline measurements as a benchmark for future performance tests, and use them to identify any degradation or improvement.
+
+To establish baselines for performance testing and use them as a benchmark for future performance tests, follow these steps:
 
 - *Identify performance metrics*: Determine the specific performance metrics that you want to measure and track. Examples include:
   - Response time, or how quickly the workload responds to requests.
@@ -174,9 +182,7 @@ Continuous testing involves the ongoing monitoring and refinement of your tests.
 
 **Monitoring:** [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
 
-## Tradeoffs
-
-Testing takes time and skill to perform and can affect operational efficiency.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Testing takes time and skill to perform and can affect operational efficiency.
 
 ## Related links
 
