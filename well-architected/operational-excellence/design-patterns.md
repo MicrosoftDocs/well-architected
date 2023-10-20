@@ -37,7 +37,7 @@ The following table summarizes cloud design patterns that support the goals of o
 
 Review the cloud design patterns that support the other Azure Well-Architected Framework pillars:
 
-- [Cloud design patterns that support reliability ](../reliability/design-patterns.md)
+- [Cloud design patterns that support reliability](../reliability/design-patterns.md)
 - [Cloud design patterns that support security](../security/design-patterns.md)
 - [Cloud design patterns that support cost optimization](../cost-optimization/design-patterns.md)
 - [Cloud design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
