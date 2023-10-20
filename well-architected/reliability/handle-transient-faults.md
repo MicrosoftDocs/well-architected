@@ -195,18 +195,19 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 
 ## Related links
 
-- [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker) 
-- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction) 
-- [Idempotency patterns][idempotency-patterns] 
-- [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency) 
-- [Data Points - EF Core 1.1](/archive/msdn-magazine/2017/january/data-points-ef-core-1-1-a-few-of-my-favorite-things) 
+- [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
+- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
+- [Idempotency patterns][idempotency-patterns]
+- [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
+- [Data Points - EF Core 1.1](/archive/msdn-magazine/2017/january/data-points-ef-core-1-1-a-few-of-my-favorite-things)
+- [Inject mock services](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests#inject-mock-services)
 
-## Reliability checklist  
+## Reliability checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)
 
 <!-- links -->
 
