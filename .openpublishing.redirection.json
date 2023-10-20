@@ -3,7 +3,7 @@
 		{
 			"source_path": "well-architected/services/data/postgresql.md",
 			"redirect_url": "/azure/well-architected/service-guides/postgresql",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/devops-patterns.md",
