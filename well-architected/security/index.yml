@@ -31,7 +31,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Security
-            url: /training/modules/azure-well-architected-introduction/7-security
+            url: /training/modules/azure-well-architected-security/
       - linkListType: video
         links:
           - text: Defense in depth security in Azure

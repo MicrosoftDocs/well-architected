@@ -29,9 +29,7 @@ This guide describes the recommendations for optimizing code and infrastructure 
 
 ## Key design strategies
 
-Performance and efficiency are key factors to consider when you optimize your code and infrastructure. You need code that's functional and optimized. To minimize resource usage and avoid unnecessary computations, use appropriate data structures and algorithms. You should also offload responsibilities to the platform. Take advantage of the features and services that the underlying platform provides.
-
-Avoid unnecessary complexity and design. Utilize each component for its intended function. Keep your design simple and undiluted, so you can improve performance and minimize resource usage.
+Optimizing code and infrastructure entails fine-tuning the code and the supporting infrastructure to improve performance efficiency. It requires performant code that executes tasks quickly and doesn’t waste resources. It requires a well-designed infrastructure that is streamlined to avoid unnecessary complexity. A workload should use the inherent capabilities of the platform. It's an approach that helps ensure both code and infrastructure are used primarily for their core purposes and only when necessary.
 
 ### Optimize code performance
 

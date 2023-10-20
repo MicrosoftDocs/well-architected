@@ -31,7 +31,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Cost optimization
-            url: /training/modules/azure-well-architected-introduction/3-cost-optimization
+            url: /training/modules/azure-well-architected-cost-optimization/
       - linkListType: video
         links:
           - text: What tradeoffs have you made to optimize for cost?
