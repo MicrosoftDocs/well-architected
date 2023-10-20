@@ -16,7 +16,7 @@ Use this matrix to familiarize yourself with the key concepts:
 | Pillar | Workload concern | Apply the principles | Strike a balance
 |--------|-------------|-------------------|-----------
 | [**Reliability**][resiliency-pillar] | Resiliency, availability, recovery | Design for business requirements, resilience, recovery, and operations, while keeping it simple. <br> [Design principles](reliability/principles.md) | [Tradeoffs](reliability/tradeoffs.md) |
-| [**Security**][security-pillar] | Data protection, threat detection, and mitigation | Protect confidentiality, integrity, and availability. <br> [Design principles](security/principles.md)|[Tradeoffs](security/tradeoffs.md) | 
+| [**Security**][security-pillar] | Data protection, threat detection, and mitigation | Protect confidentiality, integrity, and availability. <br> [Design principles](security/principles.md)|[Tradeoffs](security/tradeoffs.md) |
 | [**Cost Optimization**][cost-pillar] | Cost modeling, budgets, reduce waste | Optimize on usage and rate utilization while keeping a cost-efficient mindset. <br> [Design principles](./cost-optimization/principles.md) | [Tradeoffs](cost-optimization/tradeoffs.md) |
 | [**Operational Excellence**][devops-pillar] | Holistic observability, DevOps practices | Streamline operations with standards, comprehensive monitoring, and safe deployment practices. <br> [Design principles](operational-excellence/principles.md)|[Tradeoffs](operational-excellence/tradeoffs.md) |
 | [**Performance Efficiency**][scalability-pillar] | Scalability, load testing | Scale horizontally, test early and often, and monitor the health of the solution. <br>[Design principles](./performance-efficiency/principles.md)|[Tradeoffs](performance-efficiency/tradeoffs.md) |
@@ -63,22 +63,7 @@ Adopt an optimization mindset and start evaluating your Azure costs:
 
 > [Optimize your Azure costs](/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player)
 
-<!-- links 
-
-[resiliency]: ./resiliency/principles.md -->
-
-<!-- practices
-[autoscale]: /azure/architecture/best-practices/auto-scaling
-[background-jobs]: /azure/architecture/best-practices/background-jobs
-[caching]: /azure/architecture/best-practices/caching
-[cdn]: /azure/architecture/best-practices/cdn
-[data-partitioning]: /azure/architecture/best-practices/data-partitioning
-[monitoring]: /azure/architecture/best-practices/monitoring
-[retry-service-specific]: /azure/architecture/best-practices/retry-service-specific
-[transient-fault-handling]: /azure/architecture/best-practices/transient-faults
--->
-
-<!-- pillars -->
+<!-- links -->
 [cost-pillar]: ./cost-optimization/index.yml
 [security-pillar]: ./security/index.yml
 [resiliency-pillar]: ./resiliency/index.yml
