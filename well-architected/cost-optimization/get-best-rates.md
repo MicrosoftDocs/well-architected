@@ -112,24 +112,26 @@ Try these tasks:
 
 - *Ask about trial offers*: Use supplier-provided trial periods or negotiate free or reduced rates to execute proofs of concept. This approach allows you to try out the services or products with limited financial risk, so you can assess their suitability for your workload before you commit to a purchase. Remember to review the terms and conditions of any trial periods or negotiated agreements.
 - *Review vendor offerings*: Understand the discounts and pricing models that vendors or suppliers offer. Explore volume-based discounts, promotional offers, or discounts for long-term commitments. Discuss the available options that can meet the variability and flexibility requirements of your workload. Include exploring different pricing models, scaling options, or prepaid agreements.
-- *Analyze usage and consumption*: Assess the workload's usage and consumption patterns to determine if they meet the eligibility criteria for specific discount programs. This analysis helps you identify the most suitable discounts for your workload.
-- *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider understanding the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
+- *Analyze usage and consumption*: Assess the workload's usage and consumption patterns to determine if the workload meets the eligibility criteria for specific discount programs. This analysis helps you identify the most suitable discounts for your workload.
+- *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
 - *Communicate with vendors*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the vendor know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask vendors or suppliers to discuss available discount options, such as product bundling products. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
 
-Committing to the right discount options is where you act on your evaluation. You're equipped with the available option. You've communicated your needs and workload data to the various vendors. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
+Committing to the right discount options is where you act on your evaluation. You're equipped with the available option. You've communicated your needs and workload data to the various vendors. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing. Here are the next actions you should take:
 
-- *Choose an appropriate prepaid plan*: Select a prepaid plan that covers the minimum capacity required by the workload. Starting with the minimum commitment provides you with flexibility while still benefiting from cost savings.
+- *Choose an appropriate prepaid plan*: Select a prepaid plan that covers the minimum capacity that the workload requires. Starting with the minimum commitment gives you flexibility while you still benefit from cost savings.
 
-  Before you commit to a prepaid plan, wait until you have a clear understanding of the workload's minimum capacity requirements. It minimizes the risk and ensures that you optimize your savings effectively. However, there are exceptions. If the commitment requires minimal upfront costs, then it lowers the risk of commitment. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grows, you need to have a clear understanding of your minimum consistent usage per component you're committing to.
+  Having a clear understanding of the workload's minimum capacity requirements before you commit to a prepaid plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grow, you need understand your minimum consistent usage for each component you're committing to.
 - *Increment prepaid commitments*: As the capacity of your workload grows, gradually increase your prepaid commitments. Start small and scale up. Increment scaling up based on the workload's actual usage.
-- *Renegotiate and consolidate*: Regularly renegotiate and normalize reservations and savings plans to align their ending time. It allows you to consolidate them into a single line item on your bill, making it easier to manage and optimize costs.
+- *Renegotiate and consolidate*: Regularly renegotiate and normalize reservations and savings plans to align their ending time. This alignment allows you to consolidate them into a single line item on your bill, so it's easier to manage and optimize costs.
 
-### Determine to build or buy a solution
+### Decide whether to build or buy a solution
 
-Building a solution in-house allows for granular control over the features and configuration, which can help eliminate unnecessary functionality and optimize rates. However, building a solution in-house requires significant upfront investment in terms of development time and maintenance over time. When you buy a solution, such as from a marketplace, it offers quicker deployment with potentially lower upfront costs, but buying a solution might involve ongoing subscription or licensing fees.
+Building a solution in-house allows for granular control over the features and configuration. This control can help you eliminate unnecessary functionality and optimize rates. However, building a solution in-house requires significant upfront investment in terms of development time and maintenance over time.
 
-Here are key considerations when choosing to build or buy a solution:
+When you buy a solution, such as from a marketplace, it offers quicker deployment with potentially lower upfront costs. But buying a solution might involve ongoing subscription or licensing fees.
+
+Here are key considerations when you're deciding whether to build or buy a solution:
 
 - *Control and customization*: Assess the specific functionality needed for your product or solution. Determine whether buying a solution meets your requirements or if building allows for more customization and flexibility that provide better rates.
 
@@ -139,7 +141,9 @@ Here are key considerations when choosing to build or buy a solution:
 - *Cost*: Evaluate the total cost of building a solution, including development resources, infrastructure, ongoing maintenance, and support. Compare the cost of building a solution with the cost of buying a solution. Include any support plans, licensing, or subscription fees. Buying a solution might provide more predictable pricing and potential discounts due to economies of scale.
 - *Support and updates*: Consider the availability of support and updates for both building and buying. Assess the level of technical expertise required for each option and the ease of accessing support resources.
 
-  Updates for custom solutions add costs, requiring separate environments, testing, and backups. For purchased solutions, research the reputation and track record of the marketplace vendors. Consider factors such as vendor reliability, customer reviews, and the level of support provided. Consider the billing cycles. For example, subscription billing cycles are incentivized to maintain the quality of the solution over time. One-time purchases don't have same cost incentive to maintain the solution.
+  Updates for custom solutions add costs, requiring separate environments, testing, and backups. For purchased solutions, research the reputation and track record of the marketplace vendors. Consider factors such as vendor reliability, customer reviews, and the level of support provided. Consider the billing cycles.
+
+  For example, subscription billing cycles are incentivized to maintain the quality of the solution over time. One-time purchases don't have same cost incentive to maintain the solution.
 
 ### Optimize licensing costs
 
