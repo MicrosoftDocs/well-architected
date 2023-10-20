@@ -31,7 +31,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Operational excellence
-            url: /training/modules/azure-well-architected-introduction/4-operational-excellence
+            url: /training/modules/azure-well-architected-operational-excellence/
       - linkListType: video
         links:
           - text: Achieve Operational Excellence
