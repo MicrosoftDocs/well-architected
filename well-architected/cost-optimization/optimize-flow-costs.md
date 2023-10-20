@@ -46,11 +46,11 @@ In a workload, there can be different types of flows or paths that you need to c
 
 Understanding workload flows helps you to effectively reallocate resources. The goal is to ensure that financial commitments align with high-priority flows. Here are the steps for understanding workload flows:
 
-- *Document flows*. Start by documenting and listing all existing flows in your workload to get an understanding of the comprehensive state of the system. Include every sequence of actions, data transitions, and system interactions. Familiarize yourself with every component, like external services, databases, middleware, and third-party integrations. Additionally, track or estimate the volume of requests over time.
+1. *Document flows*. Start by documenting and listing all existing flows in your workload to get an understanding of the comprehensive state of the system. Include every sequence of actions, data transitions, and system interactions. Familiarize yourself with every component, like external services, databases, middleware, and third-party integrations. Additionally, track or estimate the volume of requests over time.
 
-- *Visualize flows*. To get a clearer perspective, represent your findings visually, possibly in flowcharts or diagrams. Visualizations help you see the interdependencies between components. Consider using a tool like Visio to help you with the visualizations.
+2. *Visualize flows*. To get a clearer perspective, represent your findings visually, possibly in flowcharts or diagrams. Visualizations help you see the interdependencies between components. Consider using a tool like Visio to help you with the visualizations.
 
-- *Categorize flows*. Bundle similar flows, taking into account attributes like their functionality (for example, authentication, data retrieval, and transaction processing), criticality to business, or the resources they use (CPU, memory, or bandwidth).
+3. *Categorize flows*. Bundle similar flows, taking into account attributes like their functionality (for example, authentication, data retrieval, and transaction processing), criticality to business, or the resources they use (CPU, memory, or bandwidth).
 
 ### Prioritize flows
 
@@ -90,7 +90,7 @@ Combining similar flows onto a single resource is a process of consolidating tas
 
 - *API gateways*. Rather than maintaining individual API gateways for separate microservices or applications, you can use a centralized API gateway to streamline requests and direct them to the relevant service. Doing so makes management easier and also reduces costs.
 
-- *Log processing*. Instead of allowing multiple applications or services to each operate their own log processing instances, consider directing them all to a shared log processing tool. This approach minimizes the number of active instances, which translates to direct cost savings.
+- *Log processing*. Instead of having multiple applications or services that each operate their own log processing instances, consider directing them all to a shared log processing tool. This approach minimizes the number of active instances, which translates to direct cost savings.
 
 - *Authentication services*. If multiple applications deploy their own distinct authentication mechanisms, redundancy is introduced. Integrating a single sign-on (SSO) solution or a communal authentication service reduces this duplication and optimizes resource usage, which reduces costs.
 
