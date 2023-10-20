@@ -159,8 +159,8 @@
               href: operational-excellence/formalize-development-practices.md
             - name: OE:04 Improve build velocity
               href: operational-excellence/release-engineering-performance.md
-            - name: OE:04 Optimize development practices
-              href: operational-excellence/optimize-development-practices.md
+            - name: OE:04 Standardize tools and processes
+              href: operational-excellence/tools-processes.md
             - name: OE:04 Use continuous integration 
               href: operational-excellence/release-engineering-continuous-integration.md
             - name: OE:05 Use infrastructure as code
@@ -202,7 +202,7 @@
             - name: PE:03 Select the appropriate services 
               href: performance-efficiency/select-services.md
             - name: PE:04 Collect metrics and logs 
-              href: performance-efficiency/collect-metrics-logs.md
+              href: performance-efficiency/collect-performance-data.md
             - name: PE:05 Scale and partition 
               href: performance-efficiency/scale-partition.md
             - name: PE:06 Performance testing

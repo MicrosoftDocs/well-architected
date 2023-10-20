@@ -62,8 +62,8 @@ landingContent:
             url: formalize-operations-tasks.md
           - text: Formalize software development and management
             url: formalize-development-practices.md
-          - text: Define development and testing standards
-            url: optimize-development-practices.md
+          - text: Standardize tools and processes
+            url: tools-processes.md
           - text: Use safe deployment practices (SPD)
             url: safe-deployments.md
   - title: Use automation

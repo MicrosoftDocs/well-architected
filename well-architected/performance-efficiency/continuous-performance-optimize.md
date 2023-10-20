@@ -28,9 +28,19 @@ This guide describes the recommendations for continuous performance optimization
 
 Performance efficiency is when workload capacity aligns to actual usage. A workload that overperforms is as problematic as one that underperforms. The tradeoffs differ. Overperformance affects cost optimization. Poor performance affects users. The key to performance efficiency is monitoring, adjusting, and testing over time. You need to regularly review performance metrics and make adjustments as necessary to ensure that the workload is efficient. Testing all changes pre- and post-implementation is required to reach performance targets.
 
+### Develop a performance culture
+
+A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
+
+### Evaluate new platform features
+
+Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're using the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
+
 ### Prioritize optimization efforts
 
-Proactively optimizing performance in a workload means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
+Proactively optimizing performance means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
 
 #### Prioritize deteriorating components
 
@@ -41,14 +51,6 @@ It's important to make continuous efforts to optimize the performance of these c
 #### Prioritize critical flows
 
 Critical flows are the most important and high-priority processes or workflows in the workload. By prioritizing these critical flows, you ensure that the most essential parts of the workload are optimized for performance. Knowing which flows are critical helps prioritize optimization efforts. Optimizing the performance efficiency of the most important areas of your application provides the highest return on investment. You should monitor critical flows and the most popular pages. Look for ways to make them more efficient.
-
-#### Address technical debt
-
-Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt in your workload in the optimization process.
-
-### Use platform features
-
-Take advantage of the many platform features and tooling that can provide performance recommendations based on actual usage. Understanding the full capabilities of your hosting platform or insights tooling is crucial. By enabling and using automation features provided by the platform, you can customize them to fit your evolving needs. Regular updates are essential to receive the best recommendations and insights from third-party tools. Capture and evaluate performance signals from your platform and tools.
 
 ### Automate performance optimization
 
@@ -68,6 +70,10 @@ Automation can eliminate repetitive and time-consuming manual processes, allowin
 
 - *Self-healing systems*: Build self-healing capabilities into your system by automating the recovery process for known performance issues. This capability can involve automatically fixing or adjusting the system configuration to restore optimal performance.
 
+### Address technical debt
+
+Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
+
 ### Optimize databases
 
 Continuously optimizing databases involves identifying and implementing optimizations to ensure that databases can handle loads, deliver fast response times, and minimize resource utilization. By regularly optimizing databases, you can improve application performance, reduce downtime, and enhance the overall user experience.
@@ -86,15 +92,9 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 - *Use data tiering*: Data tiering involves categorizing data based on its importance or frequency of access and storing data in different tiers accordingly. Setting up data tiering allows for more efficient use of storage resources and improves performance. Frequently accessed or critical data can be stored in high-performance tiers, while less frequently accessed or less critical data can be stored in lower-cost tiers. The goal is to review data usage over time to ensure data is in the correct tier. As data priorities change, data should move from one tier to another.
 
-- *Implement time-to-live*: TTL is a mechanism that sets an expiration time for data. TTL allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate TTL, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for TTL. Database entries can also have a TTL.
+- *Implement time-to-live*: Time-to-live is a mechanism that sets an expiration time for data. Time-to-live allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate time-to-live, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for the time-to-live. Database entries can also have a time-to-live.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A TTL that's too short can create performance issues.
-
-### Develop a performance culture
-
-A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A time-to-live that's too short can create performance issues.
 
 ## Azure facilitation
 

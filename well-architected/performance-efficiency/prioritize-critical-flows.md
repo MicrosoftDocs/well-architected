@@ -1,20 +1,20 @@
 ---
-title: Prioritize critical flows and users
-description: Learn about recommendations for prioritizing the performance of critical flows and users. Ensure that critical flows get the resources they need before lower-priority flows get those resources.
+title: Recommendations for prioritizing critical flows
+description: Learn about recommendations for prioritizing the performance of critical flows. Ensure that critical flows get the resources they need before lower-priority flows get those resources.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for prioritizing critical flows 
+# Recommendations for prioritizing critical flows
 
-**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:09](checklist.md)| Prioritize critical flows. The allocation of workload resources and performance optimization efforts should prioritize the flows that support the most important business processes, users, and operations.| 
-|---|---| 
+|[PE:09](checklist.md)| Prioritize critical flows. The allocation of workload resources and performance optimization efforts should prioritize the flows that support the most important business processes, users, and operations.|
+|---|---|
 
-This guide describes the recommendations for prioritizing critical flows in a workload. Critical flows represent crucial business processes that generate revenue or drive high-priority operations. Prioritizing critical flows means ensuring that these flows receive the resources they need before lower-priority flows receive those resources. 
+This guide describes the recommendations for prioritizing critical flows in a workload. Critical flows represent crucial business processes that generate revenue or drive high-priority operations. Prioritizing critical flows means ensuring that these flows receive the resources they need before lower-priority flows receive those resources.
 
 By prioritizing critical flows, you can ensure that less-important flows don't adversely affect critical users and important processes. Failure to prioritize the performance of critical flows can have disproportionate negative effects on workload priorities and the user experience.
 
