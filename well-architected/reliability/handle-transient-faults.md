@@ -106,7 +106,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
-    -   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors. For examples that use TestApi, see [Fault Injection Testing with TestApi](/archive/msdn-magazine/2010/august/msdn-magazine-test-run-fault-injection-testing-with-testapi) and [Introduction to TestApi - Part 5: Managed Code Fault Injection APIs](/archive/blogs/ivo_manolov/introduction-to-testapi-part-5-managed-code-fault-injection-apis).
+    -   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
 
     -   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
 
@@ -154,9 +154,9 @@ The following guidelines can help you design suitable transient fault handling m
 
 #### Other considerations
 
--   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn\'t block other operations by holding or locking scarce resources.
+-   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 
--   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren\'t idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can\'t detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns][idempotency-patterns].
+-   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
 
 -   Consider the scope of operations that are retried. For example, it might be easier to implement retry code at a level that encompasses several operations and retry them all if one fails. However, doing so might result in idempotency issues or unnecessary rollback operations.
 
@@ -199,7 +199,7 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 
 - [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
 - [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
-- [Idempotency patterns][idempotency-patterns]
+- [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
 - [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
 
@@ -209,19 +209,3 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Reliability checklist](checklist.md)
-
-<!-- links -->
-
-[idempotency-patterns]: https://blog.jonathanoliver.com/idempotency-patterns
-
-[msal]: /azure/active-directory/develop/msal-overview
-
-[autorest]: https://github.com/Azure/autorest/tree/master/docs
-
-[dotnet-foundation]: https://dotnetfoundation.org
-
-[redis-cache-troubleshoot]: /azure/redis-cache/cache-how-to-troubleshoot
-
-[SearchIndexClient]: /dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet&preserve-view=true
-
-[SearchServiceClient]: /dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet&preserve-view=true
