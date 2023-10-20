@@ -25,7 +25,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security control bypass.** The Security pillar recommends that all controls remain active in both normal and stressed systems.
 
-- When a workload is experiencing a reliability event that's being addressed under active incident response, urgency might create pressure for workload teams to bypass security controls that are optimized for routine access. 
+- When a workload is experiencing a reliability event that's being addressed under active incident response, urgency might create pressure for workload teams to bypass security controls that are optimized for routine access.
 
 - Troubleshooting activities can cause the team to temporary disable security protocols, leaving an already stressed system potentially exposed to additional security risks. There's also a risk that the security protocols won't be reestablished promptly.
 
@@ -71,7 +71,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - As a workload becomes more robust through the addition of reliability components and patterns, it takes more time to maintain operational procedures and artifact documentation.
 
--  Training becomes more complex as the number of components in the workload increases. This complexity affects the time required for onboarding and increases the knowledge that's needed to track product roadmaps and service-level guidance.
+- Training becomes more complex as the number of components in the workload increases. This complexity affects the time required for onboarding and increases the knowledge that's needed to track product roadmaps and service-level guidance.
 
 ## Reliability tradeoffs with Performance Efficiency
 
