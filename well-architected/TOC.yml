@@ -311,7 +311,7 @@
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
-          href: service-guides/azure-db-postgresql-well-architected-framework.md
+          href: service-guides/postgresql.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer

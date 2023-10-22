@@ -21,13 +21,13 @@ The framework is founded on the five pillars of architectural excellence, which 
 
 Each pillar provides recommended practices, risk considerations, and tradeoffs. The design decisions must be balanced across all pillars, given the business requirements. The technical and actionable guidance is broad enough to be considered by all workloads and intended to be applied to a specific scenario. This guidance is centered on Azure.
 
-Workload architecture isn’t the same as its implementation. WAF can set you up for success through architectural design, but the implementation choices depend on the business requirements and constraints of the organization. 
+Workload architecture isn’t the same as its implementation. WAF can set you up for success through architectural design, but the implementation choices depend on the business requirements and constraints of the organization.
 
 ## Audience
 
 WAF applies to personas who have an accountability toward improving their workload by addressing cross-cutting concerns.  
 
-WAF can provide valuable insights and recommendations for anyone involved in the lifecycle of a workload. Irrespective of your role in a workload team, be it an architect, developer, operator, business stakeholder, if you have the authority to make decisions within the scope of a workload, you'll benefit from this content. 
+WAF can provide valuable insights and recommendations for anyone involved in the lifecycle of a workload. Irrespective of your role in a workload team, be it an architect, developer, operator, business stakeholder, if you have the authority to make decisions within the scope of a workload, you'll benefit from this content.
 
 This guidance is beneficial regardless of the scale of your organization. Whether you're part of a large enterprise, a small business, or an independent software vendor, you stand to gain a step toward optimal design. It’s designed to cater to a wide range of organizational structures and sizes, ensuring that all workload users can use its benefits effectively.
 
@@ -35,11 +35,11 @@ If you're seeking guidance for improving a portfolio of workloads through centra
 
 ## Goals
 
-WAF’s primary objective is to set you up for success when deploying your workload on Azure. 
+WAF’s primary objective is to set you up for success when deploying your workload on Azure.
 
 - **Successful implementation**: A well-architected design leads to successful implementation. Given the breadth and depth of coverage in concepts, you’re well-equipped to make informed decisions.
 
-- **Confidence in success**: The tenets of the framework are backed by proven assessments seen on numerous workloads deployed on Azure. 
+- **Confidence in success**: The tenets of the framework are backed by proven assessments seen on numerous workloads deployed on Azure.
 
 - **Understanding tradeoffs and risks**: The framework helps you understand that adopting the recommendations might require making choices against the other pillars. It highlights the impact that you might choose to accept. It will also highlight potential risks that you might want to address in the short term.
 
@@ -47,18 +47,17 @@ WAF’s primary objective is to set you up for success when deploying your workl
 
 ## Layers of WAF
 
-The Well-Architected Framework is structured in a layered approach: pillars, workload, and service guides. 
+The Well-Architected Framework is structured in a layered approach: pillars, workload, and service guides.
 
 ##### Pillars
 
-The foundation of this framework lies in the pillars. Without a comprehensive understanding of these pillars, the subsequent layers - the workload layer and service guides - might not be fully comprehensible. 
+The foundation of this framework lies in the pillars. Without a comprehensive understanding of these pillars, the subsequent layers - the workload layer and service guides - might not be fully comprehensible.
 
-At the pillar level, start your journey with the **Design principles**, each of which has a specific goal. Within each principle, follow the approaches to craft your design strategy. These approaches aren't optional and must be taken into account. 
+At the pillar level, start your journey with the **Design principles**, each of which has a specific goal. Within each principle, follow the approaches to craft your design strategy. These approaches aren't optional and must be taken into account.
 
 :::image source="_images/principles.png" alt-text="Screenshot that shows some design principles of Well-Architected Framework.":::
 
-   
-Next, move on to the **Checklist**, which should always be your starting point for evaluation. Each item on the checklist is accompanied by one or more **Recommendation guides** that describe key strategies and how Azure helps you attain the recommendation. 
+Next, move on to the **Checklist**, which should always be your starting point for evaluation. Each item on the checklist is accompanied by one or more **Recommendation guides** that describe key strategies and how Azure helps you attain the recommendation.
 
 :::image  source="_images/checklists.png" alt-text="Screenshot that shows a checklist of Well-Architected Framework.":::
 
@@ -83,12 +82,12 @@ Start with the **Get started** to understand the solution context. As a refreshe
 Service guides are instrumental in decision-making related to the individual Azure components that reside within the workload. They offer the core features and capabilities of each service that are necessary to attain a well-architected state. It’s important to note that these guides aren’t configuration guides. Also, they aren’t a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
 
 > [Browse the available guides](./service-guides/index.yml)
- 
+
 ##### Assessment
 
 Microsoft Azure Well-Architected Review is offered at no charge. It’s a collection of questionnaires that’s tied to the pillar checklists as a way to evaluate your design choices. Track your score through iterative runs to identify possible areas for enhancement.
 
-> Refer to: [Azure Well-Architected Review tool](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+> Refer to: [Azure Well-Architected Review tool](/assessments/azure-architecture-review/).
 
 ## Resources
 

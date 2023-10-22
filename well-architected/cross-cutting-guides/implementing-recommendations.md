@@ -19,7 +19,7 @@ For greenfield workloads, we recommend that you perform the assessment during th
 
 Brownfield workloads should be examined as well, as part of the continuous improvement cycle of the workload. Set a cadence, for example every four months, and use milestones to track how the workload design can continue to improve.
 
-![Diagram that shows an overview of the continuous improvement cycle.](../_images/guidance-overview.svg)
+![Diagram that shows an overview of the continuous improvement cycle.](../_images/guidance-overview.png)
 
 ## Receive and integrate recommendations
 

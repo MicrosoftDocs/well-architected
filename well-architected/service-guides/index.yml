@@ -34,7 +34,7 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Service guides are intented to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They are not configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
+  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They are not configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
   items:
     # Card
     - title: API Management
@@ -112,7 +112,7 @@ productDirectory:
     - title: Azure Database for PostgreSQL
       summary: Managed PostgreSQL database service for app developers
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
-      url: azure-db-postgresql-well-architected-framework.md
+      url: postgresql.md
       azureCategories:
         - databases
         - hybrid
