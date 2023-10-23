@@ -21,7 +21,9 @@ Data can be categorized by its state:
 
 - **Data in transit**. Data that is being transferred between components, locations, or programs.
 
-In a cloud solution, a single business transaction can lead to multiple data operations where data moves from one storage medium to another. To provide complete data protection, it must be encrypted on storage volumes and while it's transferred from one point to another.
+- **Data in use**. Data whilst it is being computed-upon inside CPU or memory
+
+In a cloud solution, a single business transaction can lead to multiple data operations where data moves from one storage medium to another whilst being computed-upon. To provide complete data protection, it must be encrypted on storage volumes, while it's transferred from one point to another and whilst it's being worked on.
 
 ## Key points
 
@@ -32,6 +34,7 @@ In a cloud solution, a single business transaction can lead to multiple data ope
 - Encrypt virtual disks.
 - Use an additional key encryption key (KEK) to protect your data encryption key (DEK).
 - Protect data in transit through encrypted network channels (TLS/HTTPS) for all client/server communication. Use TLS 1.2 on Azure.
+- Where appropriate use Azure Confidential Computing to further enhance a defense in depth strategy.
 
 ## Azure encryption features
 
@@ -181,6 +184,7 @@ For more information, see [Protect data in transit](/azure/security/fundamentals
 
 All data should be encrypted in transit using a common encryption standard. Determine if all components in the solution are using a consistent standard. There are times when encryption is not possible because of technical limitations, make sure the reason is clear and valid.
 
+
 ### Suggested actions
 
 Identify workloads using unencrypted sessions and configure the service to require encryption.
@@ -189,6 +193,19 @@ Identify workloads using unencrypted sessions and configure the service to requi
 
 - [Encrypt data in transit](./storage-data-encryption.md#encrypt-data-in-transit)
 - [Azure encryption overview](/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+
+## Data In-Use
+
+Certain services in Azure offer the ability to protect data whilst it's being computed-upon inside the physical CPU and memory of a host using [Azure Confidential Computing](/azure//confidential-computing/) which utilises special hardware SKUs to provide what is known as a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment).
+
+This enhances the standard logical protection provided by Azure by using hardware-based isolation to protect a customer workload, when combined with features like [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) it can be used to ensure that encrypted data is only ever decrypted inside a TEE which proves it provides the required level of protection through [attestation](/azure/confidential-computing/attestation-solutions)
+
+There may be regulatory requirements such as GDPR that dictate using 'state of the art' security measures, confidential computing is one such technology.
+
+
+## Learn More
+
+
 
 ## Next steps
 
