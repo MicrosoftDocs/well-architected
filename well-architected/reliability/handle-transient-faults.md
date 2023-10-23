@@ -106,13 +106,15 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
-    -   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors. For examples that use TestApi, see [Fault Injection Testing with TestApi](/archive/msdn-magazine/2010/august/msdn-magazine-test-run-fault-injection-testing-with-testapi) and [Introduction to TestApi - Part 5: Managed Code Fault Injection APIs](/archive/blogs/ivo_manolov/introduction-to-testapi-part-5-managed-code-fault-injection-apis).
+    -   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
 
     -   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
 
     -   For custom services that you create and deploy, force transient errors to occur by temporarily disabling or overloading the service. (Don't attempt to overload any shared resources or shared services in Azure.)
 
-    -   For HTTP-based APIs, consider using the FiddlerCore library in your automated tests to change the outcome of HTTP requests, either by adding extra roundtrip times or by changing the response (like the HTTP status code, headers, body, or other factors). Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures. For more information, see [FiddlerCore](https://www.telerik.com/fiddler/fiddlercore). For examples of how to use the library, particularly the **HttpMangler** class, examine the [source code for the Azure Storage SDK](https://github.com/Azure/azure-storage-net/tree/master/Test).
+    -   Use libraries or solutions that intercept and modify network traffic to replicate unfavorable scenarios from your automated tests. For example, the tests can add extra roundtrip times, drop packets, modify headers, or even change the body of the request itself. Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures.
+
+    -   When testing a client web application's resiliency to transient faults, use the browser's developer tools or your testing framework's ability to [mock](https://playwright.dev/docs/network#network-mocking) or [block](/microsoft-edge/devtools-guide-chromium/network/#block-requests) network requests.
 
     -   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
 
@@ -122,7 +124,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Implement retries in many places, even in the simplest application, and in every layer of more complex applications. Rather than hard-coding the elements of each policy at multiple locations, consider using a central point to store all policies. For example, store values like the interval and retry count in application configuration files, read them at runtime, and programmatically build the retry policies. Doing so makes it easier to manage the settings and to modify and fine-tune the values in order to respond to changing requirements and scenarios. However, design the system to store the values rather than rereading a configuration file every time, and use suitable defaults if the values can't be obtained from configuration.
 
--   In an Azure Cloud Services application, consider storing the values that are used to build the retry policies at runtime in the service configuration file so that you can change them without needing to restart the application.
+-   Store the values that are used to build the retry policies at runtime in the application's configuration system so that you can change them without needing to restart the application.
 
 -   Take advantage of built-in or default retry strategies that are available in the client APIs that you use, but only when they're appropriate for your scenario. These strategies are typically generic. In some scenarios, they might be all you need, but in other scenarios they don't offer the full range of options to suit your specific requirements. To determine the most appropriate values, you need to perform testing to understand how the settings affect your application.
 
@@ -152,9 +154,9 @@ The following guidelines can help you design suitable transient fault handling m
 
 #### Other considerations
 
--   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn\'t block other operations by holding or locking scarce resources.
+-   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 
--   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren\'t idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can\'t detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns][idempotency-patterns].
+-   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
 
 -   Consider the scope of operations that are retried. For example, it might be easier to implement retry code at a level that encompasses several operations and retry them all if one fails. However, doing so might result in idempotency issues or unnecessary rollback operations.
 
@@ -166,21 +168,21 @@ The following guidelines can help you design suitable transient fault handling m
 
 Most Azure services and client SDKs provide a retry mechanism. However, these mechanisms differ because each service has different characteristics and requirements, and each retry mechanism is tuned to the specific service. This section summarizes the retry mechanism features for some commonly used Azure services.
 
-| Service | Retry capabilities | Policy configuration | Scope| Telemetry features| 
-| --- | --- | --- | --- | --- | 
-| [Microsoft Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None | 
-| [Azure Cosmos DB](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) |Native in the service |Not configurable |Global |TraceSource | 
-| [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None | 
-| [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None | 
-| [Azure IoT Hub](/azure/architecture/best-practices/retry-service-specific#iot-hub) |Native in the client SDK |Programmatic |Client |None | 
-| [Azure Cache for Redis](/azure/architecture/best-practices/retry-service-specific#azure-cache-for-redis) |Native in the client |Programmatic |Client |TextWriter | 
-| [Azure Cognitive Search](/azure/architecture/best-practices/retry-service-specific#azure-search) |Native in the client |Programmatic |Client |ETW or custom | 
-| [Azure Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus) |Native in the client |Programmatic |NamespaceManager, MessagingFactory, and client |ETW | 
-| [Azure Service Fabric](/azure/architecture/best-practices/retry-service-specific#service-fabric) |Native in the client |Programmatic |Client |None | 
-| [Azure SQL Database with ADO.NET](/azure/architecture/best-practices/retry-service-specific#sql-database-using-adonet) |[Polly](/azure/architecture/best-practices/retry-service-specific#transient-fault-handling-with-polly) |Declarative and programmatic |Single statements or blocks of code |Custom | 
-| [SQL Database with Entity Framework](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-6) |Native in the client |Programmatic |Global per AppDomain |None | 
-| [SQL Database with Entity Framework Core](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-core) |Native in the client |Programmatic |Global per AppDomain |None | 
-| [Azure Storage](/azure/architecture/best-practices/retry-service-specific#azure-storage) |Native in the client |Programmatic |Client and individual operations |TraceSource | 
+| Service | Retry capabilities | Policy configuration | Scope| Telemetry features|
+| --- | --- | --- | --- | --- |
+| [Microsoft Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None |
+| [Azure Cosmos DB](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) |Native in the service |Not configurable |Global |TraceSource |
+| [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None |
+| [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None |
+| [Azure IoT Hub](/azure/architecture/best-practices/retry-service-specific#iot-hub) |Native in the client SDK |Programmatic |Client |None |
+| [Azure Cache for Redis](/azure/architecture/best-practices/retry-service-specific#azure-cache-for-redis) |Native in the client |Programmatic |Client |TextWriter |
+| [Azure Cognitive Search](/azure/architecture/best-practices/retry-service-specific#azure-search) |Native in the client |Programmatic |Client |ETW or custom |
+| [Azure Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus) |Native in the client |Programmatic |NamespaceManager, MessagingFactory, and client |ETW |
+| [Azure Service Fabric](/azure/architecture/best-practices/retry-service-specific#service-fabric) |Native in the client |Programmatic |Client |None |
+| [Azure SQL Database with ADO.NET](/azure/architecture/best-practices/retry-service-specific#sql-database-using-adonet) |[Polly](/azure/architecture/best-practices/retry-service-specific#transient-fault-handling-with-polly) |Declarative and programmatic |Single statements or blocks of code |Custom |
+| [SQL Database with Entity Framework](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-6) |Native in the client |Programmatic |Global per AppDomain |None |
+| [SQL Database with Entity Framework Core](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-core) |Native in the client |Programmatic |Global per AppDomain |None |
+| [Azure Storage](/azure/architecture/best-practices/retry-service-specific#azure-storage) |Native in the client |Programmatic |Client and individual operations |TraceSource |
 
 > [!NOTE]
 > For most of the Azure built-in retry mechanisms, there's currently no way to apply a different retry policy for different types of errors or exceptions. You should configure a policy that provides the optimum average performance and availability. One way to fine-tune your policy is to analyze log files to determine the type of transient faults that are occurring.
@@ -195,31 +197,15 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 
 ## Related links
 
-- [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker) 
-- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction) 
-- [Idempotency patterns][idempotency-patterns] 
-- [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency) 
-- [Data Points - EF Core 1.1](/archive/msdn-magazine/2017/january/data-points-ef-core-1-1-a-few-of-my-favorite-things) 
+- [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
+- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
+- [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
+- [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
+- [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
 
-## Reliability checklist  
+## Reliability checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
-
-<!-- links -->
-
-[idempotency-patterns]: https://blog.jonathanoliver.com/idempotency-patterns
-
-[msal]: /azure/active-directory/develop/msal-overview
-
-[autorest]: https://github.com/Azure/autorest/tree/master/docs
-
-[dotnet-foundation]: https://dotnetfoundation.org
-
-[redis-cache-troubleshoot]: /azure/redis-cache/cache-how-to-troubleshoot
-
-[SearchIndexClient]: /dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet&preserve-view=true
-
-[SearchServiceClient]: /dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet&preserve-view=true
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)

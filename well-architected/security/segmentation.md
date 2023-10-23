@@ -144,7 +144,7 @@ For more information, see [Best practices for RBAC](/azure/role-based-access-con
 
 ### Networking
 
-:::image type="content" source="images/segmentation/azure-facilitation-networking.png" alt-text="Diagram that shows networking options for segmentation." border="false" lightbox="images/segmentation/azure-facilitation-networking.png":::
+:::image type="content" source="images/segmentation/network-segmentation.svg" alt-text="Diagram that shows networking options for segmentation." border="false" lightbox="images/segmentation/network-segmentation-highres.png":::
 
 [Virtual networks](/azure/virtual-network/virtual-networks-overview): Virtual networks provide network-level containment of resources without adding traffic between two virtual networks. Virtual networks are created in private address spaces within a subscription
 
@@ -189,13 +189,13 @@ Pattern 2 is recommended to make the access patterns the focus, not the organiza
 
 ##### Pattern 1: Segmentation within a workload (soft boundaries)
 
-:::image type="content" source="images/segmentation/segmentation-workload-soft-boundaries.png" alt-text="Diagram that shows a single virtual network." border="false" lightbox="images/segmentation/segmentation-workload-soft-boundaries.png":::
+:::image type="content" source="images/segmentation/az1-appgw-user.svg" alt-text="Diagram that shows a single virtual network." border="false" lightbox="images/segmentation/az1-appgw-user-highres.png":::
 
 In this pattern, the workload is placed in a single virtual network using subnets to mark boundaries. **Segmentation is achieved using two subnets**, one for database and one for web workloads. You must configure NSGs that allow Subnet 1 to only communicate with Subnet 2 and Subnet 2 to only communicate with the internet. This pattern provides layer 3 level control.
 
 ##### Pattern 2: Segmentation within a workload
 
-:::image type="content" source="images/segmentation/segmentation-workload.png" alt-text="Diagram that shows multiple virtual networks." border="false" lightbox="images/segmentation/segmentation-workload.png":::
+:::image type="content" source="images/segmentation/az1-appgw-1.svg" alt-text="Diagram that shows multiple virtual networks." border="false" lightbox="images/segmentation/az1-appgw-1-highres.png":::
 
 This pattern is an example of platform-level segmentation. Workload c**omponents are spread across multiple networks without peering between them**. All communication is routed through an intermediary that serves as a public access point. The workload team owns all networks.
 
@@ -211,7 +211,7 @@ Pattern 2 provides containment but has the added complexity of virtual network m
 
 ##### Organize Azure resources based on ownership responsibility
 
-:::image type="content" source="images/segmentation/organize-resources-ownership.png" alt-text="Diagram of an Azure estate that contains multiple workloads." border="false" lightbox="images/segmentation/organize-resources-ownership.png":::
+:::image type="content" source="images/segmentation/services-and-workloads.svg" alt-text="Diagram of an Azure estate that contains multiple workloads." border="false" lightbox="images/segmentation/services-and-workloads-highres.png":::
 
 Consider an Azure estate that contains multiple workloads and shared service components like hub virtual networks, firewalls, identity services, and security services like Microsoft Sentinel. Components throughout the estate should be grouped based on their functional areas, workloads, and ownership. For example, shared networking resources should be grouped together into a single subscription and managed by a networking team. Components that are dedicated to individual workloads should be in their own segment and might be further divided based on application tiers or other organizational principles.
 
