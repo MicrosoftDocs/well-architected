@@ -16,34 +16,31 @@ ms.custom:
 |[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code. |
 |---|---|
 
-This guide describes the recommendations for implementing observability in your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your observability platform by instrumenting your application. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
+This guide describes the recommendations for implementing observability in your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your observability platform. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
 
 ## Key design strategies
 
 To optimize telemetry for your workload, instrument your application to generate the following data:
 
-- [Logs](azure/azure-monitor/logs/data-platform-logs) are timestamped records of discreet events. Logs can come in three forms:
-  - Plain text
-  - Structured
-  - Binary
+- [Logs](azure/azure-monitor/logs/data-platform-logs) are timestamped records of discreet events. There are three forms of logs: plain text, structured, and binary.
 
 - [Distributed tracing logs](/azure/azure-monitor/app/distributed-tracing) allow you to see the path of a request as it travels through different services and components.
 
 - [Metrics](/azure/azure-monitor/essentials/data-platform-metrics) are numerical values that describe an aspect of a system at a particular point in time.
 
 > [!NOTE]
-> You can use tools like Azure Application Insights, Dynatrace, and Elastic Application Performance Monitoring to automatically instrument your application. These tools can make instrumentation to generate telemetry easier, but they can also be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
+> You can use tools like Azure Application Insights, Dynatrace, and Elastic Application Performance Monitoring to automatically instrument your application. These tools make instrumentation easier, but they can also be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
 
 ### Logs and distributed tracing logs
 
-Use structured logging to easily integrate logs into monitoring and analysis platforms. Instrument your application to implement switch-able levels of verbosity. Verbose logging can be a waste of storage resources, so it should be switched on and off as needed for troubleshooting.
+Use structured logging to easily integrate logs into monitoring and analysis platforms. Instrument your application to implement switch-able levels of verbosity. Constant verbose logging can waste storage resources, so it should be switched on and off as needed for troubleshooting.
 
-Trace logs can contain textual data or binary data that's created from a trace event if the application uses [Event Tracing for Windows (ETW)](/azure/azure-monitor/agents/data-sources-event-tracing-windows). System logs generate trace log content from events in parts of the infrastructure, such as a web server. Textual log content is designed to be readable by humans, but you should ensure that it's written in a format that automated system can parse as well.
+Trace logs contain textual data or binary data that's created from a trace event, if the application uses [Event Tracing for Windows (ETW)](/azure/azure-monitor/agents/data-sources-event-tracing-windows). System logs generate trace log content from events in the infrastructure, such as the web server. Textual log content is designed to be readable by humans, but you should ensure that it's written in a format that automated system can parse as well.
 
-Categorize logs and use separate logs to record the trace output from each operational aspect of the system. You can quickly filter categorized log messages instead of processing a single lengthy file. Never write information that has different security requirements, such as audit information and debugging data, to the same log.
+Categorize logs and use separate logs to record the trace output from each operational aspect of the system. If you categorize your logs, you can quickly filter log messages instead of processing a single lengthy file. Never write information that has different security requirements, such as audit information and debugging data, to the same log.
 
 > [!NOTE]
-> A log might be implemented as a file on the file system, or it might be held in some other format, such as a blob in blob storage. Log information might also be held in more structured storage, such as rows in a table.
+> A log might be implemented as a file in the file system, or it might be held in some other format, such as a blob in blob storage. Log information might also be held in structured storage, such as rows in a table.
 
 ### Metrics
 
@@ -51,14 +48,14 @@ Metrics, or *samples*, are a count of some aspect or resource in the system at a
 
 ### Information for correlating data
 
-You can easily monitor individual and system-level performance counters, capture metrics for resources, and obtain application trace information from various log files. Some forms of monitoring require data correlation during the analysis and diagnostics stage in the monitoring pipeline. This data can take several forms in the raw data, and the analysis process must be provided with sufficient instrumentation data to map these different forms. For example, at the application framework level, a thread ID might identify a task. Within an application, the same work might be associated with the user ID for the user who is completing that task.
+You can easily monitor individual and system-level performance counters, capture metrics for resources, and obtain application trace information from various log files. Some monitoring requires data correlation during the analysis and diagnostics stage in the monitoring pipeline. This data can take several forms and the analysis process must be provided with sufficient instrumentation data to map these different forms. For example, at the application framework level, a thread ID might identify a task. Within an application, the same work might be associated with the user ID for the user who is completing that task.
 
-Also, it's unlikely to be a 1:1 mapping between threads and user requests, because asynchronous operations might reuse the same threads to do operations for more than one user. To complicate matters further, a single request can correlate to more than one thread as it flows through the system. If possible, associate each request with a unique activity ID that's propagated through the system as part of the request context. The technique for generating and including activity IDs in trace information depends on the technology that's used to capture the trace data.
+It's unlikely to be a 1:1 map between threads and user requests, because asynchronous operations might reuse the same threads for more than one user. To complicate matters further, a single request can correlate to more than one thread as it flows through the system. If possible, associate each request with a unique activity ID that's propagated through the system as part of the request context. The technique for generating and including activity IDs in trace information depends on the technology that's used to capture the trace data.
 
-All monitoring data should be timestamped in the same way. For consistency, record all dates and times by using Coordinated Universal Time, which helps you trace sequences of events with ease.
+All monitoring data should be timestamped in the same way. For consistency, record all dates and times by using Coordinated Universal Time.
 
 > [!NOTE]
-> Computers operating in different time zones and networks might not be synchronized. Don't depend on timestamps alone for correlating instrumentation data that spans multiple machines.
+> Computers that operate in different time zones and networks might not be synchronized. Don't depend on timestamps alone for correlating instrumentation data that spans multiple machines.
 
 ### Information to include in the instrumentation data
 
