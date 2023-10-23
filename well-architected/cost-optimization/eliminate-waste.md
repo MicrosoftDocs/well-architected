@@ -7,9 +7,14 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for eliminating waste: CO 07
+# Recommendations for eliminating waste
 
-This guide describes the recommendations for eliminating workload waste. The guidance applies to an existing workload, not one in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. You can reduce waste removing unused and underutilized workload components. It's also important to spot and address underutilized, prepaid commitments to further eliminate wastage. To ensure the highest return on investment, workload components and application features should be actively delivering value, and prepaid reservations and savings plans should be maximized.
+**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
+
+|[CO:07](checklist.md)| Eliminate waste. Use only what you need in workload components and application features. When possible, use prepaid reservations and savings plans. |
+|---|---|
+
+This guide describes the recommendations for eliminating workload waste. The guidance applies to an existing workload, not one in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. You can reduce waste removing unused and underused workload components. It's also important to spot and address underused, prepaid commitments to further eliminate wastage. To ensure the highest return on investment, workload components and application features should be actively delivering value, and prepaid reservations and savings plans should be maximized.
 
 **Definitions**
 
@@ -17,11 +22,11 @@ This guide describes the recommendations for eliminating workload waste. The gui
 |----|----|
 | Application feature | A distinct capability within the application software that enables users to perform specific tasks or access specific information.|
 | Platform feature | A specific functionality or capability provided by a platform. It can vary depending on the platform, but generally, platform features are designed to enhance the user experience, improve productivity, or enable specific tasks or actions. |
-| Resource| A single entity or component that you can create, configure, and utilize within a cloud service provider. |
+| Resource | A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 
 ## Key strategies
 
-Eliminating waste refers to the principle of using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
+Eliminate waste by using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
 
 ### Eliminate waste from the application
 
@@ -48,7 +53,7 @@ Eliminating waste from an application involves identifying and removing underuti
 
 - *Remove the application feature.* Consider the planned end of life of an application feature based on data. Reasons for removing the feature might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for removing the identified features. It might involve refactoring the code, updating dependencies, or reorganizing the user interface.
 
-    > :::image type="icon" source="../_images/risk.svg"::: **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, security, operations, and security.
+> ![Risk icon](../_images/risk.svg) **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, security, operations, and security.
 
 - *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
@@ -79,7 +84,7 @@ To remove unused resources in a workload, consider these steps:
 
 **Evaluate underutilized resources.** Underutilized resources represent wasted expenditure as you pay for resource capacity that isn't fully utilized. By identifying and optimizing these resources, you can reduce costs and allocate resources more effectively. To evaluate and optimize the cost of underutilized resources, follow these steps:
 
-- *Resource monitoring*: Use tools to keep an eye on how much CPU, memory, and storage you're actually using. Pick the best plan that matches your needs based on this info.
+- *Resource monitoring*: Use tools to keep an eye on how much CPU, memory, and storage you're actually using. Choose the best plan that matches your needs based on this info.
 - *Utilization analysis*: Look at the data to find out which resources you're not using much. Pay special attention to the resources that have low usage over a long time or large differences between busy and slow times.
 - *Right-sizing*: For resources you're not using fully, see if you've allocated too much to them. If so, adjust their size to better match what you actually need.
 - *Autoscaling*: Use autoscaling to automatically adjust how much resources you're using based on how busy you are. But set a maximum limit to avoid sudden spikes that could be costly and unnecessary.
@@ -94,10 +99,10 @@ Once you've made these adjustments, test to make sure everything still works as 
 
 ### Eliminate waste from platform feature set
 
-Eliminating wasteful platform features involves identifying and removing unnecessary or unused features to optimize resource utilization and reduce costs. Here are some steps to eliminate wasteful platform features:
+Eliminating wasteful platform features involves identifying and removing unnecessary or unused features to optimize resource usage and reduce costs. Here are some steps to eliminate wasteful platform features:
 
 - *Know the capabilities of the things you’ve purchased*: Understand the features and functionalities of the platforms or services you have acquired.
-- *Disable unused features*: Identify and disable platform features that cost money and aren't utilized.
+- *Disable unused features*: Identify and disable platform features that cost money and aren't used.
 - *Use the right features*: Newer versions of a service can provide similar performance for the same price. For example, a virtual machine with hardware updates could provide the same performance for less.
 - *Use the right configurations*: You might be paying for more availability or performance than you need. Eliminate availability or performance guarantees the workload doesn’t need.
 - *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
@@ -107,7 +112,7 @@ Eliminating wasteful platform features involves identifying and removing unneces
 
 Maximizing the usage of prepaid plans starts with buying the right plan and fully utilizing it. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions.
 
-- *Monitor utilization*: Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
+- *Monitor usage*: Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
 - *Modify the prepaid plan*: Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
 - *Review prepaid plans*: Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
 
@@ -117,7 +122,7 @@ The best way to get rid of waste is to avoid it in the first place. You want to 
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't just switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fixing the real problem saves you time and money.
 - *Apply metadata* Applying metadata provides a way to organize and track resources. You can categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy and apply consistently across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and others.
-- *Document nonstandard changes*: Documenting any changes made to your infrastructure or configurations performed outside of the normal change control process of your workload can cut unexpected costs. For example, you might increase a resource’s scaling (up or out) capacities to meet a short-term demand or triage an issue but forget to scale it back down. Make a list of nonstandard changes and use it as a reminder to revert the changes when no longer necessary.
+- *Document nonstandard changes*: Documenting any changes made to your infrastructure or configurations performed outside the normal change control process of your workload can cut unexpected costs. For example, you might increase a resource’s scaling (up or out) capacities to meet a short-term demand or triage an issue but forget to scale it back down. Make a list of nonstandard changes and use it as a reminder to revert the changes when no longer necessary.
 - *Keep things simple*: Simplifying your infrastructure and minimizing complexity can help reduce costs. Focus on using only the necessary resources and services that meet your requirements.
 
 ## Azure facilitation
@@ -131,3 +136,12 @@ The best way to get rid of waste is to avoid it in the first place. You want to 
 **Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Microsoft Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
 
 **Eliminating idle resources in disaster recovery environments**: Azure load balancers can distribute load across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. It can help reduce costs by minimizing the usage of idle resources. Azure Autoscale allows you to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. It helps ensure that resources are allocated efficiently and cost-effectively.
+
+## Related links
+
+## Cost Optimization checklist  
+
+Refer to the complete set of recommendations.
+
+> [!div class="nextstepaction"]
+> [Cost Optimization checklist](checklist.md)
