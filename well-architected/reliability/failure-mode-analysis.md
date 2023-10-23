@@ -110,7 +110,7 @@ In your analysis, prioritize the failure modes and mitigation strategies that yo
 
 Refer to the following [example table](#example) for a documentation starting point.
 
-During your initial FMA exercise, the documents you produce will be mostly theoretical planning. Chaos testing and real-world experiences will help you refine your analyses over time.
+During your initial FMA exercise, the documents you produce will be mostly theoretical planning. The FMA documents should be reviewed and updated regularly to ensure that they stay up-to-date with your workload. Chaos testing and real-world experiences will help you refine your analyses over time.
 
 ## Azure facilitation
 
