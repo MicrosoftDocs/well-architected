@@ -21,19 +21,10 @@ This guide describes the recommendations for eliminating workload waste. The gui
 
 ## Key strategies
 
-Cut down on workload waste by making sure you only pay for the computer resources and features you actually use. Keep track of what you're using and adjust your plans accordingly to save money. Regularly review and update how you manage these resources to get the most value for your money. This way you use what you have more effectively and cut down on costs.
+Eliminating waste refers to the principle of using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
 
 ### Eliminate waste from the application
 
-<<<<<<< HEAD
-An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
-
-**Evaluate the value.** To determine the value of a feature, consider its impact on the overall application and the value it provides to the customers. Some factors to consider include:
-
-- *Customer needs*: Assess how well the feature meets the needs and expectations of the customers. Customer feedback, surveys, and usage data can be valuable in understanding the perceived value.
-- *Business goals*: Evaluate how the feature aligns with the strategic objectives of the business. Consider how it supports revenue generation, customer satisfaction, or competitive advantage.
-- *Impact on user experience*: Determine the impact the feature has on enhancing the user experience and improving usability or productivity.
-=======
 Eliminating waste from an application involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
 
 **Evaluate the value.** To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
@@ -41,22 +32,15 @@ Eliminating waste from an application involves identifying and removing underuti
 - *Customer needs*: Assess how well the feature meets the needs and expectations of the customers. Customer feedback, surveys, and usage data can be valuable in understanding the perceived value.
 - *Business goals*: Evaluate how the feature aligns with the strategic objectives of the business. Consider how it supports revenue generation, customer satisfaction, or competitive advantage.
 - *Effect on user experience*: Determine the effect the feature has on enhancing the user experience and improving usability or productivity.
->>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 - *Differentiation*: Assess whether the feature provides a unique selling point or competitive advantage compared to other applications in the market.
 
 **Evaluate the cost.** Understanding the cost associated with each feature is essential for effective resource allocation and optimization. The cost evaluation involves considering various aspects, such as:
 
 - *Development effort*: Assess the time, resources, and expertise required to develop and maintain the feature or surrounding features. Underutilized features often become a key source of technical debt.
 - *Maintenance and support*: Consider the ongoing costs associated with maintaining and supporting the feature, including bug fixes, security updates, and troubleshooting.
-<<<<<<< HEAD
-- *Infrastructure and resource utilization*: Evaluate the impact of the feature on infrastructure requirements, including server resources, storage, and bandwidth.
-- *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
-- *Performance considerations*: Evaluate the impact of the feature on the application's performance, including scalability, response time, and resource usage.
-=======
 - *Infrastructure and resource utilization*: Evaluate the effect of the feature on infrastructure requirements, including server resources, storage, and bandwidth.
 - *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
 - *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
->>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 
 **Seek input.** Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to people like product managers, software developers, and business analysts. Collect data and study it to understand how a feature affects your business goals. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
 
@@ -66,11 +50,7 @@ Eliminating waste from an application involves identifying and removing underuti
 
     > :::image type="icon" source="../_images/risk.svg"::: **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, security, operations, and security.
 
-<<<<<<< HEAD
-- *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential impact on the application.
-=======
 - *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
->>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
 
 ### Eliminate waste from workload resources

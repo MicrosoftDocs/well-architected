@@ -25,22 +25,22 @@ This article presents cost considerations for various combinations of Azure IoT 
 
 To assess your IoT workload through the lenses of the Well-Architected Framework Cost Optimization pillar, complete the cost optimization questions for IoT workloads in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). After the assessment identifies key cost optimization recommendations for your IoT solution, use the following content to help implement the recommendations.
 
-## Design Principles
+## Design principles
 
-[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Cost Optimization](../cost-optimization/overview.md).
+[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Cost Optimization](../cost-optimization/index.yml). 
 
 |Design principle|Considerations|
 |---|---|
-|[**Set up budgets and maintain cost constraints**](../cost-optimization/principles.md#set-up-budgets-and-maintain-cost-constraints)|[Understand total cost of ownership (TCO)](#total-cost-of-ownership-tco) by accounting for both direct and indirect costs when planning.|
+|[**Develop cost-management discipline**](../cost-optimization/principles.md#develop-cost-management-discipline)|[Understand total cost of ownership (TCO)](#total-cost-of-ownership-tco) by accounting for both direct and indirect costs when planning.|
 |**Use industry-standard strategies and approaches**|For [IoT specific industries](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) with their own ecosystems, for example manufacturing, energy and environment, or automotive and transportation, use industry-standard strategies and approaches.|
-|[**Choose the correct resources**](../cost-optimization/principles.md#choose-the-correct-resources)|Define implementation plans for each [IoT architecture layer](#iot-architecture-layers).|
-|[**Continuously monitor and optimize cost management**](../cost-optimization/principles.md#continuously-monitor-and-optimize-cost-management)|Monitor and optimize costs with ongoing cost optimization activities after you implement your solution.|
+|[**Design for rate optimization**](../cost-optimization/principles.md#design-for-rate-optimization)|Define implementation plans for each [IoT architecture layer](#iot-architecture-layers).|
+|[**Monitor and optimize over time**](../cost-optimization/principles.md#monitor-and-optimize-over-time)|Monitor and optimize costs with ongoing cost optimization activities after you implement your solution.|
 
 ## Total cost of ownership (TCO)
 
 IoT costs are a tradeoff between various technology options. Sometimes it's not a simple comparison, because IoT is an end-to-end system. Consider the cost benefits of synergy when reconciling multiple services and technologies. For example, you can use Azure IoT Hub device twins to handle events in Azure Digital Twins. Device Twins in IoT Hub are available only in the [standard tier of IoT Hub](/azure/iot-hub/iot-hub-scaling#basic-and-standard-tiers).
 
-It's important to correctly estimate long-term aggregated costs. Review the IoT technology stacks, and [develop a cost model](../cost-optimization/design-model.md) that includes the costs to implement and operate all services involved. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
+It's important to correctly estimate long-term aggregated costs. Review the IoT technology stacks, and [develop a cost model](../cost-optimization/cost-model.md) that includes the costs to implement and operate all services involved. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
 
 In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
 
@@ -280,11 +280,11 @@ The [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) 
 
 The purpose of the event processing and analytics layer is to enable data-driven decisions. Event timing and the purpose of analytics are key factors to consider. The right service choice increases architectural efficiency and reduces the cost of processing data and events.
 
-Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. The Cost Optimization pillar in the Azure Well-Architected Framework includes the [cost considerations for data analytics stores](../cost-optimization/provision-datastores.md#data-analytics-cost), considering data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
+Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. 
 
 To get started, determine which types of data go through the hot, warm, or cold path:
 
-- Hot path data is kept in memory and analyzed in near real-time, typically using stream processing. The output may trigger an alert or be written to a structured format that analytics tools can query immediately.
+- Hot path data is kept in memory and analyzed in near real-time, typically using stream processing. The output might trigger an alert or be written to a structured format that analytics tools can query immediately.
 - Warm path data, such as from the last day, week, or month, is kept in a storage service that can be queried immediately.
 - Cold path historical data is kept in lower-cost storage to be queried in large batches.
 
@@ -392,7 +392,7 @@ Cloud governance is essential for compliance, security, and preventing unnecessa
 
 - Cost management APIs let you explore cost and usage data through multidimensional analysis. You can create customized filters and expressions that help answer Azure resource consumption-related questions. Cost management APIs can generate alerts when consumption reaches configured thresholds. Cost management APIs are available for [IoT Central](/rest/api/iotcentral), [IoT Hub](/rest/api/iothub), and [DPS](/rest/api/iot-dps).
 
-- Resource tagging applies labels to deployed resources. Along with Azure Cost Management, tagging provides insights on ongoing costs based on the labels. For more information, see [Common cost analysis uses](/azure/cost-management-billing/costs/cost-analysis-common-uses).
+- Resource tagging applies labels to deployed resources. Along with Microsoft Cost Management, tagging provides insights on ongoing costs based on the labels. For more information, see [Common cost analysis uses](/azure/cost-management-billing/costs/cost-analysis-common-uses).
 
 - Azure Policy comes with built-in policies to label resources automatically, or flag resources without tagging. To learn more, see [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies). Another use case for Azure Policy is to prevent provisioning of certain tiers, which helps prevent over-provisioning in development or production environments.
 
@@ -420,9 +420,7 @@ Although Advisor doesn't offer specific recommendations for IoT services, it can
 ## Related resources
 
 - [Cost optimization design principles](../cost-optimization/principles.md)
-- [Capture cost requirements](../cost-optimization/design-capture-requirements.md)
-- [Develop a cost model](../cost-optimization/design-model.md)
-- [Checklist - Design for cost](../cost-optimization/design-checklist.md)
-- [Checklist - Optimize cost](../cost-optimization/optimize-checklist.md)
+- [Recommendations for creating a cost model](../cost-optimization/cost-model.md)
+- [Design review checklist for Cost Optimization](../cost-optimization/checklist.md)
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
 - [Azure IoT documentation](/azure/iot-fundamentals)

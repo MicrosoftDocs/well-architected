@@ -1,15 +1,16 @@
 ---
 title: Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL
-description: Provides a template for a Well-Architected Framework (WAF) article that is specific for Azure Database for PostgreSQL.
+description: Design considerations and recommendations for each pillar as related to solutions using Azure Database for PostgreSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
 ms.date: 09/13/2023
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-service-guide
 ms.topic: conceptual
+products:
+  - azure-database-postgresql
 ---
-
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL
 
 This article provides architectural best practices for Azure Database for PostgreSQL.
@@ -22,8 +23,6 @@ The guidance is based on the five pillars of architectural excellence:
 - Operational excellence
 - Performance efficiency
 
-
-
 ## Prerequisites
 
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend you review your workload using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
@@ -32,8 +31,6 @@ Understanding the Well-Architected Framework pillars can help produce a high-qua
 
 > [!NOTE]  
 > To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
-> 
-> For implementation guidance, see product documentation: [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
 
 ## Reliability
 
@@ -58,9 +55,15 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads. | Derive these values by conducting a risk assessment and ensuring you understand the cost and risk of downtime and data loss. These are nonfunctional requirements of a system and should be dictated by business requirements. |
 | Select the appropriate high availability configuration. | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
-| Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery in the event the primary server region is down. |
+| Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. |
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
 | Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
+
+### Azure policy definitions
+
+Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure reliability for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to implement specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for reliability:
+
+- [High availability (Reliability) in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server)
 
 ## Security
 
@@ -74,7 +77,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 >  
 > - SSL and enforce encryption to secure data in transit.
 > - Implement network security groups and firewalls to control access to your database.
-> - Use Microsoft Entra ID for authentication and authorization to enhance identity management.
+> - Use Azure Active Directory for authentication and authorization to enhance identity management.
 > - Configure row-level security.
 
 ### Security recommendations
@@ -83,7 +86,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | SSL and enforce encryption to secure data in transit. | Deploy the DigiCert Global Root certificate from a trusted Certificate Authority (CA) certificate needed to communicate over SSL with client applications. |
 | Implement network security groups and firewalls to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
-| Use Microsoft Entra ID for authentication and authorization to enhance identity management. | Microsoft Entra authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. |
+| Use Azure Active Directory for authentication and authorization to enhance identity management. | Microsoft Azure Active Directory (Azure AD) authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
 | Configure row-level security. | [Row level security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
 
 ## Cost optimization
@@ -114,7 +117,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Pick the right tier and SKU. | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
 | Understand high availability mode. | High availability makes a standby server always available within the same zone or region. Enabling high availability doubles your cost. |
 | Adjust compute and storage tier.s | You should manually adjust the compute and storage tiers to meet the application's requirements over time.
-| Use Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it.
+| Use the Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it.
 | Consider reserved instances. | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
 | Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage.
 | Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS.
@@ -199,3 +202,8 @@ Consider more resources related to Azure Database for PostgreSQL.
 ### Cloud Adoption Framework guidance
 
 - [Batch Data application with Azure Database for PostgreSQL](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Azure pricing calculator to estimate and manage your costs effectively](https://azure.microsoft.com/pricing/calculator/)

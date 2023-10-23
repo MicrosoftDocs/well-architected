@@ -16,7 +16,7 @@ ms.custom:
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For clear role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-**Related guide**: [Improve build velocity](release-engineering-performance.md) | [Optimize development practices](optimize-development-practices.md)
+**Related guide**: [Improve build velocity](release-engineering-performance.md) | [Standardize tools and processes](tools-processes.md)
 
 As code is developed, updated, or even removed, having an intuitive and safe method to integrate these changes into the main code branch enables developers to provide value.
 

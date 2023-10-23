@@ -122,7 +122,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Monitor cost and create budget alerts | Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. For more information, see [Monitoring ExpressRoute costs](/azure/expressroute/plan-manage-cost#monitor-costs). |
 | Deprovision and delete ExpressRoute circuits no longer in use. | ExpressRoute circuits are charged from the moment they're created. To reduce unnecessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. For steps on how to remove an ExpressRoute circuit, see [Deprovisioning an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). |
 
-For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/overview.md).
+For more suggestions, see [Design review checklist for Cost Optimization](../cost-optimization/checklist.md).
 
 Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. Circuits in this state aren't operational; and removing the unused resource will reduce unnecessary costs.
 
