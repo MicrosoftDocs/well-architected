@@ -1,6 +1,11 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/services/data/postgresql.md",
+			"redirect_url": "/azure/well-architected/service-guides/postgresql",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/devops/devops-patterns.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/design-patterns",
 			"redirect_document_id": true
@@ -762,7 +767,7 @@
 		},
 		{
 			"source_path": "well-architected/services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-db-postgresql-well-architected-framework",
+			"redirect_url": "/azure/well-architected/service-guides/postgresql",
 			"redirect_document_id": true
 		},
 		{
@@ -1072,7 +1077,7 @@
 		},
 		{
 			"source_path": "well-architected/security/deploy-governance.md",
-			"redirect_url": "/azure/well-architected/security/hardening",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
 			"redirect_document_id": false
 		},
 		{
@@ -1082,7 +1087,7 @@
 		},
 		{
 			"source_path": "well-architected/security/design-admins.md",
-			"redirect_url": "/azure/well-architected/security/hardening",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
 			"redirect_document_id": false
 		},
 		{
@@ -1197,27 +1202,27 @@
 		},
 		{
 			"source_path": "well-architected/security/monitor.md",
-			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_url": "/azure/well-architected/security/monitor-threats",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/monitor-audit.md",
-			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_url": "/azure/well-architected/security/monitor-threats",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/monitor-logs-alerts.md",
-			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_url": "/azure/well-architected/security/monitor-threats",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/monitor-remediate.md",
-			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_url": "/azure/well-architected/security/monitor-threats",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/monitor-resources.md",
-			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_url": "/azure/well-architected/security/monitor-threats",
 			"redirect_document_id": false
 		},
 		{
@@ -1227,12 +1232,12 @@
 		},
 		{
 			"source_path": "well-architected/security/monitor-test.md",
-			"redirect_url": "/azure/well-architected/security/testing",
+			"redirect_url": "/azure/well-architected/security/test",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/monitor-tools.md",
-			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_url": "/azure/well-architected/security/monitor-threats",
 			"redirect_document_id": false
 		},
 		{

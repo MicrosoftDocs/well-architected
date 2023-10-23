@@ -31,25 +31,23 @@ landingContent:
       - linkListType: learn
         links:
           - text: Performance efficiency
-            url: /training/modules/azure-well-architected-introduction/5-performance-efficiency
+            url: /training/modules/azure-well-architected-performance-efficiency/
       - linkListType: video
         links:
           - text: "Performance efficiency: Fast & furious"
             url: /events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency
-  #- title: Design principles
-  #  linkLists:
-  #    - linkListType: concept
-  #      links:
-  #        - text: Design Principle 1 TBD (TODO)
-  #          url: principles.md#TODO
-  #        - text: Design Principle 2 TBD (TODO)
-  #          url: principles.md#TODO
-  #        - text: Design Principle 3 TBD (TODO)
-  #          url: principles.md#TODO
-  #        - text: Design Principle 4 TBD (TODO)
-  #          url: principles.md#TODO
-  #        - text: Design Principle 5 TBD (TODO)
-  #          url: principles.md#TODO
+  - title: Design principles
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Negotiate realistic performance targets
+            url: principles.md#negotiate-realistic-performance-targets
+          - text: Design to meet capacity requirements
+            url: principles.md#design-to-meet-capacity-requirements
+          - text: Achieve and sustain performance
+            url: principles.md#achieve-and-sustain-performance
+          - text: Improve efficiency through optimization
+            url: principles.md#improve-efficiency-through-optimization
   - title: Achieve performance targets
     linkLists:
       - linkListType: how-to-guide
