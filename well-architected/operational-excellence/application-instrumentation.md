@@ -13,7 +13,7 @@ ms.custom:
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code. |
+|[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, ata-platform-metricsmetrics, and logs that emit from the workload's infrastructure and code. |
 |---|---|
 
 This guide describes the recommendations for implementing observability in your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your observability platform. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
@@ -22,11 +22,11 @@ This guide describes the recommendations for implementing observability in your 
 
 To optimize telemetry for your workload, instrument your application to generate the following data:
 
-- [Logs](azure/azure-monitor/logs/data-platform-logs) are timestamped records of discreet events. There are three forms of logs: plain text, structured, and binary.
+- [Logs](/azure/azure-monitor/logs/data-platform-logs.md) are timestamped records of discreet events. There are three forms of logs: plain text, structured, and binary.
 
-- [Distributed tracing logs](/azure/azure-monitor/app/distributed-tracing) allow you to see the path of a request as it travels through different services and components.
+- [Distributed tracing logs](/azure/azure-monitor/app/distributed-trace-data.md) allow you to see the path of a request as it travels through different services and components.
 
-- [Metrics](/azure/azure-monitor/essentials/data-platform-metrics) are numerical values that describe an aspect of a system at a particular point in time.
+- [Metrics](/azure/azure-monitor/essentials/data-platform-metrics.md) are numerical values that describe an aspect of a system at a particular point in time.
 
 > [!NOTE]
 > You can use tools like Azure Application Insights, Dynatrace, and Elastic Application Performance Monitoring to automatically instrument your application. These tools make instrumentation easier, but they can also be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
@@ -44,7 +44,7 @@ Categorize logs and use separate logs to record the trace output from each opera
 
 ### Metrics
 
-Metrics, or *samples*, are a count of some aspect or resource in the system at a specific time, with one or more associated tags or dimensions. A single instance of a metric isn't useful in isolation, metrics should be captured over time. Consider which metrics you should record and how frequently. Data that is generated too often can impose a heavy load on the system, but infrequent data capture can cause you to miss the circumstances that lead to a significant event. The appropriate frequency for capturing data might vary from metric to metric. For example, CPU usage on a server might vary significantly from second to second, but high usage only becomes an issue if it's consistent over many minutes.
+Metrics, or *samples*, are a count of some aspect or resource in the system at a specific time, with one or more associated tags or dimensions. A single instance of a metric isn't useful in isolation, metrics should be captured over time. Consider which metrics you should record and how frequently. Data that's generated too often can impose a heavy load on the system, but infrequent data capture can cause you to miss the circumstances that lead to a significant event. The appropriate frequency for capturing data might vary from metric to metric. For example, CPU usage on a server might vary significantly from second to second, but high usage only becomes an issue if it's consistent over many minutes.
 
 ### Information for correlating data
 
@@ -63,7 +63,7 @@ Consider the following points when you're deciding which instrumentation data yo
 
 #### Human-readable data
 
-Ensure that information captured by trace events is both machine and human readable. Adopt well-defined schemas for this information to help automated processing of log data across systems, and to provide consistency for operations and engineering staff reading the logs.
+Ensure that information captured by trace events is both machine and human readable. Adopt well-defined schemas for this information to help implement automated processing of log data across systems, and to provide consistency for operations and engineering staff reading the logs.
 
 Include the following environmental information in your data:
 
@@ -76,23 +76,21 @@ Include the following environmental information in your data:
 
 Provide sufficient context, such as an activity ID that's associated with a specific instance of a  request, so that the developer or administrator can determine the source of each request.
 
-Data context might also include information that is used to correlate an activity with the computational work performed and the resources used. *This work might cross process and machine boundaries.*
+Data context might also include information that's used to correlate an activity with the computational work performed and the resources used. *This work might cross process and machine boundaries.*
 
 For metering, the context should also include, either directly or indirectly, a reference to the customer who caused the request. This context provides valuable information about the application state at the time that the monitoring data was captured.
 
 #### Capture all relevant data
 
-Record all requests, and the locations, or regions from which the requests are made. You can use this information to help identify location-specific hotspots. This information can also be useful to determine whether to repartition an application or the data that it uses.
+Record all requests, and the locations, or regions where they're made. You can use this information to help identify location-specific hotspots. This information can also be useful to determine whether to repartition an application or the data that it uses.
 
-Record and capture the details of exceptions carefully. Critical debug information is often lost because of poor exception handling.
-
-Capture the full details of exceptions that the application throws, including any inner exceptions and other contextual information, such as the call stack, if possible.
+Record and capture the details of exceptions carefully. Critical debug information is often lost because of poor exception handling. Capture all exception details that the application throws, including any inner exceptions or other contextual information, such as the call stack, if possible.
 
 #### Strive for data consistency
 
-Consistent data can help you analyze events and correlate them with user requests. Consider using a comprehensive and configurable logging package to gather information. Logging packages can help you avoid dependence on developers to adopt the same approach as they implement different parts of the system.
+Consistent data can help you analyze events and correlate them with user requests. Consider using a comprehensive and configurable logging package to gather information. Logging packages can help you avoid dependence on developers to adopt your approach as they implement different parts of the system.
 
-Gather data, such as I/O volume, number of requests, and memory, network, and CPU usage, from key performance counters. Some infrastructure services provide their own performance counters, such as:
+Gather data, such as input/output volume, number of requests, and memory, network, and CPU usage, from key performance counters. Some infrastructure services provide their own performance counters, such as:
 
 - The number of connections to a database.
 - The transaction rate.
@@ -112,9 +110,9 @@ Record information about the duration of each call and the success or failure of
 
 ### Ensure telemetry system compatibility
 
-In many cases, the instrumentation information is generated as a series of events and passed to a separate telemetry system for processing and analysis. A telemetry system is typically independent of any specific application or technology. Telemetry systems use defined schemas to parse information. The schema specifies a contract that defines the data fields and types that the telemetry system can ingest. The schema should be generalized to allow for data arriving from various platforms and devices.
+In many cases, the instrumentation information is generated as a series of events and passed to a separate telemetry system for processing and analysis. A telemetry system is typically independent of any specific application or technology.
 
-A common schema should include fields that are common to all instrumentation events, such as:
+Telemetry systems use defined schemas to parse information. The schema specifies a contract that defines the data fields and types that the telemetry system can ingest. Generalize the schema to allow for data arriving from various platforms and devices. A common schema should include fields relevant to all instrumentation events, such as:
 
 - Event name
 - Event time
@@ -130,9 +128,9 @@ Remember that many devices can raise events for the same application, so the sch
 - Application start and end events.
 - Success or failure of web service API calls.
 
-Establish domain fields that emit the same set of events to build a set of common reports and analytics across applications. A schema might contain custom fields for capturing the details of application-specific events.
+Establish domain fields that produce the same set of events to build a set of common reports and analytics across applications. You might need to configure a schema to contain custom fields for capturing the details of application-specific events.
 
-[OpenTelemetry](https://opentelemetry.io/) is a vendor-neutral collection of APIs, SDKs and other tools. You can use OpenTelemetry to instrument applications and generate meaningful telemetry consistently across languages. OpenTelemetry is tool-agnostic so it's compatible with many observability platforms including open source and commercial offerings. [Microsoft is adopting OpenTelemetry](/azure/azure-monitor/app/opentelemetry-overview?tabs=aspnetcore#opentelemetry) as the standard tooling for instrumentation.
+[OpenTelemetry](https://opentelemetry.io/) is a vendor-neutral collection of APIs, SDKs and other tools. You can use OpenTelemetry to instrument applications and generate meaningful telemetry consistently across languages. OpenTelemetry is tool-agnostic so it's compatible with many observability platforms including open source and commercial offerings. [Microsoft is adopting OpenTelemetry](/azure/azure-monitor/app/opentelemetry-overview?tabs=aspnetcore#opentelemetry) as the standard tool for instrumentation.
 
 ### Best practices for instrumenting applications
 
@@ -144,7 +142,7 @@ The following list summarizes best practices for instrumenting a distributed app
 
 - Identify the source of the log.
 
-- Add timing information as each log record is written.
+- Add timestamp information as each log record is written.
 
 - Use the same time zone and format for all timestamps.
 
@@ -162,7 +160,7 @@ The following list summarizes best practices for instrumenting a distributed app
 - Don't mix log messages with different security requirements in the same log file.
 
 - Ensure that all logging calls are *fire-and-forget* operations that don't block the progress of business operations.
-  - Auditing events are excluded from this rule because they're critical to the business.
+  - Exclude auditing events from this rule because they're critical to the business.
 
 - Ensure that logging is extensible and doesn't have any direct dependencies on a concrete target.
 
@@ -172,20 +170,27 @@ The following list summarizes best practices for instrumenting a distributed app
 
 ## Azure facilitation
 
-[Autoinstrumentation](/azure/azure-monitor/app/codeless-overview) is available for many types of Azure and on-premises applications monitored with [Application Insights](/azure/azure-monitor/app/app-insights-overview). The Autoinstrumentation function automatically configures your application to provide rich telemetry to Application Insights and provides easy access to experiences such as the [application dashboard](/azure/azure-monitor/app/overview-dashboard) and [application map](/azure/azure-monitor/app/app-map). For supported hosting platforms and development languages, see [documentation](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers)
+[Autoinstrumentation](/azure/azure-monitor/app/codeless-overview) is available for many types of Azure and on-premises applications monitored with [Application Insights](/azure/azure-monitor/app/app-insights-overview). The autoinstrumentation function automatically configures your application to provide rich telemetry to Application Insights and provides easy access to experiences such as the [Application Dashboard](/azure/azure-monitor/app/overview-dashboard) and [Application Map](/azure/azure-monitor/app/app-map). For supported hosting platforms and development languages, see [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
 
 ## Tradeoffs
 
 Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
 
-Profiling selections can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by instrumentation might cause too much of a burden and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
+Profiling selections can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by using instrumentation might cause too much of a burden and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
 
 ## Related links
 
-- [Application Insights documentation](/azure/azure-monitor/app/app-insights-overview)
-- [Autoinstrumentation for Application Insights documentation](/azure/azure-monitor/app/codeless-overview)
-- [Event Tracing for Windows](/azure/azure-monitor/agents/data-sources-event-tracing-windows)
+- [Application Insights overview](/azure/azure-monitor/app/app-insights-overview)
+- [What is autoinstrumentation for Azure Monitor Application Insights?](/azure/azure-monitor/app/codeless-overview)
+- [Azure Monitor Logs overview](/azure/azure-monitor/logs/data-platform-logs.md)
+- [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics.md)
+- [Collecting ETW Events for analysis Azure Monitor Logs](/azure/azure-monitor/agents/data-sources-event-tracing-windows)
 - [Recommendations for designing and creating an observability framework](observability.md)
+- [What is distributed tracing and telemetry correlation?](/azure/azure-monitor/app/distributed-trace-data.md)
+
+## Community links
+
+- [OpenTelemetry](https://opentelemetry.io/)
 
 ## Operational Excellence checklist  
 
