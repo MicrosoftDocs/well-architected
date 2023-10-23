@@ -272,7 +272,7 @@
 		},
 		{
 			"source_path": "well-architected/cost/overview.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_url": "/azure/well-architected/cost-optimization/index",
 			"redirect_document_id": false
 		},
 		{
@@ -417,7 +417,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/overview.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/checklist",
+			"redirect_url": "/azure/well-architected/operational-excellence/index",
 			"redirect_document_id": false
 		},
 		{
@@ -562,7 +562,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/overview.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/checklist",
+			"redirect_url": "/azure/well-architected/performance-efficiency/index",
 			"redirect_document_id": false
 		},
 		{
@@ -662,12 +662,12 @@
 		},
 		{
 			"source_path": "well-architected/resiliency/monitor-best-practices.md",
-			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/resiliency/monitor-checklist.md",
-			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy",
 			"redirect_document_id": false
 		},
 		{
@@ -677,7 +677,7 @@
 		},
 		{
 			"source_path": "well-architected/resiliency/monitoring.md",
-			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy",
 			"redirect_document_id": false
 		},
 		{
@@ -1242,7 +1242,7 @@
 		},
 		{
 			"source_path": "well-architected/security/overview.md",
-			"redirect_url": "/azure/well-architected/security/checklist",
+			"redirect_url": "/azure/well-architected/security/index",
 			"redirect_document_id": false
 		},
 		{
