@@ -25,7 +25,7 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
-            - name: RE:01 Identifying and rating flows
+            - name: RE:01 Critical flows
               href: reliability/identify-flows.md
             - name: RE:02 Failure mode analysis
               href: reliability/failure-mode-analysis.md
@@ -69,7 +69,7 @@
           items:
             - name: Security patterns            
               href: security/design-patterns.md
-            - name: SE:01 Establishing a baseline
+            - name: SE:01 Security baseline
               href: security/establish-baseline.md
             - name: SE:02 Secured development lifecycle
               href: security/secure-development-lifecycle.md
@@ -111,13 +111,13 @@
               href: cost-optimization/design-patterns.md
             - name: CO:01 Financial responsibility
               href: cost-optimization/create-culture-financial-responsibility.md
-            - name: CO:02 Cost models
+            - name: CO:02 Cost model
               href: cost-optimization/cost-model.md
-            - name: CO:03 Cost data
+            - name: CO:03 Cost data and reporting
               href: cost-optimization/collect-review-cost-data.md
             - name: CO:04 Spending guardrails
               href: cost-optimization/set-spending-guardrails.md
-            - name: CO:05 Rates
+            - name: CO:05 Rate optimization
               href: cost-optimization/get-best-rates.md
             - name: CO:06 Usage and billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
@@ -153,7 +153,7 @@
               href: operational-excellence/design-patterns.md 
             - name: OE:01 DevOps culture
               href: operational-excellence/devops-culture.md
-            - name: OE:02 Tasks
+            - name: OE:02 Task execution process
               href: operational-excellence/formalize-operations-tasks.md
             - name: OE:03 Software development practices
               href: operational-excellence/formalize-development-practices.md
@@ -175,7 +175,7 @@
               href: operational-excellence/automate-tasks.md
             - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
-            - name: OE:11 Deployment
+            - name: OE:11 Deployment practices
               href: operational-excellence/safe-deployments.md
             - name: OE:12 Failure mitigation
               href: operational-excellence/mitigation-strategy.md
