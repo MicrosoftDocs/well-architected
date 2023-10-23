@@ -173,7 +173,7 @@
               href: operational-excellence/emergency-response.md
             - name: OE:09 Task automation
               href: operational-excellence/automate-tasks.md
-            - name: OE:10 Automation planning
+            - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
             - name: OE:11 Deployment
               href: operational-excellence/safe-deployments.md
@@ -299,11 +299,7 @@
             - name: Operational excellence
               href: service-guides/azure-cache-redis/operational-excellence.md
         - name: Azure Cosmos DB
-          items:
-            - name: Reliability
-              href: service-guides/cosmos-db/reliability.md
-            - name: Operational excellence
-              href: service-guides/cosmos-db/operational-excellence.md
+          href: service-guides/cosmos-db.md
         - name: Azure Databricks
           href: service-guides/azure-databricks-security.md
         - name: Azure Database for MySQL
