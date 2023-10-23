@@ -14,6 +14,8 @@ ms.topic: conceptual
 |[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code.| 
 |---|---| 
 
+**Related guide**: [Recommendations for instrumenting an application](application-instrumentation.md)
+
 This guide describes the recommendations for designing and creating an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
 
 **Definitions**

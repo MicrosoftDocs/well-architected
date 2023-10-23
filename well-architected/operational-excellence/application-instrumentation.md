@@ -24,7 +24,7 @@ This guide describes the recommendations for implementing observability in your 
 
 To optimize telemetry for your workload, instrument your application to generate the following data:
 
-- [Logs](/azure/azure-monitor/logs/data-platform-logs) are timestamped records of discreet events. There are three forms of logs: plain text, structured, and binary.
+- [Logs](/azure/azure-monitor/logs/data-platform-logs) are timestamped records of discrete events. There are three forms of logs: plain text, structured, and binary.
 
 - [Distributed tracing logs](/azure/azure-monitor/app/distributed-trace-data) allow you to see the path of a request as it travels through different services and components.
 
