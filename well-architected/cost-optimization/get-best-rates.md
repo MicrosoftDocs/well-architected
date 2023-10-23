@@ -1,6 +1,6 @@
 ---
 title: Recommendations for getting the best rates from providers
-description: Learn how to get the best rates from providers for your workload.
+description: Learn how to get the best rates from providers for your workload without modifying architecture, modifying functionality, or switching resource types.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
@@ -22,9 +22,9 @@ By optimizing rates, you can reduce cloud costs without changing the workload. W
 
 | Term | Definition |
 |---|---|
-| Rate | The unit price for using a service or license. |
 | Consumption pricing | A pricing model where you're charged based on the actual usage of the service. Examples include the number of virtual machines deployed, the amount of storage used, and the amount of data transferred. |
 | Prepaid pricing   | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
+| Rate | The unit price for using a service or license. |
 
 ## Key design strategies
 
@@ -46,13 +46,13 @@ Here are actions that you can take to understand the workload rates:
 
 For your billing model, you choose between consumption-based (pay-as-you-go) and prepaid pricing strategies. Base the selection on the predictability, duration, and usage consistency of workload components. This decision requires collaboration with development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations.
 
-Selecting the right billing model is crucial to ensure cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. Consider the following strategies.
+Selecting the right billing model is crucial for cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. Consider the following strategies.
 
 #### Understand consumption pricing
 
 Consumption pricing is a flexible pricing model that allows you to pay for services as you use them. It's also called pay-as-you-go pricing.
 
-Cost variables for consumption pricing include how long a resource is running. Service meters have different billing increments, such as per hour or per second. This model provides flexibility and cost control, because you pay for only what you consume.
+Cost variables for consumption pricing include how long a resource is running. Service meters have various billing increments, such as per hour or per second. This model provides flexibility and cost control, because you pay for only what you consume.
 
 Consumption pricing is best suited for the following scenarios:
 
@@ -64,9 +64,9 @@ Consumption pricing is best suited for the following scenarios:
 
 #### Understand prepaid pricing
 
-Prepaid pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage upfront, you can get a discounted rate compared to pay-as-you-go pricing.
+Prepaid pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to pay-as-you-go pricing.
 
-The cost savings achieved through prepaid pricing depend on factors such as the duration of the reservation, the reserved capacity, and the service. Prepaid pricing is best suited for the following scenarios:
+The cost savings achieved through prepaid pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Prepaid pricing is best suited for the following scenarios:
 
 - *Predictable workloads*: If your workload has a consistent usage pattern, you can commit to a certain capacity over time and get a significant discount over pay-as-you-go pricing. Those instances incur charges whether you use them or not.
 - *Production environments*: Prepaid pricing is suitable for production environments where you have a good understanding of the workload's resource needs.
@@ -102,7 +102,7 @@ When you're considering prepaid commitments, we recommend that you commit to the
 - *Usage patterns*: Analyze the historical usage patterns of the component. If the usage is consistently high and stable, committing to the maximum consistent usage makes sense. But if the usage is highly variable or unpredictable, committing to the maximum consistent usage might not be feasible or cost-effective.
 - *Flexibility and scalability*: Consider the flexibility and scalability of the component. If the component can easily scale up or down based on demand, it might be more suitable to opt for flexible pricing models that allow you to adjust resources dynamically. This way, you can align your costs with the actual usage of the component.
 - *Engagement with the provider*: Communicate with the provider to gather information about its plans, roadmap, and commitment to the component or workload. This dialog provides valuable insights into the provider's long-term vision and commitment level.
-- *Cost analysis*: Perform a cost analysis to assess whether the potential savings of committing to a higher usage level outweigh the risks of not fully utilizing the commitment.
+- *Cost analysis*: Perform a cost analysis to assess whether the potential savings of committing to a higher usage level outweighs the risks of not fully utilizing the commitment.
 
 ### Evaluate and commit to available discounts
 
@@ -111,17 +111,17 @@ Assess and analyze the potential discounts that can be applied to a specific wor
 Try these tasks:
 
 - *Ask about trial offers*: Use a provider's trial periods or negotiate free or reduced rates to execute proofs of concept. This approach allows you to try out the services or products with limited financial risk, so you can assess their suitability for your workload before you commit to a purchase. Remember to review the terms and conditions of any trial periods or negotiated agreements.
-- *Review provider offerings*: Understand the discounts and pricing models that providers offer. Explore volume-based discounts, promotional offers, or discounts for long-term commitments. Discuss the available options that can meet the variability and flexibility requirements of your workload. Include exploring different pricing models, scaling options, or prepaid agreements.
+- *Review provider offerings*: Understand the discounts and pricing models that providers offer. Explore volume-based discounts, promotional offers, or discounts for long-term commitments. Discuss the available options that can meet the variability and flexibility requirements of your workload. Include information about different pricing models, scaling options, or prepaid agreements.
 - *Analyze usage and consumption*: Assess the workload's usage and consumption patterns to determine if the workload meets the eligibility criteria for specific discount programs. This analysis helps you identify the most suitable discounts for your workload.
 - *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
-- *Communicate with providers*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the providers know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask providers to discuss available discount options, such as product bundling products. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
+- *Communicate with providers*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the providers know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask providers to discuss available discount options, such as product bundling. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
 
 Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You've communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing. Here are the next actions you should take:
 
 - *Choose an appropriate prepaid plan*: Select a prepaid plan that covers the minimum capacity that the workload requires. Starting with the minimum commitment gives you flexibility while you still benefit from cost savings.
 
-  Having a clear understanding of the workload's minimum capacity requirements before you commit to a prepaid plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grow, you need understand your minimum consistent usage for each component you're committing to.
+  Having a clear understanding of the workload's minimum capacity requirements before you commit to a prepaid plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grow, you need to understand your minimum consistent usage for each component you're committing to.
 - *Increment prepaid commitments*: As the capacity of your workload grows, gradually increase your prepaid commitments. Start small and scale up. Increment scaling up based on the workload's actual usage.
 - *Renegotiate and consolidate*: Regularly renegotiate and normalize reservations and savings plans to align their ending time. This alignment allows you to consolidate them into a single line item on your bill, so it's easier to manage and optimize costs.
 
@@ -137,7 +137,7 @@ Here are key considerations when you're deciding whether to build or buy a solut
 
   Building a solution offers greater control over component selection and configuration. You can add customization to fit business needs and minimize unneeded features that might incur charges. Buying solutions provides preconfigured options with limited customization capabilities.
 - *Time to market*: Assess the urgency and time constraints for deploying the workload component or solution. Building a solution in-house might take longer because of development and testing, whereas buying a solution allows for quicker deployment.
-- *Technical expertise*: Building might require greater technical expertise to ensure proper configuration and maintenance over time. A custom solution requires effort upfront and over time. Buying a solution is often more user-friendly and requires less technical knowledge.
+- *Technical expertise*: Building might require greater technical expertise to ensure proper configuration and maintenance over time. A custom solution requires effort up front and over time. Buying a solution is often more user-friendly and requires less technical knowledge.
 - *Cost*: Evaluate the total cost of building a solution, including development resources, infrastructure, ongoing maintenance, and support. Compare the cost of building a solution with the cost of buying a solution. Include any support plans, licensing, or subscription fees. Buying a solution might provide more predictable pricing and potential discounts due to economies of scale.
 - *Support and updates*: Consider the availability of support and updates for both building and buying. Assess the level of technical expertise required for each option and the ease of accessing support resources.
 
