@@ -16,17 +16,19 @@ ms.custom:
 |[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, ata-platform-metricsmetrics, and logs that emit from the workload's infrastructure and code. |
 |---|---|
 
+**Related guide**: [Recommendations for designing and creating an observability framework](observability.md)
+
 This guide describes the recommendations for implementing observability in your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your observability platform. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
 
 ## Key design strategies
 
 To optimize telemetry for your workload, instrument your application to generate the following data:
 
-- [Logs](/azure/azure-monitor/logs/data-platform-logs.md) are timestamped records of discreet events. There are three forms of logs: plain text, structured, and binary.
+- [Logs](/azure/azure-monitor/logs/data-platform-logs) are timestamped records of discreet events. There are three forms of logs: plain text, structured, and binary.
 
-- [Distributed tracing logs](/azure/azure-monitor/app/distributed-trace-data.md) allow you to see the path of a request as it travels through different services and components.
+- [Distributed tracing logs](/azure/azure-monitor/app/distributed-trace-data) allow you to see the path of a request as it travels through different services and components.
 
-- [Metrics](/azure/azure-monitor/essentials/data-platform-metrics.md) are numerical values that describe an aspect of a system at a particular point in time.
+- [Metrics](/azure/azure-monitor/essentials/data-platform-metrics) are numerical values that describe an aspect of a system at a particular point in time.
 
 > [!NOTE]
 > You can use tools like Azure Application Insights, Dynatrace, and Elastic Application Performance Monitoring to automatically instrument your application. These tools make instrumentation easier, but they can also be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
@@ -176,17 +178,17 @@ The following list summarizes best practices for instrumenting a distributed app
 
 Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
 
-Profiling selections can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by using instrumentation might cause too much of a burden and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
+Profiling selections can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling might cause too much of a burden on the system and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
 
 ## Related links
 
 - [Application Insights overview](/azure/azure-monitor/app/app-insights-overview)
 - [What is autoinstrumentation for Azure Monitor Application Insights?](/azure/azure-monitor/app/codeless-overview)
-- [Azure Monitor Logs overview](/azure/azure-monitor/logs/data-platform-logs.md)
-- [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics.md)
+- [Azure Monitor Logs overview](/azure/azure-monitor/logs/data-platform-logs)
+- [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics)
 - [Collecting ETW Events for analysis Azure Monitor Logs](/azure/azure-monitor/agents/data-sources-event-tracing-windows)
 - [Recommendations for designing and creating an observability framework](observability.md)
-- [What is distributed tracing and telemetry correlation?](/azure/azure-monitor/app/distributed-trace-data.md)
+- [What is distributed tracing and telemetry correlation?](/azure/azure-monitor/app/distributed-trace-data)
 
 ## Community links
 
