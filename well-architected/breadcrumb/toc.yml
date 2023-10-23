@@ -12,19 +12,19 @@
       items:  
       - name: Reliability
         tocHref: /azure/well-architected/reliability/
-        topicHref: /azure/well-architected/reliability/overview
+        topicHref: /azure/well-architected/reliability/index
       - name: Security
         tocHref: /azure/well-architected/security/
-        topicHref: /azure/well-architected/security/overview
+        topicHref: /azure/well-architected/security/index
       - name: Cost Optimization
         tocHref: /azure/well-architected/cost-optimization/
-        topicHref: /azure/well-architected/cost-optimization/overview
+        topicHref: /azure/well-architected/cost-optimization/index
       - name: Operational Excellence
         tocHref: /azure/well-architected/operational-excellence/
-        topicHref: /azure/well-architected/operational-excellence/overview
+        topicHref: /azure/well-architected/operational-excellence/index
       - name: Performance Efficiency
         tocHref: /azure/well-architected/performance-efficiency/
-        topicHref: /azure/well-architected/performance-efficiency/overview
+        topicHref: /azure/well-architected/performance-efficiency/index
     - name: Workloads
       tocHref: /azure/well-architected/workloads/
       topicHref: /azure/well-architected/workloads
