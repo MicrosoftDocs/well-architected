@@ -157,7 +157,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 ### Policy definitions
 
 
-- Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
+Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
 
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
