@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:10](checklist.md)| Design your workload to align with business objectives and avoid unnecessary complexity or overhead. Use a practical and balanced approach to make design decisions that deliver the desired results. Contain your design to the necessities to reduce inefficiencies and potential problems. |
+|[RE:01](checklist.md)| Design your workload to align with business objectives and avoid unnecessary complexity or overhead. Use a practical and balanced approach to make design decisions that deliver the desired results. Contain your design to the necessities to reduce inefficiencies and potential problems. |
 |---|---|
 
 This guide describes the recommendations for minimizing unnecessary complexity and overhead to keep your workloads simple and efficient. Choose the best components to perform the necessary workload tasks to optimize the reliability of your workload. To lessen your development and management burdens, take advantage of efficiencies that platform-provided services offer. This design helps you create a workload architecture that's resilient, repeatable, scalable, and manageable.
@@ -28,6 +28,8 @@ A key tenet of designing for reliability is to keep things simple and efficient.
 
 You must justify every design decision with a business requirement. This design principle might seem obvious, but it's crucial for workload design. Does your application support millions of users, or a few thousand? Are there large traffic bursts, or a steady workload? What level of application outage is acceptable? Business requirements drive these design considerations.
 
+### Collaborative design exercises
+
 Work with stakeholders to:
 
 - **Define and assign a criticality level to your workload's user flows and system flows**. Focus your design on [critical flows](identify-flows.md) to help you determine the required components and the best approach to achieve the required resiliency level.
@@ -39,6 +41,8 @@ Work with stakeholders to:
 - **Use failure mode analysis** to identify single points of failure and potential risks. Consider whether you need to account for unlikely situations, for example a geographic area that experiences a major natural disaster that affects all the availability zones in the region. It's expensive and involves significant tradeoffs to mitigate these uncommon risks. Clearly understand your business's tolerance for risk. For more information, see [Recommendations for performing failure mode analysis](failure-mode-analysis.md).
 
 - **Define availability and recovery targets** for your flows to inform your workload's architecture. Business metrics include service-level objectives (SLOs), service-level agreements (SLAs), mean time to recover (MTTR), mean time between failure (MTBF), recovery time objectives (RTOs), and recovery point objectives (RPOs). Define target values for these metrics. This exercise might require compromise and mutual understanding between technology and business teams to ensure that each team's goals meet business objectives and are realistic. For more information, see [Recommendations for defining reliability targets](metrics.md).
+
+### Additional design recommendations
 
 You can perform the following recommendations without stakeholder engagement:
 
