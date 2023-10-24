@@ -27,27 +27,30 @@ This guide describes the recommendations for optimizing data costs for a workloa
 
 ## Key design strategies
 
-Within a specific workload, optimizing data costs refers to reducing the expenses associated with storing and managing data. There are various strategies and best practices to minimize data storage and processing costs. The goal is to align data costs with data priority. You need to assign cost tiers to types of data, based on their importance or frequency of access.
+Within a specific workload, you optimize data costs by reducing the expenses associated with storing and managing data. There are various strategies and best practices to minimize data storage and processing costs. The goal is to align data costs with data priority. You need to assign cost tiers to types of data based on their importance or frequency of access.
 
-The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these main costs drivers.
+The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these main cost drivers.
 
 ### Take an inventory of data
 
-Before you can optimize the cost of your data, you need to generate an inventory of data. Examine data access and determine its importance within your workload and its operations. Identify which data is accessed frequently which data is accessed less frequently.
+Before you can optimize the cost of your data, you need to generate an inventory of data. Examine data access and determine its importance within your workload and its operations. Identify which data is accessed frequently and which data is accessed less frequently.
 
 The following inventory actions can help you allocate storage resources effectively:
 
 - *Collect data access information:* Conduct a data audit to identify and catalog all data stores. Determine the value of data sets based on their importance to business operations, return on investment, and frequency of use. Gather access logs, usage metrics, or analytics from your data storage solutions.
+
 - *Identify data types:* Categorize data based on its type, such as personal data, financial data, intellectual property, or operational data. Understand the sensitivity and criticality of each data type.
+
 - *Identify access patterns:* Identify the patterns in data access, such as daily, weekly, or monthly usage patterns. You should understand latency, file sizes, and data freshness requirements associated with that data.
 
 ### Prioritize data
 
-Data prioritization is the process of categorizing and assigning importance levels to types of data, based on their sensitivity and criticality. Data priority should align with the importance of the environment. For example, production data is more important than preproduction data.
+Data prioritization is the process of categorizing and assigning importance levels to types of data based on their sensitivity and criticality. Data priority should align with the importance of the environment. For example, production data is more important than preproduction data.
 
 Assess the importance of various types of data to your workload by using these steps:
 
 1. *Define priority levels:* Establish priority levels for data (such as high, medium, and low) based on its value to the organization, regulatory requirements, and potential effect of data loss. The goal is to align data priority to the appropriate data solution.
+
 1. *Assign labels:* Label each data set with its sensitivity and criticality. You can apply labels at the row, column, or file level, depending on the data structure and usage. For databases, you can use a special tool to label and relate the sensitivity and criticality of data to specific rows and columns. This approach provides granular control over the management and access of data.
 
 ### Optimize data management
@@ -56,12 +59,14 @@ Data management is the process of storing, moving, and securing workload data. B
 
 #### Optimize data lifecycle management
 
-Data lifecycle management refers to the process of managing data throughout its entire lifecycle, from creation or acquisition to deletion or archival. It involves various stages, including data creation, storage, usage, sharing, retention, and disposal. The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies.
+Data lifecycle management is the process of managing data throughout its lifecycle. Stages of the lifecycle include data creation (or acquisition), storage, usage, sharing, retention, and disposal (deletion or archiving). The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies.
 
 Data storage has three critical cost components:
 
 - *Storage cost*: The expense associated with storing data, such as per gigabyte.
-- *Transaction cost*: Costs linked to data operations, such as write operations, read operations, and data retrieval (per gigabyte). It's important to note that reading and writing data might have different costs.
+
+- *Transaction cost*: Costs linked to data operations, such as write operations, read operations, and data retrieval (per gigabyte). Reading and writing data might have different costs.
+
 - *Latency cost*: The speed or delay in accessing the data.
 
 The following considerations are foundational to data lifecycle management:
@@ -69,10 +74,13 @@ The following considerations are foundational to data lifecycle management:
 - *Use data tiering:* The goal of data tiering is to align access and retention with the most cost-effective storage tier. Storage tiers range from frequent/immediate access (hot) to infrequent/delayed access (cold).
 
   It costs more to use a tier that doesn't align with data access and retention needs. For example, data that your application accesses frequently should be in hot storage. Data that your application accesses infrequently should be in cold storage. Effectively managing these aspects helps ensure efficient and cost-effective data storage.
+
 - *Consider compliance requirements:* Implementing data tiering requires careful consideration of compliance requirements and data governance policies. Compliance and legal requirements often drive data access and retention requirements. Establish data retention policies to ensure compliance with legal, regulatory, and business requirements.
+
 - *Define data lifecycle policies*. Data lifecycle policies specify when and how data should be moved between storage tiers based on predefined criteria. For example, a policy can state that data must be retained in the hot tier for 30 days, in the cool tier for 90 days, and in the archive tier for one year.
 
   These policies ensure that you keep data in the appropriate tier for the required duration. You should set the retention period based on factors such as legal requirements, industry regulations, or internal policies.
+
 - *Use automation*: Retention policies can trigger the movement of data between tiers. You should automate policies by using platform features before custom building of any solution.
 
   When the retention period for a particular tier expires, the policy can automatically move the data to the next lower-cost tier. For example, when the retention period for the hot tier ends, the policy can move the data to the cool tier. The policy ensures that data is continuously optimized based on its access patterns and cost requirements.
@@ -108,12 +116,15 @@ You must ensure that changes in data storage solutions adhere to these requireme
 Optimizing data storage means finding strategies to decrease the amount of data that you store, which can help reduce costs. By changing the accessibility of the data and implementing the following techniques, you can effectively optimize your data storage and minimize storage costs:
 
 - *Capture less data*: Take a closer look at the data you're capturing. Determine if all the data is necessary for your needs or if any of it is unnecessary. Modify your process, settings, or configurations to capture only the essential data.
+
 - *Compress data*: Compression saves money by reducing the size of data. It's most effective in write-once, read-never or read-rarely scenarios. It's more suitable for colder storage.
 
   :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Compression requires more CPU time during both compression and decompression of data.
 
 - *Delete unneeded data*: Implement policies to streamline the process of storing and keeping relevant information. Evaluate the retention period for backups and snapshots and delete data that you no longer need. You might want to have a process that leads up to eventual data deletion, such as first archiving data and enabling a soft-delete period. Always consider recoverability before deleting data.
+
 - *Deduplicate data*: Implement data deduplication techniques to eliminate redundant data. Deduplication reduces storage requirements by storing only unique data blocks, resulting in cost savings. Use hashing algorithms and comparison of data chunks. Regularly run deduplication processes to identify and eliminate duplicate copies of data.
+
 - *Optimize user behavior*: In workloads that collect user-generated data, educate users on the importance of efficient data storage. Encourage them to regularly review and delete unnecessary files and data. Implement storage quotas or pricing models that discourage excessive data storage.
 
 ### Optimize data replication
@@ -125,10 +136,13 @@ This redundancy helps improve the availability and resilience of data. It minimi
 To optimize data replication for cost optimization, consider the following guidelines:
 
 - *Evaluate data replication requirements*: Assess the specific needs of your workload and determine the level of data replication that it requires. Consider factors such as data criticality, recovery time objectives (RTOs), and recovery point objectives (RPOs).
+
 - *Choose the right replication strategy*: Select a replication technology that aligns with your cost optimization goals. Consider the service-level agreement (SLA) requirements for your workload.
 
   Evaluate options such as synchronous replication, asynchronous replication, or a combination of both. Base the decision on factors like data consistency requirements and network bandwidth considerations. Assess the level of availability needed for your workload and evaluate the need for zonal versus regional redundancy.
+
 - *Optimize network bandwidth*: Minimize network bandwidth usage by implementing compression and data deduplication techniques. These techniques can reduce the amount of data transferred during replication, which can save costs.
+
 - *Monitor and optimize replication frequency*: Regularly review and adjust the replication frequency based on the changing needs of your workload. Fine-tuning the replication frequency can help optimize costs by reducing unnecessary replication overhead.
 
 ### Optimize backups
@@ -138,13 +152,17 @@ Backups involve creating periodic snapshots or copies of data and storing them s
 Here are some techniques for optimizing backups:
 
 - *Data classification*: Classify your data based on its importance and prioritization for backup. It allows you to focus resources on backing up critical data while minimizing backup costs for data that's less important.
+
 - *Incremental backups*: Instead of performing full backups every time, consider implementing incremental backups. Incremental backups capture only changes made since the last backup, which can reduce storage and network bandwidth requirements.
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Incremental backups require more steps and time to restore data. You need to restore the full backup first and then apply each incremental backup in sequence until you reach the desired restore point.
 
 - *Backup compression*: Enable compression during the backup process to reduce the size of backup files. Compressed backups require less storage space, so you can save costs.
+
 - *Backup storage tiers*: Evaluate your backup retention policies and consider moving older backups to lower-cost storage tiers, such as cold storage or archive storage. It helps optimize costs by storing less frequently accessed backups in cost-effective storage options.
+
 - *Backup retention period*: Review and adjust the retention periods for your backups based on business requirements and compliance regulations. Maintaining backups for longer durations might lead to extra storage costs, so optimize the retention periods to align with your regulatory and compliance needs.
+
 - *Backup frequency*: Analyze the backup frequency for various types of data. Adjust the backup schedule based on the frequency of data changes and the importance of the data. These practices help eliminate unnecessary backups and reduce storage costs.
 
 ### Optimize file formats
@@ -154,6 +172,7 @@ File formats influence cost optimization by optimizing input/output (I/O) patter
 Here are contrasting examples of selecting a file format:
 
 - *Consider using Avro*: The Avro file format is a good choice when you're dealing with more write-heavy I/O patterns or when query patterns necessitate fetching multiple rows of records in their entirety. Avro's serialization and deserialization processes are efficient, making it compatible with message buses like Kafka that produce a series of events and messages in quick succession.
+
 - *Consider using Parquet and Optimized Row Columnar (ORC)*: The Parquet and ORC file formats excel in scenarios characterized by read-heavy I/O patterns or when the query patterns focus on specific columns of the records.
 
   Both formats are columnar storage, which means that data is stored column by column rather than row by row. Columnar storage allows for improved compression and efficient read operations. Only the required columns need to be fetched, so you avoid unnecessary I/O for irrelevant data.
@@ -167,9 +186,13 @@ By tailoring storage solutions to the specific needs and characteristics of the 
 Here are a few use cases:
 
 - *Switching databases*: You could consider switching to a database system that better suits your needs. For instance, if you've been using a relational database, you might explore the option of moving to a NoSQL database if your data is more document oriented or requires flexible schemas.
+
 - *Moving from a relational database to a flat file store*: In some cases, storing data in flat files instead of a traditional relational database can provide advantages such as simplicity and cost-effectiveness. Flat files are well suited for certain types of data, such as log files or data that doesn't require complex querying. For example, you can store binary images in a SQL database, but it's more cost-effective to store them in a storage service that's specifically for handling binary data.
+
 - *Moving from infrastructure as a service (IaaS) to platform as a service (PaaS)*: IaaS database solutions can be time-consuming and resource-intensive properties that divert technical team's attention from core tasks. The growth in data volume and the challenges of manual scaling, backups, and infrastructure maintenance can make a PaaS solution more cost-effective and efficient.
+
 - *Adding a cache*: Consider using a cache solution for caching complex query results to reduce resource usage on the main database server. Rightsizing the database server might help in optimizing the cost. With applicable use cases, consider using time to live (TTL) with the cached data to reduce the storage needs and reduce the cost.
+
 - *Query optimized versus data storage stores*: Query-optimized stores are designed for fast data retrieval and analysis. They focus on quick data ingestion and reads but not frequent updates. They're great for time-series data and rapid access to recent data but not for heavy transactional tasks.
 
   Data storage stores handle large volumes of flexible data, especially unstructured or semistructured data. Although query-optimized stores can support analytics, complex tasks might need specialized databases. They're best for storing lots of variable data like logs or user-generated content in scenarios like NoSQL use cases.
@@ -187,12 +210,15 @@ You can use a rule-based policy to transition blob data to the appropriate acces
 Here are some of the service's features:
 
 - *Monitoring*: You can use Azure Backup center as a single pane of glass to monitor your jobs and backup inventory on a day-to-day basis. Azure Backup center provides an interface to Azure Backup reports, which use Azure Monitor Logs and Azure workbooks.
+
 - *Reports*: Azure Backup reports offer the following capabilities:
   - Allocate and forecast consumed cloud storage.
   - Audit backups and restores.
   - Identify key trends at various levels of granularity
   - Gain visibility and insights into cost optimization opportunities for your backups.
+
 - *Reserved capacity*: [Azure Backup Storage](/azure/backup/backup-azure-reserved-pricing-optimize-cost) reserved capacity offers you a discount on capacity for backup data stored for the vault-standard tier when you commit to a reservation for either one year or three years. A reservation provides a fixed amount of backup storage capacity for the term of the reservation.
+
 - *Archive tier*: You can use Azure Backup to store backup data, including long-term retention (LTR) backup data, according to the retention needs that your organization's compliance rules define. In most cases, the older backup data is rarely accessed and is stored only for compliance needs. Azure Backup supports backup of LTR points in the [archive tier](/azure/backup/archive-tier-support), in addition to snapshots and the standard tier.
 
 **Storage solutions:** Azure has many storage solutions. They offer various features and capabilities to help optimize costs based on your specific requirements. Azure has guidance to help you [choose the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree).
