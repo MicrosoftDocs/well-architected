@@ -68,27 +68,27 @@ Identify and remove underutilized or unnecessary features in your application to
 
 ### Eliminate waste from workload resources
 
-Eliminating waste from workload resources means to remove any unused or underutilized resources in a workload across its various environments. It also includes optimizing idle resources in disaster recovery environments.
+Remove any unused or underutilized resources in a workload across its various environments to eliminate waste from workload resources. You can also optimize idle resources in disaster recovery environments to eliminate waste.
 
 **Remove unused workload resources.** Unused resources are deployed services your workload or operations processes don't use. These resources might be long-term idled, orphaned, or forgotten. They provide no return on investment, and you should remove them. Common causes of resources waste include:
 
-- Storage accounts
-- Snapshots
-- IP addresses
-- Network firewalls
-- Alerts
-- Proof of concept
-- Demo builds
-- Temporary triage environments
-- Temporary testing environments
-- Feature decommissioning
-- Environment decommissioning
+- Storage accounts.
+- Snapshots.
+- IP addresses.
+- Network firewalls.
+- Alerts.
+- Proof of concept.
+- Demo builds.
+- Temporary triage environments.
+- Temporary testing environments.
+- Feature decommissioning.
+- Environment decommissioning.
 
 To remove unused resources in a workload, consider these steps:
 
-1. *Take an inventory*: Conduct a thorough inventory of all resources within the workload across environments.
+1. *Take inventory*: Conduct a thorough inventory of all resources within the workload across environments.
 
-1. *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you delete a virtual machine, but its associated storage account isn't. Review your resources to identify resources that are no longer needed or have become orphaned.
+1. *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you delete a virtual machine, but its associated storage account isn't removed. Review your workload to identify resources that are no longer needed or are orphaned.
 
 1. *Remove idle component*: There’s typically a cost associated with a deployed resource. Even if the resource allows you to stop or deallocate, you might be paying for the resource. Consider removing idle resources. If you need the data, back up the data first and then remove the resource. You’re better off redeploying the resource and restoring the data than allowing the resource to remain idle.
 
