@@ -114,7 +114,7 @@ Optimizing data storage means finding strategies to decrease the amount of data 
 
 - *Delete unneeded data*: Implement policies to streamline the process of storing and keeping relevant information. Evaluate the retention period for backups and snapshots and delete data that you no longer need. You might want to have a process that leads up to eventual data deletion, such as first archiving data and enabling a soft-delete period. Always consider recoverability before deleting data.
 - *Deduplicate data*: Implement data deduplication techniques to eliminate redundant data. Deduplication reduces storage requirements by storing only unique data blocks, resulting in cost savings. Use hashing algorithms and comparison of data chunks. Regularly run deduplication processes to identify and eliminate duplicate copies of data.
-- *Optimize user behavior*: In workloads that collect user-generated datae educate users on the importance of efficient data storage. Encourage them to regularly review and delete unnecessary files and data. Implement storage quotas or pricing models that discourage excessive data storage.
+- *Optimize user behavior*: In workloads that collect user-generated data, educate users on the importance of efficient data storage. Encourage them to regularly review and delete unnecessary files and data. Implement storage quotas or pricing models that discourage excessive data storage.
 
 ### Optimize data replication
 
@@ -186,18 +186,22 @@ You can use a rule-based policy to transition blob data to the appropriate acces
 
 Here are some of the service's features:
 
-- *Monitoring*: You can use Backup Center as a single pane of glass to monitor your jobs and backup inventory on a day-to-day basis. Backup Center provides an interface to Backup Reports, which uses Azure Monitor Logs and Azure Workbooks.
-- *Reports*: Backup Reports offers the following capabilities. You can allocate and forecast cloud storage consumed. You can audit backups and restores. You can identify key trends at various levels of granularity, and gain visibility and insights into cost optimization opportunities for your backups.
+- *Monitoring*: You can use Azure Backup center as a single pane of glass to monitor your jobs and backup inventory on a day-to-day basis. Azure Backup center provides an interface to Azure Backup reports, which use Azure Monitor Logs and Azure workbooks.
+- *Reports*: Azure Backup reports offer the following capabilities:
+  - Allocate and forecast consumed cloud storage.
+  - Audit backups and restores.
+  - Identify key trends at various levels of granularity
+  - Gain visibility and insights into cost optimization opportunities for your backups.
 - *Reserved capacity*: [Azure Backup Storage](/azure/backup/backup-azure-reserved-pricing-optimize-cost) reserved capacity offers you a discount on capacity for backup data stored for the vault-standard tier when you commit to a reservation for either one year or three years. A reservation provides a fixed amount of backup storage capacity for the term of the reservation.
-- *Archive tier*: Customers rely on Azure Backup to store backup data, including their long-term retention (LTR) backup data, according to the retention needs defined by the organization's compliance rules. In most cases, the older backup data is rarely accessed and is only stored for compliance needs. Azure Backup supports backup of LTR points in the [archive tier](/azure/backup/archive-tier-support), in addition to snapshots and the standard tier.
+- *Archive tier*: You can use Azure Backup to store backup data, including long-term retention (LTR) backup data, according to the retention needs that your organization's compliance rules define. In most cases, the older backup data is rarely accessed and is stored only for compliance needs. Azure Backup supports backup of LTR points in the [archive tier](/azure/backup/archive-tier-support), in addition to snapshots and the standard tier.
 
 **Storage solutions:** Azure has many storage solutions. They offer various features and capabilities to help optimize costs based on your specific requirements. Azure has guidance to help you [choose the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree).
 
-It's important to assess your data access patterns, retention needs, and performance requirements to choose the most suitable storage solution and configuration. Additionally, regularly monitoring and optimizing your storage usage with tools like Azure Advisor can help you further optimize costs
+It's important to assess your data access patterns, retention needs, and performance requirements to choose the most suitable storage solution and configuration. Regularly monitoring and optimizing your storage usage by using tools like Azure Advisor can help you further optimize costs.
 
 ## Organizational alignment
 
-The Cloud Adoption Framework provides guidance for recommendations optimizing data costs for organizational analytics platforms.
+The Cloud Adoption Framework provides guidance for optimizing data costs for organizational analytics platforms.
 
 For more information, see [Data lifecycle management](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/govern-lifecycle).
 
