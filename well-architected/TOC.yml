@@ -170,7 +170,7 @@
             - name: OE:07 Observability framework
               href: operational-excellence/observability.md
             - name: OE:07 Instrument an application
-              href: operational-excellence/application-instrumentation.md
+              href: operational-excellence/instrument-application.md
             - name: OE:08 Emergency response
               href: operational-excellence/emergency-response.md
             - name: OE:09 Task automation
