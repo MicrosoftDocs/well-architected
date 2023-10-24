@@ -97,7 +97,7 @@ productDirectory:
     - title: Azure Cosmos DB
       summary: Fast NoSQL database with open APIs for any scale
       imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
-      url: ./cosmos-db/reliability.md
+      url: cosmos-db.md
       azureCategories:
         - databases
         - iot

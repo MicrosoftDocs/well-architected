@@ -52,7 +52,7 @@ You can perform the following recommendations without stakeholder engagement:
 
 - **Abstract infrastructure away from domain logic**. Ensure that domain logic doesn't interfere with infrastructure-related functionality, such as messaging or persistence.
 
-- **Offload cross-cutting concerns to a separate service**. For example, if several services need to authenticate requests, you can move this functionality into its own service. Then you can evolve the authentication service. For example, you can add a new authentication flow without touching any of the services that use it.
+- **Offload cross-cutting concerns to a separate service**. Minimize the need to duplicate code across different functions, prefer reusing services with well-defined interfaces that can be easily consumed by different components. For example, if several services need to authenticate requests, you can move this functionality into its own service. Then you can evolve the authentication service. For example, you can add a new authentication flow without touching any of the services that use it.
 
 - **Evaluate the suitability of common patterns and practices** for your needs. Avoid following trends or recommendations that might not be best for your context or requirements. For example, microservices aren't the best option for every application because they can introduce complexity, overhead, and dependency issues.
 

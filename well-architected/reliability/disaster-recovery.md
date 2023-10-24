@@ -107,7 +107,7 @@ A DR testing practice is as important as a well-developed DR plan. Many industri
 
 Follow these recommendations for successful DR drills:
 
--   Perform at least one production DR drill per year. Tabletop (dry run) drills or nonproduction drills help ensure that the involved parties are familiar with their roles and responsibilities. These drills also help operators build familiarity ("muscle memory") by following recovery processes. But only production drills truly test the validity of the DR plan and the RTO and RPO metrics.
+-   Perform at least one production DR drill per year. Tabletop (dry run) drills or nonproduction drills help ensure that the involved parties are familiar with their roles and responsibilities. These drills also help operators build familiarity ("muscle memory") by following recovery processes. But only production drills truly test the validity of the DR plan and the RTO and RPO metrics. Use your production drills to time recovery processes for components and flows to ensure that the RTO and RPO targets that have been defined for your workload are achievable. For functions that are out of your control, like DNS propagation, ensure that the RTO and RPO targets for the flows that involve those functions account for possible delays beyond your control.
 
 -   Use tabletop drills not only to build familiarity for seasoned operators but also to educate new operators about DR processes and procedures. Senior operators should take time to let new operators perform their role and should watch for improvement opportunities. If a new operator is hesitant or confused by a step in a procedure, review that procedure to ensure that it's clearly written.
 
