@@ -169,13 +169,9 @@
               href: operational-excellence/workload-supply-chain.md
             - name: OE:07 Observability framework
               href: operational-excellence/observability.md
-<<<<<<< HEAD
             - name: OE:07 Instrument an application
               href: operational-excellence/application-instrumentation.md
-            - name: OE:08 Respond to emergencies
-=======
             - name: OE:08 Emergency response
->>>>>>> 33def195ec0672f45e592c89adb188aa7bac4e10
               href: operational-excellence/emergency-response.md
             - name: OE:09 Task automation
               href: operational-excellence/automate-tasks.md
