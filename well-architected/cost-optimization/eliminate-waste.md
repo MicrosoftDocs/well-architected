@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:07](checklist.md)| Eliminate waste. Use only what you need in workload components and application features. When possible, use prepaid reservations and savings plans. |
 |---|---|
 
-This guide describes the recommendations for eliminating workload waste. The guidance applies to an existing workload, not one in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. Remove unused and underused workload components to reduce waste. It's also important to spot and address underused, prepaid commitments to further eliminate wastage. To ensure the highest return on investment, workload components and application features should actively deliver value, and prepaid reservations and savings plans should be maximized.
+This guide describes the recommendations for eliminating workload waste. The guidance applies to an existing workload, not one in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. Remove unused and underused workload components and address underused, prepaid commitments to eliminate waste. To ensure the highest return on investment, workload components and application features should actively deliver value and prepaid reservations and savings plans should be maximized.
 
 **Definitions**
 
@@ -26,11 +26,11 @@ This guide describes the recommendations for eliminating workload waste. The gui
 
 ## Key strategies
 
-Eliminate waste by using only the necessary resources, whether it's workload components, application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
+Eliminate waste by using only the necessary resources, such as workload components, application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
 
 ### Eliminate waste from the application
 
-Identify and remove underutilized or unnecessary features in your application to reduce costs and reallocate resources more efficiently. Evaluate potential waste based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
+Identify and remove underutilized or unnecessary features in your application to reduce costs and reallocate resources more efficiently. Evaluate potential waste based on the value of application features to users and their alignment with business goals. An application feature refers to a functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that don't provide value to the workload. Removing unnecessary features lets you allocate resources more efficiently to features that bring more value to the users and the business.
 
 **Evaluate the value.** To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
 
@@ -42,29 +42,29 @@ Identify and remove underutilized or unnecessary features in your application to
 
 - *Differentiation*: Assess whether the feature provides a unique selling point or competitive advantage compared to other applications in the market.
 
-**Evaluate the cost.** Understanding the cost associated with each feature is essential for effective resource allocation and optimization. The cost evaluation involves considering various aspects, such as:
+**Evaluate the cost.** It's essential that you understand the cost associated with each feature for effective resource allocation and optimization. Evaluation costs by considering various aspects, such as:
 
 - *Development effort*: Assess the time, resources, and expertise required to develop and maintain the feature or surrounding features. Underutilized features often become a key source of technical debt.
 
 - *Maintenance and support*: Consider the ongoing costs associated with maintaining and supporting the feature, including bug fixes, security updates, and troubleshooting.
 
-- *Infrastructure and resource utilization*: Evaluate the effect of the feature on infrastructure requirements, including server resources, storage, and bandwidth.
+- *Infrastructure and resource utilization*: Evaluate the effect of the feature on infrastructure requirements, like server resources, storage, and bandwidth.
 
 - *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
 
 - *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
 
-**Seek input.** Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to people like product managers, software developers, and business analysts. Collect data and study it to understand how a feature affects your business goals. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
+**Seek input.** Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to product managers, software developers, and business analysts. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
 
-**Determine the future of the feature**. Based on the analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature not providing a return on investment.
+**Determine the future of the feature.** Based on your analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature that doesn't provide a return on investment:
 
-- *Remove the application feature.* Consider the planned end of life of an application feature based on data. Reasons for removing the feature might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for removing the identified features. It might involve refactoring the code, updating dependencies, or reorganizing the user interface.
+- *Remove the application feature.* Consider the planned end of life of an application feature based on data. Reasons for removing the feature might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for the removal, which might involve refactoring the code, updating dependencies, or reorganizing the UI.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, security, operations, and security.
+> ![Risk icon](../_images/risk.svg) **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, operations, and security in your application.
 
-- *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
+- *Reinvest*: Some application features might not add enough value in their current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
 
-- *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
+- *Monetize*: Turn application features into a revenue-generating opportunity via monetization. Sometimes features provide value to users but aren’t worth the current investment. Explore opportunities to monetize these features, such as offering them as separate paid add-ons or licensing them to other companies.
 
 ### Eliminate waste from workload resources
 
