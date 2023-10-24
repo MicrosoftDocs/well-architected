@@ -20,8 +20,8 @@ This guide describes the recommendations for designing a reliable monitoring and
 
 | Term | Definition |
 |---------|---------|
-| Resource logs | Data that a system generates. It provides information about the state of the system. |
 | Metrics | Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time. |
+| Resource logs | Data that a system generates. It provides information about the state of the system. |
 | Traces | Data that provides information about the path that a request travels through services and components. |
 
 ## Key design strategies

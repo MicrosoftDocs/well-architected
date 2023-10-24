@@ -21,6 +21,8 @@ This guide describes the recommendations for getting the best rates from supplie
 
 ## Key strategies
 
+Finding and using the best rates is about actively searching for and choosing the most cost-effective prices for resources and licenses. This review should consider factors like price differences in different regions, various pricing models (like pay-as-you-go or fixed rates), and special deals like long-term reservations or savings plans. It's also important to think about how software licenses can be moved between platforms, corporate discount plans, and price sheets.
+
 A small percentage rate change on services you use a lot provides significant cost optimization. To get the best rates on the components and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from vendors and choose the right discounts based on your workload needs. Regularly check for discounts and optimize any licensing fees, and determine if it's more cost effective to build or buy new workload solutions.
 
 ### Create an ordered expenses list
@@ -29,7 +31,7 @@ Understanding the workload is the first step to finding and using the best rates
 
 - *Take inventory*: List all the components of your workload, including infrastructure, cloud resources, licenses, third-party services, and any other expenses related to the workload.
 - *Understand spending*: Gain a clear understanding of the current spend for each item in the inventory list. It helps you identify what you are paying for and where most your expenses lie.
-- *Create an ordered list*: Create an ordered list of workload expenses, starting from the most expensive components and working down the list. It allows you to prioritize your optimization efforts and focus on the areas that have the highest impact on cost.
+- *Create an ordered list*: Create an ordered list of workload expenses, starting from the most expensive components and working down the list. It allows you to prioritize your optimization efforts and focus on the areas that have the highest effect on cost.
 
 By following these steps, you gain a comprehensive understanding of your workload's cost structure and identify areas where you can optimize rates.
 
@@ -61,7 +63,7 @@ To ensure effective workload cost optimization, it's crucial for the development
 
 - *Identify cost optimization opportunities*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like utilization patterns, scalability, and workload requirements.
 - *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
-- *Evaluate different options*: Assess different cost optimization options, such as pay-as-you-go versus prepaid plans. Evaluate the pros and cons of each option in terms of cost savings and impact on performance. Evaluate the different performance tiers in each service and the pricing differences between them.
+- *Evaluate different options*: Assess different cost optimization options, such as pay-as-you-go versus prepaid plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the different performance tiers in each service and the pricing differences between them.
 
 #### Determine component permanence
 

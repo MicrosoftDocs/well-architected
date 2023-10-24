@@ -101,11 +101,7 @@ If you include background jobs in an existing compute instance, consider how the
 
 - **Scalability**: Background tasks likely have different scalability requirements compared to the UI and the interactive parts of the application. You might need to scale the UI to meet peaks in demand. Outstanding background tasks can run during less busy times and with fewer compute instances.
 
-<<<<<<< HEAD
-- **Resiliency**:  If a compute instance that only hosts background tasks fails, it might not fatally affect the entire application. The requests for these tasks can be queued or postponed until the task is available. If the compute instance or tasks can restart within an appropriate interval, it might not affect the application users.
-=======
-- **Resiliency**: If a compute instance that only hosts background tasks fails, it might not fatally affect the entire application. The requests for these tasks can be queued or postponed until the task is available. If the compute instance or tasks can restart within an appropriate interval, it might not affect the application users.
->>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
+- **Resiliency**: If a compute instance that hosts only background tasks fails, it might not fatally affect the entire application. The requests for these tasks can be queued or postponed until the task is available. If the compute instance or tasks can restart within an appropriate interval, it might not affect the application users.
 
 - **Security**: Background tasks might have different security requirements or restrictions compared to the UI or other parts of the application. Use a separate compute instance to specify a different security environment for the tasks. To maximize security and separation, you can also use patterns such as Gatekeeper to isolate the background compute instances from the UI.
 

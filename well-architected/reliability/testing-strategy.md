@@ -21,10 +21,11 @@ This guide describes the recommendations for designing a reliability testing str
 | Term | Definition  |
 |---------|---------|
 | Availability | The amount of time that an application workload runs in a healthy state without significant downtime. |
-| Resiliency | An application workload's ability to withstand and recover from failure modes. |
-| Recoverability | A synonym for resiliency. |
 | Chaos engineering | The practice of subjecting applications and services to real-world stresses and failures. The goal of chaos engineering is to build and validate resilience to unreliable conditions and missing dependencies. |
 | Fault injection | The act of introducing an error to a system to test the resiliency of the system. |
+| Recoverability | A synonym for resiliency. |
+| Resiliency | An application workload's ability to withstand and recover from failure modes. |
+
 
 ## Key design strategies
 
@@ -98,12 +99,12 @@ Fault-injection testing follows the principles of chaos engineering by highlight
 
 Chaos engineering is an integral part of workload team culture and an ongoing practice, not a short-term tactical effort in response to a single outage. Follow this standard method when you design your chaos experiments:
 
-1. Start with a hypothesis.
-1. Measure baseline behavior.
-1. Inject a fault or faults.
-1. Monitor the resulting behavior.
-1. Document the process and observations.
-1. Identify and act on the result.
+1. Start with a hypothesis. Each experiment should have a clear goal, like testing a given flow's ability to withstand the loss of a particular component.
+1. Measure baseline behavior. Ensure that you have consistent reliability and performance metrics for the flow and components involved in a given experiment to compare with the degraded state when running your experiment.
+1. Inject a fault or faults. The experiment should intentionally target specific components that can be recovered quickly and you should have an informed expectation of the effect that the fault injection will cause to help control the experiment's blast radius.
+1. Monitor the resulting behavior. Gather telemetry about the individual flow components and the end-to-end flow behavior that the experiment targets to properly understand the effects of the fault. Compare the metrics that you gather with the baseline metrics for a full picture of the fault injection results.
+1. Document the process and observations. Keeping detailed records of your experiments will inform the future decisions about the workload design, ensuring that you address the gaps that have been revealed over time.
+1. Identify and act on the result. Plan for remediation steps that can be added to your workload backlog as improvements. Ensure that design improvement plans are reviewed and tested in nonproduction environments according to the same processes as other deployments.
 
 Periodically validate your process, architecture choices, and code to quickly detect technical debt, integrate new technologies, and adapt to changing requirements.
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for establishing and exposing performance targets
+title: Recommendations for defining performance targets
 description: Learn how to drive continuous improvement by setting and exposing performance targets for your workload. Identify workload objectives, key metrics, and performance targets. Monitor performance and evaluate customer feedback to drive improvement.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for defining performance targets 
+# Recommendations for defining performance targets
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -20,16 +20,15 @@ This guide describes the recommendations for establishing and exposing performan
 
 |  Term|                  Definition|
 |-|-|
-|Data flow|             The movement of data within a workload.|
+|Data flow|             The movement of data within a system or between systems.|
 |Dependency            |A component that a workload relies on.|
 |Flow|                  In a workload, a sequence of operations that performs a specific function. It involves the movement of data and the running of processes between components of the workload.|
 |Metrics|              Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time.
 |Performance targets|   Metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range.|
-|User flow             |The sequence that a user follows to accomplish a task.|
+|User flow             |The paths or sequences of actions that users take within an application or system.|
 |Workflow          |    The sequence of steps that a workload runs to accomplish a task.|
 
-
-## Key strategies
+## Key design strategies
 
 Establishing performance targets is an essential step for achieving workload performance efficiency. Performance targets define the desired level of performance for your workload and help you gauge its effectiveness in meeting those objectives. Performance targets provide a benchmark to measure and compare a workload's efficiency. This benchmark can help you highlight improvement areas. The targets also align tasks with your organization's objectives and enhance business outcomes. Additionally, performance targets offer guidance in resource allocation, helping you ensure that workloads can adapt to varying demands while maintaining optimal performance.
 
@@ -37,9 +36,9 @@ Establishing performance targets is an essential step for achieving workload per
 
 Set performance targets before you deploy your workload. For a workload in a design, performance targets require research. Conduct market research, competitive analysis, and surveys to generate your performance target ranges. For a production workload that has no performance targets, use production data and customer feedback to establish performance targets.
 
-### Understand workload requirements
+### Determine performance requirements
 
-Understanding workload requirements means being aware of essential performance metrics like response time, throughput, and latency that are critical for your application. Aligning these performance targets with your organization's business goals ensures the workload meets the desired standards, whether for a best-in-class or average product. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use.
+Determining performance requirements is about identifying essential performance metrics like response time, throughput, and latency that are critical for your application. Aligning these performance targets with your organization's business goals ensures the workload meets the desired standards, whether for a best-in-class or average product. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use.
 
 When setting performance goals, it's important to align the organization's objectives with the distinct needs of the user base. Users ultimately determine the success of performance, emphasizing the need to align performance targets with their expectations. This balance ensures that performance targets capture the intended user experience and the overall efficiency of the workload. To comprehensively gauge and optimize workload performance, you should consider setting performance targets for the following list:
 
@@ -81,7 +80,7 @@ After you identify the key metrics, you need to specify targets or thresholds fo
 
 ### Document and expose performance target
 
-Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose performance targets, consider these recommendations:
+Documenting and exposing performance targets is about recording all performance targets in a centralized location. Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose performance targets, consider these recommendations:
 
 - *Document performance targets*: Document all performance targets. Ensure that all performance targets are documented in a centralized location, easily accessible by both development and operations teams. It promotes alignment and aids in real-time decision-making.
   
@@ -91,7 +90,7 @@ Meeting performance targets is a shared responsibility between development and o
 
 ### Evaluate customer feedback
 
-Evaluating customer feedback involves actively seeking out and analyzing the responses and suggestions of your customers. Actively collecting and analyzing customer feedback offers valuable insights into their needs and expectations. Regular communication helps in adjusting performance targets in line with changing preferences and tech trends. By focusing on customer needs, the workload not only aligns with technical benchmarks but also undergoes continuous refinement. This approach, emphasizing customer satisfaction, ensures that the workload remains relevant and successful in the long run.
+Evaluating customer feedback involves actively seeking out and analyzing the responses and suggestions of your customers. Actively collecting and analyzing customer feedback offers valuable insights into their needs and expectations. Regular communication helps in adjusting performance targets in line with changing preferences and tech trends. A focus on customer needs means that the workload not only aligns with technical benchmarks but also undergoes continuous refinement. This approach, emphasizing customer satisfaction, ensures that the workload remains relevant and successful in the long run.
 
 ## Azure facilitation
 

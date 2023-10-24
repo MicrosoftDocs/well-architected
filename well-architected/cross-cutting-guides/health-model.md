@@ -68,24 +68,27 @@ Use black-box monitoring to measure platform services and the resulting customer
 
 The health model should be able to surface the respective health of critical system flows or key subsystems to ensure that appropriate operational prioritization is applied. For example, the health model should be able to represent the current state of the user sign-in transaction flow.
 
-### Create good health probes
+## Create good health probes
 
 The health and performance of an application can degrade over time. That degradation might not be noticeable until the application fails.
 
-Implement probes or check functions. Run them regularly from outside the application. These checks can be as simple as measuring response time for the application as a whole, for individual parts of the application, for specific services that the application uses, or for separate components.
+Implement probes or check functions. Run them regularly from outside the application. These checks can be as simple as measuring response time for the application as a whole, for individual parts of the application, for specific services that the application uses, or for separate components. Check functions can run processes to ensure that they produce valid results, measure latency and check availability, and extract information from the system.
 
-Check functions can run processes to ensure that they produce valid results, measure latency and check availability, and extract information from the system.
+These probes can be involved as part of health checks performed by load balancers or can be invoked from an external watchdog service. A watchdog service aggregates health checks from across multiple components in the workload. Watchdogs can also host code that can perform remediation for known health conditions.
 
-:::image type="icon" source="../_images/github.png" border="false"::: The [HealthProbesSample](https://github.com/mspnp/samples/tree/master/Reliability/HealthProbesSample) sample shows how to set up health probes. It provides an Azure Resource Manager template to set up the infrastructure. A load balancer accepts public requests and load balances to a set of virtual machines. The health probe is set up so that it can check for service's path */Health*.
+A pair of health probes can be used to distinguish two distinct application states:
+
+- *Liveness* is an indication if the application code should continue to run or needs to be rebooted. A failure response (or lack of response) from this probe means the watchdog process should terminate the application and restart it. Applications need to be given enough time to fully start, so ensure your watchdog process doesn't aggressively trigger on liveness failures while the application is initializing.
+
+- *Readiness* is an indication if the application should continue to receive usage. A failure response (or lack of response) from this probe means to hold off on sending traffic to this component. The component is running, but is not yet ready to receive traffic. For example, the application is healthy but is waiting on a dependency, such as a database, to be available before the application can accept traffic.
 
 ## Related links
 
+- For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
 - For information on monitoring metrics, see [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 - For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview).
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Monitoring best practices for reliability](./monitor-best-practices.md)
-
-Go back to the main article: [Monitoring for reliability](monitor-checklist.md)
+> [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)

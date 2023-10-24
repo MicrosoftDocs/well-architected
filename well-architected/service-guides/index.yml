@@ -97,7 +97,7 @@ productDirectory:
     - title: Azure Cosmos DB
       summary: Use a fast NoSQL database with open APIs for any scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
-      url: ./cosmos-db/reliability.md
+      url: cosmos-db.md
       azureCategories:
         - databases
         - iot
@@ -112,7 +112,7 @@ productDirectory:
     - title: Azure Database for PostgreSQL
       summary: Use a managed PostgreSQL database service for app developers.
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
-      url: azure-db-postgresql-well-architected-framework.md
+      url: postgresql.md
       azureCategories:
         - databases
         - hybrid

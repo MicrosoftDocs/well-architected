@@ -105,8 +105,8 @@ SQL Database provides a range of [built-in security and compliance](/azure/azure
 
 > [!div class="checklist"]
 > - Understand [logical servers](/azure/azure-sql/database/logical-servers) and how you can administer logins for multiple databases when appropriate.
-> - Enable [Azure AD authentication with Azure SQL](/azure/azure-sql/database/authentication-aad-configure). Azure AD authentication enables simplified permission management and centralized identity management.
-> - Azure SQL logical servers should have [an Azure Active Directory administrator provisioned](/azure/azure-sql/database/authentication-aad-configure#azure-ad-admin-with-a-server-in-sql-database). 
+> - Enable [Microsoft Entra authentication with Azure SQL](/azure/azure-sql/database/authentication-aad-configure). Microsoft Entra authentication enables simplified permission management and centralized identity management.
+> - Azure SQL logical servers should have [a Microsoft Entra administrator provisioned](/azure/azure-sql/database/authentication-aad-configure#azure-ad-admin-with-a-server-in-sql-database). 
 > - Verify contact information email address in your Azure Subscription for service administrator and co-administrators is reaching the correct parties inside your enterprise. You don't want to miss or ignore important security notifications from Azure!
 > - Review the [Azure SQL Database connectivity architecture](/azure/azure-sql/database/connectivity-architecture). Choose the `Redirect` or `Proxy` [connection policy](/azure/azure-sql/database/connectivity-architecture#connection-policy) as appropriate.
 > - Review [Azure SQL Database firewall rules](/azure/azure-sql/database/firewall-configure).
@@ -125,7 +125,7 @@ SQL Database provides a range of [built-in security and compliance](/azure/azure
 | Advanced Threat Protection | Detect anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases with [Advanced Threat Protection for Azure SQL Database](/azure/azure-sql/database/threat-detection-configure). Advanced Threat Protection integrates its alerts with [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/). |
 | Auditing | Track database events with [Auditing for Azure SQL Database](/azure/azure-sql/database/auditing-overview).|
 | Managed identities | Consider configuring [a user-assigned managed identity (UMI)](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity). [Managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) eliminate the need to manage credentials in code. |
-| Azure AD-only authentication | Consider disabling SQL-based authentication and [allowing only on Azure AD authentication](/azure/azure-sql/database/authentication-aad-configure). |
+| Microsoft Entra-only authentication | Consider disabling SQL-based authentication and [allowing only on Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-configure). |
 
 
 ### Policy definitions

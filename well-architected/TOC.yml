@@ -5,7 +5,7 @@
       items:
       - name: What's new
         href: whats-new.md
-      - name: What is WAF
+      - name: What is the Well-Architected Framework
         href: what-is-well-architected-framework.md
     - name: Pillars
       items: 
@@ -25,7 +25,7 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
-            - name: RE:01 Identify and rate flows
+            - name: RE:01 Critical flows
               href: reliability/identify-flows.md
             - name: RE:02 Failure mode analysis
               href: reliability/failure-mode-analysis.md
@@ -49,7 +49,7 @@
               href: reliability/self-preservation.md
             - name: RE:07 Testing
               href: reliability/testing-strategy.md
-            - name: RE:08 Disaster recovery strategy  
+            - name: RE:08 Disaster recovery  
               href: reliability/disaster-recovery.md
             - name: RE:09 Monitoring and alerting
               href: reliability/monitoring-alerting-strategy.md
@@ -69,15 +69,15 @@
           items:
             - name: Security patterns            
               href: security/design-patterns.md
-            - name: SE:01 Establish a baseline
+            - name: SE:01 Security baseline
               href: security/establish-baseline.md
-            - name: SE:02 Secure a development lifecycle
+            - name: SE:02 Secured development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
               href: security/threat-model.md              
             - name: SE:03 Data classification
               href: security/data-classification.md
-            - name: SE:04 Segmentation strategy
+            - name: SE:04 Segmentation
               href: security/segmentation.md
             - name: SE:05 Identity and access management
               href: security/identity-access.md
@@ -109,33 +109,33 @@
           items:
             - name: Cost optimization patterns
               href: cost-optimization/design-patterns.md
-            - name: CO:01 Create a culture of financial responsibility
+            - name: CO:01 Financial responsibility
               href: cost-optimization/create-culture-financial-responsibility.md
-            - name: CO:02 Create a cost model
+            - name: CO:02 Cost model
               href: cost-optimization/cost-model.md
-            - name: CO:03 Collect and review cost data
+            - name: CO:03 Cost data and reporting
               href: cost-optimization/collect-review-cost-data.md
-            - name: CO:04 Set spending guardrails
+            - name: CO:04 Spending guardrails
               href: cost-optimization/set-spending-guardrails.md
-            - name: CO:05 Get the best rates
+            - name: CO:05 Rate optimization
               href: cost-optimization/get-best-rates.md
-            - name: CO:06 Align usage to billing increments
+            - name: CO:06 Usage and billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
-            - name: CO:07 Eliminate waste
+            - name: CO:07 Eliminating waste
               href: cost-optimization/eliminate-waste.md
-            - name: CO:08 Optimize environment costs
+            - name: CO:08 Environment costs
               href: cost-optimization/optimize-environment-costs.md
-            - name: CO:09 Optimize flow costs
+            - name: CO:09 Flow costs
               href: cost-optimization/optimize-flow-costs.md
-            - name: CO:10 Optimize data costs
+            - name: CO:10 Data costs
               href: cost-optimization/optimize-data-costs.md
-            - name: CO:11 Optimize code
+            - name: CO:11 Code
               href: cost-optimization/optimize-code.md
-            - name: CO:12 Optimize scaling
+            - name: CO:12 Scaling
               href: cost-optimization/optimize-scaling.md
-            - name: CO:13 Optimize personnel time
+            - name: CO:13 Personnel time
               href: cost-optimization/optimize-personnel-time.md
-            - name: CO:14 Consolidate resources and responsibilities
+            - name: CO:14 Resources and responsibilities
               href: cost-optimization/consolidation.md
       - name: Operational Excellence
         items: 
@@ -151,33 +151,33 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: OE:01 Foster a DevOps culture
+            - name: OE:01 DevOps culture
               href: operational-excellence/devops-culture.md
-            - name: OE:02 Formalize tasks
+            - name: OE:02 Task execution process
               href: operational-excellence/formalize-operations-tasks.md
-            - name: OE:03 Formalize software development practices
+            - name: OE:03 Software development practices
               href: operational-excellence/formalize-development-practices.md
-            - name: OE:04 Improve build velocity
+            - name: OE:04 Build velocity
               href: operational-excellence/release-engineering-performance.md
-            - name: OE:04 Optimize development practices
-              href: operational-excellence/optimize-development-practices.md
-            - name: OE:04 Use continuous integration 
+            - name: OE:04 Tools and processes
+              href: operational-excellence/tools-processes.md
+            - name: OE:04 Continuous integration 
               href: operational-excellence/release-engineering-continuous-integration.md
-            - name: OE:05 Use infrastructure as code
+            - name: OE:05 Infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
-            - name: OE:06 Design a supply chain for workload development
+            - name: OE:06 Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
-            - name: OE:07 Develop an observability framework
+            - name: OE:07 Observability framework
               href: operational-excellence/observability.md
-            - name: OE:08 Respond to emergencies
+            - name: OE:08 Emergency response
               href: operational-excellence/emergency-response.md
-            - name: OE:09 Automate tasks
+            - name: OE:09 Task automation
               href: operational-excellence/automate-tasks.md
-            - name: OE:10 Enable automation
+            - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
-            - name: OE:11 Deploy safely
+            - name: OE:11 Deployment practices
               href: operational-excellence/safe-deployments.md
-            - name: OE:12 Mitigate failures 
+            - name: OE:12 Failure mitigation
               href: operational-excellence/mitigation-strategy.md
       - name: Performance Efficiency
         items: 
@@ -193,27 +193,27 @@
           items:
             - name: Performance efficiency patterns
               href: performance-efficiency/design-patterns.md
-            - name: PE:01 Set performance targets
+            - name: PE:01 Performance targets
               href: performance-efficiency/performance-targets.md
-            - name: PE:02 Conduct capacity planning
+            - name: PE:02 Capacity planning
               href: performance-efficiency/capacity-planning.md
-            - name: PE:03 Select the appropriate services 
+            - name: PE:03 Selecting services 
               href: performance-efficiency/select-services.md
-            - name: PE:04 Collect metrics and logs 
-              href: performance-efficiency/collect-metrics-logs.md
-            - name: PE:05 Scale and partition 
+            - name: PE:04 Metrics and logs 
+              href: performance-efficiency/collect-performance-data.md
+            - name: PE:05 Scaling and partitioning 
               href: performance-efficiency/scale-partition.md
             - name: PE:06 Performance testing
               href: performance-efficiency/performance-test.md
-            - name: PE:07 Optimize code and infrastructure 
+            - name: PE:07 Code and infrastructure 
               href: performance-efficiency/optimize-code-infrastructure.md
-            - name: PE:08 Optimize data performance 
+            - name: PE:08 Data performance 
               href: performance-efficiency/optimize-data-performance.md
-            - name: PE:09 Prioritize critical flows 
+            - name: PE:09 Critical flows 
               href: performance-efficiency/prioritize-critical-flows.md
-            - name: PE:10 Optimize operational tasks
+            - name: PE:10 Operational tasks
               href: performance-efficiency/optimize-operational-tasks.md
-            - name: PE:11 Respond to live issues 
+            - name: PE:11 Live-issues responses
               href: performance-efficiency/respond-live-performance-issues.md
             - name: PE:12 Continuous performance optimization
               href: performance-efficiency/continuous-performance-optimize.md
@@ -299,17 +299,13 @@
             - name: Operational excellence
               href: service-guides/azure-cache-redis/operational-excellence.md
         - name: Azure Cosmos DB
-          items:
-            - name: Reliability
-              href: service-guides/cosmos-db/reliability.md
-            - name: Operational excellence
-              href: service-guides/cosmos-db/operational-excellence.md
+          href: service-guides/cosmos-db.md
         - name: Azure Databricks
           href: service-guides/azure-databricks-security.md
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
-          href: service-guides/azure-db-postgresql-well-architected-framework.md
+          href: service-guides/postgresql.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer

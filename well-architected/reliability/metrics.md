@@ -34,11 +34,11 @@ Define the workload's target values for these metrics in the context of user flo
 
 ## Key design strategies
 
-Technical discussions shouldn't drive how you define reliability targets for your critical flows. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs. 
+Technical discussions shouldn't drive how you define reliability targets for your critical flows. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs.
 
 Consider an example of how to map requirements to measurable numerical values. Stakeholders estimate that for a critical user flow, an hour of downtime during regular business hours results in a loss of *X* dollars in monthly revenue. That dollar amount is compared to the estimated cost of designing a flow that has an availability SLO of 99.95 percent rather than 99.9 percent. Decision makers must discuss whether the risk of that revenue loss outweighs the added costs and management burden required to protect against it. Follow this pattern as you examine flows and build a complete list of targets.
 
-Remember that reliability targets differ from performance targets. Reliability targets focus on availability and recovery. To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements. 
+Remember that reliability targets differ from performance targets. Reliability targets focus on availability and recovery. To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements.
 
 Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
 
@@ -58,9 +58,8 @@ After you gather the SLAs for the individual workload components, calculate a co
 
 Composite SLAs involve multiple services that support an application, with differing levels of availability. For example, consider an Azure App Service web app that writes to Azure SQL Database. Hypothetically, these SLAs might be:
 
--   App Service web apps = 99.95 percent
-
--   SQL Database = 99.99 percent
+- App Service web apps = 99.95 percent
+- SQL Database = 99.99 percent
 
 What's the maximum downtime you can expect for this application? If either service fails, the whole application fails. The probability of each service failing is independent, so the composite SLA for this application is 99.95 percent × 99.99 percent = 99.94 percent. That value is lower than the individual SLAs. This conclusion is unsurprising because an application that relies on multiple services has more potential failure points.
 
@@ -68,7 +67,7 @@ You can improve the composite SLA by creating independent fallback paths. For ex
 
 :::image type="content" source="media/metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to a queue." border="false" lightbox="media/metrics/independent-fallback-paths.png":::
 
-In this design, the application is still available even if it can\'t connect to the database. However, it fails if the database and the queue fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so here's the composite SLA for this combined path:
+In this design, the application is still available even if it can't connect to the database. However, it fails if the database and the queue fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so here's the composite SLA for this combined path:
 
 Database or queue = 1.0 − (0.0001 × 0.001) = 99.99999 percent
 
@@ -76,29 +75,29 @@ The total composite SLA:
 
 Web app and (database or queue) = 99.95 percent × 99.99999 percent = \~99.95 percent
 
-This approach poses tradeoffs: 
+This approach poses tradeoffs:
 
-- The application logic is more complex. 
-- You pay for the queue. 
+- The application logic is more complex.
+- You pay for the queue.
 - You need to consider data consistency issues.
 
 For multi-region deployments, the composite SLA is calculated as follows:
 
--  *N* is the composite SLA for the application that's deployed in one region.
+- *N* is the composite SLA for the application that's deployed in one region.
 
--  *R* is the number of regions where the application is deployed.
+- *R* is the number of regions where the application is deployed.
 
 The expected chance that the application fails in all regions at the same time is ((1 − N) \^ R). For example, if the hypothetical single-region SLA is 99.95 percent:
 
--   The combined SLA for two regions = (1 − (1 − 0.9995) \^ 2) = 99.999975 percent
+- The combined SLA for two regions = (1 − (1 − 0.9995) \^ 2) = 99.999975 percent
 
--   The combined SLA for four regions = (1 − (1 − 0.9995) \^ 4) = 99.999999 percent
+- The combined SLA for four regions = (1 − (1 − 0.9995) \^ 4) = 99.999999 percent
 
 Defining proper SLOs takes time and careful consideration. Business stakeholders should understand how key customers use the app. They should also understand the reliability tolerance. This feedback should inform the targets.
 
 #### SLA values
 
-The following table defines common SLA values. 
+The following table defines common SLA values.
 
 |SLA  |Downtime per week  |Downtime per month  |Downtime per year  |
 |---------|---------|---------|---------|
@@ -121,7 +120,7 @@ To avoid collecting useless metrics, limit the number of SLIs for each flow. Aim
 
 ### Recovery metrics
 
-Recovery targets correspond to RTO, RPO, MMTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
+Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
 Definitions for realistic recovery targets rely on your [failure mode analysis](failure-mode-analysis.md) and your plans and testing for business continuity and [disaster recovery](disaster-recovery.md). Before you finish this work, discuss aspirational targets with stakeholders and ensure that your architecture design supports the recovery targets to the best of your understanding. Clearly communicate to stakeholders that any flows or entire workloads that aren't thoroughly tested for recovery metrics shouldn't have guaranteed SLAs. Make sure that stakeholders understand that recovery targets can change over time as workloads are updated. The workload can become more complex as customers are added or as you adopt new technologies to improve the customer experience. These changes can increase or decrease your recovery metrics.
 
@@ -157,7 +156,7 @@ To keep your operations teams and workload stakeholders informed about the real-
 
 Azure SLAs provide the Microsoft commitments for uptime and connectivity. Different services have different SLAs, and sometimes SKUs within a service have different SLAs. For more information, see [Service-level agreements for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 
-The Azure SLA includes procedures for obtaining a service credit if the SLA isn\'t met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
+The Azure SLA includes procedures for obtaining a service credit if the SLA isn't met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
 
 ## Organizational alignment
 
