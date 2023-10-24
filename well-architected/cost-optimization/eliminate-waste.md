@@ -88,31 +88,31 @@ To remove unused resources in a workload, consider these steps:
 
 1. *Take inventory*: Conduct a thorough inventory of all resources within the workload across environments.
 
-1. *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you delete a virtual machine, but its associated storage account isn't removed. Review your workload to identify resources that are no longer needed or are orphaned.
+1. *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you might delete a virtual machine, but its associated storage account isn't removed. Review your workload to identify resources that are no longer needed or are orphaned.
 
-1. *Remove idle component*: There’s typically a cost associated with a deployed resource. Even if the resource allows you to stop or deallocate, you might be paying for the resource. Consider removing idle resources. If you need the data, back up the data first and then remove the resource. You’re better off redeploying the resource and restoring the data than allowing the resource to remain idle.
+1. *Remove idle components*: There’s typically a cost associated with a deployed resource. Even if the resource allows you to stop or reallocate, you might continue to pay for the resource. Consider removing idle resources. If you need the data, back up the data first and then remove the resource. You’re better off redeploying the resource and restoring the data than allowing the resource to remain idle.
 
-**Evaluate underutilized resources.** Underutilized resources represent wasted expenditure as you pay for resource capacity that isn't fully utilized. By identifying and optimizing these resources, you can reduce costs and allocate resources more effectively. To evaluate and optimize the cost of underutilized resources, follow these steps:
+**Evaluate underutilized resources.** Underutilized resources represent wasted expenditure as you pay for resource capacity that isn't fully utilized. Identify and optimize these resources to reduce costs and allocate resources more effectively. To evaluate and optimize the cost of underutilized resources, follow these steps:
 
-1. *Resource monitoring*: Use tools to keep an eye on how much CPU, memory, and storage you're actually using. Choose the best plan that matches your needs based on this info.
+1. *Monitor resources*: Use tools to monitor how much CPU, memory, and storage you're actually using. Choose the best plan that matches your needs based on this information.
 
-1. *Utilization analysis*: Look at the data to find out which resources you're not using much. Pay special attention to the resources that have low usage over a long time or large differences between busy and slow times.
+1. *Analyze utilization*: Look at the data to find out which resources you're not using. Pay attention to the resources that have low usage over time or large differences between busy and slow times.
 
-1. *Right-sizing*: For resources you're not using fully, see if you've allocated too much to them. If so, adjust their size to better match what you actually need.
+1. *Right-sizing*: Check if there are too many resources allocated to features that are not in use. If so, adjust their size to better match what you actually need.
 
-1. *Autoscaling*: Use autoscaling to automatically adjust how much resources you're using based on how busy you are. But set a maximum limit to avoid sudden spikes that could be costly and unnecessary.
+1. *Automatic scaling*: Use automatic scaling to adjust the resources you're using based on how busy you are. But set a maximum limit to avoid sudden spikes that could be costly and unnecessary.
 
-Once you've made these adjustments, test to make sure everything still works as it should. Continuously monitor resource utilization and adjust resource allocation as workload demands change over time. Regularly review and optimize resource utilization to maintain cost efficiency and performance optimization.
+After you make these adjustments, test to make sure everything still works as it should. Continuously monitor resource utilization and adjust resource allocation as workload demands change over time. Regularly review and optimize resource utilization to maintain cost efficiency and performance optimization.
 
-**Eliminate disaster recovery waste.** Warm (active-passive) disaster recovery plans are a common source of underutilization. One environment receives all the load while the other environment is idle, awaiting a situation you hope never happens. Consider hot (active-active), cold (active-off), and active-redeploy approach can help avoid underutilized resources.
+**Eliminate disaster recovery waste.** Warm (active-passive) disaster recovery plans are a common source of underutilization. One environment receives all the load while the other environment is idle, awaiting a situation you hope never happens. Consider hot (active-active), cold (active-off), and active-redeploy plans to help avoid underutilized resources.
 
-- *Hot (active-active)*: The primary and secondary environments actively serve traffic, allowing you to use cheaper resources and minimizing unused capacity.
+- *Hot plans*: A hot disaster recovery plan is a failover solution where the primary and secondary environments actively serve traffic, so you can use cheaper resources and minimize unused capacity.
 
-- *Cold (active-off)*: A cold disaster recovery plan is a failover solution where the standby environment isn't actively running until there's a need for failover. The production environment is replicated as backups, VM images, or Resource Manager templates to a different region. This approach is cost-effective but takes longer to perform a complete failover.
+- *Cold plans*: A cold disaster recovery plan is a failover solution where the standby environment isn't actively running until there's a need for failover. The production environment is replicated as backups, virtual machine (VM) images, or Resource Manager templates to a different region. This approach is cost-effective but takes longer to perform a complete failover.
 
-- *Active-redeploy*: The active-redeploy approach uses infrastructure-as-code to deploy resources to the secondary environment in a failover event. Before a failover event, there are no deployed resources in the disaster recovery environment.
+- *Active-redeploy*: The active-redeploy approach uses infrastructure-as-code (IaC) to deploy resources to the secondary environment in a failover event. Before a failover event, there are no deployed resources in the disaster recovery environment.
 
-### Eliminate waste from platform feature set
+### Eliminate waste from platform feature set - needs edit
 
 Eliminating wasteful platform features involves identifying and removing unnecessary or unused features to optimize resource usage and reduce costs. Here are some steps to eliminate wasteful platform features:
 
