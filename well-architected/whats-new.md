@@ -82,7 +82,7 @@ In addition to the changes in structure and consistency, you should note some th
 
 ## October 2023
 
-- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./service-guides/cosmos-db/reliability.md)
+- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./service-guides/cosmos-db.md)
 
 ## September 2023
 

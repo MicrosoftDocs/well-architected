@@ -14,7 +14,7 @@ categories:
 
 # Reliability and Azure Load Balancer
 
-*Load balancing* refers to evenly distributing load (incoming network traffic) across a group of backend resources or servers. With [Azure Load Balancer](/azure/load-balancer/), load-balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.
+*Load balancing* refers to efficiently distributing load (incoming network traffic) across a group of backend resources or servers. With [Azure Load Balancer](/azure/load-balancer/), load-balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.
 
 You can scale your applications and create highly available services with Azure Load Balancer. It supports both inbound and outbound scenarios. Load balancer provides low latency and high throughput.
 
