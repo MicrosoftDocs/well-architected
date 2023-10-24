@@ -14,6 +14,8 @@ ms.topic: conceptual
 |[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code.| 
 |---|---| 
 
+**Related guide**: [Recommendations for instrumenting an application](instrument-application.md)
+
 This guide describes the recommendations for designing and creating an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
 
 **Definitions**
@@ -27,7 +29,7 @@ This guide describes the recommendations for designing and creating an observabi
 
 To implement a comprehensive monitoring framework design for your workload, follow these core tenets:
 
-- Whenever practical, take advantage of platform-provided observability tools, which typically require very little configuration and can provide deep insights into your workload that may otherwise be difficult to accomplish.
+- Whenever practical, take advantage of platform-provided observability tools, which typically require very little configuration and can provide deep insights into your workload that might otherwise be difficult to accomplish.
 
 - Collect logs and metrics from the entire workload stack. All infrastructure resources and application functions should be configured to produce standardized, meaningful data, and that data needs to be collected.
 
@@ -214,7 +216,7 @@ Align your dashboards with your [health model](../reliability/metrics.md#buildin
 
 For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, members of the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
 
-You may have dashboards for stakeholders or developers that are customized to only show data about the workload that they find relevent. Ensure that the workload team understands the types of data points that other teams are interested in seeing and previews the dashboards before sharing them to check for clarity. Providing dashboards about your workload for stakeholders is a good way to keep them apprised of the workload health, but carries a risk of being counterproductive if they stakeholders don't clearly understand the data they see.
+You might have dashboards for stakeholders or developers that are customized to only show data about the workload that they find relevant. Ensure that the workload team understands the types of data points that other teams are interested in seeing and previews the dashboards before sharing them to check for clarity. Providing dashboards about your workload for stakeholders is a good way to keep them apprised of the workload health, but carries a risk of being counterproductive if they stakeholders don't clearly understand the data they see.
 
 A good dashboard doesn't just display information. It also enables an analyst to pose improvised questions about that information. Some systems provide management tools that an operator can use to complete these tasks and explore the underlying data. Instead, depending on the repository that's used to hold the information, it might be possible to query the data directly or import it into tools like Excel for further analysis and reporting.
 
