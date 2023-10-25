@@ -26,11 +26,11 @@ This guide describes the recommendations for optimizing personnel time. This opt
 
 ## Key design strategies
 
-Personnel typically create the most significant expense in a workload. This underscores the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Considering that employees can't work all day and night, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
+Personnel typically create the most significant expense in a workload. This underscores the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Given that employees can't work all day and night, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
 
 ### Set optimization targets
 
-Setting personnel time optimization targets is a process of establishing clear, measurable goals that indicate how much improvement is desired in personnel tasks. These targets serve as guidelines for desired improvements in tasks and functions. You can use these benchmarks to evaluate outcomes against the targets. First, define the metrics for measuring the success of personnel time optimization efforts. Determine the specific objectives you want to achieve through optimization. Example objectives might be to reduce time spent on administrative tasks or to reduce the time it takes to respond to customer inquiries. To set optimization targets for personnel time optimization, consider the following strategies:
+Setting personnel time optimization targets is a process of establishing clear, measurable goals that indicate how much improvement is desired in personnel tasks. These targets serve as guidelines for desired improvements in tasks and functions. You can use these benchmarks to evaluate outcomes against the targets. First, define the metrics for measuring the success of personnel time optimization efforts. Determine the specific objectives that you want to achieve through optimization. Example objectives might be to reduce time spent on administrative tasks or to reduce the time it takes to respond to customer inquiries. To set optimization targets for personnel time optimization, consider the following strategies:
 
 - *Select quantitative metrics:* Choose metrics that align with your objectives and can be measured accurately. Consider metrics like time saved, productivity increases, efficiency improvements, and task completion time.
 
@@ -56,11 +56,11 @@ Reducing build times is the process of minimizing the time it takes to compile a
 
 - *Use caching*: Cache dependencies, intermediate build artifacts, and other reusable components to avoid redundant work during subsequent builds.
 
-- *Incremental builds*: To avoid unnecessary recompilation, implement techniques that allow the build system to rebuild only the parts of the deployment that have changed since the previous build.
+- *Use incremental builds*: To avoid unnecessary recompilation, implement techniques that allow the build system to rebuild only the parts of the deployment that have changed since the previous build.
 
-- *Build distribution*: If applicable, distribute the build process across multiple machines or build agents to use parallelism and reduce overall build time.
+- *Distribute the build process*: If applicable, distribute the build process across multiple machines or build agents to use parallelism and reduce overall build time.
 
-- *Infrastructure optimization*: Ensure that the build environment has sufficient resources, like CPU, memory, and disk I/O, to handle the build.
+- *Optimize infrastructure*: Ensure that the build environment has sufficient resources, like CPU, memory, and disk I/O, to handle the build.
 
 #### Use production mocking
 
@@ -78,7 +78,7 @@ The goal is for developers to get fast feedback on changes. Make necessary techn
 
 *Containerization*: Consider containerizing the workload to run locally. Containers help developers replicate the production environment locally and test their changes quickly. They enable faster iteration and debugging, which leads to a more efficient development process. Containers also provide a consistent and isolated environment for running the application. Finally, they enable easy scaling and deployment of the application.
 
-*Developer workstations*: An optimal developer workstation should have a suitable integrated development environment (IDE). A good developer workstation boosts developer efficiency, reducing the time and resources needed for various tasks. A good IDE has IntelliSense syntax highlighting that's tailored to the programming language. It should also support version control like Git. A well-equipped IDE enables developers to pinpoint and fix issues quickly during development, which reduces debugging time.
+*Developer workstations*: An optimal developer workstation should have a suitable integrated development environment (IDE). A good developer workstation boosts developer efficiency, reducing the time and resources needed for various tasks. A good IDE provides code completion and syntax highlighting that's tailored to the programming language. It should also support version control like Git. A well-equipped IDE enables developers to pinpoint and fix issues quickly during development, which reduces debugging time.
 
 *Developer environments*: Developers' environments shouldn't be too constrained. They should have the permissions necessary to complete tasks without undue restrictions so they can work efficiently and effectively.
 
@@ -86,7 +86,7 @@ The goal is for developers to get fast feedback on changes. Make necessary techn
 
 In general, the closer preproduction environments are to production environments, the more time you save. This increased consistency also helps to minimize risk. The closer the two environments are, the better you can test and validate the functionality and performance of your releases before deploying them to the production environment. This similarity in environments helps you identify and address any issues or bottlenecks early on, which reduces the risk of problems occurring in the production environment.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: You need to balance personnel time with resource cost. The closer you get to production, the more your environment will cost.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: You need to balance personnel time against resource costs. The closer an environment is to the production environment, the more it costs.
 
 #### Reuse components and libraries
 
@@ -102,7 +102,7 @@ Removing technical debt is essential for maintaining a healthy and efficient cod
 
 - *Empower the development team*: Allow the development team to own the prioritization of technical debt resolution. They're in the best position to identify areas of the codebase that require attention and understand the effects of technical debt on workload functionality. Encourage open communication and collaboration within the team to ensure that technical debt is addressed effectively.
 
-- *Prioritize*: Prioritize technical debt items based on their effects on workload functionality. Focus on addressing the issues that have the most significant effect on the performance, maintainability, and scalability of the workload. By prioritizing effectively, you can maximize the effects of your efforts in removing technical debt.
+- *Prioritize*: Prioritize technical debt items based on their effects on workload functionality. Focus on addressing the issues that have the most significant effect on the performance, maintainability, and scalability of the workload. By prioritizing effectively, you can maximize the effects of your efforts to remove technical debt.
 
 Removing technical debt is an ongoing process. It requires a proactive approach and continuous effort from the development team. By setting and adhering to specific standards in the codebase and implementing mechanisms like quality gates, you can effectively address technical debt and create a cleaner, more maintainable codebase:
 
@@ -120,7 +120,7 @@ Optimizing personnel collaboration is a process of enhancing team dynamics, comm
 
 - *Create a shared knowledge repository*: A shared knowledge base prevents repeated mistakes, aids training, and reduces the time spent searching for information. Develop a centralized place where all members can access and contribute to collective knowledge. Employ knowledge management tools, regularly update the repository, and incentivize contributions from team members.
 
-- *Invest in training*: Make a substantial investment in training for the processes, tools, and project. Doing so ensures that a baseline requirement is met before people start contributing to the project. Ensure that teams are trained on the established standards and processes to enable them to work efficiently and effectively within the defined guidelines. Teams should be trained on those standards and process so that they don't waste effort identifying them on their own.
+- *Invest in training*: Make a substantial investment in training for the processes, tools, and project. Doing so ensures that a baseline requirement is met before people start contributing to the project. Ensure that teams are trained on the established standards and processes to enable them to work efficiently and effectively within the defined guidelines. Team members should be trained on those standards and process so that they don't waste effort identifying them on their own.
 
 ### Optimize processes
 
@@ -134,13 +134,13 @@ Optimizing processes involves refining workflows to eliminate unnecessary steps,
 
 ### Optimize operational tasks
 
-Optimizing workload operational tasks is a process of making job tasks quicker and more straightforward. The goal is to streamline activities to enhance efficiency and ensure the most effective use of resources. This streamlining ensures that tasks are completed with fewer errors, distractions, and delays. It conserves personnel time, which leads to faster decision-making, reduced troubleshooting durations, and overall improved efficiency and cost savings. To optimize operational tasks, consider the following strategies.
+Optimizing workload operational tasks is a process of making job tasks faster and more straightforward. The goal is to streamline activities to enhance efficiency and ensure the most effective use of resources. This streamlining ensures that tasks are completed with fewer errors, distractions, and delays. It conserves personnel time, which leads to faster decision-making, reduced troubleshooting durations, and overall improved efficiency and cost savings. To optimize operational tasks, consider the following strategies.
 
 #### Reduce the noise-to-signal ratio
 
-Distinguishing signal from noise is crucial to observability because it enables teams to focus on the most critical aspects of their systems and applications. Filtering out noise can help teams make informed decisions, troubleshoot problems, and optimize the workload faster. Identifying and addressing issues more efficiently and faster leads to a reduction in personnel costs.
+Distinguishing signal from noise is crucial to observability because it enables teams to focus on the most critical aspects of their systems and applications. Filtering out noise can help teams make informed decisions, troubleshoot problems, and optimize the workload faster. Identifying and addressing issues more efficiently and quickly leads to a reduction in personnel costs.
 
-To differentiate signal from noise, you need to define clear objectives and metrics. Identify the key performance indicators (KPIs) and metrics that are relevant to your workload. Establish thresholds or ranges for each metric to specify what's considered normal behavior and what should be flagged as an anomaly. Use monitoring tools to collect data and track the defined metrics in real-time and identify patterns that indicate potential issues or areas of improvement.
+To differentiate signal from noise, you need to define clear objectives and metrics. Identify the key performance indicators (KPIs) and metrics that are relevant to your workload. Establish thresholds or ranges for each metric to specify what's considered normal behavior and what should be flagged as an anomaly. Use monitoring tools to collect data and track the defined metrics in real time and identify patterns that indicate potential issues or areas of improvement.
 
 Prioritize actionable insights. Focus on insights that point to degradations in the workload and prioritize them for further investigation or action. Regularly review and update your monitoring strategy based on feedback.
 
@@ -156,7 +156,7 @@ Prioritize actionable insights. Focus on insights that point to degradations in 
 
 #### Enhance technical support
 
-Reducing recurring issues saves time and improves user satisfaction. Improve the efficiency and efficacy of technical support operations. Identify recurring support issues, integrate engineering and support teams via support shadowing, and adopt IT classic deployment model processes to reduce overall support load.
+Improve the efficiency and efficacy of technical support operations. Reducing recurring issues saves time and improves user satisfaction. Identify recurring support issues, integrate engineering and support teams via support shadowing, and adopt IT classic deployment model processes to reduce overall support load.
 
 #### Learn from incidents
 
@@ -178,7 +178,7 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 ## Azure facilitation
 
-**Defining success metrics.** [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features like work item tracking, dashboards, and reporting capabilities. It includes features for source code management, continuous integration, continuous delivery, project management, and more. By using Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
+**Defining success metrics.** [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features like work item tracking, dashboards, reporting capabilities, source code management, continuous integration, continuous delivery, and project management. By using Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
 
 **Optimizing development.** Azure provides various tools and features to optimize developer time, including:
 
@@ -186,7 +186,7 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 - *Integration with Azure DevOps*: Azure integrates with Azure DevOps to enhance productivity and streamline development processes.
 
-- *IDE integration*: Azure provides IDE integration with popular development tools like Visual Studio and Visual Studio Code, which enables developers to seamlessly work with Azure services.
+- *IDE integration*: Azure provides IDE integration with popular development tools like Visual Studio and Visual Studio Code. This integration enables developers to seamlessly work with Azure services.
 
 - *Standard SDKs and libraries*: Azure provides standard SDKs and libraries for all Azure services, which enables developers to reuse code and reduce the time it takes to integrate and implement Azure services.
 
