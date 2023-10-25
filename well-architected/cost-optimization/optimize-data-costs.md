@@ -73,7 +73,7 @@ The following considerations are foundational to data lifecycle management:
 
 - *Use data tiering:* The goal of data tiering is to align access and retention with the most cost-effective storage tier. Storage tiers range from frequent/immediate access (hot) to infrequent/delayed access (cold).
 
-  It costs more to use a tier that doesn't align with data access and retention needs. For example, data that your application accesses frequently should be in hot storage. Data that your application accesses infrequently should be in cold storage. Effectively managing these aspects helps ensure efficient and cost-effective data storage.
+  It costs more to use a tier that doesn't align with data access and retention needs. For example, data that your application accesses frequently should be in hot storage. Data that your application accesses infrequently should be in cold storage. Effectively managing these aspects helps ensure efficient data storage.
 
 - *Consider compliance requirements:* Implementing data tiering requires careful consideration of compliance requirements and data governance policies. Compliance and legal requirements often drive data access and retention. Establish data retention policies to ensure compliance with legal, regulatory, and business requirements.
 
@@ -120,7 +120,7 @@ You must ensure that changes in data storage solutions adhere to these requireme
 
 Finding strategies to decrease the amount of data that you store can help reduce costs. By changing the accessibility of the data and implementing the following techniques, you can effectively optimize the volume of your stored data:
 
-- *Capture less data*: Take a closer look at the data you're capturing. Determine if all the data is necessary for your needs or if any of it is unnecessary. Modify your process, settings, or configurations to capture only the essential data.
+- *Capture less data*: Take a closer look at the data you're capturing. Determine if any of it is unnecessary for your purposes. Modify your process, settings, or configurations to capture only the essential data.
 
 - *Compress data*: Compression saves money by reducing the size of data. It's most effective in write-once, read-never or read-rarely scenarios. It's more suitable for colder storage.
 
@@ -128,7 +128,7 @@ Finding strategies to decrease the amount of data that you store can help reduce
 
 - *Delete unneeded data*: Implement policies to streamline the process of storing relevant information. Evaluate the retention period for backups and snapshots, and delete data that you no longer need. You might want to have a process that leads up to eventual data deletion, such as first archiving data and enabling a soft-delete period. Always consider recoverability before deleting data.
 
-- *Deduplicate data*: Implement data deduplication techniques to eliminate redundant data. Deduplication reduces storage requirements by storing only unique data blocks, so you save costs. Use hashing algorithms and comparison of data chunks. Regularly run deduplication processes to identify and eliminate duplicate data.
+- *Deduplicate data*: Implement data deduplication techniques to eliminate redundant data. Deduplication reduces storage requirements by ensuring that you store only unique data blocks, so you save costs. Use hashing algorithms and comparison of data chunks. Regularly run deduplication processes to identify and eliminate duplicate data.
 
 - *Optimize user behavior*: In workloads that collect user-generated data, educate users on the importance of efficient data storage. Encourage them to regularly review and delete unnecessary files and data. Implement storage quotas or pricing models that discourage excessive data storage.
 
@@ -152,7 +152,7 @@ To optimize data replication for cost optimization, consider the following guide
 
 ### Optimize backups
 
-Backups involve creating periodic snapshots or copies of data and storing them separately from the primary storage. If there's data corruption, accidental deletion, or system failure, you can use backups to restore the data to its previous state.
+A backup is a periodic snapshot or copy of data that you can create and store separately from the primary storage. If there's data corruption, accidental deletion, or system failure, you can use backups to restore the data to its previous state.
 
 Here are some techniques for optimizing backups:
 
@@ -172,7 +172,7 @@ Here are some techniques for optimizing backups:
 
 ### Optimize file formats
 
-File formats influence cost optimization by optimizing input/output (I/O) patterns and query patterns of your data. Some file formats cater to particular scenarios. Aligning the file format with your workload requirements can improve the workload's performance. 
+File formats influence cost optimization by optimizing input/output (I/O) patterns and query patterns of your data. Some file formats cater to particular scenarios. Aligning the file format with your workload requirements can improve the workload's performance.
 
 Here are considerations for common formats:
 
@@ -190,7 +190,7 @@ By tailoring storage solutions to the specific needs and characteristics of the 
 
 Here are a few use cases:
 
-- *Switching databases*: You could consider switching to a database system that better suits your needs. For instance, if you've been using a relational database, you might explore the option of moving to a NoSQL database if your data is more document oriented or requires flexible schemas.
+- *Switching databases*: You could consider switching to a database system that better suits your needs. For instance, if you're using a relational database, you might explore the option of moving to a NoSQL database if your data is more document oriented or requires flexible schemas.
 
 - *Moving from a relational database to a flat file store*: In some cases, storing data in flat files instead of a traditional relational database can provide advantages such as simplicity and cost-effectiveness. Flat files are well suited for certain types of data, such as log files or data that doesn't require complex querying. For example, you can store binary images in a SQL database, but it's more cost-effective to store them in a storage service that's specifically for handling binary data.
 
