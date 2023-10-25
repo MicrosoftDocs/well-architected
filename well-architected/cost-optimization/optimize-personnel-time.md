@@ -67,9 +67,13 @@ Reducing build times is the process of minimizing the time it takes to compile a
 By mocking components or services, developers can isolate their code for focused testing by simulating dependencies. Mocking enables developers to create specific scenarios and edge cases that are difficult or impractical to reproduce in a real production environment. It can speed up testing cycles, facilitate parallel work, and eliminate troubleshooting dependencies. Here are some approaches to implementing production mocking:
 
 - *Mocking frameworks*: Use specialized mocking frameworks or libraries that enable you to create mock objects, stubs, or fakes to replace dependencies.
+
 - *Dependency injection*: Design your application to utilize dependency injection, which enables easy substitution of real dependencies with mock objects during testing or debugging.
+
 - *Service virtualization*: Use service virtualization tools or techniques to simulate the behavior of external services or APIs. Doing so enables developers to test integrations without accessing the real services.
+
 - *Configuration-driven mocking*: Implement a configuration-driven approach in which the application's behavior can be modified via configuration settings or flags to enable mocking as needed.
+
 - *Dynamic and conditional mocking*: Design the application to support dynamic and conditional mocking, which enable developers to switch between real and mock components depending on specific conditions or scenarios.
 
 #### Optimize the development environment
