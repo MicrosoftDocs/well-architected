@@ -1,6 +1,6 @@
 ---
 title: Recommendations for optimizing personnel time
-description: Learn how to optimizing personnel time.
+description: Learn about Azure Well-Architected Framework recommendations for maximizing the productivity and efficiency of employees.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
