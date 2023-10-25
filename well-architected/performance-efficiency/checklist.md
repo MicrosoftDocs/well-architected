@@ -15,7 +15,7 @@ For every system, there's a limit to how much you can scale it without redesigni
 
 ## Checklist
 
-| &nbsp; | Code | Recommendation |
+|&nbsp;|Code  |Recommendation  |
 |-|-|-|
 | &#9744; | [PE:01](performance-targets.md) | **Define performance targets.** Performance targets should be numerical values that are tied to workload requirements. You should implement performance targets for all workload flows. |
 | &#9744; | [PE:02](capacity-planning.md) | **Conduct capacity planning.** Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. |

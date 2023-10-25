@@ -47,7 +47,7 @@ To implement a comprehensive monitoring framework design for your workload, foll
 
 - Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
-- Tie the observability data that you gather and analyze back to your [system and user flows](../reliability/identify-flows) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing the observability data in terms of the flows will help align your observability strategy with your [health model](../reliability/metrics.md#building-a-health-model).
+- Tie the observability data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing the observability data in terms of the flows will help align your observability strategy with your [health model](../reliability/metrics.md#building-a-health-model).
 
 You should automate all functions of the monitoring framework as much as possible, and they should all run continuously, all day, every day. 
 
