@@ -47,6 +47,8 @@ To implement a comprehensive monitoring framework design for your workload, foll
 
 - Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
+- Tie the observability data that you gather and analyze back to your [system and user flows](../reliability/identify-flows) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing the observability data in terms of the flows will help align your observability strategy with your [health model](../reliability/metrics.md#building-a-health-model).
+
 You should automate all functions of the monitoring framework as much as possible, and they should all run continuously, all day, every day. 
 
 This workflow pipeline illustrates the monitoring framework: 
@@ -216,7 +218,7 @@ Align your dashboards with your [health model](../reliability/metrics.md#buildin
 
 For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, members of the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
 
-You might have dashboards for stakeholders or developers that are customized to only show data about the workload that they find relevant. Ensure that the workload team understands the types of data points that other teams are interested in seeing and previews the dashboards before sharing them to check for clarity. Providing dashboards about your workload for stakeholders is a good way to keep them apprised of the workload health, but carries a risk of being counterproductive if they stakeholders don't clearly understand the data they see.
+You might have dashboards for stakeholders or developers that are customized to only show data about the workload that they find relevant. Ensure that the workload team understands the types of data points that other teams are interested in seeing and previews the dashboards before sharing them to check for clarity. Providing dashboards about your workload for stakeholders is a good way to keep them apprised of the workload health, but carries a risk of being counterproductive if the stakeholders don't clearly understand the data they see.
 
 A good dashboard doesn't just display information. It also enables an analyst to pose improvised questions about that information. Some systems provide management tools that an operator can use to complete these tasks and explore the underlying data. Instead, depending on the repository that's used to hold the information, it might be possible to query the data directly or import it into tools like Excel for further analysis and reporting.
 
