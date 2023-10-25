@@ -21,7 +21,7 @@ This guide describes the recommendations for continuous performance optimization
 |  Term|                                Definition|
 |-|- |
 | Data tiering | Using different storage solutions to meet data access requirements over time at optimized cost.
-|Technical debt |The accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process.|
+|Technical debt |The accumulated inefficiencies, suboptimal design choices, or shortcuts intentionally taken during the development process to deliver code faster.|
 | Time-to-live | A mechanism that sets an expiration time for data.
 
 ## Key design strategies
