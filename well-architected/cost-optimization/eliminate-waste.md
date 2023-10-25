@@ -112,45 +112,45 @@ After you make these adjustments, test to make sure everything still works as it
 
 - *Active-redeploy*: The active-redeploy approach uses infrastructure-as-code (IaC) to deploy resources to the secondary environment in a failover event. Before a failover event, there are no deployed resources in the disaster recovery environment.
 
-### Eliminate waste from platform feature set - needs edit
+### Eliminate waste from platform feature set
 
-Eliminating wasteful platform features involves identifying and removing unnecessary or unused features to optimize resource usage and reduce costs. Here are some steps to eliminate wasteful platform features:
+Identify and remove unnecessary or unused platform features to optimize resource usage and reduce costs. Here are some steps to eliminate wasteful platform features:
 
-- *Know the capabilities of the things you’ve purchased*: Understand the features and functionalities of the platforms or services you have acquired.
+- *Know the capabilities of the things you’ve purchased*. Understand the features and functionalities of the platforms or services in your workload.
 
-- *Disable unused features*: Identify and disable platform features that cost money and aren't used.
+- *Disable unused features*: Identify and disable unused platform features that cost money.
 
-- *Use the right features*: Newer versions of a service can provide similar performance for the same price. For example, a virtual machine with hardware updates could provide the same performance for less.
+- *Use the right features*: Newer versions of a service can provide similar performance for the same price. For example, a VM with hardware updates could provide the same performance for less.
 
-- *Use the right configurations*: You might be paying for more availability or performance than you need. Eliminate availability or performance guarantees the workload doesn’t need.
+- *Use the right configurations*: You might be paying for more availability or performance than you need. Eliminate availability or performance guarantees that the workload doesn’t need.
 
-- *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
+- *Eliminate unnecessary automation*: Evaluate your automation processes and eliminate any unused automation that might incur extra costs.
 
-- *Eliminate tool redundancy*: Get rid of tools that you don't really need or that do the same thing as other tools you already have. Consider tools used for building software, writing code, security, or monitoring how things are running. For instance, if you're already using GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy more features or tools, check if what you already have can do the job. This way, you avoid wasting money and make the most of what you already have.
+- *Eliminate tool redundancy*: Get rid of tools that you don't need or that do the same thing as other tools. Evaluate potential redundancy in the tools you use for building software, writing code, security, and monitoring. For example, if you use GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy features or tools, check if there's already a tool in your workload that can do the job. Eliminating tool redundancy can help you to avoid wasted money and make the most of what you already have.
 
 ### Eliminate waste from prepaid agreements
 
-Maximizing the usage of prepaid plans starts with buying the right plan and fully utilizing it. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions.
+Buy the right plan and fully utilize it to maximize the usage of prepaid plans. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. You can use savings plans to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions.
 
-- *Monitor usage*: Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
+- *Monitor usage*: Regularly check your prepaid plan usage. Set up alerts to tell you if you're not using all of your reserved resources. Evaluate usage over time and eliminate any plans you're not using regularly. Make sure you're using the right size of VMs and adjust the sizes to fit what you've already paid for.
 
-- *Modify the prepaid plan*: Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
+- *Adjust the prepaid plan*: Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
 
-- *Review prepaid plans*: Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
+- *Review prepaid plans*: Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs. Reconcile the data to ensure accurate billing.
 
 ### Avoid introducing waste
 
-The best way to get rid of waste is to avoid it in the first place. You want to use strategies that prevent it from being introduced and allow you to catch waste faster. Audit processes to avoid introducing waste. To help avoid introducing waste, consider these strategies:
+The best way to get rid of waste is to avoid it in the first place. Use strategies that prevent waste and allow you to catch waste faster. Audit processes to avoid introducing waste. To help avoid introducing waste, consider these strategies:
 
-- *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't just switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fixing the real problem saves you time and money.
+- *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't immediately switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fix the real problem to save time and money.
 
-- *Apply metadata* Applying metadata provides a way to organize and track resources. You can categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy and apply consistently across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and others.
+- *Apply metadata*: Apply metadata to organize and track resources. You can use metadata to categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy that's applied across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and other tags.
 
-- *Document nonstandard changes*: Documenting any changes made to your infrastructure or configurations performed outside the normal change control process of your workload can cut unexpected costs. For example, you might increase a resource’s scaling (up or out) capacities to meet a short-term demand or triage an issue but forget to scale it back down. Make a list of nonstandard changes and use it as a reminder to revert the changes when no longer necessary.
+- *Document nonstandard changes*: Document any changes made to your infrastructure or configurations performed outside the normal change control process of your workload to cut unexpected costs. For example, you might increase a resource’s scaling (up or out) capacities to meet a short-term demand or triage an issue but forget to scale it back down. Make a list of nonstandard changes and use it as a reminder to revert the changes when no longer necessary.
 
-- *Keep things simple*: Simplifying your infrastructure and minimizing complexity can help reduce costs. Focus on using only the necessary resources and services that meet your requirements.
+- *Keep things simple*: Simplify your infrastructure and minimize complexity to help reduce costs. Focus on using only the necessary resources and services that meet your requirements.
 
-## Azure facilitation
+## Azure facilitation - Needs edit 
 
 **Eliminating unused application features**: Azure Monitor and Azure Application Insights helps you monitor the usage of your application and identify areas what areas are being used and which ones aren't. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
 
