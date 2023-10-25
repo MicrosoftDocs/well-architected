@@ -120,7 +120,7 @@ Optimizing personnel collaboration is a process of enhancing team dynamics, comm
 
 - *Create a shared knowledge repository*: A shared knowledge base prevents repeated mistakes, aids training, and reduces the time spent searching for information. Develop a centralized place where all members can access and contribute to collective knowledge. Employ knowledge management tools, regularly update the repository, and incentivize contributions from team members.
 
-- *Invest in training*: Make a substantial investment in training for the processes, tools, and project. Doing so ensures that a baseline requirement is met before people start contributing to the project. Ensure that teams are trained on the established standards and processes to enable them to work efficiently and effectively within the defined guidelines. Team members should be trained on those standards and process so that they don't waste effort identifying them on their own.
+- *Invest in training*: Make a substantial investment in training for the processes, tools, and project. Doing so ensures that a baseline requirement is met before people start contributing to the project. Ensure that teams are trained on the established standards and processes to enable them to work efficiently and effectively within the defined guidelines. Team members should be trained on those standards and processes so that they don't waste effort identifying them on their own.
 
 ### Optimize processes
 
