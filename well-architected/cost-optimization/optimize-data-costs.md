@@ -29,7 +29,7 @@ This guide describes the recommendations for optimizing data costs for a workloa
 
 Within a specific workload, you optimize data costs by reducing the expenses associated with storing and managing data. There are various strategies and best practices to minimize data storage and processing costs. The goal is to align data costs with data priority. You need to assign cost tiers to types of data based on their importance or frequency of access.
 
-The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these main cost drivers.
+The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these drivers.
 
 ### Take an inventory of data
 
@@ -41,11 +41,11 @@ The following inventory actions can help you allocate storage resources effectiv
 
 - *Identify data types:* Categorize data based on its type, such as personal data, financial data, intellectual property, or operational data. Understand the sensitivity and criticality of each data type.
 
-- *Identify access patterns:* Identify the patterns in data access, such as daily, weekly, or monthly usage patterns. You should understand latency, file sizes, and data freshness requirements associated with that data.
+- *Identify access patterns:* Identify the patterns in data access, such as daily, weekly, or monthly usage patterns. You should understand latency, file sizes, and data freshness requirements for that data.
 
 ### Prioritize data
 
-Data prioritization is the process of categorizing and assigning importance levels to types of data based on their sensitivity and criticality. Data priority should align with the importance of the environment. For example, production data is more important than preproduction data.
+Data prioritization is the process of categorizing and assigning importance levels to types of data based on sensitivity and criticality. Data priority should align with the importance of the environment. For example, production data is more important than preproduction data.
 
 Assess the importance of various types of data to your workload by using these steps:
 
@@ -55,11 +55,11 @@ Assess the importance of various types of data to your workload by using these s
 
 ### Optimize data management
 
-Data management is the process of storing, moving, and securing workload data. By optimizing data management, you can align spending to data priority and derive more value from your data. Consider the following data management strategies.
+Data management is the process of storing, moving, and securing workload data. By optimizing data management, you can align spending to data priority and derive more value from your data. Consider the following strategies for data management.
 
 #### Optimize data lifecycle management
 
-Data lifecycle management is the process of managing data throughout its lifecycle. Stages of the lifecycle include data creation (or acquisition), storage, usage, sharing, retention, and disposal (deletion or archiving). The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies.
+It's important to manage data throughout its lifecycle. Stages of the lifecycle include data creation (or acquisition), storage, usage, sharing, retention, and disposal (deletion or archiving). The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies.
 
 Data storage has three critical cost components:
 
@@ -67,7 +67,7 @@ Data storage has three critical cost components:
 
 - *Transaction cost*: Costs linked to data operations, such as write operations, read operations, and data retrieval (per gigabyte). Reading and writing data might have different costs.
 
-- *Latency cost*: The speed or delay in accessing the data.
+- *Latency cost*: The expense associated with the speed or delay in accessing the data.
 
 The following considerations are foundational to data lifecycle management:
 
@@ -95,7 +95,14 @@ Segmentation can help optimize performance and cost. For example, you can place 
 
 Alternatively, you can group similar types of data together and run them on the same resource. This strategy is beneficial when multiple data types have similar usage patterns or require similar storage solutions.
 
-By consolidating the data onto a single resource, you can reduce costs by eliminating the need for separate resources for each data type and potentially optimize resource utilization. Grouping similar data together can also simplify data management and improve efficiency in data processing. For more information, see [Recommendations for consolidation](consolidation.md).
+Consolidating data onto a single resource can:
+
+- Reduce costs by eliminating the need for separate resources for each data type.
+- Potentially optimize resource utilization.
+- Simplify data management.
+- Improve efficiency in data processing.
+
+For more information, see [Recommendations for consolidation](consolidation.md).
 
 #### Minimize data transfer
 
@@ -121,7 +128,7 @@ Finding strategies to decrease the amount of data that you store can help reduce
 
 - *Delete unneeded data*: Implement policies to streamline the process of storing relevant information. Evaluate the retention period for backups and snapshots, and delete data that you no longer need. You might want to have a process that leads up to eventual data deletion, such as first archiving data and enabling a soft-delete period. Always consider recoverability before deleting data.
 
-- *Deduplicate data*: Implement data deduplication techniques to eliminate redundant data. Deduplication reduces storage requirements by storing only unique data blocks, so you save costs. Use hashing algorithms and comparison of data chunks. Regularly run deduplication processes to identify and eliminate duplicate pieces of data.
+- *Deduplicate data*: Implement data deduplication techniques to eliminate redundant data. Deduplication reduces storage requirements by storing only unique data blocks, so you save costs. Use hashing algorithms and comparison of data chunks. Regularly run deduplication processes to identify and eliminate duplicate data.
 
 - *Optimize user behavior*: In workloads that collect user-generated data, educate users on the importance of efficient data storage. Encourage them to regularly review and delete unnecessary files and data. Implement storage quotas or pricing models that discourage excessive data storage.
 
@@ -169,7 +176,7 @@ File formats influence cost optimization by optimizing input/output (I/O) patter
 
 Here are considerations for common formats:
 
-- *Avro*: The Avro file format is a good choice when you're dealing with write-heavy I/O patterns or when query patterns necessitate fetching multiple rows of records in their entirety. Avro's serialization and deserialization processes are efficient, making it compatible with message buses like Kafka that produce a series of events and messages in quick succession.
+- *Avro*: The Avro file format is a good choice when you're dealing with write-heavy I/O patterns or when query patterns necessitate fetching multiple rows of records in their entirety. Avro's serialization and deserialization processes are efficient, so it's compatible with message buses like Kafka that produce a series of events and messages in quick succession.
 
 - *Parquet and Optimized Row Columnar (ORC)*: The Parquet and ORC file formats excel in scenarios of read-heavy I/O patterns or when the query patterns focus on specific columns of the records.
 
@@ -203,7 +210,7 @@ Here are a few use cases:
 
 You can use a rule-based policy to transition blob data to the appropriate access tiers or to expire data at the end of its lifecycle. This policy allows you to transition blobs from cool (or cold) to hot immediately when they're accessed, to optimize for performance.
 
-**Backups:** The Azure Backup service provides multiple capabilities to streamline your backups. It offers features such as native database backup compatibility and storage backup through disk snapshots. It supports virtual machine backup, long-term retention, and backup management.
+**Backups:** The Azure Backup service provides multiple capabilities to streamline your backups. It offers features such as native database backup and storage backup through disk snapshots. It supports virtual machine backup, long-term retention, and backup management.
 
 Here are some of the service's features:
 
@@ -232,7 +239,7 @@ For more information, see [Data lifecycle management](/azure/cloud-adoption-fram
 ## Related links
 
 - [Recommendations for consolidation](consolidation.md)
-- [Microsoft Purview](https://learn.microsoft.com/purview/purview)
+- [Microsoft Purview](/purview/purview)
 - [Data access tiers](/azure/storage/blobs/access-tiers-overview)
 - [Data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview)
 - [Azure Backup Storage](/azure/backup/backup-azure-reserved-pricing-optimize-cost)
