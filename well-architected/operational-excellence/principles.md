@@ -38,7 +38,7 @@ At the same time, DevOps practices apply clear lines of ownership and accountabi
 
 DevOps optimizes operational tasks so that they're effective but not burdensome. To reap the full benefit of DevOps, the culture should optimize processes through technology and have processes for people in the organization to promote transparent communication.
 
-|Approach  |Benefit  |
+|Approach  |Benefits  |
 |---------|---------|
 |**Use common systems and tools** that promote a collaborative environment for communication and tracking progress.      |  Common tools and processes enable **transparent communication**. Both development and operations teams benefit from situational awareness across various environments, common support issues, and overall challenges and wins. <br><br> Teams will already be familiar with existing escalation paths if there's an incident. <br><br>  A shared backlog makes priorities, such as working on new features or fixing bugs, clear.   |
 |Build a **continuous learning and experimentation mindset** throughout the development cycle.   <br><br> **Support knowledge sharing** across teams and maintain documentation for reuse. <br><br> Conduct blameless analysis and debrief post-release and/or post-incident reviews.  |  Through experimentation mechanisms, such as A/B testing and developing proofs of concept, you can encourage innovation while keeping costs low.  <br><br> Share knowledge through collaboration that makes the team proficient in design approaches, tooling, and processes. <br><br> Doing retrospectives after a project helps **identify areas for improvement** and celebrate success.      |
@@ -53,8 +53,8 @@ DevOps optimizes operational tasks so that they're effective but not burdensome.
 
 The development team is responsible for addressing workload issues prior to release with minimal friction. Be mindful of developer efficiency and optimize for fast turnaround cycles, from coding to testing results. Implement effective and right-sized processes that plan and standardize technical activities and also drive consensus within the team and the stakeholders.
 
-|Approach|Benefits|
-|-|-|
+|Approach  |Benefits  |
+|---------|---------|
 |**Document workload features** and capture customer benefits.  <br><br>  Derive **scope and detailed functional and nonfunctional requirements** of the architecture. <br><br> **Create sizing estimation models** to report on scope and cost of the tasks involved.   |Good specifications **cut operational costs and chances of failure** by supporting more productive and streamlined development cycles. <br><br>  Developers understand the **technical design, goals, and completion criteria** before they start the coding cycle. <br><br>  Good documentation facilitates repeatable **communication** and **onboarding** of new team members.      |
 |Use an **industry standard software development methodology that's appropriately tuned** for the needs of your workload and team size. <br><br> **Maintain a backlog that's shared among all roles**.      | Adoption of a well-known methodology **sets the rhythm of the project**. It removes process ambiguities by giving team members clear expectations and accountability. <br><br> By tracking against a common list, **tasks can be refined and prioritized** with standard practices. The project will have better chances of being delivered on time. <br><br> Standard methodologies help with **risk management**. With granular milestone reviews, developers can address potential issues before they become showstoppers.      |
 |**Use unified source control** for all code, scripts, deployment templates, pipeline definitions, and related documentation.<br><br> The branching strategy must support friction-free release of independent and interdependent features, bug fixes, and hotfixes. <br><br>  Use shared knowledge across the organization to build your branching strategy and deployment processes.     | Proper use of source control is crucial in supporting **concurrent changes** and versioning.  <br><br> Maintain a repeatable workflow for releasing changes of various sizes and risks, conduct peer reviews as part of the process, and keep an audit trail.     |
@@ -74,8 +74,8 @@ Monitoring operations is key in proactive maintenance of the application, qualit
 
 A crucial aspect of monitoring is application health modeling that helps you anticipate issues before they become incidents and affect customer experience. Efficient monitoring reduces reactive cycles spent on incident management.
 
-|Approach|Benefits|
-|-|-|
+|Approach  |Benefits  |
+|---------|---------|
 |**Build a monitoring system with its own stack and flows**. <br><br> Treat the monitoring system as a dimension of the workload that's decoupled from its utility. The stack must cover all layers, including infrastructure, application health, and build and release processes. <br><br> **Capturing or sampling business data** is out of scope for observability implementations. | Decouple monitoring and workload stacks to **separate functional requirements and observability requirements** and make independent evolution possible. Changes in code shouldn't affect monitoring, and vice versa. <br><br> Because observability requirements are separate from functional requirements, **business data** **won't be disrupted** by monitoring configuration changes or outages.  |
 |**Drive consistency** in the collection process for each **type of data source**. <br><br> Standardize instrumentation in code by using industry standards for telemetry, collection of infrastructure metrics, and tooling. | Consistency prevents variance in sensing and measurement because familiarity across similar resources **reduces time spent correlating and analyzing data**. You have a holistic perspective to anticipate issues. <br><br>  |
 |**Emit telemetry** from application code that correlates the key points of the execution flow and gives an end-to-end view at different levels of granularity.        | Prioritize actions based on the severity level, and understand the context given its verbosity. This information is crucial for troubleshooting purposes.  |
@@ -94,8 +94,8 @@ Build a workload supply chain that enables you to consistently reach the goal of
 
 The workload team is accountable for the supply chain as it relates to their own workload.
 
-|Approach|Benefits|
-|-|-|
+|Approach  |Benefits  |
+|---------|---------|
 |**Use Infrastructure as Code (IaC)** to define the repeatable aspects of the supply chain that are production ready. <br><br> Prefer declarative approaches over imperative methods.       | Declarative IaC technologies are designed with automation and reusability in mind. You can offload infrastructure deployments from individuals into tooling and achieve consistent quality. <br><br> From an infrastructure perspective, having fewer technology choices removes variance in tooling and makes configuration drift easy to detect. Maintenance will also be easier. If you align choices with the team's existing skill set, the team can easily adopt them. |
 |**Prepare the team to use the chosen IaC technology**. Learn about its extensibility model, capabilities, and limitations. <br><br> Take advantage of specialization within the team and shared knowledge within the organization.| Upskilling increases productivity and fosters an environment of collaboration through shared learning.<br><br> You can fill gaps with training instead of hiring.   |
 |**Follow software recommendations** for IaC development and maintenance. <br><br>Modularize in moderation. Avoid custom or low-value abstractions. <br><br>  Follow a layered approach to reflect different lifecycles. Form foundational layers where the lower layers stay constant and the upper layers change as needed.<br><br> Deployment artifacts, such as application binaries, IaC templates, and parameters, are part of the attack surface. Apply assurances, such as secret management, access control, and other principles of the Security pillar. | Artifacts experience the same level of engineering rigor as application code. Quality controls through peer reviews and testing give you confidence in deployment.<br><br> A layered approach makes maintenance easier and creates boundaries that establish clear lines of responsibility.<br><br>Adding security controls to artifacts helps harden the system during the deployment process. |
@@ -114,8 +114,8 @@ The workload might have workflows with processes that involve team members doing
 
 Through automation, you save time, effort, and money, and you avoid mistakes.
 
-|Approach|Benefits|
-|-|-|
+|Approach  |Benefits  |
+|---------|---------|
 |**Evaluate all workflows** against criteria that's at the right level of complexity, effort, frequency, accuracy, timeliness, and lifespan. <br><br> **Automate workflows** based on that evaluation and prioritize the workflows with the highest expected returns.<br><br>**Remove redundant workflows** or add value to justify human effort. | You can reinvest team capacity in higher value work and increase productivity and consistency.<br><br> Building an inventory of workflows ensures that you automate the right tasks. Removing redundant tasks reduces complexity and errors. |
 |Be explicit about your decision when you evaluate whether to **build custom tooling or buy software**.  <br><br> Reserve building automation for highly specialized and high-value work.   | By buying off-the-shelf software and taking advantage of the support contract, you save on maintenance costs. <br><br> By building software, you have more control and can cater to use cases that are unique to your team and workload. However, there's a cost impact. <br><br> Choice of tooling brings a level of standardization to your operations. With training, you can achieve a uniform level of readiness for adoption. |
 |Design your workload components to **support automation capabilities**.     | Avoid the situation where lack of automation in your system design promotes the anti-pattern of repetitive tasks, slows down growth, and starts accumulating technical debt. |
@@ -131,8 +131,8 @@ During the development cycle, workload artifacts go through many changes as they
 
 The deployment process must follow a standard operating procedure. Any change must be deployed with the same level of rigor. This principle applies equally to code, configuration, and all related artifacts. The key is to apply safe practices as early as possible so that you have predictability in production. Even if errors reach the customers, you should be able to roll out recovery changes as soon as possible.
 
-|Approach|Benefits|
-|-|-|
+|Approach  |Benefits  |
+|---------|---------|
 |**Standardize the process to deploy any change by using automated deployment processes, such as pipelines**. <br><br> All environments must use pipelines. <br><br> Classify assets and versions per environment to make them **easily** traceable and identifiable.        | **Consistent deployment methods reduce** issues caused by process errors and variance and allow you to focus your effort on the workload concerns. <br><br>Standardization ensures that the deployment is completed safely, reliably, and with repeatability. <br><br> Classification makes it easy to view logs of previous deployments and issues that have occurred. You might be able to use that information to expedite rollback and roll-forward operations.|
 |Deploy **small incremental updates** at a regular cadence. | Frequent, well-tested, small updates make **validation of the release easier**. <br><br>Troubleshoot faster with **minimal customer impact** due to a smaller footprint. |
 |**Test updates rigorously by using different mechanisms** throughout the development lifecycle.    | **Catch issues in the early** stages of development. Iterative fixes and consistent deployment practices cause issues to taper off by the time the update is ready for production.|
