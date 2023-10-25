@@ -150,17 +150,17 @@ The best way to get rid of waste is to avoid it in the first place. Use strategi
 
 - *Keep things simple*: Simplify your infrastructure and minimize complexity to help reduce costs. Focus on using only the necessary resources and services that meet your requirements.
 
-## Azure facilitation - Needs edit 
+## Azure facilitation
 
-**Eliminating unused application features**: Azure Monitor and Azure Application Insights helps you monitor the usage of your application and identify areas what areas are being used and which ones aren't. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
+**Eliminate unused application features**: You can use Azure Monitor and Application Insights to monitor the usage of your application and identify areas that are or aren't used. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
 
-**Eliminating unused resources**: Azure Advisor provides recommendations to identify and eliminate unused resources. It analyzes your resource usage and provides suggestions on resources that can be safely deleted or scaled down.
+**Eliminate unused resources**: Azure Advisor provides recommendations to identify and eliminate unused resources. It analyzes your resource usage and provides suggestions on resources that can be safely deleted or scaled down.
 
-**Finding orphaned resources:** Azure Monitor supports Workbooks. These workbooks allow you to create custom reports that can find and report orphaned resources across a defined scope.
+**Find orphaned resources:** Azure Monitor supports Workbooks. You can use workbooks to create custom report that finds and reports orphaned resources across a defined scope.
 
-**Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Microsoft Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
+**Eliminate unused reservations and savings plans**: Use the Microsoft Cost Management and Billing tools to eliminate unused reservations and savings plans. These tools provide insights into your reservation and savings plan usage, so that you can identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the **Reservations** section.
 
-**Eliminating idle resources in disaster recovery environments**: Azure load balancers can distribute load across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. It can help reduce costs by minimizing the usage of idle resources. Azure Autoscale allows you to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. It helps ensure that resources are allocated efficiently and cost-effectively.
+**Eliminate idle resources in disaster recovery environments**: Azure load balancers can distribute loads across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. Resource shutdowns help reduce costs by minimizing the usage of idle resources. You can use the Azure autoscale feature to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help to ensure that resources are allocated efficiently and cost-effectively.
 
 ## Related links
 
