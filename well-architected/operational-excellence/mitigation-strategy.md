@@ -46,7 +46,7 @@ The following sections provide detailed recommendations for these phases. These 
 To quickly identify issues with deployments, you need robust testing and [observability practices](observability.md) as they relate to deployments. To help detect anomalies quickly, you can complement your workload monitoring and alerting by taking the following steps:
 
 - Use an application performance management tool.
-- Enable logging through instrumentation. <!-- Link to Operational Excellence instrumentation guide -->
+- Enable logging through [instrumentation](instrument-application.md). 
 
 Smoke testing and other quality testing should happen at each phase of your rollout. Successful tests in one deployment group shouldn't influence decisions to test in subsequent groups.
 
@@ -185,8 +185,6 @@ Also consider these other potential tradeoffs that are associated with mitigatio
 - [Recommendations for designing a workload development supply chain](workload-supply-chain.md)
 - [Recommendations for performing failure mode analysis](../reliability/failure-mode-analysis.md)
 - [Recommendations for safe deployment practices](safe-deployments.md)
-
-<!-- OpEx safe deployment guide -->
 
 ## Operational Excellence checklist
 
