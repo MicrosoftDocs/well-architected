@@ -32,11 +32,11 @@ Personnel typically create the most significant expense in a workload. This unde
 
 Setting personnel time optimization targets is a process of establishing clear, measurable goals. These targets serve as guidelines for desired improvements in tasks and functions. You can use these benchmarks to evaluate outcomes against the targets. First, define the metrics for measuring the success of personnel time optimization efforts. Determine the specific objectives that you want to achieve through optimization. Example objectives might be to reduce time spent on administrative tasks or to reduce the time it takes to respond to customer inquiries. To set targets for personnel time optimization, consider the following strategies:
 
-- *Select quantitative metrics:* Choose metrics that align with your objectives and can be measured accurately. Consider metrics like time saved, productivity increases, efficiency improvements, and task completion time.
+- *Select quantitative metrics*: Choose metrics that align with your objectives and can be measured accurately. Consider metrics like time saved, productivity increases, efficiency improvements, and task completion time.
 
 - *Gather qualitative metrics*: In addition to quantitative metrics, gather feedback from personnel to measure their satisfaction with their roles. This feedback can provide valuable insights into the effects of personnel time optimization efforts on employee morale and engagement.
 
-- *Set targets:* Set realistic and achievable targets for each selected metric. These targets should be based on the current performance levels and the desired level of improvement.
+- *Set targets*: Set realistic and achievable targets for each selected metric. These targets should be based on the current performance levels and the desired level of improvement.
 
 ### Optimize development time
 
