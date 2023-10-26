@@ -39,20 +39,4 @@ Start your assessment with the [**Azure Well-Architected Review**](/assessments/
 
 - [**Azure Advisor score**](/azure/advisor/azure-advisor-score) is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. You can categorize the overall score into the core pillars of the Well-Architected Framework. Use the score to prioritize the actions that yield the biggest improvement.
 
-## Get started with this video series
 
-Learn how to architect successful workloads on Azure by using the Well-Architected Framework:
-
-> [Architect successful workloads on Azure](/shows/azure-enablement/architect-successful-workloads-on-azure--introduction-ep-1-well-architected-series/player)
-
-For more information about resiliency, see:
-
-> [Improve the reliability of your Azure workloads](/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player)
-
-Learn to ask the right questions about secure application development on Azure:
-
-> [Secure application development on Azure](/shows/azure-enablement/ask-the-right-questions-about-secure-application-development-on-azure/player)
-
-Adopt an optimization mindset and start evaluating your Azure costs:
-
-> [Optimize your Azure costs](/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player)

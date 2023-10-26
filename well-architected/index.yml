@@ -74,9 +74,9 @@ sections:
             - Design principles include a set of recommended approaches and benefits.
             - Design review checklist drive action through codified recommendations. 
             - Design tradeoffs with other pillars. 
-            - Recommedations on building key strategies for fulfilling the principles of design.
+            - Recommendations on key strategies that fulfill the principles of design.
             - Design patterns based on proven, common architecture patterns, mapped to pillar.
-            - Azure Well-Architected Review has been refreshed to aligned with the new content.  
+            - Azure Well-Architected Review has been refreshed to align with the new content.  
  
 # cards section (4)
   - componentType: grid
@@ -88,7 +88,7 @@ sections:
       url: ./reliability/index.yml 
       icon: 
         componentType: image
-        src: _images/resiliency.svg                         
+        src: _images/reliability.svg                         
     - componentType: icon-card
       title: Security
       summary: Protect the workload from attacks by maintaining confidentiality and data integrity. 
@@ -102,21 +102,21 @@ sections:
       url: ./cost-optimization/index.yml
       icon: 
         componentType: image
-        src: _images/cost.svg             
+        src: _images/cost-optimization.svg             
     - componentType: icon-card
       title: Operational Excellence
       summary: Reduce issues in production by building holistic observability and automated systems. 
       url: ./operational-excellence/index.yml
       icon: 
         componentType: image
-        src: _images/devops.svg         
+        src: _images/operational-excellence.svg         
     - componentType: icon-card
       title: Performance Efficiency
       summary: Adjust to changes in demands placed on the workload by through horizontal scaling and testing changes before deploying to production. 
       url: ./performance-efficiency/index.yml    
       icon: 
         componentType: image
-        src: _images/scalability.svg   
+        src: _images/performance-efficiency.svg   
      
   # Summary cards grid
   - componentType: grid

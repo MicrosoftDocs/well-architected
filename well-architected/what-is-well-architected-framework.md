@@ -79,7 +79,8 @@ For more information, see [About the Well-Architected Framework workloads](./wor
 
 ### Service guides
 
-Service guides are instrumental in decision-making related to the individual Azure components that reside within the workload. They offer the core features and capabilities of each service that are necessary to attain a well-architected state. It's important to note that these guides aren't configuration guides. Also, they aren't a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
+Service guides are instrumental in decision-making related to the individual Azure components that reside within the workload. They offer the core features and capabilities of each service that are necessary to attain architectural excellence. It’s important to note that these guides aren’t configuration guides. Also, they aren’t a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
+
 
 For more information, see [the available guides](./service-guides/index.yml).
  
