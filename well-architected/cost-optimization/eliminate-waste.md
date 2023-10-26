@@ -105,7 +105,7 @@ Eliminating wasteful platform features involves identifying and removing unneces
 
 ### Eliminate waste from prepaid agreements
 
-Maximizing the usage of prepaid plans starts with buying the right plan and fully utilizing it. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions.
+Maximizing the usage of prepaid plans starts with buying the right plan and fully utilizing it. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions. To eliminate waste from prepaid agreements, consider the following strategies:
 
 - *Monitor utilization*: Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
 - *Modify the prepaid plan*: Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
