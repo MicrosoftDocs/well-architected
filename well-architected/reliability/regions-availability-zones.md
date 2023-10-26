@@ -84,7 +84,7 @@ The [shared responsibility principle](/azure/security/fundamentals/shared-respon
 
 Microsoft provides availability zones and regions to give you flexibility in how you design your solution to meet your requirements. When you use managed services, Microsoft takes on more of the management responsibilities for your resources, which might even include data replication, failover, failback, and other tasks related to operating a distributed system.
 
-Regardless of the approach you use, your own code needs to follow [recommended practices for handling transient failures](handle-transient-faults.md). <!-- Link to RE:06 --> These practices are even more important in a multi-zone or multi-region solution, because failover between zones or regions usually requires that your application retry connections to services.
+Regardless of the approach you use, your own code needs to follow [recommended practices for handling transient failures](handle-transient-faults.md). These practices are even more important in a multi-zone or multi-region solution, because failover between zones or regions usually requires that your application retry connections to services.
 
 ### Identify key business and workload requirements
 
