@@ -30,15 +30,15 @@ The goal of optimizing environment costs is to find the right balance of value, 
 
 ### Assess environment value
 
-Understand the value of each environment. Value is more than revenue generation. *Value* refers to the effect on business, user satisfaction, and strategic alignment with organizational objectives. Analyze the value of an environment. Prioritize spending based on value to ensure alignment with the workload goals. To assess the value of each environment, consider the following factors.
+Assessing the value of each environment means understanding its broader impact on business, gauging user satisfaction, and determining how it aligns with overarching organizational goals. This assessment helps you make informed decisions about resource allocation and align cost with environmental priorities. The essence of value extends beyond how much revenue an environment generates. When evaluating an environment's value, you need to prioritize spending in a manner that resonates with the goals of the workload. To assess the value of each environment, consider the following factors.
 
-**The user**: Consider who uses each environment and what they need from it. For example, customers use the production environment, which must be reliable and meet specific SLAs for performance and uptime.
+**Consider the user**: Consider who uses each environment and what they need from it. For example, customers use the production environment, which must be reliable and meet specific SLAs for performance and uptime.
 
 On the other hand, the development environment is mainly for the workload team, such as developers and testers. This environment doesn't have to meet customer-facing SLAs, but it should have the necessary tools and resources for the team to work effectively.
 
 When you understand the unique needs of users in each environment, you can better allocate resources and avoid extra costs, which ensures that each environment is functional and cost effective.
 
-**Alignment with organizational measures of value**: Align your cost-cutting efforts with your organization's priorities, like profit or employee satisfaction. For each environment, understand how success is defined, so you can keep your actions on target. For example, if your organization focuses on profit maximization or employee satisfaction, align your spending decisions with those metrics.
+**Align with organizational measures of value**: Align your cost-cutting efforts with your organization's priorities, like profit or employee satisfaction. For each environment, understand how success is defined, so you can keep your actions on target. For example, if your organization focuses on profit maximization or employee satisfaction, align your spending decisions with those metrics.
 
 ### Determine environment costs
 
