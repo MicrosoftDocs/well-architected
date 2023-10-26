@@ -60,7 +60,7 @@ Identify and remove underutilized or unnecessary features in your application to
 
 - *Removal*: Consider the planned end of life of an application feature based on data. Reasons for feature removal might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for the removal, which might involve refactoring the code, updating dependencies, or reorganizing the UI.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, operations, and security in your application.
+    > ![Risk icon](../_images/risk.svg) **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, operations, and security in your application.
 
 - *Reinvest*: Some application features might not add enough value in their current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes. Consider factors such as development resources, dependencies, and potential effect on the application.
 
@@ -88,7 +88,7 @@ To remove unused resources in a workload, consider these steps:
 
 1. *Take inventory*: Conduct a thorough inventory of all resources within the workload across environments.
 
-1. *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you might delete a virtual machine, but its associated storage account isn't removed. Review your workload to identify resources that are no longer needed or are orphaned.
+1. *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you might delete a virtual machine, but its associated storage account isn't removed. Review your workload to identify unneeded or orphaned resources.
 
 1. *Remove idle components*: There’s typically a cost associated with a deployed resource. Even if the resource allows you to stop or reallocate, you might continue to pay for the resource. Consider removing idle resources. If you need the data, back it up first and then remove the resource. You’re better off redeploying the resource and restoring the data than allowing the resource to remain idle.
 
@@ -160,7 +160,7 @@ The best way to get rid of waste is to avoid it in the first place. Use strategi
 
 **Eliminate unused reservations and savings plans**: Use Microsoft Cost Management tools to eliminate unused reservations and savings plans. These tools provide insights into your reservation and savings plan usage, so that you can identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the **Reservations** section.
 
-**Eliminate idle resources in disaster recovery environments**: Azure load balancers can distribute loads across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. Resource shutdowns help reduce costs by minimizing the usage of idle resources. You can use the Azure autoscale feature to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help to ensure that resources are allocated efficiently and cost-effectively.
+**Eliminate idle resources in disaster recovery environments**: Azure load balancers can distribute loads across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. Resource shutdowns help reduce costs by minimizing the usage of idle resources. You can use the Azure autoscale feature to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help you allocate resources efficiently and cost-effectively.
 
 ## Related links
 
