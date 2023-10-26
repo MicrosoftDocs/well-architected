@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:13](checklist.md)| Optimize personnel time. Align the time personnel spends on tasks with the priority of the task. The goal is to reduce the time spent on tasks without degrading the outcome. Optimization efforts should include minimizing noise, reducing build times, high fidelity debugging, and production mocking.| 
 |---|---| 
 
-This guide describes the recommendations for optimizing personnel time. This optimization is a strategic process of maximizing the productivity and efficiency of employees that are designing, implementing, and operating the workload during their working hours. It involves aligning their skills, strengths, and tasks in a manner that ensures that every hour they spend at work is used most effectively. The goal is to eliminate wasted personnel potential and capabilities. Failure to optimize personnel time can lead to employee burnout, reduced competitive edge, and reduced productivity.
+This guide describes the recommendations for optimizing personnel time. This optimization is a strategic process of maximizing the productivity and efficiency of employees that design, implement, and operate the workload during their working hours. It involves aligning their skills, strengths, and tasks in a manner that ensures that every hour they spend at work is used most effectively. The goal is to eliminate wasted personnel potential and capabilities. Failure to optimize personnel time can lead to employee burnout, reduced competitive edge, and reduced productivity.
 
 **Definitions**
 
@@ -30,7 +30,7 @@ Personnel typically create the most significant expense in a workload. This unde
 
 ### Set optimization targets
 
-Setting personnel time optimization targets is a process of establishing clear, measurable goals that indicate how much improvement is desired in personnel tasks. These targets serve as guidelines for desired improvements in tasks and functions. You can use these benchmarks to evaluate outcomes against the targets. First, define the metrics for measuring the success of personnel time optimization efforts. Determine the specific objectives that you want to achieve through optimization. Example objectives might be to reduce time spent on administrative tasks or to reduce the time it takes to respond to customer inquiries. To set optimization targets for personnel time optimization, consider the following strategies:
+Setting personnel time optimization targets is a process of establishing clear, measurable goals. These targets serve as guidelines for desired improvements in tasks and functions. You can use these benchmarks to evaluate outcomes against the targets. First, define the metrics for measuring the success of personnel time optimization efforts. Determine the specific objectives that you want to achieve through optimization. Example objectives might be to reduce time spent on administrative tasks or to reduce the time it takes to respond to customer inquiries. To set targets for personnel time optimization, consider the following strategies:
 
 - *Select quantitative metrics:* Choose metrics that align with your objectives and can be measured accurately. Consider metrics like time saved, productivity increases, efficiency improvements, and task completion time.
 
@@ -48,7 +48,7 @@ When you design and customize features, keep them lean and simple. Avoid unneces
 
 #### Reduce build times
 
-Reducing build times is the process of minimizing the time it takes to compile and generate a deployment. Shorter build times enable developers to spend less time waiting for builds to complete and allows them to focus on writing code and delivering features. It also helps ensure that developers receive feedback on their code changes more quickly. Quicker feedback allows them to iterate and fix issues faster, which supports the Agile development model. Faster build times facilitate more frequent builds, enabling teams to adopt Agile development practices like continuous integration and continuous delivery (CI/CD). Here are some strategies for reducing build times:
+Reducing build times is the process of minimizing the time it takes to compile and generate a deployment. Shorter build times enable developers to spend less time waiting for builds to finish and allows them to focus on writing code and delivering features. Reducing build times also helps ensure that developers receive feedback on their code changes more quickly. Quicker feedback allows them to iterate and fix issues faster, which supports the Agile development model. Faster build times facilitate more frequent builds, enabling teams to adopt Agile development practices like continuous integration and continuous delivery (CI/CD). Here are some strategies for reducing build times:
 
 - *Optimize build configurations*: Review the build configuration settings and eliminate unnecessary steps or processes that add overhead to the build process. Checkpointing builds and combining partial builds with prebuilt builds can help reduce build times and improve efficiency. This approach enables you to reuse previously built components and build only the necessary parts, which leads to faster build times and reduced time investment.
 
@@ -68,7 +68,7 @@ By mocking components or services, developers can isolate their code for focused
 
 - *Mocking frameworks*: Use specialized mocking frameworks or libraries that enable you to create mock objects, stubs, or fakes to replace dependencies.
 
-- *Dependency injection*: Design your application to utilize dependency injection, which enables easy substitution of real dependencies with mock objects during testing or debugging.
+- *Dependency injection*: Design your application to use dependency injection, which enables easy substitution of real dependencies with mock objects during testing or debugging.
 
 - *Service virtualization*: Use service virtualization tools or techniques to simulate the behavior of external services or APIs. Doing so enables developers to test integrations without accessing the real services.
 
@@ -84,7 +84,7 @@ The goal is for developers to get fast feedback on changes. Make necessary techn
 
 *Developer workstations*: An optimal developer workstation should have a suitable integrated development environment (IDE). A good developer workstation boosts developer efficiency, reducing the time and resources needed for various tasks. A good IDE provides code completion and syntax highlighting that's tailored to the programming language. It should also support version control like Git. A well-equipped IDE enables developers to pinpoint and fix issues quickly during development, which reduces debugging time.
 
-*Developer environments*: Developers' environments shouldn't be too constrained. They should have the permissions necessary to complete tasks without undue restrictions so they can work efficiently and effectively.
+*Developer environments*: Developers' environments shouldn't be too constrained. Developers should have the permissions necessary to complete tasks without undue restrictions so they can work efficiently and effectively.
 
 #### Optimize preproduction environments
 
@@ -168,7 +168,7 @@ Analyzing incidents can prevent recurrence and improve reaction times. Use past 
 
 #### Implement robust governance
 
-Standardization reduces errors and rework to ensure consistent quality and cost optimization. Strengthen compliance and standardization within your organization. Automate compliance checks and advocate for standardized solutions, architectures, and blueprints. To streamline decision-making, minimize choices that don't align with organizational constraints or SLAs.
+Standardization reduces errors and rework to ensure consistent quality and cost optimization. Strengthen compliance and standardization within your organization. Automate compliance checks, and advocate for standardized solutions, architectures, and blueprints. To streamline decision-making, minimize choices that don't align with organizational constraints or SLAs.
 
 ### Optimize personnel skills
 
@@ -204,7 +204,7 @@ These features and tools provided by Azure help developers save time and increas
 
 **Optimizing operations.** Azure supports infrastructure as code (IaC) capabilities, which enable you to define and manage your infrastructure by using code. Doing so helps reduce complexity and improves the adaptability or your systems.
 
-Azure Monitor is a comprehensive monitoring service that provides visibility into the performance and health of applications and infrastructure on Azure. You can use it to collect telemetry data, set up alerts, and gain real-time insights. By using Azure Monitor, you can proactively identify and resolve issues, which enables you to reduce the time you spend on troubleshooting.
+Azure Monitor is a comprehensive monitoring service that provides visibility into the performance and health of applications and infrastructure on Azure. You can use it to collect telemetry, set up alerts, and gain real-time insights. By using Azure Monitor, you can proactively identify and resolve issues, which enables you to reduce the time you spend on troubleshooting.
 
 [Azure Automation](/azure/automation/) provides a way to automate manual, repetitive tasks on Azure. You can use it to create and manage runbooks, which are sets of instructions for performing specific tasks. By automating routine tasks, you can save time and free up personnel to focus on more critical activities.
 
