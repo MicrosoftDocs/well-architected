@@ -38,7 +38,9 @@ If you haven’t implemented scaling, see guidance on [scaling the workload](../
 
 ### Evaluate scale out versus scale up
 
-Evaluate the cost efficiency of using a scale out or scale up approach for each scale unit. Determine the most cost-efficient choice based on service-tier pricing, workload traits, acceptable downtime, and the cost model. If it's cheaper for your needs, consider using more expensive, powerful instances, but using fewer instances. Alternatively, choose a less expensive tier and more instances if this strategy aligns with the workload requirements. To determine the most cost-effective method, use data from the environment or proxy data to test the two options. Evaluate the cost effectiveness of each option based on the data gathered. To evaluate the most cost efficient approach, consider these recommendations:
+Evaluating scale out versus scale up involves determining the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out) based on various factors like pricing, workload requirements, and acceptable downtime. Choosing the right scaling approach can lead to significant savings, ensuring you pay for only what you need while still meeting performance and reliability standards. 
+
+The goal is to determine the most cost-efficient choice based on service-tier pricing, workload traits, acceptable downtime, and the cost model. For some, it might be more economical to opt for more expensive instances in fewer numbers. Conversely, for others, a cheaper tier with more instances might be better. To make an informed decision, you need to analyze real or representative data from your setup and evaluate the relative cost merits of each strategy. To evaluate the most cost efficient approach, consider these recommendations:
 
 - *Gather usage data*: Collect actual production data or proxy data that represents the workload usage patterns and resource utilization. This data should include metrics such as CPU usage, memory usage, network traffic, and any other relevant metrics that affect the cost of scaling.
 
