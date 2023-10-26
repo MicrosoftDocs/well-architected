@@ -124,12 +124,6 @@ An overly aggressive response strategy can lead to false alarms or unnecessary e
 
 Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
 
-<!--
-## Example
-
-Placeholder for the IaaS baseline architecture (WIP)
--->
-
 ## Related links
 
 - [Recommendations for designing and creating an observability framework](observability.md)
