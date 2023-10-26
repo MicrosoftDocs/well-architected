@@ -71,9 +71,9 @@ This scenario uses the [reliable web app pattern reference architecture](/azure/
 
 :::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow that's based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
-<!-- ### Workload
-There are comments here in the original Sharepoint doc. It sounds like this section is a placeholder for future ideas. Leaving it just in case.
-Relecloud (eCommerce, line-of-business web app) -->
+### Workload
+
+This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app is hosted in Azure using PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis. 
 
 #### User flows
 
