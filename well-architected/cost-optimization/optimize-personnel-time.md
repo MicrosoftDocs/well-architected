@@ -202,7 +202,7 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 These features and tools provided by Azure help developers save time and increase productivity in their development workflows.
 
-**Optimizing operations.** Azure supports infrastructure as code (IaC) capabilities, which enable you to define and manage your infrastructure by using code. Doing so helps reduce complexity and improves the adaptability or your systems.
+**Optimizing operations.** Azure supports infrastructure as code (IaC) capabilities, which enable you to define and manage your infrastructure by using code. Doing so helps reduce complexity and improves the adaptability of your systems.
 
 Azure Monitor is a comprehensive monitoring service that provides visibility into the performance and health of applications and infrastructure on Azure. You can use it to collect telemetry, set up alerts, and gain real-time insights. By using Azure Monitor, you can proactively identify and resolve issues, which enables you to reduce the time you spend on troubleshooting.
 
