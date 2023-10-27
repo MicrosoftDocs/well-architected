@@ -7,6 +7,12 @@
         href: whats-new.md
       - name: What is the Well-Architected Framework
         href: what-is-well-architected-framework.md
+      - name: How to be a profient architect
+        items:
+        - name: Architect's fundamentals
+          href: architect-fundamentals.md
+        - name: Architect's checklist
+          href: 
     - name: Pillars
       items: 
       - name: Overview
