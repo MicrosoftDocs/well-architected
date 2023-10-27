@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:05](checklist.md)| **Optimize scaling and partitioning**. Incorporate reliable and controlled scaling and partitioning. The scale unit design of the workload is the basis of the scaling and partitioning strategy.|
+|[PE:05](checklist.md)| Optimize scaling and partitioning. Incorporate reliable and controlled scaling and partitioning. The scale unit design of the workload is the basis of the scaling and partitioning strategy.|
 |---|---|
 
 This guide describes the recommendations for scaling and partitioning a workload. Scaling and partitioning are important strategies for achieving performance efficiency in workloads. Scaling is the ability to increase or decrease the resources allocated to a workload based on demand. Partitioning involves dividing the workload into smaller, manageable units to distribute data and processing across multiple resources. A workload that doesn't scale or partition might experience poor performance in high-demand periods and underutilized capacity in low-demand periods.
@@ -31,7 +31,7 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms. |
 | Partitioning | The process of physically dividing data into separate data stores.|
 | Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
-| Scale unit| A group of resources that must scale proportionately together to maintain balanced performance. |
+| Scale unit| A group of resources that scale proportionately together.  |
 | State affinity | The storage of client session data on a single server so that the same server handles subsequent requests from the same client. |
 | Vertical scaling| A scaling approach that adds compute capacity to existing resources.|
 

@@ -172,7 +172,7 @@ Here are key considerations when you're deciding whether to build or buy a solut
 
 ### Optimize licensing costs
 
-Explore licensing programs from your provider to identify potential cost-saving options. Include any license across your design, build, and run stack. Include tools for software development, security, observability, and design. These programs might include options for:
+Optimizing licensing costs means using various licensing programs and options to minimize expenses while maximizing value. This approach helps ensure you get the best rates from providers, preventing overpayment for software and services. It's important to review the license associated with its design, build, and deployment phases. This review should encompass tools used in its software development, security, monitoring, and design components. These licensing programs might include options for:
 
 - *Hybrid use and bundling*: In addition to exploring licensing programs, consider using hybrid use and bundling options. These programs can provide extra cost savings by optimizing licensing for both on-premises and cloud environments.
 

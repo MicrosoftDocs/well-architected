@@ -121,21 +121,21 @@
               href: cost-optimization/get-best-rates.md
             - name: CO:06 Usage and billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
-            - name: CO:07 Eliminating waste
-              href: cost-optimization/eliminate-waste.md
+            - name: CO:07 Sources of wasted spending
+              href: cost-optimization/eliminate-sources-wasted-spending.md
             - name: CO:08 Environment costs
               href: cost-optimization/optimize-environment-costs.md
             - name: CO:09 Flow costs
               href: cost-optimization/optimize-flow-costs.md
             - name: CO:10 Data costs
               href: cost-optimization/optimize-data-costs.md
-            - name: CO:11 Code
-              href: cost-optimization/optimize-code.md
-            - name: CO:12 Scaling
-              href: cost-optimization/optimize-scaling.md
+            - name: CO:11 Code costs
+              href: cost-optimization/optimize-code-costs.md
+            - name: CO:12 Scaling costs
+              href: cost-optimization/optimize-scaling-costs.md
             - name: CO:13 Personnel time
               href: cost-optimization/optimize-personnel-time.md
-            - name: CO:14 Resources and responsibilities
+            - name: CO:14 Consolidation
               href: cost-optimization/consolidation.md
       - name: Operational Excellence
         items: 

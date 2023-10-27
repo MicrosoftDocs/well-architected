@@ -116,7 +116,7 @@ By collecting resource performance data, you can gain insights into the health a
 
 - *Use platform tooling.* Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
 
-- *Monitor network traffic.* Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
+- *Monitor network traffic.* To monitor network traffic means to track and analyze the flow and patterns of data as it moves across network pathways. Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
 ### Collect database and storage data
 

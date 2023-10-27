@@ -49,7 +49,7 @@ Governance policies can act as spending guardrails on various aspects of resourc
 
 - *Limited idle resources*: Use policies to identify idle resources so you can delete or repurpose them. Consider setting policies that automatically shut down instances during the hours they’re not in use.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: If you implement automatic scaling, set a maximum scaling threshold based on testing. Maximum thresholds can help you avoid massive scaling spikes that cause cost overruns, but a threshold that’s set too low might negatively affect performance. For more information, see [Recommendations for optimizing scaling](optimize-scaling.md).
+> ![Risk icon](../_images/risk.svg) **Risk**: If you implement automatic scaling, set a maximum scaling threshold based on testing. Maximum thresholds can help you avoid massive scaling spikes that cause cost overruns, but a threshold that’s set too low might negatively affect performance. For more information, see [Recommendations for optimizing scaling costs](optimize-scaling-costs.md).
 
 ### Configure access controls
 

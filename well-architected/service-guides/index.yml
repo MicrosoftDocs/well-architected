@@ -34,7 +34,8 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Service guides help you make decisions about Azure components within a workload. Each guide highlights the core features and capabilities that are essential for achieving a well-architected state.
+  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a state of excellence. They are not configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
+
   items:
     # Card
     - title: API Management
@@ -99,6 +100,7 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
       url: cosmos-db.md
       azureCategories:
+        - featured
         - databases
         - iot
     # Card
@@ -114,6 +116,7 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
       url: postgresql.md
       azureCategories:
+        - featured
         - databases
         - hybrid
     # Card
@@ -225,7 +228,6 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
       url: azure-service-fabric-well-architected-framework.md
       azureCategories:
-        - featured
         - compute
         - containers
     # Card

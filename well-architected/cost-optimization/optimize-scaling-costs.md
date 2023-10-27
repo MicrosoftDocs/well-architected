@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing scaling
+title: Recommendations for optimizing scaling costs
 description: Learn how to optimize scaling costs using specific strategies.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,25 +7,25 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing scaling
+# Recommendations for optimizing scaling costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:12](optimize-scaling.md) | **Optimize scaling.** Evaluate alternative scaling within your scale units. Consider alternative scaling configurations, and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary. Use strategies for controlling demand and supply. |
-|---|---| 
+|[CO:12](checklist.md) | Optimize scaling costs. Evaluate alternative scaling within your scale units. Consider alternative scaling configurations, and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary. Use strategies for controlling demand and supply. |
+|---|---|
 
-This guide provides recommendations for optimizing scaling. Cost optimizing scaling is the process of removing inefficiencies in workload scaling. The goal is to reduce scaling costs while still meeting all nonfunctional requirements. Spending less to get the same result. Optimizing scaling allows you to avoid unnecessary expenses, overprovisioning, and waste. It also helps prevent unexpected spikes in costs by controlling demand and capping supply. Inefficient scaling practices can lead to increased workload and operational costs and negatively affect the overall financial health of the workload.
+This guide provides recommendations for optimizing scaling costs. Cost optimizing scaling is the process of removing inefficiencies in workload scaling. The goal is to reduce scaling costs while still meeting all nonfunctional requirements. Spending less to get the same result. Optimizing scaling allows you to avoid unnecessary expenses, overprovisioning, and waste. It also helps prevent unexpected spikes in costs by controlling demand and capping supply. Inefficient scaling practices can lead to increased workload and operational costs and negatively affect the overall financial health of the workload.
 
 **Definitions**
 
 | Term | Definition |
 |---|---|
-| Autoscaling | The process of dynamically allocating resources to match performance requirements against current demand.|
+| Autoscaling | A scaling approach that automatically adds or removes resources when a set of conditions is met. |
 | Cost metrics | Numeric data related to workload cost.|
 | Scale down | A vertical scaling strategy that shifts to a lower SKU to provide less resources to the workload.|
 | Scale in | A horizontal scaling strategy that removes instances to provide less resources to the workload.|
 | Scale out | A horizontal scaling strategy that adds instances to provide more resources to the workload.|
-| Scale unit | In a cloud workload, a grouping of resources that can be scaled independently.|
+| Scale unit | A group of resources that scale proportionately together. |
 | Scale up| A vertical scaling strategy that shifts to a higher SKU to provide more resources to the workload.|
 | Stock keeping unit (SKU) | A service tier for an Azure service.|
 | Usage data | Usage data is either direct information (real) or indirect/representative information (proxy) about how much a task, service, or application is being used. |
@@ -38,7 +38,9 @@ If you haven’t implemented scaling, see guidance on [scaling the workload](../
 
 ### Evaluate scale out versus scale up
 
-Evaluate the cost efficiency of using a scale out or scale up approach for each scale unit. Determine the most cost-efficient choice based on service-tier pricing, workload traits, acceptable downtime, and the cost model. If it's cheaper for your needs, consider using more expensive, powerful instances, but using fewer instances. Alternatively, choose a less expensive tier and more instances if this strategy aligns with the workload requirements. To determine the most cost-effective method, use data from the environment or proxy data to test the two options. Evaluate the cost effectiveness of each option based on the data gathered. To evaluate the most cost efficient approach, consider these recommendations:
+Evaluating scale out versus scale up involves determining the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out) based on various factors like pricing, workload requirements, and acceptable downtime. Choosing the right scaling approach can lead to significant savings, ensuring you pay for only what you need while still meeting performance and reliability standards. 
+
+The goal is to determine the most cost-efficient choice based on service-tier pricing, workload traits, acceptable downtime, and the cost model. For some, it might be more economical to opt for more expensive instances in fewer numbers. Conversely, for others, a cheaper tier with more instances might be better. To make an informed decision, you need to analyze real or representative data from your setup and evaluate the relative cost merits of each strategy. To evaluate the most cost efficient approach, consider these recommendations:
 
 - *Gather usage data*: Collect actual production data or proxy data that represents the workload usage patterns and resource utilization. This data should include metrics such as CPU usage, memory usage, network traffic, and any other relevant metrics that affect the cost of scaling.
 
@@ -52,7 +54,7 @@ Evaluate the cost efficiency of using a scale out or scale up approach for each 
 
 ### Optimize autoscaling
 
-Tuning the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s defined nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To tune autoscaling for cost optimization, consider the following recommendations:
+Optimizing the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s defined nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To optimize autoscaling, consider the following recommendations:
 
 - *Analyze the current autoscaling policy*: Understand the existing policy and its behavior in response to varying load levels.
 

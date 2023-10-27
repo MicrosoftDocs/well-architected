@@ -29,7 +29,7 @@ This guide describes the recommendations for selecting appropriate services for 
 |Region|A geographic perimeter that contains a set of datacenters.|
 |Resource|A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 |Service|A product or offering from a cloud service provider. |
-| SKU | A tier of a service that provides unique capabilities.|
+| Stock keeping unit (SKU) | A service tier for an Azure service. |
 |Storage service| A service that provides storage for objects, blocks, and files.|
 
 ## Key design strategies
@@ -96,7 +96,7 @@ Assess your network needs to determine the appropriate workload services and con
 
 ### Evaluate compute requirements
 
-Choose the appropriate compute service to optimize performance efficiency. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently.
+Evaluating compute requirements involves assessing the specific compute needs of a workload, including factors such as instance type, scalability, and containerization. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently. Consider the following strategies:
 
 - *Understand instance types.* Different instance types are optimized for different workloads, such as CPU-optimized, memory-optimized, and GPU instances. Choose the instance type that aligns with your needs.
 

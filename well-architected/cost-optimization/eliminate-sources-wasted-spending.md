@@ -1,20 +1,20 @@
 ---
-title: Recommendations for eliminating waste
-description: Learn how to eliminate waste from an existing workload to optimize costs.
+title: Recommendations for eliminating sources of wasted spending
+description: Learn how to eliminate sources of wasted spending from an existing workload to optimize costs.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for eliminating waste
+# Recommendations for eliminating sources of wasted spending
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
 |[CO:07](checklist.md)| Eliminate waste. Use only what you need in workload components and application features. When possible, use prepaid reservations and savings plans. |
 |---|---|
 
-This guide describes the recommendations for eliminating workload waste. The guidance in this article applies to existing workloads that aren't in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. Remove unused and underused workload components and address underused, prepaid commitments to eliminate waste. To ensure the highest return on investment, workload components and application features should actively deliver value, and prepaid reservations and savings plans should be maximized.
+This guide describes the recommendations for eliminating sources of wasted spending. The guidance in this article applies to existing workloads that aren't in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. Remove unused and underused workload components and address underused, prepaid commitments to eliminate waste. To ensure the highest return on investment, workload components and application features should actively deliver value, and prepaid reservations and savings plans should be maximized.
 
 **Definitions**
 
@@ -26,13 +26,15 @@ This guide describes the recommendations for eliminating workload waste. The gui
 
 ## Key design strategies
 
-Eliminate waste by using only the necessary resources, such as workload components, application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
+Eliminate sources of waste by using only the necessary resources, such as workload components, application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
 
-### Eliminate waste from the application
+### Eliminate application features
 
 Identify and remove underutilized or unnecessary features in your application to reduce costs and reallocate resources more efficiently. Evaluate potential waste based on the value of application features to users and their alignment with business goals. Identify and eliminate features that don't provide value to the workload. Remove unnecessary features to allocate resources more efficiently to features that bring more value to the users and the business.
 
-**Evaluate the value.** To determine the value of a feature, consider its effects on the overall application and the value it provides to customers. Some factors to consider include:
+#### Evaluate application feature value
+
+To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
 
 - *Customer needs*: Assess how well the feature meets the needs and expectations of customers. Customer feedback, surveys, and usage data can be valuable in understanding the perceived value.
 
@@ -42,7 +44,9 @@ Identify and remove underutilized or unnecessary features in your application to
 
 - *Differentiation*: Assess whether the feature provides a unique selling point or competitive advantage compared to other applications in the market.
 
-**Evaluate the cost.** It's essential that you understand the cost associated with each feature for effective resource allocation and optimization. Consider various aspects when evaluating costs, such as:
+#### Evaluate application feature cost
+
+ It's essential that you understand the cost associated with each feature for effective resource allocation and optimization. Consider various aspects when evaluating costs, such as:
 
 - *Development effort*: Assess the time, resources, and expertise required to develop and maintain the feature or surrounding features. Underutilized features often become a key source of technical debt.
 
@@ -54,9 +58,13 @@ Identify and remove underutilized or unnecessary features in your application to
 
 - *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
 
-**Seek input.** Get everyone involved when you determine if an application feature is worth the cost and effort. Talk to product managers, software developers, and business analysts. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract the team from creating new ones.
+#### Review value with stakeholders
 
-**Determine the future of the feature.** Based on your analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature that doesn't provide a return on investment:
+Get everyone involved when you determine if an application feature is worth the cost and effort. Talk to product managers, software developers, and business analysts. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract the team from creating new ones.
+
+#### Determine the future of the feature
+
+Based on your analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature that doesn't provide a return on investment:
 
 - *Removal*: Consider the planned end of life of an application feature based on data. Reasons for feature removal might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for the removal, which might involve refactoring the code, updating dependencies, or reorganizing the UI.
 
@@ -66,7 +74,7 @@ Identify and remove underutilized or unnecessary features in your application to
 
 - *Monetize*: Turn application features into a revenue-generating opportunity via monetization. Sometimes features provide value to users but aren’t worth the current investment. Explore opportunities to monetize these features, such as offering them as separate paid add-ons or licensing them to other companies.
 
-### Eliminate waste from workload resources
+### Eliminate workload resources
 
 To eliminate waste, remove unused or underutilized resources in various workload environments. You can also optimize idle resources in disaster recovery environments.
 
@@ -128,9 +136,9 @@ Identify and remove unnecessary or unused platform features to optimize resource
 
 - *Eliminate tool redundancy*: Get rid of tools that you don't need or tools that provide the same function. Evaluate potential redundancy in the tools you use for building software, writing code, security, and monitoring. For example, if you use GitHub Actions to build your software, you don't need to buy another tool that builds software. Before you buy features or tools, check if there's already a tool in your workload that can do the job. Eliminate tool redundancy to avoid wasted money and make the most of what you already have.
 
-### Eliminate waste from prepaid agreements
+### Eliminate underutilization from prepaid agreements
 
-Buy the right plan and fully utilize it to maximize the usage of prepaid plans. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. You can use savings plans to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions.
+Buy the right plan and fully utilize it to maximize the usage of prepaid plans. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. You can use savings plans to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions. To eliminate waste from prepaid agreements, consider the following strategies:
 
 - *Monitor usage*: Regularly check your prepaid plan usage. Set up alerts to notify you if you're not using all of your reserved resources. Evaluate usage over time and eliminate any plans you don't use regularly. Make sure you use the right size of VMs and adjust the sizes to fit what you've already paid for.
 

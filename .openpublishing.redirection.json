@@ -252,12 +252,12 @@
 		},
 		{
 			"source_path": "well-architected/cost/optimize-autoscale.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling-costs",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/optimize-cache.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling-costs",
 			"redirect_document_id": false
 		},
 		{
@@ -267,7 +267,7 @@
 		},
 		{
 			"source_path": "well-architected/cost/optimize-vm.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/eliminate-waste",
+			"redirect_url": "/azure/well-architected/cost-optimization/eliminate-sources-wasted-spending",
 			"redirect_document_id": true
 		},
 		{
