@@ -29,7 +29,7 @@ This guide describes the recommendations for selecting appropriate services for 
 |Region|A geographic perimeter that contains a set of datacenters.|
 |Resource|A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 |Service|A product or offering from a cloud service provider. |
-| SKU | A tier of a service that provides unique capabilities.|
+| Stock keeping unit (SKU) | A service tier for an Azure service. |
 |Storage service| A service that provides storage for objects, blocks, and files.|
 
 ## Key design strategies
