@@ -70,8 +70,8 @@ landingContent:
             url: get-best-rates.md
           - text: Align usage to billing increments
             url: align-usage-to-billing-increments.md
-          - text: Eliminate waste
-            url: eliminate-waste.md
+          - text: Eliminate sources of wasted spending
+            url: eliminate-sources-wasted-spending.md
           - text: Consolidate
             url: consolidation.md
   - title: Optimize
@@ -80,14 +80,14 @@ landingContent:
         links:
           - text: Environments
             url: optimize-environment-costs.md
-          - text: User, data, and system flows
+          - text: Flows
             url: optimize-flow-costs.md
           - text: Data
             url: optimize-data-costs.md
           - text: Application code
-            url: optimize-code.md
+            url: optimize-code-costs.md
           - text: Scaling
-            url: optimize-scaling.md
+            url: optimize-scaling-costs.md
           - text: Personnel time
             url: optimize-personnel-time.md
   - title: Explore related resources
