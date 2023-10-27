@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. |
+|[PE:02](checklist.md)| Conduct capacity planning. Capacity planning should be done before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. |
 |---|---|
 
 This guide describes the recommendations for capacity planning. Capacity planning refers to the process of determining the resources required to meet workload performance targets. It involves estimating the amount of computing resources such as CPU, memory, storage, and network bandwidth needed to support the workload's performance requirements. Capacity planning helps avoid underprovisioning and ensures the workload has sufficient resources to handle the expected workload demands without experiencing performance degradation or bottlenecks. It also helps prevent overprovisioning and unnecessary costs. A lack of capacity planning can lead to performance issues, resource bottlenecks, increased costs, inefficient allocation, scalability challenges, and unpredictable workload performance.
