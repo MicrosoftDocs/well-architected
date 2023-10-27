@@ -12,7 +12,7 @@
         - name: Architect's fundamentals
           href: architect-fundamentals.md
         - name: Architect's checklist
-          href: 
+          href: architect-checklist.md
     - name: Pillars
       items: 
       - name: Overview

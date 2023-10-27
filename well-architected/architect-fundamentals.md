@@ -7,7 +7,7 @@ ms.date: 10/26/2023
 ms.topic: conceptual
 ---
 
-## Solution architect's fundamentals 
+# Solution architect's fundamentals 
 
 Every workload passes through a component and topology design process. This process is most intense at the inception of the workload, which includes designing for initial requirements and long term success of the workload. Architecture is also designed when the workload changes over time and functionality is added, changed, or removed. **Component and topology design is the primary function an architect**. Architects who focus on cloud-based and hybrid solutions are often known as _cloud solution architects_. 
 
@@ -90,4 +90,4 @@ Architecture is about communication, not the end product. Make sure you’re opt
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Architect's checklist](architect-checklists.md)
+> [Architect's checklist](architect-checklist.md)
