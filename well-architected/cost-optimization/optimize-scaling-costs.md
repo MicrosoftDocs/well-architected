@@ -54,7 +54,7 @@ The goal is to determine the most cost-efficient choice based on service-tier pr
 
 ### Optimize autoscaling
 
-Tuning the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s defined nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To tune autoscaling for cost optimization, consider the following recommendations:
+Optimizing the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s defined nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To optimize autoscaling, consider the following recommendations:
 
 - *Analyze the current autoscaling policy*: Understand the existing policy and its behavior in response to varying load levels.
 
