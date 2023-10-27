@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:12](checklist.md) | **Optimize scaling costs.** Evaluate alternative scaling within your scale units. Consider alternative scaling configurations, and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary. Use strategies for controlling demand and supply. |
+|[CO:12](checklist.md) | Optimize scaling costs. Evaluate alternative scaling within your scale units. Consider alternative scaling configurations, and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary. Use strategies for controlling demand and supply. |
 |---|---|
 
 This guide provides recommendations for optimizing scaling costs. Cost optimizing scaling is the process of removing inefficiencies in workload scaling. The goal is to reduce scaling costs while still meeting all nonfunctional requirements. Spending less to get the same result. Optimizing scaling allows you to avoid unnecessary expenses, overprovisioning, and waste. It also helps prevent unexpected spikes in costs by controlling demand and capping supply. Inefficient scaling practices can lead to increased workload and operational costs and negatively affect the overall financial health of the workload.
@@ -20,12 +20,12 @@ This guide provides recommendations for optimizing scaling costs. Cost optimizin
 
 | Term | Definition |
 |---|---|
-| Autoscaling | The process of dynamically allocating resources to match performance requirements against current demand.|
+| Autoscaling | A scaling approach that automatically adds or removes resources when a set of conditions is met. |
 | Cost metrics | Numeric data related to workload cost.|
 | Scale down | A vertical scaling strategy that shifts to a lower SKU to provide less resources to the workload.|
 | Scale in | A horizontal scaling strategy that removes instances to provide less resources to the workload.|
 | Scale out | A horizontal scaling strategy that adds instances to provide more resources to the workload.|
-| Scale unit | In a cloud workload, a grouping of resources that can be scaled independently.|
+| Scale unit | A group of resources that scale proportionately together. |
 | Scale up| A vertical scaling strategy that shifts to a higher SKU to provide more resources to the workload.|
 | Stock keeping unit (SKU) | A service tier for an Azure service.|
 | Usage data | Usage data is either direct information (real) or indirect/representative information (proxy) about how much a task, service, or application is being used. |

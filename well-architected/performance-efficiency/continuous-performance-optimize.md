@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-[PE:12](continuous-performance-optimize.md)| **Continuously optimize performance. Focus on components that show deteriorating performance over time, such as databases and networking features.**|
+[PE:12](continuous-performance-optimize.md)| Continuously optimize performance. Focus on components that show deteriorating performance over time, such as databases and networking features.|
 |---|---|
 
 This guide describes the recommendations for continuous performance optimization. Continuous performance optimization is the process of constantly monitoring, analyzing, and improving performance efficiency. Performance efficiency adapts to increases and decreases in demand. Performance optimization needs to be an ongoing activity throughout the life of the workload. Workload performance often degrades or becomes excessive over time, and factors to consider include changes in usage patterns, demand, features, and technical debt.
@@ -20,7 +20,7 @@ This guide describes the recommendations for continuous performance optimization
 
 |  Term|                                Definition|
 |-|- |
-| Data tiering | Using different storage solutions to meet data access requirements over time at optimized cost.
+| Data tiering | A storage strategy that involves categorizing data based on its access frequency and storing it on storage tiers accordingly. |
 |Technical debt |The accumulated inefficiencies, suboptimal design choices, or shortcuts intentionally taken during the development process to deliver code faster.|
 | Time-to-live | A mechanism that sets an expiration time for data.
 

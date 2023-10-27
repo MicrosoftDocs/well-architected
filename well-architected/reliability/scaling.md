@@ -24,7 +24,7 @@ This guide describes the recommendations for designing a reliable scaling strate
 | --------- | ---------------- |
 | Vertical scaling | A scaling approach that adds compute capacity to existing resources.|
 | Horizontal scaling | A scaling approach that adds instances of a given type of resource.|
-| Autoscaling | A scaling approach that lets you automatically scale horizontally when a set of conditions are met. Many Azure products support autoscaling.  |
+| Autoscaling | A scaling approach that automatically adds or removes resources when a set of conditions is met.   |
 
 > [!NOTE]
 > Scaling operations can be static (regularly scheduled daily scaling to accommodate normal load patterns), automatic (an automated process in response to conditions being met), or manual (an operator performs a one-time scaling operation in reaction to an unanticipated load change). Both vertical and horizontal scaling can be performed via any of these methods. However, automatic vertical scaling requires additional custom automation development and can cause downtime depending on the resources being scaled.
