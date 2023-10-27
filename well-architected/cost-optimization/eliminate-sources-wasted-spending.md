@@ -61,9 +61,9 @@ Based on the analysis and evaluation, determine the future of the application fe
 - *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
 
-### Eliminate waste from workload resources
+### Eliminate workload resources
 
-Eliminating waste from workload resources means to remove any unused or underutilized resources in a workload across its various environments. It also includes optimizing idle resources in disaster recovery environments.
+Eliminating workload resources means to remove any unused or underutilized resources in a workload across its various environments. It also includes optimizing idle resources in disaster recovery environments.
 
 **Remove unused workload resources.** Unused resources are deployed services your workload or operations processes don't use. These resources might be long-term idled, orphaned, or forgotten. They provide no return on investment, and you should remove them. Common causes of resources waste include:
 
@@ -100,9 +100,9 @@ Once you've made these adjustments, test to make sure everything still works as 
 - *Cold (active-off)*: A cold disaster recovery plan is a failover solution where the standby environment isn't actively running until there's a need for failover. The production environment is replicated as backups, VM images, or Resource Manager templates to a different region. This approach is cost-effective but takes longer to perform a complete failover.
 - *Active-redeploy*: The active-redeploy approach uses infrastructure-as-code to deploy resources to the secondary environment in a failover event. Before a failover event, there are no deployed resources in the disaster recovery environment.
 
-### Eliminate waste from platform feature set
+### Eliminate platform features
 
-Eliminating wasteful platform features involves identifying and removing unnecessary or unused features to optimize resource utilization and reduce costs. Here are some steps to eliminate wasteful platform features:
+Eliminating platform features involves identifying and removing unnecessary or unused features to optimize resource utilization and reduce costs. Here are some steps to eliminate wasteful platform features:
 
 - *Know the capabilities of the things you’ve purchased*: Understand the features and functionalities of the platforms or services you have acquired.
 - *Disable unused features*: Identify and disable platform features that cost money and aren't utilized.
@@ -111,7 +111,7 @@ Eliminating wasteful platform features involves identifying and removing unneces
 - *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
 - *Eliminate tool redundancy*: Get rid of tools that you don't really need or that do the same thing as other tools you already have. Consider tools used for building software, writing code, security, or monitoring how things are running. For instance, if you're already using GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy more features or tools, check if what you already have can do the job. This way, you avoid wasting money and make the most of what you already have.
 
-### Eliminate waste from prepaid agreements
+### Optimize prepaid agreements
 
 Maximizing the usage of prepaid plans starts with buying the right plan and fully utilizing it. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions. To eliminate waste from prepaid agreements, consider the following strategies:
 
@@ -121,7 +121,7 @@ Maximizing the usage of prepaid plans starts with buying the right plan and full
 
 ### Avoid introducing waste
 
-The best way to get rid of waste is to avoid it in the first place. You want to use strategies that prevent it from being introduced and allow you to catch waste faster. Audit processes to avoid introducing waste. To help avoid introducing waste, consider these strategies:
+The best way to eliminate sources of wasted spending is to avoid it in the first place. To help avoid introducing sources of wasted spending, consider these strategies:
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't just switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fixing the real problem saves you time and money.
 - *Apply metadata* Applying metadata provides a way to organize and track resources. You can categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy and apply consistently across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and others.
