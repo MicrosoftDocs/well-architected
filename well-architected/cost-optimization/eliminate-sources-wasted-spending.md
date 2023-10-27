@@ -172,7 +172,11 @@ The best way to get rid of waste is to avoid it in the first place. Use strategi
 
 ## Related links
 
-TBD - S. Sumner will provide.
+- [Recommendations for continuous performance optimization](../performance-efficiency/continuous-performance-optimize.md)
+- [Recommendations for defining reliability targets](../reliability/metrics.md)
+- [Recommendations for highly available multi-region design](../reliability/highly-available-multi-region-design.md)
+- [Recommendations for optimizing scaling and partitioning](../performance-efficiency/scale-partition.md)
+- [Recommendations for setting spending guardrails](set-spending-guardrails.md)
 
 ## Cost Optimization checklist  
 
