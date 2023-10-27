@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing code
+title: Recommendations for optimizing code costs
 description: Learn how to optimize costs related to code with specific recommendations.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,14 +7,14 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing code
+# Recommendations for optimizing code costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-| [CO:11](checklist.md) | Optimize code. Evaluate and modify code to meet functional and nonfunctional requirements with fewer or cheaper resources. |
+| [CO:11](checklist.md) | Optimize code costs. Evaluate and modify code to meet functional and nonfunctional requirements with fewer or cheaper resources. |
 |---|---|
 
-This guide describes the recommendations for optimizing code. Code optimization is the process of improving the efficiency, performance, and cost-effectiveness of application code. Effective code optimization involves making changes to the code to reduce resource consumption, minimize execution time, and improve overall performance.
+This guide describes the recommendations for optimizing code costs. Code optimization is the process of improving the efficiency, performance, and cost-effectiveness of application code. Effective code optimization involves making changes to the code to reduce resource consumption, minimize execution time, and improve overall performance.
 
 By optimizing code, you can identify and eliminate inefficiencies that might lead to increased resource consumption and higher costs. You can reduce processing time, memory usage, and network overhead, which can lead to applications that are faster and more responsive. Improved performance enhances the user experience and enables your system to handle larger workloads efficiently.
 

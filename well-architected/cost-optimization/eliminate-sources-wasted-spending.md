@@ -1,15 +1,15 @@
 ---
-title: Recommendations for eliminating waste
-description: Learn how to eliminate waste from a workload.
+title: Recommendations for eliminating sources of wasted spending
+description: Learn how to eliminate sources of wasted spending.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for eliminating waste: CO 07
+# Recommendations for eliminating sources of wasted spending: CO 07
 
-This guide describes the recommendations for eliminating workload waste. The guidance applies to an existing workload, not one in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. You can reduce waste removing unused and underutilized workload components. It's also important to spot and address underutilized, prepaid commitments to further eliminate wastage. To ensure the highest return on investment, workload components and application features should be actively delivering value, and prepaid reservations and savings plans should be maximized.
+This guide describes the recommendations for eliminating sources of wasted spending. The guidance applies to an existing workload, not one in the design phase. Reducing sources of wasted spending is fundamental for both financial savings and operational efficiency. You can reduce wasted spending by removing unused and underutilized workload components. It's also important to spot and address underutilized, prepaid commitments to further optimize cost. To ensure the highest return on investment, workload components and application features should be actively delivering value, and prepaid reservations and savings plans should be maximized.
 
 **Definitions**
 
@@ -21,20 +21,24 @@ This guide describes the recommendations for eliminating workload waste. The gui
 
 ## Key strategies
 
-Eliminating waste refers to the principle of using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
+Eliminating sources of wasted spending refers to the principle of using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
 
-### Eliminate waste from the application
+### Eliminate application features
 
-Eliminating waste from an application involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
+Eliminating sources of waste from an application involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
 
-**Evaluate the value.** To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
+#### Evaluate application feature value
+
+To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
 
 - *Customer needs*: Assess how well the feature meets the needs and expectations of the customers. Customer feedback, surveys, and usage data can be valuable in understanding the perceived value.
 - *Business goals*: Evaluate how the feature aligns with the strategic objectives of the business. Consider how it supports revenue generation, customer satisfaction, or competitive advantage.
 - *Effect on user experience*: Determine the effect the feature has on enhancing the user experience and improving usability or productivity.
 - *Differentiation*: Assess whether the feature provides a unique selling point or competitive advantage compared to other applications in the market.
 
-**Evaluate the cost.** Understanding the cost associated with each feature is essential for effective resource allocation and optimization. The cost evaluation involves considering various aspects, such as:
+#### Evaluate application feature cost
+
+Understanding the cost associated with each feature is essential for effective resource allocation and optimization. The cost evaluation involves considering various aspects, such as:
 
 - *Development effort*: Assess the time, resources, and expertise required to develop and maintain the feature or surrounding features. Underutilized features often become a key source of technical debt.
 - *Maintenance and support*: Consider the ongoing costs associated with maintaining and supporting the feature, including bug fixes, security updates, and troubleshooting.
@@ -42,9 +46,13 @@ Eliminating waste from an application involves identifying and removing underuti
 - *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
 - *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
 
-**Seek input.** Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to people like product managers, software developers, and business analysts. Collect data and study it to understand how a feature affects your business goals. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
+#### Review value with stakeholders
 
-**Determine the future of the feature**. Based on the analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature not providing a return on investment.
+Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to people like product managers, software developers, and business analysts. Collect data and study it to understand how a feature affects your business goals. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
+
+#### Determine the future of the feature
+
+Based on the analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature not providing a return on investment.
 
 - *Remove the application feature.* Consider the planned end of life of an application feature based on data. Reasons for removing the feature might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for removing the identified features. It might involve refactoring the code, updating dependencies, or reorganizing the user interface.
 
