@@ -96,7 +96,7 @@ Assess your network needs to determine the appropriate workload services and con
 
 ### Evaluate compute requirements
 
-Choose the appropriate compute service to optimize performance efficiency. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently.
+Evaluating compute requirements involves assessing the specific compute needs of a workload, including factors such as instance type, scalability, and containerization. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently. Consider the following strategies:
 
 - *Understand instance types.* Different instance types are optimized for different workloads, such as CPU-optimized, memory-optimized, and GPU instances. Choose the instance type that aligns with your needs.
 
