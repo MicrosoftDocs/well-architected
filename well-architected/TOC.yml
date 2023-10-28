@@ -15,7 +15,7 @@
           href: architect-role/checklist.md
           items:
           - name: Architecture design specification
-            href: architecture-design-specification.md
+            href: architect-role/architecture-design-specification.md
           - name: Design diagrams
             href: architect-role/design-diagrams.md
     - name: Pillars

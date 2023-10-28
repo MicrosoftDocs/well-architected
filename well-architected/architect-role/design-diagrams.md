@@ -21,6 +21,10 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Avoid lines with double arrows**. Double arrows imply a bi-directional dependency. Prefer using a single ended arrow to represent the flow from client to server. 
 
+## Types of design diagrams
+
+Workload architecture is complex and multidimentional. Each dimension type focuses on a specific aspect of the system, providing level of detail that's specific to that dimension. For instance, flow charts illustrate process flow, while entity-relation diagrams depict relationships between system components. Having different types of diagrams allows for comprehensive understanding of different dimension. It helps in effective communication, problem-solving, and decision-making among stakeholders.
+
 ##### High-level system diagram
 
 This diagram serves as a broad overview of a whole workload or even a broad overview of a sub-section within. It includes the main components, their relationship to each other with arrows repenting the direction of interaction, and the rough order in which data flows through the system. These are good for reaching common understanding so that you can start deeper discussions or for general stakeholder communication. 
@@ -90,4 +94,7 @@ While it’s not architecture diagram specifically, flowcharts are another way t
 This list of diagrams isn’t exhaustive and sometimes diagrams end up as a composite of elements from multiple of these types. Ultimately, the choice of architecture diagram depends on what you’re trying to communicate and to what audience. Multiple types of diagrams are used throughout the design, requirements refining, and communication activities performed by an architect. Visualizations can do a lot of heavy lifting in communications. 
 
 
+## Next steps
 
+> [!div class="nextstepaction"]
+> [Architect's checklist](checklist.md)
