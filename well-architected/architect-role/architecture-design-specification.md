@@ -1,6 +1,6 @@
 ---
 title: Workload architecture design specification
-description: Learn about the practice of being a Well-Architected architect.
+description: Learn about the benefits of an architecture design specification.
 author: ckittel
 ms.author: chkittel
 ms.date: 10/26/2023
@@ -10,6 +10,8 @@ ms.topic: conceptual
 # Workload architecture design specification
 
 Workload architecture design is **a detailed specification that describes design choices accompanied by diagrams**. The design choices must meet functional and nonfunctional requirements, and includes provisions for routine, ad-hoc, and emergency operations.
+
+For information about diagrams, see [Architecture design diagrams](./design-diagrams.md).
 
 Workload architecture design, typically expansive, starts with application design and progresses to cloud service selection, mutually informing each other. The combined application and infrastructure design must fulfill all requirements.
 

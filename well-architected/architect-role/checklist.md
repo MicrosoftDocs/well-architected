@@ -1,6 +1,6 @@
 ---
 title: Solution architect's checklist
-description: Learn about the practice of being a Well-Architected architect.
+description: Learn about the deliverables of a Well-Architected architect.
 author: ckittel
 ms.author: chkittel
 ms.date: 10/26/2023
@@ -17,9 +17,9 @@ Architecture frameworks, such as the Azure Well-Architected Framework (WAF), hel
 
 |&nbsp;|Deliverable tasks|
 |---|---|
-|&#9744;|[**Develop an architecture design specification**](../architect-role/architecture-design-specification.md)  accompanied by diagrams as a structured packet. The specification must meet the workload’s functional and nonfunctional requirements and include provisions for routine, ad-hoc, and emergency operations.|
-|&#9744;|[**Create architecture design diagrams**](../architect-role/design-diagrams.md) that illustrate system design from a broad overview to detailed dimensions, such as network, identity, and others.|
-|&#9744;|**Maintain an architecture decision record (ADR)** with justifications for architectural decisions made during the design process.|
+|&#9744;|[**Develop an architecture design specification**](./architecture-design-specification.md)  accompanied by diagrams as a structured packet. The specification must meet the workload’s functional and nonfunctional requirements and include provisions for routine, ad-hoc, and emergency operations.|
+|&#9744;|[**Create architecture design diagrams**](./design-diagrams.md) that illustrate system design from a broad overview to detailed dimensions, such as network, identity, and others.|
+|&#9744;|[**Maintain an architecture decision record (ADR)**](./architecture-decision-record.md) with justifications for architectural decisions made during the design process.|
 |&#9744;|**Collaborate with the workload team during implementation** to provide clarity and recommendations around the sequence of implementation to maximize learning and improve from the outset. Also renegotiate requirements with stakeholders, if needed.|
 |&#9744;|**Support modeling exercises** that provide contextualized information about workload concern, whether that's cost, application health, security, and others.|
 |&#9744;|**Provide optimization recommendations** that based on the observed from usage patterns and changes in workload functionality or cloud provider changes.|
