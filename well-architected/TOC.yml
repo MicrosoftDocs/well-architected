@@ -10,9 +10,14 @@
       - name: How to be a profient architect
         items:
         - name: Architect's fundamentals
-          href: architect-fundamentals.md
+          href: architect-role/fundamentals.md
         - name: Architect's checklist
-          href: architect-checklist.md
+          href: architect-role/checklist.md
+          items:
+          - name: Architecture design specification
+            href: architecture-design-specification.md
+          - name: Design diagrams
+            href: architect-role/design-diagrams.md
     - name: Pillars
       items: 
       - name: Overview

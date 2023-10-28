@@ -90,4 +90,4 @@ Architecture is about communication, not the end product. Make sure you’re opt
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Architect's checklist](architect-checklist.md)
+> [Architect's checklist](checklist.md)

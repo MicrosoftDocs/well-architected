@@ -32,4 +32,4 @@ An architect is responsible for designing a solution that adheres to pertinent s
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Architect's checklist](architect-checklist.md)
+> [Architect's checklist](checklist.md)
