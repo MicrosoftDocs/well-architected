@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Solution architect's fundamentals 
 
-Every workload passes through a component and topology design process. This process is most intense at the inception of the workload, which includes designing for initial requirements and long term success of the workload. Architecture is also designed when the workload changes over time and functionality is added, changed, or removed. **Component and topology design is the primary function an architect**. Architects who focus on cloud-based and hybrid solutions are often known as _cloud solution architects_. 
+Every workload passes through a component and topology design process. This process is most intense at the inception of the workload, which includes designing for initial requirements and long term success of the workload. Architecture is also designed when the workload changes over time and functionality are added, changed, or removed. **Component and topology design is the primary function an architect**. Architects who focus on cloud-based and hybrid solutions are often known as _cloud solution architects_. 
 
 In some organizations cloud solution architects can exist in a centralized capacity within an enterprise architecture group. Likewise, they can be tied to a specific workload. The function of an architect can be delivered by a dedicated role. Or in some cases delivered by trusted technical specialists, such as a workload engineering lead or distributed among a small group of senior engineers associated with the workload. 
 
@@ -34,7 +34,7 @@ The key aspect of design is making decisions. It should be done using a consiste
 
 **Document the decision in an architecture decision record (ADR)**. Document each decision along with justification.  
 
-**Follow up on implementation**. All decisions must be communicated and implemented. Learn from  implementation for future decisions and look for areas that decisions were not identified, and risk was introduced due to that. 
+**Follow up on implementation**. All decisions must be communicated and implemented. Learn from  implementation for future decisions and look for areas that decisions weren't identified, and risk was introduced due to that. 
 
 ## Know standardized cloud design patterns 
 
@@ -50,7 +50,7 @@ Designing to achieve current requirements is a must, but it’s important for an
 
 **Compliance changes**. Take proactive measures if the workload is expected to be under compliance requirements in the future. This can significantly reduce rework when following compliance becomes a requirement. 
 
-**Regional expansion**. Consider future expansion of the workload into multiple regions. A design that's limited to a single region will need to be heavily refactored for multiregion deployment, and that can be a costly change. There's even more complexity if the workload design needs to accomodate multiple geographies with different compliance requirements. Factor in any reasonable prediction about regional expansion into your design. 
+**Regional expansion**. Consider future expansion of the workload into multiple regions. A design that's limited to a single region will need to be heavily refactored for multiregion deployment, and that can be a costly change. There's even more complexity if the workload design needs to accommodate multiple geographies with different compliance requirements. Factor in any reasonable prediction about regional expansion into your design. 
 
 **Product roadmaps**. Don’t include components in your design, which are on the path to deprecation. Likewise, features currently in a preview state will be eventually released (or not). Being ahead of the curve by using preview features can be highly advantageous. The workload will be prepared to go to production soon after the feature released. Include preview features in your design only after doing careful risk analysis, and only ship features with a tolerated risk profile. 
 
@@ -63,7 +63,7 @@ Workloads should be designed with three key support perspectives:
 
 **Operational visibility**. The design should provide execution visibility for the workload operations team to prevent confusion during incident response.
 
-**Customer support capabilities**. The design should not only meet user needs but also facilitate customer support functions. A design that hinders the support team’s ability to investigate or assist customers is inadequate. 
+**Customer support capabilities**. The design shouldn't only meet user needs but also facilitate customer support functions. A design that hinders the support team’s ability to investigate or assist customers is inadequate. 
 
 ## Maintain and enhance your skills
 

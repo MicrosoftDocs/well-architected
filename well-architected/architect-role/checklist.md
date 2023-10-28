@@ -31,4 +31,4 @@ Architecture frameworks, such as the Azure Well-Architected Framework (WAF), hel
 Get started with the pillars of WAF and familiarize yourself with the key concepts.
 
 > [!div class="nextstepaction"]
-> [Azure Well-Architected Framework pillars](pillars.md)
+> [Azure Well-Architected Framework pillars](../pillars.md)
