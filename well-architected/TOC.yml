@@ -11,9 +11,10 @@
         items:
         - name: Architect's fundamentals
           href: architect-role/fundamentals.md
-        - name: Architect's checklist
-          href: architect-role/checklist.md
-          items:
+        - name: Deliverables
+          items: 
+          - name: Checklist
+            href: architect-role/checklist.md
           - name: Architecture design specification
             href: architect-role/architecture-design-specification.md
           - name: Design diagrams
