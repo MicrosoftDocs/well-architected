@@ -18,6 +18,10 @@
             href: architect-role/architecture-design-specification.md
           - name: Design diagrams
             href: architect-role/design-diagrams.md
+          - name: Architecture decision record
+            href: architect-role/architecture-decision-record.md
+          - name: Collaboration with implementors
+            href: architect-role/collaboration.md            
     - name: Pillars
       items: 
       - name: Overview

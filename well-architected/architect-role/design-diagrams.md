@@ -1,6 +1,6 @@
 ---
 title: Architecture design diagrams
-description: Learn about the practice of being a Well-Architected architect.
+description: Learn about creating effective architecture diagrams.
 author: ckittel
 ms.author: chkittel
 ms.date: 10/26/2023
