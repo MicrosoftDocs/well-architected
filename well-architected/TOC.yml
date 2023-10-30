@@ -121,8 +121,8 @@
               href: cost-optimization/get-best-rates.md
             - name: CO:06 Usage and billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
-            - name: CO:07 Sources of wasted spending
-              href: cost-optimization/eliminate-sources-wasted-spending.md
+            - name: CO:07 Component costs
+              href: cost-optimization/optimize-component-costs.md
             - name: CO:08 Environment costs
               href: cost-optimization/optimize-environment-costs.md
             - name: CO:09 Flow costs
