@@ -29,7 +29,7 @@ Consolidation can reduce redundant resources and licenses, and increase density.
 
 ## Key design strategies
 
-The primary objective of consolidation is optimization, not reduction. Consolidation involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike [eliminating sources of wasted spending](eliminate-sources-wasted-spending.md), consolidation is a process that requires careful consideration.
+The primary objective of consolidation is optimization, not reduction. Consolidation involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike [optimizing component costs](optimize-component-costs.md), consolidation is a process that requires careful consideration.
 
 Almost every consolidation effort has tradeoffs and potential risks but can significantly reduce costs. It's important to analyze the potential benefits and associated tradeoffs. All consolidation strategies follow these steps:
 
@@ -125,7 +125,7 @@ Log Analytics provides centralized log management and analysis. You can collect,
 
 ## Related links
 
-[Recommendations for eliminating sources of wasted spending](eliminate-sources-wasted-spending.md)
+[Recommendations for optimizing component costs](optimize-component-costs.md)
 
 ## Cost Optimization checklist
 
