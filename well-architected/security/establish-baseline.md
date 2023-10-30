@@ -82,6 +82,8 @@ The baseline should include regular evaluation of the workload against regulator
 
 The baseline needs prescriptive recommendations for the main components of the workload. These usually include technical controls for networking, identity, compute, and data. Reference the security baselines provided by the platform and add the missing controls to the architecture.
 
+> Refer to [Example](#example).
+
 #### Development processes
 
 The baseline must have recommendations about:
@@ -150,6 +152,12 @@ Other features that help in establishing and improving the baseline:
 - [Understand security policies, initiatives, and recommendations](/azure/defender-for-cloud/security-policy-concept)
 
 - [Regulatory compliance checks](/azure/defender-for-cloud/regulatory-compliance-dashboard)
+
+## Example
+
+This logical diagram shows an example security baseline for architectural components that encompass network, infrastructure, endpoint, application, data, and identity to demonstrate how a common IT environment may be securely protected.
+
+:::image type="content" source="images/baseline/security-baseline.svg" alt-text="Diagram that shows an example of an organization's sensitivity labels." lightbox="images/baseline/security-baseline.svg":::
 
 ## Organizational alignment
 
