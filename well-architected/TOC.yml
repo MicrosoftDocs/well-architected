@@ -25,36 +25,36 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
-            - name: RE:01 Critical flows
-              href: reliability/identify-flows.md
-            - name: RE:02 Failure mode analysis
-              href: reliability/failure-mode-analysis.md
-            - name: RE:03 Target metrics
-              href: reliability/metrics.md
-            - name: RE:04 High-availability multi-region design
-              href: reliability/highly-available-multi-region-design.md  
-            - name: RE:04 Redundancy
-              href: reliability/redundancy.md
-            - name: RE:04 Regions and availability zones
-              href: reliability/regions-availability-zones.md
-            - name: RE:05 Data partitioning
-              href: reliability/partition-data.md
-            - name: RE:05 Scaling
-              href: reliability/scaling.md
-            - name: RE:06 Background jobs
-              href: reliability/background-jobs.md
-            - name: RE:06 Transient faults 
-              href: reliability/handle-transient-faults.md
-            - name: RE:06 Self-preservation
-              href: reliability/self-preservation.md
-            - name: RE:07 Testing
-              href: reliability/testing-strategy.md
-            - name: RE:08 Disaster recovery  
-              href: reliability/disaster-recovery.md
-            - name: RE:09 Monitoring and alerting
-              href: reliability/monitoring-alerting-strategy.md
-            - name: RE:10 Simplicity and efficiency
+            - name: RE:01 Simplicity and efficiency
               href: reliability/simplify.md
+            - name: RE:02 Critical flows
+              href: reliability/identify-flows.md
+            - name: RE:03 Failure mode analysis
+              href: reliability/failure-mode-analysis.md
+            - name: RE:04 Target metrics
+              href: reliability/metrics.md
+            - name: RE:05 High-availability multi-region design
+              href: reliability/highly-available-multi-region-design.md  
+            - name: RE:05 Redundancy
+              href: reliability/redundancy.md
+            - name: RE:05 Regions and availability zones
+              href: reliability/regions-availability-zones.md
+            - name: RE:06 Data partitioning
+              href: reliability/partition-data.md
+            - name: RE:06 Scaling
+              href: reliability/scaling.md
+            - name: RE:07 Background jobs
+              href: reliability/background-jobs.md
+            - name: RE:07 Transient faults 
+              href: reliability/handle-transient-faults.md
+            - name: RE:07 Self-preservation
+              href: reliability/self-preservation.md
+            - name: RE:08 Testing
+              href: reliability/testing-strategy.md
+            - name: RE:09 Disaster recovery  
+              href: reliability/disaster-recovery.md
+            - name: RE:10 Monitoring and alerting
+              href: reliability/monitoring-alerting-strategy.md            
       - name: Security
         items: 
         - name: Quick links
