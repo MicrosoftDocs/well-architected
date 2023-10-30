@@ -1,15 +1,15 @@
 ---
-title: Recommendations for eliminating sources of wasted spending
-description: Learn how to eliminate sources of wasted spending.
+title: Recommendations for optimizing component costs.
+description: Learn how to optimize component costs.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for eliminating sources of wasted spending: CO 07
+# Recommendations for optimizing component costs: CO 07
 
-This guide describes the recommendations for eliminating sources of wasted spending. The guidance applies to an existing workload, not one in the design phase. Reducing sources of wasted spending is fundamental for both financial savings and operational efficiency. You can reduce wasted spending by removing unused and underutilized workload components. It's also important to spot and address underutilized, prepaid commitments to further optimize cost. To ensure the highest return on investment, workload components and application features should be actively delivering value, and prepaid reservations and savings plans should be maximized.
+This guide describes the recommendations for optimizing workload component costs. Optimizing component costs refers to the process of evaluating and improving the cost-efficiency of individual elements within a workload. It emphasizes the continuous review and potential removal or improvement of outdated, unnecessary, or rarely used components, such as application features, platform features, and resources. It also covers cost optimization of disaster recovery environments and how to avoid introducing unoptimized components. The guidance applies to an existing workload, not one in the design phase. Neglecting regular component optimization can lead to inflated costs, resource waste, and inefficient workloads that drain both time and money.
 
 **Definitions**
 
@@ -19,13 +19,13 @@ This guide describes the recommendations for eliminating sources of wasted spend
 | Platform feature | A specific functionality or capability provided by a platform. It can vary depending on the platform, but generally, platform features are designed to enhance the user experience, improve productivity, or enable specific tasks or actions. |
 | Resource| A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 
-## Key strategies
+## Key design strategies
 
-Eliminating sources of wasted spending refers to the principle of using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
+Optimizing workload components is about refining the various elements of a workload, including application features, platform capabilities, and resource. The goal is to ensure the workload uses all components efficiently and cost-effectively. Strategies include removing, modifying, and avoiding components that cause you to spend more than you need. The component cost optimization process ensures you allocate resources to features and components that deliver the most value, avoiding unnecessary expenses.
 
-### Eliminate application features
+### Optimize application features
 
-Eliminating sources of waste from an application involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
+Optimizing application features involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
 
 #### Evaluate application feature value
 
@@ -46,9 +46,9 @@ Understanding the cost associated with each feature is essential for effective r
 - *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
 - *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
 
-#### Review value with stakeholders
+#### Review application feature value with stakeholders
 
-Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to people like product managers, software developers, and business analysts. Collect data and study it to understand how a feature affects your business goals. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
+Reviewing the value of application features with stakeholders involves engaging key personnel, such as product managers, software developers, and business analysts, to assess the value of specific features on business objectives. This collaboration is essential for cost optimization as it provides insights into maintenance efforts and identifies features that might hinder productivity or detract from developing new, valuable features. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
 
 #### Determine the future of the feature
 
@@ -61,11 +61,11 @@ Based on the analysis and evaluation, determine the future of the application fe
 - *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
 
-### Eliminate workload resources
+### Optimize workload resources
 
-Eliminating workload resources means to remove any unused or underutilized resources in a workload across its various environments. It also includes optimizing idle resources in disaster recovery environments.
+Optimizing workload resources involves removing any resources that aren't needed or used. It also includes adjusting the size and scale of the underutilized resources that are needed. This effort can save money, avoid waste, and ensure that the workload only uses the resources that add value to its performance.
 
-**Remove unused workload resources.** Unused resources are deployed services your workload or operations processes don't use. These resources might be long-term idled, orphaned, or forgotten. They provide no return on investment, and you should remove them. Common causes of resources waste include:
+**Remove unused workload resources.** Unused resources are deployed services your workload or operations processes don't use. These resources might be long-term idled, orphaned, or forgotten. They provide no return on investment, and you should remove them. Common sources of unused resources include:
 
 - Storage accounts
 - Snapshots
@@ -85,7 +85,7 @@ To remove unused resources in a workload, consider these steps:
 - *Find orphaned resources*: Resources can become orphaned when they're no longer needed or when their parent resources are deleted. For example, you delete a virtual machine, but its associated storage account isn't. Review your resources to identify resources that are no longer needed or have become orphaned.
 - *Remove idle component*: There’s typically a cost associated with a deployed resource. Even if the resource allows you to stop or deallocate, you might be paying for the resource. Consider removing idle resources. If you need the data, back up the data first and then remove the resource. You’re better off redeploying the resource and restoring the data than allowing the resource to remain idle.
 
-**Evaluate underutilized resources.** Underutilized resources represent wasted expenditure as you pay for resource capacity that isn't fully utilized. By identifying and optimizing these resources, you can reduce costs and allocate resources more effectively. To evaluate and optimize the cost of underutilized resources, follow these steps:
+**Optimize underutilized resources.** Underutilized resources represent wasted expenditure as you pay for resource capacity that isn't fully utilized. By identifying and optimizing these resources, you can reduce costs and allocate resources more effectively. To evaluate and optimize the cost of underutilized resources, follow these steps:
 
 - *Resource monitoring*: Use tools to keep an eye on how much CPU, memory, and storage you're actually using. Pick the best plan that matches your needs based on this info.
 - *Utilization analysis*: Look at the data to find out which resources you're not using much. Pay special attention to the resources that have low usage over a long time or large differences between busy and slow times.
@@ -94,15 +94,19 @@ To remove unused resources in a workload, consider these steps:
 
 Once you've made these adjustments, test to make sure everything still works as it should. Continuously monitor resource utilization and adjust resource allocation as workload demands change over time. Regularly review and optimize resource utilization to maintain cost efficiency and performance optimization.
 
-**Eliminate disaster recovery waste.** Warm (active-passive) disaster recovery plans are a common source of underutilization. One environment receives all the load while the other environment is idle, awaiting a situation you hope never happens. Consider hot (active-active), cold (active-off), and active-redeploy approach can help avoid underutilized resources.
+### Optimize disaster recovery environments
 
-- *Hot (active-active)*: The primary and secondary environments actively serve traffic, allowing you to use cheaper resources and minimizing unused capacity.
-- *Cold (active-off)*: A cold disaster recovery plan is a failover solution where the standby environment isn't actively running until there's a need for failover. The production environment is replicated as backups, VM images, or Resource Manager templates to a different region. This approach is cost-effective but takes longer to perform a complete failover.
-- *Active-redeploy*: The active-redeploy approach uses infrastructure-as-code to deploy resources to the secondary environment in a failover event. Before a failover event, there are no deployed resources in the disaster recovery environment.
+Optimizing disaster recovery environments is about ensuring the resources allocated for disaster recovery are used efficiently. A warm (active-passive) disaster recovery strategy is a common source of underutilization. In a warm disaster recovery strategy, one environment receives all the load while the other environment is idle until there's a disaster scenario. To optimize a disaster recovery environment, consider how a hot (active-active), cold (active-off), or active-redeploy approach can help avoid underutilized resources. Here's an overview of these three disaster recovery approaches:
 
-### Eliminate platform features
+- *Hot (active-active)*: Both the primary and secondary environments serve traffic concurrently. Your workload can balance loads between these environments and respond to demands in real-time. Distributing the load between two active environments, allows you to use cheaper resources, reduce single-point bottlenecks, and utilize capacities to the fullest. It can lead to reduced costs in terms of resource wastage or idling. A hot approach might demand more investment in synchronization and maintaining parity between the two environments.
 
-Eliminating platform features involves identifying and removing unnecessary or unused features to optimize resource utilization and reduce costs. Here are some steps to eliminate wasteful platform features:
+- *Cold (active-off)*: A cold disaster recovery model involves a standby environment that remains dormant until a disaster triggers the need for failover. Since the standby environment isn't actively running, costs related to compute, storage, and network operations are minimized. Your expenses  revolve around storing backups, virtual machine images, or templates. Failover in the cold model can take longer because resources need to be booted up and data might need to be restored. Ensure that the recovery time aligns with your business's recovery time objectives (RTO) before committing to this approach.
+
+- *Active-redeploy*: This strategy uses infrastructure as code. When a failover event occurs, you deploy the secondary environment, using predefined templates and scripts. With no predeployed compute resources in the disaster recovery environment, you save on the costs associated with maintaining idle resources. You only incur costs during the actual deployment in a failover scenario. Like the cold approach, this model might introduce longer recovery times, especially if the infrastructure's complexity is high. You should test and measure the recovery time to ensure it meets your recovery time objective.
+
+### Optimize platform features
+
+Optimizing platform features involves identifying and removing unnecessary or unused features to optimize resource utilization and reduce costs. Here are some steps to eliminate wasteful platform features:
 
 - *Know the capabilities of the things you’ve purchased*: Understand the features and functionalities of the platforms or services you have acquired.
 - *Disable unused features*: Identify and disable platform features that cost money and aren't utilized.
@@ -111,17 +115,9 @@ Eliminating platform features involves identifying and removing unnecessary or u
 - *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
 - *Eliminate tool redundancy*: Get rid of tools that you don't really need or that do the same thing as other tools you already have. Consider tools used for building software, writing code, security, or monitoring how things are running. For instance, if you're already using GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy more features or tools, check if what you already have can do the job. This way, you avoid wasting money and make the most of what you already have.
 
-### Eliminate underutilization from prepaid agreements
+### Avoid introducing unoptimized components
 
-Eliminating underutilization from prepaid agreements means optimizing prepaid contracts to ensure they deliver their full potential value. Addressing these inefficiencies directly curbs unnecessary expenditures and ensures that prepaid investments are optimized for the intended workload. Strategic usage of prepaid plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources. To eliminate waste from prepaid agreements, consider the following strategies:
-
-- *Monitor utilization*: Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
-- *Modify the prepaid plan*: Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
-- *Review prepaid plans*: Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
-
-### Avoid introducing waste
-
-The best way to eliminate sources of wasted spending is to avoid it in the first place. To help avoid introducing sources of wasted spending, consider these strategies:
+Avoiding introducing unoptimized components is about proactively ensuring components are efficient and essential, rather than adding or making changes without careful analysis. The best way to cost optimize workload components is to avoid unoptimized components in the first place. It prevents unnecessary expenses and resource wastage by addressing inefficiencies at the root, ensuring a workload runs cost-effectively from the outset. To help avoid introducing unoptimized components, consider these strategies:
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't just switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fixing the real problem saves you time and money.
 - *Apply metadata* Applying metadata provides a way to organize and track resources. You can categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy and apply consistently across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and others.
@@ -136,6 +132,4 @@ The best way to eliminate sources of wasted spending is to avoid it in the first
 
 **Finding orphaned resources:** Azure Monitor supports Workbooks. These workbooks allow you to create custom reports that can find and report orphaned resources across a defined scope.
 
-**Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Microsoft Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
-
-**Eliminating idle resources in disaster recovery environments**: Azure load balancers can distribute load across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. It can help reduce costs by minimizing the usage of idle resources. Azure Autoscale allows you to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. It helps ensure that resources are allocated efficiently and cost-effectively.
+**Eliminating idle resources in disaster recovery environments**: Azure load balancers can distribute load across availability zones and regions. These load balancers can help eliminate wasted spending in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. It can help reduce costs by minimizing the usage of idle resources. Azure Autoscale allows you to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. It helps ensure that resources are allocated efficiently and cost-effectively.

@@ -70,8 +70,8 @@ landingContent:
             url: get-best-rates.md
           - text: Align usage to billing increments
             url: align-usage-to-billing-increments.md
-          - text: Eliminate sources of wasted spending
-            url: eliminate-sources-wasted-spending.md
+          - text: Optimize component costs
+            url: optimize-component-costs.md
           - text: Consolidate
             url: consolidation.md
   - title: Optimize
