@@ -42,7 +42,7 @@ Here are actions that you can take to understand the workload rates:
 
 - *Understand spending*: Gain a clear understanding of the current spending for each item in the inventory list. Identify what you're paying for and where most of your expenses lie.
 
-- *Create an ordered list of workload expenses*: List the most expensive components and work your way down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest impact on cost.
+- *Create an ordered list of workload expenses*: List the most expensive components and work your way down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest effects on cost.
 
 ### Determine the right billing model
 
@@ -70,7 +70,7 @@ Consumption pricing is best suited for the following scenarios:
 
 Prepaid pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to pay-as-you-go pricing.
 
-The cost savings achieved through prepaid pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Prepaid pricing is best suited for the following scenarios:
+The amount you save with prepaid pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Prepaid pricing is best suited for the following scenarios:
 
 - *Predictable workloads*: If your workload has a consistent usage pattern, you can commit to a certain capacity over time and get a significant discount over pay-as-you-go pricing. Those instances incur charges whether you use them or not.
 
@@ -118,6 +118,24 @@ When you're considering prepaid commitments, we recommend that you commit to the
 
 - *Cost analysis*: Perform a cost analysis to assess whether the potential savings of committing to a higher usage level outweighs the risks of not fully utilizing the commitment.
 
+#### Select the right prepaid plans
+
+Strategic usage of prepaid plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources. To select the right prepaid plan, consider the following strategies:
+
+- *Choose an appropriate prepaid plan*: Select a prepaid plan that covers the minimum capacity that the workload requires. Starting with the minimum commitment gives you flexibility while you still benefit from cost savings.
+
+  Having a clear understanding of the workload's minimum capacity requirements before you commit to a prepaid plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grow, you need to understand your minimum consistent usage for each component you're committing to.
+
+- *Increment prepaid commitments*: As the capacity of your workload grows, gradually increase your prepaid commitments. Start small and scale up. Increment scaling up based on the workload's actual usage.
+
+- *Renegotiate and consolidate*: Regularly renegotiate and normalize prepaid plans to align their ending time. This alignment allows you to consolidate them into a single line item on your bill, so it's easier to manage and optimize costs.
+
+- *Eliminate underutilization*: You need to evaluate and optimize prepaid contracts to ensure they deliver their full potential value. Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
+
+    Monitor utilization. Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
+
+    Modify the prepaid plan. Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
+
 ### Evaluate and commit to available discounts
 
 Assess and analyze the potential discounts that can be applied to a specific workload. This process helps you identify opportunities for cost reduction and optimize the expenditure associated with the workload. It also helps you allocate resources more efficiently.
@@ -136,15 +154,7 @@ Try these tasks:
 
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
 
-Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You've communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing. Here are the next actions you should take:
-
-- *Choose an appropriate prepaid plan*: Select a prepaid plan that covers the minimum capacity that the workload requires. Starting with the minimum commitment gives you flexibility while you still benefit from cost savings.
-
-  Having a clear understanding of the workload's minimum capacity requirements before you commit to a prepaid plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grow, you need to understand your minimum consistent usage for each component you're committing to.
-
-- *Increment prepaid commitments*: As the capacity of your workload grows, gradually increase your prepaid commitments. Start small and scale up. Increment scaling up based on the workload's actual usage.
-
-- *Renegotiate and consolidate*: Regularly renegotiate and normalize reservations and savings plans to align their ending time. This alignment allows you to consolidate them into a single line item on your bill, so it's easier to manage and optimize costs.
+Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You've communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
 ### Decide whether to build or buy a solution
 
@@ -201,6 +211,8 @@ Optimizing licensing costs means using various licensing programs and options to
   Committing to a savings plan allows you to get discounts, up to the hourly commitment amount, on the resources that you use. Savings plan commitments are priced in US dollars for Microsoft Customer Agreement and Cloud Solution Provider customers, and in local currency for Enterprise Agreement customers. Savings plan discounts vary by meter and by commitment term (one year or three years), not commitment amount.
   
   Savings plans provide a billing discount and don't affect the runtime state of your resources. You should use Azure savings plans for more flexibility in covering diverse compute expenses by committing to specific hourly spending.
+
+**Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Microsoft Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
 
 **Azure dev/test:** [Azure dev/test](/azure/devtest/offer/overview-what-is-devtest-offer-visual-studio) is an offer that comes with Visual Studio subscription benefits. With this offer, you get some Azure monthly credits to try various Azure services at no cost. Credit amounts vary by subscription level. You can also benefit from discounted Azure dev/test rates for various Azure services, which enable cost-efficient development and testing.
 
