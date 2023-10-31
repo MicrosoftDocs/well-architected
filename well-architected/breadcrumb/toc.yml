@@ -3,5 +3,5 @@
   topicHref: /azure/index
   items:
   - name: Architecture Center
-    tocHref: /well-architected/
+    tocHref: /azure/well-architected/
     topicHref: /azure/architecture/index
