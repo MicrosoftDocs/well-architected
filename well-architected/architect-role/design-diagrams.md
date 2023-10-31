@@ -67,7 +67,6 @@ This diagram focuses on the deployment of infrastructure, COTS software, and cus
 
 This diagram illustrates the flow of data within a system, which is useful when modeling data-centric systems. It visualizes how data moves through a system. On a diagram like this, it's a good idea to note if data is moved in batch or in real time to remove ambiguity.
 
-< example here>
 
 ##### Sequence diagram
 
