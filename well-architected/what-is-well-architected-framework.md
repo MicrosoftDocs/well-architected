@@ -25,7 +25,7 @@ Workload architecture isn't the same as its implementation. The Well-Architected
 
 ## Audience
 
-The Well-Architected Framework applies to teams that are responsible for improving workloads and addressing cross-cutting concerns.  
+The Well-Architected Framework applies to teams that are responsible for improving workloads and addressing cross-cutting concerns.
 
 The Well-Architected Framework provides valuable insights and recommendations for anyone involved in the lifecycle of a workload. Regardless of your role in a workload team, whether architect, developer, operator, or business stakeholder, if you have the authority to make decisions within the scope of a workload, you can benefit from this framework.
 

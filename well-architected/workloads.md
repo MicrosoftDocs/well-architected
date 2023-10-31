@@ -45,7 +45,7 @@ A Well-Architected Framework workload:
 - Is developed and operated responsibly.
 - Accomplishes its purpose within an acceptable time period.
 
-A collaboration between the workload team and central teams of an organization must create a workload with the preceding characteristics. The following sections describe these teams and their functions.  
+A collaboration between the workload team and central teams of an organization must create a workload with the preceding characteristics. The following sections describe these teams and their functions.
 
 ## Workload team
 
