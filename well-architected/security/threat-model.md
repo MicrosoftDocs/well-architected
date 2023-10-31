@@ -94,6 +94,24 @@ Meet regularly with executive sponsors to define requirements. These reviews pro
 
 The Microsoft Security Development Lifecycle provides a threat modeling tool to assist with the threat modeling process. This tool is available at no additional cost. For more information, see the [Threat Modeling page](https://www.microsoft.com/securityengineering/sdl/threatmodeling).
 
+## Example
+
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). This approach provides a broad understanding of the threat landscape across different IT scenarios. 
+
+:::image type="content" source="images/secure-development-lifecycle/threat-analysis.svg" alt-text="Diagram that shows an example of an organization's security baseline with threat landscape." lightbox="images/secure-development-lifecycle/threat-analysis.svg":::
+
+1) **Development Lifecycle personas**. There are many personas involved in a development life cycle, including developers, testers, final users, and administrators. All of them may be compromised and put your environment at risk through vulnerabilities or threats created intentionally.
+
+2) **Potential attackers**. Attackers consider a wide range of tools available easily to be used at any time to explore your vulnerabilities and start an attack.
+
+3) **Security controls**. As part of threat analysis, identify Azure security services to be used to protect your solution and how effective those solutions are.
+
+4) **Log collection**. Logs from Azure resources and some on-premises components may be sent to Azure Log Analytics so you may understand the behavior of your solution developed and try to capture initial vulnerabilities. 
+
+5) **Security information event management (SIEM) solution**. Microsoft Sentinel may be added even in an early stage of the solution so you can  build some analytics queries to mitigate threats and vulnerabilities, anticipating your Security environment when you are in production.
+
+6) **Microsoft Defender for Cloud** might make some security recommendations to improve the security posture.
+
 ## Related links
 
 - [STRIDE](/azure/security/develop/threat-modeling-tool-threats)
