@@ -33,6 +33,8 @@ This guidance is beneficial regardless of the scale of your organization. Whethe
 
 If you're seeking guidance for improving a portfolio of workloads through centralized controls, this content might not fully apply. We recommend that you refer to [Cloud Adoption Framework](/azure/cloud-adoption-framework/). If you have no vested interest in designing workloads on Azure, this content isn't relevant for you.
 
+For information about the role and duties of an architect, see [Architect's fundamentals](./architect-role/fundamentals.md) and [Architect's checklist](./architect-role/checklist.md).
+
 ## Goals
 
 The primary objective of the Well-Architected Framework is to set you up for success when you deploy your workload on Azure.

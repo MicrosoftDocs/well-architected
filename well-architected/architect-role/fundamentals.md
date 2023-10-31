@@ -22,7 +22,9 @@ Beside system design, architects usually have experience in other roles. They mi
 - been exposed to both incremental and large functional changes in workloads
 - interpreted specs and user story acceptance criteria
 
-While that isn’t an exhaustive list, those perspectives are an important aspect of what an architect brings to during design duties. The following sections highlight the guiding principles that architects should follow to be effective in their function.
+While that isn’t an exhaustive list, those perspectives are an important aspect of what an architect brings to during design duties. Azure Well-Architected Framework  assumes that these practices are in place for the most effective use of the guidance.
+
+The following sections highlight the guiding principles that architects should follow to be effective in their function.
 
 ## Have a decision-making framework
 
