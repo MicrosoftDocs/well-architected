@@ -22,7 +22,9 @@
           - name: Architecture decision record
             href: architect-role/architecture-decision-record.md
           - name: Collaboration with implementors
-            href: architect-role/collaboration.md            
+            href: architect-role/collaboration.md
+          - name: Consultative support
+            href: architect-role/ongoing-support.md            
     - name: Pillars
       items: 
       - name: Overview
