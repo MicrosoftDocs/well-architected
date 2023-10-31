@@ -27,11 +27,11 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Label everything**. Provide clear, accurate, and meaningful labels for each icon. Label lines when the relationship isn't clear.
 
-**Maintain consistency**. Use consistent colors, casing, icons, icon sizes, line types, arrow heads, and other standardized represenation throughout the diagram, and across all related diagrams, to represent similar elements. Draw from existing data or taxonomy.
+**Maintain consistency**. Use consistent colors, casing, icons, icon sizes, line types, arrow heads, and other standardized representation throughout the diagram, and across all related diagrams, to represent similar elements. Draw from existing data or taxonomy.
 
-**Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in virtual network that doesn't exist within a virtual network. As a communication tool, miscommunication through inaccuracies need to be avoid.
+**Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in virtual network that doesn't exist within a virtual network. As a communication tool, miscommunication through inaccuracies need to be avoided.
 
-**Include metadata**. Ensure the diagram contains metadata that provides essential information about the diagram itself, its purpose, and context to help viewers understand the scope and significances of the diagram. Include items such as, Title, Description, Last Updated Date, Author, external references.
+**Include metadata**. Ensure the diagram contains metadata that provides essential information about the diagram itself, its purpose, and context to help viewers understand the scope and significance of the diagram. Include items such as, Title, Description, Last Updated Date, Author, external references.
 
 **Use official icons and service names**: When representing specific technology, always use the latest icons provided by your technology provider to represent the subject. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams involving Azure components.
 
@@ -88,7 +88,7 @@ An ERD is a modeling diagram that is used to represent the structure of a databa
 
 ##### Network diagram
 
-A network diagram illustrates the solution from the perspective of the network that it runs upon or interacts with. These diagrams are useful in visualizing the workload's network segmentation, network points of failure, and key network transitions such as Internet egress and ingress points. Network diagrams usually have a life well past implementation, and are key diagrams used in audits and incident response.
+A network diagram illustrates the solution from the perspective of the network that it runs upon or interacts with. These diagrams are useful in visualizing the workload's network segmentation, network points of failure, and key network transitions such as Internet egress and ingress points. Network diagrams usually have a life past implementation, and are key diagrams used in audits and incident response.
 
 
 
