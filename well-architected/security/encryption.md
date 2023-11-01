@@ -210,7 +210,7 @@ You can use [Key Vault](https://azure.microsoft.com/services/key-vault/#product-
 
 The following example shows encryption solutions that you can use to manage keys, certificates, and secrets.
 
-:::image type="content" source="images/encryption/manage-keys-certificates-secrets.png" alt-text="Diagram that shows encryption solutions for managing keys, certificates, and secrets." border="false" lightbox="images/encryption/manage-keys-certificates-secrets.png":::
+:::image type="content" source="images/encryption/manage-keys-certificates-secrets.svg" alt-text="Diagram that shows encryption solutions for managing keys, certificates, and secrets." border="false" lightbox="images/encryption/manage-keys-certificates-secrets-highres.png":::
 
 ## Related links
 

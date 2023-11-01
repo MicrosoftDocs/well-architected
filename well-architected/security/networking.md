@@ -372,7 +372,7 @@ For more information, see [Azure DDoS Protection overview](/azure/ddos-protectio
 
 Here are some examples that demostrate the use of network controls recommended in this article.
 
-## IT environment
+### IT environment
 
 This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). This approach provides a broad understanding of the threat landscape across different IT scenarios. 
 
@@ -405,7 +405,7 @@ This example builds on the Information Technology (IT) environment established i
 13) **Traffic Analytics**: Monitor your network controls with Traffic Analytics. This is configured through Network Watcher, part of Azure Monitor, and aggregates inbound and outbound hits in your subnets collected by NSG.
 
 
-## Architecture for a containerized workload
+### Architecture for a containerized workload
 
 This example architecture combines the network controls that are described in this article. The example doesn't show the complete architecture. Instead, it focuses on ingress controls on the private cloud.
 
