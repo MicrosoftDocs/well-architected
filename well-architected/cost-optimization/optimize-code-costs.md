@@ -303,7 +303,7 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)
 - [Application Insights Profiler](/azure/azure-monitor/profiler/profiler-overview)
 - [Connection pooling](/azure/app-service/troubleshoot-intermittent-outbound-connection-errors#modify-the-application-to-use-connection-pooling)
-- [Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices)
+- [Azure Database for PostgreSQL - Flexible Server connection pooling](/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices)
 - [Azure SQL Database index tuning](/azure/azure-sql/database/automatic-tuning-overview)
 - [Azure Cosmos DB indexing policies](/azure/cosmos-db/index-policy)
 - [Azure Cosmos DB partitioning](/azure/cosmos-db/partitioning-overview)
