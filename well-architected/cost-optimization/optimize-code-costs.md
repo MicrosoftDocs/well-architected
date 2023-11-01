@@ -284,7 +284,7 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 
 **Data serialization:** Azure supports various serialization formats, including JSON and XML. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
 
-**Indexing and query optimization:** Azure services like [Azure SQL Database](/azure/azure-sql/database/automatic-tuning-overview?view=azuresql) and [Azure Cosmos DB](/azure/cosmos-db/index-policy) provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
+**Indexing and query optimization:** Azure services like [Azure SQL Database](/azure/azure-sql/database/automatic-tuning-overview) and [Azure Cosmos DB](/azure/cosmos-db/index-policy) provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
 
 **Object-relational mapping (ORM):** Azure supports ORM frameworks like Entity Framework. These frameworks simplify data access and mapping between object-oriented code and relational or NoSQL databases.
 
