@@ -11,6 +11,8 @@ ms.topic: conceptual
 
 Delivering architecture specifications isn't a one-off task. An architect should expect to engage with the workload team throughout the implementation.
 
+## Continuous collaboration tasks
+
 - **Provide clarity**. Architects should be readily available to provide clarity on any delivered specifications, ensuring the implementation teams remain unblocked. They should actively participate in iteration planning exercises and team meetings to address potential blockers.
 
 - **Implementation sequencing suggestions**. Architects understand that the journey from design to a production-ready product is iterative. They can recommend which parts of the application to implement first, enabling the workload team to learn from that experience and reapply to the remaining parts of the workload.
