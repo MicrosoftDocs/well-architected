@@ -267,7 +267,7 @@
 		},
 		{
 			"source_path": "well-architected/cost/optimize-vm.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/eliminate-sources-wasted-spending",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-component-costs",
 			"redirect_document_id": true
 		},
 		{
