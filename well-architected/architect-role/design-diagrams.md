@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Architecture design diagrams
 
-Architects often communicate through diagrams. Diagrams are powerful communication tools that help implementors and stakeholders see the broad vision or dive deep into highly sensitive or nuanced areas of a system. To communicate with intention, an architect must select which diagrams are useful in each situation.
+Architects often communicate through diagrams. Diagrams are powerful communication tools that help implementers and stakeholders see the broad vision or dive deep into highly sensitive or nuanced areas of a system. To communicate with intention, an architect must select which diagram is useful in each situation.
 
 This list of diagrams in this article isn't exhaustive. Expect diagrams to be a composite of multiple types.
 
@@ -33,15 +33,15 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in virtual network that doesn't exist within a virtual network. A diagram is a communication tool, so you need to avoid miscommunication through inaccuracies.
 
-**Include metadata**. Ensure that a diagram contains metadata that provides essential information about the purpose of the diagram, along with context to help viewers understand its scope and significance. Include items such as title, description, last updated date, author, and external references.
+**Include metadata**. Ensure that a diagram contains metadata that provides essential information about the purpose of the diagram. Metadata also gives context to help viewers understand the diagram's scope and significance. Include items such as title, description, last updated date, author, and external references.
 
-**Use official icons and service names**. When you're representing a specific technology, always use the latest icons provided by your technology provider to represent it. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams that involve Azure components.
+**Use official icons and service names**. When you're representing a specific technology, use the latest icons from your technology provider to represent it. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams that involve Azure components.
 
 ## Types of design diagrams
 
 Workload architecture is complex and multidimensional. Each dimension type focuses on a specific aspect of the system by providing a level of detail that's specific to that dimension. For instance, flowcharts illustrate process flow. Entity-relationship diagrams depict relationships between system components.
 
-Having different types of diagrams allows for comprehensive understanding of dimensions. It helps encourage effective communication, problem-solving, and decision-making among stakeholders.
+Having different types of diagrams allows for a comprehensive understanding of dimensions. It helps encourage effective communication, problem-solving, and decision-making among stakeholders.
 
 ##### High-level system diagram
 
@@ -53,11 +53,11 @@ These diagrams are good for reaching a common understanding so that you can star
 
 A block diagram breaks down a workload into its major functional blocks. The blocks are usually technology agnostic. They refer to the functionality that's being performed instead of a specific component itself.
 
-For example, a block diagram might reference a "messaging bus" instead of a specific message bus technology. This type of diagram can help explain a system's structure, data flow, and processing flow without distracting the audience with fine details.
+For example, a block diagram might reference a "messaging bus" instead of a specific message-bus technology. This type of diagram can help explain a system's structure, data flow, and processing flow without distracting the audience with fine details.
 
 ##### Component diagram
 
-A component diagram works like a block diagram but replaces generic functionality blocks with specific technologies. It presents a detailed view with the goal of communicating the system's individual specific technology components and their relationships, such as client/server. These diagrams are a sort of visual bill of materials for the scope of the diagram.
+A component diagram works like a block diagram but replaces generic functionality blocks with specific technologies. It presents a detailed view with the goal of communicating the system's individual technology components and their relationships, such as client/server. These diagrams are a sort of visual bill of materials for the scope of the diagram.
 
 ##### Deployment diagram
 
@@ -65,7 +65,7 @@ A deployment diagram focuses on the deployment of infrastructure, commercial off
 
 ##### Data-flow diagram
 
-A data-flow diagram (DFD) illustrates the flow of data within a system, which is useful when you're modeling data-centric systems. It visualizes how data moves through a system. In a diagram like this, it's a good idea to note if data is moved in batches or in real time to remove ambiguity.
+A data-flow diagram (DFD) illustrates how data moves through a system, which is useful when you're modeling data-centric systems. In a diagram like this, it's a good idea to note if data is moved in batches or in real time to remove ambiguity.
 
 ##### Sequence diagram
 
