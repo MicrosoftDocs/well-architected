@@ -3,7 +3,7 @@ title: Workload architecture design specification
 description: Learn about the benefits of an architecture design specification.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/26/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
