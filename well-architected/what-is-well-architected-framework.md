@@ -25,13 +25,15 @@ Workload architecture isn't the same as its implementation. The Well-Architected
 
 ## Audience
 
-The Well-Architected Framework applies to teams that are responsible for improving workloads and addressing cross-cutting concerns.  
+The Well-Architected Framework applies to teams that are responsible for improving workloads and addressing cross-cutting concerns.
 
 The Well-Architected Framework provides valuable insights and recommendations for anyone involved in the lifecycle of a workload. Regardless of your role in a workload team, whether architect, developer, operator, or business stakeholder, if you have the authority to make decisions within the scope of a workload, you can benefit from this framework.
 
 This guidance is beneficial regardless of the scale of your organization. Whether you're part of a large enterprise, a small business, or an independent software vendor, you can move a step closer to optimal design. The framework caters to a wide range of organizational structures and sizes, ensuring that all workload users can effectively use its benefits.
 
 If you're seeking guidance for improving a portfolio of workloads through centralized controls, this content might not fully apply. We recommend that you refer to [Cloud Adoption Framework](/azure/cloud-adoption-framework/). If you have no vested interest in designing workloads on Azure, this content isn't relevant for you.
+
+For information about the role and duties of an architect, see [Architect's fundamentals](./architect-role/fundamentals.md) and [Architect's checklist](./architect-role/checklist.md).
 
 ## Goals
 
