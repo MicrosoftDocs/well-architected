@@ -289,12 +289,6 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 Storing logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that you need to consider when you plan your strategy. Consider options like archive storage and selective replication when they're practical.
 
-<!--
-## Example
-
-_Placeholder for IaaS baseline architecture_
--->
-
 ## Related links
 
 - [Instrumentation guide](../devops/monitor-instrument.md)
