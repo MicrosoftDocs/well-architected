@@ -266,31 +266,31 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 
 ## Azure facilitation
 
-**Instrumenting code:** Azure provides monitoring and logging tools like Azure Monitor, Application Insights, and Log Analytics. You can use these tools to track and analyze the performance and behavior of your code in real time.
+**Instrumenting code:** Azure provides monitoring and logging tools like [Azure Monitor](/azure/azure-monitor/overview), [Application Insights](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview). You can use these tools to track and analyze the performance and behavior of your code in real time.
 
-**Identifying hot paths:** Application Insights and profiling tools like Profiler help identify the hot paths in your code by analyzing execution times and resource usage.
+**Identifying hot paths:** Application Insights and [Application Insights Profiler](/azure/azure-monitor/profiler/profiler-overview) help identify the hot paths in your code by analyzing execution times and resource usage.
 
 **Minimizing allocations:** You can minimize unnecessary memory allocations and optimize memory usage by using tools like Profiler and optimizing your code for efficient memory management.
 
-**Performant SDKs:** Azure offers SDKs in multiple programming languages, optimized for performance and ease of use. These SDKs provide prebuilt functions and libraries that interact with Azure services to reduce the need for custom implementation.
+**Performant SDKs:** Azure offers [SDKs](https://azure.microsoft.com/downloads/) in multiple programming languages, optimized for performance and ease of use. These SDKs provide prebuilt functions and libraries that interact with Azure services to reduce the need for custom implementation.
 
-**Network protocols:** Various Azure services support high-speed network protocols like HTTP/2 and QUIC for efficient communication between services and applications.
+**Network protocols:** Various Azure services support high-speed network protocols like [HTTP/2](/azure/application-gateway/features#websocket-and-http2-traffic) and [QUIC](/azure/storage/files/storage-files-networking-overview#smb-over-quic) for efficient communication between services and applications.
 
-**Connection pooling:** Azure services, such as [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/), [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/), and [Azure Cache for Redis](https://azure.microsoft.com/products/cache/), automatically handle connection pooling. Connection pooling enables efficient reuse of database connections to reduce the overhead of establishing new connections.
+**Connection pooling:** Azure services, such as [Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices), support [connection pooling](/azure/app-service/troubleshoot-intermittent-outbound-connection-errors#modify-the-application-to-use-connection-pooling).
 
 **Batching:** Azure supports batch processing in various services, so you can group multiple operations together and run them in a single request. Batch processing can significantly improve efficiency and reduce network overhead.
 
 **Caching:** Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, which results in faster retrieval and reduced back-end load.
 
-**Data serialization:** Azure supports various serialization formats, including JSON, XML, and Protocol Buffers. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
+**Data serialization:** Azure supports various serialization formats, including JSON and XML. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
 
-**Indexing and query optimization:** Azure services like Azure SQL Database and Azure Cosmos DB provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
+**Indexing and query optimization:** Azure services like [Azure SQL Database](/azure/azure-sql/database/automatic-tuning-overview?view=azuresql) and [Azure Cosmos DB](/azure/cosmos-db/index-policy) provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
 
-**Object-relational mapping:** Azure provides ORM frameworks like Entity Framework and Azure Cosmos DB SDKs. These frameworks simplify data access and mapping between object-oriented code and relational or NoSQL databases.
+**Object-relational mapping (ORM):** Azure supports ORM frameworks like Entity Framework. These frameworks simplify data access and mapping between object-oriented code and relational or NoSQL databases.
 
-**Optimizing stored procedures:** You can use Azure services like Azure SQL Database to create and optimize stored procedures. Stored procedures can enhance performance by reducing network round trips and precompiling SQL statements.
+**Optimizing stored procedures:** You can use Azure services like [Azure SQL Database](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) to create and optimize stored procedures. Stored procedures can enhance performance by reducing network round trips and precompiling SQL statements.
 
-**Partitioning and sharding:** Azure offers partitioning and sharding capabilities in services like Azure Cosmos DB and Azure SQL Database. You can use partitioning to distribute data across multiple nodes for scalability and performance optimization.
+**Partitioning and sharding:** Azure offers partitioning and sharding capabilities in services like [Azure Cosmos DB](/azure/cosmos-db/partitioning-overview) and [Azure SQL Database](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes). You can use partitioning to distribute data across multiple nodes for scalability and performance optimization.
 
 **Compressing data:** Azure services support data compression techniques like GZIP and DEFLATE.
 
@@ -298,9 +298,16 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 
 ## Related links
 
-- [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/)
-- [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/)
-- [Azure Cache for Redis](https://azure.microsoft.com/products/cache/)
+- [Azure Monitor](/azure/azure-monitor/overview)
+- [Application Insights](/azure/azure-monitor/app/app-insights-overview)
+- [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)
+- [Application Insights Profiler](/azure/azure-monitor/profiler/profiler-overview)
+- [Connection pooling](/azure/app-service/troubleshoot-intermittent-outbound-connection-errors#modify-the-application-to-use-connection-pooling)
+- [Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices)
+- [Azure SQL Database index tuning](/azure/azure-sql/database/automatic-tuning-overview)
+- [Azure Cosmos DB indexing policies](/azure/cosmos-db/index-policy)
+- [Azure Cosmos DB partitioning](/azure/cosmos-db/partitioning-overview)
+- [Azure SQL Database partitioning](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes)
 
 ## Cost Optimization checklist
 
