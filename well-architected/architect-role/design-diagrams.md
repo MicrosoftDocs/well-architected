@@ -47,7 +47,7 @@ This diagram serves as a broad overview of a whole workload or even a broad over
 
 ##### Block diagram
 
-This diagram breaks down a workload into its major functional blocks. The blocks are usually technology agnostic and instead refer to the functionality being performed instead of a specific component itself. For example, it may reference a "messaging bus" instead of a specific message bus technology. This diagram can help explain a system's structure and data & processing flow without distracting with fine-grain details.
+This diagram breaks down a workload into its major functional blocks. The blocks are usually technology agnostic and instead refer to the functionality being performed instead of a specific component itself. For example, it might reference a "messaging bus" instead of a specific message bus technology. This diagram can help explain a system's structure and data & processing flow without distracting with fine-grain details.
 
 
 

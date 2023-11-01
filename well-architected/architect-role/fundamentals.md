@@ -86,7 +86,7 @@ Architecture frameworks support an architect by offering workload perspectives a
 
 Combining frameworks with personal techniques, such as mind-mapping, is recommended.
 
-Architecture is about communication, not the end product. Make sure you’re optimizing for clear and intentional decision making, tradeoff acknowledgement, and clear communication in your established processes.
+Architecture is about communication, not the end product. Make sure you’re optimizing for clear and intentional decision making, tradeoff acknowledgment, and clear communication in your established processes.
 
 ## Next steps
 

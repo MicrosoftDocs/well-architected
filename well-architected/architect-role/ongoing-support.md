@@ -17,7 +17,7 @@ A workload can be modeled in multiple dimensions and for multiple purposes. For 
 
 ## Share potential improvements
 
-An architect stays current with fundamentals such as cloud provider offerings and industry design patterns. What might have been state of the art when a workload was designed may no longer be. Or the expected usage patterns of the application didn't manifest itself in the way they were predicted. In cases like these, there may be an opportunity for an architect to present a design change recommendation to further optimize or refine the current design based on this new knowledge.
+An architect stays current with fundamentals such as cloud provider offerings and industry design patterns. What might have been state of the art when a workload was designed might no longer be. Or the expected usage patterns of the application didn't manifest itself in the way they were predicted. In cases like these, there might be an opportunity for an architect to present a design change recommendation to further optimize or refine the current design based on this new knowledge.
 
 A general practice is to follow up with the workload team periodically after the workload is live. This allows the architect to learn for themselves about how the design was implemented and performing under actual usage to further improve their own knowledge for future design work. But also allows the architect to offer optimization recommendations based on the actual implementation and usage.
 
@@ -27,7 +27,7 @@ When a workload is under review such as by an official audit or compliance, havi
 
 ## Review proposed changes
 
-Every workload has a backlog of workload ranging from broad epic, directional level work, to specific tasks that need to be accomplished. As an architect, find ways to be involved in the requirements gathering, scoping, and acceptance criteria building for work items. Because the implementation team is usually busy with delivering on current work items, an architect can provide time to review, validate, and refine work future work items. They can help detect when a new feature may require a redesign of a component in the system, provide cost analysis on the proposed change, or propose an approach to introduce the new changes incrementally. Ultimately, bringing an architect in early in proposed changes involving new functionality or an expanded user base can minimize rework or prevent being surprised by unknown cliffs in the design.
+Every workload has a backlog of workload ranging from broad epic, directional level work, to specific tasks that need to be accomplished. As an architect, find ways to be involved in the requirements gathering, scoping, and acceptance criteria building for work items. Because the implementation team is usually busy with delivering on current work items, an architect can provide time to review, validate, and refine work future work items. They can help detect when a new feature requires a redesign of a component in the system, provide cost analysis on the proposed change, or propose an approach to introduce the new changes incrementally. Ultimately, bringing an architect in early in proposed changes involving new functionality or an expanded user base can minimize rework or prevent being surprised by unknown cliffs in the design.
 
 ## Next steps
 

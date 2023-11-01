@@ -21,7 +21,7 @@ Delivering architecture specifications isn't a one-off task. An architect should
 
 - **Stakeholder communication**. Architects have an established relationship with stakeholders and the business and have an intimate understanding of the workload. As such, they're often in a good position to proxy implementation team concerns or requests to negotiate changes to requirements.
 
-- **Environment recommendations**. Workload design often extends beyond designing for production and its disaster recovery. Production is just one of many environments a workload implementation team may need. Architects can assist workload teams in right-sizing preproduction environments.
+- **Environment recommendations**. Workload design often extends beyond designing for production and its disaster recovery. Production is just one of many environments a workload implementation team might need. Architects can assist workload teams in right-sizing preproduction environments.
 
 - **Proof of concept**. Architects frequently use proofs of concept in their designs to inform decisions in the workload architecture design deliverable. These implementations can also illustrate the actual implementation. If a proof of concept doesn't exist, an architect should create one before the implementation team starts development.
 
