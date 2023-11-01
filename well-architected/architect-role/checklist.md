@@ -3,15 +3,17 @@ title: Solution architect's checklist
 description: Learn about the deliverables of a Well-Architected architect.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/26/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architect's deliverable checklist
+# Solution architect's checklist
 
-The responsibility of an architect is to **deliver designs and plans**. Keep in mind that an architect isn't the implementor of the workload. The architect **translates functional and non-functional requirements to cloud design patterns**, fit-for-purpose components, and designs a workload that's just enough flexible and durable during the planned life of the functionality. Also included in the design are the operational aspects of the workload, including observability and supportability, and accounting for undesirable situations such disaster recovery. Finally, the design must be constrained by all business, financial, compliance, and organizational requirements.
+The responsibility of an architect is to **deliver designs and plans**. Keep in mind that an architect isn't the implementor of a workload. The architect **translates functional and non-functional requirements to cloud design patterns** and fit-for-purpose components. The architect also designs a workload that's flexible enough to adapt when needed, but also durable enough to weather the planned life of the functionality.
 
-Architecture frameworks, such as the Azure Well-Architected Framework (WAF), help architects get a holistic perspective on system design. WAF artifacts (**design principles**, **checklists**, **recommendations**) should be combined with other resources: **decision trees**, **reference architectures**, and **assessments** to make informed decisions to support the requirements of the workload.
+Also included in the design are the operational aspects of the workload, including observability and supportability, and accounting for undesirable situations such as disaster recovery. Finally, the design must be constrained by all business, financial, compliance, and organizational requirements.
+
+Architecture frameworks, such as the Azure Well-Architected Framework, help architects get a holistic perspective on system design. Well-Architected Framework artifacts (**design principles**, **checklists**, **recommendations**) should be combined with other resources: **decision trees**, **reference architectures**, and **assessments** to make informed decisions to support the requirements of the workload.
 
 ## Checklist
 
@@ -28,7 +30,7 @@ Architecture frameworks, such as the Azure Well-Architected Framework (WAF), hel
 
 ## Next steps
 
-Get started with the pillars of WAF and familiarize yourself with the key concepts.
+Get started with the Well-Architected Framework pillars, and familiarize yourself with the key concepts.
 
 > [!div class="nextstepaction"]
 > [Azure Well-Architected Framework pillars](../pillars.md)
