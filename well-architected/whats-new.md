@@ -55,6 +55,9 @@ All five pillars of the Well-Architected Framework now follow a common structure
 
 The [Well-Architected Review assessment](/assessments/azure-architecture-review/) has been refreshed. Specifically, the "Core Well-Architected Review" option now aligns to the new content structure in the Well-Architected Framework. Every question in every pillar maps to the design review checklist for that pillar. All choices for the questions correlate to the recommendation guides for the related checklist item.
 
+> [!IMPORTANT]
+> **Backwards compatibility notice.** The first new milestone on existing Core Well-Architected Review assessment sessions will not be prefilled with your prior responses due to the assessment refresh. You will be able to access prior milestones, but when you create the first new milestone, you will need to reassess the workload against the new questions and choices.
+
 No other assessments were changed as part of this refresh.
 
 ### Thematic changes
