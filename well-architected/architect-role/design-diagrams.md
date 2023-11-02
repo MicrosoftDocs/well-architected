@@ -3,7 +3,7 @@ title: Architecture design diagrams
 description: Learn about diagramming practices and types of architecture diagrams that you can create to communicate effectively.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/26/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 Architects often communicate through diagrams. Diagrams are powerful communication tools that help implementers and stakeholders see the broad vision or dive deep into highly sensitive or nuanced areas of a system. To communicate with intention, an architect must select which diagram is useful in each situation.
 
-This list of diagrams in this article isn't exhaustive. Expect diagrams to be a composite of multiple types.
+The list of diagrams in this article isn't exhaustive. Diagrams are often a composite of multiple types.
 
 Ultimately, the choice of architecture diagram depends on what you're trying to convey and the audience profile. An architect uses multiple types of diagrams throughout activities for design, refinement of requirements, and communication.
 
@@ -31,11 +31,11 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line types, arrow heads, and other representations for similar elements throughout a diagram and across related diagrams. Draw from existing data or taxonomies.
 
-**Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in virtual network that doesn't exist within a virtual network. A diagram is a communication tool, so you need to avoid miscommunication through inaccuracies.
+**Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in a virtual network if it's not present in that virtual network. A diagram is a communication tool, so you need to avoid miscommunication from inaccuracies.
 
 **Include metadata**. Ensure that a diagram contains metadata that provides essential information about the purpose of the diagram. Metadata also gives context to help viewers understand the diagram's scope and significance. Include items such as title, description, last updated date, author, and external references.
 
-**Use official icons and service names**. When you're representing a specific technology, use the latest icons from your technology provider to represent it. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams that involve Azure components.
+**Use official icons and service names**. When you're representing a specific technology, use the latest icons from your technology provider. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams that involve Azure components.
 
 ## Types of design diagrams
 
@@ -51,7 +51,7 @@ These diagrams are good for reaching a common understanding so that you can star
 
 ##### Block diagram
 
-A block diagram breaks down a workload into its major functional blocks. The blocks are usually technology agnostic. They refer to the functionality that's being performed instead of a specific component itself.
+A block diagram breaks down a workload into its major functional blocks. The blocks are usually technology agnostic. They refer to the functionality that's being performed instead of a specific component.
 
 For example, a block diagram might reference a "messaging bus" instead of a specific message-bus technology. This type of diagram can help explain a system's structure, data flow, and processing flow without distracting the audience with fine details.
 
@@ -83,11 +83,11 @@ An entity-relationship diagram (ERD) is a modeling diagram that represents the s
 
 A network diagram illustrates the solution from the perspective of the network that it runs on or interacts with. These diagrams are useful in visualizing the workload's network segmentation, network points of failure, and key network transitions such as internet egress and ingress points.
 
-Network diagrams usually have a life past implementation. They're key diagrams used in audits and incident response.
+Network diagrams usually have a life past implementation. They're often used in audits and incident response.
 
 ##### State diagram
 
-A state diagram is a specialized visualization. It shows the states that a flow (or an individual component) can be in. It also shows how the flow transitions between states in response to conditions or events.
+A state diagram is a specialized visualization. It shows the state that a flow (or an individual component) is in. It also shows how the flow transitions between states in response to conditions or events.
 
 ##### Flowchart
 
