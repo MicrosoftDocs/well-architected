@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 An architecture decision record (ADR) is one of the most important deliverables of a solution architect. This record documents architectural decisions made throughout the design process and provides context-specific justifications and implications for each decision. The ADR documents all key decisions, including alternatives that were ruled out, and incorporates requirements and constraints into the documented affects of a decision.
 
-## Implementing an ADR
+## Implement an ADR
 
 The ADR should be started at the onset of a workload and maintained throughout its lifespan. The ADR serves as an append-only log, extending beyond the initial design to include design aspects against future functional and nonfunctional requirements. This log should be readily available and stored with the workload’s documentation.
 
