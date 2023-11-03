@@ -68,13 +68,13 @@ Design workloads with three key support perspectives:
 
 **Operational visibility**. The design should provide execution visibility for the workload operations team to prevent confusion during incident response.
 
-**Customer support capabilities**. The design should meet user needs but also facilitate customer support functions. A design that hinders the support team's ability to investigate or assist customers is inadequate.
+**Customer support capabilities**. The design should meet user needs but also facilitate customer support functions. A design that hinders the support team's ability to investigate or to assist customers is inadequate.
 
 ## Maintain and enhance your skills
 
 An architect's expertise is often rooted in practical experience. It's important to invest in expanding your skill set to keep up with the evolving cloud ecosystem.
 
-**Training and certification**. Seek opportunities for training and certification that technology providers offer for architects.
+**Education**. Seek opportunities for training and certification that technology providers offer for architects.
 
 **Community participation**. Engage with peers through online and local architecture communities.
 
@@ -82,7 +82,7 @@ An architect's expertise is often rooted in practical experience. It's important
 
 ## Collaborate for success
 
-An architect should take advantage of the expertise of the cloud provider or implementation partner. Most  providers want your workload's success on their platform and often provide services such as architecture design review sessions or consultative sessions with their cloud solution architects. Seek opportunities for review and assistance within your vendor relationships.
+An architect should take advantage of the expertise of the cloud provider or implementation partner. Most  providers want your workload's success on their platform, and they often provide services such as architecture design review sessions or consultative sessions with their cloud solution architects. Seek opportunities for review and assistance within your vendor relationships.
 
 ## Be methodical in your design approach
 
@@ -90,7 +90,7 @@ Architecture frameworks support an architect by offering workload perspectives a
 
 Use the principles, checklists, assessments, and reference materials in architecture frameworks to establish a process that fits the workload. Combine frameworks with personal techniques, such as mind mapping.
 
-Architecture is about communication as much as it's about the end product. Make sure you're optimizing for clear and intentional decision-making, tradeoff acknowledgment, and clear communication in your established processes.
+Architecture is about communication as much as it's about the end product. Make sure that you're optimizing for intentional decision-making, tradeoff acknowledgment, and clear communication in your established processes.
 
 ## Next steps
 
