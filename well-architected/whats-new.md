@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # What's new in the Azure Well-Architected Framework
 
-Find out how Azure Well-Architected Framework has changed recently.
+Find out how Azure Well-Architected Framework changed recently.
 
 ## November 2023
 
@@ -19,7 +19,7 @@ The Azure Well-Architected Framework completed a significant content refresh acr
 
 All five pillars of the Well-Architected Framework now follow a common structure that consists exclusively of design principles, design review checklists, tradeoffs, recommendation guides, and cloud design patterns.
 
-- **Design principles**. Presents goal-oriented principles that build a foundation for the workload. Each principle includes a set of recommended approaches and the benefits of taking those approaches. The principles for each pillar have changed in terms of content and coverage.
+- **Design principles**. Presents goal-oriented principles that build a foundation for the workload. Each principle includes a set of recommended approaches and the benefits of taking those approaches. The principles for each pillar changed in terms of content and coverage.
 
   - [Reliability design principles](./reliability/principles.md)
   - [Security design principles](./security/principles.md)
@@ -53,7 +53,7 @@ All five pillars of the Well-Architected Framework now follow a common structure
 
 ### Well-Architected Framework assessments
 
-The [Well-Architected Review assessment](/assessments/azure-architecture-review/) has been refreshed. Specifically, the "Core Well-Architected Review" option now aligns to the new content structure in the Well-Architected Framework. Every question in every pillar maps to the design review checklist for that pillar. All choices for the questions correlate to the recommendation guides for the related checklist item.
+The [Well-Architected Review assessment](/assessments/azure-architecture-review/) was refreshed. Specifically, the "Core Well-Architected Review" option now aligns to the new content structure in the Well-Architected Framework. Every question in every pillar maps to the design review checklist for that pillar. All choices for the questions correlate to the recommendation guides for the related checklist item.
 
 > [!IMPORTANT]
 > **Backwards compatibility notice.** The first new milestone on existing Core Well-Architected Review assessment sessions will not be prefilled with your prior responses due to the assessment refresh. You will be able to access prior milestones, but when you create the first new milestone, you will need to reassess the workload against the new questions and choices.
@@ -85,7 +85,8 @@ In addition to the changes in structure and consistency, you should note some th
 
 ## October 2023
 
-- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./service-guides/cosmos-db.md)
+- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md)
+- Updated service guide: [Azure Well-Architected Framework review - Azure Firewall](./service-guides/azure-firewall.md)
 
 ## September 2023
 
