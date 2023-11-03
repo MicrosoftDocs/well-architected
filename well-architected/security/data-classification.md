@@ -117,7 +117,7 @@ Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offe
 
 ## Example
 
-This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below shows some of the common examples where you may have stored data and used by different workloads, and accessed by different identities compromise your data. 
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below example data stores that are accessed by different identities of an organization.  
 
 :::image type="content" source="images/data-classification/data-classification-enterprise.svg" alt-text="Diagram that shows an example of an organization's data classification." lightbox="images/data-classification/data-classification-enterprise.svg":::
 

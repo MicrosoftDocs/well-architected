@@ -374,7 +374,7 @@ Here are some examples that demostrate the use of network controls recommended i
 
 ### IT environment
 
-This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). This approach provides a broad understanding of the threat landscape across different IT scenarios. 
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). This approach provides a broad understanding of network controls applied at various perimeters to restrict traffic. 
 
 :::image type="content" source="images/networking/network-controls.svg" alt-text="Diagram that shows an example of an organization's security baseline with network controls." lightbox="images/networking/network-controls.svg":::
 
