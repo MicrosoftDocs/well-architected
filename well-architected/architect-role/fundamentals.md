@@ -11,9 +11,7 @@ ms.topic: conceptual
 
 Every workload passes through a component and topology design process. This process is most intense at the inception of the workload, which includes designing for initial requirements and long-term success of the workload. Architecture is also designed when the workload changes over time and the organization adds, changes, or removes functionality.
 
-Component and topology design is the primary function an architect. Architects who focus on cloud-based and hybrid solutions are often called _cloud solution architects_.
-
-In some organizations, cloud solution architects can exist in a centralized capacity within an enterprise architecture group. Likewise, they can focus on a specific workload.
+Component and topology design is the primary function an architect. Architects who focus on cloud-based and hybrid solutions are often called _cloud solution architects_. In some organizations, cloud solution architects exist in a centralized capacity within an enterprise architecture group. They can also focus on a specific workload.
 
 A dedicated role can deliver the function of an architect. In some cases, trusted technical specialists (such as a workload engineering lead) can deliver the function of an architect. Or an organization might distribute the function among a small group of senior engineers who are associated with the workload.
 
@@ -32,9 +30,9 @@ The following sections highlight the guiding principles that architects should f
 
 ## Have a decision-making framework
 
-The key aspect of design is using a consistent process to make decisions. An architect should approach both initial and incremental design with rigor.
+A key aspect of design is using a consistent process to make decisions. An architect should approach both initial and incremental design with rigor.
 
-**Identify and log decisions to be made**. Use learned experiences to help with decision identification. Log all decisions that you plan to make.
+**Identify expected decisions**. Use learned experiences to help with decision identification. Log all decisions that you plan to make.
 
 **Make informed decisions**. Consider limitations, constraints, tradeoffs, effort, reversibility, and risk. Include supporting evidence from proofs of concept, along with technology documentation and guidance.
 
@@ -46,7 +44,7 @@ The key aspect of design is using a consistent process to make decisions. An arc
 
 Cloud design patterns are a fundamental building block of architecture. Cloud-based architecture and application design are often an exercise of pattern recognition.
 
-**Evaluate a workload's functional and nonfunctional requirements to recognize patterns**. Look for opportunities to map your design to the use cases. In your design, include standardized patterns that match the use cases.
+**Evaluate a workload's functional and nonfunctional requirements to recognize patterns**. Look for opportunities to map your design to use cases via standardized patterns.
 
 ## Be forward-thinking
 
@@ -60,7 +58,7 @@ To design a system that will last until its planned end of life, you must design
 
 **Regional expansion**. Consider future expansion of the workload into multiple regions. A design that's limited to a single region will need to be heavily refactored for multiple-region deployment, and that can be a costly change. There's even more complexity if the workload design needs to accommodate multiple geographies with different compliance requirements. Make sure that your design factors in any reasonable prediction about regional expansion.
 
-**Product roadmaps**. In your design, don't include components that are on the path to deprecation. Likewise, features currently in a preview state will eventually be released (or not). Staying ahead of problems by using preview features can be highly advantageous. The workload will be prepared to go to production soon after the features are released. Include preview features in your design only after you do careful risk analysis. Ship only features that have a tolerated risk profile.
+**Product roadmaps**. Understand what your product has accomplished and where it's headed. In your design, don't include components that are on the path to deprecation. Include preview features in your design only after you do careful risk analysis. Ship only features that have a tolerated risk profile. Staying ahead of problems with preview features can help prepare the workload for production.
 
 ## Design for supportability
 
@@ -70,13 +68,13 @@ Design workloads with three key support perspectives:
 
 **Operational visibility**. The design should provide execution visibility for the workload operations team to prevent confusion during incident response.
 
-**Customer support capabilities**. The design shouldn't only meet user needs but also facilitate customer support functions. A design that hinders the support team's ability to investigate or assist customers is inadequate.
+**Customer support capabilities**. The design should meet user needs but also facilitate customer support functions. A design that hinders the support team's ability to investigate or assist customers is inadequate.
 
 ## Maintain and enhance your skills
 
-An architect's expertise is often rooted in practical experience. It's important for an architect to invest in expanding their skill set to keep up with the evolving cloud ecosystem.
+An architect's expertise is often rooted in practical experience. It's important to invest in expanding your skill set to keep up with the evolving cloud ecosystem.
 
-**Training and certification**. Seek opportunities for training and certification in architect tracks offered by technology providers.
+**Training and certification**. Seek opportunities for training and certification that technology providers offer for architects.
 
 **Community participation**. Engage with peers through online and local architecture communities.
 
@@ -92,7 +90,7 @@ Architecture frameworks support an architect by offering workload perspectives a
 
 Use the principles, checklists, assessments, and reference materials in architecture frameworks to establish a process that fits the workload. Combine frameworks with personal techniques, such as mind mapping.
 
-Architecture is about communication, not the end product. Make sure you're optimizing for clear and intentional decision-making, tradeoff acknowledgment, and clear communication in your established processes.
+Architecture is about communication as much as it's about the end product. Make sure you're optimizing for clear and intentional decision-making, tradeoff acknowledgment, and clear communication in your established processes.
 
 ## Next steps
 
