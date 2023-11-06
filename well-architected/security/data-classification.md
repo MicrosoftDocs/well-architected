@@ -53,7 +53,7 @@ As a workload owner, rely on your organization to provide you with a well-define
 
 Most organizations have a diverse set of labels.
 
-:::image type="content" source="images/data-classification/data-classification.svg" alt-text="Diagram that shows an example of an organization's sensitivity labels." lightbox="images/data-classification/data-classification-highres.png":::
+:::image type="content" source="images/data-classification/data-classification.svg" alt-text="Diagram that shows an example of an organization's sensitivity labels." lightbox="images/data-classification/data-classification-high-res.png":::
 
 Clearly identify which data assets and components are in-scope and out-of-scope for each sensitivity level. You should have a clear objective on the outcome. The objective could be quicker triage, accelerated disaster recovery, or regulatory audits. When you clearly understand the objectives, it ensures you correctly size your classification efforts.
 
@@ -117,7 +117,7 @@ Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offe
 
 ## Example
 
-This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below example data stores that are accessed by different identities of an organization.  
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below example data stores that are accessed by different identities of an organization.   
 
 :::image type="content" source="images/data-classification/data-classification-enterprise.svg" alt-text="Diagram that shows an example of an organization's data classification." lightbox="images/data-classification/data-classification-enterprise.svg":::
 

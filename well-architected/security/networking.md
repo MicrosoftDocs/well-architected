@@ -296,10 +296,10 @@ Scope the rules as much as possible. In the following example, the rule is set t
 |Information | Example |
 |---------|---------|
 |Protocol | Transmission Control Protocol (TCP), UDP |
-|Source IP address | Allow ingress to the subnet from \<source-IP-address-range\>:4575/UDP |
-|Source port | Allow ingress to the subnet from \<service-tag\>:443/TCP |
-|Destination IP address | Allow egress from the subnet to \<destination-IP-address-range\>:443/TCP |
-|Destination port | Allow egress from the subnet to \<service-tag\>:443/TCP |
+|Source IP address | Allow ingress to the subnet from \<source-IP-address-range\>: 4575/UDP |
+|Source port | Allow ingress to the subnet from \<service-tag\>: 443/TCP |
+|Destination IP address | Allow egress from the subnet to \<destination-IP-address-range\>: 443/TCP |
+|Destination port | Allow egress from the subnet to \<service-tag\>: 443/TCP |
 
 To summarize:
 
@@ -370,7 +370,7 @@ For more information, see [Azure DDoS Protection overview](/azure/ddos-protectio
 
 ## Example
 
-Here are some examples that demostrate the use of network controls recommended in this article.
+Here are some examples that demonstrate the use of network controls recommended in this article.
 
 ### IT environment
 
@@ -392,7 +392,7 @@ This example builds on the Information Technology (IT) environment established i
 
 7) **Private endpoints**: Consider adding publically exposed services into your private network by using private endpoints. These create a Network Card (NIC) in your private VNet and bind with the Azure service.
 
-8) **TLS communication**. Protech data in transit by communicating over TLS.
+8) **TLS communication**. Protect data in transit by communicating over TLS.
 
 9) **Network Security Group (NSG)**: Protect segments within a VNet with NSG, a free resource that filters TCP/UDP inbound and outbound communication considering IP and port ranges. Part of NSG is the Application Security Group (ASG) that allows you to create tags for traffic rules for easier management.
 

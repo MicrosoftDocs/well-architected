@@ -169,7 +169,7 @@ Azure security services and features by the types of resources they protect.
 
 **Azure security monitoring services**
 
-The monitoring services available on Azure that go beyond simple monitoring services, including  security information event management (SIEM) and security orchestration automated response (SOAR) solutio solutions and Microsoft Defender for Cloud.
+The monitoring services available on Azure that go beyond simple monitoring services, including  security information event management (SIEM) and security orchestration automated response (SOAR) solutions and Microsoft Defender for Cloud.
 
 **Threats**
 

@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 **Related guide**: [Recommendations for securing a development lifecycle](secure-development-lifecycle.md)
 
-A comprehensive analysis to identify threats, attacks, vulnerabilities, and countermeasures is crucial during the design phase of a workload. *Threat modeling* is an engineering exercise that includes defining security requirements, identifying and mitigating threats, and validating those mitigations. You can use this technique at any stage of application development or production, but it's most effective during the design stages of new functionality.
+A comprehensive analysis to identify threats, attacks, vulnerabilities, and counter measures are crucial during the design phase of a workload. *Threat modeling* is an engineering exercise that includes defining security requirements, identifying and mitigating threats, and validating those mitigations. You can use this technique at any stage of application development or production, but it's most effective during the design stages of new functionality.
 
 This guide describes the recommendations for doing threat modeling so that you can identify security gaps quickly and design your security defenses.
 
@@ -108,7 +108,7 @@ This example builds on the Information Technology (IT) environment established i
 
 4) **Log collection**. Logs from Azure resources and some on-premises components may be sent to Azure Log Analytics so you may understand the behavior of your solution developed and try to capture initial vulnerabilities. 
 
-5) **Security information event management (SIEM) solution**. Microsoft Sentinel may be added even in an early stage of the solution so you can  build some analytics queries to mitigate threats and vulnerabilities, anticipating your Security environment when you are in production.
+5) **Security information event management (SIEM) solution**. Microsoft Sentinel may be added even in an early stage of the solution so you can  build some analytics queries to mitigate threats and vulnerabilities, anticipating your security environment when you are in production.
 
 6) **Microsoft Defender for Cloud** might make some security recommendations to improve the security posture.
 
