@@ -11,12 +11,12 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code. |
+|[OE:07](checklist.md)| Design and implement a monitoring system to validate design choices and inform future design and business decisions. This system captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code. |
 |---|---|
 
-**Related guide**: [Recommendations for designing and creating an observability framework](observability.md)
+**Related guide**: [Recommendations for designing and creating a monitoring system](observability.md)
 
-This guide describes the recommendations for implementing observability in your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your observability platform. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
+This guide describes the recommendations for enabling observability of your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your monitoring system. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
 
 ## Key design strategies
 

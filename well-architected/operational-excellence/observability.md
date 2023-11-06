@@ -1,22 +1,22 @@
 ---
-title: Recommendations for designing and creating an observability framework
-description: Learn the recommendations for designing and creating an observability framework. The framework provides a foundation for monitoring, detection, and alerting.
+title: Recommendations for designing and creating a monitoring system
+description: Learn the recommendations for designing and creating an observability system. The system provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing and creating an observability framework
+# Recommendations for designing and creating a monitoring system
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
 
-|[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code.| 
+|[OE:07](checklist.md)| Design and implement a monitoring system to validate design choices and inform future design and business decisions. This system captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code.| 
 |---|---| 
 
 **Related guide**: [Recommendations for instrumenting an application](instrument-application.md)
 
-This guide describes the recommendations for designing and creating an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
+This guide describes the recommendations for designing and creating a monitoring system. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive system with its own stack that provides the foundation for all monitoring, detection, and alerting functions. 
 
 **Definitions**
 
@@ -27,9 +27,9 @@ This guide describes the recommendations for designing and creating an observabi
 
 ## Key design strategies
 
-To implement a comprehensive monitoring framework design for your workload, follow these core tenets:
+To implement a comprehensive monitoring system design for your workload, follow these core tenets:
 
-- Whenever practical, take advantage of platform-provided observability tools, which typically require very little configuration and can provide deep insights into your workload that might otherwise be difficult to accomplish.
+- Whenever practical, take advantage of platform-provided monitoring tools, which typically require very little configuration and can provide deep insights into your workload that might otherwise be difficult to accomplish.
 
 - Collect logs and metrics from the entire workload stack. All infrastructure resources and application functions should be configured to produce standardized, meaningful data, and that data needs to be collected.
 
@@ -47,13 +47,13 @@ To implement a comprehensive monitoring framework design for your workload, foll
 
 - Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
-- Tie the observability data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing the observability data in terms of the flows will help align your observability strategy with your [health model](../reliability/metrics.md#building-a-health-model).
+- Tie the monitoring data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing that data in terms of the flows will help align your observability strategy with your [health model](../reliability/metrics.md#building-a-health-model).
 
-You should automate all functions of the monitoring framework as much as possible, and they should all run continuously, all day, every day. 
+You should automate all functions of the monitoring system as much as possible, and they should all run continuously, all day, every day. 
 
-This workflow pipeline illustrates the monitoring framework: 
+This workflow pipeline illustrates the monitoring system: 
 
-:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring framework as a pipeline." lightbox="media/observability/monitor-pipeline.png" border="false":::
+:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring system as a pipeline." lightbox="media/observability/monitor-pipeline.png" border="false":::
 
 ### Collection
 
@@ -288,12 +288,6 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 ## Tradeoffs
 
 Storing logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that you need to consider when you plan your strategy. Consider options like archive storage and selective replication when they're practical.
-
-<!--
-## Example
-
-_Placeholder for IaaS baseline architecture_
--->
 
 ## Related links
 
