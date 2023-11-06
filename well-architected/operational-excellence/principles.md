@@ -9,32 +9,32 @@ ms.topic: conceptual
 
 # Operational Excellence design principles
 
-At the core of the Operational Excellence pillar are DevOps practices that ensure workload quality through standardized workflows and team cohesion. This pillar defines operating procedures for development practices, observability, and release management. The goal is to minimize process variance, chances of human error, and disruption to customers. To assess your operational health, start with these questions:
+At the core of the Operational Excellence pillar are DevOps practices that **ensure workload quality through standardized workflows and team cohesion**. This pillar defines operating procedures for **development practices, observability, and release management**. The goal is to minimize process variance, chances of human error, and disruption to customers. To assess your operational health, start with these questions:
 
 - Do you execute operations with discipline?
 - Are customers using the workload with maximum predictability?
 - How do you learn from experience and collected data to drive continuous improvement?
 
-Workload operations can devolve into chaotic practices when there's no clear ownership or leadership. In this type of environment, teams often resort to methods that are executed with high effort and produce low outcomes, which leads to poor user experience. These approaches meet only short-term goals. Long-term benefits are realized through continuous evaluation and strategic investments.
+Workload operations can devolve into chaotic practices when there's no clear ownership or leadership. In this type of environment, teams often resort to methods that are executed with high effort and produce low outcomes, which leads to poor user experience. These approaches meet only short-term goals. Long-term benefits are realized through **continuous evaluation and strategic investments**.
 
-The design principle approaches aren't checklist items. They provide guidelines for operational strategies that must be considered to address the underlying causes and not just treat symptoms. Start with the recommended approaches, and then observe what works and what doesn't to identify areas of improvement. After you set your strategy, continue to drive action by using the Operational Excellence checklist.
+The design principles provide guidelines for operational strategies that must be considered to **address the underlying causes and not just treat symptoms**. Start with the recommended approaches, and then observe what works and what doesn't to identify areas of improvement. After you set your strategy, continue to drive action by using the [**Operational Excellence checklist**](./checklist.md).
 
 The operational requirements of a workload are as important as its business requirements. Efficient processes ensure the workload achieves business outcomes within the constraints of compliance, whether that compliance is organizational or external. The key is to find repeatability with consistency.
 
-The goals of the Operational Excellence pillar are to do the right thing, to do it the right way, and to solve the right problems as a team.
+The goals of the Operational Excellence pillar are **to do the right thing, to do it the right way, and to solve the right problems as a team**.
 
-If you meet these goals, workloads will run reliably and predictably even during times of change. Inability to fulfill operational requirements can lead to failed deployments, inconsistent user experience, and added costs that could have been avoided through proper planning and streamlined execution.
+If you meet these goals, workloads will run reliably and predictably even during times of change. **Inability to fulfill operational requirements can lead to failed deployments**, inconsistent user experience, and added costs that could have been avoided through proper planning and streamlined execution.
 
 ## Embrace DevOps culture
 
 |![Goal icon](../_images/goal.svg) Empower development and operations teams to continuously improve their system design and processes by working together with a mindset of collaboration, shared responsibility, and ownership.|
 |--|
 
-DevOps is a community of practice where diversity of perspective and skills drives toward one mission. Teams must foster a collaborative environment of shared knowledge instead of siloed learning. Use shared functions to strive to overcome resource constraints.
+DevOps is a community of practice where diversity of perspective and skills drives toward one mission. Teams must **foster a collaborative environment of shared knowledge** instead of siloed learning. Use shared functions to strive to overcome resource constraints.
 
 A good DevOps culture thrives on shared responsibility. Development and operations teams should align their goals and priorities with the expectations of their customers and keep business focus in mind. The development team should involve the operations team in the feedback loop so the improvements are driven upstream and other teams benefit equally. Conversely, operations teams are responsible for making the development team successful in their business outcomes by sharing resources and feedback that are relevant to the workload.
 
-At the same time, DevOps practices apply clear lines of ownership and accountability to each team. Regardless of where the application runs, the workload team is responsible for that application.
+At the same time, DevOps practices **apply clear lines of ownership and accountability to each team**. Regardless of where the application runs, the workload team is responsible for that application.
 
 DevOps optimizes operational tasks so that they're effective but not burdensome. To reap the full benefit of DevOps, the culture should optimize processes through technology and have processes for people in the organization to promote transparent communication.
 
@@ -51,7 +51,7 @@ DevOps optimizes operational tasks so that they're effective but not burdensome.
 |![Goal icon](../_images/goal.svg) Optimize productivity by standardizing development practices, enforcing quality gates, and tracking progress and success through systematic change management.|
 |--|
 
-The development team is responsible for addressing workload issues prior to release with minimal friction. Be mindful of developer efficiency and optimize for fast turnaround cycles, from coding to testing results. Implement effective and right-sized processes that plan and standardize technical activities and also drive consensus within the team and the stakeholders.
+The development team is responsible for addressing workload issues prior to release with minimal friction. Be mindful of developer efficiency and **optimize for fast turnaround cycles**, from coding to testing results. Implement effective and right-sized processes that plan and standardize technical activities and also drive consensus within the team and the stakeholders.
 
 |Approach  |Benefits  |
 |---------|---------|
@@ -61,18 +61,18 @@ The development team is responsible for addressing workload issues prior to rele
 |Have **quality assurance** processes that emphasize testing early in the development lifecycle. <br><br>  **Include all artifacts for planned test procedures**, including application components, infrastructure, and data plane operations that are part of a feature release or update. <br><br>  Treat artifacts as immutable when they're promoted through environments, gaining confidence each time they pass through a quality gate. <br><br>  Where practical, automate routine checks.   | Quality assurance ensures that functional and nonfunctional requirements were met with confidence, which leads to positive customer impact. <br><br> Having test plans ensures quality and completeness and takes possible failure cases into consideration.<br><br>  With quality gates, you can enforce best practices to reduce risks. <br><br> Immutability brings confidence because it ensures the system that you test is exactly what you release.<br><br> Testing cycles efficiently block progress unless quality criteria are met.        |
 |Drive consistency by using **style guides and tools**, which enforce **conventions**, and adopt a **common tool chain** for development, testing, and communication with stakeholders.  <br><br>**Technology standards for developers should** necessitate implementation **of patterns**, API design, **logging, exception handling, and other processes**.       | Consistency in code drives readability and easier maintenance. It also reduces complexity and enables code reuse. <br><br> Common tooling and conventions also help teams optimize processes without the need to address one-off choices.   |
 |Consistently and deliberately insist on developer documentation of code as its written.     |  Clear code documentation ensures that logic and functionality are easily understood when old code needs to be revisited or when development teams rotate.       |
-|Report progress and trends to measure efficiency.      | Trends in bugs, failed updates, time to deploy, feedback loops, and other metrics are published, and that drives improvements.         |
+|**Report progress and trends** to measure efficiency.      | Trends in bugs, failed updates, time to deploy, feedback loops, and other metrics are published, and that drives improvements.         |
 
 ## Evolve operations with observability
 
 |![Goal icon](../_images/goal.svg) Gain visibility into the system, derive insight, and make data-driven decisions.|
 |--|
 
-Build a culture that continuously improves quality by monitoring the workload and taking all the pillars of the Azure Well-Architected Framework into consideration. Enable the team and stakeholders to make both short-term and long-term decisions across many facets by providing the necessary data, statistics, and trends. Learn from your data and drive improvements.
+Build a culture that continuously **improves quality by monitoring the workload** and taking all the pillars of the Azure Well-Architected Framework into consideration. Enable the team and stakeholders to make both short-term and long-term decisions across many facets by providing the necessary data, statistics, and trends. Learn from your data and drive improvements.
 
-Monitoring operations is key in proactive maintenance of the application, quality and security assurance, capacity planning, and product management.
+Monitoring operations is key in **proactive maintenance** of the application, quality and security assurance, capacity planning, and product management.
 
-A crucial aspect of monitoring is application health modeling that helps you anticipate issues before they become incidents and affect customer experience. Efficient monitoring reduces reactive cycles spent on incident management.
+A crucial aspect of monitoring is application **using health modeling to help you anticipate issues before they become incidents** and affect customer experience. Efficient monitoring reduces reactive cycles spent on incident management.
 
 |Approach  |Benefits  |
 |---------|---------|
@@ -90,7 +90,7 @@ A crucial aspect of monitoring is application health modeling that helps you ant
 |![Goal icon](../_images/goal.svg) Reach the desired state of deployment with predictability.|
 |--|
 
-Build a workload supply chain that enables you to consistently reach the goal of predictability in all of your environments, across the workload's hosting platforms, applications, data, and configuration resources. The deployment mechanism must be capable of automation, testing, monitoring, and versioning. It should be modularized and ready to execute on demand. It shouldn't be represented as a monolithic end-to-end process. The supply chain isn't necessarily for faster execution, but to achieve consistency and self-documentation over multiple iterations.
+Build a workload supply chain that enables you to consistently reach the goal of predictability in all of your environments, across the workload's hosting platforms, applications, data, and configuration resources. **The deployment mechanism must be capable of automation, testing, monitoring, and versioning**. It should be modularized and ready to execute on demand. It shouldn't be represented as a monolithic end-to-end process. The supply chain isn't necessarily for faster execution, but to achieve consistency and self-documentation over multiple iterations.
 
 The workload team is accountable for the supply chain as it relates to their own workload.
 
@@ -107,7 +107,7 @@ The workload team is accountable for the supply chain as it relates to their own
 
 ## Automate for efficiency
 
-|![Goal icon](../_images/goal.svg) Replace repetitive manual tasks with software automation that completes them quicker, with greater consistency and accuracy, and reduces risks.|
+|![Goal icon](../_images/goal.svg) **Replace repetitive manual tasks with software automation** that completes them quicker, with greater consistency and accuracy, and reduces risks.|
 |--|
 
 The workload might have workflows with processes that involve team members doing mundane, repetitive, and time-consuming tasks that don't actually need human intellect. Depending on the frequency, you might spend considerable time on these efforts, investing more time as the workload grows. Also, these processes are often error-prone due to human input.
@@ -129,7 +129,7 @@ Through automation, you save time, effort, and money, and you avoid mistakes.
 
 During the development cycle, workload artifacts go through many changes as they get implemented and tested and as bugs are fixed.
 
-The deployment process must follow a standard operating procedure. Any change must be deployed with the same level of rigor. This principle applies equally to code, configuration, and all related artifacts. The key is to apply safe practices as early as possible so that you have predictability in production. Even if errors reach the customers, you should be able to roll out recovery changes as soon as possible.
+The deployment process must follow a standard operating procedure. **Any change must be deployed with the same level of rigor**. This principle applies equally to code, configuration, and all related artifacts. The key is to apply safe practices as early as possible so that you have predictability in production. Even if errors reach the customers, you should be able to roll out recovery changes as soon as possible.
 
 |Approach  |Benefits  |
 |---------|---------|
