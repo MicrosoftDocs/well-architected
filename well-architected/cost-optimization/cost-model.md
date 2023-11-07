@@ -145,7 +145,7 @@ When you extend your existing investments in software licenses to the cloud, you
 
 ## Cost Optimization checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Cost Optimization checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Cost Optimization checklist](checklist.md)
