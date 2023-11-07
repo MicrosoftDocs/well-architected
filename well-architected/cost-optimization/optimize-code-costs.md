@@ -29,11 +29,11 @@ By optimizing code, you can identify and eliminate inefficiencies that might lea
 
 ## Key design strategies
 
-Optimizing code for cost optimization means improving code to achieve the same functionality with less. The goal is to use fewer per-instance resources, such as CPU cycles, memory, and storage. By reducing resource consumption, you can save money when applications handle large volumes of data or experience high traffic loads.
+Cost optimizing code means improving code to achieve the same functionality with fewer per-instance resources, such as CPU cycles, memory, and storage. By reducing resource consumption, you can save money when applications handle large volumes of data or experience high traffic loads.
 
 Code improvements are most effective when you're following other cost optimization efforts around scaling, rightsizing, redundancy, and throttling. After you take care of these foundational elements, you can consider code optimization.
 
-You might not know if you have inefficient code. Serverless, autoscale, and reliability features can mask code inefficiencies. The following strategies can help you identify and fix code that costs more than it should.
+You might not know if you have inefficient code. Serverless, autoscale, and reliability features can mask code inefficiencies. The following strategies can help you identify and fix application code that costs more than it should.
 
 ### Instrument your code
 
@@ -137,7 +137,9 @@ The right operating system can contribute to overall cost optimization for your 
 
 Optimizing network traversal is about minimizing network traffic between workload components. Data transfer often has an associated cost. By minimizing network traffic, you can reduce the amount of data that needs to be transferred while lowering costs.
 
-Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information. Optimizing network protocols and applying caching mechanisms can also help.
+Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information. For example, if a component repeatedly requests the same data from another component, this is a candidate for optimization. You can refactor your code to reduce unnecessary calls or to batch requests, minimizing the data transferred.
+
+Often, applications may send entire objects or data structures when only a few fields are needed. By optimizing the code to send only the required data, you minimize the size of each data transfer. Some network protocols are more efficient than others, such as HTTP/2 versus HTTP/1.1. Applying caching mechanisms can also help optimize network traversals.
 
 #### Optimize network protocols
 
