@@ -26,7 +26,7 @@ Without this culture, there's often a disconnect between resource utilization an
 
 ## Key design strategies
 
-Creating a culture of financial responsibility means cultivating an environment where individuals and teams prioritize wise financial decision-making and are held accountable for their financial actions. It involves cost transparency, skill development, and clear communication. Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It helps ensure that the workload team prioritizes cost and makes decisions that increase the business value of the workload.
+Creating a culture of financial responsibility involves cost transparency, skill development, and clear communication. Be open about budgets and costs with the team. Hold regular workshops to teach cost-saving strategies. Invest in training for skills like budgeting and cloud cost management. Finally, set clear financial goals and encourage open communication for sharing ideas on cost optimization.
 
 ### Make budgets and costs transparent
 
