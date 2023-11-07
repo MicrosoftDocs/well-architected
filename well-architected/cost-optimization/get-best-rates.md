@@ -23,7 +23,7 @@ By optimizing rates, you can reduce cloud costs without changing the workload. W
 | Term | Definition |
 |---|---|
 | Consumption pricing | A pricing model where you're charged based on the actual usage of the service. Examples include the number of virtual machines deployed, the amount of storage used, and the amount of data transferred. |
-| Prepaid pricing   | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
+| Commitment-based pricing   | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
 | Rate | The unit price for using a service or license. |
 
 ## Key design strategies
@@ -46,7 +46,7 @@ Here are actions that you can take to understand the workload rates:
 
 ### Determine the right billing model
 
-For your billing model, you choose between consumption-based (pay-as-you-go) and prepaid pricing strategies. Base the selection on the predictability, duration, and usage consistency of workload components. This decision requires collaboration with development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations.
+For your billing model, you choose between consumption-based (pay-as-you-go) and commitment-based pricing strategies. Base the selection on the predictability, duration, and usage consistency of workload components. This decision requires collaboration with development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations.
 
 Selecting the right billing model is crucial for cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. Consider the following strategies.
 
@@ -66,17 +66,17 @@ Consumption pricing is best suited for the following scenarios:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many on-premises environments are always on and always available. Being intentional about services might lower rates, but you must account for some creation time and operational overhead.
 
-#### Understand prepaid pricing
+#### Understand commitment-based pricing
 
-Prepaid pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to pay-as-you-go pricing.
+Commitment-based pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to pay-as-you-go pricing.
 
-The amount you save with prepaid pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Prepaid pricing is best suited for the following scenarios:
+The amount you save with Commitment-based pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Commitment-based pricing is best suited for the following scenarios:
 
 - *Predictable workloads*: If your workload has a consistent usage pattern, you can commit to a certain capacity over time and get a significant discount over pay-as-you-go pricing. Those instances incur charges whether you use them or not.
 
-- *Production environments*: Prepaid pricing is suitable for production environments where you have a good understanding of the workload's resource needs.
+- *Production environments*: Commitment-based pricing is suitable for production environments where you have a good understanding of the workload's resource needs.
 
-- *Long-term projects*: Prepaid pricing can be cost-effective for projects that have long-term resource requirements, even if they aren't highly predictable.
+- *Long-term projects*: Commitment-based pricing can be cost-effective for projects that have long-term resource requirements, even if they aren't highly predictable.
 
 #### Discuss options with the workload team
 
@@ -88,11 +88,11 @@ Here's a suggested process:
 
 1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment that's involved.
 
-1. *Evaluate options*: Assess your options for cost optimization, such as pay-as-you-go versus prepaid plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the performance tiers in each service and the pricing differences between them.
+1. *Evaluate options*: Assess your options for cost optimization, such as pay-as-you-go versus commitment-based plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the performance tiers in each service and the pricing differences between them.
 
 #### Determine component permanence
 
-It's important to assess how long you need a particular component to determine if committing to a prepaid plan makes sense. If the expected usage duration is less than a year, don't commit to a prepaid plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements.
+It's important to assess how long you need a particular component to determine if committing to a commitment-based plan makes sense. If the expected usage duration is less than a year, don't commit to a commitment-based plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements.
 
 To determine the duration of component usage, you can follow this process:
 
@@ -108,7 +108,7 @@ To determine the duration of component usage, you can follow this process:
 
 #### Determine usage consistency
 
-When you're considering prepaid commitments, we recommend that you commit to the maximum consistent usage of a component. By committing to the maximum consistent usage, you can maximize the potential savings and cost optimization. However, there are a few factors to consider:
+When you're considering a commitment-based plan, commit to the maximum consistent usage of a component. By committing to the maximum consistent usage, you can maximize the potential savings and cost optimization. However, there are a few factors to consider:
 
 - *Usage patterns*: Analyze the historical usage patterns of the component. If the usage is consistently high and stable, committing to the maximum consistent usage makes sense. But if the usage is highly variable or unpredictable, committing to the maximum consistent usage might not be feasible or cost-effective.
 
@@ -118,23 +118,23 @@ When you're considering prepaid commitments, we recommend that you commit to the
 
 - *Cost analysis*: Perform a cost analysis to assess whether the potential savings of committing to a higher usage level outweighs the risks of not fully utilizing the commitment.
 
-#### Select the right prepaid plans
+#### Select the right commitment-based plan
 
-Strategic usage of prepaid plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources. To select the right prepaid plan, consider the following strategies:
+Strategic usage of commitment-based plan can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources. To select the right commitment-based plan, consider the following strategies:
 
-- *Choose an appropriate prepaid plan*: Select a prepaid plan that covers the minimum capacity that the workload requires. Starting with the minimum commitment gives you flexibility while you still benefit from cost savings.
+- *Choose an appropriate commitment-based plan*: Select a commitment-based plan that covers the minimum capacity that the workload requires. Starting with the minimum commitment gives you flexibility while you still benefit from cost savings.
 
-  Having a clear understanding of the workload's minimum capacity requirements before you commit to a prepaid plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a prepaid plan. As the cost and risk of a prepaid commitment grow, you need to understand your minimum consistent usage for each component you're committing to.
+  Having a clear understanding of the workload's minimum capacity requirements before you commit to a commitment-based plan minimizes risk and ensures that you optimize your savings. However, there are exceptions. A commitment that requires minimal upfront costs has a lower risk. The lower the commitment risk, the quicker you can commit to a commitment-based plan. As the cost and risk of a commitment grow, you need to understand your minimum consistent usage for each component you're committing to.
 
-- *Increment prepaid commitments*: As the capacity of your workload grows, gradually increase your prepaid commitments. Start small and scale up. Increment scaling up based on the workload's actual usage.
+- *Increment commitments*: As the capacity of your workload grows, gradually increase your commitments. Start small and scale up. Increment scaling up based on the workload's actual usage.
 
-- *Renegotiate and consolidate*: Regularly renegotiate and normalize prepaid plans to align their ending time. This alignment allows you to consolidate them into a single line item on your bill, so it's easier to manage and optimize costs.
+- *Renegotiate and consolidate*: Regularly renegotiate and normalize commitment-based plans to align their ending time. This alignment allows you to consolidate them into a single line item on your bill, so it's easier to manage and optimize costs.
 
-- *Eliminate underutilization*: You need to evaluate and optimize prepaid contracts to ensure they deliver their full potential value. Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
+- *Eliminate underutilization*: You need to evaluate and optimize commitment-based contracts to ensure they deliver their full potential value. Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
 
-    Monitor utilization. Keep an eye on how much you're using your prepaid plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
+    Monitor utilization. Keep an eye on how much you're using your commitment-based plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
 
-    Modify the prepaid plan. Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
+    Modify the commitment-based plan. Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused commitment-based plans, try exchanging unused quantity or canceling and refunding plans.
 
 ### Evaluate and commit to available discounts
 
@@ -144,7 +144,7 @@ Try these tasks:
 
 - *Ask about trial offers*: Use a provider's trial periods or negotiate free or reduced rates to execute proofs of concept. This approach allows you to try out the services or products with limited financial risk, so you can assess their suitability for your workload before you commit to a purchase. Remember to review the terms and conditions of any trial periods or negotiated agreements.
 
-- *Review provider offerings*: Understand the discounts and pricing models that providers offer. Explore volume-based discounts, promotional offers, or discounts for long-term commitments. Discuss the available options that can meet the variability and flexibility requirements of your workload. Include information about different pricing models, scaling options, or prepaid agreements.
+- *Review provider offerings*: Understand the discounts and pricing models that providers offer. Explore volume-based discounts, promotional offers, or discounts for long-term commitments. Discuss the available options that can meet the variability and flexibility requirements of your workload. Include information about different pricing models, scaling options, or commitment-based agreements.
 
 - *Analyze usage and consumption*: Assess the workload's usage and consumption patterns to determine if the workload meets the eligibility criteria for specific discount programs. This analysis helps you identify the most suitable discounts for your workload.
 
@@ -216,7 +216,7 @@ Optimizing licensing costs means using various licensing programs and options to
 
 **Azure dev/test:** [Azure dev/test](/azure/devtest/offer/overview-what-is-devtest-offer-visual-studio) is an offer that comes with Visual Studio subscription benefits. With this offer, you get some Azure monthly credits to try various Azure services at no cost. Credit amounts vary by subscription level. You can also benefit from discounted Azure dev/test rates for various Azure services, which enable cost-efficient development and testing.
 
-**Azure services:** Many Azure services offer both consumption and prepaid billing models. You can switch to better align to your usage, potentially without sacrificing functionality.
+**Azure services:** Many Azure services offer both consumption and commitment-based billing models. You can switch to better align to your usage, potentially without sacrificing functionality.
 
 **Azure Hybrid Benefit:** With [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), you can reduce the overall cost of ownership by using your existing on-premises licenses to cover the cost of running resources in Azure. This benefit applies to both Windows and Linux virtual machines, along with SQL Server workloads. To take advantage of Azure Hybrid Benefit, you need to ensure that your licenses are eligible and meet the requirements.
 
