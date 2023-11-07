@@ -12,12 +12,12 @@ categories:
 ---
 # Recommendations for creating a cost model
 
-**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
 |[CO:02](checklist.md)|Create and maintain a cost model. A cost model should estimate the initial cost, run rates, and ongoing costs. Negotiate a budget that covers a cost model and has a buffer for unplanned spending.|
 |---|---|
 
-This guide describes the best practices for creating a cost model for your workload. A cost model is an estimate that predicts the combined costs of services and their associated expenses. It's vital to create a cost model to forecast expenses and plan a budget. A cost model provides a scenario analysis, which allows you to assess the cost implications of potential workload changes. Without a cost model, you risk unforeseen expenses, budget overruns, and missed opportunities for optimization.
+This guide describes the best practices for creating a cost model for your workload. A cost model is an estimate that predicts the combined costs of services and their associated expenses. It's foundational for expense forecasting and budget planning. A cost model provides scenario analysis, which allows you to assess the cost implications of potential workload changes. Without a cost model, you risk unforeseen expenses, budget overruns, and missed opportunities for cost optimization.
 
 **Definitions**
 
