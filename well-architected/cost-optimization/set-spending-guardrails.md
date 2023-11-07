@@ -77,13 +77,13 @@ Release gates are checkpoints or conditions that must be met before a release or
 
 ### Configure cost alerts
 
-It's important to set alerts for budgets, cost anomalies, and prepaid plan utilization to optimize costs. These alerts provide visibility into your cloud spending and enable proactive cost management. Be careful to manage notification recipients for alerts and keep the recipient list up to date with current responsibilities and access. Some alerts that you might create to optimize costs include:
+It's important to set alerts for budgets, cost anomalies, and commitment-based plan utilization to optimize costs. These alerts provide visibility into your cloud spending and enable proactive cost management. Be careful to manage notification recipients for alerts and keep the recipient list up to date with current responsibilities and access. Some alerts that you might create to optimize costs include:
 
 - *Budget alerts*: Set alerts on budgets to track your spending against predefined thresholds. You can monitor your costs and receive notifications when you approach or exceed the budgeted amount by creating a monthly budget, billing account, or resource group. Budget alerts help you to stay informed on your spending and take preventative actions to control costs.
 
 - *Cost anomaly alerts*: Anomaly alerts notify you about unexpected cost variations that might indicate inefficiencies or abnormal spending patterns. You can configure these alerts to identify anomalies in the actual or forecasted costs. Use cost anomaly alerts to investigate the underlying cause of a cost variation and take corrective actions when necessary.
 
-- *Prepaid plan utilization alerts*: If you have prepaid plans or commitments in place, alerts on plan utilization can help you effectively manage and maximize the value of these commitments. Implement prepaid plan utilization alerts to monitor and optimize your prepaid resources and ensure that the benefits of your prepayment are used. You can also configure these alerts to notify stakeholders if the utilization of prepaid resources drops below a desired threshold.
+- *Commitment-based plan utilization alerts*: If you have commitment-based plans in place, alerts on plan utilization can help you effectively manage and maximize the value of these commitments. Implement commitment-based plan utilization alerts to monitor. Optimize your commitment-based resources and ensure that you use the benefits of your commitments. You can also configure these alerts to notify stakeholders if the utilization of commitment-based resources drops below a desired threshold.
 
 ### Use IaC
 
