@@ -70,13 +70,7 @@ The development team is responsible for addressing workload issues prior to rele
 
 Build a culture that continuously **improves quality by monitoring the workload** and taking all the pillars of the Azure Well-Architected Framework into consideration. Enable the team and stakeholders to make both short-term and long-term decisions across many facets by providing the necessary data, statistics, and trends. Learn from your data and drive improvements.
 
-<<<<<<< HEAD
 Operations built for the purposes of observability are key in proactive maintenance of the application, quality and security assurance, capacity planning, and product management.
-=======
-
-Operations built for the purposes of observability are key in proactive maintenance of the application, quality and security assurance, capacity planning, and product management.
-
->>>>>>> 5c59eae1da2c5ca1d19af3bd80e8b57de26d9aa4
 
 A crucial aspect of monitoring is application **using health modeling to help you anticipate issues before they become incidents** and affect customer experience. Efficient monitoring reduces reactive cycles spent on incident management.
 
