@@ -39,7 +39,7 @@ You might not know if you have inefficient code. Serverless, autoscale, and reli
 
 Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. It allows developers to gather information about key metrics, such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
 
-In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it is to fix.
+In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it's to fix.
 
 Automate as much of this code analysis as possible. Use dynamic and static tools for code analysis to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
@@ -81,7 +81,7 @@ To identify hot paths, consider these tasks:
 
 ### Evaluate the use of concurrency
 
-Evaluating the use of concurrency involves assessing whether asynchronous processing, multithreading, or multiprocessing can maximize resource utilization and reduce expenses. By using asynchronous processing, multithreading, or multiprocessing, you can handle more tasks with the same resources. However, it's crucial to ensure proper implementation to avoid additional overhead and to maintain cost-effectiveness.
+Evaluating the use of concurrency involves assessing whether asynchronous processing, multithreading, or multiprocessing can maximize resource utilization and reduce expenses. By using asynchronous processing, multithreading, or multiprocessing, you can handle more tasks with the same resources. However, it's crucial to ensure proper implementation to avoid more overhead and to maintain cost-effectiveness.
 
 To evaluate whether using concurrency is a good fit, you can follow these guidelines:
 
@@ -121,7 +121,7 @@ The right operating system can contribute to overall cost optimization for your 
 
 - *Evaluate your requirements*: Understand the specific needs of your workload, including the coding languages and frameworks that you're using. Consider any dependencies or integrations with other systems.
 
-- *Consider compatibility*: Ensure that the operating system that you choose is compatible with your coding languages, frameworks, and any third-party libraries or tools that you rely on. Check the documentation and community support for the operating system to ensure that it has good compatibility with your technology stack.
+- *Consider compatibility*: Ensure the operating system you choose is compatible with your coding languages, frameworks, and any third-party libraries or tools you use. Check the documentation and community support for the operating system to ensure that it has good compatibility with your technology stack.
 
 - *Assess functionality*: Determine if the alternative operating system supports the same or similar functionality as your current operating system. Evaluate whether it provides the necessary features and capabilities that your workload requires.
 
@@ -137,9 +137,7 @@ The right operating system can contribute to overall cost optimization for your 
 
 Optimizing network traversal is about minimizing network traffic between workload components. Data transfer often has an associated cost. By minimizing network traffic, you can reduce the amount of data that needs to be transferred while lowering costs.
 
-Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information. For example, if a component repeatedly requests the same data from another component, this is a candidate for optimization. You can refactor your code to reduce unnecessary calls or to batch requests, minimizing the data transferred.
-
-Often, applications may send entire objects or data structures when only a few fields are needed. By optimizing the code to send only the required data, you minimize the size of each data transfer. Some network protocols are more efficient than others, such as HTTP/2 versus HTTP/1.1. Applying caching mechanisms can also help optimize network traversals.
+Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information. For example, if a component repeatedly requests the same data from another component, it's a candidate for optimization. You can refactor your code to reduce unnecessary calls or to batch requests, minimizing the data transferred. Applications might send entire objects or data structures when only a few fields are needed. By optimizing the code to send only the required data, you minimize the size of each data transfer.
 
 #### Optimize network protocols
 
@@ -147,11 +145,11 @@ Network protocols play a crucial role in the efficiency of network communication
 
 Consider these suggestions:
 
-- *Choose efficient protocols*: Select protocols that are known for their efficiency in terms of data transfer speed and minimizing overhead. For example, consider using protocols like HTTP/2 or QUIC. These protocols are designed to improve performance by reducing latency and optimizing data transfer.
+- *Choose efficient protocols*: Select protocols that are known for their efficiency in terms of data transfer speed and minimizing overhead. For example, consider using protocols like HTTP/2 over HTTP/1.1. These protocols are designed to improve performance by reducing latency and optimizing data transfer. Use libraries and frameworks in your application to use these protocols.
 
-- *Support compression*: Implement compression mechanisms in your network protocols to reduce the size of data being transferred. Compression can significantly reduce the amount of data transmitted over the network, leading to improved performance and reduced bandwidth usage.
+- *Support compression*: Implement compression mechanisms in your network protocols to reduce the size of data being transferred. Compression can significantly reduce the amount of data transmitted over the network, leading to improved performance and reduced bandwidth usage. Server-side compression is typically enabled in the application code or server configuration.
 
-- *Utilize connection pooling*: Connection pooling allows for the reuse of established network connections to reduce the overhead of establishing new connections for each request. Connection pooling can improve the efficiency of network communication by avoiding the overhead of connection setup and teardown.
+- *Utilize connection pooling*: Connection pooling allows for the reuse of established network connections to reduce the overhead of establishing new connections for each request. Connection pooling can improve the efficiency of network communication by avoiding the overhead of connection setup and teardown. Choose a connection pooling library or framework and configure to meet workload needs.
 
 - *Implement other optimizations*: Explore other optimizations that are specific to your workload and network environment. For example, you can use content caching, load balancing, and traffic shaping to further optimize network traversal.
 
@@ -222,7 +220,7 @@ Here are some techniques for organizing data efficiently:
 
 - *Shard*: Sharding is a technique of horizontally dividing data across multiple database instances or servers. Each shard contains a subset of the data, and queries can be processed in parallel across these shards. Sharding can improve query performance by distributing the workload and reducing the amount of data that each query accesses.
 
-- *Compress*: Data compression involves reducing the size of data to minimize storage requirements and improve the efficiency of data transfer. Because compressed data takes up less disk space, it allows for savings in storage costs. Compressed data can also be transferred more quickly over networks, which reduces data transfer costs.
+- *Compress*: Data compression involves reducing the size of data to minimize storage requirements and improve the efficiency of data transfer. Because compressed data takes up less disk space, it allows for savings in storage costs. Compressed data can also be transferred more quickly over networks and reduce data transfer costs.
 
 For example, consider a scenario where you have a large dataset of customer information. By partitioning the data based on customer regions or demographics, you can distribute the workload across multiple servers and improve query performance. You can also compress the data to reduce storage costs and improve the efficiency of data transfer.
 
