@@ -122,13 +122,13 @@ After you make these adjustments, test to make sure everything still works as it
 
 ### Optimize platform features
 
-Identify and remove unnecessary or unused platform features to optimize resource usage and reduce costs. Here are some tips to eliminate wasteful platform features:
+Optimizing platform features involves selecting and configuring the platform features, such as performance tiers and configuration settings, to match operational needs. It helps align spending with the requirements of the workload and avoids unnecessary expenses on unneeded features. Identify and remove unnecessary or unused platform features to optimize resource usage and reduce costs. Here are some tips to optimize the cost of platform features:
 
-- *Know the capabilities of the things you’ve purchased*: Understand the features and functionalities of the platforms or services in your workload.
+- *Know the capabilities of the things you’ve purchased*: Before you can optimize, you need a clear inventory of the services and their features across your cloud platforms. Understand the features and functionalities of the platforms or services in your workload. Be aware of the specific tier you have chosen and the features each tier offers. For example, if you don't require auto-scaling or advanced networking, a lower-tier plan might suffice.
 
-- *Disable unused features*: Identify and disable platform features that cost money.
+- *Disable unused features*: Identify and disable platform features that cost money. You might have unneeded storage snapshots, unused disks, redundant security features, or underutilized networking capabilities.
 
-- *Use the right features*: Newer versions of a service can provide similar performance for the same price. For example, a VM with hardware updates can provide the same performance for less.
+- *Use the right versions*: Newer versions of a service can provide similar performance for the same price. For example, a virtual machine with newer hardware can often provide the same performance for less money.
 
 - *Use the right configurations*: You might be paying for more availability or performance than you need. Eliminate availability or performance guarantees that the workload doesn’t need.
 
