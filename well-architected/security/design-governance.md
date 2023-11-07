@@ -22,7 +22,7 @@ As part of overall design, prioritize where to invest the available resources: f
 
 - **Risk:** What risk types does the organization face while trying to protect identifiable information, intellectual property (IP), and financial information? Who might be interested or could use this information if it's stolen, such as external and internal threats and unintentional or malicious threats? A commonly forgotten but important consideration within risk is addressing disaster recovery and business continuity.
 
-- **Compliance:** Is there a specific industry, government, or regulatory requirements that dictate or provide recommendations on criteria that your organization's security controls must meet? Examples of such standards, organizations, controls, and legislation include [ISO27001]( https://www.iso.org/isoiec-27001-information-security.html), [NIST]( https://www.nist.gov), and [PCI-DSS]( https://www.pcicomplianceguide.org/faq).
+- **Compliance:** Is there a specific industry, government, or regulatory requirements that dictate or provide recommendations on criteria that your organization's security controls must meet? Examples of such standards, organizations, controls, and legislation include [ISO27001]( https://www.iso.org/files/live/sites/isoorg/files/news/magazine/ISOfocus%20(2013-NOW)/en/2013/ISOfocus101/isofocus_101.pdf), [NIST]( https://www.nist.gov), and [PCI-DSS]( https://www.pcicomplianceguide.org/faq).
 
 The collective role of organization(s) is to manage the security standards of the organization through their lifecycle:
 
