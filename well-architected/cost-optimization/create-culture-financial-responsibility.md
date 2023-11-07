@@ -30,7 +30,7 @@ Creating a culture of financial responsibility involves cost transparency, skill
 
 ### Make budgets and costs transparent
 
-Making budgets and costs transparent means openly communicating financial information about a workload or project with stakeholders. When you're making costs transparent, consider these strategies:
+Making budgets and costs transparent requires openly communicating financial information about a workload or project with stakeholders. It helps cultivate an environment of trust and accountability, where everyone understands the financial implications of their actions and works collaboratively towards cost optimization. To make costs transparent, consider these strategies:
 
 - *Involve everyone*: Ensure that everyone involved in the project or workload has access to budget information. Include team members, managers, and decision-makers. Sharing the budget information makes everyone feel accountable for their actions and decisions by fostering a sense of ownership.
 - *Share budget details*: Consider sharing the allocated budget, cost breakdowns, and financial goals for the workload or project with stakeholders.
