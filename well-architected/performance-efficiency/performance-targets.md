@@ -62,17 +62,17 @@ When setting performance goals, it's important to align the organization's objec
 
 ### Identify key metrics
 
-Based on your workload objectives, identify the key metrics that help measure progress toward your goals. Consider metrics related to availability, capacity, and response time.
+Identifying key performance metrics involves determining the essential measurements that track the progress towards achieving workload performance goals. This identification provides a quantifiable way to measure and improve performance efficiency. When you identify key metrics to focus on, consider metrics related to availability, capacity, and response time:
 
-- *Availability*: Availability is measured by the error rate, which represents the percentage of successful requests. A common target for availability is a success rate of 99.9 percent of requests.
+- *Availability*: Error rate is an availability performance metric. Error rate represents the percentage of failed requests over a period. A common target for error rate is 0.1% percent of requests.
 
-- *Capacity*: Capacity is evaluated based on throughput, which refers to the ability to handle a specific number of transactions within a given time period. For instance, an application might need to sustain 100 million transactions per month.
+- *Capacity*: Throughput and concurrency are sample capacity metrics. Throughput refers to the ability to handle a specific number of transactions within a given time period. For instance, an application might need to sustain 100 million transactions per month. Concurrency is a measure of simultaneous users or actions.
 
-- *Response time:* Response time is assessed by analyzing the time it takes for the application to respond to a request. A common target is a completion rate of 99 percent of sign-in requests in less than 1 second.
+- *Response time:* Latency and load time are common response time metrics. Latency is the time it takes to respond to a request (200 milliseconds). Load time is the time it takes for an application or web page to be interactive. A common target is 99% of sign-in requests completing less than 1 second.
 
 ### Set specific targets
 
-After you identify the key metrics, you need to specify targets or thresholds for each metric. Targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time.
+After you identify the key metrics, you need to specify performance targets or thresholds for each metric. Performance targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time. As you set specific performance targets, consider these recommendations:
 
 - *Consider the customer*: When you set performance targets, adopt a customer-centric perspective. Recognizing the customer as the ultimate judge of performance helps ensure that performance targets align with customer expectations. This alignment involves considering both organizational objectives and the distinct requirements of the customer base. When you integrate these two aspects, you can tailor performance targets to reflect the desired customer experience and overall workload effectiveness. By defining performance objectives that consider customer expectations, you can strive to provide a high-quality customer experience and meet the needs of your customers.
 
