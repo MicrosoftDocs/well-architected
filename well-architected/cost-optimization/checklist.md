@@ -18,7 +18,7 @@ Cost optimization is a continuous process in which you optimize workload costs a
 
 |&nbsp; | Code  |Recommendation |
 |---|---|---|
-| &#9744; | [CO:01](create-culture-financial-responsibility.md) | **Create a culture of financial responsibility.** Regularly train personnel so technical skills remain sharp. Foster creativity and fiscal accountability in the work environment. Invest in tooling and implementing automation.|
+| &#9744; | [CO:01](create-culture-financial-responsibility.md) | **Create a culture of financial responsibility.** Regularly train personnel so technical skills remain sharp. Foster creativity and spending accountability in the work environment. Invest in tooling and implementing automation.|
 | &#9744; | [CO:02](cost-model.md) | **Create and maintain a cost model.** A cost model should estimate the initial cost, run rates, and ongoing costs. Negotiate a budget that covers a cost model and has a buffer for unplanned spending.|
 | &#9744; | [CO:03](collect-review-cost-data.md) | **Collect and review cost data.** Data collection should capture daily costs. In cost reports, include incurred costs (metered), prepaid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automate alerts to trigger notifications at key thresholds and detect anomalies to indicate deviations from trend baselines. |
 | &#9744; | [CO:04](set-spending-guardrails.md) | **Set spending guardrails.** Guardrails should include release gates, governance policies, resource limits, and access controls. Prioritize platform automation over manual processes. |
