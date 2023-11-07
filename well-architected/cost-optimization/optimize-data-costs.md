@@ -33,9 +33,7 @@ The primary drivers for the cost of workload data are access frequency, access l
 
 ### Take an inventory of data
 
-Before you can optimize the cost of your data, you need to generate an inventory of data. Examine data access and determine its importance within your workload and its operations. Identify which data is accessed frequently and which data is accessed less frequently.
-
-The following inventory actions can help you allocate storage resources effectively:
+Before you can optimize the cost of your data, you need to generate an inventory of data. Examine data access and determine its importance within your workload and its operations. Identify which data is accessed frequently and which data is accessed less frequently. The following inventory actions can help you allocate storage resources effectively:
 
 - *Collect data access information:* Conduct a data audit to identify and catalog all data stores. Determine the value of data sets based on their importance to business operations, return on investment, and frequency of use. Gather access logs, usage metrics, or analytics from your data storage solutions.
 
