@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:06](checklist.md)| Align usage to billing increments. You should understand billing increments (meters) and align resource usage to those increments. Modify the service to align with billing increments, or modify resource usage to align with billing increments. Consider using a proof of concept to validate billing knowledge and design choices for major cost drivers and to reveal ways to align billing and resource usage.|
 |---|---|
 
-This guide describes the recommendations for aligning resource usage to billing increments. Resources are billed at specific increments, such as per hour or per instance. To optimize costs, you need to align your usage to those increments. You must either adapt a resource to your workload usage or adapt your workload to the resource billing increments, also called *meters*. Implement the following guidance so you can ensure that your workload derives the maximum value from each resource. If you fail to align billing and design, you might incur waste.
+This guide describes the recommendations for aligning resource usage to billing increments. Resources are billed at specific increments, such as per hour or per instance. To optimize costs, you need to align your usage to those increments. You must either adapt a resource to your workload usage or adapt your workload to the resource billing increments, also called *meters*. Implement the following guidance so you can ensure that your workload derives the maximum value from each resource. If you fail to align billing and design, you might incur unnecessary charges.
 
 **Definitions**
 
@@ -25,13 +25,15 @@ This guide describes the recommendations for aligning resource usage to billing 
 
 ## Key design strategies
 
-Aligning resource usage to billing increments is about making sure that your resource consumption closely matches the intervals or quantities that you're charged for. For instance, if a service is charged by the hour but you use it only for a fraction of that time, you can adjust operations to maximize the use of that hour as an alignment strategy.
+Aligning resource usage to billing increments is about making sure that your resource consumption closely matches the intervals or quantities that you're charged for. For instance, if a service is charged by the hour but you use it only for a fraction of that time, you can adjust operations to maximize the use of that hour.
 
 To save money, ensure that you understand how you're billed for a service, especially for specific increments like hourly rates, per gigabyte, or per number of requests. Adjust the service's configuration or how you consume the service to fit the billing increments and ensure that you don't incur unnecessary costs. Evaluate your workload's specific needs and understand how you're billed for various resources. Based on your findings, adjust the usage or the resource to optimize costs.
 
 ### Determine billing factors
 
-Billing factors differ among services. Billing factors include the instance number, time, transaction rate, transaction size, availability zone, location, storage amount, ingress data, and egress data. Familiarize yourself with the pricing models and cost structures of the services that you use. You can align your usage to maximize the value of the resource and only run its meter when necessary.
+Billing factors differ among services. Billing factors include the instance number, time, transaction rate, transaction size, availability zone, location, storage amount, ingress data, and egress data. Familiarize yourself with the pricing thresholds of the services that you use. You can align your usage to maximize the value of the resource and only run incur charges when necessary.
+
+Here are some common billing factors:
 
 **Runtime:** The runtime refers to the duration that a resource actively runs or is utilized. It's typically measured in hours, days, or months. The runtime helps you analyze the cost implications of resource usage over time. It's important for cost optimization because you can identify opportunities to minimize resource usage and associated costs.
 
