@@ -26,17 +26,17 @@ This guide describes the recommendations for cost optimizing workload environmen
 
 ## Key design strategies
 
-The goal of optimizing environment costs is to find the right balance of value, cost, and risk for each environment, including production, preproduction, and disaster recovery (DR) environments. Customize each environment for its particular use to save money and efficiently use resources. Determine the benefits of each environment, like efficiency or customer satisfaction, to evaluate the return on investment (ROI), even if it doesn't make a direct profit. Spend more money on high-risk environments to reduce issues and save money on low-risk environments. Aim to balance value, cost, and risk in each environment.
+The goal of optimizing environment costs is to find the right balance of value, cost, and risk for each environment, including production, preproduction, and disaster recovery (DR) environments. Customize each environment for its particular use to save money and efficiently use resources. Determine the benefits of each environment, like efficiency or customer satisfaction. You want to evaluate the return on investment (ROI) for the environment, even if it doesn't make a direct profit. Spend more money on high-risk environments to reduce issues and save money on low-risk environments. Aim to balance value, cost, and risk in each environment.
 
 ### Assess environment value
 
-Assessing the value of each environment means understanding its broader impact on business, gauging user satisfaction, and determining how it aligns with overarching organizational goals. This assessment helps you make informed decisions about resource allocation and align cost with environmental priorities. The essence of value extends beyond how much revenue an environment generates. When evaluating an environment's value, you need to prioritize spending in a manner that resonates with the goals of the workload. To assess the value of each environment, consider the following factors:
+Assessing the value of each environment means understanding its broader effect on business, gauging user satisfaction, and determining how it aligns with overarching organizational goals. This assessment helps you make informed decisions about resource allocation and align cost with environmental priorities. The essence of value extends beyond how much revenue an environment generates. When evaluating an environment's value, you need to prioritize spending in a manner that resonates with the goals of the workload. To assess the value of each environment, consider the following factors:
 
 - *Consider the user*: Consider who uses each environment and what they need from it. For example, customers use the production environment, which must be reliable and meet specific SLAs for performance and uptime.
 
   On the other hand, the development environment is mainly for the workload team, such as developers and testers. This environment doesn't have to meet customer-facing SLAs, but it should have the necessary tools and resources for the team to work effectively.
 
-  When you understand the unique needs of users in each environment, you can better allocate resources and avoid extra costs, which ensures that each environment is functional and cost effective.
+  When you understand the unique needs of users in each environment, you can better allocate resources and avoid extra costs. This avoidance helps ensure each environment is functional and cost effective.
 
 - *Align with organizational measures of value*: Align your cost-cutting efforts with your organization's priorities, like profit or employee satisfaction. For each environment, understand how success is defined, so you can keep your actions on target. For example, if your organization focuses on profit maximization or employee satisfaction, align your spending decisions with those metrics.
 
@@ -70,7 +70,7 @@ A DR environment refers to infrastructure and processes that a workload uses to 
 
 - *Determine RTOs and RPOs*: To help determine the design of the DR environment, define the acceptable downtime and data loss limits for each system or application.
 
-- *Optimize a cold DR environment*: A cold DR environment has limited or no infrastructure or running services. You can use infrastructure as code (IaC) to quickly deploy infrastructure during a disruptive event. Your backup and storage policies need to meet the RPOs and RTOs of the environment. Ensure that the amount and frequency of data backups isn't more robust than needed.
+- *Optimize a cold DR environment*: A cold DR environment has little or no infrastructure or running services. You can use infrastructure as code (IaC) to quickly deploy infrastructure during a disruptive event. Your backup and storage policies need to meet the RPOs and RTOs of the environment. Ensure that the amount and frequency of data backups isn't more robust than needed.
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A cold DR environment is a cost-effective option, but you might have long recovery times.
 
@@ -99,16 +99,16 @@ The following table provides examples of common preproduction environments.
 | Preproduction environment example| Description|
 |----|----|
 | Development environment| Developers use this environment to write and test code. It provides a sandbox space, so developers can experiment, build, and integrate code changes.|
-| Quality assurance environment | This environment is dedicated to quality assurance activities. It's used to perform testing to identify and fix bugs or issues before deploying to the production environment. |
-| Security environment | This environment is for security testing. It's used to ensure that an application is secure against threats and vulnerabilities.|
+| Quality assurance environment | This environment is dedicated to quality assurance activities. It for testing to identify and fix bugs or issues before deploying to the production environment. |
+| Security environment | This environment is for security testing. It's for ensuring an application is secure against threats and vulnerabilities.|
 | User acceptance testing environment | In this environment, end users and stakeholders test an application to validate its functionality and ensure that it meets requirements and expectations. |
-| Staging environment| This environment closely resembles the production environment. It's used to perform final testing and validation before deploying to production.|
+| Staging environment| This environment closely resembles the production environment. It's for final testing and validation before deploying to production.|
 
 #### Apply governance
 
 Applying governance is about limiting deployment options in preproduction environments to control expenses and mitigate risks. In preproduction, you have flexibility to tailor configurations and deploy resources. The more the preproduction environment deviates from the production environment, the greater the potential risk. Use governance to constrain preproduction environments. Consider the following guidelines:
 
-- *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments. Choose performance tiers that balance cost and performance. Services often have different tiers, and some of these tiers are more suitable for testing. Some services have tiers that offer production-like features but don't come with an SLA. These services reduce costs but still provide the necessary functionality for testing and development.
+- *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments. Choose performance tiers that balance cost and performance. A service often has different performance tiers, and some of these tiers are more suitable for testing. Some services have tiers that offer production-like features but don't come with an SLA. These services reduce costs but still provide the necessary functionality for testing and development.
 
 - *Understand preproduction SKUs*: Some SKUs are designed for development environments. To optimize costs, evaluate services and tiers. Opt for low-performance tiers if the workload doesn't require high performance.
 
@@ -118,15 +118,15 @@ Applying governance is about limiting deployment options in preproduction enviro
 
 - *Use a consistent CPU architecture*: Use the same CPU architecture in preproduction and production. For example, x86 applications don't run natively on Azure Resource Manager, and vice versa. Use the same CPU architecture as your production environment to ensure compatibility and minimize potential issues.
 
-- *Use the same operating system*: Avoid changing the operating system (for example from Windows to Linux) or kernel in preproduction environments. Software that's built for Windows often doesn't run natively on Linux without a compatibility layer, and vice versa. The file systems and directory structures are different, which can cause application pathing issues. Consistent environments help reduce the risk of compatibility issues and ensure smooth deployments.
+- *Use the same operating system*: Avoid changing the operating system (for example from Windows to Linux) or kernel in preproduction environments. Software built for Windows often doesn't run natively on Linux without a compatibility layer, and vice versa. The file systems and directory structures are different, which can cause application patching issues. Consistent environments help reduce the risk of compatibility issues and ensure smooth deployments.
 
-- *Constrain scaling*: To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit at three in the development environment, and set it at ten in the production environment. Constrain scaling to help control the resource usage and automation cost.
+- *Constrain scaling*: To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit at three in the development environment, and set it at 10 in the production environment. Constrain scaling to help control the resource usage and automation cost.
 
 - *Turn off unneeded resources*: Turn off resources when they aren't actively used, such as during off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of resources. Some vendors provide APIs that you can use to programmatically stop and start the resources. Consider using IaC to create ephemeral environments that you can remove when you no longer need them.
 
 #### Balance similarity with production
 
-It's often unnecessary and expensive for preproduction environments to mirror the production environment exactly. The goal is to ensure each preproduction environment is appropriately different from production to avoid unnecessary costs.However, when preproduction are production different, there's a risk of deploying a bug into production. The more different these environments are, the more risk there is. Tailoring the preproduction environment to meet your needs can help you manage risks while optimizing cost. To balance the similarity with production, consider the following recommendations:
+It's often unnecessary and expensive for preproduction environments to mirror the production environment exactly. The goal is to ensure each preproduction environment is appropriately different from production to avoid unnecessary costs. However, when preproduction and production are different, there's a risk of deploying a bug into production. The more different these environments are, the more risk there is. Tailoring the preproduction environment to meet your needs can help you manage risks while optimizing cost. To balance the similarity with production, consider the following recommendations:
 
 - *Avoid exact replicas*: Avoid making the preproduction environment an exact copy of production. It can unnecessarily increase costs. Create a preproduction environment that's cost-effective but enable you to uncover and address potential risks before deployment.
 
@@ -148,7 +148,7 @@ Development environments are designed for development, testing, and debugging pu
 
 - *Regularly clean up*: Routinely clean up and optimize your development environment to avoid the accumulation of orphaned resources, unused data, and proof-of-concept experiments. Implement clean-up processes or automated tools to identify and remove unused resources. Keep only essential and active components. Regular clean-up helps reduce storage costs and ensures efficient resource utilization.
 
-- *Implement sampled scaling*: Instead of scaling all components to their maximum capacity, consider a sampled approach in which you selectively scale vital components. This approach can be cost-effective while minimizing risks. Evaluate the risk-to-benefit ratio of not scaling certain elements and consider the potential impact on the environment.
+- *Implement sampled scaling*: Instead of scaling all components to their maximum capacity, consider a sampled approach in which you selectively scale vital components. This approach can be cost-effective while minimizing risks. Evaluate the risk-to-benefit ratio of not scaling certain elements and consider the potential effect on the environment.
 
 - *Optimize data management*: Development environments might have low needs for data retention and backup frequency.
 
