@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:10](checklist.md)| Optimize data costs. Data spending with data priority. Data optimization should include improvements to data management (tiering and retention), volume, replication, backups, file formats, and storage solutions.|
 |---|---|
 
-This guide describes the recommendations for optimizing data costs for a workload. This effort involves considering factors such as data tiering, retention policies, and data redundancy to optimize the storage and management of data. Without optimization, you might end up incurring higher storage, transfer, and transaction costs for your data.
+This guide describes the recommendations for optimizing data costs for a workload. Optimizing data costs involves minimizing the expenses related to the storage and management of data according to its significance and access frequency. Appropriate data management can significantly reduce overhead costs and align spending with data utility. Neglecting to optimize data costs can lead to inflated expenses, inefficient resource allocation, and financial waste due to misaligned storage solutions and unnecessary data retention.
 
 **Definitions**
 
@@ -29,7 +29,7 @@ This guide describes the recommendations for optimizing data costs for a workloa
 
 Within a specific workload, you optimize data costs by reducing the expenses associated with storing and managing data. There are various strategies and best practices to minimize data storage and processing costs. The goal is to align data costs with data priority. You need to assign cost tiers to types of data based on their importance or frequency of access.
 
-The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these drivers.
+The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these cost drivers.
 
 ### Take an inventory of data
 
@@ -87,26 +87,19 @@ The following considerations are foundational to data lifecycle management:
 
 #### Optimize data segmentation
 
-Segment types of data onto separate resources based on their characteristics and usage patterns. By doing so, you can tailor the allocation of resources to the needs of each data type.
+Optimizing data segmentation involves strategically organizing data into distinct segments and consolidate similar data types to efficiently allocate storage resources. It allows you to tailor allocation of storage resources to data priority.
 
-Segmentation can help optimize performance and cost. For example, you can place data that requires high-performance storage on resources with faster storage solutions. You can place archival data or data that's less frequently accessed on lower-cost resources with slower storage solutions. This approach allows you to match the requirements and cost of each data type efficiently.
+To effectively optimize data segmentation, you categorize data by type and usage pattern. Then you place the data segments on the most-effective solution depending on their operational similarities and requirements. For example, you place data that requires high-performance storage on resources with faster retrieval time. Archival data uses a lower-cost resource with slower retrieval time.
 
-Alternatively, you can group similar types of data together and run them on the same resource. This strategy is beneficial when multiple data types have similar usage patterns or require similar storage solutions.
-
-Consolidating data onto a single resource can:
-
-- Reduce costs by eliminating the need for separate resources for each data type.
-- Potentially optimize resource utilization.
-- Simplify data management.
-- Improve efficiency in data processing.
-
-For more information, see [Recommendations for consolidation](consolidation.md).
+This approach ensures that high-demand data uses faster storage for optimal performance and less accessed data uses cheaper storage. Similarly, when data types share usage patterns, you should group them together on a single resource to reduce overhead, simplify management, and improve data handling.
 
 #### Minimize data transfer
 
-Ensure that data is close to the client. Data proximity reduces network travel, which speeds up access and optimizes costs. Choose the appropriate storage location. Select a location that's closest to where most network packets are going. Consider the benefits of caching to minimize data transfer.
+Minimizing data transfer refers to the reduction of data movement across networks to decrease data transfer costs. It reduces the volume of data that the workload moves and lowers network usage fees. To minimize data transfer, consider the following recommendations:
 
-A content delivery network can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.
+- *Use the right location.* place data geographically closer to its users. Data proximity reduces network travel, which speeds up access and optimizes costs.
+- *Use caching.* Consider the benefits of caching to minimize data transfer.
+- *Use a content delivery network.* A content delivery network can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.
 
 #### Optimize security and compliance
 
@@ -118,7 +111,7 @@ You must ensure that changes in data storage solutions adhere to these requireme
 
 Finding strategies to decrease the amount of data that you store can help reduce costs. By changing the accessibility of the data and implementing the following techniques, you can effectively optimize the volume of your stored data:
 
-- *Capture less data*: Take a closer look at the data you're capturing. Determine if any of it is unnecessary for your purposes. Modify your process, settings, or configurations to capture only the essential data.
+- *Capture less data*: Take a closer look at the data you're capturing. Determine if any of it's unnecessary for your purposes. Modify your process, settings, or configurations to capture only the essential data.
 
 - *Compress data*: Compression saves money by reducing the size of data. It's most effective in write-once, read-never or read-rarely scenarios. It's more suitable for colder storage.
 
