@@ -42,7 +42,7 @@ Assessing the value of each environment means understanding its broader impact o
 
 ### Determine environment costs
 
-Determine the costs for each environment, including infrastructure, services, licenses, and operational expenses. Use cost-management tools to gain insights into spending patterns and trends. To determine environment costs:
+Determining environment costs is about knowing the costs of infrastructure, services, licenses, and operational expenses in each workload environment. Cost management tools are key to gaining insights into spending patterns and trends across environments. To determine environment costs, consider these strategies:
 
 - *Identify cost drivers*: Identify the key factors that drive costs in each environment. These factors can include resource utilization, storage usage, data retention, data transfer, and specific services.
 
@@ -52,7 +52,7 @@ Determine the costs for each environment, including infrastructure, services, li
 
 ### Optimize the production environment
 
-Optimizing costs in the production environment involves implementing strategies to reduce unnecessary expenses and improve operational efficiencies. Focus on differentiating production deployments and meeting the needs of users. For example, you can:
+Optimizing costs in the production environment involves implementing strategies to reduce unnecessary expenses and improve operational efficiencies. Focus on differentiating production deployments and meeting the needs of users. Here are recommendations for optimizing the production environment:
 
 - *Differentiate regions*: Spend less on regions that serve fewer customers. For example, you should invest more in a region that serves 90 percent of your users than in a region that serves 10 percent of your users. Adjust your deployment strategy to meet the requirements of each region and user segment.
 
@@ -80,7 +80,7 @@ A DR environment refers to infrastructure and processes that a workload uses to 
 
 ### Optimize preproduction environments
 
-Use preproduction workload environments to validate and stage deployment operations before releasing them to the production environment. These environments help ensure agility, separation of production and preproduction assets, and thorough testing of operations. Try to find and apply preproduction discounts. Cloud service providers and vendors often offer discounts for preproduction environments. Consider the following strategies to optimize preproduction environments.
+Optimizing preproduction environments involves strategically managing resources within development, testing, and staging areas to closely simulate production while reducing unnecessary costs. Preproduction environments don't require the full scale and availability of production environments. The most opportunities lie in tailoring these environments to specific testing and development needs without duplicating production exactly. Areas of cost reduction include using lower-cost resources, turning off unneeded services, and applying discounts offered for preproduction usage. Consider the following strategies to optimize preproduction environments:
 
 #### Evaluate preproduction environments
 
@@ -106,7 +106,7 @@ The following table provides examples of common preproduction environments.
 
 #### Apply governance
 
-Use governance to control expenses and mitigate risks in preproduction environments. In preproduction, you have flexibility to tailor configurations and deploy resources. The more the preproduction environment deviates from the production environment, the greater the potential risk. Use governance to constrain preproduction environments. Consider the following guidelines:
+Applying governance is about limiting deployment options in preproduction environments to control expenses and mitigate risks. In preproduction, you have flexibility to tailor configurations and deploy resources. The more the preproduction environment deviates from the production environment, the greater the potential risk. Use governance to constrain preproduction environments. Consider the following guidelines:
 
 - *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments. Choose performance tiers that balance cost and performance. Services often have different tiers, and some of these tiers are more suitable for testing. Some services have tiers that offer production-like features but don't come with an SLA. These services reduce costs but still provide the necessary functionality for testing and development.
 
@@ -126,7 +126,7 @@ Use governance to control expenses and mitigate risks in preproduction environme
 
 #### Balance similarity with production
 
-Tailor the preproduction environment to effectively manage risks while still identifying and addressing potential risks before transitioning to production. Ensure that each instance of an environment is sufficiently different from production to avoid unnecessary costs. It can be expensive to mirror the preproduction environment exactly with production. Consider the following factors:
+It's often unnecessary and expensive for preproduction environments to mirror the production environment exactly. The goal is to ensure each preproduction environment is appropriately different from production to avoid unnecessary costs.However, when preproduction are production different, there's a risk of deploying a bug into production. The more different these environments are, the more risk there is. Tailoring the preproduction environment to meet your needs can help you manage risks while optimizing cost. To balance the similarity with production, consider the following recommendations:
 
 - *Avoid exact replicas*: Avoid making the preproduction environment an exact copy of production. It can unnecessarily increase costs. Create a preproduction environment that's cost-effective but enable you to uncover and address potential risks before deployment.
 
