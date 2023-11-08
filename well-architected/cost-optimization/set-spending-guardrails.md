@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:04](checklist.md)| Set spending guardrails. Guardrails should include release gates, governance policies, resource limits, and access controls. Prioritize platform automation over manual processes.|
 |---|---|
 
-This guide describes the recommendations for setting spending guardrails. Set spending guardrails by implementing measures to control and manage your costs within a specified budget. Spending guardrails can help to prevent unexpected or excessive spending and ensure that your cloud resources are utilized efficiently and cost-effectively. Without spending guardrails, your workload costs might exceed your budget, leading to unplanned expenses that can strain your financial resources.
+This guide describes the recommendations for setting spending guardrails. Spending guardrails are measures to control and manage costs within a specified budget. They help prevent unexpected or excessive spending and promote cost-effective utilization of resources. Without spending guardrails, your workload costs might exceed your budget, leading to unplanned expenses that can strain your financial resources.
 
 **Definitions**
 
@@ -27,13 +27,11 @@ This guide describes the recommendations for setting spending guardrails. Set sp
 
 ## Key design strategies
 
-You can implement key strategies, such as governance policies, access controls, release gates, budget thresholds, alerts, and automation, to help you effectively manage and control your costs. Combine these strategies to establish comprehensive spending guardrails that promote cost optimization and efficient resource management. These strategies can help you stay within budget, prevent cost overruns, and maximize the value of your cloud investments.
-
-Prioritize platform automation over manual processes. Use automation tools and services provided by the cloud platform to streamline resource provisioning, configuration, and management. Automation reduces the risk of human error, improves efficiency, and assists the consistent application of spending guardrails.
+Set spending guardrails by implementing measures to control and manage your costs within a specified budget. These measures include governance policies, access controls, release gates, budget thresholds, and alerts. Automation reduces the risk of human error, improves efficiency, and assists the consistent application of spending guardrails. Prioritize platform automation over manual processes. Automation tools and services the platform provides can streamline resource provisioning, configuration, and management.
 
 ### Use governance policies
 
-Governance policies can act as spending guardrails on various aspects of resources, such as resource types, configurations, tags, location, and data management. Many cloud platforms have a service that automates the enforcement of governance policies. Use automated policies to control resource usage, enforce accountability, and eliminate spending on restricted resource types. Here are some of the policies you should consider enforcing:
+Governance policies can act as spending guardrails on various aspects of resources such as resource types, configurations, tags, location, and data management. Many cloud platforms have a service that automates the enforcement of governance policies. Use automated policies to control resource usage, enforce accountability, and eliminate spending on restricted resource types. Here are some of the policies you should consider enforcing:
 
 - *Restricted resource types*: Policies can specify which types of resources are allowed or disallowed within an organization. For example, an organization might have a policy that restricts the use of certain expensive resource types to control costs.
 
@@ -69,11 +67,11 @@ Configure access controls to set restrictions that prevent overspending and to h
 
 Release gates are checkpoints or conditions that must be met before a release or deployment can proceed. Use release gates to help ensure that the release is cost-effective and aligns with optimization goals. Release gates offer a structured approach to the identification and implementation of cost-saving measures. To implement release gates for workload cost optimization, consider the following steps:
 
-1. Establish the conditions or criteria that must be met before resources are released or deployed. Include factors such as spending limits, resource utilization thresholds, or project milestones.
+1. *Establish release gate criteria.* Establish the conditions or criteria that must be met before resources are released or deployed. Include factors such as spending limits, resource utilization thresholds, or project milestones.
 
-1. Incorporate the release gates into the deployment pipeline. You can use automation tools or custom scripts to ensure that resource deployments are subject to the defined criteria.
+1. *Incorporate release gates.* Incorporate the release gates into the deployment pipeline. You can use automation tools or custom scripts to ensure that resource deployments are subject to the defined criteria.
 
-1. Continuously monitor spending and resource usage against the defined criteria. If the organization exceeds spending thresholds, the release gates should prevent further deployments until the issue is addressed.
+1. *Monitor spending.* Continuously monitor spending and resource usage against the defined criteria. If the organization exceeds spending thresholds, the release gates should prevent further deployments until the issue is addressed.
 
 ### Configure cost alerts
 
@@ -83,25 +81,25 @@ It's important to set alerts for budgets, cost anomalies, and commitment-based p
 
 - *Cost anomaly alerts*: Anomaly alerts notify you about unexpected cost variations that might indicate inefficiencies or abnormal spending patterns. You can configure these alerts to identify anomalies in the actual or forecasted costs. Use cost anomaly alerts to investigate the underlying cause of a cost variation and take corrective actions when necessary.
 
-- *Commitment-based plan utilization alerts*: If you have commitment-based plans in place, alerts on plan utilization can help you effectively manage and maximize the value of these commitments. Implement commitment-based plan utilization alerts to monitor. Optimize your commitment-based resources and ensure that you use the benefits of your commitments. You can also configure these alerts to notify stakeholders if the utilization of commitment-based resources drops below a desired threshold.
+- *Commitment-based plan utilization alerts*: Implement commitment-based plan utilization alerts to monitor your plan usage. If you have commitment-based plans, setting alerts on plan utilization can help you effectively manage and maximize the value of these commitments. You can configure these alerts to notify stakeholders if the utilization of commitment-based resources drops below a desired threshold. Optimize your commitment-based resources and ensure that you use the benefits of your commitments.
 
 ### Use IaC
 
 Infrastructure as code is the practice of managing and provisioning infrastructure resources by using code, typically in the form of configuration files. Implement this strategy to define and automate the deployment and configuration of infrastructure resources, such as virtual machines, networks, and storage, by using code-based templates.
 
-IaC strategies provide a structured and repeatable approach to managing and controlling infrastructure resources. IaC can help you to provision resources as-needed, delete resources without running them continuously, and optimize costs by ensuring you provision and configure resources according to predefined rules. Follow these steps to use IaC for cost optimization:
+IaC strategies provide a structured and repeatable approach to managing and controlling infrastructure resources. IaC can help you to deploy resources as-needed, delete resources without running them continuously, and optimize costs by ensuring you deploy and configure resources according to predefined rules. Follow these steps to use IaC for cost optimization:
 
-1. Create a code-based template language to define your infrastructure resources and their configurations. These templates let you specify the desired state of your infrastructure resources in a declarative manner. Implement best practices for cost optimization in your infrastructure code. Consider right-sizing your resources by using reserved instances or savings plans. Use cost-effective storage options and apply resource metadata for cost allocation and tracking.
+1. *Create IaC templates.* Create a code-based template language to define your infrastructure resources and their configurations. These templates let you specify the desired state of your infrastructure resources in a declarative manner. Implement best practices for cost optimization in your infrastructure code. Consider right-sizing your resources by using reserved instances or savings plans. Use cost-effective storage options and apply resource metadata for cost allocation and tracking.
 
-1. Store your infrastructure templates in a version control system, such as Git, to track changes and manage different versions. You can use version control to maintain a history of your infrastructure configurations and foster collaboration among team members.
+1. *Store templates.* Store IaC templates in a version control system to track changes and manage different versions. You can use version control to maintain a history of your infrastructure configurations and foster collaboration among team members.
 
-1. Use parameters in your templates to make them reusable and configurable. By using parameters, you can easily customize your infrastructure deployments for different environments or scenarios.
+1. *Use parameters.* Use parameters in your templates to make them reusable and configurable. By using parameters, you can easily customize your infrastructure deployments for different environments or scenarios.
 
-1. Use ephemeral environments for development, testing, and staging purposes to optimize costs. Ephemeral environments should only be run when necessary. Create these environments by using IaC tools and delete the environment when you're finished.
+1. *Use ephemeral environments.* Use ephemeral environments for development, testing, and staging purposes to optimize costs. Ephemeral environments should only be run when necessary. Create these environments by using IaC tools and delete the environment when you're finished.
 
-1. Use IaC tools and frameworks to automate the deployment and configuration of your infrastructure resources. Use automation to consistently and reliably provision resources according to your defined policies.
+1. *Use IaC tools.* Use IaC tools and frameworks to automate the deployment and configuration of your infrastructure resources. Use automation to consistently and reliably deploy resources according to your defined policies.
 
-1. Regularly monitor your infrastructure resources and their costs to ensure compliance with your spending policies. Use monitoring and alerting tools to identify any deviations from the defined guardrails and take corrective actions as needed. Check for unused resources and delete them, preferably with automation.
+1. *Monitor deployed resources.* Regularly monitor your resources and their costs to ensure compliance with your spending policies. Use monitoring and alerting tools to identify any deviations from the defined guardrails and take corrective actions as needed. Check for unused resources and delete them, preferably with automation.
 
 ## Azure facilitation
 
@@ -113,19 +111,19 @@ Azure allows you to set limits or quotas to prevent unexpected costs. You can de
 
 **Add resource metadata.** Use Azure governance to implement resource tagging and categorization. Tag resources using relevant metadata to track and allocate costs to different departments, projects, or cost centers. Visibility into cost attribution can help you identify areas of high spending, optimize resource allocation, and facilitate better cost management.
 
-**Cost management.** Use Microsoft Cost Management to optimize costs and enforce spending guardrails. You can use cost management features to set budgets and alerts, visualize cost information by using tools like Power BI, and analyze cost patterns and performance bottlenecks.
+**Cost management.** Use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to optimize costs and enforce spending guardrails. You can use cost management features to set budgets and alerts, visualize cost information by using tools like Power BI, and analyze cost patterns and performance bottlenecks.
 
-**Create release gates.** Use Azure DevOps release management capabilities to define and enforce your release gates. You can set up manual or automated checkpoints to help ensure that you meet specific criteria, such as security checks, compliance requirements, and cost thresholds.
+**Create release gates.** Use [Azure Pipelines](/azure/devops/pipelines/release/approvals/) release management to define and enforce your release gates. You can set up manual or automated checkpoints to help ensure that you meet specific criteria, such as security checks, compliance requirements, and cost thresholds.
 
 **Set access controls.** Use Azure RBAC to manage access to resources. You can use RBAC to grant permissions to users, groups, or applications based on their roles. Implement RBAC to help ensure that only authorized users have access to resources, reducing the risk of unauthorized resource usage and potential cost implications.
 
-**Implement IaC.** You can use Azure tools and services to deploy and manage infrastructure resources by using code. By using tools like Azure Resource Manager templates, Azure Bicep, and Azure DevOps, you can define and deploy your infrastructure resources in a declarative manner. Use Azure DevOps or other continuous integration and continuous delivery (CI/CD) tools to automate the deployment and closure of your ephemeral environments.
+**Implement infrastructure as code.** You can use Azure tools and services to deploy and manage infrastructure resources by using code. By using tools like Azure Resource Manager (ARM) templates, Azure Bicep, and Azure DevOps, you can define and deploy your infrastructure resources in a declarative manner. Azure has [Bicep, ARM, and Terraform templates](/azure/templates/) for every Azure resource.
+
+Use [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) or other continuous integration and continuous delivery (CI/CD) tools to  automate the build, test, and deployment processes. Teams can use pipelines to define a series of steps and actions that run automatically whenever changes are made to the codebase. Automate these processes to reduce manual effort, ensure consistency, and accelerate the delivery of software..
 
 Consider using lower-cost resources for your ephemeral or nonproduction environments to optimize costs. Azure provides various pricing tiers for resources. Azure DevTest Labs pricing and Azure Reservations are cost-saving methods that you can explore for ephemeral environments.
 
-Automated repositories, such as Azure Repos, provide version control capabilities for managing code and infrastructure configurations. Teams and developers can use automated repositories to collaborate, track changes, and maintain a history of their codebase.
-
-Use pipelines, such as Azure Pipelines, to automate the build, test, and deployment processes. Teams can use pipelines to define a series of steps and actions that run automatically whenever changes are made to the codebase. Automate these processes to reduce manual effort, ensure consistency, and accelerate the delivery of software.
+Git repositories, such as [Azure Repos](/azure/devops/repos/get-started/what-is-repos) and [GitHub](https://github.com/), provide version control capabilities for managing code and infrastructure configurations. Teams and developers can use automated repositories to collaborate, track changes, and maintain a history of their codebase.
 
 [Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) empowers development teams to quickly and easily create app infrastructure by using project-based templates that establish consistency and best practices while maximizing security. On-demand access to secure environments accelerates the stages of the software development lifecycle in a compliant and cost-efficient way.
 
