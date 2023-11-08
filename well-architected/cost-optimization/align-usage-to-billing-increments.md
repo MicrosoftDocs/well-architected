@@ -20,14 +20,14 @@ This guide describes the recommendations for aligning resource usage to billing 
 
 | Term | Definition  |
 |----|---|
-| Billing increment | A usage amount, such as a unit of time, number of instances, or size of data, that incurs a cost. It's also known as a *meter*. |
-| Billing factor  | The type of usage, such as time, storage amount, data transfer amount, or number of requests, that incurs costs.  |
+| Billing increment | A usage amount that incurs a cost, such as a unit of time, number of instances, or size of data. It's also known as a *meter*. |
+| Billing factor  | The type of usage that incurs costs, such as time, storage amount, data transfer amount, or number of requests. |
 
 ## Key design strategies
 
-Aligning resource usage to billing increments is about making sure that your resource consumption closely matches the intervals or quantities that you're charged for. For instance, if a service is charged by the hour but you use it only for a fraction of that time, you can adjust operations to maximize the use of that hour.
+Aligning resource usage to billing increments is about making sure that your resource consumption closely matches the intervals or quantities that you're charged for. For instance, if a service charges by the hour but you use it only for a fraction of that time, you can adjust operations to maximize the use of that hour.
 
-To save money, ensure that you understand how you're billed for a service, especially for specific increments like hourly rates, per gigabyte, or per number of requests. Adjust the service's configuration or how you consume the service to fit the billing increments and ensure that you don't incur unnecessary costs. Evaluate your workload's specific needs and understand how you're billed for various resources. Based on your findings, adjust the usage or the resource to optimize costs.
+To save money, ensure that you understand how you're billed for a service. You need to understand specific increments like hourly rates, per gigabyte charges, or per request costs. Adjust the service's configuration or how you consume the service to fit the billing increments and ensure that you don't incur unnecessary costs. Evaluate your workload's specific needs and understand how you're billed for various resources. Based on your findings, adjust the usage or the resource to optimize costs.
 
 ### Determine billing factors
 
@@ -35,11 +35,11 @@ Billing factors differ among services. Billing factors include the instance numb
 
 Here are some common billing factors:
 
-- *Runtime:* The runtime refers to the duration that a resource actively runs or is utilized. It's typically measured in hours, days, or months. The runtime helps you analyze the cost implications of resource usage over time. It's important for cost optimization because you can identify opportunities to minimize resource usage and associated costs.
+- *Runtime:* The runtime refers to the duration that a resource actively runs or is utilized. Runtime is typically measured in hours, days, or months. The runtime helps you analyze the cost implications of resource usage over time. It's important for cost optimization because you can identify opportunities to minimize resource usage and associated costs.
 - *Data transfer:* Data transfer refers to the movement of data into and out of a resource. Data transfer costs can vary based on the volume of data. Understand data transfer costs, so you can optimize data transfer patterns, select appropriate network configurations, and minimize costs associated with data movement.
 - *Specialized services:* Specialized services are services or features that you use with other resources. These services can include specialized databases, AI services, or other advanced capabilities. Evaluate the cost implications of specialized services because they might have separate pricing models or incur extra charges.
 - *Virtual CPUs (vCPUs):* The utilization of vCPUs within a resource is the vCPU usage. Resources such as virtual machines are often billed based on the number of vCPUs allocated to them. Monitor and optimize vCPU usage, so you can ensure efficient utilization of resources and minimize unnecessary costs.
-- *Uptime guarantees:* Uptime guarantees refer to the service-level agreements (SLAs) that cloud providers offer regarding the availability and reliability of their services. Uptime guarantees aren't directly related to billing, but they're important to consider when you want to optimize costs. Higher uptime guarantees can coincide with higher costs. Evaluate the tradeoff between the cost and the service availability.
+- *Uptime guarantees:* Uptime guarantees refer to the service-level agreements (SLAs) that cloud providers offer on the availability and reliability of their services. Uptime guarantees aren't directly related to billing, but they're important to consider when you want to optimize costs. Higher uptime guarantees can coincide with higher costs. Evaluate the tradeoff between the cost and the service availability.
 
 ### Determine billing increments
 
@@ -54,7 +54,7 @@ Here are some common types of billing increments:
 
 ### Map usage to billing increments
 
-Mapping usage to billing increments is an exercise to identify where resource consumption does not align with the billing increments. This mapping involves analyzing resource usage against billing increments in each billing factor to spot inefficiencies. At this step, you're only identifying areas where usage and billing increment aren't aligned. Later, you implement the changes. Consider the following guidance when mapping usage to billing increments:
+Mapping usage to billing increments is an exercise to identify where resource consumption doesn't align with the billing increments. This mapping involves analyzing resource usage against billing increments in each billing factor to spot inefficiencies. At this step, you're only identifying areas where usage and billing increment aren't aligned. Later, you implement the changes. Consider the following guidance when mapping usage to billing increments:
 
 - *Create an inventory of resources*. List the resources in the workload, such as compute, storage, and networking.
 - *Understand usage patterns*. Use monitoring tools or past-usage data to identify the resource consumption patterns for the workload. Note periods of high and low usage.
