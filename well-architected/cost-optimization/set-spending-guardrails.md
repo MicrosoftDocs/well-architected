@@ -53,15 +53,15 @@ Governance policies can act as spending guardrails on various aspects of resourc
 
 Configure access controls to set restrictions that prevent overspending and to help ensure that only authorized individuals can consume resources. Access controls can help reduce the risk of accidental or unnecessary changes that negatively affect cost optimization. To implement access controls for cost optimization, follow these steps:
 
-1. Identify the resources and services that need access controls.
+1. *Identify necessary control.* Identify the resources and services that need access controls.
 
-1. Define access policies based on the principle of least-privilege access, granting users only the necessary permissions to perform their tasks. For example, some users might need only read access, while others might also require write or delete permissions.
+1. *Define access policies.* Define access policies based on the principle of least-privilege access, granting users only the necessary permissions to perform their tasks. For example, some users might need only read access, while others might also require write or delete permissions.
 
-1. Implement authentication methods, like username/password, multifactor authentication, or integration with identity providers, to help ensure that only authorized users can access resources.
+1. *Implement authentication.* Implement authentication methods, like username/password, multifactor authentication, or integration with identity providers, to help ensure that only authorized users can access resources.
 
-1. Set up role-based access control (RBAC) to assign roles and permissions to users based on their job responsibilities. Using RBAC can help you manage resource access effectively.
+1. *Use role-based access control (RBAC).* Set up RBAC to assign roles and permissions to users based on their job responsibilities. Using RBAC can help you manage resource access effectively.
 
-1. Regularly review and update access controls to ensure that they align with the changing needs of the organization. Remove unnecessary access permissions and adjust access levels as needed.
+1. *Review and update controls.* Regularly review and update access controls to ensure that they align with the changing needs of the organization. Remove unnecessary access permissions and adjust access levels as needed.
 
 ### Use release gates
 
