@@ -1,5 +1,5 @@
 ---
-title: Design a reliable scaling strategy 
+title: Recommendations for designing a reliable scaling strategy 
 description: Learn about recommendations for designing a reliable scaling strategy, including Azure facilitation and tradeoff considerations.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Design a reliable scaling strategy
+# Recommendations for designing a reliable scaling strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
