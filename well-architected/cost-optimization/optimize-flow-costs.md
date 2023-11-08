@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for optimizing flow costs
 
-**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
 |[CO:09](checklist.md)| Optimize flow costs. Align the cost of each flow with flow priority. When you prioritize flows, consider the features, functionality, and nonfunctional requirements of each flow. Optimizing flow spend often requires strategic compromises.|
 |-|-|
@@ -78,7 +78,7 @@ Sometimes your flows are already running on different resources. In these cases,
 
 ### Separate dissimilar flows
 
-Separating dissimilar flows onto different resources is a process of allocating distinct tasks with varying computational needs to dedicated resources. Dissimilar flows are flows that have different attributes. These attributes can include computational requirements, data dependencies, I/O operations, latency sensitivity, security needs, and compliance requirements. It's often more cost efficient to run different types of flows on separate resources. Doing so enables precise resource allocation to each flow, which reduces unnecessary expenditures and ensures maximum efficiency. 
+Separating dissimilar flows onto different resources is a process of allocating distinct tasks with varying computational needs to dedicated resources. Dissimilar flows are flows that have different attributes. These attributes can include computational requirements, data dependencies, I/O operations, latency sensitivity, security needs, and compliance requirements. It's often more cost efficient to run different types of flows on separate resources. Doing so enables precise resource allocation to each flow, which reduces unnecessary expenditures and ensures maximum efficiency.
 
 Consider separating dissimilar flows that are currently combined. This separation boosts scalability, fault tolerance, and adaptability and also streamlines costs. By ensuring that each flow operates independently, you reduce interference risks and can allocate resources more cost-effectively based on each flow's priority. For example, assume that you colocate CRM (user flow) with a data engine (data flow). User traffic to the CRM system during office hours might slow down the data engine. When you decouple flows, the data engine can scale each component or service independently based on workload demand. This decoupling optimizes resource allocation and reduces costs.
 
@@ -98,50 +98,32 @@ Combining similar flows onto a single resource is a process of consolidating tas
 
 ### Continuously monitor flows
 
-The nature of flows and workloads can change over time, so you need to review flow spending to ensure that costs align with priorities. Evaluate the resource utilization of each flow by analyzing the compute, storage, and network usage that's associated with each flow. Identify any inefficiencies or areas where resources are underutilized. This analysis helps you pinpoint opportunities for cost optimization. Here are some considerations to take into account when you review flow utilization:
+The nature of flows and workloads can change over time, so you need to review flow spending to ensure that costs align with priorities. Evaluate the resource utilization of each flow by analyzing the compute, storage, and network usage associated with each flow. Identify any inefficiencies or areas where resources are underutilized. This analysis helps you pinpoint opportunities for cost optimization. Here are some considerations to take into account when you review flow utilization:
 
 - *Analyze usage patterns*. Analyze the usage patterns of the flows. Some flows might be more active during certain times of the day or month, while others might have a consistent load. By understanding these patterns, you can predict resource needs and adjust allocation to avoid bottlenecks and overprovisioning.
 
 - *Monitor relevant metrics*. Determine the metrics that can help you assess the efficiency and cost-effectiveness of each flow. Consider CPU utilization, data transfer costs, transaction costs, and storage footprint. Use monitoring tools to gather detailed metrics about resource usage and performance.
 
-- *Consider ongoing maintenance*. Consider the cost of maintenance, especially when you use infrastructure as a service solutions like virtual machines. You need to account for activities like patching, upgrades, backups, monitoring, and security.
+- *Consider ongoing maintenance*. Consider the cost of maintenance, especially when you use infrastructure-as-a-service solutions like virtual machines. You need to account for activities like patching, upgrades, backups, monitoring, and security.
 
 During your analysis, identify any inefficiencies or areas where resources aren't utilized effectively. Consider idle compute instances, unused data, and low network bandwidth. These inefficiencies can indicate opportunities for cost optimization.
 
 ## Azure facilitation
 
-**The flexibility of the cloud:** Azure provides a flexible cloud infrastructure that enables you to scale resources up or down based on demand. This flexibility enables you to adjust your workload capacity and optimize costs accordingly.
+**Prioritizing, optimizing, and monitoring flows:** The [User Flow tool](/azure/azure-monitor/app/usage-flows) in Application Insights provides a visual representation of user navigation across your site’s pages and features. This tool aids in identifying areas where users frequently leave, repeat actions, or follow specific paths. By comparing actual user behavior with your anticipated outcomes and objectives, you can identify critical flows. It also allows you to optimize potential issues such as high churn rates, repetitive actions, or design flaws. The tool also allows for custom property filtering through dimensions, offering a more tailored analysis.
 
-**Decision trees of services and deployment options within services:** The Azure documentation has many decision trees to help you determine the best deployment options. By carefully selecting the appropriate services and deployment options for your workload, you can optimize costs based on specific requirements and usage patterns. For more information, see [Technology choices for Azure solutions](/azure/architecture/guide/technology-choices/technology-choices-overview).
+[Azure Monitor](https://azure.microsoft.com/products/monitor) helps you gain insights into the performance and health of your applications. It provides monitoring and diagnostics capabilities. These capabilities enable you to identify performance bottlenecks, optimize resource utilization, and detect and troubleshoot issues that might affect costs.
 
-**Predeploy and postdeploy assessments:** It's important to design your workload with cost optimization in mind from the beginning. Microsoft provides predeploy and postdeploy assessments to help you optimize flow costs. Perform postdeploy assessments to identify areas where you can save money, and then make necessary adjustments.
-
-**Observation capabilities:** Azure provides various observation capabilities that can help you optimize costs. For example, partitioning databases and using distinct resources for each workload.
-
-Azure provides a comprehensive cost management and billing solution that enables you to monitor, analyze, and optimize your costs. It offers features like cost tracking, budgeting, and cost alerts to help you manage and optimize your spending.
-
-[Azure Monitor](https://azure.microsoft.com/products/monitor) helps you gain insights into the performance and health of your applications and infrastructure. It provides monitoring and diagnostics capabilities. These capabilities enable you to identify performance bottlenecks, optimize resource utilization, and detect and troubleshoot issues that might affect costs.
-
-Consider colocating logs and using dedicated solutions instead of shared ones to better manage costs. Log Analytics is a tool that enables you to collect, analyze, and visualize log data from various sources. By using Log Analytics, you can gain insights into your application and infrastructure logs, identify trends, and optimize costs by managing usage and data retention.
-
-Azure Advisor is a service that provides personalized recommendations to help you optimize your Azure resources. Advisor provides specific cost optimization recommendations based on your resource usage. These recommendations can help you identify unused or underutilized resources, right-size your deployments, and take advantage of cost-saving opportunities.
-
-**Economies of scale:** Azure provides economies of scale to enable you to consider different design approaches. For example, you can decide whether to use separate instances of Azure Front Door for each web app or to share a single instance across multiple web apps. Making informed configuration choices can help you optimize pricing schemes and overall costs.
-
-**Reliability:** You need to balance cost optimization with reliability. Implement backup strategies, redundancy measures, and replication options according to the needs of your workload. Azure SQL, for example, enables you to manage multiple databases under a single management plan, which requires less overhead than separate management plans.
-
-**Density options:** Consider the density of resources within your Azure App Service plan. Use deployment slots in App Service to optimize resource allocation and cost efficiency. You can also use Azure Spot Virtual Machines for workloads that can handle interruptions and don't need to be completed within a specific period of time.
-
-**Burst capacity:** Take advantage of the burst mode capabilities offered by Azure services like Azure Cosmos DB. Burst capacity allows you to temporarily increase resource performance to meet workload demands without incurring extra costs.
+[Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool that enables you to collect, analyze, and visualize log data from various sources. By using Log Analytics, you can gain insights into your application and infrastructure logs, identify trends, and optimize costs by managing usage and data retention. Consider colocating logs and using dedicated solutions instead of shared ones to better manage costs.
 
 ## Related links
 
-- [Technology choices for Azure solutions](/azure/architecture/guide/technology-choices/technology-choices-overview)
+- [User Flow tool](/azure/azure-monitor/app/usage-flows)
 - [Azure Monitor](https://azure.microsoft.com/products/monitor)
 
 ## Cost Optimization checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Cost Optimization checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Cost Optimization checklist](checklist.md)

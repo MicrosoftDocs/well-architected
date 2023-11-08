@@ -45,7 +45,7 @@ Consolidating resources involves combining resources within a workload. You can 
 
 The aim is to increase resource density, so you can maximize the cost efficiency of each resource. Expand the use of a resource and minimize resource redundancy.
 
-Common types of services that you can consolidate include application platforms, databases, network appliances, gateways, and distributed denial-of-service (DDoS) protection. To consolidate resources within a workload, consider the following recommendations.
+Common types of services that you can consolidate include application platforms, databases, network appliances, gateways, and distributed denial-of-service (DDoS) protection. To consolidate resources within a workload, consider the following recommendations:
 
 **Assess the workload resources.** Assess the existing workload and its resource utilization. Analyze factors such as CPU usage, memory usage, storage capacity, and network bandwidth. Identify areas in which consolidation might be beneficial. Consolidation might involve optimizing resource allocation, eliminating redundant or underutilized resources, or reconfiguring the workload to run more efficiently. Consider factors such as workload dependencies, performance requirements, and scalability.
 
@@ -107,7 +107,7 @@ Offloading workload responsibilities to external teams refers to using expert ce
 
 ## Azure facilitation
 
-**Density support:** Many Azure services support increased resource density. The following table shows these services.
+**Density support:** Many Azure services support increased resource density. The following table shows a sampling of these services.
 
 |Azure service|Segmentation control|
 | --- | --- |
@@ -117,15 +117,16 @@ Offloading workload responsibilities to external teams refers to using expert ce
 |API Management|API policies|
 |Azure Kubernetes Service (AKS)| Namespaces, node pools|
 |Azure App Service|Multiple web apps and APIs on an App Service plan|
-|Azure SQL Database|Multiple databases on a server
+|Azure SQL Database|Multiple databases on a server|
 
-**Resource observability:** Azure Monitor provides a centralized platform for monitoring and managing the performance and health of your Azure resources. You can collect and analyze telemetry data, set up alerts, and gain insight into resource utilization.
+**Resource observability:** [Azure Monitor](/azure/azure-monitor/overview) provides a centralized platform for monitoring and managing the performance and health of your Azure resources. You can collect and analyze telemetry data, set up alerts, and gain insight into resource utilization and opportunities for consolidation.
 
 Log Analytics provides centralized log management and analysis. You can collect, analyze, and visualize log data from various Azure resources, which helps to identify issues, troubleshoot problems, and gain operational insight.
 
 ## Related links
 
-[Recommendations for optimizing component costs](optimize-component-costs.md)
+- [Azure Monitor](/azure/azure-monitor/overview)
+- [Recommendations for optimizing component costs](optimize-component-costs.md)
 
 ## Cost Optimization checklist
 
