@@ -30,7 +30,7 @@ Optimizing workload components is about refining the various elements of a workl
 
 ### Optimize application features
 
-Optimizing application features is the process of either removing, reinvesting, or monetizing application features based on value. It ensures you allocate resources to application features that provide the most value to customers. Optimizing application features helps avoid investing in features that contribute to technical debt or do not yield enough return on investment.
+Optimizing application features is the process of either removing, reinvesting, or monetizing application features based on value. It ensures you allocate resources to application features that provide the most value to customers. Optimizing application features helps avoid investing in features that contribute to technical debt or don't yield enough return on investment.
 
 #### Evaluate application feature value
 
@@ -122,9 +122,9 @@ After you make these adjustments, test to make sure everything still works as it
 
 ### Optimize platform features
 
-Optimizing platform features involves eliminating or updating platform features, such as performance tiers and configuration settings, to optimize resource usage and reduce costs. It helps align spending with the requirements of the workload and avoids unnecessary expenses on unneeded features. Here are some tips to optimize the cost of platform features:
+Optimizing platform features involves eliminating or updating platform features, such as performance tiers and configuration settings, to optimize costs. It helps align spending with the requirements of the workload and avoids unnecessary expenses on unneeded features. Here are some tips to optimize the cost of platform features:
 
-- *Know the capabilities of the things you’ve purchased*: Before you can optimize, you need a clear inventory of the services and their features across your cloud platforms. Understand the features and functionalities of the platforms or services in your workload. Be aware of the specific tier you have chosen and the features each tier offers. For example, if you don't require auto-scaling or advanced networking, a lower-tier plan might suffice.
+- *Know the capabilities of the things you purchase*: Before you can optimize, you need a clear inventory of the services and their features across your cloud platforms. Understand the features and functionalities of the platforms or services in your workload. Be aware of the specific tier you chose and the features each tier offers. For example, if you don't require autoscaling or advanced networking, a lower-tier plan might suffice.
 
 - *Disable unused features*: Identify and disable platform features that cost money. You might have unneeded storage snapshots, unused disks, redundant security features, or underutilized networking capabilities.
 
@@ -142,7 +142,7 @@ Preventing unoptimized components is about proactively ensuring components are e
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't immediately switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fix the real problem to save time and money.
 
-- *Apply metadata*: Apply metadata to organize and track resources. You can use metadata to categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy that's applied across resources. Consider adding owners, the anticipated resource duration (for example, `sunset-30d`), or other tags.
+- *Apply metadata*: Apply metadata to organize and track resources. You can use metadata to categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy across resources. Consider adding owners, the anticipated resource duration (for example, `sunset-30d`), or other tags.
 
 - *Document nonstandard changes*: Document any changes made to your infrastructure or configurations performed outside the normal control process of your workload to cut unexpected costs. For example, you might increase a resource’s scaling (up or out) capacities to meet a short-term demand or triage an issue but forget to scale it back down. Make a list of nonstandard changes and use it as a reminder to revert the changes when they're no longer necessary.
 
@@ -160,7 +160,7 @@ Preventing unoptimized components is about proactively ensuring components are e
 
 You can use the [autoscale feature](/azure/azure-monitor/autoscale/autoscale-overview) in Azure to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help you allocate resources efficiently and cost-effectively.
 
-You can use [Azure Automation](/azure/automation/automation-solution-vm-management-config) to shutdown virtual machines during periods of inactivity. Resource shutdowns help reduce costs by minimizing the use of idle resources.
+You can use [Azure Automation](/azure/automation/automation-solution-vm-management-config) to shut down virtual machines during periods of inactivity. Resource shutdowns help reduce costs by minimizing the use of idle resources.
 
 ## Related links
 
