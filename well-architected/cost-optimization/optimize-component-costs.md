@@ -30,7 +30,7 @@ Optimizing workload components is about refining the various elements of a workl
 
 ### Optimize application features
 
-Identify and remove underutilized or unnecessary features in your application to reduce costs and reallocate resources more efficiently. Evaluate potential waste based on the value of application features to users and their alignment with business goals. Identify and eliminate features that don't provide value to the workload. Remove unnecessary features to allocate resources more efficiently to features that bring more value to the users and the business.
+Optimizing application features is the process of either removing, reinvesting, or monetizing application features based on value. It ensures you allocate resources to application features that provide the most value to customers. Optimizing application features helps avoid investing in features that contribute to technical debt or do not yield enough return on investment.
 
 #### Evaluate application feature value
 
@@ -76,7 +76,7 @@ Based on your analysis and evaluation, determine the future of the application f
 
 ### Optimize workload resources
 
-Optimizing workload resources involves removing any resources that aren't needed or used. It also includes adjusting the size and scale of the underutilized resources that are needed. This effort can save money, avoid waste, and ensure that the workload only uses the resources that add value to its performance.
+Optimizing workload resources involves removing any resources that unused and optimizing any underutilized resources that the workload needs. This effort can save money, avoid waste, and ensure that the workload only uses the resources that add value.
 
 **Remove unused workload resources.** Unused resources are deployed services your workload or operations processes don't use. These resources might be long-term idled, orphaned, or forgotten. They provide no return on investment, and you should remove them. Common causes of unused resources include:
 
@@ -122,7 +122,7 @@ After you make these adjustments, test to make sure everything still works as it
 
 ### Optimize platform features
 
-Optimizing platform features involves selecting and configuring the platform features, such as performance tiers and configuration settings, to match operational needs. It helps align spending with the requirements of the workload and avoids unnecessary expenses on unneeded features. Identify and remove unnecessary or unused platform features to optimize resource usage and reduce costs. Here are some tips to optimize the cost of platform features:
+Optimizing platform features involves eliminating or updating platform features, such as performance tiers and configuration settings, to optimize resource usage and reduce costs. It helps align spending with the requirements of the workload and avoids unnecessary expenses on unneeded features. Here are some tips to optimize the cost of platform features:
 
 - *Know the capabilities of the things you’ve purchased*: Before you can optimize, you need a clear inventory of the services and their features across your cloud platforms. Understand the features and functionalities of the platforms or services in your workload. Be aware of the specific tier you have chosen and the features each tier offers. For example, if you don't require auto-scaling or advanced networking, a lower-tier plan might suffice.
 
@@ -138,7 +138,7 @@ Optimizing platform features involves selecting and configuring the platform fea
 
 ### Prevent unoptimized components
 
-Proactively ensure components are efficient and essential, rather than adding or making changes without careful analysis to avoid introducing unoptimized components. The best way to get rid of waste is to avoid it in the first place. Use strategies that prevent unnecessary expenses and resource wastage by addressing inefficiencies at the root, ensuring a workload runs cost-effectively from the outset. To help prevent waste, consider these strategies:
+Preventing unoptimized components is about proactively ensuring components are essential and optimized before adding or modifying. The best way to get rid of waste is to avoid it in the first place. Use strategies that prevent unnecessary expenses by addressing inefficiencies at the root, ensuring a workload runs cost-effectively from the outset. To help prevent waste, consider these strategies:
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't immediately switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fix the real problem to save time and money.
 
@@ -150,13 +150,17 @@ Proactively ensure components are efficient and essential, rather than adding or
 
 ## Azure facilitation
 
-**Eliminate unused application features**: You can use Azure Monitor and Application Insights to monitor the usage of your application and identify areas that are or aren't used. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
+**Eliminate unused application features**: You can use [Azure Monitor](/azure/azure-monitor/overview) and [Application Insights](/azure/azure-monitor/app/app-insights-overview) to monitor the usage of your application and identify areas that are or aren't used. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
 
-**Eliminate unused resources**: Azure Advisor provides recommendations to identify and eliminate unused resources. You can use Advisor to analyze your resource usage and receive suggestions about resources to remove or scale down.
+**Eliminate unused resources**: Azure Advisor provides [cost recommendations](/azure/advisor/advisor-reference-cost-recommendations) provides recommendations to identify and eliminate unused resources. You can use Advisor to analyze your resource usage and receive suggestions about resources to remove or scale down.
 
-**Find orphaned resources:** Monitor supports workbooks. You can use workbooks to create a custom report that finds and reports orphaned resources across a defined scope.
+**Find orphaned resources:** Azure Monitor supports [workbooks](/azure/azure-monitor/visualize/workbooks-overview). You can find or create a workbook that finds and reports orphaned resources across a defined scope.
 
-**Eliminate idle resources in disaster recovery environments**: Azure load balancers can distribute loads across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. Resource shutdowns help reduce costs by minimizing the use of idle resources. You can use the Azure autoscale feature to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help you allocate resources efficiently and cost-effectively.
+**Eliminate idle resources in disaster recovery environments**: [Azure load balancers](/azure/architecture/guide/technology-choices/load-balancing-overview) can distribute loads across availability zones and regions. These load balancers can help eliminate idle resources in disaster recovery approaches.
+
+You can use the [autoscale feature](/azure/azure-monitor/autoscale/autoscale-overview) in Azure to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help you allocate resources efficiently and cost-effectively.
+
+You can use [Azure Automation](/azure/automation/automation-solution-vm-management-config) to shutdown virtual machines during periods of inactivity. Resource shutdowns help reduce costs by minimizing the use of idle resources.
 
 ## Related links
 
