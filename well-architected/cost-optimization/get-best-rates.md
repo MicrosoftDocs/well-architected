@@ -1,6 +1,6 @@
 ---
 title: Recommendations for getting the best rates from providers
-description: Learn how to get the best rates from providers for your workload without modifying architecture, modifying functionality, or switching resource types.
+description: Learn how to get the best rates from providers for your workload without modifying architecture, resources, or functionality.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
@@ -20,13 +20,13 @@ This guide describes the recommendations for getting the best rates from provide
 
 | Term | Definition |
 |---|---|
-| Consumption billing model | A pricing model where you're charged based on the actual usage of the service. Examples include the number of virtual machines deployed, the amount of storage used, and the amount of data transferred. |
+| Consumption-based billing model | A pricing model where you're charged based on the actual usage of the service. Examples include the number of virtual machines deployed, the amount of storage used, and the amount of data transferred. |
 | Commitment-based billing model | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
 | Rate | The unit price for using a service or license. |
 
 ## Key design strategies
 
-Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It takes into consideration price differences across regions, the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based pricing. It's also involves software licenses and corporate discount plans.
+Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It takes into consideration price differences across regions, the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based billing. It also involves software licenses and corporate discount plans.
 
 To get the best rates on the resources and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on workload needs. Regularly check for discounts and reduce licensing fees where possible. Determine if it's more cost effective to build or buy new workload solutions.
 
@@ -48,43 +48,41 @@ For your billing model, you choose between consumption (pay-as-you-go) and commi
 
 Selecting the right billing model is crucial for cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. To determine the right billing model, consider the following strategies:
 
-#### Understand consumption billing model
+#### Understand the consumption-based billing model
 
-Consumption pricing is a flexible pricing model that allows you to pay for services as you use them. It's also called pay-as-you-go pricing.
+Consumption-based billing model (pay-as-you-go) is a flexible pricing model that allows you to pay for services as you use them. Cost variables for consumption pricing include how long a resource is running. Service meters have various billing increments, such as per hour or per second. This model provides flexibility and cost control, because you pay for only what you consume.
 
-Cost variables for consumption pricing include how long a resource is running. Service meters have various billing increments, such as per hour or per second. This model provides flexibility and cost control, because you pay for only what you consume.
+The consumption-based billing model is best suited for the following scenarios:
 
-Consumption pricing is best suited for the following scenarios:
+- *Variable workload*: A variable workload has unpredictable spikes or seasonal variations in usage. Consumption-based billing allows you to scale resources up or down to meet the fluctuations in demand. It helps you to provide the required performance and not overpay during times of low usage.
 
-- *Variable workload*: A variable workload has unpredictable spikes or seasonal variations in usage. Consumption-based pricing allows you to scale resources up or down to meet the fluctuations in demand. This pricing option helps you to always provide the required performance and not overpay during times of low usage.
+- *Preproduction environments*: Consumption-based billing is preferred for development and test environments that are ephemeral. It offers the advantage of paying only during the project. Ensure that you provide resources aligned with the development effort. Resources cost less when development is scaled down.
 
-- *Preproduction environments*: Consumption-based pricing is preferred for development and test environments that are ephemeral. It offers the advantage of paying only during the project. Ensure that you provide resources aligned with the development effort. Resources cost less when development is scaled down.
-
-- *Short-term projects*: Short-term projects often have specific resource requirements. Pay-as-you-go pricing allows you to pay for the resources only during the project.
+- *Short-term projects*: Short-term projects often have specific resource requirements. Consumption-based billing allows you to pay for the resources only during the project.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many on-premises environments are always on and always available. Being intentional about services might lower rates, but you must account for some creation time and operational overhead.
 
-#### Understand commitment-based pricing
+#### Understand the commitment-based billing model
 
-Commitment-based pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to pay-as-you-go pricing.
+Commitment-based pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to consumption-based billing.
 
-The amount you save with Commitment-based pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Commitment-based pricing is best suited for the following scenarios:
+The amount you save with commitment-based pricing depends on factors such as the duration of the reservation, the reserved capacity, and the service. Commitment-based pricing is best suited for the following scenarios:
 
-- *Predictable workloads*: If your workload has a consistent usage pattern, you can commit to a certain capacity over time and get a significant discount over pay-as-you-go pricing. Those instances incur charges whether you use them or not.
+- *Predictable workloads*: If your workload has a consistent usage pattern, you can commit to a certain capacity over time and get a significant discount over consumption-based billing. Those instances incur charges whether you use them or not.
 
-- *Production environments*: Commitment-based pricing is suitable for production environments where you have a good understanding of the workload's resource needs.
+- *Production environments*: Commitment-based billing is suitable for production environments where you have a good understanding of the workload's resource needs.
 
-- *Long-term projects*: Commitment-based pricing can be cost-effective for projects that have long-term resource requirements, even if they aren't highly predictable.
+- *Long-term projects*: Commitment-based billing can be cost-effective for projects that have long-term resource requirements, even if they aren't highly predictable.
 
 #### Discuss options with the workload team
 
-To ensure effective optimization of workload costs, it's crucial for the development team (or architect) and the purchasing team to work together. Combining their expertise enables you to identify opportunities to optimize costs and make informed decisions.
+To ensure effective optimization of workload costs, the development team (or architect) and the purchasing team must work together. Combining their expertise enables you to identify opportunities to optimize costs and make informed decisions.
 
-Here's a suggested process:
+Here's a suggested process for collaborating on rate reduction efforts:
 
 1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like usage patterns, scalability, and workload requirements.
 
-1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment that's involved.
+1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
 
 1. *Evaluate options*: Assess your options for cost optimization, such as pay-as-you-go versus commitment-based plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the performance tiers in each service and the pricing differences between them.
 
@@ -102,7 +100,7 @@ To determine the duration of component usage, you can follow this process:
 
 1. *Assess business needs*: Evaluate the business needs and objectives associated with the component or workload. Consider factors such as project timelines, budget constraints, and the overall strategy of your organization.
 
-   Anticipating future developments can help you assess the long-term commitment that's required and whether it aligns with your objectives. This assessment helps you determine the appropriate duration for component usage.
+   Anticipating future developments can help you assess the long-term commitment required and whether it aligns with your objectives. This assessment helps you determine the appropriate duration for component usage.
 
 #### Determine usage consistency
 
@@ -130,7 +128,7 @@ Strategic usage of commitment-based plan can significantly minimize costs for ap
 
 - *Eliminate underutilization*: You need to evaluate and optimize commitment-based contracts to ensure they deliver their full potential value. Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
 
-    Monitor utilization. Keep an eye on how much you're using your commitment-based plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you've already paid for.
+    Monitor utilization. Keep an eye on how much you're using your commitment-based plans. Set up alerts to tell you if you're not using all of your reserved resources. Check how you're using them over time and get rid of any you're not using. Make sure you're using the right size of virtual machines to get the most out of your plan. You can also adjust the sizes to fit what you already paid for.
 
     Modify the commitment-based plan. Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused commitment-based plans, try exchanging unused quantity or canceling and refunding plans.
 
@@ -152,7 +150,7 @@ Try these tasks:
 
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
 
-Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You've communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
+Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
 ### Decide whether to build or buy a solution
 
