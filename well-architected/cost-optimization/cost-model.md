@@ -25,12 +25,12 @@ This guide describes the best practices for creating a cost model for your workl
 |------|------------|
 | Chargeback | An accounting model in which you charge departments for their workload usage and receive payments from them. |
 | Cost model | The estimated cost of a workload. It captures all the dimensions of billing, including operations. |
-| Cost meter | A tracking mechanism that’s used to measure the usage of resources over time. It tracks usage, such as compute hours, data transfer, and input-output operations, and emits the records, which are used to calculate the bill for each resource based on its associated meter. |
+| Cost meter | A tracking mechanism that you use to measure the usage of resources over time. It tracks usage, such as compute hours, data transfer, and input-output operations. It emits the records that are used to calculate the bill for each resource based on its associated meter. |
 | Showback | An accounting model in which you show departments the cost of their workload usage, and you don't receive payment from them. |
 
 ## Key design strategies
 
-A cost model provides a projection of the workload cost based on existing data. The purpose of a cost model isn't to gain visibility into expenses or control them. The goal is to forecast the predicted expenses, considering all available known factors and determine the best solution for your workload. The best solution aligns spending to workload priorities. A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
+A cost model provides a projection of the workload cost based on existing data. The purpose of a cost model isn't to gain visibility into expenses or control them. The goal is to forecast the predicted expenses, considering all available known factors. From that prediction, you determine the best solution for your workload. The best solution aligns spending to workload priorities. A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
 
 ### Conduct workload assessment
 
@@ -50,7 +50,7 @@ Conducting a workload assessment involves systematically evaluating and analyzin
 
 Estimating workload costs involves assessing all potential expenditures and savings linked to the workload. It encompasses direct vendor costs, operational maintenance expenses, billing model choices, and potential savings from customer or enterprise agreements. By evaluating these factors, you can create a robust cost model, enabling precise forecasting and budgeting. To estimate workload costs, consider the following strategies:
 
-**Select the best billing model.** A billing model determines how the cloud service provider charges for their services. Billing models include pay-as-you-go, commitment-based plans ( reservations), and spot pricing. Identify the most suitable and cost-effective billing model by understanding the specific requirements and usage patterns of each model. Each billing model has advantages and disadvantages of cost structure and flexibility. For example, pay-as-you-go might provide flexibility but might be more expensive over time compared to commitment-base plans instances.
+**Select the best billing model.** A billing model determines how the cloud service provider charges for their services. Billing models include consumption-based (pay-as-you-go), commitment-based plans (reservations), and spot pricing. Identify the most suitable and cost-effective billing model by understanding the specific requirements and usage patterns of each model. Each billing model has advantages and disadvantages of cost structure and flexibility. For example, pay-as-you-go might provide flexibility but might be more expensive over time compared to commitment-base plans instances.
 
 **Use customer agreements.** Cloud service providers offer customer agreements or enterprise agreements for customers. Some agreements offer discounts through available programs or allow you to use your existing licenses to save money. Implement these cost optimization strategies to maximize the value of your resources and reduce your overall expenses.
 
@@ -72,7 +72,7 @@ The cost model is an estimate of all costs associated with the workload. These c
 
 #### Align estimates to cost drivers
 
-Cost drivers are specific factors or variables that influence the overall cost. These drivers can include variables such as usage volume, the number of customers served, storage capacity, or any other factors that have a direct impact on the cost of resources, services, or operations within the workload.
+Cost drivers are specific factors or variables that influence the overall cost. It includes any factors that have a direct impact on the cost of resources, services, or operations within the workload. These drivers can include variables such as usage volume, the number of customers served, storage capacity.
 
 Assign quantitative values to the identified cost drivers, such as estimating usage volumes or determining the number of customers or resources. Quantify the effect of each cost driver by using methods such as estimating usage volumes or determining the number of customers or resources. Based on the cost categories and drivers, establish mathematical models or formulas that relate the cost drivers to the associated costs. These models can include simple linear relationships or complex calculations, depending on the cost category.
 

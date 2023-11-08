@@ -11,46 +11,44 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:05](checklist.md)| Get the best rates from providers. You should find and use the best rates for cloud resources and licenses. Regularly review cost savings. Cost reviews should include regional pricing, pricing tiers, pricing models (consumption or fixed), reservations, savings plans, license portability, corporate purchasing plans, price sheets, and precommitments.|
+|[CO:05](checklist.md)| Get the best rates from providers. You should find and use the best rates for cloud resources and licenses. Regularly review cost savings. Cost reviews should include regional pricing, pricing tiers, pricing models (consumption or commitment-based), license portability, corporate purchasing plans, and price sheets.|
 |---|---|
 
-This guide describes the recommendations for getting the best rates from providers for your workload. It's about lowering the bottom line of your workload bills without modifying architecture, modifying functionality, or switching resource types.
-
-By optimizing rates, you can reduce cloud costs without changing the workload. Without rate optimization, you end up paying more for your resources, services, and licenses than necessary.
+This guide describes the recommendations for getting the best rates from providers for your workload. Getting the best rates is the practice of finding and securing the most cost-efficient pricing options for cloud and software resources without modifying architecture, resources, or functionality. By optimizing rates, you can reduce cloud costs without changing the workload. A small rate reduction on services you use a lot provides significant cost savings. Without rate optimization, you end up paying more for your resources, services, and licenses than necessary.
 
 **Definitions**
 
 | Term | Definition |
 |---|---|
-| Consumption pricing | A pricing model where you're charged based on the actual usage of the service. Examples include the number of virtual machines deployed, the amount of storage used, and the amount of data transferred. |
-| Commitment-based pricing   | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
+| Consumption billing model | A pricing model where you're charged based on the actual usage of the service. Examples include the number of virtual machines deployed, the amount of storage used, and the amount of data transferred. |
+| Commitment-based billing model | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
 | Rate | The unit price for using a service or license. |
 
 ## Key design strategies
 
-Getting the best rates is about actively searching for and choosing the most cost-effective options for resources and licenses. This review should consider factors like price differences among regions, pricing models (like pay-as-you-go or fixed rates), and special deals like long-term reservations or savings plans. It's also important to think about how software licenses can be moved between platforms, corporate discount plans, and price sheets.
+Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It takes into consideration price differences across regions, the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based pricing. It's also involves software licenses and corporate discount plans.
 
-A small change in percentage rate on services that you use a lot provides significant cost optimization. To get the best rates on the components and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on your workload's needs. Regularly check for discounts and optimize any licensing fees. Determine if it's more cost effective to build or buy new workload solutions.
+To get the best rates on the resources and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on workload needs. Regularly check for discounts and reduce licensing fees where possible. Determine if it's more cost effective to build or buy new workload solutions.
 
 ### Create an ordered list of expenses
 
-Understanding the workload is the first step to finding and using the best rates on infrastructure, cloud resources, licenses, and third-party services. It prepares you to make informed decisions and implement cost optimization strategies that are specific to the needs of the workload.
+Understanding the workload is the first step to finding and using the best rates on infrastructure, resources, licenses, and third-party services. It prepares you to make informed decisions and implement cost optimization strategies that are specific to the needs of the workload.
 
 Here are actions that you can take to understand the workload rates:
 
-- *Take inventory*: List all the components of your workload, including infrastructure, cloud resources, licenses, third-party services, and any other expenses related to the workload.
+- *Take inventory.* List all the components of your workload, including infrastructure, cloud resources, licenses, third-party services, and any other expenses related to the workload.
 
-- *Understand spending*: Gain a clear understanding of the current spending for each item in the inventory list. Identify what you're paying for and where most of your expenses lie.
+- *Understand spending.* Gain a clear understanding of the current spending for each item in the inventory list. Identify what you're paying for and where most of your expenses lie.
 
-- *Create an ordered list of workload expenses*: List the most expensive components and work your way down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest effects on cost.
+- *Create an ordered list of workload expenses.* List the most expensive components and work your way down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest effects on cost.
 
 ### Determine the right billing model
 
-For your billing model, you choose between consumption-based (pay-as-you-go) and commitment-based pricing strategies. Base the selection on the predictability, duration, and usage consistency of workload components. This decision requires collaboration with development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations.
+For your billing model, you choose between consumption (pay-as-you-go) and commitment-based billing models. You base the selection of consumption versus commitment-based pricing on the predictability, duration, and usage consistency of workload components. When you make this decision, you must collaborate with development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimization ideas.
 
-Selecting the right billing model is crucial for cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. Consider the following strategies.
+Selecting the right billing model is crucial for cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. To determine the right billing model, consider the following strategies:
 
-#### Understand consumption pricing
+#### Understand consumption billing model
 
 Consumption pricing is a flexible pricing model that allows you to pay for services as you use them. It's also called pay-as-you-go pricing.
 
