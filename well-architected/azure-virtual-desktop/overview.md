@@ -23,9 +23,9 @@ Virtual Desktop is a cloud service for desktop and app virtualization. When you 
 
 Besides providing a way for you to set up multiple sessions of Windows deployments, Virtual Desktop workloads also offer the following benefits:
 
-- Cost reduction through pooled, multiple-session resources
-- Individual ownership through personal, persistent desktops
-- Autoscale features to automatically increase or decrease capacity
+- Cost reduction through pooled, multiple-session resources.
+- Individual ownership through personal, persistent desktops.
+- Plan for growth and scale out by adding more resources based on your business needs. Your autoscaling strategy is backed by the ability to scale based on number of sessions per CPU core or based on peak hours and off-peak hours, by running the minimum number of session host VMs.
 - A unified experience for managing desktops and apps that are on various SKUs of the Windows operating system
 
 ##### Hybrid environments with multiple sessions of Windows deployments
