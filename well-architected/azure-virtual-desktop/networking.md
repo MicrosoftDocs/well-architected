@@ -1,9 +1,9 @@
 ---
 title: Networking and connectivity considerations for Azure Virtual Desktop workloads
-description: Understand Azure Virtual Desktop networking concepts. See techniques for improving the security, operations, and scalability of networks.
+description: Understand Azure Virtual Desktop networking and connectivity concepts. See techniques for improving the security, operations, and scalability of networks.
 author: swathibhat1
 ms.author: swathibhat
-ms.date: 09/15/2023
+ms.date: 10/12/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-avd
@@ -11,10 +11,10 @@ ms.subservice: waf-workload-avd
 
 # Networking and connectivity considerations for Azure Virtual Desktop workloads
 
-This article discusses the networking design area of a Microsoft Azure Virtual Desktop workload. It's critical to design and implement Azure networking capabilities for your Azure Virtual Desktop landing zone. As a foundation, this article uses several Azure Well-Architected Framework [enterprise-scale landing zone architectural principles and recommendations](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity). By building on this guidance, this article shows you how to manage network topology and connectivity at scale.
+This article discusses the networking and connectivity design area of an Azure Virtual Desktop workload. It's critical to design and implement Azure networking capabilities for your Azure Virtual Desktop landing zone. As a foundation, this article uses several Azure Well-Architected Framework [enterprise-scale landing zone architectural principles and recommendations](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity). By building on this guidance, this article shows you how to manage network topology and connectivity at scale.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected Framework Azure Virtual Desktop workload](./index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is an Azure Virtual Desktop workload?](./overview.md#what-is-a-virtual-desktop-workload).
+> This article is part of the [Azure Well-Architected Framework Azure Virtual Desktop workload](./index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is an Azure Virtual Desktop workload?](./overview.md#what-is-an-azure-virtual-desktop-workload).
 
 ## Client latency
 
@@ -27,23 +27,12 @@ To assess the quality of your end-user experience:
 - Test end-to-end latencies in development, testing, and proof-of-concept environments. This test should take into account the actual experience of your users. It should consider factors like network conditions, end-user devices and the configuration of the deployed VMs.
 - Keep in mind that latency is only one aspect of connectivity with remote protocols. Bandwidth and user workload also affect your end-user experience.
 
-##### Assessment question
-
-How have you designed your overall network infrastructure for Azure Virtual Desktop to help ensure reliable and high-speed internet connectivity for geographically distributed clients while maintaining an acceptable latency threshold and prioritizing Azure Virtual Desktop traffic over other network traffic?
-
 ##### Recommendations
 
 - Use [Azure Virtual Desktop Experience Estimator](https://azure.microsoft.com/products/virtual-desktop/assessment) to gather estimated latency values.
 - Test latencies from your Azure virtual networks to your on-premises systems.
-
-##### Assessment question
-
-Do any of your clients use a virtual private network (VPN) to connect to your virtual network?
-
-##### Recommendations
-
-- For clients who use a point-to-site (P2S) VPN connection, use a split tunnel that's based on User Datagram Protocol (UDP).
-- For on-site clients who use a VPN or Azure ExpressRoute, use Remote Desktop Protocol (RDP) Shortpath with a managed network.
+- Use a split tunnel that's based on User Datagram Protocol (UDP) for clients who use a point-to-site (P2S) VPN connection.
+- Use Remote Desktop Protocol (RDP) Shortpath with a managed network for on-site clients who use a VPN or Azure ExpressRoute.
 
 ## On-premises connectivity (hybrid networking)
 
@@ -60,10 +49,6 @@ It's important to align with the Azure Virtual Desktop scaling model that's desc
 - Give every Azure Virtual Desktop landing zone its own virtual network and subnet configuration.
 - Size subnets appropriately by considering potential growth when you determine the amount of IP address space that's needed.
 - Use smart IP classless inter-domain routing (CIDR) notation to avoid wasting IP address space.
-
-##### Assessment question
-
-If you use hybrid networking, are you aware of the connectivity options that are available and their impact on performance?
 
 ##### Recommendations
 
@@ -93,16 +78,12 @@ If possible, use VM SKUs that offer accelerated networking. In workloads that us
 
 Your network's available bandwidth dramatically impacts the quality of your remote sessions. As a result, it's a good practice to assess networking bandwidth requirements for users to ensure that enough bandwidth is available for on-premises dependencies.
 
-##### Assessment question
-
-When you use Azure Virtual Desktop in multiple regions, are you aware of networking factors that impact the architecture?
-
 ##### Recommendations
 
-- Whenever your internal policies allow, replicate platform and shared services to each region.
-- If possible, use VM SKUs that offer accelerated networking.
+- Replicate platform and shared services to each region whenever your internal policies allow you to.
+- Use VM SKUs that offer accelerated networking if possible.
 - Include end-user latency estimations in your region selection process.
-- When you estimate bandwidth requirements, take workload types into account, and monitor real-user connections.
+- Take workload types into account when you estimate bandwidth requirements, and monitor real-user connections.
 
 ## Network security
 
@@ -116,20 +97,16 @@ Traditionally, network security has been the linchpin of enterprise security eff
 
 For general information about protecting assets by placing controls on network traffic, see [Network security](/azure/well-architected/security/design-network).
 
-##### Assessment question
-
-What measures have you implemented to improve network security?
-
 ##### Recommendations
 
 - Understand the configurations that are needed to use Azure Firewall in your deployment. For more information, see [Use Azure Firewall to protect Azure Virtual Desktop deployments](/azure/firewall/protect-azure-virtual-desktop).
 - Create network security groups and application security groups to segment your Azure Virtual Desktop traffic. This practice helps you isolate your subnets by controlling their traffic flows.
 - Use [service tags](/azure/virtual-network/service-tags-overview) instead of specific IP addresses for Azure services. Because addresses change, this approach minimizes the complexity of frequently updating network security rules.
 - Familiarize yourself with the [required URLs for Azure Virtual Desktop](/azure/virtual-desktop/safe-url-list).
-- If you use forced tunneling to route traffic to a firewall or network virtual appliance (NVA), use a route table to allow Azure Virtual Desktop traffic to bypass the forced tunneling rule. Otherwise, forced tunneling can affect the performance and reliability of your clients' connectivity.
+- Use a route table to allow Azure Virtual Desktop traffic to bypass any forced tunneling rules that you use to route traffic to a firewall or network virtual appliance (NVA). Otherwise, forced tunneling can affect the performance and reliability of your clients' connectivity.
 - Use private endpoints to help protect platform as a service (PaaS) solutions like Azure Files and Azure Key Vault. But consider the cost of using private endpoints.
 - Adjust the configuration options for Azure Private Link. When you use this service with Azure Virtual Desktop, you can disable the public endpoints for Azure Virtual Desktop control plane components and use private endpoints to avoid using public IP addresses.
-- If you use Active Directory Domain Services (AD DS), implement strict firewall policies. Base those policies on the traffic that's required across your domain.
+- Implement strict firewall policies if you use Active Directory Domain Services (AD DS). Base those policies on the traffic that's required across your domain.
 - Consider using Azure Firewall or NVA web filtering to help protect your end users' access to the internet from Azure Virtual Desktop session hosts.
 
 ## Private endpoints (Private Link)
@@ -146,10 +123,6 @@ You can use Azure Virtual Desktop private endpoints to support the following sce
 Azure Virtual Desktop session hosts have the same name resolution requirements as any other infrastructure as a service (IaaS) workloads. As a result, the session hosts require connectivity to name resolution services that are configured to resolve private endpoint IP addresses. Consequently, when you use private endpoints, you need to configure specific DNS settings. For detailed information, see [Azure private endpoint DNS configuration](/azure/private-link/private-endpoint-dns).
 
 Private Link is also available for other Azure services that work in conjunction with Azure Virtual Desktop, such as Azure Files and Key Vault. We recommend that you also implement private endpoints for these services to keep the traffic private.
-
-##### Assessment question
-
-Are you familiar with Azure Virtual Desktop name resolution requirements?
 
 ##### Recommendations
 
@@ -169,19 +142,15 @@ RDP Shortpath is a feature of Azure Virtual Desktop that's available for managed
 
 With transport that's based on Transmission Control Protocol (TCP), the outbound traffic from a VM to an RDP client flows through an Azure Virtual Desktop gateway. With RDP Shortpath, the outbound traffic flows directly between the session host and the RDP client over the internet. This configuration helps eliminate a hop and improve latency and the end-user experience.
 
-##### Assessment question
-
-Do you use RDP Shortpath to establish a UDP-based connection between your clients and session hosts?
-
 ##### Recommendations
 
-- To help improve latency and your end-user experience, use RDP Shortpath.
+- Use RDP Shortpath to help improve latency and your end-user experience.
 - Be aware of the availability of RDP Shortpath connection models.
 - Be aware of RDP Shortpath charges.
 
 ## Next steps
 
-Now that you've examined networking in Azure Virtual Desktop, investigate best practices for monitoring your infrastructure and workload.
+Now that you've examined networking and connectivity in Azure Virtual Desktop, investigate best practices for monitoring your infrastructure and workload.
 
 > [!div class="nextstepaction"]
 > [Monitoring](./monitoring.md)

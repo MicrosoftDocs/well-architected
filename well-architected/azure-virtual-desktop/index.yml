@@ -37,13 +37,13 @@ landingContent:
         links:
           - text: Application delivery
             url: application-delivery.md
-          - text: Networking
+          - text: Networking and connectivity
             url: networking.md
           - text: Monitoring
             url: monitoring.md
-          - text: Security
+          - text: Security and identity and access management (IAM)
             url: security.md
-          - text: Operations
+          - text: Operational procedures
             url: operations.md
           - text: Business continuity
             url: business-continuity.md

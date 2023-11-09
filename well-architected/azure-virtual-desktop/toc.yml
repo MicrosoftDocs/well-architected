@@ -1,0 +1,27 @@
+- name: Azure Virtual Desktop
+  href: index.yml
+  items:
+    - name: Get started
+      href: overview.md
+    - name: Design principles
+      href: design-principles.md
+    - name: Design areas
+      items:
+      - name: Application delivery
+        href: application-delivery.md
+      - name: Networking and connectivity
+        href: networking.md
+      - name: Monitoring
+        href: monitoring.md
+      - name: Security and identity and access management (IAM)
+        href: security.md
+      - name: Operational procedures
+        href: operations.md
+      - name: Business continuity
+        href: business-continuity.md
+      - name: Storage
+        href: storage.md
+    - name: Azure landing zone integration
+      href: landing-zone-integration.md
+    - name: Assessment
+      href: assessment.md

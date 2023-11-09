@@ -3,7 +3,7 @@ title: Azure Virtual Desktop assessment
 description: See how to use the Azure Virtual Desktop assessment to gauge how well your workload aligns with best practices for the Azure Well-Architected Framework pillars.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 09/15/2023
+ms.date: 10/12/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-avd
@@ -17,11 +17,11 @@ For best results, the team that completes the assessment should be well versed i
 
 The assessment is a set of questions that are based on the [Azure Virtual Desktop design areas](../azure-vmware/design-principles.md) as a way of checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
 
-:::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the Virtual Desktop assessment. A few answers are selected. On the left, an outline of the assessment is visible.":::
+:::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the Azure Virtual Desktop assessment. A few answers are selected. On the left, an outline of the assessment is visible.":::
 
-These questions are designed to help benchmark your workload's maturity and alignment with the recommended approach for operating a Virtual Desktop workload. The outcome of the assessment is the delivery of technical recommendations and documentation that provide guidance on how to implement a highly reliable solution on Azure.
+These questions are designed to help benchmark your workload's maturity and alignment with the recommended approach for operating an Azure Virtual Desktop workload. The outcome of the assessment is the delivery of technical recommendations and documentation that provide guidance on how to implement a highly reliable solution on Azure.
 
-:::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot of the guidance page of the Virtual Desktop assessment. Recommended actions are visible.":::
+:::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot of the guidance page of the Azure Virtual Desktop assessment. Recommended actions are visible.":::
 
 > [!div class="nextstepaction"]
 > [Azure Virtual Desktop assessment tool](/assessments/1ef67c4e-b8d1-4193-b850-d192089ae33d)
