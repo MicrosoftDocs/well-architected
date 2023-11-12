@@ -3,7 +3,7 @@ title: Recommendations for using availability zones and regions
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 09/28/2023
+ms.date: 11/13/2023
 ms.topic: conceptual
 ---
 
@@ -23,7 +23,7 @@ When you design a solution for Azure, you need to decide whether you'll deploy a
 Your choice of how you use regions and availability zones affects several of the pillars of the Well-Architected Framework:
 
 - **Reliability**: Your choice of deployment approach can help you to mitigate various types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
-- **Cost Optimization**: Some architectural approaches require deploying more resources than others, which can increase your resource costs. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
+- **Cost Optimization**: Some architectural approaches require deploying more resources than others, which can increase your resource costs. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have comprehensive business requirements.
 - **Performance Efficiency**: Most workloads aren't highly sensitive to network latency, but occasionally they can be. If latency is an issue, you need to physically locate the components close together to minimize latency when they communicate, which typically means deploying them into a single availability zone. 
 - **Operational Excellence**: A complex architecture takes more effort to deploy, configure, and manage. Additionally, for a highly available solution, you might need to plan how to fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required.
 
@@ -72,7 +72,7 @@ There are two ways to use availability zones in a solution:
 
 Azure services support one or both of these approaches. Platform as a service (PaaS) services typically support zone-redundant deployments. Infrastructure as a service (IaaS) services typically support zonal deployments. For more information about how Azure services work with availability zones, see [Azure services with availability zone support][azure-services-with-availability-zone-support].
 
-Microsoft aims to deploy updates to Azure services to a single availability zone at a time. This approach reduces the impact that updates might have on an active workload, because the workload can continue to run in other zones while the update is in process. For more information about how Azure deploys updates, see [Advancing safe deployment practices](https://azure.microsoft.com/blog/advancing-safe-deployment-practices/).
+When Microsoft deploys updates to services, we try to use approaches that are the least disruptive to you. For example, we aim to deploy updates to a single availability zone at a time. This approach can reduce the impact that updates might have on an active workload, because the workload can continue to run in other zones while the update is in process.  However, it’s the workload team’s responsibility to ensure their workload continues to function during platform upgrades. For example, you might consider *overprovisioning* - deploying more instances of a resource - so that some instances remain available while other instances are upgraded. For more information about how Azure deploys updates, see [Advancing safe deployment practices](https://azure.microsoft.com/blog/advancing-safe-deployment-practices/).
 
 Many regions also have a [*paired region*][azure-region-pairs]. Paired regions support certain types of multi-region deployment approaches. Some newer regions have [multiple availability zones and don't have a paired region][regions-with-availability-zones-and-no-region-pair]. You can still deploy multi-region solutions into these regions, but the approaches you use might be different.
 
@@ -84,7 +84,7 @@ The [shared responsibility principle](/azure/security/fundamentals/shared-respon
 
 Microsoft provides availability zones and regions to give you flexibility in how you design your solution to meet your requirements. When you use managed services, Microsoft takes on more of the management responsibilities for your resources, which might even include data replication, failover, failback, and other tasks related to operating a distributed system.
 
-Regardless of the approach you use, your own code needs to follow [recommended practices for handling transient failures](handle-transient-faults.md). These practices are even more important in a multi-zone or multi-region solution, because failover between zones or regions usually requires that your application retry connections to services.
+Your own code needs to [recommended practices and design patterns for handling failures gracefully](handle-transient-faults.md). These practices are even more important during failover operations, such as those that happen when an availability zone or region failover occurs, because failover between zones or regions usually requires that your application retry connections to services.
 
 ### Identify key business and workload requirements
 
@@ -138,7 +138,7 @@ If you operate under a constrained budget, it's important to consider the costs 
 
 ##### Complexity
 
-It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it becomes to make decisions about your architecture. Complex architectures are harder to operate, harder to secure, and often less performant.
+It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it becomes to make decisions about your architecture. Complex architectures are harder to operate, harder to secure, and often less performant.  Follow the [principle of simplicity](principles.md##keep-it-simple).
 
 ## Azure facilitation
 
@@ -263,7 +263,7 @@ This approach is typically used for workloads that are based on virtual machines
 When you plan a zonal deployment, verify that the Azure services you use are supported in the availability zones you plan to use. For example, to list which virtual machine SKUs are available in each availability zone, see [Check VM SKU availability](/azure/virtual-machines/linux/create-cli-availability-zone#check-vm-sku-availability).
 
 > [!TIP]
-> When you deploy a resource into a specific availability zone, you select the zone number. The sequence of zone numbers is different for each Azure subscription. If you deploy resources across multiple Azure subscriptions, verify the zone numbers that you should use in each subscription. For more information, see [What are Azure regions and availability zones?][availability-zones-overview].
+> When you deploy a resource into a specific availability zone, you select the zone number. The sequence of zone numbers is different for each Azure subscription. If you deploy resources across multiple Azure subscriptions, verify the zone numbers that you should use in each subscription. For more information, see [Physical and logical availability zones][availability-zones-physical-logical].
 
 ### Deployment approach 3: Zone-redundant deployments
 
@@ -334,7 +334,7 @@ Multi-region architectures are complex, and there are many ways to design a mult
 
 #### Data replication
 
-Communicating across regions is much slower than communicating within a region. In general, a larger geographic distance between two regions incurs more network latency. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when you connect between two regions.
+Communicating across regions is much slower than communicating within a region. In general, a larger geographic distance between two regions incurs more network latency because of the longer physical distance that data needs to travel. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when you connect between two regions.
 
 Cross-region network latency can significantly affect your solution design because you need to carefully consider how the extra latency affects data replication and other transactions. For many solutions, a cross-region architecture requires *asynchronous* replication to minimize the effect of cross-region traffic on performance.
 
@@ -390,7 +390,7 @@ You can create a multi-region solution even when the regions aren't paired. Howe
 
 #### Combine multi-zone and multi-region approaches
 
-You can also combine multi-zone and multi-region approaches. For example, you might deploy zone-redundant components into each region and also configure replication between the regions. Configuring this type of approach can be complicated, and this approach can be expensive, but for some solutions it provides a very high degree of reliability.
+You should combine multi-zone and multi-region statements if your business requirements demand such a solution. For example, you might deploy zone-redundant components into each region and also configure replication between the regions. For some solutions, this approach provides a very high degree of reliability. However, configuring this type of approach can be complicated, and this approach can be expensive.
 
 > [!IMPORTANT]
 > Mission-critical workloads should use both multiple availability zones *and* multiple regions. For more information about the considerations that you should give when designing mission-critical workloads, see [Mission-critical workload documentation](../mission-critical/index.yml).
@@ -476,6 +476,7 @@ Refer to the complete set of recommendations.
 <!-- Links -->
 
 [availability-zones-overview]: </azure/reliability/availability-zones-overview>
+[availability-zones-physical-logical]: </azure/reliability/availability-zones-overview#physical-and-logical-availability-zones>
 [azure-regions-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support>
 [azure-services-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support>
 [azure-region-pairs]: </azure/reliability/cross-region-replication-azure>
