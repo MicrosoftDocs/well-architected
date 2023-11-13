@@ -209,19 +209,21 @@ Test the partitioning scheme to verify the effectiveness and efficiency of the s
 
 ## Azure facilitation
 
-**Implement scaling.** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure's resources support automatic scaling or other in-place scale options. Some resources support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
+**Optimizing scaling.** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure's resources support automatic scaling or other in-place scale options. Some resources support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
 
 [Azure Monitor](/azure/azure-monitor/overview) allows you to monitor various metrics and conditions in your applications and infrastructure. You can use Monitor to trigger automated scaling actions based on predefined rules. For example, in Azure Kubernetes Service (AKS), you can use Monitor to enable horizontal pod automatic scaling (HPA) and cluster automatic scaling. Using Monitor's monitoring and alerting capabilities, you can effectively facilitate scaling in Azure and help ensure that your applications and infrastructure can dynamically adjust to meet demand.
 
-**Build custom automatic scaling.** You can use alerts in Monitor for resources that don't have an autoscale feature. These alerts can be set up to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, run history and logging, integrated secrets store, and source control integration.
+You can also build custom automatic scaling in Azure. You can use alerts in Monitor for resources that don't have an autoscale feature. These alerts can be set up to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, run history and logging, integrated secrets store, and source control integration.
 
-**Eliminate data locking.** In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strict consistency.
+**Designing application to scale**: Here are some ways Azure facilitates application scaling design;
 
-**Use background tasks.** Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
+- *Eliminating data locking*: In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strict consistency.
 
-**Implement load balancing.** Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
+- *Using background tasks*: Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
 
-**Implement partitioning.** Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see [Data partition strategies](/azure/architecture/best-practices/data-partitioning-strategies).
+- *Implementing load balancing*: Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
+
+**Partitioning a workload**: Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see [Data partition strategies](/azure/architecture/best-practices/data-partitioning-strategies).
 
 ## Related links
 
