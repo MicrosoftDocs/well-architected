@@ -122,7 +122,7 @@ Update the cost model whenever you change services. Use the cloud platform's cal
 
 ## Azure facilitation
 
-**Estimate workload costs and develop cost model.** The Azure [pricing overview](https://azure.microsoft.com/pricing/#product-pricing) provides pricing information for all Azure services. It shows a comprehensive view of the costs that are associated with different Azure services.
+**Estimating workload costs and developing a cost model**: The Azure [pricing overview](https://azure.microsoft.com/pricing/#product-pricing) provides pricing information for all Azure services. It shows a comprehensive view of the costs that are associated with different Azure services.
 
 The Azure [pricing calculator](https://azure.microsoft.com/pricing/calculator/) is a tool that allows you to estimate the hourly or monthly costs of your workload. Input the services that you plan to use to generate an estimate of the associated costs. This estimate helps you plan and budget for your Azure usage.
 
@@ -132,9 +132,9 @@ The [total cost of ownership (TCO) calculator](https://azure.microsoft.com/prici
 
 When you extend your existing investments in software licenses to the cloud, you save on costs. Instead of paying the full price for using the software on the cloud, you benefit from the discounted pricing that Azure Hybrid Benefit offers.
 
-**Set a budget.** Azure provides tools that allow you to [create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets). Budgets help you proactively inform others about their spending, manage costs, and monitor spending over time. You can set budget thresholds, receive alerts, and track expenses to ensure cost control and optimization.
+**Setting a budget**: Azure provides tools that allow you to [create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets). Budgets help you proactively inform others about their spending, manage costs, and monitor spending over time. You can set budget thresholds, receive alerts, and track expenses to ensure cost control and optimization.
 
-**Maintain cost model.** Azure automatically provides [cost forecasts](/azure/cost-management-billing/costs/quick-acm-cost-analysis#understand-your-forecast), which enable you to plan and budget for your Azure usage. These forecasts help you understand the projected costs based on your current usage patterns and allow you to make proactive decisions to optimize costs.
+**Maintaining a cost model**: Azure automatically provides [cost forecasts](/azure/cost-management-billing/costs/quick-acm-cost-analysis#understand-your-forecast), which enable you to plan and budget for your Azure usage. These forecasts help you understand the projected costs based on your current usage patterns and allow you to make proactive decisions to optimize costs.
 
 Azure allows you to use tag inheritance to [group and allocate costs](/azure/cost-management-billing/costs/enable-tag-inheritance). Tags are metadata that you can assign to Azure resources. With tag inheritance, you can track and manage costs for different teams or projects within your organization to help with cost allocation and analysis.
 

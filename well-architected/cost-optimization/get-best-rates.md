@@ -192,9 +192,9 @@ Optimizing licensing costs means using various licensing programs and options to
 
 ## Azure facilitation
 
-**Microsoft Cost Management:** Azure provides tools and features for managing and optimizing costs, such as Microsoft Cost Management. These tools allow you to track and analyze your cloud spending, set budgets, get cost alerts, and access detailed cost reports.
+**Microsoft Cost Management**: Azure provides tools and features for managing and optimizing costs, such as Microsoft Cost Management. These tools allow you to track and analyze your cloud spending, set budgets, get cost alerts, and access detailed cost reports.
 
-**Azure reservations and Azure savings plans:** Reservations and savings plans allow you to commit to using specific resources for a term and get significant discounts on Azure services. Here are the details:
+**Azure reservations and Azure savings plans**: Reservations and savings plans allow you to commit to using specific resources for a term and get significant discounts on Azure services. Here are the details:
 
 - [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) help you save money by committing to one-year or three-year plans for multiple products. Committing allows you to get a discount on the resources that you use.
 
@@ -210,15 +210,15 @@ Optimizing licensing costs means using various licensing programs and options to
 
 **Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Microsoft Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
 
-**Azure dev/test:** [Azure dev/test](/azure/devtest/offer/overview-what-is-devtest-offer-visual-studio) is an offer that comes with Visual Studio subscription benefits. With this offer, you get some Azure monthly credits to try various Azure services at no cost. Credit amounts vary by subscription level. You can also benefit from discounted Azure dev/test rates for various Azure services, which enable cost-efficient development and testing.
+**Azure dev/test**: [Azure dev/test](/azure/devtest/offer/overview-what-is-devtest-offer-visual-studio) is an offer that comes with Visual Studio subscription benefits. With this offer, you get some Azure monthly credits to try various Azure services at no cost. Credit amounts vary by subscription level. You can also benefit from discounted Azure dev/test rates for various Azure services, which enable cost-efficient development and testing.
 
-**Azure services:** Many Azure services offer both consumption and commitment-based billing models. You can switch to better align to your usage, potentially without sacrificing functionality.
+**Azure services**: Many Azure services offer both consumption and commitment-based billing models. You can switch to better align to your usage, potentially without sacrificing functionality.
 
-**Azure Hybrid Benefit:** With [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), you can reduce the overall cost of ownership by using your existing on-premises licenses to cover the cost of running resources in Azure. This benefit applies to both Windows and Linux virtual machines, along with SQL Server workloads. To take advantage of Azure Hybrid Benefit, you need to ensure that your licenses are eligible and meet the requirements.
+**Azure Hybrid Benefit**: With [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), you can reduce the overall cost of ownership by using your existing on-premises licenses to cover the cost of running resources in Azure. This benefit applies to both Windows and Linux virtual machines, along with SQL Server workloads. To take advantage of Azure Hybrid Benefit, you need to ensure that your licenses are eligible and meet the requirements.
 
-**License Mobility:** Azure supports [License Mobility](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility). You can bring your own licenses for certain software products and apply them to Azure resources. This ability can help reduce licensing costs and simplify license management.
+**License Mobility**: Azure supports [License Mobility](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility). You can bring your own licenses for certain software products and apply them to Azure resources. This ability can help reduce licensing costs and simplify license management.
 
-**Licensing agreements:** Microsoft offers commitment-based and transactional licensing options for organizations that want to purchase Microsoft cloud services subscriptions, on-premises software licenses, or [Software Assurance](https://www.microsoft.com/Licensing/licensing-programs/software-assurance-default). Use these offers for your workload as applicable. Microsoft offers various volume licensing programs and agreements based on your workload's needs, including:
+**Licensing agreements**: Microsoft offers commitment-based and transactional licensing options for organizations that want to purchase Microsoft cloud services subscriptions, on-premises software licenses, or [Software Assurance](https://www.microsoft.com/Licensing/licensing-programs/software-assurance-default). Use these offers for your workload as applicable. Microsoft offers various volume licensing programs and agreements based on your workload's needs, including:
 
 - [Microsoft Enterprise Agreement](https://www.microsoft.com/licensing/licensing-programs/enterprise)
 - [Microsoft Customer Agreement](https://www.microsoft.com/Licensing/how-to-buy/microsoft-customer-agreement)
@@ -227,7 +227,7 @@ Optimizing licensing costs means using various licensing programs and options to
 
 For more information, see the [Microsoft licensing resources](https://www.microsoft.com/licensing/default).
 
-**Azure spot instances:** Azure spot instances provide access to unused Azure compute capacity at discounted prices. By using spot instances, you can save money on workloads that are flexible and can handle interruptions.
+**Azure spot instances**: Azure spot instances provide access to unused Azure compute capacity at discounted prices. By using spot instances, you can save money on workloads that are flexible and can handle interruptions.
 
 ## Related links
 

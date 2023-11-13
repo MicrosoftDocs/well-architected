@@ -84,15 +84,15 @@ Communicating financial expectations to a workload team involves conveying finan
 
 ## Azure facilitation
 
-**Make budgets and costs transparent.** For your Azure related budgets and costs, you can [create and management budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) and provide read access to make these details available to the broader team. You can also create daily reports and [export cost data](/azure/cost-management-billing/costs/tutorial-export-acm-data?tabs=azure-portal) to make cost data accessible to stakeholders.
+**Making budgets and costs transparent**: For your Azure related budgets and costs, you can [create and management budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) and provide read access to make these details available to the broader team. You can also create daily reports and [export cost data](/azure/cost-management-billing/costs/tutorial-export-acm-data?tabs=azure-portal) to make cost data accessible to stakeholders.
 
-**Encourage continuous improvement.** Azure regularly updates its services and introduces new features to improve efficiency and cost optimization. You can benefit from the latest advancements in cloud technology and take advantage of automation, advanced deployment strategies, and infrastructure as code (IaaS) practices.
+**Encouraging continuous improvement**: Azure regularly updates its services and introduces new features to improve efficiency and cost optimization. You can benefit from the latest advancements in cloud technology and take advantage of automation, advanced deployment strategies, and infrastructure as code (IaaS) practices.
 
 Azure offers [Visual Studio subscriptions](https://visualstudio.microsoft.com/vs/pricing-details/) with credits to try new features and learn new skills. Azure also provides role-based access control (RBAC), which allows read access to billing data through Microsoft Entra Privileged Identity Management.
 
 Azure has a partner ecosystem that includes [training partners](https://azure.microsoft.com/partners/) who can provide expertise and guidance. Organizational leaders can talk to Microsoft and engage Cloud Solution Architects to get help and guidance in creating a culture of financial responsibility.
 
-**Develop skills in-house.** Azure provides a wide range of [learning resources](https://learn.microsoft.com/). These resources include documentation, video series, training modules, tutorials, and learning paths. These resources help personnel enhance their skills and knowledge. Azure also offers certifications that validate expertise in Azure services and technologies.
+**Developing skills in-house**: Azure provides a wide range of [learning resources](https://learn.microsoft.com/). These resources include documentation, video series, training modules, tutorials, and learning paths. These resources help personnel enhance their skills and knowledge. Azure also offers certifications that validate expertise in Azure services and technologies.
 
 Microsoft offers the [Cloud Skills Challenge](https://developer.microsoft.com/offers/30-days-to-learn-it), which allows individuals to test and improve their Azure skills. It's a fun, free, and interactive skilling program that gives you access to Microsoft skilling resources for your specific solution area. Gain access to Microsoft learning paths, virtual training days, and a virtual leaderboard to compete with peers in the industry.
 

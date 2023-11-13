@@ -195,13 +195,13 @@ Here are a few use cases:
 
 ## Azure facilitation
 
-**Data inventory:** [Microsoft Purview](/purview/purview) is a family of data governance, risk, and compliance solutions that can help your organization govern, protect, and manage your entire data estate. Microsoft Purview solutions provide integrated coverage and help address the recent increases in remote user connectivity, the fragmentation of data across organizations, and the blurring of traditional IT management roles.
+**Taking an inventory of data**: [Microsoft Purview](/purview/purview) is a family of data governance, risk, and compliance solutions that can help your organization govern, protect, and manage your entire data estate. Microsoft Purview solutions provide integrated coverage and help address the recent increases in remote user connectivity, the fragmentation of data across organizations, and the blurring of traditional IT management roles.
 
-**Data lifecycle management:** Azure Storage and Azure Data Lake Storage have different [data access tiers](/azure/storage/blobs/access-tiers-overview). They also offer [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention.
+**Optimizing data management**: Azure Storage and Azure Data Lake Storage have different [data access tiers](/azure/storage/blobs/access-tiers-overview). They also offer [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention.
 
 You can use a rule-based policy to transition blob data to the appropriate access tiers or to expire data at the end of its lifecycle. This policy allows you to transition blobs from cool (or cold) to hot immediately when they're accessed, to optimize for performance.
 
-**Backups:** The Azure Backup service provides multiple capabilities to streamline your backups. It offers features such as native database backup and storage backup through disk snapshots. It supports virtual machine backup, long-term retention, and backup management.
+**Optimizing backups**: The [Azure Backup](/azure/backup/backup-overview) service provides multiple capabilities to streamline your backups. It offers features such as native database backup and storage backup through disk snapshots. It supports virtual machine backup, long-term retention, and backup management.
 
 Here are some of the service's features:
 
@@ -217,7 +217,7 @@ Here are some of the service's features:
 
 - *Archive tier*: You can use Azure Backup to store backup data, including long-term retention (LTR) backup data, according to the retention needs that your organization's compliance rules define. In most cases, the older backup data is rarely accessed and is stored only for compliance needs. Azure Backup supports the backup of LTR points in the [archive tier](/azure/backup/archive-tier-support), in addition to snapshots and the standard tier.
 
-**Storage solutions:** Azure has many storage solutions. They offer various features and capabilities to help optimize costs based on your specific requirements. Azure has guidance to help you [choose the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree).
+**Optimizing storage solutions**: Azure has many storage solutions. They offer various features and capabilities to help optimize costs based on your specific requirements. Azure has guidance to help you [choose the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree).
 
 To choose the most suitable storage solution and configuration, it's important to assess your data access patterns, retention needs, and performance requirements. Regularly monitoring and optimizing your storage usage by using tools like Azure Advisor can help you further optimize costs.
 
