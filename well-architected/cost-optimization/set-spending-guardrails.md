@@ -103,21 +103,19 @@ IaC strategies provide a structured and repeatable approach to managing and cont
 
 ## Azure facilitation
 
-**Governance policies.** Use [Azure Policy](/azure/governance/policy/overview) to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can regulate resource provisioning, usage limits, and cost allocation. Use policies to promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures.
+**Using governance policies**: Use [Azure Policy](/azure/governance/policy/overview) to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can regulate resource provisioning, usage limits, and cost allocation. Use policies to promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures.
 
 Azure allows you to set limits or quotas to prevent unexpected costs. You can define limits on the number of resources that can be provisioned, in addition to the size and duration of resource usage. Set these limits to help prevent overprovisioning and to control costs.
 
-**Identify underused or idle resources.** Use [Azure Advisor](/azure/advisor/advisor-cost-recommendations) to optimize and reduce your overall Azure costs by identifying idle and under-utilized resources. Receive cost recommendations from the *cost* section in the *advisor* dashboard.
+- *Identify underused or idle resources.* Use [Azure Advisor](/azure/advisor/advisor-cost-recommendations) to optimize and reduce your overall Azure costs by identifying idle and under-utilized resources. Receive cost recommendations from the *cost* section in the *advisor* dashboard.
 
-**Add resource metadata.** Use Azure governance to implement resource tagging and categorization. Tag resources using relevant metadata to track and allocate costs to different departments, projects, or cost centers. Visibility into cost attribution can help you identify areas of high spending, optimize resource allocation, and facilitate better cost management.
+- *Add resource metadata.* Use Azure governance to implement resource tagging and categorization. Tag resources using relevant metadata to track and allocate costs to different departments, projects, or cost centers. Visibility into cost attribution can help you identify areas of high spending, optimize resource allocation, and facilitate better cost management.
 
-**Cost management.** Use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to optimize costs and enforce spending guardrails. You can use cost management features to set budgets and alerts, visualize cost information by using tools like Power BI, and analyze cost patterns and performance bottlenecks.
+**Configuring access controls**: Use Azure RBAC to manage access to resources. You can use RBAC to grant permissions to users, groups, or applications based on their roles. Implement RBAC to help ensure that only authorized users have access to resources, reducing the risk of unauthorized resource usage and potential cost implications.
 
-**Create release gates.** Use [Azure Pipelines](/azure/devops/pipelines/release/approvals/) release management to define and enforce your release gates. You can set up manual or automated checkpoints to help ensure that you meet specific criteria, such as security checks, compliance requirements, and cost thresholds.
+**Using release gates**: Use [Azure Pipelines](/azure/devops/pipelines/release/approvals/) release management to define and enforce your release gates. You can set up manual or automated checkpoints to help ensure that you meet specific criteria, such as security checks, compliance requirements, and cost thresholds.
 
-**Set access controls.** Use Azure RBAC to manage access to resources. You can use RBAC to grant permissions to users, groups, or applications based on their roles. Implement RBAC to help ensure that only authorized users have access to resources, reducing the risk of unauthorized resource usage and potential cost implications.
-
-**Implement infrastructure as code.** You can use Azure tools and services to deploy and manage infrastructure resources by using code. By using tools like Azure Resource Manager (ARM) templates, Azure Bicep, and Azure DevOps, you can define and deploy your infrastructure resources in a declarative manner. Azure has [Bicep, ARM, and Terraform templates](/azure/templates/) for every Azure resource.
+**Using infrastructure as code.** You can use Azure tools and services to deploy and manage infrastructure resources by using code. By using tools like Azure Resource Manager (ARM) templates, Azure Bicep, and Azure DevOps, you can define and deploy your infrastructure resources in a declarative manner. Azure has [Bicep, ARM, and Terraform templates](/azure/templates/) for every Azure resource.
 
 Use [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) or other continuous integration and continuous delivery (CI/CD) tools to  automate the build, test, and deployment processes. Teams can use pipelines to define a series of steps and actions that run automatically whenever changes are made to the codebase. Automate these processes to reduce manual effort, ensure consistency, and accelerate the delivery of software..
 
@@ -128,6 +126,8 @@ Git repositories, such as [Azure Repos](/azure/devops/repos/get-started/what-is-
 [Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) empowers development teams to quickly and easily create app infrastructure by using project-based templates that establish consistency and best practices while maximizing security. On-demand access to secure environments accelerates the stages of the software development lifecycle in a compliant and cost-efficient way.
 
 The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) is an open-source tool that accelerates the time it takes for you to get your application from a local development environment to Azure. The Azure Developer CLI offers developer-friendly commands that map to key stages in your workflow, whether you're working in the terminal, an integrated development environment (IDE), or CI/CD.
+
+**Configuring cost alerts**: Use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to optimize costs and enforce spending guardrails. You can use cost management features to set budgets and alerts, visualize cost information by using tools like Power BI, and analyze cost patterns and performance bottlenecks.
 
 ## Organizational alignment
 
