@@ -111,7 +111,7 @@ Removing technical debt is essential for maintaining a healthy and efficient cod
 Removing technical debt is an ongoing process. It requires a proactive approach and continuous effort from the development team. By setting and adhering to specific standards in the codebase and implementing mechanisms like quality gates, you can effectively address technical debt and create a cleaner, more maintainable codebase:
 
 - *Set coding standards*: Establish clear and specific coding standards that define the desired structure, style, and best practices for your codebase. These standards should cover areas like naming conventions, code formatting, documentation, and error handling. By adhering to these standards, you ensure consistency and readability throughout the codebase.
- 
+
 - *Implement quality gates*: Quality gates are mechanisms that enforce the defined coding standards and catch potential issues early in the development process. They can include automated code reviews, static code analysis tools, and continuous integration pipelines. By integrating quality gates into your development workflow, you can identify and address code quality issues before they become technical debt.
 
 ### Optimize personnel collaboration
@@ -182,9 +182,9 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 ## Azure facilitation
 
-**Defining success metrics.** [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features like work item tracking, dashboards, reporting capabilities, source code management, continuous integration, continuous delivery, and project management. By using Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
+**Setting optimization targets**: [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features like work item tracking, dashboards, reporting capabilities, source code management, continuous integration, continuous delivery, and project management. By using Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
 
-**Optimizing development.** Azure provides various tools and features to optimize developer time, including:
+**Optimizing development time**: Azure provides various tools and features to optimize developer time, including:
 
 - *Development environments*: Azure offers development environments in multiple forms, like Microsoft Dev Box, which provides Windows and Linux VMs on which developer tools are installed. Microsoft also provides Docker VMs for containerized development and Azure Container Registry, which enables Docker builds.
 
@@ -202,13 +202,13 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 These features and tools provided by Azure help developers save time and increase productivity in their development workflows.
 
-**Optimizing operations.** Azure supports infrastructure as code (IaC) capabilities, which enable you to define and manage your infrastructure by using code. Doing so helps reduce complexity and improves the adaptability of your systems.
+**Optimizing operational tasks**: Azure supports infrastructure as code (IaC) capabilities, which enable you to define and manage your infrastructure by using code. Doing so helps reduce complexity and improves the adaptability of your systems.
 
 Azure Monitor is a comprehensive monitoring service that provides visibility into the performance and health of applications and infrastructure on Azure. You can use it to collect telemetry, set up alerts, and gain real-time insights. By using Azure Monitor, you can proactively identify and resolve issues, which enables you to reduce the time you spend on troubleshooting.
 
 [Azure Automation](/azure/automation/) provides a way to automate manual, repetitive tasks on Azure. You can use it to create and manage runbooks, which are sets of instructions for performing specific tasks. By automating routine tasks, you can save time and free up personnel to focus on more critical activities.
 
-**Optimizing personnel skills.** Microsoft provides a comprehensive suite of [training](/training/) materials and activities. Training is available for developers, architects, and business stakeholders.
+**Optimizing personnel skills**: Microsoft provides a comprehensive suite of [training](/training/) materials and activities. Training is available for developers, architects, and business stakeholders.
 
 ## Related links
 
