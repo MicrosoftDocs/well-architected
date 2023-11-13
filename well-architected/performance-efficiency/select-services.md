@@ -86,7 +86,7 @@ Assess your network needs to determine the appropriate workload services and con
 
 - *Understand network traffic.* Assess the expected network traffic for the workload. Understand the data transfer needs and the frequency of network requests.
 
-- *Understand bandwidth requirements.* Determine the bandwidth requirements for the workload. Consider the amount of data that's transmitted and received over the network.
+- *Understand bandwidth requirements.* Determine the bandwidth requirements for the workload. Consider the amount of data transmitted and received over the network.
 
 - *Understand network Latency.* Evaluate the desired latency for the workload. Use private virtual networks and backbone networks instead of traversing the public internet. This technique decreases the latency of the workload.
 
@@ -137,7 +137,7 @@ Evaluating data store requirements is about assessing the specific needs and con
 
 The database can affect factors such as data storage and retrieval, transaction processing, consistency guarantees, and handling of large or rapidly changing data. Assess the needs and criteria for your database. Select a database system that can meet those requirements. Evaluate the database requirements before you choose a database. To evaluate the database requirements and choose the appropriate database, follow these steps:
 
-- *Identify the workload needs.* Understand the specific requirements of your workload, such as data volume, expected transaction rates, concurrency, data types, and expected growth. Evaluate different database systems based on your workload needs. For example, if your workload requires high-performance real-time data processing, you might choose a database system that's optimized for fast data ingestion and low latency.
+- *Identify the workload needs.* Understand the specific requirements of your workload, such as data volume, expected transaction rates, concurrency, data types, and expected growth. Evaluate different database systems based on your workload needs. For example, if your workload requires high-performance real-time data processing, you might choose a database system optimized for fast data ingestion and low latency.
 
 - *Consider the data model.* Determine the data model that best suits your workload. Evaluate the database requirements to ensure that the chosen database supports the required data structures, relationships, and integrity constraints. For example, if your data has a highly relational structure, you might opt for a relational database management system (RDBMS) that provides robust support for transactions and referential integrity. The data model might be hierarchical, network, relational, object-oriented, or NoSQL. Assess the complexity of your data model. Ensure that the chosen database supports the required data structures and relationships.
 
