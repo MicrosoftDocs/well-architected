@@ -49,9 +49,9 @@ Common types of services that you can consolidate include application platforms,
 
 **Assess the workload resources.** Assess the existing workload and its resource utilization. Analyze factors such as CPU usage, memory usage, storage capacity, and network bandwidth. Identify areas in which consolidation might be beneficial. Consolidation might involve optimizing resource allocation, eliminating redundant or underutilized resources, or reconfiguring the workload to run more efficiently. Consider factors such as workload dependencies, performance requirements, and scalability.
 
-**Identify a consolidation target.** Choose a resource to consolidate. It can be an existing resource or a new resource that's created within the workload. Identify existing resources that you might use for consolidation. For example, you might have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to consolidate a new resource, consider creating a new resource.
+**Identify a consolidation target.** Choose a resource to consolidate. It can be an existing resource or a new resource created within the workload. Identify existing resources that you might use for consolidation. For example, you might have servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to consolidate a new resource, consider creating a new resource.
 
-**Evaluate the consolidation viability.** Ensure that functional and technical requirements, such as CPU, memory, and growth, support consolidation. Avoid compromising requirements like performance, reliability, and security. For example, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
+**Evaluate the consolidation viability.** Ensure functional and technical requirements, such as CPU, memory, and growth, support consolidation. Avoid compromising requirements like performance, reliability, and security. For example, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
 
 **Estimate the cost.** Determine the effort and potential complications of consolidation. You should calculate costs, including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
 
@@ -79,9 +79,9 @@ External centralized resources refer to shared resources outside the workload en
 
 - *Assess the workload resources*. Evaluate the current state of the workload, and identify areas in which consolidation might be beneficial.
 
-- *Find external opportunities*. Survey your organization for pre-existing centralized resources. These resources might be potential solutions for your workload. For example, instead of setting up an independent security information and event management (SIEM) tool, you can use a shared SIEM.
+- *Find external opportunities*. Survey your organization for pre-existing centralized resources. These resources might be potential solutions for your workload. For example, you can use a shared security information and event management (SIEM) instead of setting up an independent SIEM tool.
 
-- *Consider change control*. Understand the process of managing changes to the centralized resource. Consider the approval workflow, testing protocols, and deployment methods. Analyze potential challenges if you have reduced control of resource modifications.
+- *Consider change control*. Understand the process of managing changes to the centralized resource. Consider the approval workflow, testing protocols, and deployment methods. Analyze potential challenges if you reduced control of resource modifications.
 
 - *Estimate the cost*. Before you implement centralized resources, clearly quantify the expected savings against the costs that are associated with a transition. Weigh the cost-saving benefits against risks to make an informed decision.
 
@@ -93,9 +93,9 @@ External centralized resources refer to shared resources outside the workload en
 
 #### Offload responsibilities to external teams
 
-Offloading workload responsibilities to external teams refers to using expert centralized teams, such as a security operations team, that perform specialized services. You can offload responsibilities to existing teams to help optimize costs and delegate expertise for specific functions.
+Offloading workload responsibilities to external teams refers to using expert centralized teams that perform specialized services such as a security operations team. You can offload responsibilities to existing teams to help optimize costs and delegate expertise for specific functions.
 
-- *Evaluate team skills*. Assess the current skill set of your team. Identify skill gaps or areas in which delegating tasks to a centralized team optimizes costs.
+- *Evaluate team skills*. Assess the current skill set of your team. Identify skill gaps or areas in which a centralized team optimizes costs.
 
 - *Find available opportunities*. Explore your organization for available services, such as the services of a security operations team. Ensure that the centralized team can accommodate the added responsibilities without compromising quality.
 
