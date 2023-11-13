@@ -92,7 +92,7 @@ Azure offers [Visual Studio subscriptions](https://visualstudio.microsoft.com/vs
 
 Azure has a partner ecosystem that includes [training partners](https://azure.microsoft.com/partners/) who can provide expertise and guidance. Organizational leaders can talk to Microsoft and engage Cloud Solution Architects to get help and guidance in creating a culture of financial responsibility.
 
-**Developing skills in-house**: Azure provides a wide range of [learning resources](https://learn.microsoft.com/). These resources include documentation, video series, training modules, tutorials, and learning paths. These resources help personnel enhance their skills and knowledge. Azure also offers certifications that validate expertise in Azure services and technologies.
+**Developing skills in-house**: Azure provides a wide range of learning resources. These resources include documentation, video series, training modules, tutorials, and learning paths. These resources help personnel enhance their skills and knowledge. Azure also offers certifications that validate expertise in Azure services and technologies.
 
 Microsoft offers the [Cloud Skills Challenge](https://developer.microsoft.com/offers/30-days-to-learn-it), which allows individuals to test and improve their Azure skills. It's a fun, free, and interactive skilling program that gives you access to Microsoft skilling resources for your specific solution area. Gain access to Microsoft learning paths, virtual training days, and a virtual leaderboard to compete with peers in the industry.
 
