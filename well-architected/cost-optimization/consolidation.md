@@ -107,7 +107,7 @@ Offloading workload responsibilities to external teams refers to using expert ce
 
 ## Azure facilitation
 
-**Density support:** Many Azure services support increased resource density. The following table shows a sampling of these services.
+**Density support**: Many Azure services support increased resource density. The following table shows a sampling of these services.
 
 |Azure service|Segmentation control|
 | --- | --- |
