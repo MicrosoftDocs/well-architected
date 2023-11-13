@@ -24,7 +24,7 @@ Your choice of how you use regions and availability zones affects several of the
 
 - **Reliability**: Your choice of deployment approach can help you to mitigate various types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
 - **Cost Optimization**: Some architectural approaches require deploying more resources than others, which can increase your resource costs. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have comprehensive business requirements.
-- **Performance Efficiency**: Most workloads aren't highly sensitive to network latency, but occasionally they can be. If latency is an issue, you need to physically locate the components close together to minimize latency when they communicate, which typically means deploying them into a single availability zone. 
+- **Performance Efficiency**: Availability zones are connected together through a high-bandwidth, low-latency network link, which is sufficient for most workloads to enable synchronous replication and communication across the zones. However, if your workload has been tested and is sensitive to network latency across zones, you might need to consider physically locating your workload's components close together to minimize latency when they communicate.
 - **Operational Excellence**: A complex architecture takes more effort to deploy, configure, and manage. Additionally, for a highly available solution, you might need to plan how to fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required.
 
 However you design your solution, the Security pillar applies. Usually, decisions about whether and how you use availability zones and regions doesn't change your security posture. Azure applies the same security rigor to every region and availability zone.
@@ -111,13 +111,13 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 
 It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](identify-flows.md). 
 
-##### Service-level agreements
+##### Service-level objectives
 
-You should understand your solution's expected uptime service-level agreement (SLA). For example, you might have a business requirement that your solution needs to meet 99.9% uptime.
+You should understand your solution's expected uptime service-level objective (SLO). For example, you might have a business requirement that your solution needs to meet 99.9% uptime.
 
-Azure provides SLAs for each service. An SLA indicates the level of uptime you should expect from the service and the conditions you need to meet to achieve that expected SLA.
+Azure provides service level agreements (SLAs) for each service. An SLA indicates the level of uptime you should expect from the service and the conditions you need to meet to achieve that expected SLA. However, remember that the way that an Azure SLA indicates the service's availability doesn't always match the way you consider the health of your workload.
 
-Your architectural decisions affect your solution's [composite SLA][composite-slas]. In general, the more redundancy you build into your solution, the higher your SLA is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
+Your architectural decisions affect your solution's [composite SLO][composite-slos]. In general, the more redundancy you build into your solution, the higher your SLO is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
 
 ##### Data residency
 
@@ -483,6 +483,6 @@ Refer to the complete set of recommendations.
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
 [round-trip-latency]: </azure/networking/azure-network-latency>
-[composite-slas]: <metrics.md#slos-and-slas>
+[composite-slos]: <metrics.md#slos-and-slas>
 [front-door-global-traffic-acceleration]: </azure/frontdoor/front-door-overview>
 [traffic-manager]: </azure/traffic-manager/traffic-manager-overview>
