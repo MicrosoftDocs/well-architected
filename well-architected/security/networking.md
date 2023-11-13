@@ -296,10 +296,10 @@ Scope the rules as much as possible. In the following example, the rule is set t
 |Information | Example |
 |---------|---------|
 |Protocol | Transmission Control Protocol (TCP), UDP |
-|Source IP address | Allow ingress to the subnet from \<source-IP-address-range\>:4575/UDP |
-|Source port | Allow ingress to the subnet from \<service-tag\>:443/TCP |
-|Destination IP address | Allow egress from the subnet to \<destination-IP-address-range\>:443/TCP |
-|Destination port | Allow egress from the subnet to \<service-tag\>:443/TCP |
+|Source IP address | Allow ingress to the subnet from \<source-IP-address-range\>: 4575/UDP |
+|Source port | Allow ingress to the subnet from \<service-tag\>: 443/TCP |
+|Destination IP address | Allow egress from the subnet to \<destination-IP-address-range\>: 443/TCP |
+|Destination port | Allow egress from the subnet to \<service-tag\>: 443/TCP |
 
 To summarize:
 
@@ -370,11 +370,46 @@ For more information, see [Azure DDoS Protection overview](/azure/ddos-protectio
 
 ## Example
 
+Here are some examples that demonstrate the use of network controls recommended in this article.
+
+### IT environment
+
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). This approach provides a broad understanding of network controls applied at various perimeters to restrict traffic. 
+
+:::image type="content" source="images/networking/network-controls.svg" alt-text="Diagram that shows an example of an organization's security baseline with network controls." lightbox="images/networking/network-controls.svg":::
+
+1) **Network attack personas**. Several personas may be considered in a network attack, including Admins, employees, customer’s clients and anonymous attackers. 
+
+2) **VPN access**. A bad actor might access the on-premises environment through a VPN or an Azure environment that's  connected to the on-premises environment through a VPN. Configure with IPSec protocol to enable secure communication.
+
+3) **Public access to the application**. Have a web application firewall (WAF) in front of the application to protect it on Layer 7 of the network OSI layer.
+
+4) **Operator access**. Remote access through Layer 4 of network OSI layers must be secured. Consider using Azure Firewall with IDP/IDS features.
+
+5) **DDoS protection**. Have DDoS protection for your entire VNet.
+
+6) **Network topology**. A network topology such as hub-spoke, is more secure, and optimize costs. The hub network provides centralized firewall protection to all the peered spokes. 
+
+7) **Private endpoints**: Consider adding publically exposed services into your private network by using private endpoints. These create a Network Card (NIC) in your private VNet and bind with the Azure service.
+
+8) **TLS communication**. Protect data in transit by communicating over TLS.
+
+9) **Network Security Group (NSG)**: Protect segments within a VNet with NSG, a free resource that filters TCP/UDP inbound and outbound communication considering IP and port ranges. Part of NSG is the Application Security Group (ASG) that allows you to create tags for traffic rules for easier management.
+
+10) **Log Analytics**. Azure resources emit telemetry that's  ingested in Log Analytics then used with a SIEM solution like Microsoft Sentinel for analysis.
+
+11) **Microsoft Sentinel Integration**. Log Analytics is integrated with Microsoft Sentinel and other solutions like Microsoft Defender for Cloud.
+
+12) **Microsoft Defender for Cloud**. Microsoft Defender for Cloud delivers many workload protection solutions, including Network recommendations for your environment.
+
+13) **Traffic Analytics**: Monitor your network controls with Traffic Analytics. This is configured through Network Watcher, part of Azure Monitor, and aggregates inbound and outbound hits in your subnets collected by NSG.
+
+
+### Architecture for a containerized workload
+
 This example architecture combines the network controls that are described in this article. The example doesn't show the complete architecture. Instead, it focuses on ingress controls on the private cloud.
 
 :::image type="content" source="images/networking/controlled-ingress.svg" alt-text="Diagram that shows controlled ingress, including Application Gateway, a network security group, Azure Bastion, and Azure DDoS Protection." border="false" lightbox="images/networking/controlled-ingress-highres.png":::
-
-### Highlights
 
 **Application Gateway is a web traffic load balancer** that you can use to manage traffic to your web applications. You deploy Application Gateway in a dedicated subnet that has network security group controls and web application firewall controls in place.
 
@@ -383,8 +418,6 @@ Communication with all PaaS services is conducted through **private endpoints**.
 **Management traffic is restricted through Azure Bastion**, which helps provide secure and seamless RDP and SSH connectivity to your VMs directly from the Azure portal over TLS. Build agents are placed in the virtual network so that they have a network view to workload resources such as compute resources, container registries, and databases. This approach helps provide a secure and isolated environment for your build agents, which boosts protection for your code and artifacts.
 
 :::image type="content" source="images/networking/controlled-egress.svg" alt-text="Diagram that shows controlled egress for a network security group and Azure Firewall." border="false" lightbox="images/networking/controlled-egress.png":::
-
-### Highlights
 
 Network security groups at the subnet level of the compute resources restrict egress traffic. Forced tunneling is used to route all traffic through Azure Firewall. This approach helps provide a secure and isolated environment for your compute resources, which boosts protection for your data and applications.
 

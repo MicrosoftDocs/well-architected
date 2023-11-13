@@ -185,7 +185,7 @@
               href: operational-excellence/infrastructure-as-code-design.md
             - name: OE:06 Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
-            - name: OE:07 Observability framework
+            - name: OE:07 Monitoring system
               href: operational-excellence/observability.md
             - name: OE:07 Instrument an application
               href: operational-excellence/instrument-application.md

@@ -75,8 +75,8 @@ sections:
             - Design review checklist drive action through codified recommendations. 
             - Design tradeoffs with other pillars. 
             - Recommendations on key strategies that fulfill the principles of design.
-            - Design patterns based on proven, common architecture patterns, mapped to pillar.
-            - Azure Well-Architected Review has been refreshed to align with the new content.
+            - Design patterns based on proven, common architecture patterns, mapped to each pillar.
+            - Azure Well-Architected Review tool has been refreshed to align with the new content.
  
 # cards section (4)
   - componentType: grid

@@ -45,7 +45,7 @@ Here are some example classification labels for sensitivity levels, information 
 
 | Sensitivity | Information type | Scope of compliance |
 |--------|--------| -------- |
-| Public, General, Confidential, Highly Confidential, Secret, Top Secret, Sensitive | Financial, Credit Card, Name, Contact Info, Credentials, Banking, Networking, SSN, Health fields, Date of Birth, Intellectual Property, Personally Identifiable Information (PII) | GDPR, HIPAA, PCI, CCPA, SOX, RTB |
+| Public, General, Confidential, Highly Confidential, Secret, Top Secret, Sensitive | Financial, Credit Card, Name, Contact Info, Credentials, Banking, Networking, SSN, Health fields, Date of Birth, Intellectual Property, personal data | HIPAA, PCI, CCPA, SOX, RTB |
 
 As a workload owner, rely on your organization to provide you with a well-defined taxonomy. All workload roles must have a shared understanding of the structure, nomenclature, and definition of the sensitivity levels. Don't define your own classification system.  
 
@@ -53,7 +53,7 @@ As a workload owner, rely on your organization to provide you with a well-define
 
 Most organizations have a diverse set of labels.
 
-:::image type="content" source="images/data-classification/data-classification.svg" alt-text="Diagram that shows an example of an organization's sensitivity labels." lightbox="images/data-classification/data-classification-highres.png":::
+:::image type="content" source="images/data-classification/data-classification.svg" alt-text="Diagram that shows an example of an organization's sensitivity labels." lightbox="images/data-classification/data-classification-high-res.png":::
 
 Clearly identify which data assets and components are in-scope and out-of-scope for each sensitivity level. You should have a clear objective on the outcome. The objective could be quicker triage, accelerated disaster recovery, or regulatory audits. When you clearly understand the objectives, it ensures you correctly size your classification efforts.
 
@@ -114,6 +114,33 @@ Ultimately, classification must roll up to the organization through central team
 Microsoft Purview unifies Azure Purview and Microsoft Purview solutions to provide visibility into data assets throughout your organization. For more information, see [What is Microsoft Purview?](/purview/purview)
 
 Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offer built-in classification features. Use these tools to discover, classify, label, and report the sensitive data in your databases. For more information, see [Data discovery and classification](/azure/azure-sql/database/data-discovery-and-classification-overview).
+
+## Example
+
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The example diagram below shows data stores where data is classified.   
+
+:::image type="content" source="images/data-classification/data-classification-enterprise.svg" alt-text="Diagram that shows an example of an organization's data classification." lightbox="images/data-classification/data-classification-enterprise.svg":::
+
+1) Data stored on databases and disks should only be accessible to a few users, such as Administrators, Database administrators. Then, it's usual that common users or customers' final clients have access only to layers that are exposed to the internet, such as applications or jump boxes.
+
+2) Applications communicate with the databases or data stored on disks, such as object storage or file servers.
+
+3) In some cases, data might be stored in an on-premises environment and the public cloud. Both need to be classified consistently.
+
+4) In an operator use case, remote administrators need access jump boxes on the cloud or a virtual machine running the workload. Access permissions should be given as per the data classification labels.
+
+5) Data moves through the virtual machines to the backend databases and data should be treated with the same level of confidentiality throughout the traversal points.
+
+6) Workloads store data directly in virtual machine disks. Those disks are in scope for classification.
+
+7) In a hybrid environment, different personas may access workloads on-premises through different mechanisms to connect to different data storage technologies or databases. Access must be granted as per the classification labels.
+
+8) The on-premises servers connect to important data that need to be classified and protected such as file servers, object storage, and different types of databases, such as relational, no-SQL, and data warehouse.
+
+9) Microsoft Purview Compliance provides a solution to classify files and emails.
+
+10) Microsoft Defender for Cloud provides a solution that helps your company to track compliance in your environment, including many of your services used to store data, mentioned in these se cases above.
+
 
 ## Organizational alignment
 

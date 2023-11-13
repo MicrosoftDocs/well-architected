@@ -82,6 +82,8 @@ The baseline should include regular evaluation of the workload against regulator
 
 The baseline needs prescriptive recommendations for the main components of the workload. These usually include technical controls for networking, identity, compute, and data. Reference the security baselines provided by the platform and add the missing controls to the architecture.
 
+> Refer to [Example](#example).
+
 #### Development processes
 
 The baseline must have recommendations about:
@@ -151,6 +153,28 @@ Other features that help in establishing and improving the baseline:
 
 - [Regulatory compliance checks](/azure/defender-for-cloud/regulatory-compliance-dashboard)
 
+## Example
+
+This logical diagram shows an example security baseline for architectural components that encompass network, infrastructure, endpoint, application, data, and identity to demonstrate how a common IT environment may be securely protected. Other recommendation guides build on this example.
+
+:::image type="content" source="images/baseline/security-baseline.svg" alt-text="Diagram that shows an example of an organization's security baseline IT environment with architecture components." lightbox="images/baseline/security-baseline.svg":::
+
+**Infrastructure**
+
+A common IT environment, with an on-premises layer with basic resources.
+
+**Azure Security services**
+
+Azure security services and features by the types of resources they protect.
+
+**Azure security monitoring services**
+
+The monitoring services available on Azure that go beyond simple monitoring services, including  security information event management (SIEM) and security orchestration automated response (SOAR) solutions and Microsoft Defender for Cloud.
+
+**Threats**
+
+This layer brings a recommendation and reminder that threats may be mapped according to your organization's concerns regarding threats, regardless of the methodology or matrix-like Mitre Attack Matrix or Cyber Kill chain.
+
 ## Organizational alignment
 
 Cloud Adoption Framework provides guidance for central teams about establishing a baseline with a suggested template:
@@ -166,6 +190,8 @@ Cloud Adoption Framework provides guidance for central teams about establishing 
 - [Security baselines for Azure overview](/security/benchmark/azure/security-baselines-overview)
 
 - [What is incident response? Plan and steps](https://www.microsoft.com/security/business/security-101/what-is-incident-response)
+
+- [Azure Security benchmarks](/security/benchmark/azure/overview)
 
 ## Community links
 
