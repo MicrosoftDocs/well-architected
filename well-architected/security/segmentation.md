@@ -160,7 +160,7 @@ Here are some common patterns for segmenting a workload in Azure. Choose a patte
 
 This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below shows segmentation at the managemement group level done by an organization. 
 
-:::image type="content" source="images/segmentation/segmentation-enterprise.svg" alt-text="Diagram that shows an example of an organization's segmentation strategy for various workloads." lightbox="images/data-classification/segmentation-enterprise.svg":::
+:::image type="content" source="images/segmentation/segmentation-enterprise.svg" alt-text="Diagram that shows an example of an organization's segmentation strategy for various workloads." lightbox="images/segmentation/segmentation-enterprise.svg":::
 
 ### Identity segmentation patterns
 
