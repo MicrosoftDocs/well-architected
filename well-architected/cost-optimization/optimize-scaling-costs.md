@@ -38,7 +38,7 @@ If you haven’t implemented scaling, see guidance on [scaling the workload](../
 
 ### Evaluate scale out versus scale up
 
-Evaluating scale out versus scale up involves determining the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out) based on various factors like pricing, workload requirements, and acceptable downtime. Choosing the right scaling approach can lead to significant savings, ensuring you pay for only what you need while still meeting performance and reliability standards. 
+Evaluating scale out versus scale up involves determining the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out) based on various factors like pricing, workload requirements, and acceptable downtime. Choosing the right scaling approach can lead to significant savings, ensuring you pay for only what you need while still meeting performance and reliability standards.
 
 The goal is to determine the most cost-efficient choice based on service-tier pricing, workload traits, acceptable downtime, and the cost model. For some, it might be more economical to opt for more expensive instances in fewer numbers. Conversely, for others, a cheaper tier with more instances might be better. To make an informed decision, you need to analyze real or representative data from your setup and evaluate the relative cost merits of each strategy. To evaluate the most cost efficient approach, consider these recommendations:
 
@@ -77,9 +77,7 @@ Event-driven autoscaling allows the application to dynamically adjust resources 
 - *Configure scaling rules*: Define the scaling rules that specify how your scale unit should scale in response to events. These rules can be based on thresholds, patterns, or any other criteria that align with your application's requirements. Scaling thresholds should relate to business metrics. For example, if you add two more instances, you can support 50 more users in shopping cart processing.
 - *Test and monitor*: Validate the behavior of your event-based scaling implementation by testing it with different event scenarios. Monitor the scaling actions and ensure that the actions align with your expectations.
 
-
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration might lead to over-provisioning or under-provisioning of resources.
-
 
 ### Optimize demand and supply
 
@@ -93,17 +91,12 @@ Offloading demand refers to the practice of distributing or transferring resourc
 
    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. Caching might introduce challenges in terms of cache invalidation, consistency, and managing cache expiration. It's important to carefully design and implement caching strategies to avoid potential tradeoffs.
 
-
 - *Content offloading*: Offload content to external services or platforms to reduce the workload on your infrastructure. For example, rather than store video files on your primary server, you can host these files in a separate storage service that's independent from your primary server. You can load these large files directly from the storage service. This approach frees up resources on your servers, allowing you to use a smaller server. It can be cheaper to store large files in a separate data store. You can use a CDN to improve performance.
-
-
-
 
 - *Load balancing*: Distribute incoming requests across multiple servers using load balancing. Load balancing evenly distributes the workload and prevents any single server from becoming overwhelmed. Load balancers optimize resource utilization and improve the efficiency of your infrastructure.
 - *Database offloading*: Reduce the load on your main application server by offloading database operations to a separate database server or a specialized service. For example, use a CDN for static content caching and a Redis cache for dynamic content (data from database) caching. Techniques like database sharding, read replicas, or using managed database services can also reduce the load.
 
    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Offloading specific tasks to alternate resources helps reduce or avoid extra scaling and costs associated with scaling. However, it's important to consider the operational and maintenance challenges that might arise from offloading. Conducting a comprehensive cost-benefit analysis is crucial when selecting the most appropriate offloading techniques for your workload. This analysis ensures that the chosen method is both efficient and feasible in relation to the anticipated savings and operational complexities.
-
 
 #### Reduce demand
 
@@ -135,7 +128,6 @@ Use these design patterns to reduce demand:
 
 #### Control supply
 
-
 Defining an upper limit on the amount that you're willing to spend on a particular resource or service is one way to control supply. It's an important strategy for controlling costs and ensuring that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined amount. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
 
 Controlling supply refers to defining an upper limit on the amount that you're willing to spend on a particular resource or service. It's an important strategy because it helps control costs and ensures that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined threshold. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
@@ -144,23 +136,23 @@ Controlling supply refers to defining an upper limit on the amount that you're w
 
 ## Azure facilitation
 
-**Optimizing scaling**: Azure provides a test environment where you can deploy and test different scaling configurations. By using the actual workload data or proxy data, you can simulate real-world scenarios and measure the effects on costs. Azure offers tools and services for performance testing, load testing, and monitoring, which can help you evaluate the cost effectiveness of scale out versus scale up options.
+**Evaluating scale out versus scale up**: Azure provides a test environment where you can deploy and test different scaling configurations. By using the actual workload data or proxy data, you can simulate real-world scenarios and measure the effects on costs. Azure offers tools and services for performance testing, load testing, and monitoring, which can help you evaluate the cost effectiveness of scale out versus scale up options.
 
 Azure provides cost management recommendations through various tools and services, such as the [Azure Advisor](/azure/advisor/advisor-reference-cost-recommendations). These recommendations analyze your usage patterns, resource utilization, and scaling configurations to provide insights and suggestions for optimizing costs.
 
 [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load-testing service that generates high-scale load. The service simulates traffic for your applications, regardless of where they're hosted. Developers, testers, and quality assurance (QA) engineers can use load testing to optimize application performance, scalability, or capacity.
 
-**Autoscaling**: Many Azure compute services support deploying multiple identical instances, and rapidly tuning the scaling thresholds and policies. Azure provides autoscaling capabilities that allow you to automatically adjust the number of instances or resources based on workload demand. You can define scaling rules and thresholds to trigger scale out or scale in actions. By using autoscaling, you can optimize resource allocation and cost efficiency by dynamically scaling resources based on actual demand.
+**Optimizing autoscaling**: Many Azure compute services support deploying multiple identical instances, and rapidly tuning the scaling thresholds and policies. Azure provides autoscaling capabilities that allow you to automatically adjust the number of instances or resources based on workload demand. You can define scaling rules and thresholds to trigger scale out or scale in actions. By using autoscaling, you can optimize resource allocation and cost efficiency by dynamically scaling resources based on actual demand.
 
 Azure maintains a list of [subscription and service limits.](/azure/azure-resource-manager/management/azure-subscription-service-limits) There’s a general limit to the number of instances of a resource you can deploy in each resource group with some exceptions. For more information, see [Resource instance limits per resource group.](/azure/azure-resource-manager/management/resources-without-resource-group-limit)
 
-**Monitoring**: Azure Monitor provides insights into the performance and health of your applications and infrastructure. You can use Azure Monitor to monitor the load on your resources and analyze trends over time. By using metrics and logs collected by Azure Monitor, you can identify areas where scaling adjustments might be needed. This information can guide the refinement of your autoscaling policy to ensure it aligns with the nonfunctional requirements and cost optimization goals.
+**Optimizing demand and supply**: Azure Monitor provides insights into the performance and health of your applications and infrastructure. You can use Azure Monitor to monitor the load on your resources and analyze trends over time. By using metrics and logs collected by Azure Monitor, you can identify areas where scaling adjustments might be needed. This information can guide the refinement of your autoscaling policy to ensure it aligns with the nonfunctional requirements and cost optimization goals.
 
-**Offloading supply**: Azure has a modern cloud Content Delivery Network (CDN) called [Azure Front Door](/azure/frontdoor/front-door-overview) and caching services ([Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview) and [Azure HPC Cache](/azure/hpc-cache/hpc-cache-overview)). The CDN caches content closer to the end-users, reducing network latency and improving response times. Caching stores a copy of the data in front of the main data store, reducing the need for repeated requests to the backend. By using CDN and caching services, you can optimize performance and reduce the load on servers for potential cost savings.
+- *Offloading supply*: Azure has a modern cloud Content Delivery Network (CDN) called [Azure Front Door](/azure/frontdoor/front-door-overview) and caching services ([Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview) and [Azure HPC Cache](/azure/hpc-cache/hpc-cache-overview)). The CDN caches content closer to the end-users, reducing network latency and improving response times. Caching stores a copy of the data in front of the main data store, reducing the need for repeated requests to the backend. By using CDN and caching services, you can optimize performance and reduce the load on servers for potential cost savings.
 
-**Controlling supply**: Azure also allows you to set resource limits for your cloud workload. By defining resource limits, you can ensure that your workload stays within the allocated resources and avoid unnecessary costs. Azure provides various mechanisms for setting resource limits such as quotas, policies, and budget alerts. These mechanisms help you monitor and control resource usage.
+- *Controlling supply*: Azure also allows you to set resource limits for your cloud workload. By defining resource limits, you can ensure that your workload stays within the allocated resources and avoid unnecessary costs. Azure provides various mechanisms for setting resource limits such as quotas, policies, and budget alerts. These mechanisms help you monitor and control resource usage.
 
-[API Management](/azure/api-management/api-management-sample-flexible-throttling) can rate limit and throttle requests. Being able to throttle incoming requests is a key role of Azure API Management. Either by controlling the rate of requests or the total requests/data transferred, API Management allows API providers to protect their APIs from abuse and create value for different API product tiers.
+    [API Management](/azure/api-management/api-management-sample-flexible-throttling) can rate limit and throttle requests. Being able to throttle incoming requests is a key role of Azure API Management. Either by controlling the rate of requests or the total requests/data transferred, API Management allows API providers to protect their APIs from abuse and create value for different API product tiers.
 
 ## Related links
 
