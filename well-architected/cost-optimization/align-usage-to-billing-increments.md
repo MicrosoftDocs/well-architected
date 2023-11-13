@@ -92,6 +92,8 @@ If neither option is feasible, you need to accept the extra cost. Rework the bud
 
 **Map usage to billing increments:** You can use your [Azure bill](/azure/cost-management-billing/understand/review-individual-bill) to analyze resource usage patterns and identify areas of high consumption. You can [view and download your Azure invoice](/azure/cost-management-billing/understand/download-azure-invoice). These features help you understand how resources are utilized, so you can make informed decisions about optimizing their usage and minimizing unnecessary costs.
 
+You can get a quick overview of your [invoiced usage and charges](/azure/cost-management-billing/understand/review-individual-bill) on the Subscriptions page in the Azure portal. It's important to [understand the terms in you Azure usage and charges file](/azure/cost-management-billing/understand/understand-usage).
+
 **Align usage to maximize value.** [Microsoft Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview) and Azure Advisor provide optimization recommendations that are based on usage and cost data. These recommendations help you identify opportunities for cost savings. With this data, you can determine if resources are over-provisioned or underutilized, and right-size them to match the workload requirements. Right-sizing resources can help align to billing increments.
 
 Product SKUs represent the service tiers in Azure products. Azure offers various SKUs within each service. Switching SKUs can help you align billing increments with usage patterns. You can use the [Azure product pricing pages](https://azure.microsoft.com/pricing/#product-pricing) to compare the different tiers for each product.
