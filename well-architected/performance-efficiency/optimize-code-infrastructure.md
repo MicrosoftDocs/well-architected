@@ -9,12 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for optimizing code and infrastructure
 
-**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:07](checklist.md)| Optimize code and infrastructure. Use code that's performant, and ensure that it offloads responsibilities to the platform. Use code and infrastructure only for their core purpose and only when necessary.| 
-|---|---| 
+|[PE:07](checklist.md)| Optimize code and infrastructure. Use code that's performant, and ensure that it offloads responsibilities to the platform. Use code and infrastructure only for their core purpose and only when necessary.|
+|---|---|
 
-This guide describes the recommendations for optimizing code and infrastructure performance. To optimize your code and infrastructure, you should use your components only for their core purpose and only when necessary. When you overuse code and infrastructure, it creates unnecessary resource consumption, bottlenecks, and slow responses. To compensate for those inefficiencies, you must add more resources to accomplish the same tasks, which reduces performance efficiency.
+This guide describes the recommendations for optimizing code and infrastructure performance. To optimize your code and infrastructure, you should use your components only for their core purpose and only when necessary. When you overuse code and infrastructure, it creates unnecessary resource consumption, bottlenecks, and slow responses. To compensate for those inefficiencies, you must add more resources to accomplish the same tasks.
 
 **Definitions**
 
@@ -23,9 +23,9 @@ This guide describes the recommendations for optimizing code and infrastructure 
 | Concurrency | When multiple tasks or processes are performed at once but not necessarily at the exact same time.|
 | CPU architecture | The components and principles that affect how the computer works. |
 | Data compression | The action of reducing the size of files by minimizing redundant data.|
-|Heap|An area in memory that's used for runtime memory allocations.|
+|Heap|An area in memory used for runtime memory allocations.|
 | Memory leak | When a workload fails to release allocated memory after the memory is no longer needed.|
-| Parallelism | When multiple tasks or processes are performed at the same time. |
+| Parallelism | When multiple tasks or processes are performed at the same time.|
 
 ## Key design strategies
 
@@ -39,13 +39,13 @@ To optimize code performance, modify code to reduce resource usage, minimize run
 
 Instrumenting code refers to the practice of adding code snippets or libraries to code that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics such as resource consumption (CPU, memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better performance efficiency.
 
-In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it is to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
+In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
 #### Identify hot paths
 
-By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They are critical or frequently executed sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
+By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They're critical or frequently executed sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
 
 - *Analyze runtime data*: Collect runtime data and analyze it to identify areas of the code that consume significant resources, such as CPU, memory, or I/O operations. Look for patterns or sections of code that are frequently executed or take a long time to complete.
 
@@ -55,9 +55,9 @@ By instrumenting your code, you can measure the resource consumption for differe
 
 #### Optimize code logic
 
-Optimizing code logic means refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that might affect performance. Prioritize optimizing hot paths to see the greatest performance efficiency gains. To optimize code logic, consider the following strategies:
+Optimizing code logic is about refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that might affect performance. Prioritize optimizing hot paths to see the greatest performance efficiency gains. To optimize code logic, consider the following strategies:
 
-- *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and might affect performance negatively. For example, if a function call performs a validation that has already been done earlier in the code, you can remove that unnecessary validation function call.
+- *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and might affect performance negatively. For example, if a function call performs a validation completed earlier in the code, you can remove the unnecessary validation function call.
 
 - *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
 
@@ -87,13 +87,13 @@ Review the performance recommendations specific to the programming language you'
 
 Optimizing memory management involves refining the way a workload uses, allocates, and releases memory resources to improve efficiency. Proper memory management improves code performance because it reduces the overhead of memory operations. Efficient memory usage reduces latency, prevents system slowdowns or crashes, and maximizes the throughput of computational tasks. Consider the following strategies to optimize memory management.
 
-**Debug memory issues.** Memory dumps are application memory snapshots. They capture the memory state of an application at a specific point in time. Memory dumps enable retrospective analysis of memory-related issues. Select the appropriate type of memory dump based on the nature of the problem you're trying to diagnose and the resources available. You should use miniature dumps for routine debugging and full dumps for complex, critical issues. This strategy provides a balance between resource usage and diagnostic capabilities. Many code hosting services support memory debugging. You should prefer services that support memory analysis over those that don't. Here are the basic steps to debugging memory issues:
+**Debug memory issues.** Memory dumps are application memory snapshots. They capture the memory state of an application at a specific point in time. Memory dumps enable retrospective analysis of memory-related issues. Select the appropriate type of memory dump based on the nature of the problem you're trying to diagnose and the resources available. You should use miniature dumps for routine debugging and full dumps for complex, critical issues. This strategy provides a balance between resource usage and diagnostic capabilities. Many code hosting services support memory debugging. You should prefer services that support memory analysis over those services that don't. Here are the basic steps to debugging memory issues:
 
-1. *Capture memory dumps*: Begin by setting up a mechanism to capture memory dumps during your application's runtime. This can be triggered manually, automatically, or when specific conditions (like excessive memory consumption) are met. Some cloud services might already offer this process.
+1. *Capture memory dumps*: Begin by setting up a mechanism to capture memory dumps during your application's runtime. The capture can be triggered manually, automatically, or when specific conditions (like excessive memory consumption) are met. Some cloud services might already offer this process.
 
 1. *Analyze memory dumps*: After you collect the memory dumps, analyze them. Numerous tools can assist you in inspecting these dumps, such as WinDbg for Windows applications or GDB for Unix-based systems.
 
-1. *Identify memory leaks*: Focus on identifying memory leaks during the analysis. Memory leaks arise when your application allocates memory but fails to release it when the memory is no longer required. Search for objects or data structures that remain in memory even though they should have been deallocated.
+1. *Identify memory leaks*: Focus on identifying memory leaks during the analysis. Memory leaks arise when your application allocates memory but fails to release it when the memory is no longer required. Search for objects or data structures that remain in memory even when they should be deallocated.
 
 1. *Fix and test*: Upon identifying the problematic code, concentrate on resolving the memory issues. Resolutions might involve releasing memory correctly, optimizing data structures, or reevaluating memory management practices. Confirm that your solutions undergo rigorous testing to ensure their efficacy.
 
@@ -119,17 +119,17 @@ For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-to
 
 Using concurrency and parallelism involves executing multiple tasks or processes either simultaneously or in an overlapping manner to make efficient use of computing resources. These techniques increase the overall throughput and the number of tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application and decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
 
-**Use parallelism.** Parallelism is the ability of a system to simultaneously trigger multiple tasks or processes on multiple computing resources. Parallelism divides a workload into smaller tasks that are run in parallel. You can achieve parallelism by using techniques like multiprocessing, in which multiple processes run in parallel, or by using distributed computing, in which tasks are distributed across multiple machines. Distribute tasks across multicore processors to optimize workload management. Optimize code to take advantage of the CPU architecture, threading models, and multicore processors. When you run code in parallel, performance improves because the workload is distributed across multiple cores.
+**Use parallelism.** Parallelism is the ability of a system to simultaneously trigger multiple tasks or processes on multiple computing resources. Parallelism divides a workload into smaller tasks that are run in parallel. You can achieve parallelism by using techniques like multiprocessing or distributed computing. Distribute tasks across multicore processors to optimize workload management. Optimize code to take advantage of the CPU architecture, threading models, and multicore processors. When you run code in parallel, performance improves because the workload is distributed across multiple cores.
 
 **Use concurrency.** Concurrency is the ability of a system to run multiple tasks or processes. Concurrency enables different parts of a program to make progress independently, which can improve overall performance. You can implement concurrency by using techniques like multithreading, in which multiple threads run concurrently within a single process. You can also use asynchronous programming, in which tasks are triggered concurrently.
 
-- *Asynchronous programming*: Asynchronous programming is an approach that's used to trigger tasks without blocking the main thread. Asynchronous programming enables a program to trigger tasks while waiting for long-running operations to finish. With asynchronous programming, the program can initiate multiple tasks and wait for them to complete asynchronously. The program doesn't have to wait for each task to finish before moving on to the next one.
+- *Asynchronous programming*: Asynchronous programming is an approach to trigger tasks without blocking the main thread. Asynchronous programming enables a program to trigger tasks while waiting for long-running operations to finish. With asynchronous programming, the program can initiate multiple tasks and wait for them to complete asynchronously. The program doesn't have to wait for each task to finish before moving on to the next one.
 
   There are many asynchronous programming techniques and patterns, depending on the programming language and platform. One common approach is to use asynchronous keywords and constructs, such as `async` and `await`, in languages like C#. With these keywords, you can define asynchronous methods. For HTTP traffic, consider using the [Asynchronous Request-Reply pattern](/azure/architecture/patterns/async-request-reply).
 
     Many frameworks and libraries provide built-in support for asynchronous programming. For example, in the .NET platform, you can implement asynchronous operations by using patterns like [Task-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) and [Event-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap). The specific implementation of asynchronous programming varies depending on the programming language, platform, and requirements of the application.
 
-- *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until a consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+- *Queues*: A queue is a storage buffer located between a requesting component (producer) and the processing component (consumer) of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until a consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
 #### Use connection pooling
 
@@ -137,7 +137,7 @@ Connection pooling is the practice of reusing established database connections i
 
 **Understand connection pooling limits.** Some services limit the number of network connections. When you exceed this limit, connections might slow down or terminate. You can use connection pooling to establish a fixed set of connections at startup time and then maintain those connections. In many cases, a default pool size might consist of only a few connections that perform quickly in basic test scenarios. Your application might exhaust the default pool size under scale and create a bottleneck. You should establish a pool size that maps to the number of concurrent transactions that are supported on each application instance.
 
-**Test the connection pool.** Each database and application platform has slightly different requirements for setting up and using a pool. Test your connection pool to ensure that it's properly established and works efficiently under load.
+**Test the connection pool.** Each database and application platform has slightly different requirements for setting up and using a pool. Test your connection pool to ensure it works efficiently under load.
 
   > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Connection pooling can create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
 
@@ -153,7 +153,7 @@ Optimizing infrastructure performance means enhancing and adjusting infrastructu
 
 **Streamline infrastructure.** Simplify your workload to reduce the potential for interaction, dependency, and compatibility issues. When you simplify your workload, you optimize resource utilization of memory, processing power, and storage.
 
-**Reduce load.** To reduce load on a workload, minimize the work or demand that's placed on an application, and enable resources to perform their primary tasks. For example, it's common practice to avoid running security solutions within your code or on individual compute instances. Instead, web servers should serve HTTP requests. Web application firewalls and gateway resources can handle security checks. The following strategies help reduce the load on your workload:
+**Reduce load.** To reduce load on a workload, minimize the demand placed on an application and enable resources to perform their primary tasks. For example, it's common practice to avoid running security solutions within your code or on individual compute instances. Instead, web servers should serve HTTP requests. Web application firewalls and gateway resources can handle security checks. The following strategies help reduce the load on your workload:
 
 - *Eventual consistency*: Adopt an eventual consistency model to enhance performance by allowing data to be slightly dated. Eventual consistency reduces the immediate demand on CPU cycles and network bandwidth for constant data updates.
 
@@ -179,24 +179,21 @@ Optimizing infrastructure performance means enhancing and adjusting infrastructu
 
 ## Azure facilitation
 
-**Optimization tools**: PerfInsights is a tool that provides insights into network performance and provides recommendations for optimizing Azure services and resources.
+**Instrumenting code**: Azure Monitor Application Insights supports automatic instrumentation (autoinstrumentation) and manual instrumentation of application code. Autoinstrumentation enables telemetry collection without touching the application's code. Manual instrumentation requires code changes to implement the Application Insights or OpenTelemetry API. You can use [Application Insights Profiler](/azure/azure-monitor/profiler/profiler-overview) to help optimize hot paths.
 
-**Native SDKs and performance-optimized libraries**: Azure offers [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. Use SDKs to simplify interactions between applications and Azure resources. SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
+**Optimizing code logic**: Azure offers [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. Use SDKs to simplify interactions between applications and Azure resources. SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
 
-**Memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks.
+**Optimizing memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks.
 
-[**Azure App Service**](/troubleshoot/azure/app-service/capture-memory-dumps-app-service): App Service has a profiler and memory dump collection and analysis feature. The App Service [auto-healing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps.
+[Azure App Service](/troubleshoot/azure/app-service/capture-memory-dumps-app-service) has a profiler and memory dump collection and analysis feature. The App Service [autohealing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps.
 
-**Concurrency and parallelism**: [AKS](/azure/aks) supports deploying containerized applications, which improves parallel processing. [Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
+**Using concurrency and parallelism**: Different Azure services provide unique support for concurrency, such as [Azure Cosmos DB](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency), [Azure Functions](/azure/azure-functions/functions-concurrency) and [Blob storage](/azure/storage/blobs/concurrency-manage). For parallelism, services [AKS](/azure/aks) supports deploying containerized applications, which improves parallel processing.
 
-**Infrastructure consistency**: Implement [Azure Resource Manager templates](/azure/templates) to define and deploy infrastructure by using code. Use these templates to implement efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
+[Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
 
-**Monitor and analyze**: Log Analytics provides insights into code and infrastructure performance, which helps identify performance bottlenecks.
-Azure Monitor offers full-stack monitoring, advanced analytics, and intelligent alerting to facilitate the identification and resolution of performance issues.
+**Optimizing infrastructure performance**: Implement [Azure Resource Manager templates](/azure/templates) to define and deploy infrastructure by using code. Use these templates to implement efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
 
-**Asynchronous programming**: Use scalable queuing services, like Azure Queue Storage and Azure Service Bus, to facilitate asynchronous programming. You can queue tasks and independently process them.
-
-To support asynchronous operations, Azure Marketplace offers third-party queues and tools that you can integrate with Azure services.
+For asynchronous programming, use scalable queuing services, like [Azure Queue Storage](/azure/storage/queues/storage-queues-introduction) and [Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview), to facilitate asynchronous programming. You can queue tasks and independently process them. To support asynchronous operations, Azure Marketplace offers third-party queues and tools that you can integrate with Azure services.
 
 ## Related links
 
