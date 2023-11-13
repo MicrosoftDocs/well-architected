@@ -26,7 +26,7 @@ This guide describes the recommendations for optimizing personnel time. This opt
 
 ## Key design strategies
 
-Personnel typically create the most significant expense in a workload. This underscores the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Given that employees can't work all day and night, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
+Personnel typically create the most significant expense in a workload. Personnel cost and value underscore the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Given that employees can't work all day and night, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
 
 ### Set optimization targets
 
@@ -56,7 +56,7 @@ Reducing build times is the process of minimizing the time it takes to compile a
 
 - *Use caching*: Cache dependencies, intermediate build artifacts, and other reusable components to avoid redundant work during subsequent builds.
 
-- *Use incremental builds*: To avoid unnecessary recompilation, implement techniques that allow the build system to rebuild only the parts of the deployment that have changed since the previous build.
+- *Use incremental builds*: To avoid unnecessary recompilation, implement techniques that allow the build system to rebuild only the parts of the deployment that changed since the previous build.
 
 - *Distribute the build process*: If applicable, distribute the build process across multiple machines or build agents to use parallelism and reduce overall build time.
 
@@ -82,7 +82,7 @@ The goal is for developers to get fast feedback on changes. Make necessary techn
 
 *Containerization*: Consider containerizing the workload to run locally. Containers help developers replicate the production environment locally and test their changes quickly. They enable faster iteration and debugging, which leads to a more efficient development process. Containers also provide a consistent and isolated environment for running the application. Finally, they enable easy scaling and deployment of the application.
 
-*Developer workstations*: An optimal developer workstation should have a suitable integrated development environment (IDE). A good developer workstation boosts developer efficiency, reducing the time and resources needed for various tasks. A good IDE provides code completion and syntax highlighting that's tailored to the programming language. It should also support version control like Git. A well-equipped IDE enables developers to pinpoint and fix issues quickly during development, which reduces debugging time.
+*Developer workstations*: An optimal developer workstation should have a suitable integrated development environment (IDE). A good developer workstation boosts developer efficiency, reducing the time and resources needed for various tasks. A good IDE provides code completion and syntax highlighting tailored to the programming language. It should also support version control like Git. A well-equipped IDE enables developers to pinpoint and fix issues quickly during development, which reduces debugging time.
 
 *Developer environments*: Developers' environments shouldn't be too constrained. Developers should have the permissions necessary to complete tasks without undue restrictions so they can work efficiently and effectively.
 
@@ -94,7 +94,7 @@ In general, the closer preproduction environments are to production environments
 
 #### Reuse components and libraries
 
-Reusable components and libraries can save developers substantial amounts of time. Instead of writing, testing, and debugging code, developers can reuse validated components and libraries and develop or fix application features faster. Be sure to provide documentation for each component or library. Store the code and documentation in a central repository, like GitHub, that has version control.
+Reusable components and libraries can save developers substantial amounts of time. Instead of writing, testing, and debugging code, developers can reuse validated components and libraries and develop or fix application features faster. Be sure to provide documentation for each component or library. Store the code and documentation in a central repository that has version control like GitHub.
 
 Additionally, use open-source software or libraries from trusted publishers that are available in package managers, like NuGet or Maven. These package managers provide a centralized and reliable source for accessing and managing libraries. Using trusted libraries from package managers can further enhance productivity and reduce the time spent on developing and maintaining code.
 
@@ -104,7 +104,7 @@ Removing technical debt is essential for maintaining a healthy and efficient cod
 
 - *Allocate time to resolve technical debt*: Dedicate a portion of your development team's time to resolving technical debt. A good starting point is to allocate about 20% of the team's time specifically to addressing technical debt. The dedicated time enables developers to focus on refactoring, code cleanup, and improving the overall quality of the codebase.
 
-- *Empower the development team*: Allow the development team to own the prioritization of technical debt resolution. They're in the best position to identify areas of the codebase that require attention and understand the effects of technical debt on workload functionality. Encourage open communication and collaboration within the team to ensure that technical debt is addressed effectively.
+- *Empower the development team*: Allow the development team to own the prioritization of technical debt resolution. The development team is in the best position to identify areas of the codebase that require attention and understand the effects of technical debt on workload functionality. Encourage open communication and collaboration within the team to ensure that technical debt is addressed effectively.
 
 - *Prioritize*: Prioritize technical debt items based on their effects on workload functionality. Focus on addressing the issues that have the most significant effect on the performance, maintainability, and scalability of the workload. By prioritizing effectively, you can maximize the effects of your efforts to remove technical debt.
 
@@ -128,11 +128,11 @@ Optimizing personnel collaboration is a process of enhancing team dynamics, comm
 
 ### Optimize processes
 
-Optimizing processes involves refining workflows to eliminate unnecessary steps, reduce manual effort, and streamline roles and change management. This enhancement ensures that tasks are more efficient. Streamlined processes reduce the time and resources needed for tasks, which leads to improved productivity and saves money. To optimize processes, consider these recommendations:
+Optimizing processes involves refining workflows to eliminate unnecessary steps, reduce manual effort, and streamline roles and change management. This enhancement ensures that tasks are more efficient. Streamlined processes reduce the time and resources needed for tasks. The time reduction leads to improved productivity and saves money. To optimize processes, consider these recommendations:
 
 - *Refine the software development lifecycle (SDLC) approach*: Adopting an optimal SDLC can help you achieve high quality with less overhead. Assess your current SDLC method and consider more efficient alternatives. Explore and adopt methodologies like Scrum, Kanban, or Waterfall. Periodically reassess chosen frameworks for better efficiency, recognizing that SDLC is inherently collaborative.
 
-- *Optimize per role*: Defined roles ensure clear responsibilities and expectations, which leads to increased efficiency. Understand and define the requirements of each role, including, for example, developers and solution architects. When you want to expand the team, you should know what each role needs in terms of hardware, licenses, and access.
+- *Optimize per role*: Defined roles ensure clear responsibilities and expectations and increased efficiency. Understand and define the requirements of each role, including, for example, developers and solution architects. When you want to expand the team, you should know what each role needs in terms of hardware, licenses, and access.
 
 - *Streamline change management*: Positive receptiveness to change ensures smoother transitions and better outcomes. Make the process of implementing change smooth and accepted. Cultivate a culture of active participation rather than resistance. Promote change adoption via coaching and continuous learning. Adapt to change constructively.
 
@@ -144,7 +144,7 @@ Optimizing workload operational tasks is a process of making job tasks faster an
 
 Distinguishing signal from noise is crucial to observability because it enables teams to focus on the most critical aspects of their systems and applications. Filtering out noise can help teams make informed decisions, troubleshoot problems, and optimize the workload faster. Identifying and addressing issues more efficiently and quickly leads to a reduction in personnel costs.
 
-To differentiate signal from noise, you need to define clear objectives and metrics. Identify the key performance indicators (KPIs) and metrics that are relevant to your workload. Establish thresholds or ranges for each metric to specify what's considered normal behavior and what should be flagged as an anomaly. Use monitoring tools to collect data and track the defined metrics in real time and identify patterns that indicate potential issues or areas of improvement.
+To differentiate signal from noise, you need to define clear objectives and metrics. Identify the key performance indicators (KPIs) and metrics that are relevant to your workload. Establish thresholds or ranges for each metric to specify normal behavior and what should be flagged as an anomaly. Use monitoring tools to collect data and track the defined metrics in real time and identify patterns that indicate potential issues or areas of improvement.
 
 Prioritize actionable insights. Focus on insights that point to degradations in the workload and prioritize them for further investigation or action. Regularly review and update your monitoring strategy based on feedback.
 
@@ -182,7 +182,7 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 ## Azure facilitation
 
-**Setting optimization targets**: [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features like work item tracking, dashboards, reporting capabilities, source code management, continuous integration, continuous delivery, and project management. By using Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
+**Setting optimization targets**: [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features like work item tracking, dashboards and reporting capabilities. It also provides source code management, continuous integration, continuous delivery, and project management features. By using Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
 
 **Optimizing development time**: Azure provides various tools and features to optimize developer time, including:
 
@@ -192,7 +192,7 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 - *IDE integration*: Azure provides IDE integration with popular development tools like Visual Studio and Visual Studio Code. This integration enables developers to seamlessly work with Azure services.
 
-- *Standard SDKs and libraries*: Azure provides standard SDKs and libraries for all Azure services, which enables developers to reuse code and reduce the time it takes to integrate and implement Azure services.
+- *Standard SDKs and libraries*: Azure provides standard SDKs and libraries for all Azure services. These SDKs and libraries enable developers to reuse code and reduce the time it takes to integrate and implement Azure services.
 
 - *Quickstart templates and samples*: Azure provides quickstart templates and samples that can accelerate the development process.
 
@@ -204,7 +204,7 @@ These features and tools provided by Azure help developers save time and increas
 
 **Optimizing operational tasks**: Azure supports infrastructure as code (IaC) capabilities, which enable you to define and manage your infrastructure by using code. Doing so helps reduce complexity and improves the adaptability of your systems.
 
-Azure Monitor is a comprehensive monitoring service that provides visibility into the performance and health of applications and infrastructure on Azure. You can use it to collect telemetry, set up alerts, and gain real-time insights. By using Azure Monitor, you can proactively identify and resolve issues, which enables you to reduce the time you spend on troubleshooting.
+Azure Monitor is a comprehensive monitoring service that provides visibility into the performance and health of applications and infrastructure on Azure. You can use it to collect telemetry, set up alerts, and gain real-time insights. By using Azure Monitor, you can proactively identify and resolve issues. It enables you to reduce the time you spend on troubleshooting.
 
 [Azure Automation](/azure/automation/) provides a way to automate manual, repetitive tasks on Azure. You can use it to create and manage runbooks, which are sets of instructions for performing specific tasks. By automating routine tasks, you can save time and free up personnel to focus on more critical activities.
 
