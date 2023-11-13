@@ -160,19 +160,19 @@ Emulation and mock endpoints help save costs, but you must ensure that they repr
 
 ## Azure facilitation
 
-**Consider governance:** With Azure Policy, you can limit resource types, SKUs, and instances by defining policy rules that enforce restrictions on the types of resources that you can deploy in your Azure environment. You can maintain control over the provisioned resources and ensure compliance with your organization's policies and best practices.
+**Determining and optimizing environment costs:** [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) is a suite of tools that help organizations monitor, allocate, and optimize the cost of their Microsoft Cloud workloads. Cost Management is available to anyone with access to a billing or resource management scope.
+
+[Azure Advisor](/azure/advisor/advisor-overview) is a tool that provides cost optimization recommendations, including identifying areas of virtual machine usage that need optimization. Use Advisor to help you make informed decisions and optimize costs in your Azure environment. Azure provides cost management tools and features that help prioritize spending. You can use these tools to track and analyze costs across environments, set budgets, and receive cost optimization recommendations.
+
+**Applying governance**: With Azure Policy, you can limit resource types, SKUs, and instances by defining policy rules that enforce restrictions on the types of resources that you can deploy in your Azure environment. You can maintain control over the provisioned resources and ensure compliance with your organization's policies and best practices.
 
 To limit resource types by using Azure Policy, you can define policy rules that specify the allowed resource types. Apply those rules to the relevant Azure subscriptions or resource groups. Azure Policy prevents users from deploying resources that aren't allowed.
 
-**Turn off resources:** You can use Azure Automation or Azure Logic Apps to create a schedule that turns off resources during specific time periods, such as outside of normal working hours or on weekends.
+Use Azure Resource Manager to define and manage resources in a declarative manner. You can tune resources that are allocated to each environment based on their specific requirements. Use templates and parameterize resource configurations to optimize costs.
 
-**Improve cost visibility and analysis:** Azure Advisor is a tool that provides cost optimization recommendations, including identifying areas of virtual machine usage that need optimization. Use Advisor to help you make informed decisions and optimize costs in your Azure environment. Azure provides cost management tools and features that help prioritize spending. You can use these tools to track and analyze costs across environments, set budgets, and receive cost optimization recommendations.
+**Optimizing preproduction environments:** Azure offers dev/test pricing options that provide discounted rates for nonproduction environments. You can allocate more resources and budget to critical production environments, which optimizes costs in nonproduction environments. You can also use the Azure licensing offer, Azure Hybrid Benefit.
 
-**Configure resources:** Use Azure Resource Manager to define and manage resources in a declarative manner. You can tune resources that are allocated to each environment based on their specific requirements. Use templates and parameterize resource configurations to optimize costs.
-
-**Take advantage of preproduction discounts:** Azure offers dev/test pricing options that provide discounted rates for nonproduction environments. You can allocate more resources and budget to critical production environments, which optimizes costs in nonproduction environments. You can also use the Azure licensing offer, Azure Hybrid Benefit.
-
-**Enable endpoint emulation:** You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
+You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
 
 ## Organizational alignment
 

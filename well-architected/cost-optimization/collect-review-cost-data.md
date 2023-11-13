@@ -133,15 +133,15 @@ Implement automated processes to identify and address cost variances in real-tim
 
 ## Azure facilitation
 
-**Collect and group cost data**: Azure provides services like [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) and Azure Advisor that help track and analyze your Azure spending and usage. These services capture the necessary data to calculate costs accurately. Use Azure tags to group costs to align with different business units, engineering environments, and cost departments. Tags provide the visibility needed for businesses to manage and allocate costs across different groups.
+**Collecting and grouping cost data**: Azure provides services like [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) and Azure Advisor that help track and analyze your Azure spending and usage. These services capture the necessary data to calculate costs accurately. Use Azure tags to group costs to align with different business units, engineering environments, and cost departments. Tags provide the visibility needed for businesses to manage and allocate costs across different groups.
 
-**Generate cost reports**: [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis)  offers customizable reports that provide insights into your incurred costs, prepaid costs, trends, and forecasts. These reports can be tailored to your specific requirements and provide a comprehensive view of your costs.
+**Generating cost reports**: [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis)  offers customizable reports that provide insights into your incurred costs, prepaid costs, trends, and forecasts. These reports can be tailored to your specific requirements and provide a comprehensive view of your costs.
 
-**Review cost data**: [Microsoft Power BI](/azure/cost-management-billing/costs/manage-automation#suggestions-for-handling-large-datasets) can help with collecting and reviewing cost data. Power BI provides a comprehensive solution for collecting, reviewing, and analyzing cost data. It enables you to gain insights, track trends, and optimize costs effectively. It integrates with Cost Management and allows you to import cost data into Power BI.
+**Reviewing cost data**: [Microsoft Power BI](/azure/cost-management-billing/costs/manage-automation#suggestions-for-handling-large-datasets) can help with collecting and reviewing cost data. Power BI provides a comprehensive solution for collecting, reviewing, and analyzing cost data. It enables you to gain insights, track trends, and optimize costs effectively. It integrates with Cost Management and allows you to import cost data into Power BI.
 
 For smaller cost data sets, you can use [Usage Details API](/azure/cost-management-billing/costs/manage-automation#automate-retrieval-with-usage-details-api) to get programmatic retrieval of raw, unaggregated cost data that corresponds to your Azure bill.
 
-**Review architecture design choices**: Azure provides a wide range of PaaS resources. Here are some examples of when you might consider PaaS options:
+**Reviewing architecture design choices**: Azure provides a wide range of PaaS resources. Here are some examples of when you might consider PaaS options:
 
 |Task|Use|
 |---|---|
@@ -151,7 +151,7 @@ For smaller cost data sets, you can use [Usage Details API](/azure/cost-manageme
 |Secure access to virtual machine|[Azure Bastion](/azure/bastion) instead of virtual machines as jump boxes.|
 |Network security|[Azure Firewall](/azure/firewall/) instead of virtual network appliances.|
 
-**Automated alerts**: Cost Management enables you to set up [automated alerts and actions](/azure/cost-management-billing/costs/manage-automation#automate-alerts-and-actions-with-budgets) based on spending thresholds or budgets. These alerts can trigger notifications to stakeholders when costs exceed predefined limits or deviate from expected patterns. You should use [Cost analysis](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) to view and respond to cost anomalies. This feature can highlight unexpected spikes or drops in costs, allowing for timely investigation and action.
+**Automating alerts**: Cost Management enables you to set up [automated alerts and actions](/azure/cost-management-billing/costs/manage-automation#automate-alerts-and-actions-with-budgets) based on spending thresholds or budgets. These alerts can trigger notifications to stakeholders when costs exceed predefined limits or deviate from expected patterns. You should use [Cost analysis](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) to view and respond to cost anomalies. This feature can highlight unexpected spikes or drops in costs, allowing for timely investigation and action.
 
 ## Related links
 

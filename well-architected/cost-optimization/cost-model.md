@@ -122,21 +122,21 @@ Update the cost model whenever you change services. Use the cloud platform's cal
 
 ## Azure facilitation
 
-**Azure pricing overview:** The Azure [pricing overview](https://azure.microsoft.com/pricing/#product-pricing) provides pricing information for all Azure services. It shows a comprehensive view of the costs that are associated with different Azure services.
+**Estimating workload costs and developing a cost model**: The Azure [pricing overview](https://azure.microsoft.com/pricing/#product-pricing) provides pricing information for all Azure services. It shows a comprehensive view of the costs that are associated with different Azure services.
 
-**Azure pricing calculator:** The Azure [pricing calculator](https://azure.microsoft.com/pricing/calculator/) is a tool that allows you to estimate the hourly or monthly costs of your workload. Input the services that you plan to use to generate an estimate of the associated costs. This estimate helps you plan and budget for your Azure usage.
+The Azure [pricing calculator](https://azure.microsoft.com/pricing/calculator/) is a tool that allows you to estimate the hourly or monthly costs of your workload. Input the services that you plan to use to generate an estimate of the associated costs. This estimate helps you plan and budget for your Azure usage.
 
-**Total cost of ownership (TCO) calculator:** The [total cost of ownership (TCO) calculator](https://azure.microsoft.com/pricing/tco/calculator/) helps you estimate the cost savings of migrating your workload to Azure. It takes into account factors such as infrastructure, management, and labor costs to provide an estimate of the total cost of ownership. This estimate helps you make informed decisions about the financial aspects of your Azure migration.
+The [total cost of ownership (TCO) calculator](https://azure.microsoft.com/pricing/tco/calculator/) helps you estimate the cost savings of migrating your workload to Azure. It takes into account factors such as infrastructure, management, and labor costs to provide an estimate of the total cost of ownership. This estimate helps you make informed decisions about the financial aspects of your Azure migration.
 
-**Tag inheritance:** Azure allows you to use tag inheritance to [group and allocate costs](/azure/cost-management-billing/costs/enable-tag-inheritance). Tags are metadata that you can assign to Azure resources. With tag inheritance, you can track and manage costs for different teams or projects within your organization to help with cost allocation and analysis.
-
-**Cost forecasts:** Azure automatically provides [cost forecasts](/azure/cost-management-billing/costs/quick-acm-cost-analysis#understand-your-forecast), which enable you to plan and budget for your Azure usage. These forecasts help you understand the projected costs based on your current usage patterns and allow you to make proactive decisions to optimize costs.
-
-**Budget creation and management:** Azure provides tools that allow you to [create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets). Budgets help you proactively inform others about their spending, manage costs, and monitor spending over time. You can set budget thresholds, receive alerts, and track expenses to ensure cost control and optimization.
-
-**Azure Hybrid Benefit:** Azure Hybrid Benefit is a program that cloud service providers, like Azure, offer. It allows customers to use their own licenses for certain software products on the cloud. Use your own license to take advantage of discounted pricing for using that software on the cloud platform. Sometimes Azure Hybrid Benefit is part of the customer agreement between the cloud service provider and the customer. This agreement outlines the terms and conditions for utilizing the benefit and the eligible software products that are covered under it.
+[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that cloud service providers, like Azure, offer. It allows customers to use their own licenses for certain software products on the cloud. Use your own license to take advantage of discounted pricing for using that software on the cloud platform. Sometimes Azure Hybrid Benefit is part of the customer agreement between the cloud service provider and the customer. This agreement outlines the terms and conditions for utilizing the benefit and the eligible software products that are covered under it.
 
 When you extend your existing investments in software licenses to the cloud, you save on costs. Instead of paying the full price for using the software on the cloud, you benefit from the discounted pricing that Azure Hybrid Benefit offers.
+
+**Setting a budget**: Azure provides tools that allow you to [create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets). Budgets help you proactively inform others about their spending, manage costs, and monitor spending over time. You can set budget thresholds, receive alerts, and track expenses to ensure cost control and optimization.
+
+**Maintaining a cost model**: Azure automatically provides [cost forecasts](/azure/cost-management-billing/costs/quick-acm-cost-analysis#understand-your-forecast), which enable you to plan and budget for your Azure usage. These forecasts help you understand the projected costs based on your current usage patterns and allow you to make proactive decisions to optimize costs.
+
+Azure allows you to use tag inheritance to [group and allocate costs](/azure/cost-management-billing/costs/enable-tag-inheritance). Tags are metadata that you can assign to Azure resources. With tag inheritance, you can track and manage costs for different teams or projects within your organization to help with cost allocation and analysis.
 
 ## Related links
 

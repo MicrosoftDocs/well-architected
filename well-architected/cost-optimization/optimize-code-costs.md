@@ -266,35 +266,33 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 
 ## Azure facilitation
 
-**Instrumenting code:** Azure provides monitoring and logging tools like [Azure Monitor](/azure/azure-monitor/overview), [Application Insights](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview). You can use these tools to track and analyze the performance and behavior of your code in real time.
+**Instrumenting code**: Azure provides monitoring and logging tools like [Azure Monitor](/azure/azure-monitor/overview), [Application Insights](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview). You can use these tools to track and analyze the performance and behavior of your code in real time.
 
-**Identifying hot paths:** Application Insights and [Application Insights Profiler](/azure/azure-monitor/profiler/profiler-overview) help identify the hot paths in your code by analyzing execution times and resource usage.
+**Identifying hot and optimize paths**: Application Insights and [Application Insights Profiler](/azure/azure-monitor/profiler/profiler-overview) help identify and optimize the hot paths in your code by analyzing execution times and resource usage. You can minimize unnecessary memory allocations and optimize memory usage with Profiler.
 
-**Minimizing allocations:** You can minimize unnecessary memory allocations and optimize memory usage by using tools like Profiler and optimizing your code for efficient memory management.
+**Using the right SDKs**: Azure offers [SDKs](https://azure.microsoft.com/downloads/) in multiple programming languages, optimized for performance and ease of use. These SDKs provide prebuilt functions and libraries that interact with Azure services to reduce the need for custom implementation.
 
-**Performant SDKs:** Azure offers [SDKs](https://azure.microsoft.com/downloads/) in multiple programming languages, optimized for performance and ease of use. These SDKs provide prebuilt functions and libraries that interact with Azure services to reduce the need for custom implementation.
+**Optimizing network traversal**: Various Azure services support high-speed network protocols like [HTTP/2](/azure/application-gateway/features#websocket-and-http2-traffic) and [QUIC](/azure/storage/files/storage-files-networking-overview#smb-over-quic) for efficient communication between services and applications.
 
-**Network protocols:** Various Azure services support high-speed network protocols like [HTTP/2](/azure/application-gateway/features#websocket-and-http2-traffic) and [QUIC](/azure/storage/files/storage-files-networking-overview#smb-over-quic) for efficient communication between services and applications.
+Azure services, such as [Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices), support [connection pooling](/azure/app-service/troubleshoot-intermittent-outbound-connection-errors#modify-the-application-to-use-connection-pooling).
 
-**Connection pooling:** Azure services, such as [Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices), support [connection pooling](/azure/app-service/troubleshoot-intermittent-outbound-connection-errors#modify-the-application-to-use-connection-pooling).
+Azure supports batch processing in various services, so you can group multiple operations together and run them in a single request. Batch processing can significantly improve efficiency and reduce network overhead.
 
-**Batching:** Azure supports batch processing in various services, so you can group multiple operations together and run them in a single request. Batch processing can significantly improve efficiency and reduce network overhead.
+Regarding data serialization, Azure supports various serialization formats, including JSON and XML. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
 
-**Caching:** Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, which results in faster retrieval and reduced back-end load.
+**Optimizing data access**: Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, which results in faster retrieval and reduced back-end load.
 
-**Data serialization:** Azure supports various serialization formats, including JSON and XML. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
+- *Indexing and query optimization:* Azure services like [Azure SQL Database](/azure/azure-sql/database/automatic-tuning-overview) and [Azure Cosmos DB](/azure/cosmos-db/index-policy) provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
 
-**Indexing and query optimization:** Azure services like [Azure SQL Database](/azure/azure-sql/database/automatic-tuning-overview) and [Azure Cosmos DB](/azure/cosmos-db/index-policy) provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
+- *Object-relational mapping (ORM):* Azure supports ORM frameworks like Entity Framework. These frameworks simplify data access and mapping between object-oriented code and relational or NoSQL databases.
 
-**Object-relational mapping (ORM):** Azure supports ORM frameworks like Entity Framework. These frameworks simplify data access and mapping between object-oriented code and relational or NoSQL databases.
+- *Optimizing stored procedures:* You can use Azure services like [Azure SQL Database](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) to create and optimize stored procedures. Stored procedures can enhance performance by reducing network round trips and precompiling SQL statements.
 
-**Optimizing stored procedures:** You can use Azure services like [Azure SQL Database](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) to create and optimize stored procedures. Stored procedures can enhance performance by reducing network round trips and precompiling SQL statements.
+- *Partitioning and sharding:* Azure offers partitioning and sharding capabilities in services like [Azure Cosmos DB](/azure/cosmos-db/partitioning-overview) and [Azure SQL Database](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes). You can use partitioning to distribute data across multiple nodes for scalability and performance optimization.
 
-**Partitioning and sharding:** Azure offers partitioning and sharding capabilities in services like [Azure Cosmos DB](/azure/cosmos-db/partitioning-overview) and [Azure SQL Database](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes). You can use partitioning to distribute data across multiple nodes for scalability and performance optimization.
+- *Compressing data:* Azure services support data compression techniques like GZIP and DEFLATE.
 
-**Compressing data:** Azure services support data compression techniques like GZIP and DEFLATE.
-
-**Design patterns and architecture:** Azure provides architectural guidance and design patterns for designing scalable, resilient, and performant applications.
+**Optimizing architecture**: Azure provides architectural guidance and design patterns for designing scalable, resilient, and performant applications. For more information, see [Design patterns](/azure/architecture/patterns/).
 
 ## Related links
 

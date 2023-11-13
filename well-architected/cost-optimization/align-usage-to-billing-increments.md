@@ -20,7 +20,7 @@ This guide describes the recommendations for aligning resource usage to billing 
 
 | Term | Definition  |
 |----|---|
-| Billing increment | A usage amount that incurs a cost, such as a unit of time, number of instances, or size of data. It's also known as a *meter*. |
+| Billing increment | A usage amount that incurs a cost (*meter*), such as a unit of time, number of instances, or size of data. |
 | Billing factor  | The type of usage that incurs costs, such as time, storage amount, data transfer amount, or number of requests. |
 
 ## Key design strategies
@@ -31,7 +31,7 @@ To save money, ensure that you understand how you're billed for a service. You n
 
 ### Determine billing factors
 
-Billing factors differ among services. Billing factors include the instance number, time, transaction rate, transaction size, availability zone, location, storage amount, ingress data, and egress data. Familiarize yourself with the pricing thresholds of the services that you use. You can align your usage to maximize the value of the resource and only run incur charges when necessary.
+Billing factors differ among services. Billing factors include the instance number, time, transaction rate, and transaction size. They also include availability zone, location, storage amount, ingress data, and egress data. Familiarize yourself with the pricing thresholds of the services that you use. You can align your usage to maximize the value of the resource and only run incur charges when necessary.
 
 Here are some common billing factors:
 
@@ -88,13 +88,17 @@ If neither option is feasible, you need to accept the extra cost. Rework the bud
 
 ## Azure facilitation
 
-**SKUs:** SKUs represent the service tiers in Azure products. Azure offers various SKUs within each service. Switching SKUs can help you align billing increments with usage patterns.
+**Determining billing factors and increments**: Azure has product pricing details for every [Azure product](https://azure.microsoft.com/pricing/#product-pricing). Search for the products in your workload and catalog the different billing factors and increments for each billing factor. You can also use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of different increments.
 
-**Usage analysis:** You can use Azure billing increments to analyze resource usage patterns and identify areas of high consumption. Understand how resources are utilized, so you can make informed decisions about optimizing their usage and minimizing unnecessary costs.
+**Mapping usage to billing increments**: You can use your [Azure bill](/azure/cost-management-billing/understand/review-individual-bill) to analyze resource usage patterns and identify areas of high consumption. You can [view and download your Azure invoice](/azure/cost-management-billing/understand/download-azure-invoice). These features help you understand how resources are utilized, so you can make informed decisions about optimizing their usage and minimizing unnecessary costs.
 
-**Detailed cost analysis:** Microsoft Cost Management and Azure Advisor provide optimization recommendations that are based on usage and cost data. These recommendations help you identify opportunities for cost savings. With this data, you can determine if resources are over-provisioned or underutilized, and right-size them to match the workload requirements. Right-sizing resources can help align to billing increments.
+You can get a quick overview of your [invoiced usage and charges](/azure/cost-management-billing/understand/review-individual-bill) on the Subscriptions page in the Azure portal. It's important to [understand the terms in your Azure usage and charges file](/azure/cost-management-billing/understand/understand-usage).
 
-**Cost alerts and budgets:** With Azure, you can set up cost alerts and budgets. Cost alerts notify you when consumption reaches predefined thresholds, allowing you to proactively monitor spending. Budgets help you set limits and track the burn rate of your resources, which helps ensure cost control.
+**Aligning usage to maximize value**: [Microsoft Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview) and Azure Advisor provide optimization recommendations that are based on usage and cost data. These recommendations help you identify opportunities for cost savings. With this data, you can determine if resources are over-provisioned or underutilized, and right-size them to match the workload requirements. Right-sizing resources can help align to billing increments.
+
+Product SKUs represent the service tiers in Azure products. Azure offers various SKUs within each service. Switching SKUs can help you align billing increments with usage patterns. You can use the [Azure product pricing pages](https://azure.microsoft.com/pricing/#product-pricing) to compare the different tiers for each product.
+
+With Azure, you can set up cost alerts and budgets. [Cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending) notify you when consumption reaches predefined thresholds, allowing you to proactively monitor spending. [Budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) help you set limits and track the burn rate of your resources, which helps ensure cost control.
 
 ## Next steps
 
