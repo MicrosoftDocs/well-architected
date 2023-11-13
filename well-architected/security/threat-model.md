@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 **Related guide**: [Recommendations for securing a development lifecycle](secure-development-lifecycle.md)
 
-A comprehensive analysis to identify threats, attacks, vulnerabilities, and counter measures are crucial during the design phase of a workload. *Threat modeling* is an engineering exercise that includes defining security requirements, identifying and mitigating threats, and validating those mitigations. You can use this technique at any stage of application development or production, but it's most effective during the design stages of new functionality.
+A comprehensive analysis to identify threats, attacks, vulnerabilities, and counter measures is crucial during the design phase of a workload. *Threat modeling* is an engineering exercise that includes defining security requirements, identifying and mitigating threats, and validating those mitigations. You can use this technique at any stage of application development or production, but it's most effective during the design stages of new functionality.
 
 This guide describes the recommendations for doing threat modeling so that you can identify security gaps quickly and design your security defenses.
 

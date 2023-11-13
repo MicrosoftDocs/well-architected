@@ -158,7 +158,7 @@ Network security groups (NSG): An access control mechanism for controlling traff
 
 Here are some common patterns for segmenting a workload in Azure. Choose a pattern based on your needs.
 
-This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below shows segmentation at the managemement group level done by an organization. 
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below shows segmentation at the management group level done by an organization. 
 
 :::image type="content" source="images/segmentation/segmentation-enterprise.svg" alt-text="Diagram that shows an example of an organization's segmentation strategy for various workloads." lightbox="images/segmentation/segmentation-enterprise.svg":::
 

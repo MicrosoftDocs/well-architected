@@ -117,7 +117,7 @@ Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offe
 
 ## Example
 
-This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The diagram below example shows data stores where data is classified.   
+This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The example diagram below shows data stores where data is classified.   
 
 :::image type="content" source="images/data-classification/data-classification-enterprise.svg" alt-text="Diagram that shows an example of an organization's data classification." lightbox="images/data-classification/data-classification-enterprise.svg":::
 
