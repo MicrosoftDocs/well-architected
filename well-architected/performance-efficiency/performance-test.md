@@ -56,7 +56,7 @@ When you define acceptance criteria, it's important to focus on users and their 
 
 *Set acceptance thresholds.* Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, suppose the acceptance criterion for response time is less than 2 seconds. You can set the threshold at 2.5 seconds. This level indicates that any response time over 2.5 seconds is considered a performance issue.
 
-*Define passing criteria.* Establish the criteria for determining whether the workload has passed or failed the performance test. You might define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
+*Define passing criteria.* Establish the criteria for determining whether the workload passed or failed the performance test. You might define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
 
 #### Select the test type
 
@@ -106,7 +106,7 @@ The following steps can help you select the appropriate testing tools:
 
 - *Conduct a POC*. Select a few tools that appear to be the most suitable based on your evaluation. Conduct a small-scale POC to validate the usability, features, and effectiveness of the tools in your specific testing scenario.
 
-- *Consider support and training*. Evaluate the level of support and training that's provided by the tool's vendor or community. Determine the availability of documentation, tutorials, and technical support channels to assist with any challenges or issues that might arise during the testing process.
+- *Consider support and training*. Evaluate the level of support and training that the tool's vendor or community provides. Determine the availability of documentation, tutorials, and technical support channels to assist with any challenges or issues that might arise during the testing process.
 
 #### Create test scenarios
 
@@ -116,7 +116,7 @@ Test scenarios make it possible to replicate various workload patterns, such as 
 
 - *Define user behavior*. Emulate realistic user behavior and workload patterns by identifying the steps and actions that users perform when they interact with the workload. Consider activities such as signing in, performing searches, submitting forms, or accessing specific features. Break down each scenario into specific steps and actions that represent the user's interaction with the workload. You can include navigating through pages, performing transactions, or interacting with various elements of the workload.
 
-- *Determine data involvement*. Identify the test data that's required to run the test scenarios. You might include creating or generating realistic data sets that represent various scenarios, user profiles, or data volumes. Ensure that the test data is diverse and covers different use cases to provide a comprehensive performance evaluation.
+- *Determine data involvement*. Identify the test data required to run the test scenarios. You might include creating or generating realistic data sets that represent various scenarios, user profiles, or data volumes. Ensure that the test data is diverse and covers different use cases to provide a comprehensive performance evaluation.
 
 - *Design test scripts*. Create test scripts that automate the execution of the defined test scenarios. Test scripts typically consist of a sequence of actions, HTTP requests, or interactions with workload APIs or user interfaces. Use performance testing tools or programming languages to write the scripts, considering factors such as parameterization, correlation, and dynamic data handling. Validate the test scripts for correctness and functionality. Debug any issues, such as script errors, missing or incorrect actions, or data-related problems. Test script validation is crucial to help ensure accurate and reliable performance test execution.
 
@@ -197,13 +197,13 @@ Continuous testing involves the ongoing monitoring and refinement of your tests.
 
 ## Azure facilitation
 
-**Chaos testing:** [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) provides a way for you to inject real-world faults into your application so that you can run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience.
+**Perform the tests**: [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate performance testing into your CI/CD pipeline. You can incorporate load testing as a step in your pipeline to validate the performance and scalability of your applications.
 
-**Automated load testing:** [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application. Load Testing provides capabilities for automating load tests and integrating them into your continuous integration and continuous delivery (CI/CD) workflow. You can define test criteria, such as average response time or error thresholds, and automatically stop load tests based on specific error conditions. Load Testing offers a dashboard that provides live updates and detailed resource metrics of Azure application components during a load test. You can analyze the test results, identify performance bottlenecks, and compare multiple test runs to understand performance regressions over time.
+[Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) provides a way for you to inject real-world faults into your application so that you can run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience.
 
-**Testing changes:** [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate performance testing into your CI/CD pipeline. You can incorporate load testing as a step in your pipeline to validate the performance and scalability of your applications.
+[Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application. Load Testing provides capabilities for automating load tests and integrating them into your continuous integration and continuous delivery (CI/CD) workflow. You can define test criteria, such as average response time or error thresholds, and automatically stop load tests based on specific error conditions. Load Testing offers a dashboard that provides live updates and detailed resource metrics of Azure application components during a load test. You can analyze the test results, identify performance bottlenecks, and compare multiple test runs to understand performance regressions over time.
 
-**Monitoring:** [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
+**Analyzing the results**: [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Testing takes time and skill to perform and can affect operational efficiency.
 

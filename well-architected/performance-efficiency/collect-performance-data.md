@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
 |---|---|
 
-Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data that's organized into records.
+Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data organized into records.
 
 By collecting performance data, you can monitor and analyze the performance of a workload. You can use this information to identify performance bottlenecks, to troubleshoot issues, to optimize resource allocation, and to make data-driven decisions to improve the overall performance efficiency of the workload.  
 
@@ -66,7 +66,7 @@ Collecting application data involves monitoring and analyzing an application's p
 
 #### Instrument code
 
-Instrumentation refers to the process of embedding code snippets or integrating tools into an application code to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's important to differentiate between business-related operations and operations that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
+Instrumentation refers to the process of embedding code snippets or integrating tools into an application code. The purpose of instrumentation is to capture performance data while the application runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's important to differentiate between business-related operations and operations that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
 
 - *Identifying performance bottlenecks:* By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
 
@@ -116,19 +116,19 @@ By collecting resource performance data, you can gain insights into the health a
 
 - *Use platform tooling.* Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
 
-- *Monitor network traffic.* To monitor network traffic means to track and analyze the flow and patterns of data as it moves across network pathways. Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
+- *Monitor network traffic.* Monitoring network traffic means to track and analyze the flow and patterns of data as it moves across network pathways. Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
 ### Collect database and storage data
 
 Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators. Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Consider collecting the following types of performance data:
 
-- *Throughput*: Data about the amount of data that's read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
+- *Throughput*: Throughput measure the amount of data read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
 
-- *Latency*: Data about how long storage operations last. Latency data indicates the responsiveness of the storage system.
+- *Latency*: Latency measures how long storage operations last. Latency data indicates the responsiveness of the storage system.
 
 - *IOPS (I/O operations per second)*: Data about the number of read operations or write operations that the storage system can perform in a second. IOPS data indicates the storage system's throughput and responsiveness.
 
-- *Capacity use*: Data about the amount of storage capacity that's used and the amount that's available. Capacity-use data helps organizations plan for future storage needs.
+- *Capacity use*: Capacity use is the amount of storage capacity used and the amount that's available. Capacity-use data helps organizations plan for future storage needs.
 
 For databases, you should also collect database-specific metrics:
 
@@ -140,7 +140,7 @@ For databases, you should also collect database-specific metrics:
 
 - *Resource use*: Data that includes CPU, memory, disk space, I/O, and network bandwidth.
 
-- *Connection metrics*: Metrics that track the number of active, aborted, and failed connections. High failure rates could indicate network issues or could indicate that the database has reached its maximum number of connections.
+- *Connection metrics*: Metrics that track the number of active, aborted, and failed connections. High failure rates could indicate network issues or could indicate that the database reached its maximum number of connections.
 
 - *Transaction rates*: The number of transactions that a database runs per second. A change in transaction rates can indicate performance issues.
 
@@ -164,31 +164,33 @@ At a minimum, collect data about the following performance areas.
 
 Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Make it a routine to analyze the data, as frequent evaluations allow for early detection and mitigation of performance issues.
 
-- *Create alerts.* It's beneficial to have alerts that are actionable, enabling prompt identification and rectification of performance problems. These alerts should clearly indicate which performance threshold has been breached, the potential business effect, and the involved components. Start by setting common and recommended alert. Over time, you can modify these criteria based on your specific needs. The primary objective of these alerts should be to forecast potential performance drops before they escalate into significant issues. If you can't set an alert for an external dependency, consider devising a method to gather indirect measurements, like the duration of a dependency call.
+- *Create alerts.* It's beneficial to have alerts that are actionable, enabling prompt identification and rectification of performance problems. These alerts should clearly indicate the breached performance threshold, the potential business effect, and the involved components. Start by setting common and recommended alert. Over time, you can modify these criteria based on your specific needs. The primary objective of these alerts should be to forecast potential performance drops before they escalate into significant issues. If you can't set an alert for an external dependency, consider devising a method to gather indirect measurements, like the duration of a dependency call.
 
 - *Set data collection limits.* Determine and set logical limits on the volume of data you collect and its retention duration. Telemetry can sometimes produce overwhelming amounts of data. It's essential to focus on capturing only the most vital performance indicators or have an efficient system in place to extract meaningful insights from your performance data.
 
 ## Azure facilitation
 
-**Collecting and analyzing performance data:** Azure Monitor is a cloud monitoring service that provides visibility into the health and performance of your applications. Use it to collect and analyze metrics, logs, and other telemetry data. You can configure Azure Monitor to collect performance data for your workload.
+**Centralizing, segmenting, and retaining performance data**: [Azure Monitor](/azure/azure-monitor/overview) collects and aggregates data from every layer and component of your workload across multiple Azure and non-Azure subscriptions and tenants. It stores the data in a common data platform for consumption by a common set of tools that can correlate, analyze, visualize, and/or respond to the data.
 
-Within Azure Monitor, you can use Azure Monitor Logs to collect, analyze, and visualize log data from your applications and systems. You can configure Azure Monitor Logs to ingest logs from your application, including application-level logs and infrastructure logs. By aggregating logs, you can cross-query events and gain insights into the performance of your application. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) and [Pricing for Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+You need at least one [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview) to enable Azure Monitor Logs. You can use a single workspace for all your data collection. You can also create multiple workspaces based on requirements to segment performance data. It also allows you to define [retention policies](/azure/azure-monitor/logs/data-retention-archive).
 
-**Application performance data:** Application Insights is a feature of Azure Monitor that helps you monitor the performance and availability of your application. It provides application-level insights by collecting telemetry data such as request rates, response times, and exception details. You can enable Application Insights for your application and configure it to collect the necessary performance data. Application Insights also supports [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation). Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
+**Collecting application performance data**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) is a feature of Azure Monitor that helps you monitor the performance and availability of your application. It provides application-level insights by collecting telemetry data such as request rates, response times, and exception details. You can enable Application Insights for your application and configure it to collect the necessary performance data. Application Insights also supports [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation). Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
 
 Performance counters are a powerful way to monitor the performance of your application. Azure provides various performance counters that you can use to collect data about CPU usage, memory usage, disk I/O, network traffic, and more. If you configure your application to emit performance counter data, Azure Monitor collects and stores the data for analysis.
 
-**Platform performance data:** Most Azure services generate platform logs and metrics that provide diagnostic and auditing information. By enabling diagnostic settings, you can specify the platform logs and metrics to collect and store. For correlation purposes, enable diagnostics for all supported services and then send the logs to the same destination as your application logs.
+**Collecting resource performance data**: Most Azure services generate platform logs and metrics that provide diagnostic and auditing information. By enabling diagnostic settings, you can specify the platform logs and metrics to collect and store. For correlation purposes, enable diagnostics for all supported services and then send the logs to the same destination as your application logs.
 
-**Database and storage performance data:** Azure Monitor allows you to collect performance data for databases in Azure. You can enable monitoring for Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, and other database services. Azure Monitor provides metrics and logs for monitoring database performance, including CPU use, memory use, and query performance. To be notified of issues, you can set up alerts based on performance thresholds.
+**Collecting database and storage performance data**: Azure Monitor allows you to collect performance data for databases in Azure. You can enable monitoring for Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, and other database services. Azure Monitor provides metrics and logs for monitoring database performance, including CPU use, memory use, and query performance. To be notified of issues, you can set up alerts based on performance thresholds.
 
 Azure offers performance recommendations for databases, such as SQL Server on Azure Virtual Machines. These recommendations help you optimize the performance of your database workloads. They include suggestions for collecting performance counters, capturing wait statistics, and gathering performance data during peak hours.
 
 Azure Storage Analytics allows you to collect performance data for Azure Storage services like Blob Storage, Table Storage, and Queue Storage. You can enable logging and metrics for your storage accounts to monitor key performance indicators, such as the number of read/write operations, throughput, and latency.
 
-**Operating system performance data:** The Azure Diagnostics extension enables you to collect detailed performance data from your virtual machines (VMs), including CPU, memory, disk I/O, and network traffic. This data can be sent to Azure Monitor or other storage services for analysis and alerting.
+**Collecting operating system performance data:** The Azure Diagnostics extension enables you to collect detailed performance data from your virtual machines (VMs), including CPU, memory, disk I/O, and network traffic. This data can be sent to Azure Monitor or other storage services for analysis and alerting.
 
-**Alerting:** In Azure Monitor, you can define alert rules to monitor specific performance metrics and trigger alerts based on predefined conditions. For example, you can create an alert rule to notify you when CPU usage exceeds a certain threshold or when response time goes above a specified limit. Configure the alert rule to send notifications to the desired recipients.
+**Validating and analyzing performance data**: Within Azure Monitor, you can use Azure Monitor Logs to collect, analyze, and visualize log data from your applications and systems. You can configure Azure Monitor Logs to ingest logs from your application, including application-level logs and infrastructure logs. By aggregating logs, you can cross-query events and gain insights into the performance of your application. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) and [Pricing for Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+
+In Azure Monitor, you can define alert rules to monitor specific performance metrics and trigger alerts based on predefined conditions. For example, you can create an alert rule to notify you when CPU usage exceeds a certain threshold or when response time goes above a specified limit. Configure the alert rule to send notifications to the desired recipients.
 
 When you create an alert rule, you can define the criteria that determine when an alert should be triggered. You can set thresholds, aggregation methods, time windows, and the frequency of evaluation. Define the criteria based on your performance monitoring requirements. In addition to sending notifications, you can specify actions to be taken when an alert is triggered. Actions can include sending emails, calling webhooks, or running Azure functions. Choose the appropriate actions to respond to the specific alert scenario.
 

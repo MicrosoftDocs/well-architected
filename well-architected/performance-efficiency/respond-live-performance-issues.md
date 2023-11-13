@@ -97,7 +97,7 @@ The documentation should indicate how to prevent each problem from happening aga
 
 ## Azure facilitation
 
-Azure provides several tools to help you respond to live performance issues:
+**Developing methods to identify and resolve issues**: Azure provides several tools to help you respond to live performance issues:
 
 - Azure Monitor is a comprehensive monitoring solution that provides insights into the performance and health of your applications and infrastructure. Monitor offers features such as metrics, logs, alerts, and dashboards to help you monitor and diagnose performance issues.
 

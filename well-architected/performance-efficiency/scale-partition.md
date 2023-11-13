@@ -99,7 +99,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 *Eliminate client affinity.* Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. Pinning can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. Pinning can happen if the algorithm is set up to always send requests from the same user to the same instance. It can also happen if the requests are too similar to each other.
 
 *Eliminate data locking.* Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
 
@@ -121,7 +121,7 @@ Configuring scaling is the process of setting up and adjusting parameters to dyn
 
 *Use services with autoscaling.* The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
 
-*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
+*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component reaches the maximum scale limit and over-scaled.
 
 *Understand service scaling boundaries.* When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
 
@@ -193,7 +193,7 @@ It's important to analyze the characteristics of your data, access patterns, con
 
 - *Vertical partitioning* is appropriate when certain attributes or columns are frequently accessed, while others are accessed less frequently. Vertical partitioning allows for efficient access to the required data by minimizing unnecessary data retrieval.
 
-- *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
+- *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus specific operations.
 
 #### Test and optimize partitioning
 
@@ -209,19 +209,21 @@ Test the partitioning scheme to verify the effectiveness and efficiency of the s
 
 ## Azure facilitation
 
-**Implement scaling.** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure's resources support automatic scaling or other in-place scale options. Some resources support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
+**Optimizing scaling.** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure's resources support automatic scaling or other in-place scale options. Some resources support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
 
 [Azure Monitor](/azure/azure-monitor/overview) allows you to monitor various metrics and conditions in your applications and infrastructure. You can use Monitor to trigger automated scaling actions based on predefined rules. For example, in Azure Kubernetes Service (AKS), you can use Monitor to enable horizontal pod automatic scaling (HPA) and cluster automatic scaling. Using Monitor's monitoring and alerting capabilities, you can effectively facilitate scaling in Azure and help ensure that your applications and infrastructure can dynamically adjust to meet demand.
 
-**Build custom automatic scaling.** You can use alerts in Monitor for resources that don't have an autoscale feature. These alerts can be set up to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, run history and logging, integrated secrets store, and source control integration.
+You can also build custom automatic scaling in Azure. You can use alerts in Monitor for resources that don't have an autoscale feature. These alerts can be set up to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, run history and logging, integrated secrets store, and source control integration.
 
-**Eliminate data locking.** In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strict consistency.
+**Designing application to scale**: Here are some ways Azure facilitates application scaling design;
 
-**Use background tasks.** Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
+- *Eliminating data locking*: In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strict consistency.
 
-**Implement load balancing.** Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
+- *Using background tasks*: Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
 
-**Implement partitioning.** Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see [Data partition strategies](/azure/architecture/best-practices/data-partitioning-strategies).
+- *Implementing load balancing*: Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
+
+**Partitioning a workload**: Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see [Data partition strategies](/azure/architecture/best-practices/data-partitioning-strategies).
 
 ## Related links
 

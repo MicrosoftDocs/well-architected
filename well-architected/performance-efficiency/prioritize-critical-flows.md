@@ -39,7 +39,7 @@ Critical flows refer to the key user flows for paying customers or the flows for
 
 #### Map the flows
 
-Mapping flows refers to the process of identifying and outlining the paths or sequences of user interaction within a workload, as well as understanding the interdependencies between its components or services. This mapping provides a visual representation of how different components interact to support user actions. By mapping the flows, you gain clarity on the user journey. Mapping makes it easier to pinpoint crucial interactions and dependencies that are important for functionality.
+Mapping flows refers to the process of identifying and outlining the paths or sequences of user interaction within a workload. It also includes understanding the interdependencies between its components or services. This mapping provides a visual representation of how different components interact to support user actions. By mapping the flows, you gain clarity on the user journey. Mapping makes it easier to pinpoint crucial interactions and dependencies that are important for functionality.
 
 Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
 
@@ -57,13 +57,13 @@ Monitoring flow metrics involves consistently observing and recording performanc
 
 Prioritizing flows involves evaluating each user flow's importance in relation to your workload's main objectives. Effective flow prioritization ensures that the most important user interactions receive the necessary resources and attention. It optimizes the user experience and workload efficiency. To prioritize flows in your application, consider these steps:
 
-- *Assess user flows*: Begin by evaluating the significance of each user flow in your application. Consider factors like actual usage, alignment with business goals, user impact, and the potential consequences of failures. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
+- *Assess user flows*: Begin by evaluating the significance of each user flow in your application. Consider factors like actual usage, alignment with business goals, user effects, and the potential consequences of failures. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
 
-- *Analyze performance data*: Dive deep into the performance metrics associated with each user flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. Metrics such as user satisfaction, conversion rates, and revenue generation can be particularly revealing.
+- *Analyze performance data*: Dive deep into the performance metrics associated with each user flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. Metrics such as user satisfaction, conversion rates, and revenue generation can be revealing.
 
-- *Prioritize flows*: Based on your comprehensive assessment and data analysis, prioritize the user flows. Allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. Especially focus on flows with high user traffic or those that have a direct impact on revenue generation.
-    
-| Critical flows | Noncritical flows
+- *Prioritize flows*: Based on your comprehensive assessment and data analysis, prioritize the user flows. Allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. Especially focus on flows with high user traffic or flows that have a direct effect on revenue generation.
+
+| Critical flows | Noncritical flows |
 |-|-|
 | High usage | Low usage |
 | Business critical | Not business critical |
@@ -91,15 +91,15 @@ Isolating critical flows means providing dedicated resources or capacity to supp
 
 ### Optimize capacity allocation
 
-Where you can't isolate critical flows, prioritize critical flows in capacity allocation. Optimizing capacity allocation refers to the process of strategically distributing available capacity, like CPU, memory, storage, and network bandwidth, to different flows based on their priority and requirements. The goal is to ensure that the most critical flows (those with the highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
+Where you can't isolate critical flows, prioritize critical flows in capacity allocation. Optimizing capacity allocation refers to the process of strategically distributing available capacity to different flows based on their priority and requirements. Capacity includes CPU, memory, storage, and network bandwidth. The goal is to ensure that the most critical flows (highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
 
 - *Assess resource capacity*: Evaluate how much resource capacity can be allocated to the flows. Capacity might include resources such as CPU, memory, storage, and network bandwidth. Understand the limitations and constraints of your infrastructure or environment.
 
 - *Analyze flow requirements*: Analyze the resource requirements of each flow. Understand the resources the flow needs to operate efficiently. For each flow, identify the resource demands, such as CPU utilization, memory requirements, and network bandwidth. 
 
-- *Prioritize allocations*: Match the available resource capacity to the resource requirements of the flows. Allocate resources based on flow priorities, ensuring that higher-priority flows receive the necessary resources to meet their requirements. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only a certain number of messages per minute, but some storage limits are hard to reach.
+- *Prioritize allocations*: Match the available resource capacity to the resource requirements of the flows. Allocate resources based on flow priorities, ensuring that higher-priority flows receive the necessary resources to meet their requirements. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only some messages per minute, but some storage limits are hard to reach.
   
-- *Use rate limiting*: To ensure that critical flows can consume the resources they need to meet their performance targets, apply rate limits to nonpriority flows and tasks. Rate limits cap the number of requests nonpriority flows and users can make to constrained resources. For example, you might rate-limit nonpriority requests to an API. For more information, see the [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) and [Rate limiting an HTTP handler in .NET](/dotnet/core/extensions/http-ratelimiter).
+- *Use rate limiting*: To ensure that critical flows can consume the resources they need to meet their performance targets, apply rate limits to nonpriority flows and tasks. Rate limits cap the number of requests lower-priority flows and users can make to constrained resources. For example, you might rate-limit nonpriority requests to an API. For more information, see the [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) and [Rate limiting an HTTP handler in .NET](/dotnet/core/extensions/http-ratelimiter).
 
 - *Use priority queue processing*: Priority queue processing gives high priority to certain requests. Queues usually have a first in, first out (FIFO) structure, but you can update your application to assign a priority to messages it adds to the queue. Use this capability to prioritize critical flows and users. For more information, see the [Priority Queue pattern](/azure/architecture/patterns/priority-queue).
 
@@ -109,28 +109,26 @@ Balancing the needs of critical flows with the overall performance of a workload
 
 ## Azure facilitation
 
-Azure services can help you prioritize critical flows in your workload:
+**Identifying, mapping, and monitoring flow metrics**: Azure provides various solutions to help you monitor the performance of critical flows in your workload. Azure Monitor, Azure Monitor Logs, and Azure Application Insights are some of the services that offer comprehensive monitoring capabilities for various types of applications and workloads.
 
-- *Collect metrics*: Azure provides various solutions to help you monitor the performance of critical flows in your workload. Azure Monitor, Azure Monitor Logs, and Azure Application Insights are some of the services that offer comprehensive monitoring capabilities for various types of applications and workloads.
+**Optimizing capacity allocations**: Some Azure services support resource segmentation, logical segmentation, and capacity allocation techniques to allocate capacity and resources to critical flows. You can isolate critical flows through techniques such as creating separate resources, increasing density, using virtualization and containerization, and explicitly allocating resources to critical flows.
 
-- *Rate-limit*: Some Azure services, such as [Azure API Management](/azure/api-management/rate-limit-by-key-policy), provide built-in policies for rate limiting. Azure provides detailed guidance and a sample implementation of the [Rate Limiting design pattern](/azure/architecture/patterns/rate-limiting-pattern).
+Some Azure services, such as [Azure API Management](/azure/api-management/rate-limit-by-key-policy), provide built-in policies for rate limiting. Azure provides detailed guidance and a sample implementation of the [Rate Limiting design pattern](/azure/architecture/patterns/rate-limiting-pattern).
 
-- *Use priority queue processing*: Azure Functions provides event-driven functions that you can trigger in various ways, including by a new message in a queue or topic. Combine Azure Functions with Azure Queue Storage or [Azure Service Bus](/azure/architecture/patterns/priority-queue) to process messages based on their priority.
-
-- *Optimize capacity allocations*: Some Azure services support resource segmentation, logical segmentation, and capacity allocation techniques to allocate capacity and resources to critical flows. You can isolate critical flows through techniques such as creating separate resources, increasing density, using virtualization and containerization, and explicitly allocating resources to critical flows.
+Azure supports priority queue processing. Azure Functions provides event-driven functions that you can trigger in various ways, including by a new message in a queue or topic. Combine Azure Functions with Azure Queue Storage or [Azure Service Bus](/azure/architecture/patterns/priority-queue) to process messages based on their priority.
 
 ## Related links
 
 - [Priority Queue pattern](/azure/architecture/patterns/priority-queue)
-- [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) 
+- [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern)
 - [Rate limiting an HTTP handler in .NET](/dotnet/core/extensions/http-ratelimiter)
 - [Azure API Management](/azure/api-management/rate-limit-by-key-policy)
-- [Azure Service Bus](/azure/architecture/patterns/priority-queue) 
+- [Azure Service Bus](/azure/architecture/patterns/priority-queue)
 
 
 ## Performance Efficiency checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Performance Efficiency checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)

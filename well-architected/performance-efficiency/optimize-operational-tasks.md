@@ -9,10 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for optimizing operational tasks
 
-**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:10](checklist.md)| Optimize operational tasks. Monitor and minimize the effects of the software development lifecycle and other routine operations on workload performance. These operations include virus scans, secret rotations, backups, reindexing databases, and deployments.| 
-|---|---| 
+|[PE:10](checklist.md)| Optimize operational tasks. Monitor and minimize the effects of the software development lifecycle and other routine operations on workload performance. These operations include virus scans, secret rotations, backups, reindexing databases, and deployments.|
+|---|---|
 
 This guide describes the recommendations for optimizing operational tasks. Optimizing operational tasks is the process of minimizing the effects of tasks that you perform as part of routing workload operations. Operations activities use the same compute resources as the workload itself. Failure to consider the effects of operations tasks can cause the workload to miss its performance targets. It can also negatively affect the performance of the workload for your customers.
 
@@ -78,7 +78,7 @@ Essential tools for file integrity monitoring, virus scanning, intrusion detecti
 
 ### Optimize database operations
 
-Optimizing database operations refers to the process of refining and fine-tuning database tasks to ensure maximum efficiency and minimal resource utilization. These operations include tasks like backups, schema changes, performance tuning, and monitoring. Efficient database operations lead to faster query responses, reduced system overhead, and an overall smoother user experience. 
+Optimizing database operations refers to the process of refining and fine-tuning database tasks to ensure maximum efficiency and minimal resource utilization. These operations include tasks like backups, schema changes, performance tuning, and monitoring. Efficient database operations lead to faster query responses, reduced system overhead, and an overall smoother user experience.
 
 Schema changes involve modifying the structure of a database, such as adding or altering tables, columns, or indexes. These changes might require extra processing and resource utilization during the deployment process, potentially affecting the overall performance of the workload. Schema changes can disrupt performance to active queries, indexes, or transactions or cause data to be unavailable.
 
@@ -94,7 +94,9 @@ Excessive or poorly implemented logging, telemetry, instrumentation, and distrib
 
 ## Azure facilitation
 
-**Accounting for operational tasks**: Azure DevOps is a set of development tools and services that enable teams to plan, develop, test, and deliver software efficiently. It includes features like version control, continuous integration and delivery, project management, and more. Azure provides service-to-service integration that minimizes the effects of many operational tasks. For example, services that integrate with Azure Key Vault often support seamless certificate rotation or secret rotation that minimizes effects on performance.
+**Accounting for operational tasks**: [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a set of development tools and services that enable teams to plan, develop, test, and deliver software efficiently. It includes features like version control, continuous integration and delivery, project management, and more.
+
+Azure provides service-to-service integration that minimizes the effects of many operational tasks. For example, services that integrate with Azure Key Vault often support seamless certificate rotation or secret rotation that minimizes effects on performance.
 
 **Optimizing deployments**: App Service provides [deployment slots](/azure/app-service/deploy-staging-slots). You can use deployment slots to deploy code to a nonproduction environment. You can swap app content and configuration elements between two deployment slots. For example, you can switch app content from a nonproduction slot to the production slot.
 

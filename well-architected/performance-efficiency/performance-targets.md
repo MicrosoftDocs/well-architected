@@ -94,7 +94,7 @@ Evaluating customer feedback involves actively seeking out and analyzing the res
 
 ## Azure facilitation
 
-**Setting performance targets.** Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that can inform your performance targets.
+**Setting performance targets**: Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that can inform your performance targets.
 
 [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and measure performance targets. It collects platform metrics and provides ready-to-use dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
 

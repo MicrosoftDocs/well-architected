@@ -14,13 +14,13 @@ ms.topic: conceptual
 |[PE:08](checklist.md)| Optimize data performance. Optimize data stores, partitions, and indexes for their intended and actual use in the workload.|
 |---|---|
 
-This guide describes the recommendations for optimizing data performance. Optimizing data performance is about refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
+This guide describes the recommendations for optimizing data performance. Optimizing data performance is about refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly. Compromised data performance creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
 
 **Definitions**
 
 |Term|Definition|
 |---|---|
-| CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
+| CAP theorem |A framework used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
 |  Database index rebuilding |A maintenance activity that drops and recreates an index.|
 |  Database index reorganization |A maintenance activity that optimizes the current database index. |
 | Data store| A resource that stores data such as a database, object store, or file share. |
@@ -29,7 +29,7 @@ This guide describes the recommendations for optimizing data performance. Optimi
 | Online analytical processing (OLAP)|A technology that organizes large business databases, supports complex analysis, and performs complex analytical queries without negatively affecting transactional systems.|
 |  Online transaction processing (OLTP)|A technology that records business interactions as they occur in day-to-day operations of an organization. |
 | Optimistic concurrency|An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms, improving performance and scalability. |
-|  PACELC theorem | A framework that's used to consider partition tolerance, availability, consistency, and latency to help explain the tradeoffs in data consistency.|
+|  PACELC theorem | A framework used to consider partition tolerance, availability, consistency, and latency to help explain the tradeoffs in data consistency.|
 |Partitioning|The process of physically dividing data into separate data stores.|
 | Query tuning| A process that optimizes the speed of a database query.|
 |  Read replica| A live copy of a primary database that enables you to offload read traffic from a write database.|
@@ -111,7 +111,7 @@ Optimizing database queries refines queries using techniques such index hints an
 
 ### Optimize index performance
 
-Indexes enhance data retrieval speed by allowing databases to swiftly find data using specific columns or fields. By optimizing these indexes, sorting and join operations become more efficient, leading to faster queries. Well-optimized indexes cut down on the disk I/O operations required for queries. Removing unneeded or redundant indexes also frees up valuable storage space. To optimize index performance, consider the following strategies:
+Indexes enhance data retrieval speed by allowing databases to swiftly find data using specific columns or fields. When you optimize these indexes, sorting and join operations become more efficient, leading to faster queries. Well-optimized indexes cut down on the disk I/O operations required for queries. Removing unneeded or redundant indexes also frees up valuable storage space. To optimize index performance, consider the following strategies:
 
 - *Analyze query patterns.* Understand the query patterns that run on your database. Identify the queries that run frequently and might degrade performance. Analyze query patterns to determine which indexes are beneficial for optimizing performance.
 
@@ -133,7 +133,7 @@ Indexes enhance data retrieval speed by allowing databases to swiftly find data 
 
 ### Consider data compression
 
-Data compression is the process of reducing the size of data to optimize storage space and improve workload performance efficiency. Compressed data requires less storage space and less bandwidth for transmitting, which results in fast data transfer. You would compress data to reduce your storage footprint and improve data access times. When you compress data, it reduces I/O operations and network bandwidth requirements. 
+Data compression is the process of reducing the size of data to optimize storage space and improve workload performance efficiency. Compressed data requires less storage space and less bandwidth for transmitting, which results in fast data transfer. You would compress data to reduce your storage footprint and improve data access times. When you compress data, it reduces I/O operations and network bandwidth requirements.
 
 Lossless compression and lossy compression are data compression algorithms. Lossless compression algorithms reduce the size of data without losing any information. Lossy compression algorithms achieve high compression ratios by removing less important or redundant information.
 
@@ -161,7 +161,7 @@ Caching stores commonly accessed data in a fast-access storage area, making data
 
 To ensure optimal caching efficiency, consider factors like expiration policies, eviction strategies, and managing cache size. Adjust settings, such as the time to live (TTL), for optimal performance. To use a cache to optimize storage load, consider the following strategies:
 
-- *In-memory caching*: Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that's read frequently but doesn't frequently change.
+- *In-memory caching*: Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that you read frequently but don't change frequently.
 
 - *Database query caching*: Use this technique to cache the results of database queries to avoid running the same query multiple times. Database query caching is useful for complex and time-consuming database queries. When you cache the results of a query, subsequent requests for the same query are returned quickly.
 
@@ -206,11 +206,10 @@ Optimizing storage design entails crafting a precise data storage architecture a
 Data proximity refers to the strategic placement of data closer to the users or services that access it most frequently. By reducing the physical or logical distance between data and its users, data proximity ensures faster data access and improved responsiveness. To optimize design for close proximity, consider these strategies:
 
 - *Evaluate data access patterns*: Assess your workload's access patterns and frequently accessed data. This analysis can help determine where to place data for maximum benefit.
- 
-- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning.
- 
-- *Choose solutions that support data synchronization*: If catering to a distributed user base, opt for solutions that facilitate data synchronization across various regions, ensuring that data replicas are available in proximity to users.
 
+- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning.
+
+- *Choose solutions that support data synchronization*: If catering to a distributed user base, opt for solutions that facilitate data synchronization across various regions, ensuring that data replicas are available in proximity to users.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: If underlying data changes frequently, implement a cache invalidation mechanism to ensure that the cached data remains up to date.
 
@@ -236,17 +235,17 @@ When you separate OLTP and OLAP systems, you can allocate appropriate resources 
 
 ## Azure facilitation
 
-**Profile data.** Azure offers tools and services that you can use to profile data, such as Azure Data Factory, Azure Purview, and Azure Synapse Analytics. These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
+**Profiling data**: Azure offers tools and services that you can use to profile data, such as [Azure Data Catalog](/azure/data-catalog/data-catalog-how-to-data-profile), [Azure Purview](/purview/governance-solutions-overview), and [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is). These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
 
-**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights. Application Insights provides application performance monitoring and supports many platforms.
+**Monitoring data performance**: To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights. Application Insights provides application performance monitoring and supports many platforms.
 
 Application Insights collects usage and performance data. You can use Log Analytics to correlate that data with configuration and performance data across Azure resources.
 
 You can use the insights feature of [Azure SQL](/azure/azure-sql/database/sql-insights-overview) and [Azure Cosmos DB](/azure/cosmos-db/insights-overview) to monitor your database. This feature enables you to diagnose and tune database performance issues.
 
-**Partition data.** Azure offers various partitioning strategies for different data stores. Each data store might have different considerations and configuration options for data partitioning. For more information, see [Data partitioning strategies](/azure/architecture/best-practices/data-partitioning-strategies).
+**Partitioning data**: Azure offers various partitioning strategies for different data stores. Each data store might have different considerations and configuration options for data partitioning. For more information, see [Data partitioning strategies](/azure/architecture/best-practices/data-partitioning-strategies).
 
-**Optimize queries and indexes.** Use the query performance insight feature of Azure SQL Database to optimize queries, tables, and databases. You can use this feature to identify and troubleshoot query performance issues.
+**Optimizing database queries and index performance**: Use the query performance insight feature of Azure SQL Database to optimize queries, tables, and databases. You can use this feature to identify and troubleshoot query performance issues.
 
 For relational databases, you should follow the [index design guidelines](/sql/relational-databases/sql-server-index-design-guide#General_Design), [SQL Server index guidance](/sql/relational-databases/indexes/indexes), and [Azure Cosmos DB index guidance](/azure/cosmos-db/index-overview). Use SQL Database to perform [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) for queries to improve their performance.
 
@@ -254,9 +253,9 @@ In SQL databases, you should regularly [reorganize or rebuild indexes](/sql/rela
 
 Azure Cosmos DB has a [default indexing policy](/azure/cosmos-db/index-policy) that indexes every property of every item and enforces range indexes for any string or number. This policy provides you with efficient query performance, and you don't have to manage indexes upfront.
 
-**Choose a data store.** Azure offers many different data stores to fit your workload needs. [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview) and [select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree).
+**Optimizing storage load**: Many Azure database services support read replicas. The availability and configuration of read replicas vary depending on the Azure database service. Refer to the official documentation for each service to understand the details and options.
 
-**Read replicas.** Many Azure database services support read replicas. The availability and configuration of read replicas vary depending on the Azure database service. Refer to the official documentation for each service to understand the details and options.
+**Optimizing storage design.** Azure offers many different data stores to fit your workload needs. [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview) and [select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree).
 
 ## Related links
 
