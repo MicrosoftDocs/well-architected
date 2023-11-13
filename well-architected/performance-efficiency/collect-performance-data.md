@@ -170,7 +170,7 @@ Your performance data should align with the performance targets. The data needs 
 
 ## Azure facilitation
 
-**Centralizing, segmenting, and retaining performance data**: [Azure Monitor](/azure/azure-monitor/overview) collects and aggregates data from every layer and component of your workload across multiple Azure and non-Azure subscriptions and tenants. It stores the data in a common data platform for consumption by a common set of tools which can correlate, analyze, visualize, and/or respond to the data.
+**Centralizing, segmenting, and retaining performance data**: [Azure Monitor](/azure/azure-monitor/overview) collects and aggregates data from every layer and component of your workload across multiple Azure and non-Azure subscriptions and tenants. It stores the data in a common data platform for consumption by a common set of tools that can correlate, analyze, visualize, and/or respond to the data.
 
 You need at least one [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview) to enable Azure Monitor Logs. You can use a single workspace for all your data collection. You can also create multiple workspaces based on requirements to segment performance data. It also allows you to define [retention policies](/azure/azure-monitor/logs/data-retention-archive).
 
