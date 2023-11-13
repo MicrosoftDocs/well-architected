@@ -109,7 +109,7 @@ Balancing the needs of critical flows with the overall performance of a workload
 
 ## Azure facilitation
 
-**Monitoring metrics**: Azure provides various solutions to help you monitor the performance of critical flows in your workload. Azure Monitor, Azure Monitor Logs, and Azure Application Insights are some of the services that offer comprehensive monitoring capabilities for various types of applications and workloads.
+**Identifying, mapping, and monitoring flow metrics**: Azure provides various solutions to help you monitor the performance of critical flows in your workload. Azure Monitor, Azure Monitor Logs, and Azure Application Insights are some of the services that offer comprehensive monitoring capabilities for various types of applications and workloads.
 
 **Optimizing capacity allocations**: Some Azure services support resource segmentation, logical segmentation, and capacity allocation techniques to allocate capacity and resources to critical flows. You can isolate critical flows through techniques such as creating separate resources, increasing density, using virtualization and containerization, and explicitly allocating resources to critical flows.
 
