@@ -150,17 +150,15 @@ Preventing unoptimized components is about proactively ensuring components are e
 
 ## Azure facilitation
 
-**Eliminate unused application features**: You can use [Azure Monitor](/azure/azure-monitor/overview) and [Application Insights](/azure/azure-monitor/app/app-insights-overview) to monitor the usage of your application and identify areas that are or aren't used. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
+**Optimize application features**: You can use [Azure Monitor](/azure/azure-monitor/overview) and [Application Insights](/azure/azure-monitor/app/app-insights-overview) to monitor the usage of your application and identify areas that are or aren't used. Based on the insights gathered, you can make informed decisions to remove or optimize unused or underutilized features.
 
-**Eliminate unused resources**: Azure Advisor provides [cost recommendations](/azure/advisor/advisor-reference-cost-recommendations) provides recommendations to identify and eliminate unused resources. You can use Advisor to analyze your resource usage and receive suggestions about resources to remove or scale down.
+**Optimize workload resources and platform features**: Azure Advisor provides [cost recommendations](/azure/advisor/advisor-reference-cost-recommendations) provides recommendations to identify and eliminate unused resources. You can use Advisor to analyze your resource usage and receive suggestions about resources to remove or scale down. The [Cost Optimization workbook](/azure/advisor/advisor-cost-optimization-workbook) in Azure Advisor serves as a centralized hub for some of the most commonly used tools that can help you drive utilization and efficiency goals. It offers a range of recommendations, including Azure Advisor cost recommendations, identification of idle resources, and management of improperly deallocated Virtual Machines.
 
-**Find orphaned resources:** Azure Monitor supports [workbooks](/azure/azure-monitor/visualize/workbooks-overview). You can find or create a workbook that finds and reports orphaned resources across a defined scope.
-
-**Eliminate idle resources in disaster recovery environments**: [Azure load balancers](/azure/architecture/guide/technology-choices/load-balancing-overview) can distribute loads across availability zones and regions. These load balancers can help eliminate idle resources in disaster recovery approaches.
+Azure Monitor supports [workbooks](/azure/azure-monitor/visualize/workbooks-overview). With Azure Monitor workbooks, you can find or create a workbook that finds and reports orphaned resources across a defined scope. You can use [Azure Automation](/azure/automation/automation-solution-vm-management-config) to shut down virtual machines during periods of inactivity. Resource shutdowns help reduce costs by minimizing the use of idle resources.
 
 You can use the [autoscale feature](/azure/azure-monitor/autoscale/autoscale-overview) in Azure to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. Automatic scaling can help you allocate resources efficiently and cost-effectively.
 
-You can use [Azure Automation](/azure/automation/automation-solution-vm-management-config) to shut down virtual machines during periods of inactivity. Resource shutdowns help reduce costs by minimizing the use of idle resources.
+From a design perspective, [Azure load balancers](/azure/architecture/guide/technology-choices/load-balancing-overview) can distribute loads across availability zones and regions. These load balancers can help eliminate idle resources, for example, in disaster recovery approaches.
 
 ## Related links
 
