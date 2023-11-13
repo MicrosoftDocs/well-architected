@@ -128,9 +128,13 @@ Some organizations place restrictions on the physical locations into which their
 
 ##### User location
 
-If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. If your users are in one area, a single-region deployment can simplify your operational requirements and reduce your costs.
+By understanding where your users are located, you can make an informed decision about how to optimize latency and reliability for your needs. Azure provides many options to support a geographically dispersed user base.
 
-Even if your users are in different geographical areas, you might not need a multi-region deployment. Consider whether you can achieve your requirements within a single region by using global traffic acceleration, like the acceleration provided by [Azure Front Door][front-door-global-traffic-acceleration].
+If your users are concentrated in one area, a single-region deployment can simplify your operational requirements and reduce your costs. However, you need to consider whether a single-region deployment meets your reliability requirements. For mission-critical applications, you should still use a multi-region deployment even if your users are colocated.
+
+If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. Azure services provide different capabilities to support a multi-region deployment, and you can use Azure's global footprint to improve your user experience and bring your applications into closer proximity to your user base. You might use the [Deployment Stamps pattern][deployment-stamps-pattern] or the [Geodes pattern][geode-pattern], or replicate your resources across multiple regions.
+
+Even if your users are in different geographical areas, consider whether you need a multi-region deployment. Consider whether you can achieve your requirements within a single region by using global traffic acceleration, like the acceleration provided by [Azure Front Door][front-door-global-traffic-acceleration].
 
 ##### Budget
 
@@ -330,7 +334,7 @@ You can use multiple Azure regions together to distribute your solution across a
 
 #### Active and passive regions
 
-Multi-region architectures are complex, and there are many ways to design a multi-region solution. For some workloads, it makes sense to have multiple regions actively processing requests simultaneously (active-active deployments). For other workloads, it's better to designate one *primary region* and use one or more *secondary regions* for failover (active-passive deployments). This section focuses on the second scenario, in which one region is active and another is passive. For information about active-active multi-region solutions, see [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) and [Geode pattern](/azure/architecture/patterns/geodes).
+Multi-region architectures are complex, and there are many ways to design a multi-region solution. For some workloads, it makes sense to have multiple regions actively processing requests simultaneously (active-active deployments). For other workloads, it's better to designate one *primary region* and use one or more *secondary regions* for failover (active-passive deployments). This section focuses on the second scenario, in which one region is active and another is passive. For information about active-active multi-region solutions, see [Deployment Stamps pattern][deployment-stamps-pattern] and [Geode pattern][geode-pattern].
 
 #### Data replication
 
@@ -486,3 +490,5 @@ Refer to the complete set of recommendations.
 [composite-slos]: <metrics.md#slos-and-slas>
 [front-door-global-traffic-acceleration]: </azure/frontdoor/front-door-overview>
 [traffic-manager]: </azure/traffic-manager/traffic-manager-overview>
+[deployment-stamps-pattern]: </azure/architecture/patterns/deployment-stamp>
+[geode-pattern]: </azure/architecture/patterns/geodes>
