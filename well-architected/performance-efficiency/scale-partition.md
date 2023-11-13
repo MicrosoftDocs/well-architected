@@ -99,7 +99,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 *Eliminate client affinity.* Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. Pinning can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. Pinning can happen if the algorithm is set up to always send requests from the same user to the same instance. It can also happen if the requests are too similar to each other.
 
 *Eliminate data locking.* Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
 
@@ -121,7 +121,7 @@ Configuring scaling is the process of setting up and adjusting parameters to dyn
 
 *Use services with autoscaling.* The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
 
-*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
+*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component reaches the maximum scale limit and over-scaled.
 
 *Understand service scaling boundaries.* When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
 
@@ -193,7 +193,7 @@ It's important to analyze the characteristics of your data, access patterns, con
 
 - *Vertical partitioning* is appropriate when certain attributes or columns are frequently accessed, while others are accessed less frequently. Vertical partitioning allows for efficient access to the required data by minimizing unnecessary data retrieval.
 
-- *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
+- *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus specific operations.
 
 #### Test and optimize partitioning
 
