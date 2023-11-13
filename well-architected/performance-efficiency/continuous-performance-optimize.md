@@ -72,7 +72,7 @@ Automation can eliminate repetitive and time-consuming manual processes, allowin
 
 ### Address technical debt
 
-Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
+Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. Perhaps you introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
 
 ### Optimize databases
 
@@ -82,7 +82,7 @@ Continuously optimizing databases involves identifying and implementing optimiza
 
 - *Maintain indexes*: Evaluate your indexing strategy to ensure that indexes are properly designed and maintained. Index maintenance includes identifying unused or redundant indexes and creating indexes that align with the query patterns. Database indexes help accelerate data retrieval operations. For relational databases, you need to monitor index fragmentation. You should rebuild or reorganize indexes regularly. For nonrelational databases, you need to pick the correct indexing policy for your workload. Use automatic tuning on databases where available. These features include automatically creating missing indexes, dropping unused indexes, and plan correction. For more information, see [Maintaining indexes to improve performance](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
-- *Review model design*: Review the data model to ensure that it's optimized for the specific requirements of the application. Improving query performance and data retrieval might involve denormalization, partitioning, or other techniques.
+- *Review model design*: Review the data model to ensure you optimize it for the specific requirements of the application. Improving query performance and data retrieval might involve denormalization, partitioning, or other techniques.
 
 - *Optimize database configuration*: Optimize database configuration settings such as memory allocation, disk I/O, and concurrency settings to maximize performance and resource utilization.
 
@@ -98,19 +98,17 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 ## Azure facilitation
 
-**Automating performance optimization:** Azure Advisor provides automatic [performance recommendations](/azure/advisor/advisor-performance-recommendations) based on workload telemetry. You should review and address these recommendations regularly. Azure Monitor provides real-time insights into the performance of your system and allows you to set up alerts based on specific performance metrics. Azure Log Analytics provides automated diagnostics and analysis on collected logs and metrics.
+**Automating performance optimization**: Azure Advisor provides automatic [performance recommendations](/azure/advisor/advisor-performance-recommendations) based on workload telemetry. You should review and address these recommendations regularly. Azure Monitor provides real-time insights into the performance of your system and allows you to set up alerts based on specific performance metrics. Azure Log Analytics provides automated diagnostics and analysis on collected logs and metrics. Tools like Azure Application Insights provide insights and recommendations for optimizing performance.
 
-Azure DevOps can help you automate deployment pipelines. Tools like Azure Application Insights provide insights and recommendations for optimizing performance.
+To automate remediation, use automation tools or scripts to execute remediation actions automatically when the alerts are triggered. You can use Azure Automation, Azure Functions, or custom automation solutions.
 
-**Automating remediation:** Use automation tools or scripts to execute remediation actions automatically when the alerts are triggered. You can use Azure Automation, Azure Functions, or custom automation solutions.
+Azure lets performance testing to simulate different user scenarios and workloads. Automated testing can help you identify performance bottlenecks and optimize your system accordingly. Tools like Azure DevOps can automate performance testing.
 
-**Automated performance testing:** Automate performance testing to simulate different user scenarios and workloads. Automated testing can help you identify performance bottlenecks and optimize your system accordingly. Tools like Azure DevOps can automate performance testing.
-
-**Optimizing databases:** The SQL family of products has many [built-in features](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes) that allow you to monitor and remediate SQL database performance. You should use these features to maintain database performance. Azure SQL Database has an [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) feature that continuously monitors and improves queries. You should use this feature to improve SQL queries automatically.
+**Optimizing databases**: The SQL family of products has many [built-in features](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes) that allow you to monitor and remediate SQL database performance. You should use these features to maintain database performance. Azure SQL Database has an [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) feature that continuously monitors and improves queries. You should use this feature to improve SQL queries automatically.
 
 You can [customize your indexing policies](/azure/cosmos-db/index-policy) by using the features of Azure Cosmos DB. Customize the policies to meet the performance needs of your workload.
 
-**Optimizing data efficiency:** Data tiering allows you to store data in different tiers based on its access frequency and importance. It helps optimize storage costs and performance. Azure provides different storage tiers, such as hot, cool, and archive tiers for blob data. Hot tiers are optimized for frequently accessed data, cool tiers are for infrequently accessed data, and archive tiers are for rarely accessed data. By using the storage access tier best suited to your data, you can ensure efficient data storage and retrieval.
+**Optimizing data efficiency**: Data tiering allows you to store data in different tiers based on its access frequency and importance. It helps optimize storage costs and performance. Azure provides different storage tiers, such as hot, cool, and archive tiers for blob data. Hot tiers are optimized for frequently accessed data, cool tiers are for infrequently accessed data, and archive tiers are for rarely accessed data. By using the storage access tier best suited to your data, you can ensure efficient data storage and retrieval.
 
 ## Related links
 
