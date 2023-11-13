@@ -37,7 +37,7 @@ Governance policies can act as spending guardrails on various aspects of resourc
 
 - *Resource limits*: Set resource limits to controls costs and prevent overprovisioning. Include limits on the number of resources that can be provisioned, the size of resources, and the duration of resource usage in your policy. These limits can help you to prevent excessive spending and optimize resource utilization. For example, resource limits can minimize the effects of an unauthorized account breach related to crypto mining.
 
-- *Defined resource configurations*: Policies can define specific configurations for resources. You can enforce settings on resources, such as automatic scaling and data archiving, that promote cost optimization.
+- *Defined resource configurations*: Policies can define specific configurations for resources. You can enforce settings on resources that promote cost optimization such as automatic scaling and data archiving
 
 - *Restricted locations*: You can use policies to restrict the deployment of resources to specific regions or locations. Consider restricting locations to avoid costly data transfer fees and to maintain compliance with data sovereignty regulations.
 
@@ -115,9 +115,9 @@ Azure allows you to set limits or quotas to prevent unexpected costs. You can de
 
 **Using release gates**: Use [Azure Pipelines](/azure/devops/pipelines/release/approvals/) release management to define and enforce your release gates. You can set up manual or automated checkpoints to help ensure that you meet specific criteria, such as security checks, compliance requirements, and cost thresholds.
 
-**Using infrastructure as code.** You can use Azure tools and services to deploy and manage infrastructure resources by using code. By using tools like Azure Resource Manager (ARM) templates, Azure Bicep, and Azure DevOps, you can define and deploy your infrastructure resources in a declarative manner. Azure has [Bicep, ARM, and Terraform templates](/azure/templates/) for every Azure resource.
+**Using infrastructure as code.** You can use Azure tools and services to deploy and manage infrastructure resources by using code. By using tools like Azure Resource Manager (ARM) templates, Azure Bicep, and Azure DevOps, you can define and deploy your infrastructure resources in a declarative manner. Azure has [Bicep, Azure Resource Manager, and Terraform templates](/azure/templates/) for every Azure resource.
 
-Use [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) or other continuous integration and continuous delivery (CI/CD) tools to  automate the build, test, and deployment processes. Teams can use pipelines to define a series of steps and actions that run automatically whenever changes are made to the codebase. Automate these processes to reduce manual effort, ensure consistency, and accelerate the delivery of software..
+Use [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) or other continuous integration and continuous delivery (CI/CD) tools to  automate the build, test, and deployment processes. Teams can use pipelines to define a series of steps and actions that run automatically whenever changes are made to the codebase. Automate these processes to reduce manual effort, ensure consistency, and accelerate the delivery of software.
 
 Consider using lower-cost resources for your ephemeral or nonproduction environments to optimize costs. Azure provides various pricing tiers for resources. Azure DevTest Labs pricing and Azure Reservations are cost-saving methods that you can explore for ephemeral environments.
 
