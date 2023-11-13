@@ -34,7 +34,7 @@ This guide provides recommendations for optimizing scaling costs. Cost optimizin
 
 The goal of cost optimizing scaling is to scale up and out at the last responsible moment and to scale down and in as soon as it’s practical. To optimize scaling for your workload, you can evaluate alternative scaling options within the scale units and align them with the cost model. A scale unit represents a specific grouping of resources that can be scaled independently or together. You should design scale units to handle a specific amount of load, and they can comprise multiple instances, servers, or other resources. You need to evaluate the cost effectiveness of your workload scale units and model alternates.
 
-If you haven’t implemented scaling, see guidance on [scaling the workload](../performance-efficiency/scale-partition.md). You need to figure out if your application can scale. Stateless applications are easier to scale because they can handle multiple requests at the same time. Also, evaluate if the application is built using distributed systems principles. Distributed systems can handle increased load by distributing the workload across multiple nodes. However, a singleton application is designed to have only one instance running at any given time. So scaling might not be appropriate for all workloads.
+If you don't use scaling, see guidance on [scaling the workload](../performance-efficiency/scale-partition.md). You need to figure out if your application can scale. Stateless applications are easier to scale because they can handle multiple requests at the same time. Also, evaluate if the application is built using distributed systems principles. Distributed systems can handle increased load by distributing the workload across multiple nodes. However, a singleton application is designed to have only one instance running at any given time. So scaling might not be appropriate for all workloads.
 
 ### Evaluate scale out versus scale up
 
@@ -54,7 +54,7 @@ The goal is to determine the most cost-efficient choice based on service-tier pr
 
 ### Optimize autoscaling
 
-Optimizing the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s defined nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To optimize autoscaling, consider the following recommendations:
+Optimizing the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To optimize autoscaling, consider the following recommendations:
 
 - *Analyze the current autoscaling policy*: Understand the existing policy and its behavior in response to varying load levels.
 
@@ -136,13 +136,13 @@ Controlling supply refers to defining an upper limit on the amount that you're w
 
 ## Azure facilitation
 
-**Evaluating scale out versus scale up**: Azure provides a test environment where you can deploy and test different scaling configurations. By using the actual workload data or proxy data, you can simulate real-world scenarios and measure the effects on costs. Azure offers tools and services for performance testing, load testing, and monitoring, which can help you evaluate the cost effectiveness of scale out versus scale up options.
+**Evaluating scale-out versus scale-up**: Azure provides a test environment where you can deploy and test different scaling configurations. By using the actual workload data or proxy data, you can simulate real-world scenarios and measure the effects on costs. Azure offers tools and services for performance testing, load testing, and monitoring, which can help you evaluate the cost effectiveness of scale out versus scale up options.
 
 Azure provides cost management recommendations through various tools and services, such as the [Azure Advisor](/azure/advisor/advisor-reference-cost-recommendations). These recommendations analyze your usage patterns, resource utilization, and scaling configurations to provide insights and suggestions for optimizing costs.
 
 [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load-testing service that generates high-scale load. The service simulates traffic for your applications, regardless of where they're hosted. Developers, testers, and quality assurance (QA) engineers can use load testing to optimize application performance, scalability, or capacity.
 
-**Optimizing autoscaling**: Many Azure compute services support deploying multiple identical instances, and rapidly tuning the scaling thresholds and policies. Azure provides autoscaling capabilities that allow you to automatically adjust the number of instances or resources based on workload demand. You can define scaling rules and thresholds to trigger scale out or scale in actions. By using autoscaling, you can optimize resource allocation and cost efficiency by dynamically scaling resources based on actual demand.
+**Optimizing autoscaling**: Many Azure compute services support deploying multiple identical instances, and rapidly tuning the scaling thresholds and policies. Azure provides autoscaling capabilities that allow you to automatically adjust the number of instances or resources based on workload demand. You can define scaling rules and thresholds to trigger scale-out or scale-in actions. By using autoscaling, you can optimize resource allocation and cost efficiency by dynamically scaling resources based on actual demand.
 
 Azure maintains a list of [subscription and service limits.](/azure/azure-resource-manager/management/azure-subscription-service-limits) There’s a general limit to the number of instances of a resource you can deploy in each resource group with some exceptions. For more information, see [Resource instance limits per resource group.](/azure/azure-resource-manager/management/resources-without-resource-group-limit)
 
