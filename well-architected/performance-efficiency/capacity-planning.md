@@ -136,7 +136,7 @@ Azure provides scalability options like autoscaling, which can automatically adj
 
 ## Performance Efficiency checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Performance Efficiency checklist](checklist.md)

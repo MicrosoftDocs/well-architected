@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
 |---|---|
 
-Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data that's organized into records.
+Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data organized into records.
 
 By collecting performance data, you can monitor and analyze the performance of a workload. You can use this information to identify performance bottlenecks, to troubleshoot issues, to optimize resource allocation, and to make data-driven decisions to improve the overall performance efficiency of the workload.  
 
@@ -66,7 +66,7 @@ Collecting application data involves monitoring and analyzing an application's p
 
 #### Instrument code
 
-Instrumentation refers to the process of embedding code snippets or integrating tools into an application code to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's important to differentiate between business-related operations and operations that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
+Instrumentation refers to the process of embedding code snippets or integrating tools into an application code. The purpose of instrumentation is to capture performance data while the application runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's important to differentiate between business-related operations and operations that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
 
 - *Identifying performance bottlenecks:* By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
 
@@ -116,19 +116,19 @@ By collecting resource performance data, you can gain insights into the health a
 
 - *Use platform tooling.* Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
 
-- *Monitor network traffic.* To monitor network traffic means to track and analyze the flow and patterns of data as it moves across network pathways. Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
+- *Monitor network traffic.* Monitoring network traffic means to track and analyze the flow and patterns of data as it moves across network pathways. Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
 ### Collect database and storage data
 
 Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators. Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Consider collecting the following types of performance data:
 
-- *Throughput*: Data about the amount of data that's read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
+- *Throughput*: Throughput measure the amount of data read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
 
-- *Latency*: Data about how long storage operations last. Latency data indicates the responsiveness of the storage system.
+- *Latency*: Latency measures how long storage operations last. Latency data indicates the responsiveness of the storage system.
 
 - *IOPS (I/O operations per second)*: Data about the number of read operations or write operations that the storage system can perform in a second. IOPS data indicates the storage system's throughput and responsiveness.
 
-- *Capacity use*: Data about the amount of storage capacity that's used and the amount that's available. Capacity-use data helps organizations plan for future storage needs.
+- *Capacity use*: Capacity use is the amount of storage capacity used and the amount that's available. Capacity-use data helps organizations plan for future storage needs.
 
 For databases, you should also collect database-specific metrics:
 
@@ -140,7 +140,7 @@ For databases, you should also collect database-specific metrics:
 
 - *Resource use*: Data that includes CPU, memory, disk space, I/O, and network bandwidth.
 
-- *Connection metrics*: Metrics that track the number of active, aborted, and failed connections. High failure rates could indicate network issues or could indicate that the database has reached its maximum number of connections.
+- *Connection metrics*: Metrics that track the number of active, aborted, and failed connections. High failure rates could indicate network issues or could indicate that the database reached its maximum number of connections.
 
 - *Transaction rates*: The number of transactions that a database runs per second. A change in transaction rates can indicate performance issues.
 
@@ -164,7 +164,7 @@ At a minimum, collect data about the following performance areas.
 
 Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Make it a routine to analyze the data, as frequent evaluations allow for early detection and mitigation of performance issues.
 
-- *Create alerts.* It's beneficial to have alerts that are actionable, enabling prompt identification and rectification of performance problems. These alerts should clearly indicate which performance threshold has been breached, the potential business effect, and the involved components. Start by setting common and recommended alert. Over time, you can modify these criteria based on your specific needs. The primary objective of these alerts should be to forecast potential performance drops before they escalate into significant issues. If you can't set an alert for an external dependency, consider devising a method to gather indirect measurements, like the duration of a dependency call.
+- *Create alerts.* It's beneficial to have alerts that are actionable, enabling prompt identification and rectification of performance problems. These alerts should clearly indicate the breached performance threshold, the potential business effect, and the involved components. Start by setting common and recommended alert. Over time, you can modify these criteria based on your specific needs. The primary objective of these alerts should be to forecast potential performance drops before they escalate into significant issues. If you can't set an alert for an external dependency, consider devising a method to gather indirect measurements, like the duration of a dependency call.
 
 - *Set data collection limits.* Determine and set logical limits on the volume of data you collect and its retention duration. Telemetry can sometimes produce overwhelming amounts of data. It's essential to focus on capturing only the most vital performance indicators or have an efficient system in place to extract meaningful insights from your performance data.
 
