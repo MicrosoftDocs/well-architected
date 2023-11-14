@@ -105,7 +105,7 @@ This table lists a few of the common risks that you should consider in a cloud e
 It would be ideal to mitigate every possible risk for every workload, but it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so you can make informed decisions about the risks that you should mitigate.
 
 > [!TIP]
-> Generally, it's only worth mitigating the low-likelihood risks for mission-critical workloads. For example, banks, governments, and healthcare workloads often need to remain operational in all situations. For other workloads, the organization's risk tolerance is usually higher.
+> Regardless of reliability targets, all workloads must have some mitigation for disaster recovery. If your workload demands high reliability targets, then your mitigation strategies should be comprehensive and you should reduce the risk of even low-likelihood events. For other workloads, make an informed decision on which risks you’re prepared to accept and which you need to mitigate.
 
 ##### Resiliency requirements
 
