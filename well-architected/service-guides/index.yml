@@ -20,15 +20,15 @@ highlightedContent:
   items:
     # Card
     - title: Pillars
-      itemType: book-open
+      itemType: architecture
       url: ../pillars.md
     # Card
     - title: Workloads
-      itemType: book-open
+      itemType: architecture
       url: ../workloads.md
     # Card
     - title: Assessment tool
-      itemType: developer-tools
+      itemType: architecture
       url: /assessments/azure-architecture-review/
 
 productDirectory:
