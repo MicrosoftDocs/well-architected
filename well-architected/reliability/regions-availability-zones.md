@@ -407,7 +407,7 @@ To learn more about the specific deployment options and approaches to consider f
 
 ## Examples
 
-This section describes some common use cases and the key requirements that you typically need to consider for each workload. For each workload, a suggested deployment approach is provided, based on the requirements and approaches described in this article.
+This section describes some common use cases and the key requirements that you typically need to consider for each workload. For each workload, one or more suggested deployment approaches are provided, based on the requirements and approaches described in this article.
 
 ### Line-of-business application for an enterprise
 
@@ -415,7 +415,7 @@ Contoso, Ltd., is a large manufacturing company. The company is implementing a l
 
 **Business requirements**: The information that the system manages is difficult to replace, so data needs to be persisted reliably. The architects say that the system needs to incur as little downtime and as little data loss as possible. Contoso's employees use the system throughout the workday, so high performance is important to avoid keeping team members waiting. Cost is also a concern, because the finance team has to pay for the solution.
 
-**Suggested approach**: [Zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) or [zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions).
+**Suggested approach**: [Zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions) provides multiple layers of resiliency with high performance.
 
 ### Internal application
 
@@ -423,7 +423,9 @@ Fourth Coffee is a small business. The company is developing a new internal appl
 
 **Business requirements**: For this workload, cost efficiency is a primary concern. Fourth Coffee evaluated the business impact of downtime and decided that the application doesn't need to prioritize resiliency or performance. The company accepts the risk that an outage in an Azure availability zone or region might make the application temporarily unavailable.
 
-**Suggested approach**: [Locally redundant deployment](#deployment-approach-1-locally-redundant-deployments).
+**Suggested approaches**:
+- [Locally redundant deployment with backups across regions](#locally-redundant-deployments-with-backup-across-regions) has the lowest cost, but also has significant risks.
+- [Zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions) provides better resiliency, but at a slightly higher cost.
 
 ### Legacy application migration
 
@@ -431,7 +433,9 @@ Fabrikam, Inc., is migrating a legacy application from an on-premises datacenter
 
 **Business requirements**: Performance is a priority for this application. Resiliency is also important, and the application must continue to work even if an Azure datacenter experiences an outage.
 
-**Suggested approach**: [Zonal (pinned) deployment, with passive deployments across multiple availability zones (in-region DR)](#deployment-approach-2-zonal-pinned-deployments).
+**Suggested approach**:
+- Fabrikan should first try a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments). They should verify the performance meets their requirements.
+- If the performance of the zone-redundant solution isn't acceptable, consider a [zonal (pinned) deployment, with passive deployments across multiple availability zones (in-region DR)](#deployment-approach-2-zonal-pinned-deployments).
 
 ### Healthcare application
 
@@ -439,7 +443,9 @@ Lamna Healthcare Company is implementing a new electronic health record system o
 
 **Business requirements**: Because of the nature of the data that this solution stores, data residency is critically important. Lamna operates under a strict regulatory framework that mandates that data must remain in a specific location.
 
-**Suggested approach**: Lamna might consider a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) or a [zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions). The company could also consider a [multi-region deployment](#deployment-approach-4-multi-region-deployments) if there are multiple regions that fit Lamna's data residency requirements.
+**Suggested approaches**:
+- [Multi-zone multi-region deployment](#combine-multi-zone-and-multi-region-approaches), if there are multiple regions that fit Lamna's data residency requirements.
+- If there's only a single region that suits their needs, consider a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) or a [zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions) provides a single-region solution
 
 ### Banking system
 
@@ -447,7 +453,7 @@ Woodgrove Bank runs its core banking operations from a large solution that's dep
 
 **Business requirements**: This is a mission-critical system. Any outages can cause major financial impact for customers. As a result, Woodgrove Bank has very low risk tolerance. The system needs the highest level of reliability possible, and the architecture needs to mitigate the risk of any failures that can be mitigated.
 
-**Suggested approach**: [Multi-region deployment](#deployment-approach-4-multi-region-deployments). The architecture must use regions that fit the company's data residency requirements.
+**Suggested approach**: For a mission-critical system, use a [multi-zone multi-region deployment](#combine-multi-zone-and-multi-region-approaches). Ensure that the regions fit the company's data residency requirements.
 
 ### Software as a service (SaaS)
 
@@ -455,7 +461,9 @@ Proseware, Inc., builds software that's used by companies across the world. The 
 
 **Business requirements**: Proseware needs to enable each of its customers to choose a deployment region that's close to the customer. Enabling this choice is important for latency and for the customers' data residency requirements.
 
-**Suggested approach**: [Multi-region deployment](#deployment-approach-4-multi-region-deployments). Alternatively, Proseware could consider using a single-region deployment with a global traffic acceleration solution, like [Azure Front Door][front-door-global-traffic-acceleration].
+**Suggested approaches**:
+- A [multi-zone multi-region deployment](#combine-multi-zone-and-multi-region-approaches) is typically a good choice for a SaaS provider, especially when it's used within the [Deployment Stamps pattern][deployment-stamps-pattern].
+- A single-region [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) in conjunction with a global traffic acceleration solution, like [Azure Front Door][front-door-global-traffic-acceleration].
 
 ## Related links
 
