@@ -4,13 +4,12 @@ description: Design considerations and recommendations for each pillar as relate
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 09/13/2023
+ms.date: 11/14/2023
 ms.service: waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
-products:
-  - azure-database-postgresql
 ---
+
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL
 
 This article provides architectural best practices for Azure Database for PostgreSQL.
@@ -58,6 +57,9 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. |
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
 | Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
+
+> [!TIP]
+> For more details on Reliability guidance for VMs, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
 
 ### Azure policy definitions
 
@@ -203,7 +205,7 @@ Consider more resources related to Azure Database for PostgreSQL.
 
 - [Batch Data application with Azure Database for PostgreSQL](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
 > [Azure pricing calculator to estimate and manage your costs effectively](https://azure.microsoft.com/pricing/calculator/)
