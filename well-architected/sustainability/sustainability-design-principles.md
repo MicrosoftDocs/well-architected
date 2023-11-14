@@ -30,7 +30,7 @@ It's important to effectively record, report, and reduce carbon emissions throug
 - Estimate savings
 - Take action to accelerate progress
 
-These critical design principles for sustainability resonate and extend the quality pillars of the Azure Well-Architected Framework—[Reliability](/azure/architecture/framework/#reliability), [Security](/azure/architecture/framework/security/), [Cost Optimization](/azure/architecture/framework/cost/), [Operational Excellence](/azure/architecture/framework/devops/), and [Performance Efficiency](/azure/architecture/framework/scalability/).
+These critical design principles for sustainability resonate and extend the quality pillars of the Azure Well-Architected Framework—[Reliability](../reliability/index.yml), [Security](../security/index.yml), [Cost Optimization](../cost-optimization/index.yml), [Operational Excellence](../operational-excellence/index.yml), and [Performance Efficiency](../performance-efficiency/index.yml).
 
 ## Principles of green software
 

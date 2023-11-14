@@ -31,7 +31,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design principles
 
-[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Performance Efficiency](../scalability/overview.md).
+[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Performance Efficiency](../scalability/overview.md).
 
 |Design principle|Considerations|
 |---|---|
@@ -319,7 +319,7 @@ Set Azure Service Health service alerts to trigger notifications when IoT Hub st
 
 ## Related resources
 
-- [Performance efficiency principles](/azure/architecture/framework/scalability/principles)
+- [Performance efficiency principles](/azure/well-architected/scalability/principles)
 - [Reference: IoT Hub endpoints](/azure/iot-hub/iot-hub-devguide-endpoints#list-of-built-in-iot-hub-endpoints)
 - [IoT Hub message size](/azure/iot-hub/iot-hub-devguide-messages-construct#message-size)
 - [Select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree)

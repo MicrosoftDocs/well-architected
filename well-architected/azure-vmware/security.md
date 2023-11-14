@@ -99,12 +99,12 @@ An IDPS can help you detect and prevent network-based attacks and malicious acti
 
 Identity security helps control access to Azure VMware Solution private cloud workloads and the applications that run on them. You can use RBAC to assign roles and permissions that are appropriate for specific users and groups. These roles and permissions are granted based on the principle of least privilege.
 
-You can enforce multifactor authentication for user authentication to provide an extra layer of security against unauthorized access. Various multifactor authentication methods, such as mobile push notifications, offer a convenient user experience and also help to ensure strong authentication. You can integrate Azure VMware Solution with Azure Active Directory (Azure AD) to centralize user management and take advantage of Azure AD advanced security features. Examples of features include privileged identity management, multifactor authentication, and conditional access.
+You can enforce multifactor authentication for user authentication to provide an extra layer of security against unauthorized access. Various multifactor authentication methods, such as mobile push notifications, offer a convenient user experience and also help to ensure strong authentication. You can integrate Azure VMware Solution with Microsoft Entra ID to centralize user management and take advantage of Microsoft Entra advanced security features. Examples of features include privileged identity management, multifactor authentication, and conditional access.
 
 ##### Recommendations
 
-- Use Azure AD privileged identity management to allow time-bound access to the Azure portal and control pane operations. Use privileged identity management audit history to track operations that highly privileged accounts perform.  
-- Reduce the number of Azure AD accounts that can:
+- Use Microsoft Entra Privileged Identity Management to allow time-bound access to the Azure portal and control pane operations. Use privileged identity management audit history to track operations that highly privileged accounts perform.  
+- Reduce the number of Microsoft Entra accounts that can:
   - Access the Azure portal and APIs.
   - Navigate to the Azure VMware Solution private cloud.
   - Read VMware vCenter Server and VMware NSX-T Data Center admin accounts.
