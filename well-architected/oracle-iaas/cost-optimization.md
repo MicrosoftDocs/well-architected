@@ -2,13 +2,13 @@
 title: Oracle workload cost optimization
 description: Oracle workload best practices for cost optimization
 author: ckittel
-ms.author: kegorman
+ms.author: chkittel
 ms.date: 12/29/2022
 ms.topic: conceptual
 ---
 # Oracle workload cost optimization
 
-Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle.](../../well-architected/cost/checklist.md)
+Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle.](../../well-architected/cost-optimization/checklist.md)
 
 ## Optimize workload compute costs
 
