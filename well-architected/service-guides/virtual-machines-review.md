@@ -56,12 +56,9 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Use Maintenance Configuration | Control and manage updates for both Windows and Linux VMs through a centralized view for OS patching. |
 
 >[!TIP]
->For more details on Reliability guidance for VMs, see [Reliability in Azure Virtual Machines - Azure Virtual Machines](/azure/reliability/reliability-virtual-machines).
-
- 
+>For more details on Reliability guidance for VMs, see [Reliability in Azure Database for PostgreSQL](/azure/well-architected/service-guides/postgresql#reliability).
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](/azure/advisor/advisor-overview#what-is-advisor) recommendations.
-
 
 ## Security
 
