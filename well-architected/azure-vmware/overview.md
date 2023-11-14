@@ -13,7 +13,7 @@ ms.subservice: waf-workload-avs
 
 This guidance is intended for **workload owners**, **technical stakeholders**, and **business stakeholders**. Specifically, this guidance is appropriate for people who are integral in harnessing, developing, and upholding applications throughout the Azure VMware Solution private cloud lifecycle. This documentation provides prescriptive guidance and best practices for key design areas with a technical foundation in Azure Well-Architected Framework pillars. The recommendations center on Azure VMware Solution, a managed service for migrating on-premises VMware vSphere workloads to Azure.
 
-You can use this workload documentation as your go-to resource for optimizing the lifecycle of particular applications in Azure VMware Solution.
+You can use this workload documentation as your go-to resource for optimizing the lifecycle of particular applications in [Azure VMware Solution](/azure/azure-vmware/introduction).
 
 ## What is an Azure VMware Solution workload?
 

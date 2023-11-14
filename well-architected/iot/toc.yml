@@ -1,0 +1,13 @@
+- name: IoT
+  href: iot-overview.md        
+  items:
+    - name: Reliability
+      href: iot-reliability.md
+    - name: Security
+      href: iot-security.md
+    - name: Cost Optimization
+      href: iot-cost-optimization.md
+    - name: Operational Excellence
+      href: iot-operational-excellence.md
+    - name: Performance Efficiency
+      href: iot-performance.md

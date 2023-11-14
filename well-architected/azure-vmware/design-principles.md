@@ -55,7 +55,7 @@ You can employ several methods to secure your Azure VMware Solution environment:
 - Implement encryption for data at rest and in transit.
 - Use robust IAM practices:
   - Enforce multi-factor authentication.
-  - Integrate your workload with Azure Active Directory (Azure AD).
+  - Integrate your workload with Microsoft Entra ID.
   - Implement the principle of least privilege, and use role-based access control to assign roles.
 
 ## Cost optimization
