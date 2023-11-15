@@ -95,7 +95,7 @@ Traditionally, network security has been the linchpin of enterprise security eff
 - Integrating logs from network devices and raw network traffic provides visibility into potential security threats.
 - Most organizations end up adding more resources to networks than initially planned. As a result, IP address and subnet schemes need to be refactored to accommodate the extra resources. This process is labor-intensive. There's limited security value in creating a large number of small subnets and then trying to map network access controls, such as security groups, to each of them.
 
-For general information about protecting assets by placing controls on network traffic, see [Network security](/azure/well-architected/security/design-network).
+For general information about protecting assets by placing controls on network traffic, see [Recommendations for networking and connectivity](/azure/well-architected/security/networking).
 
 ##### Recommendations
 

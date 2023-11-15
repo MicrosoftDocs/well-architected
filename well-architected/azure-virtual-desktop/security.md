@@ -20,7 +20,7 @@ This article discusses the security and IAM design area of an Azure Virtual Desk
 
 *Impact: Security, Operational Excellence*
 
-RBAC supports [separation of duties](/azure/well-architected/security/design-identity-role-definitions) for the various teams and individuals who manage the deployment of Azure Virtual Desktop. As part of your landing zone design, you need to decide who assumes the various roles. You then need to create a security group for each role to simplify adding and removing users to and from roles.
+RBAC supports [separation of duties](/azure/well-architected/security/identity-access#provide-role-based-authorization) for the various teams and individuals who manage the deployment of Azure Virtual Desktop. As part of your landing zone design, you need to decide who assumes the various roles. You then need to create a security group for each role to simplify adding and removing users to and from roles.
 
 Azure Virtual Desktop provides custom Azure roles that are designed for each functional area. For information about how these roles are configured, see [Built-in roles for Azure Virtual Desktop](/azure/virtual-desktop/rbac). You can also create and define [Azure custom roles](/azure/role-based-access-control/custom-roles) as part of the Cloud Adoption Framework for Azure deployment. You might need to combine RBAC roles that are specific to Azure Virtual Desktop with other Azure RBAC roles. This approach provides the complete set of permissions that users need for Azure Virtual Desktop and for other Azure services like virtual machines (VMs) and networking.
 
