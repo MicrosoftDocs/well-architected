@@ -141,6 +141,25 @@ These baseline examples serve as the recommended north star architecture for mis
           </div>
        </article>
     </li>
+  <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+    <article class="card has-outline-hover is-relative is-fullheight">
+        <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+           <a class="is-undecorated is-full-height is-block"
+             href="/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service">
+             <img role="presentation" alt="App Services baseline architecture diagram." src="./images/app-service-architecture.svg">
+            </a>
+        </figure>
+        <div class="card-content has-text-overflow-ellipsis">
+            <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
+              Baseline with App Services
+              <hr>                      
+            </div>
+            <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                <p>This architecture extends the baseline reference by considering App Services as the primary application hosting technology, providing an easy to use environment for container deployments.</p>
+            </div>
+        </div>
+    </article>
+</li>
 </ul>
 
 ## Design areas

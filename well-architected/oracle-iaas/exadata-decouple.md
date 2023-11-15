@@ -1,6 +1,6 @@
 ---
 title: Oracle on Azure IaaS design area compute and storage
-description: Review the design area for storage and compute of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
+description: Review the design area for exadata-decouple of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: 
 ms.date: 
