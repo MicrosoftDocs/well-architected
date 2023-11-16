@@ -119,7 +119,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons)
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should be your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) and [Azure Container Apps](/azure/container-apps/overview) should be among your first choices for container management depending on your requirements.  Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
 #### Design considerations and recommendations for Azure Kubernetes Service
 
