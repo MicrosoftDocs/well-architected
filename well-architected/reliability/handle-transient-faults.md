@@ -26,7 +26,7 @@ Transient faults can occur in any environment, on any platform or operating syst
 
 Cloud hosting, including private cloud systems, can offer higher overall availability by using shared resources, redundancy, automatic failover, and dynamic resource allocation across many commodity compute nodes. However, because of the nature of cloud environments, transient faults are more likely to occur. There are several reasons for this:
 
--   Many resources in a cloud environment are shared, and access to these resources is subject to throttling in order to protect the resources. Some services refuse connections when the load rises to a specific level, or when a maximum throughput rate is reached, to allow processing of existing requests and to maintain performance of the service for all users. Throttling helps to maintain the quality of service for neighbors and other tenants that use the shared resource.
+-   Many resources in a cloud environment are shared, and access to these resources is subject to [throttling](/azure/architecture/patterns/throttling) in order to protect the resources. Some services refuse connections when the load rises to a specific level, or when a maximum throughput rate is reached, to allow processing of existing requests and to maintain performance of the service for all users. Throttling helps to maintain the quality of service for neighbors and other tenants that use the shared resource.
 
 -   Cloud environments use large numbers of commodity hardware units. They deliver performance by dynamically distributing load across multiple computing units and infrastructure components. They deliver reliability by automatically recycling or replacing failed units. Because of this dynamic nature, transient faults and temporary connection failures might occasionally occur.
 
@@ -40,7 +40,7 @@ Transient faults can have a significant effect on the perceived availability of 
 
 -   The application must be able to detect faults when they occur and determine if the faults are likely to be transient, are long-lasting, or are terminal failures. Different resources are likely to return different responses when a fault occurs, and these responses can also vary depending on the context of the operation. For example, the response for an error when the application is reading from storage might differ from the response for an error when it's writing to storage. Many resources and services have well-documented transient-failure contracts. However, when such information isn't available, it can be difficult to discover the nature of the fault and whether it's likely to be transient.
 
--   The application must be able to retry the operation if it determines that the fault is likely to be transient. It also needs to keep track of the number of times the operation is retried.
+-   The application must be able to [retry](/azure/architecture/patterns/retry) the operation if it determines that the fault is likely to be transient. It also needs to keep track of the number of times the operation is retried.
 
 -   The application must use an appropriate strategy for retries. The strategy specifies the number of times the application should retry, the delay between each attempt, and the actions to take after a failed attempt. The appropriate number of attempts and the delay between each one are often difficult to determine. The strategy varies depending on the type of resource and on the current operating conditions of the resource and the application.
 
@@ -89,6 +89,8 @@ The following guidelines can help you design suitable transient fault handling m
 -   Take into account the timeout of the operations when you choose retry intervals in order to avoid launching a subsequent attempt immediately (for example, if the timeout period is similar to the retry interval). Also, consider whether you need to keep the total possible period (the timeout plus the retry intervals) below a specific total time. If an operation has an unusually short or long timeout, the timeout might influence how long to wait and how often to retry the operation.
 
 -   Use the type of the exception and any data it contains, or the error codes and messages returned from the service, to optimize the number of retries and the interval between them. For example, some exceptions or error codes (like the HTTP code 503, Service Unavailable, with a Retry-After header in the response) might indicate how long the error might last, or that the service failed and won't respond to any subsequent attempt.
+
+-   Consider using a [dead-letter queue approach](/azure/service-bus-messaging/service-bus-dead-letter-queues) to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts have been exhausted.
 
 #### Avoid anti-patterns
 
@@ -156,7 +158,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 
--   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
+-   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
 
 -   Consider the scope of operations that are retried. For example, it might be easier to implement retry code at a level that encompasses several operations and retry them all if one fails. However, doing so might result in idempotency issues or unnecessary rollback operations.
 
@@ -199,7 +201,7 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 
 - [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
 - [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
-- [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
+- [A blog post on idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
 - [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
 
