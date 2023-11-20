@@ -31,25 +31,23 @@ This guide serves as a prerequisite for the other reliability guides in this ser
 
 Before you choose the architectural design for your workload, determine what the user and system flows for your workload look like. Assign a measure of criticality to those flows. Perform this exercise with business stakeholders to ensure that you capture the business requirements in the context of flows. Examples of a user flow include an ecommerce app checkout experience or the navigation component of an emergency response app. Examples of a system flow include the back-end credit card processing flow for an ecommerce app or batch database updates for an enterprise resource planning (ERP) system.
 
-### EXTRA CONTENT
+<!--Existing content. Decide where to put.
 
 - Business escalation path for problems, like security concerns, urgent updates, and failovers.
-- Technical escalation path for incidents that affect the health of the flow.
+- Technical escalation path for incidents that affect the health of the flow.-->
 
 ### Identify all flows
 
-**ADD TEXT HERE**
 
-
-### Identify business processes for each flow
+### Identify business processes
 
 - Business processes that the flow supports.
 
-### Identify process owners for each flow
+### Identify process owners
 
 Process owner, or the individual that's responsible for making critical decisions.
 
-### Identify business consequences for each flow
+### Identify business consequences
 
 - Business expectations, like throughput, availability, and business hours.
 - Business consequences if expectations aren't met, for example the effect on revenue or reputation.
