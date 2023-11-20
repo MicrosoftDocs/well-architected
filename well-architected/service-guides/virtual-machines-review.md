@@ -39,10 +39,15 @@ As you make design choices for virtual machines, review the [design principles](
 > [!div class="checklist"]
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
 > - VMs should be deployed in a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets).
+> - Choose an appropriate SKU based on required [performance and confidentiality](/azure/virtual-machines/sizes) properties.
 > - Deployed VMs across [Availability Zones](/azure/virtual-machines/windows/quick-create-portal).
 > - Package and publish application artifacts with [VM Applications](/azure/virtual-machines/vm-applications) and [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery).
 > - Install applications on [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
 > - Use [Maintenance Configurations](/azure/virtual-machines/maintenance-configurations) to control and manage updates for VMs.
+>[!TIP]
+>EC, DC series virtual machine SKUs support [confidential computing](azure/confidential-computing/overview) which provides encryption of data in-use, not all virtual machine features are currently supported so review the documentation to understand any current limitations. 
+
+
 
 ### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
@@ -51,6 +56,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |------------------------------|-----------|
 | Review SLAs for virtual machines. | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
 | Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a scale set using the Flexible orchestration mode to future-proof your application for scaling and availability. Flexible orchestration offers high availability guarantees (up to 1000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone.|
+| Choose an appropriate virtual machine SKU based on required performance and security properties | Azure virtual machines come in many performance tiers and offer differing security capabilites from Trusted Launch to Confidential Computing to meet your requirements in the most cost-efficient way|
 | Deploy across availability zones | Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
 | Install applications on Ephemeral OS disks. | Separating data from the OS disk makes it easier to recover from failures, migrate workloads, and can improve performance.
 | Use Maintenance Configuration | Control and manage updates for both Windows and Linux VMs through a centralized view for OS patching. |
@@ -76,12 +82,14 @@ As you make design choices for virtual machines, review the [security principles
 As you make design choices for your virtual machine deployment, review the [design principles](/azure/well-architected/security/security-principles) for security.
 
 > [!div class="checklist"]
+> - Understand your threat-scenarios (who and what are you trying to protect against) and determine if a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment) provided as part of [confidential computing](/azure/confidential-computing/overview-azure-products) is required.
 > - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline).
 > - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline).
 > - Manage authentication and access control by ensuring strong passwords, multi-factor authentication, and role-based access control are in place for your VMs.
 > - Protect against malicious actor scenarios: Implement security best practices such as firewalls, anti-virus software, and intrusion detection systems to protect against malware attacks, and DoS attacks
 > - Plan and implement managed updates: Test updates in a non-production environment before deploying them to production, and consider using Azure Update Management to automate the update process.
-> - Classify and configure encryption based on data sensitivity and include using Encryption at Host and SSL/TLS encryption.
+> - Classify and configure encryption based on data sensitivity and use Encryption at Host and SSL/TLS encryption and confidential computing where appropriate.
+
 
 ### Recommendations
 
@@ -93,7 +101,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 | Protect against malware | Install [antimalware protection](/azure/security/fundamentals/iaas#protect-against-malware) to help identify and remove viruses. |
 | Manage updates | Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates and maintain security compliance with critical updates. |
 | Monitor for security | To monitor the security posture of your Windows and Linux VMs, use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). |
-| Use encryption | Use [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) to protect your data. |
+| Use encryption | Use [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) to protect your data, use [confidential computing](/azure/confidential-computing/overview) to protect data whilst in-use where possible |
 
 For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
 
