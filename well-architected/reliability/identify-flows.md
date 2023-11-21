@@ -38,27 +38,43 @@ Before you choose the architectural design for your workload, determine what the
 
 ### Identify all flows
 
+- User flows are a way to describe the interactions your users will have with the workload, along with the expected outcome of that interaction.
+- System flows are processes that happen automatically based on events elsewhere in the workload, connected systems, or on a schedule.
+- Notes:
+    - You do not need to identify all possible branches of execution of each flow. You should identify the intended end-to-end behavior of the interaction (user flow) or process (system flow). If a particular flow has multiple possible outcomes, you may choose to add it to the catalog as multiple distinct entries for simplicity.
+    - Your flow mapping will not necessarily be static as you work through the below steps. You may not be able to fully define all flows initially, but you can update your catalog as you go to reflect the planned workload as it becomes more clearly defined. You may also choose to split and or combine related flows as you determine the interaciton with business processes and business consequences.
+- The outcome of this stage should be a list of user and system flows that highlight the expected behavior of the system. Some organizations may leverage UML Sequence Diagrams or Use Case Diagrams already and these can be re-used for this process, but you can also us a less formal descriptive list in text format like in the examples below.
 
 ### Identify business processes
 
-- Business processes that the flow supports.
+- For each flow, map it to one or more business processes for your organization.
+- Ideally these business processes are already described in existing documentation for your business, or in a business plan for a new system. It is best to rely on language and labels that will be familiar and have meaning to all of the stakeholders.
 
-### Identify process owners
+### Identify process owners and stakeholders
 
-Process owner, or the individual that's responsible for making critical decisions.
+- The process owner for a flow is the individual that's responsible for the successful exection of a given process, and often maps directly to the porcess owner for the related business process. They will also be responsible for making critical decisions.
+- Stakeholders should also be identified. Stakeholders may be others in the organization that have dependencies on, or that manage dependencies for a particular flow.
+- Some organizations will already be tracking these dependencies in a responsibility assignment matrix (RAM) or RACI matrix. Process owners are typically assigned as Responsible or Accountable for a process, and stakeholders are those who are Consulted or Informed on the process.
+
+  #### Identify escalation paths
+
+  - For each flow, identify the business escalation path for urgent updates, security concerns, and notification of degredation or failure.
+  - for each flow, identify the technical escalation path for incidents affecting the health of the flow and necessary remediation.
 
 ### Identify business consequences
 
-- Business expectations, like throughput, availability, and business hours.
-- Business consequences if expectations aren't met, for example the effect on revenue or reputation.
+- Business consequesnces are the positive or negative outcomes that are possible when a process works properly, or when it fails.
+- Identify the expeted benefits of the process running as expected.
+- Define assumptions about what capacity might be expected for the process in terms of throughput per unit of time, or availability (business hours, percent uptime, etc).
+- Identify the expected negative impact if the process does not work as expected. This can be quantified specifically in terms of lost revenue, or more subjectively in terms of reputation, customer trust, or the failure of related processes.
 
 ### Assign criticality
 
 - Criticality and priority.
 
-Assign criticality to your flows to help you design your architecture. Identify the components that need higher levels of resiliency and security. To get started with criticality, use a *high*, *medium*, and *low* rating system that's based on the potential consequences when a given flow is unavailable. These criticality ratings are defined as:
+  Assign criticality to your flows to help you design your architecture. Identify the components that need higher levels of resiliency and security based on the business consequences identified above. To get started with criticality, use a *high*, *medium*, and *low* rating system that's based on the potential consequences when a given flow is unavailable. These criticality ratings are defined as:
 
-- **High**: A flow that affects the customer experience, finances, or human health or safety.
+- **High**: A flow that affects the customer experience, finances, security, or human health or safety.
 
 - **Medium**: A flow that's necessary for the workload to fully function but doesn't directly affect the customer. For example, a flow might have a medium criticality rating if you can retry the flow after you resolve the problem without disrupting the customer experience.
 
@@ -84,7 +100,7 @@ This scenario uses the [reliable web app pattern reference architecture](/azure/
 
 ### Workload
 
-This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app is hosted in Azure using PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis. 
+This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app is hosted in Azure using PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis.
 
 #### User flows
 
@@ -198,7 +214,7 @@ To understand state changes in the production system, web application and API in
 
 - **Criticality**: Medium
 
-## Reliability checklist  
+## Reliability checklist
 
 Refer to the complete set of recommendations.
 
