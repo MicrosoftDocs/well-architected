@@ -219,7 +219,7 @@ There are a number of services that directly offer confidential computing capabi
 
 - **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
 
-- **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular ]Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
+- **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular [Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
 
 ##### Secret management
 
