@@ -198,9 +198,17 @@ With [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overvie
 
 ##### Data-in-use protection
 
-Azure confidential virtual machines (VMs) provide a hardware-enforced boundary. They also provide disk encryption that maintains isolation between VMs, the hypervisor, and host management code.
+[Specific services in Azure](/azure/confidential-computing/overview-azure-products) offer the ability to protect data whilst it's being computed-upon within the physical CPU and memory of a host using Azure confidential computing. 
 
-Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
+Confdential computing utilizes special hardware SKUs to provide a hardware-enforced boundary known as a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment) that maintains isolation between VMs, the hypervisor, and host management code.
+
+This enhances the standard logical protection provided by Azure by using hardware-based isolation to protect a customer workload. When combined with features like [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) it can be used to ensure that encrypted data is only ever decrypted inside a TEE which proves it provides the required level of protection through a process known as [attestation](/azure/confidential-computing/attestation-solutions).
+
+There may be regulatory requirements that dictate using 'state of the art' security measures, confidential computing is one such technology.
+
+- **Confidential Virtual Machines** offer an entire [virtual machine running inside a TEE](/azure/confidential-computing/virtual-machine-solutions), the memory and executing CPU contents of the virtual machine are encrypted offering a simple 'lift & shift' approach for moving unmodified applications with high security requirements to Azure. Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
+
+- **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
 
 ##### Secret management
 
@@ -222,6 +230,7 @@ The following example shows encryption solutions that you can use to manage keys
 - [Overview of managed disk encryption options](/azure/virtual-machines/disk-encryption-overview)
 - [Transparent data encryption](/sql/relational-databases/security/encryption/transparent-data-encryption)
 - [Trust Platform Module overview](/windows/security/information-protection/tpm/trusted-platform-module-overview)
+- [Azure confidential computing](azure/confidential-computing/)
 
 ## Community links
 
