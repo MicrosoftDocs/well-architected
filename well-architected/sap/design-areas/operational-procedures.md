@@ -14,6 +14,8 @@ Standard operating procedures (SOPs) are documented processes for managing a wor
 
 ## Use health checks and assessments
 
+*Impact: Operational excellence*
+
 **Run health checks.** We have four Azure SAP (AzSAP) health checks: (1) deployment checklist, (2) inventory checklist, (3) quality checks, and (4) Linux VM OS analyzer. The image below shows how they share a cycle with our Azure SAP assessments. For more information on the health checks, see [SAP quality checks](/azure/center-sap-solutions/get-quality-checks-insights).
 
 :::image type="content" source="../images/azsap-health-check.png" alt-text="Diagram showing the Azure SAP assessments and health checks aligned to the customer journey." lightbox="../images/azsap-health-check.png" border="false":::
@@ -32,6 +34,8 @@ We recommend using this SAP assessment to develop and realign the SOPs for your 
 
 ## Monitor the workload
 
+*Impact: Operational excellence*
+
 Monitoring is the process of collecting, analyzing, and acting on data gathered from an SAP workload. Monitoring provides insights of the health of the workload to compare with an expected baseline. It allows you to know when, where, and why failures occur. A monitoring best practice is to use a common and consistent logging schema that lets you correlate events across systems. The monitoring and diagnostics process has several distinct phases.
 
 *Table 1 - Phases of monitoring and diagnostic process*
@@ -48,6 +52,8 @@ We recommend using Azure Monitor for SAP solutions to drive these processes. Azu
 Azure Inventory Checks for SAP Workbooks provide a flexible canvas for SAP specific Azure resource deployment and configuration checks with the help of rich visual reports within the Azure portal. It allows you to tap into multiple data sources from across Azure and combine them into unified interactive experiences. It aims at providing customers/partners with an immediately view of Azure Inventory with intelligence to highlight configuration drift to improve the quality of SAP On Azure deployment for operations. For more information, see [Azure Inventory Checks for SAP](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/main/Tools%26Framework/InventoryChecksForSAP).
 
 ## Automate workload infrastructure
+
+*Impact: Operational excellence*
 
 You should use infrastructure as code (IaC) to automate SAP workload deployments with minimal human intervention and build a scalable and consistent SAP workload on Azure. The manual process of creating the required SAP workload resources is slow and allows for errors. Microsoft has a repository of SAP deployment templates that you should use. It’s called the SAP on Azure Deployment Automate Framework. The templates support SAP HANA and NetWeaver with any database on any SAP-supported operating systems.
 
