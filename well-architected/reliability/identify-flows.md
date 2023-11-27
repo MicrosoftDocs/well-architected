@@ -3,7 +3,8 @@ title: Recommendations for identifying and rating flows
 description: Learn how to create a catalog of user and system flows for your workload to better understand the basis for your design decisions as they relate to reliability.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.reviewer: ssumner
+ms.date: 12/01/2023
 ms.topic: conceptual
 ---
 
