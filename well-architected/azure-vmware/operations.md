@@ -11,7 +11,7 @@ ms.subservice: waf-workload-avs
 
 # Operations considerations for Azure VMware Solution workloads
 
-This article discusses the operations design area for Azure VMware Solution. The aim of this article is to build an operating model for Azure VMware Solution and the applications within the WMware software-defined datacenter (SDDC). Standard operating procedures (SOPs) are documented processes for managing a workload. Each Azure VMware Solution workload should have SOPs to govern operations. To stay aligned with business objectives and to help prevent drift from best practices, use SOPs in a continuous cycle of assessment and health checks that you run on your Azure VMware Solution workload.
+This article discusses the operations design area for Azure VMware Solution. The aim of this article is to build an operating model for Azure VMware Solution and the applications within the VMware software-defined datacenter (SDDC). Standard operating procedures (SOPs) are documented processes for managing a workload. Each Azure VMware Solution workload should have SOPs to govern operations. To stay aligned with business objectives and to help prevent drift from best practices, use SOPs in a continuous cycle of assessment and health checks that you run on your Azure VMware Solution workload.
 
 ## Track application dependencies
 
@@ -147,7 +147,7 @@ It's important to have a clear understanding of the backup and recovery infrastr
 
 *Impact: Reliability*
 
-The SDDC should protect against data loss, minimize downtime, and maintain the continuity of operations when there are unexpected disruptions or disasters.
+The private cloud should protect against data loss, minimize downtime, and maintain the continuity of operations when there are unexpected disruptions or disasters.
 
 For business continuity, you need to implement robust data protection to help ensure the availability, integrity, and recoverability of your VMs and the critical data within the Azure VMware Solution environment. The backup tools need to be in place, and you must also confirm that they work. A key principle of Azure VMware Solution is to provide independent software vendor (ISV) technology support that's validated with Azure VMware Solution. Understanding the partners and options that are available to you is critical to your backup success.
 

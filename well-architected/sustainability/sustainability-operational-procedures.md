@@ -98,7 +98,7 @@ _Green Software Foundation alignment: [Measuring sustainability](sustainability-
 **Recommendation:**
 
 - Review the concept of [using a proxy solution to measure emissions](sustainability-design-methodology.md#use-a-proxy-solution-to-measure-emissions).
-- Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](/azure/architecture/framework/cost/).
+- Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](../cost-optimization/index.yml).
 
 ### Defining policies
 

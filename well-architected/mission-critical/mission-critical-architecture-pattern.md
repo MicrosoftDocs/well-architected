@@ -19,7 +19,7 @@ ms.custom:
 
 This article presents a key pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a _north star_ design approach and includes other examples with common technology components.
 
-We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the  underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
+We recommend that you evaluate [**the key design areas**](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the  underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 
 |Characteristic|Considerations|
 |---|---|
@@ -81,7 +81,7 @@ A system can have resources that are deployed in region but outlive the stamp re
 
 These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS).
 
-> Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
+> Refer to [Well-Architected mission-critical workloads: Containerization](/azure/well-architected/mission-critical/mission-critical-application-platform#containerization).
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
@@ -141,11 +141,30 @@ These baseline examples serve as the recommended north star architecture for mis
           </div>
        </article>
     </li>
+  <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+    <article class="card has-outline-hover is-relative is-fullheight">
+        <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+           <a class="is-undecorated is-full-height is-block"
+             href="/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service">
+             <img role="presentation" alt="App Services baseline architecture diagram." src="./images/app-service-architecture.svg">
+            </a>
+        </figure>
+        <div class="card-content has-text-overflow-ellipsis">
+            <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
+              Baseline with App Services
+              <hr>                      
+            </div>
+            <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                <p>This architecture extends the baseline reference by considering App Services as the primary application hosting technology, providing an easy to use environment for container deployments.</p>
+            </div>
+        </div>
+    </article>
+</li>
 </ul>
 
 ## Design areas
 
-We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
+We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
 
 ## Next step
 
