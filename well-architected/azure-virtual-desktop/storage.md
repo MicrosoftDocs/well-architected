@@ -20,7 +20,7 @@ This article discusses the storage design area of an [Azure Virtual Desktop](/az
 
 *Impact: Performance Efficiency, Cost Optimization*
 
-When you deploy Azure Virtual Desktop, region selection is an important consideration. Before you select the Azure region that you want to deploy to, you should check product availability . SKUs for services such as Azure Virtual Machines can vary by region, because not every region contains identical hardware. For the availability of VM SKUs and other services, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=virtual-machines).
+When you deploy Azure Virtual Desktop, region selection is an important consideration. Before you select the Azure region that you want to deploy to, you should check product availability. SKUs for services such as Azure Virtual Machines can vary by region, because not every region contains identical hardware. For the availability of VM SKUs and other services, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=virtual-machines).
 
 Before you select a specific region, you should also be aware of its regional compliance and data residency requirements.
 
