@@ -104,15 +104,13 @@ Assigning criticality to each flow involves a detailed evaluation of their impor
 
 By following this structured approach to assigning criticality, you can effectively prioritize resources and focus on maintaining and enhancing the reliability and effectiveness of your most critical flows.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Higher expectations for reliability sometimes coincide with higher setup costs, operational costs, and management burden for operators. Ensure that stakeholders understand the potential cost increases of improving the reliability of critical flows.
+
 ## Organizational alignment
 
 Cloud Adoption Framework provides guidance for workloads that require a business criticality classification.
 
 For more information, see [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).
-
-## Tradeoffs
-
-Ensure that stakeholders understand that higher expectations for reliability sometimes coincide with higher setup costs, operational costs, and management burden for operators.
 
 ## Example
 
