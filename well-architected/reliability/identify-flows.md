@@ -14,11 +14,7 @@ ms.topic: conceptual
 |[RE:02](checklist.md)| **Identify and prioritize user and system flows.** Use a criticality scale that's based on your business requirements to prioritize the flows. |
 |---|---|
 
-This guide describes the recommendations for creating a catalog of user and system flows for your workload. Understand and model your flows to ensure that your reliability efforts benefit the most critical parts of your workload. Deprioritize the flows that don't have stringent availability requirements.
-
-Create this catalog as you start to design your workload architecture so you can better understand the basis for your design decisions as they relate to reliability.
-
-This guide serves as a prerequisite for the other reliability guides in this series. The following sections provide recommendations for workload design decisions and operational processes and procedures that support the workload, like monitoring and alerting, testing, business continuity, and disaster recovery functions.
+This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves systematically mapping and evaluating the various user paths and system processes within a workload to determine their business value and impact on overall operations. This practice ensures you identify and prioritize the most critical workload functionality to reducing the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability. This guide serves as a prerequisite for the other reliability guides.
 
 **Definitions**
 
@@ -29,7 +25,13 @@ This guide serves as a prerequisite for the other reliability guides in this ser
 
 ## Key design strategies
 
-As you design your workload, you need to define and refine the user and system flows for your workload. User flows map the the user's journey through the application or system. They highlighting the user interface, interactions, decisions, and steps a user takes to accomplish a task. The perspective is user-centric, emphasizing user experience and interface design. System flows focus on internal processes, data movement, input and output processing, and interactions between various system components, backend services, and external APIs. The perspective is more technical than user.
+When you design your workload, it's essential to define and refine both the user and system flows. User flows chart the journey of a user through your application or system. They underscore the user interface, interactions, decisions, and the steps required to complete a task. This user-centric perspective prioritizes user experience and interface design.
+
+System flows focus into the internal workings of your application. It encompasses data movement, input processing, output processing, and interactions among system components, backend services, and external APIs. This technical perspective focuses on the intricate details of how the system operates internally.
+
+By understanding these flows, you can strategically enhance the reliability of the most crucial aspects of your workload. This approach allows you to prioritize flows with stringent availability requirements, while appropriately deprioritizing those with less critical demands.
+
+You should identify and define flows early in the design phase of your workload. It grants you a clearer understanding of the foundational elements that influence your design choices, especially in relation to the reliability of your workload. This proactive planning facilitates a more robust and dependable workload. It aligns your architectural decisions closely with the reliability goals of your workload.
 
 ### Identify all user and system flows
 
