@@ -31,15 +31,9 @@ This guide serves as a prerequisite for the other reliability guides in this ser
 
 As you design your workload, you need to define and refine the user and system flows for your workload. User flows map the the user's journey through the application or system. They highlighting the user interface, interactions, decisions, and steps a user takes to accomplish a task. The perspective is user-centric, emphasizing user experience and interface design. System flows focus on internal processes, data movement, input and output processing, and interactions between various system components, backend services, and external APIs. The perspective is more technical than user.
 
-Assign a measure of criticality to those flows. Perform this exercise with business stakeholders to ensure that you capture the business requirements in the context of flows.
-<!--Existing content. Decide where to put.
-
-- Business escalation path for problems, like security concerns, urgent updates, and failovers.
-- Technical escalation path for incidents that affect the health of the flow.-->
-
 ### Identify all user and system flows
 
-Identifying all user and system flows is about creating a comprehensive catalog of flows in the workload. It requires you to map out every user interaction and process within a system. To ensure a comprehensive understanding, you need to map both user and system flows end to end. This mapping is a prerequisite for identifying critical flows. Here are recommendations for identifying all user and system flows:
+Identifying all user and system flows is about creating a comprehensive catalog of flows in the workload. It requires you to map out every user interaction and process within a system. To ensure a comprehensive understanding, you need to map both user and system flows end-to-end. This mapping is a prerequisite for identifying critical flows. Here are recommendations for identifying all user and system flows:
 
 - *Interview stakeholders.* Stakeholders can provide valuable information to identify flows and even begin the process of mapping and prioritizing flows. Interview users, business analysts, and technical teams to gather insights about various operations and user interactions within the workload.
 
@@ -73,35 +67,42 @@ Existing documentation or business plans should provide a mapping of flows to bu
 
 - *Connect output to business process.* Connect the dots from the flow outputs to the overall business process they support. For example, if a flow step involves processing customer orders, this directly supports the business process of order fulfillment, which in turn contributes to the business objective of maintaining customer satisfaction and generating revenue.
 
-### Identify process owners and stakeholders
+### Identify process owners and stakeholders for each flow
 
-- The process owner for a flow is the individual that's responsible for the successful exection of a given process, and often maps directly to the porcess owner for the related business process. They will also be responsible for making critical decisions.
-- Stakeholders should also be identified. Stakeholders may be others in the organization that have dependencies on, or that manage dependencies for a particular flow.
-- Some organizations will already be tracking these dependencies in a responsibility assignment matrix (RAM) or RACI matrix. Process owners are typically assigned as Responsible or Accountable for a process, and stakeholders are those who are Consulted or Informed on the process.
+The process owner for a flow is the individual that's responsible for the successful execution of a given process, and often maps directly to the process owner for the related business process. They are responsible for making critical decisions.
 
-#### Identify escalation paths
+You should have or create a responsibility assignment matrix (RAM) or RACI matrix to track process owners. Process owners are typically assigned as Responsible or Accountable for a process, and stakeholders are those who are Consulted or Informed on the process.
 
-  - For each flow, identify the business escalation path for urgent updates, security concerns, and notification of degredation or failure.
-  - for each flow, identify the technical escalation path for incidents affecting the health of the flow and necessary remediation.
+Stakeholders should also be identified. Stakeholders may be others in the organization that have dependencies on, or that manage dependencies for a particular flow.
 
-### Identify business consequences
+#### Identify escalation paths for each flow
 
-- Business consequesnces are the positive or negative outcomes that are possible when a process works properly, or when it fails.
-- Identify the expeted benefits of the process running as expected.
-- Define assumptions about what capacity might be expected for the process in terms of throughput per unit of time, or availability (business hours, percent uptime, etc).
-- Identify the expected negative impact if the process does not work as expected. This can be quantified specifically in terms of lost revenue, or more subjectively in terms of reputation, customer trust, or the failure of related processes.
+Identifying escalation paths is about determining the specific procedures and channels for escalating issues related to a flow, such as urgent updates, security concerns, degradations, or technical incidents. The goal is to ensure timely and effective resolution. You need to identify clear lines of responsibility and response mechanisms for incidents affecting the health of the flow and the remediation of these incidents.
 
-### Assign criticality
+### Identify business consequences of each flow
+<!-- what should this be?-->
 
-- Criticality and priority.
+Identifying the business consequences of each flow is essential for understanding and agreeing upon the technical and business impact if business targets aren't met. This process involves a thorough analysis of how each flow within a workload contributes to or detracts from key business objectives, such as revenue, customer satisfaction, or operational efficiency. By understanding both the positive and negative outcomes of each flow, you can prioritize efforts to ensure the reliability of the most critical flows. Here are steps to identify the business consequences of each flow:
 
-  Assign criticality to your flows to help you design your architecture. Identify the components that need higher levels of resiliency and security based on the business consequences identified above. To get started with criticality, use a *high*, *medium*, and *low* rating system that's based on the potential consequences when a given flow is unavailable. These criticality ratings are defined as:
+- *Identify positive outcomes.* Determine the expected benefits when a flow runs as intended. The expected benefits could include improved efficiency, increased revenue, enhanced customer satisfaction, or any other positive impact on the business.
 
-- **High**: A flow that affects the customer experience, finances, security, or human health or safety.
+- *Define capacity assumptions.* Establish assumptions about the expected capacity of each process. Consider factors like throughput per unit of time and availability, such as business hours and percent uptime. These assumptions help in understanding the scalability and reliability requirements of each flow.
 
-- **Medium**: A flow that's necessary for the workload to fully function but doesn't directly affect the customer. For example, a flow might have a medium criticality rating if you can retry the flow after you resolve the problem without disrupting the customer experience.
+- *Identify negative outcomes.* Assess the potential negative impacts if a process fails or does not work as expected. Consider quantifying specific losses, such as revenue drops. Include subjective effects like damage to reputation, erosion of customer trust, or adverse effects on other related business processes.
 
-- **Low**: A flow that's not directly tied to the functionality of the workload. For example, a nightly log transfer to a monitoring system or a pop-up survey feature might have a low criticality rating.
+By systematically evaluating these aspects, you can gain a comprehensive view of how each flow impacts the business, guiding you in making strategic decisions about enhancing the reliability and effectiveness of your workload.
+
+### Assign criticality ratings
+
+Assigning criticality to each flow involves a detailed evaluation of their importance relative to the overall business objectives and potential impacts. This process is a logical continuation of identifying, mapping, and aligning with business processes. It's important to assign these criticality ratings considering not just the direct consequences of a flow's unavailability but its indirect impact on other interconnected processes and the overall system integrity. Use the following criticality descriptions to assign your critical ratings:
+
+- *High criticality*: These are flows integral to core business functions, directly impacting critical aspects such as customer experience, financial transactions, security protocols, or scenarios involving human health and safety. The failure or disruption of these flows could lead to significant immediate or long-term negative effects, such as loss of revenue, breach of trust, or legal ramifications. Prioritizing these flows ensures that the most crucial aspects of the workload are robust and resilient.
+
+- *Medium criticality*: Flows classified under this category are important for the complete functionality of the system but do not directly interface with the customer or critical business operations. An example might be internal data processing workflows which, if disrupted, can be retried or compensated for without immediate external impact. These flows are essential for smooth operations but offer a buffer in terms of immediate customer or financial impact, allowing for managed responses to issues.
+
+- *Low criticality*: These are flows that, while part of the workload, do not have a direct or significant impact on the core business functions or customer experience. Examples include ancillary processes like nightly log transfers or optional user features such as feedback surveys. While these flows contribute to the overall system, their disruption is unlikely to cause significant immediate business or operational issues.
+
+By following this structured approach to assigning criticality, you can effectively prioritize resources and focus on maintaining and enhancing the reliability and effectiveness of your most critical flows.
 
 ## Organizational alignment
 
