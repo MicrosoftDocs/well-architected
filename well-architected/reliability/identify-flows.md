@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:02](checklist.md)| Identify the user and system flows of your workload. Prioritize importance by using a criticality scale that's based on your business requirements. |
+|[RE:02](checklist.md)| **Identify and prioritize user and system flows.** Use a criticality scale that's based on your business requirements to prioritize the flows. |
 |---|---|
 
 This guide describes the recommendations for creating a catalog of user and system flows for your workload. Understand and model your flows to ensure that your reliability efforts benefit the most critical parts of your workload. Deprioritize the flows that don't have stringent availability requirements.
@@ -29,21 +29,37 @@ This guide serves as a prerequisite for the other reliability guides in this ser
 
 ## Key design strategies
 
-Before you choose the architectural design for your workload, determine what the user and system flows for your workload look like. Assign a measure of criticality to those flows. Perform this exercise with business stakeholders to ensure that you capture the business requirements in the context of flows. Examples of a user flow include an ecommerce app checkout experience or the navigation component of an emergency response app. Examples of a system flow include the back-end credit card processing flow for an ecommerce app or batch database updates for an enterprise resource planning (ERP) system.
+As you design your workload, you need to define and refine the user and system flows for your workload. User flows map the the user's journey through the application or system. They highlighting the user interface, interactions, decisions, and steps a user takes to accomplish a task. The perspective is user-centric, emphasizing user experience and interface design. System flows focus on internal processes, data movement, input and output processing, and interactions between various system components, backend services, and external APIs. The perspective is more technical than user.
 
+Assign a measure of criticality to those flows. Perform this exercise with business stakeholders to ensure that you capture the business requirements in the context of flows.
 <!--Existing content. Decide where to put.
 
 - Business escalation path for problems, like security concerns, urgent updates, and failovers.
 - Technical escalation path for incidents that affect the health of the flow.-->
 
-### Identify all flows
+### Identify all user and system flows
 
-- User flows are a way to describe the interactions your users will have with the workload, along with the expected outcome of that interaction.
-- System flows are processes that happen automatically based on events elsewhere in the workload, connected systems, or on a schedule.
-- Notes:
-    - You do not need to identify all possible branches of execution of each flow. You should identify the intended end-to-end behavior of the interaction (user flow) or process (system flow). If a particular flow has multiple possible outcomes, you may choose to add it to the catalog as multiple distinct entries for simplicity.
-    - Your flow mapping will not necessarily be static as you work through the below steps. You may not be able to fully define all flows initially, but you can update your catalog as you go to reflect the planned workload as it becomes more clearly defined. You may also choose to split and or combine related flows as you determine the interaciton with business processes and business consequences.
-- The outcome of this stage should be a list of user and system flows that highlight the expected behavior of the system. Some organizations may leverage UML Sequence Diagrams or Use Case Diagrams already and these can be re-used for this process, but you can also us a less formal descriptive list in text format like in the examples below.
+Identifying all user and system flows is about creating a comprehensive catalog of flows in the workload. It requires you to map out every user interaction and process within a system. To ensure a comprehensive understanding, you need to map both user and system flows end to end. This mapping is a prerequisite for identifying and prioritizing critical flows. Here are recommendations for identifying all user and system flows:
+
+- *Interview stakeholders.* Stakeholders can provide valuable information to identify flows and even begin the process of mapping and prioritizing flows. Interview users, business analysts, and technical teams to gather insights about various operations and user interactions within the workload.
+
+- *Review documentation.* In the design phase, you might not have documentation to review. However, if documentation exists, you should use it. Ask for system architecture diagrams, user manuals, and process descriptions to understand the intended functionality of the workload.
+
+- *Observe the workload.* Monitor the system in operation, noting how users interact with it and how different components interact with each other. You should analyze system logs, performance metrics, and user activity logs to identify patterns, frequent tasks, and system responses.
+
+- *List identified flows.* The outcome of identifying all flows should be a list of user flows and system flows that highlight the expected behavior of the system. Compile a list of all the flows you've identified, categorizing them into user flows (focusing on user interactions) and system flows (focusing on backend processes and data movement).
+
+- *Define start and end points.* For each identified flow, clearly define where the flow starts and where it ends. For user flows, document each user interaction and its expected outcome and focus on the user experience and interface design. For system flows you need to identify its underlying triggers and expected outcomes.
+
+- *Break down each flow.* Break down the flow into individual steps or stages, describing the actions, decisions, or processes that occur at each point.
+
+- *Identify interactions and dependencies.* Note how each step interacts with other parts of the system, including dependencies on other flows or external systems. You should be able to pinpoint how flows integrate with and affect the workload and user experience. This dual approach provides a holistic view of your entire workload.
+
+- *Visualize with diagrams.* Create flowcharts or diagrams to visually represent the sequence of steps. Tools like Microsoft Visio, Lucidchart, or even simple drawing tools can be used for this purpose. You can use UML Sequence Diagrams or Use Case Diagrams or less formal descriptive list in text format like in the examples below.
+
+- *Update flow mapping iteratively.* Validate and refine your flow diagrams with feedback from stakeholders to ensure accuracy and completeness. Flow mapping is an iterative process. Flows might not be fully defined, or you might decide to combine flows based on business requirements. You might not be able to fully define all flows while the workload is in the design phase. You might choose to split and or combine related flows as you determine the interaction with business processes and business consequences. As the workload flows become more clearly defined, you should update the catalog of flows to match.  
+
+- *Document exceptions and variations.* Identify and map out any alternative paths or exceptions within each flow, such as error handling or conditional branching. You do not need to identify all possible outcomes of each flow. For user flows, you should identify the intended end-to-end behavior of the interaction. For system flows, you should identify the intended end-to-end behavior of the process. If a flow has multiple possible outcomes, you should add it to the catalog as distinct entries.
 
 ### Identify business processes
 
@@ -56,7 +72,7 @@ Before you choose the architectural design for your workload, determine what the
 - Stakeholders should also be identified. Stakeholders may be others in the organization that have dependencies on, or that manage dependencies for a particular flow.
 - Some organizations will already be tracking these dependencies in a responsibility assignment matrix (RAM) or RACI matrix. Process owners are typically assigned as Responsible or Accountable for a process, and stakeholders are those who are Consulted or Informed on the process.
 
-  #### Identify escalation paths
+#### Identify escalation paths
 
   - For each flow, identify the business escalation path for urgent updates, security concerns, and notification of degredation or failure.
   - for each flow, identify the technical escalation path for incidents affecting the health of the flow and necessary remediation.
