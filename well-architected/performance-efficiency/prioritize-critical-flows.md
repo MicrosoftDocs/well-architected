@@ -51,7 +51,7 @@ Having identified all flows within your workload, the next step is collect perfo
 
 - *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
 
-### Prioritize flows
+### Identify critical flows
 
 With the flows identified and performance data, you can begin prioritizing the flows. Prioritizing flows involves evaluating the performance impact of each flow and its over all criticality. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. It's a fundamental strategy for improving performance efficiency. To prioritize flows in your application, consider these steps:
 
