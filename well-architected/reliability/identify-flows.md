@@ -15,7 +15,7 @@ ms.topic: conceptual
 |[RE:02](checklist.md)| **Identify and prioritize user and system flows.** Use a criticality scale based on your business requirements to prioritize the flows. |
 |---|---|
 
-This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves mapping user flows and system flows to determine their criticality to the organization. This practice ensures you identify and prioritize the most critical workload functionality to reducing the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability. This guide serves as a prerequisite for the other reliability guides.
+This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves mapping user flows and system flows to determine their criticality to the organization. This practice ensures you identify and prioritize the most critical workload functionality to reducing the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability.
 
 **Definitions**
 
