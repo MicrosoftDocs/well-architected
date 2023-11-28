@@ -916,6 +916,11 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/services/service-guides/log-analytics/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/log-analytics",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/services/networking/azure-application-gateway.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-application-gateway",
 			"redirect_document_id": true
