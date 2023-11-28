@@ -137,109 +137,85 @@ The following user flows comprise the example architecture.
 
 Call center employees use the application to create an upcoming concert.
 
-- **Business processes that this flow supports**: This flow supports the *purchasing ticket* process, but in an asynchronous way that makes it less critical.
+- *Business processes*: This flow supports the *purchasing ticket* process, but in an asynchronous way that makes it less critical.
 
-- **Process owner**: The sales department.
+- *Process owner*: The sales department.
 
-- **Business escalation path**: Stakeholders.
+- *Escalation paths*: Stakeholders and platform or application teams.
 
-- **Technical escalation path**: Platform or application teams.
+- *Business outcomes*: This flow doesn't require high availability because concerts are proactively created on a weekly basis. If this flow isn't available when a call center employee needs to create a concert, it affects revenue and reputation.
 
-- **Business expectations**: This flow doesn't require high availability because concerts are proactively created on a weekly basis.
-
-- **Business consequences**: If this flow isn't available when a call center employee needs to create a concert, it affects revenue and reputation.
-
-- **Criticality**: Medium.
+- *Criticality rating*: Medium.
 
 ##### User flow 2: Search concerts
 
 Call center employees use the application to search for upcoming concerts.
 
-- **Business processes that this flow supports**: This flow supports the *purchasing ticket* process, but call center employees can opt to list concerts if the search function isn't available.
+- *Business processes*: This flow supports the *purchasing ticket* process, but call center employees can opt to list concerts if the search function isn't available.
 
-- **Process owner**: The UX (user experience) department.
+- *Process owner*: The UX (user experience) department.
 
-- **Business escalation path**: Stakeholders.
+- *Escalation path*: Stakeholders and platform or application teams.
 
-- **Technical escalation path**: Platform or application teams.
+- *Business outcomes*: This flow doesn't require high availability because call center employees can also list concerts. If this flow isn't available when a call center employee searches for a concert, it affects the application's reputation. The call center employee's experience might degrade and it might affect productivity because the employee spends more time on a call.
 
-- **Business expectations**: This flow doesn't require high availability because call center employees can also list concerts.
-
-- **Business consequences**: If this flow isn't available when a call center employee searches for a concert, it affects the application's reputation. The call center employee's experience might degrade and it might affect productivity because the employee spends more time on a call.
-
-- **Criticality**: Low.
+- *Criticality rating*: Low.
 
 ##### User flow 3: Get a list of the concerts
 
 Call center employees use the application to get a list of concerts.
 
-- **Business processes that this flow supports**: This flow directly supports the *purchasing ticket* process.
+- *Business processes*: This flow directly supports the *purchasing ticket* process.
 
-- **Process owner**: The sales department.
+- *Process owner*: The sales department.
 
-- **Business escalation path**: Stakeholders.
+- *Escalation path*: Stakeholders and platform or application teams.
 
-- **Technical escalation path**: Platform or application teams.
+- *Business outcomes*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation.
 
-- **Business expectations**: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly.
-
-- **Business consequences**: If this flow isn't available, it directly affects revenue and reputation.
-
-- **Criticality**: High.
+- *Criticality rating*: High.
 
 ##### User flow 4: Purchase ticket
 
 Call center employees use the application (the *authentication and authorization* process) to buy tickets for an upcoming concert (the *list upcoming concerts* process) on behalf of Relecloud customers.
 
-- **Business processes that this flow supports**: This flow is the core feature and flow of the application.
+- *Business processes*: This flow is the core feature and flow of the application.
 
-- **Process owner**: The sales department.
+- *Process owner*: The sales department.
 
-- **Business escalation path**: Stakeholders.
+- *Escalation path*: Stakeholders and platform or application teams.
 
-- **Technical escalation path**: Platform or application teams.
+- *Business outcomes*: This flow requires high availability because customers can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation.
 
-- **Business expectations**: This flow requires high availability because customers can't purchase tickets if this flow isn't working properly.
-
-- **Business consequences**: If this flow isn't available, it directly affects revenue and reputation.
-
-- **Criticality**: High.
+- *Criticality rating*: High.
 
 ##### User flow 5: Authentication and authorization
 
 Call center employees securely sign in to the application and are provided with proper roles so that they can purchase tickets on behalf of Relecloud customers.
 
-- **Business processes that this flow supports**: This flow directly supports the *purchasing ticket* process. Without this functionality, call center employees can't sign in to the application to buy tickets.
+- *Business processes*: This flow directly supports the *purchasing ticket* process. Without this functionality, call center employees can't sign in to the application to buy tickets.
 
-- **Process owner**: The sales department.
+- *Process owner*: The sales department.
 
-- **Business escalation path**: Stakeholders.
+- *Escalation path*: Stakeholders and Platform or application teams.
 
-- **Technical escalation path**: Platform or application teams.
+- *Business outcomes*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation.
 
-- **Business expectations**: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly.
-
-- **Business consequences**: If this flow isn't available, it directly affects revenue and reputation.
-
-- **Criticality**: High.
+- *Criticality rating*: High.
 
 ### System flow: Collect telemetry
 
-To understand state changes in the production system, web application and API instances are used to collect and send information, errors, and warnings. This data helps the operations team perform anomaly detection, troubleshooting, and profiling.
+To understand state changes in the production system, web application and API instances collect and send information, errors, and warnings. This data helps the operations team perform anomaly detection, troubleshooting, and profiling.
 
-- **Business processes that this flow supports**: This flow doesn't support any business processes, but it provides important data for the operations team.
+- *Business processes*: This flow doesn't support any business processes, but it provides important data for the operations team.
 
-- **Process owner**: The operations team.
+- *Process owner*: The operations team.
 
-- **Business escalation path**: The operations team.
+- *Escalation path*: The operations team and the operations team.
 
-- **Technical escalation path**: The operations team.
+- *Business outcomes*: This flow requires as much redundancy and resiliency as possible. The operations team should strive to recover this flow from failure, so they don't miss important information and warnings. If this flow doesn't meet the expected availability, there's a risk of missing problems in production, which can cause serious consequences.
 
-- **Business expectations**: This flow requires as much redundancy and resiliency as possible. The operations team should strive to recover this flow from failure, so they don't miss important information and warnings.
-
-- **Business consequences**: If this flow doesn't meet the expected availability, there's a risk of missing problems in production, which can cause serious consequences.
-
-- **Criticality**: Medium
+- *Criticality rating*: Medium.
 
 ## Reliability checklist
 
