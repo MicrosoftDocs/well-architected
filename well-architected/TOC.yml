@@ -242,6 +242,8 @@
       items:
       - name: Overview
         href: workloads.md
+      - name: Azure Virtual Desktop
+        href: azure-virtual-desktop/index.yml
       - name: Azure VMware Solution
         href: azure-vmware/index.yml
       - name: Carrier-grade
