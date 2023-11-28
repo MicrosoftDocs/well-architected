@@ -26,7 +26,7 @@ This article provides architectural best practices for Azure Monitor Logs. The g
 
 
 ## Cost optimization
-[Cost optimization](/azure/well-architected/cost/overview) refers to ways to reduce unnecessary expenses and improve operational efficiencies. You can significantly reduce your cost for Azure Monitor by understanding your different configuration options and opportunities to reduce the amount of data that it collects. See [Azure Monitor Logs cost calculations and options](/azure-azure-monitor/cost-usage) to understand how data charges are calculated for your Log Analytics workspaces.
+[Cost optimization](/azure/well-architected/cost/overview) refers to ways to reduce unnecessary expenses and improve operational efficiencies. You can significantly reduce your cost for Azure Monitor by understanding your different configuration options and opportunities to reduce the amount of data that it collects. See [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/cost-usage) to understand how data charges are calculated for your Log Analytics workspaces.
 
 [!INCLUDE [waf-logs-cost](includes/waf-logs-cost.md)]
 
