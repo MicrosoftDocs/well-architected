@@ -70,13 +70,11 @@ You might have existing documentation or business plans that provides a mapping 
 
 - *Connect the output to business process.* Connect the dots from the flow outputs to the overall business process they support. For example, if a flow step involves processing customer orders, then it directly supports the business process of order fulfillment. Order fulfillment contributes to the business objective of maintaining customer satisfaction and generating revenue. Finally, use the flow breakdown to help determine which flow created the sales report.
 
-### Identify process owners and stakeholders for each flow
+### Identify process owners and escalation for each flow
 
 The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for making critical  for that process and the flows that support it. You should identify the process owner for each workload flow.
 
 In addition to process owners, you should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
-
-<!--Identify process owners and stakeholders for each flow -->
 
 You might have a responsibility assignment matrix (RAM) or RACI matrix that already identifies process owners and stakeholders. Typically, process owners are responsible or accountable for a process, and stakeholders are consulted or informed.
 
@@ -87,7 +85,7 @@ Identifying escalation paths is about determining the specific procedures and ch
 ### Identify business impact of each flow
 <!-- what should this be?-->
 
-Identifying the business impact of each flow is essential business impact of each flow. You need understand how each flow contributes to or detracts from key business impact. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter most to your business. It's important to consider not just the direct impact of flow failure but its indirect effects on other interconnected processes. Here are steps to identify the business impact of each flow:
+Identifying the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter most to your business. It's important to consider not just the direct impact of flow failure but its indirect effects on other interconnected processes. Here are steps to identify the business impact of each flow:
 
 - *Identify positive impact.* Determine the expected benefits when a flow runs as intended. The expected benefits could include improved efficiency, increased revenue, enhanced customer satisfaction, or any other positive effect on the business.
 
