@@ -14,6 +14,8 @@ Azure provides all the tools needed to secure your SAP workload. SAP application
 
 ## Configure identity management
 
+*Impact: Security*
+
 Identity management is a framework to enforce the policies that control access to critical resources. Identity management controls access your SAP workload within or outside its virtual network. There are three identity management use cases to consider for your SAP workload, and the identity management solution differs for each.
 
 <a name='use-azure-active-directory'></a>
@@ -65,9 +67,11 @@ A common customer scenario is deploying SAP application into Microsoft Teams. Th
 
 ## Use role-based access control (RBAC)
 
-It’s important to control access to the SAP workload resources you deploy. Every Azure subscription has a trust relationship with a Microsoft Entra tenant. We recommend you use Azure role-based access control (Azure RBAC) to grant users within your organization access the SAP application. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a subscription, a resource group, or a single resource. The scope depends on the user and how you’ve grouped your SAP workload resources.
+*Impact: Security*
 
-For more information, see:
+It’s important to control access to the SAP workload resources you deploy. Every Azure subscription has a trust relationship with a Microsoft Entra tenant. We recommend you use Azure role-based access control (Azure RBAC) to grant users within your organization access the SAP application. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a subscription, a resource group, or a single resource. The scope depends on the user and how you’ve grouped your SAP workload resources.
+    
+ For more information, see:
 
 - [Microsoft Entra ID trust relationship](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory)
 - [Azure RBAC](/azure/role-based-access-control/overview)
@@ -89,6 +93,8 @@ Application security groups (ASGs) make it easier to configure the network secur
 **Filter web traffic.** An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints. For more information, see [inbound and outbound internet connections for SAP on Azure](/azure/architecture/guide/sap/sap-internet-inbound-outbound).
 
 ## Encrypt data
+
+*Impact: Security*
 
 Azure includes tools to safeguard data according to your organization's security and compliance needs. It's essential that you encrypt SAP workload data at rest and in transit.
 
