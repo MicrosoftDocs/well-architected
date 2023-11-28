@@ -35,9 +35,11 @@ Typically, critical flows significantly affect the user experience or business o
 
 ### Identify critical flows
 
-Critical flows refer to the key user flows for paying customers or the flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. To identify critical flows, complete these tasks:
+Critical flows refer to the key user flows for customers or the system and data flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. To identify critical flows, complete these tasks:
 
 #### Map the flows
+
+If you have already completed the analysis in [RE:02 Reliability - Identify and prioritize user and system flows](../reliability/identify-flows.md) you can use the existing mapping as a basis for the following. You may assess slightly different values for the criticality or priority as it relates to Performance Efficienty. You may note that some System Flows from RE:02 need to be split into a combination of System Flows and Data Flows. This is an important distinction for Performance Efficiency to identify critical workload components that may need different resource allocations.
 
 Mapping flows refers to the process of identifying and outlining the paths or sequences of user interaction within a workload. It also includes understanding the interdependencies between its components or services. This mapping provides a visual representation of how different components interact to support user actions. By mapping the flows, you gain clarity on the user journey. Mapping makes it easier to pinpoint crucial interactions and dependencies that are important for functionality.
 
@@ -55,13 +57,15 @@ Monitoring flow metrics involves consistently observing and recording performanc
     
 #### Prioritize flows
 
-Prioritizing flows involves evaluating each user flow's importance in relation to your workload's main objectives. Effective flow prioritization ensures that the most important user interactions receive the necessary resources and attention. It optimizes the user experience and workload efficiency. To prioritize flows in your application, consider these steps:
+Prioritizing flows involves evaluating each flow's importance in relation to the performance or efficiency of your workload's main objectives. Effective flow prioritization ensures that the most important user interactions and business processes receive the necessary resources and attention. It optimizes the user experience and workload efficiency. To prioritize flows in your application, consider these steps:
 
-- *Assess user flows*: Begin by evaluating the significance of each user flow in your application. Consider factors like actual usage, alignment with business goals, user effects, and the potential consequences of failures. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
+- *Assess flows*: Begin by evaluating the significance of each flow in your application. Consider factors like actual usage, alignment with business goals, user effects, and the potential consequences of poor performance or efficiency. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
 
-- *Analyze performance data*: Dive deep into the performance metrics associated with each user flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. Metrics such as user satisfaction, conversion rates, and revenue generation can be revealing.
+- *Analyze performance data*: Dive deep into the performance metrics associated with each flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. Metrics such as user satisfaction, conversion rates, and revenue generation can be revealing.
 
-- *Prioritize flows*: Based on your comprehensive assessment and data analysis, prioritize the user flows. Allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. Especially focus on flows with high user traffic or flows that have a direct effect on revenue generation.
+- *Evaluate business impact and cost*: Evaluate business impact and relative cost of performance for each flow. Scaling some flows will be negligible to the overall cost of your solution, but may provide a greatly improved user experience. Other flows may be very costly when overprovisioned. Each flow should be classified by a pair of values that capture both of these aspects. A flow that greatly improves the user experience or business throughput, but which is also a primary driver of the workload cost might be "High - High", and a different flow that is important to the user experience but represents only a negigible portion of the cost could be "Medium - Low".
+
+- *Prioritize flows*: Based on your comprehensive assessment and data analysis, prioritize the flows and identify critical flows. Flow with a **High** business impact or **High** cost impact are likely candidates for inclusion in your list of critical flows. Allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. Especially focus on flows with high user traffic or flows that have a direct effect on revenue generation.
 
 | Critical flows | Noncritical flows |
 |-|-|
