@@ -41,7 +41,7 @@ By dissecting the workload into discrete flows, you can find performance bottlen
 
 For more detailed steps on how to identify all workload flows, see [Identify and prioritize user and system flows](../reliability/identify-flows.md). You can use the resulting flow mapping as a basis for prioritizing the performance of critical flows.
 
-### Monitor flow metrics
+### Monitor flow performance metrics
 
 Having identified all flows within your workload, the next step is collect performance metrics on each flow and monitor those metrics. These provide insights into response times, error rates, and throughput. The goal is to consistently observe and record performance-related metrics to further refine your understanding of each flow's impact on workload performance. To monitor flow metrics, you can use the following tools to collect data:
 
@@ -53,7 +53,7 @@ Having identified all flows within your workload, the next step is collect perfo
 
 ### Identify critical flows
 
-With the flows identified and performance data, you can begin prioritizing the flows. Prioritizing flows involves evaluating the performance impact of each flow and its over all criticality. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. It's a fundamental strategy for improving performance efficiency. To prioritize flows in your application, consider these steps:
+With the flows identified and performance data in hand, you can begin ranking all the flows and identifying all critical flows. Identifying critical flows involves evaluating the performance impact of each flow and its over all criticality. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. It's a fundamental strategy for improving performance efficiency. To prioritize flows in your application, consider these steps:
 
 - *Identify business impact*: Begin by evaluating the significance of each flow in your workload. Consider alignment with business goals, user impact, and the consequences of poor performance. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
 
