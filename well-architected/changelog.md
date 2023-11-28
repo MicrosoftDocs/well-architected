@@ -25,7 +25,7 @@ The following new and updated articles have recently been published in the Azure
 
 ### New articles
 
-- [Review - Azure Cosmos DB for NoSQL](./services/data/cosmos-db.md)
+- [Review - Azure Cosmos DB for NoSQL](service-guides/cosmos-db.md)
 
 ### Updated articles
 
@@ -35,7 +35,7 @@ The following new and updated articles have recently been published in the Azure
 
 ### New articles
 
-- [Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL](./services/data/postgresql.md)
+- [Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL](./service-guides/postgresql.md)
 - [Recommendations for using availability zones and regions](./resiliency/regions-availability-zones.md)
 
 ### Updated articles
