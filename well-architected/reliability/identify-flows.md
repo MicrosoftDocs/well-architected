@@ -80,7 +80,7 @@ You should also identify the stakeholders for each flow. Stakeholders have depen
 
 You might have a responsibility assignment matrix (RAM) or RACI matrix that contains this information. Typically, process owners are responsible or accountable for a process, and stakeholders are consulted or informed.
 
-#### Identify escalation paths for each flow
+### Identify escalation paths for each flow
 
 Identifying escalation paths is about determining the specific procedures and channels for escalating issues related to a flow, such as urgent updates, security concerns, degradations, or technical incidents. The goal is to ensure timely and effective resolution. You need to identify clear lines of responsibility and response mechanisms for incidents affecting the health of the flow and the remediation of these incidents.
 
