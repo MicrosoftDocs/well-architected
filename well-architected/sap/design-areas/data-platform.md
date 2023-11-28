@@ -14,6 +14,8 @@ The data platform refers to the data store technologies that support an SAP work
 
 ## Optimize data costs
 
+*Impact: Cost optimization*
+
 We recommend optimizing the storage cost for your SAP workload. Storage is an essential component of an SAP workload. Storage contains active data and backup data that is critical to your organization. Storage affects the performance, availability, and recoverability of an SAP workload. It's important to have the right performance at the right cost. Here are recommendations to help you reach this goal.
 
 **Use reserved capacity storage type.** There are several storage options available to choose from based on the workload requirement. Managed disks, blog storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data.
@@ -27,6 +29,8 @@ For more information, see:
 **Use lifecycle management policies.** Other than reserved capacity, you need to ensure the data-retention period is right for the SAP workload. An SAP database backup can be large and add to the storage cost if not optimized. We recommend that you create a lifecycle policy that meets the recovery time objective (RTO) and recovery point objective (RPO) of your SAP workload. The policy should move into Premium, Standard, Cold, Archive storage based on its age and business requirements.
 
 ## Improve data reliability
+
+*Impact: Reliability*
 
 Data reliability is essential for ensuring continuity of operations. We provide reliability recommendations for configuring database reliability, creating SAPMNT share reliability, using backups, and implementing a disaster recovery solution.
 
@@ -119,6 +123,8 @@ For more information, see:
 - [Backup and Disaster Recovery](https://azure.microsoft.com/solutions/backup-and-disaster-recovery/#overview)
 
 ## Improve storage performance
+
+*Impact: Performance efficiency*
 
 It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the input/output operations per second (IOPS) requirements and throughput needs of the SAP database.
 
