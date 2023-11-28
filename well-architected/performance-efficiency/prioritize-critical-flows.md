@@ -42,7 +42,9 @@ For more detailed steps on how to identify all workload flows, see [Identify and
 
 ### Monitor flow performance metrics
 
-Having identified all flows within your workload, the next step is collect performance metrics on each flow and monitor those metrics. These provide insights into response times, error rates, and throughput. The goal is to consistently observe and record performance-related metrics to further refine your understanding of each flow's impact on workload performance. To monitor flow metrics, you can use the following tools to collect data:
+Having identified all flows within your workload, the next step is collect performance metrics on each flow and monitor those metrics. These provide insights into response times, error rates, and throughput. The goal is to consistently observe and record performance-related metrics to further refine your understanding of each flow's impact on workload performance.
+
+To monitor flow metrics, you can use the following tools to collect data:
 
 - *Analytic and tracking tools*: These tools provide insights into user behavior and interactions within your application. By analyzing user data, you can identify the most common flows, bottlenecks, or potential issues.
 
@@ -56,6 +58,8 @@ With the flows identified and performance data in hand, you can begin ranking al
 
 - *Identify business impact*: Begin by evaluating the significance of each flow in your workload. Consider alignment with business goals, user impact, and the consequences of poor performance. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
 
+    Additionally, consider the performance impacts of a flow across one or more business processes. Some business processes may be supported by multiple flows, but it's likely that one flow carries the weight of performance. You want to identify these types of flows. Conversely, a single flow might underpin several processes. In such cases, the performance of this flow directly influences the efficacy of all related processes, and it's likely a critical flow."
+
 - *Analyze performance data*: Analyze the performance metrics associated with each flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. For example, system flows with significant usage is likely an important flow.
 
 - *Assign criticality rating*: Based on the business impact and performance indicators, you should prioritize the flows. Use criticality ratings of "High", "Medium", and "Low". Flows with a significant business impact or high performance demand should receive a "High" criticality rating. These flows are your critical flows. Focus on flows with high user traffic or have a direct effect on revenue generation. The following table provides characteristics of critical ("High") and noncritical flows ("Medium" to "Low").
@@ -66,7 +70,7 @@ With the flows identified and performance data in hand, you can begin ranking al
 | Business critical | Not business critical |
 | Expensive operations | Small operations |
 | Time-sensitive | Not time-sensitive |
-|Production | Preproduction |
+| Production | Preproduction |
 | Real-time processing | Batch processing |
 | Latency sensitive | Not latency sensitive |
 | Paying user | Nonpaying user |
@@ -75,6 +79,8 @@ With the flows identified and performance data in hand, you can begin ranking al
 | High-revenue accounts | Low-revenue accounts |
 
 ### Isolate critical flows
+
+<!-- justify the performance enhancements to critical flows, the increase in business impact must outweigh the increase in cost-->
 
 Isolating critical flows means providing dedicated resources or capacity to support critical flows. You want to allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage the resources that support them. Here are recommendations for isolating critical flows:
 
