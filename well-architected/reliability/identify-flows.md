@@ -72,20 +72,22 @@ Existing documentation or business plans should provide a mapping of flows to bu
 
 ### Identify process owners and stakeholders for each flow
 
-The process owner for a flow is the individual that's responsible for the successful execution of a given process, and often maps directly to the process owner for the related business process. They are responsible for making critical decisions.
+The process owner for a flow is the individual that's responsible for the successful execution of a given process, and often maps directly to the process owner for the related business process. They are responsible for making critical decisions. You should identify the process owner for each workload flow.
 
-You should have or create a responsibility assignment matrix (RAM) or RACI matrix to track process owners. Process owners are typically assigned as Responsible or Accountable for a process, and stakeholders are those who are Consulted or Informed on the process.
+You should also identify the stakeholders for each flow. Stakeholders have dependencies on a flow, or they manage dependencies of the workload flow.
 
-Stakeholders should also be identified. Stakeholders may be others in the organization that have dependencies on, or that manage dependencies for a particular flow.
+<!--Identify process owners and stakeholders for each flow -->
+
+You might have a responsibility assignment matrix (RAM) or RACI matrix that contains this information. Typically, process owners are responsible or accountable for a process, and stakeholders are consulted or informed.
 
 #### Identify escalation paths for each flow
 
 Identifying escalation paths is about determining the specific procedures and channels for escalating issues related to a flow, such as urgent updates, security concerns, degradations, or technical incidents. The goal is to ensure timely and effective resolution. You need to identify clear lines of responsibility and response mechanisms for incidents affecting the health of the flow and the remediation of these incidents.
 
-### Identify business consequences of each flow
+### Identify business outcomes of each flow
 <!-- what should this be?-->
 
-Identifying the business consequences of each flow is essential for understanding and agreeing upon the technical and business impact if business targets aren't met. This process involves a thorough analysis of how each flow within a workload contributes to or detracts from key business objectives, such as revenue, customer satisfaction, or operational efficiency. By understanding both the positive and negative outcomes of each flow, you can prioritize efforts to ensure the reliability of the most critical flows. Here are steps to identify the business consequences of each flow:
+Identifying the business outcomes of each flow is essential for understanding and agreeing upon the technical and business impact if business targets aren't met. This process involves a thorough analysis of how each flow within a workload contributes to or detracts from key business objectives, such as revenue, customer satisfaction, or operational efficiency. By understanding both the positive and negative outcomes of each flow, you can prioritize efforts to ensure the reliability of the most critical flows. Here are steps to identify the business consequences of each flow:
 
 - *Identify positive outcomes.* Determine the expected benefits when a flow runs as intended. The expected benefits could include improved efficiency, increased revenue, enhanced customer satisfaction, or any other positive impact on the business.
 
