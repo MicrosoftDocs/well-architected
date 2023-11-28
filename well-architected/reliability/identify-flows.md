@@ -26,13 +26,13 @@ This guide describes the recommendations for identifying and prioritizing worklo
 
 ## Key design strategies
 
-When you design your workload, it's essential to define and refine both the user and system flows. User flows chart the journey of a user through your application or system. They underscore the user interface, interactions, decisions, and the steps required to complete a task. This user-centric perspective prioritizes user experience and interface design.
+When you design your workload, it's essential to define the user flows and system flows. User flows chart the movement of a user through your application. They focus on the user interface, interactions, decisions, and the steps required to complete a task. User flows provide a user-centric perspective on user experience and interface design.
 
-System flows focus into the internal workings of your application. It encompasses data movement, input processing, output processing, and interactions among system components, backend services, and external APIs. This technical perspective focuses on the intricate details of how the system operates internally.
+System flows chart the internal workings of your application. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. Systems flows indicate the intricate details of how the workload operates internally.
 
-By understanding these flows, you can strategically enhance the reliability of the most crucial aspects of your workload. This approach allows you to prioritize flows with stringent availability requirements, while appropriately deprioritizing flows with less critical demands.
+By understanding these flows, you can strategically enhance the reliability of the most crucial aspects of your workload. You can prioritize flows with high availability requirements while appropriately deprioritizing flows with less critical demands.
 
-You should identify and define flows early in the design phase of your workload. It grants you a clearer understanding of the foundational elements that influence your design choices, especially in relation to the reliability of your workload. This proactive planning facilitates a more robust and dependable workload. It aligns your architectural decisions closely with the reliability goals of your workload.
+You should identify and define flows early in the design phase of your workload. It gives you a clearer understanding of what affects the reliability of your workload. It aligns your architectural decisions closely with the reliability goals of your workload.
 
 ### Identify all user and system flows
 
