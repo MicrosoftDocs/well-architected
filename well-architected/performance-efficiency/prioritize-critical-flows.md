@@ -20,7 +20,6 @@ This guide describes the recommendations for prioritizing the performance of cri
 
 |Term|Definition|
 |-|-|
-|Data flow | The movement of data within a workload, including input, processing, transformation, and output.  |
 | Flow | In a workload, the sequence of actions that performs a specific function. A flow involves the movement of data and the running of processes between components of the workload. |
 | Priority queue processing |The act of processing high-priority tasks before low-priority tasks.|
 | Rate limiting |The act of limiting how many requests can access a resource.|
