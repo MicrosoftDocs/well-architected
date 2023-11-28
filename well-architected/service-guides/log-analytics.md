@@ -1,5 +1,5 @@
 ---
-title: Best practices for Azure Monitor Logs
+title: Provides a template for a Well-Architected Framework (WAF) article that is specific to Log Analytics workspaces.
 description: Provides a template for a Well-Architected Framework (WAF) article specific to Log Analytics workspaces in Azure Monitor.
 ms.topic: conceptual
 author: bwren
@@ -8,10 +8,16 @@ ms.date: 08/16/2023
 ms.reviewer: bwren
 ---
 
-# Best practices for Azure Monitor Logs
-This article provides architectural best practices for Azure Monitor Logs. The guidance is based on the five pillars of architecture excellence described in [Azure Well-Architected Framework](/azure/architecture/framework/).
+# Azure Well-Architected Framework review - Log Analytics
+This article provides architectural best practices for [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-workspace-overview) in [Azure Monitor](/azure/azure-monitor/overview). The guidance is based on the five pillars of architecture excellence:
 
+- Reliability
+- Security
+- Cost optimization
+- Operational excellence
+- Performance efficiency
 
+We assume that you understand system design principles, have working knowledge of Azure Monitor, and are well versed with its features. For more information, see [Azure Monitor](/azure/azure-monitor).
 
 ## Reliability
 [Reliability](/azure/well-architected/resiliency/overview) refers to the ability of a system to recover from failures and continue to function. Instead of trying to prevent failures altogether in the cloud, the goal is to minimize the effects of a single failing component. Use the following information to minimize failure of your Log Analytics workspaces and to protect the data they collect.
