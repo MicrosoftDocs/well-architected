@@ -59,7 +59,7 @@ With the flows identified and performance data, you can begin prioritizing the f
 
 - *Analyze performance data*: Analyze the performance metrics associated with each flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. For example, system flows with significant usage is likely an important flow.
 
-- *Assign criticality rating*: Based on the business impact and performance indicators, you should prioritize the flows. Use criticality ratings of "High", "Medium", and "Low". Flows with a significant business impact or high performance demand should receive a "High" criticality rating. These flows are your critical flows. Focus on flows with high user traffic or have a direct effect on revenue generation. The following table provides examples of critical and noncritical flows.
+- *Assign criticality rating*: Based on the business impact and performance indicators, you should prioritize the flows. Use criticality ratings of "High", "Medium", and "Low". Flows with a significant business impact or high performance demand should receive a "High" criticality rating. These flows are your critical flows. Focus on flows with high user traffic or have a direct effect on revenue generation. The following table provides characteristics of critical ("High") and noncritical flows ("Medium" to "Low").
 
 | Critical flows | Noncritical flows |
 |-|-|
