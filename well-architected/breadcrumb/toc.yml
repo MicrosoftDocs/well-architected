@@ -29,6 +29,9 @@
       tocHref: /azure/well-architected/workloads/
       topicHref: /azure/well-architected/workloads
       items:
+      - name: Azure Virtual Desktop
+        tocHref: /azure/well-architected/azure-virtual-desktop/
+        topicHref: /azure/well-architected/azure-virtual-desktop/index
       - name: Azure VMware Solution
         tocHref: /azure/well-architected/azure-vmware/
         topicHref: /azure/well-architected/azure-vmware/index

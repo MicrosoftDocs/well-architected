@@ -160,6 +160,10 @@ sections:
         title: Azure VMware Solution
         summary: Relocate legacy application virtual machines to Azure VMware Solution as a staging area for the first phase of your migration and modernization strategy.
         url: ./azure-vmware/index.yml
+      - componentType: summary-card
+        title: Azure Virtual Desktop
+        summary: Run Windows desktops and applications on Azure from any device and location.
+        url: ./azure-virtual-desktop/index.yml
     addendum:
       text: See example workloads that apply Well-Architected tenets in the 
       link:
