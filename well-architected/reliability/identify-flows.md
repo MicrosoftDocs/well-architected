@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:02](checklist.md)| **Identify and prioritize user and system flows.** Use a criticality scale based on your business requirements to prioritize the flows. |
+|[RE:02](checklist.md)| **Identify and rate user and system flows.** Use a criticality scale based on your business requirements to prioritize the flows. |
 |---|---|
 
 This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves mapping user flows and system flows to determine their criticality to the organization. This practice ensures you identify and prioritize the most critical workload functionality to reducing the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability.
@@ -26,11 +26,7 @@ This guide describes the recommendations for identifying and prioritizing worklo
 
 ## Key design strategies
 
-When you design your workload, it's essential to define the user flows and system flows. User flows chart the movement of a user through your application. They focus on the user interface, interactions, decisions, and the steps required to complete a task. User flows provide a user-centric perspective on user experience and interface design.
-
-System flows chart the internal workings of your workload. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. Systems flows indicate the intricate details of how the workload operates internally.
-
-When you understand workload flows, you can strategically enhance the reliability of the most crucial aspects of your workload. You can prioritize flows with high availability requirements while appropriately deprioritizing flows with less critical demands.
+When you design your workload, it's essential to define the user flows and system flows. User flows chart the movement of a user through your application. They focus on the user interface, interactions, decisions, and the steps required to complete a task. User flows provide a user-centric perspective on user experience and interface design. System flows chart the internal workings of your workload. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. Systems flows indicate the intricate details of how the workload operates internally.
 
 You should identify and define flows early in the design phase of your workload. It gives you a clearer understanding of what affects the reliability of your workload. It aligns your architectural decisions closely with the reliability goals of your workload.
 
