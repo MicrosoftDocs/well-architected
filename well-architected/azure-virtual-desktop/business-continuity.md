@@ -52,7 +52,7 @@ For each Azure Virtual Desktop host pool, you can base your business continuity 
 
 ### Active-active scenarios
 
-The recommended configuration for an active-active scenario uses two host pools. For each host pool in your primary region, you deploy a secondary host pool in your secondary region. No administrator intervention is needed for failover. Like during normal operations, the secondary host pool provides users with Azure Virtual Desktop resources. The users must have a good understanding of the capabilities that Azure Virtual Desktop offers and how to use them.
+The recommended configuration for an active-active scenario uses two host pools, one host pool per region. No administrator intervention is needed for failover. Like during normal operations, the secondary host pool provides users with Azure Virtual Desktop resources. The users must have a good understanding of the capabilities that Azure Virtual Desktop offers and how to use them.
 
 Each host pool has its own storage account for persistent user profiles. If your disaster recovery plans require that profiles persist, you need to use the cloud cache feature of FSLogix to sync profiles across regions. To avoid profile conflicts, don't allow users to access both host pools at the same time.
 

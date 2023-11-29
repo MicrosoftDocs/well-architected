@@ -85,7 +85,7 @@ Like host pool settings, the settings on the VMs that serve as your session host
 
 The location of a session host correlates directly with the latency that end users experience. If you use FSLogix, the distance between your host pool location and the FSLogix storage location also affects your end-user experience. Deploy session hosts close to user locations.
 
-The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts in an availability zone or an availability set. We recommend availability zones over availability sets.
+The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts with redundancy. We recommend enabling availability zones.
 
 - Availability zones enhance the resilience of your session hosts against zone outages, but they're limited to specific regions.
 - Availability sets provide protection against specific fault domain and update domain failures, but they don't protect your environment from zone outages.
