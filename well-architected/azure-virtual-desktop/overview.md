@@ -21,25 +21,24 @@ You can use this workload documentation as your go-to resource for optimizing th
 
 Azure Virtual Desktop is a cloud service for desktop and app virtualization. When you use this cloud virtual desktop infrastructure (VDI) service, you can run Windows desktops and applications on Azure. End users can access Windows desktops and applications from any device and location.
 
-Besides providing a way for you to set up multiple sessions of Windows deployments, Azure Virtual Desktop workloads also offer the following benefits:
+Besides providing a way for you to stream Windows from the cloud, Azure Virtual Desktop workloads also offer the following benefits:
 
-- Cost reduction through pooled, multiple-session resources.
+- Cost reduction through pooled, multi-session resources.
 - Individual ownership through personal, persistent desktops.
-- Plan for growth and scale out by adding more resources based on your business needs. Your autoscaling strategy is backed by the ability to scale based on number of sessions per CPU core or based on peak hours and off-peak hours, by running the minimum number of session host VMs.
-- A unified experience for managing desktops and apps that are on various SKUs of the Windows operating system
+- Plan for growth and scale out by adding more resources based on your business needs. Your autoscaling strategy is backed by the ability to scale based on the percentage capacity or based on peak hours and off-peak hours, by running the minimum number of session host virtual machines (VMs).
+- A unified experience for managing desktops and apps that are on various SKUs of the Windows operating system.
 
+##### Hybird environment with Windows 11 Enterprise Multi-Session
 
-##### Hybrid environments with multiple sessions of Windows deployments
-
-Azure Virtual Desktop offers a hybrid solution for delivering Windows applications from an on-premises environment. By using [Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview), you can run Azure Virtual Desktop session hosts on-premises. When you run a [Windows 10 and Windows 11 Enterprise multi-session](/azure/virtual-desktop/windows-10-multisession-faq), you can manage your workloads anywhere.
+Azure Virtual Desktop offers a hybrid solution for delivering Windows applications from an on-premises environment. By using [Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview), you can run Azure Virtual Desktop session hosts on-premises. When you run a [Windows 10 and Windows 11 Enterprise Multi-Session](/azure/virtual-desktop/windows-10-multisession-faq), you can manage your workloads anywhere.
 
 ## What are the common challenges?
 
-VDI workloads often involve complex scenarios in customer environments. Many applications run on various on-premises, multicloud, and edge devices and operating system versions. Azure Virtual Desktop supports these scenarios.
+VDI workloads often involve complex scenarios in customer environments. Many applications run on various on-premises and edge devices and operating system versions. Azure Virtual Desktop supports these scenarios.
 
 Traditionally, VDI services require upfront capital expenditure for hardware and software licenses. They also involve ongoing operational costs for maintenance and support for brokering, web access, load balancer, or licensing services.
 
-You can use Azure Virtual Desktop to manage disparate workload architectures. Azure Virtual Desktop helps you secure data and organizational resources. It also meets employee-specific needs by providing support for various devices.
+You can use Azure Virtual Desktop to manage disparate workload architectures. Azure Virtual Desktop helps you secure data and organizational resources. It also meets employee-specific needs by providing support to connect from various devices and form-factors.
 
 The Azure Virtual Desktop control plane handles web access, gateway, broker, diagnostics, and extensibility components. You can configure these services by using the Azure portal, Azure Resource Manager, Bicep, or Terraform.
 
@@ -67,7 +66,7 @@ Consider the following resources when you design your Azure Virtual Desktop work
 
 - [Azure Virtual Desktop for the enterprise](/azure/architecture/example-scenario/wvd/windows-virtual-desktop). The Azure Virtual Desktop landing zone accelerator provides a design-oriented overview of an enterprise-scale landing zone for Azure Virtual Desktop. It provides a foundational overview for building an Azure Virtual Desktop environment that's highly scalable and accessible from any device. Azure Virtual Desktop is accessed over the public internet and doesn't require private network connectivity to a surrounding organizational technical estate.
 - [Multiple forests with AD DS and Microsoft Entra ID](/azure/architecture/example-scenario/wvd/multi-forest). This article provides technical recommendations for using multiple Active Directory Domain Services (AD DS) forests in an Azure Virtual Desktop scenario.
-- [Multiple-region business continuity and disaster recovery for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/azure-virtual-desktop-multi-region-bcdr). This article discusses business continuity and disaster recovery prerequisites, deployment steps, and best practices for multiple-region deployments of Azure Virtual Desktop.
+- [Multi-region business continuity and disaster recovery for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/azure-virtual-desktop-multi-region-bcdr). This article discusses business continuity and disaster recovery prerequisites, deployment steps, and best practices for multi-region deployments of Azure Virtual Desktop.
 
 ## Assessment
 

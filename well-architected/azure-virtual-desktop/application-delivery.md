@@ -29,14 +29,14 @@ When you create host pools, various settings directly affect the performance and
 In Azure Virtual Desktop, you can create two types of host pools:
 
 - **Personal** host pools assign a specific user to a specific virtual machine (VM). With this setup, the user connects to the same machine each time, and the user profile data is stored directly on the operating system disk of the VM. This scenario necessitates a robust backup solution to ensure that all user modifications are stored and can be restored if there's a disaster. This type of host pool is useful for scenarios where users need to maintain their application state over time.
-- **Pooled** host pools provide a way for multiple users to connect to different VMs in a pool. Because users can connect to different session hosts with each connection, we recommend that they use FSLogix to store their user profile data. Host pools that are pooled offer a communal remote experience to users, promoting cost-effectiveness and increased efficiency.
+- **Pooled** host pools provide a way for multiple users to connect to different VMs in a pool. Because users can connect to different session hosts with each connection, the admin needs to configure and use FSLogix to store user profile data. Host pools that are pooled offer a communal remote experience to users, promoting cost-effectiveness and increased efficiency.
 
 Each type of host pool comes with its own set of pros and cons. It's important to carefully select the type of host pool by thoroughly evaluating the functionalities that users need.
 
 ##### Recommendations
 
 - Consider using a personal pool if you aim to give users power to personalize their environment and work freely within a VM.
-- Use a pooled pool to streamline your reliability solution and minimize costs.
+- Use a pooled host pool to streamline your reliability solution and minimize costs.
 
 ### Load-balancing algorithms
 
@@ -45,7 +45,7 @@ Each type of host pool comes with its own set of pros and cons. It's important t
 If you use a pooled host pool, there are two types of load-balancing algorithms that you can use. Each one directly affects your cost and performance efficiency.
 
 - **Breadth-first** load balancing distributes user sessions across session hosts. Users are assigned to the session host with the lowest usage, which can improve the user experience.
-- **Depth-first** load balancing saturates one session host at a time before assigning user sessions to other session hosts, ensuring efficient use of resources. This approach is particularly cost-effective, because it fully uses the capacity of a single host pool before allocating users to the next session host. It's especially beneficial in scale-down scenarios.
+- **Depth-first** load balancing saturates one session host at a time before assigning user sessions to other session hosts, ensuring efficient use of resources. This approach is particularly cost-effective, because it fully uses the capacity of a single host before allocating users to the next session host. It's especially beneficial in scale-down scenarios.
 
 ##### Recommendations
 
@@ -83,9 +83,9 @@ Like host pool settings, the settings on the VMs that serve as your session host
 
 *Impact: Reliability, Performance Efficiency*
 
-The location of a session host correlates directly with the latency that end users experience. If you use FSLogix, the distance between your host pool location and the FSLogix storage location also affects your end-user experience. Deploy session hosts close to user locations. A single host pool can hold session hosts from various regions.
+The location of a session host correlates directly with the latency that end users experience. If you use FSLogix, the distance between your host pool location and the FSLogix storage location also affects your end-user experience. Deploy session hosts close to user locations.
 
-The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts in an availability zone or an availability set.
+The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts in an availability zone or an availability set. We recommend availability zones over availability sets.
 
 - Availability zones enhance the resilience of your session hosts against zone outages, but they're limited to specific regions.
 - Availability sets provide protection against specific fault domain and update domain failures, but they don't protect your environment from zone outages.
@@ -109,13 +109,13 @@ Your session host compute size also affects the performance of your environment.
 Some sizes offer special features:
 
 - DCasv5 and ECasv5 are confidential sizes that provide robust high-security features. Examples of these features include hardware-based isolation, encryption, and dedicated virtual trusted-platform modules.
-- Certain sizes provide GPU support. The NV-series, which is backed by NVIDIA Tesla M60 GPUs, can be helpful if you use frameworks such as OpenGL and DirectX.
+- Certain sizes provide GPU support. The NV-series, which is backed by NVIDIA Tesla M60 GPUs, can be helpful if you use frameworks such as OpenGL and DirectX, or in general, if you use graphics-intensive applications.
 
 ##### Recommendations
 
 - Look at the various compute sizes, families, and features that Azure offers, and choose the option that optimizes the performance and cost efficiency of your workload.
 - Consider VMs in the DCasv5 or ECasv5 series if you run high-security workloads.
-- Consider NV-series VMs if you use frameworks like OpenGL and DirectX.
+- Consider NV-series VMs if you use graphics-intensive applications.
 
 ### Storage solutions
 
@@ -123,7 +123,6 @@ Some sizes offer special features:
 
 Your storage solution also affects the performance of Azure Virtual Desktop. Session hosts use Azure managed disks as virtual hard drives. Several types of disks are available:
 
-- Ultra disks
 - Premium solid-state drives (SSDs)
 - Standard SSDs
 - Standard hard-disk drives (HDDs)
