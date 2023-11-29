@@ -30,7 +30,7 @@ When you design your workload, it's essential to define the user flows and syste
 
 System flows chart the internal workings of your workload. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. Systems flows indicate the intricate details of how the workload operates internally.
 
-By understanding these flows, you can strategically enhance the reliability of the most crucial aspects of your workload. You can prioritize flows with high availability requirements while appropriately deprioritizing flows with less critical demands.
+When you understand workload flows, you can strategically enhance the reliability of the most crucial aspects of your workload. You can prioritize flows with high availability requirements while appropriately deprioritizing flows with less critical demands.
 
 You should identify and define flows early in the design phase of your workload. It gives you a clearer understanding of what affects the reliability of your workload. It aligns your architectural decisions closely with the reliability goals of your workload.
 
@@ -58,9 +58,9 @@ The output of identifying all user and system flows is a catalog of all the flow
 
 ### Identify business processes for each flow
 
-Business processes are a series of tasks to achieve an output, such as order fulfillment, customer service management, or inventory control. Identifying business processes for each flow involves mapping flows to one or more business processes. This mapping helps you understand the importance of each flow to the business.
+Business processes are a series of tasks to achieve an output, such as order fulfillment, customer service management, or inventory control. The identification of business processes for each flow involves mapping flows to one or more business processes. This mapping helps you understand the importance of each flow to the business.
 
-You might have existing documentation or business plans that provides a mapping of flows to business processes. Sometimes user manuals, training materials, or system specifications can provide insights into the intended use and purpose of the workload and its flows. If not, you need to map flows to the business processes they support. Here are recommendations to identify business processes for each flow:
+You might have existing documentation or business plans that provide a mapping of flows to business processes. Sometimes user manuals, training materials, or system specifications can provide insights into the intended use and purpose of the workload and its flows. If not, you need to map flows to the business processes they support. Here are recommendations to identify business processes for each flow:
 
 - *Use workload outputs.* You can use the workload outputs and flow breakdown to correlate flows with the business processes they support. First, review the outputs the workload generates. The output could be sales reports, data files, or completed tasks.
 
@@ -68,7 +68,7 @@ You might have existing documentation or business plans that provides a mapping 
 
 - *Monitor workload usage.* For existing workloads, monitor the workload and look for patterns in usage that indicate underlying business processes, such as data entry, order processing, or customer interaction.
 
-- *Connect the output to business process.* Connect the dots from the flow outputs to the overall business process they support. For example, if a flow step involves processing customer orders, then it directly supports the business process of order fulfillment. Order fulfillment contributes to the business objective of maintaining customer satisfaction and generating revenue. Finally, use the flow breakdown to help determine which flow created the sales report.
+- *Connect the output to a business process.* Connect the dots from the flow outputs to the overall business process they support. For example, if a flow step involves processing customer orders, then it directly supports the business process of order fulfillment. Order fulfillment contributes to the business objective of maintaining customer satisfaction and generating revenue. Finally, use the flow breakdown to help determine which flow created the sales report.
 
 ### Identify process owners and stakeholders for each flow
 
@@ -80,24 +80,25 @@ You might have a responsibility assignment matrix (RAM) or RACI matrix that alre
 
 ### Identify escalation paths for each flow
 
-Identifying escalation paths is about determining the specific procedures and channels for escalating issues related to a flow. Examples of issues include urgent updates, security concerns, degradations, or technical incidents. The goal is to ensure timely and effective resolution. You need to identify clear lines of responsibility and response mechanisms for incidents affecting the health of the flow and the remediation of these incidents.
+The identification of escalation paths is about determining channels for escalating issues related to a flow. Issues that need escalation could be urgent updates, security concerns, degradations, or technical incidents. The goal of identifying an escalation path is to ensure timely and effective resolution of issues.
+
+The escalation path you map out should start with the person or group most likely to resolve a particular issue. If this person or group can't resolve the issue, the escalation path should identify the next point of contact. The next point of contact has broader responsibilities and is able to coordinate mitigation strategies more parts of the organization. The number of people on an escalation path varies by flow and organization. Too many people on an escalation path can slow the resolution efforts.
 
 ### Identify business impact of each flow
-<!-- what should this be?-->
 
-Identifying the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter most to your business. It's important to consider not just the direct impact of flow failure but its indirect effects on other interconnected processes. Here are steps to identify the business impact of each flow:
+The identification of the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter most to your business. It's important to consider not just the direct impact of flow failure but its indirect effects on other interconnected processes. Here are steps to identify the business impact of each flow:
 
 - *Identify positive impact.* Determine the expected benefits when a flow runs as intended. The expected benefits could include improved efficiency, increased revenue, enhanced customer satisfaction, or any other positive effect on the business.
 
 - *Identify negative impact.* Assess the potential negative impacts if a process fails or doesn't work as expected. Consider quantifying specific losses, such as revenue drops. Include subjective effects like damage to reputation, erosion of customer trust, or adverse effects on other related business processes.
 
-- *Define capacity and availability assumptions.* Establish assumptions about the expected capacity and availability of each process. Consider factors like throughput per unit of time, expected business hours, and target percentage uptime. If there are expectations for recovery time objective (RTO) or recovery point objective (RPO), you should include these expectations. These assumptions help in understanding the scalability and reliability requirements of each flow.
+- *Define capacity and availability assumptions.* Establish assumptions about the expected capacity and availability of each process. Consider factors like throughput per unit of time, expected business hours, and target percentage uptime. If there are expectations for recovery time objective (RTO) or recovery point objective (RPO), you should include these expectations. These assumptions help in understanding reliability requirements of each flow.
 
 By systematically evaluating these aspects, you can gain a comprehensive view of how each flow impacts the business and make strategic decisions about reliability optimization.
 
 ### Assign criticality ratings
 
-Assigning criticality to each flow involves a detailed evaluation of their importance relative to the overall business impacts. This process is a logical continuation of identifying, mapping, and aligning with business processes and impact. Use the following criticality descriptions to assign your critical ratings:
+Assigning a criticality rating to each flow involves a detailed evaluation of their importance relative to the overall business impacts. This process is a logical continuation of identifying, mapping, and aligning with business processes and impact. Use the following criticality descriptions to assign your critical ratings:
 
 - *High criticality*: High criticality flows are integral to core business functions. They directly affect critical aspects of a business such as customer experience, financial transactions, security protocols, human health, and safety. The failure or disruption of these flows could lead to significant immediate or long-term negative effects. Examples of negatives effects include loss of revenue, breach of trust, or legal issues. Prioritizing these flows ensures that the most crucial aspects of the workload are robust and resilient.
 
@@ -117,7 +118,7 @@ For more information, see [business criticality in cloud management](/azure/clou
 
 ## Example flow catalog
 
-The following example provides a complete scenario and illustrates important points to help you identify, map, and prioritize your flows. The examples uses the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for the example flows. This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app is hosted in Azure using PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis.
+The following example provides a complete scenario and illustrates important points to help you identify, map, and prioritize your flows. The example uses the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for the example flows. This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app is hosted in Azure using PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis.
 
 :::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
@@ -125,15 +126,15 @@ The following example provides a complete scenario and illustrates important poi
 
 *Flow description*: Call center employees use the application to create an upcoming concert.
 
-- *Business processes*: This flow supports the *purchasing ticket* process, but in an asynchronous way that makes it less critical.
+- *Business processes*: This flow supports the *purchasing ticket* process, but it's asynchronous, making it less critical.
 
 - *Process owner*: Director of Sales.
 
-- *Stakeholders*: Sales department, Concert planning and operations, Platform team, Application team.
+- *Stakeholders*: Sales department, concert planning and operations, platform team, and application team.
 
-- *Escalation paths*: Sales department, platform team, or application team.
+- *Escalation paths*: Application team, platform team, then sales department.
 
-- *Business impact*: This flow is important to the availability of new concerts on the sales platforms. Concert availability is key to the main revenue flow of the business. If this flow isn't available when a call center employee needs to create a concert, it affects revenue and reputation. This flow doesn't require high availability because concerts are proactively created on a weekly basis. The sales department has requested 95% overall availability for this process, and are ok with non-business-hours downtime for maintenance.
+- *Business impact*: This flow is important for making new concerts available on sales platforms, directly influencing the main revenue stream of the business. When call center employees are unable to create concerts due to unavailability of this flow, it negatively impacts both revenue and the company's reputation. However, high availability isn't essential for this process since concerts are typically scheduled in advance on a weekly basis. The sales department specified a requirement of 95% availability for this process and is agreeable to downtime outside of business hours for maintenance purposes.
 
 - *Criticality rating*: Low.
 
@@ -143,13 +144,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Business processes*: This flow supports the *purchasing ticket* process, but call center employees can opt to list all concerts if the search function isn't available.
 
-- *Process owner*: The UX (user experience) department.
+- *Process owner*: The user experience (UX) department.
 
-- *Stakeholders*: Sales department, Platform team, Application team.
+- *Stakeholders*: Sales department, platform team, and application team.
 
-- *Escalation path*: Platform or application teams. Sales department manager on-call.
+- *Escalation path*: Application team, platform team, sales department manager on-call.
 
-- *Business impact*: This flow allows call center employees to quickly find concerts matching customer requests and is part of the normal sales process. It doesn't require high availability because call center employees can also list concerts. If this flow isn't available when a call center employee searches for a concert, it affects the application's reputation. The call center employee's experience might degrade and it might affect productivity because the employee spends more time on a call. Customers may be frustrated by longer delays, or by wait/hold times. The sales department has requested 99% availability during normal business hours.
+- *Business impact*: This flow allows call center employees to quickly find concerts and is part of the normal sales process. High availability of this flow isn't critical since employees have the capability to list concerts even in its absence. It does degrade the call center employee's experience might degrade and affect productivity. Customers could experience frustration due to increased wait times or delays. The sales department requested a 99% availability of this flow during regular business hours.
 
 - *Criticality rating*: Medium.
 
@@ -161,11 +162,11 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Process owner*: Director of Platform.
 
-- *Stakeholders*: Sales department, Platform team, Data team.
+- *Stakeholders*: Sales department, platform team, data team.
 
-- *Escalation path*: Data team, Data team on-call engineer, Platform team on-call engineer.
+- *Escalation path*: Data team, data team on-call engineer, platform team on-call engineer.
 
-- *Business impact*: This flow is part of the critical path for revenue generating transactions for the business. This flow requires high availability because call center employees can't processtickets purchases if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. This is a key process that the business expects 99.9% uptime for, including during extended business hours.
+- *Business impact*: This flow is integral to the critical path of revenue-generating transactions for the business. High availability is essential, as call center employees rely on this flow to process ticket purchases. In recognition of its importance, the business mandates a 99.9% uptime for this flow, which includes extended business hours.
 
 - *Criticality rating*: High.
 
@@ -177,11 +178,11 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Process owner*: Director of Sales.
 
-- *Stakeholders*: Sales department, all technical teams.
+- *Stakeholders*: Sales department and all technical teams.
 
-- *Escalation path*: Application team on-call engineer, Platform team on-call engineer, Data team on-call engineer, Chief Operating Officer
+- *Escalation path*: Application team on-call engineer, platform team on-call engineer, data team on-call engineer, Chief Operating Officer.
 
-- *Business impact*: This flow requires high availability because customers can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. This is a key process that the business expects 99.9% uptime for, including during extended business hours.
+- *Business impact*: High availability of this flow is crucial, as it directly enables customer ticket purchases. Any malfunction or unavailability of this flow can significantly impact both revenue and the company's reputation. The business set a stringent requirement for this vital process, expecting 99.9% uptime, even during extended business hours.
 
 - *Criticality rating*: High.
 
@@ -193,11 +194,11 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Process owner*: Platform team.
 
-- *Stakeholders*: Platform team, Sales department, Operations team
+- *Stakeholders*: Platform team, operations team, and sales department.
 
-- *Escalation path*: Platform team on-call engineer, Chief Operating Officer
+- *Escalation path*: Platform team on-call engineer, Chief Operating Officer.
 
-- *Business impact*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. This is a key process that the business expects 99.9% uptime for, including during extended business hours.
+- *Business impact*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. It's a key process that the business expects 99.9% uptime for, including during extended business hours.
 
 - *Criticality rating*: High.
 
@@ -209,11 +210,11 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Process owner*: Director of Operations.
 
-- *Stakeholders*: Operations team, Platform team, Data team
+- *Stakeholders*: Operations team, platform team, and data team.
 
-- *Escalation path*: Operations team (24/7) and Data team on-call engineer.
+- *Escalation path*: Operations team (24/7), data team on-call engineer.
 
-- *Business impact*: This flow supports monitoring and continuous improvement objectives for the business. It requires as much redundancy and resiliency as feasible. The operations team should strive to recover this flow from failure, so they don't miss important information and warnings. If this flow doesn't meet the expected availability, there's a risk of missing problems in production, which can cause serious consequences. The operations department has set a target of 99% uptime 24 hours a day, 7 days a week. Downtime for maintenance should be planned 48 hours in advance.
+- *Business impact*: This flow is essential for the business's monitoring and continuous improvement efforts. It needs to be as redundant and resilient as possible. The operations team is responsible for quickly restoring this flow after any failure to avoid missing critical information and warnings. If the flow fails to achieve the expected availability, there's a risk of overlooking production issues, potentially leading to severe consequences. To mitigate this risk, the operations department aims for 99% uptime, 24/7. Any maintenance-related downtime should be scheduled at least 48 hours in advance.
 
 - *Criticality rating*: Medium.
 
