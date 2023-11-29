@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:09](checklist.md)| Prioritize the performance of critical flows. The allocation of workload resources and performance optimization efforts should prioritize the flows that support the most important business processes, users, and operations.|
 |---|---|
 
-This guide describes the recommendations for prioritizing the performance of critical flows in a workload. Critical flows represent crucial business processes that generate revenue or drive high-priority operations. Prioritizing critical flows means ensuring the flows that have the most impact get the resources they need before lower priority flows. Failure to prioritize the performance of critical flows can have disproportionate negative effects on workload priorities and the user experience.
+This guide describes the recommendations for prioritizing the performance of critical flows in a workload. Critical flows represent crucial business processes that generate revenue or drive high-priority operations. When you prioritize the performance of critical flows, you ensure the flows that have the most impact get the resources they need before lower priority flows. Failure to do this prioritization can have disproportionate negative effects on workload priorities and the user experience.
 
 **Definitions**
 
@@ -34,15 +34,13 @@ Critical flows significantly affect the user experience or business operations. 
 
 ### Identify all flows
 
-The first step in prioritizing the performance of critical flows is identifying all the flows within your workload. Flow identification involves systematically mapping and understanding every user interaction, internal process, and movement of data within a workload. The focus here is on understanding the performance metrics and potential impact on workload performance.
+The first step in prioritizing the performance of critical flows is identifying all the flows within your workload. Flow identification involves systematically mapping and understanding every user paths and component communication. The focus here's on understanding the performance metrics and potential impact of flows on workload performance.
 
-By dissecting the workload into discrete flows, you can find performance bottlenecks, inefficient resource utilization, and opportunities for performance optimization. This foundational knowledge is vital for effectively prioritizing which flows are critical and thus require focused performance optimization strategies.
-
-For more detailed steps on how to identify all workload flows, see [Identify and prioritize user and system flows](../reliability/identify-flows.md). You can use the resulting flow mapping as a basis for prioritizing the performance of critical flows.
+By dissecting the workload into discrete flows, you can find performance bottlenecks, inefficient resource utilization, and opportunities for performance optimization. This knowledge exposes areas of needed improvement and is the first step to identifying critical flows. For more information, see [Identify and rate user and system flows](../reliability/identify-flows.md).
 
 ### Monitor flow performance metrics
 
-Having identified all flows within your workload, the next step is collect performance metrics on each flow and monitor those metrics. These provide insights into response times, error rates, and throughput. The goal is to consistently observe and record performance-related metrics to further refine your understanding of each flow's impact on workload performance.
+After you identify all flows within your workload, you need to collect performance metrics on each flow and monitor those metrics. Flow metrics provide insights into response times, error rates, and throughput. The goal is to consistently observe and record performance-related metrics to further refine your understanding of each flow's impact on workload performance.
 
 To monitor flow metrics, you can use the following tools to collect data:
 
@@ -54,15 +52,15 @@ To monitor flow metrics, you can use the following tools to collect data:
 
 ### Identify critical flows
 
-With the flows identified and performance data in hand, you can begin ranking all the flows and identifying all critical flows. Identifying critical flows involves evaluating the performance impact of each flow and its over all criticality. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. It's a fundamental strategy for improving performance efficiency. To prioritize flows in your application, consider these steps:
+With the performance data available, you can begin ranking all the flows and identifying the critical flows. The identification of critical flows requires you to evaluate the performance impact of each flow and it's over all criticality to the business. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. To prioritize flows in your application, consider these steps:
 
 - *Identify business impact*: Start by assessing the importance of each flow within your operations. Focus on how each flow aligns with your business objectives, its impact on users, and the potential negative effects of poor performance. For instance, while a free service tier may attract more users, a paid tier could be more vital for your business goals.
 
-Additionally, consider the performance impacts of a flow across one or more business processes. Some business processes may be supported by multiple flows, but it's likely that one flow carries the weight of performance. You want to identify these types of flows. Conversely, a single flow might underpin several processes. In such cases, the performance of this flow directly influences the efficacy of all related processes, and it's likely a critical flow.
+Additionally, consider the performance impacts of a flow across one or more business processes. Multiple flows might support a single business process, but often, one flow has a significant effect on the performance of that process. You want to identify the flows that the greatest performance impact. Conversely, a single flow might underpin several processes. In such cases, the performance of this flow directly influences the efficacy of all related processes, and it's likely a critical flow.
 
-- *Analyze performance data*: Analyze the performance metrics associated with each flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. For example, system flows with significant usage is likely an important flow.
+- *Analyze performance data*: Analyze the performance metrics associated with each flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. For example, system flows with significant usage are likely important flows.
 
-- *Assign criticality rating*: Based on the business impact and performance indicators, you should prioritize the flows. Use criticality ratings of "High", "Medium", and "Low". Flows with a significant business impact or high performance demand should receive a "High" criticality rating. These flows are your critical flows. Focus on flows with high user traffic or have a direct effect on revenue generation. The following table provides characteristics of critical ("High") and noncritical flows ("Medium" to "Low").
+- *Assign criticality rating*: Based on the business impact and performance indicators, you should prioritize the flows. Use criticality ratings of *High*, *Medium*, and *Low*. Flows with a significant business impact or high performance demand should receive a "High" criticality rating. These flows are your critical flows. Focus on flows with high user traffic or have a direct effect on revenue generation. The following table provides characteristics of critical (*High*) and noncritical flows (*Medium* to *Low*).
 
 | Critical flows | Noncritical flows |
 |-|-|
