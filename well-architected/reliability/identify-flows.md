@@ -68,9 +68,7 @@ You might have existing documentation or business plans that provide a mapping o
 
 ### Identify process owners and stakeholders for each flow
 
-The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for making critical  for that process and the flows that support it. You should identify the process owner for each workload flow.
-
-In addition to process owners, you should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
+The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for making critical  for that process and the flows that support it. You should identify the process owner for each workload flow. You should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
 
 You might have a responsibility assignment matrix (RAM) or RACI matrix that already identifies process owners and stakeholders. Typically, process owners are responsible or accountable for a process, and stakeholders are consulted or informed.
 
