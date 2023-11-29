@@ -70,7 +70,7 @@ You might have existing documentation or business plans that provides a mapping 
 
 - *Connect the output to business process.* Connect the dots from the flow outputs to the overall business process they support. For example, if a flow step involves processing customer orders, then it directly supports the business process of order fulfillment. Order fulfillment contributes to the business objective of maintaining customer satisfaction and generating revenue. Finally, use the flow breakdown to help determine which flow created the sales report.
 
-### Identify process owners and escalation for each flow
+### Identify process owners and stakeholders for each flow
 
 The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for making critical  for that process and the flows that support it. You should identify the process owner for each workload flow.
 
@@ -127,27 +127,31 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Business processes*: This flow supports the *purchasing ticket* process, but in an asynchronous way that makes it less critical.
 
-- *Process owner*: The sales department.
+- *Process owner*: Director of Sales.
 
-- *Escalation paths*: Stakeholders and platform or application teams.
+- *Stakeholders*: Sales department, Concert planning and operations, Platform team, Application team.
 
-- *Business impact*: This flow doesn't require high availability because concerts are proactively created on a weekly basis. If this flow isn't available when a call center employee needs to create a concert, it affects revenue and reputation.
+- *Escalation paths*: Sales department, platform team, or application team.
 
-- *Criticality rating*: Medium.
+- *Business impact*: This flow is important to the availability of new concerts on the sales platforms. Concert availability is key to the main revenue flow of the business. If this flow isn't available when a call center employee needs to create a concert, it affects revenue and reputation. This flow doesn't require high availability because concerts are proactively created on a weekly basis. The sales department has requested 95% overall availability for this process, and are ok with non-business-hours downtime for maintenance.
+
+- *Criticality rating*: Low.
 
 ### User flow 2: Search concerts
 
 *Flow description*: Call center employees use the application to search for upcoming concerts.
 
-- *Business processes*: This flow supports the *purchasing ticket* process, but call center employees can opt to list concerts if the search function isn't available.
+- *Business processes*: This flow supports the *purchasing ticket* process, but call center employees can opt to list all concerts if the search function isn't available.
 
 - *Process owner*: The UX (user experience) department.
 
-- *Escalation path*: Stakeholders and platform or application teams.
+- *Stakeholders*: Sales department, Platform team, Application team.
 
-- *Business impact*: This flow doesn't require high availability because call center employees can also list concerts. If this flow isn't available when a call center employee searches for a concert, it affects the application's reputation. The call center employee's experience might degrade and it might affect productivity because the employee spends more time on a call.
+- *Escalation path*: Platform or application teams. Sales department manager on-call.
 
-- *Criticality rating*: Low.
+- *Business impact*: This flow allows call center employees to quickly find concerts matching customer requests and is part of the normal sales process. It doesn't require high availability because call center employees can also list concerts. If this flow isn't available when a call center employee searches for a concert, it affects the application's reputation. The call center employee's experience might degrade and it might affect productivity because the employee spends more time on a call. Customers may be frustrated by longer delays, or by wait/hold times. The sales department has requested 99% availability during normal business hours.
+
+- *Criticality rating*: Medium.
 
 ### User flow 3: Get a list of the concerts
 
@@ -155,11 +159,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Business processes*: This flow directly supports the *purchasing ticket* process.
 
-- *Process owner*: The sales department.
+- *Process owner*: Director of Platform.
 
-- *Escalation path*: Stakeholders and platform or application teams.
+- *Stakeholders*: Sales department, Platform team, Data team.
 
-- *Business impact*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation.
+- *Escalation path*: Data team, Data team on-call engineer, Platform team on-call engineer.
+
+- *Business impact*: This flow is part of the critical path for revenue generating transactions for the business. This flow requires high availability because call center employees can't processtickets purchases if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. This is a key process that the business expects 99.9% uptime for, including during extended business hours.
 
 - *Criticality rating*: High.
 
@@ -169,11 +175,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Business processes*: This flow is the core feature and flow of the application.
 
-- *Process owner*: The sales department.
+- *Process owner*: Director of Sales.
 
-- *Escalation path*: Stakeholders and platform or application teams.
+- *Stakeholders*: Sales department, all technical teams.
 
-- *Business impact*: This flow requires high availability because customers can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation.
+- *Escalation path*: Application team on-call engineer, Platform team on-call engineer, Data team on-call engineer, Chief Operating Officer
+
+- *Business impact*: This flow requires high availability because customers can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. This is a key process that the business expects 99.9% uptime for, including during extended business hours.
 
 - *Criticality rating*: High.
 
@@ -183,11 +191,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Business processes*: This flow directly supports the *purchasing ticket* process. Without this functionality, call center employees can't sign in to the application to buy tickets.
 
-- *Process owner*: The sales department.
+- *Process owner*: Platform team.
 
-- *Escalation path*: Stakeholders and Platform or application teams.
+- *Stakeholders*: Platform team, Sales department, Operations team
 
-- *Business impact*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation.
+- *Escalation path*: Platform team on-call engineer, Chief Operating Officer
+
+- *Business impact*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. This is a key process that the business expects 99.9% uptime for, including during extended business hours.
 
 - *Criticality rating*: High.
 
@@ -197,11 +207,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Business processes*: This flow doesn't support any business processes, but it provides important data for the operations team.
 
-- *Process owner*: The operations team.
+- *Process owner*: Director of Operations.
 
-- *Escalation path*: The operations team and the operations team.
+- *Stakeholders*: Operations team, Platform team, Data team
 
-- *Business impact*: This flow requires as much redundancy and resiliency as possible. The operations team should strive to recover this flow from failure, so they don't miss important information and warnings. If this flow doesn't meet the expected availability, there's a risk of missing problems in production, which can cause serious consequences.
+- *Escalation path*: Operations team (24/7) and Data team on-call engineer.
+
+- *Business impact*: This flow supports monitoring and continuous improvement objectives for the business. It requires as much redundancy and resiliency as feasible. The operations team should strive to recover this flow from failure, so they don't miss important information and warnings. If this flow doesn't meet the expected availability, there's a risk of missing problems in production, which can cause serious consequences. The operations department has set a target of 99% uptime 24 hours a day, 7 days a week. Downtime for maintenance should be planned 48 hours in advance.
 
 - *Criticality rating*: Medium.
 
