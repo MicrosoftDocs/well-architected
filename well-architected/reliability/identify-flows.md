@@ -68,7 +68,7 @@ You might have existing documentation or business plans that provide a mapping o
 
 ### Identify process owners and stakeholders for each flow
 
-The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for making critical  for that process and the flows that support it. You should identify the process owner for each workload flow. You should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
+The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for that process and the flows that support it. You should identify the process owner for each workload flow. You should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
 
 You might have a responsibility assignment matrix (RAM) or RACI matrix that already identifies process owners and stakeholders. Typically, process owners are responsible or accountable for a process, and you consult or inform stakeholders.
 
@@ -80,7 +80,7 @@ The escalation path you map out should start with the person or group most likel
 
 ### Identify business impact of each flow
 
-The identification of the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter the most to your business. It's important to consider the direct impact of flow failure and its indirect effect on other interconnected processes. Here are steps to identify the business impact of each flow:
+The identification of the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flows that matter the most to your business. It's important to consider the direct impact of flow failure and its indirect effect on other interconnected processes. Here are steps to identify the business impact of each flow:
 
 - *Identify positive impact.* Determine the expected benefits when a flow runs as intended. The expected benefits could include improved efficiency, increased revenue, enhanced customer satisfaction, or any other positive effect on the business.
 
@@ -90,9 +90,9 @@ The identification of the business impact of each flow is essential for understa
 
 By systematically evaluating these aspects, you can gain a comprehensive view of how each flow impacts the business and make strategic decisions about reliability optimization.
 
-### Assign criticality ratings
+### Assign a criticality rating to each flow
 
-Assigning a criticality rating to each flow involves a detailed evaluation of their importance relative to the overall business impacts. This process is a logical continuation of identifying, mapping, and aligning with business processes and impact. Use the following criticality descriptions to assign your critical ratings:
+A detailed evaluation of flow importance relative to the overall business impacts allows you to assign a criticality rating to each flow. You can use quantitative or qualitative criticality ratings. The purpose is to sort the flows by priority and assign a label that allows you to identify the critical flows. This process is a logical continuation of identifying, mapping, and aligning with business processes and impact. Use the following criticality descriptions to assign your critical ratings:
 
 - *High criticality*: High criticality flows are integral to core business functions. They directly affect critical aspects of a business such as customer experience, financial transactions, security protocols, human health, and safety. The failure or disruption of these flows could lead to significant immediate or long-term negative effects. Examples of negatives effects include loss of revenue, breach of trust, and legal issues. Prioritizing these flows ensures that the most crucial aspects of the workload are robust and resilient.
 

@@ -34,7 +34,7 @@ Critical flows significantly affect the user experience or business operations. 
 
 ### Identify all flows
 
-The first step in prioritizing the performance of critical flows is identifying all the flows within your workload. Flow identification involves systematically mapping and understanding every user paths and component communication. The focus here's on understanding the performance metrics and potential impact of flows on workload performance.
+The first step in prioritizing the performance of critical flows is identifying all the flows within your workload. Flow identification involves systematically mapping and understanding every user paths and component communication. The focus is on understanding the performance metrics and potential impact of flows on workload performance.
 
 By dissecting the workload into discrete flows, you can find performance bottlenecks, inefficient resource utilization, and opportunities for performance optimization. This knowledge exposes areas of needed improvement and is the first step to identifying critical flows. For more information, see [Identify and rate user and system flows](../reliability/identify-flows.md).
 
@@ -50,7 +50,7 @@ After you identify all flows within your workload, you need to collect performan
 
 ### Identify critical flows
 
-With the performance data available, you can begin ranking all the flows and identifying the critical flows. The identification of critical flows requires you to evaluate the performance impact of each flow and its overall criticality to the business. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. To prioritize flows in your application, consider these steps:
+With the performance data available, you can begin ranking all the flows and identifying the critical flows. The identification of critical flows involves evaluating the performance impact and criticality of each flow. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. To prioritize flows in your application, consider these steps:
 
 - *Identify business impact*: Start by assessing the importance of each flow within your operations. Focus on how each flow aligns with your business objectives, its impact on users, and the potential negative effects of poor performance. For instance, while a free service tier might attract more users, a paid tier could be more vital for your business goals.
 
@@ -76,7 +76,7 @@ Additionally, consider the performance impacts of a flow across one or more busi
 
 ### Isolate critical flows
 
-The processes of isolating critical flows is about providing dedicated resources or capacity to support critical flows. You want to allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage the resources that support critical flows. Here are recommendations for isolating critical flows:
+The process of isolating critical flows is about providing dedicated resources or capacity to support critical flows. You want to allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage the resources that support critical flows. Here are recommendations for isolating critical flows:
 
 - *Resource segmentation*: Create separate resources for critical flows, allowing them to operate independently without interference from other processes. For example, you can isolate critical flows on dedicated network segments or by using dedicated servers to handle the processing needs of these flows. This approach helps minimize how noncritical flows can negatively affect critical flows.
 
@@ -88,7 +88,7 @@ The processes of isolating critical flows is about providing dedicated resources
 
 ### Optimize capacity allocation
 
-Where you can't isolate critical flows, prioritize critical flows in capacity allocation. Optimizing capacity allocation refers to the process of strategically distributing available capacity to different flows based on their priority and requirements. Capacity includes CPU, memory, storage, and network bandwidth. The goal is to ensure that the most critical flows (highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
+When you can't isolate critical flows, the next best option is to prioritize critical flows in accessing available capacity. The optimization of capacity allocation is about strategically distributing available capacity to different flows based on their criticality. Capacity includes CPU, memory, storage, and network bandwidth. The goal is to ensure that the most critical flows (highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
 
 - *Assess resource capacity*: Evaluate how much resource capacity can be allocated to the flows. Capacity might include resources such as CPU, memory, storage, and network bandwidth. Understand the limitations and constraints of your infrastructure or environment.
 
