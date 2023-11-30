@@ -15,7 +15,7 @@ ms.topic: conceptual
 |[RE:02](checklist.md)| **Identify and rate user and system flows.** Use a criticality scale based on your business requirements to prioritize the flows. |
 |---|---|
 
-This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves mapping user flows and system flows to determine their criticality to the organization. This practice ensures you identify and prioritize the most critical workload functionality to reducing the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability.
+This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves mapping user flows and system flows to determine their criticality to the organization. This practice ensures you identify and prioritize the most critical workload functionality to reduce the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability.
 
 **Definitions**
 
@@ -26,7 +26,7 @@ This guide describes the recommendations for identifying and prioritizing worklo
 
 ## Key design strategies
 
-When you design your workload, it's essential to define the user flows and system flows. User flows chart the movement of a user through your application. They focus on the user interface, interactions, decisions, and the steps required to complete a task. User flows provide a user-centric perspective on user experience and interface design. System flows chart the internal workings of your workload. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. Systems flows indicate the intricate details of how the workload operates internally.
+When you design your workload, it's essential to define the user flows and system flows. User flows chart the movement of a user through your application. They focus on the user interface, interactions, decisions, and the steps required to complete a task. User flows provide a user-centric perspective on user experience and interface design. System flows chart the internal workings of your workload. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. System flows indicate the intricate details of how the workload operates internally.
 
 You should identify and define flows early in the design phase of your workload. It gives you a clearer understanding of what affects the reliability of your workload. It aligns your architectural decisions closely with the reliability goals of your workload.
 
@@ -34,11 +34,11 @@ You should identify and define flows early in the design phase of your workload.
 
 The output of identifying all user and system flows is a catalog of all the flows in your workload. This identification process requires you to map out every user interaction and process within a system from beginning to end. This mapping is a prerequisite for identifying critical flows. Here are recommendations for identifying all user and system flows in a workload:
 
-- *Interview stakeholders.* Stakeholders can provide valuable information to identify flows, and they can even begin the process of help you map and prioritize flows. You can also interview users, business analysts, and technical teams to gather insights about user interactions and dependencies within the workload.
+- *Interview stakeholders.* Stakeholders can provide valuable information to identify flows, and they can even help you map and prioritize flows. You can also interview users, business analysts, and technical teams to gather insights about user interactions and dependencies within the workload.
 
-- *Review documentation.* In the design phase, you might not have documentation to review. However, if documentation exists, you should use it. Ask for system architecture diagrams, user manuals, and process descriptions. These documents can help you understand the intended functionality of the workload and it individual flows.
+- *Review documentation.* In the design phase, you might not have documentation to review. However, if documentation exists, you should use it. Ask for system architecture diagrams, user manuals, and process descriptions. These documents can help you understand the intended functionality of the workload and its individual flows.
 
-- *Observe the workload.* Monitor the workload in operation, noting how users interact it and how different components speak with each other. You should analyze system logs, performance metrics, and user activity logs to identify patterns, frequent tasks, and system responses.
+- *Observe the workload.* Monitor the workload in operation, noting how users interact with it and how different components speak with each other. You should analyze system logs, performance metrics, and user activity logs to identify patterns, frequent tasks, and system responses.
 
 - *List identified flows.* The interviews, documentation, and observation should enable you to identify all the flows in the workload. Compile a list of all the flows you identify and categorize them into user flows (focusing on user interactions) and system flows (focusing on backend processes and data movement).
 
@@ -48,7 +48,7 @@ The output of identifying all user and system flows is a catalog of all the flow
 
 - *Document unique outputs.* Identify any alternative paths or exceptions within each flow, such as error handling or conditional branching. If a flow has multiple possible outcomes, you should add it to the catalog as distinct entries. For user flows, you should identify the intended behavior of the interaction. For system flows, you should identify the intended behavior of the process.
 
-- *Visualize with diagrams.* Create flowcharts or diagrams to visually represent the flow and its steps. You can use tools like Microsoft Visio, UML sequence diagrams, use case diagrams, simple drawing tools, or a descriptive list in text format (*see [Example flow catalog](#example-flow-catalog)*).
+- *Visualize with diagrams.* Create flowcharts or diagrams to visually represent the flow and its steps. You can use tools like Microsoft Visio, UML sequence diagrams, use-case diagrams, simple drawing tools, or a descriptive list in text format (*see [Example flow catalog](#example-flow-catalog)*).
 
 - *Update flow mapping iteratively.* Flow mapping is an iterative process. Flows can change, split, or combine, especially in the design phase. As the workload flows become more clearly defined, you should update the catalog of flows to match. Validate and refine your flow diagrams with feedback from stakeholders to ensure accuracy and completeness.
 
@@ -60,7 +60,7 @@ You might have existing documentation or business plans that provide a mapping o
 
 - *Use workload outputs.* You can use the workload outputs and flow breakdown to correlate flows with the business processes they support. First, review the outputs the workload generates. The output could be sales reports, data files, or completed tasks.
 
-- *Conduct interviews.* Speak with team members and stakeholders who interact with the workload. You should ask specific questions about their daily tasks, how they use the workload, and what objectives they achieve with it. Technical teams often have a deeper understanding of how the workload is structured and can provide insights into the business processes it supports.
+- *Conduct interviews.* Speak with team members and stakeholders who interact with the workload. You should ask specific questions about their daily tasks, how they use the workload, and what objectives they achieve with it. Technical teams often have a deeper understanding the workload structure and can provide insights into the business processes it supports.
 
 - *Monitor workload usage.* For existing workloads, monitor the workload and look for patterns in usage that indicate underlying business processes, such as data entry, order processing, or customer interaction.
 
@@ -70,17 +70,17 @@ You might have existing documentation or business plans that provide a mapping o
 
 The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for making critical  for that process and the flows that support it. You should identify the process owner for each workload flow. You should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
 
-You might have a responsibility assignment matrix (RAM) or RACI matrix that already identifies process owners and stakeholders. Typically, process owners are responsible or accountable for a process, and stakeholders are consulted or informed.
+You might have a responsibility assignment matrix (RAM) or RACI matrix that already identifies process owners and stakeholders. Typically, process owners are responsible or accountable for a process, and you consult or inform stakeholders.
 
 ### Identify escalation paths for each flow
 
 The identification of escalation paths is about determining channels for escalating issues related to a flow. Issues that need escalation could be urgent updates, security concerns, degradations, or technical incidents. The goal of identifying an escalation path is to ensure timely and effective resolution of issues.
 
-The escalation path you map out should start with the person or group most likely to resolve a particular issue. If this person or group can't resolve the issue, the escalation path should identify the next point of contact. The next point of contact has broader responsibilities and is able to coordinate mitigation strategies more parts of the organization. The number of people on an escalation path varies by flow and organization. Too many people on an escalation path can slow the resolution efforts.
+The escalation path you map out should start with the person or group most likely to resolve a particular issue. If this person or group can't resolve the issue, the escalation path should identify the next point of contact. The next point of contact has broader responsibilities and is able to coordinate mitigation strategies with more parts of the organization. The number of people on an escalation path varies by flow and organization. Too many people on an escalation path can slow the resolution efforts.
 
 ### Identify business impact of each flow
 
-The identification of the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter most to your business. It's important to consider not just the direct impact of flow failure but its indirect effects on other interconnected processes. Here are steps to identify the business impact of each flow:
+The identification of the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flow that matter the most to your business. It's important to consider the direct impact of flow failure and its indirect effect on other interconnected processes. Here are steps to identify the business impact of each flow:
 
 - *Identify positive impact.* Determine the expected benefits when a flow runs as intended. The expected benefits could include improved efficiency, increased revenue, enhanced customer satisfaction, or any other positive effect on the business.
 
@@ -94,9 +94,9 @@ By systematically evaluating these aspects, you can gain a comprehensive view of
 
 Assigning a criticality rating to each flow involves a detailed evaluation of their importance relative to the overall business impacts. This process is a logical continuation of identifying, mapping, and aligning with business processes and impact. Use the following criticality descriptions to assign your critical ratings:
 
-- *High criticality*: High criticality flows are integral to core business functions. They directly affect critical aspects of a business such as customer experience, financial transactions, security protocols, human health, and safety. The failure or disruption of these flows could lead to significant immediate or long-term negative effects. Examples of negatives effects include loss of revenue, breach of trust, or legal issues. Prioritizing these flows ensures that the most crucial aspects of the workload are robust and resilient.
+- *High criticality*: High criticality flows are integral to core business functions. They directly affect critical aspects of a business such as customer experience, financial transactions, security protocols, human health, and safety. The failure or disruption of these flows could lead to significant immediate or long-term negative effects. Examples of negatives effects include loss of revenue, breach of trust, and legal issues. Prioritizing these flows ensures that the most crucial aspects of the workload are robust and resilient.
 
-- *Medium criticality*: Medium criticality flows are important for the complete functionality of the system but don't directly interface with the customer or critical business operations. For example, if an internal data processing flow is disrupted, you can retry the data processing without immediate external effects. These flows are essential for smooth operations but offer a buffer in terms of immediate customer or financial effect, allowing for managed responses to issues.
+- *Medium criticality*: Medium criticality flows are important for the complete functionality of the system but don't directly interface with the customer or critical business operations. For example, if an issue disrupts an internal data processing flow, you can retry the data processing without immediate external effects. These flows are essential for smooth operations but offer a buffer in terms of immediate customer or financial effect, allowing for managed responses to issues.
 
 - *Low criticality*: Low criticality flows don't have a direct or significant effect on the core business functions or customer experience. Examples include ancillary processes like nightly log transfers or optional user features such as feedback surveys. While these flows contribute to the overall system, their disruption is unlikely to cause significant immediate business or operational issues.
 
@@ -106,19 +106,19 @@ By following this structured approach to assigning criticality, you can effectiv
 
 ## Organizational alignment
 
-Cloud Adoption Framework provides guidance for workloads that require a business criticality classification.
+Cloud Adoption Framework provides guidance for workloads that require business criticality classification.
 
 For more information, see [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).
 
 ## Example flow catalog
 
-The following example provides a complete scenario and illustrates important points to help you identify, map, and prioritize your flows. The example uses the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for the example flows. This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app is hosted in Azure using PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis.
+The following example provides a complete scenario and illustrates important points to help you identify, map, and prioritize your flows. The example uses the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for the example flows. This example workload is line-of-business app called Relecloud that provides a concert ticket purchasing service. The web app runs on PaaS services like Azure App Service, Azure SQL database and Azure Cache for Redis.
 
 :::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
 ### User flow 1: Create upcoming concerts
 
-*Flow description*: Call center employees use the application to create an upcoming concert.
+*Flow description*: Call-center employees use the application to create an upcoming concert.
 
 - *Business processes*: This flow supports the *purchasing ticket* process, but it's asynchronous, making it less critical.
 
@@ -128,15 +128,15 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Escalation paths*: Application team, platform team, then sales department.
 
-- *Business impact*: This flow is important for making new concerts available on sales platforms, directly influencing the main revenue stream of the business. When call center employees are unable to create concerts due to unavailability of this flow, it negatively impacts both revenue and the company's reputation. However, high availability isn't essential for this process since concerts are typically scheduled in advance on a weekly basis. The sales department specified a requirement of 95% availability for this process and is agreeable to downtime outside of business hours for maintenance purposes.
+- *Business impact*: This flow is important for making new concerts available on sales platforms, directly influencing the main revenue stream of the business. When call-center employees are unable to create concerts due to unavailability of this flow, it negatively impacts both revenue and the company's reputation. However, high availability isn't essential for this process since concerts are typically scheduled in advance on a weekly basis. The sales department specified a requirement of 95% availability for this process and is agreeable to downtime outside of business hours for maintenance purposes.
 
 - *Criticality rating*: Low.
 
 ### User flow 2: Search concerts
 
-*Flow description*: Call center employees use the application to search for upcoming concerts.
+*Flow description*: Call-center employees use the application to search for upcoming concerts.
 
-- *Business processes*: This flow supports the *purchasing ticket* process, but call center employees can opt to list all concerts if the search function isn't available.
+- *Business processes*: This flow supports the *purchasing ticket* process, but call-center employees can opt to list all concerts if the search function isn't available.
 
 - *Process owner*: The user experience (UX) department.
 
@@ -144,13 +144,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Escalation path*: Application team, platform team, sales department manager on-call.
 
-- *Business impact*: This flow allows call center employees to quickly find concerts and is part of the normal sales process. High availability of this flow isn't critical since employees have the capability to list concerts even in its absence. It does degrade the call center employee's experience might degrade and affect productivity. Customers could experience frustration due to increased wait times or delays. The sales department requested a 99% availability of this flow during regular business hours.
+- *Business impact*: This flow allows call-center employees to quickly find concerts and is part of the normal sales process. High availability of this flow isn't critical since employees have the capability to list concerts even in its absence. It does degrade the call-center employee's experience might degrade and affect productivity. Customers could experience frustration due to increased wait times or delays. The sales department requested a 99% availability of this flow during regular business hours.
 
 - *Criticality rating*: Medium.
 
 ### User flow 3: Get a list of the concerts
 
-*Flow description*: Call center employees use the application to get a list of concerts.
+*Flow description*: Call-center employees use the application to get a list of concerts.
 
 - *Business processes*: This flow directly supports the *purchasing ticket* process.
 
@@ -160,13 +160,13 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Escalation path*: Data team, data team on-call engineer, platform team on-call engineer.
 
-- *Business impact*: This flow is integral to the critical path of revenue-generating transactions for the business. High availability is essential, as call center employees rely on this flow to process ticket purchases. In recognition of its importance, the business mandates a 99.9% uptime for this flow, which includes extended business hours.
+- *Business impact*: This flow is integral to the critical path of revenue-generating transactions for the business. High availability is essential, as call-center employees rely on this flow to process ticket purchases. In recognition of its importance, the business mandates a 99.9% uptime for this flow, which includes extended business hours.
 
 - *Criticality rating*: High.
 
 ### User flow 4: Purchase ticket
 
-*Flow description*: Call center employees use the application (the *authentication and authorization* process) to buy tickets for an upcoming concert (the *list upcoming concerts* process) on behalf of Relecloud customers.
+*Flow description*: Call-center employees use the application (the *authentication and authorization* process) to buy tickets for an upcoming concert (the *list upcoming concerts* process) on behalf of Relecloud customers.
 
 - *Business processes*: This flow is the core feature and flow of the application.
 
@@ -182,9 +182,9 @@ The following example provides a complete scenario and illustrates important poi
 
 ### User flow 5: Authentication and authorization
 
-*Flow description*: Call center employees securely sign in to the application and are provided with proper roles so that they can purchase tickets on behalf of Relecloud customers.
+*Flow description*: Call-center employees securely sign in to the application, and administrators provided them the proper roles to purchase tickets on behalf of Relecloud customers.
 
-- *Business processes*: This flow directly supports the *purchasing ticket* process. Without this functionality, call center employees can't sign in to the application to buy tickets.
+- *Business processes*: This flow directly supports the *purchasing ticket* process. Without this functionality, call-center employees can't sign into the application to buy tickets.
 
 - *Process owner*: Platform team.
 
@@ -192,7 +192,7 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Escalation path*: Platform team on-call engineer, Chief Operating Officer.
 
-- *Business impact*: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. It's a key process that the business expects 99.9% uptime for, including during extended business hours.
+- *Business impact*: This flow requires high availability because call-center employees can't purchase tickets if this flow isn't working properly. If this flow isn't available, it directly affects revenue and reputation. It's a key process that the business expects 99.9% uptime for, including during extended business hours.
 
 - *Criticality rating*: High.
 
@@ -208,7 +208,7 @@ The following example provides a complete scenario and illustrates important poi
 
 - *Escalation path*: Operations team (24/7), data team on-call engineer.
 
-- *Business impact*: This flow is essential for the business's monitoring and continuous improvement efforts. It needs to be as redundant and resilient as possible. The operations team is responsible for quickly restoring this flow after any failure to avoid missing critical information and warnings. If the flow fails to achieve the expected availability, there's a risk of overlooking production issues, potentially leading to severe consequences. To mitigate this risk, the operations department aims for 99% uptime, 24/7. Any maintenance-related downtime should be scheduled at least 48 hours in advance.
+- *Business impact*: This flow is essential for the business's monitoring and continuous improvement efforts. It needs to be as redundant and resilient as possible. The operations team is responsible for quickly restoring this flow after any failure to avoid missing critical information and warnings. If the flow fails to achieve the expected availability, there's a risk of overlooking production issues, potentially leading to severe consequences. To mitigate this risk, the operations department aims for 99% uptime, 24/7. They must schedule maintenance-related downtime at least 48 hours in advance.
 
 - *Criticality rating*: Medium.
 
