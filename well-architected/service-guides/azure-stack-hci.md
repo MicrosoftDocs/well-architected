@@ -1,7 +1,7 @@
 ---
 title: Azure Well-Architected Framework review for Azure Stack HCI
 description: Provides a template for a Well-Architected Framework (WAF) article that is specific to Azure Stack HCI.
-author: nebird
+author: neilbird
 ms.author: nebird
 ms.topic: conceptual
 ms.custom:
