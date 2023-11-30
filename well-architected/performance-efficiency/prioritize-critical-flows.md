@@ -50,9 +50,9 @@ After you identify all flows within your workload, you need to collect performan
 
 ### Identify critical flows
 
-With the performance data available, you can begin ranking all the flows and identifying the critical flows. The identification of critical flows requires you to evaluate the performance impact of each flow and it's over all criticality to the business. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. To prioritize flows in your application, consider these steps:
+With the performance data available, you can begin ranking all the flows and identifying the critical flows. The identification of critical flows requires you to evaluate the performance impact of each flow and its overall criticality to the business. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. To prioritize flows in your application, consider these steps:
 
-- *Identify business impact*: Start by assessing the importance of each flow within your operations. Focus on how each flow aligns with your business objectives, its impact on users, and the potential negative effects of poor performance. For instance, while a free service tier may attract more users, a paid tier could be more vital for your business goals.
+- *Identify business impact*: Start by assessing the importance of each flow within your operations. Focus on how each flow aligns with your business objectives, its impact on users, and the potential negative effects of poor performance. For instance, while a free service tier might attract more users, a paid tier could be more vital for your business goals.
 
 Additionally, consider the performance impacts of a flow across one or more business processes. Multiple flows might support a single business process, but often, one flow has a significant effect on the performance of that process. You want to identify the flows that the greatest performance impact. Conversely, a single flow might underpin several processes. In such cases, the performance of this flow directly influences the efficacy of all related processes, and it's likely a critical flow.
 
@@ -76,7 +76,7 @@ Additionally, consider the performance impacts of a flow across one or more busi
 
 ### Isolate critical flows
 
-Isolating critical flows means providing dedicated resources or capacity to support critical flows. You want to allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage the resources that support them. Here are recommendations for isolating critical flows:
+The processes of isolating critical flows is about providing dedicated resources or capacity to support critical flows. You want to allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage the resources that support critical flows. Here are recommendations for isolating critical flows:
 
 - *Resource segmentation*: Create separate resources for critical flows, allowing them to operate independently without interference from other processes. For example, you can isolate critical flows on dedicated network segments or by using dedicated servers to handle the processing needs of these flows. This approach helps minimize how noncritical flows can negatively affect critical flows.
 
@@ -102,7 +102,7 @@ Where you can't isolate critical flows, prioritize critical flows in capacity al
 
 ### Find the balance
 
-Balancing the needs of critical flows with the overall performance of a workload is challenging. Although you should prioritize critical flows, you shouldn't neglect noncritical flows. The overall performance efficiency of a workload depends on all flows. Neglected noncritical flows could create issues that affect all users. Too much noise from nonessential items steals attention from critical items. But too little noise could harm the entire workload. The amount of data and the number of alerts should reflect these balanced priorities.
+It can be a challenge to balance the needs of critical flows with the overall performance of a workload. Although you should prioritize critical flows, you shouldn't neglect noncritical flows. The overall performance efficiency of a workload depends on all flows. Neglected noncritical flows could create issues that affect all users. Too much noise from nonessential items steals attention from critical items. But too little noise could harm the entire workload. The amount of data and the number of alerts should reflect these balanced priorities.
 
 ## Azure facilitation
 
