@@ -68,6 +68,16 @@ Be mindful of factors that can complicate your operations when you build your au
 
 For any tool that you use to build your automation, make it easily accessible and manageable for your operators. Provide clear and easy-to-use interfaces for your workload team. You can provide access to CI/CD pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
+## Considerations
+
+- Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
+
+- Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks tightly focused on only performing discrete jobs. Try to minimize dependencies on other tools or components.
+
+- Be thoughtful about using manual processes. If you decide not to automate an operation, thoroughly document the manual process by creating a step-by-step checklist for operators. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. This documentation also helps you design automation for that process in the future.
+
+- When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs most of a process but then defers to a human for a specific part or decision, it's important that you give the person the necessary context and information to make an informed decision.
+
 ## Azure facilitation
 
 Azure offers many tools to help you automate tasks for your workload.
@@ -103,16 +113,6 @@ You can script the creation of deployment environments and programmatically mana
 **Automatic scaling**: Many Azure technologies have built-in automatic scaling capabilities. You can also program other services to automatically scale by using APIs. For more information, see [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md).
 
 **Azure Monitor action groups**: To automatically run self-healing operations when an alert is triggered, use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups). You can define these operations by using a runbook, an Azure function, or a webhook.
-
-## Considerations
-
-Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
-
-Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks tightly focused on only performing discrete jobs. Try to minimize dependencies on other tools or components.
-
-Be thoughtful about using manual processes. If you decide not to automate an operation, thoroughly document the manual process by creating a step-by-step checklist for operators. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. This documentation also helps you design automation for that process in the future.
-
-When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs most of a process but then defers to a human for a specific part or decision, it's important that you give the person the necessary context and information to make an informed decision.
 
 ## Example
 
