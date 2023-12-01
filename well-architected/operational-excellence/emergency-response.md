@@ -107,6 +107,12 @@ An impartial individual should lead blameless postmortems. In postmortem session
 
 - **Improvements to the workload.** The incident might expose a vulnerability in the workload that must be addressed as a permanent remediation.
 
+## Considerations
+
+An overly aggressive response strategy can lead to false alarms or unnecessary escalations.
+
+Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
+
 ## Azure facilitation
 
 [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive solution for collecting, analyzing, and responding to monitoring data from cloud and on-premises environments. It includes a robust alerting platform that you can configure for [automatic notifications and other actions](/azure/azure-monitor/alerts/action-groups), like automatic scaling and other self-healing mechanisms.
@@ -117,12 +123,6 @@ Use Monitor to integrate machine learning. Automate and optimize incident triage
 
 Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
 [Incident readiness](/services-hub/unified/health/incident-readiness).
-
-## Considerations
-
-An overly aggressive response strategy can lead to false alarms or unnecessary escalations.
-
-Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
 
 ## Related links
 
