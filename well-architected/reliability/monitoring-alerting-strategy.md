@@ -50,6 +50,8 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Forward all diagnostic logs to a centralized data sink and analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are cost implications for storing and querying logs. Notice how your log analysis and retention affects your budget, and determine the best balance of utilization to meet your requirements. For more information, see [Best practices for cost optimization](/azure/azure-monitor/best-practices-logs#cost-optimization).
+
 - If your workloads are subject to one or more compliance frameworks, some of the component logs that handle sensitive information are also subject to those frameworks. Send the relevant component logs to a security information and event management (SIEM) system, like [Microsoft Sentinel](/azure/sentinel/overview).
 
 - Create a [log retention policy](/azure/azure-monitor/logs/data-retention-archive) that incorporates long-term retention requirements that the compliance frameworks impose on your workload.
@@ -100,6 +102,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Use black box monitoring to measure platform services and the resulting customer experience. Black box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
 
+> [!NOTE]
+> For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
+
 ### Monitor data and storage
 
 - Monitor the availability metrics of your storage containers. When this metric drops below 100 percent, it indicates failing writes. Transient drops in availability might happen when your cloud provider manages the load. Track the availability trends to determine if there's an issue with your workload.
@@ -133,12 +138,6 @@ Implement the following recommendations to design a monitoring and alerting stra
 - [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at scale.
 
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
-
-## Tradeoffs
-
-There are cost implications for storing and querying logs. Notice how your log analysis and retention affects your budget, and determine the best balance of utilization to meet your requirements. For more information, see [Best practices for cost optimization](/azure/azure-monitor/best-practices-logs#cost-optimization).
-
-For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
 
 ## Example
 

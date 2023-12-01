@@ -73,6 +73,8 @@ When designing your scaling automation, be sure to account for these issues:
 
 Following the [deployment stamp](/azure/architecture/patterns/deployment-stamp) design pattern helps with your overall infrastructure management. Basing your scaling design on stamps as units of scale is also beneficial. And it helps you tightly control your scaling operations across multiple workloads and subsets of workloads. Rather than managing the scaling schedules and autoscaling thresholds of many distinct resources, you can apply a limited set of scaling definitions to a deployment stamp and then mirror that across stamps as needed.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Scaling up has cost implications, so optimize your strategy to scale down as soon as possible to help keep costs under control. Ensure that the automation you're employing to scale up also has triggers to scale down.
+
 ## Azure facilitation
 
 An autoscaling feature is available in [many Azure services](/azure/azure-monitor/autoscale/autoscale-overview#supported-services-for-autoscale). It lets you easily configure conditions to automatically scale instances horizontally. Some services have limited or no built-in functionality to automatically scale in, so be sure to document these cases and define processes to deal with scaling in.
@@ -83,7 +85,7 @@ Many Azure services offer APIs that you can use to design custom automatic scali
 
 ## Tradeoffs
 
-Scaling up has cost implications, so optimize your strategy to scale down as soon as possible to help keep costs under control. Ensure that the automation you're employing to scale up also has triggers to scale down.
+
 
 ### Autoscaling considerations
 

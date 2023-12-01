@@ -111,6 +111,14 @@ Follow these recommendations for successful DR drills:
 
 -   Use tabletop drills not only to build familiarity for seasoned operators but also to educate new operators about DR processes and procedures. Senior operators should take time to let new operators perform their role and should watch for improvement opportunities. If a new operator is hesitant or confused by a step in a procedure, review that procedure to ensure that it's clearly written.
 
+### Considerations
+
+- Performing DR drills in production can cause unexpected catastrophic failures. Be sure to test recovery procedures in nonproduction environments during your initial deployments.
+
+- Give your team as much maintenance time as possible during drills. When planning for maintenance time, use the recovery metrics that you capture during [testing](testing-strategy.md) as *minimum time necessary* allotments.
+
+- As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
+
 ## Azure facilitation
 
 Many Azure products have built-in failover capabilities. Familiarize yourself with these capabilities and include them in recovery procedures. 
@@ -128,14 +136,6 @@ For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-geo-dr?tabs=portal)
 
 - [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-how-to-geo-replication)
-
-## Tradeoffs
-
-Performing DR drills in production can cause unexpected catastrophic failures. Be sure to test recovery procedures in nonproduction environments during your initial deployments. 
-
-Give your team as much maintenance time as possible during drills. When planning for maintenance time, use the recovery metrics that you capture during [testing](testing-strategy.md) as *minimum time necessary* allotments. 
-
-As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
 ## Example 
 

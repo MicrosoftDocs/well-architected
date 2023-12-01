@@ -175,6 +175,12 @@ Background tasks must offer sufficient performance to ensure that they don't blo
 
 - By default, a WebJob scales with its associated Web Apps instance. However, if you want a WebJob to run as only a single instance, you can create a Settings.job file that contains the JSON data `{ "is_singleton": true }`. This method forces Azure to only run one instance of the WebJob, even if there are multiple instances of the associated web app. This technique is useful for scheduled jobs that must run as only a single instance.
 
+- Background jobs can create challenges for data synchronization and process coordination, especially if the background tasks depend on each other or on other data sources. For example, background jobs might handle data consistency problems, race conditions, deadlocks, or timeouts.
+
+- Background jobs might affect the user experience if the results of the background tasks are presented to the user. For example, background jobs might require the user to wait for a notification, refresh the page, or manually check the status of the task. These behaviors can increase the complexity of the user interaction and negatively affect the user experience.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Background jobs introduce more components and dependencies to the system, which can increase the complexity and maintenance costs of the solution. For example, background jobs might require a separate queue service, worker service, monitoring service, and retry mechanism.
+
 ## Azure facilitation
 
 The following sections describe the Azure services that you can use to host, run, configure, and manage background jobs.
@@ -361,14 +367,6 @@ For more information, see:
 
 - [Container Apps overview](/azure/container-apps/overview)
 - [Quickstart: Deploy your first container app](/azure/container-apps/get-started)
-
-## Tradeoffs
-
-- Background jobs introduce more components and dependencies to the system, which can increase the complexity and maintenance costs of the solution. For example, background jobs might require a separate queue service, worker service, monitoring service, and retry mechanism.
-
-- Background jobs can create challenges for data synchronization and process coordination, especially if the background tasks depend on each other or on other data sources. For example, background jobs might handle data consistency problems, race conditions, deadlocks, or timeouts.
-
-- Background jobs might affect the user experience if the results of the background tasks are presented to the user. For example, background jobs might require the user to wait for a notification, refresh the page, or manually check the status of the task. These behaviors can increase the complexity of the user interaction and negatively affect the user experience.
 
 ## Related links
 

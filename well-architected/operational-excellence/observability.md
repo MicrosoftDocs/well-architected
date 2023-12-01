@@ -285,10 +285,6 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Azure Policy](/azure/governance/policy/overview) can help you enforce organizational standards and assess compliance at scale.
 
-## Tradeoffs
-
-Storing logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that you need to consider when you plan your strategy. Consider options like archive storage and selective replication when they're practical.
-
 ## Related links
 
 - [Instrumentation guide](../devops/monitor-instrument.md)

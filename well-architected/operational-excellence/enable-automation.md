@@ -30,6 +30,10 @@ Design with automation in mind to minimize refactoring after your workload is ru
 
 - *Automatic scaling*: Use automatic scaling throughout your infrastructure to help you achieve your reliability and performance requirements. You should allocate IP address space and subnets in your workload ahead of time to account for scaling operations, in addition to planning for redundancy and natural growth.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: When designing your workload to enable automation, consider the degree of control that you want to maintain versus the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need a level of flexibility that automation doesn't provide.
+
+> Also consider the skill set of your team when designing your workload. If a high degree of automation requires tools that your team isn’t equipped to support, then you might need to use a less comprehensive design as an intermediate step.
+
 ### Continuous workload improvements
 
 After your workload is running in the cloud, it's important to prioritize continuous improvement. Observe your workload in action, analyze usage patterns, and review customer behavior related to your workload to identify areas where you can improve automation. Look for ways to enhance existing automation or introduce new automation to improve your customer experience. For example, you might have automated scaling enabled, but the workload increase is short-lived. You can integrate scale-in automation to decrease CPU usage when the load drops below the threshold.
@@ -80,6 +84,8 @@ When deciding between orchestration or policy tools, consider whether the config
 
 **Azure Policy**: Using [Azure Policy](/azure/governance/policy/overview), you can enforce standards and assess compliance at scale. Azure Policy provides an aggregated view to evaluate the overall state of the workload environment in the compliance dashboard. Or you can use Azure Policy to evaluate each resource and policy on a granular level. You can also use Azure Policy to remediate new resources automatically or remediate existing resources in bulk.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Offloading automation from your CI/CD pipeline to platform tools or services, like Azure Policy, can simplify your pipeline, but has drawbacks like the additional management burden of using multiple systems. For example, execution failures in a platform service will not be caught in your pipeline logs and will have to fed into your observability platform intelligently so the appropriate parties are notified.
+
 ### Bootstrap automation
 
 **Azure Virtual Machines extensions:** Virtual Machines extensions are small packages that run post-deployment configuration and automation on VMs. Several extensions are available for different configuration tasks, such as running scripts, configuring anti-malware solutions, and configuring logging solutions. Install and run these extensions on VMs by using an Azure Resource Manager template, Azure CLI, Azure PowerShell module, or the Azure portal. Each VM has a VM agent installed that manages the lifecycle of the extension.
@@ -107,14 +113,6 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 [**Azure Automanage State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool built on top of Azure Policy that performs as an orchestration tool. Using a VM extension, you can directly apply predefined configuration updates to individual VMs or groups of VMs as defined within Azure Policy.
 
 [**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
-
-## Tradeoffs
-
-When designing your workload to enable automation, consider the degree of control that you want to maintain versus the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need a level of flexibility that automation doesn't provide.
-
-Also consider the skill set of your team when designing your workload. If a high degree of automation requires tools that your team isn’t equipped to support, then you might need to use a less comprehensive design as an intermediate step.
-
-Offloading automation from your CI/CD pipeline to platform tools or services, like Azure Policy, can simplify your pipeline, but has drawbacks like the additional management burden of using multiple systems. For example, execution failures in a platform service will not be caught in your pipeline logs and will have to fed into your observability platform intelligently so the appropriate parties are notified.
 
 ## Related links
 
