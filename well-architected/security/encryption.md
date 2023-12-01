@@ -177,7 +177,7 @@ This enhances the standard logical protection provided by Azure by using hardwar
 
 There may be regulatory requirements that dictate using 'state of the art' security measures, confidential computing is one such technology.
 
-- **Consider the end-end lifecycle of data you are protecting** not all Azure services support confidential computing, where there is data that must guarantee confidential computing levels of protection at all times consider integrating [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) in your application architectures and choose [services that offer confidential computing capabilities](azure/confidential-computing/overview-azure-products).
+- **Consider the end-end lifecycle of data you are protecting** not all Azure services support confidential computing, where there is data that must guarantee confidential computing levels of protection at all times consider integrating [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) in your application architectures and choose [services that offer confidential computing capabilities](/azure/confidential-computing/overview-azure-products).
 
 ## Azure facilitation
 
@@ -191,7 +191,7 @@ Key Vault treats the keys like any other secret. Azure role-based access control
 
 For more information, see [Provide access to Key Vault keys, certificates, and secrets by using RBAC](/azure/key-vault/general/rbac-guide).
 
-Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilites and [Secure Key Release](azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
+Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilites and [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
 
 ##### Data-at-rest protection
 
@@ -217,7 +217,7 @@ There are a number of services that directly offer confidential computing capabi
 
 - **Confidential Virtual Machines** offer an entire [virtual machine running inside a TEE](/azure/confidential-computing/virtual-machine-solutions), the memory and executing CPU contents of the virtual machine are encrypted offering a simple 'lift & shift' approach for moving unmodified applications with high security requirements to Azure. Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
 
-- **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
+- **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](/azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
 
 - **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular [Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
 
@@ -241,7 +241,7 @@ The following example shows encryption solutions that you can use to manage keys
 - [Overview of managed disk encryption options](/azure/virtual-machines/disk-encryption-overview)
 - [Transparent data encryption](/sql/relational-databases/security/encryption/transparent-data-encryption)
 - [Trust Platform Module overview](/windows/security/information-protection/tpm/trusted-platform-module-overview)
-- [Azure confidential computing](azure/confidential-computing/)
+- [Azure confidential computing](/azure/confidential-computing/)
 
 ## Community links
 

@@ -45,7 +45,7 @@ As you make design choices for virtual machines, review the [design principles](
 > - Install applications on [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
 > - Use [Maintenance Configurations](/azure/virtual-machines/maintenance-configurations) to control and manage updates for VMs.
 >[!TIP]
->EC, DC series virtual machine SKUs support [confidential computing](azure/confidential-computing/overview) which provides encryption of data in-use, not all virtual machine features are currently supported so review the documentation to understand any current limitations. 
+>EC, DC series virtual machine SKUs support [confidential computing](/azure/confidential-computing/overview) which provides encryption of data in-use, not all virtual machine features are currently supported so review the documentation to understand any current limitations. 
 
 
 
