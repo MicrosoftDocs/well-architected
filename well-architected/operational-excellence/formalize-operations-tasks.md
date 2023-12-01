@@ -56,6 +56,8 @@ Process standardization takes many shapes. Describing every way that you might a
 
 - Be intentional about your approach to open-source adoption. Standardize the rules about when the use of open-source tools is allowed, and ensure that you align with organizational and compliance requirements. You might want to create standards about workload team members' contributions to open-source projects and decide whether to open your in-house code to other development teams in the organization.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Codifying standard operating procedures can carry the risk of leading to stagnation or complacency. Standards should be followed, but they shouldn't be rigid or static. Strive to find a balance between strict adherence and allowance for innovation so that your processes can evolve safely over time.
+
 ## Azure facilitation
 
 Although there are no Azure products that directly facilitate the formalization of processes and procedures, Microsoft publishes lots of guidance on this topic. Use this guidance to understand industry-proven and recommended practices and to consider how to apply them to your workload.
@@ -67,10 +69,6 @@ The Well-Architected Framework also provides detailed guidance on the processes 
 Cloud Adoption Framework provides guidance for central teams on many areas of standardizing processes and procedures across an organization.
 
 For more information, see the [Azure landing zone design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) and [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices).
-
-## Tradeoffs
-
-Codifying standard operating procedures can carry the risk of leading to stagnation or complacency. Standards should be followed, but they shouldn't be rigid or static. Strive to find a balance between strict adherence and allowance for innovation so that your processes can evolve safely over time.
 
 ## Related links
 

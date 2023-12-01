@@ -118,7 +118,7 @@ Use Monitor to integrate machine learning. Automate and optimize incident triage
 Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
 [Incident readiness](/services-hub/unified/health/incident-readiness).
 
-## Tradeoffs
+## Considerations
 
 An overly aggressive response strategy can lead to false alarms or unnecessary escalations.
 

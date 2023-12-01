@@ -104,7 +104,7 @@ You can script the creation of deployment environments and programmatically mana
 
 **Azure Monitor action groups**: To automatically run self-healing operations when an alert is triggered, use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups). You can define these operations by using a runbook, an Azure function, or a webhook.
 
-## Tradeoffs
+## Considerations
 
 Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
 

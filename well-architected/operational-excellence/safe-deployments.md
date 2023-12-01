@@ -90,6 +90,10 @@ Establish prescriptive protocols that define how your SDP can be adjusted for a 
 
 In some cases, the emergency might limit quality and testing gates, but gates should still be run as quickly as possible as an out-of-band exercise. Make sure that you define who can approve SDP acceleration in an emergency and the criteria that must be met for acceleration to be approved. Align your emergency SDP protocols with your [emergency response plan](./emergency-response.md) to help ensure that all emergencies are handled according to the same protocols.
 
+## Considerations
+
+Building and maintaining safe deployment practices is complex. Your success in fully implementing robust standards depends on the maturity of your practices across many areas of software development.  Use of automation, IaC-only for infrastructure changes, consistency in branching strategies, use of feature flags, and many other practices can help to ensure safe deployment. Use this guide to optimize your workload and inform your plans for improvement as your practices evolve.
+
 ## Azure facilitation
 
 - [Azure Pipelines](/azure/devops/pipelines/process/stages) and [GitHub Actions](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment) support multi-stage deployments by using approval gates, which can help you design your progressive exposure rollout for deployments.
@@ -113,12 +117,6 @@ In some cases, the emergency might limit quality and testing gates, but gates sh
   - [Azure Cosmos DB](/azure/cosmos-db/continuous-backup-restore-introduction)
   - [Azure Database for MySQL](/azure/mysql/flexible-server/concepts-backup-restore)
   - [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-backup-restore)
-
-## Tradeoffs
-
-Building and maintaining safe deployment practices is complex. Your success in fully implementing robust standards depends on the maturity of your practices across many areas of software development.  Use of automation, IaC-only for infrastructure changes, consistency in branching strategies, use of feature flags, and many other practices can help to ensure safe deployment. Use this guide to optimize your workload and inform your plans for improvement as your practices evolve.
-
-There are tradeoffs for each deployment model discussed in this guide. For example, during canary deployments, two versions of an application are supported on the same infrastructure, which increases the management burden on the workload and support teams. Conversely, during blue-green deployment, two sets of production infrastructure are run at the same time, which might result in extra cost and increased management workload.
 
 ## Example
 

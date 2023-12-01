@@ -58,7 +58,7 @@ Microsoft publishes extensive documentation about DevOps culture in a dedicated 
 
 Cloud Adoption Framework provides [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices) for organizational adoption, which includes a perspective on [DevOps team topologies](/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies).
 
-## Tradeoffs
+## Considerations
 
 Strictly defined roles and responsibilities could result in a level of discomfort for some team members when they're performing functions outside their responsibility. Conduct open and honest discussions with the team about team structure, and be open to making adjustments when needed.
 
