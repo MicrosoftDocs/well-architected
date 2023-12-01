@@ -142,7 +142,7 @@ See the [blue-green deployment of Azure Kubernetes Service (AKS) clusters](/azur
 - [Release engineering: Application development](/azure/well-architected/devops/release-engineering-app-dev)
 - [Release engineering: Continuous integration](/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
 - [Release engineering: Rollback](/azure/well-architected/devops/release-engineering-rollback)
-- [Testing your application and Azure environment](/azure/well-architected/devops/release-engineering-testing)
+- [Testing your application and Azure environment](/devops/develop/shift-left-make-testing-fast-reliable)
 - [VM Applications](/azure/virtual-machines/vm-applications-how-to)
 
 ## Community links
