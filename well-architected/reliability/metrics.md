@@ -42,6 +42,8 @@ Remember that reliability targets differ from performance targets. Reliability t
 
 Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
+
 ### Availability metrics
 
 #### SLOs and SLAs
@@ -163,10 +165,6 @@ The Azure SLA includes procedures for obtaining a service credit if the SLA isn'
 Cloud Adoption Framework provides guidance for recommendations for SLOs and SLIs related to monitoring across the organization.
 
 For more information, see [Cloud monitoring SLOs](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis).
-
-## Tradeoffs
-
-A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
 ## Related links
 

@@ -127,14 +127,6 @@ Most Azure services and client SDKs include a retry mechanism. But they differ b
 
 Use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups) for notifications, like email, voice or SMS, and to trigger automated actions. When you're notified of a failure, trigger an Azure Automation runbook, Azure Event Hubs, an Azure function, a logic app, or a webhook to perform an automated healing action.
 
-## Tradeoffs 
-
-- *Reliability vs. cost tradeoff.* When you implement some of the self-preservation patterns, like the Cache-Aside pattern or the Ambassador pattern, the cost of provisioning the workload infrastructure might increase. Implement these approaches only when the implementation provides benefits.
-
-- *Reliability vs. performance tradeoff.* When you implement some of these patterns, the time to complete a given transaction or application flow might increase. Apply a pattern only if it doesn't affect your ability to meet your performance targets for those transactions or flows.
-
-- *Reliability vs. user experience tradeoff.* When you implement some of these patterns, the user's experience with your applications might change significantly. For example, when using a Queue-Based Load Leveling pattern, your application might not present a real-time outcome of a request to the user, which might not be the right approach in all scenarios.
-
 ### Considerations
 
 Familiarize yourself with the considerations for each pattern. Ensure that the pattern is suitable for your workload and business requirements before implementation.
