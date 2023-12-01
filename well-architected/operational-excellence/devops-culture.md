@@ -50,6 +50,10 @@ The following recommendations can help you adopt and implement DevOps practices 
 
 **Embrace safe experimentation.** Give team members access to sandbox environments and ensure that time is built into sprints to allow for experimentation. Document standards that define how new functionality is integrated into the workload when a team member discovers a function or component that would offer tangible benefits. Be careful to ensure that new functionality is aligned with your [safe deployment practices](safe-deployments.md).
 
+## Considerations
+
+Strictly defined roles and responsibilities could result in a level of discomfort for some team members when they're performing functions outside their responsibility. Conduct open and honest discussions with the team about team structure, and be open to making adjustments when needed.
+
 ## Azure facilitation
 
 Microsoft publishes extensive documentation about DevOps culture in a dedicated [DevOps resource center](/devops/what-is-devops).
@@ -57,10 +61,6 @@ Microsoft publishes extensive documentation about DevOps culture in a dedicated 
 ## Organizational alignment
 
 Cloud Adoption Framework provides [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices) for organizational adoption, which includes a perspective on [DevOps team topologies](/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies).
-
-## Considerations
-
-Strictly defined roles and responsibilities could result in a level of discomfort for some team members when they're performing functions outside their responsibility. Conduct open and honest discussions with the team about team structure, and be open to making adjustments when needed.
 
 ## Related links
 
