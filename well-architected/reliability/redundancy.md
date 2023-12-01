@@ -36,6 +36,13 @@ For example, you might have multiple web server nodes running at once. The criti
 
 When you design for redundancy in the context of performance efficiency, distribute the load across multiple redundant nodes to ensure that each node performs optimally. In the context of reliability, build in spare capacity to absorb failures or malfunctions that affect one or more nodes. Ensure that the spare capacity can absorb failures for the entire time that's needed to recover the affected nodes. With this distinction in mind, both strategies need to work together. If you spread traffic across two nodes for performance and they both run at 60 percent utilization and one node fails, your remaining node is at risk of becoming overwhelmed because it can't operate at 120 percent. Spread the load out with another node to ensure that your performance and reliability targets are upheld.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
+> - More workload redundancy equates to more costs. Carefully consider adding redundancy and regularly review your architecture to ensure that you're managing costs, especially when you use overprovisioning. When you use overprovisioning as a resiliency strategy, balance it with a well-defined [scaling strategy](scaling.md) to minimize cost inefficiencies.
+
+> - There can be performance tradeoffs when you build in a high degree of redundancy. For example, resources that spread across availability zones or regions can affect performance because you have to send traffic over high-latency connections between redundant resources, like web servers or database instances.
+
+> - Different flows within the same workload might have different reliability requirements. Flow-specific redundancy designs can potentially introduce complexity into the overall design.
+
 #### Redundant architecture design
 
 Consider two approaches when you design a redundant architecture: active-active or active-passive. Choose your approach depending on the criticality of the user flow and system flow that the infrastructure components support. In terms of reliability, a multi-region active-active design helps you achieve the highest level of reliability possible, but it's significantly more expensive than an active-passive design. You can also use these design approaches for a single region by using availability zones. For more information, see [Recommendations for highly available multi-region design](highly-available-multi-region-design.md).
@@ -129,14 +136,6 @@ The Azure platform helps you optimize the resiliency of your workload and add re
 - For hybrid name resolution scenarios between on-premises and cloud environments, use Azure DNS Private Resolver. This service supports zone redundancy if your workload is located in a region that supports availability zones. A zone-wide outage requires no action during zone recovery. The service automatically self-heals and rebalances to take advantage of the healthy zone. For more information, see [Resiliency in Azure DNS Private Resolver](/azure/dns/private-resolver-reliability).
 
 - To eliminate a single point of failure and achieve a more resilient hybrid name resolution across regions, deploy two or more Azure DNS private resolvers across different regions. DNS failover, in a conditional forwarding scenario, is achieved by assigning a resolver as your primary DNS server. Assign the other resolver in a different region as a secondary DNS server. For more information, see [Set up DNS failover by using private resolvers](/azure/dns/tutorial-dns-private-resolver-failover).
-
-## Tradeoffs
-
-- More workload redundancy equates to more costs. Carefully consider adding redundancy and regularly review your architecture to ensure that you're managing costs, especially when you use overprovisioning. When you use overprovisioning as a resiliency strategy, balance it with a well-defined [scaling strategy](scaling.md) to minimize cost inefficiencies.
-
-- There can be performance tradeoffs when you build in a high degree of redundancy. For example, resources that spread across availability zones or regions can affect performance because you have to send traffic over high-latency connections between redundant resources, like web servers or database instances.
-
-- Different flows within the same workload might have different reliability requirements. Flow-specific redundancy designs can potentially introduce complexity into the overall design.
 
 ## Example
 

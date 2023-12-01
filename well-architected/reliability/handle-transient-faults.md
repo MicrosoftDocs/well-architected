@@ -164,6 +164,9 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Consider how your retry strategy might affect neighbors and other tenants in a shared application and when you use shared resources and services. Aggressive retry policies can cause an increasing number of transient faults to occur for these other users and for applications that share the resources and services. Likewise, your application might be affected by the retry policies implemented by other users of the resources and services. For business-critical applications, you might want to use premium services that aren't shared. Doing so gives you more control over the load and consequent throttling of these resources and services, which can help to justify the extra cost.
 
+>[!NOTE]
+> See [Issues and considerations](/azure/architecture/patterns/retry#issues-and-considerations) in the Retry pattern article for further guidance on tradeoffs and risks.
+
 ## Azure facilitation
 
 Most Azure services and client SDKs provide a retry mechanism. However, these mechanisms differ because each service has different characteristics and requirements, and each retry mechanism is tuned to the specific service. This section summarizes the retry mechanism features for some commonly used Azure services.
@@ -186,10 +189,6 @@ Most Azure services and client SDKs provide a retry mechanism. However, these me
 
 > [!NOTE]
 > For most of the Azure built-in retry mechanisms, there's currently no way to apply a different retry policy for different types of errors or exceptions. You should configure a policy that provides the optimum average performance and availability. One way to fine-tune your policy is to analyze log files to determine the type of transient faults that are occurring.
-
-## Tradeoffs
-
-See [Issues and considerations](/azure/architecture/patterns/retry#issues-and-considerations) in the Retry pattern article for further guidance on tradeoffs and risks.
 
 ## Example
 
