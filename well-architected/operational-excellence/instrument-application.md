@@ -166,15 +166,15 @@ The following list summarizes best practices for instrumenting a distributed app
 
 - Treat instrumentation as an ongoing iterative process and review logs regularly.
 
+## Considerations
+
+- Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
+
+- Profiling selections can be time-based, such as once every *n* seconds, or frequency-based, such as once every *n* requests. If events occur frequently, profiling might cause too much of a burden on the system and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
+
 ## Azure facilitation
 
 [Autoinstrumentation](/azure/azure-monitor/app/codeless-overview) is available for many types of Azure and on-premises applications monitored with [Application Insights](/azure/azure-monitor/app/app-insights-overview). The autoinstrumentation function automatically configures your application to provide rich telemetry to Application Insights and provides easy access to experiences such as the [application dashboard](/azure/azure-monitor/app/overview-dashboard) and [application map](/azure/azure-monitor/app/app-map). For supported hosting platforms and development languages, see [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
-
-## Tradeoffs
-
-Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
-
-Profiling selections can be time-based, such as once every *n* seconds, or frequency-based, such as once every *n* requests. If events occur frequently, profiling might cause too much of a burden on the system and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
 
 ## Related links
 
