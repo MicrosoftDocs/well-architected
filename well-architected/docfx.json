@@ -72,7 +72,7 @@
         "carrier-grade/**/*.*": "waf-workload-carrier-grade",
         "hybrid/**/*.*": "waf-workload-hybrid",
         "azure-virtual-desktop/**/*.*": "waf-workload-avd",
-        "azure-vmwarep/**/*.*": "waf-workload-avs",        
+        "azure-vmware/**/*.*": "waf-workload-avs",        
         "hybrid/**/*.*": "waf-workload-hybrid",        
         "iot/**/*.*": "waf-workload-iot",
         "oracle-iaas/**/*.*": "waf-workload-oracle",        
