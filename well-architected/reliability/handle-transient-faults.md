@@ -18,7 +18,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for handling transient faults in your cloud applications. All applications that communicate with remote services and resources must be sensitive to transient faults. This is especially true for applications that run in the cloud, where, because of the nature of the environment and connectivity over the internet, this type of fault is likely to be encountered more often. Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, and timeouts that occur when a service is busy. These faults are often self-correcting, so, if the action is repeated after a suitable delay, it's likely to succeed.
 
-This article provides general guidance for transient fault handling. For information about handling transient faults when you're using Azure services, see [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
+This article provides general guidance for transient fault handling. For information about handling transient faults see the [retry pattern](/azure/architecture/patterns/retry) and, when you're using Azure services, see the [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
 
 ## Key design strategies
 
@@ -26,7 +26,7 @@ Transient faults can occur in any environment, on any platform or operating syst
 
 Cloud hosting, including private cloud systems, can offer higher overall availability by using shared resources, redundancy, automatic failover, and dynamic resource allocation across many commodity compute nodes. However, because of the nature of cloud environments, transient faults are more likely to occur. There are several reasons for this:
 
--   Many resources in a cloud environment are shared, and access to these resources is subject to [throttling](/azure/architecture/patterns/throttling) in order to protect the resources. Some services refuse connections when the load rises to a specific level, or when a maximum throughput rate is reached, to allow processing of existing requests and to maintain performance of the service for all users. Throttling helps to maintain the quality of service for neighbors and other tenants that use the shared resource.
+-   Many resources in a cloud environment are shared, and access to these resources is subject to throttling in order to protect the resources. Some services refuse connections when the load rises to a specific level, or when a maximum throughput rate is reached, to allow processing of existing requests and to maintain performance of the service for all users. Throttling helps to maintain the quality of service for neighbors and other tenants that use the shared resource.
 
 -   Cloud environments use large numbers of commodity hardware units. They deliver performance by dynamically distributing load across multiple computing units and infrastructure components. They deliver reliability by automatically recycling or replacing failed units. Because of this dynamic nature, transient faults and temporary connection failures might occasionally occur.
 
@@ -40,7 +40,7 @@ Transient faults can have a significant effect on the perceived availability of 
 
 -   The application must be able to detect faults when they occur and determine if the faults are likely to be transient, are long-lasting, or are terminal failures. Different resources are likely to return different responses when a fault occurs, and these responses can also vary depending on the context of the operation. For example, the response for an error when the application is reading from storage might differ from the response for an error when it's writing to storage. Many resources and services have well-documented transient-failure contracts. However, when such information isn't available, it can be difficult to discover the nature of the fault and whether it's likely to be transient.
 
--   The application must be able to [retry](/azure/architecture/patterns/retry) the operation if it determines that the fault is likely to be transient. It also needs to keep track of the number of times the operation is retried.
+-   The application must be able to retry the operation if it determines that the fault is likely to be transient. It also needs to keep track of the number of times the operation is retried.
 
 -   The application must use an appropriate strategy for retries. The strategy specifies the number of times the application should retry, the delay between each attempt, and the actions to take after a failed attempt. The appropriate number of attempts and the delay between each one are often difficult to determine. The strategy varies depending on the type of resource and on the current operating conditions of the resource and the application.
 
@@ -90,7 +90,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Use the type of the exception and any data it contains, or the error codes and messages returned from the service, to optimize the number of retries and the interval between them. For example, some exceptions or error codes (like the HTTP code 503, Service Unavailable, with a Retry-After header in the response) might indicate how long the error might last, or that the service failed and won't respond to any subsequent attempt.
 
--   Consider using a [dead-letter queue approach](/azure/service-bus-messaging/service-bus-dead-letter-queues) to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts have been exhausted.
+-   Consider using a dead-letter queue approach to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts have been exhausted.
 
 #### Avoid anti-patterns
 
@@ -200,10 +200,13 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 ## Related links
 
 - [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
+- [Retry pattern](/azure/architecture/patterns/retry)
+- [Throttling pattern](/azure/architecture/patterns/throttling)
 - [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
 - [A blog post on idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
 - [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
+- [Dead-letter queue pattern](/azure/service-bus-messaging/service-bus-dead-letter-queues)
 
 ## Reliability checklist
 
