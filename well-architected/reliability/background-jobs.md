@@ -53,7 +53,7 @@ Initiate background jobs with:
 
 An action triggers an event-driven invocation that starts the background task. Examples of event-driven triggers include:
 
-- The UI or a different job places a message in a queue. The message contains data about a previously performed action, such as a customer that placed an order. The background job monitors this queue and detects the arrival of a new message. It reads the message and uses the message's data as the input for the background job. This pattern is called [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication).
+- The UI or a different job places a message in a queue, as described in the [Web-Queue-Worker architectural style](/azure/architecture/guide/architecture-styles/web-queue-worker). The message contains data about a previously performed action, such as a customer that placed an order. The background job monitors this queue and detects the arrival of a new message. It reads the message and uses the message's data as the input for the background job. This pattern is called [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication).
 
 - The UI or a different job saves or updates a value that's in storage. The background job monitors the storage and detects changes. It reads the data and uses it as the input for the background job.
 
@@ -149,7 +149,7 @@ Configure background tasks that are initiated by messages or that process messag
 
 - Sometimes you need messages to be processed in a specific order, like messages that change data based on the existing data value, for example adding a value to an existing value. Messages don't always arrive in the order that they were sent. Also, different instances of a background task might process messages in a different order due to varying loads on each instance.
   
-  For messages that must be processed in a specific order, include a sequence number, key, or another indicator that background tasks can use to process messages in the correct order. For Service Bus, use message sessions to guarantee the correct order of delivery. It's more efficient to design the process so that the message order isn't important.
+  For messages that must be processed in a specific order, include a sequence number, key, or another indicator that background tasks can use to process messages in the correct order. For Service Bus, use message sessions to guarantee the correct order of delivery. It's more efficient to design the process so that the message order isn't important. For more information, see [message sequencing and timestamps](/azure/service-bus-messaging/message-sequencing).
 
 - Typically, a background task peeks at messages in the queue, which temporarily hides them from other message consumers. After the task successfully processes the message, it deletes the message. If a background task fails when it processes a message, that message reappears in the queue after the peek timeout expires. A different instance of the task processes the message, or the next processing cycle of the original instance processes the message.
 
