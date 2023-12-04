@@ -80,6 +80,7 @@
         "sustainability/**/*.*": "waf-workload-sustainability",
         "services/**/*.*": "waf-service-guide"
         "cross-cutting-guides/**/*.*": "waf-cross-cutting-guide"
+        "architect-role/**/*.*": "waf-cross-cutting-guide"        
       }
     },
     "template": [
