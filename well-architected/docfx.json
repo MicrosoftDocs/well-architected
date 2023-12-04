@@ -79,6 +79,7 @@
         "sap/**/*.*": "waf-workload-sap",
         "sustainability/**/*.*": "waf-workload-sustainability",
         "services/**/*.*": "waf-service-guide"
+        "cross-cutting-guides/**/*.*": "waf-cross-cutting-guide"
       }
     },
     "template": [
