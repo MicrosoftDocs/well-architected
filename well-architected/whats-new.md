@@ -11,6 +11,10 @@ ms.topic: conceptual
 
 Find out how Azure Well-Architected Framework changed recently.
 
+## December 2023
+
+Updated overview: [Azure Virtual Desktop workloads](./azure-virtual-desktop/overview.md)
+
 ## November 2023
 
 The Azure Well-Architected Framework completed a significant content refresh across all five pillars. We're breaking from our standard "What's new" format this month because the changes that launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
