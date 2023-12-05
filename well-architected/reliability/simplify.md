@@ -28,6 +28,8 @@ A key tenet of designing for reliability is to keep things simple and efficient.
 
 You must justify every design decision with a business requirement. This design principle might seem obvious, but it's crucial for workload design. Does your application support millions of users, or a few thousand? Are there large traffic bursts, or a steady workload? What level of application outage is acceptable? Business requirements drive these design considerations.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components. Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
+
 ### Collaborative design exercises
 
 Work with stakeholders to:
@@ -153,27 +155,6 @@ For more information, see:
 - [Choose an Azure compute service](/azure/architecture/guide/technology-choices/compute-decision-tree)
 - [Choose a compute option for microservices](/azure/architecture/microservices/design/compute-options)
 - [Review your data options](/azure/architecture/guide/technology-choices/data-options)
-
-## Tradeoffs
-
-A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components.
-
-Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
-
-Refer to the other guides in this series for tradeoffs related to the points in this guide:
-
-- [Background jobs](background-jobs.md#tradeoffs)
-- [Data partitioning](partition-data.md#tradeoffs)
-- [Define reliability targets](metrics.md#tradeoffs)
-- [Disaster recovery](disaster-recovery.md#tradeoffs)
-- [Failure mode analysis](failure-mode-analysis.md#tradeoffs)
-- [Identify and rate flows](identify-flows.md#tradeoffs)
-- [Monitoring and alerting](monitoring-alerting-strategy.md#tradeoffs)
-- [Redundancy](redundancy.md#tradeoffs)
-- [Scaling strategy](scaling.md#tradeoffs)
-- [Self-healing and self-preservation](self-preservation.md#tradeoffs)
-- [Testing strategy](testing-strategy.md#tradeoffs)
-- [Transient faults](handle-transient-faults.md#tradeoffs)
 
 ## Example
 

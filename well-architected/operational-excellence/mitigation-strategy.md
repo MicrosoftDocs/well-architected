@@ -104,6 +104,12 @@ No matter which choices you make, you should include appropriate approvals in yo
 
   Like any other code, hot fixes need to go through your safe deployment practices. But with a hot fix, the timeline is considerably accelerated. You need to use a code promotion strategy throughout your environments. You also need to check hot fix code at all quality gates. But you might need to dramatically shorten bake times, and you might need to modify tests to accelerate them. Ensure that you can run full tests on the updated code as soon as possible after deployment. Automating quality assurance testing to a high degree helps make testing efficient in these scenarios.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
+
+> - Being able to fall back typically means that you need sufficient infrastructure capacity to handle two versions of your workload configuration at the same time. Your workload teams also need to be able to support two versions in production at the same time.
+
+> - Being able to roll back effectively might involve refactoring elements of your workload. For example, you might need to decouple functions or change your data model.
+
 ### Communication
 
 It's important to have clearly defined communication responsibilities to help minimize chaos during incidents. These responsibilities should establish how the workload team engages with support teams, stakeholders, and emergency response team personnel, like the emergency response manager.
@@ -119,8 +125,6 @@ Postmortems should follow all failed deployments, without exception. Every faile
 Postmortems should always be blameless so that individuals who are involved in the incident feel safe when they share their perspectives on what can be improved. Postmortem leaders should follow up with plans for implementing the improvements that have been identified and adding these plans to the workload backlog.
 
 ### Considerations and general recommendations
-
-Test deployments thoroughly when you deploy to lower development environments. This practice helps you detect bugs and misconfigurations before they get to production.
 
 Ensure that your deployment pipeline can accept distinct versions as parameters so that you can easily deploy last-known-good configurations.
 
@@ -139,6 +143,9 @@ Use automated rollback functionality judiciously:
 Use platform-provided capabilities during rollbacks. For example, backups and point-in-time restores can help with storage and data rollbacks. Or if you use virtual machines (VMs) to host your application, it can be helpful to restore your environment to a checkpoint that's immediately before an incident.
 
 Test your entire deployment failure mitigation strategy frequently. Like emergency response plans and disaster recovery plans, your deployment failure plan is only successful if your team is trained on it and practices it regularly. Chaos engineering and [fault injection testing](../reliability/testing-strategy.md) can be effective techniques for testing your deployment mitigation strategy.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Support team members need to be able to perform their normal duties and also support emergencies. You might need to increase head count to help ensure that the support team is properly staffed and able to carry out all required duties.
+Test deployments thoroughly when you deploy to lower development environments. This practice helps you detect bugs and misconfigurations before they get to production.
 
 ## Azure facilitation
 
@@ -165,16 +172,6 @@ Test your entire deployment failure mitigation strategy frequently. Like emergen
   - [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-backup-restore)
 
 - [Azure Chaos Studio Preview](/azure/chaos-studio/chaos-studio-overview) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
-
-## Tradeoffs
-
-Support team members need to be able to perform their normal duties and also support emergencies. You might need to increase head count to help ensure that the support team is properly staffed and able to carry out all required duties.
-
-Also consider these other potential tradeoffs that are associated with mitigation strategies:
-
-- Being able to fall back typically means that you need sufficient infrastructure capacity to handle two versions of your workload configuration at the same time. Your workload teams also need to be able to support two versions in production at the same time.
-
-- Being able to roll back effectively might involve refactoring elements of your workload. For example, you might need to decouple functions or change your data model.
 
 ## Related links
 

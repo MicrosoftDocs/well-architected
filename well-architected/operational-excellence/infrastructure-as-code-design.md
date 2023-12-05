@@ -74,6 +74,16 @@ Core infrastructure like networking resources rarely need changes more complex t
 
 The choice between deploying mutable versus immutable infrastructure depends on a few factors. If your workload is business critical, it's best to use immutable infrastructure. Likewise, if you have a mature infrastructure design that's based on [deployment stamps](/azure/architecture/patterns/deployment-stamp), using immutable infrastructure can make sense, because you can deploy application code and new infrastructure reliably. Conversely, using mutable infrastructure can be a better choice if your [safe deployment practices](safe-deployments.md) dictate that rolling forward with deployments when mitigable deployment issues arise is the preferred option. In this case, you would probably update the infrastructure in place.
 
+## Considerations
+
+**Increased specialization:** In some cases, introducing new languages in your workload team comes with a learning curve, and vendor lock-in can make it a poor choice. Training your team members and analyzing the right tool based on your cloud providers' tooling support is required.
+
+**Increased maintenance effort:** Code base and tooling maintenance are required to keep your IaC implementation current and secure. Properly track your technical debt and foster a culture where reducing debt is rewarded.
+
+**Increased time for configuration changes:** Deploying infrastructure by using command-line instructions or directly from a portal requires no coding time and/or testing artifacts. Minimize deployment time by following recommended practices like code reviews and quality assurance practices.
+
+**Increased complexity of modularization:** Using more modules and parameterization increases the time it takes to debug and document the system and adds a layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering.
+
 ## Azure facilitation
 
 [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
@@ -87,16 +97,6 @@ You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](
 Cloud Adoption Framework provides guidance for central teams on how to standardized infrastructure as code across the organization's workload teams.
 
 For more information, see [Infrastructure as Code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) in the Cloud Adoption Framework.
-
-## Tradeoffs
-
-**Increased specialization:** In some cases, introducing new languages in your workload team comes with a learning curve, and vendor lock-in can make it a poor choice. Training your team members and analyzing the right tool based on your cloud providers' tooling support is required.
-
-**Increased maintenance effort:** Code base and tooling maintenance are required to keep your IaC implementation current and secure. Properly track your technical debt and foster a culture where reducing debt is rewarded.
-
-**Increased time for configuration changes:** Deploying infrastructure by using command-line instructions or directly from a portal requires no coding time and/or testing artifacts. Minimize deployment time by following recommended practices like code reviews and quality assurance practices.
-
-**Increased complexity of modularization:** Using more modules and parameterization increases the time it takes to debug and document the system and adds a layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering.
 
 ## Example
 

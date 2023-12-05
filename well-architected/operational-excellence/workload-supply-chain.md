@@ -115,10 +115,6 @@ Cloud Adoption Framework provides guidance for central teams to provide workload
 
 For more information, see [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone) and the [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles).
 
-## Tradeoffs
-
-In your lower environments, there's a tradeoff between cost and infrastructure parity with production. Each successively higher environment should be closer in parity to production to ensure that your quality gates are as effective as possible.
-
 ## Example
 
 For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, see [Azure Pipelines baseline architecture](/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture).

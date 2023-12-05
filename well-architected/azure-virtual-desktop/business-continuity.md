@@ -52,17 +52,11 @@ For each Azure Virtual Desktop host pool, you can base your business continuity 
 
 ### Active-active scenarios
 
-There are two possible configurations for an active-active scenario. One configuration involves two host pools. The other uses one pool. Each configuration has certain benefits and caveats. For more information, review [Multiregion business continuity and disaster recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/azure-virtual-desktop-multi-region-bcdr).
-
-#### Two host pools
-
-In the two-pool configuration, for each host pool in your primary region, you deploy a secondary host pool in your secondary region. No administrator intervention is needed for failover. Like during normal operations, the secondary host pool provides users with Azure Virtual Desktop resources. The users must have a good understanding of the capabilities that Azure Virtual Desktop offers and how to use them.
+The recommended configuration for an active-active scenario uses two host pools, one host pool per region. No administrator intervention is needed for failover. Like during normal operations, the secondary host pool provides users with Azure Virtual Desktop resources. The users must have a good understanding of the capabilities that Azure Virtual Desktop offers and how to use them.
 
 Each host pool has its own storage account for persistent user profiles. If your disaster recovery plans require that profiles persist, you need to use the cloud cache feature of FSLogix to sync profiles across regions. To avoid profile conflicts, don't allow users to access both host pools at the same time.
 
-#### Single host pool
-
-The second possible active-active configuration uses a single host pool that's deployed with a mix of session hosts that are located in different regions.
+For more information, see [Multiregion business continuity and disaster recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/azure-virtual-desktop-multi-region-bcdr).
 
 ### Active-passive scenarios
 

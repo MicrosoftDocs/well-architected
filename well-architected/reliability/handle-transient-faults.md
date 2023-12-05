@@ -18,7 +18,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for handling transient faults in your cloud applications. All applications that communicate with remote services and resources must be sensitive to transient faults. This is especially true for applications that run in the cloud, where, because of the nature of the environment and connectivity over the internet, this type of fault is likely to be encountered more often. Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, and timeouts that occur when a service is busy. These faults are often self-correcting, so, if the action is repeated after a suitable delay, it's likely to succeed.
 
-This article provides general guidance for transient fault handling. For information about handling transient faults when you're using Azure services, see [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
+This article provides general guidance for transient fault handling. For information about handling transient faults see the [retry pattern](/azure/architecture/patterns/retry) and, when you're using Azure services, see the [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
 
 ## Key design strategies
 
@@ -90,6 +90,8 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Use the type of the exception and any data it contains, or the error codes and messages returned from the service, to optimize the number of retries and the interval between them. For example, some exceptions or error codes (like the HTTP code 503, Service Unavailable, with a Retry-After header in the response) might indicate how long the error might last, or that the service failed and won't respond to any subsequent attempt.
 
+-   Consider using a dead-letter queue approach to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts have been exhausted.
+
 #### Avoid anti-patterns
 
 -   In most cases, avoid implementations that include duplicated layers of retry code. Avoid designs that include cascading retry mechanisms or that implement retry at every stage of an operation that involves a hierarchy of requests, unless you have specific requirements that require doing so. In these exceptional circumstances, use policies that prevent excessive numbers of retries and delay periods, and make sure you understand the consequences. For example, say one component makes a request to another, which then accesses the target service. If you implement retry with a count of three on both calls, there are nine retry attempts in total against the service. Many services and resources implement a built-in retry mechanism. You should investigate how you can disable or modify these mechanisms if you need to implement retries at a higher level.
@@ -156,13 +158,16 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 
--   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
+-   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
 
 -   Consider the scope of operations that are retried. For example, it might be easier to implement retry code at a level that encompasses several operations and retry them all if one fails. However, doing so might result in idempotency issues or unnecessary rollback operations.
 
 -   If you choose a retry scope that encompasses several operations, take into account the total latency of all of them when you determine retry intervals, when you monitor the elapsed times of the operation, and before you raise alerts for failures.
 
 -   Consider how your retry strategy might affect neighbors and other tenants in a shared application and when you use shared resources and services. Aggressive retry policies can cause an increasing number of transient faults to occur for these other users and for applications that share the resources and services. Likewise, your application might be affected by the retry policies implemented by other users of the resources and services. For business-critical applications, you might want to use premium services that aren't shared. Doing so gives you more control over the load and consequent throttling of these resources and services, which can help to justify the extra cost.
+
+>[!NOTE]
+> See [Issues and considerations](/azure/architecture/patterns/retry#issues-and-considerations) in the Retry pattern article for further guidance on tradeoffs and risks.
 
 ## Azure facilitation
 
@@ -187,10 +192,6 @@ Most Azure services and client SDKs provide a retry mechanism. However, these me
 > [!NOTE]
 > For most of the Azure built-in retry mechanisms, there's currently no way to apply a different retry policy for different types of errors or exceptions. You should configure a policy that provides the optimum average performance and availability. One way to fine-tune your policy is to analyze log files to determine the type of transient faults that are occurring.
 
-## Tradeoffs
-
-See [Issues and considerations](/azure/architecture/patterns/retry#issues-and-considerations) in the Retry pattern article for further guidance on tradeoffs and risks.
-
 ## Example
 
 See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/apply-pattern) for an example that uses many of the patterns discussed in this article. There's also a [reference implementation](https://github.com/Azure/reliable-web-app-pattern-dotnet) on GitHub.
@@ -198,10 +199,13 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 ## Related links
 
 - [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
+- [Retry pattern](/azure/architecture/patterns/retry)
+- [Throttling pattern](/azure/architecture/patterns/throttling)
 - [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
-- [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
+- [A blog post on idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
 - [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
+- [Dead-letter queue pattern](/azure/service-bus-messaging/service-bus-dead-letter-queues)
 
 ## Reliability checklist
 

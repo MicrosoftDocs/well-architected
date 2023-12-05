@@ -136,10 +136,6 @@ For detailed guidance about implementing a DevOps test strategy, see [Shift test
 
 - [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load testing service that you can use to generate high-scale load by simulating traffic for your applications, regardless of where they're hosted.
 
-## Tradeoffs
-
-Investing in powerful commercial tools can be costly, so choose the appropriate tools to meet your requirements.
-
 ## Related links
 
 - [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance)

@@ -53,7 +53,7 @@ Initiate background jobs with:
 
 An action triggers an event-driven invocation that starts the background task. Examples of event-driven triggers include:
 
-- The UI or a different job places a message in a queue. The message contains data about a previously performed action, such as a customer that placed an order. The background job monitors this queue and detects the arrival of a new message. It reads the message and uses the message's data as the input for the background job. This pattern is called [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication).
+- The UI or a different job places a message in a queue, as described in the [Web-Queue-Worker architectural style](/azure/architecture/guide/architecture-styles/web-queue-worker). The message contains data about a previously performed action, such as a customer that placed an order. The background job monitors this queue and detects the arrival of a new message. It reads the message and uses the message's data as the input for the background job. This pattern is called [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication).
 
 - The UI or a different job saves or updates a value that's in storage. The background job monitors the storage and detects changes. It reads the data and uses it as the input for the background job.
 
@@ -149,7 +149,7 @@ Configure background tasks that are initiated by messages or that process messag
 
 - Sometimes you need messages to be processed in a specific order, like messages that change data based on the existing data value, for example adding a value to an existing value. Messages don't always arrive in the order that they were sent. Also, different instances of a background task might process messages in a different order due to varying loads on each instance.
   
-  For messages that must be processed in a specific order, include a sequence number, key, or another indicator that background tasks can use to process messages in the correct order. For Service Bus, use message sessions to guarantee the correct order of delivery. It's more efficient to design the process so that the message order isn't important.
+  For messages that must be processed in a specific order, include a sequence number, key, or another indicator that background tasks can use to process messages in the correct order. For Service Bus, use message sessions to guarantee the correct order of delivery. It's more efficient to design the process so that the message order isn't important. For more information, see [message sequencing and timestamps](/azure/service-bus-messaging/message-sequencing).
 
 - Typically, a background task peeks at messages in the queue, which temporarily hides them from other message consumers. After the task successfully processes the message, it deletes the message. If a background task fails when it processes a message, that message reappears in the queue after the peek timeout expires. A different instance of the task processes the message, or the next processing cycle of the original instance processes the message.
 
@@ -174,6 +174,12 @@ Background tasks must offer sufficient performance to ensure that they don't blo
 - Design background tasks for scaling. For example, background tasks must dynamically detect the number of utilized storage queues to monitor messages or send messages to the appropriate queue.
 
 - By default, a WebJob scales with its associated Web Apps instance. However, if you want a WebJob to run as only a single instance, you can create a Settings.job file that contains the JSON data `{ "is_singleton": true }`. This method forces Azure to only run one instance of the WebJob, even if there are multiple instances of the associated web app. This technique is useful for scheduled jobs that must run as only a single instance.
+
+- Background jobs can create challenges for data synchronization and process coordination, especially if the background tasks depend on each other or on other data sources. For example, background jobs might handle data consistency problems, race conditions, deadlocks, or timeouts.
+
+- Background jobs might affect the user experience if the results of the background tasks are presented to the user. For example, background jobs might require the user to wait for a notification, refresh the page, or manually check the status of the task. These behaviors can increase the complexity of the user interaction and negatively affect the user experience.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Background jobs introduce more components and dependencies to the system, which can increase the complexity and maintenance costs of the solution. For example, background jobs might require a separate queue service, worker service, monitoring service, and retry mechanism.
 
 ## Azure facilitation
 
@@ -361,14 +367,6 @@ For more information, see:
 
 - [Container Apps overview](/azure/container-apps/overview)
 - [Quickstart: Deploy your first container app](/azure/container-apps/get-started)
-
-## Tradeoffs
-
-- Background jobs introduce more components and dependencies to the system, which can increase the complexity and maintenance costs of the solution. For example, background jobs might require a separate queue service, worker service, monitoring service, and retry mechanism.
-
-- Background jobs can create challenges for data synchronization and process coordination, especially if the background tasks depend on each other or on other data sources. For example, background jobs might handle data consistency problems, race conditions, deadlocks, or timeouts.
-
-- Background jobs might affect the user experience if the results of the background tasks are presented to the user. For example, background jobs might require the user to wait for a notification, refresh the page, or manually check the status of the task. These behaviors can increase the complexity of the user interaction and negatively affect the user experience.
 
 ## Related links
 

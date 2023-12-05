@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-ms.custom:
-  - e2e-hybrid
 ---
 
 # Overview of a hybrid workload

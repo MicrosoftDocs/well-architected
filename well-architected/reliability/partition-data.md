@@ -315,7 +315,7 @@ If your naming scheme uses timestamps or numerical identifiers, it can lead to e
 
 The actions of writing a single block or page are atomic, but operations that span blocks, pages, or blobs aren't. If you need to ensure consistency when write operations are performed across blocks, pages, and blobs, take out a write lock by using a blob lease.
 
-## Tradeoffs
+## Considerations
 
 Data partitioning introduces some challenges and complexities that you need to consider.
 

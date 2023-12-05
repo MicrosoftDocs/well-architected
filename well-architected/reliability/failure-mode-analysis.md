@@ -120,10 +120,6 @@ Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/az
 
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 
-## Tradeoffs
-
-As with all resiliency and reliability decisions, the amount of resiliency you build into your systems has cost and management overhead implications. Apply the principles of FMA to help keep costs to a minimum. Your analysis provides you with a comprehensive list of failure points to address, and it helps you decide the level of resilience to apply for a given flow.
-
 ## Example
 
 The following table shows an FMA example for an e-commerce website that's hosted on Azure App Service instances with Azure SQL databases and is fronted by Azure Front Door.

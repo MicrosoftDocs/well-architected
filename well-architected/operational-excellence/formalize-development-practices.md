@@ -27,6 +27,8 @@ Formalize your software development practices to help ensure that product owners
   
 - **Tools**: Use established, industry-proven tools and processes, like [Agile](/devops/plan/what-is-agile-development), [Scrum](/devops/plan/what-is-scrum), and [Kanban boards](/devops/plan/what-is-kanban). Developing your own tools and processes is a significant undertaking, taking time and development cycles that could otherwise be spent on your workload. Most experienced DevOps engineers and product owners are familiar with these types of tools and processes, so the learning curve in adopting them should be minimal. Likewise, the onboarding process for new hires will also benefit from using standard tools and processes as they are likely to have a degree of exposure to the same tools and processes already.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Agile methodology can become too strict if it's overly prescriptive. Strive for a balance between well-defined standards and innovation.
+
 - **Deployment**: Plan to use frequent small, iterative deployments instead of large infrequent deployments. Using this approach will help keep user stories and work items manageable from a project management standpoint and reduce the risk of large-scale issues when deployments fail.  
 
 - **Terms**: Standardize your definition of *finished* development cycles to help ensure that supporting functions, including testing, documentation, and accessibility features, are successfully completed.
@@ -69,10 +71,6 @@ Formalize your software development practices to help ensure that product owners
 [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards) is a web-based service that enables teams to plan, track, and discuss work across the entire development process. It's well suited for Agile-based development practices.
 
 [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) is a customizable project management tool that can organize projects and integrates by using issues and pull requests in GitHub.
-
-## Tradeoffs
-
-Agile methodology can become too strict if it's overly prescriptive. Strive for a balance between well-defined standards and innovation.
 
 ## Related links
 
