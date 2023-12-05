@@ -391,7 +391,7 @@
         - name: IP addresses
           href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
-          href: service-guides/log-analytics.md
+          href: service-guides/azure-log-analytics.md
         - name: Network connectivity
           items:
             - name: Reliability
