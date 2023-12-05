@@ -78,9 +78,7 @@
         "oracle-iaas/**/*.*": "waf-workload-oracle",        
         "sap/**/*.*": "waf-workload-sap",
         "sustainability/**/*.*": "waf-workload-sustainability",
-        "service-guides/**/*.*": "waf-service-guide",
-        "cross-cutting-guides/**/*.*": "waf-cross-cutting-guide",
-        "architect-role/**/*.*": "waf-cross-cutting-guide"        
+        "service-guides/**/*.*": "waf-service-guide"       
       }
     },
     "template": [
