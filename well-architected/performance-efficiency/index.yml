@@ -6,8 +6,6 @@ summary: Apply performance efficiency guidance to your architecture to efficient
 metadata:
   title: Performance efficiency quick links
   description: Learn about resources that you can use to apply performance efficiency guidance to your architecture.
-  ms.service: waf
-  ms.subservice: waf-pillar-efficiency
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek

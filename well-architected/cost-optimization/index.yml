@@ -6,8 +6,6 @@ summary: Apply cost optimization guidance in your architecture to sustain and im
 metadata:
   title: Cost optimization quick links
   description: Learn about resources that can help you apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
-  ms.service: waf
-  ms.subservice: waf-pillar-optimization
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
