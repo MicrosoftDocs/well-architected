@@ -165,7 +165,7 @@ While there are no built-in policies that are related to cost optimization, cust
 
 Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
 
-Learn how to build sustainable and efficient Azure Stack HCI workloads, in [Sustainable software engineering principles in Azure Stack HCI](/azure/AzureStackHCI/concepts-sustainable-software-engineering).
+Learn how to build sustainable and efficient Azure Stack HCI workloads, in Sustainable software engineering principles in Azure Stack HCI.
 
 ## Operational excellence
 
@@ -258,15 +258,10 @@ In addition to the built-in policies, custom policies can be created for both th
 
 ### Azure Architecture Center guidance
 
-- [Azure Stack HCI baseline architecture](/azure/architecture/reference-architectures/containers/AzureStackHCI/secure-baseline-AzureStackHCI)
-- [Advanced AzureStackHCImicroservices architecture](/azure/architecture/reference-architectures/containers/AzureStackHCI-microservices/AzureStackHCI-microservices-advanced)
-- [Azure Stack HCI cluster for a PCI-DSS workload](/azure/architecture/reference-architectures/containers/AzureStackHCI-pci/AzureStackHCI-pci-intro)
-- [Azure Stack HCI baseline for multiregion clusters](/azure/architecture/reference-architectures/containers/AzureStackHCI-multi-region/AzureStackHCI-multi-cluster)
-
 ### Cloud Adoption Framework guidance
 
 - [Azure Stack HCI Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/app-platform/AzureStackHCI/landing-zone-accelerator)
 
 ## Next steps
 
-- Deploy an Azure Stack HCI cluster using the Azure CLI [Quickstart: Deploy an Azure Stack HCI cluster using the Azure CLI](/azure/AzureStackHCI/hybridworkloads-walkthrough)
+- Deploy an Azure Stack HCI cluster using the Azure CLI Quickstart: Deploy an Azure Stack HCI cluster using the Azure CLI
