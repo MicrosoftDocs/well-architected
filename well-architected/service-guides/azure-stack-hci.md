@@ -18,27 +18,31 @@ This article provides architectural best practices for Azure Stack HCI. The guid
 - Operational excellence
 - Performance efficiency
 
-We assume that you understand system design principles, have working knowledge of Azure Stack HCI, and are well versed with its features. For more information, see [Azure Stack HCI](/azure/todo/).
+We assume that you understand system design principles, have working knowledge of Azure Stack HCI, and are well versed with its features. For more information, see [Azure Stack HCI](/azure-stack/hci/overview).
 
 ## Prerequisites
 
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with the [baseline architecture for an Azure Stack HCI cluster](/azure/architecture/reference-architectures/containers/Azure Stack HCI/baseline-Azure Stack HCI) and [Microservices architecture on Azure Stack HCI](/azure/architecture/reference-architectures/containers/Azure Stack HCI-microservices/Azure Stack HCI-microservices). Also review the architectural approach and reference implementation to prepare a scalable Azure Stack HCI cluster.
+For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with the [baseline architecture for an Azure Stack HCI cluster](/azure/architecture/hybrid/azure-stack-robo) and [Azure Stack HCI network deployment patterns](/azure-stack/hci/plan/choose-network-pattern). Also review the [Prepare your environment for a hybrid and multi-cloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready), which provides an architectural approach and reference implementation to prepare landing zone subscriptions for a scalable Azure Stack HCI cluster.
 
 ## Reliability
 
-When discussing reliability with Azure Stack HCI, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is a shared responsibility between the cluster admin and their resource provider, while workload reliability is the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
+Azure Stack HCI has considerations and recommendations for both of these roles. In the hybrid cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize failed instances.
+When discussing reliability with Azure Stack HCI, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the responsibility of cluster admin and the resource provider, while workload reliability is the domain of a operator or developer. Azure Stack HCI has considerations and recommendations for both of these roles.
 
-In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each consideration is applicable to cluster architecture, workload architecture, or both.
 
 ### Design checklist
 
 > [!div class="checklist"]
-> - **Cluster architecture:** For critical workloads, use 
-> - **Cluster architecture:** Plan the correct size, use 
-> - **Cluster architecture:** Enable HCI insights / telemetry extension....
-> - **Workload architecture:** Ensure workloads are built to support horizontal scaling and report 
+
+> - **Cluster architecture (Server):** Reserve additional hosts for emergency scenarios (e.g. maintenance, one node is down etc.). The recommendation is to have N + 1 nodes for the cluster.
+> - **Cluster architecture (Storage):** Estimate the number of failures that can occur simultaneously without compromising availability and data. The recommendation is to have 2 additional disks to sustain disk failures.
+> - **Cluster architecture (Storage):** Choose the right resiliency preference (Performance, Capacity) for storage based on the workload. This choice decides what type of mirroring will be used for the CSV filesystem.
+> - **Cluster architecture (Host Network):** To ensure fault tolerance, it is recommended to have two or more network adapters per node which are symmetric (of the same make, model, speed, and configuration) across all nodes.This is because having multiple network adapters provides redundancy and ensures that the cluster remains operational even if one of the network adapters fails.
+> - **Cluster architecture (Physical Switch Network):** To ensure resiliency, it is recommended to have two TOR  switches and ensure the network adapters for management, compute, storage are connected to the TOR switches in fault tolerant mode.
+> - **Workload architecture:** The reliability design of the workloads varies depending on the type of workloads (VM, AKS, AVD, etc.,) that is deployed on Azure Stack HCI. Refer to the respective workload specific guidance in designing the reliability for each of the workloads. 
 
 ### Azure Stack HCI configuration recommendations
 
