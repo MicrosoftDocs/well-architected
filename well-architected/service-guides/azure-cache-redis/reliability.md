@@ -43,7 +43,7 @@ Redis is an in-memory cache for key value pairs and has High Availability (HA), 
   - Larger cache size, up to `120GB`.
   - [Data persistence](https://redis.io/topics/persistence), which includes Redis Database File (RDB) and Append Only File (AOF).
   - VNET support.
-  - [Clustering](/azure/azure-cache-for-redis/cache-how-to-premium-clustering)
+  - [Clustering](/azure/azure-cache-for-redis/cache-best-practices-scale)
   - Geo-Replication: A secondary cache is in another region and replicates data from the primary for disaster recovery. To failover to the secondary, the caches need to be unlinked manually and then the secondary is available for writes. The application writing to Redis needs to be updated with the secondary's cache connection string.
   - Availability Zones: Deploy the cache and replicas across availability zones.
     > [!NOTE]
