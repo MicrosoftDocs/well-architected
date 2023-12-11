@@ -59,7 +59,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
 
 > [!TIP]
-> For more details on Reliability guidance for VMs, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
+> For more details on reliability guidance for Azure Database for PostgreSQL, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
 
 ### Azure policy definitions
 
