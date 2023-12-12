@@ -6,8 +6,7 @@ ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
 categories: networking
-ms.custom:
-  - mission-critical
+
 ---
 
 # Application design of mission-critical workloads on Azure

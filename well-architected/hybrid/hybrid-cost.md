@@ -7,8 +7,7 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 categories:
   - hybrid
-ms.custom:
-  - e2e-hybrid
+
 ---
 
 # Cost optimization in a hybrid workload

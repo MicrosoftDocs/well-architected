@@ -6,8 +6,7 @@ ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
 categories: web
-ms.custom:
-  - mission-critical
+
 ---
 
 # Design principles of a mission-critical workload

@@ -6,8 +6,7 @@ ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
 categories: devops
-ms.custom:
-  - mission-critical
+
 ---
 
 # Operational procedures for mission-critical workloads on Azure
