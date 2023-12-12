@@ -8,8 +8,7 @@ ms.topic: conceptual
 categories:
   - containers
   - web
-ms.custom:
-  - mission-critical
+
 ---
 
 # Application platform considerations for mission-critical workloads on Azure

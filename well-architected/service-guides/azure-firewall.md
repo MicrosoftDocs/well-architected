@@ -4,7 +4,6 @@ description: This article provides architectural best practices for Azure Firewa
 author: igorpag
 ms.author: igorpag
 ms.reviewer: tozimmergren
-ms.custom: engagement-fy23
 ms.topic: conceptual
 ms.date: 09/15/2023
 products: azure-firewall

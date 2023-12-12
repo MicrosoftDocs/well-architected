@@ -5,8 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
+
 ---
 
 # Recommendations for using continuous integration

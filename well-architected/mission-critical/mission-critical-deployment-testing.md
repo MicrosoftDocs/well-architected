@@ -9,8 +9,7 @@ categories:
   - devops
   - containers
   - management-and-governance
-ms.custom:
-  - mission-critical
+
 ---
 
 # Deployment and testing for mission-critical workloads on Azure

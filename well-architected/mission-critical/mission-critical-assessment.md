@@ -8,8 +8,7 @@ ms.topic: conceptual
 categories: 
   - management-and-governance
   - web
-ms.custom:
-  - mission-critical
+
 ---
 
 # Well-Architected assessment for mission-critical workloads

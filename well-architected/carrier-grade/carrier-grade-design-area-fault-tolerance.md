@@ -6,8 +6,7 @@ ms.author: mikedell
 ms.date: 08/23/2022
 ms.topic: conceptual
 ms.industry: telecommunications
-ms.custom:
-  - carrier-grade
+
 ---
 
 # Fault tolerance for carrier-grade workloads
