@@ -4,8 +4,6 @@ description: Provides a template for a Well-Architected Framework (WAF) article 
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.custom:
-  - ignite-2022
 products: azure-kubernetes-service
 ---
 

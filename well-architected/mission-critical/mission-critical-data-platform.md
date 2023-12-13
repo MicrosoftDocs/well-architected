@@ -6,8 +6,7 @@ ms.author: calcof
 ms.date: 02/02/2022
 ms.topic: conceptual
 categories: databases
-ms.custom:
-  - mission-critical
+
 ---
 
 # Data platform considerations for mission-critical workloads on Azure

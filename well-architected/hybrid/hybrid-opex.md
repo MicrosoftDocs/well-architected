@@ -5,8 +5,7 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-ms.custom:
-  - e2e-hybrid
+
 ---
 
 # Operational excellence in a hybrid workload

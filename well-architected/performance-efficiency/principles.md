@@ -7,8 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 categories:
   - management-and-governance
-ms.custom:
-  - overview
+
 ---
 
 # Performance Efficiency design principles

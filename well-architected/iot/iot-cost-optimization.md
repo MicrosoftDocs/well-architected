@@ -5,8 +5,7 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: conceptual
-ms.custom:
-  - engagement-fy23
+
 categories:
   - iot
 ---

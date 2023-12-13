@@ -11,8 +11,7 @@ categories:
   - devops
   - security
   - networking
-ms.custom:
-  - mission-critical
+
 ---
 
 # Architecture pattern for mission-critical workloads on Azure
