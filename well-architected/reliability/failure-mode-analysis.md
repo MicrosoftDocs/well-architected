@@ -115,7 +115,7 @@ During your initial FMA exercise, the documents you produce will be mostly theor
 
 Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to detect issues in your workload. For further insight into issues related to your infrastructure, apps, and databases, use tools like [Application Insights](/azure/azure-monitor/app/app-insights-overview), [Container Insights](/azure/azure-monitor/containers/container-insights-overview), [Network Insights](/azure/network-watcher/network-insights-overview), [VM Insights](/azure/azure-monitor/vm/vminsights-overview), and [SQL Insights](/azure/azure-sql/database/sql-insights-overview).
 
-[Azure Chaos Studio Preview](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
+[Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 
