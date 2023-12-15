@@ -5,7 +5,7 @@ author: stephen-sumner
 ms.author: ssumner
 ms.date: 12/19/2022
 ms.topic: conceptual
-ms.custom: SAP
+
 ---
 
 # SAP workload networking and connectivity
@@ -13,6 +13,8 @@ ms.custom: SAP
 Networking for an SAP workload has many facets, but we want to focus on the performance affects of networking. The goal is to help you make the right networking decisions to ensure peak SAP workload performance.
 
 ## Networking performance
+
+*Impact: Reliability, Performance efficiency*
 
 An SAP workload needs to communicate with other workloads. Common communication paths are to local storage, external storage, NICs, VMs in the network, VMs in other networks, and third-party applications. Optimize workload networking to improve these communication channels to meet workload and application demand. If SAP network performance isn't considered, it will cause application performance issues.
 
@@ -31,6 +33,8 @@ For more information, see:
 **Use accelerated networking.** Accelerated Network is default for most of the VM deployments and is recommended for every VM hosting an SAP workload. Accelerated Network improves the network performance by bypassing the physical switch. We recommend you enable Accelerated Networking on the Azure VMs running your SAP Application and Database. Accelerated networking provides improved latency, jitter, and CPU utilization. You should test the latency between the SAP application server and database with the SAP ABAP report /SSA/CAT. It's an Inventory Check for the SAP Azure Workbook. For more information, see [accelerated networking overview](/azure/virtual-network/accelerated-networking-overview).
 
 ## On-premises connectivity
+
+*Impact: Reliability, Performance efficiency, Security*
 
 **Use ExpressRoute GlobalReach.** ExpressRoute is a private and resilient way to connect your on-premises networks to different Azure regions. This feature allows you to link ExpressRoute circuits to make a private network between your on-premises networks. Global Reach should be used for SAP HANA Large Instance deployments to enable direct access from on-premises to your HANA Large Instance units deployed in different regions. For more information, see [ExpressRoute Global Reach](/azure/expressroute/expressroute-global-reach).
 

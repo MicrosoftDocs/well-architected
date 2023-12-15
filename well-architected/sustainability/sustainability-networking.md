@@ -7,9 +7,7 @@ ms.topic: conceptual
 ms.date: 10/12/2022
 categories: 
   - networking
-ms.custom:
-  - sustainability
-  - ignite-2022
+
 ---
 
 # Networking considerations for sustainable workloads on Azure
@@ -91,7 +89,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 - Keeping resources in a single cloud gives you maximum control and allows the cloud provider to optimize the network routing.
 - Maximize network utilization within the same cloud and, if possible, within the same region.
-- Since the cost can be a proxy for sustainability, review the [Azure regions](/azure/architecture/framework/cost/design-regions) documentation in the Cost Optimization pillar of the Azure Well-Architected Framework.
+- Since the cost can be a proxy for sustainability, review the [Azure regions](../cost-optimization/cost-model.md) documentation in the Cost Optimization pillar of the Azure Well-Architected Framework.
 
 ## Next step
 

@@ -9,8 +9,7 @@ categories:
   - devops
   - containers
   - management-and-governance
-ms.custom:
-  - mission-critical
+
 ---
 
 # Deployment and testing for mission-critical workloads on Azure
@@ -170,7 +169,7 @@ View the following video to get an overview of recommendations for scoping subsc
 
 <br>
 
-> [!VIDEO https://learn-video.azurefd.net/vod/player?id=013a2a82-dc85-4282-98ed-b1afe50afd41&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-application-design]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=013a2a82-dc85-4282-98ed-b1afe50afd41&embedUrl=/azure/well-architected/mission-critical/mission-critical-application-design]
 
 ### Design considerations
 

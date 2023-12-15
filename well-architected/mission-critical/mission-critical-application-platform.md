@@ -8,8 +8,7 @@ ms.topic: conceptual
 categories:
   - containers
   - web
-ms.custom:
-  - mission-critical
+
 ---
 
 # Application platform considerations for mission-critical workloads on Azure
@@ -67,7 +66,7 @@ Not every workload supports or requires running multiple regions simultaneously.
   If suitable Azure regions don't all offer capabilities that you need, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability. If only a single Azure region is suitable, deploy multiple deployment stamps (regional scale units) in the selected region to mitigate some risk, and use availability zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution dramatically constrains the attainable composite SLA and overall reliability.
 
   > [!IMPORTANT]
-  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions to maximize the composite SLA and overall reliability. Calculate the [composite SLA](/azure/architecture/framework/resiliency/business-metrics#composite-slas) for all user flows. Ensure that the composite SLA is aligned with business targets.
+  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions to maximize the composite SLA and overall reliability. Calculate the [composite SLA](/azure/well-architected/resiliency/business-metrics#composite-slas) for all user flows. Ensure that the composite SLA is aligned with business targets.
 
 - For high-scale application scenarios that have significant volumes of traffic, design the solution to scale across multiple regions to navigate potential capacity constraints within a single region. Additional regional deployment stamps will achieve a higher composite SLA. Using global resources constrains the increase in composite SLA that you achieve by adding more regions.
 
@@ -108,7 +107,7 @@ A container includes application code and the related configuration files, libra
 
 - Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
 
-- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry). Use [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory (Azure AD).
+- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry). Use [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Microsoft Entra ID.
 
 ## Container hosting and orchestration
 
@@ -119,14 +118,14 @@ There are advantages and disadvantages associated with each of these platforms. 
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons)
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should be your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) and [Azure Container Apps](/azure/container-apps/overview) should be among your first choices for container management depending on your requirements.  Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
 #### Design considerations and recommendations for Azure Kubernetes Service
 
-AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service).
+AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/well-architected/services/compute/azure-kubernetes-service/azure-kubernetes-service).
 
 > [!IMPORTANT]
-> There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Azure AD integration, and the use of managed identities for AKS instead of service principals.
+> There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Microsoft Entra integration, and the use of managed identities for AKS instead of service principals.
 
 ###### Reliability
 
@@ -167,9 +166,9 @@ Default vanilla Kubernetes requires significant configuration to ensure a suitab
 
 - Use AKS features for handling cluster identity and access management to reduce operational overhead and apply consistent access management.
 
-- Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Azure AD workload identity](/azure/aks/workload-identity-overview).
+- Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Microsoft Entra Workload ID](/azure/aks/workload-identity-overview).
 
-- Use [Azure AD integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and enhanced identity protection. Use Kubernetes RBAC with Azure AD for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to help protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file by using Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions, and avoid the use of root privilege escalation.
+- Use [Microsoft Entra integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and enhanced identity protection. Use Kubernetes RBAC with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to help protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file by using Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions, and avoid the use of root privilege escalation.
 
 ###### Upgrades
 
@@ -215,13 +214,13 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 
 #### Design considerations and recommendations for Azure App Service
 
-For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
+For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/well-architected/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/well-architected/services/compute/azure-app-service/operational-excellence).
 
 ###### Reliability
 
 Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections. SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing while using Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
 
-TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
+TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/well-architected/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
 
 ###### Scalability
 
@@ -274,7 +273,7 @@ You need to configure your container registries for mission-critical workloads c
 
 #### Design considerations and recommendations for Azure Container Registry
 
-This native service provides a range of features, including geo-replication, Azure AD authentication, automated container building, and patching via Container Registry tasks.
+This native service provides a range of features, including geo-replication, Microsoft Entra authentication, automated container building, and patching via Container Registry tasks.
 
 ###### Reliability
 
@@ -295,7 +294,7 @@ If you want to protect the Container Registry instance from deletion, use [resou
 
 ###### Identity and access management
 
- Use Azure AD integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
+ Use Microsoft Entra integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
 
 ## Serverless compute
 
@@ -369,7 +368,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 - Don't access individual virtual machines directly. Use load balancers in front of them when possible.
 
 - To protect against regional outages, deploy application virtual machines across multiple Azure regions.
-  - See the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for details about how to optimally route traffic between active deployment regions.
+  - See the [networking and connectivity design area](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for details about how to optimally route traffic between active deployment regions.
 
 - For workloads that don't support multi-region active/active deployments, consider implementing active/passive deployments by using hot/warm standby virtual machines for regional failover.
 
@@ -379,7 +378,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 
 - Implement chaos experiments to inject application faults into virtual machine components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
-- Monitor virtual machines and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+- Monitor virtual machines and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/well-architected/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
 - Implement security practices for mission-critical application scenarios, when applicable, and the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 

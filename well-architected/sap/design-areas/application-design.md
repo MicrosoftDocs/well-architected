@@ -5,7 +5,7 @@ author: stephen-sumner
 ms.author: ssumner
 ms.date: 12/19/2022
 ms.topic: conceptual
-ms.custom: SAP
+
 ---
 
 # SAP workload application design
@@ -13,6 +13,8 @@ ms.custom: SAP
 SAP applications should adhere to the design principles. The guidance here focuses on cost optimization and reliability.
 
 ## SAP application cost optimization
+
+*Impact: Cost optimization*
 
 Optimizing your SAP application can lower the total cost of ownership without reducing capabilities. The goal is to generate the maximum return on investment (ROI). Here are ways to optimize an SAP application.
 
@@ -23,6 +25,8 @@ Optimizing your SAP application can lower the total cost of ownership without re
 **Minimize investment in legacy systems.**  You should host a legacy SAP application on minimum-supported architecture to help reduce cost. A legacy application is slower and less performant. Any legacy systems that remain after rationalizing and rearchitecting should receive the minimum spend possible and be retired when appropriate. For more information, see [Azure Cost Management](/azure/cost-management-billing/costs/cost-mgt-best-practices).
 
 ## SAP application reliability
+
+*Impact: Reliability*
 
 **Use a multi-tier architecture.**  Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture varies for each SAP application. Make sure to isolate application components from each other and create redundancy to achieve high availability. Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, SAPMNT Share and database. We have sample architectures for several different SAP applications you can use to inform your design.
 

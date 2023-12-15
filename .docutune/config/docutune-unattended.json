@@ -5,16 +5,18 @@
     "maxInFlightFiles": 200
   },
   "pullRequest": {
-    "title": "[BULK] [DocuTune-Remediation] - Scheduled execution to fix known issues in WAF",
+    "title": "[DO NOT MERGE] [PLEASE IGNORE] [DocuTune-Remediation] - Test of DocuTune scheduled execution in WAF",
     "batchSize": 0,
     "maxBatches": 100,
     "body": "",
     "newBranchNamePrefix": "",
     "headRemote": "origin",
-    "draft": false,
+    "draft": true,
     "requestReview": true,
     "signOff": false,
-    "properties": {},
+    "properties": {
+      "pointOfContact": "@BryanLa"
+    },
     "sleepInterval": 15
   },
   "types": [
