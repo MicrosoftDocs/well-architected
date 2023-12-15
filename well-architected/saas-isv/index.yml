@@ -1,0 +1,58 @@
+### YamlMime:Landing
+
+title: SaaS workload for ISVs documentation
+summary: TBD
+metadata: 
+  title: SaaS workload for ISVs documentation
+  description: TBD.
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 12/15/2023
+  ms.topic: landing-page
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is a SaaS workload?
+            url: get-started.md
+          - text: Design principles
+            url: design-principles.md
+          - text: Tenancy models
+            url: tenancy-models.md          
+   # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Business requirements
+            url: business-requirements.md
+          - text: Governance
+            url: governance.md
+          - text: Identity and access management
+            url: identity-access.md
+          - text: DevOps practices
+            url: devops.md
+          - text: Deployment
+            url: deployment.md            
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Assessment tool
+            url: assessment.md
+
+ # Card
+  - title: Additional guides
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Multitenant solutions on Azure
+            url: /azure/architecture/guide/multitenant/overview?branch=main   

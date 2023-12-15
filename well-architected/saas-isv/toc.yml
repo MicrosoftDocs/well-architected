@@ -1,0 +1,23 @@
+- name: SaaS
+  href: index.yml
+  items:
+  - name: Get started
+    href: get-started.md
+  - name: Tenancy models
+    href: tenancy-models.md
+  - name: Design principles
+    href: design-principles.md
+  - name: Design areas
+    items:
+    - name: Business requirements
+      href: business-requirements.md
+    - name: Identity and access management
+      href: identity-access.md
+    - name: Governance
+      href: governance.md
+    - name: Devops practices
+      href: devops.md
+    - name: Deployment
+      href: deployment.md
+    - name: Assessment
+      href: assessment.md
