@@ -257,9 +257,7 @@
       - name: Oracle
         href: oracle-iaas/overview.md       
       - name: SaaS for ISVs
-        href: saas-isv/index.yml             
-      - name: SAP
-        href: sap/quick-links.yml
+        href: saas-isv/index.yml                   
       - name: Sustainability
         href: sustainability/index.yml        
     - name: Service guides
