@@ -1,4 +1,4 @@
-- name: SaaS
+- name: SaaS for ISVs
   href: index.yml
   items:
   - name: Get started
