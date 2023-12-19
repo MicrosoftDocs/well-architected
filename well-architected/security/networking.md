@@ -244,7 +244,7 @@ The following technology choices are recommended:
 
 - [Azure Web Application Firewall](/azure/web-application-firewall/overview). This service supports inbound filtering and only targets HTTP and HTTPS traffic.
 
-  It offers basic security for common attacks, such as threats that the Open Worldwide Application Security Project (OWASP) identifies in the OWASP Top 10 document. Azure Web Application Firewall also provides other security features that are focused on layer 7, such as rate limiting, SQL-injection rules, and cross-site scripting.
+  It offers basic security for common attacks, such as threats that the Open Web Application Security Project (OWASP) identifies in the OWASP Top 10 document. Azure Web Application Firewall also provides other security features that are focused on layer 7, such as rate limiting, SQL-injection rules, and cross-site scripting.
 
   With Azure Web Application Firewall, TLS termination is required, because most checks are based on payloads.
 
