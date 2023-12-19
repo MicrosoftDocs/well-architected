@@ -169,15 +169,19 @@ Classify and protect information storage objects in accordance with the internal
 
 ### Data-in-use
 
-[Specific services in Azure](/azure/confidential-computing/overview-azure-products) offer the ability to protect data whilst it's being computed-upon within the physical CPU and memory of a host using Azure confidential computing. 
+For high security workloads, segmentation, isolation and least-priviledge are recommended design patterns. 
 
-Confdential computing utilizes special hardware SKUs to provide a hardware-enforced boundary known as a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment) that maintains isolation between VMs, the hypervisor, and host management code.
+In the context of in-use protection hardware boundaries may require encryption of data whilst it is in use in the physical CPU and memory to ensure isolation of VMs, host management code and other components. 
 
-This enhances the standard logical protection provided by Azure by using hardware-based isolation to protect a customer workload. When combined with features like [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) it can be used to ensure that encrypted data is only ever decrypted inside a TEE which proves it provides the required level of protection through a process known as [Attestation](/azure/confidential-computing/attestation-solutions).
+Encryption and decryption of data must only be done within those isolation boundaries.
 
-There may be regulatory requirements that dictate using 'state of the art' security measures, confidential computing is one such technology.
+More stringent security or regulatory requirements may also require hardware based, cryptographically signed evidence that data is being encrypted whilst in-use, this can be obtained through **attestation**.
 
-- **Consider the end-end lifecycle of data you are protecting** not all Azure services support confidential computing, where there is data that must guarantee confidential computing levels of protection at all times consider integrating [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) in your application architectures and choose [services that offer confidential computing capabilities](/azure/confidential-computing/overview-azure-products).
+The requirement for 'state of the art' security and privacy measures is becoming common in regulatory requirements **confidential computing** is one such technology supporting this requirement.
+
+Specific services in Azure offer the ability to protect data whilst it's being computed-upon. For more information, see {Azure Facilitation: Azure Confidential Compute}.
+
+- **Consider the end-end lifecycle of data you are protecting** data often moves through multiple systems in its lifetime, take care to ensure that all component parts of a solution can provide the required levels of protection, or ensure that your data management strategy provides appropriate segmentation or masking.
 
 ## Azure facilitation
 
@@ -213,13 +217,16 @@ With [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overvie
 
 ##### Data-in-use protection
 
-There are a number of services that directly offer confidential computing capabilities;
+There are a number of [Specific services in Azure](/azure/confidential-computing/overview-azure-products) that offer the ability to protect data whilst it's being computed-upon within the physical CPU and memory of a host using Azure confidential computing. 
 
 - **Confidential Virtual Machines** offer an entire [virtual machine running inside a TEE](/azure/confidential-computing/virtual-machine-solutions), the memory and executing CPU contents of the virtual machine are encrypted offering a simple 'lift & shift' approach for moving unmodified applications with high security requirements to Azure. Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
 
 - **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](/azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
 
 - **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular [Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
+
+- **Secure Key Release** can be [combined with these technologies](/azure/confidential-computing/concept-skr-attestation) to ensure that encrypted data is only ever decrypted inside a TEE which proves it provides the required level of protection through a process known as [Attestation](/azure/confidential-computing/attestation-solutions).
+
 
 ##### Secret management
 
