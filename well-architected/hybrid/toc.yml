@@ -1,0 +1,13 @@
+- name: Hybrid
+  href: hybrid-overview.md
+  items:
+    - name: Cost Optimization
+      href: hybrid-cost.md
+    - name: Operational Excellence
+      href: hybrid-opex.md
+    - name: Performance Efficiency
+      href: hybrid-performance-efficiency.md
+    - name: Reliability
+      href: hybrid-reliability.md
+    - name: Security
+      href: hybrid-security.md

@@ -2,7 +2,7 @@
 title: Oracle workload performance efficiency
 description: Oracle workload best practices for performance efficiency
 author: ckittel
-ms.author: kegorman
+ms.author: chkittel
 ms.date: 12/29/2022
 ms.topic: conceptual
 ---

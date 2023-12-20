@@ -7,9 +7,7 @@ ms.topic: conceptual
 ms.date: 10/12/2022
 categories: 
   - networking
-ms.custom:
-  - sustainability
-  - ignite-2022
+
 ---
 
 # Application platform considerations for sustainable workloads on Azure

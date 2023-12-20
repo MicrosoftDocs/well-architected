@@ -11,8 +11,7 @@ metadata:
   ms.date: 01/26/2023
   ms.topic: landing-page
   ms.collection: na
-  ms.service: waf
-  ms.subservice: waf-workload-mission-critical
+
 
 
 landingContent:
@@ -138,7 +137,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Carrier-grade for telecommunications
-            url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started
+            url: /azure/well-architected/carrier-grade/carrier-grade-get-started
 
 
   # Card

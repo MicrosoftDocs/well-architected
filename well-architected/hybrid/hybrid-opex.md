@@ -5,8 +5,7 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-ms.custom:
-  - e2e-hybrid
+
 ---
 
 # Operational excellence in a hybrid workload
@@ -85,7 +84,7 @@ Click the following links for architecture details and diagrams that enable appl
 
 ## Manage data anywhere
 
-![Management capabilities comparison by deployment model](../_images/hybrid-deployment.png)
+![Management capabilities comparison by deployment model](./images/hybrid-deployment.png)
 
 ## Next steps
 
