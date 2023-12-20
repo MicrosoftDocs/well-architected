@@ -20,7 +20,6 @@ This guide describes the recommendations for optimizing the cost of each of the 
 
 | Term    | Definition |
 |---|----|
-|Data flow  | The movement of data within a system or between systems.|
 |Decouple  | The strategy of removing a flow from a resource that contains multiple flows and placing it into a separate resource. |
 |Flow    | In a workload, the sequence of actions that performs a specific function. A flow involves the movement of data and the running of processes between components of the workload. |
 |System flow | The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality.                            |
