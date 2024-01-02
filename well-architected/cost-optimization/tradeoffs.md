@@ -49,6 +49,8 @@ The cost of a service disruption must be measured against the cost of preventing
 
 - Reducing data volume and tiering data through data lifecycle actions, possibly in conjunction with implementing aggregated data points before a lifecycle event, introduces reliability factors to consider in the workload.
 
+- Using multiple Azure regions to optimize costs and/or provide active-active deployment can increase complexity in management, network design and monitoring.
+
 ## Cost Optimization tradeoffs with Security
 
 The cost of a compromise to confidentiality, integrity, and availability in a workload must always be balanced against the cost of the effort to prevent that compromise. A security incident can have a wide range of financial and legal impacts and harm a company's reputation. Investing in security is a risk mitigation activity. The cost of experiencing the risks must be balanced against the investment. As a rule, don't compromise on security to gain cost optimizations that are below the point of responsible and agreed upon risk mitigation. Optimizing security costs by rightsizing solutions is an important optimization practice, but be aware of tradeoffs like the following when doing so.
