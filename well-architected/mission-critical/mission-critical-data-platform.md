@@ -380,7 +380,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - Azure Cosmos DB can be configured according to two distinct backup modes.
   - [Periodic](/azure/cosmos-db/configure-periodic-backup-restore) is the default backup mode for all accounts, where backups are taken at a periodic interval and the data is restored by creating a request with the support team.
-    - The default periodic backup retention period is 8 hours and the default backup interval is fourhours, which means only the latest two backups are stored by default.
+    - The default periodic backup retention period is eight hours and the default backup interval is four hours, which means only the latest two backups are stored by default.
     - The backup interval and retention period are configurable within the account.
       - The maximum retention period extends to a month with a minimum backup interval of one hour.
       - A role assignment to the Azure "Cosmos DB Account Reader Role" is required to configure backup storage redundancy.
