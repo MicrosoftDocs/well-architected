@@ -22,7 +22,9 @@ This guide describes the recommendations for designing a highly available multi-
 
 ## Key design strategies
 
-Active-active and active-passive are the two fundamental approaches to designing a highly available cloud environment. Active-active environments are designed to handle production loads in every region in which you deploy your workload. Active-passive environments are designed to handle production loads only in the primary region but fail over to the secondary (passive) region when necessary. This section describes design options that you should consider when you evaluate each pattern and refine your architecture to meet your business requirements.
+Active-active and active-passive are the two fundamental approaches to designing a highly available cloud environment. Active-active environments are designed to handle production loads in every region in which you deploy your workload. Active-passive environments are designed to handle production loads only in the primary region but fail over to the secondary (passive) region when necessary. Selecting the best Azure regions for your workload is a key part of designing a highly available multi-region environment. For guidance on selecting Azure regions, see the [Select Azure Regions guide](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions).
+
+This section describes design options that you should consider when you evaluate each pattern and refine your architecture to meet your business requirements.
 
 See [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) for guidance on architecting your workload in a repeatable, scalable way. This design pattern can help you optimize your high-availability design for efficient management.
 
