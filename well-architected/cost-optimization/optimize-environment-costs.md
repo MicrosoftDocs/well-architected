@@ -50,6 +50,8 @@ Determining environment costs is about knowing the costs of infrastructure, serv
 
 - *Monitor and adjust your spending*: Continuously monitor and analyze spending patterns, value delivery, and risk factors. Regularly review and adjust your spending optimization strategies as the needs of the environment and business evolve.
 
+- Azure resources are available in *multiple regions* at different prices. You can save money by selecting one or more regions that have favorable pricing for your resources. Consider the potential benefit of running non-production (Dev, Test, Q/A) environments in different regions to further optimize costs. Multiple regions can be an effective solution optimize costs and at the same time achieve higher resiliency and scalability.
+
 ### Optimize the production environment
 
 Optimizing costs in the production environment involves implementing strategies to reduce unnecessary expenses and improve operational efficiencies. Focus on differentiating production deployments and meeting the needs of users. Here are recommendations for optimizing the production environment:
