@@ -266,7 +266,7 @@ productDirectory:
     - title: Azure Virtual Machines
       summary: Configure Azure virtual machines in seconds.
       imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-      url: virtual-machines-review.md
+      url: virtual-machines.md
       azureCategories:
         - compute
     # Card
