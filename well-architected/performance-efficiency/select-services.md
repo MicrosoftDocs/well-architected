@@ -34,7 +34,7 @@ This guide describes the recommendations for selecting appropriate services for 
 
 ## Key design strategies
 
-The services you choose should align with your workload's performance targets and be adaptable to future capacity needs. Not all Azure resources and SKUs are available in all regions, then you should consider the availability of the services you need in the regions you want to deploy to. Using a multi-region approach can be considered to leverage all the required services, optimize costs and avoid single region temporary resource capacity constraints. As the workload expands or evolves, the services you use should match your performance standards without requiring major adjustments. Consider the balance between platform features and custom implementations. Platform features provide immediate solutions, but custom-built options offer precise tailoring. Your service selections should be both forward-thinking and tailored to your specific needs, taking into account the trade-offs between convenience and customization.
+The services you choose should align with your workload's performance targets and be adaptable to future capacity needs. As the workload expands or evolves, the services you use should match your performance standards without requiring major adjustments. Consider the balance between platform features and custom implementations. Platform features provide immediate solutions, but custom-built options offer precise tailoring. Your service selections should be both forward-thinking and tailored to your specific needs, taking into account the trade-offs between convenience and customization.
 
 ### Understand workload requirements
 
