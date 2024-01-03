@@ -135,7 +135,7 @@ To estimate costs related to virtual machines, use these tools.
 > - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) or an [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features) for significant azure-db-postgresqlvirtual-machinessavings.
 > - Use hybrid benefit licensing.
 > - Deploy [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to collect monitoring data from the guest operating system.
-> - Use [role-based-access-control (RBAC)](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles) to control who can create resources to ensure you aren't charged for resources made in error.
+> - Use [role-based-access-control (RBAC)](/azure/role-based-access-control/built-in-roles) to control who can create resources to ensure you aren't charged for resources made in error.
 > - Use Azure Policy to enforce rules that help with cost governance.
 
 ### Recommendations
@@ -153,7 +153,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 | Deploy AMA | AMA supports Data Collection Rules (DCR) which allow filtering rules and data transformation to reduce overall data volume being uploaded, which lowers ingestion and storage costs.|
-| Configure [autoscaling](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.) | Minimize idle instances in your virtual machine scale set. |
+| Configure [autoscaling](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview) | Minimize idle instances in your virtual machine scale set. |
 | Use Azure customy policies to implement cost governance | Azure Policy can be used to enforce various rules for your resources, including restricting SKUs that exceed your budget, auditing resources leftover after virtual machine deletion, enforcing the use of the Azure Hybrid Benefit, and controlling what resource types can and can't be created. |
 | Make use of Azure Policy for associated resources | Virtual machines rely on many surrounding resources. Review the built-in policies and consider implementing custom policies around those resource types in additional to policies for your virtual machines.
 
