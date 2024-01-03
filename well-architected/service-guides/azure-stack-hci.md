@@ -36,13 +36,12 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 ### Design checklist
 
 > [!div class="checklist"]
-
 > - **Cluster architecture (Server):** Reserve additional hosts for emergency scenarios (e.g. maintenance, one node is down etc.). The recommendation is to have N + 1 nodes for the cluster.
 > - **Cluster architecture (Storage):** Estimate the number of failures that can occur simultaneously without compromising availability and data. The recommendation is to have 2 additional disks to sustain disk failures.
 > - **Cluster architecture (Storage):** Choose the right resiliency preference (Performance, Capacity) for storage based on the workload. This choice decides what type of mirroring will be used for the CSV filesystem.
 > - **Cluster architecture (Host Network):** To ensure fault tolerance, it is recommended to have two or more network adapters per node which are symmetric (of the same make, model, speed, and configuration) across all nodes.This is because having multiple network adapters provides redundancy and ensures that the cluster remains operational even if one of the network adapters fails.
 > - **Cluster architecture (Physical Switch Network):** To ensure resiliency, it is recommended to have two TOR  switches and ensure the network adapters for management, compute, storage are connected to the TOR switches in fault tolerant mode.
-> - **Workload architecture:** The reliability design of the workloads varies depending on the type of workloads (VM, AKS, AVD, etc.,) that is deployed on Azure Stack HCI. Refer to the respective workload specific guidance in designing the reliability for each of the workloads. 
+> - **Workload architecture:** The reliability design of the workloads varies depending on the type of workloads (VM, AKS, AVD, etc.,) that is deployed on Azure Stack HCI. Refer to the respective workload specific guidance in designing the reliability for each of the workloads.
 
 ### Azure Stack HCI configuration recommendations
 
@@ -50,8 +49,11 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 | Recommendation | Benefit |
 |--------|----|
-|**Cluster and workload architectures:** Control pod scheduling using node selectors and affinity.|Allows the hybrid workloads scheduler to logically isolate workloads by hardware in the node. Unlike [tolerations](https://hybrid workloads.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, which allows unused resources on the nodes to consume, but gives priority to pods that define the matching node selector. Use node affinity for more flexibility, which allows you to define what happens if the pod can't be matched with a node.|
-|**Cluster architecture:** Ensure proper selection of network plugin based on network requirements and cluster sizing.|Azure CNI is required for specific scenarios, for example, Windows-based node pools, specific networking requirements and hybrid workloads Network Policies. Reference [Kubenet versus Azure CNI](/azure/Azure Stack HCI/concepts-network#compare-network-models) for more information.
+|**Cluster architecture (Server):** | Size the cluster with the expected maximum number of nodes that might go down during planned or unplanned maintenance cycles. As a best practice always account for 1 or 2 extra nodes that ensures the cluster is resilient and highly available for node failures both during the planned and unplanned maintenance cycles. For better performance and reliability, choose the recommended hardware from the [HCI Solution Catalog](/azure/azurestackhcisolutions.azure.microsoft.com/#/catalog) and do the right sizing of the cluster using the [HCI Sizer Tool](/azure/azurestackhcisolutions.azure.microsoft.com/#/sizer)|
+|**Cluster architecture (Server and Storage):** | Make sure that the physical server and storage hardware used to deploy an Azure Stack HCI cluster meets the requirements as listed in the [HCI deployment prerequisite](/azure/azure-stack/hci/deploy/deployment-prerequisites#server-and-storage-requirements) and all the servers are of same make, model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
+|**Cluster architecture (Storage):** | Ensure setting up a cluster witness (cloud or file share) for clusters with two, three or four nodes. In 23H2 and above, cloud witness on Azure using storage account is provisioned automatically as part of the cluster deployment based on the parameters chosen by the user in the Azure Portal or ARM template. |
+|**Cluster architecture (Network):** |Choose the right network pattern with resilient infrastructure for TOR switches, Network Adapters, Switch vs. Switchless, Converged vs. Non-converged using the guidance [Azure Stack HCI deployment network reference patterns](/azure/azure-stack/hci/plan/choose-network-pattern)|
+|**Cluster architecture (Storage Volume):** | Ensure choosing the resiliency types: Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures, and to enable continuous availability throughout server maintenance, such as software updates. Which resiliency type to use depends on the needs of your workload. Here's a table that summarizes which workloads are a good fit for each resiliency type, as well as the performance and storage efficiency of each resiliency type. [Choosing the Resiliency Types](/azure/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type)|
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
