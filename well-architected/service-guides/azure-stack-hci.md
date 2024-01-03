@@ -262,7 +262,7 @@ In addition to the built-in policies, custom policies can be created for both th
 
 ### Cloud Adoption Framework guidance
 
-- [Azure Stack HCI Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/app-platform/AzureStackHCI/landing-zone-accelerator)
+- [Azure Stack HCI Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/hybrid/enterprise-scale-landing-zone/)
 
 ## Next steps
 
