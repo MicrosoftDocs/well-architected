@@ -28,8 +28,6 @@ This guide describes the recommendations for getting the best rates from provide
 
 Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It takes into consideration price differences across regions, the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based billing. It also involves software licenses and corporate discount plans.
 
-Selecting the Azure regions is an important choice. Not all Azure resources are available in all regions and price differences may exist. If you can still meet functional and nonfunctional requirements, you can save money by selecting one or more regions that have favorable pricing for your resources. If production environment region is locked, consider the potential benefit of running non-production (Dev, Test, Q/A) environments in different regions to further optimize costs. Multiple regions can be an effective solution optimize costs and at the same time achieve higher resiliency and scalability.
-
 To get the best rates on the resources and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on workload needs. Regularly check for discounts and reduce licensing fees where possible. Determine if it's more cost effective to build or buy new workload solutions.
 
 ### Create an ordered list of expenses
@@ -87,6 +85,8 @@ Here's a suggested process for collaborating on rate reduction efforts:
 1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
 
 1. *Evaluate options*: Assess your options for cost optimization, such as pay-as-you-go versus commitment-based plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the performance tiers in each service and the pricing differences between them.
+
+1. *Selecting Azure regions*: Not all Azure resources are available in all regions and price differences may exist. You can save money by selecting one or more regions that have favorable pricing for your resources. If production environment region is locked, consider the potential benefit of running non-production (Dev, Test, Q/A) environments in different regions to further optimize costs.
 
 #### Determine component permanence
 
