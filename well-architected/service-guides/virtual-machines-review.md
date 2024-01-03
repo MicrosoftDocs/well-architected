@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
 author: ericd-mst-github
 ms.author: erd
-ms.date: 06/29/2023
+ms.date: 01/03/2024
 ms.topic: conceptual
 products:
   - azure-virtual-machines
@@ -135,6 +135,8 @@ To estimate costs related to virtual machines, use these tools.
 > - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) or an [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features) for significant azure-db-postgresqlvirtual-machinessavings.
 > - Use hybrid benefit licensing.
 > - Deploy [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to collect monitoring data from the guest operating system.
+> - Use [role-based-access-control (RBAC)](/azure/role-based-access-control/built-in-roles) to control who can create resources to ensure you aren't charged for resources made in error.
+> - Use Azure Policy to enforce rules that help with cost governance.
 
 ### Recommendations
 
@@ -144,21 +146,23 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |------------------------------|-----------|
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions. Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.|
-|Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
-|Configure Azure Bastion for operational access | [Azure Bastion](/azure/bastion/bastion-overview#pricing) is charged on a fix per-hour basis, and charges for outbound data transfers. |
-|Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload patterns, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
+| Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
+| Configure Azure Bastion for operational access | [Azure Bastion](/azure/bastion/bastion-overview#pricing) is charged on a fixed per-hour basis, and charges for outbound data transfers. |
+| Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload patterns, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
 | Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
-|Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
+| Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 | Deploy AMA | AMA supports Data Collection Rules (DCR) which allow filtering rules and data transformation to reduce overall data volume being uploaded, which lowers ingestion and storage costs.|
+| Configure [autoscaling](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview) | Minimize idle instances in your virtual machine scale set. |
+| Use Azure custom policies to implement cost governance | Azure Policy can be used to enforce various rules for your resources, including restricting SKUs that exceed your budget, auditing resources leftover after virtual machine deletion, enforcing the use of the Azure Hybrid Benefit, and controlling what resource types can and can't be created. |
+| Make use of Azure Policy for associated resources | Virtual machines rely on many surrounding resources. Review the built-in policies and consider implementing custom policies around those resource types in additional to policies for your virtual machines.
 
- Azure Advisor helps you ensure and improve cost optimization. Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
+Azure Advisor helps you ensure and improve cost optimization. Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
 ### Policy definitions
 
 
-Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
-
+- Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
@@ -238,7 +242,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 |--------|----|
 | Reduce latency | Consider deploying VMs in [Creating and using proximity placement groups using PowerShell](/azure/virtual-machines/co-location). |
 | Convert disks from standard HDD to premium SSD | Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. |
-|Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload patterns, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
+|Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding of workload patterns offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
 | Optimize with managed disks |  Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need.|
 | Use locally attached NVMe devices | When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases requiring high IOPS and low latency. |
 | Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
