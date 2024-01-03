@@ -98,7 +98,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
   - Scaling up with minimal changes in demand or an extended cooldown period can incur more cost than demand requires.
   - Using autoscaling without a set upper limit can lead to uncontrolled growth due to system malfunctions or abuse and exceed the expected workload requirements.
 
-- Expanding into multiple regions can enhance performance by bringing workloads closer to the user, and can avoid single region temporary resource capacity constraints, but it also adds complexity and resource duplication.
+- Expanding into multiple regions can enhance performance by bringing workloads closer to the user and can avoid single region temporary resource capacity constraints. However, it also adds complexity and resource duplication.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: More components.** One cost optimization technique is to consolidate with a smaller number of resources by increasing density, removing duplication, and co-locating functionality.
 
