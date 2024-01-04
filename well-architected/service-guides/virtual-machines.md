@@ -14,25 +14,24 @@ categories:
 
 # Azure Well-Architected Framework review - Virtual Machines and scale sets
 
-Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models. 
+Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
 This article provides architectural recommendations for making informed decisions when using various features to manage VMs, such as scaling, backup, monitoring, security, and more. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
 
 **Technology scope**
 
-Recommendations in this article focus on interrelated decisions for these areas, which are typical for designs that use virtual machines on Azure.  
+Recommendations in this article focus on the interrelated decisions in these areas, which are typical for designs that use virtual machines on Azure.  
 
 - Azure VMs
 - Azure Virtual Machine Scale Sets
-- Networking components connected to VMs
-- Disks
+- Disks. For more information, see [Azure Well-Architected Framework review - Disks](./azure-disks-cost-optimization.md).
 
 ## Review resources
 
-Consider these articles as resources that demonstrate the  recommendations highlighted in this article. 
+Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
 
-- Use these reference architectures to see examples of these recommendations. 
-  - Single VM architectures: [Linux VM](/azure/architecture/reference-architectures/n-tier/linux-vm#architecture) and [ Windows VM](/azure/architecture/reference-architectures/n-tier/windows-vm#architecture).
+- Use these reference architectures to see examples of these recommendations.
+  - Single VM architectures: [Linux VM](/azure/architecture/reference-architectures/n-tier/linux-vm#architecture) and [Windows VM](/azure/architecture/reference-architectures/n-tier/windows-vm#architecture).
   - Foundational architecture that focuses on infrastructure recommendations: [Azure virtual machine baseline architecture](/azure/architecture/virtual-machines/baseline).
 - Build implementation expertise using product documentation: [Azure Virtual Machines](/azure/virtual-machines/) and [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview).
 
@@ -90,7 +89,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 > - **Conduct chaos experiments**. Azure Chaos Studio offers several fault libraries that target critical VM use cases and help you build resilient systems by intentionally injecting faults and observing the results.
 >
-> - **Create a maintenance plan**. that includes regular system patching is a part of routine operations. Include emergencies process that allows for immediate application of patches. You can have custom process to manage the patching and, or partially delegate it to Azure. 
+> - **Create a maintenance plan**. that includes regular system patching is a part of routine operations. Include emergencies process that allows for immediate application of patches. You can have custom process to manage the patching and, or partially delegate it to Azure.
 >
 >    Azure provides features for individual [VM maintenance](/azure/virtual-machines/maintenance-configurations). Also, you can set up  maintenance windows to minimize disruptions during updates. During platform updates, fault domain considerations are key for resilience. If one instance per zone is needed across two zones, four instances are required in each zone. If spread across two zones, at least six instances are needed.
 
@@ -110,19 +109,18 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 
 ##### Recommendations
 
-**Use the design strategy to build your proof-of-concept or optimize your existing environment** by evaluating these recommendations.
+Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
 
 These recommendations aren't intended to be an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|**Scale set: Use Azure Virtual Machine Scale Sets in Flexible orchestration mode** to deploy VMs. | You'll be able to future proof your application for **scaling and take advantage of the high availability guarantees** that spreads VMs across fault domains in a region or within an availability zone.|
-|**VMs: Implement heath endpoints** on VMs that emit instance health status. <br> **Scale set: Enable automatic repairs** on the scale set by specifying the preferred repair action. <br> Consider setting a time frame during which automatic repairs are paused if state the virtual machine is changed. This strategy can prevent inadvertent or premature repair operations.|Availability is maintained even if an instance is deemed unhealthy. Automatic repairs initiate recovery by replacing the faulty instance.|
-|**Scale set: Enable overprovisioning** on scale sets.|Overprovisioning can reduce deployment times with the cost benefit because the extra VMs aren't billed. |
+|**Scale set: Use Azure Virtual Machine Scale Sets in [Flexible orchestration mode](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)** to deploy VMs. | You'll be able to future proof your application for scaling and take advantage of the high availability guarantees that spreads VMs across fault domains in a region or within an availability zone.|
+|**VMs: Implement heath endpoints** on VMs that emit instance health status. <br> **Scale set: [Enable automatic repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)** on the scale set by specifying the preferred [repair action](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs4#available-repair-actions). <br> Consider setting a time frame during which automatic repairs are paused if state the virtual machine is changed. This strategy can prevent inadvertent or premature repair operations.|Availability is maintained even if an instance is deemed unhealthy. Automatic repairs initiate recovery by replacing the faulty instance.|
+|**Scale set: [Enable overprovisioning](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)** on scale sets.|Overprovisioning can reduce deployment times with the cost benefit because the extra VMs aren't billed. |
 |**Scale set**: Allow Flexible orchestration to **max spread the VM instances** fault domains.| You'll be able to isolate fault domains. During maintenance periods, when one fault domain is updated, VM instances are available in the other fault domains.|
-| **Scale set: Deploy across availability zones** on scale sets.<br> | The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures.|
-
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](/azure/advisor/advisor-overview#what-is-advisor) recommendations.
+|**Scale set: [Deploy across availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones)** on scale sets.<br> Zone balance the instances to make sure they are equally spread across zones.| The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. <br> Keep in mind that there might be uneven number of instances across zones, depending on resource availability. Zone balancing supports availability by making sure if one zone is down, other zones have sufficient instances.|
+|**VMs**: Take advantage of the **[capacity reservations feature](/azure/virtual-machines/capacity-reservation-overview)**. |The capacity is reserved for your use and is available within the scope of applicable Service Level Agreements (SLAs). They can be deleted when no longer needed and billing is consumption based.|
 
 ## Security
 
@@ -245,7 +243,7 @@ To ensure operational excellence, review the [design principles](/azure/well-arc
 | Setup Azure Monitor alert rules | Determine important conditions in your monitoring data to identify and address issues found in your system before customers are impacted. |
 | Automate tasks | Building [automation](/azure/well-architected/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
 | Build a robust testing environment | Ideally, an organization has multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
-| Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
+| Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. |
 | Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
 |  Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
 
