@@ -80,7 +80,7 @@ To ensure effective optimization of workload costs, the development team (or arc
 
 Here's a suggested process for collaborating on rate reduction efforts:
 
-1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider moving preproduction environnments to regions with better priced services and factors like usage patterns, scalability, and workload requirements.  
+1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider moving preproduction environments to regions with better priced services and weigh factors like usage patterns, scalability, and workload requirements.  
 
 1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
 
