@@ -74,7 +74,7 @@ The performance efficiency of resources is tied to the infrastructure they resid
 
 - *Understand regions and availability zones.* Every region corresponds to a distinct geographic location. Availability zones represent individual physical datacenters within a given region.
 
-- *Single-region vs. Multiple-regions deployment models*. A single-region deployment model deploys all resources in a single region. A multiple-regions deployment model deploys resources across multiple regions. A multiple-regions deployment model can improve performance by reducing latency, increasing availability and avoid temporary single region resource capacity constraints. However, it can also increase costs and complexity. Choose the deployment model that best suits your workload needs.
+- *Single-region vs. multiple-region deployment model*. A single-region deployment model deploys all resources in a single region. A multiple-region deployment model deploys resources across multiple regions. A multiple-region deployment can reduce latency to end users and mitigate capacity constraints. However, it can also increase the cost and complexity of the workload. Choose the deployment model that best suits your workload needs.
 
 - *Understand available features.* Different regions have different available features, such as the number of services and availability zones. Understand the features that are available in a region before you select it. Ensure that a region meets your workload performance needs.
 
@@ -180,7 +180,7 @@ Azure has many services that can accommodate any workload. Review the [selection
 - [Recommendations for defining performance targets](performance-targets.md)
 - [Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md)
 - [What are availability zones?](/azure/reliability/availability-zones-overview)
-- [Select Azure regions](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions)
+- [Select Azure regions](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions)
 
 ## Performance Efficiency checklist
 

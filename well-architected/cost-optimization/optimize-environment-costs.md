@@ -50,7 +50,7 @@ Determining environment costs is about knowing the costs of infrastructure, serv
 
 - *Monitor and adjust your spending*: Continuously monitor and analyze spending patterns, value delivery, and risk factors. Regularly review and adjust your spending optimization strategies as the needs of the environment and business evolve.
 
-- *Restrict available regions*: Consider the potential benefit of running preproduction environments in different regions. Azure resources can be cheaper in a different region. You can save money by restricting deployments one or more regions that have more favorable price for your resource and usage. 
+- *Restrict available regions*: Consider the potential benefit of running preproduction environments in different regions where Azure resources might be cheaper. Restrict preproduction deployments to these regions to optimize the cost of these environments.
 
 ### Optimize the production environment
 
