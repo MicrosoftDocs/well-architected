@@ -49,7 +49,7 @@ The cost of a service disruption must be measured against the cost of preventing
 
 - Reducing data volume and tiering data through data lifecycle actions, possibly in conjunction with implementing aggregated data points before a lifecycle event, introduces reliability factors to consider in the workload.
 
-- Using multiple Azure regions to optimize costs and/or provide active-active deployment can increase complexity in management, network design and monitoring.
+- Using different regions to optimize cost can make management, networking, and monitoring more difficult.
 
 ## Cost Optimization tradeoffs with Security
 
