@@ -80,13 +80,11 @@ To ensure effective optimization of workload costs, the development team (or arc
 
 Here's a suggested process for collaborating on rate reduction efforts:
 
-1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like usage patterns, scalability, and workload requirements.
+1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider moving preproduction environnments to regions with better priced services and factors like usage patterns, scalability, and workload requirements.  
 
 1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
 
 1. *Evaluate options*: Assess your options for cost optimization, such as pay-as-you-go versus commitment-based plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the performance tiers in each service and the pricing differences between them.
-
-1. *Selecting Azure regions*: Not all Azure resources are available in all regions and price differences may exist. You can save money by selecting one or more regions that have favorable pricing for your resources. If production environment region is locked, consider the potential benefit of running non-production (Dev, Test, Q/A) environments in different regions to further optimize costs.
 
 #### Determine component permanence
 
