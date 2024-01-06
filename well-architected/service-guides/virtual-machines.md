@@ -41,18 +41,6 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 Read the [**Reliability design principles**](/azure/well-architected/resiliency/principles) to understand the approaches applied for individual components, system flows, and the system as a whole.
 
-##### Old design checklist
-
-> [!div class="checklist"]
->
-> - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
-> - VMs should be deployed in a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets).
-> - Deployed VMs across [Availability Zones](/azure/virtual-machines/windows/quick-create-portal).
-> - Package and publish application artifacts with [VM Applications](/azure/virtual-machines/vm-applications) and [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery).
-> - Install applications on [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
-> - Use [Maintenance Configurations](/azure/virtual-machines/maintenance-configurations) to control and manage updates for VMs.
-
-
 ##### Design checklist
 
 Start your design strategy based on the [**design review checklist for Reliability**](../reliability/checklist.md) and determine its relevance to your business requirements while keeping in mind the SKUs and features of VMs and their dependencies. Extend the strategy to include more approaches as your see fit for your solution.
@@ -60,52 +48,23 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > [!div class="checklist"]
 >
 > - **Evaluate the critical dependencies** of VMs on various components such as disks and networking components. Understanding these relationships is important for determining the critical flows that might impact reliability.
->
 > - **Calculate your composite Service Level Objectives (SLOs) based on Azure Service Level Agreements (SLAs)**. Ensure that your SLO isn't higher than the [Azure SLAs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) to avoid unrealistic expectations and potential issues.
->
 >     Be aware of the complexities introduced by dependencies. For example, some dependencies like virtual network and NICs, don't have their own SLAs. Other dependencies, such as an associated data disk has SLAs that are integrated with VM SLAs. All those variations should be considered as they can impact VM performance and reliability.
->
 > - **Review Azure VM quotas and limits** that might pose design restrictions. VMs have specific limits and quotas, which vary based on the type of VM, the region, and other factors. There might be subscription restrictions, such as number of VMs per subscription, the number of cores per VM, and more. If your subscription is shared with other workloads, your consumption might be reduced.
->
 >      Check limits on [VMs](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [Virtual Machine Scale Sets](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [managed disks](/azure/azure-resource-manager/management/azure-subscription-service-limits#managed-virtual-machine-disks), and other components that you consider as dependencies.
->
 > - **Make VMs and dependencies redundant across zones**. If a VM fails, the workload should continue to function due to resiliency. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
->
 > - **Do failure mode analysis** to minimize points of failure, by focusing on VM interactions with the network and storage components. Opt for design choices such as ephemeral disks to localize the disk, avoiding network hops. Adding a load balancer can enhance self-preservation by distributing network traffic across multiple VMs, improving availability and reliability.
->
 > - **Right-size the VMs and their dependencies**. Understand your VM's expected work to ensure it's not undersized and can handle maximum load. Overprovisioning is a way to provide extra capacity to mitigate failures.
->
 > - **Be ready to scale out** when degradation is observed to mitigate chances of failure. [Azure Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have scaling capabilities that can spin up new instances as required and distribute load across multiple VMs and zone.
->
 > - **Create a comprehensive disaster recovery plan**. Disaster preparedness involves creating a comprehensive plan and deciding on a technology for recovery. Explore how Azure supports health degradation monitoring and auto repair features to support self-healing for VMs. This could involve using Azure Site Recovery, having a passive standby to failover to, or redeploying from Infrastructure as Code (IAC). The chosen method should align with business requirements and organizational operations. For information, see [VM service disruptions](/azure/virtual-machines/overview#service-disruptions).
 >
 >     Dependencies and stateful components, such as attached storage, can complicate recovery. If disks go down, it can impact the functioning of the VMs. Include a clear process for these dependencies in your recovery plans.
->
 > - **Create state isolation**. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, a new OS disk can be spun up with the same data disk, ensuring resilience and fault isolation. See, [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
->
 > - **Monitor health of the VMs and the dependencies**. Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
->
 >     Use monitoring agents to collect logs and metrics to get a comprehensive view of your VMs. Azure Virtual Machine Scale Sets roll up telemetry, allowing you to view health metrics at an individual VM level or as an aggregate.
->
 > - **Conduct chaos experiments**. Azure Chaos Studio offers several fault libraries that target critical VM use cases and help you build resilient systems by intentionally injecting faults and observing the results.
->
 > - **Create a maintenance plan**. that includes regular system patching is a part of routine operations. Include emergencies process that allows for immediate application of patches. You can have custom process to manage the patching and, or partially delegate it to Azure.
->
 >    Azure provides features for individual [VM maintenance](/azure/virtual-machines/maintenance-configurations). Also, you can set up  maintenance windows to minimize disruptions during updates. During platform updates, fault domain considerations are key for resilience. If one instance per zone is needed across two zones, four instances are required in each zone. If spread across two zones, at least six instances are needed.
-
-### Old Recommendations
-Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
-
-|Recommendation|Benefit|
-|------------------------------|-----------|
-| Review SLAs for virtual machines. | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
-| Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a scale set using the Flexible orchestration mode to future-proof your application for scaling and availability. Flexible orchestration offers high availability guarantees (up to 1000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone.|
-| Deploy across availability zones | Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
-| Install applications on Ephemeral OS disks. | Separating data from the OS disk makes it easier to recover from failures, migrate workloads, and can improve performance.
-| Use Maintenance Configuration | Control and manage updates for both Windows and Linux VMs through a centralized view for OS patching. |
-
->[!TIP]
->For more information on Reliability guidance for VMs, see [Reliability in Azure Virtual Machines - Azure Virtual Machines](/azure/reliability/reliability-virtual-machines).
 
 ##### Recommendations
 
@@ -122,24 +81,43 @@ These recommendations aren't intended to be an exhaustive list of all configurat
 |**Scale set: [Deploy across availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones)** on scale sets.<br> Zone balance the instances to make sure they are equally spread across zones.| The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. <br> Keep in mind that there might be uneven number of instances across zones, depending on resource availability. Zone balancing supports availability by making sure if one zone is down, other zones have sufficient instances.|
 |**VMs**: Take advantage of the **[capacity reservations feature](/azure/virtual-machines/capacity-reservation-overview)**. |The capacity is reserved for your use and is available within the scope of applicable Service Level Agreements (SLAs). They can be deleted when no longer needed and billing is consumption based.|
 
+>[!TIP]
+>For more information on Reliability guidance for VMs, see [Reliability in Azure Virtual Machines - Azure Virtual Machines](/azure/reliability/reliability-virtual-machines).
+
 ## Security
 
-This article provides an overview of the core Azure security features that can be used with virtual machines.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-As you make design choices for virtual machines, review the [security principles](/azure/well-architected/security/security-principles) and [Security best practices](/azure/security/fundamentals/iaas) for adding security to the architecture.
+Read the [**Security design principles**](/azure/well-architected/security/security-principles) to understand the approaches for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
 
-### Design checklist
+### Old design checklist
 
 As you make design choices for your virtual machine deployment, review the [design principles](/azure/well-architected/security/security-principles) for security.
 
 > [!div class="checklist"]
 >
-> - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline).
-> - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline).
-> - Manage authentication and access control by ensuring strong passwords, multi-factor authentication, and role-based access control are in place for your VMs.
 > - Protect against malicious actor scenarios: Implement security best practices such as firewalls, anti-virus software, and intrusion detection systems to protect against malware attacks, and DoS attacks
 > - Plan and implement managed updates: Test updates in a non-production environment before deploying them to production, and consider using Azure Update Management to automate the update process.
 > - Classify and configure encryption based on data sensitivity and include using Encryption at Host and SSL/TLS encryption.
+
+##### Design checklist
+
+Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as your see fit for your solution.
+
+> [!div class="checklist"]
+>
+> - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/azure/baselines/virtual-machine-scale-sets-security-baseline).
+> - **Ensure timely and automated security patching and upgrades**. While Flexible orchrestration is recommended, automated OS upgrades are not yet in production. Make sure updates are rolled out and validated with a well-defined process in place.
+> - **Identify the VMs that hold state**. Make sure that data is classified according to organization-provided sensitivity labels and protected through appropriate levels of encryption and other security controls. If you have high security requirements, consider using Azure Confidential Compute to protect data in use.
+> - **Provide segmentation** to the VMs and scale sets by setting network boundaries, access controls, and also place VMs in resource groups that share the same lifecycle.
+> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. Use Microsoft Entra ID for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
+> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Use load balancers and firewalls rules to protect against malicious traffic and data exfilteration attacks.
+> Use [Azure Bastion](/azure/bastion/bastion-overview) provides secure connectivity to the VMs for operational access.
+> Communication to and from the VMs to PaaS services should be over private endpoints.
+> - **Reduce the attack surface** by hardening OS images and removing unused components. Use smaller images and remove binaries that are not required to run the workload. Additionally, tighten VM configuration by removing default accounts, ports, and other settings that aren't needed.
+> - **Protect secrets** such as certificates needed for data in transit authentication. Consider using the [Azure Key Vault virtual machine extension (Windows and Linux)](/azure/virtual-machines/extensions/key-vault-windows) that provides automatic refresh of certificates stored in an Key Vault. When it detects a change in the certificates, the extension retrieves and installs the corresponding certificates.
+> - **Threat detection**. Monitor VMs for threats and misconfigurations. Use Defender for Servers to capture VM and OS changes, and maintain an audit trail of access, new accounts, and changes in permissions.
+> - **Threat prevention**. Protect against malware attacks and malicious actors by implementing security controls such as firewalls, anti-virus software, and intrusion detection systems.
 
 ### Recommendations
 
