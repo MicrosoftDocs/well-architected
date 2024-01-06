@@ -90,16 +90,6 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 Read the [**Security design principles**](/azure/well-architected/security/security-principles) to understand the approaches for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
 
-### Old design checklist
-
-As you make design choices for your virtual machine deployment, review the [design principles](/azure/well-architected/security/security-principles) for security.
-
-> [!div class="checklist"]
->
-> - Protect against malicious actor scenarios: Implement security best practices such as firewalls, anti-virus software, and intrusion detection systems to protect against malware attacks, and DoS attacks
-> - Plan and implement managed updates: Test updates in a non-production environment before deploying them to production, and consider using Azure Update Management to automate the update process.
-> - Classify and configure encryption based on data sensitivity and include using Encryption at Host and SSL/TLS encryption.
-
 ##### Design checklist
 
 Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as your see fit for your solution.
@@ -107,16 +97,26 @@ Start your design strategy based on the [**design review checklist for Security*
 > [!div class="checklist"]
 >
 > - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/azure/baselines/virtual-machine-scale-sets-security-baseline).
+>
 > - **Ensure timely and automated security patching and upgrades**. While Flexible orchrestration is recommended, automated OS upgrades are not yet in production. Make sure updates are rolled out and validated with a well-defined process in place.
 > - **Identify the VMs that hold state**. Make sure that data is classified according to organization-provided sensitivity labels and protected through appropriate levels of encryption and other security controls. If you have high security requirements, consider using Azure Confidential Compute to protect data in use.
+>
 > - **Provide segmentation** to the VMs and scale sets by setting network boundaries, access controls, and also place VMs in resource groups that share the same lifecycle.
+>
 > - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. Use Microsoft Entra ID for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
+>
 > - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Use load balancers and firewalls rules to protect against malicious traffic and data exfilteration attacks.
-> Use [Azure Bastion](/azure/bastion/bastion-overview) provides secure connectivity to the VMs for operational access.
-> Communication to and from the VMs to PaaS services should be over private endpoints.
+>
+>     Use [Azure Bastion](/azure/bastion/bastion-overview) provides secure connectivity to the VMs for operational access.
+>
+>     Communication to and from the VMs to PaaS services should be over private endpoints.
+>
 > - **Reduce the attack surface** by hardening OS images and removing unused components. Use smaller images and remove binaries that are not required to run the workload. Additionally, tighten VM configuration by removing default accounts, ports, and other settings that aren't needed.
+>
 > - **Protect secrets** such as certificates needed for data in transit authentication. Consider using the [Azure Key Vault virtual machine extension (Windows and Linux)](/azure/virtual-machines/extensions/key-vault-windows) that provides automatic refresh of certificates stored in an Key Vault. When it detects a change in the certificates, the extension retrieves and installs the corresponding certificates.
+>
 > - **Threat detection**. Monitor VMs for threats and misconfigurations. Use Defender for Servers to capture VM and OS changes, and maintain an audit trail of access, new accounts, and changes in permissions.
+>
 > - **Threat prevention**. Protect against malware attacks and malicious actors by implementing security controls such as firewalls, anti-virus software, and intrusion detection systems.
 
 ### Recommendations
