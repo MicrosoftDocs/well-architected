@@ -11,6 +11,10 @@ ms.topic: conceptual
 
 Find out how Azure Well-Architected Framework changed recently.
 
+## December 2023
+
+We've added a new workload for workload owners, technical stakeholders, and business stakeholders. It's appropriate for roles that are accountable for designing, building, and maintaining a solution for running applications and desktops in a cloud environment. Use the [Azure Virtual Desktop workloads](./azure-virtual-desktop/overview.md) documentation as your go-to resource for optimizing the way you operate applications and desktops in Azure Virtual Desktop. 
+
 ## November 2023
 
 The Azure Well-Architected Framework completed a significant content refresh across all five pillars. We're breaking from our standard "What's new" format this month because the changes that launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
