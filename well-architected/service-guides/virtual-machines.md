@@ -96,7 +96,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
-> - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/azure/baselines/virtual-machine-scale-sets-security-baseline).
+> - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline).
 >
 > - **Ensure timely and automated security patching and upgrades**. While Flexible orchrestration is recommended, automated OS upgrades are not yet in production. Make sure updates are rolled out and validated with a well-defined process in place.
 > - **Identify the VMs that hold state**. Make sure that data is classified according to organization-provided sensitivity labels and protected through appropriate levels of encryption and other security controls. If you have high sensitivity requirements, consider using double encryption, Azure Confidential Compute to protect data in use, and other high security controls.
@@ -162,19 +162,24 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 > [!div class="checklist"]
 >
 > - **Estimate realistic costs**. Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/#virtual-machines) to estimate the costs of your Azure VMs. Identify the best VM for your workloads using the virtual machines selector. For more information, see [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) pricing.
+>
 > - **Cost guardrails**. Use governance policies to restrict resource types, configurations, and locations. Additionally, use role-based access control to block actions that can lead to overspending.
+>
 > - **Choose the right VM plan and SKU**. Make sure you select [VM sizes](/azure/virtual-machines/sizes) that serve the workload purposes. For interruptable processes, consider [Spot VMs](/azure/virtual-machines/spot-vms), which can lower costs. With Flexible orchestration, you can mix in spot VMs with regular VMs. Each SKU has associated disk options that impacts the overall cost.
+>
 > - **Choose the right capabilities for dependent resources**. Save on backup storage costs for the vault-standard tier using Azure Backup Storage reserved capacity. It offers a discount when you commit to a reservation for either one year or three years.
 >
 >     Archive tier in Azure storage is an offline tier, which is optimized for storing blob data that is rarely accessed. The archive tier offers the lowest storage costs, but higher data retrieval costs and latency compared to the online tiers (hot and cool).
 >
 >    Consider using [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines to recover from site failure while reducing the complexity of availability using zone-redundant services. There can be cost benefits from reduced operational complexity.
+>
 > - **Choose the right billing model**. Evaluate whether commitment-based models for compute, optimize costs for based on the business requirements of workload. Consider these Azure options:
 >     - **[Azure Reservations](/azure/virtual-machines/prepay-reserved-vm-instances)**: Prepay for predictable workloads and save over consumption-based pricing.
 >     - **[Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features)**: If you commit to spend a fixed hourly amount on compute services for one or three years, this plan can reduce costs.
 >     - **Azure Hybrid Benefit**: Save when you migrate your on-premises VMs to Azure.
 >     - **License mobility**: Bring your own licenses to Azure and save on Windows Server and SQL Server.
 > - **Monitor usage**. Continuously monitor usage patterns and detect unused or underutilized VMs. For those instances, shut down VM instances when not in use. Deploy [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to collect monitoring data from the guest operating system. //TODO... add VMInsights? or remove AMA.
+>
 > - **Look for ways to optimize**. For example, use a Premium SSD v2 disk based on your workload patterns, and programmatically adjust its performance to account for either higher or lower demand. For other disk types, size your disks to achieve the desired performance without the need to provision instances over the needed capacity. Account for fluctuating workload patterns, and minimizing unused provisioned capacity.
 
 ##### Recommendations
