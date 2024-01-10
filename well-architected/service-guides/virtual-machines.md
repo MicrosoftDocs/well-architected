@@ -43,34 +43,41 @@ Read the [**Reliability design principles**](/azure/well-architected/resiliency/
 
 ##### Design checklist
 
-Start your design strategy based on the [**design review checklist for Reliability**](../reliability/checklist.md) and determine its relevance to your business requirements while keeping in mind the SKUs and features of VMs and their dependencies. Extend the strategy to include more approaches as your see fit for your solution.
+Start your design strategy based on the [**design review checklist for Reliability**](../reliability/checklist.md) and determine its relevance to your business requirements while keeping in mind the SKUs and features of VMs and their dependencies. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> - **Evaluate the critical dependencies** of VMs on various components such as disks and networking components. Understanding these relationships is important for determining the critical flows that might impact reliability.
-> - **Calculate your composite Service Level Objectives (SLOs) based on Azure Service Level Agreements (SLAs)**. Ensure that your SLO isn't higher than the [Azure SLAs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) to avoid unrealistic expectations and potential issues.
->     Be aware of the complexities introduced by dependencies. For example, some dependencies like virtual network and NICs, don't have their own SLAs. Other dependencies, such as an associated data disk has SLAs that are integrated with VM SLAs. All those variations should be considered as they can impact VM performance and reliability.
 > - **Review Azure VM quotas and limits** that might pose design restrictions. VMs have specific limits and quotas, which vary based on the type of VM, the region, and other factors. There might be subscription restrictions, such as number of VMs per subscription, the number of cores per VM, and more. If your subscription is shared with other workloads, your consumption might be reduced.
->      Check limits on [VMs](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [Virtual Machine Scale Sets](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [managed disks](/azure/azure-resource-manager/management/azure-subscription-service-limits#managed-virtual-machine-disks), and other components that you consider as dependencies.
-> - **Make VMs and dependencies redundant across zones**. If a VM fails, the workload should continue to function due to resiliency. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
-> - **Do failure mode analysis** to minimize points of failure, by focusing on VM interactions with the network and storage components. Opt for design choices such as ephemeral disks to localize the disk, avoiding network hops. Adding a load balancer can enhance self-preservation by distributing network traffic across multiple VMs, improving availability and reliability.
-> - **Right-size the VMs and their dependencies**. Understand your VM's expected work to ensure it's not undersized and can handle maximum load. Overprovisioning is a way to provide extra capacity to mitigate failures.
-> - **Be ready to scale out** when degradation is observed to mitigate chances of failure. [Azure Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have scaling capabilities that can spin up new instances as required and distribute load across multiple VMs and zone.
-> - **Create a comprehensive disaster recovery plan**. Disaster preparedness involves creating a comprehensive plan and deciding on a technology for recovery. Explore how Azure supports health degradation monitoring and auto repair features to support self-healing for VMs. This could involve using Azure Site Recovery, having a passive standby to failover to, or redeploying from Infrastructure as Code (IAC). The chosen method should align with business requirements and organizational operations. For information, see [VM service disruptions](/azure/virtual-machines/overview#service-disruptions).
+>      Check limits on [VMs](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [Virtual Machine Scale Sets](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [managed disks](/azure/azure-resource-manager/management/azure-subscription-service-limits#managed-virtual-machine-disks), and other components of the workload.
+>
+> - **Do failure mode analysis** to minimize points of failure, by focusing on VM interactions with the network and storage components. Opt for design choices such as ephemeral OS disks to localize disk access, avoiding network hops. Adding a load balancer can enhance self-preservation by distributing network traffic across multiple VMs, improving availability and reliability.
+>
+> - **Calculate your composite Service Level Objectives (SLOs) based on Azure Service Level Agreements (SLAs)**. Ensure that your SLO isn't higher than the [Azure SLAs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) to avoid unrealistic expectations and potential issues.
+>
+>     Be aware of the _complexities introduced by dependencies_. For example, some dependencies like virtual network and NICs, don't have their own SLAs. Other dependencies, such as an associated data disk has SLAs that are integrated with VM SLAs. All those variations should be considered as they can impact VM performance and reliability.
+>
+>     _Factor in the critical dependencies_ of VMs on various components such as disks and networking components. Understanding these relationships is important for determining the critical flows that might impact reliability.
+>     _Create state isolation_. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, a new OS disk can be spun up with the same data disk, ensuring resilience and fault isolation. See, [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
+>
+> - **Make VMs and dependencies redundant across zones**. If a VM fails, the _workload should continue to function due to resiliency_. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
+>
+> - **Be ready to scale out** to prevent service level degradation and avoid failures. [Azure Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have scaling capabilities that can spin up new instances as required and distribute load across multiple VMs and availability zone.
+>
+> - **Explore the auto recovery options**. Azure supports health degradation monitoring and auto repair features to support self-healing for VMs. This could involve using Azure Site Recovery, having a passive standby to failover to, or redeploying from Infrastructure as Code (IAC). The chosen method should align with business requirements and organizational operations. For information, see [VM service disruptions](/azure/virtual-machines/overview#service-disruptions).
+>
+> - **Right-size the VMs and their dependencies**. Understand your VM's expected work to ensure it's not undersized and can handle maximum load. Have extra capacity to mitigate failures.
+>
+> - **Create a comprehensive disaster recovery plan**. Disaster preparedness involves creating a comprehensive plan and deciding on a technology for recovery.
 >
 >     Dependencies and stateful components, such as attached storage, can complicate recovery. If disks go down, it can impact the functioning of the VMs. Include a clear process for these dependencies in your recovery plans.
-> - **Create state isolation**. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, a new OS disk can be spun up with the same data disk, ensuring resilience and fault isolation. See, [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
-> - **Monitor health of the VMs and the dependencies**. Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
->     Use monitoring agents to collect logs and metrics to get a comprehensive view of your VMs. Azure Virtual Machine Scale Sets roll up telemetry, allowing you to view health metrics at an individual VM level or as an aggregate.
-> - **Conduct chaos experiments**. Azure Chaos Studio offers several fault libraries that target critical VM use cases and help you build resilient systems by intentionally injecting faults and observing the results.
-> - **Create a maintenance plan**. that includes regular system patching is a part of routine operations. Include emergencies process that allows for immediate application of patches. You can have custom process to manage the patching and, or partially delegate it to Azure.
->    Azure provides features for individual [VM maintenance](/azure/virtual-machines/maintenance-configurations). Also, you can set up  maintenance windows to minimize disruptions during updates. During platform updates, fault domain considerations are key for resilience. If one instance per zone is needed across two zones, four instances are required in each zone. If spread across two zones, at least six instances are needed.
+>
+> - **Run operations with rigor**. Reliability design choices must be supported by effective operations based on the principles of _monitoring, resiliency testing in production, automated application VM patches and upgrades, and consistency of deployments_ with configuration as code. For more information, see [Operational Excellence](#operational-excellence).
 
 ##### Recommendations
 
 Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
 
-These recommendations aren't intended to be an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
+These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -92,20 +99,23 @@ Read the [**Security design principles**](/azure/well-architected/security/secur
 
 ##### Design checklist
 
-Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as your see fit for your solution.
+Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
 > - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline).
 >
-> - **Ensure timely and automated security patching and upgrades**. While Flexible orchrestration is recommended, automated OS upgrades are not yet in production. Make sure updates are rolled out and validated with a well-defined process in place.
-> - **Identify the VMs that hold state**. Make sure that data is classified according to organization-provided sensitivity labels and protected through appropriate levels of encryption and other security controls. If you have high sensitivity requirements, consider using double encryption, Azure Confidential Compute to protect data in use, and other high security controls.
+> - **Ensure timely and automated security patching and upgrades**. Make sure updates are rolled out and validated with a well-defined process in place.
+>
+> - **Identify the VMs that hold state**. Make sure that data is classified according to organization-provided sensitivity labels and protected through appropriate levels of encryption (at rest and in transit) and other security controls. If you have high sensitivity requirements, consider using double encryption, Azure Confidential Compute to protect data in use, and other high security controls.
 >
 > - **Provide segmentation** to the VMs and scale sets by setting network boundaries, access controls, and also place VMs in resource groups that share the same lifecycle.
 >
 > - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. Use Microsoft Entra ID for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
 >
-> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Use load balancers and firewalls rules to protect against malicious traffic and data exfilteration attacks.
+> Restrict resource access based on conditions using Azure Entra ID Conditional Access. Define the conditional policies based on duration and the minimum set of permissions.
+>
+> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks and use load balancers and firewalls rules to protect against malicious traffic and data exfiltration attacks.
 >
 >     Use [Azure Bastion](/azure/bastion/bastion-overview) provides secure connectivity to the VMs for operational access.
 >
@@ -119,9 +129,11 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Threat prevention**. Protect against malware attacks and malicious actors by implementing security controls such as firewalls, anti-virus software, and intrusion detection systems.
 
-### Recommendations
+##### Recommendations
 
-Explore the following table of recommendations to optimize your virtual machine configuration for security.
+Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
+
+These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -137,7 +149,7 @@ Azure Advisor helps you ensure and improve security. Review the [security recomm
 
 ### Policy definitions
 
-- `Deploy default Microsoft IaaSAntimalware extension for Windows Server` -	This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM isn't configured with the antimalware extension.
+- `Deploy default Microsoft IaaSAntimalware extension for Windows Server` - This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM isn't configured with the antimalware extension.
 - `Microsoft IaaSAntimalware extension should be deployed on Windows servers` - This policy audits any Windows server VM without Microsoft IaaSAntimalware extension deployed.
 - `Only approved VM extensions should be installed` - This policy governs the virtual machine extensions that aren't approved.
 - `Managed disks should be double encrypted with both platform-managed and customer-managed keys` - High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption. Learn more at [https://aka.ms/disks-doubleEncryption](https://aka.ms/disks-doubleEncryption).
@@ -174,17 +186,21 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >    Consider using [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines to recover from site failure while reducing the complexity of availability using zone-redundant services. There can be cost benefits from reduced operational complexity.
 >
 > - **Choose the right billing model**. Evaluate whether commitment-based models for compute, optimize costs for based on the business requirements of workload. Consider these Azure options:
->     - **[Azure Reservations](/azure/virtual-machines/prepay-reserved-vm-instances)**: Prepay for predictable workloads and save over consumption-based pricing.
->     - **[Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features)**: If you commit to spend a fixed hourly amount on compute services for one or three years, this plan can reduce costs.
->     - **Azure Hybrid Benefit**: Save when you migrate your on-premises VMs to Azure.
->     - **License mobility**: Bring your own licenses to Azure and save on Windows Server and SQL Server.
-> - **Monitor usage**. Continuously monitor usage patterns and detect unused or underutilized VMs. For those instances, shut down VM instances when not in use. Deploy [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to collect monitoring data from the guest operating system. //TODO... add VMInsights? or remove AMA.
+>   - **[Azure Reservations](/azure/virtual-machines/prepay-reserved-vm-instances)**: Prepay for predictable workloads and save over consumption-based pricing.
+>   - **[Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features)**: If you commit to spend a fixed hourly amount on compute services for one or three years, this plan can reduce costs.
+>   - **Azure Hybrid Benefit**: Save when you migrate your on-premises VMs to Azure.
+>   - **License mobility**: Bring your own licenses to Azure and save on Windows Server and SQL Server.
+> - **Monitor usage**. Continuously monitor usage patterns and detect unused or underutilized VMs. For those instances, shut down VM instances when not in use. Monitoring is a principle approach of Operational Excellence. For more information, see the recommendations given in [Operational Excellence](#operational-excellence).
 >
-> - **Look for ways to optimize**. For example, use a Premium SSD v2 disk based on your workload patterns, and programmatically adjust its performance to account for either higher or lower demand. For other disk types, size your disks to achieve the desired performance without the need to provision instances over the needed capacity. Account for fluctuating workload patterns, and minimizing unused provisioned capacity.
+> - **Look for ways to optimize**. For example, shut down VM instances which aren't in use, use Spot VMs when appropriate, programmatically adjust Premium SSD v2 disk performance  to account for either higher or lower demand.
+>
+> - **Optimize scaling cost**. Choose the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out). Optimize autoscaling policies by adjusting thresholds and using the right cooldown period. Consider offloading demand by distributing demand to other resources, or you can reduce demand by implementing priority queues, gateway offloading, buffering, and rate limiting.
 
 ##### Recommendations
 
-Explore the following table of recommendations to optimize your Virtual Machine configuration for service cost:
+Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
+
+These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -220,17 +236,29 @@ Start your design strategy based on the [**design review checklist for Operation
 >
 > - **Monitor the VM instances**. Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Common metrics include CPU usage, number of requests, I/O latency, and [others](/azure/azure-monitor/vm/vminsights-log-query). Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to get notified about issues and for detecting configuration changes in your environment.
 >
-> - **Automate processes for bootstrapping, running scripts, and configuring VMs**. You can use extensions or automate through custom scripts. Here are some recommended options:
->    - [Azure Key Vault virtual machine (VM) extension](/azure/virtual-machines/extensions/key-vault-windows) that provide automatic refresh of certificates stored in an Azure Key Vault.
->    - [Azure Custom Script Extension](/azure/virtual-machines/extensions/custom-script-linux) (Windows and Linux) that downloads and runs scripts on Azure virtual machines (VMs). Use this extension for post-deployment configuration, software installation, or any other configuration or management task.
->    - Use cloud-init to setup the startup environment for Linux-based VMs.
+> - **Monitor health of the VMs and the dependencies**. Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
+>     Use monitoring agents to collect logs and metrics to get a comprehensive view of your VMs. Azure Virtual Machine Scale Sets roll up telemetry, allowing you to view health metrics at an individual VM level or as an aggregate.
+>     Deploy the [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to your VMs to collect monitoring data from the guest OS, with OS-specific [Data Collection Rules (DCR)](/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent). [VM insights](/azure/azure-monitor/vm/vminsights-overview) offers an efficient way to monitor VMs and scale sets. It gathers data from Log Analytics workspaces and provides predefined workbooks for performance data trending. This data can be viewed per VM or aggregated across multiple VMs via Azure Monitor.
 >
-> - **Have processes for installing automatic updates**. Consider using [Automatic VM Guest patching](/azure/virtual-machines/automatic-vm-guest-patching) to keep your OS patched.
+- **Conduct chaos experiments**. Azure Chaos Studio offers several fault libraries that target critical VM use cases and help you build resilient systems by intentionally injecting faults and observing the results.
+>
+> - **Create a maintenance plan**. that includes regular system patching is a part of routine operations. Include emergencies process that allows for immediate application of patches. You can have custom process to manage the patching and, or partially delegate it to Azure.
+>    Azure provides features for individual [VM maintenance](/azure/virtual-machines/maintenance-configurations). Also, you can set up  maintenance windows to minimize disruptions during updates. During platform updates, fault domain considerations are key for resilience. If one instance per zone is needed across two zones, four instances are required in each zone. If spread across two zones, at least six instances are needed.
+>
+> - **Automate processes for bootstrapping, running scripts, and configuring VMs**. You can use extensions or automate through custom scripts. Here are some recommended options:
+>   - [Azure Key Vault virtual machine (VM) extension](/azure/virtual-machines/extensions/key-vault-windows) that provide automatic refresh of certificates stored in an Azure Key Vault.
+>   - [Azure Custom Script Extension](/azure/virtual-machines/extensions/custom-script-linux) (Windows and Linux) that downloads and runs scripts on Azure virtual machines (VMs). Use this extension for post-deployment configuration, software installation, or any other configuration or management task.
+>   - Use cloud-init to setup the startup environment for Linux-based VMs.
+>
+> - **Have processes for installing automatic updates**. Consider using [Automatic VM Guest patching](/azure/virtual-machines/automatic-vm-guest-patching) for a timely rollout of critical and security patches. Use [Update Management in Azure Automation](/azure/automation/update-management/overview) to manage OS updates for your Windows and Linux virtual machines in Azure.
 >
 > - **Build a test environment** that closely matches your production environment to test updates and changes before deploying to production. Have processes in place to test the security updates, performance baselines, and reliability faults. Take advantage of Azure Chaos Studio fault libraries to inject and simulate error conditions. For more information, see [Azure Chaos Studio fault and action library](/azure/chaos-studio/chaos-studio-fault-library).
 
+##### Recommendations
 
-### Recommendations
+Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
+
+These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -266,7 +294,11 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 > - **Define performance targets**. Identify VM metrics to track and measure against performance indicators as response time, CPU utilization, and memory utilization, as well as workload metrics such as transactions per second, concurrent users, and availability and health.
 >
-> - **Factor in the performance profile VMs, scale sets, and disk configuration in your capacity planning**. Each SKU has a different profile of memory and CPU and behaves differently depending on the type of workload. Conduct pilots and proof of concept to understand performance behavior under the specific workload.
+> - **Factor in the performance profile of VMs, scale sets, and disk configuration in your capacity planning**. Each SKU has a different profile of memory and CPU and behaves differently depending on the type of workload. Conduct pilots and proof of concepts to understand performance behavior under the specific workload.
+>
+> - **Proximity placement groups**. Use [proximity placement groups](/azure/virtual-machine-scale-sets/proximity-placement-groups) in workloads where low latency is a requirement to ensure VMs are physically located close to each other.
+>
+> - **VM performance tuning**. Take advantage of VMs performance optimization and enhancing features as required by the workload. For example, locally attached NVMe for high performance use cases, accelerated networking, and Premium SSD v2 for  better performance and scalability.
 >
 > - **Take into account the dependent services**. Workload dependencies that interact with the VMs can impact performance. For example, caching, network traffic, and CDN. Also consider  geographical distribution (zones, regions), which can add latency.
 >
@@ -276,7 +308,7 @@ Start your design strategy based on the [**design review checklist for Performan
 
 Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
 
-These recommendations aren't intended to be an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
+These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 Explore the following table of recommendations to optimize your virtual machine deployment configuration for performance and efficiency.
 
@@ -303,15 +335,23 @@ Azure Advisor helps you ensure and improve performance. Review the [recommendati
 - [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
 ## Additional resources
+
 Here are other resources to help you query for unhealthy instances.
+
 ### Cost analysis
+
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis). There are several options for grouping resources by billing unit.
+
 ### Log Analytics
+
 Collect logs and metrics from the Azure resources and Application Insights with [Azure Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to gain insights into the performance and health of your VMs. You can also use Log Analytics to query and analyze the data collected by Azure Monitor Logs.
+
 ### Application Insights
+
 Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension alongside Azure Monitor to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
 
 ## Next steps
+
 Use the recommendations as you provision virtual machines for your solution.
 
 - Review the Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/).
