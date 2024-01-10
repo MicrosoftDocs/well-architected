@@ -252,34 +252,38 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
-## Performance efficiency
+## Performance Efficiency
 
-Performance efficiency is matching the resources that are available to an application with the demand that it's receiving. Performance efficiency includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing your application code for peak performance.
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/training/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
+Read the [Performance Efficiency design principles](../performance-efficiency/principles.md) to understand the approaches for achieving those capacity goals towards expected usage.
 
 ### Design checklist
 
+Start your design strategy based on the [**design review checklist for Performance Efficiency**](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure VMs and scale sets.
+
 > [!div class="checklist"]
 >
-> - Reduce latency by deploying VMs closer together in proximity placement groups.
-> - Use premium SSD to improve the performance of your virtual machines, especially for I/O-intensive workloads.
-> - Utilize Premium SSD v2 effectively as it is a newer version of premium SSD that offers even better performance and scalability.
-> - Optimize with managed disks to improve scalability, availability, and performance, and simplify disk management tasks such as backup and restore.
-> - Consider locally attached NVMe or similar devices for high-performance use cases such as big data analytics, machine learning, and high-performance computing.
-> - Enable Accelerated Networking to improve network performance and latency.
-> - Right size your VMs by choosing the appropriate VM size based on your workload requirements and monitor resource utilization to ensure optimal performance and cost.
-> - Autoscale your Flexible scale sets to automatically increase or decrease the number of VM instances that run your application based on demand or a set schedule.
+> - **Define performance targets**. Identify VM metrics to track and measure against performance indicators as response time, CPU utilization, and memory utilization, as well as workload metrics such as transactions per second, concurrent users, and availability and health.
+>
+> - **Factor in the performance profile VMs, scale sets, and disk configuration in your capacity planning**. Each SKU has a different profile of memory and CPU and behaves differently depending on the type of workload. Conduct pilots and proof of concept to understand performance behavior under the specific workload.
+>
+> - **Take into account the dependent services**. Workload dependencies that interact with the VMs can impact performance. For example, caching, network traffic, and CDN. Also consider  geographical distribution (zones, regions), which can add latency.
+>
+> - **Collect performance data**. Follow the Operational Excellence best practices for monitoring and deploy the appropriate extensions that give you view into performance metrics.
 
-### Recommendations
+##### Recommendations
+
+Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
+
+These recommendations aren't intended to be an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
 
 Explore the following table of recommendations to optimize your virtual machine deployment configuration for performance and efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
-| Reduce latency | Consider deploying VMs in [Creating and using proximity placement groups using PowerShell](/azure/virtual-machines/co-location). |
-| Convert disks from standard HDD to premium SSD | Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. |
-|Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload pattern, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
+| Consider deploying VMs in [Creating and using proximity placement groups](/azure/virtual-machines/co-location). | Proximity placement groups reduce the physical distance between Azure compute resources, which can improve performance and reduce network latency between stand-alone VMs, VMs in multiple availability sets, or multiple scale sets. |
+| Use Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) for production VMs. <br> Adjust the performance of disks with Premium SSD v2. |Premium SSDs deliver high-performance and low-latency disk support VMs with IO-intensive workloads. <br> Premium SSD v2 doesn't require disk resizing enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity.|
 | Optimize with managed disks |  Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need.|
 | Use locally attached NVMe devices | When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases requiring high IOPS and low latency. |
 | Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
