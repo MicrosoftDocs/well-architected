@@ -65,7 +65,6 @@ While not directly related to the reliability of Log Analytics workspaces themse
 
 Azure offers no Azure Advisor recommendations related to the reliability of Log Analytics workspaces.
 
-| Monitor the health of your Log Analytics workspaces. | Use [Log Analytics workspace insights](/azure/azure-monitor/logs/workspace-design) to track failed queries and create [health status alert](/azure/azure-monitor/logs/log-analytics-workspace-health#view-log-analytics-workspace-health-and-set-up-health-status-alerts) to proactively notify you if a workspace becomes unavailable because of a datacenter or regional failure. |
 
 ## Security
 
@@ -77,9 +76,10 @@ Azure offers no Azure Advisor recommendations related to the reliability of Log 
 > - Determine whether to combine your operational data and your security data in the same Log Analytics workspace.
 > - Configure access for different types of data in the workspace required for different roles in your organization.
 > - Consider using Azure private link to remove access to your workspace from public networks.
-> - Use customer managed keys if you require your own encryption key to protect data and saved queries in your workspaces.
 > - Export audit data for long term retention or immutability.
+> - Use customer managed keys if you require your own encryption key to protect data and saved queries in your workspaces.
 > - Configure log query auditing to track which users are running queries.
+> - Implement double encryption for the workspace.
 > - Determine a strategy to filter or obfuscate sensitive data in your workspace.
 > - Purge sensitive data that was accidentally collected.
 > - Use Entra ID instead of API key for Query API access. 
@@ -95,6 +95,7 @@ Azure offers no Azure Advisor recommendations related to the reliability of Log 
 | Use customer managed keys if you require your own encryption key to protect data and saved queries in your workspaces. | Azure Monitor ensures that all data and saved queries are encrypted at rest using Microsoft-managed keys (MMK). If you require your own encryption key and collect enough data for a [dedicated cluster](/azure/azure-monitor/logs/logs-dedicated-clusters), use [customer-managed key](/azure/azure-monitor/logs/customer-managed-keys) for greater flexibility and key lifecycle control. If you use Microsoft Sentinel, then make sure that you're familiar with the considerations at [Set up Microsoft Sentinel customer-managed key](/azure/sentinel/customer-managed-keys#considerations).  |
 | Export audit data for long term retention or immutability. | You may have collected audit data in your workspace that's subject to regulations requiring its long term retention. Data in a Log Analytics workspace can’t be altered, but it can be [purged](/azure/azure-monitor/logs/personal-data-mgmt#exporting-and-deleting-personal-data). Use [data export](/azure/azure-monitor/logs/logs-data-export) to send data to an Azure storage account with [immutability policies](/azure/storage/blobs/immutable-policy-configure-version-scope) to protect against data tampering. Not every type of logs has the same relevance for compliance, auditing, or security, so determine the specific data types that should be exported. |
 | Configure log query auditing to track which users are running queries. | [Log query auditing](/azure/azure-monitor/logs/query-audit) records the details for each query that's run in a workspace. Treat this audit data as security data and secure the [LAQueryLogs](/azure/azure-monitor/reference/tables/laquerylogs) table appropriately. Configure the audit logs for each workspace to be sent to the local workspace, or consolidate in a dedicated security workspace if you separate your operational and security data. Use [Log Analytics workspace insights](/azure/azure-monitor/logs/log-analytics-workspace-insights-overview) to periodically review this data and consider creating log query alert rules to proactively notify you if unauthorized users are attempting to run queries. |
+| Implement double encryption for the workspace. | [Double encryption](/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption) provides an extra layer of encryption to protect against a scenario where one of the encryption algorithms or keys may be compromised. This feature requires a [dedicated cluster](/azure/azure-monitor/logs/logs-dedicated-clusters) which has a daily minimum ingestion limit.  |
 | Determine a strategy to filter or obfuscate sensitive data in your workspace. | You may be collecting data that includes [sensitive information](/azure/azure-monitor/logs/personal-data-mgmt). Filter records that shouldn't be collected using the configuration for the particular data source. Use a [transformation](/azure/azure-monitor/essentials/data-collection-transformations) if only particular columns in the data should be removed or obfuscated.<br><br>If you have standards that require the original data to be unmodified, then you can use the ['h' literal](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) in KQL queries to obfuscate query results displayed in workbooks. |
 | Purge sensitive data that was accidentally collected. | Check periodically for private data that may have been accidentally collected in your workspace and use [data purge](/azure/azure-monitor/logs/personal-data-mgmt#exporting-and-deleting-personal-data) to remove it. |
 | Use Entra ID instead of API key for Query API access. | [API key-based access](/azure/azure-monitor/logs/api/overview#api-key-authentication-for-sample-data) to the Query APIs does not leave a per-client audit trail. Use sufficiently scoped [Entra ID-based access](/azure/azure-monitor/logs/api/overview#microsoft-entra-authentication-for-workspace-data) so that programmatic query access can be properly audited. |
@@ -184,6 +185,7 @@ Use the following information to ensure that your Log Analytics workspaces and l
 
 > [!div class="checklist"]
 > - Configure log query auditing and use Log Analytics workspace insights to identify slow and inefficient queries.
+> - Understand service limits for Log Analytics workspaces.
 
 ### Configuration recommendations
 
