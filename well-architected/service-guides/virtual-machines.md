@@ -113,7 +113,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. Use Microsoft Entra ID for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
 >
-> Restrict resource access based on conditions using Azure Entra ID Conditional Access. Define the conditional policies based on duration and the minimum set of permissions.
+>     Restrict resource access based on conditions using Azure Entra ID Conditional Access. Define the conditional policies based on duration and the minimum set of permissions.
 >
 > - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks and use load balancers and firewalls rules to protect against malicious traffic and data exfiltration attacks.
 >
