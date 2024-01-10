@@ -75,7 +75,7 @@ These recommendations aren't intended to be an exhaustive list of all configurat
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |**Scale set: Use Azure Virtual Machine Scale Sets in [Flexible orchestration mode](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)** to deploy VMs. | You'll be able to future proof your application for scaling and take advantage of the high availability guarantees that spreads VMs across fault domains in a region or within an availability zone.|
-|**VMs: Implement heath endpoints** on VMs that emit instance health status. <br> **Scale set: [Enable automatic repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)** on the scale set by specifying the preferred [repair action](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs4#available-repair-actions). <br> Consider setting a time frame during which automatic repairs are paused if state the virtual machine is changed. This strategy can prevent inadvertent or premature repair operations.|Availability is maintained even if an instance is deemed unhealthy. Automatic repairs initiate recovery by replacing the faulty instance.|
+|**VMs: Implement heath endpoints** on VMs that emit instance health status. <br> **Scale set: [Enable automatic repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)** on the scale set by specifying the preferred _repair action_. <br> Consider setting a time frame during which automatic repairs are paused if state the virtual machine is changed. This strategy can prevent inadvertent or premature repair operations.|Availability is maintained even if an instance is deemed unhealthy. Automatic repairs initiate recovery by replacing the faulty instance.|
 |**Scale set: [Enable overprovisioning](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)** on scale sets.|Overprovisioning can reduce deployment times with the cost benefit because the extra VMs aren't billed. |
 |**Scale set**: Allow Flexible orchestration to **max spread the VM instances** fault domains.| You'll be able to isolate fault domains. During maintenance periods, when one fault domain is updated, VM instances are available in the other fault domains.|
 |**Scale set: [Deploy across availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones)** on scale sets.<br> Zone balance the instances to make sure they are equally spread across zones.| The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. <br> Keep in mind that there might be uneven number of instances across zones, depending on resource availability. Zone balancing supports availability by making sure if one zone is down, other zones have sufficient instances.|
@@ -151,7 +151,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Cost optimization
 
-Cost Optimization focuses on detecting spend patterns, prioritize investments in critical areas, and optimize in others to meet the organization's budget while meeting business requirements.  
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
 Read the [Cost Optimization design principles](../cost-optimization/principles.md) to understand the approaches for achieving those goals and understand the tradeoffs necessary in technical design choices related to Azure Virtual Machines and the environment them run in.
 
@@ -206,22 +206,29 @@ Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
-## Operational excellence
+## Operational Excellence
 
-To ensure operational excellence, review the [design principles](/azure/well-architected/devops/principles).
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-### Design checklist
+Read the [Operational Excellence design principles](../operational-excellence/principles.md) to understand the approaches for achieving those goals towards the operational requirements of the workload.
+
+##### Design checklist
+
+Start your design strategy based on the [**design review checklist for Operational Excellence**](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure VMs and scale sets.
 
 > [!div class="checklist"]
 >
-> - [Monitor](/azure/virtual-machines/monitor-vm) and measure health.
-> - Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) for detecting configuration changes in your environment.
-    > - Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
-> - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
-> - Build a robust testing environment by having a separate testing environment that closely mirrors your production environment and test updates and changes before deploying to production.
-> - Manage your quota with monitoring resource usage and adjust your quota as needed to ensure that you have enough resources to meet your needs
-> - Optimize with managed disks for better scalability, availability, performance.
-> - Consider using [Automatic VM Guest patching](/azure/virtual-machines/automatic-vm-guest-patching) to keep your OS patched.
+> - **Monitor the VM instances**. Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Common metrics include CPU usage, number of requests, I/O latency, and [others](/azure/azure-monitor/vm/vminsights-log-query). Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to get notified about issues and for detecting configuration changes in your environment.
+>
+> - **Automate processes for bootstrapping, running scripts, and configuring VMs**. You can use extensions or automate through custom scripts. Here are some recommended options:
+>    - [Azure Key Vault virtual machine (VM) extension](/azure/virtual-machines/extensions/key-vault-windows) that provide automatic refresh of certificates stored in an Azure Key Vault.
+>    - [Azure Custom Script Extension](/azure/virtual-machines/extensions/custom-script-linux) (Windows and Linux) that downloads and runs scripts on Azure virtual machines (VMs). Use this extension for post-deployment configuration, software installation, or any other configuration or management task.
+>    - Use cloud-init to setup the startup environment for Linux-based VMs.
+>
+> - **Have processes for installing automatic updates**. Consider using [Automatic VM Guest patching](/azure/virtual-machines/automatic-vm-guest-patching) to keep your OS patched.
+>
+> - **Build a test environment** that closely matches your production environment to test updates and changes before deploying to production. Have processes in place to test the security updates, performance baselines, and reliability faults. Take advantage of Azure Chaos Studio fault libraries to inject and simulate error conditions. For more information, see [Azure Chaos Studio fault and action library](/azure/chaos-studio/chaos-studio-fault-library).
+
 
 ### Recommendations
 
