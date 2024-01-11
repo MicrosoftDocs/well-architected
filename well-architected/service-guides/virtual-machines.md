@@ -16,9 +16,10 @@ categories:
 
 Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md). Each section presents architectural concerns that are localized to the technology scope. Each section also presents the recommendations on technology capabilities that can help meet the design areas.  
+This article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md). Each section presents architectural areas of concern along with design strategies localized to the technology scope. Also included are recommendations on technology capabilities that can help materialize those strategies.  
 
-**Technology scope**
+
+##### Technology scope
 
 This review focuses on the interrelated decisions for these Azure resources.  
 
@@ -105,27 +106,27 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline).
 >
->     As part of your baseline technology choices, evaluate VM SKUs that have security features.
+>     As part of your baseline technology choices, _evaluate VM SKUs that have security features_.
 >
-> - **Ensure timely and automated security patching and upgrades**. Make sure updates are rolled out and validated with a well-defined process in place. Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates and maintain security compliance with critical updates.
+> - **Ensure timely and automated security patching and upgrades**. Make sure updates are automatically rolled out and validated with a well-defined process in place. Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates and maintain security compliance with critical updates.
 >
-> - **Identify the VMs that hold state**. Make sure that data is classified according to organization-provided sensitivity labels and protected through appropriate levels of encryption (at rest and in transit) and other security controls. If you have high sensitivity requirements, consider using double encryption, Azure Confidential Compute to protect data in use, and other high security controls.
+> - **Identify the VMs that hold state**. Make sure that _data is classified_ according to organization-provided sensitivity labels and protected through _appropriate levels of encryption_ (at rest and in transit) and other security controls. If you have high sensitivity requirements, consider using double encryption, Azure Confidential Compute to protect data in use, and other high security controls.
 >
 > - **Provide segmentation** to the VMs and scale sets by setting network boundaries, access controls, and also place VMs in resource groups that share the same lifecycle.
 >
-> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. Use Microsoft Entra ID for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
+> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. _Use Microsoft Entra ID_ for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
 >
->     Restrict resource access based on conditions using Azure Entra ID Conditional Access. Define the conditional policies based on duration and the minimum set of permissions.
+>     Restrict resource access based on conditions using Azure Entra ID Conditional Access. _Define the conditional policies_ based on duration and the minimum set of permissions.
 >
-> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks and use load balancers and firewalls rules to protect against malicious traffic and data exfiltration attacks.
+> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks and _use load balancers and firewalls rules_ to protect against malicious traffic and data exfiltration attacks.
 >
->     Use [Azure Bastion](/azure/bastion/bastion-overview) provides secure connectivity to the VMs for operational access.
+>     Use [Azure Bastion](/azure/bastion/bastion-overview) provides _secure connectivity to the VMs for operational access_.
 >
->     Communication to and from the VMs to PaaS services should be over private endpoints.
+>     Communication to and from the VMs to PaaS services should be over _private endpoints_.
 >
-> - **Reduce the attack surface** by hardening OS images and removing unused components. Use smaller images and remove binaries that are not required to run the workload. Additionally, tighten VM configuration by removing default accounts, ports, and other settings that aren't needed.
+> - **Reduce the attack surface** by hardening OS images and removing unused components. _Use smaller images_ and remove binaries that are not required to run the workload. Additionally, _tighten VM configurations_ by removing default accounts, ports, and other settings that aren't needed.
 >
-> - **Protect secrets** such as certificates needed for data in transit authentication. Consider using the Azure Key Vault extension ([Windows](/azure/virtual-machines/extensions/key-vault-windows), [Linux](/azure/virtual-machines/extensions/key-vault-linux)) that provides automatic refresh of certificates stored in an Key Vault. When it detects a change in the certificates, the extension retrieves and installs the corresponding certificates.
+> - **Protect secrets** such as certificates needed for data in transit authentication. Consider using the Azure Key Vault extension ([Windows](/azure/virtual-machines/extensions/key-vault-windows), [Linux](/azure/virtual-machines/extensions/key-vault-linux)) that provides _automatic refresh of certificates_ stored in an Key Vault. When it detects a change in the certificates, the extension retrieves and installs the corresponding certificates.
 >
 > - **Threat detection**. Monitor VMs for threats and misconfigurations. Use [Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) to capture VM and OS changes, and maintain an audit trail of access, new accounts, and changes in permissions.
 >
@@ -149,19 +150,16 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 Azure Advisor helps you ensure and improve security. Review the [security recommendations](/azure/defender-for-cloud/recommendations-reference#compute-recommendations).
 
-### Policy definitions
+##### Policy definitions
 
-- `Deploy default Microsoft IaaSAntimalware extension for Windows Server` - This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM isn't configured with the antimalware extension.
-- `Microsoft IaaSAntimalware extension should be deployed on Windows servers` - This policy audits any Windows server VM without Microsoft IaaSAntimalware extension deployed.
-- `Only approved VM extensions should be installed` - This policy governs the virtual machine extensions that aren't approved.
-- `Managed disks should be double encrypted with both platform-managed and customer-managed keys` - High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption. Learn more at [https://aka.ms/disks-doubleEncryption](https://aka.ms/disks-doubleEncryption).
-- `Managed disks should use a specific set of disk encryption sets for the customer-managed key encryption` - Requiring a specific set of disk encryption sets to be used with managed disks give you control over the keys used for encryption at rest. You're able to select the allowed encrypted sets and all others are rejected when attached to a disk. Learn more at [https://aka.ms/disks-cmk](https://aka.ms/disks-cmk).
-- `Microsoft Antimalware for Azure should be configured to automatically update protection signatures` - This policy audits any Windows virtual machine not configured with automatic update of Microsoft Antimalware protection signatures.
-- `OS and data disks should be encrypted with a customer-managed key` - Use customer-managed keys to manage the encryption at rest of the contents of your managed disks. By default, the data is encrypted at rest with platform-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at [https://aka.ms/disks-cmk](https://aka.ms/disks-cmk).
-- `Virtual machines and virtual machine scale sets should have encryption at host enabled` - Use encryption at host to get end-to-end encryption for your virtual machine and virtual machine scale set data. Encryption at host enables encryption at rest for your temporary disk and OS/data disk caches. Temporary and ephemeral OS disks are encrypted with platform-managed keys when encryption at host is enabled. OS/data disk caches are encrypted at rest with either customer-managed or platform-managed key, depending on the encryption type selected on the disk. Learn more at [https://aka.ms/vm-hbe](https://aka.ms/vm-hbe).
-- `Require automatic OS image patching on Virtual Machine Scale Sets` - This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep virtual Machines secure by safely applying latest security patches every month.
+Azure provides an extensive set of built-in policies related to Azure VMs and the dependencies. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check if:
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
+- Encryption at host is enabled.
+- Anti-malware extensions are deployed and enabled for automatic updates on Windows server VMs.
+- Automatic OS image patching on scale sets is enabled
+- Only approved virtual machine extensions are installed.
+
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might impact the security of the compute layer.
 
 ## Cost optimization
 
