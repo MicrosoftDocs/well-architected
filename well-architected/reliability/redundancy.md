@@ -45,7 +45,7 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 #### Redundant architecture design
 
-Consider two approaches when you design a redundant architecture: active-active or active-passive. Choose your approach depending on the criticality of the user flow and system flow that the infrastructure components support. In terms of reliability, a multi-region active-active design helps you achieve the highest level of reliability possible, but it's significantly more expensive than an active-passive design. Deciding about the best Azure regions is now a critical choice, how to select and operate in multiple geographic regions is covered in the [Select Azure Regions guide](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions). You can also use these design approaches for a single region by using availability zones. For more information, see [Recommendations for highly available multi-region design](highly-available-multi-region-design.md).
+Consider two approaches when you design a redundant architecture: active-active or active-passive. Choose your approach depending on the criticality of the user flow and system flow that the infrastructure components support. In terms of reliability, a multi-region active-active design helps you achieve the highest level of reliability possible, but it's significantly more expensive than an active-passive design. Deciding the appropriate geographic regions become the next critical choice. You can also use these design approaches for a single region by using availability zones. For more information, see [Recommendations for highly available multi-region design](highly-available-multi-region-design.md).
 
 #### Deployment stamps and units of scale
 
