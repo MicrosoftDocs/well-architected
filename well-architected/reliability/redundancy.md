@@ -45,7 +45,7 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 #### Redundant architecture design
 
-Consider two approaches when you design a redundant architecture: active-active or active-passive. Choose your approach depending on the criticality of the user flow and system flow that the infrastructure components support. In terms of reliability, a multi-region active-active design helps you achieve the highest level of reliability possible, but it's significantly more expensive than an active-passive design. Deciding the appropriate geographic regions become the next critical choice. You can also use these design approaches for a single region by using availability zones. 
+Consider two approaches when you design a redundant architecture: active-active or active-passive. Choose your approach depending on the criticality of the user flow and system flow that the infrastructure components support. In terms of reliability, a multi-region active-active design helps you achieve the highest level of reliability possible, but it's significantly more expensive than an active-passive design. Deciding the appropriate geographic regions become the next critical choice. You can also use these design approaches for a single region by using availability zones. For more information, see [Recommendations for highly available multi-region design](highly-available-multi-region-design.md).
 
 #### Deployment stamps and units of scale
 
@@ -147,9 +147,9 @@ The following diagram shows another example:
 
 ## Related links
 
-To learn more about stateful data service redundancy, see the following resources:
+To learn more about redundancy, see the following resources:
 
-- [Recommendations for highly available multi-region design](highly-available-multi-region-design.md).
+- [Azure regions guide](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions)
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 - [Zone-redundant storage](/azure/storage/common/storage-redundancy#zone-redundant-storage)
 - [Azure SQL Database active geo-replication](/azure/azure-sql/database/active-geo-replication-overview)
