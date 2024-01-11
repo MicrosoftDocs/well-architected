@@ -37,7 +37,7 @@ Requirements must cover user experience, data, workflows, and characteristics th
 |![Goal icon](../_images/goal.svg) The workload must continue to operate with full or reduced functionality.|
 |-|
 
-You should expect that component malfunctions, platform outages, performance degradations, limited resource availability and other faults will occur. Build resiliency in the system so that it's _fault-tolerant and can degrade gracefully_. 
+You should expect that component malfunctions, platform outages, performance degradations, limited resource availability, and other faults will occur. Build resiliency in the system so that it's _fault-tolerant and can degrade gracefully_. 
 
 |Approach|Benefit| 
 |-|-|
