@@ -150,7 +150,7 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 ##### Azure Advisor recommendations
 
-Azure Advisor helps you ensure and improve security. Review the [security recommendations](/azure/defender-for-cloud/recommendations-reference#compute-recommendations).
+Review the [security recommendations](/azure/defender-for-cloud/recommendations-reference#compute-recommendations).
 
 ##### Policy definitions
 
@@ -187,16 +187,16 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 >    Consider using [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines to recover from site failure while reducing the complexity of availability using zone-redundant services. There can be cost benefits from reduced operational complexity.
 >
-> - **Choose the right billing model**. Evaluate whether commitment-based models for compute, optimize costs for based on the business requirements of workload. Consider these Azure options:
+> - **Choose the right billing model**. Evaluate whether commitment-based models for compute optimize costs for based on the business requirements of workload. Consider these Azure options:
 >   - **[Azure Reservations](/azure/virtual-machines/prepay-reserved-vm-instances)**: Prepay for predictable workloads and save over consumption-based pricing.
->   - **[Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features)**: If you commit to spend a fixed hourly amount on compute services for one or three years, this plan can reduce costs.
->   - **Azure Hybrid Benefit**: Save when you migrate your on-premises VMs to Azure.
->   - **License mobility**: Bring your own licenses to Azure and save on Windows Server and SQL Server.
+>       >[!IMPORTANT]
+>       >
+>       > Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.
+>   - **[Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview)**: If you commit to spend a fixed hourly amount on compute services for one or three years, this plan can reduce costs.
+>   - **[Azure Hybrid Benefit](/azure/cost-management-billing/scope-level/)**: Save when you migrate your on-premises VMs to Azure.
 > - **Monitor usage**. Continuously monitor usage patterns and detect unused or underutilized VMs. For those instances, shut down VM instances when not in use. Monitoring is a principle approach of Operational Excellence. For more information, see the recommendations given in [Operational Excellence](#operational-excellence).
 >
-> - **Look for ways to optimize**. For example, shut down VM instances which aren't in use, use Spot VMs when appropriate, programmatically adjust Premium SSD v2 disk performance  to account for either higher or lower demand.
->
-> - **Optimize scaling cost**. Choose the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out). Optimize autoscaling policies by adjusting thresholds and using the right cooldown period. Consider offloading demand by distributing demand to other resources, or you can reduce demand by implementing priority queues, gateway offloading, buffering, and rate limiting.
+> - **Look for ways to optimize**. Some strategies include choosing the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out). Consider offloading demand by distributing demand to other resources, or you can reduce demand by implementing priority queues, gateway offloading, buffering, and rate limiting. For more information, see the recommendations given in [Performance Efficiency](#performance-efficiency).
 
 ##### Recommendations
 
@@ -206,22 +206,19 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|(VMs, Scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> For interruptable processes, such as highly parallel batch processing jobs, consider [Spot VMs](/azure/virtual-machines/spot-vms). Evaluate the disk options associated with VMS SKUs. <br> Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. | SKUs are priced according to the offered capabilities. If you don't need advanced capabities, avoid the overspend on expensive SKUs. <br> Spot VMs take advantage of the surplus capacity in Azure at a lower cost.|
-|(Scale set) **Mix regular VMs with Spot VMs** for workloads that can tolerate a certain amount of interruptability. They're also well suited for experimenting, developing, and testing large-scale solutions.  <br> Flexible orchestration allows you to [**distribute Spot VMs**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on your specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of Spot VMs.|
+|(VMs, Scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> For workloads that can tolerate a certain amount of interruptability, such as highly parallel batch processing jobs, consider [Spot VMs](/azure/virtual-machines/spot-vms). They're also well suited for experimenting, developing, and testing large-scale solutions. <br> Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. | SKUs are priced according to the offered capabilities. If you don't need advanced capabities, avoid the overspend on expensive SKUs. <br> Spot VMs take advantage of the surplus capacity in Azure at a lower cost.|
+|(VMs, Scale set) **Evaluate the [disk options](/azure/virtual-machines/disks-types)** associated with VMS SKUs. Determine your performance needs keeping in mind the storage capacity needs, accounting for fluctuating workload patterns. <br> For example, Premium SSD v2 allows you to granularly adjust your performance independent of the disk’s size.|Some higher performance disk types offer extra cost optimization features and strategies <br> The Premium SSD v2 adjustment capability can reduce costs because you get high performance without overprovisioning, which could otherwise lead to underutilized resources.|
+|(Scale set) **Mix regular VMs with Spot VMs**. <br> Flexible orchestration allows you to [**distribute Spot VMs**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on a specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of Spot VMs.|
 |(Scale set) **Reduce the number of VM instances when demand decreases**. <br>[**Set a scale-in policy**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy) based on a criteria. <br> Stop VMs during off-hours. You can use the Azure Automation Start/Stop feature and configure according to your business needs.| Scaling-in or stopping resources when not in use reduces the number of virtual machines running in the scale set, saving costs. <br> The Start/Stop feature is a suitable low-cost automation option.|
-|Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload patterns, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
-| Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
-|Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
-| Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
-| Deploy AMA | AMA supports Data Collection Rules (DCR) which allow filtering rules and data transformation to reduce overall data volume being uploaded, which lowers ingestion and storage costs.|
+|(VMs, Scale set) **Take advantage of license mobility with Azure Hybrid Benefit (AHB)**. VM's have a licensing option that allows you to bring your own on-premises [Windows Server OS licenses](/azure/virtual-machines/windows/hybrid-use-benefit-licensing) to Azure. <br> You can utilize certain Linux subscriptions to Azure through AHB.|You can maximize your on-premises licenses while getting the benefits of the cloud.|
 
- Azure Advisor helps you ensure and improve cost optimization. Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
+##### Advisor recommendations
 
-Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.
+Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
 ### Policy definitions
 
-Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
+Consider setting the built-in policy that only allows certain VM SKUs to limit the sizes.
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
