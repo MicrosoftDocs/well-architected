@@ -179,7 +179,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Cost guardrails**. Use governance policies to restrict resource types, configurations, and locations. Additionally, use role-based access control to block actions that can lead to overspending.
 >
-> - **Choose the right VM plan and SKU**. Make sure you select [VM sizes](/azure/virtual-machines/sizes) that serve the workload purposes. For interruptable processes, consider [Spot VMs](/azure/virtual-machines/spot-vms), which can lower costs. With Flexible orchestration, you can mix in spot VMs with regular VMs. Each SKU has associated disk options that impacts the overall cost.
+> - **Choose the right resources**. You selection of VM plan sizes and SKUs have a direct impact on the overall cost. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptable processes? Each SKU has associated disk options that impacts the overall cost.
 >
 > - **Choose the right capabilities for dependent resources**. Save on backup storage costs for the vault-standard tier using Azure Backup Storage reserved capacity. It offers a discount when you commit to a reservation for either one year or three years.
 >
@@ -206,12 +206,9 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|Choose the right SKUs. ||
-|(Scale set) **Mix regular VMs with Spot VMs** for workloads that can tolerate a certain amount of interruptability. <br> Flexible orchestration allows you to [**distribute Spot VMs**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on your specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of Spot VMs.|
+|(VMs, Scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> For interruptable processes, such as highly parallel batch processing jobs, consider [Spot VMs](/azure/virtual-machines/spot-vms). Evaluate the disk options associated with VMS SKUs. <br> Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. | SKUs are priced according to the offered capabilities. If you don't need advanced capabities, avoid the overspend on expensive SKUs. <br> Spot VMs take advantage of the surplus capacity in Azure at a lower cost.|
+|(Scale set) **Mix regular VMs with Spot VMs** for workloads that can tolerate a certain amount of interruptability. They're also well suited for experimenting, developing, and testing large-scale solutions.  <br> Flexible orchestration allows you to [**distribute Spot VMs**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on your specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of Spot VMs.|
 |(Scale set) **Reduce the number of VM instances when demand decreases**. <br>[**Set a scale-in policy**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy) based on a criteria. <br> Stop VMs during off-hours. You can use the Azure Automation Start/Stop feature and configure according to your business needs.| Scaling-in or stopping resources when not in use reduces the number of virtual machines running in the scale set, saving costs. <br> The Start/Stop feature is a suitable low-cost automation option.|
-| Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions. Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.|
-|Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
-|Configure Azure Bastion for operational access | [Azure Bastion](/azure/bastion/bastion-overview#pricing) is charged on a fix per-hour basis, and charges for outbound data transfers. |
 |Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload patterns, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
 | Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
 |Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
@@ -219,6 +216,8 @@ These recommendations don't represent an exhaustive list of all configurations a
 | Deploy AMA | AMA supports Data Collection Rules (DCR) which allow filtering rules and data transformation to reduce overall data volume being uploaded, which lowers ingestion and storage costs.|
 
  Azure Advisor helps you ensure and improve cost optimization. Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
+
+Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.
 
 ### Policy definitions
 
