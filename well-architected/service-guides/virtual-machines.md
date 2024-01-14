@@ -13,9 +13,9 @@ categories:
 
 # Azure Well-Architected Framework perspective on Virtual Machines and scale sets
 
-Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
+Azure Virtual Machines is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen VMs as the compute for your workload. The guidance in this article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
+This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute for your workload. The guidance in this article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -25,16 +25,16 @@ This article assumes that as an architect, you've reviewed the [**compute decisi
 >
 > Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
 >
-> Foundational architecture that demostrates the key recommendations: [Azure virtual machine baseline architecture](/azure/architecture/virtual-machines/baseline).
+> Foundational architecture that demostrates the key recommendations: [Azure Virtual Machine baseline architecture](/azure/architecture/virtual-machines/baseline).
 
 
 ##### Technology scope
 
 This review focuses on the interrelated decisions for these Azure resources.  
 
-- Azure VMs
-- Azure Virtual Machine Scale Sets
-- Disks are a critical dependency for VMs-based architectures. These considerations are given in [Azure Well-Architected Framework review - Disks](./azure-disks-cost-optimization.md).
+- Azure Virtual Machines (VMs)
+- Azure Virtual Machine Scale Sets (scale sets)
+- Disks are a critical dependency for virtual machine-based architectures. These considerations are given in [Azure Well-Architected Framework review - Disks](./azure-disks-cost-optimization.md).
 
 ## Reliability
 
@@ -92,7 +92,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
+The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying the approaches to the technical design around Azure Virtual Machines.
 
 ##### Design checklist
 
@@ -146,7 +146,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
-The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and understand the tradeoffs necessary in technical design choices, which are related to Azure Virtual Machines and the environment them run in.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making the tradeoffs necessary in the technical design related to Azure Virtual Machines and the environment in which they run.
 
 ##### Design checklist
 
@@ -237,7 +237,7 @@ Start your design strategy based on the [**design review checklist for Operation
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals towards expected usage.
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 ### Design checklist
 
