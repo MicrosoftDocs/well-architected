@@ -11,7 +11,7 @@ categories:
   - compute
 ---
 
-# Azure Well-Architected Framework perspectives on Virtual Machines and scale sets
+# Azure Well-Architected Framework perspective on Virtual Machines and scale sets
 
 Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
