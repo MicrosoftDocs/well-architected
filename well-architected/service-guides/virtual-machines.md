@@ -140,28 +140,15 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 | Recommendation | Benefit |
 |--------|----|
-|(Scale set) [**Assign managed identity** to VM scale sets](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vmss). All VMs in the scale set get the same identity through the specified VM profile. <br> (VMs) You can also [assign managed identity to individual VMs](/entra/identity/managed-identities-azure-resources/qs-configure-template-windows-vm) when it's created and then add it to a scale set, if needed.| When VMs communicate with other resources, they cross a trust boundary. Scale sets and VMs should authenticate their identity before communication is allowed. With managed identities that authentication handled by Microsoft Entra ID.|
+|(Scale set) [**Assign managed identity** to VM scale sets](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vmss). All VMs in the scale set get the same identity through the specified VM profile. <br><br> (VMs) You can also [assign managed identity to individual VMs](/entra/identity/managed-identities-azure-resources/qs-configure-template-windows-vm) when it's created and then add it to a scale set, if needed.| When VMs communicate with other resources, they cross a trust boundary. Scale sets and VMs should authenticate their identity before communication is allowed. With managed identities that authentication handled by Microsoft Entra ID.|
 |(Scale set) **Choose VM SKUs with security features**. <br>For example, [some SKUs support for BitLocker encryption](/azure/virtual-machines/windows/disk-encryption-overview#supported-vms-and-operating-systems), Confidential Compute, and so on.|Azure-provided features are based on signals captured across numerous tenants and can protect resources better than custom controls. You can also use policies to enforce those controls.|
 |(VMs, Scale set) **Apply organization-recommended tags** in the provisioned resources.|[Tagging](/azure/azure-resource-manager/management/tag-resources) is a common way to segment and organize resources and can be crucial during incident management. For more information, see [Purpose of naming and tagging](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#purpose-of-naming-and-tagging). |
 |(VMs, Scale set) **Set a security profile** with security features you want to enable in the VM configuration. <br> For example, you can specify [encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal) in the profile, data stored on the VM host is encrypted at rest and flows are encrypted to the Storage service.|The features provided in the security profile are automatically enabled at creation. <br> For more information, see [Azure security baseline for Virtual Machine Scale Sets](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline#security-profile).|
-|(VMs) **Choose secure networking options** for your VM's network profile. <br> Do not directly associate a public IP to your VM's and don't enable IP forwarding. <br> Ensure all Virtual Network Interfaces have an NSG associated.|The networking profile allows you set segmentation controls. <br> Public IPs are scanned by attackers making VMs vulnerable.|
-|(VMs) **Choose secure storage options** for your VM's storage profile. <br> Enable disk encryption and data at rest encryption by default. Disable public network access to the VM disks.|Disabling public helps to prevent unauthorized access to your data and resources. |
+|(VMs) **Choose secure networking options** for your VM's network profile. <br><br> Do not directly associate a public IP to your VM's and don't enable IP forwarding. <br><br> Ensure all Virtual Network Interfaces have an NSG associated.|The networking profile allows you set segmentation controls. <br> Public IPs are scanned by attackers making VMs vulnerable.|
+|(VMs) **Choose secure storage options** for your VM's storage profile. <br><br> Enable disk encryption and data at rest encryption by default. Disable public network access to the VM disks.|Disabling public helps to prevent unauthorized access to your data and resources. |
 |(Scale set) **Include extensions in your VMs** that protect against threats. <br> For example, <br> - Azure Key Vault extension ([Windows](/azure/virtual-machines/extensions/key-vault-windows), [Linux](/azure/virtual-machines/extensions/key-vault-linux)) <br> - [Microsoft Entra ID authentication](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux) <br> - [Microsoft Antimalware Extension](/azure/virtual-machines/extensions/iaas-antimalware-windows) <br> - Azure Disk Encryption extension ([Window](/azure/virtual-machines/windows/disk-encryption-overview), [Linux](/azure/virtual-machines/linux/disk-encryption-overview)). | The extensions are used to bootstrap the VMs with the right software that protect access to and from the VMs. <br> Microsoft-provided extensions are updated frequently to keep up with the evolving security standards.|
 
-##### Azure Advisor recommendations
 
-Review the [security recommendations](/azure/defender-for-cloud/recommendations-reference#compute-recommendations).
-
-##### Policy definitions
-
-Azure provides an extensive set of built-in policies related to Azure VMs and the dependencies. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check if:
-
-- Encryption at host is enabled.
-- Anti-malware extensions are deployed and enabled for automatic updates on Windows server VMs.
-- Automatic OS image patching on scale sets is enabled
-- Only approved virtual machine extensions are installed.
-
-For comprehensive governance, review the [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might impact the security of the compute layer.
 
 ## Cost optimization
 
@@ -206,21 +193,12 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|(VMs, Scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> For workloads that can tolerate a certain amount of interruptability, such as highly parallel batch processing jobs, consider [Spot VMs](/azure/virtual-machines/spot-vms). They're also well suited for experimenting, developing, and testing large-scale solutions. <br> Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. | SKUs are priced according to the offered capabilities. If you don't need advanced capabities, avoid the overspend on expensive SKUs. <br> Spot VMs take advantage of the surplus capacity in Azure at a lower cost.|
-|(VMs, Scale set) **Evaluate the [disk options](/azure/virtual-machines/disks-types)** associated with VMS SKUs. Determine your performance needs keeping in mind the storage capacity needs, accounting for fluctuating workload patterns. <br> For example, Premium SSD v2 allows you to granularly adjust your performance independent of the disk’s size.|Some higher performance disk types offer extra cost optimization features and strategies <br> The Premium SSD v2 adjustment capability can reduce costs because you get high performance without overprovisioning, which could otherwise lead to underutilized resources.|
+|(VMs, Scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. <br><br> For workloads that can tolerate a certain amount of interruptability, such as highly parallel batch processing jobs, consider [Spot VMs](/azure/virtual-machines/spot-vms). They're also well suited for experimenting, developing, and testing large-scale solutions.  | SKUs are priced according to the offered capabilities. If you don't need advanced capabities, avoid the overspend on expensive SKUs. <br><br> Spot VMs take advantage of the surplus capacity in Azure at a lower cost.|
+|(VMs, Scale set) **Evaluate the [disk options](/azure/virtual-machines/disks-types)** associated with VMS SKUs. <br> Determine your performance needs keeping in mind the storage capacity needs, accounting for fluctuating workload patterns. <br> For example, Premium SSD v2 allows you to granularly adjust your performance independent of the disk’s size.|Some higher performance disk types offer extra cost optimization features and strategies <br> The Premium SSD v2 adjustment capability can reduce costs because you get high performance without overprovisioning, which could otherwise lead to underutilized resources.|
 |(Scale set) **Mix regular VMs with Spot VMs**. <br> Flexible orchestration allows you to [**distribute Spot VMs**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on a specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of Spot VMs.|
-|(Scale set) **Reduce the number of VM instances when demand decreases**. <br>[**Set a scale-in policy**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy) based on a criteria. <br> Stop VMs during off-hours. You can use the Azure Automation Start/Stop feature and configure according to your business needs.| Scaling-in or stopping resources when not in use reduces the number of virtual machines running in the scale set, saving costs. <br> The Start/Stop feature is a suitable low-cost automation option.|
+|(Scale set) **Reduce the number of VM instances when demand decreases**. <br>[**Set a scale-in policy**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy) based on a criteria. <br> <br> Stop VMs during off-hours. You can use the [**Azure Automation Start/Stop feature**](/azure/automation/automation-solution-vm-management) and configure according to your business needs.| Scaling-in or stopping resources when not in use reduces the number of virtual machines running in the scale set, saving costs. <br> The Start/Stop feature is a suitable low-cost automation option.|
 |(VMs, Scale set) **Take advantage of license mobility with Azure Hybrid Benefit (AHB)**. VM's have a licensing option that allows you to bring your own on-premises [Windows Server OS licenses](/azure/virtual-machines/windows/hybrid-use-benefit-licensing) to Azure. <br> You can utilize certain Linux subscriptions to Azure through AHB.|You can maximize your on-premises licenses while getting the benefits of the cloud.|
 
-##### Advisor recommendations
-
-Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
-
-### Policy definitions
-
-Consider setting the built-in policy that only allows certain VM SKUs to limit the sizes.
-
-All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
 ## Operational Excellence
 
@@ -236,23 +214,25 @@ Start your design strategy based on the [**design review checklist for Operation
 >
 > - **Monitor the VM instances**. Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Common metrics include CPU usage, number of requests, I/O latency, and [others](/azure/azure-monitor/vm/vminsights-log-query). Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to get notified about issues and for detecting configuration changes in your environment.
 >
-> - **Monitor health of the VMs and the dependencies**. Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
->     Use monitoring agents to collect logs and metrics to get a comprehensive view of your VMs. Azure Virtual Machine Scale Sets roll up telemetry, allowing you to view health metrics at an individual VM level or as an aggregate.
->     Deploy the [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to your VMs to collect monitoring data from the guest OS, with OS-specific [Data Collection Rules (DCR)](/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent). [VM insights](/azure/azure-monitor/vm/vminsights-overview) offers an efficient way to monitor VMs and scale sets. It gathers data from Log Analytics workspaces and provides predefined workbooks for performance data trending. This data can be viewed per VM or aggregated across multiple VMs via Azure Monitor.
->
-- **Conduct chaos experiments**. Azure Chaos Studio offers several fault libraries that target critical VM use cases and help you build resilient systems by intentionally injecting faults and observing the results.
+> - **Monitor health of the VMs and the dependencies**. 
+>    -  Deploy monitoring components to collect logs and metrics to get a comprehensive view of your VMs, guest OS, boot data. Azure Virtual Machine Scale Sets roll up telemetry, allowing you to view health metrics at an individual VM level or as an aggregate. This data can be viewed per VM or aggregated across multiple VMs through Azure Monitor. See [Recommendations on monitoring agents](#recommendations-3).
+>     - Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly. 
+>     - Set up Azure Monitor alert rules.  Determine important conditions in your monitoring data to identify and address issues before the system is impacted. 
 >
 > - **Create a maintenance plan**. that includes regular system patching is a part of routine operations. Include emergencies process that allows for immediate application of patches. You can have custom process to manage the patching and, or partially delegate it to Azure.
 >    Azure provides features for individual [VM maintenance](/azure/virtual-machines/maintenance-configurations). Also, you can set up  maintenance windows to minimize disruptions during updates. During platform updates, fault domain considerations are key for resilience. If one instance per zone is needed across two zones, four instances are required in each zone. If spread across two zones, at least six instances are needed.
 >
 > - **Automate processes for bootstrapping, running scripts, and configuring VMs**. You can use extensions or automate through custom scripts. Here are some recommended options:
 >   - [Azure Key Vault virtual machine (VM) extension](/azure/virtual-machines/extensions/key-vault-windows) that provide automatic refresh of certificates stored in an Azure Key Vault.
+>
 >   - [Azure Custom Script Extension](/azure/virtual-machines/extensions/custom-script-linux) (Windows and Linux) that downloads and runs scripts on Azure virtual machines (VMs). Use this extension for post-deployment configuration, software installation, or any other configuration or management task.
 >   - Use cloud-init to setup the startup environment for Linux-based VMs.
 >
 > - **Have processes for installing automatic updates**. Consider using [Automatic VM Guest patching](/azure/virtual-machines/automatic-vm-guest-patching) for a timely rollout of critical and security patches. Use [Update Management in Azure Automation](/azure/automation/update-management/overview) to manage OS updates for your Windows and Linux virtual machines in Azure.
 >
 > - **Build a test environment** that closely matches your production environment to test updates and changes before deploying to production. Have processes in place to test the security updates, performance baselines, and reliability faults. Take advantage of Azure Chaos Studio fault libraries to inject and simulate error conditions. For more information, see [Azure Chaos Studio fault and action library](/azure/chaos-studio/chaos-studio-fault-library).
+>
+> - **Manage your quota**. Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests).
 
 ##### Recommendations
 
@@ -262,23 +242,12 @@ These recommendations don't represent an exhaustive list of all configurations a
 
 | Recommendation | Benefit |
 |--------|----|
-| Monitor and measure health | In a production environment, it's important to [monitor](/azure/virtual-machines/monitor-vm) the health, and performance of your VMs.  |
-| Setup Azure Monitor alert rules | Determine important conditions in your monitoring data to identify and address issues found in your system before customers are impacted. |
-| Automate tasks | Building [automation](/azure/well-architected/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
-| Build a robust testing environment | Ideally, an organization has multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
-| Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. |
-| Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
-|  Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
+|(Scale set) **Azure Virtual Machine Scale Sets in [Flexible orchestration mode](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)** can help simplify the deployment and management of your workload. For example, with automatic repairs, self-healing is done with ease of management.| Flex orchestration can manage VM instances at scale. Handing individual VMs adds operational overhead. <br><br> For example, when deleting VM instances, the associated disks and NICs are also automatically deleted. VM instances are spread across multiple fault domains so that update operations don't cause disruption in service.|
+|(Scale set) **Keep your VMs up-to-date** by setting an [**upgrade policy**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-policy). Rolling updgrades are recommended, however, if you need granual control opt for manual upgrades. <br><br> For Flex orchestration, you can use [**Update management in Azure Automation**](/azure/automation/update-management/overview).|Primary reason for upgrades is security. Security assurances for the instances shouldn't decay with time. <br><br> Rolling upgrades are done in batches, making sure all instances aren't down at the same time.|
+|(VMs, Scale set) Automatically deploy VM applications from the [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery) by defining the applications in the [**profile**](/azure/templates/microsoft.compute/virtualmachinescalesets?pivots=deployment-language-bicep#applicationprofile). |The VMs in the scale set are created and pre-installed with the specified apps, leading to easy of management.|
+|[**Install pre-built software components as extensions**](/azure/virtual-machines/extensions/overview) as part of bootstrapping. <br> Azure supports many extensions that can be used to configure, monitor, secure, and provide utility applications for your virtual machines. <br><br>  [**Enable automatic upgrades**](/azure/virtual-machines/automatic-extension-upgrade)  on extensions. |Extensions can help simplify the software installation at scale without having to manually install, configure, or upgrade it on each VM.|
+|(VMs, Scaleset) **Monitor and measure health** of the VM instances. <br><br> Enable [**VM insights**](/azure/azure-monitor/vm/vminsights-overview) to monitor health and performance, and view trends from the collected data.<br><br>Deploy the [**Azure Monitor Agent (AMA)**](/azure/azure-monitor/agents/agents-overview) extension to your VMs to collect monitoring data from the guest OS, with OS-specific [**Data Collection Rules (DCR)**](/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent). <br><br> Use [**boot diagnostics**](/azure/virtual-machines/boot-diagnostics) to get information as VMs boot. It also provides diagnosis of boot failures.|Monitoring data is at the core of any incident resolution. A comprehensive monitoring stack provides information about how the VMs are performing and their health. By continuously monitoring the instances, you can be ready or prevent failures ocurring from performance overload, reliability issues, and other failures.|
 
-For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
-
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations](/azure/advisor/advisor-reference-operational-excellence-recommendations).
-
-### Policy definitions
-
-- Consider setting an `Allowed virtual machine SKU` policy
-
-All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
 ## Performance Efficiency
 
@@ -321,15 +290,28 @@ Explore the following table of recommendations to optimize your virtual machine 
 | Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
 | Use autoscaling | Automatically increase or decrease the number of VM instances that run your application with [autoscaling](/azure/virtual-machine-scale-sets/scripts/cli-sample-enable-autoscale). |
 
-For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
-Azure Advisor helps you ensure and improve performance. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Performance).
+
+## Azuze policies
+
+Azure provides an extensive set of built-in policies related to Azure VMs and the dependencies. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check if:
+
+- Encryption at host is enabled.
+- Anti-malware extensions are deployed and enabled for automatic updates on Windows server VMs.
+- Automatic OS image patching on scale sets is enabled
+- Only approved virtual machine extensions are installed.
+- Azure Monitor Agent and the Dependency agents are enabled on new virtual machines in your Azure environment.  
+- Only the allowed VM SKUs are deployed to limit sizes according to cost constraints.
+
+
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might impact the security of the compute layer.
 
 ## Azure Advisor recommendations
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
 
 - [Reliability](/azure/advisor/advisor-high-availability-recommendations)
+- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
