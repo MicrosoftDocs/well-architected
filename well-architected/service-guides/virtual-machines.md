@@ -16,7 +16,15 @@ categories:
 
 Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md). Each section presents architectural areas of concern along with design strategies localized to the technology scope. Also included are recommendations on technology capabilities that can help materialize those strategies.  
+This article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
+
+> [!IMPORTANT]
+>
+> **How to use this guide:**
+>
+> Each section presents architectural areas of concern along with design strategies localized to the technology scope. 
+>
+> Also included are recommendations on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
 
 
 ##### Technology scope
@@ -76,10 +84,6 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 ##### Recommendations
 
-Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
-
-These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
-
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(Scale set) **Use Azure Virtual Machine Scale Sets in [Flexible orchestration mode](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)** to deploy VMs. | You'll be able to future proof your application for scaling and take advantage of the high availability guarantees that spreads VMs across fault domains in a region or within an availability zone.|
@@ -134,10 +138,6 @@ Start your design strategy based on the [**design review checklist for Security*
 
 ##### Recommendations
 
-Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
-
-These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
-
 | Recommendation | Benefit |
 |--------|----|
 |(Scale set) [**Assign managed identity** to VM scale sets](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vmss). All VMs in the scale set get the same identity through the specified VM profile. <br><br> (VMs) You can also [assign managed identity to individual VMs](/entra/identity/managed-identities-azure-resources/qs-configure-template-windows-vm) when it's created and then add it to a scale set, if needed.| When VMs communicate with other resources, they cross a trust boundary. Scale sets and VMs should authenticate their identity before communication is allowed. With managed identities that authentication handled by Microsoft Entra ID.|
@@ -187,10 +187,6 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 ##### Recommendations
 
-Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
-
-These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
-
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(VMs, Scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. <br><br> For workloads that can tolerate a certain amount of interruptability, such as highly parallel batch processing jobs, consider [Spot VMs](/azure/virtual-machines/spot-vms). They're also well suited for experimenting, developing, and testing large-scale solutions.  | SKUs are priced according to the offered capabilities. If you don't need advanced capabities, avoid the overspend on expensive SKUs. <br><br> Spot VMs take advantage of the surplus capacity in Azure at a lower cost.|
@@ -236,10 +232,6 @@ Start your design strategy based on the [**design review checklist for Operation
 
 ##### Recommendations
 
-Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
-
-These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
-
 | Recommendation | Benefit |
 |--------|----|
 |(Scale set) **Azure Virtual Machine Scale Sets in [Flexible orchestration mode](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)** can help simplify the deployment and management of your workload. For example, with automatic repairs, self-healing is done with ease of management.| Flex orchestration can manage VM instances at scale. Handing individual VMs adds operational overhead. <br><br> For example, when deleting VM instances, the associated disks and NICs are also automatically deleted. VM instances are spread across multiple fault domains so that update operations don't cause disruption in service.|
@@ -265,31 +257,21 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 > - **Factor in the performance profile of VMs, scale sets, and disk configuration in your capacity planning**. Each SKU has a different profile of memory and CPU and behaves differently depending on the type of workload. Conduct pilots and proof of concepts to understand performance behavior under the specific workload.
 >
-> - **Proximity placement groups**. Use [proximity placement groups](/azure/virtual-machine-scale-sets/proximity-placement-groups) in workloads where low latency is a requirement to ensure VMs are physically located close to each other.
->
 > - **VM performance tuning**. Take advantage of VMs performance optimization and enhancing features as required by the workload. For example, locally attached NVMe for high performance use cases, accelerated networking, and Premium SSD v2 for  better performance and scalability.
 >
 > - **Take into account the dependent services**. Workload dependencies that interact with the VMs can impact performance. For example, caching, network traffic, and CDN. Also consider  geographical distribution (zones, regions), which can add latency.
 >
-> - **Collect performance data**. Follow the Operational Excellence best practices for monitoring and deploy the appropriate extensions that give you view into performance metrics.
+> - **Collect performance data**. Follow the [Operational Excellence best practices](#operational-excellence) for monitoring and deploy the appropriate extensions that give you view into performance metrics.
 
 ##### Recommendations
 
-Use the design strategy to build your proof-of-concept or optimize your existing environment by evaluating these recommendations.
-
-These recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they represent the key recommendations mapped to the preceding design perspectives.
-
-Explore the following table of recommendations to optimize your virtual machine deployment configuration for performance and efficiency.
-
 | Recommendation | Benefit |
 |--------|----|
-| Consider deploying VMs in [Creating and using proximity placement groups](/azure/virtual-machines/co-location). | Proximity placement groups reduce the physical distance between Azure compute resources, which can improve performance and reduce network latency between stand-alone VMs, VMs in multiple availability sets, or multiple scale sets. |
-| Use Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) for production VMs. <br> Adjust the performance of disks with Premium SSD v2. |Premium SSDs deliver high-performance and low-latency disk support VMs with IO-intensive workloads. <br> Premium SSD v2 doesn't require disk resizing enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity.|
-| Optimize with managed disks |  Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need.|
-| Use locally attached NVMe devices | When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases requiring high IOPS and low latency. |
-| Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
-| Use autoscaling | Automatically increase or decrease the number of VM instances that run your application with [autoscaling](/azure/virtual-machine-scale-sets/scripts/cli-sample-enable-autoscale). |
-
+|(VMs, Scale set) [**Choose SKUs for VMs**](/azure/virtual-machines/sizes) that align with your capacity planning. <br><br>Have a good understanding of your workload requirements, including the number of cores, memory, storage, and network bandwidth so that you can filter out unsuitable SKUs.|Right sizing your VMs is a fundamental decision that can have a significant impact on the performance of your workload. Without the right set of VMs, you can experience performance issues and accrue unnecessary costs.|
+|(VMs, Scale set)  Deploy VMs in [**proximity placement groups**](/azure/virtual-machine-scale-sets/proximity-placement-groups). | Proximity placement groups reduce the physical distance between Azure compute resources, which can improve performance and reduce network latency between stand-alone VMs, VMs in multiple availability sets, or multiple scale sets. |
+|(VMs, Scale set)  Set the [**storage profile**](/azure/virtual-machines/disks-types) by analyzing disk performance of existing workloads and the chosen VM SKU. <br><br> Use Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) for production VMs. Adjust the performance of disks with Premium SSD v2. <br><br>Use locally attached NVMe devices.|Premium SSDs deliver high-performance and low-latency disk support VMs with IO-intensive workloads. <br> Premium SSD v2 doesn't require disk resizing enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. <br><br> When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases requiring high IOPS and low latency.|
+| (VMs) Consider enabling [Accelerated networking](/azure/virtual-network/accelerated-networking-overview).| It enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
+|(VMs, Scale set) [**Set autoscale rules**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal) to increase or decrease the number of VM instances in your scale set based on demand.| If your application demand increases, the load on the VM instances in your scale set increases. If this increased load is consistent, autoscale rules ensure that you have enough resources to meet the demand. |
 
 
 ## Azuze policies
@@ -316,28 +298,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
-## Additional resources
-
-Here are other resources to help you query for unhealthy instances.
-
-### Cost analysis
-
-Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis). There are several options for grouping resources by billing unit.
-
-### Log Analytics
-
-Collect logs and metrics from the Azure resources and Application Insights with [Azure Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to gain insights into the performance and health of your VMs. You can also use Log Analytics to query and analyze the data collected by Azure Monitor Logs.
-
-### Application Insights
-
-Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension alongside Azure Monitor to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
 
 ## Next steps
 
-Use the recommendations as you provision virtual machines for your solution.
-
-- Review the Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/).
-
-- Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
-
-- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
+Review [these resources](#review-resources) to see how the recommendations are used in a workload architecture. 
