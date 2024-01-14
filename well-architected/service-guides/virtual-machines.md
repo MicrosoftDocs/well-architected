@@ -1,15 +1,14 @@
 ---
-title: Azure Well-Architected Framework review - Virtual Machines
+title: Azure Well-Architected Framework - Virtual Machines and scale sets
 description: Design considerations and recommendations about Azure virtual machines.
-author: ericd-mst-github
-ms.author: erd
-ms.date: 06/29/2023
+author: PageWriter-MSFT
+ms.author: prwilk
+ms.date: 01/13/2024
 ms.topic: conceptual
 products:
   - azure-virtual-machines
 categories:
   - compute
-  - management-and-governance
 ---
 
 # Azure Well-Architected Framework review - Virtual Machines and scale sets
