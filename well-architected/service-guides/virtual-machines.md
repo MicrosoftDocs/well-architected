@@ -24,6 +24,7 @@ This article provides architectural recommendations are mapped to the principles
 > Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope. 
 >
 > Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
+> Foundational architecture that demostrates certain recommendations: [Azure virtual machine baseline architecture](/azure/architecture/virtual-machines/baseline).
 
 
 ##### Technology scope
@@ -33,17 +34,6 @@ This review focuses on the interrelated decisions for these Azure resources.
 - Azure VMs
 - Azure Virtual Machine Scale Sets
 - Disks are a critical dependency for VMs-based architectures. These considerations are given in [Azure Well-Architected Framework review - Disks](./azure-disks-cost-optimization.md).
-
-## Review resources
-
-Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
-
-- Use these reference architectures as examples of how these recommendations can be applied to a workload.
-  - Single VM architectures: [Linux VM](/azure/architecture/reference-architectures/n-tier/linux-vm#architecture) and [Windows VM](/azure/architecture/reference-architectures/n-tier/windows-vm#architecture).
-  - Foundational architecture that focuses on infrastructure recommendations: [Azure virtual machine baseline architecture](/azure/architecture/virtual-machines/baseline).
-- Build implementation expertise using product documentation: 
-  - [Azure Virtual Machines](/azure/virtual-machines/)
-  - [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview)
 
 ## Reliability
 
@@ -151,7 +141,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 
 
-## Cost optimization
+## Cost Optimization
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
@@ -302,4 +292,11 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Next steps
 
-Review [these resources](#review-resources) to see how the recommendations are used in a workload architecture. 
+Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
+
+- Use these reference architectures as examples of how these recommendations can be applied to a workload.
+  - Single VM architectures: [Linux VM](/azure/architecture/reference-architectures/n-tier/linux-vm#architecture) and [Windows VM](/azure/architecture/reference-architectures/n-tier/windows-vm#architecture).
+  - Foundational architecture that focuses on infrastructure recommendations: [Azure virtual machine baseline architecture](/azure/architecture/virtual-machines/baseline).
+- Build implementation expertise using product documentation: 
+  - [Azure Virtual Machines](/azure/virtual-machines/)
+  - [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview)
