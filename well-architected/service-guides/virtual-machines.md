@@ -49,7 +49,7 @@ Consider these articles as resources that demonstrate the  recommendations highl
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [**Reliability design principles**](/azure/well-architected/resiliency/principles) a provide high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ##### Design checklist
 
@@ -101,7 +101,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide high-level design strategy for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
+The [**Security design principles**](/azure/well-architected/security/security-principles) a provide high-level design strategy for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
 
 ##### Design checklist
 
@@ -141,7 +141,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 | Recommendation | Benefit |
 |--------|----|
-|(Scale set) [**Assign managed identity** to scale sets](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vmss). All VMs in the scale set get the same identity through the specified VM profile. <br><br> (VMs) You can also [assign managed identity to individual VMs](/entra/identity/managed-identities-azure-resources/qs-configure-template-windows-vm) when it's created and then add it to a scale set, if needed.| When VMs communicate with other resources, they cross a trust boundary. Scale sets and VMs should authenticate their identity before communication is allowed. With managed identities that authentication handled by Microsoft Entra ID.|
+|(Scale set) [**Assign managed identity** to scale sets](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vmss). All VMs in the scale set get the same identity through the specified VM profile. <br><br> (VMs) You can also [assign managed identity to individual VMs](/entra/identity/managed-identities-azure-resources/qs-configure-template-windows-vm) during creation and then add it to a scale set, if needed.| When VMs communicate with other resources, they cross a trust boundary. Scale sets and VMs should authenticate their identity before communication is allowed. With managed identities that authentication handled by Microsoft Entra ID.|
 |(Scale set) **Choose VM SKUs with security features**. <br>For example, [some SKUs support for BitLocker encryption](/azure/virtual-machines/windows/disk-encryption-overview#supported-vms-and-operating-systems), Confidential Compute, and so on.|Azure-provided features are based on signals captured across numerous tenants and can protect resources better than custom controls. You can also use policies to enforce those controls.|
 |(VMs, Scale set) **Apply organization-recommended tags** in the provisioned resources.|[Tagging](/azure/azure-resource-manager/management/tag-resources) is a common way to segment and organize resources and can be crucial during incident management. For more information, see [Purpose of naming and tagging](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#purpose-of-naming-and-tagging). |
 |(VMs, Scale set) **Set a security profile** with security features you want to enable in the VM configuration. <br> For example, you can specify [encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal) in the profile, data stored on the VM host is encrypted at rest and flows are encrypted to the Storage service.|The features provided in the security profile are automatically enabled at creation. <br> For more information, see [Azure security baseline for Virtual Machine Scale Sets](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline#security-profile).|
@@ -155,7 +155,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
-The [Cost Optimization design principles](../cost-optimization/principles.md) provide high-level design strategy for achieving those goals and understand the tradeoffs necessary in technical design choices related to Azure Virtual Machines and the environment them run in.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and understand the tradeoffs necessary in technical design choices, which are related to Azure Virtual Machines and the environment them run in.
 
 ##### Design checklist
 
@@ -201,7 +201,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](../operational-excellence/principles.md) provide high-level design strategy for achieving those goals towards the operational requirements of the workload.
+The [Operational Excellence design principles](../operational-excellence/principles.md) a provide high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
 ##### Design checklist
 
@@ -246,7 +246,7 @@ Start your design strategy based on the [**design review checklist for Operation
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide high-level design strategy for achieving those capacity goals towards expected usage.
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) a provide high-level design strategy for achieving those capacity goals towards expected usage.
 
 ### Design checklist
 
