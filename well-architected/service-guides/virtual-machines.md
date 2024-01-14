@@ -263,7 +263,7 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 > - **Take into account the dependent services**. Workload dependencies that interact with the VMs can impact performance. For example, caching, network traffic, and CDN. Also consider  geographical distribution (zones, regions), which can add latency.
 >
-> - **Collect performance data**. Follow the [Operational Excellence best practices](#operational-excellence) for monitoring and deploy the appropriate extensions that give you view into performance metrics.
+> - **Collect performance data**. Follow the [Operational Excellence best practices](#operational-excellence) for monitoring and deploy the appropriate extensions to view metrics that track against performance indicators.
 
 ##### Recommendations
 
