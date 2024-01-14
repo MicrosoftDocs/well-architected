@@ -11,7 +11,7 @@ categories:
   - compute
 ---
 
-# Azure Well-Architected Framework review - Virtual Machines and scale sets
+# Azure Well-Architected Framework perspectives on Virtual Machines and scale sets
 
 Azure Virtual Machines (VMs) is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
@@ -39,7 +39,7 @@ This review focuses on the interrelated decisions for these Azure resources.
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-The [**Reliability design principles**](/azure/well-architected/resiliency/principles) a provide high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ##### Design checklist
 
@@ -91,7 +91,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) a provide high-level design strategy for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
+The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals and apply them to Azure Virtual Machines and the environment them run in.
 
 ##### Design checklist
 
@@ -191,7 +191,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](../operational-excellence/principles.md) a provide high-level design strategy for achieving those goals towards the operational requirements of the workload.
+The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
 ##### Design checklist
 
@@ -236,7 +236,7 @@ Start your design strategy based on the [**design review checklist for Operation
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-The [Performance Efficiency design principles](../performance-efficiency/principles.md) a provide high-level design strategy for achieving those capacity goals towards expected usage.
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals towards expected usage.
 
 ### Design checklist
 
