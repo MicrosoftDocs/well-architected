@@ -67,12 +67,10 @@ In addition to the built-in Azure Policy definitions, custom policies can be cre
 
 ## Security
 
-AKS Hybird - section below needs complete review....
+Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI can bolster the security of your application workload, we recommend you review the [Security design principles](../security/principles.md).
 
-Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI can bolster the security of your application workload, we recommend you review the [Security design principles](../security/principles.md). If your Azure Stack HCI cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [Azure Stack HCI regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/Azure Stack HCI-pci/Azure Stack HCI-pci-intro).
-
-To learn about DoD Impact Level 5 (IL5) support and requirements with Azure Stack HCI, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-hybrid workloads-service).
-
+All new installations of release 23H2 and above starts with a secure-by-default strategy. The Azure Stack HCI servers are deployed with a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
+  
 When discussing security with Azure Stack HCI, it's important to distinguish between *cluster security* and *workload security*. Cluster security is a shared responsibility between the cluster admin and their resource provider, while workload security is the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
@@ -81,12 +79,12 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 
 > [!div class="checklist"]
 >
-> - **Cluster architecture:** Use [Managed Identities](/azure/Azure Stack HCI/use-managed-identity) to avoid managing and rotating service principles.
-> - **Cluster architecture:** Use 
-> - **Cluster architecture:** Use Microsoft Defender for containers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
-> - **Cluster architecture:** Deploy a 
-> - **Workload architecture:** Use a 
-> - **Workload architecture:** Ensure your CI/CID pipeline is hardened with container-aware scanning.
+> - **Cluster architecture:** While deploying the Azure Stack HCI clusters, set the security level of your Azure Stack HCI system's infrastructure using the recommended security settings such as Security defaults, Windows Defender Credential Guard, BitLocker for the OS volume, BitLocker for data volume, Signing for external SMB traffic that provides the highest level of security, or customize these settings to match your security needs.
+> - **Cluster architecture:** Use Microsoft Defender for Cloud to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads together in one view.
+> - **Cluster architecture:** Use Microsoft Defender for Servers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
+> - **Workload architecture:** Use VLAN based network-isolation to deploy workloads (VMs) that needs to be isolated from each other across the different VLAN networks. Ensure each VLAN is configured and reachable from the management network for the hosts to communicate with the VLAN networks through the ToR (Top-of-Rack) switches or gateways.  
+> - **Workload architecture:** Use Trusted launch for virtual machines that protects against persistent and standard attacks on Gen 2 virtual machines with configurable features like secure boot and virtual Trusted Platform Module (vTPM).
+> - **Workload architecture:** Use Azure Policy to re-use the builtin policies such as security baselines for Windows and Linux workloads or create new custom policies in auditing the security settings and assessing the compliance state of the target workloads running on Azure Stack HCI.
 
 ### Recommendations
 
@@ -94,13 +92,15 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
-|**Cluster architecture:** Use Microsoft Entra integration.|Using Microsoft Entra ID centralizes the identity management component. Any change in user account or group status is automatically updated in access to the Azure Stack HCI cluster. The developers and application owners of your hybrid workloads cluster need access to different resources.|
-|**Cluster architecture:** Authenticate with Microsoft Entra ID to Azure Container Registry.|Azure Stack HCI and Microsoft Entra ID enables authentication with Azure Container Registry without the use of `imagePullSecrets` secrets. Review [Authenticate with Azure Container Registry from Azure Stack HCI](/azure/Azure Stack HCI/cluster-container-registry-integration?tabs=azure-cli) for more information.|
-|**Cluster architecture:** Secure network traffic to your API server with [private Azure Stack HCI cluster](/azure/Azure Stack HCI/private-clusters).|By default, network traffic between your node pools and the API server travels the Microsoft backbone network; by using a private cluster, you can ensure network traffic to your API server remains on the private network only.|
-|**Cluster architecture:** For non-private Azure Stack HCI clusters, use API server authorized IP ranges.|When using public clusters, you can still limit the traffic that can reach your clusters API server by using the authorized IP range feature. Include sources like the public IPs of your deployment build agents, operations management, and node pools' egress point (such as Azure Firewall).|
-|**Cluster architecture:** Protect the API server with Microsoft Entra RBAC.|Securing access to the hybrid workloads API Server is one of the most important things you can do to secure your cluster. Integrate hybrid workloads role-based access control (RBAC) with Microsoft Entra ID to control access to the API server. [Disable local accounts](/azure/Azure Stack HCI/managed-aad#disable-local-accounts) to enforce all cluster access using Microsoft Entra ID-based identities.|
+|**Cluster architecture:** Use Secure by default|Using Secure by default maintains the security default on each server, helping to protect against changes or drifts that are automatically corrected to maintain the intended posture of the Azure Stack HCI system. Review [Security baseline and drift control](/azure-stack/hci/manage/manage-secure-baseline) for more information.|
+|**Cluster architecture:** Windows Defender Credential Guard|Uses virtualization-based security to isolate secrets from credential-theft attacks. Unauthorized access to these secrets can lead to credential theft attacks like pass the hash and pass the ticket. Review [Credential Guard Overview](/windows/security/identity-protection/credential-guard/) for more information.|
+|**Cluster architecture:** Windows Defender Application Control (WDAC) |Controls which drivers, applications and the code that are allowed to run directly on each server. Review [Managing Windows Defender Application Control](/azure-stack/hci/manage/manage-wdac) for more information. |
+|**Cluster architecture:** BitLocker for the OS volume|Encrypts the OS volume on each server. Review [BitLocker Overview](/windows/security/operating-system-security/data-protection/bitlocker/) for more information. |
+|**Cluster architecture:** BitLocker for data volumes|Encrypts cluster shared volumes (CSVs) created on the Azure Stack HCI system using XTS-AES 256-bit encryption. This is the recommended default setting which can be turned on during the cluster deployment in all the data volumes. Review [Volume encryption via BitLocker](/azure-stack/hci/concepts/security-features#volume-encryption-via-bitlocker) for more information.|
+|**Cluster architecture:** Signing for external SMB traffic|Signs SMB traffic between this system and others to help prevent relay attacks. Review [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing) for more information. |
+|**Cluster architecture:** SMB Encryption for in-cluster traffic (Optional)|Encrypts traffic between servers in the cluster (on your storage network). It is optional to turn on this based on the additional security needs for your environment. Review [SMB Encryption](/windows-server/storage/file-server/smb-security#smb-encryption) for more information. |
 
-For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
+For more information on the security features introduced in 23H2, see [Review Security Features](/azure-stack/hci/concepts/security-features).
 
 ## Needs review:
  Azure Advisor helps ensure and improve Azure Stack HCI. It makes recommendations on a subset of the items listed in the policy section below, such as clusters without RBAC configured, missing Microsoft Defender configuration, unrestricted network access to the API Server. Likewise, it makes workload recommendations for some of the pod security initiative items. Review the [recommendations](/azure/advisor/advisor-security-recommendations).
@@ -130,8 +130,7 @@ Cost optimization is about understanding your different configuration options an
 
 * [Cost optimization design principles](../cost-optimization/principles.md).
 * How pricing and cost management work in Azure Stack HCI compared to 
-* If you are running Azure Stack HCI on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
-* ESU for workloads
+* Azure Stack HCI is priced on a per physical core basis on your on-premises servers. If you are a Windows Server Datacenter customer with active Software Assurance, you may also choose to exchange core licenses to activate Azure Hybrid Benefit, which waives the Azure Stack HCI host service fee and Windows Server subscription. Review [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) for more information.
 
 When discussing cost optimization with Azure Stack HCI, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources are a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
 
@@ -142,10 +141,9 @@ For cluster cost optimization, go to the [Azure pricing calculator](https://azur
 ### Design checklist
 
 > [!div class="checklist"]
-> - **Cluster architecture:** Use appropriate VM SKU per node pool and reserved instances where long-term capacity is expected.
-> - **Cluster and workload architectures:** Use appropriate managed disk tier and size.
-> - **Cluster architecture:** Review performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
-> - **Cluster architecture:** Use cluster autoscaler to scale in when workloads are less active.
+> - **Cluster architecture:** Use [Azure Stack Pricing](/pricing/details/azure-stack/hci/) page in exploring the pricing options available to purchase Azure Stack HCI for on-premises servers.
+> - **Cluster architecture:** Use Azure Stack HCI free trial offer for the first 60 days after registration for PoCs and validation purposes.
+> - **Cluster architectures:** Turn on Azure Benefits on Azure Stack HCI to use some of the Azure exclusive workloads such as Windows Server Datacenter (Azure Edition), Extended Security Update (ESUs), Azure Policy Guest Configuration and Azure Virtual Desktop with no extra licensing cost. Review [Azure Benefits on Azure Stack HCI](/azure-stack/hci/manage/azure-benefits?tabs=wac) for more information.
 
 ### Recommendations
 
@@ -153,9 +151,9 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|**Cluster and workload architectures:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
-|**Cluster architecture:** Select the right virtual machine instance type. |Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on Azure Stack HCI. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a powerful instance can lead to performance issues and increased downtime. To determine the right virtual machine instance type, consider workload characteristics, resource requirements, and availability needs.|
-|**Cluster architecture:** Select [virtual machines based on the Arm architecture](/azure/virtual-machines/dplsv5-dpldsv5-series). |Azure Stack HCI supports [creating ARM64 Ubuntu agent nodes](/azure/Azure Stack HCI/use-multiple-node-pools#add-an-arm64-node-pool), as well as a of mix Intel and ARM architecture nodes within a cluster that can bring better performance at a lower cost.|
+|**Cluster architectures:** Azure Hybrid Benefit |Activate Azure Hybrid Benefit in the Azure Portal for the Azure Stack HCI cluster resource under the Configuration if you have Windows Server Datacenter license with active Software Assurance and would like to exchange those licenses to get Azure Stack HCI and Windows Server Subscription at no additional cost. |
+|**Cluster architecture:** Windows Server subscription add-on |For customers that do not have valid Azure Hybrid Benefit licenses, you can consider subscribing to Windows Server guest licenses through Azure. You can purchase this in the Azure portal for the Azure Stack HCI cluster resource under the Configuration. By enabling this in the Azure Stack HCI cluster, you will be charged for the total number of physical cores in your cluster. |
+|**Cluster architecture:** Azure verification for VMs - Enabled by default. |Ensure Azure verification for VMs is On under the Configuration for the Azure Stack HCI cluster resource in the Azure Portal. This will allow using the worklaods and services that are available only on Azure, such as Extended Security Updates and others. |
 
 For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/index.yml).
 
