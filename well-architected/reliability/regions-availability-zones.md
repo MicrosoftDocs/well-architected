@@ -16,11 +16,11 @@ ms.topic: conceptual
 
 **Related guides:** [Highly available multiregional design](highly-available-multi-region-design.md) | [Redundancy](redundancy.md)
 
-This guide describes the recommendations for determining when to deploy workloads across availability zones or regions. 
+This guide describes the recommendations for determining when to deploy workloads across availability zones or regions.
 
 When you design a solution for Azure, you need to decide whether you'll deploy across multiple availability zones in a region or deploy into multiple regions. This decision affects your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the key business requirements that influence your decision, the approaches you can consider, the tradeoffs involved in each approach, and the effect of each approach on the core pillars of the Azure Well-Architected Framework.
 
-Your choice of how you use regions and availability zones affects several of the pillars of the Well-Architected Framework:
+The decision about the best Azure regions to use for your solution is a critical choice. The [Select Azure Regions guide](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions) describes how to select and operate in multiple geographic regions. Your choice of how you use regions and availability zones within your solution also affects several of the pillars of the Well-Architected Framework:
 
 - **Reliability**: Your choice of deployment approach can help you to mitigate various types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
 - **Cost Optimization**: Some architectural approaches require deploying more resources than others, which can increase your resource costs. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have comprehensive business requirements.
@@ -330,7 +330,7 @@ This table summarizes some of the concerns from an architectural perspective:
 
 ### Deployment approach 4: Multi-region deployments
 
-You can use multiple Azure regions together to distribute your solution across a wide geographical area. You can use this multi-region approach to improve your solution's reliability or to support geographically distributed users. If data residency is an important concern for your solution, carefully consider which regions you use to ensure that your data is stored only in locations that meet your requirements.
+You can use multiple Azure regions together to distribute your solution across a wide geographical area. You can use this multi-region approach to improve your solution's reliability or to support geographically distributed users. By deploying into multiple regions, you also reduce the risk that you'll encounter a temporary resource capacity constraint in a single region. If data residency is an important concern for your solution, carefully consider which regions you use to ensure that your data is stored only in locations that meet your requirements.
 
 #### Active and passive regions
 
