@@ -15,7 +15,7 @@ categories:
 
 Azure Virtual Machines is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute for your workload. The guidance in this article provides architectural recommendations are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
+This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute to run your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -51,16 +51,17 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > - **Review Azure VM quotas and limits** that might pose design restrictions. VMs have specific limits and quotas, which vary based on the type of VM, the region, and other factors. There might be subscription restrictions, such as number of VMs per subscription, the number of cores per VM, and more. If your subscription is shared with other workloads, your consumption might be reduced.
 >      Check limits on [VMs](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [Virtual Machine Scale Sets](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [managed disks](/azure/azure-resource-manager/management/azure-subscription-service-limits#managed-virtual-machine-disks), and other components of the workload.
 >
-> - **Do failure mode analysis** to minimize points of failure, by focusing on VM interactions with the network and storage components. Opt for design choices such as ephemeral OS disks to localize disk access, avoiding network hops. Adding a load balancer can enhance self-preservation by distributing network traffic across multiple VMs, improving availability and reliability.
+> - **Do failure mode analysis** to minimize points of failure, by analyzing VM interactions with the network and storage components. Opt for design choices such as ephemeral OS disks to localize disk access, avoiding network hops. Adding a load balancer can enhance self-preservation by distributing network traffic across multiple VMs, improving availability and reliability.
 >
 > - **Calculate your composite Service Level Objectives (SLOs) based on Azure Service Level Agreements (SLAs)**. Ensure that your SLO isn't higher than the [Azure SLAs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) to avoid unrealistic expectations and potential issues.
 >
 >     Be aware of the _complexities introduced by dependencies_. For example, some dependencies like virtual network and NICs, don't have their own SLAs. Other dependencies, such as an associated data disk has SLAs that are integrated with VM SLAs. All those variations should be considered as they can impact VM performance and reliability.
 >
 >     _Factor in the critical dependencies_ of VMs on various components such as disks and networking components. Understanding these relationships is important for determining the critical flows that might impact reliability.
+>
 >     _Create state isolation_. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, a new OS disk can be spun up with the same data disk, ensuring resilience and fault isolation. See, [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
 >
-> - **Make VMs and dependencies redundant across zones**. If a VM fails, the _workload should continue to function due to resiliency_. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
+> - **Make VMs and dependencies redundant are across zones**. If a VM fails, the _workload should continue to function due to resiliency_. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
 >
 > - **Be ready to scale out** to prevent service level degradation and avoid failures. [Azure Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have scaling capabilities that can spin up new instances as required and distribute load across multiple VMs and availability zone.
 >
@@ -72,17 +73,17 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >     Dependencies and stateful components, such as attached storage, can complicate recovery. If disks go down, it can impact the functioning of the VMs. Include a clear process for these dependencies in your recovery plans.
 >
-> - **Run operations with rigor**. Reliability design choices must be supported by effective operations based on the principles of _monitoring, resiliency testing in production, automated application VM patches and upgrades, and consistency of deployments_ with configuration as code. For more information, see [Operational Excellence](#operational-excellence).
+> - **Run operations with rigor**. Reliability design choices must be supported by effective operations based on the principles of _monitoring, resiliency testing in production, automated application VM patches and upgrades, and consistency of deployments_. For operational guidance, see [Operational Excellence](#operational-excellence).
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(Scale set) **Use Azure Virtual Machine Scale Sets in [Flexible orchestration mode](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)** to deploy VMs. | You'll be able to future proof your application for scaling and take advantage of the high availability guarantees that spreads VMs across fault domains in a region an availability zone.|
-|(VMs) **Implement heath endpoints** on VMs that emit instance health status. <br> (Scale set) **[Enable automatic repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)** on the scale set by specifying the preferred _repair action_. <br> Consider setting a time frame during which automatic repairs are paused if state the virtual machine is changed. This strategy can prevent inadvertent or premature repair operations.|Availability is maintained even if an instance is deemed unhealthy. Automatic repairs initiate recovery by replacing the faulty instance.|
+|(VMs) **Implement heath endpoints** on VMs that emit instance health status. <br><br> (Scale set) **[Enable automatic repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)** on the scale set by specifying the preferred _repair action_. <br> Consider setting a time frame during which automatic repairs are paused if state the virtual machine is changed. |Availability is maintained even if an instance is deemed unhealthy. Automatic repairs initiate recovery by replacing the faulty instance. <br><br>Setting a time window can prevent inadvertent or premature repair operations.|
 |(Scale set) **[Enable overprovisioning](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)** on scale sets.|Overprovisioning can reduce deployment times with the cost benefit because the extra VMs aren't billed. |
 |(Scale set) Allow Flexible orchestration to **[max spread the VM instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#what-has-changed-with-flexible-orchestration-mode)** fault domains.| This option gives the ability to isolate fault domains. During maintenance periods, when one fault domain is updated, VM instances are available in the other fault domains.|
-|(Scale set) **[Deploy across availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones)** on scale sets.<br> Zone balance the instances to make sure they're equally spread across zones.| The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. <br> Keep in mind that there might be uneven number of instances across zones, depending on resource availability. Zone balancing supports availability by making sure if one zone is down, other zones have sufficient instances.|
+|(Scale set) **[Deploy across availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones)** on scale sets. Provision at least two instances in each zone.<br> [**Zone balance**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) the instances to make sure they're equally spread across zones.| The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. <br> Keep in mind that there might be uneven number of instances across zones, depending on resource availability. Zone balancing supports availability by making sure if one zone is down, other zones have sufficient instances. <br> Two instances in each zone provides a buffer during upgrades.|
 |(VMs) Take advantage of the **[capacity reservations feature](/azure/virtual-machines/capacity-reservation-overview)**. |The capacity is reserved for your use and is available within the scope of applicable Service Level Agreements (SLAs). They can be deleted when no longer needed and billing is consumption based.|
 
 >[!TIP]
@@ -92,7 +93,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying the approaches to the technical design around Azure Virtual Machines.
+The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Azure Virtual Machines.
 
 ##### Design checklist
 
@@ -110,7 +111,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Provide segmentation** to the VMs and scale sets by setting network boundaries, access controls, and also place VMs in resource groups that share the same lifecycle.
 >
-> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. _Use Microsoft Entra ID_ for authentication and authorization needs making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
+> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. _Use Microsoft Entra ID_ for authentication and authorization needs making sure of strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
 >
 >     Restrict resource access based on conditions using Azure Entra ID Conditional Access. _Define the conditional policies_ based on duration and the minimum set of permissions.
 >
@@ -146,7 +147,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
-The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making the tradeoffs necessary in the technical design related to Azure Virtual Machines and the environment in which they run.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Virtual Machines and the environment in which they run.
 
 ##### Design checklist
 
