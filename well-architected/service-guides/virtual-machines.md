@@ -61,9 +61,9 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >     _Create state isolation_. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, a new OS disk can be spun up with the same data disk, ensuring resilience and fault isolation. See, [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
 >
-> - **Make VMs and dependencies redundant are across zones**. If a VM fails, the _workload should continue to function due to resiliency_. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
+> - **Make VMs and dependencies redundant across zones**. If a VM fails, the _workload should continue to function due to redundancy. Include dependencies in your redundancy choices. For example, use built-in redundancy options available with disks, use zone redundant IPs, ensuring data availability and high uptime.
 >
-> - **Be ready to scale out** to prevent service level degradation and avoid failures. [Azure Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have scaling capabilities that can spin up new instances as required and distribute load across multiple VMs and availability zone.
+> - **Be ready to scale up and scale out** to prevent service level degradation and avoid failures. [Azure Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have auto scaling capabilities that can spin up new instances as required and distribute load across multiple VMs and availability zones.
 >
 > - **Explore the auto recovery options**. Azure supports health degradation monitoring and auto repair features to support self-healing for VMs. This could involve using Azure Site Recovery, having a passive standby to failover to, or redeploying from Infrastructure as Code (IAC). The chosen method should align with business requirements and organizational operations. For information, see [VM service disruptions](/azure/virtual-machines/overview#service-disruptions).
 >
@@ -103,7 +103,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Review the security baselines** for [Linux](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline), [Windows](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline) VMs and also [scale set baseline](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline).
 >
->     As part of your baseline technology choices, _evaluate VM SKUs that have security features_.
+>     As part of your baseline technology choices, _consider the security features of the VM SKUs that will support your workload_.
 >
 > - **Ensure timely and automated security patching and upgrades**. Make sure updates are automatically rolled out and validated with a well-defined process in place. Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates and maintain security compliance with critical updates.
 >
@@ -111,19 +111,19 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Provide segmentation** to the VMs and scale sets by setting network boundaries, access controls, and also place VMs in resource groups that share the same lifecycle.
 >
-> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. _Use Microsoft Entra ID_ for authentication and authorization needs making sure of strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
+> - **Apply access controls on identities** trying to reach the VMs and also VMs reaching other resources. _Use Microsoft Entra ID_ for authentication and authorization needs, making sure strong passwords, multi-factor authentication, and role-based access control (RBAC) are in place for your VMs (and its dependencies such as secrets) to permit allowed identities to only perform operations expected of their roles.
 >
->     Restrict resource access based on conditions using Azure Entra ID Conditional Access. _Define the conditional policies_ based on duration and the minimum set of permissions.
+>     Restrict resource access based on conditions using Azure Entra ID Conditional Access. _Define the conditional policies_ based on duration and the minimum set of required permissions.
 >
-> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and put network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks and _use load balancers and firewalls rules_ to protect against malicious traffic and data exfiltration attacks.
+> - **Use network controls to restrict ingress and egress traffic**. Place VMs and scale sets in Azure Virtual Network for isolation and define network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks and _use load balancers and firewalls rules_ to protect against malicious traffic and data exfiltration attacks.
 >
 >     Use [Azure Bastion](/azure/bastion/bastion-overview) provides _secure connectivity to the VMs for operational access_.
 >
 >     Communication to and from the VMs to PaaS services should be over _private endpoints_.
 >
-> - **Reduce the attack surface** by hardening OS images and removing unused components. _Use smaller images_ and remove binaries that are not required to run the workload. Additionally, _tighten VM configurations_ by removing default accounts, ports, and other settings that aren't needed.
+> - **Reduce the attack surface** by hardening OS images and removing unused components. _Use smaller images_ and remove binaries that are not required to run the workload. Additionally, _tighten VM configurations_ by removing default accounts, ports, and other features that aren't needed.
 >
-> - **Protect secrets** such as certificates needed for data in transit authentication. Consider using the Azure Key Vault extension ([Windows](/azure/virtual-machines/extensions/key-vault-windows), [Linux](/azure/virtual-machines/extensions/key-vault-linux)) that provides _automatic refresh of certificates_ stored in an Key Vault. When it detects a change in the certificates, the extension retrieves and installs the corresponding certificates.
+> - **Protect secrets** such as certificates needed for the protection of data in transit. Consider using the Azure Key Vault extension ([Windows](/azure/virtual-machines/extensions/key-vault-windows), [Linux](/azure/virtual-machines/extensions/key-vault-linux)) that provides _automatic refresh of certificates_ stored in a Key Vault. When it detects a change in the certificates, the extension retrieves and installs the corresponding certificates.
 >
 > - **Threat detection**. Monitor VMs for threats and misconfigurations. Use [Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) to capture VM and OS changes, and maintain an audit trail of access, new accounts, and changes in permissions.
 >
@@ -159,7 +159,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Cost guardrails**. Use governance policies to restrict resource types, configurations, and locations. Additionally, use role-based access control to block actions that can lead to overspending.
 >
-> - **Choose the right resources**. You selection of VM plan sizes and SKUs have a direct impact on the overall cost. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptable processes? Each SKU has associated disk options that impacts the overall cost.
+> - **Choose the right resources**. Your selection of VM plan sizes and SKUs have a direct impact on the overall cost. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes? Each SKU has associated disk options that impact the overall cost.
 >
 > - **Choose the right capabilities for dependent resources**. Save on backup storage costs for the vault-standard tier using Azure Backup Storage reserved capacity. It offers a discount when you commit to a reservation for either one year or three years.
 >
@@ -255,16 +255,18 @@ Start your design strategy based on the [**design review checklist for Performan
 > - **Take into account the dependent services**. Workload dependencies that interact with the VMs can impact performance. For example, caching, network traffic, and CDN. Also consider  geographical distribution (zones, regions), which can add latency.
 >
 > - **Collect performance data**. Follow the [Operational Excellence best practices](#operational-excellence) for monitoring and deploy the appropriate extensions to view metrics that track against performance indicators.
+> - **Proximity placement groups**. Use [proximity placement groups](/azure/virtual-machine-scale-sets/proximity-placement-groups) in workloads where low latency is a requirement to ensure VMs are physically located close to each other.
 
+> - *VM performance tuning*. Take advantage of VMs performance optimization and enhancing features as required by the workload. For example, locally attached NVMe for high performance use cases, accelerated networking, and Premium SSD v2 for  better performance and scalability.
 ##### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
 |(VMs, Scale set) [**Choose SKUs for VMs**](/azure/virtual-machines/sizes) that align with your capacity planning. <br><br>Have a good understanding of your workload requirements, including the number of cores, memory, storage, and network bandwidth so that you can filter out unsuitable SKUs.|Right sizing your VMs is a fundamental decision that can have a significant impact on the performance of your workload. Without the right set of VMs, you can experience performance issues and accrue unnecessary costs.|
-|(VMs, Scale set)  Deploy VMs in [**proximity placement groups**](/azure/virtual-machine-scale-sets/proximity-placement-groups). | Proximity placement groups reduce the physical distance between Azure compute resources, which can improve performance and reduce network latency between stand-alone VMs, VMs in multiple availability sets, or multiple scale sets. |
+|(VMs, Scale set) Deploy latency-sensitive workload VMs in [**proximity placement groups**](/azure/virtual-machine-scale-sets/proximity-placement-groups). | Proximity placement groups reduce the physical distance between Azure compute resources, which can improve performance and reduce network latency between stand-alone VMs, VMs in multiple availability sets, or multiple scale sets. |
 |(VMs, Scale set)  Set the [**storage profile**](/azure/virtual-machines/disks-types) by analyzing disk performance of existing workloads and the chosen VM SKU. <br><br> Use Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) for production VMs. Adjust the performance of disks with Premium SSD v2. <br><br>Use locally attached NVMe devices.|Premium SSDs deliver high-performance and low-latency disk support VMs with IO-intensive workloads. <br> Premium SSD v2 doesn't require disk resizing enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. <br><br> When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases requiring high IOPS and low latency.|
 | (VMs) Consider enabling [Accelerated networking](/azure/virtual-network/accelerated-networking-overview).| It enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
-|(VMs, Scale set) [**Set autoscale rules**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal) to increase or decrease the number of VM instances in your scale set based on demand.| If your application demand increases, the load on the VM instances in your scale set increases. If this increased load is consistent, autoscale rules ensure that you have enough resources to meet the demand. |
+|(VMs, Scale set) [**Set autoscale rules**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal) to increase or decrease the number of VM instances in your scale set based on demand.| If your application demand increases, the load on the VM instances in your scale set increases. Autoscale rules ensure that you have enough resources to meet the demand. |
 
 
 ## Azure policies
