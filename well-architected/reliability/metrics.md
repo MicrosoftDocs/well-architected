@@ -44,6 +44,25 @@ Highest-level reliability and recovery requirements and correlated metrics might
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
+
+##### Set objectives
+
+Reliability objectives represent the intent of quality of a workload, as promised to its users. Service Level Objectives (SLOs) are a standard way to track end-to-end user experience, which can comprise several flows. SLOs are business metrics defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+
+Objective setting exercises are driven by financial goals where business requirements are mapped to measurable numerical values. Stakeholders set estimates for user flows, taking into consideration, for example, that an hour of downtime for a flow during regular business hours results in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain reputation. 
+
+For a workload owner, SLOs can be the driver for many technical decisions. For example,
+
+- Serve as a critical input into architectural decisions when you consider additional dependencies.
+- Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on reliability, new feature development, and other task.
+- Act as a primary signal for deployment operations, driving automated rollback if issues occur, and providing validation that changes achieved the expected user experience improvement.
+- Speed up redmediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
+
+SLOs must be measurable and based on time. Ideally, the calculation should be automated. If an SLO can be measured in units within a time window, systems can emit those units and measure over time. However, if the contributing factors are  nuanced, it may be harder to automate. 
+
+SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
+
+
 ### Availability metrics
 
 #### SLOs and SLAs
