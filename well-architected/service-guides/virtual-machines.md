@@ -279,6 +279,8 @@ Azure provides an extensive set of built-in policies related to Azure VMs and th
 - Only approved virtual machine extensions are installed.
 - Azure Monitor Agent and the Dependency agents are enabled on new virtual machines in your Azure environment.  
 - Only the allowed VM SKUs are deployed to limit sizes according to cost constraints.
+- Private endpoints are used to access disk resources.
+- Vulnerability detection is enabled. There are specialized rules for Windows machines. For example, schedule Windows Defender to scan every day.
 
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might impact the security of the compute layer.
