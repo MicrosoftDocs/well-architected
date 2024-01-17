@@ -32,6 +32,7 @@ Consider using the following metrics to quantify the business requirements.
 
 Define the workload's target values for these metrics in the context of user flows and system flows. [Identify and score those flows](identify-flows.md) by how critical they are to your requirements. Use the values to drive the design of your workload in terms of architecture, review, testing, and incident management operations. Failure to meet the targets will affect the business beyond the tolerance level.
 
+
 ## Key design strategies
 
 Technical discussions shouldn't drive how you define reliability targets for your critical flows. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs.
@@ -45,11 +46,9 @@ Highest-level reliability and recovery requirements and correlated metrics might
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
 
-##### Set objectives
+### Availability objectives
 
-Reliability objectives represent the intent of quality of a workload, as promised to its users. Service Level Objectives (SLOs) are a standard way to track end-to-end user experience, which can comprise several flows. SLOs are business metrics defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
-
-Objective setting exercises are driven by financial goals where business requirements are mapped to measurable numerical values. Stakeholders set estimates for user flows, taking into consideration, for example, that an hour of downtime for a flow during regular business hours results in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain reputation. 
+Reliability objectives represent the quality goal of a workload, as promised to its users. Service Level Objectives (SLOs) are a standard way to track end-to-end user experience. SLOs are metrics defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
 
 For a workload owner, SLOs can be the driver for many technical decisions. For example,
 
@@ -57,10 +56,44 @@ For a workload owner, SLOs can be the driver for many technical decisions. For e
 - Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on reliability, new feature development, and other task.
 - Act as a primary signal for deployment operations, driving automated rollback if issues occur, and providing validation that changes achieved the expected user experience improvement.
 - Speed up redmediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
+    
+The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependent services only achieves 99.8% availability, the overall SLO is still 99.99%.
 
 SLOs must be measurable and based on time. Ideally, the calculation should be automated. If an SLO can be measured in units within a time window, systems can emit those units and measure over time. However, if the contributing factors are  nuanced, it may be harder to automate. 
 
 SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
+
+> [!IMPORTANT]
+> 
+> It is important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. 
+>
+> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, SLOs must always be higher than the declared SLA to avoid negative consequences. 
+
+##### Set your availability objective
+
+Objective setting exercises are driven by financial goals where business requirements are mapped to measurable metrics.
+
+Stakeholders set estimates for user experience, which can comprise several flows. Identify which flows are critical from the perspective of the user.
+
+They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation. 
+
+##### Measuring the availability objective
+
+An SLO is a calculated from the Service Level Indicators (SLIs) of the flows. SLIs are at component-level and the quality is measured by the type of component. Here are the common categories:
+
+- **Components that expose a request/response style API**. 
+
+- **Components that query APIs**. 
+
+- **Compute components**. 
+
+- **Job processing components**
+
+
+--------
+For many flows, SLIs include latency, throughput, error rate, and availability. A good SLI helps you identify when an SLO is at risk of being breached. Correlate the SLI to specific customers when possible.
+
+To avoid collecting useless metrics, limit the number of SLIs for each flow. Aim for three SLIs per flow if possible.
 
 
 ### Availability metrics
