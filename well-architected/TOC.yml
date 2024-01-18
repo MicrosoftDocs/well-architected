@@ -437,7 +437,7 @@
             - name: Operational excellence
               href: service-guides/traffic-manager/operational-excellence.md
         - name: Virtual Machines
-          href: service-guides/virtual-machines-review.md
+          href: service-guides/virtual-machines.md
     - name: Cross-cutting guides
       items:
       - name: Health model
