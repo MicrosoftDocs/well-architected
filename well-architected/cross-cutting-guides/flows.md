@@ -143,10 +143,12 @@ Periodically review the flow against set targets and industry standards. Use fee
 
 ## Next steps
 
-Use the Well-Architected Framework to optimize flows:
+As you iterate on the flow design, use the Well-Architected Framework to optimize flows from the perspective of each pillar:
 
 - [Flow reliability](/azure/well-architected/reliability/identify-flows)
+- [Flow security](/azure/well-architected/security/secure-development-lifecycle#requirements-phase)
 - [Flow cost optimization](/azure/well-architected/cost-optimization/optimize-flow-costs)
+- [Flow operational excellence](/azure/well-architected/operational-excellence/observability#key-design-strategies)
 - [Flow performance efficiency](/azure/well-architected/performance-efficiency/prioritize-critical-flows)
 
 ## Flow examples
