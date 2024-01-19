@@ -73,7 +73,7 @@ For more information, see [Flow examples](#flow-examples).
 
 Identifying the requirements of a flow involves determining the specific functional and technical requirements that a flow must meet to support its use case. It ensures the flow meets the needs of the use case and determines the design of the flow.
 
-#### Identify functional requirements of the flow
+#### Identify the functional requirements of the flow
 
 Functional requirements of a flow are directly derived from its use case definition:
 
@@ -89,7 +89,7 @@ Functional requirements of a flow are directly derived from its use case definit
 
 Aligning functional requirements with the use case definition allows you to design flows that effectively support specific business processes and needs.
 
-#### Identify technical requirements of the flow
+#### Identify the technical requirements of the flow
 
 The functional requirements derived from the use cases lay the groundwork for establishing specific technical requirements. Define specific, measurable targets for the flow across the five WAF pillars. These pillars form a framework for setting clear, measurable targets that align with business and organizational objectives.
 
