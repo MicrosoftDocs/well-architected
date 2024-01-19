@@ -116,14 +116,12 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Change tracking and inventory
 
-[**Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks changes in virtual machines hosted in Azure, on-premises, and other cloud environments to help you pinpoint operational and environmental issues with software managed by the Distribution Package Manager. Items that are tracked by Change Tracking and Inventory include:
+[**Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in virtual machines. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by Change Tracking and Inventory include:
 
-- Windows software
-- Linux software (packages)
-- Windows and Linux files
+- Installed Windows and Linux software
+- Key Windows and Linux files
 - Windows registry keys
-- Windows services
-- Linux daemon
+- Windows services and Linux daemons
 
 ## Related links
 
