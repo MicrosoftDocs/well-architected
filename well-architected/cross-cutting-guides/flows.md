@@ -65,7 +65,7 @@ You also need to capture basic information about the flow. Make sure to include 
 
 - *Business impact*: The importance of this flow to the business.
 
-- *Criticality rating*: A qualitative label that indicates the
+- *Criticality rating*: A qualitative label that indicates the relative importance of the flow.
 
 For more information, see [Flow examples](#flow-examples).
 
@@ -153,7 +153,7 @@ Use the Well-Architected Framework to optimize flows:
 
 Here are a few flow examples to help you design your flows. The examples use the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis and shows the documentation you should have on each flow.
 
-:::image type="content" source="./_images/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
+:::image type="content" source="./_images/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="./_images/relecloud-flow.png":::
 
 ### User flow 1: Create upcoming concerts
 
