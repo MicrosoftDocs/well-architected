@@ -13,7 +13,7 @@ The article provides a guide for designing flows within a workload. Flows are se
 
 ## The importance of flows in workload design
 
-Addressing each part of a workload as a separate flow allows for a granular approach to workload design and optimization. This method recognizes that different parts of a workload have unique needs. By concentrating on individual flows, it's easier to meet those needs without over or under provisioning resources. It allows you to meet reliability, security, cost management, operations, and performance targets efficiently.
+Dividing a workload into flows allows you design and optimize a workload more efficiently. Different parts of a workload have different needs. The reliability, security, cost, operations, and performance needs aren't uniform across the workload. By focusing on individual flows, you can prioritize different parts of the workload and meet those needs efficiently.
 
 ## How to design a flow
 
