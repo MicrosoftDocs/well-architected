@@ -23,17 +23,15 @@ Flow design starts with defining the flow and includes identifying its requireme
 
 ### Define the flow
 
-Defining flows is the process of understanding the flows that your workload needs. It's essential to building new flows properly and optimizing existing flows efficiently. To define flows, you need to identify both the business process and use case it supports (*see figure 2*).
+Defining flows is about understanding the flows you need to design. You must identify the business process and use case (prerequisites) a flow supports before you can document the flow's definition (*see figure 2*).
 
 :::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a "Business process" with segments marked "Stage 1," "Stage 2," and "Stage n," indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with "Use case, " "Use case 2," and "Use case n" respectively. Each square contains a unique flowchart with labeled flows "Flow 1," "Flow 2," and "Flow n." The use cases are all part of a single "Workload." Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
 
-#### Identify the business process
+#### Understand the prerequisites
 
-You need to identify the business process the flow supports. A business process is a series of actions (stages) that fulfill a business requirement. Flows determine the sequence a user or data takes to accomplish each stage of a business process. For example, selling products online is a business process. The stages in this business process might be listing the product online, receiving orders, and delivering the product. You must design a flow to support each of these stages.
+The prerequisites to defining a flow is understanding the business process and use case the flow supports. A business process is a series of actions (stages) that fulfill a business requirement. Flows determine the sequence a user or data takes to accomplish each stage of a business process. For example, selling products online is a business process. The stages in this business process might be listing the product online, receiving orders, and delivering the product.
 
-#### Identify the use case
-
-From business processes, uses cases emerge. Use cases are integral in capturing functional requirements aligned with business process needs. Each use case must support a stage in a business process. A use case should include the following elements:
+From business processes, uses cases emerge. Each use case should support a stage in a business process. Use cases define the functional requirements of flows. A use case should include the following elements:
 
 - *Purpose*: Clearly articulate the tasks or objectives, like enabling online purchases. This clarity guides the functional design and sets clear goals.
 
@@ -47,9 +45,9 @@ From business processes, uses cases emerge. Use cases are integral in capturing 
 
 - *Dependencies*: Identify interdependencies with other use cases or components for seamless integration and risk management.
 
-#### Document the flow
+#### Document the flow definition
 
-Based on the use case, you should detail each action in the flow. Ensure alignment with the use case's purpose and objectives. Outline decision-making criteria and resultant pathways within the flow. Identify interactions with other use cases or system components, ensuring smooth data exchange and integration. This flow definition serves as a blueprint for flow design and management.
+Based on the use case, you should document the flow definition. The flow definition is an outline of each action in the flow. Ensure alignment with the use case's purpose and objectives. Outline decision-making criteria and resultant pathways within the flow. Identify interactions with other use cases or system components, ensuring smooth data exchange and integration. This flow definition serves as a blueprint for flow design and management.
 
 You also need to capture basic information about the flow. Make sure to include the following details in the flow documentation:
 
@@ -79,11 +77,11 @@ Functional requirements of a flow are directly derived from its use case definit
 
 - *Criticality*: The value assigned to a use case informs the prioritization and design of the flow. High-value use cases might require enhanced error handling, performance tuning, or user experience considerations.
 
-- *Consumers*: Understanding the flow's users or interacting components is crucial. This knowledge shapes design decisions like interface complexity, terminology, and interaction style. For user flows, it enhances user experience design; for system flows, it ensures component compatibility.
+- *Consumers*: Understanding the flow's users or interacting components is crucial. This knowledge shapes design decisions like interface complexity, terminology, and interaction style. For user flows, it enhances user experience design. For system flows, it ensures component compatibility.
 
 - *Events*: Events defining the start and end of a use case shape the flow's boundaries. They also inform frequency and timing considerations, impacting scalability and capacity planning.
 
-- *Execution*: The variability and frequency of a use case's execution dictate the flow's robustness and scalability. Flows should be designed to handle different scenarios and loads efficiently.
+- *Execution*: The variability and frequency of a use case's execution dictate the flow's scalability. Flows should be designed to handle different scenarios and loads efficiently.
 
 - *Dependencies*: Recognizing a use case's dependencies aids in designing flows that integrate smoothly with other system parts. Ensuring the availability of necessary inputs and compatibility of outputs with subsequent processes is vital.
 
