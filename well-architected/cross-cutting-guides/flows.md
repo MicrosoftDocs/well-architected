@@ -1,12 +1,21 @@
-# How to design flows in a workload
+---
+title: Effective workload flow design
+description: Discover expert strategies for designing efficient flows within workloads. Learn about the importance of flow design, its iterative process, and best practices. Explore our guide to defining flows, identifying requirements, and building optimized, user-centric flows that align with reliability, security, and performance goals. Ideal for IT professionals and business analysts seeking to enhance operational efficiency and workload management.
+author: stephen-sumner
+ms.author: ssumner
+ms.date: 1/31/2024
+ms.topic: conceptual
+---
+
+# Effective workload flow design
 
 The article provides a guide for designing flows within a workload. Flows are sequences of actions aimed at achieving specific outcomes. Flow design determines the efficiency of user interactions (user flows) and system communication (system flows). Proper flow design improves how you build new flows and optimize existing flows.
 
-## Flow importance
+## The importance of flows in workload design
 
 Addressing each part of a workload as a separate flow allows for a granular approach to workload design and optimization. This method recognizes that different parts of a workload have unique needs. By concentrating on individual flows, it's easier to meet those needs without over or under provisioning resources. It allows you to meet reliability, security, cost management, operations, and performance targets efficiently.
 
-## Flow design process
+## How to design a flow
 
 It begins with understanding the defining the flow, identifying requirements, and building it. Flow design is inherently iterative. Certain aspects of the flow design that are theoretical at the start become clearer. You should repeat the flow design process iteratively for the lifecycle of the flow (*see figure 1*).
 
@@ -132,6 +141,14 @@ As you design a flow, follow flow design best practices. A well-designed flow ha
 
 Periodically review the flow against set targets and industry standards. Use feedback from monitoring and audits to improve the flow. Adjust targets and processes as necessary to align with changing business needs or technological advancements.
 
+## Next steps
+
+Use the Well-Architected Framework to optimize flows:
+
+- [Flow reliability](/azure/well-architected/reliability/identify-flows)
+- [Flow cost optimization](/azure/well-architected/cost-optimization/optimize-flow-costs)
+- [Flow performance efficiency](/azure/well-architected/performance-efficiency/prioritize-critical-flows)
+
 ## Flow examples
 
 Here are a few flow examples to help you design your flows. The examples use the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis and shows the documentation you should have on each flow.
@@ -233,10 +250,3 @@ Here are a few flow examples to help you design your flows. The examples use the
 - *Business impact*: This flow is essential for the business's monitoring and continuous improvement efforts. It needs to be as redundant and resilient as possible. The operations team is responsible for quickly restoring this flow after any failure to avoid missing critical information and warnings. If the flow fails to achieve the expected availability, there's a risk of overlooking production issues, potentially leading to severe consequences. To mitigate this risk, the operations department aims for 99% uptime, 24/7. They must schedule maintenance-related downtime at least 48 hours in advance.
 
 - *Criticality rating*: Medium.
-
-## Reliability checklist
-
-Refer to the complete set of recommendations.
-
-> [!div class="nextstepaction"]
-> [Reliability checklist](checklist.md)
