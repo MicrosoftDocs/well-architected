@@ -102,6 +102,12 @@ GitHub Actions goes beyond just DevOps and enables you to run workflows when oth
 
 - Integrate source control.
 
+**Azure Update Manager** - [Update Manager](/azure/update-manager/overview) is a unified service to help manage and govern updates for all your machines. You can monitor Windows and Linux update compliance across your deployments in Azure, on-premises, and on other cloud platforms from a single dashboard. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window. Use Update Manager to:
+
+- Oversee compliance on your entire fleet of machines.
+- Schedule recurring updates
+- Deploy critical updates
+
 **Azure Deployment Environments**: [Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) enables development teams to quickly create consistent app infrastructure by using project-based templates. These templates minimize setup time and maximize security, compliance, and cost efficiency. A deployment environment is a collection of Azure resources that are deployed in predefined subscriptions. Development infrastructure administrators can enforce enterprise security policies and provide a curated set of predefined IaC templates.
 
 Development infrastructure administrators define deployment environments as catalog items. Catalog items are hosted in a GitHub or Azure DevOps repository, called a *catalog*. A catalog item consists of an IaC template and a manifest.yaml file.
@@ -121,6 +127,7 @@ For an example of using Automation in tandem with other Azure services, see [Ops
 ## Related links
 
 - [Automation](/azure/automation/overview)
+- [Azure Update Manager](/azure/update-manager/overview)
 - [Azure Functions](/azure/azure-functions/functions-overview)
 - [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups)
 - [Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments)
