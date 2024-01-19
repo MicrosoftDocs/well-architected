@@ -17,23 +17,23 @@ Addressing each part of a workload as a separate flow allows for a granular appr
 
 ## How to design a flow
 
-It begins with understanding the defining the flow, identifying requirements, and building it. Flow design is inherently iterative. Certain aspects of the flow design that are theoretical at the start become clearer. You should repeat the flow design process iteratively for the lifecycle of the flow (*see figure 1*).
+Flow design starts with defining the flow and includes identifying its requirements and building it. Flow design is inherently iterative. You need iterations to refine flow design. Certain aspects that are theoretical at the start become clearer as you go. You should repeat the flow design process iteratively for the lifecycle of the flow (*see figure 1*).
 
 :::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a seven step process divided into three stages. The first stage is define the flow. It's three steps are to define the process, define the use case, and document the flow. The second stage is to identify the flow requirements. It's two steps are to identify the functional requirements and identify the technical requirements. The third stage is to build the flow. It's two steps are to follow flow design best practices and build and test the flow." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The flow design process.*
 
 ### Define the flow
 
-Defining flows is the process of understanding the flows that your workload needs. It's essential to building new flows properly and optimizing existing flows efficiently. To define flows, you need to define both the business process and use case it supports (*see figure 2*).
+Defining flows is the process of understanding the flows that your workload needs. It's essential to building new flows properly and optimizing existing flows efficiently. To define flows, you need to identify both the business process and use case it supports (*see figure 2*).
 
 :::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a "Business process" with segments marked "Stage 1," "Stage 2," and "Stage n," indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with "Use case, " "Use case 2," and "Use case n" respectively. Each square contains a unique flowchart with labeled flows "Flow 1," "Flow 2," and "Flow n." The use cases are all part of a single "Workload." Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
 
-#### Define the business process
+#### Identify the business process
 
-You need to define or identify the business process the flow supports. A business process is a series of actions (stages) that fulfill a business requirement. Flows determine the sequence a user or data takes to accomplish each stage. For example, selling products online is a business process. The stages in this business process might be listing the product online, receiving orders, and delivering the product. A flow supports each of these stages.
+You need to identify the business process the flow supports. A business process is a series of actions (stages) that fulfill a business requirement. Flows determine the sequence a user or data takes to accomplish each stage of a business process. For example, selling products online is a business process. The stages in this business process might be listing the product online, receiving orders, and delivering the product. You must design a flow to support each of these stages.
 
-#### Define the use case
+#### Identify the use case
 
-Use cases are integral in capturing functional requirements aligned with business process needs. Each use case supports a specific stage in a business process, ensuring focused and efficient functionality. Key elements of a use case include:
+From business processes, uses cases emerge. Use cases are integral in capturing functional requirements aligned with business process needs. Each use case must support a stage in a business process. A use case should include the following elements:
 
 - *Purpose*: Clearly articulate the tasks or objectives, like enabling online purchases. This clarity guides the functional design and sets clear goals.
 
@@ -91,7 +91,7 @@ Aligning functional requirements with the use case definition allows you to desi
 
 #### Identify the technical requirements of the flow
 
-The functional requirements derived from the use cases lay the groundwork for establishing specific technical requirements. Define specific, measurable targets for the flow across the five WAF pillars. These pillars form a framework for setting clear, measurable targets that align with business and organizational objectives.
+The functional requirements derived from the use cases lay the groundwork for establishing specific technical requirements. Define specific, measurable targets for the flow across the five pillars of the Well-Architected Framework (WAF). These pillars form a framework for setting clear, measurable targets that align with business and organizational objectives.
 
 - *Reliability*: Assess each flow's importance and set reliability targets accordingly. Determine performance thresholds and establish clear service level agreements (SLAs) and objectives (SLOs). Higher criticality flows require more stringent reliability targets.
 
@@ -143,7 +143,7 @@ Periodically review the flow against set targets and industry standards. Use fee
 
 ## Next steps
 
-As you iterate on the flow design, use the Well-Architected Framework to optimize flows from the perspective of each pillar:
+Repeat the process define here throughout the lifecycle of the flow. As you iterate on the flow design, use the Well-Architected Framework to optimize flows from the perspective of each pillar:
 
 - [Flow reliability](/azure/well-architected/reliability/identify-flows)
 - [Flow security](/azure/well-architected/security/secure-development-lifecycle#requirements-phase)
