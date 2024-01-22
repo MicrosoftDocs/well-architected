@@ -77,25 +77,42 @@ Stakeholders set estimates for user experience, which can comprise several flows
 
 They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation. 
 
-The quality of Azure services has a significant impact on the workload SLO. However, there are nuanced factors that can affect the SLO target. Here are some examples you might want to consider when setting your objective:
+The quality of workload components (both Azure services and application components) have a significant impact on the workload SLO. When setting objectives, consider these major classes of services:
+
+- Components that expose a request/response style API. 
+
+- Components that query APIs. 
+
+- Compute components. 
+
+- Job processing components.
+
+
+There are different types of user interaction that must be factored in, such as:
+
+- Control/management plane access for public-facing Azure services. 
+
+- Azure portal interactions.
+
+- Data plane access for interacting with your service, for instance, CRUD (create, read, update, delete) operations.
+
+There are also several nuanced factors that can affect the SLO target. Here are some examples:
 
 - Does your release process involve downtime?
+
 - What’s the likelihood of introducing bugs? If the workload integrates with other systems, there may be integration bugs that you need to consider.
+
 - How do routine operations, for instance, patching, impact the availability target? Have you factored in third-party dependencies?
+
 - Is your staff big enough to support 24/7 emergency and emergency backup on call rotation?
+
 - Does the application have noisy neighbors (outside your scope of control) that could potentially cause disruptions?
 
 #### Measure the availability objective
 
 An SLO is a calculated from the Service Level Indicators (SLIs) of the flows. SLIs are at component-level and the quality is measured by the type of component. Here are the common categories:
 
-- **Components that expose a request/response style API**. 
 
-- **Components that query APIs**. 
-
-- **Compute components**. 
-
-- **Job processing components**
 
 
 --------
