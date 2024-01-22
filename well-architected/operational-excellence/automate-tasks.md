@@ -102,7 +102,7 @@ GitHub Actions goes beyond just DevOps and enables you to run workflows when oth
 
 - Integrate source control.
 
-**Azure Update Manager** - [Update Manager](/azure/update-manager/overview) is a unified service to help manage and govern updates for all your machines. You can monitor Windows and Linux update compliance across your deployments in Azure, on-premises, and on other cloud platforms from a single dashboard. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window. Use Update Manager to:
+**Azure Update Manager**: [Update Manager](/azure/update-manager/overview) is a unified service to help manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window. Use Update Manager to:
 
 - Oversee compliance on your entire fleet of machines.
 - Schedule recurring updates
