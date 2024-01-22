@@ -133,7 +133,7 @@ As you design a flow, follow flow design best practices. A well-designed flow ha
 
 Periodically review the flow against set targets and industry standards. Use feedback from monitoring and audits to improve the flow. Adjust targets and processes as necessary to align with changing business needs or technological advancements.
 
-## Next steps
+## Optimize flows
 
 Repeat the process define here throughout the lifecycle of the flow. As you iterate on the flow design, use the Well-Architected Framework to optimize flows from the perspective of each pillar:
 
