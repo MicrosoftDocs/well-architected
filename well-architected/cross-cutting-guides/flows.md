@@ -9,11 +9,11 @@ ms.topic: conceptual
 
 # Effective flow design in a workload
 
-This article provides guidance for designing flows in a workload. Flows allow you to prioritize critical parts of a workload without overinvesting in less critical parts. Proper flow design is a key component of a well-architected workload.
-
-Flows are sequences of actions that provide workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components. Despite the distinctions, you apply the same flow design process to any flow. Flow design has three primary steps: (1) define the flow, (2) identify flow requirements, (3) and build the flow. (*see figure 1*).
+This article provides guidance for designing flows in a workload. Flows allow you to prioritize critical parts of a workload without overinvesting in less critical parts. Proper flow design is a key component of a well-architected workload. Flow design has three primary steps: (1) define the flow, (2) identify flow requirements, (3) and build the flow. (*see figure 1*).
 
 :::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a 3 step process with 7 actions. The first step is define the flow. To define the flow, you need to understand prerequisites and document the flow. The second step is to identify the flow requirements. To identify flow requirements, you need to identify the functional requirements and identify the technical requirements. The third step is to build the flow. To build the flow, you need to follow flow design best practices and build and test the flow." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The flow design process.*
+
+Flows are sequences of actions that provide workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components. Despite the distinctions, you apply the same flow design process to any flow. Here's detailed guidance on designing flows:
 
 ## Define the flow
 
