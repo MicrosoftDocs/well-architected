@@ -48,7 +48,7 @@ Highest-level reliability and recovery requirements and correlated metrics might
 
 ### Availability objectives
 
-Reliability objectives represent the quality goal of a workload, as promised to its users. Service Level Objectives (SLOs) are a standard way to track end-to-end user experience. SLOs are metrics defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+Reliability objectives represent the quality goal of a workload, as promised to its users and its business stakeholders. Service Level Objectives (SLOs) are a standard way to evaluate the quality of the end-to-end user experience with respect to the desired goal. SLOs are targets defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
 
 For a workload owner, SLOs can be the driver for many technical decisions. For example,
 
@@ -63,11 +63,10 @@ SLOs must be measurable and based on time. Ideally, the calculation should be au
 
 SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
 
-> [!IMPORTANT]
-> 
-> It is important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. 
->
-> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, SLOs must always be higher than the declared SLA to avoid negative consequences. 
+> [!CAUTION]
+> |&nbsp;|
+> |---|
+> | It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. <br> <br> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences. |
 
 ##### Set your availability objective
 
@@ -77,7 +76,7 @@ Stakeholders set estimates for user experience, which can comprise several flows
 
 They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation. 
 
-##### Measuring the availability objective
+##### Measure the availability objective
 
 An SLO is a calculated from the Service Level Indicators (SLIs) of the flows. SLIs are at component-level and the quality is measured by the type of component. Here are the common categories:
 
