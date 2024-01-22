@@ -1,5 +1,5 @@
 ---
-title: Effective workload flow design
+title: Effective flow design in a workload
 description: Discover expert strategies for designing efficient flows within workloads. Learn about the importance of flow design, its iterative process, and best practices. Explore our guide to defining flows, identifying requirements, and building optimized, user-centric flows that align with reliability, security, and performance goals. Ideal for IT professionals and business analysts seeking to enhance operational efficiency and workload management.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 1/31/2024
 ms.topic: conceptual
 ---
 
-# Effective workload flow design
+# Effective flow design in a workload
 
 The article provides a guide for designing flows within a workload. Flows are sequences of actions aimed at achieving specific outcomes. Flow design determines the efficiency of user interactions (user flows) and system communication (system flows). Proper flow design improves how you build new flows and optimize existing flows.
 
