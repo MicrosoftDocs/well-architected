@@ -64,11 +64,12 @@ SLOs must be measurable and based on time. Ideally, the calculation should be au
 SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
 
 > [!CAUTION]
-> |&nbsp;|
-> |---|
-> | It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. <br> <br> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences. |
+>
+> It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. 
+>
+> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences. |
 
-##### Set your availability objective
+#### Set your availability objective
 
 Objective setting exercises are driven by financial goals where business requirements are mapped to measurable metrics.
 
@@ -76,7 +77,15 @@ Stakeholders set estimates for user experience, which can comprise several flows
 
 They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation. 
 
-##### Measure the availability objective
+The quality of Azure services has a significant impact on the workload SLO. However, there are nuanced factors that can affect the SLO target. Here are some examples you might want to consider when setting your objective:
+
+- Does your release process involve downtime?
+- What’s the likelihood of introducing bugs? If the workload integrates with other systems, there may be integration bugs that you need to consider.
+- How do routine operations, for instance, patching, impact the availability target? Have you factored in third-party dependencies?
+- Is your staff big enough to support 24/7 emergency and emergency backup on call rotation?
+- Does the application have noisy neighbors (outside your scope of control) that could potentially cause disruptions?
+
+#### Measure the availability objective
 
 An SLO is a calculated from the Service Level Indicators (SLIs) of the flows. SLIs are at component-level and the quality is measured by the type of component. Here are the common categories:
 
