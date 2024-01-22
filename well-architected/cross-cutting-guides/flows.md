@@ -11,23 +11,19 @@ ms.topic: conceptual
 
 The article provides a guide for designing flows within a workload. Flows are sequences of actions aimed at achieving specific outcomes. Flow design determines the efficiency of user interactions (user flows) and system communication (system flows). Proper flow design improves how you build new flows and optimize existing flows.
 
-## The importance of flows in workload design
-
-When you divide a workload into flows, it allows you to design and optimize a workload more efficiently. Different parts of a workload have different needs. The reliability, security, cost, operations, and performance needs aren't uniform across the workload. By focusing on individual flows, you can prioritize different parts of the workload and meet those needs efficiently.
-
-## How to design a flow
-
-Flow design starts with defining the flow and includes identifying its requirements and building it. Flow design is inherently iterative. You need iterations to refine flow design. Certain aspects that are theoretical at the start become clearer as you go. You should repeat the flow design process iteratively for the lifecycle of the flow (*see figure 1*).
+*Importance of flows*: When you divide a workload into flows, you can design and optimize a workload more efficiently. Different parts of a workload have different needs. The reliability, security, cost, operations, and performance needs aren't uniform across the workload. By focusing on individual flows, you can prioritize different parts of the workload and meet those needs efficiently.
 
 :::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a seven step process divided into three stages. The first stage is define the flow. To define the flow, you need to understand prerequisites and document the flow. The second stage is to identify the flow requirements. To identify flow requirements, you need to identify the functional requirements and identify the technical requirements. The third stage is to build the flow. To build the flow, you need to follow flow design best practices and build and test the flow." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The flow design process.*
 
-### Define the flow
+*Flow design process*: Flow design starts with defining the flow and includes identifying its requirements and building it. Flow design is inherently iterative. You need iterations to refine flow design. Certain aspects that are theoretical at the start become clearer as you go. You should repeat the flow design process iteratively for the lifecycle of the flow (*see figure 1*).
+
+## Define the flow
 
 Defining flows is about understanding the flows you need to design. You must identify the business process and use case (prerequisites) a flow supports before you can document the flow's definition (*see figure 2*).
 
 :::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a Business process with segments marked Stage 1, Stage 2, and Stage n, indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with Use case, Use case 2, and Use case n respectively. Each square contains a unique flowchart with labeled flows Flow 1, Flow 2, and Flow n. The use cases are all part of a single Workload. Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
 
-#### Understand the prerequisites
+### Understand the prerequisites
 
 The prerequisites to defining a flow are understanding the business process and use case the flow supports. A business process is a series of actions (stages) that fulfill a business requirement. Flows determine the sequence a user or data takes to accomplish each stage of a business process. For example, selling products online is a business process. The stages in this business process might be listing the product online, receiving orders, and delivering the product.
 
@@ -45,7 +41,7 @@ From business processes, uses cases emerge. Each use case should support a stage
 
 - *Dependencies*: Identify interdependencies with other use cases or components for seamless integration and risk management.
 
-#### Document the flow definition
+### Document the flow definition
 
 Based on the use case, you should document the flow definition. The flow definition is an outline of each action in the flow. Ensure alignment with the use case's purpose and objectives. Outline decision-making criteria and resultant pathways within the flow. Identify interactions with other use cases or system components, ensuring smooth data exchange and integration. This flow definition serves as a blueprint for flow design and management.
 
@@ -67,11 +63,11 @@ You also need to capture basic information about the flow. Make sure to include 
 
 For more information, see [Flow examples](#flow-examples).
 
-### Identify the requirements of the flow
+## Identify the requirements of the flow
 
 Identifying the requirements of a flow involves determining the specific functional and technical requirements that a flow must meet to support its use case. It ensures the flow meets the needs of the use case and determines the design of the flow.
 
-#### Identify the functional requirements of the flow
+### Identify the functional requirements of the flow
 
 Functional requirements of a flow are directly derived from its use case definition:
 
@@ -87,7 +83,7 @@ Functional requirements of a flow are directly derived from its use case definit
 
 Aligning functional requirements with the use case definition allows you to design flows that effectively support specific business processes and needs.
 
-#### Identify the technical requirements of the flow
+### Identify the technical requirements of the flow
 
 The functional requirements derived from the use cases lay the groundwork for establishing specific technical requirements. Define specific, measurable targets for the flow across the five pillars of the Well-Architected Framework (WAF). These pillars form a framework for setting clear, measurable targets that align with business and organizational objectives.
 
