@@ -54,7 +54,7 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 |--------|----|
 |**Cluster storage architecture:** |[Reserve the equivalent of "one capacity disk worth of space per node", (*up to four nodes*) within the S2D storage pool](/azure-stack/hci/concepts/plan-volumes#reserve-capacity), this unallocated space can be used to repair "in-place" when a physical disk fails, which improves data resilience and performance.|
 |**Cluster architecture:** | Hardware used to deploy an Azure Stack HCI cluster must meet the requirements listed in [HCI deployment prerequisites](/azure-stack/hci/deploy/deployment-prerequisites#server-and-storage-requirements), all physical nodes  must be homogenous, same manufacturer, make, model and network adapters, and have a consistent number and type of storage devices.|
-|**Cluster network architecture** | Ensure the cluster is implemented using one of the [Validated network topologies](azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that cluster nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI.|
+|**Cluster network architecture** | Ensure the cluster is implemented using one of the [Validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that cluster nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI.|
 |**Cluster architecture** | In 23H2 and later, a cloud witness is provisioned automatically using Azure storage, this is part of the cloud based cluster deployment process control by using Azure Portal or an ARM template.|
 |**Cluster architecture (Network):** |Choose the right network pattern with resilient infrastructure for TOR switches, Network Adapters, Switch vs. Switchless, Converged vs. Non-converged using the guidance [Azure Stack HCI deployment network reference patterns](/azure-stack/hci/plan/choose-network-pattern)|
 |**Cluster architecture (Storage Volume):** | Ensure choosing the resiliency types: Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures, and to enable continuous availability throughout server maintenance, such as software updates. Which resiliency type to use depends on the needs of your workload. Here's a table that summarizes which workloads are a good fit for each resiliency type, as well as the performance and storage efficiency of each resiliency type. [Choosing the Resiliency Types](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type)|
@@ -95,7 +95,7 @@ Audit if Azure Stack HCI hosts have the required Azure Kubernetes Service (AKS) 
 
 AKS Hybird - section below needs complete review....
 
-Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI can bolster the security of your application workload, we recommend you review the [Security design principles](../security/principles.md). If your Azure Stack HCI cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [Azure Stack HCI regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/AzureStackHCI-pci/AzureStackHCI-pci-intro).
+Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI can bolster the security of your application workload, we recommend you review the [Security design principles](../security/principles.md). If your Azure Stack HCI cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [Azure Stack HCI security considerations](/azure-stack/hci/concepts/security).
 
 To learn about DoD Impact Level 5 (IL5) support and requirements with Azure Stack HCI, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-hybrid-workloads-service).
 
@@ -169,7 +169,7 @@ For cluster cost optimization, go to the [Azure pricing calculator](https://azur
 
 > [!div class="checklist"]
 >
-> - **Cluster architecture:** Use [Azure Stack Pricing](/pricing/details/azure-stack/hci/) page in exploring the pricing options available to purchase Azure Stack HCI for on-premises servers.
+> - **Cluster architecture:** Use [Azure Stack Pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page in exploring the pricing options available to purchase Azure Stack HCI for on-premises servers.
 > - **Cluster architecture:** Use Azure Stack HCI free trial offer for the first 60 days after registration for PoCs and validation purposes.
 > - **Cluster architectures:** Turn on Azure Benefits on Azure Stack HCI to use some of the Azure exclusive workloads such as Windows Server Datacenter (Azure Edition), Extended Security Update (ESUs), Azure Policy Guest Configuration and Azure Virtual Desktop with no extra licensing cost. Review [Azure Benefits on Azure Stack HCI](/azure-stack/hci/manage/azure-benefits?tabs=wac) for more information.
 
