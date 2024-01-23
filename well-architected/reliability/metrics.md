@@ -71,54 +71,73 @@ SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for 
 
 #### Set your availability objective
 
+The goal is to identify a set of factors and define their targets, which reflect the  quality of experience for successful workload usage.
+
 Objective setting exercises are driven by financial goals where business requirements are mapped to measurable metrics.
 
-Stakeholders set estimates for user experience, which can comprise several flows. Identify which flows are critical from the perspective of the user.
+Stakeholders set estimates for user experience, which can comprise several flows. Identify the flows that are critical from the perspective of the user.
 
 They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation. 
 
 The quality of workload components (both Azure services and application components) have a significant impact on the workload SLO. When setting objectives, consider these major classes of services:
 
-- Components that expose a request/response style API. 
+- Components that expose a **request/response style API**. 
 
-- Components that query APIs. 
+- Components that **query APIs**. 
 
-- Compute components. 
+- **Compute** components. 
 
-- Job processing components.
+- **Job processing** components.
 
 
 There are different types of user interaction that must be factored in, such as:
 
-- Control/management plane access for public-facing Azure services. 
+- **Control/management plane access** for public-facing Azure services. 
 
-- Azure portal interactions.
+- Azure portal or **UX interactions**.
 
-- Data plane access for interacting with your service, for instance, CRUD (create, read, update, delete) operations.
+- **Data plane access** for instance, CRUD (create, read, update, delete) operations.
 
 There are also several nuanced factors that can affect the SLO target. Here are some examples:
 
-- Does your release process involve downtime?
+- Does your **release process** involve downtime?
 
-- What’s the likelihood of introducing bugs? If the workload integrates with other systems, there may be integration bugs that you need to consider.
+- What’s the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.
 
-- How do routine operations, for instance, patching, impact the availability target? Have you factored in third-party dependencies?
+- How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?
 
-- Is your staff big enough to support 24/7 emergency and emergency backup on call rotation?
+- Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?
 
-- Does the application have noisy neighbors (outside your scope of control) that could potentially cause disruptions?
+- Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?
+
+Have a good understanding of the scenarios and tolerances for your workload on Azure and the fulfillment of business requirements to deliver for them to successfully. 
 
 #### Measure the availability objective
 
-An SLO is a calculated from the Service Level Indicators (SLIs) of the flows. SLIs are at component-level and the quality is measured by the type of component. Here are the common categories:
+The SLO target is calculated from a stream of metrics called **Service Level Indicators** (SLIs). It describes what is measured, how it's measured, and from what perspective it's measured.
+
+The SLO target is derived from a set of metrics known as **Service Level Indicators (SLIs)**. Different types of components emit SLIs that are relevant to them. For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren’t applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
+
+Moreover, the weight of SLIs differs based on the preceding factors of class of component. For example, 
+
+- Request/response components can be bucketed by operation size, and common SLOs include error/success rate, latency, and capacity. 
+
+- Query APIs can vary by operation sizes or costs, and error/success rate and capacity are more applicable while latency is proportional to some normalized operation cost. 
+
+- Compute components are a continuous environment and execute application code, and SLOs should include metrics for availability of compute or interruption rate. 
+
+- Job processing components process data through a series of asynchronous steps and potentially discrete services.
 
 
+The type of interaction also plays a significant role. 
+
+- Control plane access should take into consideration error Rate and latency targets for  synchronous API responses andr long-running operations, such as resource creation, deletion, and so on.
+
+- Data plane access depends the set of data plane APIs for interacting with your service, each with SLO targets. 
 
 
---------
-For many flows, SLIs include latency, throughput, error rate, and availability. A good SLI helps you identify when an SLO is at risk of being breached. Correlate the SLI to specific customers when possible.
+An indicator isn't useful unless you **set a target**. SLO is the target for a correlation of the indicators to determine what's acceptable, and otherwise. A good SLI helps you identify when an SLO is at risk of being breached.
 
-To avoid collecting useless metrics, limit the number of SLIs for each flow. Aim for three SLIs per flow if possible.
 
 
 ### Availability metrics
