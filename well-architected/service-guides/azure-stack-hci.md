@@ -26,9 +26,9 @@ Understanding the Well-Architected Framework pillars can help produce a high-qua
 
 ## Reliability
 
-In hybrid cloud deployments, we acknowledge that failures happen, instead of trying to prevent any and all failures, the goal is to minimize the effects of a single failing component. Use the following design checklists and configuration recommendations to minimize impact of a component failure for workloads deployed on Azure Stack HCI.
+In hybrid cloud deployments, we acknowledge that failures happen, instead of trying to prevent any and all failures, the goal is to minimize the effects of a single failing component. Use the following design checklists and configuration recommendations to minimize the impact of a component failure for workloads deployed on Azure Stack HCI.
 
-When discussing reliability for Azure Stack HCI, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the responsibility of cluster or platform administrator, while workload reliability has a dependency on the platform, it is the responsibility of application owner and/or developer to design applications to meet reliability targets. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing reliability for Azure Stack HCI, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the responsibility of cluster or platform administrator, while workload reliability has a dependency on the platform, it is the responsibility of the application owner and/or developer to design the application(s) to ensure they meet the reliability targets. These roles and responsibilities can be owned to separate teams or individual, or belong to a single team, either way the recommendations and considerations below can help increase the reliability of your applications.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each consideration is applicable to cluster architecture, workload architecture, or both.
 
