@@ -13,19 +13,19 @@ This article covers the targeted optimization of workloads using flows. Differen
 
 This workload optimization process is iterative and involves three key steps: (1) define the flow structure within your workload, (2) define technical requirements, and (3) design the flow to meet the requirements (*see figure 1*).
 
-:::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a 3 step process with 5 actions. The first step is define the flow. To define the flow, you need to understand prerequisites and document the flow. The second step is to define the flow requirements. To define flow requirements, you need to establish technical targets. The third step is to design the flow. To design the flow, you need to follow flow design best practices and develop and test the flow. There's an arrow from the build and test action back to the first action (understand prerequisites) that indicates iterations of this process." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The process to optimize workloads using flows.*
+:::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a three-step process with five actions. The first step is to define the flow. To define the flow, you need to understand prerequisites and document the flow. The second step is to define the flow requirements. To define flow requirements, you need to establish technical targets. The third step is to design the flow. To design the flow, you need to follow flow design best practices and develop and test the flow. There's an arrow from the build and test action back to the first action (understand prerequisites) that indicates iterations of this process." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The process to optimize workloads using flows.*
 
 ## Define the flow
 
-Before you can define flow requirements, you need to understand the business drivers for the flow. These are considered prerequisites. When you understanding the prerequisites, you start documenting the flow.
+Before you can define flow requirements, you need to understand the business drivers for the flow. The prerequisites to defining a flow are identifying the business process and use case its supports. When you understand the prerequisites, you can start documenting the flow.
 
 ### Understand the prerequisites
 
-Flows are sequences of actions that support workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components. 
+Flows are sequences of actions that support workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components.
 
 Flows support business processes and use cases. A workload consists of multiple use cases. You need to identify the business process and use case the flow supports before documenting a flow (*see figure 2*).
 
-:::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a Business process with segments marked Stage 1, Stage 2, and Stage n, indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with Use case, Use case 2, and Use case n respectively. Each square contains a unique flowchart with labeled flows Flow 1, Flow 2, and Flow n. The use cases are all part of a single Workload. Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
+:::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a business process with segments marked Stage 1, Stage 2, and Stage n, indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with Use case, Use case 2, and Use case n respectively. Each square contains a unique flowchart with labeled flows Flow 1, Flow 2, and Flow n. The use cases are all part of a single workload. Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
 
 #### Identify the business process
 
@@ -39,11 +39,11 @@ A use case defines the functional requirements of a flow. You need to identify a
 
 - *Criticality*: Assess the importance of the use case, ranging from routine to critical. The value assigned to a use case informs the prioritization and design of the flow. High-value use cases might require enhanced error handling, performance tuning, or user experience considerations.
 
-- *Consumers*: Identify whether users (customers, staff) or system components are the primary consumers. This categorization determines whether its a user flow or system flow and influences the design.
+- *Consumers*: Identify whether users (customers, staff) or system components are the primary consumers. This categorization determines whether it's a user flow or system flow and influences the design.
 
 - *Events*: Define triggers or conditions that initiate and conclude the use case. These events define the flow's boundaries.
 
-- *Execution*: Understand the operational frequency and variability of the use case to anticipate system load. You must design a flows to handle different execution scenarios.
+- *Execution*: Understand the operational frequency and variability of the use case to anticipate system load. You must design a flow to handle different execution scenarios.
 
 - *Dependencies*: Identify interdependencies with other use cases for risk management. Recognizing a use case's dependencies aids in designing flows that integrate smoothly with other system parts. You need to ensure the availability of necessary inputs and compatibility of outputs with subsequent processes.
 
@@ -55,7 +55,7 @@ You also need to capture business information about the flow. Make sure to inclu
 
 - *Flow description*: A high-level description of the flow.
 
-- *Business processes*: The business process the flow supports.
+- *Business process*: The business process the flow supports.
 
 - *Process owner*: The individual that owns the business process.
 
@@ -85,7 +85,7 @@ Utilize the use case to establish the technical targets of the flow. Define meas
 
 ## Design the flow
 
-Design the flow to meet the technical targets. You should familiarize yourself with flow design best practices so that you achieve the right end result. Build and test the flow. Iterate on the design until it meets the technical targets you established.
+Design the flow to meet the technical targets. You should familiarize yourself with flow design best practices so that you achieve the right result. Build and test the flow. Iterate on the design until it meets the technical targets you established.
 
 ### Follow flow design best practices
 
@@ -125,7 +125,7 @@ Periodically review the flow against set targets and industry standards. Use fee
 
 ## Optimize flows
 
-Repeat the process define here throughout the lifecycle of the flow. As you iterate on the flow design, use the Well-Architected Framework to optimize flows from the perspective of each pillar:
+Repeat the process defined in this article throughout the lifecycle of the flow. As you iterate on the flow design, use the Well-Architected Framework to optimize flows from the perspective of each pillar:
 
 - [Flow reliability](/azure/well-architected/reliability/identify-flows)
 - [Flow security](/azure/well-architected/security/secure-development-lifecycle#requirements-phase)
@@ -151,7 +151,7 @@ Here are a few flow examples to help you design your flows. The examples use the
 
 - *Escalation paths*: Application team, platform team, then sales department.
 
-- *Business impact*: This flow is important for making new concerts available on sales platforms, directly influencing the main revenue stream of the business. When call-center employees are unable to create concerts due to unavailability of this flow, it negatively impacts both revenue and the company's reputation. However, high availability isn't essential for this process since concerts are typically scheduled in advance on a weekly basis. The sales department specified a requirement of 95% availability for this process and is agreeable to downtime outside of business hours for maintenance purposes.
+- *Business impact*: This flow is important for making new concerts available on sales platforms, directly influencing the main revenue stream of the business. When call-center employees are unable to create concerts due to the unavailability of this flow, it negatively impacts both revenue and the company's reputation. However, high availability isn't essential for this process since concerts are typically scheduled in advance on a weekly basis. The sales department specified a requirement of 95% availability for this process and is agreeable to downtime outside of business hours for maintenance purposes.
 
 - *Criticality rating*: Low.
 
