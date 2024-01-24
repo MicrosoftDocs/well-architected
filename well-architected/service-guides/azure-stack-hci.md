@@ -132,7 +132,7 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 For more information on the security features introduced in 23H2, see [Review Security Features](/azure-stack/hci/concepts/security-features).
 
-## Needs review:
+### Azure Advisor
  Azure Advisor helps ensure and improve Azure Stack HCI. It makes recommendations on a subset of the items listed in the policy section below, such as clusters without RBAC configured, missing Microsoft Defender configuration, unrestricted network access to the API Server. Likewise, it makes workload recommendations for some of the pod security initiative items. Review the [recommendations](/azure/advisor/advisor-security-recommendations).
 
 ### Policy definitions
