@@ -57,11 +57,9 @@ For a workload owner, SLOs can be the driver for many technical decisions. For e
 - Act as a primary signal for deployment operations, driving automated rollback if issues occur, and providing validation that changes achieved the expected user experience improvement.
 - Speed up redmediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
     
-The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependent services only achieves 99.8% availability, the overall SLO is still 99.99%.
+The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependencies only achieves 99.8% availability, the overall SLO is still 99.99%.
 
-SLOs must be measurable and based on time. Ideally, the calculation should be automated. If an SLO can be measured in units within a time window, systems can emit those units and measure over time. However, if the contributing factors are  nuanced, it may be harder to automate. 
 
-SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
 
 > [!CAUTION]
 >
@@ -71,7 +69,7 @@ SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for 
 
 #### Set your availability objective
 
-The goal is to identify a set of factors and define their targets, which reflect the  quality of experience for successful workload usage.
+The goal is to identify a set of factors that influence the user experience and define their targets, which reflect the  quality of experience for successful workload usage.
 
 Objective setting exercises are driven by financial goals where business requirements are mapped to measurable metrics.
 
@@ -79,44 +77,53 @@ Stakeholders set estimates for user experience, which can comprise several flows
 
 They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation. 
 
-The quality of workload components (both Azure services and application components) have a significant impact on the workload SLO. When setting objectives, consider these major classes of services:
+##### Common SLOs
+
+Every SLO targets a specific quality criteria. Consider these common SLOs for reliability. This list isn't exhaustive. Add SLOs based on your business requirements. 
+
+- **Success rate** measures success of requests and that not every request returns an error.
+- **Latency** measures the time elapsed between when a request for an operation is initiated and returned to the caller so that it can make use of the returned information.
+- **Capacity** measures the number of throttling-based responses to caller when capacity is available, and also when there is no capacity available.
+- **Availability** measures uptime from the perspective of users. 
+- **Throughput** measures a minimum data transfer rate over a time window, expressed in kilobytes per second.
+
+##### SLO influencing factors
+
+Have a good understanding of the scenarios and tolerances for your workload on Azure. 
+
+The **type of workload components** (both Azure services and application components) have a significant impact on the workload SLO. When setting objectives, consider these major classes of services:
 
 - Components that expose a **request/response style API**. 
-
 - Components that **query APIs**. 
-
 - **Compute** components. 
-
 - **Job processing** components.
 
-
-There are different types of user interaction that must be factored in, such as:
+There are different **types of user interaction** that must be factored in, such as:
 
 - **Control/management plane access** for public-facing Azure services. 
-
 - Azure portal or **UX interactions**.
-
 - **Data plane access** for instance, CRUD (create, read, update, delete) operations.
 
-There are also several nuanced factors that can affect the SLO target. Here are some examples:
+There are also several **nuanced factors** that can affect the SLO target. Here are some examples:
 
 - Does your **release process** involve downtime?
-
 - What’s the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.
-
 - How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?
-
 - Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?
-
 - Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?
 
-Have a good understanding of the scenarios and tolerances for your workload on Azure and the fulfillment of business requirements to deliver for them to successfully. 
 
 #### Measure the availability objective
 
-The SLO target is calculated from a stream of metrics called **Service Level Indicators** (SLIs). It describes what is measured, how it's measured, and from what perspective it's measured.
+SLOs must be measurable and measure within a observability window. Ideally, the calculation should be automated. 
 
-The SLO target is derived from a set of metrics known as **Service Level Indicators (SLIs)**. Different types of components emit SLIs that are relevant to them. For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren’t applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
+If an SLO can be measured in units within a time window, systems can emit those units and measure over time. However, if the contributing factors are  nuanced, it may be harder to automate. 
+
+SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
+
+The SLO target is derived from a set of metrics known as **Service Level Indicators (SLIs)**. It describes what is measured, how it's measured, and from what perspective it's measured.
+
+Different types of components emit SLIs that are relevant to them. For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren’t applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
 
 Moreover, the weight of SLIs differs based on the preceding factors of class of component. For example, 
 
