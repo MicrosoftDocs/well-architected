@@ -1,6 +1,6 @@
 ---
 title: Optimize workload design using flows
-description: 
+description: Explore a detailed guide about optimizing workloads through structured flow design. This article provides an in-depth look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. It emphasizes the significance of aligning flows with business processes and use cases, and offers practical examples and best practices.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 1/31/2024
