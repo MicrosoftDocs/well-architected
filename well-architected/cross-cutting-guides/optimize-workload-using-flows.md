@@ -69,7 +69,7 @@ You also need to capture business information about the flow. Make sure to inclu
 
 For more information, see [Flow examples](#flow-examples).
 
-## Define the requirements of the flow
+## Define flow requirements
 
 Utilize the use case to establish the technical targets of the flow. Define measurable targets for the flow that align to the five pillars of the Well-Architected Framework (WAF). These pillars provide a framework for setting technical targets:
 
