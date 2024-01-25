@@ -81,7 +81,7 @@ Utilize the use case to establish the technical targets of the flow. Define meas
 
 - *Operational targets*: Define metrics for effective monitoring and troubleshooting. Targets should ensure efficient resource use and alignment with organizational goals.
 
-- *Performance*: Base performance targets on the initial requirements of each flow. Ensure that essential flows receive adequate resources and continuously adjust targets to meet evolving demands and enhance user experiences.
+- *Performance targets*: Base performance targets on the initial requirements of each flow. Ensure that essential flows receive adequate resources and continuously adjust targets to meet evolving demands and enhance user experiences.
 
 ## Design the flow
 
