@@ -65,11 +65,32 @@ For more suggestions, see [Principles of the reliability pillar](/azure/well-arc
 
 ### Azure Policy
 
-Azure Stack HCI offers some built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Azure Stack HCI, also within the cluster. There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Azure Stack HCI](/azure/governance/policy/samples/built-in-policies#azurestackhci).
+Azure Policy is a service that helps you enforce organizational standards and assess compliance at scale. You can use Azure Policy to create and assign policies to your Azure Stack HCI hosts and virtual machines, and monitor their compliance state from the Azure portal. Azure Policy also integrates with Azure Arc, which enables you to manage your Azure Stack HCI resources as if they were Azure resources.
+
+Azure Stack HCI offers some built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Azure Stack HCI, also within the cluster.
+
+There are some built-in policies available for Azure Stack HCI, such as:
+
+[Preview]: Host and VM networking should be protected on Azure Stack HCI systems
+[Preview]: Azure Stack HCI systems should have encrypted volumes
+[Preview]: Azure Stack HCI servers should have consistently enforced application control policies
+[Preview]: Azure Stack HCI servers should meet Secured-core requirements
+
+You can find these policies in the Azure portal under Policy > Definitions > Category: Stack HCI.
 
 #### Cluster and workload architecture
 
 In addition to the built-in Azure Policy definitions, custom policies can be created for both the Azure Stack HCI resource and for the Azure Policy add-on for hybrid workloads. This allows you to add additional reliability constraints you'd like to enforce in your cluster and workload architecture.
+
+Audit if Azure Stack HCI hosts are registered with Azure
+Audit if Azure Stack HCI hosts are running the latest version of the operating system
+Audit if Azure Stack HCI hosts have the required hardware components
+Audit if Azure Stack HCI hosts have the required network configuration
+Audit if Azure Stack HCI hosts have the required Azure services enabled
+Audit if Azure Stack HCI hosts have the required security settings
+Audit if Azure Stack HCI hosts have the required extensions installed
+Audit if Azure Stack HCI hosts have the required Kubernetes clusters deployed
+Audit if Azure Stack HCI hosts have the required Azure Kubernetes Service (AKS) integration enabled
 
 ## Security
 
@@ -121,22 +142,46 @@ For more information on the security features introduced in 23H2, see [Review Se
 
 ### Policy definitions
 
-Azure Policy offers various built-in policy definitions that apply to both the Azure resource and Azure Stack HCI like standard policy definitions, 
+Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Arc enabled virtual machines to enhance the security of those resources using Azure Policy and Microsoft Defender of Cloud. Microsoft Defender for Cloud is a cloud-native application protection platform (CNAPP) that is made up of security measures and practices that are designed to protect cloud-based applications from various cyber threats and vulnerabilities. Review [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) for more information.
 
-There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for hybrid workloads](/azure/governance/policy/samples/built-in-policies#hybrid workloads).
+Here are some built-in policies on security available for Azure Stack HCI, such as:
 
-#### Cluster architecture
+[Preview]: Azure Stack HCI systems should have encrypted volumes
+[Preview]: Azure Stack HCI servers should have consistently enforced application control policies
+[Preview]: Azure Stack HCI servers should meet Secured-core requirements
 
-- Microsoft Defender for Cloud-based policies
-- Authentication mode and configuration policies (Microsoft Entra ID, RBAC, disable local authentication)
-- API Server network access policies, including private cluster
+You can find these policies in the Azure portal under Policy > Definitions > Category: Stack HCI.
 
-#### Cluster and workload architecture
+#### Cluster security
 
-- Workloads deployed in AKS Hybrid cluster pod security initiatives Linux-based workloads
-- Include 
+Enabling Microsoft Defender for Cloud to a subscription registered with hybrid resources such as Azure Stack HCI and Azure Arc based virtual machines running on Azure Stack HCI are checked for its security compliance (Foundational CSPM, Cloud Security Posture Management) using the Security benchmark policies (Microsoft cloud security benchmark) configured in Azure policy. Additionally, enabling Defender for Servers plan at a subscription level helps to assess the security at workload level (CWP, Cloud Workload Protection) such as Azure Arc enabled virtual machines running on Azure Stack HCI.  
 
+Here are some built-in policies that are checked on the Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration:
 
+- Machines should be configured to periodically check for missing system updates
+- Machines should have a vulnerability assessment solution
+- Vulnerabilities in security configuration on your Windows machines should be remediated (powered by Guest Configuration)
+- Windows Defender Exploit Guard should be enabled on machines
+
+#### Workload security
+
+Here are some built-in policies that are checked on the Azure Arc based virtual machines running on Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration:
+
+- Log Analytics agent should be installed on Windows-based Azure Arc-enabled machines
+- Machines should be configured to periodically check for missing system updates
+- Machines should have a vulnerability assessment solution
+- Windows Defender Exploit Guard should be enabled on machines
+- Windows servers should be configured to use secure communication protocols
+
+Here are some additional built-in-policies you may want to enable on your Azure Stack HCI and Azure Arc based virtual machines running on Azure Stack HCI:
+
+- [Preview]: Enable Extended Security Updates (ESUs) license to keep Windows 2012 machines protected after their support lifecycle has ended.
+
+You can find these policies in the Azure portal under Policy > Definitions > Category: Azure Arc.
+
+[Preview]: Configure prerequisites to enable Guest Attestation on Trusted Launch enabled VMs
+
+You can find these policies in the Azure portal under Policy > Definitions > Category: Trusted Launch.
 
 ## Cost optimization
 
@@ -262,7 +307,8 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 | Recommendation | Benefit |
 |--------|----|
 |**Cluster and workload architectures:** Develop a detailed capacity plan and continually review and revise.|After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.|
-|**Cluster architecture:** Enable [cluster autoscaler](/azure/Azure Stack HCI/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.|The ability to automatically scale up or down the number of nodes in your Azure Stack HCI cluster lets you run an efficient, cost-effective cluster.|
+|**Cluster performance:** Monitor cluster performance with Health Service | The Health Service, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct. The Health Service is enabled by default with Storage Spaces Direct. No additional action is required to set it up or start it. Get live performance and capacity information from your Storage Spaces Direct cluster. Review [Monitor cluster performance with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.|
+|**Workload performance:** Use DISKSPD to test workload storage performance| DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations and helps getting the performance metrics, whether it be latency, throughput, or IOPS. Review [Use DISKSPD to test workload storage performance](/azure-stack/hci/manage/diskspd-overview) for more information.|
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
@@ -282,10 +328,15 @@ In addition to the built-in policies, custom policies can be created for both th
 
 ### Azure Architecture Center guidance
 
+Many organizations need a hybrid approach to analytics, automation, and services because their data is hosted both on-premises and in the cloud. Organizations often extend on-premises data solutions to the cloud. To connect environments, organizations start by choosing a hybrid network architecture. Review [Hybrid + Multicloud Azure Architecture Center Guide](/azure/architecture/hybrid/hybrid-start-here) for more information on choosing the right architecture for the hybrid and multicloud environments.
+
 ### Cloud Adoption Framework guidance
 
-- [Azure Stack HCI Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/hybrid/enterprise-scale-landing-zone/)
+The Cloud Adoption Framework [Ready methodology](/azure/cloud-adoption-framework/ready/) guides customers as they prepare their environment for cloud adoption. The methodology includes technical accelerators like Azure landing zones, which are the building blocks of any Azure cloud adoption environment. Review the below documents for more details on preparing your environment for hybrid cloud.
+
+- [Prepare your environment for a hybrid and multicloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready)
+- [Introduction to Azure Arc landing zone accelerator for hybrid and multicloud](/azure/cloud-adoption-framework/scenarios/hybrid/enterprise-scale-landing-zone)
 
 ## Next steps
 
-- Deploy an Azure Stack HCI cluster using the Azure CLI Quickstart: Deploy an Azure Stack HCI cluster using the Azure CLI
+- For deploying an Azure Stack HCI cluster using Azure portal or ARM template: [About Azure Stack HCI, version 23H2 deployment](/azure-stack/hci/deploy/deployment-introduction)
