@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Optimize workload design using flows
 
-This article covers the targeted optimization of workloads using flows. Different components of a workload have varying requirements and levels of importance. By breaking a workload into flows, you can prioritize different parts of a workload and better align workload investments with the importance of each flow.
+This article covers the targeted optimization of workloads using flows. Different components of a workload have varying requirements and levels of importance. By segmenting a workload into flows, you can prioritize different parts of a workload and better align workload investments with the importance of each flow.
 
 This workload optimization process is iterative and involves three key steps: (1) define the flow structure within your workload, (2) define technical requirements, and (3) design the flow to meet the requirements (*see figure 1*).
 
@@ -21,9 +21,7 @@ Before you can define flow requirements, you need to understand the business dri
 
 ### Understand the prerequisites
 
-Flows are sequences of actions that support workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components.
-
-Flows support business processes and use cases. A workload consists of multiple use cases. You need to identify the business process and use case the flow supports before documenting a flow (*see figure 2*).
+Flows are sequences of actions that support workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components. Flows support business processes and use cases. A workload consists of multiple use cases. You need to identify the business process and use case the flow supports before documenting a flow (*see figure 2*).
 
 :::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a business process with segments marked Stage 1, Stage 2, and Stage n, indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with Use case, Use case 2, and Use case n respectively. Each square contains a unique flowchart with labeled flows Flow 1, Flow 2, and Flow n. The use cases are all part of a single workload. Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
 
@@ -49,9 +47,7 @@ A use case defines the functional requirements of a flow. You need to identify a
 
 ### Document the flow
 
-Use the use case to document the flow. You should outline or map each action you need in a flow. Capture decision criteria and pathways. Identify interactions with other use cases. This outline serves as a blueprint for flow design and management.
-
-You also need to capture business information about the flow. Make sure to include the following details in the flow documentation:
+Use the use case to document the flow. You should outline or map each action you need in a flow. Capture decision criteria and pathways. Identify interactions with other use cases. This outline serves as a blueprint for flow design and management. You also need to capture business information about the flow. Make sure to include the following details in the flow documentation:
 
 - *Flow description*: A high-level description of the flow.
 
@@ -75,9 +71,9 @@ Utilize the use case to establish the technical targets of the flow. Define meas
 
 - *Reliability targets*: Assess each flow's importance and set reliability targets accordingly. Determine performance thresholds and establish clear service level agreements (SLAs) and objectives (SLOs). Higher criticality flows require more stringent reliability targets.
 
-- *Security targets*: Analyze the security needs of each flow based on data sensitivity and user activities. Implement and continuously update security measures to meet these needs, while ensuring compliance with regulatory standards.
+- *Security targets*: Analyze the security needs of each flow based on data sensitivity and user activities. Implement and continuously update security measures to meet these needs while ensuring compliance with regulatory standards.
 
-- *Cost targets*: Understand the demands of each flow for effective resource allocation. Set targets to balance cost with performance, ensuring that resources are used efficiently and in alignment with business priorities.
+- *Cost targets*: Understand the demands of each flow for effective resource allocation. Set targets to balance cost with performance. Ensure resource usage aligns with business priorities.
 
 - *Operational targets*: Define metrics for effective monitoring and troubleshooting. Targets should ensure efficient resource use and alignment with organizational goals.
 
