@@ -51,7 +51,7 @@ Highest-level reliability and recovery requirements and correlated metrics might
 Availability metrics correlate to SLOs, which you use to define SLAs. The workload SLO determines how much downtime is tolerable in a given period, for example, less than 1 hour per month. To make sure you can meet the SLO target, review the Microsoft SLAs for each component. Pay attention to how much redundancy you need to meet high SLAs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
 
 > [!NOTE]
-> Azure SLAs don't always cover all aspects of a service. For example, Azure Application Gateway has an availability SLA, but the Azure Well-Architected Framework functionality provides no guarantee to stop malicious traffic from passing through. Consider this limitation when you develop your SLAs and SLOs.
+> Azure SLAs don't always cover all aspects of a service. For example, Azure Application Gateway has an availability SLA, but the Azure Web Application Firewall functionality provides no guarantee to stop malicious traffic from passing through. Consider this limitation when you develop your SLAs and SLOs.
 
 After you gather the SLAs for the individual workload components, calculate a composite SLA. The composite SLA should match the workload's target SLO. Calculating a composite SLA involves several factors, depending on your architecture design. Consider the following examples.
 
