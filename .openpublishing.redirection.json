@@ -1278,7 +1278,22 @@
 		{
 			"source_path": "well-architected/service-guides/virtual-machines-review.md",
 			"redirect_url": "/azure/well-architected/service-guides/virtual-machines",
-			"redirect_document_id": false
-		}			
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-front-door/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-front-door/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-front-door/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": true
+		}													
 	]
 }
