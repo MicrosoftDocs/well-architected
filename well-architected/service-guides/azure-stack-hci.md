@@ -167,7 +167,7 @@ For cluster cost optimization, go to the [Azure pricing calculator](https://azur
 
 > [!div class="checklist"]
 >
-> - **Cluster architecture:** Use [Azure Stack Pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page in exploring the pricing options available to purchase Azure Stack HCI for on-premises servers.
+> - **Cluster architecture:** Use [Azure Stack Pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page in exploring the pricing options available to purchase Azure Stack HCI for on-premises servers. The flexible per core subscription model enables customers to optimize cost based on your needs.
 > - **Cluster architecture:** Use Azure Stack HCI free trial offer for the first 60 days after registration for PoCs and validation purposes.
 > - **Cluster architectures:** Turn on Azure Benefits on Azure Stack HCI to use some of the Azure exclusive workloads such as Windows Server Datacenter (Azure Edition), Extended Security Update (ESUs), Azure Policy Guest Configuration and Azure Virtual Desktop with no extra licensing cost. Review [Azure Benefits on Azure Stack HCI](/azure-stack/hci/manage/azure-benefits?tabs=wac) for more information.
 
@@ -260,7 +260,8 @@ As you make design choices for Azure Stack HCI, review the [Performance efficien
 
 > [!div class="checklist"]
 >
-> - **Cluster and workload architectures:** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations.
+> - **Cluster architectures:** Use the certified and validated hardware and software from Microsoft and Solution Builders available in the [Azure Stack HCI Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog) to optimize the performance of Azure Stack HCI system.
+> - **Cluster architectures:** Use Premier Solutions for Azure Stack HCI that delivers the highest level of integration and validation through deeper collaboration between Microsoft and Solution partners for better end-to-end experience of Azure Stack HCI system.
 > - **Cluster architecture:** Use VMFleet to get the baseline storage performance prior to deploying the workloads. VMFleet is a tool that can be used to measure the performance of a storage subsystem, best to measure baseline performance prior to workload deployment. Review [Using VMFleet for measuring storage subsystem performance](https://github.com/microsoft/diskspd/wiki/VMFleet) for more information.
 > - **Cluster architecture:** Enable monitoring for ReFS Deduplication and Compression feature after enabling Insights for the Azure Stack HCI cluster. This feature helps monitoring ReFS deduplication and compression savings, performance impact and jobs. Review [Monitor ReFS deduplication and compression](/azure-stack/hci/manage/monitor-features#monitor-refs-deduplication-and-compression) for more information.
 
@@ -270,7 +271,8 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 | Recommendation | Benefit |
 |--------|----|
-|**Cluster and workload architectures:** Develop a detailed capacity plan and continually review and revise.|After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.|
+|**Cluster architectures:** Develop a detailed capacity plan and continually review and revise.|After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.|
+|**Cluster architectures:** When performance matters most | Workloads that have strict latency requirements or that need lots of mixed random IOPS, such as SQL Server databases or performance-sensitive Hyper-V virtual machines, should run on volumes that use mirroring to maximize performance. Mirroring is faster than any other resiliency type. Review [Planning the Storage Volumes](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) for more information.|
 |**Cluster performance:** Monitor cluster performance with Health Service | The Health Service, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct. The Health Service is enabled by default with Storage Spaces Direct. No additional action is required to set it up or start it. Get live performance and capacity information from your Storage Spaces Direct cluster. Review [Monitor cluster performance with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.|
 |**Workload performance:** Use DISKSPD to test workload storage performance| DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations and helps getting the performance metrics, whether it be latency, throughput, or IOPS. Review [Use DISKSPD to test workload storage performance](/azure-stack/hci/manage/diskspd-overview) for more information.|
 
