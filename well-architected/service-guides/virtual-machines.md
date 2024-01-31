@@ -15,11 +15,13 @@ categories:
 
 Azure Virtual Machines is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute to run your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
+This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute to run your workload. 
 
 > [!IMPORTANT]
 >
 > **How to use this guide**
+>
+> The guidance in this article provides architectural recommendations that are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
 >
 > Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope. 
 >
