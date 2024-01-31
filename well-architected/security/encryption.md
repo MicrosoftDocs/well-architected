@@ -124,7 +124,7 @@ Classify and protect information storage objects in accordance with the internal
 
     Use more than one encryption key. Use a key encryption key (KEK) to protect your data encryption key (DEK).
 
-- **Use identity-based access controls to control access data**. Add network firewalls to provide an extra layer of security that blocks unexpected and unsafe access.
+- **Use identity-based access controls to control access to data**. Add network firewalls to provide an extra layer of security that blocks unexpected and unsafe access.
 
 - **Store keys in a managed HSM** that has least-privilege access control. Separate the data from the keys to the data.
 
