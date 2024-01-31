@@ -42,6 +42,8 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
+##### Design checklist
+
 Start your design strategy based on the [**design review checklist for Reliability**](../reliability/checklist.md) and determine its relevance to your business requirements while keeping in mind the tiers and CDN capabilities. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
@@ -70,7 +72,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 > - **Don't centralize Front Door within an organization**. Central instances are shared among workloads. That centralized approach might not factor the reliability concerns specific to your use case.
 
-#### Recommendations
+##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -113,11 +115,11 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Monitor anamolous activity**. Regularly review the logs to check for attacks and false positives. Send [WAF logs from Front Door](/azure/web-application-firewall/afds/waf-front-door-monitor) to the organization's centralized SIEM, such as Microsoft Sentinel to detect threat patterns and preventitive measures that can be incorporated in the workload design. 
 
-#### Recommendations
+##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|**Enable WAF rulesets** that detect and block potentially malicious traffic. These rulesets are recommended: <br><br> - [Default](/azure/web-application-firewall/afds/afds-overview#azure-managed-rule-sets)<br>- [Bot protection](/azure/web-application-firewall/afds/afds-overview#bot-protection-rule-set)<br>- [IP restriction](/azure/web-application-firewall/afds/waf-front-door-configure-ip-restriction)<br>- [Geo-filtering](/azure/web-application-firewall/afds/waf-front-door-tutorial-geo-filtering)<br>- [Rate limiting](/azure/web-application-firewall/afds/waf-front-door-rate-limit)|Default rule sets are updated frequently based on OWASP top-10 attack types and information from Microsoft Threat Intelligence. <br> The specialized rulesets can detect certain use cases. For example, bot rules can classify bots as good, bad, or unknown based on the client IP addresses and also block bad bots, known IP addresses, restrict traffic based on geographical location of the callers, and others. <br><br> By using a combination of rule sets, you'll be able to detect and block attacks with different intents.|
+|**Enable WAF rulesets** that detect and block potentially malicious traffic. These rulesets are recommended: <br> - [Default](/azure/web-application-firewall/afds/afds-overview#azure-managed-rule-sets)<br>- [Bot protection](/azure/web-application-firewall/afds/afds-overview#bot-protection-rule-set)<br>- [IP restriction](/azure/web-application-firewall/afds/waf-front-door-configure-ip-restriction)<br>- [Geo-filtering](/azure/web-application-firewall/afds/waf-front-door-tutorial-geo-filtering)<br>- [Rate limiting](/azure/web-application-firewall/afds/waf-front-door-rate-limit)|Default rule sets are updated frequently based on OWASP top-10 attack types and information from Microsoft Threat Intelligence. <br> The specialized rulesets can detect certain use cases. For example, bot rules can classify bots as good, bad, or unknown based on the client IP addresses and also block bad bots, known IP addresses, restrict traffic based on geographical location of the callers, and others. <br><br> By using a combination of rule sets, you'll be able to detect and block attacks with different intents.|
 | **[Create exclusions](/azure/web-application-firewall/afds/waf-front-door-exclusion-configure) through managed rules**. <br><br> Test a WAF policy in Detection mode for a few weeks before deploying it and adjust any false positives.| You'll be able to reduce false positives and allow legitimate requests for your application. |
 | **Enable end-to-end TLS, HTTP to HTTPS redirection, and managed TLS certificates** (when applicable). <br><br> Review the [TLS best practices for Front Door](/azure/frontdoor/best-practices#23tls-best-practices). <br><br> Use TLS v1.2 as the minimum allowed version with ciphers that are relevant for your application. <br><br>  Use your own certificates in [Front Door custom domain](/azure/frontdoor/standard-premium/how-to-configure-https-custom-domain) endpoints and store them in Azure Key Vault.|TLS ensures that data exchange between browser, Front Door, and backend origins is encrypted to prevent tampering. <br><br> Key Vault offers managed certificate support and simpler certificate renewal and rotation.|
 
