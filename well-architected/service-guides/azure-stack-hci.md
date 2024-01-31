@@ -52,9 +52,9 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 | Recommendation | Benefit |
 |--------|----|
-|**Cluster storage architecture:** |Reserve the equivalent of ["one capacity disk worth of space per node", (*up to four nodes*) within the S2D storage pool](/azure-stack/hci/concepts/plan-volumes#reserve-capacity), this unallocated space can be used to repair "in-place" when a physical disk fails, which improves data resilience and performance.|
 |**Cluster architecture:** |Hardware used to deploy an Azure Stack HCI cluster must meet the requirements listed in [HCI deployment prerequisites](/azure-stack/hci/deploy/deployment-prerequisites#server-and-storage-requirements), all physical nodes  must be homogenous, same manufacturer, make, model and network adapters, and have a consistent number and type of storage devices.|
-|**Cluster network architecture** |Ensure the cluster is implemented using one of the [Validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that cluster nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI.|
+|**Cluster storage architecture:** |Reserve the equivalent of ["one capacity disk worth of space per node", (*up to four nodes*) within the S2D storage pool](/azure-stack/hci/concepts/plan-volumes#reserve-capacity), this unallocated space can be used to repair "in-place" when a physical disk fails, which improves data resilience and performance.|
+|**Cluster network architecture** |Ensure the cluster is implemented using one of the [validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that cluster nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI and Azure Arc.|
 |**Cluster architecture** |In 23H2 and later, a [cloud witness is provisioned automatically using Azure storage](/azure-stack/hci/manage/witness), this is part of the cloud based cluster deployment process control by using Azure Portal or an ARM template.|
 |**Cluster network architecture:** |Choose the right network infrastructure pattern and resilience capabilities, such as ToR Switch vs. Switch-less, Network Adapters, Converged vs. Non-converged using the guidance available: [Azure Stack HCI deployment network reference patterns](/azure-stack/hci/plan/choose-network-pattern)|
 |**Cluster storage architecture:** |When creating Volumes (*virtual disks*) in Storage Spaces Direct, select the appropriate [resiliency types](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) using the number of physical nodes in the cluster and the workload resiliency and performance requirements as inputs.|
@@ -67,17 +67,6 @@ For more suggestions, see [Principles of the reliability pillar](/azure/well-arc
 Azure Policy is a service that helps you enforce organizational standards and assess compliance at scale. You can use Azure Policy to create and assign policies to your Azure Stack HCI hosts and virtual machines, and monitor their compliance state from Azure portal. Azure Policy also integrates with Azure Arc, which enables you to manage your Azure Stack HCI resources as if they were Azure resources.
 
 Azure Stack HCI offers some built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Azure Stack HCI, also within the cluster.
-
-[There are some built-in policies available for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type), such as:
-
-[Preview]: Host and VM networking should be protected on Azure Stack HCI systems
-[Preview]: Azure Stack HCI systems should have encrypted volumes
-[Preview]: Azure Stack HCI servers should have consistently enforced application control policies
-[Preview]: Azure Stack HCI servers should meet Secured-core requirements
-
-You can find these policies in the Azure portal under Policy > Definitions > Category: Stack HCI.
-
-#### Cluster and workload architecture
 
 In addition to the built-in Azure Policy definitions, custom policies can be created for both the Azure Stack HCI resource and for the Azure Policy add-on for hybrid workloads. This allows you to add additional reliability constraints you'd like to enforce in your cluster and workload architecture.
 
@@ -107,12 +96,13 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 
 > [!div class="checklist"]
 >
-> - **Cluster architecture:** While deploying the Azure Stack HCI clusters, set the security level of your Azure Stack HCI system's infrastructure using the recommended security settings such as Security defaults, Windows Defender Credential Guard, BitLocker for the OS volume, BitLocker for data volume, Signing for external SMB traffic that provides the highest level of security, or customize these settings to match your security needs.
-> - **Cluster architecture:** Use Microsoft Defender for Cloud to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads together in one view.
-> - **Cluster architecture:** Use Microsoft Defender for Servers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
-> - **Workload architecture:** Use VLAN based network-isolation to deploy workloads (VMs) that needs to be isolated from each other across the different VLAN networks. Ensure each VLAN is configured and reachable from the management network for the hosts to communicate with the VLAN networks through the ToR (Top-of-Rack) switches or gateways.  
-> - **Workload architecture:** Use Trusted launch for virtual machines that protects against persistent and standard attacks on Gen 2 virtual machines with configurable features like secure boot and virtual Trusted Platform Module (vTPM).
-> - **Workload architecture:** Use Azure Policy to re-use the builtin policies such as security baselines for Windows and Linux workloads or create new custom policies in auditing the security settings and assessing the compliance state of the target workloads running on Azure Stack HCI.
+> - **Cluster security controls:** While deploying the Azure Stack HCI clusters, set the security level of your Azure Stack HCI system's infrastructure using the recommended Security Defaults settings, this enables Windows Defender Application Control and Credential Guard, BitLocker for the OS volume, BitLocker for data volumes, Signing for external SMB traffic that provides the highest level of security, or customize these settings to match your security needs.
+> - **Cluster security controls:** Use Microsoft Defender for Cloud to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads together in one view.
+> - **Cluster security controls:** Use Microsoft Defender for Servers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and workloads.
+> - **Cluster security controls:** Configure Entra ID user account membership of the [builtin roles based access control (RBAC) roles](/azure-stack/hci/manage/assign-vm-rbac-roles) to control access to VMs and VM resources on your Azure Stack HCI, such as HCI Administrator, VM Contributor and VM Reader.
+> - **Workload security controls:** Use VLAN based network-isolation to deploy workloads (VMs) that needs to be isolated from each other across the different VLAN networks. Ensure each VLAN is configured and reachable from the management network for the hosts to communicate with the VLAN networks through the ToR (Top-of-Rack) switches or gateways.
+> - **Workload security controls:** Use Trusted launch for virtual machines that protects against persistent and standard attacks on Gen 2 virtual machines with configurable features like secure boot and virtual Trusted Platform Module (vTPM).
+> - **Workload security controls:** Use Azure Policy to re-use the builtin policies such as security baselines for Windows and Linux workloads, or create new custom policies for auditing security settings and assessing the compliance state of the target workloads deployed on Azure Stack HCI.
 
 ### Recommendations
 
@@ -120,13 +110,14 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
-|**Cluster architecture:** Use Secure by default|Using Secure by default maintains the security default on each server, helping to protect against changes or drifts that are automatically corrected to maintain the intended posture of the Azure Stack HCI system. Review [Security baseline and drift control](/azure-stack/hci/manage/manage-secure-baseline) for more information.|
-|**Cluster architecture:** Windows Defender Credential Guard|Uses virtualization-based security to isolate secrets from credential-theft attacks. Unauthorized access to these secrets can lead to credential theft attacks like pass the hash and pass the ticket. Review [Credential Guard Overview](/windows/security/identity-protection/credential-guard/) for more information.|
-|**Cluster architecture:** Windows Defender Application Control (WDAC) |Controls which drivers, applications and the code that are allowed to run directly on each server. Review [Managing Windows Defender Application Control](/azure-stack/hci/manage/manage-wdac) for more information. |
-|**Cluster architecture:** BitLocker for the OS volume|Encrypts the OS volume on each server. Review [BitLocker Overview](/windows/security/operating-system-security/data-protection/bitlocker/) for more information. |
-|**Cluster architecture:** BitLocker for data volumes|Encrypts cluster shared volumes (CSVs) created on the Azure Stack HCI system using XTS-AES 256-bit encryption. This is the recommended default setting which can be turned on during the cluster deployment in all the data volumes. Review [Volume encryption via BitLocker](/azure-stack/hci/concepts/security-features#volume-encryption-via-bitlocker) for more information.|
-|**Cluster architecture:** Signing for external SMB traffic|Signs SMB traffic between this system and others to help prevent relay attacks. Review [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing) for more information. |
-|**Cluster architecture:** SMB Encryption for in-cluster traffic (Optional)|Encrypts traffic between servers in the cluster (on your storage network). It is optional to turn on this based on the additional security needs for your environment. Review [SMB Encryption](/windows-server/storage/file-server/smb-security#smb-encryption) for more information. |
+|**Cluster security controls:** |Use the [Security baseline and drift controls](/azure-stack/hci/manage/manage-secure-baseline) settings to apply and maintain security settings on cluster nodes, this helps to protect against changes / drift, by automatically refreshing security settings every 90 minutes to enforce the intended security posture of Azure Stack HCI.|
+|**Cluster security controls:** |Windows Defender Credential Guard uses virtualization-based security to isolate secrets from credential-theft attacks. Unauthorized access to these secrets can lead to credential theft attacks like pass the hash and pass the ticket. Review [Credential Guard Overview](/windows/security/identity-protection/credential-guard/) for more information.|
+|**Cluster security controls:** |Windows Defender Application Control (WDAC) is used to control which drivers, applications and the code is allowed to execute on cluster nodes. Review [Managing Windows Defender Application Control](/azure-stack/hci/manage/manage-wdac) for more information.|
+|**Cluster security controls:** |BitLocker for the OS volume encrypts the OS volume on each server. Review [BitLocker Overview](/windows/security/operating-system-security/data-protection/bitlocker/) for more information. |
+|**Cluster security controls:** |BitLocker for data volumes encrypts cluster shared volumes (CSVs) created on the Azure Stack HCI system using XTS-AES 256-bit encryption. This is the recommended default setting which can be turned on during the cluster deployment in all the data volumes. Review [Volume encryption via BitLocker](/azure-stack/hci/concepts/security-features#volume-encryption-via-bitlocker) for more information.|
+|**Cluster security controls:** |[Configure Syslog forwarding of security events](/azure-stack/hci/concepts/security-features#syslog-forwarding-of-security-events) to enable Syslog agents on cluster nodes, that will forward syslog security messages to your security information & event management (SIEM) solution.|
+|**Cluster security controls:** |Configure signing for external SMB traffic between the system and others, to help prevent relay attacks. Review [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing) for more information.|
+|**Cluster security controls:**| Review the optional setting "SMB Encryption for in-cluster traffic", this can be used to encrypt cluster node traffic sent on the storage network. Review [SMB Encryption](/windows-server/storage/file-server/smb-security#smb-encryption) for more information.|
 
 For more information on the security features introduced in 23H2, see [Review Security Features](/azure-stack/hci/concepts/security-features).
 
@@ -137,8 +128,9 @@ For more information on the security features introduced in 23H2, see [Review Se
 
 Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Arc enabled virtual machines to enhance the security of those resources using Azure Policy and Microsoft Defender of Cloud. Microsoft Defender for Cloud is a cloud-native application protection platform (CNAPP) that is made up of security measures and practices that are designed to protect cloud-based applications from various cyber threats and vulnerabilities. Review [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) for more information.
 
-Here are some built-in policies on security available for Azure Stack HCI, such as:
+[There are some built-in policies available for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type), such as:
 
+[Preview]: Host and VM networking should be protected on Azure Stack HCI systems
 [Preview]: Azure Stack HCI systems should have encrypted volumes
 [Preview]: Azure Stack HCI servers should have consistently enforced application control policies
 [Preview]: Azure Stack HCI servers should meet Secured-core requirements
