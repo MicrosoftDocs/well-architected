@@ -51,13 +51,6 @@ productDirectory:
         - mobile
         - web
     # Card
-    - title: Application delivery
-      summary: Deliver internal-facing and external-facing applications in the Azure network.
-      imageSrc: /media/common/i_web-apps.svg
-      url: ././application-delivery/reliability.md
-      azureCategories:
-        - web
-    # Card
     - title: Azure Application Gateway
       summary: Build highly secure, scalable, and available web front ends in Azure.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg

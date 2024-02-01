@@ -24,7 +24,3 @@ To understand how IoT Hub DPS promotes operational excellence, reference [How to
 
 For more information about the Service Level Agreement for Azure IoT Hub DPS, reference [SLA for Azure IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/).
 
-## Next step
-
-> [!div class="nextstepaction"]
-> [Application Delivery (General) and reliability](../application-delivery/reliability.md)
