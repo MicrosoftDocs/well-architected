@@ -167,7 +167,7 @@ productDirectory:
     - title: Azure Front Door
       summary: Learn about the scalable, security-enhanced delivery point for global, microservice-based web applications.
       imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
-      url: ./azure-front-door/reliability.md
+      url: azure-front-door.md
       azureCategories:
         - networking
         - security

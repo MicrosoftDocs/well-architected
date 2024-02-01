@@ -82,13 +82,13 @@ Start your design strategy based on the [**design review checklist for Reliabili
 |**Set a timeout** on forwarding request to the backend. <br><br> Adjust the timeout setting according to your endpoints' needs. If you don't, Front Door might close the connection before the origin sends the response. Alternatively, you can lower Front Door's default timeout if all your origins have a shorter timeout. <br> For more information, see [Troubleshooting unresponsive requests](/azure/frontdoor/troubleshoot-issues#troubleshooting-steps).|Timeouts help avoid performance issues and availability issues by terminating requests that take longer than expected to complete.|
 |**Use the same host name on Front Door and your origin**. <br><br>Azure Front Door can rewrite the host header of incoming requests, which is useful when you have multiple custom domain names that route to one origin. However, rewriting the host header might cause issues with request cookies and URL redirection.|Setting the same host name can prevent malfunction with session affinity, authentication and authorization might malfunction. For more information, see [Preserve the original HTTP host name](/azure/architecture/best-practices/host-name-preservation) between a reverse proxy and its back-end web application.|
 |Evaluate if [**session affinity**](/azure/frontdoor/routing-methods#23session-affinity) is required. If you have high reliability requirements, disabling session affinity is recommended. |With session affinity, user connections stay on the same origin during the user session. If that origin becomes unavailable, the user experience might be disrupted.|
-|Take advantage of the [Rate limiting rules](/azure/web-application-firewall/afds/waf-front-door-rate-limit) include with Web Application Firewall (WAF).|You can limit the requests to prevent clients from sending too much traffic to your application. Rate limiting can help you avoid problems like a retry storm.|
+|Take advantage of the [Rate limiting rules](/azure/web-application-firewall/afds/waf-front-door-rate-limit) included with Web Application Firewall (WAF).|You can limit the requests to prevent clients from sending too much traffic to your application. Rate limiting can help you avoid problems like a retry storm.|
 
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Azure Virtual Machines.
+The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design in restricting traffic coming through Azure Front Door.
 
 ##### Design checklist
 
@@ -98,7 +98,10 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Review the security baseline** for [Azure Front Door](/security/benchmark/azure/baselines/azure-front-door-security-baseline).
 >
-> - **Protect the backend servers by removing direct internet access**. Use Front Door's capability to use Azure Private Link to access application origin. Private Links create segmentation and avoid the need for the backends to expose public IPs/endpoints. For more information, see [Secure your Origin with Private Link in Azure Front Door Premium](/azure/frontdoor/private-link).
+> - **Protect the backend servers**. Front end acts as the single point of ingress to the application. 
+>   Use Front Door's capability to use Azure Private Link for accessing application origin. Private Links create segmentation and avoid the need for the backends to expose public IPs/endpoints. For more information, see [Secure your Origin with Private Link in Azure Front Door Premium](/azure/frontdoor/private-link).
+>
+>   Make the host name used by Front Door known to the backend services so that they can accept traffic only from Front Door.
 >
 > - **Only allow authorized access**. Use Front Door's [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only those identities that need it.
 >
@@ -124,6 +127,38 @@ Start your design strategy based on the [**design review checklist for Security*
 | **Enable end-to-end TLS, HTTP to HTTPS redirection, and managed TLS certificates** (when applicable). <br><br> Review the [TLS best practices for Front Door](/azure/frontdoor/best-practices#23tls-best-practices). <br><br> Use TLS v1.2 as the minimum allowed version with ciphers that are relevant for your application. <br><br>  Use your own certificates in [Front Door custom domain](/azure/frontdoor/standard-premium/how-to-configure-https-custom-domain) endpoints and store them in Azure Key Vault.|TLS ensures that data exchange between browser, Front Door, and backend origins is encrypted to prevent tampering. <br><br> Key Vault offers managed certificate support and simpler certificate renewal and rotation.|
 
 ## Cost Optimization
+
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
+
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design.
+
+##### Design checklist
+
+Start your design strategy based on the [**design review checklist for Cost Optimization**](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+
+> [!div class="checklist"]
+>
+> - **Review Front Door tiers and pricing**. Azure Front Door offers three tiers: Classic, Standard, and Premium. Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to estimate realistic costs. [Compare the features](/azure/frontdoor/front-door-cdn-comparison) and suitability of each tier for your scenario. For instance, only the Premium tier supports Private Link to the origin.
+>
+> - **Consider bandwidth costs**. The bandwidth costs of Azure Front Door depend on the tier you choose and the type of data transfer. It povides built-in reports for billable metrics. Refer to [Azure Front Door reports](/azure/frontdoor/standard-premium/how-to-reports) to assess your costs related to bandwidth and where you can focus your optimization efforts.
+>
+> - **Optimize on incoming requests**. Azure Front Door bills the incoming requests. You can set restrictions through design choices. 
+>    
+>   You can lower the number of requests by using design patterns, such as [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation). These patterns can improve the efficiency of your operations. 
+>
+>   Web Application Firewall (WAF) rules restrict incoming traffic, which can optimize costs. For example, you can use rate limiting to prevent abnormally high levels of traffic. You can also use geo-filtering to allow access from specific regions or countries.
+>
+> - **Use resource efficiently**. Front Door's routing method can help with resource optimization. To most effectively use deployed resources, distribute  traffic evenly across all environments, unless the workload is extremely latency sensitive. 
+>
+>   Front Door endpoints can serve many files. Using compression is a way to reduce bandwith costs. 
+
+##### Recommendations
+
+|Recommendation|Benefit|
+|------------------------------|-----------|
+| [**Use caching**](/azure/frontdoor/front-door-caching?pivots=front-door-standard-premium) for your endpoints that support it. | Caching optimizes on data transfer costs because it reduces the number of calls from your Azure Front Door instance to origin. |
+|Enable compression on files. If enabled, ADF will compress files on the fly to save on bandwidth cost||
+| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br><br>The application must support compression and  caching must be enabled on Front Door, as it's required for file compression.| Compression reduces bandwidth consumption and improves performance. |
 
 ## Operational Excellence
 
