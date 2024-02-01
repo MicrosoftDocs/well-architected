@@ -150,7 +150,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 >   Web Application Firewall (WAF) rules restrict incoming traffic, which can optimize costs. For example, you can use rate limiting to prevent abnormally high levels of traffic. You can also use geo-filtering to allow access from specific regions or countries.
 >
-> - **Use resource efficiently**. Front Door's routing method can help with resource optimization. To most effectively use deployed resources, distribute  traffic evenly across all environments, unless the workload is extremely latency sensitive. 
+> - **Use resources efficiently**. Front Door's routing method can help with resource optimization. To most effectively use deployed resources, distribute  traffic evenly across all environments, unless the workload is extremely latency sensitive. 
 >
 >   Front Door endpoints can serve many files. Using compression is a way to reduce bandwith costs. 
 
@@ -158,8 +158,8 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| [**Use caching**](/azure/frontdoor/front-door-caching?pivots=front-door-standard-premium) for your endpoints that support it. | Caching optimizes on data transfer costs because it reduces the number of calls from your Azure Front Door instance to origin.|
-| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br>The application must support compression and caching must be enabled, which is required for file compression.| Compression reduces bandwidth consumption and improves performance. |
+| [**Use caching**](/azure/frontdoor/front-door-caching?pivots=front-door-standard-premium) for your endpoints that support it. | Caching optimizes data transfer costs because it reduces the number of calls from your Azure Front Door instance to the origin.|
+| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br>For this configuration, the application must support compression and caching must be enabled, which is required for file compression.| Compression reduces bandwidth consumption and improves performance. |
 
 ## Operational Excellence
 
