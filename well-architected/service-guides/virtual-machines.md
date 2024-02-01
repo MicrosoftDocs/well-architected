@@ -258,7 +258,7 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 > - **Collect performance data**. Follow the [Operational Excellence best practices](#operational-excellence) for monitoring and deploy the appropriate extensions to view metrics that track against performance indicators.
 > - **Proximity placement groups**. Use [proximity placement groups](/azure/virtual-machine-scale-sets/proximity-placement-groups) in workloads where low latency is a requirement to ensure VMs are physically located close to each other.
-
+>
 > - *VM performance tuning*. Take advantage of VMs performance optimization and enhancing features as required by the workload. For example, locally attached NVMe for high performance use cases, accelerated networking, and Premium SSD v2 for  better performance and scalability.
 ##### Recommendations
 

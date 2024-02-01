@@ -82,7 +82,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 |**Set a timeout** on forwarding request to the backend. <br><br> Adjust the timeout setting according to your endpoints' needs. If you don't, Front Door might close the connection before the origin sends the response. Alternatively, you can lower Front Door's default timeout if all your origins have a shorter timeout. <br> For more information, see [Troubleshooting unresponsive requests](/azure/frontdoor/troubleshoot-issues#troubleshooting-steps).|Timeouts help avoid performance issues and availability issues by terminating requests that take longer than expected to complete.|
 |**Use the same host name on Front Door and your origin**. <br><br>Azure Front Door can rewrite the host header of incoming requests, which is useful when you have multiple custom domain names that route to one origin. However, rewriting the host header might cause issues with request cookies and URL redirection.|Setting the same host name can prevent malfunction with session affinity, authentication and authorization might malfunction. For more information, see [Preserve the original HTTP host name](/azure/architecture/best-practices/host-name-preservation) between a reverse proxy and its back-end web application.|
 |Evaluate if [**session affinity**](/azure/frontdoor/routing-methods#23session-affinity) is required. If you have high reliability requirements, disabling session affinity is recommended. |With session affinity, user connections stay on the same origin during the user session. If that origin becomes unavailable, the user experience might be disrupted.|
-|Take advantage of the [Rate limiting rules](/azure/web-application-firewall/afds/waf-front-door-rate-limit) included with Web Application Firewall (WAF).|You can limit the requests to prevent clients from sending too much traffic to your application. Rate limiting can help you avoid problems like a retry storm.|
+|Take advantage of the [Rate limiting rules](/azure/web-application-firewall/afds/waf-front-door-rate-limit) included with Web application firewall (WAF).|You can limit the requests to prevent clients from sending too much traffic to your application. Rate limiting can help you avoid problems like a retry storm.|
 
 ## Security
 
@@ -106,7 +106,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Only allow authorized access**. Use Front Door's [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only those identities that need it.
 >
-> - **Block common threats at edge**.  Web Application Firewall (WAF) is integrated with Front Door. Enable WAF rules on the frontends to protect applications from common exploits and vulnerabilities at the network edge closer to the attack source.
+> - **Block common threats at edge**.  Web application firewall (WAF) is integrated with Front Door. Enable WAF rules on the frontends to protect applications from common exploits and vulnerabilities at the network edge closer to the attack source.
 >   Consider geo-filtering to restrict access to your web application by countries or regions. 
 >   
 >   Refer to [Azure Web Application Firewall on Azure Front Door](/azure/web-application-firewall/afds/afds-overview).
@@ -148,7 +148,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >    
 >   You can lower the number of requests by using design patterns, such as [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation). These patterns can improve the efficiency of your operations. 
 >
->   Web Application Firewall (WAF) rules restrict incoming traffic, which can optimize costs. For example, you can use rate limiting to prevent abnormally high levels of traffic. You can also use geo-filtering to allow access from specific regions or countries.
+>   Web application firewall (WAF) rules restrict incoming traffic, which can optimize costs. For example, you can use rate limiting to prevent abnormally high levels of traffic. You can also use geo-filtering to allow access from specific regions or countries.
 >
 > - **Use resources efficiently**. Front Door's routing method can help with resource optimization. To most effectively use deployed resources, distribute  traffic evenly across all environments, unless the workload is extremely latency sensitive. 
 >
@@ -159,9 +159,46 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 |Recommendation|Benefit|
 |------------------------------|-----------|
 | [**Use caching**](/azure/frontdoor/front-door-caching?pivots=front-door-standard-premium) for your endpoints that support it. | Caching optimizes data transfer costs because it reduces the number of calls from your Azure Front Door instance to the origin.|
-| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br>For this configuration, the application must support compression and caching must be enabled, which is required for file compression.| Compression reduces bandwidth consumption and improves performance. |
+| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br>For this configuration, the application must support compression and caching must be enabled, which is required for file compression.| Compression reduces bandwidth consumption and improves performance.|
 
 ## Operational Excellence
+
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
+
+The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
+
+##### Design checklist
+
+Start your design strategy based on the [**design review checklist for Operational Excellence**](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Front Door.
+
+> [!div class="checklist"]
+>
+> - **Use Infrastructure as Code(IaC)** technologies such as [Bicep, ARM templates](/azure/frontdoor/front-door-quickstart-template-samples), to provision the Front Door instance. Those declarative approaches provide consistency and easier maintenance. For example, adopt new ruleset versions easily.
+>   Always use the latest API version.
+>
+> - **Simplify configurations**. Take advantage of Front Door capabilites to make configurations easy to manage. For example, use Front Door supports [redirection capabilities](/azure/frontdoor/front-door-url-redirect). Suppose your architecture supports microservices, you can use path-based redirection to target individual services. 
+>
+>   Another use case is configuration of wildcard domains. 
+>
+> - **Handle progressive exposure** by using [Front Door routing methods](/azure/frontdoor/routing-methods). 
+>
+>   A [weighted load balancing approach](/azure/frontdoor/routing-methods#weighted-traffic-routing-method) enables canary deployments in which a certain percentage of traffic is sent to a specific backend. This approach can help you test new features and releases in a controlled environment before rolling them out to your entire user base.
+>
+> - **Collect and analyze Front Door operational data** as part of your workload monitoring. Capture relevant Front Door logs and metrics with Azure Monitor and Azure Log Analytics. This data helps you troubleshoot, understand user behaviors, and optimize operations. 
+>
+> - **Offload certificate management to Azure** to ease operation burden associated with certification rotation and renewals.
+
+
+##### Recommendations
+
+|Recommendation|Benefit|
+|------------------------------|-----------|
+| **[Use HTTP to HTTPS redirection](/azure/frontdoor/front-door-url-redirect#redirection-protocol)** to support forward compability.|Clients using older protocol will be automatically redirected by Front Door to use HTTPS for a secure experience.|
+|**[Capture logs and metrics](/azure/frontdoor/front-door-diagnostics)**. <br><br> Include resource activity logs, access logs, health probe logs, and WAF logs. <br><br>[Set up alerts](/azure/frontdoor/standard-premium/how-to-monitor-metrics#configure-alerts-in-the-azure-portal).|Monitoring ingress flow is a crucial part of monitoring the your application. You want to track requests and make performance and security improvements. This data is also needed to debug your Front Door configuration. <br><br> With alerts in place, you can get instant notifications of any critical operational issues.|
+|**Review the [built-in analytics reports](/azure/frontdoor/standard-premium/how-to-reports)**.|You'll have a holistic view of your Azure Front Door profile that includes traffic and security reports through web application firewall (WAF) metrics.|
+| **[Use managed TLS certificates](/azure/frontdoor/domain#azure-front-door-managed-tls-certificates)**, when possible. | With Azure Front Door, you can let it issue and manage certificates for you. This feature eliminates the need for certificate renewals and minimizes the risk of an outage due to an invalid or expired TLS certificate.|
+|**[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain)**.|  You don't need to modify the configuration to add or specify each subdomain separately. |
+
 
 ## Performance Efficiency
 
@@ -171,9 +208,9 @@ Azure Front Door profiles should use Premium tier that supports managed WAF rule
 
 Both Azure Front Door Standard and Premium should be running minimum TLS version of 1.2. There should be secure private connectivity between Azure Front Door Premium and Azure Storage Blob, or Azure App Service. 
 
-Azure Front Door Standard or Premium (Plus WAF) should have resource logs enabled. Azure Web Application Firewall on Azure Front Door should have request body inspection enabled and be enabled for Azure Front Door entry-points. 
+Azure Front Door Standard or Premium (Plus WAF) should have resource logs enabled. Azure Web application firewall (WAF) on Azure Front Door should have request body inspection enabled and be enabled for Azure Front Door entry-points. 
 
-Bot Protection should be enabled for Azure Front Door WAF. Enable Rate Limit rule to protect against DDoS attacks on Azure Front Door WAF. Web Application Firewall (WAF) should use the specified mode for Azure Front Door Service.
+Bot Protection should be enabled for Azure Front Door. Enable Rate Limit rule to protect against DDoS attacks on Azure Front Door. WAF should use the specified mode for Azure Front Door Service.
 
 ## Azure Advisor recommendations
 
@@ -196,4 +233,4 @@ Consider these articles as resources that demonstrate the  recommendations highl
 - Build implementation expertise using product documentation: 
   - [Azure Front Door and CDN documentation](/azure/frontdoor/)
 
-
+- Azure Front Door best practices: [Best practices for Front Door](/azure/frontdoor/best-practices).

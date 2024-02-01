@@ -1288,12 +1288,12 @@
 		{
 			"source_path": "well-architected/service-guides/azure-front-door/security.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/service-guides/azure-front-door/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		}													
 	]
 }
