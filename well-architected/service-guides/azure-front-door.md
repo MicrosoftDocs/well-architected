@@ -167,7 +167,13 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 
 ## Azure policies
+Azure Front Door profiles should use Premium tier that supports managed WAF rules and private link. 
 
+Both Azure Front Door Standard and Premium should be running minimum TLS version of 1.2. There should be secure private connectivity between Azure Front Door Premium and Azure Storage Blob, or Azure App Service. 
+
+Azure Front Door Standard or Premium (Plus WAF) should have resource logs enabled. Azure Web Application Firewall on Azure Front Door should have request body inspection enabled and be enabled for Azure Front Door entry-points. 
+
+Bot Protection should be enabled for Azure Front Door WAF. Enable Rate Limit rule to protect against DDoS attacks on Azure Front Door WAF. Web Application Firewall (WAF) should use the specified mode for Azure Front Door Service.
 
 ## Azure Advisor recommendations
 
@@ -185,7 +191,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
 
 - Use these reference architectures as examples of how these recommendations can be applied to a workload.
-  - Reference architecture: [Mission-critical baseline with network controls](s/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
+  - Reference architecture: [Mission-critical baseline with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
 
 - Build implementation expertise using product documentation: 
   - [Azure Front Door and CDN documentation](/azure/frontdoor/)
