@@ -946,6 +946,16 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/services/networking/application-delivery/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/application-delivery/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/services/networking/azure-front-door/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-front-door/operational-excellence",
 			"redirect_document_id": true
@@ -1288,7 +1298,7 @@
 		{
 			"source_path": "well-architected/service-guides/application-delivery/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/service-guides/application-delivery/reliability.md",
