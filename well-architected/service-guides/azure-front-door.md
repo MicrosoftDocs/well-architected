@@ -102,7 +102,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 >   Use Front Door's capability to use Azure Private Link for accessing application origin. Private Links create segmentation and avoid the need for the backends to expose public IPs/endpoints. For more information, see [Secure your Origin with Private Link in Azure Front Door Premium](/azure/frontdoor/private-link).
 >
->   The backend services should be aware of the host name used by Front Door so that so that they can accept traffic only from that hose name.
+>   The backend services accept traffic only from Front Door's host name if  Front Door is within the trust boundary of the workload.
 >
 > - **Only allow authorized access**. Use Front Door's [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only those identities that need it.
 >
