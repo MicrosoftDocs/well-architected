@@ -33,7 +33,7 @@ This article assumes that as an architect, you've reviewed the [**load balancing
 This review focuses on the interrelated decisions for these Azure resources.  
 
 - Azure Front Door
-- Azure CDN Microsoft
+- Azure Content Delivery Network (CDN)
 
 
 ## Reliability
@@ -69,6 +69,8 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > - **Use the same host name on Front Door and origin servers**. To ensure that cookies or redirect URLs work properly,preserve the original HTTP host name when using a reverse proxy, such as a load balancer, in front of a web application. 
 >
 > - **Implement the health endpoint monitoring pattern**. Your **application should expose health endpoints**, which  aggregate the state of the critical services and dependencies needed to serve requests. Front Door health probes can then use the endpoint to detect health of the origin servers. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
+>
+> - **Use of a Content Delivery Network (CDN) with Azure Front Door** helps increase reliability by load balancing internet traffic, using intelligent failover, and by maintaining servers across many data centers. Azure Front Door CDN has hundreds of edge locations and can also help withstand Distributed Denial of Service (DDOS) attacks, which ultimately impacts reliability.
 >
 > - **Don't centralize Front Door within an organization**. Central instances are shared among workloads. That centralized approach might not factor the reliability concerns specific to your use case.
 
@@ -193,9 +195,9 @@ Start your design strategy based on the [**design review checklist for Operation
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| **[Use HTTP to HTTPS redirection](/azure/frontdoor/front-door-url-redirect#redirection-protocol)** to support forward compability.|Clients using older protocol will be automatically redirected by Front Door to use HTTPS for a secure experience.|
-|**[Capture logs and metrics](/azure/frontdoor/front-door-diagnostics)**. <br><br> Include resource activity logs, access logs, health probe logs, and WAF logs. <br><br>[Set up alerts](/azure/frontdoor/standard-premium/how-to-monitor-metrics#configure-alerts-in-the-azure-portal).|Monitoring ingress flow is a crucial part of monitoring the your application. You want to track requests and make performance and security improvements. This data is also needed to debug your Front Door configuration. <br><br> With alerts in place, you can get instant notifications of any critical operational issues.|
-|**Review the [built-in analytics reports](/azure/frontdoor/standard-premium/how-to-reports)**.|You'll have a holistic view of your Azure Front Door profile that includes traffic and security reports through web application firewall (WAF) metrics.|
+| **[Use HTTP to HTTPS redirection](/azure/frontdoor/front-door-url-redirect#redirection-protocol)** to support forward compatibility.|When enabled, clients using older protocol are automatically redirected by Front Door to use HTTPS for a secure experience.|
+|**[Capture logs and metrics](/azure/frontdoor/front-door-diagnostics)**. <br><br> Include resource activity logs, access logs, health probe logs, and WAF logs. <br><br>[Set up alerts](/azure/frontdoor/standard-premium/how-to-monitor-metrics#configure-alerts-in-the-azure-portal).|Monitoring ingress flow is a crucial part of monitoring an application. You want to track requests and make performance and security improvements. This data is also needed to debug your Front Door configuration. <br><br> With alerts in place, you can get instant notifications of any critical operational issues.|
+|**Review the [built-in analytics reports](/azure/frontdoor/standard-premium/how-to-reports)**.|A holistic view of your Azure Front Door profile is helpful in driving improvements based on traffic and security reports through web application firewall (WAF) metrics.|
 | **[Use managed TLS certificates](/azure/frontdoor/domain#azure-front-door-managed-tls-certificates)**, when possible. | With Azure Front Door, you can let it issue and manage certificates for you. This feature eliminates the need for certificate renewals and minimizes the risk of an outage due to an invalid or expired TLS certificate.|
 |**[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain)**.|  You don't need to modify the configuration to add or specify each subdomain separately. |
 
