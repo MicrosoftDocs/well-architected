@@ -204,15 +204,36 @@ Start your design strategy based on the [**design review checklist for Operation
 
 ## Performance Efficiency
 
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
+
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
+
+##### Design checklist
+
+> [!div class="checklist"]
+>
+> - Drive improvements based on the Front Door traffic reports.
+
+
+
+##### Recommendations
+
+|Recommendation|Benefit|
+|------------------------------|-----------|
+
+
 
 ## Azure policies
-Azure Front Door profiles should use Premium tier that supports managed WAF rules and private link. 
 
-Both Azure Front Door Standard and Premium should be running minimum TLS version of 1.2. There should be secure private connectivity between Azure Front Door Premium and Azure Storage Blob, or Azure App Service. 
+Azure provides an extensive set of built-in policies related to Azure Front Door and CDN. Some of the preceding recommendations can be audited and enforced through Azure Policies. For example, you can check if:
 
-Azure Front Door Standard or Premium (Plus WAF) should have resource logs enabled. Azure Web application firewall (WAF) on Azure Front Door should have request body inspection enabled and be enabled for Azure Front Door entry-points. 
+- Azure Front Door profiles should use Premium tier that supports managed WAF rules and private link. 
+- Minimum TLS version of 1.2 should be used. 
+- There should be secure private connectivity between Front Door Premium and Azure PaaS services. 
+- Resource logs should be enabled. WAF should have request body inspection enabled. 
+- Enforce the WAF rule set through policies. For example, bot protection should be enabled, rate limit rule should be on, and so on.
+For comprehensive governance, review the [Azure Policy built-in definitions for CDN](/azure/governance/policy/samples/built-in-policies#cdn) and other Front-Door policies are listed [here](azure/governance/policy/samples/built-in-policies).
 
-Bot Protection should be enabled for Azure Front Door. Enable Rate Limit rule to protect against DDoS attacks on Azure Front Door. WAF should use the specified mode for Azure Front Door Service.
 
 ## Azure Advisor recommendations
 
