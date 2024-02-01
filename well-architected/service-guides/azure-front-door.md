@@ -251,10 +251,8 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
 
-- Use these reference architectures as examples of how these recommendations can be applied to a workload.
-  - Reference architecture: [Mission-critical baseline with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
+- Use the [Mission-critical baseline with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture) reference architecture as an examples of how these recommendations can be applied to a workload.
 
-- Build implementation expertise using product documentation: 
-  - [Azure Front Door and CDN documentation](/azure/frontdoor/)
+- Build implementation expertise using product documentation: [Azure Front Door and CDN documentation](/azure/frontdoor/)
 
-- Azure Front Door best practices: [Best practices for Front Door](/azure/frontdoor/best-practices).
+- Review Azure Front Door best practices: [Best practices for Front Door](/azure/frontdoor/best-practices).
