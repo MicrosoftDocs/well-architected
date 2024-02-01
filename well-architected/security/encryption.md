@@ -18,7 +18,7 @@ If your data isn't protected, it can be maliciously modified, which leads to los
 
 This guide describes the recommendations for encrypting and protecting your data. Encryption is the process of using cryptography algorithms to **make the data unreadable and lock the data with a key**. In the encrypted state, data can't be deciphered. It can only be decrypted by using a key that's paired with the encryption key.
 
-**Definitions** 
+**Definitions**
 
 |Terms   |Definition   |
 |---------|---------|
@@ -32,7 +32,6 @@ This guide describes the recommendations for encrypting and protecting your data
 |Signature|An encrypted stamp of authentication on data. |
 |Signing|The process of verifying data's authenticity by using a signature.|
 |X.509| A standard that defines the format of public key certificates.|
-
 
 ## Key design strategies
 
@@ -126,6 +125,8 @@ Classify and protect information storage objects in accordance with the internal
 
 - **Use identity-based access controls to control access to data**. Add network firewalls to provide an extra layer of security that blocks unexpected and unsafe access.
 
+    For more information, see [Recommendations for identity and access management](/azure/well-architected/security/identity-access).
+
 - **Store keys in a managed HSM** that has least-privilege access control. Separate the data from the keys to the data.
 
 - **Store limited amount of data** so that you only encrypt what's necessary. Your data shouldn't live longer than your encryption cycle. When data is no longer needed, delete the encrypted data without spending decryption cycles.
@@ -141,7 +142,7 @@ Classify and protect information storage objects in accordance with the internal
     > All website communication should use HTTPS, regardless of the sensitivity of the transferred data. During a client-server handshake, negotiate the use of the HTTP Strict Transport Security (HSTS) policy so that HTTPS transport is maintained and doesn't drop to HTTP during communication. This policy protects against man-in-the-middle attacks.
     >
     > Support for HSTS is for newer versions. You might break backward compatibility with older browsers.
-
+    >
     > [!NOTE]
     > You can also encrypt protocols to establish secure connections for databases. For example, Azure SQL Database supports the Tabular Data Stream (TDS) protocol, which integrates a TLS handshake.
     >
@@ -155,7 +156,7 @@ Classify and protect information storage objects in accordance with the internal
     > Your workflow shouldn't allow invalid certificates to be accepted in the environment. The certificate pinning process should validate certificates and enforce that validation check. You should monitor access logs to ensure that the signing key is used with proper permissions.
     >
     > If a key is compromised, the certificate must be revoked immediately. A certificate authority (CA) provides a certificate revocation list (CRL) that indicates the certificates that are invalidated before their expiration. Your validation check should account for CRLs.
-
+    >
     > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The certification validation process can be cumbersome and usually involves a CA. Determine the data that you must encrypt with certificates. For other types of communication, determine if you can implement localized compensating controls to add security.
     >
     > One way of localizing controls is with mutual TLS (mTLS). It establishes trust in both directions between the client and the server. Both the client and the server have their own certificates, and each certificate is authenticated with their public or private key pair. With mTLS, you're not dependent on the external CA. The tradeoff is the added complexity of managing two certificates.
@@ -233,4 +234,3 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 [Security checklist](checklist.md)
-
