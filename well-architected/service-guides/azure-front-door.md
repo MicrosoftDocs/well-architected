@@ -232,7 +232,8 @@ Azure provides an extensive set of built-in policies related to Azure Front Door
 - There should be secure private connectivity between Front Door Premium and Azure PaaS services. 
 - Resource logs should be enabled. WAF should have request body inspection enabled. 
 - Enforce the WAF rule set through policies. For example, bot protection should be enabled, rate limit rule should be on, and so on.
-For comprehensive governance, review the [Azure Policy built-in definitions for CDN](/azure/governance/policy/samples/built-in-policies#cdn) and other Front-Door policies are listed [here](azure/governance/policy/samples/built-in-policies).
+
+For comprehensive governance, review the [Azure Policy built-in definitions for CDN](/azure/governance/policy/samples/built-in-policies#cdn) and other Front-Door policies are listed [here](/azure/governance/policy/samples/built-in-policies).
 
 
 ## Azure Advisor recommendations
