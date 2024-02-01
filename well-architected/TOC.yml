@@ -290,8 +290,6 @@
               href: service-guides/application-insights/operational-excellence.md
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
-        - name: Azure Front Door
-          href: service-guides/azure-front-door.md
         - name: Azure App Service
           items:
             - name: Reliability
