@@ -220,7 +220,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-
+|||
 
 
 ## Azure policies
