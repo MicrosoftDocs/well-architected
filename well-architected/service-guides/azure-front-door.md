@@ -156,9 +156,8 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| [**Use caching**](/azure/frontdoor/front-door-caching?pivots=front-door-standard-premium) for your endpoints that support it. | Caching optimizes on data transfer costs because it reduces the number of calls from your Azure Front Door instance to origin. |
-|Enable compression on files. If enabled, ADF will compress files on the fly to save on bandwidth cost||
-| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br><br>The application must support compression and  caching must be enabled on Front Door, as it's required for file compression.| Compression reduces bandwidth consumption and improves performance. |
+| [**Use caching**](/azure/frontdoor/front-door-caching?pivots=front-door-standard-premium) for your endpoints that support it. | Caching optimizes on data transfer costs because it reduces the number of calls from your Azure Front Door instance to origin.|
+| [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br>The application must support compression and caching must be enabled, which is required for file compression.| Compression reduces bandwidth consumption and improves performance. |
 
 ## Operational Excellence
 
