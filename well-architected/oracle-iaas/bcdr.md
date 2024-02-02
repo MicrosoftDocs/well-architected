@@ -67,7 +67,7 @@ A second Data Guard standby configuration in the secondary region is established
 
 If a primary goes down, Observer(s) will reroute the traffic to the secondary DB2 as it comes out of standby, becomes primary and takes over all functionality for environment and sequence to fail over to secondary region standby if regional outage in first region.
 
-![Alt text](image-1.png)
+![Alt text](./images/image-1.png)
 
 ### Example 2: Create a Fail-Over For Business Critical Oracle Applications in a Two Availability Zone Deployment With Manual Failover
 
@@ -77,7 +77,7 @@ Azure Site Recovery or the manual clone utility can be established to duplicate 
 
 A failover would require manual intervention from the system admin to fail over if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
-![Alt text](image-2.png)
+![Alt text](./images/image-2.png)
 
 ## Next Steps
 
