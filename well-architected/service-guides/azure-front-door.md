@@ -212,15 +212,33 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 > [!div class="checklist"]
 >
-> - Drive improvements based on the Front Door traffic reports.
+> - Collect performance data by regularly reviewing Front Door reports.
+> - Reduce latency in serving static content or content that doesn't change frequently. 
+> - Handle high loads.
+> - Optimize data transfers. 
 
+
+- (PE) Consider compression
+- (PE) Review origin routing method
+
+Fasttrack review
+
+- Disable health probes when there is only one origin in an Azure Front Door origin group.
+- Use HEAD health probes with Azure Front Door, to reduce the traffic that Front Door sends to your application.
 
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|||
+|Use a content delivery network (CDN). A content delivery network can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.||
+
+
+> - Caching
+> - compression
+> - session affinity There are situations where server affinity can be used as a strategy to optimize performance (server can keep session state locally). But the app must be designed to be able to recover from failures. It also makes load balancing more difficult
+> - Disable Health probe if there is only one backend defined to prevent the requests for no reason
+> - Set to HEAD if possible to minimize bandwith
 
 
 ## Azure policies
