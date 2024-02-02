@@ -177,11 +177,9 @@ Encryption and decryption of data must only be done within those isolation bound
 
 More stringent security or regulatory requirements may also require hardware based, cryptographically signed evidence that data is being encrypted whilst in-use, this can be obtained through **attestation**.
 
-Use of modern security and privacy measures is a common requirement for regulatory workloads. **Confidential computing** is one such technology that supports the requirement.
+Use of modern security and privacy measures is a common requirement for regulatory workloads. **Confidential computing** is one such technology that supports the requirement. Specific services in Azure offer the ability to protect data while it's being computed-upon. For more information, see [Azure Facilitation: Azure Confidential Compute](#data-in-use-protection).
 
-Specific services in Azure offer the ability to protect data while it's being computed-upon. For more information, see [Azure Facilitation: Azure Confidential Compute](#data-in-use-protection).
-
-- **Consider the end-end lifecycle of data you are protecting** data often moves through multiple systems in its lifetime, take care to ensure that all component parts of a solution can provide the required levels of protection, or ensure that your data management strategy provides appropriate segmentation or masking.
+**Consider the end-end lifecycle of data you are protecting** data often moves through multiple systems in its lifetime, take care to ensure that all component parts of a solution can provide the required levels of protection, or ensure that your data management strategy provides appropriate segmentation or masking.
 
 ## Azure facilitation
 
