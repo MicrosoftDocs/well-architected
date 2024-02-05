@@ -152,7 +152,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Use resources efficiently**. Front Door's routing method can help with resource optimization. To most effectively use deployed resources, distribute  traffic evenly across all environments, unless the workload is extremely latency sensitive. 
 >
->   Front Door endpoints can serve many files. Using compression is a way to reduce bandwith costs. 
+>   Front Door endpoints can serve many files. Using compression is a way to reduce bandwidth costs. 
 >
 > - **Consider using a shared instance** provided by the organization. Costs incurred by centralized services are shared between the workloads. However, consider the tradeoff with [Reliability](#reliability) if your workload has high availability requirements. 
 >
