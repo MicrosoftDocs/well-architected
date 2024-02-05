@@ -164,7 +164,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 |------------------------------|-----------|
 | [**Use caching**](/azure/frontdoor/front-door-caching) for your endpoints that support it. | Caching optimizes data transfer costs because it reduces the number of calls from your Azure Front Door instance to the origin.|
 | [**Consider enabling file compression**](/azure/frontdoor/standard-premium/how-to-compression). <br>For this configuration, the application must support compression and caching must be enabled, which is required for file compression.| Compression reduces bandwidth consumption and improves performance.|
-|**Disable health checks in single backend pools**<br>If you have only one origin configured in your Azure Front Door origin group, these calls are unnecessary.|You are able to save on bandwith costs on requests that aren't required to make routing decisions.|
+|**Disable health checks in single backend pools**<br>If you have only one origin configured in your Azure Front Door origin group, these calls are unnecessary.|You are able to save on bandwidth costs on requests that aren't required to make routing decisions.|
 
 
 ## Operational Excellence
