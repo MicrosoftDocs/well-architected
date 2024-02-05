@@ -144,6 +144,8 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Review Front Door tiers and pricing**. Azure Front Door offers three tiers: Classic, Standard, and Premium. Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to estimate realistic costs. [Compare the features](/azure/frontdoor/front-door-cdn-comparison) and suitability of each tier for your scenario. For instance, only the Premium tier supports Private Link to the origin.
 >
+>   The Standard SKU is more cost-effective and suitable for moderate traffic scenarios. In the Premium SKU, you pay a higher unit rate, but you gain access to advanced features like SSL offload, anycast network, and end-to-end IPv6 connectivity. Consider the tradeoffs on Reliability and Security based on your business requirements. 
+>
 > - **Consider bandwidth costs**. The bandwidth costs of Azure Front Door depend on the tier you choose and the type of data transfer. It povides built-in reports for billable metrics. Refer to [Azure Front Door reports](/azure/frontdoor/standard-premium/how-to-reports) to assess your costs related to bandwidth and where you can focus your optimization efforts.
 >
 > - **Optimize on incoming requests**. Azure Front Door bills the incoming requests. You can set restrictions through design choices. 
@@ -212,33 +214,39 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 > [!div class="checklist"]
 >
-> - Collect performance data by regularly reviewing Front Door reports.
-> - Reduce latency in serving static content or content that doesn't change frequently. 
-> - Handle high loads.
-> - Optimize data transfers. 
-
-
-- (PE) Consider compression
-- (PE) Review origin routing method
-
-Fasttrack review
-
-- Disable health probes when there is only one origin in an Azure Front Door origin group.
-- Use HEAD health probes with Azure Front Door, to reduce the traffic that Front Door sends to your application.
-
+> - **Do capacity planning** by analyzing your expected traffic patterns. Conduct thorough testing to understand how your application performs under different loads. Take into consideration factors such as simultaneous transactions, request rates, and data transfer. 
+>
+>   Make your SKU choices based on that panning. The Standard SKU is more cost-effective and suitable for moderate traffic scenarios. If you anticipate higher loads, Azu
+> - **Analyze performance data** by regularly reviewing [Front Door reports](/azure/frontdoor/standard-premium/how-to-reports). These reports provide insights into various metrics that can serve as performance  indicators at the technology level. 
+>
+>   Front Door reports can help set realistic performance targets for your workload. Consider factors such as response times, throughput, and error rates. Align the targets with your business requirements and user expectations.
+>
+> - **Optimize data transfers.**
+>
+>   - Reducing latency in serving static content, such as images, stylesheets, and JavaScript files or content that doesn't change frequently. This is achieved through caching. Optimize your application for caching. Use cache expiration headers in the application that controls by how long the content should be cached by clients and proxies. Longer cache validity means less frequent requests to the origin server, resulting in reduced traffic and lower latency.
+>   - Reduce the size of files transmitted over the network, which often leads to  faster load times and improved user experience.
+>   - Minimize the number of backend requests in the application. For example, a web page displays user profiles, recent orders, balances, and other related information. Instead of making separate requests for each set of information, use design patterns to structure your application so that multiple requests are aggregated into a single request. By doing so, you send less data between the front end and the backend, fewer connections are established between the client and the backend, reducing overhead. Also, Azure Front Door handles fewer requests, preventing overload.
+> 
+> - **Optimize the use of health probes.**
+>
+>   Get health information through health probes only when the state of the origins have changed. Strike a balance between monitoring accuracy and minimizing unnecessary traffic.
+>
+>   Health probes are typically used to assess the health of multiple origins within a group. If you have only one origin configured in your Azure Front Door origin group,  disable health probes to reduce unnecessary traffic on your origin server. Health probe's status won't impact Front Door's routing decisions.
+>
+> - **Review origin routing method**. | Azure Front Door provides various routing methods to the origin, such as latency-based, priority-based, weighted, and session-affinity based routing. These methods affect the performance of your solution significantly. To learn more about the best traffic routing option for your scenario, see [Traffic routing methods to origin]
+>
+> - **Review the location of origin servers** | The location of your origin servers impacts the responsiveness of your application. The origin should be closer to the users. Azure Front Door ensures that users from a specific location access the nearest Front Door entry point. The performance benefits are faster user experience, better use of latency-based routing by Front Door, and with caching, content is closer to users, minimizing data transfer time.
+>
+>     For more information, see [Traffic by location report](/azure/frontdoor/standard-premium/how-to-reports#traffic-by-location-report). 
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|Use a content delivery network (CDN). A content delivery network can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.||
-
-
-> - Caching
-> - compression
-> - session affinity There are situations where server affinity can be used as a strategy to optimize performance (server can keep session state locally). But the app must be designed to be able to recover from failures. It also makes load balancing more difficult
-> - Disable Health probe if there is only one backend defined to prevent the requests for no reason
-> - Set to HEAD if possible to minimize bandwith
+| [Enable caching](/azure/frontdoor/front-door-caching). <br> You can optimize [query strings for caching](/azure/frontdoor/front-door-caching). For purely static content, ignore query strings to maximize use of the cache. If your application uses query strings, consider including them in the cache key. This allows Front Door to serve cached responses or otherwise, based on your configuration.| Front Door offers a robust Content Deliver Network (CDN) solution that caches content at the edge of the network.  Caching reduces load on the backend servers and data movement across the network that helps offload bandwidth usage.|
+| [Use file compression](/azure/frontdoor/standard-premium/how-to-compression) when accessing downloadable content.| Compression in Azure Front Door helps to deliver the content in the optimal format, has smaller payload, and consequently delivers content faster to the users.|
+|When configuring health probes in Azure Front Door, consider using HEAD requests. <br> Keep in mind that there's an additional GET requests when there's change to actually fetch the content. Frequent HEAD requests can add overhead due to the need for additional round trips. Use HEAD requests for resources that change infrequently.|HEAD requests allow you to query state change without fetching its entire content.|
+|Evaluate whether [**session affinity**](/azure/frontdoor/routing-methods#23session-affinity) should be enabled when requests from the same end user should be directed to the same backend server. <br><br> For a reliability perspective, this isn't recommended. If you choose use this option, the application should gracefully recover without disrupting user sessions. <br><br> There's also a tradeoff on load balancing because  it restricts the flexibility of distributing traffic across multiple backends evenly.|It optimizes performance and helps maintain continuity for user sessions, especially when applications rely on maintaining state information locally. |
 
 
 ## Azure policies
