@@ -70,7 +70,7 @@ productDirectory:
     - title: Azure App Service
       summary: Quickly create powerful cloud apps for web and mobile.
       imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-      url: ./azure-app-service/reliability.md
+      url: ./azure-app-service.md
       azureCategories:
         - compute
         - mobile

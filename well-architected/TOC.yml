@@ -299,6 +299,7 @@
             - name: Operational excellence
               href: service-guides/azure-front-door/operational-excellence.md
         - name: Azure App Service
+          href: service-guides/app-service.md
           items:
             - name: Reliability
               href: service-guides/azure-app-service/reliability.md
