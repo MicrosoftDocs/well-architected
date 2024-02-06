@@ -115,17 +115,17 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 > [!div class="checklist"]
 >
-> **Usage optimization** Choose compute resources to ensure features such as CPU vs. GPU, SKU, or low vs. regular priority VMs matches workload requirements.
+> - **Usage optimization** Choose compute resources to ensure features such as CPU vs. GPU, SKU, or low vs. regular priority VMs matches workload requirements.
 >
-> **Usage optimization** Ensure compute resources that are not being used are scaled down or shut down when idle to reduce waste.
+> - **Usage optimization** Ensure compute resources that are not being used are scaled down or shut down when idle to reduce waste.
 >
-> **Usage optimization** Apply policies and configure quotas to comply with the design’s upper and lower limits.
+> - **Usage optimization** Apply policies and configure quotas to comply with the design’s upper and lower limits.
 >
-> **Usage optimization** Test parallelizing training workloads to determine if training requirements can be met on lower cost SKUs.
+> - **Usage optimization** Test parallelizing training workloads to determine if training requirements can be met on lower cost SKUs.
 >
-> **Rate optimization** Purchase Azure VM reserved instances if you have a good estimate of usage over the next one to three years.
+> - **Rate optimization** Purchase Azure VM reserved instances if you have a good estimate of usage over the next one to three years.
 >
-> **Monitor and optimize** Regularly monitor your resource utilization such as CPU and GPU utilization when training models. If the resources aren't being fully used, modify your code to better use resources or scale down to smaller or cheaper VM sizes.
+> - **Monitor and optimize** Regularly monitor your resource utilization such as CPU and GPU utilization when training models. If the resources aren't being fully used, modify your code to better use resources or scale down to smaller or cheaper VM sizes.
 
 ##### Recommendations
 
