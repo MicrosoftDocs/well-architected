@@ -87,7 +87,7 @@ Security is one of the most important aspects of any architecture. To explore ho
 
 To learn about DoD Impact Level 5 (IL5) support and requirements with Azure Stack HCI, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-hybrid-workloads-service).
 
-When discussing security of Azure Stack HCI, it is important to distinguish between *cluster security* and *workload security*. Cluster security is the responsibility of the platform or cluster administrators, while workload security is the responsibility of the VM Guest OS admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing security of Azure Stack HCI, it is important to distinguish between *cluster security* and *workload security*. Cluster security is the responsibility of the platform or cluster administrators, while workload security is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -168,7 +168,7 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|**Cluster configuration:**|If your organization owns Windows Server Datacenter license with active Software Assurance (SA) and would like to exchange those licenses to get Azure Stack HCI and Windows Server Subscription at no additional cost, consider activating [Azure Hybrid Benefit for the Azure Stack HCI cluster](/azure-stack/hci/concepts/azure-hybrid-benefit-hci), located in configuration settings of the HCI resource object in Azure.|
+|**Cluster configuration:**|Windows Server Datacenter customers with Software Assurance (SA) can get Azure Stack HCI at no additional cost with [Azure Hybrid Benefit for Azure Stack HCI](/azure-stack/hci/concepts/azure-hybrid-benefit-hci), this is enabled using the configuration settings of the HCI cluster resource object in Azure portal.|
 |**Cluster configuration:**|Windows Server subscription add-on: for customers that do not have Azure Hybrid Benefit licenses, consider subscribing to Windows Server guest licenses through Azure. This can be purchased using the Azure Stack HCI cluster resource object under the Configuration blade in Azure portal. By enabling this for an Azure Stack HCI cluster, you will be charged for the total number of physical cores in the cluster.|
 |**Cluster configuration:**|Ensure Azure verification for VMs is enabled, under the Configuration for the Azure Stack HCI cluster resource in Azure Portal. This will allow using the workloads and services that are available only on Azure, such as Extended Security Updates and others.|
 
@@ -182,13 +182,13 @@ While there are no built-in policies that are related to cost optimization, cust
 
 Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
 
-Learn how to build sustainable and efficient Azure Stack HCI workloads, in Sustainable software engineering principles in Azure Stack HCI.
+Learn how to build sustainable and efficient solutions using Azure Stack HCI, by completing [The Principles of Sustainable Software Engineering](/training/modules/sustainable-software-engineering-overview/) training module.
 
 ## Operational excellence
 
 Monitoring and diagnostics are crucial. Not only can you measure performance statistics, but also use metrics troubleshoot and remediate issues quickly. We recommend reviewing the [Operational excellence design principles](/azure/well-architected/devops/principles) and how to [collect logs](/azure-stack/hci/manage/collect-logs) to help troubleshoot issues with Azure Stack HCI.
 
-When discussing operational excellence with Azure Stack HCI, it's important to distinguish between *cluster operational excellence* and *workload operational excellence*. Cluster operational practices are the responsibility of the cluster administrators, while workload operational practices are the responsibility of the VM Guest OS admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing operational excellence with Azure Stack HCI, it's important to distinguish between *cluster operational excellence* and *workload operational excellence*. Cluster operational practices are the responsibility of the cluster administrators, while workload operational practices are the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -224,7 +224,7 @@ Review: Azure Advisor also makes recommendations on a subset of the items listed
 
 Review: Azure Policy offers various built-in policy definitions that apply to both the Azure resource and Azure Stack HCI like standard policy definitions, and using the Azure Policy add-on for hybrid workloads, also within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant.
 
-There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for hybrid workloads](/azure/governance/policy/samples/built-in-policies#hybrid workloads).
+There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Azure Arc enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
 
 #### Cluster architecture
 
@@ -244,7 +244,7 @@ In addition to the built-in policies, custom policies can be created for both th
 
 Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](/azure/well-architected/scalability/principles).
 
-When discussing performance with Azure Stack HCI, it's important to distinguish between *cluster performance* and *workload performance*. Cluster design and performance capabilities are the responsibility of the cluster administrators and the hardware OEM partner, while workload performance is the domain of the VM Guest OS admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing performance with Azure Stack HCI, it's important to distinguish between *cluster performance* and *workload performance*. Cluster design and performance capabilities are the responsibility of the cluster administrators and the hardware OEM partner, while workload performance is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
