@@ -37,7 +37,7 @@ This review focuses on the interrelated decisions for these Azure resources.
 - Azure App Service Plan
 - Azure App Service for Web Apps
 
-    Within Web Apps, there's support for Web Apps for Containers. This is out-of-scope for this article. 
+    Within Web Apps, there's support for Web Apps for Containers, which is out-of-scope for this article. 
 
 There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article.
 
