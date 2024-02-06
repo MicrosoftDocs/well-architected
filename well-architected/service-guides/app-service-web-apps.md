@@ -27,7 +27,7 @@ This article assumes that as an architect, you've reviewed the [**compute decisi
 >
 > Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure App Service for Web Apps and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
 >
-> Foundational architecture that demostrates the key recommendations: [Azure Virtual Machine baseline architecture](/azure/architecture/virtual-machines/baseline).
+> Foundational architecture that demostrates the key recommendations: [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
 
 ##### Technology scope
@@ -144,3 +144,26 @@ Azure provides an extensive set of built-in policies related to App Service and 
 
 
 For comprehensive governance, review the App Services section in [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies) and other policies that might impact the security of the compute layer.
+
+
+## Azure Advisor recommendations
+
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
+
+- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
+- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+- [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+
+
+## Next steps
+
+Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
+
+- Use these reference architectures as examples of how these recommendations can be applied to a workload.
+  - If you have never deployed a Web Apps, start with [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
+  - Foundational architecture as your starting point for a production-grade deployment is described in [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+- Build implementation expertise using product documentation: 
+  - [Azure App Service](/azure/app-service/)
+  - [Azure App Service plan](/azure/app-service/overview-hosting-plans)
