@@ -218,7 +218,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 >
 > - **Do capacity planning** by analyzing your expected traffic patterns. Conduct thorough testing to understand how your application performs under different loads. Take into consideration factors such as simultaneous transactions, request rates, and data transfer. 
 >
->   Make your SKU choices based on that panning. The Standard SKU is more cost-effective and suitable for moderate traffic scenarios. If you anticipate higher loads, Premium is recommended.
+>   Make your SKU choices based on that planning. The Standard SKU is more cost-effective and suitable for moderate traffic scenarios. If you anticipate higher loads, Premium is recommended.
 >
 > - **Analyze performance data** by regularly reviewing [Front Door reports](/azure/frontdoor/standard-premium/how-to-reports). These reports provide insights into various metrics that can serve as performance  indicators at the technology level. 
 >
