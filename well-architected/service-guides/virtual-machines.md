@@ -15,11 +15,13 @@ categories:
 
 Azure Virtual Machines is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute to run your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
+This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute to run your workload. 
 
 > [!IMPORTANT]
 >
 > **How to use this guide**
+>
+> The guidance in this article provides architectural recommendations that are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
 >
 > Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope. 
 >
@@ -256,7 +258,7 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 > - **Collect performance data**. Follow the [Operational Excellence best practices](#operational-excellence) for monitoring and deploy the appropriate extensions to view metrics that track against performance indicators.
 > - **Proximity placement groups**. Use [proximity placement groups](/azure/virtual-machine-scale-sets/proximity-placement-groups) in workloads where low latency is a requirement to ensure VMs are physically located close to each other.
-
+>
 > - *VM performance tuning*. Take advantage of VMs performance optimization and enhancing features as required by the workload. For example, locally attached NVMe for high performance use cases, accelerated networking, and Premium SSD v2 for  better performance and scalability.
 ##### Recommendations
 
