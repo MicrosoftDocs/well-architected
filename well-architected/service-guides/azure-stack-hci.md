@@ -96,7 +96,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > [!div class="checklist"]
 >
 > - **Cluster security controls:** During the cloud based deployment of Azure Stack HCI, it is recommended to select and use the [Default Security Features and Settings](/azure-stack/hci/concepts/security-features), which enable more than 300 OS security settings, Windows Defender Application Control, Credential Guard, BitLocker encryption for the OS and data volumes and Signing for external SMB traffic that provides the highest level of security. These settings can be customized based on your organizational security requirements.
-> - **Cluster security controls:** Use [Microsoft Defender for Cloud](azure-stack/hci/manage/manage-security-with-defender-for-cloud) to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads, providing a single pane of glass experience to help manage security posture.
+> - **Cluster security controls:** Use [Microsoft Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads, providing a single pane of glass experience to help manage security posture.
 > - **Cluster security controls:** Use Microsoft Defender for Servers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and workloads.
 > - **Cluster security controls:** Configure Entra ID user account membership of the [builtin roles based access control (RBAC) roles](/azure-stack/hci/manage/assign-vm-rbac-roles) to control access to VMs and VM resources on your Azure Stack HCI, such as HCI Administrator, VM Contributor and VM Reader.
 > - **Workload security controls:** Use VLAN based network-isolation to deploy workloads (VMs) that needs to be isolated from each other across the different VLAN networks. Ensure each VLAN is configured and reachable from the management network for the hosts to communicate with the VLAN networks through the ToR (Top-of-Rack) switches or gateways.
@@ -186,7 +186,7 @@ Learn how to build sustainable and efficient Azure Stack HCI workloads, in Susta
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics, but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](/azure/well-architected/devops/principles) and the [Day-2 operations guide](/azure/architecture/operator-guides/AzureStackHCI/day-2-operations-guide).
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics, but also use metrics troubleshoot and remediate issues quickly. We recommend reviewing the [Operational excellence design principles](/azure/well-architected/devops/principles) and how to [collect logs](/azure-stack/hci/manage/collect-logs) to help troubleshoot issues with Azure Stack HCI.
 
 When discussing operational excellence with Azure Stack HCI, it's important to distinguish between *cluster operational excellence* and *workload operational excellence*. Cluster operational practices are the responsibility of the cluster administrators, while workload operational practices are the responsibility of the VM Guest OS admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
