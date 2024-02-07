@@ -69,24 +69,6 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
-### Azure Policy
-
-Azure Policy is a service that helps you enforce organizational standards and assess compliance at scale. You can use Azure Policy to create and assign policies to your Azure Stack HCI hosts and virtual machines, and monitor their compliance state from Azure portal. Azure Policy also integrates with Azure Arc, which enables you to manage your Azure Stack HCI resources as if they were Azure resources.
-
-Azure Stack HCI offers some built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Azure Stack HCI, also within the cluster.
-
-In addition to the built-in Azure Policy definitions, custom policies can be created for both the Azure Stack HCI resource and for the Azure Policy add-on for hybrid workloads. This allows you to add additional reliability constraints you'd like to enforce in your cluster and workload architecture.
-
-Audit if Azure Stack HCI hosts are registered with Azure
-Audit if Azure Stack HCI hosts are running the latest version of the operating system
-Audit if Azure Stack HCI hosts have the required hardware components
-Audit if Azure Stack HCI hosts have the required network configuration
-Audit if Azure Stack HCI hosts have the required Azure services enabled
-Audit if Azure Stack HCI hosts have the required security settings
-Audit if Azure Stack HCI hosts have the required extensions installed
-Audit if Azure Stack HCI hosts have the required Kubernetes clusters deployed
-Audit if Azure Stack HCI hosts have the required Azure Kubernetes Service (AKS) integration enabled
-
 ## Security
 
 AKS Hybird - section below needs complete review....
@@ -128,22 +110,6 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 For more information on the security features introduced in 23H2, see [Review Security Features](/azure-stack/hci/concepts/security-features).
 
-### Azure Advisor
- Azure Advisor helps ensure and improve Azure Stack HCI. It makes recommendations on a subset of the items listed in the policy section below, such as clusters without RBAC configured, missing Microsoft Defender configuration, unrestricted network access to the API Server. Likewise, it makes workload recommendations for some of the pod security initiative items. Review the [recommendations](/azure/advisor/advisor-security-recommendations).
-
-### Policy definitions
-
-Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Arc enabled virtual machines to enhance the security of those resources using Azure Policy and Microsoft Defender of Cloud. Microsoft Defender for Cloud is a cloud-native application protection platform (CNAPP) that is made up of security measures and practices that are designed to protect cloud-based applications from various cyber threats and vulnerabilities. Review [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) for more information.
-
-[There are some built-in policies available for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type), such as:
-
-- [Preview]: Host and VM networking should be protected on Azure Stack HCI systems
-- [Preview]: Azure Stack HCI systems should have encrypted volumes
-- [Preview]: Azure Stack HCI servers should have consistently enforced application control policies
-- [Preview]: Azure Stack HCI servers should meet Secured-core requirements
-
-You can find these policies in the Azure portal under Policy > Definitions > Category: Stack HCI.
-
 #### Cluster security
 
 Enabling Microsoft Defender for Cloud to a subscription registered with hybrid resources such as Azure Stack HCI and Azure Arc based virtual machines running on Azure Stack HCI are checked for its security compliance (Foundational CSPM, Cloud Security Posture Management) using the Security benchmark policies (Microsoft cloud security benchmark) configured in Azure policy. Additionally, enabling Defender for Servers plan at a subscription level helps to assess the security at workload level (CWP, Cloud Workload Protection) such as Azure Arc enabled virtual machines running on Azure Stack HCI.  
@@ -181,10 +147,6 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 |**Cluster configuration:**|Ensure Azure verification for VMs is enabled, under the Configuration for the Azure Stack HCI cluster resource in Azure Portal. This will allow using the workloads and services that are available only on Azure, such as Extended Security Updates and others.|
 
 For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/index.yml).
-
-### Policy definitions
-
-While there are no built-in policies that are related to cost optimization, custom policies can be created for both the Azure Stack HCI resource and for the Azure Policy add-on for hybrid workloads. This allows you to add additional cost optimization constraints you'd like to enforce in your cluster and workload architecture.
 
 ### Cloud efficiency
 
@@ -226,28 +188,6 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
 
-Review: Azure Advisor also makes recommendations on a subset of the items listed in the policy section below, such unsupported Azure Stack HCI versions and unconfigured diagnostic settings. Likewise, it makes workload recommendations around the use of the default namespace.
-
-### Policy definitions
-
-Review: Azure Policy offers various built-in policy definitions that apply to both the Azure resource and Azure Stack HCI like standard policy definitions, and using the Azure Policy add-on for hybrid workloads, also within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant.
-
-There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Azure Arc enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
-
-#### Cluster architecture
-
-- Azure Policy add-on for hybrid workloads
-- GitOps configuration policies
-- Diagnostics settings policies
-- Azure Stack HCI version restrictions - support policy
-- Prevent command invoke
-
-#### Cluster and workload architecture
-
-- Namespace deployment restrictions AKS Hybrid
-
-In addition to the built-in policies, custom policies can be created for both the Azure Stack HCI resource and for the Azure Policy add-on for hybrid workloads. This allows you to add additional security constraints you'd like to enforce in your cluster and workload architecture.
-
 ## Performance efficiency
 
 Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](/azure/well-architected/scalability/principles).
@@ -280,17 +220,55 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
-### Policy definitions
+## Azure Policies
 
-Review: Azure Policy offers various built-in policy definitions that apply to both the Azure resource and Azure Stack HCI like standard policy definitions, and using the Azure Policy add-on for hybrid workloads, also within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant.
+Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Arc enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
 
-Review: There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for hybrid workloads](/azure/governance/policy/samples/built-in-policies#hybrid workloads).
+To start with, review the list of built-in policies available for Azure Stack HCI, such as:  
 
-#### Cluster and workload architecture
+- [Preview]: Host and VM networking should be protected on Azure Stack HCI systems
+- [Preview]: Azure Stack HCI systems should have encrypted volumes
+- [Preview]: Azure Stack HCI servers should have consistently enforced application control policies
+- [Preview]: Azure Stack HCI servers should meet Secured-core requirements
 
-- CPU and memory resource limits
+You can find these policies in the Azure portal under Policy > Definitions > Category: Stack HCI.
 
-In addition to the built-in policies, custom policies can be created for both the Azure Stack HCI resource and for the Azure Policy add-on for hybrid workloads. This allows you to add additional security constraints you'd like to enforce in your cluster and workload architecture.
+For the above built-in-policies, Microsoft Defender for Cloud has added [New Recommendations for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) to show its compliance state.
+
+Here are few built-in-policies under Security Center category that are evaluated by enabling Defender for Cloud to a subscription that is registered with hybrid resources such as Azure Stack HCI and Azure Arc VMs:
+
+- [Preview]: Azure Security agent should be installed on your Windows Arc machines
+- [Preview]: Azure Security agent should be installed on your Linux Arc machines
+- [Preview]: ChangeTracking extension should be installed on your Linux Arc machine
+
+For full details, see [Built-in-policies under Security Center](/azure/governance/policy/samples/built-in-policies#security-center).
+
+Additionally, you can review some of the built-in polices available under Azure Arc and see if it could be applied for the Arc VMs deployed on Azure Stack HCI. For details, see [built-in policy definitions for Azure Arc enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
+
+- [Preview]: Deny Extended Security Updates (ESUs) license creation or modification
+- [Preview]: Enable Extended Security Updates (ESUs) license to keep Windows 2012 machines protected after their support lifecycle has ended.
+
+In addition to the built-in policies and definitions, custom policies can be created for both the Azure Stack HCI resources and Azure Arc VMs deployed on HCI cluster. For example, below are the items for which custom policies can be created:
+
+- Audit if Azure Stack HCI hosts are registered with Azure
+- Audit if Azure Stack HCI hosts are running the latest version of the operating system
+- Audit if Azure Stack HCI hosts have the required hardware components
+- Audit if Azure Stack HCI hosts have the required network configuration
+- Audit if Azure Stack HCI hosts have the required Azure services enabled
+- Audit if Azure Stack HCI hosts have the required security settings
+- Audit if Azure Stack HCI hosts have the required extensions installed
+- Audit if Azure Stack HCI hosts have the required Kubernetes clusters deployed
+- Audit if Azure Stack HCI hosts have the required Azure Kubernetes Service (AKS) integration enabled
+
+## Azure Advisor recommendations
+
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
+
+- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
+- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+- [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
 ## Additional resources
 
