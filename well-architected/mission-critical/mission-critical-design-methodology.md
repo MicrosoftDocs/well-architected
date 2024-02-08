@@ -8,8 +8,7 @@ ms.topic: conceptual
 categories:
   - management-and-governance
   - web
-ms.custom:
-  - mission-critical
+
 ---
 
 # Design methodology for mission-critical workloads on Azure

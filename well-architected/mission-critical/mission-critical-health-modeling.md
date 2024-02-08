@@ -9,8 +9,7 @@ categories:
   - storage
   - web
   - devops
-ms.custom:
-  - mission-critical
+
 ---
 
 # Health modeling and observability of mission-critical workloads on Azure

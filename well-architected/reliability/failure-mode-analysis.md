@@ -5,8 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
+
 categories:
   - security
 ---
@@ -116,7 +115,7 @@ During your initial FMA exercise, the documents you produce will be mostly theor
 
 Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to detect issues in your workload. For further insight into issues related to your infrastructure, apps, and databases, use tools like [Application Insights](/azure/azure-monitor/app/app-insights-overview), [Container Insights](/azure/azure-monitor/containers/container-insights-overview), [Network Insights](/azure/network-watcher/network-insights-overview), [VM Insights](/azure/azure-monitor/vm/vminsights-overview), and [SQL Insights](/azure/azure-sql/database/sql-insights-overview).
 
-[Azure Chaos Studio Preview](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
+[Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 
@@ -133,7 +132,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | Azure Front Door | Service outage | Low | Full outage for external users. Dependent on Microsoft to remediate. | External only |
 | Azure Front Door | Regional outage | Very low | Minimal effect. Azure Front Door is a global service, so global traffic routing directs traffic through non-effected Azure regions. | None |
 | Azure Front Door | Misconfiguration | Medium | Misconfigurations should be caught during deployment. If these happen during a configuration update, administrators must roll back changes. Configuration update causes a brief external outage. | External only |
-| Azure Front Door | DDoS attack | Medium | Potential for disruption. Microsoft manages DDoS (L3 and L4) protection and Well-Architected Framework blocks most threats. Potential risk of effect from L7 attacks. | Potential for partial outage |
+| Azure Front Door | DDoS attack | Medium | Potential for disruption. Microsoft manages DDoS (L3 and L4) protection and Azure Web Application Firewall blocks most threats. Potential risk of effect from L7 attacks. | Potential for partial outage |
 | Azure SQL | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
 | Azure SQL | Regional outage | Very low | Auto-failover group fails over to secondary region. Potential outage during failover. Recovery time objectives (RTOs) and recovery point objectives (RPOs) to be determined during reliability testing. | Potential full |
 | Azure SQL | Availability zone outage | Low | No effect | None |
@@ -141,7 +140,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | App Service | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
 | App Service | Regional outage | Very low | Minimal effect. Latency for users in effected regions. Azure Front Door automatically routes traffic to non-effected regions. | None |
 | App Service | Availability zone outage | Low | No effect. App services have been deployed as zone redundant. Without zone redundancy, there's a potential for effect. | None |
-| App Service | DDoS attack | Medium | Minimal effect. Ingress traffic is protected by Azure Front Door and Well-Architected Framework. | None |
+| App Service | DDoS attack | Medium | Minimal effect. Ingress traffic is protected by Azure Front Door and Azure Web Application Firewall. | None |
 
 ## Related links
 

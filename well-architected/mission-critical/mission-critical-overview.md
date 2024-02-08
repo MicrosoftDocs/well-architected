@@ -8,8 +8,7 @@ ms.topic: conceptual
 categories:
   - management-and-governance
   - web
-ms.custom:
-  - mission-critical
+
 ---
 
 # Mission-critical workloads

@@ -114,6 +114,15 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 [**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
 
+### Change tracking and inventory
+
+[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in virtual machines. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
+
+- Installed Windows and Linux software
+- Key Windows and Linux files
+- Windows registry keys
+- Windows services and Linux daemons
+
 ## Related links
 
 - [AKS baseline reference architecture](/azure/architecture/reference-architectures/containers/aks/baseline-aks#cluster-bootstrapping)

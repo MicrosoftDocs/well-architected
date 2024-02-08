@@ -5,8 +5,7 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.custom:
-  - e2e-hybrid
+
 ---
 
 # Performance efficiency in a hybrid workload

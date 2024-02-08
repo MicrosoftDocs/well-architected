@@ -8,9 +8,7 @@ ms.topic: conceptual
 categories:
   - management-and-governance
   - web
-ms.custom:
-  - sustainability
-  - ignite-2022
+
 ---
 
 # Sustainable workloads

@@ -10,8 +10,7 @@ categories:
   - web
   - networking
   - identity
-ms.custom:
-  - mission-critical
+
   - alwayson
 ---
 
