@@ -262,6 +262,8 @@ Each health model is a data platform for health data, with native integrations a
 
 Using Azure Monitor health model empowers operational users to troubleshoot dependencies and identify correlated/cascading issues, optimizes TTD and TTM, as well as enhancing alerting and significantly reduces monitoring/alerting noise.
 
+<banner for ahm>
+
 ## Related links
 
 - For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
