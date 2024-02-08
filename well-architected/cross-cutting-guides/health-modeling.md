@@ -33,13 +33,13 @@ This cross-cutting guide offers practical and authoritative guidance about model
 
 ## What is a health model?
 
-The term _health_ refers to the evaluated 'healthy', 'degraded', and 'unhealthy' states which are derived by combining raw metrics, logs, and traces with domain specific information. These _health states_ are calulated using monitoring data _health signals_, such as a metric signal for CPU utilization. Health signals are rationalized using a domain specific _health definition_, such as expected CPU utilization thresholds for state transitions. There are many types of health signal which can be used, and these signals can be combined within a model to derive aggregated health states and also to propogate state changes.
+The term _health_ refers to the evaluated 'healthy', 'degraded', and 'unhealthy' states which are derived by combining raw metrics, logs, and traces with domain specific information. These _health states_ are calculated using monitoring data _health signals_, such as a metric signal for CPU utilization. Health signals are rationalized using a domain specific _health definition_, such as expected CPU utilization thresholds for state transitions. There are many types of health signal which can be used, and these signals can be combined within a model to derive aggregated health states and also to propagate state changes.
 
 <image of health>
 
-Health states provide a distinct data schema that is optimized for observability use cases through modeling your own requirments, objectives, and architectural context. Modeling ultimatly makes health data unique to your contextual scope - what 'healthy' means for your scenario is likely to be different from any other scenario. Health is therefore a relative data concept. 
+Health states provide a distinct data schema that is optimized for observability use cases through modeling your own requirements, objectives, and architectural context. Modeling ultimately makes health data unique to your contextual scope - what 'healthy' means for your scenario is likely to be different from any other scenario. Health is therefore a relative data concept. 
 
-For example, Azure resources of the same type in your own application could have very different health definitions, such as two virtual machines where one is running a CPU sensative workload and the other is running a memory intensive workload. The health status of the first virtual machine will likely be heavily influenced by the CPU utilization metirc, while the other may be much more concerned with utilized memory metrics.
+For example, Azure resources of the same type in your own application could have very different health definitions, such as two virtual machines where one is running a CPU sensitive workload and the other is running a memory intensive workload. The health status of the first virtual machine will likely be heavily influenced by the CPU utilization metric, while the other may be much more concerned with utilized memory metrics.
 
 - A green healthy state indicates that key nonfunctional requirements and targets are fully satisfied and that resources are used optimally. For example, 95 percent of requests are processed in <=500 ms with Azure Kubernetes Service (AKS) node use at X percent.
 - A yellow degraded state indicates that resources are not performing optimally but are still operational. For example, storage throttling has been detected.
@@ -50,7 +50,7 @@ For example, Azure resources of the same type in your own application could have
 
 The term _model_ refers to the graphical structure of logical components which form a specific scope and how they depend or interact with each other. The model also layers in domain information and business context in the form of dependency chains and health definitions which enable you to rationalize monitoring data as health state across the model.
 
-Typically, models are used to represent an application scope and contain a logical representation of the application architecture and business scenarios. Components of the application are captured as _entities_ in the graph, with _relationships_ to mirror dependency chains between components. Entities within the application model can broadly be categorized as 3 abstract types; (1) infrastructure componets, (2) application components, and (3) user or system flows.
+Typically, models are used to represent an application scope and contain a logical representation of the application architecture and business scenarios. Components of the application are captured as _entities_ in the graph, with _relationships_ to mirror dependency chains between components. Entities within the application model can broadly be categorized as 3 abstract types; (1) infrastructure components, (2) application components, and (3) user or system flows.
 
 <image of model>
 
@@ -61,13 +61,13 @@ Moeled user and system flows summarize non-functional requirements across busine
 
 ## ​What are the benefits of health modeling?
 
-Cloud applications typically generate high volumes of operational data, which makes it challenging to evaluate and determine the best operational action. Health modeling introduces business-relevant observability through quantified health states, which provide the basis to rationalise large volumes of operational data using domain information and business context.
+Cloud applications typically generate high volumes of operational data, which makes it challenging to evaluate and determine the best operational action. Health modeling introduces business-relevant observability through quantified health states, which provide the basis to rationalize large volumes of operational data using domain information and business context.
 
 This enables you to implicitly identify, interpret, and swiftly react to any deviations from a known healthy baseline. It ensures that operations are well informed and that business impact is considered in the decision-making process. This also helps to democratizes operations by making monitoring data more business meaningful​ for everyone
 
 Using a health model enables you to implicitly identify, interpret, and swiftly react to any deviations from a known healthy state. It ensures that operations are well informed and that business impact is considered in the decision-making process. This also helps to democratizes operations by making monitoring data more business meaningful​ for everyone.
 
-​Consider the example of a detection scenario where there is spike in failed messages on an Azure Service Bus queue, which is causing payments to fail within an ecommerce application. This is a critical business issue that is directly impacting revenue. An application developer might have the system knowledge needed to rationalize the impact of this metric spike on payments. But with a complex system this tribal knowledge is often segmented and not consistent across all of the operations team. By using a health model, the impact of this spike on both the Service Bus instance and the payment flows which depend on it are immediatly visible and actionable. This allows anyone to immediatly comprehend the severity of the issue, and act accordingly.
+​Consider the example of a detection scenario where there is spike in failed messages on an Azure Service Bus queue, which is causing payments to fail within an ecommerce application. This is a critical business issue that is directly impacting revenue. An application developer might have the system knowledge needed to rationalize the impact of this metric spike on payments. But with a complex system this tribal knowledge is often segmented and not consistent across all of the operations team. By using a health model, the impact of this spike on both the Service Bus instance and the payment flows which depend on it are immediately visible and actionable. This allows anyone to immediately comprehend the severity of the issue, and act accordingly.
 
 The following list captures some fo the key benefits of health modeling:
 
@@ -80,7 +80,7 @@ The following list captures some fo the key benefits of health modeling:
  - Provides a consistent baseline for AIOps intelligence and insights
 
 > [!INFO]
-> Use your health model to optimise testing and validation processes, such as load and chaos testing. Incorporating health models within your engineering lifecycle enables you to validate runtime operational state during testing, but also the effectiveness of your model under scale and failure scenarios.
+> Use your health model to optimize testing and validation processes, such as load and chaos testing. Incorporating health models within your engineering lifecycle enables you to validate runtime operational state during testing, but also the effectiveness of your model under scale and failure scenarios.
 
 ## ​Common scenarios for health modeling 
 
@@ -123,7 +123,7 @@ The initial process to construct an application health model is a logical design
   
 - Model the identified application design as entities and relationships. Define the model so that health is business meaningful.
   - Map identified health signals across all modeled components to quantify health states at an entity level.
-  - Use criticality to determine how health states should propogate through the model. For example, reporting components are seldom as important as payment components. They should therefore not have the same impact on overall health.   
+  - Use criticality to determine how health states should propagate through the model. For example, reporting components are seldom as important as payment components. They should therefore not have the same impact on overall health.   
 
 - Visualize the modal in a tabular or graphical format for integration within your dashboard tooling.
 
@@ -131,14 +131,14 @@ The initial process to construct an application health model is a logical design
 
 ### 'Traffic light' visualization
 
-It is highly recommended that a _traffic light_ approach be used when visualizing your health model to make health states immediatly insightful. Assign green for healthy, yellow for degraded, and red for unhealthy. This will help you to trace application health states across dependency chains to quickly find the root cause of application degradation.
+It is highly recommended that a _traffic light_ approach be used when visualizing your health model to make health states immediately insightful. Assign green for healthy, yellow for degraded, and red for unhealthy. This will help you to trace application health states across dependency chains to quickly find the root cause of application degradation.
 
 > [!NOTE]
-> ​It is also recomended to consider accessibility requirements for the visualy impaired when dashboarding your health model.
+> ​It is also recommended to consider accessibility requirements for the visually impaired when dashboarding your health model.
 
 ### Critical system flows
 
-The value of health modeling can only be fully realized when you incorprate business scenarios and context. This enables you to rationalize the business impact from operational incidents.
+The value of health modeling can only be fully realized when you incorporate business scenarios and context. This enables you to rationalize the business impact from operational incidents.
 
 Your health model should surface the respective health of [critical system flows](https://learn.microsoft.com/en-us/azure/well-architected/reliability/identify-flows#identify-all-user-and-system-flows) and key subsystems to encapsulate your business scenarios. For example, the health model for an ecommerce application should be able to represent the current state of critical flows like user sign-in, checkout, process payment, etc.
 
@@ -183,12 +183,12 @@ Application logs are an important source of diagnostics data and a vital input t
 
 #### White-box and black-box monitoring
 
-Use _white-box monitoring_ to instrument the application with semantic logs and metrics. Application level metrics and logs, such as current memory consumption or request latency, should be collected from the application to inform your health model, alowing the model to detect and predict issues.
+Use _white-box monitoring_ to instrument the application with semantic logs and metrics. Application level metrics and logs, such as current memory consumption or request latency, should be collected from the application to inform your health model, allowing the model to detect and predict issues.
 
 Use _black-box monitoring_ to measure platform services and the resulting customer experience. Black-box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
 
 > [!IMPORTANT]
-> It is highly recomended that you define SLIs and SLOs for the application as a whole and component business processes. These SLIs and SLOs should be mapped to health signals within the model. This ensures that your definition of health fully reflects the attainment of an acceptable level of service for the application.
+> It is highly recommended that you define SLIs and SLOs for the application as a whole and component business processes. These SLIs and SLOs should be mapped to health signals within the model. This ensures that your definition of health fully reflects the attainment of an acceptable level of service for the application.
 
 #### Distributed tracing
 
@@ -210,9 +210,9 @@ Below is a pair of example health probe use cases which can be used to distingui
 
 ### Continuos improvement
 
-The principal of continuous improvement should be applied to progressivly optimise the evaluation of health states within your model. As your application evolves, your health model must also evolve. 
+The principal of continuous improvement should be applied to progressively optimize the evaluation of health states within your model. As your application evolves, your health model must also evolve. 
 
-Furthermore, health models should be treated as living and breathing application artefacts. This means that management best practices, such as adopting the principal of Infrastructure as Code (IaC), should also be applied to your health model.
+Furthermore, health models should be treated as living and breathing application artefact. This means that management best practices, such as adopting the principal of Infrastructure as Code (IaC), should also be applied to your health model.
 
 ## Using a health model
 
@@ -224,29 +224,29 @@ Typically, there is a one-to-one mapping between monitoring data and an alert ru
 
 Consider the example of a cluster where alerts are configured at a vm level based on key metrics such as CPU utilization and error count. If the cluster suffers a failure, it is very likely that many alerts would be generated for each node. This can very quickly become overwhelming for operators, making issue identification and resolution challenging. Similarly, with the high number of configured alerts it is typical that a consistent alert volume can arise as a 'norm'. This ambient alert noise often leads to alerts going unnoticed or ignored.  
 
-Health introduces a layer of seperation between monitoring data and alert rules. Many different signals can be used to define health, with a single alert rule configured to use the evaluated health state. Health therefore allows for intelligent alerting based on many signal inputs.
+Health introduces a layer of separation between monitoring data and alert rules. Many different signals can be used to define health, with a single alert rule configured to use the evaluated health state. Health therefore allows for intelligent alerting based on many signal inputs.
 
-Since a health moel encapsulates business scenarios, it is also possilbe to elevate alerting to be scenario and business centric. For example, rather than alerting on the health of a cluater, it is possible to alert on the health of the system flows which depend on that cluster. Reusing the previous retail detection scenario, an alert can be defined to notify changes in the health of the process payments flow rather than underlying resources such as the Service Bus queue.
+Since a health model encapsulates business scenarios, it is also possible to elevate alerting to be scenario and business centric. For example, rather than alerting on the health of a cluster, it is possible to alert on the health of the system flows which depend on that cluster. Reusing the previous retail detection scenario, an alert can be defined to notify changes in the health of the process payments flow rather than underlying resources such as the Service Bus queue.
 
 > [!NOTE]
-> The ability to alert across all layters of the health model provides flexibility where different application personas are concerned. Application owners and product managers could be alerted to health state changes in key business scenarios or the application as a whole, while DevOps or operational resources could be alerted based on the health of compinent infrastructure or application components.
+> The ability to alert across all layers of the health model provides flexibility where different application personas are concerned. Application owners and product managers could be alerted to health state changes in key business scenarios or the application as a whole, while DevOps or operational resources could be alerted based on the health of component infrastructure or application components.
 
 ### Health model lenses
 
 Health is a relative data concept that can vary across different personas, even in the context of the same application scope.For example a DevOps user may have a very different definition of health to a SecOps user who may be more concerned with intrusion indicators an specific exposed components. Similarly, a DBA user might only be interested in a subset of the application model through the database resources only.
 
-Do not be afraid to derive varied lenses on the same health model, by interacting with the health data and model differently to satisfy the unique requirments of specific personas. Seperate models can also be constructed from an overlapping data set to achieve the same outcome.
+Do not be afraid to derive varied lenses on the same health model, by interacting with the health data and model differently to satisfy the unique requirements of specific personas. Separate models can also be constructed from an overlapping data set to achieve the same outcome.
 
 ### Health data retention
 
-Like all monitoring data, health gradually loses it's value over time for most observability use cases. It is not recomended to keep health data for longer than 60 days to avoid unecessary costs for data that is no longer relevant to the runtime operational state of your application. Archiving can be performed if necessary to satisfy audit requirements or to empower AIOps scenarios orientated around long term pattern analysis.
+Like all monitoring data, health gradually loses it's value over time for most observability use cases. It is not recommended to keep health data for longer than 60 days to avoid unnecessary costs for data that is no longer relevant to the runtime operational state of your application. Archiving can be performed if necessary to satisfy audit requirements or to empower AIOps scenarios orientated around long term pattern analysis.
 
 > [!NOTE]
-> Health is inherently an abstract data type, and without the context of the broader model it is very difficult to rationalise why state changes occured. When archiving health data outside the contextual scope of the model, be mindful that it might lose all meaning unless also coupled with the configuration state of the model.  
+> Health is inherently an abstract data type, and without the context of the broader model it is very difficult to rationalize why state changes occurred. When archiving health data outside the contextual scope of the model, be mindful that it might lose all meaning unless also coupled with the configuration state of the model.  
 
 ### Health trends and AIOps
 
-Health provides a quantified baseline for detection investigation. It therefore serves as the foundation for AIOps capabilities to apply machine learning intelligence. AIOps scenarios enabled by health range from deriving additional insights from state changes and identifying recomended actions, to pattern analysis of health trends to drive prediction and model refinement. In essence, the health model itself can be used as the principal input to the machine learning models analysing health trends.
+Health provides a quantified baseline for detection investigation. It therefore serves as the foundation for AIOps capabilities to apply machine learning intelligence. AIOps scenarios enabled by health range from deriving additional insights from state changes and identifying recommended actions, to pattern analysis of health trends to drive prediction and model refinement. In essence, the health model itself can be used as the principal input to the machine learning models analyzing health trends.
 
 ## Tooling for health modeling
 
@@ -254,7 +254,7 @@ Health modeling is a logical exercise that is tooling and technology agnostic. H
 
 Third-party observability tooling can be used to reduce this burden, providing a way to interface directly with and evaluate raw monitoring data. However, even with the use of third-party observability solutions, the process to build and use a health model remains complex and requires significant engineering investment as well as bespoke code. 
 
-Until recently, third-party tooling was most feasible way to approach modeling the health of Azure applications. But that all changed with the release of health model capabilites within Azure Monitor. 
+Until recently, third-party tooling was most feasible way to approach modeling the health of Azure applications. But that all changed with the release of health model capabilities within Azure Monitor. 
 
 Azure Monitor health models enable you to natively construct and interact with health models in Azure. These capabilities expose health as a core data tenet under Azure Monitor. You can now natively use health as the basis for consistent and expedited operations within your Azure applications. 
 
