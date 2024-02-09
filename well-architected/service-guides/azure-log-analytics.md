@@ -109,7 +109,6 @@ Start your design strategy based on the [**design review checklist for Security*
 Azure offers some policies related to the security of Log Analytics workspaces to help enforce your desired security posture. Examples of such policies are:
 
 - [Azure Monitor Logs clusters should be encrypted with customer-managed key](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f68a601-6e6d-4e42-babf-3f643a047ea2)
-- [Azure Monitor Logs clusters should be created with infrastructure-encryption enabled (double encryption)](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea0dfaed-95fb-448c-934e-d6e713ce393d)
 - [Saved-queries in Azure Monitor should be saved in customer storage account for logs encryption](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffa298e57-9444-42ba-bf04-86e8470e32c7)
 - [Log Analytics Workspaces should block non-Azure Active Directory based ingestion](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94c1f94d-33b0-4062-bd04-1cdc3e7eece2)
 
