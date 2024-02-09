@@ -15,19 +15,19 @@ categories:
 
 Azure Virtual Machines is a type of compute service that allows you to create and run virtual machines on the Azure platform. There's flexibility in choosing from different SKUs, operating systems, and configurations with various billing models.
 
-This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Virtual Machines as the compute to run your workload. 
+This article assumes that, as an architect, you reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Virtual Machines as the compute service to run your workload. 
 
 > [!IMPORTANT]
 >
-> **How to use this guide**
+> *How to use this guide:*
 >
-> The guidance in this article provides architectural recommendations that are mapped to the principles of the [**Azure Well-Architected Framework pillars**](../pillars.md).
+> The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 >
 > Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope. 
 >
 > Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Virtual Machines and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
 >
-> Foundational architecture that demostrates the key recommendations: [Azure Virtual Machine baseline architecture](/azure/architecture/virtual-machines/baseline).
+> Foundational architecture that demonstrates the key recommendations: [Azure Virtual Machine baseline architecture](/azure/architecture/virtual-machines/baseline).
 
 
 ##### Technology scope
