@@ -37,7 +37,7 @@ This review focuses on the interrelated decisions for these Azure resources.
 - Azure App Service Plan
 - Azure App Service for Web Apps
 
-    Within Web Apps, there's support for Web Apps for Containers, which is out-of-scope for this article. 
+    Within Web Apps, there's support for Web Apps for Containers, which is out-of-scope for this article. Also, App Service Environment is not included in this guidance.
 
 There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article.
 
@@ -54,6 +54,25 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 > [!div class="checklist"]
 >
+> - **Prioritize the user flows**. Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. The identified flows significantly influence the overall architecture. For example, your application might include a frontend and backend tiers that communicate through a message broker. Because of a queue in the middle, you may need additional instances on the frontend for optimal performance on the UI side. However, the backend may not require the same number of instances.
+>
+>   That design will influence the choice of service tiers and instances on the App Service Plan and configurations that allows for independent scaling based on CPU, memory requirements.
+>
+> - **Anticipate the potential failures and have corresponding mitigation strategies**. Here are some examples of failure mode analysis:
+>   |Failure|Mitigation|
+>   |---|---|
+>   |Failure of underlying  or abstracted components of App Service.| Have component redundancy in instances and dependencies. Monitor the health of instances, network, and storage performance.|
+>   |Failure in the application in reaching external dependencies. | Use design patterns such as retry mechanisms, circuit breakers, and others. Monitor those dependencies and set appropriate timeouts.
+>   |Traffic is routed to unhealthy instances.| Monitors instance health taking into consideration its CPU usage, memory, responsiveness and avoid sending requests to unhealthy instances. |  
+>
+>   For more information, see  [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
+>
+> - **Build redundancy across zones and regions**, if needed. Ensure applications can continue to operate even if there's a datacenter-level failure or regional outage. For multi-region deployment, the architecture would need a global load balancer. 
+>
+>   Build similar level of redundancy in dependent services. For example, you bind blob storage to your application instances. If your application uses zone-redundant deployment (ZRS), consider configuring the associated storage account with ZRS as well.
+> 
+>   Have redundancy in networking components. For example, use zone-redundant IP addresses and external load balancers.
+
 
 ##### Recommendations
 
@@ -143,7 +162,7 @@ Azure provides an extensive set of built-in policies related to App Service and 
 - 
 
 
-For comprehensive governance, review the App Services section in [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies) and other policies that might impact the security of the compute layer.
+For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might impact the security of the compute layer.
 
 
 ## Azure Advisor recommendations
