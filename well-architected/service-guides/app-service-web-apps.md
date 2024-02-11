@@ -54,25 +54,37 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 > [!div class="checklist"]
 >
-> - **Prioritize the user flows**. Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. The identified flows significantly influence the overall architecture. For example, your application might include a frontend and backend tiers that communicate through a message broker. Because of a queue in the middle, you may need additional instances on the frontend for optimal performance on the UI side. However, the backend may not require the same number of instances.
+> - **Prioritize user flows**. Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. The identified flows significantly influence the overall architecture. For example, your application might include a frontend and backend tiers that communicate through a message broker. Because of a queue in the middle, you may need additional instances on the frontend for optimal performance on the UI side. However, the backend may not require the same number of instances.
 >
 >   That design will influence the choice of service tiers and instances on the App Service Plan and configurations that allows for independent scaling based on CPU, memory requirements.
 >
-> - **Anticipate the potential failures and have corresponding mitigation strategies**. Here are some examples of failure mode analysis:
+> - **Anticipate potential failures and have corresponding mitigation strategies**. Here are some examples of failure mode analysis:
+>
 >   |Failure|Mitigation|
 >   |---|---|
 >   |Failure of underlying  or abstracted components of App Service.| Have component redundancy in instances and dependencies. Monitor the health of instances, network, and storage performance.|
->   |Failure in the application in reaching external dependencies. | Use design patterns such as retry mechanisms, circuit breakers, and others. Monitor those dependencies and set appropriate timeouts.
->   |Traffic is routed to unhealthy instances.| Monitors instance health taking into consideration its CPU usage, memory, responsiveness and avoid sending requests to unhealthy instances. |  
+>   |Failure of external dependencies. | Use design patterns such as retry mechanisms, circuit breakers, and others. Monitor those dependencies and set appropriate timeouts.
+>   |Failure due to traffic getting routed to unhealthy instances.| Monitors instance health taking into consideration its CPU usage, memory, responsiveness and avoid sending requests to unhealthy instances. |  
 >
 >   For more information, see  [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 >
-> - **Build redundancy across zones and regions**, if needed. Ensure applications can continue to operate even if there's a datacenter-level failure or regional outage. For multi-region deployment, the architecture would need a global load balancer. 
+> - **Build redundancy** in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. If one zone fails, traffic can be routed to other zones. Deploying your app across multiple regions ensures that even if an entire region experiences an outage, your app remains accessible. 
 >
->   Build similar level of redundancy in dependent services. For example, you bind blob storage to your application instances. If your application uses zone-redundant deployment (ZRS), consider configuring the associated storage account with ZRS as well.
+>   Build similar level of redundancy in dependent services. For instance,  the application instances bind to blob storage. If the application uses zone-redundant deployment (ZRS), consider configuring the associated storage account with ZRS as well.
 > 
 >   Have redundancy in networking components. For example, use zone-redundant IP addresses and external load balancers.
-
+>
+> - **Have a reliable scaling strategy**. Unexpected load on the application can cause it to become unreliable. Consider the right scaling approach based on your workload characteristics. You might be able to handle the load by scaling up. However, if the load continues to increase, scale out to new instances. Prefer automatic scaling over manual approaches. Always maintain a buffer of extra capacity during scaling operations to prevent performance degradation.  
+>
+>   The choice of [App Service plan tier has a direct impact on scaling](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) in terms of number of instances and the compute units. 
+> 
+>   Ensure proper app initialization, so that new instances are warmed up quickly and can start receiving requests.
+>
+>   Strive for stateless applications, as much as possible. Reliably scaling state with new instances can add complexity. If you need to store application state, consider an external data store that can be scaled independently.
+>
+>   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Also log scaling events.
+>
+>  - **Plan your recoverability**. While redundancy is a crucial for business continuity. Explore self-preservation capabitlites offered by App Service. 
 
 ##### Recommendations
 
