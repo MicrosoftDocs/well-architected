@@ -20,15 +20,30 @@ This article provides architectural best practices for Azure Stack HCI. The guid
 
 We assume that you understand system design principles, have working knowledge of Azure Stack HCI, and are well versed with its features. For more information, see [Azure Stack HCI overview.](/azure-stack/hci/overview)
 
-## Prerequisites
-
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient hybrid cloud architecture patterns. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment. Consider reviewing reference architectures that reflect these considerations in their design. We recommend starting with the [baseline architecture for an Azure Stack HCI cluster](/azure/architecture/hybrid/azure-stack-robo) and [Azure Stack HCI network deployment patterns](/azure-stack/hci/plan/choose-network-pattern) patterns. Also review the [Prepare your environment for a hybrid and multi-cloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready), which provides an architectural approach and references to prepare landing zone subscriptions for a scalable deployment and implementation of Azure Stack HCI.
+
+> [!IMPORTANT]
+>
+> **How to use this guide**
+>
+> Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope.
+>
+> Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Stack HCI clusters or workloads. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build proof-of-concepts or optimize existing environments.
+>
+> Foundational architecture that demonstrates the key recommendations: [Azure Stack HCI baseline architecture - TO DO: UPDATE](/azure/architecture/hybrid/azure-stack-robo).
+
+#### Technology scope
+
+This review article focuses on the interrelated decisions for these Azure resources:
+
+- Azure Stack HCI (clusters)
+- Virtual Machines (workload)
 
 ## Reliability
 
 In hybrid cloud deployments, we acknowledge that failures happen, instead of trying to prevent any and all failures, the goal is to minimize the effects of a single failing component. Use the following design checklists and configuration recommendations to minimize the impact of a component failure for workloads deployed on Azure Stack HCI.
 
-When discussing reliability for Azure Stack HCI, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the responsibility of cluster or platform administrators, while workload reliability has a dependency on the platform, it is the responsibility of the application owners and/or developers to design the application(s) that can deliver the defined reliability targets. These roles and responsibilities can be owned by separate teams or individuals, or belong to a single team, either way the recommendations and considerations below can be used to increase the reliability of workloads deployed on Azure Stack HCI.
+When discussing reliability for Azure Stack HCI, it's important to distinguish between _cluster reliability_ and _workload reliability_. Cluster reliability is the responsibility of cluster or platform administrators, while workload reliability has a dependency on the platform, it is the responsibility of the application owners and/or developers to design the application(s) that can deliver the defined reliability targets. These roles and responsibilities can be owned by separate teams or individuals, or belong to a single team, either way the recommendations and considerations below can be used to increase the reliability of workloads deployed on Azure Stack HCI.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each consideration is applicable to cluster architecture, workload architecture, or both.
 
@@ -38,9 +53,9 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 >
 > - **Cluster nodes architecture:** Use the [Azure Stack HCI Solution Catalog](https://aka.ms/azurestackhcicatalog/#/catalog) to gain knowledge and understanding of latest hardware OEM innovations for Azure Stack HCI cluster deployments, consider using Premium Solutions to benefit from additional integration and turn-key deployment capabilities.
 >
-> - **Cluster storage architecture:** Select appropriate physical disk type(s) for the cluster nodes (*NVMe, SSD, HDD..etc*) and [fault tolerance / storage efficiency options](/azure-stack/hci/concepts/fault-tolerance) within Storage Spaces Direct (S2D) based on your workload requirements. These decisions influence the performance, capacity and resiliency capabilities when [creating S2D virtual disks / volumes](/azure-stack/hci/concepts/plan-volumes), for example a 3-way mirror can increase reliability and performance. Use the [S2D Capacity Calculator Tool](https://aka.ms/s2dcalc) to help plan storage using your workload capacity requirements.
+> - **Cluster storage architecture:** Select appropriate physical disk type(s) for the cluster nodes (_NVMe, SSD, HDD..etc_) and [fault tolerance / storage efficiency options](/azure-stack/hci/concepts/fault-tolerance) within Storage Spaces Direct (S2D) based on your workload requirements. These decisions influence the performance, capacity and resiliency capabilities when [creating S2D virtual disks / volumes](/azure-stack/hci/concepts/plan-volumes), for example a 3-way mirror can increase reliability and performance. Use the [S2D Capacity Calculator Tool](https://aka.ms/s2dcalc) to help plan storage using your workload capacity requirements.
 >
-> - **Cluster nodes architecture:** Use the [Azure Stack HCI Sizer Tool](https://aka.ms/azurestackhcicatalog/#/sizer) during the cluster design (*pre-deployment*) phase. It is important to size Azure Stack HCI clusters appropriately using the workload capacity, performance and resiliency requirements as inputs. This will determine the maximum number of nodes that can be offline simultaneously, such as for planned (*maintenance*) or unplanned (*power / hardware failure*) events. As a minimum requirement, plan to "reserve 1 x physical nodes (N+1) worth of capacity" across the cluster, or N+2 nodes for business or mission-critical use cases, to ensure cluster nodes can be drained to perform updates.
+> - **Cluster nodes architecture:** Use the [Azure Stack HCI Sizer Tool](https://aka.ms/azurestackhcicatalog/#/sizer) during the cluster design (_pre-deployment_) phase. It is important to size Azure Stack HCI clusters appropriately using the workload capacity, performance and resiliency requirements as inputs. This will determine the maximum number of nodes that can be offline simultaneously, such as for planned (_maintenance_) or unplanned (_power / hardware failure_) events. As a minimum requirement, plan to "reserve 1 x physical nodes (N+1) worth of capacity" across the cluster, or N+2 nodes for business or mission-critical use cases, to ensure cluster nodes can be drained to perform updates.
 >
 > - **Cluster architecture:** Use the [Environmental Checker tool in standalone mode](/azure-stack/hci/manage/use-environment-checker) to assess the readiness of the target environment prior to deploying an Azure Stack HCI solution. This will validate the required connectivity, hardware, Active Directory, network and Arc integration prerequisites are configured correctly.
 >
@@ -60,9 +75,8 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 
 | Recommendation | Benefit |
 |--------|----|
-|**(HCI cluster) description of setting with link:** |Hardware used to deploy an Azure Stack HCI cluster must meet the requirements listed in [HCI deployment prerequisites](/azure-stack/hci/deploy/deployment-prerequisites#server-and-storage-requirements), all physical nodes  must be homogenous, same manufacturer, make, model and network adapters, and have a consistent number and type of storage devices.|
-|**Cluster storage architecture:** |Reserve the equivalent of ["one capacity disk worth of space per node", (*up to four nodes*) within the S2D storage pool](/azure-stack/hci/concepts/plan-volumes#reserve-capacity), this unallocated space can be used to repair "in-place" when a physical disk fails, which improves data resilience and performance.|
-|**Cluster network architecture** |Ensure the cluster is implemented using one of the [validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that cluster nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI and Azure Arc.|
+|(cluster) Reserve the equivalent of [one capacity disk worth of space per node, (_up to four nodes_) within the S2D storage pool](/azure-stack/hci/concepts/plan-volumes#reserve-capacity)| Reserving capacity, by leaving unallocated space in the storage pool, enables S2D to repair "in-place" when a physical disk fails, which improves data resiliency and performance in the event of a physical disk failure.|
+|(cluster) Ensure all physical nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI and Azure Arc.|Ensure the cluster is implemented using one of the [validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that |
 |**Cluster network architecture:** |Choose the right network infrastructure pattern and resilience capabilities, such as ToR Switch vs. Switch-less, Network Adapters, Converged vs. Non-converged using the guidance available: [Azure Stack HCI deployment network reference patterns](/azure-stack/hci/plan/choose-network-pattern)|
 |**Cluster storage architecture:** |When creating Volumes (*virtual disks*) in Storage Spaces Direct, select the appropriate [resiliency types](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) using the number of physical nodes in the cluster and the workload resiliency and performance requirements as inputs.|
 |**(workload) architecture:** |Make all things redundant: For business or mission-critical workloads, it is required to deploy multiple instances of your applications or services using multiple virtual machines and/or kubernetes replica sets / pods. Consider implementing [workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure the VMs that host multiple instances of the same service run on separate physical hosts, this increases resiliency in the event of an unplanned outage of a single physical node.|
