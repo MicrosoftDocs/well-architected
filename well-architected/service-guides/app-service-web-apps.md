@@ -54,9 +54,11 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 > [!div class="checklist"]
 >
-> - **Prioritize user flows**. Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. The identified flows significantly influence the overall architecture. For example, your application might include a frontend and backend tiers that communicate through a message broker. Because of a queue in the middle, you may need additional instances on the frontend for optimal performance on the UI side. However, the backend may not require the same number of instances.
+> - **Prioritize user flows**. Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. User flow design will influence the choice of service tiers and instances on the App Service Plan and configurations. 
 >
->   That design will influence the choice of service tiers and instances on the App Service Plan and configurations that allows for independent scaling based on CPU, memory requirements.
+>     For example, your application might include a frontend and backend tiers that communicate through a message broker. You might choose to segment them in multiple Web Apps to allow for independent scaling, lifecycle management, and maintanenance. Also, placing a large application in a single plan can lead to memory of CPU issues, which will ultimately impact reliability.
+>
+>   You may need additional instances on the frontend for optimal performance on the UI side. However, the backend may not require the same number of instances. 
 >
 > - **Anticipate potential failures and have corresponding mitigation strategies**. Here are some examples of failure mode analysis:
 >
@@ -64,11 +66,11 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >   |---|---|
 >   |Failure of underlying  or abstracted components of App Service.| Have component redundancy in instances and dependencies. Monitor the health of instances, network, and storage performance.|
 >   |Failure of external dependencies. | Use design patterns such as retry mechanisms, circuit breakers, and others. Monitor those dependencies and set appropriate timeouts.
->   |Failure due to traffic getting routed to unhealthy instances.| Monitors instance health taking into consideration its CPU usage, memory, responsiveness and avoid sending requests to unhealthy instances. |  
+>   |Failure due to traffic getting routed to unhealthy instances.| Monitor instance health taking into consideration responsiveness and avoid sending requests to unhealthy instances. |  
 >
 >   For more information, see  [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 >
-> - **Build redundancy** in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. If one zone fails, traffic can be routed to other zones. Deploying your app across multiple regions ensures that even if an entire region experiences an outage, your app remains accessible. 
+> - **Build redundancy** in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. If one zone fails, traffic can be routed to other zones. Deploying your application across multiple regions ensures that even if an entire region experiences an outage, your app remains accessible. 
 >
 >   Build similar level of redundancy in dependent services. For instance,  the application instances bind to blob storage. If the application uses zone-redundant deployment (ZRS), consider configuring the associated storage account with ZRS as well.
 > 
@@ -80,7 +82,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > 
 >   Ensure proper app initialization, so that new instances are warmed up quickly and can start receiving requests.
 >
->   Strive for stateless applications, as much as possible. Reliably scaling state with new instances can add complexity. If you need to store application state, consider an external data store that can be scaled independently.
+>   Strive for stateless applications, as much as possible. Reliably scaling state with new instances can add complexity. If you need to store application state, consider an external data store that can be scaled independently. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load over other instances.
 >
 >   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Also log scaling events.
 >
@@ -108,6 +110,8 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
+|Choice of tier in App Service Plan. <br><br> For production workloads, use Standard or Premeium plans. <br> Shared and Free tiers can be used for experiments.||
+|Consider disabling Application Request Routing (ARR) Affinity for your App Service.	ARR Affinity creates stick sessions which is used to redirect users to the same node that handled their previous requests.||
 |||
 
 
