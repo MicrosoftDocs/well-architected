@@ -84,7 +84,25 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Also log scaling events.
 >
->  - **Plan your recoverability**. While redundancy is a crucial for business continuity. Explore self-preservation capabitlites offered by App Service. 
+>  - **Plan your recoverability**. Redundancy is a crucial for business continuity. Fail over to another instance if one becomes unreachable. Also, explore auto-healing capabitlites offered by App Service, such as auto repair of instances. 
+>
+>     Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity issues, and large-scale events like regional outages. For example, 
+>     - Bulkhead pattern segments your application into isolated groups to  prevent a failure from affecting the entire system.
+>     - Queue-Based Load Leveling pattern queues work items that serve as a buffer to smooth out traffic spikes.
+>     - Retry patterns handles transient failures caused by network glitches, dropped database connections, or busy services.
+>     - Circuit Breaker pattern to prevent an application from repeatedly trying to execute an operation that's likely to fail.
+>    Web Jobs allow you to run background tasks in your Web App. To run those tasks reliably, ensure that the web app hosting your job is set to run continuously, on a schedule, or based on event-driven triggers.
+>
+>     For more information, see [Reliability patterns](/azure/well-architected/reliability/design-patterns).
+>
+> - **Conduct reliability testing**. Conduct load testing to evaluate your application's reliability and performance under load. Test plans should include scenarios that validate your automated recovery operations.
+>
+>   Use fault injection to intentionally introduce failures and validate your self-healing and self-preservation mechanisms. Explore the [fault library provided by Azure Chaos Studio](/azure/chaos-studio/chaos-studio-fault-library). 
+>
+>    Azure App Service imposes resource limits on hosted apps. These limits are determined by the associated App Service plan. Make sure your tests validate that the app runs within those limits, For more information, [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?branch=main#app-service-limits).
+>
+> - **Use health probes to identify unresponsive workers**. App Service has built in capabilities that periodically pings a specific path of your web application. If an instance is unresponsive, it's removed the load balancer and replaced with a new instance. 
+
 
 ##### Recommendations
 
