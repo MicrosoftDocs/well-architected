@@ -125,9 +125,9 @@ The initial process to construct an application health model is a logical design
   - Map identified health signals across all modeled components to quantify health states at an entity level.
   - Use criticality to determine how health states should propagate through the model. For example, reporting components are seldom as important as payment components. They should therefore not have the same impact on overall health.   
 
-- Visualize the modal in a tabular or graphical format for integration within your dashboard tooling.
-
 - Use evaluated health states to trigger alerts and automated action. Health should be integrated within existing operational runbooks as a core observability data tenet.
+
+- Visualize the modal in a tabular or graphical format for integration within your dashboard tooling.
 
 ### 'Traffic light' visualization
 
