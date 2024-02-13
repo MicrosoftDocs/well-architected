@@ -3,7 +3,7 @@ title: Recommendations for designing a reliable monitoring and alerting strategy
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
@@ -86,7 +86,7 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 ### Monitor applications
 
-- Create health probes or [check functions](/azure/architecture/patterns/health-endpoint-monitoring) and run them regularly from outside the application. Ensure that you test from multiple locations that are geographically close to your customers.
+- Create health probes or [check functions](/azure/architecture/patterns/health-endpoint-monitoring) and run them regularly from outside the application. Ensure that you test from multiple locations that are geographically closed to your customers.
 
 - Log data while the application runs in the production environment. You need sufficient information to diagnose the cause of issues in the production state.
 
@@ -124,6 +124,12 @@ Implement the following recommendations to design a monitoring and alerting stra
   - Locks
 
 ## Azure facilitation
+
+As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center (ABCC) to centralize management of business continuity protection across Azure and hybrid workloads. This tool gives you insights into your business continuity estate. The ABCC pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policies, all conveniently accessible in one location.
+
+For more information, see [What is Azure Business Continuity center?](https://learn.microsoft.com/en-us/azure/business-continuity-center/business-continuity-center-overview).
+
+Other useful tools include:
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution that's used to collect, analyze, and respond to monitoring data from your cloud and on-premises environments.
 
