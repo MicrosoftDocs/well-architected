@@ -88,7 +88,7 @@ During this phase, **the security requirements are converted to technical requir
 
   To ensure that this guidance is followed by all contributors to the software, **maintain a list of approved and/or unapproved frameworks, libraries, and vendors**. When possible, place guardrails in the development pipelines to support the list. As much as possible, **automate the use of tools to scan dependencies** for vulnerabilities. 
 
-- **Determine the security design patterns that the application code should implement.** Patterns can support security concerns like segmentation and isolation, strong authorization, uniform application security, and modern protocols.
+- **Determine the security design patterns that the application code should implement.** Patterns can support security concerns like segmentation and isolation, strong authorization, uniform application security, and modern protocols. Some operational patterns, such as the Quarantine pattern, can help verify and block the use of software that could potentially introduce security vulnerabilities.
 
   For more information, see [Cloud design patterns that support security](design-patterns.md).
 
