@@ -183,7 +183,7 @@ Defender and Microsoft Sentinel work together, despite some overlap in functiona
 
 Take advantage of **Azure Business Continuity Center** (ABCC) to identify gaps in your business continuity estate and defend against threats like ransomware attacks, malicious activities, and rogue admin incidents. 
 
-For more information, see [What is Azure Business Continuity Center?](https://learn.microsoft.com/en-us/azure/business-continuity-center/business-continuity-center-overview).
+For more information, see [What is Azure Business Continuity Center?](/azure/business-continuity-center/business-continuity-center-overview).
 
 ### Networking
 
