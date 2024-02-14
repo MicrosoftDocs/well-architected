@@ -195,7 +195,7 @@
               href: operational-excellence/automate-tasks.md
             - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
-            - name: OE:11 Deployment practices
+            - name: OE:11 Safe deployment practices
               href: operational-excellence/safe-deployments.md
             - name: OE:12 Failure mitigation
               href: operational-excellence/mitigation-strategy.md
