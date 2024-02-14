@@ -137,7 +137,7 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at scale.
 
-- [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) (ABCC) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use ABCC to centralize management of business continuity protection across Azure and hybrid workloads. The ABCC tool pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policies, all conveniently accessible in one location.
+- [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center to centralize management of business continuity protection across Azure and hybrid workloads. Azure Business Continuity Center pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policy, all conveniently accessible in one location.
 
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
 
