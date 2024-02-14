@@ -181,7 +181,7 @@ Microsoft Sentinel can analyze user behavior from monitoring data. For more info
 
 Defender and Microsoft Sentinel work together, despite some overlap in functionality. This collaboration enhances your overall security posture by helping to ensure comprehensive threat detection and response.
 
-Take advantage of **Azure Business Continuity Center** (ABCC) to identify gaps in your business continuity estate and defend against threats like ransomware attacks, malicious activities, and rogue-administrator incidents. For more information, see [What is Azure Business Continuity Center?](/azure/business-continuity-center/business-continuity-center-overview).
+Take advantage of **Azure Business Continuity Center** to identify gaps in your business continuity estate and defend against threats like ransomware attacks, malicious activities, and rogue-administrator incidents. For more information, see [What is Azure Business Continuity Center?](/azure/business-continuity-center/business-continuity-center-overview).
 
 ### Networking
 
