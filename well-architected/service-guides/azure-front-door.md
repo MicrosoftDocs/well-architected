@@ -28,7 +28,7 @@ This article assumes that as an architect you've reviewed the [load balancing op
 > Foundational architecture that demonstrates the key recommendations:
 > [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
 
-## Technology scope
+### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:  
 
@@ -73,10 +73,10 @@ Start your design strategy based on the [design review checklist for Reliability
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |Choose a [routing method](/azure/frontdoor/routing-methods) that supports your deployment strategy. <br><br> The weighted method, which distributes traffic based on the configured weight coefficient, supports active-active models. <br><br> A priority-based value that configures the primary region to receive all traffic and send traffic to the secondary region as a backup supports active-passive models. <br><br> Combine the preceding methods with latency so that the origin with the lowest latency receives traffic. |You can select the best origin resource by using a series of decision steps and your design. The selected origin serves traffic within the allowable latency range in the specified ratio of weights.|
-|Support redundancy by having [multiple origins in one or more backend pools](/azure/frontdoor/quickstart-create-front-door). <br><br>Always have redundant instances of your application and make sure each instance exposes an endpoint or origin. You can place those origins in one or more backend pools.|Multiple origins support redundancy by distributing traffic across multiple instances of the application. If one instance is unavailable, then other backend origins can still receive traffic.|
-|[Set up health probes on the origin](/azure/frontdoor/health-probes). <br><br>Configure Azure Front Door to conduct health checks to determine if the backend instance is available and ready to continue receiving requests.| Enabled health probes are part of the health monitoring pattern implementation. Health probes make sure that Azure Front Door only routes traffic to instances that are healthy enough to handle requests. <br> For more information, see [Best practices on health probes](/azure/frontdoor/health-probes).|
-|Set a timeout on forwarding requests to the backend. <br><br> Adjust the timeout setting according to your endpoints' needs. If you don't, Azure Front Door might close the connection before the origin sends the response. <br> You can also lower the default timeout for Azure Front Door if all of your origins have a shorter timeout. <br> For more information, see [Troubleshooting unresponsive requests](/azure/frontdoor/troubleshoot-issues#troubleshooting-steps).|Timeouts help prevent performance issues and availability issues by terminating requests that take longer than expected to complete.|
-|Use the same host name on Azure Front Door and your origin. <br><br>Azure Front Door can rewrite the host header of incoming requests, which is useful when you have multiple custom domain names that route to one origin. However, rewriting the host header might cause issues with request cookies and URL redirection.|Set the same host name to prevent malfunction with session affinity, authentication, and authorization. For more information, see [Preserve the original HTTP host name](/azure/architecture/best-practices/host-name-preservation) between a reverse proxy and its backend web application.|
+|Support redundancy by having [multiple origins in one or more back-end pools](/azure/frontdoor/quickstart-create-front-door). <br><br>Always have redundant instances of your application and make sure each instance exposes an endpoint or origin. You can place those origins in one or more back-end pools.|Multiple origins support redundancy by distributing traffic across multiple instances of the application. If one instance is unavailable, then other back-end origins can still receive traffic.|
+|[Set up health probes on the origin](/azure/frontdoor/health-probes). <br><br>Configure Azure Front Door to conduct health checks to determine if the back-end instance is available and ready to continue receiving requests.| Enabled health probes are part of the health monitoring pattern implementation. Health probes make sure that Azure Front Door only routes traffic to instances that are healthy enough to handle requests. <br> For more information, see [Best practices on health probes](/azure/frontdoor/health-probes).|
+|Set a timeout on forwarding requests to the back end. <br><br> Adjust the timeout setting according to your endpoints' needs. If you don't, Azure Front Door might close the connection before the origin sends the response. <br> You can also lower the default timeout for Azure Front Door if all of your origins have a shorter timeout. <br> For more information, see [Troubleshooting unresponsive requests](/azure/frontdoor/troubleshoot-issues#troubleshooting-steps).|Timeouts help prevent performance issues and availability issues by terminating requests that take longer than expected to complete.|
+|Use the same host name on Azure Front Door and your origin. <br><br>Azure Front Door can rewrite the host header of incoming requests, which is useful when you have multiple custom domain names that route to one origin. However, rewriting the host header might cause issues with request cookies and URL redirection.|Set the same host name to prevent malfunction with session affinity, authentication, and authorization. For more information, see [Preserve the original HTTP host name](/azure/architecture/best-practices/host-name-preservation) between a reverse proxy and its back-end web application.|
 |Decide if your application requires [session affinity](/azure/frontdoor/routing-methods#23session-affinity). If you have high reliability requirements, we recommend that you disable session affinity. |With session affinity, user connections stay on the same origin during the user session. If that origin becomes unavailable, the user experience might be disrupted.|
 |Take advantage of the [rate-limiting rules](/azure/web-application-firewall/afds/waf-front-door-rate-limit) that are included with a web application firewall (WAF).|Limit requests to prevent clients from sending too much traffic to your application. Rate limiting can help you avoid problems like a retry storm.|
 
@@ -94,15 +94,15 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Review the security baseline for [Azure Front Door](/security/benchmark/azure/baselines/azure-front-door-security-baseline).**
 >
-> - **Protect the backend servers**. The frontend acts as the single point of ingress to the application. 
+> - **Protect the back-end servers**. The front end acts as the single point of ingress to the application. 
 >
->   Azure Front Door uses Azure Private Link to access an application's origin. Private Link creates segmentation so that the backends don't need to expose public IP addresses and endpoints. For more information, see [Secure your origin with Private Link in Azure Front Door Premium](/azure/frontdoor/private-link).
+>   Azure Front Door uses Azure Private Link to access an application's origin. Private Link creates segmentation so that the back ends don't need to expose public IP addresses and endpoints. For more information, see [Secure your origin with Private Link in Azure Front Door Premium](/azure/frontdoor/private-link).
 >
->   Configure your backend services to accept only requests with the same host name that Azure Front Door uses externally.
+>   Configure your back-end services to accept only requests with the same host name that Azure Front Door uses externally.
 >
 > - **Allow only authorized access to the control plane**. Use Azure Front Door [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only the identities that need it.
 >
-> - **Block common threats at the edge**. WAF is integrated with Azure Front Door. Enable WAF rules on the frontends to protect applications from common exploits and vulnerabilities at the network edge, closer to the attack source.
+> - **Block common threats at the edge**. WAF is integrated with Azure Front Door. Enable WAF rules on the front ends to protect applications from common exploits and vulnerabilities at the network edge, closer to the attack source.
 >   Consider geo-filtering to restrict access to your web application by countries or regions. 
 >   
 >   For more information, see [Azure Web Application Firewall on Azure Front Door](/azure/web-application-firewall/afds/afds-overview).
@@ -121,8 +121,8 @@ Start your design strategy based on the [design review checklist for Security](.
 |------------------------------|-----------|
 |Enable WAF rule sets that detect and block potentially malicious traffic. This feature is available on the Premium tier. We recommend these rule sets: <br> - [Default](/azure/web-application-firewall/afds/afds-overview#azure-managed-rule-sets)<br>- [Bot protection](/azure/web-application-firewall/afds/afds-overview#bot-protection-rule-set)<br>- [IP restriction](/azure/web-application-firewall/afds/waf-front-door-configure-ip-restriction)<br>- [Geo-filtering](/azure/web-application-firewall/afds/waf-front-door-tutorial-geo-filtering)<br>- [Rate limiting](/azure/web-application-firewall/afds/waf-front-door-rate-limit)|Default rule sets are updated frequently based on OWASP top-10 attack types and information from Microsoft Threat Intelligence. <br> The specialized rule sets detect certain use cases. For example, bot rules classify bots as good, bad, or unknown based on the client IP addresses. They also block bad bots and known IP addresses and restrict traffic based on geographical location of the callers. <br><br> By using a combination of rule sets, you can detect and block attacks with various intents.|
 | [Create exclusions](/azure/web-application-firewall/afds/waf-front-door-exclusion-configure) for managed rule sets. <br><br> Test a WAF policy in detection mode for a few weeks and adjust any false positives before you deploy it. | Reduce false positives and allow legitimate requests for your application. |
-|Send the [host header](/azure/frontdoor/origin?pivots=front-door-standard-premium#origin-host-header) to the backend. |The backend services should be aware of the host name so that they can create rules to accept traffic only from that host.
-| Enable end-to-end TLS, HTTP to HTTPS redirection, and managed TLS certificates when applicable. <br><br> Review the [TLS best practices for Azure Front Door](/azure/frontdoor/best-practices#23tls-best-practices). <br><br> Use TLS version 1.2 as the minimum allowed version with ciphers that are relevant for your application. <br><br> Azure Front Door managed certificates should be your default choice for ease of operations. However, if you want to manage the lifecycle of the certificates, use your own certificates in [Azure Front Door custom domain](/azure/frontdoor/standard-premium/how-to-configure-https-custom-domain) endpoints and store them in Key Vault.|TLS ensures that data exchanges between the browser, Azure Front Door, and the backend origins are encrypted to prevent tampering. <br><br> Key Vault offers managed certificate support and simple certificate renewal and rotation.|
+|Send the [host header](/azure/frontdoor/origin?pivots=front-door-standard-premium#origin-host-header) to the back end. |The back-end services should be aware of the host name so that they can create rules to accept traffic only from that host.
+| Enable end-to-end TLS, HTTP to HTTPS redirection, and managed TLS certificates when applicable. <br><br> Review the [TLS best practices for Azure Front Door](/azure/frontdoor/best-practices#23tls-best-practices). <br><br> Use TLS version 1.2 as the minimum allowed version with ciphers that are relevant for your application. <br><br> Azure Front Door managed certificates should be your default choice for ease of operations. However, if you want to manage the lifecycle of the certificates, use your own certificates in [Azure Front Door custom domain](/azure/frontdoor/standard-premium/how-to-configure-https-custom-domain) endpoints and store them in Key Vault.|TLS ensures that data exchanges between the browser, Azure Front Door, and the back-end origins are encrypted to prevent tampering. <br><br> Key Vault offers managed certificate support and simple certificate renewal and rotation.|
 
 ## Cost Optimization
 
@@ -152,7 +152,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   Azure Front Door endpoints can serve many files. One way to reduce bandwidth costs is to use compression. 
 >
->   Use caching in Azure Front Door for content that doesn't change often. Because content is served from a cache, you save on bandwidth costs that are incurred when the request is forwarded to the backends.
+>   Use caching in Azure Front Door for content that doesn't change often. Because content is served from a cache, you save on bandwidth costs that are incurred when the request is forwarded to the back ends.
 >
 > - **Consider using a shared instance that's provided by the organization**. Costs incurred from centralized services are shared between the workloads. However, consider the tradeoff with [reliability](#reliability). For mission-critical applications that have high availability requirements, we recommend an autonomous instance. 
 >
@@ -164,7 +164,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 |------------------------------|-----------|
 | [Use caching](/azure/frontdoor/front-door-caching) for endpoints that support it. | Caching optimizes data transfer costs because it reduces the number of calls from your Azure Front Door instance to the origin.|
 | [Consider enabling file compression](/azure/frontdoor/standard-premium/how-to-compression). <br>For this configuration, the application must support compression and caching must be enabled.| Compression reduces bandwidth consumption and improves performance.|
-|Disable health checks in single backend pools.<br>If you have only one origin configured in your Azure Front Door origin group, these calls are unnecessary.|You can save on bandwidth costs by disabling requests that aren't required to make routing decisions.|
+|Disable health checks in single back-end pools.<br>If you have only one origin configured in your Azure Front Door origin group, these calls are unnecessary.|You can save on bandwidth costs by disabling requests that aren't required to make routing decisions.|
 
 
 ## Operational Excellence
@@ -186,7 +186,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Simplify configurations**. Use Azure Front Door to easily manage configurations. For example, suppose your architecture supports microservices. Azure Front Door supports [redirection capabilities](/azure/frontdoor/front-door-url-redirect), so you can use path-based redirection to target individual services. 
 >   Another use case is the configuration of wildcard domains. 
 >
-> - **Handle progressive exposure by using [Azure Front Door routing methods](/azure/frontdoor/routing-methods)**. For a [weighted load balancing approach](/azure/frontdoor/routing-methods#weighted-traffic-routing-method) you can use a canary deployment to send a specific percentage of traffic to a backend. This approach helps you test new features and releases in a controlled environment before you roll them out.
+> - **Handle progressive exposure by using [Azure Front Door routing methods](/azure/frontdoor/routing-methods)**. For a [weighted load balancing approach](/azure/frontdoor/routing-methods#weighted-traffic-routing-method) you can use a canary deployment to send a specific percentage of traffic to a back end. This approach helps you test new features and releases in a controlled environment before you roll them out.
 >
 > - **Collect and analyze Azure Front Door operational data as part of your workload monitoring**. Capture relevant Azure Front Door logs and metrics with Azure Monitor Logs. This data helps you troubleshoot, understand user behaviors, and optimize operations. 
 >
@@ -230,11 +230,11 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >     Optimize your application for caching. Use cache expiration headers in the application that control how long the content should be cached by clients and proxies. Longer cache validity means less frequent requests to the origin server, which results in reduced traffic and lower latency.
 >   - Reduce the size of files that are transmitted over the network. Smaller files lead to faster load times and improved user experience.
->   - Minimize the number of backend requests in the application. 
+>   - Minimize the number of back-end requests in the application. 
 >
 >     For example, a web page displays user profiles, recent orders, balances, and other related information. Instead of making separate requests for each set of information, use design patterns to structure your application so that multiple requests are aggregated into a single request. 
 >
->      By aggregating requests, you send less data between the frontend and the backend and establish fewer connections between the client and the backend, which reduces overhead. Also, Azure Front Door handles fewer requests, which prevents overload.
+>      By aggregating requests, you send less data between the front end and the back end and establish fewer connections between the client and the back end, which reduces overhead. Also, Azure Front Door handles fewer requests, which prevents overload.
 > 
 > - **Optimize the use of health probes**. Get health information from health probes only when the state of the origins change. Strike a balance between monitoring accuracy and minimizing unnecessary traffic.
 >
@@ -250,10 +250,10 @@ Start your design strategy based on the [design review checklist for Performance
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| [Enable caching](/azure/frontdoor/front-door-caching). <br><br> You can optimize [query strings for caching](/azure/frontdoor/front-door-caching). For purely static content, ignore query strings to maximize your use of the cache. <br><br> If your application uses query strings, consider including them in the cache key. Including the query strings in the cache key allows Azure Front Door to serve cached responses or other responses, based on your configuration.| Azure Front Door offers a robust content delivery network solution that caches content at the edge of the network. Caching reduces the load on the backend servers and reduces data movement across the network, which helps offload bandwidth usage.|
+| [Enable caching](/azure/frontdoor/front-door-caching). <br><br> You can optimize [query strings for caching](/azure/frontdoor/front-door-caching). For purely static content, ignore query strings to maximize your use of the cache. <br><br> If your application uses query strings, consider including them in the cache key. Including the query strings in the cache key allows Azure Front Door to serve cached responses or other responses, based on your configuration.| Azure Front Door offers a robust content delivery network solution that caches content at the edge of the network. Caching reduces the load on the back-end servers and reduces data movement across the network, which helps offload bandwidth usage.|
 | [Use file compression](/azure/frontdoor/standard-premium/how-to-compression) when you're accessing downloadable content.| Compression in Azure Front Door helps deliver content in the optimal format, has a smaller payload, and delivers content to the users faster.|
 |When you configure health probes in Azure Front Door, consider using `HEAD` requests instead of `GET` requests. <br> The health probe reads only the status code, not the content. |`HEAD` requests let you query a state change without fetching its entire content.|
-|Evaluate whether you should enable [session affinity](/azure/frontdoor/routing-methods#23session-affinity) when requests from the same user should be directed to the same backend server. <br><br> From a reliability perspective, we don't recommend this approach. If you use this option, the application should gracefully recover without disrupting user sessions. <br><br> There's also a tradeoff on load balancing because it restricts the flexibility of distributing traffic across multiple backends evenly.| Optimize performance and maintain continuity for user sessions, especially when applications rely on maintaining state information locally. |
+|Evaluate whether you should enable [session affinity](/azure/frontdoor/routing-methods#23session-affinity) when requests from the same user should be directed to the same back-end server. <br><br> From a reliability perspective, we don't recommend this approach. If you use this option, the application should gracefully recover without disrupting user sessions. <br><br> There's also a tradeoff on load balancing because it restricts the flexibility of distributing traffic across multiple back ends evenly.| Optimize performance and maintain continuity for user sessions, especially when applications rely on maintaining state information locally. |
 
 
 ## Azure policies
