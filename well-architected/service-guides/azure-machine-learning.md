@@ -47,9 +47,9 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 > [!div class="checklist"]
 >
-> - **Resilience** Deploy models to environments that support availability zones, such as Azure Kubernetes Service (AKS). By ensuring deployments are distributed across availability zones, you are ensuring a deployment will be available even in the event of a datacenter failure. For enhanced reliability and availability, consider a multi-region deployment environment where required. Multi-region deployments further allows for better load distribution across regions, potentially improving performance for users located in different geographical areas.
+> - **Resilience** Deploy models to environments that support availability zones, such as Azure Kubernetes Service (AKS). By ensuring deployments are distributed across availability zones, you are ensuring a deployment will be available even in the event of a datacenter failure. For enhanced reliability and availability, consider a multi-region deployment topology.
 >
-> - **Resilience** Use the autoscaling capabilities of your deployment environment to ensure there are enough instances of the deployment to handle the number of requests.
+> - **Resilience** Use the autoscaling capabilities of your deployment environment to ensure there are enough instances of the deployment to handle the number of scoring requests.
 >
 > - **Business requirements** Ensure that the components you pick for the deployment and training environments have the appropriate SLA backing to meet the uptime requirements mandated by the business needs.
 >
@@ -119,7 +119,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Usage optimization** Ensure compute resources that are not being used are scaled down or shut down when idle to reduce waste.
 >
-> - **Usage optimization** Apply policies and configure quotas to comply with the design’s upper and lower limits.
+> - **Usage optimization** Apply policies and configure quotas to comply with the design's upper and lower limits.
 >
 > - **Usage optimization** Test parallelizing training workloads to determine if training requirements can be met on lower cost SKUs.
 >
@@ -187,13 +187,13 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 > - **Performance targets** Determine the acceptable training time and retrain frequency for your model. Setting a clear target for training time, along with testing, will help you determine the compute resources, CPU vs. GPU, and CPU SKUs, required to meet the training time goal.
 >
-> - **Performance targets** Define the acceptable performance targets for your deployed models including response time, requests per second, error rate, and uptime. Performance targets, such as these, act as a benchmark for your deployed model’s efficiency. Targets can help you make CPU vs. GPU determinations, CPU SKU choices, and scaling requirements.
+> - **Performance targets** Define the acceptable performance targets for your deployed models including response time, requests per second, error rate, and uptime. Performance targets, such as these, act as a benchmark for your deployed model's efficiency. Targets can help you make CPU vs. GPU determinations, CPU SKU choices, and scaling requirements.
 >
 > - **Meet capacity requirements** Choose the right compute resources for model training.
 >
 > - **Meet capacity requirements** Choose the right compute resources for model deployments.
 >
-> - **Meet capacity requirements** Choose deployment environments that have autoscaling capabilities that allow you to scale to meet demand. 
+> - **Meet capacity requirements** Choose deployment environments that have autoscaling capabilities that allow you to add and remove capacity to as demand fluctuates.
 >
 > - **Achieve and sustain performance** Continuously monitor the performance of your deployed models, review results and take appropriate actions. Follow the guidance in [monitor performance of models deployed to production](/azure/machine-learning/how-to-monitor-model-performance).
 >
@@ -212,5 +212,5 @@ Start your design strategy based on the [**design review checklist for Performan
 
 Consider these articles as resources that demonstrate the recommendations highlighted in this article.
 
-- Use this reference architectures as an example of how these recommendations can be applied to a workload : Single VM architectures: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat)
+- Use this reference architectures as an example of how these recommendations can be applied to a workload such as the [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
 - Build implementation expertise using product documentation : [Azure Machine Learning](/azure/machine-learning)
