@@ -140,9 +140,10 @@ Enabling Microsoft Defender for Cloud to a subscription registered with hybrid r
 Cost optimization is about understanding your different configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. Before you follow the guidance in this article, we recommend you review the following resources:
 
 - [Cost optimization design principles](../cost-optimization/principles.md).
+
 - Azure Stack HCI is priced on a per physical core basis, for on-premises clusters. If you are a Windows Server Datacenter customer with active Software Assurance (SA), you may choose to exchange core licenses to activate Azure Hybrid Benefit, which waives the Azure Stack HCI per core costs and Windows Server subscription. Review [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) for more information.
 
-When discussing cost optimization with Azure Stack HCI, it's important to distinguish between _cost of cluster resources_ and _cost of workload resources_. Cluster resources are a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing cost optimization with Azure Stack HCI, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources are a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations**, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -157,6 +158,10 @@ For cluster cost optimization, go to the [Azure pricing calculator](https://azur
 > - **Cluster architecture:** Use Azure Stack HCI free trial offer for the first 60 days after registration for PoCs and validation purposes.
 >
 > - **Cluster architectures:** Turn on Azure Benefits on Azure Stack HCI to use some of the Azure exclusive workloads such as Windows Server Datacenter (Azure Edition), Extended Security Update (ESUs), Azure Policy Guest Configuration and Azure Virtual Desktop with no extra licensing cost. Review [Azure Benefits on Azure Stack HCI](/azure-stack/hci/manage/azure-benefits?tabs=wac) for more information.
+>
+> - **Workload architecture:** This document  [Cost governance for Azure Arc-enabled Kubernetes](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) provides cost governance considerations and recommendations for you to keep in mind while using Azure Arc-enabled Kubernetes.
+>
+> - **Workload architecture:** [Design review checklist for Cost Optimizationing](/azure/well-architected/cost-optimization/checklist) presents a set of recommendations about cost optimization for your workload to help you achieve a high return on investment (ROI) based on the business value that your workload delivers. Cost optimization balances actual costs versus perceived value, team efficiency, focus, and effort, while meeting the defined functional and nonfunctional requirements of your workload.
 
 ### Recommendations
 
