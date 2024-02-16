@@ -30,7 +30,7 @@ Understanding the Well-Architected Framework pillars can help produce a high-qua
 >
 > Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Stack HCI clusters or workloads. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build proof-of-concepts or optimize existing environments.
 >
-> Foundational architecture that demonstrates the key recommendations: [Azure Stack HCI baseline architecture - TO DO: UPDATE](/azure/architecture/hybrid/azure-stack-robo).
+> Foundational architecture that demonstrates the key recommendations: [Azure Stack HCI baseline architecture - TO DO: UPDATE HCI DIAGRAM in ARCHITECTURE CENTRE](/azure/architecture/hybrid/azure-stack-robo).
 
 #### Technology scope
 
@@ -38,6 +38,8 @@ This review article focuses on the interrelated decisions for these Azure resour
 
 - Azure Stack HCI (clusters)
 - Virtual Machines (workload)
+
+The guidance is not intended to cover all workload resource types, as these can have specific architecture considerations and recommendations, such as Azure Arc-enabled Kubernetes or Azure Virtual Desktop (AVD).
 
 ## Reliability
 
@@ -59,9 +61,9 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 >
 > - **Cluster architecture:** Use the [Environmental Checker tool in standalone mode](/azure-stack/hci/manage/use-environment-checker) to assess the readiness of the target environment prior to deploying an Azure Stack HCI solution. This will validate the required connectivity, hardware, Active Directory, network and Arc integration prerequisites are configured correctly.
 >
-> - **Cluster network architecture:** [Review the HCI network reference patterns](/azure-stack/hci/plan/network-patterns-overview) and select the most appropriate design based on your requirements. Multi-node switched deployments provide increased fault tolerance when [deployed with two Top of Rack (ToR) switches per HCI cluster](/azure-stack/hci/concepts/host-network-requirements#storage-traffic-models) as network adapters for management, compute and storage networks are connected to two ToR switches, to provide resiliency and minimal downtime during switch servicing operations.
+> - **Cluster network architecture:**  Ensure clusters are implemented using one of the [validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies), selecting the most appropriate design based on your requirements. Multi-node switched deployments provide increased fault tolerance when [deployed with two Top of Rack (ToR) switches per HCI cluster](/azure-stack/hci/concepts/host-network-requirements#storage-traffic-models) as network adapters for management, compute and storage networks are connected to two ToR switches, to provide resiliency during switch servicing operations.
 >
-> - **Workload architecture high availability:** From a conceptual perspective, consider an Azure Stack HCI cluster [a logical "*availability zone*"](/azure/well-architected/reliability/regions-availability-zones) to host and run workloads. For business or mission-critical use cases, [to provide redundancy deploy multiple instances of your workloads across two or more separate Azure Stack HCI clusters](/azure/well-architected/reliability/redundancy#key-design-strategies). Use application high availability patterns and practices, such as active / passive with synchronous or a-synchronous data replication and external network load balancers to direct user requests across multiple HCI clusters, ideally deployed in separate datacenter locations.
+> - **Workload architecture high availability:** From a conceptual perspective, consider an Azure Stack HCI cluster [a logical "_availability zone_"](/azure/well-architected/reliability/regions-availability-zones) to host and run workloads. For business or mission-critical use cases, [to provide redundancy deploy multiple instances of your workloads across two or more separate Azure Stack HCI clusters](/azure/well-architected/reliability/redundancy#key-design-strategies). Use application high availability patterns and practices, such as active / passive with synchronous or a-synchronous data replication and external network load balancers to direct user requests across multiple HCI clusters, ideally deployed in separate datacenter locations.
 >
 > - **Workload architecture disaster recovery:** For business or mission-critical use cases implement a [structured, tested and documented disaster recovery (DR) capability](/azure/well-architected/reliability/disaster-recovery) configured based on your workload RPO and RTO targets. This provides business continuity in the event of an unplanned outage or disaster, such as failure of a single datacenter. It is possible to use Azure Site Recovery to protect virtual machines running on Azure Stack HCI. Review [Protect VM workloads with Azure Site Recovery on Azure Stack HCI (preview)](/azure-stack/hci/manage/azure-site-recovery) for more information.
 >
@@ -76,10 +78,9 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 | Recommendation | Benefit |
 |--------|----|
 |(cluster) Reserve the equivalent of [one capacity disk worth of space per node, (_up to four nodes_) within the S2D storage pool](/azure-stack/hci/concepts/plan-volumes#reserve-capacity)| Reserving capacity, by leaving unallocated space in the storage pool, enables S2D to repair "in-place" when a physical disk fails, which improves data resiliency and performance in the event of a physical disk failure.|
-|(cluster) Ensure all physical nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI and Azure Arc.|Ensure the cluster is implemented using one of the [validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that |
-|**Cluster network architecture:** |Choose the right network infrastructure pattern and resilience capabilities, such as ToR Switch vs. Switch-less, Network Adapters, Converged vs. Non-converged using the guidance available: [Azure Stack HCI deployment network reference patterns](/azure-stack/hci/plan/choose-network-pattern)|
-|**Cluster storage architecture:** |When creating Volumes (*virtual disks*) in Storage Spaces Direct, select the appropriate [resiliency types](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) using the number of physical nodes in the cluster and the workload resiliency and performance requirements as inputs.|
-|**(workload) architecture:** |Make all things redundant: For business or mission-critical workloads, it is required to deploy multiple instances of your applications or services using multiple virtual machines and/or kubernetes replica sets / pods. Consider implementing [workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure the VMs that host multiple instances of the same service run on separate physical hosts, this increases resiliency in the event of an unplanned outage of a single physical node.|
+|(cluster) Ensure all physical nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI and Azure Arc.| The ability to manage, monitor and operate the cluster and/or workload resources will be impacted if the required outbound network endpoints are inaccessible.|
+|(cluster) When creating Volumes (_virtual disks_) in Storage Spaces Direct, select the appropriate [resiliency types](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) to maximize workload resiliency and performance.|For clusters with three or more nodes, consider using a 3-way mirror to provide the highest resiliency and performance capabilities, which is recommended for business or mission-critical workloads.|
+|(workload) Consider implementing [workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure the VMs hosting multiple instances of the same service, run on separate physical hosts.|Make all things redundant: For business or mission-critical workloads, deploy multiple instances of your applications or services using multiple virtual machines and/or kubernetes replica sets / pods. This increases resiliency in the event of an unplanned outage of a single physical node.|
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
@@ -91,7 +92,7 @@ Security is one of the most important aspects of any architecture. To explore ho
 
 To learn about DoD Impact Level 5 (IL5) support and requirements with Azure Stack HCI, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-hybrid-workloads-service).
 
-When discussing security of Azure Stack HCI, it is important to distinguish between *cluster security* and *workload security*. Cluster security is the responsibility of the platform or cluster administrators, while workload security is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing security of Azure Stack HCI, it is important to distinguish between _cluster security_ and _workload security_. Cluster security is the responsibility of the platform or cluster administrators, while workload security is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -100,11 +101,17 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > [!div class="checklist"]
 >
 > - **Cluster security controls:** During the cloud based deployment of Azure Stack HCI, it is recommended to select and use the [Default Security Features and Settings](/azure-stack/hci/concepts/security-features), which enable more than 300 OS security settings, Windows Defender Application Control, Credential Guard, BitLocker encryption for the OS and data volumes and Signing for external SMB traffic that provides the highest level of security. These settings can be customized based on your organizational security requirements.
+>
 > - **Cluster security controls:** Use [Microsoft Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads, providing a single pane of glass experience to help manage security posture.
+>
 > - **Cluster security controls:** Use Microsoft Defender for Servers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and workloads.
+>
 > - **Cluster security controls:** Configure Entra ID user account membership of the [builtin roles based access control (RBAC) roles](/azure-stack/hci/manage/assign-vm-rbac-roles) to control access to VMs and VM resources on your Azure Stack HCI, such as HCI Administrator, VM Contributor and VM Reader.
+>
 > - **Workload security controls:** Use VLAN based network-isolation to deploy workloads (VMs) that needs to be isolated from each other across the different VLAN networks. Ensure each VLAN is configured and reachable from the management network for the hosts to communicate with the VLAN networks through the ToR (Top-of-Rack) switches or gateways.
+>
 > - **Workload security controls:** Use Trusted launch for virtual machines that protects against persistent and standard attacks on Gen 2 virtual machines with configurable features like secure boot and virtual Trusted Platform Module (vTPM).
+>
 > - **Workload security controls:** Use Azure Policy to re-use the builtin policies such as security baselines for Windows and Linux workloads, or create new custom policies for auditing security settings and assessing the compliance state of the target workloads deployed on Azure Stack HCI.
 
 ### Recommendations
@@ -133,10 +140,9 @@ Enabling Microsoft Defender for Cloud to a subscription registered with hybrid r
 Cost optimization is about understanding your different configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. Before you follow the guidance in this article, we recommend you review the following resources:
 
 - [Cost optimization design principles](../cost-optimization/principles.md).
-- How pricing and cost management works in Azure Stack HCI compared to ???
 - Azure Stack HCI is priced on a per physical core basis, for on-premises clusters. If you are a Windows Server Datacenter customer with active Software Assurance (SA), you may choose to exchange core licenses to activate Azure Hybrid Benefit, which waives the Azure Stack HCI per core costs and Windows Server subscription. Review [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) for more information.
 
-When discussing cost optimization with Azure Stack HCI, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources are a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing cost optimization with Azure Stack HCI, it's important to distinguish between _cost of cluster resources_ and _cost of workload resources_. Cluster resources are a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations**, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -147,7 +153,9 @@ For cluster cost optimization, go to the [Azure pricing calculator](https://azur
 > [!div class="checklist"]
 >
 > - **Cluster architecture:** Use [Azure Stack Pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page in exploring the pricing options available to purchase Azure Stack HCI for on-premises servers. The flexible per core subscription model enables customers to optimize cost based on your needs.
+>
 > - **Cluster architecture:** Use Azure Stack HCI free trial offer for the first 60 days after registration for PoCs and validation purposes.
+>
 > - **Cluster architectures:** Turn on Azure Benefits on Azure Stack HCI to use some of the Azure exclusive workloads such as Windows Server Datacenter (Azure Edition), Extended Security Update (ESUs), Azure Policy Guest Configuration and Azure Virtual Desktop with no extra licensing cost. Review [Azure Benefits on Azure Stack HCI](/azure-stack/hci/manage/azure-benefits?tabs=wac) for more information.
 
 ### Recommendations
@@ -172,7 +180,7 @@ Learn how to build sustainable and efficient solutions using Azure Stack HCI, by
 
 Monitoring and diagnostics are crucial. Not only can you measure performance statistics, but also use metrics troubleshoot and remediate issues quickly. We recommend reviewing the [Operational excellence design principles](/azure/well-architected/devops/principles) and how to [collect logs](/azure-stack/hci/manage/collect-logs) to help troubleshoot issues with Azure Stack HCI.
 
-When discussing operational excellence with Azure Stack HCI, it's important to distinguish between *cluster operational excellence* and *workload operational excellence*. Cluster operational practices are the responsibility of the cluster administrators, while workload operational practices are the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing operational excellence with Azure Stack HCI, it's important to distinguish between _cluster operational excellence_ and _workload operational excellence_. Cluster operational practices are the responsibility of the cluster administrators, while workload operational practices are the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -181,11 +189,17 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > [!div class="checklist"]
 >
 > - **Cluster configuration:** [Enable Azure Monitor integration with Azure Stack HCI](/azure-stack/hci/concepts/monitoring-overview) to enhance monitoring and alerting capabilities using Azure. This provides near real-time monitoring and there is no additional cost of using this feature.
+>
 > - **Cluster configuration:** [Enable Health Alerts in Azure Monitor for Azure Stack HCI](/azure-stack/hci/manage/health-alerts-via-azure-monitor-alerts) and configure the alert processing rules based on your organizational requirements.
+>
 > - **Cluster configuration:** Turn on [Azure Stack HCI Insights](/azure-stack/hci/concepts/monitoring-overview#insights) for detailed monitoring and logs through Azure Monitor Log Analytics. Insights provides  access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Stack HCI.
+>
 > - **Cluster configuration:** Observability in Azure Stack HCI is enabled by default at the time of installation and is important because it enables the collection of telemetry and diagnostic information from the system automatically using the TelemetryAndDiagnostics extension that is installed in all cluster nodes. Review [Azure Stack HCI observability](/azure-stack/hci/concepts/observability) for more information.
+>
 > - **Cluster configuration:** For optimizing the storage space in cluster storage volume (CSV), use ReFS deduplication and compression which is more suitable for general-purpose workload types such as file servers (GPFS) and backup targets.
+>
 > - **Workload configuration:** Ensure you have enable monitoring and alerting for workloads deployed on Azure Stack HCI clusters. Consider using [Azure Monitor with a centralized Log Analytics workspace](/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-workloads#workload-management-and-monitoring-recommendations) to gain insights from logs, metrics and to enable alerting capabilities for your workload, or use an alternative ISV monitoring solution based on your organization's requirements.
+>
 > - **Workload configuration** To enable workload monitoring, it is recommended to use the [Azure Arc for Servers - Azure Monitor extension](/azure/azure-arc/servers/manage-vm-extensions#extensions) for VM workload, or the [Azure Monitor Container Insights Extension for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/extensions-release#azure-monitor-container-insights) for kubernetes clusters.
 
 ### Recommendations
@@ -206,7 +220,7 @@ For more suggestions, see [Principles of the operational excellence pillar](/azu
 
 Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](/azure/well-architected/scalability/principles).
 
-When discussing performance with Azure Stack HCI, it's important to distinguish between *cluster performance* and *workload performance*. Cluster design and performance capabilities are the responsibility of the cluster administrators and the hardware OEM partner, while workload performance is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing performance with Azure Stack HCI, it's important to distinguish between _cluster performance_ and _workload performance_. Cluster design and performance capabilities are the responsibility of the cluster administrators and the hardware OEM partner, while workload performance is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
@@ -217,8 +231,11 @@ As you make design choices for Azure Stack HCI, review the [Performance efficien
 > [!div class="checklist"]
 >
 > - **Cluster architectures:** Use the Azure Stack HCI certified / validated hardware from OEM partner offerings, consider using the Premium Solution Builders available in the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog#catalog) to optimize the performance of Azure Stack HCI system.
+>
 > - **Cluster architectures:** Use all-flash (NVMe or SSD) based solutions for workloads that have high performance / low latency requirements. This includes but not limited to, highly transactional database technologies, production Arc enabled Kubernetes clusters or any mission or business critical workloads with low latency or high performance / through-put storage requirements.
+>
 > - **Cluster architecture:** Use VMFleet to get the baseline storage performance prior to deploying the workloads. VMFleet is a tool that can be used to measure the performance of a storage subsystem. It is recommended to measure baseline performance prior to workload deployment. Review [Using VMFleet for measuring storage subsystem performance](https://github.com/microsoft/diskspd/wiki/VMFleet) for more information.
+>
 > - **Cluster architecture:** Enable monitoring for ReFS Deduplication and Compression feature after enabling Insights for the Azure Stack HCI cluster. This feature helps monitoring ReFS deduplication and compression savings, performance impact and jobs. Review [Monitor ReFS deduplication and compression](/azure-stack/hci/manage/monitor-features#monitor-refs-deduplication-and-compression) for more information.
 
 ### Recommendations
@@ -230,7 +247,7 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 |**Cluster architectures:** Develop a detailed capacity plan and continually review and revise.|After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.|
 |**Cluster architectures:** When performance matters most | Workloads that have strict latency requirements or that need lots of mixed random IOPS, such as SQL Server databases or performance-sensitive Hyper-V virtual machines, should run on volumes that use mirroring to maximize performance. Mirroring is faster than any other resiliency type. Review [Planning the Storage Volumes](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) for more information.|
 |**Cluster performance:** Monitor cluster performance with Health Service | The Health Service, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct. The Health Service is enabled by default with Storage Spaces Direct. No additional action is required to set it up or start it. Get live performance and capacity information from your Storage Spaces Direct cluster. Review [Monitor cluster performance with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.|
-|**Workload performance:** Use DISKSPD to test workload storage performance| DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations and helps getting the performance metrics, whether it be latency, throughput, or IOPS. Review [Use DISKSPD to test workload storage performance](/azure-stack/hci/manage/diskspd-overview) for more information.|
+|**Workload performance:** Use DiskSpd to test workload storage performance| DiskSpd.exe is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. DiskSpd can give you a glimpse into what your system is capable of before deployment. At its core, DiskSpd simply issues a bunch of read and write operations and helps getting the performance metrics, whether it be latency, throughput, or IOPs. Review [Use DiskSpd to test workload storage performance](/azure-stack/hci/manage/diskspd-overview) for more information.|
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
