@@ -18,13 +18,13 @@ This article provides architectural best practices for Azure Stack Hub. The guid
 - Operational excellence
 - Performance efficiency
 
-We assume that you understand system design principles, have working knowledge of Azure Stack Hub, and are well versed with its features. For more information, see [Azure Stack Hub](/azure-stack/hub/overview).
+We assume that you understand system design principles, have working knowledge of Azure Stack Hub, and are well versed with its features. For more information, see [Azure Stack Hub](/azure-stack/operator/azure-stack-overview).
 
 ## Prerequisites
 
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with the [baseline architecture for an Azure Stack Hub cluster](/azure/architecture/hybrid/azure-stack-robo) and [Azure Stack Hub network deployment patterns](/azure-stack/hub/plan/choose-network-pattern). Also review the [Prepare your environment for a hybrid and multi-cloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready), which provides an architectural approach and reference implementation to prepare landing zone subscriptions for a scalable Azure Stack Hub cluster.
+For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with the [baseline architecture for an Azure Stack Hub cluster](/azure/architecture/hybrid/azure-stack-robo) and [Azure Stack Hub network deployment patterns](/azure-stack/operator/azure-stack-network). Also review the [Prepare your environment for a hybrid and multi-cloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready), which provides an architectural approach and reference implementation to prepare landing zone subscriptions for a scalable Azure Stack Hub cluster.
 
 ## Reliability
 
@@ -88,8 +88,8 @@ Explore the following table of recommendations to optimize your Azure Stack Hub 
 
 | Recommendation | Benefit |
 |--------|----|
-|**Cluster and workload architectures:** Control pod scheduling using node selectors and affinity.|Allows the hybrid workloads scheduler to logically isolate workloads by hardware in the node. Unlike [tolerations](https://hybridworkloads.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, which allows unused resources on the nodes to consume, but gives priority to pods that define the matching node selector. Use node affinity for more flexibility, which allows you to define what happens if the pod can't be matched with a node.|
-|**Cluster architecture:** Ensure proper selection of network plugin based on network requirements and cluster sizing.|Azure CNI is required for specific scenarios, for example, Windows-based node pools, specific networking requirements and hybrid workloads Network Policies. Reference [Kubenet versus Azure CNI](/azure/AzureStackHub/concepts-network#compare-network-models) for more information.
+|**Cluster and workload architectures:** Control pod scheduling using node selectors and affinity.|Allows the hybrid workloads scheduler to logically isolate workloads by hardware in the node. Unlike pods without a matching node selector can be scheduled on labeled nodes, which allows unused resources on the nodes to consume, but gives priority to pods that define the matching node selector. Use node affinity for more flexibility, which allows you to define what happens if the pod can't be matched with a node.|
+|**Cluster architecture:** Ensure proper selection of network plugin based on network requirements and cluster sizing.|Azure CNI is required for specific scenarios, for example, Windows-based node pools, specific networking requirements and hybrid workloads Network Policies. Reference for more information.
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
@@ -258,7 +258,7 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 ### Cloud Adoption Framework guidance
 
-- [Azure Stack Hub Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/app-platform/AzureStackHCI/landing-zone-accelerator)
+- Azure Stack Hub Landing Zone Accelerator
 
 ## Next steps
 
