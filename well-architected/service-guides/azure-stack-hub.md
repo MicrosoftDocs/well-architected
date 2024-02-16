@@ -80,6 +80,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > - **Cluster architecture (Host Network):** To ensure fault tolerance, it is recommended to have two or more network adapters per node which are symmetric (of the same make, model, speed, and configuration) across all nodes.This is because having multiple network adapters provides redundancy and ensures that the cluster remains operational even if one of the network adapters fails.
 > - **Cluster architecture (Physical Switch Network):** To ensure resiliency, it is recommended to have two TOR  switches and ensure the network adapters for management, compute, storage are connected to the TOR switches in fault tolerant mode.
 > - **Workload architecture:** The reliability design of the workloads varies depending on the type of workloads (VM, AKS, AVD, etc.,) that is deployed on Azure Stack Hub. Refer to the respective workload specific guidance in designing the reliability for each of the workloads.
+> - **Workload architecture:** For mission critical applications users need to consider implementing with primary and secondary locations. With primary and secondary locations, users can deploy applications in an active/passive configuration across two environments. For less critical workloads, it might be acceptable to use unused capacity in the secondary location to perform on-demand restoration of applications from backup. 
 
 ### Azure Stack Hub configuration recommendations
 
