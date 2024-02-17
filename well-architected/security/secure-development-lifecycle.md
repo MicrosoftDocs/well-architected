@@ -94,7 +94,7 @@ Patterns can support security concerns like segmentation and isolation, strong a
 
   For more information, see [Cloud design patterns that support security](design-patterns.md).
 
-#### Store application secrets securely.
+#### Store application secrets securely
 
   Securely implement the use of application secrets and pre-shared keys that your application uses. **Credentials and application secrets should never be stored in the source code tree.** Use external resources like Azure Key Vault to ensure that, if your source code becomes available to a potential attacker, no further access can be obtained. In general, find ways to avoid secrets. Using managed identities, when possible, is one way to achieve that goal. For more information, see [Recommendations for managing application secrets](application-secrets.md).
 
