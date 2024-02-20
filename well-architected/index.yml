@@ -17,7 +17,7 @@ sections:
     links:
     - componentType: link
       url: what-is-well-architected-framework
-      text: What is Well-Architected Framework?    
+      text: What is Well-Architected Framework?   
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
