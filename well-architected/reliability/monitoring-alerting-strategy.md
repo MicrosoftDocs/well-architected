@@ -3,7 +3,7 @@ title: Recommendations for designing a reliable monitoring and alerting strategy
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
@@ -136,6 +136,8 @@ Implement the following recommendations to design a monitoring and alerting stra
 - [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure-native monitoring product for SAP landscapes that run on Azure.
 
 - [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at scale.
+
+- [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center to centralize management of business continuity protection across Azure and hybrid workloads. Azure Business Continuity Center pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policy, all conveniently accessible in one location.
 
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
 

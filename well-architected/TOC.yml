@@ -195,7 +195,7 @@
               href: operational-excellence/automate-tasks.md
             - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
-            - name: OE:11 Deployment practices
+            - name: OE:11 Safe deployment practices
               href: operational-excellence/safe-deployments.md
             - name: OE:12 Failure mitigation
               href: operational-excellence/mitigation-strategy.md
@@ -336,6 +336,8 @@
               href: service-guides/azure-load-balancer/reliability.md
             - name: Operational excellence
               href: service-guides/azure-load-balancer/operational-excellence.md
+        - name: Azure Machine Learning
+          href: service-guides/azure-machine-learning.md
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric-well-architected-framework.md
         - name: Azure SQL Database
