@@ -13,7 +13,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on Azure OpenAI
 
-The Azure OpenAI Service provides REST API access to OpenAI's large language models that you can fine-tune to your specific needs. The Azure OpenAI Service includes Azure networking and security capabilities. This article provides architectural recommendations for making informed decisions when using Azure OpenAI as part of your architecture. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
+The Azure OpenAI Service provides REST API access to OpenAI's large language models (LLMs), adding Azure networking and security capabilities. This article provides architectural recommendations for making informed decisions when using Azure OpenAI as part of your architecture. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -27,7 +27,7 @@ The Azure OpenAI Service provides REST API access to OpenAI's large language mod
 
 ##### Technology scope
 
-This review focuses on the interrelated decisions for the Azure OpenAI Service.
+This review focuses solely on the Azure OpenAI Service.
 
 ## Reliability
 
@@ -41,11 +41,11 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 > [!div class="checklist"]
 >
-> - **Resilience** - Choose the right deployment options of either pay-as-you go or [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) based on the use case. Choose provisioned throughput for production solutions because reserved capacity increases resiliency. Pay-as-you-go is ideal for dev/test environments.
+> - **Resilience** - Choose the right deployment options of either pay-as-you go or [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) based on your use case. Because reserved capacity increases resiliency, choose provisioned throughput for production solutions. Pay-as-you-go is ideal for dev/test environments.
 >
 > - **Resilience** Add the appropriate gateway(s) in front of your OpenAI deployments that have the capability to withstand transient failures such as throttling and can route to multiple Azure OpenAI instances. Consider routing to instances in different regions to build regional redundancy.
 >
-> - **Resilience** If you're using [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput), consider deploying a pay-as-you-go instance to handle overflow. Through your gateway, route calls to the pay-as-you-go instance when your provisioned throughput model is being throttled, or, through your monitoring, you predict you will be throttled.
+> - **Resilience** If you're using [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput), consider deploying a pay-as-you-go instance, in addition, to handle overflow. Through your gateway, route calls to the pay-as-you-go instance when your provisioned throughput model is being throttled, or, through monitoring, when you predict you will be throttled.
 >
 > - **Resilience** Monitor capacity usage to ensure you aren't exceeding throughput limits. Regularly reviewing capacity usage also allows for more accurate forecasting and can help prevent service interruptions due to capacity constraints.
 >
@@ -76,11 +76,11 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
-> - **Protect confidentiality** If you're using an external data store for training data, follow security best practices for that store. For example, for Azure Blob Storage, use customer managed keys for encryption and implement a key rotation strategy, use managed identity-based access, implement a network perimeter using private endpoints and enable access logs. If you're uploading training data to the Azure OpenAI service, use [customer managed keys](/azure/ai-services/openai/encrypt-data-at-rest#customer-managed-keys-with-azure-key-vault) for data encryption and implement a key rotation strategy and follow [guidance on deleting training, validation and training results data](/azure/ai-services/openai/encrypt-data-at-rest#delete-training-validation-and-training-results-data).
+> - **Protect confidentiality** If you're uploading training data to the Azure OpenAI service, use [customer managed keys](/azure/ai-services/openai/encrypt-data-at-rest#customer-managed-keys-with-azure-key-vault) for data encryption and implement a key rotation strategy and follow [guidance on deleting training, validation and training results data](/azure/ai-services/openai/encrypt-data-at-rest#delete-training-validation-and-training-results-data). If you're using an external data store for training data, follow security best practices for that store. For example, for Azure Blob Storage, use customer managed keys for encryption and implement a key rotation strategy, use managed identity-based access, implement a network perimeter using private endpoints and enable access logs.
 >
 > - **Protect confidentiality** Guard against data exfiltration by limiting the outbound URLs the Azure OpenAI services resources are allowed to access.
 >
-> - **Protect integrity** Implement access controls to authenticate and authorize user access to the system using least privilege principle.
+> - **Protect integrity** Implement access controls to authenticate and authorize user access to the system using the least privilege principle.
 >
 > - **Protect integrity** Follow the guidance in [jailbreak risk detection](/azure/ai-services/content-safety/concepts/jailbreak-detection) to safeguard your LLM deployments against prompt injection attacks.
 >
@@ -90,13 +90,13 @@ Start your design strategy based on the [**design review checklist for Security*
 
 | Recommendation | Benefit |
 |--------|----|
-| **Restrict access** Restrict network access to the Azure OpenAI Service by using private endpoints, wherever possible. If private endpoints aren't viable, create service endpoints at the service level to restrict access from specific virtual networks. If private endpoints and service endpoints are possible, meaning public access is required, then use Web Application Firewall to restrict access to specific IP address ranges. | Controlling access to Azure OpenAI helps prevent attacks from unauthorized users. Using private endpoints ensures network traffic remains private between the application and the platform, while service endpoints allow you to restrict access to Azure OpenAI to traffic coming from your Azure Virtual Network. Web Application Firewall allows you to restrict incoming traffic to a list of known IP addresses. |
-| **Microsoft Entra ID** Use Microsoft Entra ID for authentication and to authorize access to OpenAI using role-based and conditional access control. | Using Microsoft Entra ID centralizes the identity management component and eliminates the use of API keys. Using role-based access control (RBAC) with Entra Id ensures users or groups have exactly the permissions they need to do their job. This kind of fine-grained access control isn't possible with Azure OpenAI API keys. |
-| **Privileged Identity Management** Use Microsoft Entra Privileged Identity Management (PIM) to manage, control, and monitor access to Azure OpenAI. | Privileged Identity Management (PIM) helps manage and monitor access to Azure OpenAI resources, allowing Just-In-Time (JIT), and just enough access, for example `Reader` vs. `Contributor` role, to OpenAI resources. |
 | **Secure keys** If your architecture requires the use of API keys, store those keys in Azure Key Vault, not in application code. | Separating secrets from code, such as storing them in Azure Key Vault, reduces the chances of leaking secrets and allows the central management of secrets, easing responsibilities such as rotating keys. |
-| **Encrypt data at rest** Follow the guidance in [Azure OpenAI Service encryption of data at rest](/azure/ai-services/openai/encrypt-data-at-rest) to use customer managed keys for fine-tuned models and training data uploaded to the OpenAI service. | Using customer managed keys gives you greater flexibility to create, rotate, disable, and revoke access controls. |
-| **Protect against jailbreak** Use [Azure Content Safety Studio](https://contentsafety.cognitive.azure.com/) to detect jailbreak risks. | Detecting  jailbreak attempts allows you to identify and block prompts intending to bypass the safety mechanisms of your Azure OpenAI deployments. |
 | **Implement data loss protection** Follow the guidance to [configure data loss prevention for Azure AI services](/azure/ai-services/cognitive-services-data-loss-prevention). Set the `restrictOutboundNetworkAccess` to `true` and set a comma-separated list of approved outbound URLs in the `allowedFqdnList` property. | By limiting outbound connections to only approved sites, you prevent data exfiltration. |
+| **Restrict access** Restrict network access to the Azure OpenAI Service by using private endpoints, wherever possible. If private endpoints aren't viable, create service endpoints at the service level to restrict access from specific virtual networks. If private endpoints and service endpoints are not possible, meaning public access is required, then use Web Application Firewall to restrict access to specific IP address ranges. | Controlling access to Azure OpenAI helps prevent attacks from unauthorized users. Using private endpoints ensures network traffic remains private between the application and the platform, while service endpoints allow you to restrict access to Azure OpenAI to traffic coming from your Azure Virtual Network. Web Application Firewall allows you to restrict incoming traffic to a list of known IP addresses. |
+| **Microsoft Entra ID** Use Microsoft Entra ID for authentication and to authorize access to OpenAI using role-based access control (RBAC). | Using Microsoft Entra ID centralizes the identity management component and eliminates the use of API keys. Using RBAC with Entra Id ensures users or groups have exactly the permissions they need to do their job. This kind of fine-grained access control isn't possible with Azure OpenAI API keys. |
+| **Privileged Identity Management** Use Microsoft Entra Privileged Identity Management (PIM) to manage, control, and monitor access to Azure OpenAI. | Privileged Identity Management helps manage and monitor access to Azure OpenAI resources, allowing Just-In-Time (JIT), and just enough access, for example `Reader` vs. `Contributor` role, to OpenAI resources. |
+| **Use customer-managed keys** Follow the guidance in [Azure OpenAI Service encryption of data at rest](/azure/ai-services/openai/encrypt-data-at-rest) to use customer managed keys for fine-tuned models and training data uploaded to the OpenAI service. | Using customer managed keys gives you greater flexibility to create, rotate, disable, and revoke access controls. |
+| **Protect against jailbreak** Use [Azure Content Safety Studio](https://contentsafety.cognitive.azure.com/) to detect jailbreak risks. | Detecting  jailbreak attempts allows you to identify and block prompts intending to bypass the safety mechanisms of your Azure OpenAI deployments. |
 
 ##### Azure Advisor and Azure Policy
 
