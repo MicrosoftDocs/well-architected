@@ -272,12 +272,6 @@
               href: service-guides/api-management/cost-optimization.md
             - name: Operational excellence
               href: service-guides/api-management/operational-excellence.md
-        - name: Application delivery
-          items:
-            - name: Reliability
-              href: service-guides/application-delivery/reliability.md
-            - name: Operational excellence
-              href: service-guides/application-delivery/operational-excellence.md
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights
@@ -290,14 +284,6 @@
               href: service-guides/application-insights/operational-excellence.md
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
-        - name: Azure Front Door
-          items:
-            - name: Reliability
-              href: service-guides/azure-front-door/reliability.md
-            - name: Security
-              href: service-guides/azure-front-door/security.md
-            - name: Operational excellence
-              href: service-guides/azure-front-door/operational-excellence.md
         - name: Azure App Service
           items:
             - name: Reliability
@@ -328,6 +314,8 @@
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
+        - name: Azure Front Door
+          href: service-guides/azure-front-door.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
