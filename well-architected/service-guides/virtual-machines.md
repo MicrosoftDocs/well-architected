@@ -34,7 +34,9 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Virtual Machines
 - Azure Virtual Machine Scale Sets
-- Disks are a critical dependency for VM-based architectures. For more information, see [Disks and optimization](/azure/well-architected/service-guides/azure-disks-cost-optimization).
+- Disks 
+    
+  Disks are a critical dependency for VM-based architectures. For more information, see [Disks and optimization](/azure/well-architected/service-guides/azure-disks-cost-optimization).
 
 ## Reliability
 
@@ -49,7 +51,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > [!div class="checklist"]
 >
 > - **Review Virtual Machines quotas and limits** that might pose design restrictions. VMs have specific limits and quotas, which vary based on the type of VM or the region. There might be subscription restrictions, such as the number of VMs per subscription or the number of cores per VM. If other workloads share your subscription, then your ability to consume data might be reduced.
->      Check limits on [VMs](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [Virtual Machine Scale Sets](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), and [managed disks](/azure/azure-resource-manager/management/azure-subscription-service-limits#managed-virtual-machine-disks).
+>      Check limits on [VMs](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), [virtual machine scale sets](/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-scale-sets-limits), and [managed disks](/azure/azure-resource-manager/management/azure-subscription-service-limits#managed-virtual-machine-disks).
 >
 > - **Conduct a failure mode analysis** to minimize points of failure by analyzing VM interactions with the network and storage components. Choose configurations like ephemeral operating system (OS) disks to localize disk access and avoid network hops. Add a load balancer to enhance self-preservation by distributing network traffic across multiple VMs, which improves availability and reliability.
 >
@@ -179,9 +181,9 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|(VMs, scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> Use the VM selector to identify the best VM for your workload. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. <br><br> For workloads like highly parallel batch processing jobs that can tolerate some interruptions, consider using [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms). Spot Virtual Machines are good for experimenting, developing, and testing large-scale solutions.  | SKUs are priced according to the capabilities that they offer. If you don't need advanced capabilities, don't overspend on SKUs. <br><br> Spot Virtual Machines take advantage of the surplus capacity in Azure at a lower cost.|
+|(VMs, scale set) **Choose the right VM plan size and SKU**. Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> Use the VM selector to identify the best VM for your workload. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. <br><br> For workloads like highly parallel batch processing jobs that can tolerate some interruptions, consider using [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms). Spot virtual machines are good for experimenting, developing, and testing large-scale solutions.  | SKUs are priced according to the capabilities that they offer. If you don't need advanced capabilities, don't overspend on SKUs. <br><br> Spot virtual machines take advantage of the surplus capacity in Azure at a lower cost.|
 |(VMs, scale set) **Evaluate the [disk options](/azure/virtual-machines/disks-types)** that are associated with your VM's SKUs. <br> Determine your performance needs while keeping in mind your storage capacity needs and accounting for fluctuating workload patterns. <br> For example, the Azure Premium SSD v2 disk allows you to granularly adjust your performance independent of the disk's size.|Some high-performance disk types offer extra cost optimization features and strategies. <br> The Premium SSD v2 disk's adjustment capability can reduce costs because it provides high performance without overprovisioning, which could otherwise lead to underutilized resources.|
-|(Scale set) **Mix regular VMs with Spot Virtual Machines**. <br> Flexible orchestration lets you [**distribute Spot Virtual Machines**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on a specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of Spot Virtual Machines.|
+|(Scale set) **Mix regular VMs with spot virtual machines**. <br> Flexible orchestration lets you [**distribute spot virtual machines**](/azure/virtual-machine-scale-sets/spot-priority-mix) based on a specified percentage. |Reduce compute infrastructure costs by applying the deep discounts of spot virtual machines.|
 |(Scale set) **Reduce the number of VM instances when demand decreases**. <br>[**Set a scale-in policy**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy) based on criteria. <br> <br> Stop VMs during off-hours. You can use the [**Azure Automation Start/Stop feature**](/azure/automation/automation-solution-vm-management) and configure it according to your business needs.| Scaling in or stopping resources when they're not in use reduces the number of VMs running in the scale set, which saves costs. <br> The Start/Stop feature is a low-cost automation option.|
 |(VMs, scale set) **Take advantage of license mobility by using Azure Hybrid Benefit**. VMs have a licensing option that allows you to bring your own on-premises [Windows Server OS licenses](/azure/virtual-machines/windows/hybrid-use-benefit-licensing) to Azure. <br> Azure Hybrid Benefit also lets you bring certain Linux subscriptions to Azure.|You can maximize your on-premises licenses while getting the benefits of the cloud.|
 
@@ -197,7 +199,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Monitor the VM instances**. Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Some common [metrics](/azure/azure-monitor/vm/vminsights-log-query) include CPU usage, number of requests, and I/O latency. Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to be notified about issues and to detect configuration changes in your environment.
+> - **Monitor the VM instances**. Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Some common [metrics](/azure/azure-monitor/vm/vminsights-log-query) include CPU usage, number of requests, and input/output (I/O) latency. Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to be notified about issues and to detect configuration changes in your environment.
 >
 > - **Monitor the health of the VMs and their dependencies**. 
 >    -  Deploy monitoring components to collect logs and metrics that give a comprehensive view of your VMs, guest OS, and boot diagnostics data. Virtual Machine Scale Sets roll up telemetry, which allows you to view health metrics at an individual VM level or as an aggregate. Use Azure Monitor to view this data per VM or aggregated across multiple VMs. For more information, see [Recommendations on monitoring agents](#recommendations-3).
@@ -259,8 +261,8 @@ Start your design strategy based on the [design review checklist for Performance
 |--------|----|
 |(VMs, scale set) [**Choose SKUs for VMs**](/azure/virtual-machines/sizes) that align with your capacity planning. <br><br>Have a good understanding of your workload requirements, including the number of cores, memory, storage, and network bandwidth so that you can filter out unsuitable SKUs.|Rightsizing your VMs is a fundamental decision that significantly affects the performance of your workload. Without the right set of VMs, you might experience performance issues and accrue unnecessary costs.|
 |(VMs, scale set) Deploy latency-sensitive workload VMs in [**proximity placement groups**](/azure/virtual-machine-scale-sets/proximity-placement-groups). | Proximity placement groups reduce the physical distance between Azure compute resources, which can improve performance and reduce network latency between stand-alone VMs, VMs in multiple availability sets, or VMs in multiple scale sets. |
-|(VMs, scale set)  Set the [**storage profile**](/azure/virtual-machines/disks-types) by analyzing the disk performance of existing workloads and the VM SKU. <br><br> Use [Premium SSDs](/azure/virtual-machines/disks-performance-tiers) for production VMs. Adjust the performance of disks with Premium SSD v2. <br><br>Use locally attached NVMe devices.|Premium SSDs deliver high-performance and low-latency disk support VMs with I/O-intensive workloads. <br> Premium SSD v2 doesn't require disk resizing, which enables high performance without excessive over-provisioning and minimizes the cost of unused capacity. <br><br> When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases that require high IOPS and low latency.|
-| (VMs) Consider enabling [accelerated networking](/azure/virtual-network/accelerated-networking-overview).| It enables single root I/O virtualization (SR-IOV) to a VM, which greatly improves its networking performance. |
+|(VMs, scale set)  Set the [**storage profile**](/azure/virtual-machines/disks-types) by analyzing the disk performance of existing workloads and the VM SKU. <br><br> Use [Premium SSDs](/azure/virtual-machines/disks-performance-tiers) for production VMs. Adjust the performance of disks with Premium SSD v2. <br><br>Use locally attached NVMe devices.|Premium SSDs deliver high-performance and low-latency disk support VMs with I/O-intensive workloads. <br> Premium SSD v2 doesn't require disk resizing, which enables high performance without excessive over-provisioning and minimizes the cost of unused capacity. <br><br> When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases that require high input/output operations per second (IOPS) and low latency.|
+| (VMs) Consider enabling [**accelerated networking**](/azure/virtual-network/accelerated-networking-overview).| It enables single root I/O virtualization (SR-IOV) to a VM, which greatly improves its networking performance. |
 |(VMs, scale set) [**Set autoscale rules**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal) to increase or decrease the number of VM instances in your scale set based on demand.| If your application demand increases, the load on the VM instances in your scale set increases. Autoscale rules ensure that you have enough resources to meet the demand. |
 
 ## Azure policies
@@ -268,7 +270,7 @@ Start your design strategy based on the [design review checklist for Performance
 Azure provides an extensive set of built-in policies related to Virtual Machines and its dependencies. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check whether:
 
 - Encryption at host is enabled.
-- Anti-malware extensions are deployed and enabled for automatic updates on Windows server VMs.
+- Anti-malware extensions are deployed and enabled for automatic updates on VMs that run Windows Server.
 - Automatic OS image patching on scale sets is enabled.
 - Only approved VM extensions are installed.
 - Monitor agent and the dependency agents are enabled on new VMs in your Azure environment.  
@@ -280,7 +282,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Virtual Machines.
 
 - [Reliability](/azure/advisor/advisor-high-availability-recommendations)
 - [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
