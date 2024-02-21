@@ -384,12 +384,6 @@
               href: service-guides/iot-hub/reliability.md
             - name: Operational excellence
               href: service-guides/iot-hub/operational-excellence.md
-        - name: IoT Hub Device Provisioning Service
-          items:
-            - name: Reliability
-              href: service-guides/iot-hub-dps/reliability.md
-            - name: Operational excellence
-              href: service-guides/iot-hub-dps/operational-excellence.md
         - name: IP addresses
           href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
