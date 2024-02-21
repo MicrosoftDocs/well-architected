@@ -267,18 +267,18 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Virtual Machines and its dependencies. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to Virtual Machines and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - Encryption at host is enabled.
 - Anti-malware extensions are deployed and enabled for automatic updates on VMs that run Windows Server.
 - Automatic OS image patching on scale sets is enabled.
 - Only approved VM extensions are installed.
-- Monitor agent and the dependency agents are enabled on new VMs in your Azure environment.  
+- The Monitor agent and the dependency agents are enabled on new VMs in your Azure environment.  
 - Only the allowed VM SKUs are deployed to limit sizes according to cost constraints.
 - Private endpoints are used to access disk resources.
 - Vulnerability detection is enabled. There are specialized rules for Windows machines. For example, you can schedule Windows Defender to scan every day.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might impact the security of the compute layer.
+For comprehensive governance, review the [Azure Policy built-in definitions for Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might affect the security of the compute layer.
 
 ## Azure Advisor recommendations
 
