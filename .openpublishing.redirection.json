@@ -866,13 +866,13 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/services/messaging/iot-hub-dps/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/iot-hub-dps/operational-excellence",
+			"source_path": "well-architected/service-guides/iot-hub-dps/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/iot/iot-overview",
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/services/messaging/iot-hub-dps/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/iot-hub-dps/reliability",
+			"source_path": "well-architected/service-guides/iot-hub-dps/reliability.md",
+			"redirect_url": "/azure/well-architected/iot/iot-overview",
 			"redirect_document_id": true
 		},
 		{
