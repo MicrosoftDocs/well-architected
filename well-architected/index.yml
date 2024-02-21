@@ -66,9 +66,9 @@ sections:
   - componentType: bifold
     alignment: center
     blocks:
-      - componentType: object
-        src: "[!VIDEO https://www.youtube.com/watch?v=vTjasx3ahjM]"
-        alt: Video that shows the refreshed Well-Architected Framework and how to get the most of it.
+      - video:
+           title: "Check out the refreshed Well-Architected Framework and how to get the most of it."
+           url: https://www.youtube.com/watch?v=vTjasx3ahjM
       - title: Featured update - New and refreshed service guides 
         summary: Service guides help you make informed decisions about the Azure components within your workload. Explore these new and updated service guides. 
         componentType: text
