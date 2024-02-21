@@ -81,13 +81,13 @@ sections:
           componentType: list
           style: checklist
           children:
-            - '<a href="https://learn.microsoft.com/en-us/azure/well-architected/service-guides/virtual-machines">Azure Virtual Machines</a> allows you to create and run virtual machines on the Azure platform.'
+            - **Azure Virtual Machines** allows you to create and run virtual machines on the Azure platform.
             
-            - '<a href="https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-front-door">Azure Front Door</a> is a scalable and secure entry point that provides fast delivery of your global web applications.'
+            - **Azure Front Door** is a scalable and secure entry point that provides fast delivery of your global web applications.
             
-            - '<a href="https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-machine-learning">Azure Machine Learning</a> is a managed cloud service you can use to train, deploy, and manage machine learning models.'
+            - **Azure Machine Learning** is a managed cloud service you can use to train, deploy, and manage machine learning models.
             
-            - 'In the Azure portal, <a href="https://learn.microsoft.com/en-us/azure/well-architected/service-guides/log-analytics-cost-optimization">Log Analytics</a> helps you query and analyze data in Azure Monitor Logs.'
+            - In the Azure portal, **Log Analytics** helps you query and analyze data in Azure Monitor Logs.
  
 # cards section (4)
   - componentType: grid
