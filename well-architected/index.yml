@@ -67,8 +67,9 @@ sections:
     alignment: center
     blocks:
       - componentType: video
-        src: https://www.youtube.com/watch?v=vTjasx3ahjM
-        alt: "Check out the refreshed Well-Architected Framework and learn how to get the most of it."
+        src: https://www.youtube.com/embed/vTjasx3ahjM?si=eMWFcAwxuFzKhqJq
+        id: using-the-well-architected-framework
+        label: "In this video, check out the refreshed Well-Architected Framework and learn how to get the most of it."
       - title: Featured update - New and refreshed service guides 
         summary: Service guides help you make informed decisions about the Azure components within your workload. Explore these new and updated service guides. 
         componentType: text
