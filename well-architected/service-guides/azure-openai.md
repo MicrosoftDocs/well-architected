@@ -53,7 +53,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 > - **Resilience** Follow the guidance in [customize a model with fine-tuning](/azure/ai-services/openai/how-to/fine-tuning) for large data files by importing the data from Azure Blob store. The guidance states that large files can become unstable when uploaded through multipart forms because the requests are atomic and can't be retried or resumed. Consider files 100MB or larger as large files.
 >
-> - **Recovery** Implement a disaster recovery plan for models that have been fine-tuned and for training data uploaded to the Azure OpenAI service.
+> - **Recovery** Ensure you have a recovery strategy defined that includes a recovery plan for models that have been fine-tuned and for training data uploaded to the Azure OpenAI service. Azure OpenAI doesn't have automatic failover. Therefore, you must design a strategy that encompasses the Azure OpenAI service and all of its dependencies, such as storage that contains training data.
 >
 ##### Recommendations
 
