@@ -35,7 +35,7 @@ Proximity placement groups often limit your VM choices and make resizing VMs mor
 
 We recommend using proximity placement groups in two scenarios:
 1. Use proximity placement groups in Azure regions where latency across zones is higher than recommended for the Oracle workload.
-1. Use proximity placement groups for application volume group. The Application Volume Group feature of Azure NetApp Files (ANF) uses PPG to deploy ANF volumes close to the VM/compute cluster. We recommend using this feature as designed.
+1. Use proximity placement groups for application volume group. The [Application Volume Group](/azure/azure-netapp-files/application-volume-group-oracle-introduction) feature of Azure NetApp Files uses PPG to deploy Azure NetApp Files volumes close to the VM/compute cluster. We recommend using this feature as designed.
 
 For more information, see:
 
