@@ -1,10 +1,12 @@
 ---
-title: Azure Well-Architected Framework - Azure OpenAI
-description: Design considerations and recommendations about Azure OpenAI.
+title: Azure Well-Architected Framework perspective on Azure OpenAI
+description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure OpenAI.
 author: robbagby
 ms.author: robbag
 ms.date: 02/20/2024
 ms.topic: conceptual
+ms.service: waf
+ms.subservice: waf-service-guide
 products:
   - azure-openai
 categories:
@@ -57,7 +59,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| **Monitor rate limits for pay-as-you-go** If you're using pay-as-you-go, follow the [guidance to manage rate limits](/azure/ai-services/openai/how-to/quota) for your OpenAI service model deployments and [monitor usage](/azure/ai-services/openai/how-to/quota?tabs=rest#view-and-request-quota) of Tokens per Minute (TPM) and Requests per Minute (RPM). | It's important to monitor the required throughput in terms of Tokens per Minute (TPM) and Requests per Minute (RPM) through monitoring. This throughput information provides you with the information required to ensure you assign enough TPM from your quota to meet the demand for your deployments.<br>Assigning enough quota prevents calls to your deployed models from being throttled. |
+| **Monitor rate limits for pay-as-you-go** If you're using pay-as-you-go, follow the [guidance to manage rate limits](/azure/ai-services/openai/how-to/quota) for your model deployments and [monitor usage](/azure/ai-services/openai/how-to/quota?tabs=rest#view-and-request-quota) of Tokens per Minute (TPM) and Requests per Minute (RPM). | This important throughput information provides you with the information required to ensure you assign enough TPM from your quota to meet the demand for your deployments.<br>Assigning enough quota prevents calls to your deployed models from being throttled. |
 | **Monitor provisioned-managed utilization for provisioned throughput** If you're using [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) payment model, monitor [provision-managed utilization](/azure/ai-services/openai/how-to/monitoring). | It's important to monitor provision-managed utilization to ensure it doesn't exceed 100% to prevent calls to your deployed models from being throttled. |
 | **Enable dynamic quota** If your workload budget supports it, perform overprovisoning by enabling dynamic quota on model deployments. | Dynamic quota allows your deployment to consume more capacity than your quota normally would, as long as there is available capacity from Azure's perspective. While it is not guaranteed, the chance of additional quota could prevent undesired throttling. |
 | **Tune content filters** Tune content filters to minimize false positives from overly aggressive filters. | Content filters block prompts or completions based on an opaque risk analysis. Ensure content filters are tuned to allow expected usage for your workload. |
@@ -74,7 +76,7 @@ The [**Security design principles**](/azure/well-architected/security/security-p
 
 ##### Design checklist
 
-Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Then review the [Azure security baseline for Azure OpenAI](/security/benchmark/azure/baselines/azure-openai-security-baseline). Finally, extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -82,11 +84,11 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Protect confidentiality** Guard against data exfiltration by limiting the outbound URLs the Azure OpenAI services resources are allowed to access.
 >
-> - **Protect integrity** Implement access controls to authenticate and authorize user access to the system using the least privilege principle.
+> - **Protect integrity** Implement access controls to authenticate and authorize user access to the system using the least privilege principle and using individual identities instead of keys.
 >
 > - **Protect integrity** Follow the guidance in [jailbreak risk detection](/azure/ai-services/content-safety/concepts/jailbreak-detection) to safeguard your LLM deployments against prompt injection attacks.
 >
-> - **Protect availability** Use security controls to prevent attacks that will exhaust model usage quotas. These controls can include network isolating the service. If the service must be internet accessible, consider using a gateway with Web Application Firewall.
+> - **Protect availability** Use security controls to prevent attacks that will exhaust model usage quotas. These controls can include network isolating the service. If the service must be internet accessible, consider using a gateway to make routing or throttling decisions that block suspected abuse.
 
 ##### Recommendations
 
@@ -126,7 +128,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Usage optimization** Start with [pay-as-you-go pricing](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/) for Azure OpenAI until your token utilization is predictable.
 >
-> - **Rate optimization** When your token utilization is high and predictable, use the [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) pricing model for better cost optimization.
+> - **Rate optimization** When your token utilization is sufficiently high and predictable over a period of time, use the [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) pricing model for better cost optimization.
 >
 > - **Usage optimization** Take [model pricing](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/) into account along with model capabilities when choosing models. Start with less costly models for less complex tasks like text generation or completion tasks. For more complex tasks like language translation, or content understanding, consider more advanced models. Consider different [model capabilities](/azure/ai-services/openai/concepts/models) and maximum token usage limits while picking the appropriate model aligning with the use cases like text embedding, image generation, transcription scenarios, etc. By carefully selecting the model that best fits your needs, you can optimize costs while still achieving the desired performance for your application.
 >
