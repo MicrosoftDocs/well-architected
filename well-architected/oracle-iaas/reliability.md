@@ -50,7 +50,7 @@ The web server tier, application tier and database tier reside in its own virtua
 
 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) or the manual clone utility can be established to duplicate the passive secondary in AZ2. The primary will be set up in availability zone one whereas the database uses Data Guard to replicate it to an active Standby in AZ2.
 
-A failover would require manual intervention from the customer to fail over if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
+A failover would require manual intervention from the customer to fail over if there's a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
 :::image type="content" source="./images/oracle-architecture-02.png" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="./images/oracle-architecture-02.png":::
 
@@ -62,10 +62,10 @@ Choices for Oracle on Azure should include and be reviewed in the [design princi
 
 To assess the Utilization, extract the AWR or statspack workload data to right-size the database in Azure (lift and shift the workload, not the on-premises hardware.).
 
-Microsoft offers different sizes of Virtual Machines matching CPU, Memory and throughput. Based on the data in the AWR or statspack you can choose the correct VM SKU for Oracle Workload to ensure reliability and sustainability of the Oracle workload.
+Microsoft offers different sizes of Virtual Machines matching CPU, Memory, and throughput. Based on the data in the AWR or statspack you can choose the correct VM SKU for Oracle Workload to ensure reliability and sustainability of the Oracle workload.
 
 Some explanations to the different types of Virtual Machines are:
-- D-series newest version (v5 or higher) for small Oracle databases or non-production.
+- D-series newest version (v5 or higher) for small Oracle databases or nonproduction.
 - E-series VM skus, newest version, (v5 or higher) whenever available for most production Oracle database workloads.
 - M-series for high memory/vCPU use Oracle databases but be cognizant of IO limits for attached disk. Preference for network attached storage.
 
@@ -75,11 +75,11 @@ Based on the AWR and statspack data you should also choose a Premium SSD for OS 
 
 The appropriate storage for throughput (MBPs) for Oracle workload should be chosen.
 
-Another solution when your workload requires a high throughput is [Azure NetApp Files (ANF)](/azure/azure-netapp-files/azure-netapp-files-introduction). For more product information, see [Azure NetApp Files](https://azure.microsoft.com/products/netapp/)
+Another solution when your workload requires a high throughput is [Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-introduction). Azure NetApp Files provides additional value with advanced data management capabilities including cross-region and cross-zone volume replication, instant snapshots, and dynamic size- and performance scaling. For more information, see [Azure NetApp Files](https://azure.microsoft.com/products/netapp/).
 
 For any multi-tier systems using E and D series VMs, consider using [Proximity Placement Groups](/azure/virtual-machines/co-location) for more consistent performance between VMs.
 
-Calculate the Recovery Point Object (RPO), Recovery Time Objective (RTO) and uptime SLAs for the system and ensure it matches for both the IT organization and the business.
+Calculate the Recovery Point Object (RPO), Recovery Time Objective (RTO), and uptime SLAs for the system and ensure it matches for both the IT organization and the business.
 
 Consider enabling host level caching on the VM and use readonly caching on premium SSD P30-P50 for Oracle Datafiles. Performances for read-heavy workloads require consistency for relational systems. Where bursting may offer some benefits, most often we rely on host-level caching for best and consistent Oracle workload performance. Read-only is chosen as Oracle desires all writes to write through to the datafiles to avoid hindering issues by caching.
 
