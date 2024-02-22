@@ -13,7 +13,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on Azure OpenAI
 
-The Azure OpenAI Service provides REST API access to OpenAI's large language models (LLMs), adding Azure networking and security capabilities. This article provides architectural recommendations for making informed decisions when using Azure OpenAI as part of your architecture. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
+The Azure OpenAI Service provides REST API access to OpenAI's large language models (LLMs), adding Azure networking and security capabilities. This article provides architectural recommendations for making informed decisions when using Azure OpenAI as part of your workload's architecture. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -27,7 +27,7 @@ The Azure OpenAI Service provides REST API access to OpenAI's large language mod
 
 ##### Technology scope
 
-This review focuses solely on the Azure OpenAI Service.
+This review focuses solely on the Azure OpenAI service.
 
 ## Reliability
 
@@ -41,17 +41,17 @@ Start your design strategy based on the [**design review checklist for Reliabili
 
 > [!div class="checklist"]
 >
-> - **Resilience** - Choose the right deployment options of either pay-as-you go or [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) based on your use case. Because reserved capacity increases resiliency, choose provisioned throughput for production solutions. Pay-as-you-go is ideal for dev/test environments.
+> - **Resilience** Choose the right deployment options of either pay-as-you go or [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) based on your use case. Because reserved capacity increases resiliency, choose provisioned throughput for production solutions. Pay-as-you-go is ideal for dev/test environments.
 >
-> - **Resilience** Add the appropriate gateway(s) in front of your OpenAI deployments that have the capability to withstand transient failures such as throttling and can route to multiple Azure OpenAI instances. Consider routing to instances in different regions to build regional redundancy.
+> - **Redundancy** Add the appropriate gateway(s) in front of your Azure OpenAI deployments that have the capability to withstand transient failures such as throttling and can route to multiple Azure OpenAI instances. Consider routing to instances in different regions to build regional redundancy.
 >
 > - **Resilience** If you're using [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput), consider deploying a pay-as-you-go instance, in addition, to handle overflow. Through your gateway, route calls to the pay-as-you-go instance when your provisioned throughput model is being throttled, or, through monitoring, when you predict you will be throttled.
 >
 > - **Resilience** Monitor capacity usage to ensure you aren't exceeding throughput limits. Regularly reviewing capacity usage also allows for more accurate forecasting and can help prevent service interruptions due to capacity constraints.
 >
-> - **Resilience** Follow the guidance in [customize a model with fine-tuning](/azure/ai-services/openai/how-to/fine-tuning) for large data files by importing the data from Azure Blob store. The guidance states that large files can become unstable when uploaded through multipart forms because the requests are atomic and can’t be retried or resumed. Consider files 100MB or larger as large files.
+> - **Resilience** Follow the guidance in [customize a model with fine-tuning](/azure/ai-services/openai/how-to/fine-tuning) for large data files by importing the data from Azure Blob store. The guidance states that large files can become unstable when uploaded through multipart forms because the requests are atomic and can't be retried or resumed. Consider files 100MB or larger as large files.
 >
-> - **Recovery** Implement a disaster recovery plan for models that have been fine-tuned and for training data uploaded to the OpenAI service.
+> - **Recovery** Implement a disaster recovery plan for models that have been fine-tuned and for training data uploaded to the Azure OpenAI service.
 >
 ##### Recommendations
 
@@ -96,7 +96,7 @@ Start your design strategy based on the [**design review checklist for Security*
 | **Microsoft Entra ID** Use Microsoft Entra ID for authentication and to authorize access to OpenAI using role-based access control (RBAC). | Using Microsoft Entra ID centralizes the identity management component and eliminates the use of API keys. Using RBAC with Entra Id ensures users or groups have exactly the permissions they need to do their job. This kind of fine-grained access control isn't possible with Azure OpenAI API keys. |
 | **Privileged Identity Management** Use Microsoft Entra Privileged Identity Management (PIM) to manage, control, and monitor access to Azure OpenAI. | Privileged Identity Management helps manage and monitor access to Azure OpenAI resources, allowing Just-In-Time (JIT), and just enough access, for example `Reader` vs. `Contributor` role, to OpenAI resources. |
 | **Use customer-managed keys** Follow the guidance in [Azure OpenAI Service encryption of data at rest](/azure/ai-services/openai/encrypt-data-at-rest) to use customer managed keys for fine-tuned models and training data uploaded to the OpenAI service. | Using customer managed keys gives you greater flexibility to create, rotate, disable, and revoke access controls. |
-| **Protect against jailbreak** Use [Azure Content Safety Studio](https://contentsafety.cognitive.azure.com/) to detect jailbreak risks. | Detecting  jailbreak attempts allows you to identify and block prompts intending to bypass the safety mechanisms of your Azure OpenAI deployments. |
+| **Protect against jailbreak** Use [Azure Content Safety Studio](https://contentsafety.cognitive.azure.com/) to detect jailbreak risks. | Detecting jailbreak attempts allows you to identify and block prompts intending to bypass the safety mechanisms of your Azure OpenAI deployments. |
 
 ##### Azure Advisor and Azure Policy
 
@@ -128,9 +128,9 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Rate optimization** When your token utilization is high and predictable, use the [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) pricing model for better cost optimization.
 >
-> - **Usage optimization** Take [model pricing](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/) into account along with model capabilities when choosing models. Start with less costly models for less complex tasks like text generation or completion tasks. For more complex tasks like language translation, or content understanding, consider more advanced models. Consider different [model capabilities](/azure/ai-services/openai/concepts/models) and maximum token usage limits while picking the appropriate model aligning with the use cases like text embedding, image generation, transcription scenarios, etc.  By carefully selecting the model that best fits your needs, you can optimize costs while still achieving the desired performance for your application.
+> - **Usage optimization** Take [model pricing](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/) into account along with model capabilities when choosing models. Start with less costly models for less complex tasks like text generation or completion tasks. For more complex tasks like language translation, or content understanding, consider more advanced models. Consider different [model capabilities](/azure/ai-services/openai/concepts/models) and maximum token usage limits while picking the appropriate model aligning with the use cases like text embedding, image generation, transcription scenarios, etc. By carefully selecting the model that best fits your needs, you can optimize costs while still achieving the desired performance for your application.
 >
-> - **Cost efficiency** Optimize prompt input and response length. Longer prompts consume more tokens, raising the cost. However, prompts that are missing sufficient context will not help the models yield good results. Create concise prompts that provide enough context to allow the model to generate a useful response. Likewise, ensure you optimize the limit of the response length.
+> - **Adjust usage** Optimize prompt input and response length. Longer prompts consume more tokens, raising the cost. However, prompts that are missing sufficient context will not help the models yield good results. Create concise prompts that provide enough context to allow the model to generate a useful response. Likewise, ensure you optimize the limit of the response length.
 >
 > - **Cost efficiency** Batch requests, where possible, to minimize the per-call overhead which can reduce overall costs. Ensure you optimize batch size.
 >
@@ -149,7 +149,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 ##### Azure Policy and Azure Advisor
 
-There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best practice recommendations or [built-in Azure Policy definitions](/azure/machine-learning/policy-reference) for Cost Optimization for Azure OpenAI.
+There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best practice recommendations or [built-in Azure Policy definitions](/azure/machine-learning/policy-reference) for cost optimization for Azure OpenAI.
 
 ## Operational Excellence
 
@@ -165,7 +165,7 @@ Start your design strategy based on the [**design review checklist for Operation
 >
 > - **Observability** Monitor, aggregate and visualize the appropriate metrics for your cost model, pay-as-you-go or provisioned throughput. This data can be used to inform you about the effectiveness of your cost model decision and help you understand if you're hitting or approaching throttling limits, providing you with data required for making scaling decisions.
 >
-> - **Observability** If the Azure OpenAI diagnostics aren't sufficient for you, consider using a gateway such as Azure API Managements in front of Azure OpenAI to log both incoming prompts and outgoing responses, where permitted. This information can be used to help understand the effectiveness of the model for incoming prompts.
+> - **Observability** If the Azure OpenAI diagnostics aren't sufficient for you, consider using a gateway such as Azure API Management in front of Azure OpenAI to log both incoming prompts and outgoing responses, where permitted. This information can be used to help understand the effectiveness of the model for incoming prompts.
 >
 > - **Deploy with confidence** Use Infrastructure as code to deploy the Azure OpenAI Service, model deployments, and other infrastructure required for model fine-tuning.
 >
@@ -177,7 +177,7 @@ There are no recommended configurations for Operational Excellence for Azure Ope
 
 ##### Azure Policy and Azure Advisor
 
-There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best practice recommendations or [built-in Azure Policy definitions](/azure/machine-learning/policy-reference) for Operational Excellence for Azure OpenAI.
+There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best practice recommendations or [built-in Azure Policy definitions](/azure/machine-learning/policy-reference) for operational excellence for Azure OpenAI.
 
 ## Performance Efficiency
 
@@ -215,11 +215,11 @@ Start your design strategy based on the [**design review checklist for Performan
 
 ##### Recommendations
 
-There are no recommended configurations for Performance Efficiency for Azure OpenAI.
+There are no recommended configurations for Performance Efficiency for the Azure OpenAI service.
 
 ##### Azure Policy and Azure Advisor
 
-There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best practice recommendations or [built-in Azure Policy definitions](/azure/machine-learning/policy-reference) for Performance Efficiency for Azure OpenAI.
+There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best practice recommendations or [built-in Azure Policy definitions](/azure/machine-learning/policy-reference) for performance efficiency for Azure OpenAI.
 
 ## Next steps
 
