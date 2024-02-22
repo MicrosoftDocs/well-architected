@@ -75,7 +75,7 @@ Based on the AWR and statspack data you should also choose a Premium SSD for OS 
 
 The appropriate storage for throughput (MBPs) for Oracle workload should be chosen.
 
-Another solution when your workload requires a high throughput is [Azure NetApp Files (ANF)](/azure/azure-netapp-files/azure-netapp-files-introduction). For more product information, see [Azure NetApp Files](https://azure.microsoft.com/products/netapp/)
+Another solution when your workload requires a high throughput is [Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-introduction). Azure NetApp Files provides additional value with advanced data management capabilities including cross-region and cross-zone volume replication, instant snapshots, and dynamic size- and performance scaling. For more product information, see [Azure NetApp Files](https://azure.microsoft.com/products/netapp/)
 
 For any multi-tier systems using E and D series VMs, consider using [Proximity Placement Groups](/azure/virtual-machines/co-location) for more consistent performance between VMs.
 
