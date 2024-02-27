@@ -13,7 +13,7 @@ ms.subservice: waf-workload-avs
 
 This article discusses the networking design area of an Azure VMware Solution workload. Well-architected networks are critical for enabling connectivity, optimizing response times, distributing traffic, and helping to ensure continuous availability of workloads in Azure VMware Solution.
 
-## Distribute loads for high availability
+## Distribute load for high availability
 
 *Impact: Reliability, Performance efficiency*
 
