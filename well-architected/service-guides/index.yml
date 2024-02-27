@@ -205,6 +205,22 @@ productDirectory:
       azureCategories:
         - networking
     # Card
+    - title: Azure Machine Learning
+      summary: Build, train, and deploy machine learning models.
+      imageSrc: _images/azure-machine-learning.svg
+      url: azure-machine-learning.md
+      azureCategories:
+        - featured
+        - ai-machine-learning
+    # Card
+    - title: Azure OpenAI
+      summary: Build intelligent apps with large language models from OpenAI with an enterprise-ready service.
+      imageSrc: _images/azure-openai.svg
+      url: azure-openai.md
+      azureCategories:
+        - featured
+        - ai-machine-learning
+    # Card
     - title: Azure Queue Storage
       summary: Effectively scale apps according to traffic.
       imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
