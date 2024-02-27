@@ -182,13 +182,6 @@ productDirectory:
       azureCategories:
         - iot
     # Card
-    - title: Azure IoT Hub Device Provisioning Service
-      summary: Automate zero-touch, just-in-time provisioning to an IoT hub.
-      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: ./iot-hub-dps/reliability.md
-      azureCategories:
-        - iot
-    # Card
     - title: Azure Kubernetes Service
       summary: Simplify the deployment, management, and operations of Kubernetes.
       imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
