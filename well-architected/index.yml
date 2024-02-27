@@ -2,22 +2,22 @@
 title: Azure Well-Architected Framework
 metadata:
   title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+  description: Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
   services: azure-resource-manager
   ms.service: waf
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 11/10/2023
+  ms.date: 02/16/2024
 sections:
   # Intro
   - componentType: text 
     title: Azure Well-Architected Framework
-    summary: The Azure Well-Architected Framework (WAF) is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+    summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
     links:
     - componentType: link
       url: what-is-well-architected-framework
-      text: What is WAF?    
+      text: What is Well-Architected Framework?   
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
@@ -66,11 +66,12 @@ sections:
   - componentType: bifold
     alignment: center
     blocks:
-      - componentType: image
-        src: ./_images/well-architected-refresh.png   
-        alt: WAF refresh update   
-      - title: Featured update - Core pillars restructured and refreshed 
-        summary: The Azure Well-Architected Framework published a significant content refresh across all five pillars. 
+      - componentType: video
+        src: https://www.youtube.com/embed/vTjasx3ahjM?si=eMWFcAwxuFzKhqJq
+        id: using-the-well-architected-framework
+        label: "In this video, check out the refreshed Well-Architected Framework and learn how to get the most of it."
+      - title: Featured update - New and refreshed service guides 
+        summary: Service guides help you make informed decisions about the Azure components within your workload. Explore these new and updated service guides. 
         componentType: text
         links:
           - componentType: link
@@ -80,12 +81,13 @@ sections:
           componentType: list
           style: checklist
           children:
-            - Design principles include a set of recommended approaches and benefits.
-            - Design review checklist drive action through codified recommendations. 
-            - Design tradeoffs with other pillars. 
-            - Recommendations on key strategies that fulfill the principles of design.
-            - Design patterns based on proven, common architecture patterns, mapped to each pillar.
-            - Azure Well-Architected Review tool has been refreshed to align with the new content.
+            - Azure Virtual Machines allows you to create and run virtual machines on the Azure platform.
+            
+            - Azure Front Door is a scalable and secure entry point that provides fast delivery of your global web applications.
+            
+            - Azure Machine Learning is a managed cloud service you can use to train, deploy, and manage machine learning models.
+            
+            - In the Azure portal, Log Analytics helps you query and analyze data in Azure Monitor Logs.
  
 # cards section (4)
   - componentType: grid

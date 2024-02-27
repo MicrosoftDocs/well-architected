@@ -1,25 +1,25 @@
 ### YamlMime:Hub
 
 title: Azure Well-Architected Framework
-summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+summary: Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads. 
 brand: azure
 
 metadata:
-  title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+  title: Azure Well-Architected Framework perspectives on Azure offerings
+  description: Explore Well-Architected Framework concepts, service guides, and architectural considerations that can help solution architects make informed decisions about the Azure components within a workload.
   services: azure-resource-manager
   ms.service: waf
   ms.topic: hub-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 11/10/2023
+  ms.date: 02/16/2024
   featureFlags:
   - clicktale
 highlightedContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample tutorial | video | whats-new
   items:
     # Card
-    - title: What is WAF?
+    - title: What is Well-Architected Framework? 
       itemType: get-started
       url: ../what-is-well-architected-framework.md  
     # Card
