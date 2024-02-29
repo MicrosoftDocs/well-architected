@@ -20,11 +20,14 @@ When discussing reliability with Oracle in Azure, it’s important to take into 
 There are two possible types of Oracle database backup that are relevant when the Oracle workload is implemented on Azure IaaS:
 - Streaming backups using Oracle RMAN (Recovery Manager) which is originally based on backups being streamed to sequential tape media. This type of backup typically has two possible destinations on Azure: Virtual Tape libraries from third party providers on the Azure marketplace, or local and remote Fileshares such as Azure Blob NFS, Azure Files and Azure NetApp Files.
 - Storage-level snapshots typically using Azure backup service. This backup method depends on the type of storage used for database files. For example, for Azure Managed disk (premium SSD) [Azure Backup is integrated with the Oracle database](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup?tabs=azure-portal) while for Azure NetApp Files there are data protection capabilities such as [ANF backup](https://learn.microsoft.com/en-us/azure/azure-netapp-files/backup-introduction) and [cross-region replication](https://learn.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-introduction).
+- VM-level Backups can be executed through [Azure Backup](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup?tabs=azure-portal)
 
 It is important to note that with streaming backups of large databases, the time taken to copy the data back in order to restore it can exceed the RTO requirements. In that case the storage-level snapshots become the better option.
 
-### Assessment question
-Have you implemented and tested (or do you have plans to implement and test) backup strategies for your Oracle on Azure IaaS deployment?
+### Assessment questions
+- Are RPO & RTO requirements defined?
+- Is the retention period defined (frequency, increments and targets)?
+- Have you implemented and tested (or do you have plans to implement and test) backup strategies for your Oracle on Azure IaaS deployment?
 
 ### Recommendations
 - Consider carefully whether to implement a backup strategy based on Streaming (RMAN), storage-level snapshots or even both. 
@@ -40,16 +43,19 @@ Service protection and business continuity considerations aim to produce archite
 
 Azure provides many options for the high availability of the individual components deployed in an Oracle on IaaS Architecture. Virtual machines can be deployed in availability sets to guarantee separate fault domains and update domains, availability zones are used to protect against data center failures, and deployment in different regions can protect against the failure of a full region. The different Azure storage capabilities have a variety of storage redundancy levels such as LRS, ZRS and GRS. All these options should be considered when putting these components together to deploy the Oracle workload on IaaS.
 
-In addition, Oracle provides [Dataguard](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard), which is the most common tool used for Oracle database service protection setups. While usually used for database recovery, transaction logs can be forwarded to a standby database and applied to maintain another database which is an exact copy to failover to. Dataguard has three modes of data replication (Maximum Protection, Maximum Availability and Maximum Performance) which offer different combinations of log transport modes and guarantees for transactions application on the secondary database.
+In addition, Oracle provides [Dataguard](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard), which is the most common tool used for Oracle database service protection setups. While usually used for database recovery, transaction logs can be forwarded to a standby database and applied to maintain another database which is an exact copy to failover to. Dataguard has three modes of data replication (Maximum Protection, Maximum Availability and Maximum Performance) which offer different combinations of log transport modes and guarantees for transactions application on the secondary database. Depending on a zero-latency or zero data loss strategy, a synchronous or asynchronous configuration can be chosen.
+Depending on your maximum downtime requirements, Fast Start Failover (FSFO) can be implemented. Reference architectures are available from lesser than 1 minute recovery to lesser than 5 minutes up to 4 hours. 
 
 Oracle [Goldengate](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/configure-oracle-golden-gate) is another tool that can replicate data between two databases and can enable multi master scenarios. Goldengate is an extra-cost option as compared with Dataguard which is integrated into Oracle Enterprise Edition.
 
 ### Assessment question
-Have you implemented and tested (or do you have plans to implement and test) HA and DR strategies for your Oracle on Azure IaaS deployment?
+- Do you have a disaster recovery plan/solution in place? 
+- Have you implemented and tested (or do you have plans to implement and test) HA and DR strategies for your Oracle on Azure IaaS deployment?
+- Did you define your maximum downtime requirements?
 
 ### Recommendations
 - Take into consideration the capabilities that Azure provides for the High Availability of the different Infrastructure components in your Oracle on IaaS implementation.
-- When using Dataguard for HA and DR, carefully select the data replication mode that fulfills your requirements. For example using Maximum Performance mode provides the minimum impact on the source but the highest potential for data loss.
+- When using Dataguard for HA and DR, carefully select the data replication mode that fulfills your requirements. For example using Maximum Performance mode provides the minimum impact on the source but the highest potential for data loss. Please also review [BCDR LZA](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-disaster-recovery-oracle-landing-zone).
 - Consider automating your failover process e.g. using Fast-start Failover.
 - Establish test procedures for your failover processes and carry out regular testing to avoid any issues.
 - Architect your solution holistically by utilizing the Azure native capabilities (e.g. Availability Zones) and Oracle native tools (e.g. Dataguard) to meet your HA and DR requirements. The following two are examples of such an architecture, the first targeting automatic failover and the second targeting manual failover.
@@ -60,24 +66,23 @@ Business-critical Oracle Applications require failure prevention and therefore h
 
 As a given Tier 1 example for Oracle E-Business Suite in a multiple availability zone deployment and second region deployments for disaster recovery.
 
-- First establish a multiple availability zone deployment with separated VNet with subnets. The Application tier uses Azure Site Recovery with a passive secondary virtual machine in availability zone three from the availability zone 1 primary.
+- First establish a two availability zone deployment with separated VNet with subnets. The Application tier uses Azure Site Recovery with a passive secondary virtual machine in availability zone three from the availability zone 1 primary.
 - Use two Oracle Observers as a primary in availability zone one and a secondary in availability zone two. The observers monitor and direct the whole traffic to the primary database. Whereas the primary database is deployed in availability zone one. Oracle Data Guard performs the redo sync to availability zone two and can be configured for maximum availability. Data Guard can be established as synchronous or asynchronous. Within one region a synchronous configuration can be used for reaching a lower latency as in async mode.
 
-A second Data Guard standby configuration in the secondary region is established for disaster recovery purposes and is configured for maximum protection. Thereby backups of the database are performed by Azure Backup Volume Snapshot on Premium Files to the secondary region.
+The following architecture aims for a >5 minutes downtime. a Fast Start Failover configuration is required.
 
-If a primary goes down, Observer(s) will reroute the traffic to the secondary DB2 as it comes out of standby, becomes primary and takes over all functionality for environment and sequence to fail over to secondary region standby if regional outage in first region.
-
-![Alt text](image-1.png)
+![Alt text](active-passive.png)
 
 ### Example 2: Create a Fail-Over For Business Critical Oracle Applications in a Two Availability Zone Deployment With Manual Failover
 
 The web server tier, application tier and database tier reside in its own virtual network subnet.
 
 Azure Site Recovery or the manual clone utility can be established to duplicate the passive secondary in AZ2. The primary will be set up in availability zone one whereas the database uses Data Guard to replicate it to an active Standby in AZ2.
+**Note that this setup requires an Active Data Guard license**
 
-A failover would require manual intervention from the system admin to fail over if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
+A failover would require manual intervention from the system admin to failover if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
-![Alt text](image-2.png)
+![Alt text](active-active.png)
 
 ## Next Steps
 
