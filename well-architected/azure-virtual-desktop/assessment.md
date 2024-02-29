@@ -15,7 +15,7 @@ The [Azure Well-Architected Azure Virtual Desktop workload assessment](/assessme
 
 For best results, the team that completes the assessment should be well versed in the architecture of your workload. That team should also have a strong understanding of cloud principles and patterns. These roles include but aren't limited to cloud architects, operators, and DevOps engineers.
 
-The assessment is a set of questions that are based on the [Azure Virtual Desktop design areas](../azure-vmware/design-principles.md) as a way of checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
+The assessment is a set of questions that are based on the [Azure Virtual Desktop design principles](./design-principles.md) as a way of checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
 
 :::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the Azure Virtual Desktop assessment. A few answers are selected. On the left, an outline of the assessment is visible.":::
 
