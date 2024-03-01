@@ -304,9 +304,9 @@ Here are few built-in policies under Security Center category that are evaluated
 - [Preview]: Azure Security agent should be installed on your Linux Arc machines.
 - [Preview]: ChangeTracking extension should be installed on your Linux Arc machine.
 
-For full details, see [Built-in-policies under Security Center](/azure/governance/policy/samples/built-in-policies#security-center).
+For full details, see [Built-in policies under Security Center](/azure/governance/policy/samples/built-in-policies#security-center).
 
-Additionally, you can review some of the built-in polices available under Azure Arc and see if it could be applied for the Arc VMs deployed on Azure Stack HCI. For details, see [built-in policy definitions for Azure Arc enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
+Additionally, you can review some of the built-in policies available under Azure Arc and see if it could be applied for the Arc VMs deployed on Azure Stack HCI. For details, see [built-in policy definitions for Azure Arc enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
 
 - [Preview]: Deny Extended Security Updates (ESUs) license creation or modification.
 - [Preview]: Enable Extended Security Updates (ESUs) license to keep Windows 2012 machines protected after their support lifecycle has ended.
