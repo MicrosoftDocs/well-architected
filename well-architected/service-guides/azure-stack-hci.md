@@ -285,7 +285,7 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 ## Azure Policies
 
-Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Arc enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
+Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
 
 To start with, review the list of built-in policies available for Azure Stack HCI, such as:  
 
