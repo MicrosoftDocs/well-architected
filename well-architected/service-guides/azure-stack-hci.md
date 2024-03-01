@@ -251,7 +251,7 @@ For more suggestions, see [Principles of the operational excellence pillar](/azu
 
 Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](/azure/well-architected/scalability/principles).
 
-When discussing performance with Azure Stack HCI, it's important to distinguish between _cluster performance_ and _workload performance_. Cluster design and performance capabilities are the responsibility of the cluster administrators and the hardware OEM partner, while workload performance is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing performance with Azure Stack HCI, it's important to distinguish between _cluster performance_ and _workload performance_. Cluster design and performance capabilities are the responsibility of the cluster administrators and the hardware OEM partner, while workload performance is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both roles.
 
 The **design checklist** and list of **recommendations** below indicate if each consideration is relevant for cluster architecture, workload architecture, or both.
 
