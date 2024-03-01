@@ -298,7 +298,7 @@ You can find these policies in the Azure portal under Policy > Definitions > Cat
 
 For the above built-in-policies, Microsoft Defender for Cloud has added [New Recommendations for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) to show its compliance state.
 
-Here are few built-in-policies under Security Center category that are evaluated by enabling Defender for Cloud to a subscription that is registered with hybrid resources such as Azure Stack HCI and Azure Arc VMs:
+Here are few built-in policies under Security Center category that are evaluated by enabling Defender for Cloud to a subscription that is registered with hybrid resources such as Azure Stack HCI and Azure Arc VMs:
 
 - [Preview]: Azure Security agent should be installed on your Windows Arc machines.
 - [Preview]: Azure Security agent should be installed on your Linux Arc machines.
