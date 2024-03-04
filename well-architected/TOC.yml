@@ -326,6 +326,8 @@
               href: service-guides/azure-load-balancer/operational-excellence.md
         - name: Azure Machine Learning
           href: service-guides/azure-machine-learning.md
+        - name: Azure OpenAI
+          href: service-guides/azure-openai.md          
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric-well-architected-framework.md
         - name: Azure SQL Database
@@ -372,16 +374,10 @@
               href: service-guides/iot-hub/reliability.md
             - name: Operational excellence
               href: service-guides/iot-hub/operational-excellence.md
-        - name: IoT Hub Device Provisioning Service
-          items:
-            - name: Reliability
-              href: service-guides/iot-hub-dps/reliability.md
-            - name: Operational excellence
-              href: service-guides/iot-hub-dps/operational-excellence.md
         - name: IP addresses
           href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
-          href: service-guides/log-analytics-cost-optimization.md
+          href: service-guides/azure-log-analytics.md
         - name: Network connectivity
           items:
             - name: Reliability

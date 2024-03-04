@@ -2,7 +2,7 @@
 title: Azure Well-Architected Framework
 metadata:
   title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+  description: Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
   services: azure-resource-manager
   ms.service: waf
   ms.topic: hub-page
@@ -17,7 +17,7 @@ sections:
     links:
     - componentType: link
       url: what-is-well-architected-framework
-      text: What is Well-Architected Framework?    
+      text: What is Well-Architected Framework?   
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
@@ -67,8 +67,9 @@ sections:
     alignment: center
     blocks:
       - componentType: video
-        src: [!VIDEO https://www.youtube.com/watch?v=vTjasx3ahjM]
-        alt: A look at the completely refreshed Well-Architected Framework and how to get the most of it.
+        src: https://www.youtube.com/embed/vTjasx3ahjM?si=eMWFcAwxuFzKhqJq
+        id: using-the-well-architected-framework
+        label: "In this video, check out the refreshed Well-Architected Framework and learn how to get the most of it."
       - title: Featured update - New and refreshed service guides 
         summary: Service guides help you make informed decisions about the Azure components within your workload. Explore these new and updated service guides. 
         componentType: text
@@ -80,10 +81,13 @@ sections:
           componentType: list
           style: checklist
           children:
-            - [Azure Virtual Machines](./service-guides/virtual-machines) allows you to create and run virtual machines on the Azure platform.
-            - [Azure Front Door](./service-guides/azure-front-door/reliability or similar) is a scalable and secure entry point that provides fast delivery of your global web applications. 
-            - [Azure Machine Learning](./service-guides/azure-machine-learning.md) (soon to be published) is a managed cloud service you can use to train, deploy, and manage machine learning models. 
-            - In the Azure portal, [Log Analytics](./service-guides/log-analytics-cost-optimization) helps you query and analyze data in Azure Monitor Logs. 
+            - Azure Virtual Machines allows you to create and run virtual machines on the Azure platform.
+            
+            - Azure Front Door is a scalable and secure entry point that provides fast delivery of your global web applications.
+            
+            - Azure Machine Learning is a managed cloud service you can use to train, deploy, and manage machine learning models.
+            
+            - In the Azure portal, Log Analytics helps you query and analyze data in Azure Monitor Logs.
  
 # cards section (4)
   - componentType: grid
