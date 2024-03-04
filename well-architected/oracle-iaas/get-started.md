@@ -45,6 +45,7 @@ Consider making your Oracle on Azure IaaS workload well-architected for the foll
 ### Choose a migration approach
 
 There are various approaches from which you can choose depending on the migration requirements. Common tools used by customers are Goldengate, Data Guard, RMAN and Data Pump. Data Pump however is not recommended for a big volume of data. Whenever you plan to migrate it is recommended to check if the character set is the same and also has the same Endian. Cross-Platform migrations need to be assessed properly. 
+The following documentation provides further information of [Migration planning](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-migration-planning).
 
 ## What are the key design areas?
 

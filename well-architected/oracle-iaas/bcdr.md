@@ -17,7 +17,7 @@ When discussing reliability with Oracle in Azure, it’s important to take into 
 
 ## Data Protection (Backups)
 
-There are two possible types of Oracle database backup that are relevant when the Oracle workload is implemented on Azure IaaS:
+There are three possible types of Oracle database backup that are relevant when the Oracle workload is implemented on Azure IaaS:
 - Streaming backups using Oracle RMAN (Recovery Manager) which is originally based on backups being streamed to sequential tape media. This type of backup typically has two possible destinations on Azure: Virtual Tape libraries from third party providers on the Azure marketplace, or local and remote Fileshares such as Azure Blob NFS, Azure Files and Azure NetApp Files.
 - Storage-level snapshots typically using Azure backup service. This backup method depends on the type of storage used for database files. For example, for Azure Managed disk (premium SSD) [Azure Backup is integrated with the Oracle database](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup?tabs=azure-portal) while for Azure NetApp Files there are data protection capabilities such as [ANF backup](https://learn.microsoft.com/en-us/azure/azure-netapp-files/backup-introduction) and [cross-region replication](https://learn.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-introduction).
 - VM-level Backups can be executed through [Azure Backup](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup?tabs=azure-portal)
@@ -66,8 +66,10 @@ Business-critical Oracle Applications require failure prevention and therefore h
 
 As a given Tier 1 example for Oracle E-Business Suite in a multiple availability zone deployment and second region deployments for disaster recovery.
 
-- First establish a two availability zone deployment with separated VNet with subnets. The Application tier uses Azure Site Recovery with a passive secondary virtual machine in availability zone three from the availability zone 1 primary.
-- Use two Oracle Observers as a primary in availability zone one and a secondary in availability zone two. The observers monitor and direct the whole traffic to the primary database. Whereas the primary database is deployed in availability zone one. Oracle Data Guard performs the redo sync to availability zone two and can be configured for maximum availability. Data Guard can be established as synchronous or asynchronous. Within one region a synchronous configuration can be used for reaching a lower latency as in async mode.
+- First establish a two availability zone deployment. The application tier uses Azure Site Recovery with a passive secondary virtual machine.
+- Use two Oracle Observers as a primary in availability zone one and a secondary in another availability zone. The observers monitor and direct the whole traffic to the primary database. Whenever the primary is unavailable Oracle Data Guard performs the redo sync to the secondary availability zone. Data Guard needs to be configured with a [data protection mode](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-5DB32C5F-3ABF-4AD4-AB41-208F1BF134BB) (max_availability, max_performance, max_protection) with the according redo transport attributes. 
+The redo transport attributes can be established as synchronous or asynchronous incl 'NOAFFIRM' and 'AFFIRM'. Whenever you enable ['NOAFFIRM'](https://www.oracle.com/technetwork/database/availability/sync-2437177.pdf) review if a required Active Data Guard license is available.
+For further assistance on choosing the mode for your workload requirements, please review [Azure Landing Zone for Oracle Workloads BCDR](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-disaster-recovery-oracle-landing-zone)
 
 The following architecture aims for a >5 minutes downtime. a Fast Start Failover configuration is required.
 
