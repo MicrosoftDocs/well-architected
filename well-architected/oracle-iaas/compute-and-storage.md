@@ -64,7 +64,7 @@ Do you have the capability to compare different Azure VM families and skus in te
 
 Choosing the right Azure storage for the database depends on many factors including the database size, IOPS and Throughput. Azure Managed Disks and Azure Netapp Files are great storage options. Azure Premium Managed Disks provide excellent capabilities for Oracle workloads. Some Databases require a more performant storage solution as would be evident from the right-sizing assessment. Azure Netapp files are a great choice in this scenario.
 
-Other storage considerations are related to the Redologs Archives and backups. Archiving redologs is typically an ongoing read/write operation. These need to be looked at based on the solution requirements and availability.
+Other storage considerations are related to archived redo logs and backups. Archiving redo logs is typically an ongoing read/write operation. These need to be looked at based on the solution requirements and availability.
 
 The following provides an example storage-layout:
 
