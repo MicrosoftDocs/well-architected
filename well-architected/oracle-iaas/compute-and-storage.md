@@ -11,7 +11,7 @@ ms.subservice: waf-workload-Oracle
 
 # Compute and Storage
 
-Azure presents an opportunity to migrate Oracle workloads to match on-premises in an Infrastructure as a Service, (IaaS) model. However, Oracle can often present hurdles to the cloud due to the complexity, size and high IO demands of the workload. The Oracle database performance is strictly influenced by the following parameters: read/write Disk throughput (MBPs), read/write IOPS, CPU, RAM and Network latency. As such it is crucial to understand clearly how to choose the right combination of compute and storage on Azure IaaS for the migration of Oracle workloads to be successful. 
+Azure presents an opportunity to migrate Oracle workloads to match on-premises in an Infrastructure as a Service, (IaaS) model. However, Oracle can often present hurdles to the cloud due to the complexity, size and high IO demands of the workload. The Oracle database performance is strictly influenced by the following parameters: read/write Disk throughput (MBPs), read/write IOPS, CPU, RAM and Network latency. As such it is crucial to understand clearly how to choose the right combination of compute and storage on Azure IaaS, as well as placement of application workloads relative to database services for the migration of Oracle workloads to be successful. 
 
 This article discusses the right-sizing of both compute and storage for your Oracle workload on Azure IaaS in order to achieve a successful cloud deployment. 
 
