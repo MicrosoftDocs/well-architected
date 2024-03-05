@@ -61,7 +61,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >     Factor in the critical dependencies of VMs on components like disks and networking components. If you understand these relationships, then you can determine the critical flows that affect reliability.
 >
->     Create state isolation. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, you can create a new OS disk with the same data disk, which ensures resilience and fault isolation. For more information, see [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
+> - **Create state isolation**. Workload data should be on a separate data disk to prevent interference with the OS disk. If a VM fails, you can create a new OS disk with the same data disk, which ensures resilience and fault isolation. For more information, see [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
 >
 > - **Make VMs and their dependencies redundant across zones**. If a VM fails, the workload should continue to function because of redundancy. Include dependencies in your redundancy choices. For example, use the built-in redundancy options that are available with disks. Use zone-redundant IPs to ensure data availability and high uptime.
 >
