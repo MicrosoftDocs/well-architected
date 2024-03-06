@@ -18,7 +18,7 @@ categories:
 
 Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process.
 
-Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
+Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performlevelant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
 
 It's also important to note that there are often significant trade-offs associated with a hardened security posture, particularly with respect to performance, operational agility, and in some cases reliability. For example, the inclusion of inline Network Virtual Appliances (NVA) for Next-Generation Firewall (NGFW) capabilities, such as deep packet inspection, will introduce a significant performance penalty, additional operational complexity, and a reliability risk if scalability and recovery operations are not closely aligned with that of the application. It's therefore essential that additional security components and practices intended to mitigate key threat vectors are also designed to support the reliability target of an  application, which will form a key aspect of the recommendations and considerations presented within this section.
 
@@ -236,7 +236,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 - After a role assignment is changed, there's a latency of up to 10 minutes (600 seconds) for the role to be applied.
   - There's a limit of 2,000 Azure role assignments per subscription.
 
-- Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
+- Azure Key Vault underlying hardware security modules (HSMs) have [FIPS 140 validation](/azure/key-vault/keys/about-keys#compliance).
   - A dedicated [Azure Key Vault managed HSM](/azure/key-vault/managed-hsm/overview) is available for scenarios requiring FIPS 140-2 Level 3 compliance.
 
 - Azure Key Vault provides high availability and redundancy to help maintain availability and prevent data loss.
