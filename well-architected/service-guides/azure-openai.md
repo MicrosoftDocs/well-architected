@@ -36,7 +36,7 @@ This review focuses solely on Azure OpenAI.
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover quickly from failures**.
 
-The [**Reliability design principles**](../reliability/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [**Reliability design principles**](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
 
@@ -44,7 +44,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Resilience**: Choose the appropriate deployment option of either pay-as-you-go or [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) based on your use case. Because reserved capacity increases resiliency, choose provisioned throughput for production solutions. The pay-as-you-go approach is ideal for dev/test environments.
+> - **Resiliency**: Choose the appropriate deployment option of either pay-as-you-go or [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput) based on your use case. Because reserved capacity increases resiliency, choose provisioned throughput for production solutions. The pay-as-you-go approach is ideal for dev/test environments.
 >
 > - **Redundancy**: Add the appropriate gateways in front of your Azure OpenAI deployments. The gateway must have the capability to withstand transient failures like throttling and also route to multiple Azure OpenAI instances. Consider routing to instances in different regions to build regional redundancy.
 >
