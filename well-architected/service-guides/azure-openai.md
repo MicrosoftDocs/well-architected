@@ -36,7 +36,7 @@ This review focuses solely on Azure OpenAI.
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover quickly from failures**.
 
-The [**Reliability design principles**](./well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [**Reliability design principles**](../reliablity/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
 
@@ -69,7 +69,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](./well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Azure OpenAI.
+The [**Security design principles**](../security/security-principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Azure OpenAI.
 
 ### Design checklist
 
