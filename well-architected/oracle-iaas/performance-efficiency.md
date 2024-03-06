@@ -35,7 +35,7 @@ Proximity placement groups often limit your VM choices and make resizing VMs mor
 
 We recommend using proximity placement groups in two scenarios:
 1. Use proximity placement groups in Azure regions where latency across zones is higher than recommended for the Oracle workload.
-1. For [Azure NetApp Files](/azure-netapp-files/azure-netapp-files-introduction), instead of relying on Proximity Placement Groups, use [availability zone volume placement](/azure/azure-netapp-files/use-availability-zones) to achieve zonal architectures for failure domain protection and low latency within the availability zone latency envelopes. Combine availability zone volume placement with [Oracle dNFS](/azure/azure-netapp-files/performance-oracle-single-volumes#performance-measurement-results) and, where desired, [multiple Oracle data volumes](https://learn.microsoft.com/azure/azure-netapp-files/use-availability-zones) for optimal performance.
+1. For [Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-introduction), instead of relying on Proximity Placement Groups, use [availability zone volume placement](/azure/azure-netapp-files/use-availability-zones) to achieve zonal architectures for failure domain protection and low latency within the availability zone latency envelopes. Combine availability zone volume placement with [Oracle dNFS](/azure/azure-netapp-files/performance-oracle-single-volumes.html#performance-measurement-results) and, where desired, [multiple Oracle data volumes](/azure/azure-netapp-files/use-availability-zones) for optimal performance.
 
 For more information, see:
 
