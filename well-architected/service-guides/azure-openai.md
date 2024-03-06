@@ -220,6 +220,14 @@ These Azure Policy definitions are also [Azure Advisor](https://azure.microsoft.
 
 ## Azure Advisor
 
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure OpenAI.
+
+- [Reliability](/azure/advisor/advisor-high-availability-recommendations#<offering-or-infrastructure-area-anchor>)
+- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations#<offering-or-infrastructure-area-anchor>)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations#<offering-or-infrastructure-area-anchor>)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations#<offering-or-infrastructure-area-anchor>)
+- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#<offering-or-infrastructure-area-anchor>)
+
 ## Next steps
 
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
