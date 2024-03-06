@@ -36,7 +36,7 @@ This review focuses solely on Azure OpenAI.
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover quickly from failures**.
 
-The [**Reliability design principles**](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [**Reliability design principles**](../reliability/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
 
