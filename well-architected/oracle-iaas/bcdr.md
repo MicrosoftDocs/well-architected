@@ -71,7 +71,7 @@ As a given Tier 1 example for Oracle E-Business Suite in a multiple availability
 The redo transport attributes can be established as synchronous or asynchronous incl 'NOAFFIRM' and 'AFFIRM'. Whenever you enable ['NOAFFIRM'](https://www.oracle.com/technetwork/database/availability/sync-2437177.pdf) review if a required Active Data Guard license is available.
 For further assistance on choosing the mode for your workload requirements, please review [Azure Landing Zone for Oracle Workloads BCDR](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-disaster-recovery-oracle-landing-zone)
 
-The following architecture aims for a >5 minutes downtime. a Fast Start Failover configuration is required.
+The following architecture aims for a downtime threshold of less than 5 minutes. 
 
 ![Alt text](active-passive.png)
 
