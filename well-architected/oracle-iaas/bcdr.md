@@ -60,7 +60,7 @@ Oracle [Goldengate](https://learn.microsoft.com/en-us/azure/virtual-machines/wor
 - Establish test procedures for your failover processes and carry out regular testing to avoid any issues.
 - Architect your solution holistically by utilizing the Azure native capabilities (e.g. Availability Zones) and Oracle native tools (e.g. Dataguard) to meet your HA and DR requirements. The following two are examples of such an architecture, the first targeting automatic failover and the second targeting manual failover.
 
-### Example 1: Create a Fail-Over For Business Critical Oracle Applications in a multiple availability zone deployment and second region deployment for disaster recovery
+### Example 1: Create a Fail-Over For Business Critical Oracle Applications in a Two Availability Zone Deployment With Passive Standby
 
 Business-critical Oracle Applications require failure prevention and therefore holistic architecture. One of these business-critical applications can be Oracle E-Business Suite.
 
@@ -75,14 +75,15 @@ The following architecture aims for a >5 minutes downtime. a Fast Start Failover
 
 ![Alt text](active-passive.png)
 
-### Example 2: Create a Fail-Over For Business Critical Oracle Applications in a Two Availability Zone Deployment With Manual Failover
+### Example 2: Create a Fail-Over For Business Critical Applications in a Two Availability Zone Deployment With Active Standby
 
 The web server tier, application tier and database tier reside in its own virtual network subnet.
 
-Azure Site Recovery or the manual clone utility can be established to duplicate the passive secondary in AZ2. The primary will be set up in availability zone one whereas the database uses Data Guard to replicate it to an active Standby in AZ2.
-**Note that this setup requires an Active Data Guard license**
+The primary will be set up in availability zone one whereas the database uses Active Data Guard to replicate it to an active Standby in AZ3.
+The following diagram aims for a <1 Minute downtime. Even though it is an Active Standby, keep in mind that this standby has 'read-only' capabilties.
 
-A failover would require manual intervention from the system admin to failover if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
+**Note that this setup requires an Active Data Guard license.**
+
 
 ![Alt text](active-active.png)
 
