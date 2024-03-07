@@ -48,7 +48,7 @@ Choose a trunk-based model when possible. Trunk-based branching keeps the worklo
 
 ### Evaluate metrics to quantify development effectiveness
 
-Software development and quality assurance teams can only improve if they can quantify their effectiveness. To quantify effectiveness, they must identify the metrics that measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity) and define KPIs. Examples of these metrics include:
+Software development and quality assurance teams can improve only if they can quantify their effectiveness. To quantify effectiveness, they must identify the metrics that measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity) and define KPIs. Examples of these metrics include:
 
 - *Deployment frequency*: The number of deployments that each developer deploys each day.
 
