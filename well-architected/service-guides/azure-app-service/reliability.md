@@ -90,6 +90,12 @@ Explore the following table of recommendations to optimize your App Service conf
 |Review **Azure App Service diagnostics** to ensure common problems are addressed.|It's a good practice to regularly review service-related diagnostics and recommendations, and take action as appropriate.|
 |Evaluate **per-app scaling** for high density hosting on Azure App Service.|Per-app scaling can be enabled at the App Service plan level to allow for scaling an app independently from the App Service plan that hosts it. This way, an App Service plan can be scaled to `10` instances, but an app can be set to use only five. Apps are allocated within the available App Service plan using a best effort approach for even distribution across instances. While an even distribution isn't guaranteed, the platform will make sure that two instances of the same app won't be hosted on the same App Service plan instance.|
 
+
+
+> [!TIP]
+> For more details on Reliability guidance for Azure App Service, see [Reliability in Azure App Service](/azure/reliability/reliability-app-service).
+
+
 ### TCP and SNAT ports
 
 If a load test results in SNAT errors, it's necessary to either scale across more or larger workers, or implement coding practices to help preserve and reuse SNAT ports, such as connection pooling and the lazy loading of resources. We don't recommend exceeding `100` simultaneous outbound connections to a public IP address per worker, and to avoid communicating with downstream services through public IP addresses when a private address (Private Endpoint) or Service Endpoint through vNet Integration could be used. TCP port exhaustion happens when the sum of connection from a given worker exceeds the capacity. The number of available TCP ports depend on the size of the worker.

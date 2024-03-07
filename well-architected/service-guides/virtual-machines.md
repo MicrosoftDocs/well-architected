@@ -88,7 +88,9 @@ Start your design strategy based on the [**design review checklist for Reliabili
 |(Scale set) **[Deploy across availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones)** on scale sets. Set up at least two instances in each zone.<br> [**Zone balancing**](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) equally spreads the instances across zones.| The VM instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. <br> Keep in mind that, depending on resource availability, there might be an uneven number of instances across zones. Zone balancing supports availability by making sure that, if one zone is down, the other zones have sufficient instances. <br> Two instances in each zone provide a buffer during upgrades.|
 |(VMs) Take advantage of the **[capacity reservations feature](/azure/virtual-machines/capacity-reservation-overview)**. |Capacity is reserved for your use and is available within the scope of the applicable SLAs. You can delete capacity reservations when you no longer need them, and billing is consumption based.|
 
-For more information on Reliability for VMs, see [Reliability in Virtual Machines](/azure/reliability/reliability-virtual-machines).
+
+> [!TIP]
+> For more information on Reliability for VMs, see [Reliability in Virtual Machines](/azure/reliability/reliability-virtual-machines).
 
 ## Security
 

@@ -48,6 +48,9 @@ Consider the following recommendation to optimize reliability when configuring a
 |--------------|-----------|
 |For production workloads, use the Standard Stock Keeping Units (SKU).|Basic load balancers don't have a Service Level Agreement (SLA). The Standard SKU [supports Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones).|
 
+> [!TIP]
+> For more details on Reliability guidance for Load Balancer, see [Reliability in Azure Load Balancer](/azure/reliability/reliability-load-balancer).
+
 ## Next step
 
 > [!div class="nextstepaction"]
