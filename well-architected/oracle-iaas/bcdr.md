@@ -80,7 +80,7 @@ The following architecture aims for a downtime threshold of less than 5 minutes.
 The web server tier, application tier and database tier reside in its own virtual network subnet.
 
 The primary will be set up in availability zone one whereas the database uses Active Data Guard to replicate it to an active Standby in AZ3.
-The following diagram aims for a <1 Minute downtime. Even though it is an Active Standby, keep in mind that this standby has 'read-only' capabilties.
+The following diagram aims for a downtime threshold of less than 1 minutes. Even though it is an Active Standby, keep in mind that this standby has 'read-only' capabilties.
 
 **Note that this setup requires an Active Data Guard license.**
 
