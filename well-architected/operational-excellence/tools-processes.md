@@ -125,7 +125,7 @@ Some of the benefits of using standardized tagging and naming conventions are:
 - They provide consistency and clarity for resource identification and management, facilitating discovery and search across the Azure portal, PowerShell, CLI, and APIs.
 - They enable filtering and grouping of resources for billing, monitoring, security, and compliance purposes.
 - They support resource lifecycle management, such as provisioning, decommissioning, backup, and recovery.
-- They're essential for security purposes. If you come upon a security incident, it's critical to quickly identify affected systems, what functions those systems support, and the potential business impact.
+- They're essential for security purposes. If you come upon a security incident, it's critical to quickly identify affected systems, the functions that those systems support, and the potential business impact.
 
 ## Azure facilitation
 
