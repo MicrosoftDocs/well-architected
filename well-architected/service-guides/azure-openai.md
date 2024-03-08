@@ -208,25 +208,17 @@ There are no recommended configurations for Performance Efficiency for Azure Ope
 
 ## Azure policies 
 
-The following are examples of [built-in Azure Policy definitions for Azure OpenAI](/azure/machine-learning/policy-reference) security:
+## Azure policies
+
+Azure provides an extensive set of built-in policies related to Azure OpenAI and its dependencies. Some of the preceding recommendations can be audited through Azure Policies. Consider the following policy definitions:
 
 - [Disable key access](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F71ef260a-8f18-47b7-abcb-62d0673d94dc)
 - [Restrict network access](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F037eea7a-bd0a-46c5-9a66-03aea78705d3)
 - [Disable public network access](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0725b4dd-7e76-479c-a735-68e7ee23d5ca)
-- [Use private link](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcddd188c-4b82-4c48-a19d-ddf74ee66a01)
-- [Enable data encryption with customer-managed key](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d)
+- [Use Azure Private Link](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcddd188c-4b82-4c48-a19d-ddf74ee66a01)
+- [Enable data encryption with customer-managed keys](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d)
 
 These Azure Policy definitions are also [Azure Advisor](https://azure.microsoft.com/products/advisor) security best-practice recommendations for Azure OpenAI.
-
-## Azure Advisor
-
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure OpenAI.
-
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations#<offering-or-infrastructure-area-anchor>)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations#<offering-or-infrastructure-area-anchor>)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations#<offering-or-infrastructure-area-anchor>)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#<offering-or-infrastructure-area-anchor>)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#<offering-or-infrastructure-area-anchor>)
 
 ## Next steps
 
