@@ -206,8 +206,6 @@ Start your design strategy based on the [design review checklist for Performance
 
 There are no recommended configurations for Performance Efficiency for Azure OpenAI.
 
-## Azure policies 
-
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to Azure OpenAI and its dependencies. Some of the preceding recommendations can be audited through Azure Policies. Consider the following policy definitions:
