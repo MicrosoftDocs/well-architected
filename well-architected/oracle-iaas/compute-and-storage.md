@@ -72,21 +72,24 @@ Other storage considerations are related to data files archived redo logs and ba
 Customers with on-premises systems usually have the following disk layout. The AWR report provides great insight into the throughput and IOPS requirements of your specific workload. 
 As Oracle workloads are very performance sensitive, it is crucial to know your throughput and IOPS requirements before deployment.
 
-The following provides an example storage-layout:
+The following provides an example of a data disk storage-layout:
 
 | Disk Name  |  Function | Size (GB) |Throughput |  IOPS | Disk Recommendation  |
 |---|---|---|---|---|---|
 |oredo | Online Redologs  | 400  |  150 |  1500 | Wherever available choose Premium SSD v2, otherwise P20
-| oapp  |  Oracle Software |  50 | 50  | 200  | P6
-| otemp  | Temp tablespace |  2000 | 150  | 1250  | Wherever available choose Premium SSD v2, otherwise P40
 | oarch  | Archive Redologs  | 7000  | 300  |  1250 | Azure Blob Storage configured in Hot Tier
 | odata  | Data Files & Control File   |  18000 | 1000  | 2500 | Wherever available choose Premium SSD v2, otherwise 5*P50 (striped to RAID-0)
 
+The temp tablespace can consume a lot of throughput and IOPS. If this is a case for your particular workload, it is recommended to choose a Virtual Machine that has a attached ephemeral disk, such as [Ed-v5](https://learn.microsoft.com/en-us/azure/virtual-machines/edv5-edsv5-series) and put the temmp tablespace onto it. 
+Obviously you can also choose other disk types udepending on your requirements.
+
 **Note that this is only an example of one customer workload. Make sure to always review the requirements of the size of your workload, the IOPS and throughput accordingly.**
 
-If you need to provision more than 1 disk per logical volume as you see in the table above, please make sure it is striped to RAID-0 with host-level caching enabled to read-only for maximum performance. Whereever Premium SSD v2 managed disks are available, you can make use of it. Please check availabilites per region before deployment.
+If you need to use multiple disks for one or more logical volumes in your disk setup, regardless of the disk technology you choose to implement (Oracle ASM or LVM or other), make sure that you balance the load across disks for maximum performance.
 
-Further notice: If you use Oracle ASM and Managed Disks the size configured in ASM is decisive. This means if you configured ASM for a maximum size of 4096 GB, ASM can only process this amount. It results in that even if you provision higher disks, ASM would not recognize the space. Please plan for it accordingly and rather decide to provision a certain number of 4095 GB disks. 
+Whereever Premium SSD v2 managed disks are available, you can make use of it. Please check availabilites per region before deployment. Please also review [disk configurations](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-design#disk-types-and-configurations).
+
+Further notice: If you use Oracle ASM and Managed Disks the default disk size configured in ASM is decisive. This means if you configured ASM for a maximum size of 4096 GB, ASM can only process this amount. It results in that even if you provision higher disks, ASM would not recognize the space. Please plan for it accordingly and rather decide to provision a certain number of 4095 GB disks. 
 The following article provides further information of [ASM configuration](https://docs.oracle.com/en/database/oracle/oracle-database/19/ostmg/create-diskgroups.html#GUID-7FB8914B-0995-4DA0-8F37-15B8EEAEEE4D).
 
 ### Assessment question
