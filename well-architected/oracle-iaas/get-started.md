@@ -71,4 +71,4 @@ Use the assessment tool to evaluate your design choices.
 Start by reviewing design principles.
 
 > [!div class="nextstepaction"]
-> [Design principles](...)
+> [Design principles](./design-principles.md)

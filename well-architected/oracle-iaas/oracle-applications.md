@@ -29,17 +29,17 @@ For each of the following application design areas, what are the considerations 
 ## Recommendations
 
 - Network & Security 
-   - Consider configuring single sign-on (SSO) using Microsoft Entra ID (formerly Azure Active Directory AAD). SSO allows end users to connect to the Oracle applications via browser. For more information, see [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-setup-sso).
-   - Consider using a private connection to the cloud installation. Azure provides capabilities for private connectivity such as [Express Route and Site-to-Site VPN](https://learn.microsoft.com/en-us/azure/expressroute/expressroute-connect-azure-to-public-cloud).
-   - In case a user accesses the application from the internet, consider an [Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/overview). Azure Application Gateway provides two built-in functionalities. It operates as a Web Application Firewall, and also has a built-in Layer 7 Load Balancer. It is only supported for access on Port 443 (https).
-   - Another option to secure your network is the [Azure Firewall](https://learn.microsoft.com/en-us/azure/firewall/overview). This component defends the web services against common exploits and vulnerabilities. It keeps the Oracle Application highly available and helps you meet compliance requirements.
-   - Consider setting up [network security groups](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview) at a subnet level to ensure only traffic on specific ports and IP addresses is permitted.
+   - Consider configuring single sign-on (SSO) using Microsoft Entra ID (formerly Azure Active Directory AAD). SSO allows end users to connect to the Oracle applications via browser. For more information, see [Microsoft Entra ID documentation](/azure/active-directory/manage-apps/add-application-portal-setup-sso).
+   - Consider using a private connection to the cloud installation. Azure provides capabilities for private connectivity such as [Express Route and Site-to-Site VPN](/azure/expressroute/expressroute-connect-azure-to-public-cloud).
+   - In case a user accesses the application from the internet, consider an [Application Gateway](/azure/application-gateway/overview). Azure Application Gateway provides two built-in functionalities. It operates as a Web Application Firewall, and also has a built-in Layer 7 Load Balancer. It is only supported for access on Port 443 (https).
+   - Another option to secure your network is the [Azure Firewall](/azure/firewall/overview). This component defends the web services against common exploits and vulnerabilities. It keeps the Oracle Application highly available and helps you meet compliance requirements.
+   - Consider setting up [network security groups](/azure/virtual-network/network-security-groups-overview) at a subnet level to ensure only traffic on specific ports and IP addresses is permitted.
    - If SSH or RDP access is required, a [Bastion](https://learn.microsoft.com/en-gb/azure/bastion/bastion-overview) host as a jump box can provide extra security for an in-depth mature security posture.
 
 - Web and Application Tiers
-   - Deploy your application on VMs in Azure [Availability Set](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview) to improve overall availability.
-   - If you require auto-scaling of your application then consider using [Azure VM Scale Sets](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview).
-   - Placing VMs within a single availability zone will bring them physically closer together. However, as the Azure footprint grows, a single availability zone may span multiple physical data centers, which may result in a network latency impacting your application. To get VMs as close as possible, achieving the lowest possible latency, you can deploy them within a [proximity placement group](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/proximity-placement-groups).
+   - Deploy your application on VMs in Azure [Availability Set](/azure/virtual-machines/availability-set-overview) to improve overall availability.
+   - If you require auto-scaling of your application then consider using [Azure VM Scale Sets](/azure/virtual-machine-scale-sets/overview).
+   - Placing VMs within a single availability zone will bring them physically closer together. However, as the Azure footprint grows, a single availability zone may span multiple physical data centers, which may result in a network latency impacting your application. To get VMs as close as possible, achieving the lowest possible latency, you can deploy them within a [proximity placement group](/azure/virtual-machine-scale-sets/proximity-placement-groups).
 
 - Database Tier 
    - Consider deploying the database tier in as a primary server replicated to a secondary server using Oracle Data Guard. 
@@ -49,13 +49,13 @@ For each of the following application design areas, what are the considerations 
    - Data Guard is only one of the options you can leverage. Other examples could be: Striim, Attunity, Goldengate or Active Data Guard.
 
 - Backup and Data Protection
-   - Consider using the [Azure Backup service](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction) to backup your application and database VMs.
+   - Consider using the [Azure Backup service](/azure/backup/backup-azure-vms-introduction) to backup your application and database VMs.
    - Consider placing your backups in a different region to provide extra protection against regional failures.
    - Consider backing up the data base using storage components that have built-in replication capabilities.
 
 - Disaster Recovery 
-   - Build a reliable architecture as suggested in [create a fail-over in a multiple availability zone and second region deployments for disaster recovery](https://learn.microsoft.com/en-us/azure/well-architected/oracle-iaas/reliability#create-a-fail-over-in-a-multiple-availability-zone-and-second-region-deployments-for-disaster-recovery) and [Create a failover for business critical Oracle applications in a two availability zone deployment with manual failover](https://learn.microsoft.com/en-us/azure/well-architected/oracle-iaas/reliability#create-a-failover-for-business-critical-oracle-applications-in-a-two-availability-zone-deployment-with-manual-failover).
-   - Consider using Azure built-in DR solutions such as [Azure Site Recovery](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-overview).
+   - Build a reliable architecture as suggested in [create a fail-over in a multiple availability zone and second region deployments for disaster recovery](/azure/well-architected/oracle-iaas/reliability#create-a-fail-over-in-a-multiple-availability-zone-and-second-region-deployments-for-disaster-recovery) and [Create a failover for business critical Oracle applications in a two availability zone deployment with manual failover](/azure/well-architected/oracle-iaas/reliability#create-a-failover-for-business-critical-oracle-applications-in-a-two-availability-zone-deployment-with-manual-failover).
+   - Consider using Azure built-in DR solutions such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 
 ## Next Steps
