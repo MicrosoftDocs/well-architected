@@ -53,6 +53,9 @@ Consider the following recommendations to optimize reliability when configuring 
 |Evaluate the three different traffic routing methods.|Traffic Manager supports three traffic-routing methods to determine how to route network traffic to the various service endpoints. Traffic Manager applies the traffic-routing method to each DNS query it receives. The traffic-routing method determines which endpoint is returned in the DNS response. The customer should be aware of these endpoints and the differences in routing between endpoints.|
 |Consider nested Traffic Manager profiles.|Each Traffic Manager profile specifies a single traffic-routing method. There are scenarios that require more sophisticated traffic routing than the routing provided by a single Traffic Manager profile. You can nest Traffic Manager profiles to combine the benefits of more than one traffic-routing method. Nested profiles allow you to override the default Traffic Manager behavior to support larger, more complex application deployments.|
 
+> [!TIP]
+> For more details on Reliability guidance for Traffic Manager, see [Reliability in Azure Traffic Manager](/azure/reliability/reliability-traffic-manager).
+
 ## Next step
 
 > [!div class="nextstepaction"]
