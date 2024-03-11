@@ -222,6 +222,5 @@ These Azure Policy definitions are also [Azure Advisor](https://azure.microsoft.
 
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
 
-- Use the following reference architecture as an example of how you can apply this article's guidance to a workload:
-   - [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
+- Use this reference architecture as an example of how you can apply this article's guidance to a workload: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
 - Build implementation expertise by using [Azure Machine Learning](/azure/ai-services/openai/) product documentation.
