@@ -224,4 +224,4 @@ Consider the following articles as resources that demonstrate the recommendation
 
 - Use the following reference architecture as an example of how you can apply this article's guidance to a workload:
    - [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
-- Build implementation expertise using [Azure Machine Learning](/azure/ai-services/openai/) product documentation.
+- Build implementation expertise by using [Azure Machine Learning](/azure/ai-services/openai/) product documentation.
