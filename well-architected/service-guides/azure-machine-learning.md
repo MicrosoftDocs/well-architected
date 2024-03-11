@@ -25,7 +25,7 @@ This article provides architectural recommendations for making informed decision
 >
 > Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Machine Learning and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
-> The following foundational architecture demonstrates many of the key recommendations: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
+> The foundational architecture [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) demonstrates many of the key recommendations.
 
 ##### Technology scope
 
@@ -51,7 +51,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 > - **Resilience**: Deploy models to environments that support availability zones, such as Azure Kubernetes Service (AKS). By ensuring deployments are distributed across availability zones, you're ensuring a deployment is available even in the event of a datacenter failure. For enhanced reliability and availability, consider a multi-region deployment topology.
 >
-> - **Resilience**: Ensure you have sufficient compute for both training and inferencing. Through resource planning, make sure your compute SKU and scale settings meets the requirements of your workload.
+> - **Resilience**: Ensure you have sufficient compute for both training and inferencing. Through resource planning, make sure your compute SKU and scale settings meet the requirements of your workload.
 >
 > - **Resilience**: Segregate Azure Machine Learning workspaces used for exploratory work from those used for production.
 >
@@ -61,7 +61,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 > - **Recovery**: Ensure you have self-healing capabilities, such as checkpointing features supported by Azure Machine Learning, when training large models.
 >
-> - **Recovery**: Ensure you have a recovery strategy defined. Azure Machine Learning doesn't have automatic failover. Therefore, you must design a strategy that encompasses the workspace and all its dependencies, such as Azure Key Vault, Storage, and Azure Container Registry.
+> - **Recovery**: Ensure you have a recovery strategy defined. Azure Machine Learning doesn't have automatic failover. Therefore, you must design a strategy that encompasses the workspace and all its dependencies, such as Azure Key Vault, Azure Storage, and Azure Container Registry.
 
 ##### Recommendations
 
@@ -69,7 +69,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 |------------------------------|-----------|
 | **Multi-region model deployment**: For enhanced reliability and availability, consider a multi-region deployment environment when required. | A multi-region deployment ensures that your Azure Machine Learning workloads continue to run even if one region experiences an outage. In addition, multi-region deployment improves load distribution across regions, potentially enhancing performance for users located in different geographical areas.  For more information, see [Failover for business continuity and disaster recovery](/azure/machine-learning/how-to-high-availability-machine-learning). |
 | **Model training resiliency**: Use checkpointing features supported by Azure Machine Learning including Azure Container for PyTorch, the TensorFlow Estimator class, or the Run object and the FileDataset class that support model checkpointing. | Model checkpointing periodically saves the state of your machine learning model during training, so that it can be restored in case of interruption, failure, or termination. For more information, see [Boost Checkpoint Speed and Reduce Cost with Nebula](/azure/machine-learning/reference-checkpoint-performance-for-large-models). |
-| **Use the Dedicated virtual machine tier for compute clusters**: Use the `Dedicated` virtual machine tier for compute clusters for batch inferencing to ensure your batch job is not preempted. | Low-priority virtual machines come at a reduced price but are preemptible. Clusters that use the dedicated tier aren't preempted. |
+| **Use the Dedicated virtual machine tier for compute clusters**: Use the `Dedicated` virtual machine tier for compute clusters for batch inferencing to ensure your batch job is not preempted. | Low-priority virtual machines come at a reduced price but are preemptible. Clusters that use the dedicated virtual machine tier aren't preempted. |
 
 ##### Azure Policy and Azure Advisor
 
@@ -93,7 +93,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Integrity**: Implement access controls that authenticate and authorize Azure Machine Learning workspace to external resources based on the least privilege principle.
 >
-> - **Integrity**: Implement use case segregation for Azure Machine Learning workspaces by setting up workspaces based on specific use cases or projects. This adheres to the least privileged principle by ensuring that workspaces are only accessible by individuals that require access to data and experimentation assets for the use case or project.
+> - **Integrity**: Implement use case segregation for Azure Machine Learning workspaces by setting up workspaces based on specific use cases or projects. This adheres to the principle of least privilege by ensuring that workspaces are only accessible by individuals that require access to data and experimentation assets for the use case or project.
 >
 > - **Integrity**: Regulate access to foundational models. Ensure only approved registries have access to models in the model registry.
 >
@@ -117,13 +117,13 @@ Start your design strategy based on the [**design review checklist for Security*
 | **Allow only approved outbound access**: [Configure the outbound mode](/azure/machine-learning/how-to-access-azureml-behind-firewall) on the Azure Machine Learning workspace managed outbound access to `Allow only approved outbound` to minimize the risk of data exfiltration. Configure private endpoints, service tags, or FQDNs for resources that you need to access. | Minimizes the risk of data exfiltration, improving data security. This configuration would prevent a malicious actor who gains access to your system from sending your data to an unapproved external destination. |
 | **Virtual network isolation for dependent services**: Configure dependent services, such as Azure Storage, Azure Key Vault, and Azure Container Registry with private endpoints and disable public access. | Network isolation bolsters security by restricting access to Azure PaaS services to private IP addresses only. |
 | **Managed identity**: [Use managed identities for authentication](/azure/machine-learning/how-to-setup-authentication#configure-a-managed-identity) between Azure Machine Learning and other services. | Managed identities improve security by eliminating the need to store credentials and eliminating the need for manual management and rotation of service principles. |
-| **Disable local authentication**: [Disable local authentication](/azure/machine-learning/how-to-integrate-azure-policy#disable-local-authentication) for Azure Machine Learning compute clusters and instances | Disabling local authentication increases the security of your Azure Machine Learning compute and provides centralized control and management of identities and resource credentials. |
-| **Disable the public SSH port**: Ensure the public ssh port is closed on the Azure Machine Learning compute cluster by setting `remoteLoginPortPublicAccess` to `Disabled`. Use similar configuration if you're using other compute. | Disabling SSH access helps prevent unauthorized individuals from gaining access and potentially causing harm to your system and protects you against brute force attacks. |
+| **Disable local authentication**: [Disable local authentication](/azure/machine-learning/how-to-integrate-azure-policy#disable-local-authentication) for Azure Machine Learning compute clusters and instances. | Disabling local authentication increases the security of your Azure Machine Learning compute and provides centralized control and management of identities and resource credentials. |
+| **Disable the public SSH port**: Ensure the public SSH port is closed on the Azure Machine Learning compute cluster by setting `remoteLoginPortPublicAccess` to `Disabled`. Use similar configuration if you're using other compute. | Disabling SSH access helps prevent unauthorized individuals from gaining access and potentially causing harm to your system and protects you against brute force attacks. |
 | **Do not provision public IPs for Azure Machine Learning Compute** Set: [enableNodePublicIp](/azure/templates/microsoft.machinelearningservices/workspaces/computes#amlcomputeproperties) to `false` when provisioning Azure Machine Learning compute clusters or compute instances. Use similar configuration if you're using other compute. | Not provisioning public IPs enhances security by limiting the potential for unauthorized access to your compute instance or clusters. |
-| **Get latest OS image**: [Recreate compute instances to get the latest OS image](/azure/ai-studio/how-to/create-manage-compute) | Using the latest images ensures you're maintaining a consistent, stable, and secure environment, including ensuring you have the latest security patches. |
+| **Get latest OS image**: [Recreate compute instances to get the latest OS image](/azure/ai-studio/how-to/create-manage-compute). | Using the latest images ensures you're maintaining a consistent, stable, and secure environment, including ensuring you have the latest security patches. |
 | **Strict Azure Machine Learning workspace access controls**: Use [Microsoft Entra ID groups to manage workspace access](/azure/machine-learning/how-to-assign-roles) and adhere to the principle of least privilege for Role-Based Access Control (RBAC). | Strict workspace access controls enhance security by ensuring that individuals have only the necessary permissions for their role. A data scientist, for instance, might have access to run experiments but not to modify security settings, minimizing potential security risks. |
-| **Restrict Model Catalog deployments**: Follow the guidance to [restrict model deployments to specific registries](/azure/machine-learning/how-to-regulate-registry-deployments) | Restricting the deployments from the Model Catalog to specific registries ensures you only deploy models to approved registries. This helps regulate access to the open-source foundational models. |
-| **Encrypt data at rest**: Consider using [customer-managed keys with Azure Machine Learning](/azure/machine-learning/how-to-setup-customer-managed-keys) | Encrypting data at rest enhances data security by ensuring that sensitive data is encrypted by using keys directly managed by you. If you have a regulatory requirement to manage your own encryption keys, use this feature to comply with that requirement. |
+| **Restrict Model Catalog deployments**: Follow the guidance to [restrict model deployments to specific registries](/azure/machine-learning/how-to-regulate-registry-deployments). | Restricting the deployments from the Model Catalog to specific registries ensures you only deploy models to approved registries. This helps regulate access to the open-source foundational models. |
+| **Encrypt data at rest**: Consider using [customer-managed keys with Azure Machine Learning](/azure/machine-learning/how-to-setup-customer-managed-keys). | Encrypting data at rest enhances data security by ensuring that sensitive data is encrypted by using keys directly managed by you. If you have a regulatory requirement to manage your own encryption keys, use this feature to comply with that requirement. |
 | **Follow Azure Machine Learning data exfiltration prevention guidance**: Follow the guidance in [Azure Machine Learning data exfiltration prevention](/azure/machine-learning/how-to-prevent-data-loss-exfiltration) to minimize data exfiltration risk. For example, create a service endpoint policy to filter egress virtual network traffic and permit data exfiltration only to specific Azure Storage accounts. | Following this guidance helps minimize the risk of data exfiltration by limiting inbound and outbound requirements. |
 
 ##### Azure Advisor
@@ -288,4 +288,4 @@ There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best 
 Consider these articles as resources that demonstrate the recommendations highlighted in this article.
 
 - Use this reference architecture as an example of how these recommendations can be applied to a workload such as the [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
-- Build implementation expertise by using product documentation: [Azure Machine Learning](/azure/machine-learning)
+- Use [Azure Machine Learning](/azure/machine-learning) product documentation to build implementation expertise.
