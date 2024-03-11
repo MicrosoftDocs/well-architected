@@ -219,7 +219,7 @@ Start your design strategy based on the [**design review checklist for Operation
 >
 > - **Observability**: If your models are deployed to online endpoints, follow the guidance in [Monitor online endpoints](/azure/machine-learning/how-to-monitor-online-endpoints) and enable [Application Insights](/azure/machine-learning/how-to-monitor-online-endpoints#using-application-insights) for endpoints and deployments. Monitor training infrastructure to ensure you're meeting your baseline requirements.
 >
-> - **Simplicity**: Use curated environments optimized for Azure Machine Learning (AML), when available.
+> - **Simplicity**: Use curated environments optimized for Azure Machine Learning, when available.
 
 ##### Recommendations
 
