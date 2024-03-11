@@ -66,9 +66,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
 
-- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
+- Visualize the real-time health of your environment using [health models](/azure/azure-monitor/health-models) and [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
 
-- Use data that's gathered during incidents to continuously improve your [health models](metrics.md) and your monitoring and alerting strategy.
+- Use data that's gathered during incidents to continuously improve your [health models](/azure/azure-monitor/health-models) and your monitoring and alerting strategy.
 
 - Incorporate cloud platform monitoring and alerting services, including:
 
