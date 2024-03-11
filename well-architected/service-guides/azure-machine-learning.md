@@ -29,7 +29,7 @@ This article provides architectural recommendations for making informed decision
 
 ##### Technology scope
 
-This review focuses on the interrelated decisions for these Azure resources.  
+This review focuses on the interrelated decisions for these Azure resources:  
 
 - Azure Machine Learning
 - Azure Machine Learning compute clusters
