@@ -60,7 +60,7 @@ Consider the following recommendations that apply to using IaC for your workload
 
 **Use a layered approach to align your IaC pipelines within the workload stack**. Separating your IaC pipelines into layers helps you manage complex environments. Deploying dozens or hundreds of resources as a monolithic package is inefficient and can introduce multiple issues, like broken dependencies. The use of multiple pipelines that are aligned with layers composed of resources whose deployment lifecycles or factors like functionality closely match makes managing IaC deployments easier. 
 
-Core infrastructure like networking resources rarely need changes more complex than configuration updates, so those resources should make up a *low-touch* IaC pipeline. You might have one or more *medium-touch* and *high-touch* IaC pipelines for resources, depending on the complexity of your workload. Using a Kubernetes-based application stack as an example, one medium-touch layer might be composed of the clusters, storage resources, and database services. High-touch layers would be composed of the application containers that are updated very frequently in a continuous delivery mode.
+Core infrastructure like networking resources rarely needs changes more complex than configuration updates, so those resources should make up a *low-touch* IaC pipeline. You might have one or more *medium-touch* and *high-touch* IaC pipelines for resources, depending on the complexity of your workload. Using a Kubernetes-based application stack as an example, one medium-touch layer might be composed of the clusters, storage resources, and database services. High-touch layers would be composed of the application containers that are updated very frequently in a continuous delivery mode.
 
 **Treat your IaC and application code the same.** Treating your IaC artifacts the same as your application code artifacts helps you apply the same rigor for managing code across all pipelines. Moreover, IaC development and deployment practices should mirror application practices. Standards for version control, branching, code promotion, and quality should all be identical. Also consider collocating your IaC assets together with your application code assets. Doing so helps ensure that the same processes are followed with every deployment and helps you avoid issues like inadvertently deploying infrastructure before the necessary application code, or vice versa.
 
@@ -86,7 +86,7 @@ The choice between deploying mutable versus immutable infrastructure depends on 
 
 ## Azure facilitation
 
-[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
+[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
 
 [Terraform](/azure/developer/terraform/overview) is another declarative IaC tool that's fully supported in Azure. It can be used to deploy and manage infrastructure, and can be integrated into your CI/CD pipeline.
 
@@ -114,7 +114,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview)
 - [Bicep](/azure/azure-resource-manager/bicep/overview)
-- [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
+- [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
 - [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
 
