@@ -287,5 +287,5 @@ There are no [Azure Advisor](https://azure.microsoft.com/products/advisor) best 
 
 Consider these articles as resources that demonstrate the recommendations highlighted in this article.
 
-- Use this reference architecture as an example of how these recommendations can be applied to a workload such as the [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
+- Use the [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) as an example of how these recommendations can be applied to a workload.
 - Use [Azure Machine Learning](/azure/machine-learning) product documentation to build implementation expertise.
