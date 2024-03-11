@@ -41,7 +41,7 @@ To familiarize yourself with the concept of Azure landing zones, see [What is an
 
 Azure Virtual Desktop needs to interact with multiple external services. Central teams might own some of these services as part of platform landing zones. Examples of these services include identity services, network connectivity, and security services. Interaction with these external services is a foundational concern. To be fully functional, an Azure Virtual Desktop workload needs the platform team and the workload team to share the same responsibility mindset.
 
-For a demonstration of the platform landing zones that you need for an Azure Virtual Desktop workload to run, see [Azure landing zone review for Microsoft Azure Virtual Desktop](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone). This article describes a solid platform foundation that accelerates migration from an on-premises environment to an Azure Virtual Desktop private cloud.
+For a demonstration of the platform landing zones that you need for an Azure Virtual Desktop workload to run, see [Azure landing zone review for Microsoft Azure Virtual Desktop](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/enterprise-scale-landing-zone). This article describes a solid platform foundation that accelerates migration from an on-premises environment to an Azure Virtual Desktop private cloud.
 
 ### Application landing zones
 
@@ -69,7 +69,7 @@ The workload team and the platform team have distinct responsibilities. But both
 
 The design areas of the platform and application landing zones are tightly coupled.
 
-- For a description of changes in platform resources that are needed for a workload, see [Azure Virtual Desktop Azure landing zone review](/azure/cloud-adoption-framework/scenarios/wvd/ready).
+- For a description of changes in platform resources that are needed for a workload, see [Azure Virtual Desktop Azure landing zone review](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/ready).
 - For a description of the technical specification of a workload, see [What are the key design areas?](./overview.md#what-are-the-key-design-areas).
 
 #### Design area – Enterprise enrollment
