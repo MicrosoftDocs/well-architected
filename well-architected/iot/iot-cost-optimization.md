@@ -126,7 +126,7 @@ For more information, see [Security practices for Azure IoT device manufacturers
 
 [Azure RTOS](/azure/rtos) is an embedded development suite for devices. Azure RTOS includes a small but powerful operating system that provides reliable, ultra-fast performance for resource-constrained devices. Azure RTOS is easy to use and has been deployed on more than 10 billion devices. Azure RTOS supports the most popular 32-bit microcontrollers and embedded development tools, so you can make the most of existing device builder skills.
 
-Azure RTOS is free for commercial deployment using [pre-licensed hardware](https://github.com/azure-rtos/threadx/blob/master/LICENSED-HARDWARE.txt). Azure RTOS comes with Azure IoT cloud capabilities and features such as device update and security. These features help reduce both device and cloud development costs.
+Azure RTOS is free for commercial deployment using [pre-licensed hardware](https://github.com/eclipse-threadx/threadx/blob/master/LICENSE.txt). Azure RTOS comes with Azure IoT cloud capabilities and features such as device update and security. These features help reduce both device and cloud development costs.
 
 Azure RTOS is certified for safety and security, helping to reduce the time and cost of building compliant devices for specific verticals such as medical, automotive, and manufacturing.
 
