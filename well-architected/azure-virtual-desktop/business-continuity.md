@@ -56,7 +56,7 @@ The recommended configuration for an active-active scenario uses two host pools,
 
 Each host pool has its own storage account for persistent user profiles. If your disaster recovery plans require that profiles persist, you need to use the cloud cache feature of FSLogix to sync profiles across regions. To avoid profile conflicts, don't allow users to access both host pools at the same time.
 
-For more information, see [Multiregion business continuity and disaster recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/azure-virtual-desktop-multi-region-bcdr).
+For more information, see [Multiregion business continuity and disaster recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop-multi-region-bcdr).
 
 ### Active-passive scenarios
 
@@ -86,7 +86,7 @@ For instance, Azure imposes subscription-level limits on the number of VMs that 
 
 Another example is session hosts in a host pool. Within Azure Virtual Desktop, each host pool has its own limits on the number of session hosts that can accommodate user sessions. The VM series and the size that you select for the host pool determine the maximum number of session hosts that you can use. To optimize performance and user experience, you need to consider these limits when you design your deployment.
 
-For more information about platform constraints, see [Azure Virtual Desktop limitations](/azure/architecture/example-scenario/wvd/windows-virtual-desktop#azure-virtual-desktop-limitations).
+For more information about platform constraints, see [Azure Virtual Desktop limitations](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop#azure-virtual-desktop-limitations).
 
 ##### Recommendations
 
