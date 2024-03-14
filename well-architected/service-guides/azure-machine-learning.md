@@ -169,7 +169,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Usage optimization**: Test parallelizing training workloads to determine if training requirements can be met on lower cost SKUs.
 >
-> - **Rate optimization**: Purchase Azure VM reserved instances if you have a good estimate of usage over the next one to three years.
+> - **Rate optimization**: Purchase Azure Reserved Virtual Machine Instances if you have a good estimate of usage over the next one to three years.
 >
 > - **Monitor and optimize**: Monitor your resource usage such as CPU and GPU usage when training models. If the resources aren't being fully used, modify your code to better use resources or scale down to smaller or cheaper VM sizes.
 
@@ -183,7 +183,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | **Use low-priority virtual machines for batch workloads**: Consider using [low-priority virtual machines for batch workloads](/azure/machine-learning/how-to-use-low-priority-batch) that aren't time-sensitive and in which interruptions are recoverable. | Low-priority virtual machines enable a large amount of compute power to be used for a low cost. They take advantage of surplus capacity in Azure. |
 | **Enable idle shutdown for compute instances**: Enable [idle shutdown for compute instances](/azure/machine-learning/how-to-create-compute-instance#configure-idle-shutdown) or [schedule a start and stop time](/azure/machine-learning/how-to-create-compute-instance#schedule-automatic-start-and-stop) if usage time is known. | By default, compute instances are available to you, accruing cost. Configuring compute instances to shut down when idle or configuring a schedule for them saves cost when they aren't in use. |
 | **Parallelize training workloads**: Consider [parallelizing training workloads](/azure/machine-learning/how-to-use-parallel-job-in-pipeline). Test running them with the help of the parallel components in Machine Learning. | Parallel workloads can be run on multiple smaller instances, potentially yielding cost savings. |
-| **Azure VM reserved instances**: Purchase Azure VM reserved instances if you have a good estimate of usage over the next one to three years. Take advantage of reserved capacity options for services when you have good estimates of usage. | Purchase Azure VM reserved instances to prepay for virtual machine usage and provide discounts with pay-as-you-go pricing. The discount is automatically applied for virtual machine usage that matches the reservation. |
+| **Azure Reserved VM Instances**: Purchase Azure Reserved VM Instances if you have a good estimate of usage over the next one to three years. Take advantage of reserved capacity options for services when you have good estimates of usage. | Purchase Azure Reserved VM Instances to prepay for virtual machine usage and provide discounts with pay-as-you-go pricing. The discount is automatically applied for virtual machine usage that matches the reservation. |
 
 ## Operational Excellence
 
