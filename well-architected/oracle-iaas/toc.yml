@@ -16,5 +16,4 @@
       href: monitoring.md
     - name: Oracle Applications
       href: oracle-applications.md
-    - name: Decouple from your Exadata
-      href: exadata-decouple.md  
+

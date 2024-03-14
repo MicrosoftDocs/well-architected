@@ -1,17 +1,19 @@
 ---
-title: Oracle workload security
+title: Oracle workload best practices for security
 description: Oracle workload best practices for security
-author: 
-ms.author: 
-ms.date: 
+author: jessiehaessler
+ms.author: jhaessler 
+ms.date: 03/14/2024
 ms.topic: conceptual
+ms.service: waf
+ms.subservice: waf-workload-oracle
 ---
 
-# Oracle workload security
+# Oracle workload best practices for security
 
 Ensuring security is crucial when it comes to any architecture, and Azure offers a comprehensive range of tools to effectively secure your Oracle workload. The objective of this article is to provide security recommendations for the Azure control plane related to Oracle application workloads that are deployed on Azure Virtual Machines. For detailed information and implementation guidelines regarding security measures within the Oracle Database product, see [Oracle database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
 
-Most databases store sensitive data. To have a secure architecture in which to land these workloads, implementing security only at the database level isn't sufficient. Defense in depth is a comprehensive approach to security that involves implementing multiple layers of defense mechanisms to protect data. Instead of relying on a single security measure at a specific level, such as, for example, focusing on network security mechanisms, the defense in depth strategy employs a combination of different layer security measures to create a robust security posture. Defense-in-depth approach can be architected for Oracle workloads through strong authentication and authorization framework, hardened network security and encryption of data at rest and in-transit. Oracle workloads currently can be deployed as infrastructure as a service (IaaS) cloud model on Azure. The shared responsibility matrix should be revisited to have a clear understanding of the specific tasks and responsibilities assigned to both the cloud provider and the customer. For more information about the shared responsibility model, see Shared responsibility in the [cloud](https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility).
+Most databases store sensitive data. To have a secure architecture in which to land these workloads, implementing security only at the database level isn't sufficient. Defense in depth is a comprehensive approach to security that involves implementing multiple layers of defense mechanisms to protect data. Instead of relying on a single security measure at a specific level, such as, for example, focusing on network security mechanisms, the defense in depth strategy employs a combination of different layer security measures to create a robust security posture. Defense-in-depth approach can be architected for Oracle workloads through strong authentication and authorization framework, hardened network security and encryption of data at rest and in-transit. Oracle workloads currently can be deployed as infrastructure as a service (IaaS) cloud model on Azure. The shared responsibility matrix should be revisited to have a clear understanding of the specific tasks and responsibilities assigned to both the cloud provider and the customer. For more information about the shared responsibility model, see Shared responsibility in the [cloud](/azure//security/fundamentals/shared-responsibility).
 
 We suggest periodically assessing the services and technologies you employ to ensure that your security measures align with the changing threat landscape.
 
@@ -26,8 +28,8 @@ What is your approach to using centralized identity management to access your Or
 
 ### Recommendations
 - Use Microsoft Entra ID integration with SSO to access Oracle applications. Refer to the documentation for each Oracle application to follow the supported Single Sign On (SSO) strategy.
-- [Sign in to a Linux virtual machine in Azure by using Microsoft Entra ID and OpenSSH](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux).
-- [Sign in to a Windows virtual machine in Azure by using Microsoft Entra ID](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows).
+- [Sign in to a Linux virtual machine in Azure by using Microsoft Entra ID and OpenSSH](/azure//active-directory/devices/howto-vm-sign-in-azure-ad-linux).
+- [Sign in to a Windows virtual machine in Azure by using Microsoft Entra ID](/azure//active-directory/devices/howto-vm-sign-in-azure-ad-windows).
 
 ## Operating system
 Organizations can improve the security of their Oracle on Azure IaaS workloads by ensuring that the operating system is hardened to eliminate vulnerabilities that could be exploited to attack the Oracle database.
@@ -58,8 +60,8 @@ What are the steps that you take to harden the operating system that runs your O
 What is your approach to securing the network that is utilized by your Oracle workload on Azure IaaS?
 
 ### Recommendations
-- Use [Azure network security groups](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview) to filter network traffic between Azure resources in an Azure virtual network, and to filter traffic between on-premises networks to/from Azure. 
-- Secure the virtual machine on which the Oracle database workload resides against unauthorized access by using Azure provided features such as [Microsoft Defender for Cloud's just-in-time (JIT) access](https://learn.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-overview?tabs=defender-for-container-arch-aks) and [Azure Bastion](https://learn.microsoft.com/en-us/azure/bastion/bastion-overview).
+- Use [Azure network security groups](/azure//virtual-network/network-security-groups-overview) to filter network traffic between Azure resources in an Azure virtual network, and to filter traffic between on-premises networks to/from Azure. 
+- Secure the virtual machine on which the Oracle database workload resides against unauthorized access by using Azure provided features such as [Microsoft Defender for Cloud's just-in-time (JIT) access](/azure//defender-for-cloud/just-in-time-access-overview?tabs=defender-for-container-arch-aks) and [Azure Bastion](/azure//bastion/bastion-overview).
 - For X-Windows and VNC utilities it is recommended to use SSH port forwarding to tunnel the connections through SSH, [see for example](https://docs.oracle.com/en/learn/install-vnc-oracle-linux/#open-a-vnc-client-and-test-your-deployment).
 - For connectivity from Oracle database workloads running in Azure and workloads in Oracle cloud (OCI), private links or pipelines between applications can be created using the Azure/OCI interconnect between specific regions in Azure and OCI.
 
@@ -71,10 +73,10 @@ What is your approach to securing the network that is utilized by your Oracle wo
 What data encryption measures do you use for your Oracle workload on Azure?
 
 ### Recommendations
-- Understand how Microsoft [encrypts data at rest](https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-overview#encryption-of-data-at-rest).
+- Understand how Microsoft [encrypts data at rest](/azure//security/fundamentals/encryption-overview#encryption-of-data-at-rest).
 - Consider the features offered by the [Oracle Advanced Security option](https://docs.oracle.com/en/database/oracle/oracle-database/19/asoag/introduction-to-oracle-advanced-security.html#GUID-5D7343A0-4934-444F-97A1-5F189385A5DE) which include Transparent Data Encryption and Data Redaction.
 - Key management - If you choose to implement Oracle Transparent Data Encryption (TDE) as another encryption layer, it's important to note that Oracle doesn't support the native key management solutions (for example, Azure Key Vault, etc.) provided by Azure or other cloud providers. The primary option for the Oracle Wallet location is the default location within the filesystem of the Oracle database Virtual Machine. However, you can utilize Oracle Key Vault as a key management solution on Azure. For detailed information, refer to the documentation on [Provisioning Oracle Key Vault in Azure](https://docs.oracle.com/en/database/oracle/key-vault/21.6/okvag/using_okv_as_oci_vm_compute_instance.html#GUID-E8154AEB-2964-4698-AE6E-64A108C06D11).
-- Understand how Microsoft [encrypts data in transit](https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
+- Understand how Microsoft [encrypts data in transit](/azure//security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 - Consider using Oracle’s Native Network Encryption and Data Integrity feature, and for more information, see [Configuring Oracle Database Native Network Encryption and Data Integrity](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-network-data-encryption-and-integrity.html#GUID-7F12066A-2BA1-476C-809B-BB95A3F727CF).
 
 ## Integrating Audit Trails
