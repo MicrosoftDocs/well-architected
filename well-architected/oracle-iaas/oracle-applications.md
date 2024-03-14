@@ -1,5 +1,5 @@
 ---
-title: Oracle on Azure IaaS design area compute and storage
+title: Oracle on Azure IaaS design area compute and storage - Application design
 description: Review the design area for Oracle Applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Application Design
+# Application design
 
 Migrating Oracle applications to the cloud can be complex. In particular, understanding of supported and unsupported functionalities from version to version is important to avoid difficulties in, or even failure of the migration.  Moreover companies don't just want to lift and shift, but modernize the architecture and bind to functional and non-functional requirements. These requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved.
 
