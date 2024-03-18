@@ -241,7 +241,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Meet capacity requirements**: Choose deployment environments with autoscaling capabilities to add and remove capacity as demand fluctuates. 
 >
-> - **Achieve and sustain performance**: Continuously [monitor the performance of your deployed models](/azure/machine-learning/how-to-monitor-model-performance), review results, and take appropriate actions..
+> - **Achieve and sustain performance**: Continuously [monitor the performance of your deployed models](/azure/machine-learning/how-to-monitor-model-performance), review results, and take appropriate actions.
 >
 > - **Achieve and sustain performance**: Continuously monitor the performance of your infrastructure of deployed models, review results, and take appropriate actions. Monitor training infrastructure to ensure you're meeting your requirements for training time.
 
