@@ -74,7 +74,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >   Build similar level of redundancy in dependent services. For instance,  the application instances bind to blob storage. If the application uses zone-redundant deployment (ZRS), consider configuring the associated storage account with ZRS as well.
 > 
->   Have redundancy in networking components. For example, use zone-redundant IP addresses and external load balancers.
+>   Have redundancy in networking components. For example, use zone-redundant IP addresses and load balancers.
 >
 > - **Have a reliable scaling strategy**. Unexpected load on the application can cause it to become unreliable. Consider the right scaling approach based on your workload characteristics. You might be able to handle the load by scaling up. However, if the load continues to increase, scale out to new instances. Prefer automatic scaling over manual approaches. Always maintain a buffer of extra capacity during scaling operations to prevent performance degradation.  
 >
@@ -84,7 +84,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >   Strive for stateless applications, as much as possible. Reliably scaling state with new instances can add complexity. If you need to store application state, consider an external data store that can be scaled independently. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load over other instances.
 >
->   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Also log scaling events.
+>   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Also log scaling events so you can troubleshoot issues that may arise and optimize your scaling strategy over time.
 >
 >   Azure App Service has a limitation on the number of instances within a plan, affecting reliable scaling. One strategy is to use identical deployment stamps, each running App Service Plan instance with its own endpoint. So, it's essential to front all stamps with an external load balancer to distribute traffic among them. For single region deployments, consider Azure Application Gateway (for multi regional, Azure Front Door is recommended). This approach is ideal for mission-critical applications where reliability is crucial. It's demonstrated in the [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
 >
