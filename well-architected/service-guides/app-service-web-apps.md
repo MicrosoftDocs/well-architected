@@ -143,27 +143,34 @@ Start your design strategy based on the [**design review checklist for Security*
 > 
 > - **Control network traffic to and from the application**. Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App, that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose.
 >
->  Deploy web application firewall (WAF) to protect against common vulnerabilities. Both Application Gateway and Front Door have integrated WAF capabilities.
+>   Deploy web application firewall (WAF) to protect against common vulnerabilities. Both Application Gateway and Front Door have integrated WAF capabilities.
 >
 >   Configure the reverse proxy rules and network settings appropriately to achieve the desired level of security and control. For example, add network security group (NSG) rules on the private endpoint subnet to only accept traffic from the reverse proxy.
 >
 >     Egress traffic from the application to other PaaS services should be over _private endpoints_. Consider placing Azure Firewall to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
 >
 > - **Protect data in transit**. Use TLS end-to-end. This means that not only the external communication between the clients and the application but also internal communication within your application should be encrypted using TLS. Don't use legacy protocols such as TLS 1.0 and 1.1. By default, 1.2 is enabled by App Service. For more information, see [Azure App Service TLS overview](/azure/app-service/overview-tls).
+>   
+>   All instances of your App Service are assigned a default domain name. To use a custom domain, you need to secure that domain with certificates. Take advantage of [App Service certificates](/azure/app-service/configure-ssl-certificate) that offloads certification management to Azure. It handles the certificate procurement, verification, certificate renewal, importing certifcates from Azure Key Vault, and other  processes automatically. Additionally, if you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
+>   
+> - **Reduce the attack surface**. Remove default configurations that you don't need. For example, disable remote debugging, local authentication for SCM sites, basic authentication, and so on.
 >
->   Each instance of your App Service is assigned a default domain name. Ensure that this domain name is properly configured and secured.
->   Azure App Service offers a feature for managing certificates. It handlese the certificate renewal process automatically. Additionally, if you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
-
-> - **Reduce the attack surface**.
+>   Implement **restrictive Cross-Origin Resource Sharing (CORS) policies** in your web application that only allows it to accept requests from the allowed domains, headers, and other criteria. Enforce CORS policies with built-in Azure policy definitions.   
+>
+> - **Protect application secrets**. You often need to handle sensitive information like API keys, or authentication tokens. Instead of hardcoding these secrets directly into your application code or configuration files, you can use Key Vault references in app settings. When the application starts, App Service automatically retrieves the secret values from Key Vault using the app's managed identity. 
+>
+> -  **Enable resource logs for our application**. By doing so, you can create comprehensive activity trails that provide valuable during investigations following security incidents. 
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|[**Assign managed identity** to the Web App](/azure/app-service/overview-managed-identity).|Outward communication from the application is authenticated. The identity is managed by Azure and doesn't require you to provision or rotate any secrets.|
+|[**Assign managed identity** to the Web App](/azure/app-service/overview-managed-identity).|Outward communication from the application is authenticated, such as the application retrieving secrets from Key Vault. The identity is managed by Azure and doesn't require you to provision or rotate any secrets.|
 |**Consider using [Easy Auth](/azure/app-service/overview-authentication-authorization)** to authenticate users accessing your application. </br> It's a feature of App Service that's integrated with Microsoft Entra ID and handles token validation and user identity management across multiple login providers and also supports OpenID Connect.|This feature removes the need and complexity of using authentication libraries in application code. When a request reaches the application, the user is already authenticated.|
 |**[Use private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**.|By default, Azure App Service provides a public endpoint that receives requests from users over the internet. Adding a private endpoint helps protect your application by limiting direct exposure to the public network and allowing controlled access through the reverse proxy.|
-|Set the minimum Transport Layer Security (TLS) version to 1.2. |This ensures that only secure connections are established between clients and your App Service.|
+|[**Disable basic authentication**](/azure/app-service/configure-basic-auth-disable) that uses username/password in favor of Microsoft Entra ID-based authentication. |Basic authentication isn't recommended as a secure deployment method. Microsoft Entra employs OAuth 2.0 token-based authentication, offering numerous advantages and enhancements that address the limitations associated with basic authentication. |
+|[**Use Key Vault references as app settings**](/azure/app-service/app-service-key-vault-references)|Secrets are kept separate from your app's configuration. App settings are encrypted at rest.  Also, secret rotations are managed by App Service. |
+|[**Enable Defender for Cloud and App Service**](/azure/defender-for-cloud/tutorial-enable-app-service-plan).| Provides real-time protection to resources running in App Service Plan against threats and enhances our overall security posture.|
 
 ## Cost Optimization
 
