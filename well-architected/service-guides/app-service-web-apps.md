@@ -110,15 +110,12 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > - **Use health probes to identify unresponsive workers**. App Service has built in capabilities that periodically pings a specific path of your application. If an instance is unresponsive, it's removed the load balancer and replaced with a new instance. 
 
 
-TO DO: Although App Services exposes a single endpoint, it can have multiple instances.
-App Services handles load balancing transparently, distributing requests across instances (e.g., using round-robin).
-
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|Choice of tier in App Service Plan. <br><br> For production workloads, use Standard or Premeium plans. <br> Shared and Free tiers can be used for experiments.||
-|Consider disabling Application Request Routing (ARR) Affinity for your App Service.	ARR Affinity creates stick sessions which is used to redirect users to the same node that handled their previous requests.||
+|Choice of tier in App Service Plan. <br><br> For production workloads, use Standard or Premium plans. <br> Shared and Free tiers can be used for experiments.||
+|Consider disabling Application Request Routing (ARR) Affinity for your App Service.	ARR Affinity creates stick sessions, which is used to redirect users to the same node that handled their previous requests.||
 |||
 
 
@@ -136,7 +133,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Review the security baselines** for [App Service](/security/benchmark/azure/baselines/app-service-security-baseline) to enhance the security posture of your application hosted on an App Service plan.
 >
-> - **Use the latest runtime and libraries** in application. Prior to updating, thoroughly test your application builds to catch issues early and ensure a smooth transition to the new version.
+> - **Use the latest runtime and libraries** in your application. Prior to updating, thoroughly test your application builds to catch issues early and ensure a smooth transition to the new version.
 >
 > - **Create segmentation through isolation boundaries to contain breach**. Apply _segmentation of identity_, for example, with role-based access control (RBAC) and apply the principle of least privilege. Also create _segmentation at the network level_, for example, place the App Service in in Azure Virtual Network for isolation and define network security groups to filter traffic.
 >
@@ -144,20 +141,29 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Apply access controls on identities** Apply access controls to restrict both _inward access to the Web App_ and _outward access from the Web App_ to other resources. This helps maintain the overall workload's security posture. _Use Microsoft Entra ID_ for all authentication and authorization needs. Implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege to limit access rights to only what's necessary.
 > 
-> - **Control network traffic to and from the application**. Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App, that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose. Both services have integrated web application firewall to protect against common vulnerabilities.
+> - **Control network traffic to and from the application**. Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App, that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose.
+>
+>  Deploy web application firewall (WAF) to protect against common vulnerabilities. Both Application Gateway and Front Door have integrated WAF capabilities.
 >
 >   Configure the reverse proxy rules and network settings appropriately to achieve the desired level of security and control. For example, add network security group (NSG) rules on the private endpoint subnet to only accept traffic from the reverse proxy.
 >
 >     Egress traffic from the application to other PaaS services should be over _private endpoints_. Consider placing Azure Firewall to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
 >
+> - **Protect data in transit**. Use TLS end-to-end. This means that not only the external communication between the clients and the application but also internal communication within your application should be encrypted using TLS. Don't use legacy protocols such as TLS 1.0 and 1.1. By default, 1.2 is enabled by App Service. For more information, see [Azure App Service TLS overview](/azure/app-service/overview-tls).
+>
+>   Each instance of your App Service is assigned a default domain name. Ensure that this domain name is properly configured and secured.
+>   Azure App Service offers a feature for managing certificates. It handlese the certificate renewal process automatically. Additionally, if you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
+
+> - **Reduce the attack surface**.
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|[**Assign managed identity** to the Web App](/azure/app-service/overview-managed-identity).|Outward communication from the application is authenticated. The identity is managed by Azure and does not require you to provision or rotate any secrets.|
+|[**Assign managed identity** to the Web App](/azure/app-service/overview-managed-identity).|Outward communication from the application is authenticated. The identity is managed by Azure and doesn't require you to provision or rotate any secrets.|
 |**Consider using [Easy Auth](/azure/app-service/overview-authentication-authorization)** to authenticate users accessing your application. </br> It's a feature of App Service that's integrated with Microsoft Entra ID and handles token validation and user identity management across multiple login providers and also supports OpenID Connect.|This feature removes the need and complexity of using authentication libraries in application code. When a request reaches the application, the user is already authenticated.|
 |**[Use private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**.|By default, Azure App Service provides a public endpoint that receives requests from users over the internet. Adding a private endpoint helps protect your application by limiting direct exposure to the public network and allowing controlled access through the reverse proxy.|
+|Set the minimum Transport Layer Security (TLS) version to 1.2. |This ensures that only secure connections are established between clients and your App Service.|
 
 ## Cost Optimization
 
