@@ -86,6 +86,10 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Also log scaling events.
 >
+>   Azure App Service has a limitation on the number of instances within a plan, affecting reliable scaling. One strategy is to use identical deployment stamps, each running App Service Plan instance with its own endpoint. So, it's essential to front all stamps with an external load balancer to distribute traffic among them. For single region deployments, consider Azure Application Gateway (for multi regional, Azure Front Door is recommended). This approach is ideal for mission-critical applications where reliability is crucial. It's demonstrated in the [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
+>
+>   The App Service Plan distributes traffic among instances and monitors their health. Note that if one instance fails, the external load balancer might not immediately detect it. 
+>
 >  - **Plan your recoverability**. Redundancy is a crucial for business continuity. Fail over to another instance if one becomes unreachable. Also, explore auto-healing capabitlites offered by App Service, such as auto repair of instances. 
 >
 >     Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity issues, and large-scale events like regional outages. For example, 
@@ -93,7 +97,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >     - Queue-Based Load Leveling pattern queues work items that serve as a buffer to smooth out traffic spikes.
 >     - Retry patterns handles transient failures caused by network glitches, dropped database connections, or busy services.
 >     - Circuit Breaker pattern to prevent an application from repeatedly trying to execute an operation that's likely to fail.
->    Web Jobs allow you to run background tasks in your Web App. To run those tasks reliably, ensure that the web app hosting your job is set to run continuously, on a schedule, or based on event-driven triggers.
+>    Web Jobs allow you to run background tasks in your Web App. To run those tasks reliably, ensure that the app hosting your job is set to run continuously, on a schedule, or based on event-driven triggers.
 >
 >     For more information, see [Reliability patterns](/azure/well-architected/reliability/design-patterns).
 >
@@ -103,8 +107,11 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >    Azure App Service imposes resource limits on hosted apps. These limits are determined by the associated App Service plan. Make sure your tests validate that the app runs within those limits, For more information, [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?branch=main#app-service-limits).
 >
-> - **Use health probes to identify unresponsive workers**. App Service has built in capabilities that periodically pings a specific path of your web application. If an instance is unresponsive, it's removed the load balancer and replaced with a new instance. 
+> - **Use health probes to identify unresponsive workers**. App Service has built in capabilities that periodically pings a specific path of your application. If an instance is unresponsive, it's removed the load balancer and replaced with a new instance. 
 
+
+TO DO: Although App Services exposes a single endpoint, it can have multiple instances.
+App Services handles load balancing transparently, distributing requests across instances (e.g., using round-robin).
 
 ##### Recommendations
 
@@ -127,12 +134,30 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
+> - **Review the security baselines** for [App Service](/security/benchmark/azure/baselines/app-service-security-baseline) to enhance the security posture of your application hosted on an App Service plan.
+>
+> - **Use the latest runtime and libraries** in application. Prior to updating, thoroughly test your application builds to catch issues early and ensure a smooth transition to the new version.
+>
+> - **Create segmentation through isolation boundaries to contain breach**. Apply _segmentation of identity_, for example, with role-based access control (RBAC) and apply the principle of least privilege. Also create _segmentation at the network level_, for example, place the App Service in in Azure Virtual Network for isolation and define network security groups to filter traffic.
+>
+>   App Service Plan offers the App Service Environment (ASE) SKU that provides a higher degree of isolation. With ASE, you get dedicated compute and network.  
+>
+> - **Apply access controls on identities** Apply access controls to restrict both _inward access to the Web App_ and _outward access from the Web App_ to other resources. This helps maintain the overall workload's security posture. _Use Microsoft Entra ID_ for all authentication and authorization needs. Implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege to limit access rights to only what's necessary.
+> 
+> - **Control network traffic to and from the application**. Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App, that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose. Both services have integrated web application firewall to protect against common vulnerabilities.
+>
+>   Configure the reverse proxy rules and network settings appropriately to achieve the desired level of security and control. For example, add network security group (NSG) rules on the private endpoint subnet to only accept traffic from the reverse proxy.
+>
+>     Egress traffic from the application to other PaaS services should be over _private endpoints_. Consider placing Azure Firewall to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
+>
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|||
+|[**Assign managed identity** to the Web App](/azure/app-service/overview-managed-identity).|Outward communication from the application is authenticated. The identity is managed by Azure and does not require you to provision or rotate any secrets.|
+|**Consider using [Easy Auth](/azure/app-service/overview-authentication-authorization)** to authenticate users accessing your application. </br> It's a feature of App Service that's integrated with Microsoft Entra ID and handles token validation and user identity management across multiple login providers and also supports OpenID Connect.|This feature removes the need and complexity of using authentication libraries in application code. When a request reaches the application, the user is already authenticated.|
+|**[Use private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**.|By default, Azure App Service provides a public endpoint that receives requests from users over the internet. Adding a private endpoint helps protect your application by limiting direct exposure to the public network and allowing controlled access through the reverse proxy.|
 
 ## Cost Optimization
 
