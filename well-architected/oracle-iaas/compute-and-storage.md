@@ -136,7 +136,7 @@ Do you have a clear view of the compute requirements of your Oracle applications
     -	Backup Strategy
 - The application tier can be moved to any suitable VM SKU that meets the performance and cost optimization requirements.
 
-If you need further information on Oracle Applications on Azure, please review [Oracle Applications on Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/deploy-application-oracle-database-azure).
+If you need further information on Oracle Applications on Azure, please review [Oracle Applications on Azure](/azure/virtual-machines/workloads/oracle/deploy-application-oracle-database-azure).
 
 ## Next steps
 > [!div class="nextstepaction"]
