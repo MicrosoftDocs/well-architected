@@ -37,7 +37,7 @@ It is advised to enhance the security posture of your operating system and integ
 Please review the following for [Linux Operating System](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux) as well as [Linux Operating System](/entra/identity/devices/howto-vm-sign-in-azure-ad-windows)
 Organizations can improve the security of their Oracle on Azure IaaS workloads by ensuring that the operating system is hardened to eliminate vulnerabilities that could be exploited to attack the Oracle database.
 
-We highly encourage you to also review the Azure Landing Zone for Oracle Workloads, specifically for [Security](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-security-guideline-landing-zone).
+We highly encourage you to also review the Azure Landing Zone for Oracle Workloads, specifically for [Security](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-security-guideline-landing-zone).
 
 ### Assessment question
 - What are the steps that you take to harden the operating system that runs your Oracle database and applications?
