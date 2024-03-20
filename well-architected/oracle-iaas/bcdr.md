@@ -1,12 +1,12 @@
 ---
-title: Oracle on Azure IaaS design area compute and storage
+title: Business continuity and disaster recovery
 description: Review the design area for BCDR of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
-ms.author: 
-ms.date: 
+ms.author: jhaessler 
+ms.date: 03/14/2024
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-Oracle
+ms.subservice: waf-workload-oracle
 ---
 
 # Business Continuity and Disaster Recovery (BCDR)

@@ -1,13 +1,15 @@
 ---
-title: Oracle workload security
+title: Oracle workload best practices for security
 description: Oracle workload best practices for security
-author: 
-ms.author: 
-ms.date: 
+author: jessiehaessler
+ms.author: jhaessler 
+ms.date: 03/14/2024
 ms.topic: conceptual
+ms.service: waf
+ms.subservice: waf-workload-oracle
 ---
 
-# Oracle workload security
+# Oracle workload best practices for security
 
 Ensuring security is crucial when it comes to any architecture, and Azure offers a comprehensive range of tools to effectively secure your Oracle workload. The objective of this article is to provide security recommendations for the Azure control plane related to Oracle application workloads that are deployed on Azure Virtual Machines. For detailed information and implementation guidelines regarding security measures within the Oracle Database product, see [Oracle database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
 

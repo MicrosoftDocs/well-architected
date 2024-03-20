@@ -1,15 +1,15 @@
 ---
-title: Oracle on Azure IaaS workloads
+title: Get started on Oracle on Azure IaaS workloads
 description: See general guidance and resources for running Oracle on Azure IaaS.
 author: jessiehaessler
-ms.author: prwilk
-ms.date:
+ms.author: jhaessler
+ms.date: 03/14/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Get Started
+# Get started on Oracle on Azure IaaS workloads
 
 This guidance is intended to provide **Application Owners**, **Oracle Database Administrators**, **Business Stakeholders** and **Architects** with best practices for well-architected Oracle on Azure IaaS implementation.
 You can use this workload documentation as your go-to resource for guidance on how to apply the Azure Well-Architected best practices as the technical foundation for building and operating a highly reliable solution for Oracle on Azure at-scale.

@@ -1,15 +1,15 @@
 ---
-title: Oracle on Azure IaaS design area compute and storage
+title: Oracle on Azure IaaS design area compute and storage - Application design
 description: Review the design area for Oracle Applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
-ms.author: 
-ms.date: 
+ms.author: jhaessler
+ms.date: 03/14/2024
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-Oracle
+ms.subservice: waf-workload-oracle
 ---
 
-# Application Design
+# Application design
 
 Migrating Oracle applications to the cloud can be complex. In particular, understanding of supported and unsupported functionalities from version to version is important to avoid difficulties in, or even failure of the migration.  Moreover companies don't just want to lift and shift, but modernize the architecture and bind to functional and non-functional requirements. These requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved.
 
@@ -34,7 +34,7 @@ For each of the following application design areas, what are the considerations 
    - In case a user accesses the application from the internet, consider an [Application Gateway](/azure/application-gateway/overview). Azure Application Gateway provides two built-in functionalities. It operates as a Web Application Firewall, and also has a built-in Layer 7 Load Balancer. It is only supported for access on Port 443 (https).
    - Another option to secure your network is the [Azure Firewall](/azure/firewall/overview). This component defends the web services against common exploits and vulnerabilities. It keeps the Oracle Application highly available and helps you meet compliance requirements.
    - Consider setting up [network security groups](/azure/virtual-network/network-security-groups-overview) at a subnet level to ensure only traffic on specific ports and IP addresses is permitted.
-   - If SSH or RDP access is required, a [Bastion](https://learn.microsoft.com/en-gb/azure/bastion/bastion-overview) host as a jump box can provide extra security for an in-depth mature security posture.
+   - If SSH or RDP access is required, a [Bastion](/azure/bastion/bastion-overview) host as a jump box can provide extra security for an in-depth mature security posture.
 
 - Web and Application Tiers
    - Deploy your application on VMs in Azure [Availability Set](/azure/virtual-machines/availability-set-overview) to improve overall availability.
