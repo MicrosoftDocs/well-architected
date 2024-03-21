@@ -110,7 +110,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **Cluster security controls:** Configure Entra ID user account membership of the [built-in roles based access control (RBAC) roles](/azure-stack/hci/manage/assign-vm-rbac-roles) to control access to VMs and VM resources on your Azure Stack HCI, such as HCI Administrator, VM Contributor and VM Reader.
 >
-> - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as software defined networking (SDN) and/or separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as the "_keep-alive_" from clustering or integration services.
+> - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as software defined networking (SDN) and/or separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as "_keep-alive probes_" from clustering and/or integration services agent communication.
 >
 > - **Workload security controls:** Use Trusted launch for virtual machines that protect against persistent and standard attacks on Gen 2 virtual machines with configurable features like secure boot and virtual Trusted Platform Module (vTPM).
 >
@@ -168,7 +168,7 @@ You can find these policies in the Azure portal under Policy > Definitions > Cat
 
 Cost optimization is about understanding your different configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. Before you follow the guidance in this article, we recommend you review the following resources:
 
-- [Cost optimization design principles](../cost-optimization/principles.md).
+- Review [cost optimization design principles](../cost-optimization/principles.md).
 
 - Azure Stack HCI is priced using a "per physical CPU core" basis. If you own on-premises core licenses for Windows Server Datacenter edition, with active Software Assurance (SA) you may choose to exchange these licenses to activate Azure Hybrid Benefit, which waives the Azure Stack HCI per physical CPU core cost and Windows Server VM subscription fee. Review [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) for more information.
 
