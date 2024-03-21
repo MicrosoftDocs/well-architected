@@ -127,6 +127,10 @@ Some of the benefits of using standardized tagging and naming conventions are:
 - They support resource lifecycle management, such as provisioning, decommissioning, backup, and recovery.
 - They're essential for security purposes. If you come upon a security incident, it's critical to quickly identify affected systems, the functions that those systems support, and the potential business impact.
 
+For more information on using naming conventions for your cloud resources, see [Define your naming convention](azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming). For more information on how to apply metadata tags to your cloud resources, see [Define your tagging strategy](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-tagging).
+
+## Organizational alignment
+
 The Cloud Adoption Framework (CAF) provides general [guidelines and recommendations for tagging and naming Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging), as well as specific rules and examples for different resource types.
 
 ## Azure facilitation
