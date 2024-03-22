@@ -127,7 +127,7 @@ Some of the benefits of using standardized tagging and naming conventions are:
 - They support resource lifecycle management, such as provisioning, decommissioning, backup, and recovery.
 - They're essential for security purposes. If you come upon a security incident, it's critical to quickly identify affected systems, the functions that those systems support, and the potential business impact.
 
-The Cloud Adoption Framework (CAF) provides general [guidelines and recommendations for tagging and naming Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging), as well as specific rules and examples for different resource types.
+For more information on using naming conventions for your cloud resources, see [Define your naming convention](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming). For more information on how to apply metadata tags to your cloud resources, see [Define your tagging strategy](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-tagging).
 
 ## Azure facilitation
 
@@ -162,6 +162,10 @@ The Cloud Adoption Framework (CAF) provides general [guidelines and recommendati
 - [GitHub Copilot](https://docs.github.com/copilot/overview-of-github-copilot/about-github-copilot-for-individuals) is an AI service that acts as a pair programmer and provides autocomplete style suggestions as you code. Copilot is available as an extension in Visual Studio and several other development tools.
 
 - [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load testing service that you can use to generate high-scale load by simulating traffic for your applications, regardless of where they're hosted.
+
+## Organizational alignment
+
+The Cloud Adoption Framework for Azure provides general [guidelines and recommendations for tagging and naming Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging), as well as specific rules and examples for different resource types.
 
 ## Related links
 
