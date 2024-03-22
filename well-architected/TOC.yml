@@ -300,6 +300,8 @@
               href: service-guides/azure-batch/operational-excellence.md
             - name: Performance efficiency
               href: service-guides/azure-batch/performance-efficiency.md
+        - name: Azure Blob Storage
+          href: service-guides/azure-blob-storage.md
         - name: Azure Cache for Redis
           items:
             - name: Reliability
