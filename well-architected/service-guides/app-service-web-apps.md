@@ -13,7 +13,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on App Service (Web Apps)
 
-Azure App Service is a type of Platform-as-a-Service (PaaS) compute service that allows you to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying virtual machines and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The choice of plan defines the region in which the workload runs, the type of operating system, and virtual machines configurations, with various billing models.
+Azure App Service is a type of Platform-as-a-Service (PaaS) compute service that allows you to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The choice of plan defines the region in which the workload runs, the type of operating system, and compute configurations, with various billing models.
 
 This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen App Service as the compute to run your workload. 
 
@@ -231,7 +231,7 @@ Start your design strategy based on the [**design review checklist for Performan
 
 ## Tradeoffs
 
-:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Density and isolation.
+:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
 
 There are design tradeoffs between approaches of higher density (sharing resources) and isolation (keeping apps separate). Each approach has its own set of advantages and drawbacks:
 
@@ -244,6 +244,25 @@ There are design tradeoffs between approaches of higher density (sharing resourc
   Isolating web apps provides better control over security and data protection. Each app can have its own security settings. There's also better containment of breaches. Isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and resources can be allocated based on individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
+
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
+
+A well-defined scaling strategy ensures that your application can handle varying workloads without compromising performance. However, there are tradeoffs on cost.
+
+Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. **Overprovisioning resources (prewarm instances)** provides a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, impacting user experience. The triggers for auto scaling operations must signal early enough to enable proper resource initialization by the time the resources are used.
+
+Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher SKUs include prewarmed instances. Determine whether capabilities offered with more expensive SKUs are worth the investment.  
+
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**.
+
+Redundancy offers resilience while also incurring costs. 
+
+Define Service Level Objectives (SLOs) for your workload. These SLOs determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
+
+For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
+
 
 
 ## Azure policies
