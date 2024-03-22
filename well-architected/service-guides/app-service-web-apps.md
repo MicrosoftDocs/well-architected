@@ -359,7 +359,7 @@ For example, multi-region redundancy provides high availability. However, it's c
 
 ## Tradeoffs
 
-:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Density and isolation.
+:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
 
 There are design tradeoffs between approaches of higher density (sharing resources) and isolation (keeping apps separate). Each approach has its own set of advantages and drawbacks:
 
@@ -372,6 +372,25 @@ There are design tradeoffs between approaches of higher density (sharing resourc
   Isolating web apps provides better control over security and data protection. Each app can have its own security settings. There's also better containment of breaches. Isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and resources can be allocated based on individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
+
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
+
+A well-defined scaling strategy ensures that your application can handle varying workloads without compromising performance. However, there are tradeoffs on cost.
+
+Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. **Overprovisioning resources (prewarm instances)** provides a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, impacting user experience. The triggers for auto scaling operations must signal early enough to enable proper resource initialization by the time the resources are used.
+
+Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher SKUs include prewarmed instances. Determine whether capabilities offered with more expensive SKUs are worth the investment.  
+
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**.
+
+Redundancy offers resilience while also incurring costs. 
+
+Define Service Level Objectives (SLOs) for your workload. These SLOs determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
+
+For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
+
 
 
 ## Azure policies
