@@ -133,13 +133,15 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Review the security baselines** for [App Service](/security/benchmark/azure/baselines/app-service-security-baseline) to enhance the security posture of your application hosted on an App Service plan.
 >
-> - **Use the latest runtime and libraries** in your application. Prior to updating, thoroughly test your application builds to catch issues early and ensure a smooth transition to the new version.
+> - **Use the latest runtime and libraries** in your application. Prior to updating, thoroughly test your application builds to catch issues early and ensure a smooth transition to the new version. App Service supports [language runtime support policy](/azure/app-service/language-support-policy) for updating existing stacks and retiring end-of-support stacks.
 >
-> - **Create segmentation through isolation boundaries to contain breach**. Apply _segmentation of identity_, for example, with role-based access control (RBAC) and apply the principle of least privilege. Also create _segmentation at the network level_. For example, [inject App Service Apps in an Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet) for isolation and define network security groups to filter traffic.
+> - **Create segmentation through isolation boundaries to contain breach**. Apply _segmentation of identity_, for example, implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege to limit access rights to only what's necessary. Also create _segmentation at the network level_. For example, [inject App Service Apps in an Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet) for isolation and define network security groups to filter traffic.
 >
 >   App Service Plan offers the App Service Environment (ASE) SKU that provides a higher degree of isolation. With ASE, you get dedicated compute and network.  
 >
-> - **Apply access controls on identities** Apply access controls to restrict both _inward access to the Web App_ and _outward access from the Web App_ to other resources. This helps maintain the overall workload's security posture. _Use Microsoft Entra ID_ for all authentication and authorization needs. Implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege to limit access rights to only what's necessary.
+> - **Apply access controls on identities** to restrict both _inward access to the Web App_ and _outward access from the Web App_ to other resources. This helps maintain the overall workload's security posture. 
+>
+>   _Use Microsoft Entra ID_ for all authentication and authorization needs. Use built-in roles, such as  [Web Plan Contributor](/azure/role-based-access-control/built-in-roles/web-and-mobile#web-plan-contributor), [	Website Contributor](/azure/role-based-access-control/built-in-roles/web-and-mobile#website-contributor), [Generic: Contributor, Reader, Owner](/azure/role-based-access-control/built-in-roles#general).
 > 
 > - **Control network traffic to and from the application**. Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App, that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose.
 >
@@ -147,30 +149,31 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 >   Configure the reverse proxy rules and network settings appropriately to achieve the desired level of security and control. For example, add network security group (NSG) rules on the private endpoint subnet to only accept traffic from the reverse proxy.
 >
->     Egress traffic from the application to other PaaS services should be over _private endpoints_. Consider placing Azure Firewall to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
+>     Egress traffic from the application to other PaaS services should be over _private endpoints_. Consider placing a firewall component to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
 >
-> - **Protect data in transit**. Use TLS end-to-end. This means that not only the external communication between the clients and the application but also internal communication within your application should be encrypted using TLS. Don't use legacy protocols such as TLS 1.0 and 1.1. By default, 1.2 is enabled by App Service. For more information, see [Azure App Service TLS overview](/azure/app-service/overview-tls).
+> - **Encrypt data**. Protect data in transit with end-to-end TLS. Use full encryption for data at rest by using your keys. For more information, see [Encryption at rest using customer-managed keys](/azure/app-service/configure-encrypt-at-rest-using-cmk).
+>
+>   Don't use legacy protocols such as TLS 1.0 and 1.1. By default, 1.2 is enabled by App Service. For more information, see [Azure App Service TLS overview](/azure/app-service/overview-tls).
 >   
 >   All instances of your App Service are assigned a default domain name. To use a custom domain, you need to secure that domain with certificates. Take advantage of [App Service certificates](/azure/app-service/configure-ssl-certificate) that offloads certification management to Azure. It handles the certificate procurement, verification, certificate renewal, importing certifcates from Azure Key Vault, and other  processes automatically. Additionally, if you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
 >   
-> - **Reduce the attack surface**. Remove default configurations that you don't need. For example, disable remote debugging, local authentication for SCM sites, basic authentication, and so on.
+> - **Reduce the attack surface**. Remove default configurations that you don't need. For example, disable remote debugging, local authentication for SCM sites, basic authentication, and so on. Enforce configurations through Azure policies. For more information, see [Azure Policies](#azure-policies).
 >
 >   Implement **restrictive Cross-Origin Resource Sharing (CORS) policies** in your web application that only allows it to accept requests from the allowed domains, headers, and other criteria. Enforce CORS policies with built-in Azure policy definitions.   
 >
 > - **Protect application secrets**. You often need to handle sensitive information like API keys, or authentication tokens. Instead of hardcoding these secrets directly into your application code or configuration files, you can use Key Vault references in app settings. When the application starts, App Service automatically retrieves the secret values from Key Vault using the app's managed identity. 
 >
 > - **Enable resource logs for our application**. By doing so, you can create comprehensive activity trails that provide valuable during investigations following security incidents. 
->
-> - **Enforce configurations through Azure policies**. For more information, see [Azure Policies](#azure-policies).
+
 
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|[**Assign managed identity** to the Web App](/azure/app-service/overview-managed-identity).|Outward communication from the application is authenticated, such as the application retrieving secrets from Key Vault. The identity is managed by Azure and doesn't require you to provision or rotate any secrets.|
-|**Consider using [Easy Auth](/azure/app-service/overview-authentication-authorization)** to authenticate users accessing your application. </br> It's a feature of App Service that's integrated with Microsoft Entra ID and handles token validation and user identity management across multiple login providers and also supports OpenID Connect.|This feature removes the need and complexity of using authentication libraries in application code. When a request reaches the application, the user is already authenticated.|
-|**[Use private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**.|By default, Azure App Service provides a public endpoint that receives requests from users over the internet. Adding a private endpoint helps protect your application by limiting direct exposure to the public network and allowing controlled access through the reverse proxy.|
+|[**Assign managed identity**](/azure/app-service/overview-managed-identity)  to the Web App. <br><br> Don't share or reuse identities among applications to maintain isolation boundaries. |Outward communication from the application is authenticated, such as the application retrieving secrets from Key Vault. The identity is managed by Azure and doesn't require you to provision or rotate any secrets. <br> Creating distinct identities allows for granularity of control. It also makes revocation easy in case an identity is compromised.|
+|**Evaluate whether [Easy Auth](/azure/app-service/overview-authentication-authorization)** is the right mechanism to authenticate users accessing your application. </br> It's a feature of App Service that's integrated with Microsoft Entra ID and handles token validation and user identity management across multiple login providers and also supports OpenID Connect. <br><br> Be aware that with this feature, you lose the capability to do authorization at a granular level. Also, there's no mechanism to test authentication. |This feature removes the need and complexity of using authentication libraries in application code. When a request reaches the application, the user is already authenticated.|
+|**[Use private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**. <br><br>By default, Azure App Service provides a public endpoint that receives requests from users over the internet.|Adding a private endpoint helps protect your application by limiting direct exposure to the public network and allowing controlled access through the reverse proxy.|
 |Provide hardening by: <br> - [**Disabling basic authentication**](/azure/app-service/configure-basic-auth-disable) that uses username/password in favor of Microsoft Entra ID-based authentication. <br> - **Turning off remote debugging** so that inbound ports aren't opened. |Basic authentication isn't recommended as a secure deployment method. Microsoft Entra employs OAuth 2.0 token-based authentication, offering numerous advantages and enhancements that address the limitations associated with basic authentication. |
 |[**Use Key Vault references as app settings**](/azure/app-service/app-service-key-vault-references).|Secrets are kept separate from your app's configuration. App settings are encrypted at rest.  Also, secret rotations are managed by App Service. |
 |[**Enable Defender for Cloud and App Service**](/azure/defender-for-cloud/tutorial-enable-app-service-plan).| Provides real-time protection to resources running in App Service Plan against threats and enhances our overall security posture.|
@@ -231,45 +234,42 @@ Start your design strategy based on the [**design review checklist for Performan
 
 ## Tradeoffs
 
+There are design tradeoffs with the approaches described in the pillar checklists. Here are some examples of advantages and drawbacks.
+
 :::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
 
-There are design tradeoffs between approaches of higher density (sharing resources) and isolation (keeping apps separate). Each approach has its own set of advantages and drawbacks:
+- **Higher density**. By colocating multiple apps within the same App Service Plan, you minimize the resources. All apps share CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resource utilization is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
 
-- **Higher density**. By colocating multiple web apps within the same App Service Plan, you minimize the resources allocated. All apps share resources, such as CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resources utilization is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
-
-  There are also disadvantages. Spikes in utilization or instability of an web app can affect the performance of other apps sharing the same resources. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
+  There are also disadvantages. Spikes in utilization or instability of an app can affect the performance of other apps. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
 
 - **Higher isolation**. Isolation is intented to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
 
-  Isolating web apps provides better control over security and data protection. Each app can have its own security settings. There's also better containment of breaches. Isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and resources can be allocated based on individual capacity planning. 
+  Isolating apps provides better control over security and data protection because each app can have its own security settings. There's better containment of breaches as isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
 
-A well-defined scaling strategy ensures that your application can handle varying workloads without compromising performance. However, there are tradeoffs on cost.
+A well-defined scaling strategy ensures that your application can handle varying loads without compromising performance. However, there are tradeoffs on cost.
 
 Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. **Overprovisioning resources (prewarm instances)** provides a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, impacting user experience. The triggers for auto scaling operations must signal early enough to enable proper resource initialization by the time the resources are used.
 
 Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher SKUs include prewarmed instances. Determine whether capabilities offered with more expensive SKUs are worth the investment.  
 
-
 :::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**.
 
 Redundancy offers resilience while also incurring costs. 
 
-Define Service Level Objectives (SLOs) for your workload. These SLOs determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
+Service Level Objectives (SLOs) for your workload determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
 
 For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
-
-
 
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to App Service and the dependencies. Some of the preceding recommendations can be audited through a set of Azure Policies. For example, you can check if:
 
-- Proper network controls are in place. For example, network segmentation is done by placing App Service in Azure Virtual Network through VNet injection to have greater control over network configuration. The application does not have public endpoints and connects to Azure services through Private Links.
+- Proper network controls are in place. For example, network segmentation is done by placing App Service in Azure Virtual Network through VNet injection to have greater control over network configuration. The application does not have public endpoints and connects to Azure services through private endpoints.
 
 - Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. In coming requests are verified using App Service Authentication (Easy Auth). 
 
