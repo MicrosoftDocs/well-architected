@@ -275,16 +275,15 @@ Health modeling is a logical exercise that is tooling and technology agnostic. H
 
 [Azure Monitor health models](/azure/azure-monitor/health-models/overview) enable you to build and interact with health models natively in Azure. Each model that you build is a data platform that integrates with the rest of Azure Monitor across monitoring data stores, alerting, and out-of-the-box visualizations, both graphical and tabular. For advanced users, query/API data plane experiences allow flexible utilization of health states so you can use health insights with your existing operational stack, such as a Grafana dashboard.
 
-![A screengrab of Azure Monitor health models.](./_images/azure-health-models.png)
+![A screen grab of Azure Monitor health models.](./_images/azure-health-models.png)
 
 ## Related links
 
 - For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
 - For information on monitoring metrics, see [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 - For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview).
-- For design considerations and recommendations about a layered application health model, see the health modeling guidance found in the mission-critical workload design areas.
-- For more hands on experience with health modeling, see [link to learn module]
-**TODO**
+- For design considerations and recommendations about [health modeling and observability for mission-critical workloads](/azure/well-architected/mission-critical/mission-critical-health-modeling) on Azure.
+- For hands-on experience [designing a health model for your mission critical workload](/training/modules/design-health-model-mission-critical-workload/).
 
 ## Next steps
 
