@@ -3,7 +3,7 @@ title: Recommendations for enabling automation in a workload
 description: Learn how to design your workload to enable automation. Automation simplifies maintenance tasks, allowing you to update, patch, and upgrade your systems more efficiently and reliably.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 03/24/2024
 ms.topic: conceptual
 ---
 
@@ -110,9 +110,10 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Configuration management
 
-[**Azure Automanage State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool built on top of Azure Policy that performs as an orchestration tool. Using a VM extension, you can directly apply predefined configuration updates to individual VMs or groups of VMs as defined within Azure Policy.
+[**Azure Automation State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool managed by a feature of Azure Policy named [guest configuration](/azure/governance/machine-configuration/overview)  that allows you to write, manage, and compile PowerShell Desired State Configuration (DSC) configurations for nodes in any cloud or on-premises datacenter. The service also imports DSC Resources, and assigns configurations to target nodes. 
+ 
 
-[**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
+[**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment. 
 
 ### Change tracking and inventory
 
