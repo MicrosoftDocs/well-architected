@@ -13,9 +13,9 @@ Cloud applications generate high volumes of operational data, making it challeng
 
 Health modeling is an **observability exercise that combines business context with raw monitoring data to quantify the overall health of a workload**. It helps set a baseline against which the workload is monitored. The data considered should include telemetry from both infrastructure and application components. Additionally, it may incorporate other information necessary to achieve the quality targets of the workload.
 
-Modeling the health of a workload enables you to **identify drift from an expected operational state** and **make informed operational decisions** considering business impact. These deviations can be due to performance issues or operational degradation. Health modeling bridges the gap between tribal operational knowledge and actionable insights, enabling effective management of critical issues. It is an essential concept to maximize reliability and operational effectiveness. 
+Modeling the health of a workload enables you to **identify drift from an expected operational state** and **make informed operational decisions** considering business impact. These deviations can be due to performance issues or operational degradation. Health modeling bridges the gap between tribal operational knowledge and actionable insights, enabling effective management of critical issues. It's an essential concept to maximize reliability and operational effectiveness. 
 
-This guide offers practical guidance about modeling health, including how to build a model which assess the runtime health of a workload and all its subsystems.
+This guide offers practical guidance about modeling health, including how to build a model which assesses the runtime health of a workload and all its subsystems.
 
 |Terminology|Definition|
 |---|---|
@@ -48,11 +48,11 @@ We recommend that you represent health in one of three states:
 
 Health states are derived by combining monitoring data with domain information. Each state **must be defined** and **must be measurable**. They're calculated using _health signals_, which are individual data streams providing insights into the operational behavior of an entity. Signals can include metrics, logs, traces, or additional quality characteristics. For example, a health signal for a virtual machine entity might track the CPU utilization metric. Other signals for this entity could include memory usage, network latency, or error rates.
 
-As you define health signals, factor in the non-functional requirements for the workload. In the example of CPU utilization, include the expected thresholds for each health state. If utilization exceeds the tolerated threshold (per the workload requirements), the system transitions from 'Healthy' to 'Degraded' or 'Unhealthy'. These state changes trigger appropriate alerts or actions. 
+As you define health signals, factor in the nonfunctional requirements for the workload. In the example of CPU utilization, include the expected thresholds for each health state. If utilization exceeds the tolerated threshold (per the workload requirements), the system transitions from 'Healthy' to 'Degraded' or 'Unhealthy'. These state changes trigger appropriate alerts or actions. 
 
 Health modeling requires entities have well-defined states derived from **multiple health signals** that are **contextualized** for the workload. For example, the health definition for virtual machine could be:
 
-- **Healthy**. Key non-functional requirements and targets are fully satisfied, such as response time, resource utilization, and overall system performance. For example, 95% of requests are processed within 500 milliseconds. Virtual machine resources (such as CPU, memory, and storage) are used optimally, maintaining a balance between workload demands and available capacity. User experience is at expected levels.
+- **Healthy**. Key nonfunctional requirements and targets are fully satisfied, such as response time, resource utilization, and overall system performance. For example, 95% of requests are processed within 500 milliseconds. Virtual machine resources (such as CPU, memory, and storage) are used optimally, maintaining a balance between workload demands and available capacity. User experience is at expected levels.
 
 - **Degraded**. Resources aren't performing optimally but are still operational. For example, the storage disk is experiencing throttling issues. Users might be experiencing slow responses.
 
@@ -70,13 +70,13 @@ In the image,
 -  _Entities_ are logical components of the workload that represent aspects of the system. They can be infrastructure components, such as servers, databases, networks, and others. They can also be specific application modules, pods, services, or microservices. Or, entities can capture user interactions and system flows within the workload.
 
 > [!NOTE]
-> User and system flows summarize non-functional requirements across business scenarios involving both application and infrastructure components. This reflects business value for the application.
+> User and system flows summarize nonfunctional requirements across business scenarios involving both application and infrastructure components. This reflects business value for the application.
 
 - _Relationships_ between entities mirror the dependency chains within the system. For example, an application module may call specific infrastructure components, forming a relationship.
 
-Consider a scenario where an ecommerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This issues is critical for the organization due to the implied revenue loss. While an application developer might understand the impact of this metric spike on payments, this tribal knowledge is often not shared across the operations team.
+Consider a scenario where an ecommerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This issue is critical for the organization due to the implied revenue loss. While an application developer might understand the impact of this metric spike on payments, this tribal knowledge is often not shared across the operations team.
 
-By building a health model, operators can gain immediate visibility into the issue and its impact. The payment flow depends on Azure Service Bus, one of the workload components. The visual representation reveals the degraded state of the Service Bus instance and its impact on the payments flow, allowing operators to understand the importance of the issue and focus their remediation efforts on that specific component.
+A health model can give operators immediate visibility into the issue and its impact. The payment flow depends on Azure Service Bus, one of the workload components. The visual representation reveals the degraded state of the Service Bus instance and its impact on the payments flow, allowing operators to understand the importance of the issue and focus their remediation efforts on that specific component.
 
 Here's how health modeling helped the preceding scenario:
 
@@ -181,7 +181,7 @@ Implement distributed tracing by [correlating telemetry](/azure/azure-monitor/ap
 
 Implement and run health probes outside the application to explicitly check the health and response of your application. Use probe responses as signals within your health model.
 
-The implementation can be a simple measure of the response time from the application as a whole or its individual components. Probes can run processes to measure latency and check availability, or to extract information from the application. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
+The implementation can be a measure of the response time from the application as a whole or its individual components. Probes can run processes to measure latency and check availability, or to extract information from the application. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
 
 Most load balancers support running health probes that ping application endpoints at configured intervals. Alternately, you can invoke them from an external watchdog service. A watchdog service aggregates health checks from across multiple components in the workload. Watchdogs can also host code that can perform immediate remediation for known health conditions.
 
@@ -201,7 +201,7 @@ Use evaluated health states to trigger alerts and automated action. Health shoul
 
 Typically, there's a one-to-one mapping between monitoring data and alert rules, which can lead to undesirable situations, such as alert storms and ambient alert noise. For example, in a compute cluster, high volumes of VM-level alerts based on CPU utilization and error count can overwhelm operators during failures causing delays in resolution. Similarly, when there's a high number of configured alerts, ambient alert noise often results in alerts being overlooked or ignored.
 
-A health model introduces separation between monitoring data and alert rules. Because a health definition aggregates many signals into a single health state. The number of alerts consequently decreases allowing operators to focus on only high-value alerts that are critical for the business. Consider the ecommerce scenario, an alert can be defined to notify changes in the health of the process payments flow rather than underlying resources such as the Service Bus queue.
+A health model introduces separation between monitoring data and alert rules. A health definition aggregates many signals into a single health state. The number of alerts consequently decreases allowing operators to focus on only high-value alerts that are critical for the business. Consider the ecommerce scenario, an alert can be defined to notify changes in the health of the process payments flow rather than underlying resources such as the Service Bus queue.
 
 > [!NOTE]
 > The ability to alert across all layers of the health model provides flexibility for the different workload personas. Application owners and product managers could be alerted to health state changes in key business scenarios or the entire workload. Operators could be alerted based on the health of infrastructure or application components.
