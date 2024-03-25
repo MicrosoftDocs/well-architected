@@ -48,7 +48,7 @@ The [**Reliability design principles**](/azure/well-architected/resiliency/princ
 
 ##### Design checklist
 
-Start your design strategy based on the [**design review checklist for Reliability**](../reliability/checklist.md) and determine its relevance to your business requirements while keeping in mind the SKUs and features of App Service and their dependencies. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [**design review checklist for Reliability**](../reliability/checklist.md) and determine its relevance to your business requirements while keeping in mind the tiers and features of App Service and their dependencies. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -105,7 +105,7 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >    Azure App Service imposes resource limits on hosted apps. These limits are determined by the associated App Service plan. Make sure your tests validate that the app runs within those limits, For more information, [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?branch=main#app-service-limits).
 >
-> - **Use health probes to identify unresponsive workers**. App Service has built in capabilities that periodically pings a specific path of your application. If an instance is unresponsive, it's removed the load balancer and replaced with a new instance. 
+> - **Use health probes to identify unresponsive workers**. App Service has built-in capabilities that periodically ping a specific path of your web application. If an instance is unresponsive, it's removed from the load balancer and replaced with a new instance.
 
 
 ##### Recommendations
@@ -135,7 +135,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Create segmentation through isolation boundaries to contain breach**. Apply _segmentation of identity_, for example, implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege to limit access rights to only what's necessary. Also create _segmentation at the network level_. For example, [inject App Service Apps in an Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet) for isolation and define network security groups to filter traffic.
 >
->   App Service Plan offers the App Service Environment (ASE) SKU that provides a higher degree of isolation. With ASE, you get dedicated compute and network.  
+>   App Service Plan offers the App Service Environment (ASE) tier that provides a higher degree of isolation. With ASE, you get dedicated compute and network.  
 >
 > - **Apply access controls on identities** to restrict both _inward access to the Web App_ and _outward access from the Web App_ to other resources. This helps maintain the overall workload's security posture. 
 >
@@ -194,12 +194,40 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 > [!div class="checklist"]
 >
+> - **Estimate the initial cost**. As part of your cost modeling exercise, use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to evaluate the approximate costs associated with various tiers based on the number of instances you plan to run. Each App Service tier offers different compute options. 
+>   Continuously monitor the cost model to track expenditure.
+>
+> - **Evaluate the discounted options**. Higher tiers include dedicated compute instances. You can apply the reservation discount if your workload has a predictable and consistent usaeg pattern. To make the right choice on the type of reservation, make sure you analyze usage data. For more information, see [Save costs with Azure App Service reserved instances](/azure/cost-management-billing/reservations/prepay-app-service).
+>
+> - **Have a good understanding of the usage meters**. To Do. 
+>
+> - **Consider the balance between density and isolation**. App Service Plans allow you to host multiple applications on the same compute, sharing environments to save costs. One use case is independent scaling. If apps have different usage or spike patterns, consider isolating them. For guidance, see [Tradeoffs](#tradeoffs).
+>
+> - **Evaluate the impact of your scaling strategy on cost**. When implementing autoscaling, it's crucial to properly design, test, and configure not only for scaling out but also for scaling in. So, be precise about maximum and minimum limits on autoscaling.
+>
+>   For reliable scaling, initialize the application proactively rather than wait until the CPU reaches 95% utilization. By triggering scaling at around 65%, you allow sufficient time for new instances to be allocated and initialized during the scaling process. However, that might lead to  unused capacity.
+>
+>   It's recommended that you combine and balance scaling up and scaling out mechanisms. For example, the app can scale up for some time and then scale out as necessary. It's worth exploring higher tiers because they offer larger capacity and efficient resource utilization. Based on usage patterns, higher Premium tiers might be cost effective because they are more capable.
+>
+> - **Optimize environment costs.**  Consider Basic or Free tier for running preproduction environments. These are low performance tiers that are less expensive and might be suitable for experimental deployments. If these tiers are suitable for your workload, use governance to enforce those tiers, constrain the number of instances and CPUs, restrict scaling, and limit log retention, other possible configurations. 
+>
+> - **Implement design patterns** to reduce the volume of requests your workload generates. Consider using patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation), which can reduce costs by minimizing the number of requests.
+>
+> - **Regularly check costs related to data**. Extending data retention periods or opting for more expensive storage tiers may lead to higher storage costs. Additionally, expenses can accumulate due to both bandwidth usage and prolonged retention of logging data.
+>
+>   Consider implementing caching to minimize data transfer costs. Start with local in-memory caching, and then explore distributed caching options to reduce the number of requests to the backend database. Caching can lead to cost savings by reducing the frequency of database accesses. Additionally, if your database is located in a different region, be mindful of the bandwidth traffic costs associated with cross-region communication.
+>
+> - **Optimize deployment costs**. By leveraging deployment slots, you can optimize costs. Use them strategically for scenarios like blue-green deployments, where you switch between slots to minimize downtime and ensure smooth transitions.
+>
+>   Use deployment slots  with caution. You can introduce issues, such as exceptions or memory leaks, can impact both the existing and new instances. Make sure changes are thoroughly tested.
+
+
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|||
+|Choose the right SKU: /app-service/overview-hosting-plans||
 
 
 ## Operational Excellence
@@ -213,7 +241,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 Start your design strategy based on the [**design review checklist for Operational Excellence**](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to web apps.
 
 > [!div class="checklist"]
->
+> - Release Management. Deployment slots allow you to manage releases effectively. You can deploy your application to a slot, perform testing, and validate its functionality. Once verified, you can seamlessly swap it into production. Importantly, this process doesn’t incur additional costs because the slot runs in the same Virtual Machine (VM) environment as the production instance.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -248,7 +276,7 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
 - **Higher isolation**. Isolation is intended to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
 
-  The App Service Environment (ASE) SKU targets gives you better control over security and data protection as each app can have its own security settings. There's better containment of breaches because isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specific demand and individual capacity planning. 
+  The App Service Environment (ASE) tier gives you better control over security and data protection as each app can have its own security settings. There's better containment of breaches because isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specific demand and individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
 
@@ -259,7 +287,7 @@ A well-defined scaling strategy ensures that your application can handle varying
 
 Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. **Overprovisioning resources (prewarm instances)** provides a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, impacting user experience. The triggers for auto scaling operations must signal early enough to enable proper resource initialization by the time the resources are used.
 
-Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher SKUs include prewarmed instances. Determine whether capabilities offered with more expensive SKUs are worth the investment.  
+Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher tiers include prewarmed instances. Determine whether capabilities offered with more expensive tiers are worth the investment.  
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**.
 
