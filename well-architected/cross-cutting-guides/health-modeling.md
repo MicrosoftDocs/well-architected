@@ -19,12 +19,12 @@ This guide offers practical guidance about modeling health, including how to bui
 
 |Terminology|Definition|
 |---|---|
-|Health modeling|observability exercise focused on using business context to quantify how monitoring data is interpreted as health states.|
-|Health model|graphical representation of logical entities and their relationships for a given scope. Each node has a health state definition which enables you to rationalize monitoring data across the model.|
-|Health entity|logical component representing either an individual unit of a system, a logical combination of multiple related entities, or the overall system.|
-|Health state|defined and measurable status providing meaningful operational insights about the health of an entity.|
-|Health signal|individual data streams providing insights into the operational behavior of an entity.|
-|Model of models|aggregated modeling scope where entities represent distinct health models for component systems. |
+|Health modeling|An observability exercise using business context to interpret monitoring data as health states.|
+|Health model|A graphical representation of logical entities and their relationships for a given scope. Each node has a health state definition to rationalize monitoring data across the model.|
+|Health entity|A logical component representing either an individual unit of a system, a logical combination of multiple related entities, or the overall system.|
+|Health state|A defined and measurable status providing meaningful operational insights about the health of an entity.|
+|Health signal|Individual data streams that provide insights into the operational behavior of an entity.|
+|Model of models|An aggregated modeling scope where entities represent distinct health models for component systems.|
 
 We recommend that you watch this video to get a high level understanding of health modeling.
 
@@ -74,7 +74,7 @@ In the image,
 
 - _Relationships_ between entities mirror the dependency chains within the system. For example, an application module may call specific infrastructure components, forming a relationship.
 
-Consider a scenario where an ecommerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This issues is critical for the organization due to thew implied revenue loss. While an application developer might understand the impact of this metric spike on payments, this tribal knowledge is often not shared across the operations team.
+Consider a scenario where an ecommerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This issues is critical for the organization due to the implied revenue loss. While an application developer might understand the impact of this metric spike on payments, this tribal knowledge is often not shared across the operations team.
 
 By building a health model, operators can gain immediate visibility into the issue and its impact. The payment flow depends on Azure Service Bus, one of the workload components. The visual representation reveals the degraded state of the Service Bus instance and its impact on the payments flow, allowing operators to understand the importance of the issue and focus their remediation efforts on that specific component.
 
