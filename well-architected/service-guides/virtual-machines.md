@@ -294,4 +294,11 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Next steps
 
-See [Azure Blob Storage documentation](/azure/storage/blobs/)
+Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
+
+- Use the following reference architectures as examples of how you can apply this article's guidance to a workload:
+  - Single VM architectures: [Linux VM](/azure/architecture/reference-architectures/n-tier/linux-vm#architecture) and [Windows VM](/azure/architecture/reference-architectures/n-tier/windows-vm#architecture)
+  - Foundational architecture that focuses on infrastructure recommendations: [Virtual Machines baseline architecture](/azure/architecture/virtual-machines/baseline)
+- Build implementation expertise by using the following product documentation: 
+  - [Virtual Machines](/azure/virtual-machines/)
+  - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview)
