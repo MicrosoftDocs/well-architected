@@ -213,18 +213,9 @@ Create visual representations, such as tables or graphs, to convey the current s
 
 When visualizing your health model, consider adopting a _traffic light_ approach to make health states immediately insightful across dependency chains. 
 
-|State | Description |
-|:---|:---|
-| :::image type="content" source="_images/healthy.png" alt-text="Healthy icon." border="false"::: | Healthy The entity operates optimally and meets performance expectations. |
-| :::image type="content" source="_images/degraded.png" alt-text="Degraded icon." border="false"::: | (Degraded) The entity exhibits less than healthy behavior, indicating potential issues.|
-| :::image type="content" source="_images/unhealthy.png" alt-text="Unhealthy icon." border="false"::: | (Unhealthy) The entity is in a critical state, requiring immediate attention. |
+Assign green for healthy, amber for degraded, and red for unhealthy. By quickly identifying the color-coded states, you can efficiently locate the root cause of any application degradation.
 
-Assign green (:::image type="content" source="_images/healthy.png" alt-text="Healthy icon." border="false":::) for healthy, amber (:::image type="content" source="_images/degraded.png" alt-text="Degraded icon." border="false":::) for degraded, and red (:::image type="content" source="_images/unhealthy.png" alt-text="Unhealthy icon." border="false":::) for unhealthy.
-
-By quickly identifying the color-coded states, you can efficiently locate the root cause of any application degradation.
-
-:::image type="content" source="_images/health-impact.png" alt-text="The diagram shows visualization of a health model." border="false":::
-**TODO edit image - remove bottom row of 3 nodes and change the label for nodes above to entity 1/2/3**
+:::image type="content" source="_images/health-impact.png" alt-text="The diagram shows a health model using a traffic light approach." border="false":::
 
 > [!NOTE]
 > ​It's also recommended to consider accessibility requirements for the visually impaired when dashboarding your health model. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
