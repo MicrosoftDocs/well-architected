@@ -220,7 +220,7 @@ Assign green for healthy, amber for degraded, and red for unhealthy. By quickly 
 > [!NOTE]
 > ​It's also recommended to consider accessibility requirements for the visually impaired when dashboarding your health model. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
 
-## Adopting a health model
+## Adopt the health model
 
 After building a health model consider these use cases to drive detection and interpretation of failures or operational issues.
 
