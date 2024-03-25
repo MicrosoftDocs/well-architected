@@ -19,7 +19,7 @@ This guide offers practical guidance about modeling health, including how to bui
 
 |Terminology|Definition|
 |---|---|
-|Health modeling|An observability exercise using business context to interpret monitoring data as health states.|
+|Health modeling|An observability exercise that uses business context to interpret monitoring data as health states.|
 |Health model|A graphical representation of logical entities and their relationships for a given scope. Each node has a health state definition to rationalize monitoring data across the model.|
 |Health entity|A logical component representing either an individual unit of a system, a logical combination of multiple related entities, or the overall system.|
 |Health state|A defined and measurable status providing meaningful operational insights about the health of an entity.|
