@@ -194,7 +194,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **Workload architecture:** This document [Cost governance for Azure Arc-enabled Kubernetes](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) provides cost governance considerations and recommendations for you to keep in mind while using Azure Arc-enabled Kubernetes.
 >
-> - **Workload architecture:** AKS on Azure Stack HCI enables developers and admins deploy and manage containerized apps with Azure Kubernetes Service (AKS) on Azure Stack HCI. Review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/) for pricing details.
+> - **Workload architecture:** AKS on Azure Stack HCI enables developers and admins deploy and manage containerized apps with Azure Kubernetes Service (AKS) on Azure Stack HCI. For pricing details review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
 >
 > - **Workload architecture:** [Design review checklist for Cost Optimization](/azure/well-architected/cost-optimization/checklist) presents a set of recommendations about cost optimization for your workload to help you achieve a high return on investment (ROI) based on the business value that your workload delivers. Cost optimization balances actual costs versus perceived value, team efficiency, focus, and effort, while meeting the defined functional and nonfunctional requirements of your workload.
 
