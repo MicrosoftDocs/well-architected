@@ -69,8 +69,8 @@ In the image,
 
 -  _Entities_ are logical components of the workload that represent aspects of the system. They can be infrastructure components, such as servers, databases, networks, and others. They can also be specific application modules, pods, services, or microservices. Or, entities can capture user interactions and system flows within the workload.
 
-> [!NOTE]
-> User and system flows summarize nonfunctional requirements across business scenarios involving both application and infrastructure components. This reflects business value for the application.
+   > [!NOTE]
+   > User and system flows summarize nonfunctional requirements across business scenarios involving both application and infrastructure components. This reflects business value for the application.
 
 - _Relationships_ between entities mirror the dependency chains within the system. For example, an application module may call specific infrastructure components, forming a relationship.
 
