@@ -1274,6 +1274,11 @@
 			"source_path": "well-architected/security/storage-data-encryption.md",
 			"redirect_url": "/azure/well-architected/security/encryption",
 			"redirect_document_id": false
-		}
+		},
+				{
+			"source_path": "well-architected/cross-cutting-guides/health-model.md",
+			"redirect_url": "/azure/well-architected/cross-cutting-guides/health-modeling",
+			"redirect_document_id": true
+		}		
 	]
 }
