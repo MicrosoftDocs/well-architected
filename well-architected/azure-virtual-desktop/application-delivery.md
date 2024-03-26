@@ -132,7 +132,7 @@ Each disk has its own maximum size, throughput, and I/O operations per second (I
 - If you choose a disk size that offers adequate performance for the applications that you run in your Azure Virtual Desktop environment, users avoid experiencing severe performance issues.
 - If you choose a disk size that's not too large, you avoid paying for extra performance that's not used.
 
-The service-level agreement (SLA) of a disk for the session hosts depends on the disk type. To compare the SLAs of session hosts that use various types of disks, see [Host pool resiliency](/azure/cloud-adoption-framework/scenarios/wvd/eslz-business-continuity-and-disaster-recovery#host-pool-resiliency).
+The service-level agreement (SLA) of a disk for the session hosts depends on the disk type. To compare the SLAs of session hosts that use various types of disks, see [Host pool resiliency](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/eslz-business-continuity-and-disaster-recovery#host-pool-resiliency).
 
 ##### Recommendations
 

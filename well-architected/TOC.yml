@@ -195,7 +195,7 @@
               href: operational-excellence/automate-tasks.md
             - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
-            - name: OE:11 Deployment practices
+            - name: OE:11 Safe deployment practices
               href: operational-excellence/safe-deployments.md
             - name: OE:12 Failure mitigation
               href: operational-excellence/mitigation-strategy.md
@@ -272,12 +272,6 @@
               href: service-guides/api-management/cost-optimization.md
             - name: Operational excellence
               href: service-guides/api-management/operational-excellence.md
-        - name: Application delivery
-          items:
-            - name: Reliability
-              href: service-guides/application-delivery/reliability.md
-            - name: Operational excellence
-              href: service-guides/application-delivery/operational-excellence.md
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights
@@ -290,14 +284,6 @@
               href: service-guides/application-insights/operational-excellence.md
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
-        - name: Azure Front Door
-          items:
-            - name: Reliability
-              href: service-guides/azure-front-door/reliability.md
-            - name: Security
-              href: service-guides/azure-front-door/security.md
-            - name: Operational excellence
-              href: service-guides/azure-front-door/operational-excellence.md
         - name: Azure App Service
           items:
             - name: Reliability
@@ -328,6 +314,8 @@
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
+        - name: Azure Front Door
+          href: service-guides/azure-front-door.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -336,6 +324,10 @@
               href: service-guides/azure-load-balancer/reliability.md
             - name: Operational excellence
               href: service-guides/azure-load-balancer/operational-excellence.md
+        - name: Azure Machine Learning
+          href: service-guides/azure-machine-learning.md
+        - name: Azure OpenAI
+          href: service-guides/azure-openai.md          
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric-well-architected-framework.md
         - name: Azure SQL Database
@@ -382,16 +374,10 @@
               href: service-guides/iot-hub/reliability.md
             - name: Operational excellence
               href: service-guides/iot-hub/operational-excellence.md
-        - name: IoT Hub Device Provisioning Service
-          items:
-            - name: Reliability
-              href: service-guides/iot-hub-dps/reliability.md
-            - name: Operational excellence
-              href: service-guides/iot-hub-dps/operational-excellence.md
         - name: IP addresses
           href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
-          href: service-guides/log-analytics-cost-optimization.md
+          href: service-guides/azure-log-analytics.md
         - name: Network connectivity
           items:
             - name: Reliability
@@ -437,11 +423,13 @@
             - name: Operational excellence
               href: service-guides/traffic-manager/operational-excellence.md
         - name: Virtual Machines
-          href: service-guides/virtual-machines-review.md
+          href: service-guides/virtual-machines.md
     - name: Cross-cutting guides
       items:
       - name: Health modeling
         href: ./cross-cutting-guides/health-modeling.md        
       - name: Implementing recommendations
-        href: ./cross-cutting-guides/implementing-recommendations.md        
+        href: ./cross-cutting-guides/implementing-recommendations.md   
+      - name: Optimize using flows
+        href: ./cross-cutting-guides/optimize-workload-using-flows.md     
         
