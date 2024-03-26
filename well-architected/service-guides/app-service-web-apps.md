@@ -201,25 +201,25 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Have a good understanding of the usage meters**. To Do. 
 >
-> - **Consider the balance between density and isolation**. App Service Plans allow you to host multiple applications on the same compute, sharing environments to save costs. One use case is independent scaling. If apps have different usage or spike patterns, consider isolating them. For guidance, see [Tradeoffs](#tradeoffs).
+> - **Consider the tradeoffs between density and isolation**. App Service Plans allow you to host multiple applications on the same compute, sharing environments to save costs. For guidance, see [Tradeoffs](#tradeoffs).
 >
 > - **Evaluate the impact of your scaling strategy on cost**. When implementing autoscaling, it's crucial to properly design, test, and configure not only for scaling out but also for scaling in. So, be precise about maximum and minimum limits on autoscaling.
 >
->   For reliable scaling, initialize the application proactively rather than wait until the CPU reaches 95% utilization. By triggering scaling at around 65%, you allow sufficient time for new instances to be allocated and initialized during the scaling process. However, that might lead to  unused capacity.
+>   For reliable scaling, initialize the application proactively. For example, rather than waiting until the CPU reaches 95% utilization, trigger scaling at around 65%, to allow for sufficient time for new instances to be allocated and initialized during the scaling process. However, that might lead to  unused capacity.
 >
 >   It's recommended that you combine and balance scaling up and scaling out mechanisms. For example, the app can scale up for some time and then scale out as necessary. It's worth exploring higher tiers because they offer larger capacity and efficient resource utilization. Based on usage patterns, higher Premium tiers might be cost effective because they are more capable.
 >
-> - **Optimize environment costs.**  Consider Basic or Free tier for running preproduction environments. These are low performance tiers that are less expensive and might be suitable for experimental deployments. If these tiers are suitable for your workload, use governance to enforce those tiers, constrain the number of instances and CPUs, restrict scaling, and limit log retention, other possible configurations. 
+> - **Optimize environment costs.**  Consider Basic or Free tier for running preproduction environments. These are low performance tiers that are less expensive. If these tiers are suitable, use governance to enforce those tiers, constrain the number of instances and CPUs, restrict scaling, and limit log retention, other possible configurations. 
 >
 > - **Implement design patterns** to reduce the volume of requests your workload generates. Consider using patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation), which can reduce costs by minimizing the number of requests.
 >
 > - **Regularly check costs related to data**. Extending data retention periods or opting for more expensive storage tiers may lead to higher storage costs. Additionally, expenses can accumulate due to both bandwidth usage and prolonged retention of logging data.
 >
->   Consider implementing caching to minimize data transfer costs. Start with local in-memory caching, and then explore distributed caching options to reduce the number of requests to the backend database. Caching can lead to cost savings by reducing the frequency of database accesses. Additionally, if your database is located in a different region, be mindful of the bandwidth traffic costs associated with cross-region communication.
+>   Consider implementing caching to minimize data transfer costs. Start with local in-memory caching, and then explore distributed caching options to reduce the number of requests to the backend database. Additionally, if your database is located in a different region, be mindful of the bandwidth traffic costs associated with cross-region communication.
 >
-> - **Optimize deployment costs**. By leveraging deployment slots, you can optimize costs. Use them strategically for scenarios like blue-green deployments, where you switch between slots to minimize downtime and ensure smooth transitions.
+> - **Optimize deployment costs**. By leveraging deployment slots, you can optimize costs because the slot runs in the same compute environment as the production instance. Use them strategically for scenarios like blue-green deployments, where you switch between slots to minimize downtime and ensure smooth transitions.
 >
->   Use deployment slots  with caution. You can introduce issues, such as exceptions or memory leaks, can impact both the existing and new instances. Make sure changes are thoroughly tested.
+>   Use deployment slots  with caution. You can introduce issues, such as exceptions or memory leaks, can impact both the existing and new instances. Make sure changes are thoroughly tested. For operational guidance, see [Operational Excellence](#operational-excellence).
 
 
 
