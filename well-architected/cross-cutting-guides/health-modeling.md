@@ -56,7 +56,7 @@ Health modeling requires entities have well-defined states derived from **multip
 
 - **Degraded**. Resources aren't performing optimally but are still operational. For example, the storage disk is experiencing throttling issues. Users might be experiencing slow responses.
 
-- **Unhealthy**: Degradation is beyond tolerated limits. Resources are no longer responsive or available, and the system is no longer meeting acceptable performance levels. User experience is severely impacted. 
+- **Unhealthy**. Degradation is beyond tolerated limits. Resources are no longer responsive or available, and the system is no longer meeting acceptable performance levels. User experience is severely impacted. 
 
 The outcome of health modeling is a _model_ or a graphical representation of logical entities and their relationships for a given workload architecture. Each node has a health state definition. 
 
@@ -229,7 +229,7 @@ Health modeling can provide information specific to job functions or roles withi
 
 Tailor health insights for different stakeholders. Consider creating separate models from overlapping data sets.
 
-#### Continuous Validation
+#### Continuous validation
 
 Use your health model to optimize testing and validation processes, such as load testing and chaos testing. By incorporating health models into your engineering lifecycle, you can not only validate the runtime operational state during testing but also assess the effectiveness of your model under scale and failure scenarios.
 
