@@ -114,7 +114,7 @@ The health definitions for these machines will be different. Virtual machine A's
 
 The initial process to build a health model is a logical design exercise, which typically involves the activities described in the following sections.
 
-![Diagram showing health modeling activities.](./_images/health-model-activities.png)
+:::image type="content" source="./_images/health-model-activities.png" alt-text="Diagram that shows health modeling activities." lightbox="./_images/health-model-activities.png":::
 
 #### Evaluate your workload design
 
