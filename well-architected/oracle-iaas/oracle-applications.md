@@ -17,6 +17,8 @@ Examples of popular Oracle applications are Siebel, E-Business Suite, JD Edwards
 
 For each application, it is also important to note the application design considerations provided by the application vendor and the characteristics of the Azure services used for each design. The Azure cloud offers many features and capabilities that, if utilized properly, can lead to a performant, reliable, secure and highly available solution.
 
+For more specific architecture guidance, please review [Oracle Applications on Azure](/azure/virtual-machines/workloads/oracle/deploy-application-oracle-database-azure).
+
 ## Assessment questions
 For each of the following application design areas, what are the considerations that you take into account when deploying Oracle applications in the Azure cloud? 
 

@@ -40,10 +40,16 @@ Do you have meaningful AWR reports for your Oracle database to evaluate its perf
  
 ## Right-size your Oracle Database
 
-It is important to have the ability to analyze the AWR or Statspack reports of your Oracle workloads carefully in order to right-size your Azure infrastructure so that it is capable of meeting the performance requirements. Such analyses is based on expert understanding of all aspect of database performance and requires automated tools in order to consider all the associated variables.
+It is important to have the ability to analyze the AWR or Statspack reports of your Oracle workloads carefully in order to right-size your Azure infrastructure so that it is capable of meeting the performance requirements. 
+By right-sizing we are reviewing your workload requirements to match with the right VM SKU under careful consideration of vCPU, memory, throughput, IOPS. 
+Such analyses is based on expert understanding of all aspects of database performance and requires automated tools in order to consider all the associated variables. Please review [OMAT tool and its Prerequisites](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat).
+
+**When you use the OMAT tool, please make sure to review the partition of CPU and Cores. This will provide you the Hyper-Threaded factor. Per default the tool uses a factor of "2". Please make sure to adjust it based on your specific utilization. Additionally, we encourage you to always reach out to your local contact person if you seek expert support.**
 
 ### Assessment question
+- Did you meet the Prerequisites to use OMAT tool?
 - Do you have the capability to assess the AWR or Statspack reports in an automated manner to generate right-sizing recommendations? 
+- Did you adjust the settings based on your specific utilization in the OMAT tool output sheet?
 
 ### Recommendations
 - Gain access to automated right-sizing tools.  Oracle Migration Assistant Tool [(OMAT)](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat) helps to understand resource usage on Oracle installations (on premise or in any cloud) and recommends the most suitable virtual machine and storage that can run the same workload on Azure. It works by processing Automatic Workload Repository (AWR) reports collected from the source system. Required data is extracted from AWR files and placed into an Excel workbook. 
@@ -53,6 +59,7 @@ It is important to have the ability to analyze the AWR or Statspack reports of y
 ## Choose the right VM for your Workload
 
 The OMAT tool provides the optimal sizing recommendations for Oracle on Azure IaaS. You then have to make a decision on choosing one of the OMAT recommendations to implement your workload on Azure.
+Make sure that you chose a Virtual Machine, which is Hyper-Threaded enabled in order to gain license-savings where applicable.
 
 ### Assessment question
 Do you have the capability to compare different Azure VM families and skus in terms of cost and performance factors? 
@@ -128,6 +135,8 @@ Do you have a clear view of the compute requirements of your Oracle applications
     -	Total Throughput
     -	Backup Strategy
 - The application tier can be moved to any suitable VM SKU that meets the performance and cost optimization requirements.
+
+If you need further information on Oracle Applications on Azure, please review [Oracle Applications on Azure](/azure/virtual-machines/workloads/oracle/deploy-application-oracle-database-azure).
 
 ## Next steps
 > [!div class="nextstepaction"]
