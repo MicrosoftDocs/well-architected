@@ -426,8 +426,8 @@
           href: service-guides/virtual-machines.md
     - name: Cross-cutting guides
       items:
-      - name: Health model
-        href: ./cross-cutting-guides/health-model.md        
+      - name: Health modeling
+        href: ./cross-cutting-guides/health-modeling.md        
       - name: Implementing recommendations
         href: ./cross-cutting-guides/implementing-recommendations.md   
       - name: Optimize using flows
