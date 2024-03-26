@@ -1274,6 +1274,31 @@
 			"source_path": "well-architected/security/storage-data-encryption.md",
 			"redirect_url": "/azure/well-architected/security/encryption",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/cost-optimization",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/operational-excellence",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/performance-efficiency.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/performance-efficiency",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/reliability.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/reliability",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/security.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/security",
+			"redirect_document_id": false
 		}
 	]
 }

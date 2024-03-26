@@ -249,4 +249,4 @@ For more information, see:
 ## Next Steps
 
 >[!div class="nextstepaction"]
->[Reliability](./reliability.md)
+>[Get started](get-started.md)

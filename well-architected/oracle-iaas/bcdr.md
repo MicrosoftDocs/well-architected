@@ -73,7 +73,7 @@ For further assistance on choosing the mode for your workload requirements, plea
 
 The following architecture aims for a downtime threshold of less than 5 minutes. 
 
-![Active-Passive Architecture on Azure](active-passive.png)
+![Active-Passive Architecture on Azure](./images/active-passive.png)
 
 ### Example 2: Create a Fail-Over For Business Critical Applications in a Two Availability Zone Deployment With Active Standby
 
@@ -84,8 +84,7 @@ The following diagram aims for a downtime threshold of less than 1 minutes. Even
 
 **Note that this setup requires an Active Data Guard license.**
 
-
-![Active-Active Architecture on Azure](active-active.png)
+![Active-Active Architecture on Azure](./images/active-active.png)
 
 ## Next Steps
 

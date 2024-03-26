@@ -1,6 +1,6 @@
 ---
 title: Oracle workload security
-description: Oracle workload best practices for security
+description: Oracle workload best practices for security.
 author: ckittel
 ms.author: chkittel
 ms.date: 12/29/2022
@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 Security is one of the most important aspects of any architecture. Azure provides all the tools needed to secure your Oracle workload. Oracle Applications can contain sensible data. Peoplesoft as an HR system is one of the examples that the whole architecture must be secured properly. This can be achieved through secured authentication methods, hardened networking, and encryption.
 
-Oracle on Azure is delivered in the infrastructure as a service (IaaS) cloud model. We recommend you regularly evaluate the services and technologies used to ensure your security posture evolves with the threat landscape. Below are security recommendations for consideration. We recommend you review the [security design principles](../../well-architected/security/security-principles.md).
+Oracle on Azure is delivered in the infrastructure as a service (IaaS) cloud model. We recommend you regularly evaluate the services and technologies used to ensure your security posture evolves with the threat landscape. Below are security recommendations for consideration. We recommend you review the [security design principles](../../../well-architected/security/security-principles.md).
 
 ## Use identity management
 
