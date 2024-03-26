@@ -52,7 +52,7 @@ The web server tier, application tier and database tier reside in its own virtua
 
 A failover would require manual intervention from the customer to fail over if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
-:::image type="content" source="./images/oracle-architecture-02.png" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="./images/oracle-architecture-02.png":::
+:::image type="content" source="../images/oracle-architecture-02.png" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="./images/oracle-architecture-02.png":::
 
 ## Checklist for Reliability
 
