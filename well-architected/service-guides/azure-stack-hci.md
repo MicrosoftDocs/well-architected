@@ -20,7 +20,7 @@ This article provides architectural best practices for Azure Stack HCI. The guid
 
 We assume that you understand system design principles, have working knowledge of Azure Stack HCI, and are well versed with its features. For more information, see [Azure Stack HCI overview.](/azure-stack/hci/overview)
 
-Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient hybrid cloud architecture pattern. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment. Consider reviewing reference architectures that reflect these considerations in their design. We recommend starting with the [baseline architecture for an Azure Stack HCI](/azure/architecture/hybrid/azure-stack-robo) and [Azure Stack HCI network deployment patterns](/azure-stack/hci/plan/choose-network-pattern). Also review the [Prepare your environment for a hybrid and multi-cloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready), which provides an architectural approach and references to prepare landing zone subscriptions for a scalable deployment and implementation of Azure Stack HCI.
+Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient hybrid cloud architecture pattern. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment. Consider reviewing reference architectures that reflect these considerations in their design. We recommend starting with the [baseline architecture for an Azure Stack HCI](/azure/architecture/hybrid/azure-stack-robo) and review [Azure Stack HCI network deployment considerations](/azure-stack/hci/plan/cloud-deployment-network-considerations). Also review the [Prepare your environment for a hybrid and multi-cloud scenario](/azure/cloud-adoption-framework/scenarios/hybrid/ready), which provides an architectural approach and references to prepare landing zone subscriptions for a scalable deployment and implementation of Azure Stack HCI.
 
 > [!IMPORTANT]
 >
@@ -43,7 +43,7 @@ This guidance does not aim to address all workload resource types, as these can 
 
 ## Reliability
 
-In hybrid cloud deployments, we recognize that failures are inevitable, instead of aiming to avoid every possible failure, the goal is to reduce the effects of one component failing. Use these design checklists and configuration suggestions to lessen the impact of a component failure for workloads deployed on Azure Stack HCI.
+In hybrid cloud deployments, we recognize that failures are inevitable; instead of aiming to avoid every possible failure, the goal is to reduce the effects of one component failing. Use these design checklists and configuration suggestions to lessen the impact of a component failure for workloads deployed on Azure Stack HCI.
 
 When discussing reliability for Azure Stack HCI, it is important to distinguish between _platform reliability_ and _workload reliability_. Platform reliability is the responsibility of platform administrators, while workload reliability has a dependency on the platform, it is the responsibility of the application owners and/or developers to design the application(s) that can deliver the defined reliability targets. These roles and responsibilities can be owned by separate teams or individuals, or belong to a single team, either way the recommendations and considerations below can be used to increase the reliability of workloads deployed on Azure Stack HCI.
 
@@ -71,7 +71,7 @@ The  **design checklist** and list of **recommendations** below indicate if each
 >
 > - **Workload architecture backup:** Ensure workload backups are configured and tested regularly based on your workload data recovery / retention requirements, including the file and folder level restore capabilities. [Azure Backup can be used to enable host and/or guest level backups of Azure Stack HCI](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines), or review data protection solutions available from Backup ISV partners.
 >
-> - **HCI platform + workload architecture:** Reliability and resiliency design requirements are application and workload type specific, for example [Arc Virtual Machines (VMs)](/azure-stack/hci/manage/create-arc-virtual-machines), [AKS enabled by Arc](/azure/aks/hybrid/scale-requirements), and [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/azure-stack-hci-overview), when deploying these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions to meet your workload reliability targets.
+> - **HCI platform + workload architecture:** Reliability and resiliency design requirements are application and workload type specific, for example [Arc Virtual Machines (VMs)](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Arc-enabled Kubernetes](/azure/aks/hybrid/scale-requirements), and [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/azure-stack-hci-overview), when deploying these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions to meet your workload reliability targets.
 
 ### Recommendations
 
@@ -90,9 +90,13 @@ For more suggestions, see [Principles of the reliability pillar](/azure/well-arc
 
 AKS Hybird - section below needs complete review....
 
-Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI controls can increase the security posture of your application workloads, we recommend reviewing the [Security design principles](../security/principles.md). If your Azure Stack HCI clusters will host sensitive workload that comply with the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [Azure Stack HCI security considerations](/azure-stack/hci/concepts/security).
+Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI controls can increase the security posture of your application workloads, we recommend reviewing the [Security design principles](../security/principles.md). If you plan to deploy workloads that must comply with specific regulatory compliance regulations, please review [Azure Stack HCI and security standards](/azure-stack/hci/assurance/azure-stack-security-standards) for information on the following security standards:
 
-To learn about DoD Impact Level 5 (IL5) support and requirements with Azure Stack HCI, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-hybrid-workloads-service).
+- Federal Information Processing Standard (FIPS) 140
+- Common Criteria for Information Technology Security Evaluation (CC)
+- International Organization for Standardization (ISO/IEC) 27001:2022
+- Payment Card Industry (PCI) Data Security Standards (DSS)
+- Health Insurance Portability and Accountability Act of 1996 (HIPAA)
 
 When discussing security of Azure Stack HCI, it is important to distinguish between _HCI platform security_ and _workload security_. HCI platform security is the responsibility of the platform or cluster administrators, while workload security is the responsibility of the workload admins and application developers. Azure Stack HCI has considerations and recommendations for both roles.
 
@@ -104,15 +108,15 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **HCI platform security controls:** During the cloud based deployment of Azure Stack HCI, it is recommended to select and use the [Default Security Features and Settings](/azure-stack/hci/concepts/security-features), which enables more than 300 OS security settings, Windows Defender Application Control, Credential Guard, BitLocker encryption for the OS and data volumes and Signing for external SMB traffic that provide the highest level of security. These settings can be customized based on your organizational security requirements.
 >
-> - **HCI platform security controls:** Use [Microsoft Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to audit and remediate your security posture of Azure Stack HCI clusters, nodes and workloads, providing a single pane of glass experience to help manage security posture.
+> - **HCI platform security controls:** Use [Microsoft Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to measure the security posture of Azure Stack HCI nodes and workloads, providing a single pane of glass experience to help manage security compliance.
 >
-> - **HCI platform security controls:** Use Microsoft Defender for Servers deployed in AKS Hybrid with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and workloads.
+> - **HCI platform security controls:** Use [Microsoft Defender for Servers](/azure-stack/hci/manage/manage-security-with-defender-for-cloud#step-2-turn-on-defender-for-servers-for-individual-servers-and-arc-vms) on Azure Stack HCI nodes to provide endpoint detection and response (EDR) capabilities. This can be linked with [Azure Sentinel](/azure/sentinel/overview) to provide a SIEM solution to detect and respond to security threats.
 >
 > - **HCI platform security controls:** Configure Entra ID user account membership of the [built-in roles based access control (RBAC) roles](/azure-stack/hci/manage/assign-vm-rbac-roles) to control access to VMs and VM resources on your Azure Stack HCI, such as HCI Administrator, VM Contributor and VM Reader.
 >
 > - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as software defined networking (SDN) and/or separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure HCI cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as "_keep-alive probes_" from clustering and/or integration services agent communication.
 >
-> - **Workload security controls:** Use Trusted launch for virtual machines that protect against persistent and standard attacks on Gen 2 virtual machines with configurable features like secure boot and virtual Trusted Platform Module (vTPM).
+> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) virtual machines to improve security on Gen 2 virtual machines, that provides secure boot,  that can benefit from the virtual Trusted Platform Module (vTPM).
 >
 > - **Workload security controls:** Use Azure Policy to re-use the built-in policies such as security baselines for Windows and Linux workloads or create new custom policies for auditing security settings and assessing the compliance state of the target workloads deployed on Azure Stack HCI.
 
@@ -194,7 +198,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **Workload architecture:** This document [Cost governance for Azure Arc-enabled Kubernetes](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) provides cost governance considerations and recommendations for you to keep in mind while using Azure Arc-enabled Kubernetes.
 >
-> - **Workload architecture:** AKS on Azure Stack HCI enables developers and admins deploy and manage containerized apps with Azure Kubernetes Service (AKS) on Azure Stack HCI. For pricing details review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
+> - **Workload architecture:** Azure Arc-enabled Kubernetes provides the ability for developers and admins deploy and manage containerized apps using Azure Kubernetes Service (AKS) on Azure Stack HCI. For pricing details review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
 >
 > - **Workload architecture:** [Design review checklist for Cost Optimization](/azure/well-architected/cost-optimization/checklist) presents a set of recommendations about cost optimization for your workload to help you achieve a high return on investment (ROI) based on the business value that your workload delivers. Cost optimization balances actual costs versus perceived value, team efficiency, focus, and effort, while meeting the defined functional and nonfunctional requirements of your workload.
 
@@ -275,7 +279,7 @@ As you make design choices for Azure Stack HCI, review the [Performance efficien
 >
 > - **HCI platform architectures:** Use the Azure Stack HCI validated hardware or integrated systems from OEM partner offerings. Consider using the Premium Solution Builders available in the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog#catalog) to optimize the performance of Azure Stack HCI system.
 >
-> - **HCI platform architectures:** Use all-flash (NVMe or SSD) based solutions for workloads that have high performance / low latency requirements. This includes but is not limited to highly transactional database technologies, production Arc enabled Kubernetes clusters or any mission or business critical workloads with low latency or high through-put storage requirements.
+> - **HCI platform architectures:** Use all-flash (NVMe or SSD) based solutions for workloads that have high performance / low latency requirements. This includes but is not limited to highly transactional database technologies, production Azure Arc-enabled Kubernetes clusters or any mission or business critical workloads with low latency or high through-put storage requirements.
 >
 > - **HCI platform architecture:** Baseline HCI cluster storage performance prior to deploying production workloads. One option is to use VMFleet, which is a tool that can be used to generate load and measure the performance of a storage subsystem. Review [Using VMFleet for measuring storage subsystem performance](https://github.com/microsoft/diskspd/wiki/VMFleet) for more information.
 >
@@ -296,7 +300,7 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 ## Azure Policies
 
-Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
+Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc-enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
 
 To start with, review the list of built-in policies available for Azure Stack HCI, such as:  
 
