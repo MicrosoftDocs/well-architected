@@ -262,6 +262,14 @@ Health data gradually diminishes in value over time. To optimize operational eff
 > [!NOTE]
 > When archiving health data, ensure it remains coupled with the configuration state of the model. Without this context, interpreting state changes becomes challenging.
 
+## Azure facilitation
+
+Health modeling is a logical exercise that is tooling and technology agnostic. However, it's an intensive process that is often complex and requires significant engineering investment.
+
+[Azure Monitor health models](/azure/azure-monitor/health-models/overview) enable you to build and interact with health models natively in Azure. Each model that you build is a data platform that integrates with the rest of Azure Monitor across monitoring data stores, alerting, and out-of-the-box visualizations, both graphical and tabular. For advanced users, query/API data plane experiences allow flexible utilization of health states so you can use health insights with your existing operational stack, such as a Grafana dashboard.
+
+![A screen grab of Azure Monitor health models.](./_images/azure-monitor-health-models.png)
+
 ## Related links
 
 - For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
