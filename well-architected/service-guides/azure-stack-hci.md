@@ -116,7 +116,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as software defined networking (SDN) and/or separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure HCI cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as "_keep-alive probes_" from clustering and/or integration services agent communication.
 >
-> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) virtual machines to improve security of Gen 2 virtual machines, by utilizing OS features such as secure boot using the virtual Trusted Platform Module (vTPM).
+> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) virtual machines to improve security of Gen 2 virtual machines, by utilizing OS features such as Secure Boot that can use a virtual Trusted Platform Module (vTPM).
 >
 > - **Workload security controls:** Use Azure Policy to re-use the built-in policies such as security baselines for Windows and Linux workloads or create new custom policies for auditing security settings and assessing the compliance state of the target workloads deployed on Azure Stack HCI.
 
