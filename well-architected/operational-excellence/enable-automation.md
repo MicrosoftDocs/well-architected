@@ -110,9 +110,9 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Configuration management
 
-[**Azure Automation State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool managed by a feature of Azure Policy called [guest configuration](/azure/governance/machine-configuration/overview) that you can use to write, manage, and compile PowerShell Desired State Configuration (DSC) configurations for nodes in any cloud or on-premises datacenter. You can also use the service to import DSC resources and assign configurations to target nodes.
+[**Azure Automation State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool managed by the Azure Policy feature [guest configuration](/azure/governance/machine-configuration/overview) that you can use to write, manage, and compile PowerShell Desired State Configuration (DSC) configurations for nodes in any cloud or on-premises datacenter. You can also use this tool to import DSC resources and assign configurations to target nodes.
 
-[**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
+[**Azure App Configuration**](/azure/azure-app-configuration/overview) is a managed service that you can use to centralize your application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
 
 ### Change tracking and inventory
 
