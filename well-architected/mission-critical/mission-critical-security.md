@@ -236,7 +236,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 - After a role assignment is changed, there's a latency of up to 10 minutes (600 seconds) for the role to be applied.
   - There's a limit of 2,000 Azure role assignments per subscription.
 
-- Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
+- Azure Key Vault underlying hardware security modules (HSMs) have [FIPS 140 validation](/azure/key-vault/keys/about-keys#compliance).
   - A dedicated [Azure Key Vault managed HSM](/azure/key-vault/managed-hsm/overview) is available for scenarios requiring FIPS 140-2 Level 3 compliance.
 
 - Azure Key Vault provides high availability and redundancy to help maintain availability and prevent data loss.

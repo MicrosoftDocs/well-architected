@@ -3,7 +3,7 @@ title: Recommendations for monitoring and threat detection
 description: Learn how to get information about events, capture information about the workload, and gain awareness of suspicious activities. 
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
@@ -179,7 +179,9 @@ Microsoft Sentinel can also use threat intelligence feeds from various sources. 
 
 Microsoft Sentinel can analyze user behavior from monitoring data. For more information, see [Identify advanced threats with User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel](/azure/sentinel/identify-threats-with-entity-behavior-analytics).
 
-Defender and Microoft Sentinel work together, despite some overlap in functionality. This collaboration enhances your overall security posture by helping to ensure comprehensive threat detection and response.
+Defender and Microsoft Sentinel work together, despite some overlap in functionality. This collaboration enhances your overall security posture by helping to ensure comprehensive threat detection and response.
+
+Take advantage of **Azure Business Continuity Center** to identify gaps in your business continuity estate and defend against threats like ransomware attacks, malicious activities, and rogue-administrator incidents. For more information, see [What is Azure Business Continuity Center?](/azure/business-continuity-center/business-continuity-center-overview).
 
 ### Networking
 

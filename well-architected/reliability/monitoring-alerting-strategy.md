@@ -3,7 +3,7 @@ title: Recommendations for designing a reliable monitoring and alerting strategy
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
@@ -38,7 +38,9 @@ Before you create a monitoring and alerting strategy, perform the following task
 
 - Design a robust [testing strategy](testing-strategy.md).
 
-Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy on the [health models](metrics.md) that you develop for your critical flows and the workloads that the critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your monitoring posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and the alerts to the appropriate teams.
+- [Model the health](../cross-cutting-guides/health-modeling.md) of your workload and its components.
+
+Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy by creating a [health model](../cross-cutting-guides/health-modeling.md) for your critical flows and the components that these critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your operational posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and notifies appropriate teams.
 
 Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
 
@@ -64,9 +66,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
 
-- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
+- Visualize the real-time health of your environment.
 
-- Use data that's gathered during incidents to continuously improve your [health models](metrics.md) and your monitoring and alerting strategy.
+- Use data that's gathered during incidents to continuously improve your health models and your monitoring and alerting strategy.
 
 - Incorporate cloud platform monitoring and alerting services, including:
 
@@ -136,6 +138,8 @@ Implement the following recommendations to design a monitoring and alerting stra
 - [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure-native monitoring product for SAP landscapes that run on Azure.
 
 - [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at scale.
+
+- [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center to centralize management of business continuity protection across Azure and hybrid workloads. Azure Business Continuity Center pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policy, all conveniently accessible in one location.
 
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
 
