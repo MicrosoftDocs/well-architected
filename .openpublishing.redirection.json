@@ -1319,7 +1319,8 @@
 			"source_path": "well-architected/oracle-iaas/security.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/security",
 			"redirect_document_id": false
-		}
+		},
+		{
 			"source_path": "well-architected/cross-cutting-guides/health-model.md",
 			"redirect_url": "/azure/well-architected/cross-cutting-guides/health-modeling",
 			"redirect_document_id": true
