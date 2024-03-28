@@ -1,6 +1,6 @@
 ---
 title: What's new in the Azure Well-Architected Framework
-description: Find out what's new in the Azure Well-Architected Framework.
+description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
 ms.date: 11/15/2023
@@ -9,7 +9,72 @@ ms.topic: conceptual
 
 # What's new in the Azure Well-Architected Framework
 
-Find out how Azure Well-Architected Framework changed recently.
+Find out about recent changes in the Azure Well-Architected Framework.
+
+## March 2024
+
+### New articles
+
+- [Azure Well-Architected Framework review for Log Analytics](./service-guides/azure-log-analytics.md): Learn about the architectural recommendations for Log Analytics workspaces in Azure Monitor. These workspaces are the primary log and metric sink for a large portion of the monitoring data. Workspaces support multiple features in Azure Monitor, including ad-hoc queries, visualizations, and alerts.
+
+## February 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Front Door](./service-guides/azure-front-door.md): Find design considerations and configuration recommendations for Azure Front Door. Azure Front Door is a global load balancer and content delivery network that routes HTTP and HTTPS traffic.
+- [Azure Well-Architected Framework perspective on Azure OpenAI](./service-guides/azure-openai.md): Find design considerations and configuration recommendations for Azure OpenAI. This service provides REST API access to the OpenAI large language models (LLMs), adding capabilities for Azure networking and security.
+- [Azure Well-Architected Framework perspective on Azure Machine Learning](./service-guides/azure-machine-learning.md): Find design considerations and configuration recommendations for Azure Machine Learning. This service provides a cloud-based environment you can use to train, deploy, automate, manage, and track machine learning models. 
+
+### Updated articles
+
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We expanded the guidance for using official icons and service names to include examples of links to icons for Microsoft services.
+- [Azure Well-Architected Framework review for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We updated the design checklist and the recommendations for AKS configuration. Find information about Azure Spot Virtual Machines, Cluster Autoscaler, Node Autoprovision, and the AKS Cost Analysis add-on.
+- [Recommendations for securing a development lifecycle](./security/secure-development-lifecycle.md): We streamlined and clarified guidance about the security design patterns that the application code should implement. 
+- [Encryption strategy recommendations](./security/encryption.md): We added information about confidential computing and explained how it fits into key design strategies.
+  
+## January 2024
+
+In January we added two new articles, and we updated two articles.
+
+### New articles
+
+- In [Virtual Machines and scale sets](./service-guides/virtual-machines.md), find guidance about how to review your virtual machine and scale set workloads by using the Well-Architected Framework. Use the Azure Virtual Machines compute service to create and run virtual machines on the Azure platform. You can choose from different SKUs, operating systems, and configurations. 
+
+- In [Optimize workload design using flows](./cross-cutting-guides/optimize-workload-using-flows.md), learn how to optimize workloads through structured flow design. Take a look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. As you work to align flows with business processes and use cases, find practical examples and recommendations in this article.
+
+### New articles
+
+Find updates to the following articles in the Operational Excellence pillar:
+
+- In [Recommendations for implementing automation](operational-excellence/automate-tasks.md), find information about how to use Azure Update Manager to help you manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window.
+
+- In [Recommendations for enabling automation in a workload](operational-excellence/enable-automation.md), find a new section about using Azure Monitoring Agent for change tracking and inventory. Automate drift detection, the inventory-running services, and installed packages on the virtual machines in your workload.  
+
+## December 2023
+
+In December, we added a workload and updated recommendations for two Well-Architected Framework pillars.
+
+### New article
+
+We added a new workload for workload owners, technical stakeholders, and business stakeholders. This documentation is appropriate for roles that are accountable for designing, building, and maintaining a solution for running applications and desktops in a cloud environment. Use the [Azure Virtual Desktop workloads](./azure-virtual-desktop/overview.md) documentation as your go-to resource for optimizing the way you operate applications and desktops in Azure Virtual Desktop. 
+
+### Updated articles
+
+Updated recommendations for the Reliability pillar:
+
+- [Recommendations for handling transient faults](reliability/handle-transient-faults.md)
+- [Recommendations for developing background jobs](reliability/background-jobs.md)
+- [Recommendations for designing a disaster recovery strategy](reliability/disaster-recovery.md)
+- [Recommendations for designing for redundancy](reliability/redundancy.md)
+
+Updated recommendations for the Operational Excellence pillar:
+
+- [Recommendations for implementing automation](operational-excellence/automate-tasks.md)
+- [Recommendations for designing an emergency response strategy](operational-excellence/emergency-response.md)
+- [Recommendations for enabling automation in a workload](operational-excellence/enable-automation.md)
+- [Recommendations for using infrastructure as code](operational-excellence/infrastructure-as-code-design.md)
+- [Recommendations for designing a deployment failure mitigation strategy](operational-excellence/mitigation-strategy.md)
+- [Recommendations for safe deployment practices](operational-excellence/safe-deployments.md)
 
 ## November 2023
 

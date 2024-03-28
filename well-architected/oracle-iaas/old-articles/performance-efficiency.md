@@ -47,7 +47,7 @@ Explore the following table of recommendations to optimize your Oracle database 
 
 | Recommendation | Benefit |
 | --- | --- |
-| Move from RMAN backups to Volume Snapshots | Databases larger than 1 TB can benefit from removal of streaming backup utilities, such as RMAN or Datapump (exports) and can save 20-40% IO used by these utilities.|
+| Move from RMAN backups to volume snapshots | Databases larger than 1 TB can benefit from removal of streaming backup utilities, such as RMAN or Datapump (exports) and can save 20-40% IO used by these utilities. Volume snapshots are near instant and cause no storage traffic, making them suited for the first line of data protection. Volume snapshots or complete volumes can be replicated to other zones or regions and backed up for additional data protection. For more information, see [Understand data protection and disaster recovery options](/azure/azure-netapp-files/data-protection-disaster-recovery-options).|
 | Collect size of database, redo generation, and backup retention/size to determine the target minimal load on resources and the network. | AWR reports provide an insight into it. The numbers will help you to right-size your environment. |
 | Determine if using premium SSD is best for the OS disk with the earlier mentioned sizing assessment in mind. | If using premium, enable host level read-only caching for datafiles. |
 | Ensure host level caching is disabled for redo logs. | Higher Performance. |
