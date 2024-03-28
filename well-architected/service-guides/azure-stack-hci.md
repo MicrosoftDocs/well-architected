@@ -39,7 +39,7 @@ This review article focuses on the interrelated decisions for these Azure resour
 - Azure Stack HCI (platform), version 23H2
 - Virtual Machines (workload)
 
-This guidance does not aim to address all workload resource types, as these can have specific architecture aspects and suggestions, such as Azure Arc-enabled Kubernetes or Azure Virtual Desktop (AVD).
+This guidance does not aim to address all workload resource types, as these can have specific architecture aspects and suggestions, such as Azure Arc-enabled AKS or Azure Virtual Desktop (AVD).
 
 ## Reliability
 
@@ -71,7 +71,7 @@ The  **design checklist** and list of **recommendations** below indicate if each
 >
 > - **Workload architecture backup:** Ensure workload backups are configured and tested regularly based on your workload data recovery / retention requirements, including the file and folder level restore capabilities. [Azure Backup can be used to enable host and/or guest level backups of Azure Stack HCI](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines), or review data protection solutions available from Backup ISV partners.
 >
-> - **HCI platform + workload architecture:** Reliability and resiliency design requirements are application and workload type specific, for example [Arc Virtual Machines (VMs)](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Arc-enabled Kubernetes](/azure/aks/hybrid/scale-requirements), and [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/azure-stack-hci-overview), when deploying these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions to meet your workload reliability targets.
+> - **HCI platform + workload architecture:** Reliability and resiliency design requirements are application and workload type specific, for example [Arc Virtual Machines (VMs)](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Arc-enabled AKS](/azure/aks/hybrid/scale-requirements), and [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/azure-stack-hci-overview), when deploying these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions to meet your workload reliability targets.
 
 ### Recommendations
 
@@ -112,11 +112,11 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **HCI platform security controls:** Use [Microsoft Defender for Servers](/azure-stack/hci/manage/manage-security-with-defender-for-cloud#step-2-turn-on-defender-for-servers-for-individual-servers-and-arc-vms) on Azure Stack HCI nodes to provide endpoint detection and response (EDR) capabilities. This can be linked with [Azure Sentinel](/azure/sentinel/overview) to provide a SIEM solution to detect and respond to security threats.
 >
-> - **HCI platform security controls:** Configure Entra ID user account membership of the [built-in roles based access control (RBAC) roles](/azure-stack/hci/manage/assign-vm-rbac-roles) to control access to VMs and VM resources on your Azure Stack HCI, such as HCI Administrator, VM Contributor and VM Reader.
+> - **HCI platform security controls:** Configure Azure Entra ID user account membership of the [built-in roles based access control (RBAC) roles to manage virtual machines](/azure-stack/hci/manage/assign-vm-rbac-roles). These groups delegate permissions that control access to VMs and VM resources, such as the 'Azure Stack HCI Administrator', 'Azure Stack HCI VM Contributor' and 'Azure Stack HCI VM Reader' roles.
 >
-> - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as software defined networking (SDN) and/or separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure HCI cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as "_keep-alive probes_" from clustering and/or integration services agent communication.
+> - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure HCI cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as "_keep-alive probes_" from clustering and/or integration services agent communication to the Guest OS.
 >
-> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) virtual machines to improve security of Gen 2 virtual machines, by utilizing OS features such as Secure Boot that can use a virtual Trusted Platform Module (vTPM).
+> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) virtual machines to improve security of Gen 2 virtual machines, by utilizing OS features of modern operating systems, such as Secure Boot that can use a virtual Trusted Platform Module (vTPM).
 >
 > - **Workload security controls:** Use Azure Policy to re-use the built-in policies such as security baselines for Windows and Linux workloads or create new custom policies for auditing security settings and assessing the compliance state of the target workloads deployed on Azure Stack HCI.
 
@@ -129,28 +129,30 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 |Use the **[Security baseline and drift controls](/azure-stack/hci/manage/manage-secure-baseline)** settings to apply and maintain security settings on cluster nodes.|This helps to protect against changes / drift, by automatically refreshing security settings every 90 minutes to enforce the intended security posture of Azure Stack HCI.|
 |Use **[Manage Windows Defender Application Control](/azure-stack/hci/manage/manage-wdac)** in Azure Stack HCI|Windows Defender Application Control (WDAC) reduces the attack surface of Azure Stack HCI, use Azure Portal or PowerShell to view policy settings and control policy modes. WDAC policies help to control which drivers and apps are allowed to run on your system. |
 |**[Enable Volume encryption using BitLocker](/azure-stack/hci/concepts/security-features#volume-encryption-via-bitlocker)** for data encryption-at-rest protection|BitLocker protects OS and data volumes, encrypting the HCI cluster shared volumes (CSVs) created on the Azure Stack HCI using XTS-AES 256-bit encryption. This is a recommended default setting, enabled during HCI cluster deployment for all the data volumes.|
-|Export **[BitLocker Recovery Keys](/azure-stack/hci/manage/manage-bitlocker#get-bitlocker-recovery-keys)** to store them in a secure location, external from the HCI cluster.|BitLocker keys may be required during specific troubleshooting or recovery actions, it is recommended to export, save and backup encrypts keys for OS and data volumes from each HCI cluster using the 'Get-AsRecoveryKeyInfo' PowerShell cmdlet.|
-|Based on your organizational requirements, consider periodically, **[changing the password associated with the deployment user identity for Azure Stack HCI](/azure-stack/hci/manage/manage-secrets-rotation)**.|The PowerShell cmdlet 'Set-azurestacklcmuserpassword' provides the ability to rotate AzureStackLCMUserCredential domain administrator credential secrets, which is the user identity that connects to HCI cluster nodes for lifecycle management (LCM).|
-|Configure **[Syslog forwarding of security events](/azure-stack/hci/concepts/security-features#syslog-forwarding-of-security-events)** to increase the security monitoring and alerting posture.|Forwarding security event data using syslog forwarding agents installed on the nodes by default, provides alerting and reporting capabilities through integration with customer-managed security information & event management (SIEM) solution.|
-|Review **[Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing)** that can be used to enhance Data-in transit protection.|SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI system and other systems. Configuring signing for external SMB traffic between the Azure Stack HCI system and others helps to prevent relay attacks.|
-|Review the **[SMB Encryption](/windows-server/storage/file-server/smb-security#smb-encryption)** setting that can be used to enhance Data-in transit protection.| "SMB Encryption for in-cluster traffic" setting encrypts traffic between servers in the HCI cluster on your storage network.|
+|Export **[BitLocker Recovery Keys](/azure-stack/hci/manage/manage-bitlocker#get-bitlocker-recovery-keys)** to store them in a secure location, external from the HCI cluster.|BitLocker keys may be required during specific troubleshooting or recovery actions, it is recommended to export, save and backup encrypts keys for OS and data volumes from each HCI cluster using the 'Get-AsRecoveryKeyInfo' PowerShell cmdlet, and save the keys in a secure external location such as Azure Key Vault.|
+|Based on your organizational requirements, consider periodically, **[changing the password associated with the deployment user identity for Azure Stack HCI](/azure-stack/hci/manage/manage-secrets-rotation)**.|The PowerShell cmdlet 'Set-azurestacklcmuserpassword' provides the ability to rotate AzureStackLCMUserCredential domain administrator credential secrets, which is the user identity that connects to HCI cluster nodes for lifecycle management (LCM), such as node repair actions.|
+|It is recommended to use a SIEM solution to increase security monitoring and alerting capabilities, to achieve this it is possible to **[Onboard Azure Arc-enabled servers (HCI platform nodes) to Microsoft Sentinel](/azure/azure-arc/servers/scenario-onboard-azure-sentinel)**. Alternatively, if you are using another SIEM solution, configure **[Syslog forwarding of security events](/azure-stack/hci/concepts/security-features#syslog-forwarding-of-security-events)** to the chosen solution.|Forwarding security event data using Microsoft Sentinel or Syslog forwarding provides alerting and reporting capabilities through integration with customer-managed security information & event management (SIEM) solution.|
+|Review **[Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing)** that can be used to enhance Data-in transit protection, which is configured as enabled in the “Default Security Settings”.|SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI platform and systems external to the platform (North / South). Configuring signing for external SMB traffic between the Azure Stack HCI platform and other systems helps to prevent relay attacks.|
+|Review the **[SMB Encryption](/windows-server/storage/file-server/smb-security#smb-encryption)** setting that can be used to enhance Data-in transit protection, which is configured as enabled in the “Default Security Settings”.|SMB Encryption for in-cluster traffic setting controls the encryption of traffic between physical nodes in the Azure Stack HCI cluster (East / West) on your storage network.|
 
 For more information on the security features introduced in 23H2, see [Review Security Features](/azure-stack/hci/concepts/security-features).
 
 #### HCI platform security
 
-Enabling Microsoft Defender for Cloud to a subscription registered with hybrid resources such as Azure Stack HCI and Azure Arc based virtual machines running on Azure Stack HCI are checked for its security compliance (Foundational CSPM, Cloud Security Posture Management) using the Security benchmark policies (Microsoft cloud security benchmark) configured in Azure policy. Additionally, enabling Defender for Servers plan at a subscription level helps to assess the security at workload level (CWP, Cloud Workload Protection) such as Azure Arc enabled virtual machines running on Azure Stack HCI.  
+It is recommended to enable Microsoft Defender for Cloud on Azure Stack HCI to help improve the security posture of your Azure Stack HCI environment, and to protect against existing and evolving threats. Turn on basic Defender for Cloud plan (_free tier_) using the Foundational Cloud Security Posture Management (CSPM), to monitor and identify the steps that you can take to secure your Azure Stack HCI system, along with other Azure and Arc resources.
 
-Here are some built-in policies that are checked on the Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration:
+To benefit from the enhanced security features including security alerts for individual servers and Arc VMs, it is recommended to Turn on Defender for Servers for individual servers and Arc VMs.
 
-- Machines should be configured to periodically check for missing system updates
-- Machines should have a vulnerability assessment solution
-- Vulnerabilities in security configuration on your Windows machines should be remediated (powered by Guest Configuration)
-- Windows Defender Exploit Guard should be enabled on machines
+Examples of the built-in policies that can be checked on the Azure Stack HCI through the Security benchmark, Update Manager and OS Guest Configuration are shown below:
+
+- Azure Stack HCI servers should meet Secured-core requirements.
+- Azure Stack HCI servers should have consistently enforced application control policies.
+- Azure Stack HCI systems should have encrypted volumes.
+- Host and VM networking should be protected on Azure Stack HCI systems.
 
 #### Workload security
 
-Here are some built-in policies that are checked on the Azure Arc based virtual machines running on Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration:
+To help improve workload security posture, examples of built-in policies that can be assessed on Azure Arc-enabled virtual machines running on Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration are shown below:
 
 - Log Analytics agent should be installed on Windows-based Azure Arc-enabled machines.
 - Machines should be configured to periodically check for missing system update.s
@@ -158,15 +160,15 @@ Here are some built-in policies that are checked on the Azure Arc based virtual 
 - Windows Defender Exploit Guard should be enabled on machines.
 - Windows servers should be configured to use secure communication protocols.
 
-Here are some additional built-in policies you may want to enable on your Azure Stack HCI and Azure Arc based virtual machines running on Azure Stack HCI:
+Below are some additional built-in policies you may want to enable on Azure Arc-enabled virtual machines running on Azure Stack HCI:
 
 - [Preview]: Enable Extended Security Updates (ESUs) license to keep Windows 2012 machines protected after their support lifecycle has ended.
 
-You can find these policies in the Azure portal under Policy > Definitions > Category: Azure Arc.
+The policy above can be found in Azure portal, under Policy > Definitions > Category: Azure Arc.
 
-[Preview]: Configure prerequisites to enable Guest Attestation on Trusted Launch enabled VMs
+- [Preview]: Configure prerequisites to enable Guest Attestation on Trusted Launch enabled VMs
 
-You can find these policies in the Azure portal under Policy > Definitions > Category: Trusted Launch.
+The policy above can be found in Azure portal, under Policy > Definitions > Category: Trusted Launch.
 
 ## Cost optimization
 
@@ -196,9 +198,9 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **HCI platform architecture:** When using Azure Monitor with Azure Stack HCI, configure alert rules and data collection rules (DCRs) appropriately based on your monitoring, alerting and audit requirements. DCRs control which event logs and performance counters are sent from Azure Stack HCI cluster(s) to Log Analytics. Review [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/) and [Cost Optimization guidance for Log Analytics](/azure/well-architected/service-guides/azure-log-analytics#cost-optimization) for additional information.
 >
-> - **Workload architecture:** This document [Cost governance for Azure Arc-enabled Kubernetes](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) provides cost governance considerations and recommendations for you to keep in mind while using Azure Arc-enabled Kubernetes.
+> - **Workload architecture:** This document [Cost governance for Azure Arc-enabled AKS](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) provides cost governance considerations and recommendations for you to keep in mind while using Azure Arc-enabled AKS.
 >
-> - **Workload architecture:** Azure Arc-enabled Kubernetes provides the ability for developers and admins deploy and manage containerized apps using Azure Kubernetes Service (AKS) on Azure Stack HCI. For pricing details review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
+> - **Workload architecture:** Azure Arc-enabled AKS provides the ability for developers and admins deploy and manage containerized apps using Azure Arc-enabled AKS on Azure Stack HCI. For pricing details review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
 >
 > - **Workload architecture:** [Design review checklist for Cost Optimization](/azure/well-architected/cost-optimization/checklist) presents a set of recommendations about cost optimization for your workload to help you achieve a high return on investment (ROI) based on the business value that your workload delivers. Cost optimization balances actual costs versus perceived value, team efficiency, focus, and effort, while meeting the defined functional and nonfunctional requirements of your workload.
 
@@ -248,7 +250,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **Workload configuration:** Ensure you have enabled monitoring and alerting for workloads deployed on Azure Stack HCI clusters. Consider using [Azure Monitor with a centralized Log Analytics workspace](/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-workloads#workload-management-and-monitoring-recommendations) to gain insights from logs, metrics and to enable alerting capabilities for your workload, or use an alternative ISV monitoring solution based on your organization's requirements.
 >
-> - **Workload configuration** To enable workload monitoring, it is recommended to use the [Azure Arc for Servers - Azure Monitor extension](/azure/azure-arc/servers/manage-vm-extensions#extensions) for VM workload, or the [Azure Monitor Container Insights Extension for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/extensions-release#azure-monitor-container-insights) for kubernetes clusters.
+> - **Workload configuration** To enable workload monitoring, it is recommended to use the [Azure Arc for Servers - Azure Monitor extension](/azure/azure-arc/servers/manage-vm-extensions#extensions) for VM workload, or the [Azure Monitor Container Insights Extension for Azure Arc-enabled AKS clusters](/azure/azure-arc/kubernetes/extensions-release#azure-monitor-container-insights) for kubernetes clusters.
 
 ### Recommendations
 
@@ -279,7 +281,7 @@ As you make design choices for Azure Stack HCI, review the [Performance efficien
 >
 > - **HCI platform architectures:** Use the Azure Stack HCI validated hardware or integrated systems from OEM partner offerings. Consider using the Premium Solution Builders available in the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog#catalog) to optimize the performance of Azure Stack HCI system.
 >
-> - **HCI platform architectures:** Use all-flash (NVMe or SSD) based solutions for workloads that have high performance / low latency requirements. This includes but is not limited to highly transactional database technologies, production Azure Arc-enabled Kubernetes clusters or any mission or business critical workloads with low latency or high through-put storage requirements.
+> - **HCI platform architectures:** Use all-flash (NVMe or SSD) based solutions for workloads that have high performance / low latency requirements. This includes but is not limited to highly transactional database technologies, production Azure Arc-enabled AKS clusters or any mission or business critical workloads with low latency or high through-put storage requirements.
 >
 > - **HCI platform architecture:** Baseline HCI cluster storage performance prior to deploying production workloads. One option is to use VMFleet, which is a tool that can be used to generate load and measure the performance of a storage subsystem. Review [Using VMFleet for measuring storage subsystem performance](https://github.com/microsoft/diskspd/wiki/VMFleet) for more information.
 >
@@ -302,18 +304,18 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc-enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
 
-To start with, review the list of built-in policies available for Azure Stack HCI, such as:  
+It is recommended to review the list of built-in policies that are available for Azure Stack HCI, such as:
 
 - [Preview]: Host and VM networking should be protected on Azure Stack HCI systems.
 - [Preview]: Azure Stack HCI systems should have encrypted volumes.
 - [Preview]: Azure Stack HCI servers should have consistently enforced application control policies.
 - [Preview]: Azure Stack HCI servers should meet Secured-core requirements.
 
-You can find these policies in the Azure portal under Policy > Definitions > Category: Stack HCI.
+You can find these policies in Azure portal, under Policy > Definitions > Category: Stack HCI.
 
 For the above built-in-policies, Microsoft Defender for Cloud has added [New Recommendations for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) to show its compliance state.
 
-Here are few built-in policies under Security Center category that are evaluated by enabling Defender for Cloud to a subscription that is registered with hybrid resources such as Azure Stack HCI and Azure Arc VMs:
+The built-in policies below are located under Security Center category that is evaluated by enabling Defender for Cloud on a subscription that is registered with hybrid resources, such as Azure Stack HCI and Azure Arc-enabled VMs:
 
 - [Preview]: Azure Security agent should be installed on your Windows Arc machines.
 - [Preview]: Azure Security agent should be installed on your Linux Arc machines.
