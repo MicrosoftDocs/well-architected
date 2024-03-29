@@ -180,7 +180,7 @@ Start your design strategy based on the [**design review checklist for Security*
 |[**Always use Key Vault references as app settings**](/azure/app-service/app-service-key-vault-references). <br> |Secrets are kept separate from your app's configuration. App settings are encrypted at rest. Also, secret rotations are managed by App Service. |
 |[**Enable Defender for Cloud and App Service**](/azure/defender-for-cloud/tutorial-enable-app-service-plan).| Provides real-time protection to resources running in App Service Plan against threats and enhances our overall security posture.|
 |[**Enable diagnostic logging**](/azure/app-service/troubleshoot-diagnostic-logs) and add instrumentation to your app. <br> The logs are sent to Storage Accounts, Event Hubs and Log Analytics.<br>  For information about audit log types, see [Supported log types](/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types).|Logging is a common way to capture access patterns. It records relevant events that provide valuable insights into how users interact with an application or platform. This information is crucial for accountability, compliance, and security purposes.|
-|||
+
 
 ## Cost Optimization
 
@@ -211,7 +211,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Optimize environment costs.**  Consider Basic or Free tier for running preproduction environments. These are low performance tiers that are less expensive. If these tiers are suitable, use governance to enforce those tiers, constrain the number of instances and CPUs, restrict scaling, and limit log retention, other possible configurations. 
 >
-> - **Implement design patterns** to reduce the volume of requests your workload generates. Consider using patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation), which can reduce costs by minimizing the number of requests.
+> - **Implement design patterns.** This strategy reduces the volume of requests your workload generates. Consider using patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation), which can reduce costs by minimizing the number of requests.
 >
 > - **Regularly check costs related to data**. Extending data retention periods or opting for more expensive storage tiers may lead to higher storage costs. Additionally, expenses can accumulate due to both bandwidth usage and prolonged retention of logging data.
 >
@@ -258,7 +258,17 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 Start your design strategy based on the [**design review checklist for Performance Efficiency**](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for web apps.
 
 > [!div class="checklist"]
+> - **Identify and monitor performance indicators**. Set targets for the key indicators for the application, such as the volume of incoming requests, time taken by the application to respond to requests, pending requests, errors in HTTP responses, and others. Those indicators must be considered as part of the performance baseline for the workload. 
 >
+>   Capture App Service metrics that form the basis of performance indicators. :Also, collect logs to gain insights into resource usage and activities. Use Application Performance Monitoring (APM) tools, such as Application Insights that collect collect and analyze performance data from the application.
+>
+>   Include code-level instrumentation, transaction tracing, and performance profiling.
+
+> - **Select the right tier**. Dedicated compute is recommended for production workloads. Premium tiers offer larger SKUs with increased memory and CPU capacity, more instances, and features such as zone redundancy. For capabilities of higher tiers, see [Premium V3 pricing tier](/azure/app-service/overview-hosting-plans#premium-v3-pricing-tier).
+>
+> - **Use caching**.  Retrieving information from a resource that doesn’t change frequently and is expensive to access impacts performance. Complex queries, including joins and multiple lookups, contribute to execution time. Caching aims to minimize the processing time and latency. By caching query results, you avoid repeated round trips to the database or backend. Also, reduces processing time for subsequent requests.
+>
+>   In web applications, not implementing caching is an antipattern. For considerations, see [No Caching antipattern](/azure/architecture/antipatterns/no-caching/). 
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
