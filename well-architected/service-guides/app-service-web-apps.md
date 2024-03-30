@@ -113,8 +113,9 @@ Start your design strategy based on the [**design review checklist for Reliabili
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |Choice of tier in App Service Plan. <br><br> For production workloads, use Standard or Premium plans. <br> Shared and Free tiers can be used for experiments.||
-|Consider disabling Application Request Routing (ARR) Affinity for your App Service.	ARR Affinity creates stick sessions, which is used to redirect users to the same node that handled their previous requests.||
-|||
+|(App Service) **Consider disabling Application Request Routing (ARR) Affinity**. ARR Affinity creates sticky sessions, which is used to redirect users to the same node that handled their previous requests.|By disabling ARR Affinity, incoming requests are evenly distributed across all available nodes preventing any single node from being overwhelmed by traffic. If a node is unavailable, requests can be seamlessly redirected to other healthy nodes. <br> By avoiding session affinity, your App Service remains stateless, reducing complexity and ensuring consistent behavior across nodes. <br> Removing sticky sessions also helps App Service to easily scale horizontally by adding or removing instances.|
+|(App Service) [**Define auto-healing rules**](/azure/app-service/overview-diagnostics#auto-healing) based on request count, slow request, memory limit, and other indicators that are considered as part of your performance baseline. <br>Consider this configuration as part of your scaling strategy. <br> | Auto-healing rules allow your application to recover automatically from unexpected issues. The configured rules trigger healing actions when thresholds are breached. <br> Auto-healing enables proactive maintenance that's handled automatically. |
+|(App Service) [**Enable Health Check**](/azure/app-service/monitor-instances-health-check) and provide a path that responds to the health check requests. <br> |ealth checks allow early detection of issues. When a health check request fails, the system can automatically take corrective actions. <br>  By identifying unhealthy instances, the load balancer can route traffic away from them, ensuring that users are directed to healthy nodes.|
 
 
 ## Security
