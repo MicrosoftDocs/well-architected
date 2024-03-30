@@ -258,17 +258,32 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 Start your design strategy based on the [**design review checklist for Performance Efficiency**](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for web apps.
 
 > [!div class="checklist"]
-> - **Identify and monitor performance indicators**. Set targets for the key indicators for the application, such as the volume of incoming requests, time taken by the application to respond to requests, pending requests, errors in HTTP responses, and others. Those indicators must be considered as part of the performance baseline for the workload. 
+> - **Identify and monitor the performance indicators**. Set targets for the key indicators for the application, such as the volume of incoming requests, time taken by the application to respond to requests, pending requests, errors in HTTP responses, and others. Those indicators must be considered as part of the performance baseline for the workload. 
 >
->   Capture App Service metrics that form the basis of performance indicators. :Also, collect logs to gain insights into resource usage and activities. Use Application Performance Monitoring (APM) tools, such as Application Insights that collect collect and analyze performance data from the application.
+>   Capture App Service metrics that form the basis of performance indicators. Also, collect logs to gain insights into resource usage and activities. Use Application Performance Monitoring (APM) tools, such as Application Insights that collect collect and analyze performance data from the application. For more information, see [Azure App Service monitoring data reference](/azure/app-service/monitor-app-service-reference).
 >
 >   Include code-level instrumentation, transaction tracing, and performance profiling.
-
+>
 > - **Select the right tier**. Dedicated compute is recommended for production workloads. Premium tiers offer larger SKUs with increased memory and CPU capacity, more instances, and features such as zone redundancy. For capabilities of higher tiers, see [Premium V3 pricing tier](/azure/app-service/overview-hosting-plans#premium-v3-pricing-tier).
+>
+> - **Optimize your scaling strategy**. Always opt for automatic ways of scaling instead of manually adjusting the number of instances as application load changes. With automatic scaling, App Service adjusts server capacity based on predefined rules or triggers. Make sure you do adequate performance testing and you then set the right rules for the right triggers.
+> 
+>   There's another automatic scaling option that doesn't require you to define rules and only set limits. This is a good option for users who prioritize simplicity and initial setup.
 >
 > - **Use caching**.  Retrieving information from a resource that doesn’t change frequently and is expensive to access impacts performance. Complex queries, including joins and multiple lookups, contribute to execution time. Caching aims to minimize the processing time and latency. By caching query results, you avoid repeated round trips to the database or backend. Also, reduces processing time for subsequent requests.
 >
->   In web applications, not implementing caching is an antipattern. For considerations, see [No Caching antipattern](/azure/architecture/antipatterns/no-caching/). 
+>   For more information about using local and distributed cache in the workload, see [Caching](/azure/architecture/best-practices/caching)
+>   In web applications, not implementing caching is an antipattern. For considerations, see . 
+>
+> - **Review the performance antipatterns**. To make sure the web application performs and scales as your business requirements, avoid the [typical antipatterns](/azure/architecture/antipatterns/). Here are some antipatterns that are corrected by App Service.
+>
+>   |Antipattern|Description|
+>   |------------------------------|-----------|
+>   |[Busy Front End antipattern](/azure/architecture/antipatterns/busy-front-end/)|Resource-intensive tasks can increase the response times for user requests and cause high latency.  <br>Move processes that consume significant resources to a separate back end. Use a message broker to queue resource-intensive tasks that the backend picks up asynchronously processing.|
+>   |[No Caching antipattern](/azure/architecture/antipatterns/no-caching/)|Reduce latency by serving requets from an intermediate cache in front of the backend database. |
+>   |[Noisy Neighbor](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor)| Multitenant systems share resources between tenants, the activity of one tenant can have a negative impact on another tenant's use of the system. The App Service Environment (ASE) tier provides a fully isolated and dedicated environment for running App Service apps.|
+
+##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
