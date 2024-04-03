@@ -3,7 +3,7 @@ title: Business continuity and disaster recovery
 description: Review the design area for BCDR of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler 
-ms.date: 03/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
@@ -73,7 +73,7 @@ For further assistance on choosing the mode for your workload requirements, plea
 
 The following architecture aims for a downtime threshold of less than 5 minutes. 
 
-![Active-Passive Architecture on Azure](./images/active-passive.png)
+![Diagram that shows the active-passive architecture on Azure.](./images/active-passive.png)
 
 ### Example 2: Create a Fail-Over For Business Critical Applications in a Two Availability Zone Deployment With Active Standby
 
@@ -84,9 +84,9 @@ The following diagram aims for a downtime threshold of less than 1 minutes. Even
 
 **Note that this setup requires an Active Data Guard license.**
 
-![Active-Active Architecture on Azure](./images/active-active.png)
+![Diagram that shows the active-active architecture on Azure.](./images/active-active.png)
 
 ## Next Steps
 
 > [!div class="nextstepaction"]
-> [Security](./security-new.md)
+> [Security](optmize-security.md)

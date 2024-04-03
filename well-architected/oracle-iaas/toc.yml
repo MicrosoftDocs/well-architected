@@ -1,19 +1,20 @@
 - name: Oracle
   items:
-  - name: Get Started
+  - name: Get started
     href: get-started.md
-  - name: Design Principles
-    href: design-principles.md
-  - name: Design Areas
+  - name: Design principles
+    href: review-design-principles.md
+  - name: Design areas
     items:
-    - name: Compute and Storage
-      href: compute-and-storage.md
-    - name: Business Continuity and Disaster Recovery (BCDR)
-      href: bcdr.md
-    - name: Security
-      href: security-new.md
-    - name: Monitoring
-      href: monitoring.md
-    - name: Oracle Applications
-      href: oracle-applications.md
+    - name: Choose compute and storage
+      href: choose-compute-storage.md
+    - name: Design Oracle applications
+      href: design-applications.md
+    - name: Optimize business continuity and disaster recovery
+      href: optimize-business-continuity-disaster-recovery.md
+    - name: Optimize security
+      href: optimize-security.md
+    - name: Monitor workloads
+      href: monitor-workloads.md
+
 

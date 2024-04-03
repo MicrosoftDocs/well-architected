@@ -3,7 +3,7 @@ title: Compute and storage
 description: Review the design area for storage and compute of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 3/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
@@ -140,4 +140,4 @@ If you need further information on Oracle Applications on Azure, please review [
 
 ## Next steps
 > [!div class="nextstepaction"]
-> [Backup and Disaster Recovery BCDR](./bcdr.md) 
+> [Business continuity and disaster recovery](optimize-business-contiuity-disaster-recovery.md) 

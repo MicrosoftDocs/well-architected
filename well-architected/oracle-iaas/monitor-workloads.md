@@ -3,7 +3,7 @@ title: Oracle on Azure IaaS design area compute and storage
 description: Review the design area for monitoring of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: 
-ms.date: 
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-Oracle
@@ -46,4 +46,4 @@ What tools do you use to monitor the virtual machines and storage components of 
 - In additions to VMs and Storage you should also monitor other components within your solutions such as Azure virtual network and Azure backup.
 
 ## Next Steps
-Depending on your business case please refer to [Design Principles](./design-principles.md).
+Depending on your business case please refer to [Design principles](reivew-design-principles.md).

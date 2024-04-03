@@ -3,7 +3,7 @@ title: Oracle on Azure IaaS design area compute and storage - Application design
 description: Review the design area for Oracle Applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 03/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
@@ -63,4 +63,4 @@ For each of the following application design areas, what are the considerations 
 ## Next Steps
 
 > [!div class="nextstepaction"]
-> [Design Principles](./design-principles.md) 
+> [Design principles](review-design-principles.md) 

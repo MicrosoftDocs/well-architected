@@ -3,7 +3,7 @@ title: Oracle workload best practices for security
 description: Oracle workload best practices for security
 author: jessiehaessler
 ms.author: jhaessler 
-ms.date: 03/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
@@ -109,4 +109,4 @@ How do you monitor and analyze the security related events of your Oracle worklo
 
 ## Next steps
 > [!div class="nextstepaction"]
-> [Monitoring](./monitoring.md)
+> [Monitor workloads](monitor-workloads.md)

@@ -3,7 +3,7 @@ title: Oracle on Azure IaaS design area compute and storage
 description: Review the design area for exadata-decouple of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: 
-ms.date: 
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-Oracle
@@ -103,6 +103,6 @@ For your application, make sure to review Azure Site Recovery.
 
 ## Next Steps
 
-In case you will need to familiarize yourself with the capacity planning, please review [Compute and Storage][.\compute-and-storage-md]
+In case you will need to familiarize yourself with the capacity planning, please review [Compute and storage](choose-compute-storage.md)
 
 
