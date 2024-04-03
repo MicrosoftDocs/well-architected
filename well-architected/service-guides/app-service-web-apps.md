@@ -245,7 +245,20 @@ The [Operational Excellence design principles](../operational-excellence/princip
 Start your design strategy based on the [**design review checklist for Operational Excellence**](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to web apps.
 
 > [!div class="checklist"]
-> - Release Management. Deployment slots allow you to manage releases effectively. You can deploy your application to a slot, perform testing, and validate its functionality. Once verified, you can seamlessly swap it into production. Importantly, this process doesn’t incur additional costs because the slot runs in the same Virtual Machine (VM) environment as the production instance.
+> - **Release Management**. Deployment slots allow you to manage releases effectively. You can deploy your application to a slot, perform testing, and validate its functionality. Once verified, you can seamlessly swap it into production. Importantly, this process doesn’t incur additional costs because the slot runs in the same Virtual Machine (VM) environment as the production instance.
+>
+> - **Run automated tests**. Before promoting a release of your web application, thoroughly test its performance, functionality, integration with other components, and so on. Utilize [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing), which integrates with JMeter, a popular tool for performance testing. Explore automated tools for other types of testing, such as Phantom for functional testing.
+>
+> - **Deploy immutable units**. Implement the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) that compartmentalizes App Service into an immutable stamp. App Service supports the use of containers, which are inherently immutable. Consider your app services web app with [custom containers](/azure/app-service/configure-custom-container).
+>
+>    Each stamp represents a self-contained unit that can be quickly scaled out or scaled in. Units based on this stamp are temporary and stateless. Stateless design simplifies operations and maintenance. This approach is ideal for mission-critical applications and is demonstrated in the [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
+>
+>   Use an Infrastructure-as-Code (IaC) technology, such as Bicep to stamp out units with repeatability and consistency. 
+>
+> - **Keep production environments safe**. Create separate App Service Plans for running production and preproduction environments. Avoid making changes directly in the production environment to ensure stability and reliability. Separate instances allow flexibility in development and testing before promoting changes to production. 
+>
+>   Lower environments are recommended for exploration of new features and configurations in an isolated manner. Keep development and test environments ephemeral. 
+
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
