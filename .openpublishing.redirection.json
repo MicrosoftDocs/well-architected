@@ -1354,6 +1354,31 @@
 			"source_path": "well-architected/service-guides/application-delivery/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
 			"redirect_document_id": false
-		}																			
+		},	
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/security.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/optimize-security",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/performance-efficiency.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/reliability.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		}																
 	]
 }
