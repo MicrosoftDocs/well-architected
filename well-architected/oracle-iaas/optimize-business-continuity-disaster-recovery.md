@@ -89,4 +89,4 @@ The following diagram aims for a downtime threshold of less than 1 minutes. Even
 ## Next Steps
 
 > [!div class="nextstepaction"]
-> [Security](optmize-security.md)
+> [Security](optimize-security.md)
