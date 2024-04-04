@@ -56,7 +56,7 @@
       "uhfHeaderId": "azure",
       "titleSuffix": "Microsoft Azure Well-Architected Framework",
       "ms.service": "waf",
-      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ],    
+      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ]    
      },
     "open_to_public_contributors": {
       "**/*.yml": false
