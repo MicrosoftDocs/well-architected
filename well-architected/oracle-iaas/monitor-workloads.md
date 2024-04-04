@@ -2,11 +2,11 @@
 title: Oracle on Azure IaaS design area compute and storage
 description: Review the design area for monitoring of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
-ms.author: 
+ms.author: jhaessler
 ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-Oracle
+ms.subservice: waf-workload-oracle
 ---
 
 # Monitor your Oracle Workload
@@ -26,14 +26,14 @@ What Oracle monitoring tools do you use to monitor the database operation?
 - Continuously review your AWR and/or Statspack report(s).
 
 ## Monitor VMs and Storage
-As you are deploying your Oracle Database on Azure Virtual Machines it is important, to not only monitor the Oracle Database, but also the health telemetry from your storage and VM. Azure Monitor provides numerous ways to monitor metrics and logs from the Virtual Machines and storage components. Azure [VM Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/vm/vminsights-enable-portal) provides a quick and easy method for getting started monitoring the client workloads on your virtual machines. It displays an inventory of your existing VMs and provides a guided experience to enable base monitoring for them. It also monitors the performance and health of your virtual machines by collecting data on their running processes and dependencies on other resources.
+As you are deploying your Oracle Database on Azure Virtual Machines it is important, to not only monitor the Oracle Database, but also the health telemetry from your storage and VM. Azure Monitor provides numerous ways to monitor metrics and logs from the Virtual Machines and storage components. Azure [VM Insights](/azure/azure-monitor/vm/vminsights-enable-portal) provides a quick and easy method for getting started monitoring the client workloads on your virtual machines. It displays an inventory of your existing VMs and provides a guided experience to enable base monitoring for them. It also monitors the performance and health of your virtual machines by collecting data on their running processes and dependencies on other resources.
 
 ### Assessment question
 What tools do you use to monitor the virtual machines and storage components of your Oracle on IaaS workload?
 
 ### Recommendations
 - Enable Virtual Machine insights.
-- If you need more information than that provided by VM Insights then you can deploy the Azure Monitoring Agent (AMA) and configure a Data Collection Rule (DCR) to collect [custom logs](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-collection-text-log?tabs=portal).
+- If you need more information than that provided by VM Insights then you can deploy the Azure Monitoring Agent (AMA) and configure a Data Collection Rule (DCR) to collect [custom logs](/azure/azure-monitor/agents/data-collection-text-log).
 - Monitor Disks Metrics if you are storing Oracle database files on Azure Managed Disks.
 - Disk Metrics to be monitored include:
     - OS Disk IOPS Consumed Percentage
@@ -46,4 +46,4 @@ What tools do you use to monitor the virtual machines and storage components of 
 - In additions to VMs and Storage you should also monitor other components within your solutions such as Azure virtual network and Azure backup.
 
 ## Next Steps
-Depending on your business case please refer to [Design principles](reivew-design-principles.md).
+Depending on your business case please refer to [Design principles](review-design-principles.md).

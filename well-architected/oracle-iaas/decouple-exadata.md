@@ -2,11 +2,11 @@
 title: Oracle on Azure IaaS design area compute and storage
 description: Review the design area for exadata-decouple of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
-ms.author: 
+ms.author: jhaessler
 ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-Oracle
+ms.subservice: waf-workload-oracle
 ---
 
 # Decouple from your Exadata
@@ -31,7 +31,7 @@ Next to it, we will need data covering the DB size, archive redologs, online log
 After you collected all data and ran the right-size exercise, we will need to have a deeper look into the AWR report. Do you use hybrid columnar compression (HCC), Smart and/or Storage indexes? If the answer is yes to one of these, an additional x2 IO factor is expected. By digging a bit deeper into it, we will have a look if you make use of flash cache. If so, another x2 will be added to the right-sizing. 
 
 As an important note it is always important how the Exadata features are leveraged. Sometimes you might have enabled it, but it impacts the performance significantly, which is mostly seen in OLTP workloads. 
-You can review on how you leverage it in the “Top Time Foreground Wait Events”. For further read, please navigate to [Decoupling from Exadata](https://learn.microsoft.com/en-us/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
+You can review on how you leverage it in the “Top Time Foreground Wait Events”. For further read, please navigate to [Decoupling from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
 
 ## Most important Exadata Features to Review
 
