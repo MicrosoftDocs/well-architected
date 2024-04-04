@@ -1,5 +1,5 @@
 ---
-title: Oracle on Azure IaaS design area compute and storage
+title: Monitor your Oracle workload
 description: Review the design area for monitoring of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Monitor your Oracle Workload
+# Monitor your Oracle workload
 Monitoring Oracle workloads on Azure Virtual Machines to discover failures and abnormalities is important to ensuring the health of your mission critical workloads. This involves not only monitoring the database itself with Oracle native tools but also monitoring the infrastructure components used in the deployment.
 
 ## Monitor the Oracle database with native Oracle tools

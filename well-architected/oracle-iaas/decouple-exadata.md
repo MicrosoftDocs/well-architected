@@ -1,5 +1,5 @@
 ---
-title: Oracle on Azure IaaS design area compute and storage
+title: Decouple from Oracle Exadata
 description: Review the design area for exadata-decouple of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Decouple from your Exadata
+# Decouple from Oracle Exadata
 
 Exadata is an engineered system. It consists of both Hardware and Software. By decoupling we mean to decouple from your hardware into a single instance Database.
 
