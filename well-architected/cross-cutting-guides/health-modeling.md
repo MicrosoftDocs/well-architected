@@ -186,67 +186,67 @@ Implement distributed tracing by [correlating telemetry](/azure/azure-monitor/ap
 
 Implement and run health probes outside of the application to explicitly check the health and responsiveness of your application. Use probe responses as signals within your health model.
 
-The implementation can be a measure of the response time from the application as a whole or its individual components. Probes can run processes to measure latency and check availability or to extract information from the application. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
+You can implement health probes by measuring the response time from the application as a whole or from its individual components. Probes can run processes to measure latency and check availability or to extract information from the application. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
 
-Most load balancers support running health probes that ping application endpoints at configured intervals. Alternately, you can invoke them from an external watchdog service. A watchdog service aggregates health checks from across multiple components in the workload. Watchdogs can also host code that performs immediate remediation for known health conditions.
+Most load balancers support running health probes that ping application endpoints at configured intervals. Alternatively, you can invoke them from an external watchdog service. A watchdog service aggregates health checks from across multiple components in the workload. Watchdogs can also host code that does immediate remediation for known health conditions.
 
-### Adopt white-box and black-box monitoring techniques 
+### Adopt stuctural and functional monitoring techniques 
 
-White-box monitoring involves instrumenting the application with semantic logs and metrics. These metrics are collected directly from the application. Examples include monitoring current memory consumption, request latency, and other relevant application-level data. 
+Structural monitoring involves equipping the application with semantic logs and metrics. The application directly collects these metrics, which include current memory consumption, request latency, and other relevant application-level data. 
 
-Strengthen that approach with black-box monitoring. This approach focuses on measuring platform services and their impact on the overall user experience. Unlike white-box monitoring, black-box monitoring doesn't require detailed knowledge of the system. It tests the externally visible behavior of the application. This approach is particularly useful for assessing SLOs and SLIs.
+Strengthen your monitoring processes with functional monitoring. This approach focuses on measuring platform services and their effect on the overall user experience. Unlike structural monitoring, functional monitoring doesn't require detailed knowledge of the system. It tests the externally visible behavior of the application. This approach is particularly useful for assessing SLOs and SLIs.
 
 ### Model the design
 
-Represent the identified application design as entities and relationships. Map health signals to specific components to quantify health states at an entity level. Consider the criticality of components to determine how health states should propagate through the model. For example, reporting components may not be as critical as other components, resulting in different impacts on overall workload health.
+Represent the identified application design as entities and relationships. Map health signals to specific components to quantify health states at an entity level. Consider the criticality of components to determine how health states should propagate through the model. For example, reporting components might not be as critical as other components, which results in different effects on overall workload health.
 
 ### Set actionable alerts
 
-Use evaluated health states to trigger alerts and automated action. Health should be integrated within existing operational runbooks as a core observability data tenet.
+Use the evaluated health states to trigger alerts and automated action. Health should be integrated within existing operational runbooks as a core observability data tenet.
 
-Typically, there's a one-to-one mapping between monitoring data and alert rules, which can lead to undesirable situations, such as alert storms and ambient alert noise. For example, in a compute cluster, high volumes of VM-level alerts based on CPU utilization and error count can overwhelm operators during failures causing delays in resolution. Similarly, when there's a high number of configured alerts, ambient alert noise often results in alerts being overlooked or ignored.
+Typically, there's a one-to-one mapping between monitoring data and alert rules, which can lead to undesirable situations, such as alert storms and ambient alert noise. For example, in a compute cluster, high volumes of VM-level alerts based on CPU utilization and error count can overwhelm operators during failures and cause delays in resolution. Similarly, when there's a high number of configured alerts, ambient alert noise often results in alerts that are overlooked or ignored.
 
-A health model introduces separation between monitoring data and alert rules. A health definition aggregates many signals into a single health state. The number of alerts consequently decreases allowing operators to focus on only high-value alerts that are critical for the organization. Consider the ecommerce scenario, an alert can be defined to notify changes in the health of the process payments flow rather than underlying resources such as the Service Bus queue.
+A health model introduces separation between monitoring data and alert rules. A health definition aggregates many signals into a single health state. The number of alerts consequently decreases, which allows operators to focus on only high-value alerts that are critical for the organization. Consider the e-commerce scenario. You can set up an alert to send notifications about changes in the process payments flow health rather than changes in underlying resources like the Service Bus queue.
 
 > [!NOTE]
-> The ability to alert across all layers of the health model provides flexibility for the different workload personas. Application owners and product managers could be alerted to health state changes in key business scenarios or the entire workload. Operators could be alerted based on the health of infrastructure or application components.
+> The ability to alert across all layers of the health model provides flexibility for the different workload personas. Application owners and product managers can be alerted to health state changes in key business scenarios or in the entire workload. Operators can be alerted based on the health of infrastructure or application components.
 
 ### Visualize the model
 
-Create visual representations, such as tables or graphs, to convey the current state and history of the health model effectively. Ensure that the visualization aligns with the business context and provides actionable insights. 
+Create visual representations, such as tables or graphs, to effectively convey the current state and history of the health model. Ensure that the visualization aligns with the business context and provides actionable insights. 
 
-When visualizing your health model, consider adopting a _traffic light_ approach to make health states immediately insightful across dependency chains. 
+When you visualize your health model, consider adopting a _traffic light_ approach to make health states immediately insightful across dependency chains. 
 
 Assign green for healthy, amber for degraded, and red for unhealthy. By quickly identifying the color-coded states, you can efficiently locate the root cause of any application degradation.
 
-:::image type="content" source="_images/health-impact.png" alt-text="The diagram shows a health model using a traffic light approach." border="false":::
+:::image type="content" source="_images/health-impact.png" alt-text="The diagram shows a health model that uses a traffic light approach." border="false":::
 
 > [!NOTE]
-> ​It's also recommended to consider accessibility requirements for the visually impaired when dashboarding your health model. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
+> Wwhen you dashboard your health model, we also recommend that you consider accessibility requirements for people who are blind and people with low vision. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
 
 ## Adopt your health model
 
-After building a health model consider these use cases to drive detection and interpretation of failures or operational problems.
+After you build a health model, consider the following use cases to drive detection and interpretation of failures or operational problems.
 
 ### Applicability to various roles
 
-Health modeling can provide information specific to job functions or roles within the same context of the workload. For example, a DevOps role might need operational health information. A security officer maybe more concerned with intrusion signals and security exposure. A database administrator is likely only interested in a subset of the application model through the database resources only.
+Health modeling can provide information that's specific to job functions or to roles within the same context of the workload. For example, a DevOps role might need operational health information. A security officer might be more concerned with intrusion signals and security exposure. A database administrator is likely only interested in a subset of the application model through the database resources only.
 
 Tailor health insights for different stakeholders. Consider creating separate models from overlapping data sets.
 
 ### Continuous validation
 
-Use your health model to optimize testing and validation processes, such as load testing and chaos testing. By incorporating health models into your engineering lifecycle, you can not only validate the runtime operational state during testing but also assess the effectiveness of your model under scale and failure scenarios.
+Use your health model to optimize testing and validation processes, such as load testing and chaos testing. By incorporating health models into your engineering lifecycle, you can validate the runtime operational state during testing and assess your model's effectiveness in scale and failure scenarios.
 
 ### Organizational health
 
-While health modeling is commonly associated with quantifying health states for individual applications, its applicability extends beyond that scope. 
+Although health modeling is commonly associated with quantifying health states for individual applications, its applicability extends beyond that scope. 
 
-At an individual workload level, health models provide a foundation for application observability and operational insights. Each application can have its own health model, capturing what health states mean within its context.
+At an individual workload level, health models provide a foundation for application observability and operational insights. Each application can have its own health model that captures what each health state means within its context.
 
-It's possible to combine multiple health models into a higher level construct by building a _model of models_. For example, you can build the observability footprint of a business unit or an entire cloud estate, by using health models as component entities within a larger model. Workloads within the estate are represented by their health models as nodes within the top level graph. Relationships in this model are then used to capture inter-application dependencies that may include data flows, service interactions, or shared infrastructure.
+You can combine multiple health models into a high-level construct by building a _model of models_. For example, you can build the observability footprint of a business unit or an entire cloud estate by using health models as components within a larger model. Health models represent workloads within the estate as nodes within the top-level graph. Use the relationships in this model to capture inter-application dependencies, including data flows, service interactions, and shared infrastructure.
 
-Consider a retail company with various applications for ecommerce, payments, and order processing. Each of these applications would be defined as an independent health model to quantify what health means for that particular workload. A parent model could then be used to map all of these component health models as entities, capturing inter-application operational impact through dependency chains. For example, if the ecommerce application were to become unhealthy, it would have a cascading impact on the payment application.
+Consider a retail company that has various applications for e-commerce, payments, and order processing. You can define each of these applications as an independent health model to quantify what health means for that workload. You can then use a parent model to map all of these component health models as entities and capture inter-application operational impact through dependency chains. For example, if the e-commerce application becomes unhealthy, it has a cascading impact on the payment application.
 
 ### Health trends and AI for IT operations
 
