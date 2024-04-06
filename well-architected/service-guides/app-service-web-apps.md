@@ -230,7 +230,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|**Choose [Free or Basic tiers](/app-service/overview-hosting-plans) for lower enviroments**. <br> These tiers are recommended for experimental use. Remove them when no longer needed.|The Free and Basic tiers are more budget-friendly compared to higher tiers. They provide a cost-effective solution for nonproduction environments where you don't need the full features and performance of premium plans.|
+|**[Choose Free or Basic tiers](/azure/app-service/overview-hosting-plans) for lower enviroments**. <br> These tiers are recommended for experimental use. Remove them when no longer needed.|The Free and Basic tiers are more budget-friendly compared to higher tiers. They provide a cost-effective solution for nonproduction environments where you don't need the full features and performance of premium plans.|
 |(App Service Plan) Allow for independent scaling of applications by enabling [per-app scaling](/azure/app-service/manage-scale-per-app). <br><br> Each app runs in its own isolated process, preventing resource contention.| Instead of provisioning resources for the highest peak load across all apps, you allocate resources based on actual usage patterns. By avoiding over-provisioning, you save costs.|
 |Take advantage of discounts and explore these preferred pricing for : <br> - Lower environments with [dev/test plans](https://azure.microsoft.com/pricing/offers/dev-test/). <br> - [Azure reservations](/azure/app-service/overview-manage-costs#azure-reservations) and [Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#Benefitsandfeatures) for dedicated computed provisioned in Premium V3. <br><br> Reserved instances are ideal for stable workloads with predictable usage patterns. |Dev/Test plans provide reduced rates for Azure services, making them cost-effective for non-production environments. <br> Reserved instances allow you to prepay for compute resources with significant discounts.|
 |[**Monitor cost**](/azure/app-service/overview-manage-costs#monitor-costs) incurred by App Service resources. Run the Cost Analysis tool in Azure portal. <br><br> [**Create budgets and alerts**](/azure/app-service/overview-manage-costs#create-budgets)  to notify stakeholders.|Monitoring allows you to identify cost spikes, inefficiencies, or unexpected expenses early on. This proactive approach helps you to provide budgetary controls to prevent overruns.|
@@ -262,12 +262,17 @@ Start your design strategy based on the [**design review checklist for Operation
 >
 >   Lower environments are recommended for exploration of new features and configurations in an isolated manner. Keep development and test environments ephemeral. 
 >
-> - **Secret rotation**. Take advantage of [App Service certificates](/azure/app-service/configure-ssl-certificate) that offloads certification management to Azure. It handles the certificate procurement, verification, certificate renewal, importing certifcates from Azure Key Vault, and other  processes automatically. Additionally, if you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
+> - **Certificate management**. For custom domains, you need to manage Transport Layer Security (TLS) certificates. 
+> 
+>   Have processes in place that procure, renew, validate certificates. Offloading this to Azure App Service is prefered. If you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
 
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|||
+|(App Service) [**Monitor the health of your instances**](/azure/app-service/monitor-instances-health-check?tabs=dotnet) and activate instance health probes. <br><br>Set up a specific path for handling health probe requests. |You can detect issues promptly and take necessary actions to maintain agreed upon availability and performance.|
+|(App Service) [**Enable diagnostics logs**](/azure/app-service/troubleshoot-diagnostic-logs) for the application and the instance. <br><br> Frequent logging can slow down the performance of the system, add to storage costs, and can be risky if access to logs aren't authorized. Follow these best practices: <br> - Log the right level of information. <br>- Set retention policies. <br> - Keep audit trail of authorized access and unauthorized attempts. <br>- Treat logs as data and apply data protection controls. |Diagnostic logs provide valuable insights into your app’s behavior. Useful for monitoring traffic patterns and identifying anomalies.|
+|(App Service) Take advantage of [App Service certificates](/azure/app-service/configure-ssl-certificate) that offloads certification management to Azure. |Processes like certificate procurement, verification, renewal, importing certifcates from Azure Key Vault, and other  processes are handled automatically by App Service. |
+|(App Service Plan) [**Validate app changes in the staging slot**](/azure/app-service/deploy-staging-slots) before swapping it with the production slot. <br><br> Autoswap? |You can test different versions of code and configuration, and swap them with production without downtime or errors. |
 
 ## Performance Efficiency
 
@@ -309,7 +314,8 @@ Start your design strategy based on the [**design review checklist for Performan
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|||
+|(App Service) [**Enable Always On**](/azure/app-service/configure-common) when applications share a single App Service Plan. <br><br> Ensure proper initialization because after the application is unloaded, the next request triggers a cold start, potentially causing request timeouts. |Azure App Service apps automatically unload when idle to save resources.|
+|(App Service) [**Consider using HTTP/2**](azure/app-service/configure-common) for applications to improve protocol efficiency. |HTTP/2 improves over HTTP/1.1 by fully multiplexing connections, reusing connections to reduce overhead, and compressing headers to minimize data transfer.|
 
 ## Tradeoffs
 
