@@ -42,7 +42,7 @@ All users' notebooks and notebook results are encrypted at rest, by default. If 
 > - Use Dynamic IP access lists to allow admins to access workspaces only from their corporate networks.
 > - Use the [VNet injection](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject) functionality to enable more secure scenarios.
 > - Use [diagnostic logs](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) to audit workspace access and permissions.
-> - Consider using the [Secure cluster connectivity](/azure/databricks/security/secure-cluster-connectivity) feature and [hub/spoke architecture](https://databricks.com/blog/2020/03/27/data-exfiltration-protection-with-azure-databricks.html) to prevent opening ports, and assigning public IP addresses on cluster nodes.
+> - Consider using the [Secure cluster connectivity](/azure/databricks/security/secure-cluster-connectivity) feature and [hub/spoke architecture](https://www.databricks.com/blog/data-exfiltration-protection-with-azure-databricks) to prevent opening ports, and assigning public IP addresses on cluster nodes.
 
 ## Configuration recommendations
 
