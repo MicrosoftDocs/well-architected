@@ -37,8 +37,6 @@ This review focuses on the interrelated decisions for these Azure resources.
 - Azure App Service Plan
 - Azure App Service for Web Apps
 
-    Within Web Apps, there's support for Web Apps for Containers, which is out-of-scope for this article. Also, App Service Environment is not included in this guidance.
-
 There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article.
 
 
@@ -185,7 +183,6 @@ Start your design strategy based on the [**design review checklist for Security*
 |(App Service)[**Always use Key Vault references as app settings**](/azure/app-service/app-service-key-vault-references). <br> |Secrets are kept separate from your app's configuration. App settings are encrypted at rest. Also, secret rotations are managed by App Service. |
 |[**Enable Defender for Cloud and App Service**](/azure/defender-for-cloud/tutorial-enable-app-service-plan).| Provides real-time protection to resources running in App Service Plan against threats and enhances our overall security posture.|
 |[**Enable diagnostic logging**](/azure/app-service/troubleshoot-diagnostic-logs) and add instrumentation to your app. <br> The logs are sent to Storage Accounts, Event Hubs and Log Analytics.<br>  For information about audit log types, see [Supported log types](/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types).|Logging is a common way to capture access patterns. It records relevant events that provide valuable insights into how users interact with an application or platform. This information is crucial for accountability, compliance, and security purposes.|
-
 
 ## Cost Optimization
 
@@ -367,9 +364,9 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
   There are also disadvantages. Spikes in utilization or instability of an app can affect the performance of other apps. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
 
-- **Higher isolation**. Isolation is intented to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
+- **Higher isolation**. Isolation is intended to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
 
-  The App Service Environment (ASE) SKU targets gives you better control over security and data protection as each app can have its own security settings. There's better containment of breaches because isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and individual capacity planning. 
+  The App Service Environment (ASE) SKU targets gives you better control over security and data protection as each app can have its own security settings. There's better containment of breaches because isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specific demand and individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
 
