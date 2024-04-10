@@ -37,7 +37,7 @@ Understanding the Well-Architected Framework pillars can help produce a high-qua
 This review article focuses on the interrelated decisions for these Azure resources:
 
 - Azure Stack HCI (platform), version 23H2
-- Virtual Machines (workload)
+- Azure Arc Virtual Machines (workload)
 
 This guidance does not aim to address all workload resource types, as these can have specific architecture aspects and suggestions, such as Azure Arc-enabled AKS or Azure Virtual Desktop (AVD).
 
@@ -71,7 +71,7 @@ The  **design checklist** and list of **recommendations** below indicate if each
 >
 > - **Workload architecture backup:** Ensure workload backups are configured and tested regularly based on your workload data recovery / retention requirements, including the file and folder level restore capabilities. [Azure Backup can be used to enable host and/or guest level backups of Azure Stack HCI](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines), or review data protection solutions available from Backup ISV partners.
 >
-> - **HCI platform + workload architecture:** Reliability and resiliency design requirements are application and workload type specific, for example [Arc Virtual Machines (VMs)](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Arc-enabled AKS](/azure/aks/hybrid/scale-requirements), and [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/azure-stack-hci-overview), when deploying these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions to meet your workload reliability targets.
+> - **HCI platform + workload architecture:** Reliability and resiliency design requirements are application and workload type specific, for example [Azure Arc Virtual Machines (VMs)](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Arc-enabled AKS](/azure/aks/hybrid/scale-requirements), and [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/azure-stack-hci-overview), when deploying these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions to meet your workload reliability targets.
 
 ### Recommendations
 
@@ -82,7 +82,7 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 |Reserve the equivalent of **[one capacity disks worth of space per node](/azure-stack/hci/concepts/plan-volumes#reserve-capacity)**, within the S2D storage pool.|If you choose to create workload volumes post HCI cluster deployment (_Advanced option: "create required infrastructure volumes only"_), it is recommended to leave between 5% to 10% unallocated space in the storage pool. This reserved / free capacity enables Storage Spaces Direct (S2D) to repair "in-place" when a physical disk fails, which improves data resiliency and performance in the event of a physical disk failure.|
 |Ensure all physical nodes have network access to the list of **[required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements)** for Azure Stack HCI and Azure Arc.| To be able to reliably manage, monitor and operate Azure Stack HCI clusters and/or workload resources, the required outbound network endpoints must be accessible. Temporary interruption will not impact the running status of the workload, but may effect manageability.|
 |If you opt to create workload volumes (_virtual disks_) manually, use the most appropriate **[resiliency type](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type)** to maximize workload resiliency and performance.|For HCI clusters with three or more nodes, consider using a 3-way mirror to provide the highest resiliency and performance capabilities. The use of mirrored volumes is recommended for business or mission-critical workloads.|
-|Consider implementing **[workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples)** to ensure the VMs hosting multiple instances of the same service, run on separate physical hosts, which is a similar concept to "_Availability Sets_" in Azure.|Make all things redundant: For business or mission-critical workloads, deploy multiple instances of your applications or services using multiple virtual machines and/or kubernetes replica sets / pods. This increases resiliency in the event of an unplanned outage of a single physical node.|
+|Consider implementing **[workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples)** to ensure the VMs hosting multiple instances of the same service, run on separate physical hosts, which is a similar concept to "_Availability Sets_" in Azure.|Make all things redundant: For business or mission-critical workloads, deploy multiple instances of your applications or services using multiple Azure Arc virtual machines and/or kubernetes replica sets / pods. This increases resiliency in the event of an unplanned outage of a single physical node.|
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
@@ -116,7 +116,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **Workload security controls:** For workloads that requirement network segregation / isolation, use a network isolation technology to control network communication, such as separate virtual local area networks (vLANs). When using this approach, ensure each vLAN is reachable from the management network, to ensure HCI cluster nodes can communicate with the vLAN networks through the ToR (Top-of-Rack) switches or gateways, this is required for availability management of the workload, such as "_keep-alive probes_" from clustering and/or integration services agent communication to the Guest OS.
 >
-> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) virtual machines to improve security of Gen 2 virtual machines, by utilizing OS features of modern operating systems, such as Secure Boot that can use a virtual Trusted Platform Module (vTPM).
+> - **Workload security controls:** Use [Trusted launch](/azure-stack/hci/manage/trusted-launch-vm-overview) Azure Arc virtual machines to improve security of Gen 2 virtual machines, by utilizing OS features of modern operating systems, such as Secure Boot that can use a virtual Trusted Platform Module (vTPM).
 >
 > - **Workload security controls:** Use Azure Policy to re-use the built-in policies such as security baselines for Windows and Linux workloads or create new custom policies for auditing security settings and assessing the compliance state of the target workloads deployed on Azure Stack HCI.
 
@@ -152,7 +152,7 @@ Examples of the built-in policies that can be checked on the Azure Stack HCI thr
 
 #### Workload security
 
-To help improve workload security posture, examples of built-in policies that can be assessed on Azure Arc-enabled virtual machines running on Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration are shown below:
+To help improve workload security posture, examples of built-in policies that can be assessed on Azure Arc virtual machines running on Azure Stack HCI through the Security benchmark, Update Manager and Guest Configuration are shown below:
 
 - Log Analytics agent should be installed on Windows-based Azure Arc-enabled machines.
 - Machines should be configured to periodically check for missing system update.s
@@ -160,7 +160,7 @@ To help improve workload security posture, examples of built-in policies that ca
 - Windows Defender Exploit Guard should be enabled on machines.
 - Windows servers should be configured to use secure communication protocols.
 
-Below are some additional built-in policies you may want to enable on Azure Arc-enabled virtual machines running on Azure Stack HCI:
+Below are some additional built-in policies you may want to enable on Azure Arc virtual machines running on Azure Stack HCI:
 
 - [Preview]: Enable Extended Security Updates (ESUs) license to keep Windows 2012 machines protected after their support lifecycle has ended.
 
@@ -176,13 +176,13 @@ Cost optimization is about understanding your different configuration options an
 
 - Review [cost optimization design principles](../cost-optimization/principles.md).
 
-- Azure Stack HCI involves various costs such as hardware cost for the cluster nodes, software licensing cost for the cluster nodes, workloads, or guest virtual machines (Windows Server or Linux) licensing cost, and any integrated cloud services cost such as Azure Monitor, Microsoft Defender for Cloud, and others.
+- Azure Stack HCI involves various costs such as hardware cost for the cluster nodes, software licensing cost for the cluster nodes, workloads, or guest virtual machines (Windows Server or Linux) licensing cost, and any (optional) integrated cloud services cost such as Azure Monitor, Microsoft Defender for Cloud, plus others.
 
-- For the Azure Stack HCI hardware price, you need to select the model, make that best suits your workload requirements from the [Azure Stack HCI Solutions](https://azurestackhcisolutions.azure.microsoft.com/#/catalog) catalog and consult with one of our hardware partners to discuss, optimize and finalize on the hardware cost for the Azure Stack HCI nodes.
+- To determine the cost of Azure Stack HCI hardware, the process would involve selecting the most appropriate hardware OEM partner, and browsing the different models of server that are available in your geographic location, including any business and commercial requirements, consult the [Azure Stack HCI Solutions Catalog](https://aka.ms/hci-catalog#catalog) for more information. It is important to factor in your intended workload profile, in terms of the size, number and performance requirements of the workload to enable the selected hardware partners to discuss, optimize and finalize on the hardware cost for the Azure Stack HCI nodes.
 
 - Azure Stack HCI software is priced using a "per physical CPU core" basis. If you own on-premises core licenses for Windows Server Datacenter edition, with active Software Assurance (SA) you may choose to exchange these licenses to activate Azure Hybrid Benefit, which waives the Azure Stack HCI per physical CPU core cost and Windows Server VM subscription fee. Review [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) for more information.
 
-- Refer [Azure Hybrid Benefit - Hybrid Cost Calculator](/pricing/hybrid-benefit/#why-azure-hybrid-benefit) to leverage the benefits in Azure Hybrid Benefit (AHB) to optimize the cost for Azure Stack HCI software, workloads, or guest virtual machines (Windows Server or Linux) licensing cost, Azure Arc-enabled Kubernetes or AKS on Azure Stack HCI.
+- Refer [Azure Hybrid Benefit - Hybrid Cost Calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit) to understand the benefits Azure Hybrid Benefit (AHB) can provide to optimize the cost for Azure Stack HCI software, workloads, or guest virtual machines (Windows Server or Linux) licensing cost and Azure Arc-enabled AKS.
 
 As a best practice, HCI platform resources and costs are managed by the cluster or platform administrators, while workload resources and any additional cloud services costs are managed by the application owners or developers. Azure Stack HCI has considerations and recommendations for both roles.
 
@@ -204,7 +204,7 @@ The **design checklist** and list of **recommendations** below indicate if each 
 >
 > - **HCI platform architecture:** When using Azure Monitor with Azure Stack HCI, configure alert rules and data collection rules (DCRs) appropriately based on your monitoring, alerting and audit requirements. DCRs control which event logs and performance counters are sent from Azure Stack HCI cluster(s) to Log Analytics. Review [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/) and [Cost Optimization guidance for Log Analytics](/azure/well-architected/service-guides/azure-log-analytics#cost-optimization) for additional information.
 >
-> - **Workload architecture:** Using Azure Arc-enabled Kubernetes on Azure Stack HCI enables customers to connect and configure Kubernetes clusters across customer datacenters, edge locations, and multi-cloud. Review [Cost governance for Azure Arc-enabled Kubernetes](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) which provides cost governance considerations and recommendations you need to keep in mind while using Azure Arc-enabled Kubernetes. Also, review [Pricing – Azure Arc](/pricing/details/azure-arc/kubernetes/) which provides details on the pricing of Arc-enabled Kubernetes.
+> - **Workload architecture:** Using Azure Arc-enabled AKS on Azure Stack HCI enables customers to deploy and manage Kubernetes clusters at scale across customer datacenters or edge locations. Review [Cost governance for Azure Arc-enabled Kubernetes](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/eslz-arc-kubernetes-cost-governance) which provides cost governance considerations and recommendations you need to keep in mind while using Azure Arc-enabled AKS. Also, review [Pricing – Azure Arc](https://azure.microsoft.com/pricing/details/azure-arc/kubernetes/) which provides details on the pricing of Arc-enabled AKS on Azure Stack HCI.
 >
 > - **Workload architecture:** Azure Arc-enabled AKS provides the ability for developers and admins deploy and manage containerized apps using Azure Arc-enabled AKS on Azure Stack HCI. For pricing details review document [Azure Kubernetes Service on Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
 >
@@ -308,7 +308,7 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 ## Azure Policies
 
-Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc-enabled virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
+Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc virtual machines to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud.
 
 It is recommended to review the list of built-in policies that are available for Azure Stack HCI, such as:
 
@@ -321,7 +321,7 @@ You can find these policies in Azure portal, under Policy > Definitions > Catego
 
 For the above built-in-policies, Microsoft Defender for Cloud has added [New Recommendations for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) to show its compliance state.
 
-The built-in policies below are located under Security Center category that is evaluated by enabling Defender for Cloud on a subscription that is registered with hybrid resources, such as Azure Stack HCI and Azure Arc-enabled VMs:
+The built-in policies below are located under Security Center category that is evaluated by enabling Defender for Cloud on a subscription that is registered with hybrid resources, such as Azure Stack HCI and Azure Arc virtual machines:
 
 - [Preview]: Azure Security agent should be installed on your Windows Arc machines.
 - [Preview]: Azure Security agent should be installed on your Linux Arc machines.
