@@ -37,7 +37,7 @@ This review focuses on the interrelated decisions for these Azure resources.
 - Azure App Service Plan
 - Azure App Service for Web Apps
 
-    Within Web Apps, there's support for Web Apps for Containers, which is out-of-scope for this article. 
+    Within Web Apps, there's support for Web Apps for Containers, which is out-of-scope for this article. Also, App Service Environment is not included in this guidance.
 
 There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article.
 
@@ -382,8 +382,12 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 For comprehensive governance, review the App Services section in [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies) and other policies that might impact the security of the compute layer.
+=======
+For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might impact the security of the compute layer.
+>>>>>>> fde80c4a (WIP Reliability)
 
 
 ## Azure Advisor recommendations
