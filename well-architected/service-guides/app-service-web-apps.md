@@ -381,6 +381,23 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 - [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
 
+<<<<<<< HEAD
+=======
+For comprehensive governance, review the App Services section in [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies) and other policies that might impact the security of the compute layer.
+
+
+## Azure Advisor recommendations
+
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
+
+- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
+- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+- [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+
+
+>>>>>>> beeb2fb0 (app service scaffolding)
 ## Next steps
 
 Consider these articles as resources that demonstrate the  recommendations highlighted in this article.
@@ -390,4 +407,8 @@ Consider these articles as resources that demonstrate the  recommendations highl
   - Foundational architecture as your starting point for a production-grade deployment is described in [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 - Build implementation expertise using product documentation: 
   - [Azure App Service](/azure/app-service/)
+<<<<<<< HEAD
   - [Azure App Service plan](/azure/app-service/overview-hosting-plans)
+=======
+  - [Azure App Service plan](/azure/app-service/overview-hosting-plans)
+>>>>>>> beeb2fb0 (app service scaffolding)
