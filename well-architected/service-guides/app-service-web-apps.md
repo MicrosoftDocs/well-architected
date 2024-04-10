@@ -357,6 +357,23 @@ Service Level Objectives (SLOs) for your workload determine acceptable performan
 
 For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
 
+## Tradeoffs
+
+:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Density and isolation.
+
+There are design tradeoffs between approaches of higher density (sharing resources) and isolation (keeping apps separate). Each approach has its own set of advantages and drawbacks:
+
+- **Higher density**. By colocating multiple web apps within the same App Service Plan, you minimize the resources allocated. All apps share resources, such as CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resources utilization is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
+
+  There are also disadvantages. Spikes in utilization or instability of an web app can affect the performance of other apps sharing the same resources. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
+
+- **Higher isolation**. Isolation is intented to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
+
+  Isolating web apps provides better control over security and data protection. Each app can have its own security settings. There's also better containment of breaches. Isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and resources can be allocated based on individual capacity planning. 
+
+  Consequently, this approach is more expensive and requires operational rigor.
+
+
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to App Service and the dependencies. Some of the preceding recommendations can be audited through a set of Azure Policies. For example, you can check if:
