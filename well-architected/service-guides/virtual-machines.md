@@ -292,6 +292,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
+
 ## Next steps
 
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
