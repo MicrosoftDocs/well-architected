@@ -359,39 +359,36 @@ For example, multi-region redundancy provides high availability. However, it's c
 
 ## Tradeoffs
 
+There are design tradeoffs with the approaches described in the pillar checklists. Here are some examples of advantages and drawbacks.
+
 :::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
 
-There are design tradeoffs between approaches of higher density (sharing resources) and isolation (keeping apps separate). Each approach has its own set of advantages and drawbacks:
+- **Higher density**. By colocating multiple apps within the same App Service Plan, you minimize the resources. All apps share CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resource utilization is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
 
-- **Higher density**. By colocating multiple web apps within the same App Service Plan, you minimize the resources allocated. All apps share resources, such as CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resources utilization is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
-
-  There are also disadvantages. Spikes in utilization or instability of an web app can affect the performance of other apps sharing the same resources. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
+  There are also disadvantages. Spikes in utilization or instability of an app can affect the performance of other apps. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
 
 - **Higher isolation**. Isolation is intented to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
 
-  Isolating web apps provides better control over security and data protection. Each app can have its own security settings. There's also better containment of breaches. Isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and resources can be allocated based on individual capacity planning. 
+  Isolating apps provides better control over security and data protection because each app can have its own security settings. There's better containment of breaches as isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
 
-A well-defined scaling strategy ensures that your application can handle varying workloads without compromising performance. However, there are tradeoffs on cost.
+A well-defined scaling strategy ensures that your application can handle varying loads without compromising performance. However, there are tradeoffs on cost.
 
 Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. **Overprovisioning resources (prewarm instances)** provides a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, impacting user experience. The triggers for auto scaling operations must signal early enough to enable proper resource initialization by the time the resources are used.
 
 Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher SKUs include prewarmed instances. Determine whether capabilities offered with more expensive SKUs are worth the investment.  
 
-
 :::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**.
 
 Redundancy offers resilience while also incurring costs. 
 
-Define Service Level Objectives (SLOs) for your workload. These SLOs determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
+Service Level Objectives (SLOs) for your workload determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
 
 For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
-
-
 
 ## Azure policies
 
