@@ -320,7 +320,7 @@ Start your design strategy based on the [**design review checklist for Performan
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(App Service) [**Enable Always On**](/azure/app-service/configure-common) when applications share a single App Service Plan. <br><br> Azure App Service apps automatically unload when idle to save resources, the next request would trigger a cold start, potentially causing request timeouts. |With Always On enabled the application is never unloaded.|
-|(App Service) [**Consider using HTTP/2**](azure/app-service/configure-common) for applications to improve protocol efficiency. |HTTP/2 improves over HTTP/1.1 by fully multiplexing connections, reusing connections to reduce overhead, and compressing headers to minimize data transfer.|
+|(App Service) [**Consider using HTTP/2**](/azure/app-service/configure-common) for applications to improve protocol efficiency. |HTTP/2 improves over HTTP/1.1 by fully multiplexing connections, reusing connections to reduce overhead, and compressing headers to minimize data transfer.|
 
 ## Tradeoffs
 
