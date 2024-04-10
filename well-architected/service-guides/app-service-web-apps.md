@@ -291,16 +291,21 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 >   Include code-level instrumentation, transaction tracing, and performance profiling.
 >
+> - **Capacity assessment**. By simulating various user scenarios, you can determine the optimal capacity needed to handle expected traffic. Use Azure Load Testing to understand how your application behaves under different levels of load.
+>
 > - **Select the right tier**. Dedicated compute is recommended for production workloads. Premium tiers offer larger SKUs with increased memory and CPU capacity, more instances, and features such as zone redundancy. For capabilities of higher tiers, see [Premium V3 pricing tier](/azure/app-service/overview-hosting-plans#premium-v3-pricing-tier).
 >
-> - **Optimize your scaling strategy**. Always opt for automatic ways of scaling instead of manually adjusting the number of instances as application load changes. With automatic scaling, App Service adjusts server capacity based on predefined rules or triggers. Make sure you do adequate performance testing and you then set the right rules for the right triggers.
+> - **Optimize your scaling strategy**. Always opt for [automatic ways of scaling](/azure/azure-monitor/autoscale/autoscale-overview) instead of manually adjusting the number of instances as application load changes. With automatic scaling, App Service adjusts server capacity based on predefined rules or triggers. Make sure you do adequate performance testing and you then set the right rules for the right triggers. 
 > 
 >   There's another automatic scaling option that doesn't require you to define rules and only set limits. This is a good option for users who prioritize simplicity and initial setup.
 >
+>   To ensure optimal performance, sufficient resources should be readily available. To maintain performance targets, such as response time or throughput, allocate resources appropriately. Consider overallocating resources when necessary. 
+>
+>    When defining auto-scale rules, account for the time it takes for your application to initialize. Scaling decisions should consider this initialization overhead.
+>
 > - **Use caching**.  Retrieving information from a resource that doesn't change frequently and is expensive to access impacts performance. Complex queries, including joins and multiple lookups, contribute to execution time. Caching aims to minimize the processing time and latency. By caching query results, you avoid repeated round trips to the database or backend. Also, reduces processing time for subsequent requests.
 >
->   For more information about using local and distributed cache in the workload, see [Caching](/azure/architecture/best-practices/caching)
->   In web applications, not implementing caching is an antipattern. For considerations, see . 
+>   For more information about using local and distributed cache in the workload, see [Caching](/azure/architecture/best-practices/caching).
 >
 > - **Review the performance antipatterns**. To make sure the web application performs and scales as your business requirements, avoid the [typical antipatterns](/azure/architecture/antipatterns/). Here are some antipatterns that are corrected by App Service.
 >
