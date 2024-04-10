@@ -369,7 +369,7 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
 - **Higher isolation**. Isolation is intented to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
 
-  Isolating apps provides better control over security and data protection because each app can have its own security settings. There's better containment of breaches as isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and individual capacity planning. 
+  The App Service Environment (ASE) SKU targets gives you better control over security and data protection as each app can have its own security settings. There's better containment of breaches because isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specfic demand and individual capacity planning. 
 
   Consequently, this approach is more expensive and requires operational rigor.
 
