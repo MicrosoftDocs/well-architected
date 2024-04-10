@@ -110,6 +110,9 @@ Start your design strategy based on the [**design review checklist for Reliabili
 > - **Use health probes to identify unresponsive workers**. App Service has built-in capabilities that periodically ping a specific path of your web application. If an instance is unresponsive, it's removed from the load balancer and replaced with a new instance.
 
 
+TO DO: Although App Services exposes a single endpoint, it can have multiple instances.
+App Services handles load balancing transparently, distributing requests across instances (e.g., using round-robin).
+
 ##### Recommendations
 
 |Recommendation|Benefit|
