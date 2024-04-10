@@ -316,7 +316,7 @@ Start your design strategy based on the [**design review checklist for Performan
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(App Service) [**Enable Always On**](/azure/app-service/configure-common) when applications share a single App Service Plan. <br><br> Azure App Service apps automatically unload when idle to save resources, the next request would trigger a cold start, potentially causing request timeouts. |With Always On enabled the application is never unloaded.|
-|(App Service) [**Consider using HTTP/2**](azure/app-service/configure-common) for applications to improve protocol efficiency. |HTTP/2 improves over HTTP/1.1 by fully multiplexing connections, reusing connections to reduce overhead, and compressing headers to minimize data transfer.|
+|(App Service) [**Consider using HTTP/2**](/azure/app-service/configure-common) for applications to improve protocol efficiency. |HTTP/2 improves over HTTP/1.1 by fully multiplexing connections, reusing connections to reduce overhead, and compressing headers to minimize data transfer.|
 
 ## Tradeoffs
 
@@ -351,38 +351,6 @@ Service Level Objectives (SLOs) for your workload determine acceptable performan
 
 For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
 
-## Tradeoffs
-
-There are design tradeoffs with the approaches described in the pillar checklists. Here are some examples of advantages and drawbacks.
-
-:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
-
-- **Higher density**. By colocating multiple apps within the same App Service Plan, you minimize the resources. All apps share CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resource utilization is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
-
-  There are also disadvantages. Spikes in utilization or instability of an app can affect the performance of other apps. Security is also a concern. Because incidents in one app can permeate to other apps within the shared environment.
-
-- **Higher isolation**. Isolation is intended to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environment.
-
-  The App Service Environment (ASE) tier gives you better control over security and data protection as each app can have its own security settings. There's better containment of breaches because isolation limits the blast radius. From a performance perspective, resource contention is minimized. Also, isolation allows for independent scaling based on specific demand and individual capacity planning. 
-
-  Consequently, this approach is more expensive and requires operational rigor.
-
-
-:::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
-
-A well-defined scaling strategy ensures that your application can handle varying loads without compromising performance. However, there are tradeoffs on cost.
-
-Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. **Overprovisioning resources (prewarm instances)** provides a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, impacting user experience. The triggers for auto scaling operations must signal early enough to enable proper resource initialization by the time the resources are used.
-
-Overprovisioning leads to **higher costs**. You're charged per second for every instance, including prewarmed instances. Higher tiers include prewarmed instances. Determine whether capabilities offered with more expensive tiers are worth the investment.  
-
-:::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**.
-
-Redundancy offers resilience while also incurring costs. 
-
-Service Level Objectives (SLOs) for your workload determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
-
-For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
 
 ## Azure policies
 
@@ -406,19 +374,6 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
-
-
-## Azure Advisor recommendations
-
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your web application instances.
-
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
-
-
 
 ## Next steps
 
