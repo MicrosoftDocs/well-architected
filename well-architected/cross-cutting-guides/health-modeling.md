@@ -3,7 +3,7 @@ title: Health modeling for workloads
 description: Use health modeling to improve workload reliability in Azure. Learn how to quantify application health and build your own health model.
 author: calcof
 ms.author: calcof
-ms.date: 03/25/2024
+ms.date: 04/11/2024
 ms.topic: conceptual
 ---
 
@@ -13,7 +13,9 @@ Cloud applications generate high volumes of operational data, which makes it cha
 
 Health modeling is an **observability exercise that combines business context with raw monitoring data to quantify the overall health of a workload**. It helps set a baseline that you can monitor the workload against. You should consider data like telemetry from infrastructure and application components. Health modeling might also incorporate other information that's necessary to achieve the workload's quality targets.
 
-By modeling the health of a workload, you can **identify drift from an expected operational state** and **make informed operational decisions** that consider business impact. Performance problems or operational degradation can cause these degradations. Health modeling bridges the gap between legacy operational knowledge and actionable insights and helps you manage critical issues effectively. The concept is essential to maximize reliability and operational effectiveness. 
+Performance problems or operational degradation can cause drift from the expected operational state. By modeling the health of a workload, you can **identify drift** and **make informed operational decisions** that consider business impact. 
+
+Health modeling also bridges the gap between legacy operational knowledge and actionable insights. It helps you manage critical issues effectively. The concept is essential to maximize reliability and operational effectiveness. 
 
 This guide offers practical guidance about health modeling, including how to build a model that assesses the runtime health of a workload and all of its subsystems.
 
@@ -44,19 +46,19 @@ We recommend that you represent health in one of three states:
 - **Unhealthy**: In a critical state and requiring immediate attention
 
 > [!NOTE]
-> You can also represent health with a score rather than states to provide more data granularity.
+> You can represent health with a score rather than states to provide more data granularity.
 
 Health states are derived by combining monitoring data with domain information. Each state **must be defined** and **must be measurable**. They're calculated by using _health signals_, which are individual data streams that provide insights into an entity's operational behavior. Signals can include metrics, logs, traces, or other quality characteristics. For example, a health signal for a virtual machine (VM) entity might track the CPU utilization metric. Other signals for this entity can include memory usage, network latency, or error rates.
 
 As you define health signals, factor in the nonfunctional requirements for the workload. In the example of CPU utilization, include the expected thresholds for each health state. If utilization exceeds the tolerated threshold per the workload requirements, the system transitions from 'Healthy' to 'Degraded' or 'Unhealthy.' These state changes trigger the appropriate alerts or actions. 
 
-Health modeling requires entities to have well-defined states derived from **multiple health signals** that are **contextualized** for the workload. For example, the health definition for a VM might be:
+Health modeling requires entities to have well-defined states that are derived from **multiple health signals** and are **contextualized** for the workload. For example, the health definition for a VM might be:
 
-- **Healthy**. Key nonfunctional requirements and targets, such as response time, resource utilization, and overall system performance, are fully satisfied. For example, 95% of requests are processed within 500 milliseconds. The workload uses VM resources like CPU, memory, and storage optimally and maintains a balance between workload demands and available capacity. User experience is at expected levels.
+- **Healthy**: Key nonfunctional requirements and targets, such as response time, resource utilization, and overall system performance, are fully satisfied. For example, 95% of requests are processed within 500 milliseconds. The workload uses VM resources like CPU, memory, and storage optimally and maintains a balance between workload demands and available capacity. User experience is at expected levels.
 
-- **Degraded**. Resources aren't performing optimally but are still operational. For example, the storage disk is experiencing throttling problems. Users might experience slow responses.
+- **Degraded**: Resources aren't performing optimally but are still operational. For example, the storage disk is experiencing throttling problems. Users might experience slow responses.
 
-- **Unhealthy**. Degradation is beyond the tolerated limits. Resources are no longer responsive or available, and the system is no longer meeting acceptable performance levels. User experience is severely affected. 
+- **Unhealthy**: Degradation is beyond the tolerated limits. Resources are no longer responsive or available, and the system is no longer meeting acceptable performance levels. User experience is severely affected. 
 
 The outcome of health modeling is a _model_ or a graphical representation of logical entities and their relationships for a workload architecture. Each node has a health state definition. 
 
@@ -78,7 +80,7 @@ Consider a scenario in which an e-commerce workload experiences a spike in faile
 
 A health model can give operators immediate visibility into the problem and its effects. The payment flow depends on Service Bus, one of the workload components. The visual representation reveals the degraded state of the Service Bus instance and its effect on the payment flow. Operators can understand the importance of the issue and focus their remediation efforts on that specific component.
 
-Health modeling helped the preceding scenario in the following ways:
+Health modeling was important in the preceding scenario in the following ways:
 
 - It improved the time to detect (TTD) and time to mitigate (TTM) by **enabling faster problem isolation**, which led to quicker detection of problems and potential fixes.
 
@@ -222,7 +224,7 @@ Assign green for healthy, amber for degraded, and red for unhealthy. By quickly 
 :::image type="content" source="_images/health-impact.png" alt-text="The diagram shows a health model that uses a traffic light approach." border="false":::
 
 > [!NOTE]
-> Wwhen you dashboard your health model, we also recommend that you consider accessibility requirements for people who have a vision disability. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
+> When you dashboard your health model, we also recommend that you consider accessibility requirements for people who have a vision disability. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
 
 ## Adopt your health model
 
@@ -230,7 +232,7 @@ After you build a health model, consider the following use cases to drive detect
 
 ### Applicability to various roles
 
-Health modeling can provide information that's specific to job functions or to roles within the same context of the workload. For example, a DevOps role might need operational health information. A security officer might be more concerned about intrusion signals and security exposure. A database administrator is likely only interested in a subset of the application model through the database resources only.
+Health modeling can provide information that's specific to job functions or to roles within the same context of the workload. For example, a DevOps role might need operational health information. A security officer might be more concerned about intrusion signals and security exposure. A database administrator is likely only interested in a subset of the application model through the database resources.
 
 Tailor health insights for different stakeholders. Consider creating separate models from overlapping data sets.
 
