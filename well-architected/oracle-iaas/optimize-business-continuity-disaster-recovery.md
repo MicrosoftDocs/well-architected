@@ -1,15 +1,15 @@
 ---
-title: Business continuity and disaster recovery
+title: Optimize business continuity and disaster recovery
 description: Review the design area for BCDR of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler 
-ms.date: 03/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Business Continuity and Disaster Recovery (BCDR)
+# Optimize business continuity and disaster recovery
 
 When discussing reliability with Oracle in Azure, it’s important to take into consideration not just the database but also the connected tiers on separate VMs, virtual network subnets and connected storage components. Oracle on Azure IaaS can achieve the required resiliency objectives of the most demanding Oracle workloads. The guidelines offered here are most effective when resiliency KPIs are defined based on business requirements. RPO and RTO requirements will provide you a baseline KPI to decide on your best suited architecture. 
 - Recovery Time Objective (RTO): The maximum time an application is unavailable after an incident.
@@ -73,7 +73,7 @@ For further assistance on choosing the mode for your workload requirements, plea
 
 The following architecture aims for a downtime threshold of less than 5 minutes. 
 
-![Active-Passive Architecture on Azure](./images/active-passive.png)
+![Diagram that shows the active-passive architecture on Azure.](./images/active-passive.png)
 
 ### Example 2: Create a Fail-Over For Business Critical Applications in a Two Availability Zone Deployment With Active Standby
 
@@ -84,9 +84,9 @@ The following diagram aims for a downtime threshold of less than 1 minutes. Even
 
 **Note that this setup requires an Active Data Guard license.**
 
-![Active-Active Architecture on Azure](./images/active-active.png)
+![Diagram that shows the active-active architecture on Azure.](./images/active-active.png)
 
 ## Next Steps
 
 > [!div class="nextstepaction"]
-> [Security](./security-new.md)
+> [Security](optimize-security.md)

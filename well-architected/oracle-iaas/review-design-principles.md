@@ -1,25 +1,25 @@
 ---
-title: Oracle on Azure IaaS design principles
+title: Design principles for an Oracle workload on Azure
 description: Review the design principles of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
-ms.author: 
-ms.date: 
+ms.author: jhaessler
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-Oracle
+ms.subservice: waf-workload-oracle
 ---
 
-# Oracle on Azure IaaS Design Principles
+# Design principles for an Oracle workload on Azure
 
 Guidance about well-architected Oracle on Azure IaaS workloads is built on the Azure Well-Architected Framework and its five pillars of architectural excellence. The following table lists each pillar and a summary of its goals.
 
 | Well-Architected Framework pillar | Summary |
 | --- | --- |
 | Reliability | A reliable Oracle workload is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Availability is uptime. High availability reduces Oracle Database and Application downtime during critical maintenance and improves recovery from failures. Failures happen on-premises and in the cloud, so it’s important to design your Oracle workload for resiliency and availability.|
-| Security | This pillar is concerned with implementing measures that help protect your workload from threats. Examples include adding multiple security layers to your Oracle applications, including identity and access management (IAM), input validation, data sovereignty, and encryption for distributed denial-of-service (DDoS) mitigation. Other measures include blocking bad actors, preventing data exfiltration, and providing protection from operating system vulnerabilities. |
-| Cost optimization | Cost optimization is about to keep the cost at a minimum by achieving required technical and business objectives.|
-| Performance efficiency | Performance efficiency is about accelerating digital transformation with less. The goal is to get the most out of your Oracle workload and meet user demand without over or under provisioning resources. Inefficient performance can degrade user experience and inflate costs. Performance affects productivity for databases and applications. We also recommend to regularly review your AWR reports.|
-| Operational excellence | Operational excellence is about creating efficient processes to support and monitor your Oracle workloads. Health monitoring for Oracle Databases and VMs is crucial in order to grant full performance of your Oracle workloads.|
+| Security | This pillar is concerned with implementing measures that help protect your workload from threats. Examples include adding multiple security layers to your Oracle applications, including identity and access management (IAM), input validation, data sovereignty, encryption and distributed denial-of-service (DDoS) mitigation. Other measures include blocking bad actors, preventing data exfiltration, and providing protection from operating system vulnerabilities. |
+| Cost optimization | Cost optimization is about keeping the cost at a minimum while achieving required technical and business objectives.|
+| Performance efficiency | Performance efficiency is about accelerating digital transformation with less. The goal is to get the most out of your Oracle workload and meet user demand without over or under provisioning resources. Inefficient performance can degrade user experience and inflate costs. Performance affects productivity for databases and applications.|
+| Operational excellence | Operational excellence is about creating efficient processes to support and monitor your Oracle workloads. Health monitoring for Oracle Databases and VMs is crucial in order to guarantee the required performance of your Oracle workloads.|
 
 ## Reliability
 
@@ -27,10 +27,10 @@ Because failures can occur on-premises and in the cloud, it's important to focus
 
 - _Resiliency_ refers to recovering from failures and maintaining functionality.
   
-- _Availability_ ensures uninterrupted uptime. High availability minimizes application and database downtime during critical maintenance activities. It also enhances recovery from incidents like virtual machine (VM) crashes, backend updates, extended downtimes, and ransomware attacks.
+- _Availability_ ensures uninterrupted uptime. High availability minimizes application and database downtime during critical maintenance activities. It also enhances recovery from incidents like virtual machine (VM) crashes, backend updates, extended downtimes and ransomware attacks.
 
 In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize down time and ensure that recommended practices for high availability are built into Azure and Oracle.
-When discussing reliability with Oracle in Azure, it’s important to take into consideration not just the database, the connected tiers on separate VMs, virtual network subnets and disaster recovery if there's failures. Oracle on Azure IaaS can achieve these design considerations and have recommendations for each item.
+When discussing reliability with Oracle in Azure, it’s important to take into consideration not only the database but also the connected tiers on separate VMs, virtual network subnets and disaster recovery in the case of failures. Oracle on Azure IaaS can achieve these design considerations and have recommendations for each item.
 
 
 - Scale workloads **vertically** by selecting a VM SKU and storage that's appropriate for your workload's resources such as CPU, memory, IOPS, throughput and Database size. Scale **horizontally** by adding VM instances or disk.
@@ -43,23 +43,23 @@ When discussing reliability with Oracle in Azure, it’s important to take into 
 In a shared-responsibility model:
 
 - Organizations are primarily responsible for managing and operating workloads.
-- Microsoft manages the physical and virtual infrastructure of Azure VMware Solution.
+- Microsoft manages the physical and virtual infrastructure of the Azure infrastructure.
 
 We strongly recommend that you regularly assess the services and technologies to ensure that your security posture adapts to the evolving threat landscape. Establishing a clear understanding of the shared responsibility model when you collaborate with vendors to implement suitable security measures is also essential.
 
 You can employ several methods to secure your Oracle workloads:
 
 - Implement the principle of least privilege, and use role-based access control to assign roles.
-- Familiarize yourself with SSO methods supported for Oracle applications
+- Familiarize yourself with SSO methods supported for Oracle applications.
 - Conduct environmental audits regularly.
 - Implement encryption for data at rest and in transit.
-- Implement operating system hardening to prevent vulnerabilities that could be exploited to attack the Oracle database
-- Use Network Security Groups to filter traffic
-- Integrate audit trails
+- Implement operating system hardening to prevent vulnerabilities that could be exploited to attack the Oracle database.
+- Use Network Security Groups to filter traffic.
+- Integrate audit trails.
 
 ## Cost optimization
 
-The first cost optimization opportunity is set during the right-size assessment. This supports you to not over-provision your landscape.  The frequent increase in Azure hardware capability provides regular opportunity for an Oracle workloads to optimize costs, eliminate waste, and improve technology. To align Azure and your Oracle workload, we recommend creating a plan for each Oracle workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost optimization initiatives for your database, application platform, and data platform. Your RTO/RPO requirements, uptime can lead to significant cost optimizations
+The first cost optimization opportunity is set during the right-size assessment. This supports you to not over-provision your infrastructure.  The frequent increase in Azure hardware capability provides regular opportunity for an Oracle workloads to optimize costs, eliminate waste, and improve technology. To align Azure and your Oracle workload, we recommend creating a plan for each Oracle workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost optimization initiatives for your database, application platform, and data platform. Your RTO/RPO and uptime requirements can lead to significant cost optimization options.
 
 ## Performance efficiency
 
@@ -69,9 +69,7 @@ Oracle on Azure IaaS has components that are distributed across various Azure se
 
 ## Operational excellence
 
-Operational excellence is about creating efficient processes to support your Oracle workload. Operations will be the longest phase of the Oracle workload lifecycle, and teams must be equipped with operational best practices to manage the day-today tasks. Failure in operations will affect the other design areas and the overall success of the Oracle workload. It’s critical to tailor your operations to support an Oracle workload in operations. Below are recommendations to drive operational excellence.
-
-Another part of operational excellence is adhering to well-architected best practices to secure, optimize, and scale workloads. This practice involves:
+Operational excellence is about creating efficient processes to support your Oracle workload. Operations will be the longest phase of the Oracle workload lifecycle, and teams must be equipped with operational best practices to manage the day-today tasks. Failure in operations will affect the other design areas and the overall success of the Oracle workload. It’s critical to tailor your operational processes to support an Oracle workload in production. Below are recommendations to drive operational excellence.
 
 - Having processes in place for installing up-to-date patches and upgrades.
 - Maintaining governance and compliance.
@@ -90,4 +88,17 @@ The described design principles are incorporated into Oracle on Azure Design Are
 Start by reviewing the design considerations for Azure infrastructure that are needed to support a workload.
 
 > [!div class="nextstepaction"]
-> [Compute and Storage](...)
+> [Choose compute and storage](choose-compute-storage.md)
+
+> [!div class="nextstepaction"]
+> [Optimize business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md)
+
+> [!div class="nextstepaction"]
+> [Optimize security](optimize-security.md)
+
+> [!div class="nextstepaction"]
+> [Monitor workloads](monitor-workloads.md)
+
+> [!div class="nextstepaction"]
+> [Design Oracle applications](design-applications.md)
+

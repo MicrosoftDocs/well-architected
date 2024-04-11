@@ -255,7 +255,7 @@
       - name: Mission-critical
         href: mission-critical/index.yml                     
       - name: Oracle
-        href: oracle-iaas/overview.md        
+        href: oracle-iaas/get-started.md        
       - name: SAP
         href: sap/quick-links.yml        
       - name: Sustainability
