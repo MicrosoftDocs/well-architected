@@ -1354,6 +1354,11 @@
 			"source_path": "well-architected/service-guides/application-delivery/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
 			"redirect_document_id": false
-		}																		
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/overview.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/get-started",
+			"redirect_document_id": false
+		}																				
 	]
 }
