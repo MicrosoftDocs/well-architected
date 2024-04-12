@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 04/10/2024
+ms.date: 04/12/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-service-guide
@@ -213,7 +213,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|Provision storage accounts in the same region where dependent resources are placed. For applications that **are not** hosted within Azure, such as mobile device apps or on premises enterprise services, locate the storage account in a region nearer to those clients. See [Azure geographies](/explore/global-infrastructure/geographies/).<br><br>If clients from a different region don't require the same data, then create a separate account in each region.<br><br>If clients from a different region require only some data, consider using an object replication policy to asynchronously copy relevant objects to a storage account in the other region. | Reducing the physical distance between the storage account and VMs, services, and on-premises clients, can improve performance and reduce network latency.  For applications hosted in Azure, this also reduces cost as bandwidth usage within a single region is free.|
+|Provision storage accounts in the same region where dependent resources are placed. For applications that **are not** hosted within Azure, such as mobile device apps or on premises enterprise services, locate the storage account in a region nearer to those clients. See [Azure geographies](https://azure.microsoft.com/explore/global-infrastructure/geographies/#overview).<br><br>If clients from a different region don't require the same data, then create a separate account in each region.<br><br>If clients from a different region require only some data, consider using an object replication policy to asynchronously copy relevant objects to a storage account in the other region. | Reducing the physical distance between the storage account and VMs, services, and on-premises clients, can improve performance and reduce network latency.  For applications hosted in Azure, this also reduces cost as bandwidth usage within a single region is free.|
 |For broad consumption by web clients (streaming video, audio, static website content), consider using a Content Delivery Network (CDN) through Azure Front Door. | Content is delivered to clients faster as it uses Microsoft's global edge network with hundreds of global and local points of presence around the world..|
 |Add a hash character sequence (such as three-digits) as early as possible in the partition key of a blob. The partition key is the concatenation of the account name, container name, virtual directory name and blob name. If you plan to use timestamps in names, then consider adding a seconds value to the beginning of that stamp. See [Partitioning](/azure/storage/blobs/storage-performance-checklist#partitioning).| Using a hash code or seconds value nearest the beginning of a partition key reduces the time required to list query and read blobs. |
 |When uploading blobs or blocks, use a blob or block size that is greater than 256 KiB. | Blob or block sizes above 256 KiB leverages performance enhancements in the platform made specifically for larger blobs and block sizes. |
