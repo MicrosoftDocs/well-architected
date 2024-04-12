@@ -1,15 +1,15 @@
 ---
-title: Get started on Oracle on Azure IaaS workloads
+title: Create an Oracle workload on Azure
 description: See general guidance and resources for running Oracle on Azure IaaS.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 03/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Get started on Oracle on Azure IaaS workloads
+# Create an Oracle workload on Azure
 
 This guidance is intended to provide **Application Owners**, **Oracle Database Administrators**, **Business Stakeholders** and **Architects** with best practices for well-architected Oracle on Azure IaaS implementation.
 You can use this workload documentation as your go-to resource for guidance on how to apply the Azure Well-Architected best practices as the technical foundation for building and operating a highly reliable solution for Oracle on Azure at-scale.
@@ -53,11 +53,11 @@ Oracle on Azure IaaS includes the following design areas, which focus on the tec
 
 |Design area|Summary|
 |---|---|
-|[Compute and Storage](./compute-and-storage.md)|Right-sizing your infrastructure is crucial for performance and cost efficiency. The Oracle Migration Assistant Tool [OMAT](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat) helps in selecting the right SKU for the database VM, and the best suited storage for the database, archive redologs and backup.|
-|[Business Continuity and Disaster Recovery](./bcdr.md)|This section provides guidance on reliable failover architecture. It focuses on RPO and RTO requirements as well as High Availability.|
-|[Security](./security-new.md)|Considerations for all aspects of security for Oracle workloads are discussed.|
-|[Monitoring](./monitoring.md)|This section provides guidance on monitoring tooling which is essential in order to react quickly to developing issues and performance degradation.|
-|[Oracle Applications](./oracle-applications.md)|This section provides guidance on what to consider when migrating typical Oracle applications to Azure.|
+|[Choose compute and storage](choose-compute-storage.md)|Right-sizing your infrastructure is crucial for performance and cost efficiency. The Oracle Migration Assistant Tool [OMAT](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat) helps in selecting the right SKU for the database VM, and the best suited storage for the database, archive redologs and backup.|
+|[Optimize business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md)|This section provides guidance on reliable failover architecture. It focuses on RPO and RTO requirements as well as High Availability.|
+|[Optimize security](optimize-security.md)|Considerations for all aspects of security for Oracle workloads are discussed.|
+|[Monitor workloads](monitor-workloads.md)|This section provides guidance on monitoring tooling which is essential in order to react quickly to developing issues and performance degradation.|
+|[Design Oracle applications](design-applications.md)|This section provides guidance on what to consider when migrating typical Oracle applications to Azure.|
 
 <!--## Assessment
 
@@ -71,4 +71,4 @@ Use the assessment tool to evaluate your design choices.
 Start by reviewing design principles.
 
 > [!div class="nextstepaction"]
-> [Design principles](./design-principles.md)
+> [Design principles](review-design-principles.md)

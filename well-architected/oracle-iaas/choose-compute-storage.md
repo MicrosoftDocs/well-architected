@@ -1,15 +1,15 @@
 ---
-title: Compute and storage
+title: Choose compute and storage
 description: Review the design area for storage and compute of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 3/14/2024
+ms.date: 04/15/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Compute and Storage
+# Choose compute and storage
 
 Azure presents an opportunity to migrate Oracle workloads to match on-premises in an Infrastructure as a Service, (IaaS) model. However, Oracle can often present hurdles to the cloud due to the complexity, size and high IO demands of the workload. The Oracle database performance is strictly influenced by the following parameters: read/write Disk throughput (MBPs), read/write IOPS, CPU, RAM and Network latency. As such it is crucial to understand clearly how to choose the right combination of compute and storage on Azure IaaS, as well as placement of application workloads relative to database services for the migration of Oracle workloads to be successful. 
 
@@ -140,4 +140,4 @@ If you need further information on Oracle Applications on Azure, please review [
 
 ## Next steps
 > [!div class="nextstepaction"]
-> [Backup and Disaster Recovery BCDR](./bcdr.md) 
+> [Business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md) 
