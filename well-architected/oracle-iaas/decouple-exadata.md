@@ -11,24 +11,21 @@ ms.subservice: waf-workload-oracle
 
 # Decouple workloads from Oracle Exadata
 
-Exadata is an engineered system. It consists of both Hardware and Software. By decoupling we mean to decouple from your hardware into a single instance Database.
+Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple from your hardware into a single Oracle Database instance.
 
-The Exadata has some unique features that includes storage indexes, flash cache, hybrid columnar compression and smart scan. 
-At first we will need to review your AWR report and see how you leverage the Exadata features. In some cases, you might have even disabled it. 
-Based on the data from the AWR we can provide you with the best solution fitting your workload and utilization. 
-To become more comfortable to run your workload without the Exadata features, you can test it out. 
+Some Exadata features include storage indexes, flash cache, hybrid columnar compression, and smart scan. First, review your Automatic Workload Repository (AWR) report and see how you use Exadata features. In some cases, you might disabled features. Based on the data from the AWR, choose the best solution for your workload and usage. Test your workload to familiarize yourself with how it runs without Exadata features.
 
-## How to size out an Exadata workload on Azure
+## Size out an Exadata workload on Azure
 
-The AWR (Automatic Workload Repository) is the starting point of any sizing exercise and also applies to Exadata Workloads. 
+The AWR is the starting point of any sizing exercise and also applies to Exadata workloads. 
 
-The AWR reports should be delivered in html format and on peak-load. In most cases Exadata AWR reports consists of several Databases hosted on an Exadata. The AWR report therefore should be handed over from the Database with the heaviest load. If you are unsure about the heaviest one, within the AWR report, scroll down to the “Top 10 Databases”. 
+Create AWR reports in HTML format, and use data from your peak load. In most cases, Exadata AWR reports consist of several databases that are hosted on Exadata. The AWR report therefore should be handed over from the Database with the heaviest load. If you are unsure about the heaviest one, within the AWR report, scroll down to the “Top 10 Databases”. 
 
 The interval of an AWR report should either be a 3-4 day interval or rather 1-hour peak-load. If you will need assistance to get to know your peak-times, please consult a Oracle SME in Microsoft to support you.
 
-Next to it, we will need data covering the DB size, archive redologs, online logs and volume of backup. If you might need help, please feel free to consult an Oracle SME. 
+Next to it, we will need data covering the database size, archive redologs, online logs and volume of backup. If you might need help, please feel free to consult an Oracle SME. 
 
-After you collected all data and ran the right-size exercise, we will need to have a deeper look into the AWR report. Do you use hybrid columnar compression (HCC), Smart and/or Storage indexes? If the answer is yes to one of these, an additional x2 IO factor is expected. By digging a bit deeper into it, we will have a look if you make use of flash cache. If so, another x2 will be added to the right-sizing. 
+After you collected all data and ran the right-size exercise, we will need to have a deeper look into the AWR report. Do you use hybrid columnar compression (HCC), smart indexes or storage indexes? If the answer is yes to one of these, an additional x2 IO factor is expected. By digging a bit deeper into it, we will have a look if you make use of flash cache. If so, another x2 will be added to the right-sizing. 
 
 As an important note it is always important how the Exadata features are leveraged. Sometimes you might have enabled it, but it impacts the performance significantly, which is mostly seen in OLTP workloads. 
 You can review on how you leverage it in the “Top Time Foreground Wait Events”. For further read, please navigate to [Decoupling from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
@@ -75,7 +72,7 @@ ALTER TABLE ….STORAGE(CELL_FLASH_CACHE NONE);
 
 This automatically generates a script for a larger set of objects. Run this command in on and off mode. If you have done so, compare the optimized IO to verify the performance impact.
 
-### Test Database Performance without Hybrid Columnar Compression
+### Test database performance without hybrid columnar compression
 
 Before you make any test, make sure to review your current settings first. 
 
@@ -87,22 +84,23 @@ WHERE COMPRESSION = ‘ENABLED’;
 
 In My Oracle Support (Doc ID: 1080301.1) you can review how to disable Hybrid Columnar Compression. 
 
-## Plan to Migrate your Exadata Workload
+## Migrate your Exadata workload
 
 Review your current architecture:
--	Application /Web & App Servers
+
+-	Application, jump, and web servers
 -	ETL processes
 -	Middleware
--	Jump Server 
--	Monitoring Systems
--	Load Balancer
--	Any connected other systems
+-	Monitoring systems
+-	Load balancers
+-	Other systems that are connected
+
 Every content and dependencies should be tracked in a migration plan. Have one responsible project lead and one responsible person as backup in case of vacation or any other reasons to not start from scratch. Ensure all technical resources are dedicated and assigned to the migration project.
 When preparing your migration to a cloud journey, please determine your specific High Availability and Disaster Recovery architecture described in the Reliability Section.
 For your application, make sure to review Azure Site Recovery.
 
-## Next Steps
+## Next step
 
-In case you will need to familiarize yourself with the capacity planning, please review [Compute and storage](choose-compute-storage.md)
+To familiarize yourself with capacity planning, see [Compute and storage](choose-compute-storage.md).
 
 
