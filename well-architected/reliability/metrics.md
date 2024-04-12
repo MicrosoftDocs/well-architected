@@ -35,20 +35,24 @@ Define the workload's target values for these metrics in the context of user flo
 
 ## Key design strategies
 
-Technical discussions shouldn't drive how you define reliability targets for your critical flows. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs.
+**Reliability targets represent the desired quality goal of a workload**, as promised to its users and its business stakeholders. That goal includes both availability and recoverability of the workload. 
 
-Consider an example of how to map requirements to measurable numerical values. Stakeholders estimate that for a critical user flow, an hour of downtime during regular business hours results in a loss of *X* dollars in monthly revenue. That dollar amount is compared to the estimated cost of designing a flow that has an availability SLO of 99.95 percent rather than 99.9 percent. Decision makers must discuss whether the risk of that revenue loss outweighs the added costs and management burden required to protect against it. Follow this pattern as you examine flows and build a complete list of targets.
+It's important to determine the reliability targets for the critical flows of the workload. Technical discussions shouldn't drive those targets. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs.
 
-Remember that reliability targets differ from performance targets. Reliability targets focus on availability and recovery. To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements.
+To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements.
 
 Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
+
+Remember that reliability targets differ from performance targets. 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
 
-### Availability objectives
+### Availability targets
 
-Reliability objectives represent the quality goal of a workload, as promised to its users and its business stakeholders. Service Level Objectives (SLOs) are a standard way to evaluate the quality of the end-to-end user experience with respect to the desired goal. SLOs are targets defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+Availability targets define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to  evaluate availability targets for the end-to-end user experience. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+
+The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependencies only achieves 99.8% availability, the overall SLO is still 99.99%.
 
 For a workload owner, SLOs can be the driver for many technical decisions. For example,
 
@@ -57,10 +61,6 @@ For a workload owner, SLOs can be the driver for many technical decisions. For e
 - Act as a primary signal for deployment operations, driving automated rollback if issues occur, and providing validation that changes achieved the expected user experience improvement.
 - Speed up redmediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
     
-The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependencies only achieves 99.8% availability, the overall SLO is still 99.99%.
-
-
-
 > [!CAUTION]
 >
 > It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. 
@@ -89,43 +89,25 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 
 ##### SLO influencing factors
 
-Have a good understanding of the scenarios and tolerances for your workload on Azure. 
+Have a good understanding of the scenarios and tolerances for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaulating the utility of the workload component: 
 
-The **type of workload components** (both Azure services and application components) have a significant impact on the workload SLO. When setting objectives, consider these major classes of services:
+|Component characteristics|User interaction|Nuanced factors|
+|---|---|---|
+|<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
 
-- Components that expose a **request/response style API**. 
-- Components that **query APIs**. 
-- **Compute** components. 
-- **Job processing** components.
+#### Measurement of targets
 
-There are different **types of user interaction** that must be factored in, such as:
-
-- **Control/management plane access** for public-facing Azure services. 
-- Azure portal or **UX interactions**.
-- **Data plane access** for instance, CRUD (create, read, update, delete) operations.
-
-There are also several **nuanced factors** that can affect the SLO target. Here are some examples:
-
-- Does your **release process** involve downtime?
-- What’s the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.
-- How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?
-- Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?
-- Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?
-
-
-#### Measure the availability objective
-
-SLOs must be measurable and measure within a observability window. Ideally, the calculation should be automated. 
+SLOs must be measurable and measured within a observability window. Ideally, the calculation should be automated. 
 
 If an SLO can be measured in units within a time window, systems can emit those units and measure over time. However, if the contributing factors are  nuanced, it may be harder to automate. 
 
 SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
 
-The SLO target is derived from a set of metrics known as **Service Level Indicators (SLIs)**. It describes what is measured, how it's measured, and from what perspective it's measured.
+SLO is a correlation of measurable indicators to determine what's acceptable, and otherwise. Using **Service Level Indicators (SLIs)** is a common way to standardize targets from a set of metrics. It describes what is measured, how it's measured, and from what perspective it's measured. An indicator isn't useful unless you **set a threshold**. SLO  A good SLI helps you identify when an SLO is at risk of being breached.
 
-Different types of components emit SLIs that are relevant to them. For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren’t applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
+Different types of components emit SLIs that are relevant to them. For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren't applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
 
-Moreover, the weight of SLIs differs based on the preceding factors of class of component. For example, 
+Moreover, the weight of SLIs differs based on the influencing factors. For example, 
 
 - Request/response components can be bucketed by operation size, and common SLOs include error/success rate, latency, and capacity. 
 
@@ -143,7 +125,7 @@ The type of interaction also plays a significant role.
 - Data plane access depends the set of data plane APIs for interacting with your service, each with SLO targets. 
 
 
-An indicator isn't useful unless you **set a target**. SLO is the target for a correlation of the indicators to determine what's acceptable, and otherwise. A good SLI helps you identify when an SLO is at risk of being breached.
+
 
 
 
