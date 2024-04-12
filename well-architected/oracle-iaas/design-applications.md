@@ -56,7 +56,7 @@ For each of the following application design areas, what are the considerations 
    - Consider backing up the data base using storage components that have built-in replication capabilities.
 
 - Disaster Recovery 
-   - Build a reliable architecture as suggested in [create a fail-over in a multiple availability zone and second region deployments for disaster recovery](/azure/well-architected/oracle-iaas/reliability#create-a-fail-over-in-a-multiple-availability-zone-and-second-region-deployments-for-disaster-recovery) and [Create a failover for business critical Oracle applications in a two availability zone deployment with manual failover](/azure/well-architected/oracle-iaas/reliability#create-a-failover-for-business-critical-oracle-applications-in-a-two-availability-zone-deployment-with-manual-failover).
+   - Build a reliable architecture as suggested in the examples for a [failover with passive standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#example-1-create-a-fail-over-for-business-critical-oracle-applications-in-a-two-availability-zone-deployment-with-passive-standby) and [a failover with active standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#example-2-create-a-fail-over-for-business-critical-applications-in-a-two-availability-zone-deployment-with-active-standby).
    - Consider using Azure built-in DR solutions such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 
