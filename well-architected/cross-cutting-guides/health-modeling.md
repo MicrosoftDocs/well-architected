@@ -224,7 +224,7 @@ Assign green for healthy, amber for degraded, and red for unhealthy. By quickly 
 :::image type="content" source="_images/health-impact.png" alt-text="The diagram shows a health model that uses a traffic light approach." border="false":::
 
 > [!NOTE]
-> We recommend that you consider accessibility requirements for people who have a vision disability when you dashboard your health model. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
+> We recommend that you consider accessibility requirements for people who have a vision disability when you create a dashboard for your health model. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
 
 ## Adopt your health model
 
@@ -252,7 +252,7 @@ Consider a retail company that has various applications for e-commerce, payments
 
 ### Health trends and AI for IT operations
 
-Health modeling provides a quantified operational baseline that's tuned to a specific business context. AI for IT operations capabilities are a popular way to enhance operational efficiency. Health data is a foundational input for machine learning models to analyze health trends. For example, machine learning models can: 
+Health modeling provides a quantified operational baseline that's tuned to a specific business context. AI for IT operations is a popular way to enhance operational efficiency. Health data is a foundational input for machine learning models to analyze health trends. For example, machine learning models can: 
 
 - Extract more insights from state changes and recommend actions.
 
