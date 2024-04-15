@@ -1,0 +1,83 @@
+### YamlMime:Landing
+
+title: AI workload documentation
+summary: TBD.
+metadata: 
+  title: AI workload documentation
+  description: TBD
+  ms.date: 04/15/2024
+  ms.topic: conceptual
+  ms.service: waf
+  ms.subservice: waf-workload-ai
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is an AI workload?
+            url: get-started.md
+      - linkListType: concept
+        links:
+          - text: Design principles
+            url: design-principles.md
+          - text: Workload personas
+            url: personas.md
+
+  # Card
+  - title: Technical design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Application design
+            url: application-design.md
+          - text: Application platform
+            url: application-platform.md
+          - text: Data design
+            url: data-design.md
+          - text: Data platform
+            url: data-platform.md
+          - text: Workload operations
+            url: operations.md
+  
+  # Card
+  - title: Operational design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Workload operations
+            url: operations.md
+          - text: MLOps and LLMOps
+            url: mlops-llmops.md
+          - text: Testing and validation
+            url: testing.md
+          - text: User input, ethics, and security
+            url: userinput-ethics-security.md                            
+
+ # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Baseline OpenAI end-to-end chat reference architecture
+            url: /azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat  
+
+ # Card
+  - title: Related services
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Azure ML service guide
+            url: /azure/well-architected/service-guides/azure-machine-learning         
+          - text: Azure OpenAI service guide
+            url: /azure/well-architected/service-guides/azure-openai              
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: AI assessment tool
+            url: assessment.md
