@@ -200,9 +200,9 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 >
 > - **Have a good understanding of the usage meters**. You’re charged an hourly rate, prorated to the second, based on your App Service plan’s pricing tier. Charges apply to each scaled-out instance in your plan, based on the time the VM instance is allocated. Pay attention to underutilized compute resources that may be increasing your costs as result of overallocation due to suboptimal SKU selection, or poorly configured scale-in configuration.
 >
->  You can also be charged for additional App Services features like custom domain registration and custom certificates, and for other resources that may be created together with your App Service resources, like a virtual network to isolate your solution, or a Key Vault to protect workload secrets.
+>    You can also be charged for additional App Services features like custom domain registration and custom certificates, and for other resources that may be created together with your App Service resources, like a virtual network to isolate your solution, or a Key Vault to protect workload secrets.
 >
->  Review [App Services billing model](/azure/app-service/overview-manage-costs#understand-the-full-billing-model-for-azure-app-service) to learn more about this.
+>    Review [App Services billing model](/azure/app-service/overview-manage-costs#understand-the-full-billing-model-for-azure-app-service) to learn more about this.
 >
 > - **Consider the tradeoffs between density and isolation**. App Service Plans allow you to host multiple applications on the same compute, sharing environments to save costs. For guidance, see [Tradeoffs](#tradeoffs).
 >
