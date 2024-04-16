@@ -11,64 +11,64 @@ ms.subservice: waf-workload-oracle
 
 # Decouple workloads from Oracle Exadata
 
-Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple from your hardware into a single Oracle Database instance.
+Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple workloads from your Exadata hardware into a single Oracle Database instance.
 
-Some Exadata features include storage indexes, flash cache, hybrid columnar compression, and smart scan. First, review your Automatic Workload Repository (AWR) report and see how you use Exadata features. In some cases, you might disabled features. Based on the data from the AWR, choose the best solution for your workload and usage. Test your workload to familiarize yourself with how it runs without Exadata features.
+Follow these steps to decouple your workloads from Exadata:
+
+1. Review your automatic workload repository (AWR) report, and determine how you use Exadata features. Sometimes, you might even have disabled features. Exadata features include storage indexes, flash cache, hybrid columnar compression, and smart scan.
+1. Based on the data from the AWR, choose the best solution for your workload and usage.
+1. Test your workload to familiarize yourself with how it runs without Exadata features.
+1. Migrate your Exadata workload.
 
 ## Size out an Exadata workload on Azure
 
-The AWR is the starting point of any sizing exercise and also applies to Exadata workloads. 
+The AWR is the starting point of any sizing exercise and also applies to Exadata workloads.
 
-Create AWR reports in HTML format, and use data from your peak load. In most cases, Exadata AWR reports consist of several databases that are hosted on Exadata. The AWR report therefore should be handed over from the Database with the heaviest load. If you are unsure about the heaviest one, within the AWR report, scroll down to the “Top 10 Databases”. 
+For your AWR reports, use data from your peak load, and create the reports in HTML format. In most cases, Exadata AWR reports consist of several databases that are hosted on Exadata. Use the database with the heaviest load to determine your solution. Check the *top ten databases* in the AWR report to find the database with the heaviest load.
 
-The interval of an AWR report should either be a 3-4 day interval or rather 1-hour peak-load. If you will need assistance to get to know your peak-times, please consult a Oracle SME in Microsoft to support you.
+Perform one-hour peak-load AWR reports every three to four days. Collect data about the database size, archive redo logs, online logs, and volume of the backup. For assistance, you can [connect with a specialist](https://www.oracle.com/cloud/azure/oracle-database-at-azure/).
 
-Next to it, we will need data covering the database size, archive redologs, online logs and volume of backup. If you might need help, please feel free to consult an Oracle SME. 
+After you collect all data and run the right-size exercise, take a deeper look into the AWR report. Determine whether you use the hybrid columnar compression feature, smart indexes, or storage indexes. If you do, expect twice as much input/output (I/O). If you use flash cache, double your I/O again.
 
-After you collected all data and ran the right-size exercise, we will need to have a deeper look into the AWR report. Do you use hybrid columnar compression (HCC), smart indexes or storage indexes? If the answer is yes to one of these, an additional x2 IO factor is expected. By digging a bit deeper into it, we will have a look if you make use of flash cache. If so, another x2 will be added to the right-sizing. 
-
-As an important note it is always important how the Exadata features are leveraged. Sometimes you might have enabled it, but it impacts the performance significantly, which is mostly seen in OLTP workloads. 
-You can review on how you leverage it in the “Top Time Foreground Wait Events”. For further read, please navigate to [Decoupling from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
+It's important to note how you use Exadata features. Features can significantly affect performance, especially in online transactional processing (OLTP) workloads. To determine how features affect your performance, check the *top ten foreground wait events* in the AWR report. For more information, see [Decoupling from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
 
 ## Most important Exadata Features to Review
 
-There are a few parameters that are dependent on the Exadata performance. The following two are the most important to review:
+There are a few parameters that are dependent on Exadata performance. The following two are the most important to review:
 
-_KCFIS_STORAGEIDX_DISABLED
-CELL_OFFLOAD_PROCESSING
+`_KCFIS_STORAGEIDX_DISABLED`  
+`CELL_OFFLOAD_PROCESSING`
 
-If you disable the storage indexes and the smart scan is enabled, everything is processed by smartscan without filtering. 
-Both are very dependent on each other and worth to review when you want to see a non-Exadata behavior in order to gain confidence by decoupling from your Exadata hardware. 
+If you disable the storage indexes and enable the smart scan feature, the smart scan feature processes all data. No data is filtered. Both features are dependent on each other. and worth to review when you want to see a non-Exadata behavior in order. to gain confidence by decoupling from your Exadata hardware. 
 
-### Test Database Performance Without Storage Indexes
+### Test database performance without storage indexes
 
-The storage index defines the memory structures that reduce the amount of physical IO required on a cell node by tracking minimum and maximum values from a query predicate and builds the storage index based on the usage.
+A storage index defines memory structures that reduce the amount of physical I/O that's required on a cell node. The storage index tracks the minimum and maximum values from a query predicate and builds the storage index based on the usage.
 
-Summarizing to _KCFIS_STORAGEIDX_DISABLED is one of the parameters that controls the storage index functionality. It basically tells if the Oracle storage needs to be used while performing a query. 
-By default, it is set to False which means that the storage index enabled. 
-In order to test how your database performs without the Exadata features you can use the following query:
+The `_KCFIS_STORAGEIDX_DISABLED` parameter controls the storage index functionality. This parameter determines whether Oracle storage needs to be used while performing a query. By default, it's set to `false`, which means that the storage index is enabled. To test how your database performs without the Exadata features, use the following query:
 
-SQL>alter system set _KCFIS_STORAGEIDX_DISABLED=TRUE;
+`SQL>alter system set _KCFIS_STORAGEIDX_DISABLED=TRUE;`
 
-**Note: if you want to test it only on session level, please replace >system< through >session>**
+> [!NOTE]
+> If you want to test only on a session level, replace `system` with `session`.
 
-### Test Database Performance Without Cell Offloading
+### Test database performance without cell offloading
 
-CELL_OFFLOAD_PROCESSING is the smart scan function within the Exadata. It turns the offloading on and off. By default, it is set to true which means that smart scan is enabled. 
-To disable Smart Scan you need to run the following command: 
+The `CELL_OFFLOAD_PROCESSING` parameter manages the smart scan function within Exadata. This parameter turns offloading on and off. By default, it's set to `true`, which means that smart scan is enabled. To disable the smart scan feature, run the following command: 
 
-SQL>alter system set CELL_OFFLOAD_PROCESSING=FALSE;
+`SQL>alter system set CELL_OFFLOAD_PROCESSING=FALSE;`
 
-**Note: if you want to test it only on session level, please replace >system< through >session>**
+> [!NOTE]
+> If you want to test only on a session level, replace `system` with `session`.
 
-If you disable this functionality the Databases will behave like non-Exadata and do its own disk I/O through the buffer cache or direct read.
+If you disable this functionality, the databases behave like non-Exadata databases and have their own disk I/O via a buffer cache or direct read.
 
-### Test Database with loss of Flash Cache
+### Test database without flash cache
 
-Commonly the flash cache performance is tested on 1-10 tables that could be impactful.  You can test it out before bringing your database on Azure to review the difference when access to Flash Cache in Exadata is removed.
+Flash cache performance is typically tested on one to ten tables that are potentially impactful. Test flash cache performance before you migrate your database to Azure, so you can compare the difference with and without the flash cache feature.
 You can run the following command: 
 
-ALTER TABLE ….STORAGE(CELL_FLASH_CACHE NONE);
+`ALTER TABLE <table name> STORAGE(CELL_FLASH_CACHE NONE);`
 
 This automatically generates a script for a larger set of objects. Run this command in on and off mode. If you have done so, compare the optimized IO to verify the performance impact.
 
