@@ -11,8 +11,9 @@ ms.subservice: waf-workload-ai
 
 # Testing and validating AI workloads on Azure
 
-•	Working with non-deterministic outputs (inherent with LLMs)
-•	Defining success criteria for AI solutions
-•	Designing for slowness and asynchronous responses
-•	Testing acceptance criteria at scale
+
+- Working with non-deterministic outputs (inherent with LLMs)
+- Defining success criteria for AI solutions
+- Designing for slowness and asynchronous responses
+- Testing acceptance criteria at scale
 

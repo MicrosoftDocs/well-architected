@@ -11,15 +11,17 @@ ms.subservice: waf-workload-ai
 
 # MLOps and LLMOps for AI workloads on Azure
 
-•	Fine Tunining of models 
-•	Developing and training models
-•	Secure access for end users
-•	Verification of training system
+- Fine Tunining of models 
+- Developing and training models
+- Secure access for end users
+- Verification of training system
 
-•	Secure data handling
-•	Deployment of newly trained models
+- Secure data handling
+- Deployment of newly trained models
 
-•	Operational consideration around verifying and testing a model
-•	Prompt Evaluation
+- Operational consideration around verifying and testing a model
+- Prompt Evaluation
 
+
+## Monitoring
 

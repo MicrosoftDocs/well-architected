@@ -11,13 +11,19 @@ ms.subservice: waf-workload-ai
 
 # Workload personas involved in AI workloads
 
-•	Data Engineer
-•	Data Scientist
-•	Researcher
-•	Software Developer
-•	Release Engineer
-•	IT Operations Engineer
-•	Product Manager
-•	User
-•	Ethics / Privacy / Security
+
+An organization has several roles that participate in workload functions. One team's responsibility might be training the ML model while another team might consume it. In other case, you have a team who consume a finished model and customize it.
+
+Securing data could be coming from a workload or multiple workload teams.
+
+- Data Engineer
+- Data Scientist
+- Researcher
+- Software Developer
+- Release Engineer
+- IT Operations Engineer
+- Product Manager
+- User
+
+
 

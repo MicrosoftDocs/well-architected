@@ -11,13 +11,13 @@ ms.subservice: waf-workload-ai
 
 # Data platform for AI workloads on Azure
 
-•	Database options in Azure
-•	Secure deployment and running of relevant data platforms
-•	Tradeoffs between different data platforms
-o	Considerations for picking the right product based on the use case
 
-•	Best practices for cost, availability, redundancy, and scalability
+- Database options in Azure
+- Secure deployment and running of relevant data platforms
+- Tradeoffs between different data platforms
+    - Considerations for picking the right product based on the use case
+- Best practices for cost, availability, redundancy, and scalability
+- Processing new content into vector databases
+- Searching vector databases with AI
 
-•	Processing new content into vector databases
-•	Searching vector databases with AI
-
+## Monitoring
