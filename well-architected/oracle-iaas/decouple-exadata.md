@@ -15,7 +15,8 @@ Oracle Exadata is an engineered system that has both hardware and software. This
 
 Follow these steps to decouple your workloads from Exadata:
 
-1. Review your automatic workload repository (AWR) report, and determine how you use Exadata features. Sometimes, you might even have disabled features. Exadata features include storage indexes, flash cache, hybrid columnar compression, and smart scan.
+1. Review your automatic workload repository (AWR) report, and determine how you use Exadata features. Sometimes, you might even have disabled features. Exadata features include storage indexes, smart flash cache, hybrid columnar compression, and smart scan.
+
 1. Based on the data from the AWR, choose the best solution for your workload and usage.
 1. Test your workload to familiarize yourself with how it runs without Exadata features.
 1. Migrate your Exadata workload.
@@ -28,7 +29,7 @@ For your AWR reports, use data from your peak load, and create the reports in HT
 
 Perform one-hour peak-load AWR reports every three to four days. Collect data about the database size, archive redo logs, online logs, and volume of the backup. For assistance, you can [connect with a specialist](https://www.oracle.com/cloud/azure/oracle-database-at-azure/).
 
-After you collect all data and run the right-size exercise, take a deeper look into the AWR report. Determine whether you use the hybrid columnar compression feature, smart indexes, or storage indexes. If you do, expect twice as much input/output (I/O). If you use flash cache, double your I/O again.
+After you collect all data and run the right-size exercise, take a deeper look into the AWR report. Determine whether you use the hybrid columnar compression feature, smart indexes, or storage indexes. If you do, expect twice as much input/output (I/O). If you use smart flash cache, double your I/O again.
 
 It's important to note how you use Exadata features. Features can significantly affect performance, especially in online transactional processing (OLTP) workloads. To determine how features affect your performance, check the *top ten foreground wait events* in the AWR report. For more information, see [Decoupling from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
 
@@ -63,41 +64,47 @@ The `CELL_OFFLOAD_PROCESSING` parameter manages the smart scan function within E
 
 If you disable this functionality, the databases behave like non-Exadata databases and have their own disk I/O via a buffer cache or direct read.
 
-### Test database without flash cache
+### Test database performance without smart flash cache
 
-Flash cache performance is typically tested on one to ten tables that are potentially impactful. Test flash cache performance before you migrate your database to Azure, so you can compare the difference with and without the flash cache feature.
-You can run the following command: 
+Smart flash cache performance is typically tested on one to ten tables. Test smart flash cache performance before you migrate your database to Azure, so you can compare the difference with and without the smart flash cache feature. To generate a script for a large set of objects, run the following command: 
 
 `ALTER TABLE <table name> STORAGE(CELL_FLASH_CACHE NONE);`
 
-This automatically generates a script for a larger set of objects. Run this command in on and off mode. If you have done so, compare the optimized IO to verify the performance impact.
+Run this command in on and off mode. Compare the optimized I/O to determine the impact on performance.
 
 ### Test database performance without hybrid columnar compression
 
-Before you make any test, make sure to review your current settings first. 
+Before you do any hybrid columnar compression tests, review your current settings. 
 
-If you want to review where you enabled this feature, you can run the following command: 
+To determine where you enabled this feature, run the following command: 
 
-SQL> SELECT table_name, compress_for 
+```sql
+SELECT <table name>, compress_for 
 FROM  dba_tables 
 WHERE COMPRESSION = ‘ENABLED’;
+```
 
-In My Oracle Support (Doc ID: 1080301.1) you can review how to disable Hybrid Columnar Compression. 
+For more information, see [How to disable Exadata hybrid columnar compression](https://support.oracle.com/knowledge/Oracle%20Database%20Products/1080301_1.html).
 
 ## Migrate your Exadata workload
 
-Review your current architecture:
+Review each component in your current architecture, such as:
 
 -	Application, jump, and web servers
--	ETL processes
+-	Extract, transform, and load (ETL) processes
+-	Load balancers
 -	Middleware
 -	Monitoring systems
--	Load balancers
--	Other systems that are connected
+-	Other systems that are connected to your workload
 
-Every content and dependencies should be tracked in a migration plan. Have one responsible project lead and one responsible person as backup in case of vacation or any other reasons to not start from scratch. Ensure all technical resources are dedicated and assigned to the migration project.
-When preparing your migration to a cloud journey, please determine your specific High Availability and Disaster Recovery architecture described in the Reliability Section.
-For your application, make sure to review Azure Site Recovery.
+To perform a successful migration, ensure that you:
+
+- Dedicate and assign all technical resources to the migration project.
+
+- Determine your specific [high availability and disaster recovery architecture](review-design-principles.md#reliability).
+- Familiarize yourself with [Azure Site Recovery](/azure/site-recovery).
+- Have a project lead and another person as a backup if the project lead is unavailable.
+- Track each component and dependency in a migration plan.
 
 ## Next step
 
