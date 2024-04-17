@@ -119,5 +119,4 @@ For more information about using reference architectures to deploy Oracle applic
 
 ## Next step
 
-> [!div class="nextstepaction"]
 > To learn how to protect critical data and applications, see [Business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md).
