@@ -52,7 +52,7 @@ Remember that reliability targets differ from performance targets.
 
 Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate availability targets for the end-to-end user experience. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
 
-#### Set your availability objective
+#### Set your SLO
 
 The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependencies only achieves 99.8% availability, the overall SLO is still 99.99%.
 
@@ -77,6 +77,16 @@ For the workload architect, SLOs can be the driver for many technical decisions.
 >
 > TODO: To make sure you can meet the SLO target, review the Microsoft SLAs for each component.
 
+##### Assess the impact of Microsoft SLAs
+
+Microsoft Service Level Agreement (SLA) provides insight into availability of  areas that Microsoft commits to. SLA, however, doesn't guarantee the offering as a whole. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
+
+For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. However, within that specific context and timeframe, it doesn't guarantee availability of features such as Easy Auth. Similarly, slot switching behavior isn't covered by the SLA. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform. 
+
+So, if your workload relies on deployment slots, you cannot derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be somewhat uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
+
+Let's study another example. What does it truly mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations.  However, this narrow use case of Front Door doesn’t guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
+
 ##### Common SLOs
 
 Every SLO targets a specific quality criteria. Consider these common SLOs for reliability. This list isn't exhaustive. Add SLOs based on your business requirements. 
@@ -93,24 +103,31 @@ Have a good understanding of the scenarios and tolerances for your workload on A
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
-|<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
+|<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services.<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
 
 #### Measure targets
 
-SLOs must be measurable and measured within a observability window. If an SLO can be measured in units collected from the system, the calculation should be automated. However, if the contributing factors are  nuanced, it may be harder to automate. 
+SLOs must be **measurable** and **measured within a observability window**. 
+
+If an SLO can be measured in metrics collected from the system, the calculation should be automated. However, if the contributing factors are nuanced, it may be harder to automate. 
 
 SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
 
-SLO is a correlation of measurable indicators to determine what's acceptable, and otherwise. Using **Service Level Indicators (SLIs)** is a common way to standardize targets from a set of metrics. 
+**SLO is a correlation or composite of measurable indicators** to determine what's acceptable, and otherwise. The team should be clear on what is measured, how it's measured, and from what perspective it's measured. Using **Service Level Indicators (SLIs)** is a common way to standardize targets from a set of metrics. 
 
 ##### Correlate indicators
 
-SLIs describes what is measured, how it's measured, and from what perspective it's measured. An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. When deciding on which SLIs to include, consider the factors that influence SLO.
+SLIs represent a quantitative measurement of an aspect of a workload component, that rolls up to the SLO target. It's typically a metric that can be collected from the component whether that's part of the platform or application. **Different type components** emit SLIs that are relevant to them. When deciding on which SLIs to include, consider the factors that influence SLO.
 
-For instance, different type components emit SLIs that are relevant to them. For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren't applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
+For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren't applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
 
-Type of interaction is a significant contributing factor. Control plane access should take into consideration the error rate and latency indicators for synchronous API responses and for long-running operations, such as resource creation, deletion, and so on. Data plane access depends the set of data plane APIs for interacting with your service, each with SLO targets. 
+**Type of interaction** is a significant contributing factor. Control plane access should take into consideration the error rate and latency indicators for synchronous API responses and for long-running operations, such as resource creation, deletion, and so on. Data plane access depends the set of data plane APIs for interacting with your service, each with SLO targets. 
 
+An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. They are also represented in percentiles.
+
+##### Example
+
+TODO
 
 
 ### Availability metrics
@@ -182,12 +199,6 @@ When you think about composite SLAs in the context of flows, remember that diffe
 
 > [!NOTE]
 > Customer-facing workloads and internal-use workloads have different SLOs. Typically, internal-use workloads can have much less restrictive availability SLOs than customer-facing workloads.
-
-#### SLIs
-
-Think of SLIs as component-level metrics that contribute to an SLO. The most significant SLIs are the ones that affect your critical flows from the perspective of your customers. For many flows, SLIs include latency, throughput, error rate, and availability. A good SLI helps you identify when an SLO is at risk of being breached. Correlate the SLI to specific customers when possible.
-
-To avoid collecting useless metrics, limit the number of SLIs for each flow. Aim for three SLIs per flow if possible.
 
 ### Recovery metrics
 
