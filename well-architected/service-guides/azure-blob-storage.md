@@ -15,7 +15,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on Azure Blob Storage
 
-Azure Blob Storage is Microsoft's object storage solution for the cloud. Blob Storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data.
+Azure Blob Storage is Microsoft's object storage solution for the cloud. Blob Storage is optimized to store massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data.
 
 This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options), and have chosen Azure Blob Storage as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
@@ -85,7 +85,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Enable the Secure transfer required** option on all your storage accounts. This setting ensures that all requests made against the storage account must take place over secure connections. Any requests made over HTTP will fail.
 >
-> - **Protect critical objects**  by applying [immutability policies](/azure/storage/blobs/immutable-storage-overview). Policies protect blobs that are stored for legal, compliance, or other business purposes from being modified or deleted. Configure holds for set time periods or until restriction is lifted by an administrator.
+> - **Protect critical objects** by applying [immutability policies](/azure/storage/blobs/immutable-storage-overview). Policies protect blobs that are stored for legal, compliance, or other business purposes from being modified or deleted. Configure holds for set time periods or until restriction is lifted by an administrator.
 >
 > - **Detect threats** by enabling [Microsoft Defender for Storage](/azure/storage/common/azure-defender-storage-configure?tabs=enable-subscription). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
 
@@ -131,7 +131,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Upload data directly to the most cost-efficient access tier** For example, if the default access tier setting of your account is hot, but you're uploading files for archive purposes, then as part of your upload operation, specify a cooler tier as the archive or cold tier. After uploading blobs, use lifecycle management policies to move blobs to the most cost-efficient tiers based on usage metrics such as the last accessed time. Choosing the most optimal tier up front can reduce costs. If you change the tier of a block blob that you've already uploaded, then you'll pay the cost of writing to the initial tier when you first upload the blob, and then pay the cost of writing to the desired tier.
 >
-> - **Have a plan for how you will manage the lifecycle of data.** Optimize transaction and capacity costs by leveraging access tiers and lifecycle management. Data used less often should be placed in cooler access tiers while data that is accessed often should be placed in warmer access tiers.
+> - **Have a plan for how you will manage the lifecycle of data.** Optimize transaction and capacity costs by taking advantage of access tiers and lifecycle management. Data used less often should be placed in cooler access tiers while data that is accessed often should be placed in warmer access tiers.
 >
 > - **Decide which features you need.** Some features such as versioning and blob soft delete incur additional transaction and capacity costs as well as other charges. As you choose which capabilities to add to your account, make sure to review the pricing and billing sections in articles that describe those capabilities.  
 >
@@ -216,7 +216,7 @@ Start your design strategy based on the [design review checklist for Performance
 |Provision storage accounts in the same region where dependent resources are placed. For applications that **are not** hosted within Azure, such as mobile device apps or on premises enterprise services, locate the storage account in a region nearer to those clients. See [Azure geographies](https://azure.microsoft.com/explore/global-infrastructure/geographies/#overview).<br><br>If clients from a different region don't require the same data, then create a separate account in each region.<br><br>If clients from a different region require only some data, consider using an object replication policy to asynchronously copy relevant objects to a storage account in the other region. | Reducing the physical distance between the storage account and VMs, services, and on-premises clients, can improve performance and reduce network latency.  For applications hosted in Azure, this also reduces cost as bandwidth usage within a single region is free.|
 |For broad consumption by web clients (streaming video, audio, static website content), consider using a Content Delivery Network (CDN) through Azure Front Door. | Content is delivered to clients faster as it uses Microsoft's global edge network with hundreds of global and local points of presence around the world..|
 |Add a hash character sequence (such as three-digits) as early as possible in the partition key of a blob. The partition key is the concatenation of the account name, container name, virtual directory name and blob name. If you plan to use timestamps in names, then consider adding a seconds value to the beginning of that stamp. See [Partitioning](/azure/storage/blobs/storage-performance-checklist#partitioning).| Using a hash code or seconds value nearest the beginning of a partition key reduces the time required to list query and read blobs. |
-|When uploading blobs or blocks, use a blob or block size that is greater than 256 KiB. | Blob or block sizes above 256 KiB leverages performance enhancements in the platform made specifically for larger blobs and block sizes. |
+|When uploading blobs or blocks, use a blob or block size that is greater than 256 KiB. | Blob or block sizes above 256 KiB takes advantage of performance enhancements in the platform made specifically for larger blobs and block sizes. |
 
 ## Azure policies
 
