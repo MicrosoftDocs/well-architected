@@ -77,7 +77,7 @@ productDirectory:
         - compute
     # Card
     - title: Azure Blob Storage
-      summary: Azure Blob Storage is Microsoft's object storage solution for the cloud. Blob storage is optimized for storing massive amounts of unstructured data.
+      summary: Azure Blob Storage is Microsoft's object storage solution for the cloud. Blob storage is optimized to store massive amounts of unstructured data.
       imageSrc: /media/common/i_generic-database.svg
       url: azure-blob-storage.md
       azureCategories:
