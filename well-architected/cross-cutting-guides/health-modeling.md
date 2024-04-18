@@ -3,19 +3,19 @@ title: Health modeling for workloads
 description: Use health modeling to improve workload reliability in Azure. Learn how to quantify application health and build your own health model.
 author: calcof
 ms.author: calcof
-ms.date: 04/11/2024
+ms.date: 04/12/2024
 ms.topic: conceptual
 ---
 
 # Health modeling for workloads
 
-Cloud applications generate high volumes of operational data, which makes it challenging to pinpoint remediation and resolve problems quickly. A common reason for this challenge is the absence of a health baseline that's customized to the workload's functionality and the inability to detect drift from that baseline. 
+Cloud applications generate high volumes of operational data, which makes it challenging to pinpoint and resolve problems quickly. A common reason for this challenge is the absence of a health baseline that's customized to the workload's functionality and the inability to detect drift from that baseline. 
 
 Health modeling is an observability exercise that combines business context with raw monitoring data to quantify the overall health of a workload. It helps set a baseline that you can monitor the workload against. You should consider data like telemetry from infrastructure and application components. Health modeling might also incorporate other information that's necessary to achieve the workload's quality targets.
 
 Performance problems or operational degradation can cause drift from the expected operational state. By modeling the health of a workload, you can identify drift and make informed operational decisions that consider business impact. 
 
-Health modeling bridges the gap between legacy operational knowledge and actionable insights. It also helps you manage critical issues effectively. The concept is essential to maximize reliability and operational effectiveness. 
+Health modeling bridges the gap between tribal operational knowledge and actionable insights. It helps you manage critical issues effectively. The concept is essential to maximize reliability and operational effectiveness. 
 
 This guide offers practical guidance about health modeling, including how to build a model that assesses the runtime health of a workload and all of its subsystems.
 
@@ -76,7 +76,7 @@ In the image:
 
 - _Relationships_ between entities mirror the dependency chains within the system. For example, an application module might call specific infrastructure components that form a _relationship_.
 
-Consider a scenario in which an e-commerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This problem is critical for the organization due to the implied revenue loss. Although an application developer might understand the effect of this metric spike on payments, this legacy knowledge isn't often shared across the operations team.
+Consider a scenario in which an e-commerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This problem is critical for the organization due to the implied revenue loss. Although an application developer might understand the effect of this metric spike on payments, this tribal knowledge isn't often shared across the operations team.
 
 A health model can give operators immediate visibility into the problem and its effects. The payment flow depends on Service Bus, which is one of the workload components. The visual representation reveals the degraded state of the Service Bus instance and its effect on the payment flow. Operators can understand the importance of the issue and focus their remediation efforts on that specific component.
 
@@ -90,7 +90,7 @@ Health modeling was important in the preceding scenario in the following ways:
 
 - Operators conducted post-incident activities with accuracy because the health model provided insights into the root causes of anomalies and the specific health signals that were involved.
 
-- It made the monitoring data meaningful for all team members. It bridged the gap between legacy knowledge and shared insights.
+- It made the monitoring data meaningful for all team members. It bridged the gap between tribal knowledge and shared insights.
 
 - The organization used the health model as a baseline for future investments in AI-driven operations to derive intelligent insights.
 
@@ -132,7 +132,7 @@ Begin this logical design exercise by evaluating the following components of you
    
 For example, the health model for an e-commerce application should represent the current state of critical processes like user sign-in, checkout, and payments.
 
-### Contextualize flow by using business requirements
+### Contextualize using business requirements
 
 Evaluate the [relative importance and overall impact](/azure/well-architected/reliability/identify-flows#identify-business-impact-of-each-flow) of each flow on your organization. Consider factors like user experience, security, and operational efficiency. For example, in most scenarios, the failure of a payment process is likely more significant than the failure of a reporting process. 
 
@@ -252,7 +252,7 @@ Consider a retail company that has various applications for e-commerce, payments
 
 ### Health trends and AI for IT operations
 
-Health modeling provides a quantified operational baseline that's tuned to a specific business context. AI for IT operations is a popular way to enhance operational efficiency. Health data is a foundational input for machine learning models to analyze health trends. For example, machine learning models can: 
+Health modeling provides a quantified operational baseline that's tuned to a specific business context. AI for IT operations (AIOps) is a popular way to enhance operational efficiency. Health data is a foundational input for machine learning models to analyze health trends. For example, machine learning models can: 
 
 - Extract more insights from state changes and recommend actions.
 
