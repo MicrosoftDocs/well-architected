@@ -11,7 +11,7 @@ ms.subservice: waf-workload-oracle
 
 # Decouple workloads from Oracle Exadata
 
-Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple workloads from your Exadata hardware into a single Oracle Database instance in the cloud.
+Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple a workload from your Exadata hardware, and migrate the workload into a Oracle Database instance in the cloud.
 
 Follow these steps to decouple your workloads from Exadata:
 
