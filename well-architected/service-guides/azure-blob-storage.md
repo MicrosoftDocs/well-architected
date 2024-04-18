@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 04/12/2024
+ms.date: 04/18/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-service-guide
@@ -242,6 +242,6 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
-## Next steps
+## Next step
 
 See [Azure Blob Storage documentation](/azure/storage/blobs/)
