@@ -11,7 +11,7 @@ ms.subservice: waf-workload-oracle
 
 # Decouple workloads from Oracle Exadata
 
-Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple workloads from your Exadata hardware into a single Oracle Database instance.
+Oracle Exadata is an engineered system that has both hardware and software. This article describes how to decouple workloads from your Exadata hardware into a single Oracle Database instance in the cloud.
 
 Follow these steps to decouple your workloads from Exadata:
 
@@ -23,13 +23,13 @@ Follow these steps to decouple your workloads from Exadata:
 
 ## Size out an Exadata workload on Azure
 
-An AWR is the starting point of any sizing exercise. For your AWR reports, use data from your peak load, and create the reports in HTML format. In most cases, Exadata AWR reports consist of several databases that are hosted on Exadata. Use the database with the heaviest load to determine your solution. Check the *top ten databases* in the AWR report to find the database with the heaviest load.
+An AWR is the starting point of any sizing exercise. For your AWR reports, use data from your peak load, and create the reports in HTML format. In most cases, Exadata AWR reports consist of several databases that are hosted on Exadata. To determine which solution to implement, use the database with the heaviest load. To find the database with the heaviest load, check the *top 10 databases* in the AWR report.
 
-Perform one-hour peak-load AWR reports every three to four days. Collect data about the database size, archive redo logs, online logs, and volume of the backup. For assistance, you can [connect with a specialist](https://www.oracle.com/cloud/azure/oracle-database-at-azure/).
+You should generate one-hour peak-load AWR reports every three to four days. Collect data about the database size, archive redo logs, online logs, and volume of the backup. If you need assistance, you can [connect with a specialist](https://www.oracle.com/cloud/azure/oracle-database-at-azure/).
 
-After you collect all data and run the right-size exercise, take a deeper look into the AWR report. Determine whether you use the hybrid columnar compression feature, smart indexes, or storage indexes. If you use any of these tools, expect twice as much input/output (I/O). If you use the smart flash cache feature, also expect twice as much I/O. So if you use smart indexes and the smart flash cache feature, expect four times as much I/O.
+After you collect all data and do the right-size exercise, take a deeper look into the AWR reports. Determine whether you use the hybrid columnar compression feature, smart indexes, or storage indexes. If you use any of these tools, expect twice as much input/output (I/O). If you use the smart flash cache feature, double your I/O again. So if you use smart indexes and the smart flash cache feature, expect four times as much I/O.
 
-It's important to note how you use Exadata features. Features can significantly affect performance, especially in online transactional processing (OLTP) workloads. To determine how features affect your performance, check the *top ten foreground wait events* in the AWR report. For more information, see [Decoupling from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
+It's important to note how you use Exadata features. These features can significantly affect performance, especially in online transactional processing (OLTP) workloads. To determine how features affect your performance, check the *top 10 foreground wait events* in the AWR report. For more information, see [Decouple from Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata).
 
 ## Review Exadata features
 
@@ -38,7 +38,7 @@ Some parameters are dependent on Exadata performance. The following parameters a
 - `_KCFIS_STORAGEIDX_DISABLED`  
 - `CELL_OFFLOAD_PROCESSING`
 
-If you disable storage indexes and enable the smart scan feature, the smart scan feature processes all data. No data is filtered. Both features are dependent on each other. It's important to test the performance of your workload with and without certain features so you're prepared to decouple your workload from Exadata hardware.
+If you disable storage indexes and enable the smart scan feature, the smart scan feature processes all data. No data is filtered. Both features are dependent on each other. It's important to test the performance of your workload with and without certain features, so you're prepared to decouple your workload from Exadata hardware.
 
 ### Test database performance without storage indexes
 
@@ -68,13 +68,13 @@ If you disable this functionality, the databases behave like non-Exadata databas
 
 ### Test database performance without smart flash cache
 
-Smart flash cache performance is typically tested on one to ten tables. Test smart flash cache performance before you migrate your database to Azure, so you can compare the difference with and without the smart flash cache feature. To generate a script for a large set of objects, run the following command: 
+We recommend that you test smart flash cache performance on 1 to 10 tables. Test smart flash cache performance before you migrate your database to Azure, so you can compare the difference with and without the smart flash cache feature. To generate a script for a large set of objects, run the following command: 
 
 ```sql
 ALTER TABLE <table name> STORAGE(CELL_FLASH_CACHE NONE);
 ```
 
-Run this command in on and off mode. Compare the optimized I/O to determine the impact on performance.
+Run this command in on and off mode. Compare the optimized I/O to determine the effect on performance.
 
 ### Test database performance without hybrid columnar compression
 
@@ -106,7 +106,7 @@ To perform a successful migration, ensure that you:
 - Dedicate and assign all technical resources to the migration project.
 - Determine your specific [high availability and disaster recovery architecture](review-design-principles.md#reliability).
 - Familiarize yourself with [Azure Site Recovery](/azure/site-recovery).
-- Have a project lead and another person as a backup if the project lead is unavailable.
+- Assign a project lead and another person as a backup if the project lead is unavailable.
 - Track each component and dependency in a migration plan.
 
 ## Next step
