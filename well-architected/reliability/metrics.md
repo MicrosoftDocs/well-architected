@@ -211,34 +211,20 @@ Definitions for realistic recovery targets rely on your [failure mode analysis](
 
 As you define recovery targets, define thresholds for initiating a recovery. For example, if a web node is unavailable for more than 5 minutes, a new node is automatically added to the pool. Define thresholds for all components, considering what recovery for a specific component involves, including the effect on other components and dependencies. Your thresholds should also account for [transient faults](handle-transient-faults.md) to ensure that you don't start recovery actions too quickly. Document and share with the stakeholders the potential risks of recovery operations, like data loss or session interruptions for customers.
 
-### Building a health model
+### Monitor and visualize the targets
 
-Use the data you gathered for your reliability targets to build your health model for each workload and associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. The states ensure appropriate operational prioritization. This model is also known as a *traffic light model*. The model assigns green for healthy, yellow for degraded, and red for unhealthy. A health model ensures that you know when a flow's state changes from healthy to degraded or unhealthy.
+Use the data you gathered for your reliability targets to build your health model for each workload and associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. When state changes, the model should alert the responsible parties. For detailed design considerations and recommendations, see [Health modeling guidance](../cross-cutting-guides/health-modeling.md).
 
-How you define healthy, degraded, and unhealthy states depends on your reliability targets. Here are some examples of ways you might define the states:
-
-- A **green or healthy** state indicates that key nonfunctional requirements and targets are fully satisfied and that resources are used optimally. For example, 95 percent of requests are processed in \<=500 ms with Azure Kubernetes Service (AKS) node use at *X* percent.
-
-- A **yellow or degraded** state indicates that one or more components of the flow are alerting against their defined threshold, but the flow is operational. For example, storage throttling has been detected.
-
-- A **red or unhealthy** state indicates that degradation has persisted longer than allowable by your reliability targets or that the flow has become unavailable.
-
-> [!NOTE]
-> The health model shouldn't treat all failures the same. The health model should distinguish between *transient* and *nontransient* faults. It should clearly distinguish between expected-transient but recoverable failures and a true disaster state.
-
-This model works by using a monitoring and alerting strategy that's developed and operated on the principles of continuous improvement. As your workloads evolve, your health models must evolve with them.
-
-For detailed design considerations and recommendations for a layered application health model, see the [health modeling guidance](/azure/well-architected/mission-critical/mission-critical-health-modeling) found in the mission-critical workload design areas. For detailed guidance about monitoring and alerting configurations, see the [health monitoring](monitoring-alerting-strategy.md) guide.
-
-### Visualization
-
-To keep your operations teams and workload stakeholders informed about the real-time status and overall trends of the workload health model, consider creating [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) in your monitoring solution. Discuss visualization solutions with the stakeholders to ensure that you deliver the information that they value and that's easy to consume. They might also want to see generated reports weekly, monthly, or quarterly.
+To keep your operations teams and workload stakeholders informed, create visualization that reflect the real-time status and overall trends of the workload health model. Discuss visualization solutions with the stakeholders to ensure that you deliver the information that they value and that's easy to consume. They might also want to see generated reports weekly, monthly, or quarterly.
 
 ## Azure facilitation
 
 Azure SLAs provide the Microsoft commitments for uptime and connectivity. Different services have different SLAs, and sometimes SKUs within a service have different SLAs. For more information, see [Service-level agreements for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 
 The Azure SLA includes procedures for obtaining a service credit if the SLA isn't met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
+
+Explore the [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) provided by Azure Monitor for your visualization system.
+
 
 ## Organizational alignment
 
