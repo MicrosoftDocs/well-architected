@@ -1,6 +1,6 @@
 ---
 title: Design Oracle applications
-description: Review the design area for Oracle Applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
+description: Review the design area for Oracle applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
 ms.date: 04/15/2024
@@ -11,56 +11,46 @@ ms.subservice: waf-workload-oracle
 
 # Design Oracle applications
 
-Migrating Oracle applications to the cloud can be complex. In particular, understanding of supported and unsupported functionalities from version to version is important to avoid difficulties in, or even failure of the migration.  Moreover companies don't just want to lift and shift, but modernize the architecture and bind to functional and non-functional requirements. These requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved.
+Migrating Oracle applications to the cloud can be complex. You need to understand which functionalities each version supports so that you can avoid problems during the migration or even a failed migration. Organizations don't want to just lift and shift. They also want to modernize the architecture and adhere to functional and non-functional requirements. You should exmaine these requirements alongside key cloud application design patterns to ensure that you achieve your migration goals.
 
-Examples of popular Oracle applications are Siebel, E-Business Suite, JD Edwards, and Peoplesoft. All such applications have strong dependencies between the application tier and the database tier. Separating the two tiers across different cloud vendors introduces latencies that can lead to poor user experience. A proper technical assessment should always be carried out before making a decision on hosting the two tiers. 
+Examples of popular Oracle applications are Siebel, E-Business Suite, JD Edwards, and PeopleSoft. These applications have strong dependencies between the application tier and the database tier. Separating the two tiers across different cloud vendors introduces latencies that can lead to poor customer experience. You should always do a proper technical assessment before you decide on hosting the two tiers.
 
-For each application, it is also important to note the application design considerations provided by the application vendor and the characteristics of the Azure services used for each design. The Azure cloud offers many features and capabilities that, if utilized properly, can lead to a performant, reliable, secure and highly available solution.
+For each application, you should note the design considerations that the application vendor provided and consider the characteristics of the Azure services that you use for each design. The Azure cloud offers many features and capabilities that can lead to a performant, reliable, secure, and highly available solution.
 
-For more specific architecture guidance, please review [Oracle Applications on Azure](/azure/virtual-machines/workloads/oracle/deploy-application-oracle-database-azure).
-
-## Assessment questions
-For each of the following application design areas, what are the considerations that you take into account when deploying Oracle applications in the Azure cloud? 
-
-- Network and Security
-- Web and Application tiers
-- Database tier
-- Backup and Data Protection
-- Disaster recovery
+For more specific architecture guidance, see [Architectures for Oracle applications with a database on Azure Virtual Machines](/azure/virtual-machines/workloads/oracle/deploy-application-oracle-database-azure).
 
 ## Recommendations
 
-- Network & Security 
-   - Consider configuring single sign-on (SSO) using Microsoft Entra ID (formerly Azure Active Directory AAD). SSO allows end users to connect to the Oracle applications via browser. For more information, see [Microsoft Entra ID documentation](/azure/active-directory/manage-apps/add-application-portal-setup-sso).
-   - Consider using a private connection to the cloud installation. Azure provides capabilities for private connectivity such as [Express Route and Site-to-Site VPN](/azure/expressroute/expressroute-connect-azure-to-public-cloud).
-   - In case a user accesses the application from the internet, consider an [Application Gateway](/azure/application-gateway/overview). Azure Application Gateway provides two built-in functionalities. It operates as a Web Application Firewall, and also has a built-in Layer 7 Load Balancer. It is only supported for access on Port 443 (https).
-   - Another option to secure your network is the [Azure Firewall](/azure/firewall/overview). This component defends the web services against common exploits and vulnerabilities. It keeps the Oracle Application highly available and helps you meet compliance requirements.
-   - Consider setting up [network security groups](/azure/virtual-network/network-security-groups-overview) at a subnet level to ensure only traffic on specific ports and IP addresses is permitted.
-   - If SSH or RDP access is required, a [Bastion](/azure/bastion/bastion-overview) host as a jump box can provide extra security for an in-depth mature security posture.
+- Network and security 
+   - Consider configuring single sign-on (SSO) by using Microsoft Entra ID. Customers can use SSO to connect to Oracle applications via their internet browser. For more information, see [Microsoft Entra ID documentation](/azure/active-directory/manage-apps/add-application-portal-setup-sso).
+   - Consider using a private connection to the cloud installation. Azure provides capabilities for private connectivity such as [Azure ExpressRoute and site-to-site VPN](/azure/expressroute/expressroute-connect-azure-to-public-cloud).
+   - If a customer accesses the application from the internet, consider an [application gateway](/azure/application-gateway/overview). Azure Application Gateway provides two built-in functionalities. It operates as a web application firewall and has a built-in Layer 7 load balancer. Application Gateway only supports access on port 443 (HTTPS).
+   - Another option to secure your network is [Azure Firewall](/azure/firewall/overview). This component defends the web services against common exploits and vulnerabilities. It keeps Oracle applications highly available and helps you meet compliance requirements.
+   - Consider setting up [network security groups](/azure/virtual-network/network-security-groups-overview) at a subnet level to ensure that the network permits traffic only on specific ports and IP addresses.
+   - If your application requires Secure Shell Protocol (SSH) or Remote Desktop Protocol (RDP) access, deploy an [Azure Bastion](/azure/bastion/bastion-overview) host as a jump server to provide extra security for an in-depth, mature security posture.
 
-- Web and Application Tiers
-   - Deploy your application on VMs in Azure [Availability Set](/azure/virtual-machines/availability-set-overview) to improve overall availability.
-   - If you require auto-scaling of your application then consider using [Azure VM Scale Sets](/azure/virtual-machine-scale-sets/overview).
-   - Placing VMs within a single availability zone will bring them physically closer together. However, as the Azure footprint grows, a single availability zone may span multiple physical data centers, which may result in a network latency impacting your application. To get VMs as close as possible, achieving the lowest possible latency, you can deploy them within a [proximity placement group](/azure/virtual-machine-scale-sets/proximity-placement-groups).
+- Web and application tiers
+   - Deploy your application on virtual machines (VMs). Group those VMs in [availability sets](/azure/virtual-machines/availability-set-overview) to improve overall availability.
+   - If you need your application to autoscale, then consider using [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview).
+   - Place VMs in a single availability zone to bring them physically closer together. However, keep in mind that as the Azure footprint grows, a single availability zone might span multiple physical data centers. The distance between physical data centers might cause network latency that affects your application. To get VMs as close as possible and achieve the lowest possible latency, deploy them within a [proximity placement group](/azure/virtual-machine-scale-sets/proximity-placement-groups).
 
-- Database Tier 
-   - Consider deploying the database tier in as a primary server replicated to a secondary server using Oracle Data Guard. 
-   - If you deploy the primary and secondary servers in one region using two zones, consider making use of Data Guard synchronous replication configuration after verifying the network latency between the zones in the region.
-   - If you deploy the primary and secondary servers in two regions then consider using Data Guard asynchronous replication configuration.
-   - If you require a zero data-loss replication strategy then consider using the asynchronous replication configuration.
-   - Data Guard is only one of the options you can leverage. Other examples could be: Striim, Attunity, Goldengate or Active Data Guard.
+- Database tier
+   - Consider deploying the database tier as a primary server that's replicated to a secondary server by using Oracle Data Guard. 
+   - If you deploy the primary and secondary servers in one region by using two zones, consider using Data Guard synchronous replication configuration after you verify the network latency between the zones in the region.
+   - If you deploy the primary and secondary servers in two regions, then consider using Data Guard asynchronous replication configuration.
+   - If you require a zero data-loss replication strategy, then consider using the asynchronous replication configuration.
+   - Data Guard isn't your only option. Other options include Striim, Attunity, GoldenGate, or Active Data Guard.
 
-- Backup and Data Protection
-   - Consider using the [Azure Backup service](/azure/backup/backup-azure-vms-introduction) to backup your application and database VMs.
+- Backup and data protection
+   - Consider using [Azure Backup](/azure/backup/backup-azure-vms-introduction) to back up your application and database VMs.
    - Consider placing your backups in a different region to provide extra protection against regional failures.
-   - Consider backing up the data base using storage components that have built-in replication capabilities.
+   - Consider backing up the database by using storage components that have built-in replication capabilities.
 
-- Disaster Recovery 
-   - Build a reliable architecture as suggested in the examples for a [failover with passive standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#example-1-create-a-fail-over-for-business-critical-oracle-applications-in-a-two-availability-zone-deployment-with-passive-standby) and [a failover with active standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#example-2-create-a-fail-over-for-business-critical-applications-in-a-two-availability-zone-deployment-with-active-standby).
-   - Consider using Azure built-in DR solutions such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
+- Disaster recovery
+   - Build a reliable architecture like in the examples for a [failover with passive standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#example-1-create-a-fail-over-for-business-critical-oracle-applications-in-a-two-availability-zone-deployment-with-passive-standby) and [a failover with active standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#example-2-create-a-fail-over-for-business-critical-applications-in-a-two-availability-zone-deployment-with-active-standby).
+   - Consider using Azure built-in disaster recovery solutions like [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
-
-## Next Steps
+## Next step
 
 > [!div class="nextstepaction"]
-> [Design principles](review-design-principles.md) 
+> [Design principles for an Oracle workload on Azure](review-design-principles.md) 
