@@ -154,7 +154,7 @@ For examples of real-world monitoring solutions, see [Web application monitoring
 - [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
 - [Web application monitoring on Azure](/azure/architecture/web-apps/guides/monitoring/app-monitoring)
 
-## Community Links
+## Community links
 
 - [Azure Monitor Baseline Alerts (AMBA)](/azure/azure-monitor/alerts/alert-options#azure-monitor-baseline-alerts-amba) is a central repository of alert definitions that customers and partners can use to improve their observability experience through the adoption of Azure Monitor.
 

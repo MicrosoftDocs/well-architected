@@ -292,7 +292,7 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 - [Recommendations for monitoring and threat detection](../security/monitor-threats.md)
 - [Recommendations for collecting performance data](../performance-efficiency/collect-performance-data.md)
 
-## Community Links
+## Community links
 
 - [Azure Monitor Baseline Alerts (AMBA)](/azure/azure-monitor/alerts/alert-options#azure-monitor-baseline-alerts-amba) is a central repository of alert definitions that customers and partners can use to improve their observability experience through the adoption of Azure Monitor.
 
