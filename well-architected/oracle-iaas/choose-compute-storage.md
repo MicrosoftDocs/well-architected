@@ -12,7 +12,7 @@ ms.subservice: waf-workload-oracle
 
 # Choose compute and storage
 
-This article describes how to right-size compute and storage for your Oracle workloads by using the Azure infrastructure as a service (Iaas) model.
+This article describes how to right-size compute and storage for your Oracle workloads by using the Azure infrastructure as a service (IaaS) model.
 
 You can use Azure IaaS to migrate your Oracle workloads from on-premises to the cloud. The complexity, size, and high input/output (I/O) demands of a workload can complicate the migration process and negatively affect Oracle Database performance. Database performance is dependent on parameters such as read/write disk throughput (MBps), read/write IOPS, CPU, RAM, and network latency. As such, choosing the correct combination of compute and storage for Azure IaaS and the location of application workloads relative to database services is crucial for a successful database migration.
 
@@ -37,7 +37,7 @@ Insight into the peak load is essential because database and servers are used to
 
 ## Use automated tools to right-size your workload
 
-Right-size your workloads using automated tools to match with the correct Azure Virtual Machines SKU according to vCPU, memory, throughput, and IOPS. Analyze an AWR report or Statspack report of your Oracle workloads in order to right-size your Azure infrastructure so that it meets performance requirements. Such analyses are based on expert understanding of database performance and require automated tools to manage all variables, such as the [Oracle Migration Assistant Tool (OMAT)](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat).
+Right-size your workloads by using automated tools to match with the correct Azure Virtual Machines SKU according to vCPU, memory, throughput, and IOPS. Analyze an AWR report or Statspack report of your Oracle workloads in order to right-size your Azure infrastructure so that it meets performance requirements. Such analyses are based on expert understanding of database performance and require automated tools to manage all variables, such as the [Oracle Migration Assistant Tool (OMAT)](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat).
 
 OMAT helps you evaluate your resource usage for on-premises or in the cloud Oracle installations and recommends the optimal virtual machine (VM) and storage to run the same workload on Azure. OMAT collects and processes AWR reports from the source system, extracts the required data, and places it into an Excel workbook. Review the partition of CPU and core processors when you use OMAT to give you the hyper-threaded factor. OMAT uses a factor of two by default, but you can adjust this number to fit your specific usage. Reach out to your local contact person if you need support.
 
@@ -80,7 +80,7 @@ This is only one example of a customer workload. Make sure to review and adjust 
 
 If you need to use multiple disks for one or more logical volumes in your disk setup, regardless of the disk technology (Oracle ASM, LVM, or other), make sure that you balance the load across disks for maximum performance.
 
-You can use Premium SSD v2 managed disks wherever they're available. Check availability in accordance with the region and review [disk configurations](/azure/virtual-machines/workloads/oracle/oracle-design#disk-types-and-configurations) before deployment.
+You can use Premium SSD v2 managed disks wherever they're available. Check availability in accordance with the region, and review [disk configurations](/azure/virtual-machines/workloads/oracle/oracle-design#disk-types-and-configurations) before deployment.
 
 The default configured disk size in ASM is decisive if you use Oracle ASM and Managed Disks. This means if you configure ASM for a maximum size of 4096 GB, ASM can only process this amount. So even if you provision higher disks, ASM doesn't recognize the space. Plan for disk size accordingly and decide whether to provision a certain number of 4095-GB disks. For more information, see [ASM configuration](https://docs.oracle.com/en/database/oracle/oracle-database/19/ostmg/create-diskgroups.html#GUID-7FB8914B-0995-4DA0-8F37-15B8EEAEEE4D).
 
@@ -119,4 +119,4 @@ For more information about using reference architectures to deploy Oracle applic
 
 ## Next step
 
-> To learn how to protect critical data and applications, see [Business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md).
+To learn how to protect critical data and applications, see [Business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md).
