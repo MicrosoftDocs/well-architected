@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-oracle
 ---
 
-# Design principles for an Oracle workload on Azure
+# Design principles for an Oracle workload on Azure 
 
 Guidance about well-architected Oracle on Azure IaaS workloads is built on the Azure Well-Architected Framework and its five pillars of architectural excellence. The following table lists each pillar and a summary of its goals.
 
