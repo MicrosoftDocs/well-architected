@@ -38,7 +38,9 @@ Before you create a monitoring and alerting strategy, perform the following task
 
 - Design a robust [testing strategy](testing-strategy.md).
 
-Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy on the [health models](metrics.md) that you develop for your critical flows and the workloads that the critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your monitoring posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and the alerts to the appropriate teams.
+- [Model the health](../cross-cutting-guides/health-modeling.md) of your workload and its components.
+
+Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy by creating a [health model](../cross-cutting-guides/health-modeling.md) for your critical flows and the components that these critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your operational posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and notifies appropriate teams.
 
 Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
 
@@ -64,9 +66,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
 
-- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
+- Visualize the real-time health of your environment.
 
-- Use data that's gathered during incidents to continuously improve your [health models](metrics.md) and your monitoring and alerting strategy.
+- Use data that's gathered during incidents to continuously improve your health models and your monitoring and alerting strategy.
 
 - Incorporate cloud platform monitoring and alerting services, including:
 
@@ -151,6 +153,10 @@ For examples of real-world monitoring solutions, see [Web application monitoring
 - [Alerting for operations](../devops/monitor-alerts.md)
 - [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
 - [Web application monitoring on Azure](/azure/architecture/web-apps/guides/monitoring/app-monitoring)
+
+## Community links
+
+- [Azure Monitor Baseline Alerts (AMBA)](/azure/azure-monitor/alerts/alert-options#azure-monitor-baseline-alerts-amba) is a central repository of alert definitions that customers and partners can use to improve their observability experience through the adoption of Azure Monitor.
 
 ## Reliability checklist  
 
