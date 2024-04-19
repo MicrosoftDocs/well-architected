@@ -79,13 +79,13 @@ For the workload architect, SLOs can be the driver for many technical decisions.
 
 ##### Assess the impact of Microsoft SLAs
 
-Microsoft Service Level Agreement (SLA) provides insight into availability of  areas that Microsoft commits to. SLA, however, doesn't guarantee the offering as a whole. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
+Microsoft Service Level Agreement (SLA) provides insight into availability of areas that Microsoft commits to. SLAs don't guarantee an offering as a whole. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
 
-For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. However, within that specific context and timeframe, it doesn't guarantee availability of features such as Easy Auth. Similarly, slot switching behavior isn't covered by the SLA. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform. 
+For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't guarantee availability of features such as Easy Auth. Similarly, slot switching behavior isn't covered by the SLA. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform. 
 
 So, if your workload relies on deployment slots, you cannot derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be somewhat uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
 
-Let's study another example. What does it truly mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations.  However, this narrow use case of Front Door doesn’t guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
+Let's study another example. What does it mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn’t guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
 
 ##### Common SLOs
 
