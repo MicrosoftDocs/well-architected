@@ -47,9 +47,9 @@ Use the Well-Architected Framework pillars to improve your Oracle on Azure IaaS 
 
 ### Choose a migration approach
 
-There are various migration approaches that you can apply, depending on your migration requirements. Common migration tools include Oracle Data Guard, Oracle Recovery Manager (RMAN), Oracle GoldenGate, and Oracle Data Pump. We don't recommend Data Pump for a large volume of data.
+You can apply various migration approaches, depending on your migration requirements. Common migration tools include Oracle Data Guard, Oracle Recovery Manager (RMAN), Oracle GoldenGate, and Oracle Data Pump. We don't recommend Data Pump for a large volume of data.
 
-As part of your migration, it's important to ensure that your character set is the same and has the same endianness so that you can properly assess cross-platform migrations. For more information, see [Migrate Oracle workloads to Azure IaaS](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-migration-planning).
+As part of your migration, ensure that your character set is the same and has the same endianness so that you can properly assess cross-platform migrations. For more information, see [Migrate Oracle workloads to Azure IaaS](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-migration-planning).
 
 ## What are the key design areas?
 
