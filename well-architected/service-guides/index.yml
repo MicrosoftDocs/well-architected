@@ -76,6 +76,13 @@ productDirectory:
       azureCategories:
         - compute
     # Card
+    - title: Azure Blob Storage
+      summary: Use Blob Storage to store massive amounts of unstructured data in the cloud.
+      imageSrc: /media/common/i_generic-database.svg
+      url: azure-blob-storage.md
+      azureCategories:
+        - storage
+    # Card
     - title: Application Insights
       summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
