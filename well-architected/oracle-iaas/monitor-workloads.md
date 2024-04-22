@@ -36,8 +36,7 @@ Follow these recommendations when monitoring your VMs and storage:
 
 - Enable VM insights.
 - If you need more information than VM insights provides, you can deploy the Azure Monitor Agent (AMA) and configure a data collection rule (DCR) to collect [custom logs](/azure/azure-monitor/agents/data-collection-text-log).
-- Monitor disk metrics if you store Oracle database files on Azure managed disks.
-- Disk metrics you can monitor include:
+- Monitor disk metrics if you store Oracle database files on Azure managed disks. Disk metrics you can monitor include:
   - OS Disk IOPS Consumed Percentage
   - Data Disk IOPS Consumed Percentage
   - Data Disk Read Bytes/Sec
