@@ -11,44 +11,42 @@ ms.subservice: waf-workload-oracle
 
 # Optimize business continuity and disaster recovery
 
-When it comes to the reliability of your Oracle workload on Azure, it's important to consider the database but also the connected tiers on separate virtual machines (VMs), virtual network subnets, and connected storage components.
+When it comes to the reliability of Oracle on Azure, it's important to consider your database but also the tiers on virtual machines (VMs), virtual network subnets, and storage components.
 
 Oracle on Azure infrastructure as a service (IaaS) can fulfill the required resiliency objectives of the most demanding Oracle workloads. To effectively use the guidance in this article, first define your resiliency key performance indicators (KPIs) based on your business requirements. Use your recovery time objective (RTO) and recovery point objective (RPO) requirements as baseline KPIs to determine the best architecture for your Oracle workload on Azure.
 
-- *RTO*: The maximum amount of time that an application is unavailable after an incident.
+The *RTO* is the maximum amount of time that an application remains unavailable after a disaster, failure, or comparable event.
 
-- *RPO*: The maximum amount of data loss that's exposed during a disaster.
+The *RPO* is the maximum amount of data loss after a disaster, failure, or comparable event.
 
-## Data protection (backups)
+## Backup methods for data protection
 
 The three Oracle database backup methods for an Oracle workload on Azure IaaS include:
 
 - *Streaming backups*. Use Oracle Recovery Manager (RMAN) for this method. RMAN streams backups to sequential tape media.
    
-   The backup destinations on Azure include: 
+   Backup destinations on Azure for this method include: 
    - Non-Microsoft virtual tape libraries in Azure Marketplace.
    - Local and remote file shares, such as Azure Blob Storage with the Network File System protocol, Azure Files, and Azure NetApp Files.
 
-- *Storage-level snapshots*. Use Azure Backup for this method. This method relies on the type of storage that you use for database files.
-
-   For example, if you use Azure managed disks, such as Premium SSD, [Azure Backup integrates with the Oracle database](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup). If you use Azure NetApp Files, the service has data protection capabilities, like [Azure NetApp Files backup](/azure/azure-netapp-files/backup-introduction) and [cross-region replication](/azure/azure-netapp-files/cross-region-replication-introduction).
+- *Storage-level snapshots*. Use Azure Backup for this method. This method relies on the type of storage that you use for database files. For example, if you use Azure managed disks, such as Azure Premium SSD, [Azure Backup integrates with the Oracle database](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup). If use Azure NetApp Files, you can use Azure NetApp Files data protection capabilities, like [Azure NetApp Files backup](/azure/azure-netapp-files/backup-introduction) and [cross-region replication](/azure/azure-netapp-files/cross-region-replication-introduction).
 - *VM-level backups*. Use [Azure Backup](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup) for this method.
 
 When you stream backups of large databases, the time that it takes to copy the data to then restore it can exceed the RTO requirements. Storage-level snapshots are the best option for that scenario.
 
 ### Recommendations
 
-- Carefully consider whether to implement a backup strategy based on streaming, on storage-level snapshots, or on both strategies.
+- Carefully consider whether to implement a backup strategy that's based on streaming, on storage-level snapshots, or on both strategies.
 
 - Assess the effect of your backup strategy on your RTO and RPO requirements.
 - Analyze the available storage destinations for your RMAN backups based on the documented throughput limits for each option. Choose the option that meets your requirements.
 - Consider using Azure Backup for your storage-level snapshots, and consider placing the snapshots in a paired region or an availability zone for extra protection.
-- Consider the various storage options available to store the archive log backups that you need to recover the database. Consider the performance, replication, and cost considerations of each option. 
+- Consider various storage options to store the archive log backups that you need to recover the database. Consider the performance, replication, and cost considerations of each option. 
 - Develop and regularly test your backup and restore plans to prevent unwanted surprises in your production environment.
 
-## Service protection (high availability) and business continuity (disaster recovery)
+## Service protection and business continuity
 
-Implement service protection and business continuity considerations to create architectural redundancy, ultimately maximizing the amount of time that your service is available. Aim to minimize service downtime due to planned outages, such as patches, updates, and upgrades, and unplanned outages, such as failures. Improve your recovery from geography-wide failures.
+This section describes how to improve the overall high availability (HA) and disaster recovery (DR) of your Oracle workload on Azure IaaS. Implement service protection and business continuity considerations to improve architectural redundancy, ultimately maximizing the amount of time that your service is available. Aim to minimize service downtime due to planned outages, such as patches, updates, and upgrades, and unplanned outages, such as failures. Use Azure and Oracle capabilities to improve your recovery from geography-wide failures.
 
 Azure provides many options for the high availability of individual components in an Oracle on IaaS architecture. For example, you can:
 
@@ -74,7 +72,7 @@ You can also implement fast-start failover, depending on your maximum downtime r
 - Carefully select the database protection mode that fulfills your requirements when you use Data Guard for HA and DR. For example, maximum performance mode minimizes the impact on the source but has the highest potential for data loss. For more information, see [BCDR for Oracle on Azure Virtual Machines landing zone accelerator](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-disaster-recovery-oracle-landing-zone) and [Oracle Data Guard protection modes](https://docs.oracle.com/en/database/oracle/oracle-database/21/sbydb/oracle-data-guard-protection-modes.html#GUID-7EF6EFEE-7E31-4F80-9C97-1B25DAA025F8).
 - Consider automating your failover process, for example you can use fast-start failover.
 - Establish test procedures for your failover processes, and carry out regular testing to avoid any problems.
-- Architect your solution holistically by utilizing the Azure native capabilities (e.g. Availability Zones) and Oracle native tools (e.g. Data Guard) to meet your HA and DR requirements. The following two are examples of such an architecture, the first targeting automatic failover and the second targeting manual failover.
+- Architect your solution holistically by using Azure-native capabilities, like availability zones, and Oracle-native tools, like Data Guard, to meet your HA and DR requirements. The following two are examples of such an architecture, the first targeting automatic failover and the second targeting manual failover.
 
 ### Create a failover with passive standby
 
@@ -86,7 +84,7 @@ Consider the following tier 1 example for E-Business Suite in a multiple availab
 
 - Establish a two-availability zone deployment. The application tier uses Azure Site Recovery with a passive secondary VM.
 
-- Use two Oracle observers: one as a primary in availability zone one and one as a secondary in a different availability zone. The observers monitor and direct traffic to the primary database. If the primary observer is unavailable, Oracle Data Guard performs a redo sync to the secondary availability zone.
+- Use two Oracle observers: one as a primary in availability zone one and one as a secondary in a different availability zone. The observers monitor and direct traffic to the primary database. If the primary observer is unavailable, Data Guard performs a redo sync to the secondary availability zone.
    
   You must configure Data Guard to [a data protection mode](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-5DB32C5F-3ABF-4AD4-AB41-208F1BF134BB), such as maximum availability, maximum performance, or maximum protection. For more information about choosing a mode for your workload requirements, see [Oracle Data Guard protection modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-7EF6EFEE-7E31-4F80-9C97-1B25DAA025F8).
 
@@ -106,7 +104,7 @@ The primary is set up in availability zone one, and the database uses Active Dat
 > [!NOTE]
 > This setup requires an Active Data Guard license.
 
-The following diagram aims for a downtime threshold of less than one minute. This configuration has active standby, but this standby has *read-only* capabilities.
+The following architecture aims for a downtime threshold of less than one minute. This failover has an active standby configuration but has read-only capabilities.
 
 [![Diagram that shows the active-active architecture on Azure.](./images/active-active.png)](./images/active-active.png)
 
