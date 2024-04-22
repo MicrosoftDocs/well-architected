@@ -15,7 +15,7 @@ Guidance about well-architected Oracle on Azure infrastructure as a service (Iaa
 
 | Well-Architected Framework pillar | Summary |
 | --- | --- |
-| Reliability | A reliable Oracle workload is both resilient and available. *Resiliency* is the ability to recover from failures and continue to function. *Availability* is uptime. High availability reduces Oracle database and Oracle application downtime during critical maintenance and improves recovery from failures. Failures happen on-premises and in the cloud, so it’s important to design your Oracle workload for resiliency and availability.|
+| Reliability | A reliable Oracle workload is both resilient and available. *Resiliency* is the ability to recover from failures and continue to function. *Availability* is uptime. High availability reduces Oracle database and Oracle application downtime during critical maintenance and improves recovery from failures. Failures happen on-premises and in the cloud, so it's important to design your Oracle workload for resiliency and availability.|
 | Security | Security is about implementing measures that help protect your workload from threats. Examples include adding multiple security layers to your Oracle applications, including identity and access management (IAM), input validation, data sovereignty, encryption, and distributed denial-of-service (DDoS) mitigation. Other measures include blocking bad actors, preventing data exfiltration, and providing protection from operating system vulnerabilities. |
 | Cost Optimization | Cost Optimization is about keeping costs at a minimum while achieving required technical and business objectives.|
 | Performance Efficiency | Performance Efficiency is about accelerating digital transformation with less. The goal is to get the most out of your Oracle workload and meet user demand without overprovisioning or underprovisioning resources. Inefficient performance can degrade user experience and inflate costs. Performance affects productivity for both databases and applications.|
@@ -26,16 +26,15 @@ Guidance about well-architected Oracle on Azure infrastructure as a service (Iaa
 Because failures can occur on-premises and in the cloud, it's important to focus on resilience and availability when you design an Oracle on Azure IaaS workload.
 
 - _Resiliency_ refers to recovering from failures and maintaining functionality.
-  
 - _Availability_ ensures uninterrupted uptime. High availability minimizes application and database downtime during critical maintenance activities. High availability also enhances recovery from incidents like VM crashes, back-end updates, extended downtimes, and ransomware attacks.
 
-Failures can happen in the cloud. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize downtime and ensure that recommended practices for high availability are built into Azure and Oracle.
+Failures can happen in the cloud. Instead of trying to prevent failures altogether, your goal should be to minimize the effects of a single failing component. Use the following information to minimize downtime and ensure that recommended practices for high availability are built into Azure and Oracle.
 
-When discussing reliability with Oracle on Azure, it’s important to take into consideration not only the database, but also the connected tiers on separate VMs, virtual network subnets, and disaster recovery in case of failures. Consider the following recommendations for each design consideration:
+When discussing reliability with Oracle on Azure, you need to take into consideration not only the database, but also the connected tiers on separate VMs, virtual network subnets, and disaster recovery in case of failures. Consider the following recommendations for each design consideration:
 
-- Scale workloads vertically by selecting a VM SKU and storage that's appropriate for your workload's resources such as CPU, memory, IOPS, throughput, and database size. Scale horizontally by adding VM instances or disks.
+- Scale workloads vertically by selecting a VM SKU and storage configuration that's appropriate for your workload's resources such as CPU, memory, input/output operations per second (IOPS), throughput, and database size. Scale horizontally by adding VM instances or disk storage.
 - Design for high availability by implementing redundancy and failover mechanisms to help ensure continuous operations. Distribute traffic by considering strategies such as load balancing to distribute traffic across multiple back-end sources.
-- Implement fault-tolerant storage to help ensure data integrity and availability by using technologies such as striping disks (RAID-0).
+- Implement fault-tolerant storage to help ensure data integrity and availability by using techniques such as striping disks (RAID-0).
 - Understand backup and restore capabilities for data recovery in case of accidental deletion, corruption, or other data-loss scenarios. A backup and restore procedure helps to streamline recovery processes.
 
 ## Security
@@ -45,21 +44,21 @@ In a shared-responsibility model:
 - Organizations are primarily responsible for managing and operating workloads.
 - Microsoft manages the physical and virtual infrastructure of the Azure infrastructure.
 
-We strongly recommend that you regularly assess the services and technologies to ensure that your security posture adapts to the evolving threat landscape. It's also essential to establish a clear understanding of the shared responsibility model when you collaborate with vendors to implement suitable security measures.
+We strongly recommend that you regularly assess your services and technologies to ensure that your security posture adapts to the evolving threat landscape. It's also essential to establish a clear understanding of the shared responsibility model when you collaborate with vendors to implement suitable security measures.
 
 You can employ several methods to secure your Oracle workloads:
 
-- Implement the principle of least privilege, and use role-based access control to assign roles.
-- Familiarize yourself with single sign-on (SSO) methods supported for Oracle applications.
+- Implement the principle of least privilege, and use role-based access control (RBAC) to assign roles.
+- Familiarize yourself with single sign-on (SSO) methods that are compatible with Oracle applications.
 - Conduct environmental audits regularly.
-- Implement encryption for data at rest and in transit.
+- Implement encryption for data at rest and data in transit.
 - Implement operating system hardening to prevent vulnerabilities that could be exploited to attack the Oracle database.
 - Use network security groups to filter traffic.
 - Integrate audit trails.
 
 ## Cost optimization
 
-The first cost-optimization opportunity is set during the right-size assessment. This helps you avoid overprovisioning your infrastructure.  Frequent increases in Azure hardware capability provide regular opportunities for Oracle workloads to optimize costs, eliminate waste, and improve technology.
+The first cost-optimization opportunity occurs during the right-size assessment. This assessment helps you avoid overprovisioning your infrastructure.  Frequent improvements in Azure hardware capabilities provide regular opportunities for Oracle workloads to optimize costs, eliminate waste, and improve technology.
 
 To align your Oracle workload with Azure, we recommend creating a plan for each Oracle workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost-optimization initiatives for your database, application platform, and data platform. Your recovery point objectives (RPOs), recovery time objectives (RTOs), and uptime requirements can lead to significant cost-optimization options.
 
