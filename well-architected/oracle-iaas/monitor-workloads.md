@@ -48,4 +48,5 @@ Follow these recommendations when you monitor your VMs and storage:
 
 ## Next step
 
-Depending on your business case, refer to the [design principles](review-design-principles.md) for more information.
+> [!div class="nextstepaction"]
+> [Design principles for an Oracle workload on Azure](review-design-principles.md)
