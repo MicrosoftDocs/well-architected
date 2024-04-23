@@ -32,12 +32,12 @@ This article assumes that as an architect, you've reviewed the [**compute decisi
 
 ##### Technology scope
 
-This review focuses on the interrelated decisions for these Azure resources.  
+This review primarily focuses on the interrelated decisions for these Azure resources.  
 
 - Azure App Service Plan
 - Azure App Service for Web Apps
 
-There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article.
+There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article. App Service Environments (ASE) is also out of scope. References to ASE are to exemplify the concept of isolation and shouldn't be treated as recommendations.  
 
 
 ## Reliability
@@ -231,8 +231,7 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(App Service Plan) **[Choose Free or Basic tiers](/azure/app-service/overview-hosting-plans) for lower enviroments**. <br> These tiers are recommended for experimental use. Remove them when no longer needed.|The Free and Basic tiers are more budget-friendly compared to higher tiers. They provide a cost-effective solution for nonproduction environments where you don't need the full features and performance of premium plans.|
-|(App Service Plan) Allow for independent scaling of applications by enabling [per-app scaling](/azure/app-service/manage-scale-per-app). <br><br> Each app runs in its own isolated process, preventing resource contention.| Instead of provisioning resources for the highest peak load across all apps, you allocate resources based on actual usage patterns. By avoiding over-provisioning, you save costs.|
-|(App Service Plan) Take advantage of discounts and explore these preferred pricing for : <br> - Lower environments with [dev/test plans](https://azure.microsoft.com/pricing/offers/dev-test/). <br> - [Azure reservations](/azure/app-service/overview-manage-costs#azure-reservations) and [Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#Benefitsandfeatures) for dedicated computed provisioned in Premium V3. <br><br> Reserved instances are ideal for stable workloads with predictable usage patterns. |Dev/Test plans provide reduced rates for Azure services, making them cost-effective for non-production environments. <br> Reserved instances allow you to prepay for compute resources with significant discounts.|
+|(App Service Plan) Take advantage of discounts and explore these preferred pricing for : <br> - Lower environments with [dev/test plans](https://azure.microsoft.com/pricing/offers/dev-test/). <br> - [Azure reservations](/azure/app-service/overview-manage-costs#azure-reservations) and [Azure Savings Plan](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#Benefitsandfeatures) for dedicated compute provisioned in Premium V3 and App Service Environment (ASE) v2 . <br><br> Reserved instances are ideal for stable workloads with predictable usage patterns. |Dev/Test plans provide reduced rates for Azure services, making them cost-effective for non-production environments. <br> Reserved instances allow you to prepay for compute resources with significant discounts.|
 |[**Monitor cost**](/azure/app-service/overview-manage-costs#monitor-costs) incurred by App Service resources. Run the Cost Analysis tool in Azure portal. <br><br> [**Create budgets and alerts**](/azure/app-service/overview-manage-costs#create-budgets)  to notify stakeholders.|Monitoring allows you to identify cost spikes, inefficiencies, or unexpected expenses early on. This proactive approach helps you to provide budgetary controls to prevent overruns.|
 |(App Service Plan) Scale in when demand decreases. <br><br> To scale-in, define scale rules to [reduce the number of instances in Azure Monitor](/azure/azure-monitor/autoscale/autoscale-understanding-settings).|By scaling in, you prevent wastage and reduce unnecessary expenses.|
 
@@ -272,7 +271,7 @@ Start your design strategy based on the [**design review checklist for Operation
 |(App Service) [**Monitor the health of your instances**](/azure/app-service/monitor-instances-health-check?tabs=dotnet) and activate instance health probes. <br><br>Set up a specific path for handling health probe requests. |You can detect issues promptly and take necessary actions to maintain agreed upon availability and performance.|
 |(App Service) [**Enable diagnostics logs**](/azure/app-service/troubleshoot-diagnostic-logs) for the application and the instance. <br><br> Frequent logging can slow down the performance of the system, add to storage costs, and can be risky if access to logs isn't secured. Follow these best practices: <br> - Log the right level of information. <br>- Set retention policies. <br> - Keep audit trail of authorized access and unauthorized attempts. <br>- Treat logs as data and apply data protection controls. |Diagnostic logs provide valuable insights into your app’s behavior. Useful for monitoring traffic patterns and identifying anomalies.|
 |(App Service) Take advantage of [App Service managed certificates](/azure/app-service/configure-ssl-certificate#create-a-free-managed-certificate) that offloads certification management to Azure. |Processes like certificate procurement, verification, renewal, importing certifcates from Azure Key Vault, and other processes are handled automatically by App Service. Alternatively, upload your certificate to key vault and authorize the App Service resource provider to access it. |
-|(App Service Plan) [**Validate app changes in the staging slot**](/azure/app-service/deploy-staging-slots) before swapping it with the production slot. <br><br> Autoswap? |You can test different versions of code and configuration, and swap them with production without downtime or errors. <br><br> If an issue is detected after a swap, you can quickly revert to the last known good state by swapping back. |
+|(App Service Plan) [**Validate app changes in the staging slot**](/azure/app-service/deploy-staging-slots) before swapping it with the production slot. |You can test different versions of code and configuration, and swap them with production without downtime or errors. <br><br> If an issue is detected after a swap, you can quickly revert to the last known good state by swapping back.|
 
 ## Performance Efficiency
 
