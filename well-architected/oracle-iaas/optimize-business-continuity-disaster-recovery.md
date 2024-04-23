@@ -82,33 +82,36 @@ This section describes an example of a failover scenario for business-critical O
 
 Business-critical Oracle applications, such as Oracle E-Business Suite, require failure prevention and therefore a holistic architecture.
 
-Consider the following Tier-1 example for E-Business Suite in a multiple availability zone deployment that has second region deployments for disaster recovery.
+This example:
 
-- Establish a two-availability zone deployment. The application tier uses Azure Site Recovery with a passive secondary VM.
+- Has a two-availability zone deployment. The application tier uses Azure Site Recovery with a passive secondary VM.
 
-- Use two Oracle observers: one as a primary in availability zone one and one as a secondary in a different availability zone. The observers monitor and direct traffic to the primary database. If the primary observer is unavailable, Data Guard performs a redo sync to the secondary availability zone.
+- Uses two Oracle observers: one as a primary and one as a secondary in a different availability zone where no database resides. The primary observer is in availability zone one, and the secondary observer is in availability zone two. The observers monitor and direct traffic to the primary database. If the primary observer is unavailable, Data Guard performs a redo sync to the secondary observer.
    
-  You must configure Data Guard to [a data protection mode](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-5DB32C5F-3ABF-4AD4-AB41-208F1BF134BB), such as maximum availability, maximum performance, or maximum protection. For more information about choosing a mode for your workload requirements, see [Oracle Data Guard protection modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-7EF6EFEE-7E31-4F80-9C97-1B25DAA025F8).
+- Has Data Guard configured to [a data protection mode](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-5DB32C5F-3ABF-4AD4-AB41-208F1BF134BB), such as maximum availability, maximum performance, or maximum protection. For more information about choosing a mode for your workload requirements, see [Oracle Data Guard protection modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-7EF6EFEE-7E31-4F80-9C97-1B25DAA025F8).
 
 
 The following architecture aims for a downtime threshold of less than five minutes. 
 
-[![Diagram that shows the active-passive architecture on Azure.](./images/active-passive.png)](./images/active-passive.png)
+[![Diagram that shows the architecture for a failover with passive standby.](./images/active-passive.png)](./images/active-passive.png)
 
 ### Create a failover with active standby
 
 This section describes an example of a failover scenario for business-critical Oracle applications in a two-availability zone deployment with active standby.
 
-The web server tier, application tier, and database tier reside in its own virtual network subnet.
+In this example: 
 
-The primary is set up in availability zone one, and the database uses Active Data Guard to replicate it to an active standby in availability zone three.
+- The web server tier, application tier, and database tier reside in their own virtual network subnet.
+
+- The primary database resides in availability zone one.
+- The database that uses Active Data Guard to replicate the primary database to an active standby resides in availability zone three.
 
 > [!NOTE]
 > This setup requires an Active Data Guard license.
 
-The following architecture aims for a downtime threshold of less than one minute. This failover has an active standby configuration but has read-only capabilities.
+The following architecture aims for a downtime threshold of less than one minute. This failover scenario has an active standby configuration but has read-only capabilities.
 
-[![Diagram that shows the active-active architecture on Azure.](./images/active-active.png)](./images/active-active.png)
+[![Diagram that shows the architecture for a failover with active standby.](./images/active-active.png)](./images/active-active.png)
 
 ## Next step
 
