@@ -1,6 +1,6 @@
 ---
 title: Create an Oracle workload on Azure
-description: See general guidance and resources for running Oracle on Azure IaaS.
+description: Learn about Well-Architected Framework best practices for an Oracle workload on Azure IaaS to help you create a performant, secure, and highly available solution.
 author: jessiehaessler
 ms.author: jhaessler
 ms.date: 04/15/2024
@@ -11,64 +11,65 @@ ms.subservice: waf-workload-oracle
 
 # Create an Oracle workload on Azure
 
-This guidance is intended to provide **Application Owners**, **Oracle Database Administrators**, **Business Stakeholders** and **Architects** with best practices for well-architected Oracle on Azure IaaS implementation.
-You can use this workload documentation as your go-to resource for guidance on how to apply the Azure Well-Architected best practices as the technical foundation for building and operating a highly reliable solution for Oracle on Azure at-scale.
+This article provides Well-Architected Framework best practices for an Oracle workload on Azure infrastructure as a service (IaaS). Application owners, Oracle database administrators, business stakeholders, and architects can use this guidance to create a technical foundation for their highly reliable solution for Oracle on Azure at scale.
 
-## About Oracle Workloads
+## What is an Oracle workload?
 
-The term workload refers to a collection of database(s) including [Exadata](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata) and application resources that support a common business goal or the execution of a common business process. Oracle workloads must be highly available and resilient to failure. 
-These workloads could be Customer Relationship Management applications, Human Resources, customized applications that mostly rely on WebLogic Server or Java. WebLogic Server, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications that can be moved to the cloud. 
+In this guidance, the term *workload* refers to a collection of databases, such as [Oracle Exadata databases](/azure/azure-netapp-files/performance-oracle-multiple-volumes#decoupling-from-exadata), and application resources that support a common business goal or business process.
 
-## What are the Common Challenges?
+You must create Oracle workloads that are highly available and resilient to failure. These workloads can be customer relationship management applications, human resource applications, or customized applications that rely on Oracle WebLogic Server or Java. Oracle on-premises applications and platforms that you can move to the cloud include WebLogic Server, Siebel, PeopleSoft, JD Edwards, and E-Business Suite. 
 
-Microsoft Azure makes it easy to deploy and manage cloud solutions. However, building and migrating Oracle workloads that are highly available and reliable on the Azure platform remains a challenge for the following reasons:
-- Oracle applications architectures are complex. The complexity is exacerbated by the dependencies between the application and database tier, version upgrades and patches. 
-- Designing a reliable application at scale requires knowledge about the application versions and architectures, best practices from other customers as well as dependencies on each layer. It is important to have the required in-depth knowledge in order to select the right technologies and configure them correctly.
-- Oracle database architectures differ from customer to customer. Oracle Real Application Cluster (RAC) or Exadata features like SmartScan, Storage Indexes can introduce complexity into the setup. Automatic Workload Repositories provide a great insight into the actual usage of Exadata Features or RAC Setups and ultimately Database utilization. 
+## What are the common challenges?
 
-All Oracle workloads need to be architected to handle failures with correlated or cascading impact. Reliability Engineering is an important task within the entire architecture design.
+Microsoft Azure makes it easy to deploy and manage cloud solutions. But challenges can occur when you build and migrate Oracle workloads that are highly available and reliable on the Azure platform. For example:
+
+- Oracle application architectures are complex. The dependencies between the application and database tier, such as version upgrades and patches, can increase complexity. 
+
+- A reliable application design at scale requires knowledge about application versions and architectures, best practices from other customers, and expertise about dependencies on each layer. You need in-depth knowledge so that you can select the right technologies and properly configure them.
+- Oracle database architectures differ from customer to customer. Exadata features, like smart scan and storage indexes, or Oracle Real Application Clusters (RAC) can introduce complexity. The automatic workload repository (AWR) provides insight into the actual usage of Exadata features and RAC setups, and ultimately database usage. 
+
+You must architect all Oracle workloads to handle failures with correlated or cascading impact. Reliability engineering is an important task within the entire architecture design.
 
 ## The Well-Architected Framework approach
 
-A well-architected workload is structured to meet specific performance, reliability, security, cost optimization and performance efficiency objectives. By following architectural principles and guidelines specific to Oracle on Azure IaaS, you can enhance end-user experiences and deliver consistency and reliability. This guidance addresses Oracle Databases including Exadata as a specific workload as well as other Oracle applications.
+We recommend that you structure your well-architected workload to meet specific reliability, security, cost optimization, operational excellence, and performance efficiency objectives. Follow architectural principles and guidelines that are specific to Oracle on Azure IaaS to enhance customer experiences and deliver consistency and reliability. This guidance addresses Oracle databases, like Exadata databases, and other Oracle applications.
 
-The Well-Architected Framework pillars also aim to involve modularity, separation of roles, and a way to improve operational productivity. This approach results in application workloads that avoid unnecessary complexities and unforeseen costs.
+The Well-Architected Framework pillars help you implement modularity, separate roles, and improve operational productivity. Use a well-architected approach to create application workloads without unnecessary complexities and unforeseen costs.
 
-Consider making your Oracle on Azure IaaS workload well-architected for the following reasons:
+Use the Well-Architected Framework pillars to improve your Oracle on Azure IaaS workload in the following ways:
 
-- **Reliability**. An Oracle workload requires resiliency at the architecture layer. You’ll learn how to create an Database & Application architecture with high availability to process critical and non-critical business data.
-- **Security**. An Oracle workload can contain business critical data. Most of the Oracle applications also require an ssh port. You’ll learn to secure your Oracle Databases and Applications with multiple security layers, including identity, access, input validation, data sovereignty and encryption.
-- **Cost optimization**. An Oracle workload requires you to bring your own license. Begin optimizing your costs by conducting a Automatic Workload Repository (AWR) assessment. The AWR Assessment provides the ability to identify the required VM sku and storage in order to meet performance requirements. 
-- **Operational Excellence**. An Oracle workload needs to be monitored to meet productivity requirements. The guidance within this pillar will guide you on how to make sure that your Oracle workload meets operational excellence standards.
-- **Performance Efficiency**. An Oracle workload spends most of its lifecycle in operations. You’ll learn how to manage an Oracle workload to meet users' demands, being performant, while managing costs.
+- **Reliability**: An Oracle workload requires resiliency at the architecture layer. Create a database and application architecture with high availability to process critical and non-critical business data.
+
+- **Security**: An Oracle workload might contain business-critical data. Most Oracle applications also require a Secure Shell (SSH) port. Secure your Oracle databases and applications with multiple security layers, including identity, access, input validation, data sovereignty, and encryption layers.
+- **Cost optimization**: An Oracle workload requires that you bring your own license. You can generate an AWR report to optimize costs. You can use the AWR report to determine the virtual machine (VM) SKU and storage that you need to meet performance requirements. 
+- **Operational excellence**: An Oracle workload requires monitoring to meet productivity requirements. Ensure that your Oracle workload meets operational excellence standards.
+- **Performance efficiency**: An Oracle workload's life cycle consists mostly of operational tasks. Manage an Oracle workload so that it remains performant and meets customers' demands. You must also manage costs.
 
 ### Choose a migration approach
 
-There are various approaches from which you can choose depending on the migration requirements. Common tools used by customers are Data Guard, RMAN, Goldengate, and Data Pump. Data Pump however is not recommended for a big volume of data. Whenever you plan to migrate it is recommended to check if the character set is the same and also has the same Endian. Cross-Platform migrations need to be assessed properly. 
-The following documentation provides further information of [Migration planning](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-migration-planning).
+You can apply various migration approaches, depending on your migration requirements. Common migration tools include Oracle Data Guard, Oracle Recovery Manager (RMAN), Oracle GoldenGate, and Oracle Data Pump. We don't recommend Data Pump for a large volume of data.
+
+As part of your migration, ensure that your character set is the same and has the same endianness so that you can properly assess cross-platform migrations. For more information, see [Migrate Oracle workloads to Azure IaaS](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-migration-planning).
 
 ## What are the key design areas?
 
-Oracle on Azure IaaS includes the following design areas, which focus on the technical decision points for infrastructure components that are part of a workload and their interaction with the shared services.
+An Oracle on Azure IaaS migration includes the following design areas. Each design area focuses on technical decision points for the infrastructure components that are part of a workload and the components' interaction with shared services.
 
 |Design area|Summary|
 |---|---|
-|[Choose compute and storage](choose-compute-storage.md)|Right-sizing your infrastructure is crucial for performance and cost efficiency. The Oracle Migration Assistant Tool [OMAT](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat) helps in selecting the right SKU for the database VM, and the best suited storage for the database, archive redologs and backup.|
-|[Optimize business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md)|This section provides guidance on reliable failover architecture. It focuses on RPO and RTO requirements as well as High Availability.|
-|[Optimize security](optimize-security.md)|Considerations for all aspects of security for Oracle workloads are discussed.|
-|[Monitor workloads](monitor-workloads.md)|This section provides guidance on monitoring tooling which is essential in order to react quickly to developing issues and performance degradation.|
-|[Design Oracle applications](design-applications.md)|This section provides guidance on what to consider when migrating typical Oracle applications to Azure.|
-
-<!--## Assessment
-
-Use the assessment tool to evaluate your design choices.
-
-> [!div class="nextstepaction"]
-> [Assessment](...)-->
+|[Choose compute and storage](choose-compute-storage.md)|Learn how to rightsize your infrastructure to improve performance and cost efficiency. Use [Oracle Migration Assistant Tool (OMAT)](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/omat) to select the right SKU for the database VM and the best-suited storage for the database, archive redo logs, and backup.|
+|[Optimize business continuity and disaster recovery](optimize-business-continuity-disaster-recovery.md)|Get guidance about reliable failover architectures, including recovery point objective (RPO) and recovery time objective (RTO) requirements and high availability considerations.|
+|[Optimize security](optimize-security.md)|Learn how to secure sensitive data, and create a reliable architecture where you can place your Oracle workload.|
+|[Design Oracle applications](design-applications.md)|Learn about design considerations for your Oracle workload that can help you create a performant, reliable, secure, and highly available solution in the cloud.|
+|[Monitor workloads](monitor-workloads.md)|Learn how to monitor tooling, so that you can quickly address developing problems and performance degradation.|
 
 ## Next steps
 
-Start by reviewing design principles.
-
+Review the design principles.
 > [!div class="nextstepaction"]
-> [Design principles](review-design-principles.md)
+> [Review design principles](review-design-principles.md)
+
+Take an assessment to evaluate your design choices.
+> [!div class="nextstepaction"]
+> [Azure Well-Architected Oracle on Azure IaaS workload assessment](/assessments/d3acb4d8-8045-4635-9a31-0bcb3b10724a)
+
