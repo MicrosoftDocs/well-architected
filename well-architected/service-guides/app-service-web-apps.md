@@ -37,7 +37,7 @@ This review primarily focuses on the interrelated decisions for these Azure reso
 - Azure App Service Plan
 - Azure App Service for Web Apps
 
-There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article. App Service Environments (ASE) is also out of scope. References to ASE are to exemplify the concept of isolation and shouldn't be treated as recommendations.  
+There are other Azure offerings associated with App Service, such as Functions and Logic Apps. Those offerings are out of scope for this article. App Service Environments (ASE) is also out of scope. ASE is referenced occasionally to help clarify features or options of the core App Service offering.
 
 
 ## Reliability
