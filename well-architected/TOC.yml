@@ -285,13 +285,7 @@
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
         - name: Azure App Service
-          items:
-            - name: Reliability
-              href: service-guides/azure-app-service/reliability.md
-            - name: Cost optimization
-              href: service-guides/azure-app-service/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/azure-app-service/operational-excellence.md
+          href: service-guides/app-service-web-apps.md
         - name: Azure Batch
           items:
             - name: Reliability
