@@ -11,7 +11,7 @@ ms.subservice: waf-workload-oracle
 
 # Optimize business continuity and disaster recovery
 
-When you migrate Oracle resources to Azure, it's important to consider the reliability of your database and also the reliability of the tiers on virtual machines (VMs), virtual network subnets, and storage components.
+When you migrate Oracle resources to Azure, consider the reliability of your database and also the reliability of the tiers on virtual machines (VMs), virtual network subnets, and storage components.
 
 Oracle on Azure infrastructure as a service (IaaS) can fulfill the required resiliency objectives of the most demanding Oracle workloads. To effectively use the guidance in this article, first define your resiliency key performance indicators (KPIs) based on your business requirements. Use your recovery time objective (RTO) and recovery point objective (RPO) requirements as baseline KPIs to determine the best architecture for your Oracle workload on Azure.
 
