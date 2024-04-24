@@ -45,7 +45,7 @@ For more information on how to improve Oracle Database security, see [Security g
 - Disable password-protected Linux accounts, enable only on request for a short period.
 - Disable sign-in access for privileged Linux accounts (that is, root, oracle, etc.), allowing sign-in access to only personalized accounts.
 - Use "sudo" to grant access to privileged Linux accounts (that is, root, oracle, etc.) from personalized accounts instead of direct sign-in.
-- Ensure that Linux audit trail logs and "sudo" access logs are captured into Azure Log Analytics by using Linux SYSLOG utility.
+- Ensure that Linux audit trail logs and "sudo" access logs are captured into Azure Monitor Logs by using Linux SYSLOG utility.
 - Apply security patches and operating system patches/updates regularly from trusted sources only.
 - Implement restrictions to limit access to the operating system.
 - Restrict unauthorized access to servers.
@@ -54,7 +54,7 @@ For more information on how to improve Oracle Database security, see [Security g
 - Ensure that the Linux firewall daemon is configured to start automatically at boot time.
 - Scan network ports being listened upon (that is, Linux command netstat –l) to determine potential access points, and be sure either Azure NSGs or the Linux firewall daemon control access to those ports.
 - Alias potentially destructive Linux commands (such as rm and mv) to force them to interactive mode, so you're prompted at least once before an irreversible command is executed. Advanced users know how to unalias if they want.
-- Set the Oracle Database unified system logs to send copies of the Oracle audit logs to Azure Log Analytics by using the Linux SYSLOG utility.
+- Set the Oracle Database unified system logs to send copies of the Oracle audit logs to Azure Monitor Logs by using the Linux SYSLOG utility.
 
 ## Network topology
 
@@ -93,7 +93,7 @@ For more information, see [Oracle Database Audit data connectors](/azure/sentine
 
 ### Recommendations
 
-- Use the Microsoft Sentinel Solution for Oracle Database workloads. The Oracle Database Audit data connector retrieves and ingests all Oracle Database audit records into Azure Log Analytics by using an industry-standard SYSLOG interface.
+- Use the Microsoft Sentinel Solution for Oracle Database workloads. The Oracle Database Audit data connector retrieves and ingests all Oracle Database audit records into Azure Monitor Logs by using an industry-standard SYSLOG interface.
 - Use Azure Sentinel to review applications audit trails alongside the Azure infrastructure and the guest operating system audit records.  
 
 ## Next step
