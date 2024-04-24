@@ -11,13 +11,13 @@ ms.subservice: waf-workload-oracle
 
 # Optimize security for your Oracle workload
 
-Security is crucial for any architecture. Azure offers a comprehensive range of tools to effectively secure your Oracle workload. This article describes security recommendations for the Azure control plane related to Oracle application workloads that are deployed on Azure Virtual Machines (VMs). For detailed information and implementation guidelines for security measures within Oracle Database products, see [Oracle Database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
+Security is crucial for any architecture. Azure offers a comprehensive range of tools to effectively secure your Oracle workload. This article describes security recommendations for the Azure control plane related to Oracle application workloads that are deployed on Azure Virtual Machines (VMs). For more information about security measures within Oracle Database products, see [Oracle Database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
 
 Most databases store sensitive data. Implementing security only at the database level isn't sufficient to secure architecture in which to land these workloads. Defense in depth is a comprehensive approach to security that implements several layers of defense mechanisms to protect data. Instead of relying on a single security measure at a specific level, such as focusing only on network security mechanisms, the defense-in-depth strategy employs a combination of different layer security measures to create a robust security posture.
 
-You can architect a defense-in-depth approach for Oracle workloads by using a strong authentication and authorization framework, hardened network security, and encryption of data at rest and data in transit. Oracle workloads can be deployed as an infrastructure as a service (IaaS) cloud model on Azure. Revisit the shared responsibility matrix to have a clear understanding of the specific tasks and responsibilities assigned to the cloud provider and the customer. For more information about the shared responsibility model, see [Shared responsibility in the cloud](/azure//security/fundamentals/shared-responsibility).
+You can architect a defense-in-depth approach for Oracle workloads by using a strong authentication and authorization framework, hardened network security, and encryption of data at rest and data in transit. Oracle workloads can be deployed as an infrastructure as a service (IaaS) cloud model on Azure. Revisit the shared responsibility matrix to better understand the specific tasks and responsibilities assigned to the cloud provider and the customer. For more information about the shared responsibility model, see [Shared responsibility in the cloud](/azure//security/fundamentals/shared-responsibility).
 
-We suggest that you periodically assess the services and technologies you employ to ensure that your security measures align with the changing threat landscape.
+You should periodically assess the services and technologies you employ to ensure that your security measures align with the changing threat landscape.
 
 ## Use centralized identity management
 
@@ -28,8 +28,8 @@ Organizations can improve the security of Windows and Linux VMs in Azure by inte
 ### Recommendations
 
 - Use Microsoft Entra ID integration with single sign-on (SSO) to access Oracle applications. Refer to the documentation for each Oracle application to follow the supported SSO strategy.
-- [Sign in to a Linux VM in Azure by using Microsoft Entra ID and OpenSSH](/azure//active-directory/devices/howto-vm-sign-in-azure-ad-linux).
-- [Sign in to a Windows VM in Azure by using Microsoft Entra ID](/azure//active-directory/devices/howto-vm-sign-in-azure-ad-windows).
+    - [Sign in to a Linux VM in Azure by using Microsoft Entra ID and OpenSSH](/azure//active-directory/devices/howto-vm-sign-in-azure-ad-linux).
+    - [Sign in to a Windows VM in Azure by using Microsoft Entra ID](/azure//active-directory/devices/howto-vm-sign-in-azure-ad-windows).
 
 ## Deploy workloads on Windows or Linux operating systems
 
@@ -56,7 +56,7 @@ For more information on how to improve Oracle Database security, see [Security g
 - Alias potentially destructive Linux commands (such as rm and mv) to force them to interactive mode so that you're prompted at least once before an irreversible command is executed. Advanced users know how to unalias.
 - Set the Oracle Database unified system logs to send copies of the Oracle audit logs to Azure Monitor Logs by using the Linux SYSLOG utility.
 
-## Network topology
+## Use a network topology
 
 Network topology is the fundamental component of a layered security approach for Oracle workloads on Azure.
 
