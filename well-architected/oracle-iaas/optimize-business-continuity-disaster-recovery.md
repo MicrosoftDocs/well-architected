@@ -86,7 +86,7 @@ This example:
 
 - Has a two-availability zone deployment. The application tier uses Azure Site Recovery with a passive secondary VM.
 
-- Uses two Oracle observers: one as a primary and one as a secondary in a different availability zone where no database resides. The primary observer is in availability zone one, and the secondary observer is in availability zone two. The observers monitor and direct traffic to the primary database. If the primary observer is unavailable, Data Guard performs a redo sync to the secondary observer.
+- Takes advantage of the Data Guard fast-start failover feature. To get the highest availability, we recommend that you install two observers. The primary observer is in availability zone one, and the secondary observer is in availability zone two. The observers monitor and direct traffic. When the primary database is unavailable, the observer automatically fails over to the secondary database. Data Guard performs a redo sync. The time frame of the redo sync depends on your redo configuration.
    
 - Has Data Guard configured to [a data protection mode](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-5DB32C5F-3ABF-4AD4-AB41-208F1BF134BB), such as maximum availability, maximum performance, or maximum protection. For more information about choosing a mode for your workload requirements, see [Oracle Data Guard protection modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html#GUID-7EF6EFEE-7E31-4F80-9C97-1B25DAA025F8).
 
