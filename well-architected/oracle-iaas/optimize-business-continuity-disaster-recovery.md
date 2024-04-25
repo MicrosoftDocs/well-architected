@@ -29,7 +29,7 @@ The three Oracle database backup methods for an Oracle workload on Azure IaaS in
    - Non-Microsoft virtual tape libraries, which you can find in Azure Marketplace.
    - Local and remote file shares, such as Azure Blob Storage with the Network File System protocol, Azure Files, and Azure NetApp Files.
 
-- *Storage-level snapshots*. Use Azure Backup for this method. This method relies on the type of storage that you use for database files. For example, if you use Azure managed disks, such as Azure Premium SSD, [Azure Backup integrates with the Oracle database](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup). If use Azure NetApp Files, you can use Azure NetApp Files data protection capabilities, like [Azure NetApp Files backup](/azure/azure-netapp-files/backup-introduction) and [cross-region replication](/azure/azure-netapp-files/cross-region-replication-introduction).
+- *Storage-level snapshots*. Use Azure Backup for this method. This method relies on the type of storage that you use for database files. For example, if you use Azure managed disks, such as Azure Premium SSD, [Azure Backup integrates with the Oracle database](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup). If you use Azure NetApp Files, you can use Azure NetApp Files data protection capabilities, like [Azure NetApp Files backup](/azure/azure-netapp-files/backup-introduction) and [cross-region replication](/azure/azure-netapp-files/cross-region-replication-introduction).
 - *VM-level backups*. Use [Azure Backup](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup) for this method.
 
 When you stream backups of large databases, the time that it takes to copy the data to then restore it can exceed the RTO requirements. Storage-level snapshots are the best option for that scenario.
@@ -46,9 +46,9 @@ When you stream backups of large databases, the time that it takes to copy the d
 
 ## Service protection and business continuity
 
-This section describes how to improve the overall high availability (HA) and disaster recovery (DR) of your Oracle workload on Azure IaaS by implementing service protection and business continuity considerations.
+This section describes how to improve the overall high availability (HA) and disaster recovery (DR) of your Oracle workload on Azure IaaS by implementing service protection and business continuity (BC) considerations.
 
-Incorporate the following recommendations to improve architectural redundancy, ultimately maximizing the amount of time that your service is available. Aim to minimize service downtime due to planned outages, such as patches, updates, and upgrades, and unplanned outages, such as failures. Use Azure and Oracle capabilities to improve your recovery from geography-wide failures.
+Incorporate the following recommendations to improve architectural redundancy and, ultimately, maximize the amount of time that your service is available. Aim to minimize service downtime due to planned outages, such as patches, updates, and upgrades, and unplanned outages, such as failures. Use Azure and Oracle capabilities to improve your recovery from geography-wide failures.
 
 Azure provides many options for the high availability of individual components in an Oracle on IaaS architecture. For example, you can:
 
@@ -72,7 +72,7 @@ You can also implement fast-start failover, depending on your maximum downtime r
 - Consider the capabilities that Azure provides for the high availability of various infrastructure components in your Oracle on Azure IaaS implementation.
 
 - Carefully select the database protection mode that fulfills your requirements when you use Data Guard for HA and DR. For example, maximum performance mode minimizes the impact on the source but has the highest potential for data loss. For more information, see [BCDR for Oracle on Azure Virtual Machines landing zone accelerator](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-disaster-recovery-oracle-landing-zone) and [Oracle Data Guard protection modes](https://docs.oracle.com/en/database/oracle/oracle-database/21/sbydb/oracle-data-guard-protection-modes.html#GUID-7EF6EFEE-7E31-4F80-9C97-1B25DAA025F8).
-- Consider automating your failover process, for example you can use fast-start failover.
+- Consider automating your failover process. For example, you can use fast-start failover.
 - Establish test procedures for your failover processes, and carry out regular testing to avoid any problems.
 - Architect your solution holistically by using Azure-native capabilities, like availability zones, and Oracle-native tools, like Data Guard, to meet your HA and DR requirements. The following two examples use Azure-native and Oracle-native components.
 
@@ -116,4 +116,4 @@ The following architecture aims for a downtime threshold of less than one minute
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Optimize security](optimize-security.md)
+> Incorporate [security considerations](optimize-security.md) for your Oracle workload on Azure.
