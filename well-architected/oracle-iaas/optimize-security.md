@@ -13,7 +13,7 @@ ms.subservice: waf-workload-oracle
 
 Security is crucial for any architecture. Azure offers a comprehensive range of tools to effectively secure your Oracle workload. This article describes security recommendations for the Azure control plane related to Oracle application workloads that are deployed on Azure Virtual Machines (VMs). For more information about security measures within Oracle Database products, see [Oracle Database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
 
-Most databases store sensitive data. Implementing security only at the database level isn't sufficient to secure architecture in which to land these workloads. Defense in depth is a comprehensive approach to security that implements several layers of defense mechanisms to protect data. Instead of relying on a single security measure at a specific level, such as focusing only on network security mechanisms, the defense-in-depth strategy employs a combination of different layer security measures to create a robust security posture.
+Most databases store sensitive data. Implementing security only at the database level isn't enough to secure architecture in which to land these workloads. Defense in depth is a comprehensive approach to security that implements several layers of defense mechanisms to protect data. Instead of relying on a single security measure at a specific level, such as focusing only on network security mechanisms, the defense-in-depth strategy employs a combination of different layer security measures to create a robust security posture.
 
 You can architect a defense-in-depth approach for Oracle workloads by using a strong authentication and authorization framework, hardened network security, and encryption of data at rest and data in transit. Oracle workloads can be deployed as an infrastructure as a service (IaaS) cloud model on Azure. Revisit the shared responsibility matrix to better understand the specific tasks and responsibilities assigned to the cloud provider and the customer. For more information about the shared responsibility model, see [Shared responsibility in the cloud](/azure//security/fundamentals/shared-responsibility).
 
@@ -43,8 +43,8 @@ For more information on how to improve Oracle Database security, see [Security g
 
 - Use SSH key-pairs for Linux account access instead of passwords.
 - Disable password-protected Linux accounts and enable only on request for a short period.
-- Disable sign-in access for privileged Linux accounts (that is, root, oracle, etc.), which allows sign-in access only to personalized accounts.
-- Use "sudo" to grant access to privileged Linux accounts (that is, root, oracle, etc.) from personalized accounts instead of direct sign-in.
+- Disable sign-in access for privileged Linux accounts (that is, root, oracle, and others), which allows sign-in access only to personalized accounts.
+- Use "sudo" to grant access to privileged Linux accounts (that is, root, oracle, and others) from personalized accounts instead of direct sign-in.
 - Ensure that Linux audit trail logs and "sudo" access logs are captured into Azure Monitor Logs by using Linux SYSLOG utility.
 - Apply security patches and operating system patches and updates regularly from trusted sources only.
 - Implement restrictions to limit access to the operating system.
