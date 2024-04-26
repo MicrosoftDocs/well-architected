@@ -15,7 +15,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on App Service (Web Apps)
 
-Azure App Service is a platform as a service (PaaS) compute service that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan you choose determines the region in which the workload runs, the type of operating system, and compute configurations. There are multiple billing models available.
+Azure App Service is a platform as a service (PaaS) compute service that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan you choose determines the region in which the workload runs, compute configurations, and the type of operating system. There are multiple billing models available for App Service.
 
 This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen App Service as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -277,6 +277,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 Start your design strategy based on the [**design review checklist for Performance Efficiency**](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for web apps.
 
 > [!div class="checklist"]
+
 > - **Identify and monitor the performance indicators**: Set targets for the key indicators for the application, such as the volume of incoming requests, time taken by the application to respond to requests, pending requests, errors in HTTP responses, and others. Those indicators must be considered as part of the performance baseline for the workload.
 >
 >   Capture App Service metrics that form the basis of performance indicators. Make sure to collect logs to gain insights into resource usage and activities. Use Application Performance Monitoring (APM) tools, such as Application Insights that collect collect and analyze performance data from the application. For more information, see [App Service monitoring data reference](/azure/app-service/monitor-app-service-reference).
@@ -318,7 +319,7 @@ Start your design strategy based on the [**design review checklist for Performan
 
 There are design tradeoffs with the approaches described in the pillar checklists. Here are some examples of advantages and drawbacks.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
+:::image type="icon" source="../images/trade-off.svg"::: **Density and isolation**.
 
 - **Higher density**: By colocating multiple apps within the same App Service plan, you minimize the resources. All apps share CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resource usage is also optimized. If apps have different load patterns over time, idle resources from one app can be used by another.
 
@@ -330,7 +331,7 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
   This approach is more expensive and requires operational rigor.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
+:::image type="icon" source="../images/trade-off.svg"::: **Reliable scaling strategy**.
 
 A well-defined scaling strategy ensures that your application can handle varying loads without compromising performance. However, there are tradeoffs on cost.
 
@@ -373,8 +374,13 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
 
 - Use these reference architectures as examples of how these recommendations can be applied to a workload.
+
   - If you've never deployed a Web Apps, start with [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
+  
   - Foundational architecture as your starting point for a production-grade deployment is described in [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+  
 - Build implementation expertise using product documentation:
+
   - [App Service](/azure/app-service/)
+  
   - [App Service plan](/azure/app-service/overview-hosting-plans)
