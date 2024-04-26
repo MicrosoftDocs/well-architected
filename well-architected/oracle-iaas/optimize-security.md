@@ -36,18 +36,31 @@ For more information about how to improve Oracle Database security, see [Securit
 ### Recommendations
 
 - Use Secure Shell (SSH) key pairs for Linux account access instead of passwords.
+
 - Disable password-protected Linux accounts and enable them only on request for a short period.
+
 - Disable sign-in access for privileged Linux accounts, such as root and oracle accounts, which allows sign-in access only to personalized accounts.
+
 - Use the `sudo` command to grant access to privileged Linux accounts, such as root and oracle accounts, from personalized accounts instead of a direct sign in.
+
 - Ensure that you capture Linux audit trail logs and `sudo` access logs into Azure Monitor Logs by using the Linux syslog utility.
+
 - Apply security patches and operating system patches and updates regularly from trusted sources only.
+
 - Implement restrictions to limit access to the operating system.
+
 - Restrict unauthorized access to servers.
+
 - Control server access at the network level to enhance overall security.
+
 - Consider using the Linux firewall daemon as an extra layer of protection in addition to Azure network security groups (NSGs).
+
 - Ensure that you configure the Linux firewall daemon to automatically run at startup.
+
 - Scan network listening ports to determine potential access points. Use the Linux `netstat –l` command to list those ports. Make sure either Azure NSGs or the Linux firewall daemon control access to those ports.
+
 - Set up aliases for potentially destructive Linux commands, such as `rm` and `mv`, to force them to run in interactive mode so that you're prompted at least once before an irreversible command is run. Advanced users know how to remove the aliases if needed.
+
 - Configure the Oracle database unified system logs to use the Linux syslog utility to send copies of the Oracle audit logs to Azure Monitor Logs.
 
 ## Design your network topology
@@ -61,9 +74,13 @@ For more information about network topology, see [Network topology and connectiv
 ### Recommendations
 
 - Use [Azure NSGs](/azure/virtual-network/network-security-groups-overview) to filter network traffic between Azure resources in an Azure virtual network and to filter traffic between on-premises networks and Azure.
+
 - Use Azure Firewall or a network virtual appliance (NVA) to secure your environment.
+
 - Secure the VM on which the Oracle Database workload resides against unauthorized access by using Azure-provided features such as [Microsoft Defender for Cloud just-in-time (JIT) access](/azure/defender-for-cloud/just-in-time-access-overview) and [Azure Bastion](/azure/bastion/bastion-overview) features.
+
 - Use SSH port forwarding for X Windows System and Virtual Network Computing (VNC) utilities to tunnel connections through SSH. For more information, see [an example that opens a VNC client and tests a deployment](https://docs.oracle.com/en/learn/install-vnc-oracle-linux/#open-a-vnc-client-and-test-your-deployment).
+
 - Direct all traffic through a hub virtual network by placing VMs in a dedicated subnet that's isolated from the internet and the on-premises network.
 
 ## Use encryption to secure data
@@ -75,10 +92,14 @@ Encrypt data in transit to protect data that moves from one location to another,
 ### Recommendations
 
 - Understand how Microsoft [encrypts data at rest](/azure/security/fundamentals/encryption-overview#encryption-of-data-at-rest).
+
 - Consider the features of [Oracle Advanced Security](https://docs.oracle.com/en/database/oracle/oracle-database/19/asoag/introduction-to-oracle-advanced-security.html#GUID-5D7343A0-4934-444F-97A1-5F189385A5DE), which include transparent data encryption (TDE) and data redaction.
+
 - Manage keys with Oracle Key Vault. If you implement Oracle TDE as an extra encryption layer, note that Oracle doesn't support Azure key management solutions, such as Azure Key Vault, or other cloud providers' key management solutions. The default Oracle Wallet location is in the file system of the Oracle database VM. However, you can use Oracle Key Vault as a key management solution on Azure. For more information, see [Provisioning Oracle Key Vault in Azure](https://docs.oracle.com/en/database/oracle/key-vault/21.6/okvag/using_okv_as_oci_vm_compute_instance.html#GUID-E8154AEB-2964-4698-AE6E-64A108C06D11).
+
 - Understand how Microsoft [encrypts data in transit](/azure//security/fundamentals/encryption-overview#encryption-of-data-in-transit).
-- Consider using Oracle’s Native Network Encryption and Data Integrity feature. For more information, see [Configuring Oracle Database Native Network Encryption and Data Integrity](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-network-data-encryption-and-integrity.html#GUID-7F12066A-2BA1-476C-809B-BB95A3F727CF).
+
+- Consider using the Oracle Native Network Encryption and Data Integrity feature. For more information, see [Configuring Oracle Database Native Network Encryption and Data Integrity](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-network-data-encryption-and-integrity.html#GUID-7F12066A-2BA1-476C-809B-BB95A3F727CF).
 
 ## Integrate Oracle Database audit trails
 
@@ -89,10 +110,10 @@ For more information, see [Oracle Database audit connector for Microsoft Sentine
 ### Recommendations
 
 - Use the Microsoft Sentinel solution for Oracle Database workloads. The Oracle Database audit connector uses an industry-standard syslog interface to retrieve Oracle Database audit records and ingest them into Azure Monitor Logs.
+
 - Use Azure Sentinel to review audit records of applications, the Azure infrastructure, and guest operating systems.
 
 ## Next step
 
 > [!div class="nextstepaction"]
 > [Monitor workloads](monitor-workloads.md)
-
