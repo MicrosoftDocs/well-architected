@@ -25,15 +25,9 @@ Identity management is a fundamental framework that governs access to important 
 
 Your organization can improve the security of Windows and Linux VMs in Azure by integrating with Microsoft Entra ID, which is a fully managed identity and access management service.
 
-### Recommendations
-
-- Use Microsoft Entra ID with single sign-on (SSO) to access Oracle applications. Refer to the documentation for each Oracle application to follow the supported SSO strategy.
-    - [Sign in to a Linux VM in Azure by using Microsoft Entra ID and OpenSSH](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux).
-    - [Sign in to a Windows VM in Azure by using Microsoft Entra ID](/entra/identity/devices/howto-vm-sign-in-azure-ad-windows).
-
 ## Deploy workloads on Windows or Linux operating systems
 
-You can deploy Oracle databases on [Linux operating systems](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux) and [Windows operating systems](/entra/identity/devices/howto-vm-sign-in-azure-ad-windows). Integrate your operating system with Microsoft Entra ID to enhance its security posture.
+You can use Microsoft Entra ID with single sign-on (SSO) to access Oracle applications and deploy Oracle databases on [Linux operating systems](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux) and [Windows operating systems](/entra/identity/devices/howto-vm-sign-in-azure-ad-windows). Integrate your operating system with Microsoft Entra ID to enhance its security posture.
 
 Improve the security of your Oracle workloads on Azure IaaS by ensuring that you harden your operating system to eliminate vulnerabilities that attackers might exploit to harm your Oracle database.
 
@@ -99,4 +93,6 @@ For more information, see [Oracle Database audit connector for Microsoft Sentine
 
 ## Next step
 
-> For more information on how to monitor and manage your applications and services, see [Monitor workloads](monitor-workloads.md)
+> [!div class="nextstepaction"]
+> [Monitor workloads](monitor-workloads.md)
+
