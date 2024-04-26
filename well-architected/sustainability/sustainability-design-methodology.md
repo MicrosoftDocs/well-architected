@@ -80,7 +80,7 @@ Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sust
 
 We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint and to measure and track emissions over time.
 
-Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
+Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
 
 #### Leverage the Microsoft Sustainability Manager
 
