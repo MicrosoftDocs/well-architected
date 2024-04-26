@@ -1,6 +1,6 @@
 ---
 title: Optimize security for your Oracle workload
-description: Learn how to optimize security for your Oracle workload by using the defense-in-depth approach.  
+description: Learn how to optimize security for your Oracle workload by using the defense-in-depth approach to employ a combination of various layer security measures and create a robust security posture.  
 author: jessiehaessler
 ms.author: jhaessler 
 ms.date: 04/23/2024
