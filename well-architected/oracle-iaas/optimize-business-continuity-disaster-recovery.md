@@ -93,7 +93,7 @@ This example:
 
 The following architecture aims for a downtime threshold of less than five minutes. 
 
-:::image type="content" source="./images/active-passive.svg" alt-text="Diagram that shows the architecture for a failover with passive standby." lightbox="./images/active-passive.svg":::
+:::image type="content" source="./images/active-passive.svg" alt-text="Diagram that shows the architecture for a failover with passive standby." lightbox="./images/active-passive.svg" border="false":::
 
 ### Create a failover with active standby
 
@@ -111,9 +111,9 @@ In this example:
 
 The following architecture aims for a downtime threshold of less than one minute. This failover scenario has an active standby configuration but has read-only capabilities.
 
-:::image type="content" source="./images/active-active.svg" alt-text="Diagram that shows the architecture for a failover with active standby." lightbox="./images/active-active.svg":::
+:::image type="content" source="./images/active-active.svg" alt-text="Diagram that shows the architecture for a failover with active standby." lightbox="./images/active-active.svg" border="false":::
 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Optimize security](optimize-security.md) for your Oracle workload on Azure.
+> [Optimize security](optimize-security.md)
