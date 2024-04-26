@@ -93,7 +93,7 @@ This example:
 
 The following architecture aims for a downtime threshold of less than five minutes. 
 
-[![Diagram that shows the architecture for a failover with passive standby.](./images/active-passive.png)](./images/active-passive.png)
+[![Diagram that shows the architecture for a failover with passive standby.](./images/active-passive.svg)](./images/active-passive.svg)
 
 ### Create a failover with active standby
 
@@ -111,7 +111,7 @@ In this example:
 
 The following architecture aims for a downtime threshold of less than one minute. This failover scenario has an active standby configuration but has read-only capabilities.
 
-[![Diagram that shows the architecture for a failover with active standby.](./images/active-active.png)](./images/active-active.png)
+[![Diagram that shows the architecture for a failover with active standby.](./images/active-active.svg)](./images/active-active.svg)
 
 ## Next step
 
