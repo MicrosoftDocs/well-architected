@@ -31,7 +31,7 @@ You can use Microsoft Entra ID with single sign-on (SSO) to access Oracle applic
 
 Improve the security of your Oracle workloads on Azure IaaS by ensuring that you harden your operating system to eliminate vulnerabilities that attackers might exploit to harm your Oracle database.
 
-For more information on how to improve Oracle Database security, see [Security guidelines for Oracle workloads on Azure Virtual Machines landing zone accelerator](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-security-guideline-landing-zone).
+For more information about how to improve Oracle Database security, see [Security guidelines for Oracle workloads on Azure Virtual Machines landing zone accelerator](/azure/cloud-adoption-framework/scenarios/oracle-iaas/oracle-security-guideline-landing-zone).
 
 ### Recommendations
 
