@@ -116,4 +116,4 @@ The following architecture aims for a downtime threshold of less than one minute
 ## Next step
 
 > [!div class="nextstepaction"]
-> Incorporate [security considerations](optimize-security.md) for your Oracle workload on Azure.
+> [Optimize security](optimize-security.md) for your Oracle workload on Azure.
