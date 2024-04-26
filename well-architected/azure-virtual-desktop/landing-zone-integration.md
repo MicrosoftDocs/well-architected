@@ -49,7 +49,7 @@ There's a separate subscription, which is also known as an *Azure application la
 
 Guidance about application landing zones applies to Azure Virtual Desktop workloads. For more information, see [Platform landing zones vs. application landing zones](/azure/cloud-adoption-framework/ready/landing-zone/#platform-landing-zones-vs-application-landing-zones). This guidance includes recommendations for efficiently governing and managing your workload.
 
-For a demonstration of an application landing zone for an Azure Virtual Desktop workload, see the baseline reference architecture in [Example architectures for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/windows-virtual-desktop).
+For a demonstration of an application landing zone for an Azure Virtual Desktop workload, see the baseline reference architecture in [Example architectures for Azure Virtual Desktop](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop).
 
 ## Design area integration
 
