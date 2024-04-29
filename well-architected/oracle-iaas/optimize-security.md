@@ -57,7 +57,7 @@ For more information about how to improve Oracle Database security, see [Securit
 
 - Ensure that you configure the Linux firewall daemon to automatically run at startup.
 
-- Scan network listening ports to determine potential access points. Use the Linux `netstat –l` command to list those ports. Make sure either Azure NSGs or the Linux firewall daemon control access to those ports.
+- Scan network listening ports to determine potential access points. Use the Linux `netstat –l` command to list those ports. Make sure either Azure NSGs or the Linux firewall daemon controls access to those ports.
 
 - Set up aliases for potentially destructive Linux commands, such as `rm` and `mv`, to force them to run in interactive mode so that you're prompted at least once before an irreversible command is run. Advanced users know how to remove the aliases if needed.
 

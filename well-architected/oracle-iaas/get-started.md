@@ -30,7 +30,7 @@ Microsoft Azure makes it easy to deploy and manage cloud solutions. But challeng
 
 You must architect all Oracle workloads to handle failures with correlated or cascading impact. Reliability engineering is an important task within the entire architecture design.
 
-## The Well-Architected Framework approach
+### The Well-Architected Framework approach
 
 We recommend that you structure your well-architected workload to meet specific reliability, security, cost optimization, operational excellence, and performance efficiency objectives. Follow architectural principles and guidelines that are specific to Oracle on Azure IaaS to enhance customer experiences and deliver consistency and reliability. This guidance addresses Oracle databases, like Exadata databases, and other Oracle applications.
 

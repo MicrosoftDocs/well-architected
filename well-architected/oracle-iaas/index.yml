@@ -49,5 +49,5 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Take the Oracle on Azure IaaS assessment
+          - text: Take the assessment for Oracle on Azure IaaS
             url: /assessments/d3acb4d8-8045-4635-9a31-0bcb3b10724a
