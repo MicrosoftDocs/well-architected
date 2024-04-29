@@ -11,7 +11,7 @@ ms.subservice: waf-workload-oracle
 
 # Optimize security for your Oracle workload
 
-Security is crucial for any architecture. Azure offers a comprehensive range of tools to effectively secure your Oracle workload. This article describes security recommendations for the Azure control plane related to Oracle application workloads that are deployed on Azure Virtual Machines. For more information about security features in Oracle Database, see [Oracle Database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
+Security is crucial for any architecture. Azure offers a comprehensive range of tools to effectively secure your Oracle workload. This article describes security recommendations for the Azure control plane related to Oracle application workloads that are deployed on virtual machines (VMs) on Azure. For more information about security features in Oracle Database, see [Oracle Database security guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-oracle-database-security.html#GUID-41040F53-D7A6-48FA-A92A-0C23118BC8A0).
 
 Most databases store sensitive data. Security measures only at the database level aren't enough to secure the entire architecture in which to land these workloads. Defense in depth is a comprehensive approach to security in which you implement several layers of defense mechanisms to protect data. You don't rely on a single security measure at a specific level, such as network security mechanisms. Use the defense-in-depth strategy to employ a combination of various layer security measures to create a robust security posture.
 
