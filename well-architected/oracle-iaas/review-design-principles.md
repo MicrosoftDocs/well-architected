@@ -30,7 +30,7 @@ Because failures can occur on-premises and in the cloud, it's important to focus
 
 Failures can happen in the cloud. Instead of trying to prevent failures altogether, your goal should be to minimize the effects of a single failing component. Use the following information to minimize downtime and ensure that recommended practices for high availability are built into Azure and Oracle.
 
-When discussing reliability with Oracle on Azure, you need to take into consideration not only the database, but also the connected tiers on separate VMs, virtual network subnets, and disaster recovery in case of failures. Consider the following recommendations for each design consideration:
+When discussing reliability with Oracle on Azure, you need to consider not only the database but also the connected tiers on separate VMs, virtual network subnets, and disaster recovery in case of failures. Consider the following recommendations for each design consideration:
 
 - Scale workloads vertically by selecting a VM SKU and storage configuration that's appropriate for your workload's resources such as CPU, memory, input/output operations per second (IOPS), throughput, and database size. Scale horizontally by adding VM instances or disk storage.
 - Design for high availability by implementing redundancy and failover mechanisms to help ensure continuous operations. Distribute traffic by considering strategies such as load balancing to distribute traffic across multiple back-end sources.

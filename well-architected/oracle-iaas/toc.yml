@@ -1,11 +1,13 @@
 - name: Oracle
   items:
-  - name: Get started
+  - name: Create an Oracle workload on Azure
     href: get-started.md
   - name: Design principles
     href: review-design-principles.md
   - name: Design areas
     items:
+    - name: Decouple workloads from Oracle ExaData Access
+      href: decouple-exadata.md
     - name: Choose compute and storage
       href: choose-compute-storage.md
     - name: Design Oracle applications
