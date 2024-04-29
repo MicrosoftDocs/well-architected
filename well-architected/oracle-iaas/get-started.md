@@ -38,7 +38,7 @@ The Well-Architected Framework pillars help you implement modularity, separate r
 
 Use the Well-Architected Framework pillars to improve your Oracle on Azure IaaS workload in the following ways:
 
-- **Reliability**: An Oracle workload requires resiliency at the architecture layer. Create a database and application architecture with high availability to process critical and non-critical business data.
+- **Reliability**: An Oracle workload requires resiliency at the architecture layer. Create a database and application architecture with high availability to process critical and noncritical business data.
 
 - **Security**: An Oracle workload might contain business-critical data. Most Oracle applications also require a Secure Shell (SSH) port. Secure your Oracle databases and applications with multiple security layers, including identity, access, input validation, data sovereignty, and encryption layers.
 - **Cost optimization**: An Oracle workload requires that you bring your own license. You can generate an AWR report to optimize costs. You can use the AWR report to determine the virtual machine (VM) SKU and storage that you need to meet performance requirements. 
