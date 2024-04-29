@@ -15,7 +15,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on App Service (Web Apps)
 
-Azure App Service is a platform as a service (PaaS) compute service that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan you choose determines the region in which the workload runs, compute configurations, and the type of operating system. There are multiple billing models available for App Service.
+Azure App Service is a platform as a service (PaaS) compute service that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan you choose determines the region in which the workload runs, the compute configurations, and the operating system. There are multiple billing models available for App Service.
 
 This article assumes that as an architect, you've reviewed the [**compute decision tree**](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen App Service as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -66,9 +66,9 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >   For more information, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 >
-> - **Build redundancy**: Build redundancy in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. Traffic can be routed to other zones if one zone fails. Deploy your application across multiple regions to ensure that your app remains accessible even if an entire region experiences an outage.
+> - **Build redundancy**: Build redundancy in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. Traffic can be routed to other zones if one zone fails. Deploy your application across multiple regions to ensure that your app remains accessible, even if an entire region experiences an outage.
 >
->   Build similar levels of redundancy in dependent services. For instance, the application instances bind to blob storage. If the application uses zone-redundant deployment (ZRS), consider configuring the associated storage account with ZRS.
+>   Build similar levels of redundancy in dependent services. For instance, the application instances bind to blob storage. Consider configuring the associated storage account with ZRS if the application uses zone-redundant deployment (ZRS).
 >
 >   Have redundancy in networking components. For example, use zone-redundant IP addresses and load balancers.
 >
@@ -76,44 +76,44 @@ Start your design strategy based on the [**design review checklist for Reliabili
 >
 >   The choice of [App Service plan tier](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) affects scaling in terms of number of instances and the compute units.
 
->   Ensure proper app initialization so that new instances are warmed up quickly and can start to receive requests.
+>   Ensure proper app initialization so that new instances are warmed up quickly and can receive requests.
 >
->   Strive for stateless applications whenever possible. Reliably scaling state with new instances can increase complexity. If you need to store application state, consider an external data store that can be scaled independently. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load across other instances.
+>   Strive for stateless applications whenever possible. Reliably scaling state with new instances can increase complexity. Consider an external data store that can be scaled independently if you need to store application state. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load across other instances.
 >
 >   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. Log scaling events so that you can troubleshoot problems that might arise and optimize your scaling strategy over time.
 >
->   App Service has a limitation on the number of instances within a plan, which affects scaling reliability. One strategy is to use identical deployment stamps, each running App Service plan instance with its own endpoint. It's essential that you front all stamps with an external load balancer to distribute traffic across them. Use Azure Application Gateway for single node deployments and Azure Front Door for multi-regional deployments. This approach is ideal for mission-critical applications where reliability is crucial. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
+>   App Service has a limitation on the number of instances within a plan, which can affect scaling reliability. One strategy is to use identical deployment stamps, each running App Service plan instance with its own endpoint. It's essential that you front all stamps with an external load balancer to distribute traffic across them. Use Azure Application Gateway for single node deployments and Azure Front Door for multi-regional deployments. This approach is ideal for mission-critical applications where reliability is crucial. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
 >
 >   The App Service plan distributes traffic across instances and monitors their health. Note that the external load balancer might not immediately detect if one instance fails.
 >
->  - **Plan your recoverability**: Redundancy is a crucial for business continuity. Fail over to another instance if one becomes unreachable. Explore Auto Healing capabilities offered by App Service, such as auto repair of instances.
+>  - **Plan your recoverability**: Redundancy is a crucial for business continuity. Fail over to another instance if one becomes unreachable. Explore Auto Healing capabilities offered by App Service, such as automatic repair of instances.
 >
->     Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity problems, and large-scale events like regional outages. For example,
+>     Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity problems, and large-scale events like regional outages.
 >     - Bulkhead pattern segments your application into isolated groups to prevent a failure from affecting the entire system.
 >     - Queue-Based Load Leveling pattern queues work items that serve as a buffer to smooth out traffic spikes.
 >     - Retry patterns handles transient failures caused by network glitches, dropped database connections, or busy services.
 >     - Circuit Breaker pattern to prevent an application from repeatedly trying to perform an operation that's likely to fail.
 >    Web Jobs allows you to run background tasks in your Web App. To run those tasks reliably, ensure that the app hosting your job is set to run continuously, on a schedule, or based on event-driven triggers.
 >
->     For more information, see [Reliability patterns](/azure/well-architected/reliability/design-patterns).
+>    For more information, see [Reliability patterns](/azure/well-architected/reliability/design-patterns).
 >
 > - **Conduct reliability testing**: Conduct load testing to evaluate your application's reliability and performance under load. Test plans should include scenarios that validate your automated recovery operations.
 >
 >   Use fault injection to intentionally introduce failures and validate your self-healing and self-preservation mechanisms. Explore the [fault library provided by Azure Chaos Studio](/azure/chaos-studio/chaos-studio-fault-library).
 >
->    App Service imposes resource limits on hosted apps. These limits are determined by the associated App Service plan. Make sure your tests validate that the app runs within those limits, For more information, [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?branch=main#app-service-limits).
+>    App Service imposes resource limits on hosted apps. These limits are determined by the associated App Service plan. Make sure that your tests confirm that the app runs within those resource limits. For more information, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits?branch=main#app-service-limits).
 >
-> - **Use health probes to identify unresponsive workers**: App Service has built-in capabilities that periodically ping a specific path of your web application. If an instance is unresponsive, it's removed from the load balancer and replaced with a new instance.
+> - **Use health probes to identify unresponsive workers**: App Service has built-in capabilities that periodically ping a specific path of your web application. Unresponsive instances are removed from the load balancer and replaced with a new instance.
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(App Service plan) Choose the Premium tier of App Service plan for production workloads. <br><br> Set the maximum and minimum number of workers according to your capacity planning. <br><br>For more information, see [App Service plan overview](/azure/app-service/overview-hosting-plans). |Premium App Service plan offers advanced scaling features and ensures redundancy if failures occur.|
-|(App Service plan) [**Enable zone redundancy**](/azure/reliability/reliability-app-service#availability-zone-support).<br><br> Consider provisioning more than three instances to enhance fault tolerance. <br><br> Check regional support for zone redundancy because not all regions offer this feature. | With multiple instances spread across zones, your application can withstand failures in a single zone. If one zone becomes unavailable, traffic automatically shifts to healthy instances in other zones, maintaining application reliability.|
-|(App Service) **Consider disabling Application Request Routing (ARR) Affinity**. ARR Affinity creates sticky sessions, which is used to redirect users to the same node that handled their previous requests.|By disabling ARR Affinity, incoming requests are evenly distributed across all available nodes, which prevents any single node from being overwhelmed by traffic. Requests can be seamlessly redirected to other healthy nodes if a node is unavailable. <br> By avoiding session affinity, your App Service remains stateless, reducing complexity and ensuring consistent behavior across nodes. <br> Removing sticky sessions also helps App Service to easily scale horizontally by adding or removing instances.|
-|(App Service) [**Define auto-healing rules**](/azure/app-service/overview-diagnostics#auto-healing) based on request count, slow request, memory limit, and other indicators that are considered as part of your performance baseline. <br>Consider this configuration as part of your scaling strategy. <br> |Auto-healing rules allow your application to recover automatically from unexpected problems. The configured rules trigger healing actions when thresholds are breached. <br> Auto-healing enables automatic proactive maintenance. |
-|(App Service) [**Enable Health Check**](/azure/app-service/monitor-instances-health-check) and provide a path that responds to the health check requests. <br> |Health checks allow early detection of problems. When a health check request fails, the system can automatically take corrective actions. <br> The load balancer can route traffic away from unhealthy instances, ensuring that users are directed to healthy nodes.|
+|(App Service plan) [**Enable zone redundancy**](/azure/reliability/reliability-app-service#availability-zone-support).<br><br> Consider provisioning more than three instances to enhance fault tolerance. <br><br> Check regional support for zone redundancy because not all regions offer this feature. | Your application can withstand failures in a single zone when multiple instances are spread across zones. Traffic automatically shifts to healthy instances in other zones and maintains application reliability if one zone becomes unavailable.|
+|(App Service) **Consider disabling Application Request Routing (ARR) Affinity**. ARR Affinity creates sticky sessions which are used to redirect users to the node that handled their previous requests.|Incoming requests are evenly distributed across all available nodes when you disable ARR Affinity. Evenly distributed requests prevent traffic from overwhelming any single node. Requests can be seamlessly redirected to other healthy nodes if a node is unavailable. <br> Your App Service remains stateless by avoiding session affinity. A stateless App Service reduces complexity and ensures consistent behavior across nodes. <br> Removing sticky sessions also helps App Service to scale horizontally by adding or removing instances.|
+|(App Service) [**Define auto-healing rules**](/azure/app-service/overview-diagnostics#auto-healing) based on request count, slow request, memory limit, and other indicators that are considered as part of your performance baseline. <br> Consider this configuration as part of your scaling strategy. <br> |Auto-healing rules help your application to recover automatically from unexpected problems. The configured rules trigger healing actions when thresholds are breached. <br> Auto-healing enables automatic proactive maintenance. |
+|(App Service) [**Enable Health Check**](/azure/app-service/monitor-instances-health-check) and provide a path that responds to the health check requests. <br> |Health checks can detect problems early. Then the system can automatically take corrective actions when a health check request fails. <br> The load balancer routes traffic away from unhealthy instances, which directs users to healthy nodes.|
 
 ## Security
 
@@ -129,23 +129,23 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Review security baselines**: To enhance the security posture of your application hosted on an App Service plan, review the security baselines for [App Service](/security/benchmark/azure/baselines/app-service-security-baseline)
 >
-> - **Use the latest runtime and libraries**: Prior to updating, thoroughly test your application builds to catch problems early and ensure a smooth transition to the new version. App Service supports [language runtime support policy](/azure/app-service/language-support-policy) for updating existing stacks and retiring end-of-support stacks.
+> - **Use the latest runtime and libraries**: Thoroughly test your application builds before updating to catch problems early and ensure a smooth transition to the new version. App Service supports [language runtime support policy](/azure/app-service/language-support-policy) for updating existing stacks and retiring end-of-support stacks.
 >
-> - **Create segmentation through isolation boundaries to contain breach**: Apply _segmentation of identity_, for example, implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege to limit access rights to only what's necessary. Also create _segmentation at the network level_. For example, [inject App Service Apps in an Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet) for isolation and define network security groups to filter traffic.
+> - **Create segmentation through isolation boundaries to contain breach**: Apply _segmentation of identity_. For example, implement role-based access control (RBAC) to assign specific permissions based on roles. Follow the principle of least privilege (PoLP) to limit access rights to only what's necessary. Also create _segmentation at the network level_. [Inject App Service Apps in an Azure virtual network](/azure/app-service/web-sites-integrate-with-vnet) for isolation and define network security groups (NSGs) to filter traffic.
 >
 >   App Service plan offers the App Service Environment (ASE) tier that provides a higher degree of isolation. With ASE, you get dedicated compute and network.  
 >
 > - **Apply access controls on identities**: Restrict both _inward access to the Web App_ and _outward access from the Web App_ to other resources. This applies access controls on identities and helps maintain the workload's overall security posture.
 >
->   _Use Microsoft Entra ID_ for all authentication and authorization needs. Use built-in roles, such as [Web Plan Contributor](/azure/role-based-access-control/built-in-roles/web-and-mobile#web-plan-contributor), [Website Contributor](/azure/role-based-access-control/built-in-roles/web-and-mobile#website-contributor), [Generic: Contributor, Reader, Owner](/azure/role-based-access-control/built-in-roles#general).
+>   Use Microsoft Entra ID for all authentication and authorization needs. Use built-in roles, such as [Web plan contributor](/azure/role-based-access-control/built-in-roles/web-and-mobile#web-plan-contributor), [Website contributor](/azure/role-based-access-control/built-in-roles/web-and-mobile#website-contributor), and [Generic: contributor, reader, owner](/azure/role-based-access-control/built-in-roles#general).
 >
-> - **Control network traffic to and from the application**: Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App, that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose.
+> - **Control network traffic to and from the application**: Don't expose application endpoints to the public internet. Instead add a private endpoint on the Web App that's placed in a dedicated subnet. Front your application with a reverse proxy that communicates with that private endpoint. Consider using Azure Application Gateway or Front Door for that purpose.
 >
 >   Deploy web application firewall (WAF) to protect against common vulnerabilities. Both Application Gateway and Front Door have integrated WAF capabilities.
 >
->   Configure the reverse proxy rules and network settings appropriately to achieve the desired level of security and control. For example, add network security group (NSG) rules on the private endpoint subnet to only accept traffic from the reverse proxy.
+>   Configure the reverse proxy rules and network settings appropriately to achieve the desired level of security and control. For example, add NSG rules on the private endpoint subnet to only accept traffic from the reverse proxy.
 >
->     Egress traffic from the application to other PaaS services should be over _private endpoints_. Consider placing a firewall component to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
+>     Egress traffic from the application to other PaaS services should be over private endpoints. Consider placing a firewall component to restrict egress traffic to the public internet. Both approaches prevent data exfiltration.
 >
 >   For a comprehensive view, see [App Service networking features](/azure/app-service/networking-features).
 >
@@ -155,24 +155,24 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 >   All instances of your App Service are assigned a default domain name. Use a custom domain and secure that domain with certificates.
 >
-> - **Reduce the attack surface**: Remove default configurations that you don't need. For example, disable remote debugging, local authentication for SCM sites, basic authentication, and so on. Disable protocols like HTTP, FTP, and others that aren't secure. Enforce configurations through Azure policies. For more information, see [Azure Policies](#azure-policies).
+> - **Reduce the attack surface**: Remove default configurations that you don't need. For example, disable remote debugging, local authentication for SCM sites, basic authentication, and so on. Disable unsecure protocols like HTTP, FTP, and others. Enforce configurations through Azure policies. For more information, see [Azure Policies](#azure-policies).
 >
->   **Implement restrictive Cross-Origin Resource Sharing (CORS) policies**: in your web application that only allows it to accept requests from the allowed domains, headers, and other criteria. Enforce CORS policies with built-in Azure policy definitions.
+>   **Implement restrictive Cross-Origin Resource Sharing (CORS) policies**: Use restrictive CORS policies in your web application to only accept requests from the allowed domains, headers, and other criteria. Enforce CORS policies with built-in Azure policy definitions.
 >
-> - **Protect application secrets**: You often need to handle sensitive information like API keys, or authentication tokens. Instead of hardcoding these secrets directly into your application code or configuration files, you can use Key Vault references in app settings. When the application starts, App Service automatically retrieves the secret values from Key Vault by using the app's managed identity.
+> - **Protect application secrets**: You often need to handle sensitive information, like API keys or authentication tokens. Instead of hardcoding these secrets directly into your application code or configuration files, you can use Key Vault references in app settings. When the application starts, App Service automatically retrieves the secret values from Key Vault by using the app's managed identity.
 >
 > - **Enable resource logs for your application**: Enable resource logs for your application to create comprehensive activity trails that provide valuable data during investigations that follow security incidents.
 >
->   When assessing threats, consider logging as part of your threat modeling process.
+>   Consider logging as part of your threat modeling process when assessing threats.
 
 ##### Recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|(App Service) [**Assign managed identity**](/azure/app-service/overview-managed-identity) to the Web App. <br><br> Don't share or reuse identities across applications to maintain isolation boundaries. <br><br>If you deploy using containers, make sure that you [connect securely to your container registry](/azure/app-service/tutorial-custom-container).|Outward communication from the application is authenticated, such as the application retrieving secrets from Key Vault. Azure manages the identity and doesn't require you to provision or rotate any secrets. <br> Creating distinct identities allows for granularity of control. It also makes revocation easy in case an identity is compromised.|
-|(App Service) Configure [custom domains](/azure/app-service/configure-ssl-bindings) for application. <br><br> Disable HTTP and only accept HTTPS requests.|Custom domains enable secure communication through HTTPS (SSL/TLS), ensuring the protection of sensitive data and building user trust.|
-|(App Service) **Evaluate whether [EasyAuth](/azure/app-service/overview-authentication-authorization)** is the right mechanism to authenticate users accessing your application. </br> EasyAuth is a feature of App Service that's integrated with Microsoft Entra ID that handles token validation and user identity management across multiple sign-in providers and supports OpenID Connect. <br><br> With this feature, you lose the capability to do authorization at a granular level. There's no mechanism to test authentication. |This feature removes the need and complexity of using authentication libraries in application code. When a request reaches the application, the user is already authenticated.|
-|(App Service) Configure the application for [virtual network integration](/azure/app-service/overview-vnet-integration). <br><br>  **[Use private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**. Block all traffic from the public traffic. <br><br>Make sure [container image is pulled through the virtual network](/azure/app-service/configure-vnet-integration-routing#container-image-pull) integration.<br><br> All [outgoing traffic from the application](/azure/app-service/configure-vnet-integration-routing#configure-application-routing) passes through the virtual network.|Brings the security benefits of using an Azure Virtual Network, such as the application can securely access resources within the network. <br> <br> Add a private endpoint to help protect your application. Private endpoints limit direct exposure to the public network and allow controlled access through the reverse proxy.|
+|(App Service) [**Assign managed identity**](/azure/app-service/overview-managed-identity) to the Web App. <br><br> To maintain isolation boundaries, don't share or reuse identities across applications. <br><br> Make sure that you [connect securely to your container registry](/azure/app-service/tutorial-custom-container) if you deploy using containers.|Outward communication from the application is authenticated, such as the application retrieving secrets from Key Vault. Azure manages the identity and doesn't require you to provision or rotate any secrets. <br> Create distinct identities for granularity of control. Distinct identities make revocation easy in case an identity is compromised.|
+|(App Service) Configure [custom domains](/azure/app-service/configure-ssl-bindings) for applications. <br><br> Disable HTTP and only accept HTTPS requests.|Custom domains enable secure communication through HTTPS (SSL/TLS), which ensures the protection of sensitive data and builds user trust.|
+|(App Service) **Evaluate whether [EasyAuth](/azure/app-service/overview-authentication-authorization)** is the right mechanism to authenticate users that access your application. </br> EasyAuth is a feature of App Service that's integrated with Microsoft Entra ID. EasyAuth handles token validation and user identity management across multiple sign-in providers and supports OpenID Connect. <br><br> With this feature, you lose the capability to do authorization at a granular level. There's no mechanism to test authentication. |This feature removes the need and complexity of using authentication libraries in application code. The user is already authenticated when a request reaches the application.|
+|(App Service) Configure the application for [virtual network integration](/azure/app-service/overview-vnet-integration). <br><br> **Use [private endpoints for App Service apps](/azure/app-service/overview-private-endpoint)**. Block all public traffic. <br><br> Make sure the [container image is pulled through the virtual network](/azure/app-service/configure-vnet-integration-routing#container-image-pull) integration.<br><br> All [outgoing traffic from the application](/azure/app-service/configure-vnet-integration-routing#configure-application-routing) passes through the virtual network.|Brings the security benefits of using an Azure Virtual Network, such as the application can securely access resources within the network. <br> <br> Add a private endpoint to help protect your application. Private endpoints limit direct exposure to the public network and allow controlled access through the reverse proxy.|
 |(App Service) Provide hardening by: <br> - [**Disable basic authentication**](/azure/app-service/configure-basic-auth-disable) that uses username/password in favor of Microsoft Entra ID-based authentication. <br> - **Turn off remote debugging** so that inbound ports aren't opened.<br> - Enable [CORS policies](/azure/app-service/app-service-web-tutorial-rest-api) to tighten incoming requests. <br> - Disable protocols, such as [FTP](/azure/app-service/configure-common). |Basic authentication isn't recommended as a secure deployment method. Microsoft Entra employs OAuth 2.0 token-based authentication, which offers numerous advantages and enhancements that address the limitations associated with basic authentication. <br><br> The policies restrict access to application resources, only allows requests from specific domains, secures cross-region requests, and so on. |
 |(App Service)[**Always use Key Vault references as app settings**](/azure/app-service/app-service-key-vault-references). <br> |Secrets are kept separate from your app's configuration. App settings are encrypted at rest. App Service also manages secret rotations. |
 |(App Service plan) [**Enable Defender for Cloud and App Service**](/azure/defender-for-cloud/tutorial-enable-app-service-plan).| Provides real-time protection to resources running in App Service plan against threats and enhances our overall security posture.|
@@ -190,32 +190,31 @@ Start your design strategy based on the [**design review checklist for Cost Opti
 
 > [!div class="checklist"]
 >
-> - **Estimate the initial cost**: As part of your cost modeling exercise, use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to evaluate the approximate costs associated with various tiers based on the number of instances you plan to run. Each App Service tier offers different compute options. 
+> - **Estimate the initial cost**: As part of your cost modeling exercise, use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to evaluate the approximate costs associated with various tiers based on the number of instances you plan to run. Each App Service tier offers different compute options.
+
 >   Continuously monitor the cost model to track expenditure.
 >
-> - **Evaluate the discounted options**: Higher tiers include dedicated compute instances. You can apply the reservation discount if your workload has a predictable and consistent usaeg pattern. To make the right choice on the type of reservation, make sure you analyze usage data. For more information, see [Save costs with App Service reserved instances](/azure/cost-management-billing/reservations/prepay-app-service).
+> - **Evaluate the discounted options**: Higher tiers include dedicated compute instances. You can apply the reservation discount if your workload has a predictable and consistent usage pattern. Make sure you analyze usage data to choose the type of reservation. For more information, see [Save costs with App Service reserved instances](/azure/cost-management-billing/reservations/prepay-app-service).
 >
 > - **Have a good understanding of the usage meters**: You’re charged an hourly rate, prorated to the second, based on your App Service plan’s pricing tier. Charges apply to each scaled-out instance in your plan, based on the time the VM instance is allocated. Pay attention to underutilized compute resources that might be increasing your costs as result of overallocation due to suboptimal SKU selection, or poorly configured scale-in configuration.
 >
->    You can be charged for additional App Services features like custom domain registration and custom certificates, and for other resources that might be created together with your App Service resources, like a virtual network to isolate your solution, or a Key Vault to protect workload secrets.
+>    You can be charged for additional App Services features, like custom domain registration and custom certificates, and for other resources that might be created together with your App Service resources, like a virtual network to isolate your solution, or a Key Vault to protect workload secrets. For more information, see [App Services billing model](/azure/app-service/overview-manage-costs#understand-the-full-billing-model-for-azure-app-service).
 >
->    Review [App Services billing model](/azure/app-service/overview-manage-costs#understand-the-full-billing-model-for-azure-app-service) to learn more about this.
+> - **Consider the tradeoffs between density and isolation**: You can use App Service plans to host multiple applications on the same compute, which save costs with shared environments. For more information, see [Tradeoffs](#tradeoffs).
 >
-> - **Consider the tradeoffs between density and isolation**: App Service plans allow you to host multiple applications on the same compute, sharing environments to save costs. For guidance, see [Tradeoffs](#tradeoffs).
+> - **Evaluate the effect of your scaling strategy on cost**: It's crucial to properly design, test, and configure for scaling out and for scaling in when you implement autoscaling. Be precise about maximum and minimum limits on autoscaling.
 >
-> - **Evaluate the effect of your scaling strategy on cost**: When you implement autoscaling, it's crucial to properly design, test, and configure for scaling out and for scaling in. Be precise about maximum and minimum limits on autoscaling.
+>   Initialize the application proactively for reliable scaling. For example, instead of waiting until the CPU reaches 95% usage, trigger scaling at around 65% to allow for sufficient time for new instances to be allocated and initialized during the scaling process. However, this strategy might lead to unused capacity.
 >
->   For reliable scaling, initialize the application proactively. For example, instead of waiting until the CPU reaches 95% usage, trigger scaling at around 65%, to allow for sufficient time for new instances to be allocated and initialized during the scaling process. However, that might lead to unused capacity.
+>   We recommended that you combine and balance scaling up and scaling out mechanisms. For example, the app can scale up for some time and then scale out as necessary. It's worth exploring higher tiers that offer larger capacity and efficient resource usage. Based on usage patterns, higher Premium tiers might be more cost effective because they are more capable.
 >
->   It's recommended that you combine and balance scaling up and scaling out mechanisms. For example, the app can scale up for some time and then scale out as necessary. It's worth exploring higher tiers because they offer larger capacity and efficient resource usage. Based on usage patterns, higher Premium tiers might be cost effective because they are more capable.
+> - **Optimize environment costs**: Consider Basic or Free tier for running pre-production environments. These are low-performance tiers that are less expensive. If these tiers are suitable, use governance to enforce those tiers, constrain the number of instances and CPUs, restrict scaling, and limit log retention, other possible configurations.
 >
-> - **Optimize environment costs**: Consider Basic or Free tier for running pre-production environments. These are low performance tiers that are less expensive. If these tiers are suitable, use governance to enforce those tiers, constrain the number of instances and CPUs, restrict scaling, and limit log retention, other possible configurations.
->
-> - **Implement design patterns**: This strategy reduces the volume of requests your workload generates. Consider using patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation), which can reduce costs by minimizing the number of requests.
+> - **Implement design patterns**: This strategy reduces the volume of requests that your workload generates. Consider using patterns like [Backend for frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway aggregation](/azure/architecture/patterns/gateway-aggregation), which can reduce costs by minimizing the number of requests.
 >
 > - **Regularly check costs related to data**: Extending data retention periods or opting for more expensive storage tiers might lead to higher storage costs. More expenses can accumulate due to both bandwidth usage and prolonged retention of logging data.
 >
->   Consider implementing caching to minimize data transfer costs. Start with local in-memory caching, and then explore distributed caching options to reduce the number of requests to the backend database. If your database is located in a different region, be mindful of the bandwidth traffic costs associated with cross-region communication.
+>   Consider implementing caching to minimize data transfer costs. Start with local in-memory caching, and then explore distributed caching options to reduce the number of requests to the backend database. Be mindful of the bandwidth traffic costs associated with cross-region communication if your database is located in a different region.
 >
 > - **Optimize deployment costs**: By taking advantage of deployment slots, you can optimize costs because the slot runs in the same compute environment as the production instance. Use them strategically for scenarios like blue-green deployments, where you switch between slots to minimize downtime and ensure smooth transitions.
 >
@@ -257,14 +256,14 @@ Start your design strategy based on the [**design review checklist for Operation
 >
 > - **Certificate management**: For custom domains, you need to manage Transport Layer Security (TLS) certificates.
 >
->   Have processes in place that procure, renew, validate certificates. Offloading this to App Service is preferred. If you prefer to use your own certificate, you'll be responsible for managing its renewal independently. Choose an approach that best aligns with your security requirements.
+>   Have processes in place that procure, renew, and validate certificates. Offloading this to App Service is preferred. You'll be responsible for managing its renewal independently if you use your own certificate. Choose an approach that best aligns with your security requirements.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
 |(App Service) [**Monitor the health of your instances**](/azure/app-service/monitor-instances-health-check?tabs=dotnet) and activate instance health probes. <br><br>Set up a specific path for handling health probe requests. |You can detect problems promptly and take necessary actions to maintain agreed upon availability and performance.|
 |(App Service) [**Enable diagnostics logs**](/azure/app-service/troubleshoot-diagnostic-logs) for the application and the instance. <br><br> Frequent logging can slow down the performance of the system, add to storage costs, and can be risky if access to logs isn't secured. Follow these best practices: <br> - Log the right level of information. <br>- Set retention policies. <br> - Keep audit trail of authorized access and unauthorized attempts. <br>- Treat logs as data and apply data protection controls. |Diagnostic logs provide valuable insights into your app’s behavior. Useful for monitoring traffic patterns and identifying anomalies.|
 |(App Service) Take advantage of [App Service managed certificates](/azure/app-service/configure-ssl-certificate#create-a-free-managed-certificate) that offloads certification management to Azure. |Processes like certificate procurement, verification, renewal, importing certificates from Azure Key Vault, and other processes are handled automatically by App Service. Alternatively, upload your certificate to key vault and authorize the App Service resource provider to access it. |
-|(App Service plan) [**Validate app changes in the staging slot**](/azure/app-service/deploy-staging-slots) before swapping it with the production slot. |You can test different versions of code and configuration, and swap them with production without downtime or errors. <br><br> If a problem is detected after a swap, you can quickly revert to the last known good state by swapping back.|
+|(App Service plan) [**Validate app changes in the staging slot**](/azure/app-service/deploy-staging-slots) before swapping it with the production slot. |You can test different versions of code and configuration, and swap them with production without downtime or errors. <br><br> You can quickly revert to the last known good state by swapping back if a problem is detected after a swap.|
 
 ## Performance Efficiency
 
@@ -292,7 +291,7 @@ Start your design strategy based on the [**design review checklist for Performan
 >
 >   There's another automatic scaling option that doesn't require you to define rules and only set limits. This is a good option for users who prioritize simplicity and initial setup.
 >
->   To ensure optimal performance, sufficient resources should be readily available. To maintain performance targets, such as response time or throughput, allocate resources appropriately. Consider overallocation of resources when necessary.
+>   Sufficient resources should be readily available to ensure optimal performance. Allocate resources appropriately to maintain performance targets, such as response time or throughput. Consider overallocation of resources when necessary.
 >
 >    When defining auto-scale rules, account for the time it takes for your application to initialize. Scaling decisions should consider this initialization overhead.
 >
@@ -343,7 +342,7 @@ Overprovisioning leads to **higher costs**. You're charged per second for every 
 
 Redundancy offers resilience while also incurring costs.
 
-Service level objectives (SLOs) for your workload determine acceptable performance thresholds. **If redundancy exceeds what's necessary to meet SLOs, it becomes wasteful**. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
+Service level objectives (SLOs) for your workload determine acceptable performance thresholds. It becomes wasteful if redundancy exceeds SLO requirements. Evaluate whether additional redundancy significantly improves SLOs or merely adds unnecessary complexity.
 
 For example, multi-region redundancy provides high availability. However, it's complex and costly due to data synchronization, failover mechanisms, and inter-region communication. Evaluate if your SLOs can be met with zonal redundancy.
 
@@ -375,7 +374,7 @@ Consider the following articles as resources that demonstrate the recommendation
 
 - Use these reference architectures as examples of how these recommendations can be applied to a workload.
 
-  - If you've never deployed a Web Apps, start with [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
+  - Start with [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app) if you've never deployed a Web Apps.
   
   - Foundational architecture as your starting point for a production-grade deployment is described in [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
   
