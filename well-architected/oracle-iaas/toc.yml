@@ -1,5 +1,5 @@
 - name: Oracle
-  href: index.md
+  href: index.yml
   items:
   - name: Overview
     href: get-started.md
