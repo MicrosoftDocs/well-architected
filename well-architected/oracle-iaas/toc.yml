@@ -1,6 +1,7 @@
 - name: Oracle
+  href: index.md
   items:
-  - name: Create an Oracle workload on Azure
+  - name: Overview
     href: get-started.md
   - name: Design principles
     href: review-design-principles.md

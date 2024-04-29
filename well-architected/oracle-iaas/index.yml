@@ -1,0 +1,52 @@
+### YamlMime:Landing
+
+title: Oracle workload documentation
+summary: In this documentation, learn about creating Oracle workloads on Azure, including design principles, design areas, and best practices.
+metadata: 
+  title: Oracle workload documentation
+  description: 
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 04/30/2024
+  ms.topic: landing-page
+  ms.collection: na
+  ms.service: waf
+  ms.subservice: waf-workload-oracle
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Create an Oracle workload on Azure
+            url: get-started.md
+          - text: Design principles
+            url: review-design-principles.md
+   # Card
+  - title: Explore design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Decouple workloads from Oracle Exadata
+            url: decouple-exadata.md
+          - text: Choose compute and storage
+            url: choose-compute-storage.md
+          - text: Design Oracle applications
+            url: design-applications.md
+          - text: Optimize business continuity and disaster recovery
+            url: optimize-business-continuity-disaster-recovery.md
+          - text: Optimize security
+            url: optimize-security.md
+          - text: Monitor workloads
+            url: monitor-workloads.md
+ # Card
+  - title: Take the assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Take the Oracle on Azure IaaS assessment
+            url: /assessments/d3acb4d8-8045-4635-9a31-0bcb3b10724a
