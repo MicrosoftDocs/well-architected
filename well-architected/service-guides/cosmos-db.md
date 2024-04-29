@@ -197,7 +197,7 @@ Workloads must be monitored after they're deployed to make sure they perform as 
 
 ### Azure Policy definitions
 
-- [Policy: Enable auditing of Azure Synapse Analytics](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_Audit.json)
+- [Policy: Enable auditing of Azure Synapse Analytics](/azure/azure-sql/database/auditing-overview)
 
 ## Extra resources
 
