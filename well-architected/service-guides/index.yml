@@ -1,11 +1,11 @@
 ### YamlMime:Hub
 
-title: Azure service guides mapped to Azure Well-Architected Framework
+title: Azure Well-Architected Framework perspectives on Azure services 
 summary: Azure Well-Architected Framework is decision making tool to help solution architects build a technical foundation for their workloads. Consider WAF perspectives on the Azure services that are part of your solution.
 brand: azure
 
 metadata:
-  title: Azure Well-Architected Framework perspectives on Azure services
+  title: Azure service guidance mapped to Azure Well-Architected Framework
   description: Apply Well-Architected Framework concepts to Azure services to make informed decisions when choosing service and its feature set.
   ms.service: waf
   ms.topic: hub-page
