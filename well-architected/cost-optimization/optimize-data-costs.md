@@ -221,10 +221,6 @@ Here are some of the service's features:
 
 To choose the most suitable storage solution and configuration, it's important to assess your data access patterns, retention needs, and performance requirements. Regularly monitoring and optimizing your storage usage by using tools like Azure Advisor can help you further optimize costs.
 
-## Organizational alignment
-
-The Cloud Adoption Framework provides guidance for optimizing data costs for organizational analytics platforms.
-
 ## Related links
 
 - [Recommendations for consolidation](consolidation.md)
