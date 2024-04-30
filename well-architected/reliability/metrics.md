@@ -160,12 +160,6 @@ Azure SLAs provide the Microsoft commitments for uptime and connectivity. Differ
 
 The Azure SLA includes procedures for obtaining a service credit if the SLA isn't met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for recommendations for SLOs and SLIs related to monitoring across the organization.
-
-For more information, see [Cloud monitoring SLOs](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis).
-
 ## Related links
 
 - Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)

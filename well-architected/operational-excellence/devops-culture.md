@@ -58,13 +58,8 @@ Strictly defined roles and responsibilities could result in a level of discomfor
 
 Microsoft publishes extensive documentation about DevOps culture in a dedicated [DevOps resource center](/devops/what-is-devops).
 
-## Organizational alignment
-
-Cloud Adoption Framework provides [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices) for organizational adoption, which includes a perspective on [DevOps team topologies](/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies).
-
 ## Related links
 
-- [Cloud Adoption Framework](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices)
 - [DevOps resource center](/devops/what-is-devops)
 - [Safe deployment practices](safe-deployments.md)
 
