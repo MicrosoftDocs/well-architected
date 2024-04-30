@@ -176,12 +176,6 @@ Use Azure Resource Manager to define and manage resources in a declarative manne
 
 You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance to stress the importance of optimizing environment costs across the organization.
-
-For more information, see [Best practices for costing and sizing Azure resources](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-reduce-nonproduction-costs).
-
 ## Cost Optimization checklist
 
 Refer to the complete set of recommendations.
