@@ -167,6 +167,7 @@ Some of the benefits of using standardized tagging and naming conventions are:
 - [Branch policies and settings](/azure/devops/repos/git/branch-policies)
 - [Cloud design patterns](/azure/architecture/patterns)
 - [Developer velocity](https://azure.microsoft.com/solutions/developer-velocity)
+- [Develop your naming and tagging strategy for Azure resources](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 - [DevOps resource center](/devops)
 - [Enable DevSecOps with Azure and GitHub](/devops/devsecops/enable-devsecops-azure-github)
 - [Overview of source code analysis](/visualstudio/code-quality/roslyn-analyzers-overview)
