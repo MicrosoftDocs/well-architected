@@ -40,7 +40,7 @@ _Green Software Foundation alignment: [Measuring sustainability](sustainability-
 
 **Recommendation:**
 
-- Use the [Emissions Impact Dashboard](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to record current and future environmental impact.
+- Use the [Emissions Impact Dashboard](https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.emissions_impact_dashboard) to record current and future environmental impact.
 - Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
 - Rely on tooling to help measure the impact, and record any changes made to your workload.
 - Learn more about the Sustainability and Dataverse API access in the Microsoft Learn module [Access Microsoft Sustainability Manager data](/learn/modules/access-cloud-sustainability/).
