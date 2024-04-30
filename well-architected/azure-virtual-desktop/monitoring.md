@@ -137,7 +137,7 @@ You should monitor the Azure storage solution that you use for hosting FSLogix p
 
 ### Service limits
 
-Azure Virtual Desktop has service limits that you should consider during the design phase of your deployment. You need to be aware of these service limits also in production environments, and you should proactively report on these limits. The limits are relatively large. But in larger deployments, where it's easier to reach these limits, it's essential to monitor them. For more information, see [Azure Virtual Desktop limitations](/azure/architecture/example-scenario/wvd/windows-virtual-desktop#azure-virtual-desktop-limitations).
+Azure Virtual Desktop has service limits that you should consider during the design phase of your deployment. You need to be aware of these service limits also in production environments, and you should proactively report on these limits. The limits are relatively large. But in larger deployments, where it's easier to reach these limits, it's essential to monitor them. For more information, see [Azure Virtual Desktop limitations](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop#azure-virtual-desktop-limitations).
 
 ##### Recommendations
 

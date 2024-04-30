@@ -8,7 +8,7 @@ metadata:
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 02/16/2024
+  ms.date: 04/29/2024
 sections:
   # Intro
   - componentType: text 
@@ -39,7 +39,7 @@ sections:
       - componentType: icon-link
         icon: book-open
         url: service-guides/index.yml
-        text: Azure offerings
+        text: Azure service guides
       - componentType: icon-link
         icon: topic-learn
         url: /training/modules/azure-well-architected-introduction/

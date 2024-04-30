@@ -285,13 +285,7 @@
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
         - name: Azure App Service
-          items:
-            - name: Reliability
-              href: service-guides/azure-app-service/reliability.md
-            - name: Cost optimization
-              href: service-guides/azure-app-service/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/azure-app-service/operational-excellence.md
+          href: service-guides/app-service-web-apps.md
         - name: Azure Batch
           items:
             - name: Reliability
@@ -300,6 +294,8 @@
               href: service-guides/azure-batch/operational-excellence.md
             - name: Performance efficiency
               href: service-guides/azure-batch/performance-efficiency.md
+        - name: Azure Blob Storage
+          href: service-guides/azure-blob-storage.md
         - name: Azure Cache for Redis
           items:
             - name: Reliability
@@ -426,8 +422,8 @@
           href: service-guides/virtual-machines.md
     - name: Cross-cutting guides
       items:
-      - name: Health model
-        href: ./cross-cutting-guides/health-model.md        
+      - name: Health modeling
+        href: ./cross-cutting-guides/health-modeling.md        
       - name: Implementing recommendations
         href: ./cross-cutting-guides/implementing-recommendations.md   
       - name: Optimize using flows
