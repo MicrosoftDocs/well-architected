@@ -85,7 +85,7 @@ sections:
 
             - The health model provides a baseline to help identify drift from the expected operational state of a workload.
 
-            - Health models that use a traffic light approach make health states immediately apparent across dependency chains.
+            - Health models visualize health states across dependency chains, making it easier for operators to take action.
             
             - The health score captures key business requirements as measurements to provide a meaningful view of workload health.
             
