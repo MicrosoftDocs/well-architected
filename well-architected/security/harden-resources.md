@@ -149,10 +149,6 @@ The following procedure is an example of how to harden an operating system:
 
 1. **Maintain defenses**. Regularly update operating system components with the latest security updates and patches to mitigate known vulnerabilities.
 
-## Organizational alignment
-
-Cloud Adoption Framework for Azure provides guidance about creating centralized identity and access management functions. For more information, see [Azure identity and access management design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access).
-
 ## Related links
 
 - [Adaptive network hardening](/azure/defender-for-cloud/adaptive-network-hardening)

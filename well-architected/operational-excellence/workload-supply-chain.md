@@ -61,7 +61,7 @@ When you define your deployment method, adopt a standard policy of only deployin
 
 **Follow a layered approach to reflect different lifecycles.** Foundational layers should remain static throughout most of the workload lifecycle, and application layers change frequently. To account for these differences, you should have different pipelines to effect changes at each layer.
 
-A [landing zone](/azure/cloud-adoption-framework/ready/landing-zone) is at the lowest layer. A landing zone is a logical grouping of foundational elements, like subscriptions, management groups, resource groups, governance functions, and networking topology. A landing zone enables you to easily deploy and manage your workload, and provides central operations teams, or platform teams, with a repeatable approach to an environmental configuration. To deliver consistent environments, all Azure landing zones provide a set of common design areas, a reference architecture, a reference implementation, and a process to modify a deployment to fit your design requirements. The [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles) provide recommended practices based on policy-driven governance alongside subscription democratization. A landing zone should require minimal changes over the course of your workload lifecycle.
+A landing zone is at the lowest layer. A landing zone is a logical grouping of foundational elements, like subscriptions, management groups, resource groups, governance functions, and networking topology. A landing zone enables you to easily deploy and manage your workload, and provides central operations teams, or platform teams, with a repeatable approach to an environmental configuration. To deliver consistent environments, all Azure landing zones provide a set of common design areas, a reference architecture, a reference implementation, and a process to modify a deployment to fit your design requirements. The Azure landing zone design principles provide recommended practices based on policy-driven governance alongside subscription democratization. A landing zone should require minimal changes over the course of your workload lifecycle.
 
 Your core infrastructure and functions, like ingress and egress network controllers, load balancing, network routing solutions, DNS management, and core servers, should also require infrequent major changes. But they might require frequent configuration updates.
 
@@ -109,12 +109,6 @@ Also integrate approval workflows into your quality gates. Clearly define and au
 
 You can use Terraform, Bicep, and Azure Resource Manager for IaC deployments. Depending on your requirements and your team's familiarity with the tools, you might use one or more of these tools for your deployments and management of the resources.
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams to provide workload landing zones. The workload landing zones are where the workload's custom supply chain will deploy applications into.
-
-For more information, see [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone) and the [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles).
-
 ## Example
 
 For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, see [Azure Pipelines baseline architecture](/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture).
@@ -125,7 +119,6 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines)
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [GitHub Actions for Azure](https://azure.github.io/actions)
-- [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone)
 - [Performance Efficiency pillar](../performance-efficiency/performance-test.md)
 - [Reliability pillar](../reliability/testing-strategy.md)
 - [Security pillar](../security/test.md)

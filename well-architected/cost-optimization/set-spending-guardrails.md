@@ -133,7 +133,7 @@ The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) is an o
 
 Central teams should use the Cloud Adoption Framework guidance to set up spending guardrails across the organization so workload teams understand what the central team can offer.
 
-For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). We encourage the organization to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for implementation.
+We encourage the organization to [adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for implementation.
 
 ## Related links
 
