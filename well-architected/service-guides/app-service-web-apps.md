@@ -318,7 +318,7 @@ Start your design strategy based on the [**design review checklist for Performan
 
 There are design tradeoffs with the approaches described in the pillar checklists. Here are some examples of advantages and drawbacks.
 
-:::image type="icon" source="../images/trade-off.svg"::: **Density and isolation**.
+:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**.
 
 - **Higher density**: By colocating multiple apps within the same App Service plan, you minimize the resources. All apps share CPU, memory, and so on. This can lead to cost savings and reduced operational complexity. Resource usage is also optimized. Idle resources from one app can be used by another if apps have different load patterns over time.
 
@@ -330,7 +330,7 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
   This approach is more expensive and requires operational rigor.
 
-:::image type="icon" source="../images/trade-off.svg"::: **Reliable scaling strategy**.
+:::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**.
 
 A well-defined scaling strategy ensures that your application can handle varying loads without compromising performance. However, there are tradeoffs on cost.
 
@@ -352,7 +352,7 @@ Azure provides an extensive set of built-in policies related to App Service and 
 
 - Proper network controls are in place. For example, network segmentation is done by placing App Service in Azure Virtual Network through virtual network injection to have greater control over network configuration. The application doesn't have public endpoints and connects to Azure services through private endpoints.
 
-- Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. Incoming requests are verified using App Service Authentication (EasyAuth).
+- Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. Incoming requests are verified by using App Service Authentication (EasyAuth).
 
 - Attack surface is reduced by disabling features such as remote debugging and basic authentication.
 
@@ -378,7 +378,7 @@ Consider the following articles as resources that demonstrate the recommendation
   
   - Foundational architecture as your starting point for a production-grade deployment is described in [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
   
-- Build implementation expertise using product documentation:
+- Build implementation expertise by using product documentation:
 
   - [App Service](/azure/app-service/)
   
