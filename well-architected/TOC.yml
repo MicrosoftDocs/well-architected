@@ -310,6 +310,8 @@
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
+        - name: Azure Files
+          href: service-guides/azure-files.md          
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
         - name: Azure Kubernetes Service
