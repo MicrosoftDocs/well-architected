@@ -32,8 +32,6 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Decouple workloads from Oracle Exadata
-            url: decouple-exadata.md
           - text: Choose compute and storage
             url: choose-compute-storage.md
           - text: Design Oracle applications
