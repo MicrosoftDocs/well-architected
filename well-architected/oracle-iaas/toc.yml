@@ -7,8 +7,6 @@
     href: review-design-principles.md
   - name: Design areas
     items:
-    - name: Decouple workloads from Oracle Exadata
-      href: decouple-exadata.md
     - name: Choose compute and storage
       href: choose-compute-storage.md
     - name: Design Oracle applications

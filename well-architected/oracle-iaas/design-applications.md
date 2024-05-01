@@ -55,8 +55,8 @@ Use the following recommendations to plan the migration of your Oracle applicati
 ### Disaster recovery
    
 - Build a reliable architecture like these examples:
-   - [Create a failover with passive standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#create-a-failover-with-passive-standby) 
-   - [Create a failover with active standby](/azure/well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery#create-a-failover-with-active-standby)
+   - [Create a failover with passive standby](./optimize-business-continuity-disaster-recovery.md#create-a-failover-with-passive-standby) 
+   - [Create a failover with active standby](./optimize-business-continuity-disaster-recovery.md#create-a-failover-with-active-standby)
 - Consider using Azure built-in disaster recovery solutions like [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 ## Next step
