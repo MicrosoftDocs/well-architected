@@ -229,6 +229,9 @@ Azure provides an extensive set of built-in policies related to Azure Files. Som
 - Only requests from secure connections (HTTPS) are accepted.
 - Shared key authorization is disabled.
 - Network firewall rules are applied to the account.
+- Diagnostic settings for Azure Files are set to stream resource logs to an Azure Monitor Logs workspace.
+- Public network access is disabled.
+- Azure File Sync is configured with private endpoints and/or to use private DNS zones.
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Storage](/azure/governance/policy/samples/built-in-policies#storage) and other policies that might affect the security of the compute layer.
 
