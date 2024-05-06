@@ -51,7 +51,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Get personalized support
 
-Work with your [Microsoft partner](https://appsource.microsoft.com/marketplace/partner-dir) or your account team to learn how they can help you perform an assessment as a formal engagement. As part of that engagement, they can provide further details on the recommendations. These details can help you determine the applicability of recommendations  and how to prioritize them for remediation.
+Work with your [Microsoft partner](https://appsource.microsoft.com/en-us/marketplace/partner-dir) or your account team to learn how they can help you perform an assessment as a formal engagement. As part of that engagement, they can provide further details on the recommendations. These details can help you determine the applicability of recommendations  and how to prioritize them for remediation.
 
 ## Next step
 

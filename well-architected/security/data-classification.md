@@ -141,13 +141,6 @@ This example builds on the Information Technology (IT) environment established i
 
 10) Microsoft Defender for Cloud provides a solution that helps your company to track compliance in your environment, including many of your services used to store data, mentioned in these se cases above.
 
-
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams about how to classify data so that workload teams can follow the organizational taxonomy.
-
-For more information, see [What is data classification? - Cloud Adoption Framework](/azure/cloud-adoption-framework/govern/policy-compliance/data-classification).
-
 ## Related links
 
 - [Data classification and sensitivity label taxonomy - Microsoft Service Assurance](/compliance/assurance/assurance-data-classification-and-labels)

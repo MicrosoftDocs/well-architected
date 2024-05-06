@@ -48,7 +48,7 @@ Think about all the tasks and types of infrastructure that are in scope for your
 > [!NOTE]
 > Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
 
-**Strategize and standardize on the use of modules.** Like parameters and variables, [modules](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) can make your infrastructure deployments repeatable. Be thoughtful, however, about how you use them. A standardized abstraction strategy helps ensure that modules are built to meet specific, agreed-upon goals. Use modules to encapsulate complex configurations or combinations of resources. Avoid modules if you're using only the default configuration of the resource. Additionally, be judicious in developing new modules. Use maintained open-source modules when appropriate, in, for example, nonsensitive scenarios.
+**Strategize and standardize on the use of modules.** Like parameters and variables, modules can make your infrastructure deployments repeatable. Be thoughtful, however, about how you use them. A standardized abstraction strategy helps ensure that modules are built to meet specific, agreed-upon goals. Use modules to encapsulate complex configurations or combinations of resources. Avoid modules if you're using only the default configuration of the resource. Additionally, be judicious in developing new modules. Use maintained open-source modules when appropriate, in, for example, nonsensitive scenarios.
 
 **Document standards for manual steps.** There might be steps related to deploying and maintaining infrastructure that are particular to your environment and that require manual intervention. Ensure that these steps are minimized as much as possible and clearly documented. In your style guide and standard operating procedures, standardize manual steps to ensure that tasks are performed safely and consistently.
 
@@ -60,7 +60,7 @@ Consider the following recommendations that apply to using IaC for your workload
 
 **Use a layered approach to align your IaC pipelines within the workload stack**. Separating your IaC pipelines into layers helps you manage complex environments. Deploying dozens or hundreds of resources as a monolithic package is inefficient and can introduce multiple issues, like broken dependencies. The use of multiple pipelines that are aligned with layers composed of resources whose deployment lifecycles or factors like functionality closely match makes managing IaC deployments easier. 
 
-Core infrastructure like networking resources rarely need changes more complex than configuration updates, so those resources should make up a *low-touch* IaC pipeline. You might have one or more *medium-touch* and *high-touch* IaC pipelines for resources, depending on the complexity of your workload. Using a Kubernetes-based application stack as an example, one medium-touch layer might be composed of the clusters, storage resources, and database services. High-touch layers would be composed of the application containers that are updated very frequently in a continuous delivery mode.
+Core infrastructure like networking resources rarely needs changes more complex than configuration updates, so those resources should make up a *low-touch* IaC pipeline. You might have one or more *medium-touch* and *high-touch* IaC pipelines for resources, depending on the complexity of your workload. Using a Kubernetes-based application stack as an example, one medium-touch layer might be composed of the clusters, storage resources, and database services. High-touch layers would be composed of the application containers that are updated very frequently in a continuous delivery mode.
 
 **Treat your IaC and application code the same.** Treating your IaC artifacts the same as your application code artifacts helps you apply the same rigor for managing code across all pipelines. Moreover, IaC development and deployment practices should mirror application practices. Standards for version control, branching, code promotion, and quality should all be identical. Also consider collocating your IaC assets together with your application code assets. Doing so helps ensure that the same processes are followed with every deployment and helps you avoid issues like inadvertently deploying infrastructure before the necessary application code, or vice versa.
 
@@ -86,21 +86,15 @@ The choice between deploying mutable versus immutable infrastructure depends on 
 
 ## Azure facilitation
 
-[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
+[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
 
 [Terraform](/azure/developer/terraform/overview) is another declarative IaC tool that's fully supported in Azure. It can be used to deploy and manage infrastructure, and can be integrated into your CI/CD pipeline.
 
 You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities).
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams on how to standardized infrastructure as code across the organization's workload teams.
-
-For more information, see [Infrastructure as Code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) in the Cloud Adoption Framework.
-
 ## Example
 
-See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided Resource Manager, Bicep, or Terraform files.
+See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided Resource Manager, Bicep, or Terraform files.
 
 ## Related links
 
@@ -114,7 +108,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview)
 - [Bicep](/azure/azure-resource-manager/bicep/overview)
-- [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
+- [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
 - [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
 

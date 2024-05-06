@@ -76,7 +76,7 @@ We recommend you use Azure Backup as the foundational backup strategy for an SAP
 
 | Feature | Description |
 | --- | --- |
-| Native database backup compatibility | Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today. |
+| Native database backup compatibility | Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure Backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure Backup also supports the database backup capability for HANA & SQL Server databases today. |
 | Storage backup | The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency). |
 | Virtual machine backup | Back up and restore Azure VM data through the Azure portal. Cross-region restoration lets you restore Azure VMs that were to a paired secondary region. |
 | Long-term retention | Azure Backup allows you to retain SAP backups years for compliance and audit needs. |
@@ -86,7 +86,10 @@ For more information, see:
 
 - [Azure Backup documentation]( /azure/backup/)
 - [SAP HANA backup overview](/azure/backup/sap-hana-database-about)
+- [Azure Backup architecture for SAP HANA backup](/azure/backup/azure-backup-architecture-for-sap-hana-backup).
 - [Backup guide for SAP HANA on Azure Virtual Machines](/azure/backup/sap-hana-database-about)
+- [Backup guide for SAP HANA System Replication databases on Azure VMs](/azure/backup/sap-hana-database-with-hana-system-replication-backup).
+- [Backup guidelines for SAP HANA database instance snapshots on Azure VMs](/azure/backup/sap-hana-database-instances-backup).
 - [Backup guide for SQL Server on Azure Virtual Machines](/azure/backup/tutorial-sql-backup)
 
 #### Find marketplace backup solutions

@@ -35,7 +35,14 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Include metadata**. Ensure that a diagram contains metadata that provides essential information about the purpose of the diagram. Metadata also gives context to help viewers understand the diagram's scope and significance. Include items such as title, description, last updated date, author, and external references.
 
-**Use official icons and service names**. When you're representing a specific technology, use the latest icons from your technology provider. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams that involve Azure components.
+**Use official icons and service names**. When you're representing a specific technology, use the latest official icons from your technology provider. If identifying the technology is important, use the official name for the service.
+
+For example, here are the icons for Microsoft services:
+
+- [Azure architecture icons](/azure/architecture/icons/)
+- [Microsoft 365 icons](/microsoft-365/solutions/architecture-icons-templates)
+- [Microsoft Dynamics 365 icons](/dynamics365/get-started/icons)
+- [Microsoft Power Platform icons](/power-platform/guidance/icons)
 
 ## Types of design diagrams
 

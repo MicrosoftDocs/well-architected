@@ -53,9 +53,9 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Migrate end-user desktops to Azure Virtual Desktop
-            url: /azure/cloud-adoption-framework/scenarios/wvd/  
+            url: /azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/  
           - text: Azure Virtual Desktop for the enterprise
-            url: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+            url: /azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop
 
  # Card
   - title: Reference implementations
@@ -63,7 +63,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Enterprise-scale support for Microsoft Azure Virtual Desktop
-            url: /azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone
+            url: /azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/enterprise-scale-landing-zone
 
  # Card
   - title: Learn

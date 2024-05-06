@@ -867,13 +867,23 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/iot-hub-dps/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/iot-hub-dps/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/iot/iot-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/iot-hub-dps/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/iot/iot-overview",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/iot-hub-dps/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/iot-hub-dps/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/iot/iot-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/iot-hub-dps/reliability.md",
+			"redirect_url": "/azure/well-architected/iot/iot-overview",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/queue-storage/operational-excellence.md",
@@ -912,8 +922,18 @@
 		},
 		{
 			"source_path": "well-architected/services/monitoring/log-analytics/cost-optimization.md",
-			"redirect_url": "/azure/well-architected/service-guides/log-analytics-cost-optimization",
+			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/log-analytics-cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/log-analytics.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/networking/azure-application-gateway.md",
@@ -947,13 +967,13 @@
 		},
 		{
 			"source_path": "well-architected/services/networking/application-delivery/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/application-delivery/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/networking/application-delivery/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/application-delivery/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/networking/azure-front-door/operational-excellence.md",
@@ -1276,9 +1296,114 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/oracle-iaas/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/cost-optimization",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/operational-excellence",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/performance-efficiency.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/performance-efficiency",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/reliability.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/reliability",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/security.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/old-articles/security",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cross-cutting-guides/health-model.md",
+			"redirect_url": "/azure/well-architected/cross-cutting-guides/health-modeling",
+			"redirect_document_id": true
+		},		
+		{
 			"source_path": "well-architected/service-guides/virtual-machines-review.md",
 			"redirect_url": "/azure/well-architected/service-guides/virtual-machines",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-front-door/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-front-door/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
 			"redirect_document_id": false
-		}			
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-front-door/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-delivery/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-delivery/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/overview.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/get-started",
+			"redirect_document_id": false																			
+		},	
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/security.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/optimize-security",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/performance-efficiency.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/old-articles/reliability.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
+			"redirect_document_id": false
+		},
+		{																
+			"source_path": "well-architected/service-guides/azure-app-service/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-app-service/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-app-service/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/decouple-exadata.md",
+			"redirect_url": "/azure/well-architected/oracle-iaas/",
+			"redirect_document_id": false
+		}																					
 	]
 }
