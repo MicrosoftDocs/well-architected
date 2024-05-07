@@ -324,11 +324,13 @@ Start your design strategy based on the [design review checklist for Performance
 
 You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**
+:::image type="icon" source="../_images/trade-off.svg"::: **Density**
 
 - **Higher density**: Colocate multiple apps within the same App Service plan to minimize resources. All apps share resources like CPU and memory, which can save money and reduce operational complexity. This approach also optimizes resource usage. Apps can use idle resources from another app if load patterns change over time.
 
   Also consider the disadvantages. For example, spikes in usage or instability of an app can affect the performance of other apps. Incidents in one app can also permeate to other apps within the shared environment, which can affect security.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Isolation**
 
 - **Higher isolation**: Isolation helps to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environments.
 
