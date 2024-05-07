@@ -67,28 +67,28 @@ sections:
     alignment: center
     blocks:
       - componentType: video
-        src: https://www.youtube.com/embed/vTjasx3ahjM?si=eMWFcAwxuFzKhqJq
-        id: using-the-well-architected-framework
-        label: "In this video, check out the refreshed Well-Architected Framework and learn how to get the most of it."
-      - title: Featured update - New and refreshed service guides 
-        summary: Service guides help you make informed decisions about the Azure components within your workload. Explore these new and updated service guides. 
+        src: https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/well-architected/mission-critical/mission-critical-health-modeling
+        id: health-modeling-for-workloads
+        label: "In this video, get a high-level understanding of health modeling and how you can interpret metrics to produce a health score for your workload."
+      - title: Featured update - Health modeling for workloads 
+        summary: Health modeling improves workload reliability in Azure. Learn how to quantify application health and build your own health model. 
         componentType: text
         links:
           - componentType: link
-            url: whats-new.md
-            text: What's new?
+            url: cross-cutting-guides/health-modeling.md
+            text: What is health modeling?
         list:
           componentType: list
           style: checklist
           children:
-            - Azure Virtual Machines allows you to create and run virtual machines on the Azure platform.
+            - Health modeling combines business context with monitoring data to quantify the overall health of a workload.
+
+            - The health model provides a baseline to help identify drift from the expected operational state of a workload.
+
+            - Health models visualize health states across dependency chains, making it easier for operators to take action.
             
-            - Azure Front Door is a scalable and secure entry point that provides fast delivery of your global web applications.
+            - The health score captures key business requirements as measurements to provide a meaningful view of workload health.
             
-            - Azure Machine Learning is a managed cloud service you can use to train, deploy, and manage machine learning models.
-            
-            - In the Azure portal, Log Analytics helps you query and analyze data in Azure Monitor Logs.
- 
 # cards section (4)
   - componentType: grid
     title: Pillars
