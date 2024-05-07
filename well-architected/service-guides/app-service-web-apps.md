@@ -326,13 +326,13 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Density**
 
-- **Higher density**: Colocate multiple apps within the same App Service plan to minimize resources. All apps share resources like CPU and memory, which can save money and reduce operational complexity. This approach also optimizes resource usage. Apps can use idle resources from another app if load patterns change over time.
+Colocate multiple apps within the same App Service plan to minimize resources. All apps share resources like CPU and memory, which can save money and reduce operational complexity. This approach also optimizes resource usage. Apps can use idle resources from another app if load patterns change over time.
 
   Also consider the disadvantages. For example, spikes in usage or instability of an app can affect the performance of other apps. Incidents in one app can also permeate to other apps within the shared environment, which can affect security.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Isolation**
 
-- **Higher isolation**: Isolation helps to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environments.
+Isolation helps to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environments.
 
   App Service Environment provides better control over security and data protection because each app can have its own security settings. Your environment can contain breaches because isolation limits the blast radius. Resource contention is minimized from a performance perspective. Isolation allows for independent scaling based on specific demand and individual capacity planning.
 
@@ -340,13 +340,13 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**
 
-- **Scaling strategies**: A well-defined scaling strategy ensures that your application can handle various loads without compromising performance. However, there are tradeoffs on cost. Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. You can overprovision resources (prewarm instances) to provide a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, which affects user experience. Autoscaling operations might trigger early enough to enable proper resource initialization by the time customers use the resources.
+A well-defined scaling strategy ensures that your application can handle various loads without compromising performance. However, there are tradeoffs on cost. Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. You can overprovision resources (prewarm instances) to provide a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, which affects user experience. Autoscaling operations might trigger early enough to enable proper resource initialization by the time customers use the resources.
 
   As a disadvantage, overprovisioned resources cost more. You're charged per second for every instance, including prewarmed instances. Higher tiers include prewarmed instances. Determine whether capabilities with more expensive tiers are worth the investment.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**
 
-- **Building redundancy**: Redundancy offers resiliency but also incurs costs. Service level objectives (SLOs) for your workload determine acceptable performance thresholds. It becomes wasteful if redundancy exceeds SLO requirements. Evaluate whether excess redundancy improves SLOs or adds unnecessary complexity.
+Redundancy offers resiliency but also incurs costs. Service level objectives (SLOs) for your workload determine acceptable performance thresholds. It becomes wasteful if redundancy exceeds SLO requirements. Evaluate whether excess redundancy improves SLOs or adds unnecessary complexity.
 
   Also consider the disadvantages. For example, multi-region redundancy provides high availability but adds complexity and cost due to data synchronization, failover mechanisms, and inter-region communication. Determine if zone redundancy can meet your SLOs.
 
