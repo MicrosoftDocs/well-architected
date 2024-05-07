@@ -338,17 +338,15 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Reliable scaling strategy**
 
-A well-defined scaling strategy ensures that your application can handle various loads without compromising performance. However, there are tradeoffs on cost.
-
-- **Scaling strategies**: Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. You can overprovision resources (prewarm instances) to provide a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, which affects user experience. Autoscaling operations might trigger early enough to enable proper resource initialization by the time customers use the resources.
+- **Scaling strategies**: A well-defined scaling strategy ensures that your application can handle various loads without compromising performance. However, there are tradeoffs on cost. Scaling operations take time. When new resources are allocated, the application must be properly initialized before it can effectively process requests. You can overprovision resources (prewarm instances) to provide a safety net. Without that extra capacity, during the initialization phase, there might be a delay in serving requests, which affects user experience. Autoscaling operations might trigger early enough to enable proper resource initialization by the time customers use the resources.
 
   As a disadvantage, overprovisioned resources cost more. You're charged per second for every instance, including prewarmed instances. Higher tiers include prewarmed instances. Determine whether capabilities with more expensive tiers are worth the investment.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Building redundancy**
 
-**Building redundancy**: Redundancy offers resiliency but also incurs costs. Service level objectives (SLOs) for your workload determine acceptable performance thresholds. It becomes wasteful if redundancy exceeds SLO requirements. Evaluate whether excess redundancy improves SLOs or adds unnecessary complexity.
+- **Building redundancy**: Redundancy offers resiliency but also incurs costs. Service level objectives (SLOs) for your workload determine acceptable performance thresholds. It becomes wasteful if redundancy exceeds SLO requirements. Evaluate whether excess redundancy improves SLOs or adds unnecessary complexity.
 
-  For example, multi-region redundancy provides high availability but adds complexity and cost due to data synchronization, failover mechanisms, and inter-region communication. Determine if zone redundancy can meet your SLOs.
+  Also consider the disadvantages. For example, multi-region redundancy provides high availability but adds complexity and cost due to data synchronization, failover mechanisms, and inter-region communication. Determine if zone redundancy can meet your SLOs.
 
 ## Azure policies
 
