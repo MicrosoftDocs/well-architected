@@ -60,7 +60,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   |Failure|Mitigation|
 >   |---|---|
 >   |Failure of underlying or abstracted App Service components| Have component redundancy in instances and dependencies. Monitor the health of instances, network performance, and storage performance.|
->   |Failure of external dependencies. | Use design patterns such as retry mechanisms, circuit breakers, and others. Monitor those dependencies and set appropriate timeouts. |
+>   |Failure of external dependencies | Use design patterns such as [the Retry pattern](/azure/architecture/patterns/retry)_and [the Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker). Monitor the external dependencies and set appropriate timeouts. |
 >   |Failure due to traffic getting routed to unhealthy instances| Monitor instance health. Consider responsiveness, and avoid sending requests to unhealthy instances. |
 >
 >   For more information, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
@@ -123,7 +123,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around hosting on App Service.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around hosting on App Service.
 
 ##### Design checklist
 
@@ -186,11 +186,11 @@ Start your design strategy based on the [**design review checklist for Security*
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
-The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your web app and the environment in which they run.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your web apps and the environment in which they run.
 
 ##### Design checklist
 
-Start your design strategy based on the [**design review checklist for Cost Optimization**](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
