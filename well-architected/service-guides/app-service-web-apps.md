@@ -89,13 +89,13 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >     Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity problems, and large-scale events like regional outages. Consider the following design patterns:
 
->     - *The Bulkhead pattern* segments your application into isolated groups to prevent a failure from affecting the entire system.
+>    - *The Bulkhead pattern* segments your application into isolated groups to prevent a failure from affecting the entire system.
 
->     - *The Queue-Based Load Leveling pattern* queues work items that serve as a buffer to smooth out traffic spikes.
+>    - *The Queue-Based Load Leveling pattern* queues work items that serve as a buffer to smooth out traffic spikes.
 
->     - *The Retry pattern* handles transient failures due to network glitches, dropped database connections, or busy services.
+>    - *The Retry pattern* handles transient failures due to network glitches, dropped database connections, or busy services.
 
->     - *The Circuit Breaker pattern* prevents an application from repeatedly trying to perform an operation that's likely to fail.
+>    - *The Circuit Breaker pattern* prevents an application from repeatedly trying to perform an operation that's likely to fail.
 
 >    You can use WebJobs to run background tasks in your web app. To run those tasks reliably, ensure that the app that hosts your job runs continuously on a schedule or based on event-driven triggers.
 >
