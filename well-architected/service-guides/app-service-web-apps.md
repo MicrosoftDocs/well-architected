@@ -49,6 +49,7 @@ The [**Reliability design principles**](/azure/well-architected/resiliency/princ
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the tiers and features of App Service and its dependencies. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
+
 > - **Prioritize user flows**: Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. User flow design can influence which service tiers and instances that you choose for an App Service plan and configuration.
 >
 >     For example, your application might include front-end and back-end tiers that communicate through a message broker. You might choose to segment the tiers in multiple web apps to allow for independent scaling, lifecycle management, and maintenance. Placing a large application in a single plan can lead to memory or CPU problems and affect reliability.
@@ -85,27 +86,27 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   An App Service plan distributes traffic across instances and monitors their health. Note that the external load balancer might not immediately detect if one instance fails.
 >
->  - **Plan your recoverability**: Redundancy is crucial for business continuity. Fail over to another instance if one instance is unreachable. Explore automatic healing capabilities in App Service, such as automatic repair of instances.
+> - **Plan your recoverability**: Redundancy is crucial for business continuity. Fail over to another instance if one instance is unreachable. Explore automatic healing capabilities in App Service, such as automatic repair of instances.
 >
->     Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity problems, and large-scale events like regional outages. Consider the following design patterns:
+>    Implement design patterns to handle graceful degradation for both transient failures, such as network connectivity problems, and large-scale events like regional outages. Consider the following design patterns:
 
->    - *The Bulkhead pattern* segments your application into isolated groups to prevent a failure from affecting the entire system.
+>   - *The Bulkhead pattern* segments your application into isolated groups to prevent a failure from affecting the entire system.
 
->    - *The Queue-Based Load Leveling pattern* queues work items that serve as a buffer to smooth out traffic spikes.
+>   - *The Queue-Based Load Leveling pattern* queues work items that serve as a buffer to smooth out traffic spikes.
 
->    - *The Retry pattern* handles transient failures due to network glitches, dropped database connections, or busy services.
+>   - *The Retry pattern* handles transient failures due to network glitches, dropped database connections, or busy services.
 
->    - *The Circuit Breaker pattern* prevents an application from repeatedly trying to perform an operation that's likely to fail.
+>   - *The Circuit Breaker pattern* prevents an application from repeatedly trying to perform an operation that's likely to fail.
 
->    You can use WebJobs to run background tasks in your web app. To run those tasks reliably, ensure that the app that hosts your job runs continuously on a schedule or based on event-driven triggers.
+>   You can use WebJobs to run background tasks in your web app. To run those tasks reliably, ensure that the app that hosts your job runs continuously on a schedule or based on event-driven triggers.
 >
->    For more information, see [Reliability patterns](/azure/well-architected/reliability/design-patterns).
+>   For more information, see [Reliability patterns](/azure/well-architected/reliability/design-patterns).
 >
 > - **Conduct reliability testing**: Conduct load testing to evaluate your application's reliability and performance under load. Test plans should include scenarios that validate your automated recovery operations.
 >
 >   Use fault injection to intentionally introduce failures and validate your self-healing and self-preservation mechanisms. Explore the [fault library provided by Azure Chaos Studio](/azure/chaos-studio/chaos-studio-fault-library).
 >
->    App Service imposes resource limits on hosted apps. The App Service plan determines these limits. Make sure that your tests confirm that the app runs within those resource limits. For more information, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits).
+>   App Service imposes resource limits on hosted apps. The App Service plan determines these limits. Make sure that your tests confirm that the app runs within those resource limits. For more information, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits).
 >
 > - **Use health probes to identify unresponsive workers**: App Service has built-in capabilities that periodically ping a specific path of your web application. Unresponsive instances are removed from the load balancer and replaced with a new instance.
 
