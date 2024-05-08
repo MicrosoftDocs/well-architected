@@ -3,13 +3,34 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 04/02/2024
+ms.date: 05/06/2024
 ms.topic: conceptual
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## April 2024
+
+### New articles
+
+This month, we added two new service guides and new documentation about Oracle workloads on Azure infrastructure as a service (IaaS).
+
+**Service guides**
+
+- [Azure Well-Architected Framework perspective on App Service](./service-guides/app-service-web-apps.md): Review design considerations and recommendations for App Service. Azure App Service is a type of platform as a service (PaaS) compute service that allows you to host your workload on the Azure platform.
+- [Azure Well-Architected Framework perspective on Azure Blob Storage](./service-guides/azure-blob-storage.md): Review design considerations and configuration recommendations that are relevant to Azure Blob Storage. Azure Blob Storage is a cloud-based object storage solution that is optimized for storing massive amounts of unstructured data, such as text or binary data.
+
+**Oracle workloads on Azure**
+
+- [Create an Oracle workload on Azure](./oracle-iaas/get-started.md): Learn about best practices for an Oracle workload on Azure IaaS to help you create a performant, secure, and highly available solution.
+- [Design principles for an Oracle workload on Azure](./oracle-iaas/review-design-principles.md): Review the design principles built upon the five pillars of architectural excellence: reliability, security, cost optimization, performance efficiency, and operation excellence. Gain insight into best practices for designing and implementing Oracle workloads on Azure IaaS.
+- [Choose compute and storage](./oracle-iaas/choose-compute-storage.md): Choose the correct combination of compute and storage for Azure IaaS and the location of application workloads relative to database services. Learn how to apply right-size compute and storage principles to Oracle workloads using the Azure IaaS model.
+- [Design Oracle applications](./oracle-iaas/design-applications.md): Review the design area for Oracle applications and see how to apply these principles to Oracle on Azure IaaS workloads. Understand which functionalities each version of an application supports so that you can avoid problems during a migration to the cloud.
+- [Optimize business continuity and disaster recovery](./oracle-iaas/optimize-business-continuity-disaster-recovery.md): Oracle on Azure IaaS can fulfill the required resiliency objectives of the most demanding Oracle workloads. See how to apply these principles to Oracle on Azure IaaS workloads.
+- [Optimize security for your Oracle workload](./oracle-iaas/optimize-security.md): Review security recommendations for the Azure control plane related to Oracle application workloads that are deployed on virtual machines (VMs) on Azure. Learn how to optimize security for Oracle workloads on Azure by using the defense-in-depth approach to employ a combination of various layer security measures and create a robust security posture.
+- [Monitor your Oracle workload](./oracle-iaas/monitor-workloads.md): Learn how to use Azure Virtual Machines to monitor your Oracle workloads. Identify failures and abnormalities to ensure the health of your mission-critical workloads.
 
 ## March 2024
 
@@ -20,7 +41,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated articles
 
-- [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources. 
+- [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
 
 ## February 2024
 
