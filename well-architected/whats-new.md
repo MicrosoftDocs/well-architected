@@ -22,12 +22,11 @@ Find out about recent changes in the Azure Well-Architected Framework.
 - [Optimize business continuity and disaster recovery](./oracle-iaas/optimize-business-continuity-disaster-recovery.md): Review the design area for BCDR practices. Oracle on Azure infrastructure as a service (IaaS) can fulfill the required resiliency objectives of the most demanding Oracle workloads. See how to apply these principles to Oracle on Azure IaaS workloads.
 - [Optimize security for your Oracle workload](./oracle-iaas/optimize-security.md): Review security recommendations for the Azure control plane related to Oracle application workloads that are deployed on virtual machines (VMs) on Azure. Learn how to optimize security for Oracle workloads on Azure by using the defense-in-depth approach to employ a combination of various layer security measures and create a robust security posture.
 - [Design principles for an Oracle workload on Azure](./oracle-iaas/review-design-principles.md): Review the design principles built upon the five pillars of architectural excellence: reliability, security, cost optimization, performance efficiency, and operation excellence. Gain insight into best practices for designing and implementing Oracle workloads on Azure IaaS.
-- [Azure Well-Architected Framework - App Service (Web Apps)](./service-guides/app-service-web-apps.md): Review design considerations and recommendations about App Service (Web Apps). Azure App Service is a type of Platform-as-a-Service (PaaS) compute service that allows you to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform.
-- [Azure Well-Architected Framework perspective on Azure Blob Storage](./service-guides/azure-blob-storage.md): Review Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage. Azure Blob Storage is a cloud-based object storage solution that is optimized for storing massive amounts of unstructured data, such as text or binary data.
+**Service guides**
 
-### Updated articles
+- [Azure Well-Architected Framework perspective on App Service](./service-guides/app-service-web-apps.md): Review design considerations and recommendations for App Service. Azure App Service is a type of platform as a service (PaaS) compute service that allows you to host your workload on the Azure platform. 
+- [Azure Well-Architected Framework perspective on Azure Blob Storage](./service-guides/azure-blob-storage.md): Review design considerations and configuration recommendations that are relevant to Azure Blob Storage. Azure Blob Storage is a cloud-based object storage solution that is optimized for storing massive amounts of unstructured data, such as text or binary data.
 
-- [Health modeling for workloads](./cross-cutting-guides/health-modeling.md): We made minor updates to remove deprecated terms and to clarify the guidance.
 
 ## March 2024
 
