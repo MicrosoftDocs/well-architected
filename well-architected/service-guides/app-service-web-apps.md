@@ -112,7 +112,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 ##### Recommendations
 
-|App Service or App Service plan | Recommendation|Benefit|
+|Service or plan | Recommendation|Benefit|
 |------------------------------|-----------|-------- |
 |App Service plan | Choose the Premium tier of an App Service plan for production workloads. <br><br> Set the maximum and minimum number of workers according to your capacity planning. For more information, see [App Service plan overview](/azure/app-service/overview-hosting-plans). |A premium App Service plan offers advanced scaling features and ensures redundancy if failures occur.|
 |App Service plan | [Enable zone redundancy](/azure/reliability/reliability-app-service#availability-zone-support).<br><br> Consider provisioning more than three instances to enhance fault tolerance. <br><br> Check regional support for zone redundancy because not all regions offer this feature. | Your application can withstand failures in a single zone when multiple instances are spread across zones. Traffic automatically shifts to healthy instances in other zones and maintains application reliability if one zone is unavailable.|
@@ -172,7 +172,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 ##### Recommendations
 
-|App Service or App Service plan |Recommendation|Benefit|
+|Service or plan |Recommendation|Benefit|
 |------------------------------|-----------|-------------- |
 |App Service | [Assign managed identities](/azure/app-service/overview-managed-identity) to the web app. To maintain isolation boundaries, don't share or reuse identities across applications. <br><br> Make sure that you [securely connect to your container registry](/azure/app-service/tutorial-custom-container) if you use containers for your deployment.|The application retrieves secrets from Key Vault to authenticate outward communication from the application. Azure manages the identity and doesn't require you to provision or rotate any secrets. <br><br> You have distinct identities for granularity of control. Distinct identities make revocation easy if an identity is compromised.|
 |App Service | Configure [custom domains](/azure/app-service/configure-ssl-bindings) for applications. <br><br> Disable HTTP and only accept HTTPS requests.|Custom domains enable secure communication through HTTPS by using the Secure Sockets Layer (SSL) or TLS protocol, which ensures the protection of sensitive data and builds user trust.|
@@ -227,7 +227,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 ##### Recommendations
 
-|App Service or App Service plan | Recommendation|Benefit|
+|Service or plan | Recommendation|Benefit|
 |------------------------------|-----------|------------------|
 |App Service plan |[Choose Free or Basic tiers](/azure/app-service/overview-hosting-plans) for lower environments. We recommend these tiers for experimental use. Remove the tiers when you no longer need them.|The Free and Basic tiers are budget-friendly compared to higher tiers. They provide a cost-effective solution for nonproduction environments that don't need the full features and performance of premium plans.|
 |App Service plan | Take advantage of discounts and explore preferred pricing for: <br> - Lower environments with [dev/test plans](https://azure.microsoft.com/pricing/offers/dev-test/). <br> - [Azure reservations](/azure/app-service/overview-manage-costs#azure-reservations) and [Azure savings plans](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#Benefitsandfeatures) for dedicated compute that you provision in the Premium V3 tier and App Service Environment. <br><br> Use reserved instances for stable workloads that have predictable usage patterns. |Dev/test plans provide reduced rates for Azure services, which makes them cost-effective for nonproduction environments. <br><br> Use reserved instances to prepay for compute resources and get significant discounts.|
@@ -264,7 +264,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Have processes in place to procure, renew, and validate certificates. Offload these processes to App Service if possible. If you use your own certificate, you must manage its renewal. Choose an approach that best aligns with your security requirements.
 
-|App Service or App Service plan|Recommendation|Benefit|
+|Service or plan|Recommendation|Benefit|
 |------------------------------|-----------|------- |
 |App Service | [Monitor the health of your instances](/azure/app-service/monitor-instances-health-check) and activate instance health probes. <br><br>Set up a specific path for handling health probe requests. |You can detect problems promptly and take necessary actions to maintain availability and performance.|
 |App Service | [Enable diagnostics logs](/azure/app-service/troubleshoot-diagnostic-logs) for the application and the instance. <br><br> Frequent logging can slow down the performance of the system, add to storage costs, and introduce risk if you have unsecure access to logs. Follow these best practices: <br> - Log the right level of information. <br> - Set retention policies. <br> - Keep an audit trail of authorized access and unauthorized attempts. <br>- Treat logs as data and apply data-protection controls. |Diagnostic logs provide valuable insights into your app's behavior. Monitor traffic patterns and identify anomalies.|
