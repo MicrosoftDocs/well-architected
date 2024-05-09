@@ -72,8 +72,6 @@ Where:
 
 With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
-Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/software_carbon_intensity/blob/main/Software_Carbon_Intensity/Software_Carbon_Intensity_Specification.md).
-
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
 Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) for Azure and Microsoft 365, which helps you measure your cloud-based emissions and carbon savings potential.
