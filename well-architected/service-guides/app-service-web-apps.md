@@ -34,7 +34,7 @@ This article assumes that as an architect, you reviewed the [compute decision tr
 This review focuses on the interrelated decisions for the following Azure resources:
 
 - App Service plans
-- The Web Apps feature of App Service
+- Web Apps
 
 Other Azure offerings are associated with App Service, such as Azure Functions, Azure Logic Apps, and App Service Environment. Those offerings are out of scope for this article. App Service Environment is referenced occasionally to help clarify features or options of the core App Service offerings.
 
