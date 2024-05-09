@@ -1,6 +1,6 @@
 ---
-title: Azure Well-Architected Framework perspective on App Service 
-description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure App Service.
+title: Azure Well-Architected Framework perspective of the Web Apps feature of Azure App Service 
+description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for the Web Apps feature of Azure App Service.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/25/2024
@@ -13,7 +13,7 @@ categories:
   - compute
 ---
 
-# Azure Well-Architected Framework perspective on App Service
+# Azure Well-Architected Framework perspective of the Web Apps feature of Azure App Service
 
 Azure App Service is a platform as a service (PaaS) compute solution that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan that you choose determines the region in which the workload runs, the compute configurations, and the operating system. Multiple billing models are available for App Service.
 
@@ -242,7 +242,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 ##### Design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to App Service.
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Web Apps.
 
 > [!div class="checklist"]
 >
@@ -279,7 +279,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators web apps.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Web Apps.
 
 > [!div class="checklist"]
 >
@@ -378,7 +378,7 @@ Consider the following articles as resources that demonstrate the recommendation
 
 - Use these reference architectures as examples of how to apply these recommendations to a workload.
 
-  - If you've never deployed a web app, see [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
+  - If you've never deployed Web Apps, see [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
   
   - For a foundational architecture as your starting point for a production-grade deployment, see [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
   
