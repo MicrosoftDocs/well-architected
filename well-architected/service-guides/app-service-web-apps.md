@@ -25,7 +25,7 @@ This article assumes that as an architect, you reviewed the [compute decision tr
 >
 > Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope.
 >
-> Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for App Service and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+> Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for the Web Apps feature of Azure App Service and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations: [App Service baseline architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
@@ -378,7 +378,7 @@ Consider the following articles as resources that demonstrate the recommendation
 
 - Use these reference architectures as examples of how to apply these recommendations to a workload.
 
-  - If you've never deployed Web Apps, see [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
+  - If you've never deployed a web app, see [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
   
   - For a foundational architecture as your starting point for a production-grade deployment, see [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
   
