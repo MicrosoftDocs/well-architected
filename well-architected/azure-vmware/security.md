@@ -19,7 +19,7 @@ Securing Azure VMware Solution requires a shared responsibility model, where Mic
 
 *Impact: Security, Operational Excellence*
 
-To avoid deleting the private cloud by mistake, use [resource locks](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json) to safeguard resources from unwanted deletion or change. They can be set at the subscription, resource group, or resource level and block deletions, modifications, or both. 
+To avoid deleting the private cloud by mistake, use [resource locks](/azure/azure-resource-manager/management/lock-resources?tabs=json) to safeguard resources from unwanted deletion or change. They can be set at the subscription, resource group, or resource level and block deletions, modifications, or both. 
 
 It's also important to detect non-compliant servers. You can use Azure Arc for this purpose. Azure Arc extends Azure management capabilities and services to on-premises or multi-cloud environments. Azure Arc gives you a single-pane view for applying updates and hotfixes by providing centralized server management and governance. The result is a consistent experience for managing components from Azure, on-premises systems, and Azure VMware Solution.
 
