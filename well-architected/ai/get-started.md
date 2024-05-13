@@ -11,8 +11,28 @@ ms.subservice: waf-workload-ai
 
 # AI workloads on Azure
 
+This guidance is intended for **workload owners** and **technical stakeholders**, including architects, development leads and other IT leadership roles. Specialized roles like data scientists or developers are not the target audience of this guidance, but workload owners and technical stakeholders should be able to help guide those roles through development and deployment through their learnings. 
+
+This documentation provides actionable and authoritative guidance for building and operating a highly reliable, scalable solution on Azure. The guidance has a technical foundation in Azure Well-Architected Framework best practices. It's also based on reviews of numerous customer implementations. 
+
 ## What is an AI workload in the context of WAF?
 
+An AI workload is one that designs a particular portion of its functionality around artificial intelligence technology for predictive, discrimatory or generative use cases. Sometimes this replacing a traditional code logic and data access solution that would be otherwise deterministic. Sometimes that is producing an experience that cannot be accomplished with determinism and classical code & data model. Artificial intelligence combines code logic and data into a single package.
+
+Generally AI workloads break down into two categories:
+
+- Generative AI: systems that have been pre-trained on a data model and can respond to prompts by extrapolating or generating novel solutions.
+  - Workloads that leverage large language models (LLMs), like ChatGPT
+  - Workloads that leverage Azure AI services, like Azure Open AI service
+- Deterministic AI (sometimes referred to as traditional AI): systems that are not pre-trained on a model, but can extrapolate solutions by adhering to predefined rules.
+  - Workloads that implement traditional AI algorithms at scale
+  - Workloads that leverage machine learning models to derive intelligent insights
+ 
+This is in comparison to a specialized role doing ad-hoc work in a Jypter notebook.
+
+Generative AI creates new and original content (images, text, etc). Examples: Generate a picture of a cat on the moon. What are some good ways to maintain a credit history? What should I buy my grandma for her 90th birthday? Can you summarize the terms of service in olde english?
+ 
+Predictive/discriminative AI uses patterns to forecase future outcomes or classify future events. Examples: What's the likelyhood this  is a cat? What's the likelyhood that you will default on a loan over the lone period? What's the next most likely thing someone like you would purchase? What's the likelyhood this message violates our terms of service?
 The WAF AI workload guidance considers... 
 
 - generative AI
