@@ -21,10 +21,10 @@ An AI workload is one that designs a particular portion of its functionality aro
 
 Generally AI workloads break down into two categories:
 
-- Generative AI: systems that have been pre-trained on a data model and can respond to prompts by extrapolating or generating novel solutions.
+- **Generative AI** are systems that have been pre-trained on a data model and can respond to prompts by autonomously generating novel outputs based on pattern analysis. Examples of generative AI are:
   - Workloads that leverage large language models (LLMs), like ChatGPT
   - Workloads that leverage Azure AI services, like Azure Open AI service
-- Deterministic AI (sometimes referred to as traditional AI): systems that are not pre-trained on a model, but can extrapolate solutions by adhering to predefined rules.
+- **Deterministic AI (sometimes referred to as traditional AI)** relies on explicit programming to execute specific tasks. In this approach, developers create rules and algorithms that guide the AI system’s behavior. These predefined rules determine how the AI responds to input data. These systems are not trained on datasets, but can analyze datasets based on the rules and algorithms programmed for the job. These systems cannot generate new content or adapt autonomously. Examples of deterministic AI are:
   - Workloads that implement traditional AI algorithms at scale
   - Workloads that leverage machine learning models to derive intelligent insights
  
