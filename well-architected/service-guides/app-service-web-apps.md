@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective of the Web Apps feature of Azure App Service 
+title: Azure Well-Architected Framework perspective on the Web Apps feature of Azure App Service 
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for the Web Apps feature of Azure App Service.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -13,7 +13,7 @@ categories:
   - compute
 ---
 
-# Azure Well-Architected Framework perspective of the Web Apps feature of Azure App Service
+# Azure Well-Architected Framework perspective on the Web Apps feature of Azure App Service
 
 Azure App Service is a platform as a service (PaaS) compute solution that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan that you choose determines the region in which the workload runs, the compute configurations, and the operating system. Multiple billing models are available for App Service.
 
@@ -324,15 +324,13 @@ Start your design strategy based on the [design review checklist for Performance
 
 You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Density**
+:::image type="icon" source="../_images/trade-off.svg"::: **Density and isolation**
 
-Colocate multiple apps within the same App Service plan to minimize resources. All apps share resources like CPU and memory, which can save money and reduce operational complexity. This approach also optimizes resource usage. Apps can use idle resources from another app if load patterns change over time.
+- **Higher density**: Colocate multiple apps within the same App Service plan to minimize resources. All apps share resources like CPU and memory, which can save money and reduce operational complexity. This approach also optimizes resource usage. Apps can use idle resources from another app if load patterns change over time.
 
   Also consider the disadvantages. For example, spikes in usage or instability of an app can affect the performance of other apps. Incidents in one app can also permeate to other apps within the shared environment, which can affect security.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Isolation**
-
-Isolation helps to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environments.
+- **Higher isolation**: Isolation helps to avoid interference. This strategy applies to security, performance, and even segregation of development, testing, and production environments.
 
   App Service Environment provides better control over security and data protection because each app can have its own security settings. Your environment can contain breaches because isolation limits the blast radius. Resource contention is minimized from a performance perspective. Isolation allows for independent scaling based on specific demand and individual capacity planning.
 
