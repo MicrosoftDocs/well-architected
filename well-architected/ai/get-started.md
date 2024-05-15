@@ -21,26 +21,16 @@ An AI workload is one that designs a particular portion of its functionality aro
 
 Generally AI workloads break down into two categories:
 
-- **Generative AI** are systems that have been pre-trained on a data model and can respond to prompts by autonomously generating novel outputs based on pattern analysis. Examples of generative AI are:
-  - Workloads that leverage large language models (LLMs), like ChatGPT
-  - Workloads that leverage Azure AI services, like Azure Open AI service
-- **Deterministic AI (sometimes referred to as traditional AI)** relies on explicit programming to execute specific tasks. In this approach, developers create rules and algorithms that guide the AI system’s behavior. These predefined rules determine how the AI responds to input data. These systems are not trained on datasets, but can analyze datasets based on the rules and algorithms programmed for the job. These systems cannot generate new content or adapt autonomously. Examples of deterministic AI are:
-  - Workloads that implement traditional AI algorithms at scale
-  - Workloads that leverage machine learning models to derive intelligent insights
+- **Generative AI** are systems that have been pre-trained on a data model and can respond to prompts by autonomously generating novel outputs based on pattern analysis. Generative AI is built on the foundations of machine learning (ML), but focuses on generating new data rather than  Examples of generative AI are:
+  - Content creation like articles, fiction, and artistic works
+  - Data augmentation like automatically generated synthetic data that can augemnt existing data sets, when dealing with unbalanced data sets
+  - Chatbots and virtual assistants can be made more human-like
+- **Deterministic AI (sometimes referred to as traditional AI)** relies on explicit programming to execute specific tasks. In this approach, developers create rules and algorithms that guide the AI system’s behavior. These predefined rules determine how the AI responds to input data. These systems are not trained on datasets, but can analyze datasets based on the rules and algorithms programmed for the job. These systems cannot generate new content or adapt autonomously, but are excellent at predicting outcomes. Examples of deterministic AI are:
+  - Predictive analytics, which is used in weather forecasting or stock market predictions
+  - Recommendation systems, which are commonly used by e-commerce platforms to recommend products to consumers based on user behavior and preferences
+  - Fraud detection, which can help detect fraudulent activities based on finding anomolies in behavior amongst vast amounts of data
  
-This is in comparison to a specialized role doing ad-hoc work in a Jypter notebook.
-
-Generative AI creates new and original content (images, text, etc). Examples: Generate a picture of a cat on the moon. What are some good ways to maintain a credit history? What should I buy my grandma for her 90th birthday? Can you summarize the terms of service in olde english?
- 
-Predictive/discriminative AI uses patterns to forecase future outcomes or classify future events. Examples: What's the likelyhood this  is a cat? What's the likelyhood that you will default on a loan over the lone period? What's the next most likely thing someone like you would purchase? What's the likelyhood this message violates our terms of service?
 The WAF AI workload guidance considers... 
-
-- generative AI
-  - workloads leveraging large language models
-  - workloads leveraging Azure AI services 
-- traditional AI
-  - workloads implementing traditional AI algorithms at scale
-  - workloads leveraging machine learning models to derive intelligent insights
 
 ...workloads deployed in Azure as being in scope.
 
@@ -65,8 +55,11 @@ Optimization alogrithms could be described as highly specialized traditional AI 
 
 [Other Machine Learning use cases](https://www.codecademy.com/resources/blog/machine-learning-examples/)
 
-## Common challenges
+## What are the common challenges?
 
+- Size your workload for training
+- Size your workload for inference
+- 
 Skills and roles required in a team to solve an AI problem
 
 [User experience considerations](https://online.stanford.edu/how-to-use-AI-to-enhance-user-experience#Avoid%20Overpromising%20and%20Under%20Delivering)
