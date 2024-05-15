@@ -67,11 +67,11 @@ An Oracle on Azure IaaS migration includes the following design areas. Each desi
 
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available that can be used as a basis for further solution development.
 
-- [Reference architectures for Oracle database on Azure Virtual Machines](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture#reference-architectures)&mdash;Provides information on deploying a highly available Oracle database on Azure, including disaster recovery considerations.
+- [Reference architectures for Oracle database on Azure Virtual Machines](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture#reference-architectures): Provides information on deploying a highly available Oracle database on Azure, including disaster recovery considerations.
 
-- [Support for Oracle database workloads within Azure IaaS](https://github.com/Azure/Oracle-Workloads-for-Azure)&mdash;Provides a repository that contains subfolders representing multiple separate projects for Oracle workloads.
+- [Support for Oracle database workloads within Azure IaaS](https://github.com/Azure/Oracle-Workloads-for-Azure): Provides a repository that contains subfolders representing multiple separate projects for Oracle workloads.
 
-- [Overview of Oracle applications and solutions on Azure](/azure/virtual-machines/workloads/oracle/oracle-overview)&mdash;Provides guidance to help you learn about running Oracle solutions by using the Azure infrastructure.
+- [Overview of Oracle applications and solutions on Azure](/azure/virtual-machines/workloads/oracle/oracle-overview): Provides guidance to help you learn about running Oracle solutions by using the Azure infrastructure.
 
 ## Next steps
 
