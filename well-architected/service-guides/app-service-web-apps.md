@@ -50,7 +50,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Prioritize user flows**: Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. User flow design can influence which service tiers and instances that you choose for an App Service plan and configuration.
+> - **Prioritize user flows**: Not all flows are equally critical. Assign priorities to each flow to guide your design decisions. User flow design can influence which service tiers and number of instances that you choose for an App Service plan and configuration.
 >
 >     For example, your application might include front-end and back-end tiers that communicate through a message broker. You might choose to segment the tiers in multiple web apps to allow for independent scaling, lifecycle management, and maintenance. Placing a large application in a single plan can lead to memory or CPU problems and affect reliability.
 >
@@ -66,7 +66,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   For more information, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 >
-> - **Build redundancy**: Build redundancy in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. Route traffic to other zones if one zone fails. Deploy your application across multiple regions to ensure that your app remains available, even if an entire region experiences an outage.
+> - **Build redundancy**: Build redundancy in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. Traffic is routed to other zones if one zone fails. Deploy your application across multiple regions to ensure that your app remains available, even if an entire region experiences an outage.
 >
 >   Build similar levels of redundancy in dependent services. For instance, application instances bind to blob storage. Consider configuring the associated storage account with zone-redundant storage (ZRS) if an application uses a zone-redundant deployment.
 >
@@ -82,7 +82,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. You should log scaling events so that you can troubleshoot problems that might arise and optimize your scaling strategy over time.
 >
->   App Service has a limitation on the number of instances within a plan, which can affect scaling reliability. One strategy is to use identical deployment stamps, each running App Service plan instance with its own endpoint. It's essential that you front all stamps with an external load balancer to distribute traffic across them. Use Azure Application Gateway for single node deployments and Azure Front Door for multi-regional deployments. This approach is ideal for mission-critical applications where reliability is crucial. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
+>   App Service has a limitation on the number of instances within a plan, which can affect scaling reliability. One strategy is to use identical deployment stamps, each running App Service plan instance with its own endpoint. It's essential that you front all stamps with an external load balancer to distribute traffic across them. Use Azure Application Gateway for single zone deployments and Azure Front Door for multi-regional deployments. This approach is ideal for mission-critical applications where reliability is crucial. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
 >
 >   An App Service plan distributes traffic across instances and monitors their health. Note that the external load balancer might not immediately detect if one instance fails.
 >
@@ -175,7 +175,7 @@ Start your design strategy based on the [**design review checklist for Security*
 |Service or plan |Recommendation|Benefit|
 |------------------------------|-----------|-------------- |
 |App Service | [Assign managed identities](/azure/app-service/overview-managed-identity) to the web app. To maintain isolation boundaries, don't share or reuse identities across applications. <br><br> Make sure that you [securely connect to your container registry](/azure/app-service/tutorial-custom-container) if you use containers for your deployment.|The application retrieves secrets from Key Vault to authenticate outward communication from the application. Azure manages the identity and doesn't require you to provision or rotate any secrets. <br><br> You have distinct identities for granularity of control. Distinct identities make revocation easy if an identity is compromised.|
-|App Service | Configure [custom domains](/azure/app-service/configure-ssl-bindings) for applications. <br><br> Disable HTTP and only accept HTTPS requests.|Custom domains enable secure communication through HTTPS by using the Secure Sockets Layer (SSL) or TLS protocol, which ensures the protection of sensitive data and builds user trust.|
+|App Service | Configure [custom domains](/azure/app-service/configure-ssl-bindings) for applications. <br><br> Disable HTTP and only accept HTTPS requests.|Custom domains enable secure communication through HTTPS using Transport Layer Security (TLS) protocol, which ensures the protection of sensitive data and builds user trust.|
 |App Service |Evaluate whether [App Service built-in authentication](/azure/app-service/overview-authentication-authorization) is the right mechanism to authenticate users that access your application. App Service built-in authentication integrates with Microsoft Entra ID. This feature handles token validation and user identity management across multiple sign-in providers and supports OpenID Connect. With this feature, you don't have authorization at a granular level, and you don't have a mechanism to test authentication. |When you use this feature, you don't have to use authentication libraries in application code, which reduces complexity. The user is already authenticated when a request reaches the application.|
 |App Service | Configure the application for [virtual network integration](/azure/app-service/overview-vnet-integration). <br><br> Use [private endpoints for App Service apps](/azure/app-service/overview-private-endpoint). Block all public traffic. <br><br> Route the [container image pull through the virtual network](/azure/app-service/configure-vnet-integration-routing#container-image-pull) integration. All [outgoing traffic from the application](/azure/app-service/configure-vnet-integration-routing#configure-application-routing) passes through the virtual network.|Get the security benefits of using an Azure virtual network. For example, the application can securely access resources within the network. <br> <br> Add a private endpoint to help protect your application. Private endpoints limit direct exposure to the public network and allow controlled access through the reverse proxy.|
 |App Service | To implement hardening: <br> - [Disable basic authentication](/azure/app-service/configure-basic-auth-disable) that uses a username and password in favor of Microsoft Entra ID-based authentication. <br> - Turn off remote debugging so that inbound ports aren't opened.<br> - Enable [CORS policies](/azure/app-service/app-service-web-tutorial-rest-api) to tighten incoming requests. <br> - Disable protocols, such as [FTP](/azure/app-service/configure-common). |We don't recommend basic authentication as a secure deployment method. Microsoft Entra ID employs OAuth 2.0 token-based authentication, which offers numerous advantages and enhancements that address the limitations that are associated with basic authentication. <br><br> Policies restrict access to application resources, only allow requests from specific domains, and secure cross-region requests. |
@@ -354,9 +354,9 @@ Azure provides an extensive set of built-in policies related to App Service and 
 
 - Proper network controls are in place. For example, you can incorporate network segmentation by placing App Service in Azure Virtual Network through virtual network injection to have greater control over network configuration. The application doesn't have public endpoints and connects to Azure services through private endpoints.
 
-- Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. App Service built-in authentication verifies incoming requests.
+- Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. App Service built-in authentication(Easy Auth) verifies incoming requests.
 
-- You can disable features, such as remote debugging and basic authentication, to reduce the attack surface.
+- Disable features, such as remote debugging and basic authentication, to reduce the attack surface.
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect the security of the compute layer.
 
