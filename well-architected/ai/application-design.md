@@ -11,14 +11,37 @@ ms.subservice: waf-workload-ai
 
 # Application design for AI workloads on Azure
 
-(Code deployed on the resources)
+Code deployed on the client and in any middleware (such as orchestors) that calls to models (e.g. classification, language, vision, etc)
+
+- Model endpoint code
+  - How do you pick between exposing real-time, streaming, or batch inferencing APIs?
+  - API SDKs
+  - Designing for observability
+  - How does Azure help?
+
+- When do you design using an orchestrator/middleware vs direct client access to modles?
+  
+- Recommendations specific to orchestrators
+  - Error handling (setting client expectations)
+  - How do you select orchestrator/middleware language/SDK?
+  - How does Azure help?
+
+- Recommendations specific to clients going directly to models
+  - E.g. failover, loadblancing, self-preservation
+  - Language and SDK considerations
+  - How does Azure help?
+
+- Recommendations specific to clients going to orchestrators
+  - E.g. failover, loadblancing, self-preservation
+  - Language and SDK considerations
+  - How does Azure help?
 
 - Working with long running AI jobs gracefully in an application
 - Dealing with latency on a user experience level
 - Programming Patterns (not sure whether to include)
-    - Implementing the RAG pattern 
-    - Implementing Machine Learning algorithms
-    - Optimization of classical AI code
+  - Implementing the RAG pattern 
+  - Implementing Machine Learning algorithms
+  - Optimization of classical AI code
 
 - Efficiency considerations for classical AI problems
 - Efficiency considerations for working with models
@@ -27,8 +50,6 @@ ms.subservice: waf-workload-ai
 - Prompt Evaluation
 - Avoiding Jailbreak
 - Orchestration (not sure if this should include direct SDK references – examples below)
-    - Semantic Kernel & Langchain
-
-
+  - Semantic Kernel & Langchain
 
 ## Monitoring
