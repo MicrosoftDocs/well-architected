@@ -27,6 +27,7 @@ Topics:
   - Building scalable model hosting code
   - How does Azure help?
   - Containerization?
+  - What is the API surface?
 
 - When do you design using an orchestrator/middleware vs direct client access to models?
   
@@ -38,6 +39,7 @@ Topics:
   - Supporting stateful experiences
   - Containerization?
   - Grounding/augmentative data access (dependencies)
+  - What is the API surface?
 
 - Recommendations specific to clients:
 
