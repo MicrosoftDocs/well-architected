@@ -11,7 +11,13 @@ ms.subservice: waf-workload-ai
 
 # Application design for AI workloads on Azure
 
-Code deployed on the client and in any middleware (such as orchestors) that calls to models (e.g. classification, language, vision, etc)
+Scope:
+
+- Code deployed on the client
+- Code deployed in any middleware (such as orchestrators) that calls to models (e.g. classification, language, vision, etc).
+- Model hosting code (APIs)
+
+Topics:
 
 - Model endpoint code
   - How do you pick between exposing real-time, streaming, or batch inferencing APIs?
@@ -19,7 +25,7 @@ Code deployed on the client and in any middleware (such as orchestors) that call
   - Designing for observability
   - How does Azure help?
 
-- When do you design using an orchestrator/middleware vs direct client access to modles?
+- When do you design using an orchestrator/middleware vs direct client access to models?
   
 - Recommendations specific to orchestrators
   - Error handling (setting client expectations)
