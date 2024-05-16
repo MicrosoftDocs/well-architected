@@ -23,7 +23,10 @@ Topics:
   - How do you pick between exposing real-time, streaming, or batch inferencing APIs?
   - API SDKs
   - Designing for observability
+  - Supporting stateful experiences
+  - Building scalable model hosting code
   - How does Azure help?
+  - Containerization?
 
 - When do you design using an orchestrator/middleware vs direct client access to models?
   
@@ -31,16 +34,20 @@ Topics:
   - Error handling (setting client expectations)
   - How do you select orchestrator/middleware language/SDK?
   - How does Azure help?
+  - Building scalable code
+  - Supporting stateful experiences
+  - Containerization?
 
-- Recommendations specific to clients going directly to models
-  - E.g. failover, loadblancing, self-preservation
-  - Language and SDK considerations
-  - How does Azure help?
+- Recommendations specific to clients:
 
-- Recommendations specific to clients going to orchestrators
-  - E.g. failover, loadblancing, self-preservation
-  - Language and SDK considerations
-  - How does Azure help?
+  - going directly to models
+    - E.g. failover, loadblancing, self-preservation
+    - Language and SDK considerations
+    - How does Azure help?
+  - going to orchestrators
+    - E.g. failover, loadblancing, self-preservation
+    - Language and SDK considerations
+    - How does Azure help?
 
 - Working with long running AI jobs gracefully in an application
 - Dealing with latency on a user experience level
