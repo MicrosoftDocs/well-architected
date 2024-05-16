@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Files
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Files and Azure File Sync.
 author: khdownie
 ms.author: kendownie
-ms.date: 05/02/2024
+ms.date: 05/16/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-service-guide
@@ -15,7 +15,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on Azure Files
 
-Azure Files is a Microsoft file storage solution for the cloud. Azure file shares can be mounted concurrently by cloud or on-premises deployments. You can also use Azure File Sync to cache SMB file shares on a local Windows server and tier less frequently used files to the cloud.
+Azure Files is a Microsoft file storage solution for the cloud. It offers server message block (SMB) and network file system (NFS) file shares that can be mounted by clients deployed in the cloud or on premises, or concurrently by both. You can also use Azure File Sync to cache SMB file shares on a local Windows server and tier less frequently used files to the cloud.
 
 This article assumes that as an architect, you reviewed your [storage options](/azure/architecture/guide/technology-choices/storage-options) and chose Azure Files as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
@@ -31,7 +31,7 @@ This article assumes that as an architect, you reviewed your [storage options](/
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, workloads, system flows, and the system as a whole.
 
 ### Design checklist
 
@@ -93,7 +93,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|[Apply an Azure Resource Manager](/azure/storage/common/lock-account-resource) lock on the storage account. | Locking an account prevents it from being deleted and causing data loss.|
+|[Apply an Azure Resource Manager](/azure/storage/common/lock-account-resource) lock on the storage account. | Locking an account prevents accidental or malicious deletion of the storage account, which could cause data loss.|
 |Either open TCP port 445 outbound or set up a VPN or Azure ExpressRoute connection for clients outside of Azure to access the file share. | Although SMB 3.x is an internet-safe protocol, organizational or ISP policies might not be possible to change. The ability to use VPN or ExpressRoute gives you other options.|
 |If you open port 445, be sure to disable SMBv1 on [Windows](/windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3?toc=%2Fazure%2Fstorage%2Ffiles%2Ftoc.json&tabs=server) and [Linux](/azure/storage/files/files-remove-smb1-linux) clients. Azure Files doesn't support SMB 1, but you should still disable it on your clients. | SMB 1 is an outdated, inefficient, and insecure protocol. Disabling it on clients improves your security posture. |
 |Consider disabling public network access to your storage account(s). Enable public network access only if SMB clients and services external to Azure require access to your storage account.<br><br> If you disable public network access, you’ll need to [create a private endpoint](/azure/storage/files/storage-files-networking-endpoints?tabs=azure-portal#create-a-private-endpoint) for your storage account. Standard data processing rates for private endpoint will apply.  Creating a private endpoint doesn’t block connections to the public endpoint. You should still disable public network access as described above.<br><br> If you don't require a static IP address for your file share and want to avoid the cost of private endpoint(s), you can instead [restrict public endpoint access](/azure/storage/files/storage-files-networking-endpoints?tabs=azure-portal#restrict-public-endpoint-access) to specific virtual networks and IP addresses. | Network traffic travels over the Microsoft backbone network instead of the public internet, which eliminates risk exposure from the public internet.|
@@ -118,7 +118,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|[Apply an Azure Resource Manager](/azure/storage/common/lock-account-resource) lock on the storage account. | Locking an account prevents it from being deleted and causing data loss.|
+|[Apply an Azure Resource Manager](/azure/storage/common/lock-account-resource) lock on the storage account. | Locking an account prevents accidental or malicious deletion of the storage account, which could cause data loss.|
 |You must open port 2049 on the client(s) you want to mount your NFS share to. | Opening port 2049 allows clients to communicate with the NFS Azure file share.|
 |NFS Azure file shares are only accessible via restricted networks. This means you must either [create a private endpoint](/azure/storage/files/storage-files-networking-endpoints?tabs=azure-portal#create-a-private-endpoint) for your storage account (recommended) or [restrict public endpoint access](/azure/storage/files/storage-files-networking-endpoints?tabs=azure-portal#restrict-public-endpoint-access) to selected virtual networks and IP addresses.<br><br> Configuring network-level security is mandatory for NFS shares because Azure Files doesn't currently support encryption-in-transit with the NFS protocol. You'll need to [disable](/azure/storage/files/storage-files-how-to-mount-nfs-shares?tabs=portal#disable-secure-transfer) the **Require secure transfer** setting on the storage account in order to use NFS Azure file shares.<br><br> Standard data processing rates will apply for private endpoints. If you don't require a static IP address for your file share and want to avoid the cost of private endpoint(s), you can restrict public endpoint access instead. | Network traffic travels over the Microsoft backbone network instead of the public internet, which eliminates risk exposure from the public internet.|
 |Consider disallowing storage account key access at the storage account level. You don’t need it to mount NFS file shares. However, keep in mind that full administrative control of a file share, including the ability to take ownership of a file, requires using the storage account key. | Disallowing the use of storage account keys makes your storage account more secure.|
@@ -147,7 +147,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Decide which value-added services you need**: Azure Files supports integrations with [value-added services](/azure/storage/files/understanding-billing#value-added-services) such as Azure Backup, Azure File Sync, and Microsoft Defender for Storage. These solutions have their own licensing and product costs, but are often considered part of the total cost of ownership for file storage. If you’re using Azure File Sync, there are [additional cost aspects](/azure/storage/files/understanding-billing#azure-file-sync) to consider.
 >
-> - **Create guardrails**: Create [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) based on subscriptions and resource groups. Use governance policies to restrict resource types, configurations, and locations. Additionally, use RBAC to block actions that can lead to overspending.
+> - **Create guardrails**: Create [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) based on subscriptions and resource groups. Use governance policies to restrict resource types, configurations, and locations. Additionally, use role-based access control (RBAC) to block actions that can lead to overspending.
 >
 > - **Monitor costs**: Ensure costs stay within budgets, compare costs against forecasts, and see where overspending occurs. You can use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) pane in the Azure portal to monitor costs. You also can export cost data to a storage account and analyze that data by using Excel or Power BI.
 >
@@ -208,7 +208,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Choose the optimal storage account type**: If your workload requires large amounts of IOPS, extremely fast data transfer speeds, or very low latency, then you should choose premium (FileStorage) storage accounts. A standard general-purpose v2 account is appropriate for most SMB file share workloads. The primary tradeoff between the two storage account types is cost versus performance. Premium share performance is bound by provisioned share size (IOPS/egress/ingress) and single file limits. For details, see [Understanding provisioning for premium file shares](/azure/storage/files/understanding-billing#provisioned-model). Premium file shares also offer [burst credits](/azure/storage/files/understanding-billing#bursting) as an insurance policy if you need to temporarily exceed a premium file share's baseline IOPS limit.
 >
-> - **Reduce latency by creating storage accounts in the same regions as connecting clients**: The farther you are away from the Azure Files service, the slower the latency experience will be, and the more difficult it will be to achieve performance scale limits. This is especially true when accessing Azure Files from on premises. If possible, ensure that your storage account and your clients are co-located in the same Azure region. Optimize for on-premises clients by minimizing network latency or using an Azure ExpressRoute to extend on-premises networks into the Microsoft cloud over a private connection.
+> - **Reduce latency by creating storage accounts in the same regions as connecting clients**: The farther you are away from the Azure Files service, the greater the latency will be, and the more difficult it will be to achieve performance scale limits. This is especially true when accessing Azure Files from on premises. If possible, ensure that your storage account and your clients are co-located in the same Azure region. Optimize for on-premises clients by minimizing network latency or using an Azure ExpressRoute to extend on-premises networks into the Microsoft cloud over a private connection.
 >
 > - **Collect performance data**: Monitor workload performance, including [latency](/azure/storage/files/analyze-files-metrics?tabs=azure-portal#monitor-latency), [availability](/azure/storage/files/analyze-files-metrics?tabs=azure-portal#monitor-availability), and [utilization](/azure/storage/files/analyze-files-metrics?tabs=azure-portal#monitor-utilization) metrics. [Analyze logs](/azure/storage/files/storage-files-monitoring#analyze-logs-for-azure-files) to diagnose issues such as timeout and throttling. [Create alerts](/azure/storage/files/files-monitoring-alerts) that will notify you if a file share is being throttled, about to be throttled, or experiencing high latency.
 >
