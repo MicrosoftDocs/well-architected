@@ -37,6 +37,7 @@ Topics:
   - Building scalable code
   - Supporting stateful experiences
   - Containerization?
+  - Grounding/augmentative data access (dependencies)
 
 - Recommendations specific to clients:
 
