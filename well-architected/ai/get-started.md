@@ -21,18 +21,16 @@ An AI workload is one that designs a particular portion of its functionality aro
 
 Generally AI workloads break down into two categories:
 
-- **Generative AI** refers to workloads that are based on machine learning (ML) practices, that are designed to autonomously generate novel outputs rather than return results found within the data model based on pattern analysis. Generative AI includes small language models (SLMs) and large language models (LLMs), that can be pre-trained on users' own datasets or can be used like a SaaS service like Azure OpenAI. A further subset of generative AI is generative pre-trained transformer (GPT), which is a family of LLMs that specialize in mimicing human conversational language and are especially well-suited for chatbots, like Microsoft Copilot or OpenAI's ChatGPT.
-
-Examples of generative AI use cases are:
+- **Generative AI** refers to workloads that are based on machine learning (ML) practices, that are designed to autonomously generate novel outputs rather than return results found within the data model based on pattern analysis. Generative AI includes small language models (SLMs) and large language models (LLMs), that can be pre-trained on users' own datasets or can be used like a SaaS service like Azure OpenAI. A further subset of generative AI is generative pre-trained transformer (GPT), which is a family of LLMs that specialize in mimicing human conversational language and are especially well-suited for chatbots, like Microsoft Copilot or OpenAI's ChatGPT. Examples of generative AI use cases are:
   - Content creation like articles, fiction, and artistic works
   - Data augmentation like automatically generated synthetic data that can augemnt existing data sets, when dealing with unbalanced data sets
   - Chatbots and virtual assistants can be made more human-like
     
 - **Traditional AI** relies on explicit programming to execute specific tasks. In this approach, developers create rules and algorithms that guide the AI system’s behavior. These predefined rules determine how the AI responds to input data. Tradtional AI can be further categorized by whether they are model based or not.
 
-Model based workloads are traditional (non-generative) ML systems that look for patterns in a model to return a specific type of result, based on the rules defined for it. These systems cannot generate new content or adapt autonomously, but are excellent at predicting outcomes. 
+Model based workloads are predictive ML systems that look for patterns in a model to return a specific type of prediction, based on the rules defined for it. These systems cannot generate new content or adapt autonomously, but are excellent at predicting outcomes. 
 
-On the other hand, traditional AI systems that are not model based include autonomous agents that are used to interact with an application or system, collect data, and use the data to perform pre-defined tasks. For example, characters in video games are agents that can move around in the game environment and react to game changes based on pre-defined rules. 
+On the other hand, traditional AI systems that are not model based include autonomous agents that are used to interact with an application or system, collect data, and use the data to perform pre-defined tasks. For example, characters in video games are agents that can move around in the game environment and react to game changes based on pre-defined rules. Agents can be programmed with optimization algorithms, which are used to find the best solution to a specific problem, or search algorithms, which are used to find a specific target or fulfill a specific condition by searching within a data set.
 
 Examples of traditional AI use cases are:
   - Predictive analytics, which is used in weather forecasting or stock market predictions
