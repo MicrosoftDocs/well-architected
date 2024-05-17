@@ -254,7 +254,7 @@
         href: iot/iot-overview.md
       - name: Mission-critical
         href: mission-critical/index.yml                     
-      - name: Oracle
+      - name: Oracle on IaaS
         href: oracle-iaas/index.yml       
       - name: SAP
         href: sap/quick-links.yml        

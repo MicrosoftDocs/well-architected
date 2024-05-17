@@ -1,5 +1,5 @@
 ---
-title: Design principles for an Oracle workload on Azure
+title: Design principles for an Oracle workload on Azure infrastructure as a service (IaaS)
 description: Review the design principles of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
