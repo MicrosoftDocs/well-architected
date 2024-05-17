@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Oracle workload documentation
-summary: When you create an Oracle workload on Azure, follow Azure Well-Architected Framework design principles and explore important design areas.
+title: Oracle workloads on Azure IaaS documentation
+summary: When you create an Oracle workload on Azure IaaS, follow Azure Well-Architected Framework design principles and explore important design areas.
 metadata: 
-  title: Oracle workload documentation
-  description: In this Azure Well-Architected Framework documentation, learn about creating Oracle workloads on Azure, including design principles, design areas, and best practices.
+  title: Oracle workloads on Azure IaaS documentation
+  description: In this Azure Well-Architected Framework documentation, learn about creating Oracle workloads on Azure infrastructure as a service (IaaS), including design principles, design areas, and best practices.
   author: PageWriter-MSFT
   services: na
   ms.author: prwilk
