@@ -17,7 +17,7 @@ This documentation provides actionable and authoritative guidance for building a
 
 ## What is an AI workload in the context of WAF?
 
-An AI workload is one that designs a particular portion of its functionality around artificial intelligence technology for predictive, discrimatory or generative use cases. Sometimes this replacing a traditional code logic and data access solution that would be otherwise deterministic. Sometimes that is producing an experience that cannot be accomplished with determinism and classical code & data model. Artificial intelligence combines code logic and data into a single package.
+An AI workload is one that designs a particular portion of its functionality around artificial intelligence technology for predictive, discrimatory or generative use cases. Sometimes this means replacing a traditional code logic and data access solution that would be otherwise deterministic. Sometimes that means producing an experience that cannot be accomplished with determinism and classical code & data model. Artificial intelligence combines code logic and data into a single package.
 
 Generally AI workloads break down into two categories:
 
@@ -76,10 +76,10 @@ TBD
 
 |Design area|Summary|
 |---|---|
-|[Application design](./application-design.md)| . |
-|[Application platform ](./application-platform.md)| . |
-|[Data design](./data-design.md)| . |
-|[Data platform ](./data-platform.md)| . |
+|[Application design](./application-design.md)| Discussion of application design choices as they pertain to AI workloads. Integration of AI workloads within traditional workloads requires unique design considerations that may have a significant impact on your existing application design stanards. |
+|[Application platform ](./application-platform.md)| Discussion of application platform choices for AI workloads. AI workloads often have different platform requirements than traditional apps, and adopting those platforms for a seamless integration into your environments requires careful planning. |
+|[Data design](./data-design.md)| Discussion of data design as it pertains to AI workloads. AI workloads use data in novel ways and handling the data involved in your AI workload may require a new perspective and consideration of new challenges and requirements. |
+|[Data platform ](./data-platform.md)| Discussion of data platform choices and considerations for AI workloads. The platform used for handling your AI workload may have unique requirements based on the funcitonality of your app. |
 |[MLOps and LLMOps](./mlops-llmops.md)| .|
 |[Workload operations](./operations.md)| .|
 |[Testing and validation](./testing.md)| . |
