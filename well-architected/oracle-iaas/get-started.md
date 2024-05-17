@@ -1,15 +1,16 @@
 ---
-title: Oracle workloads
+title: Oracle workloads on Azure infrastructure as a service (IaaS)
 description: Learn about Well-Architected Framework best practices for an Oracle workload on Azure IaaS to help you create a performant, secure, and highly available solution.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 05/15/2024
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-oracle
+ms.date: 05/15/2024
+ms.custom: template-overview
+ms.service: architecture-center
+ms.subservice: well-architected
 ---
 
-# Azure Well-Architected Oracle workloads
+# Azure Well-Architected Oracle workloads on Azure infrastructure as a service (IaaS)
 
 This article provides Well-Architected Framework best practices for an Oracle workload on Azure infrastructure as a service (IaaS). Application owners, Oracle database administrators, business stakeholders, and architects can use this guidance to create a technical foundation for their highly reliable solution for Oracle on Azure at scale.
 
@@ -65,13 +66,13 @@ An Oracle on Azure IaaS migration includes the following design areas. Each desi
 
 ## Illustrative examples
 
-The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available that can be used as a basis for further solution development.
+The guidance provided within this series is based on a solution-oriented approach to illustrate key design considerations and recommendations. There are several reference implementations available that can be used as a basis for further solution development.
 
-- [Reference architectures for Oracle database on Azure Virtual Machines](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture#reference-architectures): Provides information on deploying a highly available Oracle database on Azure, including disaster recovery considerations.
+- [Reference architectures for Oracle database on Azure Virtual Machines](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture#reference-architectures): Provides information on how to deploy a highly available Oracle database on Azure, including disaster recovery considerations.
 
-- [Support for Oracle database workloads within Azure IaaS](https://github.com/Azure/Oracle-Workloads-for-Azure): Provides a repository that contains subfolders representing multiple separate projects for Oracle workloads.
+- [Support for Oracle database workloads within Azure IaaS](https://github.com/Azure/Oracle-Workloads-for-Azure): Provides a repository that contains subfolders that represent multiple separate projects for Oracle workloads.
 
-- [Overview of Oracle applications and solutions on Azure](/azure/virtual-machines/workloads/oracle/oracle-overview): Provides guidance to help you learn about running Oracle solutions by using the Azure infrastructure.
+- [Overview of Oracle applications and solutions on Azure](/azure/virtual-machines/workloads/oracle/oracle-overview): Provides guidance to help you learn how to run Oracle solutions by using the Azure infrastructure.
 
 ## Next steps
 

@@ -1,4 +1,4 @@
-- name: Oracle
+- name: Oracle on IaaS
   href: index.yml
   items:
   - name: Overview

@@ -23,7 +23,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: Create an Oracle workload on Azure
+          - text: Oracle workloads on Azure infrastructure as a service (IaaS)
             url: get-started.md
           - text: Design principles
             url: review-design-principles.md
