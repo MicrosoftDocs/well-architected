@@ -80,10 +80,10 @@ TBD
 |[Application platform ](./application-platform.md)| Discussion of application platform choices for AI workloads. AI workloads often have different platform requirements than traditional apps, and adopting those platforms for a seamless integration into your environments requires careful planning. |
 |[Data design](./data-design.md)| Discussion of data design as it pertains to AI workloads. AI workloads use data in novel ways and handling the data involved in your AI workload may require a new perspective and consideration of new challenges and requirements. |
 |[Data platform ](./data-platform.md)| Discussion of data platform choices and considerations for AI workloads. The platform used for handling your AI workload may have unique requirements based on the funcitonality of your app. |
-|[MLOps and LLMOps](./mlops-llmops.md)| .|
-|[Workload operations](./operations.md)| .|
-|[Testing and validation](./testing.md)| . |
-|[Personas](./personas.md)| . |
-|[User input and ethics](./operations.md)| .|
+|[MLOps and LLMOps](./mlops-llmops.md)| Discussion of MLOps and LLMOps, which are DevOps practices specifically for AI workloads. AI workloads have unique properties that you'll need to understand in order to build new CI/CD practices for your workload. ML and LLM deployments can be considerably more complex than traditional application deployments, so you may need to adopt entirely new DevOps practices or significantly update them. |
+|[Workload operations](./operations.md)| Discussion of operations considerations as they relate to AI workloads. Operational activities related to AI workloads can be a significant change for organizations that are new to AI. New approaches may be required and specialized roles and training may need to be considered. |
+|[Testing and validation](./testing.md)| Discussion of testing and validation considerations for AI workloads. Testing and validating your AI workload can be significantly different than testing traditional apps. You may need to adopt new testing practices, and consider new choices to meet your requirements. |
+|[Personas](./personas.md)| Discussion of personas that might interact with your AI workload. When planning for personas as you build an AI workload, you will need to understand unique considerations that may change your design standards. |
+|[User input and ethics](./operations.md)| Discussion of user input and ethics as they relate to AI workloads. AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. Special attention must be paid to the user experience and ethical implications of releasing your AI solution to the public. |
 
 
