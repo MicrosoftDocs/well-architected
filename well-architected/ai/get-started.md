@@ -62,14 +62,12 @@ Some examples of workloads that aren't included in the scope of this workload ar
   - The security and compliance requirements for your data will need to be identified to implement proper enforcement measures
   - The requirements for data preparation, cleansing and freshness need to be determined to ensure that proper automated and manual processes are designed.  
 - **Test your workload**
-  - Test your model while you build it for data validity and consistency
-  - Test your model 
+  - Testing your model while you build it, helps you ensure that your solution will produce predictable, valid, and useful results.
+  - Testing nondeterministic AI systems can be especially challenging due to their inherent randomness. They can pass sometimes and fail sometimes with no changes to obvious factors like the code or environment. Using a large suite of test cases can help reduce the randomness.
 - **New skills and roles**: If your organization is new to AI workloads, you'll need to invest in training and possibly new roles to support your workload. You may require data scientists, specialized developers, and other specialized roles in addition to new operations processes that may require extensive training.
 - **Adopt the right technology for the best user experience**: New technologies and new functions are released with incredible speed so it can be tempting to use the latest and most impressive technology to stay at the bleeding edge. However, by going that route, you may adopt a technology that provides a worse user experience overall for your customers. For instance, LLMs are increasingly more human-like in their conversational abilities, but a conversational interface might not be the best way for your customers to interact with your system, so using the best LLM for conversational interactions might not be the best investment.
 - **Ethics and responsibility**: You need to clearly determine whether your use case is an ethical target for AI. The implications of putting an AI workload into production are not always immediately obvious, so careful consideration needs to be done throughout the planning and implementation phases to ensure that you are building a [responsible system](https://www.microsoft.com/en-us/ai/responsible-ai).
 [User experience considerations](https://online.stanford.edu/how-to-use-AI-to-enhance-user-experience#Avoid%20Overpromising%20and%20Under%20Delivering)
-- orgs often default to chat interface without asking if that's the best possible user experience
-- orgs often want to augment existing systems but don't know what the most efficient way to do so is
 - different [user design patterns](https://uxdesign.cc/emerging-interaction-patterns-in-generative-ai-experiences-8c351bb3392a) emerge that account for the sometimes slow or unpredictable response time of models
 
 ## Design area considerations
