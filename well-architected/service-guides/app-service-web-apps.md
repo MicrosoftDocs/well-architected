@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on the Web Apps feature of Azure App Service 
+title: Azure Well-Architected Framework perspective on Azure App Service (Web Apps) 
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for the Web Apps feature of Azure App Service.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -13,7 +13,7 @@ categories:
   - compute
 ---
 
-# Azure Well-Architected Framework perspective on the Web Apps feature of Azure App Service
+# Azure Well-Architected Framework perspective on Azure App Service (Web Apps)
 
 Azure App Service is a platform as a service (PaaS) compute solution that you can use to host your workload on the Azure platform. It's a fully managed service that abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. An app service always runs in an App Service plan. The service plan that you choose determines the region in which the workload runs, the compute configurations, and the operating system. Multiple billing models are available for App Service.
 
@@ -354,9 +354,9 @@ Azure provides an extensive set of built-in policies related to App Service and 
 
 - Proper network controls are in place. For example, you can incorporate network segmentation by placing App Service in Azure Virtual Network through virtual network injection to have greater control over network configuration. The application doesn't have public endpoints and connects to Azure services through private endpoints.
 
-- Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. App Service built-in authentication verifies incoming requests.
+- Identity controls are in place. For example, the application uses managed identities to authenticate itself against other resources. App Service built-in authentication (Easy Auth) verifies incoming requests.
 
-- You can disable features, such as remote debugging and basic authentication, to reduce the attack surface.
+- Features such as remote debugging and basic authentication are disabled, to reduce the attack surface.
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect the security of the compute layer.
 
