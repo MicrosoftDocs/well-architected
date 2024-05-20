@@ -92,7 +92,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Plan for Active-Active connectivity | ExpressRoute dedicated circuits guarantee `99.95%` availability when an active-active connectivity is configured between on-premises and Azure. This mode provides higher availability of your Expressroute connection. It's also recommended to configure BFD for faster failover if there's a link failure on a connection. |
 | [Planning for Virtual Network Gateways](/azure/expressroute/virtual-network-connectivity-guidance) | Create availability zone aware Virtual Network Gateway for higher resiliency and plan for Virtual Network Gateways in different region for disaster recovery and high availability. |
 | [Monitor circuits and gateway health](/azure/expressroute/monitor-expressroute) | Set up monitoring and alerts for ExpressRoute circuits and Virtual Network Gateway health based on various metrics available. |
-| [Enable service health](/azure/expressroute/planned-maintenance) | ExpressRoute uses service health to notify about planned and unplanned maintenance. Configuring service health will notify you about changes made to your ExpressRoute circuits. |
+| [Enable service health](/azure/expressroute/planned-maintenance) | ExpressRoute uses service health to notify about planned and unplanned maintenance. Configuring service health notifies you about changes made to your ExpressRoute circuits. |
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
@@ -210,7 +210,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
-Azure Advisor will offer a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit has recently been consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you’ll experience dropped packets, which can lead to significant performance or reliability impact.
+Azure Advisor offers a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit is consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you'll experience dropped packets, which can lead to significant performance or reliability impact.
 
 ## Azure Policy
 
