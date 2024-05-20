@@ -37,18 +37,18 @@ In the **design checklist** and **list of recommendations** below, information i
 As you make design choices for Azure ExpressRoute, review the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
 
 > [!div class="checklist"]
-
+>
 > * **Architecture**: Design your workload to align with business objectives and avoid unnecessary complexity or overhead.
-
+>
 > |Architecture | Recommendation|
 > |---|---|
 > | ExpressRoute circuit or ExpressRoute Direct  | Plan for multiple ExpressRoute circuits to provide resiliency and high availability. |
 > | Peering locations | Plan for multiple peering locations closest to your on-premises locations to provide resiliency and high availability. |
 > | Global or local connectivity | Plan for global or local connectivity to provide resiliency and high availability. |
 > | National clouds | Plan for national clouds to provide resiliency and high availability. |
-
-For more information, see --- .
-
+>
+> For more information, see --- .
+>
 > * **System Flows**: Bandwidth constraints and potential spikes.
 > * **Failure mode analysis (FMA)**: Plan mitigation strategies for potential failures. The following table shows examples of failure mode analysis.
 >
@@ -59,19 +59,19 @@ For more information, see --- .
 > | Edge to edge connectivity | Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. |
 > | Circuit failure | Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. |
 > |Gateway failure due to traffic getting routed to unhealthy instances| Monitor instance health. Consider responsiveness, and avoid sending requests to unhealthy instances. |
-
-For more information, see [Designing for high availability](/azure/expressroute/designing-for-high-availability-with-expressroute) and [Designing for disaster recovery](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering).
-
+>
+> For more information, see [Designing for high availability](/azure/expressroute/designing-for-high-availability-with-expressroute) and [Designing for disaster recovery](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering).
+>
 > * **Reliability and recovery**: Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state.
-
+>
 > |Resiliency |Recommendation|
 > |---|---|
 > |Maximum Resiliency | Eliminate any single point of failure within the Microsoft network path. The objective of maximum resiliency is to enhance reliability, resiliency, and availability, as a result ensuring the highest level of resilience for business and/or mission-critical workloads. For such operations, we recommend that you configure maximum resiliency. |
 > |High Resiliency | Also referred to as multi-site or site resiliency, enables the use of multiple sites within the same metropolitan (Metro) area to connect your on-premises network through ExpressRoute to Azure. High resiliency provides a higher level of site resiliency than standard resiliency, but not as much as maximum resiliency. |
 > |Standard Resiliency | A single circuit with two connections configured at a single site. Built-in redundancy (Active-Active) is configured to facilitate failover across the two connections of the circuit. This configuration is considered the least resilient and not recommended for business or mission-critical workloads because it doesn't provide site resiliency.|
-
-For more information, see [ExpressRoute resiliency](/azure/expressroute/design-architecture-for-resiliency#site-resiliency-for-expressroute).
-
+>
+> For more information, see [ExpressRoute resiliency](/azure/expressroute/design-architecture-for-resiliency#site-resiliency-for-expressroute).
+>
 > * **Redundancy**: Plan for redundancy in the network design to ensure that a single point of failure doesn't cause a service outage. Redundancy can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
 > * **Scaling**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
 > * **Strengthening resiliency**: Plan for strengthening resiliency in the network design to ensure that the network can withstand failures. Strengthening resiliency can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
