@@ -38,7 +38,7 @@ As you make design choices for Azure ExpressRoute, review the [design principles
 
 > [!div class="checklist"]
 >
-> * **Architecture**: Design your workload to align with business objectives and avoid unnecessary complexity or overhead.
+> - **Architecture**: Design your workload to align with business objectives and avoid unnecessary complexity or overhead.
 >
 > |Architecture | Recommendation|
 > |---|---|
@@ -49,8 +49,8 @@ As you make design choices for Azure ExpressRoute, review the [design principles
 >
 > For more information, see --- .
 >
-> * **System Flows**: Bandwidth constraints and potential spikes.
-> * **Failure mode analysis (FMA)**: Plan mitigation strategies for potential failures. The following table shows examples of failure mode analysis.
+> - **System Flows**: Bandwidth constraints and potential spikes.
+> - **Failure mode analysis (FMA)**: Plan mitigation strategies for potential failures. The following table shows examples of failure mode analysis.
 >
 > |Failure|Mitigation|
 > |---|---|
@@ -62,7 +62,7 @@ As you make design choices for Azure ExpressRoute, review the [design principles
 >
 > For more information, see [Designing for high availability](/azure/expressroute/designing-for-high-availability-with-expressroute) and [Designing for disaster recovery](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering).
 >
-> * **Reliability and recovery**: Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state.
+> - **Reliability and recovery**: Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state.
 >
 > |Resiliency |Recommendation|
 > |---|---|
@@ -72,12 +72,12 @@ As you make design choices for Azure ExpressRoute, review the [design principles
 >
 > For more information, see [ExpressRoute resiliency](/azure/expressroute/design-architecture-for-resiliency#site-resiliency-for-expressroute).
 >
-> * **Redundancy**: Plan for redundancy in the network design to ensure that a single point of failure doesn't cause a service outage. Redundancy can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
-> * **Scaling**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
-> * **Strengthening resiliency**: Plan for strengthening resiliency in the network design to ensure that the network can withstand failures. Strengthening resiliency can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
-> * **Test for resiliency**: Test the network design for resiliency to ensure that the network can withstand failures. Testing can be achieved by using Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection.
-> * **Disaster recovery planning**: Plan for disaster recovery to ensure that the network can recover from failures. Disaster recovery planning can be achieved by setting up ExpressRoute circuits in more than one peering location, creating circuits in peering locations in the same metro or different metro, and choosing to work with different service providers for diverse paths through each circuit.
-> * **Health indicators**: Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available.
+> - **Redundancy**: Plan for redundancy in the network design to ensure that a single point of failure doesn't cause a service outage. Redundancy can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
+> - **Scaling**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
+> - **Strengthening resiliency**: Plan for strengthening resiliency in the network design to ensure that the network can withstand failures. Strengthening resiliency can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
+> - **Test for resiliency**: Test the network design for resiliency to ensure that the network can withstand failures. Testing can be achieved by using Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection.
+> - **Disaster recovery planning**: Plan for disaster recovery to ensure that the network can recover from failures. Disaster recovery planning can be achieved by setting up ExpressRoute circuits in more than one peering location, creating circuits in peering locations in the same metro or different metro, and choosing to work with different service providers for diverse paths through each circuit.
+> - **Health indicators**: Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available.
 
 ### Recommendations
 
