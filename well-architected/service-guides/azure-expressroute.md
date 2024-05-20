@@ -1,14 +1,16 @@
 ---
-title: Microsoft Azure Well-Architected Framework review - Azure ExpressRoute
+title: Azure Well-Architected Framework perspective on Azure ExpressRoute
 description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
 ms.topic: conceptual
+ms.service: waf 
+ms.subservice: waf-service-guide
 ms.date: 05/20/2024
 products: azure-expressroute
 ---
 
-# Azure Well-Architected Framework review - Azure ExpressRoute
+# Azure Well-Architected Framework perspective on Azure ExpressRoute
 
 This article provides architectural best practice for Azure ExpressRoute. The guidance is based on the five pillars of the architecture excellence:
 
@@ -18,23 +20,42 @@ This article provides architectural best practice for Azure ExpressRoute. The gu
 * [Operational excellence](#operational-excellence)
 * [Performance efficiency](#performance-efficiency)
 
-We assume that you have working knowledge of Azure ExpressRoute and are well versed with all of its features. For more information, see [Azure ExpressRoute](/azure/expressroute/expressroute-introduction).
+We assume that you have working knowledge of Azure ExpressRoute and are well versed with all of its features. For more information, see [Azure ExpressRoute](/azure/expressroute/expressroute-introduction). The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-## Prerequisites
+> [!IMPORTANT]
+>
+> **How to use this guide**
+>
+> Each section has a *design checklist* that presents architectural areas of
+> concern along with design strategies localized to the technology scope.
+>
+> Also included are *recommendations* on the technology capabilities that can
+> help materialize those strategies. The recommendations don't represent an
+> exhaustive list of all configurations available for Azure ExpressRoute and its
+> dependencies. Instead, they list the key recommendations mapped to the design
+> perspectives. Use the recommendations to build your proof-of-concept or
+> optimize your existing environments.
+>
+> Foundational architecture that demonstrates the key recommendations:
+> [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
 
-For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with Cloud Adoption Framework Ready methodology's guidance [Connect to Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure) and [Architect for hybrid connectivity](/azure/architecture/reference-architectures/hybrid-networking/expressroute) with Azure ExpressRoute. For low-code application architectures, we recommend reviewing [Enabling ExpressRoute for Power Platform](/power-platform/guidance/expressroute/overview) when planning and configuring ExpressRoute for use with Microsoft Power Platform.
+### Technology scope
+
+This review focuses on the interrelated decisions for the following Azure resources:  
+
+- Azure ExpressRoute
+
 
 ## Reliability
 
-In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize down time to and from Azure when establishing connectivity using Azure ExpressRoute.
+The purpose of the Reliability pillar is to provide continued functionality by **Building enough resilience and the ability
+to recover fast from failures**.
 
-When discussing about reliability with Azure ExpressRoute it's important to taking into consideration bandwidth usage, physical layout of the network, and disaster recovery if there's failures. Azure ExpressRoute is capable of achieving these design considerations and have recommendations for each item in the checklist.
-
-In the **design checklist** and **list of recommendations** below, information is presented in order for you to design a highly available network between your Azure environment and on-premises network.
+The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
 
-As you make design choices for Azure ExpressRoute, review the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features and capabilities of Azure ExpressRoute. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
