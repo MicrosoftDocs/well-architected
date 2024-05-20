@@ -72,7 +72,7 @@ Where:
 
 With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
-Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/software_carbon_intensity/blob/main/Software_Carbon_Intensity/Software_Carbon_Intensity_Specification.md).
+Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/sci).
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
