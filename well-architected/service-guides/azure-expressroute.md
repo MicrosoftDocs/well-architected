@@ -4,7 +4,7 @@ description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
 ms.topic: conceptual
-ms.date: 06/07/2022
+ms.date: 05/20/2024
 products: azure-expressroute
 ---
 
@@ -37,16 +37,47 @@ In the **design checklist** and **list of recommendations** below, information i
 As you make design choices for Azure ExpressRoute, review the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
 
 > [!div class="checklist"]
-> - Select between ExpressRoute circuit or ExpressRoute Direct for business requirements.
-> -	Configure a diverse physical layer network to the service provider.
-> -	Configure ExpressRoute circuits with different service provider to have diverse routing paths.
-> - Configure Active-Active ExpressRoute connections between on-premises and Azure.
-> - Set up availability zone aware ExpressRoute Virtual Network Gateways.
-> -	Configure ExpressRoute circuits in a different location than the on-premises network.
-> - Configure ExpressRoute Virtual Network Gateways in different regions.
-> - Configure site-to-site VPN as a backup to ExpressRoute private peering.
-> -	Set up monitoring for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health.
-> - Configure service health to receive ExpressRoute circuit maintenance notification.
+
+> * **Architecture**: Design your workload to align with business objectives and avoid unnecessary complexity or overhead.
+
+> |Architecture | Recommendation|
+> |---|---|
+> | ExpressRoute circuit or ExpressRoute Direct  | Plan for multiple ExpressRoute circuits to provide resiliency and high availability. |
+> | Peering locations | Plan for multiple peering locations closest to your on-premises locations to provide resiliency and high availability. |
+> | Global or local connectivity | Plan for global or local connectivity to provide resiliency and high availability. |
+> | National clouds | Plan for national clouds to provide resiliency and high availability. |
+
+For more information, see --- .
+
+> * **System Flows**: Bandwidth constraints and potential spikes.
+> * **Failure mode analysis (FMA)**: Plan mitigation strategies for potential failures. The following table shows examples of failure mode analysis.
+>
+> |Failure|Mitigation|
+> |---|---|
+> |Customer Traffic| Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway.|
+> |Vender or ExpressRoute Edge| Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. |
+> | Edge to edge connectivity | Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. |
+> | Circuit failure | Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. |
+> |Gateway failure due to traffic getting routed to unhealthy instances| Monitor instance health. Consider responsiveness, and avoid sending requests to unhealthy instances. |
+
+For more information, see [Designing for high availability](/azure/expressroute/designing-for-high-availability-with-expressroute) and [Designing for disaster recovery](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering).
+
+> * **Reliability and recovery**: Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state.
+
+> |Resiliency |Recommendation|
+> |---|---|
+> |Maximum Resiliency | Eliminate any single point of failure within the Microsoft network path. The objective of maximum resiliency is to enhance reliability, resiliency, and availability, as a result ensuring the highest level of resilience for business and/or mission-critical workloads. For such operations, we recommend that you configure maximum resiliency. |
+> |High Resiliency | Also referred to as multi-site or site resiliency, enables the use of multiple sites within the same metropolitan (Metro) area to connect your on-premises network through ExpressRoute to Azure. High resiliency provides a higher level of site resiliency than standard resiliency, but not as much as maximum resiliency. |
+> |Standard Resiliency | A single circuit with two connections configured at a single site. Built-in redundancy (Active-Active) is configured to facilitate failover across the two connections of the circuit. This configuration is considered the least resilient and not recommended for business or mission-critical workloads because it doesn't provide site resiliency.|
+
+For more information, see [ExpressRoute resiliency](/azure/expressroute/design-architecture-for-resiliency#site-resiliency-for-expressroute).
+
+> * **Redundancy**: Plan for redundancy in the network design to ensure that a single point of failure doesn't cause a service outage. Redundancy can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
+> * **Scaling**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
+> * **Strengthening resiliency**: Plan for strengthening resiliency in the network design to ensure that the network can withstand failures. Strengthening resiliency can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
+> * **Test for resiliency**: Test the network design for resiliency to ensure that the network can withstand failures. Testing can be achieved by using Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection.
+> * **Disaster recovery planning**: Plan for disaster recovery to ensure that the network can recover from failures. Disaster recovery planning can be achieved by setting up ExpressRoute circuits in more than one peering location, creating circuits in peering locations in the same metro or different metro, and choosing to work with different service providers for diverse paths through each circuit.
+> * **Health indicators**: Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available.
 
 ### Recommendations
 
@@ -54,13 +85,14 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Plan for ExpressRoute circuit or ExpressRoute Direct | During the initial planning phase, you want to decide whether you want to configure an ExpressRoute circuit or an ExpressRoute Direct connection. An ExpressRoute circuit allows a private dedicated connection into Azure with the help of a connectivity provider. ExpressRoute Direct allows you to extend on-premises network directly into the Microsoft network at a peering location. You also need to identify the bandwidth requirement and the SKU type requirement for your business needs. |
+| [Design and architect Azure ExpressRoute for resiliency](/azure/expressroute/design-architecture-for-resiliency) | Plan for complexity and resiliency in your network design. Use a practical and balanced approach to make design decisions that deliver the desired results. Contain your design to the necessities to reduce inefficiencies and potential problems. This includes planning for multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations. |
+| Plan for [ExpressRoute circuit](/azure/expressroute/expressroute-circuit-peerings) or [ExpressRoute Direct](expressroute-erdirect-about) | During the initial planning phase, you want to decide whether you want to configure an ExpressRoute circuit or an ExpressRoute Direct connection. An ExpressRoute circuit allows a private dedicated connection into Azure with the help of a connectivity provider. ExpressRoute Direct allows you to extend on-premises network directly into the Microsoft network at a peering location. You also need to identify the bandwidth requirement and the SKU type requirement for your business needs. |
 | Physical layer diversity | For better resiliency, plan to have multiple paths between the on-premises edge and the peering locations (provider/Microsoft edge locations). This configuration can be achieved by going through different service provider or through a different location from the on-premises network. |
 | Plan for geo-redundant circuits| To plan for disaster recovery, set up ExpressRoute circuits in more than one peering locations. You can create circuits in peering locations in the same metro or different metro and choose to work with different service providers for diverse paths through each circuit. For more information, see [Designing for disaster recovery](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) and [Designing for high availability](/azure/expressroute/designing-for-high-availability-with-expressroute). |
 | Plan for Active-Active connectivity | ExpressRoute dedicated circuits guarantee `99.95%` availability when an active-active connectivity is configured between on-premises and Azure. This mode provides higher availability of your Expressroute connection. It's also recommended to configure BFD for faster failover if there's a link failure on a connection. |
-| Planning for Virtual Network Gateways | Create availability zone aware Virtual Network Gateway for higher resiliency and plan for Virtual Network Gateways in different region for disaster recovery and high availability. |
-| Monitor circuits and gateway health | Set up monitoring and alerts for ExpressRoute circuits and Virtual Network Gateway health based on various metrics available. |
-| Enable service health | ExpressRoute uses service health to notify about planned and unplanned maintenance. Configuring service health will notify you about changes made to your ExpressRoute circuits. |
+| [Planning for Virtual Network Gateways](/azure/expressroute/virtual-network-connectivity-guidance) | Create availability zone aware Virtual Network Gateway for higher resiliency and plan for Virtual Network Gateways in different region for disaster recovery and high availability. |
+| [Monitor circuits and gateway health](/azure/expressroute/monitor-expressroute) | Set up monitoring and alerts for ExpressRoute circuits and Virtual Network Gateway health based on various metrics available. |
+| [Enable service health](/azure/expressroute/planned-maintenance) | ExpressRoute uses service health to notify about planned and unplanned maintenance. Configuring service health will notify you about changes made to your ExpressRoute circuits. |
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
