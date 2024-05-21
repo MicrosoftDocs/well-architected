@@ -85,7 +85,8 @@ Start your design strategy based on the [design review checklist for Reliability
 >    For more information, see [ExpressRoute resiliency](/azure/expressroute/design-architecture-for-resiliency#site-resiliency-for-expressroute).
 >
 > - **Have a reliable scaling strategy**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
-> | Scaling challenges | Recommendation|
+>
+> | Scaling challenges | Recommendation |
 > |---|---|
 > | Customers may face downtime or extra costs if they did not plan for scaling correctly. | Customers should scale correctly when it comes to circuit planning and gateway planning. Customers should use [Azure Advisor](/azure/advisor/advisor-overview) to get monitoring suggestions for ExpressRoute resources. Customers should configure scalable gateways. |
 >
