@@ -69,8 +69,6 @@ Start your design strategy based on the [design review checklist for Reliability
 > | Circuit disruption | active-active connectivity. |
 > | Gateway disruption | [Zone-redundant virtual network gateways](/azure/vpn-gateway/about-zone-redundant-vnet-gateways) are recommended.  |
 >
->    For more information, see [Designing for high availability](/azure/expressroute/designing-for-high-availability-with-expressroute) and [Designing for disaster recovery](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering).
->
 > - **Build redundancy strengthen resiliency**: Plan for redundancy in the network design to ensure that a single point of failure doesn't cause a service outage. Redundancy can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
 > Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state.
 >
@@ -81,8 +79,6 @@ Start your design strategy based on the [design review checklist for Reliability
 > | Region and Availability zones | Plan for multiple [region and availability zones](/azure/reliability/overview#regions-and-availability-zones) closest to your on-premises locations to provide resiliency and high availability. |
 > | Private peering | Use [private peering](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) to connect your on-premises network to your Azure virtual network. Private peering provides a private connection between your on-premises network and your Azure virtual network. |
 > | ExpressRoute SKU | Choose the right [ExpressRoute SKU](/azure/expressroute/expressroute-faqs#what-is-the-connectivity-scope-for-different-expressroute-circuit-skus) based on your business requirements. |
->
->    For more information, see [ExpressRoute resiliency](/azure/expressroute/design-architecture-for-resiliency#site-resiliency-for-expressroute).
 >
 > - **Have a reliable scaling strategy**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
 >
