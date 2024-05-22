@@ -17,7 +17,7 @@ categories:
 
 Azure Files is a Microsoft file storage solution for the cloud. Azure Files provides server message block (SMB) and network file system (NFS) file shares that you can mount to clients in the cloud, on-premises, or to both. You can also use Azure File Sync to cache SMB file shares on a local Windows server and tier infrequently used files to the cloud.
 
-This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options) and chose Azure Files as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
+This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options) and chosen Azure Files as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -164,7 +164,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 |If you use premium shares, ensure that you provision more than enough capacity and performance for your workload but not so much that you incur unnecessary costs. We recommend overprovisioning by 2-3x. You can dynamically scale premium file shares up or down depending on your storage and input/output (IO) performance characteristics. | Overprovision premium file shares by a reasonable amount to help maintain performance and account for future growth and performance requirements.|
 |Use Azure Files reservations, also referred to as reserved instances, to precommit to storage usage and get a discount. Use reservations for production workloads or dev/test workloads with consistent footprints. For more information, see [Optimize costs with storage reservations](/azure/storage/files/files-reserve-capacity).<br><br> Reservations don't include transaction, bandwidth, data transfer, and metadata storage charges. | Three-year reservations can provide a discount up to 36% on the total cost of file storage. Reservations don't affect performance.|
 |Monitor snapshot usage. Snapshots incur charges, but they're billed based on the differential storage usage of each snapshot. You pay only for the difference in each snapshot. For more information, see [Snapshots](/azure/storage/files/understanding-billing#snapshots).<br><br> Azure File Sync takes share-level and file-level snapshots as part of regular usage, which can increase your total Azure Files bill. | Differential snapshots ensure that you're not billed multiple times for storing the same data. However, you should still monitor snapshot usage to help reduce your Azure Files bill.|
-|Set retention periods for the soft delete feature, especially when you first start using it. Consider starting with a short retention period to better understand how the feature affects your bill. The minimum recommended retention period is seven days.<br><br> When you soft delete standard and premium file shares, they're billed as used capacity rather than provisioned capacity. And premium file shares are billed at the snapshot rate while in the soft-delete state. Standard file shares are billed at the regular rate while in the soft-delete state. | Set a retention period so that soft-deleted files don't pile up and increase the cost of capacity. After the configured retention period, permanently deleted data doesn't incur cost.|
+|Set retention periods for the soft-delete feature, especially when you first start using it. Consider starting with a short retention period to better understand how the feature affects your bill. The minimum recommended retention period is seven days.<br><br> When you soft delete standard and premium file shares, they're billed as used capacity rather than provisioned capacity. And premium file shares are billed at the snapshot rate while in the soft-delete state. Standard file shares are billed at the regular rate while in the soft-delete state. | Set a retention period so that soft-deleted files don't pile up and increase the cost of capacity. After the configured retention period, permanently deleted data doesn't incur cost.|
 
 ## Operational Excellence
 
@@ -216,7 +216,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Collect performance data**: Monitor workload performance, including [latency](/azure/storage/files/analyze-files-metrics#monitor-latency), [availability](/azure/storage/files/analyze-files-metrics#monitor-availability), and [usage](/azure/storage/files/analyze-files-metrics#monitor-utilization) metrics. [Analyze logs](/azure/storage/files/storage-files-monitoring#analyze-logs-for-azure-files) to diagnose problems such as timeouts and throttling. [Create alerts](/azure/storage/files/files-monitoring-alerts) to notify you if a file share is being throttled, about to be throttled, or experiencing high latency.
 >
-> - **Optimize for hybrid deployments**: If you use Azure File Sync, sync performance depends on many factors: your Windows Server and the underlying disk configuration, network bandwidth between the server and the Azure storage, file size, total dataset size, and the activity on the dataset. To measure the performance of an Azure File Sync-based solution, determine the number of objects, such as files and directories, that you process per second.
+> - **Optimize for hybrid deployments**: If you use Azure File Sync, sync performance depends on many factors: your Windows Server and the underlying disk configuration, network bandwidth between the server and the Azure storage, file size, total dataset size, and the activity on the dataset. To measure the performance of a solution that's based on Azure File Sync, determine the number of objects, such as files and directories, that you process per second.
 
 ### Recommendations
 
@@ -228,7 +228,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Azure Files. Some of the preceding recommendations can be audited through Azure policies. For example, you can check if:
+Azure provides an extensive set of built-in policies related to Azure Files. Some of the preceding recommendations can be audited through Azure policies. For example, you can check whether:
 
 - Only requests from secure connections, such as HTTPS, are accepted.
 - Shared key authorization is disabled.
