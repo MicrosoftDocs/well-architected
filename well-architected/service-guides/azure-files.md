@@ -93,7 +93,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|[Apply an Azure Resource Manager](/azure/storage/common/lock-account-resource) lock on the storage account. | Lock the account to prevent accidental or malicious deletion of the storage account, which can cause data loss.|
+|[Apply an Azure Resource Manager lock ](/azure/storage/common/lock-account-resource) on the storage account. | Lock the account to prevent accidental or malicious deletion of the storage account, which can cause data loss.|
 |Open TCP port 445 outbound or set up a VPN gateway or Azure ExpressRoute connection for clients outside of Azure to access the file share. | SMB 3.x is an internet-safe protocol, but you might not have the ability to change organizational or ISP policies. You can use a VPN gateway or an ExpressRoute connection as an alternative option.|
 |If you open port 445, be sure to disable SMBv1 on [Windows](/windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3) and [Linux](/azure/storage/files/files-remove-smb1-linux) clients. Azure Files doesn't support SMB 1, but you should still disable it on your clients. | SMB 1 is an outdated, inefficient, and insecure protocol. Disable it on clients to improve your security posture. |
 |Consider disabling public network access to your storage account. Enable public network access only if SMB clients and services that are external to Azure require access to your storage account.<br><br> If you disable public network access,[create a private endpoint](/azure/storage/files/storage-files-networking-endpoints#create-a-private-endpoint) for your storage account. Standard data processing rates for private endpoints apply. A private endpoint doesn't block connections to the public endpoint. You should still disable public network access as previously described.<br><br> If you don't require a static IP address for your file share and want to avoid the cost of private endpoints, you can instead [restrict public endpoint access](/azure/storage/files/storage-files-networking-endpoints#restrict-public-endpoint-access) to specific virtual networks and IP addresses. | Network traffic travels over the Microsoft backbone network instead of the public internet, which eliminates risk exposure from the public internet.|
@@ -251,4 +251,4 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 
 ## Next step
 
-For more information about Azure Files, see [Azure Files documentation](/azure/storage/files/).
+For more information, see [Azure Files documentation](/azure/storage/files/).
