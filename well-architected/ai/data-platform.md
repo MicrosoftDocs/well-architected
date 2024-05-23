@@ -15,9 +15,20 @@ ms.subservice: waf-workload-ai
 - Database options in Azure
 - Secure deployment and running of relevant data platforms
 - Tradeoffs between different data platforms
-    - Considerations for picking the right product based on the use case
+  - Considerations for picking the right product based on the use case
 - Best practices for cost, availability, redundancy, and scalability
 - Processing new content into vector databases
 - Searching vector databases with AI
+- Monitoring (required)
 
-## Monitoring
+## Deepika's (SME & area lead) seed material
+
+TODO
+
+## Jose's (Azure Patterns & Practices engineering) seed material
+
+TODO
+
+## Chad's (Azure Patterns & Practices engineering) seed material
+
+TODO

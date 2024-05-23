@@ -12,17 +12,25 @@ ms.subservice: waf-workload-ai
 # Application platform for AI workloads on Azure
 
 - Dealing with latency of AI and ML models
-    - API load balancing and charge back
+  - API load balancing and charge back
 - Dealing with large amounts of requests
-    - Front Door and Compute options for AI applications that run at scale
+  - Front Door and Compute options for AI applications that run at scale
 - Choosing between packaged AI services, Azure Open AI or Custom Model
 - Redundancy and Scalability of the different options
 - Managing user identity and privacy at the application level
 - Considerations for front end and headless apps
 - Deployment and operational considerations
+- Inferencing compute
+- Monitoring (required)
 
+## Elena's (SME & area lead) seed material
 
-## Inferencing compute
+TODO
 
+## Jose's (Azure Patterns & Practices engineering) seed material
 
-## Monitoring
+TODO
+
+## Chad's (Azure Patterns & Practices engineering) seed material
+
+TODO
