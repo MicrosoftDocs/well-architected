@@ -17,3 +17,14 @@ ms.subservice: waf-workload-ai
 - Designing for slowness and asynchronous responses
 - Testing acceptance criteria at scale
 
+## Yuexin's (SME & area lead) seed material
+
+TODO
+
+## Jose's (Azure Patterns & Practices engineering) seed material
+
+TODO
+
+## Chad's (Azure Patterns & Practices engineering) seed material
+
+TODO

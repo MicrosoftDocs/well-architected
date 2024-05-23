@@ -24,3 +24,18 @@ Protect user privacy while using AI services. (General)
 Don't expose  raw user data. (General)
 If LLM is not secured properly with strong rules, then you can get into a situation where the LLM leaks information.
 
+## Jawad's (SME & area co-lead) seed material
+
+TODO
+
+## Anurag's (SME & area co-lead) seed material
+
+TODO
+
+## Jose's (Azure Patterns & Practices engineering) seed material
+
+TODO
+
+## Chad's (Azure Patterns & Practices engineering) seed material
+
+TODO

@@ -11,7 +11,6 @@ ms.subservice: waf-workload-ai
 
 # Workload personas involved in AI workloads
 
-
 An organization has several roles that participate in workload functions. One team's responsibility might be training the ML model while another team might consume it. In other case, you have a team who consume a finished model and customize it.
 
 Securing data could be coming from a workload or multiple workload teams.
@@ -25,5 +24,14 @@ Securing data could be coming from a workload or multiple workload teams.
 - Product Manager
 - User
 
+## Anurag's (SME & area lead) seed material
 
+TODO
 
+## Jose's (Azure Patterns & Practices engineering) seed material
+
+TODO
+
+## Chad's (Azure Patterns & Practices engineering) seed material
+
+TODO

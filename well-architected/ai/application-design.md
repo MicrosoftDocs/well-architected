@@ -17,6 +17,11 @@ Scope:
 - Code deployed in any middleware (such as orchestrators) that calls to models (e.g. classification, language, vision, etc).
 - Model hosting code (APIs)
 
+Out of scope:
+
+- Code for model training
+- Code for RAG database population
+
 Topics:
 
 - Model endpoint code

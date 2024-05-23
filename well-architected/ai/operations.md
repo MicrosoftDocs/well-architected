@@ -19,3 +19,14 @@ ms.subservice: waf-workload-ai
 - Optimizing for global redundancy of the entire workload
 - RBAC
 
+## Hubert's (SME & area lead) seed material
+
+TODO
+
+## Jose's (Azure Patterns & Practices engineering) seed material
+
+TODO
+
+## Chad's (Azure Patterns & Practices engineering) seed material
+
+TODO
