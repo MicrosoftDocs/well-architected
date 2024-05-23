@@ -24,7 +24,7 @@ ms.subservice: waf-workload-ai
 ## Landing Zone and Networking
 
 - GenAI Scaling AI Services with Landing Zone
-    - OpenAI Landing Zone https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-openai-landing-zone-reference-architecture/ba-p/3882102
+    - OpenAI Landing Zone https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-openai-landing-zone-reference-architecture/ba-p/3882102 
     - OpenAI LZ Accelerator https://github.com/Azure/azure-openai-landing-zone
 - Traditional ML
     - Scale Secure ML https://learn.microsoft.com/en-us/azure/architecture/example-scenario/ai/scale-ai-and-machine-learning-in-regulated-industries
@@ -32,24 +32,26 @@ ms.subservice: waf-workload-ai
     - Secure AML end to end https://learn.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet?view=azureml-api-2&tabs=required%2Cpe%2Ccli and https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/machine-learning-end-to-end-secure/
       
 ## GenAI Model Deployments
-    - Deployments schoice: PayGo, PTU, Global  https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/deployment-types
-    ### OpenAI Scalability with APIM
-     - Gateway in front of multiple OAI https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/azure-openai-gateway-multi-backend  
-     - GenAI API Gateway Capabilities https://techcommunity.microsoft.com/t5/azure-integration-services-blog/introducing-genai-gateway-capabilities-in-azure-api-management/ba-p/4146525
-     - GenAI API Gateway Labs: https://github.com/Azure-Samples/AI-Gateway
-     - https://github.com/microsoft/AzureOpenAI-with-APIM
-     - Highlight LB, Logging, Sematic Caching to speedup OAI
-       
-    ### Chargebacks
-     - New Policy Azure OpenAI Emit Token Metric Policy
-     - Granular Chargebacks
-     - Chargebacks https://techcommunity.microsoft.com/t5/apps-on-azure-blog/calculating-chargebacks-for-business-units-projects-utilizing-a/ba-p/3909202 and source  https://github.com/Azure-Samples/private-openai-with-apim-for-chargeback/tree/main and https://github.com/shksin/azure-openai-with-apim-for-chargeback
+- Deployments schoice: PayGo, PTU, Global  https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/deployment-types
 
-    ### Small Language Models
-     - On the Edge
-     - Containerization
-     - WebNN
-     - Acceleration : https://techcommunity.microsoft.com/t5/azure-high-performance-computing/introducing-the-new-azure-ai-infrastructure-vm-series-nd-mi300x/ba-p/4145152
+### OpenAI Scalability with APIM
+
+- Gateway in front of multiple OAI https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/azure-openai-gateway-multi-backend   
+- GenAI API Gateway Capabilities https://techcommunity.microsoft.com/t5/azure-integration-services-blog/introducing-genai-gateway-capabilities-in-azure-api-management/ba-p/4146525
+- GenAI API Gateway Labs: https://github.com/Azure-Samples/AI-Gateway
+- https://github.com/microsoft/AzureOpenAI-with-APIM
+ - Highlight LB, Logging, Sematic Caching to speedup OAI
+       
+### Chargebacks
+ - New Policy Azure OpenAI Emit Token Metric Policy
+ - Granular Chargebacks
+ - Chargebacks https://techcommunity.microsoft.com/t5/apps-on-azure-blog/calculating-chargebacks-for-business-units-projects-utilizing-a/ba-p/3909202 and source  https://github.com/Azure-Samples/private-openai-with-apim-for-chargeback/tree/main and https://github.com/shksin/azure-openai-with-apim-for-chargeback
+
+### Small Language Models
+ - On the Edge
+ - Containerization
+ - WebNN
+ - Acceleration : https://techcommunity.microsoft.com/t5/azure-high-performance-computing/introducing-the-new-azure-ai-infrastructure-vm-series-nd-mi300x/ba-p/4145152
      
 ## Traditional ML Deployments
 -  AI PAAS Services
