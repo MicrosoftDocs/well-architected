@@ -21,7 +21,7 @@ Securing Azure VMware Solution requires a shared responsibility model, where Mic
 
 To avoid deleting the private cloud by mistake, use [resource locks](/azure/azure-resource-manager/management/lock-resources?tabs=json) to safeguard resources from unwanted deletion or change. They can be set at the subscription, resource group, or resource level and block deletions, modifications, or both. 
 
-It's also important to detect non-compliant servers. You can use Azure Arc for this purpose. Azure Arc extends Azure management capabilities and services to on-premises or multi-cloud environments. Azure Arc gives you a single-pane view for applying updates and hotfixes by providing centralized server management and governance. The result is a consistent experience for managing components from Azure, on-premises systems, and Azure VMware Solution.
+It's also important to detect noncompliant servers. You can use Azure Arc for this purpose. Azure Arc extends Azure management capabilities and services to on-premises or multicloud environments. Azure Arc gives you a single-pane view for applying updates and hotfixes by providing centralized server management and governance. The result is a consistent experience for managing components from Azure, on-premises systems, and Azure VMware Solution.
 
 ##### Recommendations
 
@@ -34,7 +34,7 @@ It's also important to detect non-compliant servers. You can use Azure Arc for t
 
 *Impact: Security*
 
-If you don't patch and regularly update your operating system, you make it susceptible to vulnerabilities and put your entire platform at risk. When you apply patches regularly, you keep your system up to date. When using an endpoint protection solution, you help prevent common attack vectors from targeting your operating system. It's also important to regularly perform vulnerability scans and assessments. These tools help you identify and remediate security weaknesses and vulnerabilities.
+If you don't patch and regularly update your operating system, you make it susceptible to vulnerabilities and put your entire platform at risk. When you apply patches regularly, you keep your system up to date. When you use an endpoint protection solution, you help prevent common attack vectors from targeting your operating system. It's also important to regularly perform vulnerability scans and assessments. These tools help you identify and remediate security weaknesses and vulnerabilities.
 
 Microsoft Defender for Cloud offers unique tools that provide advanced threat protection across Azure VMware Solution and on-premises VMs, including:
 
@@ -81,7 +81,7 @@ The tier-1 routers are positioned in front of the segments. These routers provid
 ##### Recommendations
 
 - Use network segments to separate and monitor components logically.
-- Use micro-segmentation capabilities native to VMware NSX-T Data Center to restrict network communication between application components.
+- Use micro-segmentation capabilities that are native to VMware NSX-T Data Center to restrict network communication between application components.
 - Use a centralized routing appliance to secure and optimize routing between segments.
 - Use staggered tier-1 routers when network segmentation is driven by organizational security or networking policies, compliance requirements, business units, departments, or environments.
 
