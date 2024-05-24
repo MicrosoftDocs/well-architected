@@ -429,8 +429,6 @@ While the application design strongly advocates independent regional deployment 
 
 - Availability Zones are treated as logical entities within the context of a single subscription, so different subscriptions might have a different zonal mapping for the same region. For example, zone 1 in Subscription A could correspond to the same physical data center as zone 2 in subscription B.
 
-- Communication between zones within a region incurs a [data transfer charge](https://azure.microsoft.com/pricing/details/bandwidth/) per GB of bandwidth.
-
 - With application scenarios that are extremely chatty between application components, spreading application tiers across zones can introduce significant latency and increased costs. It's possible to mitigate this within the design by constraining a deployment stamp to a single zone and deploying multiple stamps across the different zones.
 
 - Communication between different Azure regions incurs a larger [data transfer charge](https://azure.microsoft.com/pricing/details/bandwidth/) per GB of bandwidth.
