@@ -5,9 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-categories:
-  - hybrid
-
 ---
 
 # Cost optimization in a hybrid workload

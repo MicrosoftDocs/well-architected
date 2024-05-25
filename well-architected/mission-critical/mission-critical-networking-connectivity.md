@@ -5,9 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
-categories: networking
-
-
 ---
 
 # Networking and connectivity for mission-critical workloads on Azure

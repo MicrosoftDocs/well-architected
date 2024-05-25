@@ -5,8 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
-categories: devops
-
 ---
 
 # Operational procedures for mission-critical workloads on Azure

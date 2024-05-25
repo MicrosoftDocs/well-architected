@@ -6,8 +6,6 @@ ms.date: 10/10/2023
 ms.topic: article
 ms.service: waf
 ms.author: martinek
-categories: 
-- management-and-governance
 products:
 - azure
 ---

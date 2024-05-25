@@ -5,10 +5,8 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-
-categories:
-  - security
 ---
+
 # Recommendations for self-healing and self-preservation
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**

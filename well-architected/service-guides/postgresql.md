@@ -8,6 +8,8 @@ ms.date: 11/14/2023
 ms.service: waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
+products:
+  - azure-cosmos-db
 ---
 
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL

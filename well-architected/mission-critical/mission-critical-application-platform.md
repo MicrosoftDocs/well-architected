@@ -5,10 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 01/23/2023
 ms.topic: conceptual
-categories:
-  - containers
-  - web
-
 ---
 
 # Application platform considerations for mission-critical workloads on Azure

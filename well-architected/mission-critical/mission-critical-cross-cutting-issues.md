@@ -5,10 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-
 ---
 
 # Cross-cutting concerns of mission-critical workloads on Azure

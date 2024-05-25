@@ -5,9 +5,6 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
 ms.date: 10/12/2022
-categories: 
-  - operations
-
 ---
 
 # Operational procedure considerations for sustainable workloads on Azure
@@ -67,7 +64,7 @@ _Green Software Foundation alignment: [Measuring sustainability](sustainability-
 
 Once you've defined your target, you'll need to identify a few metrics that you can measure to prove your changes had a positive effect on efficiency.
 
-The metrics can, as an example, be derived from these categories:
+The metrics can, as an example, be derived from these azureCategories:
 
 - Application performance metrics.
 - Cost optimization metrics.

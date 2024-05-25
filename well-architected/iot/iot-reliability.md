@@ -5,9 +5,6 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: conceptual
-
-categories:
-  - iot
 ---
 
 # Reliability in your IoT workload
@@ -253,7 +250,7 @@ As you design and build your IoT solution, you must meet the SLA for failure rec
 
 - Azure IoT services have defined uptime and availability targets. Review the SLAs for Azure IoT services that are part of your solution to see if they meet your uptime goals. For example, Azure IoT Hub has an SLA of 99.9%, which means you should plan for 1 minute and 36 seconds of potential downtime per day. The Azure IoT Hub SDK provides built-in, configurable logic to handle retries and backoff.
 
-- Consider breaking your uptime goals into two categories: device management and data ingestion operations. For example, it might be critical for a device to successfully send data to an IoT hub, even if device management services are unavailable. For more information, see the [Azure IoT Hub SDK reliability features](/azure/iot-hub/iot-hub-reliability-features-in-sdks).
+- Consider breaking your uptime goals into two azureCategories: device management and data ingestion operations. For example, it might be critical for a device to successfully send data to an IoT hub, even if device management services are unavailable. For more information, see the [Azure IoT Hub SDK reliability features](/azure/iot-hub/iot-hub-reliability-features-in-sdks).
 
 - Consider using redundant hardware for sensors, power, and storage. Redundant hardware enables devices to function if a critical component isn't available. Hardware can also help with connectivity issues. For example, you can use a store and forward approach for data when connectivity isn't available. Azure IoT Edge has this feature built in.
 
