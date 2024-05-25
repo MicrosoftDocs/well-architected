@@ -38,7 +38,7 @@ productDirectory:
   title: Browse the catalog of Azure services
   summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a state of excellence. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
 
-  items:
+  sections:
     # Card
     - title: API Management
       summary: Publish APIs to developers, partners, and employees securely and at scale.
