@@ -1398,16 +1398,12 @@
 		{
 			"source_path": "well-architected/service-guides/azure-app-service/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
-			"redirect_document_id": false
-<<<<<<< HEAD
+			"redirect_document_id": false																	
 		},
 		{
 			"source_path": "well-architected/oracle-iaas/decouple-exadata.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/",
 			"redirect_document_id": false
 		}																					
-=======
-		}																				
->>>>>>> 61c0060f (Sync collab to main (#1694))
 	]
 }
