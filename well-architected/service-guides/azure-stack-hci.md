@@ -56,19 +56,19 @@ Explore the following table of recommendations to optimize your Azure Stack HCI 
 |**Cluster architecture:** |Hardware used to deploy an Azure Stack HCI cluster must meet the requirements listed in [HCI deployment prerequisites](/azure-stack/hci/deploy/deployment-prerequisites#server-and-storage-requirements), all physical nodes  must be homogenous, same manufacturer, make, model and network adapters, and have a consistent number and type of storage devices.|
 |**Cluster network architecture** |Ensure the cluster is implemented using one of the [Validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies) and that cluster nodes have network access to the list of [required outbound https endpoints](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI.|
 |**Cluster architecture** |In 23H2 and later, a [cloud witness is provisioned automatically using Azure storage](/azure-stack/hci/manage/witness), this is part of the cloud based cluster deployment process control by using Azure Portal or an ARM template.|
-|**Cluster network architecture:** |Choose the right network pattern with resilient infrastructure for TOR switches, Network Adapters, Switch vs. Switch-less, Converged vs. Non-converged using the guidance [Azure Stack HCI deployment network reference patterns](/azure-stack/hci/plan/choose-network-pattern)|
+|**Cluster network architecture:** |Choose the right network infrastructure pattern and resilience capabilities, such as ToR Switch vs. Switch-less, Network Adapters, Converged vs. Non-converged using the guidance available: [Azure Stack HCI deployment network reference patterns](/azure-stack/hci/plan/choose-network-pattern)|
 |**Cluster storage architecture:** |When creating Volumes (*virtual disks*) in Storage Spaces Direct, select the appropriate [resiliency types](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) using the number of physical nodes in the cluster and the workload resiliency and performance requirements as inputs.|
-|**Workload architecture:** |Make all things redundant: For business or mission-critical workloads, it is required to deploy multiple instances of your services and/or applications using multiple virtual machines. Consider implementing [workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure virtual machines hosting multiple instances of the same service run on separate physical hosts, to increase resiliency in the event of an unplanned outage of a single physical node.
+|**Workload architecture:** |Make all things redundant: For business or mission-critical workloads, it is required to deploy multiple instances of your services and/or applications using multiple virtual machines. Consider implementing [workload anti-affinity rules](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure VMs that host multiple instances of the same service run on separate physical hosts, this increases resiliency in the event of an unplanned outage of a single physical node.
 
 For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
 ### Azure Policy
 
-Azure Policy is a service that helps you enforce organizational standards and assess compliance at scale. You can use Azure Policy to create and assign policies to your Azure Stack HCI hosts and virtual machines, and monitor their compliance state from the Azure portal. Azure Policy also integrates with Azure Arc, which enables you to manage your Azure Stack HCI resources as if they were Azure resources.
+Azure Policy is a service that helps you enforce organizational standards and assess compliance at scale. You can use Azure Policy to create and assign policies to your Azure Stack HCI hosts and virtual machines, and monitor their compliance state from Azure portal. Azure Policy also integrates with Azure Arc, which enables you to manage your Azure Stack HCI resources as if they were Azure resources.
 
 Azure Stack HCI offers some built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Azure Stack HCI, also within the cluster.
 
-There are some built-in policies available for Azure Stack HCI, such as:
+[There are some built-in policies available for Azure Stack HCI](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type), such as:
 
 [Preview]: Host and VM networking should be protected on Azure Stack HCI systems
 [Preview]: Azure Stack HCI systems should have encrypted volumes
@@ -95,13 +95,11 @@ Audit if Azure Stack HCI hosts have the required Azure Kubernetes Service (AKS) 
 
 AKS Hybird - section below needs complete review....
 
-Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI can bolster the security of your application workload, we recommend you review the [Security design principles](../security/principles.md). If your Azure Stack HCI cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [Azure Stack HCI security considerations](/azure-stack/hci/concepts/security).
+Security is one of the most important aspects of any architecture. To explore how Azure Stack HCI controls can increase the security posture of your application workloads, we recommend reviewing the [Security design principles](../security/principles.md). If your Azure Stack HCI clusters will host sensitive workload that comply with the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [Azure Stack HCI security considerations](/azure-stack/hci/concepts/security).
 
 To learn about DoD Impact Level 5 (IL5) support and requirements with Azure Stack HCI, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-hybrid-workloads-service).
 
-All new installations of release 23H2 and above starts with a secure-by-default strategy. The Azure Stack HCI servers are deployed with a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
-  
-When discussing security with Azure Stack HCI, it's important to distinguish between *cluster security* and *workload security*. Cluster security is a shared responsibility between the cluster admin and their resource provider, while workload security is the domain of a developer. Azure Stack HCI has considerations and recommendations for both of these roles.
+When discussing security with Azure Stack HCI, it's important to distinguish between *cluster security* and *workload security*. Cluster security is a shared responsibility between the cluster administrator, while workload security is the responsibility of the VM Guest OS admins and application developers. Azure Stack HCI has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
