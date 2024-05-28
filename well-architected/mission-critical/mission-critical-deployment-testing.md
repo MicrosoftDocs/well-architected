@@ -303,9 +303,9 @@ There are many valid approaches to branching. You should choose a strategy that 
 
 ### Design considerations
 
-- **Minimize access**. Developers should do their work in *feature/** and *fix/** branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
+- **Minimize access**. Developers should do their work in `feature/*` and `fix/*` branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
 
-- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into *main* as soon as practical. That way, future releases contain the fix, and recurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
+- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into `main` as soon as practical. That way, future releases contain the fix, and recurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
 
 ### Design recommendations
 
@@ -315,13 +315,13 @@ There are many valid approaches to branching. You should choose a strategy that 
 
 - Trigger an automated testing process to validate code change contributions before they're accepted. Team members must also review changes.
 
-- Treat the *main* branch as a continuously forward-moving and stable branch that's primarily used for integration testing.
-  - Ensure that changes are made to *main* only via PRs. Use a branch policy to prohibit direct commits.
-  - Every time a PR is merged into *main*, it should automatically kick off a deployment against an integration environment.
-  - The *main* branch should be considered stable. It should be safe to create a release from *main* at any given time.
-- Use dedicated *release/** branches that are created from the *main* branch and used to deploy to production environments. *Release/** branches should remain in the repository and can be used to patch a release.
+- Treat the `main` branch as a continuously forward-moving and stable branch that's primarily used for integration testing.
+  - Ensure that changes are made to `main` only via PRs. Use a branch policy to prohibit direct commits.
+  - Every time a PR is merged into `main`, it should automatically kick off a deployment against an integration environment.
+  - The `main` branch should be considered stable. It should be safe to create a release from `main` at any given time.
+- Use dedicated `release/*` branches that are created from the `main` branch and used to deploy to production environments. `release/*` branches should remain in the repository and can be used to patch a release.
 
-- Document a hotfix process and use it only when needed. Create hotfixes in a *fix/** branch for subsequent merging into the release branch and deployment to production.
+- Document a hotfix process and use it only when needed. Create hotfixes in a `fix/*` branch for subsequent merging into the release branch and deployment to production.
 
 ## AI for DevOps
 
