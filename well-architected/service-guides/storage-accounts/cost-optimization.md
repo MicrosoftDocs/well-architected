@@ -7,9 +7,8 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-storage-accounts
-categories:
+azureCategories:
   - storage
-  - management-and-governance
 ---
 
 # Storage Accounts and cost optimization

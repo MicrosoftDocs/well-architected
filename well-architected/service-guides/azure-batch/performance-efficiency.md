@@ -7,9 +7,8 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-batch
-categories:
+azureCategories:
   - compute
-  - management-and-governance
 ---
 
 # Azure Batch and performance efficiency

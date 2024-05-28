@@ -7,7 +7,7 @@ ms.date: 03/11/2024
 ms.topic: conceptual
 products:
   - azure-machine-learning
-categories:
+azureCategories:
   - ai-machine-learning
 ---
 

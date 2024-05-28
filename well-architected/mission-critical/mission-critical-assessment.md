@@ -5,10 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 03/15/2023
 ms.topic: conceptual
-categories: 
-  - management-and-governance
-  - web
-
 ---
 
 # Well-Architected assessment for mission-critical workloads

@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/15/2023
 ms.topic: conceptual
-categories:
-  - management-and-governance
 ---
 
 # Cost Optimization design principles
