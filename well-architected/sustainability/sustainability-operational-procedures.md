@@ -64,7 +64,7 @@ _Green Software Foundation alignment: [Measuring sustainability](sustainability-
 
 Once you've defined your target, you'll need to identify a few metrics that you can measure to prove your changes had a positive effect on efficiency.
 
-The metrics can, as an example, be derived from these azureCategories:
+The metrics can, as an example, be derived from these categories:
 
 - Application performance metrics.
 - Cost optimization metrics.

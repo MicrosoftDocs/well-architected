@@ -82,7 +82,7 @@ Consider the likelihood of each type of failure mode. Some are very unlikely, li
 
 #### Mitigation
 
-Mitigation strategies fall into two broad azureCategories: building more resiliency and designing for degraded performance.
+Mitigation strategies fall into two broad categories: building more resiliency and designing for degraded performance.
 
 Building more resiliency includes adding redundancy to your components, like infrastructure, data, and networking, and ensuring that your application design follows best practices for durability, for example breaking up monolithic applications into isolated apps and microservices. For more information, see [Recommendations for redundancy](redundancy.md) and [Recommendations for self-preservation](self-preservation.md).
 

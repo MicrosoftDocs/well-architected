@@ -8,7 +8,7 @@ ms.topic: conceptual
 products:
   - azure-application-insights
 azureCategories:
-
+  - management-and-governance
 ---
 
 # Cost optimization and Application Insights

@@ -9,7 +9,9 @@ ms.service: waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
 products:
-  - azure-cosmos-db
+  - azure-database-postgresql
+azureCategories:
+  - databases
 ---
 
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL
