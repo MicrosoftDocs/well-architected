@@ -28,8 +28,45 @@ For context, consider reviewing a reference architecture that reflects these con
 
 ## Reliability
 
-Azure Stack Hub has considerations and recommendations for both of these roles. In the hybrid cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize failed instances.
-When discussing reliability with Azure Stack Hub, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the responsibility of cluster admin and the resource provider, while workload reliability is the domain of a operator or developer. Azure Stack Hub has considerations and recommendations for both of these roles.
+In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize failures and the effects of a single failing component. This section is focused on providing information to help minimize the impact of failures.
+
+Azure Stack Hub is a [hyper-converged infrastructure platform](\azure-stack\operator\azure-stack-capacity-planning-overview#hyperconvergence-and-the-scale-unit) that provides a level of resiliency and [fault tolerance](\azure-stack\operator\azure-stack-storage-infrastructure-overview#fault-tolerance-and-mirroring) using co-engineered hardware and software technologies. These technologies provide availability and scalability of resources within an Azure Stack Hub cluster, also referred to as a *scale unit*.
+
+Azure Stack Hub uses the same operational model as Azure, however instead of Microsoft employees managing the underlying platform, your engineers perform the role and responsibilities of the Cloud Operator persona. For more information, see [How is Azure Stack Hub managed?](\azure-stack\operator\azure-stack-overview#how-is-azure-stack-hub-managed).
+
+Reliability in the context of Azure Stack Hub, is a **shared responsibility** between the [user](\azure-stack\user) and [cloud operator](\azure-stack\operator) personas. Users design, deploy and operate ARM resources that host applications and services on one or more Azure Stack Hub scale units. Cloud operators are responsible for the management, monitoring, capacity management and update operations provided by the Azure Stack Hub scale unit(s).
+
+### Reliability for users
+
+Users designing and deploying applications or business systems on Azure Stack Hub should apply the general architecture design principles and guidance used for Azure<sup>*</sup>. One of the first design requirements is to define and document the applications' availability and recovery targets. These targets include concepts such as the recovery time objective (RTO) and recovery point objective (RPO). RTO is the *maximum acceptable time that an application is unavailable after an incident*. RPO defines the *maximum duration of data loss that's acceptable during a disaster.*
+
+Once the availability and recovery targets have been defined, the application architecture can be designed to meet the requirements. To achieve low RTO and RPO times, industry standard architecture patterns should be leveraged. These patterns include practices such as clustering, asynchronous or synchronous database operations, file replication, and implementing automated or manual failover capabilities within the application to meet the high availability (HA) and disaster recovery (DR) requirements. There are several example reference architectures and solution deployment guides available in the [Hybrid section of Azure Architecture Center](/azure/architecture/hybrid/hybrid-start-here). The reference architectures include diagrams and step by step guides that can be used to deploy the solutions on Azure Stack Hub, examples below:
+
+- [Deploy a SQL Server Availability Groups across two Azure Stack Hub environments](/azure/architecture/hybrid/deployments/solution-deployment-guide-sql-ha)
+- [Deploy a highly available MongoDB solution across two Azure Stack Hub environments](/azure/architecture/hybrid/deployments/solution-deployment-guide-mongodb-ha)
+- [Deploy a high availability Kubernetes cluster on Azure Stack Hub](/azure/architecture/hybrid/deployments/solution-deployment-guide-highly-available-kubernetes)
+
+Users designing workloads to run on Azure Stack Hub should aim to [make all things redundant](\azure\architecture\guide\design-principles\redundancy) in their application architecture design. For any line-of-business (LOB) applications that expose end points for services, the endpoints should be deployed using a load balancer to allow for [multiple instances of the service(s) to be provisioned on multiple virtual machines (VMs)](\azure\architecture\reference-architectures\n-tier\n-tier-sql-server). Each virtual machine that hosts an instance of a service should be added to an [Availability Set to provide high availability using fault domains](\azure-stack\user\azure-stack-vm-considerations#high-availability).
+
+<sub>* Where there is consistency in the resources and resiliency capabilities available for both Azure and Azure Stack Hub.</sub>
+
+### Reliability for cloud operators
+
+Cloud operators are responsible for the day-to-day operational tasks that ensure effective management and operation of an Azure Stack Hub scale unit. Many of these tasks are related to underlying platform and therefore can affect reliability, including:
+
+- Infrastructure health and availability management:
+  - Hardware components of the physical nodes, such as their motherboards, CPUs, memory DIMMs, disks, and networking connectivity to the Top of Rack (ToR) switches.
+  - Region health for resource provider (RP) services:
+- Capacity management for the storage, network, and compute resource providers
+  - Defining and applying quotas to ensure users can effectively use the system within the defined requirements.
+- Disaster recovery for the platform
+  - Infrastructure backup
+
+To understand how Azure Stack Hub supports reliability for your application workloads, reference the following articles:
+
+- [Capacity planning for Azure Stack Hub overview](/azure-stack/operator/azure-stack-capacity-planning-overview)
+- [Storage Spaces Direct cache and capacity tiers](/azure-stack/operator/azure-stack-capacity-planning-storage#storage-spaces-direct-cache-and-capacity-tiers)
+- [Datacenter integration planning considerations for Azure Stack Hub integrated systems](/azure-stack/operator/azure-stack-datacenter-integration)
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each consideration is applicable to cluster architecture, workload architecture, or both.
 
