@@ -24,7 +24,7 @@ If you don't apply these principles to your design, the workload most likely won
 |![Goal icon](../_images/goal.svg) Gather business requirements with a focus on the intended utility of the workload.|
 |--| 
 
-Requirements must cover user experience, data, workflows, and characteristics that are unique to the workload. The outcome of _the requirements process must clearly state the expectations_. The goals must be achievable and negotiated with the team, given a specified investment. They must be documented to drive technological choices, implementations, and operations. 
+Requirements must cover user experience, data, workflows, and characteristics that are unique to the workload. The outcome of *the requirements process must clearly state the expectations*. The goals must be achievable and negotiated with the team, given a specified investment. They must be documented to drive technological choices, implementations, and operations. 
 
 |Approach|Benefit| 
 |-|-|
@@ -37,7 +37,7 @@ Requirements must cover user experience, data, workflows, and characteristics th
 |![Goal icon](../_images/goal.svg) The workload must continue to operate with full or reduced functionality.|
 |-|
 
-You should expect that component malfunctions, platform outages, performance degradations, limited resource availability, and other faults will occur. Build resiliency in the system so that it's _fault-tolerant and can degrade gracefully_. 
+You should expect that component malfunctions, platform outages, performance degradations, limited resource availability, and other faults will occur. Build resiliency in the system so that it's *fault-tolerant and can degrade gracefully*. 
 
 |Approach|Benefit| 
 |-|-|
@@ -53,7 +53,7 @@ You should expect that component malfunctions, platform outages, performance deg
 |![Goal icon](../_images/goal.svg) The workload must be able to anticipate and recover from most failures, of all magnitudes, with minimal disruption to the user experience and business objectives.  |
 |-|
 
-Even highly resilient systems need _disaster preparedness approaches_, in both architecture design and workload operations. On the data layer, you should have strategies that can repair workload state in case of corruption. 
+Even highly resilient systems need *disaster preparedness approaches*, in both architecture design and workload operations. On the data layer, you should have strategies that can repair workload state in case of corruption. 
 
 |Approach|Benefit| 
 |-|-|
@@ -67,7 +67,7 @@ Even highly resilient systems need _disaster preparedness approaches_, in both a
 |![Goal icon](../_images/goal.svg) Shift left in operations to anticipate failure conditions.  |
 |-|
 
-_Test failures early and often_ in the development lifecycle, and determine the impact of performance on reliability. For the sake of root cause analysis and postmortems, you need to have shared visibility, across teams, of dependency status and ongoing failures. _Insights, diagnostics, and alerts from observable systems are fundamental_ to effective incident management and continuous improvement.  
+*Test failures early and often* in the development lifecycle, and determine the impact of performance on reliability. For the sake of root cause analysis and postmortems, you need to have shared visibility, across teams, of dependency status and ongoing failures. *Insights, diagnostics, and alerts from observable systems are fundamental* to effective incident management and continuous improvement.  
 
 |Approach|Benefit|
 |-|-|
@@ -83,7 +83,7 @@ _Test failures early and often_ in the development lifecycle, and determine the 
 |![Goal icon](../_images/goal.svg) Avoid overengineering the architecture design, application code, and operations.  |
 |-|
 
-It's often what you remove rather than what you add that leads to the most reliable solutions. _Simplicity reduces the surface area for control_, minimizing inefficiencies and potential misconfigurations or unexpected interactions. On the other hand, oversimplification can introduce single points of failure. Maintain a balanced approach.
+It's often what you remove rather than what you add that leads to the most reliable solutions. *Simplicity reduces the surface area for control*, minimizing inefficiencies and potential misconfigurations or unexpected interactions. On the other hand, oversimplification can introduce single points of failure. Maintain a balanced approach.
 
 |Approach|Benefit| 
 |-|-|

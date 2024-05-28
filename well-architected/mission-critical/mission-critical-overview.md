@@ -13,11 +13,11 @@ This section strives to address the challenges of designing mission-critical wor
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+The term *workload* refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
 
-The term _mission-critical_ refers to a criticality scale that covers significant financial cost (business-critical) or human cost (safety-critical) associated with unavailability or underperformance.
+The term *mission-critical* refers to a criticality scale that covers significant financial cost (business-critical) or human cost (safety-critical) associated with unavailability or underperformance.
 
-A _mission-critical workload_ therefore describes a collection of application resources, which must be highly reliable on the platform. The workload must always be available, resilient to failures, and operational.
+A *mission-critical workload* therefore describes a collection of application resources, which must be highly reliable on the platform. The workload must always be available, resilient to failures, and operational.
 
 ## Video: Mission-critical workloads on Azure
 
@@ -27,7 +27,7 @@ A _mission-critical workload_ therefore describes a collection of application re
 
 Microsoft Azure makes it easy to deploy and manage cloud solutions. However, building mission-critical workloads that are highly reliable on the platform remains a challenge for these main reasons:
 
-- Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
+- Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies *and* optimally configure them to deliver end-to-end functionality.
 
 - Failure is inevitable in any complex distributed system, and the solution must therefore be architected to handle failures with correlated or cascading impact. This is a change in mindset for many developers and architects entering the cloud from an on-premises environment; reliability engineering is no longer an infrastructure subject, but should be a first-class concern within the application development process.
 

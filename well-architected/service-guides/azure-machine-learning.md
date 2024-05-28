@@ -21,9 +21,9 @@ This article provides architectural recommendations for making informed decision
 >
 > **How to use this guide**
 >
-> Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope.
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 >
-> Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Machine Learning and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Machine Learning and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
 > The foundational architecture [baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) demonstrates many of the key recommendations.
 
@@ -256,8 +256,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to
-Machine Learning and its dependencies. Some of the preceding recommendations can be audited through Azure policies. Consider the following policies that are related to security:
+Azure provides an extensive set of built-in policies related to Machine Learning and its dependencies. Some of the preceding recommendations can be audited through Azure policies. Consider the following policies that are related to security:
 
 - [Allowed registries for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5853517a-63de-11ea-bc55-0242ac130003).
 - [Configure allowed Python packages for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752).
@@ -286,9 +285,7 @@ For comprehensive governance, review the
 
 ## Advisor recommendations
 
-Advisor is a personalized cloud consultant that helps you follow
-best practices to optimize your Azure deployments. Advisor recommendations can help you improve the reliability, security,
-cost effectiveness, performance, and operational excellence of Machine Learning.
+Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Machine Learning.
 
 Consider the following [Advisor](https://azure.microsoft.com/products/advisor) recommendations for security:
 
