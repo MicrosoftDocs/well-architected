@@ -43,11 +43,11 @@ This section explores the key differences Azure routing services to define how e
 - Azure Front Door and Azure Traffic Manager are globally distributed services with built-in multi-region redundancy and availability.
   - Hypothetical failure scenarios of a scale large enough to threaten the global availability of these resilient routing services presents a broader risk to the application in terms of cascading and correlated failures.
     - Failure scenarios of this scale are only feasibly caused by shared foundational services, such as Azure DNS or Microsoft Entra ID, which serve as global platform dependencies for almost all Azure services. If a redundant Azure technology is applied, it's likely that the secondary service will also be experiencing unavailability or a degraded service.
-    - Global routing service failure scenarios are highly likely to significantly impact many other services used for key application components through interservice dependencies. Even if a third-party technology is used, the application will likely be in an unhealthy state due to the broader impact of the underlying issue, meaning that routing to application endpoints on Azure will provide little value anyway.
+    - Global routing service failure scenarios are highly likely to significantly impact many other services used for key application components through interservice dependencies. Even if a third-party technology is used, the application will likely be in an unhealthy state due to the broader impact of the underlying issue, meaning that routing to application endpoints on Azure provide little value anyway.
 
 - Global routing service redundancy provides mitigation for an extremely small number of hypothetical failure scenarios, where the impact of a global outage is constrained to the routing service itself.
 
-  To provide broader redundancy to global outage scenarios, a multi-cloud active-active deployment approach can be considered. A multi-cloud active-active deployment approach introduces significant operational complexities, which pose significant resiliency risks, likely far outweighing the hypothetical risks of a global outage.
+  To provide broader redundancy to global outage scenarios, a multicloud active-active deployment approach can be considered. A multicloud active-active deployment approach introduces significant operational complexities, which pose significant resiliency risks, likely far outweighing the hypothetical risks of a global outage.
 
 - For scenarios where client control isn't possible, a dependency must be taken on a single global routing service to provide a unified entry point for all active deployment regions.
   - When used in isolation they represent a single-point-of-failure at a service level due to global dependencies, even though built-in multi-region redundancy and availability are provided.
@@ -64,7 +64,7 @@ This section explores the key differences Azure routing services to define how e
   - A number of connections are maintained for each of the backend endpoints.
   - Incoming client requests are first terminated at the edge node closest to the originating client.
   - After any required traffic inspection, requests are either forwarded over the Microsoft backbone to the appropriate backend using existing connections, or served from the internal cache of an edge node.
-  - This approach is very efficient in spreading high traffic volumes over the backend connections.
+  - This approach is efficient in spreading high traffic volumes over the backend connections.
 
 - Provides a built-in cache that serves static content from edge nodes. In many use cases, this can also eliminate the need for a dedicated Content Delivery Network (CDN).
 
@@ -126,9 +126,9 @@ This image shows a redundant global load balancer configuration with client fail
 ![Mission-Critical Global Load Balancer Configuration](./images/mission-critical-global-routing.gif "Mission-Critical Global Load Balancer Configuration")
 
 >[!IMPORTANT]
-> To truly mitigate the risk of global failures within the Azure platform, a multi-cloud active-active deployment approach should be considered, with active deployment stamps hosted across two or more cloud providers and redundant third-party routing technologies used for global routing.
+> To truly mitigate the risk of global failures within the Azure platform, a multicloud active-active deployment approach should be considered, with active deployment stamps hosted across two or more cloud providers and redundant third-party routing technologies used for global routing.
 >
-> Azure can effectively be integrated with other cloud platforms. However, it's strongly recommended not to apply a multi-cloud approach because it introduces significant operational complexity, with different deployment stamp definitions and representations of operational health across the different cloud platforms. This complexity in-turn introduces numerous resiliency risks within the normal operation of the application, which far outweigh the hypothetical risks of a global platform outage.
+> Azure can effectively be integrated with other cloud platforms. However, it's strongly recommended not to apply a multicloud approach because it introduces significant operational complexity, with different deployment stamp definitions and representations of operational health across the different cloud platforms. This complexity in-turn introduces numerous resiliency risks within the normal operation of the application, which far outweigh the hypothetical risks of a global platform outage.
 
 - Although not recommended, for HTTP(s) workloads using Azure Traffic Manager for global routing redundancy to Azure Front Door, consider offloading Web Application Firewall (WAF) to Application Gateway for acceptable traffic flowing through Azure Front Door.
   - This will introduce an additional failure point to the standard ingress path, an additional critical-path component to manage and scale, and will also incur additional costs to ensure global high-availability. It will, however, greatly simplify the failure scenario by providing consistency between the acceptable and not acceptable ingress paths through Azure Front Door and Azure Traffic Manager, both in terms of WAF execution but also private application endpoints.
@@ -249,7 +249,7 @@ Special treatment of static content like images, JavaScript, CSS and other files
   - [Azure Front Door](/azure/frontdoor/front-door-caching) provides Azure-native edge caching capabilities and routing features to divide static and dynamic content.
     - By creating the appropriate routing rules in Azure Front Door, `/static/*` traffic can be transparently redirected to static content.
   - More complex caching scenarios can be implemented using the [Azure CDN](https://azure.microsoft.com/services/cdn) service to establish a full-fledged content delivery network for significant static content volumes.
-    - The Azure CDN service will likely be more cost effective, but does not provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
+    - The Azure CDN service will likely be more cost effective, but doesn't provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
   - When comparing the Azure Front Door and Azure CDN services, the following decision factors should be explored:
     - Can required caching rules be accomplished using the rules engine.
     - Size of the stored content and the associated cost.
@@ -379,7 +379,7 @@ This section explores how internet egress can be achieved while ensuring securit
 
 - When NAT takes place at a small scale the performance impact should be negligible, however, if there are a large number of outbound requests network issues may occur. These issues typically come in the form of 'Source NAT (or SNAT) port exhaustion'.
 
-- In a multi-tenant environment, such as Azure App Service, there's a limited number of outbound ports available to each instance. If these ports run out, no new outbound connections can be initiated. This issue can be mitigated by reducing the number of private/public edge traversals or by using a more scalable NAT solution such as the [Azure NAT Gateway](/azure/virtual-network/nat-gateway/nat-overview).
+- In a multitenant environment, such as Azure App Service, there's a limited number of outbound ports available to each instance. If these ports run out, no new outbound connections can be initiated. This issue can be mitigated by reducing the number of private/public edge traversals or by using a more scalable NAT solution such as the [Azure NAT Gateway](/azure/virtual-network/nat-gateway/nat-overview).
 
 - In addition to NAT limitations, outbound traffic may also be subject to requisite security inspections.
   - Azure Firewall provides appropriate security capabilities to secure network egress.
@@ -439,7 +439,7 @@ While the application design strongly advocates independent regional deployment 
 
 - For services to service communication Private Link can be used for direct communication using private endpoints.
 
-- Traffic can be hair-pinned through Express Route circuits used for on-premise connectivity in order to facilitate routing between virtual networks within an Azure region and across different Azure regions within the same geography.
+- Traffic can be hair-pinned through Express Route circuits used for on-premises connectivity in order to facilitate routing between virtual networks within an Azure region and across different Azure regions within the same geography.
   - Hair-pinning traffic through Express Route will bypass data transfer costs associated with virtual network peering, so can be used as a way to optimize costs.
   - This approach necessitates additional network hops for application integration within Azure, which introduces latency and reliability risks. Expands the role of Express Route and associated gateway components from Azure/on-premises to also encompass Azure/Azure connectivity.
 
@@ -483,7 +483,7 @@ This section explores the optimal use of these capabilities, providing key consi
   - AKS supports two plugins that implement Network Policy, _Azure_ and _Calico_. Both plugins use Linux IPTables to enforce the specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
   - Network policies don't conflict since they're additive.
   - For a network flow between two pods to be allowed, both the egress policy on the source pod and the ingress policy on the destination pod need to allow the traffic.
-  - The network policy feature can only be enabled at cluster instantiation time. It is not possible to enable network policy on an existing AKS cluster.
+  - The network policy feature can only be enabled at cluster instantiation time. It's not possible to enable network policy on an existing AKS cluster.
   - The delivery of network policies is consistent regardless of whether Azure or Calico is used.
   - Calico provides a [richer feature set](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities), including support for windows-nodes and supports Azure CNI as well as Kubenet.
 
@@ -498,7 +498,7 @@ This section explores the optimal use of these capabilities, providing key consi
   - Public internet traffic should be disabled on RDP and SSH ports across all applicable NSGs.
 
   - Prioritize the use of the Azure CNI network plugin and consider Kubenet for scenarios with a limited range of available IP addresses to fit the application within a constrained address space.
-    - AKS supports the use of both Azure CNI and Kubenet. It is selected at deployment time.
+    - AKS supports the use of both Azure CNI and Kubenet. This networking choice is selected at deployment time.
     - The Azure CNI network plugin is a more robust and scalable network plugin, and is recommended for most scenarios.
     - Kubenet is a more lightweight network plugin, and is recommended for scenarios with a limited range of available IP addresses.
     - See [Azure CNI](/azure/aks/concepts-network#azure-cni-advanced-networking) for more details.
