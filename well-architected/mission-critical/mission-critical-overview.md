@@ -5,10 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 08/15/2022
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-
 ---
 
 # Mission-critical workloads

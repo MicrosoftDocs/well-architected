@@ -7,7 +7,7 @@ ms.date: 02/12/2024
 ms.topic: conceptual
 products:
   - azure-front-door
-categories:
+azureCategories:
   - networking
 ---
 

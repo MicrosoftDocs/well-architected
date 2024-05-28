@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-service-guide
 products:
   - azure-openai
-categories:
+azureCategories:
   - ai-machine-learning
 ---
 

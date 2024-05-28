@@ -7,9 +7,8 @@ ms.date: 01/28/2022
 ms.topic: conceptual
 products:
   - azure-load-balancer
-categories:
+azureCategories:
   - networking
-  - management-and-governance
 ---
 
 # Operational excellence and Azure Load Balancer

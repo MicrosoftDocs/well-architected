@@ -7,9 +7,9 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-functions
-categories:
+azureCategories:
   - compute
-  - management-and-governance
+
 ---
 
 # Azure Functions and security

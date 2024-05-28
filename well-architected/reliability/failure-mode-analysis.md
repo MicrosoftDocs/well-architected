@@ -5,9 +5,6 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-
-categories:
-  - security
 ---
 # Recommendations for performing failure mode analysis
 

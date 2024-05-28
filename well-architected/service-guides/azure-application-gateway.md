@@ -6,6 +6,8 @@ ms.author: greglin
 ms.topic: conceptual
 ms.date: 01/27/2023
 products: azure-application-gateway
+azureCategories:
+  - networking
 ---
 
 # Azure Well-Architected Framework review - Azure Application Gateway v2
