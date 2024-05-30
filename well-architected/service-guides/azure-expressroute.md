@@ -5,7 +5,10 @@ author: duongau
 ms.author: duau
 ms.topic: conceptual
 ms.date: 06/07/2022
-products: azure-expressroute
+products: 
+  - azure-expressroute
+azureCategories:
+  - networking
 ---
 
 # Azure Well-Architected Framework review - Azure ExpressRoute

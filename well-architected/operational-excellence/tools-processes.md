@@ -163,16 +163,13 @@ For more information on using naming conventions for your cloud resources, see [
 
 - [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load testing service that you can use to generate high-scale load by simulating traffic for your applications, regardless of where they're hosted.
 
-## Organizational alignment
-
-The Cloud Adoption Framework for Azure provides general [guidelines and recommendations for tagging and naming Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging), as well as specific rules and examples for different resource types.
-
 ## Related links
 
 - [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance)
 - [Branch policies and settings](/azure/devops/repos/git/branch-policies)
 - [Cloud design patterns](/azure/architecture/patterns)
 - [Developer velocity](https://azure.microsoft.com/solutions/developer-velocity)
+- [Develop your naming and tagging strategy for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 - [DevOps resource center](/devops)
 - [Enable DevSecOps with Azure and GitHub](/devops/devsecops/enable-devsecops-azure-github)
 - [Overview of source code analysis](/visualstudio/code-quality/roslyn-analyzers-overview)

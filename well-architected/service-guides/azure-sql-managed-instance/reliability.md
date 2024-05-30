@@ -7,9 +7,8 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-sql-managed-instance
-categories:
-  - data
-  - management-and-governance
+azureCategories:
+  - databases
 ---
 
 # Azure SQL Managed Instance and reliability

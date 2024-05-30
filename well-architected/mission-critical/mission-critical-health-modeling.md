@@ -5,11 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 08/16/2022
 ms.topic: conceptual
-categories: 
-  - storage
-  - web
-  - devops
-
 ---
 
 # Health modeling and observability of mission-critical workloads on Azure

@@ -256,8 +256,8 @@
         href: iot/iot-overview.md
       - name: Mission-critical
         href: mission-critical/index.yml                     
-      - name: Oracle
-        href: oracle-iaas/overview.md        
+      - name: Oracle on IaaS
+        href: oracle-iaas/index.yml       
       - name: SAP
         href: sap/quick-links.yml        
       - name: Sustainability
@@ -287,13 +287,7 @@
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
         - name: Azure App Service
-          items:
-            - name: Reliability
-              href: service-guides/azure-app-service/reliability.md
-            - name: Cost optimization
-              href: service-guides/azure-app-service/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/azure-app-service/operational-excellence.md
+          href: service-guides/app-service-web-apps.md
         - name: Azure Batch
           items:
             - name: Reliability
@@ -302,6 +296,8 @@
               href: service-guides/azure-batch/operational-excellence.md
             - name: Performance efficiency
               href: service-guides/azure-batch/performance-efficiency.md
+        - name: Azure Blob Storage
+          href: service-guides/azure-blob-storage.md
         - name: Azure Cache for Redis
           items:
             - name: Reliability
@@ -316,6 +312,8 @@
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
+        - name: Azure Files
+          href: service-guides/azure-files.md          
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
         - name: Azure Kubernetes Service

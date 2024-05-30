@@ -3,13 +3,28 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 04/02/2024
+ms.date: 05/06/2024
 ms.topic: conceptual
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## April 2024
+
+### New articles
+
+This month, we added two new service guides and new documentation about Oracle workloads on Azure infrastructure as a service (IaaS).
+
+**Service guides**
+
+- [Azure Well-Architected Framework perspective on App Service](./service-guides/app-service-web-apps.md): Review design considerations and recommendations for App Service. Azure App Service is a type of platform as a service (PaaS) compute service that allows you to host your workload on the Azure platform.
+- [Azure Well-Architected Framework perspective on Azure Blob Storage](./service-guides/azure-blob-storage.md): Review design considerations and configuration recommendations that are relevant to Azure Blob Storage. Azure Blob Storage is a cloud-based object storage solution that is optimized for storing massive amounts of unstructured data, such as text or binary data.
+
+**Oracle workloads on Azure**
+
+Find new articles and updated guidance about Oracle workloads on Azure. Explore best practices to help you create a performant, secure, and highly available solution. To get started, see [Oracle workloads on Azure infrastructure as a service (IaaS)](./oracle-iaas/index.yml).
 
 ## March 2024
 
@@ -20,7 +35,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated articles
 
-- [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources. 
+- [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
 
 ## February 2024
 

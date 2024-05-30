@@ -7,9 +7,8 @@ ms.date: 01/25/2022
 ms.topic: conceptual
 products:
   - azure-api-management
-categories:
-  - networking
-  - management-and-governance
+azureCategories:
+  - integration
 ---
 
 # API Management and operational excellence

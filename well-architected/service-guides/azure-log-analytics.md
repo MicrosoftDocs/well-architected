@@ -6,6 +6,8 @@ author: bwren
 ms.author: bwren
 ms.date: 02/27/2024
 ms.reviewer: bwren
+azureCategories:
+  - management-and-governance
 ---
 
 # Azure Well-Architected Framework perspective on Log Analytics

@@ -5,13 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 12/15/2022
 ms.topic: conceptual
-categories: 
-  - databases
-  - web
-  - devops
-  - security
-  - networking
-
 ---
 
 # Architecture pattern for mission-critical workloads on Azure

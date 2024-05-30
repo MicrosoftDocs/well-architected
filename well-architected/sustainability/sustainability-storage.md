@@ -5,9 +5,6 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
 ms.date: 10/12/2022
-categories: 
-  - storage
-
 ---
 
 # Data and storage design considerations for sustainable workloads on Azure

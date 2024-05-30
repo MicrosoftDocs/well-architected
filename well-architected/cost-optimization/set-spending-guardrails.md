@@ -105,6 +105,8 @@ IaC strategies provide a structured and repeatable approach to managing and cont
 
 **Using governance policies**: Use [Azure Policy](/azure/governance/policy/overview) to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can regulate resource provisioning, usage limits, and cost allocation. Use policies to promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures.
 
+Azure provides built-in policies for common use cases that provide a standardized and efficient way to enforce rules and guidelines across your Azure resources. We recommend that you define your own custom policies to meet your unique business requirements or specific industry regulations that Azure built-in policies don't cover. For more information, see [Azure Policy built-in policy definitions](/azure/governance/policy/samples/built-in-policies).
+
 Azure allows you to set limits or quotas to prevent unexpected costs. You can define limits on the number of resources that can be provisioned, in addition to the size and duration of resource usage. Set these limits to help prevent overprovisioning and to control costs.
 
 - *Identify underused or idle resources.* Use [Azure Advisor](/azure/advisor/advisor-cost-recommendations) to optimize and reduce your overall Azure costs by identifying idle and under-utilized resources. Receive cost recommendations from the *cost* section in the *advisor* dashboard.
@@ -133,7 +135,7 @@ The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) is an o
 
 Central teams should use the Cloud Adoption Framework guidance to set up spending guardrails across the organization so workload teams understand what the central team can offer.
 
-For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). We encourage the organization to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for implementation.
+We encourage the organization to adopt policy-driven guardrails. For an example implementation, see [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance).
 
 ## Related links
 

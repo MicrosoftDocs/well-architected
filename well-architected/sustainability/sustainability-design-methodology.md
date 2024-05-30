@@ -5,10 +5,6 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.date: 10/12/2022
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-
 ---
 
 # Design methodology for sustainable workloads on Azure
@@ -72,7 +68,7 @@ Where:
 
 With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
-Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/software_carbon_intensity/blob/main/Software_Carbon_Intensity/Software_Carbon_Intensity_Specification.md).
+Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/sci).
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
@@ -80,7 +76,7 @@ Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sust
 
 We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint and to measure and track emissions over time.
 
-Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
+Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
 
 #### Leverage the Microsoft Sustainability Manager
 

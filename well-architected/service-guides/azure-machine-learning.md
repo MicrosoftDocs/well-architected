@@ -5,9 +5,10 @@ author: robbagby
 ms.author: robbag
 ms.date: 03/11/2024
 ms.topic: conceptual
+ms.collection: ce-skilling-ai-copilot
 products:
   - azure-machine-learning
-categories:
+azureCategories:
   - ai-machine-learning
 ---
 
