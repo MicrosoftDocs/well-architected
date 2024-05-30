@@ -34,27 +34,59 @@ App Platform
 Training vs. Inference endpoints. 
   - These have different purpose and also platform requirements (scalability, security, performance). Inference will be driven by the number of concurrent users/requests . Training by amount of data, type of workload, frequency
   - Recommendations for keeping these separate or and/or reusing some solution components.
-  - How is this impacted by model tuning and updates over time. Publishing updates
+  - How is this impacted by model tuning and updates over time?
+  - Publishing updates
 
 Batch inference endpoints
   - Benefits of batch inference: long running, async, parallelize 
   
-
-Recommendations to choose between training a model, using a pretrained model, or further tuning a pretrained model
-  - For pretrained models: how do I evaluate pick the right model. E.g. OpenAI models 
+Recommendations to choose between training a model, using a pretrained model, or fine tuning a pretrained model
+  - For pretrained models: how do I evaluate pick the right model. E.g. choose between OpenAI models 
   - Examples: ML the most flexible to train your own models. OpenAI gives you a selection of pretrained models. Cognitive services allows limited training
-  - What is the role of grounding and the RAG pattern here. 
-  - Cost of training
+  - What is the role of grounding and the RAG pattern here?
+  - Considerations/tradefoffs of fine-tuning vs grounding/prompt engineering
+  - Cost of training considerations.
 
-Considerations to share a deployment among multiple workloads (apps) and departments, or types of functions (completion vs sentiment analysis)
+Foundational models
+  - Azure ML Model Catalog. How to choose a model. Model evaluation and fine tuning.
+  - Hosting foundational models: Managed compute, Serverless API
+  
+Considerations to share a deployment among multiple workloads (apps) and departments, or sharing for multlple uses (completion vs sentiment analysis)
   - Chargeback issues
   - Performance tuning (e.g. less efficient use of caching by the service)
   - Open AI: when is best to share a deployment of OpenAI across workloads and charge back, vs locally managed
   
-What functions can be offloaded to a reverse proxy/gateway model like APIM
-  - Retries (timeouts, throttling )
+What functions can be offloaded to a reverse proxy/gateway model like APIM when using Azure PaaS AI Services:Retries (timeouts, throttling )
   - Chargeback
+  - Load balancing
+  - Security (network isolation, identity authentication with Entra ID)
+  - Monitoring 
+  - Other:  https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/azure-openai-gateway-guide, https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/azure-openai-gateway-multi-backend
   
+Training platform
+  - Minimize data access latency
+  - How to pick library/framework to use for training (PyTorch, Tensorflow, etc). Considerations other than functionality?
+  - Recommendations for training compute selection and configuration. Azure Machine Learning Environments (https://learn.microsoft.com/en-us/azure/machine-learning/concept-environments?view=azureml-api-2&viewFallbackFrom=azureml-api-1)
+  - Considerations for Initial training vs re-training: 
+
+Where to host inference endpoint
+  - Options: VMs, ML, K8, App Service, Function Apps, Container Apps
+  - How to choose a hosting platform. Technical requirements that drive decision: reliability, security, scalability, performance
+  - Integrated ML Solutions. When to choose these: Azure Synapse Analytics, Databricks, and Apache Spark.  
+    ○ Use for inference vs. training
+
+Orchestration at the inference endpoint
+  - Custom code: Pythion, C#, Java
+  - Libraries/runtimes: Semantic Kernel LangChain. 
+    ○ Link: https://learn.microsoft.com/en-us/semantic-kernel/overview/?tabs=Csharp#why-use-an-sdk-like-semantic-kernel. Also: https://learn.microsoft.com/en-us/semantic-kernel/agents/plugins
+  - Example: calling multiple models/inference endpoints to fulfill an app requirement: 
+    ○ OCR + Summarization
+    ○ Speech to text + summarization + …
+  - Example: RAG pattern. 
+    ○ Multiple/orchestrated calls to various endpoints. Need to process user input to understand intent, enrich and add context to search for grounding data, interact with model,  generate responses
+  - Example: chat/RAG pattern with Actions
+  - Prompt engineering
+
 Considerations for performance
   - Choosing the right hardware, OS, model, GPUs, etc
   - Open AI: choosing the right quota TPM/RPM and TPUs
@@ -64,13 +96,12 @@ Considerations for scaling
   - Dealing with limitation in the supported RPS by having multiple instances. For example OpenAI and Azure Cognitive Services deployments may have a lower supported RPS that needed by the workload
   - Scaling up vs scaling out. Type of compute, GPUs, FPGAs
 
-Training platform
-  - Minimize data access latency
-  - How to pick library/framework to use for training (PyTorch, Tensorflow, etc). Considerations other than functionality?
-  
-Integrated ML Solutions 
-  - When to choose these: Azure Synapse Analytics, Databricks, and Apache Spark.
+Considerations for Monitoring
+  - Monitoring for technical requirements (perf, reliability) vs. functional (accuracy, groundlessness)
 
+Considerations for cost
+  - Choosing the most cost effective model when leveraging a pre-trained/foundational model
+  - Using multiple models for a task to save on cost. Try less expensive first, escalate to next model on failure
 
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
