@@ -11,7 +11,7 @@ ms.subservice: waf-workload-avs
 
 # Monitoring considerations for Azure VMware Solution workloads
 
-This article discusses the monitoring design area of an Azure VMware Solution workload. This area focuses on observability best practices. The guidance is intended for an operations team. Microsoft, VMware, and third parties provide various tools that you can use to monitor your infrastructure and application. This article lists those options.
+Mark This article discusses the monitoring design area of an Azure VMware Solution workload. This area focuses on observability best practices. The guidance is intended for an operations team. Microsoft, VMware, and third parties provide various tools that you can use to monitor your infrastructure and application. This article lists those options.
 
 Each option offers monitoring solutions with varying degrees of licensing costs, integration options, monitoring scope, and support. Carefully review the applicable terms and conditions before using the tools.
 
