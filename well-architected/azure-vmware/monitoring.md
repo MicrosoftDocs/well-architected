@@ -222,42 +222,41 @@ Ref: Notifications and actions [Azure Action Groups](https://learn.microsoft.com
 
 *Impact: Cost optimization, Operational excellence*
 
-Cost monitoring refers to the ability to keep track of costs that are associated with the Azure VMware Solution private cloud.
+Cost monitoring refers to the ability to keep track of costs that are associated with the Azure VMware Solution private cloud. Be familiar with how Azure costs are incurred, the on-line cost estimation calculator, and the tools available through the portal.  Use the cost analysis tool to create complete cost models that encompass all the Azure components related to a project or service. 
 
 ##### Recommendations
 
-- Use the VMware vSphere events and alarms subsystem to monitor VMware vSphere and set up triggers.
-- Configure Azure alerts that are based on Log Analytics queries for Azure VMware Solution. These alerts help your operation team respond to expected and unexpected events in real time.
+- Read the Azure cost monitoring documentation.    
+Ref: Cost Management [Azure Costs & Billing](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/plan-manage-costs)
+- Create alerts based on actual vs. budget     
+Ref: Azure budget alerts [Monitoring Costs](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending)
+- Use the visualization and costing management tools     
+Ref: Cost Analysis [Quick Cost Analysis](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/quick-acm-cost-analysis)
 
-## Use troubleshooting and debugging tools
 
-*Impact: Cost optimization, Operational excellence*
 
-To efficiently debug and troubleshoot your application, you need logs, metrics, and associated information. This information includes event activities so that you can identify, analyze, and establish connections between events.
-
-##### Recommendations
-
-- Configure your system to forward logs from the Azure VMware Solution syslog service to Log Analytics. Forward all relevant logs, metrics, and diagnostic information.
-- Configure a server agent that's enabled by Azure Arc on guest VMs that run inside the Azure VMware Solution private cloud.
-
-## Use dashboards
+## Dashboards
 
 *Impact: Operational excellence*
 
-Application dashboards help you visualize and monitor an application's performance, health, and other metrics:
+Application dashboards help you visualize and monitor an application's performance, health, and other metrics. 
 
-- Monitoring reports in dashboards help you do root-cause analysis and troubleshooting quickly. Operations teams can use these dashboards to view all key resources that make up Azure VMware Solution in a single pane.
-- Dashboard metrics provide insight into how code and infrastructure changes impact application behavior.
-- Visuals help customer support teams understand the impact of changes, performance, and availability issues on an application.
-- Performance indicators benefit executive leadership and business stakeholders. These tools inform decisions that align an application's performance with business objectives. For example, an executive can monitor commitment to customers by reviewing metrics such as service availability, incident resolution times, and average response times. These metrics help ensure that the organization delivers services according to its SLA.
+Monitoring reports in dashboards help you do root-cause analysis and troubleshooting quickly. Operations teams can use these dashboards to view all key resources that make up Azure VMware Solution in a single pane. Dashboard metrics provide insight into how code and infrastructure changes impact application behavior.  Theses visuals help customer support teams understand the impact of changes, performance, and availability issues on an application.
+
+Performance indicators benefit executive leadership and business stakeholders. These tools inform decisions that align an application's performance with business objectives. For example, an executive can monitor commitment to customers by reviewing metrics such as service availability, incident resolution times, and average response times. These metrics help ensure that the organization delivers services according to its SLA.
 
 Besides offering insight, dashboards can also promote transparency and encourage collaboration, for instance, when you grant appropriate stakeholders access to application dashboards. This act cultivates a shared comprehension of an application's performance. This practice also enables an organization to make informed decisions. As a result, stakeholders can focus on pursuing crucial initiatives that propel the business forward.
 
+Fundamentally workbooks provide richer functionality, while dashboards offer a "single pane of glass" view of Azure infrastructure and services.
+
 ##### Recommendations
 
-- Build an application dashboard with Application Insights or Grafana. Connect the dashboard to relevant data sources that store metrics from your Azure VMware Solution environment.
-- Create an Azure workbook as a central repository for commonly run queries, metrics, and interactive reports.
-- Ensure that your data source aligns with security and compliance requirements.
+- Build an application dashboard with Application Insights or Grafana. Connect the dashboard to relevant data sources that store metrics from your Azure VMware Solution environment.   
+Ref: Building Azure dashboard [Create A Dashboard](https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards)
+- Create an Azure workbook as a central repository for commonly run queries, metrics, and interactive reports.     
+Ref: Building workbooks [Create An Azure Workbook](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-create-workbook)
+- Ensure that your resources align with security and compliance requirements defined in Azure Policy.    
+Ref: Monitoring compliance [Azure Policy & Compliance](https://learn.microsoft.com/en-us/azure/governance/policy/how-to/determine-non-compliance)
 - Define access controls and permissions such as user authentication and role-based access control. Ensure that each stakeholder has appropriate access that's based on their role.
 - Conduct periodic access reviews to check that user access is up to date and aligned with current roles and responsibilities.
 
