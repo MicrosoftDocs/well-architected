@@ -11,29 +11,59 @@ ms.subservice: waf-workload-avs
 
 # Monitoring considerations for Azure VMware Solution workloads
 
-Mark This article discusses the monitoring design area of an Azure VMware Solution workload. This area focuses on observability best practices. The guidance is intended for an operations team. Microsoft, VMware, and third parties provide various tools that you can use to monitor your infrastructure and application. This article lists those options.
+This article identifies the monitoring requirements of the Azure VMware Solution.  The guidance is intended for the operations team responsible for managing and maintaining the infrastructure and health of the environment. The focus is on what to monitor with guidance based on Microsoft and VMware native tools, however 3rd party tools can of course be used as alternatives.
+Solution components that write to the VMware syslog include VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server.   When Diagnostics is enabled, those logs are written to the designated Log Analytics Workspace.
 
-Each option offers monitoring solutions with varying degrees of licensing costs, integration options, monitoring scope, and support. Carefully review the applicable terms and conditions before using the tools.
 
-## Collect infrastructure data
+## Basic Health
 
 *Impact: Operational excellence*
 
-Monitoring your workload involves collecting data from Azure VMware Solution infrastructure and various VMware solution components. Azure VMware Solution is integrated with the VMware software-defined datacenter (SDDC), which runs several VMware solution native components such as VMware Aria. You can use this suite of tools, including VMware Aria Operations, to manage various aspects of your infrastructure.  
-
-Another tool at your disposal is VMware vSphere Health Status for Azure VMware Solution. This tool helps ensure that proactive issue detection and remediation are continually performed in your Azure VMware Solution environment. In particular, this tool finds misconfigurations in the VMware vSphere infrastructure and detects performance bottlenecks. It also provides insight into resource utilization and overall environmental health performance.
-
-VMware Aria Operations for Networks helps you achieve comprehensive network visibility, streamline troubleshooting processes, and optimize network performance.
+### Host Operations:
+Ensure you are aware of pending host operations by setting up the notifications for host remediation activities (changes to underlying hardware).  
 
 ##### Recommendations
 
-- Configure [VMware vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html) to get a high-level view of the Azure VMware Solution private cloud health status.
-- Use third-party tools like [VMware Aria Suite](https://www.vmware.com/products/aria-operations-for-networks.html) for enhanced visibility and analytics of Azure VMware Solution private cloud network infrastructure.
-- Use Azure native monitoring tools such as:
-  - Azure Monitor.
-  - VMware Aria Operations for operational monitoring.
-  - Azure Policy and its associated dashboard for compliance monitoring.
-  - Microsoft Defender for Cloud and Microsoft Sentinel for security monitoring.
+- You must be added to any one of the following RBAC roles in all subscriptions where an Azure VMware Solution is deployed.  Co-Administrator, Owner or Contributor or Service Administrator (Classic administrators).  
+Ref: [Host Actions Notification](https://learn.microsoft.com/en-us/azure/azure-vmware/concepts-private-clouds-clusters#host-monitoring-and-remediation)
+
+### Host monitoring and remediation:  
+
+Understanding what Microsoft is doing as part of normal cloud operations to the Azure VMware environment requires you to configure the ‘Service Health’ monitoring function.  This service notifies you use ‘Alerts’ via  ‘Action Groups’ about service events. Make sure you add all the regions where you have the Azure VMware Solution deployed the select the four options ‘Service issue, planned maintenance, health advisories and security advisories’.  Divide these up to target specific operations teams as required.
+
+#### Recommendation: 
+
+- Enable health alerts and identify owners for each of the four alert types.     
+Ref: [Service Health Alerts for Azure VMware Solution](https://learn.microsoft.com/en-us/azure/azure-vmware/configure-alerts-for-azure-vmware-solution)     
+Ref: Integrating with VMware Aria Operation [Configuring an Azure VMware Solution Instance in VMware Aria Operations](https://docs.vmware.com/en/VMware-Aria-Operations/8.16/Configuring-Operations/GUID-6CDFEDDC-A72C-4AB4-B8E8-84542CC6CE27.html)
+
+
+### Host performance and metrics: 
+Use the monitoring metrics available in Azure to watch for threshold consumption levels of CPU, memory and storage that exceed recommendations. To obtain the logs, the ‘Diagnostics’ options must be configured for each SDDC.
+You can also integrate the Azure VMware Solution with VMware Aria (separate service with its own licencing) to get performance optimization, efficient capacity and cost management, intelligent remediation, and integrated compliance. Azure Diagnostics can also be used to send logs to third party logging solutions using event hubs, storage accounts or directly to a supported partner solution.
+#### 	Recommendation: 
+- Enable the Azure VMware Solution performance metrics monitoring capabilities manually from the portal, using Bicep, Powershell, Terraform or the Azure CLI. 
+- Leverage tools like VMware Aria to gather performance metrics.    
+Ref:  Githup automated deployment of key metrics [Key monitoring metrics](https://github.com/Azure/Enterprise-Scale-for-AVS/blob/main/BrownField/PrivateCloud/AVS-PrivateCloud/readme.md)
+
+### SDDC NSX-T monitoring: 
+To access network logs , enable the Azure VMware Diagnostics options and send data to the designated Log Analytics Workspace.  This will enable access to the health data from the NSX_T appliances and to logs that the VMware syslog service collects. 
+#### Recommendations:
+- Enable the Azure VMware Solution ‘Diagnostics’ settings to send the logs to the custom Log Analytics Workspace.    
+Ref: Configure VMware syslogs for Azure VMware Solution [NSX-T logging](https://learn.microsoft.com/en-us/azure/azure-vmware/configure-vmware-syslogs)     
+Ref: Enable tagging on NSX-T Firewall rules and SNAT rules to facilitate searches in Azure Log Analytics. [Configuring NSX-T Firewall rules loggin](https://techcommunity.microsoft.com/t5/azure-migration-and/azure-vmware-solution-using-log-analytics-with-nsx-t-firewall/ba-p/4131302)     
+(Note: Logging must be enabled for rules defined in NSX-T before they appear in the Azure log analytics workspace.  Logs generated by vCenter are sent automatically.)
+
+
+
+
+
+
+
+
+
+
+
 
 ## Manage logs and archives
 
