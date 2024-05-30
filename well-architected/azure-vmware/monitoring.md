@@ -56,29 +56,27 @@ Ref: Enable tagging on NSX-T Firewall rules and SNAT rules to facilitate searche
 
 
 
-
-
-
-
-
-
-
-
-
-## Manage logs and archives
+## Managing Logs - Retention & Archive
 
 *Impact: Operational excellence*
 
-To get health data from VMware solution components, you need access to logs that the VMware syslog service collects. Examples of solution components include VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server. Logs from these components are available through Azure VMware Solution infrastructure. A Log Analytics agent or extension sends guest logs at the virtual machine (VM) level to Log Analytics. Within Azure VMware Solution, you can send the Azure VMware Solution logs to an Azure native storage blob. To send logs to a storage blob, you can set up forwarders from a centralized syslog server, or you can configure the blob as a destination in Azure Monitor. It's also possible to use an Azure native tool such as Azure Logic Apps or Azure Functions to forward logs. You can use these tools to create listeners for incoming logs from Azure VMware Solution and to send the logs to a storage blob.
+Azure Log Analytics allows you to store logs for up to 2 years.  An analysis of your log retention requirements should be done to identify which logs are required for longer term storage and/or which logs can be retained in a less expensive archive. If you have record immutability requirements, Azure VMware Solution diagnostics settings allow you to send the logs to an Azure native storage blob.  You can use tools such as Azure Logic Apps or Azure Functions to forward logs. You can use these tools to create listeners for incoming logs from Azure VMware Solution and to send the logs to a storage blob.
 
 Archiving logs is a strategy for keeping your storage costs down. Azure Storage blobs and Log Analytics can transfer logs for long-term archival. Using a storage blob is the less expensive option. But Log Analytics has advanced integrations for alerting, visualization, querying, and gaining machine learning–based insights. Consider your budget, functional use cases, and long-term use cases when you choose a solution.
 
+
 ##### Recommendations
 
-- Collect logs from the VMware syslog service to get health data from VMware solution components such as VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server.
+- Collect logs from the VMware syslog service to get health data from VMware solution components such as VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server.     
+Ref: Configuring Log Analytics [Enabling Diagnostics for Azure VMware Solution](https://learn.microsoft.com/en-us/azure/azure-vmware/configure-vmware-syslogs)
 - Configure tools such as VMware Aria Operations for Logging to collect various logs for querying, analyzing, and reporting capabilities.
-- Configure retention durations for sending logs to long-term storage to reduce query time and save on storage costs.
+- Configure retention durations for sending logs to long-term storage to reduce query time and save on storage costs.    
+Ref: Log retention [Configure log retention and archive](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=portal-3%2Cportal-1%2Cportal-2)     
+Ref: Log immutability [Securing logs](https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-policy-configure-version-scope)     
+Ref: Storing logs off-line [Long term retention using Azure storage](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-export-logic-app)
   
+
+
 ## Monitor the guest operating system
 
 *Impact: Operational excellence*
