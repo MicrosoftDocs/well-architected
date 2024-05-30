@@ -96,34 +96,84 @@ Ref: Azure ARC for Servers [ARC for Servers](https://learn.microsoft.com/en-us/a
 Ref: VM Metrics [Enable Monitoring of Hybrid Workloads](https://learn.microsoft.com/en-us/azure/azure-arc/servers/learn/tutorial-enable-vm-insights)
 - Use Azure policy to collect only the logs you need to control costs.     
 Ref: Azure Policy for cost control [Cost Governance](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/cost-governance-with-azure-policy/ba-p/3791888#:~:text=With%20Azure%20Policy%2C%20you%20can%20define%20and%20enforce,to%20resources%20that%20identify%20them%20as%20cost-related%20resources.)
-- Use monitoring alerts to notify operations of resource constrained workloads.
+- Use monitoring alerts to notify operations of resource constrained workloads.    
+Ref: Alerting [Automated deployment of default metric alerts](https://github.com/Azure/Enterprise-Scale-for-AVS/tree/main/BrownField)
 - Create dashboard to visually represent key metrics of your workloads across SDDCs.    
 Ref: Creating dashboards [Azure Dashboard Creation](https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards)
 
-References:
-
-Azure Arc for Azure VMware Solution: Deploy Arc-enabled VMware vSphere for Azure VMware Solution private cloud - Azure VMware Solution | Microsoft Learn
-
-Azure Arc for Servers: Azure Arc-enabled servers Overview - Azure Arc | Microsoft Learn
-Create custom dashboards: Create a dashboard in the Azure portal - Azure portal | Microsoft Learn
-
-
-
-
-
-
-__________________-
-
-Within the guest operating system, metrics are available for disk usage, application performance, system resource utilization, and user activity. Consider using Azure Arc for Azure VMware Solution (preview) to manage VMware infrastructure resources in Azure. For more information, see [Deploy Azure Arc for Azure VMware Solution](/azure/azure-vmware/deploy-arc-for-azure-vmware-solution).
-
-##### Recommendations
-
-- Enable guest management and install Azure extensions after your private cloud is enabled by Azure Arc for servers or Azure Arc for Azure VMware Solution (preview).
-- Install extra agents to collect data to enable guest management and monitoring on Azure VMware Solution guest VMs.  
-
-## Implement security monitoring
+## Monitoring networks
 
 *Impact: Security, Operational excellence*
+
+There are two networks to monitor with an Azure VMware Solution SDDC; the traffic in Azure native and the traffic within the SDDC itself.  
+
+For the Azure to SDDC traffic, ensuring that connectivity is available, and alerting when it is not, is accomplished by setting up network monitoring jobs using Network Monitor.  This can be configured either as a one-off (troubleshooting) or as an ongoing tool to identify communication issues.
+
+For connectivity between workloads within the SDDC, port mirroring is intended to be used as a temporary investigative tool and not a permanent network data collection feature. For a continuous meta-data network flow logging solution use the IPFix feature.
+
+As described above in SDDC NSX-T monitoring , leverage the ability to log network rules defined in the NSX-T/Security and NSX-T/Networking/NAT portals.  Use descriptive tagging in both areas to facilitate searching and alerting through log analytics.
+
+
+#### Recommendations:
+
+- Set up Azure Monitor Network Insights to monitor the connectivity and throughput between the Azure segments of you Azure VMware Solution environment.    
+Ref: Network connectivity monitoring [Network Watcher](https://learn.microsoft.com/en-us/azure/network-watcher/network-insights-overview)
+
+- Enable diagnostics and leverage log analytics to create dashboards and alerts on your network connections supporting the Azure VMware Solution.    
+Ref: Log analytics [Creating Dashboards](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/tutorial-logs-dashboards)
+
+- Use VMware Aria (formerly vRealize) to monitor network connections.     
+Ref:  Using Aria [Configuring VMware Aria](https://learn.microsoft.com/en-us/azure/azure-vmware/vrealize-operations-for-azure-vmware-solution)
+
+- Use Azure Firewall Workbook or similar tools to monitor common metrics and logs that are related to firewall devices.    
+Ref: Azure Firewall Workbook [Using the Azure Firewall workbook](https://learn.microsoft.com/en-us/azure/firewall/firewall-workbook)     
+Ref: Using Azure Kusto query language [Azure Firewall structured logs](https://learn.microsoft.com/en-us/azure/firewall/firewall-structured-logs)
+
+- Use Azure Log Analytics Kusto query language to correlate logs from multiple security vectors such as identity, networking, and infrastructure vectors.  Leverage the pre-built queries (viewable when you open the Log Analytics blade) as a starting point and develop your own as required.   
+Ref: Getting started with Kusto [Introduction to Kusto Query Language](https://techcommunity.microsoft.com/t5/azure-synapse-analytics-blog/introduction-to-kusto-query-language-kql/ba-p/3758349)     
+Ref: Kusto Overview [KQL Overview](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/)
+
+References:
+	Monitoring Azure Networks: Azure Monitor Network Insights | Microsoft Learn
+	
+Configuring Aria/vRealize with Azure VMware Solution:  Configure vRealize Operations for Azure VMware Solution - Azure VMware Solution | Microsoft Learn
+
+Using Azure Kusto query language: https://learn.microsoft.com/en-us/azure/firewall/firewall-structured-logs
+
+
+## Securing Azure VMware Solution
+
+*Impact: Security, Operational excellence*
+
+Use a defence in depth approach to secure your SDDC by deploying best practices and tools to protect against and monitor for anomalous behavior. 
+
+Secure your networks by using firewalls with WAF capability both inside and external to the Azure VMware Solution.   Azure Firewall or a 3rd party NVA should be deployed to protect North/South traffic (in and out of the SDDC) and either NSX-T Firewall or a 3rd party NVA should be used inside the SDDC for East/West traffic (between workloads within the SDDC).
+
+Enable Microsoft Defender for Cloud (requires Azure Arc) to protect workloads against threats to servers running in the SDDC.  3rd party solutions can also be used here.
+
+Enable a cloud native security information and event management (SIEM) and security orchestration, automation, and response (SOAR) solution that runs in the Azure cloud to deliver intelligent security analytics and threat intelligence across all workloads in the SDDC.
+	
+	Recommendations:
+Create a zero trust business plan and implement it.  Secure your networks using Azure Firewall or an NVA based on zero trust networking concepts and use the WAF filtering capabilities of next generation firewalls.
+
+Leverage defensive and investigative tools to provide a complete defence in depth approach to workload security. These can be either Microsoft cloud native tools like Defender/Sentinel/Network Manager, or 3rd party tools from Microsoft partners.
+
+
+References:
+The zero trust business plan:  RWJtxq (microsoft.com)
+
+Azure Firewall capabilities: https://learn.microsoft.com/en-us/azure/firewall/overview
+
+
+Azure networking zero trust documentation:  Secure networks with Zero Trust | Microsoft Learn
+
+Configuring Azure Defender for Servers https://learn.microsoft.com/en-us/azure/defender-for-cloud/plan-defender-for-servers-agents
+
+Onboarding Azure Sentinel https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard 
+
+
+
+- ___________________________________
 
 Security monitoring is critical for detecting and responding to anomalous activities. Workloads that run in an Azure VMware Solution private cloud need comprehensive security monitoring that spans networks, Azure resources, and the Azure VMware Solution private cloud itself. You can centralize security events by deploying a Microsoft Sentinel workspace. By using this integration, the operation team can view, analyze, and detect security incidents in the context of a broader organizational threat landscape.
 
