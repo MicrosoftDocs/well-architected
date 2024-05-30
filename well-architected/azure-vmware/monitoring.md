@@ -81,6 +81,39 @@ Ref: Storing logs off-line [Long term retention using Azure storage](https://lea
 
 *Impact: Operational excellence*
 
+Monitor the performance on individual virtual machines running in the Azure VMware Solution platform for key metrics like RAM, CPU, disk consumption and other resources.  Create custom dashboards to monitor the state of your virtual machines.
+
+Use Azure ARC for Azure VMware Solution or Azure ARC for Servers to monitor an manage guest virtual machines.  Note that for software running in a virtual machine (VM) like, SQL Server and Windows Server, running in Azure VMware Solution provides more value such as free Extended Security Updates (ESUs).
+
+You can continue to use 3rd party or legacy tools to monitor guest VM performance metrics however note that these logs will not be kept in the Log Analytics Workspace.
+
+#### Recommendations:
+
+- Compare the features then deploy the Azure ARC for Azure VMware Solution, or Azure ARC for Servers, and connect virtual machines performance metrics.    
+Ref: Azure ARC for Azure VMware Solution [Deploy ARC for Azure VMware Solution](https://learn.microsoft.com/en-us/azure/azure-vmware/deploy-arc-for-azure-vmware-solution?tabs=windows)      
+Ref: Azure ARC for Servers [ARC for Servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/overview)
+- Set alerts for specific thresholds based on machine roles and requirements.     
+Ref: VM Metrics [Enable Monitoring of Hybrid Workloads](https://learn.microsoft.com/en-us/azure/azure-arc/servers/learn/tutorial-enable-vm-insights)
+- Use Azure policy to collect only the logs you need to control costs.     
+Ref: Azure Policy for cost control [Cost Governance](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/cost-governance-with-azure-policy/ba-p/3791888#:~:text=With%20Azure%20Policy%2C%20you%20can%20define%20and%20enforce,to%20resources%20that%20identify%20them%20as%20cost-related%20resources.)
+- Use monitoring alerts to notify operations of resource constrained workloads.
+- Create dashboard to visually represent key metrics of your workloads across SDDCs.    
+Ref: Creating dashboards [Azure Dashboard Creation](https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards)
+
+References:
+
+Azure Arc for Azure VMware Solution: Deploy Arc-enabled VMware vSphere for Azure VMware Solution private cloud - Azure VMware Solution | Microsoft Learn
+
+Azure Arc for Servers: Azure Arc-enabled servers Overview - Azure Arc | Microsoft Learn
+Create custom dashboards: Create a dashboard in the Azure portal - Azure portal | Microsoft Learn
+
+
+
+
+
+
+__________________-
+
 Within the guest operating system, metrics are available for disk usage, application performance, system resource utilization, and user activity. Consider using Azure Arc for Azure VMware Solution (preview) to manage VMware infrastructure resources in Azure. For more information, see [Deploy Azure Arc for Azure VMware Solution](/azure/azure-vmware/deploy-arc-for-azure-vmware-solution).
 
 ##### Recommendations
