@@ -181,6 +181,7 @@ Ref:  Monitor Azure NetApp files certificate rotation [Monitoring ANF Certificat
 
 
 ## Configure and streamline alerts
+
 When you run workloads in the Azure VMware Solution private cloud, you need to effectively monitor workload performance. For example, you should capture logs, metrics, and trace requests for your application and infrastructure layers.
 
 Alerts can help you respond to changes in your performance baseline. You can also use alerts to provide information about necessary maintenance or configuration changes. For instance, you can receive notifications when a key expires, a connection is lost, or there's a risk of exceeding a resource's capacity.
@@ -203,42 +204,19 @@ Ref: Complex solution - require the use of PowerCLI and/or the API (documentatio
 Ref: Configuraing Azure Alerts [Azure VMare Solution Alerts](https://learn.microsoft.com/en-us/azure/azure-vmware/configure-alerts-for-azure-vmware-solution)
 - Use application performance monitoring (APM) tools to gain performance insights at the application code level.    
 Ref: Hybrid Use of [Application Insights](https://learn.microsoft.com/en-us/azure/architecture/hybrid/hybrid-perf-monitoring)
-- Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring.
-- Prioritize alerts based on their impact on operations or the criticality of the affected systems. Fine-tune alerts to trigger only meaningful events.
-- To reduce noise and effectively manage alerts, use methods for reducing the number of individual notifications that are issued.
-- To minimize alert fatigue, employ a mechanism to notify key stakeholders only about significant events.
-- Use notification channels such as SMS, email, push notifications, and collaboration platforms such as Microsoft Teams to ensure that alerts are delivered effectively.
+- Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring.     
+Ref: End-to-end monitoring [Hybrid Monitoring](https://learn.microsoft.com/en-us/azure/architecture/hybrid/hybrid-perf-monitoring)
+- Prioritize alerts based on their impact on operations or the criticality of the affected systems. Fine-tune alerts to trigger only meaningful events.     
+Ref: Actions on alerting [Plan alerts and automated actions](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-plan)
+- To reduce noise and effectively manage alerts, use methods for reducing the number of individual notifications that are issued.     
+Ref: Setting dynamic alert thresholds [Dynamic monitoring](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-dynamic-thresholds)
+- To minimize alert fatigue, employ a mechanism to notify key stakeholders only about significant events.     
+Ref:  Managing alert rules [Alert rule management](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-manage-alert-rules)
+- Use notification channels such as SMS, email, push notifications, and collaboration platforms such as Microsoft Teams to ensure that alerts are delivered effectively.     
+Ref: Notifications and actions [Azure Action Groups](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups)
 
 
 
-## Configure and streamline alerts
-
-*Impact: Operational excellence, Cost optimization*
-
-When you run workloads in the Azure VMware Solution private cloud, you need to effectively monitor workload performance. For example, you should capture logs, metrics, and trace requests for your application and infrastructure layers.
-
-Alerts can help you respond to changes in your performance baseline. You can also use alerts to provide information about necessary maintenance or configuration changes. For instance, you can receive notifications when a key expires, a connection is lost, or there's a risk of exceeding a resource's capacity.
-
-To make alerts effective, configure them to notify accountable teams when certain conditions are met. Also consider consolidating alerts to reduce the number of individual notifications that are sent:
-
-- Instead of issuing an alert for every machine that's low on space, consider consolidating alerts by hosts, resource groups, or clusters.
-- Use this approach also with host issues, CPU, and storage spikes.
-- Base alerts on time windows. For example, if a host issues alerts for a short time, you can suppress the alerts according to a defined time threshold. For instance, you can send an alert only after five minutes have passed.
-
-##### Recommendations
-
-- Discuss and establish baselines that are based on performance data.
-- Define relevant alert criteria such as thresholds, severity levels, or specific conditions.
-- Use the [VMware vSphere events and alarms subsystem](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-9272E3B2-6A7F-427B-994C-B15FF8CADC25.html) to monitor VMware vSphere and set up triggers.
-- Configure [Azure alerts in Azure VMware Solution](/azure/azure-vmware/configure-alerts-for-azure-vmware-solution#supported-metrics-and-activities) to respond to events in real time.
-- Ensure that alerts are configured so that [VMware vSAN datastore slack space](/azure/azure-vmware/concepts-storage) is maintained at the levels that your service-level agreement (SLA) mandates.
-- Configure resource health alerts to get the real-time health status of the Azure VMware Solution private cloud.
-- Use application performance monitoring (APM) tools to gain performance insights at the application code level.
-- Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring.
-- Prioritize alerts based on their impact on operations or the criticality of the affected systems. Fine-tune alerts to trigger only meaningful events.
-- To reduce noise and effectively manage alerts, use methods for reducing the number of individual notifications that are issued.
-- To minimize alert fatigue, employ a mechanism to notify key stakeholders only about significant events.
-- Use notification channels such as SMS, email, push notifications, and collaboration platforms such as Microsoft Teams to ensure that alerts are delivered effectively.
 
 ## Manage costs
 
