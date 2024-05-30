@@ -133,12 +133,8 @@ Ref: Using Azure Kusto query language [Azure Firewall structured logs](https://l
 Ref: Getting started with Kusto [Introduction to Kusto Query Language](https://techcommunity.microsoft.com/t5/azure-synapse-analytics-blog/introduction-to-kusto-query-language-kql/ba-p/3758349)     
 Ref: Kusto Overview [KQL Overview](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/)
 
-References:
-	Monitoring Azure Networks: Azure Monitor Network Insights | Microsoft Learn
-	
-Configuring Aria/vRealize with Azure VMware Solution:  Configure vRealize Operations for Azure VMware Solution - Azure VMware Solution | Microsoft Learn
-
-Using Azure Kusto query language: https://learn.microsoft.com/en-us/azure/firewall/firewall-structured-logs
+- Capture and monitor network firewall logs that are deployed in the Azure VMware Solution private cloud. Also monitor logs that are deployed in Azure when your application extends to Azure native devices such as Azure Firewall or Azure Application Gateway.     
+Ref: Azure Firewall & Azure VMware Solution [Firewall integration in Azure VMware Solution](https://techcommunity.microsoft.com/t5/azure-migration-and/firewall-integration-in-azure-vmware-solution/ba-p/2254961)
 
 
 ## Securing Azure VMware Solution
@@ -152,49 +148,68 @@ Secure your networks by using firewalls with WAF capability both inside and exte
 Enable Microsoft Defender for Cloud (requires Azure Arc) to protect workloads against threats to servers running in the SDDC.  3rd party solutions can also be used here.
 
 Enable a cloud native security information and event management (SIEM) and security orchestration, automation, and response (SOAR) solution that runs in the Azure cloud to deliver intelligent security analytics and threat intelligence across all workloads in the SDDC.
+#### Recommendations:
+- Create a zero trust business plan and implement it.      
+Ref: Zero Trust [Business Plan](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWJtxq)
+
+- Leverage defensive and investigative tools to provide a complete defence in depth approach to workload security. These can be either Microsoft cloud native tools like Defender/Sentinel/Network Manager, or 3rd party tools from Microsoft partners.    
+Ref: Zero Trust [Networking](https://learn.microsoft.com/en-us/security/zero-trust/deploy/networks)
+
+-  Secure your networks using Azure Firewall or an NVA based on zero trust networking concepts and use the WAF filtering capabilities of next generation firewalls.     
+Ref: Zero Trust [Azure Firewall](https://learn.microsoft.com/en-us/azure/firewall/overview)
+
+- Configuring Azure Defender for Servers      
+Ref: Securing virtual machines [Defender for Servers](https://learn.microsoft.com/en-us/azure/defender-for-cloud/plan-defender-for-servers-agents)
+
+- Enable a SIEM/SOAR solution like Azure Sentinel or a third party tool.     
+Ref: SIEM/SOAR  [Azure Sentinal](https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard)
+
+
+## Storage	
+
+Azure VMware Solution supports the addition of extra storage via cloud native partnerships with NetApp and Purestorage as well as the new Azure Native ElasticSAN.  Each of these has specific properties that allow customers to meet workload specific requirements, and each of then needs to be monitored. 
+
+Diagnostics enable monitoring of the capacity of datastores added to the SDDC for each of the forementioned solution.  You should also be monitoring connectivity and performance based on each systems metrics – all these are enabled through the Diagnostics settings in their respective blades (Azure portal page).
+
+Recommendations:
+- For each additional datastore added to your SDDCs enable diagnostics, connectivity monitoring and capacity monitoring.   
+Ref: Monitor Azure NetApp Files [ANF Monitoring](https://learn.microsoft.com/en-us/azure/azure-netapp-files/monitor-azure-netapp-files)
 	
-	Recommendations:
-Create a zero trust business plan and implement it.  Secure your networks using Azure Firewall or an NVA based on zero trust networking concepts and use the WAF filtering capabilities of next generation firewalls.
-
-Leverage defensive and investigative tools to provide a complete defence in depth approach to workload security. These can be either Microsoft cloud native tools like Defender/Sentinel/Network Manager, or 3rd party tools from Microsoft partners.
-
-
-References:
-The zero trust business plan:  RWJtxq (microsoft.com)
-
-Azure Firewall capabilities: https://learn.microsoft.com/en-us/azure/firewall/overview
+- Monitoring NetApp Certificate Rotation because Automatic Managed System Identity (MSI) certificate renewal isn't currently supported. It's recommended you create an Azure monitor alert to notify you when the MSI certificate is set to expire.     
+Ref:  Monitor Azure NetApp files certificate rotation [Monitoring ANF Certificate Expiry](https://learn.microsoft.com/en-us/azure/azure-netapp-files/configure-customer-managed-keys?tabs=azure-portal#considerations)
+- Monitor datastore capacity [Datastore alerting](https://github.com/Azure/Enterprise-Scale-for-AVS/blob/main/BrownField/Monitoring/AVS-Utilization-Alerts/readme.md)
 
 
-Azure networking zero trust documentation:  Secure networks with Zero Trust | Microsoft Learn
+## Configure and streamline alerts
+When you run workloads in the Azure VMware Solution private cloud, you need to effectively monitor workload performance. For example, you should capture logs, metrics, and trace requests for your application and infrastructure layers.
 
-Configuring Azure Defender for Servers https://learn.microsoft.com/en-us/azure/defender-for-cloud/plan-defender-for-servers-agents
+Alerts can help you respond to changes in your performance baseline. You can also use alerts to provide information about necessary maintenance or configuration changes. For instance, you can receive notifications when a key expires, a connection is lost, or there's a risk of exceeding a resource's capacity.
 
-Onboarding Azure Sentinel https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard 
+To make alerts effective, configure them to notify accountable teams when certain conditions are met. Also consider consolidating alerts to reduce the number of individual notifications that are sent:    
+
+- Instead of issuing an alert for every machine that's low on space, consider consolidating alerts by hosts, resource groups, or clusters.
+- Use this approach also with host issues, CPU, and storage spikes.
+- Base alerts on time windows. For example, if a host issues alerts for a short time, you can suppress the alerts according to a defined time threshold. For instance, you can send an alert only after five minutes have passed.
+
+#### Recommendations
+- Discuss and establish baselines that are based on performance data.    
+Ref: Azure Monitor Baseline [Configure baseline alerts](https://azure.github.io/azure-monitor-baseline-alerts/welcome/)
+
+- Define relevant alert criteria such as thresholds, severity levels, or specific conditions.    
+Ref: Azure Monitor Alerts [Managing Alerts in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-manage-alert-rules)
+- Use the VMware vSphere events and alarms subsystem to monitor VMware vSphere and set up triggers.     
+Ref: Complex solution - require the use of PowerCLI and/or the API (documentation pending)
+- Configure Azure alerts in Azure VMware Solution to respond to events in real time.     
+Ref: Configuraing Azure Alerts [Azure VMare Solution Alerts](https://learn.microsoft.com/en-us/azure/azure-vmware/configure-alerts-for-azure-vmware-solution)
+- Use application performance monitoring (APM) tools to gain performance insights at the application code level.    
+Ref: Hybrid Use of [Application Insights](https://learn.microsoft.com/en-us/azure/architecture/hybrid/hybrid-perf-monitoring)
+- Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring.
+- Prioritize alerts based on their impact on operations or the criticality of the affected systems. Fine-tune alerts to trigger only meaningful events.
+- To reduce noise and effectively manage alerts, use methods for reducing the number of individual notifications that are issued.
+- To minimize alert fatigue, employ a mechanism to notify key stakeholders only about significant events.
+- Use notification channels such as SMS, email, push notifications, and collaboration platforms such as Microsoft Teams to ensure that alerts are delivered effectively.
 
 
-
-- ___________________________________
-
-Security monitoring is critical for detecting and responding to anomalous activities. Workloads that run in an Azure VMware Solution private cloud need comprehensive security monitoring that spans networks, Azure resources, and the Azure VMware Solution private cloud itself. You can centralize security events by deploying a Microsoft Sentinel workspace. By using this integration, the operation team can view, analyze, and detect security incidents in the context of a broader organizational threat landscape.
-
-##### Recommendations
-
-- Enable [Defender for Cloud](/azure/defender-for-cloud/connect-azure-subscription) on the Azure subscription that you use to deploy the Azure VMware Solution private cloud. Ensure that in the Defender for Cloud plan, the **Cloud Workload Protection (CWP)** setting has a value of **ON** for servers.
-- Audit actions that privileged users take on the Azure VMware Solution private cloud. For more information, see [Audit activity history for group assignments in privileged identity management](/azure/active-directory/privileged-identity-management/groups-audit).
-- Integrate Microsoft Sentinel with Defender for Cloud. Enable its data collector for security events and connect it with Defender for Cloud.
-- Use security monitoring solutions from validated partners in Azure VMware Solution.
-
-## Monitor and analyze networks
-
-*Impact: Security, Operational excellence*
-
-The process of network monitoring inspects all the traffic that comes into and goes out of the Azure VMware Solution private cloud. In Azure VMware Solution, network security operates at the network and host layers.
-
-##### Recommendations
-
-- Capture and monitor network firewall logs that are deployed in the Azure VMware Solution private cloud. Also monitor logs that are deployed in Azure when your application extends to Azure native devices such as Azure Firewall or Azure Application Gateway. For more information, see [Firewall integration in Azure VMware Solution](https://techcommunity.microsoft.com/t5/azure-migration-and/firewall-integration-in-azure-vmware-solution/ba-p/2254961).
-- Use [Azure Firewall Workbook](/azure/firewall/firewall-workbook) or similar tools to monitor common metrics and logs that are related to firewall devices.
-- Correlate logs from multiple security vectors such as identity, networking, and infrastructure vectors.
 
 ## Configure and streamline alerts
 
