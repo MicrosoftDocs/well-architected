@@ -32,31 +32,31 @@ TODO
 App Platform
 
 Training vs. Inference endpoints. 
-  - These have different purpose and also platform requirements (scalability, security, performance). Inference will be driven by the number of concurrent users/requests . Training by amount of data, type of workload, frequency
-  - Recommendations for keeping these separate or and/or reusing some solution components.
+  - These have different purposes and also platform requirements (scalability, security, performance). Inference will be driven by the number of concurrent users/requests. Training by amount of data, type of workload, frequency
+  - Recommendations for keeping these separate and/or reusing some solution components.
   - How is this impacted by model tuning and updates over time?
   - Publishing updates
 
-Batch inference endpoints
+Batch inference endpoints.
   - Benefits of batch inference: long running, async, parallelize 
   
-Recommendations to choose between training a model, using a pretrained model, or fine tuning a pretrained model
+Recommendations to choose between training a model, using a pretrained model, or fine tuning a pretrained model.
   - For pretrained models: how do I evaluate pick the right model. E.g. choose between OpenAI models 
-  - Examples: ML the most flexible to train your own models. OpenAI gives you a selection of pretrained models. Cognitive services allows limited training
+  - Examples: ML is the most flexible to train your own models. OpenAI gives you a selection of pretrained models. Cognitive services allow limited training.
   - What is the role of grounding and the RAG pattern here?
-  - Considerations/tradefoffs of fine-tuning vs grounding/prompt engineering
+  - Considerations/tradeoffs of fine-tuning vs grounding/prompt engineering
   - Cost of training considerations.
 
 Foundational models
   - Azure ML Model Catalog. How to choose a model. Model evaluation and fine tuning.
   - Hosting foundational models: Managed compute, Serverless API
   
-Considerations to share a deployment among multiple workloads (apps) and departments, or sharing for multlple uses (completion vs sentiment analysis)
+Considerations to share a deployment among multiple workloads (apps) and departments, or sharing for multiple uses (completion vs sentiment analysis)
   - Chargeback issues
   - Performance tuning (e.g. less efficient use of caching by the service)
-  - Open AI: when is best to share a deployment of OpenAI across workloads and charge back, vs locally managed
+  - Open AI: when is it better to share a deployment of OpenAI across workloads and charge back, vs locally managed
   
-What functions can be offloaded to a reverse proxy/gateway model like APIM when using Azure PaaS AI Services:Retries (timeouts, throttling )
+What functions can be offloaded to a reverse proxy/gateway model like APIM when using Azure PaaS AI Services: Retries (timeouts, throttling)
   - Chargeback
   - Load balancing
   - Security (network isolation, identity authentication with Entra ID)
@@ -65,7 +65,7 @@ What functions can be offloaded to a reverse proxy/gateway model like APIM when 
   
 Training platform
   - Minimize data access latency
-  - How to pick library/framework to use for training (PyTorch, Tensorflow, etc). Considerations other than functionality?
+  - How to pick library/framework to use for training (PyTorch, Tensorflow, etc.). Considerations other than functionality?
   - Recommendations for training compute selection and configuration. Azure Machine Learning Environments (https://learn.microsoft.com/en-us/azure/machine-learning/concept-environments?view=azureml-api-2&viewFallbackFrom=azureml-api-1)
   - Considerations for Initial training vs re-training: 
 
@@ -76,32 +76,32 @@ Where to host inference endpoint
     ○ Use for inference vs. training
 
 Orchestration at the inference endpoint
-  - Custom code: Pythion, C#, Java
+  - Custom code: Python, C#, Java
   - Libraries/runtimes: Semantic Kernel LangChain. 
-    ○ Link: https://learn.microsoft.com/en-us/semantic-kernel/overview/?tabs=Csharp#why-use-an-sdk-like-semantic-kernel. Also: https://learn.microsoft.com/en-us/semantic-kernel/agents/plugins
+-	Link: https://learn.microsoft.com/en-us/semantic-kernel/overview/?tabs=Csharp#why-use-an-sdk-like-semantic-kernel. Also: https://learn.microsoft.com/en-us/semantic-kernel/agents/plugins
   - Example: calling multiple models/inference endpoints to fulfill an app requirement: 
-    ○ OCR + Summarization
-    ○ Speech to text + summarization + …
-  - Example: RAG pattern. 
-    ○ Multiple/orchestrated calls to various endpoints. Need to process user input to understand intent, enrich and add context to search for grounding data, interact with model,  generate responses
-  - Example: chat/RAG pattern with Actions
+-	OCR + Summarization
+-	Speech to text + summarization + …
+-	Example: RAG pattern. 
+-	Multiple/orchestrated calls to various endpoints. Need to process user input to understand intent, enrich and add context to search for grounding data, interact with model, generate responses.
+-	Example: chat/RAG pattern with Actions
   - Prompt engineering
 
 Considerations for performance
-  - Choosing the right hardware, OS, model, GPUs, etc
+  - Choosing the right hardware, OS, model, GPUs, etc.
   - Open AI: choosing the right quota TPM/RPM and TPUs
   - How to make more efficient use of the inferencing capacity: caching, batching, dedicated endpoints based on usage purpose (e.g. completion vs. sentiment analysis)
 
 Considerations for scaling
-  - Dealing with limitation in the supported RPS by having multiple instances. For example OpenAI and Azure Cognitive Services deployments may have a lower supported RPS that needed by the workload
+  - Dealing with limitation in the supported RPS by having multiple instances. For example, OpenAI and Azure Cognitive Services deployments may have lower supported RPS that needed by the workload.
   - Scaling up vs scaling out. Type of compute, GPUs, FPGAs
 
 Considerations for Monitoring
-  - Monitoring for technical requirements (perf, reliability) vs. functional (accuracy, groundlessness)
+  - Monitoring technical requirements (perf, reliability) vs. functional (accuracy, groundlessness)
 
-Considerations for cost
-  - Choosing the most cost effective model when leveraging a pre-trained/foundational model
-  - Using multiple models for a task to save on cost. Try less expensive first, escalate to next model on failure
+Considerations for cost optimization
+  - Choosing the most cost-effective model when leveraging a pre-trained/foundational model
+  - Using multiple models for a task to save on cost. Try less expensive first, escalate to next model on failure.
 
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
