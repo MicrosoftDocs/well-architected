@@ -171,8 +171,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the
-operational requirements of the workload.
+The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 ### Design checklist
 

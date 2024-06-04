@@ -130,7 +130,7 @@ Have a clear governance boundary for production and lower environments. Place ea
 A blue/green deployment model requires at least two identical deployments. The blue deployment is the active one that serves user traffic in production. The green deployment is the new one that's prepared and tested to receive traffic.
 After the green deployment is completed and tested, traffic is gradually directed from blue to green. If the load transfer is successful, the green deployment becomes the new active deployment. The old blue deployment can then be decommissioned via a phased process. However, if there are problems in the new deployment, it can be aborted, and traffic can either remain in the old blue deployment or be redirected to it.
 
-Azure Mission-Critical recommends a blue/green deployment approach where infrastructure _and applications_ are deployed together as part of a deployment stamp. So rolling out a change to the infrastructure or application always results in a green deployment that contains both layers. This approach enables you to fully test and validate the effect of the change against the infrastructure and application end-to-end before you redirect user traffic to it. The approach increases confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
+Azure Mission-Critical recommends a blue/green deployment approach where infrastructure *and applications* are deployed together as part of a deployment stamp. So rolling out a change to the infrastructure or application always results in a green deployment that contains both layers. This approach enables you to fully test and validate the effect of the change against the infrastructure and application end-to-end before you redirect user traffic to it. The approach increases confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
 
 ### Design considerations
 
@@ -303,25 +303,25 @@ There are many valid approaches to branching. You should choose a strategy that 
 
 ### Design considerations
 
-- **Minimize access**. Developers should do their work in _feature/*_ and _fix/*_ branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
+- **Minimize access**. Developers should do their work in `feature/*` and `fix/*` branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
 
-- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix, and recurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
+- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into `main` as soon as practical. That way, future releases contain the fix, and recurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
 
 ### Design recommendations
 
 - Prioritize the use of [GitHub for source control](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security).
   > [!IMPORTANT]
-  > Create a branching strategy that details _feature_ work and _releases_ as a minimum, and use branch policies and permissions to ensure that the strategy is appropriately enforced.
+  > Create a branching strategy that details *feature* work and *releases* as a minimum, and use branch policies and permissions to ensure that the strategy is appropriately enforced.
 
 - Trigger an automated testing process to validate code change contributions before they're accepted. Team members must also review changes.
 
-- Treat the _main_ branch as a continuously forward-moving and stable branch that's primarily used for integration testing.
-  - Ensure that changes are made to _main_ only via PRs. Use a branch policy to prohibit direct commits.
-  - Every time a PR is merged into _main_, it should automatically kick off a deployment against an integration environment.
-  - The _main_ branch should be considered stable. It should be safe to create a release from *main* at any given time.
-- Use dedicated _release/*_ branches that are created from the _main_ branch and used to deploy to production environments. _release/*_ branches should remain in the repository and can be used to patch a release.
+- Treat the `main` branch as a continuously forward-moving and stable branch that's primarily used for integration testing.
+  - Ensure that changes are made to `main` only via PRs. Use a branch policy to prohibit direct commits.
+  - Every time a PR is merged into `main`, it should automatically kick off a deployment against an integration environment.
+  - The `main` branch should be considered stable. It should be safe to create a release from `main` at any given time.
+- Use dedicated `release/*` branches that are created from the `main` branch and used to deploy to production environments. `release/*` branches should remain in the repository and can be used to patch a release.
 
-- Document a hotfix process and use it only when needed. Create hotfixes in a _fix/*_ branch for subsequent merging into the release branch and deployment to production.
+- Document a hotfix process and use it only when needed. Create hotfixes in a `fix/*` branch for subsequent merging into the release branch and deployment to production.
 
 ## AI for DevOps
 
