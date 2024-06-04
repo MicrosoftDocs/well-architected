@@ -37,7 +37,33 @@ TODO
 
 ## Jose's (Azure Patterns & Practices engineering) seed material
 
-TODO
+Data design
+
+RAG Pattern - Data stores for Augmented phase
+  - What are best practices and recommendations for designing the Data store and the indexes for maximum accuracy
+  - Data preparation: OCR, lower-casing, synonyms, stemming, entity recognition, enrichments, chunking, embeddings, vectors
+    ○ Data enrichments example: adding entity attributes after recognizing them. Addresses, classifications, important attributes
+    ○ Q: vector index vs keyword index, and the data preparation techniques. Example: synonyms and stemming may not(?) be as important b/c of the semantic proximity
+  - Types of index/queries and recommendations (vector, keyword, combined, etc.). Tradeoffs between accuracy and performance
+  - Index design and Searching
+  - Data store options and how it drives design. How to decide which data store to use
+  - One [augmentation] data store vs multiple. 
+  - Integrating external systems and data stores, real time lookups and batch integration.
+  - Tradeoffs between cost, performance, and functionality (e.g. accuracy)
+  - Security and privacy considerations. IP implications
+  - Describe iterative process to optimize data design. Basic example: load data with initial schema, execute common queries, tweak enrichments/schema/queries, and try again. Touch on testing(?)
+  
+Training data
+
+  - Data lakes: storage, security and cost considerations. Move/aggregate data vs remote access. 
+  - Versioning and schemas
+  - Data pipelines: data cleansing, privacy and security, correlating and deduping data across enterprise systems 
+  - Re-training. Feeding data from prod systems
+  
+Other
+
+  - Q: how do we address relationship between data platform and design? At some point, maybe after some initial data design, the platform is selected and it becomes a key factor in the design. In other cases the platform may be already selected
+
 
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
