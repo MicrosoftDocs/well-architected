@@ -20,7 +20,7 @@ Organizations developing and deploying solutions to the cloud also need reliable
 
 Running integration, performance, load, or any other intense testing capability may result in much processing. A well-crafted design for testing the deployed workloads can help ensure full utilization of the available resources, reducing carbon emissions.
 
-_Green Software Foundation alignment: [Carbon awareness](sustainability-design-principles.md#carbon-awareness)_
+*Green Software Foundation alignment: [Carbon awareness](sustainability-design-principles.md#carbon-awareness)*
 
 **Recommendation:**
 
@@ -30,7 +30,7 @@ _Green Software Foundation alignment: [Carbon awareness](sustainability-design-p
 
 Running underutilized or inactive CI/CD agents results in more emissions.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -42,7 +42,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Using caching mechanisms during CI/CD can reduce compute time and, thus, carbon emissions.
 
-_Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -53,7 +53,7 @@ _Green Software Foundation alignment: [Energy Efficiency](sustainability-design-
 
 Splitting large repositories can help the CI/CD phases, where only the parts of the code that have changed are compiled. This reduces compute time, which ultimately lowers carbon emissions.
 
-_Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -73,25 +73,25 @@ Measuring, profiling, and testing workloads are imperative to understanding how 
 
 Without properly profiling and testing workloads, it's difficult to know if it's making the best use of the underlying platform and deployed resources.
 
-_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+*Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
 **Recommendation:**
 
 - Test your applications to understand concurrent requests, simultaneous processing, and more.
 - If you're running Machine Learning (ML) for tests, consider machines with a GPU for better efficiency gains.
 - Identify if the workload is performance intensive and work toward optimization.
-- _Consider this tradeoff:_ Running GPU-based machines for ML tests may increase the cost.
+- *Consider this tradeoff:* Running GPU-based machines for ML tests may increase the cost.
   
 ### Assess with chaos engineering
 
 Running integration, performance and load tests increase the reliability of a workload. However, the introduction of chaos engineering can significantly help improve reliability and resilience and how the applications react to failures. In doing so, the workload can be optimized to handle failures gracefully and with less wasted resources.
 
-_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+*Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
 **Recommendation:**
 
 - Use load testing or [chaos engineering](/azure/well-architected/resiliency/chaos-engineering) to assess how the workload handles platform outages and traffic spikes or dips. This helps increase service resilience and the ability to react to failures, allowing for a more optimized fault handling.
-- _Consider this tradeoff:_ Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability while considering the climate impact of running unnecessary testing sessions.
+- *Consider this tradeoff:* Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability while considering the climate impact of running unnecessary testing sessions.
 - Another angle to this is using chaos engineering to test energy faults or moments with higher carbon emissions: consider setting up tests that will challenge your application to consume the minimum possible energy. Define how the application will react to such conditions with a specific "eco" version informing users that they're emitting the minimum possible carbon by sacrificing some features and possibly some performance. This can also be your benchmark application for scoring its sustainability.
 
 ### Establish CPU and Memory thresholds in testing
@@ -100,7 +100,7 @@ Help build tests for testing sustainability in your application. Consider having
 
 Adding tests and quality gates into the deployment and testing pipeline helps avoid deploying non-sustainable solutions, contributing to lowered emissions.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 

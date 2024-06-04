@@ -73,7 +73,7 @@ A key element of continuous integration is the continual building and testing of
 
 The following code snippet shows a test step from an Azure DevOps pipeline. The step has two tasks:
 
-- The first task uses a popular Python testing framework to run CI tests. These tests reside in source control alongside the Python code. The test results go to a file named _test-results.xml_.
+- The first task uses a popular Python testing framework to run CI tests. These tests reside in source control alongside the Python code. The test results go to a file named *test-results.xml*.
 - The second task consumes the test results and publishes them to the Azure DevOps pipeline as an integrated report.
 
 ```yaml

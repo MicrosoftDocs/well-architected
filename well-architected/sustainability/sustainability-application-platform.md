@@ -23,7 +23,7 @@ Keep platform and services up to date to leverage the latest performance improve
 
 Platform updates enable you to use the latest functionality and features to help increase efficiency. Running on outdated software can result in running a suboptimal workload with unnecessary performance issues. New software tends to be more efficient in general.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -41,7 +41,7 @@ Learn more about [sustainability from the data center to the cloud with Azure](h
 
 Learn about what Azure regions have a lower carbon footprint than others to make better-informed decisions about where and how our workloads process data.
 
-_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
+*Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)*
 
 **Recommendation:**
 
@@ -56,7 +56,7 @@ _Green Software Foundation alignment: [Carbon efficiency](sustainability-design-
 
 Some regions on the planet are more carbon intense than others. Therefore it's essential to consider where we deploy our workloads and combine this with other business requirements.
 
-_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency), [Carbon awareness](sustainability-design-principles.md#carbon-awareness)_
+*Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency), [Carbon awareness](sustainability-design-principles.md#carbon-awareness)*
 
 **Recommendation:**
 
@@ -68,7 +68,7 @@ _Green Software Foundation alignment: [Carbon efficiency](sustainability-design-
 
 Deploying cloud workloads to data centers is easy. However, consider the distance from a data center to the customer. Network traversal increases if the data center is a greater distance from the consumer.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -78,7 +78,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Proactively designing batch processing of workloads can help with scheduling intensive work during low-carbon periods.
 
-_Green Software Foundation alignment: [Carbon awareness](sustainability-design-principles.md#carbon-awareness)_
+*Green Software Foundation alignment: [Carbon awareness](sustainability-design-principles.md#carbon-awareness)*
 
 **Recommendation:**
 
@@ -93,7 +93,7 @@ Consider these platform design decisions when choosing how to operate workloads.
 
 Consider options for containerizing workloads to reduce unnecessary resource allocation and to utilize the deployed resources better.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -105,7 +105,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Managed services are highly optimized and operate on more efficient hardware than other options, contributing to a lower carbon impact.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency), [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency), [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -116,7 +116,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Think about the unused capacity in Azure data centers. Utilizing the otherwise wasted capacity—at significantly reduced prices—the workload contributes to a more sustainable platform design.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -131,7 +131,7 @@ Ensuring workloads use all the allocated resources helps deliver a more sustaina
 
 Operating idle workloads wastes energy and contributes to added carbon emissions.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -142,7 +142,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 It's not uncommon with oversized compute workloads where much of the capacity is never utilized, ultimately leading to a waste of energy.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -160,7 +160,7 @@ Examples:
 - Provisioning an Azure App Service Environment (ASE) over an App Service plan may lead to having provisioned compute, whether utilized or not.
 - Choosing the Azure API Management Premium tier instead of the consumption tier leads to unused resources if you aren't utilizing it fully.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -172,7 +172,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 The Arm-based VMs represent a cost-effective and power-efficient option that doesn't compromise on the required performance.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -183,7 +183,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Consider discovering unutilized workloads and resources and if there are any orphaned resources in your subscriptions.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency), [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency), [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 

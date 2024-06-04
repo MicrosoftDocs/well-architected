@@ -125,7 +125,7 @@ Reducing carbon emissions can happen with three possible solutions:
 - Carbon avoidance; not emitting carbon in the first place
 - Carbon removal; subtract carbon from the atmosphere
 
-The goal of green software is to avoid unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, _carbon removal_ is the preferred goal for removing emissions from our atmosphere.
+The goal of green software is to avoid unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, *carbon removal* is the preferred goal for removing emissions from our atmosphere.
 
 Microsoft is committed to being [carbon negative by 2030](https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/), and [by 2050 to have removed all the carbon](https://blogs.microsoft.com/blog/2021/10/27/supporting-our-customers-on-the-path-to-net-zero-the-microsoft-cloud-and-decarbonization/) the company has emitted since it was founded in 1975.
 
@@ -135,7 +135,7 @@ As a cloud provider, Microsoft is responsible for the data centers hosting your 
 
 However, deploying an application in the Microsoft cloud doesn't automatically make it sustainable, even if the data centers are optimized for sustainability. Applications that aren't optimized may still emit more carbon than necessary.
 
-_Let's take an example._
+*Let's take an example.*
 
 You deploy an app to an Azure service, but you only utilize 10% of the allocated resources. The provisioned resources are underutilized, ultimately leading to unnecessary emissions.
 
