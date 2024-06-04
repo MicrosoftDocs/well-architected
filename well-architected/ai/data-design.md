@@ -117,8 +117,8 @@ Data design
 RAG Pattern - Data stores for Augmented phase
   - What are best practices and recommendations for designing the Data store and the indexes for maximum accuracy
   - Data preparation: OCR, lower-casing, synonyms, stemming, entity recognition, enrichments, chunking, embeddings, vectors
-    ○ Data enrichments example: adding entity attributes after recognizing them. Addresses, classifications, important attributes
-    ○ Q: vector index vs keyword index, and the data preparation techniques. Example: synonyms and stemming may not(?) be as important b/c of the semantic proximity
+    - Data enrichments example: adding entity attributes after recognizing them. Addresses, classifications, important attributes
+    - Q: vector index vs keyword index, and the data preparation techniques. Example: synonyms and stemming may not(?) be as important b/c of the semantic proximity
   - Types of index/queries and recommendations (vector, keyword, combined, etc.). Tradeoffs between accuracy and performance
   - Index design and Searching
   - Data store options and how it drives design. How to decide which data store to use
