@@ -402,8 +402,8 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 - Source data typically needs to be prepared for analytics and ML.
   - Synapse offers various tools to assist with data preparation, including Apache Spark, Synapse Notebooks, and serverless SQL pools with T-SQL and built-in visualizations.
 
-- ML models that have been trained, operationalized, and deployed can be used for _batch_ scoring in Synapse.
-  - AIOps scenarios, such as running regression or degradation predictions in CI/CD pipelined, may require _real-time_ scoring.
+- ML models that have been trained, operationalized, and deployed can be used for *batch* scoring in Synapse.
+  - AIOps scenarios, such as running regression or degradation predictions in CI/CD pipelined, may require *real-time* scoring.
 
 - There are subscription limits for [Azure Synapse](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-synapse-analytics-limits), which should be fully understood in the context of an AIOps methodology.
 

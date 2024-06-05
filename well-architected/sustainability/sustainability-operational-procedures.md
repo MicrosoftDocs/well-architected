@@ -33,7 +33,7 @@ The Emissions Impact Dashboards produce insights in various forms, and allows fo
 - Snapshot export to Excel, Power Point and PDF.
 - [Continuous export to Microsoft Sustainability Manager](/industry/sustainability/import-data-connectors#emissions-impact-dashboard-connector) and Dataverse.
 
-_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+*Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
 **Recommendation:**
 
@@ -52,7 +52,7 @@ It can be a challenge to build carbon proxies for existing applications. Therefo
 
 The next step is to define your target emissions, either for a single application or for your entire set of cloud workloads. The target can also include cost constraints, making it even easier to build upon since shrinking costs will give you some budget to optimize emissions. Once you know your target, the cloud efficiency continuous optimization process can start.
 
-_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+*Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
 **Recommendations:**
 
@@ -70,7 +70,7 @@ The metrics can, as an example, be derived from these categories:
 - Cost optimization metrics.
 - Carbon emissions metrics (or proxies).
 
-_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+*Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
 **Recommendation:**
 
@@ -88,7 +88,7 @@ When defining your SCI, you can use carbon proxies to compensate for the lack of
 
 Linking cost performance metrics to carbon efficiency can be a sound strategy because you won't necessarily need to compromise on your defined workload Key Performance Indicators (KPI) by optimizing cost and reducing carbon emissions. However, you might decide that you're prepared to sacrifice a KPI towards your carbon goal, which can also be part of your strategy.
 
-_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+*Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
 **Recommendation:**
 
@@ -99,7 +99,7 @@ _Green Software Foundation alignment: [Measuring sustainability](sustainability-
 
 Azure Policy is a powerful tool that can make some decisions for your cloud efficiency easier to implement. Consider defining one of more policies to keep your Azure virtual data center continuously optimized.
 
-_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+*Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)*
 
 **Recommendation:**
 
@@ -120,7 +120,7 @@ Creating a sustainability community doesn't have to be a tedious task. Start wit
 
 The Core cloud Efficiency team will have to be up to date with all the innovative tools and principles that drive your Azure workload's cost and carbon footprint.
 
-_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+*Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)*
 
 **Recommendation:**
 
@@ -131,7 +131,7 @@ _Green Software Foundation alignment: [Climate commitments](sustainability-desig
 
 Make time for the core team to learn about advancements in sustainable operations. Meanwhile, ensure that your entire organization starts thinking about green software and how to contribute to the sustainability picture with their daily choices.
 
-_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+*Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)*
 
 **Recommendation:**
 
@@ -145,7 +145,7 @@ Review these popular training and learning resources:
 
 Driving adoption of sustainability efforts requires input and work from across the organization.
 
-_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+*Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)*
 
 **Recommendation:**
 
@@ -159,7 +159,7 @@ The quickest way of enforcing policies and creating the right culture is by sett
 
 Many software partners already include green software in their best practices. Therefore, ensure that your efficiency targets are defined and accepted when discussing the workload.
 
-_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+*Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)*
 
 **Recommendations:**
 

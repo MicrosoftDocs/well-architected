@@ -477,7 +477,7 @@ This section explores the optimal use of these capabilities, providing key consi
 
 - Communication between Pods and Namespaces can be isolated using [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/). Network Policy is a Kubernetes specification that defines access policies for communication between Pods. Using Network Policies, an ordered set of rules can be defined to control how traffic is sent/received, and applied to a collection of pods that match one or more label selectors.
 
-  - AKS supports two plugins that implement Network Policy, _Azure_ and _Calico_. Both plugins use Linux IPTables to enforce the specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
+  - AKS supports two plugins that implement Network Policy, *Azure* and *Calico*. Both plugins use Linux IPTables to enforce the specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
   - Network policies don't conflict since they're additive.
   - For a network flow between two pods to be allowed, both the egress policy on the source pod and the ingress policy on the destination pod need to allow the traffic.
   - The network policy feature can only be enabled at cluster instantiation time. It's not possible to enable network policy on an existing AKS cluster.
@@ -502,7 +502,7 @@ This section explores the optimal use of these capabilities, providing key consi
   
 - The Network Policy feature in Kubernetes should be used to define rules for ingress and egress traffic between pods in a cluster. Define granular Network Policies to restrict and limit cross-pod communication.
   - Enable [Network Policy](/azure/aks/use-network-policies) for Azure Kubernetes Service at deployment time. 
-  - Prioritize the use of _Calico_ because it provides a richer feature set with broader community adoption and support.
+  - Prioritize the use of *Calico* because it provides a richer feature set with broader community adoption and support.
 
 ## Next step
 
