@@ -139,14 +139,13 @@ Other
 
   - Q: how do we address relationship between data platform and design? At some point, maybe after some initial data design, the platform is selected and it becomes a key factor in the design. In other cases the platform may be already selected
 
-
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
-For training, inference, and grounding data. Raw data ultimately needs to get converted into vectors. Turning raw data into numeric feature vectors is commonly known as "feature engineering." In order to convert data into features, that raw data needs to be collected, cleaned, organized, and potentially enriched (labeled, etc).
+For training, inference, and grounding data. Raw data ultimately needs to get converted into vectors. Turning raw data into numeric feature vectors is "feature engineering." In order to convert data into features, that raw data needs to be collected, cleaned, organized, and potentially enriched (labeled, etc).
 
 ### Dynamic/online training (or updating grounding data)
 
-This is where the model stays up to date with new data as it comes in. You do this to avoid staleness issues in the model. This helps smooth out seasonal changes in data (for example). You do need to monitor input, because a bad run (missing data, corrupt data) can impact the model right away. Automated monitoring and testing the training jobs are critical since the window is expected to be short between model releases -- automation will be key. A bug in the online training can cause production issues.
+This is where the model (or grounding data) stays up to date with new data as it comes in. You do this to avoid staleness issues in the model. This helps smooth out seasonal changes in data (for example). You do need to monitor input, because a bad run (missing data, corrupt data) can impact the model right away. Automated monitoring and testing the training jobs are critical since the window is expected to be short between model releases -- automation will be key. A bug in the online training can cause production issues.
 
 This model is shipping to production frequently.
 
@@ -154,7 +153,7 @@ Great for personalization experiences (using daily user trends)
 
 ### Static/offline training (or generating grounding data or fine-tuning)
 
-Best for data that doesn't need more realtime inclusion. The model (or grounding data) will be stale until refreshed. While you do need to monitor training, it happens less frequently so doesn't need to be fully automated. You still need to scrub data and monitor input (distributions, quality, etc).  For example, you wouldn't want to train on winter activity but try to predict summer behavior
+Best for data that doesn't need more realtime inclusion. The model (or grounding data) will be stale until refreshed. While you do need to monitor training, it happens less frequently so doesn't need to be fully automated. You still need to scrub data and monitor input (distributions, quality, etc).  For example, you wouldn't want to train on winter activity but try to predict summer behavior.
 
 This model is shipping to production infrequently.
 
@@ -186,6 +185,10 @@ TODO: What's our data design guidance here, if any?
 
 - When do you use cross-validation vs when do you split data between train/validation?
 
+#### Handling imbalanced data
+
+Not all data sets are balanced, in that sometimes its hard to get samples of representative data -- this is especially important for classification usage. For example, in a fraud detection solution, you might not have access to sufficient training data. In that case, you might need to oversample the minority data or under sample the majority data. Synthetic Minority Oversampling Technique (SMOTE) - <https://learn.microsoft.com/azure/machine-learning/component-reference/smote>
+
 ### Vectorization
 
 Any topics to talk about here?
@@ -196,7 +199,3 @@ Any topics to talk about here?
   - binary vector
   - small datasets with limited number of classes
   - high memory usage
-
-### Handling imbalanced data
-
-Not all data sets are balanced, in that sometimes its hard to get samples of representative data -- this is especially important for classification usage. For example, in a fraud detection solution, you might not have access to sufficient training data. In that case, you might need to oversample the minority data or under sample the majority data. Synthetic Minority Oversampling Technique (SMOTE) - <https://learn.microsoft.com/azure/machine-learning/component-reference/smote>
