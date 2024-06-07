@@ -11,6 +11,16 @@ ms.topic: conceptual
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## May 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Files](./service-guides/azure-files.md): Explore design considerations and recommendations for Azure Files and Azure File Sync. Azure Files is a fully managed file share service that supports the SMB protocol and Network File System (NFS) protocol. Azure File Sync is a service that enables you to centralize your organization's file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server.
+
+### Updated articles
+
+- [Security considerations for Azure VMware Solution workloads](./azure-vmware/security.md): Learn about using resource locks to prevent accidental deletions or changes. 
+
 ## April 2024
 
 ### New articles
