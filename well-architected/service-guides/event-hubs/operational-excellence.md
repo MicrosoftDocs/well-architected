@@ -7,9 +7,8 @@ ms.date: 01/12/2022
 ms.topic: conceptual
 products:
   - azure-event-hubs
-categories:
-  - messaging
-  - management-and-governance
+azureCategories:
+  - analytics
 ---
 
 # Event Hubs and operational excellence

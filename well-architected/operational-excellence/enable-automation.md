@@ -3,7 +3,7 @@ title: Recommendations for enabling automation in a workload
 description: Learn how to design your workload to enable automation. Automation simplifies maintenance tasks, allowing you to update, patch, and upgrade your systems more efficiently and reliably.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 03/28/2024
 ms.topic: conceptual
 ---
 
@@ -110,9 +110,18 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Configuration management
 
-[**Azure Automanage State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool built on top of Azure Policy that performs as an orchestration tool. Using a VM extension, you can directly apply predefined configuration updates to individual VMs or groups of VMs as defined within Azure Policy.
+[Azure Automation State Configuration](/azure/automation/automation-dsc-overview) is a DSC management tool managed by the Azure Policy [guest configuration feature](/azure/governance/machine-configuration/overview) that you can use to write, manage, and compile PowerShell DSC configurations for nodes in any cloud or on-premises datacenter. You can also use this tool to import DSC resources and assign configurations to target nodes.
 
-[**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
+[Azure App Configuration](/azure/azure-app-configuration/overview) is a service that you can use to centrally manage your application settings and feature flags. It works with Azure Key Vault so you can securely manage a wide variety of application configurations across your environment.
+
+### Change tracking and inventory
+
+[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in virtual machines. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
+
+- Installed Windows and Linux software
+- Key Windows and Linux files
+- Windows registry keys
+- Windows services and Linux daemons
 
 ## Related links
 

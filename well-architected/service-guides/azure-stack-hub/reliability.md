@@ -7,9 +7,8 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-stack-hub
-categories:
+azureCategories:
   - hybrid
-  - management-and-governance
 ---
 
 # Azure Stack Hub and reliability

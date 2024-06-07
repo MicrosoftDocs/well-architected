@@ -7,9 +7,9 @@ ms.date: 01/12/2022
 ms.topic: conceptual
 products:
   - azure-event-grid
-categories:
-  - messaging
-  - management-and-governance
+azureCategories:
+  - integration
+
 ---
 
 # Event Grid and operational excellence

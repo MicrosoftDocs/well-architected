@@ -18,12 +18,13 @@ If your data isn't protected, it can be maliciously modified, which leads to los
 
 This guide describes the recommendations for encrypting and protecting your data. Encryption is the process of using cryptography algorithms to **make the data unreadable and lock the data with a key**. In the encrypted state, data can't be deciphered. It can only be decrypted by using a key that's paired with the encryption key.
 
-**Definitions** 
+**Definitions**
 
 |Terms   |Definition   |
 |---------|---------|
 |Certificates|Digital files that hold the public keys for encryption or decryption.|
 |Cipher suite     |  A set of algorithms that are used to encrypt and decrypt information to secure a network connection over Transport Layer Security (TLS). |
+|Confidential computing|Confidential Computing is the protection of data in use by performing computation in a hardware-based, attested Trusted Execution Environment.|
 |Decryption|The process in which encrypted data is unlocked with a secret code. |
 |Double encryption|The process of encrypting data by using two or more independent layers of encryption.|
 |Encryption|The process by which data is made unreadable and locked with a secret code.|
@@ -32,7 +33,6 @@ This guide describes the recommendations for encrypting and protecting your data
 |Signature|An encrypted stamp of authentication on data. |
 |Signing|The process of verifying data's authenticity by using a signature.|
 |X.509| A standard that defines the format of public key certificates.|
-
 
 ## Key design strategies
 
@@ -54,7 +54,7 @@ Encryption mechanisms likely need to secure the data in three stages:
 
 - **Data in use** is data that's actively being worked on in memory.
 
-  An example of securing data in use is encrypting with confidential compute to protect data as it's processed.
+  An example of securing data in use is encrypting with confidential computing to protect data as it's processed.
 
 The preceding choices aren't mutually exclusive. They're often used together in the context of the entire solution. One stage might act as a compensating control. For example, you might need to isolate data to prevent tampering when data is read from memory.
 
@@ -124,7 +124,9 @@ Classify and protect information storage objects in accordance with the internal
 
     Use more than one encryption key. Use a key encryption key (KEK) to protect your data encryption key (DEK).
 
-- **Use identity-based access controls to control access data**. Add network firewalls to provide an extra layer of security that blocks unexpected and unsafe access.
+- **Use identity-based access controls to control access to data**. Add network firewalls to provide an extra layer of security that blocks unexpected and unsafe access.
+
+    For more information, see [Recommendations for identity and access management](/azure/well-architected/security/identity-access).
 
 - **Store keys in a managed HSM** that has least-privilege access control. Separate the data from the keys to the data.
 
@@ -141,7 +143,7 @@ Classify and protect information storage objects in accordance with the internal
     > All website communication should use HTTPS, regardless of the sensitivity of the transferred data. During a client-server handshake, negotiate the use of the HTTP Strict Transport Security (HSTS) policy so that HTTPS transport is maintained and doesn't drop to HTTP during communication. This policy protects against man-in-the-middle attacks.
     >
     > Support for HSTS is for newer versions. You might break backward compatibility with older browsers.
-
+    >
     > [!NOTE]
     > You can also encrypt protocols to establish secure connections for databases. For example, Azure SQL Database supports the Tabular Data Stream (TDS) protocol, which integrates a TLS handshake.
     >
@@ -155,7 +157,7 @@ Classify and protect information storage objects in accordance with the internal
     > Your workflow shouldn't allow invalid certificates to be accepted in the environment. The certificate pinning process should validate certificates and enforce that validation check. You should monitor access logs to ensure that the signing key is used with proper permissions.
     >
     > If a key is compromised, the certificate must be revoked immediately. A certificate authority (CA) provides a certificate revocation list (CRL) that indicates the certificates that are invalidated before their expiration. Your validation check should account for CRLs.
-
+    >
     > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The certification validation process can be cumbersome and usually involves a CA. Determine the data that you must encrypt with certificates. For other types of communication, determine if you can implement localized compensating controls to add security.
     >
     > One way of localizing controls is with mutual TLS (mTLS). It establishes trust in both directions between the client and the server. Both the client and the server have their own certificates, and each certificate is authenticated with their public or private key pair. With mTLS, you're not dependent on the external CA. The tradeoff is the added complexity of managing two certificates.
@@ -165,6 +167,16 @@ Classify and protect information storage objects in accordance with the internal
     > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Compared to single VPN setups, double VPN setups are often more expensive, and connections are often slower.
 
 - **Implement logging and monitoring processes**. Keep track of access sign-in resources that store information about clients, like their source IP, port, and protocol. Use this information to detect anomalies.
+
+### Data-in-use
+
+For high security workloads, segmentation, isolation and least-priviledge are recommended design patterns. 
+
+In the context of in-use protection, hardware boundaries may require encryption of data while it's in use in the physical CPU and memory to ensure isolation of VMs, host management code and other components. Encryption and decryption of data must only be done within those isolation boundaries.
+
+More stringent security or regulatory requirements may also require hardware based, cryptographically signed evidence that data is being encrypted while in-use, this can be obtained through **attestation**. **Confidential computing** is one such technology that supports the requirement. Specific services in Azure offer the ability to protect data while it's being computed-upon. For more information, see [Azure Facilitation: Azure Confidential Compute](#data-in-use-protection).
+
+**Consider the end-end lifecycle of data you are protecting** data often moves through multiple systems in its lifetime, take care to ensure that all component parts of a solution can provide the required levels of protection, or ensure that your data management strategy provides appropriate segmentation or masking.
 
 ## Azure facilitation
 
@@ -177,6 +189,8 @@ Store customer-managed keys in Azure Key Vault or in a Key Vault-managed HSM.
 Key Vault treats the keys like any other secret. Azure role-based access controls (RBAC) access the keys via a permission model. This identity-based control must be used with Key Vault access policies.
 
 For more information, see [Provide access to Key Vault keys, certificates, and secrets by using RBAC](/azure/key-vault/general/rbac-guide).
+
+Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilites and [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
 
 ##### Data-at-rest protection
 
@@ -198,9 +212,18 @@ With [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overvie
 
 ##### Data-in-use protection
 
-Azure confidential virtual machines (VMs) provide a hardware-enforced boundary. They also provide disk encryption that maintains isolation between VMs, the hypervisor, and host management code.
 
-Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
+[Specific services in Azure](/azure/confidential-computing/overview-azure-products) offer the ability to protect data while being computed within the physical CPU and memory of a host using Azure confidential computing. 
+
+
+- **Confidential Virtual Machines** offer an entire [virtual machine running inside a TEE](/azure/confidential-computing/virtual-machine-solutions), the memory and executing CPU contents of the virtual machine are encrypted offering a simple 'lift & shift' approach for moving unmodified applications with high security requirements to Azure. Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
+
+- **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](/azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
+
+- **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular [Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
+
+- **Secure Key Release** can be [combined with these technologies](/azure/confidential-computing/concept-skr-attestation) to ensure that encrypted data is only ever decrypted inside a TEE which proves it provides the required level of protection through a process known as [Attestation](/azure/confidential-computing/attestation-solutions).
+
 
 ##### Secret management
 
@@ -222,6 +245,7 @@ The following example shows encryption solutions that you can use to manage keys
 - [Overview of managed disk encryption options](/azure/virtual-machines/disk-encryption-overview)
 - [Transparent data encryption](/sql/relational-databases/security/encryption/transparent-data-encryption)
 - [Trust Platform Module overview](/windows/security/information-protection/tpm/trusted-platform-module-overview)
+- [Azure confidential computing](/azure/confidential-computing/)
 
 ## Community links
 
@@ -233,4 +257,3 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 [Security checklist](checklist.md)
-

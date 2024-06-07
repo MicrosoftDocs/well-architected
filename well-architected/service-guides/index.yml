@@ -1,25 +1,24 @@
 ### YamlMime:Hub
 
-title: Azure Well-Architected Framework
-summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+title: Well-Architected Framework perspective on Azure services 
+summary: Azure Well-Architected Framework is decision making tool to help solution architects build a technical foundation for their workloads. Consider WAF perspectives on the Azure services that are part of your solution.
 brand: azure
 
 metadata:
-  title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
-  services: azure-resource-manager
+  title: Azure service guidance mapped to Azure Well-Architected Framework
+  description: Apply Well-Architected Framework concepts to Azure services to make informed decisions when choosing service and its feature set.
   ms.service: waf
   ms.topic: hub-page
-  author: martinekuan
-  ms.author: martinek
-  ms.date: 11/10/2023
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 04/29/2024
   featureFlags:
   - clicktale
 highlightedContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample tutorial | video | whats-new
   items:
     # Card
-    - title: What is WAF?
+    - title: What is Well-Architected Framework? 
       itemType: get-started
       url: ../what-is-well-architected-framework.md  
     # Card
@@ -36,8 +35,8 @@ highlightedContent:
       url: /assessments/azure-architecture-review/
 
 productDirectory:
-  title: Browse the Well-Architected Framework service guides
-  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a state of excellence. They are not configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
+  title: Browse the catalog of Azure services
+  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a state of excellence. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
 
   items:
     # Card
@@ -49,13 +48,6 @@ productDirectory:
         - integration
         - iot
         - mobile
-        - web
-    # Card
-    - title: Application delivery
-      summary: Deliver internal-facing and external-facing applications in the Azure network.
-      imageSrc: /media/common/i_web-apps.svg
-      url: ././application-delivery/reliability.md
-      azureCategories:
         - web
     # Card
     - title: Azure Application Gateway
@@ -70,8 +62,9 @@ productDirectory:
     - title: Azure App Service
       summary: Quickly create powerful cloud apps for web and mobile.
       imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-      url: ./azure-app-service/reliability.md
+      url: ./app-service-web-apps.md
       azureCategories:
+        - featured
         - compute
         - mobile
         - web
@@ -82,6 +75,13 @@ productDirectory:
       url: ./azure-batch/reliability.md
       azureCategories:
         - compute
+    # Card
+    - title: Azure Blob Storage
+      summary: Use Blob Storage to store massive amounts of unstructured data in the cloud.
+      imageSrc: /media/common/i_generic-database.svg
+      url: azure-blob-storage.md
+      azureCategories:
+        - storage
     # Card
     - title: Application Insights
       summary: Build full observability into your applications, infrastructure, and network.
@@ -119,7 +119,6 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
       url: postgresql.md
       azureCategories:
-        - featured
         - databases
         - hybrid
     # Card
@@ -167,8 +166,9 @@ productDirectory:
     - title: Azure Front Door
       summary: Learn about the scalable, security-enhanced delivery point for global, microservice-based web applications.
       imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
-      url: ./azure-front-door/reliability.md
+      url: azure-front-door.md
       azureCategories:
+        - featured      
         - networking
         - security
     # Card
@@ -189,13 +189,6 @@ productDirectory:
       azureCategories:
         - iot
     # Card
-    - title: Azure IoT Hub Device Provisioning Service
-      summary: Automate zero-touch, just-in-time provisioning to an IoT hub.
-      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: ./iot-hub-dps/reliability.md
-      azureCategories:
-        - iot
-    # Card
     - title: Azure Kubernetes Service
       summary: Simplify the deployment, management, and operations of Kubernetes.
       imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
@@ -211,6 +204,22 @@ productDirectory:
       url: ./azure-load-balancer/reliability.md
       azureCategories:
         - networking
+    # Card
+    - title: Azure Machine Learning
+      summary: Build, train, and deploy machine learning models.
+      imageSrc: _images/azure-machine-learning.svg
+      url: azure-machine-learning.md
+      azureCategories:
+        - featured
+        - ai-machine-learning
+    # Card
+    - title: Azure OpenAI
+      summary: Build intelligent apps with large language models from OpenAI with an enterprise-ready service.
+      imageSrc: _images/azure-openai.svg
+      url: azure-openai.md
+      azureCategories:
+        - featured
+        - ai-machine-learning
     # Card
     - title: Azure Queue Storage
       summary: Effectively scale apps according to traffic.
@@ -266,7 +275,7 @@ productDirectory:
     - title: Azure Virtual Machines
       summary: Configure Azure virtual machines in seconds.
       imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-      url: virtual-machines-review.md
+      url: virtual-machines.md
       azureCategories:
         - compute
     # Card

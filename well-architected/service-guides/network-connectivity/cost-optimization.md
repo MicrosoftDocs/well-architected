@@ -7,9 +7,9 @@ ms.date: 01/27/2022
 ms.topic: conceptual
 products:
   - azure-virtual-network
-categories:
+azureCategories:
   - networking
-  - management-and-governance
+
 ---
 
 # Cost optimization and Network connectivity
@@ -50,7 +50,7 @@ Network connectivity includes the following design considerations related to cos
 > - For the Load balancer, select two SKUs: Basic (free) and Standard (paid).
 > - For App Gateway, select Basic or V2.
 > - For Gateways, limit throughput and performance.
-> - Select DDoS Standard.
+> - Select DDoS Network Protection.
 
 ## Configuration recommendations
 
@@ -59,7 +59,7 @@ Consider the following recommendation for cost optimization when configuring Net
 |Recommendation|Description|
 |--------------|-----------|
 |For the Load balancer, select two SKUs: Basic (free) and Standard (paid).|Microsoft recommends Standard because it has richer capabilities, such as: <br>- Outbound rules <br>- Granular network security configuration <br>- Monitoring <br> Standard provides a Service Level Agreement (SLA) and can be deployed in Availability Zones. Capabilities in Basic are limited.|
-|Select DDoS Standard.|Depending on the workload and usage patterns, Standard can provide useful protection. Otherwise, you can use Basic for small customers.|
+|Select DDoS Network Protection.|Depending on the workload and usage patterns, DDoS Network Protection can provide useful protection. Otherwise, you can use the defualt Infrastructure protection or DDoS IP Protection SKU for small customers.|
 
 ## Next step
 

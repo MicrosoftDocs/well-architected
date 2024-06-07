@@ -83,7 +83,7 @@ For example, the labels influence the traffic isolation boundaries. There might 
 
 **For data at rest, the levels will affect the encryption choices**. You might choose to protect highly sensitive data through double encryption. Different application secrets might even require control with varied levels of protection. You might be able to justify storing secrets in a hardware security module (HSM) store, which offers higher restrictions. Compliance labels also dictate decisions about the right protection standards. For example, The PCI-DSS standard mandates the use of FIPS 140-2 Level 3 protection, which is available only with HSMs. In other cases, it might be acceptable for other secrets to be stored in a regular secret management store.
 
-If you need to protect data in use, you might want to incorporate confidential compute in the architecture.
+If you need to protect data in use, you might want to incorporate confidential computing in the architecture.
 
 **Classification information should move with the data as it transitions through the system** and across components of the workload. Data labeled as confidential should be treated as confidential by all components that interact with it. For example, be sure to protect personal data by removing or obfuscating it from any kind of application logs.
 
@@ -140,13 +140,6 @@ This example builds on the Information Technology (IT) environment established i
 9) Microsoft Purview Compliance provides a solution to classify files and emails.
 
 10) Microsoft Defender for Cloud provides a solution that helps your company to track compliance in your environment, including many of your services used to store data, mentioned in these se cases above.
-
-
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams about how to classify data so that workload teams can follow the organizational taxonomy.
-
-For more information, see [What is data classification? - Cloud Adoption Framework](/azure/cloud-adoption-framework/govern/policy-compliance/data-classification).
 
 ## Related links
 

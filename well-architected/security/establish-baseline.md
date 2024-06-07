@@ -175,14 +175,6 @@ The monitoring services available on Azure that go beyond simple monitoring serv
 
 This layer brings a recommendation and reminder that threats may be mapped according to your organization's concerns regarding threats, regardless of the methodology or matrix-like Mitre Attack Matrix or Cyber Kill chain.
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams about establishing a baseline with a suggested template:
-
-- [Security Baseline discipline overview](/azure/cloud-adoption-framework/govern/security-baseline/)
-
-- [Security Baseline discipline template](/azure/cloud-adoption-framework/govern/security-baseline/template)
-
 ## Related links
 
 - [Microsoft compliance](/compliance/)

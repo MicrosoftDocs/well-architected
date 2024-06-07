@@ -7,9 +7,8 @@ ms.date: 01/28/2022
 ms.topic: conceptual
 products:
   - azure-load-balancer
-categories:
+azureCategories:
   - networking
-  - management-and-governance
 ---
 
 # Reliability and Azure Load Balancer
@@ -47,6 +46,9 @@ Consider the following recommendation to optimize reliability when configuring a
 |Recommendation|Description|
 |--------------|-----------|
 |For production workloads, use the Standard Stock Keeping Units (SKU).|Basic load balancers don't have a Service Level Agreement (SLA). The Standard SKU [supports Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones).|
+
+> [!TIP]
+> For more details on Reliability guidance for Load Balancer, see [Reliability in Azure Load Balancer](/azure/reliability/reliability-load-balancer).
 
 ## Next step
 

@@ -2,22 +2,22 @@
 title: Azure Well-Architected Framework
 metadata:
   title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+  description: Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
   services: azure-resource-manager
   ms.service: waf
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 11/10/2023
+  ms.date: 04/29/2024
 sections:
   # Intro
   - componentType: text 
     title: Azure Well-Architected Framework
-    summary: The Azure Well-Architected Framework (WAF) is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+    summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
     links:
     - componentType: link
       url: what-is-well-architected-framework
-      text: What is WAF?    
+      text: What is Well-Architected Framework?   
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
@@ -39,7 +39,7 @@ sections:
       - componentType: icon-link
         icon: book-open
         url: service-guides/index.yml
-        text: Azure offerings
+        text: Azure service guides
       - componentType: icon-link
         icon: topic-learn
         url: /training/modules/azure-well-architected-introduction/
@@ -66,27 +66,29 @@ sections:
   - componentType: bifold
     alignment: center
     blocks:
-      - componentType: image
-        src: ./_images/well-architected-refresh.png   
-        alt: WAF refresh update   
-      - title: Featured update - Core pillars restructured and refreshed 
-        summary: The Azure Well-Architected Framework published a significant content refresh across all five pillars. 
+      - componentType: video
+        src: https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/well-architected/mission-critical/mission-critical-health-modeling
+        id: health-modeling-for-workloads
+        label: "In this video, get a high-level understanding of health modeling and how you can interpret metrics to produce a health score for your workload."
+      - title: Featured update - Health modeling for workloads 
+        summary: Health modeling improves workload reliability in Azure. Learn how to quantify application health and build your own health model. 
         componentType: text
         links:
           - componentType: link
-            url: whats-new.md
-            text: What's new?
+            url: cross-cutting-guides/health-modeling.md
+            text: What is health modeling?
         list:
           componentType: list
           style: checklist
           children:
-            - Design principles include a set of recommended approaches and benefits.
-            - Design review checklist drive action through codified recommendations. 
-            - Design tradeoffs with other pillars. 
-            - Recommendations on key strategies that fulfill the principles of design.
-            - Design patterns based on proven, common architecture patterns, mapped to each pillar.
-            - Azure Well-Architected Review tool has been refreshed to align with the new content.
- 
+            - Health modeling combines business context with monitoring data to quantify the overall health of a workload.
+
+            - The health model provides a baseline to help identify drift from the expected operational state of a workload.
+
+            - Health models visualize health states across dependency chains, making it easier for operators to take action.
+            
+            - The health score captures key business requirements as measurements to provide a meaningful view of workload health.
+            
 # cards section (4)
   - componentType: grid
     title: Pillars
