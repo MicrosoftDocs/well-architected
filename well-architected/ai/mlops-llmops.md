@@ -35,7 +35,7 @@ ms.subservice: waf-workload-ai
 - **Model Training**: Use Azure ML SDK to train models in a reproducible manner.  
 - **Notebook Integration**: Develop models interactively using Azure ML Notebooks.
   
-- ### Deployment, Scalibility and Flexibility
+### Deployment, Scalibility and Flexibility
 -  Azure Machine Learning Service offers scalable compute options, including GPU and CPU clusters, which are essential for handling large datasets and complex models. The flexibility to choose different compute resources ensures that you can optimize costs and performance based on your specific needs.
 - **Managed Online Endpoints and Batch Endpoints**: Deploy models using AML online and batch endpoints for scalable inference.  
 - **Azure Kubernetes Service (AKS)**: Deploy models using AKS for scalable inference.  
@@ -43,21 +43,21 @@ ms.subservice: waf-workload-ai
 - **CI/CD Pipelines**: Implement CI/CD pipelines with Azure DevOps for continuous deployment.  
 - **Model Versioning**: Use Azure ML Model Registry for version control of models.   
   
-- ### Integration, Automation and Operation
+### Integration, Automation and Operation
 - Azure's integration with other services like Azure DevOps, Data Factory, and Azure Kubernetes Service (AKS) enhances the automation capabilities of MLOps. Automated CI/CD pipelines help in maintaining consistent model updates and deployments, reducing manual intervention and potential errors.
 - **A/B Testing**: Conduct A/B testing to compare model versions.  
 - **Shadow Deployment**: Use shadow deployments to test models without affecting production.  
 - **Canary Releases**: Implement canary releases to gradually roll out new models.  
 - **Performance Monitoring**: Monitor model performance in real-time using Azure Monitor.    
   
-- ### Security, Compliance and governance
+### Security, Compliance and governance
 - With built-in security features such as Role-Based Access Control (RBAC), Azure Active Directory (AAD), and encryption, Azure ensures that ML workloads comply with various industry standards and regulations. This is particularly important for industries like healthcare and finance, where data security is paramount.
 - **Data Encryption**: Ensure data is encrypted at rest and in transit using Azure Key Vault.  
 - **Data Anonymization**: Implement data anonymization techniques to protect sensitive information.  
 - **Compliance**: Adhere to compliance standards like GDPR and HIPAA.  
 - **Secure Data Storage**: Use Azure Blob Storage with secure access policies for data storage.    
   
-- ### Monitoring and Management
+### Monitoring and Management
 - Azure Monitor and Application Insights provide comprehensive tools for monitoring model performance and system health. These tools enable proactive issue detection and resolution, ensuring that ML models perform optimally in production environments.
 - **A/B Testing**: Conduct A/B testing to compare model versions.  
 - **AML Model Monitoring**: USe AML model data collection and model monitoring for data drift, model drift and other customer metrics.
