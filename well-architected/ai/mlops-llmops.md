@@ -81,13 +81,6 @@ ms.subservice: waf-workload-ai
   
 ### Fine-Tuning of Models  
   
-#### MLOps for Fine-Tuning of Models  
-  
-- **Azure Machine Learning Service**: Utilize Azure ML for managing and orchestrating the fine-tuning process, offering scalable compute and integrated development environments.  
-- **Hyperparameter Tuning**: Use Azure's HyperDrive for automated optimization of hyperparameters to enhance model performance.  
-- **Automated Machine Learning**: Leverage Azure AutoML to automate model selection, feature selection, and hyperparameter tuning.  
-- **Custom Scripts**: Implement specialized fine-tuning tasks using custom scripts within Azure ML pipelines for greater flexibility.  
-  
 #### LLMOps for Fine-Tuning of Models  
   
 - **Pre-trained Models**: Utilize Azure's pre-trained large language models as a starting point for domain-specific fine-tuning.  
