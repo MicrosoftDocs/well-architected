@@ -29,7 +29,7 @@ ms.subservice: waf-workload-ai
   
 **MLOps** (Machine Learning Operations) is a crucial component for managing and scaling machine learning workflows in production environments. Azure provides a robust ecosystem that supports various stages of the ML lifecycle, from development to deployment and monitoring. Here are some thoughts on key aspects:  
 
-- #### Developing and Training Models  
+- ### Developing and Training Models  
 - **Model Training Environments**: Set up scalable compute environments with Azure ML Compute.  
 - **Data Ingestion**: Utilize Azure Data Factory for efficient data ingestion and preprocessing.  
 - **Model Training**: Use Azure ML SDK to train models in a reproducible manner.  
@@ -57,7 +57,7 @@ ms.subservice: waf-workload-ai
 - **Compliance**: Adhere to compliance standards like GDPR and HIPAA.  
 - **Secure Data Storage**: Use Azure Blob Storage with secure access policies for data storage.    
   
-- ### DMonitoring and Management
+- ### Monitoring and Management
 - Azure Monitor and Application Insights provide comprehensive tools for monitoring model performance and system health. These tools enable proactive issue detection and resolution, ensuring that ML models perform optimally in production environments.
 - **A/B Testing**: Conduct A/B testing to compare model versions.  
 - **AML Model Monitoring**: USe AML model data collection and model monitoring for data drift, model drift and other customer metrics.
