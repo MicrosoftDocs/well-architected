@@ -65,7 +65,7 @@ ms.subservice: waf-workload-ai
 - **Performance Monitoring**: Monitor model performance in real-time using Azure Monitor.  
    
   
-#### LLMOps for AI Workloads on Azure  
+### LLMOps for LLMs
   
 Interestingly enough, the life cycle for LLMs is very similar to classical ML models as outlined above but we do not have to go through expensive model training because the LLMs are already pre-trained. However, we still have to consider discovering an LLM Model that fits use case, tune the prompts (i.e., prompt engineering or prompt tuning) and if necessary, fine-tune the models for domain specific grounding.
 #### Using Azure AI Studio or Machine Learning for LLMOps 
