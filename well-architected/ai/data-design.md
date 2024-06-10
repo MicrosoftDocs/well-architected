@@ -33,19 +33,119 @@ There could be training data is used to build and train machine learning models.
 
 ## Elisabeth's (SME & area lead) seed material
 
-TODO
+ 1. Data Modeling
+   
+	Which language is used? Single language index easier for quality control. 
+	
+	What is special about this data? Is standard index good enough, or do I need custom index fields with meta information and SME index fields? E.G. a patent search use case needs more index fields than a plain chat with my website. Are there technical terms I want to filter on?
+	
+	What are the most common questions on this data?
+	
+	Do you have questions & expected answers pairs created, for testing the quality of the chat system?
+	
+	For Talk to your SQL:
+	Do all tables and columns contain relevant comments and meta information helping the LLM to choos the right column in the SQL statements ?
+	
+	Azure AI Search: Outperforming vector search with hybrid retrieval and ranking capabilities - Microsoft Community Hub
+	
+	• Types of search
+		○ Vector 
+		○ Full Text
+		○ Keywords
+	
+	Semantic search most performant when customer creates custom index fields with relevant data (in most trival case document title and chunk's subsection header, as highly relevant keywords are usually in  title and header, but standart chunking strategies cut of this information)
+	
+	When using keyword part of AI Search, be aware it is more language dependent than vector search ( standartize documents of different input language into english for best chunk retrieval performance, than back translate to user language)
+	
+ 2. Data Roles and Responsibilities
+   
+	Who inside the company is responsible and SME for this data? 
+	
+	Does the data set contain confidential data? Are some data sets restricted to certrain people within the company? Is the information about the role based access available in source system (like Sharepoint)? Is this information stored in extra index field to allow AAD driven filtering of content?
+	
+	
+ 3. Data System Design
+   
+	Customized chat solutions offer high value when data from different sources is combined, e.g. plain text files from different sources ( Blob storage, Sharepoint, websites, …), SQL DBs, bing search,
+	
+	How to syncronize content? Especially with large content ( >100 GB) standard processes do not instantaniously update information
+
+4. Data Quality / Chunking and Ingestion of data
+	
+Has there been a data quality assessment before indexing the content ( Garbage in , garbage out remains true with LLMs)
+	
+Many companies keep outdated information for the sake of completeness / auditing within the main data source. Do outdated files contain meta tags for not-indexing?
+	
+Version control of documents?
+	
+Is there a method implemented for removing outdated content from index? Either with auto indexer, or custom removal? ( Use blob storage instead of ADSL Gen2, as latter does not support native blbo soft)
+	
+Sometimes AI Search does not deliver good chunks because no relevant key word is listed in the document.
+Is there an evaluation process determining when to improve indexing techniques, and when to improve data quality of input files (SEO) ?
+	
+Data duplication skews index quality, as some content is found too often
+	
+Best practises for tables ? 
+Extract tables with document intelligence, and store as JSON ?
+Create table text describtion using GPT 4 vision models, and embed / vectorize table description for AI Search
+	
+Images ? Extract images in data preparation pipeline and create image embedding and image description
+	
+	
+	
+	
+
+5. Data Governance
+	
+Data modeling or platform topic?
+
+6.  Data / LLM Education
+	
+Do user get an introduction on the the expected quality of the chat system, the likelyhood that AI creates wrong content, and limitation of what kind of questions can be answered?
+	
+Standart RAG architecture cannot answer questions like "how many documents have this feature?" Consider a GraphRAG architecture instead
+	
+	
+7.  Data Compliance
+	
+Are meta prompts implemented? See System message framework and template recommendations for Large Language Models(LLMs) - Azure OpenAI Service | Microsoft Learn for details![image](https://github.com/MicrosoftDocs/well-architected-pr/assets/89789134/9e39f543-6636-4d97-8901-fef79f2ef2a5)
 
 ## Jose's (Azure Patterns & Practices engineering) seed material
 
-TODO
+Data design
+
+RAG Pattern - Data stores for Augmented phase
+  - What are best practices and recommendations for designing the Data store and the indexes for maximum accuracy
+  - Data preparation: OCR, lower-casing, synonyms, stemming, entity recognition, enrichments, chunking, embeddings, vectors
+    - Data enrichments example: adding entity attributes after recognizing them. Addresses, classifications, important attributes
+    - Q: vector index vs keyword index, and the data preparation techniques. Example: synonyms and stemming may not(?) be as important b/c of the semantic proximity
+  - Types of index/queries and recommendations (vector, keyword, combined, etc.). Tradeoffs between accuracy and performance
+  - Index design and Searching
+  - Data store options and how it drives design. How to decide which data store to use
+  - One [augmentation] data store vs multiple. 
+  - Integrating external systems and data stores, real time lookups and batch integration.
+  - Tradeoffs between cost, performance, and functionality (e.g. accuracy)
+  - Security and privacy considerations. IP implications
+  - Describe iterative process to optimize data design. Basic example: load data with initial schema, execute common queries, tweak enrichments/schema/queries, and try again. Touch on testing(?)
+  
+Training data
+
+  - Data lakes: storage, security and cost considerations. Move/aggregate data vs remote access. 
+  - Versioning and schemas
+  - Data pipelines: data cleansing, privacy and security, correlating and deduping data across enterprise systems 
+  - Re-training. Feeding data from prod systems
+  
+Other
+
+  - Q: how do we address relationship between data platform and design? At some point, maybe after some initial data design, the platform is selected and it becomes a key factor in the design. In other cases the platform may be already selected
 
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
-For training, inference, and grounding data. Raw data ultimately needs to get converted into vectors. Turning raw data into numeric feature vectors is commonly known as "feature engineering." In order to convert data into features, that raw data needs to be collected, cleaned, organized, and potentially enriched (labeled, etc).
+For training, inference, and grounding data. Raw data ultimately needs to get converted into vectors. Turning raw data into numeric feature vectors is "feature engineering." In order to convert data into features, that raw data needs to be collected, cleaned, organized, and potentially enriched (labeled, etc).
 
 ### Dynamic/online training (or updating grounding data)
 
-This is where the model stays up to date with new data as it comes in. You do this to avoid staleness issues in the model. This helps smooth out seasonal changes in data (for example). You do need to monitor input, because a bad run (missing data, corrupt data) can impact the model right away. Automated monitoring and testing the training jobs are critical since the window is expected to be short between model releases -- automation will be key. A bug in the online training can cause production issues.
+This is where the model (or grounding data) stays up to date with new data as it comes in. You do this to avoid staleness issues in the model. This helps smooth out seasonal changes in data (for example). You do need to monitor input, because a bad run (missing data, corrupt data) can impact the model right away. Automated monitoring and testing the training jobs are critical since the window is expected to be short between model releases -- automation will be key. A bug in the online training can cause production issues.
 
 This model is shipping to production frequently.
 
@@ -53,7 +153,7 @@ Great for personalization experiences (using daily user trends)
 
 ### Static/offline training (or generating grounding data or fine-tuning)
 
-Best for data that doesn't need more realtime inclusion. The model (or grounding data) will be stale until refreshed. While you do need to monitor training, it happens less frequently so doesn't need to be fully automated. You still need to scrub data and monitor input (distributions, quality, etc).  For example, you wouldn't want to train on winter activity but try to predict summer behavior
+Best for data that doesn't need more realtime inclusion. The model (or grounding data) will be stale until refreshed. While you do need to monitor training, it happens less frequently so doesn't need to be fully automated. You still need to scrub data and monitor input (distributions, quality, etc).  For example, you wouldn't want to train on winter activity but try to predict summer behavior.
 
 This model is shipping to production infrequently.
 
@@ -85,6 +185,10 @@ TODO: What's our data design guidance here, if any?
 
 - When do you use cross-validation vs when do you split data between train/validation?
 
+#### Handling imbalanced data
+
+Not all data sets are balanced, in that sometimes its hard to get samples of representative data -- this is especially important for classification usage. For example, in a fraud detection solution, you might not have access to sufficient training data. In that case, you might need to oversample the minority data or under sample the majority data. Synthetic Minority Oversampling Technique (SMOTE) - <https://learn.microsoft.com/azure/machine-learning/component-reference/smote>
+
 ### Vectorization
 
 Any topics to talk about here?
@@ -95,7 +199,3 @@ Any topics to talk about here?
   - binary vector
   - small datasets with limited number of classes
   - high memory usage
-
-### Handling imbalanced data
-
-Not all data sets are balanced, in that sometimes its hard to get samples of representative data -- this is especially important for classification usage. For example, in a fraud detection solution, you might not have access to sufficient training data. In that case, you might need to oversample the minority data or under sample the majority data. Synthetic Minority Oversampling Technique (SMOTE) - <https://learn.microsoft.com/azure/machine-learning/component-reference/smote>

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 Every workload passes through a component and topology design process. This process is most intense at the inception of the workload, which includes designing for initial requirements and long-term success of the workload. Architecture is also designed when the workload changes over time and the organization adds, changes, or removes functionality.
 
-Component and topology design is the primary function of an architect. Architects who focus on cloud-based and hybrid solutions are often called _cloud solution architects_. In some organizations, cloud solution architects exist in a centralized capacity within an enterprise architecture group. They can also focus on a specific workload.
+Component and topology design is the primary function of an architect. Architects who focus on cloud-based and hybrid solutions are often called *cloud solution architects*. In some organizations, cloud solution architects exist in a centralized capacity within an enterprise architecture group. They can also focus on a specific workload.
 
 A dedicated role can deliver the function of an architect. In some cases, trusted technical specialists (such as a workload engineering lead) can deliver the function of an architect. Or an organization might distribute the function among a small group of senior engineers who are associated with the workload.
 

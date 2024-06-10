@@ -296,7 +296,7 @@ If you want to protect the Container Registry instance from deletion, use [resou
 
 Serverless computing provides resources on demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages the resources required to run deployed application code. Azure provides several serverless compute platforms:
 
-- [Azure Functions](/azure/azure-functions/functions-overview). When you use Azure Functions, application logic is implemented as distinct blocks of code, or _functions_, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
+- [Azure Functions](/azure/azure-functions/functions-overview). When you use Azure Functions, application logic is implemented as distinct blocks of code, or *functions*, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
 
 - [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Logic Apps is best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
 

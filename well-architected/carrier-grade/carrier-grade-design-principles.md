@@ -44,9 +44,9 @@ Start from the assumption that everything can, and will fail. Application design
 
 ## Share nothing 
 
-_Share nothing_ is a common and straightforward approach to achieve high availability. Use this approach when an application can be serviced by multiple, distinct elements, which are interchangeable. The individual elements must have a well-understood availability metric, but it doesn't need to be high. However, the elements must be combined in a way to remain independent, with no shared infrastructure or dependencies.
+*Share nothing* is a common and straightforward approach to achieve high availability. Use this approach when an application can be serviced by multiple, distinct elements, which are interchangeable. The individual elements must have a well-understood availability metric, but it doesn't need to be high. However, the elements must be combined in a way to remain independent, with no shared infrastructure or dependencies.
 
-To share nothing is often impossible. To start from the position that nothing _should_ be shared, and only add in the smallest possible set of shared dependencies, should result in an optimal solution.
+To share nothing is often impossible. To start from the position that nothing *should* be shared, and only add in the smallest possible set of shared dependencies, should result in an optimal solution.
 
 **Example**
 
@@ -58,4 +58,3 @@ Review the fault tolerance design area for carrier-grade workloads.
 
 > [!div class="nextstepaction"]
 > [Design area: Fault tolerance](./carrier-grade-design-area-fault-tolerance.md)
-

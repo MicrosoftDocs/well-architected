@@ -22,19 +22,19 @@ Build solutions with efficient storage to increase performance, lower the requir
 
 Storing much uncompressed data can result in unnecessary bandwidth waste and increase the storage capacity requirements.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
 - A solution to reduce the storage requirements, including both capacity and required bandwidth to write or retrieve data. For example, [compressing files in Azure Front Door](/azure/frontdoor/standard-premium/how-to-compression) and [compressing files in Azure CDN](/azure/cdn/cdn-improve-performance).
 - Compression is a well-known design technique to improve network performance.
-- Consider the tradeoff of compression: Does the benefit of compression outweigh the increased _carbon_ cost in the resources (CPU, RAM) needed to perform the compression/decompression?
+- Consider the tradeoff of compression: Does the benefit of compression outweigh the increased *carbon* cost in the resources (CPU, RAM) needed to perform the compression/decompression?
 
 ### Optimize database query performance
 
 Querying extensive databases or retrieving much information simultaneously can have a performance penalty. Ideally, apps should optimize for query performance.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -47,7 +47,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 The carbon impact of data retrieved from hot storage can be higher than data from cold- or archive storage. Designing solutions with the correct data access pattern can enhance the application's carbon efficiency.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -59,7 +59,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Backup is a crucial part of reliability. However, storing backups indefinitely can quickly allocate much unnecessary disk space. Consider how you plan backup storage retention.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -70,7 +70,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Consider whether to store data in an online tier or an offline tier. Online tiers are optimized for storing data that is accessed or modified frequently. Offline tiers are optimized for storing data that is rarely accessed.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -80,7 +80,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Recovery points aren't automatically cleaned up. Therefore, consider where [soft delete](/azure/backup/backup-azure-security-feature-cloud) is enabled for Azure Backup. The expired recovery points aren't cleaned up automatically.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -90,7 +90,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Consider reviewing backup policies and retention periods for backups to avoid storing unnecessary data.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -101,7 +101,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Continuously collecting logs across workloads can quickly aggregate and store lots of unused data.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
