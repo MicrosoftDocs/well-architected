@@ -67,26 +67,30 @@ ms.subservice: waf-workload-ai
   
 #### LLMOps for AI Workloads on Azure  
   
-**LLMOps** (Large Language Model Operations) is an emerging field that focuses on the operationalization of large language models, such as GPT-3 and BERT, which require specialized handling due to their size and complexity. Azure is well-positioned to support LLMOps through its advanced infrastructure and services. Here are some thoughts:  
+Interestingly enough, the life cycle for LLMs is very similar to classical ML models as outlined above but we do not have to go through expensive model training because the LLMs are already pre-trained. However, we still have to consider discovering an LLM Model that fits use case, tune the prompts (i.e., prompt engineering or prompt tuning) and if necessary, fine-tune the models for domain specific grounding.
+#### Using Azure AI Studio or Machine Learning for LLMOps 
+- Ai studio or Azure machine learning prompt flow provides a comprehensive solution that simplifies the process of prototyping, experimenting and tuning the prompt engineering process. Below are some important features:
+- Create executable flows that link LLMs, prompts, and Python tools.
+- Debug, share, and iterate your flows with ease through team collaboration.
+- Create prompt variants and evaluate their performance through large-scale testing.
+- Deploy the prompt flow as real-time endpoint to integrate into the workflow.
+- Azure AI studio and Machine Learning both provides advanced capabilities throughout the entire LLM lifecycle. This includes everything from data preparation to the discovery and tuning of foundational models, and their deployment. It also assists in the development and deployment of Prompt flows. Finally, it enables monitoring of the deployed model and Prompt flow endpoints for attributes such as groundedness, relevance, and coherence.
+#### Data Preparation for LLMs
+- The first step in the process is to access the data for LLMs similar to ML models. Azure AI Studio or Machine Learning provides seamless access to Onelake, Azure Data Lake Storage Gen2, Azure Blob Storage, Azure SQL Databases etc.
+#### Model Discover
+- One main advantage of LLMs is that we do not have to go through the expensive training process because they are already available models like GPT-4, Llama 2, Falcon etc. However, we still have to consider tuning the prompts (i.e., prompt engineering or prompt tuning) and if necessary, fine-tune the models for domain specific grounding.
+- The model catalog is a hub for discovering various foundation models from Azure OpenAI Service, Llama 2, Falcon, Hugging Face and a diverse suite of open-source vision models for image classification, object detection, and image segmentation. These models are curated, tested thoroughly to easily deploy and integrate with the applications.
+####Ethical Considerations
+- Large language models come with ethical and operational challenges, such as bias and fairness. Azure provides tools and frameworks to help address these issues, ensuring that models are not only performant but also responsible and ethical.  
   
-- **Pre-trained Models and Transfer Learning**: Azure provides access to pre-trained large language models, which can be fine-tuned for specific tasks using transfer learning. This approach significantly reduces the time and resources needed to develop high-performing models for niche applications.  
-  
-- **Compute Resources**: Large language models are resource-intensive, requiring powerful GPUs and TPUs for efficient training and inference. Azure's scalable compute options, including Azure Machine Learning Compute and Azure Kubernetes Service (AKS), make it feasible to handle these requirements.  
-  
-- **Data Management**: Managing the vast amounts of data needed for training and fine-tuning large language models is a significant challenge. Azure's data services, such as Azure Data Lake Storage and Azure Data Factory, provide robust solutions for data ingestion, storage, and preprocessing.  
-  
-- **Operational Efficiency**: Azure ML Pipelines facilitate the automation of complex workflows involved in fine-tuning and deploying large language models. This streamlining of processes ensures that models can be updated and deployed rapidly, keeping up with changing requirements and new data.  
-  
-- **Ethical Considerations**: Large language models come with ethical and operational challenges, such as bias and fairness. Azure provides tools and frameworks to help address these issues, ensuring that models are not only performant but also responsible and ethical.  
-  
-### Fine-Tuning of Models  
-  
-#### LLMOps for Fine-Tuning of Models  
-  
-- **Pre-trained Models**: Utilize Azure's pre-trained large language models as a starting point for domain-specific fine-tuning.  
-- **Transfer Learning**: Implement transfer learning techniques to adapt pre-trained models to specific tasks by training on new datasets.  
-- **Azure ML Pipelines**: Use Azure ML Pipelines to automate and streamline the fine-tuning workflow from data preparation to model evaluation.  
- 
+### LLM Fine-Tuning
+Fine-tuning for large language models is a process where a pre-trained model is adapted to generate answers specific to a particular domain. Fine-tuning allows the model to grasp the nuances and context relevant to that domain, thus improving its performance. The following are the steps involved in fine-tuning:
+- **Select a relevant dataset**: Choose a dataset that represents the specific domain or task you want the model to excel in, ensuring it has adequate quality and size for effective fine-tuning.
+- **Adjust training parameters**: Modify parameters like learning rate, batch size, and the number of training epochs to optimize the fine-tuning process and prevent overfitting.
+- **Evaluate and iterate**: Regularly assess the fine-tuned model's performance using validation data and make necessary adjustments to improve its accuracy and effectiveness in the target domain.
+Azure Machine Learning supports advanced optimization and distributed computing technologies such as ONNX Runtime Training’s ORTModule ,DeepSpeed and LoRA to significantly accelerate the training process.
+
+
 
 
 ## Aleksandra's (SME & area co-lead) seed material
