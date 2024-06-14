@@ -7,7 +7,7 @@ ms.date: 01/27/2022
 ms.topic: conceptual
 products:
   - azure-virtual-network
-azureCategories:
+azure.category:
   - networking
 ---
 

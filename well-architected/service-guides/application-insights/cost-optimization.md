@@ -7,7 +7,7 @@ ms.date: 01/31/2022
 ms.topic: conceptual
 products:
   - azure-application-insights
-azureCategories:
+azure.category:
   - management-and-governance
 ---
 

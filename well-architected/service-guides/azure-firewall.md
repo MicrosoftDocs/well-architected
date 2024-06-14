@@ -7,7 +7,7 @@ ms.reviewer: tozimmergren
 ms.topic: conceptual
 ms.date: 09/15/2023
 products: azure-firewall
-azureCategories:
+azure.category:
   - networking
 ---
 

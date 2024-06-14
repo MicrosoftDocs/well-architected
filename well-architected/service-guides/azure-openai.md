@@ -10,7 +10,7 @@ ms.subservice: waf-service-guide
 ms.collection: ce-skilling-ai-copilot
 products:
   - azure-openai
-azureCategories:
+azure.category:
   - ai-machine-learning
 ---
 
