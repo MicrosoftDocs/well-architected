@@ -56,11 +56,11 @@ It's important to distinguish between *platform reliability* and *workload relia
 >
 >   - Set your [Service Level Objectives (SLOs) as a way to evaluate availability targets](/azure/well-architected/reliability/metrics). Calculate SLOs as a percentage, such as 99.9, 99.95, or 99.995, that reflects workload uptime. Keep in mind, that this calculation isn't just based on the platform metrics emitted by the HCI cluster or workload. To have a comprehensive target measurement, factor in nuanced factors that are quantified, such as expected downtime during releases, routine operations, supportability, or other workload / organizational specific factors.
 >
->   - Microsoft-provided service level agreement (SLA) are often used as influencing factors when calculating SLOs. However, Microsoft doesn't provide a SLA for the uptime and connectivity of Azure Stack HCI clusters or the deployed workload, because Microsoft does not have control over the customer datacenter reliability (_such as power / cooling_), or the people and processes used to administer the platform.
+>   - Microsoft-provided service level agreements (SLAs) are often used as influencing factors when calculating SLOs. However, Microsoft doesn't provide an SLA for the uptime and connectivity of Azure Stack HCI clusters or the deployed workload, because Microsoft does not have control over the customer datacenter reliability (_such as power / cooling_), or the people and processes used to administer the platform.
 >
 > - (HCI platform architecture) **Consider how performance and operations impact reliability**.
 >
->   **Degraded performance of the cluster** or its dependencies can cause the HCI platform to become unavailable. For example,
+>   **Degraded performance of the cluster** or its dependencies can cause the HCI platform to become unavailable. For example:
 >
 >   - Without proper workload capacity planning, it's challenging to _right-size Azure Stack HCI clusters_ in the design phase, this is required to enable workload to meet the desired reliability targets. Use the [Azure Stack HCI Sizer Tool](https://aka.ms/azurestackhcicatalog/#/sizer) during  cluster design. Consider the "_N+1 minimum requirement for number of nodes_" if highly available VMs are required, or for business or mission-critical workloads consider using a "_N+2 number of nodes_" for the cluster size if resiliency is paramount.
 >
