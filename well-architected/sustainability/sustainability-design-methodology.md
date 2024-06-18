@@ -3,7 +3,7 @@ title: Design methodology for sustainability workloads on Azure
 description: Understand the architectural process of building a sustainable application on Microsoft Azure.
 author: Zimmergren
 ms.author: tozimmergren
-ms.date: 10/12/2022
+ms.date: 05/16/2024
 ms.topic: conceptual
 ---
 
@@ -69,6 +69,12 @@ Where:
 With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
 Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/sci).
+
+#### Azure Carbon Optimization
+
+[Azure Carbon Optimization](/azure/carbon-optimization/overview) is an Azure service that helps you understand the carbon emissions of your cloud workloads. Carbon optimization provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
+
+You get granular emissions data within Azure Portal for the last 12 months' usage of all your Azure products and services. You can also view the carbon emissions of your resources by region, subscription, and resource group.
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
