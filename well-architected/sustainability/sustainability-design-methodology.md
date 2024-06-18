@@ -5,12 +5,6 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.date: 05/16/2024
 ms.topic: conceptual
-<<<<<<< HEAD
-categories:
-  - management-and-governance
-  - web
-=======
->>>>>>> 7a8c3325e3e00b58b684c1b0d6e594371c527718
 ---
 
 # Design methodology for sustainable workloads on Azure
@@ -78,7 +72,7 @@ Read the full [SCI specification on GitHub](https://github.com/Green-Software-Fo
 
 #### Azure Carbon Optimization
 
-[Azure Carbon Optimization](/azure/carbon-optimization/overview) (ACO) is an Azure service that helps you understand the carbon emissions of your cloud workloads. ACO provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
+[Azure Carbon Optimization](/azure/carbon-optimization/overview) is an Azure service that helps you understand the carbon emissions of your cloud workloads. Carbon optimization provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
 
 You get granular emissions data within Azure Portal for the last 12 months' usage of all your Azure products and services. You can also view the carbon emissions of your resources by region, subscription, and resource group.
 
