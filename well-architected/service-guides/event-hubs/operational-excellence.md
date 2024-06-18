@@ -7,7 +7,7 @@ ms.date: 01/12/2022
 ms.topic: conceptual
 products:
   - azure-event-hubs
-azureCategories:
+azure.category:
   - analytics
 ---
 

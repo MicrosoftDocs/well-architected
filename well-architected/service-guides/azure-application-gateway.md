@@ -6,7 +6,7 @@ ms.author: greglin
 ms.topic: conceptual
 ms.date: 01/27/2023
 products: azure-application-gateway
-azureCategories:
+azure.category:
   - networking
 ---
 

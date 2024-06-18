@@ -10,7 +10,7 @@ ms.subservice: waf-service-guide
 ms.topic: conceptual
 products:
   - azure-database-postgresql
-azureCategories:
+azure.category:
   - databases
 ---
 
