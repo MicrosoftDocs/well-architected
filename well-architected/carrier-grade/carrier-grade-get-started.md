@@ -11,7 +11,7 @@ ms.industry: telecommunication
 
 # Carrier-grade workloads on Azure
 
-Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry, they're referred to as _carrier-grade systems_.  These systems are developed due to one or more of the following drivers:
+Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry, they're referred to as *carrier-grade systems*.  These systems are developed due to one or more of the following drivers:
 
 - Minimizing loss of life or injury. 
 - Meeting regulatory requirements on reliability to avoid paying fines. 
@@ -25,11 +25,11 @@ This series of articles applies the [design methodology for mission-critical wor
 
 ## What is a carrier-grade workload?
 
-The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+The term *workload* refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
 
-The term _mission-critical_ refers to a [criticality classification](/azure/cloud-adoption-framework/manage/considerations/criticality) where a significant financial cost (business-critical) or human cost (safety-critical) is associated with unavailability or underperformance.
+The term *mission-critical* refers to a [criticality classification](/azure/cloud-adoption-framework/manage/considerations/criticality) where a significant financial cost (business-critical) or human cost (safety-critical) is associated with unavailability or underperformance.
 
-A _carrier-grade workload_ pivots on both business-critical and safety-critical, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties. 
+A *carrier-grade workload* pivots on both business-critical and safety-critical, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties. 
 
 The *operational* aspect of the workload includes how reliability is measured and the targets that it must meet or exceed. Highly reliable systems typically target 99.999% uptime (commonly referred to as '5 9s') or 0.001% downtime in a year (approximately 5 minutes). Some systems target 99.9999% uptime, or 30 seconds downtime per year, or even higher levels of reliability. This covers all forms and causes of outage – scheduled maintenance, infrastructure failure, human error, software issues and even natural disaster. 
 

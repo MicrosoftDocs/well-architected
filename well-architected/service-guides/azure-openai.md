@@ -7,9 +7,10 @@ ms.date: 03/05/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-service-guide
+ms.collection: ce-skilling-ai-copilot
 products:
   - azure-openai
-categories:
+azureCategories:
   - ai-machine-learning
 ---
 
@@ -21,9 +22,9 @@ Azure OpenAI Service provides REST API access to OpenAI large language models (L
 >
 > **How to use this guide**
 >
-> Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope.
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 >
-> Also included are _recommendations_ on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure OpenAI and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure OpenAI and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:
 > [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).

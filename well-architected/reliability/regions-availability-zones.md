@@ -187,7 +187,7 @@ This table summarizes some of the pillar concerns:
 | Pillar | Impact |
 |-|-|
 | Reliability | **Low reliability.** Services are subject to outages if a datacenter fails. You can, however, build an application to be resilient to other types of failures. |
-| Cost Optimization | **Lowest cost.** You only need to have a single instance of each resource, and you don't incur any inter-zone or inter-region bandwidth costs. |
+| Cost Optimization | **Lowest cost.** You only need to have a single instance of each resource, and you don't incur any inter-region bandwidth costs. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br><br>*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availability zone, so you might see lower performance for highly latency-sensitive components. |
 | Operational Excellence | **High operational efficiency.** You only need to deploy and manage a single instance of each resource. |
 
@@ -251,7 +251,7 @@ This table summarizes some of the pillar concerns:
 | Pillar | Impact |
 |-|-|
 | Reliability | *When deployed in a single availability zone:* **Low reliability.** A zonal deployment doesn't provide any resiliency to an outage in a datacenter or availability zone. You must deploy redundant resources across multiple availability zones to achieve high resiliency. <br><br> *When deployed in multiple availability zones:* **High reliability.** Services can be made resilient to a datacenter or availability zone outage. |
-| Cost Optimization | *When deployed in a single availability zone:* **Low cost.** A single-zone deployment requires only a single instance of each resource. <br><br> *When deployed in multiple availability zones:* **High cost.** You deploy multiple instances of the resources, each of which are billed separately. You also need to pay for inter-zone traffic for data replication. |
+| Cost Optimization | *When deployed in a single availability zone:* **Low cost.** A single-zone deployment requires only a single instance of each resource. <br><br> *When deployed in multiple availability zones:* **High cost.** You deploy multiple instances of the resources, each of which are billed separately. |
 | Performance Efficiency | **High performance.** Latency can be very low when the components that serve a request are located in the same availability zone. |
 | Operational Excellence | **Low operational efficiency.** You need to configure and manage multiple instances of your service. You need to replicate data between availability zones. During an availability zone outage, failover is your responsibility. |
 
@@ -284,7 +284,7 @@ This table summarizes some of the pillar concerns:
 | Pillar | Impact |
 |-|-|
 | Reliability | **High reliability.** Services are resilient to an outage of a datacenter or availability zone. Data is synchronously replicated across availability zones and with no delay. |
-| Cost Optimization | **Moderate cost.** Depending on the services you use, you might incur some costs for higher service tiers to enable zone redundancy, or some inter-zone networking costs. |
+| Cost Optimization | **Moderate cost.** Depending on the services you use, you might incur some costs for higher service tiers to enable zone redundancy. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br><br>*For highly latency-sensitive workloads:* **Low performance.** Some components might be sensitive to latency due to inter-zone traffic or data replication time. |
 | Operational Excellence | **High operational efficiency.** You typically need to manage only a single logical instance of each resource. For most services, during an availability zone outage, failover is the responsibility of Microsoft and happens automatically. |
 

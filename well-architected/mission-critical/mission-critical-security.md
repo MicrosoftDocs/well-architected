@@ -5,13 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 03/15/2023
 ms.topic: conceptual
-categories: 
-  - security
-  - web
-  - networking
-  - identity
-
-  - alwayson
 ---
 
 # Security considerations for mission-critical workloads on Azure

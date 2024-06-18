@@ -11,18 +11,21 @@ ms.subservice: waf-workload-avs
 
 # Security considerations for Azure VMware Solution workloads
 
-This article discusses the security design area of an Azure VMware Solution workload. The discussion covers various measures for helping to secure and protect Azure VMware Solution workloads. These measures help protect infrastructure, data, and applications. This approach to security is a holistic one that aligns with an organization's core priorities.
+This article discusses the security design area of an Azure VMware Solution workload. The discussion covers various measures for helping to secure and protect Azure VMware Solution workloads. These measures help protect infrastructure, data, and applications. This approach to security is holistic and aligns with an organization's core priorities.
 
-Securing Azure VMware Solution requires a shared responsibility model, where Microsoft Azure and VMware are both responsible for certain aspects of security. To implement appropriate security measures, ensure a clear understanding of the shared responsibility model and collaboration between IT teams, VMware, and Microsoft.
+Securing Azure VMware Solution requires a shared responsibility model, where Microsoft Azure and VMware are responsible for certain security aspects. To implement appropriate security measures, ensure a clear understanding of the shared responsibility model and collaboration between IT teams, VMware, and Microsoft.
 
 ## Manage compliance and governance
 
-*Impact: Security, Operational excellence*
+*Impact: Security, Operational Excellence*
 
-It's important to detect noncompliant servers. You can use Azure Arc for this purpose. Azure Arc extends Azure management capabilities and Azure services to on-premises or multicloud environments. By providing centralized management and governance for servers, Azure Arc gives you a single-pane view for applying updates and hot fixes. The result is a consistent experience for managing components from Azure, on-premises systems, and Azure VMware Solution.
+To avoid deleting the private cloud by mistake, use [resource locks](/azure/azure-resource-manager/management/lock-resources?tabs=json) to safeguard resources from unwanted deletion or change. They can be set at the subscription, resource group, or resource level and block deletions, modifications, or both. 
+
+It's also important to detect noncompliant servers. You can use Azure Arc for this purpose. Azure Arc extends Azure management capabilities and services to on-premises or multicloud environments. Azure Arc gives you a single-pane view for applying updates and hotfixes by providing centralized server management and governance. The result is a consistent experience for managing components from Azure, on-premises systems, and Azure VMware Solution.
 
 ##### Recommendations
 
+- Put a resource lock on the resource group that hosts the private cloud to prevent accidentally deleting it.
 - Configure Azure VMware Solution guest virtual machines (VMs) as Azure Arc–enabled servers. For methods that you can use to connect machines, see [Azure connected machine agent deployment options](/azure/azure-arc/servers/deployment-options).
 - Deploy a certified third-party solution or Azure Arc for Azure VMware Solution (preview).
 - Use Azure Policy for Azure Arc–enabled servers to audit and enforce security controls on Azure VMware Solution guest VMs.
@@ -31,7 +34,7 @@ It's important to detect noncompliant servers. You can use Azure Arc for this pu
 
 *Impact: Security*
 
-If you don't patch and regularly update your operating system, you make it susceptible to vulnerabilities and put your entire platform at risk. When you apply patches regularly, you keep your system up to date. When you also use an endpoint protection solution, you help to prevent common attack vectors from targeting your operating system. It's also important to regularly perform vulnerability scans and assessments. These tools help you identify and remediate security weaknesses and vulnerabilities.
+If you don't patch and regularly update your operating system, you make it susceptible to vulnerabilities and put your entire platform at risk. When you apply patches regularly, you keep your system up to date. When you use an endpoint protection solution, you help prevent common attack vectors from targeting your operating system. It's also important to regularly perform vulnerability scans and assessments. These tools help you identify and remediate security weaknesses and vulnerabilities.
 
 Microsoft Defender for Cloud offers unique tools that provide advanced threat protection across Azure VMware Solution and on-premises VMs, including:
 
@@ -45,12 +48,12 @@ Microsoft Defender for Cloud offers unique tools that provide advanced threat pr
 
 - Install an Azure security agent on Azure VMware Solution guest VMs through Azure Arc for servers to monitor them for security configurations and vulnerabilities.
 - Configure Azure Arc machines to automatically create an association with the default data collection rule for Defender for Cloud.
-- On the subscription that you use to deploy and run the Azure VMware Solution private cloud, use a Defender for Cloud plan that includes protection for servers.
+- On the subscription you use to deploy and run the Azure VMware Solution private cloud, use a Defender for Cloud plan that includes server protection.
 - If you have guest VMs with extended security benefits in the Azure VMware Solution private cloud, deploy security updates regularly. Use the Volume Activation Management Tool to deploy these updates.
 
 ## Encrypt data
 
-*Impact: Security, Operational excellence*
+*Impact: Security, Operational Excellence*
 
 Data encryption is an important aspect of protecting your Azure VMware Solution workload from unauthorized access and preserving the integrity of sensitive data. Encryption includes data at rest on the systems and data in transit.
 
@@ -59,7 +62,7 @@ Data encryption is an important aspect of protecting your Azure VMware Solution 
 - Encrypt VMware vSAN datastores with customer-managed keys to encrypt data at rest.
 - Use native encryption tools such as BitLocker to encrypt guest VMs.
 - Use native database encryption options for databases that run on Azure VMware Solution private cloud guest VMs. For instance, you can use transparent data encryption (TDE) for SQL Server.
-- Monitor database activities for suspicious activity. You can use native database monitoring tools like SQL Server Activity Monitor for this purpose.
+- Monitor database activities for suspicious activity. You can use native database monitoring tools like SQL Server Activity Monitor.
 
 ## Implement network security
 
@@ -77,7 +80,7 @@ The tier-1 routers are positioned in front of the segments. These routers provid
 
 ##### Recommendations
 
-- Use network segments to logically separate and monitor components.
+- Use network segments to separate and monitor components logically.
 - Use micro-segmentation capabilities that are native to VMware NSX-T Data Center to restrict network communication between application components.
 - Use a centralized routing appliance to secure and optimize routing between segments.
 - Use staggered tier-1 routers when network segmentation is driven by organizational security or networking policies, compliance requirements, business units, departments, or environments.

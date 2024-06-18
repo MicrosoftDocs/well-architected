@@ -7,9 +7,9 @@ ms.date: 01/31/2022
 ms.topic: conceptual
 products:
   - azure-virtual-network
-categories:
+azureCategories:
   - networking
-  - management-and-governance
+
 ---
 
 # Cost optimization and IP addresses

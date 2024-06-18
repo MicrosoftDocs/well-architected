@@ -7,9 +7,9 @@ ms.date: 01/27/2022
 ms.topic: conceptual
 products:
   - azure-virtual-network
-categories:
+azureCategories:
   - networking
-  - management-and-governance
+
 ---
 
 # Operational excellence and Network connectivity

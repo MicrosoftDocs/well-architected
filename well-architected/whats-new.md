@@ -11,6 +11,16 @@ ms.topic: conceptual
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## May 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Files](./service-guides/azure-files.md): Explore design considerations and recommendations for Azure Files and Azure File Sync. Azure Files is a fully managed file share service that supports the SMB protocol and Network File System (NFS) protocol. Azure File Sync is a service that enables you to centralize your organization's file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server.
+
+### Updated articles
+
+- [Security considerations for Azure VMware Solution workloads](./azure-vmware/security.md): Learn about using resource locks to prevent accidental deletions or changes. 
+
 ## April 2024
 
 ### New articles
@@ -24,13 +34,7 @@ This month, we added two new service guides and new documentation about Oracle w
 
 **Oracle workloads on Azure**
 
-- [Create an Oracle workload on Azure](./oracle-iaas/get-started.md): Learn about best practices for an Oracle workload on Azure IaaS to help you create a performant, secure, and highly available solution.
-- [Design principles for an Oracle workload on Azure](./oracle-iaas/review-design-principles.md): Review the design principles built upon the five pillars of architectural excellence: reliability, security, cost optimization, performance efficiency, and operation excellence. Gain insight into best practices for designing and implementing Oracle workloads on Azure IaaS.
-- [Choose compute and storage](./oracle-iaas/choose-compute-storage.md): Choose the correct combination of compute and storage for Azure IaaS and the location of application workloads relative to database services. Learn how to apply right-size compute and storage principles to Oracle workloads using the Azure IaaS model.
-- [Design Oracle applications](./oracle-iaas/design-applications.md): Review the design area for Oracle applications and see how to apply these principles to Oracle on Azure IaaS workloads. Understand which functionalities each version of an application supports so that you can avoid problems during a migration to the cloud.
-- [Optimize business continuity and disaster recovery](./oracle-iaas/optimize-business-continuity-disaster-recovery.md): Oracle on Azure IaaS can fulfill the required resiliency objectives of the most demanding Oracle workloads. See how to apply these principles to Oracle on Azure IaaS workloads.
-- [Optimize security for your Oracle workload](./oracle-iaas/optimize-security.md): Review security recommendations for the Azure control plane related to Oracle application workloads that are deployed on virtual machines (VMs) on Azure. Learn how to optimize security for Oracle workloads on Azure by using the defense-in-depth approach to employ a combination of various layer security measures and create a robust security posture.
-- [Monitor your Oracle workload](./oracle-iaas/monitor-workloads.md): Learn how to use Azure Virtual Machines to monitor your Oracle workloads. Identify failures and abnormalities to ensure the health of your mission-critical workloads.
+Find new articles and updated guidance about Oracle workloads on Azure. Explore best practices to help you create a performant, secure, and highly available solution. To get started, see [Oracle workloads on Azure infrastructure as a service (IaaS)](./oracle-iaas/index.yml).
 
 ## March 2024
 

@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-service-guide
 products:
   - azure-blob-storage
-categories:
+azureCategories:
   - storage
 ---
 
@@ -23,9 +23,9 @@ This article assumes that as an architect, you reviewed your [storage options](/
 >
 > **How to use this guide**
 >
-> Each section has a _design checklist_ that presents architectural areas of concern along with design strategies.
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies.
 >
-> Also included are _recommendations_ on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Blob Storage and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+> Also included are *recommendations* on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Blob Storage and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 
 ## Reliability
 

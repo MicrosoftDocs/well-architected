@@ -7,9 +7,9 @@ ms.date: 01/28/2022
 ms.topic: conceptual
 products:
   - azure-traffic-manager
-categories:
+azureCategories:
   - networking
-  - management-and-governance
+
 ---
 
 # Operational excellence and Traffic Manager

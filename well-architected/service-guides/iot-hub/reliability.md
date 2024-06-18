@@ -7,9 +7,8 @@ ms.date: 01/19/2022
 ms.topic: conceptual
 products:
   - azure-iot-hub
-categories:
-  - messaging
-  - management-and-governance
+azureCategories:
+  - iot
 ---
 
 # IoT Hub and reliability
