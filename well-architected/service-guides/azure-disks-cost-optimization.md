@@ -8,7 +8,7 @@ ms.date: 07/05/2023
 ms.topic: conceptual
 products:
   - azure-disk-storage
-azureCategories:
+azure.category:
   - storage
 
 ---

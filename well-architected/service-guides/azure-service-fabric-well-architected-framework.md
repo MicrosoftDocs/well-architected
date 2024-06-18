@@ -6,7 +6,7 @@ ms.author: tomcassidy
 ms.topic: conceptual
 ms.date: 3/18/2022
 products: azure-service-fabric
-azureCategories:
+azure.category:
   - containers
 ---
 

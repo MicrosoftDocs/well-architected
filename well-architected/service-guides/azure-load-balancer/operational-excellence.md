@@ -7,7 +7,7 @@ ms.date: 01/28/2022
 ms.topic: conceptual
 products:
   - azure-load-balancer
-azureCategories:
+azure.category:
   - networking
 ---
 
