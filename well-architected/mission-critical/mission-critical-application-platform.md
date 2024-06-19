@@ -342,9 +342,9 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 - The operational costs of using IaaS virtual machines are significantly higher than the costs of using PaaS services because of the management requirements of the virtual machines and the operating systems. Managing virtual machines necessitates the frequent rollout of software packages and updates.
 
 - Azure provides capabilities to increase the availability of virtual machines:
-  - [Availability sets](/azure/virtual-machines/availability-set-overview) can help protect against network, disk, and power failures by distributing virtual machines across fault domains and update domains.
   - [Availability zones](/azure/availability-zones/az-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
   - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of virtual machines in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+  - [Flexible Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) can help protect against network, disk, and power failures by distributing virtual machines across fault domains and update domains automatically.
 
 ### Design recommendations
 
@@ -356,8 +356,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 - Deploy three or more virtual machines across [availability zones](/azure/availability-zones/az-overview) to achieve datacenter-level fault tolerance.
   - If you're deploying commercial off-the-shelf software, consult the software vendor and test adequately before deploying the software into production.
 
-- For workloads that can't be deployed across availability zones, use [availability sets](/azure/virtual-machines/availability-set-overview) that contain three or more VMs.
-  - Consider availability sets only if availability zones don't meet workload requirements, such as for chatty workloads with low latency requirements.
+- For workloads that can't be deployed across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) that contain three or more VMs.  Use [manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) to configure the right number of fault domains.
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone redundancy. This point is particularly important for workloads that have varying loads. For example, if the number of active users or requests per second is a varying load.
   

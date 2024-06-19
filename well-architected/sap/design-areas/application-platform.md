@@ -63,7 +63,7 @@ For more information, see:
 
 The goal of application server reliability is to have multiple application servers load balance traffic and failover when needed. Resiliency for the SAP application server layer can be achieved through redundancy. You can configure multiple dialog instances on different instances of Azure virtual machines with a minimum of two application servers. Here are application server resiliency recommendations.
 
-**Use Availability Zones.** An SAP application server can be deployed in an availability set or across availability zones. The decision you make needs to be based on workload requirements, however, we are currently recommending availability zones as the best option for resiliency. We don’t recommend scale sets. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
+**Use Availability Zones.** An SAP application server can be deployed across availability zones. If a region does not have zones, we recommend using a flexible virtual machine scale set with FD=1. We are currently recommending availability zones as the best option for resiliency. We don’t recommend scale sets with Uniform orchestration mode. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
 
 **Use multiple application servers.** Using multiple smaller application servers instead of one larger application server is recommended. This setup avoids a single point of failure. It’s a best practice to configure SAP Logon Group (SMLG) and Batch Server Group (RZ12) for better load balancing between end-user & batch processing.
 
@@ -72,6 +72,7 @@ For more information, see:
 - [Azure Virtual Machines high availability for SAP NetWeaver](/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 - [SAP HANA high availability for Azure virtual machines](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 - [SAP workload configurations with Azure Availability Zones]( /azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+- [Virtual Machine Scale Sets for SAP workload](/azure/sap/workloads/virtual-machine-scale-set-sap-deployment-guide)
 
 ## Improve compute performance efficiency
 
