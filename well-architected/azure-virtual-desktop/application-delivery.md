@@ -93,7 +93,7 @@ The region of your session hosts also affects the reliability of your Azure Virt
 For more information about availability zones and VMSS Flex, see the following resources:
 
 - [Availability zone service and regional support](/azure/reliability/availability-zones-service-support)
-- [VMSS Flex overview](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)
+- [VMSS Flex overview](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)
 
 ##### Recommendations
 
