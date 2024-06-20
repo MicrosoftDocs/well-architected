@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.collection: ce-skilling-ai-copilot
 products:
   - azure-machine-learning
-azureCategories:
+azure.category:
   - ai-machine-learning
 ---
 

@@ -7,7 +7,7 @@ ms.date: 01/19/2022
 ms.topic: conceptual
 products:
   - azure-iot-hub
-azureCategories:
+azure.category:
   - iot
 ---
 

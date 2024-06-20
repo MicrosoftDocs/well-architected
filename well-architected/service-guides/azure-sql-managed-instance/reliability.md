@@ -7,7 +7,7 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-sql-managed-instance
-azureCategories:
+azure.category:
   - databases
 ---
 
