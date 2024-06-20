@@ -5,7 +5,7 @@ author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
 products: azure-kubernetes-service
-azureCategories:
+azure.category:
   - containers
 ---
 

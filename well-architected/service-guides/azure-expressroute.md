@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 06/07/2022
 products: 
   - azure-expressroute
-azureCategories:
+azure.category:
   - networking
 ---
 

@@ -7,7 +7,7 @@ ms.date: 01/24/2022
 ms.topic: conceptual
 products:
   - azure-api-management
-azureCategories:
+azure.category:
   - integration
 ---
 
