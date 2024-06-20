@@ -6,7 +6,7 @@ author: bwren
 ms.author: bwren
 ms.date: 02/27/2024
 ms.reviewer: bwren
-azureCategories:
+azure.category:
   - management-and-governance
 ---
 
