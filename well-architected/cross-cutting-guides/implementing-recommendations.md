@@ -44,16 +44,16 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use meaningful milestone names to indicate when you're evaluating the workload.
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
-- Whenever your proposed solution or service costs additional money, clearly mention it in your report.
+- Whenever your proposed solution or service costs additional money, clearly mention it.
 - Start remediating issues which have the highest reward-effort ratio as they provide quick wins. Check below for further details.
 
-## Recommendation for final report
+## How to report assessment results and get buy-in
 ### Executive summary
 Executive summary has to be understandable by all types of audiences, as well as give a 50,000-foot view of the whole thing. Address following questions:
 - What is this report about? 
 - What did you assess? (Pillars, etc.)
 - How did you do the assessment? (Workshops, hands-on investigation, etc.)
-- Why are you using Microsft Azure? What are the key takeaways? For example, what are your main issues? What have you done well?
+- Why are you using Microsoft Azure? What are the key takeaways? What are your main issues? What have you done well?
 - What is your solution? How are you trying to overcome those issues?
 - What are the milestones to improve the situation? Briefly summarize what each milestone will achieve.
 
@@ -72,7 +72,7 @@ It has to be understandable for a non-technical audience so avoid using jargon. 
 
 ### Detailed findings
 
-This section outlines more details about the most important issues along with recommendations. For more clarity, associate each issue with a severity level, preferably with some color. Briefly, advise the customer on how to approach the issues. For example, “critical” issues are marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Below, you can see an example. Note that workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC. 
+This section outlines more details about the most important issues along with recommendations. For more clarity, associate each issue with a severity level, preferably with some color. Briefly, advise how to address the issues. For example, “critical” issues can be marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Below, you can see an example. Note that workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC. 
 
 ![image](https://github.com/azarboon/well-architected/assets/21277296/730b92c3-c61a-4b5f-9289-bbdbcd107f64)
 
@@ -107,10 +107,28 @@ Virtual Machines:
 
 ### Effort and reward
 
-Make it clear that improvement is a matter of trade-off. One cannot make everything perfect, though gradual improvement is the most effective way to start improving. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and sub-sections addressed in the previous section. Here is an example:
+Make it clear that improvement is a matter of trade-off. One cannot make everything perfect, though gradual improvement is the most effective way to start improving. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and subsections addressed in the previous section. For example:
 
 ![image](https://github.com/azarboon/well-architected/assets/21277296/5abfe06b-446f-4da3-bb16-807ccf10edfc)
 
+### Proposed roadmap
+
+Recommend to fix critical issues as soon as possible. Then propose milestones, each composed of action points. For example,
+
+** Milestone 1**
+- Configure built-in logging and monitoring tools in Azure components.
+- Configure and leverage Azure central governance tools, review them at least weekly, and tune the architecture accordingly.
+- Address suspicious authentications/authorizations in AD review.
+
+** Milestone 2**
+- Automate security remedial actions with help of Azure Policy.
+- Setup and follow a suitable version control working model.
+
+### Dependency Chart 
+
+Outline dependencies between proposed actions from the roadmap. Following figure is only for illustration and helps the readers to understand the relationship between the activities.  
+
+![image](https://github.com/azarboon/well-architected/assets/21277296/d45e1dd4-c29d-4cc7-b2fb-576a5ba3290f)
 
 ## Get personalized support
 
