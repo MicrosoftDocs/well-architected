@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 [Azure Well-Architected Review](/assessments/azure-architecture-review/) is a self-assessment that can help a workload team examine a workload from the perspective of the Azure Well-Architected Framework. It consists of approximately 60 questions that are based on the key recommendations provided in the pillars of the Well-Architected Framework. The assessment tool can also pull in [Azure Advisor](/azure/advisor/) recommendations for an Azure subscription or resource group.
 
-At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement.
+At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use in your final report to incorporate the recommendations into the operational processes for continuous workload improvement.
 
 ## When to take the assessment
 
@@ -28,6 +28,16 @@ Assess your workload by completing the assessment. The recommendations for your 
 > [!TIP]
 > [DevOps Tooling for Well-Architected Recommendation Process](https://github.com/Azure/WellArchitected-Tools/tree/main/WARP/devops#readme) provides example scripts that can help you create automation for backlog integration. These scripts show one way to import the recommendations from the Well-Architected Review CSV file into an existing Azure DevOps or GitHub organization.
 
+## Add an executive summary in your final report
+
+Executive summary has to be understandable by all types of audiences, as well as give a 50,000-foot view of the whole thing. Address following questions:
+- What is this report about? 
+- What did you assess? (Pillars, etc.)
+- How did you do the assessment? (Workshops, hands-on investigation, etc.)
+- Why are you using Microsft Azure? What are the key takeaways? For example, what are your main issues? What have you done well?
+- What is your solution? How are you trying to overcome those issues?
+- What are the milestones to improve the situation? Briefly summarize what each milestone will achieve.
+
 ## Prioritize and implement recommendations
 
 Workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC.
@@ -39,9 +49,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 ## Tips
 
 - Azure Well-Architected Review is a teamwork which has to be done in collaboration with workload owners and key stakeholders. Make it clear that this process must be free of any kind of blaming or finger pointing. Ask the respondents to be as honest as possible because that's the only uncover the issues and to fix them. Don't blindly trust their answers because there is a high chance of misunderstanding especially if the respondent isn't technically savvy. For every answer, ask clarifying questions to make sure you share the same understanding.
-
 - You should always sign in when you take assessments so that the tool can generate milestones.
-
   > [!WARNING]
   > Assessments are tied to a Microsoft Learn profile. They can't be transferred to or accessed by other profiles.
 
@@ -50,6 +58,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use meaningful milestone names to indicate when you're evaluating the workload.
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
+- Whenever your proposed solution or service costs additional money, clearly mention it in your report. 
 
 ## Get personalized support
 
