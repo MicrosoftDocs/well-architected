@@ -64,12 +64,6 @@ Although there are no Azure products that directly facilitate the formalization 
 
 The Well-Architected Framework also provides detailed guidance on the processes and procedures that should be codified to ensure that your workload and workload team run according to industry standards.
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams on many areas of standardizing processes and procedures across an organization.
-
-For more information, see the [Azure landing zone design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) and [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices).
-
 ## Related links
 
 - [Recommendations for implementing automation](automate-tasks.md)

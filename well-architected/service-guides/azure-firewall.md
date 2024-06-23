@@ -7,6 +7,8 @@ ms.reviewer: tozimmergren
 ms.topic: conceptual
 ms.date: 09/15/2023
 products: azure-firewall
+azure.category:
+  - networking
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall

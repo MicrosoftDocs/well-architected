@@ -8,6 +8,10 @@ ms.date: 11/14/2023
 ms.service: waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
+products:
+  - azure-database-postgresql
+azure.category:
+  - databases
 ---
 
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL

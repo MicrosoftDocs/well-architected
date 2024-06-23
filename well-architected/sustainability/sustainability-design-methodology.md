@@ -3,12 +3,8 @@ title: Design methodology for sustainability workloads on Azure
 description: Understand the architectural process of building a sustainable application on Microsoft Azure.
 author: Zimmergren
 ms.author: tozimmergren
-ms.date: 10/12/2022
+ms.date: 05/16/2024
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-
 ---
 
 # Design methodology for sustainable workloads on Azure
@@ -72,7 +68,13 @@ Where:
 
 With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
-Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/software_carbon_intensity/blob/main/Software_Carbon_Intensity/Software_Carbon_Intensity_Specification.md).
+Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/sci).
+
+#### Azure Carbon Optimization
+
+[Azure Carbon Optimization](/azure/carbon-optimization/overview) is an Azure service that helps you understand the carbon emissions of your cloud workloads. Carbon optimization provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
+
+You get granular emissions data within Azure Portal for the last 12 months' usage of all your Azure products and services. You can also view the carbon emissions of your resources by region, subscription, and resource group.
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
@@ -80,7 +82,7 @@ Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sust
 
 We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint and to measure and track emissions over time.
 
-Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
+Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
 
 #### Leverage the Microsoft Sustainability Manager
 
@@ -129,7 +131,7 @@ Reducing carbon emissions can happen with three possible solutions:
 - Carbon avoidance; not emitting carbon in the first place
 - Carbon removal; subtract carbon from the atmosphere
 
-The goal of green software is to avoid unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, _carbon removal_ is the preferred goal for removing emissions from our atmosphere.
+The goal of green software is to avoid unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, *carbon removal* is the preferred goal for removing emissions from our atmosphere.
 
 Microsoft is committed to being [carbon negative by 2030](https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/), and [by 2050 to have removed all the carbon](https://blogs.microsoft.com/blog/2021/10/27/supporting-our-customers-on-the-path-to-net-zero-the-microsoft-cloud-and-decarbonization/) the company has emitted since it was founded in 1975.
 
@@ -139,7 +141,7 @@ As a cloud provider, Microsoft is responsible for the data centers hosting your 
 
 However, deploying an application in the Microsoft cloud doesn't automatically make it sustainable, even if the data centers are optimized for sustainability. Applications that aren't optimized may still emit more carbon than necessary.
 
-_Let's take an example._
+*Let's take an example.*
 
 You deploy an app to an Azure service, but you only utilize 10% of the allocated resources. The provisioned resources are underutilized, ultimately leading to unnecessary emissions.
 

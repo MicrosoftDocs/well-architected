@@ -7,9 +7,9 @@ ms.date: 01/19/2022
 ms.topic: conceptual
 products:
   - azure-queue-storage
-categories:
-  - messaging
-  - management-and-governance
+azure.category:
+  - storage
+
 ---
 
 # Queue Storage and operational excellence

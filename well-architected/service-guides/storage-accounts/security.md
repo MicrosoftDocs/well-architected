@@ -7,9 +7,8 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-storage-accounts
-categories:
+azure.category:
   - storage
-  - management-and-governance
 ---
 
 # Storage Accounts and security

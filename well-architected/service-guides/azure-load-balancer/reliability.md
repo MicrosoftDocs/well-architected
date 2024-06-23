@@ -7,9 +7,8 @@ ms.date: 01/28/2022
 ms.topic: conceptual
 products:
   - azure-load-balancer
-categories:
+azure.category:
   - networking
-  - management-and-governance
 ---
 
 # Reliability and Azure Load Balancer

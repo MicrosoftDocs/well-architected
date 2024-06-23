@@ -3,19 +3,19 @@ title: Health modeling for workloads
 description: Use health modeling to improve workload reliability in Azure. Learn how to quantify application health and build your own health model.
 author: calcof
 ms.author: calcof
-ms.date: 04/11/2024
+ms.date: 04/12/2024
 ms.topic: conceptual
 ---
 
 # Health modeling for workloads
 
-Cloud applications generate high volumes of operational data, which makes it challenging to pinpoint remediation and resolve problems quickly. A common reason for this challenge is the absence of a health baseline that's customized to the workload's functionality and the inability to detect drift from that baseline. 
+Cloud applications generate high volumes of operational data, which makes it challenging to pinpoint and resolve problems quickly. A common reason for this challenge is the absence of a health baseline that's customized to the workload's functionality and the inability to detect drift from that baseline. 
 
 Health modeling is an observability exercise that combines business context with raw monitoring data to quantify the overall health of a workload. It helps set a baseline that you can monitor the workload against. You should consider data like telemetry from infrastructure and application components. Health modeling might also incorporate other information that's necessary to achieve the workload's quality targets.
 
 Performance problems or operational degradation can cause drift from the expected operational state. By modeling the health of a workload, you can identify drift and make informed operational decisions that consider business impact. 
 
-Health modeling bridges the gap between legacy operational knowledge and actionable insights. It also helps you manage critical issues effectively. The concept is essential to maximize reliability and operational effectiveness. 
+Health modeling bridges the gap between tribal operational knowledge and actionable insights. It helps you manage critical issues effectively. The concept is essential to maximize reliability and operational effectiveness. 
 
 This guide offers practical guidance about health modeling, including how to build a model that assesses the runtime health of a workload and all of its subsystems.
 
@@ -35,7 +35,7 @@ We recommend that you watch this video to get a high-level understanding of heal
 
 ## What is health, health modeling, and a health model?
 
-The term _health_ refers to the operational status of an entity and its dependencies. That entity can be an individual unit of a system, a logical combination of multiple related entities, or the overall system. 
+The term *health* refers to the operational status of an entity and its dependencies. That entity can be an individual unit of a system, a logical combination of multiple related entities, or the overall system. 
 
 We recommend that you represent health in one of three states: 
 
@@ -48,7 +48,7 @@ We recommend that you represent health in one of three states:
 > [!NOTE]
 > You can represent health with a score instead of states to provide more data granularity.
 
-Health states are derived by combining monitoring data with domain information. Each state must be defined and must be measurable. Health states are calculated by using _health signals_, which are individual data streams that provide insights into an entity's operational behavior. Signals can include metrics, logs, traces, or other quality characteristics. For example, a health signal for a virtual machine (VM) entity might track the CPU utilization metric. Other signals for this entity can include memory usage, network latency, or error rates.
+Health states are derived by combining monitoring data with domain information. Each state must be defined and must be measurable. Health states are calculated by using *health signals*, which are individual data streams that provide insights into an entity's operational behavior. Signals can include metrics, logs, traces, or other quality characteristics. For example, a health signal for a virtual machine (VM) entity might track the CPU utilization metric. Other signals for this entity can include memory usage, network latency, or error rates.
 
 As you define health signals, factor in the nonfunctional requirements for the workload. In the example of CPU utilization, include the expected thresholds for each health state. If utilization exceeds the tolerated threshold in accordance with the workload requirements, the system transitions from *Healthy* to *Degraded* or *Unhealthy*. These state changes trigger the appropriate alerts or actions. 
 
@@ -60,23 +60,23 @@ Health modeling requires entities to have well-defined states that are derived f
 
 - **Unhealthy**: Degradation is beyond the tolerated limits. Resources are no longer responsive or available, and the system is no longer meeting acceptable performance levels. User experience is severely affected. 
 
-The outcome of health modeling is a _model_ or a graphical representation of logical entities and their relationships for a workload architecture. Each node has a health state definition. 
+The outcome of health modeling is a *model* or a graphical representation of logical entities and their relationships for a workload architecture. Each node has a health state definition. 
 
 > [!IMPORTANT]
-> _Health modeling_ is an abstract concept that you can implement and apply at different scopes if you have a good understanding of the business scenarios.
+> *Health modeling* is an abstract concept that you can implement and apply at different scopes if you have a good understanding of the business scenarios.
 
 :::image type="content" source="./_images/health-model.png" alt-text="A diagram that shows the health model definition." lightbox="./_images/health-model.png":::
 
 In the image: 
 
--  _Entities_ are logical components of the workload that represent aspects of the system. They can be infrastructure components, like servers, databases, and networks. They can also be specific application modules, pods, services, or microservices. Or, entities can capture user interactions and system flows within the workload.
+-  *Entities* are logical components of the workload that represent aspects of the system. They can be infrastructure components, like servers, databases, and networks. They can also be specific application modules, pods, services, or microservices. Or, entities can capture user interactions and system flows within the workload.
 
    > [!NOTE]
    > User and system flows summarize nonfunctional requirements across business scenarios that involve application and infrastructure components. This summary reflects business value for the application.
 
-- _Relationships_ between entities mirror the dependency chains within the system. For example, an application module might call specific infrastructure components that form a _relationship_.
+- *Relationships* between entities mirror the dependency chains within the system. For example, an application module might call specific infrastructure components that form a *relationship*.
 
-Consider a scenario in which an e-commerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This problem is critical for the organization due to the implied revenue loss. Although an application developer might understand the effect of this metric spike on payments, this legacy knowledge isn't often shared across the operations team.
+Consider a scenario in which an e-commerce workload experiences a spike in failed messages on an Azure Service Bus queue, which is causing payments to fail. This problem is critical for the organization due to the implied revenue loss. Although an application developer might understand the effect of this metric spike on payments, this tribal knowledge isn't often shared across the operations team.
 
 A health model can give operators immediate visibility into the problem and its effects. The payment flow depends on Service Bus, which is one of the workload components. The visual representation reveals the degraded state of the Service Bus instance and its effect on the payment flow. Operators can understand the importance of the issue and focus their remediation efforts on that specific component.
 
@@ -90,7 +90,7 @@ Health modeling was important in the preceding scenario in the following ways:
 
 - Operators conducted post-incident activities with accuracy because the health model provided insights into the root causes of anomalies and the specific health signals that were involved.
 
-- It made the monitoring data meaningful for all team members. It bridged the gap between legacy knowledge and shared insights.
+- It made the monitoring data meaningful for all team members. It bridged the gap between tribal knowledge and shared insights.
 
 - The organization used the health model as a baseline for future investments in AI-driven operations to derive intelligent insights.
 
@@ -132,7 +132,7 @@ Begin this logical design exercise by evaluating the following components of you
    
 For example, the health model for an e-commerce application should represent the current state of critical processes like user sign-in, checkout, and payments.
 
-### Contextualize flow by using business requirements
+### Contextualize using business requirements
 
 Evaluate the [relative importance and overall impact](/azure/well-architected/reliability/identify-flows#identify-business-impact-of-each-flow) of each flow on your organization. Consider factors like user experience, security, and operational efficiency. For example, in most scenarios, the failure of a payment process is likely more significant than the failure of a reporting process. 
 
@@ -217,7 +217,7 @@ A health model introduces separation between monitoring data and alert rules. A 
 
 Create visual representations, such as tables or graphs, to effectively convey the current state and history of the health model. Ensure that the visualization aligns with the business context and provides actionable insights. 
 
-When you visualize your health model, consider adopting a _traffic light_ approach to make health states immediately insightful across dependency chains. 
+When you visualize your health model, consider adopting a *traffic light* approach to make health states immediately insightful across dependency chains. 
 
 Assign green for healthy, amber for degraded, and red for unhealthy. By quickly identifying the color-coded states, you can efficiently locate the root cause of any application degradation.
 
@@ -246,13 +246,13 @@ Although health modeling is commonly associated with quantifying health states f
 
 At an individual workload level, health models provide a foundation for application observability and operational insights. Each application can have its own health model that captures what each health state means within its context.
 
-You can combine multiple health models into a high-level construct by building a _model of models_. For example, you can build the observability footprint of a business unit or an entire cloud estate by using health models as components within a larger model. Health models represent workloads within the estate as nodes within the top-level graph. Use the relationships in this model to capture inter-application dependencies, including data flows, service interactions, and shared infrastructure.
+You can combine multiple health models into a high-level construct by building a *model of models*. For example, you can build the observability footprint of a business unit or an entire cloud estate by using health models as components within a larger model. Health models represent workloads within the estate as nodes within the top-level graph. Use the relationships in this model to capture inter-application dependencies, including data flows, service interactions, and shared infrastructure.
 
 Consider a retail company that has various applications for e-commerce, payments, and order processing. You can define each of these applications as an independent health model to quantify what health means for that workload. You can then use a parent model to map all of these component health models as entities and capture inter-application operational impact through dependency chains. For example, if the e-commerce application becomes unhealthy, it has a cascading effect on the payment application.
 
 ### Health trends and AI for IT operations
 
-Health modeling provides a quantified operational baseline that's tuned to a specific business context. AI for IT operations is a popular way to enhance operational efficiency. Health data is a foundational input for machine learning models to analyze health trends. For example, machine learning models can: 
+Health modeling provides a quantified operational baseline that's tuned to a specific business context. AI for IT operations (AIOps) is a popular way to enhance operational efficiency. Health data is a foundational input for machine learning models to analyze health trends. For example, machine learning models can: 
 
 - Extract more insights from state changes and recommend actions.
 

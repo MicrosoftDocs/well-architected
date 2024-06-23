@@ -7,9 +7,9 @@ ms.date: 02/01/2022
 ms.topic: conceptual
 products:
   - azure-application-insights
-categories:
-  - monitoring
+azure.category:
   - management-and-governance
+
 ---
 
 # Operational excellence and Application Insights
