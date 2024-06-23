@@ -125,10 +125,8 @@ For instance, if you want to calculate the SLO of a flow that requires the user 
 
 An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. They are also represented in percentiles.
 
-##### Example
 
-TODO
-
+> For an illustrative example about how to define and measure SLO and SLIs, see the [Example](#example) section.
 
 ### Availability metrics
 
@@ -224,6 +222,50 @@ Azure SLAs provide the Microsoft commitments for uptime and connectivity. Differ
 The Azure SLA includes procedures for obtaining a service credit if the SLA isn't met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
 
 Explore the [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) provided by Azure Monitor for your visualization system.
+
+
+## Example
+
+Contoso Ticketing is designing a new mobile experience for their event ticketing system. Here's the high-level architecture:
+
+//TODO: fix the actual image
+
+![alt text](./media/metrics/example-architecture-targets.png)
+
+##### Components
+
+Here are some components that have been chose to illustrate the concept of SLO definition. Notice there are other components in this architecture that haven't been included for brevity. 
+
+- **Azure Front Door** is the single point of entry that exposes an API that's used by end users to send requests.
+- **Azure Container Apps** enviroment is owned by the workload team and runs business logic for the  application. 
+- **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload. 
+
+The API team has defined an initial service-level objective (SLO) target for critical flows in the application. By adopting the direction given in [Factors that influence SLOs](#factors-that-influence-slos), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows do not cover 100% of the code or data access. Here are the influencing factors.
+
+#### Azure reliability
+
+Azure's financial commitment SLA serves as a proxy to assess platform reliability.
+
+#### Application code
+
+Includes defects, scale issues, and other code-related considerations.
+
+#### Resource and application configuration
+
+Auto-scaling, SKU selection, NSG rules, and other configuration aspects.
+
+#### Operations
+
+Deployment processes, TLS certificate rotation, and routine operations.
+
+#### External dependencies
+
+Reliability considerations for SQL Managed Instance.
+
+#### Maintenance window. 
+
+Tolerated downtime during scheduled maintenance and downtime windows.
+
 
 
 ## Organizational alignment
