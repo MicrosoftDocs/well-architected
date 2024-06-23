@@ -7,7 +7,7 @@ ms.date: 12/07/2021
 ms.topic: conceptual
 products:
   - azure-storage-accounts
-azureCategories:
+azure.category:
   - storage
 ---
 

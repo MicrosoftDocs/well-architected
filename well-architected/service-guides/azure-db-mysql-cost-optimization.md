@@ -7,7 +7,7 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-database-mysql
-azureCategories:
+azure.category:
   - databases
 
 ---

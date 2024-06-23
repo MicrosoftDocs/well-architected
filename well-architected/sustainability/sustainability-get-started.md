@@ -11,17 +11,17 @@ ms.topic: conceptual
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building sustainable workloads on Azure. Review the provided guidance that applies Well-Architected best practices as a technical foundation for building and operating sustainable solutions on Azure.
 
-We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you're building or operating on Azure.
+We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on *any* solutions you're building or operating on Azure.
 
 Additionally, read about [The Carbon Benefits of Cloud Computing: a Study of the Microsoft Cloud](https://www.microsoft.com/download/details.aspx?id=56950) to learn more about how Azure is more energy efficient and carbon efficient than on-premises solutions.
 
 ## What is a sustainable workload?
 
-The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+The term *workload* refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
 
-With _sustainability_, we refer to the environmental impact of our workloads.
+With *sustainability*, we refer to the environmental impact of our workloads.
 
-A _sustainable workload_ therefore describes the practice of designing solutions that maximize utilization while minimizing waste, ultimately reducing the footprint on the environment.
+A *sustainable workload* therefore describes the practice of designing solutions that maximize utilization while minimizing waste, ultimately reducing the footprint on the environment.
 
 ### Cloud efficiency overview
 

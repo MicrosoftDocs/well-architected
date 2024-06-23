@@ -7,7 +7,7 @@ ms.date: 06/23/2022
 ms.topic: conceptual
 products:
   - azure-sql-database
-azureCategories:
+azure.category:
   - databases
 
 ---

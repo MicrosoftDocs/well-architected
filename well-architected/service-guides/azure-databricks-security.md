@@ -7,7 +7,7 @@ ms.date: 08/08/2022
 ms.topic: conceptual
 products:
   - azure-databricks
-azureCategories:
+azure.category:
   - databases
 
 ---
