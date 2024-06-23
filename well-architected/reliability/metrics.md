@@ -73,7 +73,7 @@ For the workload architect, SLOs can be the driver for many technical decisions.
 >
 > It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. 
 >
-> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences.
+> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences. TODO Example is opposite?
 >
 > TODO: To make sure you can meet the SLO target, review the Microsoft SLAs for each component.
 
@@ -85,7 +85,7 @@ For instance, consider Azure App Service Web Apps. It's considered available whe
 
 So, if your workload relies on deployment slots, you cannot derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be somewhat uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
 
-Let's study another example. What does it mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn’t guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
+Let's study another example. What does it mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn't guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
 
 ##### Common SLOs
 
@@ -123,49 +123,32 @@ For instance, if you want to calculate the SLO of a flow that requires the user 
 
 **Type of interaction** is a significant contributing factor. Control plane access should take into consideration the error rate and latency indicators for synchronous API responses and for long-running operations, such as resource creation, deletion, and so on. Data plane access depends the set of data plane APIs for interacting with your service, each with SLO targets. 
 
-An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. They are also represented in percentiles.
+An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. They are also represented in percentiles. To calculate the percentage, start by estimating the potential downtime. Then, convert the allowable downtime to a percentage of the total time period, weekly, monthly, quarterly, yearly. Subtract that result from 100%.
+
+Here are some commonly used percentiles and the estimated downtimes. 
+
+|Objective  |Downtime per week  |Downtime per month  |Downtime per year  |
+|---------|---------|---------|---------|
+|99%      | 1.68 hours        |  7.2 hours       | 3.65 days        |
+|99.9%      |  10.1 minutes       | 43.2 minutes         | 8.76 hours        |
+|99.95%     | 5 minutes         | 21.6 minutes        | 4.38 hours        |
+|99.99%      | 1.01 minutes        |  4.32 minutes       |  52.56 minutes       |
+|99.999%     |  6 seconds        | 25.9 seconds         |  5.26 minutes       |
 
 
+> [!IMPORTANT]
+>
+> Composite SLO value is a product distribution of the contributing factors. For example, 
+> Composite SLO  = 99.95 % × 99.99999 % = \~99.95 %
+>
+> When creating composite SLOs for different flows, consider their varying criticality. Noncritical flows may have components that can be omitted from calculations since brief unavailability doesn't impact the customer experience.
+>
 > For an illustrative example about how to define and measure SLO and SLIs, see the [Example](#example) section.
 
-### Availability metrics
 
-#### SLOs and SLAs
+#### Multi-region targets
 
-Availability metrics correlate to SLOs, which you use to define SLAs. The workload SLO determines how much downtime is tolerable in a given period, for example, less than 1 hour per month. To make sure you can meet the SLO target, review the Microsoft SLAs for each component. Pay attention to how much redundancy you need to meet high SLAs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
-
-> [!NOTE]
-> Azure SLAs don't always cover all aspects of a service. For example, Azure Application Gateway has an availability SLA, but the Azure Web Application Firewall functionality provides no guarantee to stop malicious traffic from passing through. Consider this limitation when you develop your SLAs and SLOs.
-
-After you gather the SLAs for the individual workload components, calculate a composite SLA. The composite SLA should match the workload's target SLO. Calculating a composite SLA involves several factors, depending on your architecture design. Consider the following examples.
-
-> [!NOTE]
-> The SLA values in the following examples are **hypothetical** and are for **demonstration purposes only.** They **aren't intended to represent current values** supported by Microsoft.
-
-Composite SLAs involve multiple services that support an application, with differing levels of availability. For example, consider an Azure App Service web app that writes to Azure SQL Database. Hypothetically, these SLAs might be:
-
-- App Service web apps = 99.95 percent
-- SQL Database = 99.99 percent
-
-What's the maximum downtime you can expect for this application? If either service fails, the whole application fails. The probability of each service failing is independent, so the composite SLA for this application is 99.95 percent × 99.99 percent = 99.94 percent. That value is lower than the individual SLAs. This conclusion is unsurprising because an application that relies on multiple services has more potential failure points.
-
-You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later:
-
-:::image type="content" source="media/metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to a queue." border="false" lightbox="media/metrics/independent-fallback-paths.png":::
-
-In this design, the application is still available even if it can't connect to the database. However, it fails if the database and the queue fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so here's the composite SLA for this combined path:
-
-Database or queue = 1.0 − (0.0001 × 0.001) = 99.99999 percent
-
-The total composite SLA:
-
-Web app and (database or queue) = 99.95 percent × 99.99999 percent = \~99.95 percent
-
-This approach poses tradeoffs:
-
-- The application logic is more complex.
-- You pay for the queue.
-- You need to consider data consistency issues.
+ Pay attention to how much redundancy you need to meet high SLOs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
 
 For multi-region deployments, the composite SLA is calculated as follows:
 
@@ -181,22 +164,6 @@ The expected chance that the application fails in all regions at the same time i
 
 Defining proper SLOs takes time and careful consideration. Business stakeholders should understand how key customers use the app. They should also understand the reliability tolerance. This feedback should inform the targets.
 
-#### SLA values
-
-The following table defines common SLA values.
-
-|SLA  |Downtime per week  |Downtime per month  |Downtime per year  |
-|---------|---------|---------|---------|
-|99%      | 1.68 hours        |  7.2 hours       | 3.65 days        |
-|99.9%      |  10.1 minutes       | 43.2 minutes         | 8.76 hours        |
-|99.95%     | 5 minutes         | 21.6 minutes        | 4.38 hours        |
-|99.99%      | 1.01 minutes        |  4.32 minutes       |  52.56 minutes       |
-|99.999%     |  6 seconds        | 25.9 seconds         |  5.26 minutes       |
-
-When you think about composite SLAs in the context of flows, remember that different flows have different criticality definitions. Consider these differences when you build your composite SLAs. Noncritical flows might have components that you should omit from your calculations because they don't affect the customer experience if they're briefly unavailable.
-
-> [!NOTE]
-> Customer-facing workloads and internal-use workloads have different SLOs. Typically, internal-use workloads can have much less restrictive availability SLOs than customer-facing workloads.
 
 ### Recovery metrics
 
@@ -232,40 +199,87 @@ Contoso Ticketing is designing a new mobile experience for their event ticketing
 
 ![alt text](./media/metrics/example-architecture-targets.png)
 
-##### Components
+### Components
 
 Here are some components that have been chose to illustrate the concept of SLO definition. Notice there are other components in this architecture that haven't been included for brevity. 
 
 - **Azure Front Door** is the single point of entry that exposes an API that's used by end users to send requests.
 - **Azure Container Apps** enviroment is owned by the workload team and runs business logic for the  application. 
 - **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload. 
+-  **Azure Private Link** provides private connectivity between Azure Front Door and the Azure Container Apps deployments. The SQL Managed Instance is also exposed to the application through a private endpoint.
 
 The API team has defined an initial service-level objective (SLO) target for critical flows in the application. By adopting the direction given in [Factors that influence SLOs](#factors-that-influence-slos), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows do not cover 100% of the code or data access. Here are the influencing factors.
 
-#### Azure reliability
+### Composite SLO calculation
 
-Azure's financial commitment SLA serves as a proxy to assess platform reliability.
+- **Azure availability SLO**: Azure's financial commitment SLA serves as a proxy to assess platform reliability.
 
-#### Application code
+    |Azure component|Applicable SLA coverage |Not covered by SLA|Adjusted SLO|
+    |--|--|--|--|
+    |Azure Front Door| 99.99% for successful HTTP GET operations. |Caching, rules engine.|99.98%|
+    |Azure Container App| 99.95% based on deployed apps that are reachable by the built-in ingress.| Auto scaling, token store capabilities. |99.95%|
+    |SQL Managed Instance|99.99% based on connection to the SQL Server instance| Performance, data retention.|99.8%| 
+    |Azure Private Link|99.99% based on TODO|TODO| 99.99%|
 
-Includes defects, scale issues, and other code-related considerations.
+    The adjustment is based on several factors that are solely dependent on the workload team's promise to their objectives. A factor could be confidence in platform's capability that's based on experience. For example, for Container App and Private Link, the team felt comfortable in taking the SLA value as-is. 
 
-#### Resource and application configuration
+    But there are nuanced factors. For example, the team lowered the SLO for SQL Managed Instance value to 99.8% to account for potential failures in their data operations, such as schema changes, taking back ups, and so on. 
 
-Auto-scaling, SKU selection, NSG rules, and other configuration aspects.
+    By calculating the product of the individual adjusted SLO values, the team sets the composite SLO based on predicted platform availability at 99.72%.
 
-#### Operations
+    But, there are other contributing factors. The architecture relies on Azure networking components like virtual networks, Network Security Group (NSG), that don't have a published SLAs. The workload team decides to factor those in at 99.99% availability each.
 
-Deployment processes, TLS certificate rotation, and routine operations.
+    |Composite SLO based on predicted platform availability: 99.68% per month.|
+    |--|
 
-#### External dependencies
+- **Application code SLO**. The team acknowledge that bugs in their application code or stored procedures can affect system availability, and they allocate one hour of monthly downtime to account for code-related errors. 
 
-Reliability considerations for SQL Managed Instance.
+    They use [common downtime percentiles](#common-downtime-percentiles) to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
 
-#### Maintenance window. 
+    |Composite SLO based on code and data availability: 99.86% per month.|
+    |--|
 
-Tolerated downtime during scheduled maintenance and downtime windows.
+- **Resource and application configuration SLO**. The team recognizes that cloud resources and application code must be properly configured. This includes setting up auto scaling rules, deploying NSG rules, and selecting the correct size SKUs. To account for configuration errors, they budget 10 minutes of monthly downtime, which is about 99.98%.
 
+    |Composite SLO based on configuration availability: 99.98% per month.|
+    |--|
+
+- **Operations SLO**. The workload team has developed good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint. 
+
+    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates and DNS changes. They budget 20 minutes of monthly downtime, which is approximately 99.98% availability.
+
+    They primarily use Azure Pipelines, which have a 99.9% availability SLA. This might be a contributing factor because Azure Pipelines unavailability could delay production issue remediation.
+
+    |Composite SLO based on routine operations availability: 99.95% per month. TODO how?|
+    |--|
+
+- **External dependencies SLO**. The team has already considered SQL Managed Instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
+
+|Composite SLO based on external dependency: Not applicable.|
+|--|
+
+### Overall composite SLO result
+
+The team has availability percentages for various factors (99.68, 99.86, 98.98, 99.95). They combine these to achieve a composite availability of 99.47%. 
+
+|The overall composite SLO target is set at 99.45%, equivalent to approximately 4 hours of downtime per month. |
+|---|
+
+### Workload SLA
+
+The workload team's legal and finance departments decided to set the **SLA for the workload at 99.9% availability per month**, exceeding the SLO target of 99.45% per month. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment. 
+
+### Maintenance window
+
+The team initially assumes 24/7 availability for their ticketing API. However, in practice, the API is mostly unused for about 4 hours daily. If they implement a daily 3-hour maintenance window, they can limit operational tasks within that time. This approach would lead to a higher SLO, but it would only be measured during non-maintenance window periods. Currently, they've chosen to start without factoring in maintenance windows. 
+
+## Supportability
+
+To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly address availability issues. 
+
+#### Complex SLO
+
+The application's core user flows must not only be available but also competitively responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. TODO: Do we include this in Application SLO? 
 
 
 ## Organizational alignment
