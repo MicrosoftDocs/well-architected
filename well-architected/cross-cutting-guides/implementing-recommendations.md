@@ -93,7 +93,8 @@ Then add a corresponding reward-effort matrix for the aforementioned issues. You
 
 ### Findings by Pillar
 
-This section targets a technical audience.  Create a subsection for each of the pillars, and list all the discovered points (negative and positive). Be specific. Here are some examples: 
+This section targets a technical audience.  Create a subsection for each of the pillars, and list all the discovered points (negative and positive). Be specific. Here are some examples:
+
 **Operational Excellence**
 - Does not have a fully automated integration and deployment setup
 - Has a limited process or mechanism to mitigate deployment risks
@@ -108,13 +109,13 @@ This section targets a technical audience.  Create a subsection for each of the 
 This section targets a technical audience.  List all the action points to address major issues from each pillar. Be specific. You can use recommendations and corresponding links that you got at the end of the assessment. Here are a few examples: 
 
 **Operational Excellence** 
-Tagging 
-- Currently, resources have tags, but there is no mechanism to ensure consistency across all resources. You can achieve that by creating policies in Azure Policy
+- Tagging 
+  - Currently, resources have tags, but there is no mechanism to ensure consistency across all resources. You can achieve that by creating policies in Azure Policy
 
 **Security**
-Virtual Machines: 
-- Enable vulnerability assessment. Azure has an integrated tool that can help you do that. Please note that this can result in additional costs.
-- Enable Azure Endpoint Protection to help against malware
+- Virtual Machines: 
+  - Enable vulnerability assessment. Azure has an integrated tool that can help you do that. Please note that this can result in additional costs.
+  - Enable Azure Endpoint Protection to help against malware
 
 ### Effort and reward
 
@@ -126,16 +127,16 @@ Make it clear that improvement is a matter of trade-off. One cannot make everyth
 
 Recommend to fix critical issues as soon as possible. Then propose milestones, each composed of action points. For example,
 
-** Milestone 1**
+**Milestone 1**
 - Configure built-in logging and monitoring tools in Azure components.
 - Configure and leverage Azure central governance tools, review them at least weekly, and tune the architecture accordingly.
 - Address suspicious authentications/authorizations in AD review.
 
-** Milestone 2**
+**Milestone 2**
 - Automate security remedial actions with help of Azure Policy.
 - Setup and follow a suitable version control working model.
 
-### Dependency Chart 
+### Dependency chart 
 
 Outline dependencies between proposed actions from the roadmap. Following figure is only for illustration and helps the readers to understand the relationship between the activities.  
 
