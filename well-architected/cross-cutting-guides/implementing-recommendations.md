@@ -38,6 +38,8 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Tips
 
+- Azure Well-Architected Review is a teamwork which has to be done in collaboration with workload owners and key stakeholders. Make it clear that this process must be free of any kind of blaming or finger pointing. Ask the respondents to be as honest as possible because that's the only uncover the issues and to fix them. Don't blindly trust their answers because there is a high chance of misunderstanding especially if the respondent isn't technically savvy. For every answer, ask clarifying questions to make sure you share the same understanding.
+
 - You should always sign in when you take assessments so that the tool can generate milestones.
 
   > [!WARNING]
