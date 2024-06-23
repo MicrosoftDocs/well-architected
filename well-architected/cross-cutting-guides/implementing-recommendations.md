@@ -106,7 +106,7 @@ This section targets a technical audience.  Create a subsection for each of the 
 
 ### Remediation by pillar 
 
-This section targets a technical audience.  List all the action points to address major issues from each pillar. Be specific. You can use recommendations and corresponding links that you got at the end of the assessment. Here are a few examples: 
+This section targets a technical audience.  List all the action points to address major issues from each pillar. Be specific. You can use recommendations and corresponding links that you got at the end of the Azure Well-Architected Review self-assessment. Here are a few examples: 
 
 **Operational Excellence** 
 - Tagging 
