@@ -231,7 +231,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
 - **Application code SLO**. The team acknowledge that bugs in their application code or stored procedures can affect system availability, and they allocate one hour of monthly downtime to account for code-related errors. 
 
-    They use [common downtime percentiles](#common-downtime-percentiles) to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
+    They use common downtime percentiles, given in the [Measure targets](#measure-targets) section, to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
 
     > Composite SLO based on code and data availability: 99.86% per month.
 
