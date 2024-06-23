@@ -22,9 +22,9 @@ Consider using the following metrics to quantify the business requirements.
 
 |Term  |Definition  |
 |---------|---------|
-|Service-level objective (SLO)    | A percentage target that represents the health of the component and the reliability tier. The higher the tier, the more reliable the component. *Composite SLO* represents the aggregate target of the entire workload and accounts for the component SLOs.        |
+|Service-level objective (SLO)    | A measure of the performance and reliability of a workload or application. An SLO is a specific, measurable target that is set for particular customer interactions. It is a target that you set for your workload on application based on the quality of service your users should expect to receive.        |
 |Service-level indicator (SLI)     | A metric emitted by a service. SLI metrics are aggregated to quantify an SLO value.        |
-|Service-level agreement (SLA)     | A contractual agreement between the service provider and the service customer. The agreement defines the SLOs. Failure to meet the agreement might have financial consequences for the service provider.        |
+|Service-level agreement (SLA)     | A contractual agreement between the service provider and the service customer. Failure to meet the agreement might have financial consequences for the service provider.        |
 |Mean time to recover (MTTR)     | The time taken to restore a component after a failure is detected.        |
 |Mean time between failure (MTBF)     |The duration for which the workload can perform the expected function without interruption, until it fails.         |
 |Recovery time objective (RTO)     | The maximum acceptable time that an application can be unavailable after an incident.        |
@@ -281,12 +281,6 @@ To meet the SLO target of allowing only 4 hours of unavailability per month, the
 
 The application's core user flows must not only be available but also competitively responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. TODO: Do we include this in Application SLO? 
 
-
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for recommendations for SLOs and SLIs related to monitoring across the organization.
-
-For more information, see [Cloud monitoring SLOs](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis).
 
 ## Related links
 

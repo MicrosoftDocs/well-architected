@@ -48,7 +48,7 @@ Think about all the tasks and types of infrastructure that are in scope for your
 > [!NOTE]
 > Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
 
-**Strategize and standardize on the use of modules.** Like parameters and variables, [modules](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) can make your infrastructure deployments repeatable. Be thoughtful, however, about how you use them. A standardized abstraction strategy helps ensure that modules are built to meet specific, agreed-upon goals. Use modules to encapsulate complex configurations or combinations of resources. Avoid modules if you're using only the default configuration of the resource. Additionally, be judicious in developing new modules. Use maintained open-source modules when appropriate, in, for example, nonsensitive scenarios.
+**Strategize and standardize on the use of modules.** Like parameters and variables, modules can make your infrastructure deployments repeatable. Be thoughtful, however, about how you use them. A standardized abstraction strategy helps ensure that modules are built to meet specific, agreed-upon goals. Use modules to encapsulate complex configurations or combinations of resources. Avoid modules if you're using only the default configuration of the resource. Additionally, be judicious in developing new modules. Use maintained open-source modules when appropriate, in, for example, nonsensitive scenarios.
 
 **Document standards for manual steps.** There might be steps related to deploying and maintaining infrastructure that are particular to your environment and that require manual intervention. Ensure that these steps are minimized as much as possible and clearly documented. In your style guide and standard operating procedures, standardize manual steps to ensure that tasks are performed safely and consistently.
 
@@ -91,12 +91,6 @@ The choice between deploying mutable versus immutable infrastructure depends on 
 [Terraform](/azure/developer/terraform/overview) is another declarative IaC tool that's fully supported in Azure. It can be used to deploy and manage infrastructure, and can be integrated into your CI/CD pipeline.
 
 You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities).
-
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams on how to standardized infrastructure as code across the organization's workload teams.
-
-For more information, see [Infrastructure as Code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) in the Cloud Adoption Framework.
 
 ## Example
 

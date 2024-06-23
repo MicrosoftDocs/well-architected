@@ -5,9 +5,6 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: conceptual
-
-categories:
-  - iot
 ---
 
 # Performance efficiency in your IoT workload

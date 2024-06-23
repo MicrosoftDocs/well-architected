@@ -8,9 +8,9 @@ ms.date: 07/05/2023
 ms.topic: conceptual
 products:
   - azure-disk-storage
-categories:
+azure.category:
   - storage
-  - management-and-governance
+
 ---
 
 # Disks and cost optimization

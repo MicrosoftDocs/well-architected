@@ -5,8 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 02/02/2022
 ms.topic: conceptual
-categories: databases
-
 ---
 
 # Data platform considerations for mission-critical workloads on Azure
@@ -369,7 +367,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - If delete operations routinely affect the data within the source Container, then the store fed by the change feed will be inaccurate and unreflective of deleted data.
   - A [Soft Delete](/azure/cosmos-db/sql/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
-    - Instead of explicitly deleting data records, data records are _updated_ by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
+    - Instead of explicitly deleting data records, data records are *updated* by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
     - Any target data store fed by the change feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the *existing* version of the data record in the target store will need to be deleted.
   - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Azure Cosmos DB automatically deletes expired data, but only after it's reflected within the change feed with the deleted flag set to True.
     - Accomplishes the original delete intent whilst also propagating the delete through the change feed.
@@ -756,7 +754,7 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 **Azure Synapse**
 
 - [Azure Synapse](/azure/synapse-analytics/overview-what-is) brings together analytics capabilities including SQL data warehousing, Spark big data, and Data Explorer for log and time series analytics.
-  - Azure Synapse uses _linked services_ to define connections to other services, such as Azure Storage.
+  - Azure Synapse uses *linked services* to define connections to other services, such as Azure Storage.
   - Data can be ingested into Synapse Analytics via Copy activity from [supported sources](/azure/data-factory/copy-activity-overview?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics#supported-data-stores-and-formats). This permits data analytics in Synapse without impacting the source data store, but adds time, cost and latency overhead due to data transfer.
   - Data can also be queried in-place in supported external stores, avoiding the overhead of data ingestion and movement. Azure Storage with Data Lake Gen2 is a supported store for Synapse and [Log Analytics exported data can be queried via Synapse Spark](https://techcommunity.microsoft.com/t5/azure-monitor/how-to-analyze-data-exported-from-log-analytics-data-using/ba-p/2547888).
 

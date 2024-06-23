@@ -5,8 +5,6 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: overview
-categories:
-  - iot
 ---
 
 # Overview of IoT workloads
@@ -20,11 +18,11 @@ This section of the Microsoft Azure Well-Architected Framework aims to address t
 
 ## What is an IoT workload?
 
-The term _workload_ refers to the collection of application resources that support a common business goal or the execution of a common business process. These goals or processes use multiple services, such as APIs and data stores. The services work together to deliver specific end-to-end functionality.
+The term *workload* refers to the collection of application resources that support a common business goal or the execution of a common business process. These goals or processes use multiple services, such as APIs and data stores. The services work together to deliver specific end-to-end functionality.
 
 Internet of Things (IoT) is a collection of managed and platform services across edge and cloud environments that connect, monitor, and control physical assets.
 
-An _IoT workload_ therefore describes the practice of designing, building, and operating IoT solutions to help meet architectural challenges according to your requirements and constraints.
+An *IoT workload* therefore describes the practice of designing, building, and operating IoT solutions to help meet architectural challenges according to your requirements and constraints.
 
 The IoT workload addresses the three components of IoT systems:
 

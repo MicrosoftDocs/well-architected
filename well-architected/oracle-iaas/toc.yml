@@ -1,13 +1,21 @@
-- name: Oracle
-  href: overview.md        
+- name: Oracle on IaaS
+  href: index.yml
   items:
-    - name: Reliability
-      href: reliability.md
-    - name: Security
-      href: security.md
-    - name: Cost Optimization
-      href: cost-optimization.md
-    - name: Operational Excellence
-      href: operational-excellence.md
-    - name: Performance Efficiency
-      href: performance-efficiency.md
+  - name: Overview
+    href: get-started.md
+  - name: Design principles
+    href: review-design-principles.md
+  - name: Design areas
+    items:
+    - name: Choose compute and storage
+      href: choose-compute-storage.md
+    - name: Design Oracle applications
+      href: design-applications.md
+    - name: Optimize business continuity and disaster recovery
+      href: optimize-business-continuity-disaster-recovery.md
+    - name: Optimize security
+      href: optimize-security.md
+    - name: Monitor workloads
+      href: monitor-workloads.md
+
+

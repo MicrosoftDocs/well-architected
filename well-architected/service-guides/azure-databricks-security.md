@@ -7,9 +7,9 @@ ms.date: 08/08/2022
 ms.topic: conceptual
 products:
   - azure-databricks
-categories:
-  - data
-  - management-and-governance
+azure.category:
+  - databases
+
 ---
 
 # Azure Databricks and security

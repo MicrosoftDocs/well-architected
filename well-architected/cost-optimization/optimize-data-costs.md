@@ -221,12 +221,6 @@ Here are some of the service's features:
 
 To choose the most suitable storage solution and configuration, it's important to assess your data access patterns, retention needs, and performance requirements. Regularly monitoring and optimizing your storage usage by using tools like Azure Advisor can help you further optimize costs.
 
-## Organizational alignment
-
-The Cloud Adoption Framework provides guidance for optimizing data costs for organizational analytics platforms.
-
-For more information, see [Data lifecycle management](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/govern-lifecycle).
-
 ## Related links
 
 - [Recommendations for consolidation](consolidation.md)
@@ -236,7 +230,6 @@ For more information, see [Data lifecycle management](/azure/cloud-adoption-fram
 - [Azure Backup Storage](/azure/backup/backup-azure-reserved-pricing-optimize-cost)
 - [Archive tier](/azure/backup/archive-tier-support)
 - [Choose the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree)
-- [Data lifecycle management](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/govern-lifecycle)
 
 ## Cost Optimization checklist
 
