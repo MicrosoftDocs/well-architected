@@ -28,8 +28,8 @@ Assess your workload by completing the assessment. The recommendations for your 
 > [!TIP]
 > [DevOps Tooling for Well-Architected Recommendation Process](https://github.com/Azure/WellArchitected-Tools/tree/main/WARP/devops#readme) provides example scripts that can help you create automation for backlog integration. These scripts show one way to import the recommendations from the Well-Architected Review CSV file into an existing Azure DevOps or GitHub organization.
 
-## Add an executive summary in your final report
-
+## Proposed format for final report
+### Executive summary
 Executive summary has to be understandable by all types of audiences, as well as give a 50,000-foot view of the whole thing. Address following questions:
 - What is this report about? 
 - What did you assess? (Pillars, etc.)
@@ -37,6 +37,19 @@ Executive summary has to be understandable by all types of audiences, as well as
 - Why are you using Microsft Azure? What are the key takeaways? For example, what are your main issues? What have you done well?
 - What is your solution? How are you trying to overcome those issues?
 - What are the milestones to improve the situation? Briefly summarize what each milestone will achieve.
+
+### Methodology
+- How did you do the assessment? Workshops, hands-on investigation, etc.
+
+### Assumptions
+List all the assumptions you have made that readers should be aware of:
+- Which assumptions did you receive from the stakeholders?
+- What is the priority of the pillars?
+- Which workloads are covered? Do you have to deal with mission-critical workloads? If yes, what are SLAs, etc.?   Is there any recovery objective defined?
+- List any other assumptions that readers have to be aware of.
+
+### Summary of findings
+It has to be understandable for a non-technical audience so avoid using jargon. List main positive aspects of the environment, team, operation or strategy. Then list the main things which need improvement. Summary of findings should be readable within 1-2 minutes. 
 
 ## Prioritize and implement recommendations
 
