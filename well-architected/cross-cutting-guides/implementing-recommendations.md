@@ -28,13 +28,18 @@ Assess your workload by completing the assessment. The recommendations for your 
 > [!TIP]
 > [DevOps Tooling for Well-Architected Recommendation Process](https://github.com/Azure/WellArchitected-Tools/tree/main/WARP/devops#readme) provides example scripts that can help you create automation for backlog integration. These scripts show one way to import the recommendations from the Well-Architected Review CSV file into an existing Azure DevOps or GitHub organization.
 
+## Prioritize and implement recommendations
+
+Workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC.
+
 ## Monitor improvements
 
 Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. So, you should take a data-driven approach; leverage Azure built-in tools such as Azure Monitor and Azure Advisor; review their reports regularly and optimizing the environment accordingly. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
 
 ## Tips
 
-- Azure Well-Architected Review is a teamwork which has to be done in collaboration with workload owners and key stakeholders. Make it clear that this process must be free of any kind of blaming or finger pointing. Ask the respondents to be as honest as possible because that's the only uncover the issues and to fix them. Don't blindly trust their answers because there is a high chance of misunderstanding especially if the respondent isn't technically savvy. For every answer, ask clarifying questions to make sure you share the same understanding.
+- Azure Well-Architected Review is a teamwork which has to be done in collaboration with key stakeholders. To succeed, this process requires a safe environment without worrying about repercussions. Make it clear to every participant to avoid blaming or finger pointing. Ask them to be honest to uncover all possible issues. Don't blindly trust their answers because there is a high chance of misunderstanding. Go through questions one by one and for every answer, ask clarifying questions to make sure you share the same understanding.
+- Before starting the assessment, prioritize the pillars according to your needs. You have to prioritize your efforts accordingly. Remember that every decision is a trade-off.
 - You should always sign in when you take assessments so that the tool can generate milestones.
   > [!WARNING]
   > Assessments are tied to a Microsoft Learn profile. They can't be transferred to or accessed by other profiles.
@@ -45,34 +50,40 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
 - Whenever your proposed solution or service costs additional money, clearly mention it.
-- Start remediating issues which have the highest reward-effort ratio as they provide quick wins. Check below for further details.
+- You can start remediating issues with highest reward-effort ratio to get quick wins, early on. Check below for further details.
 
-## How to report assessment results and get buy-in
+> [!NOTE]  
+> Improvisation of cloud environment is a continous journey: it can get better, but it will never be perfect.
+
+## How to report assessment results to get buy-in
+
+Azure Well-Architected Review is a continous journey which requires buy-in from executives or stakeholders. Subsequently, Azure Well-Architected assessment results should be presented in a way to help you get buy-in and required support from stakeholders. You can use following template as a starting point:
+
 ### Executive summary
-Executive summary has to be understandable by all types of audiences, as well as give a 50,000-foot view of the whole thing. Address following questions:
+
+This section has to be understandable by all types of audiences, as well as give high-level view of the whole process. Address following questions:
 - What is this report about? 
-- What did you assess? (Pillars, etc.)
-- How did you do the assessment? (Workshops, hands-on investigation, etc.)
+- What did you assess? (e.g. pillars, etc.)
+- How did you do the assessment? Workshops, hands-on investigation, etc.
 - Why are you using Microsoft Azure? What are the key takeaways? What are your main issues? What have you done well?
-- What is your solution? How are you trying to overcome those issues?
+- How are you trying to overcome the issues? What is your solution? 
 - What are the milestones to improve the situation? Briefly summarize what each milestone will achieve.
 
 ### Methodology
 - How did you do the assessment? Workshops, hands-on investigation, etc.
 
 ### Assumptions
-List all the assumptions you have made that readers should be aware of:
+List all the implicit and explicit assumptions that readers should be aware of:
 - Which assumptions did you receive from the stakeholders?
 - What is the priority of the pillars?
 - Which workloads are covered? Do you have to deal with mission-critical workloads? If yes, what are SLAs, etc.?   Is there any recovery objective defined?
 - List any other assumptions that readers have to be aware of.
 
 ### Summary of findings
-It has to be understandable for a non-technical audience so avoid using jargon. List main positive aspects of the environment, team, operation or strategy. Then list the main things which need improvement. Summary of findings should be readable within 1-2 minutes. 
+This section has to be understandable for a non-technical audience so avoid using jargons. Try to provide a balanced view so list positive aspects of the environment, team, operation or strategy. Then list the main issues which need improvement. This section should be readable within 1-2 minutes. 
 
 ### Detailed findings
-
-This section outlines more details about the most important issues along with recommendations. For more clarity, associate each issue with a severity level, preferably with some color. Briefly, advise how to address the issues. For example, “critical” issues can be marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Below, you can see an example. Note that workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC. 
+Outline details about the most important issues along with recommendations. For more clarity, you can associate each issue with a severity level, and mark it with a color. Briefly, advise how to address the issues and you may assign owners. For example, “critical” issues can be marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Following is an example:
 
 ![image](https://github.com/azarboon/well-architected/assets/21277296/730b92c3-c61a-4b5f-9289-bbdbcd107f64)
 
