@@ -67,7 +67,7 @@ For the workload architect, SLOs can be the driver for many technical decisions.
 - Serve as a critical input into architectural decisions when you consider additional dependencies.
 - Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on reliability, new feature development, and other task.
 - Act as a primary signal for deployment operations, driving automated rollback if issues occur, and providing validation that changes achieved the expected user experience improvement.
-- Speed up redmediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
+- Speed up remediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
     
 > [!CAUTION]
 >
@@ -99,7 +99,7 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 
 ##### Factors that influence SLOs
 
-Have a good understanding of the scenarios and tolerances for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaulating the utility of the workload component: 
+Have a good understanding of the scenarios and tolerances for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaluating the utility of the workload component: 
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
@@ -115,9 +115,7 @@ SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for 
 
 **SLO is a correlation or composite of measurable indicators** to determine what's acceptable, and otherwise. The team should be clear on what is measured, how it's measured, and from what perspective it's measured. Using **Service Level Indicators (SLIs)** is a common way to standardize targets from a set of metrics. 
 
-##### Correlate indicators
-
-SLIs represent a quantitative measurement of an aspect of a workload component, that rolls up to the SLO target. It's typically a metric that can be collected from the component whether that's part of the platform or application. **Different type components** emit SLIs that are relevant to them. When deciding on which SLIs to include, consider the factors that influence SLO.
+SLIs represent a quantitative measurement of an aspect of a workload component that rolls up to the SLO target. It's typically a metric that can be collected from the component whether that's part of the platform or application. **Different type components** emit SLIs that are relevant to them. When deciding on which SLIs to include, consider the factors that influence SLO.
 
 For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren't applicable to continuous compute environments such as VMs, VMSS, or Azure Batch. 
 
@@ -180,7 +178,7 @@ As you define recovery targets, define thresholds for initiating a recovery. For
 
 Use the data you gathered for your reliability targets to build your health model for each workload and associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. When state changes, the model should alert the responsible parties. For detailed design considerations and recommendations, see [Health modeling guidance](../cross-cutting-guides/health-modeling.md).
 
-To keep your operations teams and workload stakeholders informed, create visualization that reflect the real-time status and overall trends of the workload health model. Discuss visualization solutions with the stakeholders to ensure that you deliver the information that they value and that's easy to consume. They might also want to see generated reports weekly, monthly, or quarterly.
+To keep your operations teams and workload stakeholders informed, create visualization that reflects the real-time status and overall trends of the workload health model. Discuss visualization solutions with the stakeholders to ensure that you deliver the information that they value and that's easy to consume. They might also want to see generated reports weekly, monthly, or quarterly.
 
 ## Azure facilitation
 
@@ -204,11 +202,11 @@ Contoso Ticketing is designing a new mobile experience for their event ticketing
 Here are some components that have been chose to illustrate the concept of SLO definition. Notice there are other components in this architecture that haven't been included for brevity. 
 
 - **Azure Front Door** is the single point of entry that exposes an API that's used by end users to send requests.
-- **Azure Container Apps** enviroment is owned by the workload team and runs business logic for the  application. 
+- **Azure Container Apps** environment is owned by the workload team and runs business logic for the  application. 
 - **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload. 
 -  **Azure Private Link** provides private connectivity between Azure Front Door and the Azure Container Apps deployments. The SQL Managed Instance is also exposed to the application through a private endpoint.
 
-The API team has defined an initial service-level objective (SLO) target for critical flows in the application. By adopting the direction given in [Factors that influence SLOs](#factors-that-influence-slos), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows do not cover 100% of the code or data access. Here are the influencing factors.
+The API team has defined an initial service-level objective (SLO) target for critical flows in the application. They have adopted the strategy described in [Factors that influence SLOs](#factors-that-influence-slos), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows do not cover 100% of the code or data access. Here are the influencing factors.
 
 ### Composite SLO calculation
 
@@ -225,24 +223,21 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
     But there are nuanced factors. For example, the team lowered the SLO for SQL Managed Instance value to 99.8% to account for potential failures in their data operations, such as schema changes, taking back ups, and so on. 
 
-    By calculating the product of the individual adjusted SLO values, the team sets the composite SLO based on predicted platform availability at 99.72%.
+    The team sets the composite SLO by calculating the impact of individual adjusted SLO values. This value is at 99.72%.
 
-    But, there are other contributing factors. The architecture relies on Azure networking components like virtual networks, Network Security Group (NSG), that don't have a published SLAs. The workload team decides to factor those in at 99.99% availability each.
+    But, there are other contributing factors. The architecture relies on Azure networking components like virtual networks, Network Security Group (NSG), that don't have a published SLA. The workload team decides to factor those in at 99.99% availability each.
 
-    |Composite SLO based on predicted platform availability: 99.68% per month.|
-    |--|
+    > Composite SLO based on predicted platform availability: 99.68% per month.
 
 - **Application code SLO**. The team acknowledge that bugs in their application code or stored procedures can affect system availability, and they allocate one hour of monthly downtime to account for code-related errors. 
 
     They use [common downtime percentiles](#common-downtime-percentiles) to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
 
-    |Composite SLO based on code and data availability: 99.86% per month.|
-    |--|
+    > Composite SLO based on code and data availability: 99.86% per month.
 
 - **Resource and application configuration SLO**. The team recognizes that cloud resources and application code must be properly configured. This includes setting up auto scaling rules, deploying NSG rules, and selecting the correct size SKUs. To account for configuration errors, they budget 10 minutes of monthly downtime, which is about 99.98%.
 
-    |Composite SLO based on configuration availability: 99.98% per month.|
-    |--|
+    > Composite SLO based on configuration availability: 99.98% per month.
 
 - **Operations SLO**. The workload team has developed good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint. 
 
@@ -250,13 +245,11 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
     They primarily use Azure Pipelines, which have a 99.9% availability SLA. This might be a contributing factor because Azure Pipelines unavailability could delay production issue remediation.
 
-    |Composite SLO based on routine operations availability: 99.95% per month. TODO how?|
-    |--|
+    > Composite SLO based on routine operations availability: 99.95% per month. TODO how?
 
 - **External dependencies SLO**. The team has already considered SQL Managed Instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
 
-|Composite SLO based on external dependency: Not applicable.|
-|--|
+    > Composite SLO based on external dependency: Not applicable.
 
 ### Overall composite SLO result
 
@@ -267,13 +260,16 @@ The team has availability percentages for various factors (99.68, 99.86, 98.98, 
 
 ### Workload SLA
 
-The workload team's legal and finance departments decided to set the **SLA for the workload at 99.9% availability per month**, exceeding the SLO target of 99.45% per month. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment. 
+The workload team's legal and finance departments decided to set the SLA for the workload at 99.9% availability per month, exceeding the SLO target of 99.45%. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment. 
+
+|SLA for the workload at 99.9% availability per month. |
+|---|
 
 ### Maintenance window
 
 The team initially assumes 24/7 availability for their ticketing API. However, in practice, the API is mostly unused for about 4 hours daily. If they implement a daily 3-hour maintenance window, they can limit operational tasks within that time. This approach would lead to a higher SLO, but it would only be measured during non-maintenance window periods. Currently, they've chosen to start without factoring in maintenance windows. 
 
-## Supportability
+#### Supportability
 
 To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly address availability issues. 
 
@@ -290,7 +286,7 @@ For more information, see [Cloud monitoring SLOs](/azure/cloud-adoption-framewor
 
 ## Related links
 
-- Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
+-Mission-critical workloads: [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
 
 ## Reliability checklist  
 
