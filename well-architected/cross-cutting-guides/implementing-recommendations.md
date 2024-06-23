@@ -28,7 +28,26 @@ Assess your workload by completing the assessment. The recommendations for your 
 > [!TIP]
 > [DevOps Tooling for Well-Architected Recommendation Process](https://github.com/Azure/WellArchitected-Tools/tree/main/WARP/devops#readme) provides example scripts that can help you create automation for backlog integration. These scripts show one way to import the recommendations from the Well-Architected Review CSV file into an existing Azure DevOps or GitHub organization.
 
-## Proposed format for final report
+## Monitor improvements
+
+Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. So, you should take a data-driven approach; leverage Azure built-in tools such as Azure Monitor and Azure Advisor; review their reports regularly and optimizing the environment accordingly. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
+
+## Tips
+
+- Azure Well-Architected Review is a teamwork which has to be done in collaboration with workload owners and key stakeholders. Make it clear that this process must be free of any kind of blaming or finger pointing. Ask the respondents to be as honest as possible because that's the only uncover the issues and to fix them. Don't blindly trust their answers because there is a high chance of misunderstanding especially if the respondent isn't technically savvy. For every answer, ask clarifying questions to make sure you share the same understanding.
+- You should always sign in when you take assessments so that the tool can generate milestones.
+  > [!WARNING]
+  > Assessments are tied to a Microsoft Learn profile. They can't be transferred to or accessed by other profiles.
+
+- Select the Azure subscription or resource group that contains the biggest portion of your workload. Doing so helps ensure that only relevant Advisor recommendations are included in exported CSV files. It's not possible include more than one subscription or to exclude resource groups.
+- Choose a meaningful name for the assessment, not the default value. The assessment's name should include the workload's name.
+- Use meaningful milestone names to indicate when you're evaluating the workload.
+- Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
+- Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
+- Whenever your proposed solution or service costs additional money, clearly mention it in your report.
+- Start remediating issues which have the highest reward-effort ratio as they provide quick wins. Check below for further details.
+
+## Recommendation for final report
 ### Executive summary
 Executive summary has to be understandable by all types of audiences, as well as give a 50,000-foot view of the whole thing. Address following questions:
 - What is this report about? 
@@ -51,27 +70,47 @@ List all the assumptions you have made that readers should be aware of:
 ### Summary of findings
 It has to be understandable for a non-technical audience so avoid using jargon. List main positive aspects of the environment, team, operation or strategy. Then list the main things which need improvement. Summary of findings should be readable within 1-2 minutes. 
 
-## Prioritize and implement recommendations
+### Detailed findings
 
-Workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC.
+This section outlines more details about the most important issues along with recommendations. For more clarity, associate each issue with a severity level, preferably with some color. Briefly, advise the customer on how to approach the issues. For example, “critical” issues are marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Below, you can see an example. Note that workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC. 
 
-## Monitor improvements
+![image](https://github.com/azarboon/well-architected/assets/21277296/730b92c3-c61a-4b5f-9289-bbdbcd107f64)
 
-Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
+Then add a corresponding reward-effort matrix for the aforementioned issues. You may want to start addressing issues from button-right as it can provide quick wins. 
 
-## Tips
+![image](https://github.com/azarboon/well-architected/assets/21277296/65d767ac-ad34-4da7-bc15-7b18c7bf3d71)
 
-- Azure Well-Architected Review is a teamwork which has to be done in collaboration with workload owners and key stakeholders. Make it clear that this process must be free of any kind of blaming or finger pointing. Ask the respondents to be as honest as possible because that's the only uncover the issues and to fix them. Don't blindly trust their answers because there is a high chance of misunderstanding especially if the respondent isn't technically savvy. For every answer, ask clarifying questions to make sure you share the same understanding.
-- You should always sign in when you take assessments so that the tool can generate milestones.
-  > [!WARNING]
-  > Assessments are tied to a Microsoft Learn profile. They can't be transferred to or accessed by other profiles.
+### Findings by Pillar
 
-- Select the Azure subscription or resource group that contains the biggest portion of your workload. Doing so helps ensure that only relevant Advisor recommendations are included in exported CSV files. It's not possible include more than one subscription or to exclude resource groups.
-- Choose a meaningful name for the assessment, not the default value. The assessment's name should include the workload's name.
-- Use meaningful milestone names to indicate when you're evaluating the workload.
-- Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
-- Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
-- Whenever your proposed solution or service costs additional money, clearly mention it in your report. 
+This section targets a technical audience.  Create a subsection for each of the pillars, and list all the discovered points (negative and positive). Be specific. Here are some examples: 
+**Operational Excellence**
+- Does not have a fully automated integration and deployment setup
+- Has a limited process or mechanism to mitigate deployment risks
+- Has codified and automated a few components/operations 
+
+**Security** 
+- Does not have any process or mechanism to audit, manage and minimize permissions
+- Relies on a centralized identity provider, which makes it easier to audit and to secure user authentication.
+
+### Remediation by pillar 
+
+This section targets a technical audience.  List all the action points to address major issues from each pillar. Be specific. You can use recommendations and corresponding links that you got at the end of the assessment. Here are a few examples: 
+
+**Operational Excellence** 
+Tagging 
+- Currently, resources have tags, but there is no mechanism to ensure consistency across all resources. You can achieve that by creating policies in Azure Policy
+
+**Security**
+Virtual Machines: 
+- Enable vulnerability assessment. Azure has an integrated tool that can help you do that. Please note that this can result in additional costs.
+- Enable Azure Endpoint Protection to help against malware
+
+### Effort and reward
+
+Make it clear that improvement is a matter of trade-off. One cannot make everything perfect, though gradual improvement is the most effective way to start improving. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and sub-sections addressed in the previous section. Here is an example:
+
+![image](https://github.com/azarboon/well-architected/assets/21277296/5abfe06b-446f-4da3-bb16-807ccf10edfc)
+
 
 ## Get personalized support
 
