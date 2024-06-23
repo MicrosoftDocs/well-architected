@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 [Azure Well-Architected Review](/assessments/azure-architecture-review/) is a self-assessment that can help a workload team examine a workload from the perspective of the Azure Well-Architected Framework. It consists of approximately 60 questions that are based on the key recommendations provided in the pillars of the Well-Architected Framework. The assessment tool can also pull in [Azure Advisor](/azure/advisor/) recommendations for an Azure subscription or resource group.
 
-At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use in your final report to incorporate the recommendations into the operational processes for continuous workload improvement.
+At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement. You can present the assessment results in a final report to get buy-in for further actions from executives.
 
 ## When to take the assessment
 
@@ -34,7 +34,7 @@ Workload owners and key stakeholders should prioritize the recommendations in ac
 
 ## Monitor improvements
 
-Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. So, you should take a data-driven approach; leverage Azure built-in tools such as Azure Monitor and Azure Advisor; review their reports regularly and optimizing the environment accordingly. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
+Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. You should take a data-driven approach: you can use Azure built-in tools such as Azure Monitor and Azure Advisor and review their reports regularly to optimize your environment accordingly. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
 
 ## Tips
 
@@ -57,7 +57,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## How to report assessment results to get buy-in
 
-Azure Well-Architected Review is a continous journey which requires buy-in from executives or stakeholders. Subsequently, Azure Well-Architected assessment results should be presented in a way to help you get buy-in and required support from stakeholders. You can use following template as a starting point:
+Azure Well-Architected Review is a continous journey which requires buy-in from executives or stakeholders. Subsequently, Azure Well-Architected assessment results should be presented in a way to help you get buy-in for further actions. You can use following template as a starting point:
 
 ### Executive summary
 
