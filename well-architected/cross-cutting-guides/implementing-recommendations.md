@@ -50,7 +50,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
 - Whenever your proposed solution or service costs additional money, clearly mention it.
-- You can start remediating issues with highest reward-effort ratio to get quick wins, early on. Check below for further details.
+- You can start remediating issues with highest reward-effort ratio to get quick wins, early on. Check [effort and reward](#effort-and-reward) section below for further details.
 
 > [!NOTE]  
 > Improvisation of cloud environment is a continous journey: it can get better, but it will never be perfect.
