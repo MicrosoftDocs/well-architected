@@ -38,8 +38,9 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Tips
 
-- Azure Well-Architected Review is a teamwork which has to be done in collaboration with key stakeholders. To succeed, this process requires a safe environment without worrying about repercussions. Make it clear to every participant to avoid blaming or finger pointing. Ask them to be honest to uncover all possible issues. Don't blindly trust their answers because there is a high chance of misunderstanding. Go through questions one by one and for every answer, ask clarifying questions to make sure you share the same understanding.
-- Before starting the assessment, prioritize the pillars according to your needs. You have to prioritize your efforts accordingly. Remember that every decision is a trade-off.
+- Azure Well-Architected Review is a teamwork which has to be done in collaboration with key and relevant stakeholders. To succeed, this process requires a safe environment without worrying about repercussions. Make it clear to every participant to avoid blaming or finger pointing. Ask them to be honest to uncover all possible issues. Don't blindly trust their answers because there is a high chance of misunderstanding. Go through questions one by one and for every answer, ask clarifying questions to make sure you share the same understanding.
+- Before starting the assessment, prioritize the pillars according to your needs. Later on, you have to prioritize your efforts accordingly.
+- Remember that every choice is a trade-off and you need to pay attention more to why you're taking a decision than to how to implement it.
 - You should always sign in when you take assessments so that the tool can generate milestones.
   > [!WARNING]
   > Assessments are tied to a Microsoft Learn profile. They can't be transferred to or accessed by other profiles.
@@ -50,7 +51,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
 - Whenever your proposed solution or service costs additional money, clearly mention it.
-- You can start remediating issues with highest reward-effort ratio to get quick wins, early on. Check [effort and reward](#effort-and-reward) section below for further details.
+- Early on, you can start remediating issues with highest reward-effort ratio to get quick wins. Check [effort and reward](#effort-and-reward) section below for further details.
 
 > [!NOTE]  
 > Improvisation of cloud environment is a continous journey: it can get better, but it will never be perfect.
@@ -119,7 +120,7 @@ This section targets a technical audience.  List all the action points to addres
 
 ### Effort and reward
 
-Make it clear that improvement is a matter of trade-off. One cannot make everything perfect, though gradual improvement is the most effective way to start improving. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and subsections addressed in the previous section. For example:
+Make it clear that every choice is a trade-off and you need to pay attention more to why you're taking a decision than to how to implement it. And that continous improvement is the most effective to improve the environment. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and subsections addressed in the previous section. For example:
 
 ![image](https://github.com/azarboon/well-architected/assets/21277296/5abfe06b-446f-4da3-bb16-807ccf10edfc)
 
