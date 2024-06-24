@@ -30,39 +30,31 @@ Consider using the following metrics to quantify the business requirements.
 |Recovery time objective (RTO)     | The maximum acceptable time that an application can be unavailable after an incident.        |
 |Recovery point objective (RPO)     | The maximum acceptable duration of data loss during an incident.        |
 
-Define the workload's target values for these metrics in the context of user flows and system flows. [Identify and score those flows](identify-flows.md) by how critical they are to your requirements. Use the values to drive the design of your workload in terms of architecture, review, testing, and incident management operations. Failure to meet the targets will affect the business beyond the tolerance level.
-
 
 ## Key design strategies
 
-**Reliability targets represent the desired quality goal of a workload**, as promised to its users and its business stakeholders. That goal includes both availability and recoverability of the workload. 
+**Reliability targets represent the desired quality goal of a workload**, as promised to its users and its business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets. 
 
-It's important to determine the reliability targets for the critical flows of the workload. Technical discussions shouldn't drive those targets. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs.
+- **Availability targets**. Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate availability targets for the end-to-end user experience. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
 
-To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements.
+- **Recovery targets**. Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
-Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
+To set reliability targets, broad requirements must be defined first. Business stakeholders should drive those targets basing it on the desired end user experience. Technical experts help the stakeholders **assign realistic numerical values** that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic targets.
 
-Remember that reliability targets differ from performance targets. 
+Based on the business requirements, it's important to [identify and score user and system flows](identify-flows.md) by how critical they are to the requirements. Use the values to drive the design of your workload in terms of architecture, review, testing, and incident management operations. Reliability targets must be defined for those flows. Failure to meet the targets affect the business beyond the tolerance level.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
 
-### Availability targets
+### SLO targets
 
-Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate availability targets for the end-to-end user experience. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be considered as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependencies only achieves 99.8% availability, the overall SLO is still 99.99% as a target.
 
-#### Set your SLO
+Stakeholders **set estimates for user experience**, which can comprise several flows. They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation.
 
-The overall SLO of a workload is a collective quality indication of all its logical boundaries, all of which should be regarded as dependencies. Some of those dependencies might be individual SLOs of software services (and the responsible team), to be improved over time. A mature declaration of the overall SLO should still indicate the business target for that workload, not just a composite of those dependencies. For example, if users expect that the workload to have 99.99% availability, and one of dependencies only achieves 99.8% availability, the overall SLO is still 99.99%.
+For the workload owner, **objective setting exercises are driven by financial goals** where business requirements are mapped to measurable metrics. The goal is to identify a set of factors that influence the user experience and define their targets, which reflect the  quality of experience for successful workload usage.
 
-For the workload owner, objective setting exercises are driven by financial goals where business requirements are mapped to measurable metrics. The goal is to identify a set of factors that influence the user experience and define their targets, which reflect the  quality of experience for successful workload usage.
-
-Stakeholders set estimates for user experience, which can comprise several flows. Identify the flows that are critical from the perspective of the user.
-
-They take into consideration, for example, how an hour of downtime for a flow during regular business hours can result in a loss of $X in monthly revenue. This dollar amount is compared to the estimated cost of designing and operating that flow. Decision makers must discuss the tolerance of external budgetary influences to decide if the extra costs and management burden for reliability is worth the risk of losing revenue. Or is the SLO too low to maintain the reputation.
-
-For the workload architect, SLOs can be the driver for many technical decisions. For example,
+For the workload architect, **SLOs shpuld considered the main driver for many technical decisions**. For example,
 
 - Serve as a critical input into architectural decisions when you consider additional dependencies.
 - Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on reliability, new feature development, and other task.
@@ -75,19 +67,9 @@ For the workload architect, SLOs can be the driver for many technical decisions.
 >
 > If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences. TODO Example is opposite?
 >
-> TODO: To make sure you can meet the SLO target, review the Microsoft SLAs for each component.
+> Cloud platform providers publish SLAs on their offerings. The SLAs should be part of the SLO calculation when setting targets and shouldn't be used as-is without understanding the scope of coverage for the SLA. For more information, see [Assess the impact of Microsoft SLAs](#assess-the-impact-of-microsoft-slas).
 
-##### Assess the impact of Microsoft SLAs
-
-Microsoft Service Level Agreement (SLA) provides insight into availability of areas that Microsoft commits to. SLAs don't guarantee an offering as a whole. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
-
-For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't guarantee availability of features such as Easy Auth. Similarly, slot switching behavior isn't covered by the SLA. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform. 
-
-So, if your workload relies on deployment slots, you cannot derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be somewhat uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
-
-Let's study another example. What does it mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn't guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
-
-##### Common SLOs
+#### Common SLOs and influencing factors
 
 Every SLO targets a specific quality criteria. Consider these common SLOs for reliability. This list isn't exhaustive. Add SLOs based on your business requirements. 
 
@@ -97,15 +79,13 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 - **Availability** measures uptime from the perspective of users. 
 - **Throughput** measures a minimum data transfer rate over a time window, expressed in kilobytes per second.
 
-##### Factors that influence SLOs
-
-Have a good understanding of the scenarios and tolerances for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaluating the utility of the workload component: 
+**Have a good understanding of the scenarios and tolerances** for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaluating the utility of the workload component: 
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
 |<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services.<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
 
-#### Measure targets
+#### Define composite SLO targets
 
 SLOs must be **measurable** and **measured within a observability window**. 
 
@@ -144,11 +124,21 @@ Here are some commonly used percentiles and the estimated downtimes.
 > For an illustrative example about how to define and measure SLO and SLIs, see the [Example](#example) section.
 
 
-#### Multi-region targets
+### Assess the impact of Microsoft SLAs
 
- Pay attention to how much redundancy you need to meet high SLOs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
+Microsoft Service Level Agreement (SLA) provides insight into availability of areas that Microsoft commits to. **SLAs don't guarantee an offering as a whole**. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
 
-For multi-region deployments, the composite SLA is calculated as follows:
+For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't guarantee availability of features such as Easy Auth. Similarly, slot switching behavior isn't covered by the SLA. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform. 
+
+So, if your workload relies on deployment slots, you cannot derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be somewhat uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
+
+Let's study another example. What does it mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn't guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
+
+### Multi-region targets - TODO
+
+Pay attention to how much redundancy you need to meet high SLOs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
+
+For multi-region deployments, the composite SLO is calculated as follows:
 
 - *N* is the composite SLA for the application that's deployed in one region.
 
@@ -251,7 +241,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
     > Composite SLO based on external dependency: Not applicable.
 
-### Overall composite SLO result
+#### Overall composite SLO result
 
 The team has availability percentages for various factors (99.68, 99.86, 98.98, 99.95). They combine these to achieve a composite availability of 99.47%. 
 
