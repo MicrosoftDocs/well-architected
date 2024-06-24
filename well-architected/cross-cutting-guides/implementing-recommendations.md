@@ -120,7 +120,7 @@ This section targets a technical audience.  List all the action points to addres
 
 ### Effort and reward
 
-Make it clear that every choice is a trade-off and you need to pay attention more to why you're taking a decision than to how to implement it. And that continous improvement is the most effective to improve the environment. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and subsections addressed in the previous section. For example:
+Make it clear that every choice is a trade-off and you need to pay attention more to why you're taking a decision than to how to implement it. And that continuous improvement is the most effective way to improve the environment. Then, provide a high-level reward-effort matrix for the current state, consistent with pillars and subsections addressed in the previous section. For example:
 
 ![image](https://github.com/azarboon/well-architected/assets/21277296/5abfe06b-446f-4da3-bb16-807ccf10edfc)
 
