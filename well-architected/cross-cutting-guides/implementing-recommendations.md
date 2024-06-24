@@ -51,29 +51,32 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
 - Whenever your proposed solution or service costs additional money, clearly mention it.
-- Early on, you can start remediating issues with highest reward-effort ratio to get quick wins. Check [effort and reward](#effort-and-reward) section below for further details.
+- Early on, you can start remediating issues with the highest reward-effort ratio to get quick wins. Check [effort and reward](#effort-and-reward) section below for further details.
 
 > [!NOTE]  
-> Improvisation of cloud environment is a continous journey: it can get better, but it will never be perfect.
+> Improvisation of the cloud environment is a continuous journey: it can get better, but it will never be perfect.
 
 ## How to report assessment results to get buy-in
 
-Azure Well-Architected Review is a continous journey which requires buy-in from executives or stakeholders. Subsequently, Azure Well-Architected assessment results should be presented in a way to help you get buy-in for further actions. You can use following template as a starting point:
+Azure Well-Architected Review is a continuous journey which requires buy-in from executives or stakeholders. Subsequently, Azure Well-Architected assessment results should be presented in a way to help you get buy-in for further actions. You can use following template as a starting point:
 
 ### Executive summary
 
-This section has to be understandable by all types of audiences, as well as give high-level view of the whole process. Address following questions:
+This section has to be understandable by all types of audiences, as well as give a high-level view of the whole process. Address following questions:
 - What is this report about? 
 - What did you assess? (e.g. pillars, etc.)
 - How did you do the assessment? Workshops, hands-on investigation, etc.
 - Why are you using Microsoft Azure? What are the key takeaways? What are your main issues? What have you done well?
-- How are you trying to overcome the issues? What is your solution? 
+- How are you trying to overcome these issues? What is your solution? 
 - What are the milestones to improve the situation? Briefly summarize what each milestone will achieve.
 
+
 ### Methodology
+
 - How did you do the assessment? Workshops, hands-on investigation, etc.
 
 ### Assumptions
+
 List all the implicit and explicit assumptions that readers should be aware of:
 - Which assumptions did you receive from the stakeholders?
 - What is the priority of the pillars?
@@ -81,7 +84,9 @@ List all the implicit and explicit assumptions that readers should be aware of:
 - List any other assumptions that readers have to be aware of.
 
 ### Summary of findings
-This section has to be understandable for a non-technical audience so avoid using jargons. Try to provide a balanced view so list positive aspects of the environment, team, operation or strategy. Then list the main issues which need improvement. This section should be readable within 1-2 minutes. 
+
+This section has to be understandable for a non-technical audience so avoid using jargon. Try to provide a balanced view so list positive aspects of the environment, team, operation or strategy. Then list the main issues which need improvement. This section should be readable within 1-2 minutes. 
+
 
 ### Detailed findings
 Outline details about the most important issues along with recommendations. For more clarity, you can associate each issue with a severity level, and mark it with a color. Briefly, advise how to address the issues and you may assign owners. For example, “critical” issues can be marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Following is an example:
