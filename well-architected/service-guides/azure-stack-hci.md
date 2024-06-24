@@ -4,6 +4,9 @@ description: Provides a template for a Well-Architected Framework (WAF) article 
 author: neilbird
 ms.author: nebird
 ms.topic: conceptual
+ms.date: 06/25/2024
+ms.service: waf
+ms.subservice: waf-service-guide
 ms.custom:
 products: 
     - azure-stack-hci
