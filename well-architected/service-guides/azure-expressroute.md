@@ -6,19 +6,14 @@ ms.author: duau
 ms.topic: conceptual
 ms.service: waf 
 ms.subservice: waf-service-guide
-ms.date: 05/20/2024
-products: azure-expressroute
+ms.date: 06/07/2022
+products: 
+  - azure-expressroute
+azure.category:
+  - networking
 ---
 
 # Azure Well-Architected Framework perspective on Azure ExpressRoute
-
-This article provides architectural best practice for Azure ExpressRoute. The guidance is based on the five pillars of the architecture excellence:
-
-* [Reliability](#reliability)
-* [Security](#security)
-* [Cost optimization](#cost-optimization)
-* [Operational excellence](#operational-excellence)
-* [Performance efficiency](#performance-efficiency)
 
 We assume that you have working knowledge of Azure ExpressRoute and are well versed with all of its features. For more information, see [Azure ExpressRoute](/azure/expressroute/expressroute-introduction). The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -37,13 +32,14 @@ We assume that you have working knowledge of Azure ExpressRoute and are well ver
 > optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:
-> [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
+> [Mission-critical baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone?branch=main).
 
 ### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:  
 
 - Azure ExpressRoute
+
 
 ## Reliability
 
@@ -58,41 +54,30 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Prioritize user flows**: Bandwidth constraints and potential spikes.
 > - **Anticipate potential failures**: Plan mitigation strategies for potential failures. The following table shows examples of failure mode analysis.
 >
-> | Failure analysis | Recommendation |
+> | Failure | Mitigation |
 > |---|---|
-> | Customer Traffic | physical layer diversity.|
-> | Vender or ExpressRoute Edge | Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. |
-> | Edge to edge connectivity | geo-redundant circuits. |
-> | Circuit disruption | active-active connectivity. |
-> | Gateway disruption | [Zone-redundant virtual network gateways](/azure/vpn-gateway/about-zone-redundant-vnet-gateways) are recommended.  |
+> | Circuit disruption, such as hardware failure at a peering location. | Have a secondary circuit for redundancy while service is restored.  Monitor the health of the circuit to identify when there might be issues. |
+> | Gateway disruption in the Azure virtual networks. | Have your gateway deployed in multiple availability zones, and with Active/Active configuration so that the disruption of the gateway in a single zone does not prevent connectivity. |
 >
 > - **Build redundancy strengthen resiliency**: Plan for redundancy in the network design to ensure that a single point of failure doesn't cause a service outage. Redundancy can be achieved by configuring multiple ExpressRoute circuits, diverse paths, and multiple peering locations closest to your on-premises locations.
 > Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state.
 >
 > | Architecture | Recommendation |
 > |---|---|
-> | Azure landing zone | A [Platform landing zone](/azure/cloud-adoption-framework/ready/landing-zone/index#platform-landing-zones-vs-application-landing-zones) is recommended as the main location for ExpressRoute. A workload-specific ExpressRoutes should only be deployed when there is a clear need. |
 > | Site resiliency | Planning for site resiliency is crucial to ensure high availability. ExpressRoute offers three architectures of site resiliency: Standard, High, and Maximum. [Standard resiliency](/azure/expressroute/design-architecture-for-resiliency#standard-resiliency) provides basic protection against site failures, [High resiliency](/azure/expressroute/design-architecture-for-resiliency#high-resiliency) offers enhanced protection with additional failover mechanisms, and [Maximum resiliency](/azure/expressroute/design-architecture-for-resiliency#maximum-resiliency) ensures the highest level of protection with multiple redundant systems and failover mechanisms. |
 > | Region and Availability zones | Plan for multiple [region and availability zones](/azure/reliability/overview#regions-and-availability-zones) closest to your on-premises locations to provide resiliency and high availability. |
-> | Private peering | Use [private peering](/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) to connect your on-premises network to your Azure virtual network. Private peering provides a private connection between your on-premises network and your Azure virtual network. |
 > | ExpressRoute circuit SKU | ExpressRoute have three SKUs, Local, Standard, and Premium. A key feature of Local is that a Local circuit at an ExpressRoute peering location gives you access only to one or two Azure regions in or near the same metro. In contrast, a Standard circuit gives you access to all Azure regions in a geopolitical area and a Premium circuit to all Azure regions globally. A key benefit of ExpressRoute premium are the increased limits. See the [ExpressRoute limits](/azure/expressroute/expressroute-faqs#limits) table for more information. |
+> | Reliability, Metrics, and SLO |  Notice point of failures for SLO |
+> | SKU - Limits | Meeting the right SLO - Choose the right sku with the right limits.  Premium is recommended this supports maximum resiliency  - in general Standard SKU is not recommended for workload -    statement about A key benefit of ExpressRoute premium are the increased limits. |
 >
-> - **Have a reliable scaling strategy**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput.
->
-> | Scaling challenges | Recommendation |
-> |---|---|
-> | Customers may face downtime or extra costs if they did not plan for scaling correctly. | Customers should scale correctly when it comes to circuit planning and gateway planning. Customers should use [Azure Advisor](/azure/advisor/advisor-overview) to get monitoring suggestions for ExpressRoute resources. Customers should configure scalable gateways. |
->
+> - **Have a reliable scaling strategy**: Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput. Customers may face downtime or extra costs if they did not plan for scaling correctly. Customers should scale correctly when it comes to circuit planning and gateway planning. Customers should use [Azure Advisor](/azure/advisor/advisor-overview) to get monitoring suggestions for ExpressRoute resources. Customers should configure scalable gateways.
 > - **Conduct reliability testing**: Test the network design for resiliency to ensure that the network can withstand failures. Testing can be achieved by using Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection. Confirm failover mechanisms are working as expected. For more information, see [Evaluate circuit resiliency](/azure/expressroute/evaluate-circuit-resiliency).
-> - **Disaster recovery planning**: Plan for disaster recovery to ensure that the network can recover from failures. Disaster recovery planning can be achieved by setting up ExpressRoute circuits in more than one peering location, creating circuits in peering locations in the same metro or different metro, and choosing to work with different service providers for diverse paths through each circuit. Resiliency Index.
+> - **Disaster recovery planning**: Plan for disaster recovery to ensure that the network can recover from failures. Disaster recovery planning can be achieved by setting up ExpressRoute circuits in more than one peering location, creating circuits in peering locations in the same metro or different metro, and choosing to work with different service providers for diverse paths through each circuit.
 > - **Use health indicators to identify disruptions**: Monitor the health of the ExpressRoute circuit and the ExpressRoute Virtual Network Gateway. Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available. For more information, see [Operational Excellence](#operational-excellence).
 
 ### Recommendations
-
-Explore the following table of recommendations to optimize your ExpressRoute configuration for Reliability.
 
 | Recommendation | Benefit |
 |--------|----|
