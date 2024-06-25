@@ -297,6 +297,7 @@ Mitigating the Downsides
 
 By being aware of these potential downsides and proactively addressing them, you can effectively implement LLMOps while minimizing negative impacts on workload cost, reliability, and security.
 
+## Mauro's (SME & area co-lead) seed material
 
 
 ## Jose's (Azure Patterns & Practices engineering) seed material
