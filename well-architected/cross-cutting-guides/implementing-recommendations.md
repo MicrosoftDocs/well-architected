@@ -38,7 +38,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Tips
 
-- Azure Well-Architected Review is a teamwork which has to be done in collaboration with key and relevant stakeholders. To succeed, this process requires a safe environment without worrying about repercussions. Make it clear to every participant to avoid blaming or finger pointing. Ask them to be honest to uncover all possible issues. Don't blindly trust their answers because there is a high chance of misunderstanding. Go through questions one by one and for every answer, ask clarifying questions to make sure you share the same understanding.
+- Azure Well-Architected Review is a teamwork which has to be done in collaboration with key and relevant stakeholders in a safe environment. All participants must feel safe to surface the problems without worrying about any repercussions. Make it clear that everyone has to avoid blaming, finger pointing, abuse or personal attacks. Ask all the participants to be honest and avoid any attempt to cover-up issues. In addition, don't blindly trust participants' answers because there is a high chance of misunderstanding. Go through questions one by one and for every answer, ask clarifying questions to make sure you share the same understanding.
 - Before starting the assessment, prioritize the pillars according to your needs. Later on, you have to prioritize your efforts accordingly.
 - Remember that every choice is a trade-off and you need to pay attention more to why you're taking a decision than to how to implement it.
 - You should always sign in when you take assessments so that the tool can generate milestones.
