@@ -28,7 +28,7 @@ This article assumes you have an understanding of hybrid systems and have workin
 > Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Stack HCI and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:  
-> [Azure Stack HCI switchless storage for retail, manufacturing, or remote office scenarios](/azure/architecture/hybrid/azure-stack-hci-switchless).
+> [Two-node storage switchless, single switch deployment network reference](/azure-stack/hci/plan/two-node-switchless-single-switch).
 
 #### Technology scope
 
@@ -121,11 +121,13 @@ Start your design strategy based on the
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled during the cloud deployment process. Default security settings provide a consistent security baseline to ensure that devices start in a known good state, and _drift protection controls_ provide at-scale management using Azure.
+The [**Security design principles**](/../security/security-principles)
+provide a high-level design strategy for achieving those goals by
+applying approaches to the technical design of Azure Stack HCI.
 
-Security features enabled by default in Azure Stack HCI include; hardened OS security settings, Windows Defender for Application Control (WDAC), volume encryption using BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more. For more information on these security features, see [Review Security Features](/azure-stack/hci/concepts/security-features).
+Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled during the cloud deployment process. Default security settings provide a consistent security baseline to ensure that devices start in a known good state. And you can use _drift protection controls_ to provide at-scale management.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy to bolster the security of the workload and applications that are deployed on Azure Stack HCI.
+Default security features in Azure Stack HCI include hardened OS security settings, Windows Defender Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure-stack/hci/concepts/security-features).
 
 #### Design checklist
 
@@ -141,7 +143,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - (HCI platform architecture) **Detect, prevent, and respond to threats**. Continuously monitor the HCI environment and protect against existing and evolving threats.
 >
->   It is recommended to enable Microsoft Defender for Cloud on Azure Stack HCI. Enable the basic Defender for Cloud plan (_free tier_) using the Foundational Cloud Security Posture Management (CSPM) to monitor and identify steps you can take to secure your Azure Stack HCI platform, along with other Azure and Azure Arc resources.
+>   It is recommended to enable Defender for Cloud on Azure Stack HCI. Enable the basic Defender for Cloud plan (_free tier_) using the Foundational Cloud Security Posture Management (CSPM) to monitor and identify steps you can take to secure your Azure Stack HCI platform, along with other Azure and Azure Arc resources.
 >
 >   To benefit from the enhanced security features including security alerts for individual servers and Arc VMs, enable Defender for Servers on your Azure Stack HCI cluster nodes and Azure Arc VMs.
 >
@@ -197,7 +199,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 #### Design checklist
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md). Azure Stack HCI incurs costs for hardware, software licensing, workloads, guest VMs (Windows Server or Linux) licensing, and other integrated cloud services, as Azure Monitor, Microsoft Defender for Cloud, and others. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md). Azure Stack HCI incurs costs for hardware, software licensing, workloads, guest VMs (Windows Server or Linux) licensing, and other integrated cloud services, as Azure Monitor, Defender for Cloud, and others. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -328,14 +330,14 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
 ## Azure policies
 
-Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc VMs to monitor their compliance state and enhance the security of those resources using Azure Policy and Microsoft Defender for Cloud. Here are some key checks for Azure Stack HCI environment:
+Azure Policy offers various built-in policy definitions that apply to both the Azure Stack HCI and Azure Arc VMs to monitor their compliance state and enhance the security of those resources using Azure Policy and Defender for Cloud. Here are some key checks for Azure Stack HCI environment:
 
 - Host and VM networking should be protected.
 - Encrypted volumes should be implemented.
 - Application control policies should be consistently enforced.
 - Secured-core requirements should be met.
 
-Review the [Azure Stack HCI built-in policies](/azure/governance/policy/samples/built-in-policies#stack-hci). Microsoft Defender for Cloud has [new recommendations](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) that shows the compliance state for the built-in policies. For more information, see [Built-in policies under Security Center](/azure/governance/policy/samples/built-in-policies#security-center).
+Review the [Azure Stack HCI built-in policies](/azure/governance/policy/samples/built-in-policies#stack-hci). Defender for Cloud has [new recommendations](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) that shows the compliance state for the built-in policies. For more information, see [Built-in policies under Security Center](/azure/governance/policy/samples/built-in-policies#security-center).
 
 If your workload runs on Azure Arc VMs deployed on Azure Stack HCI, consider the built-in policies such as, denying the creation or modification of Extended Security Updates (ESUs) licenses. For more information, see [built-in policy definitions for Azure Arc-enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
 
@@ -361,7 +363,7 @@ Consider creating custom policies for additional governance that can be created 
 ## Next steps
 
 - Consider the following articles in Azure Architecture Center as resources that demonstrate the recommendations highlighted in this article.
-    -   Foundational architecture that demonstrates the key recommendations:  [Azure Stack HCI switchless storage for retail, manufacturing or remote office scenarios](/azure/architecture/hybrid/azure-stack-hci-switchless).
+    -   Foundational architecture that demonstrates the key recommendations:  [Two-node storage switchless, single switch deployment network reference](/azure-stack/hci/plan/two-node-switchless-single-switch).
     -   For organizations that need a hybrid approach, design choices around a hybrid network architecture are crucial. For more information, see [Hybrid architecture design](/azure/architecture/hybrid/hybrid-start-here).
 
 - Build implementation expertise by using the following Azure Stack HCI product documentation: 
