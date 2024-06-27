@@ -22,9 +22,9 @@ Consider using the following metrics to quantify the business requirements.
 
 |Term  |Definition  |
 |---------|---------|
-|Service-level objective (SLO)    | A percentage target that represents the health of the component and the reliability tier. The higher the tier, the more reliable the component. *Composite SLO* represents the aggregate target of the entire workload and accounts for the component SLOs.        |
+|Service-level objective (SLO)    | A measure of the performance and reliability of a workload or application. An SLO is a specific, measurable target that is set for particular customer interactions. It is a target that you set for your workload on application based on the quality of service your users should expect to receive.        |
 |Service-level indicator (SLI)     | A metric emitted by a service. SLI metrics are aggregated to quantify an SLO value.        |
-|Service-level agreement (SLA)     | A contractual agreement between the service provider and the service customer. The agreement defines the SLOs. Failure to meet the agreement might have financial consequences for the service provider.        |
+|Service-level agreement (SLA)     | A contractual agreement between the service provider and the service customer. Failure to meet the agreement might have financial consequences for the service provider.        |
 |Mean time to recover (MTTR)     | The time taken to restore a component after a failure is detected.        |
 |Mean time between failure (MTBF)     |The duration for which the workload can perform the expected function without interruption, until it fails.         |
 |Recovery time objective (RTO)     | The maximum acceptable time that an application can be unavailable after an incident.        |
@@ -48,7 +48,16 @@ Highest-level reliability and recovery requirements and correlated metrics might
 
 #### SLOs and SLAs
 
-Availability metrics correlate to SLOs, which you use to define SLAs. The workload SLO determines how much downtime is tolerable in a given period, for example, less than 1 hour per month. To make sure you can meet the SLO target, review the Microsoft SLAs for each component. Pay attention to how much redundancy you need to meet high SLAs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
+An SLO is a measure of the performance and reliability of a workload or application. An SLO is a specific, measurable target that is set for particular customer interactions. It's a target that you set for your workload or application on the quality of service your users should expect to receive.
+
+An SLO can be defined in terms of a variety of metrics, such as availability, response time, throughput, success rate, and others. For example, an SLO for a web service might be that it will be available to users 99.9% of the time in a given month, or that it will respond to 95% of requests within 500 milliseconds.
+
+Before defining the SLOs for your application or workload, review the Microsoft published SLAs for the underlying services your application or workload is hosted on.  
+
+> [!NOTE]
+> The Microsoft service SLAs **are not** platform SLIs or SLOs
+
+As you review the SLA for each service, pay attention to how much redundancy you need to meet high SLAs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
 
 > [!NOTE]
 > Azure SLAs don't always cover all aspects of a service. For example, Azure Application Gateway has an availability SLA, but the Azure Web Application Firewall functionality provides no guarantee to stop malicious traffic from passing through. Consider this limitation when you develop your SLAs and SLOs.
