@@ -6,7 +6,7 @@ ms.author: duau
 ms.topic: conceptual
 ms.service: waf 
 ms.subservice: waf-service-guide
-ms.date: 06/27/2024
+ms.date: 06/07/2022
 products: 
   - azure-expressroute
 azure.category:
