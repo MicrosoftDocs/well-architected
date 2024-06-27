@@ -1,10 +1,10 @@
 ---
-title: Azure Well-Architected Framework review for Azure Stack HCI
-description: Learn how to use a template for a Well-Architected Framework article that's specific to Azure Stack HCI.
+title: Azure Well-Architected Framework perspective on Azure Stack HCI
+description: Learn how to deploy Azure Stack HCI so that you can create and manage Windows and Linux VMs, Kubernetes clusters, and other Azure Arc-enabled services.
 author: neilbird
 ms.author: nebird
 ms.topic: conceptual
-ms.date: 06/25/2024
+ms.date: 06/28/2024
 ms.service: waf
 ms.subservice: waf-service-guide
 products: 
@@ -15,7 +15,7 @@ categories:
 
 # Azure Well-Architected Framework perspective on Azure Stack HCI
 
-Azure Stack HCI is a hyperconverged infrastructure (HCI) platform that provides local storage, network resources, and compute resources so that you can create and manage Windows and Linux virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services. The platform uses Azure for streamlined deployment and management, which provides a unified and consistent management experience through Azure Arc. To address data sovereignty, regulation and compliance, and latency requirements, you can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises.
+Azure Stack HCI is a hyperconverged infrastructure (HCI) platform that provides local storage, network resources, and compute resources so that you can create and manage Windows and Linux virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services. The platform uses Azure for streamlined deployment and management, which provides a unified and consistent management experience through Azure Arc. You can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 
 This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Stack HCI. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
@@ -41,7 +41,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 >
 > This article covers the preceding scope and provides checklists and recommendations that are organized by **platform architecture** and **workload architecture**. Platform concerns are the responsibility of the platform administrators. Workload concerns are the responsibility of the workload operator and application developers. These roles and responsibilities are distinct and can be owned by separate teams or individuals. Keep that distinction in mind when you apply the guidance.
 
-This guidance doesn't focus on specific resource types that you can deploy on Azure Stack HCI, such as [Azure Arc VMs](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Kubernetes Service (AKS)](/azure/aks/hybrid/cluster-architecture), and [Azure Virtual Desktop](/azure/virtual-desktop/azure-stack-hci-overview). When you deploy these resource types on Azure Stack HCI, see the respective workload guidance to design solutions that meet your business requirements.
+This guidance doesn't focus on specific resource types that you can deploy on Azure Stack HCI, such as [Azure Arc VMs](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Kubernetes Service (AKS)](/azure/aks/hybrid/cluster-architecture), and [Azure Virtual Desktop](/azure/virtual-desktop/azure-stack-hci-overview). When you deploy these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions that meet your business requirements.
 
 ## Reliability
 
@@ -55,8 +55,7 @@ It's important to distinguish between *platform reliability* and *workload relia
 
 #### Design checklist
 
-Start your design strategy based on the
-[design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the <offering-specific-aspects>. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the <offering-specific-aspects>. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -64,7 +63,7 @@ Start your design strategy based on the
 >
 >   - Set your [service-level objectives (SLOs) so that you can evaluate availability targets](../reliability/metrics.md). Calculate SLOs as a percentage, such as 99.9%, 99.95%, or 99.995%, that reflects workload uptime. Keep in mind that this calculation isn't based only on the platform metrics that the HCI cluster or workload emits. To get a comprehensive target measurement, factor in nuanced factors that are quantified, such as expected downtime during releases, routine operations, supportability, or other workload-specific or organizational-specific factors.
 >
->   - Microsoft-provided service-level agreements (SLAs) often influence SLO calculations. But Microsoft doesn't provide an SLA for the uptime and connectivity of Azure Stack HCI clusters or the deployed workload, because Microsoft doesn't control the customer datacenter reliability (_such as power or cooling_) or the people and processes that administer the platform.
+>   - Microsoft-provided service-level agreements (SLAs) often influence SLO calculations. But Microsoft doesn't provide an SLA for the uptime and connectivity of Azure Stack HCI clusters or the deployed workload, because Microsoft doesn't control the customer datacenter reliability (_such as power and cooling_) or the people and processes that administer the platform.
 >
 > - (HCI platform architecture) **Consider how performance and operations affect reliability**.
 >
@@ -72,7 +71,7 @@ Start your design strategy based on the
 >
 >   - Without proper workload capacity planning, it's challenging to _rightsize Azure Stack HCI clusters_ in the design phase, which is a requirement so that the workload can meet the desired reliability targets. Use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) during cluster design. Consider the "_N+1 minimum requirement for number of nodes_" if you require highly available VMs. For business-critical or mission-critical workloads, consider using a "_N+2 number of nodes_" for the cluster size if resiliency is paramount.
 >
->   - The reliability of the platform depends on how well the critical platform dependencies, such as physical disk types, perform. _You must choose the right disk types for your requirements_. For workloads that need low latency and high-throughput storage, we recommend an all-flash (_NVMe/SSD only_) storage configuration. For general purpose compute, a hybrid storage (_NVMe or SSDs for cache and HDDs for capacity_) configuration might provide more storage space. But the tradeoff is that spinning disks have significantly lower performance if your workload exceeds the [cache working set](/azure-stack/hci/concepts/cache#sizing-the-cache), and HDDs have a much lower _mean time between failure_ value compared to NVMe/SSDs.
+>   - The reliability of the platform depends on how well the critical platform dependencies, such as physical disk types, perform. _You must choose the right disk types for your requirements_. For workloads that need low-latency and high-throughput storage, we recommend an all-flash (_NVMe/SSD only_) storage configuration. For general purpose compute, a hybrid storage (_NVMe or SSDs for cache and HDDs for capacity_) configuration might provide more storage space. But the tradeoff is that spinning disks have significantly lower performance if your workload exceeds the [cache working set](/azure-stack/hci/concepts/cache#sizing-the-cache), and HDDs have a much lower _mean time between failure_ value compared to NVMe/SSDs.
 >
 >     [Performance Efficiency](#performance-efficiency) describes these examples in more detail.
 >
@@ -86,9 +85,7 @@ Start your design strategy based on the
 >
 > - (HCI platform architecture) **Provide fault tolerance to the cluster and its infrastructure dependencies**.
 >
->   - **Storage design choices**. For most deployments, the default option to "_automatically create workload and infrastructure volumes_" is sufficient. If you select the _Advanced option: "create required infrastructure volumes only"_, configure the appropriate _volume fault tolerance within Storage Spaces Direct_ based on your workload requirements.
->
->     These decisions influence the performance, capacity, and resiliency capabilities of the volumes. For example, a three-way mirror increases reliability and performance for clusters with three or more nodes. For more information, see [Fault tolerance for storage efficiency](/azure-stack/hci/concepts/fault-tolerance) and [Create Storage Spaces Direct virtual disks and volumes](/azure-stack/hci/concepts/plan-volumes).
+>   - **Storage design choices**. For most deployments, the default option to "_automatically create workload and infrastructure volumes_" is sufficient. If you select the _advanced option: "create required infrastructure volumes only"_, configure the appropriate _volume fault tolerance within Storage Spaces Direct_ based on your workload requirements. These decisions influence the performance, capacity, and resiliency capabilities of the volumes. For example, a three-way mirror increases reliability and performance for clusters with three or more nodes. For more information, see [Fault tolerance for storage efficiency](/azure-stack/hci/concepts/fault-tolerance) and [Create Storage Spaces Direct virtual disks and volumes](/azure-stack/hci/concepts/plan-volumes).
 >
 >    - **Network architecture**. Use a _validated network topology_ to deploy Azure Stack HCI. Multi-node clusters, *with four or more physical nodes*, require the "*storage switched*" design. Clusters with two or three nodes can optionally use the "*storage switchless*" design. Regardless of the cluster size, we recommend that you use dual top of rack (ToR) switches for the management and compute intents (_north and south uplinks_) to provide increased fault tolerance. The dual ToR topology also provides resiliency during switch servicing (*firmware update*) operations. For more information, see [Validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies).
 >
@@ -253,7 +250,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >    - [Azure Stack HCI (_platform_) network reference architecture and IP requirements](/azure-stack/hci/plan/cloud-deployment-network-considerations#network-design-framework)
 >
->    - Your workloads use [logical networks](/azure-stack/hci/manage/create-logical-networks). For specific examples, see [Network requirements for AKS clusters](/azure/aks/hybrid/aks-hci-network-system-requirements#networking-for-aks-cluster-vms), [Logical networks for Azure Arc VMs](/azure-stack/hci/manage/create-logical-networks), and [Azure Virtual Desktop with Azure Stack HCI](/azure/virtual-desktop/azure-stack-hci-overview).
+>    - Your workloads use [logical networks](/azure-stack/hci/manage/create-logical-networks). For specific examples, see [Network requirements for AKS clusters](/azure/aks/hybrid/aks-hci-network-system-requirements#networking-for-aks-cluster-vms), [Logical networks for Azure Arc VMs](/azure-stack/hci/manage/create-logical-networks), and [Virtual Desktop with Azure Stack HCI](/azure/virtual-desktop/azure-stack-hci-overview).
 >
 > - (Workload configuration) **Enable monitoring and alerting for workloads that you deploy on Azure Stack HCI clusters**. You can use the [Azure Arc for Servers Monitor extension](/azure/azure-arc/servers/manage-vm-extensions#extensions) for VM workload or use the [Monitor Container Insights extension for AKS clusters](/azure/azure-arc/kubernetes/extensions-release#azure-monitor-container-insights).
 >
