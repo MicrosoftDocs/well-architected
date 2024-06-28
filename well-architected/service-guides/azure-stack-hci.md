@@ -103,7 +103,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - (Workload architecture) **Configure and regularly test workload backup and restore procedures**.
 >
->   Business requirements for _data recovery and retention_ drive the strategy for workload backups. A comprehensive strategy includes considerations for  _workload operating system and application persistent data_, with the ability to restore individual (_point-in-time_) file-level and folder-level data. Configure the backup retention policies based on your data recovery and compliance requirements, which determine the number and age of available data recovery points. Explore Azure Backup as an option to enable host-level or VM guest-level backups for Azure Stack HCI. Review data protection solutions from Backup independent software vendor partners where relevant. For more information, see [Azure Backup guidance and best practices](/azure/backup/guidance-best-practices) and [Azure Backup for Azure Stack HCI](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+>   Business requirements for _data recovery and retention_ drive the strategy for workload backups. A comprehensive strategy includes considerations for  _workload operating system (OS) and application persistent data_, with the ability to restore individual (_point-in-time_) file-level and folder-level data. Configure the backup retention policies based on your data recovery and compliance requirements, which determine the number and age of available data recovery points. Explore Azure Backup as an option to enable host-level or VM guest-level backups for Azure Stack HCI. Review data protection solutions from Backup independent software vendor partners where relevant. For more information, see [Azure Backup guidance and best practices](/azure/backup/guidance-best-practices) and [Azure Backup for Azure Stack HCI](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 #### Recommendations
 
@@ -122,7 +122,7 @@ The [**Security design principles**](../security/security-principles.md) provide
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled during the cloud deployment process. Default security settings provide a consistent security baseline to ensure that devices start in a known good state. And you can use _drift protection controls_ to provide at-scale management.
 
-Default security features in Azure Stack HCI include hardened operating system (OS) security settings, Windows Defender Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure-stack/hci/concepts/security-features).
+Default security features in Azure Stack HCI include hardened OS security settings, Windows Defender Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure-stack/hci/concepts/security-features).
 
 #### Design checklist
 
@@ -161,7 +161,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   - Data-at-rest encryption is enabled on data volumes that you create during deployment. These data volumes include both infrastructure volumes and workload volumes. For more information, see [Manage BitLocker encryption](/azure-stack/hci/manage/manage-bitlocker).
 >
->   - Use [trusted launch for Azure Arc VMs](/azure-stack/hci/manage/trusted-launch-vm-overview) to improve security of Gen 2 VMs, by utilizing OS features of modern operating systems, such as Secure Boot that can use a virtual Trusted Platform Module.
+>   - Use [trusted launch for Azure Arc VMs](/azure-stack/hci/manage/trusted-launch-vm-overview) to improve security of Gen 2 VMs by using OS features of modern operating systems, such as Secure Boot, which can use a virtual Trusted Platform Module.
 >
 > - **Operationalize secret management**. Based on your organizational requirements, change the credentials that are associated with the deployment user identity for Azure Stack HCI. For more information, see [Manage secrets rotation](/azure-stack/hci/manage/manage-secrets-rotation).
 >
@@ -170,7 +170,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - (Workload architecture) **Improve workload security posture with built-in policies**. To assess Azure Arc VMs that run on Azure Stack HCI, you can apply built-in policies via the security benchmark, Azure Update Manager, or the Azure Policy guest configuration extension. You can use various policies to check the following conditions:
 >
 >   - Log Analytics agent installation
->   - Out-of-date system updates or security patches
+>   - Out-of-date system updates that need to be up to date with the latest security patches
 >   - Vulnerability assessment and potential mitigations
 >   - Use of secure communication protocols
 
@@ -183,8 +183,8 @@ Start your design strategy based on the [design review checklist for Security](.
 |[**Enable volume encryption via BitLocker**](/azure-stack/hci/manage/manage-bitlocker#enable-disable-volume-encryption-with-bitlocker) for data encryption-at-rest protection.|BitLocker protects OS and data volumes by encrypting the cluster shared volumes that are created on the Azure Stack HCI. BitLocker uses XTS-AES 256-bit encryption. We recommended that you keep the volume encryption default setting enabled during Azure Stack HCI cloud deployment for all data volumes.|
 |Export [**BitLocker recovery keys**](/azure-stack/hci/manage/manage-bitlocker#get-bitlocker-recovery-keys) to store them in a secure location, external from the Azure Stack HCI cluster.|You might need BitLocker keys during specific troubleshooting or recovery actions. We recommend that you export, save, and back up encrypt keys for OS and data volumes from each Azure Stack HCI cluster via the 'Get-AsRecoveryKeyInfo' PowerShell cmdlet. Save the keys in a secure external location, such as Azure Key Vault.|
 |Use a SIEM solution to increase security monitoring and alerting capabilities. To do so, you can [**onboard Azure Arc-enabled servers (Azure Stack HCI platform nodes) to Microsoft Sentinel**](/azure/azure-arc/servers/scenario-onboard-azure-sentinel). Alternatively, if you use a different SIEM solution, configure [**syslog forwarding of security events**](/azure-stack/hci/concepts/security-features#syslog-forwarding-of-security-events) to the chosen solution.|Forward security event data by using Microsoft Sentinel or syslog forwarding to provide alerting and reporting capabilities through integration with a customer-managed SIEM solution.|
-|Use [**Server Message Block (SMB) signing**](/troubleshoot/windows-server/networking/overview-server-message-block-signing) to enhance data-in-transit protection, which is enabled in the “default security settings.”|SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI platform and systems external to the platform (North or South). Configure signing for external SMB traffic between the Azure Stack HCI platform and other systems to help prevent relay attacks.|
-|Use the [**SMB encryption**](/windows-server/storage/file-server/smb-security#smb-encryption) setting to enhance data-in-transit protection, which is enabled in the “default security settings.”|The SMB encryption for in-cluster traffic setting controls the encryption of traffic between physical nodes in the Azure Stack HCI cluster (East or West) on your storage network.|
+|Use [**Server Message Block (SMB) signing**](/troubleshoot/windows-server/networking/overview-server-message-block-signing) to enhance data-in-transit protection, which is enabled in the “default security settings.”|SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI platform and systems external to the platform (north or south). Configure signing for external SMB traffic between the Azure Stack HCI platform and other systems to help prevent relay attacks.|
+|Use the [**SMB encryption**](/windows-server/storage/file-server/smb-security#smb-encryption) setting to enhance data-in-transit protection, which is enabled in the “default security settings.”|The SMB encryption for in-cluster traffic setting controls the encryption of traffic between physical nodes in the Azure Stack HCI cluster (east or west) on your storage network.|
 
 ## Cost Optimization
 
@@ -225,7 +225,7 @@ Azure Stack HCI incurs costs for hardware, software licensing, workloads, guest 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
 |Use [**Azure Hybrid Benefit for Azure Stack HCI**](/azure-stack/hci/concepts/azure-hybrid-benefit-hci) if you have Windows Server Datacenter licenses with Software Assurance.|With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.|
-|Choose either the Windows Server subscription add-on or bring your own license to license and activate the Windows Server VMs to use them on Azure Stack HCI. For more information, see [**License Windows Server VMs on Azure Stack HCI**](/azure-stack/hci/manage/vm-activate#windows-server-subscription).| While you can use any existing Windows Server licenses and activation methods available, optionally, you can enable "Windows Server subscription add-on" available for Azure Stack HCI only to subscribe Windows Server guest licenses through Azure which is charged for the total number of physical cores in the Azure Stack HCI cluster.|
+|Choose either the Windows Server subscription add-on or bring your own license to license and activate the Windows Server VMs and use them on Azure Stack HCI. For more information, see [**License Windows Server VMs on Azure Stack HCI**](/azure-stack/hci/manage/vm-activate#windows-server-subscription).| While you can use any existing Windows Server licenses and activation methods available, optionally, you can enable "Windows Server subscription add-on" available for Azure Stack HCI only to subscribe Windows Server guest licenses through Azure which is charged for the total number of physical cores in the Azure Stack HCI cluster.|
 |Use the [**Azure verification for VMs**](/azure-stack/hci/deploy/azure-verification) benefit extended to Azure Stack HCI so that supported Azure-exclusive workloads can work outside of the cloud.|This benefit is enabled by default on Azure Stack HCI version 23H2 or later. Use this benefit so that the VMs can operate in other Azure environments and workloads can benefit from offers that are available only in Azure, such as Extended Security Updates enabled by Azure Arc.|
 
 ## Operational Excellence
@@ -234,7 +234,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics, but also use metrics troubleshoot and remediate problems quickly. For more information about how to troubleshoot problems, see [Operational Excellence design principles](../devops/principles.md) and [Collect diagnostic logs for Azure Stack HCI](/azure-stack/hci/manage/collect-logs).
+Monitoring and diagnostics are crucial. You can use metrics to measure performance statistics and also to troubleshoot and remediate problems quickly. For more information about how to troubleshoot problems, see [Operational Excellence design principles](../devops/principles.md) and [Collect diagnostic logs for Azure Stack HCI](/azure-stack/hci/manage/collect-logs).
 
 #### Design checklist
 
@@ -343,12 +343,12 @@ If your workload runs on Azure Arc VMs that you deploy on Azure Stack HCI, consi
 
 Consider creating custom policies to provide extra governance for both the Azure Stack HCI resources and Azure Arc VMs that you deploy on an Azure Stack HCI cluster. For example:
 
-- Auditing Azure Stack HCI host registration with Azure.
-- Ensuring that hosts run the latest OS version.
-- Checking for required hardware components and network configurations.
-- Verifying the enablement of necessary Azure services and security settings.
-- Confirming the installation of required extensions.
-- Assessing the deployment of Kubernetes clusters and AKS integration.
+- Auditing Azure Stack HCI host registration with Azure
+- Ensuring that hosts run the latest OS version
+- Checking for required hardware components and network configurations
+- Verifying the enablement of necessary Azure services and security settings
+- Confirming the installation of required extensions
+- Assessing the deployment of Kubernetes clusters and AKS integration
 
 ## Azure Advisor recommendations
 
