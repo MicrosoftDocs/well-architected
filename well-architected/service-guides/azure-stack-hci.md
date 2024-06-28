@@ -55,7 +55,7 @@ It's important to distinguish between *platform reliability* and *workload relia
 
 #### Design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the <offering-specific-aspects>. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of Azure Stack HCI. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
