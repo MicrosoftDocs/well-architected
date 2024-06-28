@@ -189,7 +189,7 @@ Contoso Ticketing is designing a new mobile experience for their event ticketing
 
 ### Components
 
-Here are some components that have been chose to illustrate the concept of SLO definition. Notice there are other components in this architecture that haven't been included for brevity. 
+Here are some components that have been chose to illustrate the concept of SLO definition. Notice, there are other components in this architecture that haven't been included. For example, even though Key Vault is part of the critical request flow, it isn't part of the response use case. If Key Vault is unavailable, the application will continue to function using secrets that were loaded during startup. However, if the application needs to scale, Key Vault availability becomes critical because new nodes need to be loaded with secrets. For this example, scaling operations aren't considered. Other components have been omitted for brevity. 
 
 - **Azure Front Door** is the single point of entry that exposes an API that's used by end users to send requests.
 - **Azure Container Apps** environment is owned by the workload team and runs business logic for the  application. 
@@ -241,7 +241,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
     > Composite SLO based on external dependency: Not applicable.
 
-#### Overall composite SLO result
+### Overall composite SLO result
 
 The team has availability percentages for various factors (99.68, 99.86, 98.98, 99.95). They combine these to achieve a composite availability of 99.47%. 
 
