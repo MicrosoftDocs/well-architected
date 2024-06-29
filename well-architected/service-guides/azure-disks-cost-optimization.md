@@ -22,6 +22,7 @@ To understand how Azure managed disks are cost-effective solutions for your work
 - [Overview of Azure Disk Backup](/azure/backup/disk-backup-overview)
 - [Understand how your reservation discount is applied to Azure disk storage](/azure/cost-management-billing/reservations/understand-disk-reservations?context=/azure/virtual-machines/context/context)
 - [Reduce costs with Azure Disks Reservation](/azure/virtual-machines/disks-reserved-capacity)
+- Back up and restore selective disks to mManage critical data in a subset of the VM disks and back up only the OS disk of a datanase to reduce cost. [Learn more](/azure/backup/selective-disk-backup-restore).
 
 The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure managed disks and cost optimization.
 
