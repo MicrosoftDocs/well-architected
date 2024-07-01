@@ -28,7 +28,7 @@ This article assumes you have an understanding of hybrid systems and have workin
 > Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Stack HCI and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:  
-> [Two-node storage switchless, single switch deployment network reference](/azure-stack/hci/plan/two-node-switchless-single-switch).
+> [Azure Stack HCI baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
 
 #### Technology scope
 
@@ -360,7 +360,7 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 ## Next steps
 
 - Consider the following articles in Azure Architecture Center as resources that demonstrate the recommendations highlighted in this article.
-    -   Foundational architecture that demonstrates the key recommendations: [Two-node storage switchless, single switch deployment network reference](/azure-stack/hci/plan/two-node-switchless-single-switch).
+    -   Foundational architecture that demonstrates the key recommendations: [Azure Stack HCI baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
     -   If your organization needs a hybrid approach, carefully select your design choices related to a hybrid network architecture. For more information, see [Hybrid architecture design](/azure/architecture/hybrid/hybrid-start-here).
 
 - Build implementation expertise by using the following Azure Stack HCI product documentation: 
