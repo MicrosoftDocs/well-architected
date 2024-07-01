@@ -157,7 +157,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - (Azure Stack HCI platform architecture and workload architecture) **Isolate, filter, and block network traffic.** You might have a workload use case that requires virtual networks, microsegmentation via network security groups, network quality of service policies, or virtual appliance chaining so that you can bring in partner appliances for filtering. If you have such a workload, see [software-defined network considerations for network reference patterns](/azure-stack/hci/plan/network-patterns-sdn-considerations) for a list of the supported features and capabilities that [Network Controller](/azure-stack/hci/concepts/network-controller-overview) provides.
 >
->  - (Workload architecture) **Encrypt data to protect against tampering**. Encrypt data in transit, data at rest, and data in use.
+> - (Workload architecture) **Encrypt data to protect against tampering**. Encrypt data in transit, data at rest, and data in use.
 >
 >   - Data-at-rest encryption is enabled on data volumes that you create during deployment. These data volumes include both infrastructure volumes and workload volumes. For more information, see [Manage BitLocker encryption](/azure-stack/hci/manage/manage-bitlocker).
 >
