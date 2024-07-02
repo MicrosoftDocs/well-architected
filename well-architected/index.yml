@@ -68,8 +68,7 @@ sections:
     blocks:
       - componentType: image
         src: _images/baseline-app-service-architecture.svg
-        id: app-service-web-apps
-        label: "Diagram that shows the reference architecture for a basic web application in Azure."
+        alt: "Diagram that shows the reference architecture for a basic web application in Azure."
       - title: Featured update - Azure App Service (Web Apps)
         summary:  Explore the Azure App Service guide 
         componentType: text
@@ -83,7 +82,7 @@ sections:
           children:
             - Azure App Service (Web Apps) is a platform as a service (PaaS) compute solution that you can use to host your workload on the Azure platform.
 
-            - The fully managed service abstracts the underlying compute and offloads the responsibility of building, deploying, and scaling to the platform. 
+            - The fully managed service abstracts the underlying compute and offloads to the platform the responsibility of building, deploying, and scaling. 
 
             - Find checklists that help you assess architectural concerns and design strategies that align with the Well-Architected Framework. 
             
