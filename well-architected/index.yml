@@ -76,9 +76,6 @@ sections:
           - componentType: link
             url: ./service-guides/app-service-web-apps.md
             text: Azure App Service (Web Apps) service guide
-          - componentType: link
-            url: ./service-guides/app-service-web-apps.md
-            text: placeholder link
         list:
           componentType: list
           style: checklist
