@@ -70,12 +70,15 @@ sections:
         src: _images/baseline-app-service-architecture.svg
         alt: "Diagram that shows the reference architecture for a basic web application in Azure."
       - title: Featured update - Azure App Service (Web Apps)
-        summary:  Explore the Azure App Service guide 
+        summary: "Explore the Azure App Service guide:"
         componentType: text
         links:
           - componentType: link
             url: ./service-guides/app-service-web-apps.md
             text: Azure App Service (Web Apps) service guide
+          - componentType: link
+            url: ./service-guides/app-service-web-apps.md
+            text: placeholder link
         list:
           componentType: list
           style: checklist
