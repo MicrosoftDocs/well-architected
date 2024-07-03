@@ -80,7 +80,7 @@ In January we added two new articles, and we updated two articles.
 
 - In [Optimize workload design using flows](./cross-cutting-guides/optimize-workload-using-flows.md), learn how to optimize workloads through structured flow design. Take a look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. As you work to align flows with business processes and use cases, find practical examples and recommendations in this article.
 
-### New articles
+### Updated articles
 
 Find updates to the following articles in the Operational Excellence pillar:
 
