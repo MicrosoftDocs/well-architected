@@ -33,9 +33,9 @@ Consider using the following metrics to quantify the business requirements.
 
 ## Key design strategies
 
-**Reliability targets represent the desired quality goal of a workload**, as promised to its users and its business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets. 
+**Reliability targets represent the desired quality goal of a workload**, as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets. 
 
-- **Availability targets**. Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate availability targets for the end-to-end user experience. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+- **Availability targets**. Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate whether targets for the end-to-end user experience and business processes were acheived. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
 
 - **Recovery targets**. Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
@@ -54,7 +54,7 @@ Stakeholders **set estimates for user experience**, which can comprise several f
 
 For the workload owner, **objective setting exercises are driven by financial goals** where business requirements are mapped to measurable metrics. The goal is to identify a set of factors that influence the user experience and define their targets, which reflect the  quality of experience for successful workload usage.
 
-For the workload architect, **SLOs shpuld considered the main driver for many technical decisions**. For example,
+For the workload architect, **SLOs should considered the main driver for many technical decisions**. For example:
 
 - Serve as a critical input into architectural decisions when you consider additional dependencies.
 - Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on reliability, new feature development, and other task.
@@ -65,7 +65,7 @@ For the workload architect, **SLOs shpuld considered the main driver for many te
 >
 > It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs may refer to similar information, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether SLA terms are met or violated by using metrics, such as uptime commitments. 
 >
-> If SLOs are not met, organizations must react quickly to mitigate the possible outcomes of the failed SLA. Therefore, the workload's SLO must always be higher than its declared SLA to avoid negative consequences. TODO Example is opposite?
+> SLOs and SLAs share a business relationship and are independently controlled. If the SLA serves as a business tactic, it may be intentionally set higher based on goals identified by business owners. Conversely, SLOs can be higher. An example is mission-critical applications. If SLOs aren't met, organizations must react quickly to mitigate the negative consequences of the failed SLA. The [example](#example) shown in this article, sets a higher SLA to support business goals. 
 >
 > Cloud platform providers publish SLAs on their offerings. The SLAs should be part of the SLO calculation when setting targets and shouldn't be used as-is without understanding the scope of coverage for the SLA. For more information, see [Assess the impact of Microsoft SLAs](#assess-the-impact-of-microsoft-slas).
 
@@ -84,6 +84,12 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
 |<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services.<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** big enough to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
+
+#### SLO scope
+
+SLOs can be defined at different levels within your system. You might set them per application, workload, or even specific flows within a workload. This granularity allows you to tailor SLOs based on the criticality of each component.
+
+In SaaS solutions, measuring SLOs per customer is valuable because each customer's experience matters. Consider cases where customers receive different infrastructure resources provided in their own segments. For such cases a system-wide SLO that aggregates all resources across customer segments might not make sense. Instead, measure SLOs that align with each customer's specific context.
 
 #### Define composite SLO targets
 
@@ -134,24 +140,19 @@ So, if your workload relies on deployment slots, you cannot derive your SLO sole
 
 Let's study another example. What does it mean for Azure Front Door to be available 99.99%? To achieve this, your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn't guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
 
-### Multi-region targets - TODO
+### Multi-region targets
+
+From a reliability perspective, multi-region deployments use redundant copies as way to mitigate the risk of regional outage or degraded performance in a region. This design choice, when properly designed, can improve SLOs in terms of adding a secondary region for failover purposes.
+
+There are two main use cases: 
+
+- High availability, where load is distributed across regions for additional capacity. The workload users aren't pinned to a region and the entire system's performance contributes to the SLO.
+
+- Bulkhead pattern, where the users are segmented by pinning them to specific regions. In such cases, treat multi-region deployments equal to having separate deployments in each region and measure SLOs per-region. 
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Is the risk reduction worth the added complexity? Multi-region also introduces operational complexities, such as coordinating deployments, ensuring data consistency, handling latency, and others. Those operations are significant during recovery. Teams should weigh these complexities against the gains in resilience.
 
 Pay attention to how much redundancy you need to meet high SLOs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
-
-For multi-region deployments, the composite SLO is calculated as follows:
-
-- *N* is the composite SLA for the application that's deployed in one region.
-
-- *R* is the number of regions where the application is deployed.
-
-The expected chance that the application fails in all regions at the same time is ((1 − N) \^ R). For example, if the hypothetical single-region SLA is 99.95 percent:
-
-- The combined SLA for two regions = (1 − (1 − 0.9995) \^ 2) = 99.999975 percent
-
-- The combined SLA for four regions = (1 − (1 − 0.9995) \^ 4) = 99.999999 percent
-
-Defining proper SLOs takes time and careful consideration. Business stakeholders should understand how key customers use the app. They should also understand the reliability tolerance. This feedback should inform the targets.
-
 
 ### Recovery metrics
 
@@ -207,7 +208,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
     |Azure Front Door| 99.99% for successful HTTP GET operations. |Caching, rules engine.|99.98%|
     |Azure Container App| 99.95% based on deployed apps that are reachable by the built-in ingress.| Auto scaling, token store capabilities. |99.95%|
     |SQL Managed Instance|99.99% based on connection to the SQL Server instance| Performance, data retention.|99.8%| 
-    |Azure Private Link|99.99% based on TODO|TODO| 99.99%|
+    |Azure Private Link|99.99% based on whole minutes when network traffic wasn't accepted by the private endpoint or didn't flow between that endpoint and the Private Link service.|Individual failures lasting less than one minute.| 99.99%|
 
     The adjustment is based on several factors that are solely dependent on the workload team's promise to their objectives. A factor could be confidence in platform's capability that's based on experience. For example, for Container App and Private Link, the team felt comfortable in taking the SLA value as-is. 
 
@@ -227,15 +228,13 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
 - **Resource and application configuration SLO**. The team recognizes that cloud resources and application code must be properly configured. This includes setting up auto scaling rules, deploying NSG rules, and selecting the correct size SKUs. To account for configuration errors, they budget 10 minutes of monthly downtime, which is about 99.98%.
 
-    > Composite SLO based on configuration availability: 99.98% per month.
+    > Composite SLO based on configuration availability: 99.95% per month.
 
 - **Operations SLO**. The workload team has developed good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint. 
 
-    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates and DNS changes. They budget 20 minutes of monthly downtime, which is approximately 99.98% availability.
+    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential down time caused because of emergency fixes. They budget 20 minutes of monthly downtime, which is approximately 99.98% availability.
 
-    They primarily use Azure Pipelines, which have a 99.9% availability SLA. This might be a contributing factor because Azure Pipelines unavailability could delay production issue remediation.
-
-    > Composite SLO based on routine operations availability: 99.95% per month. TODO how?
+    > Composite SLO based on operations availability: 99.95% per month. 
 
 - **External dependencies SLO**. The team has already considered SQL Managed Instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
 
@@ -265,7 +264,7 @@ To meet the SLO target of allowing only 4 hours of unavailability per month, the
 
 #### Complex SLO
 
-The application's core user flows must not only be available but also competitively responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. TODO: Do we include this in Application SLO? 
+The application's core user flows must not only be available but also usably (or even competitively) responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. 
 
 
 ## Related links
