@@ -199,7 +199,7 @@ Here are some components that have been chose to illustrate the concept of SLO d
 - **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload. 
 -  **Azure Private Link** provides private connectivity between Azure Front Door and the Azure Container Apps deployments. The SQL Managed Instance is also exposed to the application through a private endpoint.
 
-The API team has defined an initial service-level objective (SLO) target for critical flows in the application. They have adopted the strategy described in [Factors that influence SLOs](#factors-that-influence-slos), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows do not cover 100% of the code or data access. Here are the influencing factors.
+The API team has defined an initial service-level objective (SLO) target for critical flows in the application. They have adopted the strategy described in [Factors that influence SLOs](#common-slos-and-influencing-factors), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows do not cover 100% of the code or data access. Here are the influencing factors.
 
 ### Composite SLO calculation
 
@@ -224,7 +224,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
 - **Application code SLO**. The team acknowledge that bugs in their application code or stored procedures can affect system availability, and they allocate one hour of monthly downtime to account for code-related errors. 
 
-    They use common downtime percentiles, given in the [Measure targets](#measure-targets) section, to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
+    They use common downtime percentiles, given in the [Measure targets](#define-composite-slo-targets) section, to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
 
     > Composite SLO based on code and data availability: 99.86% per month.
 
