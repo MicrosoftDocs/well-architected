@@ -33,9 +33,11 @@ Consider using the following metrics to quantify the business requirements.
 
 ## Key design strategies
 
-**Reliability targets represent the desired quality goal of a workload**, as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets. 
+**Reliability targets represent the desired quality goal of a workload**, as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets but performance targets should be included in reliability targets. 
 
 - **Availability targets**. Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate whether targets for the end-to-end user experience and business processes were acheived. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
+
+- **Correctness targets**. Correctness targets ensure that workloads perform their functions as designed and with consistent quality. Measurement of correctness involves quantifying the expected behavior in similar units as other targets so that they can rolled up to a unified objective score.
 
 - **Recovery targets**. Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
@@ -232,7 +234,10 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
 - **Operations SLO**. The workload team has developed good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint. 
 
-    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential down time caused because of emergency fixes. They budget 20 minutes of monthly downtime, which is approximately 99.98% availability.
+    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential downtime caused because of emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.98% availability.
+
+    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day.
+To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours.  This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
 
     > Composite SLO based on operations availability: 99.95% per month. 
 
@@ -247,6 +252,8 @@ The team has availability percentages for various factors (99.68, 99.86, 98.98, 
 |The overall composite SLO target is set at 99.45%, equivalent to approximately 4 hours of downtime per month. |
 |---|
 
+To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly address availability issues. 
+
 ### Workload SLA
 
 The workload team's legal and finance departments decided to set the SLA for the workload at 99.9% availability per month, exceeding the SLO target of 99.45%. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment. 
@@ -254,15 +261,7 @@ The workload team's legal and finance departments decided to set the SLA for the
 |SLA for the workload at 99.9% availability per month. |
 |---|
 
-### Maintenance window
-
-The team initially assumes 24/7 availability for their ticketing API. However, in practice, the API is mostly unused for about 4 hours daily. If they implement a daily 3-hour maintenance window, they can limit operational tasks within that time. This approach would lead to a higher SLO, but it would only be measured during non-maintenance window periods. Currently, they've chosen to start without factoring in maintenance windows. 
-
-#### Supportability
-
-To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly address availability issues. 
-
-#### Complex SLO
+#### Correctness SLO
 
 The application's core user flows must not only be available but also usably (or even competitively) responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. 
 
