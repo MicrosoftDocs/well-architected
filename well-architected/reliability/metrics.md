@@ -85,7 +85,7 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
-|<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services.<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** sufficent to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
+|<br>▪ Does it expose **request/response API?**<br>▪ Does it have **query APIs**?<br>▪ Is it a **compute** component?<br>▪ Is it a job processing component?|<br>▪ **Control/management plane access** for public-facing Azure services.<br>▪ **Data plane access** for instance, CRUD (create, read, update, delete) operations.|<br>▪ Does your **release process** involve downtime?<br>▪ What's the likelihood of **introducing bugs**? If the workload integrates with other systems, there may be integration bugs that you need to consider.<br>▪ How do **routine operations**, for instance, patching, impact the availability target? Have you factored in third-party dependencies?<br>▪ Is your **staffing** sufficient to support 24/7 emergency and emergency backup on call rotation?<br>▪ Does the application have **noisy neighbors** (outside your scope of control) that could potentially cause disruptions?|
 
 #### SLO scope
 
@@ -144,7 +144,7 @@ Let's study another example. What does it mean for Azure Front Door to be availa
 
 ### Multi-region targets
 
-From a reliability perspective, multi-region deployments is an implementation of the principle of redundancy. The goal is to mitigate the risk of regional outage or degraded performance in a region. This strategy, when properly designed, can improve SLOs in terms of adding a secondary region for failover purposes.
+From a reliability perspective, multi-region deployment is an implementation of the principle of redundancy. The goal is to mitigate the risk of regional outage or degraded performance in a region. This strategy, when properly designed, can improve SLOs in terms of adding a secondary region for failover purposes.
 
 There are two main use cases: 
 
