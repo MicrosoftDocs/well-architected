@@ -44,6 +44,7 @@ Maybe: don't expect your MVP architecture to scale indefinitely. Plan to redesig
 |Design principle|Considerations|
 |---|---|
 |**Security is an ongoing process**|...|
+|**Adopt governance early**|...|
 |**Follow a cloud security baseline from day 1**|...| Even if your customers today are relaxed, assume you will eventually get customers who want to audit you. Make your life easier  by doing things right from the start - it's not much work if you do it early and often.|
 |**Use explicit ingress and egress points**|Avoid things like giving direct DB access to customers. Have defined integration points. Identify and protect all endpoints|
 |**Use least privilege**|...|
