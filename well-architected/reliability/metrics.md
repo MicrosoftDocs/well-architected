@@ -131,7 +131,7 @@ Here are some commonly used percentiles and the estimated time of noncompliance 
 >
 > When creating composite SLOs for different flows, consider their varying criticality and, or relevancy. Flows may have components that are deemed as noncritical and omitted from calculations. The justification is based on whether their brief unavailability impacts the customer experience. In some cases, a component may not be relevant to the use case considered for the SLO. These can also be omitted from the calculation.
 >
-> The same principle applies to operations. Certain operations might introduce risk to or knowingly impact the SLO while others are insignificant. The decision should be explicit and built on consensus.
+> The same principle applies to operations. Certain operations might introduce risks or knowingly impact the SLO while others are insignificant. The decision should be explicit and built on consensus.
 >
 > For an illustrative example about how to define and measure SLO and SLIs, see the [**Example**](#example) section.
 
