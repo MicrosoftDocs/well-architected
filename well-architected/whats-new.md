@@ -4,7 +4,7 @@ description: Find out about recent updates and new documentation in the Azure We
 author: ckittel
 ms.author: chkittel
 ms.date: 07/03/2024
-ms.topic: conceptual
+ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
