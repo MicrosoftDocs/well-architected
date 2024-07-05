@@ -39,7 +39,7 @@ Consider using the following metrics to quantify the business requirements.
 
 - **Correctness targets**. Correctness targets ensure that the workload performs its functions as-designed and with consistent quality. Measurement of correctness involves quantifying the expected behavior in similar units as other targets so that they can be rolled up to a unified objective score.
 
-- **Recovery targets**. Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
+- **Recovery targets**. Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics, which quantify the effectiveness of your plans and testing for business continuity and disaster recovery. 
 
 To set reliability targets, broad requirements must be defined first. Business stakeholders should drive those targets basing it on the desired end user experience. Technical experts help the stakeholders **assign realistic numerical values** that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic targets.
 
@@ -59,29 +59,31 @@ For the workload owner, **objective setting exercises are driven by financial go
 For the workload architect, **SLOs should be considered as the main driver for many technical decisions**. SLOs can,
 
 - Serve as a critical input into architectural decisions when you consider additional dependencies.
-- Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on reliability, new feature development, and other task.
+- Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. Also help the workload team prioritize efforts on improving reliability and new feature development.
 - Act as a primary signal for deployment operations, driving automated rollback if issues occur, and providing validation that changes achieved the expected user experience improvement.
-- Speed up remediation by focusing objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
+- Speed up remediation and recovery by focusing on objectives, drive automated notification of issues to users, and build trust between teams of the organization, who are responsible for the SLO.
     
 > [!CAUTION]
 >
-> It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs might show similar data, their intent is different. An SLA is a formal contract between an organization and its customers that has financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether the potential downtime is within the tolerable limits. 
+> It's important to distinguish between Service Level Agreements (SLAs) and Service Level Objectives (SLOs). Although SLAs and SLOs might use or even present similar data, their intent is different. An SLA is a formal contract, between an organization and its customers, which has direct financial and legal implications if the organization fails to deliver on the promise. SLOs are used to evaluate whether the potential downtime is within the tolerable limits. 
 >
-> SLOs and SLAs share a business relationship and should be independently controlled. If the SLA serves as a business tactic, it may be intentionally set to a higher value based on the goals identified by the business owners. Conversely, SLOs can be higher. An example is class of workloads that cover mission-critical applications. If SLOs aren't met, organizations must react quickly to mitigate the negative consequences of the failed SLA. The [example](#example) shown in this article, sets a higher SLA to support business goals. 
+> SLOs and SLAs share a business relationship and should be independently controlled. If the SLA serves as a business tactic, it may be intentionally set to a higher value based on the goals identified by the business owners. Conversely, SLOs can be higher. Consider mission-critical workloads as an example. This class of workload can't afford longer downtimes because the consequent impact is significant, which could be financial loss and even loss of human safety. So, the SLOs typically target 99.999% uptime (commonly referred to as '5 9s'). If those targets aren't met, organizations must react quickly to mitigate failures and prevent the outcomes of the failed SLA.
 >
-> Cloud platform providers publish SLAs on their offerings. The SLAs should considered as part of the SLO calculation but shouldn't be used as-is without understanding the scope of coverage for the SLA. For more information, see [Assess the impact of Microsoft SLAs](#assess-the-impact-of-microsoft-slas).
+> The [example](#example) shown in this article, sets a higher SLA to support business goals. 
+>
+> Cloud platform and technology providers publish SLAs on their offerings. The SLAs should considered as part of the SLO calculation but shouldn't be used as-is without understanding the scope of coverage for the SLA. For more information, see [Assess the impact of Microsoft SLAs](#assess-the-impact-of-microsoft-slas).
 
 #### Common SLOs and influencing factors
 
 Every SLO targets a specific quality criteria. Consider these common SLOs for reliability. This list isn't exhaustive. Add SLOs based on your business requirements. 
 
-- **Success rate** measures success of requests and that not every request returns an error.
-- **Latency** measures the time elapsed between when a request for an operation is initiated and returned to the caller so that it can make use of the returned information.
-- **Capacity** measures the number of throttling-based responses to caller when capacity is available, and also when there's no capacity available.
+- **Success rate** measures success of requests and processes relative to those that return an error or fail in their task.
+- **Latency** measures the time elapsed between when a request for an operation is initiated and the result is available or the process is complete.
+- **Capacity** measures measures concurrent usage, for example by using the number of throttling-based responses.
 - **Availability** measures uptime from the perspective of users. 
-- **Throughput** measures a minimum data transfer rate over a time window, expressed in kilobytes per second.
+- **Throughput** measures a minimum data transfer rate over a time window, as a data-rate unit (such as kbit/s or Mbit/s) or units of work for a time period (such as, 100 documents per minute).
 
-**Have a good understanding of the scenarios and tolerances** for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaluating the utility of the workload component: 
+Have a good understanding of the scenarios and tolerances for your workload on Azure. Both Azure services and application components have a significant impact on the workload SLO. The overall SLO should be derived by combining the responses from this table. These questions are meant to serve as examples for evaluating the utility of the workload component:
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
@@ -89,9 +91,9 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 
 #### SLO scope
 
-SLOs can be defined at different levels within your system. They might be set **per application, per workload, or even specific flows** within a workload. This granularity allows you to tailor SLOs based on the criticality of each component.
+SLOs can be defined at different levels within your system. They might be set per application, per workload, or even specific flows within a workload. This granularity allows you to tailor SLOs based on the criticality of each component.
 
-In SaaS solutions, measuring SLOs per customer is valuable because each customer's experience matters. Suppose customers receive different infrastructure resources that are provided in their own segments. For such cases, a system-wide SLO that aggregates all resources across customer segments might not make sense. Instead, measure SLOs that align with each customer's specific context.
+In SaaS solutions, measuring SLOs per customer is valuable because each customer's experience matters. Suppose customers receive different infrastructure resources that are provided in their own segments. For such cases, a system-wide SLO that aggregates all resources across customer segments might not make sense. Instead, measure SLOs that align with each customer's specific context. For more information see, [Tenancy models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenancy-models).
 
 #### Define composite SLO targets
 
@@ -99,21 +101,21 @@ SLOs must be **measurable** and **measured within a observability window**.
 
 If an SLO can be measured in metrics collected from the system, the calculation should be automated. However, if the contributing factors are nuanced, it may be harder to rely on automation. 
 
-SLOs are commonly expressed as a percentage, such as 99.9, 99.95, or 99.995 for mission-critical workloads. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
+SLOs are commonly expressed as percentage values, such as 99.9, 99.95, or 99.995. However, SLOs can also be a statement. Combine both approaches to arrive at a numerical value that can be calculated through metrics emitted by the system and also cover other nuanced factors.
 
 **SLO is a correlation or composite of measurable indicators** to determine what's acceptable, and otherwise. The team should be clear on what is measured, how it's measured, and from what perspective it's measured. Using **Service Level Indicators (SLIs)** is a common way to standardize targets from a set of metrics. 
 
 SLIs represent a quantitative measurement of an aspect of a workload component that rolls up to the SLO target. It's typically a metric that can be collected from the component whether that's part of the platform or application. **Different types of components** emit SLIs that are relevant to them. When deciding on which SLIs to include, reflect on the factors that influence SLO.
 
-For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren't applicable to continuous compute environments such as VMs, scale sets, or Azure Batch. 
+For instance, if you want to calculate the SLO of a flow that requires the user to interact with a component through response/request API, the SLIs would require measuring server latency and time to process requests. On the other hand, throughput and error rates aren't applicable to continuous compute environments such as VMs, scale sets, or Azure Batch.
 
 **Type of interaction** is a significant contributing factor. Control plane access should take into consideration the error rate and latency indicators for synchronous API responses and for long-running operations, such as resource creation, deletion, and so on. Data plane access depends the set of data plane APIs for interacting with your service, each with SLO targets. 
 
 An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. They're also represented in percentiles. To calculate the percentage, start by estimating the potential downtime. Then, convert the allowable downtime to a percentage of the total time period, weekly, monthly, quarterly, yearly. Subtract that result from 100%.
 
-Here are some commonly used percentiles and the estimated downtimes. 
+Here are some commonly used percentiles and the estimated time of non-compliance to the expected availability. 
 
-|Objective  |Downtime per week  |Downtime per month  |Downtime per year  |
+|Objective  |Non-compliance per week  |Non-compliance per month  |Non-compliance per year |
 |---------|---------|---------|---------|
 |99%      | 1.68 hours        |  7.2 hours       | 3.65 days        |
 |99.9%      |  10.1 minutes       | 43.2 minutes         | 8.76 hours        |
@@ -127,7 +129,8 @@ Here are some commonly used percentiles and the estimated downtimes.
 > Composite SLO value is a product distribution of the contributing factors. For example, 
 > Composite SLO  = 99.95 % × 99.99999 % = \~99.95 %
 >
-> When creating composite SLOs for different flows, consider their varying criticality. Noncritical flows may have components that can be omitted from calculations since brief unavailability doesn't impact the customer experience. The same principle applies to operations. Certain critical operations might impact the SLO while others are insignificant. The decision should be explicit and built on consensus.
+> When creating composite SLOs for different flows, consider their varying criticality and, or relevancy. Flows may have components that are deemed as noncritical and omitted from calculations. The justification is based on whether their brief unavailability impacts the customer experience. In some cases, a component may not be relevant to the use case considered for the SLO. These can also be omitted from the calculation.
+>The same principle applies to operations. Certain critical operations might impact the SLO while others are insignificant. The decision should be explicit and built on consensus.
 >
 > For an illustrative example about how to define and measure SLO and SLIs, see the [**Example**](#example) section.
 
@@ -136,7 +139,7 @@ Here are some commonly used percentiles and the estimated downtimes.
 
 Microsoft Service Level Agreement (SLA) provides insight into availability of areas that Microsoft commits to. **SLAs don't guarantee an offering as a whole**. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
 
-For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't guarantee availability of features such as Easy Auth. Similarly, slot switching behavior isn't covered by the SLA. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform. 
+For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't cover financially-backed guarantee on the availability of features such as Easy Auth or slot switching. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform.
 
 So, if your workload relies on deployment slots, you can't derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
 
@@ -158,9 +161,9 @@ Pay attention to how much redundancy you need to meet high SLOs. For example, Mi
 
 ### Recovery metrics
 
-Recovery targets correspond to RTO, RPO, MTTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
+Definitions for realistic recovery targets, RTO, RPO, MTTR, and MTBF metrics, rely on your [failure mode analysis](failure-mode-analysis.md) and your plans and testing for business continuity and [disaster recovery](disaster-recovery.md). In defining these targets, factor in the platform-provided recovery guarantees. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
-Definitions for realistic recovery targets rely on your [failure mode analysis](failure-mode-analysis.md) and your plans and testing for business continuity and [disaster recovery](disaster-recovery.md). Before you finish this work, discuss aspirational targets with stakeholders and ensure that your architecture design supports the recovery targets to the best of your understanding. Clearly communicate to stakeholders that any flows or entire workloads that aren't thoroughly tested for recovery metrics shouldn't have guaranteed SLAs. Make sure that stakeholders understand that recovery targets can change over time as workloads are updated. The workload can become more complex as customers are added or as you adopt new technologies to improve the customer experience. These changes can increase or decrease your recovery metrics.
+Before you finish this work, discuss aspirational targets with stakeholders and ensure that your architecture design supports the recovery targets to the best of your understanding. Clearly communicate to stakeholders that any flows or entire workloads that aren't thoroughly tested for recovery metrics shouldn't have guaranteed SLAs. Make sure that stakeholders understand that recovery targets can change over time as workloads are updated. The workload can become more complex as customers are added or as you adopt new technologies to improve the customer experience. These changes can increase or decrease your recovery metrics.
 
 > [!NOTE]
 > MTBF can be challenging to define and guarantee. Platforms as a service (PaaS) or software as a service (SaaS) can fail and recover without any notification from the cloud provider, and the process can be completely transparent to you or your customers. If you define targets for this metric, cover only components that are under your control.
@@ -234,7 +237,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
 - **Operations SLO**. The workload team has developed good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint. 
 
-    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential downtime caused because of emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.98% availability.
+    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential downtime caused because of emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.95% availability.
 
     Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day.
 To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours.  This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
@@ -250,18 +253,18 @@ To reduce the risk of unavailability, the team can schedule maintenance tasks du
 |The overall composite SLO target is set at 99.45%, equivalent to approximately 4 hours of downtime per month. |
 |---|
 
-To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly address availability issues. 
+To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly start on recovery steps to address SLO issues.
 
 ### Workload SLA
 
 |SLA for the workload at 99.9% availability per month. |
 |---|
 
-The workload team's legal and finance departments decided to set the SLA for the workload at 99.9% availability per month, exceeding the SLO target of 99.45%. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment. 
+The workload team's legal and finance departments decided to set the SLA for the workload at 99.9% availability per month, exceeding the SLO target of 99.45%. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment.
 
 #### Correctness SLO
 
-The application's core user flows must not only be available but also usably (or even competitively) responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. 
+The application's core user flows must not only be available but also usably (or even competitively) responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated only during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. 
 
 
 ## Related links
