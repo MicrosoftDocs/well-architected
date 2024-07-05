@@ -79,7 +79,7 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 
 - **Success rate** measures success of requests and processes relative to those that return an error or fail in their task.
 - **Latency** measures the time elapsed between when a request for an operation is initiated and the result is available or the process is complete.
-- **Capacity** measures measures concurrent usage, for example by using the number of throttling-based responses.
+- **Capacity** measures concurrent usage, for example by using the number of throttling-based responses.
 - **Availability** measures uptime from the perspective of users. 
 - **Throughput** measures a minimum data transfer rate over a time window, as a data-rate unit (such as kbit/s or Mbit/s) or units of work for a time period (such as, 100 documents per minute).
 
@@ -93,7 +93,7 @@ Have a good understanding of the scenarios and tolerances for your workload on A
 
 SLOs can be defined at different levels within your system. They might be set per application, per workload, or even specific flows within a workload. This granularity allows you to tailor SLOs based on the criticality of each component.
 
-In SaaS solutions, measuring SLOs per customer is valuable because each customer's experience matters. Suppose customers receive different infrastructure resources that are provided in their own segments. For such cases, a system-wide SLO that aggregates all resources across customer segments might not make sense. Instead, measure SLOs that align with each customer's specific context. For more information see, [Tenancy models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenancy-models).
+In SaaS solutions, measuring SLOs per customer is valuable because each customer's experience matters. Suppose customers receive different infrastructure resources that are provided in their own segments. For such cases, a system-wide SLO that aggregates all resources across customer segments might not make sense. Instead, measure SLOs that align with each customer's specific context. For more information, see [Tenancy models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenancy-models).
 
 #### Define composite SLO targets
 
@@ -113,9 +113,9 @@ For instance, if you want to calculate the SLO of a flow that requires the user 
 
 An indicator isn't useful unless you **set a threshold**. A good SLI helps you identify when an SLO is at risk of being breached. They're also represented in percentiles. To calculate the percentage, start by estimating the potential downtime. Then, convert the allowable downtime to a percentage of the total time period, weekly, monthly, quarterly, yearly. Subtract that result from 100%.
 
-Here are some commonly used percentiles and the estimated time of non-compliance to the expected availability. 
+Here are some commonly used percentiles and the estimated time of noncompliance to the expected availability. 
 
-|Objective  |Non-compliance per week  |Non-compliance per month  |Non-compliance per year |
+|Objective  |Noncompliance per week  |Noncompliance per month  |Noncompliance per year |
 |---------|---------|---------|---------|
 |99%      | 1.68 hours        |  7.2 hours       | 3.65 days        |
 |99.9%      |  10.1 minutes       | 43.2 minutes         | 8.76 hours        |
@@ -139,11 +139,11 @@ Here are some commonly used percentiles and the estimated time of non-compliance
 
 Microsoft Service Level Agreement (SLA) provides insight into availability of areas that Microsoft commits to. **SLAs don't guarantee an offering as a whole**. When evaluating SLAs, have a good understanding of the coverage provided around the published percentile.
 
-For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't cover financially-backed guarantee on the availability of features such as Easy Auth or slot switching. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform.
+For instance, consider Azure App Service Web Apps. It's considered available when it returns a 200 OK status in a given use case. Within that specific context and timeframe, it doesn't cover financially backed guarantee on the availability of features such as Easy Auth or slot switching. Areas that aren't mentioned explicitly in the agreement should be considered as best-effort by the platform.
 
 So, if your workload relies on deployment slots, you can't derive your SLO solely from the Azure App Services SLA. As a workload team, it becomes necessary to hedge and predict the uptime availability. However, this prediction can be uncertain, which is why closely tying your SLO to the platform SLA can be problematic.
 
-Let's study another example. What does it mean for Azure Front Door to be available 99.99%? Your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn't guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
+Let's study another example. What does it mean for Azure Front Door to be available 99.99%? Your design must adhere to specific criteria published in the agreement. Your backend must include storage, A GET operation should retrieve a file of at least 50 KB in size, and you need agents deployed across multiple spots and at least five geographically diverse locations. This narrow use case of Front Door doesn't guarantee features like caching, routing rules, or web application firewall. These aspects fall outside the scope of the SLA.
 
 ### Multi-region targets
 
@@ -239,8 +239,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
     Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential downtime caused because of emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.95% availability.
 
-    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day.
-To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours.  This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
+    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day. To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours.  This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
 
     > Composite SLO based on operations availability: 99.95% per month. 
 
@@ -262,7 +261,7 @@ To meet the SLO target of allowing only 4 hours of unavailability per month, the
 
 The workload team's legal and finance departments decided to set the SLA for the workload at 99.9% availability per month, exceeding the SLO target of 99.45%. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment.
 
-#### Correctness SLO
+### Correctness SLO
 
 The application's core user flows must not only be available but also usably (or even competitively) responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated only during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. 
 
