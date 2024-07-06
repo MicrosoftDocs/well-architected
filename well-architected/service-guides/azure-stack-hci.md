@@ -297,7 +297,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - (Azure Stack HCI platform architecture) **Consider using the Monitor for Resilient File System (ReFS) deduplication and compression feature** after you enable Insights for the Azure Stack HCI cluster. Determine whether you should use this feature based on your workload storage usage and capacity requirements. This feature provides monitoring for ReFS deduplication and compression savings, performance impact, and jobs. For more information, see [Monitor ReFS deduplication and compression](/azure-stack/hci/manage/monitor-features#monitor-refs-deduplication-and-compression).
 >
->   As a minimum requirement, plan to reserve `1 x physical node (N+1)` worth of capacity across the cluster to ensure that cluster nodes can be drained when they perform updates via Update Management. Consider reserving `2 physical nodes (N+2)` nodes work of capacity for business-critical or mission-critical use cases.
+>   As a minimum requirement, plan to reserve `1 x physical nodes (N+1)` worth of capacity across the cluster to ensure that cluster nodes can be drained when they perform updates via Update Management. Consider reserving `2 physical nodes (N+2)` nodes work of capacity for business-critical or mission-critical use cases.
 >
 
 ### Recommendations
