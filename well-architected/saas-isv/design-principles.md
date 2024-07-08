@@ -26,7 +26,7 @@ ms.topic: conceptual
 |---|---|
 |**Global scale enables global performance**|If you have customers globally, make sure to give them a good experience - multiregion deployments or accelerated traffic routing. Use stamps early to make this easier. Multiregion is good for other reasons too.|
 |**Model expected scale**|Think about your best, average, and worst case for growth. Ask your sales team for their realistic projections. Plan your scaling strategies so that it's flexible enough to accommodate the range of possibilities.|
-|**Understand scale points**||Where are you likely to flex? Common triggers are number of customers (tenants), number of users, transactions per user. Understand how they change as your business grows, and how changes in the values are reflected in your architecture.|
+|**Understand scale points**|Where are you likely to flex? Common triggers are number of customers (tenants), number of users, transactions per user. Understand how they change as your business grows, and how changes in the values are reflected in your architecture.|
 |**Design for scale-out**|Scaling up means you hit limits. Scaling out can be effectively unbounded - but not everything scales out. Consider deployment stamps for scaling your solution as a unit, which helps to avoid limits in scaling resources up.|
 
 ## Operational Excellence
