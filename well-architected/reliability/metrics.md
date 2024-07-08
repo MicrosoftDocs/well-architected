@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[RE:04](checklist.md)| Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like. |
 |---|---|
 
-This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. Reliability targets are derived through workshop exercises with business stakeholders. The targets are refined through monitoring and testing. 
+This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. Reliability targets are derived through workshop exercises with business stakeholders. The targets are refined through monitoring and testing.
 
 With your internal stakeholders, set realistic expectations for workload reliability so that stakeholders can communicate those expectations to customers through contractual agreements. Realistic expectations also help stakeholders understand and support your architectural design decisions and know that you're designing to optimally meet the targets you agreed on.
 
@@ -30,10 +30,9 @@ Consider using the following metrics to quantify the business requirements.
 |Recovery time objective (RTO)     | The maximum acceptable time that an application can be unavailable after an incident.        |
 |Recovery point objective (RPO)     | The maximum acceptable duration of data loss during an incident.        |
 
-
 ## Key design strategies
 
-**Reliability targets represent the desired quality goal of a workload**, as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets but performance targets should be included in reliability targets. 
+**Reliability targets represent the desired quality goal of a workload**, as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets but performance targets should be included in reliability targets.
 
 - **Availability targets**. Measurement targets for availability define the quality expectations of a workload for it to remain accessible and operational, below which the workload would be considered unreliable to its users. Service Level Objectives (SLOs) are a standard way to evaluate whether targets for the end-to-end user experience and business processes were achieved. SLOs are defined by business stakeholders with help from technical stakeholders to keep the objectives realistic within the given constraints.
 
@@ -46,7 +45,6 @@ To set reliability targets, broad requirements must be defined first. Business s
 Based on the business requirements, it's important to [identify and score user and system flows](identify-flows.md) by how critical they're to the requirements. Use the values to drive the design of your workload in terms of architecture, review, testing, and incident management operations. Reliability targets must be defined for those flows. Failure to meet the targets affects the business beyond the tolerance level.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
-
 
 ### SLO targets
 
@@ -185,23 +183,22 @@ The Azure SLA includes procedures for obtaining a service credit if the SLA isn'
 
 Explore the [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) provided by Azure Monitor for your visualization system.
 
-
 ## Example
 
-Contoso Ticketing is designing a new mobile experience for their event ticketing system. Here's the high-level architecture:
+Contoso Ticketing is designing a new mobile experience for their event ticketing system. Here's the high-level architecture.
 
-//TODO: fix the actual image
-
-![alt text](./media/metrics/example-architecture-targets.png)
+:::image type="complex" source="./media/metrics/example-architecture-targets.svg" alt-text="Architecture diagram of a mobile ticketing system hosted in Azure Container Apps":::
+   An architecture diagram with various Azure components. A mobile ticket scanning devices connects to Azure Front Door, which has T L S, WAF policies, and rules. Azure Front Door connects to Azure Container Apps through a Private Link connection. Build Agent VMs connect to Azure DevOps and also to Azure Container Apps and Private Endpoints. A SQL Managed Instance is shown in a box labeled "External team." A Workload observability platform box contains Log Analytics workspace, Azure Application Insights, Azure Managed Graphana, Alerts, and Diagnostics Settings. The icons for Azure D N S, Microsoft Entra I D, Azure Network Security Groups, Azure Key Vault, and Managed Identities are shown as well.
+:::image-end:::
 
 ### Components
 
-Here are some components that have been chosen to illustrate the concept of SLO definition. Notice, there are other components in this architecture that aren't included. For example, even though Key Vault is part of the critical request flow, it isn't part of the response use case. If Key Vault is unavailable, the application will continue to function using secrets that were loaded during startup. However, if the application needs to scale, Key Vault availability becomes critical because new nodes need to be loaded with secrets. In this example, scaling operations aren't considered. Other components have been omitted for brevity. 
+Here are some components that have been chosen to illustrate the concept of SLO definition. Notice, there are other components in this architecture that aren't included. For example, even though Key Vault is part of the critical request flow, it isn't part of the response use case. If Key Vault is unavailable, the application will continue to function using secrets that were loaded during startup. However, if the application needs to scale, Key Vault availability becomes critical because new nodes need to be loaded with secrets. In this example, scaling operations aren't considered. Other components have been omitted for brevity.
 
 - **Azure Front Door** is the single point of entry that exposes an API that's used by end users to send requests.
-- **Azure Container Apps** environment is owned by the workload team and runs business logic for the  application. 
-- **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload. 
--  **Azure Private Link** provides private connectivity between Azure Front Door and the Azure Container Apps deployments. The SQL Managed Instance is also exposed to the application through a private endpoint.
+- **Azure Container Apps** environment is owned by the workload team and runs business logic for the  application
+- **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload.
+- **Azure Private Link** provides private connectivity between Azure Front Door and the Azure Container Apps deployments. The SQL Managed Instance is also exposed to the application through a private endpoint.
 
 The API team has defined an initial service-level objective (SLO) target for critical flows in the application. They have adopted the strategy described in [Factors that influence SLOs](#common-slos-and-influencing-factors), they aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows don't cover 100% of the code or data access. Here are the influencing factors.
 
@@ -213,12 +210,12 @@ The API team has defined an initial service-level objective (SLO) target for cri
     |--|--|--|--|
     |Azure Front Door| 99.99% for successful HTTP GET operations. |Caching, rules engine.|99.98%|
     |Azure Container App| 99.95% based on deployed apps that are reachable by the built-in ingress.| Auto scaling, token store capabilities. |99.95%|
-    |SQL Managed Instance|99.99% based on connection to the SQL Server instance| Performance, data retention.|99.8%| 
+    |SQL Managed Instance|99.99% based on connection to the SQL Server instance| Performance, data retention.|99.8%|
     |Azure Private Link|99.99% based on whole minutes when network traffic wasn't accepted by the private endpoint or didn't flow between that endpoint and the Private Link service.|Individual failures lasting less than one minute.| 99.99%|
 
-    The adjustment is based on several factors that are dependent on the workload team's promise to their objectives. A factor could be confidence in platform's capability based on prior experience. For example, for Container App and Private Link, the team felt comfortable in taking the SLA value as-is. 
+    The adjustment is based on several factors that are dependent on the workload team's promise to their objectives. A factor could be confidence in platform's capability based on prior experience. For example, for Container App and Private Link, the team felt comfortable in taking the SLA value as-is.
 
-    But there are nuanced factors. For example, the team lowered the SLO for SQL Managed Instance value to 99.8% to account for potential failures in their data operations, such as schema changes, taking back ups, and so on. 
+    But there are nuanced factors. For example, the team lowered the SLO for SQL Managed Instance value to 99.8% to account for potential failures in their data operations, such as schema changes, taking back ups, and so on.
 
     The team sets the composite SLO by calculating the impact of individual adjusted SLO values. This value is at 99.72%.
 
