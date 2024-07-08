@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design principles of an ISV workload
 
-- ISVs are different from other users of the cloud because their solution *is* their business. This means that the solution's reliability and security are critical to the health of the company. If the workload is unavailable, the company can't generate revenue.
+- ISVs are different from other users of the cloud because their solution *is* their business. This means that the solution's reliability and security are critical to the health of the company. If the workload is unavailable, the company can't generate revenue; if you experience a major security breach, your entire company might be at risk.
 - At the same time, many ISVs - especially startups - are often resource-constrained. They might not have teams - or even people - dedicated to concerns like cloud architecture, governance, security, or deployment automation. It's common for everyone to be involved in everything. This is coupled with a heavy focus on minimizing all unnecessary costs. Aggressive tradeoffs often have to be made so that the company can get through its next phase of growth.
 - Some ISVs grow rapidly, and the way that you design a solution at a low volume of scale is typically quite different to that at a high scale. This means that architectural flexibility is important. You won't get everything right upfront, so it's important to figure out how you can adapt as you go and grow.
 
@@ -43,12 +43,12 @@ Maybe: don't expect your MVP architecture to scale indefinitely. Plan to redesig
 
 |Design principle|Considerations|
 |---|---|
-|**Security is an ongoing process**|...|
-|**Adopt governance early**|...|
+|**Security is an ongoing process**|You need to constantly re-evaluate your security posture, taking account of the evolving thread landscape, new capabilities and protocols, and new compliance/regulatory requirements.|
+|**Adopt governance early**|Governance is the foundation for good security. How you manage roles, organize resources, put policies in place, etc has a huge impact on your security posture. There's no point adding other security controls if poor governance means someone can just reverse those controls.|
 |**Follow a cloud security baseline from day 1**|...| Even if your customers today are relaxed, assume you will eventually get customers who want to audit you. Make your life easier  by doing things right from the start - it's not much work if you do it early and often.|
 |**Use explicit ingress and egress points**|Avoid things like giving direct DB access to customers. Have defined integration points. Identify and protect all endpoints|
-|**Use least privilege**|...|
-|**Avoid credentials where possible, and protect them where you can't avoid them**|...|
+|**Use least privilege**|Default to a position of the least required permissions, both for human users and for workload identities. Review permissions regularly. Plan for just-in-time elevation for administrative permissions.|
+|**Avoid credentials where possible, and protect them where you can't avoid them**|Treat credentials as a liability. Use managed identities, workload identity federation, and other techniques that minimize the credentials you need to store. Where it's impossible to avoid, protect them with secure cloud-native approaches.|
 
 ## Cost Optimization
 
