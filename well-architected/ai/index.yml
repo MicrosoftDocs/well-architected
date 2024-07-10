@@ -6,6 +6,8 @@ metadata:
   title: AI workload documentation
   description: TBD
   ms.date: 04/15/2024
+  author: PageWriter-MSFT
+  ms.author: prwilk
   ms.topic: conceptual
   ms.service: waf
   ms.subservice: waf-workload-ai
