@@ -222,7 +222,7 @@
 		},
 		{
 			"source_path": "well-architected/cost/design-regions.md",
-			"redirect_url": "/azure/architecture/data-guide/technology-choices/cognitive-services",
+			"redirect_url": "/azure/well-architected/reliability/regions-availability-zones",
 			"redirect_document_id": false
 		},
 		{
