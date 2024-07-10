@@ -4,7 +4,7 @@ description: Learn how IoT components, architecture patterns, design areas, and 
 author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
-ms.topic: overview
+ms.topic: conceptual
 ---
 
 # Overview of IoT workloads
