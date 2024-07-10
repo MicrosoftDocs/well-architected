@@ -6,8 +6,8 @@ ms.author: jhaessler
 ms.topic: conceptual
 ms.date: 05/15/2024
 ms.custom: template-overview
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-workload-oracle
 ---
 
 # Azure Well-Architected Oracle workloads on Azure infrastructure as a service (IaaS)
