@@ -13,7 +13,8 @@ ms.topic: conceptual
 - ISVs are different from other users of the cloud because their solution *is* their business. This means that the solution's reliability and security are critical to the health of the company. If the workload is unavailable, the company can't generate revenue; if you experience a major security breach, your entire company might be at risk.
 - At the same time, many ISVs - especially startups - are often resource-constrained. They might not have teams - or even people - dedicated to concerns like cloud architecture, governance, security, or deployment automation. It's common for everyone to be involved in everything. This is coupled with a heavy focus on minimizing all unnecessary costs. Aggressive tradeoffs often have to be made so that the company can get through its next phase of growth. If you have to take risks, make sure they're calculated risks.
 - Some ISVs grow rapidly, and the way that you design a solution at a low volume of scale is typically quite different to that at a high scale. This means that architectural flexibility is important. You won't get everything right upfront, so it's important to figure out how you can adapt as you go and grow. Don't expect your MVP architecture to scale indefinitely - plan to redesign as you grow.
-- Scary scary - if you don't follow these principles, the effects cascade to your customers. Expect to see significant financial or reputational impact from a loss of trust.
+
+If you don't apply these principles to your design, your business could be at stake. As an ISV, your customers depend on your solution and any problems with your solution can cascade to your customers. Expect to see **significant financial impact**, or **reputational impact from a loss of trust**.
 
 ## Reliability
 
@@ -22,7 +23,7 @@ ms.topic: conceptual
 |**Prioritize availability**|Your solution *is* your business, so you often need to be as highly available as possible. When an ISV has an outage, the effects are often exponential - their customers are affected too, and their customers in turn.|
 |**Be explicit about SLAs that you offer your customers**|When you create financially backed SLAs for your customers, make sure you can meet them and that the components you depend on aren't incompatible with them. Review the composite SLAs for underlying Azure services as part of your SLA design process. Don't make assumptions. Reflect your shared responsibility model in your SLAs.|
 
-TODO tradeoffs
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: TODO.** TODO
 
 ## Performance Efficiency
 
@@ -33,7 +34,7 @@ TODO tradeoffs
 |**Understand scale points**|Where are you likely to flex? Common triggers are number of customers (tenants), number of users, transactions per user. Understand how they change as your business grows, and how changes in the values are reflected in your architecture.|
 |**Design for scale-out**|Scaling up means you hit limits. If you scale out, you can go much further - but not everything scales out. Consider deployment stamps for scaling your solution as a unit, which helps to avoid limits in scaling resources up.|
 
-TODO tradeoffs
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: TODO.** TODO
 
 ## Operational Excellence
 
@@ -44,7 +45,7 @@ TODO tradeoffs
 |**Formalize exceptions or differences**|Define different SKUs where customers have different needs. Avoid custom deployments, configuration, or code for different customers.|
 |**Safely roll out changes**|Use a safe deployment process that enables progressive rollout of changes, with constant monitoring and rollback if a problem is discovered. Use a consistent process for code changes, infrastructure changes, and configuration changes. Control how many versions of your solution are deployed at one time.|
 
-TODO tradeoffs
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: TODO.** TODO
 
 ## Security
 
@@ -59,7 +60,7 @@ TODO tradeoffs
 |**Avoid credentials where possible, and protect them where you can't avoid them**|Treat credentials as a liability. Use managed identities, workload identity federation, and other techniques that minimize the credentials you need to store. Where it's impossible to avoid, protect them with secure cloud-native approaches. Handle customer credentials and secrets with the utmost care.|
 |**Security as an ongoing process**|You need to constantly re-evaluate your security posture, taking account of the evolving thread landscape, new capabilities and protocols, and new compliance/regulatory requirements.|
 
-TODO tradeoffs
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: TODO.** TODO
 
 ## Cost Optimization
 
@@ -70,4 +71,4 @@ TODO tradeoffs
 |**Understand how your costs and revenue are related**|Don't want to accidentally get into a situation where your costs go up but revenue doesn't. e.g. if you add a new feature that offers unlimited free storage, that could cost you; similarly if you charge based on users/seats and have some functionality that isn't tied to users|
 |**Decide on the granularity of cost measurement**|If you need to charge customers based on consumption this is really important. If you don't, consider what is "just enough" measurement to approximate your cost apportionment.|
 
-TODO tradeoffs
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: TODO.** TODO
