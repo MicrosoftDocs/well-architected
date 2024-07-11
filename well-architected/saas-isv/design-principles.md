@@ -23,7 +23,7 @@ If you don't apply these principles to your design, your business could be at st
 |**Prioritize availability**|Your solution *is* your business, so you often need to be as highly available as possible. When an ISV has an outage, the effects are often exponential - their customers are affected too, and their customers in turn.|
 |**Be explicit about SLAs that you offer your customers**|When you create financially backed SLAs for your customers, make sure you can meet them and that the components you depend on aren't incompatible with them. Review the composite SLAs for underlying Azure services as part of your SLA design process. Don't make assumptions. Reflect your shared responsibility model in your SLAs.|
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: TODO.** TODO
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reliability and cost.** Achieving higher reliability often requires deployment of more resources, such as by distributing resources across multiple availability zones or regions. 
 
 ## Performance Efficiency
 
