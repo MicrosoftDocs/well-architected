@@ -70,9 +70,9 @@ With this knowledge, it's essential to consider not only the application infrast
 
 Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/sci).
 
-#### Azure Carbon Optimization
+#### Azure carbon optimization
 
-[Azure Carbon Optimization](/azure/carbon-optimization/overview) is an Azure service that helps you understand the carbon emissions of your cloud workloads. Carbon optimization provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
+[Azure carbon optimization](/azure/carbon-optimization/overview) is an Azure service that helps you understand the carbon emissions of your cloud workloads. Carbon optimization provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
 
 You get granular emissions data within Azure Portal for the last 12 months' usage of all your Azure products and services. You can also view the carbon emissions of your resources by region, subscription, and resource group.
 
