@@ -78,7 +78,7 @@ For devices connected to the cloud, optimize data transmissions to maintain cost
 
 To learn more about Azure IoT devices, see:
  
-- [Overview of Azure IoT device types](/azure/iot-develop/concepts-iot-device-types)
+- [Overview of Azure IoT device types](/azure/iot/concepts-iot-device-types)
 - [Best practices for device configuration within an IoT solution](/azure/iot-hub/iot-hub-configuration-best-practices)
 
 ### Hardware selection
