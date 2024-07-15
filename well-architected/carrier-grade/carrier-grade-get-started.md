@@ -13,10 +13,10 @@ ms.industry: telecommunication
 
 Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry, they're referred to as *carrier-grade systems*.  These systems are developed due to one or more of the following drivers:
 
-- Minimizing loss of life or injury. 
-- Meeting regulatory requirements on reliability to avoid paying fines. 
-- Optimizing service to customers to minimize churn to competitors. 
-- Meeting contractual Service Level Agreements (SLAs) with business or government customers. 
+- Minimizing loss of life or injury.
+- Meeting regulatory requirements on reliability to avoid paying fines.
+- Optimizing service to customers to minimize churn to competitors.
+- Meeting contractual Service Level Agreements (SLAs) with business or government customers.
 
 This series of articles applies the [design methodology for mission-critical workloads](/azure/well-architected/mission-critical/mission-critical-design-methodology) to inform prescriptive guidance for building and operating a highly reliable, resilient, and available telecommunication workload on Azure. 
 
@@ -55,7 +55,7 @@ Experience across a range of mission-critical industries shows that it isn't rea
 
 ### Only building zonal redundancy
 
-Using [Microsoft Azure Availability Zones](/azure/architecture/high-availability/building-solutions-for-high-availability) is the basic choice for reducing the risk of outage due to hardware failure or localized environmental issues. However, it isn't enough to achieve carrier-grade availability, mainly for these reasons: 
+Using [Microsoft Azure Availability Zones](/azure/reliability/availability-zones-overview) is the basic choice for reducing the risk of outage due to hardware failure or localized environmental issues. However, it isn't enough to achieve carrier-grade availability, mainly for these reasons:
 
 - Availability Zones (AZs) are designed so that the network latency between any two zones in a single region is ≤ 2 ms. AZs can't be widely and geographically dispersed. So, the AZs share a correlated risk of failure due to natural disasters, such as flooding or massive power outages, which could disable multiple AZs within a region.
 

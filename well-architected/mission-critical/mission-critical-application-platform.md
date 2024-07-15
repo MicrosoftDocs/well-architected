@@ -286,6 +286,7 @@ Images can get deleted, as a result of, for example, manual error. Container Reg
 If you want to protect the Container Registry instance from deletion, use [resource locks](/azure/azure-resource-manager/management/lock-resources).
 
 ###### Tagged images
+
 [Tagged Container Registry images are mutable by default](/azure/container-registry/container-registry-image-lock#scenarios), which means that the same tag can be used on multiple images pushed to the registry. In production scenarios, this can lead to unpredictable behavior that could affect application uptime.
 
 ###### Identity and access management
