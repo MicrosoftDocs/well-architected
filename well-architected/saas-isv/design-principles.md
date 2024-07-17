@@ -23,7 +23,7 @@ If you don't apply these principles to your design, your business could be at st
 |**Prioritize availability**|Your solution *is* your business, so you often need to be as highly available as possible. When an ISV has an outage, the effects are often exponential - their customers are affected too, and their customers in turn.|
 |**Be explicit about SLAs that you offer your customers**|When you create financially backed SLAs for your customers, make sure you can meet them and that the components you depend on aren't incompatible with them. Review the composite SLAs for underlying Azure services as part of your SLA design process. Don't make assumptions. Reflect your shared responsibility model in your SLAs.|
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reliability and cost.** Achieving higher reliability often requires deployment of more resources, such as by distributing resources across multiple availability zones or regions. Alternatively, some Azure services provide built-in geo-replication or inter-zone replication, but these features often require more costly SKUs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reliability and cost.** Achieving higher reliability often requires deployment of more resources, such as by distributing resources across multiple availability zones or regions. Alternatively, some Azure services provide built-in geo-replication or inter-zone replication, but these features often require more costly SKUs. You might need to make an informed decision on the level of resiliency that your budget permits. If you don't need to meet strict SLAs, look for low-cost opportunities to increase your resiliency posture, such as using availability zones where you can, by backing up data regularly to another physical location, and by using infrastructure as code to quickly redeploy resources during your recovery processes.
 
 ## Performance Efficiency
 
@@ -45,7 +45,7 @@ If you don't apply these principles to your design, your business could be at st
 |**Formalize exceptions or differences**|Define different SKUs where customers have different needs. Avoid custom deployments, configuration, or code for different customers.|
 |**Safely roll out changes**|Use a safe deployment process that enables progressive rollout of changes, with constant monitoring and rollback if a problem is discovered. Use a consistent process for code changes, infrastructure changes, and configuration changes. Control how many versions of your solution are deployed at one time.|
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Operational excellence and complexity.** The automation of management operations can increase your solution's complexity and take time to build. However, for any ISV that is growing, the cost of automation will be amortized and the benefits will increase.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Operational excellence and complexity.** The automation of management operations can increase your solution's complexity and take time to build. At first, the cost of automation might outweigh the advantages, especially when an ISV has only a small number of customers. However, as an ISV grows to a larger numbers of customers, the cost of automation will be amortized and the benefits will increase.
 
 ## Security
 
