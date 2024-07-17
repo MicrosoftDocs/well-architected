@@ -1404,6 +1404,41 @@
 			"source_path": "well-architected/oracle-iaas/decouple-exadata.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/",
 			"redirect_document_id": false
-		}																					
+		},
+		{
+			"source_path": "well-architected/carrier-grade/carrier-grade-design-area-data-model.md",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/carrier-grade/carrier-grade-design-area-fault-tolerance.md",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/carrier-grade/carrier-grade-design-area-health-modeling.md",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/carrier-grade/carrier-grade-design-area-testing.md",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/carrier-grade/carrier-grade-design-principles.md",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/carrier-grade/carrier-grade-get-started.md",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/carrier-grade/index.yml",
+			"redirect_url": "/azure/architecture/browse//",
+			"redirect_document_id": false
+		}							
 	]
 }
