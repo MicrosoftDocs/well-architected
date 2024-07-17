@@ -262,7 +262,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Azure Cosmos DB supports multiple different APIs with differing feature sets, such as SQL, Cassandra, and MongoDB.
   - The first-party Azure Cosmos DB for NoSQL provides the richest feature set and is typically the API where new capabilities will become available first.
 
-- Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/sql-sdk-connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
+- Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/dedicated-gateway#connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
   - Direct mode is only available when using the Azure Cosmos DB for NoSQL and is currently only supported on .NET and Java SDK platforms.
 
 - Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zonal failures within a region.
@@ -492,7 +492,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Evaluate application traffic patterns to select an optimal option for [provisioned throughput types](/azure/cosmos-db/how-to-choose-offer).
   - Consider auto-scale provisioned throughput to automatically level-out workload demand.
 
-- Evaluate Microsoft [performance tips for Azure Cosmos DB](/azure/cosmos-db/performance-tips) to optimize client-side and server-side configuration for improved latency and throughput.
+- Evaluate Microsoft [performance tips for Azure Cosmos DB](/azure/cosmos-db/nosql/performance-tips) to optimize client-side and server-side configuration for improved latency and throughput.
 
 - When using AKS as the compute platform: For query-intensive workloads, select an AKS node SKU that has accelerated networking enabled to reduce latency and CPU jitters.
 
@@ -584,7 +584,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 - There's no additional charge for backup storage for up to 100% of total provisioned server storage.
   - Additional consumption of backup storage is charged according to consumed GB/month.
 
-- Compute costs associated with Azure Database for PostgreSQL can be reduced using either a [Single Server Reservation Discount](/azure/postgresql/concept-reserved-pricing) or [Hyperscale (Citus) Reservation Discount](/azure/postgresql/concepts-hyperscale-reserved-pricing).
+- Compute costs associated with Azure Database for PostgreSQL can be reduced using either a [Single Server Reservation Discount](/azure/postgresql/flexible-server/concept-reserved-pricing) or [Hyperscale (Citus) Reservation Discount](/azure/postgresql/concepts-hyperscale-reserved-pricing).
 
 ### Design Recommendations
 
