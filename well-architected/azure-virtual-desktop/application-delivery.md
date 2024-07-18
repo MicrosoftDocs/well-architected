@@ -88,7 +88,7 @@ The location of a session host correlates directly with the latency that end use
 The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts with redundancy. We recommend enabling availability zones.
 
 - Availability zones enhance the resilience of your session hosts against zone outages, but they're limited to specific regions.
-- Virtual Machine Scale Set Flexible Orchestration (VMSS Flex) provides deployment options across zones or within the same zone across different fault domains (FDs) for better reliability.
+- Virtual Machine Scale Set Flexible Orchestration (VMSS Flex) provides deployment options across multiple zones. Within each zone, VMSS Flex further allows for deployment across different fault domains (FDs).
 
 For more information about availability zones and VMSS Flex, see the following resources:
 
