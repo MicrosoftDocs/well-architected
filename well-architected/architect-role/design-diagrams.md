@@ -3,7 +3,7 @@ title: Architecture design diagrams
 description: Learn about diagramming practices and types of architecture diagrams that you can create to communicate effectively.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 07/18/2024
 ms.topic: conceptual
 ---
 
@@ -25,7 +25,7 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Avoid lines without arrows**. It's hard to know what the relationship is without direction, so use arrows. Label all lines without arrows to denote the relationships.
 
-**Avoid lines with double arrows**. Double arrows imply a bidirectional dependency. Prefer using a single-ended arrow to represent the flow from client to server.
+**Avoid lines with double arrows**. Double arrows imply a bidirectional dependency. Prefer using a single-ended arrow to represent the flow from the dependent (client) to the dependency (server).
 
 **Label everything**. Provide clear, accurate, and meaningful labels for each icon. Label lines when the relationships aren't clear.
 
@@ -42,6 +42,7 @@ For example, here are the icons for Microsoft services:
 - [Azure architecture icons](/azure/architecture/icons/)
 - [Microsoft 365 icons](/microsoft-365/solutions/architecture-icons-templates)
 - [Microsoft Dynamics 365 icons](/dynamics365/get-started/icons)
+- [Microsoft Entra ID architecture icons](/entra/architecture/architecture-icons)
 - [Microsoft Power Platform icons](/power-platform/guidance/icons)
 
 ## Types of design diagrams
@@ -99,6 +100,8 @@ A state diagram is a specialized visualization. It shows the state that a flow (
 ##### Flowchart
 
 Although it's not an architecture diagram specifically, a flowchart is another way to bring clarity to a design. Flowcharts are often useful when they represent complex workflows or logic. You can use them to help refine requirements and to help drive implementation choices.
+
+Flowcharts are useful to include in workload incident response plans to help highlight key decision points and their associated actions or notification channels.
 
 ## Next steps
 
