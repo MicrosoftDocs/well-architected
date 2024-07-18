@@ -29,7 +29,7 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Label everything**. Provide clear, accurate, and meaningful labels for each icon. Label lines when the relationships aren't clear.
 
-**Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line types, arrow heads, and other representations for similar elements throughout a diagram and across related diagrams. Draw from existing data or taxonomies.
+**Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line types, arrow heads, and other representations for similar elements throughout a diagram. Stay consistent across all diagrams created for your workload's design and documentation. Draw from existing data or taxonomies.
 
 **Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in a virtual network if it's not present in that virtual network. A diagram is a communication tool, so you need to avoid miscommunication from inaccuracies.
 
@@ -91,7 +91,7 @@ An entity-relationship diagram (ERD) is a modeling diagram that represents the s
 
 A network diagram illustrates the solution from the perspective of the network that it runs on or interacts with. These diagrams are useful in visualizing the workload's network segmentation, network points of failure, and key network transitions such as internet egress and ingress points.
 
-Network diagrams usually have a life past implementation. They're often used in audits and incident response.
+Network diagrams usually have a life past implementation. Network diagrams are often used in audits and incident response.
 
 ##### State diagram
 
