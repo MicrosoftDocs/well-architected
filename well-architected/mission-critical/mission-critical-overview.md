@@ -80,9 +80,7 @@ The guidance provided within this series is based on a solution-orientated appro
   
 ## Industry scenarios
 
-The mission-critical guidance within this series forms an industry agnostic design methodology which can be applied across a multitude of different industry contexts. The following list provides specific examples where the mission-critical design methodology has been applied and tailored to a particular industry scenario.  
-
-  - [Carrier-grade](/azure/well-architected/carrier-grade/carrier-grade-get-started) within the telecommunications industry
+The mission-critical guidance within this series forms an industry agnostic design methodology which can be applied across a multitude of different industry contexts.
 
 A carrier-grade workload pivots on both business-critical and safety-critical aspects, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties.
 

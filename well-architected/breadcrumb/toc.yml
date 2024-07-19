@@ -38,9 +38,6 @@
       - name: Mission-critical
         tocHref: /azure/well-architected/mission-critical/
         topicHref: /azure/well-architected/mission-critical/index
-      - name: Carrier-grade
-        tocHref: /azure/well-architected/carrier-grade/
-        topicHref: /azure/well-architected/carrier-grade/index
       - name: Hybrid
         tocHref: /azure/well-architected/hybrid/
         topicHref: /azure/well-architected/hybrid/hybrid-overview
