@@ -72,6 +72,10 @@ Services and offerings provide various capabilities and pricing tiers. **After y
 | Find additional **uses for resources that you committed to** in discounted longer-term plans.| Consider **pre-purchased resources, existing licenses, and other commitment-based discounted resources that are unused**. You can save money by using these resources. You can use these resources for tests, additional environments, or even addressing functional and nonfunctional requirements.  <br><br> Likewise, finding opportunities to utilize committed plans for resources that your workload is using will enable your workload to optimize those resource costs via the precommitment.   |
 | Take advantage of your **investment in your support plan**. | Using your support plan to **handle production problems or for proactive reviews** will help you get your money's worth. Fully engage with your Microsoft support model.
 
+> [!TIP]  
+> If you are unsure whether you can shut down an idle resource without causing a chaos, you can firstly restrict access to the resource. Make sure the resource's role is restricted, too. Leave the resource up for a few weeks and if nobody has connected to it or has complained, chances are the resource can be shut down safely.
+
+
 ## Design for rate optimization
 
 |![Goal icon](../_images/goal.svg) Increase efficiency without redesigning, renegotiating, or sacrificing functional or nonfunctional requirements.| 
