@@ -34,7 +34,7 @@ Consider using the following metrics to quantify the business requirements.
 
 **Reliability targets represent the desired quality goal of a workload**, as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets but performance targets should be included in reliability targets.
 
-- **Availability targets** define the quality standards for a system to remain accessible and functional. If these standards aren’t met, the system is considered unreliable. Service Level Objectives (SLOs) help check if these standards are met. Business and technical stakeholders collaborate to set realistic SLOs, considering factors like comparative analysis, user experience, and workload profile.
+- **Availability targets** define the quality standards for a system to remain accessible and functional. If these standards aren't met, the system is considered unreliable. Service Level Objectives (SLOs) help check if these standards are met. Business and technical stakeholders collaborate to set realistic SLOs, considering factors like comparative analysis, user experience, and workload profile.
 
 - **Correctness targets**. Correctness targets ensure that the workload performs its functions as-designed and with consistent quality. Measurement of correctness involves quantifying indicators so that they can be rolled up to a unified objective score.
 
@@ -81,7 +81,7 @@ Every SLO targets a specific quality criteria. Consider these common SLOs for re
 - **Availability** measures uptime from the perspective of users. 
 - **Throughput** measures a minimum data transfer rate over a time window, as a data-rate unit such as transactions-per-second (TPS) or requests-per-second (RPS).
 
-Understand the scenarios and tolerances for your workload on Azure. Both Azure services and application components affect the workload SLO. Combine responses from this table to derive the overall SLO. Use these questions as examples to evaluate the workload component’s utility.
+Understand the scenarios and tolerances for your workload on Azure. Both Azure services and application components affect the workload SLO. Combine responses from this table to derive the overall SLO. Use these questions as examples to evaluate the workload component's utility.
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
@@ -99,9 +99,9 @@ SLOs must be **measurable** and **measured within a observability window**.
 
 SLOs are often percentages like 99.9%, but they can also be statements. Use both methods to get a numerical value that includes all factors.
 
-An SLO is a combination of measurable **Service Level Indicators (SLIs)** to define what’s acceptable. SLIs are metrics with a set threshold that can be alerted. They can be collected from the platform or application. Different components emit relevant SLIs. When choosing SLIs, consider factors that influence the SLO.
+An SLO is a combination of measurable **Service Level Indicators (SLIs)** to define what's acceptable. SLIs are metrics with a set threshold that can be alerted. They can be collected from the platform or application. Different components emit relevant SLIs. When choosing SLIs, consider factors that influence the SLO.
 
-For instance, to calculate the SLO for a flow using a response/request API, measure server latency and request processing time. Throughput and error rates don’t apply to continuous compute environments like VMs, scale sets, or Azure Batch.
+For instance, to calculate the SLO for a flow using a response/request API, measure server latency, and request processing time. Throughput and error rates don't apply to continuous compute environments like VMs, scale sets, or Azure Batch.
 
 For control plane access, consider error rates and latency for API responses and long-running operations, such as resource creation. Data plane access depends on the APIs used, each with its own SLO targets.
 
@@ -182,7 +182,7 @@ Explore the [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards
 Contoso Ticketing is designing a new mobile experience for their event ticketing system. Here's the high-level architecture.
 
 :::image type="complex" source="./media/metrics/example-architecture-targets.svg" alt-text="Architecture diagram of a mobile ticketing system hosted in Azure Container Apps":::
-   An architecture diagram with various Azure components. A mobile ticket scanning devices connects to Azure Front Door, which has T L S, WAF policies, and rules. Azure Front Door connects to Azure Container Apps through a Private Link connection. Build Agent VMs connect to Azure DevOps and also to Azure Container Apps and Private Endpoints. A SQL Managed Instance is shown in a box labeled "External team." A Workload observability platform box contains Log Analytics workspace, Azure Application Insights, Azure Managed Graphana, Alerts, and Diagnostics Settings. The icons for Azure D N S, Microsoft Entra I D, Azure Network Security Groups, Azure Key Vault, and Managed Identities are shown as well.
+   An architecture diagram with various Azure components. A mobile ticket scanning device connects to Azure Front Door, which has T L S, WAF policies, and rules. Azure Front Door connects to Azure Container Apps through a Private Link connection. Build Agent VMs connect to Azure DevOps and also to Azure Container Apps and Private Endpoints. A SQL Managed Instance is shown in a box labeled "External team." A Workload observability platform box contains Log Analytics workspace, Azure Application Insights, Azure Managed Graphana, Alerts, and Diagnostics Settings. The icons for Azure D N S, Microsoft Entra ID, Azure Network Security Groups, Azure Key Vault, and Managed Identities are shown as well.
 :::image-end:::
 
 ### Components
@@ -231,7 +231,7 @@ The API team has defined an initial service-level objective (SLO) target for cri
 
     Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential downtime caused because of emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.95% availability.
 
-    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day. To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours.  This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
+    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day. To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours. This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
 
     > Composite SLO based on operations availability: 99.95% per month. 
 
