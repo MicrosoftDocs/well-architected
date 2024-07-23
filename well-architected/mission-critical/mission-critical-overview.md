@@ -77,12 +77,6 @@ The guidance provided within this series is based on a solution-orientated appro
 - [Baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone)&mdash;Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
   > Refer to the implementation: [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected)
-  
-## Industry scenarios
-
-The mission-critical guidance within this series forms an industry agnostic design methodology which can be applied across a multitude of different industry contexts.
-
-A carrier-grade workload pivots on both business-critical and safety-critical aspects, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties.
 
 ## Next step
 
