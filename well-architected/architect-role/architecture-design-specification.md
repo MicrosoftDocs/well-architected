@@ -1,6 +1,6 @@
 ---
 title: Workload architecture design specification
-description: Learn about the benefits of creating an architecture design specification for a workload. The specification describes design choices and is accompanied by diagrams.
+description: Learn about the benefits of creating an architecture design specification for a workload. The specification describes design choices through words and diagrams.
 author: ckittel
 ms.author: chkittel
 ms.date: 07/25/2024
@@ -23,23 +23,23 @@ Ultimately, the workload architecture design specification is implemented by the
 
 ## Functional specification
 
-The functional sepcification for a workload details the *what* and the *why* of the system or feature under development, but not the implementation. This document must explain the current problems that exist and how this feature or system is going to improve that experience. These make up the bulk of business requirements.
+The functional sepcification for a workload details the *what* and the *why* of the system or feature under development, but not the implementation. This document must explain the current problems that exist and how this feature or system is going to improve that experience. This document captures a majority of the business requirements.
 
-An architect can help shape this document, but primarily it's a function of product ownership. An architect should help design the information that is captured in this specification to enable a comprehensive technical specification to be generated from this.
+An architect can help shape this document, but primarily it's a function of product ownership. An architect should help design the data that is captured in this specification. This ensures the contents drives effective and efficient technical design.
 
 Here are a few example topics that should be covered in this specification.
 
-- In addition to detailing what is *in scope* for this design, also detail adjacent concerns that have been decided to be *out of scope*. This helps reduce scope creep by defining boundries around the functionality.
+- In addition to detailing what is *in scope* for this design, also be explicit about adjacent concerns that are *out of scope*. Setting clear scopes reduces scope creep by defining boundaries around the functionality.
 
-- It's helpful to include the details on how this change is going to be measured. What measurements are expected to be collected and what goals those measurements support.
+- It's helpful to include the details on how this change is going to be measured. What measurements need to be collected and what business goals those measurements support.
 
-- User flows should be clearly described. Low-fedelity mockups can be helpful as well. If error handling situations are important for these flows, ensure the expected behvior described.
+- User flows should be clearly described. Low-fedelity mockups can be helpful as well. If error handling situations are important for these flows, ensure the expected behavior described.
 
 - Always include any specific requirements for accessibility, compliance, performance, privacy, or security.
 
-- Include any planned rollout strategy. For example, "This is going to be available for our beta users for two months before deciding on a full release."
+- Include any planned rollout strategy. For example, "This feature is going to be available for our beta users for two months before deciding on a full release."
 
-Avoid specific technical implementation details in this specification. These functional sepcifications will help drive technical specifications created by the architect.
+Avoid specific technical implementation details in this specification. These functional specifications will drive technical specifications created by the architect.
 
 ## Technical specification
 
@@ -47,7 +47,7 @@ The technical specification describes the *how* based on the scope and goals set
 
 In this specification include items such as:
 
-- Technology decisions, including as: buy, build, reuse, extend, or decomission.
+- Technology decisions, including as: buy, build, reuse, extend, or decommission.
 - API and data contracts (schemas), including backwards compatibility implementation strategy
 - Rollout and rollback implementation details
 - Unique secure development lifecycle (SDL) and privacy implementation
@@ -55,7 +55,7 @@ In this specification include items such as:
 - Key monitoring and alert signal sources
 - Alternative designs that were considered
 
-The technical specification will be used to drive engineering efforts through work items. Those engineering work items are primarly created from the contents this specification. Implementation teams will refer to the work items, the technical specification and the functional specification to ensure the final result is meeting both the functional and non-functional requirements.
+The technical specification will drive engineering efforts. Engineering work items are primarily created from the contents this specification. Implementation teams refer to the work items, the technical specification, and the functional specification to ensure the final result is meeting both the functional and non-functional requirements.
 
 ## Disaster recovery plans
 
@@ -69,13 +69,14 @@ An architect is responsible for designing a solution that adheres to pertinent s
 
 ## Consistency
 
-Create and wse a template to document your workload's various specifications. Consistency helps stakeholders and responsible parties when reviewing and approving specifications.
+Use a template to document your workload's various specifications. Consistency helps stakeholders, responsible parties, and implementation teams when the specification is being read.
 
 Ensure specs have key metadata fields such as:
 
-- **State**: A status as Draft, In review, and Approved so individuals not familar with the current state of development knows which drafts are still open for negotiation and influence and which have already been signed off on.
+- **State**: A status as *Draft*, *In review*, and *Approved*.
 - **Work item link**: A link to the primary work item in the team's backlog.
-- **Key individuals**: A place to list the names of people involved in this, such as the business analyist, a business partner, the technical lead, and the product owner or lead that signed off on the specification.
+- **Key cross links**: Links to related specifications or other documentation that supports the specification.
+- **Key individuals**: A place to list the names of key decision makers involved. This list might include roles like: business analyst, business partner, technical lead, and the product owner or lead that signed off on the specification.
 
 ## Next steps
 
