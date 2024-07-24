@@ -23,9 +23,9 @@ Ultimately, the workload architecture design specification is implemented by the
 
 ## Functional specification
 
-The functional sepcification for a workload details the *what* and the *why* of the system or feature under development, but not the implementation. This document must explain the current problems that exist and how this feature or system is going to improve that experience. This document captures a majority of the business requirements.
+The functional specification for a workload details the *what* and the *why* of the system or feature under development, but not the implementation. This document must explain the current problems that exist and how this feature or system is going to improve that experience. This document captures most of the business requirements.
 
-An architect can help shape this document, but primarily it's a function of product ownership. An architect should help design the data that is captured in this specification. This ensures the contents drives effective and efficient technical design.
+An architect can help shape this document, but primarily it's a function of product ownership. An architect should help design the data that is captured in this specification. This involvement ensures the functional specification drives effective and efficient technical design.
 
 Here are a few example topics that should be covered in this specification.
 
@@ -43,7 +43,7 @@ Avoid specific technical implementation details in this specification. These fun
 
 ## Technical specification
 
-The technical specification describes the *how* based on the scope and goals set forth in the [functional specification](#functional-specification). This specification is designed for the engineering team to use as a plan-of-record during implementation.
+The technical specification describes the *how* based on the scope and goals described in the [functional specification](#functional-specification). This specification is designed for the engineering team to use as a plan-of-record during implementation.
 
 In this specification include items such as:
 
@@ -55,7 +55,7 @@ In this specification include items such as:
 - Key monitoring and alert signal sources
 - Alternative designs that were considered
 
-The technical specification will drive engineering efforts. Engineering work items are primarily created from the contents this specification. Implementation teams refer to the work items, the technical specification, and the functional specification to ensure the final result is meeting both the functional and non-functional requirements.
+The technical specification will drive engineering efforts. Engineering work items are primarily created from the contents this specification. Implementation teams refer to the work items, the technical specification, and the functional specification to ensure the final result is meeting both the functional and nonfunctional requirements.
 
 ## Disaster recovery plans
 
