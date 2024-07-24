@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Workload architecture design specification
 
-A workload architecture design specification is **a detailed specification that describes design choices and is accompanied by diagrams**. The design choices must meet functional and nonfunctional requirements and include provisions for routine, ad-hoc, and emergency operations.
+A workload architecture design specification is **a detailed specification that describes design choices and is accompanied by diagrams**. The design choices must meet functional and nonfunctional requirements and include provisions for routine, ad hoc, and emergency operations.
 
 For information about diagrams, see [Architecture design diagrams](./design-diagrams.md).
 
