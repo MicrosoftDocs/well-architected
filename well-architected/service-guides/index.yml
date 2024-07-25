@@ -265,7 +265,7 @@ productDirectory:
         - databases
     # Card
     - title: Azure Stack HCI
-      summary: Use Azure Stack HCI to create and manage Windows and Linux virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
+      summary: Use Azure Stack HCI to create and manage virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
       imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
       url: azure-stack-hci.md
       azureCategories:
