@@ -55,6 +55,7 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
 
 - [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
 
+
 ## February 2024
 
 ### New articles
