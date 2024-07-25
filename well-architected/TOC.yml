@@ -336,6 +336,8 @@
               href: service-guides/azure-sql-managed-instance/reliability.md
             - name: Operational excellence
               href: service-guides/azure-sql-managed-instance/operational-excellence.md
+        - name: Azure Stack HCI
+          href: service-guides/azure-stack-hci.md
         - name: Azure Stack Hub
           items:
             - name: Reliability
