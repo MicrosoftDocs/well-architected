@@ -156,7 +156,7 @@ Development environments are designed for development, testing, and debugging pu
 
 #### Consider endpoint emulation
 
-You can optimize costs in a preproduction environment by using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify components or services in your preproduction environment that are the most expensive or resource-intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. To simulate API responses, you can use tools like WireMock, Postman's mock server, or custom implementations.
+You can optimize costs in a preproduction environment by using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify components or services in your preproduction environment that are the most expensive or resource-intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. To simulate API responses, you can use commercial or open source API mocking servers, or custom implementations.
 
 Emulation and mock endpoints help save costs, but you must ensure that they represent the production environment to a sufficient degree for testing. Strike a balance between accuracy and cost to help avoid future issues in production. For example, if GPUs are a major cost factor, consider GPU emulation for tasks that don't require real GPU processing power in preproduction stages. Emulation might not fully represent the performance or quirks of real GPUs, so use it when exact GPU behavior isn't critical for preproduction testing.
 
