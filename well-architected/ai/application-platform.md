@@ -25,19 +25,40 @@ ms.subservice: waf-workload-ai
 
 ## Elena's (SME & area lead) seed material
 
-### Landing Zone and Networking
+### Landing Zone 
 
 - GenAI Scaling AI Services with Landing Zone
+    - Chat Baseline Architecture: https://learn.microsoft.com/en-us/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat  
     - OpenAI Landing Zone https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-openai-landing-zone-reference-architecture/ba-p/3882102 
     - OpenAI LZ Accelerator https://github.com/Azure/azure-openai-landing-zone
 - Traditional ML
     - Scale Secure ML https://learn.microsoft.com/en-us/azure/architecture/example-scenario/ai/scale-ai-and-machine-learning-in-regulated-industries
     - Organize ML workspaces: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization
     - Secure AML end to end https://learn.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet?view=azureml-api-2&tabs=required%2Cpe%2Ccli and https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/machine-learning-end-to-end-secure/
+
+### Networking
+- Private Network egress/ingress , Private endpoints
+- DNS
+- DDOS and Filtering
+
+### RBAC Security
+
+### Reliability / HA
+ - Regional resources avilability
+
+### Team vs Platform Team resources
+- Resources to be provisioned and managed by App Platform Team
       
 ### GenAI Model Deployments
 
 - Deployments schoice: PayGo, PTU, Global  https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/deployment-types
+- MAAS vs MAAP - hosting catalog models as Service, as Platform - considerations when what
+
+- GenAI appp hosting  including plugins, code interpterter, promptflow 
+
+### Model Catalog and Registries
+ - Scanning
+ - Policies for management
 
 #### OpenAI Scalability with APIM
 
@@ -54,19 +75,21 @@ ms.subservice: waf-workload-ai
 - Chargebacks https://techcommunity.microsoft.com/t5/apps-on-azure-blog/calculating-chargebacks-for-business-units-projects-utilizing-a/ba-p/3909202 and source  https://github.com/Azure-Samples/private-openai-with-apim-for-chargeback/tree/main and https://github.com/shksin/azure-openai-with-apim-for-chargeback
 
 ### Small Language Models
-
-- On the Edge
-- Containerization
-- WebNN
-- Acceleration : https://techcommunity.microsoft.com/t5/azure-high-performance-computing/introducing-the-new-azure-ai-infrastructure-vm-series-nd-mi300x/ba-p/4145152
-     
+- Fine Tuning
+- Hosting
+  - On the Edge
+  - Containerization
+  - WebNN
+  - Acceleration : https://techcommunity.microsoft.com/t5/azure-high-performance-computing/introducing-the-new-azure-ai-infrastructure-vm-series-nd-mi300x/ba-p/4145152
+       
 ### Traditional ML Deployments
 
 -  AI PAAS Services
-
+-  Trained models on Managed Endpoints, AKS, Custom container
+  
 ### Monitoring
 
-- Tracing with OpenTelemetry
+- Tracing with OpenTelemetry - new SDK and PromptFlow Tracing
 
 ## Jose's (Azure Patterns & Practices engineering) seed material
 
