@@ -3,7 +3,7 @@ title: Design Oracle applications
 description: Review the design area for Oracle applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 04/15/2024
+ms.date: 07/30/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-oracle
