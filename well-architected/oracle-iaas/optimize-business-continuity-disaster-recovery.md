@@ -52,7 +52,7 @@ Incorporate the following recommendations to improve architectural redundancy an
 
 Azure provides many options for the high availability of individual components in an Oracle on IaaS architecture. For example, you can:
 
-- Deploy VMs using a flexible virtual machine scale set (VMSS Flex) to spread across fault domains automatically.
+- Deploy VMs by using a flexible virtual machine scale set, which automatically spreads VMs across fault domains.
 - Create availability zones to protect against datacenter failures.
 - Place deployments in different regions to protect against full-region failures.
 

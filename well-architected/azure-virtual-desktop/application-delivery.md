@@ -3,7 +3,7 @@ title: Application delivery considerations for Azure Virtual Desktop workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 10/12/2023
+ms.date: 7/30/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-avd
@@ -88,12 +88,12 @@ The location of a session host correlates directly with the latency that end use
 The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts with redundancy. We recommend enabling availability zones.
 
 - Availability zones enhance the resilience of your session hosts against zone outages, but they're limited to specific regions.
-- Virtual Machine Scale Set Flexible Orchestration (VMSS Flex) provides deployment options across multiple zones. Within each zone, VMSS Flex further allows for deployment across different fault domains (FDs).
+- Virtual machine scale sets with flexible orchestration provide deployment options across multiple zones. Within each zone, you can deploy across different fault domains.
 
-For more information about availability zones and VMSS Flex, see the following resources:
+For more information about availability zones and scale sets with flexible orchestration, see the following articles:
 
 - [Availability zone service and regional support](/azure/reliability/availability-zones-service-support)
-- [VMSS Flex overview](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)
+- [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)
 
 ##### Recommendations
 
