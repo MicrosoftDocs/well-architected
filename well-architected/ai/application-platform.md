@@ -54,6 +54,8 @@ When evaluating an EDA platform, consider the following:
 
 As you move to model training and fine-tuning, you will likely need high-performance GPU-optimized compute for the compute-intensive work involved in these activities. Reliability is typically not as important as performance as most of this work happens behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important in cases where model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics#recovery-metrics) should determine the reliability design you choose.
 
+The recommendations below apply to both model training and fine-tuning functions. Unless you're forced to use separate platforms for these functions, you should use the same platform for both of these functions.
+
 ### Factors to consider
 
 - **Cost vs performance:** Due to the high-performance, GPU-optimized compute requirements, test and benchmark your training and fine-tuning extensively to land on the ideal SKU that balances performance against costs.
@@ -61,5 +63,10 @@ As you move to model training and fine-tuning, you will likely need high-perform
 - **Use an orchestrator:** Due to the complexity required in managing the compute for these activities, an orchestrator is recommended. AML is the recommended solution for these activites. There are two options to evaluate:
   -  [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose between standard and spot pricing. Spot pricing is only recommended for highly interruptible training. **Do not** use serverless for full-time operations as the costs can balloon quickly.
   -  [Compute Clusters](/azure/machine-learning/how-to-create-attach-compute-cluster?view=azureml-api-2&tabs=python#what-is-a-compute-cluster) gives you significant control over available hardware and is tuned for parallel or distributed training.
--  **Combine technologies when appropriate:** If your existing data platform has ML capabilities, like [Databricks](/azure/databricks/machine-learning/), you can use that for certain steps like data transformation and feature engineering, while performing the modeling, fine-tuning and further steps in AML. This helps you minimize the cost and complexity involved in using a data platform for those functions it might not be ideally suited for.
-  -  
+-  **Combine technologies when appropriate:** If your existing data platform has ML capabilities, like [Databricks](/azure/databricks/machine-learning/), you can use that for certain steps like data transformation and feature engineering, while performing the training, fine-tuning and further steps in AML. This helps you minimize the cost and complexity involved in using a data platform for those functions it might not be ideally suited for.
+
+> [!NOTE]
+> For foundation models, your choice of model hosting platform may limit your fine-tuning options. For example, using Azure OpenAI for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
+
+## The model hosting platform
+
