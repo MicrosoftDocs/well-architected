@@ -5,8 +5,8 @@ author: moisesjgomez
 ms.author: mgomezcortez
 ms.date: 09/15/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Business continuity considerations for Azure Virtual Desktop workloads
