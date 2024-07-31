@@ -5,8 +5,8 @@ author: jszubryt
 ms.author: szubrytjim
 ms.date: 10/12/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Operational procedure considerations for Azure Virtual Desktop workloads
