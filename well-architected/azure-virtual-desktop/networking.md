@@ -5,8 +5,8 @@ author: swathibhat1
 ms.author: swathibhat
 ms.date: 10/12/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Networking and connectivity considerations for Azure Virtual Desktop workloads

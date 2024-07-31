@@ -5,8 +5,8 @@ author: Mahesh-MSFT
 ms.author: prwilk
 ms.date: 08/10/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avs
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-vmware
 ---
 
 # Integrate an Azure VMware Solution workload with Azure landing zones

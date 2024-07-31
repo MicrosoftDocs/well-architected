@@ -5,7 +5,7 @@ author: jessiehaessler
 ms.author: jhaessler
 ms.date: 04/15/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-workload-oracle
 
 ---
