@@ -155,6 +155,9 @@ For business continuity, you need to implement robust data protection to help en
 
 - Use backup solutions that Microsoft supports, such as Microsoft Azure Backup Server, or approved third-party vendors.
 
+>[!Caution]
+>If you have VMs with CentOS, a Linux distribution that has reached End Of Life (EOL) status, please review your usage and plan accordingly. Learn more about the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 ## Use Azure Site Recovery
 
 *Impact: Reliability*
