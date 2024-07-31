@@ -358,10 +358,8 @@
               href: service-guides/event-grid/operational-excellence.md
         - name: Event Hubs
           items:
-            - name: Reliability
-              href: service-guides/event-hubs/reliability.md
-            - name: Operational excellence
-              href: service-guides/event-hubs/operational-excellence.md
+            - name: Overview
+              href: service-guides/event-hubs/overview.md
         - name: ExpressRoute
           href: service-guides/azure-expressroute.md
         - name: Functions

@@ -1,6 +1,6 @@
 ---
-title: Event Hubs and reliability
-description: Focuses on the Event Hubs service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
+title: Event Hubs 
+description: Focuses on the Event Hubs service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations.
 author: martinekuan
 ms.author: martinek
 ms.date: 01/12/2022
@@ -11,15 +11,19 @@ azure.category:
   - analytics
 ---
 
-# Event Hubs and reliability
+# Event Hubs
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a scalable event processing service that ingests and processes large volumes of events and data, with low latency and high reliability. It can receive and process millions of events per second. Data sent to an event hub can be transformed and stored by using any real-time analytics provider or batching and storage adapters.
 
 For more information about using Event Hubs, reference the [Azure Event Hubs documentation](/azure/event-hubs/) to learn how to use Event Hubs to ingest millions of events per second from connected devices and applications.
 
-To understand how using Event Hubs creates a more reliable workload, reference [Azure Event Hubs - Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr?tabs=portal).
+To understand ways using Event Hubs helps you achieve operational excellence and reliability for your workload, reference the following articles:
 
-The following sections are specific to Azure Event Hubs and reliability:
+- [Monitor Azure Event Hubs](/azure/event-hubs/monitor-event-hubs)
+- [Stream Azure Diagnostics data using Event Hubs](/azure/azure-monitor/agents/diagnostics-extension-stream-event-hubs)
+- [Scaling with Event Hubs](/azure/event-hubs/event-hubs-scalability)
+
+The following sections are specific to Azure Event Hubs from a Well Architected Framework perspective:
 
 - Design considerations
 - Configuration checklist
@@ -32,7 +36,7 @@ Azure Event Hubs provides an uptime SLA. For more information, reference [SLA fo
 
 ## Checklist
 
-**Have you configured Azure Event Hubs with reliability in mind?**
+**Have you configured Azure Event Hubs with operational excellence in mind?**
 
 > [!div class="checklist"]
 > - Create SendOnly and ListenOnly policies for the event publisher and consumer, respectively.
@@ -79,4 +83,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Event Hubs and operational excellence](operational-excellence.md)
+> [Service Bus and reliability](../service-bus/reliability.md)

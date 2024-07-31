@@ -128,5 +128,5 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Event Hubs and reliability](../event-hubs/reliability.md)
+> [Event Hubs](../event-hubs/overview.md)
 
