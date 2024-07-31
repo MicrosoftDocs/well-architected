@@ -5,7 +5,7 @@ author: neilbird
 ms.author: nebird
 ms.topic: conceptual
 ms.date: 06/28/2024
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: 
     - azure-stack-hci
