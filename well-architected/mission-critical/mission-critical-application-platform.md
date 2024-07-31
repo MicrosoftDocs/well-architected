@@ -329,52 +329,52 @@ Multiple [deployment modes](/azure/logic-apps/single-tenant-overview-compare) ar
 
 ## Constrained migrations via IaaS
 
-Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline (North Star) architecture pattern that's recommended for mission-critical workloads. That's why many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of IaaS virtual machines might be required in certain scenarios:
+Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline (North Star) architecture pattern that's recommended for mission-critical workloads. That's why many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of infrastructure as a service (IaaS) VMs might be required in certain scenarios:
 
 - Available PaaS services don't provide the required performance or level of control.
 - The workload requires operating system access, specific drivers, or network and system configurations.
 - The workload doesn't support running in containers.
 - There's no vendor support for third-party workloads.
 
-This section focuses on the best ways to use Azure Virtual Machines and associated services to maximize the reliability of the application platform. It highlights key aspects of the mission-critical design methodology that transpose cloud-native and IaaS migration scenarios.
+This section focuses on the best ways to use Virtual Machines and associated services to maximize the reliability of the application platform. It highlights key aspects of the mission-critical design methodology that transpose cloud-native and IaaS migration scenarios.
 
 ### Design considerations
 
-- The operational costs of using IaaS virtual machines are significantly higher than the costs of using PaaS services because of the management requirements of the virtual machines and the operating systems. Managing virtual machines necessitates the frequent rollout of software packages and updates.
+- The operational costs of using IaaS VMs are significantly higher than the costs of using PaaS services because of the management requirements of the VMs and the operating systems. Managing VMs necessitates the frequent rollout of software packages and updates.
 
-- Azure provides capabilities to increase the availability of virtual machines:
+- Azure provides capabilities to increase the availability of VMs:
   - [Availability zones](/azure/availability-zones/az-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
-  - [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of virtual machines in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
-  - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) can help protect against network, disk, and power failures by automatically distributing virtual machines across fault domains.
+  - [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of VMs in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+  - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
 
 ### Design recommendations
 
 > [!IMPORTANT]
-> Use PaaS services and containers when possible to reduce operational complexity and cost. Use IaaS virtual machines only when you need to.
+> Use PaaS services and containers when possible to reduce operational complexity and cost. Use IaaS VMs only when you need to.
 
 - [Right-size VM SKU sizes](/azure/virtual-machines/sizes) to ensure effective resource utilization.
 
-- Deploy three or more virtual machines across [availability zones](/azure/availability-zones/az-overview) to achieve datacenter-level fault tolerance.
+- Deploy three or more VMs across [availability zones](/azure/availability-zones/az-overview) to achieve datacenter-level fault tolerance.
   - If you're deploying commercial off-the-shelf software, consult the software vendor and test adequately before deploying the software into production.
 
-- For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) that contain three or more VMs. For more information on how to configure the correct number of fault domains, see [manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).
+- For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) that contain three or more VMs. For more information about how to configure the correct number of fault domains, see [Manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone redundancy. This point is particularly important for workloads that have varying loads. For example, if the number of active users or requests per second is a varying load.
   
-- Don't access individual virtual machines directly. Use load balancers in front of them when possible.
+- Don't access individual VMs directly. Use load balancers in front of them when possible.
 
-- To protect against regional outages, deploy application virtual machines across multiple Azure regions.
+- To protect against regional outages, deploy application VMs across multiple Azure regions.
   - See the [networking and connectivity design area](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for details about how to optimally route traffic between active deployment regions.
 
-- For workloads that don't support multi-region active/active deployments, consider implementing active/passive deployments by using hot/warm standby virtual machines for regional failover.
+- For workloads that don't support multi-region active/active deployments, consider implementing active/passive deployments by using hot/warm standby VMs for regional failover.
 
 - Use standard images from Azure Marketplace rather than custom images that need to be maintained.
 
-- Implement automated processes to deploy and roll out changes to virtual machines, avoiding any manual intervention. For more information, see [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-vms) in the [Operational procedures](./mission-critical-operational-procedures.md) design area.
+- Implement automated processes to deploy and roll out changes to VMs, avoiding any manual intervention. For more information, see [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-vms) in the [Operational procedures](./mission-critical-operational-procedures.md) design area.
 
-- Implement chaos experiments to inject application faults into virtual machine components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
+- Implement chaos experiments to inject application faults into VM components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
-- Monitor virtual machines and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/well-architected/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+- Monitor VMs and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/well-architected/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
 - Implement security practices for mission-critical application scenarios, when applicable, and the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 
