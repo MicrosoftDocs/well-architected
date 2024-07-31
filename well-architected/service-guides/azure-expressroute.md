@@ -4,8 +4,8 @@ description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
 ms.topic: conceptual
-ms.service: waf 
-ms.subservice: waf-service-guide
+ms.service: azure-waf
+ms.subservice: waf-service-guide 
 ms.date: 06/07/2022
 products: 
   - azure-expressroute
@@ -34,14 +34,13 @@ This article assumes that you have working knowledge of Azure ExpressRoute and a
 > optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:
-> [Implement Cloud Adoption Framework enterprise-scale landing zones in Azure](/azure/cloud-adoption-framework/ready/enterprise-scale/implementation.md).
+> [Implement Cloud Adoption Framework enterprise-scale landing zones in Azure](/azure/cloud-adoption-framework/ready/enterprise-scale/implementation).
 
 ### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:  
 
 - Azure ExpressRoute
-
 
 ## Reliability
 
