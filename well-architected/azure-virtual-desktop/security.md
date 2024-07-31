@@ -5,8 +5,8 @@ author: BenMartinBaur
 ms.author: bebaur
 ms.date: 10/12/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Security and identity and access management (IAM) considerations for Azure Virtual Desktop workloads
