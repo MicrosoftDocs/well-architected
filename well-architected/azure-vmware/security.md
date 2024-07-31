@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/10/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avs
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-vmware
 ---
 
 # Security considerations for Azure VMware Solution workloads
