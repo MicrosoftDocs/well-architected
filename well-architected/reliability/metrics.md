@@ -22,8 +22,8 @@ Consider using the following metrics to quantify the business requirements.
 
 |Term  |Definition  |
 |---------|---------|
-|Service-level objective (SLO)    | A measure of the performance and reliability of a workload or application. An SLO is a specific, measurable target that is set for particular customer interactions. It's a target that you set for your workload on application based on the quality of service your users should expect to receive.        |
 |Service-level indicator (SLI)     | A quantitative measurement of a particular aspect of a service's performance relevant to meeting an SLO (Service Level Objective).         |
+|Service-level objective (SLO)    | A measure of the performance and reliability of a workload or application. An SLO is a specific, measurable target that is set for particular customer interactions. It's a target that you set for your workload on application based on the quality of service your users should expect to receive.        |
 |Service-level agreement (SLA)     | A contractual agreement between the service provider and the service customer. Failure to meet the agreement might have financial consequences for the service provider.        |
 |Mean time to recover (MTTR)     | The time taken to restore a component after a failure is detected.        |
 |Mean time between failure (MTBF)     |The duration for which the workload can perform the expected function without interruption, until it fails.         |
