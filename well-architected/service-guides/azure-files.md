@@ -5,7 +5,7 @@ author: khdownie
 ms.author: kendownie
 ms.date: 05/20/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 products:
   - azure-file-storage
