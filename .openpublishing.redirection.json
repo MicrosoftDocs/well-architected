@@ -1448,7 +1448,7 @@
 		{
 			"source_path": "well-architected/service-guides/event-hubs/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/event-hubs/overview",
-			"redirect_document_id": true
-		},				
+			"redirect_document_id": false
+		}	
 	]
 }
