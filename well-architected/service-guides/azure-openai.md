@@ -5,7 +5,7 @@ author: robbagby
 ms.author: robbag
 ms.date: 03/05/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.collection: ce-skilling-ai-copilot
 products:
