@@ -7,7 +7,7 @@ brand: azure
 metadata:
   title: Azure service guidance mapped to Azure Well-Architected Framework
   description: Apply Well-Architected Framework concepts to Azure services to make informed decisions when choosing service and its feature set.
-  ms.service: waf
+  ms.service: azure-waf
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
