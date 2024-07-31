@@ -7,7 +7,7 @@ brand: azure
 metadata:
   title: Azure service guidance mapped to Azure Well-Architected Framework
   description: Apply Well-Architected Framework concepts to Azure services to make informed decisions when choosing service and its feature set.
-  ms.service: waf
+  ms.service: azure-waf
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
@@ -263,6 +263,13 @@ productDirectory:
       url: ./azure-sql-managed-instance/reliability.md
       azureCategories:
         - databases
+    # Card
+    - title: Azure Stack HCI
+      summary: Use Azure Stack HCI to create and manage virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
+      imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
+      url: azure-stack-hci.md
+      azureCategories:
+        - hybrid
     # Card
     - title: Azure Stack Hub
       summary: Use Azure Stack Hub as an integrated hardware system, with software preinstalled on validated hardware.
