@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 7/30/2024
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Application delivery considerations for Azure Virtual Desktop workloads

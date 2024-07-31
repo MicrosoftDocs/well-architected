@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/16/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avs
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-vmware
 ---
 
 # Infrastructure and provisioning considerations for Azure VMware Solution workloads

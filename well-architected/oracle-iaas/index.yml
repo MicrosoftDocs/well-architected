@@ -11,7 +11,7 @@ metadata:
   ms.date: 04/30/2024
   ms.topic: landing-page
   ms.collection: na
-  ms.service: waf
+  ms.service: azure-waf
   ms.subservice: waf-workload-oracle
 
 landingContent:
