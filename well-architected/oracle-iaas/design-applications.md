@@ -3,7 +3,7 @@ title: Design Oracle applications
 description: Review the design area for Oracle applications of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler
-ms.date: 04/15/2024
+ms.date: 07/30/2024
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-workload-oracle
@@ -34,7 +34,7 @@ Use the following recommendations to plan the migration of your Oracle applicati
 
 ### Web and application tiers
 
-- Deploy your application on virtual machines (VMs). Group those VMs in [availability sets](/azure/virtual-machines/availability-set-overview) to improve overall availability.
+- Deploy your application on virtual machines (VMs). Group those VMs in a [flexible virtual machine scale set](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) to improve overall availability.
 - If you need your application to autoscale, then consider using [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview).
 - Place VMs in a single availability zone to bring them physically closer together. However, keep in mind that as the Azure footprint grows, a single availability zone might span multiple physical datacenters. The distance between physical datacenters might cause network latency that affects your application. To get VMs as close as possible and achieve the lowest possible latency, deploy them within a [proximity placement group](/azure/virtual-machine-scale-sets/proximity-placement-groups).
 
