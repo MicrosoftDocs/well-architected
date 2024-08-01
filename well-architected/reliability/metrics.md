@@ -146,7 +146,7 @@ There are two main use cases:
 
 - High availability, where load is distributed across regions for additional capacity. The workload users aren't pinned to a region and the entire system's performance contributes to the SLO.
 
-- Bulkhead pattern, where the users are segmented by pinning them to specific regions. In such cases, treat multi-region deployments equal to having separate deployments in each region and measure SLOs per-region. 
+- Bulkhead pattern, where the users are segmented by pinning them to specific regions. In such cases, treat multi-region deployments as separate deployments, or *stamps*, in each region. Measure the health of each stamp separately, with the service level indicators that are appropriate to your workload. Consider your overall workload's SLO based on the health of each stamp. If you can fail over between stamps then your overall workload SLO will be higher, because a failure in one stamp is recoverable through a failover to another stamp.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Is the risk reduction worth the added complexity? Multi-region also introduces operational complexities, such as coordinating deployments, ensuring data consistency, handling latency, and others. Those operations are significant during recovery. Teams should weigh these complexities against the gains in resilience.
 
