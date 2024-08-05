@@ -57,7 +57,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload afterall.|
+|Do, Don't, consider, this.. |Because it's your workload after all.|
 
 ## Security
 
@@ -76,7 +76,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload afterall.|
+|Do, Don't, consider, this.. |Because it's your workload after all.|
 
 
 ## Cost Optimization
@@ -96,7 +96,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload afterall.|
+|Do, Don't, consider, this.. |Because it's your workload after all.|
 
 
 ## Operational Excellence
@@ -114,7 +114,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload afterall.|
+|Do, Don't, consider, this.. |Because it's your workload after all.|
 
 
 ## Performance Efficiency
@@ -132,7 +132,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload afterall.|
+|Do, Don't, consider, this.. |Because it's your workload after all.|
 
 
 ## Tradeoffs
