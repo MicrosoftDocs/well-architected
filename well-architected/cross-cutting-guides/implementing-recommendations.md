@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 [Azure Well-Architected Review](/assessments/azure-architecture-review/) is a self-assessment that can help a workload team examine a workload from the perspective of the Azure Well-Architected Framework. It consists of approximately 60 questions that are based on the key recommendations provided in the pillars of the Well-Architected Framework. The assessment tool can also pull in [Azure Advisor](/azure/advisor/) recommendations for an Azure subscription or resource group.
 
-At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement.
+At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement. You can present the assessment results in a final report to get buy-in for further actions from executives.
 
 ## When to take the assessment
 
@@ -34,12 +34,14 @@ Workload owners and key stakeholders should prioritize the recommendations in ac
 
 ## Monitor improvements
 
-Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
+Over time, the workload will evolve due to functionality changes, eliminating or accruing technical debt, and making tradeoffs. You should take a data-driven approach: you can use Azure built-in tools such as Azure Monitor and Azure Advisor and review their reports regularly to optimize your environment accordingly. Use the milestone feature of the assessment to track this change over time, using the prior milestone as a baseline. You'll see the change over time in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). The workload's component of the subscription's [Azure Advisor](/azure/advisor/) score will probably improve as well.
 
 ## Tips
 
+- Azure Well-Architected Review is a teamwork which has to be done in collaboration with key and relevant stakeholders in a safe environment. All participants must feel safe to surface the problems without worrying about any repercussions. Make it clear that everyone has to avoid blaming, finger pointing, abuse or personal attacks. Ask all the participants to be honest and avoid any attempt to cover-up issues. In addition, don't blindly trust participants' answers because there is a high chance of misunderstanding. Go through questions one by one and for every answer, ask clarifying questions to make sure you share the same understanding.
+- Before starting the assessment, prioritize the pillars according to your needs. Later on, you have to prioritize your efforts accordingly.
+- Remember that every choice is a trade-off and you need to pay attention more to why you're taking a decision than to how to implement it.
 - You should always sign in when you take assessments so that the tool can generate milestones.
-
   > [!WARNING]
   > Assessments are tied to a Microsoft Learn profile. They can't be transferred to or accessed by other profiles.
 
@@ -48,6 +50,103 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 - Use meaningful milestone names to indicate when you're evaluating the workload.
 - Use the notes feature on questions and on recommendations to capture any specifics that you want to discuss with the workload team.
 - Rather than answering the 60 questions across all five pillars in one assessment, consider taking the assessment one pillar at a time, staggered by month. Be sure to include the name of the pillar in the assessment's name.
+- Whenever your proposed solution or service costs additional money, clearly mention it.
+- Early on, you can start remediating issues with the highest reward-effort ratio to get quick wins. Check [effort and reward](#effort-and-reward) section below for further details.
+
+> [!NOTE]  
+> Improvisation of the cloud environment is a continuous journey: it can get better, but it will never be perfect.
+
+## How to report assessment results to get buy-in
+
+Azure Well-Architected Review is a continuous journey which requires buy-in from executives or stakeholders. Subsequently, Azure Well-Architected assessment results should be presented in a way to help you get buy-in for further actions. You can use following template as a starting point:
+
+### Executive summary
+
+This section has to be understandable by all types of audiences, as well as give a high-level view of the whole process. Address following questions:
+- What is this report about? 
+- What did you assess? (e.g. pillars, etc.)
+- How did you do the assessment? Workshops, hands-on investigation, etc.
+- Why are you using Microsoft Azure? What are the key takeaways? What are your main issues? What have you done well?
+- How are you trying to overcome these issues? What is your solution? 
+- What are the milestones to improve the situation? Briefly summarize what each milestone will achieve.
+
+
+### Methodology
+
+- How did you do the assessment? Workshops, hands-on investigation, etc.
+
+### Assumptions
+
+List all the implicit and explicit assumptions that readers should be aware of:
+- Which assumptions did you receive from the stakeholders?
+- What is the priority of the pillars?
+- Which workloads are covered? Do you have to deal with mission-critical workloads? If yes, what are SLAs, etc.?   Is there any recovery objective defined?
+- List any other assumptions that readers have to be aware of.
+
+### Summary of findings
+
+This section has to be understandable for a non-technical audience so avoid using jargon. Try to provide a balanced view so list positive aspects of the environment, team, operation or strategy. Then list the main issues which need improvement. This section should be readable within 1-2 minutes. 
+
+
+### Detailed findings
+Outline details about the most important issues along with recommendations. For more clarity, you can associate each issue with a severity level, and mark it with a color. Briefly, advise how to address the issues and you may assign owners. For example, “critical” issues can be marked as red and they require immediate attention; otherwise, they could result in data breach/security incidents. Following is an example:
+
+![image](https://github.com/azarboon/well-architected/assets/21277296/730b92c3-c61a-4b5f-9289-bbdbcd107f64)
+
+Then add a corresponding reward-effort matrix for the aforementioned issues. You may want to start addressing issues from button-right as it can provide quick wins. 
+
+![image](https://github.com/azarboon/well-architected/assets/21277296/65d767ac-ad34-4da7-bc15-7b18c7bf3d71)
+
+### Findings by Pillar
+
+This section targets a technical audience.  Create a subsection for each of the pillars, and list all the discovered points (negative and positive). Be specific. Here are some examples:
+
+**Operational Excellence**
+- Does not have a fully automated integration and deployment setup
+- Has a limited process or mechanism to mitigate deployment risks
+- Has codified and automated a few components/operations 
+
+**Security** 
+- Does not have any process or mechanism to audit, manage and minimize permissions
+- Relies on a centralized identity provider, which makes it easier to audit and to secure user authentication.
+
+### Remediation by pillar 
+
+This section targets a technical audience.  List all the action points to address major issues from each pillar. Be specific. You can use recommendations and corresponding links that you got at the end of the Azure Well-Architected Review self-assessment. Here are a few examples: 
+
+**Operational Excellence** 
+- Tagging 
+  - Currently, resources have tags, but there is no mechanism to ensure consistency across all resources. You can achieve that by creating policies in Azure Policy
+
+**Security**
+- Virtual Machines: 
+  - Enable vulnerability assessment. Azure has an integrated tool that can help you do that. Please note that this can result in additional costs.
+  - Enable Azure Endpoint Protection to help against malware
+
+### Effort and reward
+
+Provide a high-level reward-effort matrix for the current state consistent with pillars and subsections addressed in the previous sections. For example:
+
+![image](https://github.com/azarboon/well-architected/assets/21277296/5abfe06b-446f-4da3-bb16-807ccf10edfc)
+
+### Proposed roadmap
+
+Recommend to fix critical issues as soon as possible. Then propose milestones, each composed of action points. For example,
+
+**Milestone 1**
+- Configure built-in logging and monitoring tools in Azure components.
+- Configure and leverage Azure central governance tools, review them at least weekly, and tune the architecture accordingly.
+- Address suspicious authentications/authorizations in AD review.
+
+**Milestone 2**
+- Automate security remedial actions with help of Azure Policy.
+- Setup and follow a suitable version control working model.
+
+### Dependency chart 
+
+Outline dependencies between proposed actions from the roadmap. Following figure is only for illustration and helps the readers to understand the relationship between the activities.  
+
+![image](https://github.com/azarboon/well-architected/assets/21277296/d45e1dd4-c29d-4cc7-b2fb-576a5ba3290f)
 
 ## Get personalized support
 
