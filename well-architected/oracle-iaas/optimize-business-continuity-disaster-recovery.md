@@ -3,9 +3,9 @@ title: Optimize business continuity and disaster recovery
 description: Review the design area for BCDR of the Azure Well-Architected Framework. See how to apply these principles to Oracle on Azure IaaS workloads.
 author: jessiehaessler
 ms.author: jhaessler 
-ms.date: 04/15/2024
+ms.date: 07/30/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-workload-oracle
 ---
 
@@ -52,7 +52,7 @@ Incorporate the following recommendations to improve architectural redundancy an
 
 Azure provides many options for the high availability of individual components in an Oracle on IaaS architecture. For example, you can:
 
-- Deploy VMs in availability sets to guarantee separate fault domains and update domains.
+- Deploy VMs by using a flexible virtual machine scale set, which automatically spreads VMs across fault domains.
 - Create availability zones to protect against datacenter failures.
 - Place deployments in different regions to protect against full-region failures.
 

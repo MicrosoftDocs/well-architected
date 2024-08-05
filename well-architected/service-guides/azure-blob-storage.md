@@ -5,7 +5,7 @@ author: normesta
 ms.author: normesta
 ms.date: 04/18/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 products:
   - azure-blob-storage

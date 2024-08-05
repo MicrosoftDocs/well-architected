@@ -13,7 +13,7 @@ Architects should seek ways to stay involved with the workload as it changes ove
 
 ## Support modeling exercises
 
-Teams can model workloads in multiple dimensions and for multiple purposes. For example, workloads can abstract health signals out of implementation details and into business constructs. Or they can model system growth over time or the licensing process to evaluate alternative billing models.  
+Teams can model workloads in multiple dimensions and for multiple purposes. For example, workloads can abstract health signals out of implementation details and into business constructs. Or they can model system growth over time or the licensing process to evaluate alternative billing models.
 
 Whether the model is an abstraction or evaluates hypotheticals to inform a future business decision, architects contribute to that process. They use their insight into the workload design, its known or predicted limitations, and its scaling characteristics, to validate or tune the assumptions in the model and approximate the system more accurately. For example, architects review the health model for a critical flow by evaluating the characteristics of dependencies, such as service-level objectives (SLOs).
 

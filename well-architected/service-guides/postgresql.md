@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
 ms.date: 11/14/2023
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
 products:

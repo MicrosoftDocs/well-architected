@@ -55,7 +55,7 @@
       "brand": "azure",
       "uhfHeaderId": "azure",
       "titleSuffix": "Microsoft Azure Well-Architected Framework",
-      "ms.service": "waf",
+      "ms.service": "azure-waf",
       "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ]    
      },
     "open_to_public_contributors": {
@@ -71,8 +71,8 @@
         "mission-critical/**/*.*": "waf-workload-mission-critical",
         "carrier-grade/**/*.*": "waf-workload-carrier-grade",
         "hybrid/**/*.*": "waf-workload-hybrid",
-        "azure-virtual-desktop/**/*.*": "waf-workload-avd",
-        "azure-vmware/**/*.*": "waf-workload-avs",        
+        "azure-virtual-desktop/**/*.*": "waf-workload-azure-virtual-desktop",
+        "azure-vmware/**/*.*": "waf-workload-azure-vmware",        
         "hybrid/**/*.*": "waf-workload-hybrid",        
         "iot/**/*.*": "waf-workload-iot",
         "oracle-iaas/**/*.*": "waf-workload-oracle",        
