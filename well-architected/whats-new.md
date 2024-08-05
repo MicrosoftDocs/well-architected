@@ -19,13 +19,13 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated articles
 
+- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
+
 Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
 
 - [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
 - [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
-
-- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
-- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
 
 ### Carrier Grade retirement
 
