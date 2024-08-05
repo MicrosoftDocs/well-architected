@@ -372,26 +372,8 @@
               href: service-guides/iot-hub/reliability.md
             - name: Operational excellence
               href: service-guides/iot-hub/operational-excellence.md
-        - name: IP addresses
-          href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
           href: service-guides/azure-log-analytics.md
-        - name: Network connectivity
-          items:
-            - name: Reliability
-              href: service-guides/network-connectivity/reliability.md
-            - name: Cost optimization
-              href: service-guides/network-connectivity/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/network-connectivity/operational-excellence.md
-        - name: Network Virtual Appliances (NVA)
-          items:
-            - name: Reliability
-              href: service-guides/network-virtual-appliances/reliability.md
-            - name: Cost optimization
-              href: service-guides/network-virtual-appliances/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/network-virtual-appliances/operational-excellence.md
         - name: Queue Storage
           items:
             - name: Reliability
@@ -422,6 +404,8 @@
               href: service-guides/traffic-manager/operational-excellence.md
         - name: Virtual Machines
           href: service-guides/virtual-machines.md
+        - name: Virtual Network
+          href: service-guides/virtual-network.md          
     - name: Cross-cutting guides
       items:
       - name: Health modeling
