@@ -5,9 +5,6 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: conceptual
-
-categories:
-  - iot
 ---
 
 # Operational excellence in your IoT workload
@@ -61,7 +58,7 @@ Brownfield projects that already have hardware deployed typically have more hard
 
 [Azure Certified Device Program](https://www.microsoft.com/azure/partners/azure-certified-device) certification validates that a device can connect with Azure IoT Hub and securely provision through the IoT Hub Device Provisioning Service (DPS). The [Azure Certified Device Catalog](https://devicecatalog.azure.com) can help you find and select certified partner hardware. The Device Catalog has search and filter capabilities you can use to find hardware that meets your solution requirements.
 
-An important feature to look for in Azure IoT-certified hardware is Azure Plug-and-Play and Digital Twins Definition Language (DTDL) compatibility. These features ensure that devices integrate seamlessly with services such as Azure Digital Twins. For Azure IoT Edge scenarios, it's important to find catalog devices that have the [IoT Edge Managed](/azure/certification/program-requirements-edge-managed) certification. This certification guarantees the device can run the IoT Edge runtime, and enables deployment and management of IoT Edge modules that support edge processing and analytics workloads.
+An important feature to look for in Azure IoT-certified hardware is Azure Plug-and-Play and Digital Twins Definition Language (DTDL) compatibility. These features ensure that devices integrate seamlessly with services such as Azure Digital Twins. For Azure IoT Edge scenarios, it's important to find catalog devices that have the [IoT Edge Managed](/azure/iot-edge/iot-edge-certs) certification. This certification guarantees the device can run the IoT Edge runtime, and enables deployment and management of IoT Edge modules that support edge processing and analytics workloads.
 
 Device components and spares must be available to cover maintenance and support contracts for the lifetime of the solution. Ensure a timely and secure equipment supply at the start of the project, because this requirement can be expensive to introduce later. Use a trusted vendor chain and consider dual or multiple supply sources.
 
@@ -299,7 +296,7 @@ When you implement automation and DevOps in IoT systems, follow specific automat
 
 - [Automatic IoT device and module management using the Azure CLI](/azure/iot-hub/iot-hub-automatic-device-management-cli)
 - [Azure IoT Edge requirements](/azure/iot-edge/support)
-- [Azure IoT Edge managed certification requirements](/azure/certification/program-requirements-edge-managed)
+- [Azure IoT Edge managed certification requirements](/azure/iot-edge/iot-edge-certs)
 - [DPS X.509 attestation](/azure/iot-dps/concepts-x509-attestation)
 - [Azure IoT Hub scaling](/azure/iot-hub/iot-hub-scaling)
 - [Control access to Azure IoT Hub by using Microsoft Entra ID](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)

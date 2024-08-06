@@ -5,10 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 08/15/2022
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-
 ---
 
 # Mission-critical workloads
@@ -17,11 +13,11 @@ This section strives to address the challenges of designing mission-critical wor
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+The term *workload* refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
 
-The term _mission-critical_ refers to a criticality scale that covers significant financial cost (business-critical) or human cost (safety-critical) associated with unavailability or underperformance.
+The term *mission-critical* refers to a criticality scale that covers significant financial cost (business-critical) or human cost (safety-critical) associated with unavailability or underperformance.
 
-A _mission-critical workload_ therefore describes a collection of application resources, which must be highly reliable on the platform. The workload must always be available, resilient to failures, and operational.
+A *mission-critical workload* therefore describes a collection of application resources, which must be highly reliable on the platform. The workload must always be available, resilient to failures, and operational.
 
 ## Video: Mission-critical workloads on Azure
 
@@ -31,7 +27,7 @@ A _mission-critical workload_ therefore describes a collection of application re
 
 Microsoft Azure makes it easy to deploy and manage cloud solutions. However, building mission-critical workloads that are highly reliable on the platform remains a challenge for these main reasons:
 
-- Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
+- Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies *and* optimally configure them to deliver end-to-end functionality.
 
 - Failure is inevitable in any complex distributed system, and the solution must therefore be architected to handle failures with correlated or cascading impact. This is a change in mindset for many developers and architects entering the cloud from an on-premises environment; reliability engineering is no longer an infrastructure subject, but should be a first-class concern within the application development process.
 
@@ -81,14 +77,6 @@ The guidance provided within this series is based on a solution-orientated appro
 - [Baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone)&mdash;Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
   > Refer to the implementation: [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected)
-  
-## Industry scenarios
-
-The mission-critical guidance within this series forms an industry agnostic design methodology which can be applied across a multitude of different industry contexts. The following list provides specific examples where the mission-critical design methodology has been applied and tailored to a particular industry scenario.  
-
-  - [Carrier-grade](/azure/well-architected/carrier-grade/carrier-grade-get-started) within the telecommunications industry
-
-A carrier-grade workload pivots on both business-critical and safety-critical aspects, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties.
 
 ## Next step
 

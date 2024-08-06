@@ -7,7 +7,7 @@ ms.date: 02/20/2024
 ms.topic: conceptual
 products:
   - azure-virtual-machines
-categories:
+azure.category:
   - compute
 ---
 

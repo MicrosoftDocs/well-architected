@@ -5,6 +5,8 @@ author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
 products: azure-kubernetes-service
+azure.category:
+  - containers
 ---
 
 # Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)

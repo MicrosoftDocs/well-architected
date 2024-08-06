@@ -7,9 +7,9 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-database-mysql
-categories:
-  - data
-  - management-and-governance
+azure.category:
+  - databases
+
 ---
 
 # Azure Database for MySQL and cost optimization

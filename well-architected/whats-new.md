@@ -3,13 +3,51 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 05/06/2024
-ms.topic: conceptual
+ms.date: 08/05/2024
+ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## July 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Stack HCI](./service-guides/azure-stack-hci.md): Explore design considerations and configuration recommendations for Azure Stack HCI. Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+
+### Updated articles
+
+- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
+
+Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
+
+- [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
+- [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
+
+### Carrier Grade retirement
+
+- This month we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.
+
+## June 2024
+
+### Updated articles
+
+- [Recommendations for defining reliability targets](./reliability/metrics.md): Find updated SLO and SLA guidance to help you set and measure reliability targets for your workload.
+
+- [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md): Learn how Azure carbon optimization can help you reduce the carbon footprint of your workload by providing granular emissions data.
+
+## May 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Files](./service-guides/azure-files.md): Explore design considerations and recommendations for Azure Files and Azure File Sync. Azure Files is a fully managed file share service that supports the SMB protocol and Network File System (NFS) protocol. Azure File Sync is a service that enables you to centralize your organization's file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server.
+
+### Updated articles
+
+- [Security considerations for Azure VMware Solution workloads](./azure-vmware/security.md): Learn about using resource locks to prevent accidental deletions or changes.
 
 ## April 2024
 
@@ -37,6 +75,7 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
 
 - [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
 
+
 ## February 2024
 
 ### New articles
@@ -62,7 +101,7 @@ In January we added two new articles, and we updated two articles.
 
 - In [Optimize workload design using flows](./cross-cutting-guides/optimize-workload-using-flows.md), learn how to optimize workloads through structured flow design. Take a look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. As you work to align flows with business processes and use cases, find practical examples and recommendations in this article.
 
-### New articles
+### Updated articles
 
 Find updates to the following articles in the Operational Excellence pillar:
 

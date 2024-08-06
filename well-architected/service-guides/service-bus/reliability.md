@@ -7,9 +7,8 @@ ms.date: 01/24/2022
 ms.topic: conceptual
 products:
   - azure-service-bus
-categories:
-  - messaging
-  - management-and-governance
+azure.category:
+  - integration
 ---
 
 # Service Bus and reliability

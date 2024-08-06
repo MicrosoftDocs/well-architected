@@ -5,11 +5,11 @@ author: khdownie
 ms.author: kendownie
 ms.date: 05/20/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 products:
   - azure-file-storage
-categories:
+azure.category:
   - storage
 ---
 
@@ -25,7 +25,7 @@ This article assumes that as an architect, you've reviewed the [storage options]
 >
 > Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 >
-> Also included are _recommendations_ on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Files and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+> Also included are *recommendations* on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Files and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 
 ## Reliability
 
@@ -59,7 +59,7 @@ Start your design strategy based on the [design review checklist for Reliability
 |------------------------------|-----------|
 |Configure your storage account for redundancy.<br><br> For maximum availability and durability, configure your account with [zone-redundant storage (ZRS)](/azure/storage/files/files-redundancy#zone-redundant-storage), [GRS](/azure/storage/files/files-redundancy#geo-redundant-storage), or [GZRS](/azure/storage/files/files-redundancy#geo-zone-redundant-storage).<br><br> Limited Azure regions support ZRS for [standard](/azure/storage/common/redundancy-regions-zrs#standard-storage-accounts) and [premium](/azure/storage/files/redundancy-premium-file-shares) file shares. Only standard SMB accounts support GRS and GZRS. Premium SMB shares and NFS shares don't support GRS and GZRS.<br><br> Azure Files doesn't support read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS). If you configure a storage account to use RA-GRS or RA-GZRS, the file shares are configured and billed as GRS or GZRS. | Redundancy protects your data against unexpected failures. The ZRS and GZRS configuration options replicate across various availability zones and enable applications to continue reading data during an outage. For more information, see [Durability and availability by outage scenario](/azure/storage/files/files-redundancy#durability-and-availability-by-outage-scenario) and [Durability and availability parameters](/azure/storage/files/files-redundancy#durability-and-availability-parameters).|
 |Before you initiate a failover or failback, check the value of the [last synchronization time](/azure/storage/common/last-sync-time-get) property to [evaluate the potential for data loss](/azure/storage/files/files-disaster-recovery#anticipate-data-loss). This recommendation applies only to GRS and GZRS configurations. |This property helps you estimate how much data you might lose if you initiate an account failover.<br><br> All data and metadata that's written before the last synchronization time is available on the secondary region, but you might lose data and metadata that's written after the last synchronization time because it's not written to the secondary region.|
-|As a part of your backup and recovery strategy, [enable soft delete](/azure/storage/files/storage-files-enable-soft-delete) and [use snapshots](/azure/storage/files/storage-snapshots-files) for point-in-time restore.<br><br> You can use [Azure Backup](/azure/backup/azure-file-share-backup-overview) to back up your SMB file shares. You can also use Azure File Sync to back up on-premises SMB file shares to an Azure file share. | Soft delete works on a file share level to protect Azure file shares against accidental deletion.<br><br> Point-in-time restore protects against accidental deletion or corruption because you can restore file shares to an earlier state. For more information, see [Data protection overview](/azure/storage/files/files-data-protection-overview).|
+|As a part of your backup and recovery strategy, [enable soft delete](/azure/storage/files/storage-files-enable-soft-delete) and [use snapshots](/azure/storage/files/storage-snapshots-files) for point-in-time restore.<br><br> You can use [Azure Backup](/azure/backup/azure-file-share-backup-overview) to back up your SMB file shares. You can also use Azure File Sync to back up on-premises SMB file shares to an Azure file share. <br><br> Azure Backup also allows you to do a vaulted backup (preview) of Azure Files to protect your data from ransomware attacks or source data loss due to a malicious actor or rogue admin. By using vaulted backup, Azure Backup copies and stores data in the Recovery Services vault. This creates an offsite copy of data that you can retain for up to 99 years. Azure Backup creates and manages the recovery points as per the schedule and retention defined in the backup policy. [Learn more](/azure/backup/azure-file-share-backup-overview?tabs=vault-standard). | Soft delete works on a file share level to protect Azure file shares against accidental deletion.<br><br> Point-in-time restore protects against accidental deletion or corruption because you can restore file shares to an earlier state. For more information, see [Data protection overview](/azure/storage/files/files-data-protection-overview).|
 
 ## Security
 

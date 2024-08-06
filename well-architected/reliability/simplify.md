@@ -124,7 +124,7 @@ For example, you might store a product catalog in a document database, such as A
 
   - Blobs in Azure Blob Storage.
 
-- Prioritize availability over consistency. The [CAP theorem](/azure/well-architected/carrier-grade/carrier-grade-design-area-data-model#cap-theorem) implies that you have to make tradeoffs between availability and consistency in a distributed system. You can't completely avoid network partitions, which is the other component of the CAP theorem. But you can adopt an eventual consistency model to achieve higher availability.
+- Prioritize availability over consistency. The CAP theorem implies that you have to make tradeoffs between availability and consistency in a distributed system. You can't completely avoid network partitions, which is the other component of the CAP theorem. But you can adopt an eventual consistency model to achieve higher availability.
 
 - Consider the skill set of your development team. There are advantages to using polyglot persistence, but it's possible to go overboard. It requires new skill sets to adopt a new data storage technology. To get the most out of the technology, your development team must:
 

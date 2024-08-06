@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:02](checklist.md)|Establish a security baseline that's aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
+|[SE:02](checklist.md)|Maintain a secure development lifecycle by using a hardened, mostly automated, and auditable software supply chain. Incorporate a secure design by using threat modeling to safeguard against security-defeating implementations.|
 |---|---|
 
 **Related guide**: [Recommendations for securing a development lifecycle](secure-development-lifecycle.md)

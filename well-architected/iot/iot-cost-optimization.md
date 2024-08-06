@@ -5,9 +5,6 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: conceptual
-
-categories:
-  - iot
 ---
 
 # Cost optimization in your IoT workload
@@ -81,7 +78,7 @@ For devices connected to the cloud, optimize data transmissions to maintain cost
 
 To learn more about Azure IoT devices, see:
  
-- [Overview of Azure IoT device types](/azure/iot-develop/concepts-iot-device-types)
+- [Overview of Azure IoT device types](/azure/iot/concepts-iot-device-types)
 - [Best practices for device configuration within an IoT solution](/azure/iot-hub/iot-hub-configuration-best-practices)
 
 ### Hardware selection
@@ -349,7 +346,7 @@ Integration with other systems and services can be complex. Many services can he
 
 Azure Digital Twins can integrate various systems and services with IoT data. Azure Digital Twins transforms all data into its own digital entity, so it's important to understand its service limits and tuning points for cost reductions. Review [Azure Digital Twins service limits](/azure/digital-twins/reference-service-limits) when designing your architecture. Understand functional limitations to help integrate effectively with business systems.
 
-When you use the query API, Azure Digital Twins charges per [Query Unit (QU)](/azure/digital-twins/concepts-query-units). You can trace the number of QUs the query consumed in [the response header](/rest/api/digital-twins/dataplane/query/querytwins#response). Reduce query complexity and the number of results to optimize costs. For more information, see [Find the QU consumption in Azure Digital Twins](/azure/digital-twins/concepts-query-units#find-the-query-unit-consumption-in-azure-digital-twins).
+When you use the query API, Azure Digital Twins charges per [Query Unit (QU)](/azure/digital-twins/concepts-query-units). You can trace the number of QUs the query consumed in [the response header](/rest/api/digital-twins/dataplane/query/query-twins#response). Reduce query complexity and the number of results to optimize costs. For more information, see [Find the QU consumption in Azure Digital Twins](/azure/digital-twins/concepts-query-units#find-the-query-unit-consumption-in-azure-digital-twins).
 
 ## DevOps layer
 

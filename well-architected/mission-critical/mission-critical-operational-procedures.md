@@ -5,8 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
-categories: devops
-
 ---
 
 # Operational procedures for mission-critical workloads on Azure
@@ -20,7 +18,7 @@ This design area explores how to implement effective and consistent operational 
 
 ## DevOps processes
 
-_DevOps_ combines development and operational processes and teams into a single engineering function. It encompasses the entire application lifecycle and uses automation and DevOps tooling to conduct deployment operations in a fast, efficient, and reliable way. DevOps processes support and sustain continuous integration and continuous delivery (CI/CD) while fostering a culture of continuous improvement.
+*DevOps* combines development and operational processes and teams into a single engineering function. It encompasses the entire application lifecycle and uses automation and DevOps tooling to conduct deployment operations in a fast, efficient, and reliable way. DevOps processes support and sustain continuous integration and continuous delivery (CI/CD) while fostering a culture of continuous improvement.
 
 The DevOps team for a mission-critical application must be responsible for these tasks:
   - Creation and management of application and infrastructure resources via CI/CD automation.
@@ -29,7 +27,7 @@ The DevOps team for a mission-critical application must be responsible for these
   - Network management for application components.
   - Cost management for application resources.
 
-_DevSecOps_ expands the DevOps model by integrating security monitoring, application audits, and quality assurance with development and operations throughout the application lifecycle. DevOps teams are needed for security-sensitive and highly regulated scenarios to ensure that security is incorporated throughout the development lifecycle rather than at a specific release stage or gate.
+*DevSecOps* expands the DevOps model by integrating security monitoring, application audits, and quality assurance with development and operations throughout the application lifecycle. DevOps teams are needed for security-sensitive and highly regulated scenarios to ensure that security is incorporated throughout the development lifecycle rather than at a specific release stage or gate.
 
 ### Design considerations
 

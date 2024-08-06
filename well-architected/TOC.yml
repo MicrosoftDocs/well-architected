@@ -245,7 +245,13 @@
       - name: Azure Virtual Desktop
         href: azure-virtual-desktop/index.yml
       - name: Azure VMware Solution
+<<<<<<< HEAD
         href: azure-vmware/index.yml                             
+=======
+        href: azure-vmware/index.yml 
+      - name: Hybrid
+        href: hybrid/hybrid-overview.md                                 
+>>>>>>> 1b66ceaef42d7d3f3ea72a32d982b48a1e1fdb04
       - name: IoT
         href: iot/iot-overview.md
       - name: Mission-critical
