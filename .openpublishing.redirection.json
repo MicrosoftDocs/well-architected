@@ -1361,6 +1361,36 @@
 			"redirect_document_id": false																			
 		},	
 		{
+			"source_path": "well-architected/hybrid/hybrid-cost.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-opex.md ",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-overview.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-performance-efficiency.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-reliability.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-security.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
 			"source_path": "well-architected/oracle-iaas/old-articles/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
 			"redirect_document_id": false
@@ -1381,6 +1411,7 @@
 			"redirect_document_id": false
 		},
 		{
+			
 			"source_path": "well-architected/oracle-iaas/old-articles/reliability.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
 			"redirect_document_id": false
@@ -1396,6 +1427,7 @@
 			"redirect_document_id": false
 		},
 		{
+			
 			"source_path": "well-architected/service-guides/azure-app-service/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
 			"redirect_document_id": false
