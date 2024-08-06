@@ -68,5 +68,34 @@ The recommendations below apply to both model training and fine-tuning functions
 > [!NOTE]
 > For foundation models, your choice of model hosting platform may limit your fine-tuning options. For example, using Azure OpenAI for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
 
-## The model hosting platform
+## The model hosting and inferencing platform
 
+Model hosting and inferencing functions make up the serve layer of the AI workload and those functions are performed with endpoints specific to the software that you choose, like NVIDIA Triton, TorchServe, TensorFlow Serving and many others. These model serving software solutions, in essence, are Python SDKs that are specialized in fronting a model with an API and adding some additional functionality specific to that solution. As such, you can either choose your hosting platform based upon your choice of software, or choose your software based upon your choice of hosting platform.
+
+Fundamentally, the APIs for the serve layer are microservices, so you should follow the same practices for these APIs as other microservices in your environments. They should be containerized, [bulkheaded](/azure/architecture/patterns/bulkhead) from other services, and should have their own lifecycles independent of other services and APIs. That being said, serve layer APIs generally require significantly more GPU-based compute power and much larger container images than traditional APIs. 
+
+The inferencing endpoints will either be used for batch or online inferencing processes, and the inferencing method will help determine the right hosting platform. Batch inferencing is best hosted on a platform that supports transient usage that supports the compute to be shutdown when not in use. Online inferencing is best hosted on a platform that supports elastic compute utilization, which scales automatically based on the load at any given time. 
+
+### Factors to consider
+
+-**Reliability:** Server layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
+
+- **Networking:** Determine whether you require private networking and egress firewalling.
+
+- **Identity and ccess security:** Determine what identity and access controls are required for your endpoints. For example, do you require native role-based access control (RBAC) or built-in support for your identity and access platform, like Microsoft Entra ID.
+
+ - **Monitoring capabilities:** Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
+
+### Recommendations 
+
+#### Batch inferencing
+
+- If you are performing inferencing on data that resides in a platform that supports model hosting, like Databricks, consider using that platform for inferencing. Be sure to isolate the inferencing compute from other functions performed by the data platform.
+
+- If you do not have an appropriate platform already in use, prefer [Azure ML batch endpoints](/azure/machine-learning/how-to-mlflow-batch).
+
+#### Online inferencing
+
+- Consider serverless and PaaS hosting as your first option. These services are typically the easiest to adopt and manage, simplifying your design and minimizing operational burden. For example, you can host foundational models in Azure Open AIA
+  - Even if you are using an external hosting platform, consider using Azure ML Serverless API endpoints to aggregate endpoints in Azure ML.
+  - 
