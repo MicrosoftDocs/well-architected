@@ -67,7 +67,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Use private DNS whenever possible and minimize the number of DNS zones. 
 >
->   Simplify routing configurations. Consider routing all traffic through the firewall, if used in the architecture. 
+>   Simplify routing configurations. Consider routing all traffic through the firewall, if used in the architecture.
+> 
+> - **Test the resiliency of the network**. Utilize Azure Chaos Studio to simulate network connectivity disruptions, ensuring workload redundancy and assessing the impact range of potential failures.
 
 ##### Recommendations
 
@@ -95,15 +97,16 @@ Start your design strategy based on the [**design review checklist for Security*
 >    Secure PaaS service connectivity with Private Endpoints while blocking outbound connections.   
 >
 > - **Apply the principle of least privilege**. Configure role-based-access-controls (RBAC) with a no-access mindset for network-related roles. Make sure that not all users are able to modify settings.
+>
 > - 
 
-
-. 
 
 ##### Recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
+|(dubious) [**Use the VNet encryption**](/azure/virtual-network/virtual-network-encryption-overview) to protect all traffic between virtual machines that are part of the same network.|You can encrypt and decrypt traffic between Azure resources that are placed in the same virtual network. |
+|(dubious for prod)[**Enable Virtual Network Verifier**](/azure/virtual-network-manager/concept-virtual-network-verifier) in the Azure Virtual Network Manager. <br><br> Use this feature in your preproduction environment to test the connectivity between resources. This features isn't recommended in production. |You want to make sure that the Azure resources within the network are reachable and not blocked by policies.|
 |Do, Don't, consider, this.. |Because it's your workload after all.|
 
 
@@ -163,6 +166,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 | Recommendation|Benefit|
 |-----------|-------- |
+|[**Enable the Connection Monitor**](/azure/network-watcher/connection-monitor-overview) of Network Watcher. |You'll be able to track loss and latency across networks. This feature is needed to ensire optimal performance for both intra-Azure connectivity and connectivity between on-premises and Azure environments.|
 |Do, Don't, consider, this.. |Because it's your workload after all.|
 
 
