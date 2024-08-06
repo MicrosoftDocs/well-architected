@@ -55,19 +55,19 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Set your reliability targets**. Most VNets and their subservices don't have an SLA, meaning if the VNet experiences an outage, the entire region will be affected. However, specific services like load balancers do have SLAs. It's recommended that you have a good understanding of the coverage provided around the published percentile by Azure. Keep in mind that The central IT services organization typically owns the VNet and central services. Your objective calculation should account for that dependency.  
 >
-> **Add redundancy to mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
+> - **Add redundancy to mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
 >
-> **Create network diagrams with focus on user flows**. These diagrams are valuable for visualizing network segmentation, identifying potential points of failure, and pinpointing key transitions like internet ingress and egress points. They also serve as important tools for audits and incident response.
+> - **Create network diagrams with focus on user flows**. These diagrams are valuable for visualizing network segmentation, identifying potential points of failure, and pinpointing key transitions like internet ingress and egress points. They also serve as important tools for audits and incident response.
 >
->   Highlight high priority traffic flows between the user and workload resources. For instance, prioritizing ExpressRoute for enterprise network flows or securing user requests in a DMZ design can aid in capacity planning for firewalls and other services.
+>   Highlight high priority traffic flows between the user and workload resources. For instance, prioritizing ExpressRoute for enterprise network flows or securing user requests in a DMZ design can provide insight into capacity planning for firewalls and other services.
 >
-> **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs, Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network.
+> - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs, Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network.
 >
-> Prefer using service names and Application Security Groups (ASGs) over subnets/IPs. 
+>   Prefer using service names and Application Security Groups (ASGs) over subnets/IPs. 
 >
-> Use private DNS whenever possible and minimize the number of DNS zones. 
+>   Use private DNS whenever possible and minimize the number of DNS zones. 
 >
-> Simplify routing configurations. Consider routing all traffic through the firewall, if used in the architecture. 
+>   Simplify routing configurations. Consider routing all traffic through the firewall, if used in the architecture. 
 
 ##### Recommendations
 
@@ -87,7 +87,18 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
-> **Establish a security baseline**. Review the [security baseline for Virtual Network](/security/benchmark/azure/baselines/virtual-network-security-baseline).
+> - **Establish a security baseline**. Review the [security baseline for Virtual Network](/security/benchmark/azure/baselines/virtual-network-security-baseline) and incorporate applicable measures in your baseline.
+>
+> - **Keep your network perimeter up to date**. Security settings, such as Network Security Groups (NSGs), Application Security Groups (ASGs), and even IP ranges must be updated regularly. Outdated rules may not align with current network architecture or traffic patterns. This security gap can leaving your network exposed to potential attacks by lowering restrictions on ingress and egress traffic. 
+> - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all traffic through an network virtual appliance, such as a firewall, by using UDRs for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
+>
+>    Secure PaaS service connectivity with Private Endpoints while blocking outbound connections.   
+>
+> - **Apply the principle of least privilege**. Configure role-based-access-controls (RBAC) with a no-access mindset for network-related roles. Make sure that not all users are able to modify settings.
+> - 
+
+
+. 
 
 ##### Recommendations
 
