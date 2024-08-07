@@ -3,13 +3,33 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 07/03/2024
+ms.date: 08/05/2024
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## July 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Stack HCI](./service-guides/azure-stack-hci.md): Explore design considerations and configuration recommendations for Azure Stack HCI. Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+
+### Updated articles
+
+- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
+
+Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
+
+- [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
+- [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
+
+### Carrier Grade retirement
+
+- This month we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.
 
 ## June 2024
 
