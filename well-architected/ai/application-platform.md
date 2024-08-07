@@ -78,13 +78,17 @@ The inferencing endpoints will either be used for batch or online inferencing pr
 
 ### Factors to consider
 
--**Reliability:** Server layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
+- **Reliability:** Server layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
 
 - **Networking:** Determine whether you require private networking and egress firewalling.
 
 - **Identity and ccess security:** Determine what identity and access controls are required for your endpoints. For example, do you require native role-based access control (RBAC) or built-in support for your identity and access platform, like Microsoft Entra ID.
 
+Adopt a strategy of applying meaningful tags to images in your container registry to ensure that your model hosting service is pulling a specific version that the team can easily identify. This approach helps with data governance, reducing the risk of outdated or incorrect models being used in production.
+
  - **Monitoring capabilities:** Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
+
+Traceability is a critical component of monitoring for model hosting. It is important to know information about the model like the current version, who deployed it, when it was deployed, and the model's data lineage. 
 
  - **Performance:** Inference latency is a common concern and differt platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tenedencies and often have no throughput guarantees. On the other hand, those same platforms may offer self=hosted offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get you predicatable latency behavior.
 
@@ -103,7 +107,8 @@ Advanced architectures can combine multiple deployments to achieve both fixed th
 #### Online inferencing
 
 - Consider serverless and PaaS hosting as your first option. These services are typically the easiest to adopt and manage, simplifying your design and minimizing operational burden. For example, Azure Open AI is a good choice for foundational models.
-  - Consider using Azure ML's Serverless API to aggregate endpoint access even if you use Azure OpenAI or another foundational model hosting solution. 
+
+   - Consider using Azure ML's Serverless API to aggregate endpoint access even if you use Azure OpenAI or another foundational model hosting solution. 
 
 _  Prefer Azure ML for with managed Compute Clusters for custom models. Azure ML-managed compute supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. As the compute is managed by the service, day-2 operations are much easier than self-hosting. It also offers a wide selection of compute configurations and scaling capabilities.
 
@@ -111,7 +116,7 @@ _  Prefer Azure ML for with managed Compute Clusters for custom models. Azure ML
 
 ## The orchestration platform
 
-Orchestration in the constext of AI workload application platforms refers to tools. like prompt flow in [Azure ML](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Studio](/azure/ai-studio/how-to/prompt-flow), that are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
+Orchestration in the constext of AI workload application platforms refers to tools like prompt flow in [Azure ML](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Studio](/azure/ai-studio/how-to/prompt-flow), that are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
 
 ### Factors to consider
 
@@ -125,3 +130,6 @@ Like all other production workloads in your cloud estate, the orchestration tool
 
 ### Recommendations
 
+- Prefer an off-the-shelf solution like Prompt Flow, verifying that its capabilities match your orchestration needs before looking into custom hosting with tools like Langchain or Semantic Kernel.
+
+- Endpoints for solutions like Propmpt Flow should be hosted on Azure ML with Compute Instances or with self-hosting on AKS.
