@@ -33,7 +33,7 @@ The three Oracle database backup methods for an Oracle workload on Azure IaaS in
 - *VM-level backups*. Use [Azure Backup](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup) for this method.
 
   >[!Caution]
-  >[CentOS, a Linux distribution that has reached End Of Life (EOL) status](/azure/virtual-machines/workloads/centos/centos-end-of-life). Make sure the VMs in your backup environment are running OS that have supportability.
+  >[CentOS, a Linux distribution that has reached End Of Life (EOL) status](/azure/virtual-machines/workloads/centos/centos-end-of-life). Make sure the VMs in your backup environment are running OSs that have supportability.
 
 When you stream backups of large databases, the time that it takes to copy the data to then restore it can exceed the RTO requirements. Storage-level snapshots are the best option for that scenario.
 
