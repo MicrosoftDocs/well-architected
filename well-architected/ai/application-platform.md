@@ -86,6 +86,12 @@ The inferencing endpoints will either be used for batch or online inferencing pr
 
  - **Monitoring capabilities:** Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
 
+ - **Performance:** Inference latency is a common concern and differt platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tenedencies and often have no throughput guarantees. On the other hand, those same platforms may offer self=hosted offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get you predicatable latency behavior.
+
+Be aware of service limits and quotas that may effect your performance, like those for [Azure Open AI](/azure/ai-services/openai/quotas-limits). Often these quotas and limits are aggressively set to meet capacity demands, so if your choice of platform doesn't deliver the performance that you target, you may need to adopt strategies to spread the compute demand across instances to stay within those limits. 
+
+Advanced architectures can combine multiple deployments to achieve both fixed throughput for a bulk of the workload and bursting capabilities into more flexible compute. 
+
 ### Recommendations 
 
 #### Batch inferencing
@@ -96,6 +102,26 @@ The inferencing endpoints will either be used for batch or online inferencing pr
 
 #### Online inferencing
 
-- Consider serverless and PaaS hosting as your first option. These services are typically the easiest to adopt and manage, simplifying your design and minimizing operational burden. For example, you can host foundational models in Azure Open AIA
-  - Even if you are using an external hosting platform, consider using Azure ML Serverless API endpoints to aggregate endpoints in Azure ML.
-  - 
+- Consider serverless and PaaS hosting as your first option. These services are typically the easiest to adopt and manage, simplifying your design and minimizing operational burden. For example, Azure Open AI is a good choice for foundational models.
+  - Consider using Azure ML's Serverless API to aggregate endpoint access even if you use Azure OpenAI or another foundational model hosting solution. 
+
+_  Prefer Azure ML for with managed Compute Clusters for custom models. Azure ML-managed compute supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. As the compute is managed by the service, day-2 operations are much easier than self-hosting. It also offers a wide selection of compute configurations and scaling capabilities.
+
+- If you choose to self-host your model on a Kurbentes cluster within Azure ML or another platform, ensure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions in an effort to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements while avoiding over-provisioning.
+
+## The orchestration platform
+
+Orchestration in the constext of AI workload application platforms refers to tools. like prompt flow in [Azure ML](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Studio](/azure/ai-studio/how-to/prompt-flow), that are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
+
+### Factors to consider
+
+Like all other production workloads in your cloud estate, the orchestration tool require considerations for:
+
+- **Reliability, security, and monitoring:** These tools should adhere to standards for production workloads for reliability, security, and monitoring.
+
+- **Peformance:** These tools do not require GPU-optimized or GPU-based compute, so prefer general purpose SKUs.
+
+- **Cost optimization:** The tools are "always-on" so prefer elastic compute options to minimize utilization costs.
+
+### Recommendations
+
