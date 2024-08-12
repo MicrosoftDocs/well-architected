@@ -4,7 +4,7 @@ metadata:
   title: Azure Well-Architected Framework
   description: Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
   services: azure-resource-manager
-  ms.service: waf
+  ms.service: azure-waf
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
