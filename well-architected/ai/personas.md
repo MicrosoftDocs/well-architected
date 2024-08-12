@@ -24,9 +24,12 @@ Securing data could be coming from a workload or multiple workload teams.
 - Product Manager
 - User
 
-## Anurag's (SME & area lead) seed material
-
-TODO
+## Joakim Åström's (SME & area lead) seed material
+- Connect the E2E process (MLOps, LLMOps, pretrained AI) with personas - where in the process are the personas active. IMAGE=yes
+- Connect personas with known example roles and example departments for customers to be familiar, and to get orientation of the personas - where they live in their org. IMAGE=yes
+- Do not focus on outlier personas, apply 80/20 rule, and focus on the personas real customers have. No utopia personas - verify customer references.
+- Provide user stories to give examples of stories with personas in use.
+- Sort all use cases & personas within the AI umbrella: Pretrained AI, Discriminative AI, Generative AI. IMAGE=yes
 
 ## Jose's (Azure Patterns & Practices engineering) seed material
 
