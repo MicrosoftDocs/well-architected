@@ -40,11 +40,17 @@ EDA is a common preliminary function performed by data scientists before modelin
 When evaluating an EDA platform, consider the following:
 
 - **Cost control:** The platform should enable the data scientists to perform their work according to their schedule requirments, but should be right-sized to ensure that cost expectations are met.
-- **Transient usage:** The platform should support transient workspaces and compute, which means that the necessary resources should be able to be stopped when they aren't being used to help cost control.
+
+- **Transient usage:** The platform should support transient workspaces and compute, which means that the necessary resources should be able to be stopped when they aren't being used to help cost control. EDA jobs are typically interactive, so users need to be able to start VMs and stop them as they run jobs over time.
+
 - **Compute optionality:** The platform should enable on-demand access to GPUs if needed, and provide a variety of compute options to help right-size the platform.
+
 - **Production-grade security and observability:** The data used in your EDA phase will likely be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like access and authorization, encryption at rest and in transit, and regional requirements. Likewise, it should support robust monitoring and alerting functionality, including logging and auditability.
-- **MLFlow support:** Your EDA platform should make it possible to Choose a platform like Azure Data Science virtual machine that enables integration with MLFlow for tracking your experiments. Tracking which combination of data, code, and parameters led to a particular result can become a daunting task . By integrating MLflow with Azure DSVM, you can ensure that your EDA and machine learning workflows are efficient, reproducible, and scalable.
+
+- **MLFlow support:** Your EDA platform should make it possible to choose a platform like Azure Data Science virtual machine (DSVM) that enables integration with MLFlow for tracking your experiments. Determining which combination of data, code, and parameters produces a particular result can become a daunting task. By integrating MLflow with Azure DSVM, you can ensure that your EDA and machine learning workflows are efficient, reproducible, and scalable.
+
 - **Secure networking:** The platform should support private networking to access centralized repositories for container images, data, and code assets.
+  
 - **Use [Azure Machine Learning (AML)](/azure/machine-learning/overview-what-is-azure-machine-learning):** Use [AML compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. Unless your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks for example, in which case it may be more appropriate to remain on that platform.  
 
 > [!NOTE]
@@ -59,7 +65,7 @@ The recommendations below apply to both model training and fine-tuning functions
 ### Factors to consider
 
 - **Cost vs performance:** Due to the high-performance, GPU-optimized compute requirements, test and benchmark your training and fine-tuning extensively to land on the ideal SKU that balances performance against costs.
-- **Transient usage:** Like EDA activities, model training and fine-tuning are typically not run full-time so prefer a platform that can be stopped when not in use to help control costs.
+- **Transient usage:** Like EDA activities, model training and fine-tuning are typically not run full-time so prefer a platform that can be stopped when not in use to help control costs. Unlinke EDA however, model training is typically a batch process, so the compute is only needed when the batch runs and then can be shut down until the next run.
 - **Use machine learning platform:** Due to the complexity required in managing the compute for these activities, an orchestrator is recommended. AML is the recommended solution for these activites. There are two options to evaluate:
   -  [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose between standard and spot pricing. Spot pricing is only recommended for highly interruptible training. **Do not** use serverless for full-time operations as the costs can balloon quickly.
   -  [Compute Clusters](/azure/machine-learning/how-to-create-attach-compute-cluster?view=azureml-api-2&tabs=python#what-is-a-compute-cluster) gives you significant control over available hardware and is tuned for parallel or distributed training.
@@ -106,11 +112,11 @@ Advanced architectures can combine multiple deployments to achieve both fixed th
 
 #### Online inferencing
 
-- Consider serverless and PaaS hosting as your first option. These services are typically the easiest to adopt and manage, simplifying your design and minimizing operational burden. For example, Azure Open AI is a good choice for foundational models.
+- Evaluate platform as a service (PaaS) and serverless solutions as a first step. These services are typically the easiest to adopt and manage, simplifying your design and minimizing operational burden. For example, Azure Open AI is a good choice for foundational models.
 
    - Consider using Azure ML's Serverless API to aggregate endpoint access even if you use Azure OpenAI or another foundational model hosting solution. 
 
-_  Prefer Azure ML for with managed Compute Clusters for custom models. Azure ML-managed compute supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. As the compute is managed by the service, day-2 operations are much easier than self-hosting. It also offers a wide selection of compute configurations and scaling capabilities.
+- Prefer Azure ML for with managed Compute Clusters for scenarios when PaaS or serverless solutions are not the best fit. Azure ML-managed compute supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. As the compute is managed by the service, day-2 operations are much easier than self-hosting. It also offers a wide selection of compute configurations and scaling capabilities.
 
 - If you choose to self-host your model on a Kurbentes cluster within Azure ML or another platform, ensure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions in an effort to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements while avoiding over-provisioning.
 
