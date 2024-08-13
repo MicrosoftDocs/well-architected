@@ -1443,7 +1443,7 @@
 		{
 			"source_path": "well-architected/service-guides/event-hubs/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/service-guides/event-hubs/operational-excellence.md",

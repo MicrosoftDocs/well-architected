@@ -83,4 +83,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Service Bus and reliability](../service-bus/reliability.md)
+> [Service Bus and reliability](./service-bus/reliability.md)
