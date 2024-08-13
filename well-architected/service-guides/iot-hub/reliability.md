@@ -54,7 +54,7 @@ For more information about the Azure IoT Hub Service Level Agreement, reference 
 > - In high-throughput scenarios, use batched events.
 > - If you require the minimum possible latency, don't use routing and read the events from the built-in endpoint.
 > - As part of your solution-wide availability and disaster recovery strategy, consider using the IoT Hub [cross-region Disaster Recovery option](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr).
-> - When reading device telemetry from the built-in Event Hub-compatible endpoint, refer to the [Event Hub consumers recommendation](../event-hubs/overview.md).
+> - When reading device telemetry from the built-in Event Hub-compatible endpoint, refer to the [Event Hub consumers recommendation](../event-hubs.md).
 > - When using an SDK to send events to IoT Hubs, ensure the exceptions thrown by the retry policy (`EventHubsException` or `OperationCancelledException`) are properly caught.
 > - To avoid telemetry interruption due to throttling and a fully used quota, consider adding a [custom auto-scaling solution](/azure/iot-hub/iot-hub-scaling#auto-scale).
 

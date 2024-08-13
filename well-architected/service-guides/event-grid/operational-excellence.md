@@ -128,5 +128,5 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Event Hubs](../event-hubs/overview.md)
+> [Event Hubs](../event-hubs.md)
 

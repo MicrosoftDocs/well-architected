@@ -847,12 +847,12 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/event-hubs/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/event-hubs/overview",
-			"redirect_document_id": false
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/services/messaging/event-hubs/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/event-hubs/overview",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
 			"redirect_document_id": false
 		},
 		{
@@ -1442,12 +1442,12 @@
 		},
 		{
 			"source_path": "well-architected/service-guides/event-hubs/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/event-hubs/overview",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/service-guides/event-hubs/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/event-hubs/overview",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
 			"redirect_document_id": false
 		}	
 	]
