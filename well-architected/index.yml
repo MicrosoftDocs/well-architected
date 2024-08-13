@@ -146,10 +146,6 @@ sections:
         summary: Design and operationalize workloads that are expected to be always available and resilient to failures.
         url: ./mission-critical/index.yml
       - componentType: summary-card
-        title: Hybrid
-        summary: Build applications running across on-premises, multicloud, and the edge, ensuring uncompromised security and developer agility.
-        url: ./hybrid/hybrid-overview.md
-      - componentType: summary-card
         title: Sustainability
         summary: Plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.
         url: ./sustainability/index.yml
