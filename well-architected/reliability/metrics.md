@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. You should derive reliability targets from workshop exercises with business stakeholders. Then refine those targets by monitoring and testing your workloads.
 
-Set realistic expectations for workload reliability With your internal stakeholdersso that they can communicate those expectations to customers in contractual agreements. Realistic expectations also help stakeholders understand and support your architectural design decisions and know that you're designing to optimally meet the targets that you agreed on.
+Set realistic expectations for workload reliability With your internal stakeholders so that they can communicate those expectations to customers in contractual agreements. Realistic expectations also help stakeholders understand and support your architectural design decisions and know that you're designing to optimally meet the targets that you agreed on.
 
 Consider using the following metrics to quantify the business requirements.
 
@@ -42,13 +42,13 @@ Consider using the following metrics to quantify the business requirements.
 
 To set reliability targets, business stakeholders define broad requirements. Then, technical experts assess the current state of the workload and work towards achieving and maintaining targets through monitoring and alerts. Both parties must agree on realistic targets.
 
-[Identify and score user and system flows](identify-flows.md) based on their importance to the business requirements. Use these scores to guide the design, review, testing, and incident management of your workload. Set reliability targets for these flows, and understand that failing to meet those targets can significantly impact the business.
+[Identify and score user and system flows](identify-flows.md) based on their importance to the business requirements. Use these scores to guide the design, review, testing, and incident management of your workload. Set reliability targets for these flows, and understand that failing to meet those targets can significantly affect the business.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There might be a gap between the technical limits of your system and its business impact, like throughput versus transactions per second. Bridging this gap can be tough. Aim for a practical and cost-effective solution instead of overengineering.
 
 ### Set availability objectives
 
-The overall SLO of a workload reflects the **holistic quality, including all its dependencies**. A mature declaration of the SLO should indicate the overall business target for that workload, not just a composite of those dependencies. For example, if users expect 99.99% availability, the overall SLO should aim for that, even if one part only achieves 99.8%.
+The overall SLO of a workload reflects the **holistic quality, including all its dependencies**. A mature declaration of the SLO should indicate the overall business target for that workload, not just a composite of those dependencies. For example, if users expect 99.99% availability, the overall SLO should aim for that percentile, even if one part only achieves 99.8%.
 
 Stakeholders estimate user experience and consider how downtime affects revenue. They compare this loss to the cost of designing and operating the business flow. Decision makers then decide if the extra costs for reliability are worth it to avoid revenue loss and maintain their reputation.
 
@@ -56,7 +56,7 @@ For the workload owner, **objective setting exercises are driven by financial go
 
 For the workload architect, **SLOs should be considered as the main driver for many technical decisions**. SLOs can:
 
-- Serve as critical input into architectural decisions when you consider additional dependencies.
+- Serve as critical input into architectural decisions when you consider other dependencies.
 - Provide a near real-time view and shared understanding of the health of a workload to enable objective discussions. They also help the workload team prioritize efforts to improve reliability and develop new features.
 - Act as a primary signal for deployment operations, which drives automated rollback if problems occur and provides validation that the changes achieve the expected improvements to user experience.
 - Speed up remediation and recovery by focusing on objectives, drive automated notification of problems to users, and build trust between teams in the organization.
@@ -85,7 +85,7 @@ Understand the scenarios and tolerances for your workload on Azure. Both Azure s
 
 |Component characteristics|User interaction|Nuanced factors|
 |---|---|---|
-|- Does it expose **request or response APIs?**<br> - Does it have **query APIs**?<br> - Is it a **compute** component?<br> - Is it a **job processing** component?|- **Control plane and management plane access** for public-facing Azure services.<br> - **Data plane access**, for example, create, read, update, and delete (CRUD)operations.|- Does your **release process** involve downtime?<br> - What's the likelihood of **introducing bugs**? If the workload integrates with other systems, you might need to consider integration bugs.<br> - How do **routine operations** like patching affect the availability target? Have you factored in third-party dependencies?<br> - Is your **staffing** sufficient to support constant emergency and emergency backup on-call rotation?<br> - Does the application have **noisy neighbors** outside of your scope of control that can potentially cause disruptions?|
+|- Does it expose **request or response APIs?**<br> - Does it have **query APIs**?<br> - Is it a **compute** component?<br> - Is it a **job processing** component?|- **Control plane and management plane access** for public-facing Azure services.<br> - **Data plane access**, for example, create, read, update, and delete (CRUD) operations.|- Does your **release process** involve downtime?<br> - What's the likelihood of **introducing bugs**? If the workload integrates with other systems, you might need to consider integration bugs.<br> - How do **routine operations** like patching affect the availability target? Have you factored in partner dependencies?<br> - Is your **staffing** sufficient to support constant emergency and emergency backup on-call rotation?<br> - Does the application have **noisy neighbors** outside of your scope of control that can potentially cause disruptions?|
 
 #### SLO scope
 
@@ -127,7 +127,7 @@ A good SLI shows when you might breach an SLO. It's usually measured in percenti
 > For an illustrative example of how to define and measure SLOs and SLIs, see the [Example](#example) section.
 
 
-### Assess the effect of Microsoft SLAs
+### Assess the impact of Microsoft SLAs
 
 A Microsoft SLA provides insight into availability of areas that Microsoft commits to. **SLAs don't guarantee an offering as a whole**. When you evaluate SLAs, have a good understanding of the coverage that's provided around the published percentile.
 
@@ -143,9 +143,9 @@ From a reliability perspective, multiregion deployment is an implementation of t
 
 There are two main use cases:
 
-- High availability, where a load is distributed across regions for additional capacity. The workload users aren't pinned to a region and the entire system's performance contributes to the SLO.
+- High availability, where a load is distributed across regions for more capacity. The workload users aren't pinned to a region and the entire system's performance contributes to the SLO.
 
-- Bulkhead pattern, where the users are segmented by pinning them to specific regions. In such cases, treat multiregion deployments as separate deployments, or *stamps*, in each region. Measure the health of each stamp separately, with the SLIs that are appropriate to your workload. Consider your overall workload's SLO based on the health of each stamp. If you can fail over between stamps, then your overall workload SLO will be higher because a failure in one stamp is recoverable through a failover to another stamp.
+- Bulkhead pattern, where the users are segmented by pinning them to specific regions. In such cases, treat multiregion deployments as separate deployments, or *stamps*, in each region. Measure the health of each stamp separately, with the SLIs that are appropriate to your workload. Consider your overall workload's SLO based on the health of each stamp. If you can fail over between stamps, then your overall workload SLO is higher because a failure in one stamp is recoverable through a failover to another stamp.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Is the risk reduction worth the added complexity? Multiregion targets also introduce operational complexities, such as coordinating deployments, ensuring data consistency, and handling latency. Those operations are significant during recovery. Teams should weigh these complexities against the gains in resilience.
 
@@ -186,7 +186,7 @@ Contoso, Ltd. is designing a new mobile experience for their event ticketing sys
 
 ### Components
 
-Here are some components that illustrate the concept of SLO definition. Notice that there are other components in this architecture that aren't included. For example, even though Azure Key Vault is part of the critical request flow, it isn't part of the response use case. If Key Vault is unavailable, the application continues to function by using secrets that were loaded during startup. However, if the application needs to scale, Key Vault availability becomes critical because new nodes need to be loaded with secrets. In this example, scaling operations aren't considered. Other components have been omitted for brevity.
+Here are some components that illustrate the concept of SLO definition. Notice that there are other components in this architecture that aren't included. For example, even though Azure Key Vault is part of the critical request flow, it isn't part of the response use case. If Key Vault is unavailable, the application continues to function by using secrets that were loaded during startup. However, if the application needs to scale, Key Vault availability becomes critical because new nodes need to be loaded with secrets. In this example, scaling operations aren't considered. Other components are omitted for brevity.
 
 - **Front Door** is the single point of entry that exposes an API that customers use to send requests.
 - **Azure Container Apps** is the environment that the workload team owns and uses to run business logic for the application.
@@ -197,69 +197,66 @@ The API team defines an initial SLO target for critical flows in the application
 
 ### Composite SLO calculation
 
-- **Azure availability SLO**: Azure's financial commitment SLA serves as a proxy to assess platform reliability.
+- **Azure availability SLO**: The financial commitment SLA for Azure serves as a proxy to assess platform reliability.
 
     |Azure component|Applicable SLA coverage |Not covered by SLA|Adjusted SLO|
     |--|--|--|--|
-    |Front Door| 99.99% for successful HTTP GET operations. |Caching, rules engine.|99.98%|
-    |Azure Container App| 99.95% based on deployed apps that are reachable by the built-in ingress.| Auto scaling, token store capabilities. |99.95%|
-    |SQL Managed Instance|99.99% based on connection to the SQL Server instance| Performance, data retention.|99.8%|
-    |Private Link|99.99% based on whole minutes when network traffic wasn't accepted by the private endpoint or didn't flow between that endpoint and the Private Link service.|Individual failures lasting less than one minute.| 99.99%|
+    |Front Door| 99.99% for successful HTTP GET operations|Caching, rules engine|99.98%|
+    |Container Apps| 99.95% based on deployed apps that are reachable by the built-in ingress| Auto scaling, token store capabilities|99.95%|
+    |SQL Managed Instance|99.99% based on the connection to the SQL Server instance| Performance, data retention|99.8%|
+    |Private Link|99.99% based on whole minutes when the private endpoint network didn't accept traffic or when traffic didn't flow between the endpoint and the Private Link service|Individual failures lasting less than one minute| 99.99%|
 
-    The adjustment is based on several factors that are dependent on the workload team's promise to their objectives. A factor could be confidence in platform's capability based on prior experience. For example, for Container Apps and Private Link, the team felt comfortable in taking the SLA value as-is.
+    The adjustment is based on several factors that depend on the workload team's promise to their objectives. One factor might be confidence in the platform's capability based on prior experience. For example, for Container Apps and Private Link, the team feels comfortable taking the SLA value as is.
 
-    But there are nuanced factors. For example, the team lowered the SLO for SQL Managed Instance value to 99.8% to account for potential failures in their data operations, such as schema changes, taking back ups, and so on.
+    There are also nuanced factors. For example, the team lowers the SLO value for SQL Managed Instance to 99.8% to account for potential failures in their data operations, such as schema changes and taking backups.
 
-    The team sets the composite SLO by calculating the impact of individual adjusted SLO values. This value is at 99.72%.
+    The team sets the composite SLO by calculating the impact of individual, adjusted SLO values. This value is 99.72%.
 
-    But, there are other contributing factors. The architecture relies on Azure networking components like virtual networks, Network Security Group (NSG), that don't have a published SLA. The workload team decides to consider those factors with 99.99% availability of each.
+    There are other contributing factors. The architecture relies on Azure networking components like virtual networks, Network Security Groups (NSGs), that don't have a published SLA. The workload team decides to consider those factors with 99.99% availability for each component.
 
     > Composite SLO based on predicted platform availability: 99.68% per month.
 
-- **Application code SLO**. The team acknowledge that bugs in their application code or stored procedures can affect system availability, and they allocate one hour of monthly downtime to account for code-related errors. 
+- **Application code SLO**: The team acknowledges that bugs in their application code or stored procedures can affect system availability, and they allocate one hour of monthly downtime to account for code-related errors.
 
-    They use common downtime percentiles, given in the [Measure targets](#define-composite-slo-targets) section, to estimate SLO for individual factors: code defects, scale issues, and other code-related considerations.
+    They use common downtime percentiles, given in the [Measure targets](#define-composite-slo-targets) section, to estimate the SLO for individual factors like code defects, scale issues, and other code-related considerations.
 
     > Composite SLO based on code and data availability: 99.86% per month.
 
-- **Resource and application configuration SLO**. The team recognizes that cloud resources and application code must be properly configured. This target includes setting up auto scaling rules, deploying NSG rules, and selecting the correct size SKUs. To account for configuration errors, they budget 10 minutes of monthly downtime, which is about 99.98%.
+- **Resource and application configuration SLO**: The team recognizes that cloud resources and application code must be properly configured. This target includes setting up autoscaling rules, deploying NSG rules, and selecting the correct size of SKUs. To account for configuration errors, they budget 10 minutes of monthly downtime, which is about 99.98%.
 
     > Composite SLO based on configuration availability: 99.95% per month.
 
-- **Operations SLO**. The workload team has developed good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint. 
+- **Operations SLO**: The workload team develops good DevOps culture by following Well-Architected Framework principles for Operational Excellence. They deploy cloud resources, configuration, and code every sprint.
 
-    Deployments are considered a risk because of they can cause a running system to be unstable. There might be errors as a result of TLS certificate updates, DNS changes, tool errors. They also consider potential downtime caused because of emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.95% availability.
+    The team considers deployments to be a risk because they can destabilize a running system. There might be errors as a result of TLS certificate updates, DNS changes, or tool errors. The team also considers potential downtime caused by emergency fixes. They budget a total of 20 minutes of monthly downtime, which is approximately 99.95% availability.
 
-    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day. To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours. This approach would lead to a higher SLO, but they've decided not to include the maintenance window as part of their SLO. 
+    Maintenance windows are designated time periods during which system maintenance or updates occur. The API is mostly unused for approximately four hours each day. To reduce the risk of unavailability, the team can schedule maintenance tasks during those less active hours. This approach leads to a higher SLO, but the team decides not to include the maintenance window as part of their SLO. 
 
     > Composite SLO based on operations availability: 99.95% per month. 
 
-- **External dependencies SLO**. The team has already considered SQL Managed Instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
+- **External dependencies SLO**: The team already considered SQL Managed Instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
 
     > Composite SLO based on external dependency: Not applicable.
 
 ### Overall composite SLO result
 
-|The overall composite SLO target is set at 99.45%, equivalent to approximately 4 hours of downtime per month. |
-|---|
+The overall composite SLO target is set at 99.45%, which is equivalent to approximately four hours of downtime per month.
 
-To meet the SLO target of allowing only 4 hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call SRE support to promptly start on recovery steps to address SLO issues.
+To meet the SLO target of allowing only four hours of unavailability per month, the workload team establishes an on-call rotation. Both customer support and synthetic transaction monitoring can invoke on-call site reliability engineering (SRE) support to promptly start recovery steps to address SLO issues.
 
 ### Workload SLA
 
-|SLA for the workload at 99.9% availability per month. |
-|---|
+The SLA for the workload is 99.9% availability per month.
 
-The workload team's legal and finance departments decided to set the SLA for the workload at 99.9% availability per month, exceeding the SLO target of 99.45%. They made this decision after analyzing financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, with the engineering team aware of the commitment.
+The workload team's legal and finance departments decide to set the SLA for the workload at 99.9% availability per month, which exceeds the SLO target of 99.45%. They make this decision after they analyzed financial payouts versus projected customer growth based on an attractive SLA. The SLA covers two core user flows and includes performance considerations, not just availability. It's a calculated risk taken by the business team to benefit the business, and the engineering team is aware of the commitment.
 
 ### Correctness SLO
 
-The application's core user flows must not only be available but also usably (or even competitively) responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. This SLO is evaluated only during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, capturing the typical user experience while excluding worst-case scenarios. 
-
+The application's core user flows must be available and usably, or even competitively, responsive. The team sets a response time SLO specifically for the API, excluding client processing time and internet network traversal. They evaluate this SLO only during periods of availability. They choose the 75th percentile as both the SLO target and the performance measurement, which captures the typical user experience and excludes worst-case scenarios. 
 
 ## Related links
 
--Mission-critical workloads: [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
+- [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
 
 ## Reliability checklist  
 
