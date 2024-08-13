@@ -42,7 +42,7 @@ Azure Event Hubs provides an uptime SLA. For more information, reference [SLA fo
 > - Create SendOnly and ListenOnly policies for the event publisher and consumer, respectively.
 > - When using the SDK to send events to Event Hubs, ensure the exceptions thrown by the retry policy (`EventHubsException` or `OperationCancelledException`) are properly caught.
 > - In high-throughput scenarios, use batched events.
-> - Every consumer can read events from one to `32` partitions.
+> - Every consumer can read events from one to maximum partitions supported by the Event Hubs [SKU](/azure/event-hubs/event-hubs-quotas#basic-vs-standard-vs-premium-vs-dedicated-tiers)
 > - When developing new applications, use `EventProcessorClient` (.NET and Java) or `EventHubConsumerClient` (Python and JavaScript) as the client SDK.
 > - As part of your solution-wide availability and disaster recovery strategy, consider enabling the Event Hubs geo disaster-recovery option.
 > - When a solution has a large number of independent event publishers, consider using Event Publishers for fine-grained access control.
@@ -60,14 +60,14 @@ Consider the following recommendations to optimize reliability when configuring 
 |--------------|-----------|
 |When using the SDK to send events to Event Hubs, ensure the exceptions thrown by the retry policy (`EventHubsException` or `OperationCancelledException`) are properly caught.|When using `HTTPS`, ensure a proper retry pattern is implemented.|
 |In high-throughput scenarios, use batched events.|The service will deliver a `json` array with multiple events to the subscribers, instead of an array with one event. The consuming application must process these arrays.|
-|Every consumer can read events from one to `32` partitions.|To achieve maximum scale on the side of the consuming application, every consumer should read from a single partition.|
+|Every consumer can read events from one to maximum partitions supported by the Event Hubs [SKU](/azure/event-hubs/event-hubs-quotas#basic-vs-standard-vs-premium-vs-dedicated-tiers).|To achieve maximum scale on the side of the consuming application, every consumer should read from a single partition.|
 |When developing new applications, use `EventProcessorClient` (.NET and Java) or `EventHubConsumerClient` (Python and JavaScript) as the client SDK.|`EventProcessorHost` has been deprecated.|
 |As part of your solution-wide availability and disaster recovery strategy, consider enabling the Event Hubs geo disaster-recovery option.|This option allows the creation of a secondary namespace in a different region. Only the active namespace receives messages at any time. Messages and events aren't replicated to the secondary region. The RTO for the regional failover is *up to 30 minutes*. Confirm this RTO aligns with the requirements of the customer and fits in the broader availability strategy. If a higher RTO is required, consider implementing a client-side failover pattern.|
 |When a solution has a large number of independent event publishers, consider using Event Publishers for fine-grained access control.|Event Publishers automatically set the partition key to the publisher name, so this feature should only be used if the events originate from all publishers evenly.|
 |Don't publish events to a specific partition.|If ordering events is essential, implement ordering downstream or use a different messaging service instead.|
 |When publishing events frequently, use the AMQP protocol when possible.| AMQP has higher network costs when initializing the session, but `HTTPS` requires TLS overhead for every request. AMQP has higher performance for frequent publishers.|
-|The number of partitions reflect the degree of downstream parallelism you can achieve.|For maximum throughput, use the maximum number of partitions (`32`) when creating the Event Hub. The maximum number of partitions will allow you to scale up to `32` concurrent processing entities and will offer the highest send and receive availability.|
-|When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.|Data Lake will charge for minimal file size for storage (gen1) or minimal transaction size (gen2). If you set the time window so low that the file hasn't reached minimum size, you'll incur extra cost.|
+|The number of partitions reflect the degree of downstream parallelism you can achieve.|For maximum throughput, use the maximum number of partitions supported by the SKU when creating the Event Hub. Increasing the number of partitions enables you to scale concurrent processing entities to match the partitions, ensuring optimal send and receive availability.|
+|When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.|Data Lake gen2 will charge for  minimal transaction size. If you set the time window so low that the file hasn't reached minimum size, you'll incur extra cost.|
 
 ## Source artifacts
 
