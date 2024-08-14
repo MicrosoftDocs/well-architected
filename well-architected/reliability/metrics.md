@@ -190,7 +190,7 @@ Here are some components that illustrate the concept of SLO definition. Notice t
 
 - **Front Door** is the single point of entry that exposes an API that customers use to send requests.
 - **Azure Container Apps** is the environment that the workload team owns and uses to run business logic for the application.
-- **SQL managed instance** is owned and managed by another team and is a critical dependency of the workload.
+- **SQL Managed Instance** is owned and managed by another team and is a critical dependency of the workload.
 - **Azure Private Link** provides private connectivity between Front Door and Container Apps deployments. The SQL managed instance is also exposed to the application through a private endpoint.
 
 The API team defines an initial SLO target for critical flows in the application. They adopt the strategy that's described in [Factors that influence SLOs](#common-slos-and-influencing-factors). They aim to define objectives that cover the core functionality without overly emphasizing ancillary features. They decide to measure the health of three critical user flows, which involve all core cloud functionality and execute code across deployments. However, these flows don't cover 100% of the code or data access. Here are the influencing factors.
@@ -234,7 +234,7 @@ The API team defines an initial SLO target for critical flows in the application
 
     > Composite SLO based on operations availability: 99.95% per month. 
 
-- **External dependencies SLO**: The team already considered SQL Managed Instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
+- **External dependencies SLO**: The team considers the SQL managed instance as the primary dependency, which already has a 99.8% availability factored into the overall platform availability. No other external dependencies are considered.
 
     > Composite SLO based on external dependency: Not applicable.
 
