@@ -847,13 +847,13 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/event-hubs/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/event-hubs/operational-excellence",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/services/messaging/event-hubs/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/event-hubs/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/iot-hub/operational-excellence.md",
@@ -1361,6 +1361,36 @@
 			"redirect_document_id": false																			
 		},	
 		{
+			"source_path": "well-architected/hybrid/hybrid-cost.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-opex.md ",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-overview.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-performance-efficiency.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-reliability.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
+			"source_path": "well-architected/hybrid/hybrid-security.md",
+			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
+			"redirect_document_id": false
+		}, 
+		{
 			"source_path": "well-architected/oracle-iaas/old-articles/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
 			"redirect_document_id": false
@@ -1439,6 +1469,16 @@
 			"source_path": "well-architected/carrier-grade/index.yml",
 			"redirect_url": "/azure/architecture/browse/?terms=telecommunications",
 			"redirect_document_id": false
-		}							
+		},
+		{
+			"source_path": "well-architected/service-guides/event-hubs/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/event-hubs/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
+			"redirect_document_id": false
+		}	
 	]
 }
