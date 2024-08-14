@@ -148,7 +148,7 @@ productDirectory:
     - title: Azure Event Hubs
       summary: Receive event data from millions of devices.
       imageSrc: https://static.docs.com/ui/media/product/azure/event-hubs.svg
-      url: ./event-hubs/reliability.md
+      url: event-hubs.md
       azureCategories:
         - analytics
     # Card
