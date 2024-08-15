@@ -180,7 +180,7 @@ Explore the [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards
 
 Contoso, Ltd. is designing a new mobile experience for their event ticketing system. Here's the high-level architecture.
 
-:::image type="complex" source="./media/metrics/example-architecture-targets.svg" alt-text="Architecture diagram of a mobile ticketing system that's hosted in Azure Container Apps":::
+:::image type="complex" source="./media/metrics/example-architecture-targets.svg" alt-text="Architecture diagram of a mobile ticketing system that's hosted in Azure Container Apps." border="false" lightbox="./media/metrics/example-architecture-targets.svg":::
    An architecture diagram with various Azure components. A mobile ticket scanning device connects to Front Door, which has Transport Layer Security (TLS), web application firewall (WAF) policies, and rules. Front Door connects to Container Apps through an Azure Private Link connection. Build agent VMs connect to Azure DevOps, Container Apps, and private endpoints. A SQL managed instance is in a box that's labeled *External team*. A workload observability platform box contains a workspace in Azure Monitor Logs, Application Insights, Azure Managed Grafana, alerts, and diagnostics settings. The architecture also shows the icons for Azure DNS, Microsoft Entra ID, Azure Network Security Groups, Azure Key Vault, and managed identities.
 :::image-end:::
 
