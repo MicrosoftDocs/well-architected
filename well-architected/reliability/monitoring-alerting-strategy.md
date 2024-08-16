@@ -44,7 +44,7 @@ Create a monitoring and alerting strategy to ensure that your workload operates 
 
 Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
 
-### General guidance
+### Implement your overall monitoring strategy
 
 - Understand the difference between [metrics](/azure/azure-monitor/essentials/data-platform-metrics), [logs](/azure/azure-monitor/logs/data-platform-logs), and [traces](/azure/azure-monitor/app/asp-net-trace-logs).
 

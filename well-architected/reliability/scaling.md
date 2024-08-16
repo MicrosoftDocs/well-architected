@@ -31,6 +31,8 @@ This guide describes the recommendations for designing a reliable scaling strate
 
 ## Key design strategies
 
+### Design according to your load patterns
+
 To design a reliable scaling strategy for your workloads, focus on identifying load patterns for the user and system flows for each workload that leads to a scaling operation. Here are examples of the different load patterns:
 
 - **Static**: Every night by 11 PM EST, the number of active users is below 100 and the CPU utilization for the app servers drops by 90% across all nodes.
@@ -56,6 +58,8 @@ For the previous examples, your scaling strategies could be:
 - **Dynamic, irregular, and predictable**: You define a one-time scheduled scale up of your compute and database instances on the morning of a product launch, and you scale back down after one week.
 
 - **Dynamic, irregular, and unpredictable**: You have autoscale thresholds defined to account for unplanned traffic spikes.
+
+### Automate your scaling strategy
 
 When designing your scaling automation, be sure to account for these issues:
 

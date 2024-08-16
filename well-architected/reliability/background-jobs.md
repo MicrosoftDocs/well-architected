@@ -27,7 +27,7 @@ Background jobs help minimize the load on the application UI, which improves ava
 
 To choose which task to designate as a background job, consider whether the task runs without user interaction and whether the UI needs to wait for the task to complete. Tasks that require the user or the UI to wait while they run are typically not appropriate background jobs.
 
-### Types of background jobs
+### Evaluate the need for background jobs
 
 Some examples of background jobs are:
 
@@ -41,7 +41,7 @@ Some examples of background jobs are:
 
 - Sensitive-data processing that transfers the task to a more secure location for processing. For example, you might not want to process sensitive data within a web app. Instead, you might use a pattern such as the [Gatekeeper pattern](/azure/architecture/patterns/gatekeeper) to transfer the data to an isolated background process that has access to protected storage.
 
-### Triggers
+### Choose the right triggers
 
 Initiate background jobs with:
 
@@ -79,7 +79,7 @@ If you use a schedule-driven task that must run as a single instance, review the
 
 - If tasks run longer than the period between the scheduler events, the scheduler might start another instance of the task while the previous task runs.
 
-### Return results
+### Return data to the workload
 
 Background jobs run asynchronously in a separate process, or even in a separate location, from the UI or the process that invoked the background job. Ideally, background jobs are *fire and forget* operations. Their runtime progress doesn't have an effect on the UI or the calling process, which means that the calling process doesn't wait for the tasks to complete. The UI and the calling process can't detect when the task ends.
 
@@ -113,7 +113,7 @@ If you include background jobs in an existing compute instance, consider how the
 
 For more information, see [Leader Election pattern](/azure/architecture/patterns/leader-election) and [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
 
-### Conflicts
+### Prevent resource conflict
 
 If you have multiple instances of a background job, they might compete for access to resources and services, such as databases and storage. This concurrent access can result in resource contention, which might cause service availability conflicts and harm the integrity of the data that's in storage. Resolve resource contention by using a pessimistic-locking approach. This approach prevents competing instances of a task from concurrently accessing a service or corrupting data.
 
@@ -121,7 +121,7 @@ Another approach to resolve conflicts is to define background tasks as a singlet
 
 Ensure that the background task can automatically restart and that it has sufficient capacity to handle peaks in demand. Allocate a compute instance with sufficient resources, implement a queueing mechanism that stores requests to run when demand decreases, or use a combination of these techniques.
 
-### Coordination
+### Orchestrate multiple tasks
 
 Background tasks can be complex and require multiple tasks to run. In these scenarios, it's common to divide the task into smaller discrete steps or subtasks that multiple consumers can run. Multistep jobs are more efficient and more flexible because individual steps are often reusable in multiple jobs. It's also easy to add, remove, or modify the order of the steps.
 
@@ -133,7 +133,7 @@ It can be a challenge to coordinate multiple tasks and steps, but there are thre
 
 - **Manage the recovery for task steps that fail**. If one or more of the steps fail, an application might need to undo the work that a series of steps performs, which together defines an eventually consistent operation. For more information, see [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction).
 
-### Resiliency considerations
+### Make your jobs resilient
 
 Create resilient background tasks to provide reliable services for the application. When you plan and design background tasks, consider the following points:
 
@@ -161,7 +161,7 @@ Configure background tasks that are initiated by messages or that process messag
 
 - Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/previous-versions/msp-n-p/dn589781(v=pandp.10)) and [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
 
-### Scaling and performance considerations
+### Make your jobs scalable
 
 Background tasks must offer sufficient performance to ensure that they don't block the application or delay operation when the system is under load. Typically, performance improves when you scale the compute instances that host the background tasks. When you plan and design background tasks, consider the following points related to scalability and performance:
 
