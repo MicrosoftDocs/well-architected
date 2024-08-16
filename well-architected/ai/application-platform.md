@@ -47,11 +47,21 @@ When evaluating an EDA platform, consider the following:
 
 - **Production-grade security and observability:** The data used in your EDA phase will likely be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like access and authorization, encryption at rest and in transit, and regional requirements. Likewise, it should support robust monitoring and alerting functionality, including logging and auditability.
 
-- **MLFlow support:** Your EDA platform should make it possible to choose a platform like Azure Data Science virtual machine (DSVM) that enables integration with MLFlow for tracking your experiments. Determining which combination of data, code, and parameters produces a particular result can become a daunting task. By integrating MLflow with Azure DSVM, you can ensure that your EDA and machine learning workflows are efficient, reproducible, and scalable.
-
 - **Secure networking:** The platform should support private networking to access centralized repositories for container images, data, and code assets.
-  
-- **Use [Azure Machine Learning (AML)](/azure/machine-learning/overview-what-is-azure-machine-learning):** Use [AML compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. Unless your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks for example, in which case it may be more appropriate to remain on that platform.  
+
+- **MLFlow support:** Your EDA platform should make it possible to choose a platform that enables integration with MLFlow for tracking your experiments. MLFlow is recommended as a machine learning protocol because it provides the following benefits:
+
+  - *Experiment tracking:* MLflow allows you to track experiments by recording parameters, metrics, and artifacts. This is essential during EDA to keep track of different data preprocessing steps, feature engineering techniques, and their impacts on model performance.
+
+  - *Reproducibility:* By logging all the details of your experiments, MLflow ensures that you can reproduce your results, which is critical for validating findings.
+
+  - *Data and model versioning:* MLflow helps in versioning datasets and models, which makes managing different versions of data transformations and models tested easier.
+
+  - *Collaborative work:* MLflow provides a centralized platform where data scientists can share their experiments and results, facilitating collaboration and knowledge sharing.
+
+### Recommendations
+
+- **Use [Azure Machine Learning (AML)](/azure/machine-learning/overview-what-is-azure-machine-learning):** Use [AML compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. Unless your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks for example, in which case it may be more appropriate to remain on that platform.
 
 > [!NOTE]
 > Do not build a full EDA platform unless you need to. GPU-optimized compute is expensive and is not appropriate if your use case doesn't require it.
@@ -108,7 +118,21 @@ Advanced architectures can combine multiple deployments to achieve both fixed th
 
 - If you are performing inferencing on data that resides in a platform that supports model hosting, like Databricks, consider using that platform for inferencing. Be sure to isolate the inferencing compute from other functions performed by the data platform.
 
-- If you do not have an appropriate platform already in use, prefer [Azure ML batch endpoints](/azure/machine-learning/how-to-mlflow-batch).
+- Prefer [Azure OpenAI Batch API](/azure/ai-services/openai/how-to/batch) for foundation models.
+
+For non-foundation models, consider the following recommendations:
+
+- Prefer [Azure ML batch endpoints](/azure/machine-learning/how-to-mlflow-batch) for the following scenarios:
+
+  - You need to perform inferencing on a large dataset that's distributed in multiple files and you don’t require low latency.
+
+  - You need to perform long-running batch operations over large datasets and can take advantage of parallelization.
+
+  - You need to deploy pipeline components for batch processing.
+
+- If you need to run Spark jobs for distributed data processing, consider using [Azure Synapse Analytics](/azure/synapse-analytics/), [Azure Databricks](/azure/databricks/), or [Azure ML serverless Spark compute](/azure/machine-learning/apache-spark-azure-ml-concepts?view=azureml-api-2).
+
+- If none of these scenarios apply, prefer Azure ML batch endpoints.
 
 #### Online inferencing
 
@@ -118,7 +142,9 @@ Advanced architectures can combine multiple deployments to achieve both fixed th
 
 - Prefer Azure ML for with managed Compute Clusters for scenarios when PaaS or serverless solutions are not the best fit. Azure ML-managed compute supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. As the compute is managed by the service, day-2 operations are much easier than self-hosting. It also offers a wide selection of compute configurations and scaling capabilities.
 
-- If you choose to self-host your model on a Kurbentes cluster within Azure ML or another platform, ensure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions in an effort to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements while avoiding over-provisioning.
+- If you choose to self-host your model on a Azure Kurbentes Service cluster [attached to Azure ML](/azure/machine-learning/how-to-attach-kubernetes-anywhere),  or another container-based platform, ensure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions in an effort to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements while avoiding over-provisioning.
+
+- You can also fully self-host your model using infrastructure as a service (IaaS) solutions, like [Azure Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/overview).
 
 ## The orchestration platform
 
