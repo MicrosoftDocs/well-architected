@@ -49,7 +49,7 @@ When evaluating an EDA platform, consider the following:
 
 - **Secure networking:** The platform should support private networking to access centralized repositories for container images, data, and code assets.
 
-- **MLFlow support:** Your EDA platform should make it possible to choose a platform that enables integration with MLFlow for tracking your experiments. MLFlow is recommended as a machine learning protocol because it provides the following benefits:
+- **MLFlow support:** Your EDA platform should make it possible to choose a platform that enables integration with MLFlow for tracking your experiments. MLFlow is recommended as a model development, deployment, and management protocol because it provides the following benefits:
 
   - *Experiment tracking:* MLflow allows you to track experiments by recording parameters, metrics, and artifacts. This is essential during EDA to keep track of different data preprocessing steps, feature engineering techniques, and their impacts on model performance.
 
