@@ -1504,6 +1504,321 @@
 			"source_path": "well-architected/cost-optimization/optimize-component-costs.md#prevent-unoptimized-components",
 			"redirect_url": "/azure/well-architected/cost-optimization/optimize-component-costs",
 			"redirect_document_id": false
-		}				
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-environment-costs.md#optimize-the-dr-environment",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-environment-costs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-flow-costs.md#continuously-monitor-flows",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-flow-costs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-scaling-costs.md#consider-event-based-scaling",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling-costs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#types-of-background-jobs",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#triggers",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#return-results",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#conflicts",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#coordination",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#resiliency-considerations",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs.md#scaling-and-performance-considerations",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/failure-mode-analysis.md#evaluate-failure-points",
+			"redirect_url": "/azure/well-architected/reliability/failure-mode-analysis",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/handle-transient-faults.md#other-considerations",
+			"redirect_url": "/azure/well-architected/reliability/handle-transient-faults",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/highly-available-multi-region-design.md#active-active",
+			"redirect_url": "/azure/well-architected/reliability/highly-available-multi-region-design",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/highly-available-multi-region-design.md#active-passive",
+			"redirect_url": "/azure/well-architected/reliability/highly-available-multi-region-design",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/monitoring-alerting-strategy.md#general-guidance",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/partition-data.md#why-partition-data",
+			"redirect_url": "/azure/well-architected/reliability/partition-data",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/partition-data.md#design-partitions",
+			"redirect_url": "/azure/well-architected/reliability/partition-data",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/partition-data.md#application-design-considerations",
+			"redirect_url": "/azure/well-architected/reliability/partition-data",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/redundancy.md#infrastructure-layer-guidance",
+			"redirect_url": "/azure/well-architected/reliability/redundancy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/redundancy.md#compute-resources",
+			"redirect_url": "/azure/well-architected/reliability/redundancy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/redundancy.md#data-resources",
+			"redirect_url": "/azure/well-architected/reliability/redundancy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/redundancy.md#networking",
+			"redirect_url": "/azure/well-architected/reliability/redundancy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/self-preservation.md#self-preservation-guidance",
+			"redirect_url": "/azure/well-architected/reliability/self-preservation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/self-preservation.md#self-healing-guidance",
+			"redirect_url": "/azure/well-architected/reliability/self-preservation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/simplify.md#collaborative-design-exercises",
+			"redirect_url": "/azure/well-architected/reliability/simplify",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/simplify.md#additional-design-recommendations",
+			"redirect_url": "/azure/well-architected/reliability/simplify",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/simplify.md#use-the-best-data-store-for-your-data",
+			"redirect_url": "/azure/well-architected/reliability/simplify",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/testing-strategy.md#general-testing-guidance",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/testing-strategy.md#fault-injection-and-chaos-engineering-guidance",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/application-secrets.md#safe-practices-for-secret-management",
+			"redirect_url": "/azure/well-architected/security/application-secrets",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/application-secrets.md#safe-practices-for-using-secrets",
+			"redirect_url": "/azure/well-architected/security/application-secrets",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#encryption-scenarios",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#scope-of-encryption",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#native-encryption-mechanisms",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#encryption-keys",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#standard-encryption-algorithms",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#hashes-and-checksums",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#data-at-rest",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#data-in-transit",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/encryption.md#data-in-use",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/establish-baseline.md#composition-of-a-baseline",
+			"redirect_url": "/azure/well-architected/security/establish-baseline",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/establish-baseline.md#use-the-baseline",
+			"redirect_url": "/azure/well-architected/security/establish-baseline",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/harden-resources.md#networking",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/harden-resources.md#identity",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/harden-resources.md#cloud-resources",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/harden-resources.md#applications",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/harden-resources.md#management-operations",
+			"redirect_url": "/azure/well-architected/security/harden-resources",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/identity-access.md#critical-impact-accounts",
+			"redirect_url": "/azure/well-architected/security/identity-access",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/incident-response.md#assign-incident-notification",
+			"redirect_url": "/azure/well-architected/security/incident-response",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/incident-response.md#send-the-necessary-communication",
+			"redirect_url": "/azure/well-architected/security/incident-response",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/secure-development-lifecycle.md#requirements-phase",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/secure-development-lifecycle.md#design-phase",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/secure-development-lifecycle.md#development-and-testing-phase",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/secure-development-lifecycle.md#secure-code-deployments",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/secure-development-lifecycle.md#production-phase",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/secure-development-lifecycle.md#maintenance-phase",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/segmentation.md#identity-as-the-perimeter",
+			"redirect_url": "/azure/well-architected/security/segmentation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/segmentation.md#networking-as-a-perimeter",
+			"redirect_url": "/azure/well-architected/security/segmentation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/segmentation.md#roles-and-responsibilities",
+			"redirect_url": "/azure/well-architected/security/segmentation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/segmentation.md#resource-organization",
+			"redirect_url": "/azure/well-architected/security/segmentation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/test.md#how-often-do-you-expect-the-tests-to-run",
+			"redirect_url": "/azure/well-architected/security/test",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/test.md#what-are-the-different-types-of-tests",
+			"redirect_url": "/azure/well-architected/security/test",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/threat-model.md#regularly-review-business-critical-workload-requirements",
+			"redirect_url": "/azure/well-architected/security/threat-model",
+			"redirect_document_id": false
+		}								
 	]
 }

@@ -284,7 +284,7 @@ To initiate the background task in a separate VM, you can:
 
 - Use Logic Apps to initiate the task by adding a message to a queue that the task monitors or by sending a request to an API that the task exposes.
 
-For more information about how you can initiate background tasks, see the previous [Triggers](#triggers) section.
+For more information about how you can initiate background tasks, see the previous [Triggers](#choose-the-right-triggers) section.
 
 #### Virtual Machines considerations
 
