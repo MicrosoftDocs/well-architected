@@ -30,7 +30,7 @@ Getting the best rates requires actively searching for the most cost-effective p
 
 To get the best rates on the resources and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on workload needs. Regularly check for discounts and reduce licensing fees where possible. Determine if it's more cost effective to build or buy new workload solutions.
 
-### Create an ordered list of expenses
+### Uncover your workload spending patterns
 
 Understanding the workload is the first step to finding and using the best rates on infrastructure, resources, licenses, and third-party services. It prepares you to make informed decisions and implement cost optimization strategies that are specific to the needs of the workload.
 
