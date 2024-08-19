@@ -1479,6 +1479,31 @@
 			"source_path": "well-architected/service-guides/event-hubs/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/event-hubs",
 			"redirect_document_id": false
-		}	
+		},
+		{
+			"source_path": "well-architected/cost-optimization/get-best-rates.md#create-an-ordered-list-of-expenses",
+			"redirect_url": "/azure/well-architected/cost-optimization/get-best-rates",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-code-costs.md#identify-and-optimize-hot-paths",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-code-costs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-code-costs.md#optimize-network-traversal",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-code-costs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-code-costs.md#optimize-architecture",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-code-costs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost-optimization/optimize-component-costs.md#prevent-unoptimized-components",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-component-costs",
+			"redirect_document_id": false
+		}				
 	]
 }
