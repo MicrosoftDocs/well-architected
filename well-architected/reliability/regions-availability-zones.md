@@ -434,7 +434,7 @@ Fabrikam, Inc., is migrating a legacy application from an on-premises datacenter
 **Business requirements**: Performance is a priority for this application. Resiliency is also important, and the application must continue to work even if an Azure datacenter experiences an outage.
 
 **Suggested approach**:
-- Fabrikan should first try a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments). They should verify the performance meets their requirements.
+- Fabrikam should first try a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments). They should verify the performance meets their requirements.
 - If the performance of the zone-redundant solution isn't acceptable, consider a [zonal (pinned) deployment, with passive deployments across multiple availability zones (in-region DR)](#deployment-approach-2-zonal-pinned-deployments).
 
 ### Healthcare application
