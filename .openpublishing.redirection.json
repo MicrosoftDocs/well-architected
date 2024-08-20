@@ -1819,6 +1819,26 @@
 			"source_path": "well-architected/security/threat-model.md#regularly-review-business-critical-workload-requirements",
 			"redirect_url": "/azure/well-architected/security/threat-model",
 			"redirect_document_id": false
-		}								
+		},
+		{
+			"source_path": "well-architected/reliability/metrics.md#availability-targets",
+			"redirect_url": "/azure/well-architected/reliability/metrics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/metrics.md#recovery-metrics",
+			"redirect_url": "/azure/well-architected/reliability/metrics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/metrics.md#building-a-health-model",
+			"redirect_url": "/azure/well-architected/reliability/metrics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/reliability/metrics.md#visualization",
+			"redirect_url": "/azure/well-architected/reliability/metrics",
+			"redirect_document_id": false
+		}													
 	]
 }
