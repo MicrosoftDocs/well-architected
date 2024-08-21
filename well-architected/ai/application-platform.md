@@ -160,7 +160,9 @@ Determine what identity and access controls are required for your endpoints. For
 
 Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
 
- - **What are the performance requirments for the platform?** Inference latency is a common concern and different platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tendencies and often have no throughput guarantees. On the other hand, those same platforms may offer self-hosted that offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get predictable latency behavior.
+ - **What are the performance requirments for the platform?**
+
+Inference latency is a common concern and different platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tendencies and often have no throughput guarantees. On the other hand, those same platforms may offer self-hosted that offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get predictable latency behavior.
 
 Be aware of service limits and quotas that may effect your performance, like those for [Azure Open AI](/azure/ai-services/openai/quotas-limits). Often these quotas and limits are aggressively set to meet capacity demands, so if your choice of platform doesn't deliver the performance that you target, you may need to adopt strategies to spread the compute demand across instances to stay within those limits. 
 
