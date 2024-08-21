@@ -31,25 +31,28 @@ No matter which of the functions described above you are designing for, start wi
 6. In general, you should treat the APIs for your AI workload the same as any other API in your environments. All of the APIs should be secured behind a gateway and all of the code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments) as every other code asset.
 7. Establish performance benchmarks through experimentation. Every AI workload is different and the amount of compute that you'll need depends on your particular use case. Determining the amount and types of compute that is optimal for your workload should be based on thorough benchmark testing. This guide will help you choose a platform, but the SKUs appropriate for your workload will only be known to you after the benchmarking exercises.
 
-## The EDA platform
+## Considerations for the EDA platform
 
-EDA is a common preliminary function performed by data scientists before modeling or statistical analysis. As such, it can be considered a development phase, which means that targets for reliability and performance may be significantly lower than production resources and maintaining productivity is the more important factor.
+EDA is a common preliminary function performed by data scientists before modeling or statistical analysis. As such, it can be considered a development phase, which means that targets for reliability and performance may be significantly lower than production resources and maintaining productivity is the more important factor. 
 
-### Factors to consider
+This section provides guidance on capabilities to consider when selecting an EDA platform solution.
+
+### Functional requirements
 
 When evaluating an EDA platform, consider the following:
 
-- **Cost control:** The platform should enable the data scientists to perform their work according to their schedule requirments, but should be right-sized to ensure that cost expectations are met.
 
-- **Transient usage:** The platform should support transient workspaces and compute, which means that the necessary resources should be able to be stopped when they aren't being used to help cost control. EDA jobs are typically interactive, so users need to be able to start VMs and stop them as they run jobs over time.
+- **Does the platform support transient usage?**
 
-- **Compute optionality:** The platform should enable on-demand access to GPUs if needed, and provide a variety of compute options to help right-size the platform.
+The platform should support transient workspaces and compute, which means that the necessary resources should be able to be stopped when they aren't being used to help cost control. EDA jobs are typically interactive, so users need to be able to start VMs and stop them as they run jobs over time.
 
-- **Production-grade security and observability:** The data used in your EDA phase will likely be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like access and authorization, encryption at rest and in transit, and regional requirements. Likewise, it should support robust monitoring and alerting functionality, including logging and auditability.
+- **Does the platform support compute optionality?**
 
-- **Secure networking:** The platform should support private networking to access centralized repositories for container images, data, and code assets.
+The platform should enable on-demand access to GPUs if needed, and provide a variety of compute options to help right-size the platform.
 
-- **MLFlow support:** Your EDA platform should make it possible to choose a platform that enables integration with MLFlow for tracking your experiments. MLFlow is recommended as a model development, deployment, and management protocol because it provides the following benefits:
+- **Does the platform support MLFlow?**
+
+Your EDA platform should make it possible to choose a platform that enables integration with MLFlow for tracking your experiments. MLFlow is recommended as a model development, deployment, and management protocol because it provides the following benefits:
 
   - *Experiment tracking:* MLflow allows you to track experiments by recording parameters, metrics, and artifacts. This is essential during EDA to keep track of different data preprocessing steps, feature engineering techniques, and their impacts on model performance.
 
@@ -59,6 +62,22 @@ When evaluating an EDA platform, consider the following:
 
   - *Collaborative work:* MLflow provides a centralized platform where data scientists can share their experiments and results, facilitating collaboration and knowledge sharing.
 
+### Nonfunctional requirements
+
+- **How can the platform help control costs?**
+
+The platform should enable the data scientists to perform their work according to their schedule requirements, but should be right-sized to ensure that cost expectations are met. 
+
+- **What security requirements must be followed for the platform?**
+
+The data used in your EDA phase will likely be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like:
+
+- *Access and authorization*
+- *Encryption at rest and in transit*
+- *Regional data protection requirements*
+- *Robust monitoring and alerting functionality, including logging and auditability*
+- *Private networking to access centralized repositories for container images, data, and code assets*
+
 ### Recommendations
 
 - **Use [Azure Machine Learning (AML)](/azure/machine-learning/overview-what-is-azure-machine-learning):** Use [AML compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. Unless your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks for example, in which case it may be more appropriate to remain on that platform.
@@ -66,47 +85,80 @@ When evaluating an EDA platform, consider the following:
 > [!NOTE]
 > Do not build a full EDA platform unless you need to. GPU-optimized compute is expensive and is not appropriate if your use case doesn't require it.
 
-## The model training and fine-tuning platform
+## Considerations for the model training and fine-tuning platform
 
 As you move to model training and fine-tuning, you will likely need high-performance GPU-optimized compute for the compute-intensive work involved in these activities. Reliability is typically not as important as performance as most of this work happens behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important in cases where model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics#recovery-metrics) should determine the reliability design you choose.
 
-The recommendations below apply to both model training and fine-tuning functions. Unless you're forced to use separate platforms for these functions, you should use the same platform for both of these functions.
+The guidance in this section applies to both model training and fine-tuning functions. Unless you're forced to use separate platforms for these functions, you should use the same platform for both of these functions.
 
-### Factors to consider
+### Functional requirements
 
-- **Cost vs performance:** Due to the high-performance, GPU-optimized compute requirements, test and benchmark your training and fine-tuning extensively to land on the ideal SKU that balances performance against costs.
-- **Transient usage:** Like EDA activities, model training and fine-tuning are typically not run full-time so prefer a platform that can be stopped when not in use to help control costs. Unlinke EDA however, model training is typically a batch process, so the compute is only needed when the batch runs and then can be shut down until the next run.
-- **Use machine learning platform:** Due to the complexity required in managing the compute for these activities, an orchestrator is recommended. AML is the recommended solution for these activites. There are two options to evaluate:
+- **Does the platform support transient usage?**
+
+Like EDA activities, model training and fine-tuning are typically not run full-time so prefer a platform that can be stopped when not in use to help control costs. Unlinke EDA however, model training is typically a batch process, so the compute is only needed when the batch runs and then can be shut down until the next run.
+
+- **Does the platform provide orchestration functionality?**
+
+Due to the complexity required in managing the compute for model training and fine-tuning, an orchestrator is recommended. AML is the recommended solution for these activites. There are two options to evaluate:
+
   -  [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose between standard and spot pricing. Spot pricing is only recommended for highly interruptible training. **Do not** use serverless for full-time operations as the costs can balloon quickly.
+    
   -  [Compute Clusters](/azure/machine-learning/how-to-create-attach-compute-cluster?view=azureml-api-2&tabs=python#what-is-a-compute-cluster) gives you significant control over available hardware and is tuned for parallel or distributed training.
--  **Combine technologies when appropriate:** If your existing data platform has ML capabilities, like [Databricks](/azure/databricks/machine-learning/), you can use that for certain steps like data transformation and feature engineering, while performing the training, fine-tuning and further steps in AML. This helps you minimize the cost and complexity involved in using a data platform for those functions it might not be ideally suited for.
+
+-  **Can existing technologies in your environment be part of the solution?**
+
+If your existing data platform has ML capabilities, like [Databricks](/azure/databricks/machine-learning/), you can use that for certain steps like data transformation and feature engineering, while performing the training, fine-tuning and further steps in AML. This combining of technologies helps you minimize the cost and complexity involved in using a data platform for those functions it might not be ideally suited for.
+
+### Nonfunctional requirements
+
+- **What is the tolerable tradeoff between costs and performance?**
+
+Due to the high-performance, GPU-optimized compute requirements, test and benchmark your training and fine-tuning extensively to land on the ideal SKU that balances performance against costs.
 
 > [!NOTE]
 > For foundation models, your choice of model hosting platform may limit your fine-tuning options. For example, using Azure OpenAI for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
 
-## The model hosting and inferencing platform
+## Considerations for the model hosting and inferencing platform
 
 Model hosting and inferencing functions make up the serve layer of the AI workload and those functions are performed with endpoints specific to the software that you choose, like NVIDIA Triton, TorchServe, TensorFlow Serving and many others. These model serving software solutions, in essence, are Python SDKs that are specialized in fronting a model with an API and adding some additional functionality specific to that solution. As such, you can either choose your hosting platform based upon your choice of software, or choose your software based upon your choice of hosting platform.
 
 Fundamentally, the APIs for the serve layer are microservices, so you should follow the same practices for these APIs as other microservices in your environments. They should be containerized, [bulkheaded](/azure/architecture/patterns/bulkhead) from other services, and should have their own lifecycles independent of other services and APIs. That being said, serve layer APIs generally require significantly more GPU-based compute power and much larger container images than traditional APIs. 
 
+This section provides guidance on capabilities to consider when selecting a model hosting and inferencing platform.
+
+### Functional requirements
+
+- **Does your workload require batch or online inferencing?**
+
 The inferencing endpoints will either be used for batch or online inferencing processes, and the inferencing method will help determine the right hosting platform. Batch inferencing is best hosted on a platform that supports transient usage and supports the compute to be shutdown when not in use. Online inferencing is best hosted on a platform that supports elastic compute utilization, which scales automatically based on the load at any given time. 
 
-### Factors to consider
+- **Does the platform support traceability?**
 
-- **Reliability:** Server layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
-
-- **Networking:** Determine whether you require private networking and egress firewalling.
-
-- **Identity and access security:** Determine what identity and access controls are required for your endpoints. For example, do you require native role-based access control (RBAC) or built-in support for your identity and access platform, like Microsoft Entra ID.
+Traceability is a critical for maintaining the integrity of the models used in your workload. It is important to know information about the model like the current version, who deployed it, when it was deployed, and the model's data lineage.
 
 Adopt a strategy of applying meaningful tags to images in your container registry to ensure that your model hosting service is pulling a specific version that the team can easily identify. This approach helps with data governance, reducing the risk of outdated or incorrect models being used in production.
 
- - **Monitoring capabilities:** Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
+- **Will your hosting platform be a centralized resource?**
 
-Traceability is a critical component of monitoring for model hosting. It is important to know information about the model like the current version, who deployed it, when it was deployed, and the model's data lineage. 
+Many organizations use a centralized model hosting platform that is used by different workload teams for their own workloads. If your hosting platform will be centralized, support for chargeback should be considered. This functionality allows you to properly account for utilization of the platform between teams and workloads.
 
- - **Performance:** Inference latency is a common concern and different platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tendencies and often have no throughput guarantees. On the other hand, those same platforms may offer self-hosted that offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get predictable latency behavior.
+### Nonfunctional requirements
+
+- **What are the reliability requirements for the platform?** Server layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
+
+- **What networking controls are required for the platform's?**
+
+Determine whether you require private networking and egress firewalling to protect the platform.
+
+- **What are the identity and access security requirements for the platform?**
+
+Determine what identity and access controls are required for your endpoints. For example, do you require native role-based access control (RBAC) or built-in support for your identity and access platform, like Microsoft Entra ID.
+
+ - **What monitoring capabilities are supported by the platform?**
+
+Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
+
+ - **What are the performance requirments for the platform?** Inference latency is a common concern and different platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tendencies and often have no throughput guarantees. On the other hand, those same platforms may offer self-hosted that offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get predictable latency behavior.
 
 Be aware of service limits and quotas that may effect your performance, like those for [Azure Open AI](/azure/ai-services/openai/quotas-limits). Often these quotas and limits are aggressively set to meet capacity demands, so if your choice of platform doesn't deliver the performance that you target, you may need to adopt strategies to spread the compute demand across instances to stay within those limits. 
 
@@ -150,7 +202,7 @@ For non-foundation models, consider the following recommendations:
 
 Orchestration in the context of AI workload application platforms refers to tools like prompt flow in [Azure ML](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Studio](/azure/ai-studio/how-to/prompt-flow), that are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
 
-### Factors to consider
+### Functional requirements
 
 Like all other production workloads in your cloud estate, the orchestration tool require considerations for:
 
