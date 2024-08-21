@@ -1,6 +1,6 @@
 ---
 title: Design principles of an ISV workload
-description: Key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas.
+description: Key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas for SaaS.
 author: johndowns
 ms.author: jodowns
 ms.date: 07/02/2024

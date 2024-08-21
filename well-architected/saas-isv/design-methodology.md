@@ -7,6 +7,8 @@ ms.date: 07/02/2024
 ms.topic: conceptual
 ---
 
+# Design methodology
+
 Independent Software Vendors (ISVs) must carefully plan the requirements of their SaaS solution, given that the solution *is their business*. Customers of the business are direct users of the solution, whether that's other businesses or consumers. This business model sets higher expectations because as a architect, you need to consider your workload requirements _and_ the customer's requirements.
 
 This article presents a design methodology to help you systematically define and refine requirements. With many design decisions and technology options to consider, if you feel uncertain, revisit this methodology to stay on track with the business requirements.
@@ -58,7 +60,7 @@ Your architecture should have the flexibility to change the tenancy model based 
 
 Designing a SaaS workload requires extra care to ensure the system is resilient, secure, efficient, and performant, while balancing customer requirements. Unlike enterprise applications, failures in a SaaS application can have cascading impacts, affecting your business, customers, and their users.
 
-For each decision, evaluate the tradeoffs between the Well-Architected Framework pillars. For information about the strategic approaches per pillar, see [Design principles](./design-prinicples.md). 
+For each decision, evaluate the tradeoffs between the Well-Architected Framework pillars. For information about the strategic approaches per pillar, see [Design principles](./design-principles.md). 
 
 ## 5 - Design for operations
 
