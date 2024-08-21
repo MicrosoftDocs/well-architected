@@ -144,7 +144,9 @@ Many organizations use a centralized model hosting platform that is used by diff
 
 ### Nonfunctional requirements
 
-- **What are the reliability requirements for the platform?** Server layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
+- **What are the reliability requirements for the platform?**
+
+Serve layer APIs are production resources, so you should apply the same reliability requirements to these as other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support Availability Zones or a multi-region design.
 
 - **What networking controls are required for the platform's?**
 
