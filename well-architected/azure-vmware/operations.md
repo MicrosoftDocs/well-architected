@@ -155,6 +155,9 @@ For business continuity, you need to implement robust data protection to help en
 
 - Use backup solutions that Microsoft supports, such as Microsoft Azure Backup Server, or approved third-party vendors.
 
+>[!Caution]
+>Make sure the VMs in your backup environment are running OSs that have supportability. [Learn about the supported OSs](/azure/virtual-machines/enable-nvme-interface).
+
 ## Use Azure Site Recovery
 
 *Impact: Reliability*
