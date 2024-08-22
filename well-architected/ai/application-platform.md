@@ -41,7 +41,6 @@ This section provides guidance on capabilities to consider when selecting an EDA
 
 When evaluating an EDA platform, consider the following:
 
-
 - **Does the platform support transient usage?**
 
 The platform should support transient workspaces and compute, which means that the necessary resources should be able to be stopped when they aren't being used to help cost control. EDA jobs are typically interactive, so users need to be able to start VMs and stop them as they run jobs over time.
@@ -78,7 +77,7 @@ The data used in your EDA phase will likely be production data, which requires y
 - *Robust monitoring and alerting functionality, including logging and auditability*
 - *Private networking to access centralized repositories for container images, data, and code assets*
 
-### Recommendations
+### Tools
 
 - **Use [Azure Machine Learning (AML)](/azure/machine-learning/overview-what-is-azure-machine-learning):** Use [AML compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. Unless your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks for example, in which case it may be more appropriate to remain on that platform.
 
@@ -99,11 +98,7 @@ Like EDA activities, model training and fine-tuning are typically not run full-t
 
 - **Does the platform provide orchestration functionality?**
 
-Due to the complexity required in managing the compute for model training and fine-tuning, an orchestrator is recommended. AML is the recommended solution for these activites. There are two options to evaluate:
-
-  -  [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose between standard and spot pricing. Spot pricing is only recommended for highly interruptible training. **Do not** use serverless for full-time operations as the costs can balloon quickly.
-    
-  -  [Compute Clusters](/azure/machine-learning/how-to-create-attach-compute-cluster?view=azureml-api-2&tabs=python#what-is-a-compute-cluster) gives you significant control over available hardware and is tuned for parallel or distributed training.
+Due to the complexity required in managing the compute for model training and fine-tuning, an orchestrator is recommended.
 
 -  **Can existing technologies in your environment be part of the solution?**
 
@@ -114,6 +109,14 @@ If your existing data platform has ML capabilities, like [Databricks](/azure/dat
 - **What is the tolerable tradeoff between costs and performance?**
 
 Due to the high-performance, GPU-optimized compute requirements, test and benchmark your training and fine-tuning extensively to land on the ideal SKU that balances performance against costs.
+
+### Tools
+
+Azure Machine Learning is the recommended solution for the model training and fine-tuning platform as it offers orchestration functionality with support for batch compute utilization. There are two compute options to evaluate:
+
+  -  [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose between standard and spot pricing. Spot pricing is only recommended for highly interruptible training. **Do not** use serverless for full-time operations as the costs can balloon quickly.
+    
+  -  [Compute Clusters](/azure/machine-learning/how-to-create-attach-compute-cluster?view=azureml-api-2&tabs=python#what-is-a-compute-cluster) gives you significant control over available hardware and is tuned for parallel or distributed training.
 
 > [!NOTE]
 > For foundation models, your choice of model hosting platform may limit your fine-tuning options. For example, using Azure OpenAI for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
@@ -168,7 +171,7 @@ Be aware of service limits and quotas that may effect your performance, like tho
 
 Advanced architectures can combine multiple deployments to achieve both fixed throughput for a bulk of the workload and bursting capabilities into more flexible compute. 
 
-### Recommendations 
+### Tools 
 
 #### Batch inferencing
 
@@ -202,11 +205,11 @@ For non-foundation models, consider the following recommendations:
 
 - You can also fully self-host your model using infrastructure as a service (IaaS) solutions, like [Azure Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/overview).
 
-## The orchestration platform
+## Considerations for the orchestration platform
 
 Orchestration in the context of AI workload application platforms refers to tools like prompt flow in [Azure ML](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Studio](/azure/ai-studio/how-to/prompt-flow), that are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
 
-### Functional requirements
+### Nonfunctional requirements
 
 Like all other production workloads in your cloud estate, the orchestration tool require considerations for:
 
@@ -216,7 +219,7 @@ Like all other production workloads in your cloud estate, the orchestration tool
 
 - **Cost optimization:** The tools are "always-on" so prefer elastic compute options to minimize utilization costs.
 
-### Recommendations
+### Tools
 
 - Prefer an off-the-shelf solution like Prompt Flow, verifying that its capabilities match your orchestration needs before looking into custom hosting with tools like Langchain or Semantic Kernel.
 
