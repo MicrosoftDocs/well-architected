@@ -155,7 +155,7 @@ During the development and testing phase, the goal is to **prevent security defe
 
   **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to avoid attacks. **Have a thorough process to review code** for security vulnerabilities. Use security groups for that purpose, and implement an approval process that's based on business justifications.
 
-### Protect your code deployment pipelines
+### Protect your code in deployment pipelines
 
   It's not enough to just secure code. If it runs in exploitable pipelines, all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent bad actors from running malicious code in your pipeline. 
 
