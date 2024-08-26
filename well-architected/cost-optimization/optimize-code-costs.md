@@ -224,7 +224,7 @@ Here are some techniques for organizing data efficiently:
 
 For example, consider a scenario where you have a large dataset of customer information. By partitioning the data based on customer regions or demographics, you can distribute the workload across multiple servers and improve query performance. You can also compress the data to reduce storage costs and improve the efficiency of data transfer.
 
-### Optimize your solution design
+### Optimize solution design
 
 Evaluate your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job.
 

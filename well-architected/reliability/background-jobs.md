@@ -133,7 +133,7 @@ It can be a challenge to coordinate multiple tasks and steps, but there are thre
 
 - **Manage the recovery for task steps that fail**. If one or more of the steps fail, an application might need to undo the work that a series of steps performs, which together defines an eventually consistent operation. For more information, see [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction).
 
-### Make your jobs resilient
+### Make jobs resilient
 
 Create resilient background tasks to provide reliable services for the application. When you plan and design background tasks, consider the following points:
 
@@ -161,7 +161,7 @@ Configure background tasks that are initiated by messages or that process messag
 
 - Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/previous-versions/msp-n-p/dn589781(v=pandp.10)) and [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
 
-### Make your jobs scalable
+### Make jobs scalable
 
 Background tasks must offer sufficient performance to ensure that they don't block the application or delay operation when the system is under load. Typically, performance improves when you scale the compute instances that host the background tasks. When you plan and design background tasks, consider the following points related to scalability and performance:
 

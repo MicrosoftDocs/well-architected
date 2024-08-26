@@ -56,7 +56,7 @@ Encryption mechanisms likely need to secure the data in three stages:
 
 The preceding choices aren't mutually exclusive. They're often used together in the context of the entire solution. One stage might act as a compensating control. For example, you might need to isolate data to prevent tampering when data is read from memory.
 
-### Determine your encryption requirements
+### Determine encryption requirements
 
 **Classify data by its purpose and sensitivity level** to determine what data you need to encrypt. For data that should be encrypted, determine the required level of protection. Do you need end-to-end TLS encryption for all data in transit? For data at rest, which Azure features can meet your requirements? Do you need to double encrypt data at every storage point? How do you implement information protection?
 
@@ -82,7 +82,7 @@ For rare occasions, if you need to replace the platform-provided encryption, eva
 
 Developers should use cryptography APIs that are built into the operating system rather than nonplatform cryptography libraries. For .NET, follow the [.NET cryptography model](/dotnet/standard/security/cryptography-model).
 
-### Choose your encryption keys approach
+### Choose an encryption keys approach
 
 By default, Azure services use Microsoft-managed encryption keys to encrypt and decrypt data. Azure is responsible for key management.
 

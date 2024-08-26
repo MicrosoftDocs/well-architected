@@ -31,7 +31,7 @@ This guide describes the recommendations for designing a reliable scaling strate
 
 ## Key design strategies
 
-### Design according to your load patterns
+### Design according to load patterns
 
 To design a reliable scaling strategy for your workloads, focus on identifying load patterns for the user and system flows for each workload that leads to a scaling operation. Here are examples of the different load patterns:
 
@@ -59,7 +59,7 @@ For the previous examples, your scaling strategies could be:
 
 - **Dynamic, irregular, and unpredictable**: You have autoscale thresholds defined to account for unplanned traffic spikes.
 
-### Automate your scaling strategy
+### Automate scaling strategies
 
 When designing your scaling automation, be sure to account for these issues:
 

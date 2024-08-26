@@ -136,7 +136,7 @@ Optimizing platform features involves eliminating or updating platform features,
 
 - *Eliminate tool redundancy*: Get rid of tools that you don't need or tools that provide the same function. Evaluate potential redundancy in the tools you use for building software, writing code, security, and monitoring. For example, if you use GitHub Actions to build your software, you don't need to buy another tool that builds software. Before you buy features or tools, check if there's already a tool in your workload that can do the job. Eliminate tool redundancy to avoid wasted money and make the most of what you already have.
 
-### Be methodical in your optimization efforts
+### Be methodical in optimization efforts
 
 Preventing unoptimized components is about proactively ensuring components are essential and optimized before adding or modifying. The best way to get rid of waste is to avoid it in the first place. Use strategies that prevent unnecessary expenses by addressing inefficiencies at the root, ensuring a workload runs cost-effectively from the outset. To help prevent waste, consider these strategies:
 

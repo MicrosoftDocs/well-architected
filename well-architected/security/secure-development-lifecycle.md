@@ -109,7 +109,7 @@ Patterns can support security concerns like segmentation and isolation, strong a
 
   For more information, see [Recommendations for threat analysis](threat-model.md).
 
-### Secure your development and testing practices
+### Secure development and testing practices
 
 During the development and testing phase, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
 
@@ -155,7 +155,7 @@ During the development and testing phase, the goal is to **prevent security defe
 
   **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to avoid attacks. **Have a thorough process to review code** for security vulnerabilities. Use security groups for that purpose, and implement an approval process that's based on business justifications.
 
-### Protect your code in deployment pipelines
+### Protect code in deployment pipelines
 
   It's not enough to just secure code. If it runs in exploitable pipelines, all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent bad actors from running malicious code in your pipeline. 
 
@@ -177,7 +177,7 @@ During the development and testing phase, the goal is to **prevent security defe
 
   Use progressive exposure to **release features to a subset of users** based on chosen criteria. If there are issues, the impact is minimized to those users. This approach is a common risk mitigation strategy because it reduces surface area. As the feature matures and you have more confidence in security assurances, you can gradually release it to a broader set of users. 
 
-### Protect your code in production
+### Protect code in production
 
 The production phase presents the **last responsible opportunity to fix security gaps**. Keep a record of the golden image that's released in production. 
 
@@ -196,7 +196,7 @@ The production phase presents the **last responsible opportunity to fix security
 
 
 
-### Maintain your code security throughout its lifecycle
+### Maintain code security throughout its lifecycle
 
 The goal of this phase is to **make sure security posture doesn't decay over time**. SDLC is an ongoing agile process. Concepts covered in the preceding phases apply to this phase because requirements change over time.
 

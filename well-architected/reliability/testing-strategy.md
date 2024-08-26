@@ -29,7 +29,7 @@ This guide describes the recommendations for designing a reliability testing str
 
 ## Key design strategies
 
-### Test your reliability preparedness
+### Test reliability preparedness
 
 - Routinely perform testing to validate existing thresholds, targets, and assumptions. When a major change occurs in your workload, run regular testing. Perform most testing in testing and staging environments. It's also beneficial to run a subset of tests against the production system. Plan a one-to-one parity of key test environments with the production environment.
 

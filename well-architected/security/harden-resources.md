@@ -71,7 +71,7 @@ For internet-facing applications, **restrict access by adding a layer-7** servic
 
 Domain Name System (DNS) hardening is another network security practice. To ensure that the DNS infrastructure is secure, we recommend that you **use trusted DNS resolvers**. To validate information from DNS resolvers and provide an extra layer of security, when possible, use a DNS security protocol for highly sensitive DNS zones. To prevent attacks such as DNS cache poisoning, DDoS attacks, and amplification attacks, explore other DNS-related security controls such as query rate limiting, response rate limiting, and DNS cookies.
 
-### Harden your identity access controls
+### Harden identity access controls
 
 **Remove unused or default accounts.** Disable unused authentication and authorization methods.
 
@@ -85,7 +85,7 @@ Domain Name System (DNS) hardening is another network security practice. To ensu
 
 **Use the least-privilege approach for your management processes.** Remove unnecessary role assignments and perform regular Microsoft Entra access reviews. Use role assignment descriptions to keep a paper trail of justifications, which is crucial for audits.
 
-### Harden your cloud resources configuration
+### Harden cloud resource configurations
 
 The preceding hardening recommendations for networking and identity apply to individual cloud services. For networking, pay special attention to **service-level firewalls**, and evaluate their inbound rules.
 
@@ -95,7 +95,7 @@ Always **keep up with the Azure roadmap and the workload roadmap**. Apply patchi
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cloud resources often have requirements for allowances or must run in documented configurations to be considered *supported*. Some hardening techniques, such as aggressively blocking outbound traffic, can cause a service to fall outside a supported configuration, even if the service operates normally. Understand each cloud resource's runtime requirements from your platform to ensure that you maintain support for that resource.
 
-### Harden your code assets
+### Harden code assets
 
 Evaluate areas where your application might inadvertently leak information. For example, suppose you have an API that retrieves user information. A request might have a valid user ID, and your application returns a 403 error. But with an invalid customer ID, the request returns a 404 error. Then you're effectively leaking information about your user IDs.
 

@@ -102,7 +102,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Prevent multiple instances of the same client, or multiple instances of different clients, from sending retries simultaneously. If this scenario is likely to occur, introduce randomization into the retry intervals.
 
-### Test your retry strategy and implementation
+### Test retry strategies and implementation
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
@@ -152,7 +152,7 @@ The following guidelines can help you design suitable transient fault handling m
 
     -   In the meantime, you might be able to fall back to another instance of the service (maybe in a different datacenter or application), use a similar service that offers compatible (maybe simpler) functionality, or perform some alternative operations based on the hope that the service will be available soon. For example, it might be appropriate to store requests for the service in a queue or data store and retry them later. Or you might be able to redirect the user to an alternative instance of the application, degrade the performance of the application but still offer acceptable functionality, or just return a message to the user to indicate that the application isn't currently available.
 
-### Optimize your retry implementation
+### Optimize retry implementation
 
 -   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 
