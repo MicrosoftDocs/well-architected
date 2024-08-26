@@ -42,7 +42,6 @@ Transient faults can have a significant effect on the perceived availability of 
 
 -   The application must use an appropriate strategy for retries. The strategy specifies the number of times the application should retry, the delay between each attempt, and the actions to take after a failed attempt. The appropriate number of attempts and the delay between each one are often difficult to determine. The strategy varies depending on the type of resource and on the current operating conditions of the resource and the application.
 
-## General guidelines
 
 The following guidelines can help you design suitable transient fault handling mechanisms for your applications.
 

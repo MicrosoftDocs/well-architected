@@ -52,7 +52,7 @@ Internal dependencies are components in the workload scope that are required for
 
 Identify and document the dependencies in your workload, and include them in your flow documentation artifacts.
 
-## Evaluate failure points
+### Evaluate failure points
 
 In your workload's critical flows, consider each component and determine how that component, and its dependencies, might be affected by a failure mode. Remember that there are many failure modes to consider when planning for resiliency and recovery. Any one component can be affected by more than one failure mode at any given time. These failure modes include:
 
@@ -76,7 +76,7 @@ The analysis should always be in the context of the flow you're attempting to an
 
 Consider the likelihood of each type of failure mode. Some are very unlikely, like multi-zone or multi-region outages, and adding mitigation planning beyond redundancy isn't a good use of resources and time.
 
-### Mitigation
+#### Mitigation
 
 Mitigation strategies fall into two broad categories: building more resiliency and designing for degraded performance.
 
@@ -90,11 +90,11 @@ If the application has strong dependencies that it can't operate without, the av
 
 If the application lifecycle is closely coupled with the lifecycle of its dependencies, the operational agility of the application might be limited, particularly for new releases.
 
-### Detection
+#### Detection
 
 Failure detection is essential to ensure that you have correctly identified failure points in your analysis and properly planned your mitigation strategies. Detection in this context means the monitoring of your infrastructure, data and application, and alerting when issues arise. Automate detection as much as possible, and build redundancy into your operations processes to ensure that alerts are always caught and are responded to quickly enough to meet your business requirements. For more information, see the [Recommendations for monitoring](monitoring-alerting-strategy.md).
 
-### Outcome
+#### Outcome
 
 For the outcome of your analysis, create a set of documents that effectively communicate your findings, the decisions that you have made relative to the flow components and mitigation, and the effect of the failure on your workload.
 
