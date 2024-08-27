@@ -9,15 +9,21 @@
     href: design-principles.md
   - name: Design areas
     items:
-    - name: Business requirements
-      href: business-requirements.md
-    - name: Identity and access management
-      href: identity-access.md
+    - name: Networking
+      href: networking.md
     - name: Governance
       href: governance.md
-    - name: Devops practices
+    - name: Compute
+      href: compute.md
+    - name: Identity and access management
+      href: identity-access.md
+    - name: Usage monitoring and billing
+      href: usage-monitoring-billing.md
+    - name: Incident management
+      href: incident-management.md
+    - name: Data
+      href: data.md
+    - name: DevOps practices
       href: devops.md
-    - name: Deployment
-      href: deployment.md
   - name: Assessment
     href: assessment.md
