@@ -24,23 +24,29 @@ landingContent:
             url: get-started.md
           - text: Design principles
             url: design-principles.md
-          - text: Tenancy models
-            url: tenancy-models.md          
+          - text: Design methodology
+            url: design-methodology.md     
    # Card
   - title: Design areas
     linkLists:
       - linkListType: concept
         links:
-          - text: Business requirements
-            url: business-requirements.md
+          - text: Networking
+            url: networking.md
           - text: Governance
             url: governance.md
+          - text: Compute
+            url: compute.md
           - text: Identity and access management
             url: identity-access.md
+          - text: Usage monitoring and billing
+            url: usage-monitoring-billing.md
+          - text: Incident management
+            url: incident-management.md
+          - text: Data
+            url: data.md            
           - text: DevOps practices
             url: devops.md
-          - text: Deployment
-            url: deployment.md            
  # Card
   - title: Assessment
     linkLists:
