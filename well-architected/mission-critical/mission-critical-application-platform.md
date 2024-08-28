@@ -62,7 +62,7 @@ Not every workload supports or requires running multiple regions simultaneously.
   If suitable Azure regions don't all offer capabilities that you need, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability. If only a single Azure region is suitable, deploy multiple deployment stamps (regional scale units) in the selected region to mitigate some risk, and use availability zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution dramatically constrains the attainable composite SLO and overall reliability.
 
   > [!IMPORTANT]
-  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions. Calculate the [composite SLO](/azure/well-architected/resiliency/business-metrics#composite-slas) for all user flows. Ensure that those targets are aligned with business targets.
+  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions. Calculate the [composite SLO](../reliability/metrics.md#define-composite-slo-targets) for all user flows. Ensure that those targets are aligned with business targets.
 
 - For high-scale application scenarios that have significant volumes of traffic, design the solution to scale across multiple regions to navigate potential capacity constraints within a single region. Additional regional deployment stamps can achieve a higher composite SLO. For more information, see how to [implement multiregion targets](../reliability/metrics.md#implement-multiregion-targets).
 - Define and validate your recovery point objectives (RPO) and recovery time objectives (RTO).
