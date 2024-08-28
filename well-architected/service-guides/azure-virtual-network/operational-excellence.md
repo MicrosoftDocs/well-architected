@@ -36,7 +36,6 @@ The Virtual Network (VNet) includes the following design considerations for oper
 
 - Overlapping IP address spaces across on-premises and Azure regions creates major contention challenges.
 - While a Virtual Network address space can be added after creation, this process requires an outage if the Virtual Network is already connected to another Virtual Network through peering. An outage is necessary because the Virtual Network peering is deleted and re-created.
-- Resizing of peered Virtual Networks is in [public preview](https://azure.microsoft.com/blog/how-to-resize-azure-virtual-networks-that-are-peered-now-in-preview/) (August 20, 2021).
 - Some Azure services do require [dedicated subnets](/azure/virtual-network/virtual-network-for-azure-services#services-that-can-be-deployed-into-a-virtual-network), such as:
   - Azure Firewall
   - Azure Bastion
