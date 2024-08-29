@@ -48,7 +48,7 @@ This section explores the key differences Azure routing services to define how e
 
 - For scenarios where client control isn't possible, a dependency must be taken on a single global routing service to provide a unified entry point for all active deployment regions.
   - When used in isolation they represent a single-point-of-failure at a service level due to global dependencies, even though built-in multi-region redundancy and availability are provided.
-  - The SLA provided by the selected global routing service represents the maximum attainable composite SLA, regardless of how many deployment regions are considered.
+  - The SLA provided by the selected global routing service represents the maximum attainable composite SLO, regardless of how many deployment regions are considered.
 
 - When client control isn't possible, operational mitigations can be considered to define a process for migrating to a secondary global routing service if a global outage disables the primary service. Migrating from one global routing service to another is typically a lengthy process lasting several hours, particularly where DNS propagation is considered.
 
