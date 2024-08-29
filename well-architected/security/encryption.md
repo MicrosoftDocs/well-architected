@@ -188,7 +188,7 @@ Key Vault treats the keys like any other secret. Azure role-based access control
 
 For more information, see [Provide access to Key Vault keys, certificates, and secrets by using RBAC](/azure/key-vault/general/rbac-guide).
 
-Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilites and [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
+Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilites and [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
 
 ##### Data-at-rest protection
 
@@ -216,7 +216,7 @@ With [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overvie
 
 - **Confidential Virtual Machines** offer an entire [virtual machine running inside a TEE](/azure/confidential-computing/virtual-machine-solutions), the memory and executing CPU contents of the virtual machine are encrypted offering a simple 'lift & shift' approach for moving unmodified applications with high security requirements to Azure. Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
 
-- **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to to [run and manage unmodified containers inside a TEE](/azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
+- **Confidential AKS worker nodes, Confidential Containers on AKS or Confidential Containers on Azure Container Instances (ACI)** offer the ability to [run and manage unmodified containers inside a TEE](/azure/confidential-computing/choose-confidential-containers-offerings) which enables customers to benefit from in-use protection. Container offerings are built-upon Confidential Virtual Machines and benefit from the same protections.
 
 - **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular [Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
 
