@@ -62,7 +62,7 @@ Optimizing costs in the production environment involves implementing strategies 
 
 - *Tune tenant models*: Customize the environment based on the tenant model. For example, spend more on services and features for paid tenants and spend less for nonpaying tenants.
 
-### Optimize the DR environment
+### Optimize disaster recovery environments
 
 A DR environment refers to infrastructure and processes that a workload uses to recover after a disruptive event. Disruptive events include natural disasters, cyber attacks, and hardware failures. Balance the cost of maintaining a DR environment and the potential affects of a disruptive event. Consider the following strategies:
 

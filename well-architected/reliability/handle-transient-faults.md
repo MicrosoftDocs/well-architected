@@ -34,8 +34,6 @@ Cloud hosting, including private cloud systems, can offer higher overall availab
 
 -   Network conditions between the client and the server might be variable, especially when communication crosses the internet. Even in on-premises locations, heavy traffic loads can slow communication and cause intermittent connection failures.
 
-### Challenges
-
 Transient faults can have a significant effect on the perceived availability of an application, even if it's been thoroughly tested under all foreseeable circumstances. To ensure that cloud-hosted applications operate reliably, you need to ensure that they can respond to the following challenges:
 
 -   The application must be able to detect faults when they occur and determine if the faults are likely to be transient, are long-lasting, or are terminal failures. Different resources are likely to return different responses when a fault occurs, and these responses can also vary depending on the context of the operation. For example, the response for an error when the application is reading from storage might differ from the response for an error when it's writing to storage. Many resources and services have well-documented transient-failure contracts. However, when such information isn't available, it can be difficult to discover the nature of the fault and whether it's likely to be transient.
@@ -44,17 +42,16 @@ Transient faults can have a significant effect on the perceived availability of 
 
 -   The application must use an appropriate strategy for retries. The strategy specifies the number of times the application should retry, the delay between each attempt, and the actions to take after a failed attempt. The appropriate number of attempts and the delay between each one are often difficult to determine. The strategy varies depending on the type of resource and on the current operating conditions of the resource and the application.
 
-### General guidelines
 
 The following guidelines can help you design suitable transient fault handling mechanisms for your applications.
 
-#### Determine if there's a built-in retry mechanism
+### Determine if there's a built-in retry mechanism
 
 -   Many services provide an SDK or client library that contains a transient fault handling mechanism. The retry policy it uses is typically tailored to the nature and requirements of the target service. Alternatively, REST interfaces for services might return information that can help you determine whether a retry is appropriate and how long to wait before the next retry attempt.
 
 -   You should use the built-in retry mechanism when one is available, unless you have specific and well-understood requirements that make a different retry behavior more appropriate.
 
-#### Determine if the operation is suitable for retrying
+### Determine if the operation is suitable for retrying
 
 -   Perform retry operations only when the faults are transient (typically indicated by the nature of the error) and when there's at least some likelihood that the operation will succeed when retried. There's no point in retrying operations that attempt an invalid operation, like a database update to an item that doesn't exist or a request to a service or resource that suffered a fatal error.
 
@@ -62,7 +59,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   When you create services or components, consider implementing error codes and messages that help clients determine whether they should retry failed operations. In particular, indicate whether the client should retry the operation (perhaps by returning an **isTransient** value) and suggest a suitable delay before the next retry attempt. If you build a web service, consider returning custom errors that are defined within your service contracts. Even though generic clients might not be able to read these errors, they're useful in the creation of custom clients.
 
-#### Determine an appropriate retry count and interval
+### Determine an appropriate retry count and interval
 
 -   Optimize the retry count and the interval to the type of use case. If you don't retry enough times, the application can't complete the operation and will probably fail. If you retry too many times, or with too short an interval between tries, the application might hold resources like threads, connections, and memory for long periods, which adversely affects the health of the application.
 
@@ -92,7 +89,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Consider using a dead-letter queue approach to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts have been exhausted.
 
-#### Avoid anti-patterns
+### Avoid anti-patterns
 
 -   In most cases, avoid implementations that include duplicated layers of retry code. Avoid designs that include cascading retry mechanisms or that implement retry at every stage of an operation that involves a hierarchy of requests, unless you have specific requirements that require doing so. In these exceptional circumstances, use policies that prevent excessive numbers of retries and delay periods, and make sure you understand the consequences. For example, say one component makes a request to another, which then accesses the target service. If you implement retry with a count of three on both calls, there are nine retry attempts in total against the service. Many services and resources implement a built-in retry mechanism. You should investigate how you can disable or modify these mechanisms if you need to implement retries at a higher level.
 
@@ -104,7 +101,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Prevent multiple instances of the same client, or multiple instances of different clients, from sending retries simultaneously. If this scenario is likely to occur, introduce randomization into the retry intervals.
 
-#### Test your retry strategy and implementation
+### Test retry strategies and implementation
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
@@ -120,7 +117,7 @@ The following guidelines can help you design suitable transient fault handling m
 
     -   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
 
-#### Manage retry policy configurations
+### Manage retry policy configurations
 
 -   A *retry policy* is a combination of all the elements of your retry strategy. It defines the detection mechanism that determines whether a fault is likely to be transient, the type of interval to use (like regular, exponential back-off, and randomization), the actual interval values, and the number of times to retry.
 
@@ -130,7 +127,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Take advantage of built-in or default retry strategies that are available in the client APIs that you use, but only when they're appropriate for your scenario. These strategies are typically generic. In some scenarios, they might be all you need, but in other scenarios they don't offer the full range of options to suit your specific requirements. To determine the most appropriate values, you need to perform testing to understand how the settings affect your application.
 
-#### Log and track transient and nontransient faults
+### Log and track transient and nontransient faults
 
 -   As part of your retry strategy, include exception handling and other instrumentation that logs retry attempts. An occasional transient failure and retry are expected and don't indicate a problem. Regular and increasing numbers of retries, however, are often an indicator of a problem that might cause a failure or that degrades application performance and availability.
 
@@ -142,7 +139,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Consider implementing a telemetry and monitoring system that can raise alerts when the number and rate of failures, the average number of retries, or the overall times elapsed before operations succeed is increasing.
 
-#### Manage operations that continually fail
+### Manage operations that continually fail
 
 -   Consider how to handle operations that continue to fail at every attempt. Situations like this are inevitable.
 
@@ -154,7 +151,7 @@ The following guidelines can help you design suitable transient fault handling m
 
     -   In the meantime, you might be able to fall back to another instance of the service (maybe in a different datacenter or application), use a similar service that offers compatible (maybe simpler) functionality, or perform some alternative operations based on the hope that the service will be available soon. For example, it might be appropriate to store requests for the service in a queue or data store and retry them later. Or you might be able to redirect the user to an alternative instance of the application, degrade the performance of the application but still offer acceptable functionality, or just return a message to the user to indicate that the application isn't currently available.
 
-#### Other considerations
+### Optimize retry implementation
 
 -   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 

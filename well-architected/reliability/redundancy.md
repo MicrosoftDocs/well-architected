@@ -55,9 +55,7 @@ Whether you deploy in an active-active or active-passive model, follow the [Depl
 
 Whether you deploy an active-active or an active-passive design, take advantage of [availability zones](regions-availability-zones.md) within the active regions to fully optimize your resiliency. Many Azure regions provide multiple availability zones, which are separated groups of data centers within a region. Depending on the Azure service, you can take advantage of availability zones by deploying elements of your workload redundantly across zones or pinning elements to specific zones. For more information, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
 
-### Infrastructure layer guidance
-
-#### Compute resources
+### Implement zone redundancy for compute resources
 
 - Choose the appropriate [compute service](/azure/architecture/guide/technology-choices/compute-decision-tree) for your workload. Depending on the type of workload that you design, there might be several options available. Research the available services and understand which types of workloads work best on a given compute service. For example, SAP workloads are typically best suited for infrastructure as a service (IaaS) compute services. For a containerized application, determine the specific functionality you need to have control over to determine whether to use Azure Kubernetes Service (AKS) or a platform as a service (PaaS) solution. Your cloud platform fully manages a PaaS service.
 
@@ -73,7 +71,7 @@ Whether you deploy an active-active or an active-passive design, take advantage 
 
 - Deploy IaaS services manually or via automation in each availability zone or region in which you intend to implement your solution. Some PaaS services have built-in capabilities that are automatically replicated across availability zones and regions.
 
-#### Data resources
+### Implement zone redundancy for data resources
 
 - Determine whether synchronous or asynchronous data replication is necessary for your workload's functionality. To help you make this determination, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
 
@@ -95,7 +93,7 @@ Whether you deploy an active-active or an active-passive design, take advantage 
 
 - Understand the built-in replication and redundancy capabilities of the stateful platform services that you use. For specific redundancy capabilities of stateful data services, see [Related links](#related-links).
 
-#### Networking
+### Implement zone redundancy for networking resources
 
 - Decide on a reliable and scalable network topology. Use a hub-and-spoke model or an Azure Virtual WAN model to help you organize your cloud infrastructure in logical patterns that make your redundancy design easier to build and scale.
 
