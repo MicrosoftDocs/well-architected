@@ -30,7 +30,7 @@ You must justify every design decision with a business requirement. This design 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components. Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
 
-### Collaborative design exercises
+### Collaborate with stakeholders on design exercises
 
 Work with stakeholders to:
 
@@ -44,7 +44,7 @@ Work with stakeholders to:
 
 - **Define availability and recovery targets** for your flows to inform your workload's architecture. Business metrics include service-level objectives (SLOs), service-level agreements (SLAs), mean time to recover (MTTR), mean time between failure (MTBF), recovery time objectives (RTOs), and recovery point objectives (RPOs). Define target values for these metrics. This exercise might require compromise and mutual understanding between technology and business teams to ensure that each team's goals meet business objectives and are realistic. For more information, see [Recommendations for defining reliability targets](metrics.md).
 
-### Additional design recommendations
+### Favor simpler design choices
 
 You can perform the following recommendations without stakeholder engagement:
 
@@ -74,7 +74,7 @@ The principles of simplicity, efficiency, and reliability also apply to your dev
 
 - Implement an approach to identify *dead code*. Be skeptical of the code that your automated tests don't cover.
 
-### Use the best data store for your data
+### Select the right data store
 
 In the past, many organizations stored all their data in large relational SQL databases. Relational databases provide atomic, consistent, isolated, and durable (ACID) guarantees for relational data transactions. But these databases come with disadvantages:
 

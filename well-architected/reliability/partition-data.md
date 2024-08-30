@@ -25,7 +25,7 @@ In many large-scale solutions, *partitions* are used to divide data so that it c
 > [!NOTE]
 > In this article, the term *partitioning* means the process of physically dividing data into separate data stores. It differs from SQL Server table partitioning.
 
-### Why partition data?
+You can partition data to:
 
 - **Improve scalability.** When you scale up a single database system, the database eventually reaches a physical hardware limit. If you divide data across multiple partitions, with each partition hosted on a separate server, you can scale out the system almost indefinitely.
 
@@ -39,7 +39,7 @@ In many large-scale solutions, *partitions* are used to divide data so that it c
 
 - **Improve availability.** To avoid a single point of failure, you can separate data across multiple servers. If one instance fails, only the data in that partition is unavailable. Operations continue in other partitions. This consideration is less relevant for managed platform as a service (PaaS) data stores because they have built-in redundancy.
 
-### Design partitions
+### Select the right partitioning strategy
 
 There are three typical strategies for partitioning data:
 
@@ -161,7 +161,7 @@ Consider the following factors that affect availability:
 
 **Replicate critical data across partitions.** This strategy improves availability and performance but can also introduce consistency issues. It takes time to synchronize changes with every replica. During synchronization, different partitions contain different data values.
 
-### Application design considerations
+### Optimize application code to use partitions
 
 Partitioning adds complexity to the design and development of your system. Partition data as a fundamental part of your system design even if the system initially only contains a single partition. If you address partitioning as an afterthought, it's challenging because you already have a live system to maintain. You might:
 

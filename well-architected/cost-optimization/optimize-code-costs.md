@@ -45,7 +45,7 @@ Automate as much of this code analysis as possible. Use dynamic and static tools
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
-### Identify and optimize hot paths
+### Optimize hot paths
 
 By instrumenting your code, you can measure the resource consumption of code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They're critical or frequently run sections of a program that require high performance and low latency.
 
@@ -133,7 +133,7 @@ The right operating system can contribute to overall cost optimization for your 
 
 - *Consider vendor support*: Evaluate the level of vendor support that's available for the alternative operating system. Check if there are official support channels, documentation, and a community of users who can provide assistance if you need it.
 
-### Optimize network traversal
+### Optimize network traffic
 
 Optimizing network traversal is about minimizing network traffic between workload components. Data transfer often has an associated cost. By minimizing network traffic, you can reduce the amount of data that needs to be transferred while lowering costs.
 
@@ -224,7 +224,7 @@ Here are some techniques for organizing data efficiently:
 
 For example, consider a scenario where you have a large dataset of customer information. By partitioning the data based on customer regions or demographics, you can distribute the workload across multiple servers and improve query performance. You can also compress the data to reduce storage costs and improve the efficiency of data transfer.
 
-### Optimize architecture
+### Optimize solution design
 
 Evaluate your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job.
 

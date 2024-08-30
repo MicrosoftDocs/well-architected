@@ -29,7 +29,7 @@ This guide describes the recommendations for designing a reliability testing str
 
 ## Key design strategies
 
-### General testing guidance
+### Test reliability preparedness
 
 - Routinely perform testing to validate existing thresholds, targets, and assumptions. When a major change occurs in your workload, run regular testing. Perform most testing in testing and staging environments. It's also beneficial to run a subset of tests against the production system. Plan a one-to-one parity of key test environments with the production environment.
 
@@ -79,7 +79,7 @@ Use every outage incident as an opportunity to learn more about your workload an
 
 - Use your findings to improve your testing strategy. Ensure that you have successfully addressed the root cause and similar problems by directly testing the same failure.
 
-### Fault-injection and chaos engineering guidance
+### Use fault injection and chaos engineering
 
 Fault-injection testing follows the principles of chaos engineering by highlighting the workload's ability to react to component failures. Perform fault-injection testing in pre-production and production environments. Apply testing to infrastructure and application layers. Apply the information that you learned [Recommendations for performing failure mode analysis](failure-mode-analysis.md) to ensure that you test only faults that you prioritize and that you have mitigation strategies that address faults. The key guidelines of chaos engineering are:
 
