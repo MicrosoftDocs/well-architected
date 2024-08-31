@@ -2089,8 +2089,6 @@
 			"source_path": "well-architected/performance-efficiency/collect-performance-data#collect-operating-system-data-if-applicable",
 			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data#collect-operating-system-data",
 			"redirect_document_id": false
-		},
-
-																		
+		}															
 	]
 }
