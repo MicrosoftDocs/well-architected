@@ -1,71 +1,71 @@
 ---
 title: Design methodology for ISV workloads on Azure 
-description: Learn about adopting a structured approach when making architectural design decisions for a SaaS workload.
+description: Learn how to implement a structured approach when you make architectural design decisions for software as a service (SaaS) workloads on Azure.
 author: landonpierce 
-ms.author: landonpierce 
-ms.date: 07/02/2024
-ms.topic: conceptual
+ms.author: landonpierce
+ms.topic: conceptual 
+ms.date: 09/04/2024
+ms.custom: template-overview
+ms.service: azure-waf
+
 ---
 
-# Design methodology
+# Design methodology for ISV workloads
 
-Independent Software Vendors (ISVs) must carefully plan the requirements of their SaaS solution, given that the solution *is their business*. Customers of the business are direct users of the solution, whether that's other businesses or consumers. This business model sets higher expectations because as a architect, you need to consider your workload requirements _and_ the customer's requirements.
+Because the foundation of a business is its software as a service (SaaS) solution requirements, independent software publishers (ISVs) must carefully plan them. Business customers are the direct users of the solution, whether they're other businesses or individual consumers. This business model sets higher expectations because you must consider both your workload requirements and the customer’s needs as the architect of the design.
 
-This article presents a design methodology to help you systematically define and refine requirements. With many design decisions and technology options to consider, if you feel uncertain, revisit this methodology to stay on track with the business requirements.
+This article describes a design methodology that you can use to systematically define and refine requirements. If you're uncertain about various design decisions and technology options, revisit this methodology to stay aligned with business requirements. Building a SaaS workload is an iterative process that requires flexibility to adapt to evolving markets and customer needs. This framework enables you to work with marketing and sales teams to validate technical decisions and assess customer feedback for continuous improvement.
 
-Keep in mind that building a SaaS workload is an iterative process that requires _flexibility_ to adapt to evolving markets and customer needs. This structure can help you collaborate with marketing and sales teams to justify technical decisions while evaluating customer feedback to drive the improvements.
+**Diagram that depicts this iterative process**
 
-**Diagram depicting this iterative process**
+## 1 - Design for your business model
 
-## 1 - Design for your business model 
+It's important to understand how your business requirements affect your solution downstream. Consider the following decision points:
 
-Have a clear understanding how your business requirements will affect your solution downstream. While this list isn't exhaustive, here are some decision points to consider: 
+- Where you deploy resources limits the architecture patterns that you can use. Resources can be fully deployed in your Azure subscriptions, or customers can purchase the solution and deploy it in their own Azure subscriptions. Alternatively, the workload can use resources that are deployed in the customers' Azure subscriptions.
 
-- The _location where the resources are deployed_ will influence the architecture patterns that are feasible. They can be fully deployed in your Azure subscriptions, or customers can purchase the solution and deploy it in their own Azure subscriptions. Alternatively, the workload can use resources deployed in customers' Azure subscriptions. 
+  For example, if you choose to deploy your software completely in the customer's environment, you can't base an architecture pattern only on shared resources because each customer would have their own standalone environment with dedicated resources.
 
-  For example, if you choose to deploy your software completely in the customer's environment, an architecture pattern based on only shared resources isn't feasible because each customer would have their own standalone environment with dedicated resources.
-
-  For information about the deployment models, see [ISV deployment models](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone?#isv-deployment-models).
+  For more information, see [ISV deployment models](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone?#isv-deployment-models).
   
-- Your _pricing model_ determines your business's revenue, which in turn affects your allowable COGS (cost of goods sold). This has a direct impact on your technical architecture.
+- Your pricing model determines your business's revenue, which in turn affects your allowable cost of goods sold. This dynamic directly affects your technical architecture.
 
   For more information, see [Pricing model](/azure/architecture/guide/multitenant/considerations/pricing-models).
   
-- The features or SKUs you offer is an influencing factor. Selecting specific features over others may warrant changes or additions to your technical architecture. Offering different SKUs to various customers can also lead to a more complex architecture to support these variations.
+- The features or products that you provide can affect your architecture. Changes or additions to your technical architecture might be required when you choose specific features. Providing different products to various customers can also lead to a more complex architecture to support these variations.
 
-- 
 ## 2 - Design for your customer requirements
 
-It's important to design your solution with your customer requirements in mind.  Customers may have additional requirements, forming a _superset_ that your solution must meet. The superset requirements may not always conflict with your business or other customer requirements, but it's possible. For cases, where these requirements differ from your business requirements or put additional restrictions, decision-making can be challenging. 
+Design your solution with customer requirements in mind. Customers might have extra requirements for their solution, which creates a superset that your solution must meet. These extra requirements can sometimes conflict with your business needs or the needs of other customers. When these requirements differ from your business needs or add more restrictions, making decisions for your solution can be tough. For instance, your solution might meet your security standards, but a customer might have stricter security requirements to protect their business.
 
-For example, while your solution might adhere to your security standards, a customer might have stricter security requirements that you need to fulfill to secure their business. 
+Your architecture should be flexible enough to accommodate these extra requirements. If customer requirements don't affect your own requirements, try to integrate them into your business model. Always calculate the cost of these adjustments. If a customer’s unique requirements incur extra costs, consider charging them accordingly.
 
-Your architecture should be flexible enough to accommodate these extra requirements. Try to integrage customer requirements in your overall business model, if your your requirements aren't significantly impacted. Always calculate the cost of those adjustments. If a customer's unique requirements incur additional costs, consider charging accordingly.
-
-Ensure you have realistic [reliability targets](/azure/well-architected/reliability/metrics) that meet customer expectations and that you design your architecture to meet them.
-
+Make sure that you have realistic [reliability targets](/azure/well-architected/reliability/metrics) that meet customer expectations, and design your architecture to achieve them.
 
 ## 3 - Design your tenancy model
 
-Most SaaS solutions rely on multitenancy as the primary techincal strategy to maximize cost efficiency. Multitenancy involves a range of choices without standard patterns. Your tenancy model impacts various aspects of your architecture, including management overhead, cost, and data isolation. Finding the right balance for your solution is important. Also, the choice of tenancy model is a critical decision point because it must balance both customer and business requirements.
+Most SaaS solutions use multitenancy as the primary technical strategy to maximize cost efficiency. Multitenancy involves a range of choices that don't have standard patterns. Your tenancy model affects your architecture’s management overhead, cost, and data isolation. It’s important to find the right balance for your solution. Choosing a tenancy model is crucial because it must balance customer and business needs.
 
-We recommend that you refer to these articles to make informed decisions:
+To make informed decisions, refer to these articles:
 
 - [What is multitenancy?](/azure/architecture/guide/multitenant/overview)
 - [Tenancy models](/azure/architecture/guide/multitenant/considerations/tenancy-models)
 
-Your architecture should have the flexibility to change the tenancy model based on new or incoming customer requirements. Suppose you adopt a _fully multitenant_ architecture but have a new customer in a highly regulated industry requiring extensive security assurances. You might consider vertically partitioning their deployment to provide a dedicated stamp. This shift introduces a business decision: _Should they pay more than your other tenants?_ Given the increased resource costs and operational complexity, it would be logical for them to pay more, but this decision is up to you.
+Your architecture should be flexible enough to change the tenancy model based on new customer requirements. For example, if you use a fully multitenant architecture but get a new customer in a highly regulated industry that needs extra security, you might consider vertically partitioning their deployment to provide a dedicated stamp. This change raises a business decision about whether they should pay more than your other tenants. Because this setup increases resource costs and complexity, it makes sense for them to pay more, but the decision is yours.
 
-## 4 - Design to be well-architected
+## 4 - Design for operations
 
-Designing a SaaS workload requires extra care to ensure the system is resilient, secure, efficient, and performant, while balancing customer requirements. Unlike enterprise applications, failures in a SaaS application can have cascading impacts, affecting your business, customers, and their users.
+A different approach is required to operate a SaaS workload. You need to consider factors like supportability, including how to provide 24/7 platform support and hire people with the right skill sets. Don’t treat operations as an afterthought or only focus on building new features. Include operability in your design from the start. Consider how your processes scale as you get more customers. For instance, manual operations might work at first, but they usually don’t scale well over time.
 
-For each decision, evaluate the tradeoffs between the Well-Architected Framework pillars. For information about the strategic approaches per pillar, see [Design principles](./design-principles.md). 
+If you have a legacy platform, consider how or if you should move customers to your new SaaS platform. A smooth migration path is key to keeping customers happy during your business transformation.
 
-## 5 - Design for operations
+## Target architecture evolution
 
-SaaS workload operations need a different perspective. You'll need to consider new factors, such as supportability. What is your operational strategy for providing 24/7 platform support and hiring for different skill sets. Don't consider operations to be an afterthought and only invest efforts in building new features. Incorporate operability into your design from the beginning.
+When you design a SaaS workload, extra care is required to ensure that the system is resilient, secure, efficient, performant, and balances customer requirements. Unlike enterprise applications, failures in a SaaS application can have cascading effects that affect your business, customers, and their users.
 
-Additionally, understand how your processes will scale beyond a few customers. While manual operational activities may be feasible initially, they often do not scale well in the long term.
+For each decision, evaluate the tradeoffs between the [Azure Well-Architected Framework pillars](../pillars.md). For more information, see [Design principles](./design-principles.md).
 
-If you have a legacy platform, consider how, or if, you'll migrate customers to your new SaaS platform. A smooth migration path is essential to maintaining customer satisfaction during your business transformation.
+## Next step
+
+> [!div class="nextstepaction"]
+> [Design principles of an ISV workload](design-principles.md)
