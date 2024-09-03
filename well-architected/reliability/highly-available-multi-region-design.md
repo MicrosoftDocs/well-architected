@@ -30,7 +30,7 @@ See [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) f
 
 The following sections describe the design options of the two patterns.
 
-### Active-active
+### Deploy in active-active for zero downtime
 
 -   **Active-active at capacity**: Mirrored deployment stamps in two or more Azure regions, each configured to handle production workloads for the region or regions they serve and scalable to handle loads from other regions in case of a regional outage.
 
@@ -56,7 +56,7 @@ The following sections describe the design options of the two patterns.
 
 -   Common disadvantages of both designs: Higher operating costs and management burden due to various factors, including the necessity of managing the synchronization of application state and data.
 
-### Active-passive
+### Deploy in active-passive for disaster recovery
 
 -   **Warm spare**: One primary region and one or more secondary regions. The secondary region is deployed with the minimum possible compute and data sizing and runs without load. This region is known as a *warm spare* region. Upon failover, the compute and data resources are scaled to handle the load from the primary region.
 

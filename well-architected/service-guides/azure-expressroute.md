@@ -192,7 +192,7 @@ Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom 
 ### Cloud Adoption Framework guidance
 
 * [Traditional Azure network topology](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
-* [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
+* [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology)
 
 ## Next steps
 

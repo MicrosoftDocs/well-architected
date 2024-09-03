@@ -53,7 +53,7 @@ Your secret management strategy should minimize secrets as much as possible and 
 
 Build a strategy around these points to help prevent identity theft, avoid repudiation, and minimize unnecessary exposure to information.
 
-### Safe practices for secret management
+### Manage workload secrets
 
 If possible, avoid creating secrets. Find ways to **delegate responsibility to the platform**. For example, use the platform's built-in managed identities to handle credentials. Fewer secrets result in reduced surface area and less time spent on secret management.
 
@@ -93,7 +93,7 @@ Handle OAuth access tokens carefully, taking into consideration their time to li
 
 Rotation processes should be automated and deployed without any human interaction. Storing secrets in a secret management store that natively supports rotation concepts can simplify this operational task.
 
-### Safe practices for using secrets
+### Use workload secrets safely
 
 As a secret generator or operator, you should be able to distribute secrets in a safe manner. Many organizations use tools to securely share secrets both within the organization and externally to partners. In absence of a tool, have a process for properly  handing off credentials to authorized recipients. Your disaster recovery plans should include secret recovery procedures. Have a process for situations where a key is compromised or leaked and needs to be regenerated on demand. Consider the following best practices for safety when using secrets:
 
