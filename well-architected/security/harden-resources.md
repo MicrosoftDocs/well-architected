@@ -55,7 +55,7 @@ For recommendations about security for your supply chain, see [Recommendations f
 
 **Documentation.** Document and publish hardening requirements, decisions, and defined methods. For transparency, also **document exceptions or deviations** from those requirements.
 
-Hardening can be cumbersome, but it's a crucial security exercise that you must document. Harden the core components first, and then expand to other areas, such as automated processes and human processes, to tighten up potential gaps. Be meticulous about changes. For example, a necessary step is to disable the default settings because changes to default values can't affect the stability of the system. Even if the replacement configuration is the same as the default, it must be defined. The following sections describe common targets for hardening. Evaluate key design areas of your workload and follow the key strategies to harden at a component level.
+Hardening can be cumbersome, but it's a crucial security exercise that you must document. Harden the core components first, and then expand to other areas, such as automated processes and human processes, to tighten up potential gaps. Be meticulous about changes. For example, a necessary step is to disable the default settings because changes to default values can affect the stability of the system. Even if the replacement configuration is the same as the default, it must be defined. The following sections describe common targets for hardening. Evaluate key design areas of your workload and follow the key strategies to harden at a component level.
 
 ### Harden networking components
 
