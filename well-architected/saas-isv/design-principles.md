@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design principles of an ISV workload
 
-Independent software vendors (ISVs) have a unique position in the cloud ecosystem because their software as a service (SaaS) solutions drive their business. They sell their products to businesses, also known as *business-to-business (B2B)*, or to consumers, also known as *business-to-consumer (B2C)*. ISVs typically host and maintain the SaaS solutions that they build. Their customers configure the product and manage the data.
+Independent software vendors (ISVs) have a unique position in the cloud ecosystem because their software as a service (SaaS) solutions drive their business. They sell their products to businesses, also known as *business-to-business (B2B)*, or to consumers, also known as *business-to-consumer (B2C)*. ISVs typically host and maintain the SaaS solution that they build. Their customers configure the product and manage the data.
 
 As the workload owner in the ISV space, **you're accountable for the solution's architectural excellence, and you share responsibility with your customer**. They rely on your solution, and problems can cascade to them. If your organization is mature and has an established customer base, reliability and security are likely your biggest concerns. Downtime and security breaches can have negative consequences for your company's revenue and reputation.
 
@@ -23,7 +23,7 @@ How you design a solution that operates at a low volume of scale differs from a 
 |Design principle|Considerations|
 |---|---|
 |**Prioritize availability.**|Your solution *is* your business. Maintain high availability as much as practical. If your solution experiences an outage, the impact can affect not only your customers but also their customers.|
-|**Be explicit about service-level agreements (SLAs) that you offer your customers.**|When you create financially backed SLAs for your customers, make sure that you can meet them and that your solution's components are compatible with them. Review the composite SLAs for underlying Azure services as part of your SLA design process. Don't make assumptions. Reflect your shared responsibility model in your SLAs.|
+|**Be explicit about service-level agreements (SLAs) that you offer your customers.**|When you create financially backed SLAs for your customers, make sure that you can meet them and that the components you depend on are compatible with them. Review the composite SLAs for underlying Azure services as part of your SLA design process. Don't make assumptions. Reflect your shared responsibility model in your SLAs.|
 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reliability and cost.** To achieve high reliability, you often need to deploy extra resources. For example, you might distribute resources across multiple availability zones or regions. Some Azure services offer built-in geo-replication or inter-zone replication, but these features often come with high costs.
@@ -34,8 +34,8 @@ How you design a solution that operates at a low volume of scale differs from a 
 
 |Design principle|Considerations|
 |---|---|
-|**Establish governance as the foundation for security.**|Establish good governance practices from the start rather than addressing problems later. Many factors impact security, such as how you manage roles, organize resources, and implement policies. Without robust governance, security controls don't protect the system. |
-|**Follow a cloud security baseline from day one.**|Assume security audits from your customers. Incorporate audit trails early in your design. |
+|**Establish governance as the foundation for security.**|Establish good governance practices from the start rather than addressing problems later. Many factors affect security, such as how you manage roles, organize resources, and implement policies. Without robust governance, security controls don't protect the system. |
+|**Follow a cloud security baseline from day one.**|Expect security audits from your customers. Incorporate audit trails early in your design. |
 |**Isolate your customers, and isolate your segments.**|Use your tenancy model as a strategy for data isolation. Segment your deployments and environments. |
 |**Start with Zero Trust, and provide least access.**|Default to a position of no access. Introduce minimum access only when necessary. Use this strategy for identity management and network traffic. Regularly review flows through the system, and take action on anomalies. |
 |**Avoid credentials where possible. If you must use credentials, protect them.**|Treat credentials as a liability. Use reputable identity providers and techniques that minimize credential storage. When unavoidable, protect credentials with secure cloud-native approaches. Handle customer credentials and secrets with the utmost care. |
@@ -71,14 +71,15 @@ How you design a solution that operates at a low volume of scale differs from a 
 |---|---|
 |**Implement global scale to enable global performance.**|Provide a good experience for global customers through multiregion deployments or accelerated traffic routing.|
 |**Quantify your expected scale.**|Model best, average, and worst-case growth scenarios. Analyze trends and consult your sales team for realistic projections. Plan flexible scaling strategies to accommodate various growth possibilities. |
-|**Understand scale points.**|Identify where you likely need flexibility. Common triggers include the number of customers or tenants, users, and transactions per user. Understand how these factors change as your business grows and how they impact your architecture.|
+|**Understand scale points.**|Identify where you likely need flexibility. Common triggers include the number of customers or tenants, users, and transactions per user. Understand how these factors change as your business grows and how they affect your architecture.|
 |**Design for scale out.**|Scaling up has limits, but scaling out allows for greater expansion. Not everything scales out, so consider using deployment stamps to scale your solution as a unit to avoid the limitations of scaling up resources.|
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance efficiency and reliability.** Reliable systems often require data replication across wide geographic areas. Depending on your replication design, this setup can lead to higher latency and lower throughput. For instance, if you synchronously replicate important data between two Azure regions that are several hundred miles apart, you can add hundreds of milliseconds to your response times because of real-time replication.
 
 ## Next step
 
-[Design methodology for ISV workloads](design-methodology.md)
+> [!div class="nextstepaction"]
+> [Design methodology for ISV workloads](design-methodology.md)
 
 
 
