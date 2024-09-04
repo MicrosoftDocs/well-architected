@@ -12,7 +12,7 @@ ms.service: azure-waf
 
 # Design methodology for ISV workloads
 
-Independent software vendors (ISVs) must carefully plan the requirements of their software as a service (SaaS) solution, given that the solution *is their business*. Business customers, such as other businesses or individual consumers, are the direct users of the solution. This business model sets high expectations because you must consider both your workload requirements and the customers' needs as the architect of the design.
+Independent software vendors (ISVs) must carefully plan the requirements of their software as a service (SaaS) solution because the solution is their business. Business customers, such as other businesses or individual consumers, are the direct users of the solution. This business model sets high expectations because you must consider both your workload requirements and the customers' needs as the architect of the design.
 
 This article describes a design methodology that you can use to systematically define and refine requirements. If you're uncertain about various design decisions and technology options, revisit this methodology to stay aligned with business requirements. Building a SaaS workload is an iterative process that requires flexibility to adapt to evolving markets and customer needs. This framework can help you collaborate with marketing and sales teams to validate technical decisions and assess customer feedback for continuous improvement.
 
