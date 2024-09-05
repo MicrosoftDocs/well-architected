@@ -17,7 +17,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates, including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states.
 
-We added an alert about ensuring that the VMs in your backup environment run [OSs that have supportability](../../azure-docs-pr/articles/virtual-machines/enable-nvme-interface.md):
+We added an alert about ensuring that the VMs in your backup environment run [OSs that have supportability](/azure/virtual-machines/enable-nvme-interface):
 
 - [Operations considerations for Azure VMware Solution workloads](azure-vmware/operations.md)
 - [Optimize business continuity and disaster recovery](oracle-iaas/optimize-business-continuity-disaster-recovery.md)
