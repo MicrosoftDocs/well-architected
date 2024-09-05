@@ -13,7 +13,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ## August 2024
 
-In August, we updated six articles and Hybrid documentation was deprecated.
+In August, we updated six articles and completed deprecation for Hybrid documentation.
 
 ### Updated articles
 
