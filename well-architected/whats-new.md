@@ -13,25 +13,17 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ## August 2024
 
-In August, we updated six articles and completed deprecation for Hybrid documentation.
 
 ### Updated articles
 
-Find updates to the following articles in the Reliability pillar:
 
-- In [Recommendations for defining reliability targets](./reliability/metrics.md), learn how to define reliability targets for your critical workloads and discover key design strategies that prioritize operations. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states. It also has strategies for availability, correctness, and recovery targets.
-- In [Recommendations for developing background jobs](./reliability/background-jobs.md), find information about how to develop background jobs to help minimize the load on the application UI, which improves availability and reduces interactive response time.
-- In [Recommendations for handling transient faults](./reliability/handle-transient-faults.md), find information about how to handle transient faults in your cloud applications.
+- [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states. 
 
-Find updates to the following articles in the Security pillar:
 
-- In [Encryption strategy recommendations](./security/encryption.md), find information about encryption, including encryption mechanisms, encryption keys, encryption algorithms, hashes, checksums, and secret management.
-- In [Recommendations for hardening resources](./security/harden-resources.md), find information about how to reduce an attack surface and increase attackers' costs to limit opportunities for malicious actors to exploit vulnerabilities.
-- In [Recommendations for securing a development lifecycle](./security/secure-development-lifecycle.md), find information about Well-Architected Framework Security recommendations for securing a development lifecycle.
 
-### Deprecated Hybrid documentation
+### Hybrid retirement
 
-- This month we completed the deprecation of Hybrid documentation in the repo.
+- This month we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
 
 ## July 2024
 
