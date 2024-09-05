@@ -13,7 +13,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ## August 2024
 
-In August, we updated six articles.
+In August, we updated six articles and Hybrid documentation was deprecated.
 
 ### Updated articles
 
@@ -28,6 +28,10 @@ Find updates to the following articles in the Security pillar:
 - In [Encryption strategy recommendations](./security/encryption.md), find information about encryption, including encryption mechanisms, encryption keys, encryption algorithms, hashes, checksums, and secret management.
 - In [Recommendations for hardening resources](./security/harden-resources.md), find information about how to reduce an attack surface and increase attackers' costs to limit opportunities for malicious actors to exploit vulnerabilities.
 - In [Recommendations for securing a development lifecycle](./security/secure-development-lifecycle.md), find information about Well-Architected Framework Security recommendations for securing a development lifecycle.
+
+### Deprecated Hybrid documentation
+
+- This month we completed the deprecation of Hybrid documentation in the repo.
 
 ## July 2024
 
@@ -110,7 +114,7 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
   
 ## January 2024
 
-In January we added two new articles, and we updated two articles.
+In January, we added two new articles, and we updated two articles.
 
 ### New articles
 
