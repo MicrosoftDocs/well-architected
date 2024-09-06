@@ -93,7 +93,7 @@ Combining similar flows onto a single resource is a process of consolidating tas
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Don't mistake coincidence with design. Two flows that look similar don't necessarily serve the same purpose. You need to understand the function and design of each flow before merging or changing them. Misinterpreting a flow by focusing solely on its appearance can lead to unintended consequences and disrupt the service or process that it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
 
-### Continuously monitor flows
+### Monitor flows continuously
 
 The nature of flows and workloads can change over time, so you need to review flow spending to ensure that costs align with priorities. Evaluate the resource utilization of each flow by analyzing the compute, storage, and network usage associated with each flow. Identify any inefficiencies or areas where resources are underutilized. This analysis helps you pinpoint opportunities for cost optimization. Here are some considerations to take into account when you review flow utilization:
 

@@ -60,7 +60,7 @@ Security measures should be integrated at multiple points into your existing Sof
 The following sections provide security strategies for the commonly practiced phases of SDLC.
 
 
-### Requirements phase
+### Collect and document the security requirements
 
 The goal of the requirements phase is to **gather and analyze the functional and non-functional requirements** for an application or a new feature of an application. This phase is important because it facilitates the creation of guardrails that are tailored to the objectives of the application. Protecting the data and integrity of your application should be a core requirement throughout every phase of the development lifecycle.  
 
@@ -70,9 +70,9 @@ All these decisions should lead to a good definition of the security posture of 
 
 Security requirement gathering is a critical part of this phase. Without this effort, the design and implementation phases will be based on unstated choices, which can lead to security gaps. You might need to change the implementation later to accommodate security, which can be expensive.
 
-### Design phase
+### Translate security requirements to technical requirements
 
-During this phase, **the security requirements are converted to technical requirements**. In your technical specification, document all design decisions to prevent ambiguity during implementation. Here are some typical tasks:
+During the design phase, **the security requirements are converted to technical requirements**. In your technical specification, document all design decisions to prevent ambiguity during implementation. Here are some typical tasks:
 
 #### Define the security dimension of the system architecture
 
@@ -109,9 +109,9 @@ Patterns can support security concerns like segmentation and isolation, strong a
 
   For more information, see [Recommendations for threat analysis](threat-model.md).
 
-### Development and testing phase
+### Secure development and testing practices
 
-During this phase, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
+During the development and testing phase, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
 
 #### Be well-trained in secure code practices
 
@@ -155,7 +155,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to avoid attacks. **Have a thorough process to review code** for security vulnerabilities. Use security groups for that purpose, and implement an approval process that's based on business justifications.
 
-### Secure code deployments
+### Protect code in deployment pipelines
 
   It's not enough to just secure code. If it runs in exploitable pipelines, all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent bad actors from running malicious code in your pipeline. 
 
@@ -177,7 +177,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   Use progressive exposure to **release features to a subset of users** based on chosen criteria. If there are issues, the impact is minimized to those users. This approach is a common risk mitigation strategy because it reduces surface area. As the feature matures and you have more confidence in security assurances, you can gradually release it to a broader set of users. 
 
-### Production phase
+### Protect code in production
 
 The production phase presents the **last responsible opportunity to fix security gaps**. Keep a record of the golden image that's released in production. 
 
@@ -196,7 +196,7 @@ The production phase presents the **last responsible opportunity to fix security
 
 
 
-### Maintenance phase
+### Maintain code security throughout its lifecycle
 
 The goal of this phase is to **make sure security posture doesn't decay over time**. SDLC is an ongoing agile process. Concepts covered in the preceding phases apply to this phase because requirements change over time.
 

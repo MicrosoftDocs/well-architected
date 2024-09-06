@@ -49,11 +49,11 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Redundancy**: Add the appropriate gateways in front of your Azure OpenAI deployments. The gateway must have the capability to withstand transient failures like throttling and also route to multiple Azure OpenAI instances. Consider routing to instances in different regions to build regional redundancy.
 >
-> - **Resiliency**: If you're using [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput), consider also deploying a pay-as-you-go instance to handle overflow. You can route calls to the pay-as-you-go instance via your gateway when your provisioned throughput model is throttled. You can also use monitoring to predict when the model will be throttled and preemptively route calls to the pay-as-you-go instance.
+> - **Resiliency**: If you're using [provisioned throughput](/azure/ai-services/openai/concepts/provisioned-throughput), consider also deploying a pay-as-you-go instance to handle overflow. You can route calls to the pay-as-you-go instance via your gateway when your provisioned throughput model is throttled.
 >
 > - **Resiliency**: Monitor capacity usage to ensure you aren't exceeding throughput limits. Regularly review capacity usage to achieve more accurate forecasting and help prevent service interruptions due to capacity constraints.
 >
-> - **Resiliency**: Follow the [guidance for large data files](/azure/ai-services/openai/how-to/fine-tuning) and import the data from an Azure blob store. Large files, 100 MB or larger, can become unstable when uploaded through multipart forms because the requests are atomic and can't be retried or resumed.
+> - **Resiliency**: Follow the [guidance for fine-tuning with large data files](/azure/ai-services/openai/how-to/fine-tuning#import-training-data-from-azure-blob-store) and import the data from an Azure blob store. Large files, 100 MB or larger, can become unstable when uploaded through multipart forms because the requests are atomic and can't be retried or resumed.
 >
 > - **Recovery**: Define a recovery strategy that includes a recovery plan for models that are fine-tuned and for training data uploaded to Azure OpenAI. Because Azure OpenAI doesn't have automatic failover, you must design a strategy that encompasses the entire service and all dependencies, such as storage that contains training data.
 >
