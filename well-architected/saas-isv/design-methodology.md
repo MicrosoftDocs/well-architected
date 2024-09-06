@@ -9,9 +9,9 @@ ms.custom: template-overview
 ms.service: azure-waf
 ---
 
-[!INCLUDE [header_file](includes/temporary-warning.md)]
-
 # Design methodology for ISV workloads
+
+[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 Independent software vendors (ISVs) must carefully plan the requirements of their software as a service (SaaS) solution, given that the solution *is their business*. Business customers, such as other businesses or individual consumers, are the direct users of the solution. This business model sets high expectations because you must consider both your workload requirements and the customers' needs as the architect of the design.
 
