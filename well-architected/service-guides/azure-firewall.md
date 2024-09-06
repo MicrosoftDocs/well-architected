@@ -74,8 +74,8 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 
 | Recommendation | Benefit |
 |--------|----|
-|Deploy Azure Firewall across [multiple availability zones](/azure/firewall/deploy-availability-zone-powershell) for higher service-level agreement (SLA).| When you deploy across multiple availability zones, Azure Firewall can operate even if a zone experiences an outage.|
-| Monitor [Azure Firewall metrics in a Log Analytics workspace](/azure/firewall/metrics#configure-metrics-to-a-log-analytics-workspace). <br><br>Monitor [Azure Firewall health with Azure Service Health](/azure/service-health/resource-health-alert-arm-template-guide). | Monitor resource metrics and service health to detect problems early and help prevent failures. |
+|Deploy Azure Firewall across [multiple availability zones](/azure/firewall/deploy-availability-zone-powershell).| Deploying Azure Firewall across multiple availability zones ensures a certain level resiliency. If one zone experiences an outage, another continues to serve traffic.|
+|Monitor [Azure Firewall metrics in a Log Analytics workspace](/azure/firewall/metrics#configure-metrics-to-a-log-analytics-workspace). <br><br>Monitor [Azure Firewall health with Azure Service Health](/azure/service-health/resource-health-alert-arm-template-guide). | By monitoring resource metrics and service health, you can detect when the service state is degraded and take proactive measures to prevent failures.|
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
