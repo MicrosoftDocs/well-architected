@@ -13,7 +13,7 @@ azure.category:
   - storage
 ---
 
-# Azure Well-Architected Framework perspective on Azure Blob Storage
+# Azure Well-Architected Framework perspective on Azure Disk Storage
 
 Azure managed disks are block-level storage volumes managed by Azure and used with Azure Virtual Machines.  Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest.
 
@@ -88,8 +88,8 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Design checklist
 
-- Understand how Azure Disk Storage is billed. Different disk types are billed in different ways and have different features that can impact billing. To design the most cost optimized environment, read [Understand Azure Disk Storage billing](/azure/virtual-machines/disks-understand-billing).For exact billing, use the appropriate pricing page and apply the appropriate settings in that page. Start at the [managed disks pricing page](https://azure.microsoft.com/en-us/pricing/details/managed-disks/?cdn=disable).
-- Estimate the cost of capacity and operations. You can model the costs associated with disk type, transactions (if applicable), and capabilites by using the [pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/). Use fields to compare the cost associated with various regions, account type, namespace type, and redundancy configurations.
+- Understand how Azure Disk Storage is billed. Different disk types are billed in different ways and have different features that can impact billing. To design the most cost optimized environment, read [Understand Azure Disk Storage billing](/azure/virtual-machines/disks-understand-billing).For exact billing, use the appropriate pricing page and apply the appropriate settings in that page. Start at the [managed disks pricing page](https://azure.microsoft.com/pricing/details/managed-disks/?cdn=disable).
+- Estimate the cost of capacity and operations. You can model the costs associated with disk type, transactions (if applicable), and capabilites by using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). Use fields to compare the cost associated with various regions, account type, namespace type, and redundancy configurations.
 - Choose a billing model for capacity. Evaluate whether using [a commitment-based model](/azure/storage/blobs/storage-blob-reserved-capacity) is more cost-efficient than using a consumption-based model. If you are unsure about how much capacity you'll need, you can start with a consumption-based model, monitor capacity metrics, and evaluate later.  
 - Choose an account type, a redundancy level, and a default access tier. You must select a value for each of these settings when you create a storage account, and each of them impact both transaction and capacity charges. All these settings except for the account type can be changed after the account is created. 
 - Decide which features you need. Some features such as snapshots and on-demand bursting incur additional transaction and capacity costs as well as other charges. As you choose which capabilities to add to your disks, make sure to review the pricing and billing sections in articles that describe those capabilities.  
