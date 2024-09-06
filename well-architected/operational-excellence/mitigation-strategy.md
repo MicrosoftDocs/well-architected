@@ -41,7 +41,7 @@ A deployment failure mitigation strategy is composed of five broad phases:
 
 The following sections provide detailed recommendations for these phases. These sections assume that you detect an issue after you deploy your changes to one or more groups of users or systems but before you update all groups in your rollout plan.
 
-### Detection
+### Design failure-detection mechanisms
 
 To quickly identify issues with deployments, you need robust testing and [observability practices](observability.md) as they relate to deployments. To help detect anomalies quickly, you can complement your workload monitoring and alerting by taking the following steps:
 
@@ -54,7 +54,7 @@ You can implement telemetry that correlates user issues with a deployment phase.
 
 You should be ready to respond to user-reported issues immediately. Whenever practical, deploy your rollout phase during working hours, when you have a full support team available. Ensure support staff is trained on how to escalate deployment issues for proper routing. Escalations should align with your workload [emergency response plan](emergency-response.md).
 
-### Decision
+### Decide on the mitigation strategy
 
 Deciding on an appropriate mitigation strategy for a given deployment issue involves considering many factors, including:
 
@@ -84,7 +84,7 @@ Deciding on an appropriate mitigation strategy for a given deployment issue invo
 
 No matter which choices you make, you should include appropriate approvals in your decision-making process and codify them in your decision tree.
 
-### Mitigation
+### Implement the mitigation strategy
 
 - **Rollback**: In a rollback scenario, you revert updated systems to the last-known-good configuration state.
 
@@ -110,7 +110,7 @@ No matter which choices you make, you should include appropriate approvals in yo
 
 > - Being able to roll back effectively might involve refactoring elements of your workload. For example, you might need to decouple functions or change your data model.
 
-### Communication
+### Standardize status updates during an incident
 
 It's important to have clearly defined communication responsibilities to help minimize chaos during incidents. These responsibilities should establish how the workload team engages with support teams, stakeholders, and emergency response team personnel, like the emergency response manager.
 
@@ -118,13 +118,13 @@ Standardize the cadence that the workload team follows for providing status upda
 
 If the workload team needs to communicate directly with end users, clarify the type of information and level of detail that are appropriate for sharing with users. Also communicate to the workload team any other requirements that apply to these cases.
 
-### Postmortem
+### Conduct incident postmortems
 
 Postmortems should follow all failed deployments, without exception. Every failed deployment is an opportunity for learning. Postmortems can help you identify weaknesses in your deployment and development processes. You also might identify misconfigurations in your infrastructure, among many other possibilities.
 
 Postmortems should always be blameless so that individuals who are involved in the incident feel safe when they share their perspectives on what can be improved. Postmortem leaders should follow up with plans for implementing the improvements that have been identified and adding these plans to the workload backlog.
 
-### Considerations and general recommendations
+### Operationalize mitigation processes
 
 Ensure that your deployment pipeline can accept distinct versions as parameters so that you can easily deploy last-known-good configurations.
 
