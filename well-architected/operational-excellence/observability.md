@@ -55,7 +55,7 @@ This workflow pipeline illustrates the monitoring system:
 
 :::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring system as a pipeline." lightbox="media/observability/monitor-pipeline.png" border="false":::
 
-### Collection
+### Collect instrumentation data
 
 > [!Note]
 > You need to instrument your application to enable logging. For more information, see the [instrumentation guide](../devops/monitor-instrument.md).
@@ -127,7 +127,7 @@ The data collected from a single instance of an application provides a localized
 
 The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, you can amalgamate instrumentation data that includes the same correlation information, like an activity ID. (A user might start a business operation on one node and then get transferred to another node if the first node fails, or because of how load balancing is configured.) This process can also detect and remove any duplicated data. (Duplication can occur if the telemetry service uses message queues to push instrumentation data out to storage.)
 
-### Storage
+### Store data for query and analysis
 
 When you choose a storage solution, consider the type of data, how it's used, and how urgently it's required. 
 
@@ -178,7 +178,7 @@ Data gathered for metering and billing customers might need to be saved indefini
 
 To ensure that you comply with laws and regulations, minimize the storage of any identifiable information. If you do need to store identifiable information, be sure, when you design your solution, to take into account requirements that allow individuals to request that their information be deleted.
 
-### Analysis
+### Analyze data to understand the health of a workload
 
 After you collect data from various data sources, analyze it to assess the overall well-being of the system. For this analysis, have a clear understanding of:
 
@@ -208,7 +208,7 @@ The usage data for a single business operation might span all three tiers. This 
 
 For detailed guidance about these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md).
 
-### Visualization
+### Visualize workload health reports
 
 #### Dashboards
 
@@ -247,7 +247,7 @@ Security reporting tracks customer use of the system. It can include:
 
 In many cases, batch processes can generate reports according to a defined schedule. Latency isn't normally an issue. You should also have batch processes that can generate reports on a spontaneous basis, as needed. For example, if you store data in a relational database like Azure SQL Database, you can use a tool like SQL Server Reporting Services to extract and format data and present it as a set of reports.
 
-### Alerts
+### Define alerts for key events
 
 To help ensure that the system remains healthy, responsive, and secure, set alerts so that operators can respond to them in a timely manner. An alert can contain enough contextual information to help them quickly get started on diagnostic activities. Alerting can be used to invoke remediation functions like [autoscaling or other self-healing mechanisms](../reliability/monitoring-alerting-strategy.md). Alerts can also enable cost-awareness by providing visibility into budgets and limits.
 
