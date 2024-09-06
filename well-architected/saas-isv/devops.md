@@ -8,3 +8,5 @@ ms.topic: conceptual
 ---
 
 # DevOps practices for SaaS workloads on Azure
+
+[!INCLUDE [header_file](includes/temporary-warning.md)]
