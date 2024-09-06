@@ -164,7 +164,7 @@ For example, your workload might need to be accessed by third-party identities l
 
 Your choice of IdP must be able to provide that differentiation, provide built-in features that grant permissions based on the least privilege, and provide built-in threat intelligence. This includes monitoring of access requests and sign-ins. The Azure IdP is Microsoft Entra ID. For more information, see the [Azure facilitation section](#azure-facilitation) of this article.
 
-### Critical impact accounts
+### Protect critical impact accounts
 
 Administrative identities introduce some of the highest impact security risks because the tasks they perform require privileged access to a broad set of these systems and applications. Compromise or misuse can have a detrimental effect on your business and its information systems. Security of administration is one of the most critical security areas.
 
