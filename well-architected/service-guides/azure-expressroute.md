@@ -111,16 +111,33 @@ Start your design strategy based on the [design review checklist for Reliability
 
 ## Security
 
-Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/principles.md).
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
+
+The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure ExpressRoute.
 
 ### Design checklist
 
+Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+
 > [!div class="checklist"]
-> - Configure Activity log to send logs to archive.
-> - Maintain an inventory of administrative accounts with access to ExpressRoute resources.
-> - Configure MD5 hash on ExpressRoute circuit.
-> - Configure MACSec for ExpressRoute Direct resources.
-> - Encrypt traffic over private peering and Microsoft peering for virtual network traffic.
+>
+> - **Review security baselines:** To get started first review the [security baseline for Azure ExpressRoute](/security/benchmark/azure/baselines/expressroute-security-baseline).
+>
+> - **Configure Network Security Groups (NSGs):** Configure NSGs restrict or monitor traffic by port, protocol, source IP address, or destination IP address.
+>
+> - **Implement Azure Role-Based Access Control (RBAC):** Use RBAC to control who can manage ExpressRoute resources such as ExpressRoute circuits and gateways. By providing granular access management to resources, you can maintain an inventory of administrative accounts with access to ExpressRoute resources and ensure that only authorized users can perform specific actions.
+>
+> - **Configure ExpressRoute encryption:** Encrypt data in transit over ExpressRoute circuits to ensure that data transmitted between on-premises networks and Azure virtual networks is secure and protected from unauthorized access. ExpressRoute supports the following encryption options.
+>
+>    -  **Media Access Control Security (MACsec)** Applied to *ExpressRoute Direct resources*, MACsec enhances ExpressRoute security by providing link-layer encryption and integrity protection, ensuring that data transmitted over ExpressRoute circuits is secure, tamper-proof, and compliant with regulatory requirements.
+>
+>    -  **Internet Protocol Security (IPsec)** Applied to *ExpressRoute private peering*, IPsec provides secure communication between on-premises networks and Azure virtual networks by encrypting data in transit. By configuring IPsec, you can ensure that data transmitted over ExpressRoute circuits is secure and protected from unauthorized access.
+>
+> - **Configure inbound and outbound route maps:** Route maps are used to control the flow of traffic between on-premises networks and Azure virtual networks. By configuring inbound and outbound route maps, you can define the path that traffic takes, ensuring that data is transmitted securely and efficiently.
+>
+> - **Configure Activity log to send logs to archive:** Activity logs are essential for auditing, compliance, incident response, operational visibility, and policy enforcement for ExpressRoute. Configure Activity log to send logs to an archive for long-term retention and analysis.
+>
+> - **Conduct security testing**: Regularly conduct security testing to identify vulnerabilities and ensure that security controls are effective. Security testing can include penetration testing, vulnerability scanning, and security assessments to identify and remediate security issues.
 
 ### Recommendations
 
@@ -128,11 +145,12 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Configure Activity log to send logs to archive | Activity logs provide insights into operations that were performed at the subscription level for ExpressRoute resources. With Activity logs, you can determine who and when an operation was performed at the control plane. Data retention is only 90 days and required to be stored in Log Analytics, Event Hubs or a storage account for archive. |
-| Maintain inventory of administrative accounts | Use Azure RBAC to configure roles to limit user accounts that can add, update, or delete peering configuration on an ExpressRoute circuit.  |
+| Configure Activity logs and send logs to archive | Activity logs provide insights into operations that were performed at the subscription level for ExpressRoute resources. With Activity logs, you can determine who and when an operation was performed at the control plane. Data retention is only 90 days and required to be stored in Log Analytics, Event Hubs or a storage account for archive. For more information about Activity logs in ExpressRoute, see [Monitor Azure ExpressRoute](/azure/expressroute/monitor-expressroute). |
+| Configure Network Watcher Connection monitor | Connection monitor is a feature of Network Watcher that allows you to monitor connectivity between your on-premises network and Azure over the ExpressRoute private peering and Microsoft peering connection. Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. For more information about Connection monitor, see [Connection monitor](/azure/expressroute/how-to-configure-connection-monitor). |
+| Managing inventory of administrative accounts | Use Azure RBAC to configure roles to limit user accounts that can add, update, or delete peering configuration on an ExpressRoute circuit. For more information about Azure RBAC, see [Azure RBAC](/azure/role-based-access-control/overview)  |
 | Configure MD5 hash on ExpressRoute circuit | During configuration of private peering or Microsoft peering, apply an MD5 hash to secure messages between the on-premises route and the MSEE routers.  |
 | Configure MACSec for ExpressRoute Direct resources | Media Access Control security is a point-to-point security at the data link layer. ExpressRoute Direct supports configuring MACSec to prevent security threats to protocols such as ARP, DHCP, LACP not normally secured on the Ethernet link. For more information on how to configure MACSec, see [MACSec for ExpressRoute Direct ports](/azure/expressroute/expressroute-about-encryption).   |
-| Encrypt traffic using IPsec | Configure a Site-to-site VPN tunnel over your ExpressRoute circuit to encrypt data transferring between your on-premises network and Azure virtual network. You can configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json) or using [Microsoft peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering).  |
+| Encrypt traffic using IPsec for ExpressRoute private peering | Configure a Site-to-site VPN tunnel over your ExpressRoute circuit to encrypt data transferring between your on-premises network and Azure virtual network. You can configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json) or using [Microsoft peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering).  |
 
 For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
 
