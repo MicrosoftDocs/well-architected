@@ -96,6 +96,18 @@ strategy to include more approaches as needed.
 >- To detect or block threats, send all internet traffic through a firewall or a network virtual appliance (NVA).
 >
 >   Configure supported third-party software as a service (SaaS) security providers within Firewall Manager if you want to use these solutions to protect outbound connections.
+>
+>   Configure user-defined routes (UDR) to force traffic through Azure Firewall.
+>
+>   Restrict usage of Public IP addresses directly tied to Virtual Machines
+>
+>   If not possible to apply UDR, and only web traffic redirection is required, consider using Azure Firewall as an Explicit Proxy
+>
+>   Configure supported third-party software as a service (SaaS) security providers within Firewall Manager if you want to use these solutions to protect outbound connections.
+>
+>    Use an Enterprise PKI to generate certificates for TLS Inspection.
+>
+>    Review Zero-Trust configuration guide for Azure Firewall and Application Gateway
 >- Network perimeters are established to control blast radius, block unexpected, prohibited, and unsafe access, and obfuscate workload resources.
 >
 >   Create rules for Firewall Policies based on least privilege access criteria.
@@ -119,10 +131,15 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 
 | Recommendation | Benefit |
 |--------|----|
-| If required to route all internet-bound traffic to a designated next hop instead of going directly to the internet, configure Azure Firewall in forced tunneling mode (does not apply to Azure Virtual WAN). <br><br> Configure supported third-party software as a service (SaaS) security providers within Firewall Manager if you want to use these solutions to protect outbound connections. | Force tunneling enables you avoid exposing your Azure resources directly to the internet, reducing the attack surface and minimizes the risk of external threats. You can route all internet-bound traffic through an on-premises firewall or a network virtual appliance (NVA) to enforce corporate policies and compliance requirements more effectively. <br><br> Enabling third-party security providers in Azure Firewall allows you to leverage best-in-breed security-as-a-service (SECaaS) offerings, providing advanced protection for your internet traffic. These providers offer specialized, user-aware filtering and comprehensive threat detection capabilities that enhance your overall security posture. |
-| Enable Threat Intelligence on Azure Firewall in Alert and deny mode. <br><br> Use Azure Firewall Manager to create and associate a DDoS protection plan with your hub virtual network (does not apply to Azure Virtual WAN). | This feature leverages Microsoft’s extensive threat intelligence feed to automatically alert and block traffic from known malicious IP addresses, domains, and URLs. By doing so, it provides real-time protection against emerging threats, reducing the risk of cyberattacks. <br><br> Configuring an Azure DDoS Protection Plan using Azure Firewall Manager streamlines the management of your network security by allowing you to centrally manage DDoS protection alongside your firewall policies, simplifying the deployment and monitoring processes. |
-| Enable IDPS in Alert or Alert and deny mode. | Enabling Intrusion Detection and Prevention System (IDPS) filtering in Azure Firewall provides real-time monitoring and analysis of network traffic to detect and prevent malicious activities. By leveraging signature-based detection, it can swiftly identify known threats and block them before they cause harm. |
-| Enable Azure Firewall (DNS) proxy configuration. <br><br> Use Fully Qualified Domain Name (FQDN) filtering in network rules. <br><br> Use Service Tags in Network Rules to enable selective access to specific Microsoft services. <br><br> Use FQDN Tags in Application Rules to enable selective access to specific Microsoft services. | Enabling this feature points clients in the VNets to Azure Firewall as a DNS server. It will protect internal DNS infrastructure that will not be directly accessed and exposed. <br><br> Using Fully Qualified Domain Names (FQDNs) in Azure Firewall network rules significantly simplifies management by allowing administrators to manage domain names instead of multiple IP addresses. This dynamic resolution ensures that firewall rules automatically update when domain IPs change. <br><br> Using service tags in Azure Firewall network rules simplifies security management by allowing you to define access controls based on service names rather than specific IP addresses. Microsoft manages and updates these tags automatically as IP addresses change, this ensures that your firewall rules remain accurate and effective without manual intervention. <br><br> Using Fully Qualified Domain Names (FQDNs) in Azure Firewall application rules significantly simplifies management by allowing administrators to manage domain names instead of multiple IP addresses. This dynamic resolution ensures that firewall rules automatically update when domain IPs change. |
+| If required to route all internet-bound traffic to a designated next hop instead of going directly to the internet, configure Azure Firewall in forced tunneling mode (does not apply to Azure Virtual WAN). | Force tunneling enables you avoid exposing your Azure resources directly to the internet, reducing the attack surface and minimizes the risk of external threats. You can route all internet-bound traffic through an on-premises firewall or a network virtual appliance (NVA) to enforce corporate policies and compliance requirements more effectively. |
+| Configure supported third-party software as a service (SaaS) security providers within Firewall Manager if you want to use these solutions to protect outbound connections. | Enabling third-party security providers in Azure Firewall allows you to leverage best-in-breed security-as-a-service (SECaaS) offerings, providing advanced protection for your internet traffic. These providers offer specialized, user-aware filtering and comprehensive threat detection capabilities that enhance your overall security posture. |
+| Enable Threat Intelligence on Azure Firewall in Alert and deny mode. | This feature leverages Microsoft’s extensive threat intelligence feed to automatically alert and block traffic from known malicious IP addresses, domains, and URLs. By doing so, it provides real-time protection against emerging threats, reducing the risk of cyberattacks.|
+| Use Azure Firewall Manager to create and associate a DDoS protection plan with your hub virtual network (does not apply to Azure Virtual WAN). | Configuring an Azure DDoS Protection Plan using Azure Firewall Manager streamlines the management of your network security by allowing you to centrally manage DDoS protection alongside your firewall policies, simplifying the deployment and monitoring processes. |
+| Enable IDPS in Alert or Alert and deny mode. |Enabling Intrusion Detection and Prevention System (IDPS) filtering in Azure Firewall provides real-time monitoring and analysis of network traffic to detect and prevent malicious activities. By leveraging signature-based detection, it can swiftly identify known threats and block them before they cause harm.  |
+| Enable Azure Firewall (DNS) proxy configuration. | Enabling this feature points clients in the VNets to Azure Firewall as a DNS server. It will protect internal DNS infrastructure that will not be directly accessed and exposed.|
+| Use Fully Qualified Domain Name (FQDN) filtering in network rules. | Using Fully Qualified Domain Names (FQDNs) in Azure Firewall network rules significantly simplifies management by allowing administrators to manage domain names instead of multiple IP addresses. This dynamic resolution ensures that firewall rules automatically update when domain IPs change. |
+| Use Service Tags in Network Rules to enable selective access to specific Microsoft services. | Using service tags in Azure Firewall network rules simplifies security management by allowing you to define access controls based on service names rather than specific IP addresses. Microsoft manages and updates these tags automatically as IP addresses change, this ensures that your firewall rules remain accurate and effective without manual intervention.  |
+| Use FQDN Tags in Application Rules to enable selective access to specific Microsoft services. | Using Fully Qualified Domain Names (FQDNs) in Azure Firewall application rules significantly simplifies management by allowing administrators to manage domain names instead of multiple IP addresses. This dynamic resolution ensures that firewall rules automatically update when domain IPs change. |
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
@@ -260,17 +277,11 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure Firewall.
 
-<<<<<<< HEAD
 - [Reliability](/azure/advisor/advisor-high-availability-recommendations)
 - [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
-=======
-- [Create Azure Service Health alerts to be notified when Azure problems affect you](/azure/advisor/advisor-high-availability-recommendations#create-an-azure-service-health-alert)
-- [Enable Traffic Analytics to view insights into traffic patterns across Azure resources](/azure/advisor/advisor-reference-operational-excellence-recommendations#enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources)
-- [Protect your network resources with Microsoft Defender for Cloud](/azure/defender-for-cloud/protect-network-resources)
->>>>>>> 1ac1a800403aa5a8ec22452e7622ac50ddca3b6f
 
 ## Related resources
 
