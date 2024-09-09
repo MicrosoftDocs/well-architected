@@ -2,22 +2,22 @@
 title: Azure Well-Architected Framework
 metadata:
   title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
+  description: Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
   services: azure-resource-manager
-  ms.service: waf
+  ms.service: azure-waf
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 11/10/2023
+  ms.date: 07/02/2024
 sections:
   # Intro
   - componentType: text 
     title: Azure Well-Architected Framework
-    summary: The Azure Well-Architected Framework (WAF) is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+    summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
     links:
     - componentType: link
       url: what-is-well-architected-framework
-      text: What is WAF?    
+      text: What is Well-Architected Framework?   
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
@@ -39,7 +39,7 @@ sections:
       - componentType: icon-link
         icon: book-open
         url: service-guides/index.yml
-        text: Azure offerings
+        text: Azure service guides
       - componentType: icon-link
         icon: topic-learn
         url: /training/modules/azure-well-architected-introduction/
@@ -67,26 +67,27 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/well-architected-refresh.png   
-        alt: WAF refresh update   
-      - title: Featured update - Core pillars restructured and refreshed 
-        summary: The Azure Well-Architected Framework published a significant content refresh across all five pillars. 
+        src: _images/baseline-app-service-architecture.svg
+        alt: "Diagram that shows the reference architecture for a basic web application in Azure."
+      - title: Featured update - Azure App Service (Web Apps)
+        summary: "Explore the Azure App Service guide:"
         componentType: text
         links:
           - componentType: link
-            url: whats-new.md
-            text: What's new?
+            url: ./service-guides/app-service-web-apps.md
+            text: Azure App Service (Web Apps) service guide
         list:
           componentType: list
           style: checklist
           children:
-            - Design principles include a set of recommended approaches and benefits.
-            - Design review checklist drive action through codified recommendations. 
-            - Design tradeoffs with other pillars. 
-            - Recommendations on key strategies that fulfill the principles of design.
-            - Design patterns based on proven, common architecture patterns, mapped to each pillar.
-            - Azure Well-Architected Review tool has been refreshed to align with the new content.
- 
+            - Azure App Service (Web Apps) is a platform as a service (PaaS) compute solution that you can use to host your workload on the Azure platform.
+
+            - The fully managed service abstracts the underlying compute and offloads to the platform the responsibility of building, deploying, and scaling. 
+
+            - Find checklists that help you assess architectural concerns and design strategies that align with the Well-Architected Framework. 
+            
+            - Consider recommendations and tradeoffs as you design your workload on Azure App Service.
+            
 # cards section (4)
   - componentType: grid
     title: Pillars
@@ -144,10 +145,6 @@ sections:
         title: Mission-critical
         summary: Design and operationalize workloads that are expected to be always available and resilient to failures.
         url: ./mission-critical/index.yml
-      - componentType: summary-card
-        title: Hybrid
-        summary: Build applications running across on-premises, multicloud, and the edge, ensuring uncompromised security and developer agility.
-        url: ./hybrid/hybrid-overview.md
       - componentType: summary-card
         title: Sustainability
         summary: Plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.

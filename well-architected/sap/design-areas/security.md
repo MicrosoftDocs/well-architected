@@ -5,7 +5,7 @@ author: stephen-sumner
 ms.author: ssumner
 ms.date: 12/19/2022
 ms.topic: conceptual
-ms.custom: SAP
+
 ---
 
 # SAP workload security
@@ -55,7 +55,7 @@ For more information, see:
 - [SAP Identity Authentication Service](https://help.sap.com/docs/IDENTITY_AUTHENTICATION)
 - [SAP Identity Provisioning Service](https://help.sap.com/docs/IDENTITY_PROVISIONING)
 
-A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Microsoft Entra ID. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams. For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
+A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Microsoft Entra ID. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams. For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/en-us/marketplace/apps?page=1&search=sap).
 
 *Table 1 - Summary of the recommended SSO methods*
 

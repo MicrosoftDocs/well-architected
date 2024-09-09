@@ -5,8 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - article
+
 ---
 
 # Security design principles
@@ -87,7 +86,7 @@ The key is to implement controls that prevent tampering of business logic, flows
 |-|-|
 | **Implement strong access controls that authenticate and authorize access to the system.** <br><br>**Minimize access based on privilege, scope, and time.**   | *Least privilege*.  <br><br>  Depending on the strength of the controls, you'll be able to **prevent or reduce risks from unapproved modifications**. This helps ensure that data is consistent and trustworthy. <br><br>   Minimizing access limits the extent of potential corruption.|
 | **Continuously protect against vulnerabilities and detect them in your supply chain** to block attackers from injecting software faults into your infrastructure, build system, tools, libraries, and other dependencies.<br><br> Supply chain should scan for vulnerabilities during **build time and runtime**. | *Assume breach*.  <br><br> Knowing the origin of software and verifying its authenticity throughout the lifecycle will **provide predictability**. You'll **know about vulnerabilities well in advance** so that you can proactively remediate them and keep the system secure in production. |
-| **Establish trust and verify by using cryptography techniques** like code signing, certificates, and encryption. <br><br>   Protect those mechanisms by allowing reputable decryption.    | *Verify explicitly*, *least privilege.*     <br><br> You'll know that changes to data or access to the system **is verified by a trusted source**.  <br><br> Even if encrypted data is intercepted in transit by a malicious actor, the actor won't be able to unlock or decipher the content. You can use digital signatures to ensure that the data wasn't tampered with during transmission.       |
+| **Establish trust and verify by using cryptography techniques** like attestation, code signing, certificates, and encryption. <br><br>   Protect those mechanisms by allowing reputable decryption.    | *Verify explicitly*, *least privilege.*     <br><br> You'll know that changes to data or access to the system **is verified by a trusted source**.<br><br> Even if encrypted data is intercepted in transit by a malicious actor, the actor won't be able to unlock or decipher the content. You can use digital signatures to ensure that the data wasn't tampered with during transmission.       |
 | **Ensure backup data is immutable and encrypted** when data is replicated or transferred.  | *Verify explicitly.*<br><br> You'll be able to recover data with confidence that backup **data wasn't changed at rest**, inadvertently or maliciously.    |
 |**Avoid or mitigate system implementations that allow your workload to operate outside its intended limits and purposes.**  | *Verify explicitly.* <br><br>     When your system has strong safeguards that check whether usage aligns with its intended limits and purposes, the scope for potential abuse or tampering of your compute, networking, and data stores is reduced.     |
 

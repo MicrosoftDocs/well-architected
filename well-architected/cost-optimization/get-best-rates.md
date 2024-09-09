@@ -26,11 +26,11 @@ This guide describes the recommendations for getting the best rates from provide
 
 ## Key design strategies
 
-Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It takes into consideration price differences across regions, the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based billing. It also involves software licenses and corporate discount plans.
+Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It weighs the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based billing, software licenses and corporate discount plans, and the  price differences between regions. 
 
 To get the best rates on the resources and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on workload needs. Regularly check for discounts and reduce licensing fees where possible. Determine if it's more cost effective to build or buy new workload solutions.
 
-### Create an ordered list of expenses
+### Uncover workload spending patterns
 
 Understanding the workload is the first step to finding and using the best rates on infrastructure, resources, licenses, and third-party services. It prepares you to make informed decisions and implement cost optimization strategies that are specific to the needs of the workload.
 
@@ -80,7 +80,7 @@ To ensure effective optimization of workload costs, the development team (or arc
 
 Here's a suggested process for collaborating on rate reduction efforts:
 
-1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like usage patterns, scalability, and workload requirements.
+1. *Identify opportunities for cost optimization*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like usage patterns, scalability, workload, and regional requirements per environment.
 
 1. *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
 

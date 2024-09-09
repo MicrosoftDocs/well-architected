@@ -31,7 +31,7 @@ To optimize telemetry for your workload, instrument your application to generate
 > [!NOTE]
 > You can use tools like Application Insights, Dynatrace, and Elastic Application Performance Monitoring to automatically instrument your application. These tools make instrumentation easier, but they can also be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
 
-### Logs and distributed tracing logs
+### Use structured logs and tracing
 
 Use structured logging to easily integrate logs into monitoring and analysis platforms. Instrument your application so the levels of verbosity can be changed. Constant verbose logging can waste storage resources, so it should be switched on and off as needed for troubleshooting.
 
@@ -42,11 +42,11 @@ Categorize logs and use separate logs to record the trace output from each opera
 > [!NOTE]
 > A log might be implemented as a file in the file system, or it might be held in some other format, such as a blob in blob storage. Log information might also be held in structured storage, such as rows in a table.
 
-### Metrics
+### Capture application metrics
 
 Metrics, or *samples*, are a count of some aspect or resource in the system at a specific time, with one or more associated tags or dimensions. A single instance of a metric isn't useful in isolation, metrics should be captured over time. Consider which metrics you should record and how frequently. Data that's generated too often can impose a heavy load on the system, but infrequent data capture can cause you to miss the circumstances that lead to a significant event. The appropriate frequency for capturing data might vary from metric to metric. For example, CPU usage on a server might vary significantly from second to second, but high usage only becomes an issue if it's consistent over many minutes.
 
-### Information for correlating data
+### Facilitate correlation across components
 
 You can easily monitor individual and system-level performance counters, capture metrics for resources, and obtain application trace information from various log files. Some monitoring requires data correlation during the analysis and diagnostics stage in the monitoring pipeline. This data can take several forms and the analysis process must be provided with sufficient instrumentation data to map these different forms. For example, at the application framework level, a thread ID might identify a task. Within an application, the same work might be associated with the user ID for the user who completes that task.
 
@@ -57,7 +57,7 @@ All monitoring data should be timestamped in the same way. For consistency, reco
 > [!NOTE]
 > Computers that operate in different time zones and networks might not be synchronized. Don't depend on timestamps alone for correlating instrumentation data that spans multiple machines.
 
-### Information to include in the instrumentation data
+### Capture relevant data
 
 Consider the following points when you decide which instrumentation data you need to collect.
 
@@ -132,7 +132,7 @@ Establish domain fields that produce the same set of events to build a set of co
 
 [OpenTelemetry](https://opentelemetry.io/) is a vendor-neutral collection of APIs, SDKs, and other tools. You can use OpenTelemetry to instrument applications and generate meaningful telemetry consistently across languages. OpenTelemetry is tool-agnostic, so it's compatible with many observability platforms including open-source and commercial offerings. [Microsoft is adopting OpenTelemetry](/azure/azure-monitor/app/opentelemetry-overview?tabs=aspnetcore#opentelemetry) as the standard tool for instrumentation.
 
-### Best practices for instrumenting applications
+### Optimize instrumentation code
 
 The following list summarizes best practices for instrumenting a distributed application running in the cloud:
 
@@ -166,15 +166,15 @@ The following list summarizes best practices for instrumenting a distributed app
 
 - Treat instrumentation as an ongoing iterative process and review logs regularly.
 
+### Use application profiling
+
+- Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
+
+- Profiling selections can be time-based, such as once every *n* seconds, or frequency-based, such as once every *n* requests. If events occur frequently, profiling might cause too much of a burden on the system and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
+
 ## Azure facilitation
 
 [Autoinstrumentation](/azure/azure-monitor/app/codeless-overview) is available for many types of Azure and on-premises applications monitored with [Application Insights](/azure/azure-monitor/app/app-insights-overview). The autoinstrumentation function automatically configures your application to provide rich telemetry to Application Insights and provides easy access to experiences such as the [application dashboard](/azure/azure-monitor/app/overview-dashboard) and [application map](/azure/azure-monitor/app/app-map). For supported hosting platforms and development languages, see [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
-
-## Tradeoffs
-
-Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
-
-Profiling selections can be time-based, such as once every *n* seconds, or frequency-based, such as once every *n* requests. If events occur frequently, profiling might cause too much of a burden on the system and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
 
 ## Related links
 

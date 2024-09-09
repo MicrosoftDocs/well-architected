@@ -5,19 +5,11 @@ author: calcof
 ms.author: prwilk
 ms.date: 12/15/2022
 ms.topic: conceptual
-categories: 
-  - databases
-  - web
-  - devops
-  - security
-  - networking
-ms.custom:
-  - mission-critical
 ---
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a key pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a _north star_ design approach and includes other examples with common technology components.
+This article presents a key pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a *north star* design approach and includes other examples with common technology components.
 
 We recommend that you evaluate [**the key design areas**](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the  underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 

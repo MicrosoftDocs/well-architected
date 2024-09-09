@@ -62,7 +62,7 @@ Optimizing costs in the production environment involves implementing strategies 
 
 - *Tune tenant models*: Customize the environment based on the tenant model. For example, spend more on services and features for paid tenants and spend less for nonpaying tenants.
 
-### Optimize the DR environment
+### Optimize disaster recovery environments
 
 A DR environment refers to infrastructure and processes that a workload uses to recover after a disruptive event. Disruptive events include natural disasters, cyber attacks, and hardware failures. Balance the cost of maintaining a DR environment and the potential affects of a disruptive event. Consider the following strategies:
 
@@ -123,6 +123,8 @@ Applying governance is about limiting deployment options in preproduction enviro
 - *Constrain scaling*: To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit at three in the development environment, and set it at 10 in the production environment. Constrain scaling to help control the resource usage and automation cost.
 
 - *Turn off unneeded resources*: Turn off resources when they aren't actively used, such as during off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of resources. Some vendors provide APIs that you can use to programmatically stop and start the resources. Consider using IaC to create ephemeral environments that you can remove when you no longer need them.
+  
+- *Restrict available regions*: Consider the potential benefit of running preproduction environments in different regions where Azure resources might be cheaper. Restrict preproduction deployments to these regions to optimize the cost of these environments.
 
 #### Balance similarity with production
 
@@ -154,7 +156,7 @@ Development environments are designed for development, testing, and debugging pu
 
 #### Consider endpoint emulation
 
-You can optimize costs in a preproduction environment by using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify components or services in your preproduction environment that are the most expensive or resource-intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. To simulate API responses, you can use tools like WireMock, Postman's mock server, or custom implementations.
+You can optimize costs in a preproduction environment by using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify components or services in your preproduction environment that are the most expensive or resource-intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. To simulate API responses, you can use commercial or open source API mocking servers, or custom implementations.
 
 Emulation and mock endpoints help save costs, but you must ensure that they represent the production environment to a sufficient degree for testing. Strike a balance between accuracy and cost to help avoid future issues in production. For example, if GPUs are a major cost factor, consider GPU emulation for tasks that don't require real GPU processing power in preproduction stages. Emulation might not fully represent the performance or quirks of real GPUs, so use it when exact GPU behavior isn't critical for preproduction testing.
 
@@ -173,12 +175,6 @@ Use Azure Resource Manager to define and manage resources in a declarative manne
 **Optimizing preproduction environments:** Azure offers dev/test pricing options that provide discounted rates for nonproduction environments. You can allocate more resources and budget to critical production environments, which optimizes costs in nonproduction environments. You can also use the Azure licensing offer, Azure Hybrid Benefit.
 
 You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
-
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance to stress the importance of optimizing environment costs across the organization.
-
-For more information, see [Best practices for costing and sizing Azure resources](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-reduce-nonproduction-costs).
 
 ## Cost Optimization checklist
 

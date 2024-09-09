@@ -5,9 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
-categories: networking
-ms.custom:
-  - mission-critical
 ---
 
 # Application design of mission-critical workloads on Azure
@@ -20,7 +17,7 @@ When you design an application, both functional and non-functional application r
 ## Scale-unit architecture
 
 All functional aspects of a solution must be capable of scaling to meet changes in demand.
-We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A _scale unit_ is a logical unit or function that can be scaled independently. A unit can be made up of code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
+We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A *scale unit* is a logical unit or function that can be scaled independently. A unit can be made up of code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
 
 We recommend this approach because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
 
@@ -73,7 +70,7 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 ### Design considerations
 
-- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/availability-zones/az-overview#availability-zones) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty and incur bandwidth charges for interzone data transfer.
+- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/availability-zones/az-overview#availability-zones) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty for interzone data transfer.
 
 - **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering the trade-offs of increased cost and engineering effort.
 
@@ -89,7 +86,7 @@ For design recommendations and configuration choices at the platform level, see 
 
 ## Loosely coupled event-driven architecture
 
-_Coupling_ enables interservice communication via well-defined interfaces. A _loose_ coupling allows an application component to operate independently. A [microservices architecture style](/azure/architecture/guide/architecture-styles/microservices) is consistent with mission-critical requirements. It facilitates high availability by preventing cascading failures.
+*Coupling* enables interservice communication via well-defined interfaces. A *loose* coupling allows an application component to operate independently. A [microservices architecture style](/azure/architecture/guide/architecture-styles/microservices) is consistent with mission-critical requirements. It facilitates high availability by preventing cascading failures.
 
 For loose coupling, we strongly recommend that you incorporate [event-driven design](/azure/architecture/guide/architecture-styles/event-driven). Asynchronous message processing through an intermediary can build resiliency.
 

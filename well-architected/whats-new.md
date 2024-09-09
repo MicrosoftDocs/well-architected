@@ -1,15 +1,153 @@
 ---
 title: What's new in the Azure Well-Architected Framework
-description: Find out what's new in the Azure Well-Architected Framework.
+description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
-ms.topic: conceptual
+ms.date: 09/05/2024
+ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
-Find out how Azure Well-Architected Framework changed recently.
+Find out about recent changes in the Azure Well-Architected Framework.
+
+## August 2024
+
+### Updated articles
+
+- [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates, including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states.
+
+We added guidance about ensuring that the VMs in your backup environment run on [OSs that have supportability](/azure/virtual-machines/enable-nvme-interface):
+
+- [Operations considerations for Azure VMware Solution workloads](azure-vmware/operations.md)
+- [Optimize business continuity and disaster recovery](oracle-iaas/optimize-business-continuity-disaster-recovery.md)
+
+### Hybrid retirement
+
+- This month we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
+
+## July 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Stack HCI](./service-guides/azure-stack-hci.md): Explore design considerations and configuration recommendations for Azure Stack HCI. Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+
+### Updated articles
+
+- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
+
+Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
+
+- [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
+- [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
+
+### Carrier Grade retirement
+
+- This month we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.
+
+## June 2024
+
+### Updated articles
+
+- [Recommendations for defining reliability targets](./reliability/metrics.md): Find updated SLO and SLA guidance to help you set and measure reliability targets for your workload.
+
+- [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md): Learn how Azure carbon optimization can help you reduce the carbon footprint of your workload by providing granular emissions data.
+
+## May 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Files](./service-guides/azure-files.md): Explore design considerations and recommendations for Azure Files and Azure File Sync. Azure Files is a fully managed file share service that supports the SMB protocol and Network File System (NFS) protocol. Azure File Sync is a service that enables you to centralize your organization's file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server.
+
+### Updated articles
+
+- [Security considerations for Azure VMware Solution workloads](./azure-vmware/security.md): Learn about using resource locks to prevent accidental deletions or changes.
+
+## April 2024
+
+### New articles
+
+This month, we added two new service guides and new documentation about Oracle workloads on Azure infrastructure as a service (IaaS).
+
+**Service guides**
+
+- [Azure Well-Architected Framework perspective on App Service](./service-guides/app-service-web-apps.md): Review design considerations and recommendations for App Service. Azure App Service is a type of platform as a service (PaaS) compute service that allows you to host your workload on the Azure platform.
+- [Azure Well-Architected Framework perspective on Azure Blob Storage](./service-guides/azure-blob-storage.md): Review design considerations and configuration recommendations that are relevant to Azure Blob Storage. Azure Blob Storage is a cloud-based object storage solution that is optimized for storing massive amounts of unstructured data, such as text or binary data.
+
+**Oracle workloads on Azure**
+
+Find new articles and updated guidance about Oracle workloads on Azure. Explore best practices to help you create a performant, secure, and highly available solution. To get started, see [Oracle workloads on Azure infrastructure as a service (IaaS)](./oracle-iaas/index.yml).
+
+## March 2024
+
+### New articles
+
+- [Health modeling for workloads](./cross-cutting-guides/health-modeling.md): Use health modeling to improve workload reliability in Azure. Differentiate between healthy, degraded, and unhealthy states. Learn how to quantify application health and build your own health model.
+- [Azure Well-Architected Framework review for Log Analytics](./service-guides/azure-log-analytics.md): Learn about the architectural recommendations for Log Analytics workspaces in Azure Monitor. These workspaces are the primary log and metric sink for a large portion of the monitoring data. Workspaces support multiple features in Azure Monitor, including ad-hoc queries, visualizations, and alerts.
+
+### Updated articles
+
+- [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
+
+## February 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Front Door](./service-guides/azure-front-door.md): Find design considerations and configuration recommendations for Azure Front Door. Azure Front Door is a global load balancer and content delivery network that routes HTTP and HTTPS traffic.
+- [Azure Well-Architected Framework perspective on Azure OpenAI](./service-guides/azure-openai.md): Find design considerations and configuration recommendations for Azure OpenAI. This service provides REST API access to the OpenAI large language models (LLMs), adding capabilities for Azure networking and security.
+- [Azure Well-Architected Framework perspective on Azure Machine Learning](./service-guides/azure-machine-learning.md): Find design considerations and configuration recommendations for Azure Machine Learning. This service provides a cloud-based environment you can use to train, deploy, automate, manage, and track machine learning models. 
+
+### Updated articles
+
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We expanded the guidance for using official icons and service names to include examples of links to icons for Microsoft services.
+- [Azure Well-Architected Framework review for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We updated the design checklist and the recommendations for AKS configuration. Find information about Azure Spot Virtual Machines, Cluster Autoscaler, Node Autoprovision, and the AKS Cost Analysis add-on.
+- [Recommendations for securing a development lifecycle](./security/secure-development-lifecycle.md): We streamlined and clarified guidance about the security design patterns that the application code should implement. 
+- [Encryption strategy recommendations](./security/encryption.md): We added information about confidential computing and explained how it fits into key design strategies.
+  
+## January 2024
+
+In January, we added two new articles, and we updated two articles.
+
+### New articles
+
+- In [Virtual Machines and scale sets](./service-guides/virtual-machines.md), find guidance about how to review your virtual machine and scale set workloads by using the Well-Architected Framework. Use the Azure Virtual Machines compute service to create and run virtual machines on the Azure platform. You can choose from different SKUs, operating systems, and configurations. 
+
+- In [Optimize workload design using flows](./cross-cutting-guides/optimize-workload-using-flows.md), learn how to optimize workloads through structured flow design. Take a look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. As you work to align flows with business processes and use cases, find practical examples and recommendations in this article.
+
+### Updated articles
+
+Find updates to the following articles in the Operational Excellence pillar:
+
+- In [Recommendations for implementing automation](operational-excellence/automate-tasks.md), find information about how to use Azure Update Manager to help you manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window.
+
+- In [Recommendations for enabling automation in a workload](operational-excellence/enable-automation.md), find a new section about using Azure Monitoring Agent for change tracking and inventory. Automate drift detection, the inventory-running services, and installed packages on the virtual machines in your workload.  
+
+## December 2023
+
+In December, we added a workload and updated recommendations for two Well-Architected Framework pillars.
+
+### New article
+
+We added a new workload for workload owners, technical stakeholders, and business stakeholders. This documentation is appropriate for roles that are accountable for designing, building, and maintaining a solution for running applications and desktops in a cloud environment. Use the [Azure Virtual Desktop workloads](./azure-virtual-desktop/overview.md) documentation as your go-to resource for optimizing the way you operate applications and desktops in Azure Virtual Desktop. 
+
+### Updated articles
+
+Updated recommendations for the Reliability pillar:
+
+- [Recommendations for handling transient faults](reliability/handle-transient-faults.md)
+- [Recommendations for developing background jobs](reliability/background-jobs.md)
+- [Recommendations for designing a disaster recovery strategy](reliability/disaster-recovery.md)
+- [Recommendations for designing for redundancy](reliability/redundancy.md)
+
+Updated recommendations for the Operational Excellence pillar:
+
+- [Recommendations for implementing automation](operational-excellence/automate-tasks.md)
+- [Recommendations for designing an emergency response strategy](operational-excellence/emergency-response.md)
+- [Recommendations for enabling automation in a workload](operational-excellence/enable-automation.md)
+- [Recommendations for using infrastructure as code](operational-excellence/infrastructure-as-code-design.md)
+- [Recommendations for designing a deployment failure mitigation strategy](operational-excellence/mitigation-strategy.md)
+- [Recommendations for safe deployment practices](operational-excellence/safe-deployments.md)
 
 ## November 2023
 
@@ -92,13 +230,3 @@ In addition to the changes in structure and consistency, you should note some th
 
 - New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
 - Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](service-guides/postgresql.md)
-
-## August 2023
-
-- New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
-- Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
-
-## Related links
-
-- [What's new in Azure Architecture Center](/azure/architecture/changelog)
-- [What's new in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/get-started/whats-new)

@@ -28,7 +28,9 @@ A key tenet of designing for reliability is to keep things simple and efficient.
 
 You must justify every design decision with a business requirement. This design principle might seem obvious, but it's crucial for workload design. Does your application support millions of users, or a few thousand? Are there large traffic bursts, or a steady workload? What level of application outage is acceptable? Business requirements drive these design considerations.
 
-### Collaborative design exercises
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components. Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
+
+### Collaborate with stakeholders on design exercises
 
 Work with stakeholders to:
 
@@ -42,7 +44,7 @@ Work with stakeholders to:
 
 - **Define availability and recovery targets** for your flows to inform your workload's architecture. Business metrics include service-level objectives (SLOs), service-level agreements (SLAs), mean time to recover (MTTR), mean time between failure (MTBF), recovery time objectives (RTOs), and recovery point objectives (RPOs). Define target values for these metrics. This exercise might require compromise and mutual understanding between technology and business teams to ensure that each team's goals meet business objectives and are realistic. For more information, see [Recommendations for defining reliability targets](metrics.md).
 
-### Additional design recommendations
+### Favor simpler design choices
 
 You can perform the following recommendations without stakeholder engagement:
 
@@ -72,7 +74,7 @@ The principles of simplicity, efficiency, and reliability also apply to your dev
 
 - Implement an approach to identify *dead code*. Be skeptical of the code that your automated tests don't cover.
 
-### Use the best data store for your data
+### Select the right data store
 
 In the past, many organizations stored all their data in large relational SQL databases. Relational databases provide atomic, consistent, isolated, and durable (ACID) guarantees for relational data transactions. But these databases come with disadvantages:
 
@@ -122,7 +124,7 @@ For example, you might store a product catalog in a document database, such as A
 
   - Blobs in Azure Blob Storage.
 
-- Prioritize availability over consistency. The [CAP theorem](/azure/well-architected/carrier-grade/carrier-grade-design-area-data-model#cap-theorem) implies that you have to make tradeoffs between availability and consistency in a distributed system. You can't completely avoid network partitions, which is the other component of the CAP theorem. But you can adopt an eventual consistency model to achieve higher availability.
+- Prioritize availability over consistency. The CAP theorem implies that you have to make tradeoffs between availability and consistency in a distributed system. You can't completely avoid network partitions, which is the other component of the CAP theorem. But you can adopt an eventual consistency model to achieve higher availability.
 
 - Consider the skill set of your development team. There are advantages to using polyglot persistence, but it's possible to go overboard. It requires new skill sets to adopt a new data storage technology. To get the most out of the technology, your development team must:
 
@@ -153,27 +155,6 @@ For more information, see:
 - [Choose an Azure compute service](/azure/architecture/guide/technology-choices/compute-decision-tree)
 - [Choose a compute option for microservices](/azure/architecture/microservices/design/compute-options)
 - [Review your data options](/azure/architecture/guide/technology-choices/data-options)
-
-## Tradeoffs
-
-A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components.
-
-Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
-
-Refer to the other guides in this series for tradeoffs related to the points in this guide:
-
-- [Background jobs](background-jobs.md#tradeoffs)
-- [Data partitioning](partition-data.md#tradeoffs)
-- [Define reliability targets](metrics.md#tradeoffs)
-- [Disaster recovery](disaster-recovery.md#tradeoffs)
-- [Failure mode analysis](failure-mode-analysis.md#tradeoffs)
-- [Identify and rate flows](identify-flows.md#tradeoffs)
-- [Monitoring and alerting](monitoring-alerting-strategy.md#tradeoffs)
-- [Redundancy](redundancy.md#tradeoffs)
-- [Scaling strategy](scaling.md#tradeoffs)
-- [Self-healing and self-preservation](self-preservation.md#tradeoffs)
-- [Testing strategy](testing-strategy.md#tradeoffs)
-- [Transient faults](handle-transient-faults.md#tradeoffs)
 
 ## Example
 

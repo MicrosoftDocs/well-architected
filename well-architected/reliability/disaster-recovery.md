@@ -39,7 +39,7 @@ This guide assumes that you have already performed the following tasks as part o
 
 A reliable disaster recovery (DR) strategy builds on the foundation of a reliable workload architecture. Address reliability at every stage of building your workload to ensure that necessary pieces for optimized recovery are in place before you start designing your DR strategy. This foundation ensures that your workload's reliability targets, like recovery time objective (RTO) and recovery point objective (RPO), are realistic and achievable.
 
-## Maintain a disaster-recovery plan
+### Maintain a disaster-recovery plan
 
 The cornerstone of a reliable DR strategy for a workload is the *DR plan*. Your plan should be a living document that's routinely reviewed and updated as your environment evolves. Present the plan to the appropriate teams (operations, technology leadership, and business stakeholders) regularly (every six months, for example). Store it in a highly available, secure data store such as OneDrive for Business. 
 
@@ -101,7 +101,7 @@ Follow these recommendations to develop your DR plan:
 
     -   The need to fail back is situational. If you're routing traffic between regions for performance reasons, failing back the load originally in the failed-over region is important. In other cases, you might have designed your workload to function fully regardless of which production environment it's located in at any time.
 
-## Conduct disaster-recovery drills
+### Conduct disaster-recovery drills
 
 A DR testing practice is as important as a well-developed DR plan. Many industries have compliance frameworks that require a specified number of DR drills to be performed regularly. Regardless of your industry, regular DR drills are paramount to your success. 
 
@@ -110,6 +110,14 @@ Follow these recommendations for successful DR drills:
 -   Perform at least one production DR drill per year. Tabletop (dry run) drills or nonproduction drills help ensure that the involved parties are familiar with their roles and responsibilities. These drills also help operators build familiarity ("muscle memory") by following recovery processes. But only production drills truly test the validity of the DR plan and the RTO and RPO metrics. Use your production drills to time recovery processes for components and flows to ensure that the RTO and RPO targets that have been defined for your workload are achievable. For functions that are out of your control, like DNS propagation, ensure that the RTO and RPO targets for the flows that involve those functions account for possible delays beyond your control.
 
 -   Use tabletop drills not only to build familiarity for seasoned operators but also to educate new operators about DR processes and procedures. Senior operators should take time to let new operators perform their role and should watch for improvement opportunities. If a new operator is hesitant or confused by a step in a procedure, review that procedure to ensure that it's clearly written.
+
+#### Considerations
+
+- Performing DR drills in production can cause unexpected catastrophic failures. Be sure to test recovery procedures in nonproduction environments during your initial deployments.
+
+- Give your team as much maintenance time as possible during drills. When planning for maintenance time, use the recovery metrics that you capture during [testing](testing-strategy.md) as *minimum time necessary* allotments.
+
+- As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
 ## Azure facilitation
 
@@ -128,14 +136,6 @@ For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-geo-dr?tabs=portal)
 
 - [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-how-to-geo-replication)
-
-## Tradeoffs
-
-Performing DR drills in production can cause unexpected catastrophic failures. Be sure to test recovery procedures in nonproduction environments during your initial deployments. 
-
-Give your team as much maintenance time as possible during drills. When planning for maintenance time, use the recovery metrics that you capture during [testing](testing-strategy.md) as *minimum time necessary* allotments. 
-
-As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
 ## Example 
 

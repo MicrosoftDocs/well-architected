@@ -8,29 +8,21 @@ ms.date: 07/05/2023
 ms.topic: conceptual
 products:
   - azure-disk-storage
-categories:
+azure.category:
   - storage
-  - management-and-governance
+
 ---
 
 # Disks and cost optimization
 
-[Azure managed disks](/azure/virtual-machines/managed-disks-overview) are block-level storage volumes that are managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server, but these disks are virtualized.
-
-Available disk types include:
-
-- Ultra disks
-- Premium solid-state drives (SSD)
-- Standard SSDs
-- Standard hard disk drives (HDD)
-
-For more information about the different types of disks, reference [Azure managed disk types](/azure/virtual-machines/disks-types).
+[Azure managed disks](/azure/virtual-machines/managed-disks-overview) are block-level storage volumes that are managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server, but these disks are virtualized. Azure supports many types of disks. For more information, reference [Azure managed disk types](/azure/virtual-machines/disks-types).
 
 To understand how Azure managed disks are cost-effective solutions for your workload, reference the following articles:
 
 - [Overview of Azure Disk Backup](/azure/backup/disk-backup-overview)
 - [Understand how your reservation discount is applied to Azure disk storage](/azure/cost-management-billing/reservations/understand-disk-reservations?context=/azure/virtual-machines/context/context)
 - [Reduce costs with Azure Disks Reservation](/azure/virtual-machines/disks-reserved-capacity)
+- Back up and restore selective disks to manage critical data in a subset of the VM disks. To reduce costs, back up only the OS disk of a database. For more information, see [Selective disk backup and restore for Azure virtual machines](/azure/backup/selective-disk-backup-restore).
 
 The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure managed disks and cost optimization.
 

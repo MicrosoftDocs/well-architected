@@ -5,11 +5,6 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
 ms.date: 10/12/2022
-categories: 
-  - networking
-ms.custom:
-  - sustainability
-  - ignite-2022
 ---
 
 # Networking considerations for sustainable workloads on Azure
@@ -29,7 +24,7 @@ Reduce unnecessary network traffic and lower bandwidth requirements where possib
 
 Unnecessary traffic on the network should be avoided, as it's a cause for extra carbon emissions.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -40,7 +35,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Minimizing the amount of data transferred is crucial.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -54,7 +49,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 The location of an application's consumers can be disparate, and it can be challenging to serve requests with good performance and energy efficiency if the distance is too great.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -64,7 +59,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Applications making use of a media streaming service may have high requirements for bandwidth and compression, and can have a substantial carbon footprint if not designed carefully.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -75,7 +70,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Networks sending uncompressed data can have a higher requirement on bandwidth, the allocated resources, and the solution in general. Consider compressing data to optimize the workload and design for a more network efficient solution.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -85,7 +80,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Operating solutions in multiple regions have a networking impact. Network traversals between components in Azure are optimized to stay within the Azure infrastructure. However, any network traffic destined for the internet or a component in another cloud involves the public internet's router resources, which you have no control over regarding resource impact measurement or utilization.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 

@@ -29,13 +29,15 @@ Incorporate a supply chain to protect your workload from damage that can occur w
 > [!NOTE]
 > The recommendations in this guide refer to workload environments in a code promotion chain. Sandbox or other exploratory and proof-of-concept environments require less rigor and structure.
 
-### Core tenets
-
 The following recommendations can help you define the core tenets of your supply chain.
+
+### Enforce a strict policy of automated template-based deployments
 
 **Make proposed workload changes through supply chain processes and tools.** Enforce a strict policy of automated template-based deployments. This method helps ensure that your workload's configuration across all environments is standardized, well-defined, and tightly controlled. For environments in a code promotion chain, don't perform updates by using manual processes or human interaction with the cloud platform's control plane, for example the portal or an API. Incorporate all changes to the environment through a pipeline by following deployment practices that you define. To help enforce this policy, consider limiting access to read-only as a default and using an access authorization gate to allow write access.
 
 An important aspect of this tenet is that all changes are *proposed* *changes* until they're deployed into production. Through automated testing, like integration and smoke testing, you enable your supply chain to automatically reject changes.
+
+### Deploy repeatable and immutable infrastructure as code
 
 **Deploy repeatable and immutable infrastructure as code (IaC).** IaC is the management of infrastructure in a descriptive model that uses a versioning system that mirrors source code. When you create an application, the same source code should generate the same binary every time it's compiled. In a similar manner, an IaC model generates the same environment every time it's applied.
 
@@ -45,13 +47,19 @@ Design your workload as a logical group of components that you can bundle into o
 
 To optimize your IaC pipeline for consistency and efficiency, design an immutable infrastructure rather than a mutable infrastructure. Implement an immutable infrastructure to ensure that all systems in scope are replaced with the updated configuration simultaneously and identically with each deployment.
 
+### Use the same set of deployment artifacts across all environments
+
 **Use one set of code assets and artifacts across all environments and pipelines.** A common pain point for organizations is when nonproduction environments are different from production environments. Building production and nonproduction environments manually can result in mismatched configurations between the environments. This mismatch slows down testing and makes it more likely that changes might harm a production system. An IaC approach minimizes these problems. When you use IaC automation, you can use the same infrastructure configuration files for all environments to produce almost identical environments. You can add parameters to the infrastructure configuration files and adjust them to meet the requirements for each environment.
 
 To control costs, there's typically a variance between production and nonproduction environments. You often don't need the same degree of redundancy and performance in nonproduction environments as you do in production. The number and SKU of your resources might differ between environments. Ensure that you control and understand the variance by using standardized parameters to help you maintain predictability as you make changes.
 
+### Reflect the organizational structure in the supply chain
+
 **Reflect your organizational structure in your supply chain and pipeline designs.** Your organization might be siloed among teams. Each team might manage a part of the supply chain. For example, many organizations have teams that manage infrastructure domains, like networking, data, and compute resources. These teams are separate from development teams that manage application development, testing, and deployments. In some organizations, development and infrastructure teams are incorporated into DevOps teams that collectively manage all infrastructure and application deployments. There are many ways to organize the teams that are involved in a supply chain. Your supply chain relies on all the teams seamlessly working together. Ensure that all teams follow standard processes and use standard tools to make the supply chain as efficient as possible.
 
 Your supply chain might rely on third-party vendors if you outsource parts of the workload lifecycle. These vendors are just as critical to the success of your supply chain as internal resources. Ensure that there's a mutual agreement across all teams about the processes and tools that you use.
+
+### Choose the right deployment method
 
 **Standardize your deployment method.** Talk to the product owner about the acceptable amount of production downtime for your workload. Depending on how much, if any, downtime is acceptable, you can choose the deployment method that's right for your requirements. Ideally, you should perform deployments during a maintenance window to reduce complexity and risk. If no downtime is acceptable, employ a blue-green deployment method.
 
@@ -59,13 +67,17 @@ Use a progressive-exposure approach to reduce the risk of introducing undetected
 
 When you define your deployment method, adopt a standard policy of only deploying the smallest viable change in each deployment. Depending on factors like the criticality of the workload and complexity of the components, determine the smallest viable change. If you use an immutable infrastructure, the smallest viable change is typically the deployment of resources with the latest configuration to replace resources that run the previous version. If you use a mutable infrastructure, you might decide that the smallest viable change is only a single update on the group of resources in scope.
 
+### Follow a layered approach
+
 **Follow a layered approach to reflect different lifecycles.** Foundational layers should remain static throughout most of the workload lifecycle, and application layers change frequently. To account for these differences, you should have different pipelines to effect changes at each layer.
 
-A [landing zone](/azure/cloud-adoption-framework/ready/landing-zone) is at the lowest layer. A landing zone is a logical grouping of foundational elements, like subscriptions, management groups, resource groups, governance functions, and networking topology. A landing zone enables you to easily deploy and manage your workload, and provides central operations teams, or platform teams, with a repeatable approach to an environmental configuration. To deliver consistent environments, all Azure landing zones provide a set of common design areas, a reference architecture, a reference implementation, and a process to modify a deployment to fit your design requirements. The [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles) provide recommended practices based on policy-driven governance alongside subscription democratization. A landing zone should require minimal changes over the course of your workload lifecycle.
+A landing zone is at the lowest layer. A landing zone is a logical grouping of foundational elements, like subscriptions, management groups, resource groups, governance functions, and networking topology. A landing zone enables you to easily deploy and manage your workload, and provides central operations teams, or platform teams, with a repeatable approach to an environmental configuration. To deliver consistent environments, all Azure landing zones provide a set of common design areas, a reference architecture, a reference implementation, and a process to modify a deployment to fit your design requirements. The Azure landing zone design principles provide recommended practices based on policy-driven governance alongside subscription democratization. A landing zone should require minimal changes over the course of your workload lifecycle. To see an example of a landing zone, see [What is an Azure landing zone](/azure/cloud-adoption-framework/ready/landing-zone). This conceptual architecture provides a set of opinions recommended for Azure.
 
 Your core infrastructure and functions, like ingress and egress network controllers, load balancing, network routing solutions, DNS management, and core servers, should also require infrequent major changes. But they might require frequent configuration updates.
 
 Your application and data layer requires frequent configuration updates and frequent infrastructure changes. These components should have the most dynamic pipelines.
+
+### Incorporate comprehensive types of testing
 
 **Plan for a holistic testing strategy.** A core tenet of system reliability is the *shift left* principle. Developing and deploying an application is a process that's depicted as a series of steps going from left to right. You shouldn't limit testing to the end of the process. As much as possible, shift testing to the beginning, or to the left. Errors are cheaper to repair when you catch them early. They can be expensive or impossible to fix later in the application lifecycle.
 
@@ -95,6 +107,8 @@ When possible, use automated testing to ensure consistency. Include the followin
 
     The main purpose of this test is to evaluate the system's compliance with the business requirements and determine whether the system meets the required criteria for delivery to end users.
 
+### Implement quality gates in code promotion processes
+
 **Implement quality gates throughout your code promotion process via testing**. Deploy your code into lower environments, like development and testing, and up through higher environments, like staging and production. As your deployment passes through quality gates, ensure that it meets your quality targets before changes go to production. Your business requirements determine what the focus of your quality gates are. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
 
 Also integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation, so you can move through your gates efficiently and safely.
@@ -109,16 +123,6 @@ Also integrate approval workflows into your quality gates. Clearly define and au
 
 You can use Terraform, Bicep, and Azure Resource Manager for IaC deployments. Depending on your requirements and your team's familiarity with the tools, you might use one or more of these tools for your deployments and management of the resources.
 
-## Organizational alignment
-
-Cloud Adoption Framework provides guidance for central teams to provide workload landing zones. The workload landing zones are where the workload's custom supply chain will deploy applications into.
-
-For more information, see [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone) and the [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles).
-
-## Tradeoffs
-
-In your lower environments, there's a tradeoff between cost and infrastructure parity with production. Each successively higher environment should be closer in parity to production to ensure that your quality gates are as effective as possible.
-
 ## Example
 
 For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, see [Azure Pipelines baseline architecture](/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture).
@@ -129,7 +133,6 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines)
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [GitHub Actions for Azure](https://azure.github.io/actions)
-- [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone)
 - [Performance Efficiency pillar](../performance-efficiency/performance-test.md)
 - [Reliability pillar](../reliability/testing-strategy.md)
 - [Security pillar](../security/test.md)

@@ -5,7 +5,7 @@ author: stephen-sumner
 ms.author: ssumner
 ms.date: 12/19/2022
 ms.topic: conceptual
-ms.custom: SAP
+
 ---
 
 # SAP workload data platform
@@ -18,7 +18,7 @@ The data platform refers to the data store technologies that support an SAP work
 
 We recommend optimizing the storage cost for your SAP workload. Storage is an essential component of an SAP workload. Storage contains active data and backup data that is critical to your organization. Storage affects the performance, availability, and recoverability of an SAP workload. It's important to have the right performance at the right cost. Here are recommendations to help you reach this goal.
 
-**Use reserved capacity storage type.** There are several storage options available to choose from based on the workload requirement. Managed disks, blog storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data.
+**Use reserved capacity storage type.** There are several storage options available to choose from based on the workload requirement. Managed disks, blob storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data.
 
 For more information, see:
 
@@ -76,7 +76,7 @@ We recommend you use Azure Backup as the foundational backup strategy for an SAP
 
 | Feature | Description |
 | --- | --- |
-| Native database backup compatibility | Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today. |
+| Native database backup compatibility | Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure Backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure Backup also supports the database backup capability for HANA & SQL Server databases today. |
 | Storage backup | The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency). |
 | Virtual machine backup | Back up and restore Azure VM data through the Azure portal. Cross-region restoration lets you restore Azure VMs that were to a paired secondary region. |
 | Long-term retention | Azure Backup allows you to retain SAP backups years for compliance and audit needs. |
@@ -86,7 +86,10 @@ For more information, see:
 
 - [Azure Backup documentation]( /azure/backup/)
 - [SAP HANA backup overview](/azure/backup/sap-hana-database-about)
+- [Azure Backup architecture for SAP HANA backup](/azure/backup/azure-backup-architecture-for-sap-hana-backup).
 - [Backup guide for SAP HANA on Azure Virtual Machines](/azure/backup/sap-hana-database-about)
+- [Backup guide for SAP HANA System Replication databases on Azure VMs](/azure/backup/sap-hana-database-with-hana-system-replication-backup).
+- [Backup guidelines for SAP HANA database instance snapshots on Azure VMs](/azure/backup/sap-hana-database-instances-backup).
 - [Backup guide for SQL Server on Azure Virtual Machines](/azure/backup/tutorial-sql-backup)
 
 #### Find marketplace backup solutions

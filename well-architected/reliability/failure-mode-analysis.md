@@ -5,10 +5,6 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
-categories:
-  - security
 ---
 # Recommendations for performing failure mode analysis
 
@@ -34,17 +30,13 @@ If you skip FMA altogether or perform an incomplete analysis, your workload is a
 
 ## Key design strategies
 
-### Prerequisites
-
 Review and implement the [recommendations for identifying flows](identify-flows.md). It’s assumed that you have identified and prioritized user and system flows based on criticality.
 
 The data that you have gathered and the artifacts that you have created in your work provide you with a concrete description of your data paths involved throughout the flows. To be successful in your FMA work, accuracy and thoroughness in your artifacts is critical.
 
-### FMA approach
-
 After you determine the critical flows, you can plan their required components. Next, follow each flow step by step to identify dependencies, including third-party services and potential points of failure, and plan your mitigation strategies.
 
-#### Decompose the workload
+### Decompose the workload
 
 As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
 
@@ -52,7 +44,7 @@ As you move from ideation to design, you need to identify the component types th
 
 After you create your initial architecture design, you can overlay your flows to identify the discrete components that are used in those flows and create lists or workflow diagrams that describe the flows and their components. To understand the criticality of the components, use the criticality definitions that you have assigned to the flows. Consider the effect of a component malfunction on your flows.
 
-#### Identify dependencies
+### Identify dependencies
 
 Identify your workload dependencies to perform your single point-of-failure analysis. Decomposing your workload and overlaying flows provides insight into dependencies that are internal and external to the workload.
 
@@ -60,7 +52,7 @@ Internal dependencies are components in the workload scope that are required for
 
 Identify and document the dependencies in your workload, and include them in your flow documentation artifacts.
 
-### Failure points
+### Evaluate failure points
 
 In your workload's critical flows, consider each component and determine how that component, and its dependencies, might be affected by a failure mode. Remember that there are many failure modes to consider when planning for resiliency and recovery. Any one component can be affected by more than one failure mode at any given time. These failure modes include:
 
@@ -116,13 +108,9 @@ During your initial FMA exercise, the documents you produce will be mostly theor
 
 Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to detect issues in your workload. For further insight into issues related to your infrastructure, apps, and databases, use tools like [Application Insights](/azure/azure-monitor/app/app-insights-overview), [Container Insights](/azure/azure-monitor/containers/container-insights-overview), [Network Insights](/azure/network-watcher/network-insights-overview), [VM Insights](/azure/azure-monitor/vm/vminsights-overview), and [SQL Insights](/azure/azure-sql/database/sql-insights-overview).
 
-[Azure Chaos Studio Preview](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
+[Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
-
-## Tradeoffs
-
-As with all resiliency and reliability decisions, the amount of resiliency you build into your systems has cost and management overhead implications. Apply the principles of FMA to help keep costs to a minimum. Your analysis provides you with a comprehensive list of failure points to address, and it helps you decide the level of resilience to apply for a given flow.
 
 ## Example
 
@@ -137,7 +125,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | Azure Front Door | Service outage | Low | Full outage for external users. Dependent on Microsoft to remediate. | External only |
 | Azure Front Door | Regional outage | Very low | Minimal effect. Azure Front Door is a global service, so global traffic routing directs traffic through non-effected Azure regions. | None |
 | Azure Front Door | Misconfiguration | Medium | Misconfigurations should be caught during deployment. If these happen during a configuration update, administrators must roll back changes. Configuration update causes a brief external outage. | External only |
-| Azure Front Door | DDoS attack | Medium | Potential for disruption. Microsoft manages DDoS (L3 and L4) protection and Well-Architected Framework blocks most threats. Potential risk of effect from L7 attacks. | Potential for partial outage |
+| Azure Front Door | DDoS attack | Medium | Potential for disruption. Microsoft manages DDoS (L3 and L4) protection and Azure Web Application Firewall blocks most threats. Potential risk of effect from L7 attacks. | Potential for partial outage |
 | Azure SQL | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
 | Azure SQL | Regional outage | Very low | Auto-failover group fails over to secondary region. Potential outage during failover. Recovery time objectives (RTOs) and recovery point objectives (RPOs) to be determined during reliability testing. | Potential full |
 | Azure SQL | Availability zone outage | Low | No effect | None |
@@ -145,7 +133,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | App Service | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
 | App Service | Regional outage | Very low | Minimal effect. Latency for users in effected regions. Azure Front Door automatically routes traffic to non-effected regions. | None |
 | App Service | Availability zone outage | Low | No effect. App services have been deployed as zone redundant. Without zone redundancy, there's a potential for effect. | None |
-| App Service | DDoS attack | Medium | Minimal effect. Ingress traffic is protected by Azure Front Door and Well-Architected Framework. | None |
+| App Service | DDoS attack | Medium | Minimal effect. Ingress traffic is protected by Azure Front Door and Azure Web Application Firewall. | None |
 
 ## Related links
 

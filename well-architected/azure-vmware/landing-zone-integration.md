@@ -5,13 +5,13 @@ author: Mahesh-MSFT
 ms.author: prwilk
 ms.date: 08/10/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avs
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-vmware
 ---
 
 # Integrate an Azure VMware Solution workload with Azure landing zones
 
-Each organization manages workloads and operates its cloud environment uniquely. The common cloud operating models are _decentralized_, _centralized_, _enterprise_, and _distributed_.
+Each organization manages workloads and operates its cloud environment uniquely. The common cloud operating models are *decentralized*, *centralized*, *enterprise*, and *distributed*.
 
 The most important difference between the various models is the level of ownership. In the decentralized model, workload owners have autonomy without any central IT oversight for governance. For example, they manage their own networking, monitoring, and identity requirements. At the other end of the spectrum is the centralized model, where the workload owners adhere to the governance requirements that central IT teams set.
 
@@ -23,7 +23,7 @@ To make the most of Azure VMware Solution features and capabilities, you should 
 
 ## Azure landing zones
 
-An Azure landing zone is a conceptual architecture that depicts the overall cloud footprint for an organization. It has multiple subscriptions, each with a unique purpose. Central teams own some of the subscriptions, such as _Azure platform landing zones_.
+An Azure landing zone is a conceptual architecture that depicts the overall cloud footprint for an organization. It has multiple subscriptions, each with a unique purpose. Central teams own some of the subscriptions, such as *Azure platform landing zones*.
 
 To familiarize yourself with the concept of Azure landing zones, see [What is an Azure landing zone?](/azure/cloud-adoption-framework/ready/landing-zone).
 
@@ -40,7 +40,7 @@ For a demonstration of the platform landing zones that you need for an Azure VMw
 
 ### Application landing zones
 
-There's a separate subscription, which is also known as an _Azure application landing zone_, that's intended for workload owners. This application landing zone is where you deploy your VMware workload. It has access to platform landing zones that provide the basic infrastructure that you need to run your workload. Examples include networking, identity access management, policy, and monitoring infrastructure.
+There's a separate subscription, which is also known as an *Azure application landing zone*, that's intended for workload owners. This application landing zone is where you deploy your VMware workload. It has access to platform landing zones that provide the basic infrastructure that you need to run your workload. Examples include networking, identity access management, policy, and monitoring infrastructure.
 
 Guidance about application landing zones applies to Azure VMware Solution workloads. For more information, see [Platform landing zones vs. application landing zones](/azure/cloud-adoption-framework/ready/landing-zone/#platform-landing-zones-vs-application-landing-zones). This guidance includes recommendations for efficiently governing and managing your workload.
 

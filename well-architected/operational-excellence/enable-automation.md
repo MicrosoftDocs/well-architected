@@ -3,7 +3,7 @@ title: Recommendations for enabling automation in a workload
 description: Learn how to design your workload to enable automation. Automation simplifies maintenance tasks, allowing you to update, patch, and upgrade your systems more efficiently and reliably.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 03/28/2024
 ms.topic: conceptual
 ---
 
@@ -18,7 +18,7 @@ This guide describes the recommendations for designing and implementing your wor
 
 ## Key design strategies
 
-### Workload design
+### Design workload components to support automation
 
 You can design your workload to support automation from the ideation phase to the on-going improvement phase. First, consider how you want to apply automation in your workload to help ensure that you're putting the necessary pieces in place. Think about your workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll use. You can automate many functions of security, reliability, performance, operations, and cost control.
 
@@ -30,19 +30,23 @@ Design with automation in mind to minimize refactoring after your workload is ru
 
 - *Automatic scaling*: Use automatic scaling throughout your infrastructure to help you achieve your reliability and performance requirements. You should allocate IP address space and subnets in your workload ahead of time to account for scaling operations, in addition to planning for redundancy and natural growth.
 
-### Continuous workload improvements
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: When designing your workload to enable automation, consider the degree of control that you want to maintain versus the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need a level of flexibility that automation doesn't provide.
+
+> Also consider the skill set of your team when designing your workload. If a high degree of automation requires tools that your team isn’t equipped to support, then you might need to use a less comprehensive design as an intermediate step.
+
+### Revisit automation design during the lifecycle
 
 After your workload is running in the cloud, it's important to prioritize continuous improvement. Observe your workload in action, analyze usage patterns, and review customer behavior related to your workload to identify areas where you can improve automation. Look for ways to enhance existing automation or introduce new automation to improve your customer experience. For example, you might have automated scaling enabled, but the workload increase is short-lived. You can integrate scale-in automation to decrease CPU usage when the load drops below the threshold.
 
 The following sections of this guide offer recommendations on specific areas of automation that can help you in your workload design and implementation.
 
-### Bootstrapping
+### Automate bootstrapping
 
 Bootstrapping refers to the configuration updates to a resource that must be made after it's provisioned, but before it's available as part of the workload pool. Bootstrapping is often associated with virtual machines (VMs), but many other resources must be set up as part of the deployment process including platform as a service (PaaS) technologies and container hosting technologies like Azure Kubernetes Service (AKS).
 
 Your cloud platform might provide bootstrapping solutions for you, which you should use where possible. For example, you can use VM extensions in Azure to make predefined configuration changes during the deployment process and customize your configuration changes by injecting PowerShell scripts.
 
-### Authentication and authorization
+### Incorporate automation into access management
 
 Take automation into account when designing your authentication and authorization strategy. It's important to maintain the highest level of security in production workloads, but this can affect automation. For example, the use of biometric or multifactor authentication adds complexity that must be accounted for in your automation design. Use nonhuman, secure accounts for automated authentication, such as managed identities, workload identities, or certificates. Ensure that you have included secret and key management in your automation for increased authentication security.
 
@@ -56,15 +60,15 @@ A control plane is the back-end system or suite of tools that you use to manage 
 
 Expose maintenance operations through the control plane that allow you to coordinate workload components, for example orderly backup and restore, bootstrapping, configuration, import/export, and batching operations. Be careful to choose the right level of granularity when deciding the operations to expose through the control plane.
 
-### Monitor and log
+### Adopt a data-driven approach to develop automation
 
 Develop a monitoring strategy to capture metrics that drive the type of automation you require. Use structured logging and custom metrics to provide the information required by automation in a format that's easy to recognize with automation tools. The metrics that you capture should be paired with thresholds defined in the monitoring system that trigger alerts and automated actions, like notifications or self-healing mechanisms, when appropriate. For more information, see [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md).
 
-### User lifecycle
+### Automate user lifecycle events
 
 Design your application and infrastructure to allow for automated user onboarding and offboarding, for individuals or multitenant customers. Plan for automated database updates via scripts, infrastructure provisioning and deprovisioning, and credential and secret management.
 
-### Orchestration and policy use
+### Automate Desired State Configuration
 
 As part of your continuous workload management, you can automate Desired State Configuration (DSC) in your resources to help ensure that they meet compliance and business requirements. DSC automation helps ensure that configuration drift is caught and remediated quickly. You can automate DSC using orchestration tools or policy management tools. Think of orchestration tools, like Azure DevOps services or Jenkins, as push-based mechanisms. Orchestration tools allow configuration updates to be pushed out through a workflow event, like a manual or automated deployment. These updates are run as part of a task sequence defined in your deployment script. Policy management tools use pull-based mechanisms, meaning that a system runs at the foundational level of your workload that periodically polls the workload to check its state against your defined DSC. If the poll identifies a misalignment or configuration drift, the tool takes corrective action. Consider the following factors when deciding between orchestration and policy management tools:
 
@@ -79,6 +83,8 @@ When deciding between orchestration or policy tools, consider whether the config
 ### Policy management
 
 **Azure Policy**: Using [Azure Policy](/azure/governance/policy/overview), you can enforce standards and assess compliance at scale. Azure Policy provides an aggregated view to evaluate the overall state of the workload environment in the compliance dashboard. Or you can use Azure Policy to evaluate each resource and policy on a granular level. You can also use Azure Policy to remediate new resources automatically or remediate existing resources in bulk.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Offloading automation from your CI/CD pipeline to platform tools or services, like Azure Policy, can simplify your pipeline, but has drawbacks like the additional management burden of using multiple systems. For example, execution failures in a platform service will not be caught in your pipeline logs and will have to fed into your observability platform intelligently so the appropriate parties are notified.
 
 ### Bootstrap automation
 
@@ -104,17 +110,18 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Configuration management
 
-[**Azure Automanage State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool built on top of Azure Policy that performs as an orchestration tool. Using a VM extension, you can directly apply predefined configuration updates to individual VMs or groups of VMs as defined within Azure Policy.
+[Azure Automation State Configuration](/azure/automation/automation-dsc-overview) is a DSC management tool managed by the Azure Policy [guest configuration feature](/azure/governance/machine-configuration/overview) that you can use to write, manage, and compile PowerShell DSC configurations for nodes in any cloud or on-premises datacenter. You can also use this tool to import DSC resources and assign configurations to target nodes.
 
-[**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
+[Azure App Configuration](/azure/azure-app-configuration/overview) is a service that you can use to centrally manage your application settings and feature flags. It works with Azure Key Vault so you can securely manage a wide variety of application configurations across your environment.
 
-## Tradeoffs
+### Change tracking and inventory
 
-When designing your workload to enable automation, consider the degree of control that you want to maintain versus the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need a level of flexibility that automation doesn't provide.
+[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in virtual machines. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
 
-Also consider the skill set of your team when designing your workload. If a high degree of automation requires tools that your team isn’t equipped to support, then you might need to use a less comprehensive design as an intermediate step.
-
-Offloading automation from your CI/CD pipeline to platform tools or services, like Azure Policy, can simplify your pipeline, but has drawbacks like the additional management burden of using multiple systems. For example, execution failures in a platform service will not be caught in your pipeline logs and will have to fed into your observability platform intelligently so the appropriate parties are notified.
+- Installed Windows and Linux software
+- Key Windows and Linux files
+- Windows registry keys
+- Windows services and Linux daemons
 
 ## Related links
 

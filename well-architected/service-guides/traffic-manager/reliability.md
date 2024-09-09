@@ -7,9 +7,9 @@ ms.date: 01/28/2022
 ms.topic: conceptual
 products:
   - azure-traffic-manager
-categories:
+azure.category:
   - networking
-  - management-and-governance
+
 ---
 
 # Reliability and Traffic Manager
@@ -52,6 +52,9 @@ Consider the following recommendations to optimize reliability when configuring 
 |Implement a custom page to use as a health check for your Traffic Manager.|A common practice is to implement a custom page within your application (for example: `/health.aspx`). Using this path for monitoring, you can do application-specific checks, such as checking performance counters or verifying database availability. Based on these custom checks, the page returns an appropriate `HTTPS` status code.|
 |Evaluate the three different traffic routing methods.|Traffic Manager supports three traffic-routing methods to determine how to route network traffic to the various service endpoints. Traffic Manager applies the traffic-routing method to each DNS query it receives. The traffic-routing method determines which endpoint is returned in the DNS response. The customer should be aware of these endpoints and the differences in routing between endpoints.|
 |Consider nested Traffic Manager profiles.|Each Traffic Manager profile specifies a single traffic-routing method. There are scenarios that require more sophisticated traffic routing than the routing provided by a single Traffic Manager profile. You can nest Traffic Manager profiles to combine the benefits of more than one traffic-routing method. Nested profiles allow you to override the default Traffic Manager behavior to support larger, more complex application deployments.|
+
+> [!TIP]
+> For more details on Reliability guidance for Traffic Manager, see [Reliability in Azure Traffic Manager](/azure/reliability/reliability-traffic-manager).
 
 ## Next step
 

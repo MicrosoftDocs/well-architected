@@ -7,6 +7,7 @@ ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide 
 ms.date: 09/09/2024
+ms.date: 09/05/2022
 products: 
   - azure-expressroute
 azure.category:
@@ -246,7 +247,7 @@ Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom 
 ### Cloud Adoption Framework guidance
 
 * [Traditional Azure network topology](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
-* [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
+* [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology)
 
 ## Next steps
 

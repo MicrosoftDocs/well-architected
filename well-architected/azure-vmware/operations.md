@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/10/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avs
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-vmware
 ---
 
 # Operations considerations for Azure VMware Solution workloads
@@ -154,6 +154,9 @@ For business continuity, you need to implement robust data protection to help en
 ##### Recommendations
 
 - Use backup solutions that Microsoft supports, such as Microsoft Azure Backup Server, or approved third-party vendors.
+
+>[!Caution]
+>Make sure the VMs in your backup environment are running OSs that have supportability. [Learn about the supported OSs](/azure/virtual-machines/enable-nvme-interface).
 
 ## Use Azure Site Recovery
 

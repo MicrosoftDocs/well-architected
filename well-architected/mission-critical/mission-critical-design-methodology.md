@@ -5,11 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 03/15/2023
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-ms.custom:
-  - mission-critical
 ---
 
 # Design methodology for mission-critical workloads on Azure

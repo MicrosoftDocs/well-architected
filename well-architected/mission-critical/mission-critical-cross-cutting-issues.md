@@ -5,11 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
-categories:
-  - management-and-governance
-  - web
-ms.custom:
-  - mission-critical
 ---
 
 # Cross-cutting concerns of mission-critical workloads on Azure
@@ -22,7 +17,7 @@ There are several cross-cutting concerns that traverse the [key design areas](mi
 
 ## Scale limits
 
-Azure applies various _limits_ or _quotas_ to ensure a consistent level of service for all customers. Examples of these limits include restrictions on the number of deployable resources within a single subscription, and restrictions to network and query throughput.
+Azure applies various *limits* or *quotas* to ensure a consistent level of service for all customers. Examples of these limits include restrictions on the number of deployable resources within a single subscription, and restrictions to network and query throughput.
 
 Service limits may have a significant bearing on a large mission-critical workload. Consider the limits of the services used in the target architecture carefully to ensure sustainable scale. Otherwise, you may hit one or more of these limits as the workload grows.
 

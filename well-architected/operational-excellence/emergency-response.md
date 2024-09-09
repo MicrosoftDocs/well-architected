@@ -35,8 +35,6 @@ An emergency response strategy should be an orderly, well-defined set of process
 
 The following sections provide recommendations for each of these phases.
 
-### Observability
-
 To have a robust emergency response strategy, you need to have a robust observability platform in place. Your observability platform should have the following characteristics:
 
 - **Holistic monitoring**: Ensure that you thoroughly monitor your workload from an infrastructure and application perspective.
@@ -51,7 +49,7 @@ To have a robust emergency response strategy, you need to have a robust observab
 
 For more information, see [Recommendations for designing and creating an observability framework](observability.md).
 
-### Incident response plan
+### Create an incident response plan
 
 The foundation of an emergency response strategy is an incident response plan. Like a disaster recovery plan, clearly and thoroughly define roles, responsibilities, and procedures for an incident response plan. The plan should be a version-controlled document that's subject to regular reviews that ensure it's up to date.
 
@@ -81,23 +79,23 @@ Create emergency response drill instructions, and keep a record of when drills h
 
 Document any legal or regulatory measures necessary, for example communicating data breaches.
 
-### Incident detection
+### Act on observability triggers
 
 When you have a well-designed observability platform that monitors for anomalies and automatically alerts on them, you can quickly detect issues and determine their severity. If the issue is deemed an emergency, the plan can be initiated. In some cases, the support team isn't notified via the observability platform. Customers might report issues to support by using support team communication avenues. Or they might reach out to people that they regularly work with, like account executives or VPs. No matter how the support team is notified, they should always follow the same steps to validate the issue and determine the severity. Deviation from the response plan can add stress and confusion.   
 
-### Containment
+### Define containment procedures
 
 The first step in issue remediation is to contain the issue to protect the rest of your workload. A containment strategy depends on the type of issue, but it usually involves removing the affected component from the workload flow paths. For example, you might shut down a resource or remove it from network routing paths. System administrators, engineers, and senior developers should work together to design containment strategies. The containment should limit the blast radius of issues and maintain workload functionality in a degraded state until the issue is resolved. If an affected component needs to be accessible to perform triage, it's vital that its access to the rest of the workload is blocked. As much as possible, you should only access the component via a path that's separated from the workload and the rest of the systems.
 
-### Triage
+### Define triage procedures
 
 After you successfully contain the issue, you can begin triage work. The steps that you follow during triage depend on the type of issue. The team  for a certain area of workload support should create procedures for incidents that are related to their team. For example, security teams should triage security issues, and they should follow scripts that they develop. It's important that teams follow well-defined scripts as they work through their triage efforts. These scripts should be step-by-step processes that include rollback processes to undo changes that are ineffective or can cause other issues. Use off-the-shelf log aggregation and analysis tools to efficiently investigate issues that require deep analysis. After the issue is resolved, follow well-defined processes to safely bring the affected component back into the workload flow paths.
 
-### RCA reporting
+### Generate RCA incident reports
 
 The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person who worked closely with the incident owner can create the RCA reports. This strategy ensures an accurate accounting of the incident. Typically, organizations have a defined RCA template with guidelines about how information is presented and what kinds of information can or can't be shared. If you need to create your own template and guidelines, ensure that they are reviewed and approved by stakeholders.
 
-### Incident postmortems
+### Hold incident postmortems
 
 An impartial individual should lead blameless postmortems. In postmortem sessions, everyone shares their findings from an incident. Each team that was involved in the incident response should be represented by individuals that worked on the incident. Those individuals should come to the session prepared with examples of the areas that were successful and areas that can be improved. The session isn't a forum for assigning blame for the incident or issues that might have come up during the response. The postmortem leader should leave the session with a clear list of action items that focus on improvement, such as:
 
@@ -106,6 +104,12 @@ An impartial individual should lead blameless postmortems. In postmortem session
 - **Improvements to the observability platform.** Thresholds might need to be reevaluated to catch the specific type of incident earlier, or new monitoring might need to be implemented to catch behavior that wasn't accounted for.
 
 - **Improvements to the workload.** The incident might expose a vulnerability in the workload that must be addressed as a permanent remediation.
+
+## Considerations
+
+An overly aggressive response strategy can lead to false alarms or unnecessary escalations.
+
+Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
 
 ## Azure facilitation
 
@@ -117,12 +121,6 @@ Use Monitor to integrate machine learning. Automate and optimize incident triage
 
 Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
 [Incident readiness](/services-hub/unified/health/incident-readiness).
-
-## Tradeoffs
-
-An overly aggressive response strategy can lead to false alarms or unnecessary escalations.
-
-Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
 
 ## Related links
 

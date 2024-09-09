@@ -6,8 +6,6 @@ summary: Apply security guidance to your architecture to help ensure the confide
 metadata:
   title: Security quick links
   description: Learn about documentation and training resources that can help you apply security guidance to your architecture.
-  ms.service: waf
-  ms.subservice: waf-pillar-security
   ms.topic: landing-page
   author: PageWriter-MSFT
   ms.author: prwilk

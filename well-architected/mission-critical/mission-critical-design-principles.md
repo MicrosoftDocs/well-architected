@@ -5,9 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
-categories: web
-ms.custom:
-  - mission-critical
 ---
 
 # Design principles of a mission-critical workload
@@ -43,9 +40,9 @@ These mission-critical design principles resonate and extend the quality pillars
 |---|---|
 |[**Design for scale-out**](/azure/well-architected/resiliency/principles#design-for-scale-out)|Scale-out is a concept that focuses on a system's ability to respond to demand through horizontal growth. This means that as traffic grows, more resource units are added in parallel instead of increasing the size of the existing resources. A systems ability to handle expected and unexpected traffic increases through scale-units is essential to overall performance and reliability by further reducing the impact of a single resource failure.|
 |**Automation for hyperscale**|Scale operations throughout the solution should be fully automated to minimize the performance and availability impact from unexpected or expected increases in traffic, ensuring the time it takes to conduct scale operations is understood and aligned with a model for application health.|
-|[**Continuous validation and testing**](/azure/well-architected/scalability/performance-test)|Automated testing should be performed within CI/CD processes to drive continuous validation for each application change. Load testing against a performance baseline with synchronized chaos experimentation should be included to validate existing thresholds, targets, and assumptions, as well as helping to quickly identify risks to resiliency and availability. Such testing should be conducted within staging and testing environments, but also optionally within development environments. It can also be beneficial to run a subset of tests against the production environment, particularly in conjunction with a blue/green deployment model to validate new deployment stamps before receiving production traffic.|
+|[**Continuous validation and testing**](/azure/well-architected/performance-efficiency/performance-test)|Automated testing should be performed within CI/CD processes to drive continuous validation for each application change. Load testing against a performance baseline with synchronized chaos experimentation should be included to validate existing thresholds, targets, and assumptions, as well as helping to quickly identify risks to resiliency and availability. Such testing should be conducted within staging and testing environments, but also optionally within development environments. It can also be beneficial to run a subset of tests against the production environment, particularly in conjunction with a blue/green deployment model to validate new deployment stamps before receiving production traffic.|
 |[**Reduce overhead with managed compute services**](/azure/architecture/guide/design-principles/managed-services)|Using managed compute services and containerized architectures significantly reduces the ongoing administrative and operational overhead of designing, operating, and scaling applications by shifting infrastructure deployment and maintenance to the managed service provider.|
-|[**Baseline performance and identify bottlenecks**](/azure/well-architected/scalability/test-tools#identify-baselines-and-goals-for-performance)|Performance testing with detailed telemetry from every system component allows for the identification of bottlenecks within the system, including components that need to be scaled in relation to other components, and this information should be incorporated into a capacity model.|
+|[**Baseline performance and identify bottlenecks**](/azure/well-architected/performance-efficiency/principles)|Performance testing with detailed telemetry from every system component allows for the identification of bottlenecks within the system, including components that need to be scaled in relation to other components, and this information should be incorporated into a capacity model.|
 |[**Model capacity**](/azure/well-architected/scalability/test-checklist)|A capacity model enables planning of resource scale levels for a given load profile, and additionally exposes how system components perform in relation to each other, therefore enabling system-wide capacity allocation planning.|
 
 ## Operational Excellence

@@ -5,11 +5,8 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
-categories:
-  - security
 ---
+
 # Recommendations for self-healing and self-preservation
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
@@ -34,7 +31,7 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 ## Key design strategies
 
-### Self-preservation guidance
+### Design for self-preservation
 
 To design your workload for self-preservation, follow infrastructure and application architecture design patterns to optimize your workload's resiliency. To minimize the chance of experiencing a full application outage, increase the resiliency of your solution by eliminating single points of failure and minimizing the blast radius of failures. The design approaches in this article provide several options to strengthen the resilience of your workload and meet your workload's defined [reliability targets](metrics.md).
 
@@ -87,7 +84,7 @@ Common examples of background jobs are:
 
 For more information, see [Recommendations for background jobs](background-jobs.md).
 
-### Self-healing guidance
+### Design for self-healing
 
 To design your workload for self-healing, implement failure detection so automatic responses are triggered and critical flows gracefully recover. Enable logging to provide operational insights about the nature of the failure and the success of the recovery. The approaches that you take to achieve self-healing for a critical flow depend on the [reliability targets](metrics.md) that are defined for that flow and the flow's components and dependencies.
 
@@ -126,14 +123,6 @@ Another approach to self-healing is the use of automated actions that are trigge
 Most Azure services and client SDKs include a retry mechanism. But they differ because each service has different characteristics and requirements, so each retry mechanism is tuned to a specific service. For more information, see [Recommendations for transient fault handling](handle-transient-faults.md).
 
 Use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups) for notifications, like email, voice or SMS, and to trigger automated actions. When you're notified of a failure, trigger an Azure Automation runbook, Azure Event Hubs, an Azure function, a logic app, or a webhook to perform an automated healing action.
-
-## Tradeoffs 
-
-- *Reliability vs. cost tradeoff.* When you implement some of the self-preservation patterns, like the Cache-Aside pattern or the Ambassador pattern, the cost of provisioning the workload infrastructure might increase. Implement these approaches only when the implementation provides benefits.
-
-- *Reliability vs. performance tradeoff.* When you implement some of these patterns, the time to complete a given transaction or application flow might increase. Apply a pattern only if it doesn't affect your ability to meet your performance targets for those transactions or flows.
-
-- *Reliability vs. user experience tradeoff.* When you implement some of these patterns, the user's experience with your applications might change significantly. For example, when using a Queue-Based Load Leveling pattern, your application might not present a real-time outcome of a request to the user, which might not be the right approach in all scenarios.
 
 ### Considerations
 

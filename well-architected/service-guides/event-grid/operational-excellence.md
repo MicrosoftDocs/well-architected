@@ -7,9 +7,9 @@ ms.date: 01/12/2022
 ms.topic: conceptual
 products:
   - azure-event-grid
-categories:
-  - messaging
-  - management-and-governance
+azure.category:
+  - integration
+
 ---
 
 # Event Grid and operational excellence
@@ -128,5 +128,5 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Event Hubs and reliability](../event-hubs/reliability.md)
+> [Event Hubs](../event-hubs.md)
 

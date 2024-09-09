@@ -5,8 +5,8 @@ author: moisesjgomez
 ms.author: mgomezcortez
 ms.date: 09/15/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Business continuity considerations for Azure Virtual Desktop workloads
@@ -52,17 +52,11 @@ For each Azure Virtual Desktop host pool, you can base your business continuity 
 
 ### Active-active scenarios
 
-There are two possible configurations for an active-active scenario. One configuration involves two host pools. The other uses one pool. Each configuration has certain benefits and caveats. For more information, review [Multiregion business continuity and disaster recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/azure-virtual-desktop-multi-region-bcdr).
-
-#### Two host pools
-
-In the two-pool configuration, for each host pool in your primary region, you deploy a secondary host pool in your secondary region. No administrator intervention is needed for failover. Like during normal operations, the secondary host pool provides users with Azure Virtual Desktop resources. The users must have a good understanding of the capabilities that Azure Virtual Desktop offers and how to use them.
+The recommended configuration for an active-active scenario uses two host pools, one host pool per region. No administrator intervention is needed for failover. Like during normal operations, the secondary host pool provides users with Azure Virtual Desktop resources. The users must have a good understanding of the capabilities that Azure Virtual Desktop offers and how to use them.
 
 Each host pool has its own storage account for persistent user profiles. If your disaster recovery plans require that profiles persist, you need to use the cloud cache feature of FSLogix to sync profiles across regions. To avoid profile conflicts, don't allow users to access both host pools at the same time.
 
-#### Single host pool
-
-The second possible active-active configuration uses a single host pool that's deployed with a mix of session hosts that are located in different regions.
+For more information, see [Multiregion business continuity and disaster recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop-multi-region-bcdr).
 
 ### Active-passive scenarios
 
@@ -92,7 +86,7 @@ For instance, Azure imposes subscription-level limits on the number of VMs that 
 
 Another example is session hosts in a host pool. Within Azure Virtual Desktop, each host pool has its own limits on the number of session hosts that can accommodate user sessions. The VM series and the size that you select for the host pool determine the maximum number of session hosts that you can use. To optimize performance and user experience, you need to consider these limits when you design your deployment.
 
-For more information about platform constraints, see [Azure Virtual Desktop limitations](/azure/architecture/example-scenario/wvd/windows-virtual-desktop#azure-virtual-desktop-limitations).
+For more information about platform constraints, see [Azure Virtual Desktop limitations](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop#azure-virtual-desktop-limitations).
 
 ##### Recommendations
 

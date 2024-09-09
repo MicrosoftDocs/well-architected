@@ -3,7 +3,7 @@ title: Architecture design diagrams
 description: Learn about diagramming practices and types of architecture diagrams that you can create to communicate effectively.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 07/18/2024
 ms.topic: conceptual
 ---
 
@@ -25,17 +25,25 @@ Diagrams present substantial information without the need for textual explanatio
 
 **Avoid lines without arrows**. It's hard to know what the relationship is without direction, so use arrows. Label all lines without arrows to denote the relationships.
 
-**Avoid lines with double arrows**. Double arrows imply a bidirectional dependency. Prefer using a single-ended arrow to represent the flow from client to server.
+**Avoid lines with double arrows**. Double arrows imply a bidirectional dependency. Prefer using a single-ended arrow to represent the flow from the dependent (client) to the dependency (server).
 
 **Label everything**. Provide clear, accurate, and meaningful labels for each icon. Label lines when the relationships aren't clear.
 
-**Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line types, arrow heads, and other representations for similar elements throughout a diagram and across related diagrams. Draw from existing data or taxonomies.
+**Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line types, arrow heads, and other representations for similar elements throughout a diagram. Stay consistent across all diagrams created for your workload's design and documentation. Draw from existing data or taxonomies.
 
 **Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in a virtual network if it's not present in that virtual network. A diagram is a communication tool, so you need to avoid miscommunication from inaccuracies.
 
 **Include metadata**. Ensure that a diagram contains metadata that provides essential information about the purpose of the diagram. Metadata also gives context to help viewers understand the diagram's scope and significance. Include items such as title, description, last updated date, author, and external references.
 
-**Use official icons and service names**. When you're representing a specific technology, use the latest icons from your technology provider. If identifying the technology is important, use the official name for the service. Use the official [Azure architecture icons](/azure/architecture/icons/) for diagrams that involve Azure components.
+**Use official icons and service names**. When you're representing a specific technology, use the latest official icons from your technology provider. If identifying the technology is important, use the official name for the service.
+
+For example, here are the icons for Microsoft services:
+
+- [Azure architecture icons](/azure/architecture/icons/)
+- [Microsoft 365 icons](/microsoft-365/solutions/architecture-icons-templates)
+- [Microsoft Dynamics 365 icons](/dynamics365/get-started/icons)
+- [Microsoft Entra ID architecture icons](/entra/architecture/architecture-icons)
+- [Microsoft Power Platform icons](/power-platform/guidance/icons)
 
 ## Types of design diagrams
 
@@ -83,7 +91,7 @@ An entity-relationship diagram (ERD) is a modeling diagram that represents the s
 
 A network diagram illustrates the solution from the perspective of the network that it runs on or interacts with. These diagrams are useful in visualizing the workload's network segmentation, network points of failure, and key network transitions such as internet egress and ingress points.
 
-Network diagrams usually have a life past implementation. They're often used in audits and incident response.
+Network diagrams usually have a life past implementation. Network diagrams are often used in audits and incident response.
 
 ##### State diagram
 
@@ -92,6 +100,8 @@ A state diagram is a specialized visualization. It shows the state that a flow (
 ##### Flowchart
 
 Although it's not an architecture diagram specifically, a flowchart is another way to bring clarity to a design. Flowcharts are often useful when they represent complex workflows or logic. You can use them to help refine requirements and to help drive implementation choices.
+
+Flowcharts are useful to include in workload incident response plans to help highlight key decision points and their associated actions or notification channels.
 
 ## Next steps
 

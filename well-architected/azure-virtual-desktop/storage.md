@@ -5,8 +5,8 @@ author: gaquamme
 ms.author: gaquamme
 ms.date: 10/12/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Storage considerations for Azure Virtual Desktop workloads
@@ -52,14 +52,13 @@ Another consideration is that Azure VMs have I/O operations per second (IOPS) an
 - Examine the CPU, GPU, memory, and storage usage of the workloads that your users run before you select a VM SKU.
 - Use VMs with at least two physical CPU cores for single-session hosts.
 - Use VMs with at least four cores for multiple-session hosts.
-- Use no more than 32 cores per VM.
 - Use a larger number of smaller VMs instead of a few large VMs.
 - Use scaling plans to adjust your number of VMs based on user demand and schedule.
 - Take into account the IOPS and throughput performance limits of your VMs when you select a disk type.
-- Use HDDs to reduce costs.
-- Use HDDs for workloads that require large amounts of storage but don't require high performance.
 - Use SSDs for high-performance workloads.
 - Use premium SSDs for production workloads that require high performance, low latency, and an SLA.
+- Use premium SSDs for Windows 10 or Windows 11 Enterprise Multi-Session.
+- Use standard or premium SSDs for personal desktops.
 
 ## User profiles
 

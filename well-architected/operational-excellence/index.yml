@@ -6,8 +6,6 @@ summary: Apply operational excellence guidance to your workload to ensure worklo
 metadata:
   title: Operational excellence quick links
   description: Learn about resources that can help you apply operational excellence guidance to your architectures.
-  ms.service: waf
-  ms.subservice: waf-pillar-excellence
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek

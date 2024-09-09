@@ -28,19 +28,19 @@ The following recommendations can help you adopt and implement DevOps practices 
 
 **Mutual respect fosters a blameless culture.** When issues occur, the workload team should take collaborative ownership and find ways to improve instead of assigning blame and affecting the team's cohesiveness.
 
-### Team roles and responsibilities
+### Establish clear roles and responsibilities
 
 **Teams take ownership and responsibility for the workload when they value their work.** The workload team ultimately has end-to-end responsibility for the operation of their workload. Although there might be outside services required for certain aspects of the workload operation, your team is responsible for collaborating with other teams and ensuring that all functions are successfully completed. Regardless of how involved they are in supporting services, workload team members must consider every function that supports the workload as their responsibility. This mindset helps reinforce a common sense of ownership.
 
 **Clearly define team roles and decision-making responsibilities.** Team decision-making should be as democratic as possible, but structured so that decisions are made efficiently. When there are differing opinions about a situation, someone must be responsible for making the final decision based on the evidence that's presented. Team decisions can affect the entire workload, so it's important that individuals feel heard and valued throughout the decision-making process even if they don't agree with the final decision.
 
-### Continuous learning and improvement
+### Commit to continuous learning
 
 **Use enablement teams to the workload teams' advantage.** Some organizations have enablement teams, such as platform teams, architecture review boards, or cloud centers of excellence. These teams provide standards that all workload teams must follow to ensure that there's consistency in design and process. Empower your workload team to have open lines of communication with enablement teams and to work collaboratively to improve processes and share knowledge. Support a mindset of continuous learning and improvement in your team via open communication.
 
 **Learn from each other to develop a cross-functional team.** Establish a team structure in which everyone is a specialist in their function and a generalist in all other functions so that team members can support each other when needed. Cross-functionality helps team members to develop appreciation for each other's expertise and can help them understand the complexity of the entire workload.
 
-### Commitment to optimization
+### Dedicate efforts towards continuous optimization
 
 **Understand business, regulatory and other requirements and integrate them into your practices.** Workload teams don't operate in a vacuum. Your team is subject to requirements enforced by the business, industry, and geographic regions you operate in. Ensure that your workload team members understand the requirements that they must follow and the consequences of a failure to meet those requirements.
 
@@ -50,21 +50,16 @@ The following recommendations can help you adopt and implement DevOps practices 
 
 **Embrace safe experimentation.** Give team members access to sandbox environments and ensure that time is built into sprints to allow for experimentation. Document standards that define how new functionality is integrated into the workload when a team member discovers a function or component that would offer tangible benefits. Be careful to ensure that new functionality is aligned with your [safe deployment practices](safe-deployments.md).
 
+## Considerations
+
+Strictly defined roles and responsibilities could result in a level of discomfort for some team members when they're performing functions outside their responsibility. Conduct open and honest discussions with the team about team structure, and be open to making adjustments when needed.
+
 ## Azure facilitation
 
 Microsoft publishes extensive documentation about DevOps culture in a dedicated [DevOps resource center](/devops/what-is-devops).
 
-## Organizational alignment
-
-Cloud Adoption Framework provides [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices) for organizational adoption, which includes a perspective on [DevOps team topologies](/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies).
-
-## Tradeoffs
-
-Strictly defined roles and responsibilities could result in a level of discomfort for some team members when they're performing functions outside their responsibility. Conduct open and honest discussions with the team about team structure, and be open to making adjustments when needed.
-
 ## Related links
 
-- [Cloud Adoption Framework](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices)
 - [DevOps resource center](/devops/what-is-devops)
 - [Safe deployment practices](safe-deployments.md)
 

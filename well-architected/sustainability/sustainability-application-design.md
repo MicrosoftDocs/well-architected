@@ -5,11 +5,7 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
 ms.date: 10/12/2022
-categories: 
-  - networking
-ms.custom:
-  - sustainability
-  - ignite-2022
+
 ---
 
 # Application design of sustainable workloads on Azure
@@ -27,7 +23,7 @@ Demands on applications can vary, and it's essential to consider ways to stabili
 
 Monolithic applications usually scale as a unit, leaving little room to scale only the individual components that may need it.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -41,7 +37,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Many modern cloud applications are designed to transact many messages between services and components asynchronously. Consider the format used to encode the payload data. How much information does your application need to communicate, and is there room to reduce the chattiness?
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -54,7 +50,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Consider how applications render information. Does the application need to critically serve everything in the highest quality, resulting in higher bandwidth and processing? Is there room for reducing the quality of components in the UI to serve sustainability goals better?
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -65,7 +61,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Learning about cloud-native design patterns is helpful for building applications, whether they're hosted on Azure or running elsewhere. Optimizing the performance and cost of your cloud application will also reduce its resource utilization, hence its carbon emissions.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -75,7 +71,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Consider evaluating and preventing applications from performing operations that are likely to fail. Repeated failures can lead to overhead and unnecessary processing that you can avoid with proper design patterns.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -87,7 +83,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Applications deployed using inefficient code may result in an inherent impact on sustainability.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -99,7 +95,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Demands on applications can vary, and it's essential to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spills.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -110,7 +106,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Determine whether to render on the server-side or client-side when building applications with a UI.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 
@@ -131,7 +127,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Consider how the UX design of a workload impacts sustainability and determine what options exist for improving energy efficiency and reducing unnecessary network load, data processing, and compute resources.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+*Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
 **Recommendation:**
 
@@ -149,7 +145,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Consider upgrading or deprecating legacy code if it's not running on modern cloud infrastructure or with the latest updates.
 
-_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+*Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
 **Recommendation:**
 

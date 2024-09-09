@@ -20,7 +20,7 @@ This guide describes the recommendations for adopting automation in your workloa
 
 As you develop your workload, look for opportunities to take advantage of automation in order to reduce management burden and minimize human error. Evaluate these opportunities, and consider the value that they bring to your organization. To maximize the value of your investment in automation, prioritize tasks that are straightforward, procedural, and have a long shelf life. Applying automation isn't an all-or-nothing tactic. There are workstreams that might have operations that require human intervention, like decision-making points. These workstreams can still benefit from automation to perform other tasks.
 
-### Target tasks to automate
+### Evaluate tasks to automate
 
 Consider the following recommendations to ensure that you prioritize tasks that benefit the most from automation:
 
@@ -32,7 +32,7 @@ Consider the following recommendations to ensure that you prioritize tasks that 
 
 - **Focus on your return on investment.** High-value automation requires minimal management overhead and adds a demonstrable degree of efficiency. If you can save your operations team an hour each day by automating database entries, for example, you give them time to find other areas for improvement.
 
-### Areas to implement automation
+#### Areas to implement automation
 
 Adopt automation throughout your entire workload lifecycle, from development to day-to-day management. Use the following list of examples to help you consider the broad areas of your workload lifecycle that can benefit from automation. You can automate:
 
@@ -68,6 +68,16 @@ Be mindful of factors that can complicate your operations when you build your au
 
 For any tool that you use to build your automation, make it easily accessible and manageable for your operators. Provide clear and easy-to-use interfaces for your workload team. You can provide access to CI/CD pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
+## Considerations
+
+- Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
+
+- Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks tightly focused on only performing discrete jobs. Try to minimize dependencies on other tools or components.
+
+- Be thoughtful about using manual processes. If you decide not to automate an operation, thoroughly document the manual process by creating a step-by-step checklist for operators. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. This documentation also helps you design automation for that process in the future.
+
+- When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs most of a process but then defers to a human for a specific part or decision, it's important that you give the person the necessary context and information to make an informed decision.
+
 ## Azure facilitation
 
 Azure offers many tools to help you automate tasks for your workload.
@@ -92,6 +102,12 @@ GitHub Actions goes beyond just DevOps and enables you to run workflows when oth
 
 - Integrate source control.
 
+**Azure Update Manager**: [Update Manager](/azure/update-manager/overview) is a unified service to help manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window. Use Update Manager to:
+
+- Oversee compliance on your entire fleet of machines.
+- Schedule recurring updates
+- Deploy critical updates
+
 **Azure Deployment Environments**: [Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) enables development teams to quickly create consistent app infrastructure by using project-based templates. These templates minimize setup time and maximize security, compliance, and cost efficiency. A deployment environment is a collection of Azure resources that are deployed in predefined subscriptions. Development infrastructure administrators can enforce enterprise security policies and provide a curated set of predefined IaC templates.
 
 Development infrastructure administrators define deployment environments as catalog items. Catalog items are hosted in a GitHub or Azure DevOps repository, called a *catalog*. A catalog item consists of an IaC template and a manifest.yaml file.
@@ -104,16 +120,6 @@ You can script the creation of deployment environments and programmatically mana
 
 **Azure Monitor action groups**: To automatically run self-healing operations when an alert is triggered, use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups). You can define these operations by using a runbook, an Azure function, or a webhook.
 
-## Tradeoffs
-
-Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
-
-Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks tightly focused on only performing discrete jobs. Try to minimize dependencies on other tools or components.
-
-Be thoughtful about using manual processes. If you decide not to automate an operation, thoroughly document the manual process by creating a step-by-step checklist for operators. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. This documentation also helps you design automation for that process in the future.
-
-When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs most of a process but then defers to a human for a specific part or decision, it's important that you give the person the necessary context and information to make an informed decision.
-
 ## Example
 
 For an example of using Automation in tandem with other Azure services, see [Ops automation by using Azure Event Grid](/azure/architecture/solution-ideas/articles/ops-automation-using-event-grid). This example uses Logic Apps and Event Grid to automate operational tasks.
@@ -121,6 +127,7 @@ For an example of using Automation in tandem with other Azure services, see [Ops
 ## Related links
 
 - [Automation](/azure/automation/overview)
+- [Azure Update Manager](/azure/update-manager/overview)
 - [Azure Functions](/azure/azure-functions/functions-overview)
 - [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups)
 - [Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments)

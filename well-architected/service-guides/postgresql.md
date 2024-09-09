@@ -5,9 +5,13 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
 ms.date: 11/14/2023
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
+products:
+  - azure-database-postgresql
+azure.category:
+  - databases
 ---
 
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL
@@ -59,7 +63,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
 
 > [!TIP]
-> For more details on Reliability guidance for VMs, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
+> For more details on reliability guidance for Azure Database for PostgreSQL, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
 
 ### Azure policy definitions
 
@@ -118,12 +122,12 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | Pick the right tier and SKU. | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
 | Understand high availability mode. | High availability makes a standby server always available within the same zone or region. Enabling high availability doubles your cost. |
-| Adjust compute and storage tier.s | You should manually adjust the compute and storage tiers to meet the application's requirements over time.
-| Use the Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it.
+| Adjust compute and storage tiers. | You should manually adjust the compute and storage tiers to meet the application's requirements over time. |
+| Use the Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it. |
 | Consider reserved instances. | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
-| Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage.
-| Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS.
-| Evaluate storage scale-up decisions. | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down.
+| Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage. |
+| Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS. |
+| Evaluate storage scale-up decisions. | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down. |
 | Deploy to the same region as the app. | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. |
 | High availability oriented cost description. | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
 | Consolidate databases and servers. | You can consolidate multiple databases and servers into a single server to reduce costs. |

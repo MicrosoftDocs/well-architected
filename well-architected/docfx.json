@@ -50,31 +50,35 @@
     "externalReference": [],
     "globalMetadata": {
       "breadcrumb_path": "/azure/well-architected/breadcrumb/toc.json",
-      "feedback_system": "GitHub",
+      "feedback_system": "Standard",
       "feedback_github_repo": "MicrosoftDocs/well-architected",
       "brand": "azure",
       "uhfHeaderId": "azure",
       "titleSuffix": "Microsoft Azure Well-Architected Framework",
-      "ms.service": "waf",
-      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ],    
+      "ms.service": "azure-waf",
+      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ]    
      },
     "open_to_public_contributors": {
       "**/*.yml": false
     },
     "fileMetadata": {
       "ms.subservice": {
-        "reliability/**/*.md": "waf-pillar-reliability",
-        "security/**/*.md": "waf-pillar-security",
-        "cost-optimization/**/*.md": "waf-pillar-optimization",
-        "performance-efficiency/**/*.md": "waf-pillar-efficiency",
-        "operational-excellence/**/*.md": "waf-pillar-excellence",
-        "mission-critical/**/*.md": "waf-workload-mission-critical",
-        "carrier-grade/**/*.md": "waf-workload-carrier-grade",
-        "hybrid/**/*.md": "waf-workload-hybrid",
-        "iot/**/*.md": "waf-workload-iot",
-        "sap/**/*.md": "waf-workload-sap",
-        "sustainability/**/*.md": "waf-workload-sustainability",
-        "services/**/*.md": "waf-service-guide"
+        "reliability/**/*.*": "waf-pillar-reliability",
+        "security/**/*.*": "waf-pillar-security",
+        "cost-optimization/**/*.*": "waf-pillar-optimization",
+        "performance-efficiency/**/*.*": "waf-pillar-efficiency",
+        "operational-excellence/**/*.*": "waf-pillar-excellence",
+        "mission-critical/**/*.*": "waf-workload-mission-critical",
+        "carrier-grade/**/*.*": "waf-workload-carrier-grade",
+        "hybrid/**/*.*": "waf-workload-hybrid",
+        "azure-virtual-desktop/**/*.*": "waf-workload-azure-virtual-desktop",
+        "azure-vmware/**/*.*": "waf-workload-azure-vmware",        
+        "hybrid/**/*.*": "waf-workload-hybrid",        
+        "iot/**/*.*": "waf-workload-iot",
+        "oracle-iaas/**/*.*": "waf-workload-oracle",        
+        "sap/**/*.*": "waf-workload-sap",
+        "sustainability/**/*.*": "waf-workload-sustainability",
+        "service-guides/**/*.*": "waf-service-guide"       
       }
     },
     "template": [

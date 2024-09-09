@@ -20,7 +20,6 @@ This guide describes the recommendations for optimizing the cost of each of the 
 
 | Term    | Definition |
 |---|----|
-|Data flow  | The movement of data within a system or between systems.|
 |Decouple  | The strategy of removing a flow from a resource that contains multiple flows and placing it into a separate resource. |
 |Flow    | In a workload, the sequence of actions that performs a specific function. A flow involves the movement of data and the running of processes between components of the workload. |
 |System flow | The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality.                            |
@@ -34,9 +33,7 @@ Invest more in high-priority flows than in lower-priority flows. Aligning flow p
 
 - *Combine flows*. For example, you might combine the sign-in and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows enables the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
 
-In a workload, there can be different types of flows or paths that you need to consider. This guide focuses on the following categories:
-
-- *Data flows*. Optimizing data flows involves ensuring efficient and secure data transfer, minimizing data latency, and optimizing data storage and retrieval mechanisms.
+In a workload, there can be different types of flows or paths that you need to consider. This guide focuses on the following flow types:
 
 - *System flows*. Optimizing system flows involves streamlining the communication and interaction between system components, minimizing bottlenecks, and ensuring efficient resource utilization.
 
@@ -44,7 +41,7 @@ In a workload, there can be different types of flows or paths that you need to c
 
 ### Create an inventory of flows
 
-Understanding workload flows helps you to effectively reallocate resources. The goal is to ensure that financial commitments align with high-priority flows. Here are the steps for understanding workload flows:
+A flow inventory is a comprehensive list and description of all the sequences of actions, data transitions, and system interactions within a workload. A flow inventory is the first step to ensuring investments align with the priority of flows. You should only optimize flows when you fully understand their purpose and dependencies. Here are steps for creating an inventory of workload flows:
 
 1. *Document flows*. Start by documenting and listing all existing flows in your workload to get an understanding of the comprehensive state of the system. Include every sequence of actions, data transitions, and system interactions. Familiarize yourself with every component, like external services, databases, middleware, and third-party integrations. Additionally, track or estimate the volume of requests over time.
 
@@ -54,7 +51,7 @@ Understanding workload flows helps you to effectively reallocate resources. The 
 
 ### Prioritize flows
 
-Flow prioritization is the process of classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows might merit higher expectations for availability, recovery, and performance due to the criticality of associated business scenarios and functionality. They often require higher levels of availability, faster recovery times, and better performance to meet workload objectives. By prioritizing flows, you can align spending to flow priority. To prioritize flows, consider the following steps:
+Flow prioritization is the process of classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows often require higher levels of availability, faster recovery times, and better performance to meet workload objectives. By prioritizing flows, you can better align spending to flow priority. To prioritize flows, consider the following steps:
 
 - *Identify flow value*. When you optimize workload flow costs, you need to identify the flow that provides the most value. You don't want to spend more than a flow is worth. Instead of simply cutting costs, consider shifting costs to prioritize the more valuable flows. For example, your checkout flow is critical for business, but the purchase history isn't. You should allocate more resources and budget to the checkout flow.
 
@@ -96,7 +93,7 @@ Combining similar flows onto a single resource is a process of consolidating tas
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Don't mistake coincidence with design. Two flows that look similar don't necessarily serve the same purpose. You need to understand the function and design of each flow before merging or changing them. Misinterpreting a flow by focusing solely on its appearance can lead to unintended consequences and disrupt the service or process that it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
 
-### Continuously monitor flows
+### Monitor flows continuously
 
 The nature of flows and workloads can change over time, so you need to review flow spending to ensure that costs align with priorities. Evaluate the resource utilization of each flow by analyzing the compute, storage, and network usage associated with each flow. Identify any inefficiencies or areas where resources are underutilized. This analysis helps you pinpoint opportunities for cost optimization. Here are some considerations to take into account when you review flow utilization:
 

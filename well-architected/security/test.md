@@ -66,7 +66,7 @@ When you design your test plans, think about the following questions:
 
 - What are the different test types that you should run?
 
-### How often do you expect the tests to run?
+### Test the workload regularly
 
 Test the workload regularly to make sure changes don't introduce security risks and that there aren't any regressions. The team must also be ready to respond to organizational security validations that might be conducted at any time. There are also tests that you can run in response to a security incident. The following sections provide recommendations on the frequency of tests.
 
@@ -102,7 +102,7 @@ There are tests that detect the cause of a security incident at its source. Thes
 
 Incidents also improve test cases over time by uncovering existing gaps. The team should apply the lessons learned from the incident and routinely incorporate improvements.
 
-### What are the different types of tests?
+### Employ a variety of tests
 
 Tests can be categorized by **technology** and by **testing methodologies**. Combine those categories and approaches within those categories to get complete coverage.
 

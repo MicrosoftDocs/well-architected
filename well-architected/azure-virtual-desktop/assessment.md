@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 10/12/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Well-architected assessment for Azure Virtual Desktop workloads
@@ -15,7 +15,7 @@ The [Azure Well-Architected Azure Virtual Desktop workload assessment](/assessme
 
 For best results, the team that completes the assessment should be well versed in the architecture of your workload. That team should also have a strong understanding of cloud principles and patterns. These roles include but aren't limited to cloud architects, operators, and DevOps engineers.
 
-The assessment is a set of questions that are based on the [Azure Virtual Desktop design areas](../azure-vmware/design-principles.md) as a way of checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
+The assessment is a set of questions that are based on the [Azure Virtual Desktop design principles](./design-principles.md) as a way of checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
 
 :::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the Azure Virtual Desktop assessment. A few answers are selected. On the left, an outline of the assessment is visible.":::
 
@@ -30,5 +30,5 @@ These questions are designed to help benchmark your workload's maturity and alig
 
 See the following reference architectures, which describe design choices for production-ready implementations:
 
-- [Azure Virtual Desktop for the enterprise](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
-- [Enterprise-scale support for Microsoft Azure Virtual Desktop](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone)
+- [Azure Virtual Desktop for the enterprise](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop)
+- [Enterprise-scale support for Microsoft Azure Virtual Desktop](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/enterprise-scale-landing-zone)

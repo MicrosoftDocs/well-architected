@@ -5,8 +5,8 @@ author: jszubryt
 ms.author: szubrytjim
 ms.date: 10/12/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-avd
+ms.service: azure-waf
+ms.subservice: waf-workload-azure-virtual-desktop
 ---
 
 # Operational procedure considerations for Azure Virtual Desktop workloads
@@ -55,13 +55,13 @@ You manage the following components of Azure Virtual Desktop solutions:
 
 To manage your Azure Virtual Desktop environment, focus on the following areas:
 
-- Business alignment. To help meet service-level agreements (SLAs), deploy your session hosts in an availability set to help protect them from failures in specific fault domains.
+- Business alignment. To help meet service-level agreements (SLAs), deploy your session hosts in an availability zone to help protect them from failures in specific fault domains.
 - Operations baseline. Establish an operations baseline. For more information, see [Overview of Azure server management services](/azure/cloud-adoption-framework/manage/azure-server-management/).
 - Platform operations. Use monitoring techniques like tools, dashboards, and alerts to help the operations team effectively monitor and react to incidents to maintain a reliable platform. For more information, see [Monitoring considerations for an Azure Virtual Desktop workload](monitoring.md).
 
 ##### Recommendations
 
-- Deploy your session hosts in an availability set.
+- Deploy your session hosts in an availability zone.
 - Establish an operations baseline.
 - Use monitoring tools, dashboards, and alerts.
 
@@ -82,11 +82,7 @@ It's important to stay up to date with the latest updates, features, feature imp
 
 As your Azure Virtual Desktop platform grows, you need to be mindful of which limits you're close to reaching. Successfully managing the platform and proactively preventing service disruptions to your customers requires that you carefully monitor the limits of the components that you use.
 
-### Availability set limits
-
-There's a limit of 200 VMs per availability set. For more information, see [Availability sets overview](/azure/virtual-machines/availability-set-overview).
-
-### FSLogix  
+### FSLogix
 
 The limitations of FSLogix depend on the storage fabric that you use to store user profile virtual hard disk (VHD) and VHD extended (VHDX) files.
 
@@ -132,7 +128,6 @@ VMs that have been turned off for more than 90 days experience registration prob
   - Services.
   - Azure objects.
   - The number of vCPUs that you can create.
-  - The number of VMs that you can include in an availability set.
 - Understand how many IOPS an FSLogix profile requires to support each user.
 - Use automation to prevent VM tokens from expiring.
 

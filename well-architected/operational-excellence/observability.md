@@ -47,7 +47,7 @@ To implement a comprehensive monitoring system design for your workload, follow 
 
 - Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
-- Tie the monitoring data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing that data in terms of the flows will help align your observability strategy with your [health model](../reliability/metrics.md#building-a-health-model).
+- Tie the monitoring data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing that data in terms of the flows will help align your observability strategy with your [health model](../cross-cutting-guides/health-modeling.md).
 
 You should automate all functions of the monitoring system as much as possible, and they should all run continuously, all day, every day. 
 
@@ -55,7 +55,7 @@ This workflow pipeline illustrates the monitoring system:
 
 :::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring system as a pipeline." lightbox="media/observability/monitor-pipeline.png" border="false":::
 
-### Collection
+### Collect instrumentation data
 
 > [!Note]
 > You need to instrument your application to enable logging. For more information, see the [instrumentation guide](../devops/monitor-instrument.md).
@@ -64,7 +64,7 @@ You should configure all workload components, whether they're infrastructure res
 
 Logs are primarily useful for detecting and investigating anomalies. Typically, logs are produced by the workload component and then sent to the monitoring platform or pulled by the monitoring platform via automation.
 
-Metrics are primarily useful for [building a health model](../reliability/metrics.md#building-a-health-model) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behavior of your customers. These trends can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
+Metrics are primarily useful for [building a health model](../cross-cutting-guides/health-modeling.md) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behavior of your customers. These trends can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
 
 #### Application data
 
@@ -127,7 +127,7 @@ The data collected from a single instance of an application provides a localized
 
 The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, you can amalgamate instrumentation data that includes the same correlation information, like an activity ID. (A user might start a business operation on one node and then get transferred to another node if the first node fails, or because of how load balancing is configured.) This process can also detect and remove any duplicated data. (Duplication can occur if the telemetry service uses message queues to push instrumentation data out to storage.)
 
-### Storage
+### Store data for query and analysis
 
 When you choose a storage solution, consider the type of data, how it's used, and how urgently it's required. 
 
@@ -178,7 +178,7 @@ Data gathered for metering and billing customers might need to be saved indefini
 
 To ensure that you comply with laws and regulations, minimize the storage of any identifiable information. If you do need to store identifiable information, be sure, when you design your solution, to take into account requirements that allow individuals to request that their information be deleted.
 
-### Analysis
+### Analyze data to understand the health of a workload
 
 After you collect data from various data sources, analyze it to assess the overall well-being of the system. For this analysis, have a clear understanding of:
 
@@ -208,13 +208,13 @@ The usage data for a single business operation might span all three tiers. This 
 
 For detailed guidance about these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md).
 
-### Visualization
+### Visualize workload health reports
 
 #### Dashboards
 
 The most common way to visualize data is to use dashboards that can display information as a series of chart or graphs, or in some other visual form. These items can be parameterized, and an analyst can select the important parameters, like the time period, for any specific situation.
 
-Align your dashboards with your [health model](../reliability/metrics.md#building-a-health-model) so that they indicate when the workload or components of the workload are healthy, degraded, or unhealthy. 
+Align your dashboards with your [health model](../cross-cutting-guides/health-modeling.md) so that they indicate when the workload or components of the workload are healthy, degraded, or unhealthy. 
 
 For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, members of the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
 
@@ -247,7 +247,7 @@ Security reporting tracks customer use of the system. It can include:
 
 In many cases, batch processes can generate reports according to a defined schedule. Latency isn't normally an issue. You should also have batch processes that can generate reports on a spontaneous basis, as needed. For example, if you store data in a relational database like Azure SQL Database, you can use a tool like SQL Server Reporting Services to extract and format data and present it as a set of reports.
 
-### Alerts
+### Define alerts for key events
 
 To help ensure that the system remains healthy, responsive, and secure, set alerts so that operators can respond to them in a timely manner. An alert can contain enough contextual information to help them quickly get started on diagnostic activities. Alerting can be used to invoke remediation functions like [autoscaling or other self-healing mechanisms](../reliability/monitoring-alerting-strategy.md). Alerts can also enable cost-awareness by providing visibility into budgets and limits.
 
@@ -285,16 +285,16 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Azure Policy](/azure/governance/policy/overview) can help you enforce organizational standards and assess compliance at scale.
 
-## Tradeoffs
-
-Storing logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that you need to consider when you plan your strategy. Consider options like archive storage and selective replication when they're practical.
-
 ## Related links
 
 - [Instrumentation guide](../devops/monitor-instrument.md)
 - [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
 - [Recommendations for monitoring and threat detection](../security/monitor-threats.md)
 - [Recommendations for collecting performance data](../performance-efficiency/collect-performance-data.md)
+
+## Community links
+
+- [Azure Monitor Baseline Alerts (AMBA)](/azure/azure-monitor/alerts/alert-options#azure-monitor-baseline-alerts-amba) is a central repository of alert definitions that customers and partners can use to improve their observability experience through the adoption of Azure Monitor.
 
 ## Operational Excellence checklist
 

@@ -5,9 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 02/02/2022
 ms.topic: conceptual
-categories: databases
-ms.custom:
-  - mission-critical
 ---
 
 # Data platform considerations for mission-critical workloads on Azure
@@ -265,7 +262,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Azure Cosmos DB supports multiple different APIs with differing feature sets, such as SQL, Cassandra, and MongoDB.
   - The first-party Azure Cosmos DB for NoSQL provides the richest feature set and is typically the API where new capabilities will become available first.
 
-- Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/sql-sdk-connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
+- Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/dedicated-gateway#connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
   - Direct mode is only available when using the Azure Cosmos DB for NoSQL and is currently only supported on .NET and Java SDK platforms.
 
 - Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zonal failures within a region.
@@ -370,7 +367,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - If delete operations routinely affect the data within the source Container, then the store fed by the change feed will be inaccurate and unreflective of deleted data.
   - A [Soft Delete](/azure/cosmos-db/sql/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
-    - Instead of explicitly deleting data records, data records are _updated_ by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
+    - Instead of explicitly deleting data records, data records are *updated* by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
     - Any target data store fed by the change feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the *existing* version of the data record in the target store will need to be deleted.
   - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Azure Cosmos DB automatically deletes expired data, but only after it's reflected within the change feed with the deleted flag set to True.
     - Accomplishes the original delete intent whilst also propagating the delete through the change feed.
@@ -381,7 +378,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - Azure Cosmos DB can be configured according to two distinct backup modes.
   - [Periodic](/azure/cosmos-db/configure-periodic-backup-restore) is the default backup mode for all accounts, where backups are taken at a periodic interval and the data is restored by creating a request with the support team.
-    - The default periodic backup retention period is 8 hours and the default backup interval is fourhours, which means only the latest two backups are stored by default.
+    - The default periodic backup retention period is eight hours and the default backup interval is four hours, which means only the latest two backups are stored by default.
     - The backup interval and retention period are configurable within the account.
       - The maximum retention period extends to a month with a minimum backup interval of one hour.
       - A role assignment to the Azure "Cosmos DB Account Reader Role" is required to configure backup storage redundancy.
@@ -495,7 +492,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Evaluate application traffic patterns to select an optimal option for [provisioned throughput types](/azure/cosmos-db/how-to-choose-offer).
   - Consider auto-scale provisioned throughput to automatically level-out workload demand.
 
-- Evaluate Microsoft [performance tips for Azure Cosmos DB](/azure/cosmos-db/performance-tips) to optimize client-side and server-side configuration for improved latency and throughput.
+- Evaluate Microsoft [performance tips for Azure Cosmos DB](/azure/cosmos-db/nosql/performance-tips) to optimize client-side and server-side configuration for improved latency and throughput.
 
 - When using AKS as the compute platform: For query-intensive workloads, select an AKS node SKU that has accelerated networking enabled to reduce latency and CPU jitters.
 
@@ -587,7 +584,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 - There's no additional charge for backup storage for up to 100% of total provisioned server storage.
   - Additional consumption of backup storage is charged according to consumed GB/month.
 
-- Compute costs associated with Azure Database for PostgreSQL can be reduced using either a [Single Server Reservation Discount](/azure/postgresql/concept-reserved-pricing) or [Hyperscale (Citus) Reservation Discount](/azure/postgresql/concepts-hyperscale-reserved-pricing).
+- Compute costs associated with Azure Database for PostgreSQL can be reduced using either a [Single Server Reservation Discount](/azure/postgresql/flexible-server/concept-reserved-pricing) or [Hyperscale (Citus) Reservation Discount](/azure/postgresql/concepts-hyperscale-reserved-pricing).
 
 ### Design Recommendations
 
@@ -757,7 +754,7 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 **Azure Synapse**
 
 - [Azure Synapse](/azure/synapse-analytics/overview-what-is) brings together analytics capabilities including SQL data warehousing, Spark big data, and Data Explorer for log and time series analytics.
-  - Azure Synapse uses _linked services_ to define connections to other services, such as Azure Storage.
+  - Azure Synapse uses *linked services* to define connections to other services, such as Azure Storage.
   - Data can be ingested into Synapse Analytics via Copy activity from [supported sources](/azure/data-factory/copy-activity-overview?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics#supported-data-stores-and-formats). This permits data analytics in Synapse without impacting the source data store, but adds time, cost and latency overhead due to data transfer.
   - Data can also be queried in-place in supported external stores, avoiding the overhead of data ingestion and movement. Azure Storage with Data Lake Gen2 is a supported store for Synapse and [Log Analytics exported data can be queried via Synapse Spark](https://techcommunity.microsoft.com/t5/azure-monitor/how-to-analyze-data-exported-from-log-analytics-data-using/ba-p/2547888).
 

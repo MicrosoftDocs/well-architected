@@ -5,8 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
+
 ---
 
 # Recommendations for using continuous integration
@@ -41,7 +40,7 @@ Continuous integration can help you deliver high-quality software more quickly b
 - Provide quick feedback on detected problems.
 - Where applicable, produce deployable assets or packages that include the updated code.
 
-### Continuous integration pipelines
+### Automate continuous integration with pipelines
 
 To achieve continuous integration, use software solutions to manage, integrate, and automate the process. A common practice is to use a continuous integration pipeline.
 
@@ -56,7 +55,7 @@ In most cases, the pipeline software is attached to source control such that whe
 
 Many solutions, like Azure Pipelines or GitHub Actions, provide the capabilities of continuous integration pipelines.
 
-### Source control integration
+### Integrate pipelines with source control
 
 The integration of your continuous integration pipeline with your source control system is key to enabling fast, self-service code contributions.
 
@@ -68,13 +67,13 @@ The following image shows the integration between GitHub and an Azure DevOps pip
 
 ![Screenshot of an Azure DevOps status badge in a GitHub repository.](media/release-engineering-continuous-integration/azure-devops-github-status.png)
 
-#### Test integration
+### Incorporate automated tests
 
 A key element of continuous integration is the continual building and testing of code as developers make code contributions. Testing pull requests as they're created gives quick feedback that the commit hasn't introduced breaking changes. The advantage is that the tests in the continuous integration pipeline can be the same tests that run during test-driven development.
 
 The following code snippet shows a test step from an Azure DevOps pipeline. The step has two tasks:
 
-- The first task uses a popular Python testing framework to run CI tests. These tests reside in source control alongside the Python code. The test results go to a file named _test-results.xml_.
+- The first task uses a popular Python testing framework to run CI tests. These tests reside in source control alongside the Python code. The test results go to a file named *test-results.xml*.
 - The second task consumes the test results and publishes them to the Azure DevOps pipeline as an integrated report.
 
 ```yaml
@@ -100,7 +99,7 @@ The following image shows test results that appear in the Azure DevOps portal.
 
 Failed tests should temporarily block a deployment and lead to a deeper analysis of what happened. Failed tests should also lead to either a refinement of the tests or an improvement in the change that caused the tests to fail.
 
-#### CI result badges
+### Publish build status
 
 Many developers show that their code quality is high by displaying a status badge in their repository. The following image shows an Azure Pipelines badge displayed on the readme file for an open-source project in GitHub.
 

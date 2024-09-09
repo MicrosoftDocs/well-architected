@@ -7,9 +7,8 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 products:
   - azure-batch
-categories:
+azure.category:
   - compute
-  - management-and-governance
 ---
 
 # Azure Batch and reliability
@@ -48,6 +47,9 @@ Explore the following table of recommendations to optimize your workload design 
 |Use multiple Batch accounts in various regions to allow your application to continue running, if an Azure Batch account in one region becomes unavailable.|It's crucial to have multiple accounts for a highly available application.|
 |Build durable tasks.|Tasks should be designed to withstand failure and accommodate retry, especially for long running tasks. Ensure tasks generate the same, single result even if they're run more than once. One way to achieve the same result is to make your tasks *goal seeking*. Another way is to make sure your tasks are *idempotent* (tasks will have the same outcome no matter how many times they're run).|
 |Pre-create all required services in each region, such as the Batch account and storage account.|There's often no charge for creating accounts and charges accrue only when you use the account, or when you store data.|
+
+> [!TIP]
+> For more details on Reliability guidance for Load Balancer, see [Reliability in Azure Batch](/azure/reliability/reliability-batch).
 
 ## Next step
 

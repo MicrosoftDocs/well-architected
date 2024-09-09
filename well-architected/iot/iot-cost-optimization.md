@@ -5,10 +5,6 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: conceptual
-ms.custom:
-  - engagement-fy23
-categories:
-  - iot
 ---
 
 # Cost optimization in your IoT workload
@@ -82,7 +78,7 @@ For devices connected to the cloud, optimize data transmissions to maintain cost
 
 To learn more about Azure IoT devices, see:
  
-- [Overview of Azure IoT device types](/azure/iot-develop/concepts-iot-device-types)
+- [Overview of Azure IoT device types](/azure/iot/concepts-iot-device-types)
 - [Best practices for device configuration within an IoT solution](/azure/iot-hub/iot-hub-configuration-best-practices)
 
 ### Hardware selection
@@ -127,7 +123,7 @@ For more information, see [Security practices for Azure IoT device manufacturers
 
 [Azure RTOS](/azure/rtos) is an embedded development suite for devices. Azure RTOS includes a small but powerful operating system that provides reliable, ultra-fast performance for resource-constrained devices. Azure RTOS is easy to use and has been deployed on more than 10 billion devices. Azure RTOS supports the most popular 32-bit microcontrollers and embedded development tools, so you can make the most of existing device builder skills.
 
-Azure RTOS is free for commercial deployment using [pre-licensed hardware](https://github.com/azure-rtos/threadx/blob/master/LICENSED-HARDWARE.txt). Azure RTOS comes with Azure IoT cloud capabilities and features such as device update and security. These features help reduce both device and cloud development costs.
+Azure RTOS is free for commercial deployment using [pre-licensed hardware](https://github.com/eclipse-threadx/threadx/blob/master/LICENSE.txt). Azure RTOS comes with Azure IoT cloud capabilities and features such as device update and security. These features help reduce both device and cloud development costs.
 
 Azure RTOS is certified for safety and security, helping to reduce the time and cost of building compliant devices for specific verticals such as medical, automotive, and manufacturing.
 
@@ -350,7 +346,7 @@ Integration with other systems and services can be complex. Many services can he
 
 Azure Digital Twins can integrate various systems and services with IoT data. Azure Digital Twins transforms all data into its own digital entity, so it's important to understand its service limits and tuning points for cost reductions. Review [Azure Digital Twins service limits](/azure/digital-twins/reference-service-limits) when designing your architecture. Understand functional limitations to help integrate effectively with business systems.
 
-When you use the query API, Azure Digital Twins charges per [Query Unit (QU)](/azure/digital-twins/concepts-query-units). You can trace the number of QUs the query consumed in [the response header](/rest/api/digital-twins/dataplane/query/querytwins#response). Reduce query complexity and the number of results to optimize costs. For more information, see [Find the QU consumption in Azure Digital Twins](/azure/digital-twins/concepts-query-units#find-the-query-unit-consumption-in-azure-digital-twins).
+When you use the query API, Azure Digital Twins charges per [Query Unit (QU)](/azure/digital-twins/concepts-query-units). You can trace the number of QUs the query consumed in [the response header](/rest/api/digital-twins/dataplane/query/query-twins#response). Reduce query complexity and the number of results to optimize costs. For more information, see [Find the QU consumption in Azure Digital Twins](/azure/digital-twins/concepts-query-units#find-the-query-unit-consumption-in-azure-digital-twins).
 
 ## DevOps layer
 

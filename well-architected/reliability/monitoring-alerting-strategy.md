@@ -3,7 +3,7 @@ title: Recommendations for designing a reliable monitoring and alerting strategy
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
@@ -38,17 +38,21 @@ Before you create a monitoring and alerting strategy, perform the following task
 
 - Design a robust [testing strategy](testing-strategy.md).
 
-Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy on the [health models](metrics.md) that you develop for your critical flows and the workloads that the critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your monitoring posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and the alerts to the appropriate teams.
+- [Model the health](../cross-cutting-guides/health-modeling.md) of your workload and its components.
+
+Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy by creating a [health model](../cross-cutting-guides/health-modeling.md) for your critical flows and the components that these critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your operational posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and notifies appropriate teams.
 
 Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
 
-### General guidance
+### Implement an overall monitoring strategy
 
 - Understand the difference between [metrics](/azure/azure-monitor/essentials/data-platform-metrics), [logs](/azure/azure-monitor/logs/data-platform-logs), and [traces](/azure/azure-monitor/app/asp-net-trace-logs).
 
 - Enable [logging](/azure/azure-monitor/essentials/resource-logs) for all cloud resources. Use automation and governance in your deployments to enable diagnostic logging throughout your environment.
 
 - Forward all diagnostic logs to a centralized data sink and analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are cost implications for storing and querying logs. Notice how your log analysis and retention affects your budget, and determine the best balance of utilization to meet your requirements. For more information, see [Best practices for cost optimization](/azure/azure-monitor/best-practices-logs#cost-optimization).
 
 - If your workloads are subject to one or more compliance frameworks, some of the component logs that handle sensitive information are also subject to those frameworks. Send the relevant component logs to a security information and event management (SIEM) system, like [Microsoft Sentinel](/azure/sentinel/overview).
 
@@ -62,9 +66,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
 
-- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
+- Visualize the real-time health of your environment.
 
-- Use data that's gathered during incidents to continuously improve your [health models](metrics.md) and your monitoring and alerting strategy.
+- Use data that's gathered during incidents to continuously improve your health models and your monitoring and alerting strategy.
 
 - Incorporate cloud platform monitoring and alerting services, including:
 
@@ -100,6 +104,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Use black box monitoring to measure platform services and the resulting customer experience. Black box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
 
+> [!NOTE]
+> For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
+
 ### Monitor data and storage
 
 - Monitor the availability metrics of your storage containers. When this metric drops below 100 percent, it indicates failing writes. Transient drops in availability might happen when your cloud provider manages the load. Track the availability trends to determine if there's an issue with your workload.
@@ -132,13 +139,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at scale.
 
+- [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center to centralize management of business continuity protection across Azure and hybrid workloads. Azure Business Continuity Center pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policy, all conveniently accessible in one location.
+
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
-
-## Tradeoffs
-
-There are cost implications for storing and querying logs. Notice how your log analysis and retention affects your budget, and determine the best balance of utilization to meet your requirements. For more information, see [Best practices for cost optimization](/azure/azure-monitor/best-practices-logs#cost-optimization).
-
-For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
 
 ## Example
 
@@ -150,6 +153,10 @@ For examples of real-world monitoring solutions, see [Web application monitoring
 - [Alerting for operations](../devops/monitor-alerts.md)
 - [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
 - [Web application monitoring on Azure](/azure/architecture/web-apps/guides/monitoring/app-monitoring)
+
+## Community links
+
+- [Azure Monitor Baseline Alerts (AMBA)](/azure/azure-monitor/alerts/alert-options#azure-monitor-baseline-alerts-amba) is a central repository of alert definitions that customers and partners can use to improve their observability experience through the adoption of Azure Monitor.
 
 ## Reliability checklist  
 
