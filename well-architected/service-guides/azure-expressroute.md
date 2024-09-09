@@ -7,7 +7,6 @@ ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide 
 ms.date: 09/09/2024
-ms.date: 09/05/2022
 products: 
   - azure-expressroute
 azure.category:
