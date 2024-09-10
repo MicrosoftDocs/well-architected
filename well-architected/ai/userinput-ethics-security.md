@@ -95,3 +95,12 @@ TODO
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
 TODO
+
+
+Leftovers:
+
+Data Governance
+Data lienage
+
+Joakims comment on tools: 
+https://github.com/MicrosoftDocs/well-architected-pr/pull/1762/files#r1700633153

@@ -74,3 +74,33 @@ Topics:
   - Semantic Kernel & Langchain
 
 ## Monitoring
+
+
+## Leftover
+
+ Data / LLM Education
+	
+Do user get an introduction on the the expected quality of the chat system, the likelyhood that AI creates wrong content, and limitation of what kind of questions can be answered?
+	
+Standart RAG architecture cannot answer questions like "how many documents have this feature?" Consider a GraphRAG architecture instead
+	
+
+## Measurement
+
+Groundedness: Refers to how well a generative model’s answers align with the source data. It measures whether the model generates content that is consistent with reality.
+Relevancy: Indicates how pertinent the response is to the given question. A highly grounded answer may still lack relevancy if it doesn’t address the question directly.
+Coherence: Evaluates whether the model’s speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
+Fluency: Relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
+Retrieval Score: Measures the effectiveness of the orchestrator’s retrieval process. It considers whether the query to the index retrieved the most relevant data.
+
+
+
+Data design and application design cannot be decoupled. Application design involves understanding use cases, query patterns, and freshness requirements. From a data design perspective, consider whether data needs constant refreshing or occasional updates. This choice impacts the ability to do online or offline inferencing.
+
+In offline inferencing, predictions are based on precomputed data that's stored in look-up tables. Because results are determined ahead of time, look up has minimal latency. Another advantage is that you can validate (or even tweak) predictions before  production.
+
+For example, consider a computer vision model trained to identify cats in pictures. These models remain effective as long as the underlying data is relatively static and doesn't require doesn't require frequent updates or real-time adjustments. Offline inferencing often relies on static training.
+
+In contrast, for online inferencing, there aren't any precomputed predictions. Predictions are made in real time by invoking models on-demand, responding to specific queries or events. Data freshness becomes critical in this case because models need to adapt quickly to changing patterns. Keeping such models up-to-date is required to maintain accuracy. TODO: Add something around low latency requirements. 
+
+For example, models trained on user behavior, such as website interactions, need dynamic data. The model should be able to adapt the website behavior based on recent user actions.  

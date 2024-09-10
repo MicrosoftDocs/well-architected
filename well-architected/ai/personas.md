@@ -38,3 +38,16 @@ TODO
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
 TODO
+
+
+Lefovers:
+
+ 2. Data Roles and Responsibilities
+   
+	Who inside the company is responsible and SME for this data? 
+	
+	Does the data set contain confidential data? Are some data sets restricted to certrain people within the company? Is the information about the role based access available in source system (like Sharepoint)? Is this information stored in extra index field to allow AAD driven filtering of content?
+	
+
+	
+grounding data preprocessing is a data scientest / data engineer role, because it's coupled with embedding selection and model tuning. It's still primarily in the data scientest space.  Since foundation models are appealing to app dev teams, it's common for that "role" to be played by a non-speciailzed individual that just happens to be able to manage data (such as an app engineer). But as far as I'm concerned, to do it right, you're donning the data scientest hat for that process.

@@ -27,8 +27,11 @@ TODO
 
 ## Jose's (Azure Patterns & Practices engineering) seed material
 
-TODO
+  - Data store options and how it drives design. How to decide which data store to use
+    - how does it contrain design. not drive - Chad.
 
 ## Chad's (Azure Patterns & Practices engineering) seed material
 
 TODO
+
+

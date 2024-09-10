@@ -13,6 +13,10 @@
         href: appliation-platform.md
       - name: Data design
         href: data-design.md
+      - name: Training data design
+        href: training-data-design.md
+      - name: Grounding data design
+        href: grounding-data-design.md
       - name: Data platform
         href: data-platform.md
       - name: Operations

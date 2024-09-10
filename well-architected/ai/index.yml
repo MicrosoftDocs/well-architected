@@ -38,8 +38,10 @@ landingContent:
             url: application-design.md
           - text: Application platform
             url: application-platform.md
-          - text: Data design
-            url: data-design.md
+          - text: Training data design
+            url: training-data-design.md
+          - text: Grounding data design
+            url: grounding-data-design.md            
           - text: Data platform
             url: data-platform.md
           - text: Workload operations
