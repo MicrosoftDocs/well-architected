@@ -1482,7 +1482,7 @@
 		},
 		{
 			"source_path": "well-architected/cost-optimization/get-best-rates.md#create-an-ordered-list-of-expenses",
-			"redirect_url": "/azure/well-architected/cost-optimization/get-best-rates#uncover-your-workload-spending-patterns",
+			"redirect_url": "/azure/well-architected/cost-optimization/get-best-rates#uncover-workload-spending-patterns",
 			"redirect_document_id": false
 		},
 		{
@@ -1497,12 +1497,12 @@
 		},
 		{
 			"source_path": "well-architected/cost-optimization/optimize-code-costs.md#optimize-architecture",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-code-costs#optimize-your-solution-design",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-code-costs#optimize-solution-design",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost-optimization/optimize-component-costs.md#prevent-unoptimized-components",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-component-costs#be-methodical-in-your-optimization-efforts",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-component-costs#be-methodical-in-optimization-efforts",
 			"redirect_document_id": false
 		},
 		{
@@ -1547,12 +1547,12 @@
 		},
 		{
 			"source_path": "well-architected/reliability/background-jobs.md#resiliency-considerations",
-			"redirect_url": "/azure/well-architected/reliability/background-jobs#make-your-jobs-resilient",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs#make-jobs-resilient",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/reliability/background-jobs.md#scaling-and-performance-considerations",
-			"redirect_url": "/azure/well-architected/reliability/background-jobs#make-your-jobs-scalable",
+			"redirect_url": "/azure/well-architected/reliability/background-jobs#make-jobs-scalable",
 			"redirect_document_id": false
 		},
 		{
@@ -1562,7 +1562,7 @@
 		},
 		{
 			"source_path": "well-architected/reliability/handle-transient-faults.md#other-considerations",
-			"redirect_url": "/azure/well-architected/reliability/handle-transient-faults#optimize-your-retry-implementation",
+			"redirect_url": "/azure/well-architected/reliability/handle-transient-faults#optimize-retry-implementation",
 			"redirect_document_id": false
 		},
 		{
@@ -1577,7 +1577,7 @@
 		},
 		{
 			"source_path": "well-architected/reliability/monitoring-alerting-strategy.md#general-guidance",
-			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy#implement-your-overall-monitoring-strategy",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy#implement-an-overall-monitoring-strategy",
 			"redirect_document_id": false
 		},
 		{
@@ -1642,7 +1642,7 @@
 		},
 		{
 			"source_path": "well-architected/reliability/testing-strategy.md#general-testing-guidance",
-			"redirect_url": "/azure/well-architected/reliability/testing-strategy#test-your-reliability-preparedness",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy#test-reliability-preparedness",
 			"redirect_document_id": false
 		},
 		{
@@ -1667,7 +1667,7 @@
 		},
 		{
 			"source_path": "well-architected/security/encryption.md#scope-of-encryption",
-			"redirect_url": "/azure/well-architected/security/encryption#determine-your-encryption-requirments",
+			"redirect_url": "/azure/well-architected/security/encryption#determine-encryption-requirments",
 			"redirect_document_id": false
 		},
 		{
@@ -1677,7 +1677,7 @@
 		},
 		{
 			"source_path": "well-architected/security/encryption.md#encryption-keys",
-			"redirect_url": "/azure/well-architected/security/encryption#choose-your-encryption-keys-approach",
+			"redirect_url": "/azure/well-architected/security/encryption#choose-an-encryption-keys-approach",
 			"redirect_document_id": false
 		},
 		{
@@ -1722,7 +1722,7 @@
 		},
 		{
 			"source_path": "well-architected/security/harden-resources.md#identity",
-			"redirect_url": "/azure/well-architected/security/harden-resources#harden-your-identity-access-controls",
+			"redirect_url": "/azure/well-architected/security/harden-resources#harden-identity-access-controls",
 			"redirect_document_id": false
 		},
 		{
@@ -1732,7 +1732,7 @@
 		},
 		{
 			"source_path": "well-architected/security/harden-resources.md#applications",
-			"redirect_url": "/azure/well-architected/security/harden-resources#harden-your-code-assets",
+			"redirect_url": "/azure/well-architected/security/harden-resources#harden-code-assets",
 			"redirect_document_id": false
 		},
 		{
@@ -1767,22 +1767,22 @@
 		},
 		{
 			"source_path": "well-architected/security/secure-development-lifecycle.md#development-and-testing-phase",
-			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#secure-your-development-and-testing-practices",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#secure-development-and-testing-practices",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/secure-development-lifecycle.md#secure-code-deployments",
-			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#protect-your-code-in-deployment-pipelines",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#protect-code-in-deployment-pipelines",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/secure-development-lifecycle.md#production-phase",
-			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#protect-your-code-in-production",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#protect-code-in-production",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/secure-development-lifecycle.md#maintenance-phase",
-			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#maintain-your-code-security-throughout-its-lifecycle",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle#maintain-code-security-throughout-its-lifecycle",
 			"redirect_document_id": false
 		},
 		{
@@ -1839,6 +1839,256 @@
 			"source_path": "well-architected/reliability/metrics.md#visualization",
 			"redirect_url": "/azure/well-architected/reliability/metrics#monitor-and-visualize-the-targets",
 			"redirect_document_id": false
-		}													
+		},
+		{
+			"source_path": "well-architected/operational-excellence/devops-culture#team-roles-and-responsibilities",
+			"redirect_url": "/azure/well-architected/operational-excellence/devops-culture#establish-clear-roles-and-responsibilities",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/devops-culture#continuous-learning-and-improvement",
+			"redirect_url": "/azure/well-architected/operational-excellence/devops-culture#commit-to-continuous-learning",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/devops-culture#commitment-to-optimization",
+			"redirect_url": "/azure/well-architected/operational-excellence/devops-culture#dedicate-efforts-towards-continuous-optimization",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-continuous-integration#continuous-integration-pipelines",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-continuous-integration#automate-continuous-integration-with-pipelines",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-continuous-integration#source-control-integration",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-continuous-integration#integrate-pipelines-with-source-control",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-continuous-integration#test-integration",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-continuous-integration#incorporate-automated-tests",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-performance#build-times",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-performance#optimize-build-times",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-performance#human-intervention",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-performance#minimize-human-intervention",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/infrastructure-as-code-design#other-iac-strategies",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-performance#minimize-human-intervention#use-a-layered-approach-for-iac-pipelines",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/infrastructure-as-code-design#mutable-vs-immutable-infrastructure",
+			"redirect_url": "/azure/well-architected/operational-excellence/infrastructure-as-code-design#adopt-an-immutable-deployment-model",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/workload-supply-chain#core-tenets",
+			"redirect_url": "/azure/well-architected/operational-excellence/workload-supply-chain#key-design-strategies",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/instrument-application#logs-and-distributed-tracing-logs",
+			"redirect_url": "/azure/well-architected/operational-excellence/instrument-application#use-structured-logs-and-tracing",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/instrument-application#metrics",
+			"redirect_url": "/azure/well-architected/operational-excellence/instrument-application#capture-application-metrics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/instrument-application#information-for-correlating-data",
+			"redirect_url": "/azure/well-architected/operational-excellence/instrument-application#facilitate-correlation-across-components",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/instrument-application#information-to-include-in-the-instrumentation",
+			"redirect_url": "/azure/well-architected/operational-excellence/instrument-application#capture-relevant-data",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/instrument-application#best-practices-for-instrumenting-applications",
+			"redirect_url": "/azure/well-architected/operational-excellence/instrument-application#optimize-instrumentation-code",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/observability#collection",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability#collect-instrumentation-data",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/observability#storage",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability#store-data-for-query-and-analysis",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/observability#analysis",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability#analyze-data-to-understand-the-health-of-the-workload",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/observability#visualization",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability#visualize-workload-health-reports",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/observability#alerts",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability#define-alerts-for-key-events",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#observability",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#key-design-strategies",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#incident-response-plan",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#create-an-incident-response-plan",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#incident-detection",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#act-on-observability-triggers",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#containment",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#define-containment-procedures",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#triage",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#define-triage-procedures",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#rca-reporting",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#generate-rca-incident-reports",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response#incident-postmortems",
+			"redirect_url": "/azure/well-architected/operational-excellence/emergency-response#hold-incident-postmortems",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/automate-tasks#target-tasks-to-automate",
+			"redirect_url": "/azure/well-architected/operational-excellence/automate-tasks#evaluate-tasks-to-automate",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#workload-design",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#design-workload-components-to-support-automation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#continuous-workload-improvements",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#revisit-automation-design-during-the-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#bootstrapping",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#automate-bootstrapping",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#authentication-and-authorization",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#incorporate-automation-into-access-management",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#monitor-and-log",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#adopt-a-data-driven-approach-to-develop-automation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#user-lifecycle",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#automate-user-lifecycle-events",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/enable-automation#orchestration-and-policy-use",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#automate-desired-state-configuration",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/safe-deployments#safety-and-consistency",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments#ensure-safety-and-consistency-of-deployments",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/safe-deployments#progressive-exposure-deployment",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments#adopt-a-progressive-exposure-model",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/safe-deployments#health-models",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments#develop-robust-workload-health-models",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/safe-deployments#issue-detection",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments#implement-failure-detection-mechanisms",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/safe-deployments#general-sdp-recommendations",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments#implement-safe-deployment-practices",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/safe-deployments#emergency-sdp-protocols",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments#establish-protocols-for-emergency-deployments",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy#detection",
+			"redirect_url": "/azure/well-architected/operational-excellence/mitigation-strategy#design-failure-detection-mechanisms",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy#decision",
+			"redirect_url": "/azure/well-architected/operational-excellence/mitigation-strategy#decide-on-the-mitigation-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy#mitigation",
+			"redirect_url": "/azure/well-architected/operational-excellence/mitigation-strategy#implement-the-mitigation-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy#communication",
+			"redirect_url": "/azure/well-architected/operational-excellence/mitigation-strategy#standardize-status-updates-during-an-incident",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy#postmortem",
+			"redirect_url": "/azure/well-architected/operational-excellence/mitigation-strategy#conduct-incident-postmortems",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy#considerations-and-general-recommendations",
+			"redirect_url": "/azure/well-architected/operational-excellence/mitigation-strategy#operationalize-mitigation-processes",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/performance-efficiency/collect-performance-data#centralize-performance-data",
+			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data#centralize-the-collection-of-performance-data",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/performance-efficiency/collect-performance-data#collect-operating-system-data-if-applicable",
+			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data#collect-operating-system-data",
+			"redirect_document_id": false
+		}															
 	]
 }

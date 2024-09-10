@@ -3,13 +3,28 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 08/05/2024
+ms.date: 09/05/2024
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## August 2024
+
+### Updated articles
+
+- [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates, including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states.
+
+We added guidance about ensuring that the VMs in your backup environment run on [OSs that have supportability](/azure/virtual-machines/enable-nvme-interface):
+
+- [Operations considerations for Azure VMware Solution workloads](azure-vmware/operations.md)
+- [Optimize business continuity and disaster recovery](oracle-iaas/optimize-business-continuity-disaster-recovery.md)
+
+### Hybrid retirement
+
+- This month we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
 
 ## July 2024
 
@@ -75,7 +90,6 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
 
 - [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
 
-
 ## February 2024
 
 ### New articles
@@ -93,7 +107,7 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
   
 ## January 2024
 
-In January we added two new articles, and we updated two articles.
+In January, we added two new articles, and we updated two articles.
 
 ### New articles
 
@@ -216,13 +230,3 @@ In addition to the changes in structure and consistency, you should note some th
 
 - New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
 - Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](service-guides/postgresql.md)
-
-## August 2023
-
-- New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
-- Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
-
-## Related links
-
-- [What's new in Azure Architecture Center](/azure/architecture/changelog)
-- [What's new in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/get-started/whats-new)
