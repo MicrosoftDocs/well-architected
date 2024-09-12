@@ -144,6 +144,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >   Even within a VNet, evaluate the number of subnets and their associated network security groups (NSGs). The more NSGs you have, the higher the operational costs for managing the rulesets. Where possible, use application security groups (ASGs) to streamline management and reduce costs.
 >  
 > - **Optimize code costs**. When developing your application, choose more efficient protocols and apply data compression to optimize performance. For example, in a web app, configuring components to compress data can enhance efficiency. These optimizations also have an impact on performance.
+>
+> - **Take advantage of resources in the centralized VNet**. Using centralized resources reduced duplication and overhead. Additionally, offloading responsibilities to existing teams can further help in cost optimization and allow for delegation of expertise for specific functions.
 
 
 ##### Recommendations
