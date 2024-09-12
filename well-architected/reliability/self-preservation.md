@@ -31,7 +31,7 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 ## Key design strategies
 
-### Self-preservation guidance
+### Design for self-preservation
 
 To design your workload for self-preservation, follow infrastructure and application architecture design patterns to optimize your workload's resiliency. To minimize the chance of experiencing a full application outage, increase the resiliency of your solution by eliminating single points of failure and minimizing the blast radius of failures. The design approaches in this article provide several options to strengthen the resilience of your workload and meet your workload's defined [reliability targets](metrics.md).
 
@@ -84,7 +84,7 @@ Common examples of background jobs are:
 
 For more information, see [Recommendations for background jobs](background-jobs.md).
 
-### Self-healing guidance
+### Design for self-healing
 
 To design your workload for self-healing, implement failure detection so automatic responses are triggered and critical flows gracefully recover. Enable logging to provide operational insights about the nature of the failure and the success of the recovery. The approaches that you take to achieve self-healing for a critical flow depend on the [reliability targets](metrics.md) that are defined for that flow and the flow's components and dependencies.
 

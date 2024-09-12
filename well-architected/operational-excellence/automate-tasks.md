@@ -20,7 +20,7 @@ This guide describes the recommendations for adopting automation in your workloa
 
 As you develop your workload, look for opportunities to take advantage of automation in order to reduce management burden and minimize human error. Evaluate these opportunities, and consider the value that they bring to your organization. To maximize the value of your investment in automation, prioritize tasks that are straightforward, procedural, and have a long shelf life. Applying automation isn't an all-or-nothing tactic. There are workstreams that might have operations that require human intervention, like decision-making points. These workstreams can still benefit from automation to perform other tasks.
 
-### Target tasks to automate
+### Evaluate tasks to automate
 
 Consider the following recommendations to ensure that you prioritize tasks that benefit the most from automation:
 
@@ -32,7 +32,7 @@ Consider the following recommendations to ensure that you prioritize tasks that 
 
 - **Focus on your return on investment.** High-value automation requires minimal management overhead and adds a demonstrable degree of efficiency. If you can save your operations team an hour each day by automating database entries, for example, you give them time to find other areas for improvement.
 
-### Areas to implement automation
+#### Areas to implement automation
 
 Adopt automation throughout your entire workload lifecycle, from development to day-to-day management. Use the following list of examples to help you consider the broad areas of your workload lifecycle that can benefit from automation. You can automate:
 

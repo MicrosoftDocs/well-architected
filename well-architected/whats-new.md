@@ -3,13 +3,48 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 07/03/2024
+ms.date: 09/05/2024
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## August 2024
+
+### Updated articles
+
+- [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates, including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states.
+
+We added guidance about ensuring that the VMs in your backup environment run on [OSs that have supportability](/azure/virtual-machines/enable-nvme-interface):
+
+- [Operations considerations for Azure VMware Solution workloads](azure-vmware/operations.md)
+- [Optimize business continuity and disaster recovery](oracle-iaas/optimize-business-continuity-disaster-recovery.md)
+
+### Hybrid retirement
+
+- This month we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
+
+## July 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure Stack HCI](./service-guides/azure-stack-hci.md): Explore design considerations and configuration recommendations for Azure Stack HCI. Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+
+### Updated articles
+
+- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
+
+Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
+
+- [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
+- [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
+
+### Carrier Grade retirement
+
+- This month we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.
 
 ## June 2024
 
@@ -55,7 +90,6 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
 
 - [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
 
-
 ## February 2024
 
 ### New articles
@@ -73,7 +107,7 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
   
 ## January 2024
 
-In January we added two new articles, and we updated two articles.
+In January, we added two new articles, and we updated two articles.
 
 ### New articles
 
@@ -196,13 +230,3 @@ In addition to the changes in structure and consistency, you should note some th
 
 - New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
 - Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](service-guides/postgresql.md)
-
-## August 2023
-
-- New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
-- Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
-
-## Related links
-
-- [What's new in Azure Architecture Center](/azure/architecture/changelog)
-- [What's new in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/get-started/whats-new)
