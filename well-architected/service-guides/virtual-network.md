@@ -89,9 +89,10 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
-> - **Establish a security baseline**. Review the [security baseline for Virtual Network](/security/benchmark/azure/baselines/virtual-network-security-baseline) and incorporate applicable measures in your baseline.
+> - **Establish a security baseline**. Review the [security baseline for Virtual Network](/security/benchmark/azure/baselines/virtual-network-security-baseline) and incorporate applicable measures in your baseline. 
 >
 > - **Keep your network perimeter up to date**. Security settings, such as Network Security Groups (NSGs), Application Security Groups (ASGs), and even IP ranges must be updated regularly. Outdated rules may not align with current network architecture or traffic patterns. This security gap can leaving your network exposed to potential attacks by lowering restrictions on ingress and egress traffic. 
+>
 > - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all traffic through an network virtual appliance, such as a firewall, by using UDRs for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
 >
 >    Secure PaaS service connectivity with Private Endpoints while blocking outbound connections.   
@@ -122,13 +123,37 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
+> - **Optimize the "fat flows"**. These flows refer to large data transfers between  endpoints. VNet peering is recommended for efficient connections. Even though peering has inbound and outbound costs, this approach can be cost-effective because it reduces bandwidth consumption and network performance issues. Avoid routing through a hub to minimize inefficiencies and costs.
+>
+>   To optimize data transfer between regions, it's important to consider both the frequency and the method of transfer. For instance, when dealing with backups, the location where you save your backups can significantly impact costs. Storing backup data in a different region incurs bandwidth. To mitigate these costs, ensure that data is compressed before transferring it across regions. Additionally, adjusting the frequency of data transfers can further optimize costs and efficiency. 
+>
+> - **Include networking components in your cost model**. Account for the hidden costs when creating or adjusting your budget. For example, in multi-region architectures, there's additional cost of data transfer between regions. 
+>
+>   Azure cost reports may not include the expenses associated with third-party network virtual appliances (NVAs), which have separate licensing costs. They may also have different billing models for fixed price and consumption-based options. Make sure you include these aspects in your budget considerations.  
+>
+>   Certain networking resources are expensive, such as Azure Firewall, ExpressRoute. Organizations usually provision these resources in centralized hub and teams are cross-charged. Don't forget to account for that charge in your cost model.
+>
+> - **Don't pay for unused capabilities**. Regularly review component costs and remove legacy features or default configurations. Limit the number of public IPs to save costs. This also enhances security by reducing the attack surface, creating a win-win situation.
+> 
+> - **Optimize private endpoints** (@jose recommendations?). Analyze if you can reuse Private Link to a resource for other resources in other VNets. You can do VNet peering and resources are shared across network without additional costs. You only pay for the Private Link access itself, not for the individual VNets accessing it. 
+>
+> - **Align the network traffic inspection with the priority of the flow**. If there's large bandwidth requirements, consider routing traffic to lower-cost paths. While ExpressRoute is suitable for large traffic, it can be expensive. Consider alternatives like public endpoints for cost savings, however, be aware of the tradeoff with security. Use network peering for VNet-to-VNet traffic to avoid unnecessary inspection.
+>
+>   Intentionally allow only necessary traffic between components and block unexpected traffic. If traffic is expected and the flow is aligned with your security requirements, those checkpoints could be omitted. For example, evaluate if you need  firewall if the remote resource is within the trust boundary.
+>
+>   Even within a VNet, evaluate the number of subnets and their associated network security groups (NSGs). The more NSGs you have, the higher the operational costs for managing the rulesets. Where possible, use application security groups (ASGs) to streamline management and reduce costs.
+>  
+> - **Optimize code costs**. When developing your application, choose more efficient protocols and apply data compression to optimize performance. For example, in a web app, configuring components to compress data can enhance efficiency. These optimizations also have an impact on performance.
+
 
 ##### Recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload after all.|
+|Do peering but avoid excessive peering.|When peering VNets, resources are shared without additional costs. For example, you can save on Private Link costs by sharing resources across networks. Exposing a private endpoint to multiple VNets incurs no extra costs for each VNet. <br<br>Even thought it might seem like you're incurring peering cost, it's not practical to put all resources in a single VNet just to save costs. It can hinder growth. The VNet can eventually reach a point where new resources don't fit anymore.|
 
+
+Peering
 
 ## Operational Excellence
 
@@ -142,8 +167,11 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> **Strive for simplicity**. Simplified networks are easier to monitor, troubleshoot, and maintain, reducing the workload for IT teams. For example, if your topology is hub-spoke, then stick to the typical layout. Don't complicate the architecture by mixing approaches.
-
+> - **Strive for simple operations**. Simplified networks are easier to monitor, troubleshoot, and maintain, reducing the workload for IT teams. For example, if your topology is hub-spoke, then stick to the typical layout. Don't complicate the architecture by mixing approaches.
+>
+> - **Right-size your subnets** (@jose recommendation?). When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth. However, avoid making them excessively large. You might need to carve out more subnets for new components in your workload. 
+> 
+> - For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
 
 | Recommendation|Benefit|
 |-----------|-------- |
