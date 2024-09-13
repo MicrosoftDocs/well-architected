@@ -8,3 +8,5 @@ ms.topic: conceptual
 ---
 
 # Assessment review tool for SaaS workloads for ISVs
+
+[!INCLUDE [header_file](includes/temporary-warning.md)]

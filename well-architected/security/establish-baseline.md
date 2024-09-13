@@ -68,7 +68,7 @@ Creating a baseline is a methodical process. Here are some recommendations about
 
 - **Continuous monitoring**. Assess the effectiveness of the security baseline through observability and make improvements overtime.
 
-### Composition of a baseline
+### Define the baseline
 
 Here are some common categories that should be part of a baseline. The following list isn't exhaustive. It's intended as an overview of the document's scope.
 
@@ -113,7 +113,7 @@ You develop data breach plans by using industry standards and recommendations pr
 
 Develop and maintain a security training program to ensure the workload team is equipped with the appropriate skills to support the security goals and requirements. The team needs fundamental security training, but use what you can from your organization to support specialized roles. Role-based security training compliance and participation in drills are part of your security baseline.
 
-### Use the baseline
+### Apply the baseline
 
 Use the baseline to drive initiatives, such as:
 

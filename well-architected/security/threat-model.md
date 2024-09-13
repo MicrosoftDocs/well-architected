@@ -86,7 +86,7 @@ Track the results as part of the workload team's backlog to allow for accountabi
 
 As you add new features to the solution, update the threat model and integrate it into the code management process. If you find a security problem, make sure there's a process to triage the problem based on severity. The process should help you determine when and how to remediate the problem (for example, in the next release cycle or in a faster release).
 
-### Regularly review business-critical workload requirements
+### Review business-critical workload requirements regularly
 
 Meet regularly with executive sponsors to define requirements. These reviews provide an opportunity to align expectations and ensure operational resource allocation to the initiative.
 

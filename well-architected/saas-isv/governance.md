@@ -8,3 +8,5 @@ ms.topic: conceptual
 ---
 
 # Governance for SaaS workloads for ISVs
+
+[!INCLUDE [header_file](includes/temporary-warning.md)]
