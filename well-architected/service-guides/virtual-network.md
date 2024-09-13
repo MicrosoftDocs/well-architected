@@ -152,10 +152,11 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do peering but avoid excessive peering.|When peering VNets, resources are shared without additional costs. For example, you can save on Private Link costs by sharing resources across networks. Exposing a private endpoint to multiple VNets incurs no extra costs for each VNet. <br<br>Even thought it might seem like you're incurring peering cost, it's not practical to put all resources in a single VNet just to save costs. It can hinder growth. The VNet can eventually reach a point where new resources don't fit anymore.|
+|[**Use VNet peering**](/azure/virtual-network/virtual-network-peering-overview) to reduce bandwidth consumption and make network flow more efficient by bypassing controls. <br><br> Avoid excessive peering.|Resources in peered VNets are shared without additional costs. For example, you can save on Private Link costs by sharing resources across networks. Exposing a private endpoint to multiple VNets incurs no extra costs for each VNet. <br<br>Even thought it might seem like you're incurring peering cost, it's not practical to put all resources in a single VNet just to save costs. It can hinder growth. The VNet can eventually reach a point where new resources don't fit anymore.|
+|[**Delete the public IP address resources**](/azure/virtual-network/ip-services/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address), if you don't need them. <br><br> Before deletion, make sure IP address isn't linked with any IP configuration or virtual machine network interface. ||
 
 
-Peering
+
 
 ## Operational Excellence
 
