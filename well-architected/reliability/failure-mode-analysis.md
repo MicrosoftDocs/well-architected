@@ -30,17 +30,13 @@ If you skip FMA altogether or perform an incomplete analysis, your workload is a
 
 ## Key design strategies
 
-### Prerequisites
-
 Review and implement the [recommendations for identifying flows](identify-flows.md). It’s assumed that you have identified and prioritized user and system flows based on criticality.
 
 The data that you have gathered and the artifacts that you have created in your work provide you with a concrete description of your data paths involved throughout the flows. To be successful in your FMA work, accuracy and thoroughness in your artifacts is critical.
 
-### FMA approach
-
 After you determine the critical flows, you can plan their required components. Next, follow each flow step by step to identify dependencies, including third-party services and potential points of failure, and plan your mitigation strategies.
 
-#### Decompose the workload
+### Decompose the workload
 
 As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
 
@@ -48,7 +44,7 @@ As you move from ideation to design, you need to identify the component types th
 
 After you create your initial architecture design, you can overlay your flows to identify the discrete components that are used in those flows and create lists or workflow diagrams that describe the flows and their components. To understand the criticality of the components, use the criticality definitions that you have assigned to the flows. Consider the effect of a component malfunction on your flows.
 
-#### Identify dependencies
+### Identify dependencies
 
 Identify your workload dependencies to perform your single point-of-failure analysis. Decomposing your workload and overlaying flows provides insight into dependencies that are internal and external to the workload.
 
@@ -56,7 +52,7 @@ Internal dependencies are components in the workload scope that are required for
 
 Identify and document the dependencies in your workload, and include them in your flow documentation artifacts.
 
-### Failure points
+### Evaluate failure points
 
 In your workload's critical flows, consider each component and determine how that component, and its dependencies, might be affected by a failure mode. Remember that there are many failure modes to consider when planning for resiliency and recovery. Any one component can be affected by more than one failure mode at any given time. These failure modes include:
 

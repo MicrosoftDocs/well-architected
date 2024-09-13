@@ -40,7 +40,7 @@ Without data-driven insights, you might be unaware of underlying performance iss
 
 Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md). Ensure that every component and flow within the workload automatically generates continuous and meaningful metrics and logs. You need to source this data from diverse levels like the application, platform, storage, and operating system. Comprehensive performance data collection allows for a holistic understanding of performance, enabling precise identification of inefficiencies and avenues for improvement.
 
-### Centralize performance data
+### Centralize the collection of performance data
 
 Centralizing performance metrics and logs is the process of collecting performance metrics and logs from various sources and storing them in a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
 
@@ -146,7 +146,7 @@ For databases, you should also collect database-specific metrics:
 
 - *Error rates*: Data that indicates a database performance. High error rates might indicate a performance issue. Collect and analyze database errors.
 
-### Collect operating system data (if applicable)
+### Collect operating system data
 
 A platform as a service (PaaS) solution eliminates the need to collect operating system performance data. However, if your workload runs on virtual machines (infrastructure as a service), you need to collect performance data about the operating system. You need to understand the demand on your operating system and virtual machine. Frequently sample operating system performance counters. For example, you could sample the performance counters every minute.
 

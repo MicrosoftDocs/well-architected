@@ -22,7 +22,7 @@ It's difficult to fix a build problem if it takes longer to build. When delays h
 
 ## Key design strategies
 
-### Build times
+### Optimize build times
 
 To perform faster builds, you can:
 
@@ -44,7 +44,7 @@ To perform faster builds, you can:
 
   - Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution lets you reuse your build artifact more easily.
 
-### Human intervention
+### Minimize human intervention
 
 Your organization might choose to create several different kinds of builds to optimize build times. Possible builds include:
 

@@ -32,6 +32,9 @@ The three Oracle database backup methods for an Oracle workload on Azure IaaS in
 - *Storage-level snapshots*. Use Azure Backup for this method. This method relies on the type of storage that you use for database files. For example, if you use Azure managed disks, such as Azure Premium SSD, [Azure Backup integrates with the Oracle database](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup). If you use Azure NetApp Files, you can use Azure NetApp Files data protection capabilities, like [Azure NetApp Files backup](/azure/azure-netapp-files/backup-introduction) and [cross-region replication](/azure/azure-netapp-files/cross-region-replication-introduction).
 - *VM-level backups*. Use [Azure Backup](/azure/virtual-machines/workloads/oracle/oracle-database-backup-azure-backup) for this method.
 
+  >[!Caution]
+  >Make sure the VMs in your backup environment are running OSs that have supportability. [Learn about the supported OSs](/azure/virtual-machines/enable-nvme-interface).
+
 When you stream backups of large databases, the time that it takes to copy the data to then restore it can exceed the RTO requirements. Storage-level snapshots are the best option for that scenario.
 
 ### Recommendations
