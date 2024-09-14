@@ -45,7 +45,7 @@ Cost optimization is conducted at various levels of the organization. It's impor
 |![Goal icon](../_images/goal.svg) Spend only on what you need to achieve the highest return on your investments.| 
 |--| 
 
-Every architectural decision has direct and indirect financial implications. And often, cost, resilience and performance are at odds with each other. It’s crucial to find the right balance between your technical and business needs – to find the sweet spot that aligns with your risk tolerance and budget. **Understand the costs associated with build versus buy options**, technology choices, the billing model and licensing, training, operations, and so on.
+Every architectural decision has direct and indirect financial implications. In architecture, every decision comes with a trade-off. And often, cost, resilience and performance are at odds with each other. It’s crucial to find the right balance between your technical and business needs – to find the sweet spot that aligns with your risk tolerance and budget. **Understand the costs associated with build versus buy options**, technology choices, the billing model and licensing, training, operations, and so on.
 
 Given a set of requirements, optimize and make tradeoff decisions, in relation to costs, that still effectively address the cross-cutting concerns of the workload.
 
