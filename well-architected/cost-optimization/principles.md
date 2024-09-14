@@ -19,6 +19,8 @@ A cost-optimized workload isn't necessarily a low-cost workload. Instead, a cost
 
 The design principles are intended to provide optimization strategies that you need to consider when you design and implement your workload architecture. Start with the recommended approaches and **justify the benefits for a set of business requirements**. After you set your strategy, drive actions by using the [Cost Optimization checklist](checklist.md) as your next step.
 
+Cost implications should be prioritized. They should be measured properly and continuously at every stage of the business from design to development and operation.  Ideally, you should specify cost as an architectural characteristic also known as non-functional requirement. This helps you to prioritize the cost factor in your decisions. Common examples of architectural characteristics are scalability, security, availability etc. Cost and business model should align and your architecture should follow the money. For example you can architect your e-commerce application so that when the number of orders go up, infrastructure and operation costs rise.
+
 As you prioritize business requirements to align with technology needs, you can adjust costs. However, you should expect a series of **tradeoffs in areas in which you want to optimize cost, such as security, performance, scalability, resilience, and operability**. If the cost of addressing the challenges in those areas is high and these principles aren't applied properly, you might make risky choices in favor of a cheaper solution, ultimately affecting your organization's business goals and reputation.
 
 ## Develop cost-management discipline
