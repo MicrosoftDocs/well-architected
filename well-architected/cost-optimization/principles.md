@@ -37,7 +37,7 @@ Cost optimization is conducted at various levels of the organization. It's impor
 | Build capabilities in the system that **capture and classify expense**.    | You'll be able to calculate the costs that **reveal technical and business perspectives** at different billing boundaries.<br><br>You'll also be able to conduct regular reviews and drive showback and chargeback processes.<br><br> Placing these cost metrics front-and-center before engineers and their business partners, will help more sustainable practices to emerge organically such as continuous inspection, spotting excess spend and tuning operations to trim expenses.
 | Plan on **training costs, hiring expenses, and the cost of infrastructure needed** to augment skills as the workload matures. | Investing in staffing **complements existing skills** through full-time or vendor support. |
 | Encourage **upstream communication** from architects and application owners.      | Research costs are reduced when you act on feedback, which should be considered as meaningful as numeric data. You'll empower employees by using their input to **drive realistic design changes** and business strategies.
-| Aim to maximize the value      |  You shouldn’t aim to minimize your spend but aim to maximize the value from your spend.
+| Aim to maximize the value      |  You shouldn’t aim to minimize your spend but aim to maximize the value. To do that, you need to determine what you’re willing to pay for. It’s crucial to find the right balance between your technical and business needs – to find the sweet spot that aligns with your risk tolerance and budget.
 
 
 ## Design with a cost-efficiency mindset
@@ -45,7 +45,7 @@ Cost optimization is conducted at various levels of the organization. It's impor
 |![Goal icon](../_images/goal.svg) Spend only on what you need to achieve the highest return on your investments.| 
 |--| 
 
-Every architectural decision has direct and indirect financial implications. And often, cost, resilience and performance are at odds with each other. **Understand the costs associated with build versus buy options**, technology choices, the billing model and licensing, training, operations, and so on.
+Every architectural decision has direct and indirect financial implications. And often, cost, resilience and performance are at odds with each other. It’s crucial to find the right balance between your technical and business needs – to find the sweet spot that aligns with your risk tolerance and budget. **Understand the costs associated with build versus buy options**, technology choices, the billing model and licensing, training, operations, and so on.
 
 Given a set of requirements, optimize and make tradeoff decisions, in relation to costs, that still effectively address the cross-cutting concerns of the workload.
 
