@@ -19,8 +19,6 @@ A cost-optimized workload isn't necessarily a low-cost workload. Instead, a cost
 
 The design principles are intended to provide optimization strategies that you need to consider when you design and implement your workload architecture. Start with the recommended approaches and **justify the benefits for a set of business requirements**. After you set your strategy, drive actions by using the [Cost Optimization checklist](checklist.md) as your next step.
 
-Cost implications should be prioritized. They should be measured properly and continuously at every stage of the business from design to development and operation.  Ideally, you should specify cost as an architectural characteristic also known as non-functional requirement. This helps you to prioritize the cost factor in your decisions. Common examples of architectural characteristics are scalability, security, availability etc. Cost and business model should align and your architecture should follow the money. For example you can architect your e-commerce application so that when the number of orders go up, infrastructure and operation costs rise.
-
 As you prioritize business requirements to align with technology needs, you can adjust costs. However, you should expect a series of **tradeoffs in areas in which you want to optimize cost, such as security, performance, scalability, resilience, and operability**. If the cost of addressing the challenges in those areas is high and these principles aren't applied properly, you might make risky choices in favor of a cheaper solution, ultimately affecting your organization's business goals and reputation.
 
 ## Develop cost-management discipline
@@ -39,6 +37,8 @@ Cost optimization is conducted at various levels of the organization. It's impor
 | Build capabilities in the system that **capture and classify expense**.    | You'll be able to calculate the costs that **reveal technical and business perspectives** at different billing boundaries.<br><br>You'll also be able to conduct regular reviews and drive showback and chargeback processes.
 | Plan on **training costs, hiring expenses, and the cost of infrastructure needed** to augment skills as the workload matures. | Investing in staffing **complements existing skills** through full-time or vendor support. |
 | Encourage **upstream communication** from architects and application owners.      | Research costs are reduced when you act on feedback, which should be considered as meaningful as numeric data. You'll empower employees by using their input to **drive realistic design changes** and business strategies.
+| Encourage **upstream communication** from architects and application owners.      | Research costs are reduced when you act on feedback, which should be considered as meaningful as numeric data. You'll empower employees by using their input to **drive realistic design changes** and business strategies.
+| Designate and prioritize cost as an architectural characteristic      | Cost implications should be measured properly and continuously at every stage of the business from design to development and operation.  Ideally, you should specify cost as an architectural characteristic also known as non-functional requirement. This helps you to prioritize the cost factor in your decisions. Common examples of architectural characteristics are scalability, security, availability etc. Remember that in software architecture, everything is a trade off: cost, resilience and performance are often at odds with each other.
 
 ## Design with a cost-efficiency mindset
 
