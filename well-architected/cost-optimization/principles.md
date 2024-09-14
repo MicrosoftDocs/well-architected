@@ -15,11 +15,11 @@ Architecture design is always driven by business goals and must **factor in retu
 -   What's the spending pattern for the application and its operations? What are priority areas?
 -   How will you maximize the investment in resources, by better utilization or by reduction?
 
-A cost-optimized workload isn't necessarily a low-cost workload. There are significant tradeoffs. Tactical approaches are reactive and can reduce costs only in the short term. To achieve long-term financial responsibility, you need to **create a strategy with prioritization, continuous monitoring, and repeatable processes** that focuses on optimization.
+A cost-optimized workload isn't necessarily a low-cost workload. Instead, a cost-optimized workload should aim to maximize the value it gets from the spend. There are significant tradeoffs; often, cost, resilience and performance are often at odds with each other. Tactical approaches are reactive and can reduce costs only in the short term. To achieve long-term financial responsibility, you need to **create a strategy with prioritization, continuous monitoring, and repeatable processes aliged with your business model** that focuses on optimization.
 
 The design principles are intended to provide optimization strategies that you need to consider when you design and implement your workload architecture. Start with the recommended approaches and **justify the benefits for a set of business requirements**. After you set your strategy, drive actions by using the [Cost Optimization checklist](checklist.md) as your next step.
 
-As you prioritize business requirements to align with technology needs, you can adjust costs. However, you should expect a series of **tradeoffs in areas in which you want to optimize cost, such as security, scalability, resilience, and operability**. If the cost of addressing the challenges in those areas is high and these principles aren't applied properly, you might make risky choices in favor of a cheaper solution, ultimately affecting your organization's business goals and reputation.
+As you prioritize business requirements to align with technology needs, you can adjust costs. However, you should expect a series of **tradeoffs in areas in which you want to optimize cost, such as security, performance, scalability, resilience, and operability**. If the cost of addressing the challenges in those areas is high and these principles aren't applied properly, you might make risky choices in favor of a cheaper solution, ultimately affecting your organization's business goals and reputation.
 
 ## Develop cost-management discipline
 
