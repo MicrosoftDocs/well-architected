@@ -21,7 +21,7 @@ The choice of data store in a SaaS solution significantly impacts its architectu
 
 ### Design considerations
 
-- **Differenciate between your transactional and analytical operations.** Transactional and analytics data stores have distinct requirements. Transactional data stores support your applications, while analytics data stores are used for reporting and purposes like machine learning. These stores are built with specialized products and have unique needs for performance, access patterns, schemas, and use cases.
+- **Differentiate between your transactional and analytical operations.** Transactional and analytics data stores have distinct requirements. Transactional data stores support your applications, while analytics data stores are used for reporting and purposes like machine learning. These stores are built with specialized products and have unique needs for performance, access patterns, schemas, and use cases.
 
 	This guide focuses on transactional data stores.
 
@@ -33,7 +33,7 @@ The choice of data store in a SaaS solution significantly impacts its architectu
  
 	For more information, see [Relational or non-relational data platform](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
 
-- **Minimize the types of data stores.** The approach of storing different types of data in mulitiple distinct data stores can be beneficial for mature organizations with expertise across various data platforms. However, it often introduces unnecessary complexity for startups and smaller organizations. It's usually more effective to focus on one or a small number of data stores.
+- **Minimize the types of data stores.** The approach of storing different types of data in multiple distinct data stores can be beneficial for mature organizations with expertise across various data platforms. However, it often introduces unnecessary complexity for startups and smaller organizations. It's usually more effective to focus on one or a small number of data stores.
   
 	If you don't have the business justification for adopting that approach, avoid it. Instead, focus your efforts on one or a small number of data stores.
 
@@ -90,7 +90,7 @@ Capacity planning involves managing resource utilization, focusing on CPU, memor
 
 - **Understand the different capacity models offered by data platforms.** Cloud-based data platforms often provide multiple resource models. For example, some Azure services like Azure Cosmos DB provide provisioned throughput-based models and serverless models. Azure SQL Database also provides elastic pools.
 
-	Provisioned throughput requires pre-determined resource allocation, either from a single database or a group of databases. [Elastic pools](/azure/azure-sql/database/elastic-pool-overview) allow resource sharing among multiple databases. Elastic pools are commonly used in SaaS solutions.
+	Provisioned throughput requires predetermined resource allocation, either from a single database or a group of databases. [Elastic pools](/azure/azure-sql/database/elastic-pool-overview) allow resource sharing among multiple databases. Elastic pools are commonly used in SaaS solutions.
   
 	Even though provisioned throughput requires that you allocate resources ahead of time, services like Azure Cosmos DB offer [autoscale](/azure/cosmos-db/provision-throughput-autoscale). You can set rules for dynamically adding or removing resources based on specified triggers.
 	
@@ -134,7 +134,7 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 |Recommendation|Benefit|
 |---|---|
 |Focus on resiliency requirements keeping in mind the overall data requirements (yours and your customers').|By grounding your design decisions in requirements, you ensure you make the appropriate tradeoffs and you avoid under- or over-engineering for your needs.| 
-|Reflect varying levels of resiliency in your billing model. <br><br> Set expectations with your customers, as 100% uptime or zero data loss during catastrophic outages may be unrealistic.| Billing model can help your customers understand how much resiliency guarantees they are signing up for. For example, with a lower-tier, customers get minimal guarantees. However, in a higher-tier, customers receive more resiliency because you can afford to replicate their resources across multiple regions.|
+|Reflect varying levels of resiliency in your billing model. <br><br> Set expectations with your customers, as 100% uptime or zero data loss during catastrophic outages may be unrealistic.| Billing model can help your customers understand how much resiliency guarantees they're signing up for. For example, with a lower-tier, customers get minimal guarantees. However, in a higher-tier, customers receive more resiliency because you can afford to replicate their resources across multiple regions.|
 |Use Azure availability zones for production solutions. Where possible, use zone redundant data stores.|Availability zones provide resiliency against datacenter outages, without significantly increasing the cost, latency, or complexity of your solution.|
 |Keep backups of your data stores in a globally redundant format, using cross-region replication where available.|Cross-region backups of data add an extra level of resiliency.|
 |Use deployment stamps to create separate instances of your solution in geographically distributed locations.|Using deployment stamps to create separate instances of your solution in geographically distributed locations increasing resiliency and provides additional benefits such as easier operations management.|
@@ -142,7 +142,7 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 
 ## Security and compliance
 
-You are responsible for ensuring the confidentiality and integrity of your customers' data. As you build a security baseline, consider your security requirements and promises. Plan to meet your customers' compliance needs, including data retention.
+You're responsible for ensuring the confidentiality and integrity of your customers' data. As you build a security baseline, consider your security requirements and promises. Plan to meet your customers' compliance needs, including data retention.
 
 ### Design considerations
 
@@ -157,7 +157,7 @@ You are responsible for ensuring the confidentiality and integrity of your custo
 ### Design recommendations
 |Recommendation|Benefit|
 |---|---|
-|Configure your data stores to use private endpoints, and disable public endpoints.|This approch enhances security by restricting access to your internal network. This reduces the risk of unauthorized access and potential data breaches.|
+|Configure your data stores to use private endpoints, and disable public endpoints.|This approach enhances security by restricting access to your internal network. This reduces the risk of unauthorized access and potential data breaches.|
 |Use managed identities and Microsoft Entra ID for authentication. Avoid the use of database keys or credentials.|Managed identities eliminate the need for database keys or credentials, reducing the risk of credential theft and simplifying access management.|
 |When working with shared data stores, ensure the application scopes all requests to a single tenant by including the tenant identifier in `WHERE` clauses.|This helps mitigate the risk of cross-tenant data leakage or impersonation.||
 |Plan your data retention strategy based on compliance and business needs. Avoid keeping unnecessary historical data. For long-term retention, move data from primary stores to archival storage.|By avoiding unnecessary retention, you maintain a smaller surface area.|
@@ -165,7 +165,7 @@ You are responsible for ensuring the confidentiality and integrity of your custo
 
 ## Operations
 
-SaaS solutions often include a large number of databases or other stores. It's important to plan for routine maintenance on your fleet, and explore automation options to manage these tasks efficiently..
+SaaS solutions often include a large number of databases or other stores. It's important to plan for routine maintenance on your fleet, and explore automation options to manage these tasks efficiently.
 
 ### Design considerations
 
@@ -187,7 +187,7 @@ SaaS solutions often include a large number of databases or other stores. It's i
 |Strive for consistency wherever possible between customers' data stores.  <br><br>If special accommodations are needed for a customer, integrate them into an overall process rather than making one-off changes. For example, use the same schema for each database, and use the same processes to deploy and manage your resources.|Consistency makes it easier to make changes at scale, and minimizes the risk of accidental problems during deployments or maintenance procedures.|
 |Deploy limited resources carefully and seek opportunities to streamline operations.|You'll avoid small efficiencies and have better resource utilization and overall performance.|
 |Build automation for repetitive tasks. Prefer buying automated tools instead of build a custom solution. <br><br> Explore options provided by the platform and third-party vendors.| Investing in quality automation ensures you can repeatedly use these assets and reduce manual tasks that are often prone to errors. Automated tools are particularly valuable if you're not an expert in the data store you're using or are unsure about the necessary maintenance tasks.|
-|Deploy your team's database administration capacity judiciously. Reserve human database administrators for the most impactful activities, like dealing with large customers or building automation that can scale across many customers.| Priortizing valuable functions maximizes efficiency.|
+|Deploy your team's database administration capacity judiciously. Reserve human database administrators for the most impactful activities, like dealing with large customers or building automation that can scale across many customers.| By prioritizing valuable functions, you maximize your efficiency.|
 
 ## Customer access to data
 
@@ -197,7 +197,7 @@ Some of your customers may request direct access to their data for custom report
 
 - **Justify reasons for direct access**. Understand why customers need access to raw data by getting information about their business problem. Collaborate to find a solution that meets their needs without introducing risks to your platform.
 
-	Find alternate ways to meet the requirements than giving access. If access is needed for reporting purposes, application-tier approaches are preferable. For example, you might build reports for them by using Microsoft Power BI, you could export a subset of your data to a file that you provide to them, or you could create APIs that they can use to access your data. For more information, see [Architectural approaches for tenant integration and data access](/azure/architecture/guide/multitenant/approaches/integration).
+	Find alternate ways to meet the requirements rather than giving direct access. If access is needed for reporting purposes, application-tier approaches are preferable. For example, you might build reports for them by using Microsoft Power BI, you could export a subset of your data to a file that you provide to them, or you could create APIs that they can use to access your data. For more information, see [Architectural approaches for tenant integration and data access](/azure/architecture/guide/multitenant/approaches/integration).
 
 - **Evaluate security and isolation implications.** Providing direct access to a data store poses significant security risks. Avoid exposing internal resources to external parties, including customers. In a SaaS environment with many customers sharing a solution, the risks are even higher, as it could be exploited to access other customers' data.
 
