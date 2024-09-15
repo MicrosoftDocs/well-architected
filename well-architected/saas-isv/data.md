@@ -161,7 +161,7 @@ You're responsible for ensuring the confidentiality and integrity of your custom
 |---|---|
 |Configure your data stores to use private endpoints, and disable public endpoints.|This approach enhances security by restricting access to your internal network. This reduces the risk of unauthorized access and potential data breaches.|
 |Use managed identities and Microsoft Entra ID for authentication. Avoid the use of database keys or credentials.|Managed identities eliminate the need for database keys or credentials, reducing the risk of credential theft and simplifying access management.|
-|When working with shared data stores, ensure the application scopes all requests to a single tenant by including the tenant identifier in `WHERE` clauses.|This helps mitigate the risk of cross-tenant data leakage or impersonation.||
+|When working with shared data stores, ensure the application scopes all requests to a single tenant by including the tenant identifier in `WHERE` clauses.|This helps mitigate the risk of cross-tenant data leakage or impersonation.|
 |Plan your data retention strategy based on compliance and business needs. Avoid keeping unnecessary historical data. For long-term retention, move data from primary stores to archival storage.|By avoiding unnecessary retention, you maintain a smaller surface area.|
 |Use data store features to support your data lifecycle needs, such setting the [time-to-live (TTL)](/azure/cosmos-db/nosql/time-to-live) on documents in Azure Cosmos DB.|This ensures efficient data lifecycle management, reduces manual intervention, and optimizes storage by automatically archiving or deleting outdated data.|
 
