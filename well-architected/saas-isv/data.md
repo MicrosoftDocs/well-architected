@@ -183,6 +183,7 @@ SaaS solutions often include a large number of databases or other stores. It's i
 - **Design for automation.** Automated operations are essential for a SaaS solution to scale effectively. Identify regular and occasional tasks, and create playbooks or automation scripts for them. For tasks that can't be automated immediately, thoroughly document the processes to ensure consistency and clarity.
 
 ### Design recommendations
+
 |Recommendation|Benefit|
 |---|---|
 |Strive for consistency wherever possible between customers' data stores.  <br><br>If special accommodations are needed for a customer, integrate them into an overall process rather than making one-off changes. For example, use the same schema for each database, and use the same processes to deploy and manage your resources.|Consistency makes it easier to make changes at scale, and minimizes the risk of accidental problems during deployments or maintenance procedures.|
