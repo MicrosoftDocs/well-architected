@@ -155,6 +155,7 @@ You're responsible for ensuring the confidentiality and integrity of your custom
 	For long-term data retention, such as for compliance or future analyses, consider relocating data to a store suitable for long-term retention.
 
 ### Design recommendations
+
 |Recommendation|Benefit|
 |---|---|
 |Configure your data stores to use private endpoints, and disable public endpoints.|This approach enhances security by restricting access to your internal network. This reduces the risk of unauthorized access and potential data breaches.|
