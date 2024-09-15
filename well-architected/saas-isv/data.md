@@ -97,6 +97,7 @@ Capacity planning involves managing resource utilization, focusing on CPU, memor
 	Serverless resource models automatically scale based on demand, making them a good starting point if you can't predict your capacity requirements ahead of time. However, they may support fewer features and become cost-inefficient as you grow. Serverless models are available in [Azure SQL Database](/azure/azure-sql/database/serverless-tier-overview) and [Azure Cosmos DB](/azure/cosmos-db/serverless).
 
 ### Design recommendations
+
 |Recommendation|Benefit|
 |---|---|
 |Model your database requirements for each customer. Determine whether you'll have many small databases, fewer large databases, or a mixture of the two. <br><br>Use a t-shirt sizing exercise to categorize customers into small, medium, and large buckets.|This approach provides a rough estimate of resources needed per customer and helps in mapping customers to your billing model.|
