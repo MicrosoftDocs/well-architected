@@ -9,6 +9,8 @@ ms.topic: conceptual
 
 # Data for SaaS workloads on Azure
 
+[!INCLUDE [header_file](includes/temporary-warning.md)]
+
 Treat data as the most valuable asset of your solution. As Independent Software Vendor (ISV), be aware that you're responsible for managing your customers' data. Your data design strategy and choice of data store can have significant impact on your customer.
 
 This article offers considerations to help you keep the promise of data integrity and confidentiality to your customers, while delivering performance as defined by the business requirements.

@@ -9,6 +9,8 @@ ms.topic: conceptual
 
 # Design principles of an ISV workload
 
+[!INCLUDE [header_file](includes/temporary-warning.md)]
+
 Independent Software Vendors (ISVs) have a unique position in the cloud ecosystem, where their SaaS solutions drive their business. Their products are sold to businesses, also known as business-to-business (B2B) or to consumers, also known as business-to-consumer (B2C). When ISVs build software as a service (SaaS), the ISV is typically responsible for hosting and maintaining the solutions, while their customers configure the product and manage their data.
 
 As the workload owner in the ISV space, **you are accountable for the solution's architectural excellence and also have shared responsibility with your customer**. They rely on your solution, and any issues can cascade to them.

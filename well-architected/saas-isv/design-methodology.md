@@ -9,6 +9,8 @@ ms.topic: conceptual
 
 # Design methodology
 
+[!INCLUDE [header_file](includes/temporary-warning.md)]
+
 Independent Software Vendors (ISVs) must carefully plan the requirements of their SaaS solution, given that the solution *is their business*. Customers of the business are direct users of the solution, whether that's other businesses or consumers. This business model sets higher expectations because as a architect, you need to consider your workload requirements _and_ the customer's requirements.
 
 This article presents a design methodology to help you systematically define and refine requirements. With many design decisions and technology options to consider, if you feel uncertain, revisit this methodology to stay on track with the business requirements.
