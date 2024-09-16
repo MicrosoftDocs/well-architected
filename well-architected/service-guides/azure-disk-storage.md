@@ -120,7 +120,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 - **Reduce travel distance between client and server**. Place data in regions nearest to connecting clients (ideally in the same region). Default network configurations provide the best performance. Modify network settings only to improve security. In general, network settings won't decrease travel distance and won't improve performance.
 - **Optimize the performance of data clients.** [Choose a data transfer tool](/azure/storage/common/storage-choose-data-transfer-solution) that is most appropriate for the data size, transfer frequency, and bandwidth of your workloads. Some tools such as [AzCopy](/azure/storage/common/storage-use-azcopy-v10) are optimized for performance and require little intervention. Consider the [Factors influencing latency](/azure/storage/blobs/storage-blobs-latency), and fine-tune performance by reviewing the performance optimization guidance that is published with each tool.
 - **Collect performance data.** Monitor your disks and VMs to identify performance bottlenecks that occur from throttling. See [Storage IO Metrics](/azure/virtual-machines/disks-metrics).
-- **Benchmark your disks** to determine whether they're meeting your needs and expectations. See [Benchmark a disk](/azure/virtual-machines/disks-benchmarks).
+- **Benchmark your disks** Create a test environment and use the [Benchmark a disk](/azure/virtual-machines/disks-benchmarks) to determine whether it meeting your needs and expectations.
 
 Use these recommendations to optimize for performance:
 
