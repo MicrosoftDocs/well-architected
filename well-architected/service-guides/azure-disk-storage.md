@@ -31,13 +31,19 @@ Also included are recommendations on the technology capabilities that can help i
 
 As you make design choices for Azure Disk Storage review the [Design review checklist for Reliability](/azure/well-architected/reliability/checklist).
 
-Use failure mode analysis to minimize points of failure. Consider internal dependencies such as the availability of virtual networks or Azure Key Vault.
-
-- Define reliability and recovery targets. Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). Disk Storage SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. You can also increase the availability of your disks by using zone-redundant storage disks. Consider the impact of a regional outage, the potential for data loss and the time required to restore access after an outage. Consider the availability of any internal dependencies that you identified as part of your failure mode analysis.
-- Configure data redundancy. For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to access data during an outage. 
-- Create a recovery plan. Consider data protection features, backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. for potential [data loss and data inconsistencies](/azure/storage/common/storage-disaster-recovery-guidance) as well as the [time and cost of failing over](/azure/storage/common/storage-disaster-recovery-guidance). Using these backup solutions increases your costs.
-- Monitor potential availability issues by subscribing to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity. 
-- Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. For Premium SSD managed disks, enable on-demand bursting for eligible disks. This will help prevent those disks from throttling but, will increase costs.
+> [!div class="checklist"]
+>
+> **Use failure mode analysis**: Minimize points of failure by considering internal dependencies such as the availability of virtual networks or Azure Key Vault.
+>
+> **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). Disk Storage SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. You can also increase the availability of your disks by using zone-redundant storage disks. Consider the impact of a regional outage, the potential for data loss and the time required to restore access after an outage. Consider the availability of any internal dependencies that you identified as part of your failure mode analysis.
+>
+> **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to access data during an outage. 
+>
+> **Create a recovery plan**: Consider data protection features, backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. for potential [data loss and data inconsistencies](/azure/storage/common/storage-disaster-recovery-guidance) as well as the [time and cost of failing over](/azure/storage/common/storage-disaster-recovery-guidance). Using these backup solutions increases your costs.
+>
+> **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity. 
+>
+> **Strengthen the resiliency and recoverability of your workload**: Implement self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. For Premium SSD managed disks, enable on-demand bursting for eligible disks. This will help prevent those disks from throttling but, will increase costs.
 
 ### Recommendations
 
@@ -57,14 +63,23 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Design checklist
 
-- Review the [security baseline for Storage](https://microsoft.sharepoint.com/teams/AzureStorageContent/Shared%20Documents/General/Content%20Plans/WAF/Azure%20security%20baseline%20for%20Storage).
--  **Limit the ability to export or import managed disks**. Limiting the ability to import or export managed disks increases the security of your data. You've a few ways to limit these capabilities. You can either create a custom RBAC role with the permissions necessary to import and export, you can use Entra ID authentication, setup private links, configure an Azure policy, or configure the network access policy. See [Restrict managed disks from being imported or exported](/azure/virtual-machines/disks-restrict-import-export-overview).
-- **Leverage encryption options.** By default, managed disks are encrypted with server-side encryption (SSE) which protects your data and helps meet organization and compliance commitments. There are other configurations and options, if you require them. You can use SSE with encryption keys managed by you, rather than Azure, you can enable encryption at host, or you can enable double encryption at rest. See [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption). 
-- **Secure your SAS with Entra ID**. Microsoft Entra ID provides superior security and ease of use over Shared Key and shared access signature (SAS). Grant security principals only those permissions that are necessary for them to perform their tasks. 
-- **Protect secrets** such as customer-managed keys and SAS tokens. These forms of authorization aren't generally recommended but if you're using them, make sure to rotate your keys, and set key expirations as early as practical, and store these secrets in secure ways.
-- **Detect threats** by enabling [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
-- **Use tags and labels** for important disks. Applying tags and labels to important disks makes it easier to ensure you're applying the appropriate levels of protection to them.
-- **Harden all workload components** by reducing extraneous surface area and tightening configurations to increase attacker cost. Properly secure any related resources being used with your managed disks, such as backup recovery vaults or Azure Key Vaults.
+> [!div class="checklist"]
+>
+> Review the [security baseline for Storage](https://microsoft.sharepoint.com/teams/AzureStorageContent/Shared%20Documents/General/Content%20Plans/WAF/Azure%20security%20baseline%20for%20Storage).
+>
+> **Limit the ability to export or import managed disks**. Limiting the ability to import or export managed disks increases the security of your data. You've a few ways to limit these capabilities. You can either create a custom RBAC role with the permissions necessary to import and export, you can use Entra ID authentication, setup private links, configure an Azure policy, or configure the network access policy. See [Restrict managed disks from being imported or exported](/azure/virtual-machines/disks-restrict-import-export-overview).
+>
+> **Leverage encryption options.** By default, managed disks are encrypted with server-side encryption (SSE) which protects your data and helps meet organization and compliance commitments. There are other configurations and options, if you require them. You can use SSE with encryption keys managed by you, rather than Azure, you can enable encryption at host, or you can enable double encryption at rest. See [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption). 
+>
+> **Secure your SAS with Entra ID**: Microsoft Entra ID provides superior security and ease of use over Shared Key and shared access signature (SAS). Grant security principals only those permissions that are necessary for them to perform their tasks. 
+>
+> **Protect secrets** such as customer-managed keys and SAS tokens. These forms of authorization aren't generally recommended but if you're using them, make sure to rotate your keys, and set key expirations as early as practical, and store these secrets in secure ways.
+>
+> **Detect threats**: Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
+>
+> **Use tags and labels** for important disks. Applying tags and labels to important disks makes it easier to ensure you're applying the appropriate levels of protection to them.
+>
+> **Harden all workload components**: Reduce extraneous surface area and tightening configurations to increase attacker cost. Properly secure any related resources being used with your managed disks, such as backup recovery vaults or Azure Key Vaults.
 
 ### Recommendations
 
@@ -96,9 +111,13 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 For example, if you enable snapshots, you're billed for the amount of storage used by each snapshot.
 
-- **Create guardrails**. Create [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) based on subscriptions and resource groups. Use governance policies to restrict resource types, configurations, and locations. Additionally, use role-based access control to block actions that can lead to overspending.
-- **Monitor costs** to ensure they stay within budgets, compare against forecasts, and see where overspending might have occurred. You can use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) pane in the Azure Portal. You also can export cost data to a storage account and analyze that data by using Excel or Power BI. 
-- **Monitor disk resources**. Search for unattached disks using the sample script. 
+> [!div class="checklist"]
+>
+> **Create guardrails**: Create [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) based on subscriptions and resource groups. Use governance policies to restrict resource types, configurations, and locations. Additionally, use role-based access control to block actions that can lead to overspending.
+>
+> **Monitor costs** to ensure they stay within budgets, compare against forecasts, and see where overspending might have occurred. You can use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) pane in the Azure Portal. You also can export cost data to a storage account and analyze that data by using Excel or Power BI. 
+>
+> **Monitor disk resources**: Search for unattached disks using the sample script. 
 
 ### Recommendations
 
@@ -116,11 +135,19 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Design checklist
 
-- **Choose the optimal disk types**. Identifying the [disk types](/azure/virtual-machines/disks-types) you need before deploying your resources lets you maximize performance and cost efficiency. There are five disk types, Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD. For the highest performance, use Premium SSD for your VM's OS disk and use either Ultra Disks or Premium SSD v2 as your data disks.
-- **Reduce travel distance between client and server**. Place data in regions nearest to connecting clients (ideally in the same region). Default network configurations provide the best performance. Modify network settings only to improve security. In general, network settings won't decrease travel distance and won't improve performance.
-- **Optimize the performance of data clients.** [Choose a data transfer tool](/azure/storage/common/storage-choose-data-transfer-solution) that is most appropriate for the data size, transfer frequency, and bandwidth of your workloads. Some tools such as [AzCopy](/azure/storage/common/storage-use-azcopy-v10) are optimized for performance and require little intervention. Consider the [Factors influencing latency](/azure/storage/blobs/storage-blobs-latency), and fine-tune performance by reviewing the performance optimization guidance that is published with each tool.
-- **Collect performance data.** Monitor your disks and VMs to identify performance bottlenecks that occur from throttling. See [Storage IO Metrics](/azure/virtual-machines/disks-metrics).
-- **Benchmark your disks** Create a test environment and use the [Benchmark a disk](/azure/virtual-machines/disks-benchmarks) to determine whether it meeting your needs and expectations.
+> [!div class="checklist"]
+>
+> **Choose the optimal disk types**: Identifying the [disk types](/azure/virtual-machines/disks-types) you need before deploying your resources lets you maximize performance and cost efficiency. There are five disk types, Ultra Disks, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD. For the highest performance, use Premium SSD for your VM's OS disk and use either Ultra Disks or Premium SSD v2 as your data disks.
+>
+> **Reduce travel distance between client and server**: Place data in regions nearest to connecting clients (ideally in the same region). Default network configurations provide the best performance. Modify network settings only to improve security. In general, network settings won't decrease travel distance and won't improve performance.
+>
+> **Optimize the performance of data clients**: [Choose a data transfer tool](/azure/storage/common/storage-choose-data-transfer-solution) that is most appropriate for the data size, transfer frequency, and bandwidth of your workloads. Some tools such as [AzCopy](/azure/storage/common/storage-use-azcopy-v10) are optimized for performance and require little intervention. Consider the [Factors influencing latency](/azure/storage/blobs/storage-blobs-latency), and fine-tune performance by reviewing the performance optimization guidance that is published with each tool.
+>
+> **Collect performance data**: Monitor your disks and VMs to identify performance bottlenecks that occur from throttling. See [Storage IO Metrics](/azure/virtual-machines/disks-metrics).
+>
+> **Benchmark your disks**: Create a test environment and use the [Benchmark a disk](/azure/virtual-machines/disks-benchmarks) to determine whether it meeting your needs and expectations.
+
+### Recommendations
 
 Use these recommendations to optimize for performance:
 
@@ -138,9 +165,13 @@ As you make design choices for Azure Disk Storage, review the [Design review che
 
 ### Design checklist
 
-- **Create maintenance and emergency recovery plans.** Consider data protection features, backup and restore operations. Select backup solutions that allow you to recover from regional disasters. 
-- **Create internal documentation** on your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Including attaching a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk?tabs=ubuntu) VMs or expanding a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu) VMs.
-- **Detect threats** by enabling [Microsoft Defender for Cloud](/azure/storage/common/azure-defender-storage-configure). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
+> [!div class="checklist"]
+>
+> **Create maintenance and emergency recovery plans**: Consider data protection features, backup and restore operations. Select backup solutions that allow you to recover from regional disasters.
+>
+> **Create internal documentation**: Document your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Including attaching a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk?tabs=ubuntu) VMs or expanding a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu) VMs.
+>
+> **Detect threats**: Enable [Microsoft Defender for Cloud](/azure/storage/common/azure-defender-storage-configure). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
 
 ### Recommendations
 
