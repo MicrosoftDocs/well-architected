@@ -7,7 +7,7 @@ ms.reviewer: tozimmergren
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.date: 07/20/2024
+ms.date: 09/20/2024
 products: azure-firewall
 azure.category:
   - networking
@@ -57,16 +57,16 @@ as needed.
 
 > [!div class="checklist"]
 > 
-> - **Review the list of Azure Firewall *known issues*.** Azure Firewall Product Group maintains an updated list of [known issues](/azure/firewall/overview#known-issues). This list contains important information related to by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies.
+> - **Review the list of Azure Firewall *known issues*.** Azure Firewall products maintain an updated list of [known issues](/azure/firewall/firewall-known-issues). This list contains important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies.
 >
->  - **Ensure your Azure Firewall Policy adheres to Azure Firewall limits and recommendations.** There are limits on the policy structure, including the number of rules and rule collection groups, total policy size, source destinations, and target destinations. Be sure to compose your policy and stay below the [documented thresholds](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits).
-> - **Deploy Azure Firewall across multiple availability zones** for higher service-level agreement (SLA). Azure Firewall provides different SLAs when you deploy it in a single availability zone compared to [multiple zones](/azure/reliability/availability-zones-overview#availability-zones). For more information, see [SLA for Azure Firewall](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
-> - **Deploy an Azure Firewall instance per region** in multi-region environments. For traditional hub-and-spoke architectures, see [multi-region considerations](/azure/firewall/firewall-multi-hub-spoke). For secured virtual hubs (Azure Virtual WAN), configure [routing intent and policies](/azure/virtual-wan/how-to-routing-policies) to secure inter-hub and branch-to-branch communications. For failure-resistant and fault-tolerant workloads, consider instances of Azure Firewall and Azure Virtual Network as regional resources.
-> - **Monitor Azure Firewall Metrics and Resource Health state.** Closely monitor [key metrics](/azure/firewall/logs-and-metrics#metrics) that indicate the Azure Firewall health state, such as *Throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW Latency Probe* metrics. Azure Firewall also integrates with [Azure Resource Health](/azure/service-health/resource-health-overview). Use the Azure Firewall Resource Health check to view the health status of Azure Firewall and address service problems that might affect your Azure Firewall resource.
+>  - **Ensure that your Azure Firewall policy adheres to Azure Firewall limits and recommendations.** The policy structure has limits, including the number of rules and rule collection groups, total policy size, source destinations, and target destinations. Be sure to compose your policy and stay below the [documented thresholds](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits).
+> - **Deploy Azure Firewall across multiple availability zones** for a higher service-level agreement (SLA). Azure Firewall provides different SLAs depending on whether you deploy the service in a single availability zone or [multiple zones](/azure/reliability/availability-zones-overview#availability-zones). For more information, see [SLA for Azure Firewall](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
+> - **Deploy an Azure Firewall instance in each region** in multi-region environments. For traditional hub-and-spoke architectures, see [Multi-region considerations](/azure/firewall/firewall-multi-hub-spoke). For secured Azure Virtual WAN hubs, configure [routing intent and policies](/azure/virtual-wan/how-to-routing-policies) to secure inter-hub and branch-to-branch communications. For failure-resistant and fault-tolerant workloads, consider instances of Azure Firewall and Azure Virtual Network as regional resources.
+> - **Monitor Azure Firewall metrics and resource health state.** Closely monitor [key metrics](/azure/firewall/logs-and-metrics#metrics) that indicate the Azure Firewall health state, such as *throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics. Azure Firewall also integrates with [Azure Resource Health](/azure/service-health/resource-health-overview). Use the Resource Health check to view the health status of Azure Firewall and address service problems that might affect your Azure Firewall resource.
 > - **Deploy Azure Firewall in hub virtual networks or as part of Virtual WAN hubs.** 
 
 > [!NOTE]
-> There are differences in the availability of network services between the traditional hub-and-spoke model and the Virtual WAN-managed secured hubs model. For example, in a Virtual WAN hub, the Azure Firewall public IP can't be taken from a public IP prefix and can't have Azure DDoS Protection enabled. When you choose your model, consider your requirements across all five pillars of the Well-Architected Framework.
+> The availability of network services differs between the traditional hub-and-spoke model and the Virtual WAN-managed secured hubs model. For example, in a Virtual WAN hub, the Azure Firewall public IP can't come from a public IP prefix and can't have Azure DDoS Protection enabled. When you choose your model, consider your requirements across all five pillars of the Well-Architected Framework.
 
 ### Recommendations
 
@@ -93,7 +93,7 @@ vulnerabilities and controls to improve the security posture. Extend the
 strategy to include more approaches as needed.
 
 > [!div class="checklist"]
->- **Send all internet traffic through a firewall or a network virtual appliance (NVA)** to detect and block threats. Configure supported non-Microsoft software as a service (SaaS) security providers within Firewall Manager if you want to use these solutions to protect outbound connections.
+>- **Send all internet traffic through a firewall or a network virtual appliance (NVA)** to detect and block threats. Configure supported non-Microsoft software as a service (SaaS) security providers within Firewall Manager if you want to use the providers to protect outbound connections.
 >
 >   Configure user-defined routes (UDRs) to force traffic through Azure Firewall. If you can't apply a UDR, and you only require web traffic redirection, consider using Azure Firewall as an explicit proxy.
 >
@@ -101,9 +101,9 @@ strategy to include more approaches as needed.
 >
 >   For more information, see [Apply firewalls at the edge](../security/networking.md#apply-firewalls-at-the-edge).
 >
->- **Establish network perimeters** to control the blast radius, obfuscate workload resources, and block unexpected, prohibited, and unsafe access. Create rules for Azure Firewall policies based on least-privilege access criteria. Enable an Azure Firewall (DNS) proxy configuration.
+>- **Establish network perimeters** to control the blast radius, obfuscate workload resources, and block unexpected, prohibited, and unsafe access. Create rules for Azure Firewall policies based on least-privilege access criteria. To add an extra layer of security, enable an Azure Firewall DNS proxy configuration.
 >
->   Use fully qualified domain name (FQDN) filtering in network rules. Use service tags in network rules or FQDN tags in application rules to provide selective access to specific Microsoft services.
+>   To provide selective access to specific Microsoft services, use fully qualified domain name (FQDN) filtering or service tags in network rules or use FQDN tags in application rules.
 >
 >   For more information, see [Enhance with networking as a perimeter](../security/segmentation.md#enhance-with-networking-as-a-perimeter).
 >
