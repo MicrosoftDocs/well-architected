@@ -101,6 +101,8 @@ strategy to include more approaches as needed.
 >
 >- **Establish network perimeters** to control the blast radius, obfuscate workload resources, and block unexpected, prohibited, and unsafe access. Create [rules for Azure Firewall policies](/azure/firewall/rule-processing#rule-processing-using-firewall-policy) based on [least-privilege access](/security/zero-trust/zero-trust-overview#guiding-principles-of-zero-trust) criteria. To add an extra layer of security, enable an Azure Firewall DNS proxy configuration.
 >
+>   Set the public IP address to *None* to deploy a fully private data plane when you configure Azure Firewall in forced tunneling mode. This approach doesn't apply to Virtual WAN.
+>
 >   To provide selective access to specific Microsoft services, use [fully qualified domain name (FQDN) filtering](/azure/firewall/fqdn-filtering-network-rules#how-it-works) or [service tags](/azure/firewall/service-tags) in network rules, or use [FQDN tags](/azure/firewall/fqdn-tags) in application rules.
 >
 >   For more information, see [Enhance with networking as a perimeter](../security/segmentation.md#enhance-with-networking-as-a-perimeter).
