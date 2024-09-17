@@ -250,7 +250,7 @@ You can use Microsoft Entra ID for authentication and authorization of custom ap
 
 You can stay current by visiting [What's new in Microsoft Entra ID](/azure/active-directory/fundamentals/whats-new).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Microsof Microsoft Entra ID is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Microsoft. However, the rich feature set of Microsoft Entra outweighs the risk of using custom solutions.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Microsoft Entra ID is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Microsoft. However, the rich feature set of Microsoft Entra outweighs the risk of using custom solutions.
 
 Azure supports open protocols like OAuth2 and OpenID Connect. We recommend that you use these standard authentication and authorization mechanisms instead of designing your own flows.
 
