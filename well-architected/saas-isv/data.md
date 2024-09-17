@@ -163,7 +163,7 @@ You're responsible for ensuring the confidentiality and integrity of your custom
 |Use managed identities and Microsoft Entra ID for authentication. Avoid the use of database keys or credentials.|Managed identities eliminate the need for database keys or credentials, reducing the risk of credential theft and simplifying access management.|
 |When working with shared data stores, ensure the application scopes all requests to a single tenant by including the tenant identifier in `WHERE` clauses.|This helps mitigate the risk of cross-tenant data leakage or impersonation.|
 |Plan your data retention strategy based on compliance and business needs. Avoid keeping unnecessary historical data. For long-term retention, move data from primary stores to archival storage.|By avoiding unnecessary retention, you maintain a smaller surface area.|
-|Use data store features to support your data lifecycle needs, such setting the [time-to-live (TTL)](/azure/cosmos-db/nosql/time-to-live) on documents in Azure Cosmos DB.|This ensures efficient data lifecycle management, reduces manual intervention, and optimizes storage by automatically archiving or deleting outdated data.|
+|Use data store features to support your data lifecycle needs.<br><br>In Azure Cosmos DB, set the [time-to-live (TTL)](/azure/cosmos-db/nosql/time-to-live) on documents. In Azure SQL, implement a sliding window strategy using [table partitioning](/sql/relational-databases/partitions/partitioned-tables-and-indexes) to minimize the impact of the archival process on the database.|This ensures efficient data lifecycle management, optimizes storage by archiving or deleting outdated data, and reduces manual intervention where possible.|
 
 ## Operations
 
