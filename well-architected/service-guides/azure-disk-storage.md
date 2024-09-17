@@ -15,7 +15,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Disk Storage
 
-Azure managed disks are block-level storage volumes managed by Azure and used with Azure Virtual Machines.  Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest.
+Azure managed disks are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest.
 
 This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options), and have chosen Azure Disk Storage as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/service-guides/virtual-machines).
 
@@ -35,24 +35,24 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 >
 > - **Use failure mode analysis**: Minimize points of failure by considering internal dependencies such as the availability of virtual networks or Azure Key Vault.
 >
-> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). Disk Storage SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. You can also increase the availability of your disks by using zone-redundant storage disks. Consider the impact of a regional outage, the potential for data loss and the time required to restore access after an outage. Consider the availability of any internal dependencies that you identified as part of your failure mode analysis.
+> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). Disk Storage SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. You can also increase the availability of your disks by using zone-redundant storage disks. Consider the impact of a regional outage, the potential for data loss, and the time required to restore access after an outage. Consider the availability of any internal dependencies that you identified as part of your failure mode analysis.
 >
-> - **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to access data during an outage. 
+> - **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to access data during an outage.
 >
-> - **Create a recovery plan**: Consider data protection features, backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. for potential [data loss and data inconsistencies](/azure/storage/common/storage-disaster-recovery-guidance) as well as the [time and cost of failing over](/azure/storage/common/storage-disaster-recovery-guidance). Using these backup solutions increases your costs.
+> - **Create a recovery plan**: Evaluate data protection features, backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. for potential [data loss and data inconsistencies](/azure/storage/common/storage-disaster-recovery-guidance) as well as the [time and cost of failing over](/azure/storage/common/storage-disaster-recovery-guidance). Using these backup solutions increases your costs.
 >
-> - **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity. 
+> - **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity.
 >
 > - **Strengthen the resiliency and recoverability of your workload**: Implement self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. For Premium SSD managed disks, enable on-demand bursting for eligible disks. This will help prevent those disks from throttling but, will increase costs.
 
 ### Recommendations
 
-*Use these recommendations* *to* *optimize* *reliability:*
+*Use these recommendations to optimize reliability:*
 
 | **Recommendation** | **Benefit** |
 |---|---|
 | For maximum availability and durability, use a [zone-redundant storage](/azure/storage/common/storage-redundancy) (ZRS) disk. | Both configuration options replicate across different availability zones and enable applications to continue reading data during an outage. See [Durability and availability by outage scenario](/azure/storage/common/storage-redundancy) and [Durability and availability parameters](/azure/storage/common/storage-redundancy). |
-| Review the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), then decide on, and implement a backup solution | For managed solutions, you should use either Azure Backup or Azure Site Recovery. If you need to curate your own backup solution, use either restore points or snapshots. As a managed solution, Azure Backup is the ideal option for backing up your data. For taking existing data and creating other VMs from it, restore points is ideal, but if you only want to preserve data, incremental snapshots will be suitable. For more information, see [Backup and disaster recovery for Azure managed disks](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). |
+| Review the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), then decide on, and implement a backup solution | For managed solutions, you should use either Azure Backup or Azure Site Recovery. If you need to curate your own backup solution, use either restore points or snapshots. As a managed solution, Azure Backup is the ideal option for backing up your data. For taking existing data and creating other VMs from it, restore points is ideal, but if you only want to preserve data, incremental snapshots are suitable. For more information, see [Backup and disaster recovery for Azure managed disks](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). |
 | Use [Availability sets](/azure/virtual-machines/availability-set-overview) when creating your VMs | Increase the availability of your disk in the event of outages. |
 | [Shared disks](/azure/virtual-machines/disks-shared) allow you to continue to access data if a VM in the cluster goes down. | |
 | If you're managing your own snapshots, [copy them across regions](/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions?tabs=azure-cli). | Easily transfer data from one region to another. If you can't use Azure Site Recovery, you can still use copy snapshots across regions to create disaster recovery backups in other regions. |
@@ -95,7 +95,6 @@ Use these recommendations to optimize security:
 | Microsoft discourages the use of SAS tokens. If you must create one, then review this list of [SAS best practices](/azure/storage/common/storage-sas-overview) before you create and distribute it. | Best practices can help you prevent a SAS token from being leaked and quickly recover from leak should one occur. |
 | [Disallow Shared Key authorization](/azure/storage/common/shared-key-authorization-prevent). This disables not only account key access, but also service and account SAS tokens as those types of tokens are based on account keys. | Only secured requests that are authorized with Microsoft Entra ID will succeed. |
 | Consider using your own encryption key to protect the data in your storage account. | [Customer-managed keys for Azure Storage encryption](/azure/storage/common/customer-managed-keys-overview) provides greater flexibility and control. For example, you can store encryption keys in Azure Key Vault and automatically rotate them. |
-| | |
 
 ## Cost optimization
 
@@ -108,7 +107,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 >
 > - **Estimate the cost of capacity and operations**: Model the costs associated with disk type, transactions (if applicable), and capabilites by using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). Use fields to compare the cost associated with various regions, account type, namespace type, and redundancy configurations.
 >
-> - **Choose a billing model**: Evaluate whether using [a commitment-based model](/azure/storage/blobs/storage-blob-reserved-capacity) is more cost-efficient than using a consumption-based model. If you are unsure about how much capacity you'll need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
+> - **Choose a billing model**: Evaluate whether using [a commitment-based model](/azure/virtual-machines/disks-reserved-capacity) is more cost-efficient than using a consumption-based model. If you are unsure about how much capacity you'll need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
 >
 >
 > - **Decide which features you need**: Some features such as snapshots or on-demand bursting incur additional transaction and capacity costs as well as other charges. For example, if you enable snapshots, you're billed for the amount of storage used by each snapshot. As you decide which capabilities your disks need, review the pricing and billing sections in articles that describe those capabilities.
@@ -126,7 +125,7 @@ Use these recommendations to optimize for cost:
 | **Recommendation** | **Benefit** |
 |---|---|
 | Carefully select the appropriate disk types for your workloads. Read about the available disk types and their features before you deploy an environment and then estimate costs using the Azure calculator. | One of the best ways to keep costs down is to plan for exactly what your requirements are, model the environment in the Azure calculator to have a cost effective deployment. |
-| Use Reserved Capacity for Premium SSD disks. | Using Reserved Capacity for your Premium SSDs will lower the total cost of your environment since you'll receive a discount by pre-paying for your capacity. |
+| Use Reserved Capacity for Premium SSD disks. | Using Reserved Capacity for your Premium SSDs lowers the total cost of your environment since you receive a discount by prepaying for your capacity. |
 | For existing disks, assess whether the features they offer can improve performance without switching to another disk size or type. | Depending on your environment and needs, switching to a different disk type can incur more costs than enabling a feature that increases the performance of an existing disk, like disk bursting or changing performance tiers. |
 
 ## Performance efficiency
@@ -141,8 +140,6 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 >
 > - **Reduce travel distance between client and server**: Place data in regions nearest to connecting clients (ideally in the same region). Default network configurations provide the best performance. Modify network settings only to improve security. In general, network settings won't decrease travel distance and won't improve performance.
 >
-> - **Optimize the performance of data clients**: [Choose a data transfer tool](/azure/storage/common/storage-choose-data-transfer-solution) that is most appropriate for the data size, transfer frequency, and bandwidth of your workloads. Some tools such as [AzCopy](/azure/storage/common/storage-use-azcopy-v10) are optimized for performance and require little intervention. Consider the [Factors influencing latency](/azure/storage/blobs/storage-blobs-latency), and fine-tune performance by reviewing the performance optimization guidance that is published with each tool.
->
 > - **Collect performance data**: Monitor your disks and VMs to identify performance bottlenecks that occur from throttling. See [Storage IO Metrics](/azure/virtual-machines/disks-metrics).
 >
 > - **Benchmark your disks**: Create a test environment and use the [Benchmark a disk](/azure/virtual-machines/disks-benchmarks) to determine whether it meeting your needs and expectations.
@@ -154,10 +151,10 @@ Use these recommendations to optimize for performance:
 | **Recommendation** | **Benefit** |
 |---|---|
 | Create disks in the same region as the VM they'll be attached to. If clients from a different region don't require the same data, then create a separate account in each region. If clients from a different region require only some data on a disk, consider using an object replication policy to asynchronously copy relevant objects to a disk or storage account in the other region.  | Reducing the physical distance between VMs and their disks, services, and on-premises clients, can improve performance and reduce network latency.  For applications hosted in Azure, this also reduces cost as bandwidth usage within a single region is free. |
-| For workloads and solutions that require the best latency, e-commerce or databases, use Premium SSD disks as your OS disk and either [Ultra Disks](/azure/virtual-machines/disks-types#ultra-disks) or [Premium SSD v2 disks](/azure/virtual-machines/disks-types#premium-ssd-v2) as your data disks. | This configuration offers the highest performance as well as the greatest reliability and highest SLA. |
+| For workloads and solutions that require the best latency, e-commerce, or databases, use Premium SSD disks as your OS disk and either [Ultra Disks](/azure/virtual-machines/disks-types#ultra-disks) or [Premium SSD v2 disks](/azure/virtual-machines/disks-types#premium-ssd-v2) as your data disks. | This configuration offers the highest performance and the greatest reliability and highest SLA. |
 | Use [Azure Metrics](/azure/virtual-machines/disks-metrics) to monitor your environment and ensure that your disks aren't being throttled, which leads to suboptimal performance and issues like increased latency. | To keep applications operating at their best, ensure they're on disks which aren't being throttled. For disks that are being throttled, evaluate whether changing to a larger disk size or changing to a more performant disk is better for your needs. For Premium SSD disks that are experiencing throttling, if you see short-term bursts of demand, [enable on-demand bursting](/azure/virtual-machines/disks-enable-bursting?tabs=azure-portal), for longer-term extended demand, [change the tier of the disk](/azure/virtual-machines/disks-change-performance) or evaluate if Premium SSD v2 or Ultra Disks better fit your needs. |
 | When uploading a VHD, use the [Add-AzVHD PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The [Add-AzVHD PowerShell command](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) automates most of the upload process for you, greatly streamlining it. |
-| For existing deployments that are either on-premises or in another public cloud provider, use [Azure Migrate](/azure/migrate/migrate-services-overview). | Azure Migrate can evaluate your deployment for you and provide curated suggestions for the best sizing of disks and VMs in an prospective Azure deployment. |
+| For existing deployments that are either on-premises or in another public cloud provider, use [Azure Migrate](/azure/migrate/migrate-services-overview). | Azure Migrate can evaluate your deployment for you and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
 
 ## **Operational excellence**
 
@@ -167,7 +164,7 @@ As you make design choices for Azure Disk Storage, review the [Design review che
 
 > [!div class="checklist"]
 >
-> - **Create maintenance and emergency recovery plans**: Consider data protection features, backup and restore operations. Select backup solutions that allow you to recover from regional disasters.
+> - **Create maintenance and emergency recovery plans**: Evaluate data protection features, backup and restore operations. Select backup solutions that allow you to recover from regional disasters.
 >
 > - **Create internal documentation**: Document your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Including attaching a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk?tabs=ubuntu) VMs or expanding a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu) VMs.
 >
