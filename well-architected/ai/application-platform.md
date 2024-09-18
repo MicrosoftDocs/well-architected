@@ -127,7 +127,7 @@ Azure Machine Learning is the recommended solution for the model training and fi
 
 Model hosting and inferencing functions make up the serve layer of the AI workload and those functions are performed with endpoints specific to the software that you choose, like NVIDIA Triton, TorchServe, TensorFlow Serving and many others. These model serving software solutions, in essence, are Python SDKs that are specialized in fronting a model with an API and adding some additional functionality specific to that solution. As such, you can either choose your hosting platform based upon your choice of software, or choose your software based upon your choice of hosting platform.
 
-When using SaaS or PaaS solutions with pre-packaged models - such as the large language models availalbe in Azure OpenAI - there will be fewer or no opportunities to select a serving software. Instead, the service that you are consuming will provide an API. This reduces the amount of choice in the process of creating a model deployment which comes with advantages (for example: a streamlined development process of your workload) and disadvantages (for example: reduced choice when it comes to how your application can call and interact with the model).
+When using SaaS or PaaS solutions with pre-packaged models - such as the large language models available in Azure OpenAI - there will be fewer or no opportunities to select a serving software. Instead, the service that you are consuming will provide an API. This reduces the amount of choice in the process of creating a model deployment which comes with advantages (for example: a streamlined development process of your workload) and disadvantages (for example: reduced choice when it comes to how your application can call and interact with the model).
 
 Fundamentally, the APIs for the serve layer are microservices, so you should follow the same practices for these APIs as other microservices in your environments. Where you host them, they should be containerized, [bulkheaded](/azure/architecture/patterns/bulkhead) from other services, and should have their own lifecycles independent of other services and APIs. That being said, serve layer APIs generally require significantly more GPU-based compute power and much larger container images than traditional APIs. 
 
@@ -167,7 +167,7 @@ Determine what identity and access controls are required for your endpoints. For
 
 Determine the required monitoring capabilities for your endpoints. Depending on the platform you may have limited access to logs and metrics, which may limit your ability to audit activities or detect malfunctions.
 
- - **What are the performance requirments for the platform?**
+ - **What are the performance requirements for the platform?**
 
 Inference latency is a common concern and different platforms come with different performance profiles. Serverless and PaaS services using a utility model can have "noisy neighbor" tendencies and often have no throughput guarantees. On the other hand, those same platforms may offer self-hosted that offer guaranteed throughput with a pre-purchasing model, or you could consider self-hosting on a Kubernetes to get predictable latency behavior.
 
@@ -205,7 +205,7 @@ For non-foundation models, consider the following recommendations:
 
 - Prefer Azure ML for with managed Compute Clusters for scenarios when PaaS or serverless solutions are not the best fit. Azure ML-managed compute supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. As the compute is managed by the service, day-2 operations are much easier than self-hosting. It also offers a wide selection of compute configurations and scaling capabilities.
 
-- If you choose to self-host your model on a Azure Kurbentes Service cluster [attached to Azure ML](/azure/machine-learning/how-to-attach-kubernetes-anywhere),  or another container-based platform, ensure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions in an effort to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements while avoiding over-provisioning.
+- If you choose to self-host your model on a Azure Kubernetes Service cluster [attached to Azure ML](/azure/machine-learning/how-to-attach-kubernetes-anywhere),  or another container-based platform, ensure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions in an effort to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements while avoiding over-provisioning.
 
 - You can also fully self-host your model using infrastructure as a service (IaaS) solutions, like [Azure Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/overview).
 
