@@ -11,11 +11,13 @@ ms.subservice: waf-workload-ai
 
 # Application platform for AI workloads on Azure
 
-The application hosting platform that your AI workload is deployed on must be carefully considered to ensure that your application runs efficiently, securely, and reliably. For the purposes of this workload guidance, the application platform is defined as the compute platform that:
+The application hosting platform that your AI workload is deployed on must be carefully considered to ensure that you can maximize efficiency, secure operations, and reliability. 
+This design area covers several different types of applications that may be relevant to your AI workload:
 
-1. Is used for model training.
-2. Is used for inferencing.
-3. Is used for exploratory data analysis (EDA)
+
+1. Exploratory data analysis (EDA)
+2. Model training
+3. Inferencing
 
 This article provides guidance on selecting the best platform for each of these functions to meet your business needs, but there are general recommendations that can be applied to all of them.
 
@@ -125,7 +127,9 @@ Azure Machine Learning is the recommended solution for the model training and fi
 
 Model hosting and inferencing functions make up the serve layer of the AI workload and those functions are performed with endpoints specific to the software that you choose, like NVIDIA Triton, TorchServe, TensorFlow Serving and many others. These model serving software solutions, in essence, are Python SDKs that are specialized in fronting a model with an API and adding some additional functionality specific to that solution. As such, you can either choose your hosting platform based upon your choice of software, or choose your software based upon your choice of hosting platform.
 
-Fundamentally, the APIs for the serve layer are microservices, so you should follow the same practices for these APIs as other microservices in your environments. They should be containerized, [bulkheaded](/azure/architecture/patterns/bulkhead) from other services, and should have their own lifecycles independent of other services and APIs. That being said, serve layer APIs generally require significantly more GPU-based compute power and much larger container images than traditional APIs. 
+When using SaaS or PaaS solutions with pre-packaged models - such as the large language models availalbe in Azure OpenAI - there will be fewer or no opportunities to select a serving software. Instead, the service that you are consuming will provide an API. This reduces the amount of choice in the process of creating a model deployment which comes with advantages (for example: a streamlined development process of your workload) and disadvantages (for example: reduced choice when it comes to how your application can call and interact with the model).
+
+Fundamentally, the APIs for the serve layer are microservices, so you should follow the same practices for these APIs as other microservices in your environments. Where you host them, they should be containerized, [bulkheaded](/azure/architecture/patterns/bulkhead) from other services, and should have their own lifecycles independent of other services and APIs. That being said, serve layer APIs generally require significantly more GPU-based compute power and much larger container images than traditional APIs. 
 
 This section provides guidance on capabilities to consider when selecting a model hosting and inferencing platform.
 
