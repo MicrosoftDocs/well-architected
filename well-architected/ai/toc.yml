@@ -10,7 +10,7 @@
       - name: Application design
         href: application-design.md
       - name: Application platform
-        href: appliation-platform.md
+        href: application-platform.md
       - name: Data design
         href: data-design.md
       - name: Training data design
