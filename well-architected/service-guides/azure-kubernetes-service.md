@@ -4,7 +4,7 @@ description: Provides a template for a Well-Architected Framework (WAF) article 
 author: schaffererin
 ms.author: schaffererin
 ms.topic: conceptual
-ms.service: azure-kubernetes-service
+ms.product: azure-kubernetes-service
 azure.category:
   - containers
 ---
