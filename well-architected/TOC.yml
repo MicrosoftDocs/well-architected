@@ -396,7 +396,7 @@
               href: service-guides/azure-netapp-files.md 
             - name: Disks
               href: service-guides/azure-disks-cost-optimization.md
-            - name: Storage Accounts
+            - name: Storage accounts
               items:
                 - name: Reliability
                   href: service-guides/storage-accounts/reliability.md
