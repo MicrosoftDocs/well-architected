@@ -89,7 +89,7 @@ You should also keep in mind that even if you have more than one customer using 
 
 The following diagram depicts the relationship between your application, your application identity provider, and the downstream identity providers you may choose to implement with identity federation.  
 
-![](./images/federated-identity.drawio.png)
+:::image type="content" source="./images/federated-identity.drawio.png" alt-text="Diagram that shows an application trusting a single identity provider, which in turn federates with multiple customer identity providers.":::
 
 ### Design considerations
 
