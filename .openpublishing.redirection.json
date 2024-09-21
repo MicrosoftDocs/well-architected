@@ -921,6 +921,21 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/service-guides/application-insights/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},		
+		{
 			"source_path": "well-architected/services/monitoring/log-analytics/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",
 			"redirect_document_id": false
