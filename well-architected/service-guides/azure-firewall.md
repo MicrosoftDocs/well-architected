@@ -57,12 +57,12 @@ as needed.
 
 > [!div class="checklist"]
 > 
-> - **Review the list of Azure Firewall *known issues*.** Azure Firewall products maintain an updated list of [known issues](/azure/firewall/firewall-known-issues). This list contains important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies.
+> - **Review the list of Azure Firewall *known issues*.** Azure Firewall products maintain an updated list of [known issues](/azure/firewall/firewall-known-issues#azure-firewall-standard). This list contains important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies.
 >
 >  - **Ensure that your Azure Firewall policy adheres to Azure Firewall limits and recommendations.** The policy structure has limits, including the number of rules and rule collection groups, total policy size, source destinations, and target destinations. Be sure to compose your policy and stay below the [documented thresholds](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits).
 > - **Deploy Azure Firewall across multiple availability zones** for a higher service-level agreement (SLA). Azure Firewall provides different SLAs depending on whether you deploy the service in a single availability zone or [multiple zones](/azure/reliability/availability-zones-overview#availability-zones). For more information, see [SLAs for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 > - **Deploy an Azure Firewall instance in each region** in multi-region environments. For traditional hub-and-spoke architectures, see [Multi-region considerations](/azure/firewall/firewall-multi-hub-spoke). For secured Azure Virtual WAN hubs, configure [routing intent and policies](/azure/virtual-wan/how-to-routing-policies) to secure inter-hub and branch-to-branch communications. For failure-resistant and fault-tolerant workloads, consider instances of Azure Firewall and Azure Virtual Network as regional resources.
-> - **Monitor Azure Firewall metrics and the resource health state.** Closely monitor [key metrics](/azure/firewall/logs-and-metrics#metrics) that indicate the Azure Firewall health state, such as *throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics. Azure Firewall also integrates with [Azure Resource Health](/azure/service-health/resource-health-overview). Use the Resource Health check to view the health status of Azure Firewall and address service problems that might affect your Azure Firewall resource.
+> - **Monitor Azure Firewall metrics and the resource health state.** Closely monitor [key metrics](/azure/firewall/monitor-firewall-reference#metrics) that indicate the Azure Firewall health state, such as *throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics. Azure Firewall also integrates with [Azure Resource Health](/azure/service-health/resource-health-overview). Use the Resource Health check to view the health status of Azure Firewall and address service problems that might affect your Azure Firewall resource.
 > - **Deploy Azure Firewall in hub virtual networks or as part of Virtual WAN hubs.** 
 
 > [!NOTE]
@@ -192,7 +192,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 | Use the built-in [Azure Firewall workbook](https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-firewall-new-monitoring-and-logging-updates/ba-p/3897897). | Use the Azure Firewall workbook to extract valuable insights from Azure Firewall events, analyze your application and network rules, and examine statistics about firewall activities across URLs, ports, and addresses. |
 |[Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics), and create alerts for Azure Firewall capacity. Create alerts to monitor *Throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics.|Set up alerts for key events to notify operators before potential problems arise, help prevent disruptions, and initiate quick capacity adjustments.|
 | Regularly review the [policy analytics dashboard](/azure/firewall/policy-analytics) to identify potential problems. | Use policy analytics to analyze the impact of your Azure Firewall policies. Identify potential problems in your policies, such as meeting policy limits, improper rules, and improper IP groups usage. Get recommendations to improve your security posture and rule-processing performance. |
-| Understand KQL queries so you can use Azure Firewall logs to quickly analyze and troubleshoot problems. Azure Firewall provides [sample queries](/azure/firewall/firewall-structured-logs#structured-log-queries).  | Use KQL queries to quickly identify events inside your firewall and check to see which rule was triggered or which rule is allowing or blocking a request. |
+| Understand KQL queries so you can use Azure Firewall logs to quickly analyze and troubleshoot problems. Azure Firewall provides [sample queries](/azure/firewall/firewall-structured-logs#structured-log-queries).  | Use KQL queries to quickly identify events inside your firewall and check to see which rule is triggered or which rule allows or blocks a request. |
 
 ## Performance Efficiency
 
@@ -205,9 +205,9 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Firewall.
 
 > [!div class="checklist"]
-> - **Optimize your Azure Firewall configuration** in accordance with the Well-Architected Framework [recommendations](/azure/well-architected/performance-efficiency/optimize-code-infrastructure#optimize-infrastructure-performance) to optimize code and infrastructure and ensure peak operation. 
->  
->   To maintain an efficient and secure network, regularly review and optimize firewall rules. This practice helps ensure that your firewall configurations remain effective and up to date with the latest security threats. Assess policy requirements, and find opportunities to summarize IP ranges and URL list. Use web categories to allow or deny outbound access in bulk to streamline management and enhance security. Evaluate the performance impact of IDPS in *Alert and deny* mode because this configuration can affect network latency and throughput. Configure public IP addresses to support your SNAT port requirements. Follow these practices to create a robust and scalable network security infrastructure.
+> - **Optimize your Azure Firewall configuration** in accordance with the Well-Architected Framework [recommendations](/azure/well-architected/performance-efficiency/optimize-code-infrastructure#optimize-infrastructure-performance) to optimize code and infrastructure and ensure peak operation. To maintain an efficient and secure network, regularly review and optimize firewall rules. This practice helps ensure that your firewall configurations remain effective and up to date with the latest security threats.
+>
+>   Assess policy requirements, and find opportunities to summarize IP ranges and URL list. Use web categories to allow or deny outbound access in bulk to streamline management and enhance security. Evaluate the performance impact of IDPS in *Alert and deny* mode because this configuration can affect network latency and throughput. Configure public IP addresses to support your SNAT port requirements. Follow these practices to create a robust and scalable network security infrastructure.
 > - **Don't use Azure Firewall for intra-virtual network traffic control.** Use Azure Firewall to control the following types of traffic:
 >   - Traffic across virtual networks
 >   - Traffic between virtual networks and on-premises networks
@@ -216,10 +216,10 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   For intra-virtual network traffic control, use [network security groups](/azure/virtual-network/network-security-groups-overview).
 >
-> - **Warm up Azure Firewall properly before performance tests.** Create initial traffic that isn't part of your load tests 20 minutes before the test. Use diagnostics settings to capture scale-up and scale-down events. You can use the [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) service to generate the initial traffic so you can scale up Azure Firewall to the maximum number of instances.
+> - **Warm up Azure Firewall properly before performance tests.** Create initial traffic that isn't part of your load tests 20 minutes before your tests. Use diagnostics settings to capture scale-up and scale-down events. You can use the [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) service to generate the initial traffic so you can scale up Azure Firewall to the maximum number of instances.
 > - **Configure an Azure Firewall subnet with a /26 address space.** You need a dedicated subnet for Azure Firewall. Azure Firewall provisions more capacity as it scales.
 >    A /26 address space ensures that the firewall has enough IP addresses available to accommodate the scaling. Azure Firewall doesn't require a subnet that's larger than /26. Name the Azure Firewall subnet **AzureFirewallSubnet**.
-> - **Don't enable advanced logging if you don't need it.** Azure Firewall provides some advanced logging capabilities that might be expensive to keep active. Instead, you can use these capabilities for troubleshooting purposes only and for limited amounts of time. Disable capabilities when you don't need them. For example, [top flows and flow trace logs](/azure/firewall/enable-top-ten-and-flow-trace) are expensive and can cause excessive CPU and storage usage on the Azure Firewall infrastructure.
+> - **Don't enable advanced logging if you don't need it.** Azure Firewall provides some advanced logging capabilities that can incur significant costs to keep active. Instead, you can use these capabilities for troubleshooting purposes only and for limited amounts of time. Disable capabilities when you don't need them. For example, [top flows and flow trace logs](/azure/firewall/enable-top-ten-and-flow-trace) are expensive and can cause excessive CPU and storage usage on the Azure Firewall infrastructure.
 
 ### Recommendations
 
@@ -238,23 +238,11 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 
 Azure provides an extensive set of built-in policies related to Azure Firewall and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-- [Network interfaces should not have public IPs](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a86a26-fd1f-447c-b59d-e51f44264114). This policy denies the network interfaces which are configured with any public IP. Public IP addresses allow internet resources to communicate inbound to Azure resources, and Azure resources to communicate outbound to the internet.
+- [Network interfaces shouldn't have public IPs](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a86a26-fd1f-447c-b59d-e51f44264114). This policy denies network interfaces that are configured with a public IP. Public IP addresses allow internet resources to communicate inbound to Azure resources, and Azure resources can communicate outbound to the internet.
 
-- [All Internet traffic should be routed via your deployed Azure Firewall](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c). Azure Security Center has identified that some of your subnets aren't protected with a next generation firewall. Protect your subnets from potential threats by restricting access to them with Azure Firewall or a supported next generation firewall.
+- [All internet traffic should be routed via your deployed Azure Firewall instance](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c). Azure Security Center identifies that some of your subnets aren't protected with a next generation firewall. Protect your subnets from potential threats. Use Azure Firewall or a supported next generation firewall to restrict access to your subnets.
 
-- [Azure firewall policy should enable TLS inspection within application rules](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa58ac66d-92cb-409c-94b8-8e48d7a96596). Enabling TLS inspection is recommended for all application rules to detect, alert, and mitigate malicious activity in HTTPS. To learn more about TLS inspection with Azure Firewall, visit [https://aka.ms/fw-tlsinspect](https://aka.ms/fw-tlsinspect).
-
-- [Azure Firewall Premium should configure a valid intermediate certificate to enable TLS inspection](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F711c24bb-7f18-4578-b192-81a6161e1f17). Configure a valid intermediate certificate and enable Azure Firewall Premium TLS inspection to detect, alert, and mitigate malicious activity in HTTPS. To learn more about TLS inspection with Azure Firewall, visit [https://aka.ms/fw-tlsinspect](https://aka.ms/fw-tlsinspect).
-
-- [Bypass list of Intrusion Detection and Prevention System (IDPS) should be empty in Firewall Policy Premium](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff516dc7a-4543-4d40-aad6-98f76a706b50). Intrusion Detection and Prevention System (IDPS) Bypass List allows you to not filter traffic to any of the IP addresses, ranges, and subnets specified in the bypass list. However, enabling IDPS is recommended for all traffic flows to better identify known threats. To learn more about the Intrusion Detection and Prevention System (IDPS) signatures with Azure Firewall Premium, visit [https://aka.ms/fw-idps-signature](https://aka.ms/fw-idps-signature).
-
-- [Firewall Policy Premium should enable all IDPS signature rules to monitor all inbound and outbound traffic flows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F610b6183-5f00-4d68-86d2-4ab4cb3a67a5). Enabling all Intrusion Detection and Prevention System (IDPS) signature rules is recommended to better identify known threats in the traffic flows. To learn more about the Intrusion Detection and Prevention System (IDPS) signatures with Azure Firewall Premium, visit [https://aka.ms/fw-idps](https://aka.ms/fw-idps).
-
-- [Firewall Policy Premium should enable the Intrusion Detection and Prevention System (IDPS)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6484db87-a62d-4327-9f07-80a2cbdf333a). Enabling the Intrusion Detection and Prevention System (IDPS) allows you to monitor your network for malicious activity, log information about this activity, report it, and optionally attempt to block it. To learn more about the Intrusion Detection and Prevention System (IDPS) with Azure Firewall Premium, visit [https://aka.ms/fw-idps](https://aka.ms/fw-idps).
-
-- [Subscription should configure the Azure Firewall Premium to provide additional layer of protection](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff2c2d0a6-e183-4fc8-bd8f-363c65d3bbbf). Azure Firewall Premium provides advanced threat protection that meets the needs of highly sensitive and regulated environments. Deploy Azure Firewall Premium to your subscription and make sure all the service traffic are protected by Azure Firewall Premium. To learn more about Azure Firewall Premium, visit [https://aka.ms/fw-premium](https://aka.ms/fw-premium).
-
-For comprehensive governance, review the [Azure Policy built-in definitions for Azure Firewall](/azure/governance/policy/samples/built-in-policies#network) and other policies that might impact the security of the network.
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure Firewall](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect the security of the network.
 
 ## Azure Advisor recommendations
 
@@ -266,31 +254,26 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
-## Related resources
-
-- [Azure Firewall service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits)
-- [Azure security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline)
-
-
-Deploy an instance of Azure Firewall to see how it works:
-
-- [Deploy and configure Azure Firewall and policy by using the Azure portal](/azure/firewall/tutorial-firewall-deploy-portal-policy)
-- [Configure Azure Firewall in a Virtual WAN hub](/azure/virtual-wan/howto-firewall)
-
 ## Next steps
 
-Consider the following articles as resources that demonstrate the
-recommendations highlighted in this article.
+See the following resources that demonstrate the
+recommendations in this article.
 
-- Use the following reference architectures as examples of how you can
+- Use the following reference architectures as examples of how to
   apply this article's guidance to a workload:
-  - [Network-hardened web application with private connectivity to PaaS datastores](/azure/architecture/example-scenario/security/hardened-web-app)
+  - [Network-hardened web application that has private connectivity to PaaS data stores](/azure/architecture/example-scenario/security/hardened-web-app)
   - [Azure Firewall architecture overview](/azure/architecture/example-scenario/firewalls)
   - [Use Azure Firewall to help protect an Azure Kubernetes Service (AKS) cluster](/azure/architecture/example-scenario/aks-firewall/aks-firewall)
 
-- Build implementation expertise by using the following product documentation:
+- Use the following resources to improve your implementation expertise:
   - [Azure Firewall documentation](/azure/firewall)
   - [What is Firewall Manager?](/azure/firewall-manager/overview)
+
+- See other resources:
+   - [Azure Firewall service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits)
+   - [Azure security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline)
+   - [Use the Azure portal to deploy and configure Azure Firewall and policy](/azure/firewall/tutorial-firewall-deploy-portal-policy)
+   - [Configure Azure Firewall in a Virtual WAN hub](/azure/virtual-wan/howto-firewall)
 
 <!--additional links from the original article
 - [Create Azure Service Health alerts to be notified when Azure problems affect you](/azure/advisor/advisor-high-availability-recommendations#create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you)
