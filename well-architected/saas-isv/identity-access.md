@@ -1,16 +1,15 @@
 ---
-title: Identity and access management for SaaS workloads for ISVs
-description: TBD - Identity and access management.
-author: landonpierce 
-ms.author: landonpierce 
-ms.date: 9/13/2024 
+title: Identity and access management for SaaS workloads on Azure
+description: Learn about the identity platform considerations for SaaS workloads.
+author: landonpierce
+ms.author: landonpierce
+ms.date: 9/13/2024
 ms.topic: conceptual
 ---
 
-# Identity and access management for SaaS workloads for ISVs
+# Identity and access management for SaaS workloads on Azure
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
-
 
 This article describes the considerations for application identity that an Independent Software Vendor (ISV) might consider while designing their SaaS application. Application identity is one of the most important pieces of a SaaS workload. It is the first line of defense when it comes to protecting your customer's data, but it is often overlooked or not thought of until the end of a project. Do not make that mistake, as a lot of decisions you may make in other areas of your application will likely be based on your identity strategy.
 
