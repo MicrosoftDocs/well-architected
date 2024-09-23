@@ -53,14 +53,15 @@ as needed.
 Modern implementations of Application Insights store data in a [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview#overview-of-log-analytics-in-azure-monitor) workspace. For more information, see [Azure Well-Architected Framework perspective on Log Analytics](azure-log-analytics.md).
 
 > [!div class="checklist"]
-> Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
-> Choose the right deployment regions.
-> Determine which instrumentation method (i.e., autoinstrumentation or manual instrumentation) is best for your application and situation.
-> Configure sampling appropriately to capture all relevant data.
-> Review [service limits for Application Insights](/azure/azure-monitor/service-limits#application-insights) to understand restrictions on data collection and retention, and other aspects of the service.
-> Determine how critical the data is you're collecting and if it must be recoverable.
-> Ensure observability systems are healthy. Enable features in Application Insights like availability tests and custom metrics that send health data signals to your operations teams.
-> Plan for workspace resilience and recovery. Application Insights workspaces are regional, and while they do not have built-in support for cross-regional redundancy or replication, there are features for Business Continuity Disaster Recovery (BCDR) through continuous export to secondary Log Analytics workspaces.
+> 
+> - Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
+> - Choose the right deployment regions.
+> - Determine which instrumentation method (i.e., autoinstrumentation or manual instrumentation) is best for your application and situation.
+> - Configure sampling appropriately to capture all relevant data.
+> - Review [service limits for Application Insights](/azure/azure-monitor/service-limits#application-insights) to understand restrictions on data collection and retention, and other aspects of the service.
+> - Determine how critical the data is you're collecting and if it must be recoverable.
+> - Ensure observability systems are healthy. Enable features in Application Insights like availability tests and custom metrics that send health data signals to your operations teams.
+> - Plan for workspace resilience and recovery. Application Insights doesn't have built-in support for cross-regional redundancy or replication, but there are features for Business Continuity Disaster Recovery (BCDR) through continuous export to secondary Log Analytics workspaces.
 
 ### Recommendations
 
@@ -76,8 +77,8 @@ Modern implementations of Application Insights store data in a [Log Analytics](/
 | **Set up [availability tests](/azure/azure-monitor/app/availability?tabs=standard).** Proactively monitor and test the availability and responsiveness of your application from different and relevant regions around the globe. | Using availability tests and setting up alerts will help you minimize downtime. |
 | Use [Live Metrics stream](/azure/azure-monitor/app/live-stream?tabs=otel) to gain insights into application activity and performance. | Real-time insights into application activity and performance allow you to quickly identify and resolve issues. |
 | Set Up Diagnostic Settings | Configure streaming export of platform logs and metrics to the destination of your choice for better reliability monitoring. |
-| Upgrade to workspace-based resources. | Data is ingested more rapidly via [Log Analytics streaming ingestion](../app/convert-classic-resource.md#migrate-to-workspace-based-application-insights-resources), which could be critical in time-sensitive scenarios. |
-| Implement a resilient workspace design. | Use [best practices for Azure Monitor Logs](../best-practices-logs.md#best-practices-for-azure-monitor-logs) to ensure continuous and robust monitoring by minimizing disruptions. |
+| Upgrade to workspace-based resources. | Data is ingested more rapidly via [Log Analytics streaming ingestion](/azure/azure-monitor/app/convert-classic-resource.md#migrate-to-workspace-based-application-insights-resources), which could be critical in time-sensitive scenarios. |
+| Implement a resilient workspace design. | Use [best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs.md#best-practices-for-azure-monitor-logs) to ensure continuous and robust monitoring by minimizing disruptions. |
 
 ## Security
 
