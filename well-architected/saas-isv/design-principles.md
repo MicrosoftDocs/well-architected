@@ -19,14 +19,12 @@ But many ISVs, especially startup ISVs, operate with limited resources to minimi
 
 How you design a solution that operates at a low volume of scale differs from a high-scale solution. To support rapid growth, you should **design a SaaS workload architecture with flexibility and adaptability.** This article presents the underlying principles with consideration to that evolution of growth. **Consider all five Well-Architected Framework pillars together, including the tradeoffs.** There's a minimum standard across all pillars, so consider each one. If you don't apply these principles, you could introduce financial loss and reduce customer trust. 
 
- 
 ## Reliability
 
 |Design principle|Considerations|
 |---|---|
 |**Prioritize availability.**|Your solution *is* your business. Maintain high availability as much as practical. If your solution experiences an outage, the impact can affect not only your customers but also their customers.|
 |**Be explicit about service-level agreements (SLAs) that you offer your customers.**|When you create financially backed SLAs for your customers, make sure that you can meet them and that the components you depend on are compatible with them. Review the composite SLAs for underlying Azure services as part of your SLA design process. Don't make assumptions. Reflect your shared responsibility model in your SLAs.|
-
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reliability and cost.** To achieve high reliability, you often need to deploy extra resources. For example, you might distribute resources across multiple availability zones or regions. Some Azure services offer built-in geo-replication or inter-zone replication, but these features often come with high costs.
 >
@@ -39,7 +37,7 @@ How you design a solution that operates at a low volume of scale differs from a 
 |**Establish governance as the foundation for security.**|Establish good governance practices from the start rather than addressing problems later. Many factors affect security, such as how you manage roles, organize resources, and implement policies. Without robust governance, security controls don't protect the system. |
 |**Follow a cloud security baseline from day one.**|Expect security audits from your customers. Incorporate audit trails early in your design. |
 |**Isolate your customers, and isolate your segments.**|Use your tenancy model as a strategy for data isolation. Segment your deployments and environments. |
-|**Start with Zero Trust, and provide least access.**|Default to a position of no access. Introduce minimum access only when necessary. Use this strategy for identity management and network traffic. Regularly review flows through the system, and take action on anomalies. |
+|**Start with Zero Trust, and provide the least possible access.**|Default to a position of no access. Introduce minimum access only when necessary. Use this strategy for identity management and network traffic. Regularly review flows through the system, and take action on anomalies. |
 |**Avoid credentials where possible. If you must use credentials, protect them.**|Treat credentials as a liability. Use reputable identity providers and techniques that minimize credential storage. When unavoidable, protect credentials with secure cloud-native approaches. Handle customer credentials and secrets with the utmost care. |
 |**Adopt security as an ongoing process.**|Continuously reevaluate your security posture. Consider the evolving threat landscape, new capabilities and protocols, and updated compliance or regulatory requirements. |
 
@@ -61,6 +59,7 @@ How you design a solution that operates at a low volume of scale differs from a 
 |Design principle|Considerations|
 |---|---|
 |**Understand the shared responsibility model.**|Clearly define the responsibilities of your cloud provider, your customers, and your organization. Ensure that everyone knows who is responsible for which tasks.|
+|**Prepare to operate a solution on behalf of your customers.**|Set up your organization, team, processes, and tools to support operating SaaS at scale.|
 |**Adopt consistent processes.**|Use deployment stamps. Drive consistency across the stamp configuration and architecture. Automate or standardize processes. |
 |**Formalize exceptions or differences.**|Define different SKUs to meet varying needs. Use this method to avoid custom deployments, configurations, or code for different customers.|
 |**Roll out changes safely.**|Implement a safe deployment process that you can use for progressive exposure, constant monitoring, and rollback if problems arise. Use a consistent process for code, infrastructure, and configuration changes. Control the number of solution versions that you deploy at any given time.|
@@ -82,12 +81,3 @@ How you design a solution that operates at a low volume of scale differs from a 
 
 > [!div class="nextstepaction"]
 > [Design methodology for ISV workloads](design-methodology.md)
-
-
-
-
-
-
-
-
-
