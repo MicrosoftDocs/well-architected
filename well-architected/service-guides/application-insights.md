@@ -95,30 +95,30 @@ The [**Security design principles**](/azure/well-architected/security/security-p
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> * *RE:01 -* Review the Azure Monitor [security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline). This topic provides guidance on security best practices.
-> * *RE:02 -* Keep Application Insights instrumentation up-to-date. Refer to our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) for the Application Insights SDK. While there's no such guidance for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable), it's generally recommended to follow similar principles. Autoinstrumented applications don't require manual updates.
-> * *RE:03 -* Define a strategy for [handling personal data in Azure Monitor Logs and Application Insights](/azure/azure-monitor/logs/personal-data-mgmt). Preferably, stop collecting personal data or obfuscate, anonymize, or adjust collected data to exclude it from being considered *personal*. This reduces the risk of handling personal data and ensures compliance with data protection regulations.
-> * *RE:04 -* Determine the [appropriate number of Application Insights resources to deploy](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy).
-> * *RE:05 -* Use [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) to enable identity and acecss management (IAM), and to ensure only authenticated telemetry is ingested in your Application Insights resources. Note that using managed identities is a key security practice.
-> * *RE:06 -* Use [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to ensure your monitoring data is only accessed through authorized private networks.
-> * *RE:07 -* Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal). Data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to logs.
-> * *RE:09 -* Check the [Log Analytics WAF article](azure-log-analytics.md#design-checklist-for-security) to learn about securing the data you're collecting.
+> * *SE:01 -* Review the Azure Monitor [security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline). This topic provides guidance on security best practices.
+> * *SE:02 -* Keep Application Insights instrumentation up-to-date. Refer to our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) for the Application Insights SDK. While there's no such guidance for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable), it's generally recommended to follow similar principles. Autoinstrumented applications don't require manual updates.
+> * *SE:03 -* Define a strategy for [handling personal data in Azure Monitor Logs and Application Insights](/azure/azure-monitor/logs/personal-data-mgmt). Preferably, stop collecting personal data or obfuscate, anonymize, or adjust collected data to exclude it from being considered *personal*. This reduces the risk of handling personal data and ensures compliance with data protection regulations.
+> * *SE:04 -* Determine the [appropriate number of Application Insights resources to deploy](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy).
+> * *SE:05 -* Use [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) to enable identity and acecss management (IAM), and to ensure only authenticated telemetry is ingested in your Application Insights resources. Note that using managed identities is a key security practice.
+> * *SE:06 -* Use [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to ensure your monitoring data is only accessed through authorized private networks.
+> * *SE:07 -* Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal). Data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to logs.
+> * *SE:09 -* Check the [Log Analytics WAF article](azure-log-analytics.md#design-checklist-for-security) to learn about securing the data you're collecting.
 
 **Notes**
 
-* *RE:10, RE:10, and RE:12 don't apply to Security in Application Insights.*
-* *RE:08 is only part of Recommendations.*
+* *SE:10, SE:11, and SE:12 don't apply to Security in Application Insights.*
+* *SE:08 is only part of Recommendations.*
 
 ### Recommendations for Security
 
 | Recommendation | Benefit |
 |----------------|---------|
-| *RE:03 -* Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). Our recommendation is not to change that. However, if you do need to collect and store IP addresses, verify the collection doesn't break any compliance requirements or local regulations. | This behavior is by design to help avoid unnecessary collection of personal data and IP address location information. |
-| *RE:03 -* Regularly verify that the collection and handling of data, including IP addresses and personal data, [comply with relevant regulations](/azure/compliance/) such as GDPR. | Ensures ongoing compliance with data protection regulations and protects sensitive information. |
-| *RE:03 - (from Copilot)* If personal data must be collected, build a process using the purge API path and the existing query API to meet obligations to export and delete any personal data associated with a user. | Ensures that personal data can be managed effectively and in compliance with data protection regulations. |
-| *RE:04 -* Deploy separate Application Insights resources for different environments (e.g., development, testing, production). | This will ensure data isolation and security, and help in applying environment-specific configurations and access controls. |
-| *RE:04 -* Group Application Insights resources by application or service to simplify management and monitoring. | This approach allows for more granular control over data collection and access permissions. |
-| *RE:08 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code, which can improve security by ensuring that your application is consistently monitored without manual intervention. |
+| *SE:03 -* Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). Our recommendation is not to change that. However, if you do need to collect and store IP addresses, verify the collection doesn't break any compliance requirements or local regulations. | This behavior is by design to help avoid unnecessary collection of personal data and IP address location information. |
+| *SE:03 -* Regularly verify that the collection and handling of data, including IP addresses and personal data, [comply with relevant regulations](/azure/compliance/) such as GDPR. | Ensures ongoing compliance with data protection regulations and protects sensitive information. |
+| *SE:03 - (from Copilot)* If personal data must be collected, build a process using the purge API path and the existing query API to meet obligations to export and delete any personal data associated with a user. | Ensures that personal data can be managed effectively and in compliance with data protection regulations. |
+| *SE:04 -* Deploy separate Application Insights resources for different environments (e.g., development, testing, production). | This will ensure data isolation and security, and help in applying environment-specific configurations and access controls. |
+| *SE:04 -* Group Application Insights resources by application or service to simplify management and monitoring. | This approach allows for more granular control over data collection and access permissions. |
+| *SE:08 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code, which can improve security by ensuring that your application is consistently monitored without manual intervention. |
 
 ## Cost Optimization
 
