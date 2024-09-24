@@ -45,7 +45,7 @@ The [**Reliability design principles**](/azure/well-architected/resiliency/princ
 
 Use the following information to minimize the repercussions of a single component failing within Application Insights.
 
-### Design checklist
+### Design checklist for Reliability
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the `offering-specific-aspects`. Extend the strategy to include more approaches
 as needed.
@@ -64,23 +64,25 @@ Modern implementations of Application Insights store data in a [Log Analytics](/
 > * *RE:06 -* Plan for data ingetion growth appropriately. Monitor and adjust limits on sampling and data ingestion as traffic grows to avoid losing any data that would otherwise get lost in sampling or exceed the daily cap.
 > * *RE:08 -* Validate network failures with NSG (Network Security Group) rules.
 > * *RE:09 -* Use infrastructure as a service and leverage [ARM and Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create alerts, dashboard, and queries. This will ensure a quick recovery in case of service failure.
-> * *RE:10 - Not part of checklist*
 > * *Other -* Keep Log Analytics as a critical dependency on Application Insights when evaluating your metrics.
 
-*RE:05 and RE:10 don't apply to Reliability. RE:07 is only part of Recommendations.*
+**Notes**
 
-### Recommendations
+* *RE:05 and RE:10 don't apply to Reliability in Application Insights.*
+* *RE:07 is only part of Recommendations.*
+
+### Recommendations for Reliability
 
 | Recommendation | Benefits |
 |----------------|----------|
 | *RE:01 -* **Use different Application Insights resources for different development stages of your application.** For example, one Application Insights instance for staging and one for production. | Using multiple Application Insights resources will prevent mixing telemetry from the new version and the already released version of your application. |
 | *RE:01 -* **Use a single Application Insights resource for traces across services.** For example, if you want to trace a request from service A to service B, both services should send telemetry to the same Application Insights resource. | This will allow you to get a hollistic picture and visualize requests across services on the [Application Map](/azure/azure-monitor/app/app-map?tabs=net) in Application Insights. |
 | *RE:01 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code. |
-| *RE:01 -* Upgrade from classic to workspace-based Application Insights resources. | Data is ingested more rapidly via [Log Analytics streaming ingestion](/azure/azure-monitor/app/convert-classic-resource.md#migrate-to-workspace-based-application-insights-resources), which could be critical in time-sensitive scenarios. |
+| *RE:01 -* Upgrade from classic to workspace-based Application Insights resources. | Data is ingested more rapidly via [Log Analytics streaming ingestion](/azure/azure-monitor/app/convert-classic-resource), which could be critical in time-sensitive scenarios. |
 | *RE:02 -* **Identify the sample rate and events you want to gather from various flows.** For highly critial data, adjust the sample rate to capture more data. | Sampling is the recommended way to reduce telemetry traffic and throttling while preserving a statistically correct analysis of application data. |
 | *RE:04 -* Use [diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings) to export platform logs and metrics to the destination of your choice (e.g., a storage account) for backup and recovery purposes. | ... |
 | *RE:07 -* For [standard availability tests](/azure/azure-monitor/app/availability?tabs=standard) use multiple regions and enable the *retry* feature. | ... |
-| *Other -* Implement a resilient workspace design by using [best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs.md#best-practices-for-azure-monitor-logs). | This will ensure continuous and robust monitoring by minimizing disruptions. |
+| *Other -* Implement a resilient workspace design by using [best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs). | This will ensure continuous and robust monitoring by minimizing disruptions. |
 
 ## Security
 
@@ -88,18 +90,35 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights. Use the following information to maximize the security of Application Insights and ensure that only authorized users access collected data.
 
-### Design checklist
+### Design checklist for Security
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> - Review instances where customer data is captured in your application.
+> * *RE:01 -* Review the Azure Monitor [security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline). This topic provides guidance on security best practices.
+> * *RE:02 -* Keep Application Insights instrumentation up-to-date. Refer to our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) for the Application Insights SDK. While there's no such guidance for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable), it's generally recommended to follow similar principles. Autoinstrumented applications don't require manual updates.
+> * *RE:03 -* Define a strategy for [handling personal data in Azure Monitor Logs and Application Insights](/azure/azure-monitor/logs/personal-data-mgmt). Preferably, stop collecting personal data or obfuscate, anonymize, or adjust collected data to exclude it from being considered *personal*. This reduces the risk of handling personal data and ensures compliance with data protection regulations.
+> * *RE:04 -* Determine the [appropriate number of Application Insights resources to deploy](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy).
+> * *RE:05 -* Use [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) to enable identity and acecss management (IAM), and to ensure only authenticated telemetry is ingested in your Application Insights resources. Note that using managed identities is a key security practice.
+> * *RE:06 -* Use [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to ensure your monitoring data is only accessed through authorized private networks.
+> * *RE:07 -* Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal). Data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to logs.
+> * *RE:09 -* Check the [Log Analytics WAF article](azure-log-analytics.md#design-checklist-for-security) to learn about securing the data you're collecting.
 
-### Recommendations
+**Notes**
+
+* *RE:10, RE:10, and RE:12 don't apply to Security in Application Insights.*
+* *RE:08 is only part of Recommendations.*
+
+### Recommendations for Security
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Review instances where customer data is captured in your application. | We don't recommend collecting customer data in Application Insights, although it can be unavoidable. It's up to you and your company to determine the strategy you'll use to handle your private data. |
+| *RE:03 -* Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). Our recommendation is not to change that. However, if you do need to collect and store IP addresses, verify the collection doesn't break any compliance requirements or local regulations. | This behavior is by design to help avoid unnecessary collection of personal data and IP address location information. |
+| *RE:03 -* Regularly verify that the collection and handling of data, including IP addresses and personal data, [comply with relevant regulations](/azure/compliance/) such as GDPR. | Ensures ongoing compliance with data protection regulations and protects sensitive information. |
+| *RE:03 - (from Copilot)* If personal data must be collected, build a process using the purge API path and the existing query API to meet obligations to export and delete any personal data associated with a user. | Ensures that personal data can be managed effectively and in compliance with data protection regulations. |
+| *RE:04 -* Deploy separate Application Insights resources for different environments (e.g., development, testing, production). | This will ensure data isolation and security, and help in applying environment-specific configurations and access controls. |
+| *RE:04 -* Group Application Insights resources by application or service to simplify management and monitoring. | This approach allows for more granular control over data collection and access permissions. |
+| *RE:08 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code, which can improve security by ensuring that your application is consistently monitored without manual intervention. |
 
 ## Cost Optimization
 
@@ -109,7 +128,7 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 For more information on how data charges are calculated for the underlying Log Analytics workspaces of your Application Insights resources, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/cost-usage).
 
-### Design checklist
+### Design checklist for Cost Optimization
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md)
 for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
@@ -118,7 +137,7 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 >
 > * ...
 
-### Recommendations
+### Recommendations for Cost Optimization
 
 | Recommendation | Benefit |
 |:---------------|:--------|
@@ -130,7 +149,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Design checklist for Operational Excellence
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Application Insights.
 
@@ -138,7 +157,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > * ...
 
-### Recommendations
+### Recommendations for Operational Excellence
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -150,7 +169,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Design checklist for Performance Efficiency
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Application Insights.
 
@@ -165,7 +184,7 @@ Start your design strategy based on the [design review checklist for Performance
 > * Use Live Metrics stream and alerts.
 > * Smart Detection, queries, dashboards.
 
-### Recommendations
+### Recommendations for Performance Efficiency
 
 | Recommendation | Benefit |
 |:---------------|:--------|
