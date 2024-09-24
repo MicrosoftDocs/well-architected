@@ -36,13 +36,19 @@ In the cloud, we acknowledge that failures happen. Instead of trying to prevent 
 As you make design choices for Application Gateway, review the [Reliability design principles](../resiliency/principles.md).
 
 > [!div class="checklist"]
-> - Deploy the instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant), where available.
-> - Use Application Gateway with Web Application Firewall (WAF) within a virtual network to protect inbound `HTTP/S` traffic from the Internet.
-> - In new deployments, use Azure Application Gateway v2 unless there is a compelling reason to use Azure Application Gateway v1.
-> - Plan for rule updates
-> - Use health probes to detect backend unavailability
-> - Review the impact of the interval and threshold settings on health probes
-> - Verify downstream dependencies through health endpoints
+>
+> - **Use Azure Application Gateway v2**. In new deployments, use Azure Application Gateway v2 unless there is a compelling reason to use Azure Application Gateway v1.
+>
+> - **Build redundancy in your design**. Build redundancy in the Azure Application Gateway deployment by spreading instances across availability zones to improve fault tolerance. Traffic is routed to other zones if one zone fails. For more information, see  [Recommendations for using availability zones and regions](/azure/well-architected/reliability/regions-availability-zones).
+> - **Plan for rule updates**. Plan enough time for rule updates and other configuration changes before accessing Application Gateway or making further changes. For example, removing servers from backend pool might take some time because they have to drain existing connections.
+> - **Implement the health endpoint monitoring pattern**. Your application should expose health endpoints, which aggregate the state of the critical services and dependencies that your application needs to serve requests. Azure Application Gateway health probes use the endpoint to detect the health of servers in the backend pool. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
+> - **Evaluate the impact of the interval and threshold settings on health probes**. The health probe sends requests to the configured endpoint at a set interval. Also, there's a threshold of failed requests that will be tolerated before the backend is marked unhealthy. These numbers present a trade-off.
+>   - Setting a higher interval puts a higher load on your service. Each Application Gateway instance sends its own health probes, so 100 instances every 30 seconds means 100 requests per 30 seconds.
+>   - Setting a lower interval leaves more time before an outage is detected.
+>   - Setting a low unhealthy threshold might mean that short, transient failures might take down a backend.
+>   - Setting a high threshold it can take longer to take a backend out of rotation.
+> - **Verify downstream dependencies through health endpoints**. Suppose each backend has its own dependencies to ensure failures are isolated. For example, an application hosted behind Application Gateway might have multiple backends, each connected to a different database (replica). When such a dependency fails, the application might be working but won't return valid results. For that reason, the health endpoint should ideally validate all dependencies. 
+>   Keep in mind that if each call to the health endpoint has a direct dependency call, that database would receive 100 queries every 30 seconds instead of 1. To avoid this, the health endpoint should cache the state of the dependencies for a short period of time.
 
 ### Recommendations
 
@@ -50,11 +56,9 @@ Explore the following table of recommendations to optimize your Application Gate
 
 | Recommendation | Benefit |
 |--------|----|
-| Plan for rule updates | Plan enough time for updates before accessing Application Gateway or making further changes. For example, removing servers from backend pool might take some time because they have to drain existing connections. |
-| Use health probes to detect backend unavailability | If Application Gateway is used to load balance incoming traffic over multiple backend instances, we recommend the use of health probes. These will ensure that traffic is not routed to backends that are unable to handle the traffic. |
-| Review the impact of the interval and threshold settings on health probes | The health probe sends requests to the configured endpoint at a set interval. Also, there's a threshold of failed requests that will be tolerated before the backend is marked unhealthy. These numbers present a trade-off.<br><br>- Setting a higher interval puts a higher load on your service. Each Application Gateway instance sends its own health probes, so 100 instances every 30 seconds means 100 requests per 30 seconds.<br>- Setting a lower interval leaves more time before an outage is detected.<br>- Setting a low unhealthy threshold might mean that short, transient failures might take down a backend.<br> - Setting a high threshold it can take longer to take a backend out of rotation. |
-| Verify downstream dependencies through health endpoints | Suppose each backend has its own dependencies to ensure failures are isolated. For example, an application hosted behind Application Gateway might have multiple backends, each connected to a different database (replica). When such a dependency fails, the application might be working but won't return valid results. For that reason, the health endpoint should ideally validate all dependencies. Keep in mind that if each call to the health endpoint has a direct dependency call, that database would receive 100 queries every 30 seconds instead of 1. To avoid this, the health endpoint should cache the state of the dependencies for a short period of time. |
-|When using Azure Front Door and Application Gateway to protect `HTTP/S` applications, use WAF policies in Front Door and lock down Application Gateway to receive traffic only from Azure Front Door.|Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if ModSec CRS 2.2.9, CRS 3.0 or CRS 3.1 rules are required, these rules can be only implemented on Application Gateway. Conversely, rate-limiting and geo-filtering are available only on Azure Front Door, not on AppGateway.|
+| Deploy the instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).<br><br>Check regional support for zone redundancy because not all regions offer this feature.|Your workload can withstand failures in a single zone when multiple instances are spread across zones. Traffic automatically shifts to healthy instances in other zones and maintains application reliability if one zone is unavailable.|
+| Use [Application Gateway health probes](/azure/application-gateway/application-gateway-probe-overview) to detect backend unavailability | This will ensure that traffic is not routed to backends that are unable to handle the traffic. Azure Application Gateway monitors the health of all the servers in its backend pool and automatically stops sending traffic to any server it considers unhealthy  |
+| Configure [rate-limiting rules](/azure/web-application-firewall/ag/rate-limiting-configure) available web application firewall (WAF) to limit clients from sending too much traffic to your application.| Rate limiting can help you avoid problems like a retry storm.|
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
@@ -65,14 +69,22 @@ Security is one of the most important aspects of any architecture. Application G
 ### Design checklist
 
 > [!div class="checklist"]
-> - Set up a TLS policy for enhanced security
-> - Use AppGateway for TLS termination
-> - Use Azure Key Vault to store TLS certificates
-> - When re-encrypting backend traffic, ensure the backend server certificate contains both the root and intermediate Certificate Authorities (CAs)
-> - Use an appropriate DNS server for backend pool resources
-> - Comply with all NSG restrictions for Application Gateway
-> - Refrain from using UDRs on the Application Gateway subnet
-> - Be aware of Application Gateway capacity changes when enabling WAF
+> - **Review the security baseline for [Azure Application Gateway](/security/benchmark/azure/baselines/azure-web-application-firewall-security-baseline).**
+>
+> - **Block common threats at the edge**. WAF is integrated with Azure Application Gateway. Enable WAF rules on the front ends to protect applications from common exploits and vulnerabilities at the network edge, closer to the attack source. For more information, see [Azure Web Application Firewall on Azure Application Gateway](/azure/web-application-firewall/afds/afds-overview).
+>
+>     Be aware of Application Gateway capacity changes when enabling WAF. When WAF is enabled, every request must be buffered by the Application Gateway until it fully arrives, checks if the request matches with any rule violation in its core rule set, and then forwards the packet to the backend instances. When there are large file uploads (30MB+ in size), it can result in a significant latency. Because Application Gateway capacity requirements are different with WAF, we do not recommend enabling WAF on Application Gateway without proper testing and validation.
+>
+>     When using Azure Front Door and Application Gateway to protect `HTTP/S` applications, use WAF policies in Front Door and lock down Application Gateway to receive traffic only from Azure Front Door. Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if ModSec CRS 2.2.9, CRS 3.0 or CRS 3.1 rules are required, these rules can be only implemented on Application Gateway. Conversely, rate-limiting and geo-filtering are available only on Azure Front Door, not on AppGateway.
+> - **Allow only authorized access to the control plane**. Use Azure Application Gateway [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only the identities that need it.
+> - **Protect data in transit**. Enable end-to-end Transport Layer Security (TLS), TLS termination, and End-to-end TLS encryption. When re-encrypting backend traffic, ensure the backend server certificate contains both the root and intermediate Certificate Authorities (CAs).
+>
+>     A TLS certificate of the backend server must be issued by a well-known CA. If the certificate was not issued by a trusted CA, the Application Gateway checks if the certificate was issued by a trusted CA, and so on, until a trusted CA certificate is found. Only then a secure connection is established. Otherwise, Application Gateway marks the backend as unhealthy.
+> - **Protect application secrets**. Use Azure Key Vault to store TLS certificates for increased security and easier certificate renewal and rotation process.
+> - **Reduce the attack surface and harden configuration**: Remove default configurations that you don't need and harden your Azure Application Gateway configuration to tighten security controls. Use an appropriate DNS server for backend pool resources. Comply with all NSG restrictions for Application Gateway.
+>
+>     Use an appropriate DNS server for backend pool resources. When the backend pool contains a resolvable FQDN, the DNS resolution is based on a private DNS zone or custom DNS server (if configured on the VNet), or it uses the default Azure-provided DNS.
+> - **Monitor anomalous activity**. Regularly review the logs to check for attacks and false positives. Send [WAF logs from Azure Application Gateway](/azure/web-application-firewall/ag/application-gateway-waf-metrics) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design.
 
 ### Recommendations
 
@@ -80,14 +92,10 @@ Explore the following table of recommendations to optimize your Application Gate
 
 | Recommendation | Benefit |
 |--------|----|
-| Set up a TLS policy for enhanced security |Set up a [TLS policy](/azure/application-gateway/application-gateway-ssl-policy-overview#predefined-tls-policy) for extra security. Ensure you're always using the latest TLS policy version available. This enforces TLS 1.2 and stronger ciphers. |
-| Use AppGateway for TLS termination | There are advantages of using Application Gateway for TLS termination:<br><br>- Performance improves because requests going to different backends to have to re-authenticate to each backend.<br>- Better utilization of backend servers because they don't have to perform TLS processing<br>- Intelligent routing by accessing the request content.<br>- Easier certificate management because the certificate only needs to be installed on Application Gateway. |
-|Use Azure Key Vault to store TLS certificates|[Application Gateway can be integrated with Key Vault](/azure/application-gateway/key-vault-certs). This provides stronger security, easier separation of roles and responsibilities, support for managed certificates, and an easier certificate renewal and rotation process.|
-| When re-encrypting backend traffic, ensure the backend server certificate contains both the root and intermediate Certificate Authorities (CAs) |  A TLS certificate of the backend server must be issued by a well-known CA. If the certificate was not issued by a trusted CA, the Application Gateway checks if the certificate was issued by a trusted CA, and so on, until a trusted CA certificate is found. Only then a secure connection is established. Otherwise, Application Gateway marks the backend as unhealthy. |
-|Use an appropriate DNS server for backend pool resources| When the backend pool contains a resolvable FQDN, the DNS resolution is based on a private DNS zone or custom DNS server (if configured on the VNet), or it uses the default Azure-provided DNS. |
-|Comply with all NSG restrictions for Application Gateway|NSGs are supported on Application Gateway subnet, but there are some restrictions. For instance, some communication with certain port ranges is prohibited. Make sure you understand the implications of those restrictions. For details, see [Network security groups](/azure/application-gateway/configuration-infrastructure#network-security-groups).|
-|Refrain from using UDRs on the Application gateway subnet|Using User Defined Routes (UDR) on the Application Gateway subnet can cause some issues. [Health status in the back-end](/azure/application-gateway/application-gateway-diagnostics#back-end-health) might be unknown. Application Gateway logs and metrics might not get generated. We recommend that you don't use UDRs on the Application Gateway subnet so that you can view the back-end health, logs, and metrics. If your organizations require to use UDR in the Application Gateway subnet, please ensure you review the supported scenarios. For more information, see [Supported user-defined routes](/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).|
-|Be aware of Application Gateway capacity changes when enabling WAF|When WAF is enabled, every request must be buffered by the Application Gateway until it fully arrives, checks if the request matches with any rule violation in its core rule set, and then forwards the packet to the backend instances. When there are large file uploads (30MB+ in size), it can result in a significant latency. Because Application Gateway capacity requirements are different with WAF, we do not recommend enabling WAF on Application Gateway without proper testing and validation.|
+| Set up a [TLS policy](/azure/application-gateway/application-gateway-ssl-policy-overview#predefined-tls-policy) for enhanced security. Ensure you're always using the latest TLS policy version available.|  The TLS policy includes control of the TLS protocol version as well as the cipher suites and the order in which ciphers are used during a TLS handshake. Using the latest TLS policy enforces the use of TLS 1.2 and stronger ciphers. |
+| Use AppGateway for [TLS termination](/azure/application-gateway/ssl-overview) | There are advantages of using Application Gateway for TLS termination:<br><br>- Performance improves because requests going to different backends don't have to re-authenticate to each backend.<br>- Intelligent routing by accessing the request content.<br>- Easier certificate management because the certificate only needs to be installed on Application Gateway. |
+|Use [Application Gateway integrated with Key Vault](/azure/application-gateway/key-vault-certs) to store TLS certificates.| This provides stronger security, easier separation of roles and responsibilities, support for managed certificates, and an easier certificate renewal and rotation process.|
+|Comply with all [Network security groups](/azure/application-gateway/configuration-infrastructure#network-security-groups) restrictions for Application Gateway|NSGs are supported on Application Gateway subnet, but there are some restrictions. For instance, some communication with certain port ranges is prohibited. Make sure you understand the implications of those restrictions.|
 
 For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
 
@@ -144,6 +152,7 @@ Monitoring and diagnostics are crucial for ensuring operational excellence of yo
 > - Monitor Key Vault configuration issues using Azure Advisor
 > - Configure and monitor SNAT port limitations 
 > - Consider SNAT port limitations in your design
+> - Refrain from using UDRs on the Application Gateway subnet
 
 ### Recommendations
 
@@ -158,6 +167,7 @@ Explore the following table of recommendations to optimize your Application Gate
 | Match timeout settings with the backend application | Ensure you have configured the IdleTimeout settings to match the listener and traffic characteristics of the backend application. The default value is set to four minutes and can be configured to a maximum of 30. For more information, see [Load Balancer TCP Reset and Idle Timeout](/azure/load-balancer/load-balancer-tcp-reset).<br><br>For workload considerations, see [Monitoring application health for reliability](/azure/architecture/framework/resiliency/monitoring). |
 |Monitor Key Vault configuration issues using Azure Advisor|Application Gateway checks for the renewed certificate version in the linked Key Vault at every 4-hour interval. If it is inaccessible due to any incorrect Key Vault configuration, it logs that error and pushes a corresponding Advisor recommendation. You must configure the Advisor alerts to stay updated and fix such issues immediately to avoid any Control or Data plane related problems. For more information, see [Investigating and resolving key vault errors](/azure/application-gateway/key-vault-certs#investigating-and-resolving-key-vault-errors). To set an alert for this specific case, use the Recommendation Type as **Resolve Azure Key Vault issue for your Application Gateway**.|
 |Consider SNAT port limitations in your design|SNAT port limitations are important for backend connections on the Application Gateway. There are separate factors that affect how Application Gateway reaches the SNAT port limit. For example, if the backend is a public IP address, it will require its own SNAT port. In order to avoid SNAT port limitations, you can increase the number of instances per Application Gateway, scale out the backends to have more IP addresses, or move your backends into the same virtual network and use private IP addresses for the backends.<br><br>Requests per second (RPS) on the Application Gateway will be affected if the SNAT port limit is reached. For example, if an Application Gateway reaches the SNAT port limit, then it won't be able to open a new connection to the backend, and the request will fail.|
+|Refrain from using UDRs on the Application gateway subnet|Using User Defined Routes (UDR) on the Application Gateway subnet can cause some issues. [Health status in the back-end](/azure/application-gateway/application-gateway-diagnostics#back-end-health) might be unknown. Application Gateway logs and metrics might not get generated. We recommend that you don't use UDRs on the Application Gateway subnet so that you can view the back-end health, logs, and metrics. If your organizations require to use UDR in the Application Gateway subnet, please ensure you review the supported scenarios. For more information, see [Supported user-defined routes](/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).|
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
 
