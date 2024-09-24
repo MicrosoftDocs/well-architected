@@ -78,7 +78,6 @@ Modern implementations of Application Insights store data in a [Log Analytics](/
 | *RE:01 -* **Use different Application Insights resources for different development stages of your application.** For example, one Application Insights instance for staging and one for production. | Using multiple Application Insights resources will prevent mixing telemetry from the new version and the already released version of your application. |
 | *RE:01 -* **Use a single Application Insights resource for traces across services.** For example, if you want to trace a request from service A to service B, both services should send telemetry to the same Application Insights resource. | This will allow you to get a hollistic picture and visualize requests across services on the [Application Map](/azure/azure-monitor/app/app-map?tabs=net) in Application Insights. |
 | *RE:01 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code. |
-| *RE:01 -* Upgrade from classic to workspace-based Application Insights resources. | Data is ingested more rapidly via [Log Analytics streaming ingestion](/azure/azure-monitor/app/convert-classic-resource), which could be critical in time-sensitive scenarios. |
 | *RE:02 -* **Identify the sample rate and events you want to gather from various flows.** For highly critial data, adjust the sample rate to capture more data. | Sampling is the recommended way to reduce telemetry traffic and throttling while preserving a statistically correct analysis of application data. |
 | *RE:04 -* Use [diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings) to export platform logs and metrics to the destination of your choice (e.g., a storage account) for backup and recovery purposes. | ... |
 | *RE:07 -* For [standard availability tests](/azure/azure-monitor/app/availability?tabs=standard) use multiple regions and enable the *retry* feature. | ... |
@@ -135,13 +134,37 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 
 > [!div class="checklist"]
 >
-> * ...
+> * *CO:02 -* Use [sampling](/azure/azure-monitor/app/sampling) to reduce data traffic, data, and storage costs, while preserving a statistically correct analysis of application data.
+> * *CO:04 -* [Set the Daily Cap](/azure/azure-monitor/app/pricing#set-the-daily-cap) to limit unplanned charges for your workspace. This can be used as a cost-control measure in Application Insights.
+> * *CO:05 -* Regularly review cost savings like regional pricing, available pricing tiers, etc. For more information, see [Cost Optimization for Log Analytics](azure-log-analytics.md#design-checklist-for-cost-optimization).
+> * *CO:06 -* The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs).
+> * *CO:07 -* Optimize modules and AJAX calls. [Edit ApplicationInsights.config](/azure/azure-monitor/app/configuration-with-applicationinsights-config) to turn off collection modules that you don't need.
+> * *CO:07 -* Limit the use of custom metrics. The Application Insights option to [Enable alerting on custom metric dimensions](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) can increase costs. Using this option can result in the creation of more pre-aggregation metrics.
+> * *CO:07 -* Use [preaggregated metrics](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#preaggregated-metrics) which are designed to handle high-volume telemetry data more efficiently.
+> * *CO:08 -* Keep Application Insights and your workloads in the same region. If your business-goals require Application Insights to be deployed in a different region, consider that sending telemetry across regions increases costs.
+> * *CO:08 -* Optimize log levels per environment to manage costs effectively. For example,production environments might require different logging levels compared to development environments.
+> * *CO:09 -* Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
+> * *CO:13 -* Optimize personnel time by utilizing (and customizing if available) Application Insights features like the failure and performance experiences, saved queries, dashboards, workbooks, etc.
+> * *CO:13 -* Release Annotations
+> * *CO:14 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
+
+**Notes**
+
+* *CO:01 and CO:03 don't apply to Cost Optimization in Application Insights.*
+* *CO:10 and CO:12 refer to practices which have already been covered.*
+* *CO:11 is only part of Recommendations.*
 
 ### Recommendations for Cost Optimization
 
 | Recommendation | Benefit |
 |:---------------|:--------|
-| ...            | ...     |
+| *CO:04 -* If a [Daily Cap](/azure/azure-monitor/app/pricing#set-the-daily-cap) is set, try not to reach it since it can cause data to not be written in your Log Analytics workspace. *Note: If you have a workspace-based Application Insights (recommended), use the daily cap in workspace to limit ingestion and costs instead of using the cap in Application Insights.* | ... |
+| *CO:07 -* If you put calls to `TrackMetric` in your application, you can reduce traffic by using the overload that accepts your calculation of the average and standard deviation of a batch of measurements. Alternatively, you can use a [pre-aggregating package](https://www.myget.org/gallery/applicationinsights-sdk-labs). | ... |
+| *CO:07 -* For standard tests, the need for testing from different locations might vary between production and pre-production environments. Reduce the amount of locations accordingly. | Reducing the amount of locations will save costs. |
+| *CO:09 -* Decrease the sample rate for less critical flows and increase it for flows with high criticality. Use telemetry filters for non-essential telemetry. | ... |
+| *CO:11 -* [Limit the number of Ajax calls](../app/javascript.md#configuration) that can be reported in every page view or disable Ajax reporting. If you disable Ajax calls, you also disable [JavaScript correlation](../app/javascript.md#enable-distributed-tracing). | ... |
+| *CO:11 -* Ensure use of updated Application Insights SDKs. | Earlier versions of the ASP.NET Core SDK and Worker Service SDK [collect many counters by default](../app/eventcounters.md#default-counters-collected), which were collected as custom metrics. Use later versions to specify [only required counters](../app/eventcounters.md#customizing-counters-to-be-collected). |
+| *CO:12 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code. |
 
 ## Operational Excellence
 
@@ -155,13 +178,23 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> * ...
+> * *OE:01 -*
+> * *OE:03 -*
+> * *OE:07 -*
+> * *OE:08 -*
+> * *OE:09 -*
+> * *OE:11 -*
 
 ### Recommendations for Operational Excellence
 
 | Recommendation | Benefit |
 |----------------|---------|
 | ...            | ...     |
+
+**Notes**
+
+* *OE:02, OE:04, OE:05, OE:06, OE:10, and OE:12 don't apply to Operational Excellence in Application Insights.*
+* *OE:# is only part of Recommendations.*
 
 ## Performance Efficiency
 
@@ -174,21 +207,33 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Application Insights.
 
 > [!div class="checklist"]
-> * Review ingestion and sample rates.
-> * Select the right region for your Application Insights deployment.
-> * Use a single Application Insights resource to get a hollistic view.
-> * Use autoinstrumentation when available.
-> * Reduce custom metrics like TelemetryProcessor.
-> * Use userflows.
-> * Release Annotation for deployments, custom events for other actions (Indexer).
-> * Use Live Metrics stream and alerts.
-> * Smart Detection, queries, dashboards.
+>
+> * *PE:01 -*
+> * *PE:02 -*
+> * *PE:03 -*
+> * *PE:04 -*
+> * *PE:07 -*
+> * *PE:08 -*
+> * *PE:09 -*
+> * *PE:10 -*
+> * *PE:11 -*
+> * *PE:12 -*
+
+**Notes**
+
+* *PE:05 and PE:06 don't apply to Performance Efficiency in Application Insights.*
+* *PE:# is only part of Recommendations.*
 
 ### Recommendations for Performance Efficiency
 
 | Recommendation | Benefit |
 |:---------------|:--------|
 | ...            | ...     |
+
+**Notes**
+
+* *SE:10, SE:11, and SE:12 don't apply to Security in Application Insights.*
+* *SE:08 is only part of Recommendations.*
 
 
 ## Azure policies
