@@ -4,7 +4,7 @@ description: Provides architectural best practices for the Azure Application Gat
 author: greg-lindsay
 ms.author: greglin
 ms.topic: conceptual
-ms.date: 01/27/2023
+ms.date: 09/30/2024
 products: azure-application-gateway
 azure.category:
   - networking
