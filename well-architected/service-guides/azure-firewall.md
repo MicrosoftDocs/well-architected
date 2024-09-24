@@ -59,7 +59,7 @@ as needed.
 > 
 > - **Review the list of Azure Firewall *known issues*.** Azure Firewall products maintain an updated list of [known issues](/azure/firewall/firewall-known-issues#azure-firewall-standard). This list contains important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies.
 >
->  - **Ensure that your Azure Firewall policy adheres to Azure Firewall limits and recommendations.** The policy structure has limits, including the number of rules and rule collection groups, total policy size, source destinations, and target destinations. Be sure to compose your policy and stay below the [documented thresholds](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits).
+>  - **Ensure that your Azure Firewall policy adheres to Azure Firewall limits and .** The policy structure has limits, including the number of rules and rule collection groups, total policy size, source destinations, and target destinations. Be sure to compose your policy and stay below the [documented thresholds](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits).
 > - **Deploy Azure Firewall across multiple availability zones** for a higher service-level agreement (SLA). Azure Firewall provides different SLAs depending on whether you deploy the service in a single availability zone or [multiple zones](/azure/reliability/availability-zones-overview#availability-zones). For more information, see [SLAs for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 > - **Deploy an Azure Firewall instance in each region** in multi-region environments. For traditional hub-and-spoke architectures, see [Multi-region considerations](/azure/firewall/firewall-multi-hub-spoke). For secured Azure Virtual WAN hubs, configure [routing intent and policies](/azure/virtual-wan/how-to-routing-policies) to secure inter-hub and branch-to-branch communications. For failure-resistant and fault-tolerant workloads, consider instances of Azure Firewall and Azure Virtual Network as regional resources.
 > - **Monitor Azure Firewall metrics and the resource health state.** Closely monitor [key metrics](/azure/firewall/monitor-firewall-reference#metrics) that indicate the Azure Firewall health state, such as *throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics. Azure Firewall also integrates with [Azure Resource Health](/azure/service-health/resource-health-overview). Use the Resource Health check to view the health status of Azure Firewall and address service problems that might affect your Azure Firewall resource.
@@ -69,8 +69,6 @@ as needed.
 > The availability of network services differs between the traditional hub-and-spoke model and the Virtual WAN-managed secured hubs model. For example, in a Virtual WAN hub, the Azure Firewall public IP can't come from a public IP prefix and can't have Azure DDoS Protection enabled. When you choose your model, consider your requirements across all five pillars of the Well-Architected Framework.
 
 #### Recommendations
-
-Explore the following table of recommendations to optimize your Azure Firewall configuration for reliability.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -113,8 +111,6 @@ strategy to include more approaches as needed.
 
 #### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for security.
-
 | Recommendation | Benefit |
 |--------|----|
 | Configure Azure Firewall in [forced tunneling mode](/azure/firewall/forced-tunneling) if you need to route all internet-bound traffic to a designated next hop instead of directly to the internet. This recommendation doesn't apply to Virtual WAN. <BR><BR> Azure Firewall must have direct internet connectivity. If your **AzureFirewallSubnet** learns a default route to your on-premises network via the Border Gateway Protocol, you must configure Azure Firewall in forced tunneling mode. You can use the forced tunneling feature to add another /26 address space for the Azure Firewall Management subnet. Name the subnet **AzureFirewallManagementSubnet**. If you have an existing Azure Firewall instance that you can't reconfigure in forced tunneling mode, create a UDR with a 0.0.0.0/0 route. Set the **NextHopType** value as **Internet**. To maintain internet connectivity, associate the UDR with **AzureFirewallSubnet**. <br><br> Set the public IP address to **None** to deploy a fully private data plane when you configure Azure Firewall in forced tunneling mode. But the management plane still requires a public IP for management purposes only. The internal traffic from virtual and on-premises networks doesn't use that public IP. | Use forced tunneling so you don't expose your Azure resources directly to the internet. This approach reduces the attack surface and minimizes the risk of external threats. To enforce corporate policies and compliance requirements more effectively, route all internet-bound traffic through an on-premises firewall or an NVA. |
@@ -151,8 +147,6 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 #### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for cost optimization.
-
 | Recommendation | Benefit |
 |--------|----|
 | Stop Azure Firewall deployments that don't need to continuously run. You might have development or testing environments that you only use during business hours. For more information, see [Deallocate and allocate Azure Firewall](/powershell/module/az.network/set-azfirewall#example-4-deallocate-and-allocate-the-firewall). | Shut down these deployments during off-peak hours or when idle to reduce unnecessary expenses but maintain security and performance during critical times. |
@@ -183,8 +177,6 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Take advantage of platform-provided detection mechanisms in Azure to detect abuse.** Integrate Azure Firewall with [Microsoft Defender for Cloud](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/azure-network-security-using-microsoft-defender-for-cloud/ba-p/2228222) and [Microsoft Sentinel](https://azuremarketplace.microsoft.com/marketplace/apps/sentinel4azurefirewall.sentinel4azurefirewall) if possible. Integrate with Defender for Cloud so you can visualize the status of network infrastructure and network security in one place, including Azure network security across all virtual networks and virtual hubs in different regions in Azure. Integrate with Microsoft Sentinel to provide threat-detection and prevention capabilities.
 
 #### Recommendations
-
-Explore the following table of recommendations to optimize your Azure Firewall configuration for operational excellence.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -222,8 +214,6 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Don't enable advanced logging if you don't need it.** Azure Firewall provides some advanced logging capabilities that can incur significant costs to keep active. Instead, you can use these capabilities for troubleshooting purposes only and for limited amounts of time. Disable capabilities when you don't need them. For example, [top flows and flow trace logs](/azure/firewall/monitor-firewall-reference#top-flows) are expensive and can cause excessive CPU and storage usage on the Azure Firewall infrastructure.
 
 #### Recommendations
-
-Explore the following table of recommendations to optimize your Azure Firewall configuration for performance efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
