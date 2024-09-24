@@ -27,6 +27,16 @@ We assume that you have a working knowledge of Azure Application Gateway and are
 - Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 - Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with [Protect APIs with Application Gateway and API Management](/azure/architecture/reference-architectures/apis/protect-apis) and [IaaS: Web application with relational database](/azure/architecture/high-availability/ref-arch-iaas-web-and-db).
 
+> [!IMPORTANT]
+>
+> **How to use this guide**
+>
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
+>
+> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Application Gateway. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+>
+> Foundational architecture that demonstrates the key recommendations: [App Service baseline architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+
 ## Reliability
 
 In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize failed instances.
