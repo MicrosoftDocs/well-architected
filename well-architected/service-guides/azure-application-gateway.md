@@ -1,6 +1,6 @@
 ---
-title: Well-Architected Framework perspective on Azure Application Gateway v2
-description: Provides architectural best practices for the Azure Application Gateway v2 family of SKUs.
+title: Well-Architected Framework perspective on Azure Application Gateway
+description: Learn about architectural best practices for the Azure Application Gateway family of SKUs.
 author: greg-lindsay
 ms.author: greglin
 ms.topic: conceptual
@@ -12,9 +12,9 @@ azure.category:
   - networking
 ---
 
-# Well-Architected Framework perspective on Azure Application Gateway v2
+# Well-Architected Framework perspective on Azure Application Gateway
 
-This article provides architectural best practices for the Azure Application Gateway v2 family of SKUs. The guidance is based on the five pillars of architectural excellence.
+Azure Application Gateway is a web traffic load balancer that operates at the application layer. Application Gateway makes routing decisions based on the attributes of an HTTP request to manage traffic to your web applications. Use Application Gateway for scenarios that have advanced routing capabilities and require enhanced security and scalability for your web applications. 
 
 This article assumes that as an architect, you've reviewed the [networking options](/azure/architecture/networking/) and chose Application Gateway as the web traffic load balancer for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
