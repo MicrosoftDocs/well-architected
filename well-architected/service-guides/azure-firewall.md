@@ -1,13 +1,13 @@
 ---
 title: Azure Well-Architected Framework perspective on Azure Firewall
-description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Firewall.
+description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Firewall.
 author: igorpag
 ms.author: igorpag
 ms.reviewer: tozimmergren
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.date: 09/24/2024
+ms.date: 09/26/2024
 products: azure-firewall
 azure.category:
   - networking
@@ -15,7 +15,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Firewall
 
-Azure Firewall is a cloud-native and intelligent network firewall security service that provides the best of breed threat protection for your cloud workloads that run in Azure. It's a fully stateful, managed firewall service with built-in high availability and unrestricted cloud scalability. Azure Firewall provides both east-west and north-south traffic inspection.
+Azure Firewall is a cloud-native and intelligent network firewall security service that provides best-of-breed threat protection for your cloud workloads that run in Azure. It's a fully stateful, managed firewall service that has built-in high availability and unrestricted cloud scalability. Azure Firewall provides both east-west and north-south traffic inspection.
 
 This article assumes that as an architect, you've reviewed the [virtual network security options](/azure/architecture/example-scenario/gateway/firewall-application-gateway) and chosen Azure Firewall as the network security service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
