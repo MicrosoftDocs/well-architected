@@ -1,6 +1,6 @@
 ---
-title: Well-Architected Framework perspective on Azure Application Gateway
-description: Learn about architectural best practices for the Azure Application Gateway family of SKUs.
+title: Well-Architected Framework perspective on Azure Application Gateway v2
+description: Learn about architectural best practices for the Azure Application Gateway v2 family of SKUs.
 author: greg-lindsay
 ms.author: greglin
 ms.topic: conceptual
@@ -12,9 +12,9 @@ azure.category:
   - networking
 ---
 
-# Well-Architected Framework perspective on Azure Application Gateway
+# Well-Architected Framework perspective on Azure Application Gateway v2
 
-Azure Application Gateway is a web traffic load balancer that operates at the application layer. Application Gateway makes routing decisions based on the attributes of an HTTP request to manage traffic to your web applications. Use Application Gateway for scenarios that have advanced routing capabilities and require enhanced security and scalability for your web applications. 
+Azure Application Gateway v2 is a web traffic load balancer that operates at the application layer. Application Gateway makes routing decisions based on the attributes of an HTTP request to manage traffic to your web applications. Use Application Gateway for scenarios that have advanced routing capabilities and require enhanced security and scalability for your web applications. 
 
 This article assumes that as an architect, you've reviewed the [networking options](/azure/architecture/networking/) and chose Application Gateway as the web traffic load balancer for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -27,23 +27,13 @@ This article assumes that as an architect, you've reviewed the [networking optio
 >Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Application Gateway and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
 >
 >Foundational architecture that demonstrates the key recommendations:
->[Zero Trust network for web applications with Azure Firewall and Application Gateway](/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall).
+>[App Service baseline architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:  
 
-- Application Gateway
-
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Application Gateway. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [App Service baseline architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+- Application Gateway v2
 
 ## Reliability
 
@@ -132,22 +122,20 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
-> - **Familiarize yourself with [Application Gateway pricing](https://azure.microsoft.com/pricing/details/application-gateway/)** and Web Application Firewall. Ensure that the options are adequately sized to meet the workload capacity demand and deliver expected performance without wasting resources.
+> - **Familiarize yourself with [Application Gateway and WAF pricing](https://azure.microsoft.com/pricing/details/application-gateway/).** Choose appropriately sized options to meet your workload capacity demand and deliver expected performance without wasting resources. You can also use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 >
->    You can also leverage the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+> - **Remove unused Application Gateway instances, and optimize underused instances.** Identify and delete Application Gateway instances that have empty back-end pools to avoid unnecessary costs. Stop Application Gateway instances when they're not in use.
+> - **Optimize the scaling cost of your Application Gateway instance.** To optimize your scaling strategy and reduce your wokload's demands, see [Recommendations for optimizing scaling cost](/azure/well-architected/cost-optimization/optimize-scaling-costs).
 >
-> - **Remove unused Application Gateway instances and optimize underused instances**. Identify and delete Application Gateway instances with empty backend pools to avoid unnecessary costs.Stop Application Gateway instances when not in use.
-> - **Optimize scaling cost of your Azure Application Gateway instance** Follow the guidance in the [Recommendations for optimizing scaling cost](/azure/well-architected/cost-optimization/optimize-scaling-costs) to optimize your scaling strategy and reduce your wokload's demands, if possible. 
->
->     Use [autoscaling in Application Gateway v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant) to have the service scale out or in based on application traffic requirements.
-> - **Monitor Azure Application Gateway consumption metrics** and have a good understanding of their cost impact. You're billed based on metered instances of Application Gateway based on the metrics tracked by Azure. Evaluate the various metrics and capacity units and determine the cost drivers. For more information, see [Microsoft Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview)
+>     To scale the service in or out based on application traffic requirements, use [autoscaling in Application Gateway v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
+> - **Monitor Application Gateway consumption metrics** and understand their cost impact. Azure charges for metered instances of Application Gateway based on tracked metrics. Evaluate the various metrics and capacity units, and determine the cost drivers. For more information, see [Microsoft Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview).
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-| Stop Application Gateway instances when not in use. See these articles for information about how to stop and start instances.<br><br>- [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway?view=azps-6.0.0&viewFallbackFrom=azps-5.2.0&preserve-view=true)<br>- [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway?view=azps-5.2.0&preserve-view=true) | You aren't billed when Application Gateway is in the stopped state. Continuously running Application Gateway instances can incur extraneous costs. Evaluate usage patterns and stop instances when you don't need them. For example, usage after business hours in Dev/Test environments is expected to be low.|
-| Monitor key cost driver [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics) like: <br><br>- Estimated Billed Capacity Units<br>- Fixed Billable Capacity Units<br>- Current Capacity Units<br><br>Make sure you account for bandwidth costs. | This information can be used to validate that the provisioned instance count matches the amount of incoming traffic.|
+| Stop Application Gateway instances when they're not in use. For mroe information, see:<br><br>- [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway)<br>- [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway) | A stopped Application Gateway instance doesn't incur costs. Application Gateway instances that continuously run can incur unnecessary costs. Evaluate usage patterns, and stop instances when you don't need them. For example, expect low usage after business hours in dev/test environments.|
+| Monitor key cost driver [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics) like: <br><br>- Estimated billed capacity units. <br> - Fixed billable capacity units. <br>- Current capacity units. <br><br> Make sure you account for bandwidth costs. | Use these metrics to validate whether the provisioned instance count matches the amount of incoming traffic. |
 
 ## Operational Excellence
 
