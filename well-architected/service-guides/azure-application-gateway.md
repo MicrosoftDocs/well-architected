@@ -14,7 +14,7 @@ azure.category:
 
 # Well-Architected Framework perspective on Azure Application Gateway v2
 
-Azure Application Gateway v2 is a web traffic load balancer that operates at the application layer. Application Gateway makes routing decisions based on the attributes of an HTTP request to manage traffic to your web applications. Use Application Gateway for scenarios that have advanced routing capabilities and require enhanced security and scalability for your web applications. 
+Azure Application Gateway v2 is a web traffic load balancer that operates at the application layer. Application Gateway manages traffic to your web applications based on the attributes of an HTTP request. Use Application Gateway for scenarios that have advanced routing capabilities and require enhanced security and scalability. 
 
 This article assumes that as an architect, you've reviewed the [networking options](/azure/architecture/networking/) and chose Application Gateway as the web traffic load balancer for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -27,7 +27,7 @@ This article assumes that as an architect, you've reviewed the [networking optio
 >Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Application Gateway and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
 >
 >Foundational architecture that demonstrates the key recommendations:
->[App Service baseline architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+>[Baseline highly available, zone-redundant web application architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
 **Technology scope**
 
@@ -47,7 +47,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Use Application Gateway v2.** Use Application Gateway v2 in new deployments unless your workload specifically requires Application Gateway v1.
+> - **Use Application Gateway v2** in new deployments unless your workload specifically requires Application Gateway v1.
 >
 > - **Build redundancy in your design.** Spread Application Gateway instances across availability zones to improve fault tolerance and build redundancy. Traffic routes to other zones if one zone fails. For more information, see [Recommendations for using availability zones and regions](/azure/well-architected/reliability/regions-availability-zones).
 > - **Plan for rule updates.** Plan extra time for rule updates and other configuration changes before you access Application Gateway or make further changes. For example, you might need extra time to remove servers from a back-end pool because they have to drain existing connections.
@@ -91,7 +91,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   Large file uploads that are 30 MB or more can introduce significant latency. Application Gateway capacity requirements change when you enable WAF, so we recommend that you properly test and validate this method first.
 >
->     When you use Azure Front Door and Application Gateway to protect `HTTP/S` applications, use WAF policies in Azure Front Door and lock down Application Gateway to receive traffic only from Azure Front Door. Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if you require ModSec CRS 2.2.9, CRS 3.0, or CRS 3.1 rules, you can only implement these rules on Application Gateway. Conversely, Azure Front Door supports rate-limiting and geo-filtering. Application Gateway doesn't support these features.
+>     When you use Azure Front Door and Application Gateway to protect HTTP or HTTPS applications, use WAF policies in Azure Front Door and lock down Application Gateway to receive traffic only from Azure Front Door. Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if you require ModSec CRS 2.2.9, CRS 3.0, or CRS 3.1 rules, you can only implement these rules on Application Gateway. Conversely, Azure Front Door supports rate-limiting and geo-filtering. Application Gateway doesn't support these features.
 > - **Allow only authorized access to the control plane.** Use Application Gateway [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only the identities that need it.
 > - **Protect data in transit.** Enable end-to-end Transport Layer Security (TLS), TLS termination, and end-to-end TLS encryption. When you re-encrypt back-end traffic, ensure that the back-end server certificate contains both the root and intermediate certificate authorities (CAs).
 >
