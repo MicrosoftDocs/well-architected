@@ -57,13 +57,13 @@ Modern implementations of Application Insights store data in a [Log Analytics](/
 > * *RE:01 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
 > * *RE:01 -* Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace to prevent latency and reliability issues, see [Create a resource](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#create-a-workspace-based-resource).
 > * *RE:01 -* Determine which instrumentation method (i.e., autoinstrumentation or manual instrumentation) is best for your situation based on [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
-> * *RE:02 -* Configure sampling based on the criticality of the data and the user and system flows of the workload. For more information, see the following instrumentation-specific documentation:<br>&emsp;• Autoinstrumentation (*Article missing.*)<br>&emsp;• [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-configuration?tabs=aspnetcore#enable-sampling)<br>&emsp;• [Application Insights SDKs (Classic API)](/azure/azure-monitor/app/sampling-classic-api)
+> * *RE:02 -* Configure sampling based on the criticality of the data, and the user and system flows of the workload. For instrumentation-specific instructions, see [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-configuration?tabs=aspnetcore#enable-sampling) or [Application Insights SDKs (Classic API)](/azure/azure-monitor/app/sampling-classic-api). Notice that sampling for autoinstrumentation is covered in environment-specific documentation, for example [Configure sampling in Azure Functions](/azure/azure-functions/configure-monitoring?tabs=v2#configure-sampling).
 > * *RE:03 -* Use Failure Mode Analysis (FMA) to identify different scenarios where Application Insights could fail or be unreachable, such as network, authentication, or service issues. Determine how your workload should behave if Application Inights is unreachable at boot or during runtime based on how critical application monitoring is to your business goals. Define the expected behavior of your workload in those cases and test your resiliency plan.
 > * *RE:04 -* Plan for workspace resilience and recovery. Determine how critical the data is you're collecting and if it must be recoverable. Review service limits for [Application Insights](/azure/azure-monitor/service-limits#application-insights) and the underlying [Log Analytics workspace](/azure/azure-monitor/service-limits#log-analytics-workspaces) to understand restrictions on data collection and retention, and other aspects of the service.
 > * *RE:04 -* Look up Microsoft SLA for Application Insights to understand what is not covered and how it could impact your workload reliability.
 > * *RE:06 -* Plan for data ingetion growth appropriately. Monitor and adjust limits on sampling and data ingestion as traffic grows to avoid losing any data that would otherwise get lost in sampling or exceed the [daily cap](/azure/azure-monitor/logs/daily-cap).
 > * *RE:08 -* Validate network failures with NSG (Network Security Group) rules.
-> * *RE:09 -* Use infrastructure as a service and leverage [ARM and Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create alerts, dashboard, and queries. This will ensure a quick recovery in case of service failure.
+> * *RE:09 -* Use infrastructure as a service and leverage [ARM and Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create alerts, [dashboard](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard), and [queries](/azure/azure-monitor/logs/queries). This will ensure a quick recovery in case of service failure.
 > * *Other -* Keep Log Analytics as a critical dependency on Application Insights when evaluating your metrics.
 
 **Notes**
@@ -144,8 +144,8 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 > * *CO:08 -* Keep Application Insights and your workloads in the same region. If your business-goals require Application Insights to be deployed in a different region, consider that sending telemetry across regions increases costs.
 > * *CO:08 -* Optimize log levels per environment to manage costs effectively. For example,production environments might require different logging levels compared to development environments.
 > * *CO:09 -* Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
-> * *CO:13 -* Optimize personnel time by utilizing (and customizing if available) Application Insights features like the failure and performance experiences, saved queries, dashboards, workbooks, etc.
-> * *CO:13 -* Release Annotations?
+> * *CO:13 -* Optimize personnel time by utilizing (and customizing if available) Application Insights features like the failure and performance experiences, saved [queries](/azure/azure-monitor/logs/queries), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard), [workbooks](/azure/azure-monitor/visualize/workbooks-overview), etc.
+> * *CO:13 -* [Release Annotation](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) *TO DO*
 > * *CO:14 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
 
 **Notes**
@@ -182,9 +182,9 @@ Start your design strategy based on the [design review checklist for Operational
 > * *OE:01 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
 > * *OE:01 -* Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace to prevent latency and reliability issues, see [Create a resource](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#create-a-workspace-based-resource).
 > * *OE:01 -* Determine which instrumentation method (i.e., autoinstrumentation or manual instrumentation) is best for your situation based on [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
-> * *OE:01 -* Update Application Insights SDKs (Classic API) annually using the latest version. This will [ensure access to support services](/azure/azure-monitor/app/sdk-support-guidance#application-insights-sdk-support-guidance) and provide the latest functionality with bug fixes.
+> * *OE:01 -* Update Application Insights SDKs (Classic API) annually to the latest version. This will [ensure access to support services](/azure/azure-monitor/app/sdk-support-guidance#application-insights-sdk-support-guidance) and provide the latest functionality with bug fixes.
 > * *OE:03 -* Use [work item ingetration](/azure/azure-monitor/app/release-and-work-item-insights?tabs=work-item-integration) to easily create work items in GitHub or Azure DevOps that have relevant Application Insights data embedded in them.
-> * *OE:07 -* Use built-in Application Insights features like [queries]() and [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) based on your specific business needs.
+> * *OE:07 -* Use built-in Application Insights features like [queries](/azure/azure-monitor/logs/queries) and [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) based on your specific business needs.
 > * *OE:08 -* Use [alerts](/azure/azure-monitor/alerts/alerts-overview) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) to identify and respond to incidents.
 > * *OE:11 -* Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to see where you deployed a new build or other significant events.
 > * *Other -* Be aware that Application Insights can be used to monitor deployed sites and services on-premises (or on an Azure Virtual Machine (VM)).
@@ -227,32 +227,29 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> * *PE:01 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need. Monitoring mulitple applications or application components with a single Application Insights resource can provide a hollistic view, but can also impact the performance of features like the [Application Map](/azure/azure-monitor/app/app-map?tabs=net).
-> * *PE:02 -* Review ingestion and sample rates to understand how much data is coming in.
-> * *PE:03 -* Select the right region when deploying your Application Insights resource.
-> * *PE:04 -* Use a single Application Insights resource to get a hollistic view.
-> * *PE:07 -* Use autoinstrumentation.
-> * *PE:08 -* Reduce the amount of custom metrics (TelemetryProcessor).
-> * *PE:09 -* Use userflows
-> * *PE:10 -* Use Release Annotations for deployments and custom events for other actions.
-> * *PE:11 -* Use Live Metrics stream and alerts.
-> * *PE:12 -* Use Smart Detection, queries, and dashboards.
+> * *PE:02 -* Understand how much data is coming in by reviewing ingestion and sample rates.
+> * *PE:03 -* Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace to prevent latency and reliability issues, see [Create a resource](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#create-a-workspace-based-resource).
+> * *PE:04 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need. Monitoring mulitple applications or application components with a single Application Insights resource provides a hollistic view, but can also impact the performance of experiences like [Application Map](/azure/azure-monitor/app/app-map?tabs=net) and [Usage](/azure/azure-monitor/app/usage?tabs=aspnetcore).
+> * *PE:08 -* Reduce the amount of [custom metrics](/azure/azure-monitor/app/api-custom-events-metrics), for example ITelemetryProcessor.
+> * *PE:09 -* Use [userflows](/azure/azure-monitor/app/usage?tabs=aspnetcore#user-flows---analyze-user-navigation-patterns) to prioritize critical flows.
+> * *PE:10 -* To optimize operational tasks, use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) for deployments and [custom events](/azure/azure-monitor/app/api-custom-events-metrics) for other actions.
+> * *PE:11 -* Use [Live Metrics stream](/azure/azure-monitor/app/live-stream?tabs=otel) and [availability alerts](/azure/azure-monitor/app/availability?tabs=standard#availability-alerts) to respond to live performance issues.
+> * *PE:12 -* Use [Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics), [queries](/azure/azure-monitor/logs/queries), and [dashboards](/azure/azure-monitor/app/overview-dashboard) to continuously optimize performance.
 > * *Other -* Regularly evaluate custom Application Insights code to ensure that it is still needed, efficient, and up to date.
-> * *Other -* Where it applies, ensure you're always using the latest version.
-> * *Other -* Where it applies, set profiling duration and frequency.
+> * *Other -* Where applicable, ensure that [profiling frequency and duration is set appropriately](/azure/azure-monitor/profiler/profiler-settings) to avoid adding excessive overhead to the running process.
 
 **Notes**
 
-* *PE:05 and PE:06 don't apply to Performance Efficiency in Application Insights.*
-* *PE:# is only part of Recommendations.*
+* *PE:01, PE:05, and PE:06 don't apply to Performance Efficiency in Application Insights.*
+* *PE:07 is only part of Recommendations.*
 
 ### Recommendations for Performance Efficiency
 
 | Recommendation | Benefit |
 |:---------------|:--------|
-| Regularly evaluate custom Application Insights code. | Reduce complexity, improve performance, and ensure that the code is up to date. |
-| Where applicable, ensure that [profiling frequency and duration is set appropriately](/azure/azure-monitor/profiler/profiler-settings). | Avoid adding excessive overhead to the running process. |
-| Manage package versions. See [here](/azure/azure-monitor/app/opentelemetry-overview?tabs=aspnetcore#instrumentation-options) for instrumentation options. | ... |
+| *PE:07 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Automatic instrumentation is configured optimally, requires no developer investment, and is always up to date. |
+| *Other -* Regularly evaluate custom Application Insights code. | Reduce complexity, improve performance, and ensure that the code is up to date. |
+| *Other -* Manage package versions. See [here](/azure/azure-monitor/app/opentelemetry-overview?tabs=aspnetcore#instrumentation-options) for instrumentation options. | ... |
 
 ## Azure policies
 
