@@ -61,7 +61,7 @@ Modern implementations of Application Insights store data in a [Log Analytics](/
 > * *RE:03 -* Use Failure Mode Analysis (FMA) to identify different scenarios where Application Insights could fail or be unreachable, such as network, authentication, or service issues. Determine how your workload should behave if Application Inights is unreachable at boot or during runtime based on how critical application monitoring is to your business goals. Define the expected behavior of your workload in those cases and test your resiliency plan.
 > * *RE:04 -* Plan for workspace resilience and recovery. Determine how critical the data is you're collecting and if it must be recoverable. Review service limits for [Application Insights](/azure/azure-monitor/service-limits#application-insights) and the underlying [Log Analytics workspace](/azure/azure-monitor/service-limits#log-analytics-workspaces) to understand restrictions on data collection and retention, and other aspects of the service.
 > * *RE:04 -* Look up Microsoft SLA for Application Insights to understand what is not covered and how it could impact your workload reliability.
-> * *RE:06 -* Plan for data ingetion growth appropriately. Monitor and adjust limits on sampling and data ingestion as traffic grows to avoid losing any data that would otherwise get lost in sampling or exceed the daily cap.
+> * *RE:06 -* Plan for data ingetion growth appropriately. Monitor and adjust limits on sampling and data ingestion as traffic grows to avoid losing any data that would otherwise get lost in sampling or exceed the [daily cap](/azure/azure-monitor/logs/daily-cap).
 > * *RE:08 -* Validate network failures with NSG (Network Security Group) rules.
 > * *RE:09 -* Use infrastructure as a service and leverage [ARM and Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create alerts, dashboard, and queries. This will ensure a quick recovery in case of service failure.
 > * *Other -* Keep Log Analytics as a critical dependency on Application Insights when evaluating your metrics.
@@ -135,7 +135,7 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 > [!div class="checklist"]
 >
 > * *CO:02 -* Use [sampling](/azure/azure-monitor/app/sampling) to reduce data traffic, data, and storage costs, while preserving a statistically correct analysis of application data.
-> * *CO:04 -* [Set the Daily Cap](/azure/azure-monitor/app/pricing#set-the-daily-cap) to limit unplanned charges for your workspace. This can be used as a cost-control measure in Application Insights.
+> * *CO:04 -* [Set the daily cap](/azure/azure-monitor/logs/daily-cap#set-the-daily-cap) to limit unplanned charges for your workspace. This can be used as a cost-control measure in Application Insights.
 > * *CO:05 -* Regularly review cost savings like regional pricing, available pricing tiers, etc. For more information, see [Cost Optimization for Log Analytics](azure-log-analytics.md#design-checklist-for-cost-optimization).
 > * *CO:06 -* The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs).
 > * *CO:07 -* Optimize modules and AJAX calls. [Edit ApplicationInsights.config](/azure/azure-monitor/app/configuration-with-applicationinsights-config) to turn off collection modules that you don't need.
@@ -158,14 +158,14 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 
 | Recommendation | Benefit |
 |:---------------|:--------|
-| *CO:04 -* If a [Daily Cap](/azure/azure-monitor/app/pricing#set-the-daily-cap) is set, try not to reach it since it can cause data to not be written in your Log Analytics workspace. *Note: If you have a workspace-based Application Insights (recommended), use the daily cap in workspace to limit ingestion and costs instead of using the cap in Application Insights.* | ... |
+| *CO:04 -* If a [daily cap](/azure/azure-monitor/logs/daily-cap) is set, try not to reach it since it can cause data to not be written in your Log Analytics workspace. *Note: If you have a workspace-based Application Insights (recommended), use the daily cap in workspace to limit ingestion and costs instead of using the cap in Application Insights.* | ... |
 | *CO:07 -* If you put calls to `TrackMetric` in your application, you can reduce traffic by using the overload that accepts your calculation of the average and standard deviation of a batch of measurements. Alternatively, you can use a [pre-aggregating package](https://www.myget.org/gallery/applicationinsights-sdk-labs). | ... |
 | *CO:07 -* For standard tests, the need for testing from different locations might vary between production and pre-production environments. Reduce the amount of locations accordingly. | Reducing the amount of locations will save costs. |
 | *CO:09 -* Decrease the sample rate for less critical flows and increase it for flows with high criticality. Use telemetry filters for non-essential telemetry. | ... |
-| *CO:11 -* [Limit the number of Ajax calls](../app/javascript.md#configuration) that can be reported in every page view or disable Ajax reporting. If you disable Ajax calls, you also disable [JavaScript correlation](../app/javascript.md#enable-distributed-tracing). | ... |
-| *CO:11 -* Ensure use of updated Application Insights SDKs. | Earlier versions of the ASP.NET Core SDK and Worker Service SDK [collect many counters by default](../app/eventcounters.md#default-counters-collected), which were collected as custom metrics. Use later versions to specify [only required counters](../app/eventcounters.md#customizing-counters-to-be-collected). |
+| *CO:11 -* [Limit the number of Ajax calls](/azure/azure-monitor/app/javascript-sdk-configuration) that can be reported in every page view or disable Ajax reporting. If you disable Ajax calls, you also disable [JavaScript correlation](/azure/azure-monitor/app/javascript-sdk-configuration). | ... |
+| *CO:11 -* Ensure use of updated Application Insights SDKs. | Earlier versions of the ASP.NET Core SDK and Worker Service SDK [collect many counters by default](/azure/azure-monitor/app/eventcounters.md#default-counters-collected), which were collected as custom metrics. Use later versions to specify [only required counters](/azure/azure-monitor/app/eventcounters.md#customizing-counters-to-be-collected). |
 | *CO:12 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code. |
-| *Other -* Limit unwanted trace logging. | Application Insights has several possible [log sources](../app/app-insights-overview.md#logging-frameworks). Log levels can be used to tune and reduce trace log telemetry. Logging can also apply to the host. For example, customers using Azure Kubernetes Service (AKS) should adjust [control plane and data plane logs](../../aks/monitor-aks.md#logs) and customers using Azure functions should [adapt log levels and scope](../../azure-functions/configure-monitoring.md) to optimize log volume and costs. |
+| *Other -* Limit unwanted trace logging. | Application Insights has several possible [log sources](/azure/azure-monitor/app/app-insights-overview.md#logging-frameworks). Log levels can be used to tune and reduce trace log telemetry. Logging can also apply to the host. For example, customers using Azure Kubernetes Service (AKS) should adjust [control plane](/azure/aks/monitor-aks#aks-control-planeresource-logs) and [data plane logs](/azure/aks/monitor-aks#aks-data-planecontainer-insights-logs) and customers using Azure functions should [adapt log levels and scope](/azure/azure-functions/configure-monitoring.md) to optimize log volume and costs. |
 
 ## Operational Excellence
 
@@ -252,7 +252,7 @@ Start your design strategy based on the [design review checklist for Performance
 |:---------------|:--------|
 | Regularly evaluate custom Application Insights code. | Reduce complexity, improve performance, and ensure that the code is up to date. |
 | Where applicable, ensure that [profiling frequency and duration is set appropriately](/azure/azure-monitor/profiler/profiler-settings.md). | Avoid adding excessive overhead to the running process. |
-| Manage package versions. See [here](../../azure-monitor/app/opentelemetry-overview.md?tabs=aspnetcore#instrumentation-options) for instrumentation options. | ... |
+| Manage package versions. See [here](/azure/azure-monitor/app/opentelemetry-overview.md?tabs=aspnetcore#instrumentation-options) for instrumentation options. | ... |
 
 ## Azure policies
 
@@ -274,7 +274,7 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 
 * [Reliability](/azure/advisor/advisor-high-availability-recommendations#<offering-or-infrastructure-area-anchor>)
 * [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations#<offering-or-infrastructure-area-anchor>)
-* [Cost Optimization](/azure/advisor/advisor-cost-recommendations#<offering-or-infrastructure-area-anchor>)
+* [Cost Optimization](/azure/advisaor/advisor-cost-recommendations#<offering-or-infrastructure-area-anchor>)
 * [Performance](/azure/advisor/advisor-reference-performance-recommendations#<offering-or-infrastructure-area-anchor>)
 * [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#<offering-or-infrastructure-area-anchor>)
 -->
