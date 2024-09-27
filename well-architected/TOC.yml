@@ -305,7 +305,9 @@
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
-          href: service-guides/postgresql.md       
+          href: service-guides/postgresql.md
+        - name: Azure Files
+          href: service-guides/azure-files.md       
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
         - name: Azure Kubernetes Service
@@ -318,6 +320,8 @@
               href: service-guides/azure-load-balancer/operational-excellence.md
         - name: Azure Machine Learning
           href: service-guides/azure-machine-learning.md
+        - name: Azure NetApp Files 
+          href: service-guides/azure-netapp-files.md 
         - name: Azure OpenAI
           href: service-guides/azure-openai.md          
         - name: Azure Service Fabric
@@ -344,6 +348,8 @@
               href: service-guides/azure-virtual-network/reliability.md
             - name: Operational excellence
               href: service-guides/azure-virtual-network/operational-excellence.md
+        - name: Disks
+          href: service-guides/azure-disks-cost-optimization.md
         - name: Event Grid
           items:
             - name: Reliability
@@ -390,12 +396,6 @@
               href: service-guides/service-bus/operational-excellence.md
         - name: Storage
           items:
-            - name: Azure Files
-              href: service-guides/azure-files.md   
-            - name: Azure NetApp Files 
-              href: service-guides/azure-netapp-files.md 
-            - name: Disks
-              href: service-guides/azure-disks-cost-optimization.md
             - name: Storage accounts
               items:
                 - name: Reliability
