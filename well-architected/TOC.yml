@@ -348,7 +348,7 @@
               href: service-guides/azure-virtual-network/reliability.md
             - name: Operational excellence
               href: service-guides/azure-virtual-network/operational-excellence.md
-        - name: Disks
+        - name: Azure Disks
           href: service-guides/azure-disks-cost-optimization.md
         - name: Event Grid
           items:
