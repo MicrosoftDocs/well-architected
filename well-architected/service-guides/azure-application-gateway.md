@@ -163,8 +163,6 @@ Start your design strategy based on the [design review checklist for Operational
 >    - Set alerts on metrics that can indicate issues either at Application Gateway or the backend
 >    - Use logs to manage and troubleshoot issues with Application Gateway instances
 > - **Use Azure Monitor Network Insights**. [Azure Monitor Network insights](/azure/azure-monitor/insights/network-insights-overview) provides a comprehensive view of health and metrics for network resources, including Application Gateway. This centralized monitoring helps you quickly identify and resolve issues, optimize performance, and ensure the reliability of your applications.
-> - Match timeout settings with the backend application
-> - Monitor Key Vault configuration issues using Azure Advisor
 > - **Monitor Application Gateway recommendations in Azure Advisor** and configure alerts to notify your team when new critical recommendations are available for your Azure Application Gateway instance. 
 >
 >     [needs edits]
