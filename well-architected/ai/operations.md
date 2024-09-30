@@ -10,7 +10,9 @@ ms.subservice: waf-workload-ai
 ---
 
 # AI workload operations on Azure
+As you build and take your AI workload to production, your operations teams need to be fully prepared to support the workload like any other workload in production. Your operations teams may have little or no experience with AI technologies, so its important to start training on these technologies and getting the workload integrated into their workflows early on. Getting operations and data teams together early in the workload development can help both teams become familiar with each other and build an understanding of how each team works. This will be important because both teams will need to collaborate on the support of the workload in many cases. The data teams will need to rely on the operations teams to provide quality health signals and actionable alerts, whereas the operations teams will need to rely on the data teams to efficiently assist in diagnosing potential issues and resolve actual issues in accordance with operations' standards.
 
+This guide provides recommendations for building operational mechanisms and practices to better support AI workloads, taking into consideration how operations and data teams will need to collaborate efficiently.
 
 ## Extend the observability platform
 
