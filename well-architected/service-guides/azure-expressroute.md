@@ -6,7 +6,7 @@ ms.author: duau
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide 
-ms.date: 09/09/2024
+ms.date: 09/30/2024
 products: 
   - azure-expressroute
 azure.category:
@@ -147,7 +147,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 |--------|----|
 | Configure [activity logs](/azure/expressroute/monitor-expressroute#azure-activity-log) and send logs to archive. Data retention is only 90 days and required to be stored in Log Analytics, Event Hubs or a storage account for archive. For more information about Activity logs in ExpressRoute, see [Monitor Azure ExpressRoute](/azure/expressroute/monitor-expressroute). | Activity logs provide insights into operations that were performed at the subscription level for ExpressRoute resources. With Activity logs, you can determine who and when an operation was performed at the control plane. Data retention is only 90 days and required to be stored in Log Analytics, Event Hubs or a storage account for archive. |
 | Configure Network Watcher [connection monitor](/azure/expressroute/how-to-configure-connection-monitor) to monitor connectivity between your on-premises network and Azure over the ExpressRoute private peering and Microsoft peering connection.  | Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
-| Configure MD5 hash on ExpressRoute circuit during [configuration of private peering or Microsoft peering](/azure/expressroute/expressroute-howto-routing-portal-resource-manager).| Apply an MD5 hash to secure messages between the on-premises route and the MSEE routers.  By generating an MD5 hash of the data before transmission and comparing it with the hash generated after reception, you can ensure that the data has not been tampered with during transit. |
+| Configure MD5 hash on ExpressRoute circuit during [configuration of private peering or Microsoft peering](/azure/expressroute/expressroute-howto-routing-portal-resource-manager).| Apply an MD5 hash to secure messages between the on-premises route and the MSEE routers.  By generating an MD5 hash of the data before transmission and comparing it with the hash generated after reception, you can ensure that the data hasn't been tampered with during transit. |
 | Configure [MACsec for ExpressRoute Direct ports](/azure/expressroute/expressroute-about-encryption). | MACsec (Media Access Control security) enhances security by encrypting data, ensuring data integrity, protecting vulnerable protocols. It secures protocols that are typically not protected on Ethernet links, such as ARP, DHCP, and LACP, thereby preventing potential security threats targeting these protocols. |
 | Encrypt traffic using [IPsec (Internet Protocol Security) for ExpressRoute private peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering) or configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json). | IPsec encrypts data at the network layer (Layer 3) and enhances security by providing encryption, authentication, integrity protection, and compliance. This ensures that data transmitted over ExpressRoute circuits is secure and protected from unauthorized access and tampering. |
 
@@ -170,10 +170,10 @@ Start your design strategy based on the design review checklist for [Cost Optimi
 >    -  **Determine the ExpressRoute virtual network gateway size required:** the cost of the ExpressRoute virtual network gateway is based on the SKU and size required. The SKU and size required depend on the performance and scale needs of your workload. For more information, see [ExpressRoute Virtual Network Gateway SKUs](/azure/expressroute/expressroute-about-virtual-network-gateways).
 > - **Monitor cost and create budget alerts:** Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. For more information, see [Monitoring ExpressRoute costs](/azure/expressroute/plan-manage-cost#monitor-costs).
 > - **Get the best rates from providers:** Compare the rates of different service providers to get the best rates for your ExpressRoute circuit. Choose the right service provider based on the cost, performance, and reliability of the service. For more information, see [ExpressRoute service providers](/azure/expressroute/expressroute-locations-providers).
-> **Align usage to billing increments:** Align your usage to billing increments to optimize costs. For example, consider metered or unlimited data plans based on your usage patterns.
-> - **Optimize costs:** Optimize the cost ExpressRoute by considering the following strategies:
->    - Optimize component costs by choosing the right SKU and size based on your workload requirements.
->    - Optimize environment costs by monitoring the cost and creating budget alerts to detect spending anomalies and overspending risks.
+> - **Choose closest peering location:** Choose the closest peering location to your on-premises network to reduce latency and costs.
+> - **Optimize resource costs:** Right-size your ExpressRoute circuit and ExpressRoute virtual network gateway to meet the capacity demand and performance requirements of your workload. By selecting the right size, you can avoid paying for excess capacity that you don't need.
+> - **Align usage to billing increments:** Align your usage to billing increments to optimize costs. For example, consider metered or unlimited data plans based on your circuit usage patterns.
+> - **Deprovision and delete unused ExpressRoute circuits:** Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*.
 
 ### Recommendations
 
@@ -181,17 +181,21 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Familiarize yourself with ExpressRoute pricing | For information about ExpressRoute pricing, see [Understand pricing for Azure ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/). You can also use the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/).<br><br>Ensure that the options are adequately sized to meet the capacity demand and deliver expected performance without wasting resources.  |
-| Determine SKU and bandwidth required | The way you're charged for your ExpressRoute usage varies between the three different SKU types. With Local SKU, you're automatically charged with an Unlimited data plan. With Standard and Premium SKU, you can select between a Metered or an Unlimited data plan. All ingress data are free of charge except when using the Global Reach add-on. It's important to understand which SKU types and data plan works best for your workload to best optimize cost and budget. For more information resizing ExpressRoute circuit, see [upgrading ExpressRoute circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth). |
-| Determine the ExpressRoute virtual network gateway size | ExpressRoute virtual network gateways are used to pass traffic into a virtual network over private peering. [Review the performance and scale](/azure/expressroute/expressroute-about-virtual-network-gateways) needs of your preferred Virtual Network Gateway SKU. Select the appropriate gateway SKU on your on-premises to Azure workload.  |
-| Monitor cost and create budget alerts | Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. For more information, see [Monitoring ExpressRoute costs](/azure/expressroute/plan-manage-cost#monitor-costs). |
-| [Deprovision and delete unused ExpressRoute circuits](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. | ExpressRoute circuits are charged from the moment they're created. To reduce unnecessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. For steps on how to remove an ExpressRoute circuit, see  |
+| Familiarize yourself with [ExpressRoute pricing](https://azure.microsoft.com/pricing/details/expressroute/). | Understanding ExpressRoute pricing enables better cost management, informed decision-making, avoidance of unexpected charges and maximization of value. |
+| Determine your required [circuit SKU and bandwidth](/azure/expressroute/expressroute-circuit-peerings). | The way you're charged for your ExpressRoute usage varies between the three different SKU types. With Local SKU, you're automatically charged with an Unlimited data plan. With Standard and Premium SKU, you can select between a Metered or an Unlimited data plan. All ingress data are free of charge except when using the Global Reach add-on. It's important to understand which SKU types and data plan works best for your workload to best optimize cost and budget. |
+| Configure [scalable ExpressRoute gateways](/azure/expressroute/expressroute-about-virtual-network-gateways#expressroute-scalable-gateway-preview). | Configuring scalable ExpressRoute gateways allows you to set minimum and maximum scale units for the gateway, which auto-scales based on active bandwidth or flow count. This benefits you by enabling right-sizing of resources, providing flexibility to scale, optimizing performance, and supporting proactive cost management. This approach ensures that you are using resources efficiently and cost-effectively.|
+| [Monitor cost create budget alerts](/azure/expressroute/plan-manage-cost#monitor-costs). Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. | Monitoring and alerts will provide you with tools to control spending, enhance financial planning, ensure accountability and optimize resource usage. |
+| [Deprovision and delete unused ExpressRoute circuits](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. | ExpressRoute circuits are charged from the moment they're created. To reduce unnecessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. |
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../devops/principles.md).
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
+
+The [Operational excellence design principles](../devops/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
 ### Design checklist
+
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to ExpressRoute.
 
 > [!div class="checklist"]
 >
@@ -210,8 +214,6 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Configure Service Health | Set up [Service Health notifications](/azure/expressroute/maintenance-alerts) to alert when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription. Service Health also displays past maintenance along with RCA if an unplanned maintenance were to occur. |
 | Review metrics with Network Insights | [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.<br><br>Metrics available:<br>- Availability<br>- Throughput<br>- Gateway metrics |
 | Review ExpressRoute resource metrics | ExpressRoute uses Azure Monitor to collect [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts) base on your configuration. Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
-
-For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
 
 ## Performance efficiency
 
