@@ -92,9 +92,9 @@ The [Security design principles](/azure/well-architected/security/security-princ
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> - **Review the security baseline for [Application Gateway](/security/benchmark/azure/baselines/azure-web-application-firewall-security-baseline).**
+> - **Review the [security baseline for Application Gateway](/security/benchmark/azure/baselines/azure-web-application-firewall-security-baseline).**
 >
-> - **Block common threats at the edge.** WAF integrates with Application Gateway. Enable WAF rules on the front ends to protect applications from common exploits and vulnerabilities at the network edge, which is close to the attack source. For more information, see [WAF on Application Gateway](/azure/web-application-firewall/afds/afds-overview).
+> - **Block common threats at the edge.** WAF integrates with Application Gateway. Enable WAF rules on the front ends to protect applications from common exploits and vulnerabilities at the network edge, which is close to the attack source. For more information, see [WAF on Application Gateway](/azure/web-application-firewall/ag/ag-overview).
 >
 >     Understand how WAF affects Application Gateway capacity changes. When you enable WAF, Application Gateway:
 >   - Buffers every request until it fully arrives.
@@ -141,13 +141,13 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - **Optimize the scaling cost of your Application Gateway instance.** To optimize your scaling strategy and reduce your wokload's demands, see [Recommendations for optimizing scaling cost](/azure/well-architected/cost-optimization/optimize-scaling-costs).
 >
 >     To scale the service in or out based on application traffic requirements, use [autoscaling in Application Gateway v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
-> - **Monitor Application Gateway consumption metrics**, and understand their cost impact. Azure charges for metered instances of Application Gateway based on tracked metrics. Evaluate the various metrics and capacity units, and determine the cost drivers. For more information, see [Microsoft Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview).
+> - **Monitor Application Gateway consumption metrics**, and understand their cost impact. Azure charges for metered instances of Application Gateway based on tracked metrics. Evaluate the various metrics and capacity units, and determine the cost drivers. For more information, see [Microsoft Cost Management](https://azure.microsoft.com/services/cost-management/#overview).
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-| Stop Application Gateway instances when they're not in use. For more information, see:<br><br>- [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway)<br>- [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway) | A stopped Application Gateway instance doesn't incur costs. Application Gateway instances that continuously run can incur unnecessary costs. Evaluate usage patterns, and stop instances when you don't need them. For example, expect low usage after business hours in dev/test environments.|
+| Stop Application Gateway instances when they're not in use. For more information, see [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway) and [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway). | A stopped Application Gateway instance doesn't incur costs. Application Gateway instances that continuously run can incur unnecessary costs. Evaluate usage patterns, and stop instances when you don't need them. For example, expect low usage after business hours in dev/test environments.|
 | Monitor key cost driver [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics), like: <br><br>- Estimated billed capacity units. <br> - Fixed billable capacity units. <br>- Current capacity units. <br><br> Make sure you account for bandwidth costs. | Use these metrics to validate whether the provisioned instance count matches the amount of incoming traffic, and ensure that you fully utilize the allocated resources.|
 
 ## Operational Excellence
