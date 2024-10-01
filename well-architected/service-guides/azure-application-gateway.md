@@ -1,10 +1,10 @@
 ---
 title: Well-Architected Framework perspective on Azure Application Gateway v2
-description: Learn about architectural best practices for the Azure Application Gateway v2 family of SKUs.
+description: Learn about architectural best practices for the Azure Application Gateway v2 family of SKUs and for WAF on Application Gateway.
 author: greg-lindsay
 ms.author: greglin
 ms.topic: conceptual
-ms.date: 09/30/2024
+ms.date: 10/02/2024
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-application-gateway
@@ -50,35 +50,36 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Use Application Gateway v2** in new deployments unless your workload specifically requires Application Gateway v1.
 >
-> - **Build redundancy in your design.** Spread Application Gateway instances across availability zones to improve fault tolerance and build redundancy. Traffic routes to other zones if one zone fails. For more information, see [Recommendations for using availability zones and regions](/azure/well-architected/reliability/regions-availability-zones).
-> - **Plan for rule updates.** Plan extra time for rule updates and other configuration changes before you access Application Gateway or make further changes. For example, you might need extra time to remove servers from a back-end pool because they have to drain existing connections.
+> - **Build redundancy in your design.** Spread Application Gateway instances across availability zones to improve fault tolerance and build redundancy. Traffic goes to other zones if one zone fails. For more information, see [Recommendations for using availability zones and regions](/azure/well-architected/reliability/regions-availability-zones).
+> - **Plan extra time for rule updates** and other configuration changes before you access Application Gateway or make further changes. For example, you might need extra time to remove servers from a back-end pool because they have to drain existing connections.
 > - **Implement the Health Endpoint Monitoring pattern.** Your application should expose health endpoints, which aggregate the state of the critical services and dependencies that your application needs to serve requests. Application Gateway health probes use the endpoint to detect the health of servers in the back-end pool. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
-> - **Evaluate the impact of interval and threshold settings on health probes.** The health probe sends requests to the configured endpoint at a set interval. The back end tolerates a limited number of failed requests before it's marked as unhealthy. These settings can conflict, which presents a tradeoff.
->   - A higher interval puts a higher load on your service. Each Application Gateway instance sends its own health probes, so 100 instances every 30 seconds equals 100 requests every 30 seconds.
+> - **Evaluate the impact of interval and threshold settings on a health probe.** The health probe sends requests to the configured endpoint at a set interval. And the back end tolerates a limited number of failed requests before it's marked as unhealthy. These settings can conflict, which presents a tradeoff.
+>   - A higher interval puts a higher load on your service. Each Application Gateway instance sends its own health probe, so 100 instances every 30 seconds equals 100 requests every 30 seconds.
 >
 >   - A lower interval increases the amount of time before the health probe detects an outage.
 >   - A low, unhealthy threshold increases the chance of short, transient failures shutting down a back end.
 >   - A high threshold increases the amount of time that it takes a back end to go out of rotation.
-> - **Verify downstream dependencies through health endpoints.** Suppose each back end has its own dependencies to ensure that failures are isolated. For example, an application that you host behind Application Gateway might have multiple back ends, and each back end connects to a different database, or replica. When such a dependency fails, the application might work but doesn't return valid results. For that reason, the health endpoint should ideally validate all dependencies.
->   Keep in mind that if each call to the health endpoint has a direct dependency call, that database receives 100 queries every 30 seconds instead of 1 query. To avoid excessive queries, the health endpoint should cache the state of the dependencies for a short period of time.
+> - **Verify downstream dependencies through health endpoints.** To isolate failures, each of your back ends might have its own dependencies. For example, an application that you host behind Application Gateway might have multiple back ends, and each back end connects to a different database, or replica. When such a dependency fails, the application might work but doesn't return valid results. For that reason, the health endpoint should ideally validate all dependencies.
+>
+>   Keep in mind that if each call to the health endpoint has a direct dependency call, that database receives 100 queries every 30 seconds instead of one query. To avoid excessive queries, the health endpoint should cache the state of the dependencies for a short period of time.
 > - **Consider Application Gateway limitations and known issues that might affect reliability.** Review the [Application Gateway FAQ](/azure/application-gateway/application-gateway-faq) for important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies. Don't use UDRs in the Application Gateway dedicated subnet.
-> - **Consider SNAT port limitations in your design.** SNAT port limitations can affect back-end connections on Application Gateway. Some factors affect how Application Gateway reaches the SNAT port limit. For example, if the back end is a public IP address, it requires its own SNAT port. To avoid SNAT port limitations, you can do one of the following options:
+> - **Consider Source Network Address Translation (SNAT) port limitations in your design** that can affect back-end connections on Application Gateway. Some factors affect how Application Gateway reaches the SNAT port limit. For example, if the back end is a public IP address, it requires its own SNAT port. To avoid SNAT port limitations, you can do one of the following options:
 >
->   - Increase the number of instances for each Application Gateway
->   - Scale out the back ends to have more IP addresses
->   - Move your back ends into the same virtual network, and use private IP addresses for the back ends
+>   - Increase the number of instances for each Application Gateway.
+>   - Scale out the back ends to have more IP addresses.
+>   - Move your back ends into the same virtual network, and use private IP addresses for the back ends.
 >
->     If you reach the SNAT port limit, it affects the requests per second (RPS) on Application Gateway. For example, if an Application Gateway instance reaches the SNAT port limit, it can't open a new connection to the back end, and the request fails.
+>     If Application Gateway reaches the SNAT port limit, it affects the requests per second (RPS). For example, Application Gateway can't open a new connection to the back end, and the request fails.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-| Deploy Application Gateway instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant). <br><br> Check regional support for zone redundancy because not all regions offer this feature. | Your workload can withstand failures in a single zone when you spread multiple instances across zones. If you have an unavailable zone, traffic automatically shifts to healthy instances in other zones, which maintains application reliability. |
+| Deploy Application Gateway instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant). <br><br> Check regional support for zone redundancy because not all regions offer this feature. | When you spread multiple instances across zones, your workload can withstand failures in a single zone. If you have an unavailable zone, traffic automatically shifts to healthy instances in other zones, which maintains application reliability. |
 | Use [Application Gateway health probes](/azure/application-gateway/application-gateway-probe-overview) to detect back-end unavailability. | Health probes ensure that traffic only routes to back ends that can handle the traffic. Application Gateway monitors the health of all the servers in its back-end pool and automatically stops sending traffic to any server that it considers unhealthy.  |
 | Configure [rate-limiting rules](/azure/web-application-firewall/ag/rate-limiting-configure) for Azure WAF so that clients can't send too much traffic to your application. | Use rate limiting to avoid problems like retry storms. |
-| Don't use UDRs on Application Gateway so that the [back-end health report](/azure/application-gateway/application-gateway-backend-health) functions properly and generates the correct logs and metrics. <br><br> If you must use a UDR in the Application Gateway subnet, see [Supported UDRs](/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes). | Don't use UDRs on the Application Gateway subnet so that you can view the back-end health, logs, and metrics. UDRs on the Application Gateway subnet can cause some problems.  |
-| Configure the *IdleTimeout* settings to match the listener and traffic characteristics of the back-end application. The default value is four minutes. You can configure it to a maximum of 30 minutes. <br><br> For more information, see [Load balancer TCP reset and idle timeout](/azure/load-balancer/load-balancer-tcp-reset). | Set the *IdleTimeout* to match the back end so that the connection between Application Gateway and the client stays open if the back end takes over four minutes to respond to the request. If you don't configure this setting, the connection closes, and the client doesn't see the back-end response. |
+| Don't use UDRs on Application Gateway so that the [back-end health report](/azure/application-gateway/application-gateway-backend-health) functions properly and generates the correct logs and metrics. <br><br> If you must use a UDR in the Application Gateway subnet, see [Supported UDRs](/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes). | UDRs on the Application Gateway subnet can cause some problems. Don't use UDRs on the Application Gateway subnet so that you can view the back-end health, logs, and metrics. |
+| Configure the *IdleTimeout* settings to match the listener and traffic characteristics of the back-end application. The default value is four minutes. You can configure it to a maximum of 30 minutes. <br><br> For more information, see [Load balancer Transmission Control Protocol (TCP) reset and idle timeout](/azure/load-balancer/load-balancer-tcp-reset). | Set the *IdleTimeout* to match the back end. This setting ensures that the connection between Application Gateway and the client stays open if the back end takes more than four minutes to respond to the request. If you don't configure this setting, the connection closes, and the client doesn't see the back-end response. |
 
 ## Security
 
@@ -97,12 +98,13 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >     Understand how WAF affects Application Gateway capacity changes. When you enable WAF, Application Gateway:
 >   - Buffers every request until it fully arrives.
+>
 >   - Checks if the request matches with any rule violation in its core rule set.
 >   - Forwards the packet to the back-end instances.
 >
 >   Large file uploads that are 30 MB or more can introduce significant latency. Application Gateway capacity requirements change when you enable WAF, so we recommend that you properly test and validate this method first.
 >
->     When you use Azure Front Door and Application Gateway to protect HTTP or HTTPS applications, use WAF policies in Azure Front Door and lock down Application Gateway to receive traffic only from Azure Front Door. Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if you require ModSec CRS 2.2.9, CRS 3.0, or CRS 3.1 rules, you can only implement these rules on Application Gateway. Conversely, Azure Front Door supports rate-limiting and geo-filtering. Application Gateway doesn't support these features.
+>     When you use Azure Front Door and Application Gateway to protect HTTP or HTTPS applications, use WAF policies in Azure Front Door and lock down Application Gateway to receive traffic only from Azure Front Door. Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if you require ModSec CRS 2.2.9, CRS 3.0, or CRS 3.1 rules, you can only implement these rules on Application Gateway. Conversely, Azure Front Door supports rate limiting and geo filtering, and Application Gateway doesn't support these features.
 > - **Allow only authorized access to the control plane.** Use Application Gateway [role-based access control (RBAC)](/azure/role-based-access-control/overview) to restrict access to only the identities that need it.
 > - **Protect data in transit.** Enable end-to-end Transport Layer Security (TLS), TLS termination, and end-to-end TLS encryption. When you re-encrypt back-end traffic, ensure that the back-end server certificate contains both the root and intermediate certificate authorities (CAs).
 >
@@ -117,9 +119,9 @@ Start your design strategy based on the [design review checklist for Security](.
 
 | Recommendation | Benefit |
 |--------|----|
-| Set up a [TLS policy](/azure/application-gateway/application-gateway-ssl-policy-overview#predefined-tls-policy) for enhanced security. Ensure that you use the latest TLS policy version.|  The TLS policy includes control of the TLS protocol version and the cipher suites and also the order in which a TLS handshake uses ciphers. Use the latest TLS policy to enforce the use of TLS 1.2 and stronger ciphers. |
-| Use Application Gateway for [TLS termination](/azure/application-gateway/ssl-overview). | Application Gateway for TLS termination provides the following advantages:<br><br>- Performance improves because requests that go to different back ends don't have to reauthenticate to each back end.<br>- Intelligent routing by accessing the request content.<br>- Easy certificate management because you only need to install the certificate on Application Gateway. |
-|Use [Application Gateway integrated with Key Vault](/azure/application-gateway/key-vault-certs) to store TLS certificates.| This approach provides stronger security, easier separation of roles and responsibilities, support for managed certificates, and an easier certificate renewal and rotation process.|
+| Set up a [TLS policy](/azure/application-gateway/application-gateway-ssl-policy-overview#predefined-tls-policy) for enhanced security. Ensure that you use the latest TLS policy version.| Use the latest TLS policy to enforce the use of TLS 1.2 and stronger ciphers. The TLS policy includes control of the TLS protocol version and the cipher suites and also the order in which a TLS handshake uses ciphers. |
+| Use Application Gateway for [TLS termination](/azure/application-gateway/ssl-overview). | Performance improves because requests that go to different back ends don't have to reauthenticate to each back end.<br><br> The gateway can access the request content and make intelligent routing decisions.<br><br> You only need to install the certificate on Application Gateway, which simplifies certificate management. |
+|Integrate [Application Gateway with Key Vault](/azure/application-gateway/key-vault-certs) to store TLS certificates.| This approach provides stronger security, easier separation of roles and responsibilities, support for managed certificates, and an easier certificate renewal and rotation process.|
 |Comply with all [NSG](/azure/application-gateway/configuration-infrastructure#network-security-groups) restrictions for Application Gateway. |The Application Gateway subnet supports NSGs, but there are some restrictions. For instance, some communication with certain port ranges is prohibited. Make sure you understand the implications of those restrictions.|
 
 ## Cost Optimization
@@ -133,20 +135,20 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
-> - **Familiarize yourself with [Application Gateway and WAF pricing](https://azure.microsoft.com/pricing/details/application-gateway/).** Choose appropriately sized options to meet your workload capacity demand and deliver expected performance without wasting resources. You can also use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+> - **Familiarize yourself with [Application Gateway and WAF pricing](https://azure.microsoft.com/pricing/details/application-gateway/).** Choose appropriately sized options to meet your workload capacity demand and deliver expected performance without wasting resources. To estimate costs, use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 >
-> - **Remove unused Application Gateway instances, and optimize underused instances.** Identify and delete Application Gateway instances that have empty back-end pools to avoid unnecessary costs. Stop Application Gateway instances when they're not in use.
+> - **Remove unused Application Gateway instances, and optimize underused instances.** To avoid unnecessary costs, identify and delete Application Gateway instances that have empty back-end pools. Stop Application Gateway instances when they're not in use.
 > - **Optimize the scaling cost of your Application Gateway instance.** To optimize your scaling strategy and reduce your wokload's demands, see [Recommendations for optimizing scaling cost](/azure/well-architected/cost-optimization/optimize-scaling-costs).
 >
 >     To scale the service in or out based on application traffic requirements, use [autoscaling in Application Gateway v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
-> - **Monitor Application Gateway consumption metrics** and understand their cost impact. Azure charges for metered instances of Application Gateway based on tracked metrics. Evaluate the various metrics and capacity units, and determine the cost drivers. For more information, see [Microsoft Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview).
+> - **Monitor Application Gateway consumption metrics**, and understand their cost impact. Azure charges for metered instances of Application Gateway based on tracked metrics. Evaluate the various metrics and capacity units, and determine the cost drivers. For more information, see [Microsoft Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview).
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-| Stop Application Gateway instances when they're not in use. For mroe information, see:<br><br>- [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway)<br>- [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway) | A stopped Application Gateway instance doesn't incur costs. Application Gateway instances that continuously run can incur unnecessary costs. Evaluate usage patterns, and stop instances when you don't need them. For example, expect low usage after business hours in dev/test environments.|
-| Monitor key cost driver [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics) like: <br><br>- Estimated billed capacity units. <br> - Fixed billable capacity units. <br>- Current capacity units. <br><br> Make sure you account for bandwidth costs. | Use these metrics to validate whether the provisioned instance count matches the amount of incoming traffic and ensure that you fully utilize the allocated resources.|
+| Stop Application Gateway instances when they're not in use. For more information, see:<br><br>- [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway)<br>- [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway) | A stopped Application Gateway instance doesn't incur costs. Application Gateway instances that continuously run can incur unnecessary costs. Evaluate usage patterns, and stop instances when you don't need them. For example, expect low usage after business hours in dev/test environments.|
+| Monitor key cost driver [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics), like: <br><br>- Estimated billed capacity units. <br> - Fixed billable capacity units. <br>- Current capacity units. <br><br> Make sure you account for bandwidth costs. | Use these metrics to validate whether the provisioned instance count matches the amount of incoming traffic, and ensure that you fully utilize the allocated resources.|
 
 ## Operational Excellence
 
@@ -161,23 +163,17 @@ Start your design strategy based on the [design review checklist for Operational
 > [!div class="checklist"]
 > - **Enable diagnostics on Application Gateway and WAF.** Collect logs and metrics so you can monitor the health of the workload, identify trends in the workload performance and reliability, and troubleshoot problems. To design your overall monitoring approach, see [Recommendations for designing and creating a monitoring system](../operational-excellence/observability.md).
 >
->    [needs edits]
->
->    - Use capacity metrics and set alerts on capacity metrics as indicators of utilization of the provisioned Application Gateway capacity
->    - Set alerts on metrics that can indicate issues either at Application Gateway or the backend
->    - Use logs to manage and troubleshoot issues with Application Gateway instances
+>    Use capacity metrics to monitor the use of the provisioned Application Gateway capacity. Set alerts on metrics to notify you of capacity problems or other problems either at Application Gateway or the back end. Use diagnostic logs to manage and troubleshoot problems with Application Gateway instances.
 > - **Use [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview)** to get a comprehensive view of health and metrics for network resources, including Application Gateway. Use centralized monitoring to quickly identify and resolve problems, optimize performance, and ensure the reliability of your applications.
-> - **Monitor Application Gateway recommendations in Azure Advisor.** Configure alerts to notify your team when you have new, critical recommendations for your Application Gateway instance. 
->
->   Advisor generates recommendations based on properties, such as the category, impact level, and recommendation type.
+> - **Monitor Application Gateway recommendations in Azure Advisor.** Configure alerts to notify your team when you have new, critical recommendations for your Application Gateway instance. Advisor generates recommendations based on properties, such as the category, impact level, and recommendation type.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-| Configure alerts to notify your team when capacity metrics, like CPU usage and compute unit usage, cross recommended thresholds. <br><br> To set a comprehensive set of alerts based on capacity metrics, see [Application Gateway high-traffic support](/azure/application-gateway/high-traffic-support#alerts-for-application-gateway-v2-sku-standard_v2waf_v2). | Set alerts when metrics cross thresholds so that you know when your usage increases. This approach ensures that you have enough time to implement necessary changes to your workload and prevents degradation or outages. |
+| Configure alerts to notify your team when capacity metrics, like CPU usage and compute unit usage, cross recommended thresholds. <br><br> To configure a comprehensive set of alerts based on capacity metrics, see [Application Gateway high-traffic support](/azure/application-gateway/high-traffic-support#alerts-for-application-gateway-v2-sku-standard_v2waf_v2). | Set alerts when metrics cross thresholds so that you know when your usage increases. This approach ensures that you have enough time to implement necessary changes to your workload and prevents degradation or outages. |
 | Configure alerts to notify your team about metrics that indicate problems either at Application Gateway or the back end. We recommend that you evaluate the following alerts:<br><br>- Unhealthy host count<br>- Response status, such as 4xx and 5xx errors <br>- Back-end response status, such as 4xx and 5xx errors <br>- Back-end last byte response time<br>- Application Gateway total time<br><br>For more information, see [Metrics for Application Gateway](/azure/application-gateway/application-gateway-metrics).| Use alerts to help ensure that your team can respond to problems in a timely manner and facilitate troubleshooting.|
-| Enable [diagnostics logs](/azure/application-gateway/application-gateway-diagnostics) on Application Gateway and WAF to collect firewall logs, performance logs, and access logs.| Use logs to help detect, investigate, and troubleshoot problems with Application Gateway instances and your workload. |
+| Enable [diagnostic logs](/azure/application-gateway/application-gateway-diagnostics) on Application Gateway and WAF to collect firewall logs, performance logs, and access logs.| Use logs to help detect, investigate, and troubleshoot problems with Application Gateway instances and your workload. |
 |Use Advisor to monitor [Key Vault configuration problems](/azure/application-gateway/key-vault-certs#investigating-and-resolving-key-vault-errors). Set an alert to notify your team when you get the recommendation that states **Resolve Azure Key Vault issue for your Application Gateway**. | Use Advisor alerts to stay up to date and fix problems immediately. Prevent any control plane or data plane-related problems. <br><br> Application Gateway checks for the renewed certificate version in the linked Key Vault instance every 4 hours. If the certificate version is inaccessible because of an incorrect Key Vault configuration, it logs that error and pushes a corresponding Advisor recommendation. |
 
 ## Performance Efficiency
@@ -189,12 +185,12 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 ### Design checklist
 
 > [!div class="checklist"]
-> - **Estimate capacity requirements for Application Gateway to support your workload requirements.** Take advantage of the autoscaling functionality in Application Gateway v2. Set appropriate values for the minimum and maximum number of instances. Appropriately size the dedicated subnet that Application Gateway requires. For various aspects and strategies to plan capacity, see [Recommendations for capacity planning](/azure/well-architected/performance-efficiency/capacity-planning).
+> - **Estimate capacity requirements for Application Gateway to support your workload requirements.** Take advantage of the autoscaling functionality in Application Gateway v2. Set appropriate values for the minimum and maximum number of instances. Appropriately size the dedicated subnet that Application Gateway requires. For more information, see [Recommendations for capacity planning](/azure/well-architected/performance-efficiency/capacity-planning).
 >
 >    Application Gateway v2 scales out based on many aspects, such as CPU, network throughput, and current connections. To determine the approximate instance count, factor in these metrics:
->   - **Current compute units**: This metric indicate the CPU usage. One Application Gateway instance equals approximately 10 compute units.
+>   - *Current compute units:* This metric indicates the CPU usage. One Application Gateway instance equals approximately 10 compute units.
 >
->    - **Throughput**: An Application Gateway instance can serve approximately 500 Mbps of throughput. This data depends on the type of payload.
+>    - *Throughput:* An Application Gateway instance can serve approximately 500 Mbps of throughput. This data depends on the type of payload.
 >
 >    Consider this equation when you calculate instance counts.
 >    ![Equation that shows the approximate instance count.](./_images/autoscale-instance.svg)
@@ -208,7 +204,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 | Recommendation | Benefit |
 |--------|----|
 | Set the [minimum instance count to an optimal level](/azure/application-gateway/high-traffic-support#set-your-minimum-instance-count-based-on-your-average-compute-unit-usage) based on you estimated instance count, actual Application Gateway autoscaling trends, and your application patterns. <br><br> Check the current compute units for the past month. This metric represents the gateway's CPU usage. To define the minimum instance count, divide the peak usage by 10. For example, if your average current compute units in the past month is 50, set the minimum instance count to five. | For Application Gateway v2, autoscaling takes approximately six to seven minutes before the extra set of instances are ready to serve traffic. During that time, if Application Gateway has short spikes in traffic, expect transient latency or loss of traffic. |
-| Set the [maximum autoscale instance count](/azure/application-gateway/high-traffic-support#set-maximum-instance-count-to-the-maximum-possible-125) to the maximum possible, which is 125 instances. Make sure that the Application Gateway dedicated subnet has sufficient available IP addresses to support the increased set of instances. | Set the maximum instance count to 125 so that Application Gateway can scale out as needed to handle increased traffic to your applications. This setting doesn't increase cost because you only pay for the consumed capacity.|
+| Set the [maximum autoscale instance count](/azure/application-gateway/high-traffic-support#set-maximum-instance-count-to-the-maximum-possible-125) to the maximum possible, which is 125 instances. Make sure that the Application Gateway dedicated subnet has sufficient available IP addresses to support the increased set of instances. | Application Gateway can scale out as needed to handle increased traffic to your applications. This setting doesn't increase cost because you only pay for the consumed capacity.|
 | Appropriately size the Application Gateway dedicated subnet. We highly recommend a /24 subnet for an Application Gateway v2 deployment. <br><br> If you want to deploy other Application Gateway resources in the same subnet, consider the extra IP addresses that you require for the maximum instance count. <br><br> For more considerations about sizing the subnet, see [Application Gateway infrastructure configuration](/azure/application-gateway/configuration-infrastructure#size-of-the-subnet).  | Use a /24 subnet to provide support for all IP addresses that your Application Gateway v2 deployment needs. <br><br> Application Gateway uses one private IP address for each instance and another private IP address if you configure a private front-end IP. The Standard_v2 or WAF_v2 SKU can support up to 125 instances.<br><br> Azure reserves five IP addresses in each subnet for internal use. |
 
 ## Azure policies
@@ -218,7 +214,7 @@ Azure provides an extensive set of built-in policies related to App Service and 
 - [You should enable WAF for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66). Deploy WAF in front of public-facing web applications to add another inspection layer for incoming traffic. WAF provides centralized protection for your web applications. It helps prevent common exploits and vulnerabilities, such as SQL injections, cross-site scripting, and local and remote file executions. You can also use custom rules to restrict access to your web applications based on countries or regions, IP address ranges, and other HTTP or HTTPS parameters.
 
 - [WAF should use the specified mode for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096). Ensure that all WAF policies for Application Gateway use *Detection* or *Prevention* mode.
-- [You should enable Azure DDoS Protection](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd). Enable DDoS protection for all virtual networks that have a subnet that contains Application Gateway with a public IP.
+- [You should enable Azure DDoS Protection](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd). Enable DDoS Protection for all virtual networks that have a subnet that contains Application Gateway with a public IP.
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect networking.
  
@@ -227,17 +223,16 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Application Gateway.
 
 - [Reliability](/azure/advisor/advisor-high-availability-recommendations#ensure-application-gateway-fault-tolerance)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations#[offering-or-infrastructure-area-anchor])
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations#[offering-or-infrastructure-area-anchor])
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#[offering-or-infrastructure-area-anchor])
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#[offering-or-infrastructure-area-anchor])
+- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
 ## Next steps
 
-- [Using API gateways in microservices](/azure/architecture/microservices/design/gateway)
-- [Firewall and Application Gateway for virtual networks](/azure/architecture/example-scenario/gateway/firewall-application-gateway)
-- [Protect APIs with Application Gateway and API Management](/azure/architecture/reference-architectures/apis/protect-apis)
-- [IaaS: Web application with relational database](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)
+- [Use API gateways in microservices](/azure/architecture/microservices/design/gateway)
+- [Azure Firewall and Application Gateway for virtual networks](/azure/architecture/example-scenario/gateway/firewall-application-gateway)
+- [Protect APIs with Application Gateway and Azure API Management](/azure/architecture/reference-architectures/apis/protect-apis)
 - [Securely managed web applications](/azure/architecture/example-scenario/apps/fully-managed-secure-apps)
-- [Zero-trust network for web applications with Azure Firewall and Application Gateway](/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall)
-- [Quickstart: Direct web traffic with Application Gateway - Azure portal](/azure/application-gateway/quick-create-portal)
+- [Zero Trust network for web applications with Azure Firewall and Application Gateway](/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall)
+- [Quickstart: Direct web traffic with Application Gateway via the Azure portal](/azure/application-gateway/quick-create-portal)
