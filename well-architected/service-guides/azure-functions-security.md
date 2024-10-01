@@ -1,4 +1,3 @@
-
 ---
 title: Azure Well-Architected Framework perspective on Azure Functions
 description: Explore Azure Well-Architected Framework design considerations and configuration recommendations for Azure Functions.
