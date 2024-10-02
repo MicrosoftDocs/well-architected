@@ -42,6 +42,8 @@ Operating a SaaS solution means acting as your customers' 24x7 IT and operations
 
 ## Define your response plan
 
+Acknowledge that incidents are inevitable and prepare for them by defining an incident response plan. This proactive approach prevents you from having to devise a response strategy during your first incident.
+
 Plan ahead for major incidents, which typically affect your customers’ ability to use your service. This preparation helps minimize stress and complexity when managing incidents as they occur.
 
 ### Design considerations
@@ -60,6 +62,7 @@ Plan ahead for major incidents, which typically affect your customers’ ability
 |---|---|
 |Provide a clear incident reporting process to your customers, such as opening a support case with your frontline support team.|You'll ensure consistency in how you discover and respond to incidents, which reduces time to resolution and avoids information being lost or missed.|
 |Publish architectural layout, component-level details, privacy or security classifications, owners, and key contacts.|The triage team will have the information readily available and wil be able to focus on investigations and assessing impact.|
+|Ensure your team has access to necessary systems, such as logs, and the ability to make production changes through a secure and controlled process. | You'll reduce the time required to restore operations by ensuring that your team isn't wasting time unnecessarily. |
 |Use a commercial status page offering instead of building your own.|Creating your own can be time-consuming, and if hosted on your infrastructure, it might be inaccessible during an outage.|
  
 ## Manage incidents methodically 
@@ -68,30 +71,19 @@ Adhering to the defined plan is crucial to avoid improvisation during response t
 
 ### Design considerations
 
-- **Assign incident severity.** Different incidents have different levels of importance to you and to your customers. The way you handle a major production outage is likely to be very different to the way you handle a bug with minimal impact on your customer base.
+- **Assign incident severity.** Use your incident response plan to determine the incident severity. Customers are often frustrated during incidents. It's important you clearly understand the impact they're seeing so that you can prioritize. Communicate the severity of the incident clearly so that customers have realistic expectations.
 
-  Define severity levels based on factors like the level of impact that they have on your customers, and set appropriate expectations and timelines for each level.
-
-- **Try to stay calm and think clearly.** Incidents can be stressful, and often there's ambiguity around what's happening. Also, there are often multiple stakeholders putting demands on your attention and asking for information.
-
-  Ensure there's a clear process for who takes the lead within an incident. Triage incidents as best you can, while acknowledging that you might have to operate with imperfect information. Try to remain in control of the situation.
+- **Stay calm and think clearly.** Incidents can be stressful and ambiguous, with multiple stakeholders demanding attention.  Ensure there's a clear process for who takes the lead within an incident. Triage incidents as best you can, while acknowledging that you might have to operate with imperfect information. Try to remain in control of the situation.
   
   Organizational leaders can help by shielding the team members who are actively investigating or mitigating an incident.
 
-
-- **Plan for effective communication to customers.** Proactive messaging, like a publicly accessible service status page, helps your customers to understand the nature of an incident and also reduces the volume of support cases from customers who have similar issues.
-
-  Communicate in a timely manner. Provide information that customers will need, such as the estimated resolution time. Providing frequent updates as you progress towards a resolution will help maintain customer trust. 
+- **Communicate status to your customers.** Update the status page to publish just enough information. Communicate promptly, providing necessary information like estimated resolution times, and offer frequent updates to maintain customer trust.
   
-  Instead of building your own status page, use a commercial offering. Building your own can be time-consuming, and if you host it on your own infrastructure, the status page might be inaccessible during an outage, too.
-
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Acknowledge that incidents *will* occur, and that you need to prepare for them. Define an incident response plan, including incident severity levels. | You'll avoid trying to plan your response strategy while you're in the middle of your first incident. |
-| Ensure your team has the access they need to systems like logs, and access to make production changes through a secure and controlled process. | You'll reduce the time required to restore operations by ensuring that your team isn't wasting time unnecessarily. |
-| During an incident, prioritize recovery over discovery. | It's tempting to look for a root cause, but when an incident occurs your first goal is to restore operations as quickly as possible and to minimize the disruption to your customers. You might be able to recover by routing around an affected component or rolling back an update, even if you don't understand what happened yet. |
+| During an incident, prioritize recovery over discovery. <br><br>When an incident occurs, prioritize restoring operations quickly to minimize customer disruption.| You might be able to recover by routing around an affected component or rolling back an update, even if you don't understand what happened yet. |
 | Procure or design a solution for proactive communication during outages. | Timely, clear, and frequent updates give your customers confidence and reduces the burden on your frontline support team. |
 | Designate a communications manager during an active incident. This might be a single designated person, or you might rotate the responsibility between incidents.|By having one voice for your engineering team, you'll centralize the conversations you have and reduce distractions to other team members. You'll also prevent different information from reaching customers or stakeholders during a chaotic incident.|
 | Ensure you have a mission-critical support plan for vendors like Microsoft. | In the event of an outage, you need responsive communications with your platform vendors like Microsoft to help to determine where a problem is and to reduce the duration of the outage. |
