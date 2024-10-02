@@ -42,6 +42,10 @@ Operating a SaaS solution means acting as your customers' 24x7 IT and operations
 
 ## Define your response plan
 
+Plan ahead for major incidents, which typically affect your customers’ ability to use your service. This preparation helps minimize stress and complexity when managing incidents as they occur.
+
+### Design considerations
+
 - **Define the escalation path.** Ensure teams understand the escalation process for support issues. In many SaaS solutions, customers contact frontline support, which then communicates with the engineering team. Make sure customers know who to interact with and why they shouldn't bypass processes. Also, ensure your engineering team knows when and how to seek help from vendors, including Microsoft's support team.
 
 - **Define severity levels.** Different incidents vary in importance to you and your customers. Handling a major production outage differs from addressing a minor bug. Define severity levels based on customer impact and set appropriate expectations and timelines for each level.
@@ -49,6 +53,8 @@ Operating a SaaS solution means acting as your customers' 24x7 IT and operations
 - **Document information needed for triage**. Keeping documentation up to date is essential for effective incident response. This includes the system's architectural layout, component-level details, privacy or security classifications, owners, and key contacts. Inaccurate or outdated information can cause the bridge team to waste valuable time figuring out system operations, responsibilities, and the potential impact of the incident.
 
 - **Plan for effective communication to customers.** Providing status updates is key in incident management. This helps your customers to understand the nature of an incident and also reduces the volume of support cases from customers who have similar issues.
+
+### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
@@ -58,11 +64,11 @@ Operating a SaaS solution means acting as your customers' 24x7 IT and operations
  
 ## Manage incidents methodically 
 
-Major incidents are typically those that affect your customers' ability to use your service. It's important to plan for incidents ahead of time, which helps you to minimize the stress and complexity of dealing with these situations.
+Adhering to the defined plan is crucial to avoid improvisation during response time. This approach helps minimize the stress and complexity of managing these situations.
 
 ### Design considerations
 
-- **Assing incident severity.** Different incidents have different levels of importance to you and to your customers. The way you handle a major production outage is likely to be very different to the way you handle a bug with minimal impact on your customer base.
+- **Assign incident severity.** Different incidents have different levels of importance to you and to your customers. The way you handle a major production outage is likely to be very different to the way you handle a bug with minimal impact on your customer base.
 
   Define severity levels based on factors like the level of impact that they have on your customers, and set appropriate expectations and timelines for each level.
 
