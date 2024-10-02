@@ -25,6 +25,8 @@ In the context of SaaS workloads, there are two disctinct types of identity.
 
 Application and enterprise identities serve different purposes and may use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 
+Identity management involves two related concerns: authentication (verifying a user's identity) and authorization (granting permissions based on identity). The first three sections of this article focus on authentication for SaaS, while the final section addresses authorization considerations for SaaS providers.
+
 ## Identity in a multitenant application
 
 Keeping tenant data separate in a multitenant application is critical. That segmentation is driven by your choice in effective user authentication and authorization. Also, the choice of tenancy model significantly impacts your decisions about the identity provider.
@@ -38,11 +40,11 @@ For more information on identity in multitenant solutions, see these articles:
 
 ### Design considerations
 
-- **Understand the tenancy and deployment models for your application**. There might be nuances that impact your identity strategy. For example, it's a misconception that the Deployment Stamp Pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model.
+**Understand the tenancy and deployment models for your application**. There might be nuances that impact your identity strategy. For example, it's a misconception that the Deployment Stamp Pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model.
   
-  When choosing your identity provider for multitenancy, evaluate the impact of failiures. Misconfigurations can potentially bring down your entire application for all tenants. Weigh the overhead costs against the risk of the potential radius of impact. 
+When choosing your identity provider for multitenancy, evaluate the impact of failiures. Misconfigurations can potentially bring down your entire application for all tenants. Weigh the overhead costs against the risk of the potential radius of impact. 
 
-  If you deploy your solution into a customer's Azure environment and manage it on their behalf, you might need to integrate with their enterprise identity provider. Have a clear understanding of these aspects:
+If you deploy your solution into a customer's Azure environment and manage it on their behalf, you might need to integrate with their enterprise identity provider. Have a clear understanding of these aspects:
   - Understand the types of users and their access needs when they interact with your application tenants. For example, User A might only need access to sign into tenant 1, but user B might need access to sign into both tenant 1 and tenant 2.
   -  Compliance with data residency regulations if applicable to your identity provider. In some cases, data stored by an identity provider may be subject to regulations. Many identity providers provide specific guidance and capabilities for this scenario. Assess whether this scenario is relevant to you and take necessary steps to ensure compliance.
 
@@ -80,7 +82,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
 | Recommendation | Benefit |
 |---|---|
 | **Do not** build your own identity solution. Identity is a highly specialized area, and building an identity solution is complex, expensive, and difficult to build securely and yet be extremely reliable. |You'll avoid the antipattern of building your own provider and enhance the security, reliability, and operational efficiency of your solution.|
-| Build a capability matrix of the features offered by identity providers against the your identity requirements.|You'll ensure your ability to evolve without being constrained by a limited set of features from your identity provider.|
+| Create a capability matrix of the features offered by identity providers against the your identity requirements.|You'll ensure your ability to evolve without being constrained by a limited set of features from your identity provider.|
 | Prefer an IDaaS options over open source solutions.  <br> Hosting an open-source solution yourself involves significant operational overhead and security risks. However, you might choose this option to meet specific requirements for compliance, data residency, or reliability that an provider cannot fulfill. For more information, see [IDaaS identity providers](/azure/architecture/guide/design-principles/identity).| By using an IDaaS identity provider, you'll avoid unnecessary complexity and can focus your efforts on your core business.|
 
 ## Federated identity
@@ -117,22 +119,28 @@ This image shows the relationship between your application, your application ide
 
 ## Authorization
 
-User authorization is a critical piece of any application, but especially so for SaaS applications. This is because SaaS applications typically house data belonging to multiple tenants at once. You should be clear about how you will authorize your users to access the data they need to without accidentally giving them access to data to other tenants. In addition, many systems need to provide more granular authorization within a tenant. For example, a user might be able to read or access some information, but be restricted from updating or accessing other information.
+User authorization is crucial for SaaS applications, which often house data for multiple tenants. Clearly define how users will be authorized to access only their data without inadvertently accessing other tenants' data. Additionally, provide granular authorization within a tenant, allowing users to read or access certain information while restricting updates or access to other data.
 
 ### Design Considerations
-- **Authorization models**: There are typically 2 distinct authorization models you can use in your solution: 
-    - **Role-based authorization**: Users are assigned to roles or groups and some features of an application are restricted to specific roles. For example, a user in the administrator role can perform any action, while a user in a lower role might have a subset of permissions throughout the system.
-    - **Resource-based authorization**: Your solution provides a set of distinct resources, each of which has its own set of permissions. A specific user might be an administrator of one resource and have no access to another resource.
-- **Authorization data storage**: Authorization data for your application can be stored in several places, including the following:
-    - **In your identity provider**: You can typically take advantage of built in groups or roles in your identity provider and then surface the permissions as claims in the token that gets issued to your application. Your application can then use the associated token claims to enforce your authorization rules.
-    - **In your application**: You can build your own authorization logic, and then store information about what each user can do in a database or similar storage system. You can then design fine-grained controls for role-based or resource-level authorization.
-- **Delegated managment**: For most SaaS applications, especially B2B SaaS, the management of roles and permissions are typically delegated to the customer to do for their users. Without this functionality, you may be unknowingly increasing your management overhead if your customers would like to frequently change permissions for their users.
-- **Multi-tenant access**: In some systems, a single user might need to access data from multiple tenants. For example, a consultant might work for several of your customers at the same time. Consider how customers grant access to users who are already using your solution, and how your sign-in flow supports selecting and switching the tenant a user is working with.
+
+- **Choose the right authorization models for the use case**. There are two main types.
+  
+    - **Role-based authorization**. Users are assigned roles or groups, with specific features restricted to certain roles. For example, administrators can perform any action, while users in lower roles have limited permissions.  
+    - **Resource-based authorization**:  Each resource has its own set of permissions. A user might be an administrator for one resource but have no access to another.
+      
+- **Decide where to store authorization data**. Authorization data for your application can be stored in:
+  
+    - **Your identity provider**: Take advantage of the built-in groups or roles, surfacing permissions as claims in the token issued to your application. Your application can then enforce authorization rules using these token claims.
+    - **Your application**:  Develop your own authorization logic and store user permissions in a database or similar system, allowing for fine-grained role-based or resource-level authorization controls.
+    
+- **Assess the impact of delegated managment**: In most SaaS applications, especially B2B, roles and permissions management is typically delegated to customers. Without this functionality, you may increase your management overhead if customers frequently change their user' permissions.
+  
+- **Evaluate multi-tenant access**: In some systems, a single user might need to access data from multiple tenants. For example, consultants, may need to access data from multiple tenants. Plan how customers will grant access to these users and how your sign-in flow will support selecting and switching between tenants.
 
 ### Design Recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Take care to ensure your authorization strategy will not allow a user to access data across tenant boundaries, unless they are specifically allowed to do so. | If a customer is able to access data they shouldn't be able to from another tenant, even by accident, it will likely be seen as a major security incident and will erode your customer's trust in your platform. |
-| Decide where to store your authorization data. If your authorization data is fairly static and does not change frequently, it may make more sense to store it in the identity provider. If you need to make frequent changes to the authorization data as a user is using the software, you should store the authorization data in your application. | By selecting the best data store for your authorization data, you'll enhance your operational efficiency and can meet your scalability needs. |
-| If you are going to delegate permission management to your customers, ensure you have a defined way for them to do that. For example, you may choose to build a web portal that only a tenant administrator can sign into to change permissions on behalf of their users. | You'll give more control to your customers, and avoid unnecessary operational burden on your support team. |
+| Prevent users from accessing data across tenant boundaries unless explicitly permitted. | Unauthorized access to another tenant's data, even accidentally, can be seen as a major security incident and erode customer trust in your platform. Blocking unncessary access will avoid such situations. |
+| If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. | By selecting the best data store for your authorization data, you'll enhance your operational efficiency and can meet your scalability needs. |
+| If delegating permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal accessible only to tenant administrators for changing user permissions. | You'll give more control to your customers, and avoid unnecessary operational burden on your support team. |
