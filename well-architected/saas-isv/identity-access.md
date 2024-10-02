@@ -40,13 +40,13 @@ For more information on identity in multitenant solutions, see these articles:
 
 ### Design considerations
 
-**Understand the tenancy and deployment models for your application**. There might be nuances that impact your identity strategy. For example, it's a misconception that the Deployment Stamp Pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model.
+**Understand the tenancy and deployment models for your application**. There might be nuances that impact your identity strategy. For example, it's a misconception that the Deployment Stamps pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model.
   
-When choosing your identity provider for multitenancy, evaluate the impact of failiures. Misconfigurations can potentially bring down your entire application for all tenants. Weigh the overhead costs against the risk of the potential radius of impact. 
+When choosing your identity provider for multitenancy, evaluate the impact of failures. Misconfigurations can potentially bring down your entire application for all tenants. Weigh the overhead costs against the risk of the potential radius of impact. 
 
 If you deploy your solution into a customer's Azure environment and manage it on their behalf, you might need to integrate with their enterprise identity provider. Have a clear understanding of these aspects:
   - Understand the types of users and their access needs when they interact with your application tenants. For example, User A might only need access to sign into tenant 1, but user B might need access to sign into both tenant 1 and tenant 2.
-  -  Compliance with data residency regulations if applicable to your identity provider. In some cases, data stored by an identity provider may be subject to regulations. Many identity providers provide specific guidance and capabilities for this scenario. Assess whether this scenario is relevant to you and take necessary steps to ensure compliance.
+  - Compliance with data residency regulations if applicable to your identity provider. In some cases, data stored by an identity provider may be subject to regulations. Many identity providers provide specific guidance and capabilities for this scenario. Assess whether this scenario is relevant to you and take necessary steps to ensure compliance.
 
 ### Design recommendations
 
@@ -62,7 +62,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
 
 ### Design considerations
 
-- **Document your idenity requirements**. Start by listing the features your application needs now and in the future. Common features include:
+- **Document your identity requirements**. Start by listing the features your application needs now and in the future. Common features include:
     - Federated identity provider support to integrate with customers' identity solutions, avoiding creation of new identities.
     - Customizable sign-in/sign-up flow to modify the look and feel to maintain your branding. Also, the ability to inject custom business logic in the sign-in/sign-up process.
     - User grouping in to separate tenants and silos to maintains tenant isolation.
@@ -73,7 +73,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
  >
  > For example, a solution might be affordable for 500 users but unsustainable for 5 million. If it requires minimal setup, is user-friendly, and easy to migrate from, it could still be the right choice until scaling costs justify switching to a different solution.
  
-- **Research the identity provider capabilities thoroughly**. Make sure the identity solution matches your list of required features.Even if complex scenarios like federated identity aren't needed now, consider future needs. For B2B SaaS solutions, federated identity will likely be necessary eventually.
+- **Research the identity provider capabilities thoroughly**. Make sure the identity solution matches your list of required features. Even if complex scenarios like federated identity aren't needed now, consider future needs. For B2B SaaS solutions, federated identity will likely be necessary eventually.
 
 - **Factor in management overhead**: Different identity providers require varying levels of management overhead. Well-known IDaaS solutions usually have less overhead because they handle hosting, maintenance, and security. However, the additional overhead of an open-source solution might be worthwhile if it better fits your needs.
 
@@ -133,9 +133,9 @@ User authorization is crucial for SaaS applications, which often house data for 
     - **Your identity provider**: Take advantage of the built-in groups or roles, surfacing permissions as claims in the token issued to your application. Your application can then enforce authorization rules using these token claims.
     - **Your application**:  Develop your own authorization logic and store user permissions in a database or similar system, allowing for fine-grained role-based or resource-level authorization controls.
     
-- **Assess the impact of delegated managment**: In most SaaS applications, especially B2B, roles and permissions management is typically delegated to customers. Without this functionality, you may increase your management overhead if customers frequently change their user' permissions.
+- **Assess the impact of delegated management**: In most SaaS applications, especially B2B, roles and permissions management is typically delegated to customers. Without this functionality, you may increase your management overhead if customers frequently change their users' permissions.
   
-- **Evaluate multi-tenant access**: In some systems, a single user might need to access data from multiple tenants. For example, consultants, may need to access data from multiple tenants. Plan how customers will grant access to these users and how your sign-in flow will support selecting and switching between tenants.
+- **Evaluate multi-tenant access**: In some systems, a single user might need to access data from multiple tenants. For example, consultants may need to access data from multiple tenants. Plan how customers will grant access to these users and how your sign-in flow will support selecting and switching between tenants.
 
 ### Design Recommendations
 
