@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
-Independent software vendors (ISVs) for SaaS solutions must operate the solution for their customers, requiring a different organizational setup and a culture that handles unexpected production situations smoothly. As the architect, design management processes and tooling accordingly. 
+Independent software vendors (ISVs) for SaaS solutions must operate the solution for their customers, requiring an organizational setup and a culture that handles unexpected production situations smoothly. As the architect, design management processes and tooling accordingly. 
 
 This article guides you in aligning your organization's culture, processes, and tools to support operating a production SaaS solution.
 
@@ -29,14 +29,14 @@ Operating a SaaS solution means acting as your customers' 24x7 IT and operations
 
 - **Institute a live-site culture**. Consider how you'll manage support cases and incidents, and how escalations occur. The goal is to ensure that team members understand their responsibilities and have the necessary skills and tools to handle incidents.
 
-  Startups and smaller organizations might have a lightweight plan for live-site issues. Engineers might initially serve as frontline support, responding to customer support cases. Mature organizations with enterprise customers need more structured support with and dedicated teams.
+  Startups and smaller organizations might have a lightweight plan for live-site issues. Engineers might initially serve as frontline support, responding to customer support cases. Mature organizations, or SaaS providers with enterprise customers, need more structured support and dedicated teams.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Introduce a frontline layer for handling support cases. <br><br> A vendor can serve as your frontline support team, performing initial issue analysis and resolving simple problems. For complex cases, they gather necessary information to help the engineering team's investigation.| You'll prevent the engineering team from being overburdened with incident handling responsibilities and dealing with interruptions from their regular duties. | 
-|Invest in *on-call function* to handle complex cases, investigate, and take action. <br><br> If possible, rotate on-call responsibilities among team members, with each engineer being on-call for a few days at a time.| With well-defined responsibilities and escalation paths, issues are quickly identified and addressed without disrupting your engineering workflow.|
+| Introduce a frontline layer for handling support cases. <br><br> For complex cases, they gather necessary information to help the engineering team's investigation. A vendor can serve as your frontline support team, performing initial issue analysis and resolving simple problems. | You'll prevent the engineering team from being overburdened with incident handling responsibilities and dealing with interruptions from their regular duties. | 
+|Invest in an *on-call function* to handle complex cases, investigate, and take action. <br><br> If possible, rotate on-call responsibilities among team members, with each engineer being on-call for a few days at a time.| With well-defined responsibilities and escalation paths, issues are quickly identified and addressed without disrupting your engineering workflow.|
 | Procure tools specialized in incident management. <br><br> Ensure all incident responders have access to and understand how to use these tools effectively. <br><br> Select tools that have cababilities to monitor system state, track customer-reported issues, identify problems, escalate to on-call engineers, manage unresponsive engineers, and enable making changes in production. |Tooling enables your on-call team to quickly identify and resolve incidents while maintaining security and operational control. |
 | Improve your monitoring, deployments, updates, and other regular management operations. | Investing in operational maturity reduces the likelihood of live-site issues. If issues do occur, having well-defined operations in place shortens resolution time by incorporating these processes into your recovery efforts. |
 
@@ -62,7 +62,7 @@ Plan ahead for major incidents, which typically affect your customers' ability t
 |---|---|
 |Provide a clear incident reporting process to your customers, such as opening a support case with your frontline support team.|You'll ensure consistency in how you discover and respond to incidents, which reduces time to resolution and avoids information being lost or missed.|
 |Document the architectural layout, component-level details, privacy or security classifications, owners, and key contacts.|The triage team will have the information readily available and will be able to focus on investigations and assessing impact.|
-|Ensure your incident response team has access to necessary assests, such as logs, and the ability to make production changes through a secure and controlled process. | You'll reduce the time required to restore operations by ensuring that your team isn't wasting time unnecessarily. |
+|Ensure your incident response team has access to necessary assets and systems, such as logs, and the ability to make production changes through a secure and controlled process. | You'll reduce the time required to restore operations by ensuring that your team isn't wasting time unnecessarily. |
 |Use a commercial status page offering instead of building your own.|Creating your own can be time-consuming, and if hosted on your infrastructure, it might be inaccessible during an outage.|
  
 ## Manage incidents methodically 
@@ -71,7 +71,7 @@ Adhering to the defined plan is crucial to avoid improvisation during response t
 
 ### Design considerations
 
-- **Assign incident severity.** Use your incident response plan to determine the incident severity. Customers are often frustrated during incidents. It's important you clearly understand the impact they're seeing so that you can prioritize. Communicate the severity of the incident clearly so that customers have realistic expectations.
+- **Assign incident severity.** Use your incident response plan to determine the incident severity. Customers are often frustrated during incidents. It's important you understand the impact they're seeing so that you can prioritize. Communicate the severity of the incident clearly so that customers have realistic expectations.
 
 - **Stay calm and think clearly.** Incidents can be stressful and ambiguous, with multiple stakeholders demanding attention.  Ensure there's a clear process for who takes the lead within an incident. Triage incidents as best you can, while acknowledging that you might have to operate with imperfect information. Try to remain in control of the situation.
   
