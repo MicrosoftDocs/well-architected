@@ -52,7 +52,7 @@ Plan ahead for major incidents, which typically affect your customers' ability t
 
 - **Define severity levels.** Different incidents vary in importance to you and your customers. Handling a major production outage differs from addressing a minor bug. Define severity levels based on customer impact and set appropriate expectations and timelines for each level.
 
-- **Document information needed for triage**. Keeping documentation up to date is essential for effective incident response. This includes the system's architectural layout, component-level details, privacy or security classifications, owners, and key contacts. Inaccurate or outdated information can cause the triage team to waste valuable time figuring out system operations, responsibilities, and the potential impact of the incident.
+- **Document information needed for triage**. Keeping documentation up to date is essential for effective incident response. This includes the system's architectural layout, component-level details, owners, and key contacts. Inaccurate or outdated information can cause the incident response team to waste valuable time figuring out system operations, responsibilities, and the potential impact of the incident.
 
 - **Plan for effective communication to customers.** Providing status updates is key in incident management. This helps your customers to understand the nature of an incident and also reduces the volume of support cases from customers who have similar issues.
 
@@ -61,8 +61,8 @@ Plan ahead for major incidents, which typically affect your customers' ability t
 | Recommendation | Benefit |
 |---|---|
 |Provide a clear incident reporting process to your customers, such as opening a support case with your frontline support team.|You'll ensure consistency in how you discover and respond to incidents, which reduces time to resolution and avoids information being lost or missed.|
-|Publish architectural layout, component-level details, privacy or security classifications, owners, and key contacts.|The triage team will have the information readily available and will be able to focus on investigations and assessing impact.|
-|Ensure your team has access to necessary systems, such as logs, and the ability to make production changes through a secure and controlled process. | You'll reduce the time required to restore operations by ensuring that your team isn't wasting time unnecessarily. |
+|Document the architectural layout, component-level details, privacy or security classifications, owners, and key contacts.|The triage team will have the information readily available and will be able to focus on investigations and assessing impact.|
+|Ensure your incident response team has access to necessary assests, such as logs, and the ability to make production changes through a secure and controlled process. | You'll reduce the time required to restore operations by ensuring that your team isn't wasting time unnecessarily. |
 |Use a commercial status page offering instead of building your own.|Creating your own can be time-consuming, and if hosted on your infrastructure, it might be inaccessible during an outage.|
  
 ## Manage incidents methodically 
