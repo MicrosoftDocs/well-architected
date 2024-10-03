@@ -61,7 +61,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   - A high threshold increases the amount of time that it takes a back end to go out of rotation.
 > - **Verify downstream dependencies through health endpoints.** To isolate failures, each of your back ends might have its own dependencies. For example, an application that you host behind Application Gateway might have multiple back ends, and each back end connects to a different database, or replica. When such a dependency fails, the application might work but doesn't return valid results. For that reason, the health endpoint should ideally validate all dependencies.
 >
->   Keep in mind that if each call to the health endpoint has a direct dependency call, that database receives 100 queries every 30 seconds instead of one query. To avoid excessive queries, the health endpoint should cache the state of the dependencies for a short period of time.
+>   If each call to the health endpoint has a direct dependency call, that database receives 100 queries every 30 seconds instead of one query. To avoid excessive queries, the health endpoint should cache the state of the dependencies for a short period of time.
 > - **Consider Application Gateway limitations and known issues that might affect reliability.** Review the [Application Gateway FAQ](/azure/application-gateway/application-gateway-faq) for important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies. Don't use UDRs in the Application Gateway dedicated subnet.
 > - **Consider Source Network Address Translation (SNAT) port limitations in your design** that can affect back-end connections on Application Gateway. Some factors affect how Application Gateway reaches the SNAT port limit. For example, if the back end is a public IP address, it requires its own SNAT port. To avoid SNAT port limitations, you can do one of the following options:
 >
@@ -195,7 +195,9 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 >    Consider this equation when you calculate instance counts.
 >    ![Equation that shows the approximate instance count.](./_images/autoscale-instance.svg)
 >
-> - **Take advantage of features for autoscaling and performance benefits.** The v2 SKU offers autoscaling to ensure that your Application Gateway can scale up as traffic increases. Compared to the v1 SKU, the v2 SKU has capabilities that enhance the performance of the workload. For example, the v2 SKU has better TLS offload performance, quicker deployment and update times, and zone-redundancy support. For more information, see [Scaling Application Gateway v2 and WAF v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
+>   After you estimate the instance count, compare that value to the maximum instance count. Use this comparison to determine how close you are to the maximum available capacity.
+>
+> - **Take advantage of features for autoscaling and performance benefits.** The v2 SKU offers autoscaling, which scales up Application Gateway as traffic increases. Compared to the v1 SKU, the v2 SKU has capabilities that enhance the performance of the workload. For example, the v2 SKU has better TLS offload performance, quicker deployment and update times, and zone-redundancy support. For more information, see [Scaling Application Gateway v2 and WAF v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
 >
 >    If you use Application Gateway v1, consider migrating to Application Gateway v2. For more information, see [Migrate Application Gateway and WAF from v1 to v2](/azure/application-gateway/migrate-v1-v2).
 
