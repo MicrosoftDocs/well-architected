@@ -21,7 +21,7 @@ In the context of SaaS workloads, there are two disctinct types of identity.
       
     - **Local identities**: Users create an account just for your application, secured by methods like username and password, passkey, or other authentication methods. //TODO @landon who's responsible for managing this identity//
 
-- **Enterprise identity**, the identity solution used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. describes the identity solution you use for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of *enterprise* identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
+- **Enterprise identity**, the identity solution used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of *enterprise* identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
 
 Application and enterprise identities serve different purposes and may use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 
@@ -65,7 +65,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
 - **Document your identity requirements**. Start by listing the features your application needs now and in the future. Common features include:
     - Federated identity provider support to integrate with customers' identity solutions, avoiding creation of new identities.
     - Customizable sign-in/sign-up flow to modify the look and feel to maintain your branding. Also, the ability to inject custom business logic in the sign-in/sign-up process.
-    - User grouping in to separate tenants and silos to maintains tenant isolation.
+    - Separate tenant data into distinct silos to maintains tenant isolation.
     - Audit support to retain or export sign-in logs for security management.
  
  > [!IMPORTANT]
@@ -75,7 +75,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
  
 - **Research the identity provider capabilities thoroughly**. Make sure the identity solution matches your list of required features. Even if complex scenarios like federated identity aren't needed now, consider future needs. For B2B SaaS solutions, federated identity will likely be necessary eventually.
 
-- **Factor in management overhead**: Different identity providers require varying levels of management overhead. Well-known IDaaS solutions usually have less overhead because they handle hosting, maintenance, and security. However, the additional overhead of an open-source solution might be worthwhile if it better fits your needs.
+- **Factor in management overhead**: Different identity providers require varying levels of management overhead. Well-known IDaaS solutions usually have less overhead because they handle hosting, maintenance, and security. However, the additional overhead of an open-source solution might be worthwhile if it better fits your specialized needs.
 
 ### Design recommendations
 
@@ -105,7 +105,7 @@ This image shows the relationship between your application, your application ide
       
     - Custom information: Collecting additional user information during sign-up or sign-in, such as, tenant selection for users with access to multiple tenants.
       
-    - Identity provider selection:  If using a single application identity provider with many federated identity providers trusting it, decide how to select a provide, manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This scenarios is known as home realm discovery. Microsoft Entra ID provides built-in capabilities. For more information, see [Home realm discovery](/entra/identity/enterprise-apps/home-realm-discovery-policy).
+    - Identity provider selection:  If using a single application identity provider with many federated identity providers trusting it, decide how to select a provider, which might be manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This scenario is known as home realm discovery. Microsoft Entra ID provides built-in capabilities. For more information, see [Home realm discovery](/entra/identity/enterprise-apps/home-realm-discovery-policy).
 
 
 ### Design recommendations
