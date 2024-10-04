@@ -30,7 +30,7 @@ To learn more about fundamentals of cost modeling, see [CO:02 Recommendations fo
 
 ### Design considerations
 
-- **Estimate your Azure costs and understand how Azure resources are billed.** Use tools like the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to forecast expenses before deployment. Once your resources are deployed, [Microsoft Cost Management](https://learn.microsoft.com/azure/cost-management-billing/costs/overview-cost-management) helps you analyze, manage, and optimize your cloud spending.
+- **Estimate your Azure costs and understand how Azure resources are billed.** Use tools like the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to forecast expenses before deployment. Once your resources are deployed, [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) helps you analyze, manage, and optimize your cloud spending.
 
 - **Understand how your costs relate to your tenancy model.** Your cost model's granularity should reflect and depend on your tenancy model and resource deployment for each of your customer.
 
@@ -62,7 +62,6 @@ To learn more about fundamentals of cost modeling, see [CO:02 Recommendations fo
 | Set a budget per customer or per service. | You'll have a systematic way to avoid over-spending on customers. |
 | Determine your scale points. <br><br> Scaling decisions often rely on key metrics such as the number of customers, users, and transactions. Sales teams can provide projections for these metrics to aid in planning. | Scale points help you to forecast your costs, to relate costs to revenue, and to plan for growth in your technical architecture based on business metrics. |
 
-
 ## Optimize your costs
 
 After establishing a baseline for your cloud spending through cost measurement, you can start optimizing costs. This involves reducing overall expenses while maintaining performance targets.
@@ -77,7 +76,7 @@ Cost optimization should be done in conjunction with good governance practices. 
     > [!NOTE]
     > Ensure you can manage both shared and dedicated usage, mitigate noisy neighbor issues, and meet data residency and other customer constraints.  Sometimes, it might not be appropriate to share resources, and you might instead need to deploy  dedicated infrastructure for each customer by using the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp).
 
-- **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as [Microsoft Customer Agreement](/azure/cost-management-billing/manage/ea-portal-agreements), an [Enterprise Agreement](/Licensing/how-to-buy/microsoft-customer-agreement?msockid=1cab8246c181615e309496c8c0ee6050), or a [pay-as-you-go](/pricing/offers/ms-azr-0003p/?msockid=1cab8246c181615e309496c8c0ee6050). Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
+- **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as Microsoft Customer Agreement, an Enterprise Agreement, or pay-as-you-go. Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
 
     [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs) provides reduced rates on certain Azure services for non-production use. Even after you are running your production worklod, you can continue to access the rates through a separate dev/test subscription.
 
