@@ -1,6 +1,6 @@
 ---
 title: Application platform for AI workloads on Azure
-description: Azure resources needed for running AI workloads.
+description: Learn about the Azure resources that you need for running AI workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -11,84 +11,86 @@ ms.subservice: waf-workload-ai
 
 # Application platform for AI workloads on Azure
 
-The application hosting platform that your AI workload is deployed on must be carefully considered to ensure that you can maximize efficiency, secure operations, and reliability. 
-This design area covers several different types of applications that may be relevant to your AI workload:
+You must carefully consider the application hosting platform that your AI workload is deployed on to ensure that you can maximize efficiency, the security of operations, and reliability. 
 
+This design area covers several different types of applications that might be relevant to your AI workload:
 
-1. Exploratory data analysis (EDA)
-2. Model training
-3. Inferencing
+- Exploratory data analysis (EDA)
+- Model training
+- Inferencing
 
-This article provides guidance on selecting the best platform for each of these functions to meet your business needs, but there are general recommendations that can be applied to all of them.
+This article provides guidance for selecting the best platform for each of these functions to meet your business needs. There are also general recommendations that can be applied to all of them.
 
 ## Platform recommendations
 
-No matter which of the functions described above you are designing for, start with the following general recommendations:
+No matter which of the previously described functions you're designing for, start with the following general recommendations:
 
-1. Start by evaluating the tools you are already using to understand whether they can be reused for your AI workload. If they support the functionality required and can also meet your requirements for reliability, security, cost, and performance, bringing in a new tool may not be worth the cost and effort.
-2. Consider compliance requirements for your data as they relate to regions that you plan to deploy in. You may need to limit the regions you deploy in or isolate parts of your workload from each other to meet these requirements, so going into your designing phase with this information at the ready will protect you from redesigning later.
-3. Prefer platform as a service (PaaS) or software as a service (SaaS) solutions to minimize the extra operational burden that building your own solution introduces, like patching and other maintenance. Minimizing the day-2 burden required for the new technology will ease your adoption. Many AI functions are especially complex, so building your own platform is not recommended.
-4. When designing for the use of PaaS or SaaS solutions, understand any quotas or limits that apply. Your ability to scale out to meet high traffic demands may be impacted by quotas or limits, so you may need to adjust your design to minimize that risk.
+1. Start by evaluating the tools you already use to understand whether they can be reused for your AI workload. If they support the functionality required and can also meet your requirements for reliability, security, cost, and performance, bringing in a new tool might not be worth the cost and effort.
+2. Consider compliance requirements for your data as they relate to the regions that you plan to deploy in. You might need to limit the regions you deploy in or isolate parts of your workload from each other to meet these requirements, so going into your designing phase with this information ready will help protect you from needing to redesign later.
+3. Prefer platform as a service (PaaS) or software as a service (SaaS) solutions to minimize the extra operational burden that building your own solution introduces, like patching and other maintenance. Minimizing the Day-2 burden required for the new technology will ease your adoption. Many AI functions are complex, so we don't recommend building your own platform.
+4. When you design for the use of PaaS or SaaS solutions, understand any quotas or limits that apply. Your ability to scale out to meet high traffic demands might be affected by quotas or limits, so you might need to adjust your design to minimize that risk.
 5. Try to deploy all related resources in the same region to reduce latency and to simplify the design.
-6. In general, you should treat the APIs for your AI workload the same as any other API in your environments. All of the APIs should be secured behind a gateway and all of the code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments) as every other code asset.
-7. Establish performance benchmarks through experimentation. Every AI workload is different and the amount of compute that you'll need depends on your particular use case. Determining the amount and types of compute that is optimal for your workload should be based on thorough benchmark testing. This guide will help you choose a platform, but the SKUs appropriate for your workload will only be known to you after the benchmarking exercises.
+6. In general, you should treat the APIs for your AI workload the same as any other API in your environments. All APIs should be placed behind a gateway and all code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments) as every other code asset.
+7. Establish performance benchmarks through experimentation. Every AI workload is different, and the amount of compute that you need depends on your use case. Determining the amount and types of compute that's optimal for your workload should be based on thorough benchmark testing. This guide helps you choose a platform, but you'll only know which SKUs are appropriate for your workload after benchmarking exercises.
 
 ## Considerations for the EDA platform
 
-EDA is a common preliminary function performed by data scientists before modeling or statistical analysis. As such, it can be considered a development phase, which means that targets for reliability and performance may be significantly lower than production resources and maintaining productivity is the more important factor. 
+EDA is a common preliminary function that's performed by data scientists before modeling or statistical analysis. It can therefore be considered a development phase, which means that targets for reliability and performance might be significantly lower than those for production resources and maintaining productivity is the more important factor. 
 
-This section provides guidance on capabilities to consider when selecting an EDA platform solution.
+This section provides guidance on capabilities to consider when you select an EDA platform solution.
 
 ### Functional requirements
 
-When evaluating an EDA platform, consider the following:
+When you evaluate an EDA platform, consider the following questions:
 
 - **Does the platform support transient usage?**
 
-The platform should support transient workspaces and compute, which means that the necessary resources should be able to be stopped when they aren't being used to help cost control. EDA jobs are typically interactive, so users need to be able to start VMs and stop them as they run jobs over time.
+   The platform should support transient workspaces and compute, which means that you should be able to stop the necessary resources when they aren't being used. This capability helps control costs. EDA jobs are typically interactive, so users need to be able to start VMs and stop them as they run jobs.
 
 - **Does the platform support compute optionality?**
 
-The platform should enable on-demand access to GPUs if needed, and provide a variety of compute options to help right-size the platform.
+   The platform should enable on-demand access to GPUs as needed, and provide a variety of compute options to help right-size the platform.
 
-- **Does the platform support MLFlow?**
+- **Does the platform support MLflow?**
 
-Your EDA platform should make it possible to choose a platform that enables integration with MLFlow for tracking your experiments. MLFlow is recommended as a model development, deployment, and management protocol because it provides the following benefits:
+   Your EDA platform should make it possible to choose a technology that enables integration with MLflow for tracking your experiments. MLflow is recommended as a model development, deployment, and management protocol because it provides the following benefits:
 
-  - *Experiment tracking:* MLflow allows you to track experiments by recording parameters, metrics, and artifacts. This is essential during EDA to keep track of different data preprocessing steps, feature engineering techniques, and their impacts on model performance.
+     - *Experiment tracking.* MLflow allows you to track experiments by recording parameters, metrics, and artifacts. This capability is essential during EDA so that you can keep track of different data preprocessing steps and feature engineering techniques and their impacts on model performance.
 
-  - *Reproducibility:* By logging all the details of your experiments, MLflow ensures that you can reproduce your results, which is critical for validating findings.
+     - *Reproducibility.* By logging all the details of your experiments, MLflow ensures that you can reproduce your results, which is critical for validating findings.
 
-  - *Data and model versioning:* MLflow helps in versioning datasets and models, which makes managing different versions of data transformations and models tested easier.
+     - *Data and model versioning.* MLflow helps with versioning datasets and models, which makes it easier to manage different versions of data transformations and tested models.
 
-  - *Collaborative work:* MLflow provides a centralized platform where data scientists can share their experiments and results, facilitating collaboration and knowledge sharing.
+     - *Collaborative work.* MLflow provides a centralized platform where data scientists can share their experiments and results, which facilitates collaboration and knowledge sharing.
 
 ### Nonfunctional requirements
 
+Also consider these questions: 
+
 - **How can the platform help control costs?**
 
-The platform should enable the data scientists to perform their work according to their schedule requirements, but should be right-sized to ensure that cost expectations are met. 
+   The platform should enable the data scientists to perform their work according to their schedule requirements, but it should be right-sized to ensure that cost expectations are met. 
 
 - **What security requirements must be followed for the platform?**
 
-The data used in your EDA phase will likely be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like:
+   The data used during your EDA phase will probably be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like:
 
-- *Access and authorization*
-- *Encryption at rest and in transit*
-- *Regional data protection requirements*
-- *Robust monitoring and alerting functionality, including logging and auditability*
-- *Private networking to access centralized repositories for container images, data, and code assets*
+   - *Access and authorization*
+   - *Encryption at rest and in transit* 
+   - *Regional data protection requirements*
+   - *Robust monitoring and alerting functionality, including logging and auditability*
+   - *Private networking to access centralized repositories for container images, data, and code assets*
 
 ### Tools
 
-- **Use [Azure Machine Learning (AML)](/azure/machine-learning/overview-what-is-azure-machine-learning):** Use [AML compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. Unless your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks for example, in which case it may be more appropriate to remain on that platform.
+Use [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning): Use an [Azure Machine Learning compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. One exception is if your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks, for example. In that case, it might be more appropriate to stay on that platform.
 
 > [!NOTE]
-> Do not build a full EDA platform unless you need to. GPU-optimized compute is expensive and is not appropriate if your use case doesn't require it.
+> Don't build a full EDA platform unless you need to. GPU-optimized compute is expensive and isn't appropriate if your use case doesn't require it.
 
 ## Considerations for the model training and fine-tuning platform
 
-As you move to model training and fine-tuning, you will likely need high-performance GPU-optimized compute for the compute-intensive work involved in these activities. Reliability is typically not as important as performance as most of this work happens behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important in cases where model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics#recovery-metrics) should determine the reliability design you choose.
+When you move to model training and fine-tuning, you'll probably need high-performance GPU-optimized compute for the compute-intensive work required by those activities. Reliability typically isn't as important as performance because most of this work occurs behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important in cases where model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics#recovery-metrics) should determine the reliability design you choose.
 
 The guidance in this section applies to both model training and fine-tuning functions. Unless you're forced to use separate platforms for these functions, you should use the same platform for both of these functions.
 
