@@ -123,7 +123,7 @@ Consider this question as well:
 Azure Machine Learning is the recommended solution for the model training and fine-tuning platform because it provides orchestration functionality with support for batch compute. There are two compute options to evaluate:
 
 - [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose either standard pricing or spot pricing. Spot pricing is only recommended for highly interruptible training. Don't use serverless for full-time operations. The costs can escalate quickly.
-- [Compute clusters](/azure/machine-learning/how-to-create-attach-compute-cluster&tabs=python#what-is-a-compute-cluster) enable significant control over available hardware and are tuned for parallel or distributed training.
+- [Compute clusters](/azure/machine-learning/how-to-create-attach-compute-cluster#what-is-a-compute-cluster) enable significant control over available hardware and are tuned for parallel or distributed training.
 
 > [!NOTE]
 > For foundation models, your choice of model hosting platform might limit your fine-tuning options. For example, using Azure OpenAI Service for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
