@@ -1,13 +1,13 @@
 ---
 title: AI workloads on Azure
-description: Learn about architectural considerations for building and operating AI systems on Azure.
+description: Learn about architectural considerations, including common challenges and key design areas, for building and operating AI workloads on Azure.
 author: danielstocker
 ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ms.custom: template-overview
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-workload-ai
 ---
 
 # AI workloads on Azure
@@ -22,7 +22,9 @@ An AI workload designs a particular portion of its functionality around artifici
 
 Generally, AI workloads break down into two categories, generative AI and traditional AI.
 
-**Generative AI** refers to workloads that are based on machine learning practices. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS), such as Azure OpenAI Service. GPT is a further subset of generative AI. GPT is a family of language models that specialize in mimicking human conversational language and are well-suited for chatbots, like Microsoft 365 Copilot or OpenAI's ChatGPT. 
+**Generative AI** refers to workloads that are based on machine learning practices. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS), such as Azure OpenAI Service. 
+
+GPT is a further subset of generative AI. GPT is a family of language models that specialize in mimicking human conversational language and are well-suited for chatbots, like Microsoft 365 Copilot or OpenAI's ChatGPT. 
 
 You can use generative AI to:
 
@@ -86,7 +88,9 @@ The following table describes some key design areas for building and operating A
 |[Workload personas](./personas.md)| A discussion about personas that might interact with your AI workload. While you build an AI workload, you need to plan for personas and understand unique considerations that might change your design standards. |
 |[User input and ethics](./operations.md)| A discussion about user input and ethics based on how they relate to AI workloads. AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. You must pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
 
-## Next steps
-<!-- Add a context sentence for the following links -->
+## Next step
+
+Learn about design priciples for building and operating AI workloads on Azure.
+
 > [!div class="nextstepaction"]
-> [Design principles](<workload>-design-principles.md)
+> [Design principles](./design-principles.md)
