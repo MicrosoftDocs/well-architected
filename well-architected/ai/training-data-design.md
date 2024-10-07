@@ -1,70 +1,71 @@
 ---
-title: Training Data Design for AI Workloads on Azure
-description: Training data considerations for running discriminitive AI workloads.
+title: Design Training Data for AI Workloads on Azure
+description: Learn about considerations for designing training data for discriminitive AI workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
-# Training data design for AI workloads on Azure
+# Design training data for AI workloads on Azure
 
-When designing data for AI functionality in applications, consider both non-functional requirements (such as operability, cost, and security) and functional requirements related to data ingestion, preparation, and validation. 
+When you design data for AI functionality in applications, consider both non-functional requirements, such as operability, cost, and security, and functional requirements that are related to data ingestion, preparation, and validation. 
  
-Data design and application design cannot be decoupled. Application design involves understanding use cases, query patterns, and freshness requirements. For business requirements that drive the need for using features of AI, the application might need output from discriminative models, generative model, or combination of model types. 
+Data design and application design can't be decoupled. Application design involves understanding use cases, query patterns, and freshness requirements. To address business requirements that drive the need for using AI, the application might need output from discriminative models, generative models, or a combination of model types. 
 
-AI models require training to produce meaningful results. Model training involves teaching a model to classify or predict new, unseen situations. The training data must be tailored to the specific problem and workload context.
+To produce meaningful results, AI models need to be trained. Model training involves teaching a model to classify or predict new, unseen situations. The training data must be tailored to the specific problem and workload context.
 
-Supervised training involves providing the model with labeled samples, which is useful when the desired outcome is clear. In contrast, unsupervised learning allows the model to identify patterns and relationships within the data without guidance on the expected output. During training, the algorithm type and its parameters are adjusted to control how the model learns. The approach varies depending on the type of model, such as neural networks, decision trees, and others. 
+Supervised training involves providing the model with labeled samples, which is useful when the desired outcome is clear. In contrast, unsupervised learning allows the model to identify patterns and relationships within the data without guidance on the expected output. During training, the algorithm type and its parameters are adjusted to control how the model learns. The approach varies depending on the type of model, which can include neural networks, decision trees, and others. 
 
-For example, image detection models. These models are typically trained tasks like object detection, facial recognition, or scene understanding. They learn from annotated images to identify specific objects or features. Other common examples include fraud detection algorithms, or price point prediction models. They learn from historical financial data to make informed decisions. 
+For example, image detection models are typically trained on tasks like object detection, facial recognition, or scene understanding. They learn from annotated images to identify specific objects or features. Other common examples include fraud detection algorithms and price-point prediction models. These models learn from historical financial data to make informed decisions. 
 
-This article primarily focuses on the preceding use case where models are trained _before_ they can give meaningful input to the application. Included in this article is guidance on data collection, processing, storing, testing, and maintenance. Providing data design for exploratory data science or business intelligence using AI is out of scope. The goal is to support training needs through strategies that's aligned with workload requirements, providing recommendations on the training data pipeline of an AI workload.
+This article focuses primarily on the preceding use case, where models are trained _before_ they can give meaningful input to the application. The article includes guidance on data collection, processing, storing, testing, and maintenance. Data design for exploratory data science or business intelligence via AI isn't covered. The goal is to support training needs through strategies that are aligned with workload requirements by providing recommendations on the training data pipeline of an AI workload.
 
 For information about data design for AI models that require context _during_ inferencing, see [Grounding data design](./grounding-data-design.md). 
 
 > [!IMPORTANT]
 >
->  Expect data design to be an iterative process based on statistical experimentation. To reach an acceptable quality level, adjust training data, its processing, model feature development, and model hyperparameters (when possible). This experimentation loop typically happens both in initial model training and then ongoing refinement efforts to address data and model drift over the lifespan of the feature in the workload.
+>  Expect data design to be an iterative process that's based on statistical experimentation. To reach an acceptable quality level, adjust training data, its processing, model feature development, and model hyperparameters (when possible). This experimentation loop typically happens both during initial model training and during ongoing refinement efforts to address data and model drift over the lifespan of the feature in the workload.
 
 ## Recommendations
 
-Here's the summary of recommendations provided in this article. 
+Here's a summary of the recommendations that are provided in this article, together with links to the appropriate sections in the article. 
 
 |Recommendation|Description|
 |---|---|
 |**Select data sources based on workload requirements.** |Factor in available resources and whether the data source can help you reach the acceptable data quality for model training. Cover both positive and negative examples. Combine diverse data types to achieve adequate completeness for analysis and modeling. Consider techniques like Synthetic Minority Oversampling Technique (SMOTE) for data scarcity or imbalance.<br><br>&#9642; [Data ingestion and analysis](#data-ingestion-and-analysis)|
-|**Conduct data analysis on the collected data early**. | Perform analysis process, such as Exploratory Data Analysis (EDA), offline, considering costs and security impact. For small datasets without resource constraints, analysis at source can be considered.<br><br>&#9642; [Data collection store](#data-collection-store)|
-|**Maintain data segmentation, if business and technical requrements call for it**.  |If using data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
-|**Preprocess data making it meaningful against training goals.**| Refine the quality of ingested data by filtering noise, rescoping data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
-|**Avoid training on stale data**. |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of the models over time. Regularly update training data with new observations. Define conditions triggering model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
+|**Conduct data analysis on the collected data early**. | Perform analysis processes, such as Exploratory Data Analysis (EDA), offline. Consider the costs and security impact. For small datasets without resource constraints, you can consider performing analysis at the source.<br><br>&#9642; [Data collection store](#data-collection-store)|
+|**Maintain data segmentation, if business and technical requrements call for it**.  |If you're using data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
+|**Preprocess data to make it meaningful against training goals.**| Refine the quality of ingested data by filtering noise, rescoping the data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
+|**Avoid training on stale data**. |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
+
+<!-- Removed incomplete section from the preceding table
 |**Monitor for model drift.**|Changes in input data and |
+-->
 
-
+<!--
 TODO: Note to Yeliz. This is only a summary of recommendations in this article. This is kept here to gather your opinions and also serve as an input to assessments. 
-
+-->
 
 ## Types of data
 
-To build predictive power in models, data needs to be collected, processed, and fed to the model. This process is usually conceptualized as a pipeline broken into stages. Each stage of the pipeline might deal with the same data set but it might serve different purposes. Typically, you'll handle data of these types:
+To build predictive power in models, you need to collect data, process it, and feed it to the model. This process is usually conceptualized as a pipeline broken into stages. Each stage of the pipeline might deal with the same data set, but it might serve different purposes. Typically, you handle data of these types:
 
--   _Source data_ is point in time observation data. It can be also be data that can be labeled to serve as a potential input to the data pipeline. 
+- _Source data_ is point-in-time observation data. It can be also be data that can be labeled to serve as a potential input to the data pipeline. 
 
-    This data is usually obtained from production or from an external source. These data sources can be in storage accounts, databases, APIs, or other sources. The data can be in various data format, such as OLTP databases, unstructured documents, or log files. This data serves as potential input to the data pipeline.
+    This data is usually obtained from production or from an external source. These data sources can be in storage accounts, databases, APIs, or other sources. The data can be in various data formats, like OLTP databases, unstructured documents, or log files. This data serves as a potential input to the data pipeline.
 
-- _Training data_ is a subset of source data used for providing samples to the model. The samples are descriptive precalculated data, which helps the model learn patterns and relationships. Without this data, the model cannot generate relevant output.
+- _Training data_ is a subset of source data that's used for providing samples to the model. The samples are descriptive precalculated data that help the model learn patterns and relationships. Without this data, the model can't generate relevant output.
 
-- _Evaluation data_ is a subset of the source data used to monitor and validate the performance of a machine learning model during training. It's distinct from training and test data and is used to periodically evaluate the model's performance during the training phase and guide hyperparameter tuning. For more information, see [Model evaluation](./application-design.md).
+- _Evaluation data_ is a subset of the source data that's used to monitor and validate the performance of a machine learning model during training. It's distinct from training and test data and is used to periodically evaluate the model's performance during the training phase and guide hyperparameter tuning. For more information, see [Model evaluation](./application-design.md).
  
-- _Testing data_ is used to validate the predictive power of a trained model. This data is sampled from source data that wasn't used for training. It contains observations from production so that the testing process is conclusive. From data design perspective, you need to store it. For information about testing models, see the [Testing](./testing.md) design area.
+- _Testing data_ is used to validate the predictive power of a trained model. This data is sampled from source data that wasn't used for training. It contains observations from production so that the testing process is conclusive. From a data design perspective, you need to store this data. For information about testing models, see the [Testing](./testing.md) design area.
 
-In some cases, information provided by users during interactions with the application can eventually become source data. In general, it's recommended that user input used this manner is of high quality. Otherwise, continuously handling quality issues downstream can be problematic. Guidance about handling user data isn't in scope for this article.
-
-
+In some cases, information that's provided by users during interactions with the application can eventually become source data. In general, we recommend that user input used this manner is of high quality. Otherwise, the need to continuously handle quality issues downstream can become problematic. Guidance about handling user data isn't covered in this article.
 
 ## Data ingestion and analysis
 
-Training data is collected within a predetermined window that has sufficient representations for training the type of model selected. For example, when training a binary classification model, training data must include representations of what is the case (positive examples) and what is not the case (negative examples). For training data to be meaningful, conduct Exploratory Data Analysis (EDA) early in feature design.
+Training data is collected within a predetermined window that has sufficient representations for training the type of model selected. For example, when you train a binary classification model, training data must include representations of what is the case (positive examples) and what is not the case (negative examples). For training data to be meaningful, conduct EDA early during feature design.
 
 EDA helps analyze source data to identify characteristics, relationships, patterns, and quality issues. EDA can be conducted directly at the source data store or replicated into centralized stores such as a data lake or data warehouse. The outcome of the process is to inform data collection and processing for effective model training.
 
