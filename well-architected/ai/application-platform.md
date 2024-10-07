@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-workload-ai
 ---
 
@@ -83,7 +83,7 @@ Consider these questions as well:
 
 ### Tools
 
-Use [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning): Use an [Azure Machine Learning compute instance](/azure/machine-learning/concept-compute-instance?view=azureml-api-2) with team-level file shares as your EDA platform. One exception is if your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks, for example. In that case, it might be more appropriate to stay on that platform.
+Use [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning): Use an [Azure Machine Learning compute instance](/azure/machine-learning/concept-compute-instance) with team-level file shares as your EDA platform. One exception is if your team or organization are already using a suitable hosting platform, like GPU-enabled compute clusters in Databricks, for example. In that case, it might be more appropriate to stay on that platform.
 
 > [!NOTE]
 > Don't build a full EDA platform unless you need to. GPU-optimized compute is expensive and isn't appropriate if your use case doesn't require it.
@@ -123,7 +123,7 @@ Consider this question as well:
 Azure Machine Learning is the recommended solution for the model training and fine-tuning platform because it provides orchestration functionality with support for batch compute. There are two compute options to evaluate:
 
 - [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose either standard pricing or spot pricing. Spot pricing is only recommended for highly interruptible training. Don't use serverless for full-time operations. The costs can escalate quickly.
-- [Compute clusters](/azure/machine-learning/how-to-create-attach-compute-cluster?view=azureml-api-2&tabs=python#what-is-a-compute-cluster) enable significant control over available hardware and are tuned for parallel or distributed training.
+- [Compute clusters](/azure/machine-learning/how-to-create-attach-compute-cluster&tabs=python#what-is-a-compute-cluster) enable significant control over available hardware and are tuned for parallel or distributed training.
 
 > [!NOTE]
 > For foundation models, your choice of model hosting platform might limit your fine-tuning options. For example, using Azure OpenAI Service for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
@@ -202,7 +202,7 @@ Consider these questions as well:
 
      - You need to deploy pipeline components for batch processing.
 
-  - If you need to run Spark jobs for distributed data processing, consider using [Azure Synapse Analytics](/azure/synapse-analytics/), [Azure Databricks](/azure/databricks/), or [Azure Machine Learning serverless Spark compute](/azure/machine-learning/apache-spark-azure-ml-concepts?view=azureml-api-2).
+  - If you need to run Spark jobs for distributed data processing, consider using [Azure Synapse Analytics](/azure/synapse-analytics/), [Azure Databricks](/azure/databricks/), or [Azure Machine Learning serverless Spark compute](/azure/machine-learning/apache-spark-azure-ml-concepts).
 
   - If none of these scenarios apply, prefer Azure Machine Learning batch endpoints.
 
