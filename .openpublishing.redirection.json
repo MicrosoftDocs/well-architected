@@ -16,6 +16,11 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/service-guides/azure-disks-cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-disk-storage",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/security/security-patterns.md",
 			"redirect_url": "/azure/well-architected/security/design-patterns",
 			"redirect_document_id": true
