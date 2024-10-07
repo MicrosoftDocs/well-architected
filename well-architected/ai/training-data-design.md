@@ -1,9 +1,9 @@
 ---
-title: Training data design for AI workloads on Azure
+title: Training Data Design for AI Workloads on Azure
 description: Training data considerations for running discriminitive AI workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 04/15/2024
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
