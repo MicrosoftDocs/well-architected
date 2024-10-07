@@ -6,7 +6,7 @@ ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ms.custom: template-overview
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-workload-ai
 ---
 
