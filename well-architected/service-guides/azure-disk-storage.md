@@ -92,12 +92,11 @@ Use these recommendations to optimize security:
 | **Recommendation** | **Benefit** |
 |---|---|
 | Use [encryption at host](/azure/virtual-machines/disk-encryption?branch=main#encryption-at-host---end-to-end-encryption-for-your-vm-data) for your managed disks whenever possible. | Encryption at host provides end to end encryption for environments with it enabled. Encryption begins on your VM, and flows through to its attached disks. |
-| Disable public network access to your managed disk | Using private links helps ensure more security for your environment. |
 | Apply an [Azure Resource Manager lock](/azure/storage/common/lock-account-resource) on the disk | Locking a disk prevents it from being deleted and causing data loss. |
 | Disable traffic to the public endpoints of your disk. [Create private endpoints](/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) for clients that run in Azure. | Disabling traffic to the public endpoints causes traffic to travel over the Microsoft backbone network, which eliminates exposure from the public internet. |
 | If possible, limit access to resources and functions by using Azure role-based access control (Azure RBAC). | With RBAC, there are no tokens or keys that could be compromised. The security principal (user, group, managed identity, or service principal) is authenticated by Microsoft Entra ID to return an OAuth 2.0 token. The token is used to authorize a request against the Disk service. |
 | Microsoft discourages the use of SAS tokens. If you must create one, review this list of [SAS best practices](/azure/storage/common/storage-sas-overview) before you create and distribute it. | Best practices can help you prevent a SAS token from being leaked and quickly recover from leak should one occur. |
-| [Disallow Shared Key authorization](/azure/storage/common/shared-key-authorization-prevent). This disables not only account key access, but also service and account SAS tokens as those types of tokens are based on account keys. | Only secured requests that are authorized with Microsoft Entra ID succeed. |
+| If you must use SAS tokens, set the expiration time to 60 days or less. | Setting the expiration time lower increases your overall security and prevents you from dealing with issues when the SAS expiration limit is enforced. |
 | Consider using your own encryption key ([Customer-managed key](/azure/storage/common/customer-managed-keys-overview)) to protect the data in your managed disk. | A customer-managed key provides greater flexibility and control if you need it. For example, you can store encryption keys in Azure Key Vault and automatically rotate them. |
 
 ## Cost optimization
