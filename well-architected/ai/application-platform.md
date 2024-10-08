@@ -19,7 +19,7 @@ This design area covers several types of applications that might be relevant to 
 - Model training and fine-tuning
 - Inferencing
 
-This article provides guidance for selecting the best platform for each of these functions to meet your business needs. There are also general recommendations that you can be apply to all of these functions.
+This article provides guidance for selecting the best platform for each of these functions to meet your business needs. There are also general recommendations that you can apply to all of these functions.
 
 ## Platform recommendations
 
