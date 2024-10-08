@@ -27,26 +27,37 @@ landingContent:
           - text: Design methodology
             url: design-methodology.md     
    # Card
-  - title: Design areas
+  - title: Technical design areas
     linkLists:
       - linkListType: concept
         links:
           - text: Networking
             url: networking.md
-          - text: Governance
-            url: governance.md
           - text: Compute
             url: compute.md
           - text: Identity and access management
             url: identity-access.md
+          - text: Data
+            url: data.md
+          - text: Resource organization
+            url: resource-organization.md
+
+    # Card
+  - title: Operational design areas
+    linkLists:
+      - linkListType: concept
+        links:
           - text: Usage monitoring and billing
             url: usage-monitoring-billing.md
-          - text: Incident management
-            url: incident-management.md
-          - text: Data
-            url: data.md            
           - text: DevOps practices
             url: devops.md
+          - text: Governance
+            url: governance.md
+          - text: Incident management
+            url: incident-management.md
+          - text: Resource organization
+            url: resource-organization.md
+
  # Card
   - title: Assessment
     linkLists:
@@ -62,3 +73,5 @@ landingContent:
         links:
           - text: Multitenant solutions on Azure
             url: /azure/architecture/guide/multitenant/overview?branch=main   
+          - text: Plan your journey to SaaS
+            url: /azure/architecture/guide/saas/plan-journey-saas
