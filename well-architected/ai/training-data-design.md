@@ -67,73 +67,74 @@ In some cases, information that's provided by users during interactions with the
 
 Training data is collected within a predetermined window that has sufficient representations for training the type of model selected. For example, when you train a binary classification model, training data must include representations of what is the case (positive examples) and what is not the case (negative examples). For training data to be meaningful, conduct EDA early during feature design.
 
-EDA helps analyze source data to identify characteristics, relationships, patterns, and quality issues. EDA can be conducted directly at the source data store or replicated into centralized stores such as a data lake or data warehouse. The outcome of the process is to inform data collection and processing for effective model training.
+EDA helps analyze source data to identify characteristics, relationships, patterns, and quality issues. You can conduct EDA directly at the source data store or replicate data into centralized stores, like a data lake or data warehouse. The outcome of the process is to inform data collection and processing for effective model training.
 
 > [!NOTE]
-> While EDA process is a pre-production process, it uses data sourced from production. Apply the same level of control to this process as you would for production.
+> Although EDA is a pre-production process, it uses data sourced from production. Apply the same level of control to this process as you would for production.
 
-Here are some considerations for collecting data in preparing for model training. 
+Following are some considerations for collecting data in preparation for model training. 
 
 #### Data sources
 
-Data can be collected from:
+Data can be collected from these sources:
 
-  - **Proprietary data** is created or owned by the organization. It's not intended for public consumption; instead, it serves internal purposes.
+  - **Proprietary data** is created or owned by the organization. It's not intended for public consumption. It serves internal purposes.
 
-  - **Public sources** that's accessible to anyone, including information from websites, research papers, and publicly shared databases. Even if specific to a niche area, such data remains generally available. For example, content from WikiPedia, PubMed, are considered publicly accessible.
+  - **Public sources** are accessible to anyone. These sources include websites, research papers, and publicly shared databases. It might be specific to a niche area. For example, content from Wikipedia and PubMed are considered publicly accessible.
 
-Choice of data sources depends on workload requirements, available resources, and the quality of data that's acceptable to train the model. Imbalanced datasets can lead to biased models, so data collection must be designed to get sufficient samples of representative data. You might need to oversample the minority data or under sample the majority data.  In cases of data scarcity or imbalance, consider techniques like [Synthetic Minority Oversampling Technique (SMOTE)](/azure/machine-learning/component-reference/smote) and [Synthetic data generation](/azure/ai-studio/concepts/concept-synthetic-data#synthetic-data-generation).
-
+Your choice of data sources depends on workload requirements, available resources, and the quality of the data that's acceptable for training the model. Imbalanced datasets can lead to biased models, so you need to design data collection to get sufficient samples of representative data. You might need to oversample minority data or undersample majority data. If the data is scarce or imbalanced, consider techniques like [SMOTE](/azure/machine-learning/component-reference/smote) and [Synthetic data generation](/azure/ai-studio/concepts/concept-synthetic-data#synthetic-data-generation).
 
 #### Data collection store
 
-There are two main options for collecting source data: querying the data in situ (origin of data source) or copying the data to localized data stores and then querying that store.
+There are two main options for collecting source data: 
 
-  The choice will depend on workload requirements and the volume of data. If have a relatively small amount of data, the source system might handle your raw queries directly. However, the common practice is to query and analyze from the localized store.
+- Querying the data at the data source
+- Copying the data to a localized data store and then querying that store
+
+The choice depends on workload requirements and the volume of data. If you have a relatively small amount of data, the source system might handle your raw queries directly. However, the common practice is to query and analyze from the localized store.
  
-  > ![Consider the tradeoff associated with this decision.](../_images/trade-off.svg) **Tradeoff**. While localized data stores may facilitate analysis and the training process, balancing costs, security, and model requirements must be considered.
+  > ![Consider the tradeoff that's associated with this decision.](../_images/trade-off.svg) **Tradeoff**. Although localized data stores might facilitate analysis and the training process, you also need to balance costs, security, and model requirements.
   >
   > Duplicating data incurs storage and compute costs.
-Maintaining a separate copy requires additional resources. Local copies may contain sensitive information. In that case, this data  must be protected with regular security measures.
+Maintaining a separate copy necessitates additional resources. Local copies might contain sensitive information. If it does, you need to protect the data by using regular security measures.
   >
-  > If you're using production data for training data, it must be subject to all the original data classification constraints of that data.
+  > If you use production data for training data, it must be subject to all the original data classification constraints of that data.
   
-Data can be handed to the training process (push mode) or the process itself queries the data source (pull mode). The choice depends on ownership, efficiency, and resource constraints. 
+Data can be provided to the training process (push mode) or the process itself can query the data source (pull mode). The choice depends on ownership, efficiency, and resource constraints. 
 
-When data is pushed to the workload, it's the responsibility of data source owner to provide fresh data. The workload owner provides a suitable spot in their localized data store where the data lands. This approach is relevant for proprietary data owned by the organization, rather than public sources.
+When data is pushed to the workload, it's the responsibility of the data source owner to provide fresh data. The workload owner provides a suitable location in their localized data store to store the data. This approach applies to proprietary data that's owned by the organization, not to public sources.
 
-In case of pulling, there are two approaches. The workload writes a query against the data store, retrieves necessary data, and places it in the localized store. Another way is to do real-time query in memory. The decision depends on data volume and available compute resources. For smaller datasets, in-memory retrieval may suffice for model training.
+In case of pulling, there are two approaches. In one approach, the workload queries against the data store, retrieves necessary data, and places it in the localized store. Another way is to perform real-time queries in memory. The decision depends on data volume and available compute resources. For smaller datasets, in-memory retrieval might be sufficient for model training.
 
-Regardless of pull or push mode, avoid training models on stale data. The frequency of data updates should align with workload requirements.
+Regardless of whether you use push or pull mode, avoid training models on stale data. The frequency of data updates should align with workload requirements.
 
 #### Data segmentation
 
-Workload-specific requirements may require data segmentation. Here are some potential use cases:
+Workload-specific requirements might necessitate data segmentation. Here are some potential use cases:
 
-- **Security requirements** often drive segmentation decisions. For instance, regulatory constraints may prevent exporting data across geopolitical regions. If your application design allows for separate models, data design would provide for separate data pipelines for each model. 
+- **Security requirements** often drive segmentation decisions. For instance, regulatory constraints might prevent exporting data across geopolitical regions. If your application design allows the use of separate models, data design incorporates separate data pipelines for each model. 
 
-  However, if a single model is the strategy, segmented data sources will feed into that model. You'll need to train the model on data from both geographies, potentially adding complexity. 
+  However, if a single model is used, segmented data sources feed into that model. You need to train the model on data from both geographies, which potentially adds complexity. 
   
-  Whether the application is using a single model or multiple models, preserve security measures on each data segment so that it's protected with the same level of rigor as its origin.
+  Whether the application is using a single model or multiple models, preserve security measures on each data segment so that it's protected with the same level of rigor as data at the origin.
 
-- **Data freshness rate** can be a factor for separating data. Data from different sources may refresh at varying time intervals. If the data changes, retraining becomes necessary. Segementation allows for granular control of data lifecycle. Consider separate tables or pipelines for different data segments.
+- **Data freshness rate** can be a factor for separating data. Data from different sources might refresh at varying time intervals. If the data changes, retraining becomes necessary. Segementation enables granular control of the data lifecycle. Consider using separate tables or pipelines for different data segments.
 
-Regardless of the use case, when segmenting data, access controls are key. Data professionals, such as data engineers, data scientists will explore available source data to understand patterns and relationships. Their insights contribute to training models that predict outcomes. Establish access controls to ensure that only authorized users can interact with specific data subsets. Apply least privilege on data that's considered to be relavent. Collaborate with the data owners to set up appropriate permissions.
-
+Regardless of the use case, when data is segmented, access controls are key. Data professionals, like data engineers and data scientists, explore available source data to understand patterns and relationships. Their insights contribute to training models that predict outcomes. Establish access controls to ensure that only authorized users can interact with specific data subsets. Apply least privilege on data that's considered to be relavent. Collaborate with data owners to set up appropriate permissions.
 
 ## Data preprocessing
 
-In a real-world scenario, the source data isn't stored just for AI scenarios. There's an intermediate process that prepares the data for training. During this stage, data is stripped of noise, making it useful for consumption. When dealing with source data, data scientists engage in a process of exploration, experimentation, and decision-making. Their primary goal is to identify and extract parts of the source data that holds predictive power. 
+In a real-world scenario, source data isn't simply stored for AI scenarios. There's an intermediate process that prepares data for training. During this stage, data is stripped of noise, making it useful for consumption. When dealing with source data, data scientists engage in a process of exploration, experimentation, and decision making. Their primary goal is to identify and extract parts of the source data that holds predictive power. 
 
-The preprocessing logic depends on the problem, data type, and desired outcomes. Here are some common techniques for preprocessing. This list isn't exhaustive. The actual criteria for your workload will be driven by business requirements. 
+The preprocessing logic depends on the problem, data type, and desired outcomes. Following are some common techniques for preprocessing. This list isn't exhaustive. The actual criteria for your workload will be driven by business requirements. 
 
-- **Quality**. Preprocessing can ensure that the training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example relevant to your use case, while eliminating observations that lack quality or predictive power. For this strategy, preprocessing process should exclude low-quality or non-predictive data to avoid sampling from unreliable sources. For example, when collating product reviews, you might choose to eliminate data that's too short. It's important to discover what data quality will lead to meaningful predictive results. 
+- **Quality**. Preprocessing can ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. When you use this technique, preprocessing should exclude low-quality or non-predictive data. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality will lead to meaningful predictive results. 
 
-- **Rescoping**. Source data fields that are too specific can restrict predictive powers. For example, consider an "Address" field. Broadening the scope from full address (house number and street name) to higher level, such as city, state, or country might be more relevant.
+- **Rescoping**. Source data fields that are too specific can restrict predictive powers. For example, consider an address field. Broadening the scope from full address (house number and street name) to a higher level, like city, state, or country, might be more relevant.
 
-- **Deduplication**. Eliminating redundancy can ensure that your training data remains accurate and representative. In certain cases, the frequency with which an observation is made isn't relevant. For example, when scanning logs, a log entry appearing 1000 times might indicate its frequency, but it doesn't necessarily imply that it's more of an error than a log that occurred only once. This type of redundancy can introduce noise.
+- **Deduplication**. Eliminating redundancy can ensure that your training data remains accurate and representative. In certain cases, the frequency with which an observation is made isn't relevant. For example, when you scan logs, if a log entry appears 1,000 times, that indicates its frequency. It doesn't necessarily imply that it's a more serious error than a log that occurred only once. This type of redundancy can introduce noise.
 
-- **Sensitive data handling**. Personally identifiable information (PII) should be eliminated unless it's absolutely vital to the model's predictive power in a way that cannot be acheived through anonymization. Training data should be effective without compromising privacy. If it provides value, then be aware of ethical considerations that comes with handling sensitive data. For more information, see [User input, ethics and security considerations](./userinput-ethics-security.md).
+- **Sensitive data handling**. Eliminate personally identifiable information (PII) unless it's absolutely vital to the model's predictive power in a way that can't be acheived through anonymization. Training data should be effective without compromising privacy. If the data provides value, you need to be aware of the ethical considerations of handling sensitive data. For more information, see [User input, ethics and security considerations](./userinput-ethics-security.md).
 
 - **Standardized transformation**. The preceding techniques are considered a core part of Feature Engineering by domain experts. Broad scope and diverse source data eventually need to merge into feature stores where features are organized (for example, into feature tables) for the explicit purpose of training models. After selecting predictive data for training, transform the data to a standardized format. Standardization also ensures compatibility with training model.
 
