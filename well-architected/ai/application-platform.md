@@ -1,10 +1,10 @@
 ---
-title: Application platform for AI workloads on Azure
-description: Learn about the Azure resources that you need for running AI workloads.
+title: Application Platform for AI Workloads on Azure
+description: Learn about the Azure resources that you need for running AI workloads. Learn about platforms for EDA, model training and fine-tuning, and inferencing. 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-ai
 ---
@@ -19,7 +19,7 @@ This design area covers several types of applications that might be relevant to 
 - Model training and fine-tuning
 - Inferencing
 
-This article provides guidance for selecting the best platform for each of these functions to meet your business needs. There are also general recommendations that can be applied to all of these functions.
+This article provides guidance for selecting the best platform for each of these functions to meet your business needs. There are also general recommendations that you can be apply to all of these functions.
 
 ## Platform recommendations
 
@@ -35,7 +35,7 @@ No matter which of the previously described functions you're designing for, star
 
 ## Considerations for the EDA platform
 
-EDA is a common preliminary function that's performed by data scientists before modeling or statistical analysis. It can therefore be considered a development phase, which means that targets for reliability and performance might be significantly lower than those for production resources and that maintaining productivity is the more important factor. 
+EDA is a common preliminary function that data scientists perform before modeling or statistical analysis. It can therefore be considered a development phase, which means that targets for reliability and performance might be significantly lower than those for production resources and that maintaining productivity is the more important factor. 
 
 This section provides guidance on capabilities to consider when you select an EDA platform solution.
 
@@ -53,7 +53,7 @@ When you evaluate an EDA platform, consider the following questions:
 
 - **Does the platform support MLflow?**
 
-   Your EDA platform should make it possible to choose a technology that enables integration with MLflow for tracking your experiments. MLflow is recommended as a model development, deployment, and management protocol because it provides the following benefits:
+   Your EDA platform should make it possible to choose a technology that enables integration with MLflow for tracking your experiments. We recommend MLflow as a model development, deployment, and management protocol because it provides the following benefits:
 
      - *Experiment tracking.* MLflow allows you to track experiments by recording parameters, metrics, and artifacts. This capability is essential during EDA so that you can keep track of different data preprocessing steps and feature engineering techniques and their impacts on model performance.
 
@@ -75,11 +75,11 @@ Consider these questions as well:
 
    The data used during your EDA phase will probably be production data, which requires you to follow production practices to secure that data and monitor the platform. To that end, your platform should support all necessary security controls, like:
 
-   - *Access and authorization*
-   - *Encryption at rest and in transit* 
-   - *Regional data protection requirements*
-   - *Robust monitoring and alerting functionality, including logging and auditability*
-   - *Private networking for access to centralized repositories for container images, data, and code assets*
+   - *Access and authorization*.
+   - *Encryption at rest and in transit*. 
+   - *Regional data protection requirements*.
+   - *Robust monitoring and alerting functionality, including logging and auditability*.
+   - *Private networking for access to centralized repositories for container images, data, and code assets*.
 
 ### Tools
 
@@ -100,7 +100,7 @@ When you evaluate platforms for model training and fine-tuning, consider these q
 
 - **Does the platform support transient usage?**
 
-   Like EDA activities, model training and fine-tuning are typically not run full time, so you should prefer a platform that can be stopped when it's not in use to help control costs. Unlike EDA however, model training is typically a batch process, so the compute is only needed when the batch runs and then can be shut down until the next run.
+   Like EDA activities, model training and fine-tuning are typically not run full time, so you should prefer a platform that can be stopped when it's not in use to help control costs. Unlike EDA, however, model training is typically a batch process, so the compute is only needed when the batch runs and then can be shut down until the next run.
 
 - **Does the platform provide orchestration?**
 
@@ -108,7 +108,7 @@ When you evaluate platforms for model training and fine-tuning, consider these q
 
 - **Can existing technologies in your environment be part of the solution?**
 
-   If your existing data platform has machine learning capabilities, as [Azure Databricks](/azure/databricks/machine-learning/) does, you can use if for certain steps, like data transformation and feature engineering, training, fine-tuning, and other steps in Azure Machine Learning. Combining technologies helps you minimize the cost and complexity involved in using a data platform for functions it might not be ideally suited for.
+   If your existing data platform has machine learning capabilities, as [Azure Databricks](/azure/databricks/machine-learning/) does, you can use it for certain steps, like data transformation and feature engineering, training, fine-tuning, and other steps in Azure Machine Learning. Combining technologies helps you minimize the cost and complexity involved in using a data platform for functions it might not be ideally suited for.
 
 ### Nonfunctional requirements
   
@@ -120,10 +120,10 @@ Consider this question as well:
 
 ### Tools
 
-Azure Machine Learning is the recommended solution for the model training and fine-tuning platform because it provides orchestration functionality with support for batch compute. There are two compute options to evaluate:
+We recommend Azure Machine Learning for the model training and fine-tuning platform because it provides orchestration functionality with support for batch compute. There are two compute options to evaluate:
 
-- [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose either standard pricing or spot pricing. Spot pricing is only recommended for highly interruptible training. Don't use serverless for full-time operations. The costs can escalate quickly.
-- [Compute clusters](/azure/machine-learning/how-to-create-attach-compute-cluster#what-is-a-compute-cluster) enable significant control over available hardware and are tuned for parallel or distributed training.
+- [Serverless compute](/azure/machine-learning/how-to-use-serverless-compute) is ideal for short, infrequent runs that can tolerate noisy neighbor effects. You can choose either standard pricing or spot pricing. Spot pricing is only recommended for highly interruptible training. Don't use serverless compute for full-time operations. The costs can escalate quickly.
+- [Compute clusters](/azure/machine-learning/how-to-create-attach-compute-cluster#what-is-a-compute-cluster) give you significant control over available hardware and are tuned for parallel or distributed training.
 
 > [!NOTE]
 > For foundation models, your choice of model hosting platform might limit your fine-tuning options. For example, using Azure OpenAI Service for model hosting limits your fine-tuning options to the built-in Azure OpenAI fine-tuning functionality.
@@ -162,7 +162,7 @@ Consider these questions as well:
 
 - **What are the reliability requirements for the platform?**
 
-   Serve layer APIs are production resources, so you should apply the same reliability requirements to them that you apply to other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support availability zones or a multi-region design.
+   Serve layer APIs are production resources, so you should apply the same reliability requirements to them that you apply to other workload flows that match their [criticality](/azure/well-architected/reliability/identify-flows) rating. If their criticality requires high availability, your hosting platform should support availability zones or a multiregion design.
 
 - **What networking controls are required for the platform?**
 
@@ -172,13 +172,13 @@ Consider these questions as well:
 
    Determine the identity and access controls that are required for your endpoints. For example, consider whether you need native role-based access control (RBAC) or built-in support for your identity and access platform, for example, Microsoft Entra ID.
 
- - **What monitoring capabilities are supported by the platform?**
+ - **What monitoring capabilities does the platform support?**
 
    Determine the required monitoring capabilities for your endpoints. Depending on the platform, you might have only limited access to logs and metrics, which might limit your ability to audit activities or detect malfunctions.
 
  - **What are the performance requirements for the platform?**
 
-   Inference latency is a common concern and different platforms have different performance profiles. Serverless and PaaS services that use a utility model can be affected by the noisy neighbor problem and often have no throughput guarantees. On the other hand, the same platforms might offer a self-hosted option that provides guaranteed throughput with a pre-purchasing model. You could also consider self-hosting on Kubernetes to get predictable latency behavior.
+   Inference latency is a common concern, and different platforms have different performance profiles. Serverless and PaaS services that use a utility model can be affected by the noisy neighbor problem and often have no throughput guarantees. On the other hand, the same platforms might offer a self-hosted option that provides guaranteed throughput with a pre-purchasing model. You can also consider self-hosting on Kubernetes to get predictable latency behavior.
 
    Be aware of service limits and quotas that might affect your performance, like those for [Azure OpenAI](/azure/ai-services/openai/quotas-limits). Often these quotas and limits are aggressively set to meet capacity demands, so if your choice of platform doesn't provide the performance that you require, you might need to adopt strategies to spread the compute demand across instances. 
 
