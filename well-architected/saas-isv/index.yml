@@ -55,8 +55,6 @@ landingContent:
             url: governance.md
           - text: Incident management
             url: incident-management.md
-          - text: Resource organization
-            url: resource-organization.md
 
  # Card
   - title: Assessment
