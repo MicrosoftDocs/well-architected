@@ -1,8 +1,8 @@
 ---
 title: Governance for SaaS workloads for ISVs
 description: Learn about the governance considerations for SaaS workloads.
-author: MikeBazMSFT
-ms.author: micbaz
+author: joshuawaddell
+ms.author: jowaddel
 ms.date: 09/30/2024
 ms.topic: conceptual
 ---
