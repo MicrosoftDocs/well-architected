@@ -79,7 +79,7 @@ When you create a SaaS solution, your customers place a great deal of trust in y
 
     For more information about how to configure Microsoft Entra tenants when you deploy SaaS, see [Independent software vendor (ISV) considerations for Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone).
 
-- **Manage your identities.** Identity is the cornerstone of cloud security, and forms the foundation of access management. When you develop SaaS, you have multiple types of identities to consider. For more information about identity in SaaS solutions, see [Identity and access management for SaaS workloads on Azure](./identity.md).
+- **Manage your identities.** Identity is the cornerstone of cloud security, and forms the foundation of access management. When you develop SaaS, you have multiple types of identities to consider. For more information about identity in SaaS solutions, see [Identity and access management for SaaS workloads on Azure](./identity-access.md).
 
 - **Control access to your Azure resources.** Your Azure resources are critical components of your solution. Azure provides multiple ways to protect your resources.
 
