@@ -59,6 +59,9 @@ Besides the documentation on [Service Bus Premium and Standard messaging tiers](
 
 When deploying Service Bus with Geo-disaster recovery and in availability zones, the Service Level Operation (SLO) increases dramatically, but does not change the uptime SLA.
 
+> [!NOTE]
+> Previously it was required to set the property `zoneRedundant` to `true` to enable availability zones, however this behavior has changed to enable availability zones by default. Existing namespaces are being migrated to availability zones where possible, and the property `zoneRedundant` is being deprecated. The property `zoneRedundant` might still show as `false`, even when availability zones has been enabled.
+
 ## Checklist
 
 **Have you configured Azure Service Bus with reliability in mind?**
