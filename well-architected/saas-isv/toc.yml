@@ -11,6 +11,8 @@
     items:
     - name: Networking
       href: networking.md
+    - name: Resource organization
+      href: resource-organization.md
     - name: Governance
       href: governance.md
     - name: Compute
