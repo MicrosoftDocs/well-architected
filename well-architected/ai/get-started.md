@@ -1,5 +1,5 @@
 ---
-title: AI workloads on Azure
+title: AI Workloads on Azure
 description: Learn about architectural considerations, including common challenges and key design areas, for building and operating AI workloads on Azure.
 author: danielstocker
 ms.author: prwilk
@@ -16,11 +16,11 @@ This guidance is intended for **workload owners** and **technical stakeholders**
 
 This set of articles provides actionable and authoritative guidance for building and operating a highly reliable and scalable solution on Azure. The guidance has a technical foundation in Azure Well-Architected Framework best practices. It's also based on reviews of numerous customer implementations. 
 
-## What is an AI workload in the context of Well-Architected Framework?
+## What is an AI workload in the context of the Well-Architected Framework?
 
-An AI workload designs a particular portion of its functionality around artificial intelligence technology for predictive, discriminatory, or generative use cases. Sometimes, this functionality replaces a traditional code logic and data access solution that is otherwise deterministic. This design produces an experience that determinism and a classical code and data model can't accomplish. Artificial intelligence combines code logic and data into a single package.
+An AI workload is a workload that uses AI technology for predictive, discriminatory, or generative use cases. Sometimes, this functionality replaces a traditional code logic and data access solution that is otherwise deterministic. This design produces an experience that determinism and a classical code and data model can't accomplish. AI combines code logic and data into a single package.
 
-Generally, AI workloads break down into two categories, generative AI and traditional AI.
+Generally, AI workloads break down into two categories: generative AI and traditional AI.
 
 **Generative AI** refers to workloads that are based on machine learning practices. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS), such as Azure OpenAI Service. 
 
@@ -46,7 +46,7 @@ You can use traditional AI to:
  
 The guidance in this series of articles considers each type of AI workload generally and focuses on specific types, like language models, when special considerations for that type warrant dedicated guidance.
 
-Some examples of workloads that aren't included in the scope of this workload are:
+Some examples of workloads that aren't included in the scope of this series of articles are:
 
 - Workloads that use [Azure AI Studio](https://azure.microsoft.com/products/ai-studio/) for their AI components. Studio is a SaaS that doesn't require the type of guidance that these articles provide.
 - AI workloads that are realized through low-code and no-code offerings such as [Microsoft Copilot Studio](https://www.microsoft.com/microsoft-copilot/microsoft-copilot-studio).
@@ -55,7 +55,7 @@ Some examples of workloads that aren't included in the scope of this workload ar
 
 ## What are the common challenges?
 
-- **Size your workload for training**: Training your workload on a model requires a significant amount of compute resources initially, but that requirement decreases after the training is finished. After you train your system on a model, running the system requires less compute resources because it's only responding to prompts.
+- **Size your workload for training**: Training your workload on a model requires a significant amount of compute resources initially, but that amount decreases after the training is finished. After you train your system on a model, running the system requires less compute resources because it's only responding to prompts.
 - **Size your workload for inference**: When you aren't running a model-based workload, you need a more consistent amount of compute power.
 - **Buy versus build**: Determine whether an off-the-shelf solution, like Azure OpenAI, suits your requirements or whether you need to build your own solution.
 - **Deal with data**: You need strategies to handle the following data scenarios:
@@ -86,7 +86,7 @@ The following table describes some key design areas for building and operating A
 |[Workload operations](./operations.md)| A discussion about operations considerations based on how they relate to AI workloads. Operational activities for AI workloads can be a significant change for organizations that are new to AI. Your organization might need to take new approaches and consider adding specialized roles and training. |
 |[Testing and validation](./testing.md)| A discussion about testing and validation considerations for AI workloads. Testing and validating your AI workload can be notably different than testing traditional apps. You might need to adopt new testing practices and consider new choices to meet your requirements. |
 |[Workload personas](./personas.md)| A discussion about personas that might interact with your AI workload. While you build an AI workload, you need to plan for personas and understand unique considerations that might change your design standards. |
-|[User input and ethics](./operations.md)| A discussion about user input and ethics based on how they relate to AI workloads. AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. You must pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
+|[User input and ethics](./userinput-ethics-security.md)| A discussion about user input and ethics based on how they relate to AI workloads. AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. You must pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
 
 ## Next step
 
