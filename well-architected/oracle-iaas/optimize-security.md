@@ -7,7 +7,6 @@ ms.date: 04/23/2024
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-workload-oracle
-ms.custom: linux-related-content
 ---
 
 # Optimize security for your Oracle workload
