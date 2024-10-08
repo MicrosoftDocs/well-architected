@@ -1,6 +1,6 @@
 ---
 title: Design Training Data for AI Workloads on Azure
-description: Learn about considerations for designing training data for discriminative AI workloads.
+description: Learn about considerations for designing training data for discriminative AI workloads. Get guidance for data collection, processing, storing, and testing.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -15,7 +15,7 @@ Data design and application design can't be decoupled. Application design involv
 
 To produce meaningful results, AI models need to be trained. Model training involves teaching a model to classify or predict new, unseen situations. The training data must be tailored to the specific problem and workload context.
 
-Supervised training involves providing the model with labeled samples, which is useful when the desired outcome is clear. In contrast, unsupervised learning allows the model to identify patterns and relationships within the data without guidance on the expected output. During training, the algorithm type and its parameters are adjusted to control how the model learns. The approach varies depending on the type of model, which can include neural networks, decision trees, and others. 
+Supervised training involves providing the model with labeled samples. This type of training is useful when the desired outcome is clear. In contrast, unsupervised learning allows the model to identify patterns and relationships within the data without guidance on the expected output. During training, the algorithm type and its parameters are adjusted to control how the model learns. The approach varies depending on the type of model, which can include neural networks, decision trees, and others. 
 
 For example, image detection models are typically trained on tasks like object detection, facial recognition, or scene understanding. They learn from annotated images to identify specific objects or features. Other common examples include fraud detection algorithms and price-point prediction models. These models learn from historical financial data to make informed decisions. 
 
@@ -104,7 +104,7 @@ Data can be provided to the training process (push mode) or the process itself c
 
 When data is pushed to the workload, it's the responsibility of the data source owner to provide fresh data. The workload owner provides a suitable location in their localized data store to store the data. This approach applies to proprietary data that's owned by the organization, not to public sources.
 
-In case of pulling, there are two approaches. In one approach, the workload queries against the data store, retrieves necessary data, and places it in the localized store. Another way is to perform real-time queries in memory. The decision depends on data volume and available compute resources. For smaller datasets, in-memory retrieval might be sufficient for model training.
+There are two approaches that you can use for pulling data. In one approach, the workload queries against the data store, retrieves necessary data, and places it in the localized store. Another way is to perform real-time queries in memory. The decision depends on data volume and available compute resources. For smaller datasets, in-memory retrieval might be sufficient for model training.
 
 Regardless of whether you use push or pull mode, avoid training models on stale data. The frequency of data updates should align with workload requirements.
 
@@ -128,7 +128,7 @@ In a real-world scenario, source data isn't simply stored for AI scenarios. Ther
 
 The preprocessing logic depends on the problem, data type, and desired outcomes. Following are some common techniques for preprocessing. This list isn't exhaustive. The actual criteria for your workload will be driven by business requirements. 
 
-- **Quality**. Preprocessing can ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. When you use this technique, preprocessing should exclude low-quality or non-predictive data. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality will lead to meaningful predictive results. 
+- **Quality**. Preprocessing can help you ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality will lead to meaningful predictive results. 
 
 - **Rescoping**. Source data fields that are too specific can restrict predictive powers. For example, consider an address field. Broadening the scope from full address (house number and street name) to a higher level, like city, state, or country, might be more relevant.
 
@@ -151,11 +151,11 @@ After you train a model, evaluate whether to delete the data used for training a
 
 If the data remains relatively unchanged, retraining might not be necessary, unless model drift occurs. If the accuracy of prediction decreases, you need to retrain the model. You can choose to ingest the data again, preprocess, and build the model. That course of action is best if there's a significant delta in data since the last training window. If there's large volume of data and it hasn't changed much, you might not need to preprocess and rebuild the model. In that case, retain data, do in-place updates, and retrain the model. Decide how long you want to retain training data.
 
-In general, delete data from feature stores to reduce clutter and storage costs for features that have poor performance and that are no longer relevant to current or future models. If you're retaining data, expect to manage costs and address security issues, which are typical concerns of data duplication. 
+In general, delete data from feature stores to reduce clutter and storage costs for features that have poor performance and that are no longer relevant to current or future models. If you retain data, expect to manage costs and address security issues, which are typical concerns of data duplication. 
 
 ## Lineage tracking
 
-Data lineage refers to tracking the path of data from its source to its use in model training. Keeping track of data lineage is essential for explainability. Although users might not need detailed information about data origins, that information is crucial for internal data governance teams. Lineage metadata ensures transparency and accountability, even if it's not directly used by the model. This is useful for debugging purposes. It also helps to determine whether biases are introduced during data preprocessing.
+*Data lineage* refers to tracking the path of data from its source to its use in model training. Keeping track of data lineage is essential for explainability. Although users might not need detailed information about data origins, that information is crucial for internal data governance teams. Lineage metadata ensures transparency and accountability, even if it's not directly used by the model. This is useful for debugging purposes. It also helps you determine whether biases are introduced during data preprocessing.
 
 Use platform features for lineage tracking when you can. For example, Azure Machine Learning is integrated in Microsoft Purview. This integration gives you access to features for data discovery, lineage tracking, and governance as part of the MLOps lifecycle. 
 
@@ -173,7 +173,7 @@ All models can become stale over time, which causes a model's predictive power o
 
 - **Data removal**. Remove data that's no longer being used for training to optimize resource use and minimize the risk of using outdated or irrelevant data for model training.
 
-    The _right to be forgotten_ refers to an individual's right to have their personal data removed from online platforms or databases. Be sure to have policies in place to remove personal data that's used for training. 
+    _The right to be forgotten_ refers to an individual's right to have their personal data removed from online platforms or databases. Be sure to have policies in place to remove personal data that's used for training. 
 
 - **Data retention**. In some situations, you need to rebuild an existing model. For example, for disaster recovery, a model should be regenerated exactly as it was before the catastrophic event. We recommend that you have a secondary data pipeline that follows the workload requirements of the primary pipeline, like addressing model decay, regular updates via trigger-based or routine operations, and other maintenance tasks. 
 
