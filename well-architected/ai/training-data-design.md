@@ -1,6 +1,6 @@
 ---
 title: Design Training Data for AI Workloads on Azure
-description: Learn about considerations for designing training data for discriminitive AI workloads.
+description: Learn about considerations for designing training data for discriminative AI workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -35,7 +35,7 @@ Here's a summary of the recommendations that are provided in this article, toget
 |---|---|
 |**Select data sources based on workload requirements.** |Factor in available resources and whether the data source can help you reach the acceptable data quality for model training. Cover both positive and negative examples. Combine diverse data types to achieve adequate completeness for analysis and modeling. Consider techniques like Synthetic Minority Oversampling Technique (SMOTE) for data scarcity or imbalance.<br><br>&#9642; [Data ingestion and analysis](#data-ingestion-and-analysis)|
 |**Conduct data analysis on the collected data early**. | Perform analysis processes, such as Exploratory Data Analysis (EDA), offline. Consider the costs and security impact. For small datasets without resource constraints, you can consider performing analysis at the source.<br><br>&#9642; [Data collection store](#data-collection-store)|
-|**Maintain data segmentation, if business and technical requrements call for it**.  |If you're using data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
+|**Maintain data segmentation, if business and technical requirements call for it**.  |If you're using data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
 |**Preprocess data to make it meaningful against training goals.**| Refine the quality of ingested data by filtering noise, rescoping the data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
 |**Avoid training on stale data**. |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
 
@@ -120,7 +120,7 @@ Workload-specific requirements might necessitate data segmentation. Here are som
 
 - **Data freshness rate** can be a factor for separating data. Data from different sources might refresh at varying time intervals. If the data changes, retraining becomes necessary. Segementation enables granular control of the data lifecycle. Consider using separate tables or pipelines for different data segments.
 
-Regardless of the use case, when data is segmented, access controls are key. Data professionals, like data engineers and data scientists, explore available source data to understand patterns and relationships. Their insights contribute to training models that predict outcomes. Establish access controls to ensure that only authorized users can interact with specific data subsets. Apply least privilege on data that's considered to be relavent. Collaborate with data owners to set up appropriate permissions.
+Regardless of the use case, when data is segmented, access controls are key. Data professionals, like data engineers and data scientists, explore available source data to understand patterns and relationships. Their insights contribute to training models that predict outcomes. Establish access controls to ensure that only authorized users can interact with specific data subsets. Apply least privilege on data that's considered to be relevant. Collaborate with data owners to set up appropriate permissions.
 
 ## Data preprocessing
 
@@ -134,56 +134,49 @@ The preprocessing logic depends on the problem, data type, and desired outcomes.
 
 - **Deduplication**. Eliminating redundancy can ensure that your training data remains accurate and representative. In certain cases, the frequency with which an observation is made isn't relevant. For example, when you scan logs, if a log entry appears 1,000 times, that indicates its frequency. It doesn't necessarily imply that it's a more serious error than a log that occurred only once. This type of redundancy can introduce noise.
 
-- **Sensitive data handling**. Eliminate personally identifiable information (PII) unless it's absolutely vital to the model's predictive power in a way that can't be acheived through anonymization. Training data should be effective without compromising privacy. If the data provides value, you need to be aware of the ethical considerations of handling sensitive data. For more information, see [User input, ethics and security considerations](./userinput-ethics-security.md).
+- **Sensitive data handling**. Eliminate personal data unless it's absolutely vital to the model's predictive power in a way that can't be achieved through anonymization. Training data should be effective without compromising privacy. If the data provides value, you need to be aware of the ethical considerations of handling sensitive data. For more information, see [User input, ethics, and security considerations](./userinput-ethics-security.md).
 
-- **Standardized transformation**. The preceding techniques are considered a core part of Feature Engineering by domain experts. Broad scope and diverse source data eventually need to merge into feature stores where features are organized (for example, into feature tables) for the explicit purpose of training models. After selecting predictive data for training, transform the data to a standardized format. Standardization also ensures compatibility with training model.
+- **Standardized transformation**. Domain experts consider the preceding techniques to be a core part of feature engineering. Broad scope and diverse source data eventually need to merge into feature stores where features are organized (for example, into feature tables) for the explicit purpose of training models. After you select predictive data for training, transform the data to a standardized format. Standardization also ensures compatibility with the training model.
 
-  Morphing images into text representations is a form of transformation. For instance, converting scanned documents or images to machine-readable text.  
+  Converting images into text representations is a form of transformation. For instance, you might convert scanned documents or images to machine-readable text.  
   
-  To ensure compatibility with models, you might need to adjust  orientations or aspect ratios of imagse to match the model's expectations.
+  To ensure compatibility with models, you might need to adjust orientations or aspect ratios of images to match the model's expectations.
 
 > [!NOTE] 
-> Handling large amounts of data with a mix of structured and unstructured data can increase processing time. Workload teams should measure the impact of processing diverse formats. If the window between retraining efforts becomes shorter, then time spent each time in preprocessing becomes more critical. 
-
+> Mixing large amounts of structured and unstructured data can increase processing time. Workload teams should measure the impact of processing diverse formats. As the window between retraining efforts becomes shorter, the amount of time spent each time for preprocessing becomes more critical. 
 
 ## Data retention
 
-After training the model, evaluate whether to delete the data used for training and rebuild for the next training window. 
+After you train a model, evaluate whether to delete the data used for training and rebuild the model for the next training window. 
 
-If data remains relatively unchanged, retraining might not be necessary unless there's a model drift. If the accuracy of prediction decreases, you'll need to retrain the model. You can choose to ingest the data again, preprocess, and build the model. That's preferable if there's significant delta in data from that last training window. If there's large volume of data and it hasn't changed much, preprocessing and rebuilding might not be necessary. In this case, retain data, do in-place updates, and retrain the model. Decide how long you want to retain training data.
+If the data remains relatively unchanged, retraining might not be necessary, unless model drift occurs. If the accuracy of prediction decreases, you need to retrain the model. You can choose to ingest the data again, preprocess, and build the model. That course of action is best if there's a significant delta in data since the last training window. If there's large volume of data and it hasn't changed much, you might not need to preprocess and rebuild the model. In that case, retain data, do in-place updates, and retrain the model. Decide how long you want to retain training data.
 
-In general, delete data from feature stores to reduce clutter and storage costs for features that have poor performance and are no longer relevant to any current or future models. If you're retaining data, expect to manage costs and address security issues, which are typical concerns of data duplication. 
+In general, delete data from feature stores to reduce clutter and storage costs for features that have poor performance and that are no longer relevant to current or future models. If you're retaining data, expect to manage costs and address security issues, which are typical concerns of data duplication. 
 
 ## Lineage tracking
 
-Data lineage refers to tracking the journey of data from its source to its use in model training.  Keeping track of data lineage is essential for explainability. While users may not need detailed information about data origins, internal data governance teams find it crucial. This metadata ensures transparency and accountability, even if it's not directly used by the model. This is useful for debugging purposes. It also helps to determine whether biases were introduced during data preprocessing.
+Data lineage refers to tracking the path of data from its source to its use in model training. Keeping track of data lineage is essential for explainability. Although users might not need detailed information about data origins, that information is crucial for internal data governance teams. Lineage metadata ensures transparency and accountability, even if it's not directly used by the model. This is useful for debugging purposes. It also helps to determine whether biases are introduced during data preprocessing.
 
-When possible, use platform features for lineage tracking. For example, Azure Machine Learning is integrated in Microsoft Purview, giving you access to features for data discovery, lineage tracking, and governance as part of the MLOps lifecycle. 
-
-
+Use platform features for lineage tracking when you can. For example, Azure Machine Learning is integrated in Microsoft Purview. This integration gives you access to features for data discovery, lineage tracking, and governance as part of the MLOps lifecycle. 
 
 ## Data maintenance
 
-All models can become stale over time causing model's predictive power or relevance to decay. Several external changes can cause decay, shift in user behavior, market dynamics, or other factors.  Models trained a while ago may no longer be as relevant due to changing circumstances.To predict with better fidelity, recent data is crucial.
+All models can become stale over time, which causes a model's predictive power or relevance to decay. Several external changes can cause decay, including shift in user behavior, market dynamics, or other factors. Models trained some time ago might be less relevant because of changing circumstances. To make predictions with better fidelity, you need recent data.
 
-- **Adopting newer models**. To ensure relevance, an operational loop is necesssary that continuously evaluates model performance, considers newer models, keeping the data pipeline minimally disruptive. Or, prepare for a bigger change that involves redesigning the data lifecycle and pipeline.
+- **Adopting newer models**. To ensure relevance, you need an operational loop that continuously evaluates model performance and considers newer models, which keeps the data pipeline minimally disruptive. You can alternatively prepare for a bigger change that involves redesigning the data lifecycle and pipeline.
 
-  When choosing a new model, you don't necessarily need to start with new data set. The existing observations used for training may remain valuable even during a model switch. While new models may reveal narrower scenarios, the fundamental process remains similar. Data management approaches like Feature Store and Data Mesh can help streamline the adoption of new machine learning models.
+  When you choose a new model, you don't necessarily need to start with a new data set. The existing observations used for training might remain valuable even during a model switch. Although new models might reveal narrower scenarios, the fundamental process remains similar. Data management approaches like feature stores and data meshes can streamline the adoption of new machine learning models.
 
-- **Trigger-based or routine operations**. Consider if model retraining is triggered by specific events or conditions. For example, new more relevant data might be available or if relevancy drops below the established baseline, retraining might be triggered. The advantage of this approach is responsiveness and timely updates. 
+- **Trigger-based vs. routine operations**. Consider whether model retraining should be triggered by specific events or conditions. For example, the availability of new, more relevant data or a drop in relevancy below an established baseline might trigger retraining. The advantages of this approach are responsiveness and timely updates. 
 
-  Maintenance can also be scheduled at regular and fixed intervals, daily, weekly, and so on. For fail-proof operations, consider both approaches.
+  Maintenance can also be scheduled at regular fixed intervals, like daily or weekly. For fail-proof operations, consider both approaches.
 
-- **Data removal**.  Remove data that is no longer in use for training to optimize resource use and minimize the risk of using outdated or irrelevant data for model training.
+- **Data removal**. Remove data that's no longer being used for training to optimize resource use and minimize the risk of using outdated or irrelevant data for model training.
 
-    The concept of the _right to be forgotten_ refers to an individual's right to have their personal data removed from online platforms or databases. Make sure you have policies in place to remove personal data if it was used for training. 
+    The _right to be forgotten_ refers to an individual's right to have their personal data removed from online platforms or databases. Be sure to have policies in place to remove personal data that's used for training. 
 
-- **Data retention**. There are situations where you need to rebuild the existing model. For example, for disaster revovery, the model should be regerenated exactly as it was before the catastrophic event. It's recommended that you have a secondary data pipeline that follows the workload requirements implemented by the primary pipeline, such as fights model decay, is reguarly updated through trigger-based or routine operations, and other maintenance tasks. 
+- **Data retention**. In some situations, you need to rebuild an existing model. For example, for disaster recovery, a model should be regenerated exactly as it was before the catastrophic event. We recommend that you have a secondary data pipeline that follows the workload requirements of the primary pipeline, like addressing model decay, regular updates via trigger-based or routine operations, and other maintenance tasks. 
 
-> ![Consider the tradeoff of data maintenance.](../_images/trade-off.svg) **Tradeoff**. Data maintenance is expensive, involving data copying, building redundant pipelines, and effort of running routine processes. Keep in mind that regular training may not improve answer quality, it only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates. 
+> ![Consider the tradeoff of data maintenance.](../_images/trade-off.svg) **Tradeoff**. Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates. 
 
-Make sure data maintenance is done as part of model operations. There should be established processes to handle changes through automation as much as possible and also use the right set of tools. For details, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-llmops.md) design area.
-
-
-
-
+Make sure that data maintenance is done as part of model operations. You should have established processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-llmops.md) design area.
