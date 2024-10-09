@@ -112,35 +112,35 @@ This image shows the relationship between your application, your application ide
 
 | Recommendation | Benefit |
 |---|---|
-| Choose an identity provider that can scale to accommodate the number of federated identity providers you need. <br><br> Be aware of the hard limits on the provider, which can't be exceeded.|You'll ensure your identity solution can scale as you grow.|
-| Plan the onboarding of each federated identity provider and automate the process as much as possible. <br><br>This collaborative effort between you organization and your customers involves exchanging information to establish a trust relationship, typically using OpenID Connect or SAML protocols.| Identity integration can take time and effort for both you and your customers. By planning the process, you'll improve your operational efficiency. |
-| Reflect the complexity and cost of federated identity in your pricing and business model.<br><br>Allowing customers to use their own identity provider increases operational complexity and costs due to the overhead of maintaining multiple federated identity trust relationships. It's common in SaaS solutions for enterprises to pay for a higher tier that enables federated sign-in.|Federating with a customer's identity provider can be a hidden cost in SaaS solutions. By planning for it, you'll avoid unexpected costs during implementation.|
-| Plan for how a user's identity provider will be selected during the sign-in flow, potentially with home realm discovery. | You'll streamline your customer experience and ensure users are directed to the right sign-in process for them. |
+| Choose an identity provider that can scale to accommodate the number of federated identity providers you need. <br><br> Be aware of the hard limits of the provider, which can't be exceeded.|You'll ensure that your identity solution can scale as you grow.|
+| Plan the onboarding of each federated identity provider and automate the process as much as possible. <br><br>This collaborative effort between your organization and your customers involves exchanging information to establish a trust relationship, typically via OIDC or SAML protocols.| Identity integration can take time and effort for both you and your customers. By planning the process, you'll improve your operational efficiency. |
+| Reflect the complexity and cost of federated identity in your pricing and business model.<br><br>Allowing customers to use their own identity provider increases operational complexity and costs because of the overhead of maintaining multiple federated identity trust relationships. It's common in SaaS solutions for enterprises to pay for a higher tier that enables federated sign-in.|Federating with a customer's identity provider can be a hidden cost in SaaS solutions. By planning for it, you'll avoid unexpected costs during implementation.|
+| Plan for how a user's identity provider will be selected during the sign-in flow. Consider using Home Realm Discovery. | You'll streamline your customer experience and ensure that users are directed to the right sign-in process. |
 
 ## Authorization
 
 User authorization is crucial for SaaS applications, which often house data for multiple tenants. Clearly define how users will be authorized to access only their data without inadvertently accessing other tenants' data. Additionally, provide granular authorization within a tenant, allowing users to read or access certain information while restricting updates or access to other data.
 
-### Design Considerations
+### Design considerations
 
-- **Choose the right authorization models for the use case**. There are two main types.
+- **Choose the right authorization model for the use case.** There are two main types:
   
-    - **Role-based authorization.** Users are assigned roles or groups, with specific features restricted to certain roles. For example, administrators can perform any action, while users in lower roles have limited permissions.  
+    - **Role-based authorization.** Users are assigned roles or groups, and specific features are restricted to certain roles. For example, administrators can perform any action, but users in other roles have limited permissions.  
     - **Resource-based authorization.**  Each resource has its own set of permissions. A user might be an administrator for one resource but have no access to another.
       
 - **Decide where to store authorization data.** Authorization data for your application can be stored in:
   
-    - **Your identity provider.** Take advantage of the built-in groups or roles, surfacing permissions as claims in the token issued to your application. Your application can then enforce authorization rules using these token claims.
+    - **Your identity provider.** Take advantage of the built-in groups or roles, surfacing permissions as claims in the token issued to your application. Your application can then enforce authorization rules by using these token claims.
     - **Your application.**  Develop your own authorization logic and store user permissions in a database or similar system, allowing for fine-grained role-based or resource-level authorization controls.
     
-- **Assess the impact of delegated management.** In most SaaS applications, especially B2B, roles and permissions management is typically delegated to customers. Without this functionality, you may increase your management overhead if customers frequently change their users' permissions.
+- **Assess the impact of delegated management.** In most SaaS applications, especially in B2B applications, role and permission management is delegated to customers. Without this functionality, you might increase your management overhead if customers frequently change their users' permissions.
   
-- **Evaluate multi-tenant access.** In some systems, a single user might need to access data from multiple tenants. For example, consultants may need to access data from multiple tenants. Plan how customers will grant access to these users and how your sign-in flow will support selecting and switching between tenants.
+- **Evaluate multitenant access.** In some systems, a single user might need to access data from multiple tenants. For example, consultants might need to access data from multiple tenants. Plan how customers will grant access to these users and how your sign-in flow will support selecting and switching among tenants.
 
-### Design Recommendations
+### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Prevent users from accessing data across tenant boundaries unless explicitly permitted. | Unauthorized access to another tenant's data, even accidentally, can be seen as a major security incident and erode customer trust in your platform. Blocking unncessary access will avoid such situations. |
-| If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. | By selecting the best data store for your authorization data, you'll enhance your operational efficiency and can meet your scalability needs. |
-| If delegating permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal accessible only to tenant administrators for changing user permissions. | You'll give more control to your customers, and avoid unnecessary operational burden on your support team. |
+| Prevent users from accessing data across tenant boundaries unless that access is explicitly permitted. | Unauthorized access to another tenant's data, even accidental access, can be seen as a major security incident and erode customer trust in your platform. Blocking unncessary access will help you avoid these situations. |
+| If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. |Selecting the best data store for your authorization data will enhance your operational efficiency and help you meet your scalability needs. |
+| If you delegate permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal that's accessible only to tenant administrators for changing user permissions. | You'll provide more control to your customers and avoid unnecessary operational burden on your support team. |
