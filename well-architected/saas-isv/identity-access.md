@@ -11,11 +11,11 @@ ms.topic: conceptual
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
-Application identity is a critical area for SaaS workloads because it serves as the first line of defense in protecting data. It's often overlooked until late in a project, but many decisions about other elements of the application depend on a solid identity strategy. Don't underestimate the importance of identity in helping to protect your customers' data.
+Application identity is a critical area for SaaS workloads because it serves as the first line of defense for protecting data. It's often overlooked until late in a project, but many decisions about other elements of the application depend on a solid identity strategy. Don't underestimate the importance of identity in helping to protect your customers' data.
 
 In the context of SaaS workloads, there are two distinct types of identity.
 
-- **Application identity**, also known as customer identity and access management (CIAM), enables end users to authenticate and use your SaaS application. There are two main methods for signing users in to an application identity provider:
+- **Application identity**, also known as *customer identity and access management (CIAM)*, enables end users to authenticate and use your SaaS application. There are two main methods for signing users in to an application identity provider:
   
     - **Federated identities.**  Users sign in with existing credentials that are maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider that your customers use, such as Microsoft Entra or Okta.
       
@@ -30,13 +30,13 @@ Identity management involves two related concerns: authentication (verifying a u
 
 ## Identity in a multitenant application
 
-Keeping tenant data separate in a multitenant application is critical. That segmentation is driven by your choice in effective user authentication and authorization. Also, the choice of tenancy model significantly influences your decisions about the identity provider.
+Keeping tenant data separate in a multitenant application is critical. That segmentation is driven by your choice of effective user authentication and authorization. Also, the choice of tenancy model significantly influences your decisions about the identity provider.
 
 Prioritize identity as your primary perimeter. For more information, see [SE:04 Recommendations for segmentation](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter).
 
 For more information on identity in multitenant solutions, see these articles:
 
-- [Architectural considerations for identity in a multitenant solution](/azure/architecture/guide/multitenant/considerations/identity)
+- [Architectural considerations for identity in multitenant solutions](/azure/architecture/guide/multitenant/considerations/identity)
 - [Architectural approaches for identity in multitenant solutions](/azure/architecture/guide/multitenant/approaches/identity)
 
 ### Design considerations
@@ -88,9 +88,9 @@ Each identity provider offers unique features, limitations, pricing models, and 
 
 ## Federated identity
 
-Federated identity, also known as single sign-on (SSO), allows users to sign in with credentials they already use elsewhere. You enable federated identity by establishing a trust relationship between your application identity provider and the customer's existing identity provider. Federated identity is a common requirement for SaaS solutions, especially in B2B, because customers prefer their employees to use corporate credentials. It offers several benefits for B2B solutions, such as centralized identity management and automatic lifecycle management. In B2C SaaS products, integrating with social identity providers is common to allow users to sign in with existing credentials.
+Federated identity, also known as *single sign-on (SSO)*, allows users to sign in with credentials they already use elsewhere. You enable federated identity by establishing a trust relationship between your application identity provider and the customer's existing identity provider. Federated identity is a common requirement for SaaS solutions, especially in B2B, because customers prefer their employees to use corporate credentials. It offers several benefits for B2B solutions, such as centralized identity management and automatic lifecycle management. In B2C SaaS products, integrating with social identity providers is common to allow users to sign in with existing credentials.
 
-Although implementing federated identity is initially simple, it becomes more complex as the number of supported identity providers increases. Careful planning is essential, especially if each customer uses a unique identity provider. Even with if they use the same identity provider, unique trust relationships are often required for each customer because of specific configuration details.
+Although implementing federated identity is initially simple, it becomes more complex as the number of supported identity providers increases. Careful planning is essential, especially if each customer uses a unique identity provider. Even if they use the same identity provider, unique trust relationships are often required for each customer because of specific configuration details.
 
 This image shows the relationship between your application, your application identity provider, and the downstream identity providers that you might choose to implement by using identity federation.  
 
@@ -119,7 +119,7 @@ This image shows the relationship between your application, your application ide
 
 ## Authorization
 
-User authorization is crucial for SaaS applications, which often house data for multiple tenants. Clearly define how users will be authorized to access only their data without inadvertently accessing other tenants' data. Additionally, provide granular authorization within a tenant, allowing users to read or access certain information while restricting updates or access to other data.
+User authorization is crucial for SaaS applications, which often store data for multiple tenants. Clearly define how users will be authorized to access only their data without inadvertently accessing other tenants' data. Additionally, provide granular authorization within a tenant, allowing users to read or access certain information while restricting updates or access to other data.
 
 ### Design considerations
 
