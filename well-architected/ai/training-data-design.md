@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 When you design data for AI functionality in applications, consider both non-functional requirements, such as operability, cost, and security, and functional requirements that are related to data ingestion, preparation, and validation. 
  
-Data design and application design can't be decoupled. Application design involves understanding use cases, query patterns, and freshness requirements. To address business requirements that drive the need for using AI, the application might need output from discriminative models, generative models, or a combination of model types. 
+Data design and application design can't be decoupled. Application design requires that you understand use cases, query patterns, and freshness requirements. To address business requirements that drive the need for using AI, the application might need output from discriminative models, generative models, or a combination of model types. 
 
 To produce meaningful results, AI models need to be trained. Model training involves teaching a model to classify or predict new, unseen situations. The training data must be tailored to the specific problem and workload context.
 
@@ -34,10 +34,10 @@ Here's a summary of the recommendations that are provided in this article, toget
 |Recommendation|Description|
 |---|---|
 |**Select data sources based on workload requirements.** |Factor in available resources and whether the data source can help you reach the acceptable data quality for model training. Cover both positive and negative examples. Combine diverse data types to achieve adequate completeness for analysis and modeling. Consider techniques like Synthetic Minority Oversampling Technique (SMOTE) for data scarcity or imbalance.<br><br>&#9642; [Data ingestion and analysis](#data-ingestion-and-analysis)|
-|**Conduct data analysis on the collected data early**. | Perform analysis processes, such as Exploratory Data Analysis (EDA), offline. Consider the costs and security impact. For small datasets without resource constraints, you can consider performing analysis at the source.<br><br>&#9642; [Data collection store](#data-collection-store)|
-|**Maintain data segmentation, if business and technical requirements call for it**.  |If you're using data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
+|**Conduct data analysis on the collected data early.** | Perform analysis processes, such as Exploratory Data Analysis (EDA), offline. Consider the costs and security implications. For small datasets without resource constraints, you can consider performing analysis at the source.<br><br>&#9642; [Data collection store](#data-collection-store)|
+|**Maintain data segmentation, if business and technical requirements call for it.**  |If you use data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
 |**Preprocess data to make it meaningful against training goals.**| Refine the quality of ingested data by filtering noise, rescoping the data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
-|**Avoid training on stale data**. |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
+|**Avoid training on stale data.** |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
 
 <!-- Removed incomplete section from the preceding table
 |**Monitor for model drift.**|Changes in input data and |
@@ -49,9 +49,9 @@ TODO: Note to Yeliz. This is only a summary of recommendations in this article. 
 
 ## Types of data
 
-To build predictive power in models, you need to collect data, process it, and feed it to the model. This process is usually conceptualized as a pipeline broken into stages. Each stage of the pipeline might deal with the same data set, but it might serve different purposes. Typically, you handle data of these types:
+To build predictive power in models, you need to collect data, process it, and feed it to the model. This process is usually conceptualized as a pipeline that's broken into stages. Each stage of the pipeline might deal with the same data set, but it might serve different purposes. Typically, you handle data of these types:
 
-- _Source data_ is point-in-time observation data. It can be also be data that can be labeled to serve as a potential input to the data pipeline. 
+- _Source data_ is point-in-time observation data. It can also be data that can be labeled to serve as a potential input to the data pipeline. 
 
     This data is usually obtained from production or from an external source. These data sources can be in storage accounts, databases, APIs, or other sources. The data can be in various data formats, like OLTP databases, unstructured documents, or log files. This data serves as a potential input to the data pipeline.
 
@@ -65,12 +65,12 @@ In some cases, information that's provided by users during interactions with the
 
 ## Data ingestion and analysis
 
-Training data is collected within a predetermined window that has sufficient representations for training the type of model selected. For example, when you train a binary classification model, training data must include representations of what is the case (positive examples) and what is not the case (negative examples). For training data to be meaningful, conduct EDA early during feature design.
+Training data is collected within a predetermined window that has sufficient representations for training the type of model that you select. For example, when you train a binary classification model, training data must include representations of what is the case (positive examples) and what is not the case (negative examples). For training data to be meaningful, conduct EDA early during feature design.
 
 EDA helps analyze source data to identify characteristics, relationships, patterns, and quality issues. You can conduct EDA directly at the source data store or replicate data into centralized stores, like a data lake or data warehouse. The outcome of the process is to inform data collection and processing for effective model training.
 
 > [!NOTE]
-> Although EDA is a pre-production process, it uses data sourced from production. Apply the same level of control to this process as you would for production.
+> Although EDA is a pre-production process, it uses data that's sourced from production. Apply the same level of control to this process as you would for production.
 
 Following are some considerations for collecting data in preparation for model training. 
 
@@ -128,7 +128,7 @@ In a real-world scenario, source data isn't simply stored for AI scenarios. Ther
 
 The preprocessing logic depends on the problem, data type, and desired outcomes. Following are some common techniques for preprocessing. This list isn't exhaustive. The actual criteria for your workload will be driven by business requirements. 
 
-- **Quality**. Preprocessing can help you ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality will lead to meaningful predictive results. 
+- **Quality**. Preprocessing can help you ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality produces meaningful predictive results. 
 
 - **Rescoping**. Source data fields that are too specific can restrict predictive powers. For example, consider an address field. Broadening the scope from full address (house number and street name) to a higher level, like city, state, or country, might be more relevant.
 
