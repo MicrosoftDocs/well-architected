@@ -1,6 +1,6 @@
 ---
 title: Identity and Access Management for SaaS Workloads on Azure
-description: Learn about the identity platform considerations for SaaS workloads.
+description: Get recommendations for identity and access management for SaaS workloads on Azure.
 author: landonpierce
 ms.author: landonpierce
 ms.date: 11/01/2024
@@ -11,21 +11,22 @@ ms.topic: conceptual
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
-Application identity is a critical area for SaaS workloads because it serves as the first line of defense in protecting data. It's often overlooked until late in a project, but many decisions in other areas of the application depend on a solid identity strategy. Don't underestimate the importance of identity in protecting your customers' data.
+Application identity is a critical area for SaaS workloads because it serves as the first line of defense in protecting data. It's often overlooked until late in a project, but many decisions about other elements of the application depend on a solid identity strategy. Don't underestimate the importance of identity in helping to protect your customers' data.
 
 In the context of SaaS workloads, there are two disctinct types of identity.
 
-- **Application identity**, also known as Customer Identity and Access Management (CIAM), enables end users to authenticate and use your SaaS application. There are two main methods for signing users into an application identity provider:
+- **Application identity**, also known as customer identity and access management (CIAM), enables end users to authenticate and use your SaaS application. There are two main methods for signing users in to an application identity provider:
   
-    - **Federated identities**:  Users sign in with their existing credentials maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider used by your customers, such as Microsoft Entra or Okta.
+    - **Federated identities.**  Users sign in with existing credentials that are maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider that your customers use, such as Microsoft Entra or Okta.
       
-    - **Local identities**: Users create an account just for your application, secured by methods like username and password, passkey, or other authentication methods. //TODO @landon who's responsible for managing this identity//
+    - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. 
+<!-->//TODO @landon who's responsible for managing this identity//<-->
 
-- **Enterprise identity**, the identity solution used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of *enterprise* identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
+- **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of enterprise identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
 
-Application and enterprise identities serve different purposes and may use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
+Application and enterprise identities serve different purposes and might use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 
-Identity management involves two related concerns: authentication (verifying a user's identity) and authorization (granting permissions based on identity). The first three sections of this article focus on authentication for SaaS, while the final section addresses authorization considerations for SaaS providers.
+Identity management involves two related concerns: authentication (verifying a user's identity) and authorization (granting permissions based on identity). The first three sections of this article focus on authentication for SaaS. The final section addresses authorization considerations for SaaS providers.
 
 ## Identity in a multitenant application
 
