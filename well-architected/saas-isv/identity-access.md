@@ -1,6 +1,6 @@
 ---
 title: Identity and Access Management for SaaS Workloads on Azure
-description: Get recommendations for identity and access management for SaaS workloads on Azure.
+description: Get recommendations for identity and access management for SaaS workloads. Learn about identity in multitenant applications and choosing an identity provider.
 author: landonpierce
 ms.author: landonpierce
 ms.date: 11/01/2024
@@ -13,7 +13,7 @@ ms.topic: conceptual
 
 Application identity is a critical area for SaaS workloads because it serves as the first line of defense in protecting data. It's often overlooked until late in a project, but many decisions about other elements of the application depend on a solid identity strategy. Don't underestimate the importance of identity in helping to protect your customers' data.
 
-In the context of SaaS workloads, there are two disctinct types of identity.
+In the context of SaaS workloads, there are two distinct types of identity.
 
 - **Application identity**, also known as customer identity and access management (CIAM), enables end users to authenticate and use your SaaS application. There are two main methods for signing users in to an application identity provider:
   
@@ -37,7 +37,7 @@ Prioritize identity as your primary perimeter. For more information, see [SE:04 
 For more information on identity in multitenant solutions, see these articles:
 
 - [Architectural considerations for identity in a multitenant solution](/azure/architecture/guide/multitenant/considerations/identity)
-- [Architectural approaches for identity in multitenant soutions](/azure/architecture/guide/multitenant/approaches/identity)
+- [Architectural approaches for identity in multitenant solutions](/azure/architecture/guide/multitenant/approaches/identity)
 
 ### Design considerations
 
@@ -141,6 +141,6 @@ User authorization is crucial for SaaS applications, which often house data for 
 
 | Recommendation | Benefit |
 |---|---|
-| Prevent users from accessing data across tenant boundaries unless that access is explicitly permitted. | Unauthorized access to another tenant's data, even accidental access, can be seen as a major security incident and erode customer trust in your platform. Blocking unncessary access will help you avoid these situations. |
+| Prevent users from accessing data across tenant boundaries unless that access is explicitly permitted. | Unauthorized access to another tenant's data, even accidental access, can be seen as a major security incident and erode customer trust in your platform. Blocking unnecessary access will help you avoid these situations. |
 | If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. |Selecting the best data store for your authorization data will enhance your operational efficiency and help you meet your scalability needs. |
 | If you delegate permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal that's accessible only to tenant administrators for changing user permissions. | You'll provide more control to your customers and avoid unnecessary operational burden on your support team. |
