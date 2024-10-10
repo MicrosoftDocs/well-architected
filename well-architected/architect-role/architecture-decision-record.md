@@ -19,11 +19,11 @@ Start the ADR at the onset of a workload and maintain it throughout the workload
 
 In general, an architect can help a workload team achieve recommendations of Operational Excellence by helping to establish and maintain a document and asset repository. Architects help teams place all of their assets into the repository. They also encourage the teams' unified adoption of a single source of truth to be used for reference, audits, and incident response.
 
-## Additional resources
-
-You can read more in [ADR GitHub organization](https://adr.github.io/).
-
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Architect's checklist](checklist.md)
+
+## Additional resources
+
+You can read more in [ADR GitHub organization](https://adr.github.io/).
