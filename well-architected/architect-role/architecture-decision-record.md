@@ -27,9 +27,9 @@ Start the ADR at the onset of a workload and maintain it throughout the workload
   - Options considered
   - Decision outcome
     - Include important tradeoffs made with this decision
-    - Record the confidence level of the decision. Sometimes an architecturally significant decision is made with relatively low confidence. That's okay, and this state could prove useful to note for future decisions.
+    - Record the confidence level of the decision. Sometimes an architecturally significant decision is made with relatively low confidence. Documenting that low confidence status could prove useful for future reconsideration decisions.
 
-- If an architectural decision is going to result in multiple phases, such as short-term, mid-term, long-term approach, break the one decision into multiple and log each phase as its own decision record.
+- Break one decision into multiple if an architectural decision is going to result in multiple phases, such as short-term, mid-term, long-term approaches. Log each phase as its own decision record.
 
 - Avoid hiding consequences of decisions intentionally or accidentally.
 
@@ -48,6 +48,6 @@ An architect can help a workload team achieve recommendations of Operational Exc
 > [!div class="nextstepaction"]
 > [Architect's checklist](checklist.md)
 
-## Additional resources
+## More resources
 
 For template examples, visit the [Architectural Decision Records GitHub organization](https://adr.github.io/).
