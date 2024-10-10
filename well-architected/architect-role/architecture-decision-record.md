@@ -26,4 +26,4 @@ In general, an architect can help a workload team achieve recommendations of Ope
 
 ## Additional resources
 
-You can read more in [ADR GitHub organization](https://adr.github.io/).
+For template examples, visit the [Architectural Decision Records GitHub organization](https://adr.github.io/).
