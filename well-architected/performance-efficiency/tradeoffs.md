@@ -3,7 +3,7 @@ title: Performance Efficiency tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for performance efficiency.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 10/10/2024
 ms.topic: conceptual
 ---
 
@@ -36,7 +36,7 @@ During the process of negotiating a workload's performance targets and designing
   - A load balancer for autoscaled replicas, which requires reliable operation and the enlistment of replicas.
   - Offloading data to caches, which requires reliable cache invalidation approaches.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Testing and observation on active environments.** Avoiding the unnecessary use of production systems is a self-preservation approach for reliability.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Testing and observation on active environments.** Avoiding the unnecessary use of production systems is a self-preservation and risk avoidance approach for reliability.
 
 - Performance testing in active environments, like the use of synthetic transactions, carries the risk of causing malfunctions due to the test actions or configurations.
 
@@ -56,7 +56,7 @@ One performance optimization strategy is to remove or bypass components or proce
 
 - Removing firewall rules from network flows to improve network latency can allow undesirable communication.
 
-- Minimizing data validation for quicker data processing might compromise data integrity, especially if inputs are malicious.
+- Minimizing data validation or content safety checks for quicker data processing might compromise data integrity, especially if inputs are malicious.
 
 - Using less entropy in encryption or hashing algorithms, for example, on the initialization vector (IV), is more efficient but makes the encryption easier to crack.
 
@@ -74,7 +74,7 @@ Performance-centric cloud design patterns sometimes necessitate the introduction
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Removing segmentation.** The Security pillar prioritizes strong segmentation to enable fine-grained security controls and reduce blast radius.
 
-Sharing resources is an approach for improving efficiency. It increases density to optimize capacity usage. Examples include multitenancy scenarios or combining disparate applications in an architecture on a common application platform. The increased density can lead to the following security concerns:
+Sharing resources through increased density is an approach for improving efficiency. Examples include multitenancy scenarios or combining disparate applications in an architecture on a common application platform. The increased density can lead to the following security concerns:
 
 - Increased risk of unauthorized lateral movement from one tenant to another.
 
@@ -98,7 +98,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
   - Scaling up with minimal changes in demand or an extended cooldown period can incur more cost than demand requires.
   - Using autoscaling without a set upper limit can lead to uncontrolled growth due to system malfunctions or abuse and exceed the expected workload requirements.
 
-- Expanding into multiple regions can enhance performance by bringing workloads closer to the user and can avoid temporary resource capacity constraints. However, it also adds complexity and resource duplication.
+- Expanding into multiple regions can enhance performance by bringing workloads closer to the user and can avoid temporary resource capacity constraints. However, that topology also adds complexity and resource duplication.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: More components.** One cost optimization technique is to consolidate with a smaller number of resources by increasing density, removing duplication, and co-locating functionality.
 
