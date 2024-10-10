@@ -15,9 +15,11 @@ The ADR documents all key decisions, including alternatives that you ruled out. 
 
 ## Implement an ADR
 
-Start the ADR at the onset of a workload and maintain it throughout the workload's lifespan. The ADR serves as an append-only log. It extends beyond the initial design to include design aspects against future functional and nonfunctional requirements. This log should be readily available and stored with the workload's documentation.
+Ideally, ADR should be started at the onset of a workload and maintained throughout the workload's lifespan. However, ADR can be implemented for existing workloads, too. The ADR serves as an append-only log. It extends beyond the initial design to include design aspects against future functional and nonfunctional requirements. This log should be readily available and stored with the workload's documentation.
 
 In general, an architect can help a workload team achieve recommendations of Operational Excellence by helping to establish and maintain a document and asset repository. Architects help teams place all of their assets into the repository. They also encourage the teams' unified adoption of a single source of truth to be used for reference, audits, and incident response.
+
+You can read more about in [ADR GitHub organization](https://adr.github.io/).
 
 ## Next steps
 
