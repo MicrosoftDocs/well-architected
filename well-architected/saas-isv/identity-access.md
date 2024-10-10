@@ -63,7 +63,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
 
 ### Design considerations
 
-- **Document your identity requirements.** Start by listing the features that your application needs now and will need in the future. Common features include:
+- **Document your identity requirements.** Start by listing the features that your application needs now and will need in the future. Typical features to consider include:
     - Federated identity provider support to integrate with customers' identity solutions. This feature enables you to avoid creating new identities.
     - Customizable sign-in/sign-up flow to modify the look and feel to maintain your branding. This feature also provides the ability to inject custom business logic into the sign-in/sign-up process.
     - Separation of tenant data into distinct silos to maintain tenant isolation.
@@ -98,15 +98,15 @@ This image shows the relationship between your application, your application ide
 
 ### Design considerations
 
-- **Estimate the types and number of identity providers you'll need to support.** This estimate could range from a static number of social identity providers to unique federated identity providers for each customer. You should know whether your customers will use OpenID Connect (OIDC), Security Assertion Markup Language (SAML), or both for integration.
+- **Estimate the types and number of identity providers you need to support.** This estimate could range from a static number of social identity providers to unique federated identity providers for each customer. You should know whether your customers will use OpenID Connect (OIDC), Security Assertion Markup Language (SAML), or both for integration.
 
-- **Map out the sign-in experience.** Visualize the user flow of the sign-up and sign-in process. Note any special requirements that might alter your user flow design, for example:
+- **Map out the sign-in experience.** Visualize the user flow of the sign-up and sign-in process. Note any special requirements that might alter your user flow design. For example:
 
-    - Custom branding. White labeling or custom sign-in domains per customer.
+    - **Custom branding.** White labeling or custom sign-in domains per customer.
       
-    - Custom information. Collecting additional user information during sign-up or sign-in, such as tenant selection for users with access to multiple tenants.
+    - **Custom information.** Collecting additional user information during sign-up or sign-in, such as tenant selection for users with access to multiple tenants.
       
-    - Identity provider selection. If you use a single application identity provider that has many federated identity providers trusting it, decide how to select a provider. This selection might be done manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This capability is known as *Home Realm Discovery*. Microsoft Entra ID provides built-in [Home Realm Discovery](/entra/identity/enterprise-apps/home-realm-discovery-policy).
+    - **Identity provider selection.** If you use a single application identity provider that has many federated identity providers trusting it, decide how to select a provider. This selection might be done manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This capability is known as *Home Realm Discovery*. Microsoft Entra ID provides built-in [Home Realm Discovery](/entra/identity/enterprise-apps/home-realm-discovery-policy).
 
 ### Design recommendations
 
