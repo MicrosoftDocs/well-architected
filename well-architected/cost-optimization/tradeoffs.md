@@ -39,7 +39,7 @@ The cost of a service disruption must be measured against the cost of preventing
 
 - Creating or retaining fewer backups decreases possible recovery points and increases the chance of losing data.
 
-- A less expensive support contract might increase workload recovery time due to potential delays in technical assistance.
+- Choosing a less expensive support contract with technology partners might increase workload recovery time due to potential delays in technical assistance.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** A workload that uses straightforward approaches and avoids unnecessary or overengineered complexity is generally easier to manage in terms of reliability.
 
@@ -57,7 +57,7 @@ The cost of a compromise to confidentiality, integrity, and availability in a wo
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide defense in depth.
 
-One cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Be aware that removing security components like the following examples for the sake of saving money impacts security. You need to carefully perform a risk analysis on this impact.
+One cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Removing security components like the following examples for the sake of saving money impacts security. You need to carefully perform a risk analysis on this impact.
 
 - Reducing or simplifying authentication and authorization techniques compromises the *verify explicitly* principle of zero-trust architecture. Examples of these simplifications include using a basic authentication scheme like preshared keys rather than investing time to learn industry OAuth approaches, or using simplified role-based access control assignments to reduce management overhead.
 

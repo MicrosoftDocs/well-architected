@@ -127,7 +127,7 @@ The preceding items often also exist outside of production environments, in prep
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased latency and overhead.** A performant workload reduces latency and overhead.
 
-- Inspection security controls, like firewalls and content safety filters, are located in the flows that they secure. Those flows are therefore subject to additional verification, which adds latency to requests. In highly decoupled architecture the distributed nature can lead to these inspection controls happening multiple times for a single user or data flow transaction.
+- Inspection security controls, like firewalls and content safety filters, are located in the flows that they secure. Those flows are therefore subject to additional verification, which adds latency to requests. In highly decoupled architecture the distributed nature can lead to these inspections happening multiple times for a single user or data flow transaction.
 
 - Identity controls require each invocation of a controlled component to be verified explicitly. This verification consumes compute cycles and might require network traversal for authorization.
 
