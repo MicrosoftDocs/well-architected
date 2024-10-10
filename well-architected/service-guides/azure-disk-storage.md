@@ -34,19 +34,15 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 > [!div class="checklist"]
 >
-> - **Use failure mode analysis**: Minimize points of failure by considering internal dependencies such as the availability of virtual networks or Azure Key Vault.
+> - **Review the best practices for achieving high availability with managed disks**: [Evaluate the configurations](/azure/virtual-machines/disks-high-availability) that best match the type of environment you have or would like to deploy. These recommendations help ensure a highly available configuration for your scenario.
 >
-> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). Disk Storage SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. You can also increase the availability of your disks by using zone-redundant storage disks. Consider the impact of a regional outage, the potential for data loss, and the time required to restore access after an outage. Consider the availability of any internal dependencies that you identified as part of your failure mode analysis.
->
-> - **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to access data during an outage.
+> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). The Virtual Machine SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks.
 >
 > - **Create a recovery plan**: [Evaluate data protection features](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. Using these backup solutions increases your costs.
 >
 > - **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity.
 >
-> - **Strengthen the resiliency and recoverability of your workload**: Implement self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. For Premium SSD managed disks, [enable on-demand bursting](/azure/virtual-machines/disks-enable-bursting) for eligible disks. This will help prevent those disks from throttling but increase costs.
->
-> - **Review the best practices for achieving high availability with managed disks**: [Evaluate the configurations](/azure/virtual-machines/disks-high-availability) that best match the type of environment you have or would like to deploy. These recommendations help ensure a highly available configuration for your scenario.
+> - **Use failure mode analysis**: Minimize points of failure by considering internal dependencies such as the availability of virtual networks or Azure Key Vault.
 
 ### Recommendations
 
