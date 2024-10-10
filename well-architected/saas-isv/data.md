@@ -1,6 +1,6 @@
 ---
 title: Data for SaaS Workloads on Azure
-description: Learn about the data platform considerations for SaaS workloads.
+description: Learn about the data platform considerations for data integrity and performance for SaaS workloads on Azure.
 author: johndowns
 ms.author: jodowns
 ms.date: 09/16/2024
@@ -13,7 +13,7 @@ ms.topic: conceptual
 
 Treat data as the most valuable asset of your solution. As an independent software vendor (ISV), you're responsible for managing your customers' data. Your data design strategy and choice of data store can significantly affect your customers.
 
-This article provides considerations to help you keep the promise of data integrity and confidentiality to your customers while you deliver performance as defined by the business requirements.
+This article provides considerations to help you guarantee data integrity and confidentiality to your customers while you deliver performance as defined by the business requirements.
 
 ## Select a data store
 
