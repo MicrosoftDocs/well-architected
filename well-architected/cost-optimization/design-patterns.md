@@ -3,7 +3,7 @@ title: Cloud design patterns that support cost optimization
 description: Learn about industry patterns that support cost optimization and can help you address common challenges in cloud workloads.  
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 10/10/2024
 ms.topic: conceptual
 ---
 
@@ -30,7 +30,7 @@ The following table summarizes cloud design patterns that support the goals of c
 |[Static Content Hosting](/azure/architecture/patterns/static-content-hosting)|Optimizes the delivery of static content to workload clients by using a hosting platform that's designed for that purpose. Dynamic application hosts are usually more expensive than static hosts because dynamic hosts can run your coded business logic. Using an application platform to deliver static content isn't cost-effective.|
 |[Strangler Fig](/azure/architecture/patterns/strangler-fig)|Provides an approach for systematically replacing the components of a running system with new components, often during a migration or modernization of the system. The goal of this approach is to maximize the use of existing investments in the currently running system while modernizing incrementally. It enables you to perform high-ROI replacements before low-ROI replacements.|
 |[Throttling](/azure/architecture/patterns/throttling)|Imposes limits on the rate or throughput of incoming requests to a resource or component. The limits can inform cost modeling and can even be directly tied to the business model of your application. They also put clear upper bounds on utilization, which can be factored into resource sizing.|
-|[Valet Key](/azure/architecture/patterns/valet-key)|Grants security-restricted access to a resource without using an intermediary resource to proxy the access. This design offloads processing as an exclusive relationship between the client and the resource without adding a component to directly handle all client requests. The benefit is most dramatic when client requests are frequent or large enough to require significant proxy resources.|
+|[Valet Key](/azure/architecture/patterns/valet-key)|Grants security-restricted access to a resource without using an intermediary resource to proxy the access. This design offloads processing as an exclusive relationship between the client and the resource without adding a component to directly handle all client requests. The benefit is most dramatic when client requests are frequent or large enough to require significant proxy resources or the proxy does not add value as being part of the request.|
 
 ## Next steps
 
