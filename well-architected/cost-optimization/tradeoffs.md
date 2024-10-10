@@ -3,7 +3,7 @@ title: Cost Optimization tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for cost optimization.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 10/10/2024
 ms.topic: conceptual
 ---
 
@@ -81,7 +81,7 @@ Cloud design patterns that optimize costs sometimes necessitate the introduction
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Removed segmentation.** The Security pillar prioritizes strong segmentation to support the application of targeted security controls and to control the blast radius.
 
-Sharing resources, for example in multi-tenancy situations or co-locating multiple applications on a shared application platform, is an approach for reducing costs by increasing density and reducing the management surface. This increased density can lead to security concerns like these:
+Sharing resources, for example in multitenancy situations or co-locating multiple applications on a shared application platform, is an approach for reducing costs by increasing density and reducing the management surface. This increased density can lead to security concerns like these:
 
 - Lateral movement between components that share resources is easier. A security event that compromises the availability of the application platform host or an individual application also has a larger blast radius.
 

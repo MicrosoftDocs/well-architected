@@ -3,7 +3,7 @@ title: Operational Excellence tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for operational excellence.
 author: ferantivero
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 10/10/2024
 ms.topic: conceptual
 ---
 
@@ -21,9 +21,9 @@ During the design phase of a workload and over its lifecycle, as continuous impr
 
 - Highly layered, modularized, or parameterized infrastructure as code can increase the chance of accidental misconfiguration because of the complexity of the interaction between the code components.
 
-- Cloud design patterns that benefit operations sometimes necessitate the introduction of additional components, for example, the use of an external configuration store or the coordination of sidecar deployments in a containerized application platform. The additional components increase the points of interaction in the system, increasing the surface area for malfunction or misconfiguration.
+- Cloud design patterns that benefit operations sometimes necessitate the introduction of additional components, for example, the use of an external configuration store or the coordination of sidecar deployments in a containerized application platform. The additional components and added layers of indirection increase the points of interaction in the system, increasing the surface area for malfunction or misconfiguration.
 
-- Workload components that are designed to independently evolve to support agile development and hosting introduce dependencies on service discovery, or even DNS as a layer of indirection. Service discovery might lack responsiveness to change, and malfunction can be hard to diagnose.
+- Workload components that are designed to independently evolve to support agile development and hosting introduce dependencies on service discovery as a layer of indirection. Service discovery might lack responsiveness to change, and malfunction can be hard to diagnose.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased potentially destabilizing activities.** The Reliability pillar encourages the avoidance of activities or design choices that can destabilize a system and lead to disruptions, outages, or malfunctions.
 
