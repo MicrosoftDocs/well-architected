@@ -1,6 +1,6 @@
 ---
 title: Incident Management for SaaS Workloads on Azure
-description: Learn about incident management considerations for implementing design management processes and tools to support a SaaS solution.
+description: Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
 author: johndowns
 ms.author: jodowns
 ms.date: 11/01/2024
@@ -96,12 +96,12 @@ After you recover from an incident, review and analyze what happened to learn fr
 
 - **Learn from incidents.**  Outages offer valuable learning opportunities. Conduct thorough reviews after incidents to identify lessons and implement improvements. Major incidents often have multiple causes. Evaluate whether other layers of your solution, such as operational processes, might prevent or detect the problem before it escalates. Also, look for similar patterns elsewhere in your solution that might also be at risk of the same problem.
 
-- **Communicate with your customers.** Many ISVs provide post-incident communications, especially for enterprise customers who expect high-quality updates. Be transparent and provide enough information for customers to understand the problem and mitigation steps. However, avoid sharing excessive internal details about your solution architecture or components to maintain security and integrity.
+- **Communicate with your customers.** Many ISVs provide post-incident communications, especially for enterprise customers who expect high-quality updates. Be transparent and provide enough information for customers to understand the problem and mitigation steps. However, to maintain security and integrity, avoid sharing excessive internal details about your solution architecture or components.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
 | Create a process to perform internal post-incident reviews.<br><br>Focus on identifying the reasons that contributed to the problem. Consider technical causes, how your processes might have contributed to the outage, and how you responded to the incident. | Internal post-incident reviews help you learn from production outages and minimize the risk of similar problems happening again. |
-| Make a structured plan to address any items that need remediation with clear accountability and timelines.|Clear accountability helps you ensure that each role meets its functional expectations, enhances clarity, and allows for transparent reporting at the desired levels.|
+| Make a structured plan to address any items that need remediation. Include clear accountability and timelines.|Clear accountability helps you ensure that each role meets its functional expectations, enhances clarity, and allows for transparent reporting at the desired levels.|
 | Publish customer-facing post-incident reviews.<br><br>Provide customers with enough detail to understand the problem and mitigation steps without revealing unnecessary internal details or system architecture. <br><br>Post-incident communications should always be written and published by humans. Technical and nontechnical stakeholders should review the communications for accuracy and clarity. | This approach helps maintain customers' confidence and assures them that you learned from the incident and are addressing the identified problems. |
