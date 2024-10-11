@@ -79,7 +79,7 @@ You should optimize costs in conjunction with good governance practices. For mor
 
 - **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as the Microsoft Customer Agreement, an Enterprise Agreement, and pay-as-you-go. Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
 
-    [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs) offers reduced rates on certain Azure services for non-production use. Even after you're running your production worklod, you can continue to access the rates through a separate dev/test subscription.
+    [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs) offers reduced rates on certain Azure services for non-production use. Even after you're running your production workload, you can continue to access the rates through a separate dev/test subscription.
 
     Discounted pricing is available for some services if you commit to a certain expenditure. [Azure Reservations and savings plans](/azure/architecture/guide/multitenant/approaches/cost-management-allocation#use-azure-reservations-and-azure-savings-plan-to-reduce-costs) are examples. If you know you need the resources for a certain period of time, these discounts can be beneficial. Consolidating customer resources can help you qualify for these discounts.
 
