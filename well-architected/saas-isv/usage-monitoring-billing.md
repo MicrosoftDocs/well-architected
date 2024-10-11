@@ -24,7 +24,7 @@ Before you can optimize your costs, you need to itemize them. Your *cost of good
 In SaaS development, understanding how customers affect costs is crucial. A cost model represents the marginal cost per customer and identifies how business metrics influence costs. Key metrics include the number of customers, users, and transactions. Azure resource consumption is measured by:
 
 - Direct resource costs.
-- Usage metrics that indicate the cost proportion for specific customers, such as operations performed on behalf of a specific customer, or data volume that you need to store for a customer.
+- Usage metrics that indicate the cost proportion for specific customers, such as operations performed on behalf of a specific customer or data volume that you need to store for a customer.
 
 To learn more about the fundamentals of cost modeling, see [CO:02 Recommendations for creating a cost model](/azure/well-architected/cost-optimization/cost-model).
 
@@ -42,9 +42,9 @@ To learn more about the fundamentals of cost modeling, see [CO:02 Recommendation
 
 - **Start simple and build gradually.** Having a rough cost model is better than not having one. Although cost modeling can be time-consuming and complex, it's crucial for business planning and optimizing costs. Start with a high-level model that uses approximate values, such as:
 
-    - Each customer requires resources X and Y. They cost $100 each.
-    - Customers that have more than 500 users need resource Z. It costs $50.
-    - Every 10 customers require a new load balancing system. It costs $100.
+    - Each customer requires resources X and Y, which cost $100 each.
+    - Customers that have more than 500 users need resource Z, which costs $50.
+    - 10% of customers require a new load balancing system, which costs $100.
 
    Add more details as you need to, like if you need to directly charge customers for their consumption, and include other expenses like staff time and support costs.
 
@@ -56,9 +56,9 @@ To learn more about the fundamentals of cost modeling, see [CO:02 Recommendation
 |---|---|
 | Understand how your Azure resources are billed. | You can model your costs more effectively, and you can identify ways to optimize costs. |
 | Develop a service catalog of specific Azure resources and resource SKUs that are part of your architecture.| Knowing the specific resources that are required helps you determine the total cost of your solution. |
-| Understand Azure services [quotas and limits](/azure/azure-resource-manager/management/azure-subscription-service-limits).<br><br>Quotas can limit resource deployment in a subscription, restrict request volumes for a resource, or alter resource behavior. | SaaS solutions are at particular risk of exceeding quotas because of the way they scale. Understanding quotas helps you to avoid hard limits or incurring unnecessary costs. |
+| Understand Azure services [quotas and limits](/azure/azure-resource-manager/management/azure-subscription-service-limits).<br><br>Quotas can limit resource deployment in a subscription, restrict request volumes for a resource, or alter resource behavior. | SaaS solutions are at particular risk of exceeding quotas because of the way they scale. Understanding quotas helps you avoid hard limits or incur unnecessary costs. |
 | Create a baseline cost model. | Cost models help you to understand and forecast your costs and make informed decisions about your architecture based on the effects to your COGS. |
-| Focus on identifying important metrics or approximating costs rather than measuring every detail.  | Collecting excessive metrics for usage measurement can be counterproductive. It complicates data processing, which makes it harder to understand customer usage accurately. Additionally, it increases storage and processing costs. |
+| Focus on identifying important metrics or approximating costs rather than measuring every detail.  | Collecting excessive metrics for usage measurement can be counterproductive. It complicates data processing, making it harder to understand customer usage accurately. Additionally, it increases storage and processing costs. |
 | Set a budget per customer or per service. | You'll have a systematic way to avoid over-spending on customers. |
 | Determine your scale points. <br><br> Scaling decisions often rely on key metrics such as the number of customers, users, and transactions. Sales teams can provide projections for these metrics to help with planning. | Scale points help you forecast your costs, relate costs to revenue, and use business metrics to plan for growth in your technical architecture. |
 
@@ -70,18 +70,18 @@ You should optimize costs in conjunction with good governance practices. For mor
 
 ### Design considerations
 
-- **Identify cost optimization opportunities.** Your cost model, aligned with growth plans, can you help identify high or increasing costs to optimize. It can also set customer budgets for ongoing monitoring. Starting with the largest costs, look for opportunities to optimize.  
+- **Identify cost optimization opportunities.** Your cost model, aligned with growth plans, can help you identify high or increasing costs to optimize. It can also set customer budgets for ongoing monitoring. Starting with the largest costs, look for opportunities to optimize.  
 
 - **Share resources among customers.** This approach can help you gain cost efficiency. For example, you might use shared multitenant infrastructure for the front end and dedicated infrastructure for the back-end data layer.
 
     > [!NOTE]
     > Ensure that you can manage both shared and dedicated usage, mitigate noisy neighbor issues, and meet data residency and other customer constraints. In some cases, it might not be appropriate to share resources. You might instead need to deploy dedicated infrastructure for each customer by using the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp).
 
-- **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as the Microsoft Customer Agreement, an Enterprise Agreement, and pay-as-you-go. Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
+- **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as the Microsoft Customer Agreement, Enterprise Agreements, and pay-as-you-go. Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
 
-    [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs) offers reduced rates on certain Azure services for non-production use. Even after you're running your production workload, you can continue to access the rates through a separate dev/test subscription.
+    [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs) offers reduced rates on certain Azure services for non-production use. Even after you're running your production workload, you can continue to take advantage of the rates through a separate dev/test subscription.
 
-    Discounted pricing is available for some services if you commit to a certain expenditure. [Azure Reservations and savings plans](/azure/architecture/guide/multitenant/approaches/cost-management-allocation#use-azure-reservations-and-azure-savings-plan-to-reduce-costs) are examples. If you know you need the resources for a certain period of time, these discounts can be beneficial. Consolidating customer resources can help you qualify for these discounts.
+    Discounted pricing is available for some services if you commit to a certain expenditure. [Azure Reservations and savings plans](/azure/architecture/guide/multitenant/approaches/cost-management-allocation#use-azure-reservations-and-azure-savings-plan-to-reduce-costs) are examples. If you know you need resources for a certain period of time, these discounts can be beneficial. Consolidating customer resources can help you qualify for these discounts.
 
 - **Right-size your resources, and eliminate resources you no longer use.** Consider the options that Azure provides for resources. For example, Azure offers various options, such as different series of virtual machines, to help you optimize resource allocation. The [Virtual machine selector](https://azure.microsoft.com/pricing/vm-selector/) can help you choose the right compute for your solution.
 
@@ -93,8 +93,8 @@ You should optimize costs in conjunction with good governance practices. For mor
 | Share costs between customers when feasible, while ensuring that you meet requirements like isolation.<br><br>For resources with limited capacity, consider [bin packing](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing) to share resources.| You'll reduce your overall COGS and your marginal cost for each customer. |
 | Use Azure billing constructs, like credits, subscription types, reservations, and saving plans, to reduce your costs. <br><br>For reservations, choose the longest duration you can commit to for the highest discount. |When you use the right type of subscription or commit to a certain level of consumption, you receive significant discounts and reduce your overall COGS. |
 | Adjust the uptime, size, and type of resources to match your business needs and business hours. | You'll take advantage of the elasticity of cloud infrastructure and focus spending on critical times for your business. |
-| Identify and remove unused resources. | You'll cut out waste. |
-| Enable [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management). | You'll get access to tools that analyze, monitor and optimize your spend in the Microsoft Cloud. |
+| Identify and remove unused resources. | You'll reduce waste. |
+| Enable [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management). | You'll get access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
 | Monitor each resource's utilization to ensure optimal use. <br><br> Use [Azure Advisor](/azure/advisor/advisor-overview) and its library of cost optimization recommendations. | You'll utilize deployed and paid resources more effectively. |
 
 ## Billing
@@ -109,7 +109,7 @@ For more information, see [Pricing models for a multitenant solution](/azure/arc
 
 - **Design for billing.** The way in which you bill your customers can influence your solution design.
 
-    For example, you might offer different billing tiers that have varying functionality, performance, or deployment models. You might offer bronze, silver, and gold editions of a solution. Bronze customers might use shared infrastructure, silver customers might use a mix of shared and dedicated, and gold might use dedicated and isolated environments. Or you might enable or disable features based on billing plans. 
+    For example, you might offer different billing tiers that have varying functionality, performance, or deployment models. You might offer bronze, silver, and gold editions of a solution. Bronze customers might use shared infrastructure, silver customers might use a mix of shared and dedicated, and gold customers might use dedicated and isolated environments. Or you might enable or disable features based on billing plans. 
     
     Planning your billing model early is crucial, as retroactive changes can be challenging, although commercial pressures might require adjustments.
 
