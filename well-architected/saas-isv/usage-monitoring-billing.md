@@ -3,7 +3,7 @@ title: Usage monitoring and billing for SaaS workloads on Azure
 description: Learn about usage monitoring and billing considerations for SaaS workloads.
 author: johndowns
 ms.author: jodowns
-ms.date: 09/24/2024
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
