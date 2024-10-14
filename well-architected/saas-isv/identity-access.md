@@ -74,7 +74,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
     >
     > For example, a solution might be affordable for 500 users but unsustainable for 5 million. If it requires minimal setup and is user-friendly and easy to migrate from, it could still be the right choice until scaling costs justify switching to a different solution.
  
-- **Research the identity provider capabilities thoroughly.** Make sure the identity solution matches your list of required features. Even if you don't currently need complex scenarios like federated identity, consider future needs. For B2B SaaS solutions, federated identity will probably be necessary eventually.
+- **Research the identity provider capabilities thoroughly.** Make sure the identity solution matches your list of required features. Even if you don't currently need complex scenarios like federated identity, consider future needs. For business-to-business (B2B) SaaS solutions, federated identity will probably be necessary eventually.
 
 - **Factor in management overhead.** Different identity providers require varying levels of management overhead. Well-known IDaaS solutions usually have less overhead because they handle hosting, maintenance, and security. However, the additional overhead of an open source solution might be worthwhile if the solution is a better fit for your specialized needs.
 
