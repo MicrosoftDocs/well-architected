@@ -98,7 +98,7 @@ This image shows the relationship between your application, your application ide
 
 ### Design considerations
 
-- **Estimate the types and number of identity providers you need to support.** This estimate could range from a static number of social identity providers to unique federated identity providers for each customer. You should know whether your customers will use OpenID Connect (OIDC), Security Assertion Markup Language (SAML), or both for integration.
+- **Estimate the types and number of identity providers you need to support.** You might need a static number of social identity providers, or you might need unique federated identity providers for each customer. You should know whether your customers will use OpenID Connect (OIDC), Security Assertion Markup Language (SAML), or both for integration.
 
 - **Map out the sign-in experience.** Visualize the user flow of the sign-up and sign-in process. Note any special requirements that might alter your user flow design. For example:
 
