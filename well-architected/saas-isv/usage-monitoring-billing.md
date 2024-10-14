@@ -36,7 +36,7 @@ To learn more about the fundamentals of cost modeling, see [CO:02 Recommendation
 
     - **Dedicated resources.** If you host resources for each customer, use tools like Microsoft Cost Management to track costs per customer and roll up costs based on customer-specific resource tags.
     - **Shared resources.** If the deployed resources are shared among multiple customers, approximate cost splits based on customer size or usage metrics. For example, you can allocate costs by estimating each customer's size by using selected criteria. Alternatively, measure transactions or other metrics per customer. However, the latter method can be complex and time-consuming.
-    - **Customer-hosted resources.** If customers host their resources in their own Azure environments, you might not have direct resource costs, but you should consider management expenses.
+    - **Customer-hosted resources.** If customers host their resources in their own Azure environments, you might not have direct resource costs, but you should still consider management expenses.
 
     For more information, see [Measure the consumption of each tenant](/azure/architecture/guide/multitenant/considerations/measure-consumption).
 
@@ -59,8 +59,8 @@ To learn more about the fundamentals of cost modeling, see [CO:02 Recommendation
 | Understand Azure services [quotas and limits](/azure/azure-resource-manager/management/azure-subscription-service-limits).<br><br>Quotas can limit resource deployment in a subscription, restrict request volumes for a resource, or alter resource behavior. | SaaS solutions are at particular risk of exceeding quotas because of the way they scale. Understanding quotas helps you avoid hard limits and unnecessary costs. |
 | Create a baseline cost model. | Cost models help you to understand and forecast your costs and make informed decisions about your architecture based on the effects to your COGS. |
 | Focus on identifying important metrics or approximating costs rather than measuring every detail.  | Collecting excessive metrics for usage measurement can be counterproductive. It complicates data processing, making it harder to understand customer usage accurately. Additionally, it increases storage and processing costs. |
-| Set a budget per customer or per service. | You'll have a systematic way to avoid over-spending on customers. |
-| Determine your scale points. <br><br> Scaling decisions often rely on key metrics such as the number of customers, users, and transactions. Sales teams can provide projections for these metrics to help with planning. | Scale points help you forecast your costs, relate costs to revenue, and use business metrics to plan for growth in your technical architecture. |
+| Set a budget per customer or per service. | This approach gives you a systematic way to avoid over-spending on customers. |
+| Determine your scale points. <br><br> Scaling decisions often depend on key metrics such as the number of customers, users, and transactions. Sales teams can provide projections for these metrics to help with planning. | Scale points help you forecast your costs, relate costs to revenue, and use business metrics to plan for growth in your technical architecture. |
 
 ## Optimize your costs
 
@@ -70,9 +70,9 @@ You should optimize costs in conjunction with good governance practices. For mor
 
 ### Design considerations
 
-- **Identify cost optimization opportunities.** Your cost model, aligned with growth plans, can help you identify high or increasing costs to optimize. It can also set customer budgets for ongoing monitoring. Starting with the largest costs, look for opportunities to optimize.  
+- **Identify cost optimization opportunities.** Your cost model, aligned with growth plans, can help you identify high or increasing costs that you can optimize. It can also set customer budgets for ongoing monitoring. Starting with the largest costs, look for opportunities to optimize.  
 
-- **Share resources among customers.** This approach can help you gain cost efficiency. For example, you might use shared multitenant infrastructure for the front end and dedicated infrastructure for the back-end data layer.
+- **Share resources among customers.** This approach can help you improve cost efficiency. For example, you might use shared multitenant infrastructure for the front end and dedicated infrastructure for the back-end data layer.
 
     > [!NOTE]
     > Ensure that you can manage both shared and dedicated usage, mitigate noisy neighbor issues, and meet data residency and other customer constraints. In some cases, it might not be appropriate to share resources. You might instead need to deploy dedicated infrastructure for each customer by using the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp).
@@ -90,12 +90,12 @@ You should optimize costs in conjunction with good governance practices. For mor
 | Recommendation | Benefit |
 |---|---|
 | Review the [Cost Optimization checklist](../cost-optimization/principles.md), a guide for cost management in the cloud. | You'll learn approaches that you can use across a variety of Azure services and solution types. |
-| Share costs between customers when feasible, while ensuring that you meet requirements like isolation.<br><br>For resources with limited capacity, consider [bin packing](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing) to share resources.| You'll reduce your overall COGS and your marginal cost for each customer. |
+| Share costs between customers when feasible, while ensuring that you meet requirements like isolation.<br><br>For resources with limited capacity, consider [bin packing](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing) to share resources.| This approach reduces your overall COGS and your marginal cost for each customer. |
 | Use Azure billing constructs, like credits, subscription types, reservations, and saving plans, to reduce your costs. <br><br>For reservations, choose the longest duration you can commit to for the highest discount. |When you use the right type of subscription or commit to a certain level of consumption, you receive significant discounts and reduce your overall COGS. |
-| Adjust the uptime, size, and type of resources to match your business needs and business hours. | You'll take advantage of the elasticity of cloud infrastructure and focus spending on critical times for your business. |
-| Identify and remove unused resources. | You'll reduce waste. |
+| Adjust the uptime, size, and type of resources to match your business needs and business hours. | This approach allows you to take advantage of the elasticity of cloud infrastructure and focus spending on critical times for your business. |
+| Identify and remove unused resources. | This approach reduces waste.  |
 | Enable [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management). | You'll get access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
-| Monitor each resource's utilization to ensure optimal use. <br><br> Use [Azure Advisor](/azure/advisor/advisor-overview) and its library of cost optimization recommendations. | You'll utilize deployed and paid resources more effectively. |
+| Monitor each resource's utilization to ensure optimal use. <br><br> Use [Azure Advisor](/azure/advisor/advisor-overview) and its library of cost optimization recommendations. | This approach ensures that you use deployed and paid resources more effectively. By optimizing resource use, you can achieve better efficiency and cost management. |
 
 ## Billing
 
@@ -111,12 +111,12 @@ For more information, see [Pricing models for a multitenant solution](/azure/arc
 
     For example, you might offer different billing tiers that have varying functionality, performance, or deployment models. You might offer bronze, silver, and gold editions of a solution. Bronze customers might use shared infrastructure, silver customers might use a mix of shared and dedicated, and gold customers might use dedicated and isolated environments. Or you might enable or disable features based on billing plans. 
     
-    Planning your billing model early is crucial, as retroactive changes can be challenging, although commercial pressures might require adjustments.
+    Planning your billing model early is crucial because retroactive changes can be challenging, although commercial pressures might necessitate adjustments.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Design billing meters that are meaningful to your customers. <br><br> For example, the number of users or business transactions processed are meters that your customers can understand. <br> Avoid using metrics that are easy for you to measure but hard for customers to understand, like API requests. | You'll give your customers confidence in their understanding of your service and help them to model their own costs. |
-| Plan the implementation of billing plans or SKUs carefully. <br><br> If you offer multiple billing tiers, use a systematic approach. | You'll avoid making last-minute changes to your solution or customizing your solution for a single customer, which would cause operational complexity in the future. |
+| Design billing meters that are meaningful to your customers. <br><br> For example, the number of users or business transactions processed are meters that your customers can understand. <br> Avoid using metrics that are easy for you to measure but hard for customers to understand, like API requests. | This approach gives your customers confidence in their understanding of your service. It also helps them model their own costs effectively.|
+| Plan the implementation of billing plans or SKUs carefully. <br><br> If you offer multiple billing tiers, use a systematic approach. | This approach helps you avoid making last-minute changes to your solution. It also prevents the need for customizing your solution for a single customer, which could lead to operational complexity in the future.  |
 | Plan the implementation of discounts carefully. <br><br> Pricing discounts can be complex to manage, even if they only affect billing processes. | You'll prevent customer disappointment for  discounts that your solution or processes can't deliver. |
