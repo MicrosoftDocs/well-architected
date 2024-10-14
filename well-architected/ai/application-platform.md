@@ -30,7 +30,7 @@ No matter which of the previously described functions you're designing for, star
 - Prefer platform as a service (PaaS) or software as a service (SaaS) solutions to minimize the operational burden that building your own solution introduces, like patching and other maintenance. Minimizing the Day-2 burden required for the new technology will simplify your adoption. Many AI functions are complex, so we don't recommend building your own platform.
 - When you design for the use of PaaS or SaaS solutions, understand any quotas or limits that apply. Your ability to scale out to meet high traffic demands might be affected by quotas or limits, so you might need to adjust your design to minimize that risk.
 - Try to deploy all related resources in the same region to reduce latency and to simplify the design.
-- In general, you should treat the APIs for your AI workload the same as any other API in your environments. All APIs should be placed behind a gateway and all code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments) as every other code asset.
+- In general, you should treat the APIs for your AI workload the same as any other API in your environments. All APIs should be placed behind a gateway and all code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments.md) as every other code asset.
 - Establish performance benchmarks through experimentation. Every AI workload is different, and the amount of compute that you need depends on your use case. Determine the amount and types of compute that are optimal for your workload by conducting thorough benchmark testing. This guide helps you choose a platform, but you'll only know which SKUs are appropriate for your workload after benchmark testing.
 
 ## Considerations for the EDA platform
@@ -90,7 +90,7 @@ Use an [Azure Machine Learning compute instance](/azure/machine-learning/concept
 
 ## Considerations for the model training and fine-tuning platform
 
-When you move to model training and fine-tuning, you'll probably need high-performance GPU-optimized compute for the compute-intensive work that's required by those activities. Reliability typically isn't as important as performance because most of this work occurs behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important when model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics#recovery-metrics) should determine the reliability design that you choose.
+When you move to model training and fine-tuning, you'll probably need high-performance GPU-optimized compute for the compute-intensive work that's required by those activities. Reliability typically isn't as important as performance because most of this work occurs behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important when model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics#recovery-metrics.md) should determine the reliability design that you choose.
 
 The guidance in this section applies to both model training and fine-tuning. Unless you're forced to use separate platforms for these functions, you should use a single platform.
 
