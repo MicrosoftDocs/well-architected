@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Disk Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Disk Storage.
 author: roygara
 ms.author: rogarana
-ms.date: 10/09/2024
+ms.date: 10/14/2024
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -50,8 +50,9 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 | **Recommendation** | **Benefit** |
 |---|---|
-| [Use Ultra Disks, Premium SSD v2, and Premium SSD disks](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). |  Single VMs using only Premium SSD disks as the OS disks, and either Ultra Disks, Premium SSD v2, or Premium SSD disks as data disks have the highest uptime service level agreement (SLA), and these disk types offer the best performance. |
-| For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk. Also, [use ZRS disks when sharing disks between VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the impact of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone went down and your virtual machine (VM) wasn't affected, then workloads on ZRS disks continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can force detach your ZRS disks from the failed VM, freeing them to attach to another VM.<br></br>Use ZRS disks when sharing a disk between multiple VMs to prevent the shared disk from becoming a single point of failure. |
+| Create and attach data disks during Azure virtual machine (VM) creation.| Creating and attaching disks during VM creation avoids a background data copy that would otherwise occur. This background data copy happens when a disk is being shifted to align to a VM's availability zone or fault domain and can impact the reliability and performance of a disk. |
+| [Use Ultra Disks, Premium SSD v2, and Premium SSD disks](/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). |  Single-instance VMs using only Premium SSD disks as the OS disks, and only either Ultra Disks, Premium SSD v2, or Premium SSD disks as data disks have the highest uptime service level agreement (SLA). |
+| For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk. Especially [when sharing disks between VMs](/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the impact of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone went down and your virtual machine (VM) wasn't affected, then workloads on ZRS disks continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can force detach your ZRS disks from the failed VM, freeing them to attach to another VM.<br></br>Using a ZRS disk when sharing a disk between multiple VMs prevents the shared disk from becoming a single point of failure. |
 | Implement one of the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). For managed solutions, use either [Azure Backup](/azure/backup/disk-backup-overview) or [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). If you need to curate your own backup solution, use either [restore points](/azure/virtual-machines/create-restore-points) or [snapshots](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli). |  Identifying the ideal backup option for your needs lets you maximize your environments recoverability. |
 | If you're managing your own snapshots, [copy them across regions using the provided scripts](/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions?tabs=azure-cli). | Using the provided scripts simplifies transferring data from one region to another.<br></br>This is a good option if you can't use Azure Site Recovery, since you can still create disaster recovery backups in other regions. |
 
@@ -105,7 +106,6 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 > - **Estimate the cost of capacity and operations**: Model the costs associated with disk type, transactions (if applicable), and capabilites by using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). Use fields to compare the cost associated with various regions, account type, namespace type, and redundancy configurations.
 >
 > - **Choose a billing model**: Evaluate whether using [a commitment-based model](/azure/virtual-machines/disks-reserved-capacity) is more cost-efficient than using a consumption-based model. If you are unsure about how much capacity you'll need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
->
 >
 > - **Decide which features you need**: Some features such as [snapshots](/azure/virtual-machines/disks-incremental-snapshots) or [on-demand bursting](/azure/virtual-machines/disks-enable-bursting) incur additional transaction and capacity costs as well as other charges. For example, if you enable snapshots, you're billed for the amount of storage used by each snapshot. As you decide which capabilities your disks need, review the pricing and billing sections in articles that describe those capabilities.
 >
