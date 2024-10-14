@@ -17,7 +17,7 @@ In the context of SaaS workloads, there are two distinct types of identity.
 
 - **Application identity**, also known as *customer identity and access management (CIAM)*, enables end users to authenticate and use your SaaS application. There are two main methods for signing users in to an application identity provider:
   
-    - **Federated identities.**  Users sign in with existing credentials that are maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider that your customers use, such as Microsoft Entra or Okta.
+    - **Federated identities.**  Users sign in with existing credentials that are maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider that your customers use, such as Microsoft Entra or Okta. Maintenance of the user's account is the responsibility of the federated identity provider.
       
     - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. 
 <!-- //TODO @landon who's responsible for managing this identity// -->
