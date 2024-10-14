@@ -3,7 +3,7 @@ title: Failure mode analysis recommendations
 description: Learn how to identify potential points of failure within your workload and the associated flows, and plan mitigation actions accordingly.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 10/08/2024
 ms.topic: conceptual
 ---
 # Recommendations for performing failure mode analysis
@@ -129,7 +129,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | Azure SQL | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
 | Azure SQL | Regional outage | Very low | Auto-failover group fails over to secondary region. Potential outage during failover. Recovery time objectives (RTOs) and recovery point objectives (RPOs) to be determined during reliability testing. | Potential full |
 | Azure SQL | Availability zone outage | Low | No effect | None |
-| Azure SQL | Malicious attack (injection) | Medium | Minimal risk. All Azure SQL instances are virtual network-bound through private endpoints and network security groups (NSGs) add further intra-virtual network protection. | Potential low risk |
+| Azure SQL | Malicious attack (injection) | Medium | Minimal risk. All Azure SQL instances are virtual network-bound through private endpoints and network security groups (NSGs) add further intra-virtual network protection. | Low risk, potential for partial outage |
 | App Service | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
 | App Service | Regional outage | Very low | Minimal effect. Latency for users in effected regions. Azure Front Door automatically routes traffic to non-effected regions. | None |
 | App Service | Availability zone outage | Low | No effect. App services have been deployed as zone redundant. Without zone redundancy, there's a potential for effect. | None |
