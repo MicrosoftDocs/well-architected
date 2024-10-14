@@ -76,7 +76,6 @@ Modern implementations of Application Insights store data in a [Log Analytics](/
 
 | Recommendation | Benefits |
 |----------------|----------|
-
 | *RE:01 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Autoinstrumentation doesn't require any code changes and eliminates the overhead of maintaining instrumentation code. |
 | *Other -* Implement a resilient workspace design by using [best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs). | This will ensure continuous and robust monitoring by minimizing disruptions. |
 
