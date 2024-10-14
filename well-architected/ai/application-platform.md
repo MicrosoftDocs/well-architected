@@ -90,7 +90,7 @@ Use an [Azure Machine Learning compute instance](/azure/machine-learning/concept
 
 ## Considerations for the model training and fine-tuning platform
 
-When you move to model training and fine-tuning, you'll probably need high-performance GPU-optimized compute for the compute-intensive work that's required by those activities. Reliability typically isn't as important as performance because most of this work occurs behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important when model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics.md#recovery-metrics) should determine the reliability design that you choose.
+When you move to model training and fine-tuning, you'll probably need high-performance GPU-optimized compute for the compute-intensive work that's required by those activities. Reliability typically isn't as important as performance because most of this work occurs behind the scenes. If high reliability is a requirement, evaluate whether spreading the workload across availability zones or regions is necessary. High reliability becomes more important when model freshness is updated frequently, which requires training to be completed on a tighter schedule. Your [RTO](../reliability/metrics.md#define-recovery-metrics) should determine the reliability design that you choose.
 
 The guidance in this section applies to both model training and fine-tuning. Unless you're forced to use separate platforms for these functions, you should use a single platform.
 
