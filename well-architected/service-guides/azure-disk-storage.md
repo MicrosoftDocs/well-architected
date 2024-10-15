@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Disk Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Disk Storage.
 author: roygara
 ms.author: rogarana
-ms.date: 10/14/2024
+ms.date: 10/15/2024
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -25,6 +25,8 @@ This article assumes that as an architect, you've reviewed the [storage options]
 > Each section has a design checklist that presents architectural areas of concern along with design strategies.
 > 
 > Also included are recommendations on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Disk Storage and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environment.
+>
+> This guide focuses on decisions for Azure managed disks. However, managed disks are a critical dependency of Azure Virtual Machines (VMs), so read and implement the recommendations in [Azure Well-Architected Framework perspective on Virtual Machines and scale sets](virtual-machines.md), as well.
 
 ## Reliability
 
@@ -50,6 +52,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 | **Recommendation** | **Benefit** |
 |---|---|
+|Distribute [VMs and disks across multiple availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones?tabs=portal-2#design-considerations-for-availability-zones) using a zone redundant Virtual Machine Scale Set with flexible orchestration mode or by deploying VMs and disks across three availability zones. [Zone balancing](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones?tabs=portal-2#zone-balancing) equally spreads the instances across zones.| The VM and disk instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. Keep in mind that, depending on resource availability, there might be an uneven number of instances across zones. Zone balancing supports availability by making sure that, if one zone is down, the other zones have sufficient instances. Two instances in each zone provide a buffer during upgrades. |
 | [Use Ultra Disks, Premium SSD v2, and Premium SSD disks](/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). |  Single-instance VMs using only Premium SSD disks as the OS disks, and only either Ultra Disks, Premium SSD v2, or Premium SSD disks as data disks have the highest uptime service level agreement (SLA). |
 | For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk. Especially [when sharing disks between VMs](/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the impact of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone went down and your virtual machine (VM) wasn't affected, then workloads on ZRS disks continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can force detach your ZRS disks from the failed VM, freeing them to attach to another VM.<br></br>Using a ZRS disk when sharing a disk between multiple VMs prevents the shared disk from becoming a single point of failure. |
 | Implement one of the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). For managed solutions, use either [Azure Backup](/azure/backup/disk-backup-overview) or [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). If you need to curate your own backup solution, use either [restore points](/azure/virtual-machines/create-restore-points) or [snapshots](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli). |  Identifying the ideal backup option for your needs lets you maximize your environments recoverability. |
