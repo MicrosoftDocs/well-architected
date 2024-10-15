@@ -6,7 +6,7 @@ ms.author: duau
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide 
-ms.date: 09/30/2024
+ms.date: 10/15/2024
 products: 
   - azure-expressroute
 azure.category:
@@ -201,10 +201,12 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - Configure connection monitoring between your on-premises and Azure network.
-> - Configure Service Health for receiving notification.
-> - Review metrics and dashboards available through ExpressRoute Insights using Network Insights.
-> - Review ExpressRoute resource metrics.
+> - **Configure connection monitoring between your on-premises and Azure network:** Use Network Watcher Connection Monitor to monitor connectivity between your on-premises resources and Azure over the ExpressRoute private peering and Microsoft peering connection.
+> - **Configure dynamic routing for ExpressRoute:** Dynamic routing for ExpressRoute leverages BGP to provide automatic route updates, optimal path selection, scalability, and interoperability for your network.
+> - **Configure Service Health for receiving notification:** Set up Service Health notifications to alert you when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription.
+> - **Review metrics and dashboards available through ExpressRoute Insights using Network Insights:** ExpressRoute Insights provides a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.
+> - **Review ExpressRoute resource metrics:** Use Azure Monitor to collect metrics and create alerts based on your configuration.
+> - **Create alerts based on ExpressRoute metrics:** Set up alerts based on ExpressRoute metrics to proactively notify you when a certain threshold is met.
 
 ### Recommendations
 
@@ -212,23 +214,30 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Configure connection monitoring | [Connection monitoring](/azure/expressroute/how-to-configure-connection-monitor) allows you to monitor connectivity between your on-premises resources and Azure over the ExpressRoute private peering and Microsoft peering connection. Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
-| Configure Service Health | Set up [Service Health notifications](/azure/expressroute/maintenance-alerts) to alert when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription. Service Health also displays past maintenance along with RCA if an unplanned maintenance were to occur. |
-| Review metrics with Network Insights | [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.<br><br>Metrics available:<br>- Availability<br>- Throughput<br>- Gateway metrics |
-| Review ExpressRoute resource metrics | ExpressRoute uses Azure Monitor to collect [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts) base on your configuration. Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
+| Configure [Connection monitor](/azure/expressroute/how-to-configure-connection-monitor). | Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
+| Configure [dynamic routing](/azure/expressroute/expressroute-routing). | Dynamic routing allows for more efficient and flexible routing, ensuring optimal path selection and automatic updates to routing tables in response to network changes. |
+| Configure [Service Health notifications](/azure/expressroute/maintenance-alerts). Service Health displays past maintenance along with RCA if an unplanned maintenance were to occur. | Service Health notifications provide timely alerts about planned and unplanned maintenance, outages, and early warnings about potential issues. This allows you to stay informed about the status of your ExpressRoute circuits. |
+| Review metrics with Network Insights. [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. | Network Insights offers a centralized platform to monitor various metrics across ExpressRoute circuits, gateways, and connections, providing a comprehensive view of network health and performance. |
+| Review ExpressRoute [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts) ExpressRoute uses Azure Monitor to collect metrics and create alerts based on your configuration.|  Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
 
 ## Performance efficiency
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../scalability/principles.md).
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
+The [Performance Efficiency design principles](/azure/well-architected/scalability/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 ### Design checklist
 
+Start your design strategy based on the design review checklist for Performance Efficiency for defining a baseline based on key performance indicators for Azure ExpressRoute.
+
 > [!div class="checklist"]
-> - Test ExpressRoute gateway performance to meet work load requirements.
-> - Increase the size of the ExpressRoute gateway.
-> - Upgrade the ExpressRoute circuit bandwidth.
-> - Enable ExpressRoute FastPath for higher throughput.
-> - Monitor the ExpressRoute circuit and gateway metrics.
+>
+> - **Monitor performance targets with Network Watcher Connection Monitor:** Monitor the performance of your ExpressRoute connection to ensure that it meets your performance targets.
+> - **Test ExpressRoute gateway performance to meet work load requirements:** Use the Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection.
+> - **Increase the size of the ExpressRoute gateway.** Upgrade to a higher SKU for improved throughput performance between on-premises and Azure environment to meet your work load requirements.
+> - **Upgrade the ExpressRoute circuit bandwidth:** Upgrade your circuit bandwidth to meet your work load requirements.
+> - **Create or evaluate operation scheduling for your organization:** Schedule bandwidth-intensive operations such as backups at times of low production traffic.
+> - **Enable ExpressRoute FastPath for higher throughput:** If you're using an Ultra performance or an ErGW3AZ virtual network gateway, you can enable FastPath to improve the data path performance between your on-premises network and Azure virtual network.
+> - **Monitor the ExpressRoute circuit and gateway metrics:** Monitor the performance of your ExpressRoute connection by setting up alerts based on ExpressRoute metrics to proactively notify you when a certain threshold is met.
 
 ### Recommendations
 
@@ -236,15 +245,13 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Test ExpressRoute gateway performances to meet work load requirements. | Use [Azure Connectivity Toolkit](/azure/expressroute/expressroute-troubleshooting-network-performance#azurect---the-azure-connectivity-toolkit) to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection. |
-| Increase the size of the ExpressRoute gateway. | Upgrade to a higher [gateway SKU](/azure/expressroute/expressroute-about-virtual-network-gateways) for improved throughput performance between on-premises and Azure environment. |
-| Upgrade ExpressRoute circuit bandwidth | Upgrade your [circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth) to meet your work load requirements. Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your work load, one or more virtual networks can use up all the bandwidth on the circuit.  |
-| Enable ExpressRoute FastPath for higher throughput | If you're using an Ultra performance or an ErGW3AZ virtual network gateway, you can enable [FastPath](/azure/expressroute/about-fastpath) to improve the data path performance between your on-premises network and Azure virtual network. |
-| Monitor ExpressRoute circuit and gateway metrics | Set up alerts base on [ExpressRoute metrics](/azure/expressroute/monitor-expressroute) to proactively notify you when a certain threshold is met. These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. |
-
-For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
-
-Azure Advisor offers a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit is consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you experience dropped packets, which can lead to significant performance or reliability impact.
+| Monitor performance targets with [Network Watcher Connection Monitor](/azure/network-watcher/connection-monitor-overview). | Connection Monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
+| Test ExpressRoute gateway performances to meet work load requirements with the [Azure Connectivity Toolkit](/azure/expressroute/expressroute-troubleshooting-network-performance#azurect---the-azure-connectivity-toolkit). | The toolkit provides user-friendly tools and interfaces that simplify the process of configuring and managing network connections to Azure. The toolkit includes tools to optimize network performance, ensuring efficient and reliable connectivity to Azure services. |
+| Increase the size of the [ExpressRoute gateway](/azure/expressroute/expressroute-about-virtual-network-gateways) . | Upgrading to a larger gateway SKU provides higher throughput capabilities, allowing more data to be transferred between on-premises networks and Azure more quickly. A larger gateway can manage more simultaneous connections and higher volumes of traffic, reducing the likelihood of network congestion and bottlenecks. |
+| Upgrade ExpressRoute [circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth).  |  Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your work load, one or more virtual networks can use up all the bandwidth on the circuit.  |
+| Create or evaluate operation scheduling for your organization. | Scheduling bandwidth-intensive operations such as backups at times of low production traffic can help optimize network performance and ensure that critical workloads are not impacted by high network traffic. |
+| Enable [ExpressRoute FastPath](/azure/expressroute/about-fastpath) for higher throughput. | As business needs grow, FastPath provides the necessary bandwidth and performance to support increasing data volumes and more users without compromising performance. Enabling FastPath ensures that the network can handle future expansions and new applications, providing long-term performance efficiency.  |
+| Monitor [ExpressRoute circuit and gateway metrics](/azure/expressroute/monitor-expressroute).  | These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. |
 
 ## Azure Policy
 
@@ -254,8 +261,8 @@ Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom 
 
 ### Cloud Adoption Framework guidance
 
-* [Traditional Azure network topology](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
-* [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology)
+- [Traditional Azure network topology](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
+- [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology)
 
 ## Next steps
 
