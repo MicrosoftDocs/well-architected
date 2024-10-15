@@ -7,7 +7,7 @@ ms.date: 10/16/2024
 ms.topic: conceptual
 ---
 
-# Grounding data design for AI workloads on Azure
+# Grounding Data Design for AI Workloads on Azure
 
 For AI applications, the Well-Architected Framework approach to data design must address nonfunctional requirements like operability, cost, and security and adhere to the core principles of [Azure Well-Architected Framework pillars](/azure/well-architected/pillars). It should also consider functional requirements such as data ingestion, preparation, and validation.  
 
