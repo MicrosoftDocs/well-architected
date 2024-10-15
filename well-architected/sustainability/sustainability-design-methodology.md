@@ -121,7 +121,7 @@ Therefore, building a carbon score dashboard can make use of the following proxi
 
 Further examples of implementing this can be found on the following pages:
 
-- [DataOps - Measure Azure App Sustainability](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/apps/measure-azure-app-sustainability-sci-score)
+- To learn more, see [Measure Azure app sustainability by using the SCI score](/azure/architecture/example-scenario/apps/measure-azure-app-sustainability-sci-score) in the Azure Architecture Center
 
 ## 4—The shared responsibility model for sustainability
 
