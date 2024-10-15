@@ -1,5 +1,5 @@
 ---
-title: Grounding data design for AI workloads on Azure
+title: Grounding Data Design for AI Workloads on Azure
 description: Learn about data layout considerations and best practices for running AI workloads efficiently, which ensures optimal performance and scalability.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -13,7 +13,7 @@ For AI applications, the Well-Architected Framework approach to data design must
 
 The AI model that you choose affects subsequent data design decisions. This article discusses key architectural considerations for foundation models that need augmentation to enhance result relevance. These models are typically generative.
 
-Generative AI models are prebuilt or pretrained, which allows you to immediately use them without making modifications. However, out-of-the-box models often don't meet specific workload requirements. To address this issue, models are augmented with context-specific data to improve their performance. For example, you can use the GPT model in various chatbot applications. These applications include retrieving information from documents, providing IT Helpdesk support, and summarizing complex information. To use foundation models to meet your specific needs, it's important to understand these considerations.
+Generative AI models are prebuilt or pretrained, which allows you to immediately use them without making modifications. However, out-of-the-box models often don't meet specific workload requirements. To address this issue, models are augmented with context-specific data to improve their performance. For example, you can use the GPT model in various use cases. These applications include retrieving information from documents, providing IT Helpdesk support, and summarizing complex information. To use foundation models to meet your specific needs, it's important to understand these considerations.
 
 > [!IMPORTANT]
 >
@@ -79,9 +79,9 @@ You can think of indexes as structures that organize and optimize data for retri
 
   - **Index topology**. Evaluate whether to colocate all data in a single index or distribute across multiple indexes. This decision significantly affects query performance, index maintenance, query simplicity, and dissimilar field configuration (or schema) between documents.
 
-    For example, consider user queries that request content in a specific language. The simplest data design choice is possibly translating all languages into one language and storing it in a single index. Or, data can be stored in all languages in a single index. This choice results in multiple documents for each language. The index's filtering capability could be used to restrict the results to the desired language. Alternatively, each index could contain the translated versions for a given language, expected in the query.
+    For example, consider user queries that request content in a specific language. The simplest data design choice is possibly translating all languages into one language and storing it in a single index. Or, data can be stored in all languages in a single index. This choice results in multiple documents for each language. The index's filtering capability could be used to restrict the results to the desired language. Alternatively, each index could contain the translated versions for a given language as expected in the query.
 
-    In some situations, you might need multiple search indexes. This approach allows you to independently optimize each index for maximum relevancy from your search queries. For example, an HR employee handbook and a product maintenance manual serve different purposes and audiences. By indexing them separately, you can tailor the schema and search queries for each, improving user experience. This approach can be complex to implement and requires an orchestrator to facilitate calls to each index. The orchestration component is described in [Application design for AI workloads on Azure](application-design.md).
+    In some situations, you might need multiple search indexes. This approach allows you to independently optimize each index for maximum relevancy from your search queries. For example, an HR employee handbook and a product maintenance manual serve different purposes and audiences. By indexing them separately, you can tailor the schema and search queries for each, which improves user experience. This approach can be complex to implement and requires an orchestrator to facilitate calls to each index. The orchestration component is described in [Application design for AI workloads on Azure](application-design.md).
 
   > [!NOTE]
   > The choice between the two topologies and the data segmentation strategy depends on workload requirements, use cases, and user expectations.
@@ -132,7 +132,7 @@ For technology choices for the data store, search indexes, such as Elasticsearch
 
 ## Data preparation
 
-Grounding data is based on existing data, which needs to be made suitable for semantic querying. Some queries to find relevant document in the index can be literal matching. Other queries require fuzzy matching.
+Grounding data is based on existing data, which needs to be made suitable for semantic querying. Some queries to find relevant documents in the index can be literal matching. Other queries require fuzzy matching.
 
 Before contextual data is ready to support inferencing requests to the model, there's an upfront preprocessing step that aims at cleaning, transforming, and structuring data. The goal is to reduce noise and bias, search efficiently, and maximize relevancy of the index searches. The choice tools or logic for preprocessing depends on the workload team, but there are some broad considerations.
 
@@ -176,7 +176,7 @@ Grounding data often contains a large volume of information, but the model is ab
 
 There are many techniques for implementing chunking. For more information, see [Chunking approaches](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase#chunking-approaches).
 
-_Embeddings_ is also another design strategy that enables vector search capabilities. Embeddings is a mathematical representation of an object generated by AI models  given some grounding data. They're stored in the index and add more context that helps complex queries yield results with better relevancy. For more information, see [Generate embeddings](/azure/architecture/ai-ml/guide/rag/rag-generating-embeddings).
+_Embeddings_ is also another design strategy that enables vector search capabilities. Embeddings is a mathematical representation of an object that's generated by AI models based on grounding data. They're stored in the index and add more context that helps complex queries yield results with better relevancy. For more information, see [Generate embeddings](/azure/architecture/ai-ml/guide/rag/rag-generating-embeddings).
 
 ## Index maintenance
 
