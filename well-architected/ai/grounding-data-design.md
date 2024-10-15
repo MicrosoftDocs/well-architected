@@ -17,7 +17,7 @@ Generative AI models are prebuilt or pretrained, which allows you to immediately
 
 > [!IMPORTANT]
 >
-> Data design is an iterative process that's based on statistical experimentation. Generative AI applications send queries to the model that includes the prompt and context data. To refine data design, the prompt and context data should both be iterated. The iterative process should include preprocessing, selecting embeddings, and chunking. These steps help create data that's suitable for an index. For details about how to implement those steps, see [Designing and developing a retrieval-augmented generation (RAG) solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide).
+> Data design is an iterative process that's based on statistical experimentation. Generative AI applications send queries to the model that includes the prompt and context data. To refine data design, the prompt and context data should both be iterated. The iterative process should include preprocessing, selecting embeddings, and chunking. These steps help create data that's suitable for an index. For more information, see [Designing and developing a retrieval-augmented generation (RAG) solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide).
 >
 > As you experiment and iterate, keep the consumption use cases in mind. Adjust the data design based on actual query patterns. Determine what's acceptable through refinement and testing.
 
@@ -28,7 +28,7 @@ In a solution, you can use a combination of generative AI and discriminative AI 
 |Recommendation|Description|
 |---|---|
 |Anticipate user queries. |Understand the expected types of questions related to your source data and their expectations of freshness. This understanding helps you design your data pipelines and indexes to provide relevant grounding data.<br>|
-|Externalize data to a search index. | Instead of querying directly from the source system, use a search index. Evaluate different index technologies based on workload requirements. Create a capability matrix to assess the best fit for your needs. Consider powerful search index technologies like Elasticsearch or AI Search.<br><br>&#9642; [Separation of intent](#separation-of-intent)<br>&#9642;|
+|Externalize data to a search index. | Instead of querying directly from the source system, use a search index. Evaluate different index technologies based on workload requirements. Create a capability matrix to assess the best fit for your needs. Consider powerful search index technologies like Elasticsearch or AI Search.<br><br>&#9642; [Indexing](#indexing)|
 |Develop an ingestion strategy. |Develop a comprehensive index management strategy that covers data ingestion and preprocessing. Remove noisy or irrelevant data by addressing inconsistencies, duplicates, and standardizing to a common schema. Convert source formats and types to data types that facilitate querying and analysis. <br><br>&#9642; [Data preparation](#data-preparation)<br>&#9642; [Data volume rescoping](#data-volume-rescoping)|
 |Design your index for maximum relevancy. |Enable features like filtering, sorting, and metadata handling on specific fields to improve query efficiency. For instance, label fields as searchable only if you intend to search on them. Prevent unnecessary storage costs by not making every field retrievable without a specific use case. <br><br>&#9642; [Schema design](#schema-design)<br>&#9642; [Index capabilities](#index-capabilities)<br>&#9642; [Efficient querying](#efficient-querying)|
 |Update your index to prevent inferencing on stale data. |When you update an index, consider adopting a side-by-side deployment strategy for maintenance. Rebuilding the index ensures that deletions and updates are handled because the index becomes a fresh dataset. This approach allows thorough testing of the data before making the index live. When you make changes to indexes, coordinate schema modifications with code updates. This practice ensures seamless transitions.<br><br>&#9642; [Index maintenance](#index-maintenance)|
@@ -53,7 +53,7 @@ You can augment generative AI models by using context data during inference, or 
 
 The core of data design includes efficiently storing and managing foundational data. This approach ensures that data can be augmented to achieve the highest level of relevance.
 
-A simplistic AI strategy might involve querying the source data for each user interaction. However, this approach isn't practical because of the high costs and complexities of direct data source interactions. Instead, you should repurpose source data as a copy in an index that's optimized for search and retrieval. This approach aims to improve the model's comprehension and its ability to generate relevant responses.
+A simple AI strategy might involve querying the source data for each user interaction. However, this approach isn't practical because of the high costs and complexities of direct data source interactions. Instead, you should repurpose source data as a copy in an index that's optimized for search and retrieval. This approach aims to improve the model's comprehension and its ability to generate relevant responses.
 
 Consider a banking workload that stores details related to user bank accounts and preferences, financial transactions, in a data store. In a generative AI scenario that uses a RAG pattern, grounding data is created and indexed with context so that the model can give relevant responses. For instance, by providing relevant data about user transactions for context during inferencing, the model can answer questions related to the user's spending patterns in the last quarter.
 
@@ -81,7 +81,7 @@ You can think of indexes as structures that organize and optimize data for retri
 
     For example, consider user queries that request content in a specific language. The simplest data design choice is possibly translating all languages into one language and storing it in a single index. Or, data can be stored in all languages in a single index. This choice results in multiple documents for each language. The index's filtering capability could be used to restrict the results to the desired language. Alternatively, each index could contain the translated versions for a given language, expected in the query.
 
-    In some situations, you might need multiple search indexes. This approach allows you to independently optimize each index for maximum relevancy from your search queries. For example, an HR employee handbook and a product maintenance manuals serve different purposes and audiences. By indexing them separately, you can tailor the schema and search queries for each, improving user experience. This approach can be complex to implement and requires an orchestrator to facilitate calls to each index. The orchestration component is described in [SAP workload application design](application-design.md).
+    In some situations, you might need multiple search indexes. This approach allows you to independently optimize each index for maximum relevancy from your search queries. For example, an HR employee handbook and a product maintenance manuals serve different purposes and audiences. By indexing them separately, you can tailor the schema and search queries for each, improving user experience. This approach can be complex to implement and requires an orchestrator to facilitate calls to each index. The orchestration component is described in [Application design for AI workloads on Azure](application-design.md).
 
   > [!NOTE]
   > The choice between the two topologies and the data segmentation strategy depends on workload requirements, use cases, and user expectations.
@@ -122,13 +122,13 @@ Typical types of searches are:
 
 To further improve model performance, combine search types.
 
-The manner in which data is stored and processed affects query efficiency. Each time data is added to an index, there's compute cycles needed for indexing. If indexing and responding to queries are done on the same compute resources, there could be contention. Ideally, an index should focus on the primary goal of answering queries efficiently and finding relevant documents rather than excessive indexing.
+The manner in which data is stored and processed affects query efficiency. Each time data is added to an index, compute cycles are needed for indexing. If indexing and responding to queries are done on the same compute resources, there could be contention. Ideally, an index should focus on the primary goal of answering queries efficiently and finding relevant documents rather than excessive indexing.
 
-Cost and performance are key drivers of index design. Techniques like creating shadow copies can speed up querying. However, data duplication occurs through indexes, incurring costs.
+Cost and performance are key drivers of index design. Techniques like creating shadow copies can speed up querying. However, data duplication occurs through indexes, which incurs costs.
 
 > ![Consider the tradeoff associated with adding field capabilities.](../_images/trade-off.svg) **Tradeoff**. Index design should consider both cost and performance. Strike a balance by optimizing storage and prioritizing efficient query answering and relevant document retrieval over excessive indexing.
 
-For technology choices for the data store, search indexes, such as Elasticsearch or AI Search, provide powerful search capabilities, including vectorized and relevancy-based searches. Alternately, consider database options that support the type of data that you have and the types of queries you need, because they're optimized for querying. Ultimately, it's about capabilities offered by the options and investment of building new skill set on the team.
+For technology choices for the data store, search indexes, such as Elasticsearch or AI Search, provide powerful search capabilities, including vectorized and relevancy-based searches. Alternately, consider database options that support the type of data that you have and the types of queries you need because they're optimized for querying. Ultimately, it's about capabilities offered by the options and investment of building new skill set on the team.
 
 ## Data preparation
 
