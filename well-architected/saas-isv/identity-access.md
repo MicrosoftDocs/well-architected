@@ -19,8 +19,7 @@ In the context of SaaS workloads, there are two distinct types of identity.
   
     - **Federated identities.**  Users sign in with existing credentials that are maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider that your customers use, such as Microsoft Entra or Okta. Maintenance of the user's account is the responsibility of the federated identity provider.
       
-    - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. 
-<!-- //TODO @landon who's responsible for managing this identity// -->
+    - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. Maintenance of the user's account is your responsibility. 
 
 - **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of enterprise identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
 
@@ -55,7 +54,7 @@ If you deploy your solution into a customer's Azure environment and manage it on
 |---|---|
 | Follow your identity provider's best practices and guidelines for partitioning the solution for multiple tenants. | Tenant isolation helps you to achieve your security and compliance goals. |
 | Avoid having multiple accounts for the same user. A user should have a single account with one set of credentials, even if they need access to multiple tenants. Grant access to each tenant as needed rather than creating multiple accounts for the same user. | Creating multiple accounts for the same user increases security risks and can confuse users who need to remember multiple usernames and passwords for the same software.|
-| When you consider data residency, plan how to store user data in separate locations. If you use separate deployment stamps per region, you might also need separate identity providers for each region. <!-- //TODO @landon, this is confusing. If the deployment is different in each region, how is it a stamp? or is this simply that each stamp might need a separate identity provider? this is also a pain so maybe add a tradeoff on opex?// --> <br><br>Make sure you have a way to identify where users' data is stored so you can direct them to the correct region for sign-in, if you need to. | You'll be able to support your compliance requirements and enhance the user experience by routing users to the sign-in experience that's appropriate for their location.|
+| When you consider data residency, plan how to store user data in separate locations. If you deploy a separate deployment stamp for your users in other geographies, you might also need separate identity providers. <br><br>Make sure you have a way to identify where users' data is stored so you can direct them to the correct region for sign-in, if you need to. | You'll be able to support your compliance requirements and enhance the user experience by routing users to the sign-in experience that's appropriate for their location.|
 
 ## Identity provider selection
 
