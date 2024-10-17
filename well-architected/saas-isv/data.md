@@ -21,7 +21,7 @@ The data store in a software as a service (SaaS) solution affects its architectu
 
 ### Design considerations
 
-- **Differentiate between your transactional and analytical operations.** Transactional data stores are designed to support your applications, and analytics data stores are used for reporting and tasks like machine learning. These stores are built with specialized products and have unique needs for performance, access patterns, schemas, and use cases.
+- **Differentiate between your transactional and analytical operations.** Transactional data stores are designed to support your applications, and analytical data stores are used for reporting and tasks like machine learning. These stores are built with specialized products and have unique needs for performance, access patterns, schemas, and use cases.
 
 	This guide focuses on transactional data stores.
 
@@ -37,7 +37,7 @@ The data store in a software as a service (SaaS) solution affects its architectu
   
 	If you don't have the business justification for using multiple data stores, then focus your efforts on one or a small number of data stores.
 
-- **Use what you know, and invest in it.** If your team already has expertise with a specific data store, it's better to use that data store instead of investing in learning new skills. Data stores and platforms are complex, and design decisions can be difficult to reverse.
+- **Use what you know, and invest in it.** If your team already has expertise with a specific data store, it's often better to use that data store instead of investing in learning new skills. Data stores and platforms are complex, and design decisions can be difficult to reverse.
 
 	However, keep the potential growth in mind. If your current data store no longer meets your requirements, choose a data store that can enhance your solution's performance, resiliency, security, and operational efficiency. It should also help your team deepen their expertise.
 
@@ -81,7 +81,7 @@ For more information about how your tenancy model affects your data strategy, se
 
 ## Plan capacity
 
-Capacity planning focuses on managing resource utilization with a focus on CPU, memory, storage, and disk operations like input and output operations per second. Some data stores combine these resources into a simple, synthetic resource consumption metric, like a database throughput unit (DTU) in Azure SQL or a request unit (RU) in Azure Cosmos DB. Managed data stores provide flexibility in resource management and allow changes over time. It's crucial to establish an initial plan and iterate as your needs evolve.
+Capacity planning refers to the management of resource utilization, with a focus on CPU, memory, storage, and disk operations like input and output operations per second (IOPS). Some data stores combine these resources into a simple, synthetic resource consumption metric, like a database throughput unit (DTU) in Azure SQL or a request unit (RU) in Azure Cosmos DB. Managed data stores provide flexibility in resource management, which allows changes over time. It's crucial to establish an initial plan and iterate as your needs evolve.
 
 ### Design considerations
 
@@ -115,11 +115,11 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 
 ### Design considerations
 
-- **Quantify resiliency.** Measure resiliency requirements by using service-level objectives (SLOs), which include metrics like uptime, recovery time, and recovery point. Your business requirements and your customers' requirements drive these metrics. If you store large amounts of data on behalf of your customers, your HA and DR solution might need to be more complex to meet stringent requirements.
+- **Quantify resiliency.** Measure resiliency requirements by using service-level objectives (SLOs), which include metrics like uptime, recovery time, and recovery point. These metrics are driven by both your business requirements and those of your customers, who may have varying needs. If you store large amounts of data on behalf of your customers, your HA and DR solution might need to be more complex to meet stringent requirements.
 
    For more information about resiliency metrics, see [RE:04 Recommendations for defining reliability targets](../reliability/metrics.md).
 
-- **Use platform features.** Azure provides capabilities for resiliency within a datacenter, within a region that uses availability zones, and across a wider geographic area that uses multiple regions. Combine strategies like availability zones, cross-region backup, and multiregion deployments to achieve the right level of resiliency for your solution. For high resiliency requirements, consider a multiregion, active-passive architecture with asynchronous data replication between regions. This approach might result in some data loss during a catastrophic outage.
+- **Use platform features.** Azure provides capabilities for resiliency within a datacenter, within a region by using availability zones, and across a wider geographic area by using multiple regions. Combine strategies like availability zones, cross-region backup, and multiregion deployments to achieve the right level of resiliency for your solution. For high resiliency requirements, consider a multiregion, active-passive architecture with asynchronous data replication between regions. This approach might result in some data loss during a catastrophic outage.
 
 	> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Multiregion, active-active designs with replication are the most resilient but are complex to build and test. For most active-active solutions, you need to design a conflict resolution approach that accounts for delays in data synchronization. Most solutions don't need this degree of resiliency.
 
@@ -170,7 +170,7 @@ SaaS solutions often include a large number of databases or other stores. It's i
 
 ### Design considerations
 
-- **Understand your team's capabilities.** If you don't have large teams of database administrators who can perform detailed analyses on individual customers' databases, have a plan to perform operations at scale by using platform tooling whenever possible.
+- **Understand your team's capabilities.** If you don't have large teams of database administrators who can perform detailed analyses on individual customers' databases, have a plan to perform operations at scale, and use platform tooling whenever possible.
 
 - **Plan your regular maintenance procedures.** List the regular maintenance operations needed and their frequency. The specific operations vary based on the type of data store that you use. For example:
   - Monitor the total amount of data and data that's located in specific entities, like important tables.
@@ -186,7 +186,7 @@ SaaS solutions often include a large number of databases or other stores. It's i
 
 |Recommendation|Benefit|
 |---|---|
-|Strive for consistency between customers' data stores when possible.  <br><br>If a customer requires special accommodations, integrate them into an overall process rather than making single changes. For example, use the same schema for each database, and use the same processes to deploy and manage your resources.|Consistency makes it easier to make changes at scale and minimizes the risk of accidental problems during deployments or maintenance procedures.|
+|Strive for consistency between customers' data stores when possible.  <br><br>If a customer requires special accommodations, integrate them into an overall process rather than customizing the configuration for that customer. For example, use the same schema for each database, and use the same processes to deploy and manage your resources.|Consistency makes it easier to make changes at scale and minimizes the risk of accidental problems during deployments or maintenance procedures.|
 |Deploy limited resources carefully and seek opportunities to streamline operations.|You can avoid small efficiencies and have better resource utilization and overall performance.|
 |Build automation for repetitive tasks. Choose to buy automated tools instead of building a custom solution. <br><br> Explore the options that the platform and non-Microsoft vendors provide.| By investing in quality automation, you can repeatedly use these assets and reduce manual tasks that are often prone to errors. Automated tools are valuable if you're not an expert in the data store that you're using or if you're unsure about the necessary maintenance tasks.|
 |Deploy your team's database administration capacity carefully. Reserve human database administrators for the most impactful activities, like dealing with large customers or building automation that can scale across many customers.| By prioritizing valuable functions, you can maximize efficiency.|
