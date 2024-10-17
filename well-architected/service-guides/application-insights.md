@@ -157,53 +157,21 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> * *OE:01 -* Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
+> * *OE:01 - **Integrate your application monitoring team members' specializations into a robust set of practices to instrument and monitor your workload.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them. Use one resource per workload per environment (such as one for staging and one for production) to prevent mixing telemetry from different application versions.<br><br>Chose an instrumentation method (i.e., autoinstrumentation or manual instrumentation) that is best for your situation based on your business needs and [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).<br><br>
 >
-> * *OE:01 -* Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace to prevent latency and reliability issues, see [Create a resource](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#create-a-workspace-based-resource).
+> * *OE:03 -* **Formalize ideation and planning processes.** Use [work item ingetration](/azure/azure-monitor/app/release-and-work-item-insights?tabs=work-item-integration) to easily create work items in GitHub or Azure DevOps that have relevant Application Insights data embedded in them.<br><br>
 >
-> * *OE:01 -* Determine which instrumentation method (i.e., autoinstrumentation or manual instrumentation) is best for your situation based on [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
+> * *OE:07 -* **Configure Application Insights to monitor the availability and responsiveness of your web application.** Use built-in features like [queries](/azure/azure-monitor/logs/queries) and [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) based on your specific business needs. After you've deployed your application, set up recurring tests to monitor availability and responsiveness.<br><br>
 >
-> * *OE:01 -* Update Application Insights SDKs (Classic API) annually to the latest version. This will [ensure access to support services](/azure/azure-monitor/app/sdk-support-guidance#application-insights-sdk-support-guidance) and provide the latest functionality with bug fixes.
+> * *OE:08 -* **Develop an effective emergency operations practice.** Use [alerts](/azure/azure-monitor/alerts/alerts-overview) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) to identify and respond to incidents. Clearly define human responsiblities. For example, if your workload fails, determine who reboots the application.<br><br>
 >
-> * *OE:03 -* Use [work item ingetration](/azure/azure-monitor/app/release-and-work-item-insights?tabs=work-item-integration) to easily create work items in GitHub or Azure DevOps that have relevant Application Insights data embedded in them.
->
-> * *OE:07 -* Use built-in Application Insights features like [queries](/azure/azure-monitor/logs/queries) and [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) based on your specific business needs.
->
-> * *OE:08 -* Use [alerts](/azure/azure-monitor/alerts/alerts-overview) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) to identify and respond to incidents.
->
-> * *OE:11 -* Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to see where you deployed a new build or other significant events.
->
-> * *Other -* Be aware that Application Insights can be used to monitor deployed sites and services on-premises (or on an Azure Virtual Machine (VM)).
->
-> * *Other -* Evaluate Java codeless application monitoring for your Java-based application development stack.
->
-> * *Other -* Record custom events and metrics from sites and services in Application Insights.
->
-> * *Other -* Use Application Insights to ingest existing log traces from common libraries, such as `ILogger`, `Nlog`, and `log4Net`.
->
-> * *Other -* Become familiar with the Application Insights quotas and limits.
->
-> * *Other -* Review the need for custom analysis. Use Application Insights data with tools such as Azure Dashboards or Power BI.
+> * *OE:11 -* **Clearly define your workload's safe deployment practices.** Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to keep track of your deployments and other events.<br><br>
 
 ### Recommendations for Operational Excellence
 
 | Recommendation | Benefit |
 |----------------|---------|
-| *OE:01 -* Use [autoinstrumentation](/azure/azure-monitor/app/codeless-overview), if available. | Automatic instrumentation is configured optimally, requires no developer investment, and is always up to date. |
-| *OE:01 -* Adopt the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable#enable-azure-monitor-opentelemetry-for-net-nodejs-python-and-java-applications). | Avoid a future forced migration from the classic API SDKs by adopting OpenTelemetry, the new standard for manual instrumentation. |
-| *OE:01 -* Transition from instrumentation keys to [connection strings](/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings#migrate-from-application-insights-instrumentation-keys-to-connection-strings). | Make telemetry ingestion more reliable by using and removing dependencies on global ingestion endpoints. |
-| *Other -* Configure Application Insights to monitor the availability and responsiveness of your web application. | After you've deployed your application, you can set up recurring tests to monitor availability and responsiveness. Application Insights sends web requests to your application at regular intervals from points around the world. It can alert you if your application isn't responding or if it responds too slowly. |
-| *Other -* Evaluate Java codeless application monitoring for your Java-based application development stack. | Java codeless application monitoring is all about simplicity. There are no code changes. You can enable the Java agent through a couple of configuration changes. The Java agent works in any environment and allows you to monitor all your Java applications. No matter if you're running your Java apps on Virtual Machines, on-premises, in Azure Kubernetes Service (AKS), on Windows, or Linux, the Java `3.0` agent will monitor your app. |
-| *Other -* Configure sampling in Application Insights. | Ingestion sampling operates at the point where the data from your web servers, browsers, and devices reaches the Application Insights service endpoints. Although it doesn't reduce the data sent from your app, it does reduce the amount processed, retained, and charged by Application Insights. Use this type of sampling if your app often goes above its monthly quota. Use ingestion sampling if you don't have access to the Software Development Kit (SDK)-based types of sampling. |
-| *Other -* Record custom events and metrics from sites and services in Application Insights. | Use Application Insights to record domain-specific custom events and metrics from your site or service. For example: *number-of-active-baskets* or *product-lines-out-of-stock*. |
-| *Other -* Use Application Insights to ingest existing log traces from common libraries, such as `ILogger`, `Nlog`, and `log4Net`. | If you're already using a logging framework such as `ILogger`, `Nlog`, `log4Net`, or `System.Diagnostics.Trace`, we recommend sending your diagnostic tracing logs to Application Insights. For Python applications, send diagnostic tracing logs using `AzureLogHandler` in OpenCensus Python for Azure Monitor. You can explore and search these logs, which are merged with the other log files from your application. Merging the log files allows you to identify traces associated with each user request and correlate them with other events and exception reports. |
-| *Other -* Become familiar with the Application Insights quotas and limits. | This information can influence your sampling model and your strategy for separating Application Insights resources. |
-| *Other -* Review the need for custom analysis. Use Application Insights data with tools such as Azure Dashboards or Power BI. | There are several available options to analyze your Application Insights data. For example, you can create a dashboard in the Azure portal that includes tiles visualizing data from multiple Azure resources across different resource groups and subscriptions. Alternatively, you can use Power BI to analyze data combined with data from other sources and share insights. |
-
-**Notes**
-
-* *OE:02, OE:04, OE:05, OE:06, OE:09, OE:10, and OE:12 don't apply to Operational Excellence in Application Insights.*
-* *OE:# is only part of Recommendations.*
+| ...            | ...     |
 
 ## Performance Efficiency
 
@@ -216,6 +184,8 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Application Insights.
 
 > [!div class="checklist"]
+>
+> * *PE:01 -* Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them. Use one resource per workload per environment (such as one for staging and one for production) to prevent mixing telemetry from different application versions.
 >
 > * *PE:02 -* Understand how much data is coming in by reviewing ingestion and sample rates.
 >
@@ -239,7 +209,6 @@ Start your design strategy based on the [design review checklist for Performance
 
 **Notes**
 
-* *PE:01, PE:05, and PE:06 don't apply to Performance Efficiency in Application Insights.*
 * *PE:07 is only part of Recommendations.*
 
 ### Recommendations for Performance Efficiency
