@@ -11,17 +11,17 @@ ms.topic: conceptual
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
-Independent software vendors (ISVs) for software as a service (SaaS) solutions must operate the solution for their customers. Doing so requires an organizational setup and culture that handles unexpected production situations smoothly. As the architect, you must implement design management processes and tools accordingly. 
+Independent software vendors (ISVs) for software as a service (SaaS) solutions must operate the solution for their customers. Doing so requires an organizational setup and culture that handles unexpected production situations smoothly. As the architect, you must design management processes and tools accordingly. 
 
 This article guides you in aligning your organization's culture, processes, and tools to support the operation of a production SaaS solution.
 
 ## Understand your responsibilities as a service provider
 
-Operating a SaaS solution means that you are your customers' full-time IT and operations department. You need to be prepared with the right staffing, culture, processes, and tools.
+Operating a SaaS solution means that you are your customers' 24x7 IT and operations department. You need to be prepared with the right staffing, culture, processes, and tools.
 
 ### Design considerations
 
-- **Take responsibility for continuous support.**  Operating a SaaS solution requires your organization to always be prepared for incident response. This preparation includes always having team members available because incidents can occur outside of business hours.
+- **Take responsibility for 24x7x365 support.**  Operating a SaaS solution requires your organization to always be prepared for incident response. This preparation includes always having team members available because incidents can occur outside of business hours.
 
   *Live-site support* involves real-time monitoring and responding to incidents that affect system availability, security, performance, or deployment. You or your customers can detect those incidents. To handle such incidents, you need specific skills, including the ability to analyze and solve problems under pressure. Not all engineers are suited for this role.
 
@@ -38,7 +38,7 @@ Operating a SaaS solution means that you are your customers' full-time IT and op
 | Introduce a frontline team for handling support cases. <br><br> For complex cases, this team gathers the information that the engineering team needs for its investigation. A vendor can serve as your frontline support team and perform initial problem analysis and resolve simple problems. | You avoid overburdening the engineering team with incident handling responsibilities and dealing with interruptions to their regular duties. | 
 |Invest in an on-call function for engineers to handle complex cases, investigate, and take action. <br><br> If possible, rotate on-call responsibilities among team members, with each engineer being on call for a few days at a time.| With well-defined responsibilities and escalation paths, you can quickly identify and address problems without disrupting your engineering workflow.|
 | Procure tools that are specialized for incident management. <br><br> Ensure all responders have access to and understand how to use these tools effectively. <br><br> Select tools that can monitor system state, track customer-reported problems, identify problems, escalate to on-call engineers, manage unresponsive engineers, and enable making changes in production. |Having the right tools helps your on-call team quickly identify and resolve incidents while maintaining security and operational control. |
-| Improve your monitoring, deployments, updates, and other regular management operations. | Invest in operational maturity to reduce the likelihood of live-site problems. If problems do occur, having well-defined operations in place shortens resolution time. |
+| Improve your monitoring, deployments, updates, and other regular management operations. | By investing in operational maturity, you reduce the likelihood of live-site problems. If problems do occur, having well-defined operations in place shortens resolution time. |
 
 ## Define your response plan
 
@@ -63,7 +63,7 @@ Plan ahead for major incidents, which typically affect your customers' ability t
 |Provide a clear incident reporting process, such as opening a support case with your frontline support team, to your customers.|You ensure consistency in how you discover and respond to incidents, which reduces time to resolution and prevents information from being lost or overlooked.|
 |Document the architectural layout, component-level details, privacy or security classifications, owners, and key contacts.|The triage team has the information readily available and can focus on investigations and assessing impact.|
 |Make sure that your incident response team can access the necessary assets and systems, such as logs. They also need to be able to make production changes through a secure and controlled process. | You restore operations more quickly by ensuring that your team isn't wasting time. |
-|Use a commercial status page instead of building your own.|Save time by using a commercial status page. A commercial status page also remains accessible to customers during an outage on your system.|
+|Use a commercial status page instead of building your own.|Save time by using a commercial status page. A status page hosted by another organization also remains accessible to customers during an outage on your system.|
  
 ## Manage incidents methodically 
 
@@ -77,7 +77,7 @@ Adhering to the defined plan is crucial to avoid improvisation during response t
   
   Organizational leaders can help by shielding the team members who are actively investigating or mitigating an incident.
 
-- **Communicate status to your customers.** Update the status page to publish the appropriate information. Communicate promptly and provide necessary information like estimated resolution times. Give customers frequent updates to maintain their trust.
+- **Communicate status to your customers.** Update the status page to publish just enough information. Communicate promptly and provide necessary information like estimated resolution times. Give customers frequent updates to maintain their trust.
   
 ### Design recommendations
 
