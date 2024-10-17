@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/15/2024
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-workload-ai
 ---
 
 # Workload personas involved in AI workloads
@@ -40,6 +38,17 @@ TODO
 TODO
 
 
+## left over from mlops
+
+### Collaboration
+
+Effective collaboration in AI workloads involves multiple roles and teams working together on model development and deployment. 
+
+Standardized processes, with just enough automation, ensure repeatability, facilitating coordination between data scientists, ML engineers, developers, and IT operators. This is important because models evolve quickly and the teams must be able to iterate faster with scalable operations. 
+
+It's recommended that within teams, sub processes are defined, keeping in mind the repeatability of best practices in a methodical manner. This approach helps in onboarding colleagues and explaining processes to partner teams involved in technical implementations, ensuring consistency and clarity in AI operations.
+
+AI operations also require diverse skills, and ongoing learning is a must for architects and engineers to stay current with technological innovations. Leverage your team's skillset for the appropriate tasks, track the work as part of a shared backlog.
 Lefovers:
 
  2. Data Roles and Responsibilities

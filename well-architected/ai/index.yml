@@ -54,8 +54,8 @@ landingContent:
         links:
           - text: Workload operations
             url: operations.md
-          - text: MLOps and LLMOps
-            url: mlops-llmops.md
+          - text: MLOps and GenAIOps
+            url: mlops-genaiops.md
           - text: Testing and validation
             url: testing.md
           - text: User input, ethics, and security

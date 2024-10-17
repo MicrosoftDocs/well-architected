@@ -39,13 +39,6 @@ Here's a summary of the recommendations that are provided in this article, toget
 |**Preprocess data to make it meaningful against training goals.**| Refine the quality of ingested data by filtering noise, rescoping the data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
 |**Avoid training on stale data.** |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
 
-<!-- Removed incomplete section from the preceding table
-|**Monitor for model drift.**|Changes in input data and |
--->
-
-<!--
-TODO: Note to Yeliz. This is only a summary of recommendations in this article. This is kept here to gather your opinions and also serve as an input to assessments. 
--->
 
 ## Types of data
 
@@ -179,4 +172,4 @@ All models can become stale over time, which causes a model's predictive power o
 
 > ![Consider the tradeoff of data maintenance.](../_images/trade-off.svg) **Tradeoff**. Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates. 
 
-Make sure that data maintenance is done as part of model operations. You should have established processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-llmops.md) design area.
+Make sure that data maintenance is done as part of model operations. You should have established processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-genaiops.md) design area.
