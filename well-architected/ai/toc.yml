@@ -11,8 +11,6 @@
         href: application-design.md
       - name: Application platform
         href: application-platform.md
-      - name: Data design
-        href: data-design.md
       - name: Training data design
         href: training-data-design.md
       - name: Grounding data design
