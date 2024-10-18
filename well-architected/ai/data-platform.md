@@ -85,7 +85,7 @@ This section provides guidance on the capabilities to consider when selecting a 
 
 - **Are you prioritizing convenience features over key functional features?**
 
-  When choosing a data platform for AI/ML, don't rely on its notebook capabilities. While notebooks are useful for exploratory data analysis (EDA) and familiar to data scientists, they shouldn't be the main deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They are usually integrated with resources such as in Azure Machine Learning (AML).
+  When choosing a data platform for AI/ML, don't rely just on its notebook capabilities. While notebooks are useful for exploratory data analysis (EDA), they shouldn't be the main deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They are usually integrated with resources such as in Azure Machine Learning (AML).
 
 
 #### Non-functional requirements
@@ -294,7 +294,7 @@ The search index is designed to store contextual or grounding data to send to th
   Ideally, the search index should align with network security requirements. For example, if we need to filter egress traffic to third-party sites and maintain observability, the index should offer egress controls. It should also support network segmentation. If the backend compute is in a virtual network, private connectivity for key components, including the index, is essential to avoid exposure to the public internet. The index should easily integrate with private networks and support managed identities for authentication via Microsoft Entra ID.
 
 
-  ## Considerations for a feature store
+## Considerations for a feature store
 
   For discriminative models, your data design might include an intermediate data store that caches data for additional refinement. This store, known as a feature store, allows data scientists to store features as a final step out of the aggregated data store.
 
@@ -304,4 +304,27 @@ The search index is designed to store contextual or grounding data to send to th
 
   When using a feature store, treat it like a data store with security and access considerations. 
 
-  TODO: Add more information.
+## Considerations for an offline inferencing data store
+
+  Using the [cache-aside design pattern](/azure/architecture/patterns/cache-aside) allows for faster future lookups. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store, making the AI model transient. This preemptive inferencing serves results through lookups. There are several benefits:
+  
+  - Efficient for frequent queries like FAQs.
+  - Allows prevalidation to ensure accuracy before production.
+  - Reduces the load on the inference endpoint, contributing to the reliability of the workload.
+
+  However, this approach is only effective if you can predict possible requests. For unique queries, caching may be less effective. 
+  
+  The data store for this scenario should be optimized for read operations, such as a dedicated search index or table storage. It should also be capable of integrating into the aggregated data store.
+
+  If you're using Azure Cosmos DB in your architecture, take advantage of its [built-in integrated cache](/azure/cosmos-db/integrated-cache) to implement this pattern. Azure Cache for Redis is also suitable as it provides an in-memory data store and secure caching capabilties.
+
+## Resources
+These articles offer additional details on Azure products recommended as technology options for the considerations discussed in this article.
+
+- [Azure Machine Learning (AML)](/azure/well-architected/service-guides/azure-machine-learning)
+- [Azure Blob Storage](/azure/well-architected/service-guides/azure-blob-storage)
+- [Azure Databricks](/azure/well-architected/service-guides/azure-databricks-security)
+- [Azure Data Factory (ADF)](/azure/data-factory/)
+- [Azure AI Search](/azure/search/search-what-is-azure-search)
+- [Azure Cosmos DB](/azure/well-architected/service-guides/cosmos-db)
+- [Azure Cache for Redis](/azure/well-architected/service-guides/azure-cache-redis/reliability)
