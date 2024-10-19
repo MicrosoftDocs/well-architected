@@ -308,15 +308,15 @@ The search index is designed to store contextual or grounding data to send to th
 
   In some scenarios, you may be able to invoke the model inference on pre-collected data in advance, instead of real-time. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store. There are several benefits:
   
-  - Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
   - Reduced latency and better user experience since offline inferencing eliminates the latency added by the model inferencing request.
+  - Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
   - More efficient and performant as the inference calls can be scaled out more easily as a batch process without the constrains of real-time processing.
   - Allows prevalidation to ensure accuracy before production.
   - Reduces the load on the inference endpoint, contributing to the reliability of the workload.
 
   However, offline inferencing is only effective if you can predict possible requests and a significant portion of the predictions will be requested at runtime. For scenarios with fewer repeated requests, pre-calcutaing may be less effective.
   
-  The data store for this scenario should be optimized for read operations, can handle large volumes of data and provide efficient retrieval, such as Azure Cosmos DB, and Azure Cache for Redis. It should also be capable of integrating into the aggregated data store.
+  The data store for this scenario should be optimized for read operations, must be able to handle large volumes of data and provide efficient retrieval, such as Azure Cosmos DB, and Azure Cache for Redis. It should also be capable of integrating into the aggregated data store.
 
 ## Resources
 These articles offer additional details on Azure products recommended as technology options for the considerations discussed in this article.
