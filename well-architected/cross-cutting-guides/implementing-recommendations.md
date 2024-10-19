@@ -38,7 +38,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Tips
 
-- The Azure Well-Architected Review is a collaborative effort that requires the active participation of key stakeholders within a secure environment. It is essential that all participants feel comfortable discussing issues openly, without fear of repercussions. To foster a constructive atmosphere, it is crucial to establish guidelines that prohibit blame, finger-pointing, abusive language, or personal attacks. All participants should commit to honesty and transparency, avoiding any attempts to obscure problems. Additionally, it is important not to accept participants' responses at face value, as misunderstandings may arise. Each question should be addressed individually, and for response provided, clarifying questions should be asked to ensure a shared understanding among team members.
+- The assessment is a collaborative effort that requires the active and honest participation of multiple experts and stakeholders within a workload. It is essential that all participants feel comfortable discussing shortcoming openly, without fear of repercussions, so the team avoids obscuring workload risks or misses opportunities for improvement.
 - You should always sign in when you take assessments so that the tool can generate milestones.
 
   > [!WARNING]
