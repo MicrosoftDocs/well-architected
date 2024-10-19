@@ -306,17 +306,17 @@ The search index is designed to store contextual or grounding data to send to th
 
 ## Considerations for an offline inferencing data store
 
-  Using the [cache-aside design pattern](/azure/architecture/patterns/cache-aside) allows for faster future lookups. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store, making the AI model transient. This preemptive inferencing serves results through lookups. There are several benefits:
+  In some scenarios, you may be able to invoke the model inference on pre-collected data in advance, instead of real-time. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store. There are several benefits:
   
-  - Efficient for frequent queries like FAQs.
+  - Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
+  - Reduced latency and better user experience since offline inferencing eliminates the latency added by the model inferencing request.
+  - More efficient and performant as the inference calls can be scaled out more easily as a batch process without the constrains of real-time processing.
   - Allows prevalidation to ensure accuracy before production.
   - Reduces the load on the inference endpoint, contributing to the reliability of the workload.
 
-  However, this approach is only effective if you can predict possible requests. For unique queries, caching may be less effective. 
+  However, offline inferencing is only effective if you can predict possible requests and a significant portion of the predictions will be requested at runtime. For scenarios with fewer repeated requests, pre-calcutaing may be less effective.
   
-  The data store for this scenario should be optimized for read operations, such as a dedicated search index or table storage. It should also be capable of integrating into the aggregated data store.
-
-  If you're using Azure Cosmos DB in your architecture, take advantage of its [built-in integrated cache](/azure/cosmos-db/integrated-cache) to implement this pattern. Azure Cache for Redis is also suitable as it provides an in-memory data store and secure caching capabilties.
+  The data store for this scenario should be optimized for read operations, can handle large volumes of data and provide efficient retrieval, such as Azure Cosmos DB, and Azure Cache for Redis. It should also be capable of integrating into the aggregated data store.
 
 ## Resources
 These articles offer additional details on Azure products recommended as technology options for the considerations discussed in this article.
