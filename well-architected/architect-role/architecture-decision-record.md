@@ -17,17 +17,20 @@ The ADR documents all key decisions, including alternatives that you ruled out, 
 
 Start the ADR at the onset of a workload and maintain it throughout the workload's lifespan. An ADR should be started for brownfield workloads, and if the data is available, it should be retroactively generated based on known past decisions. The ADR serves as an append-only log. This record extends beyond the initial design to include design aspects against future functional and nonfunctional requirements.
 
-### Suggested characteristics of an individual record
+### Suggested template for an individual record
 
-- Be consistent with the anatomy of every record. Design a record template and consistently follow it.
+Be consistent with the anatomy of every record. Design a record template and consistently follow it. A record should include consistent elements such as:
 
-  A record should include consistent elements such as:
-
-  - Problem statement with context
-  - Options considered
-  - Decision outcome
-    - Include important tradeoffs made with this decision
+  - Title: A concise noun phrase that encapsulates the architecture decision.
+  - Metadata: Name of the author, date this ADR was approved, name of the approver.
+  - Status: Indicate the current status of the ADR: proposed, accepted, or superseded. If this ADR is superseded by a more recent one, please reference the newer ADR for further details.
+  - Context: This section outlines the problem at hand and the necessity for an architectural decision. It should also enumerate alternative options considered during the decision-making process.
+  - Decision:
+    - Detail the chosen solution along with all justifications and significant trade-offs associated with this decision.
     - Record the confidence level of the decision. Sometimes an architecturally significant decision is made with relatively low confidence. Documenting that low confidence status could prove useful for future reconsideration decisions.
+  - Consequences: Describe the implications and context following the implementation of the new decision.
+
+### Best practices
 
 - Break one decision into multiple if an architectural decision is going to result in multiple phases, such as short-term, mid-term, long-term approaches. Log each phase as its own decision record.
 
