@@ -11,6 +11,8 @@ ms.topic: conceptual
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
+Your SaaS application needs to run on a compute platform. Similar to other components in your architecture, it needs to meet the business requirements and be designed according to your business model. The choice of compute platform is a significant design decision. Customer isolation, performance, and resiliency are all affected by your decisions, and your compute platform influences how your entire SaaS solution can scale and grow.
+  
 This article describes the considerations for choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives. 
 
 ## Select a compute platform
