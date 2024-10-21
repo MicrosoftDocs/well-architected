@@ -38,7 +38,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Tips
 
-- The assessment is a collaborative effort that requires the active and honest participation of multiple experts and stakeholders within a workload. It is essential that all participants feel comfortable discussing shortcoming openly, without fear of repercussions, so the team avoids obscuring workload risks or misses opportunities for improvement.
+- The assessment is a collaborative effort that requires the active and honest participation of multiple experts and stakeholders within a workload. It is essential that all participants feel comfortable discussing shortcomings openly, without fear of repercussions, so the team avoids obscuring workload risks or misses opportunities for improvement.
 - You should always sign in when you take assessments so that the tool can generate milestones.
 
   > [!WARNING]
