@@ -11,11 +11,11 @@ ms.topic: conceptual
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
-## Compute for SaaS workloads on Azure
+This article describes the considerations for choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives. 
+
+## Select a compute platform
 
 Choosing the right compute platform for your SaaS workload is important but can be overwhelming due to the many options available. The best platform depends on factors like application architecture, scale, performance needs, and tenant isolation model. What's optimal for one application might not be for another.
-
-This article describes the considerations for choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives. 
 
 ### Design considerations
 
