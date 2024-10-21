@@ -80,7 +80,8 @@ Regularly update application code and configuration to enhance functionality. Ho
 
 ### Design considerations
 
-- **Standardize tooling and processes.** Industry-proven DevOps tooling bring consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations. For more information, review [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
+- **Standardize tooling and processes.** Industry-proven DevOps tooling bring consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations.
+    > Refer to [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
 
 - **Progressively deploy updates.** Roll out updates to a subset of customers at a time, dividing users into logical groupings. Apply the same rigor to configuration changes, because they can alter code behavior and cause outages. Follow a deployment process for these changes.
 
