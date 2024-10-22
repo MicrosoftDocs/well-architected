@@ -3,7 +3,7 @@ title: Resource organization for SaaS workloads for ISVs
 description: Learn about the resource organization considerations for SaaS workloads.
 author: MikeBazMSFT
 ms.author: micbaz
-ms.date: 09/30/2024
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
