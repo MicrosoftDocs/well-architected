@@ -17,7 +17,7 @@ The ADR documents all key decisions, including alternatives that you ruled out, 
 
 Start the ADR at the onset of a workload and maintain it throughout the workload's lifespan. An ADR should be started for brownfield workloads, and if the data is available, it should be retroactively generated based on known past decisions. The ADR serves as an append-only log. This record extends beyond the initial design to include design aspects against future functional and nonfunctional requirements.
 
-### Suggested template for an individual record
+### Suggested characteristics of an individual record
 
 Be consistent with the anatomy of every record. Design a record template and consistently follow it. A record should include consistent elements such as:
 
