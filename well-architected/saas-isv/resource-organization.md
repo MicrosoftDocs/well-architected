@@ -48,7 +48,7 @@ If you work with a Microsoft representative, let them know your resource needs s
 
 ## Resource organization
 
-You can organize Azure resources in various ways. You can use a combination of resource groups, subscriptions, management groups, and Microsoft Entra tenants to group or separate your resources. Different resource organization strategies provide different sets of tradeoffs for manageability, complexity, security, and many other factors. When you build SaaS, you need to consider how you'll organize your resources. This decision is informed by your tenancy model. Resource organization is perhaps the most fundamental part of properly architecting, deploying, and managing a SaaS solution.
+You can organize Azure resources in various ways. You can use a combination of resource groups, subscriptions, management groups, and Microsoft Entra tenants to group or separate your resources. Different resource organization strategies provide different sets of tradeoffs for manageability, complexity, security, and many other factors. When you create a SaaS solution, you need to consider how to organize your resources. This decision is informed by your tenancy model. Resource organization is perhaps the most fundamental part of properly architecting, deploying, and managing a SaaS solution.
 
 To learn more about how Azure resources can be organized, see [Azure fundamental concepts](/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts).
 
@@ -58,11 +58,11 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
   
     An Azure landing zone is the recommended base configuration of an Azure environment. For landing zone recommendations that are specific to independent software vendor (ISV) organizations, see [ISV considerations for Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone).
 
-- **Decide which resources to share.** Determine which components to share and which to deploy to individual customers. Sharing reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
+- **Decide which resources to share.** Determine which components to share and which to deploy individually to customers. Sharing reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
 
     Don't use shared production resources during pre-production stages. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
-- **Plan for Azure resource quotas.** Understand the quotas and limits for Azure resources, like the number of resources per subscription or region, and request limits within a time window. Plan your resource organization to adapt if you approach these limits.
+- **Plan for Azure resource quotas.** Understand the quotas and limits for Azure resources, like the number of resources per subscription or region, and request limits within a time window. Choose a strategy to adapt your resource organization if you approach these limits.
 
     For more information about Azure quotas and how they affect SaaS solutions, see [Resource limits](/azure/architecture/guide/multitenant/approaches/resource-organization#resource-limits).
 
@@ -70,7 +70,7 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
 
     To learn more about applying the Deployment Stamps pattern for SaaS, see [Architectural approaches for a multitenant solution](/azure/architecture/guide/multitenant/approaches/overview#deployment-stamps-pattern).
 
-- **Support your operational processes.** Effective resource organization affects team operations. For example, a consistent naming and tagging strategy helps in diagnostics, resource management, and cost management. A good tagging and naming strategy also helps you quickly search for resources that are used for specific customers and distinguish between production and non-production environments.
+- **Support your operational processes.** Effective resource organization affects team operations. For example, a consistent naming and tagging strategy helps in diagnostics, resource management, and cost management. A good tagging and naming strategy helps you quickly search for resources that are used for specific customers and distinguish between production and non-production environments.
 
     SaaS solutions require rigorous customer lifecycle management, including onboarding new customers and offboarding the customers that leave. Your resource organization strategy should facilitate the easy creation and removal of customer resources and the reconfiguration of shared resources. For more information about managing lifecycles, see [Tenant lifecycle considerations in a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenant-lifecycle).
 
