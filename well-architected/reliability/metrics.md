@@ -168,7 +168,7 @@ When you define recovery targets, define thresholds to initiate a recovery. For 
 
 ### Monitor and visualize the targets
 
-Use the data that you gather for your reliability targets to build your health model for each workload and the associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. When the state changes, the model should alert the responsible parties. For detailed design considerations and recommendations, see [Health modeling guidance](../cross-cutting-guides/health-modeling.md).
+Use the data that you gather for your reliability targets to build your health model for each workload and the associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. When the state changes, the model should alert the responsible parties. For detailed design considerations and recommendations, see [Health modeling guidance](../design-guides/health-modeling.md).
 
 To keep your operations teams and workload stakeholders informed, create a visualization that reflects the real-time status and overall trends of the workload health model. Discuss visualization solutions with the stakeholders to ensure that you deliver information that they value and that's easy to consume. They might also want to see generated reports weekly, monthly, or quarterly.
 

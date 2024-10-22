@@ -1287,7 +1287,7 @@
 		},
 		{
 			"source_path": "well-architected/implementing-recommendations.md",
-			"redirect_url": "/azure/well-architected/cross-cutting-guides/implementing-recommendations", 
+			"redirect_url": "/azure/well-architected/design-guides/implementing-recommendations", 
 			"redirect_document_id": false
 		},
 		{
@@ -1321,8 +1321,8 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/cross-cutting-guides/health-model.md",
-			"redirect_url": "/azure/well-architected/cross-cutting-guides/health-modeling",
+			"source_path": "well-architected/design-guides/health-model.md",
+			"redirect_url": "/azure/well-architected/design-guides/health-modeling",
 			"redirect_document_id": true
 		},		
 		{
