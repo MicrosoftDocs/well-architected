@@ -21,7 +21,6 @@ Start the ADR at the onset of a workload and maintain it throughout the workload
 
 Be consistent with the anatomy of every record. Design a record template and consistently follow it. A record should include consistent elements such as:
 
-  - Title: A concise noun phrase that encapsulates the architecture decision.
   - Metadata: Name of the author, date this ADR was approved, name of the approver.
   - Status: Indicate the current status of the ADR: proposed, accepted, or superseded. If this ADR is superseded by a more recent one, please reference the newer ADR for further details.
   - Context: This section outlines the problem at hand and the necessity for an architectural decision. It should also enumerate alternative options considered during the decision-making process.
