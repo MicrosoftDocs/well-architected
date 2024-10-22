@@ -1321,7 +1321,7 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/design-guides/health-model.md",
+			"source_path": "well-architected/cross-cutting-guides/health-model.md",
 			"redirect_url": "/azure/well-architected/design-guides/health-modeling",
 			"redirect_document_id": true
 		},		
