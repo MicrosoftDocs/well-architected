@@ -2089,6 +2089,26 @@
 			"source_path": "well-architected/performance-efficiency/collect-performance-data#collect-operating-system-data-if-applicable",
 			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data#collect-operating-system-data",
 			"redirect_document_id": false
-		}															
+		},
+		{
+			"source_path": "well-architected/changelog",
+			"redirect_url": "/azure/well-architected/whats-new",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cross-cutting-guides/health-modeling",
+			"redirect_url": "/azure/well-architected/design-guides/health-modeling",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cross-cutting-guides/implementing-recommendations",
+			"redirect_url": "/azure/well-architected/design-guides/implementing-recommendations",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cross-cutting-guides/optimize-workload-using-flows",
+			"redirect_url": "/azure/well-architected/design-guides/optimize-workload-using-flows",
+			"redirect_document_id": false
+		}																	
 	]
 }
