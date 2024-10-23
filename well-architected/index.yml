@@ -135,8 +135,8 @@ sections:
     blocks:
       - componentType: summary-card
         title: SaaS for ISVs
-        summary: TBD=As an enterprise or a startup, build software as a service (SaaS) on Azure. 
-        url: ./saas-isv/index.yml   
+        summary: Key insights for independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
+        url: ./saas/index.yml   
       - componentType: summary-card
         title: Oracle on IaaS
         summary: Host Oracle workloads on Azure, which includes not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards. 

@@ -5,11 +5,10 @@ author: johndowns
 ms.author: jodowns
 ms.date: 09/24/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # Azure Well-Architected SaaS workloads
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 Delivering software as a service (SaaS) is different to how you might design or operate other forms of software on Microsoft Azure. This section describes some of the key things that independent software vendors (ISVs) need to know to build scalable, performant, reliable, and secure SaaS on Azure. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a SaaS solution on Azure at-scale.
 

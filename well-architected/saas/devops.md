@@ -1,15 +1,14 @@
 ---
-title: DevOps for SaaS workloads for ISVs
-description: Learn about the DevOps practices considerations for SaaS workloads.
+title: DevOps for SaaS workloads on Azure
+description: Learn about efficient customer lifecycle management and safe deployment practices.
 author: landonpierce
 ms.author: landonpierce
 ms.date: 10/15/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # DevOps practices for SaaS workloads on Azure
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 DevOps practices are integral to managing workloads on Azure, especially for SaaS applications. Key aspects include onboarding, offboarding, and modifying customer instances. These practices not only streamline operations but also enhance scalability and reliability, minimizing the chances of outages.
 

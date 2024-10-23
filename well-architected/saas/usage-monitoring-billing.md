@@ -1,15 +1,14 @@
 ---
-title: Usage Monitoring and Billing for SaaS Workloads on Azure
+title: Usage Monitoring and Billing for SaaS workloads on Azure
 description: Learn strategies for understanding and optimizing costs within your SaaS business model, and get guidance on billing customers for your solution.
 author: johndowns
 ms.author: jodowns
 ms.date: 11/01/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # Usage monitoring and billing for SaaS workloads on Azure
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 Running a successful SaaS business requires careful financial planning. You need to manage both resource expenditures and customer billing. Although these concerns are related, they are distinct. You must optimize both to succeed.
 

@@ -5,11 +5,10 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 09/25/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # Networking for SaaS workloads on Azure
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 Your network provides the backbone for how customers access your SaaS application, and it enables communication between your solution's components. The way you design your network has a direct impact on your solution's security, operations, cost, performance, and reliability. A structured approach to your networking strategy becomes even more important as your cloud environment grows.
 
