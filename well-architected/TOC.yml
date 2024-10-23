@@ -252,7 +252,7 @@
         href: mission-critical/index.yml                     
       - name: Oracle on IaaS
         href: oracle-iaas/index.yml       
-      - name: Software-as-a-Service (SaaS)
+      - name: Software as a service (SaaS)
         href: saas/index.yml        
       - name: SAP
         href: sap/quick-links.yml        
