@@ -23,7 +23,7 @@ The first step in planning your architecture is to choose the region where your 
 
 - **Evaluate regions that are optimized for production.** Some Azure regions offer more services than others. To view available services in each region, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/). 
 
-    Also, many Azure regions support [availability zones](/azure/reliability/availability-zones-overview), which are an important part of a resiliency strategy. You should use regions with availability zones, and you should deploy production components into multiple availability zones.
+    Also, many Azure regions support [availability zones](/azure/reliability/availability-zones-overview), which are an important part of a resiliency strategy. You should use regions that have availability zones, and you should deploy production components into multiple availability zones.
 
     To learn more about how to use regions and availability zones, see [RE:05 Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md).
 If you work with a Microsoft representative, let them know your resource needs so they can ensure that your regions are ready for your workload.
@@ -42,8 +42,8 @@ If you work with a Microsoft representative, let them know your resource needs s
 
 | Recommendation | Benefit |
 |---|---|
-| Use Azure-recommended regions for your deployments. <br><br> When you create a resource, recommended regions are listed in the Azure portal. <br><br>  Ensure that the regions you use support availability zones. | This approach enables you to support a more scalable and resilient solution design. |
-| Start with the minimum number of regions necessary to meet your needs, and expand as required. | This approach enables you to avoid over-complicating your design and operations. |
+| Use Azure-recommended regions for your deployments. <br><br> When you create a resource, recommended regions are listed in the Azure portal. <br><br>  Ensure that the regions you use support availability zones. | This approach supports a more scalable and resilient solution design. |
+| Start with the minimum number of regions necessary to meet your needs, and expand as required. | This approach helps you prevent over-complicating your design and operations. |
 | Clarify your customers' data residency needs early. | Deploying into a new region can take time. The sooner you know about any constraints that your customers impose, the more likely you are to meet their needs. |
 
 ## Resource organization
@@ -58,7 +58,7 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
   
     An Azure landing zone is the recommended base configuration of an Azure environment. For landing zone recommendations that are specific to independent software vendor (ISV) organizations, see [ISV considerations for Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone).
 
-- **Decide which resources to share.** Determine which components to share and which to deploy individually to customers. Sharing reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
+- **Decide which resources to share.** Determine which components to share and which to deploy individually to customers. Sharing resources reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
 
     Don't use shared production resources during pre-production stages. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
