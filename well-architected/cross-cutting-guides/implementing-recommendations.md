@@ -30,7 +30,7 @@ Assess your workload by completing the assessment. The recommendations for your 
 
 ## Prioritize and implement recommendations
 
-Workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC.
+Before initiating the assessment, it is essential to prioritize the pillars according to your specific business needs. This approach will allow you to allocate your efforts more effectively and efficiently. Workload owners and key stakeholders should prioritize the recommendations in accordance with the team's standard work prioritization process, factoring in the applicability of the recommendations and any tradeoffs associated with a specific design decision. For example, recommendations might be assigned to a specific owner, or a recommendation might be postponed or dismissed. Like all planned work, the recommendation should be tracked until it's resolved, as part of the workload's SDLC. It is important to acknowledge that every decision entails trade-offs. Therefore, focusing on the rationale behind your decision-making process is more critical than getting bogged down in implementation details.
 
 ## Monitor improvements
 
