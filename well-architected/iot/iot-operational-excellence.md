@@ -151,11 +151,11 @@ A key decision early in a solution design phase is to define the roles that impl
 
 Ideally, the solution should trust a centralized identity provider, such as [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis), and only let the appropriate users in those roles perform management or operation activities, such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions.
 
-In an IoT Hub-based solution, you can use Microsoft Entra ID to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators, that authenticates users against Microsoft Entra ID and executes API requests to the IoT solution back end on behalf of those users.
+In an IoT Hub-based solution, you can use Microsoft Entra ID to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators that authenticates users against Microsoft Entra ID and executes API requests to the IoT solution back end on behalf of those users.
 
 ### IoT Edge Metrics Collector
 
-Azure IoT Edge provides the [IoT Edge Metrics Collector](https://mcr.microsoft.com/product/azureiotedge-metrics-collector/tags) ready-to-use IoT Edge module in the IoT Edge Module Marketplace. Add this module to an IoT Edge deployment to collect metrics and send them to Azure Monitor. The open-source module code is a multi-architecture Docker container image that supports Linux x64, ARM32, and ARM64 version 1809.
+Azure IoT Edge provides the [IoT Edge Metrics Collector](https://mcr.microsoft.com/product/azureiotedge-metrics-collector/tags) ready-to-use IoT Edge module in the IoT Edge Module Marketplace. Add this module to an IoT Edge deployment to collect metrics and send them to Azure Monitor. The open-source module code is a multi-architecture Docker container image that supports Linux x64, ARM32, and Arm64 version 1809.
 
 The Metrics Collector module can collect logs from all the modules that can emit metrics by using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). While [built-in metrics](/azure/iot-edge/how-to-access-built-in-metrics) enable broad workload visibility by default, you can also use custom modules to emit scenario-specific metrics that enhance the monitoring solution.
 
