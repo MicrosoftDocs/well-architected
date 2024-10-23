@@ -56,7 +56,7 @@ For more information about how to track and control costs for SaaS and how to bi
 | Recommendation | Benefit |
 |---|---|
 | Enable [Cost Management](/azure/cost-management-billing/costs/overview-cost-management).| You gain access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
-| Create policies to help enforce cost controls, such as permitted resource types and locations. | Enforce consistent standards, control the resources that can be deployed, and track compliance of your resources and cloud spend. |
+| Create policies to help enforce cost controls, such as permitted resource types and locations. | This strategy helps you enforce consistent standards, control the resources that can be deployed, and track compliance of your resources and cloud spend. |
 | Enable appropriate [cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending). | Cost alerts notify you about unexpected cloud spend, or when you approach predefined limits. |
 | Use a consistent naming convention and resource tags. Apply tags to indicate which resources are dedicated to a specific customer. | Consistent metadata helps you track which resources belong to which customer. This practice is especially important when you deploy resources that are dedicated to customers. |
 
