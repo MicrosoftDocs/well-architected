@@ -15,14 +15,14 @@
       href: governance.md
     - name: Resource organization
       href: resource-organization.md
+    - name: Identity and access management
+      href: identity-access.md
     - name: Compute
       href: compute.md
     - name: Networking
       href: networking.md
     - name: Data
       href: data.md
-    - name: Identity and access management
-      href: identity-access.md
     - name: DevOps practices
       href: devops.md
     - name: Incident management

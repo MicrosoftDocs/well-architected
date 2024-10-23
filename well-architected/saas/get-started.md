@@ -47,10 +47,10 @@ SaaS solutions consist of the same kinds of components as other solutions on Azu
 | Billing and cost management | Consider how you bill your customers and how billing relates to your COGS. Model your costs and how they change as your SaaS business grows and scales. Look for opportunities to optimize your cloud resource costs.  |
 | Governance | Organize, control, and regulate your use of cloud services. Set up the foundations for a secure Azure environment. |
 | Resource organization | Plan how you'll deploy your resources to support your scale and cost requirements. |
+| Identity and access management | Understand the unique challenges of managing identity in a multitenant environment like SaaS. Select an appropriate identity provider, including the need for federation with your customers' identity systems. |
 | Compute | Select a compute platform that meets your needs. Plan for customer isolation, scalability, and resiliency.  |
 | Networking | Plan how you'll deploy network resources, including an overall network topology and your perimeter defenses. Understand the ways in which you can isolate network resources between customers. Meet your customers' requirements for connectivity, including connecting to networks in customer environments, and deploying your SaaS solution resources into customer environments. |
 | Data | Select an appropriate data store for your data, and plan how you'll isolate customer data while retaining operational efficiency. Plan capacity based on your scale and growth, and meet customer needs for resiliency in your data. |
-| Identity and access management | Understand the unique challenges of managing identity in a multitenant environment like SaaS. Select an appropriate identity provider, including the need for federation with your customers' identity systems. |
 | DevOps practices | Deploy infrastructure and applications for each customer based on your tenancy model. Follow a structured approach to changes, including progressive rollouts across your customers. |
 | Incident management | Understand the responsibilities of operating SaaS and the cultural elements required in your organization. Plan for incidents, investing in tooling and processes to investigate, remediate, and communicate. |
 

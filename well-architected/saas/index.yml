@@ -33,14 +33,14 @@ landingContent:
         links:
           - text: Resource organization
             url: resource-organization.md        
+          - text: Identity and access management
+            url: identity-access.md            
           - text: Compute
             url: compute.md
           - text: Networking
             url: networking.md
           - text: Data
             url: data.md
-          - text: Identity and access management
-            url: identity-access.md            
 
     # Card
   - title: Operational design areas
