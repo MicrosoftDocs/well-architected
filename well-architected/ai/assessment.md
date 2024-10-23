@@ -1,9 +1,9 @@
 ---
-title: AI workload assessment
+title: AI Workload Assessment
 description: See how to use the AI workload assessment to gauge how well your workload aligns with best practices for the Azure Well-Architected Framework pillars.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 10/12/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-ai
