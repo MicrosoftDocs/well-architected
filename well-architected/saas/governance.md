@@ -1,15 +1,14 @@
 ---
-title: Governance for SaaS workloads for ISVs
-description: Learn about the governance considerations for SaaS workloads.
+title: Governance for SaaS workloads on Azure
+description: Learn about the governance to reduce risks, ensures compliance, and supports your organization's business objectives.
 author: joshuawaddell
 ms.author: jowaddel
 ms.date: 09/30/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
-# Governance for SaaS workloads for ISVs
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
+# Governance for SaaS workloads on Azure
 
 Governance is the set of controls, practices, and tools to help you organize, control, and regulate your use of cloud services. You can think of governance as a series of guardrails that sets standards for acceptable use, prevents unauthorized access and modifications, and aligns cloud activities with your overall strategy. Effective governance reduces risks, ensures compliance, and supports your organization's business objectives. When you build SaaS, you should consider governance early in your journey so you set the foundation for running a secure, cost effective, and efficient solution.
 

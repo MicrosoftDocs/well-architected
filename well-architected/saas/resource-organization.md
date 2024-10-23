@@ -1,15 +1,14 @@
 ---
-title: Resource Organization for SaaS Workloads for ISVs
-description: Choose the right Azure regions for your resources and develop a resource organization strategy to support the growth and evolution of your SaaS solution.
+title: Resource Organization for SaaS Workloads on Azure
+description: Learn about strategies for choosing the right Azure regions for your resources and developing a resource organization strategy to support the growth and evolution of your SaaS solution.
 author: MikeBazMSFT
 ms.author: micbaz
 ms.date: 11/01/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
-# Resource organization for SaaS workloads for ISVs
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
+# Resource organization for SaaS workloads on Azure
 
 When you create a software as a service (SaaS) solution, the way you organize Azure resources can significantly affect your operational processes, security, and compliance with regulatory standards. 
 
