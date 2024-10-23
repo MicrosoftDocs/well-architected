@@ -35,7 +35,7 @@ For more information about how to track and control costs for SaaS and how to bi
 
   Azure Policy allows you to create a service catalog of permitted services and service types that's tailored to your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Policies are enforced uniformly across all users and principals, regardless of their permission level.
 
-- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations (FinOps) tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone that has access to a billing account, subscription, resource group, or management group.
+- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone that has access to a billing account, subscription, resource group, or management group.
 
   Cost Management provides several tools to support cost governance, such as:
 
