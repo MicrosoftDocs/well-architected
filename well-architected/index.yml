@@ -134,8 +134,8 @@ sections:
     title: Workloads
     blocks:
       - componentType: summary-card
-        title: SaaS for ISVs
-        summary: Key insights for independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
+        title: Software-as-a-Service (SaaS)
+        summary: Key insights for Starups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
         url: ./saas/index.yml   
       - componentType: summary-card
         title: Oracle on IaaS
