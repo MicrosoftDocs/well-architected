@@ -1,7 +1,7 @@
 ---
 title: Compute for SaaS Workloads on Azure
 description: Learn about choosing your compute hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
-author: PageWriter-MSFT
+author: paolosalvatori
 ms.author: prwilk
 ms.date: 12/15/2023
 ms.topic: conceptual

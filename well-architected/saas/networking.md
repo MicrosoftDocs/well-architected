@@ -1,7 +1,7 @@
 ---
 title: Networking for SaaS Workloads on Azure
 description: Learn about the networking considerations for SaaS workloads.
-author: PageWriter-MSFT
+author: senavar
 ms.author: prwilk
 ms.date: 09/25/2024
 ms.topic: conceptual

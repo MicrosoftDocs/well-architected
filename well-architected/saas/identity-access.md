@@ -2,7 +2,7 @@
 title: Identity and Access Management for SaaS Workloads on Azure
 description: Learn about the design considerations for identity and access management in your SaaS worload environment.
 author: landonpierce
-ms.author: landonpierce
+ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ms.collection: learn-startups
