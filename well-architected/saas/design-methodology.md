@@ -64,4 +64,4 @@ If you have a legacy platform, consider how or if you should move customers to y
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Design principles of an ISV workload](design-principles.md)
+> [Design principles of an SaaS workload](design-principles.md)
