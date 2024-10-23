@@ -47,8 +47,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Usage monitoring and billing
-            url: usage-monitoring-billing.md
+          - text: Billing and cost management
+            url: billing-cost-management.md
           - text: Governance
             url: governance.md            
           - text: DevOps practices

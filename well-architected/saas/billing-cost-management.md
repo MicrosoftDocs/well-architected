@@ -1,6 +1,6 @@
 ---
-title: Usage Monitoring and Billing for SaaS workloads on Azure
-description: Learn strategies for understanding and optimizing costs within your SaaS business model, and get guidance on billing customers for your solution.
+title: Billing and Cost Management for SaaS workloads on Azure
+description: get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
 author: johndowns
 ms.author: jodowns
 ms.date: 11/01/2024
@@ -8,13 +8,37 @@ ms.topic: conceptual
 ms.collection: learn-startups
 ---
 
-# Usage monitoring and billing for SaaS workloads on Azure
+# Billing and cost management for SaaS workloads on Azure
 
-Running a successful SaaS business requires careful financial planning. You need to manage both resource expenditures and customer billing. Although these concerns are related, they are distinct. You must optimize both to succeed.
+Running a successful SaaS business requires careful financial planning. You need to manage both customer billing and resource expenditures. Although these concerns are related, they are distinct. You must optimize both to succeed.
 
 Understanding the costs of running your solution is critical. You need to analyze, manage, optimize, and control these costs. SaaS differs from many other software types because its business model and pricing strategy are directly linked to the solution architecture.
 
-This article describes some strategies for understanding and optimizing costs within your business model. It also provides guidance on billing customers for your solution.
+This article provides guidance on billing customers for your solution. It also describes some strategies for understanding and optimizing costs within your business model.
+
+## Billing
+
+Most billing models are based on customer usage. A billing model typically requires one or more *meters*, which track the way your customers use your solution. Common models include license-based billing (such as per user or a flat monthly rate) and consumption-based billing (for example, per transaction). You can use multiple meters together. For example, you can combine per-user and transaction charges.
+
+For more information, see [Pricing models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/pricing-models) and [Measure the consumption of each tenant](/azure/architecture/guide/multitenant/considerations/measure-consumption).
+
+### Design considerations
+
+- **Align billing with costs.** You should use customer-friendly billing meters, even though your COGS relies on technical metrics like data volumes and API calls. Mismatches between billing and costs can be risky. Identify and address scenarios where high resource usage doesn't lead to higher customer bills, and adjust your pricing and cost model accordingly.
+
+- **Design for billing.** The way in which you bill your customers can influence your solution design.
+
+    For example, you might offer different billing tiers that have varying functionality, performance, or deployment models. You might offer bronze, silver, and gold editions of a solution. Bronze customers might use shared infrastructure, silver customers might use a mix of shared and dedicated, and gold customers might use dedicated and isolated environments. Or you might enable or disable features based on billing plans. 
+    
+    Planning your billing model early is crucial because retroactive changes can be challenging, although commercial pressures might necessitate adjustments.
+
+### Design recommendations
+
+| Recommendation | Benefit |
+|---|---|
+| Design billing meters that are meaningful to your customers. <br><br> For example, the number of users or business transactions processed are meters that your customers can understand. <br> Avoid using metrics that are easy for you to measure but hard for customers to understand, like API requests. | This approach gives your customers confidence in their understanding of your service. It also helps them model their own costs effectively.|
+| Plan the implementation of billing plans or SKUs carefully. <br><br> If you offer multiple billing tiers, use a systematic approach. | This approach helps you avoid making last-minute changes to your solution. It also prevents the need for customizing your solution for a single customer, which could lead to operational complexity in the future.  |
+| Plan the implementation of discounts carefully. <br><br> Pricing discounts can be complex to manage, even if they only affect billing processes. | You'll prevent customer disappointment for  discounts that your solution or processes can't deliver. |
 
 ## Develop a cost model
 
@@ -95,27 +119,3 @@ You should optimize costs in conjunction with good governance practices. For mor
 | Identify and remove unused resources. | This approach reduces waste.  |
 | Enable [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management). | You'll get access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
 | Monitor each resource's utilization to ensure optimal use. <br><br> Use [Azure Advisor](/azure/advisor/advisor-overview) and its library of cost optimization recommendations. | This approach ensures that you use deployed and paid resources more effectively. By optimizing resource use, you can achieve better efficiency and cost management. |
-
-## Billing
-
-Most billing models are based on customer usage. A billing model typically requires one or more *meters*, which track the way your customers use your solution. Common models include license-based billing (such as per user or a flat monthly rate) and consumption-based billing (for example, per transaction). You can use multiple meters together. For example, you can combine per-user and transaction charges.
-
-For more information, see [Pricing models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/pricing-models) and [Measure the consumption of each tenant](/azure/architecture/guide/multitenant/considerations/measure-consumption).
-
-### Design considerations
-
-- **Align billing with costs.** You should use customer-friendly billing meters, even though your COGS relies on technical metrics like data volumes and API calls. Mismatches between billing and costs can be risky. Identify and address scenarios where high resource usage doesn't lead to higher customer bills, and adjust your pricing and cost model accordingly.
-
-- **Design for billing.** The way in which you bill your customers can influence your solution design.
-
-    For example, you might offer different billing tiers that have varying functionality, performance, or deployment models. You might offer bronze, silver, and gold editions of a solution. Bronze customers might use shared infrastructure, silver customers might use a mix of shared and dedicated, and gold customers might use dedicated and isolated environments. Or you might enable or disable features based on billing plans. 
-    
-    Planning your billing model early is crucial because retroactive changes can be challenging, although commercial pressures might necessitate adjustments.
-
-### Design recommendations
-
-| Recommendation | Benefit |
-|---|---|
-| Design billing meters that are meaningful to your customers. <br><br> For example, the number of users or business transactions processed are meters that your customers can understand. <br> Avoid using metrics that are easy for you to measure but hard for customers to understand, like API requests. | This approach gives your customers confidence in their understanding of your service. It also helps them model their own costs effectively.|
-| Plan the implementation of billing plans or SKUs carefully. <br><br> If you offer multiple billing tiers, use a systematic approach. | This approach helps you avoid making last-minute changes to your solution. It also prevents the need for customizing your solution for a single customer, which could lead to operational complexity in the future.  |
-| Plan the implementation of discounts carefully. <br><br> Pricing discounts can be complex to manage, even if they only affect billing processes. | You'll prevent customer disappointment for  discounts that your solution or processes can't deliver. |

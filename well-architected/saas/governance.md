@@ -16,7 +16,8 @@ Governance is the set of controls, practices, and tools to help you organize, co
 
 Understanding how much it costs to run your solution is critical to the sucess of your business. Not only do you need to be able to analyze, manage, and optimize your costs, you also need to be able to control your costs. As you begin to build your solution on Azure, there are many tools, such as the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/), which can help you estimate your solution costs. After resources are deployed to Azure, you can use [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) to help you to analyze, manage, and optimze your cloud spend.
 
-For more information about how to track and control costs for SaaS, as well as how to bill your customers, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md).
+For more information about how to track and control costs for SaaS, as well as how to bill your customers, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
+
 ### Design considerations
 
 - **Develop a naming convention and tagging strategy**. Names and tags provide metadata that you can use to govern your resources and quickly determine ownership. A consistent [resource naming strategy](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming) helps you to manage and govern your Azure resources. [Resource tags](/azure/azure-resource-manager/management/tag-resources) are metadata key-value pairs applied to your resources to help you identity them.

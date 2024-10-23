@@ -85,7 +85,7 @@ Your customers can use your application product with different performance profi
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance issues from other workloads.
 
-For more guidance about cost management, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md).
+For more guidance about cost management, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 

@@ -9,8 +9,8 @@
     href: design-principles.md
   - name: Design areas
     items:
-    - name: Usage monitoring and billing
-      href: usage-monitoring-billing.md
+    - name: Billing and cost management
+      href: billing-cost-management.md
     - name: Governance
       href: governance.md
     - name: Resource organization
