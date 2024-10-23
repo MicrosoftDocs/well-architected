@@ -122,3 +122,10 @@ You should optimize costs in conjunction with good governance practices. For mor
 | Identify and remove unused resources. | This approach reduces waste.  |
 | Enable [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management). | You'll get access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
 | Monitor each resource's utilization to ensure optimal use. <br><br> Use [Azure Advisor](/azure/advisor/advisor-overview) and its library of cost optimization recommendations. | This approach ensures that you use deployed and paid resources more effectively. By optimizing resource use, you can achieve better efficiency and cost management. |
+
+## Next step
+
+Learn about the governance to reduce risks, ensures compliance, and supports your organization's business objectives.
+
+> [!div class="nextstepaction"]
+> [Design area: Governance for SaaS workloads on Azure](./governance.md)
