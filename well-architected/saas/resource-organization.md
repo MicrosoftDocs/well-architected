@@ -59,7 +59,7 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
 
 - **Decide which resources to share.** Determine which components to share and which to deploy individually for customers. Sharing resources reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
 
-    Don't use shared production resources during pre-production stages. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
+    Don't use shared production resources in your pre-production stages and environments. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
 - **Plan for Azure resource quotas.** Understand the quotas and limits for Azure resources, like the number of resources per subscription or region, and request limits within a time window. Choose a strategy to adapt your resource organization if you approach these limits.
 
