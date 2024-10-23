@@ -57,7 +57,7 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
   
     An Azure landing zone is the recommended base configuration of an Azure environment. For landing zone recommendations that are specific to independent software vendor (ISV) organizations, see [ISV considerations for Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone).
 
-- **Decide which resources to share.** Determine which components to share and which to deploy individually to customers. Sharing resources reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
+- **Decide which resources to share.** Determine which components to share and which to deploy individually for customers. Sharing resources reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
 
     Don't use shared production resources during pre-production stages. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
