@@ -42,7 +42,11 @@ For more information, see [Pricing models for a multitenant solution](/azure/arc
 
 ## Develop a cost model
 
-Before you can optimize your costs, you need to itemize them. Your *cost of goods sold (COGS)* is the direct cost of delivering your solution. Azure spend is often a significant part of these costs. Knowing those costs and measuring cloud spend provides a baseline for your solution. It's also important to have a cost model because it can help you to reduce your COGS by identifying high-value items for optimization.
+Before you can optimize your costs, you need to itemize them. Your *cost of goods sold (COGS)* is the direct cost of delivering your solution. Azure spend is often a significant part of these costs. You might also consider third-party solutions, or you might choose to build custom software. Be aware that all of these options have varied levels of cost, including hidden costs.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Cost efficiency, functionality, and complexity.** When you build your own tooling or supporting software, you can customize it to your needs. However, there are costs to building your own tooling, some of which might not be obvious, such as ongoing maintenance and keeping up with security standards. You offload the responsibility of specialized software to a third party, enabling you to focus on development efforts for your own core business value.
+
+Knowing all of those costs and measuring cloud spend provides a baseline for your solution. It's also important to have a cost model because it can help you to reduce your COGS by identifying high-value items for optimization.
 
 In SaaS development, understanding how customers affect costs is crucial. A cost model represents the marginal cost per customer and identifies how business metrics influence costs. Key metrics include the number of customers, users, and transactions. Azure resource consumption is measured by:
 
@@ -97,8 +101,7 @@ You should optimize costs in conjunction with good governance practices. For mor
 
 - **Share resources among customers.** This approach can help you improve cost efficiency. For example, you might use shared multitenant infrastructure for the front end and dedicated infrastructure for the back-end data layer.
 
-    > [!NOTE]
-    > Ensure that you can manage both shared and dedicated usage, mitigate noisy neighbor issues, and meet data residency and other customer constraints. In some cases, it might not be appropriate to share resources. You might instead need to deploy dedicated infrastructure for each customer by using the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp).
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Cost efficiency, performance, and capabilities.** Ensure that you can manage both shared and dedicated usage, mitigate noisy neighbor issues, and meet data residency and other customer constraints. In some cases, it might not be appropriate to share resources. You might instead need to deploy dedicated infrastructure for each customer by using the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp).
 
 - **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as the Microsoft Customer Agreement, Enterprise Agreements, and pay-as-you-go. Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
 
