@@ -23,17 +23,17 @@ For more information about how to track and control costs for SaaS and how to bi
 
 - **Develop a naming convention and tagging strategy**. Names and tags provide metadata that you can use to govern your resources and quickly determine ownership. A consistent [resource naming strategy](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming) can help you manage and govern your Azure resources. [Resource tags](/azure/azure-resource-manager/management/tag-resources) are metadata key-value pairs applied to your resources that you can use to identity them.
 
-Consider using metadata to help you track information such as:
+  Consider using metadata to help you track information such as:
 
-- The type of resource.
-- The associated workload.
-- The environment in which it's used, such as production, staging, or development.
-- The location of the resource.
-- The customer or group of customers that use the resource, specifically for customer-specific deployments.
+  - The type of resource.
+  - The associated workload.
+  - The environment in which it's used, such as production, staging, or development.
+  - The location of the resource.
+  - The customer or group of customers that use the resource, specifically for customer-specific deployments.
 
 - **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you define organization standards and evaluate the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
 
-Azure Policy allows you to create a service catalog of permitted services and service types that's tailored to your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Policies are enforced uniformly across all users and principals, regardless of their permission level.
+  Azure Policy allows you to create a service catalog of permitted services and service types that's tailored to your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Policies are enforced uniformly across all users and principals, regardless of their permission level.
 
 - **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations (FinOps) tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone that has access to a billing account, subscription, resource group, or management group.
 
@@ -70,13 +70,13 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
 - **Define Microsoft Entra tenants.** A Microsoft Entra tenant defines the boundary for the identities that can manage your Azure resources. For most organizations, it's a good practice to use a single Microsoft Entra tenant across all of your resources. When you build SaaS, there are different approaches that you can use to combine or separate Microsoft Entra tenants depending on your needs.
 
-When deciding whether to use SaaS, it's important to consider three distinct types of use cases:
+  When deciding whether to use SaaS, it's important to consider three distinct types of use cases:
 
-- *Internal*, sometimes called *enterprise* or *corporate*, is when you host your own organization's resources, including Microsoft 365 and other tools that you use yourselves.
+  - *Internal SaaS*, sometimes called *enterprise* or *corporate*, is when you host your own organization's resources, including Microsoft 365 and other tools that you use yourselves.
 
-- *Production SaaS* is when you host the Azure resources for your SaaS solution, that customers connect to and use.
+  - *Production SaaS* is when you host the Azure resources for your SaaS solution, that customers connect to and use.
 
-- *Nonproduction SaaS* is when you host the Azure resources for any nonproduction environments of your SaaS solution, such as development, test, and staging environments.
+  - *Nonproduction SaaS* is when you host the Azure resources for any nonproduction environments of your SaaS solution, such as development, test, and staging environments.
 
   Most independent software vendors (ISVs) use a single Microsoft Entra tenant for all of the purposes in the preceding list.
 
@@ -97,11 +97,7 @@ For more information about how to configure Microsoft Entra tenants when you dep
 
 - **Comply with regulatory standards**: Many customers need to place strict controls on their resources to meet specific compliance regulations. Azure provides multiple tools to help your organization build a solution on Azure that meets your compliance needs.
 
-  - [Azure Policy](/azure/governance/policy/overview) can help you define organizational standards, and evaluate and enforce the compliance of your workloads and resources.
-
-    You can implement predefined standards or your own custom compliance standards. Azure Policy includes many [built-in policy initiatives](/azure/compliance/), or groups of policies, for common regulatory standards. These policies include FedRAMP High, HIPPA, HITRUST, PCI DSS, and ISO 27001. When you apply the policies to your environment, the compliance dashboard provides a detailed score of your overall compliance. You can use this dashboard when you create a remediation plan to bring your environment up to standards.
-
-    You can use Azure Policy to:
+  - [Azure Policy](/azure/governance/policy/overview) can help you define organizational standards, and evaluate and enforce the compliance of your workloads and resources. You can implement predefined standards or your own custom compliance standards. Azure Policy includes many [built-in policy initiatives](/azure/compliance/), or groups of policies, for common regulatory standards. These policies include FedRAMP High, HIPPA, HITRUST, PCI DSS, and ISO 27001. When you apply the policies to your environment, the compliance dashboard provides a detailed score of your overall compliance. You can use this dashboard when you create a remediation plan to bring your environment up to standards. You can use Azure Policy to:
 
     - Deny the deployment of resources based on criteria that are defined in a policy. For example, you can prevent data resources from being deployed in Azure regions where your data residency requirements would be violated.
 
@@ -113,12 +109,12 @@ For more information about how to configure Microsoft Entra tenants when you dep
 
     By default, Defender for Cloud uses the [Microsoft cloud security benchmark (MCSB)](/security/benchmark/azure/overview) as a baseline standard for security and compliance based practices. The MCSB is a set of compliance controls provided by Microsoft that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings, including FedRAMP High, HIPPA HITRUST, PCI DSS, and ISO2 7001.
 
-    > [!TIP]
-    > Even if you don't need to immediately comply with a regulatory standard, you should anyway. It's much easier to adhere to a standard like MCSB from when you start to deploy your solution than it is to retroactively apply it later.
+> [!TIP]
+> Even if you don't need to immediately comply with a regulatory standard, you should anyway. It's much easier to adhere to a standard like MCSB from when you start to deploy your solution than it is to retroactively apply it later.
 
-    You can apply compliance standards to various scopes. For example, you might define a specific Azure subscription as in scope for a specific standard. You can also use Defender for Cloud to evaluate configuration of resources that are hosted in other cloud providers.
+  You can apply compliance standards to various scopes. For example, you might define a specific Azure subscription as in scope for a specific standard. You can also use Defender for Cloud to evaluate configuration of resources that are hosted in other cloud providers.
 
-    For more information, see [Architectural approaches for governance and compliance in multitenant solutions](/azure/architecture/guide/multitenant/approaches/governance-compliance).
+  For more information, see [Architectural approaches for governance and compliance in multitenant solutions](/azure/architecture/guide/multitenant/approaches/governance-compliance).
 
 ### Design recommendations
 
