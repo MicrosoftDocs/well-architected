@@ -25,6 +25,7 @@ landingContent:
             url: design-methodology.md                
           - text: Design principles
             url: design-principles.md 
+
    # Card
   - title: Technical design areas
     linkLists:
@@ -34,12 +35,12 @@ landingContent:
             url: resource-organization.md        
           - text: Compute
             url: compute.md
-          - text: Identity and access management
-            url: identity-access.md            
           - text: Networking
             url: networking.md
           - text: Data
             url: data.md
+          - text: Identity and access management
+            url: identity-access.md            
 
     # Card
   - title: Operational design areas
