@@ -1,5 +1,5 @@
 ---
-title: Incident Management for SaaS workloads on Azure
+title: Incident management for SaaS workloads on Azure
 description: Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
 author: arsenvlad
 ms.author: prwilk
