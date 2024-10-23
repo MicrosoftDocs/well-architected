@@ -22,7 +22,7 @@ In the context of SaaS workloads, there are two distinct types of identity.
 
 - **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of enterprise identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
 
-::: image type="icon" source="./images/identity-types.png" alt-text="Diagram that shows Azure resources with tags indicating the customer they're assigned to." border="false" ::: 
+:::image type="content" source="./images/federated-identity.png" alt-text="Diagram that shows an application trusting a single identity provider, which in turn federates with multiple customer identity providers." border="false":::
 
 Application and enterprise identities serve different purposes and might use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 
@@ -96,7 +96,7 @@ Although implementing federated identity is initially simple, it becomes more co
 
 This image shows the relationship between your application, your application identity provider, and the downstream identity providers that you might choose to implement by using identity federation.  
 
-:::image type="content" source="./images/federated-identity.png" alt-text="Diagram that shows an application trusting a single identity provider, which in turn federates with multiple customer identity providers.":::
+:::image type="content" source="./images/federated-identity.png" alt-text="Diagram that shows an application trusting a single identity provider, which in turn federates with multiple customer identity providers." border="false":::
 
 ### Design considerations
 
