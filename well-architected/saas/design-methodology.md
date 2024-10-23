@@ -1,17 +1,14 @@
 ---
-title: Design methodology for ISV workloads on Azure 
+title: Design methodology for SaaS workloads on Azure 
 description: Learn how to implement a structured approach when you make architectural design decisions for software as a service (SaaS) workloads on Azure.
 author: landonpierce 
 ms.author: landonpierce
 ms.topic: conceptual 
 ms.date: 09/04/2024
-ms.custom: template-overview
-ms.service: azure-waf
+ms.collection: learn-startups
 ---
 
-# Design methodology for ISV workloads
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
+# Design methodology for SaaS workloads on Azure
 
 Independent software vendors (ISVs) must carefully plan the requirements of their software as a service (SaaS) solution, given that the solution *is their business*. Business customers, such as other businesses or individual consumers, are the direct users of the solution. This business model sets high expectations because you must consider both your workload requirements and the customers' needs as the architect of the design.
 
@@ -67,4 +64,4 @@ If you have a legacy platform, consider how or if you should move customers to y
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Design principles of an ISV workload](design-principles.md)
+> [Design principles of an SaaS workload](design-principles.md)

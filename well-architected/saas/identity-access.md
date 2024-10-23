@@ -1,15 +1,14 @@
 ---
-title: Identity and Access Management for SaaS Workloads on Azure
-description: Get recommendations for identity and access management for SaaS workloads. Learn about identity in multitenant applications and choosing an identity provider.
+title: Identity and access management for SaaS workloads on Azure
+description: Learn about the design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 author: landonpierce
 ms.author: landonpierce
 ms.date: 11/01/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # Identity and access management for SaaS workloads on Azure
-
-[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 Application identity is a critical area for SaaS workloads because it serves as the first line of defense for protecting data. It's often overlooked until late in a project, but many decisions about other elements of the application depend on a solid identity strategy. Don't underestimate the importance of identity in helping to protect your customers' data.
 

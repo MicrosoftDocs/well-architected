@@ -1,19 +1,18 @@
 ---
-title: Incident Management for SaaS Workloads on Azure
+title: Incident management for SaaS workloads on Azure
 description: Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
 author: johndowns
 ms.author: jodowns
 ms.date: 11/01/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # Incident management for SaaS workloads on Azure
 
-[!INCLUDE [header_file](includes/temporary-warning.md)]
-
 Independent software vendors (ISVs) for software as a service (SaaS) solutions must operate the solution for their customers. Doing so requires an organizational setup and culture that handles unexpected production situations smoothly. As the architect, you must design management processes and tools accordingly. 
 
-This article guides you in aligning your organization's culture, processes, and tools to support the operation of a production SaaS solution.
+This article guides you in aligning your organization's culture, processes, and tools to support incident management of a production SaaS solution.
 
 ## Understand your responsibilities as a service provider
 
