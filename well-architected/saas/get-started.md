@@ -44,7 +44,7 @@ SaaS solutions consist of the same kinds of components as other solutions on Azu
 
 | Design area | Summary |
 |---|---|
-| Usage monitoring and billing | Model your costs and how they change as your SaaS business grows and scales. Look for opportunities to optimize your cloud resource costs. Consider how you bill your customers and how billing relates to your COGS.  |
+| Billing and cost management | Consider how you bill your customers and how billing relates to your COGS. Model your costs and how they change as your SaaS business grows and scales. Look for opportunities to optimize your cloud resource costs.  |
 | Governance | Organize, control, and regulate your use of cloud services. Set up the foundations for a secure Azure environment. |
 | Resource organization | Plan how you'll deploy your resources to support your scale and cost requirements. |
 | Compute | Select a compute platform that meets your needs. Plan for customer isolation, scalability, and resiliency.  |
