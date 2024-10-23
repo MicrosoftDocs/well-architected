@@ -78,5 +78,7 @@ How you design a solution that operates at a low volume of scale differs from a 
 
 ## Next step
 
+Start your leaning journey by optimizing your customer's billing and your cost management strategy.
+
 > [!div class="nextstepaction"]
-> [Design methodology for ISV workloads](design-methodology.md)
+> [Design area: Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md)
