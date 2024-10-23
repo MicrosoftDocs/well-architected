@@ -7,7 +7,7 @@ ms.date: 10/24/2024
 ms.topic: conceptual
 ---
 
-# Governance for SaaS workloads on Azure
+# Governance for SaaS workloads for ISVs
 
 [!INCLUDE [header_file](includes/temporary-warning.md)]
 
