@@ -1,5 +1,5 @@
 ---
-title: SaaS workloads
+title: SaaS Workloads
 description: Overview of SaaS workloads on Azure.
 author: johndowns
 ms.author: jodowns

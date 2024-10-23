@@ -1,5 +1,5 @@
 ---
-title: Resource organization for SaaS workloads on Azure
+title: Resource Organization for SaaS Workloads on Azure
 description: Learn about the strategies for choosing the right Azure regions for your resources and developing a resource organization strategy to support the growth and evolution of your SaaS solution.
 author: MikeBazMSFT
 ms.author: micbaz
@@ -41,7 +41,7 @@ If you work with a Microsoft representative, let them know your resource needs s
 
 | Recommendation | Benefit |
 |---|---|
-| Use Azure-recommended regions for your deployments. <br><br> Recommended regions are listed in the Azure portal when creating a new resource. <br><br>  Ensure that the regions you use support availability zones. | You'll be able to support a more scalable and resilient solution design. |
+| Use Azure-recommended regions for your deployments. Recommended regions are listed in the Azure portal when creating a new resource. <br><br>  Ensure that the regions you use support availability zones. | You'll be able to support a more scalable and resilient solution design. |
 | Start with the minimum number of regions necessary to meet your needs, and expand as required. | You'll avoid over-complicating your design and operations. |
 | Clarify your customers' data residency needs early. | Deploying into a new region can take time. The sooner you know about any constraints your customers impose, the more likely you'll be able to meet their needs. |
 
@@ -57,7 +57,9 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
   
     An Azure landing zone is the recommended base configuration of an Azure environment. For landing zone recommendations specific to independent software vendor (ISV) organizations, review the [ISV considerations for Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone).
 
-- **Decide which resources to share.** Determine which components to share and which to deploy per customer. Sharing reduces costs and management but can bring tradeoffs for isolation, security, and performance.  It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared between customers.
+- **Decide which resources to share.** Determine which components to share and which to deploy per customer. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared between customers.
+
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Sharing resources reduces costs and management but can bring tradeoffs for isolation, security, and performance. 
 
     Ensure shared production resources are not used in pre-production stages. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
@@ -90,3 +92,10 @@ For more information about resource organization for SaaS solutions, see [Azure 
 ## Community links
 
 - Video on designing a landing zone for SaaS: [ISV Considerations for Azure Landing Zones](https://aka.ms/ISVLandingZones).
+
+## Next step
+
+Learn about the design considerations for identity and access management in your SaaS worload environment.
+
+> [!div class="nextstepaction"]
+> [Design area: Identity and access management for SaaS workloads on Azure](./identity-access.md)

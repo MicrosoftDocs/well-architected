@@ -1,5 +1,5 @@
 ---
-title: Networking for SaaS workloads on Azure
+title: Networking for SaaS Workloads on Azure
 description: Learn about the networking considerations for SaaS workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -173,3 +173,10 @@ Multitenancy is a core business methodology for designing SaaS workloads. These 
 - [Hub and spoke networking topology](/azure/architecture/networking/architecture/hub-spoke)
 - [Azure NAT Gateway considerations for multitenancy](/azure/architecture/guide/multitenant/service/nat-gateway)
 - [Architectural approaches for tenant integration and data access](/azure/architecture/guide/multitenant/approaches/integration)
+
+## Next step
+
+Learn about the data platform considerations for data integrity and performance for SaaS workloads on Azure.
+
+> [!div class="nextstepaction"]
+> [Design area: Data for SaaS workloads on Azure](./data.md)

@@ -1,6 +1,6 @@
 ---
-title: Identity and access management for SaaS workloads on Azure
-description: Learn about the design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
+title: Identity and Access Management for SaaS Workloads on Azure
+description: Learn about the design considerations for identity and access management in your SaaS worload environment.
 author: landonpierce
 ms.author: landonpierce
 ms.date: 11/01/2024
@@ -21,6 +21,8 @@ In the context of SaaS workloads, there are two distinct types of identity.
     - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. Maintenance of the user's account is your responsibility. 
 
 - **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of enterprise identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
+
+::: image type="icon" source="./images/identity-types.png" alt-text="Diagram that shows Azure resources with tags indicating the customer they're assigned to." border="false" ::: 
 
 Application and enterprise identities serve different purposes and might use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 
@@ -88,6 +90,8 @@ Each identity provider offers unique features, limitations, pricing models, and 
 
 Federated identity, also known as *single sign-on (SSO)*, allows users to sign in with credentials they already use elsewhere. You enable federated identity by establishing a trust relationship between your application identity provider and the customer's existing identity provider. Federated identity is a common requirement for SaaS solutions, especially in B2B, because customers prefer their employees to use corporate credentials. It offers several benefits for B2B solutions, such as centralized identity management and automatic lifecycle management. In B2C SaaS products, integrating with social identity providers is common to allow users to sign in with existing credentials.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and operational efficiency.** By working with federated identity providers, you offload the complexity of managing your users' identities. However, you take on the cost of integrating with another identity provider. Decide where you want to focus your operational efforts.
+
 Although implementing federated identity is initially simple, it becomes more complex as the number of supported identity providers increases. Careful planning is essential, especially if each customer uses a unique identity provider. Even if they use the same identity provider, unique trust relationships are often required for each customer because of specific configuration details.
 
 This image shows the relationship between your application, your application identity provider, and the downstream identity providers that you might choose to implement by using identity federation.  
@@ -130,6 +134,8 @@ User authorization is crucial for SaaS applications, which often store data for 
   
     - **Your identity provider.** Take advantage of the built-in groups or roles, surfacing permissions as claims in the token issued to your application. Your application can then enforce authorization rules by using these token claims.
     - **Your application.**  Develop your own authorization logic and store user permissions in a database or similar system, allowing for fine-grained role-based or resource-level authorization controls.
+
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity, flexibility, and security.** Storing authorization data in an identity provider and surfacing through token claims is usually simpler than managing your own authorization system. However, claim-based authorization limits your flexibility, and you need to accept that claims are only refreshed when a token is reissued, which can cause a delay in applying changed permissions.
     
 - **Assess the impact of delegated management.** In most SaaS applications, especially in B2B applications, role and permission management is delegated to customers. Without this functionality, you might increase your management overhead if customers frequently change their users' permissions.
   
@@ -142,3 +148,10 @@ User authorization is crucial for SaaS applications, which often store data for 
 | Prevent users from accessing data across tenant boundaries unless that access is explicitly permitted. | Unauthorized access to another tenant's data, even accidental access, can be seen as a major security incident and erode customer trust in your platform. Blocking unnecessary access will help you avoid these situations. |
 | If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. |Selecting the best data store for your authorization data will enhance your operational efficiency and help you meet your scalability needs. |
 | If you delegate permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal that's accessible only to tenant administrators for changing user permissions. | You'll provide more control to your customers and avoid unnecessary operational burden on your support team. |
+
+## Next step
+
+Learn about choosing your compute hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
+
+> [!div class="nextstepaction"]
+> [Design area: Compute for SaaS workloads on Azure](./compute.md)

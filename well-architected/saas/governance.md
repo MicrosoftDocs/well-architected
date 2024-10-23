@@ -1,5 +1,5 @@
 ---
-title: Governance for SaaS workloads on Azure
+title: Governance for SaaS Workloads on Azure
 description: Learn about the governance to reduce risks, ensures compliance, and supports your organization's business objectives.
 author: joshuawaddell
 ms.author: jowaddel
@@ -30,8 +30,7 @@ For more information about how to track and control costs for SaaS, as well as h
   - Where the resource is located
   - If you deploy customer-specific resources, the customer or group of customers that use the resource
 
-    <!-- TODO update this -->
-    :::image type="icon" source="./_images/tags.png" border="false"::: 
+    ::: image type="icon" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags indicating the customer they're assigned to." border="false" ::: 
 
 - **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you to define organization standards and evaluate the compliance of your workloads and resources. It is a governance tool that helps you achieve resource consistency, regulatory compliance, security, management, and cost.
 

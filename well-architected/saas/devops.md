@@ -1,6 +1,6 @@
 ---
-title: DevOps for SaaS workloads on Azure
-description: Learn about efficient customer lifecycle management and safe deployment practices.
+title: DevOps Practices for SaaS Workloads on Azure
+description: Learn about DevOps consideration for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
 author: landonpierce
 ms.author: landonpierce
 ms.date: 10/15/2024
@@ -120,3 +120,10 @@ Multitenancy is a core business methodology for designing SaaS workloads. These 
 - [Considerations for updating a multitenant solution](/azure/architecture/guide/multitenant/considerations/updates)
 - [Considerations for multitenant control planes](/azure/architecture/guide/multitenant/considerations/control-planes)
 - [Architectural approaches for control planes in multitenant solutions](/azure/architecture/guide/multitenant/approaches/control-planes)
+
+## Next step
+
+Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
+
+> [!div class="nextstepaction"]
+> [Design area: Incident management for SaaS workloads on Azure](./incident-management.md)
