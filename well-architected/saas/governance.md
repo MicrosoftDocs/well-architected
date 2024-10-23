@@ -1,8 +1,8 @@
 ---
-title: Governance for SaaS workloads on Azure
+title: Governance for SaaS Workloads on Azure
 description: Learn about the governance to reduce risks, ensures compliance, and supports your organization's business objectives.
 author: joshuawaddell
-ms.author: jowaddel
+ms.author: prwilk
 ms.date: 09/30/2024
 ms.topic: conceptual
 ms.collection: learn-startups
@@ -16,7 +16,8 @@ Governance is the set of controls, practices, and tools to help you organize, co
 
 Understanding how much it costs to run your solution is critical to the sucess of your business. Not only do you need to be able to analyze, manage, and optimize your costs, you also need to be able to control your costs. As you begin to build your solution on Azure, there are many tools, such as the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/), which can help you estimate your solution costs. After resources are deployed to Azure, you can use [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) to help you to analyze, manage, and optimze your cloud spend.
 
-For more information about how to track and control costs for SaaS, as well as how to bill your customers, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md).
+For more information about how to track and control costs for SaaS, as well as how to bill your customers, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
+
 ### Design considerations
 
 - **Develop a naming convention and tagging strategy**. Names and tags provide metadata that you can use to govern your resources and quickly determine ownership. A consistent [resource naming strategy](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming) helps you to manage and govern your Azure resources. [Resource tags](/azure/azure-resource-manager/management/tag-resources) are metadata key-value pairs applied to your resources to help you identity them.
@@ -29,9 +30,13 @@ For more information about how to track and control costs for SaaS, as well as h
   - Where the resource is located
   - If you deploy customer-specific resources, the customer or group of customers that use the resource
 
+    ::: image type="icon" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags indicating the customer they're assigned to." border="false" ::: 
+
 - **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you to define organization standards and evaluate the compliance of your workloads and resources. It is a governance tool that helps you achieve resource consistency, regulatory compliance, security, management, and cost.
 
     You can use Azure Policy to create a service catalog of allowed services and service types your workload requires, which can help prevent accidental overspending.  For example, if you have determined the type, series, and size of the virtual machines you need, you can implement a policy that will only allow those virtual machines to be deployed. Policies are enforced uniformly across all users and principals, regardless of their permission level.
+
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** Implementing too many policies can reduce the productivity of your team. Strive to implement automated controls on the most essential elements.
 
 - **Use cost management tooling.** [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations (FinOps) tools that help organizations analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and can be used by anyone with access to a billing account, subscription, resource group, or management group.
 
@@ -74,7 +79,7 @@ When you create a SaaS solution, your customers place a great deal of trust in y
     Occasionally, you might have a specific business justification for separating some of the purposes across multiple Microsoft Entra tenants. For example, if you work with high-security government customers, they might mandate that you use distinct directories for your internal applications and for your production and non-production SaaS workloads. These requirements are uncommon.
 
     > [!IMPORTANT]
-    > Managing multiple Microsoft Entra tenants is complex. It increases your management overhead and costs, and if not done carefully, it can increase your security risks. It's best to only use multiple Microsoft Entra tenants if your situation truly requires it.
+    > Managing multiple Microsoft Entra tenants is complex. It increases your management overhead, licensing complexity, and costs, and if not done carefully, it can increase your security risks. It's best to only use multiple Microsoft Entra tenants if your situation truly requires it.
 
     For more information about how to configure Microsoft Entra tenants when you deploy SaaS, see [Independent software vendor (ISV) considerations for Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone).
 
@@ -86,11 +91,13 @@ When you create a SaaS solution, your customers place a great deal of trust in y
 
     - [Azure Locks](/azure/azure-resource-manager/management/lock-resources?tabs=json) help to prevent accidental deletions and modifications of your Azure resources. When a lock is applied to a resource, even users with privileged administrator roles can't delete the resource unless they first take explicit action to delete the lock.
 
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** RBAC and locks are important elements of a cloud security and governance strategy. However, be aware of operational complexities that might emerge when you severely restrict who can perform common operations. Try to strike a balance between your security and functional needs. Have a clear plan for escalation of responsibilities if there's an emergency or if key people are unavailable.
+
 - **Comply with regulatory standards**: Many customers need to place strict controls on their resources to meet specific compliance regulations. Azure provides multiple tools to help your organization build a solution on Azure that meets your compliance needs.
 
     - [Azure Policy](/azure/governance/policy/overview) helps you to define organizational standards, and to to evaluate and enforce the compliance of your workloads and resources.
     
-        You can enforce predefined or your own custom compliance standards. Azure Policy includes a number of [built-in policy initiatives](/azure/compliance/) (groups of policies) for common regulatory standards, including FedRAMP High, HIPPA, HITRUST, PCI DSS, and ISO 27001. When the policies are applied to your environment, the compliance dashboard provides a detailed score of your overall compliance. You can use this dashboard when creating a remediation plan to bring your environment up to standards.
+        You can enforce predefined or your own custom compliance standards. Azure Policy includes a number of [built-in policy initiatives](/azure/compliance/) (groups of policies) for common regulatory standards. When the policies are applied to your environment, the compliance dashboard provides a detailed score of your overall compliance. You can use this dashboard when creating a remediation plan to bring your environment up to standards.
         
         Azure Policy can be used in a number of ways, including:
 
@@ -100,7 +107,7 @@ When you create a SaaS solution, your customers place a great deal of trust in y
 
     - [Microsoft Defender for Cloud](/azure/defender-for-cloud/) provides a continual assessment of the configuration of your resources against compliance controls and best practices in the standards and benchmarks you’ve applied in your subscriptions. Defender for Cloud calculates an overall compliance score, which helps to determine changes that need to be made.
     
-        By default, Defender for Cloud uses the [Microsoft cloud security benchmark](/security/benchmark/azure/overview) (MCSB) as a baseline standard for security and compliance based practices. The MCSB is a Microsoft-provided set of compliance controls that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings including FedRAMP High, HIPPA HITRUST, PCI DSS, and ISO2 7001.
+        By default, Defender for Cloud uses the [Microsoft cloud security benchmark](/security/benchmark/azure/overview) (MCSB) as a baseline standard for security and compliance based practices. The MCSB is a Microsoft-provided set of compliance controls that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings.
 
         > [!TIP]
         > Even if you don't have an immediate need to comply with a regulatory standard, it's a good practice to do so anyway. It's much easier to follow a standard like MCSB from when you start deploying your solution than it is to retroactively apply it later.
@@ -123,3 +130,10 @@ When you create a SaaS solution, your customers place a great deal of trust in y
 ## Community links
 
 - [Azure Governance for ISVs](https://aka.ms/ftaisvgovernance) is a set of videos that describe resource and subscription management approaches for ISVs building SaaS.
+
+## Next step
+
+Learn about the strategies for choosing the right Azure regions for your resources and developing a resource organization strategy to support the growth and evolution of your SaaS solution.
+
+> [!div class="nextstepaction"]
+> [Design area: Resource organization for SaaS workloads on Azure](./resource-organization.md)

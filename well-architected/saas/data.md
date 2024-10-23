@@ -1,8 +1,8 @@
 ---
-title: Data considerations for SaaS workloads on Azure
+title: Data for SaaS Workloads on Azure
 description: Learn about the data platform considerations for data integrity and performance for SaaS workloads on Azure.
-author: johndowns
-ms.author: jodowns
+author: paulburpo
+ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ms.collection: learn-startups
@@ -109,7 +109,7 @@ Customers of SaaS solutions often have high expectations for high availability (
 
 HA and DR aren't one-size-fits-all solutions and depend on various factors. Have a clear understanding of the available options that are applicable to both you and your customers' requirements to make informed decisions about mitigating different risks.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resiliency for data services often requires distributing replicas or copies of your data across a wider geographic area to mitigate risks. However, there are tradeoffs. The longer the distance that data has to travel, the more protection you have against localized failures. But, copying data across longer distances increases latency and often costs more.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reliability, cost, and performance**: Resiliency for data services often requires distributing replicas or copies of your data across a wider geographic area to mitigate risks. However, there are tradeoffs. The longer the distance that data has to travel, the more protection you have against localized failures. But, copying data across longer distances increases latency and often costs more.
 > Many managed data stores provide automated data replication, but they might impose limits on the types of replication that you can perform across different distances to maintain performance.
 
 ### Design considerations
@@ -213,3 +213,10 @@ Some of your customers might request direct access to their data for custom repo
 |---|---|
 |Avoid giving direct access to your data stores.<br><br>If you must give direct access, provide access to a read-only replica, if the data platform supports it.|Application-tier approaches give you control over how customers use your data. If it's not possible to create application-tier constructs, access through read-only replicas reduces the strain of the customer's queries on your operations.|
 |Avoid exposing internal implementation details.|By controlling access to your data structures, you prevent customers from making assumptions about the functionality of your database schema. This flexibility allows you to evolve and optimize your database structure over time without the constraints of customer-built tooling or inaccurate assumptions.|
+
+## Next step
+
+Learn about DevOps consideration for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
+
+> [!div class="nextstepaction"]
+> [Design area: DevOps practices for SaaS workloads on Azure](./devops.md)
