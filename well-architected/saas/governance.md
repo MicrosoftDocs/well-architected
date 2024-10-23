@@ -31,7 +31,7 @@ For more information about how to track and control costs for SaaS, as well as h
   - If you deploy customer-specific resources, the customer or group of customers that use the resource
 
     <!-- TODO update this -->
-    :::image type="icon" source="../_images/tags.png" border="false"::: 
+    :::image type="icon" source="./_images/tags.png" border="false"::: 
 
 - **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you to define organization standards and evaluate the compliance of your workloads and resources. It is a governance tool that helps you achieve resource consistency, regulatory compliance, security, management, and cost.
 
