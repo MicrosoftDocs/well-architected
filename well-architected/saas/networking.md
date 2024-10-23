@@ -34,7 +34,7 @@ SaaS solutions have unique networking requirements. As you onboard more customer
 
     - **Hub and spoke**: A centralized hub network with peerings to isolated spoke networks. Suitable for high scalability and customer isolation, because each customer or application can get its own spoke, communicating only with the hub. You can quickly deploy more spokes as needed, and resources in the hub can be used by all spokes. *Transitive*, or spoke-to-spoke, communication through the hub is disabled by default, which helps maintain customer isolation in SaaS solutions.
 
-    - **No network**:  Used for Azure PaaS services where you can host complex workloads without deploying virtual networks at all. For example, the VNet injection capability in App Service allows for direct integration with other PaaS services over the Azure backbone network. While this approach simplifies management, it restricts flexibility in deploying security controls and the ability to optimize performance. This approach can work well for cloud native applications. As your solution evolves, expect to transition to a hub-and-spoke topology over time.
+    - **No network**:  Used for Azure PaaS services where you can host complex workloads without deploying virtual networks at all. For example, Azure App Service allows for direct integration with other PaaS services over the Azure backbone network. While this approach simplifies management, it restricts flexibility in deploying security controls and the ability to optimize performance. This approach can work well for cloud native applications. As your solution evolves, expect to transition to a hub-and-spoke topology over time.
 
 - **Understand how multi-region architecture affects network topologies.** In a multi-region architecture using virtual networks, most networking resources are deployed in each region separately, because firewalls, virtual network gateways, and network security groups cannot be shared between regions.
 
@@ -59,7 +59,7 @@ Each flow involves different risks and controls. For example, multiple security 
 > [!IMPORTANT]
 > As a general best practice, always follow a zero-trust approach. Make sure all traffic is controlled and inspected, including internal traffic.
 
-Your customers might also have specific compliance requirements that influence your architecture. For example, if they need [SOC 2 compliance](/azure/governance/policy/samples/soc-2#security-measures-against-threats-outside-system-boundaries) must implement a variety of network controls including a firewall, web application firewall, and network security groups, to fulfill the security requirements.  Even if you don't need to comply immediately, consider those extensibility factors when designing your architecture.
+Your customers might also have specific compliance requirements that influence your architecture. For example, if they need [SOC 2 compliance](/azure/governance/policy/samples/soc-2#security-measures-against-threats-outside-system-boundaries) they must implement a variety of network controls including a firewall, web application firewall, and network security groups, to fulfill the security requirements.  Even if you don't need to comply immediately, consider those extensibility factors when designing your architecture.
 
 ### Design considerations
 
