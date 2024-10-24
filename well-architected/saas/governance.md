@@ -45,11 +45,11 @@ For more information about how to track and control costs for SaaS and how to bi
   
   - [Cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending) help you monitor your cloud spend through three separate types of alerts.
   
-  - [Budget alerts](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) notify recipients when you reach budget thresholds or when you'll reach forecasted thresholds soon.
+    - [Budget alerts](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) notify recipients when you reach budget thresholds or when you'll reach forecasted thresholds soon.
 
-  - [Anomaly alerts](/azure/cost-management-billing/understand/analyze-unexpected-charges) notify recipients when unexpected changes in your cloud spend occur.
+    - [Anomaly alerts](/azure/cost-management-billing/understand/analyze-unexpected-charges) notify recipients when unexpected changes in your cloud spend occur.
 
-  - [Scheduled alerts](/azure/cost-management-billing/costs/save-share-views#subscribe-to-scheduled-alerts) send recipients daily, weekly, or monthly reports on overall cloud spend.
+    - [Scheduled alerts](/azure/cost-management-billing/costs/save-share-views#subscribe-to-scheduled-alerts) send recipients daily, weekly, or monthly reports on overall cloud spend.
 
 ### Design recommendations
 
