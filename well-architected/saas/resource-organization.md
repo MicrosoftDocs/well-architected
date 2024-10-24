@@ -25,7 +25,6 @@ The first step in planning your architecture is to choose the region where your 
     Also, many Azure regions support [availability zones](/azure/reliability/availability-zones-overview), which are an important part of a resiliency strategy. You should use regions that have availability zones, and you should deploy production components into multiple availability zones.
 
     To learn more about how to use regions and availability zones, see [RE:05 Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md).
-If you work with a Microsoft representative, let them know your resource needs so they can ensure that your regions are ready for your workload.
 
 - **Design according to data residency requirements.** There might be requirements about where customer data can be stored, often because of data sovereignty laws. Requirements can range from broad geographic areas, like Europe, to specific countries or regions. Azure defines geographies based on geopolitical boundaries, and you can typically use any region within a defined geography to meet data residency requirements.
 
