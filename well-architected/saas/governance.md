@@ -38,7 +38,7 @@ For more information about how to track and control costs for SaaS and how to bi
 
   :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** Implementing too many policies can reduce the productivity of your team. Strive to implement automated controls on the most essential elements.
 
-- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations (FinOps) tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.
+- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.
 
   Cost Management provides several tools to support cost governance, such as:
 
