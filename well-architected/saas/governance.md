@@ -9,7 +9,6 @@ ms.topic: conceptual
 
 # Governance for SaaS workloads for ISVs
 
-[!INCLUDE [header_file](includes/temporary-warning.md)]
 
 Governance is the set of controls, practices, and tools that you can use to organize, control, and help regulate your use of cloud services. You can think of governance as a series of guardrails that set standards for acceptable use, prevent unauthorized access and modifications, and align cloud activities with your overall cloud strategy. Effective governance reduces risks, helps ensure compliance, and supports your organization's business objectives. When you build a software as a service (SaaS) solution, it's crucial to prioritize governance from the start. This approach lays the groundwork for a secure, cost-effective, and efficient solution.
 
@@ -17,7 +16,7 @@ Governance is the set of controls, practices, and tools that you can use to orga
 
 To help ensure the success of your business, it's critical to understand the costs to run your solution. You need to analyze, manage, and optimize these costs effectively while maintaining control over them. When you start building your solution on Azure, you can use tools like the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate your costs. After you deploy resources, you can use [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) to analyze, manage, and optimize your cloud spending.
 
-For more information about how to track and control costs for SaaS and how to bill your customers, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md).
+For more information about how to track and control costs for SaaS and how to bill your customers, see [Usage monitoring and billing for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 
