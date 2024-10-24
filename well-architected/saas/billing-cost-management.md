@@ -125,7 +125,7 @@ You should optimize costs in conjunction with good governance practices. For mor
 
 ## Next step
 
-Learn about the governance to reduce risks, ensures compliance, and supports your organization's business objectives.
+Learn about governance to reduce risks, help ensure compliance, and support your organization's business objectives.
 
 > [!div class="nextstepaction"]
 > [Design area: Governance for SaaS workloads on Azure](./governance.md)
