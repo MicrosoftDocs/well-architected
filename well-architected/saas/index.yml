@@ -25,6 +25,7 @@ landingContent:
             url: design-methodology.md                
           - text: Design principles
             url: design-principles.md 
+
    # Card
   - title: Technical design areas
     linkLists:
@@ -32,10 +33,10 @@ landingContent:
         links:
           - text: Resource organization
             url: resource-organization.md        
-          - text: Compute
-            url: compute.md
           - text: Identity and access management
             url: identity-access.md            
+          - text: Compute
+            url: compute.md
           - text: Networking
             url: networking.md
           - text: Data
@@ -46,8 +47,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Usage monitoring and billing
-            url: usage-monitoring-billing.md
+          - text: Billing and cost management
+            url: billing-cost-management.md
           - text: Governance
             url: governance.md            
           - text: DevOps practices

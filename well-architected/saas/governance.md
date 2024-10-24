@@ -108,7 +108,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
   - [Microsoft Defender for Cloud](/azure/defender-for-cloud/) provides a continual assessment of the configuration of your resources against compliance controls and best practices in the standards and benchmarks that you apply in your subscriptions. Defender for Cloud calculates an overall compliance score, which helps you determine changes that you need to make.
 
     By default, Defender for Cloud uses the [Microsoft cloud security benchmark (MCSB)](/security/benchmark/azure/overview) as a baseline standard for security and compliance-based practices. The MCSB is a set of compliance controls provided by Microsoft that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings, including FedRAMP High, HIPAA HITRUST, PCI DSS, and ISO 27001.
-
+   
    > [!TIP]
    > Even if you don't need to immediately comply with a regulatory standard, you should anyway. It's much easier to adhere to a standard like MCSB from when you start to deploy your solution than it is to retroactively apply it later.
 
@@ -129,4 +129,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
 ## Next step
 
-- [Azure governance for ISVs](https://aka.ms/ftaisvgovernance) is a set of videos that describe resource and subscription management approaches for ISVs that build SaaS.
+Learn strategies for how to choose the right Azure regions for your resources and develop a resource organization strategy to support the growth and evolution of your SaaS solution.
+
+> [!div class="nextstepaction"]
+> [Design area: Resource organization for SaaS workloads on Azure](./resource-organization.md)

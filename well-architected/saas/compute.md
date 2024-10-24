@@ -1,7 +1,7 @@
 ---
-title: Compute considerations for SaaS workloads on Azure
-description: Learn about choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
-author: PageWriter-MSFT
+title: Compute for SaaS Workloads on Azure
+description: Learn about choosing your compute hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
+author: paolosalvatori
 ms.author: prwilk
 ms.date: 12/15/2023
 ms.topic: conceptual
@@ -85,7 +85,7 @@ Your customers can use your application product with different performance profi
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance issues from other workloads.
 
-For more guidance about cost management, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md).
+For more guidance about cost management, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 
@@ -143,3 +143,10 @@ Resiliency of your compute layer  plays a large part in your overall resiliency 
 Multitenancy is a core business methodology for designing SaaS workloads. These articles provide more information about compute platform considerations:
 - [Architectural approaches for compute in multitenant solutions](/azure/architecture/guide/multitenant/approaches/compute)
 - [Tenancy models](/azure/architecture/guide/multitenant/considerations/tenancy-models)
+
+## Next step
+
+Learn about the networking considerations for SaaS workloads.
+
+> [!div class="nextstepaction"]
+> [Design area: Networking for SaaS workloads on Azure](./networking.md)
