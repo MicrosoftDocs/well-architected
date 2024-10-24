@@ -29,10 +29,14 @@ For more information about how to track and control costs for SaaS and how to bi
   - The environment in which it's used, such as production, staging, or development.
   - The location of the resource.
   - The customer or group of customers that uses the resource, for customer-specific deployments.
+  
+  :::image type="content" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags that indicate which customer they're assigned to." border="false":::
 
 - **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you define organization standards and evaluate the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
 
   Use Azure Policy to create a service catalog of permitted services and service types that's customized for your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Enforce policies uniformly across all users and principals, regardless of their permission level.
+
+  :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** Implementing too many policies can reduce the productivity of your team. Strive to implement automated controls on the most essential elements.
 
 - **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations (FinOps) tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.
 
@@ -93,6 +97,8 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
   - [Azure RBAC](/azure/role-based-access-control/overview) is the authorization system that controls access to the Azure control plane and the resources in your environment. Azure RBAC is a collection of predefined and custom roles that determine what actions you can take against Azure resources. Roles are categorized as [privileged administrator roles](/azure/role-based-access-control/role-assignments-steps#privileged-administrator-roles) and [job function roles](/azure/role-based-access-control/role-assignments-steps#job-function-roles). These roles limit what you can do to a set of resources in a scope that you define. Azure RBAC can grant least privileged access to anyone that manages the workload.
 
   - [Azure locks](/azure/azure-resource-manager/management/lock-resources) can help prevent accidental deletions and modifications of your Azure resources. When you apply a lock to a resource, even users who have privileged administrator roles can't delete the resource unless they explicitly delete the lock first.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** RBAC and locks are important elements of a cloud security and governance strategy. However, consider operational complexities that might occur when you severely restrict who can perform common operations. Try to balance your security and functional needs. Have a clear plan to escalate responsibilities if there's an emergency or if key people are unavailable.
 
 - **Comply with regulatory standards.** Many customers need to place strict controls on their resources to meet specific compliance regulations. Azure provides multiple tools to help your organization build a solution on Azure that meets your compliance needs.
 
