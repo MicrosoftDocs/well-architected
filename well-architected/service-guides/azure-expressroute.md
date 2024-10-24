@@ -6,7 +6,7 @@ ms.author: duau
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide 
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 products: 
   - azure-expressroute
 azure.category:
@@ -142,8 +142,6 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Leverage Azure Security Baseline for ExpressRoute:** The Microsoft cloud security benchmark provides recommendations on how you can secure your cloud solutions on Azure.
 >
-> - **Configure Network Security Groups (NSGs):** Configure Network Security Groups to restrict traffic by port, protocol, source IP address, or destination IP address.
->
 > - **Implement Azure Role-Based Access Control (RBAC):** Use Azure RBAC to configure roles to limit user accounts that can add, update, or delete peering configurations on an ExpressRoute circuit or change ExpressRoute resources.
 >
 > - **Configure ExpressRoute encryption:** Encrypt data in transit over ExpressRoute circuits to ensure that data transmitted between on-premises networks and Azure virtual networks is secure and protected from unauthorized access. ExpressRoute supports the following encryption options.
@@ -164,7 +162,6 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Recommendation | Benefit |
 |--------|----|
 | Leverage [Azure Security Baseline for ExpressRoute](/security/benchmark/azure/baselines/expressroute-security-baseline). This security baseline applies guidance from the Microsoft Cloud Security Benchmark version 1.0 to ExpressRoute. | The content is organized by the security controls defined in the benchmark and includes related guidance specific to ExpressRoute. |
-| Configure [Network Security Groups (NSGs)](/azure/virtual-network/network-security-groups-overview) to restrict traffic by port, protocol, source IP address, or destination IP address. | NSGs provide an additional layer of security by filtering inbound and outbound traffic to and from Azure resources. By configuring NSGs, you can control access to resources and protect your network from unauthorized access. |
 | Implement [Azure Role-Based Access Control (RBAC)](/azure/role-based-access-control/overview) to control who can manage ExpressRoute resources such as ExpressRoute circuits and gateways. | By providing granular access management to resources, you can maintain an inventory of administrative accounts with access to ExpressRoute resources and ensure that only authorized users can perform specific actions. |
 | Configure [MACsec for ExpressRoute Direct ports](/azure/expressroute/expressroute-about-encryption). | MACsec (Media Access Control security) enhances security by encrypting data, ensuring data integrity, protecting vulnerable protocols. It secures protocols that are typically not protected on Ethernet links, such as ARP, DHCP, and LACP, thereby preventing potential security threats targeting these protocols. |
 | Encrypt traffic using [IPsec (Internet Protocol Security) for ExpressRoute private peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering) or configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json). | IPsec encrypts data at the network layer (Layer 3) and enhances security by providing encryption, authentication, integrity protection, and compliance. This ensures that data transmitted over ExpressRoute circuits is secure and protected from unauthorized access and tampering. |
@@ -176,8 +173,6 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
 The Cost Optimization design principles provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your web apps and the environment in which they run.
-
- [Plan and manage costs for Azure ExpressRoute](/azure/expressroute/plan-manage-cost).
 
 ### Design checklist
 
@@ -201,8 +196,8 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Familiarize yourself with [ExpressRoute pricing](https://azure.microsoft.com/pricing/details/expressroute/). Use the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost. ExpressRoute Direct has a monthly port fee that includes the circuit fee for Local and Standard SKU ExpressRoute circuits. For Premium SKU circuits, there is an additional circuit fee. Outbound data transfer is charged per GB used, depending on the zone number of the peering location. The outbound data charge applies only to Standard and Premium SKUs. | Understanding ExpressRoute pricing enables better cost management, informed decision-making, avoidance of unexpected charges and maximization of value. |
-| Determine [circuit SKU and bandwidth](/azure/expressroute/expressroute-circuit-peerings) required. The way you're charged for your ExpressRoute usage varies between the three different SKU types. With the Local SKU, you're automatically charged with an Unlimited data plan. With the Standard and Premium SKUs, you can choose between a Metered or an Unlimited data plan. All ingress data is free of charge, except when using the Global Reach add-on, which incurs additional costs for data transfer between different geographical locations. It is important to review and [resize your ExpressRoute circuit](/azure/expressroute/about-upgrade-circuit-bandwidth).  | It's important to understand which SKU types and data plan works best for your workload to best optimize cost and budget. |
+| Familiarize yourself with [ExpressRoute pricing](https://azure.microsoft.com/pricing/details/expressroute/). Use the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost. ExpressRoute Direct has a monthly port fee that includes the circuit fee for Local and Standard SKU ExpressRoute circuits. For Premium SKU circuits, there's an additional circuit fee. Outbound data transfer is charged per GB used, depending on the zone number of the peering location. The outbound data charge applies only to Standard and Premium SKUs. For more information, see [Plan and manage costs for Azure ExpressRoute](/azure/expressroute/plan-manage-cost). | Understanding ExpressRoute pricing enables better cost management, informed decision-making, avoidance of unexpected charges and maximization of value. |
+| Determine [circuit SKU and bandwidth](/azure/expressroute/expressroute-circuit-peerings) required. The way you're charged for your ExpressRoute usage varies between the three different SKU types. With the Local SKU, you're automatically charged with an Unlimited data plan. With the Standard and Premium SKUs, you can choose between a Metered or an Unlimited data plan. All ingress data is free of charge, except when using the Global Reach add-on, which incurs additional costs for data transfer between different geographical locations. It's important to review and [resize your ExpressRoute circuit](/azure/expressroute/about-upgrade-circuit-bandwidth).  | It's important to understand which SKU types and data plan works best for your workload to best optimize cost and budget. |
 | Determine the [ExpressRoute virtual network gateway size](/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku). ExpressRoute virtual network gateways are used to pass traffic into a virtual network over private peering. Select the appropriate gateway SKU on your on-premises to Azure workload. Understand ExpressRoute Gateway pricing based on region and type. ExpressRoute Gateways are charged at an hourly rate plus the cost of an ExpressRoute circuit. Configure [scalable ExpressRoute gateways](/azure/expressroute/expressroute-about-virtual-network-gateways#expressroute-scalable-gateway-preview) to set minimum and maximum scale units for the gateway, which autoscales based on active bandwidth or flow count. See [ExpressRoute pricing](https://azure.microsoft.com/pricing/details/expressroute/) and select ExpressRoute Gateways to see rates for different gateway SKUs. | This benefits you by enabling right-sizing of resources, providing flexibility to scale, optimizing performance, and supporting proactive cost management. This approach ensures that you're using resources efficiently and cost-effectively.|
 | [Monitor cost and create budget alerts](/azure/expressroute/plan-manage-cost#monitor-costs). Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. | Monitoring and alerts provide you with tools to control spending, enhance financial planning, ensure accountability, and optimize resource usage. |
 | [Deprovision and delete unused ExpressRoute circuits](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. | ExpressRoute circuits are charged from the moment they're created. To reduce unnecessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. |
@@ -223,9 +218,9 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Configure connection monitoring between your on-premises and Azure network:** Use Connection Monitor to monitor connectivity between your on-premises resources and Azure over the ExpressRoute private peering and Microsoft peering connection.
 >
-> - **Configure dynamic routing for ExpressRoute:** Dynamic routing for ExpressRoute leverages BGP to provide automatic route updates, optimal path selection, scalability, and interoperability for your network.
+> - **Configure dynamic routing for your Microsoft peering enabled ExpressRoute circuit:** Dynamic routing for ExpressRoute leverages BGP to provide automatic route updates, optimal path selection, scalability, and interoperability for your network.
 >
-> - **Configure Service Health for receiving notification:** Set up Service Health notifications to alert you when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription.
+> - **Configure Service Health for receiving notification:** Configure Service Health notifications to alert you when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription.
 >
 > - **Configure Traffic Collector for ExpressRoute:** ExpressRoute Traffic Collector enables the sampling of network flows over your ExpressRoute circuits.
 >
@@ -233,7 +228,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Review ExpressRoute resource metrics:** Use Azure Monitor to collect metrics and create alerts based on your configuration.
 >
-> - **Create alerts based on ExpressRoute metrics:** Set up alerts based on ExpressRoute metrics to proactively notify you when a certain threshold is met.
+> - **Collect and analyze metrics and logs:** Configure alerts based on ExpressRoute metrics to proactively notify you when a certain threshold is met.
 
 ### Recommendations
 
@@ -241,13 +236,14 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Choose the [closest peering locations](/azure/expressroute/expressroute-locations-providers) to your on-premises network to reduce latency and costs. | By choosing the closest peering location to your on-premises network, you can reduce latency and costs, ensuring optimal performance and cost-effectiveness. |
+| Choose the [closest peering locations](/azure/expressroute/expressroute-locations-providers) to your on-premises network to reduce latency and costs.  | By choosing the closest peering location to your on-premises network, you can reduce latency and costs, ensuring optimal performance and cost-effectiveness. |
 | Configure [Connection Monitor](/azure/expressroute/how-to-configure-connection-monitor) between your on-premises and Azure network. | Connection Monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. Connection Monitor is part of Azure Monitor logs. |
-| Configure [dynamic routing](/azure/expressroute/expressroute-routing) for ExpressRoute. | Dynamic routing allows for more efficient and flexible routing, ensuring optimal path selection and automatic updates to routing tables in response to network changes. |
-| Configure [Service Health notifications](/azure/expressroute/maintenance-alerts) o alert you when planned and upcoming maintenance is scheduled for all ExpressRoute circuits in your subscription. Service Health also displays past maintenance events along with Root Cause Analysis (RCA) if an unplanned maintenance event occurs. | Service Health notifications provide timely alerts about planned and unplanned maintenance, outages, and early warnings about potential issues. This allows you to stay informed about the status of your ExpressRoute circuits. |
+| Configure [dynamic routing](/azure/expressroute/expressroute-routing#dynamic-route-exchange) your Microsoft peering enabled ExpressRoute circuit. | Dynamic routing allows for more efficient and flexible routing, ensuring optimal path selection and automatic updates to routing tables in response to network changes. |
+| Configure [Service Health notifications](/azure/expressroute/maintenance-alerts) to alert you when planned and upcoming maintenance is scheduled for all ExpressRoute circuits in your subscription. Service Health also displays past maintenance events along with Root Cause Analysis (RCA) if an unplanned maintenance event occurs. For more information on how to integrate with the overall health model for your workload, see [Health modeling for workloads](/azure/well-architected/cross-cutting-guides/health-modeling).  | Service Health notifications provide timely alerts about planned and unplanned maintenance, outages, and early warnings about potential issues. This allows you to stay informed about the status of your ExpressRoute circuits. |
 | Configure [Traffic Collector for ExpressRoute](/azure/expressroute/how-to-configure-traffic-collector) | ExpressRoute Traffic Collector enables the sampling of network flows over your ExpressRoute circuits. It supports both Private peering and Microsoft peering, providing near real-time visibility into network throughput and performance. |
 | Review metrics with Network Insights. [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place. | Network Insights offers a centralized platform to monitor various metrics across ExpressRoute circuits, gateways, and connections, providing a comprehensive view of network health and performance. |
-| Review ExpressRoute [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts). ExpressRoute uses Azure Monitor to collect metrics and create alerts based on your configuration.|  Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
+| Review ExpressRoute resource metrics. Use [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview) to collect metrics and create alerts based on your configuration. | Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
+| Review ExpressRoute [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts). ExpressRoute uses Azure Monitor to collect metrics and create alerts based on your configuration. Follow the [recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to implement your monitoring strategy for ExpressRoute and your workloads.|  Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
 
 ## Performance efficiency
 
@@ -257,35 +253,25 @@ The [Performance Efficiency design principles](/azure/well-architected/scalabili
 ### Design checklist
 
 Start your design strategy based on the design review checklist for Performance Efficiency for defining a baseline based on key performance indicators for Azure ExpressRoute.
-
-Plan for scaling the network to meet the demands of the workloads. Scaling can be achieved by upgrading the ExpressRoute circuit bandwidth, increasing the size of the ExpressRoute Virtual Network Gateway, and enabling FastPath for higher throughput. You may face downtime or extra costs if they did not plan for scaling correctly. You should scale correctly when it comes to circuit planning and gateway planning.
-
-You should use [Azure Advisor](/azure/advisor/advisor-overview) to get monitoring suggestions for ExpressRoute resources. You should configure scalable gateways.
-Consider upgrading your virtual network gateway SKU to maintain performance in your network. For more information, see [ExpressRoute Virtual Network Gateway](/azure/expressroute/expressroute-about-virtual-network-gateways).
+Plan for scaling the network to meet the demands of your workloads. Failure to plan for scaling correctly may result in downtime or extra costs. Ensure proper scaling when it comes to both circuit planning and gateway planning.
 
 > [!div class="checklist"]
 >
-> - **Plan for scaling your ExpressRoute circuits:** Choose the right ExpressRoute circuit SKU based on your scalability requirements through varied features and limits. The Local, Standard, and Premium SKUs offers different levels of connectivity, access, and performance capabilities, allowing organizations to choose the most appropriate option based on their specific needs.
+> - **Test ExpressRoute gateway performance to meet work load requirements:** Use the Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection.
 >
-> - **Plan for scaling your ExpressRoute circuits:**  Choose the right ExpressRoute Virtual Network Gateway SKU based on your scalability requirements through varied features and limits. Take into consideration the performance, feature, and routing needs of your network when selecting the ExpressRoute Virtual Network Gateway SKU.
+> - **Plan for scaling your ExpressRoute circuits:** Choose the right ExpressRoute circuit SKU based on your scalability requirements through varied features and limits.
+>
+> - **Plan for scaling your ExpressRoute Virtual Network Gateway:**  Choose the right ExpressRoute Virtual Network Gateway SKU based on your scalability requirements through varied features and limits. Take into consideration the performance, feature, and routing needs of your network when selecting the ExpressRoute Virtual Network Gateway SKU.
 >
 > - **Configure Scalable Gateways to automatically scale for performance:** Scalable Gateway allows you to scale up and down automatically with your gateway instances to accommodate performance needs. This feature is only available for the *ErGwScale* SKU.
 >
-> - **Enable ExpressRoute FastPath on your virtual network gateway:** Enable ExpressRoute FastPath for higher throughput and bypassing the gateway in the data-path. This feature is only available for the *ErGW3AZ* and *Ultra performance* SKU.
+> - **Enable ExpressRoute FastPath on your virtual network gateway:** Enable ExpressRoute FastPath for lower latency, higher throughput, bypassing the gateway in the data-path. This feature is only available for the *ErGW3AZ* and *Ultra performance* SKU.
 >
 > - **Monitor performance targets with Connection Monitor:** Monitor the performance of your ExpressRoute connection to ensure that it meets your performance targets.
 >
-> - **Test ExpressRoute gateway performance to meet work load requirements:** Use the Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection.
->
-> - **Increase the size of the ExpressRoute gateway.** Upgrade to a higher SKU for improved throughput performance between on-premises and Azure environment to meet your work load requirements.
->
-> - **Upgrade the ExpressRoute circuit bandwidth:** Upgrade your circuit bandwidth to meet your work load requirements.
->
 > - **Create or evaluate operation scheduling for your organization:** Schedule bandwidth-intensive operations such as backups at times of low production traffic.
 >
-> - **Enable ExpressRoute FastPath for higher throughput:** If you're using an Ultra performance or an ErGW3AZ virtual network gateway, you can enable FastPath to improve the data path performance between your on-premises network and Azure virtual network.
->
-> - **Monitor the ExpressRoute circuit and gateway metrics:** Monitor the performance of your ExpressRoute connection by setting up alerts based on ExpressRoute metrics to proactively notify you when a certain threshold is met.
+> - **Monitor ExpressRoute circuit, port, and gateway metrics:** Monitor the performance of your ExpressRoute connection by setting up alerts based on ExpressRoute metrics to proactively notify you when a certain threshold is met.
 
 ### Recommendations
 
@@ -293,15 +279,14 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Plan for scaling of ExpressRoute circuits. [Upgrade your ExpressRoute circuit bandwidth](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#upgrade) to meet your production workload requirements. Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your workload, one or more virtual networks can use up all the bandwidth on the circuit. For more information, see [ExpressRoute limits](/azure/expressroute/expressroute-faqs#limits).  | Upgrading the bandwidth ensures that the network can handle increasing data volumes and more users without compromising performance. |
-| Enable [ExpressRoute FastPath](/azure/expressroute/about-fastpath) for higher throughput on your virtual network gateway. | FastPath provides higher throughput and bypasses the gateway in the data path, improving the performance of your ExpressRoute connection. |
-| Monitor performance targets with [Connection Monitor](/azure/network-watcher/connection-monitor-overview). | Connection Monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
 | Test ExpressRoute gateway performances to meet work load requirements with the [Azure Connectivity Toolkit](/azure/expressroute/expressroute-troubleshooting-network-performance#azurect---the-azure-connectivity-toolkit). | The toolkit provides user-friendly tools and interfaces that simplify the process of configuring and managing network connections to Azure. The toolkit includes tools to optimize network performance, ensuring efficient and reliable connectivity to Azure services. |
-| Increase the size of the [ExpressRoute gateway](/azure/expressroute/expressroute-about-virtual-network-gateways) . | Upgrading to a larger gateway SKU provides higher throughput capabilities, allowing more data to be transferred between on-premises networks and Azure more quickly. A larger gateway can manage more simultaneous connections and higher volumes of traffic, reducing the likelihood of network congestion and bottlenecks. |
+| Plan for scaling of ExpressRoute circuits. [Upgrade your ExpressRoute circuit bandwidth](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#upgrade) to meet your production workload requirements. Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your workload, one or more virtual networks can use up all the bandwidth on the circuit. For more information, see [ExpressRoute limits](/azure/expressroute/expressroute-faqs#limits).  | Upgrading the bandwidth ensures that the network can handle increasing data volumes and more users without compromising performance. |
+| Plan for scaling of ExpressRoute Virtual Network Gateway. [Upgrade your ExpressRoute Virtual Network Gateway SKU](/azure/expressroute/expressroute-about-virtual-network-gateways) to meet your production workload requirements. | Upgrading to a larger gateway SKU provides higher throughput capabilities, allowing more data to be transferred between on-premises networks and Azure more quickly. A larger gateway can manage more simultaneous connections and higher volumes of traffic, reducing the likelihood of network congestion and bottlenecks. |
+| Configure [Scalable Gateways](/azure/expressroute/expressroute-about-virtual-network-gateways#expressroute-scalable-gateway-preview) to automatically scale for performance. | Scalable Gateways allows you to scale up and down automatically with your gateway instances to accommodate performance needs. ErGwScale SKU also enables you to achieve 40-Gbps connectivity to virtual machines and Private Endpoints within the virtual network. |
+| Enable [ExpressRoute FastPath](/azure/expressroute/about-fastpath) for higher throughput on your virtual network gateway. If you're using an *Ultra performance* or an *ErGW3AZ* virtual network gateway SKU, you can enable ExpressRoute FastPath to improve the data path performance between your on-premises network and your virtual network resources by bypassing the gateway. | As business needs grow, FastPath provides the necessary bandwidth and performance to support increasing data volumes and more users without compromising performance. Enabling FastPath ensures that the network can handle future expansions and new applications, providing long-term performance efficiency. |
+| Monitor performance targets with [Connection Monitor](/azure/network-watcher/connection-monitor-overview). | Connection Monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
 | Upgrade ExpressRoute [circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth).  |  Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your work load, one or more virtual networks can use up all the bandwidth on the circuit.  |
-| Create or evaluate operation scheduling for your organization. | Scheduling bandwidth-intensive operations such as backups at times of low production traffic can help optimize network performance and ensure that critical workloads aren't impacted by high network traffic. |
-| Enable [ExpressRoute FastPath](/azure/expressroute/about-fastpath) for higher throughput. | As business needs grow, FastPath provides the necessary bandwidth and performance to support increasing data volumes and more users without compromising performance. Enabling FastPath ensures that the network can handle future expansions and new applications, providing long-term performance efficiency.  |
-| Monitor [ExpressRoute circuit and gateway metrics](/azure/expressroute/monitor-expressroute).  | These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. |
+| Monitor [Monitor ExpressRoute circuit, port, and gateway metrics](/azure/expressroute/monitor-expressroute). Configure alerts for ExpressRoute metrics to proactively notify you when a certain threshold is met. [ExpressRoute circuit metrics](/azure/expressroute/monitor-expressroute-reference#supported-metrics-for-microsoftnetworkexpressroutecircuits) supports metrics such as Arp Availability, BitsInPerSecond, DroppedInBitsPerSecond. [ExpressRoute port metrics](/azure/expressroute/monitor-expressroute-reference#supported-metrics-for-microsoftnetworkexpressrouteports) supports metrics such as AdminState, BitsInPerSecond, and FastPathRoutesCount. [ExpressRoute Gateway metrics](/azure/expressroute/monitor-expressroute-reference#supported-metrics-for-microsoftnetworkexpressroutegateways) supports metrics such as Bits In Per Second, Active Flows, and Count Of Routes Advertised to Peer | These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. |
 
 ## Azure Policy
 
