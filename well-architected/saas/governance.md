@@ -1,5 +1,5 @@
 ---
-title: Governance for SaaS Workloads for ISVs
+title: Governance for SaaS Workloads on Azure
 description: Learn about governance to reduce risks, help ensure compliance, and support your organization's business objectives.
 author: joshuawaddell
 ms.author: jowaddel
@@ -7,7 +7,7 @@ ms.date: 10/24/2024
 ms.topic: conceptual
 ---
 
-# Governance for SaaS workloads for ISVs
+# Governance for SaaS workloads on Azure
 
 
 Governance is the set of controls, practices, and tools that you can use to organize, control, and help regulate your use of cloud services. You can think of governance as a series of guardrails that set standards for acceptable use, prevent unauthorized access and modifications, and align cloud activities with your overall cloud strategy. Effective governance reduces risks, helps ensure compliance, and supports your organization's business objectives. When you build a software as a service (SaaS) solution, it's crucial to prioritize governance from the start. This approach lays the groundwork for a secure, cost-effective, and efficient solution.
@@ -16,7 +16,7 @@ Governance is the set of controls, practices, and tools that you can use to orga
 
 To help ensure the success of your business, it's critical to understand the costs to run your solution. You need to analyze, manage, and optimize these costs effectively while maintaining control over them. When you start building your solution on Azure, you can use tools like the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate your costs. After you deploy resources, you can use [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) to analyze, manage, and optimize your cloud spending.
 
-For more information about how to track and control costs for SaaS and how to bill your customers, see [Usage monitoring and billing for SaaS workloads on Azure](./billing-cost-management.md).
+For more information about how to track and control costs for SaaS and how to bill your customers, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 
@@ -28,13 +28,13 @@ For more information about how to track and control costs for SaaS and how to bi
   - The associated workload.
   - The environment in which it's used, such as production, staging, or development.
   - The location of the resource.
-  - The customer or group of customers that uses the resource, specifically for customer-specific deployments.
+  - The customer or group of customers that uses the resource, for customer-specific deployments.
 
 - **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you define organization standards and evaluate the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
 
   Use Azure Policy to create a service catalog of permitted services and service types that's customized for your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Enforce policies uniformly across all users and principals, regardless of their permission level.
 
-- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.
+- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations (FinOps) tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.
 
   Cost Management provides several tools to support cost governance, such as:
 
@@ -63,7 +63,7 @@ For more information about how to track and control costs for SaaS and how to bi
 
 Security and compliance are foundational design principles for a cloud workload and a key component of proper cloud governance. Security controls, such as [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview), help determine the actions that users can perform in your environment. Compliance controls, such as [Azure Policy](/azure/governance/policy/overview), help you achieve specific regulatory compliance standards for your deployed workloads.
 
-When you develop a SaaS solution, your customers depend on you to safeguard their data and support their business operations. To operate a SaaS solution on behalf of customers, you must meet or exceed their security expectations. You might also need to meet specific compliance requirements imposed by your customers. This requirement is common with clients in regulated industries like healthcare and financial services and for many enterprise customers.
+When you develop a SaaS solution, your customers depend on you to safeguard their data and support their business operations. To operate a SaaS solution on behalf of customers, you must meet or exceed their security expectations. You might also need to meet specific compliance requirements imposed by your customers. This requirement is common with customers in regulated industries like healthcare and financial services and for many enterprise customers.
 
 ### Design considerations
 
@@ -92,7 +92,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
   - [Azure RBAC](/azure/role-based-access-control/overview) is the authorization system that controls access to the Azure control plane and the resources in your environment. Azure RBAC is a collection of predefined and custom roles that determine what actions you can take against Azure resources. Roles are categorized as [privileged administrator roles](/azure/role-based-access-control/role-assignments-steps#privileged-administrator-roles) and [job function roles](/azure/role-based-access-control/role-assignments-steps#job-function-roles). These roles limit what you can do to a set of resources in a scope that you define. Azure RBAC can grant least privileged access to anyone that manages the workload.
 
-  - [Azure locks](/azure/azure-resource-manager/management/lock-resources?tabs=json) can help prevent accidental deletions and modifications of your Azure resources. When you apply a lock to a resource, even users who have privileged administrator roles can't delete the resource unless they delete the lock first.
+  - [Azure locks](/azure/azure-resource-manager/management/lock-resources) can help prevent accidental deletions and modifications of your Azure resources. When you apply a lock to a resource, even users who have privileged administrator roles can't delete the resource unless they explicitly delete the lock first.
 
 - **Comply with regulatory standards.** Many customers need to place strict controls on their resources to meet specific compliance regulations. Azure provides multiple tools to help your organization build a solution on Azure that meets your compliance needs.
 
@@ -106,7 +106,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
   - [Microsoft Defender for Cloud](/azure/defender-for-cloud/) provides a continual assessment of the configuration of your resources against compliance controls and best practices in the standards and benchmarks that you apply in your subscriptions. Defender for Cloud calculates an overall compliance score, which helps you determine changes that you need to make.
 
-    By default, Defender for Cloud uses the [Microsoft cloud security benchmark (MCSB)](/security/benchmark/azure/overview) as a baseline standard for security and compliance-based practices. The MCSB is a set of compliance controls provided by Microsoft that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings, including FedRAMP High, HIPAA HITRUST, PCI DSS, and ISO 27001.
+    By default, Defender for Cloud uses the [Microsoft cloud security benchmark (MCSB)](/security/benchmark/azure/overview) as a baseline standard for security and compliance-based practices. The MCSB is a set of compliance controls provided by Microsoft that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings.
    
    > [!TIP]
    > Even if you don't need to immediately comply with a regulatory standard, you should anyway. It's much easier to adhere to a standard like MCSB from when you start to deploy your solution than it is to retroactively apply it later.
