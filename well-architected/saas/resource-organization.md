@@ -1,6 +1,6 @@
 ---
 title: Resource Organization for SaaS Workloads on Azure
-description: Learn about strategies for choosing the right Azure regions for your resources and developing a resource organization strategy to support the growth and evolution of your SaaS solution.
+description: Learn strategies for how to choose the right Azure regions for your resources and develop a resource organization strategy to support the growth and evolution of your SaaS solution.
 author: MikeBazMSFT
 ms.author: prwilk
 ms.date: 11/01/2024
