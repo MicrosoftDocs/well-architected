@@ -39,6 +39,8 @@
           href: reliability/checklist.md
         - name: Tradeoffs
           href: reliability/tradeoffs.md
+        - name: Maturity model
+          href: reliability/maturity-model.md
         - name: Recommendations   
           items:
             - name: Reliability patterns
