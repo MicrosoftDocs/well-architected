@@ -98,7 +98,9 @@ For more guidance about cost management, see [Billing and cost management for Sa
     > Refer to [RE:06 Recommendations for reliable scaling](/azure/well-architected/reliability/scaling).
 
 - **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you'll eventually hit limits in your solution's scalability, such as networking or storage constraints.
->    [!NOTE] The  [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution, providing an additional scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
+
+  > [!NOTE]
+  > The [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution, providing an additional scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
 
 ### Design recommendations
 
