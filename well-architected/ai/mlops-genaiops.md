@@ -1,69 +1,65 @@
 ---
-title: MLOps and GenAIOps for AI workloads on Azure
-description: MLOps and GenAIOps for AI workloads on Azure for running AI workloads.
+title: MLOps and GenAIOps for AI Workloads on Azure
+description: Use MLOps and GenAIOps for AI workloads on Azure. Learn design strategies for operations and get tool recommendations.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # MLOps and GenAIOps for AI workloads on Azure
 
-AI workload operations are mainly centered around curation of data and consumption of that data. Operations ensure efficiency in achieving and maintaining the quality, reliability, security, ethical, and other standards that you prioritize for the workload. 
+AI workload operations are mainly centered on curation of data and consumption of that data. Operations ensure efficiency in achieving and maintaining the quality, reliability, security, ethical, and other standards that you prioritize for the workload. 
 
-The workload tasks can be categorized into three main areas: application development, data handling, and AI model management. Each category should adopt industry-proven operational methodologies, such as **DevOps, DataOps, MLOps, and GenAIOps** practices.
+The workload tasks can be categorized into three main areas: application development, data handling, and AI model management. Each category should adopt industry-proven operational methodologies, like **DevOps, DataOps, MLOps, and GenAIOps**.
 
-DevOps activities cover the entire **application development lifecycle management** through automated CI/CD pipelines and monitoring. However, for AI workloads, data pipeline is one of the core components. DataOps, a specialization of DevOps, focuses on **managing the data lifecycle** by streamlining processes like data extraction, transformation, and loading (ETL/ELT). DataOps practitioners typically measure data flow performance, efficacy of data cleansing, and monitor the pipeline for anomalies. 
+DevOps activities cover the entire **application development lifecycle management** through automated CI/CD pipelines and monitoring. However, for AI workloads, the data pipeline is one of the core components. DataOps, a specialization of DevOps, focuses on **managing the data lifecycle** by streamlining processes like data extraction, transformation, and loading (ETL/ELT). DataOps practitioners typically measure data flow performance and the efficacy of data cleansing and monitor the pipeline for anomalies. 
 
-AI workloads are inherently non-deterministic. Many AI models are prone to producing different answers for the same inquiry during inference. These workloads need processes that can manage and adapt to the unpredictability of AI outputs. DataOps extends into MLOps, which **operationalizes machine learning workflows** for model training and testing. GenAIOps, a specialized subset of MLOps, targets generative AI solutions, involving tasks like **model discovery and refining pretrained models** with enriched data. 
+AI workloads are inherently non-deterministic. Many AI models are prone to producing different answers for the same inquiry during inference. These workloads need processes that can manage and adapt to the unpredictability of AI outputs. DataOps extends into MLOps, which **operationalizes machine learning workflows** for model training and testing. GenAIOps, a specialized subset of MLOps, targets generative AI solutions. It involves tasks like **model discovery and refining pretrained models** with enriched data. 
 
-Operational activities often overlap and vary in their level of involvement. For instance, in discriminative AI, DataOps play a major role, while DevOps activities are less prominent. Conversely, in generative AI, operational excellence relies more heavily on DevOps than DataOps.  
+Operational activities often overlap, and the different methodologies apply to varying degrees. For instance, in discriminative AI, DataOps plays a major role, while DevOps activities are less prominent. Conversely, in generative AI, operational excellence relies more heavily on DevOps than DataOps.
 
 Regardless, the overall goal is capability delivery with efficient operations throughout the development lifecycle. The expected outcomes are:
 
 - Repeatable processes with consistent results.
 - Sustained accuracy of the models over time.
-- Effective governance that minimize risks.
-- Change management processes for adapting to model drifts.
+- Effective governance that minimizes risks.
+- Change management processes for adapting to model drift.
 
-Consider **automation and monitoring as your key operational strategy** to achieve those goals. 
+**Automation and monitoring are your key operational strategies** to achieve those goals. 
 
-You also need to **establish standardized processes for AI components**, whether it's for routine, ad hoc, and emergency operations, with proper tracking mechanism in place. Without those processes, you run the risk of:
+You also need to **establish standardized processes for AI components**, for routine, ad hoc, and emergency operations, and have proper tracking mechanisms in place. Without those processes, you run the risk of:
 
-- Repeated errors and non-reproducibility in data processing, model hosting, and grounding data management, and other tasks. 
+- Repeated errors and non-reproducibility in data processing, model hosting, grounding data management, and other tasks. 
 - Low quality or stale data used for model training and refinement.
-- Impacting end user confidence in the system, at worse, leading to legal, compliance, or security issues. 
+- Affecting end user confidence in the system, in the worst case leading to legal, compliance, or security issues. 
 
-Established processes must be implemented with the **right set of tools**. There are specialized tools available for managing AI/ML workflows across environments. 
+You must implement established processes with the **right set of tools**. Specialized tools are available for managing AI / machine learning workflows across environments. 
 
-This article focuses on the design strategy for operations and has recommendations on tooling choices.
-
+This article focuses on the design strategy for operations and provides tool recommendations.
 
 ## Workload operations lifecycle
 
-This image illustrates the operational stages for AI models, including data gathering, cleaning to eliminate inconsistencies or errors, and transforming the data into an analyzable format. These stages are relevant for training both discriminative models and grounding data in generative models. However, the specific use case of training generative models is not depicted in this image and falls outside the scope of this article. 
+This image illustrates the operational stages for AI models, including data gathering, cleaning data to eliminate inconsistencies or errors, and transforming data into an analyzable format. These stages are relevant for training both discriminative models and grounding data in generative models. However, the specific use case of training generative models isn't depicted in this image. That use case falls outside the scope of this article.
 
-![A conceptual image showing the activities related to MLOps and GenAIOps](./images/mlops-genaiops.png)
+:::image type="content" source="./images/mlops-genaiops.png" alt-text="Diagram showing MLOps and GenAIOps activities." lightbox="./images/mlops-genaiops.png":::
 
+The stages of MLOps and GenAIOps are similar. The main difference is that, in the case of GenAIOps, the focus shifts from training to selecting the right model, prompt engineering, and incorporating domain-specific knowledge through fine-tuning or implementing Retrieval Augmented Generation (RAG). 
 
-Comparing MLOps to GenAIOps, the stages are similar. The main difference is that in the case of GenaAIOps, the focus shifts from training to selecting the right model, prompt engineering, and incorporating domain-specific knowledge through fine-tuning or implementing Retrieval Augmented Generation (RAG). 
+Even the stages for deploying and monitoring are fairly similar.
 
-Even other stages for deploying and monitoring are fairly similar.
-
-The following sections describe the common operational practices covering every stage of the lifecycle from preproduction to production. 
-
+The following sections describe the common operational practices. They cover every stage of the lifecycle, from preproduction to production.
 
 #### DataOps
 
-Data is aggregated from various production data sources, and then preprocessed to remove errors, inconsistencies, and handle missing values. Finally, it's transformed and normalized into a suitable format for training or enrichment purposes. The design aspects are described in the [Training data](./training-data-design.md) and [Grounding data](./grounding-data-design.md) articles.  
+Data is aggregated from various production data sources and then preprocessed to remove errors and inconsistencies and to handle missing values. Finally, it's transformed and normalized into a suitable format for training or enrichment. Aspects of design are described in the [Training data](./training-data-design.md) and [Grounding data](./grounding-data-design.md) articles.  
 
-The data operations processes in this stage should be efficient because **handling large volumes of data** from multiple sources and complex data pipelines can be challenging. The approaches taken need to ensure that this phase **produces high quality data**. Monitor this stage to track progress towards the acceptable quality bar.
+The data operations processes during this stage should be efficient because **handling large volumes of data** from multiple sources and complex data pipelines can be challenging. The approaches that you take need to ensure that this phase **produces high quality data**. Monitor this stage to track progress toward the acceptable quality bar.
   
-Also, data security should be ensured, given that this data from production. Make sure that lower environments, such as Dev/Test, are as secure as production to prevent any security issues.
+You also need to ensure that data is secure, given that the data is from production. Make sure that lower environments, like Dev/Test, are as secure as production to help prevent any security issues.
 
 > [!NOTE]
->   
-> Address poor quality data by investing in extensive data cleaning during the initial phases. Take advantage of the well-known analytics patterns, such as medallion, data mesh, feature stores, to do upstream processing tasks. If the upstream phases are ineffective, quality must be improved in the downstream phases, leading to increased workload costs associated with data preparation at each stage.
+> Address poor quality data by investing in extensive data cleaning during the initial phases. Take advantage of the well-known analytics patterns, like medallion, data mesh, and feature stores, to do upstream processing tasks. If the upstream phases are ineffective, you need to improve quality during the downstream phases, which leads to increased workload costs because data preparation occurs during each stage.
 >
 > For information about data processing tasks, see these articles:
 >   - [Data preprocessing for training data](./training-data-design.md#data-preprocessing)
@@ -71,41 +67,39 @@ Also, data security should be ensured, given that this data from production. Mak
 
 ##### Tools
 
-It's recommended that you standardize your workload's use of data orchestration tools. The tools should be able to provide a data pipeline that can group activities and has built-in automation.
+We recommend that you standardize your workload's data orchestration tools. The tools should be able to provide a data pipeline that can group activities and that has built-in automation.
 
-[Azure Data Factory](/fabric/data-factory/data-factory-overview) pipeline can be an initial choice. It has the capability to connect and process many data sources with efficiency. You can also consider [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) that combines big data and data warehousing, featuring Data Lake, Apache Spark, and Synapse T-SQL. It also integrates with Azure Data Factory for ETL capabilities.
+A [Azure Data Factory](/fabric/data-factory/data-factory-overview) pipeline can be an initial choice. It can connect and process many data sources efficiently. You can also consider [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is), which combines big data and data warehousing and supports data lakes, Apache Spark, and Azure Synapse SQL. It also integrates with Data Factory for ETL.
 
-For preparing training data, [Azure Maching Learning pipeline](/azure/machine-learning/concept-ml-pipelines) offers specialized features that can automate tasks such as data collection and processing. 
+For preparing training data, [Azure Maching Learning pipelines](/azure/machine-learning/concept-ml-pipelines) provide specialized features that can automate tasks like data collection and processing.
 
-Certain open source software like Pandas (for data preparation) and Scrapy are popular choices.
-
-
+Open-source technologies like Pandas (for data preparation) and Scrapy are popular choices.
 
 #### MLOps
 
-Model training involves selecting appropriate algorithms and providing them with preprocessed historical data and observations to learn patterns and make predictions.
+Model training is the process of selecting appropriate algorithms and providing them with preprocessed historical data and observations to enable the model to learn patterns and make predictions.
 
-Training the model (feature engineering) and hyperparameter tuning are iterative processes and expensive. In each iteration, data scientists track results with combinations of data, code, and parameters. **Use repeatable pipelines for tracking experiements** with minimum manual effort until the right level of accuracy is achieved. 
+Training the model (feature engineering) and hyperparameter tuning are iterative processes, and they're expensive. During each iteration, data scientists track results with combinations of data, code, and parameters. **Use repeatable pipelines to track experiements** with minimum manual effort until the right level of accuracy is achieved.
 
-Another operational challenge is provisioning and scaling of **specialized compute resources** where experiments are conducted. Also **packaging and publishing models** should be done efficiently. 
+Another operational challenge is provisioning and scaling **specialized compute resources** where experiments are conducted. Also, you should **package and publish models** efficiently.
 
-Teams may start with UI-based development for ease, but as they become more confident, transition to a code-based approach.
+Teams can start with UI-based development to reduce challenges, and, as they become more confident, transition to a code-based approach.
 
 ##### Tools
 
-We recommended that you use tools that can **track machine learning experiments** by capturing details such as code versions, environments, parameters, runs, and results. MLFlow is one such open-source framework. Consider using Azure Machine Learning (AML) Workspaces that are [MLFlow-compatible](/azure/machine-learning/concept-mlflow) and provide a streamlined workflow for data scientists, managing productivity and reproducibility in their projects. To manage code development with source control tracking, integrate the ML pipeline with source control like GitHub or use file shares.
+We recommended that you use tools that can **track machine learning experiments** by capturing details like code versions, environments, parameters, runs, and results. MLflow is one such open-source framework. Consider using Azure Machine Learning workspaces, which are [MLflow-compatible](/azure/machine-learning/concept-mlflow) and provide a streamlined workflow that enables data scientists to manage productivity and reproducibility in their projects. To manage code development with source control tracking, integrate the machine learning pipeline with source control like GitHub, or use file shares.
 
-The hosting compute can also influence the choice of a workflow orchestrator. If your application is hosted on Azure Kubernetes Solution (AKS), consider Kubeflow. 
+The hosting compute can also influence your choice of a workflow orchestrator. If your application is hosted on Azure Kubernetes Service (AKS), consider using Kubeflow.
 
-If you're considering AML, we recommend starting with the [Azure Well-Architected Framework perspective on Azure Machine Learning](/azure/well-architected/service-guides/azure-machine-learning) to make sure you understand how this product can help the WAF quality concerns of the workload.
+If you're considering Azure Machine Learning, we recommend that you start with the [Azure Well-Architected Framework perspective on Machine Learning](/azure/well-architected/service-guides/azure-machine-learning) to make sure you understand how the product can help you with the Well-Architected Framework quality concerns of the workload.
 
-Part of the benefit of the process is to optimize personal time. Data scientists typically need specific tools and SDKs to effectively conduct exploratory data analysis (EDA) and experimentation from their workstations. Evaluate if prebuilt options in Azure Machine Learning are suitable, if not store workstation configuration or maintain approved VM images for this work. One example of such an image to take as a starting point would be offerings like the [Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine/overview).
+Part of the benefit of the process is to optimize personal time. Data scientists typically need specific tools and SDKs to effectively conduct exploratory data analysis (EDA) and experimentation from their workstations. Evaluate whether prebuilt options in Azure Machine Learning are suitable. If not, store workstation configuration or maintain approved VM images for this work. One example of an image that you can use as a starting point is the [Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine/overview).
 
-Note that in certain cases, use of VMs might be disallowed by policy. Look for alternatives such as adding Microsft DevBox and Azure Virtual Desktop. Also consider using Docker to bootstrap with machines with prebuilt images.
+Note that, in certain cases, the use of VMs might be disallowed by policy. Look for alternatives, like adding Microsft Dev Box and Azure Virtual Desktop. You can also consider using Docker to bootstrap machines that contain prebuilt images.
 
-However, as this stages matures and extended experiements are needed, move to managed compute instance and prefer options that are integrated as part of the workflow. Evaluate if you can use [Azure Machine Learning compute instance](/azure/machine-learning/concept-compute-instance) for training and inferencing for development and testing purposes. The compute clusters are capable of handling large datasets and complex models.
+However, as this stage matures and you need extended experiements, move to managed compute instance and prefer options that are integrated as part of the workflow. Evaluate if you can use [Azure Machine Learning compute instance](/azure/machine-learning/concept-compute-instance) for training and inferencing for development and testing purposes. The compute clusters are capable of handling large datasets and complex models.
 
-AML provides both code-based solutions through the SDK and low-code options such as automated machine learning and the visual designer. The Python SDK offers multiple ways to train models, each with distinct features. Azure ML also supports advanced optimization and distributed computing technologies like ONNX Runtime Trainings ORTModule, DeepSpeed, and LoRA to speed up the training process.
+Azure Machine Learning provides both code-based solutions through the SDK and low-code options such as automated machine learning and the visual designer. The Python SDK offers multiple ways to train models, each with distinct features. Azure ML also supports advanced optimization and distributed computing technologies like ONNX Runtime Trainings ORTModule, DeepSpeed, and LoRA to speed up the training process.
 
 #### GenAIOps
 
