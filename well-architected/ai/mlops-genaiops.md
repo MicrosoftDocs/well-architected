@@ -3,7 +3,7 @@ title: MLOps and GenAIOps for AI workloads on Azure
 description: MLOps and GenAIOps for AI workloads on Azure for running AI workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 04/15/2024
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
