@@ -1,6 +1,6 @@
 ---
 title: Data Platform for AI Workloads on Azure
-description: Data sources on Azure for running AI workloads.
+description: Learn about functional and nonfunctional data source considerations for your data platform for AI Workloads on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -23,7 +23,7 @@ Ask yourself the following questions so that you can avoid designing an overly c
 
 If you answer yes to these questions, then you can simplify your architecture by allowing the application to access the data source directly. This approach eliminates the need for big data architecture components like data ingestion, analytical store integration, and external data processing. If the source database can handle the required searches, integrating the search index capability directly into the source database can be a practical approach. Make sure that the source can cost-effectively scale to meet new demands.
 
-For instance, Azure Cosmos DB supports vector search, so you might not need an additional index. Another use case is to use read replicas as endpoints for search operations. For SQL databases with read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
+For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases with read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
 
 Data platform architecture for large-scale workloads is more complex. 
 
@@ -40,7 +40,7 @@ In AI workloads, data moves through various stages of storage and processing wit
 > [!NOTE] 
 > An alternative approach is to directly access data sources. However, this approach can lead to performance problems because it might overload the source systems with AI features. There can also be data access problems. To avoid these problems, we recommend that you copy data to this store.
 
-The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you acheive just enough reliability and performance.
+The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you achieve just enough reliability and performance.
 
 The following section provides guidance on the capabilities to consider when you select a data store technology. For details on data processing, see [Data processing pipelines](#considerations-for-processing-data).
 
@@ -86,13 +86,13 @@ The following section provides guidance on the capabilities to consider when you
 
   When you choose a data platform for AI or machine learning, don't rely just on its notebook capabilities. Although notebooks are useful for exploratory data analysis, they shouldn't be the deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They're usually integrated with other resources, such as in Azure Machine Learning.
 
-### Non-functional requirements
+### Nonfunctional requirements
 
 - **How much data do you expect to store?**
 
   AI workloads generate a lot of data. Volume can increase significantly due to multiple versions and added metadata. 
   
-  Scalability for storage and throughput is important. The data platform must efficiently consume data from the ingestion pipeline while it handles data volume, manages concurrent writes, and ensures individual write performance without degradation. Those criteria also apply to the processing pipeline that reads, processes, and perhaps even writes back to the store.
+  Scalability for storage and throughput is important. The data platform must efficiently consume data from the ingestion pipeline while it handles data volume, manages concurrent writes, and ensures individual write performance without degradation. Those criteria also apply to the processing pipeline that reads, processes, and even writes back to the store.
   
   When you make a decision, consider the entire process because ingestion and processing often occur simultaneously. The design must be able to manage frequent data movement and processing. The data platform should offer high levels of parallelism to process data effectively.
 
@@ -100,11 +100,11 @@ The following section provides guidance on the capabilities to consider when you
 
 - **Is this data store a critical component that contributes to the reliability target of the workload?**
 
-  Choose a data store that enhances both reliability and scalability by using multiple instances. Big data stores often have a built-in controller that orchestates data processing across instances. If one copy fails, then another can be used.
+  Choose a data store that enhances both reliability and scalability by using multiple instances. Big data stores often have a built-in controller that orchestrates data processing across instances. If one copy fails, then another can be used.
 
-  Keep in mind that data won't serve its purpose if it isn't correct or accessible. The data platform should guarantee durability and make sure that the data remains intact. Make sure that the APIs that query the data are accessible. Additionally, consider data stores that have backup features.
+  Keep in mind that data doesn't serve its purpose if it isn't correct or accessible. The data platform should guarantee durability and make sure that the data remains intact. Make sure that the APIs that query the data are accessible. Additionally, consider data stores that have backup features.
 
-  In general, you don't need to back up this data. However, if the cost of aggregating data each time from scratch is significatly high, you can consider rehydrating the data from a backup.
+  In general, you don't need to back up this data. However, if the cost of aggregating data from scratch each time is high, you can consider rehydrating the data from a backup.
 
 - **Do you have any cost constraints?**
 
@@ -168,7 +168,7 @@ The following section provides guidance about the capabilities to consider when 
 
   In certain use cases, you might want to externalize this responsibility to the consumer of the data. For example, AI models that use machine learning offer job processing capabilities to read, manipulate, and write data by using custom Python code.
 
-  Another example is RAG implementation. A common processing step is chunking, where a document is divided into multiple chunks, and each chunk becomes a row in the index. It also stores embeddings, which are often generated by an OpenAI service, for these chunks. In AI searches, this process is orchestrated within the indexing workflow, whether by using OpenAI or Azure AI Search.
+  Another example is RAG implementation. A common processing step is chunking, where a document is divided into multiple chunks, and each chunk becomes a row in the index. It also stores embeddings, which an OpenAI service often generates, for these chunks. In AI searches, this process is orchestrated within the indexing workflow, whether by using OpenAI or Azure AI Search.
   
 - **Is there a built-in orchestrator for managing workflows?**
   
@@ -178,143 +178,139 @@ The following section provides guidance about the capabilities to consider when 
 
   Data design is an iterative process, so the orchestrator tool should be flexible enough to modify workflows easily. You should be able to inject new steps or adjust existing ones without rewriting large portions of code.
 
-  Data Factory is a popular choice because it provides a rich feature set for managing data workflows. Azure DataBricks can also manage complex workflows and schedule and monitor jobs. You should also consider the cost implications. For example, Azure Databricks features might be extensive, but they're also costly. An open-source alternative option, such as Apache NiFi, might be more cost effective.
+  Data Factory is a popular choice because it provides a rich feature set for managing data workflows. Azure Databricks can also manage complex workflows and schedule and monitor jobs. You should also consider the cost implications. For example, Azure Databricks features might be extensive, but they're also costly. An open-source alternative option, such as Apache NiFi, might be more cost effective.
 
   Ultimately, which tool you choose depends on what your organization allows and the skills that the workload team is comfortable with.
 
-### Non-functional requirements
+### Nonfunctional requirements
 
-When you choose a processing pipeline, it's crucial to balance throughput and observability. The pipeline must reliably process and land the necessary data for models or indexes within a sufficient timeframe. It should be lightweight enough to support current needs while being scalable for future growth. Teams must decide how much future-proofing is needed from platform to avoid technical debt later. Key considerations include the frequency and volume of data ingestion, the reliability of the process, and the need for observability to monitor and address problems promptly.
+When you choose a processing pipeline, it's crucial to balance throughput and observability. The pipeline must reliably process and land the necessary data for models or indexes within a sufficient timeframe. It should be lightweight enough to support your current needs and be scalable for future growth. Teams must decide how much they need to future-proof the platform to avoid technical debt later. Key considerations include the frequency and volume of data ingestion, the reliability of the process, and the need for observability to monitor and address problems promptly.
 
 - **How much data do you expect to ingest?**
 
-  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you're expecting to load 10 terabytes of data daily into an index or for training a model. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps may not be feasible, as it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
+  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you expect to load 10 terabytes of data daily into an index or for training a model. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps might not be feasible because it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
 
-  One way to handle high volume is through parallelism, as it allows for more efficient data handling and processing. Platforms such as Azure Databricks can orchestrate tasks by creating multiple instances for the same job, distributing the load efficiently.
+  One way to handle high volume is through parallelism because it allows for more efficient data handling and processing. Platforms such as Azure Databricks can orchestrate tasks by creating multiple instances for the same job and distributing the load efficiently.
 
-  Also, consider the tolerable latency and the complexity of the jobs. For instance, data cleansing involves validating and potentially replacing invalid fields, or masking sensitive information. These tasks, though basic, require significant resources because each row is processed individually, adding to the overall time.
+  Also, consider the tolerable latency and the complexity of the jobs. For instance, data cleansing involves validating and potentially replacing invalid fields or masking sensitive information. These tasks, though basic, require significant resources because each row is processed individually, which adds to the overall time.
 
 - **What monitoring capabilities do you need?**
 
-  Data processing pipelines should have monitoring capabilites and provide insights into the pipeline's performance and status of jobs.
+  Data processing pipelines should have monitoring capabilities and provide insights into the pipeline's performance and status of jobs.
 
-  You must be able to track the progress of the jobs. Suppose the pipeline was scheduled to run data cleansing job that didn't complete or completed partially. There might be downstream impact on quality of data with which the model is trained and consequently might impact the predictive power. 
+  You must be able to track the progress of the jobs. Suppose the pipeline was scheduled to run a data cleansing job that didn't complete or completed partially. There might be downstream impact on the quality of data with which the model is trained, which might affect the predictive power.
 
-  Similar to other components in the workload, enable logs, metrics, and alerts on the data pipeline that gives insights into its behavior. Collect and analyze performance metrics to understand the efficiency and reliability aspects.
+  Similar to other components in the workload, you should enable logs, metrics, and alerts on the data pipeline to understand its behavior. Collect and analyze performance metrics to understand the efficiency and reliability aspects.
 
-  Identify any gaps in the built-in telemetry and determine what additional monitoring you need to implement. This could involve adding custom logging or metrics to capture specific details about the job steps.
+  Identify any gaps in the built-in telemetry and determine what additional monitoring you need to implement. This monitoring might involve adding custom logging or metrics to capture specific details about the job steps.
   
 - **How much reliability do you expect of the data processing platform?**
 
-  The reliability of a data processing pipeline varies based on the choice of platform. Azure Logic Apps, even though has orchestration capabilities might not be as reliable as Data Factory. Data Factory hosted on an AKS cluster might have different reliability characteristics. 
+  The reliability of a data processing pipeline varies based on the choice of platform. Even though Logic Apps has orchestration capabilities, it might not be as reliable as Data Factory. Data Factory, hosted on an Azure Kubernetes Service (AKS) cluster, might have different reliability characteristics.
   
-  Single-instance setups are generally considered points of failure. Choose a platform that supports reliability features, such as multiple instances, to meet your requirements. 
+  Single-instance setups are considered points of failure. Choose a platform that supports reliability features, such as multiple instances, to meet your requirements.
 
-  The platform should also support resiliency features. For example, the orchestrator should should automatically retry failed tasks, reducing the need for manual restarts.
+  The platform should also support resiliency features. For example, the orchestrator should automatically retry failed tasks, which reduces the need for manual restarts.
 
-  Batch processing can be less reliable than inferencing, depending on data freshness and latency requirements. If training occurs weekly and processing takes one day, occasional failures are acceptable because there's enough time to retry. 
+  Batch processing can be less reliable than inferencing, depending on data freshness and latency requirements. If training occurs weekly and processing takes one day, occasional failures are acceptable because there's enough time to retry.
 
 - **Are there any cost constraints?**
 
-  When considering the cost-effectiveness of a data processing pipeline, it's important to choose a solution that meets your needs without unnecessary expenses. If your requirements don't justify the advanced features of Azure Databricks, a more economical option like Data Factory might be sufficient. Additionally, open-source tools such as Apache Airflow or Apache NiFi can provide robust capabilities at a lower cost. The key is to avoid overspending on features you don't need and select a platform that balances functionality and cost efficiency.
+  When you consider the cost-effectiveness of a data processing pipeline, it's important to choose a solution that meets your needs without unnecessary expenses. If your requirements don't justify the advanced features of Azure Databricks, a more economical option like Data Factory might be sufficient. Additionally, open-source tools like Apache Airflow or Apache NiFi can provide robust capabilities at a lower cost. The key is to avoid overspending on features that you don't need and select a platform that balances functionality and cost efficiency.
 
+- **What are the security requirements on the workflows and on the data that you process?**
 
-- **What are the security requirements on the data to be processed and the workflows?**
+  Be clear about the security, privacy, and data residency requirements. For example, are there any geographic regulatory requirements? Comply with data residency requirements by ensuring that data is stored and processed within specific regions. You might need to run separate pipelines for different regions, such as one for Europe and another for America, to meet local compliance regulations.
 
-  Be clear about the security, privacy, and data residency requirements. For example, are there any geographic regulatory requirements? Comply with data residency requirements by ensuring  data is stored and processed within specific regions. You might need to run separate pipelines for different regions, such as one for Europe and another for America, to meet local compliance regulations.
+  The data pipeline platform should support identity and access management to ensure that only authorized identities have access to specific jobs or steps within workflows. For instance, if your ETL process consists of several workflows, and one of them handles highly confidential data, the platform should allow you to restrict access to that workflow while keeping the others accessible. This capability helps you meet the security requirements without needing separate platforms for different data sensitivity levels. Ideally, the platform should provide built-in support for such isolation that enables efficient and secure data management.
 
-  The data pipeline platform should support identity and access management (IAM) to ensure that only authorized identities have access to specific jobs or steps within workflows. For instance, if your ETL process consists of several workflows, and one of them handles highly confidential data, the platform should allow you to restrict access to that workflow while keeping the others generally accessible. This capability will help meet the security requirements without needing separate platforms for different data sensitivity levels. Ideally, the platform should provide built-in support for such isolation, enabling efficient and secure data management.
-
-Data processing pipelines can output to the data to either a search index or a model training pipeline. Depending on the use case, see the sections on [search index](#considerations-for-a-search-index) or [feature stores](#considerations-for-a-feature-store).
-
+Data processing pipelines can output the data to either a search index or a model training pipeline. Depending on the use case, see the sections on [search index](#considerations-for-a-search-index) or [feature stores](#considerations-for-a-feature-store).
 
 ## Considerations for a search index
 
-The search index is designed to store contextual or grounding data to send to the model inference endpoint, along with the prompt. Both calls, the index query and the inference endpoint invocation take place in the context of servicing the same client HTTP requests. Unlike ETL processes that handle offline and batch jobs, this index supports real-time inferencing, requiring high performance and reliability. It's specialized for AI queries, offering features like keyword indexing and filtering, which are not typical of big data stores. The goal is to have a performant, _write-once read-many_ data store that supports ad hoc and fuzzy queries, providing relevant results without needing precise queries.
+The search index is designed to store contextual or grounding data to send to the model inference endpoint, along with the prompt. Both calls, the index query and the inference endpoint invocation, take place in the context of servicing the same client HTTP requests. Unlike ETL processes that handle offline and batch jobs, this index supports real-time inferencing, which requires high performance and reliability. It's specialized for AI queries and offers features like keyword indexing and filtering, which aren't typical of big data stores. The goal is to have a high-performing, _write-once, read-many_ data store that supports impromptu and fuzzy queries. This data store can provide relevant results without precise queries.
 
+### Functional requirements
 
-#### Functional requirements
+- **What types of search does the search index support?**
 
-- **What types of search are supported by the search index?**
-
-  Queries sent to the system are essentially searches and the index needs to support rich search capabilities. In the case of RAG, vector search is a non-negotiable because data is stored as calculated vectors, or embeddings, which are used for searching. 
+  Queries sent to the system are essentially searches, and the index needs to support rich search capabilities. For RAG, vector search is nonnegotiable because data is stored as calculated vectors, or embeddings, which are used for searching.
   
-  While vector search is powerful, combining it with filtering and full-text search enhances the search index's effectiveness. Your data design should account for combining these types of searches, such as vector, full text search, filtering, special data types like geo-location. 
+  Vector search is powerful, and combining it with filtering and full-text search enhances the search index's effectiveness. Your data design should account for combining these types of searches, such as vector, full-text search, filtering, and special data types like geo-location. 
   
-  Your data design should explicit state those requirements. For more information, see [Efficient querying in the Data design](./grounding-data-design.md#efficient-querying).
+  Your data design should explicitly state those requirements. For more information, see [Efficient querying in the Data design](./grounding-data-design.md#efficient-querying).
 
-- **Does the index support multi-modal data?**
+- **Does the index support multimodal data?**
 
-  Prefer index technologies that support multi-modal data. For instance, AI searches can analyze an email, convert the image within it to vectors, and store the description in the index. This allows for searches across various content modalities, including images, videos, and audio files.
+  Choose index technologies that support multimodal data. For instance, AI searches can analyze an email, convert an image within it to vectors, and store the description in the index. This function lets you search across various content modalities, including images, videos, and audio files.
 
 - **Does the index support auto-update capabilities when the data in the data sources changes?**
 
-  Choose an index with auto-update features. If not available, you'll need to manually detect and push changes to the index. With these capabilities, the indexer can detect changes in data sources and pull updates automatically. By offloading this responsibility to the platform, you can reduce operational overhead and simplify the maintenance process.  
+  Choose an index with auto-update features. If one isn't available, you'll need to manually detect and push changes to the index. With these capabilities, the indexer can detect changes in data sources and pull updates automatically. By offloading this responsibility to the platform, you can reduce operational overhead and simplify the maintenance process.
 
-#### Non-functional requirements
+### Nonfunctional requirements
 
-- **Is the index performant with large volume of data?**
+- **Can the index perform with large volumes of data?**
 
-  The index should be able to handle large amounts of data, be scalable, and perform well for heavy search workloads. The index not only stores the raw data but also all the metadata, enrichments, and entities associated with it. In the context of the RAG pattern, a single document that's split into multiple chunks, can result in a significant increase in data volume. 
+  The index should be able to handle large amounts of data, be scalable, and perform well for heavy search workloads. The index stores the raw data and all of the metadata, enrichments, and entities associated with it. In the context of the RAG pattern, a single document that's split into multiple chunks can result in a significant increase in data volume.
 
 - **Does the index have built-in reliability features?**
 
-  Consider the alignment between the reliability of the inferencing endpoint (or the model) and the data store because they are dependent on each other. 
+  Consider the alignment between the reliability of the inferencing endpoint, or the model, and the data store because they depend on each other. 
   
-  The search process involves two steps: querying the data store and then querying the inferencing endpoint. Both steps need to have similar reliability characteristics. Balance your reliability objectives across both components to ensure effectiveness of the search.
+  The search process involves two steps: querying the data store and then querying the inferencing endpoint. Both steps need to have similar reliability characteristics. Balance your reliability objectives between both components to ensure search effectiveness.
 
-  To ensure resiliency, the workload should support the expected number of concurrent users and have sufficient bandwidth to handle traffic surges. Ideally, the platform should survive zonal outages, adding an extra layer of resilience. 
+  To ensure resiliency, the workload should support the expected number of concurrent users and have sufficient bandwidth to handle traffic surges. Ideally, the platform should survive zonal outages, which adds an extra layer of resilience.
   
-  The data platform should be designed to prevent the use of corrupted index for inferencing. In such cases, you should be able to rebuild the index easily. The index should also support reliable swapping between indexes, using features like aliasing to minimize downtime during index swaps. Without such functionality, you might need to rely on a backup of the index. But managing a backup comes with additional complexity.
+  The data platform should be designed to prevent the use of a corrupted index for inferencing. In such cases, you should be able to rebuild the index easily. The index should also support reliable swapping between indexes by using features like aliasing to minimize downtime during index swaps. Without this functionality, you might need to rely on a backup of the index. Managing a backup comes with more complexity.
 
-  From a workload perspective, understand the potential failure modes or stress indicators, such as throttling. For instance, while the system might normally support 50 concurrent users, during a reindexing process running as a background job, it might only support 30. In that case, timing of the background job becomes important. When you evaluate throughput of an index, include both frontend queries and backend jobs.
+  From a workload perspective, understand the potential failure modes or stress indicators, such as throttling. For instance, although the system might normally support 50 concurrent users, it might only support 30 users during a reindexing process that's running as a background job. In that case, the timing of the background job becomes important. When you evaluate throughput of an index, include both front-end queries and back-end jobs.
 
 - **What are the main cost drivers of this technology?**
 
-  When cost modeling, estimate expense associated with volume of data, number of queries, and throughput expected of the index. Keep in mind, indexes are mostly PaaS, where pricing is abstracted. Research tiers and their capabilities avoid overpaying for unused capacity or features.
+  When you model costs, estimate the expenses that are associated with the volume of data, number of queries, and expected throughput of the index. Keep in mind that indexes are mostly platform as a service (PaaS), where pricing is abstracted. Research tiers and their capabilities to avoid overpaying for unused capacity or features.
   
-  For example, AI Search bills as units, which can include capacity, throughput, storage. Additional features can lead to extra charges. For instance, extensive use of image extraction features can result in a high bill. Dependencies, such as the skill set feature, which are outside the scope of the index but are part of data processing can incur additional costs. 
+  For example, AI Search bills as units, which can include capacity, throughput, and storage. Extra features can lead to more charges. For example, extensive use of image extraction features can result in a high bill. Dependencies, such as the skill set feature, that are outside the scope of the index but are part of data processing can incur extra costs.
 
   Paying for a tier without using the full capacity can lead to overpaying. Similarly, the number of tables in your index and the ability to handle concurrent traffic affect costs.
 
   To understand the costs associated with AI Search, see [Plan and manage costs of an AI Search service](/azure/search/search-sku-manage-costs).
 
+- **Do the security features of the index fulfill your security data design?**
 
-- **Does the security features of the index fulfill your security data design?**
-
-  Your data design should clearly specify the security and privacy requirements. In development and test environments, where real production data is used, the index should support capabilities that comply with all access controls and traceability measures. Review security features such as data masking and the removal of personal information in the index.
+  Your data design should clearly specify the security and privacy requirements. In development and test environments where real production data is used, the index should support capabilities that comply with all access controls and traceability measures. Review security features such as data masking and the removal of personal information in the index.
   
-  Prefer an index that has the ability to uniquely identify clients, through Microsoft Entra ID. Additionally, the search index should support document-level access controls to allow querying relevancy by identities. If the index doesn't offer those features, adjust your design to achieve similar capabilities, with query filters. For more information, see [Security filters for trimming results in AI Search](/azure/search/search-security-trimming-for-azure-search).
+  Choose an index that has the ability to uniquely identify clients through Microsoft Entra ID. The search index should also support document-level access controls to allow querying relevancy by identities. If the index doesn't offer those features, adjust your design to achieve similar capabilities with query filters. For more information, see [Security filters for trimming results in AI Search](/azure/search/search-security-trimming-for-azure-search).
 
-  Ideally, the search index should align with network security requirements. For example, if we need to filter egress traffic to third-party sites and maintain observability, the index should offer egress controls. It should also support network segmentation. If the backend compute is in a virtual network, private connectivity for key components, including the index, is essential to avoid exposure to the public internet. The index should easily integrate with private networks and support managed identities for authentication via Microsoft Entra ID.
-
+  Ideally, the search index should align with network security requirements. For example, if you need to filter egress traffic to non-Microsoft sites and maintain observability, the index should offer egress controls. It should also support network segmentation. If the back-end compute is in a virtual network, private connectivity for key components, including the index, is essential to avoid exposure to the public internet. The index should easily integrate with private networks and support managed identities for authentication via Microsoft Entra ID.
 
 ## Considerations for a feature store
 
-  For discriminative models, your data design might include an intermediate data store that caches data for additional refinement. This store, known as a feature store, allows data scientists to store features as a final step out of the aggregated data store.
+  For discriminative models, your data design might include an intermediate data store that caches data for extra refinement. This store, known as a feature store, allows data scientists to store features as a final step, outside of the aggregated data store.
 
-  The feature store helps catalog data for multiple uses, adding metadata such as generation time and origin. This intermediate landing spot is ideal for _golden training data_.
+  The feature store helps catalog data for multiple uses by adding metadata like generation time and origin. This intermediate landing spot is ideal for _golden training data_.
 
-  The managed feature store in Machine Learning is a data storage option integrated with MLflow and other tools. It fetches and trains data from the aggregate data store, adding a reusable layer for better data lineage and formal identification within AML.
+  The managed feature store in Machine Learning is a data storage option that integrates with MLflow and other tools. It fetches and trains data from the aggregate data store, adding a reusable layer for better data lineage and formal identification within Machine Learning.
 
-  When using a feature store, treat it like a data store with security and access considerations. 
+  When you use a feature store, treat it like a data store with security and access considerations. 
 
 ## Considerations for an offline inferencing data store
 
-  Using the [cache-aside design pattern](/azure/architecture/patterns/cache-aside) allows for faster future lookups. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store, making the AI model transient. This preemptive inferencing serves results through lookups. There are several benefits:
+  Use the [cache-aside design pattern](/azure/architecture/patterns/cache-aside) for faster future lookups. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store. This process makes the AI model transient. Preemptive inferencing serves results through lookups. There are several benefits, including:
   
-  - Efficient for frequent queries like FAQs.
-  - Allows prevalidation to ensure accuracy before production.
-  - Reduces the load on the inference endpoint, contributing to the reliability of the workload.
+  - Efficiency for frequent queries, like FAQs.
+  - Prevalidation to ensure accuracy before production.
+  - Load reduction on the inference endpoint, which contributes to the reliability of the workload.
 
-  However, this approach is only effective if you can predict possible requests. For unique queries, caching may be less effective. 
+  However, this approach is only effective if you can predict possible requests. For unique queries, caching might be less effective.
   
-  The data store for this scenario should be optimized for read operations, such as a dedicated search index or table storage. It should also be capable of integrating into the aggregated data store.
+  The data store for this scenario should be optimized for read operations, such as a dedicated search index or table storage. It should also be able to integrate into the aggregated data store.
 
-  If you're using Azure Cosmos DB in your architecture, take advantage of its [built-in integrated cache](/azure/cosmos-db/integrated-cache) to implement this pattern. Azure Cache for Redis is also suitable as it provides an in-memory data store and secure caching capabilties.
+  If you're using Azure Cosmos DB in your architecture, take advantage of its [built-in integrated cache](/azure/cosmos-db/integrated-cache) to implement this pattern. Azure Cache for Redis is also suitable because it provides an in-memory data store and secure caching capabilities.
 
 ## Resources
-These articles offer additional details on Azure products recommended as technology options for the considerations discussed in this article.
+
+These articles offer more details on Azure products that we recommend as technology options for the considerations discussed in this article.
 
 - [Machine Learning](/azure/well-architected/service-guides/azure-machine-learning)
 - [Blob Storage](/azure/well-architected/service-guides/azure-blob-storage)
