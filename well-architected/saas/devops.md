@@ -33,6 +33,7 @@ Lifecycle management is a key responsibility of a SaaS solution's control plane.
 - **Consistency**. When planning your lifecycle management strategy, consider the complexity of actions required for each customer lifecycle event. This includes the size of your solution, customer base, and organizational overhead. Have a clear understanding of necessary steps for each event and invest in controls to maintain consistency. Regularly review and update your processes to ensure they remain valid as your solution evolves.
 
 - **Tenancy model**. Your approach to handling customer lifecycle events depends on your tenancy model.
+
     - **Fully multitenant solutions with infrastructure resources**. Onboarding or offboarding a customer typically involves updating a customer list and associated data in your application's data store.
     - **Dedicated resources per customer**. The tasks would typically involve initiating deployments to Azure, monitoring progress, and handling deployment failures, possibly with human intervention.
     - **Customer-deployed resources**. You might need to interface directly with the customer's engineering team for onboarding or offboarding. 
