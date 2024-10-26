@@ -1,83 +1,83 @@
 ---
 title: Compute for SaaS Workloads on Azure
-description: Learn about choosing your compute hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
+description: Learn about choosing a compute hosting model, operational aspects, and how to optimize technology options to help you meet service-level agreements and objectives.
 author: paolosalvatori
 ms.author: prwilk
-ms.date: 12/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ms.collection: learn-startups
 ---
 
 # Compute for SaaS workloads on Azure
 
-Your SaaS application needs to run on a compute platform. Similar to other components in your architecture, it needs to meet the business requirements and be designed according to your business model. The choice of compute platform is a significant design decision. Customer isolation, performance, and resiliency are all affected by your decisions, and your compute platform influences how your entire SaaS solution can scale and grow.
+Your software as a service (SaaS) application needs to run on a compute platform. Similar to other components in your architecture, it needs to meet the business requirements and be designed according to your business model. The choice of compute platform is a significant design decision. Your decision affects customer isolation, performance, and resiliency, and your compute platform influences how your entire SaaS solution can scale and grow.
   
-This article describes the considerations for choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives. 
+This article describes the considerations for choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service-level agreements (SLAs) and service-level objectives (SLOs).
 
 ## Select a compute platform
 
-Choosing the right compute platform for your SaaS workload is important but can be overwhelming due to the many options available. The best platform depends on factors like application architecture, scale, performance needs, and tenant isolation model. What's optimal for one application might not be for another.
+Choosing the right compute platform for your SaaS workload is important, but the abundance of available options can make the choice feel overwhelming. The best platform depends on factors like application architecture, scale, performance needs, and the tenant isolation model. What's optimal for one application might not be for another.
 
 ### Design considerations
 
-- **Hosting model**. Azure offers various hosting models, primarily Infrastructure as a Service (IaaS) and Platform as a Service (PaaS), each with its own benefits and trade-offs. Evaluate the requirements your application and choose the most suitable model. 
+- **Hosting model**. Azure offers various hosting models, primarily Infrastructure as a Service (IaaS) and Platform as a Service (PaaS), each with its own benefits and tradeoffs. Evaluate your application's requirements and choose the most suitable model.
     
-    - **Infrastructure as a service (IaaS)**. Provides Virtual Machines (VMs) with full control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
+    - IaaS provides virtual machines (VMs) and full control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
  
-    - **Platform as a service (PaaS)**. Allows application deployment without managing the underlying infrastructure. It includes built-in features for auto-scaling and load balancing. Examples are Azure App Service and Azure Container Apps.
+    - PaaS allows application deployment without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
     
-   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application runs on an operating system that's not supported by the PaaS service. PaaS offerings from Azure include Azure App Service and Azure Container Apps.
+   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application runs on an operating system that's not supported by the PaaS service. PaaS offerings from Azure include App Service and Container Apps.
 
-- **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, Azure App Service is tailored for web applications, whereas Azure Kubernetes Service (AKS) is more general-purpose, capable of hosting web apps, AI workloads, and batch compute tasks.
+- **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is tailored for web applications, whereas AKS is more general-purpose. It's capable of hosting web apps, AI workloads, and batch compute tasks.
 
-- **Development team expertise**. Large changes can be challenging if the team lacks experience with the new platform. Assess your team's skills and match them to your platform requirements. It's often better to start with a simpler platform and gradually evolve your architecture rather than jumping straight to a more advanced option.
+- **Development team expertise**. Large changes can be challenging if the team lacks experience with the new platform. Assess your team's skills and match them to your platform requirements. It's often better to start with a simpler platform and gradually evolve your architecture rather than jump straight to a more advanced option.
   
-  For example, if you're building a containerized application, start with Azure Container Apps for easier management. As your needs grow more complex, you can transition to Azure Kubernetes Service (AKS), gaining a better understanding of the platform over time.
+  For example, if you're building a containerized application, start with Container Apps for easier management. As your needs grow more complex, you can transition to AKS while you gain a better understanding of the platform over time.
 
 - **Management overhead**. Compute platforms balance overhead and control. More management responsibility shifted away from your team means less control over the platform.
 
     For example, IaaS offers high control over VMs but comes with significant overhead. If your application is deployed in a customer's environment, you might have limited access for management operations. Assess if these tradeoffs are acceptable and feasible.
   
-- **Performance requirements**. Understand your application's performance requirements by modeling CPU, memory, network (bandwidth and latency), GPU, and availability needs, considering future growth. Use this information to choose the appropriate compute resources, like the series and size of virtual machines. Specialized requirements may also require you to select specific regions that support particular VM series.
+- **Performance requirements**. Understand your application's performance requirements by modeling CPU, memory, network, including bandwidth and latency, GPU, and availability needs. You should also consider future growth. Use this information to choose the appropriate compute resources, like the series and size of VMs. You might also need to select specific regions that support particular VM series to meet specialized requirements.
 
-- **Reliability requirements**. Consider the reliability features of your compute platform and ensure they meet your reliability targets. You may need to use specific service tiers to have multiple instances of your solution or deploy across availability zones for enhanced reliability.
+- **Reliability requirements**. Consider the reliability features of your compute platform and ensure that they meet your reliability targets. You might need to use specific service tiers to have multiple instances of your solution or deploy across availability zones for enhanced reliability.
 
     > Refer to [RE:04 Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics). 
 
-- **Application security and compliance**. Evaluate the security features and [compliance certifications](/azure/compliance/) of each compute platform to ensure they meet your needs. For example, if you need to monitor and filter outgoing traffic, you may need to choose specific compute services or tiers.
+- **Application security and compliance**. Evaluate the security features and [compliance certifications](/azure/compliance/) of each compute platform to ensure that they meet your needs. For example, if you need to monitor and filter outgoing traffic, you might need to choose specific compute services or tiers.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
-|  Evaluate the compute performance requirements by estimating CPU, memory, network, and GPU scale dimensions. <br><br>Perform load testing to gather more accurate data to inform your modeling exercise. | This will help in selecting the appropriate sizing for your compute platform and scale appropriately when the load on the system increases.|
-| Evaluate your team's proficiency and start with the least complex platform that meets your needs or one they are already familiar with. | You'll avoid overburdening your team by choosing a compute platform they are familiar with, ensuring smoother operations. |
-| Be flexible in your design. Aim for a solution that you can iterate on over time to adapt to evolving business and technical requirements.| It allows for easier adaptation to changes and improvements over time, responding effectively to evolving business and technical needs.|
-| Evaluate the total cost of ownership (TCO), including costs of operating the solution. | You'll have a clear understanding of costs, which is crucial in planning your pricing model and ensuring cost-effective operations. |
-| Assess whether you need to use specific compute platforms based on your technology stack. Some compute platforms are better suitable for certain programming languages, tooling, and even operating systems. Strive to use platforms that natively support your technology choices. | You'll avoid the cost of redesigning your architecture, which might include migrating to a new platform.|
-| Evaluate the reliability features of the platform and factor in cloud service provider's guarantees into your service level objectives (SLOs). | You will reduce  the risk of localized data center outages by planning for reliability features and using availability zones if available.|
+|  Evaluate the compute performance requirements by estimating CPU, memory, network, and GPU scale dimensions. <br><br>Perform load testing to gather more accurate data to inform your modeling exercise. | These tasks help you select the appropriate sizing for your compute platform and scale appropriately when the load on the system increases.|
+| Evaluate your team's proficiency and start with the least complex platform that meets your needs or one that they're already familiar with. | You ensure smoother operations and avoid overburdening your team by choosing a compute platform that they're familiar with. |
+| Be flexible in your design. Aim for a solution that you can iterate on over time to adapt to evolving business and technical requirements.| Flexibility allows you to more easily adapt to changes and improvements over time. You can respond effectively to evolving business and technical needs.|
+| Evaluate the total cost of ownership (TCO), including costs of operating the solution. | You have a clear understanding of costs, which is crucial in planning your pricing model and ensuring cost-effective operations. |
+| Assess whether you need to use specific compute platforms based on your technology stack. Some compute platforms are better suited for certain programming languages, tooling, and operating systems. Strive to use platforms that natively support your technology choices. | You avoid the cost of redesigning your architecture, which might include migrating to a new platform.|
+| Evaluate the reliability features of the platform and factor cloud service provider's guarantees into your SLOs. | You reduce the risk of localized data center outages by planning for reliability features and using availability zones if they're available.|
 
 ## Tenancy model and isolation
 
-Your SaaS business model will drive whether you host resources for customers or manage them in the customer's environment. Most SaaS providers host resources on behalf of their customers, allowing flexibility in compute platform design. Isolate customer workloads effectively to optimize cost efficiency without compromising customer experience or performance.
+Your SaaS business model drives whether you host resources for customers or manage them in the customer's environment. Most SaaS providers host resources on behalf of their customers, which allows for flexibility in compute platform design. Isolate customer workloads effectively to optimize cost efficiency without compromising customer experience or performance.
 
 ### Design considerations
 
 - **Plan your tenancy model**. Your tenancy model determines resource sharing between customers and is influenced by your business and pricing models. Single-tenant models have higher costs per customer compared to fully multitenant models. Your pricing should reflect these differences.
   
-- **Customer requirements**. Some customers may have specific needs for data residency, performance guarantees, or security compliance. If these requirements need higher isolation levels than usual, consider how to reflect the increased costs in your business model.
+- **Customer requirements**. Some customers might have specific needs for data residency, performance guarantees, or security compliance. If these requirements need higher isolation levels than usual, consider how to reflect the increased costs in your business model.
   
 - **Noisy neighbor problem**. Be aware of the noisy neighbor problem when sharing resources among tenants, with compute resources being the most affected. For more information, see [Noisy neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor).
 
-  When choosing a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
+  When you choose a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
-| Evaluate the isolation features of the compute platform to ensure it meets your tenancy model requirements. | You'll avoid rework by verifying critical configuration upfront. |
-| Enforce your isolation model. <br><br>Be cautious with shared resources like local disk caches, system memory, and external caches, as they can unintentionally leak data between tenants if not managed properly. <br><br> For high isolation requirements, enforce isolation within the compute platform and in the application. | Strong isolation reduces the risk of cross-tenant data leakage, a serious security incident.|
-| Implement resource governance and monitoring, with visibility of customer-level metrics. <br><br> Proactively monitor each customer's resource consumption to detect and mitigate any noisy neighbor issues. | You will prevent issues from impacting other customers by monitoring resource consumption and mitigating issues early.|
+| Evaluate the isolation features of the compute platform to ensure that it meets your tenancy model requirements. | You avoid rework by verifying critical configuration first. |
+| Enforce your isolation model. <br><br>Be cautious with shared resources like local disk caches, system memory, and external caches because they can unintentionally leak data between tenants if they're not managed properly. <br><br> For high isolation requirements, enforce isolation within the compute platform and in the application. | Strong isolation reduces the risk of cross-tenant data leakage, a serious security incident.|
+| Implement resource governance and monitoring, with visibility of customer-level metrics. <br><br> Proactively monitor each customer's resource consumption to detect and mitigate any noisy neighbor problems. | You will prevent problems from affecting other customers by monitoring resource consumption and mitigating problems early.|
 
 ## Configure for scalability and cost efficiency
 
@@ -121,7 +121,7 @@ Resiliency of your compute layer  plays a large part in your overall resiliency 
 
 ### Design considerations
 
-- **Reliability requirements**.  Set clear reliability requirements. These include internal targets, known as service-level objectives (SLOs), and customer commitments, known as service-level agreements (SLAs), often specifying uptime targets like 99.9% per month.
+- **Reliability requirements**.  Set clear reliability requirements. These include internal targets, known as SLOs, and customer commitments, known as SLAs, often specifying uptime targets like 99.9% per month.
   > Refer to [RE:04 Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics).
   
 - **Deployment strategy**. Cloud resources are deployed in specific geographic regions. In Azure, availability zones are isolated datacenter sets within a region. For resiliency, deploy applications across multiple availability zones. Deploying across regions or cloud providers further enhances resiliency but adds cost and operational complexity.
