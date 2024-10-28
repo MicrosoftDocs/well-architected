@@ -1,6 +1,6 @@
 ---
-title: Reliability Maturity Model
-description: Understand the maturity model levels of the reliability pillar.
+title: Security Maturity Model
+description: Understand the maturity model levels of the security pillar.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 10/23/2024  
@@ -14,7 +14,7 @@ This template provides the basic structure of a maturity model article. Remove a
 <!-- for values for the metadata tags (product and categories) see:
 For values to set, see [Taxonomies for Learn](https://review.learn.microsoft.com/help/contribute/metadata-taxonomies?branch=main#azure-category). -->
 
-# Reliability maturity model
+# Security maturity model
 
 <!-- Introductory paragraph 
 Required. Lead with a light intro that describes what the article covers.
@@ -24,7 +24,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 [add art]
 
-<!-- :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: -->
+<!-- :::image type="content" source="" alt-text="Example alt-text."::: -->
 
 ## Example heading
 
@@ -32,7 +32,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Simplicity
+### Strategy focus: Security baseline
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -44,7 +44,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Redundancy, Resiliency, and Recovery
+### Strategy focus: Threat prevention controls
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -56,7 +56,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Risk mitigation
+### Strategy focus: Threat evaluation and mitigation
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -68,7 +68,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Operations
+### Strategy focus: Threat prevention operations
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -80,7 +80,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: 
+### Strategy focus: Security level 5
 
 <!-- No more than 5 H4 headings per tab -->
 

@@ -85,6 +85,8 @@
           href: security/checklist.md
         - name: Tradeoffs
           href: security/tradeoffs.md
+        - name: Maturity model 
+          href: security/maturity-model.md
         - name: Recommendations    
           items:
             - name: Security patterns            
