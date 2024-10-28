@@ -1,6 +1,6 @@
 ---
 title: Compute for SaaS Workloads on Azure
-description: Learn about choosing a compute hosting model, operational aspects, and how to optimize technology options to help you meet service-level agreements and objectives.
+description: Learn about choosing a compute hosting model, its operational aspects, and how to optimize technology options to help you meet service-level agreements and objectives.
 author: paolosalvatori
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -10,9 +10,9 @@ ms.collection: learn-startups
 
 # Compute for SaaS workloads on Azure
 
-Your software as a service (SaaS) application needs to run on a compute platform. Similar to other components in your architecture, it needs to meet the business requirements and be designed according to your business model. The choice of compute platform is a significant design decision. Your decision affects customer isolation, performance, and resiliency, and your compute platform influences how your entire SaaS solution can scale and grow.
+Your software as a service (SaaS) application needs to run on a compute platform. Like other components in your architecture, it needs to meet the business requirements and be designed according to your business model. The choice of compute platform is a significant design decision. Your decision affects customer isolation, performance, and resiliency, and your compute platform influences how your entire SaaS solution can scale and grow.
   
-This article describes the considerations for choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service-level agreements (SLAs) and service-level objectives (SLOs).
+This article describes the considerations for choosing your hosting model, the operational aspects of that model, and how to optimize the technology options to help you meet your service-level agreements (SLAs) and service-level objectives (SLOs).
 
 ## Select a compute platform
 
@@ -24,15 +24,15 @@ Choosing the right compute platform for your SaaS workload is important, but the
     
     - IaaS provides virtual machines (VMs) and full control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
  
-    - PaaS allows application deployment without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
+    - PaaS allows you to deploy applications without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
     
-   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application runs on an operating system that the PaaS service doesn't support. PaaS offerings from Azure include App Service and Container Apps.
+   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application might run on an operating system that the PaaS service doesn't support. PaaS offerings from Azure include App Service and Container Apps.
 
 - **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is designed for web applications, whereas AKS is more general-purpose. It can host web apps, AI workloads, and batch compute tasks.
 
-- **Develop team expertise**. Large changes can be challenging if the team lacks experience with the new platform. Assess your team's skills and match them to your platform requirements. Start with a simple platform and gradually evolve your architecture rather than jump straight to a more advanced option.
+- **Develop team expertise**. Large changes can be challenging if the team lacks experience with the new platform. Assess your team's skills and match them to your platform requirements. Start with a simple platform and gradually evolve your architecture rather than jumping straight to a more advanced option.
   
-  For example, if you're building a containerized application, start with Container Apps for easy management. As your needs grow more complex, you can transition to AKS while you gain a better understanding of the platform over time.
+  For example, if you're building a containerized application, start with Container Apps for easy management. As your needs grow more complex, you can transition to AKS when you gain a better understanding of the platform over time.
 
 - **Management overhead**. Compute platforms balance overhead and control. More management responsibility shifted away from your team means less control over the platform.
 
@@ -54,8 +54,8 @@ Choosing the right compute platform for your SaaS workload is important, but the
 | Evaluate your team's proficiency and start with the least complex platform that meets your needs or one that the team is already familiar with. | You ensure smoother operations and avoid overburdening your team by choosing a compute platform that they're familiar with. |
 | Be flexible in your design. Aim for a solution that you can iterate on over time to adapt to evolving business and technical requirements.| Flexibility allows you to more easily adapt to changes and improvements over time. You can respond effectively to evolving business and technical needs.|
 | Evaluate the total cost of ownership (TCO), including costs of operating the solution. | You have a clear understanding of costs, which is crucial in planning your pricing model and ensuring cost-effective operations. |
-| Assess whether you need to use specific compute platforms based on your technology stack. Some compute platforms are better suited for certain programming languages, tooling, and operating systems. Strive to use platforms that natively support your technology choices. | You avoid the cost of redesigning your architecture, which might include migrating to a new platform.|
-| Evaluate the reliability features of the platform and factor your cloud service provider's guarantees into your SLOs. | You reduce the risk of localized data center outages by planning for reliability features and using availability zones if they're available.|
+| Assess whether you need to use specific compute platforms because of your technology stack. Some compute platforms are better suited for certain programming languages, tooling, and operating systems. Strive to use platforms that natively support your technology choices. | You avoid the cost of redesigning your architecture, which might include migrating to a new platform.|
+| Evaluate the reliability features of the platform and factor your cloud service provider's guarantees into your SLOs. | You reduce the risk of localized datacenter outages by planning for reliability features and using availability zones if they're available.|
 
 ## Tenancy model and isolation
 
@@ -67,7 +67,7 @@ Your SaaS business model determines whether you host resources for customers or 
   
 - **Customer requirements**. Some customers might have specific needs for data residency, performance guarantees, or security compliance. If these requirements need higher isolation levels than usual, consider how to reflect the increased costs in your business model.
   
-- **Noisy neighbor problem**. Be aware of the noisy neighbor problem when sharing resources among tenants, with compute resources being the most affected. For more information, see [Noisy neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor).
+- **Noisy neighbor problem**. Be aware of the noisy neighbor problem when sharing resources among tenants. Compute resources are affected the most. For more information, see [Noisy neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor).
 
   When you choose a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
 
@@ -81,7 +81,7 @@ Your SaaS business model determines whether you host resources for customers or 
 
 ## Configure for scalability and cost efficiency
 
-Your customers can use your application product with different performance profiles. They expect the application to handle increasing user demands, large-scale data, and complex workloads without compromising speed and performance. Your system architecture must ensure scalability and optimal performance, whether it manages hundreds or millions of users, while balancing performance needs and costs.
+Your customers can use your application with different performance profiles. They expect the application to handle increasing user demands, large-scale data, and complex workloads without compromising speed and performance. Your system architecture must ensure scalability and optimal performance, whether it manages hundreds or millions of users, while balancing performance needs and costs.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance problems from other workloads.
 
@@ -97,7 +97,7 @@ For more information about cost management, see [Billing and cost management for
 - **Autoscaling**. Systems need to efficiently handle varying levels of demand. As user traffic increases, your application resources need to scale up to maintain performance. When demand decreases, resources scale down to control costs without affecting user experience. Factors like CPU utilization, time of day, or incoming requests guide these adjustments. Autoscaling helps balance performance and cost and mitigates the impact of high demand on other tenants.
     > Refer to [RE:06 Recommendations for reliable scaling](/azure/well-architected/reliability/scaling).
 
-- **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you eventually hit limits, such as networking or storage constraints, in your solution's scalability.
+- **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you eventually reach limits, such as networking or storage constraints, in your solution's scalability.
 
   > [!NOTE]
   > The [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution. It provides another scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
@@ -134,7 +134,7 @@ Resiliency of your compute layer plays a large part in your overall resiliency s
 | Recommendation | Benefit |
 |---|---|
 | Handle [transient faults](../reliability/handle-transient-faults.md) in your application. | You increase your availability by quickly recovering from minor issues. |
-| Choose stateless applications. If your application needs to be stateful, use an external state storage like a cache to store the state.| You prevent state loss that's caused by an instance being unavailable, such as during erroneous load balancing or during an outage.|
+| Choose stateless applications. If your application needs to be stateful, use an external state storage mechanism like a cache to store the state.| You prevent state loss that's caused by an instance being unavailable, such as during erroneous load balancing or during an outage.|
 | Use availability zones.| You increase your resiliency by mitigating localized datacenter outages. |
 | Design a multiregional architecture when there's business justification to do so. | You meet high uptime requirements and support users in different regions. |
 | Perform [chaos engineering](../reliability/testing-strategy.md). | You better understand where your points of failure are and can correct them before an outage occurs.|
