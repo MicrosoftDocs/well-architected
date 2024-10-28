@@ -5,6 +5,7 @@ author: joshuawaddell
 ms.author: jowaddel
 ms.date: 10/24/2024
 ms.topic: conceptual
+ms.collection: learn-startups
 ---
 
 # Governance for SaaS workloads on Azure
