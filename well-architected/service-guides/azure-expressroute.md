@@ -226,7 +226,6 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Review metrics and dashboards available through ExpressRoute Insights using Network Insights:** ExpressRoute Insights provides a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.
 >
-> - **Review ExpressRoute resource metrics:** Use Azure Monitor to collect metrics and create alerts based on your configuration.
 >
 > - **Collect and analyze metrics and logs:**  Collect metrics and logs as part of the overall [monitoring strategy](/azure/well-architected/operational-excellence/observability) of your solution. Set alerts to proactively notify you when a certain threshold is met.
 
