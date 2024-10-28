@@ -1,6 +1,6 @@
 ---
 title: Data Platform for AI Workloads on Azure
-description: Learn about functional and nonfunctional data source considerations for your data platform for AI Workloads on Azure.
+description: Learn about functional and nonfunctional data source considerations for your data platform for AI workloads on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -13,7 +13,7 @@ A data platform is an integrated set of technologies that are designed to manage
 
 Data has distinct characteristics that are based on its intended use. We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Training data design](./training-data-design.md) and [Grounding data design](./grounding-data-design.md). 
 
-The platform also fulfills storage needs as data rests at certain points in the pipeline. If the workload is complex and handles large-scale data, then you can distribute pipeline tasks among various components. For simpler use cases, evaluate whether you can use the source data in a store that offers those combined capabilities.
+The platform also fulfills storage needs when data rests at certain points in the pipeline. If the workload is complex and handles large-scale data, then you can distribute pipeline tasks among various components. For simpler use cases, evaluate whether you can use the source data in a store that offers those combined capabilities.
 
 Ask yourself the following questions so that you can avoid designing an overly complex architecture for your data platform. It's always best to keep things simple when you can. 
 
@@ -23,15 +23,15 @@ Ask yourself the following questions so that you can avoid designing an overly c
 
 If you answer yes to these questions, then you can simplify your architecture by allowing the application to access the data source directly. This approach eliminates the need for big data architecture components like data ingestion, analytical store integration, and external data processing. If the source database can handle the required searches, integrating the search index capability directly into the source database can be a practical approach. Make sure that the source can cost-effectively scale to meet new demands.
 
-For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases with read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
+For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
 
-Data platform architecture for large-scale workloads is more complex. 
+A data platform architecture for large-scale workloads is more complex. 
 
 Ingesting data from multiple data sources and orchestrating searches across various platforms can become complex and inefficient. Also, you still need some extract, transform, and load (ETL); extract, load, and transform (ELT); or extract and load (EL) processes to reshape the data within the data store. The scenario becomes more complex as the data requires more processing. You need to add many components to the architecture to handle the end-to-end pipeline from ingestion to serving queries. Many big data technologies are highly specialized and built to handle those processing tasks effectively.
 
-One such technology is the search index. The primary advantage of adding a separate index is its ability to efficiently manage queries and process large volumes of data with high throughput. This function offloads AI capabilities from the original data source so that the index can focus on its main function, serving queries.
+One such technology is the search index. The primary advantage of adding a separate index is its ability to efficiently manage queries and process large volumes of data that have high throughput. This function offloads AI capabilities from the original data source so that the index can focus on its main function, serving queries.
 
-Choose a platform based on its specific functionality and purpose, and consider your functional and technical requirements. If your architecture is evolving to handle complex use cases, focus on the following sections about aggregated data store, processing pipelines, and search index.
+Choose a platform based on its specific functionality and purpose, and consider your functional and technical requirements. If your architecture is evolving to handle complex use cases, focus on the following sections about aggregated data stores, processing pipelines, and search indexes.
 
 ## Considerations for storing aggregated data
 
@@ -42,7 +42,7 @@ In AI workloads, data moves through various stages of storage and processing wit
 
 The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you achieve just enough reliability and performance.
 
-The following section provides guidance on the capabilities to consider when you select a data store technology. For details on data processing, see [Data processing pipelines](#considerations-for-processing-data).
+The following section provides guidance about the capabilities to consider when you select a data store technology. For more information, see [Data processing pipelines](#considerations-for-processing-data).
 
 ### Functional requirements
 
@@ -50,7 +50,7 @@ The following section provides guidance on the capabilities to consider when you
 
   The data store should be able to store various data formats and transform them to other formats if necessary. 
   
-  Suppose that your ingestion pipeline sources data from a relational database and Parquet format, so it supports both structured and semistructured data. You want to convert relational data to Parquet per its schema definitions. The data platform should have built-in capabilities to do that transformation without you writing custom code.
+  Suppose that your ingestion pipeline sources data from a relational database and a Parquet file, so it supports both structured and semistructured data. You want to convert relational data to Parquet format in accordance with its schema definitions. The data platform should have built-in capabilities to do that transformation without you writing custom code.
 
 - **Do you expect to store multiple versions of the data?**
 
@@ -58,7 +58,7 @@ The following section provides guidance on the capabilities to consider when you
 
   Source systems typically store only current data, not historical data. If it's important to retain historical data, you might need to duplicate large data sets from source systems. In this case, versioning can disambiguate current data from historical data. 
 
-  In some cases, you might need to maintain copies of data for different use cases. To support this use case, you might need to fork data. Each fork can independently mutate to enhance its quality and usability. Your data platform should be able to maintain proper versioning of those forks.
+  In some cases, you might need to maintain copies of data for different use cases. To support this scenario, you might need to fork data. Each fork can independently mutate to enhance its quality and usability. Your data platform should be able to maintain proper versioning of those forks.
 
   Your data platform should be able to store versions of data over time to provide historical context. This contetxt is beneficial for processing and training AI models because it offers multiple observations rather than just a single point in time.
 
@@ -76,21 +76,21 @@ The following section provides guidance on the capabilities to consider when you
 
   Auditability is an important aspect for AI workloads. The data store should maintain audit trails that can track data access, ensure privacy, and understand data origins.
 
-  A data dictionary feature lets you manage metadata, data types, purposes, and lineage. This feature is especially important when data is ingested from multiple sources.
+  Use a data dictionary feature to you manage metadata, data types, purposes, and lineage. This feature is especially important when data is ingested from multiple sources.
 
 - **Do you plan to conduct training with production data?** 
 
-  There are two approaches to deployments, model deployment and code deployment. In model deployment, production data is used in development, which requires stringent security measures. In code deployment, the model doesn't see production data until it's in production. Although code deployment simplifies security concerns in the development environment, it can add to compute costs. Whichever approach you choose, your data platform should support separate environments for development and production.  
+  There are two approaches to deployments, model deployment and code deployment. In model deployment, production data is used in development, which requires stringent security measures. In code deployment, the model doesn't see production data until it's in production. Although code deployment simplifies security concerns in the development environment, it can increase compute costs. Whichever approach you choose, your data platform should support separate environments for development and production.  
 
 - **Are you prioritizing convenience features over key functional features?**
 
-  When you choose a data platform for AI or machine learning, don't rely just on its notebook capabilities. Although notebooks are useful for exploratory data analysis, they shouldn't be the deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They're usually integrated with other resources, such as in Azure Machine Learning.
+  When you choose a data platform for AI or machine learning, don't rely just on its notebook capabilities. Although notebooks are useful for exploratory data analysis, they shouldn't be the deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They're usually integrated with other resources, such as Azure Machine Learning.
 
 ### Nonfunctional requirements
 
 - **How much data do you expect to store?**
 
-  AI workloads generate a lot of data. Volume can increase significantly due to multiple versions and added metadata. 
+  AI workloads generate a lot of data. Volume can increase significantly because of multiple versions and extra metadata. 
   
   Scalability for storage and throughput is important. The data platform must efficiently consume data from the ingestion pipeline while it handles data volume, manages concurrent writes, and ensures individual write performance without degradation. Those criteria also apply to the processing pipeline that reads, processes, and even writes back to the store.
   
@@ -126,16 +126,16 @@ You must process data in the aggregate data store to increase its utility downst
 
 - **Processing layer**
 
-  Data from the aggregate data store undergoes extensive processing before it can be used for indexing or model training use cases. The processing pipeline requires similar levels of reliability and scaling as the ingestion pipeline. The main difference is the type of processing done on the data. 
+  Data from the aggregate data store undergoes extensive processing before it can be used for indexing or model training use cases. The processing pipeline requires levels of reliability and scaling that are similar to the ingestion pipeline. The main difference is the type of processing done on the data. 
   
-  The process involves significant rescoping and restructuring of data. This process includes tasks like entity recognition, integrating additional data into the dataset, and performing lookups. This process might also include deleting unnecessary data and applying data logic through a data orchestration platform.
+  The process involves significant rescoping and restructuring of data. This process includes tasks like entity recognition, integrating additional data into the data set, and performing lookups. This process might also include deleting unnecessary data and applying data logic through a data orchestration platform.
 
 The data processing stage can produce various outputs, which land in different destinations for different intents. Its main goal is to prepare and transfer data from the aggregated data store for consumption by the final destination. The consumer can either pull data when needed, or the processing layer can push data when it's ready.
 
 > [!NOTE] 
-> In the context of machine learning and generative AI, it's important to distinguish between ETL, ELT, and EL processes. Traditional ETL is crucial for data warehousing and object-relational mappings, where, due to schema restrictions, data must be transformed before you load it into the target system. ELT involves extracting data, loading it into a data lake, and then transforming it by using tools like Python or PySpark. In generative AI, particularly for retrieval-augmented generation (RAG), the process often involves extracting and loading documents to storage first, followed by transformations like chunking or image extraction.
+> In the context of machine learning and generative AI, it's important to distinguish between ETL, ELT, and EL processes. Traditional ETL is crucial for data warehousing and object-relational mappings, where, because of schema restrictions, data must be transformed before you load it into the target system. ELT involves extracting data, loading it into a data lake, and then transforming it by using tools like Python or PySpark. In generative AI, particularly for retrieval-augmented generation (RAG), the process often involves extracting and loading documents to storage first, followed by transformations like chunking or image extraction.
 
-The following section provides guidance about the capabilities to consider when you select a data processing technology with ETL processes.
+The following section provides guidance to consider when you select a data processing technology that has ETL capabilities.
   
 ### Functional requirements
 
@@ -158,9 +158,9 @@ The following section provides guidance about the capabilities to consider when 
   The following articles describe specific considerations: 
 
   - [Design training data for AI workloads on Azure](./training-data-design.md#data-preprocessing)
-  - [Grounding data design for AI workloads on Azure](./grounding-data-design.md#data-preparation)
+  - [Design grounding data for AI workloads on Azure](./grounding-data-design.md#data-preparation)
   
-  As part of basic cleansing, the platform removes duplicated, fills in missing values, and eliminates extraneous noise during ingestion. For certain use cases, such as implementing a RAG pattern, we recommend that you lowercase chunks.
+  As part of basic cleansing, the platform removes duplicates, fills in missing values, and eliminates extraneous noise during ingestion. For certain use cases, such as implementing a RAG pattern, we recommend that you lowercase chunks.
 
   Although these preprocessing steps are necessary, the platform must also support rich data manipulation that's specific to your needs. This process involves loading, rescoping, and transforming data. For certain models, the platform must be able to query external sources for document analysis, such as document intelligence or other AI tools. This work is needed for preparing the data and for data enrichment.
 
@@ -172,7 +172,7 @@ The following section provides guidance about the capabilities to consider when 
   
 - **Is there a built-in orchestrator for managing workflows?**
   
-  The processing tasks are modular and run as jobs. The platform should have orchestration capabilities that break down the workflow into steps or jobs. Each job should be independently defined, executed, and monitored.
+  The processing tasks are modular and run as jobs. The platform should have orchestration capabilities that break down the workflow into steps or jobs. Each job should be independently defined, run, and monitored.
 
   In complex workflows, certain steps depend on the successful completion of previous ones. The orchestrator should handle job dependencies and make sure that tasks are completed in the correct order.
 
@@ -198,11 +198,11 @@ When you choose a processing pipeline, it's crucial to balance throughput and ob
 
   Data processing pipelines should have monitoring capabilities and provide insights into the pipeline's performance and status of jobs.
 
-  You must be able to track the progress of the jobs. Suppose the pipeline was scheduled to run a data cleansing job that didn't complete or completed partially. There might be downstream impact on the quality of data with which the model is trained, which might affect the predictive power.
+  You must be able to track the progress of the jobs. Suppose the pipeline runs a data cleansing job that doesn't complete or completes partially. There might be downstream impact on the quality of data with which the model is trained, which might affect the predictive power.
 
   Similar to other components in the workload, you should enable logs, metrics, and alerts on the data pipeline to understand its behavior. Collect and analyze performance metrics to understand the efficiency and reliability aspects.
 
-  Identify any gaps in the built-in telemetry and determine what additional monitoring you need to implement. This monitoring might involve adding custom logging or metrics to capture specific details about the job steps.
+  Identify any gaps in the built-in telemetry, and determine what additional monitoring you need to implement. This monitoring might involve adding custom logging or metrics to capture specific details about the job steps.
   
 - **How much reliability do you expect of the data processing platform?**
 
@@ -220,11 +220,11 @@ When you choose a processing pipeline, it's crucial to balance throughput and ob
 
 - **What are the security requirements on the workflows and on the data that you process?**
 
-  Be clear about the security, privacy, and data residency requirements. For example, are there any geographic regulatory requirements? Comply with data residency requirements by ensuring that data is stored and processed within specific regions. You might need to run separate pipelines for different regions, such as one for Europe and another for America, to meet local compliance regulations.
+  Be clear about the security, privacy, and data residency requirements. For example, consider any geographic regulatory requirements. Comply with data residency requirements by ensuring that data is stored and processed within specific regions. You might need to run separate pipelines for different regions, such as one for Europe and another for America, to meet local compliance regulations.
 
   The data pipeline platform should support identity and access management to ensure that only authorized identities have access to specific jobs or steps within workflows. For instance, if your ETL process consists of several workflows, and one of them handles highly confidential data, the platform should allow you to restrict access to that workflow while keeping the others accessible. This capability helps you meet the security requirements without needing separate platforms for different data sensitivity levels. Ideally, the platform should provide built-in support for such isolation that enables efficient and secure data management.
 
-Data processing pipelines can output the data to either a search index or a model training pipeline. Depending on the use case, see the sections on [search index](#considerations-for-a-search-index) or [feature stores](#considerations-for-a-feature-store).
+Data processing pipelines can output the data to either a search index or a model training pipeline. Depending on the use case, see the sections on [search indexes](#considerations-for-a-search-index) or [feature stores](#considerations-for-a-feature-store).
 
 ## Considerations for a search index
 
@@ -234,25 +234,25 @@ The search index is designed to store contextual or grounding data to send to th
 
 - **What types of search does the search index support?**
 
-  Queries sent to the system are essentially searches, and the index needs to support rich search capabilities. For RAG, vector search is nonnegotiable because data is stored as calculated vectors, or embeddings, which are used for searching.
+  Queries that the system receives are essentially searches, and the index needs to support rich search capabilities. For RAG, vector search is nonnegotiable because data is stored as calculated vectors, or embeddings, which are used for searching.
   
   Vector search is powerful, and combining it with filtering and full-text search enhances the search index's effectiveness. Your data design should account for combining these types of searches, such as vector, full-text search, filtering, and special data types like geo-location. 
   
-  Your data design should explicitly state those requirements. For more information, see [Efficient querying in the Data design](./grounding-data-design.md#efficient-querying).
+  Your data design should explicitly state those requirements. For more information, see [Efficient querying in the data design](./grounding-data-design.md#efficient-querying).
 
 - **Does the index support multimodal data?**
 
-  Choose index technologies that support multimodal data. For instance, AI searches can analyze an email, convert an image within it to vectors, and store the description in the index. This function lets you search across various content modalities, including images, videos, and audio files.
+  Choose index technologies that support multimodal data. For instance, AI searches can analyze an email, convert an image within it to vectors, and store the description in the index. Use this function to search across various content modalities, including images, videos, and audio files.
 
-- **Does the index support auto-update capabilities when the data in the data sources changes?**
+- **Does the index support automatic update capabilities when the data in the data sources changes?**
 
-  Choose an index with auto-update features. If one isn't available, you'll need to manually detect and push changes to the index. With these capabilities, the indexer can detect changes in data sources and pull updates automatically. By offloading this responsibility to the platform, you can reduce operational overhead and simplify the maintenance process.
+  Choose an index that has automatic update features. If one isn't available, you need to manually detect and push changes to the index. With these capabilities, the indexer can detect changes in data sources and pull updates automatically. By offloading this responsibility to the platform, you can reduce operational overhead and simplify the maintenance process.
 
 ### Nonfunctional requirements
 
 - **Can the index perform with large volumes of data?**
 
-  The index should be able to handle large amounts of data, be scalable, and perform well for heavy search workloads. The index stores the raw data and all of the metadata, enrichments, and entities associated with it. In the context of the RAG pattern, a single document that's split into multiple chunks can result in a significant increase in data volume.
+  The index should be able to handle large amounts of data, be scalable, and perform well for heavy search workloads. The index stores the raw data and all of the metadata, enrichments, and entities that are associated with it. In the context of the RAG pattern, a single document that's split into multiple chunks can result in a significant increase in data volume.
 
 - **Does the index have built-in reliability features?**
 
@@ -260,11 +260,11 @@ The search index is designed to store contextual or grounding data to send to th
   
   The search process involves two steps: querying the data store and then querying the inferencing endpoint. Both steps need to have similar reliability characteristics. Balance your reliability objectives between both components to ensure search effectiveness.
 
-  To ensure resiliency, the workload should support the expected number of concurrent users and have sufficient bandwidth to handle traffic surges. Ideally, the platform should survive zonal outages, which adds an extra layer of resilience.
+  To ensure resiliency, the workload should support the expected number of concurrent users and have sufficient bandwidth to handle traffic surges. Ideally, the platform should survive zonal outages, which adds an extra layer of resiliency.
   
   The data platform should be designed to prevent the use of a corrupted index for inferencing. In such cases, you should be able to rebuild the index easily. The index should also support reliable swapping between indexes by using features like aliasing to minimize downtime during index swaps. Without this functionality, you might need to rely on a backup of the index. Managing a backup comes with more complexity.
 
-  From a workload perspective, understand the potential failure modes or stress indicators, such as throttling. For instance, although the system might normally support 50 concurrent users, it might only support 30 users during a reindexing process that's running as a background job. In that case, the timing of the background job becomes important. When you evaluate throughput of an index, include both front-end queries and back-end jobs.
+  From a workload perspective, understand the potential failure modes or stress indicators, such as throttling. For instance, although the system might normally support 50 concurrent users, it might only support 30 users during a reindexing process that runs as a background job. In that case, the timing of the background job becomes important. When you evaluate throughput of an index, include both front-end queries and back-end jobs.
 
 - **What are the main cost drivers of this technology?**
 
@@ -310,7 +310,7 @@ The search index is designed to store contextual or grounding data to send to th
 
 ## Resources
 
-These articles offer more details on Azure products that we recommend as technology options for the considerations discussed in this article.
+These articles provide more details about Azure products that we recommend as technology options for the considerations discussed in this article.
 
 - [Machine Learning](/azure/well-architected/service-guides/azure-machine-learning)
 - [Blob Storage](/azure/well-architected/service-guides/azure-blob-storage)
