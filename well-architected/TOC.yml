@@ -422,11 +422,11 @@
               href: service-guides/traffic-manager/operational-excellence.md
         - name: Virtual Machines
           href: service-guides/virtual-machines.md
-    - name: Cross-cutting guides
+    - name: Design guides
       items:
       - name: Health modeling
-        href: ./cross-cutting-guides/health-modeling.md        
+        href: ./design-guides/health-modeling.md      
       - name: Implementing recommendations
-        href: ./cross-cutting-guides/implementing-recommendations.md   
+        href: ./design-guides/implementing-recommendations.md
       - name: Optimize using flows
-        href: ./cross-cutting-guides/optimize-workload-using-flows.md
+        href: ./design-guides/optimize-workload-using-flows.md
