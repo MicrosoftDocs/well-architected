@@ -20,7 +20,7 @@ Choosing the right compute platform for your SaaS workload is important, but the
 
 ### Design considerations
 
-- **Hosting model**. Azure offers various hosting models, primarily Infrastructure as a Service (IaaS) and Platform as a Service (PaaS), each with its own benefits and tradeoffs. Evaluate your application's requirements and choose the most suitable model.
+- **Hosting model**. Azure offers various hosting models, primarily infrastructure as a service (IaaS) and platform as a service (PaaS), each with its own benefits and tradeoffs. Evaluate your application's requirements and choose the most suitable model.
     
     - IaaS provides virtual machines (VMs) and full control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
  
@@ -28,11 +28,11 @@ Choosing the right compute platform for your SaaS workload is important, but the
     
    PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application runs on an operating system that the PaaS service doesn't support. PaaS offerings from Azure include App Service and Container Apps.
 
-- **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is tailored for web applications, whereas AKS is more general-purpose. It's capable of hosting web apps, AI workloads, and batch compute tasks.
+- **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is designed for web applications, whereas AKS is more general-purpose. It can host web apps, AI workloads, and batch compute tasks.
 
-- **Development team expertise**. Large changes can be challenging if the team lacks experience with the new platform. Assess your team's skills and match them to your platform requirements. It's often better to start with a simpler platform and gradually evolve your architecture rather than jump straight to a more advanced option.
+- **Develop team expertise**. Large changes can be challenging if the team lacks experience with the new platform. Assess your team's skills and match them to your platform requirements. Start with a simple platform and gradually evolve your architecture rather than jump straight to a more advanced option.
   
-  For example, if you're building a containerized application, start with Container Apps for easier management. As your needs grow more complex, you can transition to AKS while you gain a better understanding of the platform over time.
+  For example, if you're building a containerized application, start with Container Apps for easy management. As your needs grow more complex, you can transition to AKS while you gain a better understanding of the platform over time.
 
 - **Management overhead**. Compute platforms balance overhead and control. More management responsibility shifted away from your team means less control over the platform.
 
@@ -51,15 +51,15 @@ Choosing the right compute platform for your SaaS workload is important, but the
 | Recommendation | Benefit |
 | --- | --- |
 |  Evaluate the compute performance requirements by estimating CPU, memory, network, and GPU scale dimensions. <br><br>Perform load testing to gather more accurate data to inform your modeling exercise. | These tasks help you select the appropriate sizing for your compute platform and scale appropriately when the load on the system increases.|
-| Evaluate your team's proficiency and start with the least complex platform that meets your needs or one that they're already familiar with. | You ensure smoother operations and avoid overburdening your team by choosing a compute platform that they're familiar with. |
+| Evaluate your team's proficiency and start with the least complex platform that meets your needs or one that the team is already familiar with. | You ensure smoother operations and avoid overburdening your team by choosing a compute platform that they're familiar with. |
 | Be flexible in your design. Aim for a solution that you can iterate on over time to adapt to evolving business and technical requirements.| Flexibility allows you to more easily adapt to changes and improvements over time. You can respond effectively to evolving business and technical needs.|
 | Evaluate the total cost of ownership (TCO), including costs of operating the solution. | You have a clear understanding of costs, which is crucial in planning your pricing model and ensuring cost-effective operations. |
 | Assess whether you need to use specific compute platforms based on your technology stack. Some compute platforms are better suited for certain programming languages, tooling, and operating systems. Strive to use platforms that natively support your technology choices. | You avoid the cost of redesigning your architecture, which might include migrating to a new platform.|
-| Evaluate the reliability features of the platform and factor cloud service provider's guarantees into your SLOs. | You reduce the risk of localized data center outages by planning for reliability features and using availability zones if they're available.|
+| Evaluate the reliability features of the platform and factor your cloud service provider's guarantees into your SLOs. | You reduce the risk of localized data center outages by planning for reliability features and using availability zones if they're available.|
 
 ## Tenancy model and isolation
 
-Your SaaS business model drives whether you host resources for customers or manage them in the customer's environment. Most SaaS providers host resources on behalf of their customers, which allows for flexibility in compute platform design. Isolate customer workloads effectively to optimize cost efficiency without compromising customer experience or performance.
+Your SaaS business model determines whether you host resources for customers or manage them in the customer's environment. Most SaaS providers host resources on behalf of their customers, which allows for flexibility in compute platform design. Isolate customer workloads effectively to optimize cost efficiency without compromising customer experience or performance.
 
 ### Design considerations
 
@@ -81,7 +81,7 @@ Your SaaS business model drives whether you host resources for customers or mana
 
 ## Configure for scalability and cost efficiency
 
-Your customers can use your application product with different performance profiles. They expect the application to handle increasing user demands, large-scale data, and complex workloads without compromising speed and performance. Your system architecture must ensure scalability and optimal performance, whether it's managing hundreds or millions of users, while balancing performance needs and costs.
+Your customers can use your application product with different performance profiles. They expect the application to handle increasing user demands, large-scale data, and complex workloads without compromising speed and performance. Your system architecture must ensure scalability and optimal performance, whether it manages hundreds or millions of users, while balancing performance needs and costs.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance problems from other workloads.
 
