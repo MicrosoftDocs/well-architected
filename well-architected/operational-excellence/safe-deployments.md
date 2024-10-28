@@ -46,7 +46,7 @@ In both of these models, the time between each phase of the rollout should be lo
 
 ### Develop robust workload health models
 
-Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end user, the rollout should immediately halt and an investigation into the cause of the alert should be performed to help determine the next course of action. If there are no issues reported by end users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user-reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../cross-cutting-guides/health-modeling.md).
+Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end user, the rollout should immediately halt and an investigation into the cause of the alert should be performed to help determine the next course of action. If there are no issues reported by end users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user-reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../design-guides/health-modeling.md).
 
 ### Implement failure-detection mechanisms
 
@@ -135,7 +135,7 @@ See the [blue-green deployment of Azure Kubernetes Service (AKS) clusters](/azur
 - [Azure Pipelines](/azure/devops/pipelines/process/stages)
 - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
 - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore)
-- [Building a health model](../cross-cutting-guides/health-modeling.md)
+- [Building a health model](../design-guides/health-modeling.md)
 - [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci)
 - [Deployment Stamps](/azure/architecture/patterns/deployment-stamp)
 - [Performance considerations for your deployment infrastructure](/azure/well-architected/devops/release-engineering-performance)
