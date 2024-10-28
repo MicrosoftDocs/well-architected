@@ -26,7 +26,7 @@ Choosing the right compute platform for your SaaS workload is important, but the
  
     - PaaS allows application deployment without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
     
-   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application runs on an operating system that's not supported by the PaaS service. PaaS offerings from Azure include App Service and Container Apps.
+   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application runs on an operating system that the PaaS service doesn't support. PaaS offerings from Azure include App Service and Container Apps.
 
 - **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is tailored for web applications, whereas AKS is more general-purpose. It's capable of hosting web apps, AI workloads, and batch compute tasks.
 
@@ -75,70 +75,70 @@ Your SaaS business model drives whether you host resources for customers or mana
 
 | Recommendation | Benefit |
 | --- | --- |
-| Evaluate the isolation features of the compute platform to ensure that it meets your tenancy model requirements. | You avoid rework by verifying critical configuration first. |
+| Evaluate the isolation features of the compute platform to ensure that it meets your tenancy model requirements. | You avoid reworking your platform by verifying critical configuration first. |
 | Enforce your isolation model. <br><br>Be cautious with shared resources like local disk caches, system memory, and external caches because they can unintentionally leak data between tenants if they're not managed properly. <br><br> For high isolation requirements, enforce isolation within the compute platform and in the application. | Strong isolation reduces the risk of cross-tenant data leakage, a serious security incident.|
-| Implement resource governance and monitoring, with visibility of customer-level metrics. <br><br> Proactively monitor each customer's resource consumption to detect and mitigate any noisy neighbor problems. | You will prevent problems from affecting other customers by monitoring resource consumption and mitigating problems early.|
+| Implement resource governance and monitoring, with visibility of customer-level metrics. <br><br> Proactively monitor each customer's resource consumption to detect and mitigate noisy neighbor problems. | You prevent problems from affecting other customers by monitoring resource consumption and mitigating problems early.|
 
 ## Configure for scalability and cost efficiency
 
-Your customers can use your application product with different performance profiles. They expect the application to handle increasing user demands, large-scale data, and complex workloads without compromising speed and performance. Your system architecture must ensure scalability and optimal performance, whether managing hundreds or millions of users, while balancing performance needs against costs.
+Your customers can use your application product with different performance profiles. They expect the application to handle increasing user demands, large-scale data, and complex workloads without compromising speed and performance. Your system architecture must ensure scalability and optimal performance, whether it's managing hundreds or millions of users, while balancing performance needs and costs.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance issues from other workloads.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance problems from other workloads.
 
-For more guidance about cost management, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
+For more information about cost management, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 
-- **Horizontal and vertical scaling strategies**. Horizontal and vertical scaling approaches are both viable for handling increased load. The approach you use depends on your application's ability to scale across multiple instances.
-    - Horizontal scaling involves adding more instances of compute nodes. Your architecture will need a load balancer to distribute incoming traffic across multiple servers or instances.
-    - Vertical scaling involves increasing resources, (CPU, memory) on a single server. This is suitable for stateful applications that don't support require external state stores like caches. Scaling vertically may cause brief service interruptions and has a resource limit on a single server.
+- **Horizontal and vertical scaling strategies**. Horizontal and vertical scaling approaches are viable for handling increased load. The approach that you use depends on your application's ability to scale across multiple instances.
+    - Horizontal scaling involves adding more instances of compute nodes. Your architecture needs a load balancer to distribute incoming traffic across multiple servers or instances.
+    - Vertical scaling involves increasing resources, like CPU and memory, on a single server. Use this approach for stateful applications that don't need external state stores like caches. Scaling vertically might cause brief service interruptions and has a resource limit on a single server.
   > Refer to [PE:05 Recommendations for scaling and partitioning](/azure/well-architected/performance-efficiency/scale-partition#choose-a-scaling-strategy). 
   
-- **Autoscaling**. Systems need to efficiently handle varying levels of demand. As user traffic increases, your application resources need to scale up to maintain performance; when demand drops, resources scale down to control costs without impacting user experience. Factors like CPU utilization, time of day, or incoming requests guide these adjustments. Autoscaling ensures balanced performance and cost, mitigating the impact of high demand on other tenants.
+- **Autoscaling**. Systems need to efficiently handle varying levels of demand. As user traffic increases, your application resources need to scale up to maintain performance. When demand decreases, resources scale down to control costs without affecting user experience. Factors like CPU utilization, time of day, or incoming requests guide these adjustments. Autoscaling helps balance performance and cost and mitigates the impact of high demand on other tenants.
     > Refer to [RE:06 Recommendations for reliable scaling](/azure/well-architected/reliability/scaling).
 
-- **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you'll eventually hit limits in your solution's scalability, such as networking or storage constraints.
+- **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you eventually hit limits, such as networking or storage constraints, in your solution's scalability.
 
   > [!NOTE]
-  > The [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution, providing an additional scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
+  > The [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution. It provides another scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Prefer horizontal scaling over vertical scaling. Horizontal scaling is often less complex, more reliable, and more cost effective than vertical scaling. | Horizontal scaling is often simpler, more reliable, and cost-effective allowing you to scale to a much higher degree than vertical scaling.|
-| Perform load testing. | Simulating usage can help identify bottlenecks and scaling thresholds before deploying to production.|
-| Define the scaling threshold for deploying a new stamp instead of scaling horizontally or vertically. <br><br>For cost-effective scaling without performance loss, condense your tenants onto as few resources as possible.| You'll be better prepared to handle growth beyond your current infrastructure. |
-| Implement autoscaling, where possible. Set autoscale rules to reflect your application's load accurately.| You will optimize performance and cost by increasing and decreasing resources as needed. |
-| Monitor and evaluate customer usage patterns. | You'll know when to adjust your infrastructure to boost performance or optimize costs.|
-| Implement caching mechanisms, where possible.| You'll reduce the potential processing load on the compute layer.|
-| Use [cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending).| Warnings are useful in detecting high usage and control cost issues early.|
-| Use [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) for customers that have long-term commmitments and have guaranteed compute utilization for that entire period.| You'll maximize your cost efficiency on your reserved capacity.|
+| Choose horizontal scaling over vertical scaling. Horizontal scaling is often less complex, more reliable, and more cost effective than vertical scaling. | Horizontal scaling is often simpler, more reliable, and cost-effective, which allows you to scale to a higher degree than vertical scaling.|
+| Perform load testing. | Simulating usage can help you identify bottlenecks and scaling thresholds before you deploy to production.|
+| Define the scaling threshold for deploying a new stamp instead of scaling horizontally or vertically. <br><br>For cost-effective scaling without performance loss, condense your tenants onto as few resources as possible.| You're better prepared to handle growth beyond your current infrastructure. |
+| Implement autoscaling, where possible. Set autoscale rules to reflect your application's load accurately.| You optimize performance and cost by increasing and decreasing resources as needed. |
+| Monitor and evaluate customer usage patterns. | You know when to adjust your infrastructure to boost performance or optimize costs.|
+| Implement caching mechanisms, where possible.| You reduce the potential processing load on the compute layer.|
+| Use [cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending).| Warnings help you detect high usage and control cost problems early.|
+| Use [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) for customers that have long-term commitments and guaranteed compute utilization for that entire period.| You maximize cost efficiency on your reserved capacity.|
 
 ## Design for resiliency
 
-Resiliency of your compute layer  plays a large part in your overall resiliency strategy. Your application should tolerate and recover from common failures automatically and seamlessly, without user impact.
+Resiliency of your compute layer plays a large part in your overall resiliency strategy. Your application should tolerate and recover from common failures automatically and seamlessly, without user impact.
 
 ### Design considerations
 
-- **Reliability requirements**.  Set clear reliability requirements. These include internal targets, known as SLOs, and customer commitments, known as SLAs, often specifying uptime targets like 99.9% per month.
+- **Reliability requirements**. Set clear reliability requirements. These requirements include internal targets, or SLOs, and customer commitments, or SLAs, that often specify uptime targets like 99.9% per month.
   > Refer to [RE:04 Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics).
   
-- **Deployment strategy**. Cloud resources are deployed in specific geographic regions. In Azure, availability zones are isolated datacenter sets within a region. For resiliency, deploy applications across multiple availability zones. Deploying across regions or cloud providers further enhances resiliency but adds cost and operational complexity.
+- **Deployment strategy**. Cloud resources are deployed in specific geographic regions. In Azure, availability zones are isolated datacenter sets within a region. For resiliency, deploy applications across multiple availability zones. Deploying across regions or cloud providers enhances resiliency but adds cost and operational complexity.
   > Refer to [RE:05 Recommendations for using availability zones and regionss](/azure/well-architected/reliability/regions-availability-zones)
   
-- **Stateful workloads**. Deploying resilient applications typically involves running redundant copies in different locations. This can be challenging for stateful workloads, which need to maintain session state. Aim to build stateless workloads when possible.
+- **Stateless workloads**. To deploy resilient applications, you typically need to run redundant copies in different locations. This task can be challenging for stateful workloads, which need to maintain session state. Aim to build stateless workloads when possible.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Handle [transient faults](../reliability/handle-transient-faults.md) in your application. | You'll increase your availability by quickly recovering from minor issues. |
-| Prefer stateless applications. If your application needs to be stateful, use an external state storage like a cache to store the state.| You will prevent state loss caused by an instance being unavailable, such as during erroneous load balancing or if an instance is unavailable during an outage.|
-| Use availability zones.| You'll increase your resiliency by mitigating localized datacenter outages. |
-| Design a multi-regional architecture when there's business justification to do so. | You'll meet high uptime requirements and support users in different regions. |
-| Perform [chaos engineering](../reliability/testing-strategy.md). | You will better understand where your points of failure are and can correct them before an outage occurs.|
-| Limit the use of components that are shared by multiple stamps. | You will eliminate single points of failure and will reduce the potential area of impact for an outage.|
+| Handle [transient faults](../reliability/handle-transient-faults.md) in your application. | You increase your availability by quickly recovering from minor issues. |
+| Choose stateless applications. If your application needs to be stateful, use an external state storage like a cache to store the state.| You prevent state loss that's caused by an instance being unavailable, such as during erroneous load balancing or during an outage.|
+| Use availability zones.| You increase your resiliency by mitigating localized datacenter outages. |
+| Design a multiregional architecture when there's business justification to do so. | You meet high uptime requirements and support users in different regions. |
+| Perform [chaos engineering](../reliability/testing-strategy.md). | You better understand where your points of failure are and can correct them before an outage occurs.|
+| Limit the use of components that multiple stamps share. | You eliminate single points of failure and reduce the potential area of impact for an outage.|
 
 ## Additional resources
 
