@@ -97,8 +97,3 @@ Good documentation habits are important for all types of workloads. The complexi
 ### Tools
 
 Take advantage of automated configuration and history capturing through MLFlow and Machine Learning.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Testing AI workloads on Azure](./testing.md)
