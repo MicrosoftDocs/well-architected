@@ -47,7 +47,7 @@ To implement a comprehensive monitoring system design for your workload, follow 
 
 - Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
-- Tie the monitoring data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing that data in terms of the flows will help align your observability strategy with your [health model](../cross-cutting-guides/health-modeling.md).
+- Tie the monitoring data that you gather and analyze back to your [system and user flows](../reliability/identify-flows.md) to correlate the health of the flows with the data in addition to the overall health of the workload. Analyzing that data in terms of the flows will help align your observability strategy with your [health model](../design-guides/health-modeling.md).
 
 You should automate all functions of the monitoring system as much as possible, and they should all run continuously, all day, every day. 
 
@@ -64,7 +64,7 @@ You should configure all workload components, whether they're infrastructure res
 
 Logs are primarily useful for detecting and investigating anomalies. Typically, logs are produced by the workload component and then sent to the monitoring platform or pulled by the monitoring platform via automation.
 
-Metrics are primarily useful for [building a health model](../cross-cutting-guides/health-modeling.md) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behavior of your customers. These trends can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
+Metrics are primarily useful for [building a health model](../design-guides/health-modeling.md) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behavior of your customers. These trends can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
 
 #### Application data
 
@@ -214,7 +214,7 @@ For detailed guidance about these recommendations, see [Analyze monitoring data 
 
 The most common way to visualize data is to use dashboards that can display information as a series of chart or graphs, or in some other visual form. These items can be parameterized, and an analyst can select the important parameters, like the time period, for any specific situation.
 
-Align your dashboards with your [health model](../cross-cutting-guides/health-modeling.md) so that they indicate when the workload or components of the workload are healthy, degraded, or unhealthy. 
+Align your dashboards with your [health model](../design-guides/health-modeling.md) so that they indicate when the workload or components of the workload are healthy, degraded, or unhealthy. 
 
 For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, members of the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
 

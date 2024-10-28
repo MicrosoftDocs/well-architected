@@ -48,7 +48,7 @@ The output of identifying all user and system flows is a catalog of all the flow
 
 - *Document unique outputs.* Identify any alternative paths or exceptions within each flow, such as error handling or conditional branching. If a flow has multiple possible outcomes, you should add it to the catalog as distinct entries. For user flows, you should identify the intended behavior of the interaction. For system flows, you should identify the intended behavior of the process.
 
-- *Visualize with diagrams.* Create flowcharts or diagrams to visually represent the flow and its steps. You can use tools like Microsoft Visio, UML sequence diagrams, use-case diagrams, simple drawing tools, or a descriptive list in text format (*see [Example flow catalog](../cross-cutting-guides/optimize-workload-using-flows.md#flow-examples)*).
+- *Visualize with diagrams.* Create flowcharts or diagrams to visually represent the flow and its steps. You can use tools like Microsoft Visio, UML sequence diagrams, use-case diagrams, simple drawing tools, or a descriptive list in text format (*see [Example flow catalog](../design-guides/optimize-workload-using-flows.md#flow-examples)*).
 
 - *Update flow mapping iteratively.* Flow mapping is an iterative process. Flows can change, split, or combine, especially in the design phase. As the workload flows become more clearly defined, you should update the catalog of flows to match. Validate and refine your flow diagrams with feedback from stakeholders to ensure accuracy and completeness.
 
