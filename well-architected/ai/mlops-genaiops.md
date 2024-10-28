@@ -63,13 +63,13 @@ You also need to ensure that data is secure, given that the data is from product
 >
 > For information about data processing tasks, see these articles:
 >   - [Data preprocessing for training data](./training-data-design.md#data-preprocessing)
->   - [Data preparion for grounding data](./grounding-data-design.md#data-preparation)
+>   - [Data preparation for grounding data](./grounding-data-design.md#data-preparation)
 
 ##### Tools
 
 We recommend that you standardize your workload's data orchestration tools. The tools should be able to provide a data pipeline that can group activities and that has built-in automation.
 
-A [Azure Data Factory](/fabric/data-factory/data-factory-overview) pipeline can be an initial choice. It can connect and process many data sources efficiently. You can also consider [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is), which combines big data and data warehousing and supports data lakes, Apache Spark, and Azure Synapse SQL. It also integrates with Data Factory for ETL.
+An [Azure Data Factory](/fabric/data-factory/data-factory-overview) pipeline can be an initial choice. It can connect and process many data sources efficiently. You can also consider [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is), which combines big data and data warehousing and supports data lakes, Apache Spark, and Azure Synapse SQL. It also integrates with Data Factory for ETL.
 
 For preparing training data, [Azure Machine Learning pipelines](/azure/machine-learning/concept-ml-pipelines) provide specialized features that can automate tasks like data collection and processing.
 
@@ -87,7 +87,7 @@ Teams can start with UI-based development to reduce challenges, and, as they bec
 
 ##### Tools
 
-We recommended that you use tools that can **track machine learning experiments** by capturing details like code versions, environments, parameters, runs, and results. MLflow is one such open-source framework. Consider using Azure Machine Learning workspaces, which are [MLflow-compatible](/azure/machine-learning/concept-mlflow) and provide a streamlined workflow that enables data scientists to manage productivity and reproducibility in their projects. To manage code development with source control tracking, integrate the machine learning pipeline with source control like GitHub, or use file shares.
+We recommend that you use tools that can **track machine learning experiments** by capturing details like code versions, environments, parameters, runs, and results. MLflow is one such open-source framework. Consider using Azure Machine Learning workspaces, which are [MLflow-compatible](/azure/machine-learning/concept-mlflow) and provide a streamlined workflow that enables data scientists to manage productivity and reproducibility in their projects. To manage code development with source control tracking, integrate the machine learning pipeline with source control like GitHub, or use file shares.
 
 The hosting compute can also influence your choice of a workflow orchestrator. If your application is hosted on Azure Kubernetes Service (AKS), consider using Kubeflow.
 
@@ -109,7 +109,7 @@ Integrating and deploying models requires specialized tools and practices that g
 
 ##### Tools
 
-To address discovery tasks, take advantage of model catalogs that include models from various model providers. The [model Catalog in Azure AI Studio](/azure/ai-studio/how-to/model-catalog-overview) allows you to evaluate from among curated collections and deploy models efficiently. 
+To address discovery tasks, take advantage of model catalogs that include models from various providers. The [model Catalog in Azure AI Studio](/azure/ai-studio/how-to/model-catalog-overview) allows you to evaluate from among curated collections and deploy models efficiently. 
 
 [Azure Machine Learning prompt flow](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) can help with the development of orchestration code, enabling prototyping, experimenting, iterating, and prompt engineering. These flows can be deployed to Azure Machine Learning managed endpoints. Evaluate whether you can run and deploy the flows with your existing CI/CD pipeline technology.
 
@@ -117,11 +117,11 @@ To address discovery tasks, take advantage of model catalogs that include models
 
 During this stage, the model is deployed to a hosting and inferencing platform or the serve layer of AI workloads. The APIs need to be packaged as a scalable container. The container platform can be a managed compute or custom hosting platform. Operational practices should ensure safe deployment and enable rollbacks.
 
-Start with platform as a service (PaaS) and serverless solutions like Azure OpenAI Service to simplify adoption and management. Consider using the Azure Machine Learning Serverless API for aggregating endpoint access. Managed compute clusters are a viable option for advanced needs. Self-hosting on AKS is also another option. Make sure you right-size your compute and maintain proper isolation from other workloads. You can also consider options like fully hosting your model as infrastructure as a service (IaaS). IaaS provides flexibility but can add operational burden. Those options are described in [Application platform](./application-platform.md#online-inferencing).
+Start with platform as a service (PaaS) and serverless solutions like Azure OpenAI Service to simplify adoption and management. Consider using the Azure Machine Learning Serverless API for aggregating endpoint access. Managed compute clusters are a viable option for advanced needs. Self-hosting on AKS is another option. Make sure you right-size your compute and maintain proper isolation from other workloads. You can also consider options like fully hosting your model as infrastructure as a service (IaaS). IaaS provides flexibility but can add operational burden. These options are described in [Application platform](./application-platform.md#online-inferencing).
 
 This stage presents the last chance to catch issues before you move the model to production. Test processes should include validation steps to make sure the model is configured to provide predictions as expected. 
 
-You should integrate the model into the existing production environment by following **progressive exposure processes and using side-by-side deployments**. The canary model is a common way to roll out new models. With this method, the user base is increased gradually. Blue-grean deployment is another method.
+You should integrate the model into the existing production environment by following **progressive exposure processes and using side-by-side deployments**. The canary model is a common way to roll out new models. With this method, the user base is increased gradually. Blue-green deployment is another method.
 
 ##### Tools
 
@@ -139,7 +139,7 @@ We strongly recommend that you have a DataOps inner loop monitoring process that
 
 After deployment, monitoring operations are necessary to address issues like model decay. Models can become stale because of changes in data or external changes that can cause the model to produce irrelevant results. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics, as you would with any other workload, to help ensure optimal performance and reliability. For more information, see [Testing for model decay](./testing.md#model-decay). 
 
-With pretrained models, you also need to monitor data drift and performance, focusing primarily on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they're relevant and accurate. Additionally, be aware of security risks, like attempts to manipulate the model's behavior by using malicious prompts. Be sure to implement thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in [Responsible AI design](./userinput-ethics-security.md).
+With pretrained models, you also need to monitor data drift and performance, focusing primarily on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they're relevant and accurate. Additionally, be aware of security risks, like attempts to manipulate the model's behavior by using malicious prompts. Be sure to implement thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in [User input, ethics, and security considerations](./userinput-ethics-security.md).
 
 ##### Tools
 
@@ -163,15 +163,15 @@ AI workloads are complex because the overall lifecycle involves many roles, freq
 
   The model lifecycle involves two main types of training: 
 
-  - Online training incorporates recent data into the model frequently, sometimes daily, to ensure that decisions are based on the latest information. This training integrated into the workload so that the model is continuously updated as part of the regular process.
+  - Online training incorporates recent data into the model frequently, sometimes daily, to ensure that decisions are based on the latest information. This training is integrated into the workload so that the model is continuously updated as part of the regular process.
 
   - Offline training trains the model less frequently, allowing a longer gap between updates. The training process is separate from the main workload and is done asynchronously. After the new model is ready, it's then integrated into the system.
  
-  **Reliability can be compromised if updates are infrequent**. If an update is missed, it can be postponed without major issues. This concept also applies to grounding data. For example, if you use RAG, you must decide whether you need to use recent data or if slightly older data is sufficient. Both scenarios involve balancing the need for up-to-date information with the practicality of update frequency. You should perform online training via automation because of the frequency and reliability that's required. For offline training, because of the required frequency, you need to justify automation by performing a cost-benefit analysis. Additionally, you can perform offline training by using cheaper resources, like offline hardware.
+  **Reliability can be compromised if updates are infrequent**. If an update is missed, it can be postponed without major issues. This concept also applies to grounding data. For example, if you use RAG, you must decide whether you need to use recent data or if slightly older data is sufficient. Both scenarios involve balancing the need for up-to-date information with the practicality of update frequency. You should perform online training via automation because of the frequency and reliability that's required. For offline training, because of the required frequency, you need to justify automation by performing a cost-benefit analysis. Additionally, you can perform offline training by using less expensive resources, like offline hardware.
 
 - Traditional DevOps processes are typically affected by structural changes. However, in AI and machine learning, models are trained on production data. Model decay poses a significant risk and can lead to decreased performance over time if it's not monitored. Automated collection and analysis of performance metrics, alerts, and model retraining are required to maintain model efficacy. Use automation in a way that can help you **detect changes in data and model dependencies** to get a clear understanding of the current state at any given time.
 
-- There are two approaches to model training. With the first approach, **models are trained in the development environment with full production data**, and only the artifact is promoted through environments. This approach can reduce computational costs but requires tighter security to handle production data in the lower environments. It might not be possible for some organizations. With the other approach, **the model is trained in each environment**. Code promotion can help with stability because training code is reviewed and tested in the lower environments, but it increases the cost of compute. There are pros and cons to both approaches. The approach you choose must be factored in into your workload's software development lifecycle (SDLC) practices. Regardless of the deployment approach, you need to thoroughly test and evaluate the model you use it for inference in production.
+- There are two approaches to model training. With the first approach, **models are trained in the development environment with full production data**, and only the artifact is promoted through environments. This approach can reduce computational costs but requires tighter security to handle production data in the lower environments. It might not be possible for some organizations. With the other approach, **the model is trained in each environment**. Code promotion can help with stability because training code is reviewed and tested in the lower environments, but it increases the cost of compute. There are pros and cons to both approaches. The approach you choose must be factored in to your workload's software development lifecycle (SDLC) practices. Regardless of the deployment approach, you need to thoroughly test and evaluate the model you use for inference in production.
 
 - Your automation code should **incorporate data lineage to support auditability** by providing a clear record of data processing stages. This record helps you manage expectations and enables you to demonstrate how decisions were made so you can address any concerns about outcomes.
 
@@ -217,4 +217,4 @@ Regularly review and improve operations and encourage innovation.
 
 The MLOps maturity model progresses from manual processes to full automation. Start with manual builds and monitoring, and incorporate automated application builds, training environments, and deployment in phases as justified by comprehensive metrics. For more information, see [MLOps maturity model](/azure/architecture/ai-ml/guide/mlops-maturity-model).
 
-The GenAIOps maturity levels move from basic models to structured deployment, progressively embracing automated optimization techniques. For more information, see [Advance your maturity level for GenAIOps](/azure/machine-learning/prompt-flow/concept-llmops-maturity).
+The GenAIOps maturity levels move from basic models to structured deployment, progressively using automated optimization techniques. For more information, see [Advance your maturity level for GenAIOps](/azure/machine-learning/prompt-flow/concept-llmops-maturity).
