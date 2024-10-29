@@ -63,7 +63,7 @@ Initially, startups should prioritize the most impactful elements for their cust
 **&#10004;** Use the [**Assessment Review Tool**](./assessment.md) to evaluate the your readiness of your optimized SaaS workload in production.
 
 > [!TIP]
-> Every architectural decision involves a range of considerations. These tradeoffs are acknowledged compromises that balance different aspects of the framework. They are indicated by this icon. :::image type="icon" source="../_images/trade-off.svg":::.
+> Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated by this icon. :::image type="icon" source="../_images/trade-off.svg":::.
 
 ## What resources are available?
 
