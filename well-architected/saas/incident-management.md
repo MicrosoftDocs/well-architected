@@ -104,3 +104,11 @@ After you recover from an incident, review and analyze what happened to learn fr
 | Create a process to perform internal post-incident reviews.<br><br>Focus on identifying the reasons that contributed to the problem. Consider technical causes, how your processes might have contributed to the outage, and how you responded to the incident. | Internal post-incident reviews help you learn from production outages and minimize the risk of similar problems happening again. |
 | Make a structured plan to address any items that need remediation. Include clear accountability and timelines.|Clear accountability helps you ensure that each role meets its functional expectations, enhances clarity, and allows for transparent reporting at the desired levels.|
 | Publish customer-facing post-incident reviews.<br><br>Provide customers with enough detail to understand the problem and mitigation steps without revealing unnecessary internal details or system architecture. <br><br>Post-incident communications should always be written and published by humans. Technical and nontechnical stakeholders should review the communications for accuracy and clarity. | This approach helps maintain customers' confidence and assures them that you learned from the incident and are addressing the identified problems. |
+
+
+## Next step
+
+After reviewing the design areas, proceed to the assessment tool to evaluate your design.
+
+> [!div class="nextstepaction"]
+> [Assessment review tool for SaaS workloads on Azure](./assessment.md)

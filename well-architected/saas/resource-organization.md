@@ -20,17 +20,16 @@ The first step in planning your architecture is to choose the region where your 
 
 ### Design considerations
 
-- **Evaluate regions that are optimized for production.** Some Azure regions offer more services than others. To view available services in each region, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/). 
+- **Evaluate regions that are optimized for production.** Some Azure regions offer more services than others. Also, many Azure regions support availability zones to withstand datacenter failures, which are an important part of a resiliency strategy. You should use regions that have availability zones, and you deploy production components into multiple availability zones. To view available services in each region, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/). 
 
-    Also, many Azure regions support [availability zones](/azure/reliability/availability-zones-overview), which are an important part of a resiliency strategy. You should use regions that have availability zones, and you should deploy production components into multiple availability zones.
 
-    To learn more about how to use regions and availability zones, see [RE:05 Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md).
+    > Refer to [RE:05 Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md).
 
 - **Design according to data residency requirements.** There might be requirements about where customer data can be stored, often because of data sovereignty laws. Requirements can range from broad geographic areas, like Europe, to specific countries or regions. Azure defines geographies based on geopolitical boundaries, and you can typically use any region within a defined geography to meet data residency requirements.
 
     For information about Azure region support, see [Azure geographies](https://azure.microsoft.com/explore/global-infrastructure/geographies/).
   
-- **Minimize latency.** Choose regions that are close to your customers and users. For global customers, deploy multiple instances in different regions. Alternatively, use a global load balancer to route traffic to regions that are closer to users and accelerate network traffic. Consider using [Azure Front Door](/azure/frontdoor/front-door-overview) to distribute your traffic globally.
+- **Minimize latency.** Choose regions that are close to your customers and users. For global customers, deploy multiple instances in different regions. Alternatively, use a global load balancer to route traffic to regions that are closer to users and accelerate network traffic. [Azure Front Door](/azure/frontdoor/front-door-overview) is a common choice in those scenarios.
 
 - **Deploy across multiple regions.** Multi-region deployments offer higher resiliency and support low-latency connections for global customers. This design can also help you meet complex data residency requirements.
 
@@ -68,17 +67,14 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
 
 - **Apply the Deployment Stamps pattern.** The [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) is beneficial in many ways. It enables you to deploy dedicated resources for a specific customer. You can also use it to deploy identical resources across multiple Azure regions, either customer-specific or shared. Additionally, with a stamp, you can deploy resources into a customer's own Azure environment, which is useful when they need to own the resources. You accomplish this type of deployment via Azure Marketplace by using templatized resources.
 
-    To learn more about applying the Deployment Stamps pattern for SaaS, see [Architectural approaches for a multitenant solution](/azure/architecture/guide/multitenant/approaches/overview#deployment-stamps-pattern).
-
 - **Support your operational processes.** Effective resource organization affects team operations. For example, a consistent naming and tagging strategy helps in diagnostics, resource management, and cost management. A good tagging and naming strategy helps you quickly search for resources that are used for specific customers and distinguish between production and non-production environments.
 
-    SaaS solutions require rigorous customer lifecycle management, including onboarding new customers and offboarding the customers that leave. Your resource organization strategy should facilitate the easy creation and removal of customer resources and the reconfiguration of shared resources. For more information about managing lifecycles, see [Tenant lifecycle considerations in a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenant-lifecycle).
+    SaaS solutions require rigorous customer lifecycle management, including onboarding new customers and offboarding the customers that leave. Your resource organization strategy should facilitate the easy creation and removal of customer resources and the reconfiguration of shared resources. 
 
 - **Publish through Azure Marketplace.** If your business model and offering is compatible with Azure Marketplace, consider publishing your solution there. You can use Azure Marketplace regardless of whether you have an existing SaaS solution or are converting a single-tenant solution into a multitenant SaaS.
 
     Azure Marketplace provides support for billing, onboarding, and offboarding and simplifies management and customer access to your application. If you use Azure Marketplace, you don't need to manage sensitive billing information or payment providers. 
 
-For more information about resource organization for SaaS solutions, see [Azure resource organization in multitenant solutions](/azure/architecture/guide/multitenant/approaches/resource-organization).
 
 ### Design recommendations
 
@@ -87,6 +83,14 @@ For more information about resource organization for SaaS solutions, see [Azure 
 | Review Azure quotas and limits for resources that you deploy. If you're approaching limits, choose a strategy for continuing to grow, such as by deploying additional resources, following [bin packing](/azure/architecture/guide/multitenant/approaches/resource-organization) guidance, or using multiple Azure subscriptions. | This approach enables you to scale and grow while staying within limits. |
 | Define resource lifetimes and lifecycles. Distinguish between shared and customer-specific resources. | This strategy enables you to improve your operational efficiency by predefining your processes and improve your cost efficiency by removing resources that you no longer need. |
 | Take advantage of tooling, like [Mona for SaaS](https://github.com/microsoft/mona-saas), to optimize integration with Azure Marketplace.|  Reusable code modules and templates can reduce the time and effort needed for deployment and integration. Using these tools can help you manage solutions that are available on Azure Marketplace.|
+
+## Additional resources
+
+Multitenancy is a core business methodology for designing SaaS workloads. These articles provide more information about resource organization:
+
+- [Azure resource organization in multitenant solutions](/azure/architecture/guide/multitenant/approaches/resource-organization)
+- [Tenant lifecycle considerations in a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenant-lifecycle)
+- [Architectural approaches for a multitenant solution: Deployment stamps](/azure/architecture/guide/multitenant/approaches/overview#deployment-stamps-pattern)
 
 ## Community links
 

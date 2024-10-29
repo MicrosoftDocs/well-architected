@@ -20,7 +20,9 @@ In the context of SaaS workloads, there are two distinct types of identity.
       
     - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. Maintenance of the user's account is your responsibility. 
 
-- **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. For a holistic view of enterprise identity, see [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
+- **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. 
+
+    > Refer to [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
 
 :::image type="content" source="./images/identity-types.png" alt-text="Diagram that shows the relationship between application identity and enterprise identity." border="false":::
 
@@ -30,14 +32,10 @@ Identity management involves two related concerns: authentication (verifying a u
 
 ## Identity in a multitenant application
 
-Keeping tenant data separate in a multitenant application is critical. That segmentation is driven by your choice of effective user authentication and authorization. Also, the choice of tenancy model significantly influences your decisions about the identity provider.
+Keeping tenant data separate in a multitenant application is critical. That segmentation is driven by your choice of effective user authentication and authorization. Also, the choice of tenancy model significantly influences your decisions about the identity provider. Prioritize identity as your primary perimeter. 
 
-Prioritize identity as your primary perimeter. For more information, see [SE:04 Recommendations for segmentation](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter).
+> Refer to [SE:04 Recommendations for segmentation](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter).
 
-For more information on identity in multitenant solutions, see these articles:
-
-- [Architectural considerations for identity in multitenant solutions](/azure/architecture/guide/multitenant/considerations/identity)
-- [Architectural approaches for identity in multitenant solutions](/azure/architecture/guide/multitenant/approaches/identity)
 
 ### Design considerations
 
@@ -108,7 +106,7 @@ This image shows the relationship between your application, your application ide
       
     - **Custom information.** Collecting additional user information during sign-up or sign-in, such as tenant selection for users with access to multiple tenants.
       
-    - **Identity provider selection.** If you use a single application identity provider that has many federated identity providers trusting it, decide how to select a provider. This selection might be done manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This capability is known as *Home Realm Discovery*. Microsoft Entra ID provides built-in [Home Realm Discovery](/entra/identity/enterprise-apps/home-realm-discovery-policy).
+    - **Identity provider selection.** If you use a single application identity provider that has many federated identity providers trusting it, decide how to select a provider. This selection might be done manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This capability is known as *Home Realm Discovery*. 
 
 ### Design recommendations
 
@@ -117,7 +115,7 @@ This image shows the relationship between your application, your application ide
 | Choose an identity provider that can scale to accommodate the number of federated identity providers you need. <br><br> Be aware of the hard limits of the provider, which can't be exceeded.|You'll ensure that your identity solution can scale as you grow.|
 | Plan the onboarding of each federated identity provider and automate the process as much as possible. <br><br>This collaborative effort between your organization and your customers involves exchanging information to establish a trust relationship, typically via OIDC or SAML protocols.| Identity integration can take time and effort for both you and your customers. By planning the process, you'll improve your operational efficiency. |
 | Reflect the complexity and cost of federated identity in your pricing and business model.<br><br>Allowing customers to use their own identity provider increases operational complexity and costs because of the overhead of maintaining multiple federated identity trust relationships. It's common in SaaS solutions for enterprises to pay for a higher tier that enables federated sign-in.|Federating with a customer's identity provider can be a hidden cost in SaaS solutions. By planning for it, you'll avoid unexpected costs during implementation.|
-| Plan for how a user's identity provider will be selected during the sign-in flow. Consider using Home Realm Discovery. | You'll streamline your customer experience and ensure that users are directed to the right sign-in process. |
+| Plan for how a user's identity provider will be selected during the sign-in flow. Consider using Home Realm Discovery. <br><br>Microsoft Entra ID provides built-in [Home Realm Discovery](/entra/identity/enterprise-apps/home-realm-discovery-policy).| You'll streamline your customer experience and ensure that users are directed to the right sign-in process. |
 
 ## Authorization
 
@@ -148,6 +146,14 @@ User authorization is crucial for SaaS applications, which often store data for 
 | Prevent users from accessing data across tenant boundaries unless that access is explicitly permitted. | Unauthorized access to another tenant's data, even accidental access, can be seen as a major security incident and erode customer trust in your platform. Blocking unnecessary access will help you avoid these situations. |
 | If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. |Selecting the best data store for your authorization data will enhance your operational efficiency and help you meet your scalability needs. |
 | If you delegate permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal that's accessible only to tenant administrators for changing user permissions. | You'll provide more control to your customers and avoid unnecessary operational burden on your support team. |
+
+
+## Additional resources
+
+Multitenancy is a core business methodology for designing SaaS workloads. These articles provide more information about identity and access management:
+
+- [Architectural considerations for identity in multitenant solutions](/azure/architecture/guide/multitenant/considerations/identity)
+- [Architectural approaches for identity in multitenant solutions](/azure/architecture/guide/multitenant/approaches/identity)
 
 ## Next step
 
