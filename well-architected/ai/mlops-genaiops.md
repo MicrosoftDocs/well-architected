@@ -79,7 +79,7 @@ Open-source technologies like Pandas (for data preparation) and Scrapy are popul
 
 Model training is the process of selecting appropriate algorithms and providing them with preprocessed historical data and observations to enable the model to learn patterns and make predictions.
 
-Training the model (feature engineering) and hyperparameter tuning are iterative processes, and they're expensive. During each iteration, data scientists track results with combinations of data, code, and parameters. **Use repeatable pipelines to track experiements** with minimum manual effort until the right level of accuracy is achieved.
+Training the model (feature engineering) and hyperparameter tuning are iterative processes, and they're expensive. During each iteration, data scientists track results with combinations of data, code, and parameters. **Use repeatable pipelines to track experiments** with minimum manual effort until the right level of accuracy is achieved.
 
 Another operational challenge is provisioning and scaling **specialized compute resources** where experiments are conducted. Also, you should **package and publish models** efficiently.
 
@@ -97,7 +97,7 @@ Part of the benefit of the process is to optimize personal time. Data scientists
 
 Note that, in certain cases, the use of VMs might be disallowed by policy. Look for alternatives, like adding Microsoft Dev Box and Azure Virtual Desktop. You can also consider using Docker to bootstrap machines that contain prebuilt images.
 
-However, as this stage matures and you need extended experiements, move to managed compute instances and prefer options that are integrated as part of the workflow. Evaluate whether you can use [Azure Machine Learning compute instances](/azure/machine-learning/concept-compute-instance) for training and inferencing for development and testing purposes. The compute clusters can  handle large datasets and complex models.
+However, as this stage matures and you need extended experiments, move to managed compute instances and prefer options that are integrated as part of the workflow. Evaluate whether you can use [Azure Machine Learning compute instances](/azure/machine-learning/concept-compute-instance) for training and inferencing for development and testing purposes. The compute clusters can  handle large datasets and complex models.
 
 Azure Machine Learning provides both code-based solutions through the SDK and low-code options like automated machine learning and the visual designer. The Python SDK offers multiple ways to train models, each with distinct features. Machine Learning also supports advanced optimization and distributed computing technologies like ONNX Runtime Training's ORTModule, DeepSpeed, and LoRA to speed up the training process.
 
@@ -149,7 +149,7 @@ You also need observability of model performance, data drift, and safety and qua
 
 For more information, see these articles: 
 
-- [Data collection from models in production](/azure/machine-learning/concept-data-collection).
+- [Data collection from models in production](/azure/machine-learning/concept-data-collection)
 
 - [Model monitoring with Azure Machine Learning](/azure/machine-learning/concept-model-monitoring)
 
@@ -179,13 +179,13 @@ AI workloads are complex because the overall lifecycle involves many roles, freq
 
 In AI / machine learning workloads, model development involves **creating, validating, and promoting models** to model hosting platforms. It's important to have deployment pipelines that streamline complex workflows related to data processing, feature engineering, model training or augmentation, and deployment to production. Given the non-deterministic nature of AI, which makes processes opaque, you need to **incorporate qualitative tests in release pipelines** and monitoring systems.
 
-Although MLOps and GenAIOps might require distinct AI activities and core technologies might differ, the underlying concepts remain similar to those of DevOps. We recommend that you apply best practices from your existing DevOps processes. **Integrate AI activities into your workload's exsiting pipelines**. 
+Although MLOps and GenAIOps might require distinct AI activities and core technologies might differ, the underlying concepts remain similar to those of DevOps. We recommend that you apply best practices from your existing DevOps processes. **Integrate AI activities into your workload's existing pipelines**. 
 
 Typically, AI workloads involve traditional code deployments. You can choose to handle model deployment alongside the code or separately in its own lifecycle. The former approach is preferable. Be prepared to package models and inference endpoints with workload deployment to keep AI operations primarily focused on data preparation, training/fine-tuning, grounding data management, and monitoring.
 
 Re-evaluate how the following assets can be tailored to cover the entire MLOps and GenAIOps lifecycle, from preproduction to production:
 
-- Infrastructure-as-Code (IaC) tools
+- Infrastructure-as-code (IaC) tools
 - CI/CD pipelines 
 - The observability stack for tracking and identifying issues
 
@@ -193,7 +193,7 @@ Re-evaluate how the following assets can be tailored to cover the entire MLOps a
 
 You can extend Azure DevOps pipelines and GitHub Actions workflows, commonly used for CI/CD, to machine learning models. They help deploy machine learning infrastructure, custom workload components, orchestration code, and models. Combine Azure Machine Learning pipelines with Azure DevOps or GitHub pipelines. For more information, see [Use Azure Pipelines with Azure Machine Learning](/azure/machine-learning/how-to-devops-machine-learning).
 
-There are two main factors that influence your choice of the right combination of tools: use case and capabilities. For example, Azure Machine Learning pipelines are great for the orchestration that's performed by data scientists. It has a rich feature set that supports reuse, caching, and more. For tooling choices, see [Which Azure pipeline technology should I use?](/azure/machine-learning/concept-ml-pipelines#which-azure-pipeline-technology-should-i-use).
+Two main factors influence your choice of the right combination of tools: use case and capabilities. For example, Azure Machine Learning pipelines are great for the orchestration that's performed by data scientists. It has a rich feature set that supports reuse, caching, and more. For tooling choices, see [Which Azure pipeline technology should I use?](/azure/machine-learning/concept-ml-pipelines#which-azure-pipeline-technology-should-i-use).
 
 ## Model maintenance
 
