@@ -10,7 +10,7 @@ ms.collection: learn-startups
 
 # Networking for SaaS workloads on Azure
 
-Your network provides the backbone for how customers access your SaaS application, and it enables communication between your solution's components. The way you design your network has a direct impact on your solution's security, operations, cost, performance, and reliability. A structured approach to your networking strategy becomes even more important as your cloud environment grows.
+Your network provides the backbone for how customers access your SaaS application, and it enables communication between your solution's components. The way you design your network has a direct effect on your solution's security, operations, cost, performance, and reliability. A structured approach to your networking strategy becomes even more important as your cloud environment grows.
 
 ## Decide on a network deployment strategy and topology
 
@@ -22,29 +22,29 @@ SaaS solutions have unique networking requirements. As you onboard more customer
 
     It's common to share networking resources, like virtual networks and Azure Front Door profiles, among multiple customers. This approach reduces costs and operational overhead. It also simplifies connectivity. You can easily connect a customer's resources with shared resources, such as shared storage accounts or a control plane.
 
-    However, dedicated networking resources for each customer might be necessary for high security and compliance. For example, to support a high degree of network segmentation between  customers, you use virtual networks as the boundary. Dedicated resources may be necessary when the number of network resources across all customers exceeds the capacity of a single shared network.
+    However, dedicated networking resources for each customer might be necessary for high security and compliance. For example, to support a high degree of network segmentation between  customers, you use virtual networks as the boundary. Dedicated resources might be necessary when the number of network resources across all customers exceeds the capacity of a single shared network.
 
-    Plan for the number of network resources each customer will need, considering immediate and future requirements. Customer requirements and Azure resource limits might force specific outcomes. Different resources may require different deployment strategies, such as using separate networks for virtual network peering with customer-owned Azure virtual networks.
+    Plan for the number of network resources each customer will need, considering immediate and future requirements. Customer requirements and Azure resource limits might force specific outcomes. Different resources might require different deployment strategies, such as using separate networks for virtual network peering with customer-owned Azure virtual networks.
 
-    For more information about the considerations when sharing resources in a SaaS solution, see [Resource organization for SaaS workloads for ISVs](./resource-organization.md).
+    For more information about the considerations when sharing resources in a SaaS solution, see [Resource organization for SaaS workloads](./resource-organization.md).
 
 - **Understand network topologies.** Typically fall into three categories:
 
-    - **Flat network**: A single, isolated network with subnets for segmentation. Can be suitable when you have a single multitenant application because of the simple network layout. Be aware that it can hit resource limits and you require more networks as you scale, increasing overhead and costs. If you plan to host multiple applications or have dedicated deployment stamps within the same virtual network, you might need a complex network layout.
+    - **Flat network**: A single, isolated network with subnets for segmentation. Can be suitable when you have a single multitenant application because of the simple network layout. Be aware that it can hit resource limits and you require more networks as you scale, increasing overhead and costs. If you plan to host multiple applications or use dedicated deployment stamps within the same virtual network, you might need a complex network layout.
 
-    - **Hub and spoke**: A centralized hub network with peerings to isolated spoke networks. Suitable for high scalability and customer isolation, because each customer or application can get its own spoke, communicating only with the hub. You can quickly deploy more spokes as needed, and resources in the hub can be used by all spokes. *Transitive*, or spoke-to-spoke, communication through the hub is disabled by default, which helps maintain customer isolation in SaaS solutions.
+    - **Hub and spoke**: A centralized hub network with peerings to isolated spoke networks. Suitable for high scalability and customer isolation, because each customer or application can get its own spoke, communicating only with the hub. You can quickly deploy more spokes as needed so that resources in the hub can be used by all spokes. *Transitive*, or spoke-to-spoke, communication through the hub is disabled by default, which helps maintain customer isolation in SaaS solutions.
 
     - **No network**:  Used for Azure PaaS services where you can host complex workloads without deploying virtual networks at all. For example, Azure App Service allows for direct integration with other PaaS services over the Azure backbone network. While this approach simplifies management, it restricts flexibility in deploying security controls and the ability to optimize performance. This approach can work well for cloud native applications. As your solution evolves, expect to transition to a hub-and-spoke topology over time.
 
-- **Understand how multi-region architecture affects network topologies.** In a multi-region architecture using virtual networks, most networking resources are deployed in each region separately, because firewalls, virtual network gateways, and network security groups cannot be shared between regions.
+- **Understand how multi-region architecture affects network topologies.** In a multi-region architecture using virtual networks, most networking resources are deployed in each region separately. Separate deployment is required because firewalls, virtual network gateways, and network security groups can't be shared between regions.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Decide which network components will be shared and which components will be dedicated to the customer. <br><br> Share resources that are charged per instance, like Azure Firewall, Azure Bastion, and Azure Front Door. | You'll strike a balance between supporting your security and isolation requirements while reducing your cost and operational burden. |
-| Start with a flat topology or no network approach. <br><br> However, review security requirements first, as these approaches offer limited isolation and traffic controls. | You'll reduce the complexity and cost of your solution. |
-| Consider hub and spoke topologies for complex needs or when deploying dedicated virtual networks per customer. Use the hub to host shared network resources across customer networks. | You'll be able to scale more easily, and can improve your cost efficiency by sharing resources through your hub network. |
+| Decide which network components are shared and which components are dedicated to the customer. <br><br> Share resources that are charged per instance, like Azure Firewall, Azure Bastion, and Azure Front Door. | Establish balanced support between your security and isolation requirements while reducing your cost and operational burden. |
+| Start with a flat topology or no network approach. <br><br> However, review security requirements first, as these approaches offer limited isolation and traffic controls. | Reduce the complexity and cost of your solution. |
+| Consider hub and spoke topologies for complex needs or when deploying dedicated virtual networks per customer. Use the hub to host shared network resources across customer networks. | Scale more easily and improve your cost efficiency by sharing resources through your hub network. |
 
 ## Design a secure network perimeter
 
@@ -59,7 +59,7 @@ Each flow involves different risks and controls. For example, multiple security 
 > [!IMPORTANT]
 > As a general best practice, always follow a zero-trust approach. Make sure all traffic is controlled and inspected, including internal traffic.
 
-Your customers might also have specific compliance requirements that influence your architecture. For example, if they need [SOC 2 compliance](/azure/governance/policy/samples/soc-2#security-measures-against-threats-outside-system-boundaries) they must implement a variety of network controls including a firewall, web application firewall, and network security groups, to fulfill the security requirements.  Even if you don't need to comply immediately, consider those extensibility factors when designing your architecture.
+Your customers might also have specific compliance requirements that influence your architecture. For example, if they need [SOC 2 compliance](/azure/governance/policy/samples/soc-2#security-measures-against-threats-outside-system-boundaries) they must implement various network controls including a firewall, web application firewall, and network security groups, to fulfill the security requirements. Even if you don't need to comply immediately, consider those extensibility factors when designing your architecture.
 
 > Refer to [SE:06 Recommendations for networking and connectivity](/azure/well-architected/security/networking)
 
@@ -91,16 +91,16 @@ Your customers might also have specific compliance requirements that influence y
 
 | Recommendation | Benefit |
 |---|---|
-| Maintain a catalog of the network endpoints that are exposed to the internet. Capturing details such as IP address (if static), hostname, ports, protocols used, and with justification for connections. <br><br>Document how you'll protect each endpoint. | This list forms the basis of your perimeter definition, allowing you to make explicit decisions on managing traffic through your solution. |
-| Understand Azure service capabilities to limit access and enhance protection. <br><br> For example, exposing storage account endpoints to customers requires additional controls like shared access signatures, storage account firewalls, and using separate storage accounts for internal and external use. | You'll be able to select controls that meet your security, cost, and performance needs. |
-| For HTTP(S) based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabilties for performance improvements, resiliency, security, and to reduce operational complexity. |
-| Inspect ingress traffic with a web application firewall. <br><br> Avoid exposing web-based resources such as an App Service or Azure Kubernetes Service (AKS) directly to the internet. | You'll protect your web applications against common threats, and reduce the overall exposure of your solution. |
-| Protect your application against DDoS attacks. <br><br> Use Azure Front Door or Azure DDoS Protection depending on the protocols used by your public endpoints. | You'll protect your solution from a common type of attack. |
-| If your application requires egress connectivity at scale, use NAT Gateway or a firewall to provide additional SNAT ports. | You'll support higher levels of scale. |
+| Maintain a catalog of the network endpoints that are exposed to the internet. Capturing details such as IP address (if static), hostname, ports, protocols used, and with justification for connections. <br><br>Document how you plan to protect each endpoint. | This list forms the basis of your perimeter definition, allowing you to make explicit decisions on managing traffic through your solution. |
+| Understand Azure service capabilities to limit access and enhance protection. <br><br> For example, exposing storage account endpoints to customers requires additional controls like shared access signatures, storage account firewalls, and using separate storage accounts for internal and external use. | Select controls that meet your security, cost, and performance needs. |
+| For HTTP(S) based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabilities for performance improvements, resiliency, security, and to reduce operational complexity. |
+| Inspect ingress traffic with a web application firewall. <br><br> Avoid exposing web-based resources such as an App Service or Azure Kubernetes Service (AKS) directly to the internet. | Effectively protect your web applications against common threats, and reduce the overall exposure of your solution. |
+| Protect your application against DDoS attacks. <br><br> Use Azure Front Door or Azure DDoS Protection depending on the protocols used by your public endpoints. | Protect your solution from a common type of attack. |
+| If your application requires egress connectivity at scale, use NAT Gateway or a firewall to provide additional SNAT ports. | Support higher levels of scale. |
 
 ## Cross-network connectivity
 
-For some scenarios, you might need to connect to resources external to Azure, such as data within a customer's private network or assets on a different cloud provider in a multi-cloud setup. These needs can complicate your network design, requiring various approaches to achieve cross-network connectivity based on your specific requirements.
+For some scenarios, you might need to connect to resources external to Azure, such as data within a customer's private network or assets on a different cloud provider in a multicloud setup. These needs can complicate your network design, requiring various approaches to achieve cross-network connectivity based on your specific requirements.
 
 ### Design considerations
 
@@ -122,37 +122,37 @@ For some scenarios, you might need to connect to resources external to Azure, su
 
     - **ExpressRoute** provides a dedicated, high-performance, private connection between Azure and other cloud providers or on-premises networks. It ensures predictable performance and avoids internet traffic but comes with higher costs and requires more complex configuration.
 
-- **Plan based on the destination.** You might need to connect to resources in different Microsoft Entra ID tenants, especially if the target resource is in a customer's Azure subscription. Consider using private endpoints, a site-to-site VPN, or by peering virtual networks. For more information, see [Peering virtual networks in each Entra tenant](/azure/virtual-network/create-peering-different-subscriptions).
+- **Plan based on the destination.** You might need to connect to resources in different Microsoft Entra ID tenants, especially if the target resource is in a customer's Azure subscription. Consider using private endpoints, a site-to-site VPN, or by peering virtual networks. For more information, see [Peering virtual networks in each Microsoft Entra tenant](/azure/virtual-network/create-peering-different-subscriptions).
 
     To connect to resources hosted in another cloud provider, it's common to use public internet connectivity, a site-to-site VPN, or ExpressRoute. For more information, see [Connectivity to other cloud providers](/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-other-providers).
 
 - **Understand the effects of connectivity on your network topology.** An Azure virtual network can have only one virtual network gateway, which can connect to multiple locations via site-to-site VPN or ExpressRoute. However, there are limits on the number of connections through a gateway, and isolating customer traffic can be challenging. For multiple connections to different locations, plan your network topology accordingly, possibly by deploying a separate virtual network for each customer.
 
-- **Understand implications for IP address planning.** Some connectivity approaches automatically provide network address translation (NAT), avoiding issues with overlapping IP addresses. However, virtual network peering and ExpressRoute do not perform NAT. When using these methods, plan your network resources and IP address allocations carefully to avoid overlapping IP address ranges and ensure future growth. IP address planning can be complex, especially when connecting to third parties like customers, so consider potential conflicts with their IP ranges.
+- **Understand implications for IP address planning.** Some connectivity approaches automatically provide network address translation (NAT), avoiding issues with overlapping IP addresses. However, virtual network peering and ExpressRoute don't perform NAT. When using these methods, plan your network resources and IP address allocations carefully to avoid overlapping IP address ranges and ensure future growth. IP address planning can be complex, especially when connecting to third parties like customers, so consider potential conflicts with their IP ranges.
 
-- **Understand network egress billing.** Azure typically bills for outbound network traffic when it leaves the Microsoft network or moves between Azure regions. When designing multi-region or multi-cloud solutions, it's important to understand the cost implications. Architectural choices, such as using Azure Front Door or ExpressRoute, can impact how you're billed for network traffic.
+- **Understand network egress billing.** Azure typically bills for outbound network traffic when it leaves the Microsoft network or moves between Azure regions. When designing multi-region or multicloud solutions, it's important to understand the cost implications. Architectural choices, such as using Azure Front Door or ExpressRoute, can affect how you're billed for network traffic.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
 | Prefer private networking approaches for connecting across networks to prioritize security. <br><br> Only consider routing over the internet after evaluating the associated security and performance implications. | Private traffic traverses a secured network path, which helps to reduce many types of security risks. |
-| When connecting to customer resources hosted in their Azure environments, use Private Link, service endpoints, or virtual network peerings. | You'll keep traffic on the Microsoft network, reduce cost, and reduce operational complexity compared to other approaches. |
+| When connecting to customer resources hosted in their Azure environments, use Private Link, service endpoints, or virtual network peerings. | Maintain traffic on the Microsoft network, reduce cost, and reduce operational complexity compared to other approaches. |
 | When connecting across cloud providers or to on-premises networks, use site-to-site VPNs or ExpressRoute. | These technologies provide secure connections between providers.  |
 
 ## Deploy to environments owned by customers
 
-Your business model might require you to host the application or its components within a customer’s Azure environment. The customer manages their own Azure subscription, and directly pays the cost of resources required to run the application. As the solution provider, you're responsibile for managing the solution, such as the initial deployment, applying configuration, and deploying updates to the application.
+Your business model might require you to host the application or its components within a customer’s Azure environment. The customer manages their own Azure subscription, and directly pays the cost of resources required to run the application. As the solution provider, you're responsible for managing the solution, such as the initial deployment, applying configuration, and deploying updates to the application.
 
 In such situations, customers often bring their own network and deploy your application into a network space they define. Azure Managed Applications offer capabilities to facilitate this process. For more information, see [Use existing virtual network with Azure Managed Applications](/azure/azure-resource-manager/managed-applications/existing-vnet-integration).
 
 ### Design considerations
 
-- **IP address ranges and conflicts.** When customers deploy and manage virtual networks, they are responsible for handling network conflicts and scaling. However, you should anticipate different customer usage scenarios. Plan for deployments in environments with minimal IP address space by using IP addresses efficiently, and avoid hard-coding IP address ranges to prevent overlaps with customer ranges.
+- **IP address ranges and conflicts.** When customers deploy and manage virtual networks, they're responsible for handling network conflicts and scaling. However, you should anticipate different customer usage scenarios. Plan for deployments in environments with minimal IP address space by using IP addresses efficiently, and avoid hard-coding IP address ranges to prevent overlaps with customer ranges.
 
-    Alternatively, deploy a dedicated virtual network for your solution. You might use Private Link or virtual network peering to enable customers to connect to the resources. These appproaches are described in [Cross-network connectivity](#cross-network-connectivity). If you have defined ingress and egress points, evaluate NAT as an approach to eliminate issues caused by IP address overlaps.
+    Alternatively, deploy a dedicated virtual network for your solution. You might use Private Link or virtual network peering to enable customers to connect to the resources. These approaches are described in [Cross-network connectivity](#cross-network-connectivity). If you have defined ingress and egress points, evaluate NAT as an approach to eliminate issues caused by IP address overlaps.
 
-- **Provide network access for management purposes.** Review the resources that you'll deploy into customer environments and plan how you'll access them to monitor, manage, or reconfigure them. When resources are deployed with private IP addresses into a customer-owned environment, ensure you have a network path to reach them from your own network. Consider how you facilitate both application and resource changes, such pushing a new version of the application or updating an Azure resource configuration.
+- **Provide network access for management purposes.** Review the resources that you deploy into customer environments and plan how you'll access them to monitor, manage, or reconfigure them. When resources are deployed with private IP addresses into a customer-owned environment, ensure you have a network path to reach them from your own network. Consider how you facilitate both application and resource changes, such pushing a new version of the application or updating an Azure resource configuration.
 
     In some solutions, you can use capabilities provided by Azure Managed Applications, such as [just-in-time access](/azure/azure-resource-manager/managed-applications/request-just-in-time-access) and [deployment of updates to applications](/azure/azure-resource-manager/managed-applications/update-managed-resources). If you need more control, you can host an endpoint within the customer's network that your control plane can connect to, providing access to your resources. This method requires additional Azure resources and development to meet security, operational, and performance requirements. For an example of how to implement this approach, see [Azure Managed Applications Updating Sample](https://github.com/Azure-Samples/ama-update-sample).
 
@@ -161,10 +161,10 @@ In such situations, customers often bring their own network and deploy your appl
 | Recommendation | Benefit |
 |---|---|
 | Use Azure Managed Applications to deploy and manage customer-deployed resources. | Azure Managed Applications provide a range of capabilities that enable you to deploy and manage resources within a customer's Azure subscription. |
-| Minimize the number of IP addresses you consume within the customer's virtual network space. | Customers often have restricted IP address availability. By minimizing your footprint and decoupling your scaling from their IP address usage, you'll broaden the number of customers who can use your solution, and you'll enable higher levels of growth. |
-| Plan how to gain network access to manage resources in customer environments, considering monitoring, resource configuration changes, and application updates. | You'll be able to  directly configure the resources you manage. |
-| Decide whether you'll deploy a dedicated virtual network or integrate with a customer's existing virtual network. | By planning this ahead of time, you'll ensure you can meet your customers' requirements for isolation, security, and integration with their other systems. |
-| Disable public access on Azure resources by default. Prefer private ingress where possible. | You'll reduce the scope of network resources that you and your customers need to protect. |
+| Minimize the number of IP addresses you consume within the customer's virtual network space. | Customers often have restricted IP address availability. By minimizing your footprint and decoupling your scaling from their IP address usage, you can broaden the number of customers who can use your solution, and enable higher levels of growth. |
+| Plan how to gain network access to manage resources in customer environments, considering monitoring, resource configuration changes, and application updates. | Directly configure the resources you manage. |
+| Decide whether you want to deploy a dedicated virtual network or integrate with a customer's existing virtual network. | By planning ahead of time, you ensure you can meet your customers' requirements for isolation, security, and integration with their other systems. |
+| Disable public access on Azure resources by default. Prefer private ingress where possible. | Reduce the scope of network resources that you and your customers need to protect. |
 
 ## Additional resources
 
