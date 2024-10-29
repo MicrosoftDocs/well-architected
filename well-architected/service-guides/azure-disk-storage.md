@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Disk Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Disk Storage.
 author: roygara
 ms.author: rogarana
-ms.date: 10/15/2024
+ms.date: 10/29/2024
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -126,6 +126,7 @@ Use these recommendations to optimize for cost:
 | Carefully select the appropriate disk types for your workloads. Read about the [available disk types](/azure/virtual-machines/disks-types) and their features before you deploy an environment and then estimate costs using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). | One of the best ways to keep costs down is to plan for exactly what your requirements are, model the environment in the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to have a cost effective deployment. |
 | Use [Reserved Capacity for Premium SSD disks](/azure/cost-management-billing/reservations/understand-disk-reservations?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json). | Using Reserved Capacity for your Premium SSDs lowers the total cost of your environment since you receive a discount by prepaying for your capacity. |
 | For existing disks, assess whether the features they offer can improve performance without switching to another disk size or type. Features, like [disk bursting](/azure/virtual-machines/disk-bursting?branch=main) or changing [performance tiers](/azure/virtual-machines/disks-change-performance?branch=main), could improve performance to levels that meet your needs. | Depending on your environment and needs, enabling features to improve your disks performance can be more cost effective than switching to a different disk type. These features incur costs, but may incur less costs. |
+| Directly adjust the performance of your [Ultra Disks](/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal#adjust-the-performance-of-an-ultra-disk) and [Premium SSD v2](/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli#adjust-disk-performance) disks to fit your performance needs. | These two disk types support a set number of adjustments of the disks performance within 24 hours. This allows your workloads to be cost efficient while meeting your performance needs, since you can increase performance (which increases cost) to meet higher demand, and then lower performance (decreasing cost) when no longer needed.<br></br>For example, a transaction-intensive database may need a large amount of IOPS at a small size, or a gaming application may need a large amount of IOPS but only during peak hours.  |
 
 ## Performance efficiency
 
