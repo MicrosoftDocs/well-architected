@@ -46,7 +46,7 @@ Initially, startups should prioritize the most impactful elements for their cust
 
 **&#10004;** Proceed to [**Design Principles**](./design-methodology.md) to see how the SaaS design methodology aligns with the core Well-Architected Framework pillars, considering growth evolution. Evaluate the underlying principles for all pillars collectively, including the tradeoffs.
 
-**&#10004;** Focus on the **design areas** that have the greatest impact on your solutions. Each area includes cautions and recommendations to guide you.
+**&#10004;** Focus on the **design areas** that have the biggest impact on your solution. Each area includes considerations and recommendations to guide you through the design decisions.
 
 |Design areas|
 |---|
