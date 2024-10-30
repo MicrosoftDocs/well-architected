@@ -75,7 +75,6 @@ Multitenancy is a core business methodology for designing SaaS workloads. Read t
 
 - [SaaS and multitenant solution architecture](/azure/architecture/guide/saas-multitenant-solution-architecture/): Provides extensive and detailed guidance on how to design SaaS, including information on how specific Azure services can be used to support SaaS design goals.
 
-
 ## Next steps
 
 Understand the methodology to follow when designing a SaaS workload on Azure.

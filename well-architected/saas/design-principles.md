@@ -44,7 +44,7 @@ How you design a solution that operates at a low volume of scale differs from a 
 
 |Design principle|Considerations|
 |---|---|
-|**Pay only for what you need.**|Take advantage of Azure cost management features to understand your overall spend. Prioritize the most expensive resource categories for further review. Identify areas where you might overspend.|
+|**Pay only for what you need.**|Take advantage of Microsoft Cost Management features to understand your overall spend. Prioritize the most expensive resource categories for further review. Identify areas where you might overspend.|
 |**Use what you pay for.**|Maximize the value from resources that you pay for but that you might underuse. |
 |**Model your costs.**|Track your cost of goods sold. Understand the cost to deliver your solution to customers. This process is similar to manufacturing a physical product. To inform your decision making, monitor the cost for each customer relative to the revenue that they generate. To quickly understand and aggregate your Azure spend, implement governance processes, like good resource organization and tagging. |
 |**Understand how your costs and revenue are related.**|Avoid situations where costs increase without a corresponding rise in revenue. For example, costs might increase if you add a new feature that offers unlimited free storage. Similarly, if you charge customers based on the number of users, ensure that you tie functionality to the users. |

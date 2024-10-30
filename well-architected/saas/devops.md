@@ -22,34 +22,34 @@ Managing *customer lifecycle events* is crucial for any SaaS application. Typica
 2. **Altering**: Modifying a customer's instance, such as changing their pricing tier.
 3. **Offboarding**: When a customer cancels their account.
 
-There might be additional lifecycle events. For example, you might allow your customers to pause their subscription while retaining their data for a set period, and resume their subscription later. Each event can have unique implications for your application.
+You might encounter additional lifecycle events. For example, you might allow your customers to pause their subscription while retaining their data for a set period, and resume their subscription later. Each event can have unique implications for your application.
 
 In some solutions, customer lifecycle management might just require creating or managing data in a database table. For other solutions, it might involve orchestrating the deployment of Azure infrastructure, application code, and more complex configuration.
 
-Lifecycle management is a key responsibility of a SaaS solution's control plane. Initially, your team might handle these activities manually, but over time, strive to  transition more functionality into a formalized control plane solution or application.
+Lifecycle management is a key responsibility of a SaaS solution's control plane. Initially, your team might handle these activities manually, but over time, try to transition more functionality into a formalized control plane solution or application.
 
 ### Design considerations
 
-- **Consistency**. When planning your lifecycle management strategy, consider the complexity of actions required for each customer lifecycle event. This includes the size of your solution, customer base, and organizational overhead. Have a clear understanding of necessary steps for each event and invest in controls to maintain consistency. Regularly review and update your processes to ensure they remain valid as your solution evolves.
+- **Consistency**. When planning your lifecycle management strategy, consider the complexity of actions required for each customer lifecycle event. This includes the size of your solution, customer base, and organizational overhead. Ensure you have a clear understanding of necessary steps for each event and invest in controls to maintain consistency. Regularly review and update your processes to help ensure they remain valid as your solution evolves.
 
 - **Tenancy model**. Your approach to handling customer lifecycle events depends on your tenancy model.
 
-    - **Fully multitenant solutions with infrastructure resources**. Onboarding or offboarding a customer typically involves updating a customer list and associated data in your application's data store.
-    - **Dedicated resources per customer**. The tasks would typically involve initiating deployments to Azure, monitoring progress, and handling deployment failures, possibly with human intervention.
-    - **Customer-deployed resources**. You might need to interface directly with the customer's engineering team for onboarding or offboarding.
+  - **Fully multitenant solutions with infrastructure resources**. Onboarding or offboarding a customer typically involves updating a customer list and associated data in your application's data store.
+  - **Dedicated resources per customer**. The tasks would typically involve initiating deployments to Azure, monitoring progress, and handling deployment failures, possibly with human intervention.
+  - **Customer-deployed resources**. You might need to interface directly with the customer's engineering team for onboarding or offboarding.
 
 - **Tiers**. Consider your pricing model and the different infrastructure needs of each tier, especially if you allow customers to freely change their SKU at any time.
 
-  For example, if your SaaS solution includes a core application and multiple paid add-on modules, make sure the core app's resources are deployed during onboarding. Additionally, allow for dynamic addition and removal of add-on modules. When a module is removed, decide whether to delete associated data or store it for potential future reactivation.
+  - For example, if your SaaS solution includes a core application and multiple paid add-on modules, make sure the core app's resources are deployed during onboarding. Additionally, allow for dynamic addition and removal of add-on modules. When a module is removed, decide whether to delete associated data or store it for potential reactivation.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
 | Document each type of customer lifecycle event.<br><br> Make sure you capture step-by-step details of the process for each event. | By understanding the events, you can plan how to respond to each event in your solution design. <br> Clear instructions help human operators maintain consistency and serve as the foundation for future automation.|
-| Communicate the shared responsibility between you and your customer, for each lifecycle event. Communicate clearly and early the actions you expect the customers to do in order to complete a lifecycle stage. | Reduce potential errors and customer frustration caused by miscommunication. |
-| Do capacity planning for each lifecycle event. <br><br> For example, when onboarding a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the extra load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | Support your ability to scale and avoid deployment failures. |
-| Automate your lifecycle events, when practical. <br><br> For low-volume or early-stage solutions, manual deployment and configuration might be sufficient, but should still use scripts, even if an engineer runs them each time a lifecycle event occurs. <br><br> As your solution matures, integrate these responsibilities into a full control plane to reduce human error and support higher scale. | Reduce the significant risk of human error and support higher scale. |
+| Communicate the shared responsibility between you and your customer for each lifecycle event. Communicate clearly and early on what actions you expect the customers to do in order to complete a lifecycle stage. | You can reduce potential errors and customer frustration caused by miscommunication. |
+| Do capacity planning for each lifecycle event. <br><br> For example, when onboarding a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the extra load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | You can support your ability to scale more easily and avoid deployment failures. |
+| Automate your lifecycle events, when practical. <br><br> For low-volume or early-stage solutions, manual deployment and configuration might be sufficient, but should still use scripts, even if an engineer runs them each time a lifecycle event occurs. <br><br> As your solution matures, integrate these responsibilities into a full control plane to reduce human error and support higher scale. | You can reduce the significant risk of human error and support higher scale. |
 
 ## Plan your infrastructure management strategy
 
@@ -59,8 +59,8 @@ Develop a strategy for deploying, maintaining, and managing Azure infrastructure
 
 - **Customer resource management**. Your tenancy model affects resource deployment in SaaS solutions. You might deploy dedicated Azure resources for each customer or share resources among a set number of customers. Alternatively, you could use a single set of shared resources, reconfiguring them as you onboard new customers. Common approaches for managing the lifecycle of the resources:
 
-    - Treat your customer list as a configuration of the resources to deploy. Use centralized deployment pipelines to deploy and configure those resources.
-    - Treat your customer list as data. Use a control plane application to provision and configure infrastructure.
+  - Treat your customer list as a configuration of the resources to deploy. Use centralized deployment pipelines to deploy and configure those resources.
+  - Treat your customer list as data. Use a control plane application to provision and configure infrastructure.
 
 - **Infrastructure automation**. Many organizations start by manually deploying cloud infrastructure via the Azure portal, which is easy initially but doesn't scale well. Plan to automate your infrastructure setup using Infrastructure as Code (IaC) tools like Bicep or Terraform. For more complex requirements, create a control plane that uses Azure Resource Manager APIs directly.
 
@@ -71,7 +71,7 @@ Develop a strategy for deploying, maintaining, and managing Azure infrastructure
 | Recommendation | Benefit |
 |---|---|
 | Build infrastructure automation using deployment pipelines, scripts, or templates with tools your team is already familiar with. | Using known tools reduces the risk of errors, as infrastructure automation can be disruptive if the tools aren't understood.|
-| Deploy your infrastructure using Infrastructure as Code (IaC) where possible. | Manually maintaining infrastructure becomes riskier and more burdensome as the amount of infrastructure grows. |
+| Deploy your infrastructure using IaC where possible. | Manually maintaining infrastructure becomes riskier and more burdensome as the amount of infrastructure grows. |
 | Separate core infrastructure from customer-level infrastructure. | Different types of infrastructure have distinct lifecycles and management activities. By separating them, you can manage each set independently on its own schedule. |
 
 ## Plan for application deployments
@@ -91,24 +91,24 @@ Regularly update application code and configuration to enhance functionality. Cu
 
 - **Test.** Integrate testing into your deployment process by running:
 
-    - Unit tests during code build
-    - Integration tests post-deployment
-    - Regular performance tests
-    - Regular security and penetration tests
-    
-    Decide on actions to take if any tests fail at any stage.
+  - Unit tests during code build
+  - Integration tests post-deployment
+  - Regular performance tests
+  - Regular security and penetration tests
 
-- **Failed deployments.** Plan for deployment failures by considering necessary actions and preparing a rollback strategy. 
+Decide on actions to take if any tests fail at any stage.
+
+- **Failed deployments.** Plan for deployment failures by considering necessary actions and preparing a rollback strategy.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Use established, industry proven DevOps tooling and processes to manage your application deployments. Developing your own tools is considered an antipattern in most situations. <br><br> For more information, see [OE:03 Software development practices](/azure/well-architected/operational-excellence/formalize-development-practices#establish-collaboration-and-communication-standards) | Ensure that your engineering team can deploy effectively by not having to learn custom built tooling. |
-| Proactively notify customers of any upcoming or completed deployments. | Ensure that proper expectations are set with your customers about changes coming to your application. |
+| Use established, industry proven DevOps tooling and processes to manage your application deployments. Developing your own tools is considered an antipattern in most situations. <br><br> For more information, see [OE:03 Software development practices](/azure/well-architected/operational-excellence/formalize-development-practices#establish-collaboration-and-communication-standards) | You can ensure that your engineering team deploys effectively by not having to learn custom built tooling. |
+| Proactively notify customers of any upcoming or completed deployments. | You can ensure that proper expectations are set with your customers about changes coming to your application. |
 | Adopt safe deployment practices that deploy updates to customer groups using strategies like progressive exposure, health models, and others. Start with less sensitive or early adopter customers before moving to more important ones. <br> For more information, see [Recommendations for safe deployment practices](/azure/well-architected/operational-excellence/safe-deployments). | This approach helps identify problems before they affect all customers. |
-| Treat configuration as code. | Reduce the likelihood of downtime and adopt a consistent process for production changes. This enables centralized operational responsibilities, such as testing changes and progressively rolling out updates to configuration and code. |
-| Define a change management process and communicate a version update policy to make sure that customers know who triggers updates, their frequency, and conditions. <br><br> If customers are allowed to choose their application version, set clear guidelines for deprecating old versions. Minimize the number of application versions running in production. | Maintaining older versions causes operational inefficiency. By setting clear expectations and policies, you provide the necessary control for your customers while avoiding overburdening your team. |
+| Treat configuration as code. | You can reduce the likelihood of downtime and adopt a consistent process for production changes. This enables centralized operational responsibilities, such as testing changes and progressively rolling out updates to configuration and code. |
+| Define a change management process and communicate a version update policy to make sure that customers know who triggers updates, their frequency, and conditions. <br><br> If customers are allowed to choose their application version, set clear guidelines for deprecating old versions. Minimize the number of application versions running in production. | Maintaining older versions causes operational inefficiency. Provide the necessary control for your customers while avoiding overburdening your team by setting clear expectations and policies. |
 | Avoid customizing applications for a single customer. <br><br> To support different customer needs, you can either create various tiers of your solution or use feature flags to enable specific functionalities for certain users. | Avoid ambiguity about which features are deployed into which version, and reduce your maintenance burden.  |
 | Have a rollback plan for failed deployments, including criteria for triggering and necessary approvals.|Rollback plans help to ensure that you can recover from deployment mistakes even in unforeseen circumstances.|
 | Test your application regularly and at multiple stages in the software development process. Adopt a "shift-left" mindset and catch bugs and deviations early in the lifecycle. | Help prevent critical errors from affecting your customers. |
