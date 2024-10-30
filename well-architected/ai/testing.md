@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 The purpose of testing in AI workloads is to help maintain quality when a change is introduced to the system. Testing can validate whether the workload meets identified targets and fulfills user expectations. It also prevents quality regressions. This process includes conducting tests across various functional areas and assessing the quality of functionality, load handling, predictability, and other criteria based on workload requirements.
 
-Test results provide critical data points for decision making, such as assessing the readiness of AI components for release and selecting the appropriate SKUs or features. Additionally, testing can serve as a notification system for failures and help detect problems in production through routine or synthetic tests.
+Test results provide critical data points for decisions like whether AI components are ready for release and which SKUs or features are appropriate. Additionally, testing can serve as a notification system for failures and help detect problems in production through routine or synthetic tests.
 
 The Azure Well-Architected Framework outlines a comprehensive testing methodology. You should use various types of tests at different stages of the development life cycle and across different system components and flows. Without these tests, rolled-out changes can degrade system quality. For example, minor code errors might become large system failures. System behavior might become unpredictable or produce biased results because of the nondeterministic nature of AI systems. Also, resource allocation might be inefficient, and real user data or system resources can be exploited because these systems are vulnerable to abuse.
 
@@ -34,7 +34,7 @@ This article focuses on the application of that methodology to the AI aspects of
 
 ## Define success metrics
 
-we recommend that you have a baseline and measure the predictive power of the model by using well-defined metrics. Here are some common metrics.
+We recommend that you have a baseline and measure the predictive power of the model by using well-defined metrics. Here are some common metrics.
 
 - **Accuracy:** This metric represents the ratio of correctly predicted instances to the total instances in the test dataset. It's a common measure of overall model performance.
 
@@ -81,7 +81,7 @@ Functional testing should extend to the live system. If these tests fail, consid
 
 - Run scheduled tests to verify that the correct volume of data was collected if data is ingested on a set schedule with an expected amount.
 
-- Run tests that detect data issues, such as missing values or duplicate data, and perform basic data integrity checks. If data contains temporal information that indicates its freshness, these tests can check data against a time window and potentially prevent downstream processes from using stale data.
+- Run tests that detect data issues, such as missing values or duplicate data, and perform basic data integrity checks. If data contains temporal information that indicates its freshness, these tests can check that information and potentially prevent downstream processes from using stale data.
 
 - Check the availability of external dependencies. For example, a data cleansing job might call another service for extracting tables or preprocessing. Run tests to ensure that they're available because their unavailability could affect the ETL process.
 
@@ -120,7 +120,7 @@ Train a model by using custom code, such as PyTorch scripts, which do the actual
 
 Write the scripts by using specialized SDKs, which handle most of the tasks. However, because scripts are still code, you should integrate unit testing as part of development. These tests help you ensure that no regressions occur when you update dependencies. If unit testing isn't possible, manual testing is necessary before you deploy new code to prevent quality regressions.
 
-These scripts run as part of a workflow, like Azure Machine Learning Studio, which can provide insight as to when and whether the script ran. But we recommend that you run integration tests to make sure that these scripts are invoked reliably.
+These scripts run as part of a workflow, like Azure Machine Learning studio, which can provide insight as to when and whether the script ran. But we recommend that you run integration tests to make sure that these scripts are invoked reliably.
 
 ## Model evaluation and testing
 
@@ -135,7 +135,7 @@ Typically there are three key datasets partitioned from the source data: trainin
 
 Use the training dataset, which is usually the largest subset, to train the model. Use another dataset for evaluation and refine the model through an iterative process by assessing different permutations. After you find a satisfactory permutation, test it against the test dataset.
 
-All datasets should contain high-quality data to minimize noise. Your test cases on data ingestion and preprocessing pipelines can serve as quality checkpoints. Lack of samples can also attribute to low-quality data. Use synthetic data to balance and achieve uniformity in the dataset. This approach is particularly useful for training models like fraud detection, where real fraud instances are rare, which makes it difficult to get sufficient statistical power for reliable predictions.
+All datasets should contain high-quality data to minimize noise. Your test cases on data ingestion and preprocessing pipelines can serve as quality checkpoints. Lack of samples can also attribute to low-quality data. Use synthetic data to balance and achieve uniformity in the dataset. This approach is useful for training models like fraud detection, where real fraud instances are rare, which makes it difficult to get sufficient statistical power for reliable predictions.
 
 To avoid bias in predictions, keep all datasets distinct. You shouldn't use training data for evaluation, and you shouldn't use evaluation data for testing. Reserve unique data for model evaluation and final testing.
 
@@ -197,11 +197,11 @@ The client should expect errors when it sends requests to the inference endpoint
 
 Testing PaaS services can help you select service SKUs because you understand the associated costs, like pay-as-you-go or pre-provisioned compute. Use Azure pricing calculators to evaluate workloads, frequency, and token usage to determine the best billing and compute options. Simulate workloads with low-cost SKUs and justify high-end options like provisioned throughput units (PTUs) for Azure OpenAI.
 
-Load testing isn't as relevant for pay-as-you-go compute because, with infinite capacity, you won't encounter problems. Testing validates the limits and quotas. We don't recommend load testing for pay-as-you-go compute because it's a significant financial expense. However, you should load test to verify the throughput, which is measured in tokens per minute or requests per minute. Unlike standard APIs that consider metrics like request size, this approach sizes based on tokens to determine usage. The key is to understand the number of active users and measure throughput accordingly. For more information, see [How to measure your throughput](/azure/ai-services/openai/how-to/latency#how-to-measure-your-throughput).
+Load testing isn't as relevant for pay-as-you-go compute because, with infinite capacity, you don't encounter problems. Testing validates the limits and quotas. We don't recommend load testing for pay-as-you-go compute because it's a significant financial expense. However, you should load test to verify the throughput, which is measured in tokens per minute or requests per minute. Unlike standard APIs that consider metrics like request size, this approach sizes based on tokens to determine usage. The key is to understand the number of active users and measure throughput accordingly. For more information, see [How to measure your throughput](/azure/ai-services/openai/how-to/latency#how-to-measure-your-throughput).
 
 ### Security controls
 
-Regardless of whether you use an inferencing server or a PaaS option, security is your responsibility. With API endpoints, it's crucial to test for jailbreaking and content safety controls to make sure that these controls can't be bypassed and are functioning as expected. For instance, sending a known blocked item can help you verify if security controls are in place and working correctly before deployment. Consider running these tests as needed or integrate them into the release process.
+Regardless of whether you use an inferencing server or a PaaS option, security is your responsibility. With API endpoints, it's crucial to test for jailbreaking and content safety controls. Make sure that these controls can't be bypassed and are functioning as expected. For instance, sending a known blocked item can help you verify if security controls are in place and working correctly before deployment. Consider running these tests as needed or integrate them into the release process.
 
 It's important to test if the system can inadvertently expose information it shouldn't. For example, the system shouldn't expose personal information in the response payload. Also, test to make sure a client can't access endpoints that are meant for other identities. Conduct security tests to verify that the API, with its authentication and authorization mechanisms, doesn't leak confidential information and maintains proper user segmentation.
 
@@ -250,24 +250,24 @@ Security control and authentication are crucial for a RESTful endpoint. You need
 
 ## Model decay
 
-An issue that is common for all models is some degree of degradation over time. Changes that are internal and external to the workload eventually cause a degradation in the quality of the model and its outputs. Model decay occurs in two ways:
+A common problem for all models is some degree of degradation over time. Changes that are internal and external to the workload eventually cause a degradation in the quality of the model and its outputs. Model decay occurs in two ways:
 
 - **Data drift:** Data drift occurs when the input data changes. New data input makes the trained model out of date. For example, you might have a model that predicts voting patterns of a certain geographical area, like a district. If the district is redrawn and the demographics of the population of that district change, your model needs to be updated to account for the changes.
 
-- **Concept drift:** Concept drift occurs when conditions external to the workload and model change in such a way that the model outputs no longer match reality. For example, you might have a sales forecast model for a technology product. If a competitor unexpectedly introduces a more advanced competing product that draws significant attention in the public, you need to update your model based on how consumer trends change.
+- **Concept drift:** Concept drift occurs when conditions that are external to the workload and model change in such a way that the model outputs no longer match reality. For example, you might have a sales forecast model for a technology product. If a competitor unexpectedly introduces a more advanced competing product that draws significant attention from the public, you need to update your model based on how consumer trends change.
 
-When possible, use automated testing to detect and evaluate model decay over your model's life cycle. If your model predicts discrete values, you can create tests to evaluate predictions against those values over time and measure the deviation between expected and actual results. Compliment this testing with monitoring to detect drift over time by comparing summary statistics and distance metrics.
+When possible, use automated testing to detect and evaluate model decay over your model's life cycle. If your model predicts discrete values, you can create tests to evaluate predictions against those values over time and measure the deviation between expected and actual results. Complement this testing with monitoring to detect drift over time by comparing summary statistics and distance metrics.
 
-Another common approach to identifying model decay is user feedback. An example of user feedback is a thumbs up or thumbs down response mechanism. Tracking the positive versus negative feedback over time and creating an alert when a negative feedback threshold is met can be a good sign to investigate the quality of the model.
+Another common approach to identify model decay is user feedback. An example of user feedback is a thumbs up or thumbs down response mechanism. Tracking the positive versus negative feedback over time and creating an alert when you meet a negative feedback threshold can help you know when to investigate the quality of the model.
 
 Regardless of the signals that you use to identify model decay, the operations team that's alerted about potential decay needs to engage a data scientist to research the signal and determine whether decay is happening and the root cause.
 
 ### Tools
 
-- **[Azure Machine Learning Data Collector](/azure/machine-learning/concept-data-collection)**. Data Collector provides real-time logging of input and output data from models that are deployed to managed online endpoints or Kubernetes online endpoints. Machine Learning stores the logged inference data in Azure blob storage. You can then use this data for model monitoring, debugging, or auditing, which provides observability into the performance of your deployed models. If you deploy a model outside of Machine Learning or to a Machine Learning batch endpoint, you can't take advantage of the Data Collector and have need to operationalize another data collection process.
+- **[Azure Machine Learning data collector](/azure/machine-learning/concept-data-collection):** Use data collector to get real-time logging of input and output data from models that are deployed to managed online endpoints or Kubernetes online endpoints. Machine Learning stores the logged inference data in Azure blob storage. You can then use this data for model monitoring, debugging, or auditing, which provides observability into the performance of your deployed models. If you deploy a model outside of Machine Learning or to a Machine Learning batch endpoint, you can't take advantage of data collector and have need to operationalize another data collection process.
 
 - **Machine Learning model monitoring:** To implement monitoring, Machine Learning acquires monitoring signals by performing statistical computations on streamed production inference data and reference data. The reference data can be historical training data, validation data, or ground truth data. On the other hand, the production inference data refers to the model's input and output data collected in production.
 
-  - Refer to the [model monitoring article](/azure/machine-learning/concept-model-monitoring) to learn about the monitoring capabilities of Machine Learning and the [metrics](/azure/machine-learning/concept-model-monitoring#monitoring-signals-and-metrics) that it captures and analyzes.
+  - See [Machine Learning model monitoring](/azure/machine-learning/concept-model-monitoring) to learn about the monitoring capabilities of Machine Learning and the [metrics](/azure/machine-learning/concept-model-monitoring#monitoring-signals-and-metrics) that it captures and analyzes.
   
-  - Refer to the [best practices](/azure/machine-learning/concept-model-monitoring#recommended-best-practices-for-model-monitoring) for further recommendations for monitoring.
+  - See the [best practices](/azure/machine-learning/concept-model-monitoring#best-practices-for-model-monitoring) for more recommendations for monitoring.
