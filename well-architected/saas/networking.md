@@ -95,7 +95,7 @@ Your customers might also have specific compliance requirements that influence y
 |---|---|
 | Maintain a catalog of the network endpoints that are exposed to the internet. Capturing details such as IP address (if static), hostname, ports, protocols used, and with justification for connections. <br><br>Document how you'll protect each endpoint. | This list forms the basis of your perimeter definition, allowing you to make explicit decisions on managing traffic through your solution. |
 | Understand Azure service capabilities to limit access and enhance protection. <br><br> For example, exposing storage account endpoints to customers requires additional controls like shared access signatures, storage account firewalls, and using separate storage accounts for internal and external use. | You'll be able to select controls that meet your security, cost, and performance needs. |
-| For HTTP(S) based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabilties for performance improvements, resiliency, security, and to reduce operational complexity. |
+| For HTTP(S) based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabilities for performance improvements, resiliency, security, and to reduce operational complexity. |
 | Inspect ingress traffic with a web application firewall. <br><br> Avoid exposing web-based resources such as an App Service or Azure Kubernetes Service (AKS) directly to the internet. | You'll protect your web applications against common threats, and reduce the overall exposure of your solution. |
 | Protect your application against DDoS attacks. <br><br> Use Azure Front Door or Azure DDoS Protection depending on the protocols used by your public endpoints. | You'll protect your solution from a common type of attack. |
 | If your application requires egress connectivity at scale, use NAT Gateway or a firewall to provide additional SNAT ports. | You'll support higher levels of scale. |
@@ -146,7 +146,7 @@ For some scenarios, you might need to connect to resources external to Azure, su
 
 ## Deploy to environments owned by customers
 
-Your business model might require you to host the application or its components within a customer’s Azure environment. The customer manages their own Azure subscription, and directly pays the cost of resources required to run the application. As the solution provider, you're responsibile for managing the solution, such as the initial deployment, applying configuration, and deploying updates to the application.
+Your business model might require you to host the application or its components within a customer’s Azure environment. The customer manages their own Azure subscription, and directly pays the cost of resources required to run the application. As the solution provider, you're responsible for managing the solution, such as the initial deployment, applying configuration, and deploying updates to the application.
 
 In such situations, customers often bring their own network and deploy your application into a network space they define. Azure Managed Applications offer capabilities to facilitate this process. For more information, see [Use existing virtual network with Azure Managed Applications](/azure/azure-resource-manager/managed-applications/existing-vnet-integration).
 
@@ -154,7 +154,7 @@ In such situations, customers often bring their own network and deploy your appl
 
 - **IP address ranges and conflicts.** When customers deploy and manage virtual networks, they are responsible for handling network conflicts and scaling. However, you should anticipate different customer usage scenarios. Plan for deployments in environments with minimal IP address space by using IP addresses efficiently, and avoid hard-coding IP address ranges to prevent overlaps with customer ranges.
 
-    Alternatively, deploy a dedicated virtual network for your solution. You might use Private Link or virtual network peering to enable customers to connect to the resources. These appproaches are described in [Cross-network connectivity](#cross-network-connectivity). If you have defined ingress and egress points, evaluate NAT as an approach to eliminate issues caused by IP address overlaps.
+    Alternatively, deploy a dedicated virtual network for your solution. You might use Private Link or virtual network peering to enable customers to connect to the resources. These approaches are described in [Cross-network connectivity](#cross-network-connectivity). If you have defined ingress and egress points, evaluate NAT as an approach to eliminate issues caused by IP address overlaps.
 
 - **Provide network access for management purposes.** Review the resources that you'll deploy into customer environments and plan how you'll access them to monitor, manage, or reconfigure them. When resources are deployed with private IP addresses into a customer-owned environment, ensure you have a network path to reach them from your own network. Consider how you facilitate both application and resource changes, such pushing a new version of the application or updating an Azure resource configuration.
 
