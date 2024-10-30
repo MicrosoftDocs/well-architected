@@ -36,6 +36,8 @@ SaaS solutions have unique networking requirements. As you onboard more customer
 
     - **No network**:  Used for Azure PaaS services where you can host complex workloads without deploying virtual networks at all. For example, Azure App Service allows for direct integration with other PaaS services over the Azure backbone network. While this approach simplifies management, it restricts flexibility in deploying security controls and the ability to optimize performance. This approach can work well for cloud native applications. As your solution evolves, expect to transition to a hub-and-spoke topology over time.
 
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and security**. Starting without a defined network boundary can reduce the operational burden of managing network components like security groups, IP address space, and firewalls. However, a network perimeter is essential for most workloads. In the absence of network security controls, rely on strong identity and access management to protect your workload from malicious traffic.
+
 - **Understand how multi-region architecture affects network topologies.** In a multi-region architecture using virtual networks, most networking resources are deployed in each region separately, because firewalls, virtual network gateways, and network security groups cannot be shared between regions.
 
 ### Design recommendations
@@ -113,9 +115,11 @@ For some scenarios, you might need to connect to resources external to Azure, su
     | On-premises |  ISV or customer | <ul><li>Site-to-site VPN</li><li>ExpressRoute</li><li>Internet</li></ul> |
 
     - **Private Link and private endpoint**. Provide secure connectivity to various Azure resources, including internal load balancers for virtual machines. They enable private access to your SaaS solution for customers, though they come with cost considerations.
-    
+
+      > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and cost.** Private link ensures your traffic remains within your private network and is recommended for network connectivity across Microsoft Entra tenants. However, each private endpoint incurs costs, which can add up based on your security needs. Service endpoints can be a cost-effective alternative, keeping traffic on the Microsoft backbone network while providing some level of private connectivity.
+ 
     - **Service endpoint**. Routes traffic to PaaS resources via Microsoft's backbone network, securing service-to-service communication. They can be cost-effective for high-bandwidth applications but require configuring and maintaining access control lists for security. Support for service endpoints across Microsoft Entra ID tenants varies by Azure service. Check the product documentation for each service you use.
-    
+
     - **Virtual network peering** connects two virtual networks, allowing resources in one network to access IP addresses in the other. It facilitates connectivity to private resources in an Azure virtual network. Access can be managed using network security groups, but enforcing isolation can be challenging. Therefore, it's important to plan your network topology based on specific customer needs.
     
     - **Virtual private networks (VPNs)** create a secure tunnel through the internet between two networks, including across cloud providers and on-premises locations. Site-to-site VPNs use network appliances in each network for configuration. They offer a low-cost connectivity option but require setup and don't guarantee predictable throughput.

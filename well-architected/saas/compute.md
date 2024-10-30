@@ -71,6 +71,8 @@ Your SaaS business model will drive whether you host resources for customers or 
 
   When choosing a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Sharing resources among customers can be cost-efficient, but if some customers use more resources than expected, this approach can degrade performance for others. To prevent this, implement proper resource governance to ensure tenant usage stays within expected limits.
+
 ### Design recommendations
 
 | Recommendation | Benefit |
