@@ -1,9 +1,9 @@
 ---
 title: Testing and Evaluation of AI Workloads on Azure
-description: Learn about AI workload testing operations that help you maintain the quality of your workload on Azure.
+description: Learn about AI workload testing operations and metrics that help you maintain the quality of your workload on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 10/29/2024
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
@@ -23,7 +23,7 @@ This article focuses on the application of that methodology to the AI aspects of
 
 |Recommendation|Description|
 |---|---|
-|Define success metrics for your testing strategy. |Like any other type of workload testing, you need to capture and analyze the appropriate metrics for a given test to ensure that your test provides useful insights about your AI workload.<br><br>&#9642;[Define success metrics](#define-success-metrics)|
+|Define success metrics for your testing strategy. |Like any other type of workload testing, you need to capture and analyze the appropriate metrics for a given test to ensure that your test provides useful insights about your AI workload.<br><br>&#9642; [Define success metrics](#define-success-metrics)|
 |Conduct end-to-end testing of your data ingestion and processing pipelines throughout the development life cycle. |Tests can validate the data and help you ensure that the data manipulation process works as intended. Incorporate testing early in the design phase to ensure data quality and appropriate technology and sizing choices. Develop unit tests for custom code during development, and conduct real-time production tests to catch problems and validate functionality.<br><br>&#9642; [Tests for data ingestion and processing pipelines](#data-ingestion-testing)|
 |Run tests to make sure that the training scripts are invoked and function as expected.|Load and performance testing can provide insight into the choice and sizing of compute that's suitable to run the jobs. Unit tests can validate the utility of the code and catch regressions when dependencies are updated.<br><br>&#9642; [Tests for training jobs](#training-workflow-testing)|
 |Avoid duplication in training, evaluation, and testing data.|To ensure that source data isn't entirely used for training, you must reserve unique data for model evaluation and final testing. These subsets aren't included in the actual training process. <br><br>&#9642; [Model evaluation and testing](#model-evaluation-and-testing)|
@@ -36,22 +36,22 @@ This article focuses on the application of that methodology to the AI aspects of
 
 We recommend that you have a baseline and measure the predictive power of the model by using well-defined metrics. Here are some common metrics.
 
-- **Accuracy:** This metric represents the ratio of correctly predicted instances to the total instances in the test dataset. It's a common measure of overall model performance.
+- **Accuracy** represents the ratio of correctly predicted instances to the total instances in the test dataset. It's a common measure of overall model performance.
 
-- **Precision:** This metric is the ratio of true positive predictions to the sum of true positives and false positives. It's useful when minimizing false positives is important, like in medical diagnoses, for example.
+- **Precision** is the ratio of true positive predictions to the sum of true positives and false positives. It's useful when minimizing false positives is important, like in medical diagnoses, for example.
 
-- **Sensitivity:** This metric measures the ratio of true positives to the sum of true positives and false negatives. It's valuable when avoiding false negatives, or missing relevant cases, is critical.
+- **Sensitivity** measures the ratio of true positives to the sum of true positives and false negatives. It's valuable when avoiding false negatives, or missing relevant cases, is critical.
 
-- **Specificity:** This metric calculates the ratio of true negatives to the sum of true negatives and false positives. It's relevant when you optimize for accurate negative predictions.
+- **Specificity** calculates the ratio of true negatives to the sum of true negatives and false positives. It's relevant when you optimize for accurate negative predictions.
 
 > [!NOTE]
 > When you define success metrics for regression models, consider adding the following metrics:
 >
-> - **Mean Absolute Error (MAE):** This metric measures the average absolute difference between the predicted values and the actual values. Calculate it by taking the mean of the absolute differences between each actual value and its corresponding predicted value. MAE is less sensitive to outliers compared to MSE and RMSE.
+> - **Mean Absolute Error (MAE)** measures the average absolute difference between the predicted values and the actual values. Calculate it by taking the mean of the absolute differences between each actual value and its corresponding predicted value. MAE is less sensitive to outliers compared to MSE and RMSE.
 >
-> - **Mean Squared Error (MSE):** This metric measures the average squared difference between the actual values and the predicted values. Calculate it by taking the mean of the squared differences between each actual value and its corresponding predicted value. MSE penalizes larger errors more heavily than MAE because the errors are squared.
+> - **Mean Squared Error (MSE)** measures the average squared difference between the actual values and the predicted values. Calculate it by taking the mean of the squared differences between each actual value and its corresponding predicted value. MSE penalizes larger errors more heavily than MAE because the errors are squared.
 >
-> - **Root Mean Squared Error (RMSE):** This metric is the square root of the MSE. It provides a measure of the average absolute error between the actual and predicted values, but in the same units as the original data. RMSE is more sensitive to outliers compared to MAE because it squares the errors before averaging.
+> - **Root Mean Squared Error (RMSE)** is the square root of the MSE. It provides a measure of the average absolute error between the actual and predicted values, but in the same units as the original data. RMSE is more sensitive to outliers compared to MAE because it squares the errors before averaging.
 
 ## Data ingestion testing
 
@@ -155,17 +155,17 @@ Generative AI integrates with orchestration code, routing logic, and an index fo
 
 Fine-tuning is essentially testing because it modifies a pretrained model to change its behavior. It requires starting with a baseline to understand the model's initial performance. After fine-tuning, re-evaluate the model's performance to ensure that it meets quality standards. Common evaluation metrics are:
 
-- **Groundedness:** Refers to the model's alignment with the source data. A grounded model generates answers that are consistent with reality.
+- **Groundedness** refers to the model's alignment with the source data. A grounded model generates answers that are consistent with reality.
 
-- **Relevancy:** Indicates how pertinent the response is to a given question. A highly grounded answer might lack relevancy if it doesn't address the question directly.
+- **Relevancy** indicates how pertinent the response is to a given question. A highly grounded answer might lack relevancy if it doesn't address the question directly.
 
-- **Similarity:** Measures the similarity between a source data text and the generated response. Did the model use precise wording? Lack of editorial governance can lower the similarity score.
+- **Similarity** measures the similarity between a source data text and the generated response. Did the model use precise wording? Lack of editorial governance can lower the similarity score.
 
-- **Retrieval:** Indicates the effectiveness of index queries. Evaluate how well the retrieved index data aligns with the question. Irrelevant data from the index search lowers this score. Higher retrieval scores indicate lower variability because they rely solely on the index queries.
+- **Retrieval** indicates the effectiveness of index queries. Evaluate how well the retrieved index data aligns with the question. Irrelevant data from the index search lowers this score. Higher retrieval scores indicate lower variability because they rely solely on the index queries.
 
-- **Fluency:** Relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
+- **Fluency** relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
 
-- **Coherence:** Evaluates whether the model's speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
+- **Coherence** evaluates whether the model's speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
 
 ### Test hyperparameters
 
@@ -252,9 +252,9 @@ Security control and authentication are crucial for a RESTful endpoint. You need
 
 A common problem for all models is some degree of degradation over time. Changes that are internal and external to the workload eventually cause a degradation in the quality of the model and its outputs. Model decay occurs in two ways:
 
-- **Data drift:** Data drift occurs when the input data changes. New data input makes the trained model out of date. For example, you might have a model that predicts voting patterns of a certain geographical area, like a district. If the district is redrawn and the demographics of the population of that district change, your model needs to be updated to account for the changes.
+- **Data drift** occurs when the input data changes. New data input makes the trained model out of date. For example, you might have a model that predicts voting patterns of a certain geographical area, like a district. If the district is redrawn and the demographics of the population of that district change, your model needs to be updated to account for the changes.
 
-- **Concept drift:** Concept drift occurs when conditions that are external to the workload and model change in such a way that the model outputs no longer match reality. For example, you might have a sales forecast model for a technology product. If a competitor unexpectedly introduces a more advanced competing product that draws significant attention from the public, you need to update your model based on how consumer trends change.
+- **Concept drift** occurs when conditions that are external to the workload and model change in such a way that the model outputs no longer match reality. For example, you might have a sales forecast model for a technology product. If a competitor unexpectedly introduces a more advanced competing product that draws significant attention from the public, you need to update your model based on how consumer trends change.
 
 When possible, use automated testing to detect and evaluate model decay over your model's life cycle. If your model predicts discrete values, you can create tests to evaluate predictions against those values over time and measure the deviation between expected and actual results. Complement this testing with monitoring to detect drift over time by comparing summary statistics and distance metrics.
 
@@ -264,9 +264,9 @@ Regardless of the signals that you use to identify model decay, the operations t
 
 ### Tools
 
-- **[Azure Machine Learning data collector](/azure/machine-learning/concept-data-collection):** Use data collector to get real-time logging of input and output data from models that are deployed to managed online endpoints or Kubernetes online endpoints. Machine Learning stores the logged inference data in Azure blob storage. You can then use this data for model monitoring, debugging, or auditing, which provides observability into the performance of your deployed models. If you deploy a model outside of Machine Learning or to a Machine Learning batch endpoint, you can't take advantage of data collector and have need to operationalize another data collection process.
+- Use **[Azure Machine Learning data collector](/azure/machine-learning/concept-data-collection)** to get real-time logging of input and output data from models that are deployed to managed online endpoints or Kubernetes online endpoints. Machine Learning stores the logged inference data in Azure blob storage. You can then use this data for model monitoring, debugging, or auditing, which provides observability into the performance of your deployed models. If you deploy a model outside of Machine Learning or to a Machine Learning batch endpoint, you can't take advantage of data collector and have need to operationalize another data collection process.
 
-- **Machine Learning model monitoring:** To implement monitoring, Machine Learning acquires monitoring signals by performing statistical computations on streamed production inference data and reference data. The reference data can be historical training data, validation data, or ground truth data. On the other hand, the production inference data refers to the model's input and output data collected in production.
+- Use **Machine Learning model monitoring** to implement monitoring. Machine Learning acquires monitoring signals by performing statistical computations on streamed production inference data and reference data. The reference data can be historical training data, validation data, or ground truth data. On the other hand, the production inference data refers to the model's input and output data collected in production.
 
   - See [Machine Learning model monitoring](/azure/machine-learning/concept-model-monitoring) to learn about the monitoring capabilities of Machine Learning and the [metrics](/azure/machine-learning/concept-model-monitoring#monitoring-signals-and-metrics) that it captures and analyzes.
   
