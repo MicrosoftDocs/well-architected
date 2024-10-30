@@ -36,9 +36,13 @@ Microsoft Azure is an excellent platform for delivering SaaS, offering the neces
 
 ## What's the maturity model for building SaaS?
 
-SaaS products are often built by startups and other small organizations. Typically, there are fewer people, and fewer resources. No matter the size of the organization, SaaS requires some level of maturity to meet high customer expectations. Customers trust the organization to protect their data and other assets. They might also rely on the solution for important parts of their operations. Therefore, Operational Excellence and Reliability become key aspects of the the solution.
+Organizations building SaaS products are typically:
 
-Initially, startups should prioritize the most impactful elements for their customers. In parallel, they should plan for future architectural enhancements such as automation, tenant management, cost reduction, and improved security and reliability. Even though this may not seem practical at first, this strategic planning serves as a blueprint for gradual implementation and continuous improvement. As the startup grows, it should adapt and refine its processes, adopt new technologies, and meet evolving compliance standards to scale effectively and maintain customer trust.
+- **Startups or other small organizations.** Typically, there are fewer people, and fewer resources. No matter the size of the organization, SaaS requires some level of maturity to meet high customer expectations. Customers trust the organization to protect their data and other assets. They might also rely on the solution for important parts of their operations. Therefore, Operational Excellence and Reliability become key aspects of the the solution.
+
+  Initially, startups should prioritize the most impactful elements for their customers. In parallel, they should plan for future architectural enhancements such as automation, tenant management, cost reduction, and improved security and reliability. Even though this may not seem practical at first, this strategic planning serves as a blueprint for gradual implementation and continuous improvement. As the startup grows, it should adapt and refine its processes, adopt new technologies, and meet evolving compliance standards to scale effectively and maintain customer trust.
+
+- **Established organizations.** Established organizations looking to modernize their existing solutions often migrate to a SaaS model. Even though the organization might have more resources, the challenges become complex. They must support existing customers while developing the new SaaS solution, which can create operational overhead. This transition requires changes in technical architecture, skill sets, and overall business operations. The focus should be on minimizing the impact on current customers and make sure they receive similar or improved reliability, security, and performance. Once the legacy solutions are less burdensome, the organization can prioritize new features and improvements.
 
 ## How to use this guidance?
 
