@@ -1,2 +1,2 @@
-{:allowed-branchname-matches ["main" "release-.*"]
+{:allowed-branchname-matches ["main" "release-.*" "collab-.*"]
  :allowed-filename-matches ["well-architected"]}
