@@ -48,7 +48,7 @@ Lifecycle management is a key responsibility of a SaaS solution's control plane.
 |---|---|
 | Document each type of customer lifecycle event. <br><br> Make sure you capture step-by-step details of the process for each event. | By understanding the events, you can plan how you'll respond to each event in your solution design. <br> Clear instructions help human operators maintain consistency and serve as the foundation for future automation.|
 | Communicate the shared responsibility between you and your customer, for each lifecycle event.  Communicate clearly and early the actions you expect the customers to do in order to complete a lifecycle stage. | You'll reduce potential errors and customer frustration caused by miscommunication. |
-| Do capacity planning for each lifecycle event. <br><br> For example, when onboarding a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the additional load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | You'll support your ability to scale, and avoid deployment falures. |
+| Do capacity planning for each lifecycle event. <br><br> For example, when onboarding a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the additional load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | You'll support your ability to scale, and avoid deployment failures. |
 | Automate your lifecycle events, when practical. <br><br> For low-volume or early-stage solutions, manual deployment and configuration may be sufficient, but should still use scripts, even if an engineer runs them each time a lifecycle event occurs. <br><br> As your solution matures, integrate these responsibilities into a full control plane to reduce human error and support higher scale. | You'll reduce the significant risk of human error, and support much higher scale. |
 
 ## Plan your infrastructure management strategy
@@ -80,7 +80,7 @@ Regularly update application code and configuration to enhance functionality. Ho
 
 ### Design considerations
 
-- **Standardize tooling and processes.** Industry-proven DevOps tooling bring consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations.
+- **Standardize tooling and processes.** Industry-proven DevOps tooling brings consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations.
     > Refer to [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and cost.** Using familiar DevOps tools can be cost-efficient in terms of money and skills. However, it adds the operational burden of managing each tool separately. It's important to remain open to new technological innovations that could benefit your workload.
