@@ -59,7 +59,7 @@ Data pipelines, like extract, transform, and load (ETL) processes, move and mani
 
 Testing should be integrated throughout the life cycle, design, development, and in production.
 
-#### Test to facilitate design choices
+### Test to facilitate design choices
 
 When you gather requirements for the workload, a key decision-making step is to choose a specific technology option that's viable for your design.
 
@@ -69,13 +69,13 @@ For scenarios where you incorporate AI into an existing architecture, test how w
 
 Initial workload requirements can change. Suppose the business anticipates growth and the system needs to handle double the regular user queries. This expectation requires proper capacity planning. We recommend proactive testing to understand how the system responds to the extra data and to make data-driven adjustments to existing sizing or make new product choices. For capacity testing, we recommend that you combine functional testing with load and performance testing and use synthetics to simulate realistic conditions.
 
-#### Test to ensure code quality
+### Test to ensure code quality
 
 When code is included, ensure that it goes through unit testing and isn't released if it fails. For example, it's common to have custom code that runs as part of ingestion. There's also code used for data cleansing and processing. Run unit tests to ensure the code behaves according to its design and that data manipulation functions as expected.
 
 Run tests as part of your continuous integration and continuous delivery pipeline.
 
-#### Test in the live system
+### Test in the live system
 
 Functional testing should extend to the live system. If these tests fail, consider triggering alerts to initiate immediate investigations, if necessary. Here are some examples:
 
@@ -89,7 +89,7 @@ Another way to test the correctness of the ETL system in production is through s
 
 Additionally, experiment by releasing different experiences, also known as A/B testing, to learn from user interactions before fully committing. A/B testing helps you prevent quality regressions.
 
-#### Test data that's collected during ingestion
+### Test data that's collected during ingestion
 
 As part of the ingestion process from various data sources, include tests to validate that training data matches your expectations.
 
@@ -105,7 +105,7 @@ The following list includes some example test cases:
 
 - **Test for freshness.** Freshness of the ingested data shouldn't affect the model's predictive power. Validate that the data reflects reasonably current information and isn't outdated from previous runs. For example, if you expect the data to include records from the past week, but there are no such records after you import the data, that might indicate a failed import or a data freshness problem in the source system.
 
-#### Conduct routine tests
+### Conduct routine tests
 
 A significant concern with data ingestion is the volume of data and throughput. Continuous evaluation during operations is necessary to prevent performance bottlenecks. This ongoing assessment should be part of your operational processes rather than just a one-time test. The goal is to ensure the workload team doesn't miss their service-level objectives.
 
@@ -129,7 +129,7 @@ These scripts run as part of a workflow, like Azure Machine Learning Studio, whi
 >
 > Testing includes verifying the entire system, including the tuned model and non-AI components, to check that they function correctly, integrate well, and deliver the expected results with quality standards. Evalate a model in situ alongside other components of the workload. The process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. Although testing is nonnegotiable before production, we recommend that you also conduct tests in production by using real data and synthetic data.
 
-#### Data for evaluation and testing
+### Data for evaluation and testing
 
 Typically there are three key datasets partitioned from the source data: training, evaluation, and testing.
 
@@ -139,7 +139,7 @@ All datasets should contain high-quality data to minimize noise. Your test cases
 
 To avoid bias in predictions, keep all datasets distinct. You shouldn't use training data for evaluation, and you shouldn't use evaluation data for testing. Reserve unique data for model evaluation and final testing.
 
-#### Evaluation metrics
+### Evaluation metrics
 
 Training a model and selecting the right one for production are interdependent processes. You need to choose a model initially, but it might change after experimentation and evaluation.
 
@@ -151,97 +151,100 @@ Evaluate different types of models by using various metrics. The importance of e
 
 Generative AI integrates with orchestration code, routing logic, and an index for retrieval-augmented generation (RAG), which complicates evaluation. Although you should assess the models individually by using metrics, it's also important to evaluate other system components.
 
-#### Model testing
+### Model testing
 
-Fine-tuning is essentially testing because it modifies a pretrained model to change its behavior. It requires starting with a baseline to understand the model's initial performance. After fine-tuning, the model's performance is reevaluated to ensure it meets quality standards. Common metrics to evaluate are:
+Fine-tuning is essentially testing because it modifies a pretrained model to change its behavior. It requires starting with a baseline to understand the model's initial performance. After fine-tuning, re-evaluate the model's performance to ensure that it meets quality standards. Common evaluation metrics are:
 
-- **Groundedness:** Refers to the model's alignment with the source data. A grounded model generates answers that's consistent with reality.
+- **Groundedness:** Refers to the model's alignment with the source data. A grounded model generates answers that are consistent with reality.
 
 - **Relevancy:** Indicates how pertinent the response is to a given question. A highly grounded answer might lack relevancy if it doesn't address the question directly.
 
 - **Similarity:** Measures the similarity between a source data text and the generated response. Did the model use precise wording? Lack of editorial governance can lower the similarity score.
 
-- **Retrieval:** Indicates the effectiveness of index queries. Evaluate how well the retrieved index data aligns with the question. Irrelevant data from the index search lowers this score. Higher retrieval score indicates lower variability because it's solely reliant on the index queries.
+- **Retrieval:** Indicates the effectiveness of index queries. Evaluate how well the retrieved index data aligns with the question. Irrelevant data from the index search lowers this score. Higher retrieval scores indicate lower variability because they rely solely on the index queries.
 
 - **Fluency:** Relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
 
 - **Coherence:** Evaluates whether the model's speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
 
-#### Test hyperparameters
+### Test hyperparameters
 
-Model parameters depend on application-specific design decisions. As part of your application design, choose the model and the parameters based on the workload use cases. The testing process has an iterative inner loop where training data is compared against test data to validate that the model is training on the intended dataset. Also, the parameters are tuned so that the model is able to predict with an acceptable level of accuracy.
+Model parameters depend on application-specific design decisions. As part of your application design, choose the model and the parameters based on your workload's use cases. The testing process has an iterative inner loop where training data is compared against test data to validate that the model is training on the intended dataset. Also, the parameters are tuned so that the model can make predictions with an acceptable level of accuracy.
 
-> ![Consider the tradeoff on cost of training.](../_images/trade-off.svg) **Tradeoff**. The inner loop includes computational cost of training the model with the cost of evaluating it through tests. The time required for model training and testing must be factored into this loop. Expect the testing process to execute for a longer period than the training process. Initial testing can be done on a subset of training data to assess whether the model produces reasonable results. That testing set can be gradually scaled up to the full dataset eventually.
+> ![Consider the trade-off on the cost of training.](../_images/trade-off.svg) **Trade-off**. The inner loop includes computational costs of training the model with the cost of evaluating it through tests. You must factor the time that model training and testing requires into this loop. Expect the testing process to take longer than the training process. You can do initial testing on a subset of training data to assess whether the model produces reasonable results. You can gradually scale up that testing set to the full dataset.
 
 ## Inference endpoint testing
 
-An inference endpoint is the REST API that allows access to models for making predictions. It's the interface where you send data as part of the request and get response from the model containing results. The endpoint is hosted on compute, which can be PaaS like Azure OpenAI or a third-party inferencing server, such as NVIDIA Triton Inference Service, TorchSever, BentoML. In PaaS scenarios, the service provider handles the testing to certain extent. However, if you host the endpoint, treat it like any other API and test it thoroughly. While the model is tested during training and evaluation, testing the inference endpoint involves ensuring the mechanisms around that model work correctly, such as request processing, response creation, scaling, and coordination across instances. Create a comprehensive test plan that covers use cases based on your requirements. This section describes some example test cases and test types to consider.
+An inference endpoint is the REST API that allows access to models for making predictions. It's the interface where you send data as part of the request and get a response that contains results from the model. The endpoint is hosted on compute, which can be PaaS like Azure OpenAI Service or a non-Microsoft inferencing server, such as NVIDIA Triton Inference Server, TorchServe, and BentoML. In PaaS scenarios, the service provider handles the testing to a certain extent. However, if you host the endpoint, treat it like any other API and test it thoroughly. 
 
-#### Test considerations for inference hosting servers
+Although you test the model during training and evaluation, testing the inference endpoint involves ensuring that the mechanisms around that model, such as request processing, response creation, scaling, and coordination across instances, work correctly. Create a comprehensive test plan that covers use cases based on your requirements. This section describes some example test cases and test types to consider.
 
-It's important to know the load characteristics of the compute and validate performance through load testing. This helps in choosing technologies when you're designing or optimizing the architecture. For example, different inferencing servers have varying performance characteristics. The code consumes CPU cycles and memory as number of concurrent connections increase. Understand how your code and the compute resources perform under standard and peak load conditions. Azure Load Testing is a good option for load testing and is capable of generating high volume load. Other open source options are also popular, such as Apache JMeter. Consider invoking these tests directly from your environment. For example, Machine Learning is well-integrated with Load Testing.
+### Test considerations for inference hosting servers
+
+It's important to understand the load characteristics of the compute and validate performance through load testing. These actions help you choose technologies when you design or optimize the architecture. For example, different inferencing servers have varying performance characteristics. The code consumes CPU cycles and memory as the number of concurrent connections increases. Understand how your code and the compute resources perform under standard and peak load conditions. Azure Load Testing is a good option for load testing and can generate high volume load. Other open-source options, like Apache JMeter, are also popular. Consider invoking these tests directly from your environment. For example, Machine Learning integrates well with Load Testing.
 
 Another key decision is the choice of GPU capabilities. Many models require GPUs for effective inferencing due to their design. Load testing helps understand performance limits of a GPU SKU and prevents overprovisioning, which are a significant financial consideration.
 
-> ![Consider the tradeoff on cost of GPU capabilities.](../_images/trade-off.svg) **Tradeoff**. GPU SKUs are expensive. While you might make conservative choices in your SKU selection, it's important to continuously detect if GPU resources are underutilized and right size them, when possible. After adjustments, test resource utilization to maintain balance between cost efficiency and performance optimization. For cost optimization strategies, see [Recommendations for optimizing component costs](../cost-optimization/optimize-component-costs.md).
+> ![Consider the trade-off on cost of GPU capabilities.](../_images/trade-off.svg) **Trade-off**. GPU SKUs are expensive. Although you might make conservative choices in your SKU selection, it's important to continuously check whether GPU resources are underutilized and right size them, when possible. After you make adjustments, test resource utilization to maintain the balance between cost efficiency and performance optimization. For cost optimization strategies, see [Recommendations for optimizing component costs](../cost-optimization/optimize-component-costs.md).
 
-For non-PaaS hosting platforms, security is crucial because this API is publicly exposed. It's important to ensure the endpoint isn't exploited or compromised, which could jeopardize the entire system. Include this endpoint as part of your routine security testing along with other public endpoints. Consider conducting test on the live system, such as penetration testing. Another aspect of security is content safety. Your code can call out to specialized APIs that detect harmful content in the request and response payload. Azure AI Content Safety can be called from your testing to facilitate content safety testing.
+For non-PaaS hosting platforms, security is crucial because the API is publicly exposed. It's important to ensure that the endpoint isn't exploited or compromised, which can jeopardize the entire system. Include this endpoint as part of your routine security testing along with other public endpoints. Consider conducting tests, such as penetration testing, on the live system. Another aspect of security is content safety. Your code can call out to specialized APIs that detect harmful content in the request and response payload. Azure AI Content Safety can be called from your testing to facilitate content safety testing.
 
 For key strategies, see [Recommendations for security testing](../security/test.md).
 
-#### Test considerations for PaaS inference endpoints
+### Test considerations for PaaS inference endpoints
 
-The client should expect errors when sending request to the inference endpoint on the PaaS service. Failures can occur due to system overload, unresponsive backends, and other error conditions. Conduct failure mode analysis on the service and test those potential failures. This is requirement for designing and implementing mitigation strategies in the client code. For example, Azure OpenAI APIs throttle requests by returning an HTTP 429 error response code. The client should handle that error by using retry mechanisms and circuit breakers. Some strategies are given in [Recommendations for performing failure mode analysis](../reliability/failure-mode-analysis.md).
+The client should expect errors when it sends requests to the inference endpoint on the PaaS service. Failures can occur due to system overload, unresponsive back ends, and other error conditions. Conduct failure mode analysis on the service and test those potential failures. Failure mode analysis is required for designing and implementing mitigation strategies in the client code. For example, Azure OpenAI APIs throttle requests by returning an HTTP 429 error response code. The client should handle that error by using retry mechanisms and circuit breakers. For more information, see [Recommendations for performing failure mode analysis](../reliability/failure-mode-analysis.md).
 
-Testing PaaS services can help in selecting SKUs of the service by understanding the associated costs, pay-as-you-go, or pre-provisioned compute. Use Azure pricing calculators to evaluate workloads, frequency, and token usage to determine the best billing and compute options. Simulate workloads with low-cost SKUs and justify high-end options like provisioned throughput units (PTU) for Azure OpenAI.
+Testing PaaS services can help you select service SKUs because you understand the associated costs, like pay-as-you-go or pre-provisioned compute. Use Azure pricing calculators to evaluate workloads, frequency, and token usage to determine the best billing and compute options. Simulate workloads with low-cost SKUs and justify high-end options like provisioned throughput units (PTUs) for Azure OpenAI.
 
-Load testing isn't as relevant for pay-as-you-go because, with infinite capacity, you wouldn't encounter problems. Testing would validate the limits and quotas. This isn't recommended because it would be a significant financial expense. However, you should load testing to verify the throughput, which is measured in tokens per minute or requests per minute. Unlike standard APIs that consider metrics like request size, this approach sizes based on tokens to determine usage. The key is to understand the number of active users and measure throughput accordingly. For more information, see [How to measure your throughput](/azure/ai-services/openai/how-to/latency#how-to-measure-your-throughput).
+Load testing isn't as relevant for pay-as-you-go compute because, with infinite capacity, you won't encounter problems. Testing validates the limits and quotas. We don't recommend load testing for pay-as-you-go compute because it's a significant financial expense. However, you should load test to verify the throughput, which is measured in tokens per minute or requests per minute. Unlike standard APIs that consider metrics like request size, this approach sizes based on tokens to determine usage. The key is to understand the number of active users and measure throughput accordingly. For more information, see [How to measure your throughput](/azure/ai-services/openai/how-to/latency#how-to-measure-your-throughput).
 
-#### Security controls
+### Security controls
 
-Regardless if you're using an inferencing server or a PaaS option, security is your responsibility. With API endpoints, it's crucial to test for jailbreaking and content safety controls to make sure that these controls can't be bypassed and are functioning as expected. For instance, sending a known blocked item can help verify if the security control is in place and working correctly before deployment. Consider running these tests as needed or integrate them into the release process.
+Regardless of whether you use an inferencing server or a PaaS option, security is your responsibility. With API endpoints, it's crucial to test for jailbreaking and content safety controls to make sure that these controls can't be bypassed and are functioning as expected. For instance, sending a known blocked item can help you verify if security controls are in place and working correctly before deployment. Consider running these tests as needed or integrate them into the release process.
 
-It's important to test if the system can inadvertently expose information it shouldn't. For example, personal information in the response payload. Also, test to make sure a client can't access endpoints meant for other identities. Conduct security tests to verify that the API, with its authentication and authorization mechanisms, doesn't leak confidential information and maintains proper user segmentation.
+It's important to test if the system can inadvertently expose information it shouldn't. For example, the system shouldn't expose personal information in the response payload. Also, test to make sure a client can't access endpoints that are meant for other identities. Conduct security tests to verify that the API, with its authentication and authorization mechanisms, doesn't leak confidential information and maintains proper user segmentation.
 
 ## Grounding data testing
 
-Data design influences a generative model's efficiency, and grounding is the critical component. Grounding data provides more context to boost the relevance of the response. It's indexed before reaching the model. This index is accessed in real-time as the user waits for an answer.
+Data design influences a generative model's efficiency, and grounding is the critical component. Grounding data provides more context to boost the relevance of the response. It's indexed before it reaches the model. This index is accessed in real time as the user waits for an answer.
 
-Conduct end-to-end testing and incorporate that process as part of data design. Have a testing processes that evaluate and quantify results of the end user experience based on the performance of the model, orchestration, index, preprocessing, and source data. Monitor and measure the quality metrics iteratively. Here are some common use cases:
+Conduct end-to-end testing and incorporate that process as part of data design. Implement a testing process that evaluates and quantifies the results of the customer's experience based on the model's performance, orchestration, index, preprocessing, and source data. Monitor and measure the quality metrics iteratively. Here are some common use cases:
 
-- Data processing must be thoroughly tested through functional and integration testing, verifying that data is loaded as expected and that all data is present.
+- Thoroughly test data processing by using functional and integration testing. Verify that data is loaded as expected and that all data is present.
 
-- Index schema must be tested for backward compatibility. Any change to document or field should be tested to ensure the new version can still accommodate previous versions of data.
+- Test the index schema for backward compatibility. You should test any change to a document or field to ensure that the new version can still accommodate previous versions of data.
 
-- Before data is indexed, it undergoes preparation to reduce noise and bias and enable efficient querying. This process includes preprocessing, chunking, and calculating embeddings, with each step saving data to the context or files in the index. An orchestration pipeline, such as skill sets provided by Azure AI Search, conducts these steps. The orchestration code must be tested to ensure no steps are missed and the processed data is of high quality. Tests should check for old data, synthetic values, empty tables, data refresh, and processing on the latest version. If test failures occur, you might need to tweak the search query and index. This process includes adjusting filters and other elements discussed previously. Testing should be considered an iterative activity.
+- Before data is indexed, it undergoes preparation to reduce noise and bias and enable efficient querying. This process includes preprocessing, chunking, and calculating embeddings, and each step saves data to the context or files in the index. An orchestration pipeline, such as skill sets provided by Azure AI Search, conducts these steps. You must test the orchestration code to ensure that no steps are missed and the processed data is high quality. 
 
-- Indexes are complex and query performance can vary based on index structure, requiring load estimation. Proper load testing can help determine the different SKUs for storage, compute, and other resources are available to support requirements.
+   Tests should check for old data, synthetic values, empty tables, data refresh, and processing on the latest version. If test failures occur, you might need to tweak the search query and index. This process includes adjusting filters and other elements discussed previously. You should think of testing as an iterative activity.
 
-- All security controls must be tested. For example, data might be partitioned into separate documents. Each partition with access controls. Those controls must be properly tested to protect confidentiality.
+- Indexes are complex and query performance can vary based on index structure, which requires load estimation. Proper load testing can help determine the different SKUs for storage, compute, and other resources that are available to support your requirements.
 
-Testing the correctness of index design and search queries is crucial, often done with prompt development. Key metrics are precision (relevance of returned results) and recall (completeness of relevant results). Unit tests can be written for these metrics. Test failures might require changes to the index or search query. Those metrics are also necessary for assessing search performance and ensuring desired data is returned.
+- You must test all security controls. For example, data might be partitioned into separate documents. Each partition has access controls. You must properly test those controls to protect confidentiality.
+
+Testing the correctness of index design and search queries is crucial and often done with prompt development. Key metrics are precision, or relevance of returned results, and recall, or completeness of relevant results. You can write unit tests for these metrics. Test failures might require changes to the index or search query. Those metrics are also necessary for assessing search performance and ensuring that the desired data is returned.
 
 ## Orchestrator testing
 
-A key component of a Retrieval-Augmented Generation (RAG) application is the central orchestrator. This code coordinates various tasks related to the initial user question. Orchestrator tasks typically require an understanding of user intent, connecting to the index to look up grounding data, and calling the inference endpoint. If tasks need to be done by agents, such as calling REST APIs, this code handles that within the context.
+A key component of a RAG application is the central orchestrator. This code coordinates various tasks that relate to the initial user question. Orchestrator tasks typically require an understanding of user intent, a connection to the index to look up grounding data, and calling the inference endpoint. If agents need to do tasks, such as calling REST APIs, this code handles those tasks within the context.
 
-Orchestration code can be developed in any language and written from scratch. However, we recommend using technologies like Prompt Flow in Azure AI Studio or Apache Airflow's DAGs (Directed Acyclic Graphs) to speed up and simplify the development process. Prompt Flow provides a design-time experience that allows you to modularize tasks as units, connecting inputs and outputs of each unit, ultimately forming the orchestration code, which represents the entire process.
+You can develop orchestration code in any language or write it from scratch. However, we recommend that you use technologies like prompt flow in Azure AI Studio or Apache Airflow's Directed Acyclic Graphs (DAGs) to speed up and simplify the development process. Prompt flow provides a design-time experience. Use it to modularize tasks as units and connect inputs and outputs of each unit, ultimately forming the orchestration code, which represents the entire process.
 
 Isolate your orchestration code. Develop it separately and deploy it as a microservice with an online endpoint and REST API for access. This approach ensures modularity and ease of deployment.
 
-From a testing perspective, treat this code like any other code and conduct unit tests. However, the bigger aspect is its functionality, such as its routing logic, which can be validated through functional and integration testing. Test prompt engineering to ensure the code can detect user intent and route calls appropriately. There are several frameworks and libraries for testing, such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
+From a testing perspective, treat this code like any other code and conduct unit tests. However, the more important aspect is its functionality, such as its routing logic, which you can validate through functional and integration testing. Test prompt engineering to ensure that the code can detect user intent and route calls appropriately. There are several frameworks and libraries for testing, such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
 
-Also, conduct runtime tests, such as failure mode testing. For example, test potential failures related to token limitations.
+Also, conduct runtime tests, such as failure mode testing. For example, test potential failures that are related to token limitations.
 
-Certain runtime tests can help in decision-making. Run load tests to understand how this code behaves under stress and use the results for capacity planning. Because this code is positioned at a crucial point in the architecture where it needs to reach other services, it can help in collecting telemetry from all those calls. This data can provide insights into how much time is spent on local processing versus network calls and determine the behavior of other components, such as potential latency. Technologies like Prompt Flow have built-in telemetry capabilities to facilitate this process. Otherwise, incorporate telemetry in your custom code.
+Certain runtime tests can help you make a decision. Run load tests to understand how this code behaves under stress and use the results for capacity planning. Because this code is positioned at a crucial point in the architecture where it needs to reach other services, it can help collect telemetry from all those calls. This data can provide insights into how much time is spent on local processing versus network calls and determine the behavior of other components, such as potential latency. Technologies like prompt flow have built-in telemetry capabilities to facilitate this process. Otherwise, incorporate telemetry in your custom code.
 
 > [!NOTE]
->
-> Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of OpenAI in a test environment. Alternatively, simulate the inference endpoint.
+> Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, simulate the inference endpoint.
 
-Security concerns apply to both the orchestration code and the model. Include testing for jailbreaking, where the goal is to break the model's security. Attackers don't interact with the model directly; they interact with the orchestration code first. The orchestration code receives user requests and parses them. If the orchestration code receives a malicious request, it can be forwarded to the model, potentially compromising it.
+Security concerns apply to both the orchestration code and the model. Include testing for jailbreaking, where the goal is to break the model's security. Attackers don't interact with the model directly; they interact with the orchestration code first. The orchestration code receives user requests and parses them. If the orchestration code receives a malicious request, it can forward that request to the model and potentially compromise the model.
 
-Content safety is another important aspect. In a ChatBot application, chat text is sent to the orchestration code. In the code, consider calling a content safety service. Send both the user prompt and the grounding context for analysis and receive an assessment of the risk. [Prompt Shields](/azure/ai-services/content-safety/concepts/jailbreak-detection) is a unified API that analyzes LLM inputs and detects User prompt attacks and document attacks, which are two common types of adversarial inputs.
+Content safety is another important aspect. In a chatbot application, chat text is sent to the orchestration code. In the code, consider calling a content safety service. Send both the user prompt and the grounding context for analysis and receive an assessment of the risk. [Prompt Shields](/azure/ai-services/content-safety/concepts/jailbreak-detection) is a unified API that analyzes large language model inputs and detects user-prompt attacks and document attacks, which are two common types of adversarial inputs.
 
 Security control and authentication are crucial for a RESTful endpoint. You need to manage authentication and ensure thorough testing.
 
