@@ -1,6 +1,6 @@
 ---
 title: Billing and Cost Management for SaaS workloads on Azure
-description: get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
+description: Get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
 author: dolevshor
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -10,7 +10,7 @@ ms.collection: learn-startups
 
 # Billing and cost management for SaaS workloads on Azure
 
-Running a successful SaaS business requires careful financial planning. You need to manage both how your customers are billed for your solution, and your own resource expenditures. Although these concerns are related, they are distinct. You must optimize both to succeed.
+Running a successful SaaS business requires careful financial planning. You need to manage both how your customers are billed for your solution, and your own resource expenditures. Although these concerns are related, they're distinct. You must optimize both to succeed.
 
 Understanding the costs of running your solution is critical. You need to analyze, manage, optimize, and control these costs. SaaS differs from many other software types because its business model and pricing strategy are directly linked to the solution architecture.
 
