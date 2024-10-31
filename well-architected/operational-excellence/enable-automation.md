@@ -116,7 +116,7 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Change tracking and inventory
 
-[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in virtual machines. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
+[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in both Azure VMs and Arc-enabled VMs. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
 
 - Installed Windows and Linux software
 - Azure VMs and Azure Arc enabled VMs
