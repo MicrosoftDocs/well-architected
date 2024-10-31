@@ -15,13 +15,13 @@ The [Azure Well-Architected SaaS workload assessment](/assessments/2d85e883-bdc4
 
 For best results, a team that has familiarity with the architecture of your workload should complete the assessment. That team should also have a strong understanding of cloud principles and patterns. These roles include cloud architects, operators, and DevOps engineers.
 
-The questions in the assessment are based on the [SaaS workload design areas](get-started.md#what-are-the-key-design-areas). These design areas help you check the foundational design choices of your workload's architecture and your end-to-end operational approach.
+The questions in the assessment are based on the [SaaS workload design areas](get-started.md#how-to-use-this-guidance). These design areas help you check the foundational design choices of your workload's architecture and your end-to-end operational approach.
 
-:::image type="content" source="./images/assessment-question.png" alt-text="Screenshot that shows a question in the Azure SaaS assessment. A few answers are selected. On the left, an outline of the assessment is visible.":::
+:::image type="content" source="./images/assessment-question.png" alt-text="Screenshot that shows a question in the Azure SaaS assessment. A few answers are selected. On the left, an outline of the assessment is visible." lightbox="./images/assessment-question.png":::
 
 These questions help you benchmark your workload's maturity and alignment compared to the recommended approach for operating an Azure SaaS workload. The assessment's final guidance provides technical recommendations and documentation about how to implement a highly reliable SaaS solution on Azure.
 
-:::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot that shows the guidance page of the Azure SaaS assessment. Recommended actions are visible.":::
+:::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot that shows the guidance page of the Azure SaaS assessment. Recommended actions are visible." lightbox="./images/assessment-recommendations.png":::
 
 > [!div class="nextstepaction"]
 > [Azure Well-Architected SaaS workload assessment](/assessments/2d85e883-bdc4-4854-aaf0-df72c4bcee15)
