@@ -55,24 +55,43 @@ Some examples of workloads that aren't included in the scope of this series of a
 
 ## What are the common challenges?
 
-- **Size your workload for training**: Training your workload on a model requires a significant amount of compute resources initially, but that amount decreases after the training is finished. After you train your system on a model, running the system requires less compute resources because it's only responding to prompts.
-- **Size your workload for inference**: When you aren't running a model-based workload, you need a more consistent amount of compute power.
-- **Buy versus build**: Determine whether an off-the-shelf solution, like Azure OpenAI, suits your requirements or whether you need to build your own solution.
-- **Deal with data**: You need strategies to handle the following data scenarios:
-  - You need to determine the volume of data to plan for the appropriate amount of resources.
-  - You need to determine the types of data that you're working with to ensure that you have the right resources to handle that data. You also need to plan for new processes that you might need to develop. For example, you might have a fraud detection system that you trained on training data, but it processes real-time transaction data in production. You need to handle each type of data in specific ways because the real-time data might have sensitive information that has special requirements.
-  - You need to identify the origins of the data to prepare pipelines for ingestion.
-  - You need to identify the security and compliance requirements for your data to implement the proper enforcement measures.
-  - You need to determine the requirements for data preparation, cleansing, and freshness to design the appropriate automated and manual processes. 
-- **Test your workload**:
-  - Testing your model while you build it helps you ensure that your solution produces predictable, valid, and useful results.
-  - Testing nondeterministic AI systems can be especially challenging because they're inherently random. They can pass sometimes and fail sometimes with no changes to obvious factors like the code or environment. Use a large suite of test cases to help reduce the randomness.
-- **Invest in new skills and roles**: If your organization is new to AI workloads, you need to invest in training and possibly new roles to support your workload. You might need data scientists, specialized developers, and other specialized roles in addition to new operational processes that might require extensive training.
-- **Adopt the right technology for the best user experience**: New technologies and new functions are released quickly, so it can be tempting to use the latest and most impressive technology to stay current. However, by following this practice, you might adopt a technology that provides a worse experience for your customers. For instance, language models are increasingly more human-like in their conversational abilities, but a conversational interface might not be the best way for your customers to interact with your system. In this case, using the most advanced language model might not be a good investment.
-- **Ensure your use case is ethical and responsible**: You need to clearly determine whether your use case is an ethical target for AI. The implications of putting an AI workload into production aren't always obvious, so consider what you need to do throughout the planning and implementation phases to ensure that you build a [responsible system](https://www.microsoft.com/ai/responsible-ai).
-- **Improve your [customers' experience](https://online.stanford.edu/how-to-use-AI-to-enhance-user-experience#Avoid%20Overpromising%20and%20Under%20Delivering)**: Consider different [user design patterns](https://uxdesign.cc/emerging-interaction-patterns-in-generative-ai-experiences-8c351bb3392a) to account for the sometimes slow or unpredictable response time of AI models.
+Microsoft Azure offers a broad range of AI services that you can build your workload around or integrate into an existing workload. You can choose between fully managed software as a service solutions (SaaS), platform as a service solutions (PaaS), or you can build your own AI solution using Azure compute services. While these options can make adopting AI technologies easier for your workload teams, there are challenges that will inevitably come up. Common challenges include:
 
-## What are the key design areas?
+- Building and running AI functions can be a costly endeavor. Some phases of your AI workload implementation will require a significant amount of compute resources, like model training, while other phases, like the day-to-day operation of the workload will require less. In other cases, like batch inferencing, your compute requirements may need to be scalable on a frequently recurring schedule. Understanding your compute requirements and finding the right compute service to meet those requirements can help you keep costs under control.
+
+- Your organization may have security or compliance requirements that limit your options to adopt off-the-shelf services, like pre-trained models. In other cases, your use case may not be a good fit for a SaaS or PaaS service, so building your own solution may be the best option for your workload team. Its important to research all of your options to ensure that you're not creating unnecessary development and operational burden by building your own solution when an off-the-shelf solution is available to you.
+
+- AI functions typically deal with very large amounts of data, often coming in multiple data types. Handling your data securely, efficiently, and cost effectively is critical to the overall workload. Challenges related to data include:
+
+  - The volume of data needs to be determined to plan for the appropriate amount of resources.
+
+  - The types of data you'll be working with need to be determined to ensure that you have the right kinds of resources to handle those types and you plan for any new processes that need to be developed. For example, you may have a fraud detection system that has been trained on training data, but processes real-time transaction data in production. Both types of data need to be handled in particular ways as the real-time data may have sensitive information that has special requirements.
+
+  - The origins of the data will need to be identified to prepare pipelines for ingestion.
+
+  - The security and compliance requirements for your data will need to be identified to implement proper enforcement measures.
+
+  - The requirements for data preparation, cleansing and freshness need to be determined to ensure that proper automated and manual processes are designed.
+
+- Testing is a critical part of any workload, but there are unique challenges inherent to AI functions. Models can become degraded over time, which leads to inaccurate outputs. Testing nondeterministic AI systems can be especially challenging due to their inherent randomness. They can pass sometimes and fail sometimes with no changes to obvious factors like the code or environment.
+
+- If your organization is new to AI workloads, you'll need to invest in training and possibly new roles to support your workload. You may require data scientists, specialized developers, and other specialized roles in addition to new operations processes that may require extensive training.
+
+- New technologies and new functions are released with incredible speed so it can be tempting to use the latest and most impressive technology to stay at the bleeding edge. However, by going that route, you may adopt a technology that provides a worse user experience overall for your customers, or is unnecessarily complex. 
+
+- You need to clearly determine whether your use case is an ethical target for AI. The implications of putting an AI workload into production are not always immediately obvious, so careful consideration needs to be done throughout the planning and implementation phases to ensure that you are building a [responsible system](https://www.microsoft.com/en-us/ai/responsible-ai).
+
+- Building a positive [user experience](https://online.stanford.edu/how-to-use-AI-to-enhance-user-experience#Avoid%20Overpromising%20and%20Under%20Delivering) is challenging due to the sometimes slow or unpredictable response time of models. Understanding different [user design patterns](https://uxdesign.cc/emerging-interaction-patterns-in-generative-ai-experiences-8c351bb3392a) is an important step in addressing user experience challenges.
+
+## How to use this guidance?
+
+**&#10004;** Start with [**Design Methodology**](./design-methodology.md), which outlines the rationale and recurring themes across technical and operational areas. This systematic approach helps define requirements and design strategies. Revisit this methodology when facing uncertain choices to stay aligned with the workload's overall goals. It also provides a framework for collaborating with marketing and sales teams to validate technical decisions and incorporate customer feedback for continuous improvement.
+
+**&#10004;** Proceed to [**Design Principles**](./design-methodology.md) to see how the SaaS design methodology aligns with the core Well-Architected Framework pillars, considering growth evolution. Evaluate the underlying principles for all pillars collectively, including the tradeoffs.
+
+**&#10004;** Focus on the **design areas** that have the biggest impact on your solution. Each area includes considerations and recommendations to guide you through the design decisions.
+
+## Design areas
 
 The following table describes some key design areas for building and operating AI workloads on Azure.
 
