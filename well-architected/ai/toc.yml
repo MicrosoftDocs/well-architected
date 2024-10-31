@@ -21,7 +21,7 @@
         href: operations.md
       - name: MLOps and GenAIOps
         href: mlops-genaiops.md
-      - name: Testing
+      - name: Test and evaluate
         href: testing.md
       - name: User input, ethics, security
         href: userinput-ethics-security.md
