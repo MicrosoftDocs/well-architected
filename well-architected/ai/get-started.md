@@ -95,18 +95,18 @@ Microsoft Azure offers a broad range of AI services that you can build your work
 
 The following table describes some key design areas for building and operating AI workloads on Azure.
 
-|Design area|
+|Design areas|
 |---|
-|[Application design](./application-design.md) Building new AI workloads or integrating AI functions into existing traditional workloads requires thinking about design patterns in new ways. Learn about considerations that might have a significant effect on your existing application design standards. |
-|[Application platform ](./application-platform.md) AI workloads have unique functions, like model hosting, model training, and inferencing, those functions require specialized platforms to integrate into your environments. Choosing the right platforms to adopt will depend on several factors unique to your use case and requires careful planning. |
-|[Training data design](./training-data-design.md) Data used in model training has unique characteristics relative to other data types in AI workloads. You'll need to consider strategies for data ingestion, preprocessing, retention, and governance topics. |
-|[Grounding data design](./grounding-data-design.md) Grounding data is the subset of source data that your workload relies on for generating high quality output, and is typically stored as a searchable index. You'll need to consider strategies to optimize searchability and retrieval, while meeting security and compliance requirements. |
-|[Data platform ](./data-platform.md)| Hosting the large amounts and potentially many formats of data that your workload uses may require you to implement multiple hosting platforms to meet your workload's functional and nonfunctional requirements. Your choice of hosting platforms depends on several factors unique to your use case and requires careful planning. |
-|[Machine learning operations and Generative AI operations](./mlops-genaiops.md)| AI workloads have unique functions, like model training and hosting, and inferencing, and use specialized platforms, like Azure Open AI and Azure ML Studio. You might need to adopt new DevOps practices or update them significantly to integrate these functions and platforms. |
-|[Workload operations](./operations.md) Operational activities for AI workloads can be a significant change for organizations that are new to AI. Your organization might need to take new approaches and consider adding specialized roles and training. |
-|[Testing and evaluation](./testing.md) Testing and evaluating your AI workload can be notably different than testing traditional apps. You'll need to have focused testing to measure characteristics like accuracy, precision, sensistivity, and specificity through metrics that have been specifically targeted for AI workloads. |
-|[Workload personas](./personas.md) In the context of AI workloads, personas refers to the workload team members and processes involved in the full lifecycle of the workload. Personas can include roles like Data Scientists and MLOps Engineers, among many others. Understanding the personas for your workload will help you ensure that your team is fully capable of building and supporting your AI workload. |
-|[User input and ethics](./userinput-ethics-security.md) AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. You must pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
+|[Application design](./application-design.md): Learn about considerations unique to AI workloads that might have a significant effect on your existing application design standards. |
+|[Application platform ](./application-platform.md): Determine the best platforms to use to support AI workload functions, like model hosting, model training, and inferencing. |
+|[Training data design](./training-data-design.md): Design strategies for data ingestion, preprocessing, retention, and governance topics to handle your model training data. |
+|[Grounding data design](./grounding-data-design.md): Design strategies to optimize searchability and retrieval, while meeting security and compliance requirements for your grounding data. |
+|[Data platform ](./data-platform.md): Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
+|[Machine learning operations and Generative AI operations](./mlops-genaiops.md): Establish modern DevOps practices to support your machine learning or generative AI functions and systems. |
+|[Workload operations](./operations.md): Modernize your operational practices with new approaches and adding specialized roles and training. |
+|[Testing and evaluation](./testing.md): Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensistivity, and specificity through metrics that have been specifically targeted for AI workloads. |
+|[Workload personas](./personas.md): Understand how personas involved in the full lifecycle of your AI workload to help ensure that your team is fully capable of building and supporting it. |
+|[User input and ethics](./userinput-ethics-security.md): AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. Pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
 
 ## Next step
 
