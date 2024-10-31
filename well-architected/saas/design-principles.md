@@ -3,7 +3,7 @@ title: Design Principles of SaaS Workloads on Azure
 description: Learn about the key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas for SaaS.
 author: johndowns
 ms.author: prwilk
-ms.date: 09/04/2024
+ms.date: 11/04/2024
 ms.topic: conceptual
 ms.collection: learn-startups
 ---
@@ -76,7 +76,7 @@ How you design a solution that operates at a low volume of scale differs from a 
 
 ## Next step
 
-Start your leaning journey by optimizing your customer's billing and your cost management strategy.
+Start your learning journey by optimizing your customer's billing and your cost management strategy.
 
 > [!div class="nextstepaction"]
 > [Design area: Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md)
