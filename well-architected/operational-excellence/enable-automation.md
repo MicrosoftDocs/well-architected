@@ -116,7 +116,7 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Change tracking and inventory
 
-[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in virtual machines. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
+[Change tracking and inventory using Azure Monitoring Agent](/azure/automation/change-tracking/overview-monitoring-agent) tracks OS configuration drift in both Azure VMs and Arc-enabled VMs. This automates detection of drift, the inventory running services, and installed packages on the virtual machines in your workload. Items that are tracked by change tracking and inventory include:
 
 - Installed Windows and Linux software
 - Key Windows and Linux files
@@ -127,7 +127,7 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 - [AKS baseline reference architecture](/azure/architecture/reference-architectures/containers/aks/baseline-aks#cluster-bootstrapping)
 - [Azure App Configuration](/azure/azure-app-configuration/overview)
-- [Azure Automanage State Configuration](/azure/automation/automation-dsc-overview)
+- [Azure Automation State Configuration](/azure/automation/automation-dsc-overview)
 - [Azure Policy](/azure/governance/policy/overview)
 - [Cloud-init support for VMs in Azure](/azure/virtual-machines/linux/using-cloud-init)
 - [GitOps Flux v2 configurations with AKS and Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-gitops-flux2)
