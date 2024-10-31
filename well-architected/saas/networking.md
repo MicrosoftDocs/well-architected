@@ -3,7 +3,7 @@ title: Networking for SaaS Workloads on Azure
 description: Learn about the networking considerations for SaaS workloads.
 author: senavar
 ms.author: prwilk
-ms.date: 09/25/2024
+ms.date: 11/04/2024
 ms.topic: conceptual
 ms.collection: learn-startups
 ---
@@ -116,7 +116,7 @@ For some scenarios, you might need to connect to resources external to Azure, su
     - **Service endpoint**. Routes traffic to PaaS resources via Microsoft's backbone network, securing service-to-service communication. They can be cost-effective for high-bandwidth applications but require configuring and maintaining access control lists for security. Support for service endpoints across Microsoft Entra ID tenants varies by Azure service. Check the product documentation for each service you use.
 
     - **Virtual network peering** connects two virtual networks, allowing resources in one network to access IP addresses in the other. It facilitates connectivity to private resources in an Azure virtual network. Access can be managed using network security groups, but enforcing isolation can be challenging. Therefore, it's important to plan your network topology based on specific customer needs.
-    
+
     - **Virtual private networks (VPNs)** create a secure tunnel through the internet between two networks, including across cloud providers and on-premises locations. Site-to-site VPNs use network appliances in each network for configuration. They offer a low-cost connectivity option but require setup and don't guarantee predictable throughput.
 
     - **ExpressRoute** provides a dedicated, high-performance, private connection between Azure and other cloud providers or on-premises networks. It ensures predictable performance and avoids internet traffic but comes with higher costs and requires more complex configuration.

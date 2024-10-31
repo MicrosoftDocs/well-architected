@@ -3,7 +3,7 @@ title: Assessment Review Tool for SaaS Workloads on Azure
 description: Learn how to assess key technical design areas in your SaaS workload. Get specific recommendations for ISVs that build SaaS applications.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 10/31/2024
+ms.date: 11/04/2024
 ms.service: azure-waf
 ms.topic: conceptual
 ms.collection: learn-startups

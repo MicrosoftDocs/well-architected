@@ -3,7 +3,7 @@ title: Identity and Access Management for SaaS Workloads on Azure
 description: Learn about the design considerations for identity and access management in your SaaS worload environment.
 author: landonpierce
 ms.author: prwilk
-ms.date: 11/01/2024
+ms.date: 11/04/2024
 ms.topic: conceptual
 ms.collection: learn-startups
 ---
@@ -17,8 +17,8 @@ In the context of SaaS workloads, there are two distinct types of identity.
 - **Application identity**, also known as *customer identity and access management (CIAM)*, enables end users to authenticate and use your SaaS application. There are two main methods for signing users in to an application identity provider:
   
     - **Federated identities.**  Users sign in with existing credentials that are maintained by another identity provider. That provider could be a social identity provider such as Google, Facebook, or LinkedIn, or an enterprise identity provider that your customers use, such as Microsoft Entra or Okta. Maintenance of the user's account is the responsibility of the federated identity provider.
-      
-    - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. Maintenance of the user's account is your responsibility. 
+
+    - **Local identities.** Users create an account just for your application. The account is secured by username and password, passkey, or other authentication methods. Maintenance of the user's account is your responsibility.
 
 - **Enterprise identity** is the identity solution that's used to authenticate internal users and workloads to business productivity tools, internal tools or services, and Azure services. You use an enterprise identity solution for your internal users and workloads to authenticate them to business productivity tools, internal tools or services, and Azure services. 
 
@@ -36,7 +36,6 @@ Keeping tenant data separate in a multitenant application is critical. That segm
 
 > Refer to [SE:04 Recommendations for segmentation](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter).
 
-
 ### Design considerations
 
 **Understand the tenancy and deployment models for your application.** There might be nuances that influence your identity strategy. For example, it's a misconception that the Deployment Stamps pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model.
@@ -44,6 +43,7 @@ Keeping tenant data separate in a multitenant application is critical. That segm
 When you choose your identity provider for multitenancy, evaluate the impact of failures. Misconfigurations can potentially bring down your entire application for all tenants. Weigh the overhead costs against the risk of the potential radius of impact. 
 
 If you deploy your solution into a customer's Azure environment and manage it on their behalf, you might need to integrate with their enterprise identity provider. Have a clear understanding of these aspects:
+
   - The types of users and their access needs when they interact with your application tenants. For example, User A might only need access to sign in to tenant 1, but user B might need access to sign in to both tenant 1 and tenant 2.
   - Compliance with data residency regulations, if they're applicable to your identity provider. In some cases, data that's stored by an identity provider might be subject to regulations. Many identity providers provide specific guidance and capabilities for this scenario. Assess whether this scenario is relevant to you and take necessary steps to ensure compliance.
 
@@ -62,16 +62,17 @@ Each identity provider offers unique features, limitations, pricing models, and 
 ### Design considerations
 
 - **Document your identity requirements.** Start by listing the features that your application needs now and will need in the future. Typical features to consider include:
+- 
     - Federated identity provider support to integrate with customers' identity solutions. This feature enables you to avoid creating new identities.
     - Customizable sign-in/sign-up flow to modify the look and feel to maintain your branding. This feature also provides the ability to inject custom business logic into the sign-in/sign-up process.
     - Separation of tenant data into distinct silos to maintain tenant isolation.
     - Audit support to retain or export sign-in logs for security management.
- 
+
     > [!IMPORTANT]
     > Consider your planned user growth when you evaluate the cost of an identity solution. Even if a solution might not remain cost effective or scalable in the long term, have a migration plan that you can use if the need arises.
     >
     > For example, a solution might be affordable for 500 users but unsustainable for 5 million. If it requires minimal setup and is user-friendly and easy to migrate from, it could still be the right choice until scaling costs justify switching to a different solution.
- 
+
 - **Research the identity provider capabilities thoroughly.** Make sure the identity solution matches your list of required features. Even if you don't currently need complex scenarios like federated identity, consider future needs. For business-to-business (B2B) SaaS solutions, federated identity will probably be necessary eventually.
 
 - **Factor in management overhead.** Different identity providers require varying levels of management overhead. Well-known IDaaS solutions usually have less overhead because they handle hosting, maintenance, and security. However, the additional overhead of an open source solution might be worthwhile if the solution is a better fit for your specialized needs.
@@ -103,10 +104,10 @@ This image shows the relationship between your application, your application ide
 - **Map out the sign-in experience.** Visualize the user flow of the sign-up and sign-in process. Note any special requirements that might alter your user flow design. For example:
 
     - **Custom branding.** White labeling or custom sign-in domains per customer.
-      
+
     - **Custom information.** Collecting additional user information during sign-up or sign-in, such as tenant selection for users with access to multiple tenants.
-      
-    - **Identity provider selection.** If you use a single application identity provider that has many federated identity providers trusting it, decide how to select a provider. This selection might be done manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This capability is known as *Home Realm Discovery*. 
+
+    - **Identity provider selection.** If you use a single application identity provider that has many federated identity providers trusting it, decide how to select a provider. This selection might be done manually via a button or automatically based on known user information. As the number of providers increases, automatic selection becomes more practical. This capability is known as *Home Realm Discovery*.
 
 ### Design recommendations
 
@@ -127,14 +128,14 @@ User authorization is crucial for SaaS applications, which often store data for 
   
     - **Role-based authorization.** Users are assigned roles or groups, and specific features are restricted to certain roles. For example, administrators can perform any action, but users in other roles have limited permissions.  
     - **Resource-based authorization.**  Each resource has its own set of permissions. A user might be an administrator for one resource but have no access to another.
-      
+
 - **Decide where to store authorization data.** Authorization data for your application can be stored in:
   
     - **Your identity provider.** Take advantage of the built-in groups or roles, surfacing permissions as claims in the token issued to your application. Your application can then enforce authorization rules by using these token claims.
     - **Your application.**  Develop your own authorization logic and store user permissions in a database or similar system, allowing for fine-grained role-based or resource-level authorization controls.
 
     > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity, flexibility, and security.** Storing authorization data in an identity provider and surfacing through token claims is usually simpler than managing your own authorization system. However, claim-based authorization limits your flexibility, and you need to accept that claims are only refreshed when a token is reissued, which can cause a delay in applying changed permissions.
-    
+
 - **Assess the impact of delegated management.** In most SaaS applications, especially in B2B applications, role and permission management is delegated to customers. Without this functionality, you might increase your management overhead if customers frequently change their users' permissions.
   
 - **Evaluate multitenant access.** In some systems, a single user might need to access data from multiple tenants. For example, consultants might need to access data from multiple tenants. Plan how customers will grant access to these users and how your sign-in flow will support selecting and switching among tenants.
@@ -146,7 +147,6 @@ User authorization is crucial for SaaS applications, which often store data for 
 | Prevent users from accessing data across tenant boundaries unless that access is explicitly permitted. | Unauthorized access to another tenant's data, even accidental access, can be seen as a major security incident and erode customer trust in your platform. Blocking unnecessary access will help you avoid these situations. |
 | If the data is static and changes infrequently, store it in the identity provider. If frequent changes are needed while the user is using the software, store the authorization data in your application. |Selecting the best data store for your authorization data will enhance your operational efficiency and help you meet your scalability needs. |
 | If you delegate permission management to customers, provide a clear method for them to manage permissions. For instance, create a web portal that's accessible only to tenant administrators for changing user permissions. | You'll provide more control to your customers and avoid unnecessary operational burden on your support team. |
-
 
 ## Additional resources
 

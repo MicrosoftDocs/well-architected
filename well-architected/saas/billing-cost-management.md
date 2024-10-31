@@ -3,7 +3,7 @@ title: Billing and Cost Management for SaaS workloads on Azure
 description: Get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
 author: dolevshor
 ms.author: prwilk
-ms.date: 11/01/2024
+ms.date: 11/04/2024
 ms.topic: conceptual
 ms.collection: learn-startups
 ---
@@ -51,9 +51,8 @@ In SaaS development, understanding how customers affect costs is crucial. A cost
 - Direct resource costs.
 - Usage metrics that indicate the cost proportion for specific customers, such as operations performed on behalf of a specific customer or data volume that you need to store for a customer.
 
-> Refer to [CO:02 Recommendations for creating a cost model](/azure/well-architected/cost-optimization/cost-model). 
+> Refer to [CO:02 Recommendations for creating a cost model](/azure/well-architected/cost-optimization/cost-model).
   
-
 ### Design considerations
 
 - **Estimate your Azure costs and understand how Azure resources are billed.** Use tools like pricing calculators to forecast expenses before deployment. After your resources are deployed, analyze, manage, and optimize your cloud spending.

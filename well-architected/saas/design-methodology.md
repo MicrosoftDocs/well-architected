@@ -4,7 +4,7 @@ description: Learn how to implement a structured approach when you make architec
 author: landonpierce 
 ms.author: prwilk
 ms.topic: conceptual 
-ms.date: 09/04/2024
+ms.date: 11/04/2024
 ms.collection: learn-startups
 ---
 
