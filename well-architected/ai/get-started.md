@@ -105,7 +105,7 @@ The following table describes some key design areas for building and operating A
 |[Machine learning operations and Generative AI operations](./mlops-genaiops.md): Establish modern DevOps practices to support your machine learning or generative AI functions and systems. |
 |[Workload operations](./operations.md): Modernize your operational practices with new approaches and adding specialized roles and training. |
 |[Testing and evaluation](./testing.md): Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensistivity, and specificity through metrics that have been specifically targeted for AI workloads. |
-|[Workload personas](./personas.md): Understand how personas involved in the full lifecycle of your AI workload to help ensure that your team is fully capable of building and supporting it. |
+|[Workload personas](./personas.md): Understand how personas are involved in the full lifecycle of your AI workload to help ensure that your team is fully capable of building and supporting it. |
 |[User input and ethics](./userinput-ethics-security.md): AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. Pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
 
 ## Next step
