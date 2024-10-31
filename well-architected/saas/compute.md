@@ -71,6 +71,8 @@ Your SaaS business model will drive whether you host resources for customers or 
 
   When choosing a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Sharing resources among customers can be cost-efficient, but if some customers use more resources than expected, this approach can degrade performance for others. To prevent this, implement proper resource governance to ensure tenant usage stays within expected limits.
+
 ### Design recommendations
 
 | Recommendation | Benefit |
@@ -113,7 +115,7 @@ For more information about cost management, see [Billing and cost management for
 | Monitor and evaluate customer usage patterns. | You'll know when to adjust your infrastructure to boost performance or optimize costs.|
 | Implement caching mechanisms, where possible.| You'll reduce the potential processing load on the compute layer.|
 | Use [cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending).| Warnings are useful in detecting high usage and control cost issues early.|
-| Use [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) for customers that have long-term commmitments and have guaranteed compute utilization for that entire period.| You'll maximize your cost efficiency on your reserved capacity.|
+| Use [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) for customers that have long-term commitments and have guaranteed compute utilization for that entire period.| You'll maximize your cost efficiency on your reserved capacity.|
 
 ## Design for resiliency
 

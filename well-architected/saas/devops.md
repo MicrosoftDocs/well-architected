@@ -83,6 +83,8 @@ Regularly update application code and configuration to enhance functionality. Cu
 - **Standardize tooling and processes.** Industry-proven DevOps tooling ensures consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations.
     > Refer to [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
 
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and cost.** Using familiar DevOps tools can be cost-efficient in terms of money and skills. However, it adds the operational burden of managing each tool separately. It's important to remain open to new technological innovations that could benefit your workload.
+
 - **Progressively deploy updates.** Roll out updates to a subset of customers at a time, dividing users into logical groupings. Apply the same rigor to configuration changes, because they can alter code behavior and cause outages. Follow a deployment process for these changes.
 
 - **Adopt a versioning strategy.** Allowing customers to choose their application version adds flexibility but complicates your operations. Set clear expectations for deprecating old versions and outline what happens when they're no longer supported.

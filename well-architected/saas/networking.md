@@ -33,7 +33,9 @@ SaaS solutions have unique networking requirements. As you onboard more customer
   - **Hub and spoke**: A centralized hub network with peering to isolated spoke networks. Suitable for high scalability and customer isolation, because each customer or application has its own spoke, communicating only with the hub. You can quickly deploy more spokes as needed so that resources in the hub can be used by all spokes. *Transitive*, or spoke-to-spoke, communication through the hub is disabled by default, which helps maintain customer isolation in SaaS solutions.
   - **No network**:  Used for Azure PaaS services where you can host complex workloads without deploying virtual networks. For example, Azure App Service allows for direct integration with other PaaS services over the Azure backbone network. Although this approach simplifies management, it restricts flexibility in deploying security controls and the ability to optimize performance. This approach can work well for cloud native applications. As your solution evolves, expect to transition to a hub-and-spoke topology over time.
 
-- **Understand how multi-region architecture affects network topologies.** In a multi-region architecture using virtual networks, most networking resources are deployed in each region separately. Separate deployment is required because firewalls, virtual network gateways, and network security groups can't be shared between regions.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and security**. Starting without a defined network boundary can reduce the operational burden of managing network components like security groups, IP address space, and firewalls. However, a network perimeter is essential for most workloads. In the absence of network security controls, rely on strong identity and access management to protect your workload from malicious traffic.
+
+- **Understand how multi-region architecture affects network topologies.** In a multi-region architecture using virtual networks, most networking resources are deployed in each region separately, because firewalls, virtual network gateways, and network security groups cannot be shared between regions.
 
 ### Design recommendations
 
@@ -88,7 +90,7 @@ Each flow involves different risks and controls. For example, multiple security 
 |---|---|
 | Maintain a catalog of the network endpoints that are exposed to the internet. Capture details such as IP address (if static), hostname, ports, protocols used, and justification for connections. <br><br>Document how you plan to protect each endpoint. | This list forms the basis of your perimeter definition, allowing you to make explicit decisions on managing traffic through your solution. |
 | Understand Azure service capabilities to limit access and enhance protection. <br><br> For example, exposing storage account endpoints to customers requires additional controls like shared access signatures, storage account firewalls, and using separate storage accounts for internal and external use. | You can select controls that meet your security, cost, and performance needs. |
-| For HTTP(S) based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabilities for performance improvements, resiliency, security, and to reduce operational complexity. |
+| For HTTP(S) based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabiliities for performance improvements, resiliency, security, and to reduce operational complexity. |
 | Inspect ingress traffic by using a web application firewall. <br><br> Avoid exposing web-based resources such as an App Service or Azure Kubernetes Service (AKS) directly to the internet. | You can more effectively protect your web applications against common threats and reduce the overall exposure of your solution. |
 | Protect your application against DDoS attacks. <br><br> Use Azure Front Door or Azure DDoS Protection depending on the protocols used by your public endpoints. | Protect your solution from a common type of attack. |
 | If your application requires egress connectivity at scale, use NAT Gateway or a firewall to provide additional SNAT ports. | You can support higher levels of scale. |
@@ -108,9 +110,11 @@ For some scenarios, you might need to connect to resources external to Azure, su
     | On-premises |  ISV or customer | <ul><li>Site-to-site VPN</li><li>ExpressRoute</li><li>Internet</li></ul> |
 
     - **Private Link and private endpoint**. Provide secure connectivity to various Azure resources, including internal load balancers for virtual machines. They enable private access to your SaaS solution for customers, though they come with cost considerations.
-    
+
+      > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and cost.** Private link ensures your traffic remains within your private network and is recommended for network connectivity across Microsoft Entra tenants. However, each private endpoint incurs costs, which can add up based on your security needs. Service endpoints can be a cost-effective alternative, keeping traffic on the Microsoft backbone network while providing some level of private connectivity.
+ 
     - **Service endpoint**. Routes traffic to PaaS resources via Microsoft's backbone network, securing service-to-service communication. They can be cost-effective for high-bandwidth applications but require configuring and maintaining access control lists for security. Support for service endpoints across Microsoft Entra ID tenants varies by Azure service. Check the product documentation for each service you use.
-    
+
     - **Virtual network peering** connects two virtual networks, allowing resources in one network to access IP addresses in the other. It facilitates connectivity to private resources in an Azure virtual network. Access can be managed using network security groups, but enforcing isolation can be challenging. Therefore, it's important to plan your network topology based on specific customer needs.
     
     - **Virtual private networks (VPNs)** create a secure tunnel through the internet between two networks, including across cloud providers and on-premises locations. Site-to-site VPNs use network appliances in each network for configuration. They offer a low-cost connectivity option but require setup and don't guarantee predictable throughput.

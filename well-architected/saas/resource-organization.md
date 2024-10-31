@@ -97,7 +97,7 @@ Multitenancy is a core business methodology for designing SaaS workloads. These 
 
 ## Next step
 
-Learn about the design considerations for identity and access management in your SaaS worload environment.
+Learn about the design considerations for identity and access management in your SaaS worlload environment.
 
 > [!div class="nextstepaction"]
 > [Design area: Identity and access management for SaaS workloads on Azure](./identity-access.md)

@@ -38,7 +38,7 @@ Microsoft Azure is an excellent platform for delivering SaaS, offering the neces
 
 Organizations building SaaS products are typically:
 
-- **Startups or other small organizations.** Typically, there are fewer people, and fewer resources. No matter the size of the organization, SaaS requires some level of maturity to meet high customer expectations. Customers trust the organization to protect their data and other assets. They might also rely on the solution for important parts of their operations. Therefore, Operational Excellence and Reliability become key aspects of the the solution.
+- **Startups or other small organizations.** Typically, there are fewer people, and fewer resources. No matter the size of the organization, SaaS requires some level of maturity to meet high customer expectations. Customers trust the organization to protect their data and other assets. They might also rely on the solution for important parts of their operations. Therefore, Operational Excellence and Reliability become key aspects of the solution.
 
   Initially, startups should prioritize the most impactful elements for their customers. In parallel, they should plan for future architectural enhancements such as automation, tenant management, cost reduction, and improved security and reliability. Even though this may not seem practical at first, this strategic planning serves as a blueprint for gradual implementation and continuous improvement. As the startup grows, it should adapt and refine its processes, adopt new technologies, and meet evolving compliance standards to scale effectively and maintain customer trust.
 
@@ -64,7 +64,7 @@ Organizations building SaaS products are typically:
 |[DevOps practices](./devops.md): Deploy infrastructure and applications for each customer according to your tenancy model. Use a structured approach for changes, including progressive rollouts. |
 |[Incident management](./incident-management.md) : Establish responsibilities of operating SaaS and the necessary cultural elements within your organization. Prepare for incidents by investing in tools and processes for investigation, remediation, and communication.|
 
-**&#10004;** Use the [**Assessment Review Tool**](./assessment.md) to evaluate the your readiness of your optimized SaaS workload in production.
+**&#10004;** Use the [**Assessment Review Tool**](./assessment.md) to evaluate the readiness of your optimized SaaS workload in production.
 
 > [!TIP]
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated by this icon. :::image type="icon" source="../_images/trade-off.svg":::.
