@@ -57,7 +57,7 @@ For each decision, evaluate the tradeoffs between the [Azure Well-Architected Fr
 
 ## Design for operations
 
-SaaS workload operations need a different perspective. You need to consider factors like supportability. Determine how to provide all-day platform support and hire people with the right skill sets. Don't treat operations as an afterthought or only focus on building new features. Include operability in your design from the start. Consider how your processes scale as you get more customers. For instance, manual operations might work at first, but they usually don’t scale well over time.
+SaaS workload operations need a different perspective. You need to consider factors like supportability. Determine how to provide all-day platform support and hire people with the right skill set. Don't treat operations as an afterthought or only focus on building new features. Include operability in your design from the start. Consider how your processes scale as you get more customers. For instance, manual operations might work at first, but they usually don’t scale well over time.
 
 If you have a legacy platform, consider how or if you should move customers to your new SaaS platform. A smooth migration path is key to keeping customers happy during your business transformation.
 

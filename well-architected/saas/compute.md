@@ -23,9 +23,9 @@ Choosing the right compute platform for your SaaS workload is important, but the
 - **Hosting model**. Azure offers various hosting models, primarily infrastructure as a service (IaaS) and platform as a service (PaaS), each with its own benefits and tradeoffs. Evaluate your application's requirements and choose the most suitable model.
     
     - IaaS provides virtual machines (VMs) and full control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
- 
+
     - PaaS allows you to deploy applications without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
-    
+
    PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application might run on an operating system that the PaaS service doesn't support. PaaS offerings from Azure include App Service and Container Apps.
 
 - **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is designed for web applications, whereas AKS is more general-purpose. It can host web apps, AI workloads, and batch compute tasks.
@@ -71,6 +71,8 @@ Your SaaS business model determines whether you host resources for customers or 
 
   When you choose a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Sharing resources among customers can be cost-efficient, but if some customers use more resources than expected, this approach can degrade performance for others. To prevent this, implement proper resource governance to ensure tenant usage stays within expected limits.
+
 ### Design recommendations
 
 | Recommendation | Benefit |
@@ -95,6 +97,7 @@ For more information about cost management, see [Billing and cost management for
   > Refer to [PE:05 Recommendations for scaling and partitioning](/azure/well-architected/performance-efficiency/scale-partition#choose-a-scaling-strategy). 
   
 - **Autoscaling**. Systems need to efficiently handle varying levels of demand. As user traffic increases, your application resources need to scale up to maintain performance. When demand decreases, resources scale down to control costs without affecting user experience. Factors like CPU utilization, time of day, or incoming requests guide these adjustments. Autoscaling helps balance performance and cost and mitigates the impact of high demand on other tenants.
+
     > Refer to [RE:06 Recommendations for reliable scaling](/azure/well-architected/reliability/scaling).
 
 - **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you eventually reach limits, such as networking or storage constraints, in your solution's scalability.

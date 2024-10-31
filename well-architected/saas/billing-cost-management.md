@@ -1,6 +1,6 @@
 ---
 title: Billing and Cost Management for SaaS workloads on Azure
-description: get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
+description: Get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
 author: dolevshor
 ms.author: prwilk
 ms.date: 11/01/2024
@@ -10,7 +10,7 @@ ms.collection: learn-startups
 
 # Billing and cost management for SaaS workloads on Azure
 
-Running a successful SaaS business requires careful financial planning. You need to manage both how your customers are billed for your solution, and your own resource expenditures. Although these concerns are related, they are distinct. You must optimize both to succeed.
+Running a successful SaaS business requires careful financial planning. You need to manage both how your customers are billed for your solution, and your own resource expenditures. Although these concerns are related, they're distinct. You must optimize both to succeed.
 
 Understanding the costs of running your solution is critical. You need to analyze, manage, optimize, and control these costs. SaaS differs from many other software types because its business model and pricing strategy are directly linked to the solution architecture.
 
@@ -19,8 +19,6 @@ This article provides guidance on billing customers for your solution. It also d
 ## Billing
 
 Most billing models are based on customer usage. A billing model typically requires one or more *meters*, which track the way your customers use your solution. Common models include license-based billing (such as per user or a flat monthly rate) and consumption-based billing (for example, per transaction). You can use multiple meters together. For example, you can combine per-user and transaction charges.
-
-For more information, see [Pricing models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/pricing-models) and [Measure the consumption of each tenant](/azure/architecture/guide/multitenant/considerations/measure-consumption).
 
 ### Design considerations
 
@@ -53,19 +51,22 @@ In SaaS development, understanding how customers affect costs is crucial. A cost
 - Direct resource costs.
 - Usage metrics that indicate the cost proportion for specific customers, such as operations performed on behalf of a specific customer or data volume that you need to store for a customer.
 
-To learn more about the fundamentals of cost modeling, see [CO:02 Recommendations for creating a cost model](/azure/well-architected/cost-optimization/cost-model).
+> Refer to [CO:02 Recommendations for creating a cost model](/azure/well-architected/cost-optimization/cost-model). 
+  
 
 ### Design considerations
 
-- **Estimate your Azure costs and understand how Azure resources are billed.** Use tools like the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to forecast expenses before deployment. After your resources are deployed, [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) can help you analyze, manage, and optimize your cloud spending.
+- **Estimate your Azure costs and understand how Azure resources are billed.** Use tools like pricing calculators to forecast expenses before deployment. After your resources are deployed, analyze, manage, and optimize your cloud spending.
+
+    These Azure tools are essential for cost modeling: 
+    - [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) for estimating costs.
+    - [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) for analysis.
 
 - **Understand how your costs relate to your tenancy model.** Your cost model's granularity should reflect and depend on your tenancy model and resource deployment for each of your customers.
 
     - **Dedicated resources.** If you host resources for each customer, use tools like Microsoft Cost Management to track costs per customer and roll up costs based on customer-specific resource tags.
     - **Shared resources.** If the deployed resources are shared among multiple customers, approximate cost splits based on customer size or usage metrics. For example, you can allocate costs by estimating each customer's size by using selected criteria. Alternatively, measure transactions or other metrics per customer. However, the latter method can be complex and time-consuming.
     - **Customer-hosted resources.** If customers host their resources in their own Azure environments, you might not have direct resource costs, but you should still consider management expenses.
-
-    For more information, see [Measure the consumption of each tenant](/azure/architecture/guide/multitenant/considerations/measure-consumption).
 
 - **Start simple and build gradually.** Having a rough cost model is better than not having one. Although cost modeling can be time-consuming and complex, it's crucial for business planning and optimizing costs. Start with a high-level model that uses approximate values, such as:
 
@@ -74,8 +75,6 @@ To learn more about the fundamentals of cost modeling, see [CO:02 Recommendation
     - 10% of customers require a new load balancing system, which costs $100.
 
    Add more details as you need to, like if you need to directly charge customers for their consumption, and include other expenses like staff time and support costs.
-
-    For more information, see [Architectural approaches for cost management and allocation in a multitenant solution](/azure/architecture/guide/multitenant/approaches/cost-management-allocation).
 
 ### Design recommendations
 
@@ -105,11 +104,19 @@ You should optimize costs in conjunction with good governance practices. For mor
 
 - **Take advantage of Azure offers and discounts.** Azure provides a variety of different subscription types, such as the Microsoft Customer Agreement, Enterprise Agreements, and pay-as-you-go. Special subscriptions and credits are available through the Microsoft AI Cloud Partner Program.
 
-    [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs) offers reduced rates on certain Azure services for non-production use. Even after you're running your production workload, you can continue to take advantage of the rates through a separate dev/test subscription.
+    Azure offers reduced rates on certain Azure services for non-production use. Even after you're running your production workload, you can continue to take advantage of the rates through a separate dev/test subscription.
 
-    Discounted pricing is available for some services if you commit to a certain expenditure. [Azure Reservations and savings plans](/azure/architecture/guide/multitenant/approaches/cost-management-allocation#use-azure-reservations-and-azure-savings-plan-to-reduce-costs) are examples. If you know you need resources for a certain period of time, these discounts can be beneficial. Consolidating customer resources can help you qualify for these discounts.
+    For more information see, [Azure Dev/Test pricing](https://azure.microsoft.com/pricing/offers/dev-test/?msockid=1cab8246c181615e309496c8c0ee6050#faqs).
 
-- **Right-size your resources, and eliminate resources you no longer use.** Consider the options that Azure provides for resources. For example, Azure offers various options, such as different series of virtual machines, to help you optimize resource allocation. The [Virtual machine selector](https://azure.microsoft.com/pricing/vm-selector/) can help you choose the right compute for your solution.
+    Discounted pricing is available for some services if you commit to a certain expenditure. If you know you need resources for a certain period of time, Azure Reservations discount can be beneficial. Consolidating customer resources can help you qualify for these discounts.
+
+    For more information, see [What are Azure Reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations).
+
+    > Refer to [CO:05 Recommendations for getting the best rates from providers](/azure/well-architected/cost-optimization/get-best-rates). 
+
+- **Right-size your resources, and eliminate resources you no longer use.** Consider the options that Azure provides for resources. For example, Azure offers various options, such as different series of virtual machines, to help you optimize resource allocation. 
+
+    For information about choosing the right VM for your solution, see [Virtual machine selector](https://azure.microsoft.com/pricing/vm-selector/).
 
 ### Design recommendations
 
@@ -122,6 +129,15 @@ You should optimize costs in conjunction with good governance practices. For mor
 | Identify and remove unused resources. | This approach reduces waste.  |
 | Enable [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management). | You'll get access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
 | Monitor each resource's utilization to ensure optimal use. <br><br> Use [Azure Advisor](/azure/advisor/advisor-overview) and its library of cost optimization recommendations. | This approach ensures that you use deployed and paid resources more effectively. By optimizing resource use, you can achieve better efficiency and cost management. |
+
+
+## Additional resources
+
+Multitenancy is a core business methodology for designing SaaS workloads. These articles provide more information about billing considerations:
+- [Pricing models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/pricing-models)
+- [Measure the consumption of each tenant](/azure/architecture/guide/multitenant/considerations/measure-consumption)
+- [Architectural approaches for cost management and allocation in a multitenant solution](/azure/architecture/guide/multitenant/approaches/cost-management-allocation)
+- [Azure Reservations and savings plans examples](/azure/architecture/guide/multitenant/approaches/cost-management-allocation#use-azure-reservations-and-azure-savings-plan-to-reduce-costs)
 
 ## Next step
 

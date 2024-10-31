@@ -15,13 +15,13 @@ Governance is the set of controls, practices, and tools that you can use to orga
 
 ## Cost governance
 
-To help ensure the success of your business, it's critical to understand the costs to run your solution. You need to analyze, manage, and optimize these costs effectively while maintaining control over them. When you start building your solution on Azure, you can use tools like the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate your costs. After you deploy resources, you can use [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) to analyze, manage, and optimize your cloud spending.
+To help ensure the success of your business, it's critical to understand the costs to run your solution. You need to analyze, manage, and optimize these costs effectively while maintaining control over them. When you start building your solution on Azure, you can use tools like the pricing calculators and cost analyzers to estimate your costs. 
 
 For more information about how to track and control costs for SaaS and how to bill your customers, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 
-- **Develop a naming convention and tagging strategy.** Names and tags provide metadata that you can use to govern your resources and quickly determine ownership. A consistent [resource naming strategy](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming) can help you manage and govern your Azure resources. [Resource tags](/azure/azure-resource-manager/management/tag-resources) are metadata key-value pairs that you apply to your resources and use to identify them.
+- **Develop a naming convention and tagging strategy.** Names and tags provide metadata that you can use to govern your resources and quickly determine ownership. Consistent resource naming can help you manage and govern your Azure resources. Azure resource tags are metadata key-value pairs that you apply to your resources and use to identify them.
 
   Consider using metadata to help you track information such as:
 
@@ -33,15 +33,15 @@ For more information about how to track and control costs for SaaS and how to bi
   
   :::image type="content" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags that indicate which customer they're assigned to." border="false":::
 
-- **Implement automated governance through policies.** [Azure Policy](/azure/governance/policy/overview) helps you define organization standards and evaluate the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
+  For strategies on resource naming, see [Cloud Adoption Framework: Resource naming](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming).
+
+- **Implement automated governance through policies.** Policies are instrumental in defining organization standards and evaluate the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
 
   Use Azure Policy to create a service catalog of permitted services and service types that's customized for your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Enforce policies uniformly across all users and principals, regardless of their permission level.
 
-  :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** Implementing too many policies can reduce the productivity of your team. Strive to implement automated controls on the most essential elements.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** Implementing too many policies can reduce the productivity of your team. Strive to implement automated controls on the most essential elements.
 
-- **Use cost management tooling.** [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) is a suite of finance operations tools that organizations can use to analyze, monitor, and optimize their cloud spend. The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.
-
-  Cost Management provides several tools to support cost governance, such as:
+- **Use cost management tooling.** Azure Cost Management provides several tools to support cost governance, such as:
 
   - [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) is a tool that you can use to access analytics and insights into your cloud spend. You can review these costs through different smart and customizable views. These views detail insights such as costs by resource groups, services, and subscriptions. By using cost analysis, you can analyze accumulated and daily costs and review the details of your invoices.
   
@@ -59,14 +59,16 @@ For more information about how to track and control costs for SaaS and how to bi
 
 | Recommendation | Benefit |
 |---|---|
-| Enable [Cost Management](/azure/cost-management-billing/costs/overview-cost-management).| You gain access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
-| Create policies to help enforce cost controls, such as permitted resource types and locations. | This strategy helps you enforce consistent standards, control the resources that can be deployed, and track compliance of your resources and cloud spend. |
+| Enable [Cost Management](/azure/cost-management-billing/costs/overview-cost-management). <br><br> The tools are available within the Azure portal and to anyone who has access to a billing account, subscription, resource group, or management group.| You gain access to tools that analyze, monitor, and optimize your spend in the Microsoft Cloud. |
+| Create [Azure Policy](/azure/governance/policy/overview) to help enforce cost controls, such as permitted resource types and locations. | This strategy helps you enforce consistent standards, control the resources that can be deployed, and track compliance of your resources and cloud spend. |
 | Enable appropriate [cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending). | Cost alerts notify you about unexpected cloud spend or when you approach predefined limits. |
-| Use a consistent naming convention and resource tags. Apply tags to indicate which resources are dedicated to a specific customer. | Consistent metadata helps you track which resources belong to which customer. This practice is especially important when you deploy resources that are dedicated to customers. |
+| Use a consistent naming convention and resource tags. Apply [Azure resource tags](/azure/azure-resource-manager/management/tag-resources) to indicate which resources are dedicated to a specific customer. | Consistent metadata helps you track which resources belong to which customer. This practice is especially important when you deploy resources that are dedicated to customers. |
 
 ## Security and compliance
 
-Security and compliance are foundational design principles for a cloud workload and a key component of proper cloud governance. Security controls, such as [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview), help determine the actions that users can perform in your environment. Compliance controls, such as [Azure Policy](/azure/governance/policy/overview), help you achieve specific regulatory compliance standards for your deployed workloads.
+Security and compliance are foundational design principles for a cloud workload and a key component of proper cloud governance. Security controls, such  role-based access controls, help determine the actions that users can perform in your environment. Controls through policies can help you achieve specific regulatory compliance standards for your deployed workloads.
+
+For more information, see [Azure role-based access control (RBAC)](/azure/role-based-access-control/overview) and [Azure Policy](/azure/governance/policy/overview).
 
 When you develop a SaaS solution, your customers depend on you to safeguard their data and support their business operations. To operate a SaaS solution on behalf of customers, you must meet or exceed their security expectations. You might also need to meet specific compliance requirements imposed by your customers. This requirement is common with customers in regulated industries like healthcare and financial services and for many enterprise customers.
 
@@ -99,7 +101,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
   - [Azure locks](/azure/azure-resource-manager/management/lock-resources) can help prevent accidental deletions and modifications of your Azure resources. When you apply a lock to a resource, even users who have privileged administrator roles can't delete the resource unless they explicitly delete the lock first.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** RBAC and locks are important elements of a cloud security and governance strategy. However, consider operational complexities that might occur when you severely restrict who can perform common operations. Try to balance your security and functional needs. Have a clear plan to escalate responsibilities if there's an emergency or if key people are unavailable.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** RBAC and locks are important elements of a cloud security and governance strategy. However, consider operational complexities that might occur when you severely restrict who can perform common operations. Try to balance your security and functional needs. Have a clear plan to escalate responsibilities if there's an emergency or if key people are unavailable.
 
 - **Comply with regulatory standards.** Many customers need to place strict controls on their resources to meet specific compliance regulations. Azure provides multiple tools to help your organization build a solution on Azure that meets your compliance needs.
 
@@ -120,7 +122,6 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
   You can apply compliance standards to various scopes. For example, you might define a specific Azure subscription as in scope for a specific standard. You can also use Defender for Cloud to evaluate the configuration of resources that are hosted in other cloud providers.
 
-  For more information, see [Architectural approaches for governance and compliance in multitenant solutions](/azure/architecture/guide/multitenant/approaches/governance-compliance).
 
 ### Design recommendations
 
@@ -132,6 +133,13 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 | Adopt a security baseline early in the design process. Consider the MCSB as a starting point. The MCSB provides clear, actionable advice to improve the security of your applications on Azure and across environments in other clouds and on-premises. | By focusing on cloud-specific controls, the MCSB helps you strengthen your overall security posture. |
 | Use Azure locks to prevent accidental changes to your environment.| Locks can help prevent accidental modifications and deletions of resources, resource groups, and subscriptions. |
 | Use Azure Policy or Defender for Cloud to assess compliance.| Policies can help enforce organization standards and satisfy regulatory compliance. |
+
+
+## Additional resources
+
+Multitenancy is a core business methodology for designing SaaS workloads. These articles provide more information about governance considerations:
+
+- [Architectural approaches for governance and compliance in multitenant solutions](/azure/architecture/guide/multitenant/approaches/governance-compliance)
 
 ## Next step
 
