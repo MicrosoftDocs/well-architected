@@ -35,7 +35,7 @@ In a solution, you can use a combination of generative AI and discriminative AI 
 
 ## Types of data
 
-You can augment generative AI models by using context data during inference, or optimize them further through a fine-tuning process. Both approaches need supplementary data that provides the model with more context. The model uses that context to answer the user query and form the answer according to the expectations. Typically, you use the following data types:
+You can augment generative AI models by using context data during inference, or optimize them further through a fine-tuning process. Both approaches need supplementary data that provides the model with more context. The model uses that context to answer the user query and forms the answer according to the expectations. Typically, you use the following data types:
 
 - **Source data** is existing data in production. This data can be structured, such as data in databases, or semi-structured, like JSON files. It can also be unstructured, like documents, images, and audio files.
 
@@ -222,3 +222,8 @@ Measure the window of time between source data creation or modification and its 
 To maintain freshness, you can either rebuild the index entirely, or incrementally update it to stay synchronized with the original data sources. Both methods ensure that the index remains current and accurate.
 
 Upfront investment in fine tuning the model might be less expensive than implementing a RAG pattern, prompt engineering, and data augmentation methods.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Data platform](data-platform.md)

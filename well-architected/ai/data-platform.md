@@ -25,7 +25,7 @@ If you answer yes to these questions, then you can simplify your architecture by
 
 For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
 
-A data platform architecture for large-scale workloads is more complex. 
+A data platform architecture for large-scale workloads is more complex.
 
 Ingesting data from multiple data sources and orchestrating searches across various platforms can become complex and inefficient. Also, you still need some extract, transform, and load (ETL); extract, load, and transform (ELT); or extract and load (EL) processes to reshape the data within the data store. The scenario becomes more complex as the data requires more processing. You need to add many components to the architecture to handle the end-to-end pipeline from ingestion to serving queries. Many big data technologies are highly specialized and built to handle those processing tasks effectively.
 
@@ -40,7 +40,7 @@ In AI workloads, data moves through various stages of storage and processing wit
 > [!NOTE] 
 > An alternative approach is to directly access data sources. However, this approach can lead to performance problems because it might overload the source systems with AI features. There can also be data access problems. To avoid these problems, we recommend that you copy data to this store.
 
-The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you achieve just enough reliability and performance.
+The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you achieve enough reliability and performance.
 
 The following section provides guidance about the capabilities to consider when you select a data store technology. For more information, see [Data processing pipelines](#considerations-for-processing-data).
 
@@ -319,3 +319,8 @@ These articles provide more details about Azure products that we recommend as te
 - [AI Search](/azure/search/search-what-is-azure-search)
 - [Azure Cosmos DB](/azure/well-architected/service-guides/cosmos-db)
 - [Azure Cache for Redis](/azure/well-architected/service-guides/azure-cache-redis/reliability)
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Operations](operations.md)

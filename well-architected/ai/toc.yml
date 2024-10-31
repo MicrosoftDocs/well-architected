@@ -24,7 +24,7 @@
       - name: Test and evaluate
         href: testing.md
       - name: User input, ethics, security
-        href: userinput-ethics-security.md
+        href: user-input-ethics-security.md
     - name: Workload personas
       href: personas.md
     - name: Assessment

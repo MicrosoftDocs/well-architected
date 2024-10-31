@@ -1,5 +1,5 @@
 ---
-title: User input, ethics and security considerations for running AI workloads on Azure
+title: User input, ethics, and security considerations for running AI workloads on Azure
 description: AI workload operations on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,20 +9,18 @@ ms.service: waf
 ms.subservice: waf-workload-ai
 ---
 
-# User input, ethics and security considerations
-
+# User input, ethics, and security considerations
 
 - Recognizing that a bad user experience is taking place or about to take place
 - Avoiding or reducing bad user experiences
 - Avoiding scenarios where users can take control of a model
 - Ethical use of large language and other models
 
-
-## Minimize the risk of leaking PII information
+## Minimize the risk of leaking personal data
 
 Protect user privacy while using AI services. (General)
 Don't expose  raw user data. (General)
-If LLM is not secured properly with strong rules, then you can get into a situation where the LLM leaks information.
+If LLM isn't secured properly with strong rules, then you can get into a situation where the LLM leaks information.
 
 ## Jawad's (SME & area co-lead) seed material
 
@@ -30,14 +28,11 @@ TODO
 
 ## Anurag's (SME & area co-lead) seed material
 
-
-
-
 ### Intro
 
 Situation: A media entertainment company aims to enhance its content recommendation system by implementing responsible AI practices. The goal is to ensure that the AI algorithms used are fair, transparent, and inclusive, promoting diverse content while respecting user privacy and maintaining robust data security measures.
 
-Use Case: Implementing Responsible AI for Content Recommendation Systems in a Media Entertainment Company. This use case involves ensuring that the AI algorithms used for recommending content to users are fair, transparent, and do not reinforce harmful biases. The goal is to provide diverse and inclusive content recommendations while respecting user privacy and maintaining data security.
+Use Case: Implementing Responsible AI for Content Recommendation Systems in a Media Entertainment Company. This use case involves ensuring that the AI algorithms used for recommending content to users are fair, transparent, and don't reinforce harmful biases. The goal is to provide diverse and inclusive content recommendations while respecting user privacy and maintaining data security.
 
 ### Considerations
 
@@ -96,11 +91,14 @@ TODO
 
 TODO
 
-
 Leftovers:
 
 Data Governance
-Data lienage
+Data lineage
 
-Joakims comment on tools: 
-https://github.com/MicrosoftDocs/well-architected-pr/pull/1762/files#r1700633153
+Joakims comment on tools: https://github.com/MicrosoftDocs/well-architected-pr/pull/1762/files#r1700633153
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Workload personas](personas.md)
