@@ -3,7 +3,7 @@ title: Assessment Review Tool for SaaS Workloads on Azure
 description: Learn how to assess key technical design areas in your SaaS workload. Get specific recommendations for ISVs that build SaaS applications.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 10/26/2024
+ms.date: 10/31/2024
 ms.service: azure-waf
 ms.topic: conceptual
 ms.collection: learn-startups
@@ -26,9 +26,6 @@ These questions help you benchmark your workload's maturity and alignment compar
 > [!div class="nextstepaction"]
 > [Azure Well-Architected SaaS workload assessment](/assessments/2d85e883-bdc4-4854-aaf0-df72c4bcee15)
 
-## Next steps
+## Next step
 
-See the following reference architectures, which describe design choices for a SaaS workload:
-
-- [Baseline Azure VMware Solution reference architecture](/azure/cloud-adoption-framework/scenarios/azure-vmware/example-architectures)
-- [Azure VMware Solution landing zone accelerator](/azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone)
+[Azure Well-Architected SaaS workloads](get-started.md)
