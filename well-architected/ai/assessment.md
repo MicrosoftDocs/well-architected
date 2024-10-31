@@ -19,7 +19,7 @@ The assessment is a set of questions that are based on the [AI workload design p
 
 :::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the AI workload assessment. A few answers are selected. On the left side, an outline of the assessment is visible.":::
 
-These questions are designed to help you benchmark your workload's maturity and alignment with the recommended approach for operating an AI workload. The outcome of the assessment is a set of technical recommendations and documentation that provides guidance on how to implement a highly reliable solution on Azure.
+These questions are designed to help you benchmark your workload's maturity and alignment with the recommended approach for operating an AI workload. The outcome of the assessment is a set of technical recommendations and documentation that provides guidance about how to implement a highly reliable solution on Azure.
 
 :::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot of the guidance page of the AI assessment. Recommended actions are visible.":::
 
