@@ -17,11 +17,11 @@ For best results, the team that completes the assessment should be well versed i
 
 The assessment is a set of questions that are based on the [AI workload design principles](./design-principles.md). It's a method for checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
 
-:::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the AI workload assessment. A few answers are selected. On the left side, an outline of the assessment is visible.":::
+:::image type="content" source="./images/assessment-question.png" alt-text="Screenshot of a question in the AI workload assessment. A few answers are selected. On the left side, an outline of the assessment is visible." lightbox="./images/assessment-question.png":::
 
 These questions are designed to help you benchmark your workload's maturity and alignment with the recommended approach for operating an AI workload. The outcome of the assessment is a set of technical recommendations and documentation that provides guidance about how to implement a highly reliable solution on Azure.
 
-:::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot of the guidance page of the AI assessment. Recommended actions are visible.":::
+:::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot of the guidance page of the AI assessment. Recommended actions are visible." lightbox="./images/assessment-recommendations.png":::
 
 > [!div class="nextstepaction"]
 > [AI assessment tool](/assessments/1ef67c4e-b8d1-4193-b850-d192089ae33d)
