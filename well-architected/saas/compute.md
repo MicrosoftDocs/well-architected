@@ -1,7 +1,7 @@
 ---
-title: Compute considerations for SaaS workloads on Azure
-description: Learn about choosing your hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
-author: PageWriter-MSFT
+title: Compute for SaaS Workloads on Azure
+description: Learn about choosing your compute hosting model, the operational aspects, and how to optimize the technology options to help you meet your service level agreements and objectives.
+author: paolosalvatori
 ms.author: prwilk
 ms.date: 12/15/2023
 ms.topic: conceptual
@@ -71,6 +71,8 @@ Your SaaS business model will drive whether you host resources for customers or 
 
   When choosing a tenancy model, balance the cost savings of resource sharing with the need to guarantee customer performance. Over-sharing resources or allowing excessive consumption can degrade the customer experience. 
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Sharing resources among customers can be cost-efficient, but if some customers use more resources than expected, this approach can degrade performance for others. To prevent this, implement proper resource governance to ensure tenant usage stays within expected limits.
+
 ### Design recommendations
 
 | Recommendation | Benefit |
@@ -85,7 +87,7 @@ Your customers can use your application product with different performance profi
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Performance and cost.** Improving performance typically involves adding resources, which increases costs. Review workloads holistically to identify which resources offer the most benefit for the extra cost. For instance, isolating your most important customer on dedicated infrastructure might be worth the additional expense to avoid performance issues from other workloads.
 
-For more guidance about cost management, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md).
+For more guidance about cost management, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md).
 
 ### Design considerations
 
@@ -98,7 +100,9 @@ For more guidance about cost management, see [Usage monitoring and billing for S
     > Refer to [RE:06 Recommendations for reliable scaling](/azure/well-architected/reliability/scaling).
 
 - **Capacity planning and compute allocation**. Onboarding new customers to your SaaS workload consumes resource capacity. Even if you scale vertically or horizontally, you'll eventually hit limits in your solution's scalability, such as networking or storage constraints.
->    [!NOTE] The  [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution, providing an additional scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
+
+  > [!NOTE]
+  > The [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) allows you to deploy multiple independent instances of your solution, providing an additional scaling dimension. It's crucial to understand the capacity of each stamp to determine when to deploy more. This concept is also known as [*bin packing*](/azure/architecture/guide/multitenant/approaches/resource-organization#bin-packing).
 
 ### Design recommendations
 
@@ -111,7 +115,7 @@ For more guidance about cost management, see [Usage monitoring and billing for S
 | Monitor and evaluate customer usage patterns. | You'll know when to adjust your infrastructure to boost performance or optimize costs.|
 | Implement caching mechanisms, where possible.| You'll reduce the potential processing load on the compute layer.|
 | Use [cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending).| Warnings are useful in detecting high usage and control cost issues early.|
-| Use [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) for customers that have long-term commmitments and have guaranteed compute utilization for that entire period.| You'll maximize your cost efficiency on your reserved capacity.|
+| Use [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) for customers that have long-term commitments and have guaranteed compute utilization for that entire period.| You'll maximize your cost efficiency on your reserved capacity.|
 
 ## Design for resiliency
 
@@ -143,3 +147,10 @@ Resiliency of your compute layer  plays a large part in your overall resiliency 
 Multitenancy is a core business methodology for designing SaaS workloads. These articles provide more information about compute platform considerations:
 - [Architectural approaches for compute in multitenant solutions](/azure/architecture/guide/multitenant/approaches/compute)
 - [Tenancy models](/azure/architecture/guide/multitenant/considerations/tenancy-models)
+
+## Next step
+
+Learn about the networking considerations for SaaS workloads.
+
+> [!div class="nextstepaction"]
+> [Design area: Networking for SaaS workloads on Azure](./networking.md)

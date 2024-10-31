@@ -2,7 +2,7 @@
 title: Software as a service (SaaS) workload documentation
 summary: Delivering SaaS on Microsoft Azure differs from other software types. This set of articles offers key insights for independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. It provides actionable guidance based on Well-Architected best practices for building and operating SaaS on Azure at scale.
 metadata: 
-  title: SaaS workload for ISVs documentation
+  title: Software as a service (SaaS) workload documentation
   description: Actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a SaaS solution on Azure at-scale.
   author: PageWriter-MSFT
   ms.author: prwilk
@@ -25,6 +25,7 @@ landingContent:
             url: design-methodology.md                
           - text: Design principles
             url: design-principles.md 
+
    # Card
   - title: Technical design areas
     linkLists:
@@ -32,10 +33,10 @@ landingContent:
         links:
           - text: Resource organization
             url: resource-organization.md        
-          - text: Compute
-            url: compute.md
           - text: Identity and access management
             url: identity-access.md            
+          - text: Compute
+            url: compute.md
           - text: Networking
             url: networking.md
           - text: Data
@@ -46,8 +47,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Usage monitoring and billing
-            url: usage-monitoring-billing.md
+          - text: Billing and cost management
+            url: billing-cost-management.md
           - text: Governance
             url: governance.md            
           - text: DevOps practices

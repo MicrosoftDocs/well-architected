@@ -1,8 +1,8 @@
 ---
-title: Incident Management for SaaS workloads on Azure
+title: Incident management for SaaS workloads on Azure
 description: Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
-author: johndowns
-ms.author: jodowns
+author: arsenvlad
+ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ms.collection: learn-startups
@@ -22,13 +22,18 @@ Operating a SaaS solution means that you are your customers' 24x7 IT and operati
 
 - **Take responsibility for 24x7x365 support.**  Operating a SaaS solution requires your organization to always be prepared for incident response. This preparation includes always having team members available because incidents can occur outside of business hours.
 
-  *Live-site support* involves real-time monitoring and responding to incidents that affect system availability, security, performance, or deployment. You or your customers can detect those incidents. To handle such incidents, you need specific skills, including the ability to analyze and solve problems under pressure. Not all engineers are suited for this role.
+  *Live-site support* involves real-time monitoring and responding to incidents that affect system availability, security, performance, or deployment. You or your customers can detect those incidents. To handle such incidents, you need specific skills, including the ability to analyze and solve problems under pressure.
 
   Live-site support can be stressful, and it's important to support your team members. If the team is new to this responsibility, plan the transition carefully. Address concerns about on-call duties, compensation, and managing unavailability during incidents.
+
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk: Skilling and expectation management.** Not all engineers are suited for a 24x7x365 support role. When transitioning a pre-existing team to support a SaaS solution, ensure proper expectations are set and education opportunities are provided.
 
 - **Institute a live-site culture.** Consider how you manage support cases and incidents and how escalations occur. The goal is to ensure that team members understand their responsibilities and have the necessary skills and tools to handle incidents.
 
   Startups and smaller organizations might have a lightweight plan for live-site problems. Engineers might initially serve as frontline support by responding to customer support cases. Mature organizations, or SaaS providers with enterprise customers, need more structured support and dedicated teams.
+
+
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Operational excellence and cost.** Managing live-site events can detract from development time for new features or bug fixes. If development velocity is a concern, consider hiring dedicated live-site resources.
 
 ### Design recommendations
 
@@ -104,3 +109,11 @@ After you recover from an incident, review and analyze what happened to learn fr
 | Create a process to perform internal post-incident reviews.<br><br>Focus on identifying the reasons that contributed to the problem. Consider technical causes, how your processes might have contributed to the outage, and how you responded to the incident. | Internal post-incident reviews help you learn from production outages and minimize the risk of similar problems happening again. |
 | Make a structured plan to address any items that need remediation. Include clear accountability and timelines.|Clear accountability helps you ensure that each role meets its functional expectations, enhances clarity, and allows for transparent reporting at the desired levels.|
 | Publish customer-facing post-incident reviews.<br><br>Provide customers with enough detail to understand the problem and mitigation steps without revealing unnecessary internal details or system architecture. <br><br>Post-incident communications should always be written and published by humans. Technical and nontechnical stakeholders should review the communications for accuracy and clarity. | This approach helps maintain customers' confidence and assures them that you learned from the incident and are addressing the identified problems. |
+
+
+## Next step
+
+After reviewing the design areas, proceed to the assessment tool to evaluate your design.
+
+> [!div class="nextstepaction"]
+> [Assessment review tool for SaaS workloads on Azure](./assessment.md)

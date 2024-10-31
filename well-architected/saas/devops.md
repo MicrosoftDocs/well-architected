@@ -1,8 +1,8 @@
 ---
-title: DevOps for SaaS workloads on Azure
-description: Learn about efficient customer lifecycle management and safe deployment practices.
-author: landonpierce
-ms.author: landonpierce
+title: DevOps Practices for SaaS Workloads on Azure
+description: Learn about DevOps consideration for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
+author: brandonmartinez
+ms.author: prwilk
 ms.date: 10/15/2024
 ms.topic: conceptual
 ms.collection: learn-startups
@@ -33,6 +33,7 @@ Lifecycle management is a key responsibility of a SaaS solution's control plane.
 - **Consistency**. When planning your lifecycle management strategy, consider the complexity of actions required for each customer lifecycle event. This includes the size of your solution, customer base, and organizational overhead. Have a clear understanding of necessary steps for each event and invest in controls to maintain consistency. Regularly review and update your processes to ensure they remain valid as your solution evolves.
 
 - **Tenancy model**. Your approach to handling customer lifecycle events depends on your tenancy model.
+
     - **Fully multitenant solutions with infrastructure resources**. Onboarding or offboarding a customer typically involves updating a customer list and associated data in your application's data store.
     - **Dedicated resources per customer**. The tasks would typically involve initiating deployments to Azure, monitoring progress, and handling deployment failures, possibly with human intervention.
     - **Customer-deployed resources**. You might need to interface directly with the customer's engineering team for onboarding or offboarding. 
@@ -47,7 +48,7 @@ Lifecycle management is a key responsibility of a SaaS solution's control plane.
 |---|---|
 | Document each type of customer lifecycle event. <br><br> Make sure you capture step-by-step details of the process for each event. | By understanding the events, you can plan how you'll respond to each event in your solution design. <br> Clear instructions help human operators maintain consistency and serve as the foundation for future automation.|
 | Communicate the shared responsibility between you and your customer, for each lifecycle event.  Communicate clearly and early the actions you expect the customers to do in order to complete a lifecycle stage. | You'll reduce potential errors and customer frustration caused by miscommunication. |
-| Do capacity planning for each lifecycle event. <br><br> For example, when onboarding a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the additional load. <br><br> For more information, see [Usage monitoring and billing for SaaS workloads on Azure](./usage-monitoring-billing.md). | You'll support your ability to scale, and avoid deployment falures. |
+| Do capacity planning for each lifecycle event. <br><br> For example, when onboarding a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the additional load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | You'll support your ability to scale, and avoid deployment failures. |
 | Automate your lifecycle events, when practical. <br><br> For low-volume or early-stage solutions, manual deployment and configuration may be sufficient, but should still use scripts, even if an engineer runs them each time a lifecycle event occurs. <br><br> As your solution matures, integrate these responsibilities into a full control plane to reduce human error and support higher scale. | You'll reduce the significant risk of human error, and support much higher scale. |
 
 ## Plan your infrastructure management strategy
@@ -79,8 +80,10 @@ Regularly update application code and configuration to enhance functionality. Ho
 
 ### Design considerations
 
-- **Standardize tooling and processes.** Industry-proven DevOps tooling bring consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations.
+- **Standardize tooling and processes.** Industry-proven DevOps tooling brings consistency across functions and maturity in processes for managing your application deployments. Developing your own tools is considered an antipattern in most situations.
     > Refer to [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
+
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and cost.** Using familiar DevOps tools can be cost-efficient in terms of money and skills. However, it adds the operational burden of managing each tool separately. It's important to remain open to new technological innovations that could benefit your workload.
 
 - **Progressively deploy updates.** Roll out updates to a subset of customers at a time, dividing users into logical groupings. Apply the same rigor to configuration changes, because they can alter code behavior and cause outages. Follow a deployment process for these changes.
 
@@ -120,3 +123,10 @@ Multitenancy is a core business methodology for designing SaaS workloads. These 
 - [Considerations for updating a multitenant solution](/azure/architecture/guide/multitenant/considerations/updates)
 - [Considerations for multitenant control planes](/azure/architecture/guide/multitenant/considerations/control-planes)
 - [Architectural approaches for control planes in multitenant solutions](/azure/architecture/guide/multitenant/approaches/control-planes)
+
+## Next step
+
+Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
+
+> [!div class="nextstepaction"]
+> [Design area: Incident management for SaaS workloads on Azure](./incident-management.md)
