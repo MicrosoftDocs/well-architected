@@ -3,7 +3,7 @@ title: Solution architect's checklist
 description: Learn about the deliverables of a Well-Architected architect. See how to translate functional and nonfunctional requirements into cloud design patterns.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
@@ -22,7 +22,7 @@ Architecture frameworks, such as the Azure Well-Architected Framework, help to g
 |&#9744;|[**Develop an architecture design specification**](./architecture-design-specification.md) that's accompanied by diagrams as a structured packet. The specification must meet the workload's functional and nonfunctional requirements and include provisions for routine, ad hoc, and emergency operations.|
 |&#9744;|[**Create architecture design diagrams**](./design-diagrams.md) that illustrate all aspects of system design, from a broad overview to detailed dimensions such as network and identity.|
 |&#9744;|[**Maintain an architecture decision record (ADR)**](./architecture-decision-record.md) that contains justifications for architectural decisions that are made during the design process.|
-|&#9744;|[**Collaborate with the workload team during implementation**](./collaboration.md) to provide clarity and recommendations about the implementation sequence. This collaboration helps you maximize learning and make improvements from the outset. Also renegotiate requirements with stakeholders, if needed.|
+|&#9744;|[**Collaborate with the workload and platform team during implementation**](./collaboration.md) to provide clarity and recommendations about the implementation sequence. This collaboration helps you maximize learning and make improvements from the outset. Also renegotiate requirements with stakeholders, if needed.|
 |&#9744;|[**Support modeling exercises**](./ongoing-support.md#support-modeling-exercises) that provide contextualized information about workload concerns. The contextualized information can cover costs, application health, and other areas.|
 |&#9744;|[**Provide optimization recommendations**](./ongoing-support.md#share-potential-improvements) that are based on observations of usage patterns and changes in workload functionality or cloud provider changes.|
 |&#9744;|[**Participate in audit, compliance, and confidence reviews**](./ongoing-support.md#assist-in-reviews) to provide a valuable perspective to external parties who have the authority to conduct reviews.|
