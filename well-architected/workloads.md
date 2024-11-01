@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework workloads
 description: Learn about the Well-Architected Framework workloads, which are application resources, data, and infrastructure that achieve business outcomes.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
@@ -137,7 +137,7 @@ Platform teams often provide self-service options to workload teams for various 
 - Onboarding to cost management via specific resource tagging
 - Offering subscriptions via a formal subscription-vending process
 
-Explore self-service options that might be suitable for your workload.
+Explore self-service and platform engineering options that might be suitable for your workload.
 
 ## Share successes and challenges
 
