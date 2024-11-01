@@ -3,6 +3,8 @@
   items:
     - name: Get started
       href: get-started.md
+    - name: Design methodology
+      href: design-methodology.md      
     - name: Design principles
       href: design-principles.md
     - name: Design areas
