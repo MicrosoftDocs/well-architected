@@ -135,7 +135,7 @@ sections:
     blocks:
       - componentType: summary-card
         title: Software as a service (SaaS)
-        summary: Key insights for Starups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
+        summary: Key insights for Startups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
         url: ./saas/index.yml   
       - componentType: summary-card
         title: Oracle on IaaS
