@@ -223,8 +223,6 @@ Conduct end-to-end testing and incorporate that process as part of data design. 
 
 - You must test all security controls. For example, data might be partitioned into separate documents. Each partition has access controls. You must properly test those controls to protect confidentiality.
 
-Testing the correctness of index design and search queries is crucial and often done with prompt development. Key metrics are precision, or relevance of returned results, and recall, or completeness of relevant results. You can write unit tests for these metrics. Test failures might require changes to the index or search query. Those metrics are also necessary for assessing search performance and ensuring that the desired data is returned.
-
 ## Test the orchestrator
 
 A key component of a RAG application is the central orchestrator. This code coordinates various tasks that relate to the initial user question. Orchestrator tasks typically require an understanding of user intent, a connection to the index to look up grounding data, and calling the inference endpoint. If agents need to do tasks, such as calling REST APIs, this code handles those tasks within the context.
@@ -240,7 +238,9 @@ Also, conduct runtime tests, such as failure mode testing. For example, test pot
 Certain runtime tests can help you make a decision. Run load tests to understand how this code behaves under stress and use the results for capacity planning. Because this code is positioned at a crucial point in the architecture where it needs to reach other services, it can help collect telemetry from all those calls. This data can provide insights into how much time is spent on local processing versus network calls and determine the behavior of other components, such as potential latency. Technologies like prompt flow have built-in telemetry capabilities to facilitate this process. Otherwise, incorporate telemetry in your custom code.
 
 > [!NOTE]
+>
 > Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, you can simulate the inference endpoint.
+
 
 Security concerns apply to both the orchestration code and the model. Include testing for jailbreaking, where the goal is to break the model's security. Attackers don't interact with the model directly. They interact with the orchestration code first. The orchestration code receives user requests and parses them. If the orchestration code receives a malicious request, it can forward that request to the model and potentially compromise the model.
 

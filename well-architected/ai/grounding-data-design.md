@@ -211,7 +211,7 @@ Maintenance over time is a crucial aspect of index design. For static data, wher
 
 - **Scheduled updates**. Instead of maintaining continuous real-time communication with data sources, you can refresh grounding data periodically. This approach ensures that the data stays relevant through scheduled updates, which eliminates the need for constant interaction.
 
-- **Emergency updates**. Unexpected situations can occur, such as unwanted data inadvertently leaking into the search index. If this issue occurs, you might need to take immediate action, such as removing specific documents or adjusting data within the index. Regardless of the model that you choose, such as side-by-side updates or in-place updates, always plan for the possibility of emergency operations.
+- **Emergency updates**. Unexpected situations can occur, such as unwanted data inadvertently leaking into the search index. If this issue occurs, you might need to take immediate action, such as removing specific documents or adjusting data within the index. Regardless of the deployment strategy you choose, such as side-by-side updates or in-place updates, always plan for the possibility of emergency operations.
 
 - **Self-updating index**. If your indexing technology supports automatically updating the index to keep it synchronized with an external data source, it might be able to automatically process changes in the data. Data changes include additions or deletions, without manual intervention. Keep in mind that every change triggers an operation in the index, which consumes resources. The index might remain responsive to queries, but its capacity for handling them could be reduced during the update process.
 
