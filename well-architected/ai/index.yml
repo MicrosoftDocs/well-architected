@@ -58,8 +58,8 @@ landingContent:
             url: mlops-genaiops.md
           - text: Testing and validation
             url: testing.md
-          - text: User input, ethics, and security
-            url: userinput-ethics-security.md                            
+          - text: Responsible AI
+            url: responsible-ai.md                            
 
  # Card
   - title: Reference examples

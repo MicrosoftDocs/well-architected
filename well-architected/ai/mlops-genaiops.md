@@ -137,9 +137,10 @@ Monitoring is a key strategy and is applied at all stages. It's an ongoing proce
 
 We strongly recommend that you have a DataOps inner loop monitoring process that measures proximity to an acceptance quality bar and checks for anomalies. 
 
+For pretrained models, it also important to monitor data drift and performance, with a primary focus on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they are relevant and accurate. Additionally, be aware of security risks, such as attempts to manipulate the model's behavior through malicious prompts. Make sure there's thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in the [ResponsibleAI design area](./responsible-ai.md).
+
 After deployment, monitoring operations are necessary to address issues like model decay. Models can become stale because of changes in data or external changes that can cause the model to produce irrelevant results. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics, as you would with any other workload, to help ensure optimal performance and reliability. For more information, see [Testing for model decay](./testing.md#prevent-model-decay). 
 
-With pretrained models, you also need to monitor data drift and performance, focusing primarily on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they're relevant and accurate. Additionally, be aware of security risks, like attempts to manipulate the model's behavior by using malicious prompts. Be sure to implement thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in [User input, ethics, and security considerations](./userinput-ethics-security.md).
 
 ##### Tools
 
