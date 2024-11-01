@@ -274,4 +274,4 @@ Use **Machine Learning model monitoring** to implement monitoring. Machine Learn
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [User input, ethics, security](user-input-ethics-security.md)
+> [Responsible AI](responsible-ai.md)

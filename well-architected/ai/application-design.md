@@ -79,11 +79,10 @@ Topics:
 ## Leftover
 
  Data / LLM Education
-	
+
 Do user get an introduction on the the expected quality of the chat system, the likelyhood that AI creates wrong content, and limitation of what kind of questions can be answered?
-	
+
 Standart RAG architecture cannot answer questions like "how many documents have this feature?" Consider a GraphRAG architecture instead
-	
 
 ## Measurement
 
@@ -92,8 +91,6 @@ Relevancy: Indicates how pertinent the response is to the given question. A high
 Coherence: Evaluates whether the model’s speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
 Fluency: Relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
 Retrieval Score: Measures the effectiveness of the orchestrator’s retrieval process. It considers whether the query to the index retrieved the most relevant data.
-
-
 
 Data design and application design cannot be decoupled. Application design involves understanding use cases, query patterns, and freshness requirements. From a data design perspective, consider whether data needs constant refreshing or occasional updates. This choice impacts the ability to do online or offline inferencing.
 
@@ -170,7 +167,4 @@ A fundamental strategy of the Well-Architected Framework Security pillar is mini
 - **Design a constrained API at the cost of client-side flexibility**. If the SDK is client-side and calls your API, it offers flexibility but lacks control. Using a custom API with only necessary fields, where your API handles the SDK functions, increases security by limiting client-side flexibility. 
 
     In general, avoid giving clients more control than necessary. In most scenarios, clients don't need to adjust hyperparameters except in experimental environments. For typical use cases, such as interacting with a virtual agent, clients should only control essential aspects to ensure security by limiting unnecessary control.
-
-
-
 

@@ -108,11 +108,7 @@ The following table describes some key design areas for building and operating A
 |[Workload personas](./personas.md): Understand how personas are involved in the full lifecycle of your AI workload to help ensure that your team is fully capable of building and supporting it. |
 |[Responsible AI](./responsible-ai.md): AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. Pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
 
-
 ## Next step
 
-Learn about design principles for building and operating AI workloads on Azure.
-
 > [!div class="nextstepaction"]
-> [Design principles](./design-principles.md)
-
+> [Design methodology](./design-methodology.md)

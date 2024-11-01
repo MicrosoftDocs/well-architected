@@ -49,7 +49,6 @@ These design areas provide details on the preceding principles and consideration
 - [Operations](./operations.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
 
-
 ## Cost Optimization
 
 The Cost Optimization pillar aims to maximize investment, not necessarily reduce costs. Every architectural choice carries both direct and indirect financial impacts. Understand the costs tied to various options, including build versus buy decisions, technology selections, billing models, licensing, training, and operational expenses. It's important to maximize your investment in the selected tier and continuously reassess billing models. Continuous evaluate cost associated with changes in architecture, business needs, processes, and team structure. 
@@ -67,11 +66,9 @@ Review all the [Cost Optimization principles](../cost-optimization/principles.md
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Cost Optimization and Operational Excellence.**  There are tradeoffs in the two primary approaches for model training. Training in the development environment with full production data can lower computational costs by training the model once and promoting only the artifact, but it requires stringent security measures for handling production data in lower environments, which can be complex and resource-intensive. Conversely, training the model in each environment enhances stability and reliability through thorough code review and testing, but it increases computational costs due to multiple training runs.
 
-
 ## Operational Excellence
 
 The primary objective is to deliver capabilities efficiently throughout the development lifecycle. This involves establishing repeatable processes that support the design methodology of experimentation and yield results to improve model performance. Operational excellence is also about sustained accuracy of models over time, implementing effective monitoring practices and governance to minimize risks, and developing change management processes to adapt to model drifts.
-
 
 While all [Operational Excellence principles](../operational-excellence/principles.md) apply to AI workloads, prioritize automation and monitoring as your foundational operational strategies. 
 
