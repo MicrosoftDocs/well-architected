@@ -20,7 +20,7 @@ This set of articles provides actionable and authoritative guidance for building
 
 An AI workload is a workload that uses AI technology for predictive, discriminatory, or generative use cases. Sometimes, this functionality replaces a traditional code logic and data access solution that is otherwise deterministic. This design produces an experience that determinism and a classical code and data model can't accomplish. AI combines code logic and data into a single package.
 
-Generally, AI workloads break down into two categories: generative AI and traditional AI.
+Generally, AI workloads break down into two categories: generative AI and discriminative AI.
 
 **Generative AI** refers to workloads that are based on machine learning practices. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS), such as Azure OpenAI Service. 
 
@@ -33,12 +33,14 @@ You can use generative AI to:
   - Make chatbots and virtual assistants more human-like.
 
 **Traditional AI** relies on explicit programming to perform specific tasks. In this approach, developers create rules and algorithms that guide the AI system's behavior. These predefined rules determine how the AI responds to input data. You can categorize traditional AI by whether it's model based.
+    
+**Discriminative AI** relies on explicit programming to perform specific tasks. In this approach, developers create rules and algorithms that guide the AI system's behavior. These predefined rules determine how the AI responds to input data. You can categorize discriminative AI by whether it's model based.
 
 Model-based workloads are predictive machine learning systems that look for patterns in a model to return a specific type of prediction based on defined rules. These systems can't generate new content or adapt autonomously, but they're excellent at predicting outcomes.
 
-Traditional AI systems that aren't model based include autonomous agents that you use to interact with an application or system, collect data, and use that data to perform predefined tasks. For example, characters in video games are agents that can move around in the game environment and react to game changes based on predefined rules. Developers program agents by using *optimization algorithms*, which find the best solution to a specific problem, or *search algorithms*, which find a specific target or fulfill a specific condition by searching within a dataset.
+Discriminative AI systems that aren't model based include autonomous agents that you use to interact with an application or system, collect data, and use that data to perform predefined tasks. For example, characters in video games are agents that can move around in the game environment and react to game changes based on predefined rules. Developers program agents by using *optimization algorithms*, which find the best solution to a specific problem, or *search algorithms*, which find a specific target or fulfill a specific condition by searching within a dataset.
 
-You can use traditional AI to:
+You can use discriminative AI to:
 
   - Perform predictive analytics, which you can use in weather forecasting or stock market predictions.
   - Build recommendation systems, which e-commerce platforms use to recommend products to consumers based on their behavior and preferences.
@@ -51,7 +53,7 @@ Some examples of workloads that aren't included in the scope of this series of a
 - Workloads that use [Azure AI Studio](https://azure.microsoft.com/products/ai-studio/) for their AI components. Studio is a SaaS that doesn't require the type of guidance that these articles provide.
 - AI workloads that are realized through low-code and no-code offerings such as [Microsoft Copilot Studio](https://www.microsoft.com/microsoft-copilot/microsoft-copilot-studio).
 - Workloads that require a [high performance computing](https://azure.microsoft.com/solutions/high-performance-computing/) component.
-- Workloads that don't implement generative or traditional AI use cases.
+- Workloads that don't implement generative or discriminative AI use cases.
 
 ## What are the common challenges?
 
@@ -95,17 +97,19 @@ Microsoft Azure offers a broad range of AI services that you can build around yo
 
 The following table describes some key design areas for building and operating AI workloads on Azure.
 
-|Design area|Summary|
-|---|---|
-|[Application design](./application-design.md)| A discussion about application design choices based on how they pertain to AI workloads. Integration of AI workloads within traditional workloads requires unique design considerations that might have a significant effect on your existing application design standards. |
-|[Application platform ](./application-platform.md)| A discussion about application platform choices for AI workloads. AI workloads often have different platform requirements than traditional apps, and adopting those platforms for seamless integration into your environments requires careful planning. |
-|[Data design](./data-design.md)| A discussion about data design based on how it pertains to AI workloads. AI workloads use data in new ways. Handling the data that's involved in your AI workload might require a new perspective and consideration of new challenges and requirements. |
-|[Data platform ](./data-platform.md)| A discussion about data platform choices and considerations for AI workloads. The platform that you use to handle your AI workload might have unique requirements based on the functionality of your app. |
-|[Machine learning operations and Generative AI operations](./mlops-genaiops.md)| A discussion about machine learning operations and language model operations, which are DevOps practices specifically for AI workloads. AI workloads have unique properties that you need to understand to build new continuous integration and continuous delivery practices for your workload. Machine learning and language model deployments can be more complex than traditional application deployments, so you might need to adopt new DevOps practices or update them significantly. |
-|[Workload operations](./operations.md)| A discussion about operations considerations based on how they relate to AI workloads. Operational activities for AI workloads can be a significant change for organizations that are new to AI. Your organization might need to take new approaches and consider adding specialized roles and training. |
-|[Testing and validation](./testing.md)| A discussion about testing and validation considerations for AI workloads. Testing and validating your AI workload can be notably different than testing traditional apps. You might need to adopt new testing practices and consider new choices to meet your requirements. |
-|[Workload personas](./personas.md)| A discussion about personas that might interact with your AI workload. While you build an AI workload, you need to plan for personas and understand unique considerations that might change your design standards. |
-|[User input and ethics](./userinput-ethics-security.md)| A discussion about user input and ethics based on how they relate to AI workloads. AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. You must pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
+|Design areas|
+|---|
+|[Application design](./application-design.md): Learn about considerations unique to AI workloads that might have a significant effect on your existing application design standards. |
+|[Application platform ](./application-platform.md): Determine the best platforms to use to support AI workload functions, like model hosting, model training, and inferencing. |
+|[Training data design](./training-data-design.md): Design strategies for data ingestion, preprocessing, retention, and governance topics to handle your model training data. |
+|[Grounding data design](./grounding-data-design.md): Design strategies to optimize searchability and retrieval, while meeting security and compliance requirements for your grounding data. |
+|[Data platform ](./data-platform.md): Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
+|[Machine learning operations and Generative AI operations](./mlops-genaiops.md): Establish modern DevOps practices to support your machine learning or generative AI functions and systems. |
+|[Workload operations](./operations.md): Modernize your operational practices with new approaches and adding specialized roles and training. |
+|[Testing and evaluation](./testing.md): Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensistivity, and specificity through metrics that have been specifically targeted for AI workloads. |
+|[Workload personas](./personas.md): Understand how personas are involved in the full lifecycle of your AI workload to help ensure that your team is fully capable of building and supporting it. |
+|[Responsible AI](./responsible-ai.md): AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. Pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
+
 
 ## Next step
 
@@ -113,3 +117,4 @@ Learn about design principles for building and operating AI workloads on Azure.
 
 > [!div class="nextstepaction"]
 > [Design principles](./design-principles.md)
+

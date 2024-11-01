@@ -137,9 +137,10 @@ Monitoring is a key strategy and is applied at all stages. It's an ongoing proce
 
 We strongly recommend that you have a DataOps inner loop monitoring process that measures proximity to an acceptance quality bar and checks for anomalies. 
 
+For pretrained models, it also important to monitor data drift and performance, with a primary focus on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they are relevant and accurate. Additionally, be aware of security risks, such as attempts to manipulate the model's behavior through malicious prompts. Make sure there's thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in the [ResponsibleAI design area](./responsible-ai.md).
+
 After deployment, monitoring operations are necessary to address issues like model decay. Models can become stale because of changes in data or external changes that can cause the model to produce irrelevant results. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics, as you would with any other workload, to help ensure optimal performance and reliability. For more information, see [Testing for model decay](./testing.md#prevent-model-decay). 
 
-With pretrained models, you also need to monitor data drift and performance, focusing primarily on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they're relevant and accurate. Additionally, be aware of security risks, like attempts to manipulate the model's behavior by using malicious prompts. Be sure to implement thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in [User input, ethics, and security considerations](./userinput-ethics-security.md).
 
 ##### Tools
 
@@ -171,7 +172,12 @@ AI workloads are complex because the overall lifecycle involves many roles, freq
 
 - Traditional DevOps processes are typically affected by structural changes. However, in AI and machine learning, models are trained on production data. Model decay poses a significant risk and can lead to decreased performance over time if it's not monitored. Automated collection and analysis of performance metrics, alerts, and model retraining are required to maintain model efficacy. Use automation in a way that can help you **detect changes in data and model dependencies** to get a clear understanding of the current state at any given time.
 
-- There are two approaches to model training. With the first approach, **models are trained in the development environment with full production data**, and only the artifact is promoted through environments. This approach can reduce computational costs but requires tighter security to handle production data in the lower environments. It might not be possible for some organizations. With the other approach, **the model is trained in each environment**. Code promotion can help with stability because training code is reviewed and tested in the lower environments, but it increases the cost of compute. There are pros and cons to both approaches. The approach you choose must be factored in to your workload's software development lifecycle (SDLC) practices. Regardless of the deployment approach, you need to thoroughly test and evaluate the model you use for inference in production.
+- Models can be trained with two distinct approaches. 
+
+  - **The models is trained in the development environment with full production data** and only the artifact is promoted through environments. This approach can lower computational costs but requires tighter security to handle production data in the lower environments and may not be possible in all organizations. 
+  - **The model is trained in each environment**. Code promotion may help with stability because training code is reviewed and tested in the lower environments, but increases the cost of compute. 
+  
+  There are pros and cons to both approaches. Choosing the right approach depends on your organization's priorities and workload's Software Development Life Cycle (SDLC) practices. Regardless of the method, thorough testing and evaluation of the model before production deployment are essential
 
 - Your automation code should **incorporate data lineage to support auditability** by providing a clear record of data processing stages. This record helps you manage expectations and enables you to demonstrate how decisions were made so you can address any concerns about outcomes.
 
@@ -197,7 +203,7 @@ Two main factors influence your choice of the right combination of tools: use ca
 
 ## Model maintenance
 
-The AI / machine learning landscape is competitive, and innovation is ongoing. New models emerge frequently, new use cases are discovered, and new data sources become available. As a result, data drift and model decay are common challenges. 
+The AI/ML landscape is competitive with ongoing innovation. New models emerge frequently, new use cases are discovered, and new data sources become available. As a result, model decay is a common challenge. 
 
 To prevent model performance degradation or drift over time, you need to implement automated processes for continuous monitoring, evaluation, and retraining. For example:
 
