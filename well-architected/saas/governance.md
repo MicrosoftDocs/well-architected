@@ -30,7 +30,7 @@ For more information about how to track and control costs for SaaS and how to bi
   - The location of the resource.
   - The customer or group of customers that uses the resource, for customer-specific deployments.
   
-  :::image type="content" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags that indicate which customer they're assigned to." border="false":::
+  :::image type="content" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags that indicate which customer they're assigned to." lightbox="./images/tags.png" border="false":::
 
   For strategies on resource naming, see [Cloud Adoption Framework: Resource naming](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming).
 

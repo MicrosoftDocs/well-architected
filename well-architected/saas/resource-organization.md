@@ -74,7 +74,6 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
 
     Azure Marketplace provides support for billing, onboarding, and offboarding and simplifies management and customer access to your application. If you use Azure Marketplace, you don't need to manage sensitive billing information or payment providers. 
 
-
 ### Design recommendations
 
 | Recommendation | Benefit |
