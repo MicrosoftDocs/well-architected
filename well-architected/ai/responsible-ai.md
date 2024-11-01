@@ -31,9 +31,9 @@ Here's the summary of recommendations provided in this article.
 
 |Recommendation|Description|
 |---|---|
-|**Develop policies that enforce ethical practices at each stage of the life cycle**. |Include checklist items that explicitly state ethical requirements, tailored to the workload context. Examples include, user data transparency, consent configuration, and procedures for handling the "Right to be Forgotten."<br><br>&#9642; [Develop your Responsible AI policies](#develop-your-responsible-ai-policies)<br>&#9642; [Enforce governance on Responsible AI policies](#enforce-governance-on-responsible-ai-policies)|
+|**Develop policies that enforce ethical practices at each stage of the life cycle**. |Include checklist items that explicitly state ethical requirements, tailored to the workload context. Examples include, user data transparency, consent configuration, and procedures for handling the "Right to be Forgotten."<br><br>&#9642; [Develop your Responsible AI policies](#develop-responsible-ai-policies)<br>&#9642; [Enforce governance on Responsible AI policies](#enforce-governance-on-responsible-ai-policies)|
 |**Protect user data with the goal to maximize privacy**. |Collect only what's necessary and with proper user consent. Apply technical controls to protect user profiles, their data, and access to that data. <br><br>&#9642; [Handle user data ethically](#handle-user-data-ethically)<br>&#9642; [Inspect incoming and outgoing data](#inspect-incoming-and-outgoing-data)|
-|**Keep AI decisions clear and understandable**. |Maintain clear explanations of how recommendation algorithms work and offer users insights into data usage and algorithmic decision-making to ensure they understand and trust the process. <br><br>&#9642; [Make the user experience safe](#make--the-user-experience-safe)|
+|**Keep AI decisions clear and understandable**. |Maintain clear explanations of how recommendation algorithms work and offer users insights into data usage and algorithmic decision-making to ensure they understand and trust the process. <br><br>&#9642; [Make the user experience safe](#make-the-user-experience-safe)|
 
 ## Develop Responsible AI policies
 
@@ -67,7 +67,7 @@ For information about organizational policies and approvers, see [Cloud Adoption
 
 ## Make the user experience safe
 
-User experiences should be based on industry guidelines. Take advantage of the [Microsoft Human-AI experiences Design Library](https://www.microsoft.com/haxtoolkit) that includes principles and provides implementation do's and don'ts, with examples from Microsoft products and other industry sources.
+User experiences should be based on industry guidelines. Take advantage of the [Microsoft Human-AI experiences Design Library](https://www.microsoft.com/haxtoolkit/library/) that includes principles and provides implementation do's and don'ts, with examples from Microsoft products and other industry sources.
 
 There are workload responsibilities throughout the lifecycle of user interaction starting from user's intent to use the system, during a session, and disruptions due to system errors. Here are some practices to consider:
 

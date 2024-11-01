@@ -177,9 +177,9 @@ Consider these questions as well:
 
    Inference latency is a common concern, and different platforms have different performance profiles. Serverless and PaaS services that use a utility model can be affected by the noisy neighbor problem and often have no throughput guarantees. On the other hand, the same platforms might offer a self-hosted option that provides guaranteed throughput with a pre-purchasing model. You can also consider self-hosting on Kubernetes to get predictable latency behavior.
 
-   Be aware of service limits and quotas that might affect your performance, like those for [Azure OpenAI](/azure/ai-services/openai/quotas-limits). Often these quotas and limits are aggressively set to meet capacity demands, so if your choice of platform doesn't provide the performance that you require, you might need to adopt strategies to spread the compute demand across instances. 
+   Be aware of service limits and quotas that might affect your performance, like those for [Azure OpenAI](/azure/ai-services/openai/quotas-limits). Often these quotas and limits are aggressively set to meet capacity demands, so if your choice of platform doesn't provide the performance that you require, you might need to adopt strategies to spread the compute demand across instances.
 
-   Advanced architectures can combine multiple deployments to achieve both fixed throughput for a bulk of the workload and bursting capabilities into more flexible compute. 
+   Advanced architectures can combine multiple deployments to achieve fixed throughput for the bulk of the workload and bursting capabilities for a more flexible compute.
 
 ### Tools 
 
@@ -209,7 +209,7 @@ Consider these questions as well:
 
    - Consider using the Azure Machine Learning Serverless API to aggregate endpoint access even if you use Azure OpenAI or another foundation model hosting solution. 
 
-- Prefer Azure Machine Learning with managed compute clusters when PaaS or serverless solutions aren't the best fit. Compute that's managed by Machine Learning supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. Because the compute is managed by the service, Day-2 operations are easier than they're when you self-host your model. Managed compute also offers a wide selection of compute configurations and scaling capabilities.
+- Prefer Azure Machine Learning with managed compute clusters when PaaS or serverless solutions aren't the best fit. Compute that's managed by Machine Learning supports traffic splitting and mirroring for A/B testing, debugging, and robust auditing. Because the compute is managed by the service, Day-2 operations are easier when you self-host your model. Managed compute also offers a wide selection of compute configurations and scaling capabilities.
 
 - If you choose to self-host your model on an Azure Kubernetes Service (AKS) cluster that's [attached to Azure Machine Learning](/azure/machine-learning/how-to-attach-kubernetes-anywhere) or another container-based platform, be sure that the node pool is isolated from other APIs or any other workloads on the cluster to achieve predictable performance and to optimize security. Avoid using GPU-based or GPU-optimized compute for anything other than your AI workload functions to reduce costs. Instead, establish your performance baseline through testing and right-size your compute to meet your performance requirements without over-provisioning.
 

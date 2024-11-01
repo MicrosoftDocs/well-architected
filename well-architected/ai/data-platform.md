@@ -188,7 +188,7 @@ When you choose a processing pipeline, it's crucial to balance throughput and ob
 
 - **How much data do you expect to ingest?**
 
-  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you expect to load 10 terabytes of data daily into an index or for training a model. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps might not be feasible because it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
+  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you expect to load 10 terabytes of data daily into an index or for model training. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps might not be feasible because it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
 
   One way to handle high volume is through parallelism because it allows for more efficient data handling and processing. Platforms such as Azure Databricks can orchestrate tasks by creating multiple instances for the same job and distributing the load efficiently.
 
