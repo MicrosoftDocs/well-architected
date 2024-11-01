@@ -18,9 +18,9 @@ This article describes design considerations for efficient customer lifecycle ma
 
 Managing *customer lifecycle events* is crucial for any SaaS application. Typically, these events include:
 
-1. **Onboarding**: When a customer signs up.
-2. **Altering**: Modifying a customer's instance, such as changing their pricing tier.
-3. **Offboarding**: When a customer cancels their account.
+- **Onboarding**: When a customer signs up.
+- **Altering**: Modifying a customer's instance, such as changing their pricing tier.
+- **Offboarding**: When a customer cancels their account.
 
 You might encounter additional lifecycle events. For example, you might allow your customers to pause their subscription while retaining their data for a set period, and resume their subscription later. Each event can have unique implications for your application.
 

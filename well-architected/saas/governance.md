@@ -30,7 +30,7 @@ For more information about how to track and control costs for SaaS and how to bi
   - The location of the resource.
   - The customer or group of customers that uses the resource, for customer-specific deployments.
   
-  :::image type="content" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags that indicate which customer they're assigned to." border="false":::
+  :::image type="content" source="./images/tags.png" alt-text="Diagram that shows Azure resources with tags that indicate which customer they're assigned to." lightbox="./images/tags.png" border="false":::
 
   For strategies on resource naming, see [Cloud Adoption Framework: Resource naming](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming).
 
@@ -40,7 +40,7 @@ For more information about how to track and control costs for SaaS and how to bi
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** Implementing too many policies can reduce the productivity of your team. Strive to implement automated controls on the most essential elements.
 
-- **Use cost management tooling.** Azure Cost Management provides several tools to support cost governance, such as:
+- **Use cost management tooling.** Microsoft Cost Management provides several tools to support cost governance, such as:
 
   - [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) is a tool that you can use to access analytics and insights into your cloud spend. You can review these costs through different smart and customizable views. These views detail insights such as costs by resource groups, services, and subscriptions. By using cost analysis, you can analyze accumulated and daily costs and review the details of your invoices.
   
