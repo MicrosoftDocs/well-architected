@@ -3,7 +3,7 @@ title: Solution architect's fundamentals
 description: Learn guiding principles that Well-Architected architects should follow to be effective in their function.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
