@@ -104,7 +104,7 @@ The following section provides guidance about the capabilities to consider when 
 
   Keep in mind that data doesn't serve its purpose if it isn't correct or accessible. The data platform should guarantee durability and make sure that the data remains intact. Make sure that the APIs that query the data are accessible. Additionally, consider data stores that have backup features.
 
-  In general, you don't need to back up this data. However, if the cost of aggregating data from scratch each time is high, you can consider rehydrating the data from a backup.
+  In general, you don't need to back up this data. However, if the cost of aggregating data each time from scratch is significantly high, you can consider rehydrating the data from a backup.
 
 - **Do you have any cost constraints?**
 
