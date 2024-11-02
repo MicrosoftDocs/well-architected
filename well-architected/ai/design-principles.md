@@ -1,5 +1,5 @@
 ---
-title: Design principles for AI workloads on Azure
+title: Design Principles for AI Workloads on Azure
 description: Review the design principles of the Azure Well-Architected Framework. See how to apply these principles to an AI workload.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design principles for AI workloads on Azure
 
-This article outlines the core principles with an focus on the AI aspects of an architecture. It's essential to consider all Well-Architected Framework pillars collectively, including their tradeoffs. Apply each pillar to the functional and nonfunctional requirements of the workload. 
+This article outlines the core principles for AI workloads on Azure with a focus on the AI aspects of an architecture. It's essential to consider all Well-Architected Framework pillars collectively, including their tradeoffs. Apply each pillar to the functional and nonfunctional requirements of the workload.
 
 ## Reliability
 
@@ -29,13 +29,13 @@ Review the [Reliability design principles](../reliability/principles.md) to get 
 
 Models often use sensitive production data to produce relevant results. So, robust security measures must be used at all layers of the architecture. This includes implementing secure application design early in the lifecycle, encrypting data both at rest and in transit, and adhering to industry compliance standards. Regular security assessments are crucial for identifying and mitigating vulnerabilities, while advanced threat detection mechanisms ensure prompt responses to potential threats. 
 
-[Security principles](../security/principles.md) are fundamental for AI solutions, safeguarding data integrity, design integrity, and user privacy. As a workload owner, you are responsible for building trust and protecting sensitive information, ensuring a safe user experience.
+[Security principles](../security/principles.md) are fundamental for AI solutions, safeguarding data integrity, design integrity, and user privacy. As a workload owner, you're responsible for building trust and protecting sensitive information, ensuring a safe user experience.
 
 |Design principle|Considerations|
 |---|---|
 |Earn user trust. |Integrate content safety at every stage of the lifecycle using custom code, appropriate tools, and effective security controls. <br><br> Remove unneeded personal and confidential information across all data storage points, including aggregated data stores, search indexes, caches, and applications. Maintain this level of security consistently throughout the architecture. <br><br> Make sure there's thorough content moderation that inspects data in both directions and filters out inappropriate and offensive content.|
 |Protect data at rest, in transit, and in use according to the sensitivity requirements of the workload. |At minimum use platform-level encryption with Microsoft-managed or customer-managed keys on all data stores used in the architecture. Evaluate where you need higher levels of encryption and use double encryption, if needed. <br><br> Ensure all traffic uses HTTPS for encryption. Decide on the TLS termination points at each hop. <br><br> The model itself needs to be protected to prevent attackers from extracting sensitive information used during training. This requires the highest level of security measures. Consider using homomorphic encryption that allows inferencing on encrypted data.|
-|Invest in robust access management in preserving identities (user and system) that access the system.|Implement Role-Based Access Control (RBAC) and, or Attribute-Based Access Control (ABAC), for both control and data planes. <br><br> Maintain proper identity segmentation to protect privacy, only allowing access to content they are authorized to view.|
+|Invest in robust access management in preserving identities (user and system) that access the system.|Implement Role-Based Access Control (RBAC) and, or Attribute-Based Access Control (ABAC), for both control and data planes. <br><br> Maintain proper identity segmentation to protect privacy, only allowing access to content they're authorized to view.|
 |Protect the integrity of the design through segmentation.|Provide private networking for access to centralized repositories for container images, data, and code assets. <br><br> When sharing infrastructure with other workloads create segmentation. For example, when hosting your inference server in AKS, node pool should be isolated from other APIs or any other workloads. |
 |Conduct security testing.|Develop a detailed test plan that includes tests to detect unethical behaviors whenever changes are introduced to the system. <br><br> Integrate AI components into your existing security testing. For instance, incorporate the inferencing endpoint into your routine tests alongside other public endpoints. <br><br>  Consider conducting tests on the live system, such as penetration testing or red team exercises, to identify and address potential vulnerabilities effectively.|
 |Reduce the attack surface by enforcing strict user access and API design. |Require authentication for all inferencing endpoints, including system-to-system calls. Avoid anonymous endpoints. <br><br>Prefer constrained API design at the cost of client-side flexibility.|
@@ -44,11 +44,10 @@ Models often use sensitive production data to produce relevant results. So, robu
 
 These design areas provide details on the preceding principles and considerations:
 
-- [Responsible AI](./userinput-ethics-security.md)
+- [Responsible AI](./responsible-ai.md)
 - [Testing](./testing.md)
 - [Operations](./operations.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
-
 
 ## Cost Optimization
 
@@ -67,11 +66,9 @@ Review all the [Cost Optimization principles](../cost-optimization/principles.md
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Cost Optimization and Operational Excellence.**  There are tradeoffs in the two primary approaches for model training. Training in the development environment with full production data can lower computational costs by training the model once and promoting only the artifact, but it requires stringent security measures for handling production data in lower environments, which can be complex and resource-intensive. Conversely, training the model in each environment enhances stability and reliability through thorough code review and testing, but it increases computational costs due to multiple training runs.
 
-
 ## Operational Excellence
 
 The primary objective is to deliver capabilities efficiently throughout the development lifecycle. This involves establishing repeatable processes that support the design methodology of experimentation and yield results to improve model performance. Operational excellence is also about sustained accuracy of models over time, implementing effective monitoring practices and governance to minimize risks, and developing change management processes to adapt to model drifts.
-
 
 While all [Operational Excellence principles](../operational-excellence/principles.md) apply to AI workloads, prioritize automation and monitoring as your foundational operational strategies. 
 
@@ -103,7 +100,7 @@ Model performance also influenced by the efficiency of operations like experimen
 |---|---|
 | Establish performance benchmarks. | Conduct rigorous performance testing across different architectural areas and set acceptable targets. This ongoing assessment should be part of your operational processes, not just a one-time test. <br><br> Benchmarking applies to prediction performance. Start with a baseline to understand initial model performance and continuously re-evaluate to ensure it meets expectations.  |
 | Evaluate the resource needs to meet performance targets.|Understand the load characteristics to choose the right platform and right-size resources. Factor in this data for capacity planning to operate at-scale. <br><br>For example, use load testing to determine the optimal compute platform and SKU. High-performance GPU-optimized compute is often needed for model training and fine-tuning, while general-purpose SKUs are suitable for orchestration tools. <br><br> Similarly, choose a data platform that efficiently handles data ingestion, manages concurrent writes, and maintains individual write performance without degradation. <br><br> Different inferencing servers have varying performance characteristics, impacting model performance at run-time. Select a server that meets baseline expectations.|
-| Collect and analyze performance metrics and identify bottlenecks. <br><br> |Evaluate telemetry from the data pipeline to ensure performance targets for throughput and read/write operations are met.  <br> For the search index, consider metrics such as the query latency, throughput, the accuracy of the results. As data volume increases, error rates should not rise.  <br><br> Analyze telemetry from the code components, such as the orchestrator, which collects data from service calls. Analyzing that data can help you understand time spent on local processing versus network calls and identify potential latency in other components. <br><br>Assess UI experience using engagement metrics to determine if users are positively engaged or frustrated. Increased time on a page can indicate either. Multimodal capabilities, like voice or video responses, can experience significant latency, leading to longer response times.|
+| Collect and analyze performance metrics and identify bottlenecks. <br><br> |Evaluate telemetry from the data pipeline to ensure performance targets for throughput and read/write operations are met.  <br> For the search index, consider metrics such as the query latency, throughput, the accuracy of the results. As data volume increases, error rates shouldn't rise.  <br><br> Analyze telemetry from the code components, such as the orchestrator, which collects data from service calls. Analyzing that data can help you understand time spent on local processing versus network calls and identify potential latency in other components. <br><br>Assess UI experience using engagement metrics to determine if users are positively engaged or frustrated. Increased time on a page can indicate either. Multimodal capabilities, like voice or video responses, can experience significant latency, leading to longer response times.|
 | Continuously improve benchmark performance using quality measurements from production.|Automated collection and analysis of performance metrics, alerts, and model retraining are needed to maintain model efficacy. |
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. When considering platform capabilities, it's important to balance cost and performance. For example, GPU SKUs are expensive, so continuously monitor for underutilization and right-size resources as needed. After adjustments, test resource utilization to ensure a balance between cost of platform resources and their operations and the expected performance as per the baseline. For Cost Optimization strategies, see [Recommendations for optimizing component costs](../cost-optimization/optimize-component-costs.md).

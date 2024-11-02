@@ -19,7 +19,7 @@ You must design and develop workload assets with testing in mind. For instance, 
 
 You must deploy workload components to production safely. Part of any workload's safe deployment practices is strategic testing to help ensure correct behavior before users or data consume the system. Strategic testing is essential during the initial deployment and as the system evolves and undergoes code or infrastructure changes. Test all proposed changes to AI-related code and infrastructure before you deploy the changes to production.
 
-This article focuses on applying that methodology to the AI aspects of the architecture. How to conduct those tests isn't in scope. 
+This article focuses on applying that methodology to the AI aspects of the architecture. How to conduct those tests isn't in scope.
 
 |Recommendation|Description|
 |---|---|
@@ -55,7 +55,7 @@ We recommend that you have a baseline and measure the predictive power of the mo
 
 ## Test data ingestion
 
-Data pipelines, like extract, transform, and load (ETL) processes, move and manipulate data. Test the ETL portion of the workload to make sure that it ingests data reliably and that the data is high quality and acceptable for analysis and feature engineering. Make sure that data cleansing and processing include tests to confirm that data manipulation functions as intended.
+Data pipelines, like extract, transform, and load (ETL) processes, move, and manipulate data. Test the ETL portion of the workload to make sure that it ingests data reliably and that the data is high quality and acceptable for analysis and feature engineering. Make sure that data cleansing and processing include tests to confirm that data manipulation functions as intended.
 
 Testing should be integrated throughout the life cycle, including the design, development, and production stages.
 
@@ -153,7 +153,7 @@ Generative AI integrates with orchestration code, routing logic, and an index fo
 
 ### Test the model
 
-Fine-tuning is essentially testing because it modifies a pretrained model to change its behavior. It requires starting with a baseline to understand the model's initial performance. After fine-tuning, re-evaluate the model's performance to ensure that it meets quality standards. Consider the following common evaluation metrics:
+Fine-tuning is essentially testing because it modifies a pretrained model to change its behavior. It requires starting with a baseline to understand the model's initial performance. After fine-tuning, reevaluate the model's performance to ensure that it meets quality standards. Consider the following common evaluation metrics:
 
 - **Groundedness** refers to the model's alignment with the source data. A grounded model generates answers that are consistent with reality.
 
@@ -270,3 +270,8 @@ Use **Machine Learning model monitoring** to implement monitoring. Machine Learn
 
 - See [Machine Learning model monitoring](/azure/machine-learning/concept-model-monitoring) to learn about the monitoring capabilities of Machine Learning and the [metrics](/azure/machine-learning/concept-model-monitoring#monitoring-signals-and-metrics) that it captures and analyzes.
 - See the [best practices](/azure/machine-learning/concept-model-monitoring#best-practices-for-model-monitoring) for more recommendations for monitoring.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Responsible AI](responsible-ai.md)

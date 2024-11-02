@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # MLOps and GenAIOps for AI workloads on Azure
 
-AI workload operations are mainly centered on curation of data and consumption of that data. Operations ensure efficiency in achieving and maintaining the quality, reliability, security, ethical, and other standards that you prioritize for the workload. 
+AI workload operations are centered on curation of data and consumption of that data. Operations ensure efficiency in achieving and maintaining the quality, reliability, security, ethical, and other standards that you prioritize for the workload.
 
 The workload tasks can be categorized into three main areas: application development, data handling, and AI model management. Each category should adopt industry-proven operational methodologies, like **DevOps, DataOps, MLOps, and GenAIOps**.
 
@@ -30,9 +30,9 @@ Regardless, the overall goal is capability delivery with efficient operations th
 
 You also need to **establish standardized processes for AI components**, for routine, unplanned, and emergency operations, and have proper tracking mechanisms in place. Without those processes, you run the risk of:
 
-- Repeated errors and nonreproducibility in data processing, model hosting, grounding data management, and other tasks. 
+- Repeated errors and nonreproducibility in data processing, model hosting, grounding data management, and other tasks.
 - Low quality or stale data used for model training and refinement.
-- Affecting end user confidence in the system, in the worst case leading to legal, compliance, or security issues. 
+- Affecting end user confidence in the system, in the worst case leading to legal, compliance, or security issues.
 
 You must implement established processes with the **right set of tools**. Specialized tools are available for managing AI / machine learning workflows across environments. 
 
@@ -73,8 +73,8 @@ You also need to ensure that data is secure, given that the data is from product
 > Address poor quality data by investing in extensive data cleaning during the initial phases. Take advantage of the well-known analytics patterns, like medallion, data mesh, and feature stores, to do upstream processing tasks. If the upstream phases are ineffective, you need to improve quality during the downstream phases, which leads to increased workload costs because data preparation occurs during each stage.
 >
 > For information about data processing tasks, see these articles:
->   - [Data preprocessing for training data](./training-data-design.md#data-preprocessing)
->   - [Data preparation for grounding data](./grounding-data-design.md#data-preparation)
+>  - [Data preprocessing for training data](./training-data-design.md#data-preprocessing)
+>  - [Data preparation for grounding data](./grounding-data-design.md#data-preparation)
 
 ##### Tools
 
@@ -106,7 +106,7 @@ If you're considering Azure Machine Learning, we recommend that you start with t
 
 Part of the benefit of the process is to optimize personal time. Data scientists typically need specific tools and SDKs to effectively conduct exploratory data analysis (EDA) and experimentation from their workstations. Evaluate whether prebuilt options in Azure Machine Learning are suitable. If not, store workstation configuration or maintain approved VM images for this work. One example of an image that you can use as a starting point is the [Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine/overview).
 
-Note that, in certain cases, the use of VMs might be disallowed by policy. Look for alternatives, like adding Microsoft Dev Box and Azure Virtual Desktop. You can also consider using Docker to bootstrap machines that contain prebuilt images.
+In certain cases, the use of VMs might be disallowed by policy. Look for alternatives, like adding Microsoft Dev Box and Azure Virtual Desktop. You can also consider using Docker to bootstrap machines that contain prebuilt images.
 
 However, as this stage matures and you need extended experiments, move to managed compute instances and prefer options that are integrated as part of the workflow. Evaluate whether you can use [Azure Machine Learning compute instances](/azure/machine-learning/concept-compute-instance) for training and inferencing for development and testing purposes. The compute clusters can  handle large datasets and complex models.
 
@@ -200,7 +200,7 @@ Although MLOps and GenAIOps might require distinct AI activities and core techno
 
 Typically, AI workloads involve traditional code deployments. You can choose to handle model deployment alongside the code or separately in its own lifecycle. The former approach is preferable. Be prepared to package models and inference endpoints with workload deployment to keep AI operations primarily focused on data preparation, training/fine-tuning, grounding data management, and monitoring.
 
-Re-evaluate how the following assets can be tailored to cover the entire MLOps and GenAIOps lifecycle, from preproduction to production:
+Reevaluate how the following assets can be tailored to cover the entire MLOps and GenAIOps lifecycle, from preproduction to production:
 
 - Infrastructure-as-code (IaC) tools
 - CI/CD pipelines 
@@ -208,7 +208,7 @@ Re-evaluate how the following assets can be tailored to cover the entire MLOps a
 
 ##### Tools
 
-You can extend Azure DevOps pipelines and GitHub Actions workflows, commonly used for CI/CD, to machine learning models. They help deploy machine learning infrastructure, custom workload components, orchestration code, and models. Combine Azure Machine Learning pipelines with Azure DevOps or GitHub pipelines. For more information, see [Use Azure Pipelines with Azure Machine Learning](/azure/machine-learning/how-to-devops-machine-learning).
+You can extend Azure Pipelines and GitHub Actions workflows, commonly used for CI/CD, to machine learning models. They help deploy machine learning infrastructure, custom workload components, orchestration code, and models. Combine Azure Machine Learning pipelines with Azure DevOps or GitHub pipelines. For more information, see [Use Azure Pipelines with Azure Machine Learning](/azure/machine-learning/how-to-devops-machine-learning).
 
 Two main factors influence your choice of the right combination of tools: use case and capabilities. For example, Azure Machine Learning pipelines are great for the orchestration that's performed by data scientists. It has a rich feature set that supports reuse, caching, and more. For tooling choices, see [Which Azure pipeline technology should I use?](/azure/machine-learning/concept-ml-pipelines#which-azure-pipeline-technology-should-i-use).
 
@@ -235,3 +235,8 @@ Regularly review and improve operations and encourage innovation.
 The MLOps maturity model progresses from manual processes to full automation. Start with manual builds and monitoring, and incorporate automated application builds, training environments, and deployment in phases as justified by comprehensive metrics. For more information, see [MLOps maturity model](/azure/architecture/ai-ml/guide/mlops-maturity-model).
 
 The GenAIOps maturity levels move from basic models to structured deployment, progressively using automated optimization techniques. For more information, see [Advance your maturity level for GenAIOps](/azure/machine-learning/prompt-flow/concept-llmops-maturity).
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Test and evaluate](testing.md)
