@@ -15,6 +15,17 @@ When you build and transition your AI workloads to production, it's important th
 
 This guide provides recommendations for how to develop operational mechanisms and practices to improve support for AI workloads. It emphasizes efficient collaboration between operations and data teams.
 
+## Recommendations
+
+Here's a summary of the recommendations that are provided in this article, together with links to the appropriate sections in the article. 
+
+|Recommendation|Description|
+|---|---|
+|**Monitor all aspects of your workload** | While many general monitoring and observability concerns also apply to AI workloads, there are specific considerations that you need to work through to ensure that the whole of your workload is appropriately monitored at all times. To build your monitoring and observability strategy you may need to work across different teams to get the right expertise and cover all relevant modes and metrics.<br><br>&#9642; [Extend the observability platform](#extend-the-observability-platform)|
+|**Apply safe deployment practices to your AI workload** | Take steps to ensure the highest level of safety around sensitive production data and align deployment approaches with zero-downtime requirements. Leverage the appropriate tools where necessary, and put an emphasis on not reinventing tools and processes that already exist. Often you'll be able to leverage established services to achieve a high level of efficiency while also enabling safe deployments. <br><br>&#9642; [Include AI workload components in your safe deployment practices](#include-ai-workload-components-in-your-safe-deployment-practices)|
+|**Embrace DevOps practices on testing and automation** | Apply DevOps practices when building, deploying, and operating your AI workload in production. Your workload should allow for observability and testing with real user input in production. This can only be provided in a safe manner if a strong DevOps process and streamlined automation allow for swift deployments, error correction, and A/B testing. <br><br>&#9642; [Support testing in production](#support-testing-in-production)<br>&#9642; [Automate operational practices when possible](#automate-operational-practices-when-possible)<br>&#9642; [Embrace DevOps practices](#embrace-devops-practices)|
+|**Document your progress** | Build good documentation habits from the start to allow the capturing of strategic decisions, change history, and key information about the data that your workload uses. <br><br>&#9642; [Adopt good documentation practices](#adopt-good-documentation-practices)|
+
 ## Extend the observability platform
 
 To achieve operational excellence, robust observability is essential. When your organization adopts AI technologies, it's crucial that you enhance your observability platform to help ensure comprehensive monitoring of workload health. Organizations new to AI might lack big data, data science, and DataOps expertise within their operations team. Therefore, training on the operational best practices is an important first step to improve your observability platform. For this reason, operations and data teams should collaborate to determine the correct modes of monitoring and metrics to capture and analyze.
