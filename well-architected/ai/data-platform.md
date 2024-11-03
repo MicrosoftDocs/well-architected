@@ -33,6 +33,17 @@ One such technology is the search index. The primary advantage of adding a separ
 
 Choose a platform based on its specific functionality and purpose, and consider your functional and technical requirements. If your architecture is evolving to handle complex use cases, focus on the following sections about aggregated data stores, processing pipelines, and search indexes.
 
+## Recommendations
+
+Here's a summary of the recommendations that are provided in this article, together with links to the appropriate sections in the article. 
+
+|Recommendation|Description|
+|---|---|
+|**Build secure, performant, and cost-effective data stores.** | A key part of your data platform is a data store that aggregates data from multiple sources and allows integration with various integration tasks. This helps your workload perform at scale. Be sure to review the various functional and non-functional requirements of your data store to ensure a cost effective deployment. <br><br>&#9642; [Considerations for storing aggregated data](#considerations-for-processing-data)|
+|**Follow best practices around data ingestion and processing.** | High quality data helps improve the reliability of your workload as well as its end user experience. Consider the requirements of your workload as well as key best pracitces to build efficient ingestion and data transition processes that help maintain a high quality bar. <br><br>&#9642; [Considerations for processing data](#considerations-for-processing-data)|
+|**Design reliable and relevant search indexes.** | Aim for a high-performing, write-once, read-many data store that efficiently handles impromptu and fuzzy queries, delivering relevant results to your user base, even when queries aren’t precise. <br><br>&#9642; [Considerations for a search index](#considerations-for-a-search-index)|
+|**Ensure functional data stores perform at scale.**  | Depending on the functional requirements of your workload you may need to create functional data stores. (for example for offline inferencing) It is important that you create these data stores with their designated function in mind and apply the best practices for the function the need to serve and the scale they need to perform at. <br><br>&#9642; [Considerations for a feature store](#considerations-for-a-feature-store)<br>&#9642; [Considerations for an offline inferencing data store](#considerations-for-an-offline-inferencing-data-store)|
+
 ## Considerations for storing aggregated data
 
 In AI workloads, data moves through various stages of storage and processing with the help of pipelines that orchestrate workflow in between these stages. One key stage is a data store that contains data that's ingested and aggregated from multiple sources. You need this store to conduct processing until the data reaches a suitable state for training or indexing. The primary focus is on ensuring that the data accurately reflects its source.
