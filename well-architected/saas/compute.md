@@ -26,7 +26,7 @@ Choosing the right compute platform for your SaaS workload is important, but the
 
     - PaaS allows you to deploy applications without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
 
-   PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application might run on an operating system that the PaaS service doesn't support. PaaS offerings from Azure include App Service and Container Apps.
+      PaaS services offer less control compared to IaaS, which can be problematic if your application needs specific configuration. For example, your application might run on an operating system that the PaaS service doesn't support.
 
 - **Workload type**. Some platforms are specialized for specific workloads, while others are versatile. For instance, App Service is designed for web applications, whereas AKS is more general-purpose. It can host web apps, AI workloads, and batch compute tasks.
 
