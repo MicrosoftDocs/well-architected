@@ -11,7 +11,7 @@ ms.collection: learn-startups
 
 # Assessment review tool for SaaS workloads on Azure
 
-The [Azure Well-Architected SaaS workload assessment](/assessments/2d85e883-bdc4-4854-aaf0-df72c4bcee15) is a review tool that independent software vendors (ISVs) can use to self-assess the readiness of their software as a service (SaaS) workload. You need to make complex decisions for your SaaS design. You can use the assessment to methodically check your alignment with best practices for the Azure Well-Architected Framework pillars.
+The [Azure Well-Architected SaaS workload assessment](/assessments/d349c8c3-fe9c-4829-afdd-a5228e72a570) is a review tool that independent software vendors (ISVs) can use to self-assess the readiness of their software as a service (SaaS) workload. You need to make complex decisions for your SaaS design. You can use the assessment to methodically check your alignment with best practices for the Azure Well-Architected Framework pillars.
 
 For best results, a team that has familiarity with the architecture of your workload should complete the assessment. That team should also have a strong understanding of cloud principles and patterns. These roles include cloud architects, operators, and DevOps engineers.
 
@@ -24,7 +24,7 @@ These questions help you benchmark your workload's maturity and alignment compar
 :::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot that shows the guidance page of the Azure SaaS assessment. Recommended actions are visible." lightbox="./images/assessment-recommendations.png":::
 
 > [!div class="nextstepaction"]
-> [Azure Well-Architected SaaS workload assessment](/assessments/2d85e883-bdc4-4854-aaf0-df72c4bcee15)
+> [Azure Well-Architected SaaS workload assessment](/assessments/d349c8c3-fe9c-4829-afdd-a5228e72a570)
 
 ## Next step
 
