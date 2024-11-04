@@ -100,7 +100,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
 
   - [Azure locks](/azure/azure-resource-manager/management/lock-resources) can help prevent accidental deletions and modifications of your Azure resources. When you apply a lock to a resource, even users who have privileged administrator roles can't delete the resource unless they explicitly delete the lock first.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** RBAC and locks are important elements of a cloud security and governance strategy. However, consider operational complexities that might occur when you severely restrict who can perform common operations. Try to balance your security and functional needs. Have a clear plan to escalate responsibilities if there's an emergency or if key people are unavailable.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security and operational efficiency.** RBAC and locks are important elements of a cloud security and governance strategy. However, consider operational complexities that might occur when you severely restrict who can perform common operations. Try to balance your security and functional needs. Have a clear plan to escalate responsibilities if there's an emergency or if key people are unavailable.
 
 - **Comply with regulatory standards.** Many customers need to place strict controls on their resources to meet specific compliance regulations. Azure provides multiple tools to help your organization build a solution on Azure that meets your compliance needs.
 
@@ -115,7 +115,7 @@ When you develop a SaaS solution, your customers depend on you to safeguard thei
   - [Microsoft Defender for Cloud](/azure/defender-for-cloud/) provides a continual assessment of the configuration of your resources against compliance controls and best practices in the standards and benchmarks that you apply in your subscriptions. Defender for Cloud calculates an overall compliance score, which helps you determine changes that you need to make.
 
     By default, Defender for Cloud uses the [Microsoft cloud security benchmark (MCSB)](/security/benchmark/azure/overview) as a baseline standard for security and compliance-based practices. The MCSB is a set of compliance controls provided by Microsoft that we recommend for most workloads on Azure. If you need to meet another standard, you can use other available compliance offerings.
-   
+
    > [!TIP]
    > Even if you don't need to immediately comply with a regulatory standard, you should anyway. It's much easier to adhere to a standard like MCSB from when you start to deploy your solution than it is to retroactively apply it later.
 
