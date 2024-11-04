@@ -12,7 +12,7 @@ ms.collection: learn-startups
 
 Building and operating software as a service (SaaS) on Microsoft Azure requires a different approach compared to other types of software. Independent software vendors (ISVs) have a unique position in the cloud ecosystem because their SaaS solutions drive their business. They sell their products to businesses, also known as *business-to-business (B2B)*, or to consumers, also known as *business-to-consumer (B2C)*. ISVs typically host and maintain the SaaS solution that they build. Their customers configure the product and manage the data.
 
-A solution built using the Well-Architected Framework ensures that the workload can at-scale. This series of articles provide key insights for creating scalable, performant, reliable, and secure SaaS solutions on Azure. If you're not already familiar with the Well-Architected Framework, we suggest taking some time to learn its principles.
+A solution built using the Well-Architected Framework ensures that the workload can operate at scale. This series of articles provide key insights for creating scalable, performant, reliable, and secure SaaS solutions on Azure. If you're not already familiar with the Well-Architected Framework, we suggest taking some time to learn its principles.
 
 > Refer to [**Microsoft Azure Well-Architected Framework pillars**](../pillars.md).
 
