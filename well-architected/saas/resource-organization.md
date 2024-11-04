@@ -74,12 +74,15 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
 
     Azure Marketplace provides support for billing, onboarding, and offboarding and simplifies management and customer access to your application. If you use Azure Marketplace, you don't need to manage sensitive billing information or payment providers. 
 
+    If you deploy to customer environments, you can use Azure Marketplace to deploy [Managed Applications](/azure/azure-resource-manager/managed-applications), which provide a range of capabilities that enable you to deploy and manage resources within a customer's Azure subscription.
+
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
 | Review Azure quotas and limits for resources that you deploy. If you're approaching limits, choose a strategy for continuing to grow, such as by deploying additional resources, following [bin packing](/azure/architecture/guide/multitenant/approaches/resource-organization) guidance, or using multiple Azure subscriptions. | This approach enables you to scale and grow while staying within limits. |
 | Define resource lifetimes and lifecycles. Distinguish between shared and customer-specific resources. | This strategy enables you to improve your operational efficiency by predefining your processes and improve your cost efficiency by removing resources that you no longer need. |
+| Consider publishing your solution through the Azure Marketplace, especially if you deploy into customer environments. | Azure Marketplace provides a range of services, including management of billing. |
 | Take advantage of tooling, like [Mona for SaaS](https://github.com/microsoft/mona-saas), to optimize integration with Azure Marketplace.|  Reusable code modules and templates can reduce the time and effort needed for deployment and integration. Using these tools can help you manage solutions that are available on Azure Marketplace.|
 
 ## Additional resources

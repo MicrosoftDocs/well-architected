@@ -73,6 +73,7 @@ Develop a strategy for deploying, maintaining, and managing Azure infrastructure
 | Build infrastructure automation using deployment pipelines, scripts, or templates with tools your team is already familiar with. | Using known tools reduces the risk of errors, as infrastructure automation can be disruptive if the tools aren't understood.|
 | Deploy your infrastructure using IaC where possible. | Manually maintaining infrastructure becomes riskier and more burdensome as the amount of infrastructure grows. |
 | Separate core infrastructure from customer-level infrastructure. | Different types of infrastructure have distinct lifecycles and management activities. By separating them, you can manage each set independently on its own schedule. |
+| Use Azure Managed Applications to deploy and manage customer-deployed resources. | Azure Managed Applications provide a range of capabilities that enable you to deploy and manage resources within a customer's Azure subscription. |
 
 ## Plan for application deployments
 
@@ -101,6 +102,8 @@ Regularly update application code and configuration to enhance functionality. Cu
 Decide on actions to take if any tests fail at any stage.
 
 - **Failed deployments.** Plan for deployment failures by considering necessary actions and preparing a rollback strategy.
+
+- **Access to customer environments.** If you deploy resources into customer environments, understand how you can apply updates within those environments. Consider capabilities provided by Azure Managed Applications, such as [deployment of updates to applications](/azure/azure-resource-manager/managed-applications/update-managed-resources).
 
 ### Design recommendations
 
