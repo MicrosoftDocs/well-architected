@@ -10,7 +10,7 @@ ms.collection: learn-startups
 
 # Design principles of SaaS workloads on Azure
 
-As an independent software vendor (ISVs) delivering a SaaS solution, **you're accountable for the solution's architectural excellence, and you share responsibility with your customer**. They rely on your solution, and problems can cascade to them. If your organization is mature and has an established customer base, reliability and security are likely your biggest concerns. Downtime and security breaches can have negative consequences for your company's revenue and reputation.
+As an independent software vendor (ISV) delivering a SaaS solution, **you're accountable for the solution's architectural excellence, and you share responsibility with your customer**. They rely on your solution, and problems can cascade to them. If your organization is mature and has an established customer base, reliability and security are likely your biggest concerns. Downtime and security breaches can have negative consequences for your company's revenue and reputation.
 
 But many ISVs, especially startup ISVs, operate with limited resources to minimize costs. If your organization is in the startup phase, you might have to make aggressive tradeoffs to progress to the next phase of growth. You might not have dedicated teams for governance, security, or deployment automation, but remember to plan for future growth. If you have to take risks, make calculated decisions.
 
