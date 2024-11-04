@@ -57,9 +57,9 @@ Each flow involves different risks and controls. For example, multiple security 
 
 > [!IMPORTANT]
 > As a general best practice, always follow a zero trust approach. Make sure all traffic is controlled and inspected, including internal traffic.
-
+>
 > Your customers might also have specific compliance requirements that influence your architecture. For example, if they need [SOC 2 compliance](/azure/governance/policy/samples/soc-2#security-measures-against-threats-outside-system-boundaries) they must implement various network controls including a firewall, web application firewall, and network security groups, to fulfill the security requirements. Even if you don't need to comply immediately, consider those extensibility factors when designing your architecture.
-
+>
 > Refer to [SE:06 Recommendations for networking and connectivity](/azure/well-architected/security/networking)
 
 ### Design considerations

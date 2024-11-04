@@ -128,7 +128,7 @@ Resiliency of your compute layer plays a large part in your overall resiliency s
   > Refer to [RE:04 Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics).
   
 - **Deployment strategy**. Cloud resources are deployed in specific geographic regions. In Azure, availability zones are isolated datacenter sets within a region. For resiliency, deploy applications across multiple availability zones. Deploying across regions or cloud providers enhances resiliency but adds cost and operational complexity.
-  > Refer to [RE:05 Recommendations for using availability zones and regionss](/azure/well-architected/reliability/regions-availability-zones)
+  > Refer to [RE:05 Recommendations for using availability zones and regions](/azure/well-architected/reliability/regions-availability-zones).
   
 - **Stateless workloads**. To deploy resilient applications, you typically need to run redundant copies in different locations. This task can be challenging for stateful workloads, which need to maintain session state. Aim to build stateless workloads when possible.
 
