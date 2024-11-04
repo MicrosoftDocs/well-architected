@@ -11,6 +11,22 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## October 2024
+
+### Updated articles
+
+- [Azure Well-Architected Framework perspective on Azure Application Gateway v2](./service-guides/azure-application-gateway.md): We made significant updates to the guidance about Azure Application Gateway v2. Find important notes and links to additional resources for Azure Application Gateway configurations. Explore enhanced content with specific design principles, strategies, and recommendations for achieving architectural goals.
+
+- [Architecture decision record (ADR)](./architect-role/architecture-decision-record.md): We refreshed the details describing what an ADR should include, such as consistent elements like problem statements, options considered, and decision outcomes. Explore updates including a new section on suggested characteristics of an individual record with guidelines for maintaining consistent and useful ADRs.
+
+We refreshed all tradeoff articles. Many design decisions force a tradeoff. It's vital to understand how achieving the goals of one pillar might make achieving the goals of another pillar more challenging. Check out the updated tradeoff articles for each pillar:
+
+- [Reliability tradeoffs](./reliability/tradeoffs.md)
+- [Security tradeoffs](./security/tradeoffs.md)
+- [Cost Optimization tradeoffs](./cost-optimization/tradeoffs.md)
+- [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
+- [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
+
 ## September 2024
 
 ### New articles
@@ -230,8 +246,3 @@ In addition to the changes in structure and consistency, you should note some th
 - The Well-Architected Framework provides recommendations to **help you make informed and justified decisions**. The Well-Architected Framework doesn't know your business requirements or constraints, so it can't make decisions for you.
 
 - The [Well-Architected Framework workloads](./workloads.md) and the [Well-Architected Framework service guides](./service-guides/index.yml) didn't undergo significant changes with this refresh. New workloads and service guides are ongoing additions to the Well-Architected Framework. Keep checking this page for updates.
-
-## October 2023
-
-- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md)
-- Updated service guide: [Azure Well-Architected Framework review - Azure Firewall](./service-guides/azure-firewall.md)
