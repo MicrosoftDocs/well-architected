@@ -34,7 +34,7 @@ For more information about how to track and control costs for SaaS and how to bi
 
   For strategies on resource naming, see [Cloud Adoption Framework: Resource naming](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming).
 
-- **Implement automated governance through policies.** Policies are instrumental in defining organization standards and evaluate the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
+- **Implement automated governance through policies.** Policies are instrumental in defining organization standards and evaluating the compliance of your workloads and resources. It's a governance tool that you can use to achieve resource consistency, regulatory compliance, security, management, and cost efficiency.
 
   Use Azure Policy to create a service catalog of permitted services and service types that's customized for your workload requirements. This catalog can prevent accidental overspending by helping ensure that only approved services are used. For example, after you determine the type, series, and size of the virtual machines (VMs) that you need, you can implement a policy that only allows the deployment of those VMs. Enforce policies uniformly across all users and principals, regardless of their permission level.
 
@@ -65,7 +65,7 @@ For more information about how to track and control costs for SaaS and how to bi
 
 ## Security and compliance
 
-Security and compliance are foundational design principles for a cloud workload and a key component of proper cloud governance. Security controls, such  role-based access controls, help determine the actions that users can perform in your environment. Controls through policies can help you achieve specific regulatory compliance standards for your deployed workloads.
+Security and compliance are foundational design principles for a cloud workload and a key component of proper cloud governance. Security controls, such as role-based access controls, help determine the actions that users can perform in your environment. Controls through policies can help you achieve specific regulatory compliance standards for your deployed workloads.
 
 For more information, see [Azure role-based access control (RBAC)](/azure/role-based-access-control/overview) and [Azure Policy](/azure/governance/policy/overview).
 

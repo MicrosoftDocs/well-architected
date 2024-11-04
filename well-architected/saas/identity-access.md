@@ -69,7 +69,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
     - Audit support to retain or export sign-in logs for security management.
 
     > [!IMPORTANT]
-    > Consider your planned user growth when you evaluate the cost of an identity solution. Even if a solution might not remain cost effective or scalable in the long term, have a migration plan that you can use if the need arises.
+    > Consider your planned user growth when you evaluate the cost of an identity solution. A solution might not remain cost effective or scalable in the long term, but it could be useful for now. Have a migration plan that you can use if the need arises.
     >
     > For example, a solution might be affordable for 500 users but unsustainable for 5 million. If it requires minimal setup and is user-friendly and easy to migrate from, it could still be the right choice until scaling costs justify switching to a different solution.
 
