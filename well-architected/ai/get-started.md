@@ -12,7 +12,7 @@ ms.subservice: waf-workload-ai
 
 # AI workloads on Azure
 
-This guidance is intended for **workload owners** and **technical stakeholders**, including architects, development leads, and other IT leadership roles. Specialized roles like data scientists or developers aren't the target audience of this guidance, but workload owners and technical stakeholders should use what they learn to help guide those roles through development and deployment. 
+This guidance is intended for **workload owners** and **technical stakeholders**, including architects, development leads, and other IT leadership roles. Specialized AI and data roles, like data scientists, can augment the guidance found in this set of articles with product documentation that provides deeper technical guidance. See the [Azure AI services documentation](/azure/ai-services/). 
 
 This set of articles provides actionable and authoritative guidance for building and operating a highly reliable and scalable solution on Azure. The guidance has a technical foundation in Azure Well-Architected Framework best practices. It's also based on reviews of numerous customer implementations.
 
