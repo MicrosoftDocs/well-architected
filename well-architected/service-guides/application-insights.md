@@ -236,7 +236,7 @@ Start your design strategy based on the [design review checklist for Performance
 | Recommendation | Benefit |
 |:---------------|:--------|
 | Use one Application Insights resource per workload per environment (such as one for development, one for staging, and one for production). | This prevents mixing telemetry from different application versions. |
-| Where applicable, ensure that [profiling frequency and duration is set appropriately](../../azure-monitor/profiler/profiler-settings.md). | Avoid adding excessive overhead to the running process. |
+| Where applicable, ensure that [profiling frequency and duration is set appropriately](/azure/azure-monitor/profiler/profiler-settings). | Avoid adding excessive overhead to the running process. |
 
 ## Azure policies
 
