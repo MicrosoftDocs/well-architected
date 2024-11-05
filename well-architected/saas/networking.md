@@ -68,7 +68,7 @@ Each flow involves different risks and controls. For example, multiple security 
 
     Firewalls enable you to block malicious IPs and complete advanced analyses, to protect against intrusion attempts. However, firewalls can be costly. Assess your security requirements to determine whether a firewall is required.
 
-    Web applications are vulnerable to common attacks, like including SQL injection, cross site scripting, and other OWASP top 10 vulnerabilities. Azure Web Application Firewall protects against those attacks and is integrated with Application Gateway and Azure Front Door. Review the tiers for these services to understand which WAF capabilities are in which products.
+    Web applications are vulnerable to common attacks, like SQL injection, cross site scripting, and other OWASP top 10 vulnerabilities. Azure Web Application Firewall protects against those attacks and is integrated with Application Gateway and Azure Front Door. Review the tiers for these services to understand which WAF capabilities are in which products.
 
     DDoS attacks are a risk for internet-facing applications. Azure provides basic level of protection at no cost. [Azure DDoS Protection](/azure/ddos-protection/ddos-protection-overview#key-features) provides advanced protection by learning your traffic patterns and adjusting protections accordingly, though they come at a cost. If you're using Front Door, take advantage of the built-in [DDoS capabilities](/azure/frontdoor/front-door-ddos).
   
@@ -121,7 +121,7 @@ For some scenarios, you might need to connect to resources external to Azure, su
 
     - **ExpressRoute** provides a dedicated, high-performance, private connection between Azure and other cloud providers or on-premises networks. It ensures predictable performance and avoids internet traffic but comes with higher costs and requires more complex configuration.
 
-- **Plan based on the destination.** You might need to connect to resources in different Microsoft Entra ID tenants, especially if the target resource is in a customer's Azure subscription. Consider using private endpoints, a site-to-site VPN, or by peering virtual networks. For more information, see [Peering virtual networks in each Microsoft Entra ID tenant](/azure/virtual-network/create-peering-different-subscriptions).
+- **Plan based on the destination.** You might need to connect to resources in different Microsoft Entra ID tenants, especially if the target resource is in a customer's Azure subscription. Consider using private endpoints, a site-to-site VPN, or by peering virtual networks. For more information, see [Peering virtual networks in different Microsoft Entra ID tenants](/azure/virtual-network/create-peering-different-subscriptions).
 
     To connect to resources hosted in another cloud provider, it's common to use public internet connectivity, a site-to-site VPN, or ExpressRoute. For more information, see [Connectivity to other cloud providers](/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-other-providers).
 
@@ -151,7 +151,7 @@ In such situations, customers often bring their own network and deploy your appl
 
     Alternatively, deploy a dedicated virtual network for your solution. You might use Private Link or virtual network peering to enable customers to connect to the resources. These approaches are described in [Cross-network connectivity](#cross-network-connectivity). If you have defined ingress and egress points, evaluate NAT as an approach to eliminate issues caused by IP address overlaps.
 
-- **Provide network access for management purposes.** Review the resources that you deploy into customer environments and plan how you'll access them to monitor, manage, or reconfigure them. When resources are deployed with private IP addresses into a customer-owned environment, ensure you have a network path to reach them from your own network. Consider how you facilitate both application and resource changes, such pushing a new version of the application or updating an Azure resource configuration.
+- **Provide network access for management purposes.** Review the resources that you deploy into customer environments and plan how you'll access them to monitor, manage, or reconfigure them. When resources are deployed with private IP addresses into a customer-owned environment, ensure you have a network path to reach them from your own network. Consider how you facilitate both application and resource changes, such as pushing a new version of the application or updating an Azure resource configuration.
 
     In some solutions, you can use capabilities provided by Azure Managed Applications, such as [just-in-time access](/azure/azure-resource-manager/managed-applications/request-just-in-time-access) and [deployment of updates to applications](/azure/azure-resource-manager/managed-applications/update-managed-resources). If you need more control, you can host an endpoint within the customer's network that your control plane can connect to, providing access to your resources. This method requires additional Azure resources and development to meet security, operational, and performance requirements. For an example of how to implement this approach, see [Azure Managed Applications Updating Sample](https://github.com/Azure-Samples/ama-update-sample).
 
