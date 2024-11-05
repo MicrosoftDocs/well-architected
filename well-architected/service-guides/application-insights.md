@@ -255,7 +255,7 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 
 Here are some recommendations that can help you improve the cost effectiveness and operational excellence of Azure Monitor.
 
-* [Cost Optimization](/azure/advisaor/advisor-cost-recommendations#management-and-governance)
+* [Cost Optimization](/azure/advisor/advisor-cost-recommendations#management-and-governance)
 * [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#management-and-governance)
 
 ## Related resources
