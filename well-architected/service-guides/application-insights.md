@@ -222,12 +222,6 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > * **Understand usage patterns and how much data is coming in by reviewing ingestion and sample rates.** To optimize data usage, adjust them accordingly and reduce the amount of [custom metrics](/azure/azure-monitor/app/api-custom-events-metrics), for example ITelemetryProcessor.
 >
-> * **Prioritize critical flows.** Use Application Insights' [userflows](/azure/azure-monitor/app/usage?tabs=aspnetcore#user-flows---analyze-user-navigation-patterns) experience to understand usage patterns, which will allow you to prioritize critical flows.
->
-> * **Optimize operational tasks.** Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) to track deployments and [custom events](/azure/azure-monitor/app/api-custom-events-metrics) for other actions.
->
-> * **Use [Live Metrics stream](/azure/azure-monitor/app/live-stream?tabs=otel) and [availability alerts](/azure/azure-monitor/app/availability?tabs=standard#availability-alerts) to respond to live performance issues.** Plan how to address problems by incorporating clear lines of communication and responsibilities.
->
 > * **Continuously optimize performance.** Use built-in features like [Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics), [queries](/azure/azure-monitor/logs/queries), and [dashboards](/azure/azure-monitor/app/overview-dashboard) to find components that show deteriorating performence.
 
 ### Recommendations for Performance Efficiency
