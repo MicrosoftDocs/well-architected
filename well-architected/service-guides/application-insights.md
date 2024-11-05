@@ -50,7 +50,7 @@ Use the following information to minimize the repercussions of a single componen
 
 ### Design checklist for Reliability
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the `offering-specific-aspects`. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the dependency on Log Analytics. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -251,34 +251,27 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Currently, Azure offers no Azure Advisor recommendations related to Application Insights.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Currently, Azure offers no Azure Advisor recommendations related to Application Insights.
 
-<!--
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of <Azure-offering>.
+Here are some recommendations that can help you improve the cost effectiveness and operational excellence of Azure Monitor.
 
-* [Reliability](/azure/advisor/advisor-high-availability-recommendations#<offering-or-infrastructure-area-anchor>)
-* [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations#<offering-or-infrastructure-area-anchor>)
-* [Cost Optimization](/azure/advisaor/advisor-cost-recommendations#<offering-or-infrastructure-area-anchor>)
-* [Performance](/azure/advisor/advisor-reference-performance-recommendations#<offering-or-infrastructure-area-anchor>)
-* [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#<offering-or-infrastructure-area-anchor>)
--->
+* [Cost Optimization](/azure/advisaor/advisor-cost-recommendations#azure-monitor)
+* [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#management-and-governance)
 
 ## Related resources
 
-* `resource`
-* `resource`
+* [Azure Well-Architected Framework perspective on Log Analytics](./azure-log-analytics.md)
 
 ## Next steps
 
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
-
+<!--
 * Use the following reference architectures as examples of how you can apply this article's guidance to a workload:
 
     * `reference-architecture`
     * `reference-architecture`
+-->
+Build implementation expertise by using the following product documentation:
 
-* Build implementation expertise by using the following product documentation:
-
-    * `Azure-offering-documentation`
-    * `Azure-offering-documentation`
-
+* *Autoinstrumentation* (App Service) - [Enable application monitoring in Azure App Service for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/codeless-app-service)
+* *Manual instrumentation* (OpenTelemetry) - [Enable Azure Monitor OpenTelemetry for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/opentelemetry-enable)
