@@ -22,7 +22,7 @@ An AI workload is a workload that uses AI technology for predictive, discriminat
 
 Generally, AI workloads break down into two categories: generative AI and discriminative AI.
 
-**Generative AI** refers to 9machine learning practices based workloads. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS) solutions, such as Azure OpenAI Service. 
+**Generative AI** is a form of AI, built on machine learning, that uses trained models to autonomously generate novel outputs. Generative AI includes language models that you can pretrain on users' datasets or use as software as a service (SaaS) solutions, like Azure OpenAI Service. 
 
 GPT is a further subset of generative AI. GPT is a family of language models that specialize in mimicking human conversational language and are well-suited for chatbots, like Microsoft 365 Copilot or OpenAI's ChatGPT.
 
@@ -57,15 +57,15 @@ Some examples of workloads that aren't included in the scope of this series of a
 
 Microsoft Azure offers a broad range of AI services that you can build around your workload or integrate into an existing workload. You can choose between fully managed software as a service solutions (SaaS), platform as a service solutions (PaaS), or you can build your own AI solution using Azure compute services. While these options can make adopting AI technologies easier for your workload teams, there are challenges that will inevitably come up. Common challenges include:
 
-- Building and running AI functions can be a costly endeavor. Some phases of your AI workload implementation require a significant amount of compute resources, like model training, while other phases, like the day-to-day operation of the workload will require less. In other cases, like batch inferencing, your compute requirements might need to be scalable on a frequently recurring schedule. Understanding your compute requirements and finding the right compute service to meet those requirements can help you keep costs under control.
+- Building and running AI functions can be a costly endeavor due to the high costs of compute resources. The amount of compute resources needed for your AI workload lifecycle can vary signifcantly depending on your use case and workload design. Understanding your compute requirements and finding the right compute service to meet those requirements can help you keep costs under control.
 
-- Your organization might have security or compliance requirements that limit your options to adopt off-the-shelf services, like pre-trained models. In other cases, your use case might not be a good fit for a SaaS or PaaS service, so building your own solution might be the best option for your workload team. It's important to research all of your options to ensure that you're not creating unnecessary development and operational burden by building your own solution when an off-the-shelf solution is available to you.
+- Security and compliance requirements and your use case may limit your ability to use off-the-shelf solutions, like publicly accessible models or SaaS products. It's important to research all of your options to ensure that you're not creating unnecessary development and operational burden by building your own solution when an off-the-shelf solution is available to you.
 
 - AI functions typically deal with large amounts of data, often coming in multiple data types. Handling your data securely, efficiently, and cost effectively is critical to the overall workload. Challenges related to data include:
 
   - The volume of data needs to be determined to plan for the appropriate amount of resources.
 
-  - The types of data you'll be working with need to be determined to ensure that you have the right kinds of resources to handle those types and you plan for any new processes that need to be developed. For example, you might have a fraud detection system that has been trained on training data, but processes real-time transaction data in production. Both types of data need to be handled in particular ways as the real-time data may have sensitive information that has special requirements.
+  - The different types of data and the appropriate considerations for handling each type needs to be determined.
 
   - The origins of the data need to be identified to prepare pipelines for ingestion.
 
