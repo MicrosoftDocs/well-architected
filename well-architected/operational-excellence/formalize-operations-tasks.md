@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:02](checklist.md)| Formalize the way you run routine, as needed, and emergency operational tasks by using documentation, checklists, or automation. Strive for consistency and predictability for team processes and deliverables by adopting industry-leading practices and approaches, such as a shift left approach. |
+|**OE:02**| Formalize the way you run routine, as needed, and emergency operational tasks by using documentation, checklists, or automation. Strive for consistency and predictability for team processes and deliverables by adopting industry-leading practices and approaches, such as a shift left approach. |
 |---|---|
 
 This guide describes the recommendations for formalizing routine and nonroutine tasks. Efficient and successful workload teams have consistent and predictable workload management practices. Optimize efficiency and consistency by adopting industry-proven tools and practices and by automating processes when it's practical. By being consistent about how routine, improvised, and emergency tasks are handled, you minimize the risk of being unprepared when issues arise. By taking a continuous improvement approach to workload management, you increase your team's consistency and efficiency throughout the workload's lifecycle.

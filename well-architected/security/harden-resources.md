@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:08](checklist.md)|Harden all workload components by reducing extraneous surface area and tightening configurations to increase attacker cost.|
+|**SE:08**|Harden all workload components by reducing extraneous surface area and tightening configurations to increase attacker cost.|
 |---|---|
 
 This guide describes the recommendations for hardening resources by developing localized controls within a workload and maintaining them to withstand repeated attacks.

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:03](checklist.md)| Formalize software ideation and planning processes. Draw from established industry and organizational standards. Use a common, prioritized backlog and sufficiently detailed specifications. Based on outcomes, drive continuous improvements in your planning process. |
+|**OE:03**| Formalize software ideation and planning processes. Draw from established industry and organizational standards. Use a common, prioritized backlog and sufficiently detailed specifications. Based on outcomes, drive continuous improvements in your planning process. |
 |---|---|
 
 This guide describes the recommendations for managing software development practices in accordance with established standards. Your team's ability to produce high quality software relies on a structured, collaborative approach to development planning. Product owners and managers must be able to clearly understand and articulate to stakeholders the work that developers are doing at any time in a development cycle. Conversely, developers must understand the goals of the development cycle via well-written features, user stories, and acceptance criteria. Established standards define how development practices should be performed and allow the workload team to collaborate effectively, reducing the risk of confusion on goals and expectations.

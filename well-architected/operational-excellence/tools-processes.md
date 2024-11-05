@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
+|**OE:04**| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
 **Related guide**: [Improve build velocity](release-engineering-performance.md) | [Use continuous integration](release-engineering-continuous-integration.md)

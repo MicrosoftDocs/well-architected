@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
+|**PE:04**| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
 |---|---|
 
 Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data organized into records.

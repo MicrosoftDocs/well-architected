@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:08](checklist.md)| Optimize environment costs. Align spending to prioritize preproduction, production, operations, and disaster recovery environments. For each environment, consider the required availability, licensing, operating hours and conditions, and security. Nonproduction environments should emulate the production environment. Implement strategic tradeoffs into nonproduction environments. |
+|**CO:08**| Optimize environment costs. Align spending to prioritize preproduction, production, operations, and disaster recovery environments. For each environment, consider the required availability, licensing, operating hours and conditions, and security. Nonproduction environments should emulate the production environment. Implement strategic tradeoffs into nonproduction environments. |
 |---|---|
 
 This guide describes the recommendations for cost optimizing workload environments. Each environment should be tailored for its specific purpose and optimized for cost effectiveness. It's important to make strategic tradeoffs and allocate resources where they matter the most, without compromising on critical components. By treating environments differently and optimizing them accordingly, you can achieve a balance between cost optimization and meeting the required objectives.
