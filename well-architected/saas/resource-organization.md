@@ -20,7 +20,7 @@ The first step in planning your architecture is to choose the region where your 
 
 ### Design considerations
 
-- **Evaluate regions that are optimized for production.** Some Azure regions offer more services than others. Also, many Azure regions support availability zones to withstand datacenter failures, which are an important part of a resiliency strategy. You should use regions that have availability zones, and you deploy production components into multiple availability zones. To view available services in each region, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/). 
+- **Evaluate regions that are optimized for production.** Some Azure regions offer more services than others. Also, many Azure regions support availability zones to withstand datacenter failures, which are an important part of a resiliency strategy. You should use regions that have availability zones, and deploy production components into multiple availability zones. To view available services in each region, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/). 
 
     > Refer to [RE:05 Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md).
 
