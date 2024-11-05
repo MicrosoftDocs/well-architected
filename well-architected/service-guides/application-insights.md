@@ -105,7 +105,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > * **Enable identity and acecss management (IAM).** Use [managed identities](/entra/identity/managed-identities-azure-resources/overview) and [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) to ensure only authorized users can access your resources. This also eliminates the need for credentials management, as [Azure manages, rotates, and protects these credentials](/entra/architecture/service-accounts-managed-identities).
 >
-> * **Control network traffic.** Consider [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to access Azure services over a private endpoint, effectively isolating your traffic from the public internet. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries.
+> * **Control network traffic.** Consider using Azure Private Link to access Azure services over a private endpoint, effectively isolating your traffic from the public internet. Data flows for private networking include both data ingestion and query operations, each targeting distinct endpoints. These endpoints can be managed independently, allowing you to configure private ingestion while maintaining public query access, or vice versa. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries. For more details, see [Use Azure Private Link to connect networks to Azure Monitor](/azure/azure-monitor/logs/private-link-security).
 >
 > * **Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal).** By default, data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to stored data.
 >
@@ -118,6 +118,7 @@ Start your design strategy based on the [design review checklist for Security](.
 | If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach eliminates the need for manual SDK updates, requires no code changes, and eliminates the overhead of maintaining instrumentation code. It can also enhance security by ensuring consistent application monitoring without manual intervention. |
 | Stop collecting personal data or obfuscate, anonymize, or adjust collected data. Notice that Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection) and it's recommended to not change that. | Excludes your data from being considered *personal* and prevents breaking any compliance requirements or local regulations. |
 | Use one Application Insights resource per workload per environment, such as one for development, one for staging, and one for production. | Using multiple Application Insights resources ensures data isolation and security, and helps in applying environment-specific configurations and access controls. |
+| AMPLS (TO DO) | ... |
 
 ## Cost Optimization
 
@@ -177,7 +178,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> * **Integrate your application monitoring team members' specializations into a robust set of practices to instrument and monitor your workload.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them. Use one resource per workload per environment (such as one for staging and one for production) to prevent mixing telemetry from different application versions.<br><br>Chose an instrumentation method (i.e., autoinstrumentation or manual instrumentation) that is best for your situation based on your business needs and [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
+> * **Integrate your application monitoring team members' specializations into a robust set of practices to instrument and monitor your workload.** Chose an instrumentation method (i.e., autoinstrumentation or manual instrumentation) that is best for your situation based on your business needs and [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
 >
 > * **Ensure optimal performance of your application monitoring solution by keeping Application Insights instrumentation up-to-date.** Follow our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) and update Application Insights SDKs (Classic API) at least once a year. It's recommended to follow similar practices for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable). Using the latest SDK or Distro versions [ensures access to support services](/azure/azure-monitor/app/sdk-support-guidance) and provides the latest functionality with bug fixes.
 >
@@ -195,7 +196,7 @@ Start your design strategy based on the [design review checklist for Operational
 |----------------|---------|
 | If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach optimizes software engineering time by eliminating the need for manual SDK updates, code changes related to new versions, and the overhead of maintaining instrumentation code. |
 | If your business needs require manual instrumentation, adopt the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable). | Avoid a future forced migration from the classic API SDKs by adopting an OpenTelemetry-based instrumentation method. |
-| Transition to [connection strings](/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings). | Make telemetry ingestion more reliable and remove dependencies on global ingestion endpoints. |
+| Use [connection strings](/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings). | Make telemetry ingestion more reliable and remove dependencies on global ingestion endpoints. |
 
 ## Performance Efficiency
 
@@ -217,9 +218,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > * **Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.** Monitoring mulitple applications or application components with a single Application Insights resource provides a hollistic view, but can also impact the performance of experiences like [Application Map](/azure/azure-monitor/app/app-map?tabs=net) and [Usage](/azure/azure-monitor/app/usage?tabs=aspnetcore).
 >
-> * **Optimize code and infrastructure.**
->     * If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). This approach eliminates the need for manual SDK updates, requires no code changes, and eliminates the overhead of maintaining instrumentation code.
->     * Regularly evaluate custom Application Insights code to reduce complexity, improve performance, and ensure that the code is up to date.
+> * **Optimize code and infrastructure.** Regularly evaluate custom Application Insights code to reduce complexity, improve performance, and ensure that the code is up to date.
 >
 > * **Understand usage patterns and how much data is coming in by reviewing ingestion and sample rates.** To optimize data usage, adjust them accordingly and reduce the amount of [custom metrics](/azure/azure-monitor/app/api-custom-events-metrics), for example ITelemetryProcessor.
 >
@@ -240,7 +239,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Application Insights and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+Azure provides built-in policies related to Application Insights and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 * [Application Insights components should block log ingestion and querying from public networks](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc02227-0cb6-4e11-8f53-eb0b22eab7e8)
 * [Application Insights components should block non-Azure Active Directory based ingestion](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F199d5677-e4d9-4264-9465-efe1839c06bd)
@@ -251,7 +250,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Currently, Azure offers no Azure Advisor recommendations related to Application Insights.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Currently, Azure offers no Azure Advisor recommendations specific to Application Insights.
 
 Here are some recommendations that can help you improve the cost effectiveness and operational excellence of Azure Monitor.
 
