@@ -22,7 +22,7 @@ An AI workload is a workload that uses AI technology for predictive, discriminat
 
 Generally, AI workloads break down into two categories: generative AI and discriminative AI.
 
-**Generative AI** refers to workloads that are based on machine learning practices. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS), such as Azure OpenAI Service. 
+**Generative AI** refers to 9machine learning practices based workloads. These practices are designed to autonomously generate novel outputs rather than return results that the workload finds within the data model based on pattern analysis. Generative AI includes language models that you can pretrain on users' datasets or use like software as a service (SaaS) solutions, such as Azure OpenAI Service. 
 
 GPT is a further subset of generative AI. GPT is a family of language models that specialize in mimicking human conversational language and are well-suited for chatbots, like Microsoft 365 Copilot or OpenAI's ChatGPT.
 
