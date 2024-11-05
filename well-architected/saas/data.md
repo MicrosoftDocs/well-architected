@@ -47,7 +47,7 @@ The data store in a software as a service (SaaS) solution affects its architectu
 |Separate transactional data stores for day-to-day operations from analytical and reporting data stores. | Mixing the intent of your data stores can lead to unnecessary complexity. Data segmentation enhances operational efficiency and maximizes the utilization of each data store. |
 |Choose between a relational or nonrelational data structure based your requirements. Start with one or a small number of data stores. <br><br>Prioritize managed data stores. Common choices include Azure Cosmos DB, Azure SQL, MySQL, MongoDB, and PostgreSQL.|This approach helps minimize complexity and ensures that you use the right product to maximize efficiency. Managed data stores provide flexibility in managing resources and costs elastically and scale with your needs. Using managed data stores creates less management burden than deploying your own data store on your own infrastructure.|
 |Invest in learning your chosen technology. Equip your team to manage the high scaling requirements and other complexities of SaaS solutions.| Learn about the tools that you use and their wider ecosystem so that you can effectively use your data platform as you scale.|
-|Adopt flexiblity in your data design.|As your SaaS solution grows or your requirements change, you can adapt by adding or changing data stores. This flexibility allows you to start with one data store and evolve over time to meet your needs.|
+|Adopt flexibility in your data design.|As your SaaS solution grows or your requirements change, you can adapt by adding or changing data stores. This flexibility allows you to start with one data store and evolve over time to meet your needs.|
 
 ## Tenancy model and database strategy
 
@@ -223,7 +223,7 @@ Multitenancy is a core business methodology for designing SaaS workloads. These 
 
 ## Next step
 
-Learn about DevOps consideration for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
+Learn about DevOps considerations for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
 
 > [!div class="nextstepaction"]
 > [Design area: DevOps practices for SaaS workloads on Azure](./devops.md)
