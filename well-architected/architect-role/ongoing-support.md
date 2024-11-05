@@ -3,7 +3,7 @@ title: Support the workload in a consultative role
 description: Learn about how an architect's continued consultative role supports the workload team after product implementation.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
