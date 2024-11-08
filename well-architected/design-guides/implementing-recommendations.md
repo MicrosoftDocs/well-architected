@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 [Azure Well-Architected Review](/assessments/azure-architecture-review/) is a self-assessment that can help a workload team examine a workload from the perspective of the Azure Well-Architected Framework. It consists of approximately 60 questions that are based on the key recommendations provided in the pillars of the Well-Architected Framework. The assessment tool can also pull in [Azure Advisor](/azure/advisor/) recommendations for an Azure subscription or resource group.
 
-At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement.
+Before initiating the assessment, it is essential to prioritize the pillars according to your specific business needs. This approach will allow you to allocate your efforts more effectively and efficiently. At the end of the assessment, you get recommendations and corresponding links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement.
 
 ## When to take the assessment
 
@@ -38,6 +38,7 @@ Over time, the workload will evolve due to functionality changes, eliminating or
 
 ## Tips
 
+- The assessment is a collaborative effort that requires the active and honest participation of multiple experts and stakeholders within a workload. It is essential that all participants feel comfortable discussing shortcomings openly, without fear of repercussions, so the team avoids obscuring workload risks or misses opportunities for improvement.
 - You should always sign in when you take assessments so that the tool can generate milestones.
 
   > [!WARNING]

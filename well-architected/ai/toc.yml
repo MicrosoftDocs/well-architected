@@ -3,6 +3,8 @@
   items:
     - name: Get started
       href: get-started.md
+    - name: Design methodology
+      href: design-methodology.md      
     - name: Design principles
       href: design-principles.md
     - name: Design areas
@@ -21,10 +23,10 @@
         href: operations.md
       - name: MLOps and GenAIOps
         href: mlops-genaiops.md
-      - name: Testing
+      - name: Test and evaluate
         href: testing.md
-      - name: User input, ethics, security
-        href: userinput-ethics-security.md
+      - name: Responsible AI
+        href: responsible-ai.md
     - name: Workload personas
       href: personas.md
     - name: Assessment

@@ -35,7 +35,7 @@ In a solution, you can use a combination of generative AI and discriminative AI 
 
 ## Types of data
 
-You can augment generative AI models by using context data during inference, or optimize them further through a fine-tuning process. Both approaches need supplementary data that provides the model with more context. The model uses that context to answer the user query and form the answer according to the expectations. Typically, you use the following data types:
+You can augment generative AI models by using context data during inference, or optimize them further through a fine-tuning process. Both approaches need supplementary data that provides the model with more context. The model uses that context to answer the user query and forms the answer according to the expectations. Typically, you use the following data types:
 
 - **Source data** is existing data in production. This data can be structured, such as data in databases, or semi-structured, like JSON files. It can also be unstructured, like documents, images, and audio files.
 
@@ -211,7 +211,7 @@ Maintenance over time is a crucial aspect of index design. For static data, wher
 
 - **Scheduled updates**. Instead of maintaining continuous real-time communication with data sources, you can refresh grounding data periodically. This approach ensures that the data stays relevant through scheduled updates, which eliminates the need for constant interaction.
 
-- **Emergency updates**. Unexpected situations can occur, such as unwanted data inadvertently leaking into the search index. If this issue occurs, you might need to take immediate action, such as removing specific documents or adjusting data within the index. Regardless of the model that you choose, such as side-by-side updates or in-place updates, always plan for the possibility of emergency operations.
+- **Emergency updates**. Unexpected situations can occur, such as unwanted data inadvertently leaking into the search index. If this issue occurs, you might need to take immediate action, such as removing specific documents or adjusting data within the index. Regardless of the deployment strategy you choose, such as side-by-side updates or in-place updates, always plan for the possibility of emergency operations.
 
 - **Self-updating index**. If your indexing technology supports automatically updating the index to keep it synchronized with an external data source, it might be able to automatically process changes in the data. Data changes include additions or deletions, without manual intervention. Keep in mind that every change triggers an operation in the index, which consumes resources. The index might remain responsive to queries, but its capacity for handling them could be reduced during the update process.
 
@@ -222,3 +222,8 @@ Measure the window of time between source data creation or modification and its 
 To maintain freshness, you can either rebuild the index entirely, or incrementally update it to stay synchronized with the original data sources. Both methods ensure that the index remains current and accurate.
 
 Upfront investment in fine tuning the model might be less expensive than implementing a RAG pattern, prompt engineering, and data augmentation methods.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Data platform](data-platform.md)

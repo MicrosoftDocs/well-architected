@@ -9,9 +9,9 @@ ms.topic: conceptual
 
 # Design training data for AI workloads on Azure
 
-When you design data for AI functionality in applications, consider both non-functional requirements, such as operability, cost, and security, and functional requirements that are related to data ingestion, preparation, and validation. 
- 
-Data design and application design can't be decoupled. Application design requires that you understand use cases, query patterns, and freshness requirements. To address business requirements that drive the need for using AI, the application might need output from discriminative models, generative models, or a combination of model types. 
+When you design data for AI functionality in applications, consider both non-functional requirements, such as operability, cost, and security, and functional requirements that are related to data ingestion, preparation, and validation.
+
+Data design and application design can't be decoupled. Application design requires that you understand use cases, query patterns, and freshness requirements. To address business requirements that drive the need for using AI, the application might need output from discriminative models, generative models, or a combination of model types.
 
 To produce meaningful results, AI models need to be trained. Model training involves teaching a model to classify or predict new, unseen situations. The training data must be tailored to the specific problem and workload context.
 
@@ -44,7 +44,7 @@ Here's a summary of the recommendations that are provided in this article, toget
 
 To build predictive power in models, you need to collect data, process it, and feed it to the model. This process is usually conceptualized as a pipeline that's broken into stages. Each stage of the pipeline might deal with the same data set, but it might serve different purposes. Typically, you handle data of these types:
 
-- _Source data_ is point-in-time observation data. It can also be data that can be labeled to serve as a potential input to the data pipeline. 
+- _Source data_ is point-in-time observation data. It can also be data that can be labeled to serve as a potential input to the data pipeline.
 
     This data is usually obtained from production or from an external source. These data sources can be in storage accounts, databases, APIs, or other sources. The data can be in various data formats, like OLTP databases, unstructured documents, or log files. This data serves as a potential input to the data pipeline.
 
@@ -58,7 +58,7 @@ In some cases, information that's provided by users during interactions with the
 
 ## Data ingestion and analysis
 
-Training data is collected within a predetermined window that has sufficient representations for training the type of model that you select. For example, when you train a binary classification model, training data must include representations of what is the case (positive examples) and what is not the case (negative examples). For training data to be meaningful, conduct EDA early during feature design.
+Training data is collected within a predetermined window that has sufficient representations for training the type of model that you select. For example, when you train a binary classification model, training data must include representations of what is the case (positive examples) and what isn't the case (negative examples). For training data to be meaningful, conduct EDA early during feature design.
 
 EDA helps analyze source data to identify characteristics, relationships, patterns, and quality issues. You can conduct EDA directly at the source data store or replicate data into centralized stores, like a data lake or data warehouse. The outcome of the process is to inform data collection and processing for effective model training.
 
@@ -123,11 +123,11 @@ The preprocessing logic depends on the problem, data type, and desired outcomes.
 
 - **Quality**. Preprocessing can help you ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality produces meaningful predictive results. 
 
-- **Rescoping**. Source data fields that are too specific can restrict predictive powers. For example, consider an address field. Broadening the scope from full address (house number and street name) to a higher level, like city, state, or country, might be more relevant.
+- **Rescoping**. Source data fields that are too specific can restrict predictive powers. For example, consider an address field. Broadening the scope from full address (house number and street name) to a higher level, like city, state, or country/region, might be more relevant.
 
 - **Deduplication**. Eliminating redundancy can ensure that your training data remains accurate and representative. In certain cases, the frequency with which an observation is made isn't relevant. For example, when you scan logs, if a log entry appears 1,000 times, that indicates its frequency. It doesn't necessarily imply that it's a more serious error than a log that occurred only once. This type of redundancy can introduce noise.
 
-- **Sensitive data handling**. Eliminate personal data unless it's absolutely vital to the model's predictive power in a way that can't be achieved through anonymization. Training data should be effective without compromising privacy. If the data provides value, you need to be aware of the ethical considerations of handling sensitive data. For more information, see [User input, ethics, and security considerations](./userinput-ethics-security.md).
+- **Sensitive data handling**. Eliminate personal data unless it's absolutely vital to the model's predictive power in a way that can't be achieved through anonymization. Training data should be effective without compromising privacy. If the data provides value, you need to be aware of the ethical considerations of handling sensitive data. For more information, see [Responsible AI](./responsible-ai.md).
 
 - **Standardized transformation**. Domain experts consider the preceding techniques to be a core part of feature engineering. Broad scope and diverse source data eventually need to merge into feature stores where features are organized (for example, into feature tables) for the explicit purpose of training models. After you select predictive data for training, transform the data to a standardized format. Standardization also ensures compatibility with the training model.
 
@@ -168,8 +168,13 @@ All models can become stale over time, which causes a model's predictive power o
 
     _The right to be forgotten_ refers to an individual's right to have their personal data removed from online platforms or databases. Be sure to have policies in place to remove personal data that's used for training. 
 
-- **Data retention**. In some situations, you need to rebuild an existing model. For example, for disaster recovery, a model should be regenerated exactly as it was before the catastrophic event. We recommend that you have a secondary data pipeline that follows the workload requirements of the primary pipeline, like addressing model decay, regular updates via trigger-based or routine operations, and other maintenance tasks. 
+- **Data retention**. In some situations, you need to rebuild an existing model. For example, for disaster recovery, a model should be regenerated exactly as it was before the catastrophic event. We recommend that you have a secondary data pipeline that follows the workload requirements of the primary pipeline, like addressing model decay, regular updates via trigger-based or routine operations, and other maintenance tasks.
 
-> ![Consider the tradeoff of data maintenance.](../_images/trade-off.svg) **Tradeoff**. Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates. 
+> ![Consider the tradeoff of data maintenance.](../_images/trade-off.svg) **Tradeoff**. Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates.
 
-Make sure that data maintenance is done as part of model operations. You should have established processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-genaiops.md) design area.
+Make sure that data maintenance is done as part of model operations. You should establish processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-genaiops.md) design area.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Grounding data design](grounding-data-design.md)
