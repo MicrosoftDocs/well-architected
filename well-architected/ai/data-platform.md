@@ -40,7 +40,7 @@ Here's a summary of the recommendations that are provided in this article, toget
 |Recommendation|Description|
 |---|---|
 |**Build secure, performant, and cost-effective data stores.** | A key part of your data platform is a data store that aggregates data from multiple sources and allows integration with various integration tasks. This helps your workload perform at scale. Be sure to review the various functional and non-functional requirements of your data store to ensure a cost effective deployment. <br><br>&#9642; [Considerations for storing aggregated data](#considerations-for-processing-data)|
-|**Follow best practices around data ingestion and processing.** | High quality data helps improve the reliability of your workload as well as its end user experience. Consider the requirements of your workload as well as key best pracitces to build efficient ingestion and data transition processes that help maintain a high quality bar. <br><br>&#9642; [Considerations for processing data](#considerations-for-processing-data)|
+|**Follow best practices around data ingestion and processing.** | High quality data helps improve the reliability of your workload as well as its end user experience. Consider the requirements of your workload as well as key best practices to build efficient ingestion and data transition processes that help maintain a high quality bar. <br><br>&#9642; [Considerations for processing data](#considerations-for-processing-data)|
 |**Design reliable and relevant search indexes.** | Aim for a high-performing, write-once, read-many data store that efficiently handles impromptu and fuzzy queries, delivering relevant results to your user base, even when queries aren’t precise. <br><br>&#9642; [Considerations for a search index](#considerations-for-a-search-index)|
 |**Ensure functional data stores perform at scale.**  | Depending on the functional requirements of your workload you may need to create functional data stores. (for example for offline inferencing) It is important that you create these data stores with their designated function in mind and apply the best practices for the function the need to serve and the scale they need to perform at. <br><br>&#9642; [Considerations for a feature store](#considerations-for-a-feature-store)<br>&#9642; [Considerations for an offline inferencing data store](#considerations-for-an-offline-inferencing-data-store)|
 
@@ -221,7 +221,7 @@ When you choose a processing pipeline, it's crucial to balance throughput and ob
   
   Single-instance setups are considered points of failure. Choose a platform that supports reliability features, such as multiple instances, to meet your requirements.
 
-  The platform should also support resiliency features. For example, the orchestrator should automatically retry failed tasks, which reduces the need for manual restarts.
+  The platform should also support resiliency features. For example, the orchestrator should automatically retry a failed task, which reduces the need for manual restarts.
 
   Batch processing can be less reliable than inferencing, depending on data freshness and latency requirements. If training occurs weekly and processing takes one day, occasional failures are acceptable because there's enough time to retry.
 
@@ -271,7 +271,7 @@ The search index is designed to store contextual or grounding data to send to th
   
   The search process involves two steps: querying the data store and then querying the inferencing endpoint. Both steps need to have similar reliability characteristics. Balance your reliability objectives between both components to ensure search effectiveness.
 
-  To ensure resiliency, the workload should support the expected number of concurrent users and have sufficient bandwidth to handle traffic surges. Ideally, the platform should survive zonal outages, which adds an extra layer of resiliency.
+  To ensure resiliency, the workload should support the expected number of concurrent users and have sufficient bandwidth to handle traffic surges. Ideally, the platform should survive zonal outages. 
   
   The data platform should be designed to prevent the use of a corrupted index for inferencing. In such cases, you should be able to rebuild the index easily. The index should also support reliable swapping between indexes by using features like aliasing to minimize downtime during index swaps. Without this functionality, you might need to rely on a backup of the index. Managing a backup comes with more complexity.
 
@@ -307,17 +307,17 @@ The search index is designed to store contextual or grounding data to send to th
 
 ## Considerations for an offline inferencing data store
 
-  Use the [cache-aside design pattern](/azure/architecture/patterns/cache-aside) for faster future lookups. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store. This process makes the AI model transient. Preemptive inferencing serves results through lookups. There are several benefits, including:
+  In some scenarios, use of a separate store is appropriate for faster future lookups because inferencing is done on pre-collected and pre-calculated data, in advance. In this process, the user request never reaches the AI model. There are several benefits:
   
-  - Efficiency for frequent queries, like FAQs.
-  - Prevalidation to ensure accuracy before production.
-  - Load reduction on the inference endpoint, which contributes to the reliability of the workload.
+  - Improved efficiency and user experience by reducing latency. Results are served faster for frequent queries, such as generating FAQs as the result.
+  - Inference calls can be scaled out more easily as a batch process without the constraints of real-time processing.
+  - Allows prevalidation to ensure accuracy before production.
+  - Because the request isn't directed to the interference endpoint, it reduces the load, contributing to the reliability of the workload.
+  - Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
 
-  However, this approach is only effective if you can predict possible requests. For unique queries, caching might be less effective.
+  However, this approach is only effective if you can predict the possible requests _and_ a significant portion of the predictions are expected to be requested by users. For scenarios with fewer repeated requests, an offline inference store might be less effective.
   
-  The data store for this scenario should be optimized for read operations, such as a dedicated search index or table storage. It should also be able to integrate into the aggregated data store.
-
-  If you're using Azure Cosmos DB in your architecture, take advantage of its [built-in integrated cache](/azure/cosmos-db/integrated-cache) to implement this pattern. Azure Cache for Redis is also suitable because it provides an in-memory data store and secure caching capabilities.
+  The data store for this scenario should be optimized for read operations, must be able to handle large volumes of data and provide efficient retrieval. It should also be able to integrate into the aggregated data store. Any store with those capabilities can be considered, such as Azure Cosmos DB, or even a table storage.
 
 ## Resources
 
