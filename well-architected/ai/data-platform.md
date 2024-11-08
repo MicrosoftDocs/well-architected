@@ -307,19 +307,17 @@ The search index is designed to store contextual or grounding data to send to th
 
 ## Considerations for an offline inferencing data store
 
-  In some scenarios, use of the [cache-aside design pattern](/azure/architecture/patterns/cache-aside) is appropriate for faster future lookups because inferencing is done on pre-collected data, in advance. Offline inferencing implements this pattern by precalculating predictions for possible inputs and storing them in a separate data store. This process makes the AI model transient. Preemptive inferencing serves results through lookups. There are several benefits:
+  In some scenarios, use of a separate store is appropriate for faster future lookups because inferencing is done on pre-collected and pre-calculated data, in advance. In this process, the user request never reaches the AI model. There are several benefits:
   
-  - Improved efficiency and user experience by reducing latency. Results are served faster for frequent queries, such as FAQs, because they come from the cache instead of a new inference request to the model.
-  - Inference calls can be scaled out more easily as a batch process without the constrains of real-time processing.
+  - Improved efficiency and user experience by reducing latency. Results are served faster for frequent queries, such as generating FAQs as the result.
+  - Inference calls can be scaled out more easily as a batch process without the constraints of real-time processing.
   - Allows prevalidation to ensure accuracy before production.
-  - Reduces the load on the inference endpoint, contributing to the reliability of the workload.
+  - Because the request isn't directed to the interference endpoint, it reduces the load, contributing to the reliability of the workload.
   - Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
 
-  However, this approach is only effective if you can predict possible requests and a significant portion of the predictions are at runtime. For scenarios with fewer repeated requests, caching might be less effective.
+  However, this approach is only effective if you can predict the possible requests _and_ a significant portion of the predictions are expected to be requested by users. For scenarios with fewer repeated requests, an offline inference store might be less effective.
   
-  The data store for this scenario should be optimized for read operations, must be able to handle large volumes of data and provide efficient retrieval. It should also be able to integrate into the aggregated data store.
-
-  If you're using Azure Cosmos DB in your architecture, take advantage of its [built-in integrated cache](/azure/cosmos-db/integrated-cache) to implement this pattern. Azure Cache for Redis is also suitable because it provides an in-memory data store and secure caching capabilities.
+  The data store for this scenario should be optimized for read operations, must be able to handle large volumes of data and provide efficient retrieval. It should also be able to integrate into the aggregated data store. Any store with those capabilities can be considered, such as Azure Cosmos DB, or even a table storage.
 
 ## Resources
 
