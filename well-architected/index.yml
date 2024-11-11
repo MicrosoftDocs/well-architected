@@ -134,6 +134,10 @@ sections:
     title: Workloads
     blocks:
       - componentType: summary-card
+        title: Software as a service (SaaS)
+        summary: Key insights for Startups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
+        url: ./saas/index.yml   
+      - componentType: summary-card
         title: Oracle on IaaS
         summary: Host Oracle workloads on Azure, which includes not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards. 
         url: ./oracle-iaas/overview.md

@@ -3,7 +3,7 @@ title: Collaboration with the workload team
 description: See how an architect collaborates with the workload team during implementation. Learn about ongoing collaboration tasks like setting review checkpoints.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
@@ -24,6 +24,10 @@ Delivering architecture specifications isn't a one-off task. An architect should
 - **Make environment recommendations**. Workload design often extends beyond designing for production and its disaster recovery. Production is just one of many environments a workload implementation team might need. Architects can also assist workload teams in right-sizing preproduction environments.
 
 - **Use a proof of concept (POC)**. Architects frequently use POCs in their designs to inform decisions about the design specifications for the workload architecture. These POCs can also provide insight into the feasibility of the actual workload implementation. If a POC doesn't exist, an architect should create one before the implementation team starts development.
+
+## Collaboration with platform teams
+
+Some organizations split responsibilities between workload teams and platform teams, such as suggested in Azure landing zones. For workloads that will be partnering with platform teams to co-deliver solutions and value, it's important to collaborate with those teams. If you don't collaborate with platform teams, your design might miss out on taking cost advantage of available platform-provided offerings or you might design a solution that violates platform-mandated constraints on workloads.
 
 ## Next steps
 
