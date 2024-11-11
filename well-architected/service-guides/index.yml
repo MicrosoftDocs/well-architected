@@ -212,6 +212,12 @@ productDirectory:
       azureCategories:
         - networking
     # Card
+    - title: Azure NetApp Files 
+      summary: Migrate and run complex, file-based applications with no code change.
+      imageSrc: https://static.docs.com/ui/media/product/azure/netapp-files.svg
+      url: azure-netapp-files.md
+      azureCategories: 
+        - storage
     - title: Azure Machine Learning
       summary: Build, train, and deploy machine learning models.
       imageSrc: _images/azure-machine-learning.svg

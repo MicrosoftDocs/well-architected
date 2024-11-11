@@ -3,13 +3,23 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 09/05/2024
+ms.date: 10/04/2024
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## September 2024
+
+### New articles
+
+- [Azure Well-Architected Framework perspective on Azure NetApp Files](./service-guides/azure-netapp-files.md): Explore design considerations and configuration recommendations for Azure NetApp Files. Azure NetApp Files is a fully managed file share service that supports the Server Message Block (SMB) protocol and Network File System (NFS) protocol. Learn how you can use Azure NetApp Files for file sharing, high-performance computing, home directories, and databases.
+
+### Updated articles
+
+- [Azure Well-Architected Framework perspective on Azure Firewall](./service-guides/azure-firewall.md): We made significant updates to the guidance about Azure Firewall. Explore the fully updated content including new recommendations for configuring Azure Firewall to protect your workloads.
 
 ## August 2024
 
@@ -83,7 +93,7 @@ Find new articles and updated guidance about Oracle workloads on Azure. Explore 
 
 ### New articles
 
-- [Health modeling for workloads](./cross-cutting-guides/health-modeling.md): Use health modeling to improve workload reliability in Azure. Differentiate between healthy, degraded, and unhealthy states. Learn how to quantify application health and build your own health model.
+- [Health modeling for workloads](./design-guides/health-modeling.md): Use health modeling to improve workload reliability in Azure. Differentiate between healthy, degraded, and unhealthy states. Learn how to quantify application health and build your own health model.
 - [Azure Well-Architected Framework review for Log Analytics](./service-guides/azure-log-analytics.md): Learn about the architectural recommendations for Log Analytics workspaces in Azure Monitor. These workspaces are the primary log and metric sink for a large portion of the monitoring data. Workspaces support multiple features in Azure Monitor, including ad-hoc queries, visualizations, and alerts.
 
 ### Updated articles
@@ -113,7 +123,7 @@ In January, we added two new articles, and we updated two articles.
 
 - In [Virtual Machines and scale sets](./service-guides/virtual-machines.md), find guidance about how to review your virtual machine and scale set workloads by using the Well-Architected Framework. Use the Azure Virtual Machines compute service to create and run virtual machines on the Azure platform. You can choose from different SKUs, operating systems, and configurations. 
 
-- In [Optimize workload design using flows](./cross-cutting-guides/optimize-workload-using-flows.md), learn how to optimize workloads through structured flow design. Take a look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. As you work to align flows with business processes and use cases, find practical examples and recommendations in this article.
+- In [Optimize workload design using flows](./design-guides/optimize-workload-using-flows.md), learn how to optimize workloads through structured flow design. Take a look at a three-step process for workload optimization, including defining flow structures, setting technical requirements, and designing flows to meet these specifications. As you work to align flows with business processes and use cases, find practical examples and recommendations in this article.
 
 ### Updated articles
 
@@ -225,8 +235,3 @@ In addition to the changes in structure and consistency, you should note some th
 
 - Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md)
 - Updated service guide: [Azure Well-Architected Framework review - Azure Firewall](./service-guides/azure-firewall.md)
-
-## September 2023
-
-- New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
-- Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](service-guides/postgresql.md)

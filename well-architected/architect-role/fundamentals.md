@@ -3,7 +3,7 @@ title: Solution architect's fundamentals
 description: Learn guiding principles that Well-Architected architects should follow to be effective in their function.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/15/2023
+ms.date: 11/01/2024
 ms.topic: conceptual
 ---
 
@@ -59,6 +59,14 @@ To design a system that will last until its planned end of life, you must design
 **Regional expansion**. Consider future expansion of the workload into multiple regions. A design that's limited to a single region will need to be heavily refactored for multiple-region deployment, and that can be a costly change. There's even more complexity if the workload design needs to accommodate multiple geographies with different compliance requirements. Make sure that your design factors in any reasonable prediction about regional expansion.
 
 **Product roadmaps**. In your design, don't include components that are on the path to deprecation. Likewise, be careful when you include features in your design that are currently in a preview state. They might be released, but they might also be canceled. Being ahead of the curve by using preview features can be highly advantageous. Soon after the feature is released, the workload is prepared to go to production. But include preview features in your design only after you do a careful risk analysis. Ship only features that have a tolerated risk profile.
+
+For more information on cloud design patterns, see:
+
+- [Cloud design patterns that support reliability](../reliability/design-patterns.md)
+- [Cloud design patterns that support security](../security/design-patterns.md)
+- [Cloud design patterns that support cost optimization](../cost-optimization/design-patterns.md)
+- [Cloud design patterns that support operational excellence](../operational-excellence/design-patterns.md)
+- [Cloud design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
 
 ## Design for supportability
 

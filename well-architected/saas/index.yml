@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Software as a service (SaaS) Workload Documentation
+summary: Delivering SaaS on Microsoft Azure differs from other software types. This set of articles offers key insights for independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. It provides actionable guidance based on Well-Architected best practices for building and operating SaaS on Azure at scale.
+metadata: 
+  title: Software as a service (SaaS) Workload Documentation
+  description: Actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a SaaS solution on Azure at-scale.
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 12/15/2023
+  ms.topic: landing-page
+  ms.collection: learn-startups
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is a SaaS workload?
+            url: get-started.md
+          - text: Design methodology
+            url: design-methodology.md                
+          - text: Design principles
+            url: design-principles.md 
+
+   # Card
+  - title: Technical design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Resource organization
+            url: resource-organization.md        
+          - text: Identity and access management
+            url: identity-access.md            
+          - text: Compute
+            url: compute.md
+          - text: Networking
+            url: networking.md
+          - text: Data
+            url: data.md
+
+    # Card
+  - title: Operational design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Billing and cost management
+            url: billing-cost-management.md
+          - text: Governance
+            url: governance.md            
+          - text: DevOps practices
+            url: devops.md
+          - text: Incident management
+            url: incident-management.md
+
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Assessment tool
+            url: assessment.md
+
+ # Card
+  - title: Additional guides
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Multitenant solutions on Azure
+            url: /azure/architecture/guide/multitenant/overview?branch=main   
+          - text: Plan your journey to SaaS
+            url: /azure/architecture/guide/saas/plan-journey-saas
