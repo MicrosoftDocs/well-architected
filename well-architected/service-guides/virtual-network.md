@@ -170,6 +170,24 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
+> - **Skill up on Azure networking constructs**.  When onboarding to Azure, networking teams often assume their existing knowledge will suffice, but many aspects differ in Azure. Make sure the team understands the fundamental Azure networking concepts, DNS complexities, routing, and security capabilities. Build a taxonomy of networking services so that the team can share knowledge and have a common understanding.
+>
+> - **Formalize your network design**. Document the design and any changes, including configuration details like route tables, network security groups (NSGs), and firewall rules. Include the governance policies that are in place, such as blocking ports. Having clear documentation will make collaboration with other teams and stakeholders effective. 
+>
+> - **Use design patterns that optimize network traffic**. To optimize network use and configuration, implement known design patterns that minimize or optimize network traffic. Additionally, validate the network configuration during builds using security scanners to ensure everything is set up correctly.
+>
+> - **Do consistent network deployments**. Use Infrastructure as Code (IaC) for all components, including network peerings and private endpoints. Recognize that core networking components are likely to change less frequently than other components. Implement a layered deployment approach for your stack so that each layer can be managed independently. Also,  avoid combining IaC with scripting to prevent complexity.
+>
+>   Certain components such as DNS and firewall might be managed by central teams. Work with those teams to communicate any necessary changes.
+>
+> - **Monitor the networking stack**. Regularly use [VNet Flow Logs](/azure/network-watcher/vnet-flow-logs-overview) and [Traffic analytics](/azure/network-watcher/traffic-analytics) to verify to identify changes in demand and patterns.
+>
+>   Use [Connection monitor](/azure/network-watcher/connection-monitor-overview) to to analyze and identify issues like connection drops before they impact applications. Where possible set alerts to get notified about these disruptions.
+>
+>   Similar to other components in the architecture, capture all relevant metrics and logs from various networking components, such as the virtual network, subnets, network security groups, firewalls, load balancers, and others. Aggregate, visualize, and analyze them in your dashboards, creating alerts on important events.
+>
+> - **Include networking in your failure mitigation strategy**. Rolling back changes isn't applicable to VNets as they are part of the core infrastructure and don't usually undergo upgrades. VNets and subnets are deployed initially and typically remain unchanged, making rollbacks difficult.
+>
 > - **Strive for simple operations**. Simplified networks are easier to monitor, troubleshoot, and maintain, reducing the workload for IT teams. For example, if your topology is hub-spoke, then stick to the typical layout. Don't complicate the architecture by mixing approaches.
 >
 > - **Right-size your subnets** (@jose recommendation?). When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth. However, avoid making them excessively large. You might need to carve out more subnets for new components in your workload. 
