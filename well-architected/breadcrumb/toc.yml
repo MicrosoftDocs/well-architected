@@ -50,6 +50,9 @@
       - name: Oracle on IaaS
         tocHref: /azure/well-architected/oracle/
         topicHref: /azure/well-architected/oracle-iaas/overview
+      - name: SaaS
+        tocHref: /azure/well-architected/saas/
+        topicHref: /azure/well-architected/saas/index        
       - name: SAP
         tocHref: /azure/well-architected/sap/
         topicHref: /azure/well-architected/sap/quick-links

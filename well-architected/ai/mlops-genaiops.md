@@ -38,6 +38,17 @@ You must implement established processes with the **right set of tools**. Specia
 
 This article focuses on the design strategy for operations and provides tool recommendations.
 
+## Recommendations
+
+Here's a summary of the recommendations that are provided in this article, together with links to the appropriate sections in the article. 
+
+|Recommendation|Description|
+|---|---|
+|**Design an efficient workload operations lifecycle.** | Based on the components of your AI workload different operational stages will apply to its lifecycle. It's important that you understand the best practices relevant to your scenario and the tools that are available to you to implement them. Take the the time to learn about and implement the key recommendations for all components of your workload. <br><br>&#9642; [DataOps](#dataops)<br>&#9642; [MLOps](#mlops)<br>&#9642; [MLOps](#genaiops)<br>&#9642; [Monitoring](#monitoring)|
+|**Automate everything.** | Automation ensures repeatability and efficiency in a workload's lifecycle. While DevOps processes are a key contributor to this, there are additional steps that you need to take to build, test, validate, and deploy your models efficiently. <br><br>&#9642; [Automation](#automation)|
+|**Utilize deployment pipelines where possible.** | Deployment pipelines can not only help you deliver repeatable infrastructure deployments, or integrate code continuously. They are also a great tool for creating and/or validating models before promoting them to production. Implementing deployment pipelines helps you improve reliability as well as the overall user experience of your workload. <br><br>&#9642; [Deployment Pipelines](#deployment-pipelines)|
+|**Prevent drift and decay in your models.**  | You must guard against model decay and drift while also having a structured process that helps you accept new model changes in a controlled way. Following the recommendations around model maintenance helps you remain compliant, avoid unexpected user experiences, and provide a more up-to-date service. <br><br>&#9642; [Model Maintenance](#model-maintenance)|
+
 ## Workload operations lifecycle
 
 This image illustrates the operational stages for AI models, including data gathering, cleaning data to eliminate inconsistencies or errors, and transforming data into an analyzable format. These stages are relevant for training both discriminative models and grounding data in generative models. However, the specific use case of training generative models isn't depicted in this image. That use case falls outside the scope of this article.
