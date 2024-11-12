@@ -134,6 +134,10 @@ sections:
     title: Workloads
     blocks:
       - componentType: summary-card
+        title: Artificial Intelligence (AI)
+        summary: Design and operationalize AI workloads that are expected to be always available and resilient to failures.
+        url: ./ai/index.yml
+      - componentType: summary-card
         title: Software as a service (SaaS)
         summary: Key insights for Startups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
         url: ./saas/index.yml   

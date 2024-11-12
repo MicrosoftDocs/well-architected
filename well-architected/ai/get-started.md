@@ -57,15 +57,15 @@ Some examples of workloads that aren't included in the scope of this series of a
 
 Microsoft Azure offers a broad range of AI services that you can build around your workload or integrate into an existing workload. You can choose between fully managed software as a service solutions (SaaS), platform as a service solutions (PaaS), or you can build your own AI solution using Azure compute services. While these options can make adopting AI technologies easier for your workload teams, there are challenges that will inevitably come up. Common challenges include:
 
-- Building and running AI functions can be a costly endeavor due to the high costs of compute resources. The amount of compute resources needed for your AI workload lifecycle can vary signifcantly depending on your use case and workload design. Understanding your compute requirements and finding the right compute service to meet those requirements can help you keep costs under control.
+- Building and running AI functions can be a costly endeavor due to the high costs of compute resources. The amount of compute resources needed for your AI workload lifecycle can vary significantly depending on your use case and workload design. Understanding your compute requirements and finding the right compute service to meet those requirements can help you keep costs under control.
 
-- Security and compliance requirements and your use case may limit your ability to use off-the-shelf solutions, like publicly accessible models or SaaS products. It's important to research all of your options to ensure that you're not creating unnecessary development and operational burden by building your own solution when an off-the-shelf solution is available to you.
+- Security and compliance requirements and your use case can limit your ability to use off-the-shelf solutions, like publicly accessible models or SaaS products. It's important to research all of your options to ensure that you're not creating unnecessary development and operational burden by building your own solution when an off-the-shelf solution is available to you.
 
 - AI functions typically deal with large amounts of data, often coming in multiple data types. Handling your data securely, efficiently, and cost effectively is critical to the overall workload. Challenges related to data include:
 
   - The volume of data needs to be determined to plan for the appropriate amount of resources.
 
-  - The different types of data and the appropriate considerations for handling each type needs to be determined.
+  - The different types of data and the appropriate considerations for handling each type need to be determined.
 
   - The origins of the data need to be identified to prepare pipelines for ingestion.
 
@@ -77,7 +77,7 @@ Microsoft Azure offers a broad range of AI services that you can build around yo
 
 - If your organization is new to AI workloads, you need to invest in training and possibly new roles to support your workload. You might require data scientists, specialized developers, and other specialized roles in addition to new operations processes that require extensive training.
 
-- New technologies and new functions are released with incredible speed so it can be tempting to use the latest and most impressive technology to stay at the bleeding edge. However, by going that route, you may adopt a technology that provides a worse user experience overall for your customers, or is unnecessarily complex. 
+- New technologies and new functions are released with incredible speed so it can be tempting to use the latest and most impressive technology to stay at the bleeding edge. However, by going that route, you may adopt a technology that provides a worse user experience overall for your customers, or is unnecessarily complex.
 
 - You need to clearly determine whether your use case is an ethical target for AI. The implications of putting an AI workload into production aren't always immediately obvious, so careful consideration needs to be done throughout the planning and implementation phases to ensure that you're building a [responsible system](https://www.microsoft.com/en-us/ai/responsible-ai).
 
@@ -98,10 +98,10 @@ The following table describes some key design areas for building and operating A
 |Design areas|
 |---|
 |[Application design](./application-design.md): Learn about considerations unique to AI workloads that might have a significant effect on your existing application design standards. |
-|[Application platform ](./application-platform.md): Determine the best platforms to use to support AI workload functions, like model hosting, model training, and inferencing. |
+|[Application platform](./application-platform.md): Determine the best platforms to use to support AI workload functions, like model hosting, model training, and inferencing. |
 |[Training data design](./training-data-design.md): Design strategies for data ingestion, preprocessing, retention, and governance topics to handle your model training data. |
 |[Grounding data design](./grounding-data-design.md): Design strategies to optimize searchability and retrieval, while meeting security and compliance requirements for your grounding data. |
-|[Data platform ](./data-platform.md): Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
+|[Data platform](./data-platform.md): Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
 |[Machine learning operations and Generative AI operations](./mlops-genaiops.md): Establish modern DevOps practices to support your machine learning or generative AI functions and systems. |
 |[Workload operations](./operations.md): Modernize your operational practices with new approaches and adding specialized roles and training. |
 |[Testing and evaluation](./testing.md): Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensitivity, and specificity through metrics that have been specifically targeted for AI workloads. |
