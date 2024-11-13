@@ -11,160 +11,160 @@ ms.subservice: waf-workload-ai
 
 # Application design for AI workloads on Azure
 
-Scope:
+There are many choices available for you to consider when planning to build an application with AI functions. Your unique functional and nonfunctional requirements will help you narrow down high-level decisions about your design, like whether the use case is traditional machine learning, generative, or deterministic, or a combination of AI types. As you move from the high-level design areas to lower level design areas, you'll have several choices to consider along the way. This article explores many common design areas and covers factors to consider when making important decisions about technology or approach choices.
 
-- Code deployed on the client
-- Code deployed in any middleware (such as orchestrators) that calls to models (e.g. classification, language, vision, etc).
-- Model hosting code (APIs)
+## Recommendations
 
-Out of scope:
+|Recommendation|Description|
+|---|---|
+| Prefer off-the-shelf solutions. | Whenever practical use platform as a service (PaaS) solutions to handle much of the workload functions. Likewise, use prebuilt and pre-trained models whenever practical to minimize the operational and development burden for your workload and operations teams. |
+| Abstract functions and capabilities away from the client. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
+| Block access to the data stores. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
+| Isolate your models. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
 
-- Code for model training
-- Code for RAG database population
+## AI application design patterns
 
-Topics:
+There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
 
-- Model endpoint code
-  - How do you pick between exposing real-time, streaming, or batch inferencing APIs?
-  - API SDKs
-  - Designing for observability
-  - Supporting stateful experiences
-  - Building scalable model hosting code
-  - How does Azure help?
-  - Containerization?
-  - What is the API surface?
-
-- When do you design using an orchestrator/middleware vs direct client access to models?
-  
-- Recommendations specific to orchestrators
-  - Error handling (setting client expectations)
-  - How do you select orchestrator/middleware language/SDK?
-  - How does Azure help?
-  - Building scalable code
-  - Supporting stateful experiences
-  - Containerization?
-  - Grounding/augmentative data access (dependencies)
-  - What is the API surface?
-
-- Recommendations specific to clients:
-
-  - going directly to models
-    - E.g. failover, loadblancing, self-preservation
-    - Language and SDK considerations
-    - How does Azure help?
-  - going to orchestrators
-    - E.g. failover, loadblancing, self-preservation
-    - Language and SDK considerations
-    - How does Azure help?
-
-- Working with long running AI jobs gracefully in an application
-- Dealing with latency on a user experience level
-- Programming Patterns (not sure whether to include)
-  - Implementing the RAG pattern 
-  - Implementing Machine Learning algorithms
-  - Optimization of classical AI code
-
-- Efficiency considerations for classical AI problems
-- Efficiency considerations for working with models
-- Planning Prompts 
-- Prompt Engineering
-- Prompt Evaluation
-- Avoiding Jailbreak
-- Orchestration (not sure if this should include direct SDK references – examples below)
-  - Semantic Kernel & Langchain
-
-## Monitoring
-
-
-## Leftover
-
- Data / LLM Education
-
-Do user get an introduction on the the expected quality of the chat system, the likelyhood that AI creates wrong content, and limitation of what kind of questions can be answered?
-
-Standart RAG architecture cannot answer questions like "how many documents have this feature?" Consider a GraphRAG architecture instead
-
-## Measurement
-
-Groundedness: Refers to how well a generative model’s answers align with the source data. It measures whether the model generates content that is consistent with reality.
-Relevancy: Indicates how pertinent the response is to the given question. A highly grounded answer may still lack relevancy if it doesn’t address the question directly.
-Coherence: Evaluates whether the model’s speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
-Fluency: Relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
-Retrieval Score: Measures the effectiveness of the orchestrator’s retrieval process. It considers whether the query to the index retrieved the most relevant data.
-
-Data design and application design cannot be decoupled. Application design involves understanding use cases, query patterns, and freshness requirements. From a data design perspective, consider whether data needs constant refreshing or occasional updates. This choice impacts the ability to do online or offline inferencing.
-
-In offline inferencing, predictions are based on precomputed data that's stored in look-up tables. Because results are determined ahead of time, look up has minimal latency. Another advantage is that you can validate (or even tweak) predictions before  production.
-
-For example, consider a computer vision model trained to identify cats in pictures. These models remain effective as long as the underlying data is relatively static and doesn't require doesn't require frequent updates or real-time adjustments. Offline inferencing often relies on static training.
-
-In contrast, for online inferencing, there aren't any precomputed predictions. Predictions are made in real time by invoking models on-demand, responding to specific queries or events. Data freshness becomes critical in this case because models need to adapt quickly to changing patterns. Keeping such models up-to-date is required to maintain accuracy. TODO: Add something around low latency requirements. 
-
-For example, models trained on user behavior, such as website interactions, need dynamic data. The model should be able to adapt the website behavior based on recent user actions.  
-
-
--------------------------------------------
-
-## DUMP ZONE
-
-@Clayton, @Chad, @Jose. These concepts were discussed during the RAI content development and weren't suitable for that design area. In internal discussions, these were more suitable for app design. See reuse as you see fit.
-
-### User experience performance
-
-- **Monitor UI experience**. Engagement metrics are a good way to efficacy of the user experience. Increased time on a page can indicate either positive engagement or user frustration. There might be expected or unexpected latency issues. For example, with multimodal capabilities, such as those providing responses through voice or video, latency can be significant, leading to longer response times. If there's increased time, consider providing immediate feedback to the user, which can improve user satisfaction.   
-
-
-### Encrypt data
-
-
-- **Data at rest**
-
-    At a minimum, data should be encrypted using platform-level features like Microsoft-managed keys. For added security, Azure offers customer-managed keys, so that only you as the owner can decrypt the data. Additionally, data can be double encrypted, meaning Azure retains a key for extra protection.
+- **Retrieval-Augmented Generation (RAG):** This pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
     
-    Platform-level encryption ensures data is protected while at rest, but once accessed via an API, the data is decrypted and available in plain text.
+    - *Just-in-time:* This approach retrieves relevant information dynamically at the time of a request, ensuring the latest data is always used. It's beneficial in scenarios requiring real-time context, but may introduce latency. 
     
-    Key rest points for data include aggregated data stores, such as data lakes, and the model itself, which combines data and compute.
+    - *Pre-calculated (cached):* This method involves caching retrieval results, reducing response times by serving pre-computed data. It's suitable for high-demand scenarios where consistent data can be stored, but may not reflect the most current information, leading to potential relevance issues. 
 
-    @Chad/@Jose Homework 1: Customer managed key in Azure OpenAI, does it affect the model. 
+- **Model ensembling:** This design pattern involves combining predictions from multiple models to improve accuracy and robustness, mitigating the weaknesses of individual models.
 
-- **Data in transit**
+- **Microservices architecture:** Separating components into independently deployable services enhances scalability and maintainability, allowing teams to work on different parts of the application simultaneously.
 
-    For data in transit, all platform services support HTTPS traffic. If you host your own models and endpoints, avoid using HTTP. Instead, use HTTPS, which is practical and provides essential encryption.
+- **Event-Driven architecture:** Utilizing events to trigger actions allows for decoupled components and real-time processing, making the system more responsive and adaptable to changing data.
 
-    As data moves through various hops, decide whether to encrypt/decrypt at each point. Network intermediaries, like API gateways, need to decrypt the payload in order to process it.  API gateways typically terminate TLS connection, decrypt the payload, and then re-encrypt it for backend connections. 
+- **Layered architecture:** Organizing components into layers (presentation, business logic, and data access, for example) promotes separation of concerns and easier maintenance.
 
-- **Data in use**
+Consider using one of these design patterns when your use case meets one of these conditions:
 
-    The preceding options are generally sufficient for most workloads where data is encrypted in transit and at rest, but it's decrypted for processing, such as for training models, fine tuning, or reading from an index. 
-    
-    Homomorphic encryption enables inferencing on fully encrypted data, ensuring the highest level of security. Data remains encrypted as it flows through various components. This specialized mechanism goes beyond traditional TLS, preventing intermediary points from inspecting the encrypted data. This design is appropriate for highly trusted scenarios that requires a closed system. 
-    
-    However, there's a tradeoff on the cost and accuracy. You can't analyze, inspect, or log the encrypted data. Also, content safety checks can't be performed on the encrypted data. In less sensitive cases, accuracy might be prioritized over this level of encryption. In highly secured environments with extra layers of encryption, achieving explainability can be challenging due to the lack of transparency.
-	
-	
-### Access management:
+- *Complex workflows:* When dealing with complex workflows or interactions between multiple AI models, patterns like RAG or microservices can help manage complexity and ensure clear communication between components.
 
-Several types of identities can potentially access user data or user identities that influence inferencing need to be preserved. This requirement might need complex workload design. Or, the case where system reliability engineers need appropriate level of access when needed, for operational purposes. Additionally, internal components and external systems may communicate with the model. Therefore, robust access control must address: 
+- *Scalability requirements:* If the demand on your application may fluctuate, using a patterns like microservices allows individual components to scale independently, accommodating varying loads without impacting overall system performance.
 
--  **Data access**. Implement Role-Based Access Control (RBAC) for both the control plane and data plane, covering users and system-to-system communication.
+- *Data-Driven applications:* If your application require extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing. 
 
--  **User segmentation**. Maintain proper user segmentation to protect privacy. For example, Copilot can search and provide answers based on a user's specific documents and emails, ensuring only content relevant to that user is accessed.
+Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
 
-@chad/jose: homework 2: What does this design actually look like. Perhaps a diagram in the app design and then show access controls in it. This is from Jose:
+## Architecture design considerations
 
-When indexing documents for multiple users using productivity tools like SharePoint, access control can be done through RBAC or Attribute-Based Access Control (ABAC), depending on complexity. While RBAC may suffice in some cases, ABAC might be necessary for more complex requirements. The specific approach depends on the actual requirements.
+As a general rule of thumb, approach your design with the same philosophy as other modern applications. Avoid tight coupling of components to the extent practical and abstract functions away from critical components to optimize reliability and security. 
+When considering the number of application layers, strive for using only as many layers as necessary for a viable product. Start with one layer, and add in layers when the complexity requires specialized tasks, like routing, transformation, and authentication.
 
-When a user initiates a call to an index, implementing RBAC is straightforward. However, if an orchestrator handles the request and makes subsequent calls to various indexes and models, the user's identity must be preserved throughout these interactions. This ensures that access permissions are correctly enforced, allowing the user to access only the documents they are authorized to view.
+### Independently deployable components
 
-### Enforce security on user access to APIs and data**
+Designing components to be independently deployable enhances the flexibility, scalability, and maintainability of your workload. Key components that should be independently deployable include: 
 
-A fundamental strategy of the Well-Architected Framework Security pillar is minimizing the attack surface and harden resources. That strategy should be applied to standard endpoint security practices by tightly controlling API endpoints, exposing only essential data, and avoiding extraneous information in responses. The design choice should be balanced between flexibility and control. Here are some check points:
+- **AI models:** Each AI model (classification models, regression models, or recommendation systems) should be treated as a separate deployable unit. This allows for model updates, rollback, and versioning without impacting other components of the system.
 
-- **All inferencing endpoints must require user authentication**, even for system-to-system calls. Do not have anonymous endpoints. 
+- **Microservices:** Any microservices that handle distinct functionalities, such as data preprocessing, feature extraction, or inferencing, should be independently deployable. This modularity supports continuous integration and deployment (CI/CD) practices, allowing teams to work on different services simultaneously without causing disruption.
 
-- **Restrict the API surface**. For example, if the client sends prompts and hyperparameters, the larger surface requires analyzing prompts to prevent jailbreaking. Instead, reduce flexibility by having the client send minimal data, with the server constructing prompts using predefined templates. This approach minimizes user-injected security risks.
+- **Data pipelines:** The components of data pipelines (ingestion, transformation, loading) should also be independently deployable. This separation enables you to make changes or optimize specific parts of the pipeline without requiring a full redeployment of the entire pipeline.
 
-- **Design a constrained API at the cost of client-side flexibility**. If the SDK is client-side and calls your API, it offers flexibility but lacks control. Using a custom API with only necessary fields, where your API handles the SDK functions, increases security by limiting client-side flexibility. 
+- **User interfaces (UIs):** If your application has a frontend component, ensure that it can be deployed independently. This enables UI updates and enhancements without requiring backend changes, leading to faster iteration cycles. 
 
-    In general, avoid giving clients more control than necessary. In most scenarios, clients don't need to adjust hyperparameters except in experimental environments. For typical use cases, such as interacting with a virtual agent, clients should only control essential aspects to ensure security by limiting unnecessary control.
+### Containerization of components
 
+To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. Benefits of containerization include:
+
+- **Version pinning:** Containerization allows you to specify and pin the exact versions of libraries and dependencies, ensuring that the application behaves consistently across different environments (development, staging, production). 
+
+- **Isolation:** Containers provide an isolated environment for each component, reducing the risk of conflicts and dependencies affecting other parts of the application. 
+
+- **Scalability:** Containerized applications can be easily scaled up or down based on demand, enabling efficient resource utilization. 
+
+- **Portability:** Containers encapsulate all necessary components, making it easier to deploy applications across various environments, whether on-premises or in the cloud. 
+
+- **Simplified deployment**: Containers streamline the deployment process, enabling automated deployment pipelines and reducing manual intervention during updates or scaling operations. 
+
+The following components should be containerized:
+
+- **Microservices:** Individual microservices that handle specific functions of the application, such as data processing, model inference, or user authentication, should be containerized. This allows for independent deployment and scaling, facilitating more efficient updates and maintenance.
+
+- **AI models:** AI models can be containerized to ensure that all dependencies, libraries, and configurations are bundled together. This isolates the model environment from the host system, preventing version conflicts and ensuring consistent behavior across different deployment environments.
+
+- **Data processing pipelines:** Any data processing tasks that precede or follow model inference, such as data cleaning, transformation, and feature extraction, should be containerized. This approach enhances reproducibility and simplifies the management of dependencies.
+
+- **Infrastructure services:** Services that provide infrastructure support, like databases or caching layers, can also benefit from containerization. This helps in maintaining version consistency and facilitates easier scaling and management of these components.
+
+### Colocating AI components with other workload components
+
+There are several good reasons to colocate your AI components with other workload components, but there are tradeoffs with doing so. Reasons that you might colocate are:
+
+- **Latency sensitivity:** Co-locate AI components with other services (like API hosting) when low latency is crucial. For example, if real-time inference is required to enhance user experience, placing AI models close to the API can minimize the time it takes to retrieve results. 
+
+- **Data proximity:** When AI models require frequent access to specific datasets (such as a search index), co-locating these components can improve performance. It reduces the overhead of data transfer, allowing for faster processing and inference. 
+
+- **Resource utilization:** If certain components have complementary resource needs (e.g., CPU, memory), co-locating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
+
+- **Development and maintenance simplicity:** Co-locating components can simplify deployment and management. By having related services in the same environment, you can streamline updates and ensure consistency in versioning and dependencies. 
+
+- **Service dependencies:** When there are tight dependencies between components, such as an AI model that relies on real-time data from a search index, co-locating these can reduce the risk of issues arising from network latency or data synchronization problems. 
+
+Tradeoffs to consider include:
+
+- **Scalability:** If different components have significantly different scaling needs, it may be better to isolate them. This prevents one component from affecting the performance of another during load spikes. 
+
+- **Fault isolation:** Keeping components isolated can enhance fault tolerance. If one service experiences issues, it won't impact others if they are not co-located. 
+
+- **Deployment independence:** Different components might have different deployment cycles. Keeping them isolated allows teams to update or scale services independently without affecting others. 
+
+## Considerations for nonfunctional requirements
+
+You may have nonfunctional requirements for your workload that are challenging due to factors inherent to AI technologies. Common nonfunctional requirements and their challenges include:
+
+- **Latency of model inferencing/timeouts:** AI applications often require real-time or near-real-time responses. Designing for low latency is crucial, which involves optimizing model architecture, data processing pipelines, and hardware resources. Implementing caching strategies and ensuring efficient model loading are also essential to avoid timeouts and provide timely responses. 
+
+- **Token or request throughput limitations:** Many AI services impose limits on the number of tokens or the throughput of requests, particularly when using cloud-based models. Designing for these limitations requires careful management of input sizes, batching requests when necessary, and potentially implementing rate limiting or queuing mechanisms to manage user expectations and prevent service disruptions. 
+
+- **Telemetry:** Effective monitoring and telemetry are vital for understanding application performance and user interactions. Implementing robust logging and monitoring solutions helps capture relevant metrics and errors, enabling real-time insights into the system's health. This data is crucial for identifying bottlenecks, debugging issues, and optimizing performance. 
+
+- **Cost and chargeback scenarios:** AI applications can incur significant costs, particularly when leveraging cloud resources or third-party APIs. Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models, allowing organizations to allocate costs accurately across departments. Careful planning of resource allocation and scaling strategies can help manage expenses effectively while still meeting application demands.
+
+## Considerations for specialized application layers
+
+### Using orchestrators
+
+Orchestrators like prompt flow streamline AI workflows that would otherwise be difficult to manage in complex workloads, so building them into your design is highly recommended if your workload has these characteristics:
+
+- *Complex workflows:* The workflow involves multiple steps, such as preprocessing, model chaining, or postprocessing. 
+
+- *Conditional logic:* Decisions need to be made dynamically based on model outputs, like routing results to different models. 
+
+- *Scaling and resource management:* You need to manage resource allocation for high-volume applications with model scaling based on demand. 
+
+See the [orchestration platform considerations](./application-platform.md#considerations-for-the-orchestration-platform) for guidance on choosing an orchestration platform.
+
+### Using API gateways
+
+API gateways, like [Azure API Management](/azure/api-management/api-management-key-concepts), abstract functions away from APIs which decouples dependencies between the requesting service and the API. API gateways provide the following benefits to AI workloads:
+
+- *Multiple microservices:* They help you manage multiple AI model endpoints and you need to enforce consistent policies, like rate limiting and authentication. 
+
+- *Traffic management:* They help you manage high-traffic apps efficiently by managing requests, caching responses, and distributing load. 
+
+- *Security:* They provide centralized access control, logging, and threat protection for the APIs behind the gateway. 
+
+## Chunking strategies
+
+A well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
+
+- Implement a dynamic chunking strategy that adjusts chunk sizes based on the data type, query complexity, and user requirements. This can enhance retrieval efficiency and context preservation.
+
+- Incorporate feedback loops to refine chunking strategies based on performance data.
+
+- Preserve data lineage for chunks by maintaining metadata and unique identifiers that link back to the grounding source. Clear lineage documentation ensures users understand the data origin, its transformations, and how it contributes to the output.
+
+## Considerations for choosing frameworks and libraries
+
+The choice of frameworks and libraries is closely intertwined with application design, impacting not just the architecture but also performance, scalability, and maintainability. Conversely, design requirements can limit framework choices, creating a dynamic interplay between the two. For example, using the Semantic Kernel SDK (SK) often encourages a microservices-based design where each agent or functionality is encapsulated within its own service. Factors to consider when choosing frameworks and libraries are:
+
+- **Application requirements:** The specific requirements of the application (e.g., real-time processing, batch processing) may limit the choice of frameworks. For instance, if the application demands low latency, a framework with asynchronous capabilities may be necessary. 
+
+- **Integration needs:** The design may require specific integrations with other systems or services. If a framework doesn’t support the necessary protocols or data formats, it could necessitate reconsidering the design or selecting a different framework. 
+
+- **Team expertise:** The skillset of the development team can constrain framework choices. A design that relies on a less familiar framework might lead to increased development time and complexity, prompting a selection of a more familiar tool. 
