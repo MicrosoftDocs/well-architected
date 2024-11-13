@@ -36,7 +36,7 @@ There are several common design patterns that have been established in the indus
 
 - **Microservices architecture:** Separating components into independently deployable services enhances scalability and maintainability, allowing teams to work on different parts of the application simultaneously.
 
-- **Event-Driven architecture:** Utilizing events to trigger actions allows for decoupled components and real-time processing, making the system more responsive and adaptable to changing data.
+- **Event-driven architecture:** Utilizing events to trigger actions allows for decoupled components and real-time processing, making the system more responsive and adaptable to changing data.
 
 - **Layered architecture:** Organizing components into layers (presentation, business logic, and data access, for example) promotes separation of concerns and easier maintenance.
 
@@ -46,7 +46,7 @@ Consider using one of these design patterns when your use case meets one of thes
 
 - *Scalability requirements:* If the demand on your application may fluctuate, using a patterns like microservices allows individual components to scale independently, accommodating varying loads without impacting overall system performance.
 
-- *Data-Driven applications:* If your application require extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing. 
+- *Data-driven applications:* If your application require extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing. 
 
 Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
 
