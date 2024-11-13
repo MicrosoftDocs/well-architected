@@ -61,15 +61,20 @@ sections:
     image:
       componentType: image
       src: ./_images/well-architected-hub.png   
-  # Text section
-  - componentType: text
-    title: Featured update - Software as a service (SaaS) Workload
-    summary: "Explore the all new SaaS Workload:"
-    links:
+  # bifold with image and text blocks
+  - componentType: bifold
+    alignment: center
+    blocks:
+      - componentType: image
+        src: _images/saas-integration.svg
+        alt: "Icon showing the symbol for SaaS."
+      - title: Featured update - Software as a service (SaaS) Workload
+        summary: "Explore the all new SaaS Workload:"
+        links:
           - componentType: link
             url: ./saas/index.yml
             text: SaaS Workload Documentation
-    list:
+        list:
           componentType: list
           style: checklist
           children:
