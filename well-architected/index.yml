@@ -70,6 +70,7 @@ sections:
         alt: "Icon showing the symbol for SaaS."
       - title: Featured update - Software as a service (SaaS) Workload
         summary: "Explore the all new SaaS Workload:"
+        componentType: text
         links:
           - componentType: link
             url: ./saas/index.yml
