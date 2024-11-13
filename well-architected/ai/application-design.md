@@ -135,7 +135,23 @@ Orchestrators like prompt flow streamline AI workflows that would otherwise be d
 
 - *Conditional logic:* Decisions need to be made dynamically based on model outputs, like routing results to different models. 
 
-- *Scaling and resource management:* You need to manage resource allocation for high-volume applications with model scaling based on demand. 
+- *Scaling and resource management:* You need to manage resource allocation for high-volume applications with model scaling based on demand.
+
+#### Special considerations for using multiple models
+
+When your workload uses multiple models, using an orchestrator is essential. The orchestrator will be responsible for routing data and requests to the appropriate model based on the use case. Plan for data flow between models, ensuring that outputs from one model can serve as inputs for another. This might involve data transformation or enrichment processes.
+
+#### Orchestration and agents
+
+For generative AI workloads, consider taking an agent-based (sometimes referred to as "agentic") approach to your design to add extensibilty to your orchestration. Agents refer to context-bound functionality, sharing many microservices style charactertics that perform tasks in conjunction with an orchestrator. The orchestrator can advertise tasks out to a pool of agents or agents can register capabilities with the orchestrator. Both allow the orchestrator to dynamically decide how to break up and route up the query amongst the agents.
+
+Agentic approaches are ideal when you have a common UI surface but with multiple, evolving features that can be "plugged into" that experience to add more skills and grounding data to the flow over time.
+
+For complex workloads with many agents, it is more efficient to allow agents to dynamically collaborate than using the orchestrator to break up tasks and assign them.
+
+Communication between the orchestrator and agents should follow a topic-queue pattern, where agents are subscribers to a topic and the orchestrator sends out tasks via a queue.
+
+Using an agentic approach works best with an orchestration pattern rather than an [choreography pattern](/azure/architecture/patterns/choreography).
 
 See the [orchestration platform considerations](./application-platform.md#considerations-for-the-orchestration-platform) for guidance on choosing an orchestration platform.
 
