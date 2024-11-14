@@ -206,6 +206,8 @@ When choosing a prebuilt model, consider the following recommendations:
 
 - *Key components to consider:* Look for the model architecture, training data, performance benchmarks, and licensing information. Assess whether the model has been fine-tuned for your specific task or domain. 
 
+See the [model hosting platform considerations](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform) for guidance on choosing a hosting platform.
+
 ## Considerations for choosing frameworks and libraries
 
 The choice of frameworks and libraries is closely intertwined with application design, impacting not just the architecture but also performance, scalability, and maintainability. Conversely, design requirements can limit framework choices, creating a dynamic interplay between the two. For example, using the Semantic Kernel SDK (SK) often encourages a microservices-based design where each agent or functionality is encapsulated within its own service. Factors to consider when choosing frameworks and libraries are:
