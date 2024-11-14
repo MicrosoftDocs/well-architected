@@ -66,7 +66,7 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: _images/saas-integration.svg
+        src: _images/saas.png
         alt: "Icon showing the symbol for SaaS."
       - title: Featured update - Software as a service (SaaS) Workload
         summary: "Explore the all new SaaS Workload:"
