@@ -170,15 +170,15 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Skill up on Azure networking constructs**.  When onboarding to Azure, networking teams often assume their existing knowledge will suffice, but many aspects differ in Azure. Make sure the team understands the fundamental Azure networking concepts, DNS complexities, routing, and security capabilities. Build a taxonomy of networking services so that the team can share knowledge and have a common understanding.
+> - **Skill up on Azure networking constructs**.  When onboarding to Azure, networking teams often assume that their existing knowledge will suffice, but many aspects differ in Azure. Make sure the team understands the fundamental Azure networking concepts, DNS complexities, routing, and security capabilities. Build a taxonomy of networking services so that the team can share knowledge and have a common understanding.
 >
-> - **Formalize your network design**. Document the design and any changes, including configuration details like route tables, network security groups (NSGs), and firewall rules. Include the governance policies that are in place, such as blocking ports. Having clear documentation will make collaboration with other teams and stakeholders effective. 
+> - **Formalize your network design**. Document the design and any changes, including configuration details like route tables, network security groups (NSGs), and firewall rules. Include the governance policies that are in place, such as blocking ports. Having clear documentation will make collaboration with other teams and stakeholders effective.
+>
+>   Simplified networks are easier to monitor, troubleshoot, and maintain. For example, if your topology is hub-spoke, then stick to the typical layout. Don't complicate the architecture by mixing approaches. If a mix is required, document the design with justifications.
 >
 > - **Use design patterns that optimize network traffic**. To optimize network use and configuration, implement known design patterns that minimize or optimize network traffic. Additionally, validate the network configuration during builds using security scanners to ensure everything is set up correctly.
 >
 > - **Do consistent network deployments**. Use Infrastructure as Code (IaC) for all components, including network peerings and private endpoints. Recognize that core networking components are likely to change less frequently than other components. Implement a layered deployment approach for your stack so that each layer can be managed independently. Also,  avoid combining IaC with scripting to prevent complexity.
->
->   Certain components such as DNS and firewall might be managed by central teams. Work with those teams to communicate any necessary changes.
 >
 > - **Monitor the networking stack**. Regularly use [VNet Flow Logs](/azure/network-watcher/vnet-flow-logs-overview) and [Traffic analytics](/azure/network-watcher/traffic-analytics) to verify to identify changes in demand and patterns.
 >
@@ -186,13 +186,28 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Similar to other components in the architecture, capture all relevant metrics and logs from various networking components, such as the virtual network, subnets, network security groups, firewalls, load balancers, and others. Aggregate, visualize, and analyze them in your dashboards, creating alerts on important events.
 >
-> - **Include networking in your failure mitigation strategy**. Rolling back changes isn't applicable to VNets as they are part of the core infrastructure and don't usually undergo upgrades. VNets and subnets are deployed initially and typically remain unchanged, making rollbacks difficult.
+> - **Include networking in your failure mitigation strategy**. VNets and subnets are deployed initially and typically remain unchanged, making rollbacks difficult. However, you have optimize your recovery by following a few strategies: 
+>  
+>   Duplicate networking infrastructure in advance, especially for hybrid setups. Ensure separate routes in different regions are ready to communicate with each other beforehand. Replicate and maintain consistent network security groups (NSGs) and Azure Firewall rules across both primary and disaster recovery (DR) sites. This process can be time-consuming and requires approval, but doing it in advance helps prevent issues and failures. Make sure you test the networking stack in the DR site.
 >
-> - **Strive for simple operations**. Simplified networks are easier to monitor, troubleshoot, and maintain, reducing the workload for IT teams. For example, if your topology is hub-spoke, then stick to the typical layout. Don't complicate the architecture by mixing approaches.
+>   Avoid overlapping IP address ranges between your production and DR networks. By maintaining distinct IP ranges, you can simplify network management and expedite the transition during a failover event. 
+>
+>   Consider the tradeoffs between cost and reliability. For more information, see [Tradeoffs](#tradeoffs).
+>
+> - **Offload network operations to central teams**. Centralize management and governance of networking infrastructure, where possible. For example, in a hub-spoke topology, services like Azure Firewall, ExpressRoute, DNS, and others that are intended for shared use are placed in the hub network. That networking stack should be centrally managed taking the burden off the workload team. 
+>
+>   Even in the spoke network, offload the administration of the VNet to the central team. Minimize network operations to what is pertinent to the workload, such as management of NSGs. 
+>
+>   Keep the central teams informed of any necessary changes in the workload that might impact configuration of the shared resources. 
+>
+>  - **Prefer service names  over IP addresses**. When defining routes, use service names or aliases instead of specific IP addresses. This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules you can set by using more generic names.
 >
 > - **Right-size your subnets** (@jose recommendation?). When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth. However, avoid making them excessively large. You might need to carve out more subnets for new components in your workload. 
 > 
 > - For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
+> - Use the right tooling. 
+
+
 
 | Recommendation|Benefit|
 |-----------|-------- |
@@ -217,15 +232,18 @@ Start your design strategy based on the [design review checklist for Performance
 |-----------|-------- |
 |[**Enable the Connection Monitor**](/azure/network-watcher/connection-monitor-overview) of Network Watcher. |You'll be able to track loss and latency across networks. This feature is needed to ensire optimal performance for both intra-Azure connectivity and connectivity between on-premises and Azure environments.|
 |Do, Don't, consider, this.. |Because it's your workload after all.|
-
+- **Right-size your subnets** (@jose recommendation?). When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth. However, avoid making them excessively large. You might need to carve out more subnets for new components in your workload. 
 
 ## Tradeoffs
 
 You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Topic vs. topic**
+:::image type="icon" source="../_images/trade-off.svg"::: **Redundant networking stack**
 
-- point 1
+- **Increased costs**. Implementing redundant networking with NSGs, routes, and other configurations in advance, comes with a cost. This includes the expenses associated with setting up the infrastructure and conducting thorough testing. 
+
+- **Increased reliability**. The benefit of this upfront investment is increased reliability. You'll be better prepared knowing that everything works as expected leading to faster recovery because the network does not need to be configured on the fly.
+
 - point 2
 
 
@@ -237,7 +255,9 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Virtual Network and its dependencies. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to Virtual Network and its dependencies. Define and assign policies to ensure resources comply with organizational standards. Leverage the Azure Policy Compliance Dashboard to identify non-compliant resources and take corrective actions.
+
+A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
 
 - 
 
