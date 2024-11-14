@@ -22,6 +22,8 @@ There are many choices available for you to consider when planning to build an a
 | Block access to the data stores. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
 | Isolate your models. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
 
+
+
 ## AI application design patterns
 
 There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
@@ -183,4 +185,8 @@ The choice of frameworks and libraries is closely intertwined with application d
 
 - **Integration needs:** The design may require specific integrations with other systems or services. If a framework doesn’t support the necessary protocols or data formats, it could necessitate reconsidering the design or selecting a different framework. 
 
-- **Team expertise:** The skillset of the development team can constrain framework choices. A design that relies on a less familiar framework might lead to increased development time and complexity, prompting a selection of a more familiar tool. 
+- **Team expertise:** The skillset of the development team can constrain framework choices. A design that relies on a less familiar framework might lead to increased development time and complexity, prompting a selection of a more familiar tool.
+
+## Identity, authorization, and access considerations
+
+Generally speaking, you should approach identity, authorization, and access in the same way that you normally design applications. You should use an identity provider, like Microsoft Entra, to manage these areas as much as possible. There are unique challenges to many AI applications that need special consideration however. Persisting access control lists (ACLs) through the system is sometimes challenging or even impossible without introducing novel development. Review the guidance found in [placeholder] to learn how to add security trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
