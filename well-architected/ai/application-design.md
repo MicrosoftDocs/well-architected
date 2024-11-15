@@ -23,6 +23,7 @@ Here's the summary of recommendations provided in this article.
 | **Abstract functions and capabilities away from the client**. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
 | **Block access to the data stores**. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
 | **Isolate your models**. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
+| **Design componenets to be independently deployabe**. | AI models, data pipelines, frontend components, and microservices like data preprocessing, feature extraction and inferencing should be independently deployable to optimize the flexibility, scalability and operability of your workload. |
 
 ## AI application design patterns
 
@@ -65,36 +66,9 @@ When using a RAG pattern, a well-defined chunking strategy is critical to optimi
 
 ## Architecture design considerations
 
-As a general rule of thumb, approach your design with the same philosophy as other modern applications. Avoid tight coupling of components to the extent practical and abstract functions away from critical components to optimize reliability and security. 
-When considering the number of application layers, strive for using only as many layers as necessary for a viable product. Start with one layer, and add in layers when the complexity requires specialized tasks, like routing, transformation, and authentication.
-
-### Independently deployable components
-
-Designing components to be independently deployable enhances the flexibility, scalability, and maintainability of your workload. Key components that should be independently deployable include: 
-
-- **AI models:** Each AI model (classification models, regression models, or recommendation systems) should be treated as a separate deployable unit. This allows for model updates, rollback, and versioning without impacting other components of the system.
-
-- **Microservices:** Any microservices that handle distinct functionalities, such as data preprocessing, feature extraction, or inferencing, should be independently deployable. This modularity supports continuous integration and deployment (CI/CD) practices, allowing teams to work on different services simultaneously without causing disruption.
-
-- **Data pipelines:** The components of data pipelines (ingestion, transformation, loading) should also be independently deployable. This separation enables you to make changes or optimize specific parts of the pipeline without requiring a full redeployment of the entire pipeline.
-
-- **User interfaces (UIs):** If your application has a frontend component, ensure that it can be deployed independently. This enables UI updates and enhancements without requiring backend changes, leading to faster iteration cycles. 
-
 ### Containerization of components
 
-To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. Benefits of containerization include:
-
-- **Version pinning:** Containerization allows you to specify and pin the exact versions of libraries and dependencies, ensuring that the application behaves consistently across different environments (development, staging, production). 
-
-- **Isolation:** Containers provide an isolated environment for each component, reducing the risk of conflicts and dependencies affecting other parts of the application. 
-
-- **Scalability:** Containerized applications can be easily scaled up or down based on demand, enabling efficient resource utilization. 
-
-- **Portability:** Containers encapsulate all necessary components, making it easier to deploy applications across various environments, whether on-premises or in the cloud. 
-
-- **Simplified deployment**: Containers streamline the deployment process, enabling automated deployment pipelines and reducing manual intervention during updates or scaling operations. 
-
-The following components should be containerized:
+To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. The following components should be containerized:
 
 - **Microservices:** Individual microservices that handle specific functions of the application, such as data processing, model inference, or user authentication, should be containerized. This allows for independent deployment and scaling, facilitating more efficient updates and maintenance.
 
@@ -112,19 +86,10 @@ There are several good reasons to colocate your AI components with other workloa
 
 - **Data proximity:** When AI models require frequent access to specific datasets (such as a search index), co-locating these components can improve performance. It reduces the overhead of data transfer, allowing for faster processing and inference. 
 
-- **Resource utilization:** If certain components have complementary resource needs (e.g., CPU, memory), co-locating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
+- **Resource utilization:** If certain components have complementary resource needs (like CPU and memory), co-locating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
 
-- **Development and maintenance simplicity:** Co-locating components can simplify deployment and management. By having related services in the same environment, you can streamline updates and ensure consistency in versioning and dependencies. 
-
-- **Service dependencies:** When there are tight dependencies between components, such as an AI model that relies on real-time data from a search index, co-locating these can reduce the risk of issues arising from network latency or data synchronization problems. 
-
-Tradeoffs to consider include:
-
-- **Scalability:** If different components have significantly different scaling needs, it may be better to isolate them. This prevents one component from affecting the performance of another during load spikes. 
-
-- **Fault isolation:** Keeping components isolated can enhance fault tolerance. If one service experiences issues, it won't impact others if they are not co-located. 
-
-- **Deployment independence:** Different components might have different deployment cycles. Keeping them isolated allows teams to update or scale services independently without affecting others. 
+> [!NOTE]
+> There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
 
 ## Considerations for nonfunctional requirements
 
@@ -134,15 +99,13 @@ You may have nonfunctional requirements for your workload that are challenging d
 
 - **Token or request throughput limitations:** Many AI services impose limits on the number of tokens or the throughput of requests, particularly when using cloud-based models. Designing for these limitations requires careful management of input sizes, batching requests when necessary, and potentially implementing rate limiting or queuing mechanisms to manage user expectations and prevent service disruptions. 
 
-- **Telemetry:** Effective monitoring and telemetry are vital for understanding application performance and user interactions. Implementing robust logging and monitoring solutions helps capture relevant metrics and errors, enabling real-time insights into the system's health. This data is crucial for identifying bottlenecks, debugging issues, and optimizing performance. 
-
-- **Cost and chargeback scenarios:** AI applications can incur significant costs, particularly when leveraging cloud resources or third-party APIs. Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models, allowing organizations to allocate costs accurately across departments. Careful planning of resource allocation and scaling strategies can help manage expenses effectively while still meeting application demands.
+- **Cost and chargeback scenarios:** Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models, allowing organizations to allocate costs accurately across departments. Chargeback management is normally handled by an API gateway, like [Azure API Management](https://techcommunity.microsoft.com/blog/appsonazureblog/calculating-chargebacks-for-business-unitsprojects-utilizing-a-shared-azure-open/3909202)
 
 ## Considerations for specialized application layers
 
-### Using orchestrators
+### Using orchestrators in generative AI solutions
 
-Orchestrators like prompt flow streamline AI workflows that would otherwise be difficult to manage in complex workloads, so building them into your design is highly recommended if your workload has these characteristics:
+An orchestrator manages the workflow coordinating the communication between the different solution components of the AI solution that would otherwise be difficult to manage in complex workloads, so building them into your design is highly recommended if your workload has these characteristics: 
 
 - *Complex workflows:* The workflow involves multiple steps, such as preprocessing, model chaining, or postprocessing. 
 
@@ -150,13 +113,17 @@ Orchestrators like prompt flow streamline AI workflows that would otherwise be d
 
 - *Scaling and resource management:* You need to manage resource allocation for high-volume applications with model scaling based on demand.
 
+- *State management:* You need to manage the state and the memory of user interactions.
+
+- *Data retrieval:* You need to be able to retrieve augementation data from the index.
+
 #### Special considerations for using multiple models
 
 When your workload uses multiple models, using an orchestrator is essential. The orchestrator will be responsible for routing data and requests to the appropriate model based on the use case. Plan for data flow between models, ensuring that outputs from one model can serve as inputs for another. This might involve data transformation or enrichment processes.
 
 #### Orchestration and agents
 
-For generative AI workloads, consider taking an agent-based (sometimes referred to as "agentic") approach to your design to add extensibilty to your orchestration. Agents refer to context-bound functionality, sharing many microservices style charactertics that perform tasks in conjunction with an orchestrator. The orchestrator can advertise tasks out to a pool of agents or agents can register capabilities with the orchestrator. Both allow the orchestrator to dynamically decide how to break up and route up the query amongst the agents.
+For generative AI workloads, consider taking an agent-based (sometimes referred to as "agentic") approach to your design to add extensibility to your orchestration. Agents refer to context-bound functionality, sharing many microservices style characteristics that perform tasks in conjunction with an orchestrator. The orchestrator can advertise tasks out to a pool of agents or agents can register capabilities with the orchestrator. Both allow the orchestrator to dynamically decide how to break up and route up the query amongst the agents.
 
 Agentic approaches are ideal when you have a common UI surface but with multiple, evolving features that can be "plugged into" that experience to add more skills and grounding data to the flow over time.
 
