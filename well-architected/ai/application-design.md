@@ -23,48 +23,9 @@ Here's the summary of recommendations provided in this article.
 | **Abstract functions and capabilities away from the client**. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
 | **Block access to the data stores**. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
 | **Isolate your models**. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
-| **Design componenets to be independently deployabe**. | AI models, data pipelines, frontend components, and microservices like data preprocessing, feature extraction and inferencing should be independently deployable to optimize the flexibility, scalability and operability of your workload. |
+| **Design componenets to be independently deployabe**. | AI models, data pipelines, frontend components, and microservices like data preprocessing, feature extraction, and inferencing should be independently deployable to optimize the flexibility, scalability and operability of your workload. |
 
-## AI application design patterns
-
-There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
-
-- **Retrieval-Augmented Generation (RAG):** This pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
-    
-    - *Just-in-time:* This approach retrieves relevant information dynamically at the time of a request, ensuring the latest data is always used. It's beneficial in scenarios requiring real-time context, but may introduce latency. 
-    
-    - *Pre-calculated (cached):* This method involves caching retrieval results, reducing response times by serving pre-computed data. It's suitable for high-demand scenarios where consistent data can be stored, but may not reflect the most current information, leading to potential relevance issues. 
-
-- **Model ensembling:** This design pattern involves combining predictions from multiple models to improve accuracy and robustness, mitigating the weaknesses of individual models.
-
-- **Microservices architecture:** Separating components into independently deployable services enhances scalability and maintainability, allowing teams to work on different parts of the application simultaneously.
-
-- **Event-driven architecture:** Utilizing events to trigger actions allows for decoupled components and real-time processing, making the system more responsive and adaptable to changing data.
-
-- **Layered architecture:** Organizing components into layers (presentation, business logic, and data access, for example) promotes separation of concerns and easier maintenance.
-
-Consider using one of these design patterns when your use case meets one of these conditions:
-
-- *Complex workflows:* When dealing with complex workflows or interactions between multiple AI models, patterns like RAG or microservices can help manage complexity and ensure clear communication between components.
-
-- *Scalability requirements:* If the demand on your application may fluctuate, using a patterns like microservices allows individual components to scale independently, accommodating varying loads without impacting overall system performance.
-
-- *Data-driven applications:* If your application require extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing. 
-
-Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
-
-### Chunking strategies
-
-When using a RAG pattern, a well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
-
-- Implement a dynamic chunking strategy that adjusts chunk sizes based on the data type, query complexity, and user requirements. This can enhance retrieval efficiency and context preservation.
-
-- Incorporate feedback loops to refine chunking strategies based on performance data.
-
-- Preserve data lineage for chunks by maintaining metadata and unique identifiers that link back to the grounding source. Clear lineage documentation ensures users understand the data origin, its transformations, and how it contributes to the output.
-
-
-## Architecture design considerations
+## Component considerations
 
 ### Containerization of components
 
@@ -90,18 +51,6 @@ There are several good reasons to colocate your AI components with other workloa
 
 > [!NOTE]
 > There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
-
-## Considerations for nonfunctional requirements
-
-You may have nonfunctional requirements for your workload that are challenging due to factors inherent to AI technologies. Common nonfunctional requirements and their challenges include:
-
-- **Latency of model inferencing/timeouts:** AI applications often require real-time or near-real-time responses. Designing for low latency is crucial, which involves optimizing model architecture, data processing pipelines, and hardware resources. Implementing caching strategies and ensuring efficient model loading are also essential to avoid timeouts and provide timely responses. 
-
-- **Token or request throughput limitations:** Many AI services impose limits on the number of tokens or the throughput of requests, particularly when using cloud-based models. Designing for these limitations requires careful management of input sizes, batching requests when necessary, and potentially implementing rate limiting or queuing mechanisms to manage user expectations and prevent service disruptions. 
-
-- **Cost and chargeback scenarios:** Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models, allowing organizations to allocate costs accurately across departments. Chargeback management is normally handled by an API gateway, like [Azure API Management](https://techcommunity.microsoft.com/blog/appsonazureblog/calculating-chargebacks-for-business-unitsprojects-utilizing-a-shared-azure-open/3909202)
-
-## Considerations for specialized application layers
 
 ### Using orchestrators in generative AI solutions
 
@@ -145,6 +94,44 @@ API gateways, like [Azure API Management](/azure/api-management/api-management-k
 
 - *Security:* They provide centralized access control, logging, and threat protection for the APIs behind the gateway. 
 
+## AI application design patterns
+
+There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
+
+- **Model ensembling:** This design pattern involves combining predictions from multiple models to improve accuracy and robustness, mitigating the weaknesses of individual models.
+
+- **Microservices architecture:** Separating components into independently deployable services enhances scalability and maintainability, allowing teams to work on different parts of the application simultaneously.
+
+- **Event-driven architecture:** Utilizing events to trigger actions allows for decoupled components and real-time processing, making the system more responsive and adaptable to changing data.
+
+- **Layered architecture:** Organizing components into layers (presentation, business logic, and data access, for example) promotes separation of concerns and easier maintenance.
+
+### RAG pattern and chunking strategies
+
+The Retrieval-Augmented Generation (RAG) pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
+    
+- *Just-in-time:* This approach retrieves relevant information dynamically at the time of a request, ensuring the latest data is always used. It's beneficial in scenarios requiring real-time context, but may introduce latency. 
+    
+- *Pre-calculated (cached):* This method involves caching retrieval results, reducing response times by serving pre-computed data. It's suitable for high-demand scenarios where consistent data can be stored, but may not reflect the most current information, leading to potential relevance issues. 
+
+When using a RAG pattern, a well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
+
+- Implement a dynamic chunking strategy that adjusts chunk sizes based on the data type, query complexity, and user requirements. This can enhance retrieval efficiency and context preservation.
+
+- Incorporate feedback loops to refine chunking strategies based on performance data.
+
+- Preserve data lineage for chunks by maintaining metadata and unique identifiers that link back to the grounding source. Clear lineage documentation ensures users understand the data origin, its transformations, and how it contributes to the output.
+
+Consider using one of these design patterns when your use case meets one of these conditions:
+
+- *Complex workflows:* When dealing with complex workflows or interactions between multiple AI models, patterns like RAG or microservices can help manage complexity and ensure clear communication between components.
+
+- *Scalability requirements:* If the demand on your application may fluctuate, using a patterns like microservices allows individual components to scale independently, accommodating varying loads without impacting overall system performance.
+
+- *Data-driven applications:* If your application require extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing. 
+
+Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
+
 ## Considerations for choosing frameworks and libraries
 
 The choice of frameworks and libraries is closely intertwined with application design, impacting not just the architecture but also performance, scalability, and maintainability. Conversely, design requirements can limit framework choices, creating a dynamic interplay between the two. For example, using the Semantic Kernel SDK (SK) often encourages a microservices-based design where each agent or functionality is encapsulated within its own service. Factors to consider when choosing frameworks and libraries are:
@@ -158,6 +145,16 @@ The choice of frameworks and libraries is closely intertwined with application d
 ## Identity, authorization, and access considerations
 
 Generally speaking, you should approach identity, authorization, and access in the same way that you normally design applications. You should use an identity provider, like Microsoft Entra, to manage these areas as much as possible. There are unique challenges to many AI applications that need special consideration however. Persisting access control lists (ACLs) through the system is sometimes challenging or even impossible without introducing novel development. Review the guidance found in the [secure multi-tenant RAG solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) to learn how to add security trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
+
+## Considerations for nonfunctional requirements
+
+You may have nonfunctional requirements for your workload that are challenging due to factors inherent to AI technologies. Common nonfunctional requirements and their challenges include:
+
+- **Latency of model inferencing/timeouts:** AI applications often require real-time or near-real-time responses. Designing for low latency is crucial, which involves optimizing model architecture, data processing pipelines, and hardware resources. Implementing caching strategies and ensuring efficient model loading are also essential to avoid timeouts and provide timely responses. 
+
+- **Token or request throughput limitations:** Many AI services impose limits on the number of tokens or the throughput of requests, particularly when using cloud-based models. Designing for these limitations requires careful management of input sizes, batching requests when necessary, and potentially implementing rate limiting or queuing mechanisms to manage user expectations and prevent service disruptions. 
+
+- **Cost and chargeback scenarios:** Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models, allowing organizations to allocate costs accurately across departments. Chargeback management is normally handled by an API gateway, like [Azure API Management](https://techcommunity.microsoft.com/blog/appsonazureblog/calculating-chargebacks-for-business-unitsprojects-utilizing-a-shared-azure-open/3909202)
 
 ## Next steps
 
