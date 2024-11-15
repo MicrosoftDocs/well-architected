@@ -98,8 +98,6 @@ Start your design strategy based on the [**design review checklist for Security*
 >    Secure PaaS service connectivity with Private Endpoints while blocking outbound connections.   
 >
 > - **Apply the principle of least privilege**. Configure role-based-access-controls (RBAC) with a no-access mindset for network-related roles. Make sure that not all users are able to modify settings.
->
-> - 
 
 
 ##### Recommendations
@@ -207,7 +205,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Recommendation|Benefit|
 |-----------|-------- |
 |Do, Don't, consider, this.. |Because it's your workload after all.|
-|Deploy [Azure Network Manager](azure/virtual-network-manager/overview). |Instead of configuring each VNet individually, Azure Network Manager centrally manages connectivity based on rules. This makes networking operations more streamlined.|
+|Deploy [**Azure Network Manager**](/azure/virtual-network-manager/overview). |Instead of configuring each VNet individually, Azure Network Manager centrally manages connectivity based on rules. This makes networking operations more streamlined.|
 
 
 ## Performance Efficiency
