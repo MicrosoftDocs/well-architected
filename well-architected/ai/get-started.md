@@ -29,12 +29,6 @@ In the context of WAF, an AI workload meets the needs of predictive, discriminat
 
 AI workloads are different from traditional ones because they replace deterministic functionality in parts of the workload with non-deterministic behavior that solves for situations where fixed outcomes are impractical. Instead, they combine code and data into an entity, or a _model_, enabling unique experiences that traditional systems can't provide.
 
-The following diagram shows an example architecture of an AI workload:
-
-:::image type="content" source="images/ai-architecture-pattern.png" alt-text="Diagram showing the AI architecture workflow.":::
-
-<sub>This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.</sub>.
-
 Before you begin your design strategies, consider these key points first.
 
 #### Familiarize yourself with the broad categories of models
@@ -106,6 +100,8 @@ When choosing between a custom model, a prebuilt model, or a service, consider t
 ## Typical architecture pattern and design areas
 
 :::image type="content" source="./images/ai-architecture-pattern.png" alt-text="diagram shows the typical architecture pattern of an AI workload." lightbox="./images/ai-architecture-pattern.png":::
+
+The architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.
 
 The following table describes some key design areas related to that pattern.
 
