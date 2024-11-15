@@ -18,11 +18,13 @@ This set of articles provides actionable and authoritative guidance for building
 
 ## What is an AI workload in the context of the Well-Architected Framework?
 
-:::image type="content" source="images/logical-component-architecture.png" alt-text="Diagram showing the logical component architecture." border="false":::
-
-*This diagram shows a workflow illustrating the integration of multiple technologies and processes to deliver scalable AI solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction. This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions.*
-
 An AI workload is a workload that uses AI technology for predictive, discriminatory, or generative use cases. Sometimes, this functionality replaces a traditional code logic and data access solution that is otherwise deterministic. This design produces an experience that determinism and a classical code and data model can't accomplish. AI combines code logic and data into a single package.
+
+See the following diagram for an example of a logical component architecture for an AI workload:
+
+:::image type="content" source="images/logical-component-architecture.png" alt-text="Diagram showing the logical component architecture." lightbox="images/logical-component-architecture.png":::
+
+<sub>This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.</sub>.
 
 Generally, AI workloads break down into two categories: generative AI and discriminative AI.
 
