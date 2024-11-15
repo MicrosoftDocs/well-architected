@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # AI workloads on Azure
 
-This guidance addresses architectural challenges of designing AI workloads, focusing on non-deterministic functionality, data design, and operations. The recommendations are based on the Azure Well-Architected Framework (WAF) principles and includes insights from successful Azure implementations.
+This guidance **addresses architectural challenges of designing AI workloads, focusing on non-deterministic functionality, data design, and operations.** The recommendations are based on the Azure Well-Architected Framework (WAF) principles and includes insights from successful Azure implementations.
 
 These articles are meant for **workload owners** and **technical stakeholders** like architects, development leads, and IT leaders. Specialized AI and data roles, such as data scientists, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
 
@@ -27,13 +27,7 @@ These articles are meant for **workload owners** and **technical stakeholders** 
 
 In the context of WAF, an AI workload meets the needs of predictive, discriminatory, or generative tasks. It focuses on ethical functionality, adapting to fast-evolving AI technologies, and staying relevant and explainable. The [WAF pillars](../pillars.md) should be applied at every decision point to ensure the system is reliable, secure, efficient, and cost-effective.
 
-AI workloads are different from traditional ones because they replace deterministic functionality in parts of the workload with non-deterministic behavior that solves for situations where fixed outcomes are impractical. Instead, they combine code and data into a entity, or a _model_, enabling unique experiences that traditional systems can't provide.
-
-The following diagram shows an example architecture of an AI workload:
-
-:::image type="content" source="images/ai-architecture-pattern.png" alt-text="Diagram showing the AI architecture workflow." lightbox="images/ai-architecture-pattern.png":::
-
-<sub>This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.</sub>.
+AI workloads are different from traditional ones because they replace deterministic functionality in parts of the workload with non-deterministic behavior that solves for situations where fixed outcomes are impractical. Instead, they combine code and data into an entity, or a _model_, enabling unique experiences that traditional systems can't provide.
 
 Before you begin your design strategies, consider these key points first.
 
@@ -49,7 +43,9 @@ Before you begin your design strategies, consider these key points first.
 
   - **Non-model-based**. Autonomous agents that follow predefined rules to interact with systems, like video game characters.
 
-  Use case: Discriminative AI is used for predictive analytics, recommendation systems, and fraud detection. This series of articles covers different AI workloads, focusing on specific types like language models when needed.
+  Use case: Discriminative AI is used for predictive analytics, recommendation systems, and fraud detection.
+
+This series of articles covers different AI workloads, focusing on specific types like language models when needed.
 
 > [!IMPORTANT]
 >
@@ -57,9 +53,9 @@ Before you begin your design strategies, consider these key points first.
 
 #### Evaluate your build versus buy options
 
-If generic responses are acceptable, a prebuilt model or AI service-based solution that uses opaque processing should be sufficient for your workload. But if you need data specific to your business or have compliance requirements, you'll need to create a custom model. 
+If generic responses are acceptable, a prebuilt model or an AI service-based solution that uses opaque processing should be sufficient for your workload. But if you need data specific to your business or have compliance requirements, you'll need to create a custom model. 
 
-When choosing between a custom model and a prebuilt model or service, consider these factors:
+When choosing between a custom model, a prebuilt model, or a service, consider these factors:
 
 - **Data control**. Custom models give you more control over sensitive data. Prebuilt models are easier for general tasks.
 
@@ -77,7 +73,7 @@ When choosing between a custom model and a prebuilt model or service, consider t
 
 ## What are the common challenges?
 
-- **Compute costs**. AI functions can be expensive due to high compute needs and even that can vary as per your workload design. Understand your requirements and choose the right service to manage costs.
+- **Compute costs**. AI functions can be expensive due to high compute needs, and compute needs can vary as per your workload design. Understand your requirements and choose the right service to manage costs.
 
 - **Security and compliance requirements**. Off-the-shelf solutions might not meet your security and compliance needs. Research options to avoid unnecessary burdens.
 
@@ -85,7 +81,7 @@ When choosing between a custom model and a prebuilt model or service, consider t
 
 - **Model decay**. Models can degrade over time, leading to inaccurate results. Testing AI systems is challenging due to their randomness.
 
-- **Skill challenges**. New AI workloads may need specialized roles and new operations processes that require extensive training.. 
+- **Skill challenges**. New AI workloads may need specialized roles and new operations processes that require extensive training.
 
 - **Pace of AI innovation**. Adopting the latest technologies can be tempting to stay at the cutting edge. Evaluate new technologies carefully to ensure they improve user experience and don't just add complexity for the sake of being up-to-date. 
 
@@ -104,6 +100,8 @@ When choosing between a custom model and a prebuilt model or service, consider t
 ## Typical architecture pattern and design areas
 
 :::image type="content" source="./images/ai-architecture-pattern.png" alt-text="diagram shows the typical architecture pattern of an AI workload." lightbox="./images/ai-architecture-pattern.png":::
+
+The architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.
 
 The following table describes some key design areas related to that pattern.
 
