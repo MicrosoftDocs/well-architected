@@ -233,8 +233,6 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Monitor traffic across availability zones**. It's important to consider that workload resources might be located in different datacenters within the same zone. Communication across datacenters can add to latency. While traffic across availability zones is generally fine, there are cases where it can add to latency, when communication is across datacenters.
 >
 >   The same considerations apply to cross-region traffic, where latency can be a significant issue.
->
-> - **Monitor traffic between networks**
 
 
 | Recommendation|Benefit|
