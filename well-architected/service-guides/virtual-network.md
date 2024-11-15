@@ -202,16 +202,12 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >  - **Prefer service names  over IP addresses**. When defining routes, use service names or aliases instead of specific IP addresses. This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules you can set by using more generic names.
 >
-> - **Right-size your subnets** (@jose recommendation?). When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth. However, avoid making them excessively large. You might need to carve out more subnets for new components in your workload. 
-> 
-> - For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
-> - Use the right tooling. 
-
-
+> - **Right-size your subnets**. When allocating subnets, avoid making them excessively large. Managing subnets and their NSGs can add to operational burden. For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
 
 | Recommendation|Benefit|
 |-----------|-------- |
 |Do, Don't, consider, this.. |Because it's your workload after all.|
+|Deploy [Azure Network Manager](azure/virtual-network-manager/overview). |Instead of configuring each VNet individually, Azure Network Manager centrally manages connectivity based on rules. This makes networking operations more streamlined.|
 
 
 ## Performance Efficiency
@@ -226,13 +222,28 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> When designing a network, rightsize it but plan for future growth. 
+> - **Define performance targets**. To define performance targets, rely on monitoring metrics, particularly for latency and bandwidth. Use connection monitor data, such as latency and the number of hops, to set targets and thresholds for acceptable performance. Application Insights offers a detailed view of the time workload requests spend in the network, helping to refine these targets. 
+>
+> - **Right-size your subnets**. When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth without operational burden.
+>
+>   To manage capacity effectively, a common strategy is to overprovision capacity due to uncertainty, but the goal should be to optimize over time. By continuously analyzing data, you can ensure that you only pay for what you need.
+>
+> - **Conduct performance testing**. Use combination of synthetic and production data to test latency and bandwidth to check how those aspects might affect workload performance. For example, detecting resources that consume more bandwidth than expected and cause noisy neighbor issues. Or, traffic that's making multiple hops, can be the cause of the high latency.
+>
+>   It's recommended that you test in production or capture and replay production data as test data. This approach ensures tests arereflective of actual usage, which will lead to setting realistic performance targets.
+>
+> - **Monitor traffic across availability zones**. It's important to consider that workload resources might be located in different datacenters within the same zone. Communication across datacenters can add to latency. While traffic across availability zones is generally fine, there are cases where it can add to latency, when communication is across datacenters.
+>
+>   The same considerations apply to cross-region traffic, where latency can be a significant issue.
+>
+> - **Monitor traffic between networks**
+
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|[**Enable the Connection Monitor**](/azure/network-watcher/connection-monitor-overview) of Network Watcher. |You'll be able to track loss and latency across networks. This feature is needed to ensire optimal performance for both intra-Azure connectivity and connectivity between on-premises and Azure environments.|
+|[**Enable the Connection Monitor**](/azure/network-watcher/connection-monitor-overview) of Network Watcher. <br><br>Use connection monitor during testing, which can generate synthetic traffic.|You'll be able to collect metrics that indicate loss and latency across networks. Also, trace the entire traffic path, which is important for detecting network bottlenecks.|
 |Do, Don't, consider, this.. |Because it's your workload after all.|
-- **Right-size your subnets** (@jose recommendation?). When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth. However, avoid making them excessively large. You might need to carve out more subnets for new components in your workload. 
+
 
 ## Tradeoffs
 
@@ -244,13 +255,11 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 - **Increased reliability**. The benefit of this upfront investment is increased reliability. You'll be better prepared knowing that everything works as expected leading to faster recovery because the network does not need to be configured on the fly.
 
-- point 2
+:::image type="icon" source="../_images/trade-off.svg"::: **VNet peering**
 
+When communicating between virtual networks (VNets), direct peering is preferred for better performance efficiency. This method avoids the latency introduced by routing through a hub, where a firewall decrypts, inspects, and re-encrypts the payload before sending it to the other VNet.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Topic vs. topic**
-
-- point 1
-- point 2
+However, this comes with a tradeoff in security. Routing through a hub provides inspections by the firewall, and without these checks, the workload can be severely compromised.
 
 
 ## Azure policies
