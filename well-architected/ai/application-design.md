@@ -116,8 +116,6 @@ There are several common design patterns that have been established in the indus
 
 - **Event-driven architecture:** Utilizing events to trigger actions allows for decoupled components and real-time processing, making the system more responsive and adaptable to changing data.
 
-- **Layered architecture:** Organizing components into layers (presentation, business logic, and data access, for example) promotes separation of concerns and easier maintenance.
-
 ### RAG pattern and chunking strategies
 
 The Retrieval-Augmented Generation (RAG) pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
@@ -134,7 +132,7 @@ When using a RAG pattern, a well-defined chunking strategy is critical to optimi
 
 - Preserve data lineage for chunks by maintaining metadata and unique identifiers that link back to the grounding source. Clear lineage documentation ensures users understand the data origin, its transformations, and how it contributes to the output.
 
-Consider using one of these design patterns when your use case meets one of these conditions:
+**Consider using one of these design patterns when your use case meets one of these conditions:**
 
 - *Complex workflows:* When dealing with complex workflows or interactions between multiple AI models, patterns like RAG or microservices can help manage complexity and ensure clear communication between components.
 
@@ -142,7 +140,8 @@ Consider using one of these design patterns when your use case meets one of thes
 
 - *Data-driven applications:* If your application require extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing. 
 
-Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
+> [!NOTE]
+> Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
 
 ## Considerations for choosing frameworks and libraries
 
