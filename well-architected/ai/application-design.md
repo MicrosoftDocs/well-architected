@@ -84,11 +84,7 @@ There are several good reasons to colocate your AI components with other workloa
 
 - **Data proximity:** When AI models require frequent access to specific datasets (such as a search index), co-locating these components can improve performance. It reduces the overhead of data transfer, allowing for faster processing and inference. 
 
-- **Resource utilization:** If certain components have complementary resource needs (e.g., CPU, memory), co-locating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
-
-- **Development and maintenance simplicity:** Co-locating components can simplify deployment and management. By having related services in the same environment, you can streamline updates and ensure consistency in versioning and dependencies. 
-
-- **Service dependencies:** When there are tight dependencies between components, such as an AI model that relies on real-time data from a search index, co-locating these can reduce the risk of issues arising from network latency or data synchronization problems. 
+- **Resource utilization:** If certain components have complementary resource needs (like CPU and memory), co-locating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
 
 > [!NOTE]
 > There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
@@ -114,6 +110,10 @@ An orchestrator manages the workflow coordinating the communication between the 
 - *Conditional logic:* Decisions need to be made dynamically based on model outputs, like routing results to different models. 
 
 - *Scaling and resource management:* You need to manage resource allocation for high-volume applications with model scaling based on demand.
+
+- *State management:* You need to manage the state and the memory of user interactions.
+
+- *Data retrieval:* You need to be able to retrieve augementation data from the index.
 
 #### Special considerations for using multiple models
 
