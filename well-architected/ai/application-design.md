@@ -145,38 +145,6 @@ API gateways, like [Azure API Management](/azure/api-management/api-management-k
 
 - *Security:* They provide centralized access control, logging, and threat protection for the APIs behind the gateway. 
 
-## Considerations for model selection
-
-Defining your strategy for your model is one of the first critical steps in designing you AI workload. You'll decide what type of model to use and whether to build, train, and maintain your own model, host a prebuilt model, or use a fully managed solution like [Azure Document Intelligence](/azure/ai-services/document-intelligence/overview).
-
-### Using a generative vs a discriminative model
-
-Determine whether to use generative models (like GPT for text generation) or discriminative models (like logistic regression for classification). Generative models create new data samples, while discriminative models classify existing samples based on learned features. Consider the specific task (classification, regression, etc.) and choose models that are well-suited for that purpose. For example, a language model capable of classification might provide more versatility compared to a strictly classification model.
-
-### Building your own model vs. using a prebuilt model vs. using a fully managed service
-
-Building, training, and maintaining your own model requires a significant investment in costs, time, effort, and expertise, so thoroughly research your options before choosing to go down that path. In most cases, using a prebuilt model or using a fully managed service is the better choice. The following factors can help you decide which of these options is the right one for your use case.
-
-- **Data ownership and sensitivity:** When sensitive data or specific IP needs protection, building and maintaining your own model can provide more control over data handling. For general tasks, hosted or service-based models can be easier to use. 
-
-- **Customization requirements:** If the application requires unique or highly customized model behavior, a custom-built model may be the best choice. Prebuilt models or AI services may lack the flexibility needed. 
-
-- **Cost and maintenance:** Hosting and training a custom model requires ongoing maintenance, computational power, and potential updates. For budget-conscious projects, prebuilt or third-party services often offer a lower upfront investment and reduce infrastructure burdens. 
-
-- **Performance needs:** Third-party services can offer optimized infrastructure and scalability. If an AI application requires low-latency responses or high scalability, a prebuilt model hosted by a specialized service might be ideal. 
-
-- **Expertise availability:** Building and training models require a skilled team for data science, ML engineering, and deployment. If this expertise is limited, using prebuilt or service-based models can expedite deployment and reduce the learning curve. 
-
-When choosing a prebuilt model, consider the following recommendations:
-
-- *Catalog sources:* Explore repositories like Hugging Face Model Hub or TensorFlow Hub to find pretrained models. These platforms provide extensive catalogs of models across various tasks.
-
-- *Licensing concerns:* Ensure that the model's licensing terms align with your security and compliance standards and your application goals, especially if you plan to distribute the application or integrate it with other services. 
-
-- *Key components to consider:* Look for the model architecture, training data, performance benchmarks, and licensing information. Assess whether the model has been fine-tuned for your specific task or domain. 
-
-See the [model hosting platform considerations](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform) for guidance on choosing a hosting platform.
-
 ## Considerations for choosing frameworks and libraries
 
 The choice of frameworks and libraries is closely intertwined with application design, impacting not just the architecture but also performance, scalability, and maintainability. Conversely, design requirements can limit framework choices, creating a dynamic interplay between the two. For example, using the Semantic Kernel SDK (SK) often encourages a microservices-based design where each agent or functionality is encapsulated within its own service. Factors to consider when choosing frameworks and libraries are:
