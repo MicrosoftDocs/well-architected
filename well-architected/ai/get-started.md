@@ -31,7 +31,7 @@ AI workloads are different from traditional ones because they replace determinis
 
 The following diagram shows an example architecture of an AI workload:
 
-:::image type="content" source="images/ai-architecture-pattern.png" alt-text="Diagram showing the AI architecture workflow.":::
+:::image type="content" source="images/ai-architecture-pattern.png" alt-text="Diagram showing the AI architecture workflow." lightbox="images/ai-architecture-pattern.png":::
 
 <sub>This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.</sub>.
 

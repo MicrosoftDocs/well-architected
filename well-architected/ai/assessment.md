@@ -11,7 +11,7 @@ ms.subservice: waf-workload-ai
 
 # Well-Architected AI workload assessment
 
-The [Azure Well-Architected AI workload assessment]() is a review tool that you can use to self-assess the readiness of your AI workload in production. Running an AI workload on Azure can be a complex process. The assessment is organized so that you can methodically check your workload's alignment with the best practices of the Azure Well-Architected Framework pillars.
+The [Azure Well-Architected AI workload assessment](/assessments/ea306cce-c7fa-4a2b-89a6-bfefba6a9cf4) is a review tool that you can use to self-assess the readiness of your AI workload in production. Running an AI workload on Azure can be a complex process. The assessment is organized so that you can methodically check your workload's alignment with the best practices of the Azure Well-Architected Framework pillars.
 
 For best results, the team that completes the assessment should be well versed in the architecture of your workload. That team should also have a strong understanding of cloud principles and patterns. These roles include but aren't limited to cloud architects, operators, and DevOps engineers.
 
