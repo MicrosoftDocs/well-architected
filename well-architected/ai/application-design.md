@@ -13,7 +13,7 @@ ms.subservice: waf-workload-ai
 
 There are many choices available for you to consider when planning to build an application with AI functions. Your unique functional and nonfunctional requirements will help you narrow down high-level decisions about your design, like whether the use case is traditional machine learning, generative, or deterministic, or a combination of AI types. As you move from the high-level design areas to lower level design areas, you'll have several choices to consider along the way. 
 
-As discussed in the [Get started](./get-started.md) article, choosing whether to build your own model or use a prebuit model is one of the first important decisions to make. If you choose to use a prebuilt model, consider these points.
+As discussed in the [Get started](./get-started.md) article, choosing whether to build your own model or use a prebuit model is one of the first important decisions to make. When choosing a prebuilt model, consider these points.
 
 - **Catalog sources**. Explore repositories like Hugging Face Model Hub, TensorFlow Hub, or Azure AI Studio model catalog to find pretrained models. These platforms provide an extensive catalog of models across various tasks.
  
