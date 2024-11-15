@@ -23,11 +23,17 @@ These articles are meant for **workload owners** and **technical stakeholders** 
 > - Workloads that require a high performance computing.
 > - Workloads that don't implement generative or discriminative AI use cases.
 
-## What is an AI workload? 
+## What is an AI workload?
 
 In the context of WAF, an AI workload meets the needs of predictive, discriminatory, or generative tasks. It focuses on ethical functionality, adapting to fast-evolving AI technologies, and staying relevant and explainable. The [WAF pillars](../pillars.md) should be applied at every decision point to ensure the system is reliable, secure, efficient, and cost-effective.
 
 AI workloads are different from traditional ones because they replace deterministic functionality in parts of the workload with non-deterministic behavior that solves for situations where fixed outcomes are impractical. Instead, they combine code and data into an entity, or a _model_, enabling unique experiences that traditional systems can't provide.
+
+The following diagram shows an example architecture of an AI workload:
+
+:::image type="content" source="images/ai-architecture-pattern.png" alt-text="Diagram showing the AI architecture workflow.":::
+
+<sub>This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.</sub>.
 
 Before you begin your design strategies, consider these key points first.
 
@@ -118,8 +124,6 @@ The following table describes some key design areas related to that pattern.
 
 > [!TIP]
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated by this icon :::image type="icon" source="../_images/trade-off.svg":::.
-
-
 
 ## Next step
 

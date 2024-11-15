@@ -1,6 +1,6 @@
 ---
-title: Application design for AI workloads on Azure
-description: Code deployed on the resources.
+title: Application Design for AI Workloads on Azure
+description: Learn about the design considerations for building AI workloads on Azure, including recommendations, design patterns, architecture considerations, and specialized application layers.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/15/2024
@@ -15,19 +15,21 @@ There are many choices available for you to consider when planning to build an a
 
 ## Recommendations
 
+Here's the summary of recommendations provided in this article.
+
 |Recommendation|Description|
 |---|---|
-| Prefer off-the-shelf solutions. | Whenever practical use platform as a service (PaaS) solutions to handle much of the workload functions. Likewise, use prebuilt and pre-trained models whenever practical to minimize the operational and development burden for your workload and operations teams. |
-| Abstract functions and capabilities away from the client. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
-| Block access to the data stores. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
-| Isolate your models. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
-| Design componenets to be independently deployabe. | AI models, data pipelines, frontend components, and microservices like data preprocessing, feature extraction and inferencing should be independently deployable to optimize the flexibility, scalability and operability of your workload. 
+| **Prioritize off-the-shelf solutions**. | Whenever practical use platform as a service (PaaS) solutions to handle much of the workload functions. Likewise, use prebuilt and pre-trained models whenever practical to minimize the operational and development burden for your workload and operations teams. |
+| **Abstract functions and capabilities away from the client**. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
+| **Block access to the data stores**. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
+| **Isolate your models**. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
+| **Design componenets to be independently deployabe**. | AI models, data pipelines, frontend components, and microservices like data preprocessing, feature extraction and inferencing should be independently deployable to optimize the flexibility, scalability and operability of your workload. |
 
 ## AI application design patterns
 
 There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
 
-- **Retrieval-Augmented Generation (RAG):** This pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
+- **Retrieval-Augmented Generation (RAG):** This pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
     
     - *Just-in-time:* This approach retrieves relevant information dynamically at the time of a request, ensuring the latest data is always used. It's beneficial in scenarios requiring real-time context, but may introduce latency. 
     
@@ -53,7 +55,7 @@ Smaller applications or POCs typically will not benefit from adopting one of the
 
 ### Chunking strategies
 
-When using a RAG pattern, a well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
+When using a RAG pattern, a well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
 
 - Implement a dynamic chunking strategy that adjusts chunk sizes based on the data type, query complexity, and user requirements. This can enhance retrieval efficiency and context preservation.
 
@@ -76,7 +78,7 @@ To ensure that your independently deployable components are fully self-contained
 
 - **Infrastructure services:** Services that provide infrastructure support, like databases or caching layers, can also benefit from containerization. This helps in maintaining version consistency and facilitates easier scaling and management of these components.
 
-### Colocating AI components with other workload components
+### Co-locating AI components with other workload components
 
 There are several good reasons to colocate your AI components with other workload components, but there are tradeoffs with doing so. Reasons that you might colocate are:
 
@@ -156,3 +158,8 @@ The choice of frameworks and libraries is closely intertwined with application d
 ## Identity, authorization, and access considerations
 
 Generally speaking, you should approach identity, authorization, and access in the same way that you normally design applications. You should use an identity provider, like Microsoft Entra, to manage these areas as much as possible. There are unique challenges to many AI applications that need special consideration however. Persisting access control lists (ACLs) through the system is sometimes challenging or even impossible without introducing novel development. Review the guidance found in the [secure multi-tenant RAG solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) to learn how to add security trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Application platform](application-platform.md)

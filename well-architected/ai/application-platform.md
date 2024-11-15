@@ -21,17 +21,19 @@ This design area covers several types of applications that might be relevant to 
 
 This article provides guidance for selecting the best platform for each of these functions to meet your business needs. There are also general recommendations that you can apply to all of these functions.
 
-## Platform recommendations
+## Recommendations
 
-No matter which of the previously described functions you're designing for, start with the following general recommendations:
+Here's the summary of recommendations provided in this article.
 
-- Start by evaluating the tools you already use to understand whether they can be reused for your AI workload. If they support the required functionality and can also meet your requirements for reliability, security, cost, and performance, bringing in a new tool might not be worth the cost and effort.
-- Consider compliance requirements for your data as they relate to the regions that you plan to deploy in. You might need to limit the regions you deploy in or isolate parts of your workload from each other to meet these requirements. Going into your designing phase with this information can help protect you from needing to redesign later.
-- Prefer platform as a service (PaaS) or software as a service (SaaS) solutions to minimize the operational burden that building your own solution introduces, like patching and other maintenance. Minimizing the Day-2 burden required for the new technology simplifies your adoption. Many AI functions are complex, so we don't recommend building your own platform.
-- When you design for the use of PaaS or SaaS solutions, understand any quotas or limits that apply. Your ability to scale out to meet high traffic demands might be affected by quotas or limits, so you might need to adjust your design to minimize that risk.
-- Try to deploy all related resources in the same region to reduce latency and to simplify the design.
-- In general, you should treat the APIs for your AI workload the same as any other API in your environments. All APIs should be placed behind a gateway and all code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments.md) as every other code asset.
-- Establish performance benchmarks through experimentation. Every AI workload is different, and the amount of compute that you need depends on your use case. Determine the amount and types of compute that are optimal for your workload by conducting thorough benchmark testing. This guide helps you choose a platform, but you'll only know which SKUs are appropriate for your workload after benchmark testing.
+|Recommendation|Description|
+|---|---|
+|**Reuse tools**. | Start by evaluating the tools you already use to understand whether they can be reused for your AI workload. If they support the required functionality and can also meet your requirements for reliability, security, cost, and performance, bringing in a new tool might not be worth the cost and effort.|
+|**Consider compliance requirements for your data as they relate to the regions that you plan to deploy in**. | You might need to limit the regions you deploy in or isolate parts of your workload from each other to meet these requirements. Going into your designing phase with this information can help protect you from needing to redesign later.|
+|**Minimize building**. | Prefer platform as a service (PaaS) or software as a service (SaaS) solutions to minimize the operational burden that building your own solution introduces, like patching and other maintenance. Minimizing the Day-2 burden required for the new technology simplifies your adoption. Many AI functions are complex, so we don't recommend building your own platform. |
+|**Understand your quotas and limits**.  | When you design for the use of PaaS or SaaS solutions, understand any quotas or limits that apply. Your ability to scale out to meet high traffic demands might be affected by quotas or limits, so you might need to adjust your design to minimize that risk. |
+|**Deploy in the same region**.  | Try to deploy all related resources in the same region to reduce latency and to simplify the design. |
+|**Practice safe deployment**.  | In general, you should treat the APIs for your AI workload the same as any other API in your environments. All APIs should be placed behind a gateway and all code should be handled with the same [safe deployment practices](../operational-excellence/safe-deployments.md) as every other code asset. |
+|**Establish performance benchmarks through experimentation**.  | Every AI workload is different, and the amount of compute that you need depends on your use case. Determine the amount and types of compute that are optimal for your workload by conducting thorough benchmark testing. This guide helps you choose a platform, but you'll only know which SKUs are appropriate for your workload after benchmark testing. |
 
 ## Considerations for the EDA platform
 

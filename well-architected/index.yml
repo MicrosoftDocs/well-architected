@@ -134,6 +134,10 @@ sections:
     title: Workloads
     blocks:
       - componentType: summary-card
+        title: Artificial Intelligence (AI)
+        summary: Incorporate discriminative or generative AI models in your workload for predictive analysis, generating content, and other AI use cases.
+        url: ./ai/index.yml
+      - componentType: summary-card
         title: Software as a service (SaaS)
         summary: Key insights for Startups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
         url: ./saas/index.yml   

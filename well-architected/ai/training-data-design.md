@@ -29,16 +29,15 @@ For information about data design for AI models that require context _during_ in
 
 ## Recommendations
 
-Here's a summary of the recommendations that are provided in this article, together with links to the appropriate sections in the article. 
+Here's the summary of recommendations provided in this article.
 
 |Recommendation|Description|
 |---|---|
-|**Select data sources based on workload requirements.** |Factor in available resources and whether the data source can help you reach the acceptable data quality for model training. Cover both positive and negative examples. Combine diverse data types to achieve adequate completeness for analysis and modeling. Consider techniques like Synthetic Minority Oversampling Technique (SMOTE) for data scarcity or imbalance.<br><br>&#9642; [Data ingestion and analysis](#data-ingestion-and-analysis)|
-|**Conduct data analysis on the collected data early.** | Perform analysis processes, such as Exploratory Data Analysis (EDA), offline. Consider the costs and security implications. For small datasets without resource constraints, you can consider performing analysis at the source.<br><br>&#9642; [Data collection store](#data-collection-store)|
-|**Maintain data segmentation, if business and technical requirements call for it.**  |If you use data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
-|**Preprocess data to make it meaningful against training goals.**| Refine the quality of ingested data by filtering noise, rescoping the data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
-|**Avoid training on stale data.** |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
-
+|**Select data sources based on workload requirements**. |Factor in available resources and whether the data source can help you reach the acceptable data quality for model training. Cover both positive and negative examples. Combine diverse data types to achieve adequate completeness for analysis and modeling. Consider techniques like Synthetic Minority Oversampling Technique (SMOTE) for data scarcity or imbalance.<br><br>&#9642; [Data ingestion and analysis](#data-ingestion-and-analysis)|
+|**Conduct data analysis on the collected data early**. | Perform analysis processes, such as Exploratory Data Analysis (EDA), offline. Consider the costs and security implications. For small datasets without resource constraints, you can consider performing analysis at the source.<br><br>&#9642; [Data collection store](#data-collection-store)|
+|**Maintain data segmentation, if business and technical requirements call for it**.  |If you use data sources that have distinct security requirements, create separate pipelines for each model. Establish access controls to limit interaction with specific data subsets. <br><br>&#9642; [Data segmentation](#data-segmentation)|
+|**Preprocess data to make it meaningful against training goals**. | Refine the quality of ingested data by filtering noise, rescoping the data, addressing duplicates, and standardizing diverse formats. <br><br>&#9642; [Data preprocessing](#data-preprocessing)|
+|**Avoid training on stale data**. |Monitor for data drift and concept drift as part of your inner and outer operational loops to maintain the accuracy and reliability of models over time. Regularly update training data with new observations. Define conditions that trigger model retraining and determine update frequency. <br><br>&#9642; [Data maintenance](#data-maintenance)|
 
 ## Types of data
 
