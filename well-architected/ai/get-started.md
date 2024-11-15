@@ -20,14 +20,7 @@ This set of articles provides actionable and authoritative guidance for building
 
 :::image type="content" source="images/logical-component-architecture.png" alt-text="Diagram showing the logical component architecture." border="false":::
 
-This diagram shows a workflow illustrating the integration of multiple technologies and processes to deliver scalable AI solutions, emphasizing the importance of each stage in the ML lifecycle. The workflow is segmented into six primary phases: Data Ingestion, Data Storage, Data Processing, Model Training and Fine-tuning, Model Serving, and Client Interaction.
-
-1. **Data Ingestion:** This phase involves collecting data from various sources, including edge devices, streaming platforms (e.g., Kafka), batch processing systems (e.g., Hadoop), and both structured and unstructured databases.
-2. **Data Storage:** The ingested data is stored in multiple storage solutions such as object stores (e.g., S3), file systems (e.g., HDFS), and databases.
-3. **Data Processing:** This stage prepares the data for training through ETL (Extract, Transform, Load) processes using tools like Spark or Flink.
-4. **Model Training and Fine-tuning:** Machine learning models are trained using frameworks such as TensorFlow or PyTorch on high-performance computing resources.
-5. **Model Serving:** Trained models are deployed to production environments where they can be accessed via APIs or integrated into applications for real-time inference.
-6. **Client Interaction:** The final phase involves end-users interacting with the deployed models through various interfaces, including web applications, mobile apps, or analytics dashboards.
+*This diagram shows a workflow illustrating the integration of multiple technologies and processes to deliver scalable AI solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction. This architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions.*
 
 An AI workload is a workload that uses AI technology for predictive, discriminatory, or generative use cases. Sometimes, this functionality replaces a traditional code logic and data access solution that is otherwise deterministic. This design produces an experience that determinism and a classical code and data model can't accomplish. AI combines code logic and data into a single package.
 

@@ -28,7 +28,7 @@ Here's the summary of recommendations provided in this article.
 
 There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
 
-- **Retrieval-Augmented Generation (RAG):** This pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
+- **Retrieval-Augmented Generation (RAG):** This pattern combines generative models with retrieval systems, enabling the model to access external knowledge sources for improved context and accuracy. See the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series for in-depth guidance on this pattern. There are two RAG approaches:
     
     - *Just-in-time:* This approach retrieves relevant information dynamically at the time of a request, ensuring the latest data is always used. It's beneficial in scenarios requiring real-time context, but may introduce latency. 
     
@@ -54,7 +54,7 @@ Smaller applications or POCs typically will not benefit from adopting one of the
 
 ### Chunking strategies
 
-When using a RAG pattern, a well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
+When using a RAG pattern, a well-defined chunking strategy is critical to optimizing your workload's performance efficiency. Start with the [guidance](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase) provided in the [Designing and developing a RAG solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide) series. Additional recommendations to consider are:
 
 - Implement a dynamic chunking strategy that adjusts chunk sizes based on the data type, query complexity, and user requirements. This can enhance retrieval efficiency and context preservation.
 
