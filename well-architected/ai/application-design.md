@@ -11,7 +11,19 @@ ms.subservice: waf-workload-ai
 
 # Application design for AI workloads on Azure
 
-There are many choices available for you to consider when planning to build an application with AI functions. Your unique functional and nonfunctional requirements will help you narrow down high-level decisions about your design, like whether the use case is traditional machine learning, generative, or deterministic, or a combination of AI types. As you move from the high-level design areas to lower level design areas, you'll have several choices to consider along the way. This article explores many common design areas and covers factors to consider when making important decisions about technology or approach choices.
+There are many choices available for you to consider when planning to build an application with AI functions. Your unique functional and nonfunctional requirements will help you narrow down high-level decisions about your design, like whether the use case is traditional machine learning, generative, or deterministic, or a combination of AI types. As you move from the high-level design areas to lower level design areas, you'll have several choices to consider along the way. 
+
+As discussed in the [Get started](./get-started.md) article, choosing whether to build your own model or use a prebuit model is one of the first important decisions to make. If you choose to use a prebuilt model, consider these points.
+
+- **Catalog sources**. Explore repositories like Hugging Face Model Hub, TensorFlow Hub, or Azure AI Studio model catalog to find pretrained models. These platforms provide an extensive catalog of models across various tasks.
+ 
+- **Licensing**. Make sure the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
+ 
+- **Key components**. Look at the model's architecture, training data, performance, and licensing. See if it's fine-tuned for your task or domain.
+ 
+For guidance on choosing a hosting platform, see [Model hosting platform considerations](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
+
+This article explores many common design areas and covers factors to consider when making important decisions about technology or approach choices.
 
 ## Recommendations
 
