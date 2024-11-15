@@ -1,6 +1,6 @@
 ---
-title: Application design for AI workloads on Azure
-description: Code deployed on the resources.
+title: Application Design for AI Workloads on Azure
+description: Learn about the design considerations for building AI workloads on Azure, including recommendations, design patterns, architecture considerations, and specialized application layers.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/15/2024
@@ -15,12 +15,14 @@ There are many choices available for you to consider when planning to build an a
 
 ## Recommendations
 
+Here's the summary of recommendations provided in this article.
+
 |Recommendation|Description|
 |---|---|
-| Prefer off-the-shelf solutions. | Whenever practical use platform as a service (PaaS) solutions to handle much of the workload functions. Likewise, use prebuilt and pre-trained models whenever practical to minimize the operational and development burden for your workload and operations teams. |
-| Abstract functions and capabilities away from the client. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
-| Block access to the data stores. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
-| Isolate your models. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
+| **Prioritize off-the-shelf solutions**. | Whenever practical use platform as a service (PaaS) solutions to handle much of the workload functions. Likewise, use prebuilt and pre-trained models whenever practical to minimize the operational and development burden for your workload and operations teams. |
+| **Abstract functions and capabilities away from the client**. | Keep the client as thin as possible by designing the backend services to handle cross-cutting concerns like rate limiting and failover operations. |
+| **Block access to the data stores**. | No code in the AI system should directly touch your data stores. Route all data requests through an API layer. The APIs should be purpose built for the specific task required. |
+| **Isolate your models**. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
 
 ## AI application design patterns
 
@@ -102,7 +104,7 @@ The following components should be containerized:
 
 - **Infrastructure services:** Services that provide infrastructure support, like databases or caching layers, can also benefit from containerization. This helps in maintaining version consistency and facilitates easier scaling and management of these components.
 
-### Colocating AI components with other workload components
+### Co-locating AI components with other workload components
 
 There are several good reasons to colocate your AI components with other workload components, but there are tradeoffs with doing so. Reasons that you might colocate are:
 
@@ -184,7 +186,7 @@ Defining your strategy for your model is one of the first critical steps in desi
 
 Determine whether to use generative models (like GPT for text generation) or discriminative models (like logistic regression for classification). Generative models create new data samples, while discriminative models classify existing samples based on learned features. Consider the specific task (classification, regression, etc.) and choose models that are well-suited for that purpose. For example, a language model capable of classification might provide more versatility compared to a strictly classification model.
 
-### Building your own model vs using a prebuilt model vs using a fully managed service
+### Building your own model vs. using a prebuilt model vs. using a fully managed service
 
 Building, training, and maintaining your own model requires a significant investment in costs, time, effort, and expertise, so thoroughly research your options before choosing to go down that path. In most cases, using a prebuilt model or using a fully managed service is the better choice. The following factors can help you decide which of these options is the right one for your use case.
 
@@ -221,3 +223,8 @@ The choice of frameworks and libraries is closely intertwined with application d
 ## Identity, authorization, and access considerations
 
 Generally speaking, you should approach identity, authorization, and access in the same way that you normally design applications. You should use an identity provider, like Microsoft Entra, to manage these areas as much as possible. There are unique challenges to many AI applications that need special consideration however. Persisting access control lists (ACLs) through the system is sometimes challenging or even impossible without introducing novel development. Review the guidance found in the [secure multi-tenant RAG solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) to learn how to add security trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Application platform](application-platform.md)

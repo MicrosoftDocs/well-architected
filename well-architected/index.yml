@@ -135,7 +135,7 @@ sections:
     blocks:
       - componentType: summary-card
         title: Artificial Intelligence (AI)
-        summary: Design and operationalize AI workloads that are expected to be always available and resilient to failures.
+        summary: Incorporate discriminative or generative AI models in your workload for predictive analysis, generating content, and other AI use cases.
         url: ./ai/index.yml
       - componentType: summary-card
         title: Software as a service (SaaS)
