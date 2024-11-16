@@ -39,7 +39,7 @@ Here's the summary of recommendations provided in this article.
 
 ## Component considerations
 
-### Containerization of components
+### Containerize components
 
 To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. The following components should be containerized:
 
@@ -51,7 +51,7 @@ To ensure that your independently deployable components are fully self-contained
 
 - **Infrastructure services:** Services that provide infrastructure support, like databases or caching layers, can also benefit from containerization. This helps in maintaining version consistency and facilitates easier scaling and management of these components.
 
-### Co-locating AI components with other workload components
+### Co-locate AI components with other workload components
 
 There are several good reasons to colocate your AI components with other workload components, but there are tradeoffs with doing so. Reasons that you might colocate are:
 
@@ -64,7 +64,7 @@ There are several good reasons to colocate your AI components with other workloa
 > [!NOTE]
 > There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
 
-### Using orchestrators in generative AI solutions
+### Evaluate the use of orchestrators in generative AI solutions
 
 An orchestrator manages the workflow coordinating the communication between the different solution components of the AI solution that would otherwise be difficult to manage in complex workloads, so building them into your design is highly recommended if your workload has these characteristics: 
 
@@ -96,7 +96,7 @@ Using an agentic approach works best with an orchestration pattern rather than a
 
 See the [orchestration platform considerations](./application-platform.md#considerations-for-the-orchestration-platform) for guidance on choosing an orchestration platform.
 
-### Using API gateways
+### Evaluate the use of API gateways
 
 API gateways, like [Azure API Management](/azure/api-management/api-management-key-concepts), abstract functions away from APIs which decouples dependencies between the requesting service and the API. API gateways provide the following benefits to AI workloads:
 
@@ -106,7 +106,7 @@ API gateways, like [Azure API Management](/azure/api-management/api-management-k
 
 - *Security:* They provide centralized access control, logging, and threat protection for the APIs behind the gateway. 
 
-## AI application design patterns
+## Take advantage of AI application design patterns
 
 There are several common design patterns that have been established in the industry for AI applications that you can use to simplify your design and implementation. These design patterns include:
 
@@ -143,7 +143,7 @@ When using a RAG pattern, a well-defined chunking strategy is critical to optimi
 > [!NOTE]
 > Smaller applications or POCs typically will not benefit from adopting one of these design patterns and should be built with a simplistic design. Likewise, if you have resource (budget, time, or headcount) constraints, staying with a simplistic design that can be refactored later is a better approach than adopting a complex design pattern.
 
-## Considerations for choosing frameworks and libraries
+## Choose the right frameworks and libraries
 
 The choice of frameworks and libraries is closely intertwined with application design, impacting not just the architecture but also performance, scalability, and maintainability. Conversely, design requirements can limit framework choices, creating a dynamic interplay between the two. For example, using the Semantic Kernel SDK (SK) often encourages a microservices-based design where each agent or functionality is encapsulated within its own service. Factors to consider when choosing frameworks and libraries are:
 
@@ -153,11 +153,11 @@ The choice of frameworks and libraries is closely intertwined with application d
 
 - **Team expertise:** The skillset of the development team can constrain framework choices. A design that relies on a less familiar framework might lead to increased development time and complexity, prompting a selection of a more familiar tool.
 
-## Identity, authorization, and access considerations
+## Design a strategy for identities, authorization, and access
 
 Generally speaking, you should approach identity, authorization, and access in the same way that you normally design applications. You should use an identity provider, like Microsoft Entra, to manage these areas as much as possible. There are unique challenges to many AI applications that need special consideration however. Persisting access control lists (ACLs) through the system is sometimes challenging or even impossible without introducing novel development. Review the guidance found in the [secure multi-tenant RAG solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) to learn how to add security trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
 
-## Considerations for nonfunctional requirements
+## Consider the nonfunctional requirements
 
 You may have nonfunctional requirements for your workload that are challenging due to factors inherent to AI technologies. Common nonfunctional requirements and their challenges include:
 
