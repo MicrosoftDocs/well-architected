@@ -49,15 +49,15 @@ To ensure that your independently deployable components are fully self-contained
 
 - **Infrastructure services:** Services that provide infrastructure support, like databases or caching layers, can also benefit from containerization. This helps in maintaining version consistency and facilitates easier scaling and management of these components.
 
-## Co-locate AI components with other workload components
+## Colocate AI components with other workload components
 
 There are several good reasons to colocate your AI components with other workload components, but there are tradeoffs with doing so. Reasons that you might colocate are:
 
-- **Latency sensitivity:** Co-locate AI components with other services (like API hosting) when low latency is crucial. For example, if real-time inference is required to enhance user experience, placing AI models close to the API can minimize the time it takes to retrieve results. 
+- **Latency sensitivity:** Colocate AI components with other services (like API hosting) when low latency is crucial. For example, if real-time inference is required to enhance user experience, placing AI models close to the API can minimize the time it takes to retrieve results. 
 
-- **Data proximity:** When AI models require frequent access to specific datasets (such as a search index), co-locating these components can improve performance. It reduces the overhead of data transfer, allowing for faster processing and inference. 
+- **Data proximity:** When AI models require frequent access to specific datasets (such as a search index), colocating these components can improve performance. It reduces the overhead of data transfer, allowing for faster processing and inference. 
 
-- **Resource utilization:** If certain components have complementary resource needs (like CPU and memory), co-locating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
+- **Resource utilization:** If certain components have complementary resource needs (like CPU and memory), colocating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
 
 > [!NOTE]
 > There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
