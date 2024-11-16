@@ -145,7 +145,7 @@ When using a RAG pattern, a well-defined chunking strategy is critical to optimi
 
 The choice of frameworks and libraries is closely intertwined with application design, impacting not just the architecture but also performance, scalability, and maintainability. Conversely, design requirements can limit framework choices, creating a dynamic interplay between the two. For example, using the Semantic Kernel SDK (SK) often encourages a microservices-based design where each agent or functionality is encapsulated within its own service. Factors to consider when choosing frameworks and libraries are:
 
-- **Application requirements:** The specific requirements of the application (e.g., real-time processing, batch processing) may limit the choice of frameworks. For instance, if the application demands low latency, a framework with asynchronous capabilities may be necessary. 
+- **Application requirements:** The specific requirements of the application (like real-time processing, batch processing, and others) may limit the choice of frameworks. For instance, if the application demands low latency, a framework with asynchronous capabilities may be necessary. 
 
 - **Integration needs:** The design may require specific integrations with other systems or services. If a framework doesn’t support the necessary protocols or data formats, it could necessitate reconsidering the design or selecting a different framework. 
 
