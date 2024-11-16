@@ -1,12 +1,10 @@
 ---
 title: AI Workload Operations on Azure
 description: Learn about AI workload operations on Azure and how to build operational mechanisms and practices to better support AI workloads.
-author: PageWriter-MSFT
-ms.author: prwilk
-ms.date: 10/25/2024
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 11/15/2024
 ms.topic: conceptual
-ms.service: azure-waf
-ms.subservice: waf-workload-ai
 ---
 
 # AI workload operations on Azure
@@ -112,4 +110,4 @@ Take advantage of automated configuration and history capturing through MLFlow a
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [MLOps and GenAIOps](mlops-genaiops.md)
+> [Design area: Testing and evaluation](./testing.md)

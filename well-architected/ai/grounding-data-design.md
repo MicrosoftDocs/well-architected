@@ -228,4 +228,4 @@ Upfront investment in fine tuning the model might be less expensive than impleme
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Data platform](data-platform.md)
+> [Design area: MLOps and GenAIOps](./mlops-genaiops.md)

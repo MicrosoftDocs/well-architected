@@ -1,12 +1,10 @@
 ---
 title: Application Design for AI Workloads on Azure
 description: Learn about the design considerations for building AI workloads on Azure, including recommendations, design patterns, architecture considerations, and specialized application layers.
-author: PageWriter-MSFT
-ms.author: prwilk
-ms.date: 04/15/2024
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 11/15/2024
 ms.topic: conceptual
-ms.service: azure-waf
-ms.subservice: waf-workload-ai
 ---
 
 # Application design for AI workloads on Azure
@@ -59,8 +57,7 @@ There are several good reasons to colocate your AI components with other workloa
 
 - **Resource utilization:** If certain components have complementary resource needs (like CPU and memory), colocating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time. 
 
-> [!NOTE]
-> There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
+> ![Consider the tradeoff that's associated with this decision.](../_images/trade-off.svg) **Tradeoff**. There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
 
 ## Evaluate the use of orchestrators in generative AI solutions
 
@@ -76,7 +73,7 @@ An orchestrator manages the workflow coordinating the communication between the 
 
 - *Data retrieval:* You need to be able to retrieve augementation data from the index.
 
-### Special considerations for using multiple models
+### Considerations for using multiple models
 
 When your workload uses multiple models, using an orchestrator is essential. The orchestrator will be responsible for routing data and requests to the appropriate model based on the use case. Plan for data flow between models, ensuring that outputs from one model can serve as inputs for another. This might involve data transformation or enrichment processes.
 
@@ -168,4 +165,4 @@ You may have nonfunctional requirements for your workload that are challenging d
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Application platform](application-platform.md)
+> [Design area: Application platform](application-platform.md)

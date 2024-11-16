@@ -239,4 +239,4 @@ The GenAIOps maturity levels move from basic models to structured deployment, pr
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Test and evaluate](testing.md)
+> [Design area: Operations](./operations.md)

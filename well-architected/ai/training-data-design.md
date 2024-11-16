@@ -176,4 +176,4 @@ Make sure that data maintenance is done as part of model operations. You should 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Grounding data design](grounding-data-design.md)
+> [Design area: Grounding data design](grounding-data-design.md)

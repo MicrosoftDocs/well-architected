@@ -17,12 +17,10 @@
         href: training-data-design.md
       - name: Grounding data design
         href: grounding-data-design.md
-      - name: Data platform
-        href: data-platform.md
+      - name: MLOps and GenAIOps
+        href: mlops-genaiops.md        
       - name: Operations
         href: operations.md
-      - name: MLOps and GenAIOps
-        href: mlops-genaiops.md
       - name: Test and evaluate
         href: testing.md
       - name: Responsible AI

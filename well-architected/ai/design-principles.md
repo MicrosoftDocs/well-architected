@@ -108,6 +108,7 @@ Model performance also influenced by the efficiency of operations like experimen
 These design areas provide details on the preceding principles and considerations:
 
 - [Testing](./testing.md)
+- [MLOps and GenAIOps](./mlops-genaiops.md)
 
 ## Next step
 

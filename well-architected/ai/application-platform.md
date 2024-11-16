@@ -1,12 +1,10 @@
 ---
 title: Application Platform for AI Workloads on Azure
 description: Learn about the Azure resources that you need for running AI workloads. Learn about platforms for EDA, model training and fine-tuning, and inferencing. 
-author: PageWriter-MSFT
-ms.author: prwilk
-ms.date: 11/01/2024
-ms.topic: concept-article
-ms.service: azure-waf
-ms.subservice: waf-workload-ai
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 11/15/2024
+ms.topic: conceptual
 ---
 
 # Application platform for AI workloads on Azure
@@ -240,4 +238,4 @@ As with all other production workloads in your cloud estate, when you evaluate o
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Training data design](training-data-design.md)
+> [Design area: Training data design](./training-data-design.md)

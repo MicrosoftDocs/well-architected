@@ -9,13 +9,13 @@ ms.topic: conceptual
 
 # Test and evaluate AI workloads on Azure
 
-The purpose of testing in AI workloads is to help maintain quality when a change is introduced to the system. Testing can validate whether the workload meets identified targets and fulfills user expectations. It also prevents quality regressions. This process includes conducting tests across various functional areas and assessing the quality of functionality, load handling, predictability, and other criteria based on workload requirements.
+The purpose of testing in AI workloads is to help **ensure quality when a change is introduced to the system**. Testing can validate whether the workload meets identified targets and fulfills user expectations. It also prevents quality regressions. This process includes conducting tests across various functional areas and assessing the quality of functionality, load handling, predictability, and other criteria based on workload requirements.
 
-Test results provide critical data points for decisions like whether AI components are ready for release and which SKUs or features are appropriate. Additionally, testing can serve as a notification system for failures and help detect problems in production through routine or synthetic tests.
+Test results provide critical **data points for decisions** like whether AI components are ready for release and which SKUs or features are appropriate. Additionally, testing can serve as a **notification system for failures** and help detect problems in production through routine or synthetic tests.
 
-The Azure Well-Architected Framework outlines a comprehensive testing methodology. You should use various types of tests at different stages of the development life cycle and across different system components and flows. Without these tests, rolled-out changes can degrade system quality. For example, minor code errors might become large system failures. System behavior might become unpredictable or produce biased results because of the nondeterministic nature of AI systems. Also, resource allocation might be inefficient, and real user data or system resources can be exploited because these systems are vulnerable to abuse.
+The Azure Well-Architected Framework outlines a comprehensive testing methodology. You should **use various types of tests at different stages of the development life cycle and across different system components and flows**. Without these tests, rolled-out changes can degrade system quality. For example, minor code errors might become large system failures. System behavior might become unpredictable or produce biased results because of the nondeterministic nature of AI systems. Also, resource allocation might be inefficient, and real user data or system resources can be exploited because these systems are vulnerable to abuse.
 
-You must design and develop workload assets with testing in mind. For instance, when you perform data manipulation and reshape source data for feature engineering, adhere to good coding practices and ensure that you structure the code to support testing. This strategy includes designing the code to facilitate effective unit testing and isolating the tests from the code's functionality and its dependencies. In this example, you must design a system that can perform in a test environment with sufficiently representative test data in terms of volume and likeness.
+You must **design and develop workload assets with testing in mind**. For instance, when you perform data manipulation and reshape source data for feature engineering, adhere to good coding practices and ensure that you structure the code to support testing. This strategy includes designing the code to facilitate effective unit testing and isolating the tests from the code's functionality and its dependencies. In this example, you must design a system that can perform in a test environment with sufficiently representative test data in terms of volume and likeness.
 
 You must deploy workload components to production safely. Part of any workload's safe deployment practices is strategic testing to help ensure correct behavior before users or data consume the system. Strategic testing is essential during the initial deployment and as the system evolves and undergoes code or infrastructure changes. Test all proposed changes to AI-related code and infrastructure before you deploy the changes to production.
 
@@ -233,24 +233,24 @@ A key component of a RAG application is the central orchestrator. This code coor
 
 You can develop orchestration code in any language or write it from scratch. However, we recommend that you use technologies like prompt flow in Azure AI Studio or Apache Airflow's Directed Acyclic Graphs (DAGs) to speed up and simplify the development process. Prompt flow provides a design-time experience. Use it to modularize tasks as units and connect inputs and outputs of each unit, ultimately forming the orchestration code, which represents the entire process.
 
-Isolate your orchestration code. Develop it separately and deploy it as a microservice with an online endpoint and REST API for access. This approach ensures modularity and ease of deployment.
+Isolate your orchestration code. **Develop it separately and deploy it as a microservice** with an online endpoint and REST API for access. This approach ensures modularity and ease of deployment.
 
-From a testing perspective, treat this code like any other code and conduct unit tests. However, the more important aspect is its functionality, such as its routing logic, which you can validate through functional and integration testing. Test prompt engineering to ensure that the code can detect user intent and route calls appropriately. There are several frameworks and libraries for testing, such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
+From a testing perspective, treat this code like any other code and **conduct unit tests**. However, the more important aspect is its functionality, such as its routing logic, which you can validate through functional and integration testing. **Test prompt engineering to ensure that the code can detect user intent and route calls appropriately**. There are several frameworks and libraries for testing, such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
 
 Also, conduct runtime tests, such as failure mode testing. For example, test potential failures that are related to token limitations.
 
-Certain runtime tests can help you make a decision. Run load tests to understand how this code behaves under stress and use the results for capacity planning. Because this code is positioned at a crucial point in the architecture where it needs to reach other services, it can help collect telemetry from all those calls. This data can provide insights into how much time is spent on local processing versus network calls and determine the behavior of other components, such as potential latency. Technologies like prompt flow have built-in telemetry capabilities to facilitate this process. Otherwise, incorporate telemetry in your custom code.
+Certain runtime tests can help you make a decision. **Run load tests** to understand how this code behaves under stress and use the results for capacity planning. Because this code is positioned at a crucial point in the architecture where it needs to reach other services, it can help collect telemetry from all those calls. This data can provide insights into how much time is spent on local processing versus network calls and determine the behavior of other components, such as potential latency. Technologies like prompt flow have built-in telemetry capabilities to facilitate this process. Otherwise, incorporate telemetry in your custom code.
 
 > [!NOTE]
 >
 > Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, you can simulate the inference endpoint.
 
 
-Security concerns apply to both the orchestration code and the model. Include testing for jailbreaking, where the goal is to break the model's security. Attackers don't interact with the model directly. They interact with the orchestration code first. The orchestration code receives user requests and parses them. If the orchestration code receives a malicious request, it can forward that request to the model and potentially compromise the model.
+Security concerns apply to both the orchestration code and the model. **Include testing for jailbreaking**, where the goal is to break the model's security. Attackers don't interact with the model directly. They interact with the orchestration code first. The orchestration code receives user requests and parses them. If the orchestration code receives a malicious request, it can forward that request to the model and potentially compromise the model.
 
-Content safety is another important aspect. In a chatbot application, orchestration code receives chat text. In the code, consider calling a content safety service. Send both the user prompt and the grounding context for analysis and receive an assessment of the risk. [Prompt Shields](/azure/ai-services/content-safety/concepts/jailbreak-detection) is a unified API that analyzes large language model inputs and detects user-prompt attacks and document attacks, which are two common types of adversarial inputs.
+Content safety is another important aspect. In a chatbot application, orchestration code receives chat text. In the code, **consider calling a content safety service**. Send both the user prompt and the grounding context for analysis and receive an assessment of the risk. [Prompt Shields](/azure/ai-services/content-safety/concepts/jailbreak-detection) is a unified API that analyzes large language model inputs and detects user-prompt attacks and document attacks, which are two common types of adversarial inputs.
 
-Security control and authentication are crucial for a RESTful endpoint. You need to manage authentication and ensure thorough testing.
+**Security control and authentication are crucial** for a RESTful endpoint. You need to manage authentication and ensure thorough testing.
 
 ## Prevent model decay
 
@@ -278,4 +278,4 @@ Use **Machine Learning model monitoring** to implement monitoring. Machine Learn
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Responsible AI](responsible-ai.md)
+> [Design area: Responsible AI](./responsible-ai.md)

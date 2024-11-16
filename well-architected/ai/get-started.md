@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # AI workloads on Azure
 
-This guidance **addresses architectural challenges of designing AI workloads, focusing on non-deterministic functionality, data design, and operations.** The recommendations are based on the Azure Well-Architected Framework (WAF) principles and includes insights from successful Azure implementations.
+This guidance **addresses architectural challenges of designing AI workloads, focusing on non-deterministic functionality, data and application design, and operations.** The recommendations are based on the Azure Well-Architected Framework (WAF) principles and includes insights from successful Azure implementations.
 
 These articles are meant for **workload owners** and **technical stakeholders** like architects, development leads, and IT leaders. Specialized AI and data roles, such as data scientists, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
 
