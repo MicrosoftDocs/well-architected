@@ -37,9 +37,7 @@ Here's the summary of recommendations provided in this article.
 | **Isolate your models**. | Like the data stores, use an API layer to act as a gateway for requests to the model. Some PaaS solutions like Azure Open AI and Azure ML use SDKs for this purpose and there is native support in many tools, like PromptFlow to propagate APIs through to the service. |
 | **Design componenets to be independently deployabe**. | AI models, data pipelines, frontend components, and microservices like data preprocessing, feature extraction, and inferencing should be independently deployable to optimize the flexibility, scalability and operability of your workload. |
 
-## Component considerations
-
-### Containerize components
+## Containerize components
 
 To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. The following components should be containerized:
 
@@ -51,7 +49,7 @@ To ensure that your independently deployable components are fully self-contained
 
 - **Infrastructure services:** Services that provide infrastructure support, like databases or caching layers, can also benefit from containerization. This helps in maintaining version consistency and facilitates easier scaling and management of these components.
 
-### Co-locate AI components with other workload components
+## Co-locate AI components with other workload components
 
 There are several good reasons to colocate your AI components with other workload components, but there are tradeoffs with doing so. Reasons that you might colocate are:
 
@@ -64,7 +62,7 @@ There are several good reasons to colocate your AI components with other workloa
 > [!NOTE]
 > There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components and you may increase your risk of malfunction by increasing the potential blast radius of incidents.
 
-### Evaluate the use of orchestrators in generative AI solutions
+## Evaluate the use of orchestrators in generative AI solutions
 
 An orchestrator manages the workflow coordinating the communication between the different solution components of the AI solution that would otherwise be difficult to manage in complex workloads, so building them into your design is highly recommended if your workload has these characteristics: 
 
@@ -78,11 +76,11 @@ An orchestrator manages the workflow coordinating the communication between the 
 
 - *Data retrieval:* You need to be able to retrieve augementation data from the index.
 
-#### Special considerations for using multiple models
+### Special considerations for using multiple models
 
 When your workload uses multiple models, using an orchestrator is essential. The orchestrator will be responsible for routing data and requests to the appropriate model based on the use case. Plan for data flow between models, ensuring that outputs from one model can serve as inputs for another. This might involve data transformation or enrichment processes.
 
-#### Orchestration and agents
+### Orchestration and agents
 
 For generative AI workloads, consider taking an agent-based (sometimes referred to as "agentic") approach to your design to add extensibility to your orchestration. Agents refer to context-bound functionality, sharing many microservices style characteristics that perform tasks in conjunction with an orchestrator. The orchestrator can advertise tasks out to a pool of agents or agents can register capabilities with the orchestrator. Both allow the orchestrator to dynamically decide how to break up and route up the query amongst the agents.
 
@@ -96,7 +94,7 @@ Using an agentic approach works best with an orchestration pattern rather than a
 
 See the [orchestration platform considerations](./application-platform.md#considerations-for-the-orchestration-platform) for guidance on choosing an orchestration platform.
 
-### Evaluate the use of API gateways
+## Evaluate the use of API gateways
 
 API gateways, like [Azure API Management](/azure/api-management/api-management-key-concepts), abstract functions away from APIs which decouples dependencies between the requesting service and the API. API gateways provide the following benefits to AI workloads:
 
