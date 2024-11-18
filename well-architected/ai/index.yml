@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
 title: AI Workload Documentation
-summary: AI workloads use non-deterministic behavior, making them more adaptable to complex situations compared to traditional workloads. They combine code and data into models, creating unique experiences. This guidance focuses on the architectural challenges of designing AI workloads, particularly non-deterministic functionality, data and application design, and operations.
+summary: AI workloads use non-deterministic behavior, making them more adaptable to complex situations compared to traditional workloads. They combine code and data into models, creating unique experiences. This guidance focuses on the architectural challenges of designing AI workloads, including non-deterministic functionality, data and application design, and operations.
 metadata: 
   title: AI Workload Documentation
-  description: TBD
+  description: This documentation provides guidance on designing AI workloads, focusing on the architectural challenges of non-deterministic functionality, data and application design, and operations. It includes key concepts, methodologies, and best practices to help architects build and optimize AI solutions on Azure.
   ms.date: 11/15/2024
   author: PageWriter-MSFT
   ms.author: prwilk
@@ -55,7 +55,7 @@ landingContent:
           - text: MLOps and GenAIOps
             url: mlops-genaiops.md
           - text: Testing and evaluation
-            url: testing.md
+            url: test.md
           - text: Responsible AI
             url: responsible-ai.md                            
 
@@ -72,7 +72,7 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Azure ML service guide
+          - text: Azure Machine Learning service guide
             url: /azure/well-architected/service-guides/azure-machine-learning         
           - text: Azure OpenAI service guide
             url: /azure/well-architected/service-guides/azure-openai              

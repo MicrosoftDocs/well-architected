@@ -112,7 +112,7 @@ To visualize this connection, create a graphical image showing how architecture 
 
 The image below shows a LAMBDA architecture for modern analytics on Azure:
 
-![Diagram of a LAMBDA architecture for modern analytics in Azure.](./images/personas-to-architectures.png)
+:::image type="content" source="images/personas-to-architectures.png" alt-text="Diagram of a LAMBDA architecture for modern analytics in Azure." lightbox="./images/personas-to-architectures.png":::
 
 ## Next step
 

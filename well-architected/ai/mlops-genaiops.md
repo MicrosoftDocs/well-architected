@@ -150,7 +150,7 @@ We strongly recommend that you have a DataOps inner loop monitoring process that
 
 For pretrained models, it also important to monitor data drift and performance, with a primary focus on relevancy. Evaluate the inputs (prompts) and the outputs (completions) to ensure they are relevant and accurate. Additionally, be aware of security risks, such as attempts to manipulate the model's behavior through malicious prompts. Make sure there's thorough content moderation that inspects data in both directions and filters out inappropriate content. These considerations are described in the [ResponsibleAI design area](./responsible-ai.md).
 
-After deployment, monitoring operations are necessary to address issues like model decay. Models can become stale because of changes in data or external changes that can cause the model to produce irrelevant results. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics, as you would with any other workload, to help ensure optimal performance and reliability. For more information, see [Testing for model decay](./testing.md#prevent-model-decay). 
+After deployment, monitoring operations are necessary to address issues like model decay. Models can become stale because of changes in data or external changes that can cause the model to produce irrelevant results. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics, as you would with any other workload, to help ensure optimal performance and reliability. For more information, see [Testing for model decay](./test.md#prevent-model-decay). 
 
 
 ##### Tools
@@ -239,4 +239,4 @@ The GenAIOps maturity levels move from basic models to structured deployment, pr
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Design area: Operations](./operations.md)
+> [Design area: Data platform for AI workloads](./data-platform.md)

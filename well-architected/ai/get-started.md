@@ -99,7 +99,7 @@ When choosing between a custom model, a prebuilt model, or a service, consider t
 
 ## Typical architecture pattern and design areas
 
-:::image type="content" source="./images/ai-architecture-pattern.png" alt-text="diagram shows the typical architecture pattern of an AI workload." lightbox="./images/ai-architecture-pattern.png":::
+:::image type="content" source="./images/ai-architecture-pattern.png" alt-text="Diagram shows the typical architecture pattern of an AI workload." lightbox="./images/ai-architecture-pattern.png":::
 
 The architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes various modules such as data sources, data processing, model training, model deployment, and user interfaces, illustrating how data flows through the system from initial collection to final user interaction.
 
@@ -114,7 +114,7 @@ The following table describes some key design areas related to that pattern.
 |[Data platform](./data-platform.md). Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
 |[Machine learning operations and Generative AI operations](./mlops-genaiops.md). Establish modern DevOps practices to support your machine learning or generative AI functions and systems. |
 |[Workload operations](./operations.md). Modernize your operational practices with new approaches and adding specialized roles and training. |
-|[Testing and evaluation](./testing.md). Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensitivity, and specificity through metrics that have been specifically targeted for AI workloads. |
+|[Testing and evaluation](./test.md). Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensitivity, and specificity through metrics that have been specifically targeted for AI workloads. |
 |[Workload personas](./personas.md). Understand how personas are involved in the full lifecycle of your AI workload to help ensure that your team is fully capable of building and supporting it. |
 |[Responsible AI](./responsible-ai.md). AI brings incredible opportunities for new products and services, but it also carries a considerable degree of risk. Pay special attention to the user experience and ethical implications of releasing your AI solution to the public. |
 

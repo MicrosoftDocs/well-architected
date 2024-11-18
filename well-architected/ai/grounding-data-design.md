@@ -102,7 +102,7 @@ Configure the search index fields to return the most relevant set of documents. 
 
 - **Filter, search, and sort options**. Consider these options because they're directly related to use cases for augmentation. For example, _filterable_ determines true or false against a value provided in the query and returns relevant documents. For _searchability_, the attribute indicates whether the search query can reference the field. For instance, you might check if a text field contains specific text or if it's mathematically related to another vector. You can optionally assign a relative weight to that field as part of the search query. You can also make result sets _sortable_, which lists the results by relevance.
 
-  > ![Consider the tradeoff associated with adding index field capabilities.](../_images/trade-off.svg) **Tradeoff**. Enabling capabilities to index fields increases space requirements, affecting costs. Only add capabilities that you intend to use.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Enabling capabilities to index fields increases space requirements, affecting costs. Only add capabilities that you intend to use.
 
 - **Metadata**. Indexes typically have metadata associated with index fields. Metadata helps us understand and manage data by providing relevant details about it. When designing indexes, consider whether metadata are retrievable or only used for relevance determination. The decision affects compute costs because the underlying indexing process is different. Excessive metadata can unnecessarily increase the size of the index.
   
@@ -128,7 +128,7 @@ The manner in which data is stored and processed effects query efficiency. Each 
 
 Cost and performance are key drivers of index design. Techniques like creating shadow copies can speed up querying. However, data duplication occurs through indexes, which incurs costs.
 
-> ![Consider the tradeoff associated with adding field capabilities.](../_images/trade-off.svg) **Tradeoff**. Index design should consider both cost and performance. Strike a balance by optimizing storage and prioritizing efficient query answering and relevant document retrieval over excessive indexing.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Index design should consider both cost and performance. Strike a balance by optimizing storage and prioritizing efficient query answering and relevant document retrieval over excessive indexing.
 
 For technology choices for the data store, search indexes, such as Elasticsearch or AI Search, provide powerful search capabilities, including vectorized and relevancy-based searches. Alternatively, consider database options that support the type of data that you have and the types of queries you need because they're optimized for querying. Ultimately, it's about the capabilities offered by the options and the investment of building new skill sets on the team.
 
@@ -160,7 +160,7 @@ Here are some broad considerations.
 
   Consider maintaining data lineage. It's important for AI workloads to track the source of data because that information can get lost when a system aggregates various components into one index. This information might not ever be exposed to users, but information about data origins is crucial for internal data governance teams. This metadata isn't necessarily for the model. It helps maintain transparency and accountability.
 
-  > ![Consider the tradeoff associated with adding data.](../_images/trade-off.svg) **Tradeoff**. On one hand, adding new data increases the chances of finding relevancy within the data set. However, this benefit comes at a cost. Specifically, the computational resources required to process and manage that  field. The time spent collecting and storing data can be substantial. Be aware that overloading with unnecessary fields can strain resources.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** On one hand, adding new data increases the chances of finding relevancy within the data set. However, this benefit comes at a cost. Specifically, the computational resources required to process and manage that  field. The time spent collecting and storing data can be substantial. Be aware that overloading with unnecessary fields can strain resources.
 
 - **Processing text data**. Consider techniques such as synonyms, stemming, and semantic proximity to enhance relevancy. Delegate these techniques to tooling if possible. Some technologies, such as Elasticsearch or AI search, offer such features for preprocessing data during index creation.
 
@@ -194,7 +194,7 @@ Maintenance over time is a crucial aspect of index design. For static data, wher
 
 - **Maintaining compatibility**. Applications often require specific data structures, and any deviation can disrupt their functionality. For example, if a field is removed and the application requests that field, then a failure condition might occur. As you would for a traditional database, adopt a forward compatibility mindset for indexes and maintain a level of rigor. When you make changes to the index, like adding or removing fields, coordinate schema changes with code updates.
 
-  > ![Consider the tradeoff of irrelevant data and cost.](../_images/trade-off.svg) **Tradeoff**. Add, update, and delete actions against an index are expensive. Consider the frequency of updates and the cost to performance based on data store size and efficiency. Keeping obsolete documents in the index incurs storage, maintenance, and querying costs.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Add, update, and delete actions against an index are expensive. Consider the frequency of updates and the cost to performance based on data store size and efficiency. Keeping obsolete documents in the index incurs storage, maintenance, and querying costs.
 
 #### Deployment strategy
 
@@ -209,7 +209,7 @@ Maintenance over time is a crucial aspect of index design. For static data, wher
 
 - **In-place update deployments**. This approach directly modifies the existing index. Saving the cost of duplication can be beneficial, but it also introduces risks because of potential downtime and resource-intensive operations. If your index is large and rebuilding it from scratch exceeds your desired update frequency, you can consider using in-place updates. However, this approach is challenging and carries the risk of breaching your service-level objective (SLO).
 
-  > ![Consider the tradeoff between side-by-side deployments and in-place updates.](../_images/trade-off.svg) **Tradeoff**. Evaluate the cost of doing side-by-side deployments of indexes against doing in-place updates that deploy additions, updates, and deletions. In most cases, you should use side-by-side updates instead of in-place updates. When an index is rebuilt, the process effectively handles deletions and updates because it creates a completely new data set. This strategy provides the opportunity to test data. Even though side-by-side deployments temporarily duplicate data and incur additional costs, the benefits in testing and performance evaluation often justify this storage requirement. Before you make an index live, examine the data to ensure that it aligns with your expectations.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Evaluate the cost of doing side-by-side deployments of indexes against doing in-place updates that deploy additions, updates, and deletions. In most cases, you should use side-by-side updates instead of in-place updates. When an index is rebuilt, the process effectively handles deletions and updates because it creates a completely new data set. This strategy provides the opportunity to test data. Even though side-by-side deployments temporarily duplicate data and incur additional costs, the benefits in testing and performance evaluation often justify this storage requirement. Before you make an index live, examine the data to ensure that it aligns with your expectations.
 
 - **Scheduled updates**. Instead of maintaining continuous real-time communication with data sources, you can refresh grounding data periodically. This approach ensures that the data stays relevant through scheduled updates, which eliminates the need for constant interaction.
 

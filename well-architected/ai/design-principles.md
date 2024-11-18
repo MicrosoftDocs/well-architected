@@ -45,7 +45,7 @@ Models often use sensitive production data to produce relevant results. So, robu
 These design areas provide details on the preceding principles and considerations:
 
 - [Responsible AI](./responsible-ai.md)
-- [Testing](./testing.md)
+- [Testing](./test.md)
 - [Operations](./operations.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
 
@@ -88,7 +88,7 @@ These design areas provide details on the preceding principles and consideration
 
 - [Operations](./operations.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
-- [Testing](./testing.md)
+- [Testing](./test.md)
 
 ## Performance Efficiency
 
@@ -107,7 +107,7 @@ Model performance also influenced by the efficiency of operations like experimen
 
 These design areas provide details on the preceding principles and considerations:
 
-- [Testing](./testing.md)
+- [Testing](./test.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
 
 ## Next step

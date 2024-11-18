@@ -18,11 +18,13 @@
       - name: Grounding data design
         href: grounding-data-design.md
       - name: MLOps and GenAIOps
-        href: mlops-genaiops.md        
+        href: mlops-genaiops.md
+      - name: Data platform
+        href: data-platform.md 
       - name: Operations
         href: operations.md
       - name: Test and evaluate
-        href: testing.md
+        href: test.md
       - name: Responsible AI
         href: responsible-ai.md
     - name: Workload personas

@@ -50,8 +50,8 @@ To build predictive power in models, you need to collect data, process it, and f
 - _Training data_ is a subset of source data that's used for providing samples to the model. The samples are descriptive precalculated data that help the model learn patterns and relationships. Without this data, the model can't generate relevant output.
 
 - _Evaluation data_ is a subset of the source data that's used to monitor and validate the performance of a machine learning model during training. It's distinct from training and test data and is used to periodically evaluate the model's performance during the training phase and guide hyperparameter tuning. For more information, see [Model evaluation](./application-design.md).
- 
-- _Testing data_ is used to validate the predictive power of a trained model. This data is sampled from source data that wasn't used for training. It contains observations from production so that the testing process is conclusive. From a data design perspective, you need to store this data. For information about testing models, see the [Testing](./testing.md) design area.
+
+- *Testing data* is used to validate the predictive power of a trained model. This data is sampled from source data that wasn't used for training. It contains observations from production so that the testing process is conclusive. From a data design perspective, you need to store this data. For information about testing models, see the [Testing](./test.md) design area.
 
 In some cases, information that's provided by users during interactions with the application can eventually become source data. In general, we recommend that user input used this manner is of high quality. Otherwise, the need to continuously handle quality issues downstream can become problematic. Guidance about handling user data isn't covered in this article.
 
@@ -85,7 +85,7 @@ There are two main options for collecting source data:
 
 The choice depends on workload requirements and the volume of data. If you have a relatively small amount of data, the source system might handle your raw queries directly. However, the common practice is to query and analyze from the localized store.
  
-  > ![Consider the tradeoff that's associated with this decision.](../_images/trade-off.svg) **Tradeoff**. Although localized data stores might facilitate analysis and the training process, you also need to balance costs, security, and model requirements.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Although localized data stores might facilitate analysis and the training process, you also need to balance costs, security, and model requirements.
   >
   > Duplicating data incurs storage and compute costs.
 Maintaining a separate copy necessitates additional resources. Local copies might contain sensitive information. If it does, you need to protect the data by using regular security measures.
@@ -169,7 +169,7 @@ All models can become stale over time, which causes a model's predictive power o
 
 - **Data retention**. In some situations, you need to rebuild an existing model. For example, for disaster recovery, a model should be regenerated exactly as it was before the catastrophic event. We recommend that you have a secondary data pipeline that follows the workload requirements of the primary pipeline, like addressing model decay, regular updates via trigger-based or routine operations, and other maintenance tasks.
 
-> ![Consider the tradeoff of data maintenance.](../_images/trade-off.svg) **Tradeoff**. Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates.
 
 Make sure that data maintenance is done as part of model operations. You should establish processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-genaiops.md) design area.
 

@@ -62,7 +62,7 @@ Because online inferencing endpoints are essentially microservices, they operate
 
 ## Support testing in production
 
-The operations teams will likely not design or perform [AI workload testing](./testing.md). However, they must support AI workload testing through monitoring, alerting, and investigation because testing is needed in production. Because of AI's nondeterministic nature, testing in production is necessary to help ensure that the workload is performing as expected over time. The operations team should partner closely with the workload team to capture and diagnose abnormal test results efficiently and according to operational standards. To ensure that operations can support testing and that workload teams can perform testing, both teams need to align on their processes to work together. Training on testing activities in nonproduction environments helps familiarize the team with the order of operations.
+The operations teams will likely not design or perform [AI workload testing](./test.md). However, they must support AI workload testing through monitoring, alerting, and investigation because testing is needed in production. Because of AI's nondeterministic nature, testing in production is necessary to help ensure that the workload is performing as expected over time. The operations team should partner closely with the workload team to capture and diagnose abnormal test results efficiently and according to operational standards. To ensure that operations can support testing and that workload teams can perform testing, both teams need to align on their processes to work together. Training on testing activities in nonproduction environments helps familiarize the team with the order of operations.
 
 ## Automate operational practices when possible
 
@@ -110,4 +110,4 @@ Take advantage of automated configuration and history capturing through MLFlow a
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Design area: Testing and evaluation](./testing.md)
+> [Design area: Testing and evaluation](./test.md)

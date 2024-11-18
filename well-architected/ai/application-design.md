@@ -57,7 +57,7 @@ There are several good reasons to colocate your AI components with other workloa
 
 - **Resource utilization:** If certain components have complementary resource needs, like CPU and memory, colocating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time.
 
-> ![Consider the tradeoff that's associated with this decision.](../_images/trade-off.svg) **Tradeoff**. There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components. You can also increase your risk of malfunction by increasing the potential blast radius of incidents.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components. You can also increase your risk of malfunction by increasing the potential blast radius of incidents.
 
 ## Evaluate the use of orchestrators in generative AI solutions
 

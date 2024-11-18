@@ -67,7 +67,7 @@ For information about organizational policies and approvers, see [Cloud Adoption
 
 ## Make the user experience safe
 
-User experiences should be based on industry guidelines. Take advantage of the [Microsoft Human-AI experiences Design Library](https://www.microsoft.com/haxtoolkit/library/) that includes principles and provides implementation do's and don'ts, with examples from Microsoft products and other industry sources.
+User experiences should be based on industry guidelines. Take advantage of the [Microsoft Human-AI experiences Design Library](https://www.microsoft.com/en-us/haxtoolkit/library/) that includes principles and provides implementation do's and don'ts, with examples from Microsoft products and other industry sources.
 
 There are workload responsibilities throughout the lifecycle of user interaction starting from user's intent to use the system, during a session, and disruptions due to system errors. Here are some practices to consider:
 
