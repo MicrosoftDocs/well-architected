@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # AI workloads on Azure
 
-This guidance **addresses architectural challenges of designing AI workloads, focusing on non-deterministic functionality, data and application design, and operations.** The recommendations are based on the Azure Well-Architected Framework (WAF) principles and includes insights from successful Azure implementations.
+This guidance **addresses architectural challenges of designing AI workloads, focusing on non-deterministic functionality, data and application design, and operations.** The recommendations are based on the Azure Well-Architected Framework (WAF) principles and include insights from successful Azure implementations.
 
 These articles are meant for **workload owners** and **technical stakeholders** like architects, development leads, and IT leaders. Specialized AI and data roles, such as data scientists, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
 
@@ -33,10 +33,10 @@ Before you begin your design strategies, consider these key points first.
 
 #### Familiarize yourself with the broad categories of models
 
-- **Generative AI** uses machine learning to autonomously create new content. It includes language models that can be customized with user data or used as services like Azure OpenAI.  For example, GPT, a type of language model, specializes in mimicking human conversational language and is ideal for chat and natural language experiences.
+- **Generative AI** uses machine learning to autonomously create new content. It includes language models that can be customized with user data or used as services like Azure OpenAI. For example, GPT, a type of language model, specializes in mimicking human conversational language and is ideal for chat and natural language experiences.
 
   Use cases: Generative AI can produce articles, stories, art, generate synthetic data to balance datasets, and make chatbots more human-like.
-    
+  
 - **Discriminative AI** uses explicit programming to perform specific tasks based on rules and algorithms. It can be divided into:
 
   - **Model-based**. Predictive systems that find patterns, based on training performed from prior observations, to make predictions but can't create new content or adapt on their own.
@@ -63,7 +63,7 @@ When choosing between a custom model, a prebuilt model, or a service, consider t
 
 - **Cost and upkeep**. Custom models need ongoing maintenance and resources. Prebuilt models usually have lower initial costs and less infrastructure burden.
 
-- **Performance**. Prebuilt services offer optimized infrastructure and scalability. They are ideal for low-latency or high-scalability needs.
+- **Performance**. Prebuilt services offer optimized infrastructure and scalability. They're ideal for low-latency or high-scalability needs.
 
 - **Expertise**. Custom models require a skilled team. Prebuilt models can be quicker to deploy and easier to use if expertise is limited.
 
@@ -77,13 +77,13 @@ When choosing between a custom model, a prebuilt model, or a service, consider t
 
 - **Security and compliance requirements**. Off-the-shelf solutions might not meet your security and compliance needs. Research options to avoid unnecessary burdens.
 
-- **Volume of data**. Handling large data volumes in various formats comes with challenges of protecting sensitive information and efficient processing. Optimize storage, processing, and transfer costs should be an ongoing activity. 
+- **Volume of data**. Handling large data volumes in various formats comes with challenges of protecting sensitive information and efficient processing. Optimize storage, processing, and transfer costs should be an ongoing activity.
 
 - **Model decay**. Models can degrade over time, leading to inaccurate results. Testing AI systems is challenging due to their randomness.
 
 - **Skill challenges**. New AI workloads may need specialized roles and new operations processes that require extensive training.
 
-- **Pace of AI innovation**. Adopting the latest technologies can be tempting to stay at the cutting edge. Evaluate new technologies carefully to ensure they improve user experience and don't just add complexity for the sake of being up-to-date. 
+- **Pace of AI innovation**. Adopting the latest technologies can be tempting to stay at the cutting edge. Evaluate new technologies carefully to ensure they improve user experience and don't just add complexity for the sake of being up-to-date.
 
 - **Ethical requirements**. You need to clearly determine whether your use case is an ethical target for AI. Maintaining ethical standards is necessary throughout the planning and implementation phases to ensure that you're building a responsible system.
 
@@ -108,10 +108,10 @@ The following table describes some key design areas related to that pattern.
 |Design areas|
 |---|
 |[Application design](./application-design.md). Learn about considerations unique to AI workloads that might have a significant effect on your existing application design standards. |
-|[Application platform ](./application-platform.md). Determine the best platforms to use to support AI workload functions, like model hosting, model training, and inferencing. |
+|[Application platform](./application-platform.md). Determine the best platforms to use to support AI workload functions, like model hosting, model training, and inferencing. |
 |[Training data design](./training-data-design.md). Design strategies for data ingestion, preprocessing, retention, and governance topics to handle your model training data. |
 |[Grounding data design](./grounding-data-design.md). Design strategies to optimize searchability and retrieval, while meeting security and compliance requirements for your grounding data. |
-|[Data platform ](./data-platform.md). Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
+|[Data platform](./data-platform.md). Determine the best hosting platform to handle the large amounts and potentially many formats of data that your workload uses. |
 |[Machine learning operations and Generative AI operations](./mlops-genaiops.md). Establish modern DevOps practices to support your machine learning or generative AI functions and systems. |
 |[Workload operations](./operations.md). Modernize your operational practices with new approaches and adding specialized roles and training. |
 |[Testing and evaluation](./testing.md). Develop testing and evaluation strategies to measure characteristics like accuracy, precision, sensitivity, and specificity through metrics that have been specifically targeted for AI workloads. |

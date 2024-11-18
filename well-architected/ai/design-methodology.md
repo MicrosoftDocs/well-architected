@@ -19,11 +19,11 @@ Designing with an experimental mindset **targets achieving relevancy through ite
 
 Experimentation in AI involves continuous adjustments with measurable results against quality targets after each iteration. An experimentation loop is necessary during the initial model evaluation and ongoing refinement. The inner loop refines the model's predictive power in the development environment, while the outer loop monitors production usage and can trigger further refinement or data preparation. Both loops rely on continuous monitoring and evaluation to identify improvements.
 
-Not every experiment will succeed. Consider worst-case scenarios and have contingency plans for failed experiments.
+Not every experiment succeeds. Consider worst-case scenarios and have contingency plans for failed experiments.
 
 ## Design responsibly
 
-When users interact with your AI system, they place their **trust in its ethical functionality**, despite the opaque logic of AI models. This trust holds you accountable for designing the system to prevent unethical behaviors such as manipulation, content toxicity, IP infringement, and fabricated responses. Responsible AI should be embedded not only in systems operations but also in the culture of the team. The practices must extend throughout the lifecycle of user interaction &#8212; from the user's initial intent to use the system, during sessions, and even during disruptions caused by system errors.
+When users interact with your AI system, they place their **trust in its ethical functionality**, despite the opaque logic of AI models. This trust holds you accountable for designing the system to prevent unethical behaviors such as manipulation, content toxicity, IP infringement, and fabricated responses. Responsible AI should be embedded not only in systems operations but also in the culture of the team. The practices must extend throughout the lifecycle of user interaction—from the user's initial intent to use the system, during sessions, and even during disruptions caused by system errors.
 
 Content moderation is a key strategy in responsible design of generative AI, where requests and responses are evaluated in real-time to ensure safety and appropriateness. As part of the experimentation loops, strive to make algorithms fair and inclusive to minimize bias. Bias can enter the system through various channels, including during actual sessions or when gathering feedback.
 
@@ -45,9 +45,9 @@ Regardless of the signals used to identify model decay, the operations team must
 
 ## Design for adaptability
 
-AI is advancing at a rapid pace in terms of technological advancement and adoption. Be aware that **what you build today might become obsolete quickly**, impacting design decisions and processes. 
+AI is advancing at a rapid pace in terms of technological advancement and adoption. Be aware that **what you build today might become obsolete quickly**, impacting design decisions and processes.
 
-This principle emphasizes the need for **agility and flexibility**, recognizing that some components may have a shorter lifespan. Adopt a *pause-and-think* approach where thorough research of model discovery, programming libraries and frameworks, and processing technologies is key. 
+This principle emphasizes the need for **agility and flexibility**, recognizing that some components may have a shorter lifespan. Adopt a *pause-and-think* approach where thorough research of model discovery, programming libraries and frameworks, and processing technologies is key.
 
 ## Next step
 
