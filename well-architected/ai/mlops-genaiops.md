@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # MLOps and GenAIOps for AI workloads on Azure
 
-AI workload operations are centered on curation of data and consumption of that data. Operations ensure efficiency in achieving and maintaining the quality, reliability, security, ethical, and other standards that you prioritize for the workload.
+AI workload operations are centered on curation of data and consumption of that data. Operations ensure efficiency in achieving and maintaining the quality, reliability, security, ethics, and other standards that you prioritize for the workload.
 
 The workload tasks can be categorized into three main areas: application development, data handling, and AI model management. Each category should adopt industry-proven operational methodologies, like **DevOps, DataOps, MLOps, and GenAIOps**.
 
@@ -46,7 +46,7 @@ Here's the summary of recommendations provided in this article.
 |---|---|
 |**Design an efficient workload operations lifecycle**. | Based on the components of your AI workload different operational stages will apply to its lifecycle. It's important that you understand the best practices relevant to your scenario and the tools that are available to you to implement them. Take the the time to learn about and implement the key recommendations for all components of your workload. <br><br>&#9642; [DataOps](#dataops)<br>&#9642; [MLOps](#mlops)<br>&#9642; [MLOps](#genaiops)<br>&#9642; [Monitoring](#monitoring)|
 |**Automate everything**. | Automation ensures repeatability and efficiency in a workload's lifecycle. While DevOps processes are a key contributor to this, there are additional steps that you need to take to build, test, validate, and deploy your models efficiently. <br><br>&#9642; [Automation](#automation)|
-|**Utilize deployment pipelines where possible**. | Deployment pipelines can not only help you deliver repeatable infrastructure deployments, or integrate code continuously. They are also a great tool for creating and/or validating models before promoting them to production. Implementing deployment pipelines helps you improve reliability as well as the overall user experience of your workload. <br><br>&#9642; [Deployment Pipelines](#deployment-pipelines)|
+|**Utilize deployment pipelines where possible**. | Deployment pipelines can not only help you deliver repeatable infrastructure deployments, or integrate code continuously. They're also a great tool for creating and/or validating models before promoting them to production. Implementing deployment pipelines helps you improve reliability as well as the overall user experience of your workload. <br><br>&#9642; [Deployment Pipelines](#deployment-pipelines)|
 |**Prevent drift and decay in your models**.  | You must guard against model decay and drift while also having a structured process that helps you accept new model changes in a controlled way. Following the recommendations around model maintenance helps you remain compliant, avoid unexpected user experiences, and provide a more up-to-date service. <br><br>&#9642; [Model Maintenance](#model-maintenance)|
 
 ## Workload operations lifecycle

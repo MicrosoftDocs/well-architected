@@ -101,7 +101,7 @@ Integrate content safety into every stage of the AI lifecycle by using custom so
 
 - **Content moderation**. Use the content safety API that evaluates requests and responses in real-time, and ensure these APIs are reachable.
 
-- **Identify and mitigate threats**. Apply well known security practices to your AI scenarios. For example, conduct threat modeling and document threats and their mitigations. Common security practices such as Red Team exercises are applicable to AI workloads. Red teams can test if models can be manipulated to generate harmful content. These activities should be integrated into AI operations.
+- **Identify and mitigate threats**. Apply well known security practices to your AI scenarios. For example, conduct threat modeling and document threats and their mitigation. Common security practices such as Red Team exercises are applicable to AI workloads. Red teams can test if models can be manipulated to generate harmful content. These activities should be integrated into AI operations.
 
     For information about conducting red team testing, see [Planning red teaming for large language models (LLMs) and their applications](/azure/ai-services/openai/concepts/red-teaming).
 

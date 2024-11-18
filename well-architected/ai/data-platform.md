@@ -11,11 +11,11 @@ ms.topic: conceptual
 
 A data platform is an integrated set of technologies that are designed to manage workload requirements by ingesting source data and then filtering, aggregating, and preparing it for consumption.
 
-Data has distinct characteristics that are based on its intended use. We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Training data design](./training-data-design.md) and [Grounding data design](./grounding-data-design.md). 
+Data has distinct characteristics that are based on its intended use. We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Training data design](./training-data-design.md) and [Grounding data design](./grounding-data-design.md).
 
 The platform also fulfills storage needs when data rests at certain points in the pipeline. If the workload is complex and handles large-scale data, then you can distribute pipeline tasks among various components. For simpler use cases, evaluate whether you can use the source data in a store that offers those combined capabilities.
 
-Ask yourself the following questions so that you can avoid designing an overly complex architecture for your data platform. It's always best to keep things simple when you can. 
+Ask yourself the following questions so that you can avoid designing an overly complex architecture for your data platform. It's always best to keep things simple when you can.
 
 - Can your application have the expected predictive power by ingesting data from a single source?
 - Does your initial choice of data store support data warehousing capabilities?
@@ -40,15 +40,15 @@ Here's the summary of recommendations provided in this article.
 |Recommendation|Description|
 |---|---|
 |**Build secure, performant, and cost-effective data stores**. | A key part of your data platform is a data store that aggregates data from multiple sources and allows integration with various integration tasks. This helps your workload perform at scale. Be sure to review the various functional and non-functional requirements of your data store to ensure a cost effective deployment. <br><br>&#9642; [Considerations for storing aggregated data](#considerations-for-processing-data)|
-|**Follow best practices around data ingestion and processing**. | High quality data helps improve the reliability of your workload as well as its end user experience. Consider the requirements of your workload as well as key best practices to build efficient ingestion and data transition processes that help maintain a high quality bar. <br><br>&#9642; [Considerations for processing data](#considerations-for-processing-data)|
-|**Design reliable and relevant search indexes**. | Aim for a high-performing, write-once, read-many data store that efficiently handles impromptu and fuzzy queries, delivering relevant results to your user base, even when queries aren’t precise. <br><br>&#9642; [Considerations for a search index](#considerations-for-a-search-index)|
-|**Ensure functional data stores perform at scale**.  | Depending on the functional requirements of your workload you may need to create functional data stores. (for example for offline inferencing) It is important that you create these data stores with their designated function in mind and apply the best practices for the function the need to serve and the scale they need to perform at. <br><br>&#9642; [Considerations for a feature store](#considerations-for-a-feature-store)<br>&#9642; [Considerations for an offline inferencing data store](#considerations-for-an-offline-inferencing-data-store)|
+|**Follow best practices for data ingestion and processing**. | High quality data helps improve the reliability of your workload and the end user experience. Consider the requirements of your workload as well as key best practices to build efficient ingestion and data transition processes that help maintain a high quality bar. <br><br>&#9642; [Considerations for processing data](#considerations-for-processing-data)|
+|**Design reliable and relevant search indexes**. | Aim for a high-performing, write-once, read-many data store that efficiently handles impromptu and fuzzy queries, delivering relevant results to your user base, even when queries aren't precise. <br><br>&#9642; [Considerations for a search index](#considerations-for-a-search-index)|
+|**Ensure functional data stores perform at scale**.  | Depending on the functional requirements of your workload you might need to create functional data stores, for example for offline inferencing. It's important that you create data stores with their designated function in mind and apply best practices for the function. <br><br>&#9642; [Considerations for a feature store](#considerations-for-a-feature-store)<br>&#9642; [Considerations for an offline inferencing data store](#considerations-for-an-offline-inferencing-data-store)|
 
 ## Considerations for storing aggregated data
 
 In AI workloads, data moves through various stages of storage and processing with the help of pipelines that orchestrate workflow in between these stages. One key stage is a data store that contains data that's ingested and aggregated from multiple sources. You need this store to conduct processing until the data reaches a suitable state for training or indexing. The primary focus is on ensuring that the data accurately reflects its source.
 
-> [!NOTE] 
+> [!NOTE]
 > An alternative approach is to directly access data sources. However, this approach can lead to performance problems because it might overload the source systems with AI features. There can also be data access problems. To avoid these problems, we recommend that you copy data to this store.
 
 The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you achieve enough reliability and performance.
@@ -57,9 +57,9 @@ The following section provides guidance about the capabilities to consider when 
 
 ### Functional requirements
 
-- **Can the platform handle various data formats?** 
+- **Can the platform handle various data formats?**
 
-  The data store should be able to store various data formats and transform them to other formats if necessary. 
+  The data store should be able to store various data formats and transform them to other formats if necessary.
   
   Suppose that your ingestion pipeline sources data from a relational database and a Parquet file, so it supports both structured and semistructured data. You want to convert relational data to Parquet format in accordance with its schema definitions. The data platform should have built-in capabilities to do that transformation without you writing custom code.
 
