@@ -13,19 +13,19 @@ When you design data for AI functionality in applications, consider both non-fun
 
 Data design and application design can't be decoupled. Application design requires that you understand use cases, query patterns, and freshness requirements. To address business requirements that drive the need for using AI, the application might need output from discriminative models, generative models, or a combination of model types.
 
-To produce meaningful results, AI models need to be trained. Model training involves teaching a model to classify or predict new, unseen situations. The training data must be tailored to the specific problem and workload context.
+To produce meaningful results, AI models need to be trained. Model training involves teaching a model to classify or predict new or unseen situations. The training data must be tailored to the specific problem and workload context.
 
-Supervised training involves providing the model with labeled samples. This type of training is useful when the desired outcome is clear. In contrast, unsupervised learning allows the model to identify patterns and relationships within the data without guidance on the expected output. During training, the algorithm type and its parameters are adjusted to control how the model learns. The approach varies depending on the type of model, which can include neural networks, decision trees, and others. 
+Supervised training involves providing the model with labeled samples. This type of training is useful when the desired outcome is clear. In contrast, unsupervised learning allows the model to identify patterns and relationships within the data without guidance on the expected output. During training, the algorithm type and its parameters are adjusted to control how the model learns. The approach varies depending on the type of model, which can include neural networks, decision trees, and others.
 
-For example, image detection models are typically trained on tasks like object detection, facial recognition, or scene understanding. They learn from annotated images to identify specific objects or features. Other common examples include fraud detection algorithms and price-point prediction models. These models learn from historical financial data to make informed decisions. 
+For example, image detection models are typically trained on tasks like object detection, facial recognition, or scene understanding. They learn from annotated images to identify specific objects or features. Other common examples include fraud detection algorithms and price-point prediction models. These models learn from historical financial data to make informed decisions.
 
-This article focuses primarily on the preceding use case, where models are trained _before_ they can give meaningful input to the application. The article includes guidance on data collection, processing, storing, testing, and maintenance. Data design for exploratory data science or business intelligence via AI isn't covered. The goal is to support training needs through strategies that are aligned with workload requirements by providing recommendations on the training data pipeline of an AI workload.
+This article focuses primarily on the preceding use case, where models are trained *before* they can give meaningful input to the application. The article includes guidance on data collection, processing, storing, testing, and maintenance. Data design for exploratory data science or business intelligence via AI isn't covered. The goal is to support training needs through strategies that are aligned with workload requirements by providing recommendations on the training data pipeline of an AI workload.
 
-For information about data design for AI models that require context _during_ inferencing, see [Grounding data design](./grounding-data-design.md). 
+For information about data design for AI models that require context *during* inferencing, see [Grounding data design](./grounding-data-design.md).
 
 > [!IMPORTANT]
 >
->  Expect data design to be an iterative process that's based on statistical experimentation. To reach an acceptable quality level, adjust training data, its processing, model feature development, and model hyperparameters (when possible). This experimentation loop typically happens both during initial model training and during ongoing refinement efforts to address data and model drift over the lifespan of the feature in the workload.
+> Expect data design to be an iterative process that's based on statistical experimentation. To reach an acceptable quality level, adjust training data, its processing, model feature development, and model hyperparameters (when possible). This experimentation loop typically happens both during initial model training and during ongoing refinement efforts to address data and model drift over the lifespan of the feature in the workload.
 
 ## Recommendations
 
@@ -43,13 +43,13 @@ Here's the summary of recommendations provided in this article.
 
 To build predictive power in models, you need to collect data, process it, and feed it to the model. This process is usually conceptualized as a pipeline that's broken into stages. Each stage of the pipeline might deal with the same data set, but it might serve different purposes. Typically, you handle data of these types:
 
-- _Source data_ is point-in-time observation data. It can also be data that can be labeled to serve as a potential input to the data pipeline.
+- *Source data* is point-in-time observation data. It can also be data that can be labeled to serve as a potential input to the data pipeline.
 
     This data is usually obtained from production or from an external source. These data sources can be in storage accounts, databases, APIs, or other sources. The data can be in various data formats, like OLTP databases, unstructured documents, or log files. This data serves as a potential input to the data pipeline.
 
-- _Training data_ is a subset of source data that's used for providing samples to the model. The samples are descriptive precalculated data that help the model learn patterns and relationships. Without this data, the model can't generate relevant output.
+- *Training data* is a subset of source data that's used for providing samples to the model. The samples are descriptive precalculated data that help the model learn patterns and relationships. Without this data, the model can't generate relevant output.
 
-- _Evaluation data_ is a subset of the source data that's used to monitor and validate the performance of a machine learning model during training. It's distinct from training and test data and is used to periodically evaluate the model's performance during the training phase and guide hyperparameter tuning. For more information, see [Model evaluation](./application-design.md).
+- *Evaluation data* is a subset of the source data that's used to monitor and validate the performance of a machine learning model during training. It's distinct from training and test data and is used to periodically evaluate the model's performance during the training phase and guide hyperparameter tuning. For more information, see [Model evaluation](./application-design.md).
 
 - *Testing data* is used to validate the predictive power of a trained model. This data is sampled from source data that wasn't used for training. It contains observations from production so that the testing process is conclusive. From a data design perspective, you need to store this data. For information about testing models, see the [Testing](./test.md) design area.
 
@@ -64,27 +64,27 @@ EDA helps analyze source data to identify characteristics, relationships, patter
 > [!NOTE]
 > Although EDA is a pre-production process, it uses data that's sourced from production. Apply the same level of control to this process as you would for production.
 
-Following are some considerations for collecting data in preparation for model training. 
+Following are some considerations for collecting data in preparation for model training.
 
 #### Data sources
 
 Data can be collected from these sources:
 
-  - **Proprietary data** is created or owned by the organization. It's not intended for public consumption. It serves internal purposes.
+- **Proprietary data** is created or owned by the organization. It's not intended for public consumption. It serves internal purposes.
 
-  - **Public sources** are accessible to anyone. These sources include websites, research papers, and publicly shared databases. It might be specific to a niche area. For example, content from Wikipedia and PubMed are considered publicly accessible.
+- **Public sources** are accessible to anyone. These sources include websites, research papers, and publicly shared databases. It might be specific to a niche area. For example, content from Wikipedia and PubMed are considered publicly accessible.
 
 Your choice of data sources depends on workload requirements, available resources, and the quality of the data that's acceptable for training the model. Imbalanced datasets can lead to biased models, so you need to design data collection to get sufficient samples of representative data. You might need to oversample minority data or undersample majority data. If the data is scarce or imbalanced, consider techniques like [SMOTE](/azure/machine-learning/component-reference/smote) and [Synthetic data generation](/azure/ai-studio/concepts/concept-synthetic-data#synthetic-data-generation).
 
 #### Data collection store
 
-There are two main options for collecting source data: 
+There are two main options for collecting source data:
 
 - Querying the data at the data source
 - Copying the data to a localized data store and then querying that store
 
 The choice depends on workload requirements and the volume of data. If you have a relatively small amount of data, the source system might handle your raw queries directly. However, the common practice is to query and analyze from the localized store.
- 
+
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Although localized data stores might facilitate analysis and the training process, you also need to balance costs, security, and model requirements.
   >
   > Duplicating data incurs storage and compute costs.
@@ -104,21 +104,21 @@ Regardless of whether you use push or pull mode, avoid training models on stale 
 
 Workload-specific requirements might necessitate data segmentation. Here are some potential use cases:
 
-- **Security requirements** often drive segmentation decisions. For instance, regulatory constraints might prevent exporting data across geopolitical regions. If your application design allows the use of separate models, data design incorporates separate data pipelines for each model. 
+- **Security requirements** often drive segmentation decisions. For instance, regulatory constraints might prevent exporting data across geopolitical regions. If your application design allows the use of separate models, data design incorporates separate data pipelines for each model.
 
-  However, if a single model is used, segmented data sources feed into that model. You need to train the model on data from both geographies, which potentially adds complexity. 
+  However, if a single model is used, segmented data sources feed into that model. You need to train the model on data from both geographies, which potentially adds complexity.
   
   Whether the application is using a single model or multiple models, preserve security measures on each data segment so that it's protected with the same level of rigor as data at the origin.
 
-- **Data freshness rate** can be a factor for separating data. Data from different sources might refresh at varying time intervals. If the data changes, retraining becomes necessary. Segementation enables granular control of the data lifecycle. Consider using separate tables or pipelines for different data segments.
+- **Data freshness rate** can be a factor for separating data. Data from different sources might refresh at varying time intervals. If the data changes, retraining becomes necessary. Segmentation enables granular control of the data lifecycle. Consider using separate tables or pipelines for different data segments.
 
 Regardless of the use case, when data is segmented, access controls are key. Data professionals, like data engineers and data scientists, explore available source data to understand patterns and relationships. Their insights contribute to training models that predict outcomes. Establish access controls to ensure that only authorized users can interact with specific data subsets. Apply least privilege on data that's considered to be relevant. Collaborate with data owners to set up appropriate permissions.
 
 ## Data preprocessing
 
-In a real-world scenario, source data isn't simply stored for AI scenarios. There's an intermediate process that prepares data for training. During this stage, data is stripped of noise, making it useful for consumption. When dealing with source data, data scientists engage in a process of exploration, experimentation, and decision making. Their primary goal is to identify and extract parts of the source data that holds predictive power. 
+In a real-world scenario, source data isn't simply stored for AI scenarios. There's an intermediate process that prepares data for training. During this stage, data is stripped of noise, making it useful for consumption. When dealing with source data, data scientists engage in a process of exploration, experimentation, and decision making. Their primary goal is to identify and extract parts of the source data that holds predictive power.
 
-The preprocessing logic depends on the problem, data type, and desired outcomes. Following are some common techniques for preprocessing. This list isn't exhaustive. The actual criteria for your workload will be driven by business requirements. 
+The preprocessing logic depends on the problem, data type, and desired outcomes. Following are some common techniques for preprocessing. This list isn't exhaustive. The actual criteria for your workload will be driven by business requirements.
 
 - **Quality**. Preprocessing can help you ensure that training data is stripped of noise. The goal is to ensure that every row in your training data represents a clear observation or a good example that's relevant to your use case and to eliminate observations that lack quality or predictive power. For example, if you collate product reviews, you might choose to eliminate data that's too short. You need to discover what data quality produces meaningful predictive results. 
 
@@ -134,22 +134,22 @@ The preprocessing logic depends on the problem, data type, and desired outcomes.
   
   To ensure compatibility with models, you might need to adjust orientations or aspect ratios of images to match the model's expectations.
 
-> [!NOTE] 
-> Mixing large amounts of structured and unstructured data can increase processing time. Workload teams should measure the impact of processing diverse formats. As the window between retraining efforts becomes shorter, the amount of time spent each time for preprocessing becomes more critical. 
+> [!NOTE]
+> Mixing large amounts of structured and unstructured data can increase processing time. Workload teams should measure the impact of processing diverse formats. As the window between retraining efforts becomes shorter, the amount of time spent on preprocessing becomes more critical.
 
 ## Data retention
 
-After you train a model, evaluate whether to delete the data used for training and rebuild the model for the next training window. 
+After you train a model, evaluate whether to delete the data used for training and rebuild the model for the next training window.
 
 If the data remains relatively unchanged, retraining might not be necessary, unless model drift occurs. If the accuracy of prediction decreases, you need to retrain the model. You can choose to ingest the data again, preprocess, and build the model. That course of action is best if there's a significant delta in data since the last training window. If there's large volume of data and it hasn't changed much, you might not need to preprocess and rebuild the model. In that case, retain data, do in-place updates, and retrain the model. Decide how long you want to retain training data.
 
-In general, delete data from feature stores to reduce clutter and storage costs for features that have poor performance and that are no longer relevant to current or future models. If you retain data, expect to manage costs and address security issues, which are typical concerns of data duplication. 
+In general, delete data from feature stores to reduce clutter and storage costs for features that have poor performance and that are no longer relevant to current or future models. If you retain data, expect to manage costs and address security issues, which are typical concerns of data duplication.
 
 ## Lineage tracking
 
 *Data lineage* refers to tracking the path of data from its source to its use in model training. Keeping track of data lineage is essential for explainability. Although users might not need detailed information about data origins, that information is crucial for internal data governance teams. Lineage metadata ensures transparency and accountability, even if it's not directly used by the model. This is useful for debugging purposes. It also helps you determine whether biases are introduced during data preprocessing.
 
-Use platform features for lineage tracking when you can. For example, Azure Machine Learning is integrated in Microsoft Purview. This integration gives you access to features for data discovery, lineage tracking, and governance as part of the MLOps lifecycle. 
+Use platform features for lineage tracking when you can. For example, Azure Machine Learning is integrated in Microsoft Purview. This integration gives you access to features for data discovery, lineage tracking, and governance as part of the MLOps lifecycle.
 
 ## Data maintenance
 
@@ -159,19 +159,19 @@ All models can become stale over time, which causes a model's predictive power o
 
   When you choose a new model, you don't necessarily need to start with a new data set. The existing observations used for training might remain valuable even during a model switch. Although new models might reveal narrower scenarios, the fundamental process remains similar. Data management approaches like feature stores and data meshes can streamline the adoption of new machine learning models.
 
-- **Trigger-based vs. routine operations**. Consider whether model retraining should be triggered by specific events or conditions. For example, the availability of new, more relevant data or a drop in relevancy below an established baseline might trigger retraining. The advantages of this approach are responsiveness and timely updates. 
+- **Trigger-based vs. routine operations**. Consider whether model retraining should be triggered by specific events or conditions. For example, the availability of new, more relevant data or a drop in relevancy below an established baseline might trigger retraining. The advantages of this approach are responsiveness and timely updates.
 
   Maintenance can also be scheduled at regular fixed intervals, like daily or weekly. For fail-proof operations, consider both approaches.
 
 - **Data removal**. Remove data that's no longer being used for training to optimize resource use and minimize the risk of using outdated or irrelevant data for model training.
 
-    _The right to be forgotten_ refers to an individual's right to have their personal data removed from online platforms or databases. Be sure to have policies in place to remove personal data that's used for training. 
+    *The right to be forgotten* refers to an individual's right to have their personal data removed from online platforms or databases. Be sure to have policies in place to remove personal data that's used for training.
 
 - **Data retention**. In some situations, you need to rebuild an existing model. For example, for disaster recovery, a model should be regenerated exactly as it was before the catastrophic event. We recommend that you have a secondary data pipeline that follows the workload requirements of the primary pipeline, like addressing model decay, regular updates via trigger-based or routine operations, and other maintenance tasks.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Data maintenance is expensive. It involves copying data, building redundant pipelines, and running routine processes. Keep in mind that regular training might not improve answer quality. It only provides assurance against staleness. Evaluate the importance of data changes as a signal to determine the frequency of updates.
 
-Make sure that data maintenance is done as part of model operations. You should establish processes to handle changes via automation as much as possible and use the right set of tools. For more information, see the [MLOps and LLMOps for AI workloads on Azure](./mlops-genaiops.md) design area.
+Make sure that data maintenance is done as part of model operations. You should establish processes to handle changes via automation as much as possible and use the right set of tools. For more information, see [MLOps and GenAIOps for AI workloads on Azure](./mlops-genaiops.md).
 
 ## Next steps
 

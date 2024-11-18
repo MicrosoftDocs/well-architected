@@ -239,4 +239,4 @@ The GenAIOps maturity levels move from basic models to structured deployment, pr
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Design area: Data platform for AI workloads](./data-platform.md)
+> [Design area: Operations](./operations.md)

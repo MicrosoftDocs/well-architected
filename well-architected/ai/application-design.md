@@ -57,7 +57,7 @@ There are several good reasons to colocate your AI components with other workloa
 
 - **Resource utilization:** If certain components have complementary resource needs, like CPU and memory, colocating them can optimize resource usage. For example, a model that requires significant computation can share resources with a service that has lower demands at the same time.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components. You can also increase your risk of malfunction by increasing the potential blast radius of incidents.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** There are tradeoffs with colocating components that should be considered. You may lose the ability to independently deploy or scale components. You can also increase your risk of malfunction by increasing the potential blast radius of incidents.
 
 ## Evaluate the use of orchestrators in generative AI solutions
 
@@ -127,7 +127,9 @@ When using a RAG pattern, a well-defined chunking strategy is critical to optimi
 
 - Preserve data lineage for chunks by maintaining metadata and unique identifiers that link back to the grounding source. Clear lineage documentation helps to ensure users understand the data origin, its transformations, and how it contributes to the output.
 
-**Consider using these design patterns when your use case meets one of the conditions:**
+### When to use design patterns
+
+Consider using these design patterns when your use case meets one of the conditions:
 
 - *Complex workflows:* When dealing with complex workflows or interactions between multiple AI models, patterns like RAG or microservices can help manage complexity and ensure clear communication between components.
 

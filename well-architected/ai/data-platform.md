@@ -334,4 +334,4 @@ These articles provide more details about Azure products that we recommend as te
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Operations](operations.md)
+> [Design area: MLOps and GenAIOps](./mlops-genaiops.md)

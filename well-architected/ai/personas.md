@@ -49,7 +49,8 @@ Here's an example baseline template:
 ### Tools
 
 Using a table can help organize and visualize information for each persona. The advantage is you can create and link other tables for deeper information. For example, you can link architecture components to another table where identity-based access control is specified for each service and environment (Dev, Stage, Production).
-> ![Consider the tradeoff associated with few personas versus too many](../_images/trade-off.svg) **Tradeoff**. Having too few personas can make it difficult to implement role-based access control with least privileged access and to distribute work responsibilities effectively. Conversely, having too many personas adds management overhead. Starting with 5-10 personas is a good balance, and you should only add personas that are necessary for your operations.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.**  Having too few personas can make it difficult to implement role-based access control with least privileged access and to distribute work responsibilities effectively. Conversely, having too many personas adds management overhead. Starting with 5-10 personas is a good balance, and you should only add personas that are necessary for your operations.
 
 Cards can also be used to define personas. These cards contain the same information as the table or a quick summary. You can create these cards using Microsoft PowerPoint or as a set of markdown files.
 
@@ -78,7 +79,7 @@ Using cards, you can define the services a persona needs access to within a proc
 
 |GenAI Data Scientist (P006)|
 |---|
-| Team: AI Team<br>&#128313; Primary Interaction: Data Ingestion Team, DevOps Team<br>&#128313; Components Access: Azure AI Studio, Azure OpenAI, Azure AI Search, Azure Storage, Azure Keyvault <br>&#128313; Processes: GenAIOps<br>&#128313; Skills: Azure Machine Learning, Python, Model(LLM, SLM) knowledge, Fine tuning, RAG, Agentic concept
+| Team: AI Team<br>&#128313; Primary Interaction: Data Ingestion Team, DevOps Team<br>&#128313; Components Access: Azure AI Studio, Azure OpenAI, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps<br>&#128313; Skills: Azure Machine Learning, Python, Model(LLM, SLM) knowledge, Fine tuning, RAG, Agentic concept
 
 |GenAI Chat Developer (P007)|
 |---|
@@ -100,7 +101,7 @@ The main processes related to AI workloads are:
 
 Mapping personas to those processes provides context for each persona. This helps identify the processes where a persona might need upskilling.
 
-![Diagram illustrating the DataOps, MLOps, and GenAIOps within a production environment.](./images/personas-to-processes.png)
+:::image type="content" source="images/personas-to-processes.png" alt-text="Diagram illustrating the DataOps, MLOps, and GenAIOps within a production environment." lightbox="images/personas-to-processes.png":::
 
 The image shows the workflow for DataOps, MLOps, and GenAIOps within a production environment. Data flows from ingestion to model deployment and evaluation, using continuous integration/continuous deployment (CI/CD) practices. Key tasks include refining data models, batch evaluation, deploying endpoints, real-time model evaluation, and fine-tuning models. The example personas participate in the entire workflow.
 
