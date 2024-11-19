@@ -138,7 +138,7 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 >     * Use [sampling](/azure/azure-monitor/app/sampling) on an Application Insights-level to reduce data traffic and storage costs while preserving a statistically correct analysis of application data.
 >     * Application Insights has several possible [log sources](/azure/azure-monitor/app/app-insights-overview#logging-frameworks). Use log levels to tune and reduce trace log telemetry.
 >
-> * **[Set a daily cap](/azure/azure-monitor/logs/daily-cap) to limit unplanned charges for your workspace.** If you have a workspace-based Application Insights (recommended), use the daily cap in workspace to limit ingestion and costs instead of using the cap in Application Insights.
+> * **[Set a daily cap](/azure/azure-monitor/logs/daily-cap) to limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.
 >
 > * **Regularly review costs like regional pricing and available pricing tiers.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) or visit the [Cost Optimization section](azure-log-analytics.md#design-checklist-for-cost-optimization) in the Log Analytics service guide.
 >
