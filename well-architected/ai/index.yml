@@ -1,0 +1,87 @@
+### YamlMime:Landing
+
+title: AI Workload Documentation
+summary: AI workloads use non-deterministic behavior, making them more adaptable to complex situations compared to traditional workloads. They combine code and data into models, creating unique experiences. This guidance focuses on the architectural challenges of designing AI workloads, including non-deterministic functionality, data and application design, and operations.
+metadata: 
+  title: AI Workload Documentation
+  description: This documentation provides guidance on designing AI workloads, focusing on the architectural challenges of non-deterministic functionality, data and application design, and operations. It includes key concepts, methodologies, and best practices to help architects build and optimize AI solutions on Azure.
+  ms.date: 11/15/2024
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.topic: conceptual
+  ms.service: waf
+  ms.subservice: waf-workload-ai
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is an AI workload?
+            url: get-started.md
+      - linkListType: concept
+        links:
+          - text: Design methodology
+            url: design-methodology.md
+          - text: Design principles
+            url: design-principles.md
+          - text: Workload personas
+            url: personas.md
+
+  # Card
+  - title: Technical design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Application design
+            url: application-design.md
+          - text: Application platform
+            url: application-platform.md
+          - text: Training data design
+            url: training-data-design.md
+          - text: Grounding data design
+            url: grounding-data-design.md
+          - text: Data platform
+            url: data-platform.md          
+  
+  # Card
+  - title: Operational design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Workload operations
+            url: operations.md
+          - text: MLOps and GenAIOps
+            url: mlops-genaiops.md
+          - text: Testing and evaluation
+            url: test.md
+          - text: Responsible AI
+            url: responsible-ai.md                            
+
+ # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Baseline OpenAI end-to-end chat reference architecture
+            url: /azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat  
+
+ # Card
+  - title: Related services
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Azure Machine Learning service guide
+            url: /azure/well-architected/service-guides/azure-machine-learning         
+          - text: Azure OpenAI service guide
+            url: /azure/well-architected/service-guides/azure-openai              
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: AI assessment tool
+            url: assessment.md

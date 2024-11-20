@@ -242,6 +242,8 @@
       items:
       - name: Overview
         href: workloads.md
+      - name: AI
+        href: ai/index.yml        
       - name: Azure Virtual Desktop
         href: azure-virtual-desktop/index.yml
       - name: Azure VMware Solution
