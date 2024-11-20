@@ -489,8 +489,8 @@ Refer to the complete set of recommendations.
 
 [availability-zones-overview]: </azure/reliability/availability-zones-overview>
 [availability-zones-physical-logical]: </azure/reliability/availability-zones-overview#physical-and-logical-availability-zones>
-[azure-regions-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support>
-[azure-services-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support>
+[azure-regions-with-availability-zone-support]: </azure/reliability/availability-zones-region-support>
+[azure-services-with-availability-zone-support]: </azure/reliability/availability-zones-service-support>
 [azure-region-pairs]: </azure/reliability/cross-region-replication-azure>
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
