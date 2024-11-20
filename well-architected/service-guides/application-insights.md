@@ -195,7 +195,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Recommendation | Benefit |
 |----------------|---------|
 | If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach optimizes software engineering time by eliminating the need for manual SDK updates, code changes related to new versions, and the overhead of maintaining instrumentation code. |
-| If your business needs require manual instrumentation, adopt the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable). | Avoid a future forced migration from the classic API SDKs by adopting an OpenTelemetry-based instrumentation method. |
+| If your business needs require manual instrumentation, adopt the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable). | Avoid a future forced migration from Application Insights SDKs (Classic API) by adopting an OpenTelemetry-based instrumentation method. |
 | Use [connection strings](/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings). | Make telemetry ingestion more reliable and remove dependencies on global ingestion endpoints. |
 
 ## Performance Efficiency
