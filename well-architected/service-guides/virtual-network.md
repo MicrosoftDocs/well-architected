@@ -55,11 +55,15 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Set your reliability targets**. Most VNets and their subservices don't have an SLA, meaning if the VNet experiences an outage, the entire region will be affected. However, specific services like load balancers do have SLAs. It's recommended that you have a good understanding of the coverage provided around the published percentile by Azure. Keep in mind that The central IT services organization typically owns the VNet and central services. Your objective calculation should account for that dependency.  
 >
-> - **Add redundancy to mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
+> - **Mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Here are some typical examples: TBD
+>
+> - **Overprovision your subnets**. To ensure reliable scaling, a common strategy is to overprovision capacity to prevent IP exhaustion. However, this approach involves a tradeoff between cost and operational efficiency. The goal should be to optimize over time, maintaining just enough extra address space in your VNet and subnets to balance reliability with cost-effectiveness.
 >
 > - **Create network diagrams with focus on user flows**. These diagrams are valuable for visualizing network segmentation, identifying potential points of failure, and pinpointing key transitions like internet ingress and egress points. They also serve as important tools for audits and incident response.
 >
 >   Highlight high priority traffic flows between the user and workload resources. For instance, prioritizing ExpressRoute for enterprise network flows or securing user requests in a DMZ design can provide insight into capacity planning for firewalls and other services.
+> 
+> - **Add redundancy**. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
 >
 > - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs, Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network.
 >
@@ -224,7 +228,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Right-size your subnets**. When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth without operational burden.
 >
->   To manage capacity effectively, a common strategy is to overprovision capacity due to uncertainty, but the goal should be to optimize over time. By continuously analyzing data, you can ensure that you only pay for what you need.
+>   To manage capacity effectively, a common strategy is to overprovision capacity due to uncertainty, but the goal should be to optimize over time. Continuously analyze data, so your network can handle the load but you don't pay extra for unused resources. 
 >
 > - **Conduct performance testing**. Use combination of synthetic and production data to test latency and bandwidth to check how those aspects might affect workload performance. For example, detecting resources that consume more bandwidth than expected and cause noisy neighbor issues. Or, traffic that's making multiple hops, can be the cause of the high latency.
 >
@@ -247,16 +251,16 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Redundant networking stack**
 
-- **Increased costs**. Implementing redundant networking with NSGs, routes, and other configurations in advance, comes with a cost. This includes the expenses associated with setting up the infrastructure and conducting thorough testing. 
-
-- **Increased reliability**. The benefit of this upfront investment is increased reliability. You'll be better prepared knowing that everything works as expected leading to faster recovery because the network does not need to be configured on the fly.
+Implementing a redundant networking stack, including NSGs, routes, and other configurations, incurs significant costs due to the necessary infrastructure setup and thorough testing. However, this upfront investment enhances reliability, ensuring that everything functions as expected and enabling faster recovery during disruptions. Balancing these costs with the need for a reliable network is crucial to maintain operational efficiency and minimize downtime.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **VNet peering**
 
-When communicating between virtual networks (VNets), direct peering is preferred for better performance efficiency. This method avoids the latency introduced by routing through a hub, where a firewall decrypts, inspects, and re-encrypts the payload before sending it to the other VNet.
+Direct VNet peering enhances performance by reducing latency, as it avoids the need to route traffic through a hub where a firewall decrypts, inspects, and re-encrypts the payload. However, this performance gain comes at the cost of decreased security. Without the firewall inspections provided by hub routing, the workload is more vulnerable to potential threats. Balancing the need for high performance with robust security measures is essential to ensure both efficiency and protection of the network.
 
-However, this comes with a tradeoff in security. Routing through a hub provides inspections by the firewall, and without these checks, the workload can be severely compromised.
 
+:::image type="icon" source="../_images/trade-off.svg"::: **Large subnets**
+
+Large subnets provide ample address space, allowing workloads to scale out seamlessly. While overprovisioning resources can safeguard against unexpected demand spikes, it can also lead to underutilized resources during nonpeak hours. Also this strategy comes with higher operational costs. From an Operational Excellence perspective, it's ideal to keep your subnets as small as possible.
 
 ## Azure policies
 
@@ -264,7 +268,7 @@ Azure provides an extensive set of built-in policies related to Virtual Network 
 
 A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
 
-- 
+- TBD
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect the security of the network layer.
 
