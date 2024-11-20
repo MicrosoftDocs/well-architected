@@ -103,7 +103,7 @@ To learn more about establishing a designated point of contact that receives Azu
 
 ## Organizational alignment
 
-Cloud Adoption Framework for Azure provides guidance about incident response planning and security operations. For more information, see [Security operations](/azure/cloud-adoption-framework/secure/security-operations).
+Cloud Adoption Framework for Azure provides guidance about incident response planning and security operations. For more information, see [Security operations](/azure/cloud-adoption-framework/secure/overview).
 
 ## Related links
 

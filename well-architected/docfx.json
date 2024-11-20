@@ -78,7 +78,8 @@
         "oracle-iaas/**/*.*": "waf-workload-oracle",        
         "sap/**/*.*": "waf-workload-sap",
         "sustainability/**/*.*": "waf-workload-sustainability",
-        "service-guides/**/*.*": "waf-service-guide"       
+        "service-guides/**/*.*": "waf-service-guide",
+        "ai/**/*.*": "waf-workload-ai"
       }
     },
     "template": [
