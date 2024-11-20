@@ -3,6 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Monitor Application
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Application Insights.
 author: kainawroth
 ms.author: v-nawrothkai
+ms.date: 11/20/2024
 ms.topic: conceptual
 ms.subservice: waf-service-guide
 products:
@@ -16,9 +17,9 @@ categories:
 
 # Azure Well-Architected Framework perspective on Application Insights
 
-## Overivew
+## Overview
 
-[Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extensible Application Performance Management (APM) service that is part of [Azure Monitor](/azure/azure-monitor/overview). It is designed for developers and DevOps professionals to monitor live applications and automatically detect performance anomalies. The application monitoring platform includes powerful analytics tools to help diagnose issues and understand how users interact with your application. For general monitoring principles, see [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring). This guide identifies the different types of data and outlines the required analysis that Azure Monitor supports. It also identifies the data collected by Application Insights that enables this analysis.
+[Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extensible Application Performance Management (APM) service that is part of [Azure Monitor](/azure/azure-monitor/overview). It's designed for developers and DevOps professionals to monitor live applications and automatically detect performance anomalies. The application monitoring platform includes powerful analytics tools to help diagnose issues and understand how users interact with your application. For general monitoring principles, see [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring). This guide identifies the different types of data and outlines the required analysis that Azure Monitor supports. It also identifies the data collected by Application Insights that enables this analysis.
 
 This article assumes that you understand system design principles. It provides architectural best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework](/azure/architecture/framework/): Reliability, Security, Cost Optimization, Operational Excellence, and Performance Efficiency.
 
@@ -85,7 +86,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 ## Security
 
-The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload. It is one of the most important aspects of any architecture. Azure Monitor provides features to employ both the principle of least privilege and defense in depth.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload. It's one of the most important aspects of any architecture. Azure Monitor provides features to employ both the principle of least privilege and defense in depth.
 
 The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights. Use the following information to maximize the security of Application Insights and ensure that only authorized users access collected data.
 
@@ -114,7 +115,7 @@ Start your design strategy based on the [design review checklist for Security](.
 | Recommendation | Benefit |
 |----------------|---------|
 | If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach eliminates the need for manual SDK updates, requires no code changes, and eliminates the overhead of maintaining instrumentation code. It can also enhance security by ensuring consistent application monitoring without manual intervention. |
-| Stop collecting personal data or obfuscate, anonymize, or adjust collected data. Notice that Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection) and it's recommended to not change that. | Excludes your data from being considered *personal* and prevents breaking any compliance requirements or local regulations. |
+| Stop collecting personal data or obfuscate, anonymize, or adjust collected data. Notice that Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). We recommend not to change that. | Excludes your data from being considered *personal* and prevents breaking any compliance requirements or local regulations. |
 | Use one Application Insights resource per workload per environment, such as one for development, one for staging, and one for production. | Using multiple Application Insights resources ensures data isolation and security, and helps in applying environment-specific configurations and access controls. |
 
 ## Cost Optimization
@@ -128,7 +129,7 @@ For more information on how data charges are calculated for the underlying Log A
 ### Design checklist for Cost Optimization
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md)
-for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+for investments. Fine-tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -157,11 +158,11 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 | Recommendation | Benefit |
 |:---------------|:--------|
 | [Set a daily cap in both Application Insights and Log Analytics](/azure/azure-monitor/logs/daily-cap#when-to-use-a-daily-cap), but try to avoid reaching it. | Reaching the daily cap can cause data to not be written in your Log Analytics workspace. Setting a cap is a risky but effective solution to throttle spend. |
-| For standard availability tests, the need for testing from different locations might vary between production and pre-production environments. Reduce the amount of locations accordingly. | Tests incur costs, so have just enough tests to give you confidence in your workload's heath. |
-| Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace. | This minimizes latency and reduce costs associated with cross-region telemetry. |
-| Decrease the sample rate for less critical flows and increase it for flows with high criticality. Use telemetry filters for non-essential telemetry. | Data volume is a cost driver when designing your Application Insights integration. Reducing data volume through sample rates and filters are a potential solution to keeping your data collection under control. |
+| For standard availability tests, the need for testing from different locations might vary between production and preproduction environments. Reduce the number of locations accordingly. | Tests incur costs, so only have enough tests to give you confidence in your workload's heath. |
+| Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace. | This minimizes latency and reduces costs associated with cross-region telemetry. |
+| Decrease the sample rate for less critical flows and increase it for flows with high criticality. Use telemetry filters for nonessential telemetry. | Data volume is a cost driver when designing your Application Insights integration. Reducing data volume through sample rates and filters are a potential solution to keeping your data collection under control. |
 | [Limit the number of Ajax calls](/azure/azure-monitor/app/javascript-sdk-configuration) that can be reported in every page view or disable Ajax reporting. If you disable Ajax calls, you also disable [JavaScript correlation](/azure/azure-monitor/app/distributed-trace-data). | Data volume is a cost driver when designing your Application Insights integration for your client application. Reducing data volume through reduced client page reporting is a potential solution to keeping your data collection costs under control. |
-| Use [preaggregated metrics](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#preaggregated-metrics) to handle high-volume telemetry data more efficiently and limit the use of custom metrics. However, the Application Insights option to [enable alerting on custom metric dimensions](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) can also increase costs. Measure to ensure cost savings are being obtained. | All custom metrics are stored in both logs and metric stores. Preaggregated metrics reduces storage costs related to custom metrics. |
+| Use [preaggregated metrics](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#preaggregated-metrics) to handle high-volume telemetry data more efficiently and limit the use of custom metrics. However, the Application Insights option to [enable alerting on custom metric dimensions](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) can also increase costs. Measure to ensure cost savings are being obtained. | All custom metrics are stored in both logs and metric stores. Preaggregated metrics reduce storage costs related to custom metrics. |
 | If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach optimizes software engineering time by eliminating the need for manual SDK updates, code changes related to new versions, and the overhead of maintaining instrumentation code. |
 | Limit unwanted trace logging:<br><br>• Remove health checks, see *Filter out noisy traces* in [Optimizing Cost using the Azure Monitor OpenTelemetry Distro](https://techcommunity.microsoft.com/blog/azureobservabilityblog/optimizing-cost-using-the-azure-monitor-opentelemetry-distro/4115870).<br>• For Azure Kubernetes Service (AKS), adjust [control plane and data plane logs](/azure/aks/monitor-aks#azure-monitor-resource-logs).<br>• For Azure Functions, [adapt log levels and scope](/azure/azure-functions/configure-monitoring) to optimize log volume. | Limiting unwanted trace logging reduces the amount of stored data which can lower storage costs. |
 
@@ -205,7 +206,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 ### Design checklist for Performance Efficiency
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Application Insights.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Use key performance indicators for Application Insights to define a baseline.
 
 > [!div class="checklist"]
 >
