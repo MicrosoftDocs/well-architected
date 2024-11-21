@@ -19,7 +19,7 @@ categories:
 
 ## Overview
 
-Application Insights is an extensible Application Performance Management (APM) service to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help diagnose issues and understand how users interact with your application. This guide architectural best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework](/azure/architecture/framework/).
+Application Insights is an extensible Application Performance Management (APM) service to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help diagnose issues and understand how users interact with your application. This guide architectural provides best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework](/azure/architecture/framework/).
 
 > [!IMPORTANT]
 >
@@ -44,8 +44,6 @@ This guide focuses on the interrelated decisions for the following Azure resourc
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
-
-Use the following information to minimize the repercussions of a single component failing within Application Insights.
 
 ### Design checklist for Reliability
 
@@ -102,11 +100,9 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > * **Create intentional segmentation in your application monitoring design.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
 >
-> * **Enable identity and acecss management (IAM).** Use [managed identities](/entra/identity/managed-identities-azure-resources/overview) and [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) to ensure only authorized users can access your resources. This also eliminates the need for credentials management, as [Azure manages, rotates, and protects these credentials](/entra/architecture/service-accounts-managed-identities).
->
 > * **Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal).** By default, data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to stored data.
 >
-> * **Control network traffic.** Consider using [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to access Azure services over a private endpoint, effectively isolating your traffic from the public internet. Data flows for private networking include both data ingestion and query operations, each targeting distinct endpoints. These endpoints can be managed independently, allowing you to configure private ingestion while maintaining public query access, or vice versa. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries.
+> * **Control network traffic.** Consider private connectivity for accessing Azure services, effectively isolating your traffic from the public internet. Data flows for private networking include both data ingestion and query operations, each targeting distinct endpoints. These endpoints can be managed independently, allowing you to configure private ingestion while maintaining public query access, or vice versa. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries.
 >
 > * **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](azure-log-analytics.md#design-checklist-for-security) to learn about securing the data you're collecting.
 
@@ -115,9 +111,10 @@ Start your design strategy based on the [design review checklist for Security](.
 | Recommendation | Benefit |
 |----------------|---------|
 | If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach eliminates the need for manual SDK updates, requires no code changes, and eliminates the overhead of maintaining instrumentation code. It can also enhance security by ensuring consistent application monitoring without manual intervention. |
+|Use [managed identities](/entra/identity/managed-identities-azure-resources/overview) and [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) for authentication and authorization needs.|Eliminates the need for credentials management, as [Azure manages, rotates, and protects these credentials](/entra/architecture/service-accounts-managed-identities).|
 | Stop collecting personal data or obfuscate, anonymize, or adjust collected data. Notice that Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). We recommend not to change that. | Excludes your data from being considered *personal* and prevents breaking any compliance requirements or local regulations. |
 | Use one Application Insights resource per workload per environment, such as one for development, one for staging, and one for production. | Using multiple Application Insights resources ensures data isolation and security, and helps in applying environment-specific configurations and access controls. |
-| If using private link, ensure to follow the configuration and limitations outlined in [Use Azure Private Link to connect networks to Azure Monitor](/azure/azure-monitor/logs/private-link-security) closely. Avoid connecting your AMPLS to multiple VNETs which share the same DNS, as this causes *wrong private endpoint* errors. | A properly configured AMPLS topology will enhance the confidentiality of your workload's logs by keeping logging traffic on fully private networks. |
+| Use [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to access Azure services over a private endpoint. Follow the configuration and limitations. Avoid connecting your AMPLS to multiple VNETs which share the same DNS, as this causes *wrong private endpoint* errors. | A properly configured AMPLS topology will enhance the confidentiality of your workload's logs by keeping logging traffic on fully private networks. |
 
 ## Cost Optimization
 
@@ -140,7 +137,7 @@ for investments. Fine-tune the design so that the workload is aligned with the b
 >     * Use [sampling](/azure/azure-monitor/app/sampling) on an Application Insights-level to reduce data traffic and storage costs while preserving a statistically correct analysis of application data.
 >     * Application Insights has several possible [log sources](/azure/azure-monitor/app/app-insights-overview#logging-frameworks). Use log levels to tune and reduce trace log telemetry.
 >
-> * **[Set a daily cap](/azure/azure-monitor/logs/daily-cap) to limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.
+> * **Limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.
 >
 > * **Regularly review costs like regional pricing and available pricing tiers.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) or visit the [Cost Optimization section](azure-log-analytics.md#design-checklist-for-cost-optimization) in the Log Analytics service guide.
 >
