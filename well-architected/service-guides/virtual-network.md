@@ -101,18 +101,22 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all traffic through an network virtual appliance, such as a firewall, by using UDRs for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
 >
->    Secure PaaS service connectivity with Private Endpoints while blocking outbound connections.   
+>    Secure PaaS service connectivity with private endpoints while blocking outbound connections.   
 >
 > - **Apply the principle of least privilege**. Configure role-based-access-controls (RBAC) with a no-access mindset for network-related roles. Make sure that not all users are able to modify settings.
+>
+> - **Limit public IP addresses**. Use shared public IPs from services like Azure Front Door for better security and initial request checks. Managing a dedicated public IP requires you to oversee its security, including port management and request validation. Where possible, use private connectivity.
 
 
 ##### Recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|(dubious) [**Use the VNet encryption**](/azure/virtual-network/virtual-network-encryption-overview) to protect all traffic between virtual machines that are part of the same network.|You can encrypt and decrypt traffic between Azure resources that are placed in the same virtual network. |
-|(dubious for prod)[**Enable Virtual Network Verifier**](/azure/virtual-network-manager/concept-virtual-network-verifier) in the Azure Virtual Network Manager. <br><br> Use this feature in your preproduction environment to test the connectivity between resources. This features isn't recommended in production. |You want to make sure that the Azure resources within the network are reachable and not blocked by policies.|
-|Do, Don't, consider, this.. |Because it's your workload after all.|
+|[**Use the VNet encryption**](/azure/virtual-network/virtual-network-encryption-overview).| By enforcing encrypted traffic, you can protect data in transit between Azure resources that are part of the VNet. |
+|[**Enable Virtual Network Verifier**](/azure/virtual-network-manager/concept-virtual-network-verifier) in the Azure Virtual Network Manager. <br><br> Use this feature in your preproduction environment to test the connectivity between resources. This features isn't recommended in production. |You want to make sure that the Azure resources within the network are reachable and not blocked by policies.|
+|Enable [**Azure DDoS Network Protection**](/azure/ddos-protection/manage-ddos-protection) for the VNet. <br><br> Alternately, you can protect individual IP addresses through [**Azure DDoS IP Protection**](/azure/ddos-protection/manage-ddos-ip-protection-portal). |You'll be able to safeguard against DDoS attacks.|
+|Safeguard segments within a VNet using [**Network Security Groups (NSG)**](/azure/virtual-network/network-security-groups-overview). <br><br> Where possible, use Application Security Groups (ASG) that use tags for traffic rules. |Traffic entering and leaving the netowrk can be filtered based on IP and port ranges. <br> ASGs simplifies management by abstracting the underlying IP ranges. |
+|Use [**private endpoints**](/azure/private-link/private-endpoint-overview) to access Azure services over a private IP address within the VNet. <br><br> Another way to implement private networking is through [**service endpoints**](/azure/virtual-network/virtual-network-service-endpoints-overview). These endpoints routes traffic to a service over the Azure network backbone. Prefer private endpoint over service endpoints, if available for the service.| Private endpoints eliminate the need for public IP addresses, reducing the attack surface.|
 
 
 ## Cost Optimization
