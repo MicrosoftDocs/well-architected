@@ -257,13 +257,6 @@ Here are some recommendations that can help you improve the cost effectiveness a
 
 ## Next steps
 
-Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
-<!--
-* Use the following reference architectures as examples of how you can apply this article's guidance to a workload:
-
-    * `reference-architecture`
-    * `reference-architecture`
--->
 Build implementation expertise by using the following product documentation:
 
 * *Autoinstrumentation* (App Service) - [Enable application monitoring in Azure App Service for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/codeless-app-service)
