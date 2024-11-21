@@ -39,11 +39,11 @@ The mission-critical design methodology requires a multi-region deployment. This
 
 Not every workload supports or requires running multiple regions simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
 
-[Availability zones](/azure/availability-zones/az-overview#availability-zones) can provide highly available regional deployments across different datacenters within a region. Nearly all Azure services are available in either a zonal configuration, where the service is delegated to a specific zone, or a zone-redundant configuration, where the platform automatically ensures that the service spans across zones and can withstand a zone outage. These configurations provide fault tolerance up to the datacenter level.
+[Availability zones](/azure/reliability/availability-zones-overview) can provide highly available regional deployments across different datacenters within a region. Nearly all Azure services are available in either a zonal configuration, where the service is delegated to a specific zone, or a zone-redundant configuration, where the platform automatically ensures that the service spans across zones and can withstand a zone outage. These configurations provide fault tolerance up to the datacenter level.
 
 ### Design considerations
 
-- **Regional and zonal capabilities**. Not all services and capabilities are available in every Azure region. This consideration could affect the regions you choose. Also,  [availability zones](/azure/availability-zones/az-region) aren't available in every region.
+- **Regional and zonal capabilities**. Not all services and capabilities are available in every Azure region. This consideration could affect the regions you choose. Also, [availability zones](/azure/reliability/availability-zones-region-support) aren't available in every region.
 
 - **Regional pairs**. Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) that consist of two regions in a single geography. Some Azure services use paired regions to ensure business continuity and to provide a level of protection against data loss. For example, Azure geo-redundant storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable if the primary region isn't recoverable. If an outage affects multiple Azure regions, at least one region in each pair is prioritized for recovery.
 
@@ -342,7 +342,7 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 - The operational costs of using IaaS VMs are significantly higher than the costs of using PaaS services because of the management requirements of the VMs and the operating systems. Managing VMs necessitates the frequent rollout of software packages and updates.
 
 - Azure provides capabilities to increase the availability of VMs:
-  - [Availability zones](/azure/availability-zones/az-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
+  - [Availability zones](/azure/reliability/availability-zones-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
   - [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of VMs in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
   - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
 
@@ -353,7 +353,7 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 
 - [Right-size VM SKU sizes](/azure/virtual-machines/sizes) to ensure effective resource utilization.
 
-- Deploy three or more VMs across [availability zones](/azure/availability-zones/az-overview) to achieve datacenter-level fault tolerance.
+- Deploy three or more VMs across [availability zones](/azure/reliability/availability-zones-overview) to achieve datacenter-level fault tolerance.
   - If you're deploying commercial off-the-shelf software, consult the software vendor and test adequately before deploying the software into production.
 
 - For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) that contain three or more VMs. For more information about how to configure the correct number of fault domains, see [Manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).

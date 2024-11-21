@@ -20,7 +20,7 @@ This guide describes the recommendations for selecting appropriate services for 
 
 |  Term| Definition|
 |---|---|
-|Availability zone| [A separated group of datacenters within a region](/azure/reliability/availability-zones-overview). Each availability zone is independent of the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support).|
+|Availability zone| [A separated group of datacenters within a region](/azure/reliability/availability-zones-overview). Each availability zone is independent of the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones](/azure/reliability/availability-zones-region-support).|
 |Compute service| A service that provides the infrastructure that you need to run an application.|
 |Database service| A service that provides relational and nonrelational databases for your application.|
 |  Infrastructure |The physical components of cloud computing, and the geographic location of the components.|
@@ -176,7 +176,7 @@ Azure has many services that can accommodate any workload. Review the [selection
 
 ## Related links
 
-- [Azure regions with availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
+- [Azure regions with availability zone support](/azure/reliability/availability-zones-region-support)
 - [Recommendations for defining performance targets](performance-targets.md)
 - [Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md)
 - [What are availability zones?](/azure/reliability/availability-zones-overview)
