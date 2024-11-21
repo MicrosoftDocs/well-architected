@@ -418,7 +418,7 @@ While the application design strongly advocates independent regional deployment 
 
 - The application design approach for a mission-critical application endorses the use of independent regional deployments with zonal redundancy applied at all component levels within a single region.
 
-- An [Availability Zone (AZ)](/azure/availability-zones/az-overview#availability-zones) is a physically separate data center location within an Azure region, providing physical and logical fault isolation up to the level of a single data center.
+- An [Availability Zone (AZ)](/azure/reliability/availability-zones-overview) is a physically separate data center location within an Azure region, providing physical and logical fault isolation up to the level of a single data center.
 
   A round-trip latency of less than 2 ms is guaranteed for inter-zone communication. Zones will have a small latency variance given varied distances and fiber paths between zones.
 

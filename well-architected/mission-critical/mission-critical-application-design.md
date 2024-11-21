@@ -70,7 +70,7 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 ### Design considerations
 
-- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/availability-zones/az-overview#availability-zones) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty for interzone data transfer.
+- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/reliability/availability-zones-overview) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty for interzone data transfer.
 
 - **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering the trade-offs of increased cost and engineering effort.
 
