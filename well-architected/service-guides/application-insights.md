@@ -19,9 +19,7 @@ categories:
 
 ## Overview
 
-[Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extensible Application Performance Management (APM) service that is part of [Azure Monitor](/azure/azure-monitor/overview). It's designed for developers and DevOps professionals to monitor live applications and automatically detect performance anomalies. The application monitoring platform includes powerful analytics tools to help diagnose issues and understand how users interact with your application. For general monitoring principles, see [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring). This guide identifies the different types of data and outlines the required analysis that Azure Monitor supports. It also identifies the data collected by Application Insights that enables this analysis.
-
-This article assumes that you understand system design principles. It provides architectural best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework](/azure/architecture/framework/): Reliability, Security, Cost Optimization, Operational Excellence, and Performance Efficiency.
+Application Insights is an extensible Application Performance Management (APM) service to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help diagnose issues and understand how users interact with your application. This guide architectural best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework](/azure/architecture/framework/).
 
 > [!IMPORTANT]
 >
@@ -39,7 +37,7 @@ This guide focuses on the interrelated decisions for the following Azure resourc
 * Log Analytics workspaces
 
 > [!NOTE]
-> Application Insights stores and exposes data in a [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview#overview-of-log-analytics-in-azure-monitor) workspace. Keep Log Analytics as a critical dependency on Application Insights when evaluating your metrics. For more information, see [Azure Well-Architected Framework perspective on Log Analytics](azure-log-analytics.md).
+> Application Insights stores and exposes data in a Log Analytics workspace. Keep Log Analytics as a critical dependency on Application Insights when evaluating your metrics. For more information, see [Azure Well-Architected Framework perspective on Log Analytics](azure-log-analytics.md).
 
 ## Reliability
 
@@ -59,7 +57,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > * **Configure sampling based on the criticality of the data.** Identify the user and system flows of your workload, determine the events you want to gather, and configure sampling accordingly.
 >     * For manually instrumented applications, see [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-configuration?tabs=aspnetcore#enable-sampling) or [Application Insights SDKs (Classic API)](/azure/azure-monitor/app/sampling-classic-api).
->     * For autoinstrumentation, sampling is covered in environment-specific articles, for example [Configure sampling in Azure Functions](/azure/azure-functions/configure-monitoring?tabs=v2#configure-sampling).
+>     * For autoinstrumentation, sampling is covered in environment-specific articles, for example [Configure sampling in Azure Functions](/azure/azure-functions/configure-monitoring).
 >
 > * **Create a comprehensive resiliency plan.**
 >     * Start by conducting a Failure Mode Analysis (FMA) to identify potential scenarios where Application Insights might fail or become unreachable. This could be due to various reasons such as network issues, authentication problems, or service disruptions.
@@ -68,8 +66,8 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > * **Plan for workspace resiliency and recovery by defining targets for your data collection components.**
 >     * Assess the criticality of the data you're collecting and determine if it needs to be recoverable.
->     * Review service limits for [Application Insights](/azure/azure-monitor/service-limits#application-insights) and the underlying [Log Analytics workspace](/azure/azure-monitor/service-limits#log-analytics-workspaces) to understand restrictions on data collection and retention, and other aspects of the service.
->     * Where the availability of Application Insights telemetry within the retention period defined is business critical, consider moving to a [dedicated cluster](/azure/azure-monitor/logs/logs-dedicated-clusters?tabs=azure-portal) to take advantage of workspace resilience.
+>     * Review service limits for [Application Insights](/azure/azure-monitor/service-limits#application-insights) and [Log Analytics workspace](/azure/azure-monitor/service-limits#log-analytics-workspaces) to understand restrictions on data collection and retention, and other aspects of the service.
+>     * Where the availability of Application Insights telemetry within the retention period defined is business critical, consider moving to a [dedicated cluster](/azure/azure-monitor/logs/logs-dedicated-clusters) to take advantage of workspace resilience.
 >     * Use [diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings) to export platform logs and metrics to the destination of your choice (for example, a storage account) for backup and recovery purposes.
 >
 > * **Implement a timely and reliable scaling strategy to plan for data ingestion growth.** Monitor and adjust limits on sampling and data ingestion as traffic grows to prevent data loss due to sampling or exceeding the [daily cap](/azure/azure-monitor/logs/daily-cap). This ensures that your data ingestion process scales effectively with increasing traffic.
@@ -238,10 +236,8 @@ Start your design strategy based on the [design review checklist for Performance
 
 Azure provides built-in policies related to Application Insights and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-* [Application Insights components should block log ingestion and querying from public networks](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc02227-0cb6-4e11-8f53-eb0b22eab7e8)
-* [Application Insights components should block non-Azure Active Directory based ingestion](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F199d5677-e4d9-4264-9465-efe1839c06bd)
-* [Azure Monitor Logs for Application Insights should be linked to a Log Analytics workspace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd550e854-df1a-4de9-bf44-cd894b39a95e)
-* and more.
+* Application Insights components should prevent log ingestion public networks, or sources that aren't authenticated and authorized by Microsoft Entra ID. 
+* Enforce linking of the Application Insights component to a Log Analytics workspace to encrypt logs. 
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Application Insights](/azure/governance/policy/samples/built-in-policies#monitoring) and other policies that might impact the security of the application performance monitoring solution.
 
@@ -254,13 +250,12 @@ Here are some recommendations that can help you improve the cost effectiveness a
 * [Cost Optimization](/azure/advisor/advisor-cost-recommendations#management-and-governance)
 * [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#management-and-governance)
 
-## Related resources
-
-* [Azure Well-Architected Framework perspective on Log Analytics](./azure-log-analytics.md)
-
 ## Next steps
 
 Build implementation expertise by using the following product documentation:
 
-* *Autoinstrumentation* (App Service) - [Enable application monitoring in Azure App Service for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/codeless-app-service)
-* *Manual instrumentation* (OpenTelemetry) - [Enable Azure Monitor OpenTelemetry for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/opentelemetry-enable)
+- [Application Insights](/azure/azure-monitor/app/app-insights-overview)
+- [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
+- [Azure Well-Architected Framework perspective on Log Analytics](./azure-log-analytics.md)
+- [Enable application monitoring in Azure App Service for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/codeless-app-service)
+- [Enable Azure Monitor OpenTelemetry for .NET, Node.js, Python, and Java applications](/azure/azure-monitor/app/opentelemetry-enable)
