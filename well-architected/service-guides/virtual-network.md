@@ -57,7 +57,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Here are some typical examples: TBD
 >
-> - **Overprovision your subnets**. To ensure reliable scaling, a common strategy is to overprovision capacity to prevent IP exhaustion. However, this approach involves a tradeoff between cost and operational efficiency. The goal should be to optimize over time, maintaining just enough extra address space in your VNet and subnets to balance reliability with cost-effectiveness.
+> - **Overprovision IP address spaces**. To ensure reliable scaling, a common strategy is to overprovision capacity to prevent IP exhaustion. However, this approach involves a tradeoff between cost and operational efficiency. Subnets should only use a portion of the VNet's address space. The goal should be have just enough extra address space in your VNet and subnets to balance reliability with cost-effectiveness.
+>
+> - **Be aware of the networking limits**. Azure imposes limits on the number of resources you can deploy. While most Azure networking limits are set to their maximum values, some can be increased. For more details, refer to the [Networking limits](s/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 >
 > - **Create network diagrams with focus on user flows**. These diagrams are valuable for visualizing network segmentation, identifying potential points of failure, and pinpointing key transitions like internet ingress and egress points. They also serve as important tools for audits and incident response.
 >
@@ -65,21 +67,21 @@ Start your design strategy based on the [design review checklist for Reliability
 > 
 > - **Add redundancy**. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
 >
-> - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs, Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network.
+> - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs, Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network. Some examples of simplification include: 
+>   - Using private DNS whenever possible and minimize the number of DNS zones. 
+>   - Simplifying routing configurations. Consider routing all traffic through the firewall, if used in the architecture.
 >
->   Prefer using service names and Application Security Groups (ASGs) over subnets/IPs. 
 >
->   Use private DNS whenever possible and minimize the number of DNS zones. 
->
->   Simplify routing configurations. Consider routing all traffic through the firewall, if used in the architecture.
-> 
 > - **Test the resiliency of the network**. Utilize Azure Chaos Studio to simulate network connectivity disruptions, ensuring workload redundancy and assessing the impact range of potential failures.
+
+Monitoring traffic flow is a crucial operation for reliability. For example, you want to identify top talkers in your network to see if they can cause any disruption. Azure provides Flow Logging capabitlities, which are described in [Operational Excellence](#operational-excellence).
 
 ##### Recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload after all.|
+|Size VNets and subnets as per your scaling strategy. Opt for fewer, larger VNets accomodate redundancy as a mitigation strategy for failures. <br><br> Ensure there aren't overlapping address space with other VNets you need to communicate with, and plan the address space in advance.  <br><br> See, [**Create, change, or delete a virtual network**](/azure/virtual-network/manage-virtual-network).| With a bit of overprovisioning, you can ensure that the network can scale efficiently without running into address space limitations. <br>Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture.|Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture.|
+|Use the [**standard SKU**](/azure/virtual-network/ip-services/public-ip-addresses#sku) for better reliability support through availability zones. <br> By default, public IPs are deployed across multiple zones unless specifically restricted to one zone.|Ensures that communication within a zone remains operational.|
 
 ## Security
 
@@ -210,7 +212,7 @@ Start your design strategy based on the [design review checklist for Operational
 |-----------|-------- |
 |Do, Don't, consider, this.. |Because it's your workload after all.|
 |Deploy [**Azure Network Manager**](/azure/virtual-network-manager/overview). |Instead of configuring each VNet individually, Azure Network Manager centrally manages connectivity based on rules. This makes networking operations more streamlined.|
-
+Size VNets and subnets appropriately to avoid complexity. Opt for fewer, larger VNets to reduce management overhead and smaller subnets to allow for growth. Ensure no overlapping address space with other VNets you need to communicate with, and plan the address space in advance.
 
 ## Performance Efficiency
 
