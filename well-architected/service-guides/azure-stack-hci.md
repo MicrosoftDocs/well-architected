@@ -1,6 +1,6 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Stack HCI
-description: Learn how to deploy Azure Stack HCI so that you can create and manage Windows and Linux VMs, Kubernetes clusters, and other Azure Arc-enabled services.
+title: Azure Well-Architected Framework perspective on Azure Local
+description: Learn how to deploy Azure Local so that you can create and manage Windows and Linux VMs, Kubernetes clusters, and other Azure Arc-enabled services.
 author: neilbird
 ms.author: nebird
 ms.topic: conceptual
@@ -13,11 +13,11 @@ categories:
     - hybrid
 ---
 
-# Azure Well-Architected Framework perspective on Azure Stack HCI
+# Azure Well-Architected Framework perspective on Azure Local
 
-Azure Stack HCI is a hyperconverged infrastructure (HCI) platform that provides local storage, network resources, and compute resources. You can use Azure Stack HCI to create and manage Windows and Linux virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services. The platform uses Azure for streamlined deployment and management, which provides a unified and consistent management experience through Azure Arc. You can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+Azure Local is a hyperconverged infrastructure (HCI) platform that provides local storage, network resources, and compute resources. You can use Azure Local to create and manage Windows and Linux virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services. The platform uses Azure for streamlined deployment and management, which provides a unified and consistent management experience through Azure Arc. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 
-This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Stack HCI. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
+This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -25,10 +25,10 @@ This article assumes you have an understanding of hybrid systems and have workin
 >
 > Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 >
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Stack HCI and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Local and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:  
-> [Azure Stack HCI baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
+> [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
 
 #### Technology scope
 
@@ -41,7 +41,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 >
 > This article covers the preceding scope and provides checklists and recommendations that are organized by **platform architecture** and **workload architecture**. Platform concerns are the responsibility of the platform administrators. Workload concerns are the responsibility of the workload operator and application developers. These roles and responsibilities are distinct and can be owned by separate teams or individuals. Keep that distinction in mind when you apply the guidance.
 
-This guidance doesn't focus on specific resource types that you can deploy on Azure Stack HCI, such as [Azure Arc VMs](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Kubernetes Service (AKS)](/azure/aks/hybrid/cluster-architecture), and [Azure Virtual Desktop](/azure/virtual-desktop/azure-stack-hci-overview). When you deploy these resource types on Azure Stack HCI, refer to the respective workload guidance to design solutions that meet your business requirements.
+This guidance doesn't focus on specific resource types that you can deploy on Azure Local, such as [Azure Arc VMs](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Kubernetes Service (AKS)](/azure/aks/hybrid/cluster-architecture), and [Azure Virtual Desktop](/azure/virtual-desktop/azure-stack-hci-overview). When you deploy these resource types on Azure Local, refer to the respective workload guidance to design solutions that meet your business requirements.
 
 ## Reliability
 
@@ -49,80 +49,80 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [**Reliability design principles**](../resiliency/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-In hybrid cloud deployments, the goal is to reduce the effects of one component failure. Use these design checklists and configuration suggestions to lessen the impact of a component failure for workloads that you deploy on Azure Stack HCI.
+In hybrid cloud deployments, the goal is to reduce the effects of one component failure. Use these design checklists and configuration suggestions to lessen the impact of a component failure for workloads that you deploy on Azure Local.
 
 It's important to distinguish between *platform reliability* and *workload reliability*. Workload reliability has a dependency on the platform. Application owners or developers must design applications that can deliver the defined reliability targets.
 
 #### Design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of Azure Stack HCI. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of Azure Local. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> - (Azure Stack HCI platform architecture and workload architecture) **Define workload reliability targets**.
+> - (Azure Local platform architecture and workload architecture) **Define workload reliability targets**.
 >
->   - Set your [service-level objectives (SLOs) so that you can evaluate availability targets](../reliability/metrics.md). Calculate SLOs as a percentage, such as 99.9%, 99.95%, or 99.995%, that reflects workload uptime. Keep in mind that this calculation isn't based only on the platform metrics that the Azure Stack HCI cluster or workload emits. To get a comprehensive target measurement, factor in nuanced factors that are quantified, such as expected downtime during releases, routine operations, supportability, or other workload-specific or organizational-specific factors.
+>   - Set your [service-level objectives (SLOs) so that you can evaluate availability targets](../reliability/metrics.md). Calculate SLOs as a percentage, such as 99.9%, 99.95%, or 99.995%, that reflects workload uptime. Keep in mind that this calculation isn't based only on the platform metrics that the Azure Local instance or workload emits. To get a comprehensive target measurement, factor in nuanced factors that are quantified, such as expected downtime during releases, routine operations, supportability, or other workload-specific or organizational-specific factors.
 >
->   - Microsoft-provided service-level agreements (SLAs) often influence SLO calculations. But Microsoft doesn't provide an SLA for the uptime and connectivity of Azure Stack HCI clusters or the deployed workload, because Microsoft doesn't control the customer datacenter reliability (_such as power and cooling_) or the people and processes that administer the platform.
+>   - Microsoft-provided service-level agreements (SLAs) often influence SLO calculations. But Microsoft doesn't provide an SLA for the uptime and connectivity of Azure Local instances or the deployed workload, because Microsoft doesn't control the customer datacenter reliability (_such as power and cooling_) or the people and processes that administer the platform.
 >
-> - (Azure Stack HCI platform architecture) **Consider how performance and operations affect reliability**.
+> - (Azure Local platform architecture) **Consider how performance and operations affect reliability**.
 >
->   **Degraded performance of the cluster** or its dependencies can make the Azure Stack HCI platform unavailable. For example:
+>   **Degraded performance of the cluster** or its dependencies can make the Azure Local platform unavailable. For example:
 >
->   - Without proper workload capacity planning, it's challenging to _rightsize Azure Stack HCI clusters_ in the design phase, which is a requirement so that the workload can meet the desired reliability targets. Use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) during cluster design. Consider the "_N+1 minimum requirement for number of nodes_" if you require highly available VMs. For business-critical or mission-critical workloads, consider using a "_N+2 number of nodes_" for the cluster size if resiliency is paramount.
+>   - Without proper workload capacity planning, it's challenging to _rightsize Azure Local instances_ in the design phase, which is a requirement so that the workload can meet the desired reliability targets. Use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) during cluster design. Consider the "_N+1 minimum requirement for number of nodes_" if you require highly available VMs. For business-critical or mission-critical workloads, consider using a "_N+2 number of nodes_" for the cluster size if resiliency is paramount.
 >
 >   - The reliability of the platform depends on how well the critical platform dependencies, such as physical disk types, perform. _You must choose the right disk types for your requirements_. For workloads that need low-latency and high-throughput storage, we recommend an all-flash (_NVMe/SSD only_) storage configuration. For general purpose compute, a hybrid storage (_NVMe or SSDs for cache and HDDs for capacity_) configuration might provide more storage space. But the tradeoff is that spinning disks have significantly lower performance if your workload exceeds the [cache working set](/azure-stack/hci/concepts/cache#sizing-the-cache), and HDDs have a much lower _mean time between failure_ value compared to NVMe/SSDs.
 >
 >     [Performance Efficiency](#performance-efficiency) describes these examples in more detail.
 >
->   **Improper Azure Stack HCI operations** can affect patching and upgrades, testing, and consistency of deployments. Here are some examples:
+>   **Improper Azure Local operations** can affect patching and upgrades, testing, and consistency of deployments. Here are some examples:
 >
->   - If the Azure Stack HCI platform doesn't _evolve with the latest hardware original equipment manufacturer (OEM) firmware, drivers, and innovations_, the platform might not take advantage of the latest resiliency features. Apply hardware OEM driver and firmware updates regularly. For more information, see [Azure Stack HCI solution catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
+>   - If the Azure Local platform doesn't _evolve with the latest hardware original equipment manufacturer (OEM) firmware, drivers, and innovations_, the platform might not take advantage of the latest resiliency features. Apply hardware OEM driver and firmware updates regularly. For more information, see [Azure Local solution catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 >
 >   - You must test the target environment for connectivity, hardware, and identity and access management before your deployment. Otherwise, you might deploy the Azure Stack HCI solution to an unstable environment, which can create reliability problems. You can use the [environmental checker tool in standalone mode](/azure-stack/hci/manage/use-environment-checker) to detect problems, even before the cluster hardware is available.
 >
 >       For operational guidance, see [Operational Excellence](#operational-excellence).
 >
-> - (Azure Stack HCI platform architecture) **Provide fault tolerance to the cluster and its infrastructure dependencies**.
+> - (Azure Local platform architecture) **Provide fault tolerance to the cluster and its infrastructure dependencies**.
 >
 >   - **Storage design choices**. For most deployments, the default option to "_automatically create workload and infrastructure volumes_" is sufficient. If you select the _advanced option: "create required infrastructure volumes only"_, configure the appropriate _volume fault tolerance within Storage Spaces Direct_ based on your workload requirements. These decisions influence the performance, capacity, and resiliency capabilities of the volumes. For example, a three-way mirror increases reliability and performance for clusters with three or more nodes. For more information, see [Fault tolerance for storage efficiency](/azure-stack/hci/concepts/fault-tolerance) and [Create Storage Spaces Direct virtual disks and volumes](/azure-stack/hci/concepts/plan-volumes).
 >
->    - **Network architecture**. Use a _validated network topology_ to deploy Azure Stack HCI. Multi-node clusters, *with four or more physical nodes*, require the "*storage switched*" design. Clusters with two or three nodes can optionally use the "*storage switchless*" design. Regardless of the cluster size, we recommend that you use dual top of rack (ToR) switches for the management and compute intents (_north and south uplinks_) to provide increased fault tolerance. The dual ToR topology also provides resiliency during switch servicing (*firmware update*) operations. For more information, see [Validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies).
+>    - **Network architecture**. Use a _validated network topology_ to deploy Azure Local. Multi-node clusters, *with four or more physical nodes*, require the "*storage switched*" design. Clusters with two or three nodes can optionally use the "*storage switchless*" design. Regardless of the cluster size, we recommend that you use dual top of rack (ToR) switches for the management and compute intents (_north and south uplinks_) to provide increased fault tolerance. The dual ToR topology also provides resiliency during switch servicing (*firmware update*) operations. For more information, see [Validated network topologies](/azure-stack/hci/deploy/deployment-introduction#validated-network-topologies).
 >
 > - (Workload architecture) **Build redundancy to provide resiliency**.
 >
->   - Consider a workload that you deploy on a single Azure Stack HCI cluster as a *locally redundant deployment*. The cluster provides high availability at the platform level, but you must remember that you deploy the cluster "_in a single rack_". Therefore, for business-critical or mission-critical use cases, we recommend that you deploy multiple instances of a workload or service across two or more separate Azure Stack HCI clusters, ideally in separate physical locations.
+>   - Consider a workload that you deploy on a single Azure Local instance as a *locally redundant deployment*. The cluster provides high availability at the platform level, but you must remember that you deploy the cluster "_in a single rack_". Therefore, for business-critical or mission-critical use cases, we recommend that you deploy multiple instances of a workload or service across two or more separate Azure Local instances, ideally in separate physical locations.
 >
->   - Use industry-standard high-availability patterns for workloads, for example a design that provides active/passive synchronous or asynchronous data replication [(_such as SQL Server Always On_)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Another example is an external network load balancing (_NLB_) technology that can route user requests across the multiple workload instances that run on Azure Stack HCI clusters that you deploy in separate physical locations. Consider using a partner external NLB device. Or evaluate the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) that support traffic routing for hybrid and on-premises services, such as an Azure Application Gateway instance that uses Azure ExpressRoute or a VPN tunnel to connect to an on-premises service.
+>   - Use industry-standard high-availability patterns for workloads, for example a design that provides active/passive synchronous or asynchronous data replication [(_such as SQL Server Always On_)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Another example is an external network load balancing (_NLB_) technology that can route user requests across the multiple workload instances that run on Azure Local instances that you deploy in separate physical locations. Consider using a partner external NLB device. Or evaluate the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) that support traffic routing for hybrid and on-premises services, such as an Azure Application Gateway instance that uses Azure ExpressRoute or a VPN tunnel to connect to an on-premises service.
 >
->       For more information, see [Deploy workloads instances across multiple Azure Stack HCI clusters](../reliability/redundancy.md#key-design-strategies).
+>       For more information, see [Deploy workloads instances across multiple Azure Local instances](../reliability/redundancy.md#key-design-strategies).
 >
 > - (Workload architecture) **Plan and test recoverability** based on your workload recovery point objective (RPO) and recovery time objective (RTO) targets.
 >
->   Have _a well-documented disaster recovery plan_. Test the recovery steps regularly to ensure that your business continuity plans and processes are valid. Determine whether Azure Site Recovery is a viable choice for protecting VMs that run on Azure Stack HCI. For more information, see [Protect VM workloads with Azure Site Recovery on Azure Stack HCI (preview)](/azure-stack/hci/manage/azure-site-recovery).
+>   Have _a well-documented disaster recovery plan_. Test the recovery steps regularly to ensure that your business continuity plans and processes are valid. Determine whether Azure Site Recovery is a viable choice for protecting VMs that run on Azure Local. For more information, see [Protect VM workloads with Azure Site Recovery on Azure Local (preview)](/azure-stack/hci/manage/azure-site-recovery).
 >
 > - (Workload architecture) **Configure and regularly test workload backup and restore procedures**.
 >
->   Business requirements for _data recovery and retention_ drive the strategy for workload backups. A comprehensive strategy includes considerations for _workload operating system (OS) and application persistent data_, with the ability to restore individual (_point-in-time_) file-level and folder-level data. Configure the backup retention policies based on your data recovery and compliance requirements, which determine the number and age of available data recovery points. Explore Azure Backup as an option to enable host-level or VM guest-level backups for Azure Stack HCI. Review data protection solutions from Backup independent software vendor partners where relevant. For more information, see [Azure Backup guidance and best practices](/azure/backup/guidance-best-practices) and [Azure Backup for Azure Stack HCI](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+>   Business requirements for _data recovery and retention_ drive the strategy for workload backups. A comprehensive strategy includes considerations for _workload operating system (OS) and application persistent data_, with the ability to restore individual (_point-in-time_) file-level and folder-level data. Configure the backup retention policies based on your data recovery and compliance requirements, which determine the number and age of available data recovery points. Explore Azure Backup as an option to enable host-level or VM guest-level backups for Azure Local. Review data protection solutions from Backup independent software vendor partners where relevant. For more information, see [Azure Backup guidance and best practices](/azure/backup/guidance-best-practices) and [Azure Backup for Azure Local](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 #### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-|Reserve the equivalent of [**one capacity disk worth of space per node**](/azure-stack/hci/concepts/plan-volumes#reserve-capacity) within the Storage Spaces Direct storage pool.|If you choose to create workload volumes after you deploy an Azure Stack HCI cluster (_Advanced option: "create required infrastructure volumes only"_), we recommend that you **leave 5% to 10% of the total pool capacity unallocated in the storage pool**. This reserved and unused, or free, capacity enables Storage Spaces Direct to repair "in-place" when a physical disk fails, which improves data resiliency and performance if a physical disk failure occurs.|
-|Ensure that all physical nodes have network access to the list of [**required outbound HTTPS endpoints**](/azure-stack/hci/concepts/firewall-requirements) for Azure Stack HCI and Azure Arc.| To reliably manage, monitor, and operate Azure Stack HCI clusters or workload resources, the required outbound network endpoints must have access, either directly or through a proxy server. A temporary interruption doesn't affect the running status of the workload but might affect manageability.|
-|If you opt to create workload volumes (_virtual disks_) manually, use the most appropriate [**resiliency type**](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) to maximize workload resiliency and performance. For any user volumes that you create manually after you deploy the cluster, [create a storage path for the volumes in Azure](/azure-stack/hci/manage/create-storage-path). The volume can store workload VM configuration files, VM virtual hard disks (VHDs), and VM images via the storage path.|For Azure Stack HCI clusters with three or more nodes, consider using a three-way mirror to provide the highest resiliency and performance capabilities. We recommend that you use mirrored volumes for business-critical or mission-critical workloads.|
+|Reserve the equivalent of [**one capacity disk worth of space per node**](/azure-stack/hci/concepts/plan-volumes#reserve-capacity) within the Storage Spaces Direct storage pool.|If you choose to create workload volumes after you deploy an Azure Local instance (_Advanced option: "create required infrastructure volumes only"_), we recommend that you **leave 5% to 10% of the total pool capacity unallocated in the storage pool**. This reserved and unused, or free, capacity enables Storage Spaces Direct to repair "in-place" when a physical disk fails, which improves data resiliency and performance if a physical disk failure occurs.|
+|Ensure that all physical nodes have network access to the list of [**required outbound HTTPS endpoints**](/azure-stack/hci/concepts/firewall-requirements) for Azure Local and Azure Arc.| To reliably manage, monitor, and operate Azure Local instances or workload resources, the required outbound network endpoints must have access, either directly or through a proxy server. A temporary interruption doesn't affect the running status of the workload but might affect manageability.|
+|If you opt to create workload volumes (_virtual disks_) manually, use the most appropriate [**resiliency type**](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) to maximize workload resiliency and performance. For any user volumes that you create manually after you deploy the cluster, [create a storage path for the volumes in Azure](/azure-stack/hci/manage/create-storage-path). The volume can store workload VM configuration files, VM virtual hard disks (VHDs), and VM images via the storage path.|For Azure Local instances with three or more nodes, consider using a three-way mirror to provide the highest resiliency and performance capabilities. We recommend that you use mirrored volumes for business-critical or mission-critical workloads.|
 |Consider implementing [**workload anti-affinity rules**](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure that the VMs that host multiple instances of the same service run on separate physical hosts. This concept is similar to "_availability sets_" in Azure.|Make all components redundant. For business-critical or mission-critical workloads, use multiple Azure Arc VMs or Kubernetes replica sets or pods to deploy multiple instances of your applications or services. This approach increases resiliency if an unplanned outage of a single physical node occurs.|
 
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [**Security design principles**](../security/security-principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Stack HCI.
+The [**Security design principles**](../security/security-principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Local.
 
-Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled during the cloud deployment process. Default security settings provide a consistent security baseline to ensure that devices start in a known good state. And you can use _drift protection controls_ to provide at-scale management.
+Azure Local is a secure-by-default product that has more than 300 security settings enabled during the cloud deployment process. Default security settings provide a consistent security baseline to ensure that devices start in a known good state. And you can use _drift protection controls_ to provide at-scale management.
 
-Default security features in Azure Stack HCI include hardened OS security settings, Windows Defender Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure-stack/hci/concepts/security-features).
+Default security features in Azure Local include hardened OS security settings, Windows Defender Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure-stack/hci/concepts/security-features).
 
 #### Design checklist
 
@@ -130,20 +130,20 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> - (Azure Stack HCI platform architecture) **Review the security baselines**. [Azure Stack HCI and security standards](/azure-stack/hci/assurance/azure-stack-security-standards) provide baseline guidance to strengthen the security posture of the platform and hosted workloads. If your workload needs to comply with specific regulatory compliance regulations, factor in the regulatory security standards, such as Payment Card Industry Data Security Standards and Federal Information Processing Standard 140.
+> - (Azure Local platform architecture) **Review the security baselines**. [Azure Local and security standards](/azure-stack/hci/assurance/azure-stack-security-standards) provide baseline guidance to strengthen the security posture of the platform and hosted workloads. If your workload needs to comply with specific regulatory compliance regulations, factor in the regulatory security standards, such as Payment Card Industry Data Security Standards and Federal Information Processing Standard 140.
 >
->   [Azure Stack HCI platform-provided default settings](/azure-stack/hci/concepts/security-features) enable security features, including identity controls, network filtering, and encryption. These settings form a good security baseline for a newly provisioned Azure Stack HCI cluster. You can customize each setting based on your organizational security requirements.
+>   [Azure Local platform-provided default settings](/azure-stack/hci/concepts/security-features) enable security features, including identity controls, network filtering, and encryption. These settings form a good security baseline for a newly provisioned Azure Local instance. You can customize each setting based on your organizational security requirements.
 >
 >   Make sure that you [detect and protect against undesired security configuration drift](/azure-stack/hci/manage/manage-secure-baseline).
 >
-> - (Azure Stack HCI platform architecture) **Detect, prevent, and respond to threats**. Continuously monitor the Azure Stack HCI environment and protect against existing and evolving threats.
+> - (Azure Local platform architecture) **Detect, prevent, and respond to threats**. Continuously monitor the Azure Local environment and protect against existing and evolving threats.
 >
->   We recommend that you enable Defender for Cloud on Azure Stack HCI. Enable the basic Defender for Cloud plan (_free tier_) by using Defender Cloud Security Posture Management to monitor and identify steps that you can take to secure your Azure Stack HCI platform, along with other Azure and Azure Arc resources.
+>   We recommend that you enable Defender for Cloud on Azure Local. Enable the basic Defender for Cloud plan (_free tier_) by using Defender Cloud Security Posture Management to monitor and identify steps that you can take to secure your Azure Local platform, along with other Azure and Azure Arc resources.
 >
->   To benefit from the enhanced security features, including security alerts for individual servers and Azure Arc VMs, enable Microsoft Defender for Servers on your Azure Stack HCI cluster nodes and Azure Arc VMs.
+>   To benefit from the enhanced security features, including security alerts for individual servers and Azure Arc VMs, enable Microsoft Defender for Servers on your Azure Local instance nodes and Azure Arc VMs.
 >
->   - Use [Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to measure the security posture of Azure Stack HCI nodes and workloads. Defender for Cloud provides a single pane of glass experience to help manage security compliance.
->   - Use [Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) to monitor the hosted VMs for threats and misconfigurations. You can also enable endpoint detection and response capabilities on Azure Stack HCI nodes.
+>   - Use [Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to measure the security posture of Azure Local machines and workloads. Defender for Cloud provides a single pane of glass experience to help manage security compliance.
+>   - Use [Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) to monitor the hosted VMs for threats and misconfigurations. You can also enable endpoint detection and response capabilities on Azure Local machines.
 >
 >   - Consider aggregating security and threat intelligence data from all sources into a centralized security information and event management (SIEM) solution, such as [Microsoft Sentinel](/azure/sentinel/overview).
 >

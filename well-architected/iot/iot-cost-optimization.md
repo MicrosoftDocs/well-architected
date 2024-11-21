@@ -141,11 +141,11 @@ Azure Sphere provides OS updates and zero-day renewable security for 10 years on
 
 ### Azure Stack
 
-[Azure Stack solutions](https://azure.microsoft.com/products/azure-stack) extend Azure services and capabilities to environments beyond Azure datacenters, such as on-premises datacenters or edge locations. Azure Stack solutions include Azure Stack Edge and Azure Stack HCI.
+[Azure Stack solutions](https://azure.microsoft.com/products/azure-stack) extend Azure services and capabilities to environments beyond Azure datacenters, such as on-premises datacenters or edge locations. Azure Stack solutions include Azure Stack Edge and Azure Local.
 
 - [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge) is an Azure-managed appliance that's ideal for hardware-accelerated machine learning workloads at edge locations. Azure Stack Edge runs on modern technology stacks such as containers, so Azure Stack Edge deployed in an edge location can serve multiple workloads. Sharing computational power among workloads reduces TCO.
 
-- [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci) is a purpose-built, hyperconverged solution with native Azure integration. Azure Stack HCI offers scalable virtualization to host IoT solutions. Virtualization brings extra benefits such as security, scalability, and flexible environments, which can reduce TCO by sharing the hardware with other workloads. Azure Stack HCI offers more compute power than Azure Stack Edge and is ideal for industry process transformation.
+- [Azure Local](https://azure.microsoft.com/products/azure-stack/hci) is a purpose-built, hyperconverged solution with native Azure integration. Azure Local offers scalable virtualization to host IoT solutions. Virtualization brings extra benefits such as security, scalability, and flexible environments, which can reduce TCO by sharing the hardware with other workloads. Azure Local offers more compute power than Azure Stack Edge and is ideal for industry process transformation.
 
 Azure Stack solutions bring Azure capability to the edge, but hardware sizing constrains the total compute power. Identify use cases and estimated compute power, and factor in sizing to match costs to performance needs.
 
