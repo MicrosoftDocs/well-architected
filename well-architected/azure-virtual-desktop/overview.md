@@ -30,7 +30,7 @@ Besides providing a way for you to stream Windows from the cloud, Azure Virtual 
 
 ##### Hybird environment with Windows 11 Enterprise Multi-Session
 
-Azure Virtual Desktop offers a hybrid solution for delivering Windows applications from an on-premises environment. By using [Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview), you can run Azure Virtual Desktop session hosts on-premises. When you run a [Windows 10 and Windows 11 Enterprise Multi-Session](/azure/virtual-desktop/windows-10-multisession-faq), you can manage your workloads anywhere.
+Azure Virtual Desktop offers a hybrid solution for delivering Windows applications from an on-premises environment. By using [Azure Local (preview)](/azure/virtual-desktop/azure-stack-hci-overview), you can run Azure Virtual Desktop session hosts on-premises. When you run a [Windows 10 and Windows 11 Enterprise Multi-Session](/azure/virtual-desktop/windows-10-multisession-faq), you can manage your workloads anywhere.
 
 ## What are the common challenges?
 
