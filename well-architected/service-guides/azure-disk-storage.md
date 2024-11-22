@@ -26,13 +26,19 @@ This article assumes that as an architect, you've reviewed the [storage options]
 > 
 > Also included are *recommendations* on the technology capabilities or deployment topologies that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Disk Storage and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environment.
 >
-> This guide focuses on decisions for Azure managed disks. However, managed disks are a critical dependency of Azure Virtual Machines (VMs), so read and implement the recommendations in [Azure Well-Architected Framework perspective on Virtual Machines and scale sets](virtual-machines.md), as well.
+> This guide focuses on decisions for Azure managed disks. However, managed disks are a critical dependency of Azure Virtual Machines (VMs), so read and implement the recommendations in [Azure Well-Architected Framework perspective on Virtual Machines and scale sets](virtual-machines.md), as well. 
+>
+>  Foundational architecture that demonstrates the key recommendations: [Azure VM baseline architecture](/azure/architecture/virtual-machines/baseline#disks)
 
 ## Reliability
 
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures.**
+
+The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+
 ### Design checklist
 
-As you make design choices for Azure Disk Storage review the [Design review checklist for Reliability](/azure/well-architected/reliability/checklist).
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features and capabilities of Azure ExpressRoute. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -48,7 +54,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Recommendations
 
-*Use these recommendations to optimize reliability:*
+Explore the following table of recommendations to optimize your Azure Disks configuration for reliability.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -59,12 +65,14 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 | If you're managing your own snapshots, [copy them across regions using the provided scripts](/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions?tabs=azure-cli). | Using the provided scripts simplifies transferring data from one region to another.<br></br>This is a good option if you can't use Azure Site Recovery, since you can still create disaster recovery backups in other regions. |
 
 ## Security
+
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Disks.
-As you make design choices for Azure Disk Storage review the [Design review checklist for Security](/azure/well-architected/security/checklist).
 
 ### Design checklist
+
+Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve your security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -86,7 +94,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Recommendations
 
-Use these recommendations to optimize security:
+Explore the following table of recommendations to optimize your Azure Disks configuration for security.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -98,13 +106,14 @@ Use these recommendations to optimize security:
 | Consider using your own encryption key ([Customer-managed key](/azure/storage/common/customer-managed-keys-overview)) to protect the data in your managed disk. | A customer-managed key provides greater flexibility and control if you need it. For example, you can store encryption keys in Azure Key Vault and automatically rotate them. |
 
 ## Cost optimization
+
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The Cost Optimization design principles provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your web apps and the environment in which they run.
-
-As you make design choices for Azure Disk Storage review the [Design review checklist for Cost Optimization](/azure/well-architected/cost-optimization/checklist).
+The Cost Optimization design principles provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your Azure Disks.
 
 ### Design checklist
+
+Start your design strategy based on the design review checklist for [Cost Optimization](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -124,7 +133,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Recommendations
 
-Use these recommendations to optimize for cost:
+Explore the following table of recommendations to optimize your Azure Disks configuration for cost optimization.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -134,12 +143,14 @@ Use these recommendations to optimize for cost:
 | Directly adjust the performance of your [Ultra Disks](/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal#adjust-the-performance-of-an-ultra-disk) and [Premium SSD v2](/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli#adjust-disk-performance) disks to fit your performance needs. | These two disk types support a set number of adjustments of the disks performance within 24 hours. This allows your workloads to be cost efficient while meeting your performance needs, since you can increase performance (increasing cost) to meet higher demand, and then lower performance (decreasing cost) when no longer needed.<br></br>For example, a transaction-intensive database may need a large amount of IOPS at a small size, or a gaming application may need a large amount of IOPS but only during peak hours.  |
 
 ## Performance efficiency
+
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
+
 The [Performance Efficiency design principles](/azure/well-architected/scalability/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-As you make design choices for Azure Disk Storage review the [Design review checklist for performance efficiency](/azure/well-architected/performance-efficiency/checklist).
-
 ### Design checklist
+
+Start your design strategy based on the design review checklist for Performance Efficiency for defining a baseline based on key performance indicators for Azure Disks.
 
 > [!div class="checklist"]
 >
@@ -153,7 +164,7 @@ As you make design choices for Azure Disk Storage review the [Design review chec
 
 ### Recommendations
 
-Use these recommendations to optimize for performance:
+Explore the following table of recommendations to optimize your Azure Disks configuration for performance efficiency.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -165,13 +176,14 @@ Use these recommendations to optimize for performance:
 | For existing deployments that are either on-premises or in another public cloud provider, use [Azure Migrate](/azure/migrate/migrate-services-overview). | Azure Migrate can evaluate your deployment for you and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
 
 ## **Operational excellence**
+
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
 The [Operational excellence design principles](../devops/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
-As you make design choices for Azure Disk Storage, review the [Design review checklist for Operational Excellence](/azure/well-architected/operational-excellence/checklist)
-
 ### Design checklist
+
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Disks.
 
 > [!div class="checklist"]
 >
@@ -183,7 +195,8 @@ As you make design choices for Azure Disk Storage, review the [Design review che
 
 ### Recommendations
 
-Use these recommendations to optimize operational excellence:
+Explore the following table of recommendations to optimize your Azure Disks configuration for Operational excellence.
+
 
 | **Recommendation** | **Benefit** |
 |---|---|
