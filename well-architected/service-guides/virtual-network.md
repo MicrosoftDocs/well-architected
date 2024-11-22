@@ -55,7 +55,15 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Set your reliability targets**. Most VNets and their subservices don't have an SLA, meaning if the VNet experiences an outage, the entire region will be affected. However, specific services like load balancers do have SLAs. It's recommended that you have a good understanding of the coverage provided around the published percentile by Azure. Keep in mind that The central IT services organization typically owns the VNet and central services. Your objective calculation should account for that dependency.  
 >
-> - **Mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Here are some typical examples: TBD
+> - **Mitigate points of failure**. Do failure mode analysis (FMA) and identify single points of failure in network connections. Here are some examples: 
+>
+>   |Failure|Mitigation|
+>   |---|---|
+>   | Public IP failure in a single availability zone. | Deploy IP resources across zones or use secondary IPs with a load balancer.|
+>   | NVA failure in a single zone. | Deploy secondary NVAs in other zones and use a load balancer to direct traffic to it.|
+>   | Latency in workloads spread across regions or zones, lowering throughput and causing timeouts.|Co-locate resources in one region or zone. Redesign the architecture to use reliability patterns, such as deployment stamps with load balancers, so that each stamp can handle the load and work together with nearby resources.|
+>   | Single-region workload failure with cold failover site.| Pre-configure network settings in the failover region, ensuring no IP address overlap.|
+>   | Single-region application failure in a VNet that communicates with database via Private Link, using cold failover site.| Replicate connections in the secondary region and peer VNets for communication.|
 >
 > - **Overprovision IP address spaces**. To ensure reliable scaling, a common strategy is to overprovision capacity to prevent IP exhaustion. However, this approach involves a tradeoff between cost and operational efficiency. Subnets should only use a portion of the VNet's address space. The goal should be have just enough extra address space in your VNet and subnets to balance reliability with cost-effectiveness.
 >
@@ -67,7 +75,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > 
 > - **Add redundancy**. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
 >
-> - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs, Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network. Some examples of simplification include: 
+> - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs. Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network. Some examples of simplification include: 
 >   - Using private DNS whenever possible and minimize the number of DNS zones. 
 >   - Simplifying routing configurations. Consider routing all traffic through the firewall, if used in the architecture.
 >
@@ -114,7 +122,7 @@ Start your design strategy based on the [**design review checklist for Security*
 |-----------|-------- |
 |[**Use the VNet encryption**](/azure/virtual-network/virtual-network-encryption-overview).| By enforcing encrypted traffic, you can protect data in transit between Azure resources that are part of the VNet. |
 |[**Enable Virtual Network Verifier**](/azure/virtual-network-manager/concept-virtual-network-verifier) in the Azure Virtual Network Manager. <br><br> Use this feature in your preproduction environment to test the connectivity between resources. This features isn't recommended in production. |You want to make sure that the Azure resources within the network are reachable and not blocked by policies.|
-|Enable [**Azure DDoS Network Protection**](/azure/ddos-protection/manage-ddos-protection) for the VNet. <br><br> Alternately, you can protect individual IP addresses through [**Azure DDoS IP Protection**](/azure/ddos-protection/manage-ddos-ip-protection-portal). |You'll be able to safeguard against DDoS attacks.|
+|Enable [**Azure DDoS Network Protection**](/azure/ddos-protection/manage-ddos-protection) for the VNet. Alternately, you can protect individual IP addresses through [**Azure DDoS IP Protection**](/azure/ddos-protection/manage-ddos-ip-protection-portal). <br><br>  [Review the security features](/azure/ddos-protection/ddos-protection-sku-comparison) offered in those tiers and choose one that fits your requirements. For example, with Network Protection, you get support by the Rapid Response Team when you are under attack, where as with IP Protection, you don't. |You'll be able to safeguard against DDoS attacks.|
 |Safeguard segments within a VNet using [**Network Security Groups (NSG)**](/azure/virtual-network/network-security-groups-overview). <br><br> Where possible, use Application Security Groups (ASG) that use tags for traffic rules. |Traffic entering and leaving the netowrk can be filtered based on IP and port ranges. <br> ASGs simplifies management by abstracting the underlying IP ranges. |
 |Use [**private endpoints**](/azure/private-link/private-endpoint-overview) to access Azure services over a private IP address within the VNet. <br><br> Another way to implement private networking is through [**service endpoints**](/azure/virtual-network/virtual-network-service-endpoints-overview). These endpoints routes traffic to a service over the Azure network backbone. Prefer private endpoint over service endpoints, if available for the service.| Private endpoints eliminate the need for public IP addresses, reducing the attack surface.|
 
@@ -160,10 +168,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|[**Use VNet peering**](/azure/virtual-network/virtual-network-peering-overview) to reduce bandwidth consumption and make network flow more efficient by bypassing controls. <br><br> Avoid excessive peering.|Resources in peered VNets are shared without additional costs. For example, you can save on Private Link costs by sharing resources across networks. Exposing a private endpoint to multiple VNets incurs no extra costs for each VNet. <br<br>Even thought it might seem like you're incurring peering cost, it's not practical to put all resources in a single VNet just to save costs. It can hinder growth. The VNet can eventually reach a point where new resources don't fit anymore.|
-|[**Delete the public IP address resources**](/azure/virtual-network/ip-services/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address), if you don't need them. <br><br> Before deletion, make sure IP address isn't linked with any IP configuration or virtual machine network interface. ||
-
-
+|[**Use VNet peering**](/azure/virtual-network/virtual-network-peering-overview) to reduce bandwidth consumption and make network flow more efficient by bypassing controls. <br><br> Avoid excessive peering.|Resources in peered VNets are shared without additional costs. For example, you can save on Private Link costs by sharing resources across networks. Exposing a private endpoint to multiple VNets incurs no extra costs for each VNet. <br><br> Even thought it might seem like you're incurring peering cost, it's not practical to put all resources in a single VNet just to save costs. It can hinder growth. The VNet can eventually reach a point where new resources don't fit anymore.|
+|[**Minimize public IP address resources**](/azure/virtual-network/ip-services/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address), if you don't need them. <br><br> Before deletion, make sure IP address isn't linked with any IP configuration or virtual machine network interface. |Maintaining public IPs can lead to increased cost in operations and the security controls.|
 
 
 ## Operational Excellence
@@ -180,17 +186,17 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Skill up on Azure networking constructs**.  When onboarding to Azure, networking teams often assume that their existing knowledge will suffice, but many aspects differ in Azure. Make sure the team understands the fundamental Azure networking concepts, DNS complexities, routing, and security capabilities. Build a taxonomy of networking services so that the team can share knowledge and have a common understanding.
 >
-> - **Formalize your network design**. Document the design and any changes, including configuration details like route tables, network security groups (NSGs), and firewall rules. Include the governance policies that are in place, such as blocking ports. Having clear documentation will make collaboration with other teams and stakeholders effective.
+> - **Formalize your network design, strive for simplicity**. Document the design and any changes, including configuration details like route tables, network security groups (NSGs), and firewall rules. Include the governance policies that are in place, such as blocking ports. Having clear documentation will make collaboration with other teams and stakeholders effective.
 >
 >   Simplified networks are easier to monitor, troubleshoot, and maintain. For example, if your topology is hub-spoke, then stick to the typical layout. Don't complicate the architecture by mixing approaches. If a mix is required, document the design with justifications.
+>
+>   Reduce complexity by using aliases instead of direct IP ranges. This will lower operational burden. 
 >
 > - **Use design patterns that optimize network traffic**. To optimize network use and configuration, implement known design patterns that minimize or optimize network traffic. Additionally, validate the network configuration during builds using security scanners to ensure everything is set up correctly.
 >
 > - **Do consistent network deployments**. Use Infrastructure as Code (IaC) for all components, including network peerings and private endpoints. Recognize that core networking components are likely to change less frequently than other components. Implement a layered deployment approach for your stack so that each layer can be managed independently. Also,  avoid combining IaC with scripting to prevent complexity.
 >
-> - **Monitor the networking stack**. Regularly use [VNet Flow Logs](/azure/network-watcher/vnet-flow-logs-overview) and [Traffic analytics](/azure/network-watcher/traffic-analytics) to verify to identify changes in demand and patterns.
->
->   Use [Connection monitor](/azure/network-watcher/connection-monitor-overview) to to analyze and identify issues like connection drops before they impact applications. Where possible set alerts to get notified about these disruptions.
+> - **Monitor the networking stack**. Continuously monitor the traffic patterns to identify anomalies, issues such as connection drops before they lead to cascading failures. Where possible set alerts to get notified about these disruptions.
 >
 >   Similar to other components in the architecture, capture all relevant metrics and logs from various networking components, such as the virtual network, subnets, network security groups, firewalls, load balancers, and others. Aggregate, visualize, and analyze them in your dashboards, creating alerts on important events.
 >
@@ -210,13 +216,14 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >  - **Prefer service names  over IP addresses**. When defining routes, use service names or aliases instead of specific IP addresses. This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules you can set by using more generic names.
 >
-> - **Right-size your subnets**. When allocating subnets, avoid making them excessively large. Managing subnets and their NSGs can add to operational burden. For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
+> - **Right-size your VNet and subnets**. Opt for fewer, larger VNets to reduce management overhead and avoid making subnets excessively large. Managing subnets and their NSGs can add to operational burden. For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Do, Don't, consider, this.. |Because it's your workload after all.|
-|Deploy [**Azure Network Manager**](/azure/virtual-network-manager/overview). |Instead of configuring each VNet individually, Azure Network Manager centrally manages connectivity based on rules. This makes networking operations more streamlined.|
-Size VNets and subnets appropriately to avoid complexity. Opt for fewer, larger VNets to reduce management overhead and smaller subnets to allow for growth. Ensure no overlapping address space with other VNets you need to communicate with, and plan the address space in advance.
+| Deploy [**Azure Network Manager**](/azure/virtual-network-manager/overview). |Instead of configuring each VNet individually, Azure Network Manager centrally manages connectivity based on rules. This makes networking operations more streamlined.|
+| Use networking monitoring tools. <br><br> - Regularly use [VNet Flow Logs](/azure/network-watcher/vnet-flow-logs-overview) and [Traffic analytics](/azure/network-watcher/traffic-analytics) to verify to identify changes in demand and patterns. <br> - Use [Connection monitor](/azure/network-watcher/connection-monitor-overview) to analyze and identify issues like connection drops before they impact applications.|You'll be able to understand how data flows through your network, identify bottlenecks, identify unusual or unauthorized access attempts. |
+|When defining routes, use [**service tags**](/azure/virtual-network/service-tags-overview) instead of specific IP addresses. <br><br> Similarly, use Application Security Groups (ASG) when defining traffic rules for NSGs.| This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules you can set by using more generic names.|
+
 
 ## Performance Efficiency
 
