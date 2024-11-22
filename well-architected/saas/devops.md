@@ -34,9 +34,9 @@ Lifecycle management is a key responsibility of a SaaS solution's control plane.
 
 - **Tenancy model**. Your approach to handling customer lifecycle events depends on your tenancy model.
 
-  - **Fully multitenant solutions with infrastructure resources**. Onboarding or offboarding a customer typically includes updating a customer list and associated data in your application's data store.
+  - **Fully multitenant solutions that have infrastructure resources**. Onboarding or offboarding a customer typically includes updating a customer list and associated data in your application's data store.
   
-  - **Dedicated resources per customer**. The tasks would typically include initiating deployments to Azure, monitoring progress, and handling deployment failures, possibly with human intervention.
+  - **Dedicated resources per customer**. The tasks typically include initiating deployments to Azure, monitoring progress, and handling deployment failures, possibly with human intervention.
   
   - **Customer-deployed resources**. You might need to interface directly with the customer's engineering team for onboarding or offboarding.
 
@@ -46,9 +46,9 @@ Lifecycle management is a key responsibility of a SaaS solution's control plane.
 
 | Recommendation | Benefit |
 |---|---|
-| Document each type of customer lifecycle event.<br><br> Make sure you capture step-by-step details of the process for each event. | You can plan how to respond to each event in your solution design. <br> Clear instructions help human operators maintain consistency and serve as the foundation for future automation.|
+| Document each type of customer lifecycle event.<br><br> Make sure you capture step-by-step details of the process for each event. | You can plan how to respond to each event in your solution design. <br><br> Clear instructions help human operators maintain consistency and serve as the foundation for future automation.|
 | Communicate the shared responsibility between you and your customer for each lifecycle event. Communicate clearly and early about what actions you expect the customers to take in order to complete a lifecycle stage. | You can reduce potential errors and customer frustration caused by miscommunication. |
-| Do capacity planning for each lifecycle event. <br><br> For example, when you onboard a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the extra load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | You can scale more easily and prevent deployment failures. |
+| Do capacity planning for each lifecycle event. For example, when you onboard a new customer, plan to deploy a new instance of your application if existing instances lack sufficient capacity to handle the extra load. <br><br> For more information, see [Billing and cost management for SaaS workloads on Azure](./billing-cost-management.md). | You can scale more easily and prevent deployment failures. |
 | Automate your lifecycle events when practical. <br><br> For low-volume or early-stage solutions, manual deployment and configuration might be sufficient. But should still use scripts, even if an engineer runs them each time a lifecycle event occurs. <br><br> As your solution matures, integrate these responsibilities into a full control plane to reduce human error and support higher scale. | You can reduce the significant risk of human error and support higher scale. |
 
 ## Plan your infrastructure management strategy
@@ -57,7 +57,7 @@ Develop a strategy for deploying, maintaining, and managing Azure infrastructure
 
 ### Design considerations
 
-- **Customer resource management**. Your tenancy model affects resource deployment in SaaS solutions. You might deploy dedicated Azure resources for each customer or share resources among a set number of customers. Alternatively, you could use a single set of shared resources and reconfigure them as you onboard new customers. Typical approaches for managing the lifecycle of the resources:
+- **Customer resource management**. Your tenancy model affects resource deployment in SaaS solutions. You might deploy dedicated Azure resources for each customer or share resources among a set number of customers. Alternatively, you could use a single set of shared resources and reconfigure them as you onboard new customers. Consider these typical approaches for managing the lifecycle of the resources:
 
   - Treat your customer list as a configuration of the resources to deploy. Use centralized deployment pipelines to deploy and configure those resources.
   
@@ -71,10 +71,10 @@ Develop a strategy for deploying, maintaining, and managing Azure infrastructure
 
 | Recommendation | Benefit |
 |---|---|
-| Build infrastructure automation by using deployment pipelines, scripts, or templates with tools that your team is already familiar with. | Using known tools reduces the risk of errors because infrastructure automation can be disruptive if the tools aren't understood.|
-| Deploy your infrastructure by using IaC when possible. | Manually maintaining infrastructure becomes riskier and more burdensome as the amount of infrastructure grows. |
+| Build infrastructure automation by using deployment pipelines, scripts, or templates with tools that your team is already familiar with. | Familiar tools reduce the risk of errors because infrastructure automation can be disruptive if the tools aren't understood.|
+| Deploy your infrastructure by using IaC when possible. | IaC helps reduce manual maintenance, which becomes riskier and more burdensome as the amount of infrastructure grows. |
 | Separate core infrastructure from customer-level infrastructure. | Different types of infrastructure have distinct lifecycles and management activities. By separating them, you can manage each set independently on its own schedule. |
-| Use Azure Managed Applications to deploy and manage customer-deployed resources. | Azure Managed Applications provide a range of capabilities that enable you to deploy and manage resources within a customer's Azure subscription. |
+| Use Azure Managed Applications to deploy and manage customer-deployed resources. | Azure Managed Applications provides a range of capabilities that you can use to deploy and manage resources within a customer's Azure subscription. |
 
 ## Plan for application deployments
 
@@ -82,11 +82,10 @@ To enhance functionality, regularly update application code and configuration. C
 
 ### Design considerations
 
-- **Standardize tooling and processes.** Industry-proven DevOps tooling helps ensure consistency across functions and maturity in processes for managing your application deployments. In most situations, developing your own tools is considered an antipattern.
+- **Standardize tooling and processes.** Industry-proven DevOps tooling helps ensure consistency across functions and maturity in processes for managing your application deployments. In most situations, developing your own tools is considered an antipattern. For more information, see [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
 
-    > Refer to [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
 
-  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and cost.** Familiar DevOps tools can be cost-efficient in terms of money and skills. However, it adds the operational burden of managing each tool separately. It's important to remain open to new technological innovations that could benefit your workload.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and cost.** Familiar DevOps tools can be cost-efficient in terms of money and skills. However, they add the operational burden of managing each tool separately. It's important to remain open to new technological innovations that could benefit your workload.
 
 - **Deploy updates progressively.** Roll out updates to customers in phases. Divide users into logical groups and deploy changes to one group at a time. Apply the same rigor to configuration changes because they can alter code behavior and cause outages. Follow a deployment process for these changes.
 
@@ -97,7 +96,7 @@ To enhance functionality, regularly update application code and configuration. C
 - **Integrate testing.** Integrate testing into your deployment process by running:
 
   - Unit tests during code build.
-  - Integration tests post-deployment.
+  - Integration tests after deployment.
   - Regular performance tests.
   - Regular security and penetration tests.
 
@@ -111,14 +110,14 @@ Decide on a plan of action if any tests fail at any stage.
 
 | Recommendation | Benefit |
 |---|---|
-| Use established, industry-proven DevOps tooling and processes to manage your application deployments. In most situations, developing your own tools is considered an antipattern. <br><br> For more information, see [OE:03 Software development practices](/azure/well-architected/operational-excellence/formalize-development-practices#establish-collaboration-and-communication-standards). | This strategy can help ensure that your engineering team deploys effectively by not having to learn custom built tooling. |
+| Use established, industry-proven DevOps tooling and processes to manage your application deployments. In most situations, developing your own tools is considered an antipattern. <br><br> For more information, see [OE:03 Software development practices](/azure/well-architected/operational-excellence/formalize-development-practices#establish-collaboration-and-communication-standards). | This strategy can help ensure that your engineering team deploys applications effectively by not having to learn custom-built tooling. |
 | Proactively notify customers of any upcoming or completed deployments. | This strategy can help ensure that proper expectations are set with your customers about upcoming changes to your application. |
-| Adopt safe deployment practices that deploy updates to customer groups using strategies like progressive exposure, and health models. Start with less sensitive or early adopter customers before you move to more important ones. <br> For more information, see [Recommendations for safe deployment practices](/azure/well-architected/operational-excellence/safe-deployments). | This strategy can help you identify problems before they affect all customers. |
-| Treat configuration as code. | You can reduce the likelihood of downtime and adopt a consistent process for production changes. This approach enables centralized operational responsibilities, such as testing changes and progressively rolling out updates to configuration and code. |
-| Define a change management process and communicate a version update policy to make sure that customers know who triggers updates, their frequency, and conditions. <br><br> If customers are allowed to choose their application version, set clear guidelines for how to deprecate old versions. Minimize the number of application versions that run in production. | Maintaining older versions causes operational inefficiency. Provide the necessary control for your customers and avoid overburdening your team by setting clear expectations and policies. |
+| Adopt safe deployment practices that deploy updates to customer groups via strategies like progressive exposure and health models. Start with less-sensitive or early-adopter customers before you move to more important ones. <br> For more information, see [Recommendations for safe deployment practices](/azure/well-architected/operational-excellence/safe-deployments). | This strategy can help you identify problems before they affect all customers. |
+| Treat configuration as code. | You can reduce the likelihood of downtime and adopt a consistent process for production changes. This approach centralizes operational responsibilities, such as testing changes and progressively rolling out updates to configuration and code. |
+| Define a change management process and communicate a version update policy to make sure that customers know who triggers updates, their frequency, and conditions. <br><br> If customers can choose their application version, set clear guidelines for how to deprecate old versions. Minimize the number of application versions that run in production. | Maintaining older versions causes operational inefficiency. Provide the necessary control for your customers and avoid overburdening your team by setting clear expectations and policies. |
 | Avoid customizing applications for a single customer. <br><br> To support different customer needs, you can either create various tiers of your solution or use feature flags to enable specific functionalities for certain users. | Avoid ambiguity about which features are deployed into which version, and reduce your maintenance burden.  |
 | Have a rollback plan for failed deployments, including criteria for triggering and necessary approvals.|Rollback plans help ensure that you can recover from deployment mistakes even in unforeseen circumstances.|
-| Test your application regularly and at multiple stages in the software development process. Adopt a "shift-left" mindset and catch bugs and deviations early in the lifecycle. | Help prevent critical errors from affecting your customers. |
+| Test your application regularly and at multiple stages in the software development process. Adopt a *shift-left* mindset and catch bugs and deviations early in the lifecycle. | Help prevent critical errors from affecting your customers. |
 
 ## Other resources
 
