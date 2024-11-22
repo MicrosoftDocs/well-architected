@@ -19,9 +19,10 @@ Azure managed disks are block-level storage volumes managed by Azure and used wi
 
 This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options), and have chosen Azure Disk Storage as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-**How to use this guide**
-
 > [!IMPORTANT]
+>
+> **How to use this guide**
+> 
 > Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 > 
 > Also included are *recommendations* on the technology capabilities or deployment topologies that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Disk Storage and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environment.
@@ -142,6 +143,34 @@ Explore the following table of recommendations to optimize your Azure Disks conf
 | For existing disks, assess whether the features they offer can improve performance without switching to another disk size or type. Features, like [disk bursting](/azure/virtual-machines/disk-bursting?branch=main) or changing [performance tiers](/azure/virtual-machines/disks-change-performance?branch=main), could improve performance to levels that meet your needs. | Depending on your environment and needs, enabling features to improve your disks performance can be more cost effective than switching to a different disk type. These features incur costs, but may incur less costs. |
 | Directly adjust the performance of your [Ultra Disks](/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal#adjust-the-performance-of-an-ultra-disk) and [Premium SSD v2](/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli#adjust-disk-performance) disks to fit your performance needs. | These two disk types support a set number of adjustments of the disks performance within 24 hours. This allows your workloads to be cost efficient while meeting your performance needs, since you can increase performance (increasing cost) to meet higher demand, and then lower performance (decreasing cost) when no longer needed.<br></br>For example, a transaction-intensive database may need a large amount of IOPS at a small size, or a gaming application may need a large amount of IOPS but only during peak hours.  |
 
+## **Operational excellence**
+
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
+
+The [Operational excellence design principles](../devops/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
+
+### Design checklist
+
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Disks.
+
+> [!div class="checklist"]
+>
+> - **Create maintenance and emergency recovery plans**: Evaluate data protection features, backup and restore operations. Select backup solutions that allow you to recover from regional disasters.
+>
+> - **Create internal documentation**: Document your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Including attaching a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk?tabs=ubuntu) VMs or expanding a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu) VMs.
+>
+> - **Detect threats**: Enable [Microsoft Defender for Cloud](/azure/storage/common/azure-defender-storage-configure). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
+
+### Recommendations
+
+Explore the following table of recommendations to optimize your Azure Disks configuration for Operational excellence.
+
+
+| **Recommendation** | **Benefit** |
+|---|---|
+| Use Azure Monitor to [analyze metrics](/azure/virtual-machines/disks-metrics) and create alerts. | Azure Monitor provides insight in how your disks and VMs perform and you should use it to ensure your performance remains optimal. |
+| Review the available [backup options for managed disks](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks) | Knowing the available options allows you to select the configuration that best suits your needs. |
+
 ## Performance efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
@@ -175,34 +204,6 @@ Explore the following table of recommendations to optimize your Azure Disks conf
 | When uploading a VHD, use the [Add-AzVHD PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The [Add-AzVHD PowerShell command](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) automates most of the upload process for you, greatly streamlining it. |
 | For existing deployments that are either on-premises or in another public cloud provider, use [Azure Migrate](/azure/migrate/migrate-services-overview). | Azure Migrate can evaluate your deployment for you and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
 
-## **Operational excellence**
-
-Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
-
-The [Operational excellence design principles](../devops/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
-
-### Design checklist
-
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Disks.
-
-> [!div class="checklist"]
->
-> - **Create maintenance and emergency recovery plans**: Evaluate data protection features, backup and restore operations. Select backup solutions that allow you to recover from regional disasters.
->
-> - **Create internal documentation**: Document your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Including attaching a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk?tabs=ubuntu) VMs or expanding a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu) VMs.
->
-> - **Detect threats**: Enable [Microsoft Defender for Cloud](/azure/storage/common/azure-defender-storage-configure). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
-
-### Recommendations
-
-Explore the following table of recommendations to optimize your Azure Disks configuration for Operational excellence.
-
-
-| **Recommendation** | **Benefit** |
-|---|---|
-| Use Azure Monitor to [analyze metrics](/azure/virtual-machines/disks-metrics) and create alerts. | Azure Monitor provides insight in how your disks and VMs perform and you should use it to ensure your performance remains optimal. |
-| Review the available [backup options for managed disks](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks) | Knowing the available options allows you to select the configuration that best suits your needs. |
-
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to Azure Disk Storage and its dependencies. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check if:
@@ -217,6 +218,7 @@ Azure provides an extensive set of built-in policies related to Azure Disk Stora
 - Autorotate for customer-managed keys
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Azure Compute](/azure/governance/policy/samples/built-in-policies) and other policies that might impact the security of the Azure Disk Storage.
+
 
 ## Azure Advisor recommendations
 
