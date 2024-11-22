@@ -270,8 +270,8 @@ productDirectory:
       azureCategories:
         - databases
     # Card
-    - title: Azure Stack HCI
-      summary: Use Azure Stack HCI to create and manage virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
+    - title: Azure Local
+      summary: Use Azure Local to create and manage virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
       imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
       url: azure-stack-hci.md
       azureCategories:
