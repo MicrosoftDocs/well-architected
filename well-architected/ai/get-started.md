@@ -19,15 +19,15 @@ These articles are meant for **workload owners** and **technical stakeholders** 
 >
 > Also, certain AI workloads aren't in scope, such as:
 >
-> - Workloads that are realized through low-code and no-code offerings such as Microsoft Copilot Studio.
-> - Workloads that require a high performance computing.
+> - Workloads that are realized through low-code and no-code offerings, such as Microsoft Copilot Studio.
+> - Workloads that require high-performance computing.
 > - Workloads that don't implement generative or discriminative AI use cases.
 
 ## What is an AI workload?
 
-In the context of WAF, an AI workload meets the needs of predictive, discriminatory, or generative tasks. It focuses on ethical functionality, adapting to fast-evolving AI technologies, and staying relevant and explainable. The [WAF pillars](../pillars.md) should be applied at every decision point to ensure the system is reliable, secure, efficient, and cost-effective.
+In the context of WAF, an AI workload meets the needs of predictive, discriminatory, or generative tasks. It focuses on ethical functionality, adapting to fast-evolving AI technologies and staying relevant and explainable. The [WAF pillars](../pillars.md) should be applied at every decision point to ensure the system is reliable, secure, efficient, and cost-effective.
 
-AI workloads are different from traditional ones because they replace deterministic functionality in parts of the workload with non-deterministic behavior that solves for situations where fixed outcomes are impractical. Instead, they combine code and data into an entity, or a _model_, enabling unique experiences that traditional systems can't provide.
+AI workloads are different from traditional ones because they replace deterministic functionality in parts of the workload with non-deterministic behavior that solves situations where fixed outcomes are impractical. Instead, they combine code and data into an entity or a _model_, enabling unique experiences that traditional systems can't provide.
 
 Before you begin your design strategies, consider these key points first.
 
@@ -35,7 +35,7 @@ Before you begin your design strategies, consider these key points first.
 
 - **Generative AI** uses machine learning to autonomously create new content. It includes language models that can be customized with user data or used as services like Azure OpenAI. For example, GPT, a type of language model, specializes in mimicking human conversational language and is ideal for chat and natural language experiences.
 
-  Use cases: Generative AI can produce articles, stories, art, generate synthetic data to balance datasets, and make chatbots more human-like.
+  Use cases: Generative AI can produce articles, stories, and art, generate synthetic data to balance datasets, and make chatbots more human-like.
   
 - **Discriminative AI** uses explicit programming to perform specific tasks based on rules and algorithms. It can be divided into:
 
@@ -65,7 +65,7 @@ When choosing between a custom model, a prebuilt model, or a service, consider t
 
 - **Performance**. Prebuilt services offer optimized infrastructure and scalability. They're ideal for low-latency or high-scalability needs.
 
-- **Expertise**. Custom models require a skilled team. Prebuilt models can be quicker to deploy and easier to use if expertise is limited.
+- **Expertise**. Custom models require a skilled team. Prebuilt models can be quicker and easier to deploy if expertise is limited.
 
 > [!IMPORTANT]
 >
@@ -83,9 +83,9 @@ When choosing between a custom model, a prebuilt model, or a service, consider t
 
 - **Skill challenges**. New AI workloads may need specialized roles and new operations processes that require extensive training.
 
-- **Pace of AI innovation**. Adopting the latest technologies can be tempting to stay at the cutting edge. Evaluate new technologies carefully to ensure they improve user experience and don't just add complexity for the sake of being up-to-date.
+- **Pace of AI innovation**. While it can be tempting to adopt the latest technologies to stay on the cutting edge, evaluate new technologies carefully to ensure they improve user experience and don't just add complexity for the sake of being up-to-date.
 
-- **Ethical requirements**. You need to clearly determine whether your use case is an ethical target for AI. Maintaining ethical standards is necessary throughout the planning and implementation phases to ensure that you're building a responsible system.
+- **Ethical requirements**. You need to determine whether your use case is an ethical target for AI. Maintaining ethical standards is necessary throughout the planning and implementation phases to ensure that you're building a responsible system.
 
 ## How to use this guidance?
 
