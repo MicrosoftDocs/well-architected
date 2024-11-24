@@ -220,26 +220,22 @@ Azure SQL Database includes the following design considerations:
 **Have you configured Azure SQL Database with operational excellence in mind?**
 ***
 
+[🚧: Validate following checklist recommendations.  (Currently, it's a copy-and-paste from Reliability.)]
+
 > [!div class="checklist"]
-> - Use Active Geo-Replication to create a readable secondary in a different region.
-> - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.
-> - Use a Zone-Redundant database.
-> - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
-> - Implement retry logic.
-> - Back up your keys.
+> - Select the right service tier to meet availability and DR goals.
+> - Use sharding to distribute data and processes across many identically structured databases.
+> - Review SQL DB SLAs for availability, RTO and RPO.
+> - Define an application performance SLA and monitor it with alerts.
+> - Ensure geo-redundancy is enabled for backups.
+> - Use the monitoring solution previously defined to set alerts on key query performance metrics.
+> - Understand planned maintenance events and your options to specify maintenance windows.
 
 ### Configuration recommendations
 
 Explore the following table of recommendations to optimize your Azure SQL Database configuration for operational excellence:
 
-|Recommendation|Description|
-|--------------|-----------|
-|Use Active Geo-Replication to create a readable secondary in a different region.|If your primary database fails, perform a manual failover to the secondary database. Until you fail over, the secondary database remains read-only. [Active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) enables you to create readable replicas and manually failover to any replica if there is a datacenter outage or application upgrade. Up to four secondaries are supported in the same or different regions, and the secondaries can also be used for read-only access queries. The failover must be initiated manually by the application or the user. After failover, the new primary has a different connection end point.|
-|Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.|You can use the readable secondary databases to offload read-only query workloads. Because autofailover groups involve multiple databases, these databases must be configured on the primary server. Autofailover groups support replication of all databases in the group to only one secondary server or instance in a different region. Learn more about [Auto-Failover Groups](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell) and [DR design](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery).|
-|Use a Zone-Redundant database.|By default, the cluster of nodes for the premium availability model is created in the same datacenter. With the introduction of Azure Availability Zones, SQL Database can place different replicas of the Business Critical database to different availability zones in the same region. To eliminate a single point of failure, the control ring is also duplicated across multiple zones as three gateway rings (GW). The routing to a specific gateway ring is controlled by [Azure Traffic Manager (ATM)](/azure/traffic-manager/traffic-manager-overview). Because the zone redundant configuration in the Premium or Business Critical service tiers doesn't create extra database redundancy, you can enable it at no extra cost. Learn more about [Zone-redundant databases](/azure/azure-sql/database/high-availability-sla).|
-|Monitor your Azure SQL Database in near-real time to detect reliability incidents.|Use one of the available solutions to monitor SQL DB to detect potential reliability incidents early and make your databases more reliable. Choose a near real-time monitoring solution to quickly react to incidents. Reference [Azure SQL Analytics](/azure/azure-monitor/insights/azure-sql#analyze-data-and-create-alerts) for more information.|
-|Implement Retry Logic.|Although Azure SQL Database is resilient when it concerns transitive infrastructure failures, these failures might affect your connectivity. When a transient error occurs while working with SQL Database, make sure your code can retry the call. For more information, reference [how to implement retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) and [Configurable retry logic in SqlClient introduction](/sql/connect/ado-net/configurable-retry-logic-sqlclient-introduction).|
-|Back up your keys.|If you're not [using encryption keys in Azure Key Vault to protect your data](/azure/azure-sql/database/always-encrypted-azure-key-vault-configure?tabs=azure-powershell), back up your keys.|
+[🚧: Add OpEx-specific recommendations here. (Currently, it's a copy-and-paste from Reliability.)]
 
 
 ## Azure SQL Database and performance efficiency
