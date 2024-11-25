@@ -32,7 +32,12 @@ This article assumes that as an architect, you've reviewed the [storage options]
 >  Foundational architecture that demonstrates the key recommendations: [Azure VM baseline architecture](/azure/architecture/virtual-machines/baseline#disks)
 
 ## Reliability
+### Technology scope
+This review focuses on the interrelated decisions for the following Azure resources:
 
+- App Service plans
+
+Managed disks are a critical dependency of Azure Virtual Machines (VMs), so read and implement the recommendations in [Azure Well-Architected Framework perspective on Virtual Machines and scale sets](virtual-machines.md), as well.
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures.**
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
@@ -45,17 +50,16 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Review the best practices for achieving high availability with managed disks**: [Optimize your application for high availability](/azure/virtual-machines/disks-high-availability) by considering these recommendations based on the configuration of your managed disks and virtual machines.
 >
-> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). The Virtual Machine SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks.
+> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). The Virtual Machine SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. Review [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics) for guidance about calculating your reliability targets.
 >
 > - **Create a recovery plan**: [Evaluate data protection features](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. Using these backup solutions increases your costs.
 >
-> - **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity.
+> - **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity. Review [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) for guidance on how to integrate these metrics into the overall workload health monitoring strategy.
 >
 > - **Use failure mode analysis**: Minimize points of failure by considering internal dependencies such as the availability of virtual networks or Azure Key Vault.
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Disks configuration for reliability.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -95,7 +99,6 @@ Start your design strategy based on the [**design review checklist for Security*
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Disks configuration for security.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -134,7 +137,6 @@ Start your design strategy based on the design review checklist for [Cost Optimi
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Disks configuration for cost optimization.
 
 | **Recommendation** | **Benefit** |
 |---|---|
@@ -163,7 +165,6 @@ Start your design strategy based on the [design review checklist for Operational
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Disks configuration for Operational excellence.
 
 
 | **Recommendation** | **Benefit** |
@@ -193,7 +194,6 @@ Start your design strategy based on the design review checklist for Performance 
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Disks configuration for performance efficiency.
 
 | **Recommendation** | **Benefit** |
 |---|---|
