@@ -153,8 +153,6 @@ Start your design strategy based on the [**design review checklist for Security*
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your ExpressRoute configuration for security.
-
 | Recommendation | Benefit |
 |--------|----|
 | Leverage [Azure Security Baseline for ExpressRoute](/security/benchmark/azure/baselines/expressroute-security-baseline). This security baseline applies guidance from the Microsoft Cloud Security Benchmark version 1.0 to ExpressRoute. | The content is organized by the security controls defined in the benchmark and includes related guidance specific to ExpressRoute. |
@@ -187,8 +185,6 @@ Start your design strategy based on the design review checklist for [Cost Optimi
 > - **Deprovision and delete unused ExpressRoute circuits:** Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*.
 
 ### Recommendations
-
-Explore the following table of recommendations to optimize your ExpressRoute configuration for Cost optimization.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -224,8 +220,6 @@ Start your design strategy based on the [design review checklist for Operational
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your ExpressRoute configuration for Operational excellence.
-
 | Recommendation | Benefit |
 |--------|----|
 | Choose the [closest peering locations](/azure/expressroute/expressroute-locations-providers) to your on-premises network to reduce latency and costs.  | By choosing the closest peering location to your on-premises network, you can reduce latency and costs, ensuring optimal performance and cost-effectiveness. |
@@ -256,8 +250,6 @@ Plan for scaling the network to meet the demands of your workloads. Failure to p
 > - **Monitor the performance of ExpressRoute resources:**  Collect and analyze the performance telemetry in accordance with the [WAF Recommendations for collecting performance data](/azure/well-architected/performance-efficiency/collect-performance-data#key-design-strategies). Validate that it meets your performance targets and set up alerts to proactively notify you when a certain threshold is met.
 
 ### Recommendations
-
-Explore the following table of recommendations to optimize your ExpressRoute configuration for performance efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
