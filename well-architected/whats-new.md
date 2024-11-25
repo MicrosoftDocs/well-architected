@@ -11,6 +11,29 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## October 2024
+
+### Updated articles
+
+- [Architecture decision record (ADR)](./architect-role/architecture-decision-record.md): We refreshed the guidance on what an ADR should include, including consistent elements like problem statements, options considered, and decision outcomes. Explore updates including a new section on suggested characteristics of an individual record with guidelines for maintaining consistent and useful ADRs
+
+- [Azure Well-Architected Framework perspective on Azure Application Gateway v2](./service-guides/azure-application-gateway.md): We made significant updates to the guidance about Azure Application Gateway v2. Find important notes and links to additional resources for Azure Application Gateway configurations. Explore enhanced content with specific design principles, strategies, and recommendations for achieving architectural goals.
+
+- [Azure Well-Architected Framework perspective on Azure ExpressRoute](./service-guides/azure-expressroute.md): We made significant updates to provide more comprehensive and structured guidance on Azure ExpressRoute, enhancing and expanding upon best practices, design principles, and optimization strategies. The detailed checklists and recommendations help in better planning and implementation, ensuring improved reliability, security, and cost efficiency.
+
+We reviewed all tradeoff and design pattern articles for alignment with the content structure and to ensure that the guidance is up to date. Tradeoffs are an essential part of the Well-Architected Framework, as they help you understand the implications of design decisions on other pillars. Design patterns are reusable solutions to common problems that you might encounter when designing a workload. They help you understand how to design your workload to meet the goals of the Well-Architected Framework. Check out the updated articles:
+
+- [Cloud design patterns that support cost optimization](./cost-optimization/design-patterns.md)
+- [Cost Optimization tradeoffs](./cost-optimization/tradeoffs.md)
+- [Cloud design patterns that support reliability](./reliability/design-patterns.md)
+- [Reliability tradeoffs](./reliability/tradeoffs.md)
+- [Cloud design patterns that support security](./security/design-patterns.md)
+- [Security tradeoffs](./security/tradeoffs.md)
+- [Cloud design patterns that support operational excellence](./operational-excellence/design-patterns.md)
+- [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
+- [Cloud design patterns that support performance efficiency](./performance-efficiency/design-patterns.md)
+- [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
+
 ## September 2024
 
 ### New articles
@@ -34,7 +57,7 @@ We added guidance about ensuring that the VMs in your backup environment run on 
 
 ### Hybrid retirement
 
-- This month we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
+- This month, we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
 
 ## July 2024
 
@@ -230,8 +253,3 @@ In addition to the changes in structure and consistency, you should note some th
 - The Well-Architected Framework provides recommendations to **help you make informed and justified decisions**. The Well-Architected Framework doesn't know your business requirements or constraints, so it can't make decisions for you.
 
 - The [Well-Architected Framework workloads](./workloads.md) and the [Well-Architected Framework service guides](./service-guides/index.yml) didn't undergo significant changes with this refresh. New workloads and service guides are ongoing additions to the Well-Architected Framework. Keep checking this page for updates.
-
-## October 2023
-
-- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md)
-- Updated service guide: [Azure Well-Architected Framework review - Azure Firewall](./service-guides/azure-firewall.md)
