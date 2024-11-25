@@ -1,43 +1,44 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Monitor Application Insights
-description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Application Insights.
+title: Well-Architected Framework Perspective on Azure Monitor Application Insights
+description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Application Insights.
 author: kainawroth
 ms.author: v-nawrothkai
-ms.date: 11/20/2024
+ms.date: 11/26/2024
 ms.topic: conceptual
 ms.subservice: waf-service-guide
+ms.subservice: well-architected
 products:
   - azure-application-insights
   - azure-log-analytics
   - azure-monitor
-categories:
+azure.category:
   - devops
   - management-and-governance
 ---
 
-# Azure Well-Architected Framework perspective on Application Insights
+# Well-Architected Framework perspective on Application Insights
 
 ## Overview
 
-Application Insights is an extensible Application Performance Management (APM) service to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help diagnose issues and understand how users interact with your application. This guide architectural provides best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework](/azure/architecture/framework/).
+Application Insights is an extensible application performance management service that you can use to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help diagnose problems and understand how users interact with your application. This architecture guide provides best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework pillars](/azure/architecture/framework/).
 
 > [!IMPORTANT]
 >
 > **How to use this guide**
 >
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
+> Each section has a *design checklist* that presents architectural areas of concern and design strategies that are localized to the technology scope.
 >
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Application Insights and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
+> Also included are recommendations on the technology capabilities that can help materialize those strategies. The recommendations aren't an exhaustive list of all configurations that are available for Application Insights and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 
 ### Technology scope
 
 This guide focuses on the interrelated decisions for the following Azure resources:
 
-* Application Insights
-* Log Analytics workspaces
+- Application Insights
+- Log Analytics workspaces
 
 > [!NOTE]
-> Application Insights stores and exposes data in a Log Analytics workspace. Keep Log Analytics as a critical dependency on Application Insights when evaluating your metrics. For more information, see [Azure Well-Architected Framework perspective on Log Analytics](azure-log-analytics.md).
+> Application Insights stores and exposes data in a Log Analytics workspace. When you evaluate your metrics, keep Log Analytics as a critical dependency on Application Insights. For more information, see [Well-Architected Framework perspective on Log Analytics](azure-log-analytics.md).
 
 ## Reliability
 
@@ -47,44 +48,44 @@ The [**Reliability design principles**](/azure/well-architected/resiliency/princ
 
 ### Design checklist for Reliability
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the dependency on Log Analytics. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements and keep in mind the dependency on Log Analytics. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> * **Align your application monitoring design with business objectives and avoid unnecessary complexity.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them.
+> - **Align your application monitoring design with business objectives and avoid unnecessary complexity.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) that you need and where to deploy them.
 >
-> * **Configure sampling based on the criticality of the data.** Identify the user and system flows of your workload, determine the events you want to gather, and configure sampling accordingly.
->     * For manually instrumented applications, see [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-configuration?tabs=aspnetcore#enable-sampling) or [Application Insights SDKs (Classic API)](/azure/azure-monitor/app/sampling-classic-api).
->     * For autoinstrumentation, sampling is covered in environment-specific articles, for example [Configure sampling in Azure Functions](/azure/azure-functions/configure-monitoring).
+> - **Configure sampling based on the criticality of the data.** Identify the user and system flows of your workload, determine the events that you want to gather, and configure sampling accordingly.
+>     - For manually instrumented applications, see [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-configuration?tabs=aspnetcore#enable-sampling) or [Application Insights SDKs (Classic API)](/azure/azure-monitor/app/sampling-classic-api).
+>     - For autoinstrumentation, sampling is described in environment-specific articles. For more information, see [Configure sampling in Azure Functions](/azure/azure-functions/configure-monitoring).
 >
-> * **Create a comprehensive resiliency plan.**
->     * Start by conducting a Failure Mode Analysis (FMA) to identify potential scenarios where Application Insights might fail or become unreachable. This could be due to various reasons such as network issues, authentication problems, or service disruptions.
->     * Determine how your workload should behave if Application Insights is unreachable at boot or during runtime based on the criticality of application monitoring to your business goals. Define and document the expected behavior of your workload.
->     * Finally, test your resiliency plan. For example, you can validate network failures using an NSG (Network Security Group) rule, and authentication failures by changing the connection string.
+> - **Create a comprehensive resiliency plan.**
+>     1. Start by conducting a failure mode analysis to identify potential scenarios when Application Insights might fail or become unreachable. These reasons can include network problems, authentication problems, or service disruptions.
+>     1. Determine how your workload should behave if Application Insights is unreachable at boot or during runtime based on the criticality of application monitoring to your business goals. Define and document the expected behavior of your workload.
+>     1. Test your resiliency plan. For example, you can validate network failures by using a network security group rule, and authenticate failures by changing the connection string.
 >
-> * **Plan for workspace resiliency and recovery by defining targets for your data collection components.**
->     * Assess the criticality of the data you're collecting and determine if it needs to be recoverable.
->     * Review service limits for [Application Insights](/azure/azure-monitor/service-limits#application-insights) and [Log Analytics workspace](/azure/azure-monitor/service-limits#log-analytics-workspaces) to understand restrictions on data collection and retention, and other aspects of the service.
->     * Where the availability of Application Insights telemetry within the retention period defined is business critical, consider moving to a [dedicated cluster](/azure/azure-monitor/logs/logs-dedicated-clusters) to take advantage of workspace resilience.
->     * Use [diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings) to export platform logs and metrics to the destination of your choice (for example, a storage account) for backup and recovery purposes.
+> - **Plan for workspace resiliency and recovery by defining targets for your data collection components.**
+>     1. Assess the criticality of the data that you collect and determine if it needs to be recoverable.
+>     1. Review service limits for [Application Insights](/azure/azure-monitor/service-limits#application-insights) and [Log Analytics workspace](/azure/azure-monitor/service-limits#log-analytics-workspaces) to understand restrictions on data collection and retention, and other aspects of the service.
+>     1. Consider moving to a [dedicated cluster](/azure/azure-monitor/logs/logs-dedicated-clusters) to take advantage of workspace resilience where the availability of Application Insights telemetry within the retention period defined is business critical.
+>     1. Use [diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings) to export platform logs and metrics to the destination of your choice (for example, a storage account) for backup and recovery purposes.
 >
-> * **Implement a timely and reliable scaling strategy to plan for data ingestion growth.** Monitor and adjust limits on sampling and data ingestion as traffic grows to prevent data loss due to sampling or exceeding the [daily cap](/azure/azure-monitor/logs/daily-cap). This ensures that your data ingestion process scales effectively with increasing traffic.
+> - **Implement a timely and reliable scaling strategy to plan for data ingestion growth.** Monitor and adjust limits on sampling and data ingestion as traffic grows to prevent data loss because of sampling or exceeding the [daily cap](/azure/azure-monitor/logs/daily-cap). This helps ensure that your data ingestion process scales effectively with traffic increases.
 >
-> * **Ensure quick recovery of your application monitoring solution in case of service failure.** Adopt infrastructure as code and use [Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to (re)create your user experience in Application Insights, including [alerts](/azure/azure-monitor/app/availability?tabs=standard#availability-alerts), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard), and [queries](/azure/azure-monitor/logs/queries). This approach ensures that all critical components are quickly restored, minimizing downtime and maintaining service reliability.
+> - **Ensure quick recovery of your application monitoring solution in case of service failure.** Adopt infrastructure as code and use [Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create or recreate your user experience in Application Insights, including [alerts](/azure/azure-monitor/app/availability?tabs=standard#availability-alerts), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard), and [queries](/azure/azure-monitor/logs/queries). This approach helps ensure that all critical components are quickly restored, which minimizes downtime and maintains service reliability.
 
-### Recommendations for Reliability
+#### Recommendations
 
-| Recommendation | Benefits |
+| Recommendation | Benefit |
 |----------------|----------|
-| Use one Application Insights resource per workload per environment, such as one for development, one for staging, and one for production. | Using multiple Application Insights resources prevents mixing telemetry from different application versions and ensures a misconfiguration of one resource doesn't impact the logging for another environment. |
-| Deploy your Application Insights resource in the same region as the underlying [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). | Since Application Insights requires Log Analytics to function properly, having both resources in different regions doubles the chance for a regional failure to cause problems. |
-| Implement a resilient workspace design by using [best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs). | Using best practices helps with continuous and robust monitoring by minimizing disruptions. |
+| Use one Application Insights resource per workload per environment, such as one for development, one for staging, and one for production. | Multiple Application Insights resources prevents mixing telemetry from different application versions and helps ensure that a misconfiguration of one resource doesn't affect the logging for another environment. |
+| Deploy your Application Insights resource in the same region as the underlying [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). | Because Application Insights requires Log Analytics to function properly, having both resources in different regions doubles the chance for a regional failure to cause problems. |
+| Implement a resilient workspace design by using [best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs). | Best practices help ensure continuous and robust monitoring by minimizing disruptions. |
 
 ## Security
 
-The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload. It's one of the most important aspects of any architecture. Azure Monitor provides features to employ both the principle of least privilege and defense in depth.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload. Security is one of the most important aspects of any architecture. Azure Monitor provides features to employ both the principle of least privilege and defense in depth.
 
-The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights. Use the following information to maximize the security of Application Insights and ensure that only authorized users access collected data.
+The **[Security design principles](/azure/well-architected/security/security-principles)** provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights. Use the following information to maximize the security of Application Insights and help ensure that only authorized users access collected data.
 
 ### Design checklist for Security
 
@@ -92,29 +93,29 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> * **Review the Azure Monitor [security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline).** It provides guidance on security best practices to secure your cloud solutions on Azure, including Application Insights.
+> - **Review the [Azure Monitor security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline).** It provides guidance on security best practices to help secure your cloud solutions on Azure, including Application Insights.
 >
-> * **Ensure your application monitoring solution is secure by keeping Application Insights instrumentation up-to-date.** Follow our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) and update Application Insights SDKs (Classic API) at least once a year. It's recommended to follow similar practices for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable).
+> - **Ensure that your application monitoring solution is secure by keeping Application Insights instrumentation up to date.** Follow our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) and update Application Insights SDKs (Classic API) at least once a year. We recommend that you follow similar practices for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable).
 >
-> * **Define a strategy for [handling personal data in Application Insights](/azure/azure-monitor/logs/personal-data-mgmt).** To ensure ongoing compliance, regularly verify that the collection and handling of data, including IP addresses and personal data, [comply with relevant regulations](/azure/compliance/) such as GDPR.
+> - **Define a strategy for [handling personal data in Application Insights](/azure/azure-monitor/logs/personal-data-mgmt).** To ensure ongoing compliance, regularly verify that the collection and handling of data, including IP addresses and personal data, [complies with relevant regulations](/azure/compliance/) such as GDPR.
 >
-> * **Create intentional segmentation in your application monitoring design.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
+> - **Create intentional segmentation in your application monitoring design.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) that you need.
 >
-> * **Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal).** By default, data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to stored data.
+> - **Use [Azure Monitor customer-managed key](/azure/azure-monitor/logs/customer-managed-keys?tabs=portal).** By default, data in Azure Monitor is encrypted with Microsoft-managed keys. You can use your own encryption key to protect the data and saved queries in your workspaces. Customer-managed keys in Azure Monitor give you greater flexibility to manage access controls to stored data.
 >
-> * **Control network traffic.** Consider private connectivity for accessing Azure services, effectively isolating your traffic from the public internet. Data flows for private networking include both data ingestion and query operations, each targeting distinct endpoints. These endpoints can be managed independently, allowing you to configure private ingestion while maintaining public query access, or vice versa. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries.
+> - **Control network traffic.** Consider private connectivity for accessing Azure services. Private connectivity effectively isolates your traffic from the public internet. Data flows for private networking include both data ingestion and query operations, each targeting distinct endpoints. These endpoints can be managed independently. This approach allows you to configure private ingestion while maintaining public query access, or vice versa. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries.
 >
-> * **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](azure-log-analytics.md#design-checklist-for-security) to learn about securing the data you're collecting.
+> - **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](azure-log-analytics.md#design-checklist-for-security) to learn about how to secure the data that you collect.
 
-### Recommendations for Security
+#### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach eliminates the need for manual SDK updates, requires no code changes, and eliminates the overhead of maintaining instrumentation code. It can also enhance security by ensuring consistent application monitoring without manual intervention. |
-|Use [managed identities](/entra/identity/managed-identities-azure-resources/overview) and [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) for authentication and authorization needs.|Eliminates the need for credentials management, as [Azure manages, rotates, and protects these credentials](/entra/architecture/service-accounts-managed-identities).|
-| Stop collecting personal data or obfuscate, anonymize, or adjust collected data. Notice that Application Insights by default [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). We recommend not to change that. | Excludes your data from being considered *personal* and prevents breaking any compliance requirements or local regulations. |
-| Use one Application Insights resource per workload per environment, such as one for development, one for staging, and one for production. | Using multiple Application Insights resources ensures data isolation and security, and helps in applying environment-specific configurations and access controls. |
-| Use [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to access Azure services over a private endpoint. Follow the configuration and limitations. Avoid connecting your AMPLS to multiple VNETs which share the same DNS, as this causes *wrong private endpoint* errors. | A properly configured AMPLS topology will enhance the confidentiality of your workload's logs by keeping logging traffic on fully private networks. |
+| If your business needs and hosting environment don't require manual instrumentation, consider using [autoinstrumentation](/azure/azure-monitor/app/codeless-overview). | This approach eliminates the need for manual SDK updates, requires no code changes, and eliminates the overhead to maintain instrumentation code. It can also enhance security by helping ensure consistent application monitoring without manual intervention. |
+|Use [managed identities](/entra/identity/managed-identities-azure-resources/overview) and [Microsoft Entra ID](/azure/azure-monitor/app/azure-ad-authentication?tabs=net) for your authentication and authorization needs.|Eliminates the need for credentials management because [Azure manages, rotates, and protects these credentials](/entra/architecture/service-accounts-managed-identities).|
+| Stop collecting personal data or obfuscate, anonymize, or adjust collected data. By default, Application Insights [doesn't store IP addresses](/azure/azure-monitor/app/ip-collection). We recommend that you keep this default setting. | Excludes your data from being considered *personal* and prevents breaking any compliance requirements or local regulations. |
+| Use one Application Insights resource per workload per environment. For example, use one for development, one for staging, and one for production. | Using multiple Application Insights resources helps ensure data isolation and security, and helps to apply environment-specific configurations and access controls. |
+| Use [Azure Private Link](/azure/azure-monitor/logs/private-link-security) to access Azure services over a private endpoint. Follow the configuration and limitations. Avoid connecting your AMPLS to multiple virtual networks that share the same DNS because this causes *wrong private endpoint* errors. | A properly configured AMPLS topology enhances the confidentiality of your workload's logs by keeping logging traffic on fully private networks. |
 
 ## Cost Optimization
 
@@ -126,38 +127,37 @@ For more information on how data charges are calculated for the underlying Log A
 
 ### Design checklist for Cost Optimization
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md)
-for investments. Fine-tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine tune the design so that the workload aligns with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
-> * **Review [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/) to create a cost model.** Estimate the initial cost, run rates, and ongoing costs by using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). Notice that Application Insights is billed through the Log Analytics workspace into which its log data ingested.
+> - **Review [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/) to create a cost model.** Estimate the initial cost, run rates, and ongoing costs by using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). Notice that Application Insights is billed through the Log Analytics workspace into which its log data ingested.
 >
-> * **Tune the amount of data collected.**
->     * Use [sampling](/azure/azure-monitor/app/sampling) on an Application Insights-level to reduce data traffic and storage costs while preserving a statistically correct analysis of application data.
->     * Application Insights has several possible [log sources](/azure/azure-monitor/app/app-insights-overview#logging-frameworks). Use log levels to tune and reduce trace log telemetry.
+> - **Tune the amount of data collected.**
+>     - Use [sampling](/azure/azure-monitor/app/sampling) on an Application Insights-level to reduce data traffic and storage costs while preserving a statistically correct analysis of application data.
+>     - Application Insights has several possible [log sources](/azure/azure-monitor/app/app-insights-overview#logging-frameworks). Use log levels to tune and reduce trace log telemetry.
 >
-> * **Limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.
+> - **Limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.
 >
-> * **Regularly review costs like regional pricing and available pricing tiers.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) or visit the [Cost Optimization section](azure-log-analytics.md#design-checklist-for-cost-optimization) in the Log Analytics service guide.
+> - **Review costs like regional pricing and available pricing tiers regularly.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) or visit the [Cost Optimization section](azure-log-analytics.md#design-checklist-for-cost-optimization) in the Log Analytics service guide.
 >
-> * **Regularly remove or optimize legacy, unneeded, and underutilized components of your application monitoring solution.** [Edit ApplicationInsights.config](/azure/azure-monitor/app/configuration-with-applicationinsights-config) to turn off collection modules that you don't need. For example, you might decide that performance counters or dependency data aren't required. Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
+> - **Remove or optimize legacy, unneeded, and underutilized components of your application monitoring solution regularly.** [Edit ApplicationInsights.config](/azure/azure-monitor/app/configuration-with-applicationinsights-config) to turn off collection modules that you don't need. For example, you might decide that performance counters or dependency data aren't required. Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
 >
-> * **Optimize environment costs.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them.  Optimize log levels and metrics collected per environment to manage costs effectively. For example, production environments might require different logging levels compared to development environments.
+> - **Optimize environment costs.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them. Optimize log levels and metrics collected per environment to manage costs effectively. For example, production environments might require different logging levels compared to development environments.
 >
-> * **Optimize flow costs.** Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
+> - **Optimize flow costs.** Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
 >
-> * **Optimize code costs.** Make sure to use updated Application Insights SDKs. Earlier versions of the ASP.NET Core SDK and Worker Service SDK [collect many counters by default](/azure/azure-monitor/app/eventcounters#default-counters-collected), which were collected as custom metrics. Use later versions to specify [only required counters](/azure/azure-monitor/app/eventcounters#customizing-counters-to-be-collected).
+> - **Optimize code costs.** Make sure to use updated Application Insights SDKs. Earlier versions of the ASP.NET Core SDK and Worker Service SDK [collect many counters by default](/azure/azure-monitor/app/eventcounters#default-counters-collected), which were collected as custom metrics. Use later versions to specify [only required counters](/azure/azure-monitor/app/eventcounters#customizing-counters-to-be-collected).
 >
-> * **Optimize personnel time.** Utilize Application Insights experiences such as the [application map](/azure/azure-monitor/app/app-map) and [failure and performance views](/azure/azure-monitor/app/failures-and-performance-views), and customize saved [queries](/azure/azure-monitor/logs/queries), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) for your specific workload needs. Keep track of your deployments and other events with [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations).
+> - **Optimize personnel time.** Utilize Application Insights experiences such as the [application map](/azure/azure-monitor/app/app-map) and [failure and performance views](/azure/azure-monitor/app/failures-and-performance-views), and customize saved [queries](/azure/azure-monitor/logs/queries), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) for your specific workload needs. Keep track of your deployments and other events with [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations).
 
-### Recommendations for Cost Optimization
+#### Recommendations
 
 | Recommendation | Benefit |
 |:---------------|:--------|
 | [Set a daily cap in both Application Insights and Log Analytics](/azure/azure-monitor/logs/daily-cap#when-to-use-a-daily-cap), but try to avoid reaching it. | Reaching the daily cap can cause data to not be written in your Log Analytics workspace. Setting a cap is a risky but effective solution to throttle spend. |
 | For standard availability tests, the need for testing from different locations might vary between production and preproduction environments. Reduce the number of locations accordingly. | Tests incur costs, so only have enough tests to give you confidence in your workload's heath. |
-| Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace. | This minimizes latency and reduces costs associated with cross-region telemetry. |
+| Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace. | This approach minimizes latency and reduces costs associated with cross-region telemetry. |
 | Decrease the sample rate for less critical flows and increase it for flows with high criticality. Use telemetry filters for nonessential telemetry. | Data volume is a cost driver when designing your Application Insights integration. Reducing data volume through sample rates and filters are a potential solution to keeping your data collection under control. |
 | [Limit the number of Ajax calls](/azure/azure-monitor/app/javascript-sdk-configuration) that can be reported in every page view or disable Ajax reporting. If you disable Ajax calls, you also disable [JavaScript correlation](/azure/azure-monitor/app/distributed-trace-data). | Data volume is a cost driver when designing your Application Insights integration for your client application. Reducing data volume through reduced client page reporting is a potential solution to keeping your data collection costs under control. |
 | Use [preaggregated metrics](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#preaggregated-metrics) to handle high-volume telemetry data more efficiently and limit the use of custom metrics. However, the Application Insights option to [enable alerting on custom metric dimensions](/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) can also increase costs. Measure to ensure cost savings are being obtained. | All custom metrics are stored in both logs and metric stores. Preaggregated metrics reduce storage costs related to custom metrics. |
@@ -176,19 +176,19 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> * **Integrate your application monitoring team members' specializations into a robust set of practices to instrument and monitor your workload.** Chose an instrumentation method (i.e., autoinstrumentation or manual instrumentation) that is best for your situation based on your business needs and [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
+> - **Integrate your application monitoring team members' specializations into a robust set of practices to instrument and monitor your workload.** Chose an instrumentation method (i.e., autoinstrumentation or manual instrumentation) that is best for your situation based on your business needs and [Supported environments, languages, and resource providers](/azure/azure-monitor/app/codeless-overview#supported-environments-languages-and-resource-providers).
 >
-> * **Ensure optimal performance of your application monitoring solution by keeping Application Insights instrumentation up-to-date.** Follow our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) and update Application Insights SDKs (Classic API) at least once a year. It's recommended to follow similar practices for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable). Using the latest SDK or Distro versions [ensures access to support services](/azure/azure-monitor/app/sdk-support-guidance) and provides the latest functionality with bug fixes.
+> - **Ensure optimal performance of your application monitoring solution by keeping Application Insights instrumentation up to date.** Follow our [SDK update guidance](/azure/azure-monitor/app/sdk-support-guidance#sdk-update-guidance) and update Application Insights SDKs (Classic API) at least once a year. It's recommended to follow similar practices for the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable). Using the latest SDK or Distro versions [ensures access to support services](/azure/azure-monitor/app/sdk-support-guidance) and provides the latest functionality with bug fixes.
 >
-> * **Formalize ideation and planning processes.** Use [work item ingetration](/azure/azure-monitor/app/release-and-work-item-insights?tabs=work-item-integration) to easily create work items in GitHub or Azure DevOps that have relevant Application Insights data embedded in them.
+> - **Formalize ideation and planning processes.** Use [work item ingetration](/azure/azure-monitor/app/release-and-work-item-insights?tabs=work-item-integration) to easily create work items in GitHub or Azure DevOps that have relevant Application Insights data embedded in them.
 >
-> * **Configure Application Insights to monitor the availability and responsiveness of your web application.** Use built-in features like [queries](/azure/azure-monitor/logs/queries) and [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) based on your specific business needs. After you've deployed your application, set up recurring tests to monitor availability and responsiveness.
+> - **Configure Application Insights to monitor the availability and responsiveness of your web application.** Use built-in features like [queries](/azure/azure-monitor/logs/queries) and [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) based on your specific business needs. After you've deployed your application, set up recurring tests to monitor availability and responsiveness.
 >
-> * **Develop an effective emergency operations practice.** Use [alerts](/azure/azure-monitor/alerts/alerts-overview) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) to identify and respond to incidents. Clearly define human responsiblities. For example, if your workload fails, determine who reboots the application.
+> - **Develop an effective emergency operations practice.** Use [alerts](/azure/azure-monitor/alerts/alerts-overview) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) to identify and respond to incidents. Clearly define human responsiblities. For example, if your workload fails, determine who reboots the application.
 >
-> * **Clearly define your workload's safe deployment practices.** Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to keep track of your deployments and other events.
+> - **Clearly define your workload's safe deployment practices.** Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to keep track of your deployments and other events.
 
-### Recommendations for Operational Excellence
+#### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -208,48 +208,46 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> * **Define performance targets related to your application monitoring requirements.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
+> - **Define performance targets related to your application monitoring requirements.** Determine the [number of Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.
 >
-> * **Conduct capacity planning.** Understand usage patterns and how much data is coming in, and review ingestion and sample rates.
+> - **Conduct capacity planning.** Understand usage patterns and how much data is coming in, and review ingestion and sample rates.
 >
-> * **Select the right region for your application monitoring solution.** Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace to prevent latency and reliability issues, see [Create a resource](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#create-a-workspace-based-resource).
+> - **Select the right region for your application monitoring solution.** Deploy your Application Insights resource in the same region as the underlying Log Analytics workspace to prevent latency and reliability problems, see [Create a resource](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#create-a-workspace-based-resource).
 >
-> * **Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.** Monitoring mulitple applications or application components with a single Application Insights resource provides a hollistic view, but can also impact the performance of experiences like [Application Map](/azure/azure-monitor/app/app-map?tabs=net) and [Usage](/azure/azure-monitor/app/usage?tabs=aspnetcore).
+> - **Evaluate [how many Application Insights resources](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need.** Monitoring mulitple applications or application components with a single Application Insights resource provides a hollistic view, but can also affect the performance of experiences like [Application Map](/azure/azure-monitor/app/app-map?tabs=net) and [Usage](/azure/azure-monitor/app/usage?tabs=aspnetcore).
 >
-> * **Optimize code and infrastructure.** Regularly evaluate custom Application Insights code to reduce complexity, improve performance, and ensure that the code is up to date.
+> - **Optimize code and infrastructure.** Regularly evaluate custom Application Insights code to reduce complexity, improve performance, and ensure that the code is up to date.
 >
-> * **Understand usage patterns and how much data is coming in by reviewing ingestion and sample rates.** To optimize data usage, adjust them accordingly and reduce the amount of [custom metrics](/azure/azure-monitor/app/api-custom-events-metrics), for example ITelemetryProcessor.
+> - **Understand usage patterns and how much data is coming in by reviewing ingestion and sample rates.** To optimize data usage, adjust them accordingly and reduce the amount of [custom metrics](/azure/azure-monitor/app/api-custom-events-metrics), for example ITelemetryProcessor.
 >
-> * **Continuously optimize performance.** Use built-in features like [Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics), [queries](/azure/azure-monitor/logs/queries), and [dashboards](/azure/azure-monitor/app/overview-dashboard) to find components that show deteriorating performence.
+> - **Continuously optimize performance.** Use built-in features like [Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics), [queries](/azure/azure-monitor/logs/queries), and [dashboards](/azure/azure-monitor/app/overview-dashboard) to find components that show deteriorating performence.
 
-### Recommendations for Performance Efficiency
+#### Recommendations
 
 | Recommendation | Benefit |
 |:---------------|:--------|
-| Use one Application Insights resource per workload per environment (such as one for development, one for staging, and one for production). | This prevents mixing telemetry from different application versions. |
-| Where applicable, ensure that [profiling frequency and duration is set appropriately](/azure/azure-monitor/profiler/profiler-settings). | Avoid adding excessive overhead to the running process. |
+| Use one Application Insights resource per workload per environment (such as one for development, one for staging, and one for production). | This approach prevents mixing telemetry from different application versions. |
+| When applicable, ensure that [profiling frequency and duration is set appropriately](/azure/azure-monitor/profiler/profiler-settings). | Avoid adding excessive overhead to the running process. |
 
 ## Azure policies
 
 Azure provides built-in policies related to Application Insights and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-* Application Insights components should prevent log ingestion public networks, or sources that aren't authenticated and authorized by Microsoft Entra ID. 
-* Enforce linking of the Application Insights component to a Log Analytics workspace to encrypt logs. 
+- Application Insights components should prevent log ingestion public networks, or sources that Microsoft Entra ID doesn't authenticate.
+- You should enforce linking of the Application Insights component to a Log Analytics workspace to encrypt logs.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Application Insights](/azure/governance/policy/samples/built-in-policies#monitoring) and other policies that might impact the security of the application performance monitoring solution.
+For comprehensive governance, review the [Azure Policy built-in definitions for Application Insights](/azure/governance/policy/samples/built-in-policies#monitoring) and other policies that might affect the security of the application performance monitoring solution.
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Currently, Azure offers no Azure Advisor recommendations specific to Application Insights.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Currently, Azure provides no Azure Advisor recommendations specific to Application Insights.
 
-Here are some recommendations that can help you improve the cost effectiveness and operational excellence of Azure Monitor.
+The following are recommendations that can help you improve the cost effectiveness and operational excellence of Azure Monitor.
 
-* [Cost Optimization](/azure/advisor/advisor-cost-recommendations#management-and-governance)
-* [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#management-and-governance)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations#management-and-governance)
+- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#management-and-governance)
 
-## Next steps
-
-Build implementation expertise by using the following product documentation:
+## Related content
 
 - [Application Insights](/azure/azure-monitor/app/app-insights-overview)
 - [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
