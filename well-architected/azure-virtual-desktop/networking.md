@@ -20,10 +20,10 @@ This article discusses the networking and connectivity design area of an Azure V
 
 *Impact: Performance Efficiency*
 
-The latency between end users and session hosts is a key aspect that affects the Azure Virtual Desktop user experience. You can use the Azure VM testing methods described in the  [Round-trip Latency Figures](https://learn.microsoft.com/azure/networking/azure-network-latency?tabs=Americas%2CWestUS#round-trip-latency-figures) page to help estimate connection round-trip times (RTTs). Specifically, this page provides estimated latency measurements collected from Azure cloud regions worldwide, and is continuously measured in 1-minute intervals by network probes. The monthly latency statistics are derived from averaging the collected samples for the month.
+The latency between end users and session hosts is a key aspect that affects the Azure Virtual Desktop user experience. You can use the Azure VM testing methods described in the  [Round-trip Latency Figures](/azure/networking/azure-network-latency#round-trip-latency-figures) page to help estimate connection round-trip times (RTTs). Specifically, this page provides estimated latency measurements collected from Azure cloud regions worldwide and is continuously measured in 1-minute intervals by network probes. The monthly latency statistics are derived from averaging the collected samples for the month.
 
 > [!IMPORTANT]
-> The Azure Virtual Desktop Experience Estimator has been formally decommissioned and replaced with the [Azure network round-trip latency statistics](https://learn.microsoft.com/azure/networking/azure-network-latency?tabs=Americas%2CWestUS) page.
+> The Azure Virtual Desktop Experience Estimator has been formally decommissioned and replaced with the [Azure network round-trip latency statistics](/azure/networking/azure-network-latency) page.
 
 To assess the quality of your end-user experience:
 
@@ -32,7 +32,7 @@ To assess the quality of your end-user experience:
 
 ##### Recommendations
 
-- [Test latencies between Azure VMs](https://learn.microsoft.com/azure/virtual-network/virtual-network-test-latency?tabs=windows) using tools like Latte or SockPerf.
+- [Test latency between Azure VMs](/azure/virtual-network/virtual-network-test-latency) using tools like Latte or SockPerf.
 - Test latencies from your Azure virtual networks to your on-premises systems.
 - Use a split tunnel that's based on User Datagram Protocol (UDP) for clients who use a point-to-site (P2S) VPN connection.
 - Use Remote Desktop Protocol (RDP) Shortpath with a managed network for on-site clients who use a VPN or Azure ExpressRoute.
@@ -68,7 +68,7 @@ It's important to align with the Azure Virtual Desktop scaling model that's desc
 For your Azure Virtual Desktop multi-region deployment to offer the best possible experience to your end users, your design needs to take the following factors into consideration:
 
 - Platform services, such as identity, name resolution, hybrid connectivity, and storage services. Connectivity from Azure Virtual Desktop session hosts to these services is key for the service to be functional. As a result, the ideal design aims to lower the latency from Azure Virtual Desktop landing zone subnets to these services. You can accomplish this goal by replicating services to each region or making them available via the connection with the lowest possible latency.
-- End-user latency. When you select locations to use for an Azure Virtual Desktop multi-region deployment, it's important to account for the latency that users experience when they connect to the service. We recommend that you gather latency data from your end-user population by using the [Azure network round-trip latency statistics](https://learn.microsoft.com/azure/networking/azure-network-latency?tabs=Americas%2CWestUS) page when you select Azure regions to deploy your session hosts to.
+- End-user latency. When you select locations to use for an Azure Virtual Desktop multi-region deployment, it's important to account for the latency that users experience when they connect to the service. We recommend that you gather latency data from your end-user population by using the [Azure network round-trip latency statistics](/azure/networking/azure-network-latency) page when you select Azure regions to deploy your session hosts to.
 
 Also consider the following factors:
 
