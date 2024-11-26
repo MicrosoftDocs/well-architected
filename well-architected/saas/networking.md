@@ -1,6 +1,6 @@
 ---
 title: Networking for SaaS Workloads on Azure
-description: Learn about the networking considerations for SaaS workloads.
+description: Learn about the networking considerations, including topology, security, and connectivity, for SaaS workloads.
 author: senavar
 ms.author: prwilk
 ms.date: 11/04/2024
@@ -77,27 +77,29 @@ Each flow involves different risks and controls. For example, you need multiple 
     Consider using a reverse proxy service like Azure Front Door for global HTTP(S) traffic management. Alternatively, use Application Gateway or other Azure services for inbound traffic control. For more information, see [Load-balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 - **Protect internal traffic.** Ensure that traffic between your application and its components is secure to prevent malicious access. Protect these resources and improve performance by using internal traffic instead of routing over the internet. Azure Private Link is commonly used to connect to Azure resources through an internal IP address within your network. For some resource types, service endpoints can be a more cost-effective alternative.
-  If you enable public internet connectivity for your resources, understand how to restrict traffic by using IP addresses and application identities, such as managed identities.
+  
+   If you enable public internet connectivity for your resources, understand how to restrict traffic by using IP addresses and application identities, such as managed identities.
 
 - **Protect egress traffic.** In some solutions, inspect outbound traffic to prevent data exfiltration, especially for regulatory compliance and enterprise customers. Use firewalls to manage and review egress traffic by blocking connections to unauthorized locations.
 
 - **Plan how you scale outbound connectivity and SNAT.** Source network address translation (SNAT) port exhaustion can affect multitenant applications. These applications often need distinct network connections for each tenant, and sharing resources between customers increases the risk of SNAT exhaustion as your customer base grows.
-  You can mitigate SNAT exhaustion by using Azure NAT Gateway, firewalls like Azure Firewall, or a combination of the two approaches.
+  
+   You can mitigate SNAT exhaustion by using Azure NAT Gateway, firewalls like Azure Firewall, or a combination of the two approaches.
 
 ### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
-| Maintain a catalog of the network endpoints that are exposed to the internet. Capture details such as the IP address (if static), hostname, ports, protocols that the endpoints use, and the justification for connections. <br><br>Document how you plan to protect each endpoint. | This list forms the basis of your perimeter definition so that you can make explicit decisions about how to manage traffic through your solution. |
+| Maintain a catalog of the network endpoints that are exposed to the internet. Capture details such as the IP address (if it's static), hostname, ports, protocols that the endpoints use, and the justification for connections. <br><br>Document how you plan to protect each endpoint. | This list forms the basis of your perimeter definition so that you can make explicit decisions about how to manage traffic through your solution. |
 | Understand Azure service capabilities to limit access and enhance protection. <br><br> For example, you need more controls to expose storage account endpoints to customers. These controls include shared access signatures, storage account firewalls, and separate storage accounts for internal and external use. | You can select controls that meet your security, cost, and performance needs. |
 | For HTTP(S)-based applications, use a reverse proxy, like Azure Front Door or Application Gateway. | Reverse proxies provide a broad range of capabilities for performance improvements, resiliency, and security. They also help reduce operational complexity. |
 | Inspect ingress traffic by using a web application firewall. <br><br> Avoid exposing web-based resources such as an App Service or Azure Kubernetes Service (AKS) directly to the internet. | You can more effectively protect your web applications against common threats and reduce the overall exposure of your solution. |
 | Protect your application against DDoS attacks. <br><br> Use Azure Front Door or DDoS Protection depending on the protocols that your public endpoints use. | Protect your solution from a common type of attack. |
-| If your application requires egress connectivity at scale, use NAT Gateway or a firewall to provide additional SNAT ports. | You can support higher levels of scale. |
+| If your application requires egress connectivity at scale, use NAT Gateway or a firewall to provide extra SNAT ports. | You can support higher levels of scale. |
 
 ## Cross-network connectivity
 
-For some scenarios, you might need to connect to resources that are outside of Azure, such as data within a customer's private network or assets on a different cloud provider in a multicloud setup. These needs can complicate your network design because they require various approaches to implement cross-network connectivity based on your specific requirements.
+For some scenarios, you might need to connect to resources that are outside of Azure. These resources include data within a customer's private network or assets on a different cloud provider in a multicloud setup. These needs can complicate your network design because they require various approaches to implement cross-network connectivity based on your specific requirements.
 
 ### Design considerations
 
@@ -139,7 +141,7 @@ For some scenarios, you might need to connect to resources that are outside of A
 | When you connect to resources that customers' Azure environments host, use Private Link, service endpoints, or virtual network peerings. | You can keep traffic on the Microsoft network, which helps reduce costs and operational complexity compared to other approaches. |
 | When you connect across cloud providers or to on-premises networks, use site-to-site VPNs or ExpressRoute. | These technologies provide secure connections between providers.  |
 
-## Deploy to environments that customers own
+## Deploy to your customers' environments
 
 Your business model might require you to host the application or its components within a customer's Azure environment. The customer manages their own Azure subscription and directly pays the cost of resources required to run the application. As the solution provider, you're responsible for managing the solution, including the initial deployment, applying configuration, and deploying updates to the application.
 
