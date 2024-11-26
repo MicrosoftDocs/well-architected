@@ -6,7 +6,6 @@ ms.author: v-nawrothkai
 ms.date: 11/26/2024
 ms.topic: conceptual
 ms.subservice: waf-service-guide
-ms.subservice: well-architected
 products:
   - azure-application-insights
   - azure-log-analytics
