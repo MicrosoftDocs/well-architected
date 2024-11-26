@@ -157,7 +157,7 @@ In such situations, customers often bring their own network and deploy your appl
 
     In some solutions, you can use capabilities that Azure Managed Applications provide, such as [just-in-time access](/azure/azure-resource-manager/managed-applications/request-just-in-time-access) and [deployment of updates to applications](/azure/azure-resource-manager/managed-applications/update-managed-resources). If you need more control, you can host an endpoint within the customer's network that your control plane can connect to. This approach gives you access to your resources. This method requires more Azure resources and development to meet security, operational, and performance requirements. For an example of how to implement this approach, see [Azure Managed Applications updating sample](https://github.com/Azure-Samples/ama-update-sample).
 
-#### Design recommendations
+### Design recommendations
 
 | Recommendation | Benefit |
 |---|---|
