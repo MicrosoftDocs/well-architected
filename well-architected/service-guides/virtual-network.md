@@ -67,13 +67,15 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Overprovision IP address spaces**. To ensure reliable scaling, a common strategy is to overprovision capacity to prevent IP exhaustion. However, this approach involves a tradeoff between cost and operational efficiency. Subnets should only use a portion of the VNet's address space. The goal should be have just enough extra address space in your VNet and subnets to balance reliability with cost-effectiveness.
 >
-> - **Be aware of the networking limits**. Azure imposes limits on the number of resources you can deploy. While most Azure networking limits are set to their maximum values, some can be increased. For more details, refer to the [Networking limits](s/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+> - **Be aware of the networking limits**. Azure imposes limits on the number of resources you can deploy. While most Azure networking limits are set to their maximum values, some can be increased. For more details, refer to the [Networking limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 >
 > - **Create network diagrams with focus on user flows**. These diagrams are valuable for visualizing network segmentation, identifying potential points of failure, and pinpointing key transitions like internet ingress and egress points. They also serve as important tools for audits and incident response.
 >
 >   Highlight high priority traffic flows between the user and workload resources. For instance, prioritizing ExpressRoute for enterprise network flows or securing user requests in a DMZ design can provide insight into capacity planning for firewalls and other services.
 > 
-> - **Add redundancy**. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant.
+> - **Add redundancy**. Consider deploying NAT gateways and VNets across multiple regions if necessary, ensuring public IPs and NAT gateways have zone redundancy, and making shared resources like firewalls also region redundant. 
+>
+>   For more infiormation, see [Business Continuity](/azure/virtual-network/virtual-network-disaster-recovery-guidance).
 >
 > - **Avoid complexity**. Simpler configurations decrease the likelihood of misconfigurations and error, which can contribute to reliability issues. Reducing complexity can lower operational and maintenance costs. Pay attention to VNets, subnets, IPs, routes, ASGs, and tags while simplifying the network. Some examples of simplification include: 
 >   - Using private DNS whenever possible and minimize the number of DNS zones. 
@@ -88,7 +90,7 @@ Monitoring traffic flow is a crucial operation for reliability. For example, you
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Size VNets and subnets as per your scaling strategy. Opt for fewer, larger VNets accomodate redundancy as a mitigation strategy for failures. <br><br> Ensure there aren't overlapping address space with other VNets you need to communicate with, and plan the address space in advance.  <br><br> See, [**Create, change, or delete a virtual network**](/azure/virtual-network/manage-virtual-network).| With a bit of overprovisioning, you can ensure that the network can scale efficiently without running into address space limitations. <br>Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture.|Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture.|
+|Size VNets and subnets as per your scaling strategy. Opt for fewer, larger VNets accomodate redundancy as a mitigation strategy for failures. <br><br> Ensure there aren't overlapping address space with other VNets you need to communicate with, and plan the address space in advance.  <br><br> See, [**Create, change, or delete a virtual network**](/azure/virtual-network/manage-virtual-network).| With a bit of overprovisioning, you can ensure that the network can scale efficiently without running into address space limitations. <br>Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture. <br><br> Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture.|
 |Use the [**standard SKU**](/azure/virtual-network/ip-services/public-ip-addresses#sku) for better reliability support through availability zones. <br> By default, public IPs are deployed across multiple zones unless specifically restricted to one zone.|Ensures that communication within a zone remains operational.|
 
 ## Security
@@ -255,7 +257,7 @@ Start your design strategy based on the [design review checklist for Performance
 | Recommendation|Benefit|
 |-----------|-------- |
 |[**Enable the Connection Monitor**](/azure/network-watcher/connection-monitor-overview) of Network Watcher. <br><br>Use connection monitor during testing, which can generate synthetic traffic.|You'll be able to collect metrics that indicate loss and latency across networks. Also, trace the entire traffic path, which is important for detecting network bottlenecks.|
-|Do, Don't, consider, this.. |Because it's your workload after all.|
+|Keep the virtual network address space large enough to support scaling.|TBD|
 
 
 ## Tradeoffs
@@ -264,11 +266,15 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Redundant networking stack**
 
-Implementing a redundant networking stack, including NSGs, routes, and other configurations, incurs significant costs due to the necessary infrastructure setup and thorough testing. However, this upfront investment enhances reliability, ensuring that everything functions as expected and enabling faster recovery during disruptions. Balancing these costs with the need for a reliable network is crucial to maintain operational efficiency and minimize downtime.
+Implementing a redundant networking stack, including NSGs, routes, and other configurations, incurs significant costs due to the necessary infrastructure setup and thorough testing. 
+
+However, this upfront investment enhances reliability. You can be sure that everything works as expected and recovery during disruptions can be faster. 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **VNet peering**
 
-Direct VNet peering enhances performance by reducing latency, as it avoids the need to route traffic through a hub where a firewall decrypts, inspects, and re-encrypts the payload. However, this performance gain comes at the cost of decreased security. Without the firewall inspections provided by hub routing, the workload is more vulnerable to potential threats. Balancing the need for high performance with robust security measures is essential to ensure both efficiency and protection of the network.
+Direct VNet peering enhances performance by reducing latency, because it avoids the need to route traffic through a hub where a firewall decrypts, inspects, and re-encrypts the payload. 
+
+That performance gain comes at the cost of decreased security. Without the firewall inspections provided by hub routing, the workload is more vulnerable to potential threats. 
 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Large subnets**
