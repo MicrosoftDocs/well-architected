@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:07](checklist.md)| Optimize code and infrastructure. Use code that's performant, and ensure that it offloads responsibilities to the platform. Use code and infrastructure only for their core purpose and only when necessary.|
+|**PE:07**| Optimize code and infrastructure. Use code that's performant, and ensure that it offloads responsibilities to the platform. Use code and infrastructure only for their core purpose and only when necessary.|
 |---|---|
 
 This guide describes the recommendations for optimizing code and infrastructure performance. To optimize your code and infrastructure, you should use your components only for their core purpose and only when necessary. When you overuse code and infrastructure, it creates unnecessary resource consumption, bottlenecks, and slow responses. To compensate for those inefficiencies, you must add more resources to accomplish the same tasks.

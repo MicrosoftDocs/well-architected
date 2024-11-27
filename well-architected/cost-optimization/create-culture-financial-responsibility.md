@@ -11,13 +11,13 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected-Framework Cost Optimization checklist recommendation:**
 
-[CO:01](checklist.md) | Create a culture of financial responsibility. Regularly train personnel so technical skills remain sharp. Foster creativity and spending accountability in the work environment. Invest in tooling and implementing automation. |
+|**CO:01**| Create a culture of financial responsibility. Regularly train personnel so technical skills remain sharp. Foster creativity and spending accountability in the work environment. Invest in tooling and implementing automation.|
 |---|---|
 
 This guide describes the recommendations for creating a culture of financial responsibility in an organization. Creating a culture of financial responsibility is where the workload team is equipped and motivated to make prudent financial decisions. It drives the team to proactively seek out and implement strategies that enhance efficiency and reduce unnecessary expenses.
 Without this culture, there's often a disconnect between resource utilization and project goals. It can lead to budget overruns and diminished return on investment for the workload.
 
-**Definitions** 
+**Definitions**
 
 | Term |Definition |
 |---|---|

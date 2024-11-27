@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:04](checklist.md)| Set spending guardrails. Guardrails should include release gates, governance policies, resource limits, and access controls. Prioritize platform automation over manual processes.|
+|**CO:04**| Set spending guardrails. Guardrails should include release gates, governance policies, resource limits, and access controls. Prioritize platform automation over manual processes.|
 |---|---|
 
 This guide describes the recommendations for setting spending guardrails. Spending guardrails are measures to control and manage costs within a specified budget. They help prevent unexpected or excessive spending and promote cost-effective utilization of resources. Without spending guardrails, your workload costs might exceed your budget, leading to unplanned expenses that can strain your financial resources.

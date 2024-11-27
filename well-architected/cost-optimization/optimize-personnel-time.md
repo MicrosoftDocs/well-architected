@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 
-|[CO:13](checklist.md)| Optimize personnel time. Align the time personnel spends on tasks with the priority of the task. The goal is to reduce the time spent on tasks without degrading the outcome. Optimization efforts should include minimizing noise, reducing build times, high fidelity debugging, and production mocking.| 
+|**CO:13**| Optimize personnel time. Align the time personnel spends on tasks with the priority of the task. The goal is to reduce the time spent on tasks without degrading the outcome. Optimization efforts should include minimizing noise, reducing build times, high fidelity debugging, and production mocking.| 
 |---|---| 
 
 This guide describes the recommendations for optimizing personnel time. This optimization is a strategic process of maximizing the productivity and efficiency of employees that design, implement, and operate the workload during their working hours. It involves aligning their skills, strengths, and tasks in a manner that ensures that every hour they spend at work is used most effectively. The goal is to eliminate wasted personnel potential and capabilities. Failure to optimize personnel time can lead to employee burnout, reduced competitive edge, and reduced productivity.

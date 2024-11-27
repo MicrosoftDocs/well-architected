@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:02](checklist.md)| **Identify and rate user and system flows.** Use a criticality scale based on your business requirements to prioritize the flows. |
+|**RE:02**| **Identify and rate user and system flows.** Use a criticality scale based on your business requirements to prioritize the flows. |
 |---|---|
 
 This guide describes the recommendations for identifying and prioritizing workload flows. Identifying and prioritizing workload flows involves mapping user flows and system flows to determine their criticality to the organization. This practice ensures you identify and prioritize the most critical workload functionality to reduce the risk of damaging failures. Failure to identify and prioritize workload flows can lead to system breakdowns and compromised workload reliability.

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operation Excellence checklist recommendation:**
 
-|[OE:10](checklist.md)| Design and implement automation upfront for operations such as lifecycle concerns, bootstrapping, and applying governance and compliance guardrails. Don't try to retrofit automation later. Choose automation features that your platform provides. |
+|**OE:10**| Design and implement automation upfront for operations such as lifecycle concerns, bootstrapping, and applying governance and compliance guardrails. Don't try to retrofit automation later. Choose automation features that your platform provides. |
 |---|---|
 
 This guide describes the recommendations for designing and implementing your workload to enable automation. Design your workload with automation in mind to ensure that routine tasks such as provisioning resources, scaling, and deployments are performed quickly and reliably. Automation simplifies maintenance tasks and allows you to update, patch, and upgrade your systems more efficiently.

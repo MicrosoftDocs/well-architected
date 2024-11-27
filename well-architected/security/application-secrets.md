@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:09](checklist.md)| Protect application secrets by hardening their storage and restricting access and manipulation and by auditing those actions. Run a reliable and regular rotation process that can improvise rotations for emergencies.|
+|**SE:09**| Protect application secrets by hardening their storage and restricting access and manipulation and by auditing those actions. Run a reliable and regular rotation process that can improvise rotations for emergencies.|
 |---|---|
 
 This guide describes the recommendations for securing sensitive information in applications. Proper management of secrets is crucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.

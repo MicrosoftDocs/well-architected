@@ -93,7 +93,7 @@ productDirectory:
     - title: Application Insights
       summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
-      url: ./application-insights/security.md
+      url: ./application-insights.md
       azureCategories:
         - devops
         - management-and-governance

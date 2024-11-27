@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:12](checklist.md) | Optimize scaling costs. Evaluate alternative scaling within your scale units. Consider alternative scaling configurations, and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary. Use strategies for controlling demand and supply. |
+|**CO:12**| Optimize scaling costs. Evaluate alternative scaling within your scale units. Consider alternative scaling configurations, and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary. Use strategies for controlling demand and supply. |
 |---|---|
 
 This guide provides recommendations for optimizing scaling costs. Cost optimizing scaling is the process of removing inefficiencies in workload scaling. The goal is to reduce scaling costs while still meeting all nonfunctional requirements. Spending less to get the same result. Optimizing scaling allows you to avoid unnecessary expenses, overprovisioning, and waste. It also helps prevent unexpected spikes in costs by controlling demand and capping supply. Inefficient scaling practices can lead to increased workload and operational costs and negatively affect the overall financial health of the workload.

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:06](checklist.md)| Align usage to billing increments. You should understand billing increments (meters) and align resource usage to those increments. Modify the service to align with billing increments, or modify resource usage to align with billing increments. Consider using a proof of concept to validate billing knowledge and design choices for major cost drivers and to reveal ways to align billing and resource usage.|
+|**CO:06**| Align usage to billing increments. You should understand billing increments (meters) and align resource usage to those increments. Modify the service to align with billing increments, or modify resource usage to align with billing increments. Consider using a proof of concept to validate billing knowledge and design choices for major cost drivers and to reveal ways to align billing and resource usage.|
 |---|---|
 
 This guide describes the recommendations for aligning resource usage to billing increments. Resources are billed at specific increments, such as per hour or per instance. To optimize costs, you need to align your usage to those increments. You must either adapt a resource to your workload usage or adapt your workload to the resource billing increments, also called *meters*. Implement the following guidance so you can ensure that your workload derives the maximum value from each resource. If you fail to align billing and design, you might incur unnecessary charges.
