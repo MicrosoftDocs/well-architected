@@ -1,6 +1,11 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/service-guides/azure-stack-hci.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/services/data/postgresql.md",
 			"redirect_url": "/azure/well-architected/service-guides/postgresql",
 			"redirect_document_id": false
