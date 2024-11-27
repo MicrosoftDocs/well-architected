@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:10](checklist.md)|Implement a holistic monitoring strategy that relies on modern threat detection mechanisms that can be integrated with the platform. Mechanisms should reliably alert for triage and send signals into existing SecOps processes.|
+|**SE:10**|Implement a holistic monitoring strategy that relies on modern threat detection mechanisms that can be integrated with the platform. Mechanisms should reliably alert for triage and send signals into existing SecOps processes.|
 |---|---|
 
 This guide describes the recommendations for monitoring and threat detection. Monitoring is fundamentally a process of **getting information about events that have already occurred**. Security monitoring is a practice of capturing information at different altitudes of the workload (infrastructure, application, operations) to **gain awareness of suspicious activities**. The goal is to predict incidents and learn from past events. Monitoring data provides the basis of post-incident analysis of what occurred to help incident response and forensic investigations.

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 
-|[CO:03](checklist.md)| Collect and review cost data. Data collection should capture daily costs. In cost reports, include incurred costs (metered), prepaid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automate alerts to trigger notifications at key thresholds and detect anomalies to indicate deviations from trend baselines.| 
+|**CO:03**| Collect and review cost data. Data collection should capture daily costs. In cost reports, include incurred costs (metered), prepaid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automate alerts to trigger notifications at key thresholds and detect anomalies to indicate deviations from trend baselines.| 
 |---|---| 
 
 This guide describes the recommendations for collecting and reviewing cost data for your workload. Gather cost data to paint a holistic picture of your workload and ensure spending is optimized. Data collection includes all indicators of cost optimization, like billing data, resource utilization, and usage patterns.

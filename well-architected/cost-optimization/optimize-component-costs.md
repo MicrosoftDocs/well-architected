@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-| [CO:07](checklist.md) | Optimize component costs. Regularly remove or optimize legacy, unneeded, and underutilized workload components, including application features, platform features, and resources.|
+|**CO:07**| Optimize component costs. Regularly remove or optimize legacy, unneeded, and underutilized workload components, including application features, platform features, and resources.|
 |---|---|
 
 This guide describes the recommendations for optimizing workload component costs. Optimizing component costs refers to the process of evaluating and improving the cost-efficiency of individual elements within a workload. It emphasizes the continuous review and potential removal or improvement of outdated, unnecessary, or rarely used components, such as application features, platform features, and resources. It also covers cost optimization of disaster recovery environments and how to avoid introducing unoptimized components. The guidance in this article applies to existing workloads that aren't in the design phase. Neglecting regular component optimization can lead to inflated costs, resource waste, and inefficient workloads that drain both time and money.

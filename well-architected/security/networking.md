@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:06](checklist.md)|Isolate, filter, and control network traffic across both ingress and egress flows. Apply defense in depth principles by using localized network controls at all available network boundaries across both east-west and north-south traffic.|
+|**SE:06**|Isolate, filter, and control network traffic across both ingress and egress flows. Apply defense in depth principles by using localized network controls at all available network boundaries across both east-west and north-south traffic.|
 |---|---|
 
 This guide describes the recommendations for network design. The focus is on **security controls that can filter, block, and detect adversaries crossing network boundaries** at various depths of your architecture.
