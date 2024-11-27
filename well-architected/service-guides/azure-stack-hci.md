@@ -327,7 +327,7 @@ There are design tradeoffs with the approaches described in the pillar checklist
 
 - There are disadvantages if you overprovision the machine hardware specification and select the incorrect number of machines (_size of the cluster_). For example, if the workload requirements are much smaller than the cluster's overall capacity and the hardware is underused throughout the hardware warranty period, the ROI value might decrease.
 
-## Azure policies
+## Azure policies 
 
 Azure provides an extensive set of built-in policies related to Azure Local and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
