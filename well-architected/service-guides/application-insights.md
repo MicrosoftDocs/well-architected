@@ -17,7 +17,6 @@ azure.category:
 
 # Well-Architected Framework perspective on Application Insights
 
-## Overview
 
 Application Insights is an extensible application performance management service that you can use to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help you diagnose problems and understand how users interact with your application. This architecture guide provides best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework pillars](/azure/architecture/framework/).
 
