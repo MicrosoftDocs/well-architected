@@ -275,13 +275,7 @@
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights
-          items:
-            - name: Security
-              href: service-guides/application-insights/security.md
-            - name: Cost optimization
-              href: service-guides/application-insights/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/application-insights/operational-excellence.md
+          href: service-guides/application-insights.md
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
         - name: Azure App Service
