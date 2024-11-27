@@ -28,7 +28,7 @@ This article assumes you have an understanding of hybrid systems and have workin
 > Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Local and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:  
-> [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-local-baseline).
+> [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
 
 #### Technology scope
 
