@@ -12,7 +12,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use to deploy and manage containerized applications. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability, and for deploying applications to multiple regions, using open-source tools, and integrating with existing DevOps tools.
+Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use to deploy and manage containerized applications. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability.
 
 This article assumes that as an architect, you reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose AKS as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -32,7 +32,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Azure Kubernetes Service
 
-When discussing the Well Architected pillars best practices with Azure Kubernetes Service, it's important to distinguish between *cluster* and *workload*. Cluster best pratices are a shared responsibility between the cluster admin and their resource provider, while workload best prectices are the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
+When discussing the Well Architected pillars best practices with Azure Kubernetes Service, it's important to distinguish between *cluster* and *workload*. Cluster best practices are a shared responsibility between the cluster admin and their resource provider, while workload best practices are the domain of a developer. This article has considerations and recommendations for both of these roles.
 
 > [!NOTE]
 > In the **design checklist** and **list of recommendations** under each pillar below, callouts are made to indicate whether each choice is applicable to *cluster* architecture, *workload* architecture, or both.
@@ -48,6 +48,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features of Azure Kubernetes Service and its dependencies. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
+>
 > - (Cluster) For critical workloads, use [availability zones](/azure/aks/availability-zones) for your AKS clusters.
 > - (Cluster) Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
 > - (Cluster) Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) to determine the best monitoring strategy for your workloads.
@@ -120,30 +121,30 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > [!div class="checklist"]
 >
 > - (Cluster) **Familiarize yourself with the [Pricing tiers for AKS](/azure/aks/free-standard-pricing-tiers)** and [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management). To estimate costs, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Kubernetes Service** from the available products. You can test different configuration and payment plans in the calculator.
-> - (Cluster) Use appropriate VM SKU per node pool and reserved instances where long-term capacity is expected.
-> - (Cluster and Workload) Use appropriate managed disk tier and size.
-> - (Cluster) Review performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
-> - (Cluster and Workload) Use autoscalers to scale in when workloads are less active.
-> - (Cluster) **Get the best rates for your workload.** If you're running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
+> - (Cluster) **Get the best rates for your workload.** Use appropriate VM SKU per node pool and reserved instances where long-term capacity is expected. If you're running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
+> - (Cluster and Workload) **Optimize workload components cost.** Remove any resources that are unused and optimize [underutilized workload resources](/azure/well-architected/cost-optimization/optimize-component-costs#optimize-workload-resources).
+>
+>   Review the Cost Optimization recommendations in [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers#cost-optimization) to determine the best monitoring strategy for your workloads. Analyze performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
+>
+>   Use appropriate managed disk tier and size.
+> - (Cluster and Workload) **Optimize workload scaling costs.** Consider alternative vertical and horizontal scaling configurations to reduce scaling costs while still meeting all workload requirements. Use autoscalers to scale in when workloads are less active.
+> - (Cluster and Workload) **Collect and analyze cost data.** The foundation of enabling cost optimization is the spread of a cost saving cluster. A [financial operations approach (FinOps)](https://www.finops.org/introduction/what-is-finops/) is often used to help organizations reduce cloud costs. It's a practice involving collaboration between finance, operations, and engineering teams to drive alignment on cost saving goals and bring transparency to cloud costs.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|(Cluster and Workload) Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
-|(Cluster) Select the right virtual machine instance type. |Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a less powerful instance can lead to performance issues and increased downtime. To determine the right virtual machine instance type, consider workload characteristics, resource requirements, and availability needs.|
-|(Cluster) Select [virtual machines based on the Arm architecture](/azure/virtual-machines/dplsv5-dpldsv5-series). |AKS supports [creating Arm64 Ubuntu agent nodes](/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool), as well as a mix of Intel and ARM architecture nodes within a cluster that can bring better performance at a lower cost.|
+|(Cluster and Workload) Align [SKU selection](/azure/aks/free-standard-pricing-tiers) and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
+|(Cluster) Select the right virtual machine instance type. |Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a less powerful instance can lead to performance issues and increased downtime.<br><br>To determine the right virtual machine instance type, consider workload characteristics, resource requirements, and availability needs.|
+|(Cluster) Select [virtual machines based on the Arm architecture](/azure/virtual-machines/dplsv5-dpldsv5-series). AKS supports [creating Arm64 Ubuntu agent nodes](/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool), as well as a mix of Intel and ARM architecture nodes within a cluster.| The ARM64 architecture provides a better price-to-performance ratio due to its lower power utilization and efficient compute performancethat and can bring better performance at a lower cost.|
 |(Cluster) Select [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms). |Spot VMs allow you to take advantage of unutilized Azure capacity with significant discounts (up to 90% as compared to pay-as-you-go prices). If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes. |
-|(Cluster) Select the appropriate region. |Due to many factors, cost of resources varies per region in Azure. Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges.|
-|(Workload) Maintain small and optimized images.|Streamlining your images helps reduce costs since new nodes need to download these images. Build images in a way that allows the container start as soon as possible to help avoid user request failures or timeouts while the application is starting up, potentially leading to overprovisioning.|
+|(Cluster) Select the appropriate region.<br><br>Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges.|The region where you deploy your workload in Azure can significantly impact the cost. Due to many factors, cost of resources varies per region in Azure.|
+|(Workload) Maintain small and optimized images.|Streamlining your images helps reduce costs since new nodes need to download these images. Build images in a way that allows the container to start as soon as possible to help avoid user request failures or timeouts while the application is starting up, potentially leading to overprovisioning.|
 |(Cluster) Enable [Cluster Autoscaler](/azure/aks/cluster-autoscaler) to automatically reduce the number of agent nodes in response to excess resource capacity. |Automatically scaling down the number of nodes in your AKS cluster lets you run an efficient cluster when demand is low and scale up when demand returns.|
 |(Cluster) Enable [Node Autoprovision](/azure/aks/node-autoprovision?tabs=azure-cli) to automate VM SKU selection. |Node Autoprovision simplifies the SKU selection process and decides, based on pending pod resource requirements, the optimal VM configuration to run workloads in the most efficient and cost effective manner. |
 |(Workload) Use the [Horizontal Pod Autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler).|Adjust the number of pods in a deployment depending on CPU utilization or other select metrics, which support cluster scale-in operations.|
 |(Workload) Use [Vertical Pod Autoscaler](/azure/aks/vertical-pod-autoscaler) (preview).|Rightsize your pods and dynamically set [requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) based on historic usage.|
-|(Workload) Use [Kubernetes Event Driven Autoscaling](/azure/aks/keda-about) (KEDA).|Scale based on the number of events being processed. Choose from a rich catalog of 50+ KEDA scalers.|
-|(Cluster and Workload) Adopt a cloud financial discipline and cultural practice to drive ownership of cloud usage. | The foundation of enabling cost optimization is the spread of a cost saving cluster. A [financial operations approach (FinOps)](https://www.finops.org/introduction/what-is-finops/) is often used to help organizations reduce cloud costs. It's a practice involving collaboration between finance, operations, and engineering teams to drive alignment on cost saving goals and bring transparency to cloud costs.|
 |(Cluster) Sign up for [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) or [Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). | If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.|
-|(Cluster) Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) to determine the best monitoring strategy for your workloads. | N/A |
 |(Cluster) Configure the [AKS Cost Analysis add-on](/azure/aks/cost-analysis). | The cost analysis cluster extension enables you to obtain granular insight into costs associated with various Kubernetes resources in your clusters or namespaces.|
 
 ## Operational excellence
@@ -157,6 +158,7 @@ The [Operational Excellence design principles](/azure/well-architected/operation
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment. Review the [Day-2 operations guide](/azure/architecture/operator-guides/aks/day-2-operations-guide)
 
 > [!div class="checklist"]
+>
 > - (Cluster) Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
 > - (Cluster) Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
 > - (Workload) Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
@@ -179,6 +181,8 @@ Start your design strategy based on the [design review checklist for Operational
 |(Cluster) Operationalize clusters and pods configuration standards with [Azure Policy](/azure/aks/use-azure-policy). | Azure Policy can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and if anything is running against company policy. |
 | (Workload) Use platform capabilities in your release engineering process.|Kubernetes and ingress controllers support many advanced deployment patterns for inclusion in your release engineering process. Consider patterns like blue-green deployments or canary releases.|
 |(Cluster and Workload) For mission-critical workloads, use stamp-level blue/green deployments.|Automate your mission-critical design areas, including [deployment and testing](/azure/well-architected/mission-critical/mission-critical-deployment-testing#ephemeral-blue-green-deployments).|
+|===============|================|
+|(Workload) Use [Kubernetes Event Driven Autoscaling](/azure/aks/keda-about) (KEDA).|Scale based on the number of events being processed. Choose from a rich catalog of 50+ KEDA scalers.|
 
 ## Performance efficiency
 
@@ -201,10 +205,10 @@ Start your design strategy based on the [design review checklist for Performance
 
 | Recommendation | Benefit |
 |--------|----|
-|(Cluster) Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to workload demands.<br><br>Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.|The ability to automatically scale up or down the number of nodes and the number of pods in your AKS cluster using cluster autoscaling lets you run an efficient, cost-effective cluster.|
+|(Cluster) Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to workload demands.<br><br>Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.|The ability to automatically scale up or down the number of nodes and the number of pods in your AKS cluster lets you run an efficient, cost-effective cluster.|
 |(Cluster and Workload) Separate workloads into different node pools and consider [scaling](/azure/aks/scale-cluster) user node pools.|Unlike System node pools that always require running nodes, user node pools allow you to scale up or down.|
 |(Workload) Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler) to implement advanced balancing of resources for workloads that require them. | As you manage AKS clusters, you often need to isolate teams and workloads. Advanced features provided by the Kubernetes scheduler let you control which pods can be scheduled on certain nodes, and how multi-pod applications can be appropriately distributed across the cluster.|
-|(Workload) Use [KEDA](/training/modules/aks-app-scale-keda/) to build a meaningful auto scale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Often scale considerations will come from more complex or even external data points.|
+|(Workload) Use [Kubernetes Event-driven Autoscaling (KEDA)](/training/modules/aks-app-scale-keda/) to build a meaningful auto scale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Often scale considerations will come from more complex or even external data points. KEDA allows your applications to scale based on events, such as the number of messages in a queue or the length of a topic lag.|
 
 ## Azure policies
 
