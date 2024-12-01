@@ -50,6 +50,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > [!div class="checklist"]
 >
 > - (Cluster) For critical workloads, use [availability zones](/azure/aks/availability-zones) for your AKS clusters.
+>
 > - (Cluster) Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
 > - (Cluster) Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) to determine the best monitoring strategy for your workloads.
 > - (Workload) Ensure workloads are built to support horizontal scaling and report application readiness and health.
@@ -84,6 +85,7 @@ Start your design strategy based on the [**design review checklist for Security*
 > [!div class="checklist"]
 >
 > - (Cluster) Use [Managed Identities](/azure/aks/use-managed-identity) to avoid managing and rotating service principles.
+>
 > - (Cluster) Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
 > - (Cluster) Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
 > - (Cluster) Deploy a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
@@ -116,7 +118,9 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time. Review [Optimize Costs in Azure Kubernetes Service](/azure/aks/best-practices-cost).
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload.
+
+Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time. Review [Optimize Costs in Azure Kubernetes Service](/azure/aks/best-practices-cost).
 
 > [!div class="checklist"]
 >
@@ -135,8 +139,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | Recommendation | Benefit |
 |----------------------------------|-----------|
 |(Cluster and Workload) Align [SKU selection](/azure/aks/free-standard-pricing-tiers) and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
-|(Cluster) Select the right virtual machine instance type. |Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a less powerful instance can lead to performance issues and increased downtime.<br><br>To determine the right virtual machine instance type, consider workload characteristics, resource requirements, and availability needs.|
-|(Cluster) Select [virtual machines based on the Arm architecture](/azure/virtual-machines/dplsv5-dpldsv5-series). AKS supports [creating Arm64 Ubuntu agent nodes](/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool), as well as a mix of Intel and ARM architecture nodes within a cluster.| The ARM64 architecture provides a better price-to-performance ratio due to its lower power utilization and efficient compute performancethat and can bring better performance at a lower cost.|
+|(Cluster) Select the right virtual machine instance type.<br><br>To determine the right virtual machine instance type, consider workload characteristics, resource requirements, and availability needs.|Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a less powerful instance can lead to performance issues and increased downtime.|
+|(Cluster) Select [virtual machines based on the Arm architecture](/azure/virtual-machines/dplsv5-dpldsv5-series). AKS supports [creating Arm64 Ubuntu agent nodes](/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool), as well as a mix of Intel and ARM architecture nodes within a cluster.| The ARM64 architecture provides a better price-to-performance ratio due to its lower power utilization and efficient compute performance that and can bring better performance at a lower cost.|
 |(Cluster) Select [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms). |Spot VMs allow you to take advantage of unutilized Azure capacity with significant discounts (up to 90% as compared to pay-as-you-go prices). If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes. |
 |(Cluster) Select the appropriate region.<br><br>Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges.|The region where you deploy your workload in Azure can significantly impact the cost. Due to many factors, cost of resources varies per region in Azure.|
 |(Workload) Maintain small and optimized images.|Streamlining your images helps reduce costs since new nodes need to download these images. Build images in a way that allows the container to start as soon as possible to help avoid user request failures or timeouts while the application is starting up, potentially leading to overprovisioning.|
@@ -160,6 +164,7 @@ Start your design strategy based on the [design review checklist for Operational
 > [!div class="checklist"]
 >
 > - (Cluster) Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
+>
 > - (Cluster) Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
 > - (Workload) Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
 > - (Cluster) Enable diagnostics settings to ensure control plane or core API server interactions are logged.
@@ -196,8 +201,14 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - (Cluster and Workload) **Conduct capacity planning.** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations. After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.
-> - (Cluster) **Define a cluster scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste. Review the [Scaling and Partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration. Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden.
+> - (Cluster and Workload) **Conduct capacity planning.** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations.
+>
+>   After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.
+> - (Cluster) **Define a cluster scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste.
+>
+>   Review the [Scaling and Partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration.
+>
+>   Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden.
 > - (Cluster and Workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and and established baselines.
 > - (Cluster and Workload) **Scale workloads and flows independently.** Follow the guidance in [Optimize workload design using flows](azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. Separate workloads and flows into different node pools allowing independent scalling.
 
