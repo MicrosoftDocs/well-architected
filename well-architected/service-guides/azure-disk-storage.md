@@ -15,11 +15,11 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Disk Storage
 
-Azure managed disks are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest.
+Azure managed disks are Azure-managed, block-level storage volumes that you use with Azure Virtual Machines. Managed disks are similar to physical disks in an on-premises server, but they operate in a virtual environment. When you use a managed disk, you must specify the disk size, the disk type, and provision the disk. After you provision the disk, Azure manages subsequent operations and maintenance tasks.
 
-This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options) and chose Azure Disk Storage as the storage service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
+This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options) and chose Azure Disk Storage as the storage service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../../pillars.md).
 
-This guide focuses on how to make decisions about Azure managed disks. But managed disks are a critical dependency of Azure Virtual Machines (VMs). As a prerequisite, read and implement the recommendations in [Azure Well-Architected Framework perspective on Virtual Machines and scale sets](virtual-machines.md). 
+This guide focuses on how to make decisions about Azure managed disks. But managed disks are a critical dependency of Azure Virtual Machines. As a prerequisite, read and implement the recommendations in [Azure Well-Architected Framework perspective on Virtual Machines and scale sets](virtual-machines.md).
 
 > [!IMPORTANT]
 >
@@ -41,7 +41,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-[**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+[Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 #### Design checklist
 
@@ -49,25 +49,25 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Review the best practices for achieving high availability with managed disks**: [Optimize your application for high availability](/azure/virtual-machines/disks-high-availability) by considering these recommendations based on the configuration of your managed disks and virtual machines.
+> - **Review best practices to achieve high availability with managed disks**: [Optimize your application for high availability](/azure/virtual-machines/disks-high-availability) by considering these recommendations based on the configuration of your managed disks and virtual machines (VMs).
 >
-> - **Define reliability and recovery targets**: Review the [Azure Service Level Agreements (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1). The Virtual Machine SLA is impacted by the disk types that you attach to your VM. For the highest SLA, only use Ultra Disks, Premium SSD v2, or Premium SSD disks for OS and data disks. Review [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics) for guidance about calculating your reliability targets.
+> - **Define reliability and recovery targets**: Review the [Azure service-level agreements (SLAs)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services). The disk types that you attach to your VM affect the VM SLA. For the highest SLA, only use Azure Ultra Disk Storage, Azure Premium SSD v2, or Premium SSD disks for OS and data disks. For guidance about calculating your reliability targets, see [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics).
 >
-> - **Create a recovery plan**: [Evaluate data protection features](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), backup and restore operations, or failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution using incremental disk snapshots or restore points. Using these backup solutions increases your costs.
+> - **Create a recovery plan**: [Evaluate data-protection features](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), backup and restore operations, and failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution by using incremental disk snapshots or restore points. A custom backup solution increases your costs.
 >
-> - **Monitor potential availability issues**: Subscribe to the [Azure Service Health Dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to ensure your disks aren't regularly throttling. Manually check VMs to ensure attached disks aren't reaching their storage capacity. Review [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) for guidance on how to integrate these metrics into the overall workload health monitoring strategy.
+> - **Monitor potential availability problems**: Subscribe to the [Azure Service Health dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to help prevent disk throttling. Manually check VMs to ensure that attached disks don't reach their storage capacity. For guidance about how to integrate these metrics into your overall workload health monitoring strategy, see [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling).
 >
-> - **Use failure mode analysis**: Minimize points of failure by considering internal dependencies such as the availability of virtual networks or Azure Key Vault.
+> - **Use failure mode analysis**: Consider internal dependencies, such as the availability of virtual networks or Azure Key Vault, to help minimize points of failure.
 
 ### Recommendations
 
 | **Recommendation** | **Benefit** |
 |---|---|
-|Distribute [VMs and disks across multiple availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones) using a zone redundant Virtual Machine Scale Set with flexible orchestration mode or by deploying VMs and disks across three availability zones.<br></br>[Zone balancing](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) equally spreads the instances across zones.| The VM and disk instances are provisioned in physically separate locations within each Azure region that are tolerant to local failures. Keep in mind that, depending on resource availability, there might be an uneven number of instances across zones.<br></br>Zone balancing supports availability by making sure that, if one zone is down, the other zones have sufficient instances. Two instances in each zone provide a buffer during upgrades. |
-| [Use Ultra Disks, Premium SSD v2, and Premium SSD disks](/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). |  Single-instance VMs using only Premium SSD disks as the OS disks, and only either Ultra Disks, Premium SSD v2, or Premium SSD disks as data disks have the highest uptime service-level agreement (SLA). |
-| For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk. Especially [when sharing disks between VMs](/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the impact of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone went down and your virtual machine (VM) wasn't affected, then workloads on ZRS disks continue running. But if your VM was affected by an outage and you want to recover before it's resolved, you can force detach your ZRS disks from the failed VM, freeing them to attach to another VM.<br></br>Using a ZRS disk when sharing a disk between multiple VMs prevents the shared disk from becoming a single point of failure. |
-| Implement one of the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). For managed solutions, use either [Azure Backup](/azure/backup/disk-backup-overview) or [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). If you need to curate your own backup solution, use either [restore points](/azure/virtual-machines/create-restore-points) or [snapshots](/azure/virtual-machines/disks-incremental-snapshots). |  Identifying the ideal backup option for your needs lets you maximize your environments recoverability. |
-| If you're managing your own snapshots, [copy them across regions using the provided scripts](/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions). | Using the provided scripts simplifies transferring data from one region to another.<br></br>This is a good option if you can't use Azure Site Recovery, since you can still create disaster recovery backups in other regions. |
+|Distribute [VMs and disks across multiple availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones). Use a zone-redundant virtual machine scale set in flexible orchestration mode, or deploy VMs and disks across three availability zones.<br></br>Use [zone balancing](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) to equally spread the instances across zones.| You provision VM and disk instances in physically separate locations within each Azure region. Each location is tolerant to local failures. Depending on resource availability, you might have an uneven number of instances across zones. <br></br> Zone balancing supports availability by making sure that, if one zone is down, the other zones have sufficient instances. Two instances in each zone provide a buffer during upgrades. |
+| [Use Ultra Disk Storage, Premium SSD v2, and Premium SSD disks](/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). | Single-instance VMs that use Premium SSD OS disks and Ultra Disk Storage, Premium SSD v2, or Premium SSD data disks have the highest uptime SLA. |
+| For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk, especially [when you share disks between VMs](/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the affect of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone fails and your VM remains active, workloads on ZRS disks continue to run. But if an outtage does affect your VM, and you want to recover disks before the outtage resolves, you can force-detach your ZRS disks from the failed VM. Then the ZRS disks can attach to a different VM. <br></br> When you share a disk between multiple VMs, use a ZRS disk to prevent the shared disk from becoming a single point of failure. |
+| Implement one of the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). For managed solutions, use [Backup](/azure/backup/disk-backup-overview) or [Site Recovery](/azure/site-recovery/site-recovery-overview). If you need to curate your own backup solution, use [restore points](/azure/virtual-machines/create-restore-points) or [snapshots](/azure/virtual-machines/disks-incremental-snapshots). |  Identify the ideal backup option for your needs to help maximize your environment's recoverability. |
+| If you manage your own snapshots, [copy them across regions by using scripts](/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions). | Use scripts to simplify transferring data from one region to another.<br></br> Use this option if you can't use Site Recovery because you can still create disaster recovery backups in other regions. |
 
 ## Security
 
@@ -83,28 +83,32 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - Review the [security baseline for Storage](/azure/well-architected/security/checklist).
 >
-> - **Limit the ability to export or import managed disks**. Limiting the ability to import or export managed disks increases the security of your data. You've a few ways to limit these capabilities. You can either create a custom RBAC role with the permissions necessary to import and export, you can use Entra ID authentication, setup private links, configure an Azure policy, or configure the network access policy. See [Restrict managed disks from being imported or exported](/azure/virtual-machines/disks-restrict-import-export-overview).
+> - **Limit the ability to export or import managed disks.** Use this approach to increase the security of your data. To limit export or import capabilities, you can use one of the following methods. You can create a custom role-based access control (RBAC) role that has the permissions necessary to import and export, use Microsoft Entra ID authentication, set up private links, configure an Azure policy, or configure a network access policy. For more information, see [Restrict managed disks from being imported or exported](/azure/virtual-machines/disks-restrict-import-export-overview).
 >
-> - **Leverage encryption options.** By default, managed disks are encrypted with server-side encryption (SSE) which protects your data and helps meet organization and compliance commitments. There are other configurations and options, if you require them. You can use SSE with encryption keys managed by you, rather than Azure, you can enable [encryption at host](/azure/virtual-machines/disk-encryption?branch=main#encryption-at-host---end-to-end-encryption-for-your-vm-data), or you can enable double encryption at rest. See [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption).
+> - **Take advantage of encryption options.** By default, managed disks are encrypted with server-side encryption (SSE), which helps protect your data and meet organization and compliance commitments. You might require other configurations and options. You can:
+>    - Use SSE with encryption keys that you manage, rather than Azure.
+>    - Enable [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+>    - Enable double encryption at rest.
 >
-> - **Secure your SAS with Entra ID**: Microsoft Entra ID provides superior security and ease of use over Shared Key and shared access signature (SAS). Grant security principals only those permissions that are necessary for them to perform their tasks.
+>   For more information, see [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption).
 >
-> - **Protect secrets** such as customer-managed keys and SAS tokens. These forms of authorization aren't generally recommended but if you're using them, make sure to rotate your keys, and set key expirations as early as practical, and store these secrets in secure ways.
+> - **Secure your shared access signature (SAS) with Microsoft Entra ID.** Microsoft Entra ID provides extra security and ease of use compared to a shared key and SAS. Grant security principals only necessary permissions to perform their tasks.
 >
-> - **Detect threats**: Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). Security alerts are triggered when anomalies in activity occur and are sent by email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.
+> - **Protect secrets.** Protect secrets, such as customer-managed keys and SAS tokens. We generally don't recommend these forms of authorization. But if you use them, make sure to rotate your keys, set key expirations as early as practical, and securely store these secrets.
 >
-> - **Use tags and labels** for important disks. Applying tags and labels to important disks makes it easier to ensure you're applying the appropriate levels of protection to them.
+> - **Detect threats.** Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) so that you can trigger security alerts when anomalies in activity occur. Defender for Cloud notifies subscription administrators by email. The email includes details about the suspicious activity and recommendations to investigate and remediate threats.
 >
-> - **Harden all workload components**: Reduce extraneous surface area and tightening configurations to increase attacker cost. Properly secure any related resources being used with your managed disks, such as backup recovery vaults or Azure Key Vaults.
+> - **Use tags and labels.** Apply tags and labels to important disks to help ensure that you apply the appropriate levels of protection to the disks.
+>
+> - **Harden all workload components.** Reduce extraneous surface area and tighten configurations to increase attacker cost. Properly secure any related resources that you use with your managed disks, such as backup recovery vaults or Azure key vaults.
 
 ### Recommendations
 
-
 | **Recommendation** | **Benefit** |
 |---|---|
-| Use [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) for your managed disks whenever possible. | Encryption at host provides end to end encryption for environments with it enabled. Encryption begins on your VM, and flows through to its attached disks. |
-| Apply an [Azure Resource Manager lock](/azure/storage/common/lock-account-resource) on the disk | Locking a disk prevents it from being deleted and causing data loss. |
-| Disable traffic to the public endpoints of your disk. [Create private endpoints](/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) for clients that run in Azure. | Disabling traffic to the public endpoints causes traffic to travel over the Microsoft backbone network, which eliminates exposure from the public internet. |
+| Use [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) for your managed disks whenever possible. | Encryption at host provides end-to-end encryption for environments that have it enabled. Encryption begins on your VM and goes to its attached disks. |
+| Apply an [Azure Resource Manager lock](/azure/storage/common/lock-account-resource) on the disk. | Lock a disk to help prevent it from being deleted and losing data. |
+| Disable traffic to the public endpoints of your disk. [Create private endpoints](/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) for clients that run in Azure. | Disable traffic to the public endpoints so that traffic travels over the Microsoft backbone network, which eliminates exposure to the public internet. |
 | If possible, limit access to resources and functions by using Azure role-based access control (Azure RBAC). | With RBAC, there are no tokens or keys that could be compromised. The security principal (user, group, managed identity, or service principal) is authenticated by Microsoft Entra ID to return an OAuth 2.0 token. The token is used to authorize a request against the Disk service. |
 | Microsoft discourages the use of SAS tokens. If you must create one, review this list of [SAS best practices](/azure/storage/common/storage-sas-overview) before you create and distribute it.<br></br>Set the expiration of SAS tokens to 60 days or less. | Best practices can help you prevent a SAS token from being leaked and quickly recover from leak should one occur. |
 | Consider using your own encryption key ([Customer-managed key](/azure/storage/common/customer-managed-keys-overview)) to protect the data in your managed disk. | A customer-managed key provides greater flexibility and control if you need it. For example, you can store encryption keys in Azure Key Vault and automatically rotate them. |
@@ -205,7 +209,7 @@ Start your design strategy based on the [design review checklist for Performance
 Azure provides an extensive set of built-in policies related to Azure Disk Storage and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - Public network access to your managed disks is disabled
-- Azure Backup is enabled
+- Backup is enabled
 - Double encryption is enabled
 - Specific disk encryption sets are used with your disks
 - Customer-managed keys are being used
