@@ -80,6 +80,10 @@
         "sustainability/**/*.*": "waf-workload-sustainability",
         "service-guides/**/*.*": "waf-service-guide",
         "ai/**/*.*": "waf-workload-ai"
+      },
+      "ms.collection": {
+        "ai/**/*.*": "ce-skilling-ai-copilot",
+        "saas/**/*.*": "learn-startups"
       }
     },
     "template": [
