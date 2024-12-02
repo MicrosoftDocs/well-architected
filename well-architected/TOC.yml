@@ -335,7 +335,7 @@
             - name: Operational excellence
               href: service-guides/azure-sql-managed-instance/operational-excellence.md
         - name: Azure Local
-          href: service-guides/azure-stack-hci.md
+          href: service-guides/azure-local.md
         - name: Azure Stack Hub
           items:
             - name: Reliability
