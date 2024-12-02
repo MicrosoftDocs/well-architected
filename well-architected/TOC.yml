@@ -304,8 +304,8 @@
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
-        - name: Azure Disks
-          href: service-guides/azure-disks-cost-optimization.md
+        - name: Azure Disk Storage
+          href: service-guides/azure-disk-storage.md
         - name: Azure Files
           href: service-guides/azure-files.md       
         - name: Azure Front Door
