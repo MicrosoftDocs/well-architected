@@ -117,7 +117,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](../../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Disk Storage.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Disk Storage.
 
 #### Design checklist
 
@@ -177,11 +177,11 @@ Start your design strategy based on the [design review checklist for Operational
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-The [Performance Efficiency design principles](../../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Disk Storage.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Disk Storage.
 
 > [!div class="checklist"]
 >
