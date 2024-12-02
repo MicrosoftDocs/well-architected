@@ -64,8 +64,8 @@ Start your design strategy based on the [design review checklist for Reliability
 | **Recommendation** | **Benefit** |
 |---|---|
 |Distribute [VMs and disks across multiple availability zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#design-considerations-for-availability-zones). Use a zone-redundant virtual machine scale set in flexible orchestration mode, or deploy VMs and disks across three availability zones.<br></br>Use [zone balancing](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) to equally spread the instances across zones.| You provision VM and disk instances in physically separate locations within each Azure region. Each location is tolerant to local failures. Depending on resource availability, you might have an uneven number of instances across zones. <br></br> Zone balancing supports availability by making sure that, if one zone is down, the other zones have sufficient instances. Two instances in each zone provide a buffer during upgrades. |
-| [Use Ultra Disk Storage, Premium SSD v2, and Premium SSD disks](/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). | Single-instance VMs that use Premium SSD OS disks and Ultra Disk Storage, Premium SSD v2, or Premium SSD data disks have the highest uptime SLA. |
-| For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk, especially [when you share disks between VMs](/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the effect of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone fails and your VM remains active, workloads on ZRS disks continue to run. But if an outage does affect your VM, and you want to recover disks before the outage resolves, you can force-detach your ZRS disks from the failed VM. Then the ZRS disks can attach to a different VM. <br></br> When you share a disk between multiple VMs, use a ZRS disk to prevent the shared disk from becoming a single point of failure. |
+| Use [Ultra Disk Storage, Premium SSD v2, and Premium SSD disks](/azure/virtual-machines/disks-high-availability#use-ultra-disks-premium-ssd-v2-or-premium-ssd). | Single-instance VMs that use Premium SSD OS disks and Ultra Disk Storage, Premium SSD v2, or Premium SSD data disks have the highest uptime SLA. |
+| For maximum availability and durability, use a [zone-redundant storage](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) (ZRS) disk, especially when you [share disks between VMs](/azure/virtual-machines/disks-high-availability#use-zrs-disks-when-sharing-disks-between-vms). | ZRS disks minimize the effect of a failure in an availability zone and increase recoverability from such zonal failures.<br></br>If a zone fails and your VM remains active, workloads on ZRS disks continue to run. But if an outage does affect your VM, and you want to recover disks before the outage resolves, you can force-detach your ZRS disks from the failed VM. Then the ZRS disks can attach to a different VM. <br></br> When you share a disk between multiple VMs, use a ZRS disk to prevent the shared disk from becoming a single point of failure. |
 | Implement one of the [available backup options](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks). For managed solutions, use [Backup](/azure/backup/disk-backup-overview) or [Site Recovery](/azure/site-recovery/site-recovery-overview). If you need to curate your own backup solution, use [restore points](/azure/virtual-machines/create-restore-points) or [snapshots](/azure/virtual-machines/disks-incremental-snapshots). |  Identify the ideal backup option for your needs to help maximize your environment's recoverability. |
 | If you manage your own snapshots, [copy them across regions by using scripts](/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions). | Use scripts to simplify transferring data from one region to another.<br></br> Use this option if you can't use Site Recovery because you can still create disaster recovery backups in other regions. |
 
@@ -81,12 +81,10 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> - Review the [security baseline for Storage](/azure/well-architected/security/checklist).
->
 > - **Limit the ability to export or import managed disks.** Use this approach to increase the security of your data. To limit export or import capabilities, you can use one of the following methods. You can create a custom role-based access control (RBAC) role that has the permissions necessary to import and export, use Microsoft Entra ID authentication, set up private links, configure an Azure policy, or configure a network access policy. For more information, see [Restrict managed disks from being imported or exported](/azure/virtual-machines/disks-restrict-import-export-overview).
 >
 > - **Take advantage of encryption options.** By default, managed disks are encrypted with server-side encryption (SSE), which helps protect your data and meet organization and compliance commitments. You might require other configurations and options. You can:
->    - Use SSE with encryption keys that you manage, rather than Azure.
+>    - Use SSE with encryption keys that you manage.
 >    - Enable [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 >    - Enable double encryption at rest.
 >
@@ -129,7 +127,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Estimate the cost of capacity and operations**: Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to model the costs that are associated with disk types, transactions, and capabilities. Compare the costs that are associated with various regions, account types, namespace types, and redundancy configurations.
 >
-> - **Choose a billing model**: Evaluate whether [a commitment-based model](/azure/virtual-machines/disks-reserved-capacity) is more cost efficient than a consumption-based model. If you don't know how much capacity you need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
+> - **Choose a billing model**: Evaluate whether a [commitment-based model](/azure/virtual-machines/disks-reserved-capacity) is more cost efficient than a consumption-based model. If you don't know how much capacity you need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
 >
 > - **Decide which features you need**: Some features such as [snapshots](/azure/virtual-machines/disks-incremental-snapshots) or [on-demand bursting](/azure/virtual-machines/disks-enable-bursting) incur extra transaction costs, capacity costs, and other charges. For example, if you enable snapshots, you're billed for the amount of storage that each snapshot uses. When you decide which capabilities your disks need, review the pricing and billing details for those capabilities.
 >
@@ -201,7 +199,7 @@ Start your design strategy based on the [design review checklist for Performance
 | For workloads and solutions that require the lowest latency, such as e-commerce workloads or databases, use a Premium SSD OS disk and [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks) or [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) data disks. | This configuration offers the best reliability and highest SLA and performance. |
 | Use [Azure metrics](/azure/virtual-machines/disks-metrics) to monitor your environment and help prevent disk throttling. | Use Azure metrics to identify disks that are being throttled and address them. Throttling leads to suboptimal performance and problems like increased latency. |
 | For disks that are being throttled, evaluate whether changing to a larger disk size or changing to a more performant disk is better for your needs. <br></br> For Premium SSD disks that are being throttled, if you have short-term bursts of demand, [enable on-demand bursting](/azure/virtual-machines/disks-enable-bursting). For longer-term extended demand, [change the tier of the disk](/azure/virtual-machines/disks-change-performance) or evaluate whether [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) or [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks) disks better fit your needs. | Place applications on disks that aren't being throttled to help ensure optimal performance without increased latency. |
-| When you upload a virtual hard disk (VHD), use the [Add-AzVHD PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The [Add-AzVHD PowerShell command](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) automates most of the upload process for you to help streamline the process. |
+| When you upload a virtual hard disk (VHD), use the [Add-AzVHD Azure PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The *Add-AzVHD* Azure PowerShell command automates most of the upload process for you to help streamline the process. |
 | For existing deployments that are on-premises or in another public cloud provider, use [Azure Migrate and Modernize](/azure/migrate/migrate-services-overview). | Azure Migrate and Modernize can evaluate your deployment for you and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
 
 ## Azure policies
@@ -223,10 +221,10 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure Disk Storage.
 
-- [Reliability](/azure/advisor/advisor-reference-cost-recommendations)
+- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#virtual-machines)
 - [Security](/azure/defender-for-cloud/recommendations-reference)
-- [Cost Optimization](/azure/advisor/advisor-reference-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-reference-cost-recommendations#consider-azure-managed-disk-reserved-instances-to-save-over-your-on-demand-costs)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations#use-managed-disks-to-prevent-disk-io-throttling)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
 ## Next step
