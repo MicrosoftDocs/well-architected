@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Disk Storage
+title: Azure Well-Architected Framework Perspective on Azure Disk Storage
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Disk Storage.
 author: roygara
 ms.author: rogarana
