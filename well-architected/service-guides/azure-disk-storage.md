@@ -15,7 +15,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Disk Storage
 
-Azure managed disks are a type of Azure Disk Storage that simplify the management of storage for Azure Virtual Machines. Managed disks are block-level storage volumes that Azure manages. They're similar to physical disks in an on-premises server, but they operate in a virtual environment. When you use a managed disk, you must specify the disk size, the disk type, and configure the disk. After you configure the disk, Azure manages subsequent operations and maintenance tasks.
+Azure managed disks are a type of Azure Disk Storage that simplify the management of storage for Azure Virtual Machines. Managed disks are block-level storage volumes that Azure manages. They're similar to physical disks in an on-premises server, but they operate in a virtual environment. When you use a managed disk, you must specify the disk size type and configure the disk. After you configure the disk, Azure manages subsequent operations and maintenance tasks.
 
 This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options) and chose Azure Disk Storage as the storage service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
@@ -49,15 +49,15 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Review best practices to achieve high availability with managed disks**: [Optimize your application for high availability](/azure/virtual-machines/disks-high-availability) by considering these recommendations based on the configuration of your managed disks and virtual machines (VMs).
+> - **Review best practices to achieve high availability with managed disks.** [Optimize your application for high availability](/azure/virtual-machines/disks-high-availability) by considering these recommendations and how they relate to the configuration of your managed disks and virtual machines (VMs).
 >
-> - **Define reliability and recovery targets**: Review the [Azure service-level agreements (SLAs)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services). The disk types that you attach to your VM affect the VM SLA. For the highest SLA, only use Azure Ultra Disk Storage, Azure Premium SSD v2, or Premium SSD disks for OS and data disks. For guidance about calculating your reliability targets, see [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics).
+> - **Define reliability and recovery targets.** Review the [Azure service-level agreements (SLAs)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services). The disk types that you attach to your VM affect the VM SLA. For the highest SLA, only use Azure Ultra Disk Storage, Azure Premium SSD v2, or Premium SSD disks for OS and data disks. For guidance about calculating your reliability targets, see [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics).
 >
-> - **Create a recovery plan**: [Evaluate data-protection features](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), backup and restore operations, and failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or to create your own backup solution by using incremental disk snapshots or restore points. A custom backup solution increases your costs.
+> - **Create a recovery plan.** [Evaluate data-protection features](/azure/virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks), backup and restore operations, and failover procedures. Decide whether to use Azure Backup, Azure Site Recovery, or create your own backup solution by using incremental disk snapshots or restore points. A custom backup solution increases your costs.
 >
-> - **Monitor potential availability problems**: Subscribe to the [Azure Service Health dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to help prevent disk throttling. Manually check VMs to ensure that attached disks don't reach their storage capacity. For guidance about how to integrate these metrics into your overall workload health monitoring strategy, see [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling).
+> - **Monitor potential availability problems.** Subscribe to the [Azure Service Health dashboard](https://azure.microsoft.com/status/). Use disk storage metrics in Azure Monitor to help prevent disk throttling. Manually check VMs to ensure that attached disks don't reach their storage capacity. For guidance about how to integrate these metrics into your overall workload health monitoring strategy, see [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling).
 >
-> - **Use failure mode analysis**: Consider internal dependencies, such as the availability of virtual networks or Azure Key Vault, to help minimize points of failure.
+> - **Use failure mode analysis.** Consider internal dependencies, such as the availability of virtual networks or Azure Key Vault, to help minimize points of failure.
 
 ### Recommendations
 
@@ -123,19 +123,19 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
-> - **Understand how Azure Disk Storage is billed**: Different disk types are billed in different ways and have different features that can affect billing. To design the most cost-optimized environment, see [Understand Azure Disk Storage billing](/azure/virtual-machines/disks-understand-billing). For exact billing, find the specific pricing details and apply the appropriate settings. For more information, see [Managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
+> - **Understand how Azure Disk Storage is billed.** Different disk types are billed in different ways and have different features that can affect billing. To design the most cost-optimized environment, see [Understand Azure Disk Storage billing](/azure/virtual-machines/disks-understand-billing). For exact billing, find the specific pricing details and apply the appropriate settings. For more information, see [Managed disks pricing](https://azure.microsoft.com/pricing/details/managed-disks/).
 >
-> - **Estimate the cost of capacity and operations**: Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to model the costs that are associated with disk types, transactions, and capabilities. Compare the costs that are associated with various regions, account types, namespace types, and redundancy configurations.
+> - **Estimate the cost of capacity and operations.** Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to model the costs that are associated with disk types, transactions, and capabilities. Compare the costs that are associated with various regions, account types, namespace types, and redundancy configurations.
 >
-> - **Choose a billing model**: Evaluate whether a [commitment-based model](/azure/virtual-machines/disks-reserved-capacity) is more cost efficient than a consumption-based model. If you don't know how much capacity you need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
+> - **Choose a billing model.** Evaluate whether a [commitment-based model](/azure/virtual-machines/disks-reserved-capacity) is more cost efficient than a consumption-based model. If you don't know how much capacity you need, start with a consumption-based model, monitor capacity metrics, and evaluate later.  
 >
-> - **Decide which features you need**: Some features such as [snapshots](/azure/virtual-machines/disks-incremental-snapshots) or [on-demand bursting](/azure/virtual-machines/disks-enable-bursting) incur extra transaction costs, capacity costs, and other charges. For example, if you enable snapshots, you're billed for the amount of storage that each snapshot uses. When you decide which capabilities your disks need, review the pricing and billing details for those capabilities.
+> - **Decide which features you need.** Some features such as [snapshots](/azure/virtual-machines/disks-incremental-snapshots) or [on-demand bursting](/azure/virtual-machines/disks-enable-bursting) incur extra transaction costs, capacity costs, and other charges. For example, if you enable snapshots, you're billed for the amount of storage that each snapshot uses. When you decide which capabilities your disks need, review the pricing and billing details for those capabilities.
 >
-> - **Create guardrails**: Create [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) based on subscriptions and resource groups. Use governance policies to restrict resource types, configurations, and locations. You can also use RBAC to block actions that can lead to overspending.
+> - **Create guardrails.** Create [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) based on subscriptions and resource groups. Use governance policies to restrict resource types, configurations, and locations. You can also use RBAC to block actions that can lead to overspending.
 >
-> - **Monitor costs** to ensure that you stay within budgets, compare costs against forecasts, and see where overspending might have occurred. Use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) feature in the Azure portal. You also can export cost data to a storage account and use Excel or Power BI to analyze that data.
+> - **Monitor costs.** to ensure that you stay within budgets, compare costs against forecasts, and see where overspending might have occurred. Use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) feature in the Azure portal. You also can export cost data to a storage account and use Excel or Power BI to analyze that data.
 >
-> - **Monitor disk resources**: Use [sample scripts](/azure/virtual-machines/linux/find-unattached-disks) to search for unattached disks.
+> - **Monitor disk resources.** Use [sample scripts](/azure/virtual-machines/linux/find-unattached-disks) to search for unattached disks.
 
 ### Recommendations
 
@@ -158,11 +158,11 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Create maintenance and emergency recovery plans**: Evaluate data-protection features, backup operations, and restore operations. Select backup solutions that you can use to recover from regional disasters.
+> - **Create maintenance and emergency recovery plans.** Evaluate data-protection features, backup operations, and restore operations. Select backup solutions that you can use to recover from regional disasters.
 >
-> - **Create internal documentation**: Document your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Attach a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk) VMs, or expand a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks) VMs.
+> - **Create internal documentation.** Document your organization's standard practices. Incorporate existing Azure documentation to streamline your processes. Include documentation about attaching a disk to [Windows](/azure/virtual-machines/windows/attach-disk-ps) or [Linux](/azure/virtual-machines/linux/add-disk) VMs or expanding a disk on [Windows](/azure/virtual-machines/windows/expand-os-disk) or [Linux](/azure/virtual-machines/linux/expand-disks) VMs.
 >
-> - **Detect threats**: Enable [Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) so that you can trigger security alerts when anomalies in activity occur. Defender for Cloud notifies subscription administrators by email. The email includes details about the suspicious activity and recommendations to investigate and remediate threats.
+> - **Detect threats.** Enable [Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) so that you can trigger security alerts when anomalies in activity occur. Defender for Cloud notifies subscription administrators by email. The email includes details about the suspicious activity and recommendations to investigate and remediate threats.
 
 ### Recommendations
 
@@ -183,13 +183,13 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Choose the optimal disk types**: Identify the [disk types](/azure/virtual-machines/disks-types) that you need before you deploy your resources. This approach helps you maximize performance and cost efficiency. The five disk types include [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks), [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2), [Premium SSD](/azure/virtual-machines/disks-types#premium-ssds), [Azure Standard SSD](/azure/virtual-machines/disks-types#standard-ssds), and [Azure Standard HDD](/azure/virtual-machines/disks-types#standard-hdds). For the highest performance, use Premium SSD for your VM's OS disk, and use Ultra Disk Storage or Premium SSD v2 for your data disks.
+> - **Choose optimal disk types.** Identify the [disk types](/azure/virtual-machines/disks-types) that you need before you deploy your resources. This approach helps you maximize performance and cost efficiency. The five disk types include [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks), [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2), [Premium SSD](/azure/virtual-machines/disks-types#premium-ssds), [Azure Standard SSD](/azure/virtual-machines/disks-types#standard-ssds), and [Azure Standard HDD](/azure/virtual-machines/disks-types#standard-hdds). For the highest performance, use Premium SSD for your VM's OS disk, and use Ultra Disk Storage or Premium SSD v2 for your data disks.
 >
-> - **Reduce the travel distance between the client and server**: Place data in regions that are closest to connecting clients, ideally in the same region. Default network configurations provide the best performance. Modify network settings only to improve security. In general, network settings don't decrease travel distance and don't improve performance.
+> - **Reduce the travel distance between the client and server.** Place data in regions that are closest to connecting clients, ideally in the same region. Default network configurations provide the best performance. Modify network settings only to improve security. In general, network settings don't decrease travel distance and don't improve performance.
 >
-> - **Collect performance data**: Monitor your disks and VMs to identify performance bottlenecks that occur from throttling. For more information, see [Storage IO metrics](/azure/virtual-machines/disks-metrics).
+> - **Collect performance data.** Monitor your disks and VMs to identify performance bottlenecks that occur from throttling. For more information, see [Storage IO metrics](/azure/virtual-machines/disks-metrics).
 >
-> - **Benchmark your disks**: Create a test environment and determine whether it meets your needs and expectations. For more information, see [Benchmark a disk](/azure/virtual-machines/disks-benchmarks).
+> - **Benchmark your disks.** Create a test environment and determine whether it meets your needs and expectations. For more information, see [Benchmark a disk](/azure/virtual-machines/disks-benchmarks).
 
 ### Recommendations
 
@@ -199,8 +199,8 @@ Start your design strategy based on the [design review checklist for Performance
 | For workloads and solutions that require the lowest latency, such as e-commerce workloads or databases, use a Premium SSD OS disk and [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks) or [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) data disks. | This configuration offers the best reliability and highest SLA and performance. |
 | Use [Azure metrics](/azure/virtual-machines/disks-metrics) to monitor your environment and help prevent disk throttling. | Use Azure metrics to identify disks that are being throttled and address them. Throttling leads to suboptimal performance and problems like increased latency. |
 | For disks that are being throttled, evaluate whether changing to a larger disk size or changing to a more performant disk is better for your needs. <br></br> For Premium SSD disks that are being throttled, if you have short-term bursts of demand, [enable on-demand bursting](/azure/virtual-machines/disks-enable-bursting). For longer-term extended demand, [change the tier of the disk](/azure/virtual-machines/disks-change-performance) or evaluate whether [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) or [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks) disks better fit your needs. | Place applications on disks that aren't being throttled to help ensure optimal performance without increased latency. |
-| When you upload a virtual hard disk (VHD), use the [Add-AzVHD Azure PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The *Add-AzVHD* Azure PowerShell command automates most of the upload process for you to help streamline the process. |
-| For existing deployments that are on-premises or in another public cloud provider, use [Azure Migrate and Modernize](/azure/migrate/migrate-services-overview). | Azure Migrate and Modernize can evaluate your deployment for you and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
+| When you upload a virtual hard disk (VHD), use the [Add-AzVHD Azure PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The *Add-AzVHD* Azure PowerShell command automates most of the upload process to help streamline the process. |
+| For existing deployments that are on-premises or in another public cloud provider, use [Azure Migrate and Modernize](/azure/migrate/migrate-services-overview). | Azure Migrate and Modernize can evaluate your deployment and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
 
 ## Azure policies
 
