@@ -1,5 +1,5 @@
 ---
-# Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
+title: Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
 description: Provides a template for a Well-Architected Framework (WAF) article that is specific to Azure Kubernetes Service (AKS).
 author: schaffererin
 ms.author: schaffererin
@@ -80,7 +80,7 @@ The [Security design principles](/azure/well-architected/security/security-princ
 
 ### Design checklist
 
-Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed. Familiarize yourself with [AKS security concepts](/azure/aks/concepts-security) and evaluate our security hardening recommendations based on the [CIS Kubernetes benchmark](/azure/aks/cis-kubernetes).
+Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Familiarize yourself with [AKS security concepts](/azure/aks/concepts-security) and evaluate our security hardening recommendations based on the [CIS Kubernetes benchmark](/azure/aks/cis-kubernetes). Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -90,13 +90,13 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 >   Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
 > - (Cluster) **Integrate with security monitoring and SIEM tools.** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them. Enable [Azure Kubernetes Service (AKS) connector for Microsoft Sentinel](/azure/sentinel/data-connectors/azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
-> - (Cluster and Workload) **Implement segmentation and network controls.** To prevent data exfiltration, ansure that only authorized and safe traffic is allowed, and contain the blast radius of a security breach.
+> - (Cluster and Workload) **Implement segmentation and network controls.** To prevent data exfiltration, ensure that only authorized and safe traffic is allowed, and contain the blast radius of a security breach.
 >
 >   Deploy a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
 >
 >   Use a Web Application Firewall to secure HTTP(S) traffic.
 > - (Workload) **Maintain a hardened workload's software supply chain.**  Ensure your CI/CID pipeline is hardened with container-aware scanning. Review [secure software supply chain solution for the Azure Kubernetes Service (AKS)](/devsecops/playbook/Enterprise-Solutions/governance-solutions/secure-software-supply-chain/solution) for additional strategies.
-> - (Cluster and Workload) **Implementing security for specialized workloads.** If your Azure Kubernetes Service cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro). To learn about DoD Impact Level 5 (IL5) support and requirements with AKS, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service).
+> - (Cluster and Workload) **Implement extra protection for specialized secure workloads.** Review [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro) if your cluster needs to run a sensitive workload that meets requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1). To learn about DoD Impact Level 5 (IL5) support and requirements with AKS, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service).
 
 ### Recommendations
 
@@ -109,7 +109,7 @@ Start your design strategy based on the [**design review checklist for Security*
 |(Cluster) Use [Azure network policies](/azure/aks/use-network-policies) or [Calico](/azure/aks/hybrid/concepts-container-networking#kubernetes-networks).| With policies, you can secure and control network traffic between pods in a cluster. Calico provides a richer set capabilities including: policy ordering/priority, deny rules, and more flexible match rules.|
 |(Cluster) Secure clusters and pods with [Azure Policy](/azure/aks/use-azure-policy). | Azure Policy can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and if anything is running against company policy. |
 |(Cluster) Secure container access to resources. Limit access to actions that containers can perform. Provide the least number of permissions, and avoid the use of root or privileged escalation.<br><br>For Linux based containers, see [Security container access to resources using built-in Linux security features](/azure/aks/secure-container-access).|By restricting permissions and avoiding the use of root or privileged escalation, you reduce the risk of security breaches. Ensuring that even if a container is compromised, the potential damage is minimized.|
-|(Workload) Use a Web Application Firewall to secure HTTP(S) traffic.|To scan incoming traffic for potential attacks, use a web application firewall such as [Azure Web Application Firewall (WAF) on Azure Application Gateway](/azure/web-application-firewall/ag/ag-overview) or [Azure Front Door](/azure/web-application-firewall/afds/afds-overview).|
+|(Workload) Use a Web Application Firewall to scan incoming traffic for potential attacks. Use a web application firewall such as [Azure Web Application Firewall (WAF) on Azure Application Gateway](/azure/web-application-firewall/ag/ag-overview) or [Azure Front Door](/azure/web-application-firewall/afds/afds-overview).|WAF can detect and mitigate threats in real-time, ensuring that malicious traffic is blocked before it reaches your applications. It provides robust protection against common web-based attacks such as SQL injection, cross-site scripting (XSS), and other Open Web Application Security Project (OWASP) vulnerabilities.|
 |(Cluster) Control cluster egress traffic by ensuring your cluster's outbound traffic is passing through a network security point such as [Azure Firewall](/azure/aks/limit-egress-traffic#restrict-egress-traffic-using-azure-firewall) or an [HTTP proxy](/azure/aks/http-proxy).|Routing outbound traffic through Azure Firewall or an HTTP proxy enables you to enforce security policies that prevent unauthorized access and data exfiltration. This approach also simplifies the administration of security policies and makes it easier to enforce consistent rules across your entire AKS cluster|
 |(Cluster) Use the open-source [Microsoft Entra Workload ID](https://github.com/Azure/azure-workload-identity) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with Azure Key Vault.| These features enable you to protect and rotate secrets, certificates, and connection strings in Azure Key Vault with strong encryption. Provides an access audit log, and keeps core secrets out of the deployment pipeline.|
 |(Cluster) Use [Microsoft Defender for Containers](/azure/defender-for-cloud/defender-for-containers-introduction). |Microsoft Defender for Containers helps you monitor and maintain the security of your clusters, containers, and their applications.|
@@ -167,16 +167,20 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - (Cluster) Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
+> - (Cluster) **Infrastructure as code (IaC) deployment approach** Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
 >
-> - (Cluster) Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
-> - (Workload) Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
-> - (Cluster) Enable diagnostics settings to ensure control plane or core API server interactions are logged.
-> - (Cluster and Workload) Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) to determine the best monitoring strategy for your workloads.
-> - (Workload) The workload should be designed to emit telemetry that can be collected, which should also include liveliness and readiness statuses.
-> - (Cluster and Workload) Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
-> - (Workload) Optimize your workload to operate and deploy efficiently in a container.
-> - (Cluster and Workload) Enforce cluster and workload governance using Azure Policy.
+> - (Cluster and Workload) **Automate infrastructure and workload deployments** Use standard software solutions to manage, integrate, and automate the deployment of your cluster and workloads. Integrate deployment pipelines with your source control system and incorporate automated tests.
+>
+>   Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
+>
+>   Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
+> - (Cluster and Workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics so you can monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
+>
+>    Enable diagnostics settings to ensure control plane or core API server interactions are logged.
+>
+>    The workload should be designed to emit telemetry that can be collected, which should also include liveliness and readiness statuses.
+> - (Cluster and Workload) **Implement testing in production strategies.** Testing in production uses real deployments to validate and measure an application's behavior and performance in the production environment. Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
+> - (Cluster and Workload) **Enforce cluster and workload governance using Azure Policy.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your resources. Review the [Azure policies](#azure-policies) section to learn more about the available built-in policies for AKS.
 > - (Cluster and Workload) **Make workloads more sustainable by optimizing cost.** Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around _cost optimization_, _reducing carbon emissions_, and _optimizing energy consumption_. Optimizing the application's cost is the initial step in making workloads more sustainable. Learn how to build sustainable and efficient AKS workloads, in [Sustainable software engineering principles in Azure Kubernetes Service (AKS)](/azure/aks/concepts-sustainable-software-engineering).
 
 ### Recommendations
@@ -185,7 +189,6 @@ Start your design strategy based on the [design review checklist for Operational
 |--------|----|
 |(Cluster and Workload) Review [AKS best practices](/azure/aks/best-practices) documentation.|To build and run applications successfully in AKS, there are key considerations to understand and implement. These areas include multi-tenancy and scheduler features, cluster, and pod security, or business continuity and disaster recovery.|
 |(Cluster and Workload) Review [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-tutorial-aks-portal).| Azure Chaos Studio can help simulate faults and trigger disaster recovery situations.|
-|(Cluster and Workload) Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) to determine the best monitoring strategy for your workloads. | N/A |
 |(Cluster) Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.|Internet facing workloads should leverage [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic) to route traffic globally across AKS clusters.|
 |(Cluster) Operationalize clusters and pods configuration standards with [Azure Policy](/azure/aks/use-azure-policy). | Azure Policy can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and if anything is running against company policy. |
 | (Workload) Use platform capabilities in your release engineering process.|Kubernetes and ingress controllers support many advanced deployment patterns for inclusion in your release engineering process. Consider patterns like blue-green deployments or canary releases.|
@@ -213,8 +216,10 @@ Start your design strategy based on the [design review checklist for Performance
 >   Review the [Scaling and Partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration.
 >
 >   Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden.
+>
+>   Optimize your workload to operate and deploy efficiently in a container.
 > - (Cluster and Workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and and established baselines.
-> - (Cluster and Workload) **Scale workloads and flows independently.** Follow the guidance in [Optimize workload design using flows](azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. Separate workloads and flows into different node pools allowing independent scalling.
+> - (Cluster and Workload) **Scale workloads and flows independently.** Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. Separate workloads and flows into different node pools allowing independent scalling.
 
 ### Recommendations
 
