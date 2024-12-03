@@ -313,11 +313,7 @@
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
-          items:
-            - name: Reliability
-              href: service-guides/azure-load-balancer/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-load-balancer/operational-excellence.md
+          href: service-guides/azure-load-balancer.md
         - name: Azure Machine Learning
           href: service-guides/azure-machine-learning.md
         - name: Azure NetApp Files 
