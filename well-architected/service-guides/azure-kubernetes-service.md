@@ -54,7 +54,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > - (Cluster) **Deploy multiple clusters across different Azure regions for redundancy.** By geographically distributing AKS clusters, you can achieve higher resiliency and minimize the impact of regional failures.
 >
 >    Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
-> - (Cluster and Workload) **Monitor reliability and overall health indicators of the cluster and workloads.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for additional information to help you design the reliability and overall health monitoring solution for your AKS solution.
+> - (Cluster and Workload) **Monitor reliability and overall health indicators of the cluster and workloads.** Collect logs and metrics to monitor workload health, identify performance and reliability trends, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your AKS solution.
 >
 >   Ensure workloads are built to support horizontal scaling and report application readiness and health.
 > - (Cluster and Workload) **Host application pods in user nodel pools.** By isolating system pods from application workloads, you ensure that AKS essential services are unaffected by the resource demands or potential issues caused by a workload running user node pools.
@@ -240,29 +240,29 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Azure Kubernetes Service that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Kubernetes, also within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant. In addition to the built-in Azure Policy definitions, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes.
+Azure provides an extensive set of built-in policies related to Azure Kubernetes Service that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Kubernetes, and within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant. In addition to the built-in Azure Policy definitions, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes.
 
-Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+Some of the recommendations in this article can be audited through Azure Policy. For example, you can check whether:
 
 #### Cluster policies
 
 - Clusters have readiness or liveness health probes configured for your pod spec.
-- Microsoft Defender for Cloud-based policies
-- Authentication mode and configuration policies (Microsoft Entra ID, RBAC, disable local authentication)
-- API Server network access policies, including private cluster
-- GitOps configuration policies
-- Diagnostics settings policies
-- AKS version restrictions
-- Prevent command invoke
+- Microsoft Defender for Cloud-based policies.
+- Authentication mode and configuration policies (Microsoft Entra ID, RBAC, disable local authentication).
+- API Server network access policies, including private cluster.
+- GitOps configuration policies.
+- Diagnostics settings policies.
+- AKS version restrictions.
+- Prevent command invoke.
 
 #### Cluster and workload policies
 
-- Kubernetes cluster pod security initiatives Linux-based workloads
-- Include pod and container capability policies such as AppArmor, sysctl, security caps, SELinux, seccomp, privileged containers, automount cluster API credentials
-- Mount, volume drivers, and filesystem policies
-- Pod/Container networking policies, such as host network, port, allowed external IPs, HTTPs, and internal load balancers
-- Namespace deployment restrictions
-- CPU and memory resource limits
+- Kubernetes cluster pod security initiatives Linux-based workloads.
+- Include pod and container capability policies such as AppArmor, sysctl, security caps, SELinux, seccomp, privileged containers, automount cluster API credentials.
+- Mount, volume drivers, and filesystem policies.
+- Pod/Container networking policies, such as host network, port, allowed external IPs, HTTPs, and internal load balancers.
+- Namespace deployment restrictions.
+- CPU and memory resource limits.
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes) and other policies that might impact the security of the compute layer.
 
