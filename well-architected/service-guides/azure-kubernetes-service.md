@@ -49,19 +49,26 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - (Cluster) For critical workloads, use [availability zones](/azure/aks/availability-zones) for your AKS clusters.
+> - (Cluster) **Use [availability zones](/azure/aks/availability-zones) for redundancy in a single region.** For critical workloads, use availability zones for your AKS clusters as part of your redundancy strategy to increase availability when deploying to a single region. Many Azure regions provide availability zones, which are close enough to have low-latency connections among them, but far enough apart to reduce the likelihood that more than one will be affected by local outages.
 >
-> - (Cluster) Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
-> - (Cluster) Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) to determine the best monitoring strategy for your workloads.
-> - (Workload) Ensure workloads are built to support horizontal scaling and report application readiness and health.
-> - (Cluster and Workload) Ensure your workload is running on user node pools and chose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
-> - (Cluster) Use the AKS Uptime SLA to meet availability targets for production workloads.
+> - (Cluster) **Deploy multiple clusters across different Azure regions for redundancy.** By geographically distributing AKS clusters, you can achieve higher resiliency and minimize the impact of regional failures.
+>
+>    Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
+> - (Cluster and Workload) **Monitor reliability and overall health indicators of the cluster and workloads.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for additional information to help you design the reliability and overall health monitoring solution for your AKS solution.
+>
+>   Ensure workloads are built to support horizontal scaling and report application readiness and health.
+> - (Cluster and Workload) **Host application pods in user nodel pools.** By isolating system pods from application workloads, you ensure that AKS essential services are unaffected by the resource demands or potential issues caused by a workload running user node pools.
+>
+>   Ensure your workload is running on user node pools and chose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
+> - (Cluster and Workload) **Define availability and recovery targets as supported by the AKS Uptime SLA.** Follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics) to define the reliability and recovery targets for your cluster and workload and then formulate a design that meets those targets.
+>
+>   Use the AKS Uptime SLA to meet availability targets for production workloads.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-|(Cluster and Workload) Control pod scheduling using node selectors and affinity.|In AKS, the Kubernetes scheduler can logically isolate workloads by hardware in the node. Unlike [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, but gives priority to pods that define the matching node selector.<br><br>Use node affinity for more flexibility, which allows you to define what happens if the pod can't be matched with a node.|
+|(Cluster and Workload) Control pod scheduling using node selectors and affinity.|In AKS, the Kubernetes scheduler can logically isolate workloads by hardware in the node. Unlike [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, but gives priority to pods that define the matching node selector.<br><br>Node affinity enables more flexibility, allowing you to define what happens if the pod can't be matched with a node.|
 |(Cluster) Ensure proper selection of network plugin based on network requirements and cluster sizing. Reference [Kubenet versus Azure CNI](/azure/aks/concepts-network#compare-network-models) for more information.|Different network plugins offer varying levels of compatibility and functionality. Azure CNI is required for specific scenarios such as Windows-based node pools, certain networking requirements, and Kubernetes Network Policies|
 |(Cluster and Workload) Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production grade clusters.|The AKS Uptime SLA guarantees:<br> - `99.95%` availability of the Kubernetes API server endpoint for AKS Clusters that use Azure Availability Zones, or <br> - `99.9%` availability for AKS Clusters that don't use Azure Availability Zones.|
 |(Cluster) Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.<br><br>If colocality requirements exist, either a regular Virtual Machine Scale Sets based AKS deployment into a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) can be used to minimize internode latency.|By spreading node pools across multiple zones, nodes in one node pool will continue running even if another zone has gone down.|
@@ -173,7 +180,7 @@ Start your design strategy based on the [design review checklist for Operational
 >   Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
 >
 >   Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
-> - (Cluster and Workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics so you can monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
+> - (Cluster and Workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
 >
 >    Enable diagnostics settings to ensure control plane or core API server interactions are logged.
 >
