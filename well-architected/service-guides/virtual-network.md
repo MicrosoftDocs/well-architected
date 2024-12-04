@@ -289,7 +289,7 @@ A set of Azure policies can audit some of the preceding recommendations. For exa
 
 - TBD
 
-For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect the security of the network layer.
+For comprehensive governance, review the [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect the security of the network layer.
 
 
 
