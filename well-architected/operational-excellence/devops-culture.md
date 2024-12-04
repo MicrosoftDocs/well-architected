@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:01](checklist.md)| Determine workload team members' specializations, and integrate them into a robust set of practices to design, develop, deploy, and operate your workload to specification. Team members must have clarity in decision-making and responsibilities, value continuous improvement and optimization, and adopt a blameless culture that incorporates continuous learning.|
+|**OE:01**| Determine workload team members' specializations, and integrate them into a robust set of practices to design, develop, deploy, and operate your workload to specification. Team members must have clarity in decision-making and responsibilities, value continuous improvement and optimization, and adopt a blameless culture that incorporates continuous learning.|
 |---|---|
 
 This guide describes the recommendations for implementing DevOps principles and practices in your workload. Fostering DevOps culture can help build a foundation of shared ownership, mutual respect, and appreciation of high quality work in your workload team. Devops culture provides a template for high-performing teams to thrive in the system that they're in.

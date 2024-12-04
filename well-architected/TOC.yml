@@ -277,13 +277,7 @@
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights
-          items:
-            - name: Security
-              href: service-guides/application-insights/security.md
-            - name: Cost optimization
-              href: service-guides/application-insights/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/application-insights/operational-excellence.md
+          href: service-guides/application-insights.md
         - name: Azure Firewall
           href: service-guides/azure-firewall.md
         - name: Azure App Service
@@ -312,8 +306,8 @@
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
-        - name: Azure Disks
-          href: service-guides/azure-disks-cost-optimization.md
+        - name: Azure Disk Storage
+          href: service-guides/azure-disk-storage.md
         - name: Azure Files
           href: service-guides/azure-files.md       
         - name: Azure Front Door
@@ -342,8 +336,8 @@
               href: service-guides/azure-sql-managed-instance/reliability.md
             - name: Operational excellence
               href: service-guides/azure-sql-managed-instance/operational-excellence.md
-        - name: Azure Stack HCI
-          href: service-guides/azure-stack-hci.md
+        - name: Azure Local
+          href: service-guides/azure-local.md
         - name: Azure Stack Hub
           items:
             - name: Reliability

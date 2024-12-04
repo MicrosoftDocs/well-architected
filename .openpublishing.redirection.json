@@ -1,6 +1,11 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/service-guides/azure-stack-hci.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/services/data/postgresql.md",
 			"redirect_url": "/azure/well-architected/service-guides/postgresql",
 			"redirect_document_id": false
@@ -13,6 +18,11 @@
 		{
 			"source_path": "well-architected/resiliency/reliability-patterns.md",
 			"redirect_url": "/azure/well-architected/reliability/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-disks-cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-disk-storage",
 			"redirect_document_id": true
 		},
 		{
@@ -920,6 +930,21 @@
 			"redirect_url": "/azure/well-architected/service-guides/application-insights/security",
 			"redirect_document_id": true
 		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},		
 		{
 			"source_path": "well-architected/services/monitoring/log-analytics/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",

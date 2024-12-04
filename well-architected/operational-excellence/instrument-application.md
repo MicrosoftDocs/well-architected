@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:07](checklist.md)| Design and implement a monitoring system to validate design choices and inform future design and business decisions. This system captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code. |
+|**OE:07**| Design and implement a monitoring system to validate design choices and inform future design and business decisions. This system captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code. |
 |---|---|
 
 **Related guide**: [Recommendations for designing and creating a monitoring system](observability.md)

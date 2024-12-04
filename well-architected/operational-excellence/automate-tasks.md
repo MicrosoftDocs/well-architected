@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:09](checklist.md)| Automate all tasks that don't benefit from the insight and adaptability of human intervention, are highly procedural, and have a shelf-life that yields a return on automation investment. When possible, choose off-the-shelf software for automation versus custom implementations. Treat all automation the same as workload components, and apply the Well-Architected Framework pillars to their design and implementation.|
+|**OE:09**| Automate all tasks that don't benefit from the insight and adaptability of human intervention, are highly procedural, and have a shelf-life that yields a return on automation investment. When possible, choose off-the-shelf software for automation versus custom implementations. Treat all automation the same as workload components, and apply the Well-Architected Framework pillars to their design and implementation.|
 |---|---|
 
 This guide describes the recommendations for adopting automation in your workload. You can automate tasks that are repetitive and prone to human error to help your teams gain efficiency and adhere to standards. Automate tasks to make your workload streamlined and consistent. Automation enables your operations and engineering teams to be more efficient because it gives them more time to work on other improvements. Automation is a powerful tool in all aspects of workload management. Thoughtfully implement automation to empower your organization.
