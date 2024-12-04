@@ -1,10 +1,10 @@
 ---
 title: Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
-description: Provides a template for a Well-Architected Framework (WAF) article that is specific to Azure Kubernetes Service (AKS).
+description: Learn how Azure Kubernetes Service (AKS) features can be used to boost reliability, security, scalability, and streamline operations of your workload, while keeping costs under control. 
 author: schaffererin
 ms.author: schaffererin
 ms.topic: conceptual
-ms.date: 11/26/2024
+ms.date: 12/03/2024
 ms.product: azure-kubernetes-service
 azure.category:
   - containers
@@ -12,7 +12,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use to deploy and manage containerized applications. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability.
+Azure Kubernetes Service (AKS) is a managed Kubernetes service for deploying and managing containerized applications. Similar to other managed services, AKS offloads much of operational overhead to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability.
 
 This article assumes that as an architect, you reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose AKS as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -26,7 +26,7 @@ This article assumes that as an architect, you reviewed the [compute decision tr
 >
 > Foundational architecture that demonstrates the key recommendations: [Baseline architecture for an Azure Kubernetes Service (AKS) cluster](/azure/architecture/reference-architectures/containers/aks/baseline-aks).
 
-## Technology scope
+##### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:
 
@@ -49,30 +49,31 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Use [availability zones](/azure/aks/availability-zones) for redundancy in a single region.** For critical workloads, use availability zones for your AKS clusters as part of your redundancy strategy to increase availability when deploying to a single region. Many Azure regions provide availability zones, which are close enough to have low-latency connections among them, but far enough apart to reduce the likelihood that more than one will be affected by local outages.
+> - (Cluster) **Build redundancy to improve resiliency**.  Use availability zones for your AKS clusters as part of your resiliency strategy to increase availability when deploying to a single region. Many Azure regions provide availability zones, which are close enough to have low-latency connections among them, but far enough apart to reduce the likelihood that more than one will be affected by local outages.
 >
-> - (Cluster) **Deploy multiple clusters across different Azure regions for redundancy.** By geographically distributing AKS clusters, you can achieve higher resiliency and minimize the impact of regional failures.
+>   For critical workloads, deploy multiple clusters across different Azure regions. By geographically distributing AKS clusters, you can achieve higher resiliency and minimize the impact of regional failures. A multiregion strategy helps maximize availability and provide business continuity.
+>   Internet facing workloads should use [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic) to route traffic globally across AKS clusters. For more information, see [Multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment).
 >
 >    Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
-> - (Cluster and Workload) **Monitor reliability and overall health indicators of the cluster and workloads.** Collect logs and metrics to monitor workload health, identify performance and reliability trends, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your AKS solution.
+>   
+> - (Cluster and Workload) **Monitor reliability and overall health indicators of the cluster and workloads.** Collect logs and metrics to monitor workload health, identify performance and reliability trends, and troubleshoot problems.
+>    Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your AKS solution.
 >
 >   Ensure workloads are built to support horizontal scaling and report application readiness and health.
 > - (Cluster and Workload) **Host application pods in user nodel pools.** By isolating system pods from application workloads, you ensure that AKS essential services are unaffected by the resource demands or potential issues caused by a workload running user node pools.
 >
 >   Ensure your workload is running on user node pools and chose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
-> - (Cluster and Workload) **Define availability and recovery targets as supported by the AKS Uptime SLA.** Follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics) to define the reliability and recovery targets for your cluster and workload and then formulate a design that meets those targets.
->
->   Use the AKS Uptime SLA to meet availability targets for production workloads.
+> - (Cluster and Workload) **Factor in AKS Uptime SLA in your availability and recovery targets.** Follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics) to define the reliability and recovery targets for your cluster and workload and then formulate a design that meets those targets.
+
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-|(Cluster and Workload) Control pod scheduling using node selectors and affinity.|In AKS, the Kubernetes scheduler can logically isolate workloads by hardware in the node. Unlike [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, but gives priority to pods that define the matching node selector.<br><br>Node affinity enables more flexibility, allowing you to define what happens if the pod can't be matched with a node.|
-|(Cluster) Ensure proper selection of network plugin based on network requirements and cluster sizing. Reference [Kubenet versus Azure CNI](/azure/aks/concepts-network#compare-network-models) for more information.|Different network plugins offer varying levels of compatibility and functionality. Azure CNI is required for specific scenarios such as Windows-based node pools, certain networking requirements, and Kubernetes Network Policies|
-|(Cluster and Workload) Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production grade clusters.|The AKS Uptime SLA guarantees:<br> - `99.95%` availability of the Kubernetes API server endpoint for AKS Clusters that use Azure Availability Zones, or <br> - `99.9%` availability for AKS Clusters that don't use Azure Availability Zones.|
-|(Cluster) Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.<br><br>If colocality requirements exist, either a regular Virtual Machine Scale Sets based AKS deployment into a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) can be used to minimize internode latency.|By spreading node pools across multiple zones, nodes in one node pool will continue running even if another zone has gone down.|
-|(Cluster) Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions. <br><br>Internet facing workloads should leverage [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic) to route traffic globally across AKS clusters.|A multiregion strategy helps maximize availability and provide business continuity.|
+|(Cluster and Workload) Control pod scheduling using node selectors and affinity. <br><br>In AKS, the Kubernetes scheduler can logically isolate workloads by hardware in the node. Unlike [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, but gives priority to pods that define the matching node selector.| Node affinity enables more flexibility, allowing you to define what happens if the pod can't be matched with a node.|
+|(Cluster) Ensure proper selection of network plugin based on network requirements and cluster sizing. <br><br>Different network plugins offer varying levels of functionality. Azure CNI is required for specific scenarios such as Windows-based node pools, certain networking requirements, and Kubernetes Network Policies. <br><br> Reference [Kubenet versus Azure CNI](/azure/aks/concepts-network#compare-network-models) for more information.|This can ensure better compatibility and performance.|
+|(Cluster and Workload) Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production grade clusters.|The workload will be able to support higher availability targets because of the higher availability guarantees of the Kubernetes API server endpoint for AKS clusters.|
+|(Cluster) Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.<br><br>If colocality requirements exist, either a regular virtual machine scale sets based AKS deployment into a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) can be used to minimize internode latency.|By spreading node pools across multiple zones, nodes in one node pool will continue running even if another zone has gone down.|
 |(Cluster and Workload) Define Pod resource requests and limits in application deployment manifests, and enforce with Azure Policy.| Container CPU and memory resource limits are necessary to prevent resource exhaustion in your Kubernetes cluster.|
 |(Cluster and Workload) Keep the System node pool isolated from application workloads.<br><br>System node pools require a VM SKU of at least 2 vCPUs and 4 GB memory, but 4 vCPU or more is recommended. Reference [System and user node pools](/azure/aks/use-system-pools#system-and-user-node-pools) for detailed requirements.|The System node pool hosts critical system pods that are essential for the control plane of your cluster. By isolating these system pods from application workloads, you ensure that the essential services are unaffected by the resource demands or potential issues caused by a workload.|
 |(Cluster and Workload) Separate applications to dedicated node pools based on specific requirements. Avoid large number of node pools to reduce extra management overhead.|Applications may share the same configuration and need GPU-enabled VMs, CPU or memory optimized VMs, or the ability to scale-to-zero. By dedicating node pools to specific applications, you can ensure that each application gets the resources it needs without over-provisioning or under-utilizing resources|
