@@ -24,22 +24,17 @@ There are two clusters models in Azure Service Fabric: **standard clusters** and
 
 This article primarily discusses the **managed cluster** model for simplicity. However, call-outs are made for any special considerations that apply to the **standard cluster** model.
 
-This article assumes that as an architect, you've reviewed the
-[[cloud-infrastructure-area] decision tree]([decision-tree-URL]) and
-chose Service Fabric as the [cloud-infrastructure-area] for
-your workload. The guidance in this article provides architectural
-recommendations that are mapped to the principles of the
-[Well-Architected Framework pillars](/azure/well-architected/pillars).
+This article assumes that as an architect, you've reviewed the [microservice compute decision tree](/azure/architecture/microservices/design/compute-options) and chose Service Fabric as the microservice platform for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
->**How to use this guide**
+> **How to use this guide**
 >
->Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
 >
->Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for [Azure offering] and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
+> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for [Azure offering] and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
 >
->Foundational architecture that demonstrates the key recommendations: [[Azure offering] baseline architecture]([baseline-architecture-URL]).
+> Foundational architecture that demonstrates the key recommendations: [[Azure offering] baseline architecture]([baseline-architecture-URL]).
 
 **Technology scope**
 
@@ -51,7 +46,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-[Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+[Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 When discussing reliability with Azure Service Fabric, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload reliability is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
@@ -85,7 +80,7 @@ as needed.
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles] (/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Service Fabric.
+The [Security design principles] (../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Service Fabric.
 
 When discussing security with Azure Service Fabric, it's important to distinguish between *cluster security* and *workload security*. Cluster security is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload security is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
@@ -97,7 +92,7 @@ For more information about Azure Service Fabric workload security, reference [Se
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Determine its relevance to your business requirements while keeping in mind the [offering-specific-aspects]. Extend the strategy to include more approaches as needed.
+Base your design strategy on the [design review checklist for Security](../security/checklist.md).
 
 > [!div class="checklist"]
 > - **Cluster architecture:** Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
@@ -125,7 +120,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Service Fabric and its environment.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Service Fabric and its environment.
 
 When discussing cost optimization with Azure Service Fabric, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources are a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
@@ -156,7 +151,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
+The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 When discussing security with Azure Service Fabric, it's important to distinguish between *cluster operation* and *workload operation*. Cluster operation is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload operation is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
@@ -188,7 +183,7 @@ Base your design strategy on the [design principles for Operational Excellence](
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 When discussing security with Azure Service Fabric, it's important to distinguish between *cluster operation* and *workload operation*. Cluster performance is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload performance is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
