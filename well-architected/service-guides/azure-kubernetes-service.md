@@ -91,12 +91,12 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Using Microsoft Entra ID centralizes identity management for your cluster. Any change in user account or group status is automatically updated in access to the AKS cluster. [Establish identity as the primary security perimeter](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter), the developers and application owners of your Kubernetes cluster need access to different resources.
->
->   Use [Managed Identities](/azure/aks/use-managed-identity) to avoid managing and rotating service principles.
+> - (Cluster) **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Using Microsoft Entra ID centralizes identity management for your cluster. Any change in user account or group status is automatically updated in access to the AKS cluster. [Establish identity as the primary security perimeter](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter), the developers and application owners of your Kubernetes cluster need access to different resources. 
 >
 >   Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
+> 
 > - (Cluster) **Integrate with security monitoring and SIEM tools.** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them. Enable [Azure Kubernetes Service (AKS) connector for Microsoft Sentinel](/azure/sentinel/data-connectors/azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
+>   
 > - (Cluster and Workload) **Implement segmentation and network controls.** To prevent data exfiltration, ensure that only authorized and safe traffic is allowed, and contain the blast radius of a security breach.
 >
 >   Deploy a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
@@ -109,6 +109,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
+|Use [Managed Identities](/azure/aks/use-managed-identity).|You'll avoid the overhead associated with managing and rotating service principles.|
 |(Cluster) Use Microsoft Entra ID to [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?tabs=azure-cli).|Using Microsoft Entra ID enables AKS to authenticate with Azure Container Registry without the use of `imagePullSecrets` secrets.|
 |(Cluster) Secure network traffic to your API server with [private AKS cluster](/azure/aks/private-clusters).|By default, network traffic between your node pools and the API server travels the Microsoft backbone network; by using a private cluster, you can ensure network traffic to your API server remains on the private network only.|
 |(Cluster) For non-private AKS clusters, use API server authorized IP ranges. Include sources like the public IPs of your deployment build agents, operations management, and node pools' egress point (such as Azure Firewall).|When using public clusters, you can significantly reduce the attack surface of your AKS cluster by limiting the traffic that can reach your clusters API server.|
