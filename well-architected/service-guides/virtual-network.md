@@ -283,15 +283,16 @@ Large subnets provide ample address space, allowing workloads to scale out seaml
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Virtual Network and its dependencies. Define and assign policies to ensure resources comply with organizational standards. Leverage the Azure Policy Compliance Dashboard to identify non-compliant resources and take corrective actions.
+Azure provides an extensive set of built-in policies related to Virtual Network and its dependencies. Define and assign policies to ensure resources comply with organizational standards. Build [Azure Policy Compliance Dashboard](/azure/governance/policy/how-to/get-compliance-data) to identify non-compliant resources and take corrective actions.
 
-A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
+A set of Azure policies can audit some of the preceding recommendations. For example, you can set policies that automatically:
 
-- TBD
+- Protects the VNet against volumetric and protocol attacks.
+- Denies creation of network interfaces with public IPs. 
+- Deploys network watcher for VNets.
+- Enable Traffic analytics and Flow logs to monitor traffic patterns. 
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect the security of the network layer.
-
-
 
 
 ## Azure Advisor recommendations
@@ -303,3 +304,15 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+
+## Next steps
+
+Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
+
+- If you've decided on a hub-spoke topology, use [Hub-spoke network topology in Azure](/azure/architecture/networking/architecture/hub-spoke) as the reference architecture to set up your stamp. 
+  
+- Use the following product documentation to build your implementation expertise:
+
+  - [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)
+  - [Virtual Network IP Services documentation](/azure/virtual-network/ip-services/)
+  
