@@ -56,4 +56,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [IoT Hub and reliability](../iot-hub/reliability.md)
+> [Traffic Manager and reliability](../traffic-manager/reliability.md)
