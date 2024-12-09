@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:03](checklist.md)|Classify and consistently apply sensitivity labels on all workload data and systems involved in data processing. Use classification to influence workload design, implementation, and security prioritization.|
+|**SE:03**|Classify and consistently apply sensitivity labels on all workload data and systems involved in data processing. Use classification to influence workload design, implementation, and security prioritization.|
 |---|---|
 
 This guide describes the recommendations for data classification. Most workloads store various types of data. Not all data is equally sensitive. Data classification helps you categorize data based on its sensitivity level, information type, and scope of compliance so you can apply the correct level of protection. Protection includes access controls, retention policies for different information types, and so on. While the actual security controls based on data classification are out of scope for this article, it provides recommendations for categorizing data based on the preceding criteria set by your organization.

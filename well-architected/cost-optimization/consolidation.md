@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:14](checklist.md)| Consolidate resources and responsibility. In a workload, determine ways to consolidate resources and increase density. Outside a workload, use existing centralized resources and services, so you can consolidate workload responsibilities. |
+|**CO:14**| Consolidate resources and responsibility. In a workload, determine ways to consolidate resources and increase density. Outside a workload, use existing centralized resources and services, so you can consolidate workload responsibilities. |
 |---|---|
 
 This guide describes the recommendations for consolidating resources and responsibilities to optimize workload costs. Consolidating resources is a nuanced task that differs from simply eliminating waste. Consolidation involves combining components of a workload, such as servers, databases, applications, and responsibilities.

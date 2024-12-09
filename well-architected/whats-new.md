@@ -63,7 +63,7 @@ We added guidance about ensuring that the VMs in your backup environment run on 
 
 ### New articles
 
-- [Azure Well-Architected Framework perspective on Azure Stack HCI](./service-guides/azure-stack-hci.md): Explore design considerations and configuration recommendations for Azure Stack HCI. Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Stack HCI and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+- [Azure Well-Architected Framework perspective on Azure Local](./service-guides/azure-local.md): Explore design considerations and configuration recommendations for Azure Local. Azure Local is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 
 ### Updated articles
 

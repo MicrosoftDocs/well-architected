@@ -93,7 +93,7 @@ productDirectory:
     - title: Application Insights
       summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
-      url: ./application-insights/security.md
+      url: ./application-insights.md
       azureCategories:
         - devops
         - management-and-governance
@@ -189,13 +189,6 @@ productDirectory:
         - iot
         - web
     # Card
-    - title: Azure IoT Hub
-      summary: Connect, monitor, and manage billions of IoT assets.
-      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: ./iot-hub/reliability.md
-      azureCategories:
-        - iot
-    # Card
     - title: Azure Kubernetes Service
       summary: Simplify the deployment, management, and operations of Kubernetes.
       imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
@@ -270,10 +263,10 @@ productDirectory:
       azureCategories:
         - databases
     # Card
-    - title: Azure Stack HCI
-      summary: Use Azure Stack HCI to create and manage virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
+    - title: Azure Local
+      summary: Use Azure Local to create and manage virtual machines (VMs), Kubernetes clusters for containerized workloads, and other Azure Arc-enabled services.
       imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
-      url: azure-stack-hci.md
+      url: azure-local.md
       azureCategories:
         - hybrid
     # Card

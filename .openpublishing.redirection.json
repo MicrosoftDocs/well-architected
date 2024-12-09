@@ -1,6 +1,11 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/service-guides/azure-stack-hci.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/services/data/postgresql.md",
 			"redirect_url": "/azure/well-architected/service-guides/postgresql",
 			"redirect_document_id": false
@@ -13,6 +18,11 @@
 		{
 			"source_path": "well-architected/resiliency/reliability-patterns.md",
 			"redirect_url": "/azure/well-architected/reliability/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-disks-cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-disk-storage",
 			"redirect_document_id": true
 		},
 		{
@@ -857,13 +867,13 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/iot-hub/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/iot-hub/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/iot-hub/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/iot-hub/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/iot-hub-dps/operational-excellence.md",
@@ -920,6 +930,21 @@
 			"redirect_url": "/azure/well-architected/service-guides/application-insights/security",
 			"redirect_document_id": true
 		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/application-insights/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights",
+			"redirect_document_id": false
+		},		
 		{
 			"source_path": "well-architected/services/monitoring/log-analytics/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",
@@ -2109,6 +2134,46 @@
 			"source_path": "well-architected/cross-cutting-guides/optimize-workload-using-flows.md",
 			"redirect_url": "/azure/well-architected/design-guides/optimize-workload-using-flows",
 			"redirect_document_id": false
-		}																	
+		},
+		{
+			"source_path": "well-architected/service-guides/iot-hub/operational-excellence.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/iot-hub/reliability.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/iot/iot-cost-optimization.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/iot/iot-operational-excellence.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/iot/iot-overview.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/iot/iot-performance.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/iot/iot-reliability.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/iot/iot-security.md",
+			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
+			"redirect_document_id": false
+		}							
 	]
 }

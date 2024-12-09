@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:03](checklist.md)| Select the right services. The services, infrastructure, and tier selections must support your ability to reach the workload's performance targets and accommodate expected capacity changes. The selections should also weigh the benefits of using platform features or building a custom implementation.|
+|**PE:03**| Select the right services. The services, infrastructure, and tier selections must support your ability to reach the workload's performance targets and accommodate expected capacity changes. The selections should also weigh the benefits of using platform features or building a custom implementation.|
 |---|---|
 
 This guide describes the recommendations for selecting appropriate services for your workload. The following recommendations help you choose services that best meet the requirements and demands of your workload. When you use services that are designed to handle your workload's requirements, you can ensure that your workload meets your performance targets. If you choose inappropriate services for your workload, the services might not be capable of handling your workload's demands. Insufficient services can lead to slow response times, bottlenecks, or workload failures.
@@ -20,7 +20,7 @@ This guide describes the recommendations for selecting appropriate services for 
 
 |  Term| Definition|
 |---|---|
-|Availability zone| [A separated group of datacenters within a region](/azure/reliability/availability-zones-overview). Each availability zone is independent of the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support).|
+|Availability zone| [A separated group of datacenters within a region](/azure/reliability/availability-zones-overview). Each availability zone is independent of the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones](/azure/reliability/availability-zones-region-support).|
 |Compute service| A service that provides the infrastructure that you need to run an application.|
 |Database service| A service that provides relational and nonrelational databases for your application.|
 |  Infrastructure |The physical components of cloud computing, and the geographic location of the components.|
@@ -176,7 +176,7 @@ Azure has many services that can accommodate any workload. Review the [selection
 
 ## Related links
 
-- [Azure regions with availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
+- [Azure regions with availability zone support](/azure/reliability/availability-zones-region-support)
 - [Recommendations for defining performance targets](performance-targets.md)
 - [Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md)
 - [What are availability zones?](/azure/reliability/availability-zones-overview)

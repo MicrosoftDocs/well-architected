@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-| [CO:11](checklist.md) | Optimize code costs. Evaluate and modify code to meet functional and nonfunctional requirements with fewer or cheaper resources. |
+|**CO:11**| Optimize code costs. Evaluate and modify code to meet functional and nonfunctional requirements with fewer or cheaper resources. |
 |---|---|
 
 This guide describes the recommendations for optimizing code costs. Code optimization is the process of improving the efficiency, performance, and cost-effectiveness of application code. Effective code optimization involves making changes to the code to reduce resource consumption, minimize execution time, and improve overall performance.

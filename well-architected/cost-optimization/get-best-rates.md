@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:05](checklist.md)| Get the best rates from providers. You should find and use the best rates for cloud resources and licenses. Regularly review cost savings. Cost reviews should include regional pricing, pricing tiers, pricing models (consumption or commitment-based), license portability, corporate purchasing plans, and price sheets.|
+|**CO:05**| Get the best rates from providers. You should find and use the best rates for cloud resources and licenses. Regularly review cost savings. Cost reviews should include regional pricing, pricing tiers, pricing models (consumption or commitment-based), license portability, corporate purchasing plans, and price sheets.|
 |---|---|
 
 This guide describes the recommendations for getting the best rates from providers for your workload. Getting the best rates is the practice of finding and securing the most cost-efficient pricing options for cloud and software resources without modifying architecture, resources, or functionality. By optimizing rates, you can reduce cloud costs without changing the workload. A small rate reduction on services you use a lot provides significant cost savings. Without rate optimization, you end up paying more for your resources, services, and licenses than necessary.

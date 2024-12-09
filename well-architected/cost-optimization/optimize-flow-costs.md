@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:09](checklist.md)| Optimize flow costs. Align the cost of each flow with flow priority. When you prioritize flows, consider the features, functionality, and nonfunctional requirements of each flow. Optimizing flow spend often requires strategic compromises.|
+|**CO:09**| Optimize flow costs. Align the cost of each flow with flow priority. When you prioritize flows, consider the features, functionality, and nonfunctional requirements of each flow. Optimizing flow spend often requires strategic compromises.|
 |-|-|
 
 This guide describes the recommendations for optimizing the cost of each of the flows in your workload. Cost-optimizing the flows in a workload involves strategically allocating and managing resources to minimize expenses while maintaining performance. This optimization is crucial because it ensures efficient utilization of invested resources, reduces unnecessary expenditures, and improves the overall return on investment for the infrastructure. If you don't cost-optimize the flows in a workload, you risk overspending on resources, which results in inflated operational costs and diminished profitability.
