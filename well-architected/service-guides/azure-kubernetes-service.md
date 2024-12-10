@@ -55,7 +55,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   Internet facing workloads should use [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic) to route traffic globally across AKS clusters. For more information, see [Multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment).
 >
 >    Plan the IP address space to ensure your cluster can reliably scale, including handling of failover traffic in multi-cluster topologies.
->   
+>
 > - (Cluster and Workload) **Monitor reliability and overall health indicators of the cluster and workloads.** Collect logs and metrics to monitor workload health, identify performance and reliability trends, and troubleshoot problems.
 >    Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your AKS solution.
 >
@@ -64,7 +64,6 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Ensure your workload is running on user node pools and chose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
 > - (Cluster and Workload) **Factor in AKS Uptime SLA in your availability and recovery targets.** Follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics) to define the reliability and recovery targets for your cluster and workload and then formulate a design that meets those targets.
-
 
 ### Recommendations
 
@@ -91,23 +90,23 @@ Start your design strategy based on the [**design review checklist for Security*
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Using Microsoft Entra ID centralizes identity management for your cluster. Any change in user account or group status is automatically updated in access to the AKS cluster. [Establish identity as the primary security perimeter](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter), the developers and application owners of your Kubernetes cluster need access to different resources. 
+> - (Cluster) **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Using Microsoft Entra ID centralizes identity management for your cluster. Any change in user account or group status is automatically updated in access to the AKS cluster. [Establish identity as the primary security perimeter](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter), the developers and application owners of your Kubernetes cluster need access to different resources.
 >
 >   Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
-> 
+>
 > - (Cluster) **Integrate with security monitoring and SIEM tools.** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them. Enable [Azure Kubernetes Service (AKS) connector for Microsoft Sentinel](/azure/sentinel/data-connectors/azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
->   
+>
 > - (Cluster and Workload) **Implement segmentation and network controls.** To prevent data exfiltration, ensure that only authorized and safe traffic is allowed, and contain the blast radius of a security breach.
 >
 >   Consider the use of a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
 >
 > - (Workload) **Use a Web Application Firewall to scan incoming traffic for potential attacks**. WAF can detect and mitigate threats in real-time, ensuring that malicious traffic is blocked before it reaches your applications. It provides robust protection against common web-based attacks such as SQL injection, cross-site scripting (XSS), and other Open Web Application Security Project (OWASP) vulnerabilities. Certain load balancers have integrated web application firewall such as [Azure Web Application Firewall (WAF) on Azure Application Gateway](/azure/web-application-firewall/ag/ag-overview) or [Azure Front Door](/azure/web-application-firewall/afds/afds-overview).
->   
+>
 > - (Workload) **Maintain a hardened workload's software supply chain.**  Ensure your CI/CID pipeline is hardened with container-aware scanning. Review [secure software supply chain solution for the Azure Kubernetes Service (AKS)](/devsecops/playbook/Enterprise-Solutions/governance-solutions/secure-software-supply-chain/solution) for additional strategies.
->   
+>
 > - (Cluster and Workload) **Implement extra protection for specialized secure workloads.** If your cluster needs to run a sensitive workload, you might need to deploy a private cluster. Here are some examples:
->   -  Payment Card Industry Data Security Standard (PCI-DSS 3.2.1):  [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
->   -  DoD Impact Level 5 (IL5) support and requirements with AKS: [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service). 
+>   - Payment Card Industry Data Security Standard (PCI-DSS 3.2.1):  [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
+>   - DoD Impact Level 5 (IL5) support and requirements with AKS: [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service). 
 
 ### Recommendations
 
@@ -142,29 +141,34 @@ Your design should use the right Azure capabilities, monitor investments, and fi
 >
 > - (Cluster) **Familiarize yourself with the [Pricing tiers for AKS](/azure/aks/free-standard-pricing-tiers)** and [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management). To estimate costs, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Kubernetes Service** from the available products. You can test different configuration and payment plans in the calculator.
 > - (Cluster) **Get the best rates for your workload.** Use appropriate VM SKU per node pool and reserved instances where long-term capacity is expected. If you're running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
+>
+>   If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.
+>
+>   Select [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms) to take advantage of unutilized Azure capacity with significant discounts (up to 90% as compared to pay-as-you-go prices). If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes.
+>
 > - (Cluster and Workload) **Optimize workload components cost.** Remove any resources that are unused and optimize [underutilized workload resources](/azure/well-architected/cost-optimization/optimize-component-costs#optimize-workload-resources).
+>
+>   Select the most cost-effective region for your workload. Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges. The region where you deploy your workload in Azure can significantly impact the cost. Due to many factors, cost of resources varies per region in Azure.
+>
+>   Maintain small and optimized images to help reduce costs since new nodes need to download these images. Build images in a way that allows the container to start as soon as possible to help avoid user request failures or timeouts while the application is starting up, potentially leading to overprovisioning.
 >
 >   Review the Cost Optimization recommendations in [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers#cost-optimization) to determine the best monitoring strategy for your workloads. Analyze performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
 >
->   Use appropriate managed disk tier and size.
 > - (Cluster and Workload) **Optimize workload scaling costs.** Consider alternative vertical and horizontal scaling configurations to reduce scaling costs while still meeting all workload requirements. Use autoscalers to scale in when workloads are less active.
+>
 > - (Cluster and Workload) **Collect and analyze cost data.** The foundation of enabling cost optimization is the spread of a cost saving cluster. A [financial operations approach (FinOps)](https://www.finops.org/introduction/what-is-finops/) is often used to help organizations reduce cloud costs. It's a practice involving collaboration between finance, operations, and engineering teams to drive alignment on cost saving goals and bring transparency to cloud costs.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|(Cluster and Workload) Align [SKU selection](/azure/aks/free-standard-pricing-tiers) and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
-|(Cluster) Select the right virtual machine instance type.<br><br>To determine the right virtual machine instance type, consider workload characteristics, resource requirements, and availability needs.|Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a less powerful instance can lead to performance issues and increased downtime.|
-|(Cluster) Select [virtual machines based on the Arm architecture](/azure/virtual-machines/dplsv5-dpldsv5-series). AKS supports [creating Arm64 Ubuntu agent nodes](/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool), as well as a mix of Intel and ARM architecture nodes within a cluster.| The ARM64 architecture provides a better price-to-performance ratio due to its lower power utilization and efficient compute performance that and can bring better performance at a lower cost.|
-|(Cluster) Select [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms). |Spot VMs allow you to take advantage of unutilized Azure capacity with significant discounts (up to 90% as compared to pay-as-you-go prices). If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes. |
-|(Cluster) Select the appropriate region.<br><br>Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges.|The region where you deploy your workload in Azure can significantly impact the cost. Due to many factors, cost of resources varies per region in Azure.|
-|(Workload) Maintain small and optimized images.|Streamlining your images helps reduce costs since new nodes need to download these images. Build images in a way that allows the container to start as soon as possible to help avoid user request failures or timeouts while the application is starting up, potentially leading to overprovisioning.|
+|(Cluster and Workload) Align [AKS SKU selection](/azure/aks/free-standard-pricing-tiers) and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
+|(Cluster) Select the right virtual machine instance types for your [AKS node pools](/azure/aks/create-node-pools).<br><br>To determine the right virtual machine instance types, consider workload characteristics, resource requirements, and availability needs.|Selecting the right virtual machine instance type is critical as it directly impacts the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending, while choosing a less powerful instance can lead to performance issues and increased downtime.|
+|(Cluster) Select virtual machines based on the more power efficient ARM architecture. AKS supports [creating ARM64 node pools](/azure/aks/create-node-pools#arm64-node-pools), as well as a mix of Intel and ARM architecture nodes within a cluster.| The ARM64 architecture provides a better price-to-performance ratio due to its lower power utilization and efficient compute performance that and can bring better performance at a lower cost.|
 |(Cluster) Enable [Cluster Autoscaler](/azure/aks/cluster-autoscaler) to automatically reduce the number of agent nodes in response to excess resource capacity. |Automatically scaling down the number of nodes in your AKS cluster lets you run an efficient cluster when demand is low and scale up when demand returns.|
 |(Cluster) Enable [Node Autoprovision](/azure/aks/node-autoprovision?tabs=azure-cli) to automate VM SKU selection. |Node Autoprovision simplifies the SKU selection process and decides, based on pending pod resource requirements, the optimal VM configuration to run workloads in the most efficient and cost effective manner. |
-|(Workload) Use the [Horizontal Pod Autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler).|Adjust the number of pods in a deployment depending on CPU utilization or other select metrics, which support cluster scale-in operations.|
-|(Workload) Use [Vertical Pod Autoscaler](/azure/aks/vertical-pod-autoscaler) (preview).|Rightsize your pods and dynamically set [requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) based on historic usage.|
-|(Cluster) Sign up for [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) or [Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). | If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.|
+|(Workload) Use the [Horizontal Pod Autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.| Automatically scaling down the number of pods when demand is low, and scaling out when demand increases, results in a more cost-effective operation of your workload.|
+|(Workload) Use [Vertical Pod Autoscaler](/azure/aks/vertical-pod-autoscaler) (preview) to rightsize your pods and dynamically set [requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) based on historic usage.|By setting resource requests and limits on containers per workload, the Vertical Pod Autoscaler frees up CPU and Memory for other pods and helps ensure effective utilization of your AKS clusters.|
 |(Cluster) Configure the [AKS Cost Analysis add-on](/azure/aks/cost-analysis). | The cost analysis cluster extension enables you to obtain granular insight into costs associated with various Kubernetes resources in your clusters or namespaces.|
 
 ## Operational excellence
