@@ -140,11 +140,13 @@ Your design should use the right Azure capabilities, monitor investments, and fi
 > [!div class="checklist"]
 >
 > - (Cluster) **Familiarize yourself with the [Pricing tiers for AKS](/azure/aks/free-standard-pricing-tiers)** and [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management). To estimate costs, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Kubernetes Service** from the available products. You can test different configuration and payment plans in the calculator.
-> - (Cluster) **Get the best rates for your workload.** Use appropriate VM SKU per node pool and reserved instances where long-term capacity is expected. If you're running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
+> - (Cluster) **Get the best rates for your workload.** Use appropriate VM SKU per node pool as it directly impacts the cost of running your workloads. Choosing a high-performance VM without proper utilization can lead to wasteful spending, while selecting a less powerful VM can cause performance issues and increased downtime.
 >
 >   If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.
 >
 >   Select [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms) to take advantage of unutilized Azure capacity with significant discounts (up to 90% as compared to pay-as-you-go prices). If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes.
+>
+>   If you're running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
 >
 > - (Cluster and Workload) **Optimize workload components cost.** Remove any resources that are unused and optimize [underutilized workload resources](/azure/well-architected/cost-optimization/optimize-component-costs#optimize-workload-resources).
 >
