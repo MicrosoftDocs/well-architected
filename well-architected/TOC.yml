@@ -362,12 +362,6 @@
           href: service-guides/azure-expressroute.md
         - name: Functions
           href: service-guides/azure-functions-security.md
-        - name: IoT Hub
-          items:
-            - name: Reliability
-              href: service-guides/iot-hub/reliability.md
-            - name: Operational excellence
-              href: service-guides/iot-hub/operational-excellence.md
         - name: IP addresses
           href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
