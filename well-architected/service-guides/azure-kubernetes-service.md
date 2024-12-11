@@ -12,7 +12,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) is a managed Kubernetes service for deploying and managing containerized applications. Similar to other managed services, AKS offloads much of operational overhead to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability.
+Azure Kubernetes Service (AKS) is a managed Kubernetes service for deploying and managing containerized applications. Similar to other managed services, AKS offloads much of operational overhead to Azure, while offering high availability, scalability, and portability features to the workload.
 
 This article assumes that as an architect, you reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose AKS as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -139,7 +139,8 @@ Your design should use the right Azure capabilities, monitor investments, and fi
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Familiarize yourself with the [Pricing tiers for AKS](/azure/aks/free-standard-pricing-tiers)** and [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management). To estimate costs, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Kubernetes Service** from the available products. You can test different configuration and payment plans in the calculator.
+> - (Cluster) **Include the [pricing tiers for AKS](/azure/aks/free-standard-pricing-tiers)** in your cost model. To estimate costs, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and test different configuration and payment plans in the calculator.
+>   
 > - (Cluster) **Get the best rates for your workload.** Use appropriate VM SKU per node pool as it directly impacts the cost of running your workloads. Choosing a high-performance VM without proper utilization can lead to wasteful spending, while selecting a less powerful VM can cause performance issues and increased downtime.
 >
 >   If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.
@@ -148,9 +149,7 @@ Your design should use the right Azure capabilities, monitor investments, and fi
 >
 >   If you're running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
 >
-> - (Cluster and Workload) **Optimize workload components cost.** Remove any resources that are unused and optimize [underutilized workload resources](/azure/well-architected/cost-optimization/optimize-component-costs#optimize-workload-resources).
->
->   Select the most cost-effective region for your workload. Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges. The region where you deploy your workload in Azure can significantly impact the cost. Due to many factors, cost of resources varies per region in Azure.
+> - (Cluster and Workload) **Optimize workload components cost.** Select the most cost-effective region for your workload. Evaluate the cost, latency, and compliance requirements to ensure you're running your workload cost-effectively and it doesn't affect your end-users or create extra networking charges. The region where you deploy your workload in Azure can significantly impact the cost. Due to many factors, cost of resources varies per region in Azure.
 >
 >   Maintain small and optimized images to help reduce costs since new nodes need to download these images. Build images in a way that allows the container to start as soon as possible to help avoid user request failures or timeouts while the application is starting up, potentially leading to overprovisioning.
 >
@@ -158,7 +157,7 @@ Your design should use the right Azure capabilities, monitor investments, and fi
 >
 > - (Cluster and Workload) **Optimize workload scaling costs.** Consider alternative vertical and horizontal scaling configurations to reduce scaling costs while still meeting all workload requirements. Use autoscalers to scale in when workloads are less active.
 >
-> - (Cluster and Workload) **Collect and analyze cost data.** The foundation of enabling cost optimization is the spread of a cost saving cluster. A [financial operations approach (FinOps)](https://www.finops.org/introduction/what-is-finops/) is often used to help organizations reduce cloud costs. It's a practice involving collaboration between finance, operations, and engineering teams to drive alignment on cost saving goals and bring transparency to cloud costs.
+> - (Cluster and Workload) **Collect and analyze cost data.** The foundation of enabling cost optimization is the spread of a cost saving cluster. Develop a cost-efficiency mindset involving collaboration between finance, operations, and engineering teams to drive alignment on cost saving goals and bring transparency to cloud costs.
 
 ### Recommendations
 
