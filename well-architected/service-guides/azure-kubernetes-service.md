@@ -4,7 +4,7 @@ description: Learn how Azure Kubernetes Service (AKS) features can be used to bo
 author: schaffererin
 ms.author: schaffererin
 ms.topic: conceptual
-ms.date: 12/03/2024
+ms.date: 12/11/2024
 ms.product: azure-kubernetes-service
 azure.category:
   - containers
@@ -24,7 +24,7 @@ This article assumes that as an architect, you reviewed the [compute decision tr
 >
 > Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Kubernetes Service and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
-> Foundational architecture that demonstrates the key recommendations: [Baseline architecture for an Azure Kubernetes Service (AKS) cluster](/azure/architecture/reference-architectures/containers/aks/baseline-aks).
+> Foundational architecture that demonstrates the key recommendations: [**Baseline architecture for an Azure Kubernetes Service (AKS) cluster**](/azure/architecture/reference-architectures/containers/aks/baseline-aks).
 
 ##### Technology scope
 
@@ -129,7 +129,7 @@ Start your design strategy based on the [**design review checklist for Security*
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to [Azure offering] and its environment.
+The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to AKS and its environment.
 
 ### Design checklist
 
@@ -184,23 +184,25 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Implement an Infrastructure as Code (IaC) deployment approach.** Use a declarative, template-based deployment approah using Bicep, Terraform, or similar. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
+> - (Cluster) **Implement an Infrastructure as Code (IaC) deployment approach.** Use a declarative, template-based deployment approach using Bicep, Terraform, or similar. Make sure that all deployments are repeatable, traceable, and stored in a source code repo. For more information, see the Quickstarts section in AKS product documentation.
 >
 > - (Cluster and Workload) **Automate infrastructure and workload deployments.** Use standard software solutions to manage, integrate, and automate the deployment of your cluster and workloads. Integrate deployment pipelines with your source control system and incorporate automated tests.
 >
 >   Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
 >
 >   Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
+>   
 > - (Cluster and Workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
 >
 >    Enable diagnostics settings to ensure control plane or core API server interactions are logged.
 >
 >    The workload should be designed to emit telemetry that can be collected, which should also include liveliness and readiness statuses.
+>   
 > - (Cluster and Workload) **Implement testing in production strategies.** Testing in production uses real deployments to validate and measure an application's behavior and performance in the production environment. Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
 >
 >   [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-tutorial-aks-portal) can help simulate faults and trigger disaster recovery situations.
 >
-> - (Cluster and Workload) **Enforce cluster and workload governance using Azure Policy.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your resources.
+> - (Cluster and Workload) **Enforce workload governancey.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your cluster resources.
 >
 >   Review the [Azure policies](#azure-policies) section to learn more about the available built-in policies for AKS.
 >
@@ -234,12 +236,13 @@ Start your design strategy based on the [design review checklist for Performance
 > - (Cluster and Workload) **Conduct capacity planning.** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations.
 >
 >   After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.
-> - (Cluster) **Define a cluster scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste. Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden and Optimize your workload to operate and deploy efficiently in a container.
+> - (Cluster) **Define a scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste. Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden and Optimize your workload to operate and deploy efficiently in a container.
 >
 >   Review the [Scaling and Partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration.
 >
 > - (Cluster and Workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and and established baselines.
-> - (Cluster and Workload) **Scale workloads and flows independently.** Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. Separate workloads and flows into different node pools allowing independent scalling.
+>   
+> - (Cluster and Workload) **Scale workloads and flows independently.** Separate workloads and flows into different node pools allowing independent scalling. Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. 
 
 ### Recommendations
 
@@ -280,7 +283,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of [Azure offering].
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of AKS.
 
 - [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#azure-kubernetes-service-aks)
 - [Security](/azure/advisor/advisor-security-recommendations)
