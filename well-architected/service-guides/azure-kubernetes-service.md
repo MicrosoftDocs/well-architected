@@ -185,7 +185,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Infrastructure as code (IaC) deployment approach.** Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
+> - (Cluster) **Implement an Infrastructure as Code (IaC) deployment approach.** Use a declarative, template-based deployment approah using Bicep, Terraform, or similar. Make sure that all deployments are repeatable, traceable, and stored in a source code repo.
 >
 > - (Cluster and Workload) **Automate infrastructure and workload deployments.** Use standard software solutions to manage, integrate, and automate the deployment of your cluster and workloads. Integrate deployment pipelines with your source control system and incorporate automated tests.
 >
@@ -198,9 +198,17 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >    The workload should be designed to emit telemetry that can be collected, which should also include liveliness and readiness statuses.
 > - (Cluster and Workload) **Implement testing in production strategies.** Testing in production uses real deployments to validate and measure an application's behavior and performance in the production environment. Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
+>
+>   [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-tutorial-aks-portal) can help simulate faults and trigger disaster recovery situations.
+>
 > - (Cluster and Workload) **Enforce cluster and workload governance using Azure Policy.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your resources.
 >
 >   Review the [Azure policies](#azure-policies) section to learn more about the available built-in policies for AKS.
+>
+> - (Cluster and Workload) **Use [stamp-level blue/green deployments](/azure/well-architected/mission-critical/mission-critical-deployment-testing#ephemeral-blue-green-deployments) for mission-critical workloads.** A stamp-level blue/green deployment approach can increase confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
+>
+>    Kubernetes and ingress controllers support many advanced deployment patterns for inclusion in your release engineering process. Consider patterns like blue-green deployments or canary releases.
+>
 > - (Cluster and Workload) **Make workloads more sustainable by optimizing cost.** Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around _cost optimization_, _reducing carbon emissions_, and _optimizing energy consumption_. Optimizing the application's cost is the initial step in making workloads more sustainable.
 >
 >   Review [Sustainable software engineering principles in Azure Kubernetes Service (AKS)](/azure/aks/concepts-sustainable-software-engineering) to learn how to build sustainable and efficient AKS workloads.
@@ -209,11 +217,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 | Recommendation | Benefit |
 |--------|----|
-|(Cluster and Workload) Review [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-tutorial-aks-portal).| Azure Chaos Studio can help simulate faults and trigger disaster recovery situations.|
-|(Cluster) Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions. <br><br>Internet facing workloads should leverage [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic) to route traffic globally across AKS clusters.|A multiregion strategy helps maximize availability and provide business continuity.|
-|(Cluster) Operationalize clusters and pods configuration standards with [Azure Policy](/azure/aks/use-azure-policy). | Azure Policy can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and if anything is running against company policy. |
-| (Workload) Use platform capabilities in your release engineering process.|Kubernetes and ingress controllers support many advanced deployment patterns for inclusion in your release engineering process. Consider patterns like blue-green deployments or canary releases.|
-|(Cluster and Workload) For mission-critical workloads, use [stamp-level blue/green deployments](/azure/well-architected/mission-critical/mission-critical-deployment-testing#ephemeral-blue-green-deployments).|A stamp-level blue/green deployment approach can increase confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.|
+|(Cluster) Operationalize clusters and pods configuration standards with [Azure Policies for AKS](/azure/aks/use-azure-policy). | Azure Policies for AKS can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. Policies can be used to define the permissions granted to pods and ensure compliance with company policies.|
 |(Workload) Use [Kubernetes Event Driven Autoscaling](/azure/aks/keda-about) (KEDA).|KEDA allows your applications to scale based on events, like the number of events being processed. You can choose from a rich catalog of 50+ KEDA scalers.|
 
 ## Performance efficiency
@@ -231,13 +235,10 @@ Start your design strategy based on the [design review checklist for Performance
 > - (Cluster and Workload) **Conduct capacity planning.** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations.
 >
 >   After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.
-> - (Cluster) **Define a cluster scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste.
+> - (Cluster) **Define a cluster scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste. Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden and Optimize your workload to operate and deploy efficiently in a container.
 >
 >   Review the [Scaling and Partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration.
 >
->   Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden.
->
->   Optimize your workload to operate and deploy efficiently in a container.
 > - (Cluster and Workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and and established baselines.
 > - (Cluster and Workload) **Scale workloads and flows independently.** Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. Separate workloads and flows into different node pools allowing independent scalling.
 
