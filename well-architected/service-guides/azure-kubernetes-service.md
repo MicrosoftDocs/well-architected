@@ -5,7 +5,8 @@ author: schaffererin
 ms.author: schaffererin
 ms.topic: conceptual
 ms.date: 12/11/2024
-ms.product: azure-kubernetes-service
+products:
+  - azure-kubernetes-service
 azure.category:
   - containers
 ---
@@ -291,18 +292,19 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#containers)'
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations#containers)
 
-## Related resources
+## Next steps
 
-### Azure Architecture Center guidance
+Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
 
 - [AKS baseline architecture](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks)
 - [Advanced AKS microservices architecture](/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced)
 - [AKS cluster for a PCI-DSS workload](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
 - [AKS baseline for multiregion clusters](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster)
-
-### Cloud Adoption Framework guidance
-
 - [AKS Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/app-platform/aks/landing-zone-accelerator)
+
+Build implementation expertise by using the following product documentation:
+
+-  [AKS product documentation](/azure/aks)
 
 ## Next steps
 
