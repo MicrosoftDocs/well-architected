@@ -209,7 +209,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >    Kubernetes and ingress controllers support many advanced deployment patterns for inclusion in your release engineering process. Consider patterns like blue-green deployments or canary releases.
 >
-> - (Cluster and Workload) **Make workloads more sustainable by optimizing cost.** Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around _cost optimization_, _reducing carbon emissions_, and _optimizing energy consumption_. Optimizing the application's cost is the initial step in making workloads more sustainable.
+> - (Cluster and Workload) **Make workloads more sustainable.** Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around _cost optimization_, _reducing carbon emissions_, and _optimizing energy consumption_. Optimizing the application's cost is the initial step in making workloads more sustainable.
 >
 >   Review [Sustainable software engineering principles in Azure Kubernetes Service (AKS)](/azure/aks/concepts-sustainable-software-engineering) to learn how to build sustainable and efficient AKS workloads.
 
