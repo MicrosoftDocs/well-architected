@@ -32,6 +32,8 @@ To familiarize yourself with the concept of Azure landing zones, see [What is an
 
 :::image type="content" source="./images/azure-vmware-solution-landing-zone-architecture.png" alt-text="Architecture diagram that shows the landing zone integration of an Azure VMware Solution workload." border="false" lightbox="./images/azure-vmware-solution-landing-zone-architecture.png":::
 
+*Download a [Visio file](https://arch-center.azureedge.net/azure-vmware-solution-landing-zone-architecture.vsdx) of this architecture.*
+
 ### Platform landing zones
 
 Sometimes an Azure VMware Solution private cloud is deployed before a workload gets migrated. Other times, the private cloud is deployed on a workload. In both cases, the private cloud needs to interact with multiple external services. Central teams might own some of these services as part of platform landing zones. Examples of these services include domain resolution, network connectivity, and security services. Interaction with these external services is a foundational concern. To be fully functional, workloads that are deployed on an Azure VMware Solution private cloud need the platform team and the workload team to share the same responsibility mindset.
