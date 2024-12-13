@@ -837,13 +837,13 @@
 		},
 		{
 			"source_path": "well-architected/services/hybrid/azure-stack-hub/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-stack-hub/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/hybrid/azure-stack-hub/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-stack-hub/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/event-grid/operational-excellence.md",
@@ -2174,6 +2174,16 @@
 			"source_path": "well-architected/iot/iot-security.md",
 			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
 			"redirect_document_id": false
-		}							
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-stack-hub/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-stack-hub/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-local",
+			"redirect_document_id": false
+		}				
 	]
 }
