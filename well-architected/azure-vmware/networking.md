@@ -68,8 +68,7 @@ The network is a critical perimeter in the Azure VMware Solution environment. Ne
 
 - Create network segments for your Azure VMware Solution workloads.
 - Create firewall rules within VMware NSX-T Data Center.
-- Enable HCX Extension with High Availability. By default, HCX Network Extension Appliances are deployed as single instances. A failure of an instance running either at source or destination will make the whole stretched VLAN un-operational. By using [HCX Network Extension HA](/azure/azure-vmware/configure-hcx-network-extension-high-availability
-) will ensure that HCX operations such as vMotion can tolerate a single instance failure.
+- Enable HCX Extension with High Availability. By default, HCX Network Extension Appliances are deployed as single instances. A failure of an instance running either at source or destination will make the whole stretched VLAN un-operational. By using [HCX Network Extension HA](/azure/azure-vmware/configure-hcx-network-extension-high-availability) will ensure that HCX operations such as vMotion can tolerate a single instance failure.
 
 ## Design IP addressing schemes for growth
 
@@ -84,11 +83,13 @@ Besides a /22 RFC-1918 address range, workload segments have separate, nonconfli
 - Ensure your IP address range is large enough to accommodate all current and future Azure VMware Solution workloads.
 - Use a spreadsheet or IP address management (IPAM) tool to efficiently organize available IP addresses, track IP address usage, and help avoid IP address conflicts.
 - Plan for potential increases in devices, segments, or subnets. Use an IP addressing scheme that can handle demand increases.
-- Identify duplicate routes in NSX-T Data Center T0 routers. Duplicate routes is a possible indication of asymmetric routes. Connection with on-premises environment may stop working if asymmetry is not detected.
-- Use multiple NSX segments. Running all VMs from only one segment can result in exceeding the [VMware config limits](https://configmax.vmware.com/). Crossing config limits can leave Azure VMware Solution SDDC in an unsupported state and impact its availability for any support/upgrade operations.
-- Use multiple DNS servers per private FQDN zone. Azure VMware Solution SDDC can [support upto 3 DNS servers](/azure/azure-vmware/configure-dns-azure-vmware-solution#configure-dns-forwarder
-) for a single FQDN. Using a single DNS server for DNS resolution becomes single point of failure. Ensure that multiple DNS servers are used for any on-premises FQDN resolution from Azure VMware Solution SDDC.
+- Identify duplicate routes in NSX-T Data Center T0 routers. Duplicate routes are a possible indication of asymmetric routes. Connection with on-premises environments might stop working if asymmetry isn't detected.
+- Use multiple DNS servers per private FQDN zone. Azure VMware Solution SDDC can [support up to three DNS servers](/azure/azure-vmware/configure-dns-azure-vmware-solution#configure-dns-forwarder) for a single FQDN. Using a single DNS server for DNS resolution becomes single point of failure. Ensure that multiple DNS servers are used for any on-premises FQDN resolution from Azure VMware Solution SDDC.
 - Use Dynamic Host Configuration Protocol (DHCP) for dynamic IP address assignment.
+
+## Additional resources
+
+- Crossing config limits can leave Azure VMware Solution SDDC in an unsupported state and impact its availability for any support/upgrade operations. Use multiple NSX segments to help ensure that you don't exceed the [VMware config limits](https://configmax.vmware.com/).
 
 ## Next steps
 
