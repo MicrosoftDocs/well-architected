@@ -92,7 +92,8 @@ The region of your session hosts also affects the reliability of your Azure Virt
 
 For more information about availability zones and scale sets with flexible orchestration, see the following articles:
 
-- [Availability zone service and regional support](/azure/reliability/availability-zones-service-support)
+- [Availability zone service support](/azure/reliability/availability-zones-service-support)
+- [Availability zone region support](/azure/reliability/availability-zones-region-support)
 - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)
 
 ##### Recommendations

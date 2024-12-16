@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:** 
 
-|[SE:01](checklist.md)| Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
+|**SE:01**| Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
 |---|---|
 
 This guide describes the recommendations for establishing a security baseline. A security baseline is a document that specifies your organization's bare minimum security requirements and expectations across a range of areas. A good security baseline helps you:

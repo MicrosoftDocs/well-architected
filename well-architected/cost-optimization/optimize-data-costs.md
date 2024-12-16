@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
-|[CO:10](checklist.md)| Optimize data costs. Data spending with data priority. Data optimization should include improvements to data management (tiering and retention), volume, replication, backups, file formats, and storage solutions.|
+|**CO:10**| Optimize data costs. Data spending with data priority. Data optimization should include improvements to data management (tiering and retention), volume, replication, backups, file formats, and storage solutions.|
 |---|---|
 
 This guide describes the recommendations for optimizing data costs for a workload. Optimizing data costs involves minimizing the expenses related to the storage and management of data according to its significance and access frequency. Appropriate data management can significantly reduce overhead costs and align spending with data utility. Neglecting to optimize data costs can lead to inflated expenses, inefficient resource allocation, and financial waste due to misaligned storage solutions and unnecessary data retention.

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-[PE:12](continuous-performance-optimize.md)| Continuously optimize performance. Focus on components that show deteriorating performance over time, such as databases and networking features.|
+|**PE:12**| Continuously optimize performance. Focus on components that show deteriorating performance over time, such as databases and networking features.|
 |---|---|
 
 This guide describes the recommendations for continuous performance optimization. Continuous performance optimization is the process of constantly monitoring, analyzing, and improving performance efficiency. Performance efficiency adapts to increases and decreases in demand. Performance optimization needs to be an ongoing activity throughout the life of the workload. Workload performance often degrades or becomes excessive over time, and factors to consider include changes in usage patterns, demand, features, and technical debt.
