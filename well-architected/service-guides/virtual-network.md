@@ -89,7 +89,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|Size VNets and subnets as per your scaling strategy. Opt for fewer, larger VNets accommodate redundancy as a mitigation strategy for failures. <br><br> Ensure there aren't overlapping address space with other VNets you need to communicate with, and plan the address space in advance.  <br><br> See, [**Create, change, or delete a virtual network**](/azure/virtual-network/manage-virtual-network).| With a bit of overprovisioning, you can ensure that the network can scale efficiently without running into address space limitations. <br>Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture. <br><br> Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture.|
+|Size VNets and subnets as per your scaling strategy. Opt for fewer, larger VNets accommodate redundancy as a mitigation strategy for failures. <br><br> Ensure there aren't overlapping address space with other VNets you need to communicate with, and plan the address space in advance.  <br><br> See, [**Create, change, or delete a virtual network**](/azure/virtual-network/manage-virtual-network).| With a bit of overprovisioning, you can ensure that the network can scale efficiently without running into address space limitations. <br>Planning the address space in advance helps avoid conflicts and ensures a smooth, scalable network architecture. |
 |Use the [**standard Public IP SKU**](/azure/virtual-network/ip-services/public-ip-addresses#sku) for better reliability support through availability zones. <br> By default, public IPs are deployed across multiple zones unless restricted to one zone.|Ensures that communication within a public IP remains operational during zonal failures.|
 
 ## Security
@@ -108,7 +108,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Keep your network perimeter up to date**. Security settings, such as Network Security Groups (NSGs), Application Security Groups (ASGs), and even IP ranges must be updated regularly. Outdated rules may not align with current network architecture or traffic patterns. This security gap can be leaving your network exposed to potential attacks by lowering restrictions on ingress and egress traffic. 
 >
-> - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all traffic through an network virtual appliance, such as a firewall, by using UDRs for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
+> - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all external traffic through an network virtual appliance, such as a firewall, by using UDRs for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
 >
 >    Secure PaaS service connectivity with private endpoints while blocking outbound connections.   
 >
