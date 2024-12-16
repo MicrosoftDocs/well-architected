@@ -310,6 +310,12 @@
           href: service-guides/azure-files.md       
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
+        - name: Azure IoT Hub
+          items:
+            - name: Reliability
+              href: service-guides/iot-hub/reliability.md
+            - name: Operational excellence
+              href: service-guides/iot-hub/operational-excellence.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
