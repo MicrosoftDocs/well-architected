@@ -270,13 +270,6 @@ productDirectory:
       azureCategories:
         - hybrid
     # Card
-    - title: Azure Stack Hub
-      summary: Use Azure Stack Hub as an integrated hardware system, with software preinstalled on validated hardware.
-      imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
-      url: ./azure-stack-hub/reliability.md
-      azureCategories:
-        - hybrid
-    # Card
     - title: Azure Traffic Manager
       summary: Route incoming traffic for high performance and availability.
       imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg

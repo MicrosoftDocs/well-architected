@@ -11,6 +11,49 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## November 2024
+
+### New articles
+
+- [Well-Architected Framework Perspective on Azure Monitor Application Insights](./service-guides/application-insights.md): Explore design considerations and configuration recommendations for Azure Monitor Application Insights. Azure Monitor Application Insights is an extensible Application Performance Management (APM) service that helps you monitor the performance and usage of your live web applications. It provides real-time insights into your application's performance and user behavior, enabling you to detect and diagnose issues and understand what users actually do with your app.
+
+#### New workload: AI on Azure
+
+This month we introduced new guidance for designing AI workloads on Azure. This documentation is appropriate for roles that are accountable for designing, building, and maintaining a solution for running AI workloads in a cloud environment. Use the [AI Workloads on Azure](./ai/index.yml) documentation as your go-to resource to build and optimize AI solutions on Azure.
+
+- [AI Workloads on Azure](./ai/get-started.md)
+- [Design Methodology for AI Workloads on Azure](./ai/design-methodology.md)
+- [Design Principles for AI Workloads on Azure](./ai/design-principles.md)
+- [Application Design for AI Workloads on Azure](./ai/application-design.md)
+- [Application Platform for AI Workloads on Azure](./ai/application-platform.md)
+- [Design Training Data for AI Workloads on Azure](./ai/training-data-design.md)
+- [Grounding Data Design for AI Workloads on Azure](./ai/grounding-data-design.md)
+- [Data Platform for AI Workloads on Azure](./ai/data-platform.md)
+- [MLOps and GenAIOps for AI Workloads on Azure](./ai/mlops-genaiops.md)
+- [AI Workload Operations on Azure](./ai/operations.md)
+- [Test and Evaluate AI Workloads on Azure](./ai/test.md)
+- [Responsible AI in Azure Workloads](./ai/responsible-ai.md)
+- [Workload Team Personas Involved in AI Workloads](./ai/personas.md)
+- [AI Workload Assessment](./ai/assessment.md)
+
+#### New workload: Software as a service (SaaS) on Azure
+
+This month we added a new workload for SaaS on Azure. This documentation provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a SaaS solution on Azure at-scale. Use the [SaaS Workloads on Azure](./saas/index.yml) documentation to build scalable, performant, reliable, and secure SaaS solutions.
+
+- [SaaS Workloads](./saas/get-started.md)
+- [Design Methodology for SaaS Workloads on Azure](./saas/design-methodology.md)
+- [Design Principles of SaaS Workloads on Azure](./saas/design-principles.md)
+- [Billing and Cost Management for SaaS Workloads on Azure](./saas/billing-cost-management.md)
+- [Governance for SaaS Workloads on Azure](./saas/governance.md)
+- [Resource Organization for SaaS Workloads on Azure](./saas/resource-organization.md)
+- [Identity and Access Management for SaaS Workloads on Azure](./saas/identity-access.md)
+- [Compute for SaaS Workloads on Azure](./saas/compute.md)
+- [Networking for SaaS Workloads on Azure](./saas/networking.md)
+- [Data for SaaS Workloads on Azure](./saas/data.md)
+- [DevOps Practices for SaaS Workloads on Azure](./saas/devops.md)
+- [Incident Management for SaaS Workloads on Azure](./saas/incident-management.md)
+- [Assessment Review Tool for SaaS Workloads on Azure](./saas/assessment.md)
+
 ## October 2024
 
 ### Updated articles
@@ -181,75 +224,3 @@ Updated recommendations for the Operational Excellence pillar:
 - [Recommendations for using infrastructure as code](operational-excellence/infrastructure-as-code-design.md)
 - [Recommendations for designing a deployment failure mitigation strategy](operational-excellence/mitigation-strategy.md)
 - [Recommendations for safe deployment practices](operational-excellence/safe-deployments.md)
-
-## November 2023
-
-The Azure Well-Architected Framework completed a significant content refresh across all five pillars. We're breaking from our standard "What's new" format this month because the changes that launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
-
-### The core pillars of architecture have been restructured
-
-All five pillars of the Well-Architected Framework now follow a common structure that consists exclusively of design principles, design review checklists, tradeoffs, recommendation guides, and cloud design patterns.
-
-- **Design principles**. Presents goal-oriented principles that build a foundation for the workload. Each principle includes a set of recommended approaches and the benefits of taking those approaches. The principles for each pillar changed in terms of content and coverage.
-
-  - [Reliability design principles](./reliability/principles.md)
-  - [Security design principles](./security/principles.md)
-  - [Cost Optimization design principles](./cost-optimization/principles.md)
-  - [Operational Excellence design principles](./operational-excellence/principles.md)
-  - [Performance Efficiency design principles](./performance-efficiency/principles.md)
-
-- **Design review checklists**. Lists roughly codified recommendations that drive action. Use the checklists during the design phase of your new workload and to evaluate brownfield workloads.
-
-  - [Design review checklist for Reliability](./reliability/checklist.md)
-  - [Design review checklist for Security](./security/checklist.md)
-  - [Design review checklist for Cost Optimization](./cost-optimization/checklist.md)
-  - [Design review checklist for Operational Excellence](./operational-excellence/checklist.md)
-  - [Design review checklist for Performance Efficiency](./performance-efficiency/checklist.md)
-
-- **Tradeoffs**. Describes tradeoffs with other pillars. Many design decisions force a tradeoff. It's vital to understand how achieving the goals of one pillar might make achieving the goals of another pillar more challenging.
-
-  - [Reliability tradeoffs](./reliability/tradeoffs.md)
-  - [Security tradeoffs](./security/tradeoffs.md)
-  - [Cost Optimization tradeoffs](./cost-optimization/tradeoffs.md)
-  - [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
-  - [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
-
-- **Recommendation guides**. Every design review checklist recommendation is associated with one or more guides. They explain the key strategies to fulfill that recommendation. They also include how Azure can facilitate workload design to help achieve that recommendation. Some of these guides are new, and others are refreshed versions of guides that covered a similar concept.
-
-   The recommendation guides include tradeoffs along with risks.
-  - This icon indicates a tradeoff: :::image type="icon" source="./_images/trade-off.svg":::
-  - This icon indicates a risk: :::image type="icon" source="./_images/risk.svg":::
-
-- **Cloud design patterns**. Build your design on proven, common architecture patterns. The Azure Architecture Center maintains the [Cloud Design Patterns](/azure/architecture/patterns/) catalog. Each pillar includes descriptions of the cloud design patterns that are relevant to the goals of the pillar and how they support the pillar.
-
-### Well-Architected Framework assessments
-
-The [Well-Architected Review assessment](/assessments/azure-architecture-review/) was refreshed. Specifically, the "Core Well-Architected Review" option now aligns to the new content structure in the Well-Architected Framework. Every question in every pillar maps to the design review checklist for that pillar. All choices for the questions correlate to the recommendation guides for the related checklist item.
-
-> [!IMPORTANT]
-> **Backwards compatibility notice.** The first new milestone on existing Core Well-Architected Review assessment sessions will not be prefilled with your prior responses due to the assessment refresh. You will be able to access prior milestones, but when you create the first new milestone, you will need to reassess the workload against the new questions and choices.
-
-No other assessments were changed as part of this refresh.
-
-### Thematic changes
-
-In addition to the changes in structure and consistency, you should note some thematic changes within the content. See the following key examples of these changes.
-
-- **Workloads are more than technology**. The scope of the Well-Architected Framework is your workload. The principles and the guides provide recommendations for **people and processes** of the workload team along with technical guidance.
-
-- Workloads exist within the context of the organization. The Well-Architected Framework frequently addresses **workload responsibility to organizational expectations**. The Well-Architected Framework calls out the benefits and tradeoffs of organizational influence.
-
-- Prior to this refresh, the guidance was more focused on the infrastructure than on the application running on that infrastructure. Now, every pillar has **developer-centric content**.
-
-- **Specific service configuration has been minimized**. The Well-Architected Framework pillar content is design content, not implementation content. Before the refresh, the Well-Architected Framework interwove Azure service-specific guidance and design guidance. Now, the Well-Architected Framework limits service-specific content to dedicated sections in the recommendation guides. The Well-Architected Framework service guides continue to exist to serve as the primary source for service-centric perspectives.
-
-> [!IMPORTANT]
-> As part of this restructuring, many pages have been added, moved, removed, or changed. Redirection is in place where possible, but we're aware that many existing links to the Well-Architected Framework might no longer point to the same content.
-
-### What didn't change?
-
-- The Well-Architected Framework continues to put a **healthy burden on workload teams**. It ensures that workload teams know **what decisions need to be made** and what risks, benefits, and tradeoffs are associated with those decisions.
-
-- The Well-Architected Framework provides recommendations to **help you make informed and justified decisions**. The Well-Architected Framework doesn't know your business requirements or constraints, so it can't make decisions for you.
-
-- The [Well-Architected Framework workloads](./workloads.md) and the [Well-Architected Framework service guides](./service-guides/index.yml) didn't undergo significant changes with this refresh. New workloads and service guides are ongoing additions to the Well-Architected Framework. Keep checking this page for updates.
