@@ -110,7 +110,7 @@ Start your design strategy based on the **[design review checklist for Security]
 >
 > - **Keep your network perimeter up to date.** Security settings, such as NSGs, ASGs, and IP address ranges must be updated regularly. Outdated rules might not align with current network architecture or traffic patterns. This security gap can leave your network exposed to potential attacks by lowering restrictions on ingress and egress traffic.
 >
-> - **Use segmentation to enhance security.** Use NSGs as L4 firewalls at the subnet level. Route all external traffic through an network virtual appliance, such as a firewall, by using UDRs for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
+> - **Use segmentation to enhance security.** Use NSGs as L4 firewalls at the subnet level. Route all external traffic through an network virtual appliance, such as a firewall, by using user-defined routes for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
 >
 >    Secure platform as a service connectivity with private endpoints while blocking outbound connections.
 >
