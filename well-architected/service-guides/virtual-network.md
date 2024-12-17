@@ -139,7 +139,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
-> - **Optimize the "fat flows."** These flows refer to large data transfers between endpoints. Virtual network peering is recommended for efficiently moving data between virtual networks. Even though peering has inbound and outbound costs, this approach can be cost-effective because it reduces bandwidth consumption and network performance issues. Avoid routing through a hub to minimize inefficiencies and costs.
+> - **Optimize the "fat flows."** These flows refer to large data transfers between endpoints. Virtual network peering is recommended for efficiently moving data between virtual networks. Even though peering has inbound and outbound costs, this approach can be cost-effective because it reduces bandwidth consumption and network performance problems. Avoid routing through a hub to minimize inefficiencies and costs.
 >
 >   To optimize data transfer between regions, it's important to consider both the frequency and the method of transfer. For example, when you deal with backups, the location where you save your backups can significantly affect costs. Storing backup data in a different region incurs bandwidth. To mitigate these costs, ensure that data is compressed before you transfer it across regions. You can further optimize costs and efficiency by adjusting the frequency of data transfers.
 >
@@ -147,28 +147,28 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   Azure cost reports might not include the expenses that are associated with non-Microsoft NVAs, which have separate licensing costs. They might also have different billing models for fixed price and consumption-based options. Make sure to include these factors in your budget considerations.
 >
->   Certain networking resources can be expensive, such as Azure Firewall and ExpressRoute. Organizations usually provision these resources in centralized hub models, and teams can be cross-charged for the incurred cost. Don't forget to account for that charge in your cost model.
+>   Some networking resources can be expensive, like Azure Firewall and ExpressRoute. Organizations usually provision these resources in centralized hub models, and teams can be cross-charged for the incurred cost. Don't forget to account for that charge in your cost model.
 >
 > - **Don't pay for unused capabilities.** Review component costs regularly and remove legacy features or default configurations. Limit the number of public IP addresses to save costs. This also enhances security by reducing the attack surface. This strategy creates a win-win situation.
 >
 > - **Optimize private endpoints.** Determine whether you can reuse a Private Link to a resource from other virtual networks. When you use Private Endpoint across a regional virtual network peering, you're not charged peering fees for traffic to and from Private Endpoint. You only pay for the Private Link access itself, not for the traffic between virtual networks. Review [Private Link in a hub-and-spoke network](/azure/architecture/networking/guide/private-link-hub-spoke-network) to learn about scenarios for accessing private endpoints across virtual networks.
 >
-> - **Align the network traffic inspection functions with the priority and security requirements of the flow.** For large bandwidth requirements, consider routing traffic to lower-cost paths. While ExpressRoute is suitable for large traffic, it can be expensive. Consider alternatives like public endpoints for cost savings. However, there is a tradeoff on security. Use network peering for network-to-network traffic, bypassing the firewall, and to avoid unnecessary inspections.
+> - **Align the network traffic inspection functions with the priority and security requirements of the flow.** For large bandwidth requirements, consider routing traffic to lower-cost paths. ExpressRoute is suitable for large traffic, but it can be expensive. Consider alternatives like public endpoints for cost savings. However, there is a tradeoff on security. Use network peering for network-to-network traffic, to bypass the firewall, and to avoid unnecessary inspections.
 >
 >   Only allow necessary traffic between components and block unexpected traffic. If traffic is expected and the flow is aligned with your security requirements, you can omit those checkpoints. For example, evaluate whether you need to route traffic through a firewall if the remote resource is within the trust boundary.
 >
->   Evaluate the number of subnets and their associated NSGs, even within a virtual network. The more NSGs you have, the higher the operational costs for managing the rulesets. When possible, use ASGs to streamline management and reduce costs.
+>   Evaluate the number of subnets and their associated NSGs, even within a virtual network. The more NSGs you have, the higher the operational costs for managing the rule sets. When possible, use ASGs to streamline management and reduce costs.
 >  
 > - **Optimize code costs.** When you develop your application, choose more efficient protocols and apply data compression to optimize performance. For example, you can enhance efficiency in a web app by configuring components to compress data. These optimizations also affect performance.
 >
-> - **Take advantage of resources in the centralized virtual network.** Using centralized resources reduces duplication and overhead. Additionally, offloading responsibilities to existing teams can further help in cost optimization and allow for delegation of expertise for specific functions.
+> - **Take advantage of resources in the centralized virtual network.** Use centralized resources to reduce duplication and overhead. Also, offloading responsibilities to existing teams can further help optimize costs and allow for delegation of expertise for specific functions.
 
 ##### Recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|**[Use virtual network peering](/azure/virtual-network/virtual-network-peering-overview)** to make network flow more efficient by bypassing controls. <br><br> Avoid excessive peering.|Transfers data directly between peered virtual networks, bypassing the firewall reduces bandwidth consumption and network performance issues.<br><br> Avoid putting all your resources in a single virtual network. Even though you might incur peering cost, it's not practical to put all resources in a single virtual network just to save costs. It can hinder growth. The virtual network can eventually reach a point where new resources don't fit anymore.|
-|**[Minimize public IP address resources](/azure/virtual-network/ip-services/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)**, if you don't need them. <br><br> Before deletion, make sure IP address isn't linked with any IP address configuration or virtual machine network interface. |Maintaining unnecessary public IPs can increase costs due to resource charges and operational overhead.|
+|**[Use virtual network peering](/azure/virtual-network/virtual-network-peering-overview)** to make network flow more efficient by bypassing controls. <br><br> Avoid excessive peering. Transfers data directly between peered virtual networks to bypass the firewall, which reduces bandwidth consumption and network performance problems.<br><br> Avoid putting all your resources in a single virtual network. You might incur peering cost, but it's not practical to put all resources in a single virtual network only to save costs. It can hinder growth. The virtual network can eventually reach a point where new resources don't fit anymore.|
+|**[Minimize public IP address resources](/azure/virtual-network/ip-services/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)** if you don't need them. <br><br> Before deletion, make sure that IP address isn't linked with any IP address configuration or virtual machine network interface. |Unnecessary public IPs can increase costs because of resource charges and operational overhead.|
 
 ## Operational Excellence
 
@@ -182,45 +182,45 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Skill up on Azure networking constructs.**  When onboarding to Azure, networking teams often assume that their existing knowledge will suffice, but many aspects differ in Azure. Make sure the team understands the fundamental Azure networking concepts, DNS complexities, routing, and security capabilities. Build a taxonomy of networking services so that the team can share knowledge and have a common understanding.
+> - **Skill up on Azure networking constructs.** When you onboard to Azure, networking teams often assume that their existing knowledge is enough. However, Azure has many different aspects. Make sure that the team understands the fundamental Azure networking concepts, DNS complexities, routing, and security capabilities. Build a taxonomy of networking services so that the team can share knowledge and have a common understanding.
 >
-> - **Formalize your network design, strive for simplicity.** Document the design and any changes, including configuration details like route tables, NSGs, and firewall rules. Include the governance policies that are in place, such as blocking ports. Having clear documentation will make collaboration with other teams and stakeholders effective.
+> - **Formalize your network design and strive for simplicity.** Document the design and any changes, including configuration details like route tables, NSGs, and firewall rules. Include the governance policies that are in place, such as blocking ports. Clear documentation makes collaboration with other teams and stakeholders effective.
 >
->   Simplified networks are easier to monitor, troubleshoot, and maintain. For example, if your topology is hub-spoke, minimize direct peerings between spokes to reduce operational burden and strengthen security. Always document the design, providing justifications for each design decision.
+>   Simplified networks are easier to monitor, troubleshoot, and maintain. For example, if your topology is hub-spoke, minimize direct peerings between spokes to reduce operational burden and strengthen security. Always document the design, and provide justifications for each design decision.
 >
 >   Reduce complexity by using aliases instead of direct IP address ranges. This will lower operational burden.
 >
-> - **Use design patterns that optimize network traffic.** To optimize network use and configuration, implement known design patterns that minimize or optimize network traffic. Additionally, validate the network configuration during builds using security scanners to ensure everything is set up correctly.
+> - **Use design patterns that optimize network traffic.** To optimize network use and configuration, implement known design patterns that minimize or optimize network traffic. Validate the network configuration during builds by using security scanners to ensure that everything is set up correctly.
 >
-> - **Do consistent network deployments.** Use infrastructure as code (IaC) for all components, including network peerings and private endpoints. Recognize that core networking components are likely to change less frequently than other components. Implement a layered deployment approach for your stack so that each layer can be independently deployed. Also, avoid combining IaC with scripting to prevent complexity.
+> - **Do consistent network deployments.** Use infrastructure as code (IaC) for all components, including network peerings and private endpoints. Understand that core networking components are likely to change less frequently than other components. Implement a layered deployment approach for your stack so that you can deploy each layer independently. Avoid combining IaC with scripting to prevent complexity.
 >
-> - **Monitor the networking stack.** Continuously monitor the traffic patterns to identify anomalies, issues such as connection drops before they cause cascading failures. When possible, set alerts to get notified about these disruptions.
+> - **Monitor the networking stack.** Monitor the traffic patterns continuously to identify anomalies and problems, such as connection drops, before they cause cascading failures. When possible, set alerts to get notified about these disruptions.
 >
->   Similar to other components in the architecture, capture all relevant metrics and logs from various networking components, such as the virtual network, subnets, NSGs, firewalls, load balancers, and others. Aggregate, visualize, and analyze them in your dashboards, creating alerts on important events.
+>   Similar to other components in this architecture, capture all relevant metrics and logs from various networking components, such as the virtual network, subnets, NSGs, firewalls, load balancers, and others. Aggregate, visualize, and analyze them in your dashboards, creating alerts for important events.
 >
-> - **Include networking in your failure mitigation strategy.** Virtual networks and subnets are deployed initially and typically remain unchanged, making rollbacks difficult. However, you can optimize your recovery by following a few strategies:
+> - **Include networking in your failure mitigation strategy.** Virtual networks and subnets are deployed initially and typically remain unchanged, which makes rollbacks difficult. However, you can optimize your recovery by following a few strategies:
 >  
->   Duplicate networking infrastructure in advance, especially for hybrid setups. Ensure separate routes in different regions are ready to communicate with each other beforehand. Replicate and maintain consistent NSGs and Azure Firewall rules across both primary and disaster recovery (DR) sites. This process can be time-consuming and requires approval, but doing it in advance helps prevent issues and failures. Make sure you test the networking stack in the DR site.
+>   Duplicate networking infrastructure in advance, especially for hybrid setups. Ensure that separate routes in different regions are ready to communicate with each other beforehand. Replicate and maintain consistent NSGs and Azure Firewall rules across both primary and disaster recovery (DR) sites. This process can be time consuming and requires approval, but doing it in advance helps prevent problems and failures. Make sure that you test the networking stack in the DR site.
 >
 >   Avoid overlapping IP address ranges between your production and DR networks. By maintaining distinct IP address ranges, you can simplify network management and expedite the transition during a failover event.
 >
 >   Consider the tradeoffs between cost and reliability. For more information, see [Tradeoffs](#tradeoffs).
 >
-> - **Offload network operations to central teams.** Centralize management and governance of networking infrastructure, where possible. For example, in a hub-spoke topology, services like Azure Firewall, ExpressRoute, DNS, and others that are intended for shared use are placed in the hub network. That networking stack should be centrally managed taking the burden off the workload team.
+> - **Offload network operations to central teams.** Centralize management and governance of networking infrastructure, when possible. For example, in a hub-spoke topology, services like Azure Firewall, ExpressRoute, DNS that are intended for shared use are placed in the hub network. That networking stack should be centrally managed, which takes the burden off the workload team.
 >
->   Even in the spoke network, offload the administration of the virtual network to the central team. Minimize network operations to what is pertinent to the workload, such as management of NSGs.
+>   Offload the administration of the virtual network to the central team, even in the spoke network. Minimize network operations to what is pertinent to the workload, such as management of NSGs.
 >
->   Keep the central teams informed of any necessary changes in the workload that might affect configuration of the shared resources.
+>   Keep the central teams informed of any necessary changes in the workload that might affect configuration of shared resources.
 >
-> - **Prefer service names over IP addresses.** When defining routes, use service names or aliases instead of specific IP addresses. This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules you can set by using more generic names.
+> - **Prefer service names over IP addresses.** When you define routes, use service names or aliases instead of specific IP addresses. This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules that you can set by using more generic names.
 >
-> - **Right-size your virtual network and subnets.** Opt for fewer, larger virtual networks to reduce management overhead but avoid making subnets excessively large. Managing subnets and their NSGs can add to operational burden. For environments with limited private IP addresses (RFC 1918) availability, consider using IPv6.
+> - **Right-size your virtual network and subnets.** Choose fewer, larger virtual networks to reduce management overhead and avoid making subnets excessively large. The management of subnets and their NSGs can add to operational burden. For environments that have limited private IP addresses (RFC 1918) availability, consider using IPv6.
 
 | Recommendation|Benefit|
 |-----------|-------- |
-| Deploy **[Azure Network Manager](/azure/virtual-network-manager/overview).** |Instead of configuring each virtual network individually, Azure Network Manager centrally manages connectivity based on rules. This approach makes networking operations more streamlined.|
-| Use networking monitoring tools. <br><br> - Regularly use [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to verify to identify changes in demand and patterns. <br> - Use [Connection monitor](/azure/network-watcher/connection-monitor-overview) to analyze and identify issues like connection drops before they affect applications.|You're able to understand how data flows through your network, identify bottlenecks, and identify unusual or unauthorized access attempts. |
-|When defining routes, use **[service tags](/azure/virtual-network/service-tags-overview)** instead of specific IP addresses. <br><br> Similarly, use ASGs when you define traffic rules for NSGs.| This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules you can set by using more generic names.|
+| Deploy **[Azure Network Manager](/azure/virtual-network-manager/overview).** |Instead of configuring each virtual network individually, Azure Network Manager centrally manages connectivity based on rules. This approach streamlines networking operations.|
+| Use networking monitoring tools. <br><br> - Regularly use [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to identify changes in demand and patterns. <br> - Use [Connection monitor](/azure/network-watcher/connection-monitor-overview) to analyze and identify problems like connection drops before they affect applications.|You're able to understand how data flows through your network, identify bottlenecks, and identify unusual or unauthorized access attempts. |
+|When you define routes, use **[service tags](/azure/virtual-network/service-tags-overview)** instead of specific IP addresses. <br><br> Similarly, use ASGs when you define traffic rules for NSGs.| This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules that you can set by using more generic names.|
 
 ## Performance Efficiency
 
@@ -234,43 +234,43 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Define performance targets.** To define performance targets, rely on monitoring metrics, particularly for latency and bandwidth. Use connection monitor data, such as latency and the number of hops, to set targets and thresholds for acceptable performance. Application Insights offers a detailed view of the time workload requests spend in the network, helping to refine these targets.
+> - **Define performance targets.** To define performance targets, rely on monitoring metrics, specifically for latency and bandwidth. Use connection monitor data, such as latency and the number of hops, to set targets and thresholds for acceptable performance. Application Insights provides a detailed view of the time that workload requests spend in the network, which helps to refine these targets.
 >
-> - **Right-size your subnets.** When allocating subnets, it's important to strike a balance between size and scalability. You want subnets to be large enough to accommodate projected growth without operational burden.
+> - **Right-size your subnets.** When you allocate subnets, it's important to balance size and scalability. You want subnets to be large enough to accommodate projected growth without operational burden.
 >
->   To manage capacity effectively, a common strategy is to overprovision capacity due to uncertainty, but the goal should be to optimize over time. Continuously analyze data, so your network can handle the load but you don't pay extra for unused resources.
+>   To manage capacity effectively, a common strategy is to overprovision capacity because of uncertainty, but the goal should be to optimize over time. Continuously analyze data so that your network can handle the load but you don't pay extra for unused resources.
 >
-> - **Conduct performance testing.** Use combination of synthetic and production data to test latency and bandwidth to check how those factors might affect workload performance. For example, detecting resources that consume more bandwidth than expected and cause noisy neighbor issues. Or, traffic that's making multiple hops, can be the cause of the high latency.
+> - **Conduct performance testing.** Use a combination of synthetic and production data to test latency and bandwidth. This approach helps assess how these factors might affect workload performance. For example, detecting resources that cause noisy neighbor problems and consume more bandwidth than expected. Or traffic that makes multiple hops and cause high latency.
 >
->   It's recommended that you test in production or capture and replay production data as test data. This approach ensures tests are reflective of actual usage, which will cause setting realistic performance targets.
+>   We recommend that you test in production or capture and replay production data as test data. This approach ensures that tests reflect actual usage, which helps you set realistic performance targets.
 >
-> - **Monitor traffic across regions.** It's important to consider that workload resources might be located in different regions. Communication across regions can add significant latency. While traffic across availability zones in the same region has low latency, it might not be fast enough for some specialized workloads.
+> - **Monitor traffic across regions.** It's important to consider that workload resources might be located in different regions. Communication across regions can add significant latency. Traffic across availability zones in the same region has low latency, but it might not be fast enough for some specialized workloads.
 >
 
 | Recommendation|Benefit|
 |-----------|-------- |
-|**[Enable the Connection Monitor](/azure/network-watcher/connection-monitor-overview)** of Azure Network Watcher. <br><br> Use connection monitor during testing, which can generate synthetic traffic.|You're able to collect metrics that indicate loss and latency across networks. Also, trace the entire traffic path, which is important for detecting network bottlenecks.|
+|**[Enable Azure Network Watcher Connection Monitor](/azure/network-watcher/connection-monitor-overview).** <br><br> Use Connection Monitor during testing, which can generate synthetic traffic.|You're able to collect metrics that indicate loss and latency across networks. Also, you can trace the entire traffic path, which is important for detecting network bottlenecks.|
 |Keep the virtual network address space large enough to support scaling.|TBD|
 
 ## Tradeoffs
 
-You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
+You might have to make design tradeoffs if you use the approaches in the pillar checklists. The following examples highlight the advantages and drawbacks.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Redundant networking stack**
 
 When you choose to implement a redundant networking stack, including its NSGs, routes, and other configurations, there's added cost of the infrastructure and thorough testing.
 
-However, this upfront investment enhances reliability. You can be sure that everything works as expected and recovery during disruptions can be faster.
+This upfront investment enhances reliability. You can be sure that everything works as expected and speed up recovery during disruptions.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Virtual network peering**
 
-Direct virtual network peering enhances performance by reducing latency, because it avoids the need to route traffic through a hub where a firewall decrypts, inspects, and re-encrypts the payload.
+Direct virtual network peering enhances performance by reducing latency because it avoids the need to route traffic through a hub where a firewall decrypts, inspects, and re-encrypts the payload.
 
-That performance gain comes at the cost of decreased security. Without the firewall inspections provided by hub routing, the workload is more vulnerable to potential threats.
+That performance gain comes at the cost of decreased security. Without the firewall inspections that hub routing provides, the workload is more vulnerable to potential threats.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Large subnets**
 
-Large subnets provide ample address space, which allows workloads to scale out seamlessly. Large address space can safeguard against unexpected demand spikes, but it can also cause inefficient use of IP addresses, potentially causing IP address exhaustion as the workload evolves over time. Also, this strategy comes with higher operational costs. From an Operational Excellence perspective, it's ideal to keep your subnets as small as possible.
+Large subnets provide ample address space, which allows workloads to scale out seamlessly. A large address space can safeguard against unexpected spikes in demand. However, it may lead to inefficient use of IP addresses. Over time, this inefficiency can potentially cause IP address exhaustion as the workload evolves. Also, this strategy comes with higher operational costs. From an Operational Excellence perspective, it's ideal to keep your subnets as small as possible.
 
 ## Azure policies
 
