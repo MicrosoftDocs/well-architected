@@ -246,7 +246,6 @@ Start your design strategy based on the [design review checklist for Performance
 >   We recommend that you test in production or capture and replay production data as test data. This approach ensures that tests reflect actual usage, which helps you set realistic performance targets.
 >
 > - **Monitor traffic across regions**. It's important to consider that workload resources might be located in different regions. Communication across regions can add significant latency. Traffic across availability zones in the same region has low latency, but it might not be fast enough for some specialized workloads.
->
 
 | Recommendation|Benefit|
 |-----------|-------- |
