@@ -98,7 +98,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design Virtual Network.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Virtual Network.
 
 ##### Design checklist
 
