@@ -229,7 +229,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+#### Design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on the key performance indicators.
 
