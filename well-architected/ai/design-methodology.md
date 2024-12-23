@@ -9,9 +9,9 @@ ms.topic: conceptual
 
 # Design methodology for AI workloads on Azure
 
-Designing AI workloads involves integrating code and data to replace deterministic behavior and to enable tasks like prediction, classification, and other functional goals. AI workload architecture is often complex and must be designed within business constraints. Azure Well-Architected Framework provides a solid foundation for architectural excellence, but you should also consider AI-specific design principles.
+Designing AI workloads involves integrating code and data to replace deterministic behavior and to enable tasks like prediction, classification, and other functional goals. AI workload architecture is often complex and must be designed within business constraints. Azure Well-Architected Framework provides a solid foundation for architectural excellence, but you also need to consider AI-specific design principles.
 
-This article presents a suggested design methodology centered around those AI principles, which systematically guide the design and optimization of solutions. When you're uncertain in decision making, refer to this methodology to emphasize design direction through high-level AI principles.
+This article presents a suggested design methodology centered around those AI principles, which systematically guide the design and optimization of solutions. When you're uncertain in decision-making, refer to this methodology to emphasize design direction through high-level AI principles.
 
 If you're designing a capability or introducing an improvement, evaluate the change from the methodology perspective. Is safe user experience affected? Is it flexible enough to adapt to future innovations? Will it disrupt the experimentation flow? Another benefit of the methodology is collaboration with product owners and stakeholders to justify technical decisions.
 
@@ -27,7 +27,7 @@ Not every experiment succeeds. Consider worst-case scenarios and have contingenc
 
 When users interact with your AI system, *they place their trust in its ethical functionality*, despite the opaque logic of AI models. This trust holds you accountable for designing the system to prevent unethical behaviors such as manipulation, content toxicity, IP infringement, and fabricated responses.
 
-Responsible AI should be embedded in systems operations and the culture of the team. The practices must extend throughout the lifecycle of user interaction—from the user's initial intent to use the system, during sessions, and even during disruptions caused by system errors.
+Embed responsible AI in systems operations and the culture of the team. The practices must extend throughout the lifecycle of user interaction. It begins with the user's initial intent to use the system, continues through sessions, and even includes disruptions caused by system errors.
 
 Content moderation is a key strategy in responsible design of generative AI, where requests and responses are evaluated in real time to ensure safety and appropriateness. As part of the experimentation loops, strive to make algorithms fair and inclusive to minimize bias. Bias can enter the system through actual sessions or when you gather feedback.
 

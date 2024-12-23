@@ -73,9 +73,7 @@ When you choose between a custom model, a prebuilt model, or a service, consider
 - **Volume of data**: Handling large data volumes in various formats comes with challenges of protecting sensitive information and efficient processing. Optimizing storage, processing, and transfer costs should be an ongoing activity.
 - **Model decay**: Models can degrade over time, which leads to inaccurate results. Testing AI systems is challenging because of their randomness.
 - **Skill challenges**: New AI workloads might need specialized roles and new operations processes that require extensive training.
-
 - **Pace of AI innovation**: Adopting the latest technologies can be tempting to stay at the cutting edge. Evaluate new technologies carefully to ensure that they improve user experience and don't just add complexity for the sake of being up to date.
-
 - **Ethical requirements**: Clearly determine whether your use case is an ethical target for AI. Maintaining ethical standards is necessary throughout the planning and implementation phases to ensure that you're building a responsible system.
 
 ## How to use this guidance
