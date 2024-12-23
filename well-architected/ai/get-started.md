@@ -15,7 +15,7 @@ The article is meant for *workload owners* and *technical stakeholders* like arc
 
 > [!NOTE]
 >
-> Azure offers various AI services that you can integrate into your workload or build around it. Depending on your business needs, you can choose between fully managed software as a service (SaaS) solutions, platform as a service (PaaS) solutions, or build your own AI solution. *Specific Azure services and their capabilities are not covered here*. For those, we recommend referring to the respective product documentation.
+> Azure offers various AI services that you can integrate into your workload or build around it. Depending on your business needs, you can choose between fully managed software as a service (SaaS) solutions, platform as a service (PaaS) solutions, or build your own AI solution. *Specific Azure services and their capabilities are not covered here*. We recommend that you refer to the respective product documentation for that information.
 >
 > Also, certain AI workloads aren't in scope, such as:
 >
