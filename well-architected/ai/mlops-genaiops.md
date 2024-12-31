@@ -120,7 +120,7 @@ Integrating and deploying models requires specialized tools and practices that g
 
 ##### Tools
 
-To address discovery tasks, take advantage of model catalogs that include models from various providers. The [model Catalog in Azure AI Foundry portal](/azure/ai-studio/how-to/model-catalog-overview) allows you to evaluate from among curated collections and deploy models efficiently. 
+To address discovery tasks, take advantage of model catalogs that include models from various providers. The [model catalog in Azure AI Foundry portal](/azure/ai-studio/how-to/model-catalog-overview) allows you to evaluate from among curated collections and deploy models efficiently. 
 
 [Azure Machine Learning prompt flow](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) can help with the development of orchestration code, enabling prototyping, experimenting, iterating, and prompt engineering. These flows can be deployed to Azure Machine Learning managed endpoints. Evaluate whether you can run and deploy the flows with your existing CI/CD pipeline technology.
 
