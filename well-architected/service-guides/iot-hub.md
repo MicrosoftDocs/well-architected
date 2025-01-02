@@ -14,26 +14,21 @@ azure.category:
  - iot
 ---
 
+<!-- TODO: Add Card back in index.yml -->
+
 # Well-Architected Framework perspective on Azure IoT Hub
 
 Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for communication between an IoT application and its attached devices. You can connect millions of devices and their backend solutions reliably and securely. Almost any device can be connected to an IoT hub.
 
 This article assumes that as an architect, you've reviewed the [technologies and services you can use to create IoT solutions](/azure/iot/iot-services-and-technologies?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Fbread%2Ftoc.json) and chose [IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub) as the Azure IoT platform service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-[!IMPORTANT]
-
-**How to use this guide**
-
-Each section has a *design checklist* that presents architectural
-areas of concern along with design strategies localized to the technology
-scope. 
-
-Also included are recommendations for the technology capabilities that can
-help materialize those strategies. The recommendations don't represent an
-exhaustive list of all configurations that are available for IoT Hub and its
-dependencies. Instead, they list the key recommendations mapped to the design
-perspectives. Use the recommendations to build your proof-of-concept or to
-optimize your existing environments.
+> [!IMPORTANT]
+>
+> **How to use this guide**
+>
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
+>
+> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for IoT Hub and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 
 **Technology scope**
 
