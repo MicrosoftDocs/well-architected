@@ -280,14 +280,6 @@
           href: service-guides/azure-firewall.md
         - name: Azure App Service
           href: service-guides/app-service-web-apps.md
-        - name: Azure Batch
-          items:
-            - name: Reliability
-              href: service-guides/azure-batch/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-batch/operational-excellence.md
-            - name: Performance efficiency
-              href: service-guides/azure-batch/performance-efficiency.md
         - name: Azure Blob Storage
           href: service-guides/azure-blob-storage.md
         - name: Azure Cache for Redis
@@ -336,12 +328,6 @@
               href: service-guides/azure-sql-managed-instance/operational-excellence.md
         - name: Azure Local
           href: service-guides/azure-local.md
-        - name: Azure Stack Hub
-          items:
-            - name: Reliability
-              href: service-guides/azure-stack-hub/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-stack-hub/operational-excellence.md
         - name: Azure Traffic Manager
           href: service-guides/azure-traffic-manager.md
         - name: Azure Virtual Network
