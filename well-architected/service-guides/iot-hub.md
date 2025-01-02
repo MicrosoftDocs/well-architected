@@ -1,20 +1,17 @@
 ---
-title: "Well-Architected Framework perspective on Azure IoT Hub"
-description: "[Article description]."
-author: [your GitHub alias]
-ms.author: [your Microsoft alias or a team alias]
+title: Well-Architected Framework perspective on Azure IoT Hub
+description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for IoT Hub.
+author: asergaz
+ms.author: sergaz
 ms.topic: conceptual
-ms.date: [mm/dd/yyyy]
+ms.date: 01/02/2025
 ms.service: waf
 ms.subservice: waf-service-guide
 ms.subservice: well-architected
 products:
- - [item]
- - [item]
+ - azure-iot-hub
 azure.category:
- - [item]
- - [item]
-
+ - iot
 ---
 
 <!--
