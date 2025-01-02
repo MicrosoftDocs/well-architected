@@ -189,12 +189,12 @@ productDirectory:
         - iot
         - web
     # Card
-    - title: Azure IoT Hub
-      summary: Connect, monitor, and manage billions of IoT assets.
-      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: ./iot-hub/reliability.md
+    - title:  Azure IoT Hub
+      summary:  Connect, monitor, and manage billions of IoT assets.
+      imageSrc:  https://static.docs.com/ui/media/product/azure/iot-hub.svg
+      url:  iot-hub.md
       azureCategories:
-        - iot
+        -  iot
     # Card
     - title: Azure Kubernetes Service
       summary: Simplify the deployment, management, and operations of Kubernetes.

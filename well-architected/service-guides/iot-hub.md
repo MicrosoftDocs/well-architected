@@ -14,39 +14,7 @@ azure.category:
  - iot
 ---
 
-<!--
-
-This template provides the basic structure of a Well-Architected Framework (WAF)
-service guide for an Azure offering article.
-
-For more information, see the
-[pattern instructions](waf-review-for-product-template-instructions.md).
-
-Remove all comments in this template before you sign off
-or merge to the main branch.
-
-For metadata values to set, including products and Azure categories,
-see [Taxonomies for Learn]
-(https://review.learn.microsoft.com/help/platform/metadata-taxonomies?branch=main).
-
-To provide feedback about this template,
-contact the 
-[templates workgroup](mailto:templateswg@microsoft.com).
-
--->
-
-<!-- Required: Article heading H1
-
-Set expectations for what the content covers so that users
-know that the content meets their needs.
-
-The H1 format for this pattern is:
-
-'# Well-Architected Framework perspective on [Azure offering]' 
-
--->
-
-# Well-Architected Framework perspective on [Azure offering]
+# Well-Architected Framework perspective on Azure IoT Hub
 
 <!-- Required: Introductory paragraph
 
