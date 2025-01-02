@@ -16,38 +16,11 @@ azure.category:
 
 # Well-Architected Framework perspective on Azure IoT Hub
 
-<!-- Required: Introductory paragraph
+Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for communication between an IoT application and its attached devices. You can connect millions of devices and their backend solutions reliably and securely. Almost any device can be connected to an IoT hub.
 
-Create a paragraph that contains:
+This article assumes that as an architect, you've reviewed the [technologies and services you can use to create IoT solutions](/azure/iot/iot-services-and-technologies?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Fbread%2Ftoc.json) and chose [IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub) as the Azure IoT platform service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-- Links to a decision tree for the area of cloud infrastructure that
-your Azure offering operates in.
-- Links to an overview of the Well-Architected Framework pillars.
-
-Example:
-
-'This article assumes that as an architect, you've reviewed the
-[[cloud-infrastructure-area] decision tree]([decision-tree-URL]) and
-chose [Azure offering] as the [cloud-infrastructure-area] for
-your workload. The guidance in this article provides architectural
-recommendations that are mapped to the principles of the
-[Well-Architected Framework pillars](/azure/well-architected/pillars).'
-
--->
-
-[Add your introductory paragraph.]
-
-<!-- Required: Alert and bold text sections
-
-Use the following required sections for each WAF pillar::
-
--  A standardized alert that contains a link to a reference architecture
-that focuses on your Azure offering and illustrates the article's
-considerations.
-
-Example:
-
-'[!IMPORTANT]
+[!IMPORTANT]
 
 **How to use this guide**
 
@@ -57,32 +30,19 @@ scope.
 
 Also included are recommendations for the technology capabilities that can
 help materialize those strategies. The recommendations don't represent an
-exhaustive list of all configurations that are available for [Azure offering] and its
+exhaustive list of all configurations that are available for IoT Hub and its
 dependencies. Instead, they list the key recommendations mapped to the design
 perspectives. Use the recommendations to build your proof-of-concept or to
-optimize your existing environments. 
-
-Foundational architecture that demonstrates the key recommendations:
-[[Azure offering] baseline architecture]([baseline-architecture-URL]).'
-
-- Add a section to list the technology scope. List products, services, and technology
-areas that are related to your Azure offering. Use bold text as a heading,
-not an H2, H3, or H4.
-
-Example:
-
-'**Technology scope**
-
-This review focuses on the interrelated decisions for the following Azure resources:  
-
-- [interrelated-resource]
-- [interrelated-resource]
-- ...'
-
--->
+optimize your existing environments.
 
 **Technology scope**
 
+This review focuses on the interrelated decisions for the following Azure resources:  
+
+- [Azure IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps)
+- [Azure IoT Edge](/azure/iot-edge/about-iot-edge?view=iotedge-1.5)
+- [Azure Digital Twins](/azure/digital-twins/overview)
+- [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere?view=azure-sphere-integrated)
 
 <!-- Required: Reliability H2
 
