@@ -8,13 +8,17 @@ ms.date: 01/02/2025
 ms.service: waf
 ms.subservice: waf-service-guide
 ms.subservice: well-architected
+ai-usage: ai-assisted
 products:
  - azure-iot-hub
 azure.category:
  - iot
 ---
 
-<!-- TODO: Add Card back in index.yml -->
+<!-- TODO: 
+1- Add Card back in index.yml 
+2- Remove Assessment: https://learn.microsoft.com/en-us/assessments/azure-architecture-review
+-->
 
 # Well-Architected Framework perspective on Azure IoT Hub
 
@@ -34,28 +38,17 @@ This article assumes that as an architect, you've reviewed the [technologies and
 
 This review focuses on the interrelated decisions for the following Azure resources:  
 
-- [Azure IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps)
+- [Azure IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub)
+- [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)
 - [Azure IoT Edge](/azure/iot-edge/about-iot-edge?view=iotedge-1.5)
 - [Azure Digital Twins](/azure/digital-twins/overview)
 - [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere?view=azure-sphere-integrated)
 
-<!-- Required: Reliability H2
-
-Include a standardized description of the pillar.
-For each framework pillar, present a vision and recommendations for your offering's
-architecture. Use the pillar H2 headings in the order that this template lists them in.
-
--->
-
 ## Reliability
 
-The purpose of the Reliability pillar is to provide continued
-functionality by **building enough resilience and the ability
-to recover fast from failures**.
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-[Reliability design principles](/azure/well-architected/resiliency/principles)
-provide a high-level design strategy applied for individual components,
-system flows, and the system as a whole.
+[Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 
 <!-- Required: Design checklist H4
@@ -86,13 +79,17 @@ as needed.'
 
 #### Design checklist
 
-[Add your content.]
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of IoT Hub. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> - [design-consideration]
-> - [design-consideration]
->   ...
+> - **Design devices for resiliency**: Design your devices to satisfy the uptime and availability requirements of your end-to-end solution. Ensure that your IoT device can operate efficiently with intermittent connectivity to the cloud.
+> - **Design for business requirements**: Cost implications are inevitable when introducing architectural modifications to meet service-level agreements (SLAs). For example, to have greater reliability and high availability you can implement cross-region redundancies and an automated system to autoscale. This trade-off should be carefully considered.
+> - **Safe, simple update procedures**: An enterprise IoT solution should provide a strategy for how operators manage devices. IoT operators require simple and reliable update tools and practices.
+> - **Observe application health**: Define service-level indicators (SLIs) and service-level objectives (SLOs) based on observability. Add processes for auditing, monitoring, and alerting beyond what IoT Hub provides.
+> - **High availability and disaster recovery (HA/DR) for critical components**: Resilient hardware and software components that build in redundancy, including cross-region redundancies. Determine which of the options outlined in [IoT Hub high availability and disaster recovery](/azure/iot-hub/iot-hub-ha-dr) article best suit your business objectives.
+> - **Plan for capacity**: Plan for service quotas and throttles, latency between the detection-action, and establish benchmarks at production scale to support uninterrupted data flow.
+
 
 <!-- Required: Recommendations H4
 
@@ -107,9 +104,10 @@ preceding design checklist items.
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| ... | ... |
+| Calculate the IoT Hub capacity you need, for example, using number of messages/day and other limits. If your workload has a fluctuating need for capacity, implement an auto-scaling mechanism so that it increases and decreases capacity with demand. For more information, see [Choose the right IoT Hub tier and size for your solution](/azure/iot-hub/iot-hub-scaling). | This approach helps in optimizing resource usage, maintaining performance, and controlling costs. By scaling the capacity up or down based on demand, you can ensure that your solution remains responsive and reliable without over-provisioning resources. |
+| Design resilient applications by adding a device reconnection strategy to IoT Hub. Follow guidance in [Manage device reconnections to create resilient applications](/azure/iot/concepts-manage-device-reconnections). | It's important to have a strategy to reconnect devices. Without a reconnection strategy, you could see a negative effect on your solution's performance, availability, and cost. |
+| Evaluate the trade-offs of different High Availability (HA) and Disaster Recovery (DR) options offered by IoT Hub. Depending on the uptime goals you define for your IoT solution, you should determine which of the options outlined in [IoT Hub high availability and disaster recovery](/azure/iot-hub/iot-hub-ha-dr) best suit your business objectives. | Selecting between [Microsoft-initiated failover](/azure/iot-hub/iot-hub-ha-dr#microsoft-initiated-failover), [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover) or [cross region HA](/azure/iot-hub/iot-hub-ha-dr#achieve-cross-region-ha) will help you implement a resilient IoT solution and properly estimate cost and complexity.|
+| Use [DPS](/azure/iot-dps/about-iot-dps) to provision your devices and assign them to an IoT hub. | DPS is a helper service for IoT Hub that enables zero-touch, just-in-time provisioning to the right IoT hub without requiring human intervention. DPS enables the provisioning of millions of devices in a secure and scalable manner. |
 
 <!-- Required: Security H2
 
