@@ -1,5 +1,5 @@
 ---
-title: Workload Team Personas Involved in AI Workloads
+title: Workload Team Personas for AI Workloads
 description: Different personas work on different aspects of the workload. This article highlights their roles and responsibilities and interactions with each other. 
 author: jostrm
 ms.author: prwilk
@@ -7,7 +7,7 @@ ms.date: 10/29/2024
 ms.topic: conceptual
 ---
 
-# Workload team personas involved in AI workloads
+# Workload team personas for AI workloads
 
 In the context of building AI workloads, unlike traditional code deployment, nondeterministic models require iterative experimentation and collaboration across multiple roles and teams. Early integration of operations, application development, and data teams is essential to foster mutual understanding. This collaboration demands diverse skills and continuous learning to keep pace with technological advancements.
 
