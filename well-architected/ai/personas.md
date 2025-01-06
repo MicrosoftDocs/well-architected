@@ -79,7 +79,7 @@ Using cards, you can define the services a persona needs access to within a proc
 
 |GenAI Data Scientist (P006)|
 |---|
-| Team: AI Team<br>&#128313; Primary Interaction: Data Ingestion Team, DevOps Team<br>&#128313; Components Access: Azure AI Studio, Azure OpenAI, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps<br>&#128313; Skills: Azure Machine Learning, Python, Model(LLM, SLM) knowledge, Fine tuning, RAG, Agentic concept
+| Team: AI Team<br>&#128313; Primary Interaction: Data Ingestion Team, DevOps Team<br>&#128313; Components Access: Azure AI Foundry portal, Azure OpenAI, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps<br>&#128313; Skills: Azure Machine Learning, Python, Model(LLM, SLM) knowledge, Fine tuning, RAG, Agentic concept
 
 |GenAI Chat Developer (P007)|
 |---|

@@ -13,7 +13,7 @@ There are many choices available for you to consider when planning to build an a
 
 As discussed in the [Get started](./get-started.md) article, choosing whether to build your own model or use a prebuilt model is one of the first important decisions to make. When choosing a prebuilt model, consider these points:
 
-- **Catalog sources**. Explore repositories like Hugging Face Model Hub, TensorFlow Hub, or Azure AI Studio model catalog to find pre-trained models. These platforms provide an extensive catalog of models across various tasks.
+- **Catalog sources**. Explore repositories like Hugging Face Model Hub, TensorFlow Hub, or Azure AI Foundry portal model catalog to find pre-trained models. These platforms provide an extensive catalog of models across various tasks.
 
 - **Licensing**. Make sure the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
 
