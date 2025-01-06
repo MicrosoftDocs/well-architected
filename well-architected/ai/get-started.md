@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 This article addresses architectural challenges of designing AI workloads. It focuses on nondeterministic functionality, data and application design, and operations. The recommendations are based on Azure Well-Architected Framework principles and include insights from successful Azure implementations.
 
-The article is meant for *workload owners* and *technical stakeholders* like architects, development leads, and IT leaders. Specialized AI and data roles, such as data scientists, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
+These articles are meant for *workload owners* and *technical stakeholders* like architects, development leads, and IT leaders. Specialized AI and data roles, such as data scientists, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
 
 > [!NOTE]
 >

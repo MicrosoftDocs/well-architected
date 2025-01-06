@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design methodology for AI workloads on Azure
 
-Designing AI workloads involves integrating code and data to replace deterministic behavior and to enable tasks like prediction, classification, and other functional goals. AI workload architecture is often complex and must be designed within business constraints. Azure Well-Architected Framework provides a solid foundation for architectural excellence, but you also need to consider AI-specific design principles.
+Designing AI workloads involves integrating code and data to replace deterministic behavior and to enable tasks like prediction, classification, and other functional goals. AI workload architecture is often complex and must be designed within business constraints. The Azure Well-Architected Framework provides a solid foundation for architectural excellence, but you also need to consider AI-specific design principles.
 
 This article presents a suggested design methodology centered around those AI principles, which systematically guide the design and optimization of solutions. When you're uncertain in decision-making, refer to this methodology to emphasize design direction through high-level AI principles.
 

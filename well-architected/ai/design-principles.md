@@ -49,11 +49,11 @@ The following design areas provide details on the preceding principles and consi
 - [Operations](./operations.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
 
-## Cost optimization
+## Cost Optimization
 
-The cost-optimization pillar aims to maximize investment but not necessarily reduce costs. Every architectural choice carries both direct and indirect financial impacts. Understand the costs tied to various options, including build versus buy decisions, technology selections, billing models, licensing, training, and operational expenses. Maximize your investment in the selected tier and continuously reassess billing models. Continuously evaluate costs associated with changes in architecture, business needs, processes, and team structure.
+The Cost Optimization pillar aims to maximize investment but not necessarily reduce costs. Every architectural choice carries both direct and indirect financial impacts. Understand the costs tied to various options, including build versus buy decisions, technology selections, billing models, licensing, training, and operational expenses. Maximize your investment in the selected tier and continuously reassess billing models. Continuously evaluate costs associated with changes in architecture, business needs, processes, and team structure.
 
-Review the [cost-optimization principles](../cost-optimization/principles.md) with a focus on rate and usage optimization.
+Review the [Cost Optimization principles](../cost-optimization/principles.md) with a focus on rate and usage optimization.
 
 |Design principle|Considerations|
 |---|---|
@@ -66,11 +66,11 @@ Review the [cost-optimization principles](../cost-optimization/principles.md) wi
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Cost optimization and operational excellence.** There are tradeoffs in the two primary approaches for model training. Training in the development environment with full production data can lower computational costs by training the model once and promoting only the artifact.   Stringent security measures for handling production data in lower environments are required. The process can be complex and resource intensive. Conversely, training the model in each environment enhances stability and reliability through thorough code review and testing, but computational costs increase because of multiple training runs.
 
-## Operational excellence
+## Operational Excellence
 
 The primary objective of operational excellence is to deliver capabilities efficiently throughout the development lifecycle. You must establish repeatable processes that support the design methodology of experimentation and yield results to improve model performance. Operational excellence is also about observing sustained accuracy of models over time, implementing effective monitoring practices and governance to minimize risks, and developing change management processes to adapt to model drifts.
 
-Although all [operational excellence principles](../operational-excellence/principles.md) apply to AI workloads, prioritize automation and monitoring as your foundational operational strategies.
+Although all [Operational Excellence principles](../operational-excellence/principles.md) apply to AI workloads, prioritize automation and monitoring as your foundational operational strategies.
 
 |Design principle|Considerations|
 |---|---|
@@ -87,11 +87,11 @@ The following design areas provide details on the preceding principles and consi
 - [MLOps and GenAIOps](./mlops-genaiops.md)
 - [Testing](./test.md)
 
-## Performance efficiency
+## Performance Efficiency
 
 The goal of AI model performance evaluation is to determine how effectively a model accomplishes its intended tasks. Evaluation involves assessing various metrics such as accuracy, precision, and fairness. The performance of the platform and application components that support the model is crucial.
 
-Model performance is also influenced by the efficiency of operations like experiment tracking and data processing. Apply [performance efficiency principles](../performance-efficiency/principles.md) to help measure performance against an acceptable quality bar, which is key to detecting degradation or decay. To maintain the workload, including AI components, automated processes for continuous monitoring and evaluation are necessary.
+Model performance is also influenced by the efficiency of operations like experiment tracking and data processing. Apply [Performance Efficiency principles](../performance-efficiency/principles.md) to help measure performance against an acceptable quality bar, which is key to detecting degradation or decay. To maintain the workload, including AI components, automated processes for continuous monitoring and evaluation are necessary.
 
 |Design principle|Considerations|
 |---|---|
