@@ -22,7 +22,7 @@ Personas can be an effective tool for materializing those strategies and standar
 
 ## What are personas?
 
-Personas represent subsets of humans and processes that are involved in the creation and running of a workload. Personas capture both the roles and the real behaviors and accountabilities of these indivduals and processes. An individual can embody one or multiple personas, depending on context. A persona doesn't have to be a person. It can also be an unattended process, such as an agent process within the architecture.
+Personas represent subsets of humans and processes that are involved in the creation and running of a workload. Personas capture both the roles and the real behaviors and accountabilities of these individuals and processes. An individual can embody one or multiple personas, depending on context. A persona doesn't have to be a person. It can also be an unattended process, such as an agent process within the architecture.
 
 Your workload might have end-user personas that drive feature development. Those personas aren't in scope for this article.
 
@@ -103,21 +103,21 @@ Mapping personas to those processes provides context for each persona. This step
 
 :::image type="content" source="images/personas-to-processes.png" alt-text="Diagram illustrating the DataOps, MLOps, and GenAIOps within a production environment." lightbox="images/personas-to-processes.png":::
 
-The image shows the workflow for DataOps, MLOps, and GenAIOps within a production environment. Data flows from ingestion to model deployment and evaluation, using continuous integration/continuous deployment (CI/CD) practices. Key tasks include refining data models, batch evaluation, deploying endpoints, real-time model evaluation, and fine-tuning models. The example personas participate in the entire workflow.
+The image shows the workflow for DataOps, MLOps, and GenAIOps within a production environment. Data flows from ingestion to model deployment and evaluation. The workflow uses continuous integration and continuous deployment (CI/CD) practices. Key tasks include refining data models, evaluating batches, deploying endpoints, evaluating models in real-time, and fine-tuning models. The example personas participate in the entire workflow.
 
 ## Use case: Personas for architecture design
 
-Connecting processes to the supporting architecture helps you to identify the services a persona needs to interact with, highlighting areas for potential upskilling.
+Connecting processes to the supporting architecture helps you identify the services that a persona needs to interact with and highlights areas for potential upskilling.
 
-To visualize this connection, create a graphical image showing how architecture components are connected. This can illustrate data flow and interactions between services and how flows are automated in deployment. This visual aid helps stakeholders understand the architecture and the roles of different personas within it.
+To visualize this connection, create a graphical image that shows how architecture components are connected. This visual aid can illustrate data flow and interactions between services and how flows are automated in deployment. It helps stakeholders understand the architecture and the roles of different personas within it.
 
-The image below shows a LAMBDA architecture for modern analytics on Azure:
+The following image shows a Lambda architecture for modern analytics on Azure:
 
-:::image type="content" source="images/personas-to-architectures.png" alt-text="Diagram of a LAMBDA architecture for modern analytics in Azure." lightbox="./images/personas-to-architectures.png":::
+:::image type="content" source="images/personas-to-architectures.png" alt-text="Diagram of a Lambda architecture for modern analytics in Azure." lightbox="./images/personas-to-architectures.png":::
 
 ## Next step
 
-Now proceed to the assessment tool to evaluate your design.
+Next, proceed to the assessment tool to evaluate your design.
 
 > [!div class="nextstepaction"]
-> [AI Workload Assessment](./assessment.md)
+> [AI workload assessment](./assessment.md)
