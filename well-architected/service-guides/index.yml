@@ -69,13 +69,6 @@ productDirectory:
         - mobile
         - web
     # Card
-    - title: Azure Batch
-      summary: Use cloud-scale job scheduling and compute management.
-      imageSrc: https://static.docs.com/ui/media/product/azure/batch-accounts.svg
-      url: ./azure-batch/reliability.md
-      azureCategories:
-        - compute
-    # Card
     - title: Azure Blob Storage
       summary: Use Blob Storage to store massive amounts of unstructured data in the cloud.
       imageSrc: /media/common/i_generic-database.svg
@@ -273,7 +266,7 @@ productDirectory:
     - title: Azure Traffic Manager
       summary: Route incoming traffic for high performance and availability.
       imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
-      url: ./traffic-manager/reliability.md
+      url: ./azure-traffic-manager.md
       azureCategories:
         - management-and-governance
         - networking

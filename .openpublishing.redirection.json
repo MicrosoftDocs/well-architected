@@ -747,18 +747,18 @@
 		},
 		{
 			"source_path": "well-architected/services/compute/azure-batch/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-batch/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/compute/azure-batch/performance-efficiency.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-batch/performance-efficiency",
-			"redirect_document_id": true
+			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/compute/azure-batch/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-batch/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/compute/azure-kubernetes-service/azure-kubernetes-service.md",
@@ -2176,6 +2176,16 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/service-guides/traffic-manager/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-traffic-manager",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/traffic-manager/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-traffic-manager",
+			"redirect_document_id": false
+		},
+    {
 			"source_path": "well-architected/service-guides/azure-stack-hub/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-local",
 			"redirect_document_id": false
@@ -2184,6 +2194,21 @@
 			"source_path": "well-architected/service-guides/azure-stack-hub/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-local",
 			"redirect_document_id": false
-		}				
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-batch/reliability.md",
+			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-batch/operational-excellence.md",
+			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-batch/performance-efficiency.md",
+			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
+		}
 	]
 }
