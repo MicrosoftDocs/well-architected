@@ -1,6 +1,6 @@
 ---
 title: Design Principles for AI Workloads on Azure
-description: Review the design principles of the Azure Well-Architected Framework. See how to apply these principles to an AI workload.
+description: Review the design principles of the Azure Well-Architected Framework. Learn how to apply these principles to an AI workload.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/15/2024
