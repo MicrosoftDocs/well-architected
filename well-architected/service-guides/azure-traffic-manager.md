@@ -1,22 +1,20 @@
 ---
-title: Well-Architected Framework perspective on Azure Traffic Manager
+title: Well-Architected Framework Perspective on Azure Traffic Manager
 description: This article provides a Well-Architected Framework perspective on Azure Traffic Manager.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
-ms.date: 12/13/2024
+ms.date: 1/9/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
+products: azure-traffic-manager
 ---
-
 
 # Well-Architected Framework perspective on Azure Traffic Manager
 
 Traffic Manager is a global load balancer that distributes traffic across multiple Azure regions. It uses DNS to establish a communication path between the client and your workload's endpoints. Once the connection is established, Traffic Manager doesn't interfere, allowing clients to connect directly to the endpoint. 
 
-This article assumes that, as an architect, you have reviewed the [load balancing options in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview) and selected Azure Traffic Manager for your workload, which is deployed across multiple regions in either an active-active or active-passive model. 
-
-The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
+This article assumes that as an architect, you've reviewed the [load-balancing options in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview) and chose Azure Traffic Manager for your workload, which is deployed across multiple regions in either an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -26,9 +24,9 @@ The guidance in this article provides architectural recommendations that are map
 >
 > Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Traffic Manager and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
 >
-> Foundational architecture that demonstrates the key recommendations: [Multi-region load balancing with Traffic Manager, Azure Firewall, and Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway).
+> Foundational architecture that demonstrates the key recommendations: [Multiregion load balancing with Traffic Manager, Azure Firewall, and Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway).
 
-#### Technology scope
+**Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resource:  
 
@@ -51,6 +49,8 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 #### Design checklist
+
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the [offering-specific-aspects]. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -79,6 +79,8 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 > - **Determine your outage tolerance**. If a backend becomes unavailable, some time can pass before Traffic Manager recognizes the failure and stops directing traffic to the unavailable endpoint. There will be a period when client requests can't be served. Use this tolerance to configure probe settings, which will determine how quickly you want to start your business continuity operations. 
 >
 > - **Include the endpoints as part of your resiliency testing**. Simulate unavailability of endpoints to see the behavior of Traffic Manager handling failures. Suppose your workload uses a load balancer like Application Gateway in a private VNet. You can use Network Security Group (NSG) rules in Azure Chaos Studio to simulate failures of the endpoint. You can block access to the subnet where the Application Gateway resource resides.
+
+#### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -121,10 +123,11 @@ The [Security design principles](/azure/well-architected/security/security-princ
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles)
-provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Traffic Manager and its environment.
+The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Traffic Manager and its environment.
 
 #### Design checklist
+
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -134,7 +137,6 @@ provide a high-level design strategy for achieving those goals and making tradeo
 >
 > - **Evaluate the cost of your routing strategy**. For example, if majority of clients access your endpoint from a high-latency region, you could create another endpoint closer to those users and adjust the routing method in Traffic Manager. This reduces latency, allowing you to process more requests with less capacity, leading to cost savings.
   
-
 #### Recommendations
 
 | Recommendation | Benefit |
@@ -147,8 +149,7 @@ provide a high-level design strategy for achieving those goals and making tradeo
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the
-operational requirements of the workload.
+The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 #### Design checklist
 
@@ -174,18 +175,16 @@ operational requirements of the workload.
 |Take advantage of the [**Heat Map REST API**](/rest/api/trafficmanager/heat-map), which gets data on client locations and latency.|This approach offers more flexibility, such as setting a time period. The response can be used in custom tooling or dashboard. It also makes it easier to integrate with external tools.|
 |[**Disable the endpoints for operational activities**](/azure/traffic-manager/traffic-manager-endpoint-types#enabling-and-disabling-endpoints) such as, disabling failback after a failover, temporarily disabling for maintenance or testing purposes.|Disabling the endpoint from the load balancer is beneficial for operational tasks because you can't stop live traffic. This approach is useful to avoid automatic failback. <br><br>During maintenance disabling the endpoint will stop instances from getting traffic.|
 
-
 ## Performance Efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and
 optimizing for peak performance.
 
-The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles)
-provide a high-level design strategy for achieving those capacity goals
-against the expected usage.
-
+The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 #### Design checklist
+
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Traffic Manager.
 
 > [!div class="checklist"]
 >
@@ -199,7 +198,6 @@ against the expected usage.
 >
 >   For more complex scenarios, consider creating a hierarchy of profiles to combine different routing methods, such as prioritizing regions and then using performance-based routing within regions.
 
-
 #### Recommendations
 
 | Recommendation | Benefit |
@@ -212,9 +210,12 @@ against the expected usage.
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Azure Traffic Manager. Some of the preceding recommendations can be audited through Azure Policies. For example, you can check whether resource logs are enabled to track activities and logs for the Traffic Manager profiles are sent to Event Hubs.
+Azure provides an extensive set of built-in policies related to Azure Traffic Manager and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-For comprehensive governance, review the [built-in definitions for Azure networking services](/azure/governance/policy/samples/built-in-policies#network).
+- resource logs are enabled to track activities
+- logs for the Traffic Manager profiles are sent to Event Hubs.
+
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure networking services](/azure/governance/policy/samples/built-in-policies#network).
 
 ## Azure Advisor recommendations
 
@@ -225,8 +226,6 @@ For comprehensive governance, review the [built-in definitions for Azure network
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
-
-
 
 ## Tradeoffs
 
