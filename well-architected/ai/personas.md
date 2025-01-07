@@ -22,13 +22,13 @@ Personas can be an effective tool for materializing those strategies and standar
 
 ## What are personas?
 
-Personas represent subsets of humans and processes that are involved in the creation and running of a workload. Personas capture both the roles and the real behaviors and accountabilities of these individuals and processes. An individual can embody one or multiple personas, depending on context. A persona doesn't have to be a person. It can also be an unattended process, such as an agent process in the architecture.
+Personas represent subsets of humans and processes that are involved in the creation and operation of a workload. Personas capture both the roles and the real behaviors and accountabilities of these individuals and processes. An individual can embody one or multiple personas, depending on context. A persona doesn't have to be a person. It can also be an unattended process, such as an agent process in the architecture.
 
 Your workload might have end-user personas that drive feature development. Those personas aren't in scope for this article.
 
-Unlike roles, which are typically relatively static functions or positions within an organization, personas are dynamic and goal oriented. They can be used to map skill requirements to processes and tools, like architectural components. Personas primarily help define the scope of responsibility and set context within a project. They offer several other benefits, such as:
+Unlike roles, which are typically relatively static functions or positions within an organization, personas are dynamic and goal oriented. They can be used to map skill requirements to processes and tools, like architectural components. Personas primarily help define the scope of responsibility and set context within a project. They provide several other benefits, such as:
 
-- **Identification of resource gaps.** Identifying gaps helps you decide whether to recruit or train resources or redesign the solution. If your workload team lacks individuals that fit a necessary persona, you might need to adjust the architecture, modify the process, or onboard new personnel. For example, if a senior data science persona is missing, you can redesign the architecture to rely more on general purpose SaaS AI solutions or incorporate third-party AI solutions.
+- **Identification of resource gaps.** Identifying gaps helps you decide whether to recruit or train resources or redesign the solution. If your workload team lacks individuals that fit a necessary persona, you might need to adjust the architecture, modify the process, or onboard new personnel. For example, if a senior data science persona is missing, you can redesign the architecture to rely more on general purpose SaaS AI solutions or incorporate non-Microsoft AI solutions.
 
 - **Enhanced skills.** Mapping personas to specific architectural components also facilitates educational opportunities, like sessions and online courses to enhance skills.
 
