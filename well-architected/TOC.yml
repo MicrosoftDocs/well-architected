@@ -392,12 +392,6 @@
                 href: service-guides/queue-storage/reliability.md
               - name: Operational excellence
                 href: service-guides/queue-storage/operational-excellence.md
-        - name: Traffic Manager
-          items:
-            - name: Reliability
-              href: service-guides/traffic-manager/reliability.md
-            - name: Operational excellence
-              href: service-guides/traffic-manager/operational-excellence.md
         - name: Virtual Machines
           href: service-guides/virtual-machines.md
     - name: Design guides

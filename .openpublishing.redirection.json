@@ -2176,6 +2176,16 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/service-guides/traffic-manager/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-traffic-manager",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/traffic-manager/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-traffic-manager",
+			"redirect_document_id": false
+		},
+    {
 			"source_path": "well-architected/service-guides/azure-stack-hub/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-local",
 			"redirect_document_id": false
