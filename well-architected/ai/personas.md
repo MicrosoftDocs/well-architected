@@ -11,18 +11,18 @@ ms.topic: conceptual
 
 In the context of building AI workloads, in contrast to traditional code deployment, nondeterministic models require iterative experimentation and collaboration across multiple roles and teams. Early integration of operations, application development, and data teams is essential to foster mutual understanding. This collaboration demands diverse skills and continuous learning to keep pace with technological advancements.
 
-Effective collaboration hinges on **integrating tools, processes, and people**, driven by workload needs and specific goals. The recommended strategies include:
+Effective collaboration hinges on **integrating tools, processes, and people** and is driven by workload needs and specific goals. The recommended strategies include:
 
 - Establishing clear roles and accountabilities.
 - Taking advantage of your team's skill set for appropriate tasks.
 - Standardizing processes and subprocesses, such as tracking work as part of a shared backlog.
 - Relying on automation to achieve consistency and reproducibility.
 
-Personas can be an effective tool for materializing those strategies and standardizing responsibilities. This article describes the concept of personas found in AI workloads and their benefits in workload design. It also provides examples and tools for defining and using these team-level personas effectively.
+Personas can be an effective tool for materializing those strategies and standardizing responsibilities. This article describes the personas for AI workloads and their benefits in workload design. It also provides examples and tools for defining and using these team-level personas effectively.
 
 ## What are personas?
 
-Personas represent subsets of humans and processes that are involved in the creation and running of a workload. Personas capture both the roles and the real behaviors and accountabilities of these individuals and processes. An individual can embody one or multiple personas, depending on context. A persona doesn't have to be a person. It can also be an unattended process, such as an agent process within the architecture.
+Personas represent subsets of humans and processes that are involved in the creation and running of a workload. Personas capture both the roles and the real behaviors and accountabilities of these individuals and processes. An individual can embody one or multiple personas, depending on context. A persona doesn't have to be a person. It can also be an unattended process, such as an agent process in the architecture.
 
 Your workload might have end-user personas that drive feature development. Those personas aren't in scope for this article.
 
@@ -32,7 +32,7 @@ Unlike roles, which are typically relatively static functions or positions withi
 
 - **Enhanced skills.** Mapping personas to specific architectural components also facilitates educational opportunities, like sessions and online courses to enhance skills.
 
-- **Ensuring appropriate levels of access.** You should use personas to define security and access needs by mapping personas to processes, architectures, and services, which ensures appropriate access levels.
+- **Ensuring appropriate levels of access.** You should use personas to define security and access needs by mapping personas to processes, architectures, and services. This mapping helps to ensure appropriate access levels.
 
 - **Facilitating project planning and communication.** In project planning, personas help identify key interactions to facilitate the setup of sync meetings and overall planning. Typically, personas are integrated into the hierarchy of tracking user stories, features, and requirements to streamline project management.
 
@@ -91,7 +91,7 @@ You can use cards to define the services a persona needs to be able to access wi
 
 ## Use case: Personas for AI processes
 
-The main processes related to AI workloads are:
+These are the main processes used in AI workloads:
 
 - DataOps is the ingestion and preparation of data.
 - MLOps is the operationalization of machine learning models.
