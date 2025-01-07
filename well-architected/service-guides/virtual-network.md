@@ -98,7 +98,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Virtual Network.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of virtual network.
 
 ##### Design checklist
 
@@ -211,9 +211,8 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Offload the administration of the virtual network to the central team, even in the spoke network. Minimize network operations to what is pertinent to the workload, such as the management of NSGs.
 >
->   Keep the central teams informed of any necessary changes in the workload that might affect the configuration of shared resources.
+>   Keep the central teams informed of any necessary changes in the workload that might affect the configuration of shared resources. Aliases abstract the underlying IP addresses, which simplifies operations.
 >
-> - **Prefer service names over IP addresses**. When you define routes, use service names or aliases instead of specific IP addresses. This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules that you can set by using more generic names.
 >
 > - **Rightsize your virtual network and subnets**. Choose fewer, larger virtual networks to reduce management overhead and avoid making subnets excessively large. The management of subnets and their NSGs can add to operational burden. For environments that have limited private IP addresses (RFC 1918) availability, consider using IPv6.
 
@@ -250,7 +249,7 @@ Start your design strategy based on the [design review checklist for Performance
 | Recommendation|Benefit|
 |-----------|-------- |
 |[Enable the Azure Network Watcher connection monitor](/azure/network-watcher/connection-monitor-overview). <br><br> Use the connection monitor during testing, which can generate synthetic traffic.|You're able to collect metrics that indicate loss and latency across networks. Also, you can trace the entire traffic path, which is important for detecting network bottlenecks.|
-|Keep the virtual network address space large enough to support scaling.|TBD|
+|Keep the virtual network address space large enough to support scaling.|You’re able to accommodate projected growth without operational burden.|
 
 ## Trade-offs
 
@@ -287,7 +286,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your web application instances.
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your virtual network.
 
 - [Reliability](/azure/advisor/advisor-high-availability-recommendations)
 - [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
