@@ -115,7 +115,7 @@ Integrate content safety into every stage of the AI lifecycle by using custom so
 
  Tools for content safety and data traceability, like [Microsoft Purview](/purview/purview), should be integrated. [Azure AI Content Safety](/azure/ai-services/content-safety/overview) APIs can be called from your testing to facilitate content safety testing.
 
- Azure AI Studio provides metrics that evaluate the behavior of the model. For more information, see [Evaluation and monitoring metrics for generative AI](/azure/ai-studio/concepts/evaluation-metrics-built-in).
+ Azure AI Foundry provides metrics that evaluate the behavior of the model. For more information, see [Evaluation and monitoring metrics for generative AI](/azure/ai-studio/concepts/evaluation-metrics-built-in).
 
  For training models, we recommend reviewing the [metrics provided by Azure Machine Learning](/azure/machine-learning/component-reference/evaluate-model).
 
