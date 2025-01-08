@@ -2136,6 +2136,51 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/service-guides/azure-virtual-network/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-virtual-network/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/network-connectivity/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/network-connectivity/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/network-connectivity/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/network-virtual-appliances/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/network-virtual-appliances/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/network-virtual-appliances/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/ip-addresses-cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
+			"redirect_document_id": false
+		},
+		{																																									
 			"source_path": "well-architected/service-guides/iot-hub/operational-excellence.md",
 			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
 			"redirect_document_id": false
