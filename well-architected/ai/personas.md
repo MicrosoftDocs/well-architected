@@ -41,7 +41,7 @@ Here's an example baseline template:
 
 |Persona template|
 |---|
-|&#128313; Persona name: [Name]<br>&#128313;Team: [Team responsible for the persona]<br>&#128313;Primary interaction: [Other teams the persona interacts with]<br>&#128313;Component access: [Security and access requirements for processes and system components]<br>&#128313;Processes: [Processes the persona is responsible for or contributes to]<br>&#128313;Skills: [Skills required to complete the tasks, including domain and technology specifics like model training or search index optimization]
+|&#128313;Persona name: [Name]<br>&#128313;Team: [Team responsible for the persona]<br>&#128313;Primary interaction: [Other teams the persona interacts with]<br>&#128313;Component access: [Security and access requirements for processes and system components]<br>&#128313;Processes: [Processes the persona is responsible for or contributes to]<br>&#128313;Skills: [Skills required to complete the tasks, including domain and technology specifics like model training or search index optimization]
 
 ### Tools
 
