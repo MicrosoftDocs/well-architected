@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework Perspective on Azure Virtual Network
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Network and its supported features.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 12/17/2024
+ms.date: 01/08/2025
 ms.topic: conceptual
 ms.subservice: waf-service-guide
 products:
