@@ -1,6 +1,6 @@
 ---
 title: Application Design for AI Workloads on Azure
-description: Learn about the design considerations for building AI workloads on Azure, including recommendations, design patterns, architecture considerations, and specialized application layers.
+description: Learn about design considerations for creating AI workloads on Azure, including design patterns and architecture considerations.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/18/2024
