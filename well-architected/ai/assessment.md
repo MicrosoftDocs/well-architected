@@ -21,11 +21,9 @@ These questions are designed to help you benchmark your workload's maturity and 
 
 :::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot that shows the guidance page of the AI assessment with recommended actions." lightbox="./images/assessment-recommendations.png":::
 
-> [!div class="nextstepaction"]
-> [AI assessment tool](/assessments/ea306cce-c7fa-4a2b-89a6-bfefba6a9cf4)
+The reference architecture [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) describes design choices for a production-ready implementation.
 
 ## Next step
 
-See the following reference architecture, which describes design choices for a production-ready implementation:
-
-- [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat)
+> [!div class="nextstepaction"]
+> [AI assessment tool](/assessments/ea306cce-c7fa-4a2b-89a6-bfefba6a9cf4)
