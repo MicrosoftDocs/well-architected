@@ -17,9 +17,9 @@ As discussed in the [Get started](./get-started.md) article, whether to build yo
 
 - **Licensing**. Make sure the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
 
-- **Key components**. Look at the model's architecture, training data, performance, and licensing to determine if it's fine-tuned for your task or domain.
+- **Key components**. Look at the model's architecture, training data, performance, and licensing to determine whether it's fine-tuned for your task or domain.
 
-For guidance on choosing a hosting platform, see [Model hosting platform considerations](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
+For guidance on choosing a hosting platform, see [Considerations for the model hosting and inferencing platform](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
 
 This article describes common design areas and factors to consider when you make decisions about technology and approach.
 
@@ -39,13 +39,13 @@ The following table summarizes the recommendations provided in this article.
 
 To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. The following components should be containerized:
 
-- **Microservices**. Individual microservices that handle specific functions of the application, like data processing, model inference, and user authentication, should be containerized. This approach enables independent deployment and scaling, facilitating more efficient updates and maintenance.
+- **Microservices**. Individual microservices that handle specific functions of the application, like data processing, model inference, and user authentication, should be containerized. This approach enables independent deployment and scaling and facilitates more efficient updates and maintenance.
 
 - **AI models**. Containerize AI models to ensure that all dependencies, libraries, and configurations are bundled together. This approach isolates the model environment from the host system to prevent version conflicts and help ensure consistent behavior across different deployment environments.
 
 - **Data processing pipelines**. Any data processing tasks that precede or follow model inference, like data cleaning, transformation, and feature extraction, should be containerized. This approach enhances reproducibility and simplifies the management of dependencies.
 
-- **Infrastructure services**. Services that provide infrastructure support, like databases and caching layers, can also benefit from containerization. This approach helps maintain version consistency and facilitates easier scaling and management of these components.
+- **Infrastructure services**. Services that provide infrastructure support, like databases and caching layers, can also benefit from containerization. Containerizing these services helps maintain version consistency and facilitates easier scaling and management of these components.
 
 ## Colocate AI components with other workload components
 
@@ -81,7 +81,7 @@ When your workload uses multiple models, an orchestrator is essential. The orche
 
 For generative AI workloads, consider taking an agent-based, sometimes referred to as *agentic*, approach to your design to add extensibility to your orchestration. Agents provide context-bound functionality. They share many characteristics with microservices and perform tasks in conjunction with an orchestrator. The orchestrator can advertise tasks to a pool of agents, or agents can register capabilities with the orchestrator. Both approaches allow the orchestrator to dynamically determine how to break up and route the query among the agents.
 
-Agentic approaches are ideal when you have a common UI surface that has multiple, evolving features that can be plugged into that experience to add more skills and grounding data to the flow over time.
+Agentic approaches are ideal when you have a common UI surface that has multiple, evolving features that can be plugged into the experience to add more skills and grounding data to the flow over time.
 
 For complex workloads that have many agents, it's more efficient to allow agents to dynamically collaborate rather than using an orchestrator to break up tasks and assign them.
 
@@ -138,7 +138,7 @@ Consider using these design patterns when your use case meets the condition that
 - **Data-driven applications**. If your application requires extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing.
 
 > [!NOTE]
-> Smaller applications or POCs typically don't benefit from these design patterns. They should be created with a simple design. Likewise, if you have resource (budget, time, or headcount) constraints, using a simple design that can be refactored later is a better approach than adopting a complex design pattern.
+> Smaller applications or POCs typically don't benefit from these design patterns. These applications should be designed for simplicity. Likewise, if you have resource (budget, time, or headcount) constraints, using a simple design that can be refactored later is a better approach than adopting a complex design pattern.
 
 ## Choose the right frameworks and libraries
 
@@ -156,7 +156,7 @@ Generally speaking, you should approach identity, authorization, and access in t
 
 See [Guide to design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) to learn how to add security-trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
 
-## Consider the nonfunctional requirements
+## Consider nonfunctional requirements
 
 Your workload might have nonfunctional requirements that pose challenges because of factors that are inherent to AI technologies. Following are some common nonfunctional requirements and their challenges:
 
