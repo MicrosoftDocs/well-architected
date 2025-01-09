@@ -1,6 +1,6 @@
 ---
 title: Responsible AI in Azure Workloads
-description: AI workload operations on Azure.
+description: Learn how to develop and implement policies that support responsible AI and handle user data appropriately in workload operations on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 10/08/2024
@@ -11,18 +11,18 @@ ms.topic: conceptual
 
 The goal of responsible AI in workload design is to help ensure that the use of AI algorithms is **fair**, **transparent**, and **inclusive**. Microsoft Azure Well-Architected Framework security principles are interrelated and focus on **confidentiality** and **integrity**. Security measures must be in place to maintain user privacy, protect data, and safeguard the integrity of the design. The design shouldn't be misused for unintended purposes.
 
-In AI workloads, models often use opaque logic to make decisions. **Users should trust the system's functionality and feel confident that models make these decisions responsibly**. Unethical behaviors, such as manipulation, content toxicity, IP infringement, and fabricated responses, must be avoided.
+In AI workloads, models often use opaque logic to make decisions. **Users should trust the system's functionality and feel confident that models make these decisions responsibly**. Unacceptable behaviors, such as manipulation, content toxicity, IP infringement, and fabricated responses, must be avoided.
 
-Consider a use case where a media entertainment company wants to provide recommendations by using AI models. If the company doesn't implement responsible AI and proper security, a bad actor might take control of the models. The model might recommend media content that leads to harmful outcomes. For the organization, this behavior can lead to brand damage, unsafe environments, and legal issues. Therefore, maintaining ethical vigilance throughout the system's life cycle is essential and nonnegotiable.
+Consider a use case in which a media entertainment company wants to provide recommendations by using AI models. If the company doesn't implement responsible AI and proper security, a bad actor might take control of the models. The model might recommend content that causes harm. For the organization, this behavior can lead to brand damage, unsafe environments, and legal problems. Therefore, maintaining appropriate vigilance throughout the system's life cycle is essential and nonnegotiable.
 
-Ethical decisions should prioritize security and workload management with human outcomes in mind. Familiarize yourself with [the Microsoft framework for responsible AI](https://www.microsoft.com/ai/responsible-ai) and ensure that you measure and reflect the principles in your design. The following image shows the core concepts of the framework.
+You should prioritize security and workload management and keep human outcomes in mind when you make design decisions. Familiarize yourself with [the Microsoft framework for responsible AI](https://www.microsoft.com/ai/responsible-ai) and ensure that you measure and reflect the framework's principles in your design. The following image shows the core concepts of the framework.
 
 :::image type="content" source="./images/responsible-ai.png" alt-text="A diagram that shows the Microsoft framework for responsible AI." border="false" lightbox="./images/responsible-ai.png":::
 
 > [!IMPORTANT]
-> Accuracy of prediction and metrics for responsible AI are typically interconnected. By improving a model's accuracy, you can enhance its fairness and alignment with reality. However, although responsible AI frequently aligns with accuracy, accuracy alone doesn't include all ethical considerations. It's crucial to validate these ethical principles responsibly.
+> Accuracy of prediction and metrics for responsible AI are typically interconnected. By improving a model's accuracy, you can enhance its fairness and alignment with reality. However, although responsible AI frequently aligns with accuracy, accuracy alone doesn't include all safety considerations. It's crucial to validate these principles responsibly.
 
-This article provides recommendations on ethical decision-making, validating user input, and helping to ensure a safe user experience. It also provides guidance on data security to help protect user data.
+This article provides recommendations about responsible decision-making, validating user input, and helping to ensure a safe user experience. It also provides guidance about data security to help protect user data.
 
 ## Recommendations
 
@@ -30,25 +30,25 @@ The following table summarizes the recommendations in this article.
 
 |Recommendation|Description|
 |---|---|
-|**Develop policies that enforce ethical practices at each stage of the life cycle.** |Include checklist items that explicitly state ethical requirements and are tailored to the workload context. Examples include user data transparency, consent configuration, and procedures for how to handle the right to be forgotten (RTBF).<br><br>&#9642; [Develop your policies for responsible AI](#develop-policies-for-repsonsible-ai)<br>&#9642; [Enforce governance on policies for responsible AI](#enforce-governance-on-policies-for-responsible-ai)|
-|**Protect user data with the goal to maximize privacy.** |Collect only what's necessary and with proper user consent. Apply technical controls to protect user profiles, their data, and access to that data. <br><br>&#9642; [Handle user data ethically](#handle-user-data-ethically)<br>&#9642; [Inspect incoming and outgoing data](#inspect-incoming-and-outgoing-data)|
-|**Keep AI decisions clear and understandable.** |Maintain clear explanations of how recommendation algorithms work and provide users with insights into data usage and algorithmic decision-making to help them understand and trust the process. <br><br>&#9642; [Make the user experience safe](#make-the-user-experience-safe)|
+|**Develop policies that enforce moral practices at each stage of the life cycle.** |Include checklist items that explicitly state safety requirements and are tailored to the workload context. Examples include user data transparency, consent configuration, and procedures for how to handle the right to be forgotten (RTBF).<br><br>&#9642; [Develop your policies for responsible AI](#develop-policies-for-responsible-ai)<br>&#9642; [Enforce governance on policies for responsible AI](#enforce-governance-on-policies-for-responsible-ai)|
+|**Protect user data with the goal to maximize privacy.** |Collect only what's necessary and with proper user consent. Apply technical controls to protect users' profiles, their data, and access to that data. <br><br>&#9642; [Handle user data appropriately](#handle-user-data-appropriately)<br>&#9642; [Inspect incoming and outgoing data](#inspect-incoming-and-outgoing-data)|
+|**Keep AI decisions clear and understandable.** |Clearly explain how recommendation algorithms work. Provide users with insights into data usage and algorithmic decision-making to help them understand and trust the process. <br><br>&#9642; [Make the user experience safe](#make-the-user-experience-safe)|
 
-## Develop policies for responsible AI 
+## Develop policies for responsible AI
 
-**Document your approach to responsible AI usage**. Explicitly state policies that you apply at each stage of the life cycle so that the workload team understands their responsibilities. Microsoft standards for responsible AI provide guidelines, but you must define what these guidelines mean specifically for your context.
+**Document your approach to responsible AI usage.** Explicitly state policies that you apply at each stage of the life cycle so that the workload team understands their responsibilities. Microsoft standards for responsible AI provide guidelines, but you must define what these guidelines mean specifically for your context.
 
 For example, the policies should include checklist items for mechanisms that support user data transparency and consent configuration. Ideally, these mechanisms should allow users to opt out of data inclusion. Data pipelines, analysis, model training, and other stages all must respect that choice. Another example is procedures for handling the RTBF. Consult your organization's ethics department and legal team to make informed decisions.
 
 Create transparent policies for data use and algorithmic decision-making to help users understand and trust the process. Document these decisions to maintain a clear history for potential future litigation.
 
-Responsible AI implementation includes three key roles: the research team, the policy team, and the engineering team. Collaboration among these teams should be operationalized. If your organization has an existing team, take advantage of their work. Otherwise, establish these practices yourself.
+Responsible AI implementation includes three key roles: the research team, the policy team, and the engineering team. Collaboration among these teams should be operationalized. If your organization has an existing team, use their work. Otherwise, establish these practices yourself.
 
 Each team should have their own responsibilities. For example:
 
 - **The research team conducts risk discovery** by consulting organizational guidelines, industry standards, laws, regulations, and known red-team tactics.
 
-- **The policy team develops policies that are specific to the workload**. They incorporate guidelines from the parent organization and government regulations.
+- **The policy team develops policies that are specific to the workload.** They incorporate guidelines from the parent organization and government regulations.
 
 - **The engineering team implements the policies** into their processes and deliverables. The team validates and tests for adherence.
 
@@ -58,7 +58,7 @@ Each team formalizes its guidelines, but the **workload team must be accountable
 
 Design your workload to **comply with organizational and regulatory governance**. For example, if transparency is an organizational requirement, determine how it applies to your workload. Identify areas in your design, life cycle, code, or other components where you should introduce transparency features to meet that standard.
 
-Understand the required governance, accountability, review boards, and reporting mandates. Ensure that your governance council **approves and signs off on workload designs** to avoid redesigns and mitigate ethical or privacy concerns. You might need to go through multiple layers of approval. Here's a typical structure for governance.
+Understand the required governance, accountability, review boards, and reporting mandates. Ensure that your governance council **approves and signs off on workload designs** to avoid redesigns and mitigate safety or privacy concerns. You might need to go through multiple layers of approval. The following diagram outlines a typical structure for governance.
 
 :::image type="content" source="./images/organizational-governance-structure.png" alt-text="A diagram that shows a typical governance structure in an organization." border="false" lightbox="./images/organizational-governance-structure.png":::
 
@@ -68,26 +68,26 @@ For more information about organizational policies and approvers, see [Define a 
 
 User experiences should be based on industry guidelines. Use the [Microsoft Human-AI Experiences Design Library](https://www.microsoft.com/en-us/haxtoolkit/library/), which includes principles and provides implementation guidelines. It also gives examples from Microsoft products and other industry sources.
 
-There are workload responsibilities throughout the life cycle of user interaction. They start with a user's intent to use the system and continue during a session and during disruptions that system errors cause. Consider the following practices:
+There are workload responsibilities throughout the life cycle of user interaction. They start with a user's intent to use the system, and they continue throughout a session and during any disruptions that system errors cause. Consider the following practices:
 
-- **Build transparency.** Make users aware of how the system generates the response to their query.
+- **Build transparency.** Make users aware of how the system generates responses to their query.
 
     Include links to data sources that the model consults for predictions. This practice increases users' confidence by showing them the origins of the information. Data design should include these sources in the metadata. For example, when the orchestrator in a retrieval-augmented application performs a search, it retrieves 20 document chunks and sends the top 10 chunks to the model as context. The top 10 chunks belong to three different documents. The UI can then reference these three source documents when it displays the model's response. This transparency increases user trust.
 
     Transparency becomes more important when you use agents, which act as intermediaries between front-end interfaces and back-end systems. For example, in a ticketing system, the orchestration code interprets user intent and makes API calls to agents to retrieve necessary information. Exposing these interactions helps make the user aware of the system's actions.
 
-    For automated workflows that involve multiple agents, create log files that record each step. This capability helps you identify and correct errors. Additionally, it gives users an explanation for decisions, which operationalizes transparency.
+    For automated workflows that involve multiple agents, create log files that record each step. Log files can help you identify and correct errors. They also give users an explanation for decisions, which operationalizes transparency.
 
     > [!CAUTION]
-    > When you implement transparency recommendations, avoid overwhelming the user with too much information. Use a gradual approach by starting with minimally disruptive UI methods.
+    > When you implement transparency recommendations, avoid overwhelming the user with too much information. Take a gradual approach by using minimally disruptive UI methods.
     >
     > For example, display a tooltip that shows a confidence score from the model. You can incorporate links, such as links to source documents, that users can select to get more details. This user-initiated method keeps the UI nondisruptive and lets users seek more information only if they choose to.
 
 - **Collect feedback.** Implement feedback mechanisms.
 
-    Avoid overwhelming users with extensive questionnaires after each response. Instead, use simple, quick feedback mechanisms like thumbs up or thumbs down or rating systems for specific aspects of the answer on a scale of 1 to 5. This method allows for granular feedback without being intrusive and helps improve the system over time. Be mindful of potential fairness issues in feedback because there might be secondary reasons behind user responses.
+    Avoid overwhelming users with extensive questionnaires after each response. Instead, use simple, quick feedback mechanisms like thumbs up or thumbs down or a rating system for specific aspects of the answer on a scale of 1 to 5. This method helps improve the system over time and allows for granular feedback without being intrusive. Be mindful of potential fairness issues in feedback because there might be secondary reasons behind user responses.
 
-    Implementing a feedback mechanism affects architecture because of the need for data storage. Treat this feedback as user data and apply levels of privacy control as needed.
+    Implementing a feedback mechanism affects architecture because of the need for data storage. Treat feedback like user data and apply levels of privacy control as needed.
 
     In addition to response feedback, collect feedback about the efficacy of the user experience. Collect engagement metrics through your monitoring stack of the system.
 
@@ -99,13 +99,13 @@ Integrate content safety into every stage of the AI life cycle by using custom s
 
 - **Moderate content.** Use the content safety API that evaluates requests and responses in real time, and ensure that these APIs are reachable.
 
-- **Identify and mitigate threats.** Apply well-known security practices to your AI scenarios. For example, conduct threat modeling and document threats and their mitigation. Common security practices like red team exercises apply to AI workloads. Red teams can test whether models can be manipulated to generate harmful content. These activities should be integrated into AI operations.
+- **Identify and mitigate threats.** Apply well-known security practices to your AI scenarios. For example, conduct threat modeling and document threats and how you mitigated them. Common security practices like red team exercises apply to AI workloads. Red teams can test whether models can be manipulated to generate harmful content. These activities should be integrated into AI operations.
 
     For information, see [Plan red teaming for large language models and their applications](/azure/ai-services/openai/concepts/red-teaming).
 
-- **Use the right metrics.** Use metrics that effectively measure the ethical behavior of the model. **Metrics vary depending on the type of AI model.** Measurement of generative models might not apply to regression models. For example, a model predicts life expectancy, and the results affect insurance rates. Fairness issues in this model can lead to ethical problems, but that problem stems from deviation in core metric testing. Improving accuracy can reduce ethical problems because ethical and accuracy metrics are typically interconnected.
+- **Use the right metrics.** Use metrics that effectively measure the behavior of the model. **Metrics vary depending on the type of AI model.** In some cases, measurement of generative models might not apply to regression models. For example, a model predicts life expectancy, and the results affect insurance rates. Fairness issues in this model can lead to fairness-related harms. That problem stems from deviations in core metric testing because fairness and accuracy metrics are typically interconnected. Improve accuracy to help reduce fairness-related harms.
 
-- **Add ethical instrumentation.** AI model results must be explainable. **You need to justify and trace how inferences are made**, including the training data, the calculated features, and the grounding data. In discriminative AI, you can justify decisions step by step. However, for generative models, explaining outcomes can be complex. **Document the decision-making process** to address potential legal implications and provide transparency.
+- **Add appropriate instrumentation.** AI model results must be explainable. **You need to justify and trace how inferences are made**, including the training data, the calculated features, and the grounding data. In discriminative AI, you can justify decisions step by step. However, for generative models, explaining outcomes can be complex. **Document the decision-making process** to address potential legal implications and provide transparency.
 
     You should implement this explainability aspect throughout the entire AI life cycle. Data cleaning, lineage, selection criteria, and processing are critical stages where decisions should be tracked.
 
@@ -121,15 +121,15 @@ Integrate content safety into every stage of the AI life cycle by using custom s
 
 Prompt injection attacks, such as jailbreaking, are a common concern for AI workloads. In this case, some users might attempt to misuse the model for unintended purposes. To help ensure safety, **inspect data to prevent attacks and filter out inappropriate content**. Apply this analysis to both the user's input and the system's responses to help ensure thorough content moderation in both incoming and outgoing flows.
 
-In scenarios where you make multiple model invocations, such as through Azure OpenAI Service, to serve a single client request, applying content safety checks to every invocation can be costly and unnecessary. Consider **centralizing that work in the architecture while keeping security as a server-side responsibility**. Suppose an architecture has a gateway in front of the model inference endpoint to offload specific back-end capabilities. You can design that gateway to handle content safety checks for both requests and responses that the back end might not support natively. Although a gateway is a common solution, an orchestration layer can handle these tasks effectively in simpler architectures. In both cases, you can selectively apply these checks when needed, which optimizes performance and cost.
+In some cases, you need to make multiple model invocations, such as through Azure OpenAI Service, to serve a single client request. In these scenarios, applying content safety checks to every invocation can be costly and unnecessary. Consider **centralizing that work in the architecture while keeping security as a server-side responsibility**. Suppose an architecture has a gateway in front of the model inference endpoint to offload specific back-end capabilities. You can design that gateway to handle content safety checks for both requests and responses that the back end might not support natively. Although a gateway is a common solution, an orchestration layer can handle these tasks effectively in simpler architectures. In both cases, you can selectively apply these checks when needed, which optimizes performance and cost.
 
-**Inspections should be multimodal** and cover various formats. When you use multimodal input, such as images, it's important to analyze them for hidden messages that might be harmful or violent. These messages might not be immediately visible and require careful inspection. Use tools like Content Safety APIs for this purpose.
+**Inspections should be multimodal** and cover various formats. When you use multimodal inputs, such as images, it's important to analyze them for hidden messages that might be harmful or violent. These messages might not be immediately visible, so they require careful inspection. Use tools like Content Safety APIs for this purpose.
 
 To enforce privacy and data security policies, inspect user data and grounding data for compliance with privacy regulations. Make sure that the data is sanitized or filtered as it flows through the system. For example, data from prior customer support conversations can serve as grounding data. It should be sanitized before reuse.
 
-## Handle user data ethically
+## Handle user data appropriately
 
-Ethical practices involve careful handling of user data management. This management includes knowing when to use data and when to avoid relying on user data.
+Responsible practices involve careful handling of user data management. This management includes knowing when to use data and when to avoid relying on user data.
 
 - **Practice inference without sharing user data.** To securely share user data with other organizations for insights, **use a clearinghouse model**. In this scenario, organizations provide data to a trusted partner that trains the model by using the aggregated data. Then, all institutions can use this model and share insights without exposing individual datasets. The goal is to use the model's inference capabilities without sharing detailed training data.
 
@@ -137,15 +137,15 @@ Ethical practices involve careful handling of user data management. This managem
 
 - **Respect the RTBF.** Avoid using user data whenever possible. Ensure compliance with the RTBF by having the necessary measures in place to make sure user data is deleted diligently.
 
-    To ensure compliance, there might be requests to remove user data from the system. For smaller models, you can remove user data by retraining the model with data that excludes personal information. For larger models, which can consist of several smaller, independently trained models, the process is more complex and the cost and effort is significant. Seek legal and ethical guidance about handling these situations and make sure to include the guidance in your [policies for responsible AI](#develop-policies-for-responsible-ai).
+    To ensure compliance, there might be requests to remove user data from the system. For smaller models, you can remove user data by retraining the model by using data that excludes personal information. For larger models, which can consist of several smaller, independently trained models, the process is more complex and the cost and effort is significant. Seek legal and ethical guidance about handling these situations and make sure to include the guidance in your [policies for responsible AI](#develop-policies-for-responsible-ai).
 
 - **Retain data responsibly.** When data deletion isn't possible, **obtain explicit user consent for data collection** and provide clear privacy policies. **Collect and retain data only when absolutely necessary.** Have operations in place to remove data aggressively when it's no longer needed. For example, clear chat history as soon as practical, and anonymize sensitive data before retention. Use advanced encryption methods for this data at rest.
 
-- **Support explainability.** Trace decisions in the system to support explainability requirements. Develop clear explanations of how recommendation algorithms work, and offer users insights into why specific content is recommended to them. The goal is to ensure that AI workloads and their results are transparent and justifiable by detailing how they make decisions, what data they use, and how models were trained.
+- **Support explainability.** Trace decisions in the system to support explainability requirements. Develop clear explanations of how recommendation algorithms work, and provide users insights into why specific content is recommended to them. The goal is to ensure that AI workloads and their results are transparent and justifiable by detailing how they make decisions, what data they use, and how models were trained.
 
 - **Encrypt user data.** Input data must be encrypted at every stage in the data processing pipeline from the moment that the user enters data. These stages include data as it moves from one point to another, data that's stored, and data that's inferenced, if necessary. Balance security and functionality, but aim to **keep data private throughout its life cycle**.
 
-- **Provide robust access controls.** Several types of identities can potentially access user data. Implement role-based access control (RBAC) for both the control plane and data plane so that it covers user and system-to-system communication.
+- **Provide robust access controls.** Several types of identities can potentially access user data. Implement role-based access control for both the control plane and data plane so that it covers user and system-to-system communication.
 
     Also maintain proper user segmentation to protect privacy. For example, Microsoft 365 Copilot can search and provide answers based on a user's specific documents and emails, while ensuring that only content relevant to that user is accessed.
 
