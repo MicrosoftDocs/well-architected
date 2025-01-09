@@ -152,7 +152,7 @@ The choice of frameworks and libraries is closely intertwined with application d
 
 ## Design a strategy for identities, authorization, and access
 
-Generally speaking, you should approach identity, authorization, and access in the same way that you normally would when you design applications. You should use an identity provider, like Microsoft Entra ID, to manage these areas as much as possible. However, many AI applications have unique challenges that necessitate special consideration. It's sometimes challenging or even impossible to persist access control lists (ACLs) through the system without new development.
+Generally speaking, you should approach identity, authorization, and access in the same way that you would when you design applications. You should use an identity provider, like Microsoft Entra ID, to manage these areas as much as possible. However, many AI applications have unique challenges that necessitate special consideration. It's sometimes challenging or even impossible to persist access control lists (ACLs) through the system without new development.
 
 See [Guide to design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) to learn how to add security-trimming metadata to documents and chunks. This trimming can be based on security groups or similar organizational constructs.
 
