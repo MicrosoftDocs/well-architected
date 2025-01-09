@@ -78,7 +78,7 @@ You can also implement fast-start failover, depending on your maximum downtime r
 - Consider automating your failover process. For example, you can use fast-start failover.
 - Establish test procedures for your failover processes, and carry out regular testing to avoid any problems.
 - Architect your solution holistically by using Azure-native capabilities, like availability zones, and Oracle-native tools, like Data Guard, to meet your HA and DR requirements. The following two examples use Azure-native and Oracle-native components.
-- Manage the Business Continuity and Disaster Recovery estate across solutions and environments  with [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview). This  Azure solution provides a single pane of glass that enables you to manage, monitor, and review the reports periodically for the protection and recovery of all workloads.
+- Manage your business continuity and disaster recovery protection across solutions and environments with [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview). This Azure solution provides a single pane of glass that enables you to manage, monitor, and review reports periodically for the protection and recovery of all workloads.
 
 
 ### Create a failover with passive standby
