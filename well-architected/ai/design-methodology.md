@@ -3,7 +3,7 @@ title: Design Methodology for AI Workloads on Azure
 description: Learn how to implement a structured approach when you make architectural design decisions and create processes for AI workloads on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 1/7/2025
+ms.date: 01/09/2025
 ms.topic: conceptual
 ---
 
