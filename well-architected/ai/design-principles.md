@@ -15,7 +15,7 @@ This article outlines the core principles for AI workloads on Azure, with a focu
 
 When you run AI workloads on Azure, you need to consider many of the same reliability requirements that you consider for other types of workloads. However, specific considerations for model training, hosting, and inferencing are particularly important and are the focus of this article. It's important integrate these practices with standard design best practices for cloud applications, which also apply to AI workloads.
 
-Review the [Reliability design principles](../reliability/principles.md) to get a foundational understanding of the concepts described here.
+Review the [reliability design principles](../reliability/principles.md) to get a foundational understanding of the concepts described here.
 
 |Design principle|Considerations|
 |---|---|
@@ -42,7 +42,7 @@ Models often use sensitive production data to produce relevant results. You must
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Implementing the highest levels of security incurs trade-offs in cost and accuracy because the ability to analyze, inspect, or log the encrypted data is limited. Content safety checks and achieving explainability can also be challenging in highly secured environments.
 
-These design areas provide details on the preceding principles and considerations:
+The following design areas provide details on the preceding principles and considerations:
 
 - [Responsible AI](./responsible-ai.md)
 - [Testing](./test.md)
@@ -81,7 +81,7 @@ Although all [Operational Excellence principles](../operational-excellence/princ
 | Implement safe deployments.|Choose between side-by-side deployments or in-place updates to minimize downtime. Implement thorough testing before deployment to ensure the model is correctly configured and meets targets, user expectations, and quality standards. Always plan for emergency operations, regardless of the deployment strategy.|
 | Continuously evaluate the user experience in production.| Enable workload users to provide feedback about their experience. Get consent to share part or all of their conversations in an associated log for troubleshooting. Consider how much of a user interaction is viable, compliant, safe, and useful to capture, and use the data diligently to evaluate the performance of your workload with real user interactions.|
 
-These design areas provide details on the preceding principles and considerations:
+The following design areas provide details on the preceding principles and considerations:
 
 - [Operations](./operations.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
@@ -102,7 +102,7 @@ Model performance is also influenced by the efficiency of operations like experi
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**. When you consider platform capabilities, you need to balance cost and performance. For example, GPU SKUs are expensive, so continuously monitor for under-utilization and right-size resources as needed. After adjustments, test resource utilization to ensure a balance between the cost of platform resources and their operations and the expected performance, as indicated by the baseline. For Cost Optimization strategies, see [Recommendations for optimizing component costs](../cost-optimization/optimize-component-costs.md).
 
-These design areas provide details on the preceding principles and considerations:
+The following design areas provide details on the preceding principles and considerations:
 
 - [Testing](./test.md)
 - [MLOps and GenAIOps](./mlops-genaiops.md)
