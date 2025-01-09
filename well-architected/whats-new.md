@@ -11,6 +11,16 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## December 2024
+
+### New articles
+
+- [Azure Well-Architected Framework Perspective on Azure Disk Storage](./service-guides/azure-disk-storage.md): Find new design considerations and configuration recommendations for optimizing Azure Disk Storage within the Azure Well-Architected Framework. Explore guidance on key areas such as reliability, security, cost optimization, operational excellence, and performance efficiency, as well as strategies and best practices to enhance storage management for Azure Virtual Machines.
+
+### Azure IoT Hub retirement
+
+- This month, we announced the deprecation of Azure IoT Hub workload documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
+
 ## November 2024
 
 ### New articles
@@ -198,29 +208,3 @@ Find updates to the following articles in the Operational Excellence pillar:
 - In [Recommendations for implementing automation](operational-excellence/automate-tasks.md), find information about how to use Azure Update Manager to help you manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window.
 
 - In [Recommendations for enabling automation in a workload](operational-excellence/enable-automation.md), find a new section about using Azure Monitoring Agent for change tracking and inventory. Automate drift detection, the inventory-running services, and installed packages on the virtual machines in your workload.  
-
-## December 2023
-
-In December, we added a workload and updated recommendations for two Well-Architected Framework pillars.
-
-### New article
-
-We added a new workload for workload owners, technical stakeholders, and business stakeholders. This documentation is appropriate for roles that are accountable for designing, building, and maintaining a solution for running applications and desktops in a cloud environment. Use the [Azure Virtual Desktop workloads](./azure-virtual-desktop/overview.md) documentation as your go-to resource for optimizing the way you operate applications and desktops in Azure Virtual Desktop. 
-
-### Updated articles
-
-Updated recommendations for the Reliability pillar:
-
-- [Recommendations for handling transient faults](reliability/handle-transient-faults.md)
-- [Recommendations for developing background jobs](reliability/background-jobs.md)
-- [Recommendations for designing a disaster recovery strategy](reliability/disaster-recovery.md)
-- [Recommendations for designing for redundancy](reliability/redundancy.md)
-
-Updated recommendations for the Operational Excellence pillar:
-
-- [Recommendations for implementing automation](operational-excellence/automate-tasks.md)
-- [Recommendations for designing an emergency response strategy](operational-excellence/emergency-response.md)
-- [Recommendations for enabling automation in a workload](operational-excellence/enable-automation.md)
-- [Recommendations for using infrastructure as code](operational-excellence/infrastructure-as-code-design.md)
-- [Recommendations for designing a deployment failure mitigation strategy](operational-excellence/mitigation-strategy.md)
-- [Recommendations for safe deployment practices](operational-excellence/safe-deployments.md)
