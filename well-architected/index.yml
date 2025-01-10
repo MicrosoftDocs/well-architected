@@ -66,9 +66,9 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./ai/images/ai-architecture-patterns.png
+        src: ./ai/images/ai-architecture-pattern.png
         alt: "Diagram showing the an example architecture pattern for AI workloads."
-      - title: Featured update - AI Workload
+      - title: Featured update - Artificial Intelligence Workload
         summary: "Explore the all new AI Workload:"
         componentType: text
         links:
