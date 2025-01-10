@@ -81,7 +81,7 @@ For more information, see [About the Well-Architected Framework workloads](./wor
 
 ### Service guides
 
-Service guides are instrumental in decision-making related to the individual Azure components that reside within the workload. They offer the core features and capabilities of each service that are necessary to attain architectural excellence. It's important to note that these guides aren't configuration guides. Also, they aren't a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
+Service guides are instrumental in decision-making that's related to the individual Azure components of a workload. They offer the core features and capabilities of each service that are necessary to attain architectural excellence. It's important to note that these guides aren't configuration guides. Also, they aren't a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
 
 For more information, see [the available guides](./service-guides/index.yml).
 
@@ -93,11 +93,11 @@ For more information, see [Azure Well-Architected Review tool](/assessments/?id=
 
 ## Take a phased approach if you need to
 
-The Well-Architected Framework is designed to comprehensively cover best practices applicable to any class of workload. This guidance includes not only the foundational principles of good design and trade-offs but also the application of those principles to the components of your architecture, as described in the service guides.
+The Well-Architected Framework comprehensively covers best practices that are applicable to any class of workload. This guidance includes not only the foundational principles of good design and trade-offs but also the application of those principles to the components of your architecture, as described in the service guides.
 
-We acknowledge that reading this guidance end-to-end can be overwhelming. To achieve the desired state of architectural excellence, we recommend having a solid understanding of the design principles for all pillars and prioritizing checklist items based on their relevance to your workload and business goals. Prioritization should consider factors such as business criticality, compliance needs, and time to market. As these factors evolve, iteratively incorporate more or less from the framework to enhance the quality of your workload.
+We acknowledge that reading this guidance end-to-end can be overwhelming. To achieve the desired state of architectural excellence, we recommend that you have a solid understanding of the design principles for all pillars and that you prioritize checklist items based on their relevance to your workload and business goals. Prioritization should consider factors such as business criticality, compliance needs, and time to market. As these factors evolve, iteratively incorporate more or less from the framework to enhance the quality of your workload.
 
-Consider adopting a a phased approach to consuming this guidance. Classify recommendations by what's easy to achieve or must be achieved initially, then incrementally evolve production-ready systems as your workload's business requirements change. For example, initial alignment with the framework could be for workloads early in their funding and development process, setting a solid foundation for good design. Mature phases of alignment could be used for production-worthy solutions, with the highest levels reserved for always-on, business-critical solutions.
+Consider adopting a phased approach to consuming this guidance. Classify recommendations by what's easy to achieve or must be achieved initially. Then, as your workload's business requirements change, incrementally evolve production-ready systems. For example, initial alignment with the framework could apply to workloads early in their funding and development process, setting a solid foundation for good design. Mature phases of alignment could apply to production-worthy solutions, with the highest levels reserved for always-on, business-critical solutions.
 
 ## Related links
 
