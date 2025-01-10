@@ -91,7 +91,7 @@ Microsoft Azure Well-Architected Review is offered at no charge. It's a collecti
 
 For more information, see [Azure Well-Architected Review tool](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
-## Take a phased approach if you need to
+## Adopt a phased learning process and improve quality iteratively
 
 The Well-Architected Framework comprehensively covers best practices that are applicable to any class of workload. This guidance includes not only the foundational principles of good design and trade-offs but also the application of those principles to the components of your architecture, as described in the service guides.
 
