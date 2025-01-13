@@ -44,12 +44,13 @@ This review focuses on the interrelated decisions for the following Azure resour
 - [Azure IoT Edge](/azure/iot-edge/about-iot-edge?view=iotedge-1.5)
 - [Azure Digital Twins](/azure/digital-twins/overview)
 - [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere?view=azure-sphere-integrated)
+- [Microsoft Defender for IoT](/azure/iot/iot-overview-security)
 
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-[Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 #### Design checklist
 
@@ -75,67 +76,35 @@ Start your design strategy based on the [design review checklist for Reliability
 | Use [Device Update for IoT Hub](/azure/iot-hub-device-update) to manage over-the-air (OTA) updates for your IoT devices. Ensure that your update strategy includes gradual rollout, resilient A/B updates, detailed management, and reporting tools. | This approach ensures safe, secure, and reliable updates for IoT devices, reducing downtime and operational inefficiencies. It helps maintain device compliance and quickly identifies and resolves update failures, enhancing overall system reliability. |
 | Implement DevOps practices for managing IoT solutions, including continuous integration and continuous deployment (CI/CD), monitoring, and automated updates. Use [DevOps to build and release your IoT Edge applications](/azure/iot-edge/how-to-continuous-integration-continuous-deployment), [Azure Monitor to monitor and get alerts from the data collected by IoT Hub](/azure/iot-hub/monitor-iot-hub) and [automatic device management in IoT Hub to automate the management of devices at scale](/azure/iot-hub/iot-hub-automatic-device-management). | DevOps practices enhance the reliability and efficiency of IoT solutions by enabling rapid deployment, continuous monitoring, and automated updates. This approach reduces downtime, improves system performance, and ensures that updates and changes are deployed safely and consistently. |
 
-<!-- Required: Security H2
-
-Include a standardized description of the pillar.
-
--->
-
 ## Security
 
-The purpose of the Security pillar is to provide **confidentiality,
-integrity, and availability** guarantees to the workload.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles]
-(/azure/well-architected/security/security-principles)
-provide a high-level design strategy for achieving those goals by
-applying approaches to the technical design of [Azure offering].
-
-<!-- Required: Design checklist H4
-
-In the first H4 of the pillar section, lead readers through
-design principles by:
-
-- Using standardized text that contains a link to the design
-review checklist for the pillar.
-- Presenting a checklist of the pillar's design review recommendations
-that are relevant for your Azure offering.
-
-For each applicable checklist item:
-
-- Discuss considerations that relate to that checklist item.
-- Provide links to conceptual articles in product documentation if needed.
-- Focus on areas of architectural concern for the architect, not on
-specific configuration settings.
-
--->
+The [Security design principles](/azure/well-architected/security/security/principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your IoT Hub.
 
 #### Design checklist
 
-[Add your content.]
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> - [design-consideration]
-> - [design-consideration]
->   ...
-
-<!-- Required: Recommendations H4
-
-In the second H4 of the pillar section, present a table of recommendations
-for optimizing the configuration of your Azure offering. The recommendations
-should relate to the pillar and show how to materialize the vision of the
-preceding design principles.
-
--->
+> - **Use a strong identity to authenticate devices and users**: Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA).
+> - **Automate and use least-privileged access control:** Limit the impact from compromised devices or identities, or unapproved workloads.
+> - **Device health:** Evaluate device health to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
+> - **Device update:** Continuous updates to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
+> - **Monitor system security, plan incident response:** Proactively monitor for unauthorized or compromised devices and respond to emerging threats.
+> - **Connection security:** Ensure all data transmitted between the IoT device and the IoT cloud services is confidential and tamper-proof.
 
 #### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| ... | ... |
+| Apply zero-trust criteria for devices. Devices connected to IoT Hub should contain an [hardware security module (HSM)](/azure/iot-dps/concepts-tpm-attestation) for strong identity, use [renewable credentials](/azure/iot-dps/how-to-roll-certificates), enforce least-privileged access control, emit proper health signals for conditional access and alert operators to [revoke a device from IoT Hub when compromised](azure/iot-dps/how-to-revoke-device-access-portal), provide [update agents for security updates](/azure/iot-hub-device-update/), include device management capabilities for cloud-driven configuration and automated security response, minimize physical attack footprint by disabling unnecessary features, and [protect data at rest using standard encryption algorithms](azure/iot-hub/iot-hub-tls-support). | Applying zero-trust criteria for IoT devices connected to IoT Hub enhances security and reliability. By using hardware security modules (HSM) for strong identity, renewable credentials, and enforcing least-privileged access control, unauthorized access and compromised devices are minimized. Emitting health signals for conditional access and providing update agents ensure devices remain secure and compliant. Integrating cloud-driven device management and automated security response, along with running security agents, strengthens the security posture. Minimizing the physical attack footprint and protecting data at rest with encryption safeguards sensitive information and maintains system integrity.  |
+| Use X.509 certificates to authenticate your devices to IoT Hub. To learn more, see [Authenticate identities with X.509 certificates](/azure/iot-hub/authenticate-authorize-x509). | IoT Hub support both X509 certificate-based authentication and security tokens as methods for a device to authenticate. Use X509-based authentication in production environments as it provides greater security. |
+| To layer least-privileged access for IoT devices, use [network segmentation](/security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json#network-security) to group IoT devices, mitigating potential impact of a potential compromise. | Network segmentation can group IoT devices, mitigating potential impact of a compromise. A common approach is to connect IoT devices to an "IoT network" for devices such as printers, VoIP phones, and smart TVs. This IoT network is separate from other organizational resources that the workforce accesses. Network micro-segmentation lets you isolate less-capable devices at the network layer, either behind a gateway or on a discrete network segment. For example, you can logically separate dedicated OT environments from the corporate IT network using zone (DMZ) network architecture with firewalls. More mature organizations can also implement micro-segmentation policies at multiple layers of the Purdue Model, typically using next-gen firewalls. |
+| Use [Microsoft Defender for IoT](/azure/defender-for-iot/organizations/overview) as the frontline of defense to protect your resources in Azure. | Microsoft Defender for IoT is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT devices. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to identify unauthorized or compromised components. |
+| Use IoT Hub with [Azure Sphere](/azure-sphere) as a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. | Azure Sphere can be a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. In this scenario, an Azure Sphere guardian module deploys with an application and interfaces with existing devices through Ethernet, serial, or BLE. The devices don't necessarily have direct internet connectivity. |
+| Use [IoT Edge gateways](azure/iot-edge/iot-edge-as-gateway) to enforce strong identity patterns for less capable devices. | IoT Edge provides an edge runtime connection to IoT Hub, and supports certificates as strong device identities. IoT Edge supports the PKCS#11 standard for device manufacturing identities and other secrets stored on a Trusted Platform Module (TPM) or Hardware Security Module (HSM). |
 
 <!-- Required: Cost Optimization H2
 
