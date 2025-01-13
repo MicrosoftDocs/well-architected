@@ -17,7 +17,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Azure Well-Architected Framework Perspective on Azure Disk Storage](./service-guides/azure-disk-storage.md): Find new design considerations and configuration recommendations for optimizing Azure Disk Storage within the Azure Well-Architected Framework. Explore guidance on key areas such as reliability, security, cost optimization, operational excellence, and performance efficiency, as well as strategies and best practices to enhance storage management for Azure Virtual Machines.
 
-### Azure IoT Hub retirement
+### Azure IoT Hub workload guidance retirement
 
 - This month, we announced the deprecation of Azure IoT Hub workload documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
 
