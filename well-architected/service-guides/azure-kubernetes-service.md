@@ -306,7 +306,3 @@ Build implementation expertise by using the following product documentation:
 
 -  [AKS product documentation](/azure/aks)
 
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Quickstart: Deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough)
