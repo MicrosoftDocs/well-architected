@@ -103,7 +103,7 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - (Workload) **Use a Web Application Firewall to scan incoming traffic for potential attacks**. WAF can detect and mitigate threats in real-time, ensuring that malicious traffic is blocked before it reaches your applications. It provides robust protection against common web-based attacks such as SQL injection, cross-site scripting (XSS), and other Open Web Application Security Project (OWASP) vulnerabilities. Certain load balancers have integrated web application firewall such as [Azure Web Application Firewall (WAF) on Azure Application Gateway](/azure/web-application-firewall/ag/ag-overview) or [Azure Front Door](/azure/web-application-firewall/afds/afds-overview).
 >
-> - (Workload) **Maintain a hardened workload's software supply chain.**  Ensure your CI/CID pipeline is hardened with container-aware scanning. Review [secure software supply chain solution for the Azure Kubernetes Service (AKS)](/devsecops/playbook/Enterprise-Solutions/governance-solutions/secure-software-supply-chain/solution) for additional strategies.
+> - (Workload) **Maintain a hardened workload's software supply chain.**  Ensure your CI/CID pipeline is hardened with container-aware scanning. 
 >
 > - (Cluster and Workload) **Implement extra protection for specialized secure workloads.** If your cluster needs to run a sensitive workload, you might need to deploy a private cluster. Here are some examples:
 >   - Payment Card Industry Data Security Standard (PCI-DSS 3.2.1):  [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
