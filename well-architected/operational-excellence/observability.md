@@ -58,7 +58,7 @@ This workflow pipeline illustrates the monitoring system:
 ### Collect instrumentation data
 
 > [!Note]
-> You need to instrument your application to enable logging. For more information, see the [instrumentation guide](../devops/monitor-instrument.md).
+> You need to instrument your application to enable logging. For more information, see the [instrumentation guide](../operational-excellence/instrument-application.md).
 
 You should configure all workload components, whether they're infrastructure resources or application functions, to capture telemetry and/or events like logs and metrics.
 
