@@ -78,36 +78,37 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles] (../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Service Fabric.
 
-When discussing security with Azure Service Fabric, it's important to distinguish between *cluster security* and *workload security*. Cluster security is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload security is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
-
-In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+**TODO: _Move this content to the design checklist. Similar to other guides, like app service, start the checklist with "Familiarize yourself with the security best practices for Service Fabric "/azure/service-fabric/service-fabric-best-practices-security", and continue with the two links below about security scenarios for the cluster and the workload_**
 
 For more information about Azure Service Fabric cluster security, check out [Service Fabric cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security).
 
 For more information about Azure Service Fabric workload security, reference [Service Fabric application and service security](/azure/service-fabric/service-fabric-application-and-service-security).
+
+**end:TODO:**
 
 ### Design checklist
 
 Base your design strategy on the [design review checklist for Security](../security/checklist.md).
 
 > [!div class="checklist"]
-> - (Cluster) Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
-> - (Cluster) When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
-> - (Cluster) [Deploy client certificates by adding them to Azure Key Vault](/azure/service-fabric/how-to-managed-cluster-application-secrets) and referencing the URI in your deployment.
-> - (Cluster) Enable Microsoft Entra integration for your cluster to ensure users can access Service Fabric Explorer using their Microsoft Entra credentials. Don't distribute the cluster client certificates among users to access Explorer.
+> - **TODO:_Merge the generic sentence about NSGs with the first recommendation, also about NSG. More generically this point is about SE:04 Network segmentation (with vnet and subnets) and SE:06 Network controls (with NSGs)_**(Cluster) Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types.
+**TODO:_Move this sentence about ports to oepn to the recommendations table. Benefit is that enables communication in a secure network configuration_** Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
+> - **TODO:_Merge together this chedlist item and the next. The general topic is SE:09 Application secrets. Mention both examples application secrets and client certificates. Create a new rpw in the recommendations table for the recommendation to use a separate data encipherment certificate and use the link in the next checklist item "/azure/service-fabric/how-to-managed-cluster-application-secrets" (seems the link was placed there by mistake)_** (Cluster) When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
+> - (Cluster) [Deploy client certificates by adding them to Azure Key Vault](/azure/service-fabric/how-to-managed-cluster-application-secrets) **Note: _wrong link_** and referencing the URI in your deployment.
+> - **TODO: _Merge this entry and the next. Generaal topic is SE:05 IAM. Lead with the Entra recommendation. Alternatively client certs. Finally the piece about "don't distribute the client certs..."_** (Cluster) Enable Microsoft Entra integration for your cluster to ensure users can access Service Fabric Explorer using their Microsoft Entra credentials. Don't distribute the cluster client certificates among users to access Explorer.
 > - (Cluster) For client authentication, use admin and read-only client certificates and/or Microsoft Entra authentication.
 > - (Cluster and workload) Create a process for monitoring the expiration date of client certificates.
-> - (Cluster and workload) Maintain separate clusters for development, staging, and production.
+> - **TODO:_Expand a bit.General topic is SE:02 Keep different environments separate. Production likely needs stricter security controls, etc._** (Cluster and workload) Maintain separate clusters for development, staging, and production.
 
 ### Recommendations
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Cluster) Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types.|For example, you may have an API Management instance (one subnet), a frontend subnet (exposing a website directly), and a backend subnet (accessible only to frontend).|
-| (Cluster) Deploy Key Vault certificates to Service Fabric cluster virtual machine scale sets.|Centralizing storage of application secrets in Azure Key Vault allows you to control their distribution. Key Vault greatly reduces the chances that secrets may be accidentally leaked.|
-| (Cluster) Apply an Access Control List (ACL) to your client certificate for your Service Fabric cluster.|Using an ACL provides an additional level of authentication.|
+|  **TODO: _move to checklist_** (Cluster) Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types.|For example, you may have an API Management instance (one subnet), a frontend subnet (exposing a website directly), and a backend subnet (accessible only to frontend).|
+|  **TODO: _move to checklist_** (Cluster) Deploy Key Vault certificates to Service Fabric cluster virtual machine scale sets.|Centralizing storage of application secrets in Azure Key Vault allows you to control their distribution. Key Vault greatly reduces the chances that secrets may be accidentally leaked.|
+| **TODO:_Add link to a how to at "/azure/service-fabric/service-fabric-best-practices-security#apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"_**(Cluster) Apply an Access Control List (ACL) to your client certificate for your Service Fabric cluster.|Using an ACL provides an additional level of authentication.|
 | (Cluster) Use [resource requests and limits](/azure/service-fabric/service-fabric-resource-governance#resource-governance-mechanism) to govern resource usage across the nodes in your cluster.|Enforcing resource limits helps ensure that one service doesn't consume too many resources and starve other services.|
-| (Workload)  Encrypt Service Fabric package secret values.|Encryption on your secret values provides an additional level of security.|
+| **TODO: _Move to desing checklist. Merge into the checklist item about protecting secrets_** (Workload)  Encrypt Service Fabric package secret values.|Encryption on your secret values provides an additional level of security.|
 | (Workload)  Include client certificates in Service Fabric applications.|Having your applications use client certificates for authentication provides opportunities for security at both the cluster and workload level.|
 | (Workload)  Authenticate Service Fabric applications to Azure Resources using [Managed Identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets).|Using Managed Identity allow you to securely manage the credentials in your code for authenticating to various services without saving them locally on a developer workstation or in source control.|
 | (Cluster and workload) Follow [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster) when hosting untrusted applications.|Following the best practices provides a security standard to follow.|
