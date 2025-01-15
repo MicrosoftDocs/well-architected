@@ -119,30 +119,30 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Service Fabric and its environment.
 
-When discussing cost optimization with Azure Service Fabric, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources are a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
-
-In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+**TODO: _Move this content to the design checklist. Similar to other guides, like app service, start the cost checklist with "Estimate the initial cost...", explain that "There is no charge for the service for a  Service Fabric cluster. You are only charged for the compute instances, storage, networking resources, and IP addresses you choose when creating a Service Fabric cluster" -  Add the link to the price calculator, amd also include the link to the spreadsheet in the same checklist item_**
 
 For cluster cost optimization, go to the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Service Fabric** from the available products. You can test different configuration and payment plans in the calculator.
 
 For more information about Azure Service Fabric workload pricing, check out the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
+
+**end:TODO:**
 
 ### Design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
-> - (Cluster) Select appropriate VM SKU.
-> - (Cluster) Use appropriate node type and size.
-> - (Cluster and workload) Use appropriate managed disk tier and size.
+> - **TODO: _Expand - General topic aligns with CO:07 Optimize components cost "https://learn.microsoft.com/en-us/azure/well-architected/cost-optimization/optimize-component-costs#optimize-platform-features", by selecting the right SKUs --- Could use the VM guide as inspiration "Choose the right resources. Your selection of VM sizes and SKUs directly affect the overall cost. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?"_** (Cluster) Select appropriate VM SKU.
+> - **TODO: _Expand and maybe merge into the previous design item. Each node type is backed up by a VMSS_** (Cluster) Use appropriate node type and size.
+> - **TODO: _Expand a bit the benefit of choosing the right managed disk. In general, this is also CO:07 Optimize components cost. Merge here the recommendation to avoid temp disks_** (Cluster and workload) Use appropriate managed disk tier and size.
 
 ### Recommendations
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Cluster) Avoid VM SKUs with temp disk offerings.|Service Fabric uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
+| **TODO:_Merge the recommendation about avoiding temp disks into the third design checklist item that talks about choosing the right disks _** (Cluster) Avoid VM SKUs with temp disk offerings.|Service Fabric uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
 | (Cluster) If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
-| (Cluster and workload) Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
+| **TODO:__*Separate choosing the VM sku and the manage disks into two separate recommendations, similar to the VM guide. ----------- For disks, add link to choose the right managed disk type (HDD, SDD, Premium): https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-cluster-managed-disk. The benefit is to avoid paying for more expensive types that may not be needed, Premium also allows reconfiguration of parameters as needed "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types" ------------- For Choosing the right VM SKUs recommendation, add link to https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes _** (Cluster and workload) Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
 
 ## Operational Excellence
 
