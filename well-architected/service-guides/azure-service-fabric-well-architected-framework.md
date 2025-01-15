@@ -34,6 +34,10 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Service Fabric
 
+> [!IMPORTANT]
+> 
+> This service guide builds upon guidance found in the [Virtual Machines and scale sets](./virtual-machines) service guide. Service Fabric nodes are backed by VM scale sets, so refer to that service guide for recommendations on operating the compute backend for your Service Fabric nodes.
+
 When discussing architectural considerations and configuration recommendations with Azure Service Fabric, it's important to distinguish between *cluster* and *workload*. Cluster configuration is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload configuration is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
@@ -44,24 +48,17 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-**TODO: _Move this content and links to the design checklist. The recommendation is to Pick the right reliability level for your cluster accordinbg to the target reliability metric for the workload. The reliability level  determine the minimum number of nodes that your primary node type must have_**
-
-For more information about Azure Service Fabric cluster reliability, check out the [capacity planning documentation](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels).
-
-For more information about Azure Service Fabric workload reliability, reference the [Reliability subsystem](/azure/service-fabric/service-fabric-architecture#reliability-subsystem) included in the Service Fabric architecture.
-
-**end TODO:**
-
 ### Design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the [offering-specific-aspects]. Extend the strategy to include more approaches
 as needed.
 
 > [!div class="checklist"]
+> - (Cluster) Determine the appropriate [reliability level](/azure/service-fabric/service-fabric-cluster-capacity) for your cluster based on the overall reliablity target metric for the workload. The reliablity level of the cluster that you identify will dictate the minimum number of nodes to deploy for your primary node type. See the [capacity planning documentation](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels) to learn about making these determinations.
 > - (Cluster) Use [Standard SKU](/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) for production scenarios. **Standard cluster:** Use [durability level Silver](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater for production scenarios.
 > - (Cluster) For critical workloads, consider using [Availability Zones](/azure/service-fabric/how-to-managed-cluster-availability-zones) for your Service Fabric clusters.
-> - **TODO: _Remove the mentions of Basic Load Balancer, it is deprecated. Move the part about "bring your own load balancer to the security checklist. As explained in the link, this approach allows you to use an internal LB and define different LBs and NSGs for each node type_**(Cluster) For production scenarios, use the Standard tier load balancer. Managed clusters create an Azure public Standard Load Balancer and fully qualified domain name with a static public IP for both the primary and secondary node types. You can also [bring your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer), which supports both Basic and Standard SKU load balancers.
-> - (Cluster) Create additional, secondary node types for your workloads. **TODO: _explain. For example: node types allow you to isolate different types of workloads. For instance, you can separate front-end services from back-end services, that can be managed and scaled independently. Each node type is backed by a VMSS (https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes)_**
+> - (Cluster) For production scenarios, use the Standard managed cluster SKU. This SKU offers higher reliability capabilities than the Basic SKU, which should be used for nonproduction scenarios.[bring your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer)
+> - (Cluster) Create additional, secondary node types for your workloads to isolate different workload types. This can help you separate front-end services from backend services, allowing you to manage and scale those services independently. Each [node type is backed by its own scale set](/azure/service-fabric/service-fabric-cluster-nodetypes).
 
 ### Recommendations
 
@@ -94,6 +91,7 @@ Base your design strategy on the [design review checklist for Security](../secur
 > - **TODO:_Merge the generic sentence about NSGs with the first recommendation, also about NSG. More generically this point is about SE:04 Network segmentation (with vnet and subnets) and SE:06 Network controls (with NSGs)_**(Cluster) Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types.
 **TODO:_Move this sentence about ports to oepn to the recommendations table. Benefit is that enables communication in a secure network configuration_** Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
 > - **TODO:_Merge together this chedlist item and the next. The general topic is SE:09 Application secrets. Mention both examples application secrets and client certificates. Create a new rpw in the recommendations table for the recommendation to use a separate data encipherment certificate and use the link in the next checklist item "/azure/service-fabric/how-to-managed-cluster-application-secrets" (seems the link was placed there by mistake)_** (Cluster) When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
+> - (Cluster) Consider [bringing your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer), which allows you to use an internal load balancer and to define different load balancers and NSGs for each node type.
 > - (Cluster) [Deploy client certificates by adding them to Azure Key Vault](/azure/service-fabric/how-to-managed-cluster-application-secrets) **Note: _wrong link_** and referencing the URI in your deployment.
 > - **TODO: _Merge this entry and the next. Generaal topic is SE:05 IAM. Lead with the Entra recommendation. Alternatively client certs. Finally the piece about "don't distribute the client certs..."_** (Cluster) Enable Microsoft Entra integration for your cluster to ensure users can access Service Fabric Explorer using their Microsoft Entra credentials. Don't distribute the cluster client certificates among users to access Explorer.
 > - (Cluster) For client authentication, use admin and read-only client certificates and/or Microsoft Entra authentication.
