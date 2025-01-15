@@ -9,7 +9,7 @@ metadata:
   author: PageWriter-MSFT
   ms.author: prwilk
   ms.topic: conceptual
-  ms.service: waf
+  ms.service: azure-waf
   ms.subservice: waf-workload-ai
 
 landingContent:
