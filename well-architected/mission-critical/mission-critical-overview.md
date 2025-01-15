@@ -21,7 +21,7 @@ A *mission-critical workload* therefore describes a collection of application re
 
 ## Video: Mission-critical workloads on Azure
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE52ryK]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=b6346dd1-a795-43cf-8c6d-570dd9cc2c6c]
 
 ## What are the common challenges?
 
