@@ -133,7 +133,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 > - **TODO: _Expand - General topic aligns with CO:07 Optimize components cost "https://learn.microsoft.com/en-us/azure/well-architected/cost-optimization/optimize-component-costs#optimize-platform-features", by selecting the right SKUs --- Could use the VM guide as inspiration "Choose the right resources. Your selection of VM sizes and SKUs directly affect the overall cost. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?"_** (Cluster) Select appropriate VM SKU.
-> - **TODO: _Expand and maybe merge into the previous design item. Each node type is backed up by a VMSS_** (Cluster) Use appropriate node type and size.
+> - **TODO: _Expand a bit. Lead with the selection of the right SKU of service fabric managed clusters, followed with the existing point about node types and size. Mention standard managed cluster is better for prod environments b/c it supports avail zones (https://learn.microsoft.com/en-us/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) _** (Cluster) Use appropriate node type and size.
 > - **TODO: _Expand a bit the benefit of choosing the right managed disk. In general, this is also CO:07 Optimize components cost. Merge here the recommendation to avoid temp disks_** (Cluster and workload) Use appropriate managed disk tier and size.
 
 ### Recommendations
