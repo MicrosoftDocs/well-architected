@@ -78,11 +78,11 @@ The [Security design principles] (../security/principles.md) provide a high-leve
 Base your design strategy on the [design review checklist for Security](../security/checklist.md).
 
 > [!div class="checklist"]
-> - Familiarize yourself with Service Fabric product security guidance. See [security best practices](/azure/service-fabric/service-fabric-best-practices-security), [cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security), and [Service Fabric application and service security](/azure/service-fabric/service-fabric-application-and-service-security).
+> - (Cluster and workload) Familiarize yourself with Service Fabric product security guidance. See [security best practices](/azure/service-fabric/service-fabric-best-practices-security), [cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security), and [Service Fabric application and service security](/azure/service-fabric/service-fabric-application-and-service-security).
 > - (Cluster) Apply network segmentation and controls by configuring NSGs to restrict traffic flow between subnets and node types.
 > - (Cluster) Securely manage application secrets and client certificates using native tools. Application secrets should be managed with the Service Fabric Secret Store and certifcates should be managed with Key Vault.
 > - (Cluster) Consider [bringing your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer), which allows you to use an internal load balancer and to define different load balancers and NSGs for each node type.
-> - (Cluster) Securely control access to the cluster by enabling Microsoft Entra integration, allowing users to authenticate with thier Entra credentials. Alternatively, you can use cluster client and admin certificates. Don't distribute the cluster client certificates among users to access Explorer.
+> - (Cluster) Securely control access to the cluster by enabling Microsoft Entra integration, allowing users to authenticate with their Entra credentials. Alternatively, you can use cluster client and admin certificates. Don't distribute the cluster client certificates among users to access Explorer.
 > - (Cluster and workload) Create a process for monitoring the expiration date of client certificates.
 > - (Cluster and workload) Maintain separate clusters for development, staging, and production. Production environments typically require stricter security controls than nonproduction environments and isolating environments from each other adds a layer of secuirty if one environment is compromised. 
 
@@ -104,30 +104,23 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Service Fabric and its environment.
 
-**TODO: _Move this content to the design checklist. Similar to other guides, like app service, start the cost checklist with "Estimate the initial cost...", explain that "There is no charge for the service for a  Service Fabric cluster. You are only charged for the compute instances, storage, networking resources, and IP addresses you choose when creating a Service Fabric cluster" -  Add the link to the price calculator, amd also include the link to the spreadsheet in the same checklist item_**
-
-For cluster cost optimization, go to the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Service Fabric** from the available products. You can test different configuration and payment plans in the calculator.
-
-For more information about Azure Service Fabric workload pricing, check out the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
-
-**end:TODO:**
-
 ### Design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
-> - **TODO: _Expand - General topic aligns with CO:07 Optimize components cost "https://learn.microsoft.com/en-us/azure/well-architected/cost-optimization/optimize-component-costs#optimize-platform-features", by selecting the right SKUs --- Could use the VM guide as inspiration "Choose the right resources. Your selection of VM sizes and SKUs directly affect the overall cost. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?"_** (Cluster) Select appropriate VM SKU.
-> - **TODO: _Expand a bit. Lead with the selection of the right SKU of service fabric managed clusters, followed with the existing point about node types and size. Mention standard managed cluster is better for prod environments b/c it supports avail zones (https://learn.microsoft.com/en-us/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) _** (Cluster) Use appropriate node type and size.
-> - **TODO: _Expand a bit the benefit of choosing the right managed disk. In general, this is also CO:07 Optimize components cost. Merge here the recommendation to avoid temp disks_** (Cluster and workload) Use appropriate managed disk tier and size.
+> - (Workload and cluster) Estimate the intial cost using the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/). You are only charged for the compute instances, storage, networking resources, and IP addresses you choose when creating a Service Fabric cluster. There is no charge for the service offered by Service Fabric itself. To help get started in your cost modeling, see the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
+> - (Cluster) Select appropriate VM SKUs. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?
+> - (Cluster) Select appropriate cluster SKUs. Use Standard for production environments and Basic for nonproduction environments, unless there is a compelling reason to do otherwise. Use appropriate node type and size in each environment.
+> - (Cluster and workload) Use appropriate managed disk tier and size. Review the WAF [service guide for disk storage](/azure/well-architected/service-guides/azure-disk-storage?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
 
 ### Recommendations
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| **TODO:_Merge the recommendation about avoiding temp disks into the third design checklist item that talks about choosing the right disks _** (Cluster) Avoid VM SKUs with temp disk offerings.|Service Fabric uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
 | (Cluster) If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
-| **TODO:__*Separate choosing the VM sku and the manage disks into two separate recommendations, similar to the VM guide. ----------- For disks, add link to choose the right managed disk type (HDD, SDD, Premium): https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-cluster-managed-disk. The benefit is to avoid paying for more expensive types that may not be needed, Premium also allows reconfiguration of parameters as needed "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types" ------------- For Choosing the right VM SKUs recommendation, add link to https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes _** (Cluster and workload) Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
+| (Cluster and workload) Align VM SKU selection with workload requirements.|[Matching your selection to your workload demands](/azure/service-fabric/service-fabric-cluster-nodetypes) helps you avoid paying for expensive VM SKUs that you might not need.|
+| (Cluster and workload) Align disk type selection with workload requirements.|[Choosing the right managed disk type](/azure/service-fabric/how-to-managed-cluster-managed-disk) helps you avoid paying for expensive types that you might not require.|
 
 ## Operational Excellence
 
