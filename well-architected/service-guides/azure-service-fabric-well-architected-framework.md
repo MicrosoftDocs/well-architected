@@ -64,7 +64,7 @@ as needed.
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Cluster) Consider using Azure API Management to expose and offload cross-cutting functionality for APIs hosted on the cluster.|API Management can [integrate](/azure/service-fabric/service-fabric-api-management-overview) with Service Fabric directly.**<br/>TODO: _Move link to recommendations column. The benefit is someething like: APIM is a feature rich application gateway that enables to securely publish, manage, and monitor APIs deployed to the Service Fabric cluster_**|
+| (Cluster) API Management (APIM) can [integrate](/azure/service-fabric/service-fabric-api-management-overview) with Service Fabric directly. Consider using it to expose and offload cross-cutting functionality for APIs hosted on the cluster.|  APIM is a feature-rich application gateway that helps you securely publish, manage, and monitor APIs deployed to the Service Fabric cluster.|
 | (Workload)  For stateful workload scenarios, consider using [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction).|The Reliable Services model allows your services to stay up even in unreliable environments where your machines fail or hit network issues, or in cases where the services themselves encounter errors and crash or fail. For stateful services, your state is preserved even in the presence of network or other failures.|
 
 ## Security
@@ -92,7 +92,7 @@ Base your design strategy on the [design review checklist for Security](../secur
 |-----------------------------------|-----------|
 | (Cluster) Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.| This configuration ensures that communication between the Service Fabric resources and the rest of the workload are secured.|
 | (Cluster) When using the Service Fabric Secret Store to distribute secrets, use a separate [data encipherment certificate](/azure/service-fabric/how-to-managed-cluster-application-secrets?branch=main#create-a-data-encipherment-certificate) to encrypt the values.| Using a seperate encipherment certificate ensures isolation between certificates.|
-| (Cluster) Apply an Access Control List (ACL) to your client certificate for your Service Fabric cluster.|[Using an ACL](/azure/service-fabric/service-fabric-best-practices-security#apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster) provides an additional level of authentication.|
+| (Cluster) Apply an [Access Control List (ACL)](/azure/service-fabric/service-fabric-best-practices-security#apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster) to your client certificate for your Service Fabric cluster.|Using an ACL provides an additional level of authentication.|
 | (Cluster) Use [resource requests and limits](/azure/service-fabric/service-fabric-resource-governance#resource-governance-mechanism) to govern resource usage across the nodes in your cluster.|Enforcing resource limits helps ensure that one service doesn't consume too many resources and starve other services.|
 | (Workload)  Include client certificates in Service Fabric applications.|Having your applications use client certificates for authentication provides opportunities for security at both the cluster and workload level.|
 | (Workload)  Authenticate Service Fabric applications to Azure Resources using [Managed Identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets).|Using Managed Identity allow you to securely manage the credentials in your code for authenticating to various services without saving them locally on a developer workstation or in source control.|
@@ -112,15 +112,15 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - (Workload and cluster) Estimate the intial cost using the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/). You are only charged for the compute instances, storage, networking resources, and IP addresses you choose when creating a Service Fabric cluster. There is no charge for the service offered by Service Fabric itself. To help get started in your cost modeling, see the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
 > - (Cluster) Select appropriate VM SKUs. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?
 > - (Cluster) Select appropriate cluster SKUs. Use Standard for production environments and Basic for nonproduction environments, unless there is a compelling reason to do otherwise. Use appropriate node type and size in each environment.
-> - (Cluster and workload) Use appropriate managed disk tier and size. Review the WAF [service guide for disk storage](/azure/well-architected/service-guides/azure-disk-storage?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
+> - (Cluster and workload) Select appropriate managed disk tiers and sizes. Review the WAF [service guide for disk storage](/azure/well-architected/service-guides/azure-disk-storage?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
 
 ### Recommendations
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
 | (Cluster) If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
-| (Cluster and workload) Align VM SKU selection with workload requirements.|[Matching your selection to your workload demands](/azure/service-fabric/service-fabric-cluster-nodetypes) helps you avoid paying for expensive VM SKUs that you might not need.|
-| (Cluster and workload) Align disk type selection with workload requirements.|[Choosing the right managed disk type](/azure/service-fabric/how-to-managed-cluster-managed-disk) helps you avoid paying for expensive types that you might not require.|
+| (Cluster and workload) Align VM SKU selection with workload requirements.|Matching your selection to your workload demands you avoid paying for expensive VM SKUs that you might not need.|
+| (Cluster and workload) Align [disk type selection](/azure/service-fabric/how-to-managed-cluster-managed-disk) with workload requirements.|Choosing the right managed disk type helps you avoid paying for expensive types that you might not require.|
 
 ## Operational Excellence
 
