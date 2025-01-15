@@ -5,9 +5,8 @@ author: schaffererin
 ms.author: schaffererin
 ms.topic: conceptual
 ms.date: 12/11/2024
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.subservice: well-architected
 products:
   - azure-kubernetes-service
 azure.category:
@@ -76,7 +75,7 @@ Start your design strategy based on the [design review checklist for Reliability
 |(Cluster and workload) Control pod scheduling by using node selectors and affinity. <br><br>In AKS, the Kubernetes scheduler can logically isolate workloads by hardware in the node. Unlike [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods without a matching node selector can be scheduled on labeled nodes, but priority is given to pods that define the matching node selector.| Node affinity leads to more flexibility, which allows you to define what happens if the pod can't be matched with a node.|
 |(Cluster) Select the appropriate network plugin based on network requirements and cluster sizing. <br><br>Different network plugins provide varying levels of functionality. Azure Container Networking Interface (Azure CNI) is required for specific scenarios, such as Windows-based node pools, some networking requirements, and Kubernetes network policies. <br><br> For more information, see [Kubenet versus Azure CNI](/azure/aks/concepts-network#compare-network-models).|The right network plugin can help ensure better compatibility and performance.|
 |(Cluster and workload) Use the [AKS uptime SLA](/azure/aks/free-standard-pricing-tiers#uptime-sla-terms-and-conditions) for production-grade clusters.|The workload can support higher availability targets because of the higher availability guarantees of the Kubernetes API server endpoint for AKS clusters.|
-|(Cluster) Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate datacenters.<br><br>If colocality requirements exist, use a regular virtual machine scale sets-based AKS deployment into a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.|By spreading node pools across multiple zones, nodes in one node pool will continue running even if another zone goes down.|
+|(Cluster) Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate datacenters.<br><br>If colocality requirements exist, use a regular virtual machine scale sets-based AKS deployment into a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.|By spreading node pools across multiple zones, nodes in one node pool continue running even if another zone goes down.|
 |(Cluster and workload) Define pod resource requests and limits in application deployment manifests. Enforce those limits by using Azure Policy.| Container CPU and memory resource limits are necessary to prevent resource exhaustion in your Kubernetes cluster.|
 |(Cluster and workload) Keep the system node pool isolated from application workloads.<br><br>System node pools require a virtual machine (VM) SKU of at least 2 vCPUs and 4 GB of memory. We recommend 4 vCPU or more. For more information, see [System and user node pools](/azure/aks/use-system-pools#system-and-user-node-pools).|The system node pool hosts critical system pods that are essential for the control plane of your cluster. By isolating these system pods from application workloads, you help ensure that the essential services are unaffected by the resource demands or potential problems caused by a workload.|
 |(Cluster and workload) Separate applications to dedicated node pools based on specific requirements. Avoid large numbers of node pools to reduce management overhead.|Applications can share the same configuration and need GPU-enabled VMs, CPU or memory-optimized VMs, or the ability to scale to zero. By dedicating node pools to specific applications, you can help ensure that each application gets the resources it needs without overprovisioning or underutilizing resources.|
@@ -169,117 +168,115 @@ Your design should use the right Azure capabilities, monitor investments, and fi
 |----------------------------------|-----------|
 |(Cluster and workload) Align [AKS SKU selection](/azure/aks/free-standard-pricing-tiers) and managed disk size with workload requirements.|Matching your selection to your workload demands helps ensure that you don't pay for unneeded resources.|
 |(Cluster) Select the right VM instance types for your [AKS node pools](/azure/aks/create-node-pools).<br><br>To determine the right VM instance types, consider workload characteristics, resource requirements, and availability needs.|Selecting the right VM instance type is crucial because it directly affects the cost of running applications on AKS. Choosing a high-performance instance without proper utilization can lead to wasteful spending. Choosing a less powerful instance can lead to performance problems and increased downtime.|
-|(Cluster) Select VMs based on the more power efficient Azure Resource Manager architecture. AKS supports [creating ARM64 node pools](/azure/aks/create-node-pools#arm64-node-pools), as well as a mix of Intel and Resource Manager architecture nodes within a cluster.| The ARM64 architecture provides a better price-to-performance ratio because of its lower power utilization and efficient compute performance. These capabilities can bring better performance at a lower cost.|
+|(Cluster) Select VMs based on the more power efficient Azure Resource Manager architecture. AKS supports [creating Arm64 node pools](/azure/aks/create-node-pools#arm64-node-pools) and a mix of Intel and Resource Manager architecture nodes within a cluster.| The Arm64 architecture provides a better price-to-performance ratio because of its lower power utilization and efficient compute performance. These capabilities can bring better performance at a lower cost.|
 |(Cluster) Enable the [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically reduce the number of agent nodes in response to excess resource capacity. |Automatically scaling down the number of nodes in your AKS cluster lets you run an efficient cluster when demand is low and scale up when demand returns.|
 |(Cluster) Enable [node autoprovisioning](/azure/aks/node-autoprovision?tabs=azure-cli) to automate VM SKU selection. |Node autoprovision simplifies the SKU selection process and decides, based on pending pod resource requirements, the optimal VM configuration to run workloads in the most efficient and cost-effective manner. |
 |(Workload) Use [HorizontalPodAutoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other metrics.| Automatically scaling down the number of pods when demand is low and scaling out when demand increases results in a more cost-effective operation of your workload.|
 |(Workload) Use [VerticalPodAutoscaler](/azure/aks/vertical-pod-autoscaler) (preview) to rightsize your pods and dynamically set [requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) based on historic usage.|By setting resource requests and limits on containers for each workload, VerticalPodAutoscaler frees up CPU and memory for other pods and helps ensure effective utilization of your AKS clusters.|
 |(Cluster) Configure the [AKS cost analysis add-on](/azure/aks/cost-analysis). | The cost analysis cluster extension enables you to obtain granular insight into costs associated with various Kubernetes resources in your clusters or namespaces.|
 
-## Operational excellence
+## Operational Excellence
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+#### Design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment. Review  [AKS best practices](/azure/aks/best-practices) and [Day-2 operations guide](/azure/architecture/operator-guides/aks/day-2-operations-guide) to learn about key considerations to understand and implement.
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment. See [AKS best practices](/azure/aks/best-practices) and [Day-2 operations guide](/azure/architecture/operator-guides/aks/day-2-operations-guide) to learn about key considerations to understand and implement.
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Implement an Infrastructure as Code (IaC) deployment approach.** Use a declarative, template-based deployment approach using Bicep, Terraform, or similar. Make sure that all deployments are repeatable, traceable, and stored in a source code repo. For more information, see the Quickstarts section in AKS product documentation.
+> - (Cluster) **Implement an infrastructure as code (IaC) deployment approach.** Use a declarative, template-based deployment approach by using Bicep, Terraform, or similar tools. Make sure that all deployments are repeatable, traceable, and stored in a source code repo. For more information, see the [quickstarts](/azure/aks/learn/quick-kubernetes-automatic-deploy) in the AKS product documentation.
 >
-> - (Cluster and Workload) **Automate infrastructure and workload deployments.** Use standard software solutions to manage, integrate, and automate the deployment of your cluster and workloads. Integrate deployment pipelines with your source control system and incorporate automated tests.
+> - (Cluster and workload) **Automate infrastructure and workload deployments.** Use standard software solutions to manage, integrate, and automate the deployment of your cluster and workloads. Integrate deployment pipelines with your source control system and incorporate automated tests.
 >
->   Build an automated process to ensure your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This is often performed using GitOps.
+>   Build an automated process to help ensure that your clusters are bootstrapped with the necessary cluster-wide configurations and deployments. This process is typically performed by using GitOps.
 >
 >   Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
 >   
-> - (Cluster and Workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
+> - (Cluster and workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
 >
->    Enable diagnostics settings to ensure control plane or core API server interactions are logged.
+>    Enable diagnostics settings to ensure that control plane or core API server interactions are logged.
 >
->    The workload should be designed to emit telemetry that can be collected, which should also include liveliness and readiness statuses.
+>    The workload should be designed to emit telemetry that can be collected, which should also include liveness and readiness statuses.
 >   
-> - (Cluster and Workload) **Implement testing in production strategies.** Testing in production uses real deployments to validate and measure an application's behavior and performance in the production environment. Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
+> - (Cluster and workload) **Implement testing in production strategies.** Testing in production uses real deployments to validate and measure an application's behavior and performance in the production environment. Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
 >
 >   [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-tutorial-aks-portal) can help simulate faults and trigger disaster recovery situations.
 >
-> - (Cluster and Workload) **Enforce workload governancey.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your cluster resources.
+> - (Cluster and workload) **Enforce workload governance.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your cluster resources.
 >
 >   Review the [Azure policies](#azure-policies) section to learn more about the available built-in policies for AKS.
 >
-> - (Cluster and Workload) **Use [stamp-level blue/green deployments](/azure/well-architected/mission-critical/mission-critical-deployment-testing#ephemeral-blue-green-deployments) for mission-critical workloads.** A stamp-level blue/green deployment approach can increase confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
+> - (Cluster and workload) **Use [stamp-level, blue-green deployments](/azure/well-architected/mission-critical/mission-critical-deployment-testing#ephemeral-blue-green-deployments) for mission-critical workloads.** A stamp-level, blue-green deployment approach can increase confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
 >
 >    Kubernetes and ingress controllers support many advanced deployment patterns for inclusion in your release engineering process. Consider patterns like blue-green deployments or canary releases.
 >
-> - (Cluster and Workload) **Make workloads more sustainable.** Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around _cost optimization_, _reducing carbon emissions_, and _optimizing energy consumption_. Optimizing the application's cost is the initial step in making workloads more sustainable.
+> - (Cluster and workload) **Make workloads more sustainable.** Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around _cost optimization_, _reducing carbon emissions_, and _optimizing energy consumption_. Optimizing the application's cost is the initial step in making workloads more sustainable.
 >
->   Review [Sustainable software engineering principles in AKS](/azure/aks/concepts-sustainable-software-engineering) to learn how to build sustainable and efficient AKS workloads.
+>   See [Sustainable software engineering principles in AKS](/azure/aks/concepts-sustainable-software-engineering) to learn how to build sustainable and efficient AKS workloads.
 
-### Recommendations
+#### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-|(Cluster) Operationalize clusters and pods configuration standards with [Azure Policies for AKS](/azure/aks/use-azure-policy). | Azure Policies for AKS can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. Policies can be used to define the permissions granted to pods and ensure compliance with company policies.|
-|(Workload) Use [Kubernetes Event Driven Autoscaling](/azure/aks/keda-about) (KEDA).|KEDA allows your applications to scale based on events, like the number of events being processed. You can choose from a rich catalog of 50+ KEDA scalers.|
+|(Cluster) Operationalize cluster and pod configuration standards by using [Azure policies for AKS](/azure/aks/use-azure-policy). | Azure policies for AKS can help you apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. Use policies to define the permissions granted to pods and ensure compliance with company policies.|
+|(Workload) Use [Kubernetes Event Driven Autoscaler (KEDA)](/azure/aks/keda-about).|KEDA allows your applications to scale based on events, like the number of events being processed. You can choose from a rich catalog of more than 50 KEDA scalers.|
 
-## Performance efficiency
+## Performance Efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+#### Design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for AKS.
 
 > [!div class="checklist"]
 >
-> - (Cluster and Workload) **Conduct capacity planning.** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations.
+> - (Cluster and workload) **Conduct capacity planning.** Perform and iterate on a detailed capacity plan exercise that includes SKU, autoscale settings, IP addressing, and failover considerations.
 >
->   After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.
-> - (Cluster) **Define a scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste. Use AKS features like cluster autoscaling and Horizontal pod autoscaler to dynamically meet your workload needs with reduced operational burden and Optimize your workload to operate and deploy efficiently in a container.
+>   After you formalize your capacity plan, frequently update the plan by continuously observing the resource utilization of the cluster.
+> - (Cluster) **Define a scaling strategy.** Configure scaling to ensure that resources are adjusted efficiently to meet workload demands without overuse or waste. Use AKS features like cluster autoscaling and HorizontalPodAutoscaler to dynamically meet your workload needs with reduced operational burden. Optimize your workload to operate and deploy efficiently in a container.
 >
->   Review the [Scaling and Partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration.
+>   Review the [Scaling and partitioning](/azure/well-architected/performance-efficiency/scale-partition) guide to understand the various aspects of scaling configuration.
 >
-> - (Cluster and Workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and and established baselines.
+> - (Cluster and workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and the established baselines.
 >   
-> - (Cluster and Workload) **Scale workloads and flows independently.** Separate workloads and flows into different node pools allowing independent scalling. Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. 
+> - (Cluster and workload) **Scale workloads and flows independently.** Separate workloads and flows into different node pools to allow independent scaling. Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. 
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-|(Cluster) Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to workload demands.<br><br>Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.|The ability to automatically scale up or down the number of nodes and the number of pods in your AKS cluster lets you run an efficient, cost-effective cluster.|
-|(Cluster and Workload) Separate workloads into different node pools and consider [scaling](/azure/aks/scale-cluster) user node pools.|Unlike System node pools that always require running nodes, user node pools allow you to scale up or down.|
-|(Workload) Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler) to implement advanced balancing of resources for workloads that require them. | As you manage AKS clusters, you often need to isolate teams and workloads. Advanced features provided by the Kubernetes scheduler let you control which pods can be scheduled on certain nodes, and how multi-pod applications can be appropriately distributed across the cluster.|
-|(Workload) Use [Kubernetes Event-driven Autoscaling (KEDA)](/training/modules/aks-app-scale-keda/) to build a meaningful auto scale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Often scale considerations will come from more complex or even external data points. KEDA allows your applications to scale based on events, such as the number of messages in a queue or the length of a topic lag.|
+|(Cluster) Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to workload demands.<br><br>Use the [HorizontalPodAutoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other metrics.|The ability to automatically scale the number of nodes up or down and the number of pods in your AKS cluster lets you run an efficient, cost-effective cluster.|
+|(Cluster and workload) Separate workloads into different node pools and consider [scaling](/azure/aks/scale-cluster) user node pools.|Unlike system node pools that always require running nodes, user node pools allow you to scale up or down.|
+|(Workload) Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler) to implement advanced balancing of resources for workloads that require them. | As you manage AKS clusters, you often need to isolate teams and workloads. Advanced features that the Kubernetes scheduler provides let you control which pods can be scheduled on certain nodes. They also let you control how multipod applications can be appropriately distributed across the cluster.|
+|(Workload) Use [KEDA](/training/modules/aks-app-scale-keda/) to build a meaningful autoscale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Often scale considerations come from more complex or even external data points. KEDA allows your applications to scale based on events, such as the number of messages in a queue or the length of a topic lag.|
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to AKS that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Kubernetes, and within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant. In addition to the built-in Azure Policy definitions, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes.
+Azure provides an extensive set of built-in policies related to AKS that apply to the Azure resource, like typical Azure policies and the Azure Policy add-on for Kubernetes, and within the cluster. Many of the Azure resource policies come in both *Audit/Deny* and a *Deploy If Not Exists* variant. In addition to the built-in Azure Policy definitions, you can create custom policies for both the AKS resource and for the Azure Policy add-on for Kubernetes.
 
-Some of the recommendations in this article can be audited through Azure Policy. For example, you can check whether:
-
-#### Cluster policies
+Some of the recommendations in this article can be audited through Azure Policy. For example, you can check the following cluster policies:
 
 - Clusters have readiness or liveness health probes configured for your pod spec.
-- Microsoft Defender for Cloud-based policies.
+- Microsoft Defender for cloud-based policies.
 - Authentication mode and configuration policies (Microsoft Entra ID, RBAC, disable local authentication).
-- API Server network access policies, including private cluster.
+- API server network access policies, including private cluster.
 - GitOps configuration policies.
 - Diagnostics settings policies.
 - AKS version restrictions.
 - Prevent command invoke.
 
-#### Cluster and workload policies
+You can also check the following cluster and workload policies:
 
-- Kubernetes cluster pod security initiatives Linux-based workloads.
-- Include pod and container capability policies such as AppArmor, sysctl, security caps, SELinux, seccomp, privileged containers, automount cluster API credentials.
+- Kubernetes cluster pod security initiatives for Linux-based workloads.
+- Include pod and container capability policies, such as AppArmor, sysctl, security caps, SELinux, seccomp, privileged containers, and automount cluster API credentials.
 - Mount, volume drivers, and filesystem policies.
-- Pod/Container networking policies, such as host network, port, allowed external IPs, HTTPs, and internal load balancers.
+- Pod and container networking policies, such as host network, port, allowed external IPs, HTTPs, and internal load balancers.
 - Namespace deployment restrictions.
 - CPU and memory resource limits.
 
@@ -308,4 +305,3 @@ Consider the following articles as resources that demonstrate the recommendation
 Build implementation expertise by using the following product documentation:
 
 -  [AKS product documentation](/azure/aks)
-
