@@ -5,9 +5,8 @@ author: asergaz
 ms.author: sergaz
 ms.topic: conceptual
 ms.date: 01/02/2025
-ms.service: waf
+ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.subservice: well-architected
 ai-usage: ai-assisted
 products:
  - azure-iot-hub
@@ -41,9 +40,9 @@ This review focuses on the interrelated decisions for the following Azure resour
 - [Azure IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub)
 - [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)
 - [Azure Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update)
-- [Azure IoT Edge](/azure/iot-edge/about-iot-edge?view=iotedge-1.5)
+- [Azure IoT Edge](/azure/iot-edge/about-iot-edge)
 - [Azure Digital Twins](/azure/digital-twins/overview)
-- [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere?view=azure-sphere-integrated)
+- [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere)
 - [Microsoft Defender for IoT](/azure/iot/iot-overview-security)
 
 ## Reliability
@@ -80,7 +79,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles](/azure/well-architected/security/security/principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your IoT Hub.
+The [Security design principles](/azure/well-architected/security/principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your IoT Hub.
 
 #### Design checklist
 
@@ -99,7 +98,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| Apply zero-trust criteria for devices. Devices connected to IoT Hub should contain an [hardware security module (HSM)](/azure/iot-dps/concepts-tpm-attestation) for strong identity, use [renewable credentials](/azure/iot-dps/how-to-roll-certificates), enforce least-privileged access control, emit proper health signals for conditional access and alert operators to [revoke a device from IoT Hub when compromised](azure/iot-dps/how-to-revoke-device-access-portal), provide [update agents for security updates](/azure/iot-hub-device-update/), include device management capabilities for cloud-driven configuration and automated security response, minimize physical attack footprint by disabling unnecessary features, and [protect data at rest using standard encryption algorithms](azure/iot-hub/iot-hub-tls-support). | Applying zero-trust criteria for devices connected to IoT Hub enhances security and reliability.<br><br> By using hardware security modules (HSM) for strong identity, renewable credentials, and enforcing least-privileged access control, unauthorized access and compromised devices are minimized.<br><br> Emitting health signals for conditional access and providing update agents ensure devices remain secure and compliant. Integrating cloud-driven device management and automated security response, along with running security agents, strengthens the security posture.<br><br> Minimizing the physical attack footprint and protecting data at rest with encryption safeguards sensitive information and maintains system integrity.  |
+| Apply zero-trust criteria for devices. Devices connected to IoT Hub should contain an [hardware security module (HSM)](/azure/iot-dps/concepts-tpm-attestation) for strong identity, use [renewable credentials](/azure/iot-dps/how-to-roll-certificates), enforce least-privileged access control, emit proper health signals for conditional access and alert operators to [revoke a device from IoT Hub when compromised](/azure/iot-dps/how-to-revoke-device-access-portal), provide [update agents for security updates](/azure/iot-hub-device-update/), include device management capabilities for cloud-driven configuration and automated security response, minimize physical attack footprint by disabling unnecessary features, and [protect data at rest using standard encryption algorithms](/azure/iot-hub/iot-hub-tls-support). | Applying zero-trust criteria for devices connected to IoT Hub enhances security and reliability.<br><br> By using hardware security modules (HSM) for strong identity, renewable credentials, and enforcing least-privileged access control, unauthorized access and compromised devices are minimized.<br><br> Emitting health signals for conditional access and providing update agents ensure devices remain secure and compliant. Integrating cloud-driven device management and automated security response, along with running security agents, strengthens the security posture.<br><br> Minimizing the physical attack footprint and protecting data at rest with encryption safeguards sensitive information and maintains system integrity.  |
 | Use X.509 certificates to authenticate your devices to IoT Hub. To learn more, see [Authenticate identities with X.509 certificates](/azure/iot-hub/authenticate-authorize-x509). | IoT Hub support both X509 certificate-based authentication and security tokens as methods for a device to authenticate. Use X509-based authentication in production environments as it provides greater security. |
 | To layer least-privileged access for IoT devices, use [network segmentation](/security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json#network-security) to group IoT devices, mitigating potential impact of a potential compromise. | Network segmentation can group IoT devices, mitigating potential impact of a compromise. A common approach is to connect IoT devices to an "IoT network" for devices such as printers, VoIP phones, and smart TVs. This IoT network is separate from other organizational resources that the workforce accesses.<br><br> Network micro-segmentation lets you isolate less-capable devices at the network layer, either behind a gateway or on a discrete network segment. For example, you can logically separate dedicated OT environments from the corporate IT network using zone (DMZ) network architecture with firewalls. More mature organizations can also implement micro-segmentation policies at multiple layers of the Purdue Model, typically using next-gen firewalls. |
 | Use [Microsoft Defender for IoT](/azure/defender-for-iot/organizations/overview) as the frontline of defense to protect your resources in Azure. | Microsoft Defender for IoT is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT devices. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to identify unauthorized or compromised components. |
