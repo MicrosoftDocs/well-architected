@@ -103,7 +103,7 @@ Start your design strategy based on the [design review checklist for Security](.
 | To layer least-privileged access for IoT devices, use [network segmentation](/security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json#network-security) to group IoT devices, mitigating potential impact of a potential compromise. | Network segmentation can group IoT devices, mitigating potential impact of a compromise. A common approach is to connect IoT devices to an "IoT network" for devices such as printers, VoIP phones, and smart TVs. This IoT network is separate from other organizational resources that the workforce accesses.<br><br> Network micro-segmentation lets you isolate less-capable devices at the network layer, either behind a gateway or on a discrete network segment. For example, you can logically separate dedicated OT environments from the corporate IT network using zone (DMZ) network architecture with firewalls. More mature organizations can also implement micro-segmentation policies at multiple layers of the Purdue Model, typically using next-gen firewalls. |
 | Use [Microsoft Defender for IoT](/azure/defender-for-iot/organizations/overview) as the frontline of defense to protect your resources in Azure. | Microsoft Defender for IoT is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT devices. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to identify unauthorized or compromised components. |
 | Use IoT Hub with [Azure Sphere](/azure-sphere) as a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. | Azure Sphere can be a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. In this scenario, an Azure Sphere guardian module deploys with an application and interfaces with existing devices through Ethernet, serial, or BLE. The devices don't necessarily have direct internet connectivity. |
-| Use [IoT Edge gateways](azure/iot-edge/iot-edge-as-gateway) to enforce strong identity patterns for less capable devices. | IoT Edge provides an edge runtime connection to IoT Hub, and supports certificates as strong device identities. IoT Edge supports the PKCS#11 standard for device manufacturing identities and other secrets stored on a Trusted Platform Module (TPM) or Hardware Security Module (HSM). |
+| Use [IoT Edge gateways](/azure/iot-edge/iot-edge-as-gateway) to enforce strong identity patterns for less capable devices. | IoT Edge provides an edge runtime connection to IoT Hub, and supports certificates as strong device identities. IoT Edge supports the PKCS#11 standard for device manufacturing identities and other secrets stored on a Trusted Platform Module (TPM) or Hardware Security Module (HSM). |
 
 ## Cost Optimization
 
@@ -141,66 +141,37 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | To reduce transmission sizes and costs: [choose the right protocol](/azure/iot-hub/iot-hub-devguide-protocols) for your IoT devices, compress telemetry at the edge, [batch messages](/azure/iot-hub/iot-hub-devguide-file-upload) on the device, choose between keeping connections alive or reconnecting when the devices wake up, use device twin to exchange status information asynchronously if cost is critical. | Choosing the right protocol for your scenario enables devices to reduce transmission sizes and costs in the transport layer.<br><br> For battery-powered IoT devices, you can choose between keeping connections alive or reconnecting when the devices wake up. Keep alive, or heartbeat messages are essential for checking device status but adds up to the network costs of transmission. In IoT Hub, messages exchanged to keep the connection open and alive are not charged. Reconnecting consumes packets around 6-KB for TLS connection, device authentication, and retrieving a device twin, but saves battery capacity if the device wakes up only once or twice per day. |
 | Understand how to use hot, warm, and cold path analytics for IoT data and apply the [lambda architecture](/azure/architecture/databases/guide/big-data-architectures#lambda-architecture). Use the built-in [message routing](/azure/iot-hub/iot-hub-devguide-messages-d2c) feature in IoT Hub. | IoT solutions can store large amounts of data. Storage costs are a large part of the overall solution cost and you should choose an appropriate processing and storage plan based on your business scenario. |
 
-<!-- Required: Operational Excellence H2 
-
-Include the standard description for the pillar.
-
--->
-
 ## Operational Excellence
 
-Operational Excellence primarily focuses on procedures for **development
-practices, observability, and release management**.
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles)
-provide a high-level design strategy for achieving those goals for the
-operational requirements of the workload.
-
-<!-- Required: Design checklist H4
-
-In the first H4 of the pillar section, lead readers through
-design principles by:
-
-- Using standardized text that contains a link to the design
-review checklist for the pillar.
-- Presenting a checklist of the pillar's design review recommendations
-that are relevant for your Azure offering.
-
-For each applicable principle:
-
-- Discuss considerations that relate to that checklist item.
-- Provide links to conceptual articles in product documentation
-if needed.
-- Focus on areas of architectural concern for the architect, not
-on specific configuration settings.
-
--->
+The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 #### Design checklist
 
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to IoT Hub.
+
 > [!div class="checklist"]
 >
-> - [design-consideration]
-> - [design-consideration]
->   ...
-> - [design-consideration]
-
-<!-- Required: Recommendations H4
-
-In the second H4 of the pillar section, present a table of
-recommendations for optimizing the configuration of your Azure
-offering. The recommendations should relate to the pillar and
-show how to materialize the vision of the preceding design principles.
-
--->
+> - **Embrace continuous operations and scaling:** Ensure that the IoT solution can successfully manage automated device provisioning, integrate with other backend systems, support different roles such as solution developers, solution administrators, and operators, and adapt and scale efficiently to any changes on demand such as new IoT devices being deployed or higher ingestion throughput.
+> - **Optimize build and release processes**: Any successful enterprise IoT solution requires a strategy to establish and update a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.
+> - **Understand operational health**: Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot problems throughout the lifecycle of the solution.
+> - **Use automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize operational downtime. Automation and DevOps are essential for monitoring and managing the lifecycle of IoT devices.
 
 #### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| ... | ... |
+| For continuous updates to existing or new devices and IoT Edge device configurations, such as properties, application specific settings, or relationships, use either [IoT Hub automatic device management](/azure/iot-hub/iot-hub-automatic-device-management) or [IoT Edge automatic deployments](/iot-edge/module-deployment-monitoring).<br><br> To update an existing device or IoT Edge device configuration based on a one-time or recurring schedule, use [IoT Hub scheduled jobs](/azure/iot-hub/iot-hub-devguide-jobs).<br><br>To update existing device or IoT Edge device firmware, application, or package updates over-the-air (OTA), use [Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update).<br><br> Have a manual update method for IoT devices. Due to root certificate changes or connectivity issues, you may need to manually update devices by physically connecting to a local computer or using a local connectivity protocol such as Bluetooth. | IoT Hub automatic device management and IoT Edge automatic deployments, offer an efficient, secure, and reliable way to automate configuration deployments for a fleet or specific group of devices. The services continuously monitor all new and existing targeted devices and their configuration based on tags, to ensure the devices always have the specified configuration.<br><br> IoT Hub scheduled jobs is an efficient, secure, and reliable way to provide a configuration update for a fleet or specific group of devices at a scheduled time.<br><br> Device Update for IoT Hub is a safe, secure, and reliable way to update a fleet or specific group of devices. |
+| Configure the ingestion and other back-end layers of the IoT cloud solution to be able to scale to handle expected and unexpected capacity needs. | If your solution is tied to a connected product, you must handle fluctuations in expected load in IoT Hub and related back-end layers. Load can be impacted by marketing initiatives such as sales or promotions, or by seasonal events such as holidays. You should test load variations prior to events, including unexpected events, to ensure that your IoT solution can scale. |
+| Build a centralized management UI by using the REST APIs exposed in [IoT Hub REST APIs](/rest/api/iothub/) to assist operation teams with device fleet management. | A centralized device management solution streamlines the administration, monitoring, and operation of IoT devices, ensuring efficient lifecycle management and consistent configuration across the IoT solution. An integrated UI further assists operation teams in managing device fleets effectively, reducing operational complexity and improving overall system reliability. |
+| Use a centralized identity provider, such as [Microsoft Entra ID](/entra/fundamentals/whatis) and create [managed identities](/entra/identity/managed-identities-azure-resources/overview), and only let the appropriate users in those roles perform management or operation activities, such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions. | In an IoT Hub-based solution, you can use Microsoft Entra ID to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators that authenticates users against Microsoft Entra ID and executes API requests to the IoT solution back-end on behalf of those users. |
+| Use IoT Hub logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot and mitigate problems. To learn more about the metrics and logs that IoT Hub creates, see [Azure IoT Hub monitoring data reference](/azure/iot-hub/monitor-iot-hub-reference). | Monitoring and logging help determine whether devices or systems are in an error condition, correctly configured, generating accurate data, and meeting defined service level objectives. |
+| Use CI/CD DevOps principles and processes to boost productivity and create a seamless rapid development cycle. Adopt DevOps with your IoT Edge applications with the built-in IoT Edge tasks in Azure Pipelines. Learn more in [Continuous integration and continuous deployment to Azure IoT Edge devices](/azure/iot-edge/how-to-continuous-integration-continuous-deployment). | Use DevOps tools and processes in IoT Hub and IoT Edge to automate the edge software lifecycle. |
+| Define a process to reprovision and deprovision IoT devices. Learn more in [IoT Hub Device reprovisioning concepts](/azure/iot-dps/concepts-device-reprovision). | The IoT device lifecycle includes defining the procedures to reprovision existing devices to other locations or purposes, and securely deprovisioning them when they're no longer needed. |
+| Test the [failover and failback of IoT Hub](/azure/iot-hub/tutorial-manual-failover) to ensure high availability. Document recovery steps for [Microsoft-initiated failover](/azure/iot-hub/iot-hub-ha-dr#microsoft-initiated-failover) and [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover). | The steps required to recover or failover the application to a secondary Azure region in failure situations should be codified, preferably in an automated manner, to ensure capabilities exist to effectively respond to an outage in a way that limits impact. Similar codified steps should also exist to capture the process required to failback the application to the primary region once a failover triggering issue has been addressed. |
+| Define and store all [IoT Hub, DPS and back-end infrastructure configuration](/azure/iot-hub/create-hub?tabs=portal#other-tools-for-managing-iot-hubs), using an infrastructure as code (IaC) language, such as Bicep or ARM templates.<br><br> Lock down write access to your infrastructure using IAM or governance tooling, such as Azure role-based access control (RBAC) or Azure Policy. | As you provision and configure your IoT solution resources, Iot Hub or DPS, a repeatable and predictable process helps you avoid errors and downtime. Define your entire infrastructure as IaC to ensure that your resources can be deployed automatically and consistently across environments. A DevOps tool, such as Azure DevOps or GitHub, can help track configuration, infrastructure as code, and firmware versions. Version tracking helps your organization to determine what version(s) of firmware, configuration, and IaC are deployed to what environments.<br><br>Ensure the only way to update configuration settings or infrastructure is through an automated pipeline. This enables you to see when and what changes have occurred to your environments. |
+| Create test environments that use the same firmware, configuration settings, and IaC as your production environments. You can easily create these environments by using IaC and automating your processes as much as possible. | Critical test environments have 1:1 parity with the production environment. Apply the same firmware, configuration settings, and IaC in your production and testing environments to simplify the development and testing of new functionality or hot fixes. |
 
 <!-- Required: Performance Efficiency H2
 
