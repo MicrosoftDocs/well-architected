@@ -186,9 +186,9 @@ Start your design strategy based on the [design review checklist for Performance
 
 Azure provides an extensive set of built-in policies related to Service Fabric and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-* Service Fabric clusters should have the ClusterProtectionLevel property set to `EncryptAndSign`. This is the default value for managed clusters and isn't changeable. **Standard cluster:** Ensure you set ClusterProtectionLevel to `EncryptAndSign`.
-* Service Fabric clusters should only use Microsoft Entra ID for client authentication.
-
+- Service Fabric Clusters are configured to be Zone Redundant.
+- Service Fabric clusters have the ClusterProtectionLevel property set to `EncryptAndSign`.
+- Service Fabric clusters are configured to only use Azure Active Directory for client authentication.
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Service Fabric](/azure/governance/policy/samples/built-in-policies#[Azure-offering-anchor]) and other policies that might impact the security of the [cloud-infrastructure-area].
 
@@ -202,11 +202,6 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations#[offering-or-infrastructure-area-anchor])
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#[offering-or-infrastructure-area-anchor])
 
-### Security
-
-* Service Fabric clusters should have the ClusterProtectionLevel property set to `EncryptAndSign`. This is the default value for managed clusters and isn't changeable. **Standard cluster:** Ensure you set ClusterProtectionLevel to `EncryptAndSign`.
-* Service Fabric clusters should only use Microsoft Entra ID for client authentication.
-
 ## Related content
 
 Check out the [Azure Service Fabric managed cluster configuration options article](/azure/service-fabric/how-to-managed-cluster-configuration) for a list of all the options you have while creating and maintaining your cluster.
@@ -215,5 +210,5 @@ Review the [Azure application architecture fundamentals](/azure/architecture/gui
 
 Use these recommendations as you create your Service Fabric managed cluster using an ARM template or through the Azure portal:
 
-* [Quickstart: Deploy a Service Fabric managed cluster with an Azure Resource Manager template](/azure/service-fabric/quickstart-managed-cluster-template)
-* [Quickstart: Deploy a Service Fabric managed cluster using the Azure portal](/azure/service-fabric/quickstart-managed-cluster-portal)
+- [Quickstart: Deploy a Service Fabric managed cluster with an Azure Resource Manager template](/azure/service-fabric/quickstart-managed-cluster-template)
+- [Quickstart: Deploy a Service Fabric managed cluster using the Azure portal](/azure/service-fabric/quickstart-managed-cluster-portal)
