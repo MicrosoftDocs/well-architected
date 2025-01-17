@@ -118,8 +118,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Cluster) If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
-| (Cluster and workload) Align VM SKU selection with workload requirements.|Matching your selection to your workload demands you avoid paying for expensive VM SKUs that you might not need.|
+| (Cluster) If you don't have requiements to maintain statefulness, consider choosing a VM SKU with [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support).|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
+| (Cluster and workload) Align [VM SKU selection](/azure/virtual-machines/sizes) with workload requirements. Ensure that you've identified the correct node types, which are [hosted on scale sets](/azure/service-fabric/service-fabric-cluster-nodetypes), to meet your requirements.|Matching your selection to your workload demands you avoid paying for expensive VM SKUs that you might not need.|
 | (Cluster and workload) Align [disk type selection](/azure/service-fabric/how-to-managed-cluster-managed-disk) with workload requirements.|Choosing the right managed disk type helps you avoid paying for expensive types that you might not require.|
 
 ## Operational Excellence
