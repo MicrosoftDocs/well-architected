@@ -12,7 +12,7 @@ products: azure-traffic-manager
 
 # Well-Architected Framework perspective on Azure Traffic Manager
 
-Azure Traffic Manager is a global load balancer that distributes traffic across multiple Azure regions. It uses the Domain Name System (DNS) protocol to establish a communication path between a client and your workload's endpoints. After the connection is established, clients can connect directly to the endpoint without the help of Traffic Manager. 
+Azure Traffic Manager is a load balancer that can distribute traffic across multiple Azure regions, zones within a region, or datacenters within those zones. It uses the Domain Name System (DNS) protocol to establish a communication path between a client and your workload's endpoints. After the connection is established, clients can connect directly to the endpoint without the help of Traffic Manager. 
 
 This article assumes that as an architect, you've reviewed the [load-balancing options in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview) and chose Azure Traffic Manager for your workload, which is deployed across multiple regions in either an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
@@ -159,6 +159,8 @@ The [Operational Excellence design principles](../operational-excellence/princip
 >
 > - **View traffic data for profiles.** This data helps pinpoint areas for improvement, like expanding your Azure presence in high-latency regions. It also highlights traffic patterns across different regions to help you determine where to increase or decrease investment.
 >
+> - **Implement disaster recovery operations**. Your disaster recovery implementation can be designed to reroute network/web traffic from the main site to a backup site. This disaster recovery method can be implemented using Azure DNS and Azure Traffic Manager (DNS). In the event of a disaster, if the primary endpoint becomes degraded, Traffic Manager redirects traffic to a healthy secondary endpoint. By default, Traffic Manager gives priority to the primary endpoint, but it can also be set up with extra failover endpoints or load balancers to distribute the traffic load. For more information, see [Set up disaster recovery and outage detection](/azure/reliability/reliability-traffic-manager#set-up-disaster-recovery-and-outage-detection).
+>    
 > - **Avoid automatic-failback operations.** When you do a failback, don't use automatic failback, which immediately switches back to the original endpoint in the primary when it's available. Instead, disable the original endpoint, and use the secondary endpoint until you want to switch. This approach provides time for stabilization. Immediate failback can create extra load and delays.
 >
 >   For more information, see [Multiregion load balancing reference architecture](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server).
