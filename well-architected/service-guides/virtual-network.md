@@ -58,15 +58,15 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Mitigate points of failure**. Do failure mode analysis and identify single points of failure in network connections.
 >
-> The following examples show single points of failure in network connections:
+>   The following examples show single points of failure in network connections:
 >
->   |Failure|Mitigation|
->   |---|---|
->   | Public IP address failure in a single availability zone. | Deploy IP address resources across zones or use a secondary IP address with a load balancer.|
->   | Network virtual appliance (NVA) failure in a single zone. | Deploy a secondary NVA in another zone and use a load balancer to direct traffic to the NVA. |
->   | Latency in workloads that are spread across regions or zones, which lowers throughput and causes timeouts.|Co-locate resources in one region or zone. Redesign the architecture to use reliability patterns, such as deployment stamps with load balancers, so that each stamp can handle the load and work together with nearby resources.|
->   | Single-region workload failure with a cold failover site.| Pre-configure network settings in the failover region. This approach ensures that no IP addresses overlap.|
->   | Single-region application failure in a virtual network that communicates with a database via Azure Private Link by using a cold failover site.| Replicate connections in the secondary region and peer virtual networks for communication.|
+>     |Failure|Mitigation|
+>     |---|---|
+>     | Public IP address failure in a single availability zone. | Deploy IP address resources across zones or use a secondary IP address with a load balancer.|
+>     | Network virtual appliance (NVA) failure in a single zone. | Deploy a secondary NVA in another zone and use a load balancer to direct traffic to the NVA. |
+>     | Latency in workloads that are spread across regions or zones, which lowers throughput and causes timeouts.|Co-locate resources in one region or zone. Redesign the architecture to use reliability patterns, such as deployment stamps with load balancers, so that each stamp can handle the load and work together with nearby resources.|
+>     | Single-region workload failure with a cold failover site.| Pre-configure network settings in the failover region. This approach ensures that no IP addresses overlap.|
+>     | Single-region application failure in a virtual network that communicates with a database via Azure Private Link by using a cold failover site.| Replicate connections in the secondary region and peer virtual networks for communication.|
 >
 > - **Overprovision IP address spaces**. To help ensure reliable scaling, a common strategy is to overprovision capacity to prevent IP-address exhaustion. However, this approach has a trade-off between reliability and operational efficiency. Subnets should only use a portion of the virtual network's address space. The goal should be to have only enough extra address space in your virtual network and subnets to balance reliability with operational efficiency.
 >
