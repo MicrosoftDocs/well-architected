@@ -1,7 +1,7 @@
 ---
 title: Azure Well-Architected Framework review for Azure Container Apps (ACA)
 description: Provides a template for a Well-Architected Framework (WAF) article that is specific to Azure Container Apps (ACA).
-author: igorjnzl
+author: igorjovovic
 ms.author: igorjovovic
 ms.topic: conceptual
 ms.date: 01/16/2024
@@ -12,100 +12,91 @@ azure.category:
 
 # Well-Architected Framework perspective on Azure Container Apps
 
+This article provides architectural best practices for Azure Container Apps (ACA). The guidance is based on the five pillars of architecture excellence:
 
-[Introductory paragraph]
-
-
-This article assumes that as an architect, you've reviewed the [update with decision tree here]and chose Container Apps as the compute platform for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
-
-https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree
-https://learn.microsoft.com/en-us/azure/architecture/guide/choose-azure-container-service
-
+- Reliability
+- Security
+- Cost optimization
+- Operational excellence
+- Performance efficiency
 
 
->**How to use this guide**
->
->Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
->Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Container Apps and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
->
->Foundational architecture that demonstrates the key recommendations:
->[Baseline highly available, zone-redundant web application architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+We assume you've reviewed the [Compute Decision Tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Container Apps as the compute platform for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-**Technology scope**
+## Prerequisites
 
-This review focuses on the interrelated decisions for the following Azure resources:  
+Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-- Azure Container Apps
+Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 
+Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Container Apps and its dependencies. Instead, they list the key recommendations mapped to the design perspectives.
 
+Foundational architecture that demonstrates the key recommendations: [Baseline highly available, zone-redundant web application architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
-
+TODO:
 
 ## Reliability
 
-The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures.**
+In the cloud, failures can happen. Instead of trying to prevent failures entirely, the goal is to architect for resiliency, ensuring that your application can continue to function and recover quickly. Reliability focuses on ensuring your application can recover from failures and continue to operate effectively. This section outlines best practices and design considerations to enhance the reliability of Azure Container Apps, ensuring high availability and fault tolerance in your deployments.
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
+In the **design checklist** and **list of recommendations** below, callouts are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+
 ### Design checklist
 
-[Add your content.]
-
 > [!div class="checklist"]
->
-> - [design-consideration]
-> - [design-consideration]
->   ...
-
-
+> - **Use Availability Zones**: Deploy production and critical workloads across multiple availability zones to ensure resilience and minimize the impact of zone failures.  
+> - **Implement Horizontal Auto-Scaling:** Configure auto-scaling using scale rules based on HTTP requests, TCP connections, or custom metrics (e.g., CPU, memory, Azure Service Bus, Azure Event Hubs, Apache Kafka, Redis) to dynamically manage loads and maintain high availability during peak usage times.
+> - **Configure Health Probes**: Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
+> - **Enable Monitoring and Alerts**: Activate monitoring tools and set up alerts to detect and respond to reliability-impacting events promptly (e.g., Azure Monitor, OpenTelemetry).  
+> - **Choose Appropriate SKU Configurations**: Select an environment SKU that aligns with the resource and performance requirements of your container apps.
 
 #### Recommendations
 
-| Recommendation | Benefit |
-| ----- | ----- |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| ... | ... |
+| **Recommendation** | **Benefit** |
+|--------|----|
+| **Store your Azure Container Apps environment configurations as IaC in source control and set up pipelines to redeploy to another region.** | Ensures critical data/configs can be quickly restored and redeployed in another region, enhancing disaster recovery and minimizing downtime. |
+| **Resource Quotas: Define resource quotas and limits.** | Prevents resource contention and avoids performance degradation. Use monitoring over time to observe resource usage and tune quotas/limits accordingly. |
+| **Deployment Strategies: Use revisions for blue-green or canary deployments.** | Minimizes downtime and reduces risk during releases by enabling safe rollouts and quick rollbacks. Labels can help manage revisions for UAT or previews. |
+| **Use volume mounts for stateful apps and Azure Zone-Redundant Storage (ZRS).** | Ensures data persistence across restarts/failures. ZRS protects data against zonal outages. |
+| **Enable Container Apps zone redundancy.** | Replicas automatically distribute across zones, and traffic shifts to healthy zones if one fails. |
+| **Implement resilient recovery with cross-region deployment.** | Multi-region deployments with Azure Front Door or Traffic Manager ensure business continuity. If a region goes down, traffic is redirected to a secondary region. |
+| **Implement liveness and readiness probes.** | Automatically handles unhealthy containers by restarting them and only routing traffic to healthy instances. |
+| **Leverage built-in observability features.** | Built-in tools (log streaming, console, metrics, alerts) enable proactive monitoring and efficient debugging. |
+| **Implement Service Discovery Resiliency Policies.** | Configuring retries, timeouts, and circuit breakers boosts reliability and prevents cascading failures. |
 
+For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
-### Azure Policy
+### Policy definitions
+TODO:
 
-
+- **Ensure Volume Mounts**: Container Apps environments should be configured with volume mounts to ensure data persistence and integrity.  
+- **Enable Diagnostics Settings**: Enable logging by category group for Container Apps environments (`microsoft.app/managedenvironments`) to Storage.  
 
 ## Security
 
-The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
+Security is a critical aspect of any cloud architecture, and ensuring the protection of your applications and data is paramount. This section provides best practices and recommendations for securing Azure Container Apps. By implementing robust security measures, you can safeguard your applications against threats, ensure compliance with regulatory requirements, and maintain the integrity and confidentiality of your data. Security encompasses a range of practices, including authentication, network isolation, encryption, and identity management, all designed to create a secure and resilient application environment.
 
-The [Security design principles]
-(/azure/well-architected/security/security-principles)
-provide a high-level design strategy for achieving those goals by
-applying approaches to the technical design of [Azure offering].
-
-
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around hosting on App Service.
 
 #### Design checklist
 
-[Add your content.]
-
 > [!div class="checklist"]
->
-> - [design-consideration]
-> - [design-consideration]
->   ...
+> - **Use Managed Identities with Microsoft Entra ID:** Ensure container apps use managed identities for secure, credential-free access to Azure resources.  
+> - **Deploy private container apps environments:** Use private environments and internal ingress mode for isolation from the public internet.  
+> - **Use Azure Key Vault:** Securely store sensitive configuration values and secrets in Azure Key Vault to protect them from unauthorized access.  
+> - **Secure CI/CD pipelines:** Implement container-aware scanning in your CI/CD pipelines to detect vulnerabilities and ensure the integrity of your container images. Refer to the Container Secure Supply Chain documentation for details on this topic.  
+> - **Enable mTLS (Mutual TLS):** Use mutual TLS to authenticate and encrypt traffic between services, enhancing security by ensuring both parties are verified.
+> - **Control egress traffic:** Integrate your container apps environment into a custom virtual network with user-defined routes to secure outbound traffic.  
+> - **Enforce HTTPS:** Configure Envoy proxy to redirect all HTTP traffic to HTTPS (default is allowInsecure: false).  
+> - **Enable logging options:** Capture detailed logs for monitoring and auditing.  
+> - **Use lean base images:** Reduce the attack surface by using minimal base images (e.g., Alpine, Ubuntu Chiseled).  
+> - **Secure Container Images:** Consider enabling Microsoft Defender for Containers to scan images in ACR for vulnerabilities.
 
+### Recommendations
 
-
-#### Recommendations
-
-| Recommendation | Benefit |
-| ----- | ----- |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| [configuration-recommendation] | [problem-mitigated-by-recommendation] |
-| ... | ... |
-
-
-For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
+Explore the following table of recommendations to optimize your Azure Container Apps configuration for security.
 
 
 
