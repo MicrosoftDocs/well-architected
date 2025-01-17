@@ -128,41 +128,34 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-When discussing security with Azure Service Fabric, it's important to distinguish between *cluster operation* and *workload operation*. Cluster operation is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload operation is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
-
-In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
-
 ### Design checklist
 
-Base your design strategy on the [design principles for Operational Excellence](../operational-excellence/principles.md).
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Service Fabric.
 
 > [!div class="checklist"]
-> - (Cluster) Prepare a [cluster monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).
-> - (Cluster) Review the [cluster health policies](/azure/service-fabric/service-fabric-health-introduction#health-policies) in the Service Fabric health model.
+> - **TODO: Merge the first three entries into a recommendation aligned with OE:07 Monitoring system. Like: implement a comprehensive monitoring solution that includes cluster, app, and infrastructure. Include link to the top of the page referenced by the three entries "/azure/service-fabric/service-fabric-best-practices-monitoring" and to SE:07 for more information _** (Cluster) Prepare a [cluster monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).
 > - (Workload)  Prepare an [application monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).
-> - (Workload)  Review the [application and service type health policies](/azure/service-fabric/service-fabric-health-introduction#health-policies) in the Service Fabric health model.
 > - (Cluster and workload) Prepare an [infrastructure monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#infrastructure-monitoring).
-> - (Cluster and workload) Design your cluster with build and release pipelines for continuous integration and deployment.
+> - **TODO:_New design checklist item aligned to monitoring health of the service fabric solution, with link to "Introduction to Service Fabric health monitoring" "https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-health-introduction". A quick description can be extracted from the intro to that article. May be good to also include a link to the WAF health cross-cutting guide_**
+> - **TODO:_Move to recommendations table. Rephrase as "implement appropriate cluster health policies", with the same link. Benefit is something like: The policies enable customizing how failures are interpreted from a cluster health, perspective. For example, you can set the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error. The default is 0 failures are tolerated._** (Cluster) Review the [cluster health policies](/azure/service-fabric/service-fabric-health-introduction#cluster-health-policy) in the Service Fabric health model.
+> - **TODO:_Move to recommendations table. Rephrase as "implement appropriate application health policies"Benefit is something like: The application health policy describes how the evaluation of events and child-states aggregation is done for applications and their children. Service Fabric assumes that the entity is unhealthy if it has a health report or a child at the warning or error health state_** (Workload)  Review the [application and service type health policies](/azure/service-fabric/service-fabric-health-introduction#application-health-policy) in the Service Fabric health model.
+> - **TODO: _Expand this. General topic is aligned with OE:04 Continuous automation and OE:05 Continuous integration. Mention Github actions, in addition to AzDO pipelines. Mention integration with source control, IaC, support for multiple environments, and automated testing_** (Cluster and workload) Design your cluster with build and release pipelines for continuous integration and deployment.
 
 ### Recommendations
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Workload)  Use [Application Insights to monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|Application Insights integrates with the Azure platform, including Service Fabric.|
-| (Cluster and workload) Create a process for monitoring the expiration date of client certificates.|For example, Key Vault offers a feature that sends an email when `x%` of the certificate's lifespan has elapsed.|
-| (Cluster and workload) For pre-production clusters use [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-chaos-experiments) to drill service disruption on a Virtual Machine Scale Set instance failure.|Practicing service disruption scenarios will help you understand what is at-risk in your infrastructure and how to best mitigate the issues if they arise.|
-| (Cluster and workload) Use [Azure Monitor to monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
-| (Cluster and workload) Use [Azure Pipelines for your continuous integration and deployment solution](/azure/service-fabric/service-fabric-tutorial-deploy-app-with-cicd-vsts).|Azure Pipelines integrates well with the Azure platform, including Service Fabric.|
+| (Workload)  Use [Application Insights to monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|**TODO: _expand benefit (suggestion inline)_**  Application Insights provides comprehensive application performance monitoring (APM) for live web applications, allowing you to collect and application telemetry, and monitor application health and performance.|
+| (Cluster and workload) Use [Azure Monitor to monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|**TODO: _expand benefit (suggestion inline)_**  Azure Monitor provides comprehensive monitoring and diagnostic capabilities, allowing you to collect and analyze logs and metrics from your applications and Azure infrastructure. Azure Monitor integrates well with the Azure platform, including Service Fabric.|
+| **TODO:_Move this to the design checklist section_** (Cluster and workload) Create a process for monitoring the expiration date of client certificates.|For example, Key Vault offers a feature that sends an email when `x%` of the certificate's lifespan has elapsed.|
+| **TODO:_Remove the pre-prod qualifier. WAF encourages testing in production with Chaos Studio_** (Cluster and workload) For pre-production clusters use [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-chaos-experiments) to drill service disruption on a Virtual Machine Scale Set instance failure.|Practicing service disruption scenarios will help you understand what is at-risk in your infrastructure and how to best mitigate the issues if they arise.|
+| (Cluster and workload) Use [Azure Pipelines for your continuous integration and deployment solution](/azure/service-fabric/service-fabric-tutorial-deploy-app-with-cicd-vsts).|**TODO: _rephrase the benefit. Mention consistency and efficiency, and reliability : _** Azure Pipelines integrates well with the Azure platform, including Service Fabric.|
 
 ## Performance Efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
-
-When discussing security with Azure Service Fabric, it's important to distinguish between *cluster operation* and *workload operation*. Cluster performance is a shared responsibility between the Service Fabric cluster admin and their resource provider, while workload performance is the domain of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
-
-In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
 For more information about how Azure Service Fabric can reduce performance issues for your workload with Service Fabric performance counters, reference [Monitoring and diagnostic best practices for Azure Service Fabric](/azure/service-fabric/service-fabric-best-practices-monitoring).
 
