@@ -286,7 +286,7 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 
 - [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#azure-kubernetes-service-aks)
 - [Security](/azure/defender-for-cloud/plan-multicloud-security-get-started)
-- [Cost Optimization](azure/advisor/advisor-cost-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#containers)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations#containers)
 
