@@ -138,7 +138,7 @@ These baseline examples serve as the recommended north star architecture for mis
         <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
            <a class="is-undecorated is-full-height is-block"
              href="/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service">
-             <img role="presentation" alt="App Services baseline architecture diagram." src="./images/app-service-architecture.svg">
+             <img role="presentation" alt="App Services baseline architecture diagram." src="./images/app-service-architecture.png">
             </a>
         </figure>
         <div class="card-content has-text-overflow-ellipsis">

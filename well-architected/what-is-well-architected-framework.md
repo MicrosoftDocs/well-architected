@@ -3,7 +3,7 @@ title: How to use the Azure Well-Architected Framework documentation
 description: Learn about the Azure Well-Architected Framework, the five pillars of architectural excellence, and how the documentation is organized.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 11/15/2023
+ms.date: 01/09/2024
 ms.topic: conceptual
 ---
 
@@ -65,7 +65,7 @@ Next, move on to the **Checklist**, which is always your starting point for eval
 
 :::image source="_images/guide.png" alt-text="Screenshot that shows recommendation guides for the Well-Architected Framework.":::
 
-Be sure to cover **cloud design patterns**. They're mapped to the pillars they directly support.
+Be sure to understand the related **cloud design patterns**. They're mapped to the pillars they directly support.
 
 Each architectural decision entails a series of considerations. These **tradeoffs** represent recognized and accepted compromises that balance the various aspects of the framework. Tradeoffs are noted with this icon :::image type="icon" source="./_images/trade-off.svg"::: and risks are noted with this icon :::image type="icon" source="./_images/risk.svg":::.
 
@@ -73,7 +73,7 @@ For more information, see [About the Well-Architected Framework pillars](./pilla
 
 ### Workload
 
-The workload layer represents how the pillars apply to a specific class of workload. During the initial design phase, workload architecture is segmented based on utility, and each segment represents the prioritized or design areas. These design areas are specific to the workload class and serve as focal points for optimization. The Well-Architected Framework includes several workloads. Find one that closely matches your business requirements.
+The workload layer represents how the pillars apply to a specific class of workload. During the initial design phase, workload architecture is segmented based on utility, and each segment represents the prioritized or design areas. These design areas are specific to the workload class and serve as focal points for optimization. The Well-Architected Framework includes several workloads. Read the one that closely matches your business requirements. You do not need to read workload guidance for classes of workloads that are not aligned with your scenario.
 
 Begin with **Get started** to understand the solution context. As a refresher, read the **Design principles** to understand how the workload adopts the pillar guidance. Then, dive deep into **Design areas** that focus on the technical decision points with recommendations that follow. Workload guidance also includes an assessment that helps you evaluate your readiness in production.
 
@@ -81,16 +81,23 @@ For more information, see [About the Well-Architected Framework workloads](./wor
 
 ### Service guides
 
-Service guides are instrumental in decision-making related to the individual Azure components that reside within the workload. They offer the core features and capabilities of each service that are necessary to attain architectural excellence. It’s important to note that these guides aren’t configuration guides. Also, they aren’t a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
-
+Service guides are instrumental in decision-making that's related to the individual Azure components of a workload. They offer the core features and capabilities of each service that are necessary to attain architectural excellence. It's important to note that these guides aren't configuration guides. Also, they aren't a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
 
 For more information, see [the available guides](./service-guides/index.yml).
- 
+
 ### Assessment
 
 Microsoft Azure Well-Architected Review is offered at no charge. It's a collection of questionnaires tied to the pillar checklists to evaluate your design choices. Track your score through iterative runs to identify possible areas for enhancement.
 
 For more information, see [Azure Well-Architected Review tool](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+
+## Adopt a phased learning process and improve quality iteratively
+
+The Well-Architected Framework comprehensively covers best practices that are applicable to any class of workload. This guidance includes not only the foundational principles of good design and trade-offs but also the application of those principles to the components of your architecture, as described in the [service guides](./service-guides/index.yml).
+
+We acknowledge that reading this guidance end-to-end can be overwhelming. To achieve the desired state of architectural excellence, we recommend that you have a solid understanding of the design principles for all [pillars](./pillars.md) and that you prioritize checklist items based on their relevance to your workload and business goals. Prioritization should consider factors such as business criticality, compliance needs, and time to market. As these factors evolve, iteratively incorporate more or less from the framework to enhance the quality of your workload.
+
+Consider adopting a phased approach to consuming this guidance. Classify recommendations by what's easy to achieve or must be achieved initially. Then, as your workload's business requirements change, incrementally evolve production-ready systems. For example, initial alignment with the framework could apply to workloads early in their funding and development process, setting a solid foundation for good design. Mature phases of alignment could apply to production-worthy solutions, with the highest levels reserved for always-on, business-critical solutions.
 
 ## Related links
 

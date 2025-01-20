@@ -68,7 +68,7 @@ View the following video for information about ephemeral development environment
 
 <br>
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=095e57ed-e822-439f-8356-89f08aa02c0b]
 
 ##### Design considerations
 
@@ -228,7 +228,7 @@ View the following video to see how resiliency testing can be integrated with Az
 
 <br>
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=393a9ab4-6816-4bbf-9c25-94a34a5413e0]
 
 - Ensure consistency by automating all testing on infrastructure and application components. Integrate the tests in CI/CD pipelines to orchestrate and run them where applicable. For information about technology options, see [DevOps tools](#devops-tools).
 

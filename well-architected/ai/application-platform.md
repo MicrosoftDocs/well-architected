@@ -217,7 +217,7 @@ Consider these questions as well:
 
 ## Considerations for the orchestration platform
 
-Orchestration, in the context of AI workload application platforms, refers to tools like prompt flow in [Machine Learning](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Studio](/azure/ai-studio/how-to/prompt-flow). These tools are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
+Orchestration, in the context of AI workload application platforms, refers to tools like prompt flow in [Machine Learning](/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow) and [Azure AI Foundry portal](/azure/ai-studio/how-to/prompt-flow). These tools are designed to streamline the entire development cycle of AI applications by automating many common workflow functions.
 
 ### Nonfunctional requirements
 

@@ -134,7 +134,7 @@ This image shows an example layered health model from the Azure Mission-Critical
 
 ## Demo video: Monitoring and health modeling demo 
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE55Nd9]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=09563aa8-001a-47a1-970a-b24c2dac3f46]
 
 ## Unified data sink for correlated analysis
 

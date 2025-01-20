@@ -248,8 +248,6 @@
         href: azure-virtual-desktop/index.yml
       - name: Azure VMware Solution
         href: azure-vmware/index.yml                             
-      - name: IoT
-        href: iot/iot-overview.md
       - name: Mission-critical
         href: mission-critical/index.yml                     
       - name: Oracle on IaaS
@@ -280,14 +278,6 @@
           href: service-guides/azure-firewall.md
         - name: Azure App Service
           href: service-guides/app-service-web-apps.md
-        - name: Azure Batch
-          items:
-            - name: Reliability
-              href: service-guides/azure-batch/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-batch/operational-excellence.md
-            - name: Performance efficiency
-              href: service-guides/azure-batch/performance-efficiency.md
         - name: Azure Blob Storage
           href: service-guides/azure-blob-storage.md
         - name: Azure Cache for Redis
@@ -310,6 +300,12 @@
           href: service-guides/azure-files.md       
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
+        - name: Azure IoT Hub
+          items:
+            - name: Reliability
+              href: service-guides/iot-hub/reliability.md
+            - name: Operational excellence
+              href: service-guides/iot-hub/operational-excellence.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -336,12 +332,6 @@
               href: service-guides/azure-sql-managed-instance/operational-excellence.md
         - name: Azure Local
           href: service-guides/azure-local.md
-        - name: Azure Stack Hub
-          items:
-            - name: Reliability
-              href: service-guides/azure-stack-hub/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-stack-hub/operational-excellence.md
         - name: Azure Virtual Network
           items:
             - name: Reliability
