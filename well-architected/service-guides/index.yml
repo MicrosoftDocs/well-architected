@@ -341,6 +341,13 @@ productDirectory:
       url: ./storage-accounts/reliability.md
       azureCategories:
         - storage
+    # Card
+    - title: Azure IoT Hub
+      summary: Connect, monitor, and manage billions of IoT assets.
+      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
+      url: iot-hub.md
+      azureCategories:
+        - iot
 
 additionalContent:
   sections:

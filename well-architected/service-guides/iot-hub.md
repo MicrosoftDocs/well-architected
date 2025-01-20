@@ -14,11 +14,6 @@ azure.category:
  - iot
 ---
 
-<!-- TODO: 
-1- Add Card back in index.yml 
-2- Remove Assessment: https://learn.microsoft.com/en-us/assessments/azure-architecture-review
--->
-
 # Well-Architected Framework perspective on Azure IoT Hub
 
 Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for communication between an IoT application and its attached devices. You can connect millions of devices and their back-end solutions reliably and securely. Almost any device can be connected to an IoT hub.
