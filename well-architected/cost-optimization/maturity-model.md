@@ -1,13 +1,20 @@
 ---
-title: Operational Excellence Maturity Model
-description: Understand the maturity model levels of the Operational Excellence pillar.
+title: Cost Optimization Maturity Model
+description: Understand the maturity model levels of the cost optimization pillar.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 01/21/2024  
+ms.date: 10/23/2024  
 ms.topic: conceptual
 ---
 
-# Operational Excellence maturity model
+<!--
+This template provides the basic structure of a maturity model article. Remove all the comments in this template before you sign-off
+-->
+
+<!-- for values for the metadata tags (product and categories) see:
+For values to set, see [Taxonomies for Learn](https://review.learn.microsoft.com/help/contribute/metadata-taxonomies?branch=main#azure-category). -->
+
+# Cost Optimization maturity model
 
 <!-- Introductory paragraph 
 Required. Lead with a light intro that describes what the article covers.
@@ -25,8 +32,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: 
-
+### Strategy focus: Trust and accountability
 <!-- No more than 5 H4 headings per tab -->
 
 #### Example heading 
@@ -37,7 +43,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Standardization
+### Strategy focus: Financial assessment
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -49,7 +55,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Automation
+### Strategy focus: Prioritize and optimize
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -61,7 +67,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: 
+### Strategy focus: Refine operations
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -73,7 +79,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: 
+### Strategy focus: Cost level 5
 
 <!-- No more than 5 H4 headings per tab -->
 

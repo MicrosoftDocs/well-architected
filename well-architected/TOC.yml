@@ -127,6 +127,8 @@
           href: cost-optimization/checklist.md
         - name: Tradeoffs
           href: cost-optimization/tradeoffs.md
+        - name: Maturity model
+          href: cost-optimization/maturity-model.md
         - name: Recommendations   
           items:
             - name: Cost optimization patterns
@@ -215,6 +217,8 @@
           href: performance-efficiency/checklist.md
         - name: Tradeoffs
           href: performance-efficiency/tradeoffs.md
+        - name: Maturity model
+          href: performance-efficiency/maturity-model.md
         - name: Recommendations   
           items:
             - name: Performance efficiency patterns
