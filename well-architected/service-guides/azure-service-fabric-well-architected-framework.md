@@ -55,9 +55,8 @@ as needed.
 
 > [!div class="checklist"]
 > - (Cluster) Determine the appropriate [reliability level](/azure/service-fabric/service-fabric-cluster-capacity) for your cluster based on the overall reliablity target metric for the workload. The reliablity level of the cluster that you identify will dictate the minimum number of nodes to deploy for your primary node type. See the [capacity planning documentation](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels) to learn about making these determinations.
-> - (Cluster) Use [Standard SKU](/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) for production scenarios. **Standard cluster:** Use [durability level Silver](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater for production scenarios.
 > - (Cluster) For critical workloads, consider using [Availability Zones](/azure/service-fabric/how-to-managed-cluster-availability-zones) for your Service Fabric clusters.
-> - (Cluster) For production scenarios, use the Standard managed cluster SKU. This SKU offers higher reliability capabilities than the Basic SKU, which should be used for nonproduction scenarios.
+> - (Cluster) For production scenarios, use the Standard managed cluster SKU with a [Silver durability tier](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater . This SKU offers higher reliability capabilities than the Basic SKU, which should be used for nonproduction scenarios.
 > - (Cluster) Create additional, secondary node types for your workloads to isolate different workload types. This can help you separate front-end services from backend services, allowing you to manage and scale those services independently. Each [node type is backed by its own scale set](/azure/service-fabric/service-fabric-cluster-nodetypes).
 
 ### Recommendations
@@ -65,13 +64,13 @@ as needed.
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
 | (Cluster) API Management (APIM) can [integrate](/azure/service-fabric/service-fabric-api-management-overview) with Service Fabric directly. Consider using it to expose and offload cross-cutting functionality for APIs hosted on the cluster.|  APIM is a feature-rich application gateway that helps you securely publish, manage, and monitor APIs deployed to the Service Fabric cluster.|
-| (Workload)  For stateful workload scenarios, consider using [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction).|The Reliable Services model allows your services to stay up even in unreliable environments where your machines fail or hit network issues, or in cases where the services themselves encounter errors and crash or fail. For stateful services, your state is preserved even in the presence of network or other failures.|
+| (Workload)  For stateful workload scenarios, consider using [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction).|The Reliable Services model allows your services to stay up when you experience system failures or network issues, or in cases where the services themselves encounter malfunctions. For stateful services, your state is preserved when malfunctions occur.|
 
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles] (../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Service Fabric.
+The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Service Fabric.
 
 ### Design checklist
 
@@ -111,16 +110,16 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > [!div class="checklist"]
 > - (Workload and cluster) Estimate the intial cost using the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/). You are only charged for the compute instances, storage, networking resources, and IP addresses you choose when creating a Service Fabric cluster. There is no charge for the service offered by Service Fabric itself. To help get started in your cost modeling, see the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
 > - (Cluster) Select appropriate VM SKUs. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?
-> - (Cluster) Select appropriate cluster SKUs. Use Standard for production environments and Basic for nonproduction environments, unless there is a compelling reason to do otherwise. Use appropriate node type and size in each environment.
-> - (Cluster and workload) Select appropriate managed disk tiers and sizes. Review the WAF [service guide for disk storage](/azure/well-architected/service-guides/azure-disk-storage?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
+> - (Cluster) Select appropriate cluster SKUs. Use Standard for production environments and Basic for nonproduction environments, unless there is a compelling reason to do otherwise. Use appropriate node types and sizes in each environment.
+> - (Cluster and workload) Select appropriate managed disk tiers and sizes. Review the WAF [service guide for disk storage](./azure-disk-storage?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
 
 ### Recommendations
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Cluster) If you don't have requiements to maintain statefulness, consider choosing a VM SKU with [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support).|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
-| (Cluster and workload) Align [VM SKU selection](/azure/virtual-machines/sizes) with workload requirements. Ensure that you've identified the correct node types, which are [hosted on scale sets](/azure/service-fabric/service-fabric-cluster-nodetypes), to meet your requirements.|Matching your selection to your workload demands you avoid paying for expensive VM SKUs that you might not need.|
-| (Cluster and workload) Align [disk type selection](/azure/service-fabric/how-to-managed-cluster-managed-disk) with workload requirements.|Choosing the right managed disk type helps you avoid paying for expensive types that you might not require.|
+| (Cluster) If you don't have requirements to maintain statefulness, consider choosing a VM SKU with [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support).|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
+| (Cluster and workload) Align [VM SKU selection](/azure/virtual-machines/sizes) with workload requirements. Ensure that you've identified the correct node types, which are [hosted on scale sets](/azure/service-fabric/service-fabric-cluster-nodetypes), to meet your requirements.|Matching your selection to your workload demands helps you avoid paying for expensive VM SKUs that you might not need.|
+| (Cluster and workload) Align [disk type selection](/azure/service-fabric/how-to-managed-cluster-managed-disk) with workload requirements.|Choosing the right managed disk type helps you avoid paying for expensive types that you might not need.|
 
 ## Operational Excellence
 
@@ -133,7 +132,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Service Fabric.
 
 > [!div class="checklist"]
-> - (Cluster and workload) Integrate you Service Fabric components, including clusters, related infrastructure, and the application itself, into your monitoring and alerting platform. See the [monitoring best practices](/azure/service-fabric/service-fabric-best-practices-monitoring) article for detailed guidance.
+> - (Cluster and workload) Integrate your Service Fabric components, including clusters, related infrastructure, and the application itself, into your monitoring and alerting platform. See the [monitoring best practices](/azure/service-fabric/service-fabric-best-practices-monitoring) article for detailed guidance.
 > - (Cluster and workload) Use the Service Fabric [health model](/azure/service-fabric/service-fabric-health-introduction) to continuously monitor the health of your solution. This tool should complement your overall [workload health model](../design-guides/health-modeling.md)
 > - (Cluster and workload) Create a process for monitoring the expiration date of client certificates. For example, Key Vault offers a feature that sends an email when `x%` of the certificate's lifespan has elapsed.
 > - (Cluster and workload) Use continuous integration and continuous deployment practices to manage your cluster deployments. Use a purpose built tool like Azure Pipelines or Github Actions to manage your CI/CD pipelines, which allows you to centrally manage all of your workload deployments in all environments with proper source control strategies.
@@ -163,18 +162,18 @@ Start your design strategy based on the [design review checklist for Performance
 > [!div class="checklist"]
 > - (Cluster) Take advantage of performance optimization and enhancing features as required by the workload. See the [VM service guide](./virtual-machines#performance-efficiency) for recommendations related to the underlying compute platform.
 > - (Cluster) Deploy VM and disk sizes that meet your perfomance requirements without incurring unnecessary expenses for unused capacity. Ensure that you will be able to easily add capacity to meet your future growth plans.
-> - (Workload) Understand the programming model supported by Service Fabric and choose the best model for your workload requiements. Take advanatage of available built-in features to support requirments like state management, concurrency, and reuse of your existing codebase. Ensure that your deployment standards are supported in your choice of programming model.
+> - (Workload) Understand the programming models supported by Service Fabric and choose the best model for your workload requirements. Each progrmaming model has unique advantages and disadvantages, and your particular workload requirements may align with one model better than others.
 > - (Workload) Use established cloud architecture patterns to design your workload. [Microsservices](/azure/architecture/guide/architecture-styles/microservices), [event-driven](/azure/architecture/guide/architecture-styles/event-driven), and [background processing](/azure/architecture/guide/architecture-styles/web-queue-worker) architecture patterns are all good candidates for Service Fabric application designs.
 
 ### Recommendation
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Cluster) [Exclude the Service Fabric processes running on your Windows VMs from Windows Defender](/azure/service-fabric/service-fabric-best-practices-security#windows-defender) if your security policies allow you to exclude processes and paths for open-source software.| Excluding Service Fabric processes reduce the performance impact and resource consumption overhead incurred by Windows Defender|
+| (Cluster) [Exclude the Service Fabric processes running on your Windows VMs from Windows Defender](/azure/service-fabric/service-fabric-best-practices-security#windows-defender) if your security policies allow you to exclude processes and paths for open-source software.| Excluding Service Fabric processes reduces the performance impact and resource consumption overhead incurred by Windows Defender|
 | (Cluster) Consider using [Autoscaling](/azure/service-fabric/how-to-managed-cluster-autoscale) for your cluster to enable the addition or reduction of nodes on demand on a secondary node type.| Autoscaling reduces the management overhead and potential business impact by monitoring and optimizing the amount of nodes servicing your workload.|
 | (Cluster) Consider using [Accelerated Networking](/azure/service-fabric/how-to-managed-cluster-networking#enable-accelerated-networking).|Accelerated networking enables a high-performance path that bypasses the host from the data path, which reduces latency, jitter, and CPU utilization for the most demanding network workloads.|
 | (Cluster) Consider using [encryption at host](/azure/service-fabric/how-to-managed-cluster-enable-disk-encryption?tabs=azure-powershell#enable-encryption-at-host) instead of Azure Disk Encryption (ADE).|Encryption at host improves on ADE by supporting all OS types and images, including custom images, for your VMs by encrypting data in the Azure Storage service.|
-| (Workload) Implement the [Service Fabric programming models](/azure/service-fabric/service-fabric-choose-framework) best suited for your workload.|**TODO:_Expand to explain a bit what the benefits of the different programming models are. Something like:  choosing the right programming model lets you take advantage of built in features , such as state management, concurrency, reusing existing codebase, and deployment preferences_** Service Fabric supports several programming models. Each come with their own advantages and disadvantages. Knowing about the available programming models can help you make the best choices for designing your services.|
+| (Workload) Implement the [Service Fabric programming models](/azure/service-fabric/service-fabric-choose-framework) best suited for your workload.|Choosing an appropriate programming model allows you to take advantage of buiit-in features that support workload requirements like like state management, concurrency, and reuse of your existing codebase. You can also ensure that your deploymet standards are maintained by selecting a programming model that aligns with those standards.|
 | (Cluster and workload) Implement scaling to meet your business requirements. [Find the right scaling mechanism for your workload.](/azure/service-fabric/service-fabric-concepts-scalability).|You can use scaling to enable maximum resource utilization for your solution.|
 
 ## Azure policies
