@@ -169,6 +169,8 @@
           href: operational-excellence/checklist.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
+        - name: Maturity model 
+          href: operational-excellence/maturity-model.md          
         - name: Recommendations
           items:
             - name: Operational excellence patterns
