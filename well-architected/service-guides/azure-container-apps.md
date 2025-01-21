@@ -1,8 +1,8 @@
 ---
 title: Azure Well-Architected Framework review for Azure Container Apps (ACA)
 description: Provides a template for a Well-Architected Framework (WAF) article that is specific to Azure Container Apps (ACA).
-author: igorjovovic, rickygummadi
-ms.author: igorjovovic, rickygummadi
+author: igorjnzl
+ms.author: igorjovovic
 ms.topic: conceptual
 ms.date: 01/16/2024
 ms.product: azure-container-apps
@@ -103,7 +103,7 @@ Explore the following table of recommendations to optimize your Azure Container 
 | **Control outbound traffic with user-defined network routes.** Provides the ability to control routing of how your container(s) communicate to resources outside of the container environment. You can route traffic to Azure Firewall, NAT gateway, or a 3<sup>rd</sup> party appliance. | Ensures controlled and secure outbound traffic flow, supporting advanced routing and inspection policies. |
 | **Configure logging options to send logs to a log analytics workspace, event hub, or partner solution.** Sending system and console logs to available destinations allows capturing of logs for monitoring and auditing purposes. Scrub sensitive data from logs as console logs originate from stderr and stdout in the app. | Supports centralized monitoring, diagnostics, and auditing while ensuring compliance with sensitive data handling policies. |
 
-For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles). Also refer to the [Azure Security Baseline For Container Apps](/azure/baselines/azure-container-apps-security-baseline)
+For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles). Also refer to the [Azure Security Baseline For Container Apps](/security/benchmark/azure/baselines/azure-container-apps-security-baseline)
 
 ## Cost Optimization
 
