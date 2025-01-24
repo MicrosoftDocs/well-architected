@@ -16,7 +16,7 @@ azure.category:
 
 Azure Virtual Network is a fundamental building block for establishing a private network on Azure. You can use it to enable communication between Azure resources and provide internet connectivity. Virtual Network also integrates with on-premises systems. It includes built-in filtering capabilities to ensure that only expected, allowed, and safe traffic reaches the components within the network boundaries.
 
-This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Virtual Network as the networking service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
+This article assumes that as an architect, you'are familiar with the networking constructs on Azure. The guidance is focused on architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
