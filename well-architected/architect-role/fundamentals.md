@@ -34,7 +34,7 @@ A key aspect of design is using a consistent process to make decisions. An archi
 
 **Identify expected decisions**. Use learned experiences to help with decision identification. Log all decisions that you plan to make.
 
-**Make informed decisions**. Consider limitations, constraints, tradeoffs, effort, reversibility, and risk. Include supporting evidence from proofs of concept, along with technology documentation and guidance.
+**Make informed decisions**. Consider limitations, constraints, tradeoffs, effort, reversibility, and risk. Consult resources such as product feature comparisons, decision trees, and benchmarks when narrowing technology choices. Inputs from tools like decision trees and feature matrices are purely directional; they do not replace your role in decision making. Combine documented characteristics with evidence from your proofs of concept and testing.
 
 **Document decisions in an architecture decision record (ADR)**. Document the justification along with each decision.
 
