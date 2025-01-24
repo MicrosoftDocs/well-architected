@@ -81,11 +81,11 @@ sections:
           children:
             - Understand how to address architectural challenges for designing AI workloads, including data and application design, nondeterministic functionality, and operational challenges.
 
-            - Choose between generative and discriminative AI models based on the task at hand, such as creating new content or performing specific tasks based on rules and algorithms.
+            - Get design recommendations when incorporating generative and discriminative AI models.
 
-            - Explore solutions to common challenges such as security requirements, large data volumes, model decay, skill gaps, rapid AI innovation, and maintaining ethical standards.
+            - Address cross-cutting challenges such as security requirements, large data volumes, model decay, skill gaps, rapid AI innovation, and maintaining ethical standards.
             
-            - Learn to balance between custom models and prebuilt solutions by considering factors like data control, customization, cost, performance, and expertise.
+            - Learn about the recommended practices for managing the lifecycle of models, covering both MLOps and GenAIOps.
             
 # cards section (4)
   - componentType: grid
