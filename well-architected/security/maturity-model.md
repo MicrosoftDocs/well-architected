@@ -21,7 +21,6 @@ In the context of the Well-Architected Framework, security is about providing co
 [add art]
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
-
 # [**Level 1 - Secure foundation**](#tab/level1)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
@@ -116,6 +115,3 @@ Application secrets are confidential components that facilitate communication be
 ---
 
 ## Next steps
-<!-- Provide at least one next step and no more than three. Include some 
-context so the customer can determine why they would click the link.
--->
