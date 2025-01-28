@@ -19,7 +19,7 @@ In the context of the Well-Architected Framework, cost optimization is about det
 
 ![Goal icon](../_images/goal.svg) **Build out the mechanisms to manage workload costs throughout its lifecycle**
 
-Level 1 of the maturity model is designed to help workload teams understand their budget and to put processes and tools in place to manage their costs over the course of their workload lifecycle. Before more starting on more mature processes, like building a cost model, you should focus on basic cost management best practices that will help you get your workload started without causing issues with the budget.
+Level 1 of the maturity model is designed to help workload teams understand their budget and to put processes and tools in place to manage their costs over the course of their workload lifecycle. Before starting on more mature processes, like building a cost model, you should focus on basic cost management best practices that will help you get your workload started without causing issues with the budget.
 
 The recommendations in the following checklist will help you wisely manage costs while allowing you to build your workload efficiently.
 
@@ -44,12 +44,6 @@ Take advantage of billing dashboards that can be filtered for different views to
 Using the tools you've adopted to gather billing data, you can identify how different workload components contribute to the overall costs. Pay special attention to costs related to processes, like data transfer or transactions, contribute to the overall costs as these are often not considered when estimating resource costs before deployment. 
 
 You should also understand how factors not directly related to your cloud resources can affect your budget. This can include training for team members, and software licensing not managed by your cloud provider.
-
-#### &#10003; Add mechanisms to recover from transient failures 
-
-In a cloud environment, transient faults are common. Any communication outside the localized environment should be resilient to those faults. 
-
-Always use built-in SDKs and configurations to handle these faults and maintain resiliency. This is often the default setting, so test work may be needed to validate the implementation.
 
 #### &#10003; Decide whether to build or buy 
 
