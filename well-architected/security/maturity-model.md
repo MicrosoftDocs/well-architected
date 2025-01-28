@@ -34,7 +34,7 @@ The baseline should inform the architectural design of the workload, showing whe
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### &#10003; Integrate baseline security in the development the phases of SDLC
+#### &#10003; Integrate baseline security in the development the phases of software development lifecycle (SDLC)
 
 In addition to determining where security components should interact with other workload components, you need to define how you'll design your workload operations processes and procedures to meet your security requirements. Adopting safe deployment practices in your operations standards at the outset of your workload development will help ensure that your SDLC will follow security best practices as your workload becomes more mature and complex. See the [safe deployments guide](../operational-excellence/safe-deployments) for detailed guidance on this topic. 
 
