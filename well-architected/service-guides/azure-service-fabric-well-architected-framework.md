@@ -34,7 +34,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Service Fabric
 
-> [!IMPORTANT]
+> [!NOTE]
 > 
 > This service guide builds upon guidance found in the [Virtual Machines and scale sets](./virtual-machines.md) service guide. Service Fabric nodes are backed by VM scale sets, so refer to that service guide for recommendations on operating the compute backend for your Service Fabric nodes.
 
@@ -90,12 +90,12 @@ Base your design strategy on the [design review checklist for Security](../secur
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
 | (Cluster) Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.| This configuration ensures that communication between the Service Fabric resources and the rest of the workload are secured.|
-| (Cluster) When using the Service Fabric Secret Store to distribute secrets, use a separate [data encipherment certificate](/azure/service-fabric/how-to-managed-cluster-application-secrets?branch=main#create-a-data-encipherment-certificate) to encrypt the values.| Using a seperate encipherment certificate ensures isolation between certificates.|
+| (Cluster) When using the Service Fabric Secret Store to distribute secrets, use a separate [data encipherment certificate](/azure/service-fabric/how-to-managed-cluster-application-secrets?branch=main#create-a-data-encipherment-certificate) to encrypt the values.| Using a seperate encipherment certificate ensures isolation between certificates, reducing the risk of a single point of failure and allowing for more granular access control.|
 | (Cluster) Apply an [Access Control List (ACL)](/azure/service-fabric/service-fabric-best-practices-security#apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster) to your client certificate for your Service Fabric cluster.|Using an ACL provides an additional level of authentication, enabling more granular control over who can access the certificates.|
 | (Cluster) Use [resource requests and limits](/azure/service-fabric/service-fabric-resource-governance#resource-governance-mechanism) to govern resource usage across the nodes in your cluster.|Enforcing resource limits helps ensure that one service doesn't consume too many resources and starve other services.|
 | (Workload)  Include client certificates in Service Fabric applications.|Having your applications use client certificates for authentication provides opportunities for security at both the cluster and workload level.|
 | (Workload)  Authenticate Service Fabric applications to Azure Resources using [Managed Identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets).|Using Managed Identity allow you to securely manage the credentials in your code for authenticating to various services without saving them locally on a developer workstation or in source control.|
-| (Cluster and workload) Follow [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster) when hosting untrusted applications.|Following the best practices provides a security standard to follow.|
+| (Cluster and workload) When hosting untrusted applications, use the strongest sandboxing technology applicable, remove access to Service Fabric runtime, and follow other [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster).|Following the best practices provides helps ensure that only trusted and verified applications are allowed to interact with critical components,  limiting the impact untrusted applications with vulnerabilities or malicious code can have on the normal operation of the cluster.|
 
 ## Cost Optimization
 
