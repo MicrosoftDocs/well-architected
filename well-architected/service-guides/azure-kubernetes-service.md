@@ -68,7 +68,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   Ensure that your workload runs on user node pools and choose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
 > - (Cluster and workload) **Factor the AKS uptime service-level agreement (SLA) into your availability and recovery targets.** To define the reliability and recovery targets for your cluster and workload, follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics). Then formulate a design that meets those targets.
 >
-> -  (Cluster and workload) [Protect the AKS cluster service using Azure Backup](/azure/backup/azure-kubernetes-service-backup-overview) by storing recovery points in a Backup vault and perform restore during any disaster scenario. To back up and restore the containerized applications and data running in AKS clusters, follow the guidance in the AKS backup overview for configuring protection.
+> -  (Cluster and workload) Protect the AKS cluster service using Azure Backup by storing recovery points in a Backup vault and perform restore during any disaster scenario. To back up and restore the containerized applications and data running in AKS clusters, follow the guidance in the AKS backup overview for configuring protection.
 ### Recommendations
 
 | Recommendation | Benefit |
