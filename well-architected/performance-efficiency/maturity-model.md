@@ -19,7 +19,7 @@ Performance Efficiency is about maintaining user experience even when there's an
 
 ![Goal icon](../_images/goal.svg) **Choose workload components with just the right performance capabilities**
 
-Level 1 of the maturity model focuses on gathering performance expectations and choosing cloud services that help you meet those expectations. At this level, you shouldn't focus on defining performance targets for individual resources and components or in measuring performance through metrics. Instead, focus on investigating your options for resources and components that will help you meet the performance expectations for the workload as a whole. Prioritize services that give you just the right performance capabilities. This approach can help you keep your costs under control and maintain your development velocity.
+Level 1 of the maturity model focuses on gathering performance expectations and choosing cloud services that help you meet those expectations. At this level, focus on investigating your options for resources and components that will help you meet the performance expectations for the workload as a whole. Prioritize services that give you just the right performance capabilities. This approach can help you keep your costs under control and maintain your development velocity.
 
 #### &#10003; Gather requirements and define workload performance targets
 
