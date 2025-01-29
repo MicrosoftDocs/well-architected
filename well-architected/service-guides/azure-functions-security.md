@@ -35,11 +35,7 @@ This document assumes that as an architect, you have reviewed the [compute decis
 This review focuses on Azure Functions and their associated resources, including:
 
 - Function apps
-- Triggers and bindings
-- Durable Functions
-- Consumption, Flex Consumption, Elastic Premium, and Dedicated Plans
 
-Other Azure services like Azure Logic Apps, Azure App Service, and Azure Event Grid are related but are out of the scope of this document.
 
 ## Reliability
 
@@ -71,13 +67,13 @@ Start your design strategy based on the [Reliability design principles](../relia
 >
 > - **Use Durable Functions for long-running operations**: For operations that require orchestration or long-running processes, use Durable Functions to maintain state and ensure reliability across multiple steps.
 >
-> - **Monitor and respond to failures**: Use Azure Monitor and Application Insights to track function executions, detect failures, and automatically trigger corrective actions.
+> - **Monitor the health of your solution**: Integrate your Azure Functions solution into your overall workload health monitoring and alerting system.
 
 ##### Recommendations 
 
 | Recommendation | Benefit |
 |----------------|---------|
-| **(Function App)** Configure **automatic retries** for transient errors. Learn more about Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages) | Improves reliability by automatically retrying failed executions, reducing the likelihood of data loss or interruption. |
+| **(Function App)** Configure **automatic retries** for transient errors. Learn more about [Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages) | Improves reliability by automatically retrying failed executions, reducing the likelihood of data loss or interruption. |
 | **(Function App)** Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable execution of long-running workflows, with built-in state management and automatic retries. |
 | **(Function App)** Implement **Monitoring** and **centralized logging** using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function executions and dependencies. |
 | **(Function App)** **Scale out automatically** based on the Function Hosting Plan, trigger type and demand. [Learn about scaling](/azure/azure-functions/functions-scale). | Ensures that your application can handle increases in traffic without manual intervention, improving reliability and performance. |
@@ -99,16 +95,15 @@ Start your design strategy with the [**design review checklist for Security**](.
 >
 > - **Secure your function app with Microsoft Entra ID**: Restrict access to your functions by configuring Azure Functions to require Microsoft Entra ID authentication. [Set up Microsoft Entra authentication](/azure/app-service/configure-authentication-provider-aad).
 >
-> - **Apply network security controls**: Integrate your function apps with a virtual network (VNet) to control the outbound traffic. Use private endpoints to control the inbound traffic and to limit access to your function app from within your VNet and disable public internet access. [Secure your network, Inbound and Outbound traffic](/azure/azure-functions/functions-create-vnet).
+> - **Apply network security controls**:  Understand the [available options]( /azure/azure-functions/functions-networking-options) for your hosting model to secure the Functions networking configuration. Secure the networking to meet your requirements.
 >
 ##### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| **(Function App)** Enable **managed identities** for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets, enhancing security. |
-| **(Function App)** Use **Azure Key Vault** for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Protects sensitive information, such as API keys and connection strings, by storing them securely and automating secret rotation when using a managed identity is not feasible. |
-| **(Function App)** **Integrate with a virtual network** and use **private endpoints**. [Azure Functions Networking](/azure/azure-functions/functions-networking-options) | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. |
-| **(Function App)** Implement **Azure Policy** to enforce security configurations. [Learn about Azure Policy](/azure/governance/policy/overview) | Ensures compliance with organizational security standards by automating policy enforcement across your function apps. |
+| Enable **managed identities** for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets, enhancing security. |
+| Use **Azure Key Vault** for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Protects sensitive information, such as API keys and connection strings, by storing them securely and automating secret rotation when using a managed identity is not feasible. |
+| **Integrate with a virtual network** and use **private endpoints**.  | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints are not available in the Consumption hosting plan. |
 
 ## Cost Optimization
 
@@ -124,19 +119,18 @@ Begin your cost optimization strategy with the [design review checklist for Cost
 >
 > - **Choose the right pricing plan**: Azure Functions offers multiple pricing plans, including the Consumption plan, Premium plan, and Dedicated (App Service) plan. Choose a plan that aligns with your workload and cost considerations. [Compare pricing plans](/azure/azure-functions/functions-scale).
 >
->   The Consumption plan is ideal for unpredictable workloads with infrequent executions, as you only pay for the execution time and resources consumed.
+>   The Consumption plan is ideal for unpredictable workloads with infrequent executions, as you only pay for the execution time and resources consumed. When your app is idle, you aren't charged.
 >
 > - **Optimize execution time**: Reduce execution time by optimizing function code. Minimize the use of external dependencies and optimize code logic to decrease the duration of each execution.
 >
 > - **Monitor and analyze costs**: Regularly monitor function app usage and costs using Azure Cost Management and set up alerts detect cost anomalies.[Learn about cost management and optimization](/azure/cost-management-billing/cost-management-billing-overview).
 >
-> - **Avoid idle resource allocation**: Use the Consumption plan to minimize costs, as it only charges for active function execution time, eliminating costs associated with idle resources. 
 
 ##### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| **(Function App)** Use the **Consumption plan** for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used during function execution, avoiding costs associated with idle resources. |
+| Use the **Consumption plan** for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used during function execution, avoiding costs associated with idle resources. |
 | **(Function App)** Reserve capacity for **Elastic Premium plans or Dedicated App Service Plans** if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady execution patterns. |
 | **(Function App)** Regularly **monitor costs** and set up alerts for anomalies. [Set up cost alerts](/azure/cost-management-billing/cost-management-billing-overview). | Helps identify cost spikes early, allowing for proactive management and optimization. |
 
@@ -152,7 +146,7 @@ Start your design strategy based on the [design principles for Operational Excel
 
 > [!div class="checklist"]
 >
-> - **Automate deployments**: Use CI/CD pipelines to automate the deployment of your function apps. Integrate with Azure DevOps or GitHub Actions for seamless deployment workflows. [Set up CI/CD for Azure Functions](/azure/azure-functions/functions-continuous-deployment).
+> - **Automate deployments**: Use CI/CD pipelines to automate the deployment of your function apps. Integrate with Azure DevOps or GitHub Actions for seamless deployment workflows. 
 >
 > - **Implement health monitoring**: Use Azure Monitor and Application Insights to track the health and performance of your functions. Set up alerts for critical metrics and use custom dashboards for real-time insights. [Monitor Azure Function](/azure/azure-functions/monitor-functions).
 >
@@ -180,11 +174,11 @@ Start your performance strategy with the [Design principles of Performance Effic
 
 > [!div class="checklist"]
 >
-> - **Optimize cold start**: Minimize the impact of cold starts by using Premium Flex plans with pre-warmed instance or ensuring that your functions remain warm with strategies such as Azure Functions warmup trigger. [Understand cold start](/azure/azure-functions/functions-scale).
+> - **Optimize cold start**: Minimize the impact of cold starts by using Premium Flex plans with pre-warmed instance or ensuring that your functions remain warm with strategies such as Azure Functions warmup trigger. 
 >
 > - **Optimize function code**: Write efficient code to reduce execution time and resource consumption. Avoid long-running operations and optimize external service calls.
 >
-> - **Enable autoscaling**: Leverage the autoscaling capabilities of Azure Functions to automatically scale out based on demand. Ensure that your scaling rules are well-defined and tested. [Configure autoscaling](/azure/azure-functions/functions-scale).
+> - **Enable autoscaling**: Leverage the autoscaling capabilities of Azure Functions to automatically scale out based on demand. Ensure that your scaling rules are well-defined and tested. 
 >
 > - **Monitor performance metrics**: Use Application Insights to monitor key performance metrics, such as execution time, CPU and memory usage. Set up alerts for performance degradation. [Monitor performance](/azure/azure-functions/monitor-functions).
 
