@@ -111,7 +111,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - (Workload and cluster) Estimate the intial cost using the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/). You are only charged for the compute instances, storage, networking resources, and IP addresses you choose when creating a Service Fabric cluster. There is no charge for the service offered by Service Fabric itself. To help get started in your cost modeling, see the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
 > - (Cluster) Select appropriate VM SKUs. Choose VMs based on workload characteristics. Is the workload CPU intensive or does it run interruptible processes?
 > - (Cluster) Select appropriate cluster SKUs. Use Standard for production environments and Basic for nonproduction environments, unless there is a compelling reason to do otherwise. Use appropriate node types and sizes in each environment.
-> - (Cluster and workload) Select appropriate managed disk tiers and sizes. Review the WAF [service guide for disk storage](./azure-disk-storage?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
+> - (Cluster and workload) Select appropriate managed disk tiers and sizes. Review the WAF [service guide for disk storage](./azure-disk-storage.md?branch=main#cost-optimization). Avoid using VM SKUs with temp disk offerings to avoid paying for unnecessary resources. 
 
 ### Recommendations
 
@@ -160,7 +160,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Service Fabric.
 
 > [!div class="checklist"]
-> - (Cluster) Take advantage of performance optimization and enhancing features as required by the workload. See the [VM service guide](./virtual-machines#performance-efficiency) for recommendations related to the underlying compute platform.
+> - (Cluster) Take advantage of performance optimization and enhancing features as required by the workload. See the [VM service guide](./virtual-machines.md#performance-efficiency) for recommendations related to the underlying compute platform.
 > - (Cluster) Deploy VM and disk sizes that meet your perfomance requirements without incurring unnecessary expenses for unused capacity. Ensure that you will be able to easily add capacity to meet your future growth plans.
 > - (Workload) Understand the programming models supported by Service Fabric and choose the best model for your workload requirements. Each programming model has unique advantages and disadvantages, and your particular workload requirements may align with one model better than others.
 > - (Workload) Use established cloud architecture patterns to design your workload. [Microsservices](/azure/architecture/guide/architecture-styles/microservices), [event-driven](/azure/architecture/guide/architecture-styles/event-driven), and [background processing](/azure/architecture/guide/architecture-styles/web-queue-worker) architecture patterns are all good candidates for Service Fabric application designs.
