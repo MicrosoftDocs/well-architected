@@ -23,7 +23,7 @@ Level 1 of the maturity model focuses on gathering performance expectations and 
 
 #### &#10003; Gather requirements and define workload performance targets
 
-Work with stakeholders to understand general expectations for the workload performance. These might be targets related to page loading times for web apps or response times for an interactive system. At this stage of your workload development, these targets shouldn't be considered hard requiremnts as you aren't focusing on measuring performance metrics. Once you've gathered the workload expectations, you can start investigating the types of resources that may be good candidates for your workload.
+Work with stakeholders to understand general expectations for the workload performance. These might be targets related to page loading times for web apps or response times for an interactive system. At this stage of your workload development, these targets shouldn't be considered hard requirements as you aren't focusing on measuring performance metrics. Once you've gathered the workload expectations, you can start investigating the types of resources that may be good candidates for your workload.
 
 #### &#10003; Choose appropriate networking resources
 
@@ -42,7 +42,7 @@ Choose a [compute service](/azure/architecture/guide/technology-choices/compute-
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh your immediate needs against your budget. Look for opportunities to shutdown or deallocate compute resources when they're not in use.
 
 
-#### &#10003; Choose appropriate data resources 
+#### &#10003; Choose appropriate data store services 
 
 Determine your workload's needs for storing, retrieving, and managing data. Consider characteristics like:
 
@@ -55,7 +55,7 @@ Determine your workload's needs for storing, retrieving, and managing data. Cons
 
 Based on the answers to these questions, you can [choose the best data service](/azure/architecture/guide/technology-choices/data-options) for each of your workload's use cases. 
 
-Because of the wide variety of options for data services in cloud environments, you can tailor your design to use different services to best match the functionality of each component in your workload. This approach helps you optimize the performance of each component.
+**Because of the wide variety of options for data services in cloud environments, you can tailor your design to use different services to best match the functionality of each component in your workload. This approach helps you optimize the performance of each component.**
 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Don't over-engineer your data components by choosing different data services for components that could be consolidated into a single data store. Look to strike a balance between performance vs cost and complexity. 
