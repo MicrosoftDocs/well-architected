@@ -48,7 +48,7 @@ Determine your workload's needs for storing, retrieving, and managing data. Cons
 
 - *Data types:* What types of data will your workload ingest, process, or store?
 - *Volume:* How much data do you expect to ingest, process, or store?
-- *Access speed:* What are the performance requirements for accessing different data types?
+- *Transaction thoughput:* What are the performance requirements for accessing different data types?
 - *Consistency:* What are your targets for data consistency across your data types?
 - *Durability:* What are your targets for data durability across your data types?
 - *Access patterns:* What types of access patterns does your workload need to support? For example, for a particular component you may need to perform lots of writes, but few reads. For another component, you may need to do the opposite.
