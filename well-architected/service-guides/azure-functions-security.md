@@ -132,7 +132,7 @@ Begin your cost optimization strategy with the [design review checklist for Cost
 |----------------|---------|
 | Use the **Consumption plan** for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used during function execution, avoiding costs associated with idle resources. |
 | **(Function App)** Reserve capacity for **[Elastic Premium](/azure/azure-functions/functions-premium-plan) plans or [Dedicated App Service Plans](/azure/azure-functions/dedicated-plan)** if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady execution patterns. |
-| **(Function App)** Regularly **monitor costs** and set up alerts for anomalies. [Set up cost alerts](/azure/cost-management-billing/cost-management-billing-overview). | Helps identify cost spikes early, allowing for proactive management and optimization. |
+| Regularly **monitor costs** and set up alerts for anomalies. [Set up cost alerts](/azure/cost-management-billing/cost-management-billing-overview). | Helps identify cost spikes early, allowing for proactive management and optimization. |
 
 ## Operational Excellence
 
