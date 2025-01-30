@@ -152,7 +152,7 @@ Start your design strategy based on the [design principles for Operational Excel
 >
 > - **Implement health monitoring**: Use Azure Monitor and Application Insights to track the health and performance of your functions. Set up alerts for critical metrics and use custom dashboards for real-time insights. [Monitor Azure Function](/azure/azure-functions/monitor-functions).
 >
-> - **Deploy your solution safely**: Understand the [deployment models](/azure-functions/functions-deployment-technologies) available for Azure Functions and adopt the model that best meets your safe deployment practices.
+> - **Deploy your solution safely**: Understand the [deployment models](/azure/azure-functions/functions-deployment-technologies) available for Azure Functions and adopt the model that best meets your safe deployment practices.
 >
 > - **Plan for disaster recovery**: Implement disaster recovery strategies by using cross-region disaster recovery and availability zone for critical functions. [Plan for DR](/azure/reliability/reliability-functions).
 
