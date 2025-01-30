@@ -36,7 +36,6 @@ This review focuses on Azure Functions and their associated resources, including
 
 - Function apps
 
-
 ## Reliability
 
 The Reliability pillar ensures continuous functionality by **building resilience and enabling fast recovery from failures**.
