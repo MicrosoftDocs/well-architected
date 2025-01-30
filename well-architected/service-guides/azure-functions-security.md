@@ -187,7 +187,7 @@ Start your performance strategy with the [Design principles of Performance Effic
 | Recommendation | Benefit |
 |----------------|---------|
 | Use the **Elastic Premium plan with a Pre-warmed instance** to minimize cold start latency. [Understand cold start](/azure/azure-functions/functions-scale). | Reduces the latency associated with cold starts, improving response times for time-sensitive applications. |
-| **(Function App)** **Optimize function code** to reduce execution time. [Best practices for Azure Functions](/azure/azure-functions/performance-reliability). | Enhances performance by reducing the time and resources required for each function execution. |
+| **Optimize function code** to reduce execution time. [Best practices for Azure Functions](/azure/azure-functions/performance-reliability). | Enhances performance by reducing the time and resources required for each function execution. |
 | **(Function App)** **Enable autoscaling** to automatically adjust capacity based on demand. [Configure autoscaling](/azure/azure-functions/functions-scale). | Ensures that your function apps can handle varying loads without manual intervention, maintaining performance under pressure. |
 
 ## Azure policies
