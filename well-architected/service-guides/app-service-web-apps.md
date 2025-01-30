@@ -163,11 +163,11 @@ Start your design strategy based on the [**design review checklist for Security*
 >
 > - **Encrypt data**: Protect data in transit with end-to-end Transport Layer Security (TLS). Use your customer-managed keys for full encryption of data at rest. For more information, see [Encryption at rest using customer-managed keys](/azure/app-service/configure-encrypt-at-rest-using-cmk).
 >
->   Don't use legacy protocols such as TLS 1.0 and 1.1. Ensure that all web apps use HTTPS only and enforce TLS 1.2 or higher. For more information, see [App Service TLS overview](/azure/app-service/overview-tls).
+>   Don't use legacy protocols such as TLS 1.0 and 1.1. Ensure that all web apps use HTTPS only and enforce TLS 1.2 or higher. The default minimum TLS version is 1.2. For more information, see [App Service TLS overview](/azure/app-service/overview-tls).
 >
 >   All instances of your App Service have a default domain name. Use a custom domain and secure that domain with certificates.
 >
->   ***End-to-end TLS Encryption**: End-to-end TLS encryption is available in Premium App Service plans. This feature encrypts your traffic throughout the entire transaction, minimizing the risk of traffic interception.
+>   **End-to-end TLS Encryption**: End-to-end TLS encryption is available in Premium App Service plans. This feature encrypts your traffic throughout the entire transaction, minimizing the risk of traffic interception.
 >
 > - **Reduce the attack surface**: Remove default configurations that you don't need. For example, disable remote debugging, local authentication for Source Control Manager (SCM) sites, and basic authentication. Disable unsecure protocols like HTTP and File Transfer Protocol (FTP). Enforce configurations through Azure policies. For more information, see [Azure policies](#azure-policies).
 >
