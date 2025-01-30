@@ -32,12 +32,12 @@ This document assumes that as an architect, you have reviewed the [compute decis
 
 ##### Technology scope
 
-This review focuses on Azure Functions and their associated resources, including:
+This review focuses on the interrelated decisions for the following Azure resources:
 
 - Function apps
 
->[!NOTE]\
->This service guide builds upon guidance found in the [App Service](./app-service-web-apps.md) service guide. Azure Functions are deployed on App Service Plans and you can configure the underlying App Service for your Functions app if you use Premium or Dedicated hosting plans.
+> [!NOTE]
+> This service guide builds upon guidance found in the [App Service](./app-service-web-apps.md) service guide. Azure Functions are deployed on App Service Plans and you can configure the underlying App Service for your Functions app if you use Premium or Dedicated hosting plans.
 
 ## Reliability
 
