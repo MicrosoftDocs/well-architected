@@ -37,7 +37,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Function apps
 
 > [!NOTE]
-> This service guide builds upon guidance found in the [App Service](./app-service-web-apps.md) service guide. Azure Functions are deployed on App Service Plans and you can configure the underlying App Service for your Functions app if you use Premium or Dedicated hosting plans.
+> This service guide builds upon guidance found in the [App Service](./app-service-web-apps.md) service guide. Azure Functions is a serverless compute service. Functions are deployed on App Service Plans, which provide the underlying compute infrastructure for your workload. You can choose from several hosting plans. The Consumption plan is fully managed and doesn't support access to the associated App Service instance, while Dedicated and Premium gives you the ability to configure and manage the App Service instance. Refer to the App Service service guide for recommendations and considerations when choosing a Dedicated or Premium hosting plan.
 
 ## Reliability
 
