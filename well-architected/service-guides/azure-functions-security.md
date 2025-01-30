@@ -36,6 +36,9 @@ This review focuses on Azure Functions and their associated resources, including
 
 - Function apps
 
+>[!NOTE]\
+>This service guide builds upon guidance found in the [App Service](./app-service-web-apps.md) service guide. Azure Functions are deployed on App Service Plans and you can configure the underlying App Service for your Functions app if you use Premium or Dedicated hosting plans.
+
 ## Reliability
 
 The Reliability pillar ensures continuous functionality by **building resilience and enabling fast recovery from failures**.
