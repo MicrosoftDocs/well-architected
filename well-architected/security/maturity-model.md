@@ -33,7 +33,7 @@ The baseline should inform the architectural design of the workload, showing whe
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### &#10003; Integrate baseline security in the development the phases of software development lifecycle (SDLC)
+#### &#10003; Integrate baseline security in the development phases of software development lifecycle (SDLC)
 
 In addition to determining where security components should interact with other workload components, you need to define how you'll design your workload operations processes and procedures to meet your security requirements. Adopting safe deployment practices in your operations standards at the outset of your workload development will help ensure that your SDLC will follow security best practices as your workload becomes more mature and complex. See the [safe deployments guide](../operational-excellence/safe-deployments) for detailed guidance on this topic. 
 
@@ -57,7 +57,7 @@ Securing your data at rest helps ensure data confidentiality and integrity, two 
 
 #### &#10003; Encrypt data in transit
 
-Securing your data in transit helps protect you from attackers gaining access to your data and your systems. If you are not using encryption or using a weak cipher, your data can be intercepted and used against you by attackers. Don't use TLS versions lower than 1.2 in any component and migrate any older versions up to 1.2, making it the default version for all of your systems. All Azure services that send data across networks or the internet use TLS 1.2.
+Securing your data in transit helps protect you from attackers gaining access to your data and your systems. If you are not using encryption or are using a weak cipher, your data can be intercepted by attackers. Don't use TLS versions lower than 1.2 in any component and migrate any older versions up to 1.2, making it the default version for all of your systems. All Azure services that send data across networks or the internet use TLS 1.2.
 
 #### &#10003; Protect application secrets
 
