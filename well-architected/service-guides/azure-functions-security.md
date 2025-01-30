@@ -160,7 +160,7 @@ Start your design strategy based on the [design principles for Operational Excel
 |----------------|---------|
 | Automate deployments with **CI/CD pipelines** using Azure DevOps or GitHub Actions. [Set up CI/CD](/azure/azure-functions/functions-continuous-deployment) | Improves deployment consistency, reduces manual errors, and accelerates time-to-market for new features. |
 | Use **deployment slots** for staging changes before production release. [Deploy using slots](/azure/azure-functions/functions-deployment-slots). | Reduces the risk of introducing errors into production and enables safe rollbacks if issues are detected. |
-| **(Function App)** Implement **centralized monitoring** using Application Insights and Azure Monitor. [Set up monitoring](/azure/azure-functions/monitor-functions). | Enhances visibility into function performance, helping identify and resolve issues quickly. |
+| Implement **centralized monitoring** using Application Insights and Azure Monitor using available [metrics](/azure/azure-functions/monitor-functions-reference?tabs=consumption-plan). | Enhances visibility into function performance, helping identify and resolve issues quickly. |
 
 ## Performance Efficiency
 
