@@ -51,7 +51,7 @@ Start your design strategy based on the [Reliability design principles](../relia
 
 > [!div class="checklist"]
 >
-> - **Understand the triggers**: Ensure that you fully understand how Azure Functions are triggered. Triggers include HTTP requests, timers, queues, and more. Choose triggers that match the reliability requirements of your application.
+> - **Understand the triggers**: Ensure that you fully understand how Azure Functions is triggered. Triggers include HTTP requests, timers, queues, and more. Choose triggers that match the reliability requirements of your application.
 >
 >   For example, if your function processes messages from a queue, ensure that the queue itself is resilient and that messages can be reprocessed if a failure occurs.
 >
