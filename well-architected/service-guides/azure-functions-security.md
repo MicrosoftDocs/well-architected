@@ -75,10 +75,10 @@ Start your design strategy based on the [Reliability design principles](../relia
 
 | Recommendation | Benefit |
 |----------------|---------|
-| **(Function App)** Configure **automatic retries** for transient errors. Learn more about [Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages) | Improves reliability by automatically retrying failed executions, reducing the likelihood of data loss or interruption. |
-| **(Function App)** Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable execution of long-running workflows, with built-in state management and automatic retries. |
-| **(Function App)** Implement **Monitoring** and **centralized logging** using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function executions and dependencies. |
-| **(Function App)** **Scale out automatically** based on the Function Hosting Plan, trigger type and demand. [Learn about scaling](/azure/azure-functions/functions-scale). | Ensures that your application can handle increases in traffic without manual intervention, improving reliability and performance. |
+| Configure **automatic retries** for transient errors. Learn more about [Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages) | Improves reliability by automatically retrying failed executions, reducing the likelihood of data loss or interruption. |
+| Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable execution of long-running workflows, with built-in state management and automatic retries. |
+| Implement **Monitoring** and **centralized logging** using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function executions and dependencies. |
+|**Scale out automatically** based on the Function Hosting Plan, trigger type and demand. [Learn about scaling](/azure/azure-functions/functions-scale). | Ensures that your application can handle increases in traffic without manual intervention, improving reliability and performance. |
 
 
 ## Security
@@ -133,7 +133,7 @@ Begin your cost optimization strategy with the [design review checklist for Cost
 | Recommendation | Benefit |
 |----------------|---------|
 | Use the **Consumption plan** for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used during function execution, avoiding costs associated with idle resources. |
-| **(Function App)** Reserve capacity for **[Elastic Premium](/azure/azure-functions/functions-premium-plan) plans or [Dedicated App Service Plans](/azure/azure-functions/dedicated-plan)** if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady execution patterns. |
+| Reserve capacity for **[Elastic Premium](/azure/azure-functions/functions-premium-plan) plans or [Dedicated App Service Plans](/azure/azure-functions/dedicated-plan)** if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady execution patterns. |
 | Regularly **monitor costs** and set up alerts for anomalies. [Set up cost alerts](/azure/cost-management-billing/cost-management-billing-overview). | Helps identify cost spikes early, allowing for proactive management and optimization. |
 
 ## Operational Excellence
