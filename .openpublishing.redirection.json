@@ -1017,13 +1017,13 @@
 		},
 		{
 			"source_path": "well-architected/services/networking/azure-load-balancer/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/networking/azure-load-balancer/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/networking/azure-virtual-network/operational-excellence.md",
@@ -2253,6 +2253,16 @@
 		{
 			"source_path": "well-architected/service-guides/azure-batch/performance-efficiency.md",
 			"redirect_url": "/azure/batch/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-load-balancer/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-load-balancer/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer/",
 			"redirect_document_id": false
 		}
 	]
