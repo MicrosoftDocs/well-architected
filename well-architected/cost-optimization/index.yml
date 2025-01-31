@@ -33,7 +33,7 @@ landingContent:
       - linkListType: video
         links:
           - text: What tradeoffs have you made to optimize for cost?
-            url: https://www.microsoft.com/videoplayer/embed/RE4zw3n
+            url: https://learn-video.azurefd.net/vod/player?id=b9ef84cf-3526-490e-bbd6-15fe906db99b
   - title: Review design principles
     linkLists:
       - linkListType: concept
