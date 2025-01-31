@@ -37,7 +37,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Function apps
 
 > [!NOTE]
-> This service guide builds upon guidance found in the [App Service](./app-service-web-apps.md) service guide. Azure Functions is a serverless compute service. Functions are deployed on App Service Plans, which provide the underlying compute infrastructure for your workload. You can choose from several hosting plans. The Consumption plan is fully managed and doesn't support access to the associated App Service instance, while Dedicated and Premium gives you the ability to configure and manage the App Service instance. Refer to the App Service service guide for recommendations and considerations when choosing a Dedicated or Premium hosting plan.
+> This service guide builds upon guidance found in the [App Service (Web Apps)](./app-service-web-apps.md) service guide. Azure Functions is a serverless compute service. Functions are deployed on App Service Plans, which provide the underlying compute infrastructure for your workload. You can choose from several hosting plans. The Consumption plan is fully managed and doesn't support access to the associated App Service instance, while Dedicated and Premium gives you the ability to configure and manage the App Service instance. Refer to the App Service service guide for recommendations and considerations when choosing a Dedicated or Premium hosting plan.
 
 ## Reliability
 
@@ -105,7 +105,7 @@ Start your design strategy with the [**design review checklist for Security**](.
 |----------------|---------|
 | Enable **managed identities** for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets, enhancing security. |
 | Use **Azure Key Vault** for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Protects sensitive information, such as API keys and connection strings, by storing them securely and automating secret rotation when using a managed identity is not feasible. |
-| **Integrate with a virtual network** and use **private endpoints**.  | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints are not available in the Consumption hosting plan. |
+| [**Integrate with a virtual network** and use **private endpoints**](/azure/azure-functions/functions-create-vnet).  | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints are not available in the Consumption hosting plan. |
 
 ## Cost Optimization
 
@@ -125,7 +125,7 @@ Begin your cost optimization strategy with the [design review checklist for Cost
 >
 > - **Optimize execution time**: Reduce execution time by optimizing function code. Minimize the use of external dependencies and optimize code logic to decrease the duration of each execution.
 >
-> - **Monitor and analyze costs**: Regularly monitor function app usage and costs using Azure Cost Management and set up alerts detect cost anomalies.[Learn about cost management and optimization](/azure/cost-management-billing/cost-management-billing-overview).
+> - **Monitor and analyze costs**: Regularly monitor function app usage and costs using Azure Cost Management and set up alerts detect cost anomalies. [Learn about cost management and optimization](/azure/cost-management-billing/cost-management-billing-overview).
 >
 
 ##### Recommendations
@@ -206,13 +206,10 @@ Review the [Azure Policy built-in definitions](/azure/governance/policy/samples/
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/advisor-overview) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. The following recommendations can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your function apps:
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations are aligned with Well-Architected Framework pillars. 
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations)
-- [Security](/azure/defender-for-cloud/plan-multicloud-security-get-started)
-- [Cost Optimization](/azure/advisor/advisor-reference-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see the recommendations in [Azure Advisor](/azure/advisor/).
+
 
 ## Next steps
 

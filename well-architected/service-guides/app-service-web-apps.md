@@ -17,7 +17,7 @@ azure.category:
 
 Azure App Service is a platform as a service (PaaS) that provides a fully managed hosting environment for building, deploying, and scaling web applications. As a PaaS solution, App Service abstracts the underlying infrastructure, enabling you to focus on your application development. App Service (Web App) runs your apps in the context of an App Service plan, which determines the resources,operating system, region, and pricing model (Sku) used to host your app.
 
-This document assumes you have reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and selected Azure App Service as the hosting environment for your workload. It provides recommendations based on the principles of the [Microsoft Azure Well-Architected Framework pillars](../pillars.md).
+This article assumes that as an architect, you reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose App Service as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
 > [!IMPORTANT]
 >
@@ -27,7 +27,7 @@ This document assumes you have reviewed the [compute decision tree](/azure/archi
 >
 > The recommendations don't represent an exhaustive list of all configurations available for the Web Apps feature of Azure App Service and their dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
-> Explore foundational architecture: [App Service Baseline Architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
+> Foundational architecture that demonstrates the key recommendations: [App Service baseline architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
 **Technology scope**
 
@@ -42,7 +42,7 @@ Other Azure offerings are associated with App Service, such as Azure Functions, 
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 >
-[**Reliability in Azure App Service**](/azure/reliability/reliability-app-service) and The [**Reliability design principles**](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
 
@@ -74,7 +74,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Have redundancy in networking components. For example, use zone-redundant IP addresses and load balancers.
 >
-> - **Have a reliable scaling strategy**: Unexpected load on an application can make it unreliable. Consider the right scaling approach based on your workload characteristics. . Horizontal scaling (scaling out) allows you to add more instances to distribute the load, while vertical scaling (scaling up) involves increasing the capacity of an existing instance (CPU, memory). Be cautious of over-provisioning, as adding unnecessary instances increases costs without tangible performance benefits.
+> - **Have a reliable scaling strategy**: Unexpected load on an application can make it unreliable. Consider the right scaling approach based on your workload characteristics. Horizontal scaling (scaling out) allows you to add more instances to distribute the load, while vertical scaling (scaling up) involves increasing the capacity of an existing instance (CPU, memory). Be cautious of over-provisioning, as adding unnecessary instances increases costs without tangible performance benefits.
 >
 >   You can sometimes scale up to handle the load. However, if the load continues to increase, scale out to new instances. Prefer Automatic or Autoscaling over manual approaches. Always maintain a buffer of extra capacity during scaling operations to prevent performance degradation[Choose scaling option for App Service](Automatic scaling in Azure App Service) 
 >
