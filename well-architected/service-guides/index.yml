@@ -227,13 +227,6 @@ productDirectory:
         - featured
         - ai-machine-learning
     # Card
-    - title: Azure Queue Storage
-      summary: Effectively scale apps according to traffic.
-      imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-      url: ./queue-storage/reliability.md
-      azureCategories:
-        - storage
-    # Card
     - title: Azure Service Bus
       summary: Connect across private and public cloud environments.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
@@ -327,13 +320,6 @@ productDirectory:
       url: ./network-virtual-appliances/reliability.md
       azureCategories:
         - networking
-    # Card
-    - title: Storage accounts
-      summary: Use storage accounts to contain all your Azure Storage data objects.
-      imageSrc: /media/common/i_generic-database.svg
-      url: ./storage-accounts/reliability.md
-      azureCategories:
-        - storage
 
 additionalContent:
   sections:
