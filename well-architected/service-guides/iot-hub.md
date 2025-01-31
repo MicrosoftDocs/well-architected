@@ -15,8 +15,7 @@ azure.category:
 ---
 
 # Well-Architected Framework perspective on Azure IoT Hub
-
-Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for communication between an IoT application and its attached devices. You can connect millions of devices and their back-end solutions reliably and securely. Almost any device can be connected to an IoT hub.
+Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for communication between an IoT application and its attached devices. You can connect devices and their back-end solutions reliably and securely at scale. Almost any device can be connected to an IoT hub.
 
 This article assumes that as an architect, you've reviewed the [technologies and services you can use to create IoT solutions](/azure/iot/iot-services-and-technologies?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Fbread%2Ftoc.json) and chose [IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub) as the Azure IoT platform service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -46,7 +45,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-#### Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of IoT Hub. Extend the strategy to include more approaches as needed.
 
@@ -54,7 +53,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Design devices for resiliency**: Design your devices to satisfy the uptime and availability requirements of your end-to-end solution. Ensure that your IoT device can operate efficiently with intermittent connectivity to the cloud.
 >
-> - **Design for business requirements**: Cost implications are inevitable when introducing architectural modifications to meet service-level agreements (SLAs). For example, to have greater reliability and high availability you can implement cross-region redundancies and an automated system to autoscale. This trade-off should be carefully considered.
+> - **Design for business requirements**: Cost implications are inevitable when introducing architectural modifications to meet service-level agreements. For example, to have greater reliability and high availability you can implement cross-region redundancies and an automated system to autoscale. This trade-off should be carefully considered.
 >
 > - **Safe, simple update procedures**: An enterprise IoT solution should provide a strategy for how operators manage devices. IoT operators require simple and reliable update tools and practices.
 >
@@ -64,7 +63,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Plan for capacity**: Plan for service quotas and throttles, latency between the detection-action, and establish benchmarks at production scale to support uninterrupted data flow.
 
-#### Recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -81,7 +80,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your IoT Hub.
 
-#### Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -99,7 +98,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Connection security:** Ensure all data transmitted between the IoT device and the IoT cloud services is confidential and tamper-proof.
 
-#### Recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -116,7 +115,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to IoT Hub and its environment.
 
-#### Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that is allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -134,7 +133,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Estimate realistic costs:** Select the [appropriate IoT Hub tier and size](/azure/iot-hub/iot-hub-scaling) for both development and operational phases of your IoT solution.
 >
-> - **Evaluate one-time vs. recurring costs:** Consider the cost benefits of one-time costs versus recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
+> - **Evaluate one-time versus recurring costs:** Consider the cost benefits of one-time costs versus recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
 >
 > - **Optimize resource usage:** Implement [auto-scaling mechanisms](/azure/iot-hub/iot-hub-scaling#auto-scale) to adjust IoT Hub capacity based on demand, ensuring efficient resource usage and cost control.
 >
@@ -142,7 +141,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Implement cost alerts and budgets:** Set up cost alerts and budgets in Azure Cost Management to track and control your spending effectively. Cost management APIs are available for [IoT Hub](/rest/api/iothub), and [DPS](/rest/api/iot-dps).
 
-#### Recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -161,7 +160,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-#### Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to IoT Hub.
 
@@ -175,7 +174,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Use automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize operational downtime. Automation and DevOps are essential for monitoring and managing the lifecycle of IoT devices.
 
-#### Recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -196,7 +195,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for IoT Hub.
 
@@ -208,7 +207,7 @@ Start your design strategy based on the [design review checklist for Performance
 > 
 > - **Continuously monitor for performance in production**: To monitor different types of devices in multiple geographical regions, use a distributed monitoring solution. Balance the amount of information monitored and sent to the cloud against memory and performance costs. Tune transmission for diagnostic scenarios, and monitor at multiple levels and layers. Expose gateway metrics for industrial or gateway-enabled solutions.
 
-#### Recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -218,7 +217,7 @@ Start your design strategy based on the [design review checklist for Performance
 | **Optimize offline scenarios**. You can provide devices with enough information and context to work without a cloud connection and to store data locally, so they can recover from disconnections and reboots. Use [device twins and module twins](/azure/iot-hub/iot-hub-portal-csharp-module-twin-getstarted) to asynchronously sync state information between devices and the cloud, even when devices aren't currently connected to IoT Hub. | Ensuring the device is capable of storing data locally when not connected, including logs and cached telemetry according to priority, helps maintain functionality during disconnections. Setting a time to live (TTL) on the data ensures that expired data is removed automatically, reducing the need for manual intervention. Discarding less important data when the device isn't connected reduces local storage requirements and synchronization time when the device reconnects.<br><br>If edge device storage reaches capacity, using a cache eviction strategy such as first-in last-out (FIFO), last-in first-out (LIFO), or priority-based can help manage storage efficiently. Additionally, consider using a separate disk or disk controller to store data, so the device runtime or application can continue to work even when low on storage. This approach ensures that critical operations aren't interrupted due to storage limitations. |
 | **Optimize messaging efficiency**. IoT Hub calculates daily quota message counts based on a [4-KB message size](/azure/iot-hub/iot-hub-devguide-quotas-throttling). Sending smaller messages leaves some capacity unused. In general, use message sizes close to the 4-KB boundary. Group smaller device-to-cloud messages into larger messages to reduce the total number of messages, but consider the introduced latency when combining messages.<br><br> Use application-level batching by combining multiple smaller messages at the downstream device and sending larger messages to the edge gateway. This batching limits the message overhead and reduces writes to local edge disk storage.<br><br> Use direct methods for request-reply interactions that can succeed or fail immediately, after a user-specified time-out. This approach is useful for scenarios where the course of action is different depending on whether the device responded.<br><br> Use device twins for device state information, including metadata and configurations. IoT Hub maintains a device twin for each device that you connect. | The number and size of device to cloud messages is an important parameter for IoT solution performance efficiency. IoT Hub define message limits per tier, which affects both solution performance and cost. |
 | **Understand messaging quotas and throttling**. The IoT Hub tier sets cloud gateway per-unit limits. The messaging *quota* defines sustained throughput and sustained send rates for the tier. IoT Hub can handle loads above these quotas for short durations to resiliently handle bursts or load overshoots. Another important limit is the hourly or daily service load or *throttle* limit. Throttle limits protect an IoT hub from too much load for too long a time. | Understanding messaging quotas and throttling help ensure that your IoT solution operates within the defined limits, preventing overload and maintaining performance. By managing load effectively, you can handle bursts and load overshoots without impacting the overall system stability. This approach helps maintain a reliable and efficient IoT solution, avoiding potential service disruptions due to excessive load. |
-| **Optimize message processing**. Optimize the data format used to send data to the cloud. Compare performance (and cost) of bandwidth vs. performance improvement with less cloud data processing needed. Consider using [IoT Hub message enrichment](/azure/iot-hub/iot-hub-message-enrichments-overview) to add context to device messages. <br><br> Do time-critical event processing on ingested data as it arrives, instead of storing unprocessed data and requiring complex queries to acquire the data. For time-critical event processing, consider the impacts of late arrival and windowing. Evaluate depending on use case, for example critical alarm handling versus message enrichment.<br><br> [Select the right IoT Hub tier](/azure/iot-hub/iot-hub-scaling), Basic, or Standard, based on solution requirements. Be aware of features that the Basic tier doesn't support.<br><br> Consider using Azure Event Grid for publish-subscribe event routing. For more information, see [React to IoT Hub events by using Event Grid to trigger actions](/azure/iot-hub/iot-hub-event-grid) and [Compare message routing and Event Grid for IoT Hub](/azure/iot-hub/iot-hub-event-grid-routing-comparison). | Messages from a device or gateway might need to be translated, processed, or enriched with more information before storage. This step can be time-consuming, so it's important to evaluate the effect on performance. Some recommendations conflict, such as using compression for optimizing data transfer versus avoiding cloud processing in decrypting messages. These recommendations need to be balanced and evaluated against other architectural pillars and solution requirements. |
+| **Optimize message processing**. Optimize the data format used to send data to the cloud. Compare performance (and cost) of bandwidth versus performance improvement with less cloud data processing needed. Consider using [IoT Hub message enrichment](/azure/iot-hub/iot-hub-message-enrichments-overview) to add context to device messages. <br><br> Do time-critical event processing on ingested data as it arrives, instead of storing unprocessed data and requiring complex queries to acquire the data. For time-critical event processing, consider the impacts of late arrival and windowing. Evaluate depending on use case, for example critical alarm handling versus message enrichment.<br><br> [Select the right IoT Hub tier](/azure/iot-hub/iot-hub-scaling), Basic, or Standard, based on solution requirements. Be aware of features that the Basic tier doesn't support.<br><br> Consider using Azure Event Grid for publish-subscribe event routing. For more information, see [React to IoT Hub events by using Event Grid to trigger actions](/azure/iot-hub/iot-hub-event-grid) and [Compare message routing and Event Grid for IoT Hub](/azure/iot-hub/iot-hub-event-grid-routing-comparison). | Messages from a device or gateway might need to be translated, processed, or enriched with more information before storage. This step can be time-consuming, so it's important to evaluate the effect on performance. Some recommendations conflict, such as using compression for optimizing data transfer versus avoiding cloud processing in decrypting messages. These recommendations need to be balanced and evaluated against other architectural pillars and solution requirements. |
 | **Prioritize data**. Use [IoT Edge priority queues](/azure/iot-edge/module-composition#priority-and-time-to-live) to make sure important data is prioritized while sending to IoT Hub. IoT Edge buffers messages when there's no connectivity, but after the connection is restored, sends all buffered messages in priority order first, followed by new messages.<br><br> Use [IoT Hub message routing](/azure/iot-hub/iot-hub-devguide-messages-d2c) to separate routes for different data priorities depending on use case. IoT Hub message routing adds some latency.<br><br> Save and send low priority data at longer intervals, or by using batch or [file uploads](/azure/iot-hub/how-to-file-upload). Malware detection on uploaded files increases latency.<br><br> Separate messages based on time constraints. For example, send messages to IoT Hub directly when there's a time constraint, and utilize file upload via IoT Hub or batch data transfer like Azure Data Factory if there's no time constraint. You can use the [Azure Blob Storage in IoT Edge module](/azure/iot-edge/how-to-deploy-blob) for file upload. | Some data that devices send to the cloud might be more important than other data. Classifying and handling the data based on priority is a good practice for performance efficiency. For example, a thermostat sensor sends temperature, humidity, and other telemetry, but also sends an alarm when temperature is outside a defined range. The system classifies the alarm message as higher priority and handles it differently than the temperature telemetry. |
 | **Provision devices with DPS**. Use DPS to set up a connection to an IoT hub during provisioning, when the IoT Hub connection isn't available anymore, or during device reboot. | Using DPS ensures that devices are provisioned securely and efficiently, even when the IoT Hub connection is unavailable or during device reboots. The [evenly weighted distribution policy](/azure/iot-dps/how-to-use-allocation-policies) allows for adjusting the weight for provisioning based on use case, optimizing resource allocation. Provisioning devices over a period of time or in smaller batches helps balance the DPS load and quota, ensuring a smooth onboarding process. Allocating devices to IoT Hubs in different regions based on latency improves performance and reduces connection times. Implementing a caching strategy for the DPS connection string reduces reconnect operations, enhancing overall system efficiency. |
 | **Optimize edge versus cloud processing**. Run real-time and near real-time workloads, or small, optimized, low-latency processing with time constraints, on devices or at the edge by using local compute. Run larger workloads, or other workloads that have added or external data, or compute dependencies, in the cloud. | Running real-time and near real-time workloads at the edge ensures low-latency processing and immediate response times, which is crucial for time-sensitive applications. For example, running a machine learning algorithm at the edge to count people in a video stream and sending an event containing the count to the cloud allows for quick local processing and efficient cloud-based trend analysis. Using the [Stream Analytics Edge module](/azure/stream-analytics/stream-analytics-edge) to run analytics workloads at the edge, such as anomaly detection, helps label events sent to the cloud with detected anomalies, improving overall system efficiency.<br><br>Be aware of the overhead of an edge workload with many connected downstream devices. The edge node must forward or process all messages and handle caching all the data if there's intermittent cloud connectivity. Validate the performance impact on your solution by testing with the planned maximum of downstream devices and messages per edge node. This approach ensures that the edge node can handle the expected load and maintain performance. Additionally, be aware of the performance impact that message translation or enrichment can have on edge, IoT Hub, or cloud event processing, and plan accordingly to maintain system efficiency. |

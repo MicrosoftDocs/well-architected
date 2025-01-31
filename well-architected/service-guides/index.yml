@@ -329,7 +329,7 @@ productDirectory:
         - storage
     # Card
     - title: Azure IoT Hub
-      summary: Connect, monitor, and manage billions of IoT assets.
+      summary: Connect, monitor, and manage IoT assets at scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
       url: iot-hub.md
       azureCategories:
