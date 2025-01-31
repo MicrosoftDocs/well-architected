@@ -105,4 +105,4 @@ Consider the following recommendation to optimize reliability when configuring A
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Queue Storage and reliability](../queue-storage/reliability.md)
+> [Azure Traffic Manager](../traffic-manager/operational-excellence.md)

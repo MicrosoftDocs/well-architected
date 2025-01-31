@@ -897,12 +897,12 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/queue-storage/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/queue-storage/operational-excellence",
+			"redirect_url": "/azure/storage/queues/",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/services/messaging/queue-storage/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/queue-storage/reliability",
+			"redirect_url": "/azure/storage/queues/",
 			"redirect_document_id": true
 		},
 		{
@@ -2175,6 +2175,36 @@
 			"redirect_url": "/azure/well-architected/service-guides/azure-local",
 			"redirect_document_id": false
 		},
+		{
+			"source_path": "well-architected/service-guides/queue-storage/reliability.md",
+			"redirect_url": "/azure/storage/queues/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/queue-storage/operational-excellence.md",
+			"redirect_url": "/azure/storage/queues/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/storage-accounts/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-blob-storage",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/storage-accounts/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-blob-storage",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/storage-accounts/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-blob-storage",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/storage-accounts/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-blob-storage",
+			"redirect_document_id": false
+    	},
 		{
 			"source_path": "well-architected/service-guides/azure-batch/reliability.md",
 			"redirect_url": "/azure/batch/",
