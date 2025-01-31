@@ -376,24 +376,6 @@
               href: service-guides/service-bus/reliability.md
             - name: Operational excellence
               href: service-guides/service-bus/operational-excellence.md
-        - name: Storage
-          items:
-            - name: Storage accounts
-              items:
-                - name: Reliability
-                  href: service-guides/storage-accounts/reliability.md
-                - name: Security
-                  href: service-guides/storage-accounts/security.md
-                - name: Cost optimization
-                  href: service-guides/storage-accounts/cost-optimization.md
-                - name: Operational excellence
-                  href: service-guides/storage-accounts/operational-excellence.md
-            - name: Queue Storage
-              items:
-              - name: Reliability
-                href: service-guides/queue-storage/reliability.md
-              - name: Operational excellence
-                href: service-guides/queue-storage/operational-excellence.md
         - name: Traffic Manager
           items:
             - name: Reliability
