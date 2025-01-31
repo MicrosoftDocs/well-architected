@@ -105,4 +105,4 @@ Consider the following recommendation to optimize reliability when configuring A
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Traffic Manager](../traffic-manager/operational-excellence)
+> [Azure Traffic Manager](../traffic-manager/operational-excellence.md)
