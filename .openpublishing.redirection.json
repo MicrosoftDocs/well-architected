@@ -2203,7 +2203,8 @@
 		{
 			"source_path": "well-architected/service-guides/storage-accounts/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-blob-storage",
-    },
+			"redirect_document_id": false
+    	},
 		{
 			"source_path": "well-architected/service-guides/azure-batch/reliability.md",
 			"redirect_url": "/azure/batch/",
