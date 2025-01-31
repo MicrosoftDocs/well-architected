@@ -1,9 +1,9 @@
 ---
-title: Application delivery considerations for Azure Virtual Desktop workloads
+title: Application Delivery Considerations for Azure Virtual Desktop Workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 7/30/2024
+ms.date: 01/30/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
@@ -11,163 +11,233 @@ ms.subservice: waf-workload-azure-virtual-desktop
 
 # Application delivery considerations for Azure Virtual Desktop workloads
 
-This article discusses the application delivery design area of an Azure Virtual Desktop workload. Considering application delivery is crucial when you deploy a new Azure Virtual Desktop environment or update an existing one. Application delivery enables organizations to provide remote desktops and applications to users in a reliable, cost-effective, and performant manner.
-
-Review the considerations and recommendations in this article to learn how to optimize your host pools and session hosts. These guidelines reflect and extend the quality pillars of the Azure Well-Architected Framework—Reliability, Security, Cost Optimization, Operational Excellence, and Performance Efficiency. Adhering to these considerations and recommendations helps ensure a robust and efficient Azure Virtual Desktop environment.
-
-> [!IMPORTANT]
-> This article is part of the [Azure Well-Architected Framework Azure Virtual Desktop workload](./index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is an Azure Virtual Desktop workload?](./overview.md#what-is-an-azure-virtual-desktop-workload).
+Effective application delivery helps ensure reliable, cost-effective, and high-performance remote desktops and applications. This article provides guidelines to optimize host pools and session hosts. These recommendations align with the Azure Well-Architected Framework pillars.
 
 ## Host pool settings
 
-When you create host pools, various settings directly affect the performance and efficiency of your Azure Virtual Desktop environment.
+When you create host pools, there are various configuration settings that  directly affect the performance and efficiency of the environment.
 
 ### Host pool types
 
-*Impact: Cost Optimization, Reliability*
+You can create two types of host pools in Azure Virtual Desktop: 
 
-In Azure Virtual Desktop, you can create two types of host pools:
+- **Personal host pools** assign a user to a specific virtual machine (VM). The user connects to the same VM each time. User profile data is stored on the VM's operating system disk. This setup maintains users' application state over time. Personal host pools require a robust backup if a disaster occurs.
 
-- **Personal** host pools assign a specific user to a specific virtual machine (VM). With this setup, the user connects to the same machine each time, and the user profile data is stored directly on the operating system disk of the VM. This scenario necessitates a robust backup solution to ensure that all user modifications are stored and can be restored if there's a disaster. This type of host pool is useful for scenarios where users need to maintain their application state over time.
-- **Pooled** host pools provide a way for multiple users to connect to different VMs in a pool. Because users can connect to different session hosts with each connection, the admin needs to configure and use FSLogix to store user profile data. Host pools that are pooled offer a communal remote experience to users, promoting cost-effectiveness and increased efficiency.
+- **Pooled host pools** assign multiple users to various VMs within a pool. Users potentially connect to different session hosts each time. FSLogix is required to store user profile data. This setup provides a communal remote experience and enhances efficiency because of the ephemeral nature of the connections. Pooled host pools can also be cheaper. 
 
-Each type of host pool comes with its own set of pros and cons. It's important to carefully select the type of host pool by thoroughly evaluating the functionalities that users need.
+To choose a host pool type, see [Host pools](/azure/virtual-desktop/terminology#host-pools).
 
-##### Recommendations
+In general, understand the commonalities between use cases, and standardize host pools to simplify your environment. This approach leads to streamlined operations and makes it easier to meet reliability and performance expectations.
 
-- Consider using a personal pool if you aim to give users power to personalize their environment and work freely within a VM.
-- Use a pooled host pool to streamline your reliability solution and minimize costs.
+#### Recommendations
 
-### Load-balancing algorithms
+|Recommendation|Benefit|
+|---|---|
+|Deploy across regions, if regional failure isn't tolerable. <br> Understand how the metadata is replicated.|TBD|
+|Configure the diagnostic settings to monitor the solution health.|TBD|
+|Use trusted images from the Azure Marketplace, and install software from trusted sources. Regularly update your base image and software. <br><br>For pooled machines, ensure that you update each host pool's hosts at the same time.|TBD|
+|Apply appropriate segmentation for your sensitive workloads, such as isolating high-sensitivity workloads and running them on confidential compute-series VMs.|TBD|
+|Understand the cost profile of the host pool and users, and run cost modeling to create an optimized environment. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to get estimates for the solution. Create budgets in Azure to ensure that the deployment aligns with cost estimates.|TBD|
+|Evaluate the cost associated with cloud-based desktop solutions, such as Windows 365.| Cloud-based desktop solutions might be more suitable for personal desktop needs because of their lower management overhead and fixed monthly cost, versus the consumption-based model of Virtual Desktop. |
+|Evaluate which applications or users could operate on a multi-session device. <br><br>Create your use cases with this consideration in mind. You can use FSLogix to restrict application access so that different users can't access the same host pool.|Multi-session host pools usually offer a lower cost per user than single-session configurations.|
+|Use Azure Policy to promote consistency across Virtual Desktop environments, such as diagnostic settings and tagging.|TBD|
+|Use infrastructure as code (IaC) for deployments. Use resources, such as Azure VM Image Builder and the [Virtual Desktop Accelerator](https://github.com/microsoft/AVDAccelerator). |  These approaches facilitate standardization across multiple host pools, which drives repeatability. They also reduce engineering overhead. |
+|Do regular host pool maintenance, including updating images.|TBD|
+| Use validation host pools to test updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.| TBD |
+|Use a pooled host pool.| Pooled host pools streamline your reliability solution and minimize costs. |
+|Understand the criticality of the host pool and the workloads that it supports. Ensure that the combined service-level agreements (SLAs) meet the requirements of the workload. Consider using Azure Backup and Azure Site Recovery.| TBD |
+|Continuously monitor the actual resource usage and adjust VM sizes accordingly.| TBD |
 
-*Impact: Cost Optimization, Performance Efficiency*
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Select an appropriate retention time for the logs. Longer retention times increase cost but provide long-term analysis of the environment.  
 
-If you use a pooled host pool, there are two types of load-balancing algorithms that you can use. Each one directly affects your cost and performance efficiency.
+> [!NOTE]
+> If you use a pooled host pool, you have two load balancing algorithm options. Each one directly affects your cost and performance efficiency.
+>
+>- **Breadth-first** load balancing distributes user sessions across session hosts. Users are assigned to the session host that has the lowest usage, which can improve the user experience. 
+>
+>- **Depth-first** load balancing saturates one session host at a time before assigning user sessions to other session hosts, which ensures efficient use of resources. This approach is particularly cost-effective, because it fully uses the capacity of a single host before allocating users to the next session host. Depth-first load balancing is especially beneficial in scale-down scenarios.
 
-- **Breadth-first** load balancing distributes user sessions across session hosts. Users are assigned to the session host with the lowest usage, which can improve the user experience.
-- **Depth-first** load balancing saturates one session host at a time before assigning user sessions to other session hosts, ensuring efficient use of resources. This approach is particularly cost-effective, because it fully uses the capacity of a single host before allocating users to the next session host. It's especially beneficial in scale-down scenarios.
+## Scaling plans
 
-##### Recommendations
+Use scaling plans in Virtual Desktop to help meet user demand and reduce the cost of maintaining your virtual desktop environment. When you use scaling plans, you can dynamically target your host pool capacity based on schedules, select load balancing behaviors based on the time of day, and manage user sessions' idle, disconnect, and log off experience. Virtual Desktop operators can combine all these controls to balance the user experience, improve performance, and optimize cost efficiency for their Virtual Desktop workloads.
 
-- Use breadth-first load balancing to quickly improve your user experience.
-- Use depth-first load balancing for a cost-effective approach.
-- Use depth-first load balancing for scale-down scenarios.
+For product documentation, see [Scaling plans](/azure/virtual-desktop/autoscale-scenarios). 
 
-### Scaling plans
+To create a scaling strategy for a pooled host pool, capture the following data points: 
 
-*Impact: Cost Optimization, Performance Efficiency*
+- Total number of users that are assigned to the host pool and the forecasted growth or reduction
+- Expected or known peak concurrent user sessions
+- Total number of session hosts (VMs) deployed 
+- Maximum session limit per session host
+- User personas and working schedules
 
-Scaling plans in Azure Virtual Desktop can help you meet user demand and reduce the cost of maintaining your virtual desktop environment. When you use scaling plans, you can adjust the minimum and maximum percentage of hosts and the capacity threshold. By changing these settings, you can optimize the number of session hosts that are online and ready to accept user sessions.
+To determine an appropriate scaling strategy, use the total number of assigned users that meet or exceed your total capacity. Find your total capacity by multiplying the maximum session limit by the session host count. Then use your peak concurrent user sessions to determine the right number of session hosts to target across the schedule phases. Most organizations target 80-90% host pool usage, which helps reduce the session host footprint and overdeployment and manage costs.  
 
-Using the scaling plans in an optimal way helps you:
+The most common method is to align your scaling plan schedules and phases with the user personas that are assigned to your host pool. Incorporate the appropriate load balancing algorithm based on whether you prioritize the user experience or cost.
 
-- Have an adequate number of session hosts ready to serve your users.
-- Turn off session hosts when users no longer need your service.
+> [!Important]
+> Use a breadth-first approach during your ramp-up period to avoid excessive sign-ins that might overwhelm a session host because of users starting their workday. Then, shift to a depth-first approach during peak, ramp-down, and off-peak hours. This strategy varies based on your organizational goals and workload demands. 
 
-You can also change the load-balancing algorithm to further improve your cost efficiency.
+Consider the following example criteria:
 
-Unlike Azure Virtual Machine Scale Sets, scaling plans don't deploy or delete existing session hosts. Instead, the plans automatically turn the hosts off and on to help you maximize your cost efficiency.
+- **Host pool type:** Pooled desktop 
+- **Total users:**  300 
+- **Maximum session limit:**  8 
+- **VM size:**  D16as_v5 
+- **Total session host count:**  38 (This value is rounded up based on the equation *300 / 8 = 37.5*)  
+- **Total host pool capacity:**  304 sessions 
+- **Expected peak concurrent sessions:**  280 
 
-It's important to set an adequate maximum number of session hosts from the beginning. This practice helps ensure that your Azure Virtual Desktop environment meets performance needs but can also scale down resources when they're not needed. Scaling down excessively can be harmful. For instance, in some scenarios, there might not be enough session hosts ready to serve the user. In that case, users might experience a performance degradation or not be able to connect to the Azure Virtual Desktop environment. As a result, it's important to determine ideal values for the lowest point that you can scale down to and highest point that you can scale up to.
+The following table shows an example scaling plan based on the preceding criteria:
 
-##### Recommendations
+|Schedule phase|Phase configuration|
+|------|------|
+|Ramp up| **Start time:** 7 AM <br>**Load balancing algorithm:** Breadth-first <br> **Minimum percent of hosts:** 20% (8 session hosts = 64 sessions available to users)    <br> **Capacity threshold:** 50% (scaling plan turns on more sessions when 40% of the used host pool capacity exceeds 50% = 32 sessions) |
+|Peak hours|**Start time:** 9 AM <br> **Load balancing algorithm:** Depth-first  <br> **Capacity threshold:** 50% (fixed based on ramp-up phase) |
+|Ramp down| **Start time:** 2 PM <br> **Load balancing algorithm:** Depth-first <br> **Minimum percent of active hosts:** 10% (four session hosts minimum)  <br> **Capacity threshold:** 90%  <br> **Force sign off users:** No <br> **Stop VMs when:** VM has no active sessions |
+|Off peak| **Start time:** 8 PM <br> **Minimum percent of active hosts:** 10% (not shown in GUI but reflected in logic) <br> **Load balancing algorithm:** Depth-first <br> **Capacity threshold:** 90%  |
 
-- Use scaling plans, which automatically turn hosts off and on to help ensure adequate performance for users.
-- Adjust the settings of scaling plans to improve cost efficiency.
+For more scenarios, see [Autoscale scaling plans and example scenarios in Virtual Desktop](/azure/virtual-desktop/autoscale-scenarios#example-scenarios-for-autoscale-for-pooled-host-pools).
+
+Personal host pools assign each user to a dedicated, persistent VM to ensure that they always connect to the same session host. A personal host pool strategy has fewer scaling considerations. Focus your strategy more on user experience and cost management and less on total host pool capacity. To create a scaling strategy for a personal host pool, consider the following factors:
+
+- Determine whether you use the *Start VM on Connect* feature.
+- Determine which VMs to start during the ramp-up period.
+- Consider disconnect and sign-off settings. 
+- Consider hibernation.
+
+#### Recommendations
+
+| Recommendation | Benefit |
+|---|---|
+| Use Virtual Desktop scaling plans to fine tune scalability and turn off session hosts when there's no demand. <br><br> Have sufficient session hosts to support the demand of your Virtual Desktop workload, which provides desktops or remote apps to your users. <br><br> Understand scale limits of subscriptions, services, and VMs. | Scaling plans help increase scaling speed. They don't deploy or delete existing session hosts. Instead, they automatically turn the hosts off. <br><br> For more information, see [How a scaling plan works](/azure/virtual-desktop/autoscale-scenarios#how-a-scaling-plan-works) and [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md). |
+| Align your scaling schedule with the expected load patterns, whether they're static, dynamic, predictable, or surge patterns. | TBD |
+| For multi-region deployments, // guidance about scaling plans when users are pinned to a region vs just distribution of load. | TBD |
+| Adjust the load balancing algorithm. | An optimized load balancing algorithm helps ensure system stability and prevent overloads. It can also reduce latency, which improves user satisfaction and efficiency. |
+| Take advantage of Virtual Desktop Insights to capture your scaling plan diagnostic logs, which populate usage trends and operations. | These metrics help ensure that your scaling plan and schedules remain effective and provide teams with insights so that they can make adjustments accordingly. |
+| Implement Azure Monitor alerts to notify stakeholders. Or use action groups to take action if there's a lack of host pool capacity or scaling plan operation failure. | TBD |
+| For Greenfield workloads, use a thorough proof of concept and user acceptance testing environment to capture adequate data for performance testing. | The results help you determine the optimal values for the appropriate scaling plan configurations. |
+| Review idle time out and disconnect options that minimize disruption when a user returns to work. | This practice helps optimize the user experience. |
+| For personal host pools: <br><br> - Set assigned VMs to start during the ramp-up phase. <br> - Take advantage of hibernation.  | VMs that start during the ramp-up phase improve the connection experience during the start of a user's day. <br><br> Hibernation improves the user experience when they return to work and the VM is powered off. |
+| For pooled host pools: <br><br> - Use breadth-first load balancing to spread the user sessions across available hosts. <br> - Target 80-90% of the maximum session capacity based on your total assigned users and peak concurrent sessions. <br> - Use exclusion tags on faulty session hosts so that the scaling plan doesn't turn on unhealthy session hosts. <br> - Ensure that your host pool capacity can accommodate sudden demand, unplanned maintenance, or outages.| Breadth-first load balancing reduces the impact to users if a session host goes offline or experiences a critical error. <br><br> An 80-90% capacity helps reduce the session host footprint and overdeployment and helps manage costs. <br><br> TBD |
+
+> [!Note]
+> Scaling plans can't create or delete session hosts. If you want to create or delete session hosts, you must create custom automation by using a combination of IaC and continuous integration and continuous delivery (CI/CD) pipelines. 
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Reliable scaling operations have a cost trade-off. Overprovisioning can lead to increased expenses, especially during extended periods of high demand. //Insert something about "Custom autoscaling using PS/CLI/REST API can be developed inhouse if desired. " 
+
+For more information, see [Recommendations for optimizing scaling costs](../cost-optimization/optimize-scaling-costs.md) and [Recommendations for optimizing scaling and partitioning](../performance-efficiency/scale-partition.md).
+
+## Application groups
+
+You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops that a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner. 
+
+The two types of application groups in Virtual Desktop include: 
+
+- **Desktop application groups:** Users access the full Windows desktop from a session host. Pooled or personal host pools support desktop application groups. 
+
+- **RemoteApp application groups:** Users access individual applications that you select and publish to the application group. Pooled host pools support RemoteApp application groups. 
+
+When you use pooled host pools, you can assign both application group types to the same host pool at the same time. You can only assign a single desktop application group to each host pool. But you can assign multiple RemoteApp application groups to the same host pool. 
+
+Users that you assign to multiple RemoteApp application groups in the same host pool can access an aggregate of all the applications in their assigned application groups. 
+
+#### Recommendations
+
+| Recommendation | Benefit |
+|---|---|
+| Tailor each Virtual Desktop application group to specific user roles or departments. For example, you might create separate application groups for finance, HR, and IT. | Custom application groups help meet business needs effectively. Each application group contains only the applications necessary for their respective workflows. |
+| Develop a criticality scale from 1 to 5 based on business requirements. For example: <br><br>  - *Level 5:* Applications that are essential to business continuity, such as accounting software <br> - *Level 3:* Noncritical but important tools, such as document editing software <br> - *Level 1:* Optional or infrequently used applications | A criticality scale helps you prioritize maintenance, updates, and availability for application groups. |
+| Assign higher priority to application groups that support business-critical operations. Host those application groups on reliable or redundant infrastructure. <br><br> For example, if you rate your finance department's application group a 5 (critical), assign the application group to host pools that have high-availability configurations and fault tolerance, such as availability zones or Azure Premium SSD storage. | TBD |
+| Establish reliability targets for application groups that support business-critical applications. For example, you can define the uptime, such as 99.9% SLA, and recovery time objectives (RTOs). | TBD |
+| Use Azure Site Recovery and Azure Backup for recovery purposes. You can define the RTO and recovery point objectives (RPOs) in Azure Backup policies. | TBD|
+| Assign sensitivity labels to each application group based on the type of data processed and the criticality of the applications. <br><br> For example, for an application group that handles financial data, assign a *Confidential* label. For an application group that has general administrative tools, assign a *General* label. | This practice helps ensure that sensitive applications have higher levels of security and access control. |
+| Use Azure Key Vault to securely store application secrets, such as API keys and database credentials, that the applications in application groups use. Ensure that you encrypt secrets to help protect them from unauthorized access. | TBD |
+| Track and monitor the usage patterns of application groups. | This approach helps you identify unused or underused application groups. Use this data to determine when to deallocate resources, which reduces cost. |
+| Resize or reduce the number of active VMs that support application groups based on usage patterns. | This practice minimizes the cost of overprovisioned resources. | 
+| Take advantage of IaC tools, like Azure Resource Manager templates (ARM templates), Bicep, or Terraform. <br><br> For example, you can define a declarative ARM template that provisions a host pool, assigns session hosts, and configures application groups with specific application assignments and policies. | This approach standardizes the deployment and configuration of host pools and application groups. You can create deployments that are repeatable, scalable, and consistent across environments. |
+| Define performance targets for session responsiveness in application groups, such as sign-in times, session latency, and application launch times. <br><br> For example, you might establish a target for users to sign in to their sessions within 30 seconds and experience a session latency of less than 150 milliseconds. <br><br> Use Azure Monitor to track these metrics and set up alerts if performance deviates from the defined targets. | Performance targets help ensure that users have a smooth and responsive experience. You can identify and address performance problems before they significantly affect users. |
+| Choose VM sizes and performance tiers in host pools that align with the performance targets of your application groups. Consider factors like resource usage, expected demand fluctuations, and the number of users per session host. <br><br> Use the [session host VM sizing guidelines](/windows-server/remote/remote-desktop-services/virtual-machine-recs). | Appropriate VM sizes and performance tiers optimize resource usage, which reduces waste and cost and improves overall system efficiency. <br><br> Guidelines help you allocate resources effectively for various user workloads in your host pools. |
 
 ## Session host settings
 
-Like host pool settings, the settings on the VMs that serve as your session hosts can also affect the performance of your Azure Virtual Desktop environment.
+Like host pool settings, the settings on the VMs that serve as your session hosts can also affect the performance of your Virtual Desktop environment.
 
 ### Regions
 
-*Impact: Reliability, Performance Efficiency*
+The location of a session host correlates directly with the latency that users experience. If you use FSLogix, the distance between your host pool location and the FSLogix storage location also affects the user experience. Deploy session hosts close to user locations.
 
-The location of a session host correlates directly with the latency that end users experience. If you use FSLogix, the distance between your host pool location and the FSLogix storage location also affects your end-user experience. Deploy session hosts close to user locations.
-
-The region of your session hosts also affects the reliability of your Azure Virtual Desktop environment. It's important to deploy your session hosts with redundancy. We recommend enabling availability zones.
+The region of your session hosts also affects the reliability of your Virtual Desktop environment. It's important to deploy your session hosts with redundancy. You can enable availability zones or virtual machine scale sets.
 
 - Availability zones enhance the resilience of your session hosts against zone outages, but they're limited to specific regions.
-- Virtual machine scale sets with flexible orchestration provide deployment options across multiple zones. Within each zone, you can deploy across different fault domains.
 
-For more information about availability zones and scale sets with flexible orchestration, see the following articles:
+- Virtual machine scale sets that have flexible orchestration provide deployment options across multiple zones. Within each zone, you can deploy across different fault domains.
+
+For more information about availability zones and scale sets that have flexible orchestration, see the following articles:
 
 - [Availability zone service support](/azure/reliability/availability-zones-service-support)
 - [Availability zone region support](/azure/reliability/availability-zones-region-support)
 - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration)
 
-##### Recommendations
-
-- Deploy session hosts close to your users to minimize latency.
-- Deploy session hosts in an availability zone or a flexible virtual machine scale set to help protect your environment from outages.
-
 ### Compute size
 
-*Impact: Cost Optimization, Performance Efficiency*
-
-Your session host compute size also affects the performance of your environment. Azure offers various compute sizes. There are also many families, architecture types, core counts, storage features, and specialty hardware options like GPUs that are available. Choosing the right size for your workload helps you achieve optimal performance at an optimal price point.
+Your session host compute size also affects the performance of your environment. Azure offers various compute sizes. There are also many families, architecture types, core counts, storage features, and specialty hardware options like GPUs. Choose the right size for your workload to help achieve optimal performance at an optimal price point.
 
 Some sizes offer special features:
 
 - DCasv5 and ECasv5 are confidential sizes that provide robust high-security features. Examples of these features include hardware-based isolation, encryption, and dedicated virtual trusted-platform modules.
-- Certain sizes provide GPU support. The NV-series, which is backed by NVIDIA Tesla M60 GPUs, can be helpful if you use frameworks such as OpenGL and DirectX, or in general, if you use graphics-intensive applications.
 
-##### Recommendations
-
-- Look at the various compute sizes, families, and features that Azure offers, and choose the option that optimizes the performance and cost efficiency of your workload.
-- Consider VMs in the DCasv5 or ECasv5 series if you run high-security workloads.
-- Consider NV-series VMs if you use graphics-intensive applications.
+- Some sizes provide GPU support. Use the NV-series, which is backed by NVIDIA Tesla M60 GPUs, if you use frameworks such as OpenGL and DirectX or if you use graphics-intensive applications.
 
 ### Storage solutions
 
-*Impact: Cost Optimization, Performance Efficiency*
+Your storage solution also affects the performance of Virtual Desktop. Session hosts use Azure managed disks as virtual hard drives. The types of disks include:
 
-Your storage solution also affects the performance of Azure Virtual Desktop. Session hosts use Azure managed disks as virtual hard drives. Several types of disks are available:
+- Azure Premium SSD
+- Azure Standard SSD
+- Azure Standard HDD
 
-- Premium solid-state drives (SSDs)
-- Standard SSDs
-- Standard hard-disk drives (HDDs)
+Each disk has its own maximum size, throughput, and input/output operations per second (IOPS). Choose the right disk size and series to help achieve optimal performance at an optimal price point. An optimal disk size can help prevent severe performance problems for users and prevent overspending on performance that you don't use.
 
-Each disk has its own maximum size, throughput, and I/O operations per second (IOPS). By choosing the right disk size and series, you can get the performance that's needed at an optimal price point:
-
-- If you choose a disk size that offers adequate performance for the applications that you run in your Azure Virtual Desktop environment, users avoid experiencing severe performance issues.
-- If you choose a disk size that's not too large, you avoid paying for extra performance that's not used.
-
-The service-level agreement (SLA) of a disk for the session hosts depends on the disk type. To compare the SLAs of session hosts that use various types of disks, see [Host pool resiliency](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/eslz-business-continuity-and-disaster-recovery#host-pool-resiliency).
-
-##### Recommendations
-
-- Consider the maximum size, throughput, and IOPS of the various types of Azure managed disks when you design your storage solution.
-- Choose a type of managed disk that optimizes the performance and cost efficiency of your workload.
+The SLA of a disk for the session hosts depends on the disk type. To compare the SLAs of session hosts that use various types of disks, see [Host pool resiliency](/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/eslz-business-continuity-and-disaster-recovery#host-pool-resiliency).
 
 ### Fault tolerance
 
-*Impact: Cost Optimization, Reliability*
-
-Fault tolerance is fundamentally centered on the principles of high availability and disaster recovery. You can achieve high availability by increasing your number of session hosts, especially across different availability zones. If you scatter session hosts across various availability zones and locations within availability zones, you can decrease the chance that your Azure Virtual Desktop environment becomes unavailable due to maintenance or outage.
+Fault tolerance is fundamentally centered on the principles of high availability and disaster recovery. To achieve high availability, increase your number of session hosts, especially across different availability zones. If you spread session hosts across availability zones and locations within availability zones, you can decrease the chance that your Virtual Desktop environment becomes unavailable because of maintenance or outage.
 
 For disaster recovery of session hosts, you can use golden images or backups:
 
-- If your session hosts contain data or applications that don't actively need to be saved, use golden images. Saving those images in a redundant fashion should provide sufficient disaster recovery.
-- If your session host contains valuable data that gets updated frequently, consider backups to save those changes. The cost of using backups is considerably higher than the cost of maintaining golden images.
+- If your session hosts contain data or applications that don't actively need to be saved, use golden images. Save those images in a redundant fashion to help ensure that you can recover session hosts if a disaster occurs.
 
-It's also important to perform a failure mode analysis (FMA) on your environment. With a proper FMA, you can prepare for future outages and help prevent them. Potential failure points include:
+- If your session host contains valuable data that you update frequently, consider backups to save those changes. The cost backups is considerably higher than the cost of maintaining golden images.
+
+You should also perform a failure mode analysis (FMA) on your environment. With a proper FMA, you can prepare for future outages and help prevent them. Potential failure points include:
 
 - Session hosts that are deployed in a single region. This setup can result in a complete service shutdown during an availability zone outage.
+
 - Personal pool session hosts that don't have backups. Without backups enabled, users can't quickly deploy other identical session hosts and can experience data loss.
-- The inability to quickly deploy new session hosts during an outage. If you don't use infrastructure as code (IaC) to save session host information and VM images, you can encounter this problem. Examples of IaC include Azure Resource Manager templates, Bicep, and Terraform.
+- The inability to quickly deploy new session hosts during an outage. If you don't use IaC to save session host information and VM images, you can encounter this problem. Examples of IaC include ARM templates, Bicep, and Terraform.
 
-##### Recommendations
+#### Recommendations
 
-- Spread session hosts across different availability zones to improve availability.
-- Spread out session hosts within availability zones.
-- Use golden images that you save in a redundant fashion for disaster recovery if you don't need to back up session host data or applications.
-- Use backups for disaster recovery if you update session host data frequently.
-- Perform an FMA on your environment to prepare for future outages and help prevent them.
+| Recommendation | Benefit |
+|---|---|
+| Deploy session hosts close to your users. | This practice minimizes latency. |
+| Deploy session hosts in an availability zone or a flexible virtual machine scale set. | This approach helps protect your environment from outages. |
+| Research the various compute sizes, families, and features that Azure offers. | Appropriate resources optimize the performance and cost efficiency of your workload. |
+| Consider VMs in the DCasv5 or ECasv5 series if you run high-security workloads. | TBD |
+| Consider NV-series VMs if you use graphics-intensive applications. | TBD |
+| Consider the maximum size, throughput, and IOPS of the various types of Azure managed disks when you design your storage solution. | TBD |
+| Choose a type of managed disk that optimizes the performance and cost efficiency of your workload. | TBD |
+| Spread session hosts across different availability zones. | This approach improves availability. |
+| Spread out session hosts within availability zones. | TBD |
+| Use golden images that you save in a redundant fashion for disaster recovery if you don't need to back up session host data or applications. | TBD |
+| Use backups for disaster recovery if you update session host data frequently. | TBD |
+| Perform an FMA on your environment. | An FMA helps you prepare for future outages and potentially prevent them. |
 
 ## Next steps
 
-Now that you've examined application delivery considerations, see how to establish connectivity, create perimeters for your workload, and evenly distribute traffic to your workloads.
+The following article describes how to establish connectivity, create perimeters for your workload, and evenly distribute traffic to your workloads.
 
 > [!div class="nextstepaction"]
 > [Networking and connectivity](./networking.md)
