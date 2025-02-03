@@ -32,6 +32,8 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Traffic Manager
 
+![Diagram showing a failover scenario with Azure Traffic Manager.](./_images/traffic-manager-flow.png)
+
 > [!NOTE]
 >
 > For workloads that host HTTP applications, Azure Front Door is a natural choice because of its features, such as a content delivery network, Transport Layer Security (TLS) termination, and an integrated firewall. 

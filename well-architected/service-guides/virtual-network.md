@@ -40,6 +40,8 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Route tables
 - Network managers
 
+![Diagram showing a simple network layout in Azure.](./_images/v-net.png)
+
 There are other services associated with Virtual Network, such as load balancers. Those services are covered in their respective guides.
 
 ## Reliability
