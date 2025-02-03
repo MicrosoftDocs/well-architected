@@ -2180,16 +2180,6 @@
 			"redirect_url": "/azure/well-architected/service-guides/virtual-network",
 			"redirect_document_id": false
 		},
-		{																																									
-			"source_path": "well-architected/service-guides/iot-hub/operational-excellence.md",
-			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/service-guides/iot-hub/reliability.md",
-			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
-			"redirect_document_id": false
-		},
 		{
 			"source_path": "well-architected/iot/iot-cost-optimization.md",
 			"redirect_url": "/azure/architecture/reference-architectures/iot/iot-architecture-overview",
