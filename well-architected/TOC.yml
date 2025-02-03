@@ -309,11 +309,7 @@
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
-          items:
-            - name: Reliability
-              href: service-guides/azure-load-balancer/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-load-balancer/operational-excellence.md
+          href: service-guides/azure-load-balancer.md
         - name: Azure Machine Learning
           href: service-guides/azure-machine-learning.md
         - name: Azure NetApp Files 
@@ -332,6 +328,8 @@
               href: service-guides/azure-sql-managed-instance/operational-excellence.md
         - name: Azure Local
           href: service-guides/azure-local.md
+        - name: Azure Traffic Manager
+          href: service-guides/azure-traffic-manager.md
         - name: Azure Virtual Network
           items:
             - name: Reliability
@@ -350,40 +348,18 @@
           href: service-guides/azure-expressroute.md
         - name: Functions
           href: service-guides/azure-functions-security.md
-        - name: IP addresses
-          href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
           href: service-guides/azure-log-analytics.md
-        - name: Network connectivity
-          items:
-            - name: Reliability
-              href: service-guides/network-connectivity/reliability.md
-            - name: Cost optimization
-              href: service-guides/network-connectivity/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/network-connectivity/operational-excellence.md
-        - name: Network Virtual Appliances (NVA)
-          items:
-            - name: Reliability
-              href: service-guides/network-virtual-appliances/reliability.md
-            - name: Cost optimization
-              href: service-guides/network-virtual-appliances/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/network-virtual-appliances/operational-excellence.md
         - name: Service Bus
           items:
             - name: Reliability
               href: service-guides/service-bus/reliability.md
             - name: Operational excellence
               href: service-guides/service-bus/operational-excellence.md
-        - name: Traffic Manager
-          items:
-            - name: Reliability
-              href: service-guides/traffic-manager/reliability.md
-            - name: Operational excellence
-              href: service-guides/traffic-manager/operational-excellence.md
         - name: Virtual Machines
           href: service-guides/virtual-machines.md
+        - name: Virtual Network
+          href: service-guides/virtual-network.md          
     - name: Design guides
       items:
       - name: Health modeling
