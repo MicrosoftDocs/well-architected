@@ -330,12 +330,6 @@
           href: service-guides/azure-local.md
         - name: Azure Traffic Manager
           href: service-guides/azure-traffic-manager.md
-        - name: Azure Virtual Network
-          items:
-            - name: Reliability
-              href: service-guides/azure-virtual-network/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-virtual-network/operational-excellence.md
         - name: Event Grid
           items:
             - name: Reliability
