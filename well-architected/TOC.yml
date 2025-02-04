@@ -317,7 +317,7 @@
         - name: Azure OpenAI
           href: service-guides/azure-openai.md          
         - name: Azure Service Fabric
-          href: service-guides/azure-service-fabric-well-architected-framework.md
+          href: service-guides/azure-service-fabric.md
         - name: Azure SQL Database
           href: service-guides/azure-sql-database-well-architected-framework.md
         - name: Azure SQL Managed Instance
