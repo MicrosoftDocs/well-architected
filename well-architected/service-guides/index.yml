@@ -230,7 +230,7 @@ productDirectory:
     - title: Azure Service Fabric
       summary: Develop microservices and orchestrate containers on Windows or Linux.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
-      url: azure-service-fabric-well-architected-framework.md
+      url: azure-service-fabric.md
       azureCategories:
         - compute
         - containers
