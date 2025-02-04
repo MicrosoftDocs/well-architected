@@ -2286,7 +2286,7 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/service-guides/azure-well-architected-framework.md",
+			"source_path": "well-architected/service-guides/azure-service-fabric-well-architected-framework.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-service-fabric",
 			"redirect_document_id": true
 		}
