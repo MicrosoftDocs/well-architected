@@ -40,6 +40,8 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Route tables
 - Network managers
 
+![Diagram showing a simple network layout in Azure.](./_images/v-net.png)
+
 There are other services associated with Virtual Network, such as load balancers. Those services are covered in their respective guides.
 
 ## Reliability
@@ -64,7 +66,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >     |---|---|
 >     | Public IP address failure in a single availability zone. | Deploy IP address resources across zones or use a secondary IP address with a load balancer.|
 >     | Network virtual appliance (NVA) failure in a single zone. | Deploy a secondary NVA in another zone and use a load balancer to direct traffic to the NVA. |
->     | Latency in workloads that are spread across regions or zones, which lowers throughput and causes timeouts.|Co-locate resources in one region or zone. Redesign the architecture to use reliability patterns, such as deployment stamps with load balancers, so that each stamp can handle the load and work together with nearby resources.|
+>     | Latency in workloads that are spread across regions or zones, which lowers throughput and causes time-outs.|Co-locate resources in one region or zone. Redesign the architecture to use reliability patterns, such as deployment stamps with load balancers, so that each stamp can handle the load and work together with nearby resources.|
 >     | Single-region workload failure with a cold failover site.| Pre-configure network settings in the failover region. This approach ensures that no IP addresses overlap.|
 >     | Single-region application failure in a virtual network that communicates with a database via Azure Private Link by using a cold failover site.| Replicate connections in the secondary region and peer virtual networks for communication.|
 >
