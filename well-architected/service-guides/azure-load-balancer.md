@@ -1,16 +1,16 @@
 ---
-title: Well-Architected Framework perspective on Azure Load Balancer
+title: Well-Architected Framework Perspective on Azure Load Balancer
 description: Learn about reliability, security, cost optimization, operational excellence, and performance efficiency best practices for Azure Load Balancer.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.subservice: waf-service-guide
 ms.topic: conceptual
-ms.date: 02/03/2025
+ms.date: 02/04/2025
 ---
 
 # Well-Architected Framework perspective on Azure Load Balancer
 
-The process of load balancing distributes network traffic to a group of two or more back-end servers. Azure Load Balancer is an Azure-native service that does Layer-4 load balancing for User Datagram Protocol (UDP) and Transmission Control Protocol (TCP). Load Balancer helps provide low latency and high availability for regional and global deployments.
+The load balancing process distributes network traffic to a group of two or more back-end servers. Azure Load Balancer is an Azure-native service that does Layer-4 load balancing for User Datagram Protocol (UDP) and Transmission Control Protocol (TCP). Load Balancer helps provide low latency and high availability for regional and global deployments.
 
 This article assumes that as an architect, you've reviewed the [load-balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) in Azure and chose Load Balancer for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
@@ -46,7 +46,7 @@ This guidance focuses the Standard Load Balancer SKU. Basic Load Balancer and Ga
 
 ## Reliability
 
-The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures.**
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
@@ -88,7 +88,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | ----- | ----- |
 |Select the Standard Load Balancer SKU. <br> For more information, see [SKU comparison](/azure/load-balancer/skus).|This SKU supports reliability features, such as availability zones and multiregion load balancing. |
 | Configure [rules](/azure/load-balancer/components#load-balancer-rules) to map the front-end IP address to the back-end servers' IP addresses to enable load balancing. <br><br>The back-end address pool should have at least two back-end endpoints to load balance for redundancy.|Rules are the core of the load balancing algorithm. Without this configuration, the distribution modes are disabled.|
-| Configure [health probes](/azure/load-balancer/load-balancer-custom-probe-overview#probe-configuration). <br><br> - Set the probing interval and threshold values. Consider the tradeoff between how fast you can detect failures and the number of requests to the endpoint. <br>- Evaluate whether you want to send traffic to the instances when all instances have an unhealthy status. You might use this configuration to implement a graceful degradation experience. For details, see [AllProbedUp](/rest/api/load-balancer/load-balancer-probes/list#probenohealthybackendsbehavior). | Only healthy back-end pool instances receive new connections. This configuration helps maintain high availability and reliability because it routes traffic away from unhealthy instances.|
+| Configure [health probes](/azure/load-balancer/load-balancer-custom-probe-overview#probe-configuration). <br><br> - Set the probing interval and threshold values. Consider the tradeoff between how fast you can detect failures and the number of requests to the endpoint. <br>- Evaluate whether you want to send traffic to the instances when all instances have an unhealthy status. You might use this configuration to implement a graceful degradation experience. For more information, see [AllProbedUp](/rest/api/load-balancer/load-balancer-probes/list#probenohealthybackendsbehavior). | Only healthy back-end pool instances receive new connections. This configuration helps maintain high availability and reliability because it routes traffic away from unhealthy instances.|
 | Configure private and public IP addresses to be [zone redundant](/azure/reliability/reliability-load-balancer#availability-zone-support). The IP address determines the zone redundancy of Load Balancer. | Zone redundancy helps the workload withstand zonal failures. When one zone fails, services can fail over to one of the remaining zones. |
 
 ## Security
@@ -103,20 +103,20 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> - **Review security baselines.** To enhance the security posture of your application that's loaded balanced by Azure Load Balancer, review the [security baseline for Load Balancer](/security/benchmark/azure/baselines/azure-load-balancer-security-baseline).
+> - **Review security baselines.** To enhance the security posture of your application that's load balanced by Azure Load Balancer, review the [security baseline for Load Balancer](/security/benchmark/azure/baselines/azure-load-balancer-security-baseline).
 >
-> - **Protect the back-end servers.** Deploy resources in a virtual network that doesn't have direct internet exposure. Front the virtual network with a load balancer. Ideally, the load balancer should have firewall capabilities. For HTTP applications, consider Application Gateway or Azure Front Door. For non-HTTP applications, consider Load Balancer with a private IP address (internal load balancer), and route traffic through Azure Firewall for added security. For more information, see [Integrate Azure Firewall with Standard Load Balancer: Internal load balancer](/azure/firewall/integrate-lb#internal-load-balancer).  
+> - **Protect the back-end servers.** Deploy resources in a virtual network that doesn't have direct internet exposure. Front the virtual network with a load balancer. Ideally, the load balancer should have firewall capabilities. For HTTP applications, consider Application Gateway or Azure Front Door. For non-HTTP applications, consider Load Balancer with a private IP address (internal load balancer), and route traffic through Azure Firewall for added security. For more information, see [Internal load balancer](/azure/firewall/integrate-lb#internal-load-balancer).  
 >
 >   You can also use Load Balancer as a reverse proxy. In that case, the load balancer has a public IP address with SNAT, which exposes resources while masking their IP addresses.
 >
 >   >[!NOTE]
->   >To filter traffic to back-end servers, use network security groups (NSGs) on the subnets that contain the front end and back end. Don't apply NSGs directly to the Load Balancer service. When NSGs enforce rules, they consider the source and destination ports and address ranges of the originating and destination computers, not the load balancer.
+>   >To filter traffic to back-end servers, use network security groups (NSGs) on the subnets that contain the front end and back end. Don't apply NSGs directly to the Load Balancer service. When NSGs enforce rules, they consider the source ports, destination ports, and address ranges of the originating and destination computers, not the load balancer.
 >
 > - **Design for private connectivity.** Load Balancer works with Azure Private Link. If you spread application resources across virtual networks, you can connect resources in different virtual networks. Use virtual network peering or place Private Link in front of the internal load balancer. The Private Link option provides more secure access without needing a public IP address. It also restricts access from nonpeered networks.
 >
 >   You can authorize private links via [role-based access control](/azure/private-link/rbac-permissions) to restrict access to only the identities that need it.
 >
-> - **Protect your application from threats at the network edge.** For designs that use Load Balancer as the point of entry, implement traffic inspection at the endpoint level. This design doesn't have built-in security features like a WAF, so you must add extra measures to help secure HTTP applications. For more information, see [Integrate Azure Firewall with Standard Load Balancer: Public load balancer](/azure/firewall/integrate-lb#public-load-balancer). Also ensure that you protect the load balancer endpoints from distributed denial-of-service (DDoS) attacks. 
+> - **Protect your application from threats at the network edge.** For designs that use Load Balancer as the point of entry, implement traffic inspection at the endpoint level. This design doesn't have built-in security features like a WAF, so you must add extra measures to help secure HTTP applications. For more information, see [Public load balancer](/azure/firewall/integrate-lb#public-load-balancer). Also ensure that you protect the load balancer endpoints from distributed denial-of-service (DDoS) attacks. 
 > 
 > - **Encrypt network traffic.** Load Balancer works at Layer 4 and fully supports load balancing TCP and UDP traffic. Load Balancer doesn't support Secure Sockets Layer (SSL) and TLS termination. For HTTPS load balancing at the application layer, use Application Gateway.
 
@@ -143,7 +143,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > 
 > - **Set controls on spending.** Log and analyze Load Balancer costs. To manage costs effectively, use [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) to [create budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) and configure alerts. Costs can accumulate based on the amount of logged data and the storage duration, which affects bandwidth and storage expenses.
 >
-> - **Remove unused resources.** Identify and eliminate unused load balancer instances. Analyze logs to evaluate usage. Delete load balancer instances that aren't associated with back-end VMs. Examine traffic logs to find underused resources.
+> - **Remove unused resources.** Identify and remove unused load balancer instances. Analyze logs to evaluate usage. Delete load balancer instances that aren't associated with back-end VMs. Examine traffic logs to find underused resources.
 >
 > - **Optimize flow costs.** Use efficient protocols and data compression to reduce the load on the traffic flow and minimize costs. 
 >
@@ -151,7 +151,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   Implement optimization in the back-end flows. For example, multiple database queries that a load balancer intercepts can increase costs per query. To prevent this extra cost, consider implementing a stored procedure to consolidate the sequence of queries. 
 >
-> - **Evaluate the cost of operations.** Consider resource expenses and operational costs, like maintenance, scaling, and compliance. Load balancer rules can significantly impact costs. Reduce the number of rules to optimize financial and management costs.
+> - **Evaluate the cost of operations.** Consider resource expenses and operational costs, like maintenance, scaling, and compliance. Load balancer rules can significantly affect costs. Reduce the number of rules to optimize financial and management costs.
 
 #### Recommendations
 
@@ -163,7 +163,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 ## Operational Excellence
 
-Operational Excellence primarily focuses on procedures for **development practices, observability, and release management.**
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
@@ -196,7 +196,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 #### Design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Load Balancer.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline that's based on key performance indicators for Load Balancer.
 
 > [!div class="checklist"]
 >
@@ -229,7 +229,7 @@ Start your design strategy based on the [design review checklist for Performance
 Azure provides an extensive set of built-in policies related to Load Balancer and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - Load balancers, excluding Basic SKU load balancers, have resiliency features enabled for public IP addresses in their front end. 
-- Resource logs are enabled to track activities and events on your resources and provide visibility and insights into changes that occur. 
+- Resource logs are enabled to track activities and events that occur on your resources and provide visibility and insights into changes. 
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Load Balancer](/azure/governance/policy/samples/built-in-policies) and other policies that might impact the security of traffic distribution.
 
