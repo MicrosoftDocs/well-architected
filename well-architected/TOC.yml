@@ -347,7 +347,7 @@
         - name: ExpressRoute
           href: service-guides/azure-expressroute.md
         - name: Functions
-          href: service-guides/azure-functions-security.md
+          href: service-guides/azure-functions.md
         - name: Log Analytics
           href: service-guides/azure-log-analytics.md
         - name: Service Bus
