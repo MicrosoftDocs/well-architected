@@ -175,7 +175,7 @@ productDirectory:
     - title: Azure Functions
       summary: Process events with serverless code.
       imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
-      url: azure-functions-security.md
+      url: azure-functions.md
       azureCategories:
         - compute
         - containers
@@ -230,7 +230,7 @@ productDirectory:
     - title: Azure Service Fabric
       summary: Develop microservices and orchestrate containers on Windows or Linux.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
-      url: azure-service-fabric-well-architected-framework.md
+      url: azure-service-fabric.md
       azureCategories:
         - compute
         - containers

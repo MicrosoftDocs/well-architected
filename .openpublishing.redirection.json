@@ -2284,6 +2284,16 @@
 			"source_path": "well-architected/service-guides/azure-load-balancer/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-service-fabric-well-architected-framework.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-fabric",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-functions-security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-functions",
+			"redirect_document_id": true
 		}
 	]
 }
