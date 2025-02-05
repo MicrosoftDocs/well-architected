@@ -17,6 +17,8 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [How to use the Azure Well-Architected Framework documentation](.//what-is-well-architected-framework.md): We added a new section on adopting a phased learning process, emphasizing the importance of improving workload quality iteratively.
 
+#### Service guides
+
 This month, we made significant updates to many of our service guides. Here are some highlights:
 
 - [Azure App Service (Web Apps)](./service-guides/app-service-web-apps.md): We refined architectural recommendations, emphasizing the use of Azure Well-Architected Framework principles, and introducing new features and best practices. Explore new guidance covering the importance of redundancy, scaling strategies, health checks, managed identities, network security, cost monitoring, and deployment best practices.
@@ -27,7 +29,7 @@ This month, we made significant updates to many of our service guides. Here are 
 - [Azure Traffic Manager](./service-guides/azure-traffic-manager.md): Learn how to prevent unauthorized modifications, enhance DNS security, and use diagnostic logs and traffic view dashboards to optimize and troubleshoot Traffic Manager profiles.
 - [Azure Virtual Network](./service-guides/virtual-network.md): Explore guidance on overprovisioning IP address spaces, using network diagrams, adding redundancy, segmenting networks for security, and monitoring traffic patterns. Learn how to use infrastructure as code, optimize network traffic, and leverage Azure Network Watcher for performance insights.
 
-- ### Azure storage service guide retirement
+### Azure storage service guide retirement
 
 - This month, we announced the deprecation of the Azure Storage Accounts and Queue Storage service guide documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
 
