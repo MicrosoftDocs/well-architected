@@ -175,7 +175,7 @@ productDirectory:
     - title: Azure Functions
       summary: Process events with serverless code.
       imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
-      url: azure-functions-security.md
+      url: azure-functions.md
       azureCategories:
         - compute
         - containers
@@ -194,7 +194,7 @@ productDirectory:
     - title: Azure Load Balancer
       summary: Deliver high availability and network performance to your applications.
       imageSrc: https://static.docs.com/ui/media/product/azure/load-balancer.svg
-      url: ./azure-load-balancer/reliability.md
+      url: azure-load-balancer.md
       azureCategories:
         - networking
     # Card
@@ -220,13 +220,6 @@ productDirectory:
         - featured
         - ai-machine-learning
     # Card
-    - title: Azure Queue Storage
-      summary: Effectively scale apps according to traffic.
-      imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-      url: ./queue-storage/reliability.md
-      azureCategories:
-        - storage
-    # Card
     - title: Azure Service Bus
       summary: Connect across private and public cloud environments.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
@@ -237,7 +230,7 @@ productDirectory:
     - title: Azure Service Fabric
       summary: Develop microservices and orchestrate containers on Windows or Linux.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
-      url: azure-service-fabric-well-architected-framework.md
+      url: azure-service-fabric.md
       azureCategories:
         - compute
         - containers
@@ -266,7 +259,7 @@ productDirectory:
     - title: Azure Traffic Manager
       summary: Route incoming traffic for high performance and availability.
       imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
-      url: ./traffic-manager/reliability.md
+      url: azure-traffic-manager.md
       azureCategories:
         - management-and-governance
         - networking
@@ -278,10 +271,10 @@ productDirectory:
       azureCategories:
         - compute
     # Card
-    - title: Azure Virtual Network
+    - title: Virtual Network
       summary: Configure private networks and optionally connect to on-premises datacenters.
       imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
-      url: ./azure-virtual-network/reliability.md
+      url: virtual-network.md
       azureCategories:
         - networking
     # Card
@@ -295,38 +288,11 @@ productDirectory:
     - title: Log Analytics
       summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
-      url: log-analytics-cost-optimization.md
+      url: azure-log-analytics.md
       azureCategories:
         - analytics
         - management-and-governance
     # Card
-    - title: IP addresses
-      summary: Establish IP address-related services that enable communication in an Azure virtual network.
-      imageSrc: /media/common/i_web.svg
-      url: ip-addresses-cost-optimization.md
-      azureCategories:
-        - networking
-    # Card
-    - title: Network connectivity
-      summary: Choose from three Azure models for private network connectivity.
-      imageSrc: /media/common/i_multi-connect.svg
-      url: ./network-connectivity/reliability.md
-      azureCategories:
-        - networking
-    # Card
-    - title: Network virtual appliance (NVA)
-      summary: Control the flow of traffic between network segments that are classified with different security levels.
-      imageSrc: /media/common/i_agile.svg
-      url: ./network-virtual-appliances/reliability.md
-      azureCategories:
-        - networking
-    # Card
-    - title: Storage accounts
-      summary: Use storage accounts to contain all your Azure Storage data objects.
-      imageSrc: /media/common/i_generic-database.svg
-      url: ./storage-accounts/reliability.md
-      azureCategories:
-        - storage
 
 additionalContent:
   sections:
