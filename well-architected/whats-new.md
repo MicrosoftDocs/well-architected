@@ -29,10 +29,6 @@ This month, we made significant updates to many of our service guides. Here are 
 - [Azure Traffic Manager](./service-guides/azure-traffic-manager.md): Learn how to prevent unauthorized modifications, enhance DNS security, and use diagnostic logs and traffic view dashboards to optimize and troubleshoot Traffic Manager profiles.
 - [Azure Virtual Network](./service-guides/virtual-network.md): Explore guidance on overprovisioning IP address spaces, using network diagrams, adding redundancy, segmenting networks for security, and monitoring traffic patterns. Learn how to use infrastructure as code, optimize network traffic, and leverage Azure Network Watcher for performance insights.
 
-### Azure storage service guide retirement
-
-- This month, we announced the deprecation of the Azure Storage Accounts and Queue Storage service guide documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
-
 ## December 2024
 
 ### New articles
