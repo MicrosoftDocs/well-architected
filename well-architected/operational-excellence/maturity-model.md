@@ -64,7 +64,9 @@ Getting a solid foundation of IaC established will open up additional opportunit
 
 Prioritize security even at this early stage. Security measures are often based on the strategy of segmentation (roles, resources, networking, and more), which introduces complexities. The team must acknowledge those complexities and make sure security measures are built in at this stage and plan on investing in them over time. This approach avoids deferring security implementations to later stages.
 
-Security gates often introduce friction into development, support, and operations processes. Experiencing that friction from the start allows the workload team to adapt and looks for ways to optimize over time.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's a risk of friction in development, support, and operations processes. Security efforts often face resistance, even though teams start strong with good intentions. 
+> 
+> To mitigate the risk, add the security work in backlogs to have accountability on the team and make progress trackable alongside development tasks. 
 
 Make tools and processes transparent so that vulnerabilities can be easily detected through audits, and peer reviews. Explore industry-standard tools that support vulnerability scanning and security controls, even if not yet fully implemented. 
 
