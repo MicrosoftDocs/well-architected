@@ -15,7 +15,7 @@ azure.category:
 
 # Azure Well-Architected Framework perspective on Azure Functions
 
-Azure Functions is a serverless compute service that you can use to run event-driven code without having to manage the infrastructure directly. Azure Functions is a functions a service offering that abstracts the underlying infrastructure, which allows you to focus on your code. Azure Functions automatically scales based on demand and charges you only for the resources consumed during operation.
+Azure Functions is a serverless compute service that you can use to run event-driven code without having to manage the infrastructure directly. Azure Functions is a function as a service offering that abstracts the underlying infrastructure. This abstraction allows you to focus on your code. Azure Functions automatically scales based on demand and charges you only for the resources consumed during operation.
 
 This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Azure Functions as the compute solution for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -103,7 +103,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Enable managed identities for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets, which enhances security. |
+| Enable managed identities for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets. This approach enhances security. |
 | Use Azure Key Vault for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Helps protect sensitive information, such as API keys and connection strings, by storing them securely and automating secret rotation when it isn't feasible to use a managed identity. |
 | [Integrate with a virtual network and use private endpoints](/azure/azure-functions/functions-create-vnet). | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints aren't available in the Consumption hosting plan. |
 
