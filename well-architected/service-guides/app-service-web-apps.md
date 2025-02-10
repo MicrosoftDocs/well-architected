@@ -331,7 +331,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|(App Service) [Enable the *Always On* setting](/azure/app-service/configure-common) when applications share a single App Service plan. App Service apps automatically unload when idle to save resources. The next request triggers a cold start, which can cause request timeouts. | The application is never unloaded with Always On enabled.|
+|(App Service) [Enable the *Always On* setting](/azure/app-service/configure-common) when applications share a single App Service plan. App Service apps automatically unload when idle to save resources. The next request triggers a cold start, which can cause request time-outs. | The application is never unloaded with Always On enabled.|
 |(Web Apps) [Consider using HTTP/2](/azure/app-service/configure-common) for applications to improve protocol efficiency. | Choose HTTP/2 over HTTP/1.1 because HTTP/2 fully multiplexes connections, reuses connections to reduce overhead, and compresses headers to minimize data transfer.|
 
 ## Tradeoffs
