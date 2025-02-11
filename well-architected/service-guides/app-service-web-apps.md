@@ -79,7 +79,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   The [App Service plan tier](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) that you choose affects scaling in terms of the number of instances and the compute units.
 >
-> - Ensure proper app initialization so that new instances warm up quickly and can receive requests.
+> **Ensure proper app initialization:** Ensure proper app initialization so that new instances warm up quickly and can receive requests.
 >
 >    Strive for stateless applications when possible. Reliably scaling state with new instances can increase complexity. Consider an external data store that you can scale independently if you need to store application state. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load across other instances.
 >
