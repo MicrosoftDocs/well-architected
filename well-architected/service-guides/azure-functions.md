@@ -171,7 +171,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 ### Design checklist
 
-Start your performance strategy with the [Design principles of Performance Efficiency](../performance-efficiency/principles.md) and design your function apps to scale and perform optimally.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Functions.
 
 > [!div class="checklist"]
 >
