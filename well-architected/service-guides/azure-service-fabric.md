@@ -3,7 +3,7 @@ title: Well-Architected Framework perspective on Azure Service Fabric
 description: Design considerations and recommendations about Azure Service Fabric.
 author: tomvcassidy
 ms.author: tomcassidy
-ms.date: 3/18/2022
+ms.date: 1/28/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
