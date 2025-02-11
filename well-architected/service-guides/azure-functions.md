@@ -193,13 +193,13 @@ Start your performance strategy with the [Design principles of Performance Effic
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Azure Functions and its dependencies. A set of Azure policies can audit some of the preceding recommendations. For example, you can enforce policies that require:
+Azure provides an extensive set of built-in policies related to Azure Functions and its dependencies. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
 
-- Managed identities to be enabled for all function apps.
-- Function apps to use only private endpoints for network security.
-- Diagnostic logging to be enabled for all function apps.
+- All function apps have managed identities enabled.
+- Function apps are using only private endpoints for network security.
+- Diagnostic logging is enabled for all function apps.
 
-For more information about policies that align with your organizational requirements, see [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies).
+For comprehensive governance, review the [Azure Policy built-in definitions](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect the security of the network layer.
 
 ## Azure Advisor recommendations
 
