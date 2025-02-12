@@ -35,7 +35,7 @@ The baseline should inform the architectural design of the workload, showing whe
 
 #### &#10003; Integrate baseline security in the development phases of software development lifecycle (SDLC)
 
-In addition to determining where security components should interact with other workload components, you need to define how you'll design your workload operations processes and procedures to meet your security requirements. Adopting safe deployment practices in your operations standards at the outset of your workload development will help ensure that your SDLC will follow security best practices as your workload becomes more mature and complex. See the [safe deployments guide](../operational-excellence/safe-deployments) for detailed guidance on this topic. 
+As you begin the development phase of your workload implementation, standardize practices that align to your security baseline requirements. These practices should include regularly occurring code reviews and automated security scans, input validation, and output encoding. See the guide for [developing secure applications in Azure](/azure/security/develop/secure-develop) for a detailed review of best practices.
 
 #### &#10003; Externalize identity and access management to an identity provider (IdP)
 
@@ -64,17 +64,22 @@ Securing your data in transit helps protect you from attackers gaining access to
 Application secrets are confidential components that facilitate communication between workload components, including sensitive data such as passwords, API keys, and certificates used for authentication and resource access. Proper management of these secrets is crucial for maintaining security and integrity, as improper handling can lead to data breaches, service disruption, regulatory violations, and other issues. Use a solution like Azure KeyVault to manage secrets securely.
 
 
-# [Level 2](#tab/level2)
+# [**Level 2 - Threat prevention controls**](#tab/level2)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Threat prevention controls
+![Goal icon](../_images/goal.svg) **Enhance the baseline security with threat prevention measures**
 
-<!-- No more than 5 H4 headings per tab -->
+#### &#10003; Focus on securing the deployment phase of your software development lifecycle (SDLC)
 
-#### Example heading 
+Level 1 of the Security pillar focuses on securing the development phase of your SDLC. Level 2 assumes that you have established baseline security measures to the development phase and you are ready to deploy the first iterations of your workload or components of your workload. In this phase, focus on building your deployment automation to optimize your efficiency and security. Use deployment pipelines like [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) or [Github Actions](https://docs.github.com/en/actions/about-github-actions/understanding-github-actions) and standardize on using these pipelines **exclusively for all changes** to your workload. Routinely perform good code hygiene practices to ensure that your codebase is free of defects and deprecated code. Finally, familiarize your team with the [Microsoft Security Development Lifecycle](https://www.microsoft.com/en-us/securityengineering/sdl). As your workload evolves, you'll need to regularly revisit the recommendations found in this guidance to ensure that your SDLC remains optimized for security.
 
-<!-- No more than 100 words under each H4 heading. -->
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Securing your SDLC is an interative process that requires adopting new processes and sometimes a shift in mindset for developers. Applying controls on deployments can be frustrating for developers, so it helps to foster a culture of shared responsibility for security. While potentially slowing down development velocity, securing your deployments sets your team up for long-term success.
+
+#### &#10003; Develop a maintenance plan
+
+In the context of security, a maintenance plan refers to standard practices you adopt to maintain the security of your code and workload components throughout its lifecycle. Build mechanisms and processes to handle emergency fixes in your deployment pipeline. This might include accelerating deployments through quality gates by using direct communication between teams and developing expedited roll-back and roll-forward plans. Include patching of software, libraries, and infrastructure in your standard processes to ensure that all components of your workload are always up-to-date. Kepp a catalog of versioned assets to help during incident response, issue resolution, and system recovery. You can also compare these versions with known vulnerabilities (CVEs) using automation.
+
 
 # [Level 3](#tab/level3)
 
