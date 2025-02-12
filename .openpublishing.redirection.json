@@ -898,12 +898,12 @@
 		{
 			"source_path": "well-architected/services/messaging/queue-storage/operational-excellence.md",
 			"redirect_url": "/azure/storage/queues/",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/queue-storage/reliability.md",
 			"redirect_url": "/azure/storage/queues/",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/service-bus/operational-excellence.md",
