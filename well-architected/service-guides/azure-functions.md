@@ -76,10 +76,10 @@ Start your design strategy based on the [design review checklist for Reliability
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Configure automatic retries for transient errors. Learn more about [Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages). | Improves reliability by automatically retrying failed runs, which reduces the likelihood of data loss or interruption. |
-| Use Durable Functions for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable operation of long-running workflows, with built-in state management and automatic retries. |
-| Implement monitoring and centralized logging by using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function operations and dependencies. |
-|Scale out automatically based on the Functions hosting plan, trigger type, and demand. [Learn more about scaling](/azure/azure-functions/functions-scale). | Helps ensure that your application can handle increases in traffic without manual intervention, which improves reliability and performance. |
+| Configure **automatic retries** for transient errors. Learn more about [Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages). | Improves reliability by automatically retrying failed runs, which reduces the likelihood of data loss or interruption. |
+| Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable operation of long-running workflows, with built-in state management and automatic retries. |
+| Implement **monitoring** and **centralized logging** by using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function operations and dependencies. |
+|**Scale out automatically** based on the Functions hosting plan, trigger type, and demand. [Learn more about scaling](/azure/azure-functions/functions-scale). | Helps ensure that your application can handle increases in traffic without manual intervention, which improves reliability and performance. |
 
 ## Security
 
@@ -103,15 +103,15 @@ Start your design strategy based on the [design review checklist for Security](.
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Enable managed identities for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets. This approach enhances security. |
-| Use Azure Key Vault for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Helps protect sensitive information, such as API keys and connection strings, by storing it securely and automating secret rotation when it isn't feasible to use a managed identity. |
-| [Integrate with a virtual network and use private endpoints](/azure/azure-functions/functions-create-vnet). | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints aren't available in the Consumption hosting plan. |
+| **Enable managed identities** for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets. This approach enhances security. |
+| Use **Azure Key Vault** for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Helps protect sensitive information, such as API keys and connection strings, by storing it securely and automating secret rotation when it isn't feasible to use a managed identity. |
+| [**Integrate with a virtual network** and use **private endpoints**](/azure/azure-functions/functions-create-vnet). | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints aren't available in the Consumption hosting plan. |
 
 ## Cost Optimization
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.  
 
-The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Functions and its environment.
+The [**Cost Optimization design principles**](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Functions and its environment.
 
 ### Design checklist
 
@@ -131,15 +131,15 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Use the Consumption plan for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used when functions are performed, which avoids costs associated with idle resources. |
-| Reserve capacity for [Elastic Premium plans](/azure/azure-functions/functions-premium-plan) or [Dedicated App Service plans](/azure/azure-functions/dedicated-plan) if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady usage patterns. |
-| Regularly monitor costs and set up alerts for anomalies. [Monitor costs with alerts](/azure/cost-management-billing/cost-management-billing-overview#monitor-costs-with-alerts). | Helps identify cost spikes early, which enables proactive management and optimization. |
+| Use the **Consumption plan** for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used when functions are performed, which avoids costs associated with idle resources. |
+| Reserve capacity for **[Elastic Premium plans](/azure/azure-functions/functions-premium-plan) or [Dedicated App Service plans](/azure/azure-functions/dedicated-plan)** if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady usage patterns. |
+| Regularly **monitor costs** and set up alerts for anomalies. [Monitor costs with alerts](/azure/cost-management-billing/cost-management-billing-overview#monitor-costs-with-alerts). | Helps identify cost spikes early, which enables proactive management and optimization. |
 
 ## Operational Excellence
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
+The [**Operational Excellence design principles**](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 ### Design checklist
 
@@ -159,15 +159,15 @@ Start your design strategy based on the [design review checklist for Operational
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Automate deployments with CI/CD pipelines by using Azure DevOps or GitHub Actions. [Set up CI/CD](/azure/azure-functions/functions-continuous-deployment). | Improves deployment consistency, reduces manual errors, and accelerates time-to-market for new features. |
-| Use [deployment slots](/azure/azure-functions/functions-deployment-slots) for staging changes before the production release. | Reduces the risk of introducing errors into production and enables safe rollbacks if problems are detected. |
-| Implement centralized monitoring using Application Insights and Azure Monitor by using available [metrics](/azure/azure-functions/monitor-functions-reference?tabs=consumption-plan). | Enhances visibility into function performance, which helps identify and resolve problems quickly. |
+| Automate deployments with **CI/CD pipelines** by using Azure DevOps or GitHub Actions. [Set up CI/CD](/azure/azure-functions/functions-continuous-deployment). | Improves deployment consistency, reduces manual errors, and accelerates time-to-market for new features. |
+| Use [**deployment slots**](/azure/azure-functions/functions-deployment-slots) for staging changes before the production release. | Reduces the risk of introducing errors into production and enables safe rollbacks if problems are detected. |
+| Implement **centralized monitoring** using Application Insights and Azure Monitor by using available [metrics](/azure/azure-functions/monitor-functions-reference?tabs=consumption-plan). | Enhances visibility into function performance, which helps identify and resolve problems quickly. |
 
 ## Performance Efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
+The [**Performance Efficiency design principles**](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 ### Design checklist
 
@@ -187,9 +187,9 @@ Start your design strategy based on the [design review checklist for Performance
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Use the Elastic Premium plan with a prewarmed instance to minimize cold-start latency. [Understand cold starts](/azure/azure-functions/functions-scale#cold-start-behavior). | Reduces the latency associated with cold starts, which improves response times for time-sensitive applications. |
-| Optimize function code to reduce operation time. Understand the [best practices for Azure Functions](/azure/azure-functions/performance-reliability). | Enhances performance by reducing the time and resources required for each function to run. |
-| Enable autoscaling to automatically adjust capacity based on demand. [Configure autoscaling](/azure/azure-functions/functions-scale). | Ensures that your function apps can handle varying loads without manual intervention. This approach helps maintain performance under pressure. |
+| Use the **Elastic Premium plan with a prewarmed instance** to minimize cold-start latency. [Understand cold starts](/azure/azure-functions/functions-scale#cold-start-behavior). | Reduces the latency associated with cold starts, which improves response times for time-sensitive applications. |
+| **Optimize function code** to reduce operation time. Understand the [best practices for Azure Functions](/azure/azure-functions/performance-reliability). | Enhances performance by reducing the time and resources required for each function to run. |
+| **Enable autoscaling** to automatically adjust capacity based on demand. [Configure autoscaling](/azure/azure-functions/functions-scale). | Ensures that your function apps can handle varying loads without manual intervention. This approach helps maintain performance under pressure. |
 
 ## Azure policies
 
@@ -203,7 +203,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. 
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
 

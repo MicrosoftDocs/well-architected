@@ -79,9 +79,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   The [App Service plan tier](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) that you choose affects scaling in terms of the number of instances and the compute units.
 >
-> Ensure proper app initialization so that new instances warm up quickly and can receive requests.
->
->    Strive for stateless applications when possible. Reliably scaling state with new instances can increase complexity. Consider an external data store that you can scale independently if you need to store application state. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load across other instances.
+> - **Ensure proper app initialization so that new instances warm up quickly and can receive requests.** Strive for stateless applications when possible. Reliably scaling state with new instances can increase complexity. Consider an external data store that you can scale independently if you need to store application state. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load across other instances.
 >
 >    Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. You should log scaling events so that you can troubleshoot problems that might arise and optimize your scaling strategy over time.
 >
@@ -380,15 +378,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. 
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
-
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 
 ## Next steps
 
