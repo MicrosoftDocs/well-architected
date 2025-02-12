@@ -80,6 +80,17 @@ Level 1 of the Security pillar focuses on securing the development phase of your
 
 In the context of security, a maintenance plan refers to standard practices you adopt to maintain the security of your code and workload components throughout its lifecycle. Build mechanisms and processes to handle emergency fixes in your deployment pipeline. This might include accelerating deployments through quality gates by using direct communication between teams and developing expedited roll-back and roll-forward plans. Include patching of software, libraries, and infrastructure in your standard processes to ensure that all components of your workload are always up-to-date. Kepp a catalog of versioned assets to help during incident response, issue resolution, and system recovery. You can also compare these versions with known vulnerabilities (CVEs) using automation.
 
+#### &#10003; Classify data based on sensitivity needs
+
+Adopting a data classification system and its supporting processes will help you ensure that you maintain confidentiality and integrity. Start with broad categories like Public, General, Confidential, and Highly Confidential, and apply appropriate levels of security to protect those categories throughout your data stores. Investigate investing in tooling to govern your data, like [Microsoft Purview](/purview/purview). See the [data classification guidance](compliance/assurance/assurance-create-data-classification-framework) found in Microsoft's compliance documentation for detailed best practices.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Data classification can be an expensive undertaking in terms of costs and effort, even if you use tooling. Once you've created your initial categories and performed an initial classification exercise, determine how much effort will be involved with ongoing maintenance manually or with tooling. Be sure to factor in time and costs for training in your estimates.
+
+#### &#10003; Apply authorization and authentication controls
+
+As part of your identity provider (IdP) soloution implementation, you can start applying controls related to authorization and authentication. Using role-based access controls (RBAC) helps you limit access to workload components by applying granular permissions to resources based on user roles. Apply these permissions based on the principle of least access. Further enhance your controls by using conditional access policies. These policies grant or deny access to resources based on certain conditions like a user's geographic location or the status of a user device's compliance with security policies. You can also take advantage of features like just-in-time access to lock down access to sensitive components. 
+
+:::image type="icon" source="../_images/risk.svg"::: **Risk**: Administrative accounts are one of the most critical attack vectors in your environment and you should only create and use them after careful consideration of your needs and how they align with [privileged accounts best practices](/entra/identity/role-based-access-control/best-practices). If attackers gain control of an administrative account, your entire environment could be at severe risk.
 
 # [Level 3](#tab/level3)
 
