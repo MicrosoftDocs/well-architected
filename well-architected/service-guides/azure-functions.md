@@ -207,11 +207,6 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 
 For more information, see [Azure Advisor](/azure/advisor).
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 
 ## Next steps
 
