@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework Perspective on Azure App Service (Web Ap
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for the Web Apps feature of Azure App Service.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 02/11/2025
+ms.date: 02/12/2025
 ms.topic: conceptual
 ms.subservice: waf-service-guide
 products:
@@ -344,7 +344,7 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 - **Higher density:** Colocate multiple apps within the same App Service plan to minimize resources. All apps share resources like CPU and memory, which can save money and reduce operational complexity. This approach also optimizes resource usage. Apps can use idle resources from another app if load patterns change over time.
 
-  Also consider the disadvantages, like resource contention. For example, spikes in usage or instability of an app can affect the performance of other apps. Incidents in one app can also permeate other apps within the shared environment, which can affect security. For critical applications that require high availability and performance, isolated environments like App Service Environment v3 provide dedicated resources but at a higher cost. Consider using shared environments for noncritical workloads and isolated environments for mission-critical applications.
+  Also consider the disadvantages, like resource contention. For example, spikes in usage or instability of an app can affect the performance of other apps. Incidents in one app can also permeate other apps within the shared environment, which can affect security. For critical applications that require high availability and performance, isolated environments like **App Service Environment v3** provide dedicated resources but at a higher cost. Consider using shared environments for noncritical workloads and isolated environments for mission-critical applications.
 
 - **Higher isolation:** Isolation helps prevent interference. This strategy applies to security, performance, and even segregation of development, testing, and production environments.
 
@@ -389,7 +389,6 @@ Consider the following articles as resources that demonstrate the recommendation
 - Use the following reference architectures as examples of how to apply these recommendations to a workload.
 
   - If you haven't deployed a web app, see [Basic web application](/azure/architecture/web-apps/app-service/architectures/basic-web-app).
-  
   - For a foundational architecture as your starting point for a production-grade deployment, see [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
   
 - Use the following product documentation to build your implementation expertise:

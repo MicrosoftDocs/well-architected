@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework Perspective on Azure Functions
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations for Azure Functions.
 author: PageWriter-MSFT
 ms.author: mohamad
-ms.date: 02/11/2025
+ms.date: 02/12/2025
 ms.topic: conceptual
 ms. service: waf
 ms. subservice: waf-service-guide
@@ -206,7 +206,6 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
-
 
 ## Next steps
 
