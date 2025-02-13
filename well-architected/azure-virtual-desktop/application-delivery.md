@@ -1,8 +1,8 @@
 ---
 title: Application Delivery Considerations for Azure Virtual Desktop Workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
-author: PageWriter-MSFT
-ms.author: prwilk
+author: jcoyne-MSFT
+ms.author: jessecoyne
 ms.date: 01/30/2025
 ms.topic: conceptual
 ms.service: azure-waf
@@ -33,22 +33,20 @@ In general, understand the commonalities between use cases, and standardize host
 
 |Recommendation|Benefit|
 |---|---|
-|Deploy across regions, if regional failure isn't tolerable. <br> Understand how the metadata is replicated.|TBD|
-|Configure the diagnostic settings to monitor the solution health.|TBD|
-|Use trusted images from the Azure Marketplace, and install software from trusted sources. Regularly update your base image and software. <br><br>For pooled machines, ensure that you update each host pool's hosts at the same time.|TBD|
-|Apply appropriate segmentation for your sensitive workloads, such as isolating high-sensitivity workloads and running them on confidential compute-series VMs.|TBD|
-|Understand the cost profile of the host pool and users, and run cost modeling to create an optimized environment. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to get estimates for the solution. Create budgets in Azure to ensure that the deployment aligns with cost estimates.|TBD|
-|Evaluate the cost associated with cloud-based desktop solutions, such as Windows 365.| Cloud-based desktop solutions might be more suitable for personal desktop needs because of their lower management overhead and fixed monthly cost, versus the consumption-based model of Virtual Desktop. |
-|Evaluate which applications or users could operate on a multi-session device. <br><br>Create your use cases with this consideration in mind. You can use FSLogix to restrict application access so that different users can't access the same host pool.|Multi-session host pools usually offer a lower cost per user than single-session configurations.|
-|Use Azure Policy to promote consistency across Virtual Desktop environments, such as diagnostic settings and tagging.|TBD|
-|Use infrastructure as code (IaC) for deployments. Use resources, such as Azure VM Image Builder and the [Virtual Desktop Accelerator](https://github.com/microsoft/AVDAccelerator). |  These approaches facilitate standardization across multiple host pools, which drives repeatability. They also reduce engineering overhead. |
-|Do regular host pool maintenance, including updating images.|TBD|
-| Use validation host pools to test updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.| TBD |
-|Use a pooled host pool.| Pooled host pools streamline your reliability solution and minimize costs. |
-|Understand the criticality of the host pool and the workloads that it supports. Ensure that the combined service-level agreements (SLAs) meet the requirements of the workload. Consider using Azure Backup and Azure Site Recovery.| TBD |
-|Continuously monitor the actual resource usage and adjust VM sizes accordingly.| TBD |
+|Understand the criticality of the host pool and the workloads that it supports. Ensure that the combined service-level agreements (SLAs) meet the requirements of the workload. Define each workloads RPO and RTO. Evaluate the benefits and implications of using Active-Active vs. Active-Passive architecture across personal and pooled host pools.| Invoking the appropriate BCDR strategy will ensure that business leaders expectations and end users needs are both met or exceeded. |
+|Target a Stage 3 multi-region deployment if regional failure isn't tolerable. <br> Understand how the metadata is replicated across your AVD objects and resources.|Maintain business continuity for your workload(s) and keep users functional even during a regional outage.|
+|Onboard your Virtual Machines to AVDI using Azure Monitor Agent to monitor your VMs health.|Observability into the state of your VMs will be crucial for operational health and stability.|
+|Use trusted images from the Azure Marketplace and only install software from trusted sources. Regularly update your base image and software. <br><br>For pooled host pools, ensure that you update all session hosts and avoid configuration drift.|Incrases security posture and reduces attack surface from vulnerabilities that could compromise your workload(s). <br><br> Ensures a consistent and realiable user experience no matter the session host a user is brokered to.|
+|Apply appropriate segmentation for your sensitive workloads, such as isolating high-sensitivity workloads and running them on confidential compute-series VMs.|Hardware-based TEE hardens guest OS memory and state, increasing your security posture.|
+|Understand the cost profile of the host pool's sessionhosts and users, and run cost modeling to create an optimized environment. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to get estimates for the solution. Create budgets in Azure to ensure that the deployment aligns with cost estimates.|Establishing budgets helps remove any surprise in costs for AVD, especially if you include future growth or VMs running more than the expected number of hours.|
+|Evaluate the cost associated with cloud-based desktop solutions, such as Windows 365.| Cloud-based desktop solutions might be more suitable for personal desktop needs because of their lower management overhead and fixed monthly cost, versus the consumption-based model of Azure Virtual Desktop. |
+|Evaluate which applications or users could operate on a multi-session session host. <br><br>Create your use cases with this consideration in mind. You can use FSLogix to restrict application access so that different users get apps than others on the same host pool.|Multi-session host pools usually offer a lower cost per user than Personal Desktop configurations.|
+|Use Azure Policy to promote consistency across Azure Virtual Desktop environments, such as VM configurations, enabling AVDI, tagging, and much more.|Improves resource deployment consistency, avoiding costly redeployments, or risks to security posture.|
+|Use infrastructure as code (IaC) for deployments. Use resources, such as Azure VM Image Builder and the [Virtual Desktop Accelerator](https://github.com/microsoft/AVDAccelerator). |  These approaches facilitate standardization across multiple host pools, which drives repeatability. They also reduce engineering and operations overhead. |
+|Use validation host pools to test incoming AVD updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.|Ensures that any incoming features coming to AVD are tested and validated. If issues arrise, operations can temporarily disable automatic updates of the AVD agents.|
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Select an appropriate retention time for the logs. Longer retention times increase cost but provide long-term analysis of the environment.  
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Select the appropriate architecture and hostpool types for each user persona that your Azure Virtual Desktop environment supports. Higher resiliency comes with more cost and added complexity, but lower cost also incurs gaps in resiliency for the sake of simplicity. 
 
 > [!NOTE]
 > If you use a pooled host pool, you have two load balancing algorithm options. Each one directly affects your cost and performance efficiency.
