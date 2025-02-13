@@ -1,8 +1,8 @@
 ---
 title: Application delivery considerations for Azure Virtual Desktop workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
-author: PageWriter-MSFT
-ms.author: prwilk
+author: roarrioj
+ms.author: roarrioj
 ms.date: 7/30/2024
 ms.topic: conceptual
 ms.service: azure-waf
@@ -111,6 +111,8 @@ Some sizes offer special features:
 
 - DCasv5 and ECasv5 are confidential sizes that provide robust high-security features. Examples of these features include hardware-based isolation, encryption, and dedicated virtual trusted-platform modules.
 - Certain sizes provide GPU support. The NV-series, which is backed by NVIDIA Tesla M60 GPUs, can be helpful if you use frameworks such as OpenGL and DirectX, or in general, if you use graphics-intensive applications.
+
+[Guidelines for Session Host Virtual Machine Sizing to Improve Performance](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/virtual-machine-recs)
 
 ##### Recommendations
 
