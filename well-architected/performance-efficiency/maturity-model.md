@@ -65,13 +65,46 @@ Based on the answers to these questions, you can [choose the best data service](
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-![Goal icon](../_images/goal.svg) **Identify the intial performance metrics and begin measuring performance**
+![Goal icon](../_images/goal.svg) **Begin measuring performance using defined metrics and plan for optimization**
 
 <!-- No more than 5 H4 headings per tab -->
 
+#### &#10003; Rank and prioritize flows based on performance impact and criticality
+
+Map and understand every user path and component communication within your workload to find performance bottlenecks and opportunities for optimization. Evaluate each flow's alignment with business objectives, user impact. Analyze performance data to identify patterns and anomalies.  Categorize flows as High, Medium, or Low based on criteria like:
+
+- **Frequency:** How often the flow is performed, like searching for a product.
+- **Criticality:** How essential the flow is to the overall success of the application, like a user profile lookup.
+- **Risk:** How risky the flow is to overall performance, like generating a complex report.
+- **Data intensiveness:** How much pressure the flow puts on the data layer.
+- **Architecture intensiveness:** How many components the flow touches across the workload.
+
 #### &#10003; Establish key metrics for your workload resources and components that help you meet your targets
 
-<!-- No more than 100 words under each H4 heading. -->
+Set performance targets for your workload components and resources based on market research, competitive analysis, and surveys. Focus on key metrics like response time, throughput, and latency. Establish targets for different components, user flows, workflows, data flows, external dependencies, and overall workload performance.
+
+Define realistic and measurable targets for each metric, considering customer expectations and using percentiles (for example, P99, P95, and P50) for a comprehensive view. Perform testing to establish baseline performance, but don't overemphasize optimization.
+
+#### &#10003; Perform your intial capacity planning exercise
+
+Capacity planning is an iterative practice that should be regularly performed throughout your workload's lifecycle. At this stage, you might not be fully familiar with all of the technologies in use, or you may still be testing different 
+options, so your ability to thoroughly plan for future needs might be limited. For this initial capacity planning exercise, the goal should be to evolve from reactive capacity management (adding resources to meet immediate demand) to proactive planning (anticipating what capacity you'll need for the next X amount of time). To do this, collect and analyze data on resource usage, including historical patterns for any existing workloads. Use statistical analysis, trend analysis, and predictive modeling to forecast future needs. Ensure these forecasts align with workload objectives.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: In a traditional, datacenter-based environment, over-provisioning is a common approach for capacity planning. In a cloud environment, over-provisioning can be a waste of money and you should take careful consideration of your business expectations to develop a timeline for adding capacity in a way that will meet your performance needs without negatively affecting your budget.
+
+#### &#10003; Investigate design patterns to support performance efficiency
+
+There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or by developing a sharding strategy. Review the [design patterns](./design-patterns.md) guide for a comprehensive list of patterns that might help you as you enhance your workload.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Some design patterns may add a degree of complexity to your workload, so weigh the additional management burden against your efficiency gains to determine whether a particular pattern is worth implementing.
+
+#### &#10003; Collect and monitor performance data for resources across your workload
+
+Collect application performance data like throughput, latency, and completion times to identify bottlenecks and improve user experience. Use distributed tracing and structured logging for easier analysis. Gather metrics and logs for all resources, and use tools like Azure Monitor Insights for performance monitoring. Collect database and storage data, and gather performance metrics for virtual machines. Store all of the collected data in one place for easy access and analysis.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be careful to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
+
+
 
 # [Level 3](#tab/level3)
 
