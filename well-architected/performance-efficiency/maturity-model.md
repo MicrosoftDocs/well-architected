@@ -69,15 +69,15 @@ Based on the answers to these questions, you can [choose the best data service](
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### &#10003; Rank and prioritize flows based on performance impact and criticality
+#### &#10003; Rank and prioritize flows from a performance perspective
 
 Map and understand every user path and component communication within your workload to find performance bottlenecks and opportunities for optimization. Evaluate each flow's alignment with business objectives, user impact. Analyze performance data to identify patterns and anomalies.  Categorize flows as High, Medium, or Low based on criteria like:
 
-- **Frequency:** How often the flow is performed, like searching for a product.
-- **Criticality:** How essential the flow is to the overall success of the application, like a user profile lookup.
-- **Risk:** How risky the flow is to overall performance, like generating a complex report.
-- **Data intensiveness:** How much pressure the flow puts on the data layer.
-- **Architecture intensiveness:** How many components the flow touches across the workload.
+- *Frequency:* How often the flow is performed, like searching for a product.
+- *Criticality:* How essential the flow is to the overall success of the application, like a user profile lookup.
+- *Risk:* How risky the flow is to overall performance, like generating a complex report.
+- *Data intensiveness:* How much pressure the flow puts on the data layer.
+- *Architecture intensiveness:* How many components the flow touches across the workload.
 
 #### &#10003; Establish key metrics for your workload resources and components that help you meet your targets
 
