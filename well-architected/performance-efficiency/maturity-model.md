@@ -61,15 +61,15 @@ Based on the answers to these questions, you can [choose the best data service](
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Don't over-engineer your data components by choosing different data services for components that could be consolidated into a single data store. Look to strike a balance between performance vs cost and complexity. 
 
 
-# [Level 2](#tab/level2)
+# [**Level 2 Baseline performance measurements** ](#tab/level2)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Redundancy, Resiliency, and Recovery
+![Goal icon](../_images/goal.svg) **Identify the intial performance metrics and begin measuring performance**
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### Example heading 
+#### &#10003; Establish key metrics for your workload resources and components that help you meet your targets
 
 <!-- No more than 100 words under each H4 heading. -->
 
