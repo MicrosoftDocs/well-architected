@@ -92,6 +92,14 @@ As part of your identity provider (IdP) soloution implementation, you can start 
 
 :::image type="icon" source="../_images/risk.svg"::: **Risk**: Administrative accounts are one of the most critical attack vectors in your environment and you should only create and use them after careful consideration of your needs and how they align with [privileged accounts best practices](/entra/identity/role-based-access-control/best-practices). If attackers gain control of an administrative account, your entire environment could be at severe risk.
 
+#### &#10003; Secure your network ingress
+
+Securing your network ingress to extent practical greatly improves your overall security posture, as it is your first line of defense against outside attackers. Your cloud provider may have a wide variety of tools that you can use in your particular environment, but be sure to understand all possible ingress points in your workload. You may have a virtual network that you can add firewalling directly into the network or its subnets, like Network Security Groups in Azure virtual networks. If you are using platform resources like Azure SQL Database, you might have options to limit or diable public and private access within the configuration of the resource itself. Likewise, limit or disable any direct access to virtual machines to the extent practical. In general, prefer using a native or third-party firewall to control all ingress to your workload. This could also be a web application firewall that is built into a load balancing solution, like Azure Front Door or an API gateway, like Azure API Management.
+
+#### &#10003; Harden the attack surface
+
+Hardening the workload is an iterative process of continuous improvement. Be vigilant about analyzing the workload for vulnerabilities. As your workload matures, using a vulnerability scanning tool will help you easily identify vulnerable components, but early in your development it may be a better strategy to perform the hardening exercise manually. Look at the configurations of your components to look for potential weaknesses like misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that can be shutdown or removed entirely and for unused accounts that can be deactivated.
+
 # [Level 3](#tab/level3)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
