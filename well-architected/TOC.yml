@@ -344,8 +344,6 @@
           href: service-guides/azure-functions.md
         - name: IoT Hub
           href: service-guides/iot-hub.md
-        - name: IP addresses
-          href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
           href: service-guides/azure-log-analytics.md
         - name: Service Bus

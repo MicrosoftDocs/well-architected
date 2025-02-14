@@ -293,27 +293,6 @@ productDirectory:
         - analytics
         - management-and-governance
     # Card
-    - title: IP addresses
-      summary: Establish IP address-related services that enable communication in an Azure virtual network.
-      imageSrc: /media/common/i_web.svg
-      url: ip-addresses-cost-optimization.md
-      azureCategories:
-        - networking
-    # Card
-    - title: Network connectivity
-      summary: Choose from three Azure models for private network connectivity.
-      imageSrc: /media/common/i_multi-connect.svg
-      url: ./network-connectivity/reliability.md
-      azureCategories:
-        - networking
-    # Card
-    - title: Network virtual appliance (NVA)
-      summary: Control the flow of traffic between network segments that are classified with different security levels.
-      imageSrc: /media/common/i_agile.svg
-      url: ./network-virtual-appliances/reliability.md
-      azureCategories:
-        - networking
-    # Card
     - title: Azure IoT Hub
       summary: Connect, monitor, and manage IoT assets at scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
