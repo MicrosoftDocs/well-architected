@@ -61,7 +61,7 @@ Based on the answers to these questions, you can [choose the best data service](
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Don't over-engineer your data components by choosing different data services for components that could be consolidated into a single data store. Look to strike a balance between performance vs cost and complexity. 
 
 
-# [**Level 2 Baseline performance measurements** ](#tab/level2)
+# [**Level 2 - Baseline performance measurements** ](#tab/level2)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
