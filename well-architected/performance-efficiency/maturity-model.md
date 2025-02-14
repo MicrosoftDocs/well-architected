@@ -67,7 +67,7 @@ Based on the answers to these questions, you can [choose the best data service](
 
 ![Goal icon](../_images/goal.svg) **Begin measuring performance using defined metrics and plan for optimization**
 
-In level 1 of the Performance Efficiency pillar, the focus in on understanding the performance expectations for the workload and choosing infrastructure services that can help you meet those expectations. Level 2 focuses on decomposing your workload into flows and components and setting measurable targets and metrics that you can capture and analyze for future optimizations. You should also investigate design patterns that may help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities will help you build a plan for the near-term future of your workload, ensuring that performance doesn't suffer as the workload evolves.
+In level 1 of the Performance Efficiency pillar, the focus is on understanding the performance expectations for the workload and choosing infrastructure services that can help you meet those expectations. Level 2 focuses on decomposing your workload into flows and components and setting measurable targets and metrics that you can capture and analyze for future optimizations. You should also investigate design patterns that may help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities will help you build a plan for the near-term future of your workload, ensuring that performance doesn't suffer as the workload evolves.
 
 #### &#10003; Rank and prioritize flows from a performance perspective
 
@@ -102,7 +102,7 @@ There are many common application design patterns that can help you optimize you
 
 Collect application performance data like throughput, latency, and completion times to identify bottlenecks and improve user experience. Use distributed tracing and structured logging for easier analysis. Gather metrics and logs for all resources, and use tools like Azure Monitor Insights for performance monitoring. Collect database and storage data, and gather performance metrics for virtual machines. Store all of the collected data in one place for easy access and analysis.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be careful to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be sure to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
 
 
