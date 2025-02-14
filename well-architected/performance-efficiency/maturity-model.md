@@ -67,7 +67,7 @@ Based on the answers to these questions, you can [choose the best data service](
 
 ![Goal icon](../_images/goal.svg) **Begin measuring performance using defined metrics and plan for optimization**
 
-<!-- No more than 5 H4 headings per tab -->
+In level 1 of the Performance Efficiency pillar, the focus in on understanding the performance expectations for the workload and choosing infrastructure services that can help you meet those expectations. Level 2 focuses on decomposing your workload into flows and components and setting measurable targets and metrics that you can capture and analyze for future optimizations. You should also investigate design patterns that may help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities will help you build a plan for the near-term future of your workload, ensuring that performance doesn't suffer as the workload evolves.
 
 #### &#10003; Rank and prioritize flows from a performance perspective
 
