@@ -223,14 +223,14 @@ You should also perform a failure mode analysis (FMA) on your environment. With 
 | Deploy session hosts close to your users. | This practice minimizes latency. |
 | Deploy session hosts in an availability zone or a flexible virtual machine scale set. | This approach helps protect your environment from outages. |
 | Research the various compute sizes, families, and features that Azure offers. | Appropriate resources optimize the performance and cost efficiency of your workload. |
-| Consider VMs in the DCasv5 or ECasv5 series if you run high-security workloads. | TBD |
-| Consider NV-series VMs if you use graphics-intensive applications. | TBD |
-| Consider the maximum size, throughput, and IOPS of the various types of Azure managed disks when you design your storage solution. | TBD |
-| Choose a type of managed disk that optimizes the performance and cost efficiency of your workload. | TBD |
+| Consider VMs in the DCasv5 or ECasv5 series if you run high-security workloads. | These VMs with no local disk provide a better value proposition for workloads where you don't need a local temporary disk. |
+| Consider NV-series VMs if you use graphics-intensive applications. | NV-series VMs provide a robust platform for rendering and processing graphics-heavy tasks. |
+| Consider the maximum size, throughput, and IOPS of the various types of Azure managed disks when you design your storage solution. | This practice helps optimizing application performance |
+| Choose a type of managed disk that optimizes the performance and cost efficiency of your workload. | To simplify provisioning, managing scaling storage. |
 | Spread session hosts across different availability zones. | This approach improves availability. |
-| Spread out session hosts within availability zones. | TBD |
-| Use golden images that you save in a redundant fashion for disaster recovery if you don't need to back up session host data or applications. | TBD |
-| Use backups for disaster recovery if you update session host data frequently. | TBD |
+| Spread out session hosts within availability zones. | To decrease the chance that of environment unavailability due to maintenance or outage. |
+| Use golden images that you save in a redundant fashion for disaster recovery if you don't need to back up session host data or applications. | This practice helps with disaster recovery. |
+| Use backups for disaster recovery if you update session host data frequently. | This practice helps protect valuable data. |
 | Perform an FMA on your environment. | An FMA helps you prepare for future outages and potentially prevent them. |
 
 ## Next steps
