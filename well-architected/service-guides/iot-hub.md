@@ -30,6 +30,8 @@ This article assumes that as an architect, you've reviewed the [technologies and
 >
 > Foundational architecture that demonstrates the key recommendations:    
 > [IoT Hub baseline architecture](/azure/architecture/guide/iot/migrate-iot-solution-azure).
+>
+> :::image source="" border="false" alt-text="Diagram of an IoT architecture.":::
 
 **Technology scope**
 
@@ -86,7 +88,7 @@ The [Security design principles](/azure/well-architected/security/principles) pr
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -210,7 +212,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for IoT Hub.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for IoT Hub.
 
 > [!div class="checklist"]
 >
@@ -247,17 +249,13 @@ Azure provides an extensive set of built-in policies related to IoT Hub and its 
 - IoT Hub can only be accessed from a private endpoint.
 - Resource logs in IoT Hub are enabled. These logs recreate activity trails that can help you investigate after a security incident or network compromise.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Internet of Things](/azure/governance/policy/samples/built-in-policies#internet-of-things) and other policies that might impact the security of the IoT solution.
+For comprehensive governance, review the [Azure Policy built-in definitions for Internet of Things](/azure/governance/policy/samples/built-in-policies#internet-of-things) and other policies that might affect the security of the IoT solution.
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, operational excellence and performance of IoT Hub.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#azure-iot-hub)
-- [Security](/azure/defender-for-cloud/recommendations-reference-iot)
-- [Cost Optimization](/azure/advisor/advisor-reference-cost-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#internet-of-things)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Next step
 
