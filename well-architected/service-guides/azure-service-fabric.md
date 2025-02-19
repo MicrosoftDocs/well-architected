@@ -26,7 +26,7 @@ This article assumes that as an architect, you've reviewed the [compute decision
 >
 > Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Service Fabric and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
-> Foundational architecture that demonstrates the key recommendations:        [Container orchestration for microservices](/azure/architecture/microservices/design/orchestration).
+> Foundational architecture that demonstrates the key recommendations:    [Container orchestration for microservices](/azure/architecture/microservices/design/orchestration).
 
 **Technology scope**
 
@@ -50,8 +50,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the [offering-specific-aspects]. Extend the strategy to include more approaches
-as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliablity of Service Fabric. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 > - (Cluster) Determine the appropriate [reliability level](/azure/service-fabric/service-fabric-cluster-capacity) for your cluster based on the overall reliablity target metric for the workload. The reliablity level of the cluster that you identify dictates the minimum number of nodes to deploy for your primary node type. For more information, see [Reliability levels](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels).
@@ -65,7 +64,7 @@ as needed.
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
 | (Cluster) [Azure API Management can integrate with Service Fabric](/azure/service-fabric/service-fabric-api-management-overview) directly. Consider using API Management to expose and offload the cross-cutting functionality for cluster-hosted APIs.|  API Management is a feature-rich application gateway that helps you securely publish, manage, and monitor APIs that are deployed to the Service Fabric cluster.|
-| (Workload)  For stateful workload scenarios, consider using the [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction) model.|The Reliable Services model keeps your services active when you experience system failures or network problems, or if the services themselves encounter malfunctions. For stateful services, your state is preserved when malfunctions occur.|
+| (Workload) For stateful workload scenarios, consider using the [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction) model.|The Reliable Services model keeps your services active when you experience system failures or network problems, or if the services themselves encounter malfunctions. For stateful services, your state is preserved when malfunctions occur.|
 
 ## Security
 
@@ -83,7 +82,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >   - [Cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security)
 >   - [Application and service security](/azure/service-fabric/service-fabric-application-and-service-security)
 >
-> - (Cluster) Apply network segmentation and controls. Configure NSGs to restrict traffic flow between subnets and node types.
+> - (Cluster) Apply network segmentation and controls. Configure network security groups (NSGs) to restrict traffic flow between subnets and node types.
 > - (Cluster) Use native tools to securely manage application secrets and client certificates. To manage application secrets, use the Service Fabric Secret Store. To manage certificates, use Azure Key Vault.
 > - (Cluster) Consider using your [existing load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer) so that you can use an internal load balancer and define different load balancers and NSGs for each node type.
 > - (Cluster) Enable Microsoft Entra integration to help securely control access to the cluster. Users can authenticate with their Entra credentials. Alternatively, you can use cluster client and admin certificates. Don't distribute the cluster client certificates among Service Fabric Explorer users.
@@ -98,8 +97,8 @@ Start your design strategy based on the [design review checklist for Security](.
 | (Cluster) Use a separate [data encipherment certificate](/azure/service-fabric/how-to-managed-cluster-application-secrets#create-a-data-encipherment-certificate) to encrypt values when you use the Service Fabric Secret Store to distribute secrets.| A separate encipherment certificate isolates certificates, which reduces the risk of a single point of failure and provides more granular access control.|
 | (Cluster) Apply an [access control list (ACL)](/azure/service-fabric/service-fabric-best-practices-security#apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster) to your client certificate for your Service Fabric cluster.| An ACL provides an extra level of authentication so that you can better control access to certificates. |
 | (Cluster) Use [resource requests and limits](/azure/service-fabric/service-fabric-resource-governance#resource-governance-mechanism) to govern resource usage across the nodes in your cluster.| Resource limits help ensure that one service doesn't consume too many resources and deprive other services.|
-| (Workload)  Include client certificates in Service Fabric applications.|Client certificates for authentication provide enhanced security at both the cluster and workload level.|
-| (Workload)  Use a [managed identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets) to authenticate Service Fabric applications to Azure resources.| Managed identities help you securely manage the credentials in your code for authenticating to various services, without saving them locally on a developer's workstation or in source control.|
+| (Workload) Include client certificates in Service Fabric applications.|Client certificates for authentication provide enhanced security at both the cluster and workload level.|
+| (Workload) Use a [managed identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets) to authenticate Service Fabric applications to Azure resources.| Managed identities help you securely manage the credentials in your code for authenticating to various services, without saving them locally on a developer's workstation or in source control.|
 | (Cluster and workload) To host untrusted applications: <br> - Use the strongest sandboxing technology available. <br> - Remove access to Service Fabric runtime. <br> - Follow other [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster).| These practices help ensure that only trusted and verified applications can interact with critical components. They also reduce the impact of untrusted applications that have vulnerabilities or malicious code on normal cluster operations.|
 
 ## Cost Optimization
@@ -148,7 +147,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 |Recommendation|Benefit|
 |-----------------------------------|-----------|
-| (Workload)  Use Application Insights to [monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|Application Insights provides comprehensive application performance monitoring for live web applications, which enables you to collect and analyze application telemetry. This practice improves your application health and performance monitoring.|
+| (Workload) Use Application Insights to [monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|Application Insights provides comprehensive application performance monitoring for live web applications, which enables you to collect and analyze application telemetry. This practice improves your application health and performance monitoring.|
 | (Cluster and workload) Use Azure Monitor to [monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor provides comprehensive monitoring and diagnostic capabilities that you can use to collect and analyze logs and metrics from your applications and Azure infrastructure. Azure Monitor integrates well with the Azure platform, including Service Fabric.|
 | (Cluster) Implement appropriate [cluster health policies](/azure/service-fabric/service-fabric-health-introduction#cluster-health-policy) as part of your health modeling.| These policies enable you to customize how failures are assessed in terms of cluster health. For example, you can set the maximum percentage of unhealthy nodes that are tolerated before the cluster is considered to be in error. 
 | (Cluster) Implement appropriate [application and service type health policies](/azure/service-fabric/service-fabric-health-introduction#application-health-policy) as part of your health modeling.| The application health policy describes how events are evaluated and how the health states for applications and their child components are aggregated. Service Fabric considers an entity unhealthy if it has a health report or if any of its child components are in a warning or error state.|
