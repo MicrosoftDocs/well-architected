@@ -1,6 +1,6 @@
 ---
-author: srrakhun
-ms.author: srrakhun
+author: srini1978
+ms.author: srini1978
 title: Sustainable AI Design
 ms.topic: best-practice
 ms.date: 02/19/2025
