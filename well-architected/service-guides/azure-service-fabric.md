@@ -51,10 +51,10 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 ### Design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliablity of Service Fabric. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliability of Service Fabric. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> - (Cluster) Determine the appropriate [reliability level](/azure/service-fabric/service-fabric-cluster-capacity) for your cluster based on the overall reliablity target metric for the workload. The reliablity level of the cluster that you identify dictates the minimum number of nodes to deploy for your primary node type. For more information, see [Reliability levels](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels).
+> - (Cluster) Determine the appropriate [reliability level](/azure/service-fabric/service-fabric-cluster-capacity) for your cluster based on the overall reliability target metric for the workload. The reliability level of the cluster that you identify dictates the minimum number of nodes to deploy for your primary node type. For more information, see [Reliability levels](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels).
 >
 > - (Cluster) For critical workloads, consider using [availability zones](/azure/service-fabric/how-to-managed-cluster-availability-zones) for your Service Fabric clusters.
 > - (Cluster) For production scenarios, use the Standard managed cluster SKU with a [Silver durability tier](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster), which requires at least five VMs. The Standard SKU provides greater reliability than the Basic SKU, which is suitable for nonproduction scenarios.
