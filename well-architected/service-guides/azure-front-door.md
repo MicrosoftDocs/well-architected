@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Front Door
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Front Door.
 author: halkazwini
 ms.author: halkazwini
-ms.date: 02/20/2025
+ms.date: 02/21/2025
 ms.topic: conceptual
 products:
   - azure-front-door
@@ -56,11 +56,11 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Some applications need the user connections to stay on the same origin server during the user session. From a reliability perspective, we don't recommend keeping user connections on the same origin server. Avoid session affinity as much as possible.
 >
-> - **Use the same host name on Azure Front Door and origin servers**. To ensure that cookies or redirect URLs work properly, preserve the original HTTP host name when you use a reverse proxy, like a load balancer, in front of a web application. 
+> - **Use the same host name on each layer**. To ensure that cookies or redirect URLs work properly, preserve the original HTTP host name when you use a reverse proxy, like Azure Front Door, in front of a web application.
 >
 > - **Implement the health endpoint monitoring pattern**. Your application should expose health endpoints, which aggregate the state of the critical services and dependencies that your application needs to serve requests. Azure Front Door health probes use the endpoint to detect origin servers' health. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
 >
-> - **Take advantage of the built-in CDN functionality in Azure Front Door**. The content delivery feature of Azure Front Door has hundreds of edge locations and can help withstand traffic surges and distributed denial of service (DDoS) attacks. These capabilities help improve reliability.
+> - **Cache static content**. The content delivery feature of Azure Front Door has hundreds of edge locations and can help withstand traffic surges and distributed denial of service (DDoS) attacks. These capabilities help improve reliability.
 >
 > - **Consider a redundant traffic management option**. Azure Front Door is a globally distributed service that runs as a singleton in an environment. Azure Front Door is a potential single point of failure in the system. If the service fails, then clients can't access your application during the downtime.
 >   
@@ -74,9 +74,9 @@ Start your design strategy based on the [design review checklist for Reliability
 |------------------------------|-----------|
 |Choose a [routing method](/azure/frontdoor/routing-methods) that supports your deployment strategy. <br><br> The weighted method, which distributes traffic based on the configured weight coefficient, supports active-active models. <br><br> A priority-based value that configures the primary region to receive all traffic and send traffic to the secondary region as a backup supports active-passive models. <br><br> Combine the preceding methods with latency sensitivity configurations so that the origin with the lowest latency receives traffic. |You can select the best origin resource by using a series of decision steps and your design. The selected origin serves traffic within the allowable latency range in the specified ratio of weights.|
 |Support redundancy by having [multiple origins in one or more origin groups](/azure/frontdoor/origin). <br><br>Always have redundant instances of your application and make sure each instance exposes an origin. You can place those origins in one or more origin groups.|Multiple origins support redundancy by distributing traffic across multiple instances of the application. If one instance is unavailable, then other origins can still receive traffic.|
-|[Set up health probes on the origin](/azure/frontdoor/health-probes). <br><br>Configure Azure Front Door to conduct health checks to determine if the origin instance is available and ready to continue receiving requests.| Enabled health probes are part of the health monitoring pattern implementation. Health probes make sure that Azure Front Door only routes traffic to instances that are healthy enough to handle requests. <br> For more information, see [Best practices on health probes](/azure/frontdoor/health-probes).|
+|[Set up health probes on the origin](/azure/frontdoor/health-probes). <br><br>Configure Azure Front Door to conduct health checks to determine if the origin instance is available and ready to continue receiving requests. For more information, see [Best practices on health probes](/azure/frontdoor/health-probes).| Enabled health probes are part of the health monitoring pattern implementation. Health probes make sure that Azure Front Door only routes traffic to instances that are healthy enough to handle requests.|
 |Set a timeout on forwarding requests to the origin, and avoid long-running requests. <br><br> Adjust the timeout setting according to your endpoints' needs. If you don't, Azure Front Door might close the connection before the origin sends the response. <br> You can also lower the default timeout for Azure Front Door if all of your origins have a shorter timeout. <br> For more information, see [Troubleshooting unresponsive requests](/azure/frontdoor/troubleshoot-issues#troubleshooting-steps).|Long-running requests consume system resources. Timeouts help prevent performance issues and availability issues by terminating requests that take longer than expected to complete. |
-|Use the same host name on Azure Front Door and your origin. <br><br>Azure Front Door can rewrite the host header of incoming requests, which is useful when you have multiple custom domain names that route to one origin. However, rewriting the host header might cause issues with request cookies and URL redirection.|Set the same host name to prevent malfunction with session affinity, authentication, and authorization. For more information, see [Preserve the original HTTP host name](/azure/architecture/best-practices/host-name-preservation between a reverse proxy and its origin web application).|
+|Use the same host name on Azure Front Door and your origin. <br><br>Azure Front Door can rewrite the host header of incoming requests, which is useful when you have multiple custom domain names that route to one origin. However, rewriting the host header might cause issues with request cookies and URL redirection. For more information, see [Preserve the original HTTP host name](/azure/architecture/best-practices/host-name-preservation between a reverse proxy and its origin web application).|Set the same host name to prevent malfunction with session affinity, authentication, and authorization.|
 |Decide if your application requires [session affinity](/azure/frontdoor/routing-methods#23session-affinity). If you have high reliability requirements, we recommend that you disable session affinity. |With session affinity, user connections stay on the same origin during the user session. In some situations, a single origin might become overloaded with requests while other origins are idle. <br> If that origin becomes unavailable, the user experience might be disrupted.|
 |Take advantage of the [rate-limiting rules](/azure/web-application-firewall/afds/waf-front-door-rate-limit) that are included with a web application firewall (WAF).|Limit requests to prevent clients from sending too much traffic to your application. Rate limiting can help you avoid problems like a retry storm.|
 
@@ -94,7 +94,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Review the security baseline for [Azure Front Door](/security/benchmark/azure/baselines/azure-front-door-security-baseline).**
 >
-> - **Protect the back-end servers**. Azure Front Door is the front end, and is the single point of ingress to the application. 
+> - **Protect the origin servers**. Azure Front Door is the front end, and is the single point of ingress to the application. 
 >
 >   Azure Front Door uses Azure Private Link to access an application's origin. Private Link creates segmentation so that the origins don't need to expose public IP addresses and endpoints. For more information, see [Secure your origin with Private Link in Azure Front Door Premium](/azure/frontdoor/private-link).
 >
@@ -107,7 +107,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >   
 >   For more information, see [Azure Web Application Firewall on Azure Front Door](/azure/web-application-firewall/afds/afds-overview).
 > 
-> - **Protect Azure Front Door against unexpected traffic**. [The architecture of Azure Front Door provides built-in DDoS protection](/azure/frontdoor/front-door-ddos) to protect application endpoints from DDoS attacks. If you need to expose other public IP addresses from your application, consider adding the Azure DDoS Protection standard plan for those addresses for advanced protection and detection capabilities.
+> - **Protect against unexpected traffic**. [The architecture of Azure Front Door provides built-in DDoS protection](/azure/frontdoor/front-door-ddos) to protect application endpoints from DDoS attacks. If you need to expose other public IP addresses from your application, consider adding the Azure DDoS Protection standard plan for those addresses for advanced protection and detection capabilities.
 >
 >   There are also WAF rule sets that detect bot traffic or unexpectedly large volumes of traffic that could potentially be malicious. 
 >
@@ -137,7 +137,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
-> - **Review Azure Front Door tiers and pricing**. Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to estimate the realistic costs for each tier. [Compare the features](/azure/frontdoor/front-door-cdn-comparison) and suitability of each tier for your scenario. For instance, only the Premium tier supports connecting to your origin via Private Link.
+> - **Review service tiers and pricing**. Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator) to estimate the realistic costs for each tier of Azure Front Door. [Compare the features](/azure/frontdoor/front-door-cdn-comparison) and suitability of each tier for your scenario. For instance, only the Premium tier supports connecting to your origin via Private Link.
 >
 >   The Standard SKU is more cost-effective and suitable for moderate traffic scenarios. In the Premium SKU, you pay a higher unit rate, but you gain access to security benefits and advanced features like managed rules in WAF and Private Link. Consider the tradeoffs on [reliability](#reliability) and [security](#security) based on your business requirements. 
 >
@@ -147,7 +147,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Optimize incoming requests**. Azure Front Door bills the incoming requests. You can set restrictions in your design configuration. 
 >    
->   Reduce the number of requests by using design patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation). These patterns can improve the efficiency of your operations. 
+>   Reduce the number of requests by using design patterns like [Backend for Frontends](/azure/architecture/patterns/backends-for-frontends) and [Gateway Aggregation](/azure/architecture/patterns/gateway-aggregation). These patterns can improve the efficiency of your operations.
 >
 >   WAF rules restrict incoming traffic, which can optimize costs. For example, use rate limiting to prevent abnormally high levels of traffic, or use geo-filtering to allow access only from specific regions or countries.
 >
@@ -169,7 +169,6 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | [Consider enabling file compression](/azure/frontdoor/standard-premium/how-to-compression). <br>For this configuration, the application must support compression and caching must be enabled.| Compression reduces bandwidth consumption and improves performance.|
 |Disable health checks in origin groups with a single origin.<br>If you have only one origin configured in your Azure Front Door origin group, these calls are unnecessary.|You can save on bandwidth costs by disabling health check requests that aren't required to make routing decisions.|
 
-
 ## Operational Excellence
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
@@ -188,12 +187,11 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Simplify configurations**. Use Azure Front Door to easily manage configurations. For example, suppose your architecture supports microservices. Azure Front Door supports [redirection capabilities](/azure/frontdoor/front-door-url-redirect), so you can use path-based redirection to target individual services. 
 >   Another use case is the configuration of wildcard domains. 
 >
-> - **Handle progressive exposure by using [Azure Front Door routing methods](/azure/frontdoor/routing-methods)**. For a [weighted load balancing approach](/azure/frontdoor/routing-methods#weighted-traffic-routing-method) you can use a canary deployment to send a specific percentage of traffic to an origin. This approach helps you test new features and releases in a controlled environment before you roll them out.
+> - **Handle progressive exposure**. Azure Front Door provides [multiple routing methods](/azure/frontdoor/routing-methods). For a [weighted load balancing approach](/azure/frontdoor/routing-methods#weighted-traffic-routing-method) you can use a canary deployment to send a specific percentage of traffic to an origin. This approach helps you test new features and releases in a controlled environment before you roll them out.
 >
-> - **Collect and analyze Azure Front Door operational data as part of your workload monitoring**. Capture relevant Azure Front Door logs and metrics with Azure Monitor Logs. This data helps you troubleshoot, understand user behaviors, and optimize operations. 
+> - **Collect and analyze operational data as part of your workload monitoring**. Capture relevant Azure Front Door logs and metrics with Azure Monitor Logs. This data helps you troubleshoot, understand user behaviors, and optimize operations. 
 >
 > - **Offload certificate management to Azure**. Ease the operational burden associated with certification rotation and renewals.
-
 
 ### Recommendations
 
@@ -204,7 +202,6 @@ Start your design strategy based on the [design review checklist for Operational
 |Review the [built-in analytics reports](/azure/frontdoor/standard-premium/how-to-reports).|A holistic view of your Azure Front Door profile helps drive improvements based on traffic and security reports through WAF metrics.|
 | [Use managed TLS certificates](/azure/frontdoor/domain#azure-front-door-managed-tls-certificates) when possible. | Azure Front Door can issue and manage certificates for you. This feature eliminates the need for certificate renewals and minimizes the risk of an outage due to an invalid or expired TLS certificate.|
 |[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain).|  You don't need to modify the configuration to add or specify each subdomain separately. |
-
 
 ## Performance Efficiency
 
@@ -222,7 +219,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   Base your SKU choices on that planning. The Standard SKU is more cost-effective and suitable for moderate traffic scenarios. If you anticipate higher loads, we recommend the Premium SKU.
 >
-> - **Analyze performance data by regularly reviewing [Azure Front Door reports](/azure/frontdoor/standard-premium/how-to-reports)**. These reports provide insights into various metrics that serve as performance indicators at the technology level. 
+> - **Analyze performance data by regularly reviewing performance metrics**. [Azure Front Door reports](/azure/frontdoor/standard-premium/how-to-reports) provide insights into various metrics that serve as performance indicators at the technology level. 
 >
 >   Use Azure Front Door reports to set realistic performance targets for your workload. Consider factors like response times, throughput, and error rates. Align the targets with your business requirements and user expectations.
 >
@@ -233,6 +230,8 @@ Start your design strategy based on the [design review checklist for Performance
 >     Optimize your application for caching. Use cache expiration headers in the application that control how long the content should be cached by clients and proxies. Longer cache validity means less frequent requests to the origin server, which results in reduced traffic and lower latency.
 >   - Reduce the size of files that are transmitted over the network. Smaller files lead to faster load times and improved user experience.
 >   - Minimize the number of back-end requests in the application. 
+>   - Update clients to use the [HTTP/2 protocol](/azure/frontdoor/front-door-http2), which can combine multiple requests into a single TCP connection.
+>   - Use [WebSockets](/azure/frontdoor/standard-premium/websocket) to support realtime full-duplex communication, rather than making repeated HTTP requests or polling.
 >
 >     For example, a web page displays user profiles, recent orders, balances, and other related information. Instead of making separate requests for each set of information, use design patterns to structure your application so that multiple requests are aggregated into a single request. 
 >
@@ -270,16 +269,13 @@ Azure provides an extensive set of built-in policies related to Azure Front Door
 
 For comprehensive governance, review the [built-in definitions for Azure Content Delivery Network](/azure/governance/policy/samples/built-in-policies#cdn) and other Azure Front Door policies that are listed in [Azure Policy built-in policy definitions](/azure/governance/policy/samples/built-in-policies).
 
-
 ## Azure Advisor recommendations
 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations are aligned with Well-Architected Framework pillars. 
 
 For more information, see the recommendations in [Azure Advisor](/azure/advisor/).
 
-
 ## Next steps
-
 
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
 
