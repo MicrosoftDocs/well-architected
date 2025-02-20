@@ -117,7 +117,6 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 ## Related links
 
 - [What is infrastructure as code (IaC)?](/devops/deliver/what-is-infrastructure-as-code)
-- [Enterprise infrastructure as code using Bicep and Azure Container Registry](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry)
 - [Discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities)
 - [Recommendations for designing a workload development supply chain](workload-supply-chain.md)
 - [Recommendations for standardizing tools and processes](tools-processes.md)
