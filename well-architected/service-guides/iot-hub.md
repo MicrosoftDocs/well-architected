@@ -31,7 +31,6 @@ This article assumes that as an architect, you've reviewed the [technologies and
 > Foundational architecture that demonstrates the key recommendations:    
 > [IoT Hub baseline architecture](/azure/architecture/guide/iot/migrate-iot-solution-azure).
 >
-> :::image source="" border="false" alt-text="Diagram of an IoT architecture.":::
 
 **Technology scope**
 
