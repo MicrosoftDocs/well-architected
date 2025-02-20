@@ -1,9 +1,9 @@
 ---
 title: Azure Well-Architected Framework perspective on Azure Front Door
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Front Door.
-author: duongau
-ms.author: prwilk
-ms.date: 02/10/2025
+author: halkazwini
+ms.author: halkazwini
+ms.date: 02/20/2025
 ms.topic: conceptual
 products:
   - azure-front-door
@@ -273,13 +273,10 @@ For comprehensive governance, review the [built-in definitions for Azure Content
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure Front Door.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations are aligned with Well-Architected Framework pillars. 
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see the recommendations in [Azure Advisor](/azure/advisor/).
+
 
 ## Next steps
 
