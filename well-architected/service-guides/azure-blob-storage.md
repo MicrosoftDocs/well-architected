@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Blob Storage
+title: Architecture Best Practices for Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
@@ -13,7 +13,7 @@ azure.category:
   - storage
 ---
 
-# Azure Well-Architected Framework perspective on Azure Blob Storage
+# Architecture best practices for Azure Blob Storage
 
 Azure Blob Storage is a Microsoft object storage solution for the cloud. Blob Storage is optimized to store massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a specific data model or definition, such as text or binary data.
 

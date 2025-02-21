@@ -1,5 +1,5 @@
 ---
-title: Well-Architected Framework perspective on Azure Application Gateway v2
+title: Architecture Best Practices for Azure Application Gateway v2
 description: Learn about architectural best practices for the Azure Application Gateway v2 family of SKUs and for WAF on Application Gateway.
 author: greg-lindsay
 ms.author: greglin
@@ -12,7 +12,7 @@ azure.category:
   - networking
 ---
 
-# Well-Architected Framework perspective on Azure Application Gateway v2
+# Architecture best practices for Azure Application Gateway v2
 
 Azure Application Gateway v2 is a web traffic load balancer that operates at the application layer. Application Gateway manages traffic to your web applications based on the attributes of an HTTP request. Use Application Gateway for scenarios that have advanced routing capabilities and require enhanced security and scalability. 
 

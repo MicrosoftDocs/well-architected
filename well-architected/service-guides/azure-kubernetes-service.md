@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure Kubernetes Service (AKS)
+title: Architecture Best Practices for Azure Kubernetes Service (AKS)
 description: Learn how to use Azure Kubernetes Service (AKS) features to boost reliability, security, and scalability. Streamline your workload operations and control costs. 
 author: schaffererin
 ms.author: schaffererin
@@ -13,7 +13,7 @@ azure.category:
   - containers
 ---
 
-# Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
+# Architecture best practices for Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use to deploy and manage containerized applications. Similar to other managed services, AKS offloads much of the operational overhead to Azure while providing high availability, scalability, and portability features to the workload.
 
