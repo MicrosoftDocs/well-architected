@@ -1,39 +1,39 @@
 ---
-title: Review - Azure Cosmos DB for NoSQL
+title: Well-Architected Framework perspective on Azure Cosmos DB for NoSQL
 description: Design considerations and recommendations for each pillar as related to solutions using Azure Cosmos DB for NoSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
-ms.date: 10/05/2023
+ms.date: 02/20/2025
 products:
   - azure-cosmos-db
 ---
 
-# Azure Well-Architected Framework review – Azure Cosmos DB for NoSQL
+# Well-Architected Framework perspective on Azure Cosmos DB for NoSQL
 
-This article describes the best practices for Azure Cosmos DB for NoSQL. These best practices ensure that you can deploy solutions on Azure Cosmos DB that are efficient, reliable, secure, optimized for cost, and operationally excellent. This guidance focuses on the five pillars of architecture excellence in the [Well-Architected Framework](../index.yml):
+Azure Cosmmos DB is a fully managed database solution that can host multiple database types like NoSQL, relational, vector, and table, accomodating most use cases for your workload. The recommendations offered in this guide focus on the [Cosmos DB for NoSQL](/azure/cosmos-db/nosql/) variant, though there are some foundational recommendations that can be applied to other variants.
 
-- [Reliability](../reliability/index.yml)
-- [Security](../security/index.yml)
-- [Cost Optimization](../cost-optimization/index.yml)
-- [Operational Excellence](../operational-excellence/index.yml)
-- [Performance Efficiency](../performance-efficiency/index.yml)
+This article that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chosen Azure Cosmos DB for NoSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-This review guide assumes that you have a working knowledge of Azure Cosmos DB and are well versed with its features. For more information, see [Azure Cosmos DB for NoSQL](/azure/cosmos-db/nosql/).
-
-## Prerequisites
-
-Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you start by reviewing your workload using the [Azure Well-Architected Framework Review assessment](/assessments/?id=azure-architecture-review&mode=pre-assessment).
-
-For more context, review various reference architectures that reflect the considerations from this guide in their design. These architectures include, but aren't limited to:
-
-- [Globally distributed mission-critical applications using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/globally-distributed-mission-critical-applications-using-cosmos-db)
-- [Serverless apps using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
-- [Multi-region web app with Azure Cosmos DB replication](/azure/architecture/solution-ideas/articles/multi-region-web-app-cosmos-db-replication)
+> [!IMPORTANT]
+>
+> **How to use this guide**
+>
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
+>
+> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Service Fabric and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+>
+> Foundational architectures that demonstrate the key recommendations:  
+>
+> - [Globally distributed mission-critical applications using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/globally-distributed-mission-critical-applications-using-cosmos-db)
+> - [Serverless apps using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
+> - [Multi-region web app with Azure Cosmos DB replication](/azure/architecture/solution-ideas/articles/multi-region-web-app-cosmos-db-replication)
 
 ## Reliability
 
-As with any cloud service, failures can occur both on the service and the workload side. It's impossible to prevent all potential failures, but it's a better goal to minimize the effects a single failing component can have on your entire workload. This section includes considerations and recommendations to minimize the consequences of a one-off failure.
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
+
+[Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
 
@@ -65,7 +65,9 @@ As with any cloud service, failures can occur both on the service and the worklo
 
 ## Security
 
-Security is a critical part of any architecture that can be easily overlooked for convenience. Bolster the security of your final workload by considering various security best practices up-front before the first resource or proof of concept is created. This section includes considerations and recommendations to reduce the number of security vulnerabilities for your final workload.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
+
+The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your workload.
 
 ### Design checklist
 
@@ -100,7 +102,9 @@ Security is a critical part of any architecture that can be easily overlooked fo
 
 ## Cost optimization
 
-Your workload's characteristics and the implementation of your solution can influence the final cost of running in Azure. Consider main drivers like your partitioning strategy, consistency level, replication, and write type when designing your workload. When sizing your workload, consider the read/write nature of your data, the size of average items, normalization, and TTL. This section includes considerations and recommendations to streamline costs for your workload.
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
+
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your workload.
 
 > [!div class="checklist"]
 >
@@ -135,7 +139,9 @@ Your workload's characteristics and the implementation of your solution can infl
 
 ## Operational excellence
 
-Workloads must be monitored after they're deployed to make sure they perform as intended. Further, monitoring of workloads can help unlock new efficiencies not immediately obvious during the planning phase. In catastrophic scenarios, diagnostic data is the key to uncovering why a high severity incident might have occurred. This section includes considerations and recommendations to monitor events and characteristics of your workloads.
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
+
+The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 ### Design checklist
 
@@ -169,6 +175,10 @@ Workloads must be monitored after they're deployed to make sure they perform as 
 
 ## Performance efficiency
 
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
+
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
+
 > [!div class="checklist"]
 >
 > - Define a performance baseline for your application. Measure how many concurrent users and transactions you might need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
@@ -199,9 +209,7 @@ Workloads must be monitored after they're deployed to make sure they perform as 
 
 - [Policy: Enable auditing of Azure Synapse Analytics](/azure/azure-sql/database/auditing-overview)
 
-## Extra resources
-
-Consider more resources related to Azure Cosmos DB for NoSQL.
+## Related content
 
 ### Azure Architecture Center guidance
 
