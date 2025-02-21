@@ -229,11 +229,14 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >     Optimize your application for caching. Use cache expiration headers in the application that control how long the content should be cached by clients and proxies. Longer cache validity means less frequent requests to the origin server, which results in reduced traffic and lower latency.
 >   - Reduce the size of files that are transmitted over the network. Smaller files lead to faster load times and improved user experience.
->   - Minimize the number of back-end requests in the application. 
->   - Update clients to use the [HTTP/2 protocol](/azure/frontdoor/front-door-http2), which can combine multiple requests into a single TCP connection.
->   - Use [WebSockets](/azure/frontdoor/standard-premium/websocket) to support realtime full-duplex communication, rather than making repeated HTTP requests or polling.
 >
->     For example, a web page displays user profiles, recent orders, balances, and other related information. Instead of making separate requests for each set of information, use design patterns to structure your application so that multiple requests are aggregated into a single request. 
+>   - Minimize the number of back-end requests in the application.
+>
+>     For example, a web page displays user profiles, recent orders, balances, and other related information. Instead of making separate requests for each set of information, use design patterns to structure your application so that multiple requests are aggregated into a single request.
+>
+>     Update clients to use the [HTTP/2 protocol](/azure/frontdoor/front-door-http2), which can combine multiple requests into a single TCP connection.
+> 
+>     Use [WebSockets](/azure/frontdoor/standard-premium/websocket) to support realtime full-duplex communication, rather than making repeated HTTP requests or polling.
 >
 >      By aggregating requests, you send less data between the front end and the back end and establish fewer connections between the client and the back end, which reduces overhead. Also, Azure Front Door handles fewer requests, which prevents overload.
 > 
