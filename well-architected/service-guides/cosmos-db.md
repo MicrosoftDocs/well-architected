@@ -13,7 +13,7 @@ products:
 
 Azure Cosmmos DB is a fully managed database solution that can host multiple database types like NoSQL, relational, vector, and table, accomodating most use cases for your workload. The recommendations offered in this guide focus on the [Cosmos DB for NoSQL](/azure/cosmos-db/nosql/) variant, though there are some foundational recommendations that can be applied to other variants.
 
-This article that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chosen Azure Cosmos DB for NoSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
+This article assumes that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chosen Azure Cosmos DB for NoSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
