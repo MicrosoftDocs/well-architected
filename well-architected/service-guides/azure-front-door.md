@@ -46,8 +46,6 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Estimate the traffic pattern and volume**. The number of requests from the client to the Azure Front Door edge might influence your tier choice. If you need to support a high volume of requests, consider the Azure Front Door Premium tier because performance ultimately impacts availability. However, there's a cost tradeoff. These tiers are described in [Performance Efficiency](#performance-efficiency).
->
 > - **Choose your deployment strategy**. The fundamental deployment approaches are *active-active* and *active-passive*. Active-active deployment means that multiple environments or stamps that run the workload serve traffic. Active-passive deployment means that only the primary region handles all traffic, but it fails over to the secondary region when necessary. In a multiregion deployment, stamps or application instances run in different regions for higher availability with a global load balancer, like Azure Front Door, that distributes traffic. Therefore, it's important to configure the load balancer for the appropriate deployment approach. 
 > 
 >   Azure Front Door supports several routing methods, which you can configure to distribute traffic in an active-active or active-passive model.
