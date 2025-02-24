@@ -2294,6 +2294,16 @@
 			"source_path": "well-architected/service-guides/azure-functions-security.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-functions",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/reliability/handle-transient-faults.md",
+			"redirect_url": "/azure/well-architected/design-guides/handle-transient-faults",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/reliability/background-jobs",
+			"redirect_url": "/azure/well-architected/design-guides/background-jobs",
+			"redirect_document_id": true
 		}
 	]
 }
