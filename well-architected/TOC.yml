@@ -360,5 +360,5 @@
         href: ./design-guides/optimize-workload-using-flows.md
       - name: Handle transient faults
         href: ./design-guides/handle-transient-faults
-      - name: Background reliability/background-jobs.md
+      - name: Develop background jobs
         href: ./design-guides/background-jobs
