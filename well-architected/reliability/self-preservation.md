@@ -14,7 +14,7 @@ ms.topic: conceptual
 |**RE:07**| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.   |
 |---|---|
 
-**Related guides:** [Background jobs](background-jobs.md) | [Transient faults](handle-transient-faults.md)
+**Related guides:** [Background jobs](../design-guides/background-jobs.md) | [Transient faults](../design-guides/handle-transient-faults.md)
 
 This guide describes the recommendations for building self-healing and self-preservation capabilities into your application architecture to optimize reliability.
 
@@ -31,6 +31,10 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 ## Key design strategies
 
+### Design for redundancy
+
+One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components. Being able to fail components or the entire workload over to redundant resources provides an easy and efficient way to handle most faults in your system. Depending on your business requirements, you can buid in redudancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. See the [redundancy](./redundancy.md), [regions and availability zones](./regions-availability-zones.md), and [highly-available multi-region design](./highly-available-multi-region-design.md) Reliability articles for in-depth guidance on this strategy.
+
 ### Design for self-preservation
 
 To design your workload for self-preservation, follow infrastructure and application architecture design patterns to optimize your workload's resiliency. To minimize the chance of experiencing a full application outage, increase the resiliency of your solution by eliminating single points of failure and minimizing the blast radius of failures. The design approaches in this article provide several options to strengthen the resilience of your workload and meet your workload's defined [reliability targets](metrics.md).
@@ -44,6 +48,19 @@ Use the Deployment Stamps pattern or the Bulkhead pattern to minimize the blast 
 - [**Deployment Stamps pattern**](/azure/architecture/patterns/deployment-stamp): Provision, manage, and monitor a varied group of resources to host and operate multiple workloads or tenants. Each individual copy is called a *stamp*, or sometimes a *service unit*, *scale unit*, or *cell*.
 
 - [**Bulkhead pattern**](/azure/architecture/patterns/bulkhead): Partition service instances into different groups, known as *pools*, based on the consumer load and availability requirements. This design helps to isolate failures and allows you to sustain service functionality for some consumers, even during a failure.
+
+### Design for handling transient faults
+
+[Transient faults](../design-guides/handle-transient-faults.md), like network timeouts, are a common issue for cloud workloads, so having mechanisms in place to handle them can minimize downtime and troubleshooting efforts as you operate your workload in production. Since most operations that fail due to a transient faults will succeed if sufficient time is allowed before retrying the operation, using a retry mechansim is the most common approach for dealing with transient faults. When designing your retry strategy, consider the following:
+
+- **Built-in retry functionality:** Many cloud services, especially platform as a service (PaaS) and software as a service (SaaS) offerings have built-in retry functionality. Review the retry options available for your components and determine whether you'll need to build any custom functionality to meet your requirements.
+- **Determine an appropriate retry count and interval:** Finding the right retry count and interval for a given component can be a matter of trial and error. If you don't wait long enough to retry or you don't retry often enough, the faulting operation may never succeed. On the other hand, waiting too long between tries or trying too often might cause resource constraints by overloading threads, connections, or memory. 
+- **Log and track transient and non-transient faults:** Augmenting your fault handling mechanisms with historical data can help you identify components that can be further optimized. If you see a pattern of many retries for a given component, it could be a sign that the component has some inefficiency or that an issue has developed in your workload that needs to be investigated. 
+- **Manage operations that continually fail:** When operations continually fail, a retry mechasims might not be sufficient to keep your workload operational. You might need to fail the corresponding component over to another instance or implement a [circuit breaker](/azure/architecture/patterns/circuit-breaker) to prevent continually retrying a failing operation.
+
+Refer to the [Transient faults](../design-guides/handle-transient-faults.md) deign guide for detailed guidance on this strategy and more considerations.
+
+### 
 
 #### Application design guidance and patterns
 

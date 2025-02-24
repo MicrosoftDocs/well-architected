@@ -3,18 +3,11 @@ title: Recommendations for developing background jobs
 description: Learn how to develop background jobs to help minimize the load on the application UI, which improves availability and reduces interactive response time.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 02/24/2025
 ms.topic: conceptual
 ---
 
 # Recommendations for developing background jobs
-
-**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
-
-|**RE:07**| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.   |
-|---|---|
-
-**Related guides:** [Transient faults](handle-transient-faults.md) | [Self-preservation](self-preservation.md)
 
 This guide describes the recommendations for developing background jobs.
 Background jobs run automatically without the need for user interaction. Many applications require background jobs that run independent of the UI.
