@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Local
+title: Architecture Best Practices for Azure Local
 description: Learn how to deploy Azure Local so that you can create and manage Windows and Linux VMs, Kubernetes clusters, and other Azure Arc-enabled services.
 author: neilbird
 ms.author: nebird
@@ -13,7 +13,7 @@ categories:
     - hybrid
 ---
 
-# Azure Well-Architected Framework perspective on Azure Local
+# Architecture best practices for Azure Local
 
 Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 

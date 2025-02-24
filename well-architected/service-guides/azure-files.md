@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Files
+title: Architecture Best Practices for Azure Files
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Files and Azure File Sync.
 author: khdownie
 ms.author: kendownie
@@ -13,7 +13,7 @@ azure.category:
   - storage
 ---
 
-# Azure Well-Architected Framework perspective on Azure Files
+# Architecture best practices for Azure Files
 
 Azure Files is a Microsoft file storage solution for the cloud. Azure Files provides server message block (SMB) and network file system (NFS) file shares that you can mount to clients in the cloud, on-premises, or to both. You can also use Azure File Sync to cache SMB file shares on a local Windows server and tier infrequently used files to the cloud.
 

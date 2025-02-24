@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Front Door
+title: Architecture Best Practices for Azure Front Door
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Front Door.
 author: duongau
 ms.author: prwilk
@@ -11,7 +11,7 @@ azure.category:
   - networking
 ---
 
-# Azure Well-Architected Framework perspective on Azure Front Door
+# Architecture best practices for Azure Front Door
 
 Azure Front Door is a global load balancer and content delivery network that routes HTTP and HTTPS traffic. Azure Front Door delivers and distributes traffic that's closest to the application users. 
 

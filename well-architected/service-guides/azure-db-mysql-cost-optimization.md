@@ -1,5 +1,5 @@
 ---
-title: Azure Database for MySQL and cost optimization
+title: Architecture Best Practices for Azure Database for MySQL and Cost Optimization
 description: Focuses on the Azure Database for MySQL service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Cost Optimization.
 author: martinekuan
 ms.author: martinek
@@ -12,7 +12,7 @@ azure.category:
 
 ---
 
-# Azure Database for MySQL and cost optimization
+# Architecture best practices for Azure Database for MySQL and cost optimization
 
 [Azure Database for MySQL](/azure/mysql/overview) is a relational database service in the Microsoft cloud based on the [MySQL Community Edition](https://www.mysql.com/products/community/). You can use either [Single Server](/azure/mysql/single-server-overview) or [Flexible Server](/azure/mysql/flexible-server/overview) to host a MySQL database in Azure. It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance and dynamic scalability.
 
