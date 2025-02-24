@@ -202,4 +202,4 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
-> [Reliability checklist](checklist.md)
+> [Reliability checklist](../reliability/checklist.md)

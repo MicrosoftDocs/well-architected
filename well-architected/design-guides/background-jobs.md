@@ -376,4 +376,4 @@ For more information, see:
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [Reliability checklist](../reliability/checklist.md) 
