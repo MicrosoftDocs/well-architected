@@ -15,6 +15,8 @@ azure.category:
 
 Azure Front Door is a global load balancer and content delivery network (CDN) that routes HTTP and HTTPS traffic. Azure Front Door delivers and distributes traffic that's closest to the application users. 
 
+:::image type="content" source="_image/front-door-overview.png" alt-text="Diagram of Azure Front Door distributing and protecting traffic to origins located Azure, on-premises and other cloud services .":::
+
 This article assumes that as an architect you've reviewed the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) and chosen Azure Front Door as the load balancer for your workload. It also assumes that your application is deployed to multiple regions in an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
@@ -45,8 +47,6 @@ The [**Reliability design principles**](/azure/well-architected/resiliency/princ
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the tiers and CDN capabilities. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
->
-> - **Estimate the traffic pattern and volume**. The number of requests from the client to the Azure Front Door edge might influence your tier choice. If you need to support a high volume of requests, consider the Azure Front Door Premium tier because performance ultimately impacts availability. However, there's a cost tradeoff. These tiers are described in [Performance Efficiency](#performance-efficiency).
 >
 > - **Choose your deployment strategy**. The fundamental deployment approaches are *active-active* and *active-passive*. Active-active deployment means that multiple environments or stamps that run the workload serve traffic. Active-passive deployment means that only the primary region handles all traffic, but it fails over to the secondary region when necessary. In a multiregion deployment, stamps or application instances run in different regions for higher availability with a global load balancer, like Azure Front Door, that distributes traffic. Therefore, it's important to configure the load balancer for the appropriate deployment approach. 
 > 
