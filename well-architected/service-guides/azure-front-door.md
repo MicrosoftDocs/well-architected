@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework perspective on Azure Front Door
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Front Door.
 author: halkazwini
 ms.author: halkazwini
-ms.date: 02/21/2025
+ms.date: 02/26/2025
 ms.topic: conceptual
 products:
   - azure-front-door
