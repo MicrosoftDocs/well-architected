@@ -15,7 +15,8 @@ azure.category:
 
 Azure Front Door is a global load balancer and content delivery network (CDN) that routes HTTP and HTTPS traffic. Azure Front Door delivers and distributes traffic that's closest to the application users. 
 
-:::image type="content" source="_image/front-door-overview.png" alt-text="Diagram of Azure Front Door distributing and protecting traffic to origins located Azure, on-premises and other cloud services .":::
+<!-- Art Library Source# ConceptArt-0-000-043 -->
+:::image type="content" source="_images/front-door-overview.png" alt-text="Diagram of Azure Front Door distributing and protecting traffic to origins located Azure, on-premises and other cloud services .":::
 
 This article assumes that as an architect you've reviewed the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) and chosen Azure Front Door as the load balancer for your workload. It also assumes that your application is deployed to multiple regions in an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
