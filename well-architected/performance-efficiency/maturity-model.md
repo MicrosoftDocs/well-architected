@@ -71,7 +71,7 @@ Level 2 of the Performance Efficiency pillar focuses on using information about 
 
 #### &#10003; Identify critical flows from a performance perspective
 
-Ranking and categorizing your workload flows is an important strategy in each of the Well-Architected Framework pillars. Analyzing each flow from the perspecive of each pillar helps you identify areas that need to be optimized and you can weigh those optimizations against each other to help you determine the right places to invest in. After you've categorized and ranked the flows, focus on those that you've identified as critical to start your optimization planning. Criteria that can help you identify critical flows include:
+Ranking and categorizing your workload flows is an important strategy in each of the Well-Architected Framework pillars. Analyzing flows from the perspecive of each pillar helps you identify areas that need to be optimized and you can weigh those optimizations against each other to help you determine the right places to invest in. In some cases security concerns for a given flow might outweigh performance concerns, for example. After you've categorized and ranked the flows, focus on those that you've identified as critical to start your optimization planning. Performance-specific criteria that can help you identify critical flows include:
 
 - *Frequency:* How often the flow is performed, like searching for a product.
 - *Criticality:* How essential the flow is to the overall success of the application, like a user profile lookup.
