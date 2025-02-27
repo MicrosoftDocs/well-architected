@@ -184,6 +184,8 @@ There are several Azure platform services that can host background tasks:
 
 - [Azure Functions](#azure-functions): Use function apps for background jobs that don't run for a long time. You can also use function apps if you host your workload on an underutilized App Service plan.
 
+- [Azure Logic Apps](#logic-apps): Use logic apps for background jobs that require orchestration across multiple services and systems.
+
 - [Virtual Machines](#virtual-machines): If you have a Windows service or want to use Windows Task Scheduler, host your background tasks in a dedicated VM.
 
 - [Azure Batch](#batch): Batch is a platform service that you can use to schedule compute-intensive work to run on a managed collection of VMs. It can automatically scale compute resources.
@@ -240,9 +242,9 @@ WebJobs have the following characteristics:
 
 ### Azure Functions
 
-Azure Functions is similar to WebJobs. Azure Functions is serverless and is most suitable for event-driven triggers that run for a short period. You can also use Azure Functions to run scheduled jobs via timer triggers if you configure a function to run at specified times.
+Azure Functions is serverless and is most suitable for event-driven triggers that run for a short period. You can also use Azure Functions to run scheduled jobs via timer triggers if you configure a function to run at specified times.
 
-Azure Functions isn't recommended for large, long-running tasks because a function can cause unexpected timeouts. However, depending on your hosting plan, consider using functions for schedule-driven triggers.
+Use Azure Durable Functions for orchestrating complex workflows and long-running processes. Durable Functions allow you to define stateful workflows in a serverless environment, which can be particularly useful for background jobs that require coordination and state management.
 
 #### Azure Functions considerations
 
@@ -256,6 +258,25 @@ For more information, see:
 
 - [Azure Functions hosting options](/azure/azure-functions/functions-scale)
 - [Timer trigger for Azure Functions](/azure/azure-functions/functions-bindings-timer)
+
+### Azure Logic Apps
+
+Azure Logic Apps provide a powerful platform for automating workflows and integrating various services. They are particularly well-suited for hosting background jobs that require orchestration across multiple services and systems.
+
+Azure Logic Apps has a visual designer for creating workflows, a vast library of connectors for integrating various services, event-driven triggers, stateful workflows for complex coordination, and built-in error handling and retries to ensure resilience and recovery from transient failures.
+
+### Azure Logic Apps considerations
+
+Logic Apps works best in scenarios that don't require low latency for a response, such as asynchronous or semi long-running API calls. If low latency is required, for example in a call that blocks a user interface, use a different technology like such as Azure Functions or a web API deployed to Azure App Service.
+
+Azure Logic Apps follow a pay-as-you-go pricing model, where you are charged based on the number of actions executed and the connectors used. Optimize costs by designing efficient workflows and minimizing the number of actions and connectors used in your Logic Apps.
+
+Logic Apps automatically scale based on the number of incoming requests and the complexity of the workflows. However, be aware of the throttling limits and quotas for Logic Apps, especially if your background jobs involve high-frequency triggers or large volumes of dat
+
+For more information, see:
+
+- [Logic App Connectors](/azure/connectors/introduction)
+- [Limits and configuration reference for Azure Logic Apps](/azure/logic-apps/logic-apps-limits-and-config)
 
 ### Virtual Machines
 
