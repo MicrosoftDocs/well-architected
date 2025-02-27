@@ -11,16 +11,20 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|**RE:07**| **Strengthen the resiliency of your workload by implementing self-preservation and self-healing measures.** Use built-in features and well-established cloud patterns to help your workload remain functional during and recover from incidents.   |
+|**RE:07**| Strengthen the resiliency of your workload by implementing self-preservation and self-healing measures. Use built-in features and well-established cloud patterns to help your workload remain functional during and recover from incidents.|
 |---|---|
 
+//suggestion: remove. not sure why this dependency is different than in other cases
 **Related guides:** [Background jobs](../design-guides/background-jobs.md) | [Transient faults](../design-guides/handle-transient-faults.md)
+//end suggestion
 
-This guide describes the recommendations for building self-healing and self-preservation capabilities into your application architecture to optimize reliability.
+This guide describes the recommendations for building self-preservation and self-healing capabilities into your application architecture to optimize reliability.
 
-Self-preservation capabilities add resilience to your workload. They reduce the likelihood of a full outage and allow your workload to operate in a degraded state while failed components are recovered. Self-healing capabilities help you avoid downtime by building in failure detection and automatic corrective actions to respond to different failure types.
+Self-preservation capabilities add resilience to your workload. They reduce the likelihood of a full outage and allow your workload to operate normally, or in a degraded state, when failures occur. Self-healing capabilities help you avoid downtime by building in failure detection and automatic corrective actions to respond to failures.
 
+//suggestion: remove. duplicates the first paragraph, and also the article is not about design patterns alone anymore
 This guide describes design patterns that focus on self-preservation and self-healing. Incorporate them into your workload to strengthen its resiliency and recoverability. If you don't implement patterns, your apps are at risk of failure when inevitable problems arise.
+//end suggestion
 
 **Definitions**
 
@@ -33,7 +37,9 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 ### Design for redundancy
 
-One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components. Being able to fail components or the entire workload over to redundant resources provides an easy and efficient way to handle most faults in your system. Depending on your business requirements, you can buid in redudancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. See the [redundancy](./redundancy.md), [regions and availability zones](./regions-availability-zones.md), and [highly-available multi-region design](./highly-available-multi-region-design.md) Reliability articles for in-depth guidance on this strategy.
+One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components and avoid single points of failure. Being able to fail components or the entire workload over to redundant resources provides an efficient way to handle most faults in your system. 
+
+Build redundancy at different levels, consider redundant infrastructure components such as compute, network, and storage; and consider deploying multiple instances of your solution. Depending on your business requirements, you can build redudancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. See the [redundancy](./redundancy.md), [regions and availability zones](./regions-availability-zones.md), and [highly-available multi-region design](./highly-available-multi-region-design.md) Reliability articles for in-depth guidance on this strategy.
 
 ### Design for handling transient faults
 
@@ -44,7 +50,7 @@ One of the most effective strategies to protect your workload from malfunctions 
 - **Log and track transient and non-transient faults:** Augmenting your fault handling mechanisms with historical data can help you identify components that can be further optimized. If you see a pattern of many retries for a given component, it could be a sign that the component has some inefficiency or that an issue has developed in your workload that needs to be investigated. 
 - **Manage operations that continually fail:** When operations continually fail, a retry mechasims might not be sufficient to keep your workload operational. You might need to fail the corresponding component over to another instance or implement a [circuit breaker](/azure/architecture/patterns/circuit-breaker) to prevent continually retrying a failing operation.
 
-Refer to the [Transient faults](../design-guides/handle-transient-faults.md) deign guide for detailed guidance on this strategy and more considerations.
+Refer to the [Transient faults](../design-guides/handle-transient-faults.md) design guide for detailed guidance on this strategy and more considerations.
 
 ### Implement background jobs
 
@@ -94,7 +100,7 @@ To design your workload for self-healing, implement failure detection so automat
 
 #### Infrastructure design guidance
 
-At the infrastructure level, your critical flows should be supported by a [redundant architecture design](metrics.md) with automated failover enabled for components that support it. You can enable automated failover for the following types of services:
+At the infrastructure level, your critical flows should be supported by a redundant architecture design, with automated failover enabled for components that support it. You can enable automated failover for the following types of services:
 
 - **Compute resources**: Azure Virtual Machine Scale Sets and most platform as a service (PaaS) compute services can be configured for automatic failover.
 
@@ -109,6 +115,16 @@ In addition to using [design patterns](./design-patterns.md) that support reliab
 - **Use checkpoints for long-running transactions**: Checkpoints can provide resiliency if a long-running operation fails. When the operation restarts, for example if it's picked up by another virtual machine, it can resume from the last checkpoint. Consider implementing a mechanism that records state information about the task at regular intervals. Save this state in durable storage that can be accessed by any instance of the process running the task. If the process is shut down, the work that it was performing can be resumed from the last checkpoint by using another instance. There are libraries that provide this functionality, such as [NServiceBus](https://docs.particular.net/nservicebus/sagas) and [MassTransit](https://masstransit-project.com/usage/sagas). They transparently persist state, where the intervals are aligned with the processing of messages from queues in Azure Service Bus.
 
 - **Implement automated self-healing actions:** Use automated actions that are triggered by your monitoring solution when pre-determined health status changes are detected. For example, if your monitoring detects that a web app isn't responding to requests, you can build automation through a PowerShell script to restart the app service. Depending on your team's skill set and preferred development technologies, use a webhook or function to build more complex automation actions. See the [Event-based cloud automation](/azure/architecture/reference-architectures/serverless/cloud-automation) reference architecture for an example of using a function to respond to database throttling. Using automated actions can help you recover quickly and minimize the necessity of human intervention.
+
+## Implement a graceful degradation mode
+
+Implementing graceful degradation in your workload helps it continue to operate with reduced functionality when some of its components fail. Enabling business continuity during failure states.
+
+//**TODO:** some points to expand here
+- buid mechanisms to detect when a failure is affecting functionality and automatically switch to the graceful degratation mode
+- Build a graceful Degradation of User Experience: Informing users about the issue and restricting access to broken areas of the solution. 
+- Build alternatives paths to complete the essential functionality to maintain business continuity. For example, if a database is down, the application might switch to a read-only mode using cached data. For example, if a payment gateway is down, allow users to save their cart and complete the purchase later.
+//***end TODO:***
 
 ## Azure facilitation
 
