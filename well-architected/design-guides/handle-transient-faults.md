@@ -38,7 +38,7 @@ Transient faults can have a significant effect on the perceived availability of 
 
 The following guidelines can help you design suitable transient fault handling mechanisms for your applications.
 
-## Implementing retires
+## Implementing retries
 
 ### Determine if there's a built-in retry mechanism
 
