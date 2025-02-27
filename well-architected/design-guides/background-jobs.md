@@ -267,7 +267,7 @@ Azure Logic Apps has a visual designer for creating workflows, a vast library of
 
 ### Azure Logic Apps considerations
 
-Logic Apps works best in scenarios that don't require low latency for a response, such as asynchronous or semi long-running API calls. If low latency is required, for example in a call that blocks a user interface, use a different technology like such as Azure Functions or a web API deployed to Azure App Service.
+Logic Apps works best in scenarios that don't require low latency for a response, such as asynchronous or semi long-running API calls. If low latency is required, for example in a call that blocks a user interface, use a different technology like Azure Functions or a web API deployed to Azure App Service.
 
 Azure Logic Apps follow a pay-as-you-go pricing model, where you are charged based on the number of actions executed and the connectors used. Optimize costs by designing efficient workflows and minimizing the number of actions and connectors used in your Logic Apps.
 
