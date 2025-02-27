@@ -27,10 +27,6 @@ This article assumes that as an architect, you've reviewed the [technologies and
 > Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
 >
 > Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for IoT Hub and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:    
-> [IoT Hub baseline architecture](/azure/architecture/guide/iot/migrate-iot-solution-azure).
->
 
 **Technology scope**
 
