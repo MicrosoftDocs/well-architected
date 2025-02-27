@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL
+title: Architecture Best Practices for Azure Database for PostgreSQL
 description: Design considerations and recommendations for each pillar as related to solutions using Azure Database for PostgreSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -14,7 +14,7 @@ azure.category:
   - databases
 ---
 
-# Azure Well-Architected Framework review - Azure Database for PostgreSQL
+# Architecture best practices for Azure Database for PostgreSQL
 
 This article provides architectural best practices for Azure Database for PostgreSQL.
 

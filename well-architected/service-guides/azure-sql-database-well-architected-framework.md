@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework review - Azure SQL Database 
+title: Architecture Best Practices for Azure SQL Database 
 description: Focuses on the Azure SQL Database service to provide best-practice, configuration recommendations, and design considerations.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -12,7 +12,7 @@ azure.category:
 
 ---
 
-# Azure Well-Architected Framework review - Azure SQL Database
+# Architecture best practices for Azure SQL Database
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include upgrades, patches, backups, and monitoring.
 

@@ -1,5 +1,5 @@
 ---
-title: Review - Azure Cosmos DB for NoSQL
+title: Architecture Best Practices for Azure Cosmos DB for NoSQL
 description: Design considerations and recommendations for each pillar as related to solutions using Azure Cosmos DB for NoSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,7 +9,7 @@ products:
   - azure-cosmos-db
 ---
 
-# Azure Well-Architected Framework review – Azure Cosmos DB for NoSQL
+# Architecture best practices for Azure Cosmos DB for NoSQL
 
 This article describes the best practices for Azure Cosmos DB for NoSQL. These best practices ensure that you can deploy solutions on Azure Cosmos DB that are efficient, reliable, secure, optimized for cost, and operationally excellent. This guidance focuses on the five pillars of architecture excellence in the [Well-Architected Framework](../index.yml):
 

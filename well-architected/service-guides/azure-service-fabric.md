@@ -1,5 +1,5 @@
 ---
-title: Well-Architected Framework Perspective on Azure Service Fabric
+title: Architecture Best Practices for Azure Service Fabric
 description: Learn how to incorporate the Well-Architected Framework pillars when you use Azure Service Fabric to manage scalable and reliable microservices and containers.
 author: tomvcassidy
 ms.author: tomcassidy
@@ -12,7 +12,7 @@ azure.category:
   - containers
 ---
 
-# Well-Architected Framework perspective on Azure Service Fabric
+# Architecture best practices for Azure Service Fabric
 
 Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers. These resources are deployed onto a network-connected set of virtual or physical machines, known as a *cluster*.
 
