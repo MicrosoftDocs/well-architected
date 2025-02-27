@@ -271,7 +271,7 @@ Logic Apps works best in scenarios that don't require low latency for a response
 
 Azure Logic Apps follow a pay-as-you-go pricing model, where you are charged based on the number of actions executed and the connectors used. Optimize costs by designing efficient workflows and minimizing the number of actions and connectors used in your Logic Apps.
 
-Logic Apps automatically scale based on the number of incoming requests and the complexity of the workflows. However, be aware of the throttling limits and quotas for Logic Apps, especially if your background jobs involve high-frequency triggers or large volumes of dat
+Logic Apps automatically scale based on the number of incoming requests and the complexity of the workflows. However, be aware of the throttling limits and quotas for Logic Apps, especially if your background jobs involve high-frequency triggers or large volumes of data.
 
 For more information, see:
 
