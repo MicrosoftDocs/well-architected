@@ -61,10 +61,6 @@
               href: reliability/partition-data.md
             - name: RE:06 Scaling
               href: reliability/scaling.md
-            - name: RE:07 Background jobs
-              href: reliability/background-jobs.md
-            - name: RE:07 Transient faults 
-              href: reliability/handle-transient-faults.md
             - name: RE:07 Self-preservation
               href: reliability/self-preservation.md
             - name: RE:08 Testing
@@ -358,3 +354,7 @@
         href: ./design-guides/implementing-recommendations.md
       - name: Optimize using flows
         href: ./design-guides/optimize-workload-using-flows.md
+      - name: Handle transient faults
+        href: ./design-guides/handle-transient-faults.md
+      - name: Develop background jobs
+        href: ./design-guides/background-jobs.md

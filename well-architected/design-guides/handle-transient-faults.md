@@ -3,24 +3,17 @@ title: Recommendations for handling transient faults
 description: Learn about recommendations for handling transient faults in your cloud applications.
 author: claytonsiemens77 
 ms.author: csiemens 
-ms.date: 11/15/2023
+ms.date: 02/24/2025
 ms.topic: conceptual
 ---
 
 # Recommendations for handling transient faults
 
-**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
-
-|**RE:07**| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality. |
-|---|---|
-
-**Related guides:** [Background jobs](background-jobs.md) | [Self-preservation](self-preservation.md)
-
 This guide describes the recommendations for handling transient faults in your cloud applications. All applications that communicate with remote services and resources must be sensitive to transient faults. This is especially true for applications that run in the cloud, where, because of the nature of the environment and connectivity over the internet, this type of fault is likely to be encountered more often. Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, and timeouts that occur when a service is busy. These faults are often self-correcting, so, if the action is repeated after a suitable delay, it's likely to succeed.
 
-This article provides general guidance for transient fault handling. For information about handling transient faults see the [retry pattern](/azure/architecture/patterns/retry) and, when you're using Azure services, see the [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
+This article provides general guidance for transient fault handling. For information about implementing retries in your application code to handle transient faults, see the [retry pattern](/azure/architecture/patterns/retry) and when you're using Azure services, see the [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
 
-## Key design strategies
+## Transient Faults
 
 Transient faults can occur in any environment, on any platform or operating system, and in any kind of application. For solutions that run on local on-premises infrastructure, the performance and availability of the application and its components are typically maintained via expensive and often underused hardware redundancy, and components and resources are located close to each other. This approach makes failure less likely, but transient faults can still occur, as can outages caused by unforeseen events like external power supply or network issues, or by disaster scenarios.
 
@@ -45,6 +38,8 @@ Transient faults can have a significant effect on the perceived availability of 
 
 The following guidelines can help you design suitable transient fault handling mechanisms for your applications.
 
+## Implementing retries
+
 ### Determine if there's a built-in retry mechanism
 
 -   Many services provide an SDK or client library that contains a transient fault handling mechanism. The retry policy it uses is typically tailored to the nature and requirements of the target service. Alternatively, REST interfaces for services might return information that can help you determine whether a retry is appropriate and how long to wait before the next retry attempt.
@@ -67,7 +62,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Keep in mind that determining the appropriate intervals between retries is the most difficult part of designing a successful strategy. Typical strategies use the following types of retry interval:
 
-    -   **Exponential back-off**. The application waits a short time before the first retry and then exponentially increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 12 seconds, 30 seconds, and so on.
+    -   **Exponential back-off**. The application waits a short time before the first retry and then exponentially increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 12 seconds, 30 seconds, and so on. To further improve this strategy, you can add jitter to the exponential back-off. Jitter introduces a random delay to each retry attempt, which helps to prevent multiple clients from retrying simultaneously and causing a spike in load
 
     -   **Incremental intervals**. The application waits a short time before the first retry, and then incrementally increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 7 seconds, 13 seconds, and so on.
 
@@ -77,7 +72,7 @@ The following guidelines can help you design suitable transient fault handling m
 
     -   **Randomization**. Any of the retry strategies listed previously can include a randomization to prevent multiple instances of the client sending subsequent retry attempts at the same time. For example, one instance might retry the operation after 3 seconds, 11 seconds, 28 seconds, and so on, while another instance might retry the operation after 4 seconds, 12 seconds, 26 seconds, and so on. Randomization is a useful technique that can be combined with other strategies.
 
--   As a general guideline, use an exponential back-off strategy for background operations, and use immediate or regular interval retry strategies for interactive operations. In both cases, you should choose the delay and the retry count so that the maximum latency for all retry attempts is within the required end-to-end latency requirement.
+-   As a general guideline, use an exponential back-off with jitter strategy for background operations, and use immediate or regular interval retry strategies for interactive operations. In both cases, you should choose the delay and the retry count so that the maximum latency for all retry attempts is within the required end-to-end latency requirement.
 
 -   Take into account the combination of all factors that contribute to the overall maximum timeout for a retried operation. These factors include the time it takes for a failed connection to produce a response (typically set by a timeout value in the client), the delay between retry attempts, and the maximum number of retries. The total of all these times can result in long overall operation times, especially when you use an exponential delay strategy where the interval between retries grows rapidly after each failure. If a process must meet a specific service-level agreement (SLA), the overall operation time, including all timeouts and delays, must be within the limits defined in the SLA.
 
@@ -105,7 +100,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
-    -   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
+    -   Include transient faults in your [chaos engineering and fault injection](../reliability/testing-strategy.md#use-fault-injection-and-chaos-engineering) practices by purposely introducing them into your nonproduction and production environments. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
 
     -   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
 
@@ -209,4 +204,4 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
-> [Reliability checklist](checklist.md)
+> [Reliability checklist](../reliability/checklist.md)
