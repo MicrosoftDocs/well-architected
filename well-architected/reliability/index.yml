@@ -76,10 +76,6 @@ landingContent:
             url: scaling.md
           - text: Design for self-healing and preservation
             url: self-preservation.md
-          - text: Use background jobs
-            url: background-jobs.md
-          - text: Handle transient faults
-            url: handle-transient-faults.md
           - text: Design with simplicity
             url: simplify.md
   - title: Test and conduct drills
