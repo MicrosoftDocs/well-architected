@@ -184,15 +184,15 @@ There are several Azure platform services that can host background tasks:
 
 - [Azure Functions](#azure-functions): Use function apps for background jobs that don't run for a long time. You can also use function apps if you host your workload on an underutilized App Service plan.
 
-- [Azure Logic Apps](#logic-apps): Use logic apps for background jobs that require orchestration across multiple services and systems.
+- [Azure Logic Apps](#azure-logic-apps): Use logic apps for background jobs that require orchestration across multiple services and systems.
 
 - [Virtual Machines](#virtual-machines): If you have a Windows service or want to use Windows Task Scheduler, host your background tasks in a dedicated VM.
 
-- [Azure Batch](#batch): Batch is a platform service that you can use to schedule compute-intensive work to run on a managed collection of VMs. It can automatically scale compute resources.
+- [Azure Batch](#azure-batch): Batch is a platform service that you can use to schedule compute-intensive work to run on a managed collection of VMs. It can automatically scale compute resources.
 
 - [Azure Kubernetes Service (AKS)](#azure-kubernetes-service): AKS provides a managed hosting environment for Kubernetes on Azure.
 
-- [Azure Container Apps](#container-apps): With Container Apps, you can build serverless microservices that are based on containers.
+- [Azure Container Apps](#azure-container-apps): With Container Apps, you can build serverless microservices that are based on containers.
 
 The following sections provide considerations for each of these options to help you choose the best option for you.
 
@@ -314,7 +314,7 @@ For more information, see:
 - [Virtual Machines](https://azure.microsoft.com/services/virtual-machines)
 - [Virtual Machines FAQ](/azure/virtual-machines/linux/faq)
 
-### Batch
+### Azure Batch
 
 Consider [Batch](/azure/batch) if you need to run large, parallel high-performance computing (HPC) workloads across tens, hundreds, or thousands of VMs.
 
@@ -357,7 +357,7 @@ For more information, see:
 - [Overview of containers in Azure](https://azure.microsoft.com/overview/containers)
 - [Introduction to container registries in Azure](/azure/container-registry/container-registry-intro)
 
-### Container Apps
+### Azure Container Apps
 
 With Container Apps, you can build serverless microservices that are based on containers. Container Apps:
 

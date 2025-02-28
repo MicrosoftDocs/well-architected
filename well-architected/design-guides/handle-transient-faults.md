@@ -100,7 +100,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
-    -   Include transient faults in your [chaos engineering and fault injection](../reliability/testing-strategy#use-fault-injection-and-chaos-engineering) practices by purposely introducing them into your nonproduction and production environments. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
+    -   Include transient faults in your [chaos engineering and fault injection](../reliability/testing-strategy.md#use-fault-injection-and-chaos-engineering) practices by purposely introducing them into your nonproduction and production environments. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
 
     -   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
 
