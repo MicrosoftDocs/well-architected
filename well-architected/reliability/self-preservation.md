@@ -14,17 +14,9 @@ ms.topic: conceptual
 |**RE:07**| Strengthen the resiliency of your workload by implementing self-preservation and self-healing measures. Use built-in features and well-established cloud patterns to help your workload remain functional during and recover from incidents.|
 |---|---|
 
-//suggestion: remove. not sure why this dependency is different than in other cases
-**Related guides:** [Background jobs](../design-guides/background-jobs.md) | [Transient faults](../design-guides/handle-transient-faults.md)
-//end suggestion
-
 This guide describes the recommendations for building self-preservation and self-healing capabilities into your application architecture to optimize reliability.
 
 Self-preservation capabilities add resilience to your workload. They reduce the likelihood of a full outage and allow your workload to operate normally, or in a degraded state, when failures occur. Self-healing capabilities help you avoid downtime by building in failure detection and automatic corrective actions to respond to failures.
-
-//suggestion: remove. duplicates the first paragraph, and also the article is not about design patterns alone anymore
-This guide describes design patterns that focus on self-preservation and self-healing. Incorporate them into your workload to strengthen its resiliency and recoverability. If you don't implement patterns, your apps are at risk of failure when inevitable problems arise.
-//end suggestion
 
 **Definitions**
 
@@ -40,39 +32,6 @@ This guide describes design patterns that focus on self-preservation and self-he
 One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components and avoid single points of failure. Being able to fail components or the entire workload over to redundant resources provides an efficient way to handle most faults in your system. 
 
 Build redundancy at different levels, consider redundant infrastructure components such as compute, network, and storage; and consider deploying multiple instances of your solution. Depending on your business requirements, you can build redudancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. See the [redundancy](./redundancy.md), [regions and availability zones](./regions-availability-zones.md), and [highly-available multi-region design](./highly-available-multi-region-design.md) Reliability articles for in-depth guidance on this strategy.
-
-### Design for handling transient faults
-
-[Transient faults](../design-guides/handle-transient-faults.md), like network timeouts, are a common issue for cloud workloads, so having mechanisms in place to handle them can minimize downtime and troubleshooting efforts as you operate your workload in production. Since most operations that fail due to a transient faults will succeed if sufficient time is allowed before retrying the operation, using a retry mechansim is the most common approach for dealing with transient faults. When designing your retry strategy, consider the following:
-
-- **Built-in retry functionality:** Many cloud services, especially platform as a service (PaaS) and software as a service (SaaS) offerings have built-in retry functionality. Review the retry options available for your components and determine whether you'll need to build any custom functionality to meet your requirements.
-- **Determine an appropriate retry count and interval:** Finding the right retry count and interval for a given component can be a matter of trial and error. If you don't wait long enough to retry or you don't retry often enough, the faulting operation may never succeed. On the other hand, waiting too long between tries or trying too often might cause resource constraints by overloading threads, connections, or memory. 
-- **Log and track transient and non-transient faults:** Augmenting your fault handling mechanisms with historical data can help you identify components that can be further optimized. If you see a pattern of many retries for a given component, it could be a sign that the component has some inefficiency or that an issue has developed in your workload that needs to be investigated. 
-- **Manage operations that continually fail:** When operations continually fail, a retry mechasims might not be sufficient to keep your workload operational. You might need to fail the corresponding component over to another instance or implement a [circuit breaker](/azure/architecture/patterns/circuit-breaker) to prevent continually retrying a failing operation.
-
-Refer to the [Transient faults](../design-guides/handle-transient-faults.md) design guide for detailed guidance on this strategy and more considerations.
-
-### Implement background jobs
-
-Background jobs are an effective way to enhance the reliability of a system by decoupling tasks from the user interface (UI). Implement a task as a background job if it doesn't require user input or feedback and if it doesn't affect UI responsiveness.
-
-Common examples of background jobs are:
-
-- CPU-intensive jobs, such as performing complex calculations or analyzing structural models.
-- I/O-intensive jobs, such as running multiple storage operations or indexing large files.
-- Batch jobs, such as updating data regularly or processing tasks at a specific time.
-- Long-running workflows, such as completing an order or provisioning services and systems.
-
-When developing background jobs for your workload, consider the following:
-
-- **Choose the right triggers:** Determine whether an event-driven or schedule-driven trigger is appropriate for your use case. 
-- **Partition background jobs:** Determine whether background jobs should be colocated with other tasks on the same compute resources.
-- **Orchestrate multiple tasks:** Determine whether a given background job is complex enough to divide into smaller discrete steps or subtasks.
-- **Make jobs resilient:** Like other components, background jobs should be optimized for reliability. Using checkpoints and queues can help and resiliency.
-- **Account for messaging inconsistencies:**  For tasks that are initiated by messages or that process messages, design a strategy to handle inconsistencies like messages that arrive out of order or that are delivered repeatedly, and for messages that repeatedly cause errors.
-- **Make jobs scalable:** Ensure that your scaling stratgey includes the components for background jobs. Like other components, they will need to scale when demands change.
-
-Refer to the [background jobs](../design-guides/background-jobs.md) design guide for detailed guidance on this strategy and more considerations.
 
 ### Design for self-preservation
 
@@ -118,13 +77,30 @@ In addition to using [design patterns](./design-patterns.md) that support reliab
 
 ## Implement a graceful degradation mode
 
-Implementing graceful degradation in your workload helps it continue to operate with reduced functionality when some of its components fail. Enabling business continuity during failure states.
+Despite your self-preservation and self-healing mechanisms, you may still encounter situations where one or more components malfunction to the extent that they become unavailable for some amount of time. In these cases, ideally, your workload can maintain enough functionality for business to continue in a degraded state. To ensure that this is possible, design and implement a graceful degradation mode. This is a distinct workflow that is enabled in reaction to failed components. Considerations for the desing and implementation include:
 
-//**TODO:** some points to expand here
-- buid mechanisms to detect when a failure is affecting functionality and automatically switch to the graceful degratation mode
-- Build a graceful Degradation of User Experience: Informing users about the issue and restricting access to broken areas of the solution. 
-- Build alternatives paths to complete the essential functionality to maintain business continuity. For example, if a database is down, the application might switch to a read-only mode using cached data. For example, if a payment gateway is down, allow users to save their cart and complete the purchase later.
-//***end TODO:***
+- **Failure detection and automated initiation:** Your monitoring and alerting systems should detect degraded and failed components, so use those signals to build a worklflow that determines when switching to your graceful degradation mode is necessary. The workflow should then autmoatically reroute calls to and from affected components to alternative components, or other similar actions.
+- **Implement a degraded user experience:** Include a notification mechanism for users in your graceful degradation mode to ensure that they know what functionality remains and what has changed. This typically is reflected in messages tied to different functions of the workload, like a pop-up when adding items to a cart, for example.
+- **Build alternatives paths to complete your workload's essential functions:** Reflect on your workload's [critical flows](..//design-guides/optimize-workload-using-flows) and determine how you can maintain those flows when core components are unavailabe. For example, if a database is down, the application might switch to a read-only mode using cached data. To further illustrate this example, if a payment gateway is down, using cached data might allow users to save their cart and complete the purchase later.
+
+### Implement mechanisms for handling transient faults
+
+[Transient faults](../design-guides/handle-transient-faults.md), like network timeouts, are a common issue for cloud workloads, so having mechanisms in place to handle them can minimize downtime and troubleshooting efforts as you operate your workload in production. Since most operations that fail due to a transient faults will succeed if sufficient time is allowed before retrying the operation, using a retry mechansim is the most common approach for dealing with transient faults. When designing your retry strategy, consider the following:
+
+Refer to the [Transient faults](../design-guides/handle-transient-faults.md) design guide for a full review of recommendations and considerations.
+
+### Implement background jobs
+
+Background jobs are an effective way to enhance the reliability of a system by decoupling tasks from the user interface (UI). Implement a task as a background job if it doesn't require user input or feedback and if it doesn't affect UI responsiveness.
+
+Common examples of background jobs are:
+
+- CPU-intensive jobs, such as performing complex calculations or analyzing structural models.
+- I/O-intensive jobs, such as running multiple storage operations or indexing large files.
+- Batch jobs, such as updating data regularly or processing tasks at a specific time.
+- Long-running workflows, such as completing an order or provisioning services and systems.
+
+Refer to the [background jobs](../design-guides/background-jobs.md) design guide for detailed guidance for a full review of recommendations and considerations.
 
 ## Azure facilitation
 
