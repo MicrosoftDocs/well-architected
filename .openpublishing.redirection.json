@@ -2306,7 +2306,7 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/iot-hub/operational-excellence.md",
+			"source_path": "well-architected/service-guides/iot-hub/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-iot-hub",
 			"redirect_document_id": false
 		}
