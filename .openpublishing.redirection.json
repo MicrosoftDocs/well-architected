@@ -2294,6 +2294,21 @@
 			"source_path": "well-architected/service-guides/azure-functions-security.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-functions",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/iot-hub.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-iot-hub",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/iot-hub/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-iot-hub",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/iot-hub/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-iot-hub",
+			"redirect_document_id": true
 		}
 	]
 }
