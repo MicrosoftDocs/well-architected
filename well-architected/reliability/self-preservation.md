@@ -75,7 +75,7 @@ In addition to using [design patterns](./design-patterns.md) that support reliab
 
 - **Implement automated self-healing actions:** Use automated actions that are triggered by your monitoring solution when pre-determined health status changes are detected. For example, if your monitoring detects that a web app isn't responding to requests, you can build automation through a PowerShell script to restart the app service. Depending on your team's skill set and preferred development technologies, use a webhook or function to build more complex automation actions. See the [Event-based cloud automation](/azure/architecture/reference-architectures/serverless/cloud-automation) reference architecture for an example of using a function to respond to database throttling. Using automated actions can help you recover quickly and minimize the necessity of human intervention.
 
-## Implement a graceful degradation mode
+### Implement a graceful degradation mode
 
 Despite your self-preservation and self-healing mechanisms, you may still encounter situations where one or more components malfunction to the extent that they become unavailable for some amount of time. In these cases, ideally, your workload can maintain enough functionality for business to continue in a degraded state. To ensure that this is possible, design and implement a graceful degradation mode. This is a distinct workflow that is enabled in reaction to failed components. Considerations for the desing and implementation include:
 
