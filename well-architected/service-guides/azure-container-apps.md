@@ -169,7 +169,7 @@ Explore the following table of recommendations to optimize your Azure Container 
 | **Implement consistent resource tagging across all Container Apps and associated resources.** | Facilitates efficient resource management, cost tracking, and automation. |
 | **Configure Azure Monitor and Application Insights.** | To track the performance and health of your container apps provide detailed insights into application performance and reliability, allowing for proactive issue detection and resolution. |
 | **Deploy Container Apps across multiple Azure regions to maximize availability and ensure business continuity.** | Enhances resilience and provides disaster recovery capabilities by distributing workloads globally. |
-| **Use Azure Policy**  | To enforce governance and compliance across your container apps environments. | Ensures adherence to organizational standards and best practices, enhancing security and reliability. |
+| **Use Azure Policy.**  | To enforce governance and compliance across your container apps environments. Ensures adherence to organizational standards and best practices, enhancing security and reliability. |
 | **Configure self-healing mechanisms to automatically restart unhealthy container instances.** | Increases the reliability and availability of your applications by ensuring quick recovery from failures without manual intervention. This includes setting up health probes (liveness and readiness checks) to detect failing containers and using Azure Container Apps' new resiliency policies to automatically handle retries and circuit breakers. By implementing these self-healing mechanisms, you can reduce downtime and maintain smooth operation of your applications even in the face of unexpected issues. |
 
 ## Performance Efficiency
