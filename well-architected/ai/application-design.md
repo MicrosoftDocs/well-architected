@@ -13,7 +13,7 @@ There are many choices to consider when you create an application that has AI fu
 
 As discussed in the [Get started](./get-started.md) article, whether to build your own model or use a prebuilt model is one of the first important decisions to make. When you use a prebuilt model, consider these points:
 
-- **Catalog sources**. Explore repositories like the Hugging Face Model Hub, TensorFlow Hub, and the Azure AI Foundry portal model catalog to find pre-trained models. These platforms provide an extensive catalog of models for various tasks.
+- **Catalog sources**. Explore repositories like the Hugging Face Model Hub, TensorFlow Hub, and the [Azure AI Foundry portal](https://ai.azure.com/) model catalog to find pre-trained models. These platforms provide an extensive catalog of models for various tasks.
 
 - **Licensing**. Make sure the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
 
