@@ -1,5 +1,5 @@
 ---
-title: Well-Architected Framework Perspective on Azure IoT Hub
+title: Architecture Best Practices for Azure IoT Hub
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for IoT Hub.
 author: asergaz
 ms.author: sergaz
@@ -14,7 +14,7 @@ azure.category:
  - iot
 ---
 
-# Well-Architected Framework perspective on Azure IoT Hub
+# Architecture best practices for Azure IoT Hub
 
 Azure IoT Hub is a managed cloud-based service that serves as a central message hub for communication between an IoT application and its connected devices. You can reliably connect almost any device and its back-end solutions to an IoT hub at scale.
 
