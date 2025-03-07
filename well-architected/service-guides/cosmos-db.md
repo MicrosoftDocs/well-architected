@@ -39,6 +39,8 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 > [!div class="checklist"]
 >
+> - Strive for a simple, easy to manage design. Avoid adopting functionality that unnecessarily adds complexity to your workload, like multi-master writes and custom indexing.
+> - Evaluate flows as they relate to Cosmos DB and consider whether there are critical flows that need specific configurations.
 > - Consider how your selected [consistency level](/azure/cosmos-db/consistency-levels) and replication mode [impacts the Recovery point objective (RPO)](/azure/cosmos-db/consistency-levels#rto) in a region-wide outage.
 > - Design your database account deployment so it spans at least two regions in Azure. Additionally, distribute your account across multiple availability zones when offered within your Azure region.
 > - Evaluate the multi-region and single-region write strategies for your workload. For single-region write, design your workload to have at least a second read region for failover. Enable auto-failover for single-region write and multi-region read scenarios. For multi-region write, compare the tradeoffs in complexity and consistency against the advantages of writing to multiple regions. Review [expectations during a regional outage for single-region and multi-region write accounts](/azure/cosmos-db/high-availability#what-to-expect-during-a-region-outage).
@@ -52,6 +54,8 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 | Recommendation | Benefit |
 | --- | --- |
+| Use only the functionality to meet your requirements. | While Cosmos DB supports multi-master writes and custom indexing, they can add significant complexity and operational burden, so carefully evaluate whether those and other advanced features are necessary for your workload's requirements. |
+| Identify critical flows and any specific configurations needed for them. | Capture processing requirements for your flows to help identify which may need special treatment. Examples include flows that are more sensitive to latency issues or flows that require higher consistency levels than others. |
 | Distribute your Azure Cosmos DB account across availability zones (when available). | Availability zones provide distinct power, networking, and cooling isolating hardware failures to a subset of your replicas. Azure Cosmos DB has multiple replicas that span across a single random availability zone when the availability zones feature isn't used. If the availability zone feature is used, replicas span across multiple availability zones. |
 | Configure your Azure Cosmos DB account to span at least two regions. | Spanning multiple regions prevents your account from being entirely unavailable if there's an isolated region outage. |
 | Enable service-managed failover for your account. | Service-managed failover allows Azure Cosmos DB to change the write region of a multiple-region account to preserve availability. This change occurs without user interaction. Understand the tradeoffs with service-managed failover and plan for forced failover if necessary. For more information, see [building highly available applications](/azure/cosmos-db/high-availability#tips-for-building-highly-available-applications). |
