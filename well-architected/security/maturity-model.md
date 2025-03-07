@@ -1,9 +1,9 @@
 ---
 title: Security Maturity Model
 description: Understand the maturity model levels of the security pillar.
-author: PageWriter-MSFT
-ms.author: prwilk
-ms.date: 10/23/2024  
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 1/22/2025  
 ms.topic: conceptual
 ---
 
@@ -16,39 +16,94 @@ For values to set, see [Taxonomies for Learn](https://review.learn.microsoft.com
 
 # Security maturity model
 
-<!-- Introductory paragraph 
-Required. Lead with a light intro that describes what the article covers.
--->
-[add your introductory paragraph]
+In the context of the Well-Architected Framework, security is about providing confidentiality, integrity, and availability guarantees to your workload. This is accomplished through aliging your secuirty mechanisms and processes to your particular business requirements, industry standards, and relevant regulatory frameworks.
 
 [add art]
 
-<!-- :::image type="content" source="" alt-text="Example alt-text."::: -->
-## Example heading
-
-# [Level 1](#tab/level1)
+:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
+# [**Level 1 - Secure foundation**](#tab/level1)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Security baseline
+![Goal icon](../_images/goal.svg) **Establish a minimum viable security posture to serve as the foundation to build upon**
+
+Level 1 of the maturity model is designed to help workload teams achieve a solid security foundation that can be expanded and improved as the workload is developed and deployed throughout its lifecylce. This foundation is known as the security baseline and it captures all of the minimum security requirements and expectations that you need to implement. The baseline should be based on well-defined and mature industry standards and regulatory framework guidance.
+
+The baseline should inform the architectural design of the workload, showing where security mechanisms need to be built and how they interact with other workload components. This practice doesn't only apply to security tools. You also need to standardize processes around the operation of the workload, including DevOps practices. Coding practices like input validation and output encoding must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### Example heading 
+#### &#10003; Integrate baseline security in the development phases of software development lifecycle (SDLC)
 
-<!-- No more than 100 words under each H4 heading. -->
+As you begin the development phase of your workload implementation, standardize practices that align to your security baseline requirements. These practices should include regularly occurring code reviews and automated security scans, input validation, and output encoding. See the guide for [developing secure applications in Azure](/azure/security/develop/secure-develop) for a detailed review of best practices.
 
-# [Level 2](#tab/level2)
+#### &#10003; Externalize identity and access management to an identity provider (IdP)
+
+Identity and access management can quickly become complex and burdensome as your workload development progresses. Using an IdP, like Microsoft Entra, can help you maintain security standards by tightly controlling access to workload components and using non-human identities, like managed identities. 
+
+Additionally, identity providers enhance security and compliance with multi-factor authentication (MFA) and detailed access logs. This improves security and streamlines user interactions while reducing operational burden.
+
+#### &#10003; Observe access patterns of key identities and apply appropriate level of security
+
+As you implement your IdP solution, take some time to observe access behaviors across your workload teams. By learning how users access different workload components, you can determine the appropriate level of access that can safely be granted. Additionally, you can find opportunities to replace human access to processes like deployments and database changes with managed identities. In cases where human accounts require access to sensitive resources, standardize just-in-time access as the default mechanism. 
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: You may encounter push back when adopting these access policies. Some users may have a perception that their work is being slowed down. It's important that all workload team members understand that security is everyone's responsibility and implementing strong access is part of setting everyone up for success in maintaining a secure workload.
+
+#### &#10003; Encrypt data at rest 
+
+Securing your data at rest helps ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption on all of your data stores, and ensure that you apply strict access controls to the data stores. All data stores in Azure are encrypted by default at the underlying hardware level, but you can add additional security measures by impementing encryption to your workload data. Configure encyrption on your VM disks, storage accounts, and databases using built-in mechanisms to keep your design simple.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many Azure services allow you to bring your own key (BYOK) as an alternative to using a Microsoft-managed key. Bringing your own key gives you more control over your resources and may satisfy some regulartory requirements, but it adds operational burden by managing your key rotation and puts you at risk of losing access to your data if you lose your key.
+
+#### &#10003; Encrypt data in transit
+
+Securing your data in transit helps protect you from attackers gaining access to your data and your systems. If you are not using encryption or are using a weak cipher, your data can be intercepted by attackers. Don't use TLS versions lower than 1.2 in any component and migrate any older versions up to 1.2, making it the default version for all of your systems. All Azure services that send data across networks or the internet use TLS 1.2.
+
+#### &#10003; Protect application secrets
+
+Application secrets are confidential components that facilitate communication between workload components, including sensitive data such as passwords, API keys, and certificates used for authentication and resource access. Proper management of these secrets is crucial for maintaining security and integrity, as improper handling can lead to data breaches, service disruption, regulatory violations, and other issues. Use a solution like Azure KeyVault to manage secrets securely.
+
+
+# [**Level 2 - Threat prevention controls**](#tab/level2)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Threat prevention controls
+![Goal icon](../_images/goal.svg) **Enhance the baseline security with threat prevention measures**
 
-<!-- No more than 5 H4 headings per tab -->
+Level 2 of the Security pillar focuses on applying your first enhancements to your baseline configuration to ensure that as you deploy your workload, you minimize potential threats. This level focuses on strengthening your deployment practices, developing a maintenance plan for your code assets and workload components, starting work on developing a data classification framework, securing your network ingress points, and hardening the workload components. These measures will help you safely build out your workload and prepare for operationalizing it while maintaining a solid security posture.
 
-#### Example heading 
+#### &#10003; Secure the deployment phase of your software development lifecycle (SDLC)
 
-<!-- No more than 100 words under each H4 heading. -->
+Level 1 of the Security pillar focuses on securing the development phase of your SDLC. Level 2 assumes that you have established baseline security measures to the development phase and you are ready to deploy the first iterations of your workload or components of your workload. In this phase, focus on building your deployment automation to optimize your efficiency and security. Use deployment pipelines like [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) or [Github Actions](https://docs.github.com/actions/about-github-actions/understanding-github-actions) and standardize on using these pipelines **exclusively for all changes** to your workload. Routinely perform good code hygiene practices to ensure that your codebase is free of defects and code that may introduce risks. Finally, familiarize your team with the [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl). As your workload evolves, regularly revisit the recommendations found in this guidance to ensure that your SDLC remains optimized for security.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Securing your SDLC is an interative process that requires adopting new processes and sometimes a shift in mindset for developers. Applying controls on deployments can be frustrating for developers, so it helps to foster a culture of shared responsibility for security. While potentially slowing down development velocity, securing your deployments sets your team up for long-term success.
+
+#### &#10003; Develop a maintenance plan
+
+In the context of security, a maintenance plan refers to standard practices you adopt to maintain the security of your code and workload components throughout its lifecycle. Build mechanisms and processes to handle emergency fixes in your deployment pipeline. This might include accelerating deployments through quality gates by using direct communication between teams and developing expedited roll-back and roll-forward plans. Include patching of software, libraries, and infrastructure in your standard processes to ensure that all components of your workload are always up-to-date. Kepp a catalog of versioned assets to help during incident response, issue resolution, and system recovery. You can also compare these versions with known vulnerabilities (CVEs) using automation.
+
+#### &#10003; Classify data based on sensitivity needs
+
+Adopting a data classification system and its supporting processes will help you ensure that you maintain confidentiality and integrity. Start with broad categories like Public, General, Confidential, and Highly Confidential, and apply appropriate levels of security to protect those categories throughout your data stores. Investigate investing in tooling to govern your data, like [Microsoft Purview](/purview/purview). See the [data classification guidance](/compliance/assurance/assurance-create-data-classification-framework) found in Microsoft's compliance documentation for detailed best practices.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Data classification can be an expensive undertaking in terms of costs and effort, even if you use tooling. Once you've created your initial categories and performed an initial classification exercise, determine how much effort will be involved with ongoing maintenance manually or with tooling. Be sure to factor in time and costs for training in your estimates.
+
+#### &#10003; Apply authorization and authentication controls
+
+As part of your identity provider (IdP) soloution implementation, you can start applying controls related to authorization and authentication. Using role-based access controls (RBAC) helps you limit access to workload components by applying granular permissions to resources based on user roles. Apply these permissions based on the principle of least access. Further enhance your controls by using conditional access policies. These policies grant or deny access to resources based on certain conditions like a user's geographic location or the status of a user device's compliance with security policies. You can also take advantage of features like just-in-time access to lock down access to sensitive components. 
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Administrative accounts are one of the most critical attack vectors in your environment and you should only create and use them after careful consideration of your needs and how they align with [privileged accounts best practices](/entra/identity/role-based-access-control/best-practices). If attackers gain control of an administrative account, your entire environment could be at severe risk.
+
+#### &#10003; Secure your network ingress
+
+Securing your network ingress to the extent practical greatly improves your overall security posture, as it is your first line of defense against outside attackers. Your cloud provider may have a wide variety of tools that you can use in your particular environment, but be sure to understand all possible ingress points in your workload. You may have a virtual network that you can add firewalling directly into the network or its subnets, like Network Security Groups in Azure virtual networks. If you are using platform resources like Azure SQL Database, you might have options to limit or disable public and private access within the configuration of the resource itself. Likewise, limit or disable any direct access to virtual machines to the extent practical. In general, prefer using a native or third-party firewall to control all ingress to your workload. This could also be a web application firewall that is built into a load balancing solution, like Azure Front Door or an API gateway, like Azure API Management.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Firewall solutions can add a significant cost to your workload, especially if they are over-provisioned. Investigate the best solution for your scenario and ensure that you can start small and scale up as your workload evolves to keep costs under control.
+
+
+#### &#10003; Harden the attack surface
+
+Hardening the workload is an iterative process of continuous improvement. Be vigilant about analyzing the workload for vulnerabilities. As your workload matures, using a vulnerability scanning tool will help you easily identify vulnerable components, but early in your development it may be a better strategy to perform the hardening exercise manually. Look at the configurations of your components to look for potential weaknesses like misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that can be shutdown or removed entirely and for unused accounts that can be deactivated.
 
 # [Level 3](#tab/level3)
 
@@ -78,7 +133,7 @@ Required. Lead with a light intro that describes what the article covers.
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Security level 5
+### Strategy focus: 
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -89,5 +144,3 @@ Required. Lead with a light intro that describes what the article covers.
 ---
 
 ## Next steps
-<!-- Provide at least one next step and no more than three. Include some 
-context so the customer can determine why they would click the link. -->
