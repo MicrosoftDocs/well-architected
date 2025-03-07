@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure NetApp Files
+title: Architecture Best Practices for Azure NetApp Files
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure NetApp Files.
 author: gvanteylingen
 ms.author: b-ahibbard
@@ -13,7 +13,7 @@ categories:
   - storage
 ---
 
-# Azure Well-Architected Framework perspective on Azure NetApp Files
+# Architecture best practices for Azure NetApp Files
 
 Azure NetApp Files is an Azure-native, enterprise-class service that you can use to run file workloads in the cloud and store files. Use this fully managed, cloud-based service to:
 

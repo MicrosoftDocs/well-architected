@@ -1,5 +1,5 @@
 ---
-title: Well-Architected Framework Perspective on Azure Load Balancer
+title: Architecture Best Practices for Azure Load Balancer
 description: Learn about reliability, security, cost optimization, operational excellence, and performance efficiency best practices for Azure Load Balancer.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.date: 02/04/2025
 ---
 
-# Well-Architected Framework perspective on Azure Load Balancer
+# Architecture best practices for Azure Load Balancer
 
 The load balancing process distributes network traffic to a group of two or more back-end servers. Azure Load Balancer is an Azure-native service that does Layer-4 load balancing for User Datagram Protocol (UDP) and Transmission Control Protocol (TCP). Load Balancer helps provide low latency and high availability for regional and global deployments.
 

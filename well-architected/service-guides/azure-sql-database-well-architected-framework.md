@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework review - Azure SQL Database 
+title: Architecture Best Practices for Azure SQL Database 
 description: Focuses on the Azure SQL Database service to provide best-practice, configuration recommendations, and design considerations.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -12,7 +12,7 @@ azure.category:
 
 ---
 
-# Azure Well-Architected Framework review - Azure SQL Database
+# Architecture best practices for Azure SQL Database
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include upgrades, patches, backups, and monitoring.
 
@@ -214,6 +214,7 @@ Azure SQL Database includes the following design considerations:
 - PaaS capabilities built into Azure SQL Database enable you to focus on the domain-specific database administration and optimization activities that are critical for your business.
 - Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from changes done inadvertently. For more information, read the [Point-in-time restore (PITR)](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) documentation.
 - Business Critical or Premium tiers are configured as Zone Redundant Deployments. For more information about the availability guarantee, reference [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_6/) .
+- Azure Backup is an alternative to the built-in Azure SQL backup system. It offers centralized, zero-infrastructure solutions for full, differential, and log backups. Key features include point-in-time recovery, long-term retention, and centralized management of SQL Server databases on Azure VMs. It uses SQL native APIs and integrates smoothly with Azure's Recovery Services vault for secure and efficient backup and restore operations. For more information, see [Overview of SQL Server Backup in Azure VMs](/azure/backup/backup-azure-sql-database).
 
 ### Checklist
 
@@ -227,6 +228,7 @@ Azure SQL Database includes the following design considerations:
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
 > - Implement retry logic.
 > - Back up your keys.
+> - Use Azure Backup to protect an Azure SQL Database server.
 
 ### Configuration recommendations
 
@@ -240,6 +242,7 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 |Monitor your Azure SQL Database in near-real time to detect reliability incidents.|Use one of the available solutions to monitor SQL DB to detect potential reliability incidents early and make your databases more reliable. Choose a near real-time monitoring solution to quickly react to incidents. Reference [Azure SQL Analytics](/azure/azure-monitor/insights/azure-sql#analyze-data-and-create-alerts) for more information.|
 |Implement Retry Logic.|Although Azure SQL Database is resilient when it concerns transitive infrastructure failures, these failures might affect your connectivity. When a transient error occurs while working with SQL Database, make sure your code can retry the call. For more information, reference [how to implement retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) and [Configurable retry logic in SqlClient introduction](/sql/connect/ado-net/configurable-retry-logic-sqlclient-introduction).|
 |Back up your keys.|If you're not [using encryption keys in Azure Key Vault to protect your data](/azure/azure-sql/database/always-encrypted-azure-key-vault-configure?tabs=azure-powershell), back up your keys.|
+|Use Azure Backup to protect an Azure SQL Database server. | Using Azure Backup to protect your Azure SQL Database server enables you to centrally manage business continuity and disaster recovery from the Recovery Services vault, retain recovery points for long term storage, and perform [Cross Region Restore](/azure/backup/restore-sql-database-azure-vm#cross-region-restore) and [Cross Subscription Restore](/azure/backup/restore-sql-database-azure-vm#cross-subscription-restore). With the [built-in data protection capabilities] in the Azure Recovery Services vault](/azure/backup/backup-azure-recovery-services-vault-overview#key-features), you can prevent any accidental or malicious deletion of backups. |
 
 
 ## Azure SQL Database and performance efficiency

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|**RE:04**| Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like. |
+|**RE:04**| **Define reliability and recovery targets** for your workload. Use the targets to inform your design and as the foundation of your health model. |
 |---|---|
 
 This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. You should derive reliability targets from workshop exercises with business stakeholders. Then refine those targets by monitoring and testing your workloads.

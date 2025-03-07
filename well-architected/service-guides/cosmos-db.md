@@ -1,5 +1,5 @@
 ---
-title: Well-Architected Framework perspective on Azure Cosmos DB for NoSQL
+title: Architecture Best Practices for Azure Cosmos DB for NoSQL
 description: Design considerations and recommendations for each pillar as related to solutions using Azure Cosmos DB for NoSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,7 +9,7 @@ products:
   - azure-cosmos-db
 ---
 
-# Well-Architected Framework perspective on Azure Cosmos DB for NoSQL
+# Architecture best practices for Azure Cosmos DB for NoSQL
 
 Azure Cosmmos DB is a fully managed database solution that can host multiple database types like NoSQL, relational, vector, and table, accomodating most use cases for your workload. The recommendations offered in this guide focus on the [Cosmos DB for NoSQL](/azure/cosmos-db/nosql/) variant, though there are some foundational recommendations that can be applied to other variants.
 

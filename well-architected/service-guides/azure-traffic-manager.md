@@ -1,5 +1,5 @@
 ---
-title: Well-Architected Framework Perspective on Azure Traffic Manager
+title: Architecture Best Practices for Azure Traffic Manager
 description: Learn how to take advantage of features in Azure Traffic Manager and how those features relate to the Azure Well-Architected Framework design pillars.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -10,7 +10,7 @@ ms.subservice: waf-service-guide
 products: azure-traffic-manager
 ---
 
-# Well-Architected Framework perspective on Azure Traffic Manager
+# Architecture best practices for Azure Traffic Manager
 
 Azure Traffic Manager is a global load balancer that can distribute traffic across multiple Azure regions, zones within a region, or datacenters within those zones. It uses the Domain Name System (DNS) protocol to establish a communication path between a client and your workload's endpoints. After the connection is established, clients can connect directly to the endpoint without the help of Traffic Manager. 
 
