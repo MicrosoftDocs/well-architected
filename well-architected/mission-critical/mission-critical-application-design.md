@@ -157,7 +157,7 @@ Here are some additional recommendations:
 
 - Define common engineering criteria for all application microservice teams to drive consistency and speed in the use of application-level resiliency patterns.
 
-- Implement resiliency patterns by using proven standardized packages, like [Polly](http://www.thepollyproject.org) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java.
+- Consider implementing resiliency patterns by using proven standardized packages, like [Polly](http://www.thepollyproject.org) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java. Additionally, messaging frameworks like [NServiceBus](https://particular.net/) or [MassTransit](https://masstransit.io/) provide built-in resiliency features, which helps avoid needing additional reliability code.
 
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
 - Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to easily debug problems. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/well-architected/devops/monitor-collection-data-storage).
