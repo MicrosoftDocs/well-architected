@@ -13,10 +13,7 @@ azure.category:
 
 # Architecture best practices for Azure Front Door
 
-Azure Front Door is a global load balancer and content delivery network (CDN) that routes HTTP and HTTPS traffic. Azure Front Door delivers and distributes traffic that's closest to the application users. 
-
-<!-- Art Library Source# ConceptArt-0-000-043 -->
-:::image type="content" source="_images/front-door-overview.png" alt-text="Diagram of Azure Front Door distributing and protecting traffic to origins located Azure, on-premises and other cloud services." border="false":::
+Azure Front Door is a global load balancer and content delivery network (CDN) that routes HTTP and HTTPS traffic. Azure Front Door delivers and distributes traffic that's closest to the application users.
 
 This article assumes that as an architect you've reviewed the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) and chosen Azure Front Door as the load balancer for your workload. It also assumes that your application is deployed to multiple regions in an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
@@ -26,7 +23,7 @@ This article assumes that as an architect you've reviewed the [load balancing op
 >
 > Each section has a *design checklist* that presents architectural areas of concern and design strategies that are localized to the technology scope. 
 >
-> This article also includes *recommendations* on the technology capabilities that help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Front Door and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
+> This article also includes *recommendations* on the technology capabilities that help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Front Door and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:
 > [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
@@ -36,6 +33,9 @@ This article assumes that as an architect you've reviewed the [load balancing op
 This review focuses on the interrelated decisions for the following Azure resources:  
 
 - Azure Front Door
+
+<!-- Art Library Source# ConceptArt-0-000-043 -->
+:::image type="content" source="_images/front-door-overview.png" alt-text="Diagram of Azure Front Door distributing and protecting traffic to origins located Azure, on-premises and other cloud services." border="false":::
 
 ## Reliability
 
