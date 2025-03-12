@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure ExpressRoute
+title: Architecture Best Practices for Azure ExpressRoute
 description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
@@ -11,7 +11,7 @@ azure.category:
   - networking
 ---
 
-# Azure Well-Architected Framework perspective on Azure ExpressRoute
+# Architecture best practices for Azure ExpressRoute
 
 Azure ExpressRoute enables you to create private connections between Azure data-centers and infrastructure that's on your premises or in a colocation facility. ExpressRoute connections don't go over the public internet, offering more security, faster speeds, and lower latencies than typical internet connections. 
 

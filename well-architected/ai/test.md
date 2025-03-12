@@ -231,7 +231,7 @@ Conduct end-to-end testing and incorporate that process as part of data design. 
 
 A key component of a RAG application is the central orchestrator. This code coordinates various tasks that relate to the initial user question. Orchestrator tasks typically require an understanding of user intent, a connection to the index to look up grounding data, and calling the inference endpoint. If agents need to do tasks, such as calling REST APIs, this code handles those tasks within the context.
 
-You can develop orchestration code in any language or write it from scratch. However, we recommend that you use technologies like prompt flow in Azure AI Foundry portal or Apache Airflow's Directed Acyclic Graphs (DAGs) to speed up and simplify the development process. Prompt flow provides a design-time experience. Use it to modularize tasks as units and connect inputs and outputs of each unit, ultimately forming the orchestration code, which represents the entire process.
+You can develop orchestration code in any language or write it from scratch. However, we recommend that you use technologies like prompt flow in [Azure AI Foundry portal](https://ai.azure.com/) or Apache Airflow's Directed Acyclic Graphs (DAGs) to speed up and simplify the development process. Prompt flow provides a design-time experience. Use it to modularize tasks as units and connect inputs and outputs of each unit, ultimately forming the orchestration code, which represents the entire process.
 
 Isolate your orchestration code. **Develop it separately and deploy it as a microservice** with an online endpoint and REST API for access. This approach ensures modularity and ease of deployment.
 

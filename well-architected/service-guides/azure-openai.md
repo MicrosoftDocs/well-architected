@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure OpenAI Service
+title: Architecture Best Practices for Azure OpenAI Service
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure OpenAI.
 author: robbagby
 ms.author: robbag
@@ -14,7 +14,7 @@ azure.category:
   - ai-machine-learning
 ---
 
-# Azure Well-Architected Framework perspective on Azure OpenAI Service
+# Architecture best practices for Azure OpenAI Service
 
 Azure OpenAI Service provides REST API access to OpenAI large language models (LLMs), adding Azure networking and security capabilities. This article provides architectural recommendations to help you make informed decisions when you use Azure OpenAI as part of your workload's architecture. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Databricks and security
+title: Architecture Best Practices for Azure Databricks and Security
 description: Focuses on the Azure Databricks service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Security.
 author: martinekuan
 ms.author: martinek
@@ -12,7 +12,7 @@ azure.category:
 
 ---
 
-# Azure Databricks and security
+# Architecture best practices for Azure Databricks and security
 
 [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) is a data analytics platform optimized for Azure cloud services. It offers three environments for developing data intensive applications:
 
