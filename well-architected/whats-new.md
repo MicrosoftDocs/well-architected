@@ -15,7 +15,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated articles
 
-- [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md)
+- [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md): We updated this guide for easier readability by streamlining several sections. We also moved the guides for [handling transient faults](../design-guides/handle-transient-faults) and [developing background jobs](../design-guides/background-jobs) into the design guide area to make the Reliability pillar easier to use.
 - [Design review checklist for Reliability](./reliability/checklist.md): We simplified the design review checklist for Reliability to make the recommendations more concise, focused, and actionable.
 
 #### Service guides
