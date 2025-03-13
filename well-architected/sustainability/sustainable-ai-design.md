@@ -50,7 +50,7 @@ Data design phase is one which involves Data identification, classification, ing
 3.	**Clean Data**: Ensure high-quality data for training to avoid wasted cycles.
 Another consideration would be to move the whole data processing, ingestion, computation, and storage to the edge.
 
-### Operational Design Considerations:
+### Operational design recommendations
 
 1. **Hosting Provider and Region**:  Deploy models in regions using renewable energy sources.
 2. **Frequency of Retraining**: Retrain orchestration involves automating the retraining of models based on new data. This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Balance model accuracy with energy consumption by setting thresholds for retraining.
