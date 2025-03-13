@@ -12,7 +12,7 @@ description: Test Description
 Designing, building, and operationalizing AI workloads **sustainably** is crucial as AI workloads consume significant energy and carbon throughout their lifecycle. Training large AI models, such as GPT-3, can consume up to 700,000 liters of clean freshwater, equivalent to producing 370 BMW cars or 320-Tesla electric vehicles. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
 
-## AI Workload lifecycle
+## AI workload design lifecycle
 
 The AI workload lifecycle consists of three primary steps: Model Design, Data Design, and Operational Design. In this article, we look at the different design aspects that can be considered for factoring in sustainable design principles. 
 
