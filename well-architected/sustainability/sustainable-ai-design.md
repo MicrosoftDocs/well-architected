@@ -32,7 +32,7 @@ Consider building an AI workload only:
 ## Key Recommendations for Sustainable AI Workloads:
 
 
-### Model Design Considerations:
+### Model design recommendations
 
 Model design is the first step in the lifecycle of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, forecasting, etc. 
 There are multiple decisioning points during the model design phase. Let us look at some considerations for model design below: 
