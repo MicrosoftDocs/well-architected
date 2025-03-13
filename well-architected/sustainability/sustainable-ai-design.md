@@ -43,7 +43,7 @@ There are multiple decisioning points during the model design phase. Let us look
 4. **Fine Tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
 5. **Hosting Provider and Region**: Model training is energy intensive. It's important that the right region is chosen. Select regions powered by renewable energy sources for model training.
 
-### Data Design Considerations:
+### Data design recommendations
 Data design phase is one which involves Data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the amount and type of infrastructure that needs to be stood up, the data processing phase could be made sustainable. Some of the levers that we can use are:
 1. **Data Processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data.
 2. **Storage**: Store data in regions powered by renewable energy and consider edge computing.
