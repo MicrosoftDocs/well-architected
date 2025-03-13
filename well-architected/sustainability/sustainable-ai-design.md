@@ -29,7 +29,7 @@ Consider building an AI workload only:
 •	If the problem involves dealing with complex, unstructured data 
 •	If the problem involves creating new insights through predictive modeling 
 
-## Key Recommendations for Sustainable AI Workloads:
+## Design recommendations for sustainable AI workloads
 
 
 ### Model design recommendations
