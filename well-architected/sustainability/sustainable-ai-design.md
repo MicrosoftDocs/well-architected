@@ -16,8 +16,6 @@ Designing, building, and operationalizing AI workloads **sustainably** is crucia
 
 The AI workload lifecycle consists of three primary steps: Model Design, Data Design, and Operational Design. In this article, we look at the different design aspects that can be considered for factoring in sustainable design principles. 
 
-:::image type="content" source="/images/AI Workload lifecycle.jpg" alt-text="A conceptual diagram that shows the AI workload lifecycle view.":::
-
 
 ## Business Goal
 
