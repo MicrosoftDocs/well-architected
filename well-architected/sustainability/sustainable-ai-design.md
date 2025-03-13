@@ -1,15 +1,15 @@
 ---
 author: srini1978
 ms.author: srrakhun
-title: Sustainable AI Design
+title: Sustainable design for AI workloads on Azure
 ms.topic: best-practice
 ms.date: 02/19/2025
-description: Test Description
+description: The article focuses on how to build AI workloads sustainably and aims to  provide specific guidances to the reader on various measures that can be taken during the  software development phases.  
 ---
 
 # Sustainable AI Design
 
-Designing, building, and operationalizing AI workloads **sustainably** is crucial as AI workloads consume significant energy and carbon throughout their lifecycle. Training large AI models, such as GPT-3, can consume up to 700,000 liters of clean freshwater, equivalent to producing 370 BMW cars or 320-Tesla electric vehicles. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
+Designing, building, and operationalizing AI workloads **sustainably** is crucial as AI workloads consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
 
 ## AI workload design lifecycle
