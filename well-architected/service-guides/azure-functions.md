@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure Functions
+title: Architecture Best Practices for Azure Functions
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations for Azure Functions.
 author: PageWriter-MSFT
 ms.author: mohamad
@@ -13,7 +13,7 @@ azure.category:
   - compute
 ---
 
-# Azure Well-Architected Framework perspective on Azure Functions
+# Architecture best practices for Azure Functions
 
 Azure Functions is a serverless compute service that you can use to run event-driven code without having to manage the infrastructure directly. Azure Functions is a function as a service offering that abstracts the underlying infrastructure. This abstraction allows you to focus on your code. Azure Functions automatically scales based on demand and charges you only for the resources consumed during operation.
 

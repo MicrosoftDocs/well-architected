@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL
+title: Architecture Best Practices for Azure Database for PostgreSQL
 description: Design considerations and recommendations for each pillar as related to solutions using Azure Database for PostgreSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -14,7 +14,7 @@ azure.category:
   - databases
 ---
 
-# Azure Well-Architected Framework review - Azure Database for PostgreSQL
+# Architecture best practices for Azure Database for PostgreSQL
 
 This article provides architectural best practices for Azure Database for PostgreSQL.
 
@@ -58,7 +58,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads. | Derive these values by conducting a risk assessment and ensuring you understand the cost and risk of downtime and data loss. These are nonfunctional requirements of a system and should be dictated by business requirements. |
 | Select the appropriate high availability configuration. | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
-| Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. |
+| Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL - Flexible Server, increasing efficiency and reducing downtime during disasters or region outages.|
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
 | Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
 
@@ -127,6 +127,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Consider reserved instances. | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
 | Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage. |
 | Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS. |
+| Understand protected instance and backup storage cost | When backing up PostgreSQL - Flexible Server using Azure Backup, you incur Protected Instance Fees (per 250 GB) and Backup Storage Fees (based on total data stored and redundancy type). | 
 | Evaluate storage scale-up decisions. | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down. |
 | Deploy to the same region as the app. | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. |
 | High availability oriented cost description. | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
@@ -158,7 +159,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 | Recommendation | Benefits |
 | --- | --- |
-| Set up automated backups and retention policies to maintain data availability and meet compliance requirements. | Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days. |
+| Set up automated backups and retention policies to maintain data availability and meet compliance requirements. <br><br> Alternatively, use an [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-overview) to back up Azure Database for PostgreSQL Server. <br><br> You can also use this Azure Backup policy to protect Azure Database for PostgreSQL - Flexible Server.| Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days.  <br><br> Azure Backup allows you to define how and when backups are created, the retention period for recovery points, and the rules for data protection and recovery. You can retain recovery points in a Backup vault for up to **10 years**. <br><br> Use [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-flex-overview) for long term protection of Azure Database for PostgreSQL - Flexible Server and to manage the safety and integrity of the database. You can also manage the backup and restore operations using [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview).|
 | Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date. | Azure Database for PostgreSQL provides automated patching and updates for your database. You can configure the maintenance window for your server to minimize the impact on your workload. |
 | Monitor database health and performance using Azure Monitor and set up alerts for critical metrics. | Azure Database for PostgreSQL provides built-in monitoring and alerting capabilities. You can monitor the health and performance of your database using Azure Monitor. You can also set up alerts for critical metrics to get notified when your database isn't performing as expected. |
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure Virtual Network
+title: Architecture Best Practices for Azure Virtual Network
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Network and its supported features.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -12,7 +12,7 @@ azure.category:
   - networking
 ---
 
-# Azure Well-Architected Framework perspective on Azure Virtual Network
+# Architecture best practices for Azure Virtual Network
 
 Azure Virtual Network is a fundamental building block for establishing a private network on Azure. You can use it to enable communication between Azure resources and provide internet connectivity. Virtual Network also integrates with on-premises systems. It includes built-in filtering capabilities to ensure that only expected, allowed, and safe traffic reaches the components within the network boundaries.
 

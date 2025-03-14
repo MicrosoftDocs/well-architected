@@ -61,10 +61,6 @@
               href: reliability/partition-data.md
             - name: RE:06 Scaling
               href: reliability/scaling.md
-            - name: RE:07 Background jobs
-              href: reliability/background-jobs.md
-            - name: RE:07 Transient faults 
-              href: reliability/handle-transient-faults.md
             - name: RE:07 Self-preservation
               href: reliability/self-preservation.md
             - name: RE:08 Testing
@@ -301,11 +297,7 @@
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
         - name: Azure IoT Hub
-          items:
-            - name: Reliability
-              href: service-guides/iot-hub/reliability.md
-            - name: Operational excellence
-              href: service-guides/iot-hub/operational-excellence.md
+          href: service-guides/azure-iot-hub.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -362,3 +354,7 @@
         href: ./design-guides/implementing-recommendations.md
       - name: Optimize using flows
         href: ./design-guides/optimize-workload-using-flows.md
+      - name: Handle transient faults
+        href: ./design-guides/handle-transient-faults.md
+      - name: Develop background jobs
+        href: ./design-guides/background-jobs.md
