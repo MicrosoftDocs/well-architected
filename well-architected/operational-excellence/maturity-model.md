@@ -72,17 +72,127 @@ Make tools and processes transparent so that vulnerabilities can be easily detec
 
 //TODO for Security: Your tools and deployment practices use the same identity provider as your production environments to avoid issues with duplicated identities and integration problems across different platforms. Minimize the different identity control planes.
 
-# [Level 2](#tab/level2)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+# [**Level 2 - Standardization**](#tab/level2)
 
-### Strategy focus: Standardization
+![Goal icon](../_images/goal.svg) **Standardize foundational processes, which streamline decision-making responsibilities, and define the requirements for deployment and monitoring the system.**
 
-<!-- No more than 5 H4 headings per tab -->
+At Level 2, the team should adopt a more structured approach and focusing development activities on the core functionality of the workload. Establishing consistency early on will help minimize operational burdens in later stages.
 
-#### Example heading 
+#### &#10003; Define team roles and decision-making responsibilities 
 
-<!-- No more than 100 words under each H4 heading. -->
+Adopt a product mindset. Rather than viewing the workload as integration of tools, technologies, or even job functions, consider them as a cohesive product with focus on the end goal. In Level 2, a more structured approach is recommended where each role is clearly defined and respected.
+
+Often, there's varied expertise within the team. This can be useful in distributing decision-making among various job functions. For example, certain team members might excel at making technical decisions, while others might be experts in defining business outcomes to remain competitive in the ecosystem.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Certain workload teams adopt a consensus-driven culture, where tasks are committed only when everyone is in agreement. While this culture promotes inclusivity, it often stifles initiatives if 100% consensus isn't reached. 
+
+To maintain momentum and clarity in decision-making, 
+
+- Designate a directly responsible individual (DRI) who ensures decision-making is distributed among different members and aligned to their areas of expertise, rather than centralized with one person.
+
+  Document members who are responsible for making decisions. This documentation should be included in onboarding materials for new employees.
+
+- Consider adopting a decision-making methodology that clearly identifies specific roles and responsibilities. Be mindful that such methodologies can create divisions and divert focus from the product direction. Establish checks and balances to prevent siloed decision-making and reduces friction.
+
+#### &#10003; Strive to make improvements, no matter how small
+
+Fostering a continuous improvement mindset means making decisions today, knowing they can be refined tomorrow. 
+
+Procrastinating changes can lead the team to miss out on improvement opportunities in the present. Avoid overthinking and indecision. Striving for a perfect solution might hinder the micro improvements that are still relevant and moving the needle towards a better solution. Focus on making improvements now and always look for ways to do better.
+
+Technical debt is a strategic tool in development to capture these short-term decisions. It can be a forcing function to motivate the team for incremental updates to avoid accumulation. Address technical debt as a regularly recurring task in the backlog.
+
+#### &#10003; Standardize foundational processes
+
+Different classes of workloads have individualistic needs in terms of processes that cater to their specific characteristics. For example, AI workloads involve MLOps and GenAIOps processes that drive the data pipeline to the model. Mission-critical workloads focus on real-time monitoring dashboards that SREs can quickly act on.
+
+Within a class of workload, aim for standardization to boost consistency and minimize operational burden. In the AI workload example, if it includes both discriminative and generative AI models, standardize the processes around DataOps, such as how data is accessed, cleansed, and transformed before it's used to train models or for grounding generative AI models.
+
+Here are some use cases where standardization is recommended:
+
+|Process| Benefit|
+|---|---|
+|Issue tracking and management.| Facilitates better communication across roles, helps in prioritization, and is needed for historical analysis of past issues.|
+|Communication tools and processes, especially to handle incidents.|Minimizes the risk of miscommunication and there's improved coordination among team members to resolve issues faster. |
+|Code styles, resource naming conventions, and documentation standards.|Established guidelines enhances code readability and maintenanbility.|
+|Testing procedures.| Ensures that all changes go through a selected set of tests, which provides quality assurance.|
+|Continuous Integration/Continuous Deployment (CI/CD).|Ensures automated testing, integration, and deployment of code changes, leading to more reliable releases.|
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Continuous improvement and innovation often occur when a team deviates slightly from established standards and discovers a better approach. Those deviations should be encouraged but conducted with structure. For example, encourage innovation days, where the team focuses on pre-selected improvement projects to have fresh ideas and experimentation.
+
+#### &#10003; Prefer buying tools over building custom tools
+
+With standardized processes come the tools necessary to implement them effectively. At this level, use off-the-shelf tools rather than creating custom solutions, which can be reconsidered at later stages for specialized use cases.
+
+Day-to-day tools for workloads include development, testing, monitoring, and deployment tools. Purchased tools streamline workflows and ensure consistency, allowing teams focus on delivering features without the complexity of developing and maintaining custom solutions.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: When considering tools, there's often a tendency to overemphasize the tool's extensibility and future potential rather than its core functionality. At this stage, focus on tools that are practical, address your current problems, and fit your current workflow.
+
+
+#### &#10003; Adopt automation across the workload
+
+As you develop your new or existing workload, look for opportunities to integrate automation. Designing a new workload to support automation from the start will set you up to easily adopt it as your development continues. Likewise, finding ways to integrate automation into existing ("brownfield") workloads early in the workload's lifecycle will help you gain efficiencies and consistency moving forward. To help in your adoption, use mature, familiar off-the-shelf tools that are compatible with your cloud platform rather than building solutions yourself. Be sure to explore native automation tools provided by your cloud provider to simplify the design. For example, many Azure services support automatic scaling for performance, or failover abilities for disaster recovery. When evaluating third-party tools, consider your team's expertise and any business standards that you must comply with.
+
+Areas that can benefit from automation include:
+
+- Routine operational tasks, like monitoring and alerting, and update management
+
+- Software development lifecycle tasks, like deployments and testing
+
+- Workload performance optimizations, like resource scaling
+
+- Security and governance mechanisms, like scans and policy enforcement
+
+- Backup and recovery activities
+
+- Cost optimizations, like resource deallocations and shutdowns
+
+> :::image type="icon" source="../_images/risk.svg"::: In the early stages of your workload development, be cautious about focusing too much on building or integrating automation as it can distract from getting the workload to production. Take a measured approach to ensure that your workload is manageable while maintaining your development velocity.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: If there are tasks that humans can do infrequently, efficienctly, and safely, they may not be worth automating. For example, you may need to refresh a certificate once every year. This task may not be worth investing development cycles in to automate.
+
+#### &#10003; Extend your infrastructure-as-code (IaC) experience to configure your infrastructure and manage your applications
+
+In Level 1, the focus is on adopting IaC tools to deploy infrastructure and pipelines for application code. At Level 2, extend that practice to include configuration and management of that deployed infrastructure and applications.
+
+Use a desired state configuration approach to bootstrap your resources and avoid configuration drift on them. Different tasks and platforms require different automation tools. For example, Ansible is suitable for managing desired state configuration for VMs, while a GitOps solution, such as Flux, is for Kubernetes clusters.
+
+Determine the right level of automation for your post-deployment tasks to minimize your operational burden while keeping the design simple. Tasks like installing certificates, OS configurations, and database seeding are all good candidates for automating through a IaC mindset. You can also consider extending your automation to include deploying and configuring your app on freshly deployed VMs or container hosts.
+
+> :::image type="icon" source="../_images/risk.svg"::: Avoid unnecessary tool sprawl. Having different developers or development teams using different approaches and technology can lead to a fractured tooling ecosystem. Standardize on a select number of tools for your workload that meet your requirements and ensure that your workload team is trained on those tools. Likewise, be selective about adopting organizational standards for tooling. If your organization suggests tools that adds untenable risk to your workload, evaluate alternative tools that are a better fit.
+
+#### &#10003; Define your workload's deployment strategy
+
+Deployment strategy is a critical component of Operational Excellence. A well-designed deployment strategy ensures that services remain available to users by reducing or eliminating downtime during updates or changes. Gain consensus from stakeholders on how and when changes are deployed to production.
+
+Start with these points:
+
+- What is the tolerated downtime? Determine if the workload can support downtime deployments without causing significant issues or financial loss. Clearly specify if zero downtime is a requirement for routine deployments.
+
+- How often should changes be deployed? Based on feature development, agree on the deployment frequency, whether it's a specific schedule such as daily, weekly, or quarterly or based on other factor. Prefer smaller deployments, occurring more frequently if supported by your scenario.
+
+- How should emergency deployments be handled? Have a plan for executing procedures that manage emergency deployments, such as security hot fixes, ensuring team members know their responsibilities.
+
+Design a repeatable deployment system that can be automated to minimize errors and ensure consistency. Include provisions for rollback to restore the system to a functional state if errors occur in the last deployment.
+
+#### &#10003; Design the workload monitoring stack
+
+Designing a monitoring stack is about making deliberate choices about what to monitor and understanding the significance of those metrics and who will use them. Your appraoch to monitoring should be from the perspective of workload health. Determine with stakeholders what healthy and unhealthy means for your workload and build your platform around metrics that can accurately determine whether the workload is healthy or unhealthy.
+
+> :::image type="icon" source="../_images/risk.svg"::: Avoid gathering too much data. While it might be tempting to enable full logging for all of your resources, it will quickly become a detriment. You will have too much noise to efficiently parse and your costs will increase rapidly as your storage requirements grow. Initially, narrow your collection strategy to basic metrics like CPU and memory utilization and tracking your storage usage. Evaluate which additional application health metrics are useful and slowly integrate them over time.
+
+When setting thresholds for metrics, you need to understand what levels should drive action from response DRIs. For example, while high CPU utilization might generally indicate a problem in one workload, it could be normal for a workload that efficiently uses available resources.
+
+Alerting is a core component of monitoring. Simply turning on standard monitoring metrics and routing all alerts to a support center can lead to panic and false alarms, leading to distrust in the monitoring platform. For that reason, alerts should be meaningful and actionable. Alerts should notify appropriate teams that a specific resource or component is experiencing a specific type of issue, and that investigation or corrective action should begin.
+
+To account for gradual issues that may not be surfaced by your monitoring and alerting, like a slowly increasing database query time, develop a strategy to track and analyze historical trends.
+
+Use visualization tools supported by your monitoring platform to give easy access to workload health signals to different stakeholders. Some stakeholders may only be interested in particular statistics, like application availability, while operations teams should see all health signals at once, so setting up different dashboards can help get different teams the information they need.
+
+> :::image type="icon" source="../_images/risk.svg"::: Your monitoring pipeline can be easily seen as a way to gather business metrics, such as for charge backs, transaction SLAs, capacity assurances, financial trend metrics such as sales totals. Do not mix workload health metrics with business metrics. Make collection of business metrics an application feature, not a monitoring configuration. Monitoring data streams are subject to sampling, monitoring data stores are not typically recoverable in a disaster. Treat business critical data as workload data, not comingled with workload health signals used to evaluate your implementation or activate operations team.
+
+
 
 # [Level 3](#tab/level3)
 
