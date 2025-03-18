@@ -118,6 +118,8 @@ To track workload status in a private cloud, it's essential to monitor metrics s
 
 Before an incident or outage, it's crucial to establish a well-defined notification process to ensure timely communication. Identifying the relevant personnel responsible for resolution is vital. A dedicated remediation team can include operations personnel, application owners, and DevOps experts who possess the expertise that's needed to resolve issues quickly. The operations team must be aware of the appropriate individuals to involve in triaging each problem.
 
+Ensure that key service components such as HCX Manager are protected before undertaking critical activities or starting maintenance activity. Use [Run command to take HCX Manager snapshot](/azure/azure-vmware/use-hcx-run-commands#take-a-snapshot-of-vmware-hcx-cloud-manager). Snapshots are retained for 72 hours and can be restored by creating a support ticket with Microsoft.
+
 An incident response team can effectively coordinate responses by maintaining a comprehensive distribution list. This list should include key stakeholders from business-critical departments and designated escalation contacts. Business stakeholders must be informed of any potential impact on operations that result from an incident. The assigned escalation contacts should be individuals who are capable of making decisions or escalating issues to higher levels for guidance.
 
 Regularly reviewing the distribution list is essential to ensure its accuracy and alignment with current roles and responsibilities. Reviews ensure that key stakeholders are promptly informed about significant events that occur in Azure VMware Solution.
