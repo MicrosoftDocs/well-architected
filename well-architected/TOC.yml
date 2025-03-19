@@ -258,14 +258,8 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: API Management
-          items:
-            - name: Reliability
-              href: service-guides/api-management/reliability.md
-            - name: Cost optimization
-              href: service-guides/api-management/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/api-management/operational-excellence.md
+        - name: Azure API Management
+          href: service-guides/azure-api-management.md
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights

@@ -2319,6 +2319,21 @@
 			"source_path": "well-architected/service-guides/iot-hub/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-iot-hub",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/api-management/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/api-management/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/api-management/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
+			"redirect_document_id": false
 		}
 	]
 }
