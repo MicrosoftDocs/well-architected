@@ -49,7 +49,7 @@ Follow these recommendations to develop your DR plan:
 
     -   Disasters are large-scale issues. They might be regional outages, outages of services like Microsoft Entra ID or Azure DNS, or severe malicious attacks like ransomware attacks or DDoS attacks.
 
-    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations.
+    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations. These processes should be addressed using a [Backup Plan](#define-and-maintain-backup-plans-for-resources-within-critical-flows)
 
 -   Build the DR plan on your FMA documentation. Ensure that your DR plan captures the failure modes and mitigation strategies for outages that are defined as disasters. Update both your DR plan and your FMA documents in parallel so they're accurate when the environment changes or when testing uncovers unexpected behaviors.
 
@@ -119,9 +119,9 @@ Follow these recommendations for successful DR drills:
 
 - As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
-### Define and maintain backup plans for resources within critical flows
+### Define and maintain Backup Plans for resources within critical flows
 
-Backup is an important part of your overall recovery process. More often than not, it is just a part of your environment that needs recovery. DR plans are usually application or even region wide. Accidental or malicious deletion of data, file corruption, malware, and targeted ransomware attacks can all affect the availability of your workload. Having solid backup plans for each part of your environment is just as important as having an effective DR plan. Like your DR plan, backup plans also need to be agreed upon by the appropriate levels of management, revisited regularly for possible updates and documented in a highly available, secure data store.
+Backup is an important part of your overall recovery process. Oftentimes it is just a part of your environment that needs recovery. DR plans are usually application or even region wide. Accidental or malicious deletion of data, file corruption, malware, and targeted ransomware attacks can all affect the availability of your workload. Having solid backup plans for each part of your environment is just as important as having an effective DR plan. Like your DR plan, backup plans also need to be agreed upon by the appropriate levels of management, revisited regularly for possible updates and documented in a highly available, secure data store.
 
 -   Determine appropriate backup solutions for the different Azure services that are part of the critical paths within your workload.
 
