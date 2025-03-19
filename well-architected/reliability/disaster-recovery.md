@@ -163,7 +163,7 @@ See the [DR for Azure data platform series](/azure/architecture/data-guide/disas
 
 Many Azure products have built-in backup capabilities. Familiarize yourself with these capabilities and include them in recovery procedures.
 
-For IaaS (infrastructure as a service) systems, use [Azure Backup](/azure/backup/backup-support-overview) to facilitate backup of VMs and VM related services and some data services. Refer to the following articles for common products:
+For IaaS (infrastructure as a service) systems, use [Azure Backup](/azure/backup/backup-overview) to facilitate backup of VMs and VM related services and some data services. Refer to the following articles for common products:
 
 - [Azure App Service](/azure/app-service/manage-backup)
 
