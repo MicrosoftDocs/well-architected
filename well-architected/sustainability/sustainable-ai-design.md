@@ -21,11 +21,11 @@ The AI workload lifecycle consists of three primary steps: Model Design, Data De
 
 Before we dive into the engineering aspects, it's important to understand the business problem if choosing AI is indeed the right step. 
 Consider building an AI workload only:
-•	If the problem requires learning from data over time
-•	If the problem changes over time due to user behavior changes and market trends
-•	If the problem requires the system to make decisions autonomously
-•	If the problem involves dealing with complex, unstructured data 
-•	If the problem involves creating new insights through predictive modeling 
+*	If the problem requires learning from data over time
+*	If the problem changes over time due to user behavior changes and market trends
+*	If the problem requires the system to make decisions autonomously
+*	If the problem involves dealing with complex, unstructured data 
+*	If the problem involves creating new insights through predictive modeling 
 
 ## Design recommendations for sustainable AI workloads
 
@@ -35,11 +35,11 @@ Consider building an AI workload only:
 Model design is the first step in the lifecycle of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, forecasting, etc. 
 There are multiple decisioning points during the model design phase. Let us look at some considerations for model design below: 
 
-1. **Size of Model**: Opt for Small Language Models (SLMs) over Large Language Models (LLMs) to reduce energy consumption. By reducing the size of AI models, developers can decrease the computational resources needed to process them, thus cutting down the overall energy expenditure. This approach not only improves model efficiency but also allows AI to be deployed on resource-constrained devices.
-2. **Reuse Models**: Utilize pretrained models like ChatGPT, BERT, and GPT-3 to save energy cycles. Using a pretrained model saves energy cycles since we don’t have to plan for Data ingestion, Data cleanup, training, pretraining and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
-3.	**Energy-Efficient Frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency.
-4. **Fine Tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
-5. **Hosting Provider and Region**: Model training is energy intensive. It's important that the right region is chosen. Select regions powered by renewable energy sources for model training.
+* **Size of Model**: Opt for Small Language Models (SLMs) over Large Language Models (LLMs) to reduce energy consumption. By reducing the size of AI models, developers can decrease the computational resources needed to process them, thus cutting down the overall energy expenditure. This approach not only improves model efficiency but also allows AI to be deployed on resource-constrained devices.
+* **Reuse Models**: Utilize pretrained models like ChatGPT, BERT, and GPT-3 to save energy cycles. Using a pretrained model saves energy cycles since we don’t have to plan for Data ingestion, Data cleanup, training, pretraining and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
+*	**Energy-Efficient Frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency.
+* **Fine Tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
+* **Hosting Provider and Region**: Model training is energy intensive. It's important that the right region is chosen. Select regions powered by renewable energy sources for model training.
 
 ### Data design recommendations
 Data design phase is one which involves Data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the amount and type of infrastructure that needs to be stood up, the data processing phase could be made sustainable. Some of the levers that we can use are:
