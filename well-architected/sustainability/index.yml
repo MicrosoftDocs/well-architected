@@ -46,6 +46,8 @@ landingContent:
             url: sustainability-storage.md
           - text: Security
             url: sustainability-security.md
+          - text: AI Design
+            url: sustainable-ai-design.md
   # Card
   - title: Reference examples
     linkLists:
