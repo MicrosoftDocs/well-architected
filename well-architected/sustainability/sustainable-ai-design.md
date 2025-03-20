@@ -12,9 +12,9 @@ description: The article focuses on how to build AI workloads sustainably and ai
 Designing, building, and operationalizing AI workloads **sustainably** is crucial as AI workloads consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
 
-## AI workload design lifecycle
+## [AI workload design lifecycle](https://learn.microsoft.com/en-us/azure/well-architected/ai/mlops-genaiops)
 
-The AI workload lifecycle consists of three primary steps: Model Design, Data Design, and Operational Design. In this article, we look at the different design aspects that can be considered for factoring in sustainable design principles. 
+The AI workload lifecycle consists of three primary steps: Model design, data design, and operations. In this article, we look at the different design aspects that can be considered for factoring in sustainable design principles. 
 
 
 ## Business Goal
@@ -29,6 +29,13 @@ Consider building an AI workload only:
 
 ## Design recommendations for sustainable AI workloads
 
+As mentioned above, the lifecycle of building an AI workload has three steps : Model design, data design and operations. 
+
+Model design involves chosing the appropriate model for the business problem that needs to be solved. This choice is dependent on whether we need to solve a prediction scenario or a classification scenario or a content generation scenario. 
+
+Data design activities focus on choosing the right storage and data processing infrastructure that will help support  both the training and operations of the model. Model design and Data design activities together considered as part of training phase. 
+
+Operations design phase or the Inference phase focuses on deploying the model and running it as scale. 
 
 ### Model design recommendations
 
@@ -43,14 +50,14 @@ There are multiple decisioning points during the model design phase. Let us look
 
 ### Data design recommendations
 Data design phase is one which involves Data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the amount and type of infrastructure that needs to be stood up, the data processing phase could be made sustainable. Some of the levers that we can use are:
-1. **Data Processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data.
-2. **Storage**: Store data in regions powered by renewable energy and consider edge computing.
-3.	**Clean Data**: Ensure high-quality data for training to avoid wasted cycles.
+* **Data Processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data.
+* **Storage**: Store data in regions powered by renewable energy and consider edge computing.
+* **Clean Data**: Ensure high-quality data for training to avoid wasted cycles.
 Another consideration would be to move the whole data processing, ingestion, computation, and storage to the edge.
 
 ### Operational design recommendations
 
-1. **Hosting Provider and Region**:  Deploy models in regions using renewable energy sources.
-2. **Frequency of Retraining**: Retrain orchestration involves automating the retraining of models based on new data. This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Balance model accuracy with energy consumption by setting thresholds for retraining.
-3.	**Monitoring**: Track model performance to prevent machine learning ops cycles from being wasted due to model decay. When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring and ensuring that corrective actions are taken ensures that the AI workload operates sustainably. 
+* **Hosting Provider and Region**:  Deploy models in regions using renewable energy sources.
+* **Frequency of Retraining**: Retrain orchestration involves automating the retraining of models based on new data. This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Balance model accuracy with energy consumption by setting thresholds for retraining.
+*	**Monitoring**: Track model performance to prevent machine learning ops cycles from being wasted due to model decay. When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring and ensuring that corrective actions are taken ensures that the AI workload operates sustainably. 
 By implementing these sustainable practices, AI developers and data scientists can significantly reduce the environmental impact of AI workloads while maintaining business value.
