@@ -51,6 +51,7 @@ There are multiple decisioning points during the model design phase. Let us look
 ### Data design recommendations
 Data design phase is one which involves Data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the amount and type of infrastructure that needs to be stood up, the data processing phase could be made sustainable. Some of the levers that we can use are:
 * **Data Processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data.
+ > ![Risk icon](../_images/risk.svg) **Risk**: Ensure that you check licensing considerations for the public dataset and whether it has the right open source approvals.
 * **Storage**: Store data in regions powered by renewable energy and consider edge computing.
 * **Clean Data**: Ensure high-quality data for training to avoid wasted cycles.
 Another consideration would be to move the whole data processing, ingestion, computation, and storage to the edge.
@@ -59,5 +60,6 @@ Another consideration would be to move the whole data processing, ingestion, com
 
 * **Hosting Provider and Region**:  Deploy models in regions using renewable energy sources.
 * **Frequency of Retraining**: Retrain orchestration involves automating the retraining of models based on new data. This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Balance model accuracy with energy consumption by setting thresholds for retraining.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: By reducing the frequency of retraining, there are possibilities of Model Decay and possibilities of less accurate outcomes. Ensure that the right tradeoff is considered based on business needs .
 *	**Monitoring**: Track model performance to prevent machine learning ops cycles from being wasted due to model decay. When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring and ensuring that corrective actions are taken ensures that the AI workload operates sustainably. 
 By implementing these sustainable practices, AI developers and data scientists can significantly reduce the environmental impact of AI workloads while maintaining business value.
