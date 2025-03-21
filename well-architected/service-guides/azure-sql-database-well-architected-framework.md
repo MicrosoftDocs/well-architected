@@ -169,46 +169,16 @@ For more information, see [Plan and manage costs for Azure SQL Database](/azure/
 
 ## Operational excellence
 
-[Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-- Upgrades
-- Patches
-- Backups
-- Monitoring
-
-This service allows you to create a highly available and high-performance data storage layer for your Azure applications and workloads. Azure SQL Database provides advanced monitoring and tuning capabilities backed by artificial intelligence to help you troubleshoot and maximize the performance of your databases and solutions.
-
-For more information about how Azure SQL Database promotes operational excellence and enables your business to continue operating during disruptions, reference [Monitoring and performance tuning in Azure SQL Database](/en-us/azure/azure-sql/database/monitor-tune-overview).
-
-The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure SQL Database, and operational excellence.
-
-### Design considerations
-
-Azure SQL Database includes the following design considerations:
-
-- Azure SQL Database Business Critical tier configured with geo-replication has a guaranteed Recovery time objective (RTO) of `30` seconds for `100%` of deployed hours.
-- Use *sharding* to distribute data and processes across many identically structured databases. Sharding provides an alternative to traditional scale-up approaches for cost and elasticity. Consider using sharding to partition the database horizontally. Sharding can provide fault isolation. For more information, reference [Scaling out with Azure SQL Database](/azure/azure-sql/database/elastic-scale-introduction).
-- Azure SQL Database Business Critical or Premium tiers not configured for Zone Redundant Deployments, General Purpose, Standard, or Basic tiers, or Hyperscale tier with two or more replicas have an availability guarantee. For more information, reference [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_6/).
-- Provides built-in regional high availability and turnkey geo-replication to any Azure region. It includes intelligence to support self-driving features, such as:
-  - Performance tuning
-  - Threat monitoring
-  - Vulnerability assessments
-  - Fully automated patching and updating of the code base
-
-- Define an application performance SLA and monitor it with alerts. Quickly detect when your application performance inadvertently degrades below an acceptable level, which is important to maintain high resiliency. Use the monitoring solution previously defined to set alerts on key query performance metrics so you can take action when the performance breaks the SLA. Go to [Monitor Your Database](/azure/azure-sql/database/monitor-tune-overview) for more information.
-- Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups. Geo-restore uses a geo-replicated backup as its source. You can request geo-restore even if the database or datacenter is inaccessible because of an outage. Geo-restore restores a database from a geo-redundant backup. For more information, reference [Recover an Azure SQL database using automated database backups](/azure/azure-sql/database/recovery-using-backups).
-- Use the Business Critical tier configured with geo-replication, which has a guaranteed Recovery point objective (RPO) of `5` seconds for `100%` of deployed hours.
-- PaaS capabilities built into Azure SQL Database enable you to focus on the domain-specific database administration and optimization activities that are critical for your business.
-- Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from changes done inadvertently. For more information, read the [Point-in-time restore (PITR)](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) documentation.
-- Business Critical or Premium tiers are configured as Zone Redundant Deployments. For more information about the availability guarantee, reference [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_6/) .
-- Azure Backup is an alternative to the built-in Azure SQL backup system. It offers centralized, zero-infrastructure solutions for full, differential, and log backups. Key features include point-in-time recovery, long-term retention, and centralized management of SQL Server databases on Azure VMs. It uses SQL native APIs and integrates smoothly with Azure's Recovery Services vault for secure and efficient backup and restore operations. For more information, see [Overview of SQL Server Backup in Azure VMs](/azure/backup/backup-azure-sql-database).
+The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 ### Design checklist
 
-**Have you configured Azure SQL Database with operational excellence in mind?**
-***
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure SQL Database.
 
 > [!div class="checklist"]
+> - Review the [Monitoring and performance tuning in Azure SQL Database](/en-us/azure/azure-sql/database/monitor-tune-overview) article for detailed monitoring guidance.
 > - Use Active Geo-Replication to create a readable secondary in a different region.
 > - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.
 > - Use a Zone-Redundant database.
@@ -234,19 +204,15 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 
 ## Performance efficiency
 
-[Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-- Upgrades
-- Patches
-- Backups
-- Monitoring
+The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-The following sections include a design checklist and recommended design options specific to Azure SQL Database performance efficiency.
 
 ### Design checklist
 
-**Have you designed your workload and configured Azure SQL Database with performance efficiency in mind?**
-***
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure SQL Database.
+
 
 > [!div class="checklist"]
 > - Review resource limits. For specific resource limits per pricing tier (also known as service objective) for single databases, refer to either [DTU-based single database resource limits](/azure/azure-sql/database/resource-limits-dtu-single-databases) or [vCore-based single database resource limits](/azure/azure-sql/database/resource-limits-vcore-single-databases). For elastic pool resource limits, refer to either [DTU-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-dtu-elastic-pools) or [vCore-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-vcore-elastic-pools).
