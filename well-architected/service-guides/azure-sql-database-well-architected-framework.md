@@ -18,21 +18,31 @@ azure.category:
 
 The single database resource type creates a database in Azure SQL Database with its own set of resources and is managed via a [logical server](/azure/azure-sql/database/logical-servers). You can choose between the [DTU-based purchasing model](/azure/azure-sql/database/service-tiers-dtu) or [vCore-based purchasing model](/azure/azure-sql/database/service-tiers-vcore). You can create multiple databases in a single resource pool, with [elastic pools](/azure/azure-sql/database/elastic-pool-overview).
 
-The following sections include a design checklist and recommended design options specific to Azure SQL Database security. The guidance is based on the five pillars of architectural excellence:
+This article assumes that as an architect, you've reviewed the [core concepts of Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) and [What's new in Azure SQL Database?](/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new).
 
-- Reliability
-- Security
-- Cost optimization
-- Operational excellence
-- Performance efficiency
+> [!IMPORTANT]
+>
+> **How to use this guide**
+>
+> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
+>
+> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure SQL. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+>
+> Foundational architecture that demonstrates the key recommendations:
+> [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant)
 
-## Prerequisites
+**Technology scope**
 
-* Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../pillars.md) to review the five pillars of architectural excellence.
+This review focuses on the interrelated decisions for the following Azure resources:
 
-* Review the [core concepts of Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) and [What's new in Azure SQL Database?](/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new).
+- Azure SQL Database
 
-## Azure SQL Database and reliability
+
+## Reliability
+
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
+
+[Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
 
@@ -47,38 +57,22 @@ For more information about how Azure SQL Database promotes reliability and enabl
 
 The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure SQL Database and reliability.
 
-### Design considerations
+### Design checklist
 
-Azure SQL Database includes the following design considerations:
-
-- Azure SQL Database Business Critical tier configured with geo-replication has a guaranteed Recovery time objective (RTO) of `30` seconds for `100%` of deployed hours.
-- Use *sharding* to distribute data and processes across many identically structured databases. Sharding provides an alternative to traditional scale-up approaches for cost and elasticity. Consider using sharding to partition the database horizontally. Sharding can provide fault isolation. For more information, reference [Scaling out with Azure SQL Database](/azure/azure-sql/database/elastic-scale-introduction).
-- Azure SQL Database Business Critical or Premium tiers not configured for Zone Redundant Deployments, General Purpose, Standard, or Basic tiers, or Hyperscale tier with two or more replicas have an availability guarantee. For more information about the availability guarantee, reference [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_6/).
-- Provides built-in regional high availability and turnkey geo-replication to any Azure region. It includes intelligence to support self-driving features, such as:
-  - Performance tuning
-  - Threat monitoring
-  - Vulnerability assessments
-  - Fully automated patching and updating of the code base
-
-- Define an application performance SLA and monitor it with alerts. Quickly detect when your application performance inadvertently degrades below an acceptable level, which is important to maintain high resiliency. Use the monitoring solution previously defined to set alerts on key query performance metrics so you can take action when the performance breaks the SLA. Go to [Monitor Your Database](/azure/azure-sql/database/monitor-tune-overview) and [alerting tools](/azure/azure-sql/database/alerts-insights-configure-portal) for more information.
-- Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups. Geo-restore uses a geo-replicated backup as its source. You can request geo-restore even if the database or datacenter is inaccessible because of an outage. Geo-restore restores a database from a geo-redundant backup. For more information, reference [Recover an Azure SQL database using automated database backups](/azure/azure-sql/database/recovery-using-backups).
-- Use the Business Critical tier configured with geo-replication, which has a guaranteed Recovery point objective (RPO) of `5` seconds for `100%` of deployed hours.
-- PaaS capabilities built into Azure SQL Database enable you to focus on the domain-specific database administration and optimization activities that are critical for your business.
-- Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from changes done inadvertently. For more information, read the [Point-in-time restore (PITR)](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) documentation.
-- Business Critical or Premium tiers are configured as Zone Redundant Deployments which have an availability guarantee. For more information about the availability guarantee, reference [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_6/).
-
-### Checklist
-
-**Have you configured Azure SQL Database with reliability in mind?**
-***
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliability of Azure SQL Database. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
+> - Review the [business continuity overview](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview), [high availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy), [HA/DR checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist), and [automated backups](/azure/azure-sql/database/automated-backups-overview) guides for detailed guidance on optimizing the recoverability of your databases.
+> - Use the Business Critical tier for critical workloads. The Business Critical tier offers the highest reliability guarantees of all SKUs.
 > - Use Active Geo-Replication to create a readable secondary in a different region.
 > - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.
+> - - Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups.
 > - Use a Zone-Redundant database.
+> - Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from inadvertent changes.
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
 > - Implement Retry Logic.
 > - Back up your keys.
+> - Define an application performance SLA and monitor it with alerts.
 
 ### Configuration recommendations
 
