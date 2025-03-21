@@ -1,10 +1,11 @@
 ---
 title: Architecture Best Practices for Azure SQL Database 
 description: Focuses on the Azure SQL Database service to provide best-practice, configuration recommendations, and design considerations.
-author: WilliamDAssafMSFT
-ms.author: wiassaf
-ms.date: 06/23/2022
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 03/21/2025
 ms.topic: conceptual
+ms.service: azure-waf
 products:
   - azure-sql-database
 azure.category:
@@ -37,25 +38,11 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Azure SQL Database
 
-
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
-
-[Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
-
-- Upgrades
-- Patches
-- Backups
-- Monitoring
-
-This service allows you to create a highly available and high-performance data storage layer for your Azure applications and workloads. Azure SQL Database is always running on the latest stable version of the SQL Server database engine and patched OS with `99.99%` availability.
-
-For more information about how Azure SQL Database promotes reliability and enables your business to continue operating during disruptions, reference [Availability capabilities](/azure/azure-sql/database/sql-database-paas-overview#availability-capabilities).
-
-The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure SQL Database and reliability.
 
 ### Design checklist
 
@@ -66,19 +53,18 @@ Start your design strategy based on the [design review checklist for Reliability
 > - Use the Business Critical tier for critical workloads. The Business Critical tier offers the highest reliability guarantees of all SKUs.
 > - Use Active Geo-Replication to create a readable secondary in a different region.
 > - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.
-> - - Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups.
-> - Use a Zone-Redundant database.
+> - Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups.
+> - Use zone-redundancy to achieve high availability with zero loss of committed data upon failover.
 > - Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from inadvertent changes.
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
-> - Implement Retry Logic.
-> - Back up your keys.
-> - Define an application performance SLA and monitor it with alerts.
+> - Implement retry logic with backoff logic to handle transient faults in your application.
+> - When using your own (customer-managed) keys for transparent data encryption (TDE), backup the keys to Azure Key Vault.
 
-### Configuration recommendations
+### Recommendations
 
 Explore the following table of recommendations to optimize your Azure SQL Database configuration for reliability:
 
-|Recommendation|Description|
+|Recommendation|Benefit|
 |--------------|-----------|
 |Use Active Geo-Replication to create a readable secondary in a different region.|If your primary database fails, perform a manual failover to the secondary database. Until you fail over, the secondary database remains read-only. [Active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) enables you to create readable replicas and manually failover to any replica if there is a datacenter outage or application upgrade. Up to four secondaries are supported in the same or different regions, and the secondaries can also be used for read-only access queries. The failover must be initiated manually by the application or the user. After failover, the new primary has a different connection end point.|
 |Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.|You can use the readable secondary databases to offload read-only query workloads. Because autofailover groups involve multiple databases, these databases must be configured on the primary server. Autofailover groups support replication of all databases in the group to only one secondary server or instance in a different region. Learn more about [AutoFailover Groups](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell) and [DR design](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery).|
@@ -109,7 +95,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 ### Recommendations
 
-| Recommendation | Benefit |
+| Recommendation|Benefit|
 |--------|----|
 | Review [the minimum TLS version](/azure/azure-sql/database/connectivity-settings#minimal-tls-version). | Determine whether you have legacy applications that require older TLS or unencrypted connections. After you enforce a version of TLS, it's not possible to revert to the default. Review and configure the minimum TLS version for SQL Database connections via the Azure portal. If not, set the latest TLS version to the minimum. |
 | Ledger | Consider designing database tables based on the [Ledger](/sql/relational-databases/security/ledger/ledger-overview) to provide auditing, tamper-evidence, and trust of all data changes. |
@@ -120,7 +106,6 @@ Start your design strategy based on the [design review checklist for Security](.
 | Auditing | Track database events with [Auditing for Azure SQL Database](/azure/azure-sql/database/auditing-overview).|
 | Managed identities | Consider configuring [a user-assigned managed identity (UMI)](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity). [Managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) eliminate the need to manage credentials in code. |
 | Microsoft Entra-only authentication | Consider disabling SQL-based authentication and [allowing only on Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-configure). |
-
 
 ### Policy definitions
 
@@ -156,7 +141,7 @@ The following sections include a configuration checklist and recommended configu
 
 Explore the following table of recommendations to optimize your Azure SQL Database configuration for cost savings:
 
-|Recommendation|Description|
+|Recommendation|Benefit|
 |--------------|-----------|
 |Optimize queries.|Optimize the queries, tables, and databases using [Query Performance Insights](/azure/azure-sql/database/query-performance-insight-use) and [Performance Recommendations](/azure/azure-sql/database/database-advisor-find-recommendations-portal) to help reduce resource consumption, and arrive at appropriate configuration.|
 |Evaluate resource usage.|Evaluate the resource usage for all databases and determine if they've been sized and provisioned correctly. For non-production databases, consider scaling resources down as applicable. The DTUs or vCores for a database can be scaled on demand, for example, when running a load test or user acceptance test. |
@@ -191,7 +176,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 Explore the following table of recommendations to optimize your Azure SQL Database configuration for operational excellence:
 
-|Recommendation|Description|
+|Recommendation|Benefit|
 |--------------|-----------|
 |Use Active Geo-Replication to create a readable secondary in a different region.|If your primary database fails, perform a manual failover to the secondary database. Until you fail over, the secondary database remains read-only. [Active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) enables you to create readable replicas and manually failover to any replica if there is a datacenter outage or application upgrade. Up to four secondaries are supported in the same or different regions, and the secondaries can also be used for read-only access queries. The failover must be initiated manually by the application or the user. After failover, the new primary has a different connection end point.|
 |Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.|You can use the readable secondary databases to offload read-only query workloads. Because autofailover groups involve multiple databases, these databases must be configured on the primary server. Autofailover groups support replication of all databases in the group to only one secondary server or instance in a different region. Learn more about [Auto-Failover Groups](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell) and [DR design](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery).|
@@ -201,18 +186,15 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 |Back up your keys.|If you're not [using encryption keys in Azure Key Vault to protect your data](/azure/azure-sql/database/always-encrypted-azure-key-vault-configure?tabs=azure-powershell), back up your keys.|
 |Use Azure Backup to protect an Azure SQL Database server. | Using Azure Backup to protect your Azure SQL Database server enables you to centrally manage business continuity and disaster recovery from the Recovery Services vault, retain recovery points for long term storage, and perform [Cross Region Restore](/azure/backup/restore-sql-database-azure-vm#cross-region-restore) and [Cross Subscription Restore](/azure/backup/restore-sql-database-azure-vm#cross-subscription-restore). With the [built-in data protection capabilities] in the Azure Recovery Services vault](/azure/backup/backup-azure-recovery-services-vault-overview#key-features), you can prevent any accidental or malicious deletion of backups. |
 
-
 ## Performance efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-
 ### Design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure SQL Database.
-
 
 > [!div class="checklist"]
 > - Review resource limits. For specific resource limits per pricing tier (also known as service objective) for single databases, refer to either [DTU-based single database resource limits](/azure/azure-sql/database/resource-limits-dtu-single-databases) or [vCore-based single database resource limits](/azure/azure-sql/database/resource-limits-vcore-single-databases). For elastic pool resource limits, refer to either [DTU-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-dtu-elastic-pools) or [vCore-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-vcore-elastic-pools).
@@ -226,7 +208,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 ### Recommendations
 
-| Recommendation | Benefit |
+| Recommendation|Benefit|
 |--------|----|
 | Diagnose and troubleshoot high CPU utilization. | Azure SQL Database provides built-in tools to [identify the causes of high CPU usage and to optimize workload performance](/azure/azure-sql/database/high-cpu-diagnose-troubleshoot). |
 | Understand blocking and deadlocking issues. | [Blocking due to concurrency](/azure/azure-sql/database/understand-resolve-blocking) and [terminated sessions due to deadlocks](/azure/azure-sql/database/analyze-prevent-deadlocks) have different causes and outcomes. |
