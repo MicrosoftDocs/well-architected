@@ -62,7 +62,7 @@ The following sections include design considerations, a configuration checklist,
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliability of Azure SQL Database. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> - Review the [business continuity overview](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview), [high availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy), [HA/DR checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist), and [automated backups](/azure/azure-sql/database/automated-backups-overview) guides for detailed guidance on optimizing the recoverability of your databases.
+> - Review the [business continuity overview](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview), [high availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy), [HA/DR checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist), and [automated backups](/azure/azure-sql/database/automated-backups-overview) articles for detailed guidance on optimizing the recoverability of your databases.
 > - Use the Business Critical tier for critical workloads. The Business Critical tier offers the highest reliability guarantees of all SKUs.
 > - Use Active Geo-Replication to create a readable secondary in a different region.
 > - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.
@@ -88,16 +88,16 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 |Back up your keys.|If you're not [using encryption keys in Azure Key Vault to protect your data](/azure/azure-sql/database/always-encrypted-azure-key-vault-configure?tabs=azure-powershell), back up your keys.|
 
 
-## Azure SQL Database and security
+## Security
 
 SQL Database provides a range of [built-in security and compliance](/azure/azure-sql/database/security-overview) features to help your application meet various security and compliance requirements.
 
 ### Design checklist
 
-**Have you designed your workload and configured Azure SQL Database with security in mind?**
-***
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
+> - Review the [built-in security and compliance features](/azure/azure-sql/database/security-overview) article for a review of features that can help your application meet your security and compliance requirements.
 > - Understand [logical servers](/azure/azure-sql/database/logical-servers) and how you can administer logins for multiple databases when appropriate.
 > - Enable [Microsoft Entra authentication with Azure SQL](/azure/azure-sql/database/authentication-aad-configure). Microsoft Entra authentication enables simplified permission management and centralized identity management.
 > - Azure SQL logical servers should have [a Microsoft Entra administrator provisioned](/azure/azure-sql/database/authentication-aad-configure#azure-ad-admin-with-a-server-in-sql-database). 
@@ -131,27 +131,20 @@ All built-in policy definitions related to Azure SQL are listed in [Built-in pol
 Review [Tutorial: Secure a database in Azure SQL Database](/azure/azure-sql/database/secure-database-tutorial).
 
 
-## Azure SQL Database and cost optimization
+## Cost optimization
 
-[Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-- Upgrades
-- Patches
-- Backups
-- Monitoring
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure SQL Database.
 
-This service allows you to create a highly available and high-performance data storage layer for your Azure applications and workloads. SQL Database includes built-in intelligence that helps you dramatically reduce the costs of running and managing databases through automatic performance monitoring and tuning.
-
-For more information about how Azure SQL Database provides cost-saving features, reference [Plan and manage costs for Azure SQL Database](/azure/azure-sql/database/cost-management).
+For more information about how Azure SQL Database provides cost-saving features, reference 
 
 The following sections include a configuration checklist and recommended configuration options specific to Azure SQL Database and cost optimization.
 
-### Checklist
-
-**Have you configured Azure SQL Database with cost optimization in mind?**
-***
+### Design checklist
 
 > [!div class="checklist"]
+> - Review the [Plan and manage costs for Azure SQL Database](/azure/azure-sql/database/cost-management) article for information about managing costs for Azure SQL Database.
 > - Optimize queries.
 > - Evaluate resource usage.
 > - Fine-tune [backup storage consumption](/azure/azure-sql/database/automated-backups-overview#fine-tune-backup-storage-consumption).
@@ -159,7 +152,7 @@ The following sections include a configuration checklist and recommended configu
 > - Consider [reserved capacity for Azure SQL Database](/azure/azure-sql/database/reserved-capacity-overview).
 > - Consider [elastic pools for managing and scaling multiple databases](/azure/azure-sql/database/elastic-pool-overview).
 
-### Configuration recommendations
+### Recommendations
 
 Explore the following table of recommendations to optimize your Azure SQL Database configuration for cost savings:
 
@@ -174,7 +167,7 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 
 For more information, see [Plan and manage costs for Azure SQL Database](/azure/azure-sql/database/cost-management).
 
-## Azure SQL Database and operational excellence
+## Operational excellence
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
 
@@ -210,7 +203,7 @@ Azure SQL Database includes the following design considerations:
 - Business Critical or Premium tiers are configured as Zone Redundant Deployments. For more information about the availability guarantee, reference [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_6/) .
 - Azure Backup is an alternative to the built-in Azure SQL backup system. It offers centralized, zero-infrastructure solutions for full, differential, and log backups. Key features include point-in-time recovery, long-term retention, and centralized management of SQL Server databases on Azure VMs. It uses SQL native APIs and integrates smoothly with Azure's Recovery Services vault for secure and efficient backup and restore operations. For more information, see [Overview of SQL Server Backup in Azure VMs](/azure/backup/backup-azure-sql-database).
 
-### Checklist
+### Design checklist
 
 **Have you configured Azure SQL Database with operational excellence in mind?**
 ***
@@ -224,7 +217,7 @@ Azure SQL Database includes the following design considerations:
 > - Back up your keys.
 > - Use Azure Backup to protect an Azure SQL Database server.
 
-### Configuration recommendations
+### Recommendations
 
 Explore the following table of recommendations to optimize your Azure SQL Database configuration for operational excellence:
 
@@ -239,7 +232,7 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 |Use Azure Backup to protect an Azure SQL Database server. | Using Azure Backup to protect your Azure SQL Database server enables you to centrally manage business continuity and disaster recovery from the Recovery Services vault, retain recovery points for long term storage, and perform [Cross Region Restore](/azure/backup/restore-sql-database-azure-vm#cross-region-restore) and [Cross Subscription Restore](/azure/backup/restore-sql-database-azure-vm#cross-subscription-restore). With the [built-in data protection capabilities] in the Azure Recovery Services vault](/azure/backup/backup-azure-recovery-services-vault-overview#key-features), you can prevent any accidental or malicious deletion of backups. |
 
 
-## Azure SQL Database and performance efficiency
+## Performance efficiency
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
 
@@ -288,7 +281,6 @@ For information about supported features, see [Features](/azure/azure-sql/databa
 Migrating to Azure SQL Database? Review our [Azure Database Migration Guides](/data-migration/).
 
 Watch episodes of [Data Exposed](/shows/data-exposed/) covering Azure SQL topics and more.
-
 
 ## Next steps
 
