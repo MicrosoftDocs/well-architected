@@ -19,8 +19,8 @@ The AI workload lifecycle consists of three primary steps: Model design, data de
 To learn more about the overall AI workload lifecycle, see [MLOps and GenAIOps for AI workloads on Azure](/azure/well-architected/ai/mlops-genaiops).
 
 - **Model design** involves choosing the appropriate model for the business problem that needs to be solved. This choice is dependent on whether we need to solve a prediction scenario or a classification scenario or a content generation scenario.
-- **Data design** activities focus on choosing the right storage and data processing infrastructure that will help support  both the training and operations of the model. Model design and Data design activities together considered as part of training phase.
-- **Operations design** phase or the Inference phase focuses on deploying the model and running it at scale.
+- **Data design** activities focus on choosing the right storage and data processing infrastructure that will help support the training and operations of the model. Model and data design activities together are considered as part of the training phase.
+- **Operations design** phase or the _inference phase_ focuses on deploying the model and running it at scale.
 
 ### Model design recommendations
 
@@ -38,7 +38,7 @@ There are multiple decision points during the model design phase, including:
 
 - **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
 
-- **Hosting Provider and Region**: Model training is energy intensive. It's important that the right region is chosen. Select regions powered by renewable energy sources for model training.
+- **Hosting provider region**: Model training is energy intensive. It's important that the right region is chosen. Select regions powered by renewable energy sources for model training.
 
 ### Data design recommendations
 
@@ -47,18 +47,18 @@ The data design phase involves data identification, classification, ingestion, s
 There are multiple decision points during the data design phase, including:
 
 - **Data processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data.
-  > _Caution_: Ensure that licensing considerations are checked for public datasets and whether they have the right open source approvals.
+  > ![Risk icon](../_images/risk.svg) **Risk**: Ensure that licensing considerations are checked for public datasets and whether they have the right open source approvals.
 - **Storage**: Store data in regions powered by renewable energy and consider edge computing.
 - **Clean data**: Ensure high-quality data for training to avoid wasted cycles.
 - **Move closer to the edge**: You might consider moving data processing, ingestion, computation, and storage to the edge.
 
 ### Operational design recommendations
 
-- **Hosting provider region**:  Deploy models in regions using renewable energy sources.
+- **Hosting provider region**: Deploy models in regions using renewable energy sources.
 
 - **Retraining frequency**: Retrain-orchestration involves automating the retraining models based on new data.
   This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Balance model accuracy with energy consumption by setting thresholds for retraining.
-  > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Reducing the frequency of retraining could impact accuracy. Ensure that the right tradeoff is considered based on business needs.
+  > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_: Reducing the frequency of retraining could impact accuracy. Ensure that the right tradeoff is considered based on business needs.
 
 - **Monitoring**: Track model performance to prevent machine learning ops cycles from being wasted due to model decay. When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring ensures that the correct actions are taken to enable the AI workload to operate sustainably.
 
