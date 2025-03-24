@@ -9,7 +9,7 @@ description: The article focuses on how to build AI workloads sustainably and ai
 
 # Sustainable AI Design
 
-Designing, building, and operationalizing [AI workloads](https://learn.microsoft.com/en-us/azure/well-architected/ai/) **sustainably** is crucial as AI workloads consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
+Designing, building, and operationalizing [AI workloads](https://learn.microsoft.com/azure/well-architected/ai/) **sustainably** is crucial as AI workloads consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
 
 ## [AI workload design lifecycle](https://learn.microsoft.com/azure/well-architected/ai/mlops-genaiops)
