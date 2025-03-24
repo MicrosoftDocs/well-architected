@@ -12,8 +12,6 @@ ms.date: 03/24/2025
 
 Designing, building, and operationalizing [AI workloads](/azure/well-architected/ai/) **sustainably** is crucial as AI workloads might consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
-## Design recommendations for sustainable AI workloads
-
 The AI workload lifecycle consists of three primary steps: Model design, data design, and operations. In this article, we look at the different design aspects that can be considered for factoring in sustainable design principles.
 
 To learn more about the overall AI workload lifecycle, see [MLOps and GenAIOps for AI workloads on Azure](/azure/well-architected/ai/mlops-genaiops).
@@ -22,7 +20,7 @@ To learn more about the overall AI workload lifecycle, see [MLOps and GenAIOps f
 - **Data design** activities focus on choosing the right storage and data processing infrastructure that will help support the training and operations of the model. Model and data design activities together are considered as part of the training phase.
 - **Operations design** phase or the _inference phase_ focuses on deploying the model and running it at scale.
 
-### Model design recommendations
+## Model design recommendations
 
 Model design is the first step in the lifecycle of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, and forecasting.
 
@@ -40,7 +38,7 @@ There are multiple decision points during the model design phase, including:
 
 - **Hosting provider region**: Model training is energy intensive. It's important that the right region is chosen. Select regions powered by renewable energy sources for model training.
 
-### Data design recommendations
+## Data design recommendations
 
 The data design phase involves data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the required infrastructure that needs to be used, you can improve the sustainability in data processing.
 
@@ -52,7 +50,7 @@ There are multiple decision points during the data design phase, including:
 - **Clean data**: Ensure high-quality data for training to avoid wasted cycles.
 - **Move closer to the edge**: You might consider moving data processing, ingestion, computation, and storage to the edge.
 
-### Operational design recommendations
+## Operational design recommendations
 
 - **Hosting provider region**: Deploy models in regions using renewable energy sources.
 
