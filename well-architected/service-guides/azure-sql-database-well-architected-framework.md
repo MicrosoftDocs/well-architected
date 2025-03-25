@@ -55,7 +55,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >    - [HA/DR checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist)
 >    - [Automated backups](/azure/azure-sql/database/automated-backups-overview)
 > - Use the Business Critical tier for critical workloads. The Business Critical tier offers the highest reliability guarantees of all SKUs.
-> - Enhance the availability of your databases by using Active Geo-Replication and Failover Groups and zone-redundancy.
+> - Enhance the availability of your databases by using Active Geo-Replication, Failover Groups, and zone-redundancy.
 > - Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups.
 > - Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from inadvertent changes.
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
@@ -115,8 +115,6 @@ Start your design strategy based on the [design review checklist for Security](.
 Review the [Azure security baseline for Azure SQL Database](/security/benchmark/azure/baselines/sql-database-security-baseline) and [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
 
 All built-in policy definitions related to Azure SQL are listed in [Built-in policies](/azure/governance/policy/samples/built-in-policies#sql).
-
-Review [Tutorial: Secure a database in Azure SQL Database](/azure/azure-sql/database/secure-database-tutorial).
 
 ## Cost optimization
 
@@ -221,6 +219,8 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Additional resources
 
+Review [Tutorial: Secure a database in Azure SQL Database](/azure/azure-sql/database/secure-database-tutorial).
+
 For information about supported features, see [Features](/azure/azure-sql/database/features-comparison) and [Resolving Transact-SQL differences during migration to SQL Database](/azure/azure-sql/database/transact-sql-tsql-differences-sql-server).
 
 Migrating to Azure SQL Database? Review our [Azure Database Migration Guides](/data-migration/).
@@ -229,4 +229,4 @@ Watch episodes of [Data Exposed](/shows/data-exposed/) covering Azure SQL topics
 
 ## Next steps
 
-* [Try Azure SQL Database free with Azure free account](/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy), then [get started with single databases in Azure SQL Database](/azure/azure-sql/database/quickstart-content-reference-guide).
+[Try Azure SQL Database free with Azure free account](/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy), then [get started with single databases in Azure SQL Database](/azure/azure-sql/database/quickstart-content-reference-guide).
