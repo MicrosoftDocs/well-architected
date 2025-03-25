@@ -79,7 +79,7 @@ tiers and features of API Management and its dependencies. Extend the strategy t
 | Recommendation | Benefit |
 | ----- | ----- |
 |**In multiregion configurations, configure automated scaling in all regions**. API Management supports [autoscaling with Azure Monitor](/azure/api-management/api-management-howto-autoscale) in the primary region. Implement custom function or logic app to handle scaling in secondary regions.  | Ensure that the API Management gateway can scale to meet demand in all regions without manual intervention.  |
-| **Configure at least one replica (additional [availability zone](azure/reliability/migrate-api-mgt) or [capacity unit](/azure/api-management/upgrade-and-scale)) per gateway** | Accommodate burst gateway demand instead of requiring immediate scale-out. Required for 99.99% SLA in Premium tier.  |
+| **Configure at least one replica (additional [availability zone](/azure/reliability/migrate-api-mgt) or [capacity unit](/azure/api-management/upgrade-and-scale)) per gateway** | Accommodate burst gateway demand instead of requiring immediate scale-out. Required for 99.99% SLA in Premium tier.  |
 | **Implement federated API management with [workspaces](/azure/api-management/workspaces-overview)**.  | Segregate API runtime between API teams, improving reliability, resiliency, and security.  |
 
 ## Security
@@ -240,7 +240,7 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: Security and Cost Optimization
 
-- Network isolation features such as virtual network injection can increase costs because of their availability only in higher cost tiers of API Management. However, they can also improve security and performance of the API Management gateway.
+- Network isolation features such as virtual network injection can increase costs because of their availability only in higher cost tiers of API Management. However, they can also improve security and reliability of the API Management gateway.
 
 :::image type="icon" source="../_images/trade-off.svg"::: Reliability and Cost Optimization
 
