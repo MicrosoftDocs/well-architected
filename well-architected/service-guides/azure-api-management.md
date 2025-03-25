@@ -78,8 +78,8 @@ tiers and features of API Management and its dependencies. Extend the strategy t
 
 | Recommendation | Benefit |
 | ----- | ----- |
-|**In multiregion configurations, implement automated scaling in all regions**. API Management supports [autoscaling with Azure Monitor](/azure/api-management/api-management-howto-autoscale) only in the primary region. Implement custom function or logic app to handle scaling in secondary regions.  | * Ensure that the API Management gateway can scale to meet demand in all regions without manual intervention.  |
-
+|**In multiregion configurations, configure automated scaling in all regions**. API Management supports [autoscaling with Azure Monitor](/azure/api-management/api-management-howto-autoscale) only in the primary region. Implement custom function or logic app to handle scaling in secondary regions.  | * Ensure that the API Management gateway can scale to meet demand in all regions without manual intervention.  |
+| **Implement federated API management with [workspaces](/azure/api-management/workspaces-overview)**.  | * Segregated API runtime between API teams, improving reliability, resiliency, and security.  |
 
 ## Security
 
