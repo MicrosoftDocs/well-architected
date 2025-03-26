@@ -78,17 +78,19 @@ Invest in upskilling where team knowledge is currently lacking. Strong cloud ski
 
 <!-- No more than 100 words under each H4 heading. -->
 
-# [Level 3](#tab/level3)
+# [**Level 3 - Incorporating signals**](#tab/level3)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Prioritize and optimize
+![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating user and stakeholder feedback**
 
-<!-- No more than 5 H4 headings per tab -->
+In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. As you move closer to production, it becomes important to open up your feedback loop to internal and external users and to other stakeholders. As you make further Cost Optimization refinements to your workload, you'll also need to start considering tradeoffs with other pillars, especially Performance Efficiency and Reliability. 
 
-#### Example heading
+Level 3 of the Cost Optimization pillar focuses on making your workload production-ready by incorporating internal and external feedback into your strategy while meeting performance and reliability targets.
 
-<!-- No more than 100 words under each H4 heading. -->
+#### &#10003; Develop a strategy to optimize your resource utilization
+ 
+As you build out your nonproduction and production environments, you might inadvertantly deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized an unused resources is a 
 
 # [Level 4](#tab/level4)
 
