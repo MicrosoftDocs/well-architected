@@ -178,33 +178,90 @@ Design a repeatable deployment system that can be automated to minimize errors a
 
 #### &#10003; Design the workload monitoring stack
 
-Designing a monitoring stack is about making deliberate choices about what to monitor and understanding the significance of those metrics and who will use them. Your appraoch to monitoring should be from the perspective of workload health. Determine with stakeholders what healthy and unhealthy means for your workload and build your platform around metrics that can accurately determine whether the workload is healthy or unhealthy.
+Designing a monitoring system involves choosing what to monitor and understanding the importance of those metrics who will use them.
 
-> :::image type="icon" source="../_images/risk.svg"::: Avoid gathering too much data. While it might be tempting to enable full logging for all of your resources, it will quickly become a detriment. You will have too much noise to efficiently parse and your costs will increase rapidly as your storage requirements grow. Initially, narrow your collection strategy to basic metrics like CPU and memory utilization and tracking your storage usage. Evaluate which additional application health metrics are useful and slowly integrate them over time.
+Start by collecting logs and metrics from all components in the workload. Take advantage of platform-provided monitoring tools, which are integrated with the services and bring you insights into with little configuration. Securely store this data in a dependable storage solution that can be queried for analysis.
 
-When setting thresholds for metrics, you need to understand what levels should drive action from response DRIs. For example, while high CPU utilization might generally indicate a problem in one workload, it could be normal for a workload that efficiently uses available resources.
+> :::image type="icon" source="../_images/risk.svg"::: Avoid collecting excessive data, as it can create noise and increase costs. Start with basic metrics like CPU, memory utilization, and storage usage. Gradually add useful application health metrics over time.
 
-Alerting is a core component of monitoring. Simply turning on standard monitoring metrics and routing all alerts to a support center can lead to panic and false alarms, leading to distrust in the monitoring platform. For that reason, alerts should be meaningful and actionable. Alerts should notify appropriate teams that a specific resource or component is experiencing a specific type of issue, and that investigation or corrective action should begin.
+Based on the initial analysis, work with the stakeholders to define what healthy and unhealthy states mean for the workload. You'll use this information in the later stage to develop a health model that accurately reflect that health status.
 
-To account for gradual issues that may not be surfaced by your monitoring and alerting, like a slowly increasing database query time, develop a strategy to track and analyze historical trends.
+> :::image type="icon" source="../_images/risk.svg"::: Your monitoring pipeline can be seen as a way to gather business metrics, such as chargebacks, transaction SLAs, capacity assurances, and sales totals. Keep workload health metrics separate from business metrics.
+>
+> Collect business metrics as an application feature rather than through monitoring configurations. Monitoring data streams can be sampled and are not usually recoverable in a disaster. Treat business-critical data as workload data and keep it separate from workload health signals.
 
-Use visualization tools supported by your monitoring platform to give easy access to workload health signals to different stakeholders. Some stakeholders may only be interested in particular statistics, like application availability, while operations teams should see all health signals at once, so setting up different dashboards can help get different teams the information they need.
+# [**Level 3 - Go-live proficiency**](#tab/level3)
 
-> :::image type="icon" source="../_images/risk.svg"::: Your monitoring pipeline can be easily seen as a way to gather business metrics, such as for charge backs, transaction SLAs, capacity assurances, financial trend metrics such as sales totals. Do not mix workload health metrics with business metrics. Make collection of business metrics an application feature, not a monitoring configuration. Monitoring data streams are subject to sampling, monitoring data stores are not typically recoverable in a disaster. Treat business critical data as workload data, not comingled with workload health signals used to evaluate your implementation or activate operations team.
+![Goal icon](../_images/goal.svg) **Reduce the risk of deployment errors that could lead to downtime. If down time does occur, SREs are ready to focus on critical issues without wasting time on gathering metrics for analysis.**
 
+In the earlier levels, you've standardized the software development life cycle (SDLC) and made key decisions about deployment methods, testing, and telemetry collection.
 
+Now, at Level 3, the operations should mature to boost confidence in deployment. Testing becomes a go-live requirement to ensure safe and stable deployments. The deployment processes also evolve, embracing automated pipelines to build and deploy workloads to production. To minimize the blast radius of risks, proper segmentation is maintained between foundational resources and application code.
 
-# [Level 3](#tab/level3)
+Monitoring practices also mature. The monitoring system is extended to implement a health model that turns operational knowledge into actionable insights. Alerts are streamlined to fit the business context, so irrelevant alerts don't cause false alarms and lead to distrust in the monitoring system.
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+#### &#10003; Use separate environments for promoting releases
 
-### Strategy focus: Automation
+At this level, it's important to establish _release promotion_ as a formal change control protocol before going live. This process involves moving proposed changes through various stages with quality gates. Each stage involves thorough testing, and changes only move forward if they pass these checks and are approved. 
 
-<!-- No more than 5 H4 headings per tab -->
+Create distinct environments for different stages like Dev/Test, QA, UAT, and Production. This ensures thorough validation before moving to the next stage. The idea is to manage risks in the lower environments because errors should be caught early to minimize the blast radius.
 
-#### Example heading
+#### &#10003; Perform sufficient testing
 
-<!-- No more than 100 words under each H4 heading. -->
+Testing is a non-negotiable strategy at this level to reduce risks associated with changes. Every change is a potential risk and should be tested accordingly. Decide on a strategy where testing is prioritized for the critical parts, which are likely to get affected by the change.
+
+- **Define test cases**. Create test cases for application code, infrastructure templates, and configuration.
+
+- **Conduct various types of tests**. Perform different types of tests in each environment. Start testing high-risk changes in low-risk environments. Gradually move high-risk changes to higher-risk environments as confidence grows.
+
+- **Set up separate testing environments**. Create distinct environments for different testing activities. For example, if you're doing UI testing, create a dedicated environment separate from development and production.
+
+Ideally, keep development and test environments as close to the production environment. Make sure test data is consistent with the data used in production, even if it's sample data. Also, the resources should be similar. For instance, it might be okay to have small test databases with only a few megabytes of data, but it's also important to test your feature with a near-production-size database containing several terabytes to see how it behaves under realistic conditions.  
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: While it's important to keep these environments close, there are trade-offs to consider. Deploying the full scale of the production environment in development isn't feasible. 
+>
+> Find balance between being close to the production environment and having a cost-efficient non-production environment. For example, consider creating ephemeral Dev/Test environments, which are torn down after a test pass. 
+>
+> Size the environments based on the test case; unit testing might only need the same versions of libraries and OS on a smaller environment, while resiliency testing might require a pre-production environment with the same service SKUs. Performance testing could even need a production-scale test deployment.
+
+#### &#10003; Automate testing and other quality checks, as much as practical
+
+Automation is great for ensuring consistency and quickly spotting unexpected configuration changes. Figure out which changes can be checked through automated testing. For example, security scans are perfect for automation when moving to a developer environment. Keep in mind that not all tests need to be automated, and some cannot be automated. For instance, user acceptance testing (UAT) requires comparing the implementation with users' expectations and getting their approval.
+
+  > [!NOTE]
+  > Even in a highly automated environment, decision-makers are needed. The extent of human involvement may differ, but someone is always accountable for transition to the next environment, by defining the rules for automated checks or doing manual reviews. In later environments where risk tolerance is low, manual checks may be needed.
+
+A variety of testing tools are available to automate and streamline different types of testing, such as Azure Load Testing and Azure Pipelines for orchestrating automated testing.
+
+#### &#10003; Set up approval processes
+
+As your deployment moves through different environments, it's important to use testing and approval processes to validate the changes. This validation should become more mature and rigorous over time. For example, when moving from a developer workstation to a shared developer environment, basic security scans and peer reviews are usually enough. But later, you might need to involve business stakeholders.
+
+- **Approval for regular releases**. When it comes to regular releases, moving from staging to production requires a different set of criteria. Decisions about releases, like moving to production, need approval from stakeholders or clear documentation, or both. The workload team should define who is part of the approval process and their responsibilities. In some regulatory cases, auditors might also be involved in the decision-making process. These roles and responsibilities should have been established in Level 2.
+
+- **Have a separate process for hotfixes**. For critical situations like deploying security patches, you may need an ad hoc deployment process. Create an emergency process to speed up these high-priority fixes. This process could involve approval from only key stakeholders and technical members. Alternatively, develop a pipeline that bypasses some approvals for quicker deployment.
+
+  Balance skipped steps with the risk to the business or customers. High investment and low risk tests can be skipped in emergencies, while high risk and low investment tests should always be run. The designated responsible individual (DRI) should make the final decisions with input from key stakeholders and technical decision makers.
+
+#### &#10003; Implement automated deployments
+
+Have separate deployment cycles for different layers based on their expected rate of change. In some cases, it may be necessary to combine these cycles, depending on their interdependencies and downtime requirements. However, in most cases, strive for granularity by controlling each layer independently with least privilege, and that changes in one layer don't impact others. 
+
+For example, networking infrastructure changes should be less frequent than application code changes. Those changes should be managed separately through a streamlined process with quality control.
+
+To do so, build deployment pipelines that are aligned with the workload layers. Run tests on Infrastructure as Code (IaC) assets in a controlled environment before deploying them to production.
+
+#### &#10003; Develop a health model
+
+With a basic monitoring system in place, now combine business context with monitoring data to quantify the overall health status of workload components and the overall status. This exercise, known as _health modeling_, involves contextualizing monitoring values from infrastructure and applications with business context. 
+
+- **Set context to system-observed data**. Setting thresholds is an important part of health modeling. Give numeric values context so that they relevant to the workload. For example, while high CPU utilization at 70% to 90% might generally indicate **Unhealthy** status in one workload, but it could be **Healthy** for another workload that efficiently uses available resources.
+
+- **Alert on changes**. Changes in these values indicate shifts in health status and should prompt action from responsible DRIs. Therefore, alerting is another core component of health modeling. Avoid turning on standard metrics and sending all alerts to a support center. Instead, raise alerts based on changes in your health model. The information contained in the alerts must be meaningful and actionable, notifying the right teams about specific issues that need investigation or corrective action.
+
+- **Visualize your health model**. Use visualization tools from your monitoring platform to easily share workload health signals with different stakeholders. Some stakeholders may only care about specific statistics, like application availability, while operations teams need to see all health signals. Setting up different dashboards can help provide each team with the information they need.
+
+Over time, develop a strategy to track and analyze historical workload health trends.
 
 # [Level 4](#tab/level4)
 
