@@ -114,7 +114,7 @@ Review the [Azure security baseline for Azure SQL Database](/security/benchmark/
 
 All built-in policy definitions related to Azure SQL are listed in [Built-in policies](/azure/governance/policy/samples/built-in-policies#sql).
 
-## Cost optimization
+## Cost Optimization
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
@@ -184,8 +184,6 @@ Start your design strategy based on the [design review checklist for Performance
 
 
 ### Recommendations
-
-Explore the following table of recommendations to optimize your Azure SQL Database configuration for Performance Efficiency
 
 | Recommendation|Benefit|
 |--------|----|
