@@ -152,6 +152,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure SQL Database.
 
 > [!div class="checklist"]
+> - Use [Infrastructure as Code](/azure/azure-sql/database/single-database-create-bicep-quickstart?view=azuresql-db&tabs=CLI) to deploy Azure SQL Databases to achieve consistent results with reusability in mind.
 > - Review the [Monitoring and performance tuning in Azure SQL Database](/en-us/azure/azure-sql/database/monitor-tune-overview) article for detailed monitoring guidance.
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
 > - Use Azure Backup to protect Azure SQL Database and regularly test your backup strategy.
@@ -161,7 +162,8 @@ Start your design strategy based on the [design review checklist for Operational
 |Recommendation|Benefit|
 |--------------|-----------|
 |[Monitor your Azure SQL Database](/azure/azure-sql/database/monitor-tune-overview) with tools such as Database watcher to detect reliability incidents.|Being able to quickly detect reliability incidents enables you to promptly identify and address any performance issues, minimizing disruptions to your workload.|
-|Use [Azure Backup](/azure/backup/backup-overview) to backup an Azure SQL Database server. | Azure Backup enables centralized management of business continuity and disaster recovery allowing you to efficiently oversee your backup operations. Azure Backup supports long-term retention of recovery points, ensuring your data is preserved for extended periods. Additionally, it provides the capability to perform cross-region and cross-subscription restores, enhancing the flexibility and resilience of your backup strategy.|
+|Utilize [continuous integration and continuous deployment (CI/CD) workflows](/sql/tools/sql-database-projects/tutorials/create-deploy-sql-project?view=azuresqldb-current&pivots=sq1-visual-studio) to streamline the deployment process of SQL projects.|Maintaining a repeatable workflow for releasing changes minimizes the need for human intervention and significantly reduces the possibility of errors, ensuring a more reliable and efficient deployment process.|
+|Use [Azure Backup](/azure/backup/backup-overview) to backup an Azure SQL Database server. |Azure Backup enables centralized management of business continuity and disaster recovery allowing you to efficiently oversee your backup operations. Azure Backup supports long-term retention of recovery points, ensuring your data is preserved for extended periods. Additionally, it provides the capability to perform cross-region and cross-subscription restores, enhancing the flexibility and resilience of your backup strategy.|
 
 ## Performance Efficiency
 
