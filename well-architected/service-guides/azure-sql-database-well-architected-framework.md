@@ -17,7 +17,7 @@ azure.category:
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include upgrades, patches, backups, and monitoring.
 
-The single database resource type creates a database in Azure SQL Database with its own set of resources and is managed via a [logical server](/azure/azure-sql/database/logical-servers). You can choose between the [DTU-based purchasing model](/azure/azure-sql/database/service-tiers-dtu) or [vCore-based purchasing model](/azure/azure-sql/database/service-tiers-vcore). You can create multiple databases in a single resource pool, with [elastic pools](/azure/azure-sql/database/elastic-pool-overview).
+The single database resource type creates a database in Azure SQL Database with its own set of resources and is managed via a [logical server](/azure/azure-sql/database/logical-servers). You can create multiple databases in a single resource pool, with [elastic pools](/azure/azure-sql/database/elastic-pool-overview).
 
 This article assumes that as an architect, you've reviewed the [core concepts of Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) and [What's new in Azure SQL Database?](/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new).
 
@@ -159,13 +159,8 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 > - Review the [Monitoring and performance tuning in Azure SQL Database](/en-us/azure/azure-sql/database/monitor-tune-overview) article for detailed monitoring guidance.
-> - Use Active Geo-Replication to create a readable secondary in a different region.
-> - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.
-> - Use a Zone-Redundant database.
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
-> - Implement retry logic.
-> - Back up your keys.
-> - Use Azure Backup to protect an Azure SQL Database server.
+> - Use Azure Backup to protect Azure SQL Database and regularly test your backup strategy.
 
 ### Recommendations
 
@@ -173,13 +168,8 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 
 |Recommendation|Benefit|
 |--------------|-----------|
-|Use Active Geo-Replication to create a readable secondary in a different region.|If your primary database fails, perform a manual failover to the secondary database. Until you fail over, the secondary database remains read-only. [Active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) enables you to create readable replicas and manually failover to any replica if there is a datacenter outage or application upgrade. Up to four secondaries are supported in the same or different regions, and the secondaries can also be used for read-only access queries. The failover must be initiated manually by the application or the user. After failover, the new primary has a different connection end point.|
-|Use Auto Failover Groups that can include one or multiple databases, typically used by the same application.|You can use the readable secondary databases to offload read-only query workloads. Because autofailover groups involve multiple databases, these databases must be configured on the primary server. Autofailover groups support replication of all databases in the group to only one secondary server or instance in a different region. Learn more about [Auto-Failover Groups](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell) and [DR design](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery).|
-|Use a Zone-Redundant database.|By default, the cluster of nodes for the premium availability model is created in the same datacenter. With the introduction of Azure Availability Zones, SQL Database can place different replicas of the Business Critical database to different availability zones in the same region. To eliminate a single point of failure, the control ring is also duplicated across multiple zones as three gateway rings (GW). The routing to a specific gateway ring is controlled by [Azure Traffic Manager (ATM)](/azure/traffic-manager/traffic-manager-overview). Because the zone redundant configuration in the Premium or Business Critical service tiers doesn't create extra database redundancy, you can enable it at no extra cost. Learn more about [Zone-redundant databases](/azure/azure-sql/database/high-availability-sla).|
-|Monitor your Azure SQL Database in near-real time to detect reliability incidents.|Use one of the available solutions to monitor SQL DB to detect potential reliability incidents early and make your databases more reliable. Choose a near real-time monitoring solution to quickly react to incidents. Reference [Azure SQL Analytics](/azure/azure-monitor/insights/azure-sql#analyze-data-and-create-alerts) for more information.|
-|Implement Retry Logic.|Although Azure SQL Database is resilient when it concerns transitive infrastructure failures, these failures might affect your connectivity. When a transient error occurs while working with SQL Database, make sure your code can retry the call. For more information, reference [how to implement retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) and [Configurable retry logic in SqlClient introduction](/sql/connect/ado-net/configurable-retry-logic-sqlclient-introduction).|
-|Back up your keys.|If you're not [using encryption keys in Azure Key Vault to protect your data](/azure/azure-sql/database/always-encrypted-azure-key-vault-configure?tabs=azure-powershell), back up your keys.|
-|Use Azure Backup to protect an Azure SQL Database server. | Using Azure Backup to protect your Azure SQL Database server enables you to centrally manage business continuity and disaster recovery from the Recovery Services vault, retain recovery points for long term storage, and perform [Cross Region Restore](/azure/backup/restore-sql-database-azure-vm#cross-region-restore) and [Cross Subscription Restore](/azure/backup/restore-sql-database-azure-vm#cross-subscription-restore). With the [built-in data protection capabilities] in the Azure Recovery Services vault](/azure/backup/backup-azure-recovery-services-vault-overview#key-features), you can prevent any accidental or malicious deletion of backups. |
+|[Monitor your Azure SQL Database](/azure/azure-sql/database/monitor-tune-overview) with tools such as Database watcher to detect reliability incidents.|Being able to quickly detect reliability incidents enables you to promptly identify and address any performance issues, minimizing disruptions to your workload.|
+|Use [Azure Backup](/azure/backup/backup-overview) to backup an Azure SQL Database server. | Azure Backup enables centralized management of business continuity and disaster recovery allowing you to efficiently oversee your backup operations. Azure Backup supports long-term retention of recovery points, ensuring your data is preserved for extended periods. Additionally, it provides the capability to perform cross-region and cross-subscription restores, enhancing the flexibility and resilience of your backup strategy.|
 
 ## Performance efficiency
 
@@ -192,29 +182,28 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure SQL Database.
 
 > [!div class="checklist"]
-> - Review resource limits. For specific resource limits per pricing tier (also known as service objective) for single databases, refer to either [DTU-based single database resource limits](/azure/azure-sql/database/resource-limits-dtu-single-databases) or [vCore-based single database resource limits](/azure/azure-sql/database/resource-limits-vcore-single-databases). For elastic pool resource limits, refer to either [DTU-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-dtu-elastic-pools) or [vCore-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-vcore-elastic-pools).
-> - Choose the right deployment model for your workload, vCore or DTU. [Compare the vCore and DTU-based purchasing models](/azure/azure-sql/database/purchasing-models).
-> - Microsoft recommends the latest vCore database standard-series or premium-series hardware. Older Gen4 hardware has been retired.
-> - When using elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
+> - Microsoft recommends the latest [vCore-based](/azure/azure-sql/database/service-tiers-sql-database-vcore) purchasing model.
+> - Review resource limits. For specific resource limits per pricing tier (also known as service objective) for single databases, refer to [vCore-based single database resource limits](/azure/azure-sql/database/resource-limits-vcore-single-databases). For elastic pool resource limits, refer to [vCore-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-vcore-elastic-pools).
+> - Review the [Performance Center for SQL Server Database Engine and Azure SQL Database](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database) for insights into improving the performance of your Azure SQL Database.
+> - Consider offloading read-only query workloads to [read-only replicas](/azure/azure-sql/database/read-scale-out).
 > - Review the [default max degree of parallelism (MAXDOP)](/azure/azure-sql/database/configure-max-degree-of-parallelism) and configure as needed based on a migrated or expected workload.
-> - Consider using [read-only replicas](/azure/azure-sql/database/read-scale-out) of critical database to offload read-only query workloads.
-> - Review the [Performance Center for SQL Server Database Engine and Azure SQL Database](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database).
 > - Applications connecting to Azure SQL Database should use the latest connection providers, for example the latest [OLE DB Driver](/sql/connect/oledb/oledb-driver-for-sql-server) or [ODBC Driver](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+> - When using elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
+
 
 ### Recommendations
 
 | Recommendation|Benefit|
 |--------|----|
-| Diagnose and troubleshoot high CPU utilization. | Azure SQL Database provides built-in tools to [identify the causes of high CPU usage and to optimize workload performance](/azure/azure-sql/database/high-cpu-diagnose-troubleshoot). |
-| Understand blocking and deadlocking issues. | [Blocking due to concurrency](/azure/azure-sql/database/understand-resolve-blocking) and [terminated sessions due to deadlocks](/azure/azure-sql/database/analyze-prevent-deadlocks) have different causes and outcomes. |
-| Tune applications and databases for performance. | Tune your application and database to improve performance. [Review best practices](/azure/azure-sql/database/performance-guidance).|
-| Review Azure portal utilization reporting and scale as appropriate. | After deployment, use built-in reporting in the Azure portal to regularly review peak and average database utilization and right-size up or down. You can easily scale [single databases](/azure/azure-sql/database/single-database-scale) or [elastic pools](/azure/azure-sql/database/elastic-pool-scale) with [no data loss and minimal downtime](/azure/azure-sql/database/scale-resources). |
-| Review Performance Recommendations. | In the [Intelligent Performance menu](/azure/azure-sql/database/intelligent-insights-overview) of the database page in the Azure portal, review and consider action on any of the [Performance Recommendations](/azure/azure-sql/database/database-advisor-find-recommendations-portal) and [implement any index, schema, and parameterization issues](/azure/azure-sql/database/database-advisor-implement-performance-recommendations). |
-| Review Query Performance Insight. | Review [Query Performance Insight for Azure SQL Database](/azure/azure-sql/database/query-performance-insight-use) reports to identify top resource-consuming queries, long running queries, and more. |
-| Configure [Automatic tuning](/azure/azure-sql/database/automatic-tuning-overview). | Provide peak performance and stable workloads through continuous performance tuning based on AI and machine learning. Consider using Azure Automation to configure [email notifications for automatic tuning](/azure/azure-sql/database/automatic-tuning-email-notifications-configure). |
-| Evaluate potential use of in-memory database objects. | [In-memory technologies](/azure/azure-sql/in-memory-oltp-overview) enable you to improve performance of your application, and potentially reduce cost of your database. Consider designing some database objects in high-volume OLTP applications. |
-| Leverage the [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). | Enabled by default in Azure SQL Database, the Query Store contains a wealth of [query performance and resource consumption](/sql/relational-databases/performance/tune-performance-with-the-query-store) data, as well as advanced tuning features like [Query Store hints](/sql/relational-databases/performance/query-store-hints) and [automatic plan correction](/sql/relational-databases/automatic-tuning/automatic-tuning). Review [Query Store defaults in Azure SQL Database](/sql/relational-databases/performance/best-practice-with-the-query-store). |
-| Implement retry logic for transient errors. | Applications should include [automatic transaction retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) for transient errors including common connection errors. Leverage exponential retry interval logic. |
+| Review [Performance Recommendations](/azure/azure-sql/database/database-advisor-find-recommendations-portal). | Database performance can be improved by reviewing and applying performance recommendations.|
+| Configure [Automatic tuning](/azure/azure-sql/database/automatic-tuning-overview). | Peak performance and stable workloads can be achieved through continuous performance tuning based on AI and machine learning.|
+| Leverage the [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).| The Query Store simplifies troubleshooting query performance by continuously collecting detailed information about all queries. This information allows you to quickly diagnose and address query performance problems.|
+| [Tune applications and databases for performance.](/azure/azure-sql/database/performance-guidance) | Properly tuned applications and databases lead to more efficient operations and potentially lower costs.|
+| Review [Query Performance Insight](/azure/azure-sql/database/query-performance-insight-use). | Query Performance Insight helps you spend less time troubleshooting database performance by providing deeper insight into database queries by metrics such as CPU, duration, and execution count.|
+| [Diagnose and troubleshoot high CPU utilization](/azure/azure-sql/database/high-cpu-diagnose-troubleshoot). | By identifying and addressing the root causes of high CPU usage, you can optimize workload performance and ensure that your database operates efficiently.|
+| Understand [blocking](/azure/azure-sql/database/understand-resolve-blocking) and [deadlocking](/azure/azure-sql/database/analyze-prevent-deadlocks) issues. | Resolving blocking and deadlocking problems helps your database operate more efficiently, eliminating bottlenecks and improving performance.|
+| Review Azure portal utilization reporting and scale [single databases](/azure/azure-sql/database/single-database-scale) or [elastic pools](/azure/azure-sql/database/elastic-pool-scale) as appropriate. | By regularly reviewing utilization reports, you can ensure your resources are being used efficiently.  This helps to identify underutilized resources, which can lead to cost savings.|
+| Evaluate potential use of [in-memory database objects](/azure/azure-sql/in-memory-oltp-overview).| In-memory technologies enable you to improve the performance of your workload, and potentially reduce database costs.|
 
 
 ## Additional resources
