@@ -55,6 +55,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >    - [HA/DR checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist)
 >    - [Automated backups](/azure/azure-sql/database/automated-backups-overview)
 > - Use the Business Critical tier for critical workloads. The Business Critical tier offers the highest reliability guarantees of all SKUs.
+> - Consider Azure SQL Database Hyperscale to meet strict RTO and RPO targets when Business Critical isn't practical. Hyperscale's use of storage snapshots rather than traditional database backup mechanisms allow for zero downtime and rapid recovery.
 > - Enhance the availability of your databases by using Active Geo-Replication, Failover Groups, and zone-redundancy.
 > - Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or an instance database on any managed instance in any Azure region from the most recent geo-replicated backups.
 > - Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from inadvertent changes.
@@ -124,6 +125,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 > [!div class="checklist"]
 > - Review the [Plan and manage costs for Azure SQL Database](/azure/azure-sql/database/cost-management) article.
+> - Choose the appropriate Azure SQL Database service tier for your use case.
 > - Optimize queries and other operations to reduce resource consumption, minimize execution time, and improve overall performance.
 > - Incorporate cost optimization considerations into your database scaling strategies.
 > - Fine-tune backup storage consumption to avoid charges for excess utilization.
@@ -135,12 +137,14 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 |Recommendation|Benefit|
 |--------------|-----------|
+|Research the available Azure SQL Database [service tiers](/azure/azure-sql/database/sql-database-paas-overview?view=azuresql#service-tiers) and select the best model for each use case based on your capacity planning. | Using the appropriate service tier can help you avoid wasted costs from overprovisioning. |
 |Optimize your queries, tables, and databases using [Query Performance Insights](/azure/azure-sql/database/query-performance-insight-use) and [Performance Recommendations](/azure/azure-sql/database/database-advisor-find-recommendations-portal). | Optimizing these operations can help reduce resource consumption and determine the appropriate Azure SQL Database SKUs to provision to meet your performance and budgetary requirements. |
 |Intelligently scale your databases to reduce costs, while meeting your performance targets. | You might be able to recover costs by scaling down databases during periods of lighter utilization. Examples include seasonal workloads that might have weeks or months of decreased load or workloads that are idle overnight. In these cases, you can automate scaling operations to match utilization patterns. | 
 |Use the recommended strategies discussed in the [Automated backups](/azure/azure-sql/database/automated-backups-overview#backup-storage-consumption) guidance to fine-tune your backup storage consumption. | For vCore databases in Azure SQL Database, the storage consumed by each type of backup (full, differential, and log) is reported on the database monitoring pane as a separate metric. Backup storage consumption up to the maximum data size for a database is included in the price of the database. Excess storage costs depend on the workload and maximum size of the individual databases. |
 |Consider using the [serverless](/azure/azure-sql/database/serverless-tier-overview) tier for single databases with intermittent, unpredictable usage patterns that can afford some delay in compute warm-up after idle usage periods. | Serverless databases automatically pause and scale their compute resources based on workload demand. Billing is based on the amount of compute used per second. If you have a database with unpredictable or bursty usage patterns interspersed with periods of low or idle usage, serverless is a solution that can help you optimize price-performance.|
-|Consider using the [hyperscale](/azure/azure-sql/database/service-tier-hyperscale) tier for all workload types. | The hyperscale tier's cloud-native architecture provides independently scalable compute and storage to support the widest variety of traditional and modern applications. Compute and storage resources in Hyperscale substantially exceed the resources available in the General Purpose and Business Critical tiers.|
-|[Save costs for resources with reserved capacity](/azure/azure-sql/database/reserved-capacity-overview). | You can reduce compute costs associated with Azure SQL Database by pre-purchasing compute resources. Once you've determined the total compute capacity and performance tier for Azure SQL databases in a region, you can use this information to reserve the capacity for one or three years.|
+|Consider using the [hyperscale](/azure/azure-sql/database/service-tier-hyperscale) tier for all workload types. | The hyperscale tier's cloud-native architecture provides independently scalable compute and storage to support the widest variety of traditional and modern applications. Compute and storage resources in Hyperscale substantially exceed the resources available in the General Purpose and Business Critical tiers. There are no additional SQL licensing costs for Hyperscale databases.|
+|[Save costs for resources with reserved capacity](/azure/azure-sql/database/reserved-capacity-overview). | You can reduce compute costs associated with Azure SQL Database by pre-purchasing compute resources. Once you've determined the total compute capacity and performance tier for Azure SQL databases in a region, you can use this information to reserve the capacity for one or three years. One year reservations can save you up to 40% of database costs and 3 year reservations can save you up to 60%.
+|Save on SQL licensing costs by exchanging your Software Assurance-enabled SQL Server licenses with [Azure Hybrid Benefit](/azure/azure-sql/azure-hybrid-benefit).| Azure Hybrid Benefit can save you up to 30% on licensing costs in Azure SQL Database and your existing Software Assurance agreement will not be wasted as you migrate databases to Azure. |
 |Use [elastic pools](/azure/azure-sql/database/elastic-pool-overview) to help manage and scale multiple databases. | Azure SQL Database elastic pools are a simple, cost-effective solution for managing and scaling multiple databases that have varying and unpredictable usage demands. The databases in an elastic pool are on a single server and share a set number of resources at a set price. |
 
 ## Operational Excellence
@@ -156,6 +160,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - Review the [Monitoring and performance tuning in Azure SQL Database](/en-us/azure/azure-sql/database/monitor-tune-overview) article for detailed monitoring guidance.
 > - Monitor your Azure SQL Database in near-real time to detect reliability incidents.
 > - Use Azure Backup to protect Azure SQL Database and regularly test your backup strategy.
+> - Evolve your database administration (DBA) roles. By adopting Azure SQL Database, DBAs are relieved of many of their traditional tasks, like infrastructure-related administration, backup management, HADR operations, and many others. Encourage thier growth in cloud-native administration and integration with DevOps teams as they adopt a data-as-code mindset.
 
 ### Recommendations
 
