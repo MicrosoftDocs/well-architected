@@ -107,7 +107,15 @@ As you deploy cloud resources, be strategic in purchasing licenses and other sta
 - Use nonproduction and dev/test licensing for applicable systems, like Visual Studio Dev/Test licenses.
 - Pre-purchase capacity for cloud resources when practical. Reserving capacity can signicantly lower your monthy utilization costs, and help keep your costs more consistent month-to-month.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: When purchasing reservations, be sure that it is the most cost-effective model for your use case. For example, if a given resource can be scaled down nightly or seasonally, it might be more cost effective to intelligently scale that resource. Also, be sure that you've identified the right SKU to pre-purchase, 
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: When purchasing reservations, be sure that it is the most cost-effective model for your use case. For example, if a given resource can be scaled down nightly or seasonally, it might be more cost effective to intelligently scale that resource. Also, be sure that you've identified the right SKU to pre-purchase through baseline testing and capacity planning.
+
+#### &#10003; Refine autoscaling policies
+
+Your initial scaling policies might be based on your intternal development feedback loop - adjusting scaling to meet development needs. As you work towards production readiness, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range. Likewise, consult with business stakeholders to share how scaling refinements might affect budget forecasts.
+
+#### &#10003; Optimize data management
+
+Optimizing your data management practices can help you keep data costs under control by properly organizing data resources and 
 
 
 
