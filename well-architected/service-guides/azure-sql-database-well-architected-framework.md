@@ -64,8 +64,6 @@ Start your design strategy based on the [design review checklist for Reliability
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure SQL Database configuration for reliability:
-
 |Recommendation|Benefit|
 |--------------|-----------|
 |Use [Active Geo-Replication](/azure/azure-sql/database/active-geo-replication-overview) to create a readable secondary in a different region.|If your primary database fails, you can perform a manual failover to the replicated database, making it the new primary instance. If your application supports read-only connection strings, you can take advantage of the secondary database, enhancing the performance and resiliency of your application.|
@@ -135,8 +133,6 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure SQL Database configuration for cost savings:
-
 |Recommendation|Benefit|
 |--------------|-----------|
 |Optimize your queries, tables, and databases using [Query Performance Insights](/azure/azure-sql/database/query-performance-insight-use) and [Performance Recommendations](/azure/azure-sql/database/database-advisor-find-recommendations-portal). | Optimizing these operations can help reduce resource consumption and determine the appropriate Azure SQL Database SKUs to provision to meet your performance and budgetary requirements. |
@@ -147,9 +143,7 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 |[Save costs for resources with reserved capacity](/azure/azure-sql/database/reserved-capacity-overview). | You can reduce compute costs associated with Azure SQL Database by pre-purchasing compute resources. Once you've determined the total compute capacity and performance tier for Azure SQL databases in a region, you can use this information to reserve the capacity for one or three years.|
 |Use [elastic pools](/azure/azure-sql/database/elastic-pool-overview) to help manage and scale multiple databases. | Azure SQL Database elastic pools are a simple, cost-effective solution for managing and scaling multiple databases that have varying and unpredictable usage demands. The databases in an elastic pool are on a single server and share a set number of resources at a set price. |
 
-## Operational excellence
-
-Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
+## Operational Excellence
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
@@ -164,14 +158,12 @@ Start your design strategy based on the [design review checklist for Operational
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure SQL Database configuration for operational excellence:
-
 |Recommendation|Benefit|
 |--------------|-----------|
 |[Monitor your Azure SQL Database](/azure/azure-sql/database/monitor-tune-overview) with tools such as Database watcher to detect reliability incidents.|Being able to quickly detect reliability incidents enables you to promptly identify and address any performance issues, minimizing disruptions to your workload.|
 |Use [Azure Backup](/azure/backup/backup-overview) to backup an Azure SQL Database server. | Azure Backup enables centralized management of business continuity and disaster recovery allowing you to efficiently oversee your backup operations. Azure Backup supports long-term retention of recovery points, ensuring your data is preserved for extended periods. Additionally, it provides the capability to perform cross-region and cross-subscription restores, enhancing the flexibility and resilience of your backup strategy.|
 
-## Performance efficiency
+## Performance Efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
@@ -192,6 +184,8 @@ Start your design strategy based on the [design review checklist for Performance
 
 
 ### Recommendations
+
+Explore the following table of recommendations to optimize your Azure SQL Database configuration for Performance Efficiency
 
 | Recommendation|Benefit|
 |--------|----|
