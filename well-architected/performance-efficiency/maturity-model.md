@@ -139,6 +139,8 @@ Ensure that test environments closely emulate the production environment.
 
 Review test results to identify bottlenecks and other inefficiencies and compare results against goals, predefined criteria, or previous runs.
 
+> :::image type="icon" source="../_images/risk.svg"::: Testing environments can be significant cost drivers. Design test environments with the minimum required resources to emulate the specific scenario being tested and ensure that resources are shutdown or deleted after testing to minimize utilization costs.
+
 #### &#10003;
 
 # [Level 4](#tab/level4)
