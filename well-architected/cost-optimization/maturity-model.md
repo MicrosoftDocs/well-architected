@@ -193,6 +193,8 @@ As you build out your nonproduction and production environments, you might inadv
 - Review nonproduction and production environments for unused resources that can safely be shutdown or deleted.
 - Take advantage of tools provided by your cloud platform that help identify resource optimizations. For example, Azure Advisor offers [cost optimization recommendations](/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations) highlighting potential inefficiencies and steps to address them.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Ensure that performance and reliability targets are requirments are considered when making any adjustments to your resources. Engage with stakeholders when compromises can be made to balance performance, reliability, and costs, or when budget requirments are an obstacle to workload enhancements.
+
 #### &#10003; Optimize licenses and other static costs
 
 As you deploy cloud resources, be strategic in purchasing licenses and other static monthly costs, like server and database licensing, software licensing, and pre-purchased reservations. Considerations include:
