@@ -88,6 +88,20 @@ In the early stages of workload development and operations, you might rely on yo
 
 Level 3 of the Cost Optimization pillar focuses on making your workload production-ready by incorporating internal and external feedback into your strategy while meeting performance and reliability targets.
 
+#### &#10003; Invest in impactful flows and fine-tune others
+
+Reflect on your flow ratings and prioritize development efforts on critical and valuable flows, while looking for ways to fine-tune non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
+
+For each flow, eliminate unnecessary elements, choose appropriate performance tiers, adjust scaling settings for variable demand, and fine-tune configurations to align with performance and budget needs. Monitor flows to identify inefficiencies such as idle compute instances, unused data, and low network bandwidth. Use native logging and analysis tools to help aggregate and analyze these metrics for trends.
+
+#### &#10003; Enforce cost guardrails with alerting
+
+Creating spending thresholds and associated alerting is an easy way to enforce cost guardrails, ensuring that the workload stays within budget. Alerts can include the following.
+
+- Budgets: Budget alerts allow you to set spending thresholds, monitor costs, and receive notifications to help control expenses and stay informed.
+- Cost anomalies: Cost anomaly alerts notify you of unexpected cost variations, allowing you to investigate and address inefficiencies or abnormal spending patterns.
+- Commitment-based utilization: Commitment-based plan utilization alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when utilization drops below a desired threshold.
+
 #### &#10003; Develop a strategy to optimize your resource utilization
  
 As you build out your nonproduction and production environments, you might inadvertantly deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized an unused resources is a cornerstone element of the continuous improvement practice of maintaining an optimized cloud environment. Consider the following recommended activities:
@@ -111,13 +125,38 @@ As you deploy cloud resources, be strategic in purchasing licenses and other sta
 
 #### &#10003; Refine autoscaling policies
 
-Your initial scaling policies might be based on your intternal development feedback loop - adjusting scaling to meet development needs. As you work towards production readiness, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range. Likewise, consult with business stakeholders to share how scaling refinements might affect budget forecasts.
+Your initial scaling policies might be based on your intternal development feedback loop - adjusting scaling to meet development needs. As you work towards production readiness, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on the many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for workloads with non-critical flows, units of scale might be moving from one SKU to another for individual components. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
 
-#### &#10003; Optimize data management
+#### &#10003; Optimize your data estate
 
-Optimizing your data management practices can help you keep data costs under control by properly organizing data resources and 
+Data is a primary driver of cloud costs and proper data management can help you keep costs consistent and within budget. Strategies for data estate management include:
 
+- Classify and label data to apply appropriate controls and determine the appropriate levels of reliability and performance for different data types and stores.
+- Capture only essential data, compress data for colder storage, delete unneeded data with proper retention policies, deduplicate to eliminate redundant data, and educate users on efficient data storage practices.
+- Optimize backups by using incremental backups, enabling compression, and moving older backups to cold storage.
+- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on nonfunctional requirements. Continously evaluate your requirements and configuration.
+- Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
+- Use tooling to help optimize queries.
 
+#### &#10003; Optimize code, software development practices, and feature development strategies
+
+Inefficient code can lead to inefficient system performance, which can mean higher costs for resource utilization. Opimizing your code can help your workload become more efficient, hanlding more load without needing to scale up your resources. Strategies to opimize code include:
+
+- Analyze runtime data, measure performance with profiling tools, evaluate business logic and user impact, and review language-specific performance recommendations.
+- Optimize by removing unnecessary function calls, minimizing logging, refining loops and conditionals, reducing data processing, minimizing network requests and memory allocations, and assessing cross-cutting implementations.
+- Optimize network paths by:
+   - Minimizing data transfers between components and across geo-distant regions by analyzing and eliminating unnecessary transfers. Ensure only the required data fields are sent, not entire objects or data structures, to reduce the size and frequency of data transfers.
+   - Avoid transfering redundant data and only send essential information.
+   - Refactor your code to reduce repeated requests and batch them when possible.
+ 
+Streamlining development practices increases build velocity, saving your workload teams valuable time getting enhancements to production efficiently. Strategies for streamlining development practices include:
+
+- Reduce build times by reviewing build configuration settings and eliminating unnessary steps or processes, parallelizing build tasks, using caching, and employing incremental builds to avoid unnecessary recompilation of unchanged componnents.
+- Use production mocking to optimize testing. Mocking allows developers to focus testing on simulated scenarios that are impractical to reproduce in a production environment.
+- Optimize development planning practices by defining clear objectives and metrics, using monitoring tools to track KPIs, and prioritizing actionable insights.
+- Use AI coding assistance tools, like Github Copilot, to reduce development time when practical.
+
+Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate internal and external user and stakeholder feedback to determine which features will have the highest impact on user satisfaction, driving increased utilization. In some cases, features might be developed specifically for optimizing costs. Weigh those against functional priorities to determine their relative value.
 
 # [Level 4](#tab/level4)
 
