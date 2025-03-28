@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure Disk Storage
+title: Architecture Best Practices for Azure Disk Storage
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Disk Storage.
 author: roygara
 ms.author: rogarana
@@ -13,7 +13,7 @@ azure.category:
   - storage
 ---
 
-# Azure Well-Architected Framework perspective on Azure Disk Storage
+# Architecture best practices for Azure Disk Storage
 
 Azure managed disks are a type of Azure Disk Storage that simplify the management of storage for Azure Virtual Machines. Managed disks are block-level storage volumes that Azure manages. They're similar to physical disks in an on-premises server, but they operate in a virtual environment. When you use a managed disk, you must specify the disk size type and configure the disk. After you configure the disk, Azure manages subsequent operations and maintenance tasks.
 

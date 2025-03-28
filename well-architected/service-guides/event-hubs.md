@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Event Hubs 
+title: Architecture Best Practices for Azure Event Hubs 
 description: Focuses on the Event Hubs service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations.
 author: martinekuan
 ms.author: martinek
@@ -11,7 +11,7 @@ azure.category:
   - analytics
 ---
 
-# Azure Well-Architected Framework perspective on Azure Event Hubs
+# Architecture best practices for Azure Event Hubs
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a scalable event processing service that ingests and processes large volumes of events and data, with low latency and high reliability. It can receive and process millions of events per second. Data sent to an event hub can be transformed and stored by using any real-time analytics provider or batching and storage adapters.
 

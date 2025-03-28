@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure Kubernetes Service (AKS)
+title: Architecture Best Practices for Azure Kubernetes Service (AKS)
 description: Learn how to use Azure Kubernetes Service (AKS) features to boost reliability, security, and scalability. Streamline your workload operations and control costs. 
 author: schaffererin
 ms.author: schaffererin
@@ -13,7 +13,7 @@ azure.category:
   - containers
 ---
 
-# Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
+# Architecture best practices for Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use to deploy and manage containerized applications. Similar to other managed services, AKS offloads much of the operational overhead to Azure while providing high availability, scalability, and portability features to the workload.
 
@@ -67,7 +67,8 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Ensure that your workload runs on user node pools and choose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
 > - (Cluster and workload) **Factor the AKS uptime service-level agreement (SLA) into your availability and recovery targets.** To define the reliability and recovery targets for your cluster and workload, follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics). Then formulate a design that meets those targets.
-
+>
+> -  (Cluster and workload) Protect the AKS cluster service using Azure Backup by storing recovery points in a Backup vault and perform restore during any disaster scenario. To back up and restore the containerized applications and data running in AKS clusters, follow the guidance in the AKS backup overview for configuring protection.
 ### Recommendations
 
 | Recommendation | Benefit |
@@ -80,6 +81,7 @@ Start your design strategy based on the [design review checklist for Reliability
 |(Cluster and workload) Keep the system node pool isolated from application workloads.<br><br>System node pools require a virtual machine (VM) SKU of at least 2 vCPUs and 4 GB of memory. We recommend that you use 4 vCPU or more. For more information, see [System and user node pools](/azure/aks/use-system-pools#system-and-user-node-pools).|The system node pool hosts critical system pods that are essential for the control plane of your cluster. By isolating these system pods from application workloads, you help ensure that the essential services are unaffected by the resource demands or potential problems caused by a workload.|
 |(Cluster and workload) Separate applications to dedicated node pools based on specific requirements. Avoid large numbers of node pools to reduce management overhead.|Applications can share the same configuration and need GPU-enabled VMs, CPU or memory-optimized VMs, or the ability to scale to zero. By dedicating node pools to specific applications, you can help ensure that each application gets the resources it needs without overprovisioning or underutilizing resources.|
 |(Cluster) Use a [NAT gateway](/azure/aks/nat-gateway) for clusters that run workloads that make many concurrent outbound connections.|Azure NAT Gateway supports reliable egress traffic at scale and helps you avoid reliability problems by applying Azure Load Balancer limitations to high concurrent outbound traffic.|
+| (Cluster and workload) Use Azure Backup to [protect AKS cluster and restore](/azure/backup/azure-kubernetes-service-backup-overview) to alternate regions during disaster.  Azure Backup supports the backup and restore operations of containerized applications and data running for both cluster state and application data.<br><br> You can [use the backups in a regional disaster scenario and recover backups](/azure/backup/azure-kubernetes-service-cluster-restore).  | Azure Backup with Azure Kubernetes Service (AKS) offers a fully managed, scalable, secure, and cost-effective solution. Enhances the reliability of the workload without the complexities of setting up and maintaining backup infrastructure. |
 
 ## Security
 

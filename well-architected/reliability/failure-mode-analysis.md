@@ -10,7 +10,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|**RE:03**| Use failure mode analysis (FMA) to identify and prioritize potential failures in your solution components. Perform FMA to help you assess the risk and effect of each failure mode. Determine how the workload responds and recovers.  |
+|**RE:03**| **Use failure mode analysis (FMA) to identify potential failures in your workload.** Identify dependencies and failure points, and develop mitigation strategies for those failures.  |
 |---|---|
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework review - Log Analytics
+title: Architecture Best Practices for Log Analytics
 description: Learn about the architectural best practices according to Azure Well-Architected Framework for Log Analytics workspaces in Azure Monitor. 
 ms.topic: conceptual
 author: bwren
@@ -10,7 +10,7 @@ azure.category:
   - management-and-governance
 ---
 
-# Azure Well-Architected Framework perspective on Log Analytics
+# Architecture best practices for Log Analytics
 
 Well-Architected Framework workload functionality and performance must be monitored in diverse ways and for diverse reasons. Azure Monitor Log Analytics workspaces are the primary log and metric sink for a large portion of the monitoring data. Workspaces support multiple features in Azure Monitor including ad-hoc queries, visualizations, and alerts. For general monitoring principles, see [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring). The guidance presents general monitoring principles. It identifies the different types of data. It identifies the required analysis that Azure Monitor supports and it also identifies the data stored in the workspace that enables the analysis.
 

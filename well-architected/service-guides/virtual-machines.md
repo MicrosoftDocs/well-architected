@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Virtual Machines and scale sets
+title: Architecture Best Practices for Virtual Machines and Scale Sets
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Machines.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -11,7 +11,7 @@ azure.category:
   - compute
 ---
 
-# Azure Well-Architected Framework perspective on Virtual Machines and scale sets
+# Architecture best practices for Virtual Machines and scale sets
 
 Azure Virtual Machines is a type of compute service that you can use to create and run virtual machines (VMs) on the Azure platform. It offers flexibility in different SKUs, operating systems, and configurations with various billing models.
 
