@@ -105,7 +105,7 @@ Collect application performance data like throughput, latency, and completion ti
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be sure to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
 
-# [**Level 3 - Production-ready performance optimization techniques](#tab/level3)
+# [**Level 3 - Production-ready performance optimization techniques**](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback**
 
