@@ -220,6 +220,8 @@ Data is a primary driver of cloud costs and proper data management can help you 
 - Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
 - Use tooling to help optimize queries.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh your backup and replication policies against your recovery targets. Less frequent replication or offloading older backups to cold storage can affect your recovery time, so be mindful about implementing these optimizations.
+
 #### &#10003; Optimize code, software development practices, and feature development strategies
 
 Inefficient code can lead to inefficient system performance, which can mean higher costs for resource utilization. Opimizing your code can help your workload become more efficient, hanlding more load without needing to scale up your resources. Strategies to opimize code include:
@@ -228,8 +230,8 @@ Inefficient code can lead to inefficient system performance, which can mean high
 - Optimize by removing unnecessary function calls, minimizing logging, refining loops and conditionals, reducing data processing, minimizing network requests and memory allocations, and assessing cross-cutting implementations.
 - Optimize network paths by:
    - Minimizing data transfers between components and across geo-distant regions by analyzing and eliminating unnecessary transfers. Ensure only the required data fields are sent, not entire objects or data structures, to reduce the size and frequency of data transfers.
-   - Avoid transfering redundant data and only send essential information.
-   - Refactor your code to reduce repeated requests and batch them when possible.
+   - Avoiding transfering redundant data by only sending essential information.
+   - Refactoring your code to reduce repeated requests and batch them when possible.
  
 Streamlining development practices increases build velocity, saving your workload teams valuable time getting enhancements to production efficiently. Strategies for streamlining development practices include:
 
