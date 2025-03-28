@@ -63,8 +63,6 @@ Based on the answers to these questions, you can [choose the best data service](
 
 # [**Level 2 - Baseline performance measurements** ](#tab/level2)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
-
 ![Goal icon](../_images/goal.svg) **Begin measuring performance using defined metrics and plan for optimization**
 
 Level 2 of the Performance Efficiency pillar focuses on using information about your workload to inform your performance optimizations. The first step is to identify critical workload flows from a performance perspective. Next, decompose your workload into its components and set measurable targets and metrics that you can capture and analyze for future optimizations. Finally, you should investigate design patterns that may help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities will help you build a plan for the near-term future of your workload, ensuring that performance doesn't suffer as the workload evolves.
@@ -84,6 +82,8 @@ Ranking and categorizing your workload flows is an important strategy in each of
 Set performance targets for your workload components and resources based on market research, competitive analysis, and surveys. Focus on key metrics like response time, throughput, and latency. Establish targets for different components, user flows, workflows, data flows, external dependencies, and overall workload performance.
 
 Define realistic and measurable targets for each metric, considering customer expectations and using percentiles (for example, P99, P95, and P50) for a comprehensive view. Perform testing to establish baseline performance, but don't overemphasize optimization.
+
+Record all performance targets in a centralized location accessible to both development and operations teams. Use dashboards and reports to make targets visible and actionable. 
 
 #### &#10003; Perform your intial capacity planning exercise
 
@@ -105,18 +105,41 @@ Collect application performance data like throughput, latency, and completion ti
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be sure to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
 
+# [**Level 3 - Production-ready performance optimization techniques](#tab/level3)
 
-# [Level 3](#tab/level3)
+![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback**
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+Level 3 of the Performance Efficiency pillar focuses on incoroporating internal and external signals to refine performance targets, workload design and configurations, and related operational practices. In earlier maturity levels, you might have set performance targets and configurations based on development velocity needs, and internal testing. As you evolve your workload, taking internal and external user and stakeholder feedback into account, helps you ensure that there are realistic performance targets for your production workload, and that it meets those targets without sacrificing requirements for other pillars.
 
-### Strategy focus: Risk mitigation
+#### &#10003; Continuously evaluate and adjust performance targets based on feedback
 
-<!-- No more than 5 H4 headings per tab -->
+Regularly review internal and external user feedback on performance and evaluate whether your targets meet expectations. Explore using customer satisfaction polling, comment systems, and targeted user testing to gather useful feedback.
 
-#### Example heading
+#### &#10003; Intelligently perform performance analysis and capacity planning
 
-<!-- No more than 100 words under each H4 heading. -->
+Monitor performance using metrics based on your targets to ensure that the workload meets performance targets and business goals. Compare your metrics with user and business feedback to ensure that you're capture useful and relevant data. Capture business metrics in a separate data stream for flexibility and independent analysis, even if they overlap with performance data. This practice gets stakeholders the information they need to make well-informed decisions without unnecessary confusion.
+
+Monitoring and trend analysis also helps inform your capacity planning. Adjust predictive capacity models to meet workload goals and demands, ensuring adequate resource provisioning. Adopt a business-driven decision-making mindset for capcity planning by engaging with stakeholders to understand requirements and align plans with service provider SLAs.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh performance capacity planning against your reliability and budget requirements. Engage with stakeholders to find compromises between these considerations when there are conflicting requirements.
+
+#### &#10003; Optimize your scaling strategy
+
+Employ advanced scaling techniques to optimize your resource utilization. Adjust the thresholds used for scaling operations based on internal and external feedback, and build automation to perform scaling operations for components that lack native automatic scaling functionality. Used scheduled scaling for components that are lightly used or idle at known times throughout the day, week, or month. Continously evaluate scaling configurations and make refinements to better meet the fluctuating demands of a workload.
+
+#### &#10003; Develop a data partitioning strategy
+
+Divide large datasets or workloads into smaller parts called partitions for separate storage or processing. This enables parallel processing, reduces contention, and improves resource use and processing times. It also distributes data across multiple storage devices, reducing individual load and enhancing overall performance. Align partitioning types with use cases: partitioning can be horizontal, vertical, or functional.
+
+#### &#10003; Design and run performance tests
+
+Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that aligns with targets.
+
+Ensure that test environments closely emulate the production environment.
+
+Review test results to identify bottlenecks and other inefficiencies and compare results against goals, predefined criteria, or previous runs.
+
+#### &#10003;
 
 # [Level 4](#tab/level4)
 
