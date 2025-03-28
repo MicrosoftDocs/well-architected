@@ -120,6 +120,8 @@ Moving to production means that you must be prepared to respond immediately to p
 - Establish a framework to prioritize performance issues based on their impact.
 - Document all steps, processes, and best practices for responding to performance issues.
 
+As part of your performance monitoring strategy, ensure that you specifically monitor the performance of your flows. Understand each flow's impact on workload performance. For the flows, identify potential issues through user behavior insights. Track response times, errors, and other metrics to optimize critical flows. Analyze logs to trace flow performance and identify issues.
+
 #### &#10003; Continuously evaluate and adjust performance targets based on feedback
 
 Regularly review internal and external user feedback on performance and evaluate whether your targets meet expectations. Explore using customer satisfaction polling, comment systems, and targeted user testing to gather useful feedback.
