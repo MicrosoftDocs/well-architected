@@ -164,7 +164,7 @@ Performance testing and metrics should be considered when making the decision to
 
 ![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating user and stakeholder feedback**
 
-In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. As you move closer to production, it becomes important to open up your feedback loop to internal and external users and to other stakeholders. As you make further Cost Optimization refinements to your workload, you'll also need to start considering tradeoffs with other pillars, especially Performance Efficiency and Reliability. 
+In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it becomes important to open up your feedback loop to internal and external users and to other stakeholders. As you make further Cost Optimization refinements to your workload, you'll also need to start considering tradeoffs with other pillars, especially Performance Efficiency and Reliability. 
 
 Level 3 of the Cost Optimization pillar focuses on making your workload production-ready by incorporating internal and external feedback into your strategy while meeting performance and reliability targets.
 
@@ -178,9 +178,9 @@ For each flow, eliminate unnecessary elements, choose appropriate performance ti
 
 Creating spending thresholds and associated alerting is an easy way to enforce cost guardrails, ensuring that the workload stays within budget. Alerts can include the following.
 
-- Budgets: Budget alerts allow you to set spending thresholds, monitor costs, and receive notifications to help control expenses and stay informed.
-- Cost anomalies: Cost anomaly alerts notify you of unexpected cost variations, allowing you to investigate and address inefficiencies or abnormal spending patterns.
-- Commitment-based utilization: Commitment-based plan utilization alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when utilization drops below a desired threshold.
+- *Budgets*: Budget alerts allow you to set spending thresholds, monitor costs, and receive notifications to help control expenses and stay informed.
+- *Cost anomalies*: Cost anomaly alerts notify you of unexpected cost variations, allowing you to investigate and address inefficiencies or abnormal spending patterns.
+- *Commitment-based utilization*: Commitment-based plan utilization alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when utilization drops below a desired threshold.
 
 #### &#10003; Develop a strategy to optimize your resource utilization
  
@@ -197,17 +197,17 @@ As you build out your nonproduction and production environments, you might inadv
 
 #### &#10003; Optimize licenses and other static costs
 
-As you deploy cloud resources, be strategic in purchasing licenses and other static monthly costs, like server and database licensing, software licensing, and pre-purchased reservations. Considerations include:
+As you deploy cloud resources, be strategic in purchasing licenses and other static monthly costs, like server and database licensing, software licensing, and prepurchased reservations. Considerations include:
 
-- Research your options for applying existing licenses to systems that you are migrating into the cloud or for new deployments in the cloud, like [Azure Hybrid Benefit](https://azure.microsoft.com/en-us/pricing/hybrid-benefit). Research any volume licensing or enterprise agreements that your organization already maintains to leverage possible cost savings on cloud resources or software licensing.
+- Research your options for applying existing licenses to systems that you are migrating into the cloud or for new deployments in the cloud, like [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit). Research any volume licensing or enterprise agreements that your organization already maintains to leverage possible cost savings on cloud resources or software licensing.
 - Use nonproduction and dev/test licensing for applicable systems, like Visual Studio Dev/Test licenses.
-- Pre-purchase capacity for cloud resources when practical. Reserving capacity can signicantly lower your monthy utilization costs, and help keep your costs more consistent month-to-month.
+- Prepurchase capacity for cloud resources when practical. Reserving capacity can significantly lower your monthly utilization costs and help keep your costs more consistent month-to-month.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: When purchasing reservations, be sure that it is the most cost-effective model for your use case. For example, if a given resource can be scaled down nightly or seasonally, it might be more cost effective to intelligently scale that resource. Also, be sure that you've identified the right SKU to pre-purchase through baseline testing and capacity planning.
 
 #### &#10003; Refine autoscaling policies
 
-Your initial scaling policies might be based on your internal development feedback loop - adjusting scaling to meet development needs. As you work towards production readiness, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on the many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for simpler workloads with non-critical flows, the unit of scale could simple be based on the number of compute instances of a given SKU that is allocated to the workload. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
+Your initial scaling policies might be based on your internal development feedback loop - adjusting scaling to meet development needs. As your workload evolves, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for simpler workloads with non-critical flows, the unit of scale could simply be based on the number of compute instances of a given SKU that is allocated to the workload. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
 
 #### &#10003; Optimize your data estate
 
@@ -224,7 +224,7 @@ Data is a primary driver of cloud costs and proper data management can help you 
 
 #### &#10003; Optimize code, software development practices, and feature development strategies
 
-Inefficient code can lead to inefficient system performance, which can mean higher costs for resource utilization. Opimizing your code can help your workload become more efficient, hanlding more load without needing to scale up your resources. Strategies to opimize code include:
+Inefficient code can lead to inefficient system performance, which can mean higher costs for resource utilization. Optimizing your code can help your workload become more efficient, handling more load without needing to scale up your resources. Strategies to optimize code include:
 
 - Analyze runtime data, measure performance with profiling tools, evaluate business logic and user impact, and review language-specific performance recommendations.
 - Optimize by removing unnecessary function calls, minimizing logging, refining loops and conditionals, reducing data processing, minimizing network requests and memory allocations, and assessing cross-cutting implementations.
