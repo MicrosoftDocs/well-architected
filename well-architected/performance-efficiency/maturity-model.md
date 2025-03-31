@@ -126,11 +126,19 @@ As part of your performance monitoring strategy, ensure that you specifically mo
 
 Regularly review internal and external user feedback on performance and evaluate whether your targets meet expectations. Explore using customer satisfaction polling, comment systems, and targeted user testing to gather useful feedback.
 
+When practical for your workload, consider using a Real User Monitoring (RUM) approach. This approach can help you determine whether the user experience is meeting your expectations for performance. [Azure Monitor Application Insights](/azure/azure-monitor/app/javascript-sdk) and [Azure Traffic Manager](/azure/azure-monitor/app/javascript-sdk) offer functionality for capturing RUM data for websites.
+
+When practical for your workload, consider using a Real User Monitoring approach. 
+
+When appropriate for your workload, consider a Real User Monitoring approach. This approach 
+
 #### &#10003; Intelligently perform performance analysis and capacity planning
 
-Monitor performance using metrics based on your targets to ensure that the workload meets performance targets and business goals. Compare your metrics with user and business feedback to ensure that you're capture useful and relevant data. Capture business metrics in a separate data stream for flexibility and independent analysis, even if they overlap with performance data. This practice gets stakeholders the information they need to make well-informed decisions without unnecessary confusion.
+Track your app's performance using metrics that match your goals and targets. Compare the metrics against what user and business stakeholder feedback to ensure you're collecting the right data. Keep business-related metrics separate from performance data for easier analysis, even if some overlap exists. This helps everyone understand the data and make smart decisions.
 
-Monitoring and trend analysis also helps inform your capacity planning. Adjust predictive capacity models to meet workload goals and demands, ensuring adequate resource provisioning. Adopt a business-driven decision-making mindset for capcity planning by engaging with stakeholders to understand requirements and align plans with service provider SLAs.
+Analyzing trends also helps you plan for how much capacity you'll need. Update your predictions to match the workload goals and user demand, so you always have enough resources. Regularly review your cloud providers SLAs to ensure that you'll be able to add resources as needed without running into service limits.
+
+As you evolve your capacity planning, work closely with business decision-makers to stay aligned with business goals.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh performance capacity planning against your reliability and budget requirements. Engage with stakeholders to find compromises between these considerations when there are conflicting requirements.
 
@@ -141,14 +149,14 @@ Employ advanced scaling techniques to optimize your resource utilization. Adjust
 #### &#10003; Optimize data management 
 Inefficiencies in data management can cause performance issues across your workload. Use these strategies to optimize your data estate.
 
-- Divide large datasets or workloads into smaller parts called partitions for separate storage or processing. This enables parallel processing, reduces contention, and improves resource use and processing times. It also distributes data across multiple storage devices, reducing individual load and enhancing overall performance. Align partitioning types with use cases: partitioning can be horizontal, vertical, or functional.
+- Divide large datasets or workloads into smaller parts called partitions for separate storage or processing. This enables parallel processing, reduces contention, and improves resource use and processing times. It also distributes data across multiple storage devices, reducing individual load and enhancing overall performance. Align partitioning types with use cases: partitioning can be horizontal, vertical, or functional. Review the [Performance Efficiency design patterns](./design-patterns.md) to learn about design patterns that use partitioning.
 - Optimize queries using tooling like [Query Performance Insight for Azure SQL Database](/azure/azure-sql/database/query-performance-insight-use).
 - Ensure your data model suits your workload, considering normalization, indexing, and partitioning.
 - Align storage infrastructure with workload requirements, optimizing settings like buffer size and caching.
 
 #### &#10003; Design and run performance tests and establish a performance baseline
 
-Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that aligns with targets.
+Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that aligns with targets. Review the [performance testing](./performance-test.md) article for detailed guidance.
 
 Ensure that test environments closely emulate the production environment.
 
@@ -158,7 +166,7 @@ Review test results to identify bottlenecks and other inefficiencies and compare
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that production data is cleansed of sensitive data before copying it into test environments if you need to use production data. Use synthetic data when practical.
 
-Another critical testing function is to build your performance baseline. Baselines provide reference points for comparing performance over time. Identify performance metrics and use these as baseline metrics.  Evaluate future performance against these baselines to identify improvements or degradation.
+Another critical testing function is to build your performance baseline. Baselines provide reference points for comparing performance over time. Identify performance metrics and use these as baseline metrics.  Evaluate future performance against these baselines to identify improvements or degradation. Regularly review and update baselines to capture updated design elements and features. Outdated baselines can lead to unrealistic and unachievable targets as the workload matures and new features are added.
 
 #### &#10003; Adopt a business-driven mindset to drive performance efficiency
 
