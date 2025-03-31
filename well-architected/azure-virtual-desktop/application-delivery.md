@@ -1,8 +1,8 @@
 ---
 title: Application Delivery Considerations for Azure Virtual Desktop Workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
-author: jcoyne-MSFT
-ms.author: jessecoyne
+author: roarrioj
+ms.author: roarrioj
 ms.date: 01/30/2025
 ms.topic: conceptual
 ms.service: azure-waf
