@@ -170,7 +170,7 @@ Level 3 of the Cost Optimization pillar focuses on making your workload producti
 
 #### &#10003; Invest in impactful flows and fine-tune others
 
-Reflect on your flow ratings and prioritize development efforts on critical and valuable flows, while looking for ways to fine-tune non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
+Reflect on the priorities assigned to you application flows and prioritize development efforts on critical flows, while looking for ways to simplify and reduce the cost of non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
 
 For each flow, eliminate unnecessary elements, choose appropriate performance tiers, adjust scaling settings for variable demand, and fine-tune configurations to align with performance and budget needs. Monitor flows to identify inefficiencies such as idle compute instances, unused data, and low network bandwidth. Use native logging and analysis tools to help aggregate and analyze these metrics for trends.
 
@@ -193,7 +193,7 @@ As you build out your nonproduction and production environments, you might inadv
 - Review nonproduction and production environments for unused resources that can safely be shutdown or deleted.
 - Take advantage of tools provided by your cloud platform that help identify resource optimizations. For example, Azure Advisor offers [cost optimization recommendations](/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations) highlighting potential inefficiencies and steps to address them.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Ensure that performance and reliability targets are requirments are considered when making any adjustments to your resources. Engage with stakeholders when compromises can be made to balance performance, reliability, and costs, or when budget requirments are an obstacle to workload enhancements.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Ensure that performance and reliability targets requirements are considered when making adjustments to your resources. Engage with stakeholders when compromises can be made to balance performance, reliability, and costs, or when budget requirements are an obstacle to workload enhancements.
 
 #### &#10003; Optimize licenses and other static costs
 
@@ -207,7 +207,7 @@ As you deploy cloud resources, be strategic in purchasing licenses and other sta
 
 #### &#10003; Refine autoscaling policies
 
-Your initial scaling policies might be based on your intternal development feedback loop - adjusting scaling to meet development needs. As you work towards production readiness, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on the many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for workloads with non-critical flows, units of scale might be moving from one SKU to another for individual components. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
+Your initial scaling policies might be based on your internal development feedback loop - adjusting scaling to meet development needs. As you work towards production readiness, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on the many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for simpler workloads with non-critical flows, the unit of scale could simple be based on the number of compute instances of a given SKU that is allocated to the workload. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
 
 #### &#10003; Optimize your data estate
 
@@ -216,7 +216,7 @@ Data is a primary driver of cloud costs and proper data management can help you 
 - Classify and label data to apply appropriate controls and determine the appropriate levels of reliability and performance for different data types and stores.
 - Capture only essential data, compress data for colder storage, delete unneeded data with proper retention policies, deduplicate to eliminate redundant data, and educate users on efficient data storage practices.
 - Optimize backups by using incremental backups, enabling compression, and moving older backups to cold storage.
-- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on nonfunctional requirements. Continously evaluate your requirements and configuration.
+- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on your requirements. Continously evaluate your requirements and configuration.
 - Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
 - Use tooling to help optimize queries.
 
