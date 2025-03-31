@@ -57,7 +57,7 @@ its relevance to your business requirements while keeping in mind the tiers and 
 > - **Evaluate gateway capabilities for reliability and redundancy**: Decide on the API Management [tier and features](/azure/api-management/api-management-features) that are needed to meet the workload's reliability requirements, per environment.
 >
 >    Evaluate gateway redundancy features including availability zones, multiple gateway units, multiple regions, and workspaces, all of which are supported in the Premium tier. The Developer tier, which is not backed by SLA, should not be considered for production workloads Also consider tradeoffs of adopting features such as external caching that can introduce potential points of failure and/or performance bottlenecks.
-
+>
 > - **Review observability capabilities** Understand the service's [observability capabilities](/azure/api-management/observability), including Azure Monitor logs and metrics, Application Insights, built-in analytics, and built-in diagnostics. You'll use them to monitor your workload's reliability signals.
 > 
 >   For example, consider using [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to notify you of potential issues with the API Management gateway or its dependencies.
@@ -141,7 +141,7 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 > [!div class="checklist"]
 >
 > - **Understand API Management’s cost model**: Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), along with the organization’s account benefits and the organization’s criteria for SLA and scalability, to develop accurate cost estimates of using an API Management service tier. Decide whether a charge-back model is needed and how it will be calculated (using metrics, tags, tokens, and so on).  
-  
+>
 >   The service cost model is mainly influenced by the service tier, number of units, and number of gateways. Evaluate extra costs of maintaining reserve unit or an active-passive disaster recovery configuration.
 >
 >   If implementing [workspaces](/azure/api-management/workspaces-overview), evaluate the costs of implementing separate versus shared workspace gateways to manage distinct API flow needs of different API teams or stakeholders. 
@@ -179,8 +179,6 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Review key knowledge and skills needed to operate the service**: Areas include API lifecycle, DevOps processes, networking and connectivity, monitoring and observability, and software development (for policy configuration, unit testing, and CI/CD pipelines).
 >
 > - **Understand documentation needs**: Organization should commit to to documenting processes for service-level and API-level configuration, lifecycle operations, and the different access patterns for API teams.
->
-Suggested change
 > - **Evaluate standard tooling** to support operation of service: For example, implement [ApiOps](/azure/api-management/devops-api-development-templates) (DevOps and CI/CD to publish APIs) methods for API management and infrastructure-as-code tooling for service-level configuration changes. Design artifacts for reuse from development environments up to production. Consider use of linter such as Spectral in API approval pipelines.  
 > - **Evaluate standard tooling** to support operation of service: For example, implement [APIOps](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops) (GitOps and CI/CD to publish APIs) methods for API management and infrastructure-as-code tooling for service-level configuration changes. Design artifacts for reuse from development environments up to production. Consider use of linter such as [Spectral](https://stoplight.io/open-source/spectral) in API approval pipelines.
 >
