@@ -129,33 +129,31 @@ For more information, see [Recommendations for optimizing scaling costs](../cost
 ## Application groups
 
 You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops that a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner. 
+You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops that a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner, improving both security and user experience. 
 
 The two types of application groups in Virtual Desktop include: 
 
-- **Desktop application groups:** Users access the full Windows desktop from a session host. Pooled or personal host pools support desktop application groups. 
-
-- **RemoteApp application groups:** Users access individual applications that you select and publish to the application group. Pooled host pools support RemoteApp application groups. 
-
-When you use pooled host pools, you can assign both application group types to the same host pool at the same time. You can only assign a single desktop application group to each host pool. But you can assign multiple RemoteApp application groups to the same host pool. 
-
-Users that you assign to multiple RemoteApp application groups in the same host pool can access an aggregate of all the applications in their assigned application groups. 
-
-#### Recommendations
+Users that you assign to multiple RemoteApp application groups in the same host
 
 | Recommendation | Benefit |
 |---|---|
 | Tailor each Virtual Desktop application group to specific user roles or departments. For example, you might create separate application groups for finance, HR, and IT. | Custom application groups help meet business needs effectively. Each application group contains only the applications necessary for their respective workflows. |
+| Tailor each Virtual Desktop application group to specific user roles or departments. For example, you might create separate application groups for finance, HR, and IT. | Improves operational efficiency by showing only relevant applications to each user, reducing complexity and streamlining the workspace. Enhances security by enforcing least-privilege access, reducing the risk of data exposure and operational errors. |
+| Assign users to Application Groups using Microsoft Entra ID security groups instead of assigning directly.| Simplifies user management and ensures consistency.|
+| Set a session limit on each application group to prevent overloading. Keep the number of apps in a RAG below 50.| Minimizes session load and enhances overall performance.|
+| Enable Log Analytics to monitor user sessions, application performance, and connection health.| Improves troubleshooting and helps identify performance bottlenecks.|
 | Develop a criticality scale from 1 to 5 based on business requirements. For example: <br><br>  - *Level 5:* Applications that are essential to business continuity, such as accounting software <br> - *Level 3:* Noncritical but important tools, such as document editing software <br> - *Level 1:* Optional or infrequently used applications | A criticality scale helps you prioritize maintenance, updates, and availability for application groups. |
 | Assign higher priority to application groups that support business-critical operations. Host those application groups on reliable or redundant infrastructure. <br><br> For example, if you rate your finance department's application group a 5 (critical), assign the application group to host pools that have high-availability configurations and fault tolerance, such as availability zones or Azure Premium SSD storage. | TBD |
 | Establish reliability targets for application groups that support business-critical applications. For example, you can define the uptime, such as 99.9% SLA, and recovery time objectives (RTOs). | TBD |
+| Assign higher priority to application groups that support business-critical operations. Host those application groups on reliable or redundant infrastructure. <br><br> For example, if you rate your finance department's application group a 5 (critical), assign the application group to host pools that have high-availability configurations and fault tolerance, such as availability zones or Azure Premium SSD storage. | Ensures high availability and fault tolerance for critical applications, reducing downtime and improving business continuity.|
+| Establish reliability targets for application groups that support business-critical applications. For example, you can define the uptime, such as 99.9% SLA, and recovery time objectives (RTOs). | Ensures consistent service availability and faster recovery in case of failures. Establishing clear reliability targets helps set user expectations, improve operational planning, and enhance business continuity by minimizing downtime and disruption.|
 | Use Azure Site Recovery and Azure Backup for recovery purposes. You can define the RTO and recovery point objectives (RPOs) in Azure Backup policies. | TBD|
 | Assign sensitivity labels to each application group based on the type of data processed and the criticality of the applications. <br><br> For example, for an application group that handles financial data, assign a *Confidential* label. For an application group that has general administrative tools, assign a *General* label. | This practice helps ensure that sensitive applications have higher levels of security and access control. |
 | Use Azure Key Vault to securely store application secrets, such as API keys and database credentials, that the applications in application groups use. Ensure that you encrypt secrets to help protect them from unauthorized access. | TBD |
+| Use Azure Key Vault to securely store application secrets, such as API keys and database credentials, that the applications in application groups use. Ensure that you encrypt secrets to help protect them from unauthorized access. |Enhances security by centralizing secret management and encryption. Reduces the risk of credential exposure, simplifies credential rotation, and improves compliance with security policies.|
 | Track and monitor the usage patterns of application groups. | This approach helps you identify unused or underused application groups. Use this data to determine when to deallocate resources, which reduces cost. |
 | Resize or reduce the number of active VMs that support application groups based on usage patterns. | This practice minimizes the cost of overprovisioned resources. | 
 | Take advantage of IaC tools, like Azure Resource Manager templates (ARM templates), Bicep, or Terraform. <br><br> For example, you can define a declarative ARM template that provisions a host pool, assigns session hosts, and configures application groups with specific application assignments and policies. | This approach standardizes the deployment and configuration of host pools and application groups. You can create deployments that are repeatable, scalable, and consistent across environments. |
-| Define performance targets for session responsiveness in application groups, such as sign-in times, session latency, and application launch times. <br><br> For example, you might establish a target for users to sign in to their sessions within 30 seconds and experience a session latency of less than 150 milliseconds. <br><br> Use Azure Monitor to track these metrics and set up alerts if performance deviates from the defined targets. | Performance targets help ensure that users have a smooth and responsive experience. You can identify and address performance problems before they significantly affect users. |
-| Choose VM sizes and performance tiers in host pools that align with the performance targets of your application groups. Consider factors like resource usage, expected demand fluctuations, and the number of users per session host. <br><br> Use the [session host VM sizing guidelines](/windows-server/remote/remote-desktop-services/virtual-machine-recs). | Appropriate VM sizes and performance tiers optimize resource usage, which reduces waste and cost and improves overall system efficiency. <br><br> Guidelines help you allocate resources effectively for various user workloads in your host pools. |
 
 ## Session host settings
 
