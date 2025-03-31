@@ -133,7 +133,12 @@ You can use application groups in Virtual Desktop to manage and publish a set of
 
 The two types of application groups in Virtual Desktop include: 
 
-Users that you assign to multiple RemoteApp application groups in the same host
+- **Desktop application groups:** Users access the full Windows desktop from a session host. Pooled or personal host pools support desktop application groups. 
+
+- **RemoteApp application groups:** Users access individual applications that you select and publish to the application group. Pooled host pools support RemoteApp application groups. 
+
+When you use pooled host pools, you can assign both application group types to the same host pool at the same time. You can only assign a single desktop application group to each host pool. But you can assign multiple RemoteApp application groups to the same host pool. 
+
 
 | Recommendation | Benefit |
 |---|---|
