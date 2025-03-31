@@ -128,10 +128,6 @@ Regularly review internal and external user feedback on performance and evaluate
 
 When practical for your workload, consider using a Real User Monitoring (RUM) approach. This approach can help you determine whether the user experience is meeting your expectations for performance. [Azure Monitor Application Insights](/azure/azure-monitor/app/javascript-sdk) and [Azure Traffic Manager](/azure/azure-monitor/app/javascript-sdk) offer functionality for capturing RUM data for websites.
 
-When practical for your workload, consider using a Real User Monitoring approach. 
-
-When appropriate for your workload, consider a Real User Monitoring approach. This approach 
-
 #### &#10003; Intelligently perform performance analysis and capacity planning
 
 Track your app's performance using metrics that match your goals and targets. Compare the metrics against what user and business stakeholder feedback to ensure you're collecting the right data. Keep business-related metrics separate from performance data for easier analysis, even if some overlap exists. This helps everyone understand the data and make smart decisions.
