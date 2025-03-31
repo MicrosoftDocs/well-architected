@@ -4,7 +4,7 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: dlepow
 ms.author: danlep
 ms.topic: conceptual
-ms.date: 03/21/2025
+ms.date: 03/31/2025
 ms.subservice: waf-service-guide
 products:
  - azure-api-management
@@ -14,7 +14,7 @@ azure.category:
 
 # Architecture best practices for Azure API Management
 
-Azure API Management is a hybrid, multicloud management platform for APIs across all environments. As a platform-as-a-service, API Management supports the complete API lifecycle.  
+Azure API Management is a management platform and gateway for APIs across all environments, including hybrid and multicloud. As a platform-as-a-service, API Management helps support your workload's API lifecycle.
 
 This article assumes that as an architect, you've reviewed the [integration services decision tree](/azure/logic-apps/azure-integration-services-choose-capabilities) and chosen Azure API Management as the integration service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the Well-Architected Framework pillars. 
 
@@ -26,18 +26,18 @@ This article assumes that as an architect, you've reviewed the [integration serv
 areas of concern along with design strategies localized to the technology
 scope.
 >
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for API Management and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for API Management or the application platform servers. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations:
-> [Azure API Management Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/app-platform/api-management/landing-zone-accelerator#design-guidelines).
+> [Azure API Management landing zone architecture](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function).
 
 
 **Technology scope**
 
-**The scope of this guide is the API Management service, primarily the gateway component (data plane)** which is used to proxy API requests from client applications to backend service hosted in various locations. However, the architecture of the system or solution includes the API Management control plane, components such as the client apps accessing the gateway and the backend APIs that the gateway routes requests to, and supporting Azure services for networking, monitoring, identity management, and other capabilities. 
+**The scope of this guide is the API Management service, primarily the gateway component (data plane)** which is used to proxy API requests from client applications to backend APIs hosted in application platforms or locations. However, the architecture of the workload must consider the API Management control plane, components such as the client apps accessing the gateway and the backend APIs that the gateway routes requests to, and supporting Azure services for networking, monitoring, identity management, and other capabilities.
 
 > [!NOTE]
-> Not all recommendations apply to all [service tiers](/azure/api-management/api-management-features) of API Management. Many recommendations in this guide focus on the Premium tier of API Management, which is the most feature-rich tier.
+> Not all recommendations apply to all [service tiers](/azure/api-management/api-management-features) of API Management. Many recommendations in this guide focus on the Premium tier of API Management, which is the recommended production tier for most enterprise workloads.
 
 ## Reliability
 
@@ -49,28 +49,30 @@ system flows, and the system as a whole.
 
 ### Design checklist
 
-Start your design strategy based on the
-[design review checklist for Reliability](../reliability/checklist.md). Determine
-its relevance to your business requirements while keeping in mind the
-tiers and features of API Management and its dependencies. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine
+its relevance to your business requirements while keeping in mind the tiers and features of API Management and its dependencies. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> - **Evaluate gateway capabilities for reliability and redundancy**: Decide on the API Management [tier and features](/azure/api-management/api-management-features) that are needed to meet the workload's reliability requirements. Evaluate gateway redundancy features including availability zones, multiple gateway units, multiple regions, and workspaces, all of which are supported in the Premium tier. The Developer tier, which is not backed by SLA, should not be considered for production workloads Also consider tradeoffs of adopting features such as external caching that can introduce potential points of failure and/or performance bottlenecks. 
+> - **Evaluate gateway capabilities for reliability and redundancy**: Decide on the API Management [tier and features](/azure/api-management/api-management-features) that are needed to meet the workload's reliability requirements, per environment.
 >
-> - **Review observability capabilities** Understand the service's [observability capabilities](/azure/api-management/observability) - including Azure Monitor logs and metrics, Application Insights, built-in analytics, and built-in diagnostics - and how you to use them to meet your workload's reliability requirements. For example, consider using [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to notify you of potential issues with the API Management gateway or its dependencies.  
->
-> - **Review scaling strategies**: Define criteria for [scaling out](/azure/api-management/upgrade-and-scale) the gateway by adding units to maintain service reliability. Consider whether to scale based on requests and/or exceptions. Consider whether other components of the solution (for example, network address spaces and backends) need to scale.  
+>    Evaluate gateway redundancy features including availability zones, multiple gateway units, multiple regions, and workspaces, all of which are supported in the Premium tier. The Developer tier, which is not backed by SLA, should not be considered for production workloads Also consider tradeoffs of adopting features such as external caching that can introduce potential points of failure and/or performance bottlenecks.
+
+> - **Review observability capabilities** Understand the service's [observability capabilities](/azure/api-management/observability), including Azure Monitor logs and metrics, Application Insights, built-in analytics, and built-in diagnostics. You'll use them to monitor your workload's reliability signals.
 > 
-> - **Design to handle critical workloads**: Decide when to use dedicated gateways (for example, a dedicated [workspace gateway](/azure/api-management/workspaces-overview) or a separate API Management instance) for critical APIs to ensure high availability and performance, or other critical considerations such as data sovereignty. Shared gateways can be used for less critical APIs to optimize resource usage. If multiple API Management instances are needed for mission-critical workloads, customers should plan their own solutions to keep the environments synchronized. 
-> 
-> - **SLO alignment**: Factor in the gateway's SLA scope when setting your workload's SLOs. Use monitoring tools such as alerting on [gateway metrics](/azure/api-management/monitor-api-management-reference#metrics) (Capacity in classic tiers, CPU and memory % of gateway metrics in v2 tiers) , diagnostics, and Application Insights to ensure the gateway meets required objectives. The service provides its own SLA and customer is responsible for SLAs on other components such as API backends. 
-> 
-> - **Decide on backend fault tolerance**: Plan for unexpected backend failures and test client experiences in such scenarios. Evaluate gateway [policies](/azure/api-management/api-management-policies) for quotas, rate limits, retry policies, backend circuit breakers and load balancing, and exception handling to improve system resiliency. However, customer should decide on the resiliency of the backends because the APIM gateway can't be used for all backend fault tolerance. 
+>   For example, consider using [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to notify you of potential issues with the API Management gateway or its dependencies.
 >
-> - **Define testing strategies**: Plan to use a testing solution such as Azure Load Testing to reflect actual production workloads. Don't rely on published throughput or other estimates which might not apply to your project.  
+> - **Review scaling strategies**: Define criteria for [scaling out](/azure/api-management/upgrade-and-scale) the gateway by adding units to maintain service reliability. Consider whether to scale based on requests and/or exceptions. Consider the relationship between the scaling of the gateway component relative to other components of the solution such as network address space and the scale capabilities of the backends.
+> 
+> - **Isolate critical workloads**: Decide when to bulkhead your workload by using dedicated gateways (for example, a dedicated [workspace gateway](/azure/api-management/workspaces-overview) or a separate API Management instance) for critical APIs to ensure high availability and performance, or other critical considerations such as data sovereignty. Gateways sharing APIs can be used for less critical APIs to optimize resource usage. If multiple API Management instances are needed for mission-critical workloads, you will need to plan on how to keep the environments synchronized as part of your safe deployment practices.
+> 
+> - **SLO alignment**: Factor in the gateway's SLA scope when setting your workload's SLOs. The service provides its own SLA for you to consider, but you'll need to factor in the anticipated reliability of other workload components such as the API backends.
+> 
+> - **Address backend faults**: Plan for both expected and unexpected backend faults. Test client experiences in such scenarios. Evaluate gateway [policies](/azure/api-management/api-management-policies) for quotas, rate limits, retry policies, backend circuit breakers and load balancing, and exception handling to improve resiliency and client experience as documented in your API specifications.
 >
-> - **Plan for disaster recovery**: Review options for backing up and restoring the gateway infrastructure and APIs. While built-in [backup and restore capabilities](/azure/api-management/api-management-howto-disaster-recovery-backup-restore) may be useful in some cases, customer-managed options such as ApiOps tooling and infrastructure-as-code solutions may be sufficient. Develop strategies for maintaining other system data such as user subscriptions. Active/passive or active/active configurations can also be considered, although there are tradeoffs for costs and complexity. 
+> - **Define testing strategies**: Plan to use a testing solution such as Azure Load Testing to reflect actual production workloads. Don't rely on published throughput or other estimates which might not apply to your workload.  
+>
+> - **Plan for disaster recovery**: Review options for backing up and restoring the gateway infrastructure and APIs. While built-in [backup and restore capabilities](/azure/api-management/api-management-howto-disaster-recovery-backup-restore) might be useful in some cases, customer-managed options such as ApiOps tooling and infrastructure-as-code solutions can also be considered. Develop strategies for maintaining other system data such as user subscriptions. Active/passive or active/active configurations can also be considered, although there are tradeoffs for costs and complexity.
 
 <!-- For example, consider whether the API Management services could be sensitive to changes from Azure-side updates and plan canary environments to detect changes before mission-critical systems are affected. --> 
 
@@ -86,11 +88,13 @@ tiers and features of API Management and its dependencies. Extend the strategy t
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-* The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design in protecting the API Management gateway.
-*  The [security baseline for API Management](/security/benchmark/azure/baselines/api-management-security-baseline) applies guidance from the [Microsoft cloud security benchmark version 1.0](/security/benchmark/azure/overview) to API Management. 
+- The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design in protecting the API Management gateway.
+- The [security baseline for API Management](/security/benchmark/azure/baselines/api-management-security-baseline) applies guidance from the [Microsoft cloud security benchmark version 1.0](/security/benchmark/azure/overview).
 
 > [!NOTE]
-> The checklist and recommendations in this section are focused on securing the API Management gateway. For more recommendations to mitigate API security threats with Azure API Management, see [Mitigate OWASP API security top 10 in Azure API Management](/azure/api-management/mitigate-owasp-api-threats).
+> The checklist and recommendations in this section are focused on securing the API Management gateway resource. Securing the APIs themselves is only lightly addressed.
+>
+> For more recommendations to mitigate API traffic security threats with Azure API Management, see [Mitigate OWASP API security top 10 in Azure API Management](/azure/api-management/mitigate-owasp-api-threats) and always use a [Web Application Firewall](/azure/web-application-firewall/overview) in production.
 
 
 ### Design checklist
@@ -98,21 +102,22 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> - **Develop a change management plan**:  Identify the individuals and RBAC roles that are required to manage the service platform and CI/CD pipelines. Ensure that only authorized individuals have access to manage the service.  
 >
-> - **Evaluate data sensitivity**: If sensitive data could pass in API requests to and responses from the API Management gateway, develop strategies to protect it consistently throughout its lifecycle, and pay attention to data protection requirements in different regions. Evaluate service features such as [multiple regions](/azure/api-management/api-management-howto-deploy-multi-region)  to isolate certain data, and whether caching strategy is aligned.  
+> - **Protect the deployment pipeline**:  Identify the individuals and RBAC roles that are required to manage the service platform, CI/CD pipelines, and the individual APIs. Ensure that only authorized individuals have access to manage the service and its APIs.
 >
-> - **Develop segmentation strategies**: If needed in your organization, segregate roles and networks (and possibly gateways) using [workspaces](/azure/api-management/workspaces-overview) so that different teams have appropriate access and control to APIs they manage.  
+> - **Evaluate data sensitivity**: If sensitive data will pass in API requests to and responses from the API Management gateway, develop strategies to protect it consistently throughout its lifecycle, and pay attention to data protection requirements in different regions. Evaluate service features such as [multiple regions](/azure/api-management/api-management-howto-deploy-multi-region)  to isolate certain data, and whether caching strategy is aligned.  
+>
+> - **Develop segmentation strategies on shared gateways**: If your gateway is going to host APIs from multiple workload teams, segregate roles and networks (and possibly gateways) using [workspaces](/azure/api-management/workspaces-overview) so that different teams have appropriate access and control to APIs they manage and cannot access or control other APIs.
 >
 > - **Understand network controls**: Identify requirements and options for isolating or filtering inbound and/or outbound gateway traffic using [virtual networks](/azure/api-management/virtual-network-concepts). Can access to the gateway be restricted through Private Link, or is public access to the gateway required? Does architecture need to include a web application firewall such as Application Gateway or Azure Front Door to accomplish the required network isolation and to filter network traffic?  
 >
-> - **Understand capabilities for authentication and authorization**: Evaluate use of identity providers such as [Microsoft Entra ID](/azure/api-management/api-management-howto-protect-backend-with-aad) (with built-in groups) or [Azure AD B2C](/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c) to screen gateway requests and for OAuth authorization to backend APIs.  
+> - **Understand capabilities for API authentication and authorization**: Evaluate use of identity providers such as [Microsoft Entra ID](/azure/api-management/api-management-howto-protect-backend-with-aad) (with built-in groups) or [Microsoft Entra External ID](/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c) to screen gateway requests and for OAuth authorization to backend APIs.
 > 
-> - **Encrypt network traffic** - Identify the most secure TLS [protocol versions and ciphers](/azure/api-management/api-management-howto-manage-protocols-ciphers) that your workloads will support; don't require insecure TLS versions.  
+> - **Encrypt network traffic** - Identify the most secure TLS [protocol versions and ciphers](/azure/api-management/api-management-howto-manage-protocols-ciphers) that your workloads will support; don't require insecure TLS versions.
 >
-> - **Evaluate service’s attack surface**: Can certain API Management components be disabled, limited, or removed (such as direct management API, public access to developer portal)?
+> - **Perform threat modeling on API Management and reduce its surface area**: Can certain API Management components be disabled, limited, or removed such as, the direct management API or public access to developer portal?
 >
-> - **Identify secrets required by workloads**: Gateway operation may require certificates, API  keys, or other secret values. Review requirements and capabilities of Azure Key Vault to store secrets/certificates, or built-in API Management capabilities such as [named values](/azure/api-management/api-management-howto-properties) and [managed certificates](/azure/api-management/configure-custom-domain#domain-certificate-options). 
+> - **Identify secrets required by workloads**: Gateway operation may require certificates, API  keys, or other secret values. Review requirements and capabilities of Azure Key Vault to store secrets/certificates, or built-in API Management capabilities such as [named values](/azure/api-management/api-management-howto-properties) and [managed certificates](/azure/api-management/configure-custom-domain#domain-certificate-options).
 
 
 ### Recommendations
@@ -137,13 +142,17 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 >
 > - **Understand API Management’s cost model**: Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), along with the organization’s account benefits and the organization’s criteria for SLA and scalability, to develop accurate cost estimates of using an API Management service tier. Decide whether a charge-back model is needed and how it will be calculated (using metrics, tags, tokens, and so on).  
   
-  The service cost model is mainly influenced by the service tier, number of units, and number of gateways. Evaluate extra costs of maintaining reserve unit or an active-passive DR configuration if that is implemented. 
-    
-  If implementing [workspaces](/azure/api-management/workspaces-overview), evaluate the costs of implementing separate versus shared workspace gateways to manage distinct API flow needs of different API teams or stakeholders. 
+>   The service cost model is mainly influenced by the service tier, number of units, and number of gateways. Evaluate extra costs of maintaining reserve unit or an active-passive disaster recovery configuration.
 >
-> - **Estimate scaling costs**: Develop scaling criteria to maintain high utilization and reliability of resources (see [Reliability](#reliability) pillar). Evaluate baseline costs in a pre-production environment and perform testing to model costs of scaling.
+>   If implementing [workspaces](/azure/api-management/workspaces-overview), evaluate the costs of implementing separate versus shared workspace gateways to manage distinct API flow needs of different API teams or stakeholders. 
 >
-> - **Evaluate service configurations and policies** such as [rate-limit](/azure/api-management/rate-limit-policy) and [limit-concurrency](/azure/api-management/limit-concurrency-policy) to manage request loads. Understand opportunity costs of insufficient capacity. 
+> - **Estimate scaling costs**: Develop scaling criteria to maintain high utilization of the gateway resources. Evaluate baseline costs in a pre-production environment and perform testing to model costs of scaling out based on anticipated workload traffic.
+>
+>   Design a mitigation strategy to prevent abuse of your gateways which might cause expensive scaling beyond predicated usage.
+>
+> - **Evaluate service configurations and policies** such as [rate-limit](/azure/api-management/rate-limit-policy) and [limit-concurrency](/azure/api-management/limit-concurrency-policy) to manage request loads. Understand opportunity costs of insufficient capacity.
+>
+> - **Optimize logic placement** by evaluating if backend servers can more cost effectively handle the processing logic or if the gateway should incur the resource usage. While a gateway is an ideal place to handle cross cutting concerns, an optimization investigation on resource-heavy request processing tasks could result in a decision to avoid the don't repeat yourself (DRY) principal to help save operating costs by moving that logic to the backends.
 
 ### Recommendations
 
@@ -167,17 +176,19 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Review key knowledge and skills needed to operate the service**: Areas include API lifecycle, DevOps processes, networking and connectivity, monitoring and observability, and software development (for policy configuration, unit testing, and CI/CD pipelines).  
+> - **Review key knowledge and skills needed to operate the service**: Areas include API lifecycle, DevOps processes, networking and connectivity, monitoring and observability, and software development (for policy configuration, unit testing, and CI/CD pipelines).
 >
-> - **Understand documentation needs**: Organization should commit to to documenting processes for service-level and API-level configuration and maintenance and, if workspaces are adopted, the different levels of access for platform team and API teams.  
+> - **Understand documentation needs**: Organization should commit to to documenting processes for service-level and API-level configuration, lifecycle operations, and the different access patterns for API teams.
 >
+Suggested change
 > - **Evaluate standard tooling** to support operation of service: For example, implement [ApiOps](/azure/api-management/devops-api-development-templates) (DevOps and CI/CD to publish APIs) methods for API management and infrastructure-as-code tooling for service-level configuration changes. Design artifacts for reuse from development environments up to production. Consider use of linter such as Spectral in API approval pipelines.  
+> - **Evaluate standard tooling** to support operation of service: For example, implement [APIOps](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops) (GitOps and CI/CD to publish APIs) methods for API management and infrastructure-as-code tooling for service-level configuration changes. Design artifacts for reuse from development environments up to production. Consider use of linter such as [Spectral](https://stoplight.io/open-source/spectral) in API approval pipelines.
 >
-> - **Decide on key operational metrics and logs**: Review the [metrics](/azure/api-management/monitor-api-management-reference#metrics) (such as Capacity, CPU % and memory % of gateway, number of requests), logs, and [observability tools](/azure/api-management/observability) (Azure Monitor, Application Insights, or other tools) that will be used in production. What strategies or tools are needed to process a potentially large amount of observational data in production? What queries will provide the necessary insights?  
+> - **Decide on key operational metrics and logs**: Review the [metrics](/azure/api-management/monitor-api-management-reference#metrics) (such as Capacity, CPU % and memory % of gateway, number of requests), logs, and [observability tools](/azure/api-management/observability) (Azure Monitor, Application Insights, or other tools) that will be used in production. What strategies or tools are needed to process a potentially large amount of observational data in production? What queries will provide the necessary insights to both the gateway operator and those interested in specific hosted APIs??  
 >
 > - **Plan regular testing of production workloads** with Azure Load Testing.
 >
-> - **Identify operational tasks beyond CI/CD or infrastructure as code processes** that require automation: Plan automation in areas such as API Management policy source management, Azure policies, certain developer portal configurations.  
+> - **Identify operational tasks beyond CI/CD or infrastructure as code processes** that require automation: Plan automation in areas such as API Management policy source management, Azure policies, certain developer portal configurations.
 
 
 ### Recommendations
@@ -198,16 +209,15 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Define performance targets**: Key metrics to define performance of the API Management gateway are Capacity (or CPU % or Memory % of Gateway) for utilization of gateway infrastructure, request duration, and request throughput. In multi-region deployments, define performance targets per region. Customer needs to define appropriate scaling thresholds based on traffic patterns, API workloads, and scaling times. 
+> - **Define performance targets**: Key metrics to define performance of the API Management gateway are Capacity (or CPU % or Memory % of Gateway) for utilization of gateway infrastructure, request duration, and request throughput. In multi-region deployments, define performance targets per region. Customer needs to define appropriate scaling thresholds based on traffic patterns, API workloads, and scaling times.
 >
-> - **Collect performance data**: Review capabilities of built-in analytics, Azure Monitor metrics, Azure Monitor logs, Application Insights and Event Hubs to collect and analyze performance at different levels of granularity. 
+> - **Collect performance data**: Review capabilities of built-in analytics, Azure Monitor metrics, Azure Monitor logs, Application Insights and Event Hubs to collect and analyze performance at different levels of granularity.
 >
-> - **Review how to identify live performance issues**: Indicators include Azure service availability, HTTP response errors, and errors raised in **Diagnose and solve problems** blade in the portal. Troubleshoot performance and availability issues using Application Insights, Kusto queries, recommendations from API Management Diagnostics in portal, and remediations surfaced in Defender for Cloud.
+> - **Review how to identify live performance issues**: Indicators include Azure service availability, HTTP response errors, and errors raised in **Diagnose and solve problems** blade in the portal. Troubleshoot performance and availability issues using Application Insights, Kusto queries, recommendations from API Management Diagnostics in the Azure portal.
 >
 > - **Test performance**: Test performance under production conditions using Azure Load Testing.
 >
 > - **Evaluate adjacent services that may improve performance**: Caching policies and/or an external cache may improve performance of certain API operations. Azure Front Door or Application Gateway may be used for TLS offloading
->
 
 ### Recommendations
 
@@ -236,6 +246,7 @@ For more information, see [Azure Advisor](/azure/advisor/).
 
 
 ## Tradeoffs
+
 You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
 
 :::image type="icon" source="../_images/trade-off.svg"::: Security and Cost Optimization
