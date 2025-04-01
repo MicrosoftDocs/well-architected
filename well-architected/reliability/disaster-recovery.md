@@ -121,7 +121,7 @@ Follow these recommendations for successful DR drills:
 
 ### Define and maintain Backup Plans for resources within critical flows
 
-Backup is an important part of your overall recovery process. Oftentimes it is just a part of your environment that needs recovery. DR plans are usually application or even region wide. Accidental or malicious deletion of data, file corruption, malware, and targeted ransomware attacks can all affect the availability of your workload. Having solid backup plans for each part of your environment is just as important as having an effective DR plan. Like your DR plan, backup plans also need to be agreed upon by the appropriate levels of management, revisited regularly for possible updates and documented in a highly available, secure data store.
+Backup is an important part of your overall recovery process. Oftentimes it is just a part of your environment that needs recovery. DR plans are usually application or even region wide. Accidental or malicious deletion of data, file corruption, malware, and targeted ransomware attacks can all affect the availability of your workload. Having solid backup plans for each part of your environment is just as important as having an effective DR plan, as a DR plan depends on a solid backup plan to be effective. Like your DR plan, backup plans also need to be agreed upon by the appropriate levels of management, revisited regularly for possible updates and documented in a highly available, secure data store.
 
 -   Determine appropriate backup solutions for the different Azure services that are part of the critical paths within your workload.
 
