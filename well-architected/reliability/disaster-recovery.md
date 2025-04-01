@@ -49,7 +49,7 @@ Follow these recommendations to develop your DR plan:
 
     -   Disasters are large-scale issues. They might be regional outages, outages of services like Microsoft Entra ID or Azure DNS, or severe malicious attacks like ransomware attacks or DDoS attacks.
 
-    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations. These processes should be addressed using a [Backup Plan](#define-and-maintain-backup-plans-for-resources-within-critical-flows)
+    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations. These failure modes can be addressed by troubleshooting the issue in place, redeploying the failed resources, or utilizing a [Backup Plan](#define-and-maintain-backup-plans-for-resources-within-critical-flows)
 
 -   Build the DR plan on your FMA documentation. Ensure that your DR plan captures the failure modes and mitigation strategies for outages that are defined as disasters. Update both your DR plan and your FMA documents in parallel so they're accurate when the environment changes or when testing uncovers unexpected behaviors.
 
