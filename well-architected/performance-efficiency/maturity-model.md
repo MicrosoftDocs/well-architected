@@ -152,11 +152,11 @@ Inefficiencies in data management can cause performance issues across your workl
 - Ensure your data model suits your workload, considering normalization, indexing, and partitioning.
 - Align storage infrastructure with workload requirements, optimizing settings like buffer size and caching.
 
-#### &#10003; Design and run performance tests and establish a performance baseline
+#### &#10003; Conduct performance tests and compare against a baseline
 
 Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that aligns with targets. Review the [performance testing](./performance-test.md) article for detailed guidance.
 
-Performance testing should be performed in production as part of your overall testing strategy. This includes reliability and security testing.
+Performance testing should be performed in a dedicated environment as part of your overall testing strategy. This includes reliability and security testing.
 
 Review test results to identify bottlenecks and other inefficiencies and compare results against goals, predefined criteria, or previous runs.
 
