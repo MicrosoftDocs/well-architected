@@ -1,8 +1,8 @@
 ---
 title: Azure SQL Managed Instance and operational excellence
 description: Focuses on the Azure SQL Managed Instance service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Operational Excellence.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 12/08/2021
 ms.topic: conceptual
 products:
