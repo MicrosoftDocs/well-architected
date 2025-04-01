@@ -115,6 +115,8 @@ Level 3 of the Performance Efficiency pillar focuses on incorporating internal a
 
 Moving to production means that you must be prepared to respond immediately to performance issues. Robust performance monitoring and useful, actionable alerting will help ensure that the right teams are notified of issues and can begin their investigation and troubleshooting activities quickly. Strategies to help you define your performance issue response activities include:
 
+- Configure performance alerting in your monitoring platform.
+- Tune your alerts to provide actionable warning that the component is at risk of a performance issue. This could be setting a threshold at a static value, or it could be based on trend change for a given metric. Determine the trigger value based on continuous testing to ensure that you don't experience false positives.
 - Analyze logs and performance metrics to identify the underlying causes of issues.
 - Keep stakeholders informed about the status and resolution progress of performance issues.
 - Establish a framework to prioritize performance issues based on their impact.
@@ -154,7 +156,7 @@ Inefficiencies in data management can cause performance issues across your workl
 
 Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that aligns with targets. Review the [performance testing](./performance-test.md) article for detailed guidance.
 
-Ensure that test environments closely emulate the production environment.
+Performance testing should be performed in production as part of your overall testing strategy. This includes reliability and security testing.
 
 Review test results to identify bottlenecks and other inefficiencies and compare results against goals, predefined criteria, or previous runs.
 
