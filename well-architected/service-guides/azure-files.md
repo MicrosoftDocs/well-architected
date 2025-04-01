@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Files
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Files and Azure File Sync.
 author: khdownie
 ms.author: kendownie
-ms.date: 03/28/2025
+ms.date: 05/20/2024
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
