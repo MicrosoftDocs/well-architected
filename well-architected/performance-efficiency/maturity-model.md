@@ -109,7 +109,7 @@ Collect application performance data like throughput, latency, and completion ti
 
 ![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback**
 
-Level 3 of the Performance Efficiency pillar focuses on incoroporating internal and external signals to refine performance targets, workload design and configurations, and related operational practices. In earlier maturity levels, you might have set performance targets and configurations based on development velocity needs, and internal testing. As you evolve your workload, taking internal and external user and stakeholder feedback into account, helps you ensure that there are realistic performance targets for your production workload, and that it meets those targets without sacrificing requirements for other pillars.
+Level 3 of the Performance Efficiency pillar focuses on incorporating internal and external signals to refine performance targets, workload design and configurations, and related operational practices. In earlier maturity levels, you might have set performance targets and configurations based on development velocity needs, and internal testing. As you evolve your workload, taking internal and external user and stakeholder feedback into account, helps you ensure that there are realistic performance targets for your production workload, and that it meets those targets without sacrificing requirements for other pillars.
 
 #### &#10003; Implement robust performance monitoring and alerting to detect performance issues
 
