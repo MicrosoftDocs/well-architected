@@ -26,8 +26,7 @@ This article assumes that as an architect, you've reviewed the [integration serv
 >
 > Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for API Management or the application platform servers. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
-> Foundational architecture that demonstrates the key recommendations:
-> [Azure API Management landing zone architecture](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function).
+> Foundational architecture that demonstrates the key recommendations: [Azure API Management landing zone architecture](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function).
 
 **Technology scope**
 
@@ -73,10 +72,10 @@ Start your design strategy based on the [design review checklist for Reliability
 ### Recommendations
 
 | Recommendation | Benefit |
-| ----- | ----- |
-|**In multiregion configurations, configure automated scaling in all regions**. API Management supports [autoscaling with Azure Monitor](/azure/api-management/api-management-howto-autoscale) in the primary region. Implement custom function or logic app to handle scaling in secondary regions.  | Ensure that the API Management gateway can scale to meet demand in all regions without manual intervention.  |
-| **Configure at least one replica (additional [availability zone](/azure/reliability/migrate-api-mgt) or [capacity unit](/azure/api-management/upgrade-and-scale)) per gateway** | Accommodate burst gateway demand instead of requiring immediate scale-out. Required for 99.99% SLA in Premium tier.  |
-| **Implement federated API management with [workspaces](/azure/api-management/workspaces-overview)**.  | Segregate API runtime between API teams, improving reliability, resiliency, and security.  |
+| :------------- | :------ |
+|**In multiregion configurations, configure automated scaling in all regions**. API Management supports [autoscaling with Azure Monitor](/azure/api-management/api-management-howto-autoscale) in the primary region. Implement custom function or logic app to handle scaling in secondary regions. | Ensure that the API Management gateway can scale to meet demand in all regions without manual intervention. |
+| **Configure at least one replica (additional [availability zone](/azure/reliability/migrate-api-mgt) or [capacity unit](/azure/api-management/upgrade-and-scale)) per gateway** | Accommodate burst gateway demand instead of requiring immediate scale-out. Required for 99.99% SLA in Premium tier. |
+| **Implement federated API management with [workspaces](/azure/api-management/workspaces-overview)**. | Segregate API runtime between API teams, improving reliability, resiliency, and security. |
 
 ## Security
 
@@ -115,11 +114,11 @@ Start your design strategy based on the [design review checklist for Security](.
 ### Recommendations
 
 | Recommendation | Benefit |
-| ----- | ----- |
-| **Manage and rotate secrets and certificates in Key Vault**. [Store secrets](/azure/api-management/api-management-howto-properties) and certificates in Key Vault and use managed identity with strict role-based access control for access  | Restrict access, manipulation, and exposure of secrets. Ensure that secrets are rotated regularly and automatically, and aren't hard-coded in code or configuration files.  |
-| **Configure [custom domains](/azure/api-management/configure-custom-domain)** for the gateway endpoint(s). Combine with highest supported version(s) of TLS for end-to-end encryption of traffic.  | Encrypt data in transit to and from the gateway. Verify client and server identities.  |
+| :------------- | :------ |
+| **Manage and rotate secrets and certificates in Key Vault**. [Store secrets](/azure/api-management/api-management-howto-properties) and certificates in Key Vault and use managed identity with strict role-based access control for access  | Restrict access, manipulation, and exposure of secrets. Ensure that secrets are rotated regularly and automatically, and aren't hard-coded in code or configuration files. |
+| **Configure [custom domains](/azure/api-management/configure-custom-domain)** for the gateway endpoint(s). Combine with highest supported version(s) of TLS for end-to-end encryption of traffic. | Encrypt data in transit to and from the gateway. Verify client and server identities. |
 | **Restrict or block traffic to the gateway.** Implement [rate-limiting](/azure/api-management/api-management-policies#rate-limiting-and-quotas) and [content validation](/azure/api-management/api-management-policies#content-validation) policies and tools such as [Azure DDoS Protection](/azure/api-management/protect-with-ddos-protection) and [Microsoft Defender for APIs](/azure/api-management/protect-with-defender-for-apis)<br/><br/>Limit traffic to the gateway using Application Gateway, Azure Front Door, network security group rules, and/or client IP filtering| Limit effectiveness of brute-force attacks and malicious content in API requests or responses. Detect and block bot or other unwanted traffic to the gateway. |
-| **Do not use [API tracing](/azure/api-management/api-management-howto-api-inspector#enable-tracing-for-an-api) in production**. | Prevent sensitive data from being exposed in request traces.  |
+| **Do not use [API tracing](/azure/api-management/api-management-howto-api-inspector#enable-tracing-for-an-api) in production**. | Prevent sensitive data from being exposed in request traces. |
 
 ## Cost Optimization
 
@@ -148,8 +147,8 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 ### Recommendations
 
 | Recommendation | Benefit |
-| ----- | ----- |
-| **Use Developer tier in lower environments**| Use a cost-effective tier for nonproduction uses, proof-of-concept deployments, and initial cost modeling.  |
+| :------------- | :------ |
+| **Use Developer tier in lower environments**| Use a cost-effective tier for nonproduction uses, proof-of-concept deployments, and initial cost modeling. |
 | **Scale-in when demand decreases**. Configure [autoscale rules](/azure/api-management/api-management-howto-autoscale) or other automated processes to reduce units when gateway capacity drops below defined thresholds. | Reduce unnecessary costs in production. |
 
 ## Operational Excellence
@@ -178,8 +177,8 @@ Start your design strategy based on the [design review checklist for Operational
 ### Recommendations
 
 | Recommendation | Benefit |
-| ----- | ----- |
-| [**Log to Event Hubs**](/azure/api-management/api-management-howto-log-event-hubs) when processing large amounts of data  | Customize and reduce data that is logged. Enable near real-time analysis of API usage.  |
+| :------------- | :------ |
+| [**Log to Event Hubs**](/azure/api-management/api-management-howto-log-event-hubs) when processing large amounts of data. | Customize and reduce data that is logged. Enable near real-time analysis of API usage. |
 
 ## Performance Efficiency
 
@@ -206,9 +205,9 @@ Start your design strategy based on the [design review checklist for Performance
 ### Recommendations
 
 | Recommendation | Benefit |
-| ----- | ----- |
+| :------------- | :------ |
 | [**Define a sampling percentage for Application Insights**](/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) | Satisfy observability data needs without affecting overall performance. |
-| ** Use [Diagnose and solve problems**](/azure/api-management/diagnose-solve-problems) in the Azure portal.| Quickly Identify and troubleshoot gateway performance and service availability issues in production. |
+| **Use [Diagnose and solve problems](/azure/api-management/diagnose-solve-problems)** in the Azure portal.| Quickly Identify and troubleshoot gateway performance and service availability issues in production. |
 | **Use the [Network status blade](/azure/api-management/api-management-using-with-vnet?tabs=stv2#verify-network-status)** in the portal to troubleshoot network connectivity. | For instances in classic tiers that are deployed in a virtual network, validate service connectivity to dependencies such as Azure Storage. |
 
 ## Azure policies
