@@ -4,7 +4,7 @@ description: Learn about architectural best practices for the Azure Application 
 author: greg-lindsay
 ms.author: greglin
 ms.topic: conceptual
-ms.date: 03/28/2025
+ms.date: 10/02/2024
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-application-gateway
