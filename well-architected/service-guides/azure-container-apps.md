@@ -57,9 +57,9 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications by ensuring quick recovery from failures without manual intervention. This includes setting up health probes (liveness and readiness checks) to detect failing containers and using resiliency policies to automatically handle retries and circuit breakers.
 > - **Monitor reliability and overall health indicators of the container app.** Collect logs and metrics to monitor health, identify performance and reliability trends, and troubleshoot problems. Review the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your workload.
 >
-> - **Configure health probes.** Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
+>   **Configure health probes.** Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
 >
-> - **Enable monitoring and alerts.** Activate monitoring tools and set up alerts to detect and respond to reliability-impacting events promptly (e.g., Azure Monitor, OpenTelemetry).  
+>   **Enable monitoring and alerts.** Activate monitoring tools and set up alerts to detect and respond to reliability-impacting events promptly (e.g., Azure Monitor, OpenTelemetry).  
 
 ### Recommendations
 
@@ -88,23 +88,23 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Review security baselines.** To enhance the security posture of your workload, review the [security baseline for Container Apps](/security/benchmark/azure/baselines/azure-container-apps-security-baseline).
 > - **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Use role-based access control (RBAC) with Microsoft Entra ID for [least privilege access](/azure/aks/azure-ad-rbac).
 >
-> - **Use managed identities with Microsoft Entra ID** for secure, credential-free access to Azure resources.  
+>   **Use managed identities with Microsoft Entra ID** for secure, credential-free access to Azure resources.  
 > - **Implement segmentation and network controls.** Deploy private container apps environments and internal ingress mode for isolation from the public internet.  
 >
-> - **Control egress traffic.** To prevent data exfiltration, integrate your container apps environment into a custom virtual network with user-defined routes to secure outbound traffic.  
+>   **Control egress traffic.** To prevent data exfiltration, integrate your container apps environment into a custom virtual network with user-defined routes to secure outbound traffic.  
 >
 > - **Maintain a hardened workload's software supply chain.** Implement container-aware scanning in your secure CI/CD pipelines to detect vulnerabilities and ensure the integrity of your container images. Refer to the Container Secure Supply Chain documentation for details on this topic.  
 >
-> - **Reduce the attack surface.** by hardening container images and removing unused components.Use lean and minimal base images (e.g., Alpine, Ubuntu Chiseled).
+>   **Reduce the attack surface.** by hardening container images and removing unused components.Use lean and minimal base images (e.g., Alpine, Ubuntu Chiseled).
 >
-> - **Integrate with Microsoft Defender.** Use Microsoft Defender for Containers to scan images in ACR.
+>   **Integrate with Microsoft Defender.** Use Microsoft Defender for Containers to scan images in ACR.
 > - **Encrypt data** using modern industry-standard methods to guard confidentiality and integrity.
 >
-> - **Use Azure Key Vault.** Securely store sensitive configuration values and secrets in Azure Key Vault to protect them from unauthorized access.  
+>   **Use Azure Key Vault.** Securely store sensitive configuration values and secrets in Azure Key Vault to protect them from unauthorized access.  
 >
-> - **Enable mTLS (Mutual TLS).** Use mutual TLS to authenticate and encrypt traffic between services, enhancing security by ensuring both parties are verified.
+>   **Enable mTLS (Mutual TLS).** Use mutual TLS to authenticate and encrypt traffic between services, enhancing security by ensuring both parties are verified.
 >
-> - **Enforce HTTPS.** Configure Envoy proxy to redirect all HTTP traffic to HTTPS (default is allowInsecure: false).  
+>   **Enforce HTTPS.** Configure Envoy proxy to redirect all HTTP traffic to HTTPS (default is allowInsecure: false).  
 > - **Implement a security monitoring strategy.** Capture detailed logs for monitoring and auditing. Send system and console logs to a log analytics workspace, event hub, or partner solution for monitoring and auditing purposes. Scrub sensitive data from logs as console logs originate from stderr and stdout in the app.
 
 ### Recommendations
@@ -138,9 +138,9 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Optimize workload components costs.** Regularly review and adjust CPU and memory allocations to match the needs of your applications, avoiding over-provisioning and minimizing costs.  
 >
-> - **Use managed disk tiers.** When using volume mounts, select appropriate managed disk tiers and sizes to optimize storage costs for persistent data, ensuring you only pay for what you need.  
+>   **Use managed disk tiers.** When using volume mounts, select appropriate managed disk tiers and sizes to optimize storage costs for persistent data, ensuring you only pay for what you need.  
 >
-> - **Use streamlined and optimized container images.** Use streamlined and optimized container images to reduce storage and network costs, improving startup times and resource efficiency.  
+>   **Use streamlined and optimized container images.** Use streamlined and optimized container images to reduce storage and network costs, improving startup times and resource efficiency.  
 > - **Optimize scaling costs.** Configure auto-scaling policies to automatically scale in resources during low-demand periods and scale out during peak times, ensuring efficient resource usage.  
 > - **Optimize networking costs.** Optimize network paths to minimize data transfer costs, especially for applications with high bandwidth volumes.  
 > - **Leverage cost management tools.** Utilize Azure Cost Management and Billing tools to track and analyze spending, set budgets, create cost alerts, and implement consistent tagging across all resources. 
@@ -176,9 +176,9 @@ Start your design strategy based on the [design review checklist for Operational
 >   Build automated processes to bootstrap your environments with necessary configurations and deployments using CI/CD pipelines.
 > - **Implement a comprehensive monitoring strategy.** Configure diagnostics settings to capture logs, metrics, and diagnostics data. Use tools like Azure Monitor and Application Insights to track application health and performance,  and identify trends in performance and reliability, and troubleshoot problems.
 >
-> - **Emit telemetry for workloads.** Design your workloads to emit telemetry data, including liveliness and readiness statuses, to facilitate monitoring and troubleshooting.  
+>   **Emit telemetry for workloads.** Design your workloads to emit telemetry data, including liveliness and readiness statuses, to facilitate monitoring and troubleshooting.  
 >
-> - **Monitor performance metrics.** Continuously monitor key performance metrics such as CPU, memory, and network usage to identify opportunities for cost optimization and operational efficiencies.
+>   **Monitor performance metrics.** Continuously monitor key performance metrics such as CPU, memory, and network usage to identify opportunities for cost optimization and operational efficiencies.
 > - **Implement chaos engineering.** Apply chaos engineering practices using tools such as Azure Chaos Studio to identify potential reliability issues within your Container Apps environment. Conduct experiments to ensure your applications can withstand unexpected failures. Conduct performance testing using tools such as Azure Load Testing to ensure scaling rules work as expected without disruptions to clients.  
 > - **Implement consistent resource tagging** across all Container Apps and other workload resources. Consistent tagging facilitates efficient resource management, cost tracking, and automation.
 > - **Enforce workload governance.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your workload's resources.
