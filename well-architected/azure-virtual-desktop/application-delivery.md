@@ -35,13 +35,13 @@ In general, understand the commonalities between use cases, and standardize host
 |---|---|
 |Understand the criticality of the host pool and the workloads that it supports. Ensure that the combined service-level agreements (SLAs) meet the requirements of the workload. Define each workloads RPO and RTO. Evaluate the benefits and implications of using Active-Active vs. Active-Passive architecture across personal and pooled host pools.| Invoking the appropriate BCDR strategy will ensure that business leaders expectations and end users needs are both met or exceeded. |
 |Target a Stage 3 multi-region deployment if regional failure isn't tolerable. <br> Understand how the metadata is replicated across your AVD objects and resources.|Maintain business continuity for your workload(s) and keep users functional even during a regional outage.|
-|Onboard your Virtual Machines to AVDI using Azure Monitor Agent to monitor your VMs health.|Observability into the state of your VMs will be crucial for operational health and stability.|
+|Onboard your Virtual Machines to AVD Insights using Azure Monitor Agent to monitor your VMs' health.|Observability into the state of your VMs will be crucial for operational health and stability.|
 |Use trusted images from the Azure Marketplace and only install software from trusted sources. Regularly update your base image and software. <br><br>For pooled host pools, ensure that you update all session hosts and avoid configuration drift.|Incrases security posture and reduces attack surface from vulnerabilities that could compromise your workload(s). <br><br> Ensures a consistent and realiable user experience no matter the session host a user is brokered to.|
 |Apply appropriate segmentation for your sensitive workloads, such as isolating high-sensitivity workloads and running them on confidential compute-series VMs.|Hardware-based TEE hardens guest OS memory and state, increasing your security posture.|
 |Understand the cost profile of the host pool's sessionhosts and users, and run cost modeling to create an optimized environment. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to get estimates for the solution. Create budgets in Azure to ensure that the deployment aligns with cost estimates.|Establishing budgets helps remove any surprise in costs for AVD, especially if you include future growth or VMs running more than the expected number of hours.|
 |Evaluate the cost associated with cloud-based desktop solutions, such as Windows 365.| Cloud-based desktop solutions might be more suitable for personal desktop needs because of their lower management overhead and fixed monthly cost, versus the consumption-based model of Azure Virtual Desktop. |
 |Evaluate which applications or users could operate on a multi-session session host. <br><br>Create your use cases with this consideration in mind. You can use FSLogix to restrict application access so that different users get apps than others on the same host pool.|Multi-session host pools usually offer a lower cost per user than Personal Desktop configurations.|
-|Use Azure Policy to promote consistency across Azure Virtual Desktop environments, such as VM configurations, enabling AVDI, tagging, and much more.|Improves resource deployment consistency, avoiding costly redeployments, or risks to security posture.|
+|Use Azure Policy to promote consistency across Azure Virtual Desktop environments, such as VM configurations, enabling AVD Insights, tagging, and much more. This improves resource deployment consistency, avoiding costly redeployments or risks to security posture.|
 |Use infrastructure as code (IaC) for deployments. Use resources, such as Azure VM Image Builder and the [Virtual Desktop Accelerator](https://github.com/microsoft/AVDAccelerator). |  These approaches facilitate standardization across multiple host pools, which drives repeatability. They also reduce engineering and operations overhead. |
 |Use validation host pools to test incoming AVD updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.|Ensures that any incoming features coming to AVD are tested and validated. If issues arrise, operations can temporarily disable automatic updates of the AVD agents.|
 
@@ -128,16 +128,15 @@ For more information, see [Recommendations for optimizing scaling costs](../cost
 
 ## Application groups
 
-You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops that a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner. 
-You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops that a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner, improving both security and user experience. 
+You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner, improving both security and user experience.
 
 The two types of application groups in Virtual Desktop include: 
 
-- **Desktop application groups:** Users access the full Windows desktop from a session host. Pooled or personal host pools support desktop application groups. 
+- **Desktop application groups:** Provide users access to a full Windows desktop from a session host. Supported by both pooled and personal host pools.
 
-- **RemoteApp application groups:** Users access individual applications that you select and publish to the application group. Pooled host pools support RemoteApp application groups. 
+- **RemoteApp application groups:** Allow users to access individual applications published in the group. Supported only by pooled host pools.
 
-When you use pooled host pools, you can assign both application group types to the same host pool at the same time. You can only assign a single desktop application group to each host pool. But you can assign multiple RemoteApp application groups to the same host pool. 
+When using pooled host pools, both types of application groups can be assigned to the same host pool. However, each host pool can have only one Desktop application group but multiple RemoteApp application groups.
 
 
 | Recommendation | Benefit |
