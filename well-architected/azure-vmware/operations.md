@@ -79,6 +79,7 @@ Application teams and developers should define coding guidelines for code struct
 - Have a security and compliance team focus on security policies that are specific to Azure VMware Solution. Also have the team perform risk assessments and ensure compliance with regulatory requirements.
 - Adopt a framework such as the Information Technology Infrastructure Library (ITIL). Or use International Organization for Standardization (ISO) practices to map day-to-day operations, processes, and activities. These practices can result in faster knowledge transfers, continuous improvements, and improved change management.
 - Define coding standards and implement security practices during application development.
+- Ensure that key service components such as HCX Manager are protected before undertaking critical activities or starting maintenance activity. Use [Run command to take HCX Manager snapshot](/azure/azure-vmware/use-hcx-run-commands#take-a-snapshot-of-vmware-hcx-cloud-manager). Snapshots are retained for 72 hours and can be restored by creating a support ticket with Microsoft.
 
 ## Use tagging strategies and best practices
 
