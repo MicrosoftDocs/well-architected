@@ -237,7 +237,7 @@ Monitor application behavior and get access to relevant logs and metrics to ensu
 
 - Application performance monitoring with Application Insights provides deep insights into application performance.
 - Mission-critical applications must have the ability to self-heal if there are failures. Enable [Auto Heal](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html) to automatically recycle unhealthy workers.
-- You need to use appropriate health checks to assess all critical downstream dependencies, which helps to ensure overall health. We strongly recommend that you enable [Health Check](https://aka.ms/appservicehealthcheck) to identify non-responsive workers.
+- You need to use appropriate health checks to assess all critical downstream dependencies, which helps to ensure overall health. We strongly recommend that you enable [Health Check](/azure/app-service/monitor-instances-health-check) to identify non-responsive workers.
 
 ###### Deployment
 

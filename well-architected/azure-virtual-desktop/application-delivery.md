@@ -1,6 +1,7 @@
 ---
 title: Application Delivery Considerations for Azure Virtual Desktop Workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
+
 author: roarrioj
 ms.author: roarrioj
 ms.date: 01/30/2025
@@ -45,7 +46,6 @@ In general, understand the commonalities between use cases, and standardize host
 |Use infrastructure as code (IaC) for deployments. Use resources, such as Azure VM Image Builder and the [Virtual Desktop Accelerator](https://github.com/microsoft/AVDAccelerator). |  These approaches facilitate standardization across multiple host pools, which drives repeatability. They also reduce engineering and operations overhead. |
 |Use validation host pools to test incoming AVD updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.|Ensures that any incoming features coming to AVD are tested and validated. If issues arrise, operations can temporarily disable automatic updates of the AVD agents.|
 
-
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Select the appropriate architecture and hostpool types for each user persona that your Azure Virtual Desktop environment supports. Higher resiliency comes with more cost and added complexity, but lower cost also incurs gaps in resiliency for the sake of simplicity. 
 
 > [!NOTE]
@@ -57,7 +57,7 @@ In general, understand the commonalities between use cases, and standardize host
 
 ## Scaling plans
 
-Use scaling plans in Virtual Desktop to help meet user demand and reduce the cost of maintaining your virtual desktop environment. When you use scaling plans, you can dynamically target your host pool capacity based on schedules, select load balancing behaviors based on the time of day, and manage user sessions' idle, disconnect, and log off experience. Virtual Desktop operators can combine all these controls to balance the user experience, improve performance, and optimize cost efficiency for their Virtual Desktop workloads.
+Use scaling plans in Virtual Desktop to help meet user demand and reduce the cost of maintaining your virtual desktop environment. When you use scaling plans, you can dynamically target your host pool capacity based on schedules, select load balancing behaviors based on the time of day, and manage user sessions' idle, disconnect, and log off experience. Azure Virtual Desktop operators can combine all these controls to balance the user experience, improve performance, and optimize cost efficiency for their Azure Virtual Desktop workloads.
 
 For product documentation, see [Scaling plans](/azure/virtual-desktop/autoscale-scenarios). 
 
@@ -108,21 +108,21 @@ Personal host pools assign each user to a dedicated, persistent VM to ensure tha
 
 | Recommendation | Benefit |
 |---|---|
-| Use Virtual Desktop scaling plans to fine tune scalability and turn off session hosts when there's no demand. <br><br> Have sufficient session hosts to support the demand of your Virtual Desktop workload, which provides desktops or remote apps to your users. <br><br> Understand scale limits of subscriptions, services, and VMs. | Scaling plans help increase scaling speed. They don't deploy or delete existing session hosts. Instead, they automatically turn the hosts off. <br><br> For more information, see [How a scaling plan works](/azure/virtual-desktop/autoscale-scenarios#how-a-scaling-plan-works) and [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md). |
-| Align your scaling schedule with the expected load patterns, whether they're static, dynamic, predictable, or surge patterns. | TBD |
-| For multi-region deployments, // guidance about scaling plans when users are pinned to a region vs just distribution of load. | TBD |
+| Use Azure Virtual Desktop scaling plans to fine tune scalability and turn off session hosts when there's no demand. <br><br> Have sufficient session hosts to support the demand of your Azure Virtual Desktop workload. <br><br> Understand scale limits of subscriptions, services, and VMs. | Scaling plans help optimize host pool efficiency by adjusting capacity to match real-time demand. They reduce unnecessary resource usage during low-demand periods and ensure enough session hosts are available when needed, ultimately improving cost management and workload performance. <br><br> For more information, see [How a scaling plan works](/azure/virtual-desktop/autoscale-scenarios#how-a-scaling-plan-works) and [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md). |
+| Align your scaling schedule with the expected load patterns, whether they're static, dynamic, predictable, or surge patterns. | Matching scaling schedules to workload patterns prevents unnecessary resource consumption while ensuring users have sufficient capacity when needed. |
 | Adjust the load balancing algorithm. | An optimized load balancing algorithm helps ensure system stability and prevent overloads. It can also reduce latency, which improves user satisfaction and efficiency. |
-| Take advantage of Virtual Desktop Insights to capture your scaling plan diagnostic logs, which populate usage trends and operations. | These metrics help ensure that your scaling plan and schedules remain effective and provide teams with insights so that they can make adjustments accordingly. |
-| Implement Azure Monitor alerts to notify stakeholders. Or use action groups to take action if there's a lack of host pool capacity or scaling plan operation failure. | TBD |
+| Take advantage of Azure Virtual Desktop Insights to capture your scaling plan diagnostic logs, which populate usage trends and operations. | These metrics help ensure that your scaling plan and schedules remain effective and provide teams with actionable data so that they can make adjustments accordingly. |
+| Implement Azure Monitor alerts  and configure action groups to notify stakeholders and take action if there's a lack of host pool capacity or scaling plan operation failure. | Detect capacity shortages and scaling failures, allowing automated or manual intervention before users experience disruptions. Helps maintain optimal session availability and prevents unexpected downtime. |
 | For Greenfield workloads, use a thorough proof of concept and user acceptance testing environment to capture adequate data for performance testing. | The results help you determine the optimal values for the appropriate scaling plan configurations. |
-| Review idle time out and disconnect options that minimize disruption when a user returns to work. | This practice helps optimize the user experience. |
-| For personal host pools: <br><br> - Set assigned VMs to start during the ramp-up phase. <br> - Take advantage of hibernation.  | VMs that start during the ramp-up phase improve the connection experience during the start of a user's day. <br><br> Hibernation improves the user experience when they return to work and the VM is powered off. |
-| For pooled host pools: <br><br> - Use breadth-first load balancing to spread the user sessions across available hosts. <br> - Target 80-90% of the maximum session capacity based on your total assigned users and peak concurrent sessions. <br> - Use exclusion tags on faulty session hosts so that the scaling plan doesn't turn on unhealthy session hosts. <br> - Ensure that your host pool capacity can accommodate sudden demand, unplanned maintenance, or outages.| Breadth-first load balancing reduces the impact to users if a session host goes offline or experiences a critical error. <br><br> An 80-90% capacity helps reduce the session host footprint and overdeployment and helps manage costs. <br><br> TBD |
+| Review idle time out and disconnect options that minimize disruption when a user returns to work. | Helps optimize the user experience by reducing unnecessary session logouts and allowing users to resume their work quickly. |
+| For personal host pools: <br><br> - Set assigned VMs to start during the ramp-up phase. <br> - Take advantage of hibernation.  | VMs that start during the ramp-up phase improve the connection experience during the start of a user's day. <br><br> Hibernation reduces startup delays and improves user experience while minimizing infrastructure costs. |
+| For pooled host pools: <br><br> - Use breadth-first load balancing to spread the user sessions across available hosts. <br> - Target 80-90% of the maximum session capacity based on your total assigned users and peak concurrent sessions. <br> - Use exclusion tags on faulty session hosts so that the scaling plan doesn't turn on unhealthy session hosts. <br> - Ensure that your host pool capacity can accommodate sudden demand, unplanned maintenance, or outages.| Breadth-first load balancing reduces the impact on users if a session host goes offline or experiences a critical error. <br><br> An 80-90% capacity target helps helps optimize cost while preventing overdeployment. <br><br> Capacity buffers ensure resilience during demand surges, maintenance windows, and infrastructure failures,  reducing the risk of performance degradation. |
 
 > [!Note]
-> Scaling plans can't create or delete session hosts. If you want to create or delete session hosts, you must create custom automation by using a combination of IaC and continuous integration and continuous delivery (CI/CD) pipelines. 
+> Scaling plans don't create or delete session hosts. If you want to create or delete session hosts, you must create custom automation by using a combination of IaC and continuous integration and continuous delivery (CI/CD) pipelines. 
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Reliable scaling operations have a cost trade-off. Overprovisioning can lead to increased expenses, especially during extended periods of high demand. //Insert something about "Custom autoscaling using PS/CLI/REST API can be developed inhouse if desired. " 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Reliable scaling operations have a cost trade-off. Overprovisioning can lead to increased expenses, especially during extended periods of high demand. >  
+> While Virtual Desktop scaling plans optimize resource usage, they do not dynamically create or remove session hosts. If more granular control is required, custom autoscaling solutions can be developed in-house using PowerShell, CLI, or the REST API to scale session hosts based on real-time demand. This approach requires additional management overhead but allows for greater flexibility and automation tailored to workload needs. " 
 
 For more information, see [Recommendations for optimizing scaling costs](../cost-optimization/optimize-scaling-costs.md) and [Recommendations for optimizing scaling and partitioning](../performance-efficiency/scale-partition.md).
 
