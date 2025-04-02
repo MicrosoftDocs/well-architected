@@ -39,8 +39,6 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-In the cloud, failures can happen. Instead of trying to prevent failures entirely, the goal is to architect for resiliency, ensuring that your application can continue to function and recover quickly. Reliability focuses on ensuring your application can recover from failures and continue to operate effectively. This section outlines best practices and design considerations to enhance the reliability of Container Apps, ensuring high availability and fault tolerance in your deployments.
-
 ### Design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance and reliability of your applications. Extend the strategy to include more approaches as needed.
@@ -80,8 +78,6 @@ Start your design strategy based on the [design review checklist for Reliability
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Container Apps.
-
-Security is a critical aspect of any cloud architecture, and ensuring the protection of your applications and data is paramount. This section provides best practices and recommendations for securing Container Apps. By implementing robust security measures, you can safeguard your applications against threats, ensure compliance with regulatory requirements, and maintain the integrity and confidentiality of your data. Security encompasses a range of practices, including authentication, network isolation, encryption, and identity management, all designed to create a secure and resilient application environment.
 
 ### Design checklist
 
@@ -130,8 +126,6 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to [Azure offering] and its environment.
 
-With Container Apps, cost optimization can be achieved by carefully selecting and configuring resources to avoid unnecessary expenses while maintaining the performance and reliability of your applications.
-
 ### Design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.'
@@ -166,8 +160,6 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
-
-By implementing these strategies, you can streamline operations, automate routine tasks, and enhance the overall stability and reliability of your applications. Operational excellence involves continuous improvement, proactive monitoring, and leveraging automation to reduce manual intervention, ultimately leading to a more robust and resilient application environment.
 
 #### Design checklist
 
@@ -204,8 +196,6 @@ Start your design strategy based on the [design review checklist for Operational
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
-
-By leveraging the right tools and techniques, you can enhance the responsiveness, throughput, and overall efficiency of your applications. Performance efficiency involves continuous monitoring, scaling strategies, and resource optimization to ensure that your applications deliver a high-quality experience to users, even during peak usage times.
 
 ### Design checklist
 
