@@ -30,7 +30,7 @@ There are multiple decision points during the model design phase, including:
   By reducing the size of AI models, developers can decrease the computational resources needed to process them, thus cutting down the overall energy expenditure. This approach not only improves model efficiency but also allows AI to be deployed on resource-constrained devices.
 
 - **Model reusability**: Utilize pretrained models like ChatGPT, BERT, and GPT-3 to save energy cycles.
-  Using a pretrained model saves energy cycles since we don’t have to plan for Data ingestion, Data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
+  Using a pretrained model saves energy cycles since we don’t have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
 
 - **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency.
 
