@@ -16,7 +16,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 ### Updated articles
 
 - [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We added details on deployment strategies and the importance of caching static content to the design checklist. Recommendations were updated to include new links and advice on managing traffic, health probes, and optimizing caching.
-- [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We updated descriptions to emphasize standard practices, enhance development and quality assurance processes, using standardized infrastructure as code, and building automated pipelines. Additionally, the recommendations now highlight the importance of establishing robust emergency operations, automating repetitive tasks, and implementing safe deployment and failure mitigation strategies with modern practices.
+- [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We simplified the design review checklist for Operational Excellenceto make the recommendations more concise, focused, and actionable.
 
 ## February 2025
 
