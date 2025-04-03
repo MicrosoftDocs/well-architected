@@ -37,7 +37,7 @@ There are multiple decision points during the model design phase, including:
 
 - **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
 
-- **Hosting provider region**: Model training is energy intensive. It's important that the right region is chosen. Select [green regions](https://learn.microsoft.com/en-us/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
+- **Hosting provider region**: Model training is energy intensive. It's important that the right region is chosen. Select [green regions](https://learn.microsoft.com/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
 
 ## Data design recommendations
 
@@ -53,7 +53,7 @@ There are multiple decision points during the data design phase, including:
 
 ## Operational design recommendations
 
-- **Hosting provider region**: Deploy models in [green regions](https://learn.microsoft.com/en-us/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources.
+- **Hosting provider region**: Deploy models in [green regions](https://learn.microsoft.com/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources.
 
 - **Retraining frequency**: Retrain-orchestration involves automating the retraining models based on new data.
   This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Balance model accuracy with energy consumption by setting thresholds for retraining.
