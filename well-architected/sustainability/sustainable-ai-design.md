@@ -28,11 +28,12 @@ There are multiple decision points during the model design phase, including:
 
 - **Model size**: Opt for Small Language Models (SLMs) over Large Language Models (LLMs) to reduce energy consumption.
   By reducing the size of AI models, developers can decrease the computational resources needed to process them, thus cutting down the overall energy expenditure. This approach not only improves model efficiency but also allows AI to be deployed on resource-constrained devices.
+  > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_:  SLMs may not be suitable for handling complex tasks, maintaining context and could impact accuracy. Ensure that the right tradeoff is considered based on business needs. A brief comparison is listed [here](https://www.microsoft.com/microsoft-cloud/blog/2024/11/11/explore-ai-models-key-differences-between-small-language-models-and-large-language-models/)
 
-- **Model reusability**: Utilize pretrained models like ChatGPT, BERT, and GPT-3 to save energy cycles.
+- **Model reusability**: Utilize pretrained models to save energy cycles.
   Using a pretrained model saves energy cycles since we don’t have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
 
-- **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency.
+- **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. Listed [here](https://www.restack.io/p/energy-efficient-ai-answer-frameworks-cat-ai) are some frameworks.
 
 - **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
 
