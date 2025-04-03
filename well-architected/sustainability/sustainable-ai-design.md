@@ -33,7 +33,7 @@ There are multiple decision points during the model design phase and we will loo
 - **Model reusability**: Utilize pretrained models to save energy cycles.
   Using a pretrained model saves energy cycles since we don’t have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
 
-- **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. By using techniques like quantization and pruning, some of these frameworks are designed to optimize performance while reducing energy consumption Listed [here](https://www.restack.io/p/energy-efficient-ai-answer-frameworks-cat-ai) are some frameworks that are energy efficient for AI development.
+- **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. By using techniques like quantization and pruning, some of these frameworks are designed to optimize performance while reducing energy consumption. 
 
 - **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles. Fine tuning improves accuracy of the model and helps in improving model efficiency. 
 
@@ -47,7 +47,7 @@ There are multiple decision points during the data design phase, including:
 
 - **Data processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data. For example, by using optimized data ingestion methods, such as batch processing and streamlining data pipelines, the computational resources required for data handling are minimized, leading to lower energy consumption. For more considerations around data processing and storage, see [sustainable storage](/azure/well-architected/sustainability/sustainability-storage)  
   > ![Risk icon](../_images/risk.svg) **Risk**: Ensure that licensing considerations are checked for public datasets and whether they have the right open source approvals.
-- **Clean data**: Ensure high-quality data for training to avoid wasted cycles. [Clean data](https://www.informationweek.com/data-management/clean-lean-data-is-the-cornerstone-of-ai-sustainability)  reduces the computational power required for data cleaning and preprocessing, leading to lower energy consumption.Clean data minimizes the storage requirements by eliminating redundant and irrelevant data, which in turn reduces the energy needed for data storage.
+- **Clean data**: Ensure high-quality data for training to avoid wasted cycles. Clean data reduces the computational power required for data cleaning and preprocessing, leading to lower energy consumption.Clean data minimizes the storage requirements by eliminating redundant and irrelevant data, which in turn reduces the energy needed for data storage.
 - **Move closer to the edge**: You might consider moving data processing, ingestion, computation, and storage to the edge. [Edge computing](https://www.microsoft.com/research/articles/improve-edge-device-ai-efficiency/) enables real-time data processing, which reduces both latency and energy required for continuous data communication between devices and central servers. Edge devices can also be optimized to run AI models efficiently using less power compared to traditional cloud-based processing.
 
 ## Operational design recommendations
