@@ -52,7 +52,7 @@ There are multiple decision points during the data design phase, including:
 
 ## Operational design recommendations
 
-- **Hosting provider region**: Deploy models in [green regions](https://learn.microsoft.com/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources.
+- **Hosting provider region**: Deploy models in [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources.
 
 - **Retraining frequency**: Retrain-orchestration involves automating the retraining models based on new data.
   This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable.
