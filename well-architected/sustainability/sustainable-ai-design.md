@@ -35,7 +35,7 @@ There are multiple decision points during the model design phase and we will loo
 
 - **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. By using techniques like quantization and pruning, some of these frameworks are designed to optimize performance while reducing energy consumption Listed [here](https://www.restack.io/p/energy-efficient-ai-answer-frameworks-cat-ai) are some frameworks that are energy efficient for AI development.
 
-- **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
+- **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles. Fine tuning improves accuracy of the model and helps in improving model efficiency. 
 
 - **Hosting provider region**: Model training is energy intensive. It's important that the right region is chosen. Select [green regions](https://learn.microsoft.com/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
 
@@ -58,9 +58,9 @@ There are multiple decision points during the data design phase, including:
   This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. A very common example where frequent retraining is not required would be either a image classification or speech processing scenario. Models for recognizing speech patterns in specific languages or dialects can remain effective over extended periods without frequent retraining and hence here, AI models can maintain their effectiveness over time without the need for constant updates.Balance model accuracy with energy consumption by setting thresholds for retraining.
   > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_: Reducing the frequency of retraining could impact accuracy. For example models that are used in financial markets need to be highly dynamic, and they need to be frequently retrained to adapt to new market conditions and data.Ensure that the right tradeoff is considered based on business needs.
 
-- **Monitoring**: Track model performance to prevent machine learning ops cycles from being wasted due to model decay. When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring ensures that the correct actions are taken to enable the AI workload to operate sustainably.
+- **Monitoring**: Monitoring is a key strategy and is key to monitor data drift and performance. Track model performance to prevent machine learning ops cycles from being wasted due to (model decay)[https://learn.microsoft.com/en-us/azure/well-architected/ai/test#prevent-model-decay]. When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring ensures that the correct actions are taken to enable the AI workload to operate sustainably.
 
-Implement these sustainable practices to allow your AI developers and data scientists to significantly reduce the environmental impact of AI workloads while maintaining business value.
+Implement these sustainable practices to allow your AI developers and data scientists to significantly reduce the environmental impact of AI workloads while maintaining business value. Models can become stale because of changes in data or external changes that can cause the model to produce irrelevant results. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics, as you would with any other workload, to help ensure optimal performance and reliability. Many tools are available that make it easier to collect metrics from inference endpoints like (Azure Machine Learning Data collector)[https://learn.microsoft.com/en-us/azure/well-architected/ai/mlops-genaiops#tools-4]
 
 ## Next steps
 
