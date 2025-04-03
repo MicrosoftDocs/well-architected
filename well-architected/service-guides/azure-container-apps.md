@@ -54,12 +54,14 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Implement horizontal auto-scaling.** Configure auto-scaling using scale rules based on HTTP requests, TCP connections, or custom metrics (like CPU and memory thresholds, Azure Service Bus, Azure Event Hubs, Apache Kafka, and Redis) to dynamically manage loads and maintain high availability during peak usage times.
 >
 >   Ensure your container apps can still serve requests within your service-level objective (SLO) under high-load.
-> - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications by ensuring quick recovery from failures without manual intervention. This includes setting up health probes (liveness and readiness checks) to detect failing containers and using resiliency policies to automatically handle retries and circuit breakers.
 > - **Monitor reliability and overall health indicators of the container app.** Collect logs and metrics to monitor health, identify performance and reliability trends, and troubleshoot problems. Review the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your workload.
+>
+>   **Implement monitoring tooling and alerts.** Activate monitoring tools, like Azure Monitor and OpenTelemetry and set up alerts to detect and respond to reliability-impacting events promptly.
 >
 >   **Configure health probes.** Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
 >
->   **Enable monitoring and alerts.** Activate monitoring tools and set up alerts to detect and respond to reliability-impacting events promptly (e.g., Azure Monitor, OpenTelemetry).  
+> - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications by ensuring quick recovery from failures without manual intervention. Use health probes to detect failing containers and configure resiliency policies to automatically handle retries and circuit breakers.
+
 
 ### Recommendations
 
