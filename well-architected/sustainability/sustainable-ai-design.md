@@ -33,7 +33,7 @@ There are multiple decision points during the model design phase, including:
 - **Model reusability**: Utilize pretrained models to save energy cycles.
   Using a pretrained model saves energy cycles since we don’t have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
 
-- **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. Listed [here](https://www.restack.io/p/energy-efficient-ai-answer-frameworks-cat-ai) are some frameworks.
+- **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. Listed [here](https://www.restack.io/p/energy-efficient-ai-answer-frameworks-cat-ai) are some frameworks that are energy efficient for AI development.
 
 - **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles.
 
@@ -47,9 +47,9 @@ There are multiple decision points during the data design phase, including:
 
 - **Data processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data.
   > ![Risk icon](../_images/risk.svg) **Risk**: Ensure that licensing considerations are checked for public datasets and whether they have the right open source approvals.
-- **Storage**: Store data in regions powered by renewable energy and consider edge computing.
-- **Clean data**: Ensure high-quality data for training to avoid wasted cycles.
-- **Move closer to the edge**: You might consider moving data processing, ingestion, computation, and storage to the edge.
+- **Storage**: Store data in regions powered by renewable energy and consider edge computing. Edge computing refers to processing as much data locally on edge devices and by doing so, minimizes the need to transmit large volumes of data to centralized servers. By architecture, this reduces energy consumption associated with data transfer.
+- **Clean data**: Ensure high-quality data for training to avoid wasted cycles. [Clean](https://www.informationweek.com/data-management/clean-lean-data-is-the-cornerstone-of-ai-sustainability) data reduces the computational power required for data cleaning and preprocessing, leading to lower energy consumption.Clean data minimizes the storage requirements by eliminating redundant and irrelevant data, which in turn reduces the energy needed for data storage.
+- **Move closer to the edge**: You might consider moving data processing, ingestion, computation, and storage to the [edge](https://www.microsoft.com/en-us/research/articles/improve-edge-device-ai-efficiency/). Edge computing enables real-time data processing, which reduces latency and the energy required for continuous data communication between devices and central servers. Also Edge devices can be optimized to run AI models efficiently, using less power compared to traditional cloud-based processing.By offloading intensive computations to edge devices, the energy consumption of central servers is reduced, leading to longer device lifespans and lower energy costs
 
 ## Operational design recommendations
 
