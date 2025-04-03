@@ -40,7 +40,7 @@ There are multiple decision points during the model design phase, including:
 
 ## Data design recommendations
 
-The data design phase involves data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the required infrastructure that needs to be used, you can improve the sustainability in data processing.
+The data design phase involves data identification, classification, ingestion, storage, and computation. Each of these process steps requires compute, network, and storage resources. By making conscious decisions around the required infrastructure that needs to be used, you can improve sustainability in data processing.
 
 There are multiple decision points during the data design phase, including:
 
