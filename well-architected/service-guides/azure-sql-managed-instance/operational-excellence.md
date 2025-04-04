@@ -1,8 +1,8 @@
 ---
 title: Azure SQL Managed Instance and operational excellence
 description: Focuses on the Azure SQL Managed Instance service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Operational Excellence.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 12/08/2021
 ms.topic: conceptual
 products:
@@ -36,6 +36,7 @@ Azure SQL Managed Instance includes the following design considerations:
 - Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from changes done inadvertently. For more information, read the [Point-in-time-restore (PITR)](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) documentation for managed instance.
 - Use geo-restore to recover from a service outage. Geo-restore restores a database from a geo-redundant backup into a managed instance in a different region. For more information, reference [Recover a database using Geo-restore documentation](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell).
 - Consider the time required for certain operations. Make sure you separate time to thoroughly test the amount of time required to scale up and down your existing managed instance, and to create a new managed instance. This timing practice ensures that you understand completely how time consuming operations will affect your RTO and RPO.
+- Use Azure Backup to protect your SQL database on an Azure Virtual Machine, ensuring recovery during outages. It stores backups in a Recovery Services vault based on your configured policy. Set the vault to Geo-redundant for restoration in a secondary region or subscription. Learn [how to restore the database using Azure Backup](/azure/backup/restore-sql-database-azure-vm).
 
 ## Checklist
 
@@ -46,6 +47,7 @@ Azure SQL Managed Instance includes the following design considerations:
 > - Configure a secondary instance and an Autofailover group to enable failover to another region.
 > - Implement Retry Logic.
 > - Monitor your SQL MI instance in near-real time to detect reliability incidents.
+> - Restore the SQL database using  the Azure Backup service.
 
 ## Configuration recommendations
 
@@ -57,6 +59,7 @@ Explore the following table of recommendations to optimize your Azure SQL Manage
 |Configure a secondary instance and an Autofailover group to enable failover to another region.|If an outage impacts one or more of the databases in the managed instance, you can manually or automatically failover all the databases inside the instance to a secondary region. For more information, read the [Autofailover groups documentation for managed instance](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell).|
 |Implement Retry Logic.|Although Azure SQL MI is resilient to transitive infrastructure failures, these failures might affect your connectivity. When a transient error occurs while working with SQL MI, make sure your code can retry the call. For more information, reference how to [implement retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues).|
 |Monitor your SQL MI instance in near-real time to detect reliability incidents.|Use one of the available solutions to monitor your SQL MI to detect potential reliability incidents early and make your databases more reliable. Choose a near real-time monitoring solution to quickly react to incidents. For more information, check out the [Azure SQL Managed Instance monitoring options](https://techcommunity.microsoft.com/t5/azure-sql/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416).
+| Restore the SQL database using  the Azure Backup service. | Use Azure Backup to detect SQL databases, configure backups in the Recovery Services vault, and [restore the database fully](/azure/backup/restore-sql-database-azure-vm#restore-a-database) or to a [specific point in time](/azure/backup/restore-sql-database-azure-vm#restore-to-a-time-or-a-recovery-point). It also supports disaster recovery drills, [monitoring, and other management tasks](/azure/backup/manage-monitor-sql-database-backup#monitor-backup-jobs-in-the-portal). |
 
 ## Next step
 

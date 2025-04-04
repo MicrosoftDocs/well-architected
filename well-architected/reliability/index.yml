@@ -7,8 +7,8 @@ metadata:
   title: Reliability quick links
   description: Learn about resources that can help you apply reliability guidance to your architecture to make your workload resilient to malfunction.
   ms.topic: landing-page
-  author: martinekuan
-  ms.author: martinek
+  author: PageWriter-MSFT
+  ms.author: prwilk
   ms.date: 11/15/2023
 
 landingContent:
