@@ -39,7 +39,7 @@ This guide does not cover [Azure API Center](/azure/api-center/overview). This g
 
 > [!TIP]
 >
-> The Premium v2 tier will replace the classic Premium tier, but that tier is in preview. To decide if your design should depend on early access capabilities or on current generally available capabilities, estimate your design and implementation timelines relative to information available on the availability of Premium v2 and available migration paths.
+> The Premium v2 tier with enterprise capabilities is currently in preview. To decide if your design should depend on early access capabilities or on current generally available capabilities, estimate your design and implementation timelines relative to information available on the availability of Premium v2 and available migration paths.
 
 ## Reliability
 
@@ -55,9 +55,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Evaluate gateway capabilities for reliability and redundancy**: Decide on the API Management [tier and features](/azure/api-management/api-management-features) that are needed to meet the workload's reliability requirements, per environment.
 >
->    Evaluate gateway redundancy features including availability zones, multiple gateway units, multiple regions, and workspaces, all of which are supported in the Premium tier. The Developer tier, which is not backed by SLA, should not be considered for production workloads Also consider tradeoffs of adopting features such as external caching that can introduce potential points of failure and/or performance bottlenecks.
+>    Evaluate gateway redundancy features including availability zones, multiple gateway units, multiple regions, and workspaces, all of which are supported in the Premium tier. The Developer tier, which is not backed by SLA, should not be considered for production workloads. Also consider tradeoffs of adopting features such as external caching that can introduce potential points of failure and/or performance bottlenecks.
 >
-> - **Review observability capabilities** Understand the service's [observability capabilities](/azure/api-management/observability), including Azure Monitor logs and metrics, Application Insights, built-in analytics, and built-in diagnostics. You'll use them to monitor your workload's reliability signals.
+> - **Review observability capabilities**: Understand the service's [observability capabilities](/azure/api-management/observability), including Azure Monitor logs and metrics, Application Insights, built-in analytics, and built-in diagnostics. You'll use them to monitor your workload's reliability signals.
 >
 >   For example, consider using [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to notify you of potential issues with the API Management gateway or its dependencies.
 >
@@ -99,7 +99,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 > [!NOTE]
 > The checklist and recommendations in this section are focused on securing the API Management gateway resource. Securing the APIs themselves is only lightly addressed.
 >
-> For more recommendations to mitigate API traffic security threats with Azure API Management, see [Mitigate OWASP API security top 10 in Azure API Management](/azure/api-management/mitigate-owasp-api-threats) and always use a [Web Application Firewall](/azure/web-application-firewall/overview) in production.
+> For more recommendations to mitigate API traffic security threats with Azure API Management, see [Mitigate OWASP API security top 10 in Azure API Management](/azure/api-management/mitigate-owasp-api-threats).
 
 ### Design checklist
 
@@ -111,9 +111,9 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Evaluate data sensitivity**: If sensitive data will pass in API requests to and responses from the API Management gateway, develop strategies to protect it consistently throughout its lifecycle, and pay attention to data protection requirements in different regions. Evaluate service features such as [multiple regions](/azure/api-management/api-management-howto-deploy-multi-region)  to isolate certain data, and whether caching strategy is aligned.  
 >
-> - **Develop segmentation strategies on shared gateways**: If your gateway is going to host APIs from multiple workload teams, segregate roles and networks (and possibly gateways) using [workspaces](/azure/api-management/workspaces-overview) so that different teams have appropriate access and control to APIs they manage and cannot access or control other APIs.
+> - **Develop segmentation strategies on shared gateways**: If your API Management instance is going to host APIs from multiple workload teams, segregate roles and networks (and possibly gateways) using [workspaces](/azure/api-management/workspaces-overview) so that different teams have appropriate access and control to APIs they manage and cannot access or control other APIs.
 >
-> - **Understand network controls**: Identify requirements and options for isolating or filtering inbound and/or outbound gateway traffic using [virtual networks](/azure/api-management/virtual-network-concepts). Can access to the gateway be restricted through Private Link, or is public access to the gateway required? Does architecture need to include a web application firewall such as Application Gateway or Azure Front Door to accomplish the required network isolation and to filter network traffic?  
+> - **Understand network controls**: Identify requirements and options for isolating or filtering inbound and/or outbound gateway traffic using [virtual networks](/azure/api-management/virtual-network-concepts). Can access to the gateway be restricted through Private Link, or is public access to the gateway required? Does architecture need to include a web application firewall such as Azure Web Application Firewall in Azure Application Gateway or Azure Front Door to accomplish the required network isolation and to filter network traffic?  
 >
 > - **Understand capabilities for API authentication and authorization**: Evaluate use of identity providers such as [Microsoft Entra ID](/azure/api-management/api-management-howto-protect-backend-with-aad) (with built-in groups) or [Microsoft Entra External ID](/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c) to screen gateway requests and for OAuth authorization to backend APIs.
 >
@@ -205,7 +205,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Understand documentation needs**: Organization should commit to to documenting processes for service-level and API-level configuration, lifecycle operations, and the different access patterns for API teams.
 > - **Evaluate standard tooling** to support operation of service: For example, implement [APIOps](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops) (GitOps and CI/CD to publish APIs) methods for API management and infrastructure-as-code tooling for service-level configuration changes. Design artifacts for reuse from development environments up to production. Consider use of linter such as [Spectral](https://stoplight.io/open-source/spectral) in API approval pipelines.
 >
-> - **Decide on key operational metrics and logs**: Review the [metrics](/azure/api-management/monitor-api-management-reference#metrics) (such as Capacity, CPU % and memory % of gateway, number of requests), logs, and [observability tools](/azure/api-management/observability) (Azure Monitor, Application Insights, or other tools) that will be used in production. What strategies or tools are needed to process a potentially large amount of observational data in production? What queries will provide the necessary insights to both the gateway operator and those interested in specific hosted APIs??  
+> - **Decide on key operational metrics and logs**: Review the [metrics](/azure/api-management/monitor-api-management-reference#metrics) (such as Capacity, CPU % and memory % of gateway, number of requests), logs, and [observability tools](/azure/api-management/observability) (Azure Monitor, Application Insights, or other tools) that will be used in production. What strategies or tools are needed to process a potentially large amount of observational data in production? What queries will provide the necessary insights to both the gateway operator and those interested in specific hosted APIs?  
 >
 > - **Plan regular testing of production workloads** with Azure Load Testing.
 >
@@ -220,7 +220,7 @@ These operational excellence recommendations can apply to either the service its
 | *(Service)* Configure [Azure diagnostics resource logs for API Management](/azure/api-management/monitor-api-management-reference#resource-logs). | You capture platform-generated logs for routine, ad-hoc, or emergency usage, including security auditing. |
 | *(Service)* Use Event Grid for automation based on meaningful [events raised by your API Management instance](/azure/event-grid/event-schema-api-management), such as `APICreated`. | Enables you to build automation or notification tasks around key lifecycle events that happen in your API Management instance. |
 | *(Service)* Avoid using a [self-hosted gateway](/azure/api-management/self-hosted-gateway-overview) if a Microsoft-hosted gateway unit works in your scenario. | Enables you to build automation or notification tasks around key lifecycle events that happen in your API Management instance. |
-| *(Service)* Apply all of the [built-in Azure Policy policies](/azure/api-management/policy-reference) that help you govern your instance and constrain it to align with workload requirements, including security requirements. For example, use *deny* policies to prevent APIs from being exposed over HTTP or to prevent the enabling of the direct management REST API. Use *audit* policies if deny policies arn't available, or create custom deny policies if important to your workload. | Having policies in place ensures that your API Management instance aligns with your design and stays aligned as the workload evolves. |
+| *(Service)* Apply all of the [built-in Azure Policy policies](/azure/api-management/policy-reference) that help you govern your instance and constrain it to align with workload requirements, including security requirements. For example, use *deny* policies to prevent APIs from being exposed over HTTP or to prevent the enabling of the direct management REST API. Use *audit* policies if deny policies aren't available, or create custom deny policies if important to your workload. | Having policies in place ensures that your API Management instance aligns with your design and stays aligned as the workload evolves. |
 | *(Service)* Familiarize yourself with the [Diagnose and solve problems](/azure/api-management/diagnose-solve-problems) capability in the Azure portal.<br/><br/>Use the [Network status blade](/azure/api-management/api-management-using-with-vnet#verify-network-status) in the portal to troubleshoot network connectivity.| These tools can help your site reliability engineering individuals identify and troubleshoot gateway performance, service availability, and network connectivity issues in all environments. |
 | *(API)* Use [Event Hubs](/azure/api-management/api-management-howto-log-event-hubs) for log or event streams from API invocations that you might need to react on in near real-time or perform windowed operations against in a short timeframe. | Logging to Azure Monitor within your APIs is subject to [log data ingestion delay](/azure/azure-monitor/logs/data-ingestion-time), but logging to event hubs makes log entries available in near real-time. |
 | *(API)* Support the usage of [API tracing](/azure/api-management/api-management-howto-api-inspector#enable-tracing-for-an-api) in development to help developers understand their policy execution. | This capability optimizes developer productivity by providing introspection on the execution of policies within an API. Without this capability, developers need to introduce hacks in policy execution to gain their needed insight. |
@@ -243,7 +243,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Collect performance data**: Review capabilities of built-in analytics, Azure Monitor metrics, Azure Monitor logs, Application Insights and Event Hubs to collect and analyze performance at different levels of granularity.
 >
-> - **Review how to identify live performance issues**: Indicators include Azure service availability, HTTP response errors, and errors raised in **Diagnose and solve problems** blade in the portal. Troubleshoot performance and availability issues using Application Insights, Kusto queries, recommendations from API Management Diagnostics in the Azure portal.
+> - **Review how to identify live performance issues**: Indicators include Azure service availability, HTTP response errors, and errors raised in **Diagnose and solve problems** blade in the portal. Troubleshoot performance and availability issues using Application Insights, Kusto queries, and recommendations from API Management Diagnostics in the Azure portal.
 >
 > - **Test performance**: Test performance under production conditions using Azure Load Testing.
 >
