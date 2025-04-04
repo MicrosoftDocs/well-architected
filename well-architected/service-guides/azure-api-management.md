@@ -39,7 +39,7 @@ This guide does not cover [Azure API Center](/azure/api-center/overview). This g
 
 > [!TIP]
 >
-> The Premium v2 tier is will replace the classic Premium tier, but that tier is in preview. To decide if your design should depend on early access capabilities or on current generally available capabilities, estimate your design and implementation timelines relative to information available on the availability of Premium v2 and available migration paths.
+> The Premium v2 tier will replace the classic Premium tier, but that tier is in preview. To decide if your design should depend on early access capabilities or on current generally available capabilities, estimate your design and implementation timelines relative to information available on the availability of Premium v2 and available migration paths.
 
 ## Reliability
 
