@@ -41,7 +41,7 @@ A reliable disaster recovery (DR) strategy builds on the foundation of a reliabl
 
 ### Maintain a disaster-recovery plan
 
-The cornerstone of a reliable DR strategy for a workload is the *DR plan*. Your plan should be a living document that's routinely reviewed and updated as your environment evolves. Present the plan to the appropriate teams (operations, technology leadership, and business stakeholders) regularly (every six months, for example). Store it in a highly available, secure data store such as OneDrive for Business. 
+The cornerstone of a reliable DR strategy for a workload is the *DR plan*. Your plan should be a living document that's routinely reviewed and updated as your environment evolves. Present the plan to the appropriate teams (operations, technology leadership, and business stakeholders) regularly (every six months, for example). Store it in a highly available, secure data store such as OneDrive for Business.
 
 Follow these recommendations to develop your DR plan:
 
@@ -49,7 +49,7 @@ Follow these recommendations to develop your DR plan:
 
     -   Disasters are large-scale issues. They might be regional outages, outages of services like Microsoft Entra ID or Azure DNS, or severe malicious attacks like ransomware attacks or DDoS attacks.
 
-    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations.
+    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations. These failure modes can be addressed by troubleshooting the issue in place, redeploying the failed resources, or utilizing a [Backup Plan](#define-and-maintain-backup-plans-for-resources-within-critical-flows)
 
 -   Build the DR plan on your FMA documentation. Ensure that your DR plan captures the failure modes and mitigation strategies for outages that are defined as disasters. Update both your DR plan and your FMA documents in parallel so they're accurate when the environment changes or when testing uncovers unexpected behaviors.
 
@@ -119,9 +119,27 @@ Follow these recommendations for successful DR drills:
 
 - As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
-## Azure facilitation
+### Define and maintain Backup Plans for resources within critical flows
 
-Many Azure products have built-in failover capabilities. Familiarize yourself with these capabilities and include them in recovery procedures. 
+Backup is an important part of your overall recovery process. Oftentimes it is just a part of your environment that needs recovery. DR plans are usually application or even region wide. Accidental or malicious deletion of data, file corruption, malware, and targeted ransomware attacks can all affect the availability of your workload. Having solid backup plans for each part of your environment is just as important as having an effective DR plan, as a DR plan depends on a solid backup plan to be effective. Like your DR plan, backup plans also need to be agreed upon by the appropriate levels of management, revisited regularly for possible updates and documented in a highly available, secure data store.
+
+-   Determine appropriate backup solutions for the different Azure services that are part of the critical paths within your workload.
+
+-   Define required retention periods for each different service.
+
+-   Understand that one tool may not work for everything. Azure Backup tools can cover many resource types but not all.
+
+-   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly-available repository. (Azure DevOps, GitHub or others)
+
+-   Data services will have different requirements than application related objects.
+
+-   Be sure to consider a multi-region storage strategy for your backup data to create cross-region recoverability.
+
+-   Run regular, scheduled test restores of backup data to ensure that services are working as expected.
+
+## Azure DR facilitation
+
+Many Azure products have built-in failover capabilities. Familiarize yourself with these capabilities and include them in recovery procedures.
 
 For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) to automate failover and recovery. Refer to the following articles for common PaaS products:
 
@@ -140,6 +158,20 @@ For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure
 ## Example 
 
 See the [DR for Azure data platform series](/azure/architecture/data-guide/disaster-recovery/dr-for-azure-data-platform-overview) for guidance about preparing an enterprise data estate for DR.
+
+## Azure Backup facilitation
+
+Many Azure products have built-in backup capabilities. Familiarize yourself with these capabilities and include them in recovery procedures.
+
+For IaaS (infrastructure as a service) systems, use [Azure Backup](/azure/backup/backup-overview) to facilitate backup of VMs and VM related services and some data services. Refer to the following articles for common products:
+
+- [Azure App Service](/azure/app-service/manage-backup)
+
+- [Azure Kubernetes Service](/azure/backup/azure-kubernetes-service-cluster-backup)
+
+- [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
+
+- [Azure Files](/azure/backup/backup-azure-files?tabs=recovery-services-vault)
 
 ## Related links
 
