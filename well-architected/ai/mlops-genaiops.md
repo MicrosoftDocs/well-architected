@@ -4,7 +4,8 @@ description: Use MLOps and GenAIOps for AI workloads on Azure. Learn design stra
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
-ms.topic: concept-article
+ms.topic: conceptual
+ms.service: azure-waf
 ---
 
 # MLOps and GenAIOps for AI workloads on Azure
