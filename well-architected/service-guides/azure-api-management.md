@@ -32,8 +32,14 @@ This article assumes that as an architect, you've reviewed the [integration serv
 
 **The scope of this guide is the API Management service, primarily the gateway component (data plane)** which is used to proxy API requests from client applications to backend APIs hosted in application platforms or locations. However, the architecture of the workload must consider the API Management control plane, components such as the client apps accessing the gateway and the backend APIs that the gateway routes requests to, and supporting Azure services for networking, monitoring, identity management, and other capabilities.
 
+This guide does not cover [Azure API Center](/azure/api-center/overview). This guide touches on API-level topics as it relates to their relationship to Azure API Management, not as a well-architected perspective on API design considerations.
+
 > [!NOTE]
-> Not all recommendations apply to all [service tiers](/azure/api-management/api-management-features) of API Management. Many recommendations in this guide focus on the Premium tier of API Management, which is the recommended production tier for most enterprise workloads.
+> Not all recommendations apply to all [service tiers](/azure/api-management/api-management-features) of API Management. Many recommendations in this guide focus on the Standard v2 and classic Premium tiers of API Management, which are the recommended production tiers for most enterprise workloads.
+
+> [!TIP]
+>
+> The Premium v2 tier is will replace the classic Premium tier, but that tier is in preview. To decide if your design should depend on early access capabilities or on current generally available capabilities, estimate your design and implementation timelines relative to information available on the availability of Premium v2 and available migration paths.
 
 ## Reliability
 
@@ -65,17 +71,23 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Define testing strategies**: Plan to use a testing solution such as Azure Load Testing to reflect actual production workloads. Don't rely on published throughput or other estimates which might not apply to your workload.  
 >
-> - **Plan for disaster recovery**: Review options for backing up and restoring the gateway infrastructure and APIs. While built-in [backup and restore capabilities](/azure/api-management/api-management-howto-disaster-recovery-backup-restore) might be useful in some cases, customer-managed options such as ApiOps tooling and infrastructure-as-code solutions can also be considered. Develop strategies for maintaining other system data such as user subscriptions. Active/passive or active/active configurations can also be considered, although there are tradeoffs for costs and complexity.
+> - **Plan for disaster recovery**: Review options for backing up and restoring the gateway infrastructure and APIs. While built-in [backup and restore capabilities](/azure/api-management/api-management-howto-disaster-recovery-backup-restore) might be useful in some cases, customer-managed options such as APIOps tooling and infrastructure-as-code solutions can also be considered. Develop strategies for maintaining other system data such as user subscriptions. Active/passive or active/active configurations can also be considered, although there are tradeoffs for costs and complexity.
 
 <!-- For example, consider whether the API Management services could be sensitive to changes from Azure-side updates and plan canary environments to detect changes before mission-critical systems are affected. -->
 
 ### Recommendations
 
+These reliability recommendations can apply to either the service itself or for the traffic flowing through APIs and their policies. That distinction is made by using *(Service)* or *(API)* designators respectively on the recommendations.
+
 | Recommendation | Benefit |
 | :------------- | :------ |
-|**In multiregion configurations, configure automated scaling in all regions**. API Management supports [autoscaling with Azure Monitor](/azure/api-management/api-management-howto-autoscale) in the primary region. Implement custom function or logic app to handle scaling in secondary regions. | Ensure that the API Management gateway can scale to meet demand in all regions without manual intervention. |
-| **Configure at least one replica (additional [availability zone](/azure/reliability/migrate-api-mgt) or [capacity unit](/azure/api-management/upgrade-and-scale)) per gateway** | Accommodate burst gateway demand instead of requiring immediate scale-out. Required for 99.99% SLA in Premium tier. |
-| **Implement federated API management with [workspaces](/azure/api-management/workspaces-overview)**. | Segregate API runtime between API teams, improving reliability, resiliency, and security. |
+| *(Service)* Enable [zone redundancy](/azure/api-management/high-availability#availability-zones) and have a minimum of three units deployed.<br/><br/>In this configuration, under normal operating conditions all scale units in all configured zones are active and serve gateway traffic.<br/><br/>In any active-active scenario, such as this, plan to support scaling out in remaining active zones to handle traffic that was normally being processed by units in the faulted zone. | Provides resiliency during a data center outage within a region. During a complete data center loss, API traffic will continue to flow through the remaining units deployed in other zones. |
+| *(Service)* Enable [automatic scale-out](/azure/api-management/api-management-howto-autoscale) based on traffic demands.<br/><br/> In multiregion deployments, you might need to implement a custom function or logic app to handle scaling in secondary regions which do not support automatic scale-out. | Ensures you have enough resources available to meet demand from your API clients. Without enough capacity to handle new requests, clients would experience failures when contacting your API. |
+| *(Service)* Use a [multi-region topology](/azure/api-management/api-management-howto-deploy-multi-region) to support resiliency against a complete regional failure.<br/><br/>Implementing this involves coordination with other components in your workload and understanding their planned failover characteristics. In any active-active scenario, plan to support scaling out in remaining active regions to handle traffic that was normally being processed by the now-inactive region.<br/><br/>Ensure your multi-region topology aligns with any compliance requirements for data in transit or data in cache residency. | Provides resiliency during a complete regional outage. During a complete regional outage, API traffic can continue to flow through the units deployed in other regions. |
+| *(Service)* Isolate unrelated APIs with [workspaces](/azure/api-management/workspaces-overview) or additional API Management instances. | Separating APIs across different compute instances ensures that the blast radius of a failure due misconfiguration or outages has only a localized impact. |
+| *(API)* Thoroughly test policy expressions and logic. Combine with [resilient error handling techniques](/azure/api-management/api-management-error-handling-policies) in API management policies. | Improves client experience by not introducing new sources of failures at the gateway. Error handling can provide graceful degradation capabilities or can also be used to apply safe transient fault handling to hide an intermittent issue from the client. |
+| *(Service & API)* [Collect reliability metrics](/azure/api-management/monitor-api-management-reference).<br/><br/>Common API reliability metrics include:<br/><br/>- Rate limits and quotas violations<br/>- Error rate based on HTTP status codes<br/>- Request rate deviations from baseline<br/>- Health checks, including dependency health. | With health signals like this available, you are able to detect deviations from expected behavior and past baselines. You use that data to trace back to root causes such as changed user behavior, interference from routine operations, an unexpected impact from a new feature, or an unplanned fault in the workload. |
+| *(Service & API)* Use [built-in backup and restore](/azure/api-management/api-management-howto-disaster-recovery-backup-restore) capabilities built into API Management as part of your disaster recovery playbook. Supplement those features with your infrastructure as code artifacts and APIOps processes for a robust solution that can handle many scenarios, including recovery coordination with dependencies and backends. | Business continuity is maintained beyond what your resiliency approach addresses; you'll be able to recover the API gateway and the defined APIs themselves after a total system loss. |
 
 ## Security
 
@@ -113,12 +125,28 @@ Start your design strategy based on the [design review checklist for Security](.
 
 ### Recommendations
 
+These security recommendations can apply to either the service itself or for the traffic flowing through APIs and their policies. That distinction is made by using *(Service)* or *(API)* designators respectively on the recommendations.
+
 | Recommendation | Benefit |
 | :------------- | :------ |
-| **Manage and rotate secrets and certificates in Key Vault**. [Store secrets](/azure/api-management/api-management-howto-properties) and certificates in Key Vault and use managed identity with strict role-based access control for access  | Restrict access, manipulation, and exposure of secrets. Ensure that secrets are rotated regularly and automatically, and aren't hard-coded in code or configuration files. |
-| **Configure [custom domains](/azure/api-management/configure-custom-domain)** for the gateway endpoint(s). Combine with highest supported version(s) of TLS for end-to-end encryption of traffic. | Encrypt data in transit to and from the gateway. Verify client and server identities. |
-| **Restrict or block traffic to the gateway.** Implement [rate-limiting](/azure/api-management/api-management-policies#rate-limiting-and-quotas) and [content validation](/azure/api-management/api-management-policies#content-validation) policies and tools such as [Azure DDoS Protection](/azure/api-management/protect-with-ddos-protection) and [Microsoft Defender for APIs](/azure/api-management/protect-with-defender-for-apis)<br/><br/>Limit traffic to the gateway using Application Gateway, Azure Front Door, network security group rules, and/or client IP filtering| Limit effectiveness of brute-force attacks and malicious content in API requests or responses. Detect and block bot or other unwanted traffic to the gateway. |
-| **Do not use [API tracing](/azure/api-management/api-management-howto-api-inspector#enable-tracing-for-an-api) in production**. | Prevent sensitive data from being exposed in request traces. |
+| *(Service)* Disable the [Direct management API Management REST API](/azure/api-management/breaking-changes/direct-management-api-retirement-march-2025), which is deprecated. Azure Resource Manager should be your control plane. | Reduces the surface area of the service by removing a control plane access point. |
+| *(Service)* Limit exposure of the gateway based exclusively on where legitimate clients connect from.<br/><br/>- Use [virtual network injection](/azure/api-management/inject-vnet-v2) with no public IP if all clients are able to route through a virtual network. Use a [network security group](/azure/api-management/inject-vnet-v2#network-security-group) to further restrict traffic to just the expected client origin IPs.<br/>- Use [virtual network integration](/azure/api-management/integrate-vnet-outbound) combined with Azure Application Gateway or Azure Front Door if any traffic must come from the internet. Configure the [network security group](/azure/api-management/integrate-vnet-outbound#network-security-group) to only accept traffic from the single point of entry. | Protects the confidentiality of the network traffic by limiting exposure to just the source IP ranges that should contain legitimate clients. Restrictions block access from sources that should never originate legitimate client communication. Limiting exposure to sources of legitimate traffic helps protect confidentiality, integrity, and availability of the service. |
+| *(Service)* Disable [developer portal](/azure/api-management/developer-portal-overview) if not being used. If the portal is being used, [disable the sign-up experience](/azure/api-management/developer-portal-faq#how-do-i-disable-sign-up-in-the-developer-portal), [disable anonymous access](/azure/api-management/secure-developer-portal-access), and restrict access to it from only trusted network locations. | Reduces the surface area of the service and the chance for misconfiguration or neglect. |
+| *(Service)* Explicitly set the narrowest supported [TLS versions, protocols, and ciphers](/azure/api-management/api-management-howto-manage-protocols-ciphers#how-to-manage-tls-protocols-cipher-suites) for your clients and your backends. | Reducing the versions and supported ciphers to just those supported by your clients and your backends will ensure your connections are prioritizing the highest grade connections for confidentiality possible. |
+| *(Service)* Store [custom certificates in Key Vault](/azure/api-management/configure-custom-domain?tabs=key-vault#domain-certificate-options). | Key Vault offers certificate management functionality that helps routine rotation. Key Vault also audits access to the certificate. |
+| *(Service)* For API Management instances that host APIs for multiple teams or for segmented workloads, design access control isolation strategy, such as by using [workspaces](/azure/api-management/workspaces-overview) or a rigorous [APIOps process](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops).<br/><br/>Teams should only have access to influence the APIs they own, and shouldn't be aware of other APIs that might be hosted in the same instance. | Reduces the horizontal movement by attackers from one compromised API set into other unrelated APIs. |
+| *(API)* [Store secrets](/azure/api-management/api-management-howto-properties) in Key Vault and expose them to policies through named values. Don't use Key Vault to store nonsecrets, use named value properties directly for those values. | Encourages secret rotation through a single management plane in Azure Key Vault, like you do with certificates, which will result in API Management being updated. Likewise, using named values provides a consistent experience for policy configuration for both secrets and nonsecrets. All secret access is also audited in Key Vault to provide an access history. Only storing secrets in Key Vault minimizes the dependency on Key Vault and does not turn Key Vault into an application configuration service. |
+| *(API)* Use different user-assigned managed identities for different APIs using the [authentication-managed-identity](/azure/api-management/authentication-managed-identity-policy) policy. | This allows each API to have an independent identity which supports segmentation goals through least privilege access per API and provides better auditability in the backends. |
+| *(API)*  Where possible, require clients to [authenticate with OAuth 2.0 flows](/azure/api-management/authentication-authorization-overview#oauth-20-authorization-scenarios-in-api-management) instead of exclusively using preshared keys (including [subscription keys](/azure/api-management/api-management-subscriptions)) or [client certificates](/azure/api-management/api-management-howto-mutual-certificates-for-clients). | Preshared keys don't support strong client identification for auditing purposes, they can be a challenge to rotate, and puts a burden to protect the secret by all of your clients. |
+| *(API)* Suppress HTTP headers from API responses using the [set-header](/azure/api-management/set-header-policy) policy that might expose implementation details. | Increases cost to attackers by withholding implementation detail information from them. |
+| *(API)* Don't use [API tracing](/azure/api-management/api-management-howto-api-inspector#enable-tracing-for-an-api) in production. | Prevent sensitive data from being exposed in request traces. |
+| *(API)* Use [Defender for APIs](/azure/defender-for-cloud/defender-for-apis-introduction). | This capability of Microsoft Defender for Cloud provides API security insights, recommendations, and threat detection. |
+| *(API)* Protect backend resources by delegating key security checks in API policy, for example: [validate-jwt](/azure/api-management/validate-jwt-policy), [ip-filter](/azure/api-management/ip-filter-policy), [validate-headers](/azure/api-management/validate-headers-policy), [validate-content](/azure/api-management/validate-content-policy). | Offloading security checks at the gateway allows the gateway to reduce the amount of nonlegitimate traffic that reaches your backend services, which helps protect the integrity and availability of those resources. |
+| *(API)* Apply [security development lifecycle (SDL)](/compliance/assurance/assurance-microsoft-security-development-lifecycle) practices to API policy changes like you'd apply proposed changes to application code in your workload. | Policies execute with a highly privileged view of the API traffic, in that those policies are effectively creating an adversary-in-the-middle potential in your API. A backend that reliably protects confidentially, integrity, and availability can be thwarted by a compromised API gateway. |
+| *(Service & API)* Use [managed identity](/azure/api-management/api-management-howto-use-managed-service-identity) for service and API dependencies. | Connections to Key Vault (certificates and named values), Event Hubs, and other dependencies can be established without maintaining pre-shared secrets. |
+| *(Service & API)* Connect to dependencies such as Key Vault, Event Hubs, and backends over private network connections where possible. | Protects the confidentiality of traffic by not exposing the traffic beyond your private network. |
+| *(Service & API)* Client traffic for internet exposed APIs should first traverse a web application firewall before reaching API Management, such as using [Azure Web Application Firewall](/azure/web-application-firewall/overview). Likewise, protect public endpoints with [Azure DDoS Protection](/azure/ddos-protection/ddos-protection-overview). | Performing security checks using a web application firewall will reduce the amount of nonlegitimate traffic that reaches your gateway and therefore your backend services. Reducing this traffic helps protect the integrity and availability of those resources. |
+| *(Service & API)* Evaluate and enable all of the [Azure Policy Regulatory Compliance controls](/azure/api-management/security-controls-policy) that are relevant to your workload. | Having security policies in place ensures that your API Management instance aligns with your desired posture and stays aligned as the workload evolves. |
 
 ## Cost Optimization
 
@@ -146,10 +174,19 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 ### Recommendations
 
+These cost optimization recommendations can apply to either the service itself or for the traffic flowing through APIs and their policies. That distinction is made by using *(Service)* or *(API)* designators respectively on the recommendations.
+
 | Recommendation | Benefit |
 | :------------- | :------ |
-| **Use Developer tier in lower environments**| Use a cost-effective tier for nonproduction uses, proof-of-concept deployments, and initial cost modeling. |
-| **Scale-in when demand decreases**. Configure [autoscale rules](/azure/api-management/api-management-howto-autoscale) or other automated processes to reduce units when gateway capacity drops below defined thresholds. | Reduce unnecessary costs in production. |
+| *(Service)* Use the [least expensive tier](https://azure.microsoft.com/pricing/details/api-management/#pricing) that supports your workload's requirements. For example, use a Standard tier instead of a Premium tier if your workload wouldn't see a return on investment from the added functionality. | Avoids purchasing unused or underutilized capabilities. |
+| *(Service)* Use [nonproduction tiers](/azure/api-management/v2-service-tiers-overview) or transient infrastructure in lower environments, such as development environments, proof-of-concept deployments, and initial cost modeling activities. | This choice saves on resource costs for environments that can still be useful when not fully mirroring production's exact configuration or uptime requirements. |
+| *(Service)* Scale-in when demand decreases. Configure [autoscale rules](/azure/api-management/api-management-howto-autoscale) or other automated processes to reduce units when gateway capacity drops below defined thresholds. | Reduce unnecessary costs by matching capacity to demand. |
+| *(Service)* Calculate any cost advantages of a federated model for API management using [workspaces](/azure/api-management/workspaces-overview) to serve APIs while also providing team isolation. | Reduces the deployment and management surface, with the intent to get economies of scale out of your time and resource purchases. |
+| *(Service)* [Decommission workspaces](/rest/api/apimanagement/workspace-api/delete) as soon as they're no longer in use. | Avoids spend on unused resources. |
+| *(Service)* Use the [built-in cache](/azure/api-management/api-management-howto-cache) if your workload's cached data fits within the constraints of the built-in cache in your tier. | Avoids the costs involved in purchasing and maintaining an external Redis-compatible cache. |
+| *(Service)* Block abusive traffic before it reaches the gateway by using network controls, [DDoS protection](/azure/ddos-protection/ddos-protection-overview), and [web application firewalls](/azure/web-application-firewall/overview). Some tiers of API Management charge by HTTP request operations served by the gateway, so undesirable traffic (such as from bots) can cause additional requests that you're obligated to pay for.<br/><br/>You need to evaluate the cost of the blocking mechanism vs the estimated cost of HTTP operation reduction to evaluate if this will have a return on investment (ROI). | Reduces charges that are due to excessive malicious or nuisance HTTP operations against your gateway. |
+| *(API)* Optimize the [policy expressions and processing](/azure/api-management/api-management-policy-expressions) and code to avoid excessive compute resource usage, such as processor, networking, or memory. | This avoids unnecessary deployment of addition units to provide capacity for unoptimized policy implementations and code. |
+| *(API)* Evaluate cost of logic placement between your gateway, your backend, or your public entry point (such as Azure Front Door). The same processing can often happen at any of those layers, with tradeoffs for each, but some may offer cost savings because of unused capacity at that layer. For example, caching logic that was implemented in the backend might be able to be implemented at the gateway level cheaper by using the built-in cache and avoiding additional network and compute utilization on the backend services. | Capabilities running from the cost-effective location can reduce pressure on expensive resources, delegating them to resources that have spare capacity or are cheaper compute units. |
 
 ## Operational Excellence
 
@@ -176,9 +213,19 @@ Start your design strategy based on the [design review checklist for Operational
 
 ### Recommendations
 
+These operational excellence recommendations can apply to either the service itself or for the traffic flowing through APIs and their policies. That distinction is made by using *(Service)* or *(API)* designators respectively on the recommendations.
+
 | Recommendation | Benefit |
 | :------------- | :------ |
-| [**Log to Event Hubs**](/azure/api-management/api-management-howto-log-event-hubs) when processing large amounts of data. | Customize and reduce data that is logged. Enable near real-time analysis of API usage. |
+| *(Service)* Configure [Azure diagnostics resource logs for API Management](/azure/api-management/monitor-api-management-reference#resource-logs). | You capture platform-generated logs for routine, ad-hoc, or emergency usage, including security auditing. |
+| *(Service)* Use Event Grid for automation based on meaningful [events raised by your API Management instance](/azure/event-grid/event-schema-api-management), such as `APICreated`. | Enables you to build automation or notification tasks around key lifecycle events that happen in your API Management instance. |
+| *(Service)* Avoid using a [self-hosted gateway](/azure/api-management/self-hosted-gateway-overview) if a Microsoft-hosted gateway unit works in your scenario. | Enables you to build automation or notification tasks around key lifecycle events that happen in your API Management instance. |
+| *(Service)* Apply all of the [built-in Azure Policy policies](/azure/api-management/policy-reference) that help you govern your instance and constrain it to align with workload requirements, including security requirements. For example, use *deny* policies to prevent APIs from being exposed over HTTP or to prevent the enabling of the direct management REST API. Use *audit* policies if deny policies arn't available, or create custom deny policies if important to your workload. | Having policies in place ensures that your API Management instance aligns with your design and stays aligned as the workload evolves. |
+| *(Service)* Familiarize yourself with the [Diagnose and solve problems](/azure/api-management/diagnose-solve-problems) capability in the Azure portal.<br/><br/>Use the [Network status blade](/azure/api-management/api-management-using-with-vnet#verify-network-status) in the portal to troubleshoot network connectivity.| These tools can help your site reliability engineering individuals identify and troubleshoot gateway performance, service availability, and network connectivity issues in all environments. |
+| *(API)* Use [Event Hubs](/azure/api-management/api-management-howto-log-event-hubs) for log or event streams from API invocations that you might need to react on in near real-time or perform windowed operations against in a short timeframe. | Logging to Azure Monitor within your APIs is subject to [log data ingestion delay](/azure/azure-monitor/logs/data-ingestion-time), but logging to event hubs makes log entries available in near real-time. |
+| *(API)* Support the usage of [API tracing](/azure/api-management/api-management-howto-api-inspector#enable-tracing-for-an-api) in development to help developers understand their policy execution. | This capability optimizes developer productivity by providing introspection on the execution of policies within an API. Without this capability, developers need to introduce hacks in policy execution to gain their needed insight. |
+| *(API)* Design your APIs' versioning approach to align with API Management's [versioning and revision capabilities](/azure/api-management/api-management-versions) and factor this approach into your API deployment operations. | Using an API versioning strategy that is supported out of the box by API Management allows you to use those built-in capabilities instead of building custom solutions. |
+| *(Service & API)* Define a consistent and sustainable operational process for adding, modifying, and deleting APIs. Decide if this experience will be managed manually through the portal or implemented through an [APIOps process](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops). Prefer using an infrastructure-as-code (IaC) based approach over a portal based approach.<br/><br/>API Management's representation in the Resource Manager API consists of many [child resources](/azure/templates/microsoft.apimanagement/service/apis), so it's important to build a [layered approach](/azure/well-architected/operational-excellence/infrastructure-as-code-design#use-a-layered-approach-for-iac-pipelines) to IaC-based management of this collection of resource. | API specifications and their gateway implementations have change control processes that integrate with the rest of the workload's change control processes. This avoids handling changes to the backend APIs in a way that is substantially different than how they're exposed to the API clients through the gateway. |
 
 ## Performance Efficiency
 
@@ -201,43 +248,69 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Test performance**: Test performance under production conditions using Azure Load Testing.
 >
 > - **Evaluate adjacent services that may improve performance**: Caching policies and/or an external cache may improve performance of certain API operations. Azure Front Door or Application Gateway may be used for TLS offloading
+>
+> - **Review the documented limits and constraints**: [Azure API Management has limits and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-api-management-limits) like all services. Review the documented constraints and compare them against your workload's requirements to see if you'll need to design a solution that avoids the constraints.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 | :------------- | :------ |
-| [**Define a sampling percentage for Application Insights**](/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) | Satisfy observability data needs without affecting overall performance. |
-| **Use [Diagnose and solve problems](/azure/api-management/diagnose-solve-problems)** in the Azure portal.| Quickly Identify and troubleshoot gateway performance and service availability issues in production. |
-| **Use the [Network status blade](/azure/api-management/api-management-using-with-vnet?tabs=stv2#verify-network-status)** in the portal to troubleshoot network connectivity. | For instances in classic tiers that are deployed in a virtual network, validate service connectivity to dependencies such as Azure Storage. |
+| *(Service)* Dynamically scale to match demand. Configure [autoscale rules](/azure/api-management/api-management-howto-autoscale) or other automated processes to adjust gateway units to match a target usage capacity. | Allows the system to be elastic based on concurrent usage without starving the current deployed units or over-allocating capacity. |
+| *(API)* Minimize expensive processing tasks, such as generating large buffered payload sizes, using the [validate-content policy](/azure/api-management/validate-content-policy) on large request bodies, or maintaining a high number of active WebSockets. | Not stressing the scale units allows them to process more requests concurrently before needing to scale out. |
+| *(Service & API)* [Collect performance metrics](/azure/api-management/monitor-api-management-reference).<br/><br/>Common API performance metrics include:<br/><br/>- Request processing time for the gateway itself and for the full operation<br/>- Gateway unit resource utilization metrics<br/>- Throughput measurements like requests per second (RPS) or megabits per second (Mbps)<br/>- Cache hit ratio | With this data available, you are able to measure the actual performance against your workload's targets. |
+| *(Service & API)* Define a [sampling percentage for Application Insights](/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) that provides enough visibility without impacting performance. | Satisfy observability data needs without affecting overall performance. |
+| *(Service & API)* Evaluate performance impact of logic placement between your gateway, your backend, or your public entry point (such as Azure Front Door). The same processing tasks can often happen at any of those layers, with performance tradeoffs and limitations in optimization opportunities for each. If too much latency is being introduced by a task, such as an API management API policy, evaluate if that task can run elsewhere in a more optimized way. | Tasks that add latency to your APIs are now running on compute where that latency can be optimized to meet your workload requirements. |
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to API Management and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+Azure provides many built-in policies related to API Management and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-- Proper network controls are in place for the API Management gateway, such as deployment in a virtual network.
 - The gateway is configured for zone redundancy.
-- The service configuration endpoints aren't publicly accessible, and the Direct Management API is disabled.
+- Proper network controls are in place for the API Management gateway, such as deployment in a virtual network.
+- The service configuration endpoints aren't publicly accessible.
+- The direct Management REST API is disabled.
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/api-management/policy-reference) and other policies that might affect the security of the API Management gateway.
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Following the design guides in this article helps reduce notices surfaced in Advisor. Advisor might surface other recommendations in your production system as well, such as:
 
-For more information, see [Azure Advisor](/azure/advisor/).
+- Failure to require long JWT key sizes in the validate-jwt policy.
+- You used a legacy Resource Manager API version to deploy the resource.
+- API key tokens are reaching their expiry date.
+- Failure in a certificate rotation operation.
+
+For more information, see [Azure Advisor](/azure/advisor/advisor-reference-operational-excellence-recommendations#api-management).
 
 ## Tradeoffs
 
 You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
 
-:::image type="icon" source="../_images/trade-off.svg"::: Security and Cost Optimization
+:::image type="icon" source="../_images/trade-off.svg"::: High availability through redundancy and isolation
 
-- Network isolation features such as virtual network injection can increase costs because of their availability only in higher cost tiers of API Management. However, they can also improve security and reliability of the API Management gateway.
+Recommendations such *use at least three units* to avoid zonal outages comes as a financial cost that might not be tenable for your workload. Furthermore, recommendations such as *use a multi-region architecture* then requires at least six units (three per region) which adds more cost. The multi-region topology also comes with operational process impact such as coordinating safe deployment practices across them, bespoke scaling solutions, failover coordination with backends, and more.
 
-:::image type="icon" source="../_images/trade-off.svg"::: Reliability and Cost Optimization
+Isolating workloads across workspaces or across API Management instances increases operational complexities as you're effectively managing a multitenant system with compute isolation.
 
-- Use of availability zones, multiple regions, and workspaces can increase costs because of their availability only in the Premium tier of API Management. However, they can also improve reliability and performance of the API Management gateway.
+:::image type="icon" source="../_images/trade-off.svg"::: Scale to match demand
 
-## Related content
+If you're automatically scaling out to match demand from all of your well-behaving clients, you've already accounted for that in your cost models. However, that same capability also allows the service to scale to handle excessive nuisance (bot) and malicious traffic.
 
-[Add links.]
+Mitigating undesired traffic always has a cost somewhere. If you externalize the mitigation through a web application firewall and DDoS protection, those come at a cost. If you mitigate by allowing your service to scale to absorb the traffic, in hopes your legitimate clients aren't starved, then you're paying for those added units. Setting upper limits on scale can cap spending, but excessive abusive use of your API will eventually cause reliability problems for legitimate clients.
+
+:::image type="icon" source="../_images/trade-off.svg"::: Federated or distributed
+
+A fundamental decision you make with API Management is to either colocate disparate workloads in a single API Management instance, or to instead isolate workloads across multiple API Management instances in a fully autonomous topology.
+
+API Management has capabilities with workspaces to effectively operate as a multitenant, colocation platform for multiple API teams. The pricing models for the tiers reflect this, and service costs can be amortized across all of the gateways' tenants. As with any colocation platform, outages and misconfiguration can cause widespread impact across unrelated workloads sharing that infrastructure.
+
+A fully distributed model where every workload team manages their own instances has duplicative cost implications and routine operations redundancy, but comes with built-in blast radius mitigation for reliability, security, and performance incidents.
+
+## Next steps
+
+The following articles demonstrate some of the recommendations discussed in this article.
+
+- [Use API Management as a gateway for Azure OpenAI](/azure/architecture/ai-ml/guide/azure-openai-gateway-guide) in workloads.
+- [APIOps documentation](https://azure.github.io/apiops/) and [Automated API deployments using APIOps](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops)
+- [Azure API Management architecture in an application landing zone](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function) and [Azure landing zone platform considerations](/azure/cloud-adoption-framework/scenarios/app-platform/api-management/landing-zone-accelerator) for API Management deployments.
