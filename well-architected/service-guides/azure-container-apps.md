@@ -4,7 +4,7 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: igorjnzl
 ms.author: igorjovovic
 ms.topic: conceptual
-ms.date: 01/16/2024
+ms.date: 04/05/2025
 ms.product: azure-container-apps
 azure.category:
   - containers
