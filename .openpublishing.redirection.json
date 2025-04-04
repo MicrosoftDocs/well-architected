@@ -2333,7 +2333,7 @@
 		{
 			"source_path": "well-architected/service-guides/api-management/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		}
 	]
 }
