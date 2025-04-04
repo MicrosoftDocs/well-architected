@@ -14,7 +14,7 @@ azure.category:
 
 Azure Container Apps is a fully managed serverless container service that runs microservices and containerized applications on Azure. It provides built-in autoscaling, including scale to zero, and supports multiple programming languages and frameworks. Container Apps integrates with Azure Kubernetes Service (AKS) for advanced networking and monitoring. It also provides seamless deployment and management of containerized applications without the need to manage underlying infrastructure. It supports both HTTP-based and event-driven applications, so it's ideal for building modern, scalable, and resilient cloud-native applications.
 
-This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chosen Container Apps as the compute platform for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
+This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Container Apps as the compute platform for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
 > [!IMPORTANT]
 >
@@ -46,34 +46,33 @@ Start your design strategy based on the [design review checklist for Reliability
 > [!div class="checklist"]
 >
 > - **Choose appropriate SKU configurations.** Select an environment SKU that aligns with the resource and performance requirements of your container apps.
-> - **Build redundancy to improve resiliency.** For ingress-exposed (HTTP or TCP) apps, use at least three replicas to ensure availability. To minimize cold starts, configure a minimum number of always-ready replicas.
+> - **Build redundancy to improve resiliency.** For ingress-exposed (HTTP or Transmission Control Protocol (TCP)) apps, use at least three replicas to help ensure availability. To minimize cold starts, configure a minimum number of always-ready replicas.
 >
->   Use availability zones as part of your resiliency strategy to increase availability when you deploy to a single region. Many Azure regions provide availability zones. The zones are close enough to have low-latency connections among them, but far enough apart to reduce the likelihood that local outages will affect more than one zone.
+>   Use availability zones as part of your resiliency strategy to increase availability when you deploy to a single region. Many Azure regions provide availability zones. The zones are positioned close enough to ensure low-latency connections among them, but far enough apart to minimize the risk of local outages affecting multiple zones.
 >
->   For critical workloads, deploy Container Apps across multiple regions and utilize [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic) for traffic management to ensure high availability and business continuity. In the event of a regional outage, traffic can be automatically redirected to a secondary region, minimizing downtime and data loss.
-> - **Implement horizontal auto-scaling.** Configure auto-scaling using scale rules based on HTTP requests, TCP connections, or custom metrics (like CPU and memory thresholds, Azure Service Bus, Azure Event Hubs, Apache Kafka, and Redis) to dynamically manage loads and maintain high availability during peak usage times.
+>   For critical workloads, deploy Container Apps environments across multiple regions and use [Azure Front Door](/azure/frontdoor/front-door-overview) or [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview) for traffic management. These services help ensure high availability and business continuity. If a regional outage occurs, you can automatically redirect traffic to a secondary region to minimize downtime and data loss.
+> - **Implement horizontal autoscaling.** Configure autoscaling by using scale rules that are based on HTTP requests, TCP connections, or custom metrics, such as CPU and memory thresholds. You can define custom metrics in Azure Service Bus, Azure Event Hubs, Apache Kafka, and Azure Cache for Redis. Use autoscaling to dynamically manage loads and maintain high availability during peak usage times.
 >
->   Ensure your container apps can still serve requests within your service-level objective (SLO) under high-load.
-> - **Monitor reliability and overall health indicators of the container app.** Collect logs and metrics to monitor health, identify performance and reliability trends, and troubleshoot problems. Review the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your workload.
+>   Ensure that your container apps can still serve requests within your service-level objective (SLO) under high load.
+> - **Monitor reliability and overall health indicators of the container app.** Collect logs and metrics to monitor health, identify performance and reliability trends, and troubleshoot problems. For information about designing the reliability and health monitoring solution for your workload, see [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling).
 >
->   **Implement monitoring tooling and alerts.** Activate monitoring tools, like Azure Monitor and OpenTelemetry and set up alerts to detect and respond to reliability-impacting events promptly.
+>   *Implement monitoring tooling and alerts.* Activate monitoring tools, like Azure Monitor and OpenTelemetry. Set up alerts to promptly detect and respond to events that affect reliability.
 >
->   **Configure health probes.** Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
+>   *Configure health probes.* Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
 >
-> - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications by ensuring quick recovery from failures without manual intervention. Use health probes to detect failing containers and configure resiliency policies to automatically handle retries and circuit breakers.
-
+> - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications. They help ensure quick recovery from failures without manual intervention. Use health probes to detect failing containers and configure resiliency policies to automatically handle retries and circuit breakers.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-| Enable Container Apps [avaliability zones support](/azure/reliability/reliability-azure-container-apps#availability-zone-support) to automatically distribute replicas across the zones in a region. Traffic is load balanced among the replicas. | In the event of zone failure, traffic is automatically routed to the replicas in the remaining zones. |
-| Define [resource quotas](/azure/container-apps/quotas) and limits. | Prevents resource contention, ensuring fair allocation and avoiding performance degradation. Use monitoring over time to observe actual utilization of resources and adjust quotas/limits accordingly.|
-| Use [volume mounts](/azure/container-apps/storage-mounts#azure-files) to store data outside of the container in stateful applications. For enhanced data resilience, utilize Azure Zone-Redundant Storage (ZRS) to ensure high availability and durability of your data. | Ensures data persistence and integrity across container restarts and failures. By leveraging ZRS, you can protect against data loss due to zonal failures, providing a robust solution for critical stateful applications. |
-| Implement liveness, readiness, and startup [health probes](/azure/container-apps/health-probes?) for your container apps.</br></br>Liveness probes detect and restart containers that are in a failed state.</br>Recommended settings: `failureThreshold: 3`, `periodSeconds: 10`, `timeoutSeconds: 5`, `successThreshold: 1`, and `initialDelaySeconds: 10`</br></br>Readiness probes ensure only healthy containers receive traffic.</br>Recommended settings: `failureThreshold: 60`, `periodSeconds: 1`, `timeoutSeconds: 1`, `successThreshold: 1`, and `initialDelaySeconds: 5`</br></br>Startup probes prevent premature restarts by allowing slow-starting apps to initialize properly.</br>Recommended settings: `failureThreshold: 60`, `periodSeconds: 1`, `timeoutSeconds: 1`, `successThreshold: 1`, and `initialDelaySeconds: 0`| Properly configuring these probes ensures that your container apps are running smoothly and ready to handle traffic. Incorrect probe configurations can lead to unintended restarts or downtime.|  
-| Leverage Container Apps' built-in [observability features](/azure/container-apps/log-options) such as log streaming, container console, Azure Monitor metrics, and alerts to ensure proactive monitoring and efficient debugging. | Container Apps provides deep observability support, including integration with the .NET Aspire dashboard and Java metrics, enabling enhanced insights for these key ecosystems. Additionally, leverage the OpenTelemetry (OTel) collector for comprehensive distributed tracing and metrics collection. These features improve application reliability by allowing quick identification and resolution of issues. |
-| Implement service discovery [resiliency policies](/azure/container-apps/service-discovery-resiliency) such as retries, timeouts, and circuit breakers to proactively prevent, detect, and recover from service request failures. | This enhances the reliability of your container apps by ensuring smoother and more resilient inter-service communication. |
-| Implement horizontal [auto-scaling](/azure/container-apps/scale-app) using scale rules based on HTTP requests, TCP connections, or custom metrics (like CPU and memory utilization, Azure Service Bus, Azure Event Hubs, Apache Kafka, and Redis). | The workload will be able to dynamically manage loads and maintain high availability during peak usage times.|
+| Enable Container Apps [availability zone support](/azure/reliability/reliability-azure-container-apps#availability-zone-support) to automatically distribute replicas across the zones in a region. Traffic is load balanced among the replicas. | If a zone failure occurs, traffic is automatically routed to the replicas in the remaining zones. |
+| Define [resource quotas](/azure/container-apps/quotas) and limits. | Prevent resource contention to help ensure fair allocation and avoid performance degradation. Use monitoring over time to observe actual resource usage and adjust quotas and limits accordingly.|
+| Use [volume mounts](/azure/container-apps/storage-mounts#azure-files) to store data outside the container in stateful applications. For enhanced data resilience, use Azure zone-redundant storage (ZRS) to help ensure high availability and durability of your data. | Ensure data persistence and integrity across container restarts and failures. Use ZRS to protect against data loss from zonal failures, which provides a robust solution for critical stateful applications. |
+| Implement liveness, readiness, and startup [health probes](/azure/container-apps/health-probes) for your container apps.</br></br>Liveness probes detect and restart containers that are in a failed state.</br>Recommended settings: `failureThreshold: 3`, `periodSeconds: 10`, `timeoutSeconds: 5`, `successThreshold: 1`, and `initialDelaySeconds: 10`</br></br>Readiness probes ensure that only healthy containers receive traffic.</br>Recommended settings: `failureThreshold: 60`, `periodSeconds: 1`, `timeoutSeconds: 1`, `successThreshold: 1`, and `initialDelaySeconds: 5`</br></br>Startup probes prevent premature restarts by allowing slow-starting apps to initialize properly.</br>Recommended settings: `failureThreshold: 60`, `periodSeconds: 1`, `timeoutSeconds: 1`, `successThreshold: 1`, and `initialDelaySeconds: 0`| Proper probe configuration helps ensure that your container apps run smoothly and can handle traffic. Improper probe configurations can lead to unintended restarts or downtime.|  
+| Use the Container Apps built-in [observability features](/azure/container-apps/log-options), such as log streaming, container console, and Azure Monitor metrics and alerts, to ensure proactive monitoring and efficient debugging. | Container Apps provides deep observability support, including integration with the .NET Aspire dashboard and Java metrics. These tools enable enhanced insights for key ecosystems. You can also use the OpenTelemetry collector for comprehensive distributed tracing and metrics collection. These features improve application reliability because you can quickly identify and resolve problems. |
+| Implement service discovery [resiliency policies](/azure/container-apps/service-discovery-resiliency), such as retries, time-outs, and circuit breakers, to proactively prevent, detect, and recover from service request failures. | Enhance the reliability of your container apps by ensuring smoother and more resilient inter-service communication. |
+| Implement horizontal [autoscaling](/azure/container-apps/scale-app) by using scale rules that are based on HTTP requests, TCP connections, or custom metrics, such as CPU and memory thresholds. You can define custom metrics in Service Bus, Event Hubs, Apache Kafka, and Azure Cache for Redis. | The workload can dynamically manage loads and maintain high availability during peak usage times.|
 
 ## Security
 
@@ -88,39 +87,39 @@ Start your design strategy based on the [design review checklist for Security](.
 > [!div class="checklist"]
 >
 > - **Review security baselines.** To enhance the security posture of your workload, review the [security baseline for Container Apps](/security/benchmark/azure/baselines/azure-container-apps-security-baseline).
-> - **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Use role-based access control (RBAC) with Microsoft Entra ID for [least privilege access](/azure/aks/azure-ad-rbac).
+> - **Integrate with Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Use [role-based access control (RBAC)](/azure/aks/azure-ad-rbac) with Microsoft Entra ID for least privilege access.
 >
->   **Use managed identities with Microsoft Entra ID** for secure, credential-free access to Azure resources.  
-> - **Implement segmentation and network controls.** Deploy private container apps environments and internal ingress mode for isolation from the public internet.  
+>   *Use managed identities with Microsoft Entra ID* for secure, credential-free access to Azure resources.  
+> - **Implement segmentation and network controls.** Deploy private container apps environments and use internal ingress mode for isolation from the public internet.  
 >
->   **Control egress traffic.** To prevent data exfiltration, integrate your container apps environment into a custom virtual network with user-defined routes to secure outbound traffic.  
+>   *Control egress traffic.* To prevent data exfiltration, integrate your container apps environment into a custom virtual network that has user-defined routes to help secure outbound traffic.  
 >
-> - **Maintain a hardened workload's software supply chain.** Implement container-aware scanning in your secure CI/CD pipelines to detect vulnerabilities and ensure the integrity of your container images. Refer to the [Containers Secure Supply Chain](/azure/security/container-secure-supply-chain/articles/container-secure-supply-chain-implementation/containers-secure-supply-chain-overview) documentation for details on this topic.  
+> - **Maintain a hardened workload's software supply chain.** Implement container-aware scanning in your secure CI/CD pipelines. This feature detects vulnerabilities and helps ensure the integrity of your container images. For more information, see [Containers Secure Supply Chain](/azure/security/container-secure-supply-chain/articles/container-secure-supply-chain-implementation/containers-secure-supply-chain-overview).
 >
->   **Reduce the attack surface.** Harden container images and remove unused components. Use lean and minimal base images like Alpine and Ubuntu Chiseled.
+>   *Reduce the attack surface.* Harden container images and remove unused components. Use lean and minimal base images like Alpine and Chiselled Ubuntu images.
 >
->   **Integrate with Microsoft Defender.** Use Microsoft Defender for Containers to scan images in ACR.
-> - **Encrypt data at rest and in transit.** Use modern industry-standard methods to guard confidentiality and integrity.
+>   *Integrate with Microsoft Defender.* Use Microsoft Defender for Containers to scan images in Azure Container Registry.
+> - **Encrypt data at rest and data in transit.** Use modern industry-standard methods to guard confidentiality and integrity.
 >
->   **Use Azure Key Vault.** Securely store sensitive configuration values and secrets in Azure Key Vault to protect them from unauthorized access.  
+>   *Use Azure Key Vault.* Store sensitive configuration values and secrets in Key Vault to protect them from unauthorized access.  
 >
->   **Enable mTLS (Mutual TLS).** Use mutual TLS to authenticate and encrypt traffic between services, enhancing security by ensuring both parties are verified.
+>   *Enable mutual Transport Layer Security (mTLS).* Use mTLS to authenticate and encrypt traffic between services. This feature verifies both parties, which enhances security.
 >
->   **Enforce HTTPS.** Configure Envoy proxy to redirect all HTTP traffic to HTTPS (default is allowInsecure: false).  
-> - **Implement a security monitoring strategy.** Capture detailed logs for monitoring and auditing. Send system and console logs to a Log Analytics workspace, Event Hub, or third-party solution for monitoring and auditing purposes. Scrub sensitive data from logs as console logs originate from stderr and stdout in the app.
+>   *Enforce HTTPS.* Configure Envoy proxy to redirect all HTTP traffic to HTTPS. The default configuration for Envoy is `allowInsecure: false`.  
+> - **Implement a security monitoring strategy.** Capture detailed logs for monitoring and auditing. Send system and console logs to a Log Analytics workspace, Event Hubs, or a non-Microsoft solution for monitoring and auditing purposes. Scrub sensitive data from logs. Console logs originate from the `stderr` and `stdout` streams in the app.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Use [managed identities](/azure/container-apps/managed-identity) to access other Entra ID protected resources. Assigning a managed identity to your container app allows you to access other Entra protected Azure resources, such as a storage account or key vault without having to use keys/passwords. | Centralizes identity management and eliminates the need for manual credential management. Simplifies secure access to Azure resources. |
-| Deploy Container Apps in a [private network](/azure/container-apps/networking) to integrate them into an existing virtual network. Features are available such as using private application connectivity, NSG attachment, and communicating with resources using a private IP. | Provides isolation from the public internet and enables secure communication between container apps and other network resources.|
-| Use [Azure Key Vault](/azure/container-apps/key-vault-certificates-manage) to securely manage certificates and app secrets. Certificates and other app secrets are kept separate from your app's configuration, and Key Vault provides an access audit log of when they are updated, retrieved, and rotated. | Protects sensitive information, ensures compliance, and supports secure secret management with logging and certificate rotation capabilities. |
-| Use [Application Gateway with WAF](/azure/container-apps/waf-app-gateway) enabled to secure HTTP(S) traffic to publish your container app to its consumers via a reverse proxy. Web application firewall scans incoming HTTP traffic for potential OWASP attacks. | Enhances security by protecting against common web vulnerabilities and providing centralized traffic management. |
-| Authenticate with Microsoft Entra ID to [Azure Container Registry](/azure/container-apps/managed-identity-image-pull) to avoid the use of administrative credentials. You can control access via role-based access control. | Ensures secure and credential-free authentication, with granular access control via RBAC for container image management. |
-| Use [NSG rules to secure traffic](/azure/container-apps/firewall-integration) accessing your internal container apps endpoint. Using NSG rules allows more granular control of which virtual networks can communicate with your container apps. | Enhances network security by restricting access to only trusted networks, minimizing attack surfaces. |
-| Control outbound traffic with [user-defined network routes](/azure/container-apps/user-defined-routes) to control routing of how your container(s) communicate to resources outside of the container environment. You can route traffic to Azure Firewall, NAT gateway, or a third-party appliance. | Ensures controlled and secure outbound traffic flow, supporting advanced routing and inspection policies. |
-| Configure [logging options](/azure/container-apps/log-options) to send logs to a Log Analytics workspace, Event Hub, or third-party solution.| Supports centralized monitoring, diagnostics, and auditing while ensuring compliance with sensitive data handling policies.|
+| Use [managed identities](/azure/container-apps/managed-identity) to access Microsoft Entra ID protected resources. Assign a managed identity to your container app to access Microsoft Entra ID protected Azure resources, such as a storage account or key vault, without having to use keys or passwords. | Centralize identity management and eliminate the need for manual credential management. Simplify secure access to Azure resources. |
+| Deploy container apps in a [private network](/azure/container-apps/networking) to integrate them into an existing virtual network. Use features such as private application connectivity, network security group (NSG) attachment, and resource communication via a private IP address. | Provide isolation from the public internet and enable secure communication between container apps and other network resources.|
+| Use [Key Vault](/azure/container-apps/key-vault-certificates-manage) to manage certificates and app secrets with enhanced security. Key Vault keeps certificates and other app secrets separate from your app's configuration. It also provides an access audit log that details when certificates and secrets are updated, retrieved, and rotated. | Help protect sensitive information, ensure compliance, and support secure secret management by using logging and certificate rotation capabilities. |
+| Use [Azure Application Gateway with Web Application Firewall](/azure/container-apps/waf-app-gateway) enabled to help secure HTTP and HTTPS traffic when you publish your container app via a reverse proxy. Web Application Firewall scans incoming HTTP traffic for potential Open Web Application Security Project (OWASP) attacks. | Enhance security by protecting against common web vulnerabilities and providing centralized traffic management. |
+| Authenticate with Microsoft Entra ID to [Container Registry](/azure/container-apps/managed-identity-image-pull) to avoid the use of administrative credentials. You can control access via role-based access control (RBAC). |  Enable granular access control via RBAC for container image management, which helps ensure secure and credential-free authentication. |
+| Use [NSG rules to help secure traffic](/azure/container-apps/firewall-integration) that accesses your internal container apps endpoint. NSG rules provide more granular control of which virtual networks can communicate with your container apps. | Enhance network security by restricting access to only trusted networks, which minimizes attack surfaces. |
+| Control outbound traffic by using [user-defined network routes](/azure/container-apps/user-defined-routes). Control how your containers communicate with resources outside of the container environment. You can route traffic to Azure Firewall, Azure NAT Gateway, or a non-Microsoft appliance. | Ensure controlled and secure outbound traffic flow, which supports advanced routing and inspection policies. |
+| Configure [logging options](/azure/container-apps/log-options) to send logs to a Log Analytics workspace, Event Hubs, or a non-Microsoft solution.| Support centralized monitoring, diagnostics, and auditing while ensuring compliance with sensitive data handling policies.|
 
 ## Cost Optimization
 
@@ -136,26 +135,26 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Select appropriate pricing plans.** Choose the most cost-effective pricing plans for your container apps based on workload requirements and expected usage patterns.
 >
->   Take advantage of the [Azure savings plan for compute](/pricing/offers/savings-plan-compute/) for Container Apps by committing to a fixed hourly spend for 1 or 3 years. With a savings plan you can achieve cost savings of up to 17% compared to pay-as-you-go pricing, optimizing your budget and reducing overall expenses for long-term, predictable workloads.
+>   Take advantage of the [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute) by committing to a fixed hourly rate for one or three years. Use a savings plan to save up to 17% compared to pay-as-you-go pricing. Optimize your budget and reduce overall expenses for long-term, predictable workloads.
 >
-> - **Optimize workload components costs.** Regularly review and adjust CPU and memory allocations to match the needs of your applications, avoiding over-provisioning and minimizing costs.  
+> - **Optimize workload component costs.** Regularly review and adjust CPU and memory allocations to match the needs of your applications. This practice prevents over-provisioning and minimizes costs.  
 >
->   **Use managed disk tiers.** When using volume mounts, select appropriate managed disk tiers and sizes to optimize storage costs for persistent data, ensuring you only pay for what you need.  
+>   *Use managed disk tiers.* When you use volume mounts, select appropriate managed disk tiers and sizes to optimize storage costs for persistent data. Only pay for what you need.  
 >
->   **Use streamlined and optimized container images.** Use streamlined and optimized container images to reduce storage and network costs, improving startup times and resource efficiency.  
-> - **Optimize scaling costs.** Configure auto-scaling policies to automatically scale in resources during low-demand periods and scale out during peak times, ensuring efficient resource usage.  
-> - **Optimize networking costs.** Optimize network paths to minimize data transfer costs, especially for applications with high bandwidth volumes.  
-> - **Leverage cost management tools.** Utilize Azure Cost Management and Billing tools to track and analyze spending, set budgets, create cost alerts, and implement consistent tagging across all resources. 
+>   *Use streamlined and optimized container images* to improve startup times and resource efficiency, which reduce storage and network costs.  
+> - **Optimize scaling costs.** Configure autoscaling policies to automatically scale down resources during low-demand periods and scale up during peak times. This practice ensures efficient resource usage.  
+> - **Optimize networking costs.** Optimize network paths to minimize data transfer costs, especially for applications that have high bandwidth volumes.  
+> - **Use cost management tools.** Use Microsoft Cost Management tools to track and analyze spending, set budgets, create cost alerts, and implement consistent tagging across resources. 
 >
->    These tools provide detailed visibility into cloud spending, helps identify cost-saving opportunities, ensures adherence to budgetary constraints, and allows for granular tracking and reporting of costs associated with specific workloads, applications, and environments.  
+>    These tools provide detailed visibility into cloud spending, help identify cost-saving opportunities, ensure adherence to budgetary constraints, and allow for granular tracking and reporting of costs associated with specific workloads, applications, and environments.  
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Regularly review and adjust CPU, memory allocations, and other [metrics](/azure/container-apps/metrics#available-metrics) to align with the actual needs of your applications.| Prevents over-provisioning and reduces unnecessary costs by ensuring resources are right-sized for workloads. |
-| Implement scale-to-zero [auto-scaling](/azure/container-apps/scale-app) rules for apps that don't need to run 24/7.| Eliminates costs during periods of inactivity, ensuring you only pay for resources when needed. This approach significantly reduces expenses for apps with variable or infrequent usage patterns. |
-| Choose the appropriate [managed disk tiers](/azure/container-apps/storage-mounts) for stateful applications. Base your selection on storage performance and capacity needs, and consider using reserved disks for predictable workloads.| Ensures you only pay for the necessary storage performance, avoiding excess costs from over-provisioned storage. Reserved disks can provide significant cost savings for long-term storage requirements by offering discounts compared to pay-as-you-go pricing.|
+| Regularly review and adjust CPU, memory allocations, and other [metrics](/azure/container-apps/metrics#available-metrics) to align with the actual needs of your applications.| Prevent over-provisioning and reduce unnecessary costs by ensuring that resources are rightsized for workloads. |
+| Implement scale-to-zero [autoscaling](/azure/container-apps/scale-app) rules for apps that don't need to continuously run.| Eliminate costs during periods of inactivity, which ensures that you only pay for resources when you need them. This approach significantly reduces expenses for apps that have variable or infrequent usage patterns. |
+| Choose the appropriate [managed disk tiers](/azure/container-apps/storage-mounts) for stateful applications. Base your selection on storage performance and capacity needs, and consider using reserved disks for predictable workloads.| Ensure that you only pay for the necessary storage performance, which prevents excess costs from over-provisioned storage. Reserved disks can provide significant cost savings for long-term storage requirements by offering discounts compared to pay-as-you-go pricing.|
 
 ## Operational Excellence
 
@@ -169,29 +168,29 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Implement an infrastructure as code (IaC) deployment approach.** Implement template-based deployments using tools like Bicep or Terraform. Ensure all deployments are repeatable, traceable, and stored in a source code repository.
+> - **Implement an infrastructure as code (IaC) deployment approach.** Implement template-based deployments by using tools like Bicep or Terraform. Ensure that all deployments are repeatable, traceable, and stored in a source code repository.
 >
 > - **Automate infrastructure and workload deployments.** Use standard software solutions to manage, integrate, and automate the deployment of your workloads.
 >
->   Ensure that deployment pipelines are set up to redeploy the environment to another region in case of a regional outage. This approach ensures critical data and configurations can be quickly restored and redeployed in another region, enhancing disaster recovery capabilities and minimizing downtime during regional failures.
+>   *Set up deployment pipelines* to redeploy the environment to another region if a regional outage occurs. This approach helps you quickly restore and redeploy critical data and configurations in another region, which enhances disaster recovery capabilities and minimizes downtime during regional failures.
 >
->   Build automated processes to bootstrap your environments with necessary configurations and deployments using CI/CD pipelines.
-> - **Implement a comprehensive monitoring strategy.** Configure diagnostics settings to capture logs, metrics, and diagnostics data. Use tools like Azure Monitor and Application Insights to track application health and performance,  and identify trends in performance and reliability, and troubleshoot problems.
+>   *Build automated processes* to set up your environments with necessary configurations and deployments by using CI/CD pipelines.
+> - **Implement a comprehensive monitoring strategy.** Configure diagnostics settings to capture logs, metrics, and diagnostics data. Use tools like Azure Monitor and Application Insights to track application health and performance, identify trends in performance and reliability, and troubleshoot problems.
 >
->   **Emit telemetry for workloads.** Design your workloads to emit telemetry data, including liveliness and readiness statuses, to facilitate monitoring and troubleshooting.  
+>   *Emit telemetry for workloads.* Design your workloads to emit telemetry data, including liveliness and readiness statuses, to facilitate monitoring and troubleshooting.  
 >
->   **Monitor performance metrics.** Continuously monitor key performance metrics such as CPU, memory, and network usage to identify opportunities for cost optimization and operational efficiencies.
-> - **Implement chaos engineering.** Apply chaos engineering practices using tools such as Azure Chaos Studio to identify potential reliability issues within your Container Apps environment. Conduct experiments to ensure your applications can withstand unexpected failures. Conduct performance testing using tools such as Azure Load Testing to ensure scaling rules work as expected without disruptions to clients.  
-> - **Implement consistent resource tagging** across all Container Apps and other workload resources. Consistent tagging facilitates efficient resource management, cost tracking, and automation.
+>   *Monitor performance metrics.* Continuously monitor key performance metrics such as CPU, memory, and network usage to identify opportunities for cost optimization and operational efficiencies.
+> - **Implement chaos engineering.** Apply chaos engineering practices by using tools such as Azure Chaos Studio to identify potential reliability problems within your Container Apps environment. Conduct experiments to ensure that your applications can withstand unexpected failures. Conduct performance testing by using tools such as Azure Load Testing to make sure scaling rules work as expected without disruptions to clients.  
+> - **Implement consistent resource tagging** across all container apps and other workload resources. Consistent tagging facilitates efficient resource management, cost tracking, and automation.
 > - **Enforce workload governance.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your workload's resources.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Store your Container Apps environment configurations as [infrastructure as code (IaC)](/azure/templates/microsoft.app/containerapps#bicep-resource-definition) and ensure that deployment pipelines are set up to redeploy the environment to another region in case of a regional outage. | This approach ensures critical data and configurations can be quickly restored and redeployed in another region, enhancing disaster recovery capabilities and minimizing downtime during regional failures. |  
-| Use [revisions](/azure/container-apps/revisions-manage) to implement blue-green or canary deployments.</br></br>This requires the use of [tagging and versioning container images appropriately](/azure/container-registry/container-registry-image-tag-version). Labels can be used on revisions to facilitate sharing of revisions, for example, for UAT or limited previews. | Minimizes downtime and reduces risk during releases by enabling safe rollouts and quick rollbacks.|
-| [Configure Azure Monitor](/azure/container-apps/log-options) and Application Insights. | To track the performance and health of your container apps provide detailed insights into application performance and reliability, allowing for proactive issue detection and resolution. |
+| Store your Container Apps environment configurations as [IaC](/azure/templates/microsoft.app/containerapps#bicep-resource-definition), and set up deployment pipelines to redeploy the environment to another region if a regional outage occurs. | Ensure that you can quickly restore and redeploy critical data and configurations in another region, which enhances disaster recovery capabilities and minimizes downtime during regional failures. |  
+| Use [revisions](/azure/container-apps/revisions-manage) to implement blue-green deployments or canary deployments.<br><br>Revisions require that you [tag and version container images appropriately](/azure/container-registry/container-registry-image-tag-version). You can use labels on revisions to facilitate sharing, for example for user acceptance testing or limited previews. | Minimize downtime and reduce risk during releases by enabling safe rollouts and quick rollbacks.|
+| [Configure Azure Monitor](/azure/container-apps/log-options) and Application Insights. | Track the performance and health of your container apps and provide detailed insights into application performance and reliability. Use these insights to proactively detect and resolve problems. |
 
 ## Performance Efficiency
 
@@ -205,39 +204,39 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Develop a detailed capacity plan** to ensure your container apps have sufficient resources to handle varying loads while avoiding over-provisioning, leading to cost savings and optimal performance.
+> - **Develop a detailed capacity plan** to ensure that your container apps have sufficient resources to handle varying loads while avoiding over-provisioning. A capacity plan helps optimize cost and performance.
 >
->    Regularly update your plan to document the correct resource allocations, auto scale settings, and failover strategies for your container apps. This approach ensures critical data and configurations can be quickly restored and redeployed in another region, enhancing disaster recovery capabilities and minimizing downtime during regional failures.
-> - **Enable auto-scaling.** Configure auto-scaling policies to automatically adjust the number of container instances based on real-time demand, ensuring optimal performance during peak and off-peak times.  
-> - **Optimize resource allocation.** Continuously monitor and adjust CPU and memory allocations based on performance metrics to ensure efficient resource utilization and prevent over-provisioning.  
-> - **Conduct load testing.** Perform regular load testing to evaluate the performance and scalability of your container apps under different conditions, ensuring they can handle expected traffic levels.  
-> - **Separate workloads.** Deploy critical and sensitive workloads in separate Container Apps environments to avoid noisy neighbor issues. By splitting workloads across multiple environments, you can ensure that critical applications have dedicated resources and aren't impacted by the performance demands of less critical applications.  
+>    Regularly update your plan to document the correct resource allocations, autoscale settings, and failover strategies for your container apps. This approach ensures that you can quickly restore and redeploy critical data and configurations in another region, which enhances disaster recovery capabilities and minimizes downtime during regional failures.
+> - **Enable autoscaling.** Configure autoscaling policies to automatically adjust the number of container instances based on real-time demand, which ensures optimal performance during peak and off-peak times.  
+> - **Optimize resource allocation.** Continuously monitor and adjust CPU and memory allocations based on performance metrics to ensure efficient resource usage and prevent over-provisioning.  
+> - **Conduct load testing.** Perform regular load testing to evaluate the performance and scalability of your container apps under different conditions. Testing helps ensure that container apps can handle expected traffic levels.  
+> - **Separate workloads.** Deploy critical and sensitive workloads in separate Container Apps environments to avoid noisy neighbor problems. Distribute workloads across multiple environments to ensure that critical applications have dedicated resources. This method also ensures that the performance demands of less-critical applications don't affect critical applications.  
 
 ### Recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Configure [auto-scaling](/azure/container-apps/scale-app) policies to automatically adjust the number of container instances in response to resource demands. | Dynamically scaling resources up or down as needed helps maintain application performance and cost-efficiency, ensuring that resources are available when needed and conserved when not. Verify with load testing experiments like Azure Load Testing and adjust auto-scaling policies as needed. |
-| Use the [Workload Profiles](/azure/container-apps/workload-profiles-overview) dedicated tier for applications that require predictable performance and guaranteed resource allocation. | Provides dedicated resources for critical applications, ensuring consistent performance and reducing the risk of resource contention. |
-| Use custom scaling [metrics](/azure/container-apps/metrics#available-metrics), such as those based on application-specific data, to drive auto-scaling decisions. | Ensures scaling actions are based on relevant workload demands, improving the efficiency and responsiveness of your container apps. |
+| Configure [autoscaling](/azure/container-apps/scale-app) policies to automatically adjust the number of container instances in response to resource demands. | Help maintain application performance and cost-efficiency. Ensure that resources are available when needed and conserved when not needed. Use Azure Load Testing to do load testing experiments, and adjust autoscaling policies as needed. |
+| Use the [workload profiles](/azure/container-apps/workload-profiles-overview) dedicated tier for applications that require predictable performance and guaranteed resource allocation. | Provide dedicated resources for critical applications, which ensures consistent performance and reduces the risk of resource contention. |
+| Use custom scaling [metrics](/azure/container-apps/metrics#available-metrics), such as metrics based on application-specific data, to drive autoscaling decisions. | Ensure that scaling actions are based on relevant workload demands, which improves the efficiency and responsiveness of your container apps. |
 
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to Container Apps and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-- **Diagnostics settings should be enabled:** Enable logging by category group for Container Apps environments (`microsoft.app/managedenvironments`) to Storage. This ensures that logs and metrics are consistently collected for monitoring, troubleshooting, and compliance.
+- **Diagnostics settings should be enabled:** Enable logging by category group for Container Apps environments (`microsoft.app/managedenvironments`) to send information to Storage. This setting ensures that Storage consistently collects logs and metrics for monitoring, troubleshooting, and compliance.
 
-- **Authentication for Container Apps should be enabled:** Ensure authentication is enabled to prevent anonymous HTTP requests and authenticate requests with tokens before they reach the Container App.
+- **Authentication for Container Apps should be enabled:** Enable authentication to prevent anonymous HTTP requests, and authenticate requests via tokens before they reach a Container Apps environment.
 
-- **Container App should use network injection:** Configure Container Apps environments with virtual network injection to isolate them from the public internet, enable network integration with resources on-premises or other Azure virtual networks, and achieve granular control over network traffic.
+- **Container Apps environments should use network injection:** Configure Container Apps environments with virtual network injection to isolate them from the public internet, enable network integration with resources on-premises or other Azure virtual networks, and achieve granular control over network traffic.
 
-- **Public network access should be disabled:** Disable public network access to improve security by exposing the Container Apps environment through an internal load balancer, preventing internet access to all Container Apps within the environment.
+- **Public network access should be disabled:** Disable public network access to improve security by exposing the Container Apps environment through an internal load balancer. This approach blocks internet access to all container apps within the environment.
 
-- **External network access should be disabled:** Enforce internal-only ingress to ensure inbound communication for Container Apps is limited to callers within the Container Apps environment.
+- **External network access should be disabled:** Enforce internal-only ingress to ensure that inbound communication for container apps is limited to callers within the Container Apps environment.
 
-- **HTTPS should be enforced:** Ensure Container Apps are only accessible over HTTPS to protect data in transit from network layer eavesdropping attacks.
+- **HTTPS should be enforced:** Ensure that container apps are only accessible over HTTPS to protect data in transit from network layer eavesdropping attacks.
 
-- **Managed identities should be enabled:** Require managed identities for Container Apps to securely authenticate to any resource that supports Azure AD authentication.
+- **Managed identities should be enabled:** Require managed identities for Container Apps environments to securely authenticate to any resource that supports Microsoft Entra ID authentication.
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Container Apps](/azure/container-apps/policy-reference) and other policies that might affect the security of the networks.
 
@@ -249,20 +248,11 @@ For more information, see [Azure Advisor](/azure/advisor).
 
 ## Next steps
 
-- Deploy your first container app using the Azure CLI [Quickstart: Deploy your first container app with containerapp up](/azure/container-apps/get-started?tabs=bash)
-
-### Azure Architecture Center guidance
-
-- [Building resilient and reliable Azure applications](/azure/architecture/framework/resiliency/overview)
-- [Error handling for resilient cloud applications](/azure/architecture/framework/resiliency/app-design-error-handling)
-- [Cloud application resiliency patterns](/azure/architecture/patterns/category/resiliency)
-- [Cloud application availability patterns](/azure/architecture/patterns/category/availability)
-- [What is a mission-critical workload?](/azure/well-architected/mission-critical/mission-critical-overview)
+- [Deploy your first container app by using the Azure CLI](/azure/container-apps/get-started)
+- [Cloud design patterns that support reliability](/azure/well-architected/reliability/design-patterns)
+- [Mission-critical workloads](/azure/well-architected/mission-critical/mission-critical-overview)
 - [Site reliability engineering resources](/azure/site-reliability-engineering/)
 - [Container Apps overview](/azure/container-apps/overview)
-
-### Cloud Adoption Framework guidance
-
 - [Container Apps Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/app-platform/container-apps/landing-zone-accelerator)
 
 
