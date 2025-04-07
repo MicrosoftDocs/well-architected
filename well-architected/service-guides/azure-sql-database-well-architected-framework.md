@@ -166,7 +166,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Familiarize yourself with the [Monitoring and performance tuning in Azure SQL Database](/en-us/azure/azure-sql/database/monitor-tune-overview) article:** This article contains detailed monitoring guidance, including recommendations for monitoring query performance, configuring alerts, and using automatic tuning to enhance efficiency.
+> - **Familiarize yourself with the [Monitoring and performance tuning in Azure SQL Database](/azure/azure-sql/database/monitor-tune-overview) article:** This article contains detailed monitoring guidance, including recommendations for monitoring query performance, configuring alerts, and using automatic tuning to enhance efficiency.
 > - **Use infrastructure as code (IaC) technologies:** Use IaC technologies like [Bicep and Azure Resource Manager templates](/azure/azure-sql/database/single-database-create-bicep-quickstart) to deploy Azure SQL Databases to achieve consistent results with reusability in mind.
 >
 >   Always use the latest version of the Azure Resource Manager API to take advantage of the newest features, security updates, and performance improvements.
