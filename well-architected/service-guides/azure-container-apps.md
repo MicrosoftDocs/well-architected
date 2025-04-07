@@ -24,7 +24,7 @@ This article assumes that as an architect, you've reviewed the [compute decision
 >
 > Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Container Apps and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
 >
-> Foundational architecture that demonstrates the key recommendations: > [Microservices with Azure Container Apps](/azure/architecture/example-scenario/serverless/microservices-with-container-apps).
+> Foundational architecture that demonstrates the key recommendations: [Microservices with Azure Container Apps](/azure/architecture/example-scenario/serverless/microservices-with-container-apps).
 
 **Technology scope**
 
