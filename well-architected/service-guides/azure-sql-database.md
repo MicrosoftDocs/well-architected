@@ -116,10 +116,10 @@ Start your design strategy based on the [design review checklist for Security](.
 | Configure [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) to protect sensitive data inside applications by delegating data access to encryption keys. | Always Encrypted prevents encryption key's exposure to the database engine. This feature provides a separation between people who own the data and should have access to it and people who manage the data but shouldn't have access. For example, on-premises database administrators, cloud database operators, or other high-privileged unauthorized users shouldn't have access. |
 | Extend the capabilities of Always Encrypted by enabling [secure enclaves](/azure/azure-sql/database/always-encrypted-enclaves-getting-started). | Use secure enclaves to perform otherwise unsupported operations in Always Encrypted databases, inside a secure memory enclave on the server side. |
 | Use [Azure Private Link for SQL Database](/azure/azure-sql/database/private-endpoint-overview) to enforce secure communication over [private endpoints](/azure/private-link/private-endpoint-overview). | Private Link provides private connectivity between your database and virtual network so that you can disable public access.  |
-| Scan for vulnerabilities with the Microsoft Defender for SQL Database[vulnerability assessment](/azure/azure-sql/database/sql-vulnerability-assessment). | The SQL vulnerability assessment is a built-in service for SQL Database that identifies and helps remediate potential security vulnerabilities. It provides actionable steps and customized remediation scripts based on Microsoft best practices. |
+| Scan for vulnerabilities with the Microsoft Defender for SQL Database [vulnerability assessment](/azure/azure-sql/database/sql-vulnerability-assessment). | The SQL vulnerability assessment is a built-in service for SQL Database that identifies and helps remediate potential security vulnerabilities. It provides actionable steps and customized remediation scripts based on Microsoft best practices. |
 | Detect anomalous activities by using [advanced threat protection for SQL Database](/azure/azure-sql/database/threat-detection-configure). These activities can indicate unusual and potentially harmful attempts to access or exploit databases. | Advanced threat protection provides security alerts on anomalous activities, which helps you detect and respond to potential threats when they occur. Alerts are integrated into Microsoft Defender for Cloud. |
 | Track database events by using [SQL Database auditing](/azure/azure-sql/database/auditing-overview).| Auditing helps you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations. |
-| Configure [a user-assigned managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity) as the server identity. | Managed identities for Azure resources eliminate the need to manage credentials in code. |
+| Configure a [user-assigned managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity) as the server identity. | Managed identities for Azure resources eliminate the need to manage credentials in code. |
 | Disable SQL-based authentication and [allow Microsoft Entra authentication only](/azure/azure-sql/database/authentication-aad-configure). | Microsoft Entra for authentication centralizes your identity, access, and authorization management and provides granular permissions to SQL Database resources. |
 
 ## Cost Optimization
@@ -169,7 +169,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Familiarize yourself with SQL Database resources:** Review the [Monitoring and performance tuning in SQL Database](/azure/azure-sql/database/monitor-tune-overview) article. This article contains detailed monitoring guidance, including recommendations for monitoring query performance, configuring alerts, and using automatic tuning to enhance efficiency.
+> - **Familiarize yourself with SQL Database operational excellence resources:** Review the [Monitoring and performance tuning in SQL Database](/azure/azure-sql/database/monitor-tune-overview) article. This article contains detailed monitoring guidance, including recommendations for monitoring query performance, configuring alerts, and using automatic tuning to enhance efficiency.
 > - **Use infrastructure as code (IaC) technologies:** Use IaC technologies like [Bicep and Azure Resource Manager templates](/azure/azure-sql/database/single-database-create-bicep-quickstart) to deploy Azure SQL databases to achieve consistent results and take advantage of reusability.
 >
 >   Use the latest version of the Resource Manager API to take advantage of the newest features, security updates, and performance improvements.
@@ -198,7 +198,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Familiarize yourself with SQL Database resources:** Review the [Performance Center for SQL Server Database Engine and SQL Database](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database) and [Tune applications and databases for performance](/azure/azure-sql/database/performance-guidance) articles. These articles provide insights about how to improve the performance of your SQL Database, including recommendations to optimize server configuration and query performance.
+> - **Familiarize yourself with SQL Database performance efficiency resources:** Review the [Performance Center for SQL Server Database Engine and SQL Database](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database) and [Tune applications and databases for performance](/azure/azure-sql/database/performance-guidance) articles. These articles provide insights about how to improve the performance of your SQL Database, including recommendations to optimize server configuration and query performance.
 >
 > - **Select the right tier, features, and billing model:** Microsoft recommends the latest [vCore-based](/azure/azure-sql/database/service-tiers-sql-database-vcore) purchasing model.
 >
@@ -235,7 +235,7 @@ Azure provides an extensive set of built-in policies related to SQL Database. A 
 - Setting the minimal TLS version to 1.2 improves security by ensuring that SQL Database can only be accessed from clients by using TLS 1.2. Don't use earlier versions of TLS because they have well-documented security vulnerabilities.
 - SQL servers should have auditing enabled to ensure that you capture the operations performed against your SQL assets.
 
-For comprehensive governance, review the built-in definitions for Azure SQL policies that are listed in [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
+For comprehensive governance, review the built-in definitions for SQL Database policies that are listed in [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
 
 ## Related resources
 
