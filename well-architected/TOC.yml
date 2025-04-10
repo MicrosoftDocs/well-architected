@@ -282,6 +282,8 @@
               href: service-guides/azure-cache-redis/reliability.md
             - name: Operational excellence
               href: service-guides/azure-cache-redis/operational-excellence.md
+        - name: Azure Container Apps
+          href: service-guides/azure-container-apps.md
         - name: Azure Cosmos DB
           href: service-guides/cosmos-db.md
         - name: Azure Databricks
