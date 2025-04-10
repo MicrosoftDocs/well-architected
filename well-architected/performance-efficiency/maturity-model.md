@@ -174,7 +174,7 @@ Foster an environment of continuous improvement where teams learn from productio
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Operations
+![Goal icon](../_images/goal.svg) **Learning from production performance**
 
 <!-- No more than 5 H4 headings per tab -->
 
