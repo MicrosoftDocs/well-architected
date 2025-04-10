@@ -24,7 +24,7 @@ This article assumes that as an architect, you've reviewed the [integration serv
 >
 > Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
 >
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for API Management or the application platform servers. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for API Management or the workload's backend API servers. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
 > Foundational architecture that demonstrates the key recommendations: [API Management landing zone architecture](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function).
 
@@ -317,6 +317,18 @@ A fundamental decision in API Management is whether to colocate disparate worklo
 API Management workspaces enable efficient operation as a multitenant colocation platform for multiple API teams. The tiered pricing models are designed to allow service costs to be distributed across all tenants that use the gateways. However, like any colocation platform, outages or misconfigurations can result in widespread effects on unrelated workloads that share the same infrastructure.
 
 A fully distributed model, where each workload team manages its own instances, introduces duplicative costs and redundancy in routine operations. However, it provides inherent blast radius mitigation for reliability, security, and performance-related incidents.
+
+## Related workload services
+
+Azure API Management is often combined with the following services. Be sure to review their service guides or product documentation if your workload will involve these services.
+
+- [Azure Application Gateway](./azure-application-gateway.md)
+- [Azure Cache for Redis](./azure-cache-redis/reliability.md)
+- [Azure Front Door](./azure-front-door.md)
+- [Azure Key Vault](/azure/key-vault/general/basic-concepts)
+- [Azure OpenAI Service](./azure-openai.md)
+- [Azure Virtual Network](./virtual-network.md)
+- [Azure Web Application Firewall](/azure/web-application-firewall/overview)
 
 ## Next steps
 
