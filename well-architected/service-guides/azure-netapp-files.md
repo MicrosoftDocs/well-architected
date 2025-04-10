@@ -238,7 +238,7 @@ Consider the following Advisor recommendations for reliability:
 
 - Implement disaster recovery strategies for your Azure NetApp Files resources.
 - Enable continuous availability for SMB volumes.
-- Review SAP configurations for timeout values that you use with Azure NetApp Files.
+- Review SAP configurations for time out values that you use with Azure NetApp Files.
 
 ## Next steps
 
