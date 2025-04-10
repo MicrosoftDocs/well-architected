@@ -63,7 +63,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >    Review [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your AKS solution.
 >
 >   Ensure that workloads are built to support horizontal scaling and report application readiness and health.
-> - (Cluster and workload) **Host application pods in user nodel pools.** By isolating system pods from application workloads, you help ensure that AKS essential services are unaffected by the resource demands or potential problems caused by a workload that runs user node pools.
+> - (Cluster and workload) **Host application pods in user node pools.** By isolating system pods from application workloads, you help ensure that AKS essential services are unaffected by the resource demands or potential problems caused by a workload that runs user node pools.
 >
 >   Ensure that your workload runs on user node pools and choose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
 > - (Cluster and workload) **Factor the AKS uptime service-level agreement (SLA) into your availability and recovery targets.** To define the reliability and recovery targets for your cluster and workload, follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics). Then formulate a design that meets those targets.

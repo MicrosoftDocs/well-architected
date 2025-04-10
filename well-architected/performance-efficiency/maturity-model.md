@@ -104,8 +104,7 @@ Collect application performance data like throughput, latency, and completion ti
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be sure to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
-
-# [**Level 3 - Production-ready performance optimization techniques**](#tab/level3)
+# [**Level 3 - Incorporating performance signals**](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback**
 
@@ -145,6 +144,7 @@ As you evolve your capacity planning, work closely with business decision-makers
 Employ advanced scaling techniques to optimize your resource utilization. Adjust the thresholds used for scaling operations based on internal and external feedback, and build automation to perform scaling operations for components that lack native automatic scaling functionality. Used scheduled scaling for components that are lightly used or idle at known times throughout the day, week, or month. Continously evaluate scaling configurations and make refinements to better meet the fluctuating demands of a workload.
 
 #### &#10003; Optimize data management 
+
 Inefficiencies in data management can cause performance issues across your workload. Use these strategies to optimize your data estate.
 
 - Divide large datasets or workloads into smaller parts called partitions for separate storage or processing. This enables parallel processing, reduces contention, and improves resource use and processing times. It also distributes data across multiple storage devices, reducing individual load and enhancing overall performance. Align partitioning types with use cases: partitioning can be horizontal, vertical, or functional. Review the [Performance Efficiency design patterns](./design-patterns.md) to learn about design patterns that use partitioning.
