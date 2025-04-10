@@ -148,7 +148,7 @@ Here's an example template:
 |CPU and/or memory usage is maxed out causing the server to choke|Requests time out|Application| Medium| Likely | Implement automatic restarts|
 |Component is unavailable during an update|User experiences unhandled error in the application|Deployment or change in configuration| Low | Higly likely during deployments, not likely at other times | Handle in client-side logic |  
 
-At Level 1, don't strive for completeness because there will always be unforeseen failure cases. Treat this asset as a living document that gets updated over time.
+At Level 1, don't strive for completeness because there will always be unforeseen failure cases. If you experience unexpected outages, document the causes and mitigations in the playbook. Treat this asset as a living document that gets updated over time.
 
 
 #### &#10003; Add mechanisms to recover from transient failures 
@@ -255,7 +255,7 @@ This exercise can become overwhelming if you try to account for every possible f
 
 The failure mitigation playbook is the basis for creating a basic recovery plan. Mitigation strategies can include design pattern implementation, platform configuration adjustments, live site incident management, automated tests, and training personnel to catch issues during code reviews.
 
-Start with a graceful degradation strategy, which involves temporary fixes when parts of the system aren't working properly. The goal is to keep serving users despite failures by disabling non-working parts and adjusting the user experience. For example, if a database is down, the application can disable the affected feature and inform users that the service is temporarily unavailable using HTTP status codes.
+Start with a graceful degradation strategy, which involves temporary fixes when parts of the system aren't working properly. The goal is to keep serving users despite failures by disabling non-working parts and adjusting the user experience. For example, if a database is down, the application can disable the affected feature and inform clients that the service is temporarily unavailable using HTTP status codes.
 
 For graceful degradation to work, the system should have isolated components, so only the affected parts are impacted while the rest continues to function. Use the bulkhead pattern to achieve fault isolation.
 
