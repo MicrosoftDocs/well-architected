@@ -313,7 +313,7 @@
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric.md
         - name: Azure SQL Database
-          href: service-guides/azure-sql-database-well-architected-framework.md
+          href: service-guides/azure-sql-database.md
         - name: Azure SQL Managed Instance
           items:
             - name: Reliability
