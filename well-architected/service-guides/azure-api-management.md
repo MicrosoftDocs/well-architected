@@ -4,7 +4,7 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: dlepow
 ms.author: danlep
 ms.topic: conceptual
-ms.date: 04/01/2025
+ms.date: 04/11/2025
 ms.subservice: waf-service-guide
 products:
  - azure-api-management
