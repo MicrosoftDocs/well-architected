@@ -36,18 +36,38 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 > [!div class="checklist"]
 >
-> - **Strive for a simple, easy to manage design:** Avoid adopting functionality that unnecessarily adds complexity to your workload, like multi-master writes and custom indexing. While Cosmos DB supports multi-master writes and custom indexing, they can add significant complexity and operational burden, so carefully evaluate whether those and other advanced features are necessary for your workload's requirements.
-> - Evaluate flows as they relate to Cosmos DB and consider whether there are critical flows that need specific configurations.
+> - **Favor simpler design choices and avoid unnecessary features:** Avoid adopting functionality that unnecessarily adds complexity to your workload, like multi-master writes and custom indexing. While Cosmos DB supports multi-master writes and custom indexing, these features can add significant complexity and operational burden. Carefully evaluate whether those and other advanced features are necessary for your workload's requirements.
 >
->   **TODO:moved from recommendations** Identify critical flows and any specific configurations needed for them. Capture processing requirements for your flows to help identify which may need special treatment. Examples include flows that are more sensitive to latency issues or flows that require higher consistency levels than others.
+>    Offload workload responsibilities and cross-cutting concerns to other services, such as using Entra ID for authentication and authorization, and using Azure Monitor and Azure Application Insights for monitoring.
 >
-> - Consider how your selected [consistency level](/azure/cosmos-db/consistency-levels) and replication mode [impacts the Recovery point objective (RPO)](/azure/cosmos-db/consistency-levels#rto) in a region-wide outage.
-> - Design your database account deployment so it spans at least two regions in Azure. Additionally, distribute your account across multiple availability zones when offered within your Azure region.
-> - Evaluate the multi-region and single-region write strategies for your workload. For single-region write, design your workload to have at least a second read region for failover. Enable auto-failover for single-region write and multi-region read scenarios. For multi-region write, compare the tradeoffs in complexity and consistency against the advantages of writing to multiple regions. Review [expectations during a regional outage for single-region and multi-region write accounts](/azure/cosmos-db/high-availability#what-to-expect-during-a-region-outage).
-> - Enable [service-managed failover](/azure/cosmos-db/high-availability#availability) for your account.
-> - Design an end-to-end test of high availability for your application.
-> - Walk through [common backup processes](/azure/cosmos-db/continuous-backup-restore-introduction) including, but not limited to; point-in-time restore, recovering from accidental destructive operations, restoring deleted resources, and restoring to another region at a point-in-time. Configure account with [continuous backup](/azure/cosmos-db/online-backup-and-restore), choosing the appropriate retention period based on your business requirements.
-> - Explore the [designing resilient applications guide](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications), review the [default retry policy](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) for the SDKs, and plan for [custom handling for specific transient errors](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications#should-my-application-retry-on-errors). These guides will give best practices to make application code resilient to transient errors.
+> - **Identify and prioritize workload flows:** Not all flows in the application are equally important. Identify the critical paths and assign priorities to each flow to guide your design decisions. User flow design can influence which service tiers, features, and the capacity allocated to the Cosmos DB database.
+>
+>   To help identify to critical flows of the solution that may need special treatment, capture the processing requirements that may set them appart in terms of data processing capabilities. For example, some flows may require higher throughput or be more sensitive to latency issues, and not all the solution flows may need the same transaction consistency level.
+>
+> - **Use failure mode analysis (FMA) to identify potential failures in your workload:** Plan mitigation strategies for potential failures. The following table shows examples of failure mode analysis.
+>
+>   |Failure|Mitigation|
+>   |---|---|
+>   |High latency and timeouts after rollout to users in a new geographical region.| Enable multi-region replication to an Azure region closer to the new users.|
+>   |Throttling due to exceeding request units (RUs)| Implement retry logic. Monitor RU consumption and adjust throughput settings as needed.|
+>   |Cosmos DB service failure in a single zone in a single Azure region| Configure availability zones support at database creation time.|
+>
+>   For more information, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
+>
+> - **Build redundancy to improve resiliency and help meet reliability targets:** Design your database account deployment so it spans at least two regions in Azure. Additionally, distribute your account across multiple availability zones when offered within your Azure region.
+>
+>   Evaluate the multi-region and single-region write strategies for your workload. For single-region write, design your workload to have at least a second read region for failover. Enable auto-failover for single-region write and multi-region read scenarios. For multi-region write, compare the tradeoffs in complexity and consistency against the advantages of writing to multiple regions. Review [expectations during a regional outage for single-region and multi-region write accounts](/azure/cosmos-db/high-availability#what-to-expect-during-a-region-outage).
+>
+>   Consider how your selected [consistency level](/azure/cosmos-db/consistency-levels) and replication mode [impacts the Recovery point objective (RPO)](/azure/cosmos-db/consistency-levels#rto) in a region-wide outage.
+>
+>   **TODO:merge into redundancy item** Design an end-to-end test of high availability for your application.
+>
+> - **Use native disaster recovery and backup features:** 
+>   **TODO:replace walk through with design or implement and describe options**  Walk through [common backup processes](/azure/cosmos-db/continuous-backup-restore-introduction) including, but not limited to; point-in-time restore, recovering from accidental destructive operations, restoring deleted resources, and restoring to another region at a point-in-time. Configure account with [continuous backup](/azure/cosmos-db/online-backup-and-restore), choosing the appropriate retention period based on your business requirements.
+>
+> - **TODO:align with RE:07 Self preservation -> Application design guidance and patterns**
+>
+>    Explore the [designing resilient applications guide](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications), review the [default retry policy](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) for the SDKs, and plan for [custom handling for specific transient errors](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications#should-my-application-retry-on-errors). These guides will give best practices to make application code resilient to transient errors.
 >
 
 ### Recommendations
@@ -67,15 +87,30 @@ The [Security design principles](../security/principles.md) provide a high-level
 ### Design checklist
 
 > [!div class="checklist"]
-> - **TODO:moved from recommendations** see [security checklist for Azure databases](/azure/security/fundamentals/database-security-checklist)
-> - **TODO:moved from recommendations** Implement, at a minimum, the data protection and identity management security baselines. Go through the [security baseline](/en-us/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline) including [identity management](/en-us/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#identity-management) and [data protection](/en-us/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#data-protection). Implement the recommendations to secure your Azure Cosmos DB account.
-> - Reduce surface attack area by designing to use private endpoints in accordance with the [security baseline](/en-us/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#network-security) for Azure Cosmos DB.
-> - Create roles, groups, and assignments for control-plane and data-plane access to your account per the principle of [least-privilege access](/en-us/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#privileged-access). Consider [disabling key-based authentication](/azure/cosmos-db/how-to-setup-rbac#disable-local-auth).
-> - Assess service-level [compliance](/azure/cosmos-db/compliance) and [certifications](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) in the context of current global personal data requirements.
-> - [Encrypt data](/azure/cosmos-db/database-encryption-at-rest) at-rest or in-motion using service-managed keys or customer-managed keys (CMKs).
-> - Audit user access, security breaches, and resource operations with [control plane logs.](/azure/cosmos-db/audit-control-plane-logs).
-> - Monitor data egress, data changes, usage, and latency with [data plane metrics](/azure/cosmos-db/use-metrics).
-> - **TODO:moved from recommendations** Follow best software development practices for secure access to data. Follow secure coding practices and perform secure code reviews when developing applications that interact with Azure Cosmos DB.
+>
+> - **Review security baselines:** To enhance the security posture of your workload, review the [security checklist for Azure databases](/azure/security/fundamentals/database-security-checklist) and the [security baseline for Azure Cosmos DB](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline). Implement, at a minimum, the [data protection](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#data-protection) and [identity management](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#identity-management) security baselines to secure your Azure Cosmos DB account.
+>
+>   Assess service-level [compliance](/azure/cosmos-db/compliance) and [certifications](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) in the context of current global personal data requirements.
+>
+> - **Implement strict, conditional, and auditable identity and access management:** Use Microsoft Entra ID for your workload's authentication and authorization needs. Microsoft Entra ID provides centralized authorization and access management.
+>
+>   Create roles, groups, and assignments for control-plane and data-plane access to your account per the principle of [least-privilege access](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#privileged-access). Consider [disabling key-based authentication](/azure/cosmos-db/how-to-setup-rbac#disable-local-auth).
+>
+> - **Encrypt data:** [Encrypt data](/azure/cosmos-db/database-encryption-at-rest) at-rest or in-motion using service-managed keys or customer-managed keys (CMKs).
+>
+> - **Apply network segmentation and security controls:** Create intentional segmentation and perimeters in your network design and apply defense-in-depth principles by using localized network controls at all network boundaries.
+>
+>   Reduce surface attack area by using private endpoints in accordance with the [security baseline](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#network-security) for Azure Cosmos DB.
+>
+> - **TODO:align with SE:10 monitoring and threat detection - Implement a holistic security monitoring strategy**
+>
+>   Audit user access, security breaches, and resource operations with [control plane logs.](/azure/cosmos-db/audit-control-plane-logs).
+>
+>   Monitor data egress, data changes, usage, and latency with [data plane metrics](/azure/cosmos-db/use-metrics).
+>
+> - **TODO:align with SE:02 securing a development lifecycle->Secure development and testing practices** 
+>
+>   Follow best software development practices for secure access to data. Follow secure coding practices and perform secure code reviews when developing applications that interact with Azure Cosmos DB.
 
 ### Recommendations
 
@@ -84,7 +119,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 | **TODO:link-added** Disable public endpoints and use [private endpoints](/azure/cosmos-db/how-to-configure-private-endpoints?tabs=arm-bicep) whenever possible. | **TODO:benefit-edited** Avoid leaving unnecessary or unused public endpoints to reduce the surface area susceptible to attacks on your account. |
 | **TODO:link-added** Use [role-based access control](/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access) to limit control-plane access to specific identities and groups and within the scope of well-defined assignments. |  **TODO:benefit-reviewed** Use role-based access control to prevent unintended access to your account. Assign appropriate roles and permissions to users or applications accessing Azure Cosmos DB. |
 | **TODO:link-added** Create [virtual network](/azure/cosmos-db/how-to-configure-vnet-service-endpoint) endpoints and rules to limit access to the account. Use network security groups (NSGs) to control inbound and outbound traffic to and from the Azure Cosmos DB resources.| **TODO:benefit-reviewed** Virtual network service endpoints and firewall rules help restrict access to your Azure Cosmos DB account and  helps protect your data from unauthorized access. |
-| **TODO:portion moved to echcklist** Protect against common security vulnerabilities like injection attacks, cross-site scripting (XSS), or insecure direct object references (IDOR). Implement input validation, [parameterized queries](/azure/cosmos-db/nosql/query/parameterized-queries), and appropriate error handling for common [HTTP status codes](/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb) to prevent security risks. | **TODO:benefit-added** Input validation helps prevent malicious data from being processed by your application, blocking potentially harmful data that could lead to security breaches or data corruption.</br></br>Proper error handling enables your application to respond to errors in a controlled manner, preventing the exposure of sensitive information.|
+| **TODO:portion moved to echcklist** Protect against common security vulnerabilities like injection attacks, cross-site scripting (XSS), or insecure direct object references (IDOR). Implement input validation, [parameterized queries](/azure/cosmos-db/nosql/query/parameterized-queries), and appropriate error handling for common [HTTP status codes](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) to prevent security risks. | **TODO:benefit-added** Input validation helps prevent malicious data from being processed by your application, blocking potentially harmful data that could lead to security breaches or data corruption.</br></br>Proper error handling enables your application to respond to errors in a controlled manner, preventing the exposure of sensitive information.|
 | **TODO:link-added** [Monitor control-plane logs](/azure/cosmos-db/audit-control-plane-logs) to detect unauthorized modifications to your Cosmos DB account. For more information.| **TODO:benefit-edited** Monitoring helps you track access patterns and audit logs, ensuring that your database remains secure and compliant with relevant data protection regulations. Monitoring data-plane metrics can also help identify unfamiliar patterns that might reveal a security breach. |
 | **TODO:link-added** Enable [Microsoft Defender for Azure Cosmos DB](/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections) so that you can trigger security alerts when anomalies in activity occur. | **TODO:benefit-edited** Microsoft Defender detects attempts to exploit databases in your Azure Cosmos DB for NoSQL account. Defender detects potential SQL injections, suspicious access patterns, and other potential exploitation. |
 
@@ -96,17 +131,25 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 > [!div class="checklist"]
 >
-> - Design an indexing policy that's considers the operations and queries you commonly make in your workload.
-> - Determine a partition key or set of partition keys which have a value  that has high cardinality and does not change. Use the [existing guidance and best practices](/azure/cosmos-db/partitioning-overview#choose-partitionkey) to help select an appropriate partition key. Also, consider your [indexing policy](/azure/cosmos-db/index-policy) when determining a partition key.
-> - Select a throughput allocation schema that's appropriate for your workload. Review the benefits of standard and autoscale throughput distributed at the database or container level. Also, consider serverless when appropriate. [Review your workload's traffic patterns](/azure/cosmos-db/how-to-choose-offer#understand-your-traffic-patterns) in the context of selecting a throughput allocation scheme.
-> - Consider consistency levels as they relate to your workload. Also, consider if client sessions should alter the default consistency level.
-> - Calculate the expected overall data storage for your workload. The size of items and indexes all influence your data storage cost. Calculate the impact of replication and backup on storage costs.
-> - Create a strategy to automatically remove older items that are no longer used or necessary. If required, export these items to a lower-cost storage solution before they are removed.
-> - **TODO:in-progress** **Optimize queries:** Evaluate your most common queries that minimize cross-partition lookups. Use this information to inform the process of selecting a partition key or customizing an indexing policy.
+> - **TODO:align with CO12: Optimize scaling costs**
+>
+>   Select a throughput allocation schema that's appropriate for your workload. Review the benefits of standard and autoscale throughput distributed at the database or container level. Also, consider serverless when appropriate. [Review your workload's traffic patterns](/azure/cosmos-db/how-to-choose-offer#understand-your-traffic-patterns) in the context of selecting a throughput allocation scheme.
+>
+>   Determine a partition key or set of partition keys which have a value  that has high cardinality and does not change. Use the [existing guidance and best practices](/azure/cosmos-db/partitioning-overview#choose-partitionkey) to help select an appropriate partition key. Also, consider your [indexing policy](/azure/cosmos-db/index-policy) when determining a partition key.
+>
+> - **TODO:align with CO:10 - optimizing data costs - :**
+>
+>   **TODO: CO10->Take an inventory of data** Calculate the expected overall data storage for your workload. The size of items and indexes all influence your data storage cost. Calculate the impact of replication and backup on storage costs.
+>
+>   **TODO: CO10->Optimize data lifecycle management** Create a strategy to automatically remove older items that are no longer used or necessary. If required, export these items to a lower-cost storage solution before they are removed.
+>
+> - **TODO:align with CO:11 - Optimize application code costs:** Evaluate your most common queries that minimize cross-partition lookups. Use this information to inform the process of selecting a partition key or customizing an indexing policy.
 >
 >   Use projection to reduce throughput costs of large query result sets. Author queries to only project the minimal number of fields required from a result set. If calculations on fields are necessary, evaluate the throughput cost of performing those calculations server-side versus client-side.
 >
 >   Avoid using unbounded cross-partition queries. Evaluate and author queries to ensure they search within a single logical partition whenever possible. Use query filters to control which logical partitions the query targets. If a query must search across logical partitions, bound the query to only search a subset of logical partitions instead of a full scan.
+>
+>   Design an indexing policy that's considers the operations and queries you commonly make in your workload.
 
 ### Recommendations
 
@@ -120,7 +163,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 | For dev/test workloads, use the [Azure Cosmos DB emulator](/azure/cosmos-db/local-emulator). Also available as a [Docker container image](/azure/cosmos-db/docker-emulator-linux).| **TODO:benefit-reviewed** The emulator is an option for dev/test and continuous integration that can save on the costs of these common workloads for your development team.|
 | **TODO:link-added** Use [transactional batch operations](/azure/cosmos-db/nosql/transactional-batch). Design partitions to take advantage of transactional batch operations within a logical partition key for inserting.</br></br>Use batch operations in client-side SDKS for inserting, updating, or deleting multiple documents in a single transaction request.  | **TODO:benefit-edited** Using transactional batch operations in Azure Cosmos DB can help reduce the number of individual requests, reducing latency and leading to better throughput efficiency. |
 | **TODO:link-added** Implement [time-to-live (TTL)](/azure/cosmos-db/nosql/how-to-time-to-live) to automatically delete data that's no longer needed. If necessary, export the expired data to a lower-cost storage solution.| **TODO:benefit-edited** Using TTL ensures that your database remains clutter-free, optimizing storage cost. Exporting expired data to a lower-cost storage solution can further reduce expenses while preserving historical data for compliance purposes.|
-| **TODO:link-added** Consider an [analytical store](/en-us/azure/cosmos-db/analytical-store-introduction) for heavy aggregations. | **TODO:benefit-reviewed** Azure Cosmos DB analytical store automatically syncs your data to a separate column store to optimize for large aggregations, reporting, and analytical queries. |
+| **TODO:link-added** Consider an [analytical store](/azure/cosmos-db/analytical-store-introduction) for heavy aggregations. | **TODO:benefit-reviewed** Azure Cosmos DB analytical store automatically syncs your data to a separate column store to optimize for large aggregations, reporting, and analytical queries. |
 
 ## Operational excellence
 
@@ -132,15 +175,22 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 > [!div class="checklist"]
 >
-> - Draft a log and metrics monitoring strategy to differentiate between different workloads, flag exceptional scenarios, track patterns in exceptions/errors, and track host machine performance.
-> - Design large workloads to use bulk operations whenever possible.
-> - Define multiple alerts to monitor throttling, analyze throughput allocation, and track the size of your data.
-> - **TODO:in-progress** Design a monitoring strategy for availability of your solution across regions.
+> - **TODO:align with OP07 monitoring system - Monitor your Cosmos DB Database:**
+>
+>   Design a monitoring strategy for availability of your solution across regions.
 >
 >   Create identifiers in the client application to differentiate workloads. Consider flags, such as the user-agent suffix, to identify what workload each log entry or metric should be associated with.
-> - Create and enforce best practices for automating the deployment of your Azure Cosmos DB for NoSQL account and resources.
-> - Plan expected metric thresholds based on partition and index design. Ensure that there's a plan to monitor those metrics to determine how close they are to the planned thresholds.
-> - **TODO: add ioc** 
+>
+>   Draft a log and metrics monitoring strategy to differentiate between different workloads, flag exceptional scenarios, track patterns in exceptions/errors, and track host machine performance.
+>
+>   Define multiple alerts to monitor throttling, analyze throughput allocation, and track the size of your data.
+>
+>   Plan expected metric thresholds based on partition and index design. Ensure that there's a plan to monitor those metrics to determine how close they are to the planned thresholds.
+>
+> - **TODO:align with OE:05 infrastructure as code and OE:04 Automate continuous integration with pipelines**
+>
+>   Create and enforce best practices for automating the deployment of your Azure Cosmos DB for NoSQL account and resources.
+>
 >   Ensure that your team is using the same templates to deploy to other nonproduction environments.
 
 ### Recommendations
@@ -150,7 +200,6 @@ The [Operational Excellence design principles](../operational-excellence/princip
 | **TODO:link-added** Ensure application developers are using the latest version of the developer SDK. For more information, see [.NET SDK](/azure/cosmos-db/nosql/sdk-dotnet-v3#recommended-version) and [Java SDK](/azure/cosmos-db/nosql/sdk-java-v4#recommended-version).Each Azure Cosmos DB for NoSQL SDK has a minimum recommended version.|**TODO:benefit-added** Using the latest versions of the developer SDKs will help maintain the performance, security, and compatibility of your applications.|
 | **TODO:link-added** Capture [supplemental diagnostics](/azure/cosmos-db/nosql/troubleshoot-dotnet-sdk) using the diagnostics injection techniques for each SDK to add supplemental information about the workload, alongside default metrics and logs. For more information, see [.NET SDK](/azure/cosmos-db/nosql/best-practice-dotnet#capture-diagnostics) and [Java SDK](/azure/cosmos-db/nosql/troubleshoot-java-sdk-v4#enable-client-sice-logging). | **TODO:benefit-added** By injecting diagnostics, you can capture custom metrics, traces, and logs, to improve your ability to troubleshoot and optimize your applications. You can monitor specific aspects of your workload that are not covered by default metrics and logs.|
 | **TODO:link- ///invalid link///** Create [alerts](/azure/cosmos-db/create-alerts) associated with host machine resources. | Connectivity and availability issues might occur due to client-side host machine issues. Monitor resources such as CPU, memory, and storage on host machines with client applications using the Azure Cosmos DB for NoSQL SDKs. |
-| **TODO:link-moved** Use the [bulk features](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of client SDKs in scenarios that require high throughput. The bulk feature automatically manages and batches operations to maximize throughput.| **TODO:benefit-added** Using the bulk features reduces the number of backend requests and efficiently distributing tasks across partitions, leading to improved performance and better resource utilization.|
 | **TODO:link-moved** Create alerts for throughput throttling using metrics such as the [Normalized RU Consumption](/azure/cosmos-db/monitor-normalized-request-units), which measures the percentage utilization of provisioned throughput on a database or container. </br></br> Use alerts to track this metric passing beyond expected thresholds. Over time, review and adjust alerts as you learn more about your workload.| **TODO:benefit-edited** If throughput throttling is consistently at 100%, requests likely return a transient error. By creating alerts based on this metric, you can receive notifications when the utilization exceeds your defined thresholds, allowing you to take corrective actions before it impacts your application's performance.|
 | **TODO:link-added** Use query performance [metrics](/azure/cosmos-db/nosql/query-metrics-performance) to track the performance of your top queries over time. If query performance is poor, troubleshoot performance and apply query best practices.| **TODO:benefit-edited** Performance metrics allow you to better understand how your queries are executed and where potential bottlenecks may exist. This information helps you make informed decisions about indexing policies and query optimizations. |
 | Use templates to automatically deploy account resources. Consider [Azure Resource Manager](/azure/cosmos-db/nosql/quickstart-template-json), [Bicep](/azure/cosmos-db/nosql/quickstart-template-bicep), or [Terraform](/azure/cosmos-db/nosql/quickstart-terraform) templates to automate the deployment of your account and subsequent resources.| **TODO:benefit-added** IaC templates enable you to define your infrastructure in a descriptive model, facilitating repeatability and consistency, helping maintain a uniform and predictable workload environments. |
@@ -164,18 +213,39 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 > [!div class="checklist"]
 >
-> - Define a performance baseline for your application. Measure how many concurrent users and transactions you might need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
-> - Research your most common and most complex queries. Identify queries that use multiple lookups, joins, or aggregates. Consider these queries in any design considerations for the partition key or indexing policy.
-> - For the most common queries, determine the number of results you expect per page. This number will help formalize a buffered item count for prefetched results.
-> - Research your target users. Determine which Azure regions are closest to them.
-> - Identify queries that use one or more ordering fields. Also, identify operations that impact multiple fields. Include these fields explicitly in the indexing policy design.
-> - **TODO:moved from perf recommendations (query perf optimization item)** Use the singleton pattern for the `CosmosClient` class in most SDKs. Use the client class in most SDKs as a singleton. The client class manages its own lifecycle and is designed to not be disposed. Constantly creating and disposing of instances can result in reduced performance.
-> - Design items so their corresponding JSON documents are as small as possible. Considering splitting data cross multiple items if necessary.
-> - **TODO:moved from perf recommendations (data design item)** Keep item sizes less than **100 KB** in size. Larger items consume more throughput for common read and write operations. Queries on larger items that project all fields can also have a significant throughput cost.
-> - Identify queries on child arrays and determine if they are candidates for [more efficient subqueries](/azure/cosmos-db/nosql/query/subquery).
-> - Determine if your workload requires an analytical store. Consider analytical stores and services like [Azure Synapse Link](/azure/cosmos-db/synapse-link) for extremely complex queries.
-> - **TODO:moved from opex recommendations** For more information, see [query performance tips](/azure/cosmos-db/nosql/performance-tips-query-sdk)
-> - **TODO:moved from perf recommendations** Deploy Azure Cosmos DB for NoSQL to regions closest to your end users. | Reduce latency by deploying Azure Cosmos DB for NoSQL to the regions closest to your end users as much as possible.
+> - **TODO:align with PE02 Capacity planning**
+>
+>   Define a performance baseline for your application. Measure how many concurrent users and transactions you might need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
+>
+>   Research your target users. Determine which Azure regions are closest to them.
+>
+> - **TODO:align with PE:08 Data performance -> Optimize index and data design**  
+>
+>   Design items so their corresponding JSON documents are as small as possible. Considering splitting data cross multiple items if necessary.
+>
+>   Keep item sizes less than **100 KB** in size. Larger items consume more throughput for common read and write operations. Queries on larger items that project all fields can also have a significant throughput cost.
+>
+> - **Select the right tier, features, and billing model:** Determine if your workload requires an analytical store. Consider analytical stores and services like [Azure Synapse Link](/azure/cosmos-db/synapse-link) for extremely complex queries.
+>
+> - **Optimize the deployment model:** Deploy Azure Cosmos DB for NoSQL to regions closest to your end users. | Reduce latency by deploying Azure Cosmos DB for NoSQL to the regions closest to your end users as much as possible.
+>
+> - **TODO:align with PE:08 Data performance -> Optimize database queries**
+>
+>   For more information, see [query performance tips](/azure/cosmos-db/nosql/performance-tips-query-sdk)
+>
+>   Identify queries that use one or more ordering fields. Also, identify operations that impact multiple fields. Include these fields explicitly in the indexing policy design.
+>
+>   Design large workloads to use bulk operations whenever possible.
+>
+>   Identify queries on child arrays and determine if they are candidates for [more efficient subqueries](/azure/cosmos-db/nosql/query/subquery).
+>
+>   Research your most common and most complex queries. Identify queries that use multiple lookups, joins, or aggregates. Consider these queries in any design considerations for the partition key or indexing policy.
+>
+>   For the most common queries, determine the number of results you expect per page. This number will help formalize a buffered item count for prefetched results.
+>
+> - **TODO:align with PE:08 Data performance -> Optimize code logic**
+>
+>   Use the singleton pattern for the `CosmosClient` class in most SDKs. Use the client class in most SDKs as a singleton. The client class manages its own lifecycle and is designed to not be disposed. Constantly creating and disposing of instances can result in reduced performance.
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -183,52 +253,30 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 |  **TODO:link-moved** Use optimization techniques on the client and server sides when appropriate. Take advantage of the built-in [integrated cache](/azure/cosmos-db/integrated-cache). Configure the SDK to manage how many items are prefetched (buffered) and returned for each page. | **TODO:benefit-added** Code optimization techniques can improve the user experience and make your client and server side application more efficient by helping reduce the RU charges for repeated reads and queries, potentially resulting insignificant cost savings.|
 | **TODO:link-moved** Deploy Azure Cosmos DB for NoSQL to the regions closest to your end users. Configure the ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet)/[Java](/azure/cosmos-db/nosql/best-practice-java)) SDK to prefer regions closer to your end user.</br></br>Take advantage of read replication to provide performant read performance regardless of how you configure write (single or multiple regions). | **TODO:benefit-added**  Deploying your database to the regions closest to your end users helps reduce latency, improving user experience. Read replication enables performant read operations regardless of how the write operations are configured.|
 | Configure the SDK for [Direct mode](/azure/cosmos-db/nosql/sdk-connection-modes) for the best performance. This mode allows your client to open TCP connections directly to partitions in the service and send requests directly with no intermediary gateway.|**TODO:benefit-edited** Direct mode offers better performance because there are fewer network hops. |
+| **TODO:link-moved** Use the [bulk features](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of client SDKs in scenarios that require high throughput. The bulk feature automatically manages and batches operations to maximize throughput.| **TODO:benefit-added** Using the bulk features reduces the number of backend requests and efficiently distributing tasks across partitions, leading to improved performance and better resource utilization.|
 | Disable indexing for bulk operations. If there are many insert/replace/upsert operations, disable indexing to improve the speed of the operation while using the [bulk support](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of the corresponding SDK. Indexing can be immediately reenabled later. | **TODO:benefit-added** Disabling indexing during bulk operations reduces the overhead associated with maintaining the index. Resources are better utilized for the bulk operations, resulting in faster data insertion and updates. |
 | **TODO:link-moved** Create [composite indexes](/azure/cosmos-db/index-overview#composite-indexes) for fields that are used in complex operations. Consider using composite indexes for `ORDER BY` statements with multiple fields.| **TODO:benefit-edited** Composite indexes can increase the efficiency of operations on multiple fields by orders of magnitude, resulting in faster and more efficient data retrieval. |
 | Optimize host client machines for the SDKs. For most common cases, use at least 4-cores and 8-GB memory on 64-bite host machines using the SDKs ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet#checklist)/[Java](/azure/cosmos-db/nosql/best-practice-java)).</br></br>Enable [accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-powershell) on host machines.| **TODO:benefit-added** Using machines with higher specifications ensures that the SDKs can handle more operations simultaneously. Accelerated networking can help reduce latency, resulting in quicker responses. |
 | **TODO:link-moved** Use subqueries strategically to optimize queries that join large data sets. [Optimize self-join expressions](/azure/cosmos-db/nosql/query/subquery#optimize-self-join-expressions) by using subqueries to filter the arrays before [joining arrays within the item](/azure/cosmos-db/nosql/query/join).</br></br>For cross-partition queries, optimize your query to include a filter on the partition key to optimize the routing of your query to the least amount of partitions possible. | **TODO:benefit-edited**  Queries that join child arrays can increase in complexity if multiple arrays are involved and not filtered. By employing subqueries, arrays can be filtered before joining them, increasing the efficiency of self-join expressions.|
 | Use [analytical workloads](/azure/cosmos-db/analytical-store-introduction) for the most complex queries.</br></br> If you run frequent aggregations or join queries over large containers, consider enabling the analytical store and doing queries in Azure Synapse Analytics. | **TODO:benefit-edited** Analytical workloads are isolated from transactional workloads and optimized for handling complex queries, preventing performance degradation and ensuring faster results. |
 
-### Azure Policy definitions
+## Azure policies
 
-- [Policy: Require at least two regions](https://github.com/Azure/Community-Policy/blob/main/policyDefinitions/Cosmos%20DB/audit-geo-replication-for-azure-cosmos-db/azurepolicy.json)
-- [Policy: Enable service-managed failover](https://github.com/Azure/Community-Policy/blob/main/policyDefinitions/Cosmos%20DB/audit-automatic-failover-for-azure-cosmos-db/azurepolicy.json)
-- [Policy: Require specific deployment regions](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_Locations_Deny.json)
+Azure provides an extensive set of built-in policies related to SQL Database. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
 
-### Azure Policy definitions
+- The Cosmos DB account is deployed to at least two regions.
+- Cosmos Database Accounts are appropriately configured for zone redundancy.
+- Cosmos DB database accounts should have local authentication methods disabled, requiring the use of Azure Active Directory identities for authentication.
+- Public network access is disabled, ensuring that your CosmosDB account isn't exposed on the public internet.
+- Restrict the maximum throughput that can be specifed when creating Azure Cosmos DB databases and containers through the resource provider.
 
-- [Policy: Enable Microsoft Defender](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/MDC_Microsoft_Defender_Azure_Cosmos_DB_Audit.json)
-- [Policy: Require a virtual network service endpoint](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json)
-- [Policy: Disable local authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_DisableLocalAuth_AuditDeny.json)
-- [Policy: Require firewall rules](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json)
+For comprehensive governance, review the built-in definitions for Azure Cosmos DB that are listed in [Azure Policy built-in definitions](/azure/cosmos-db/security-controls-policy).
 
-### Azure Policy definitions
-
-- [Policy: Restrict the maximum allowed throughput](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_MaxThroughput_Deny.json)
-
-### Azure Policy definitions
-
-- [Policy: Email notification for high severity alerts](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Email_notification.json)
-
-### Azure Policy definitions
-
-- [Policy: Enable auditing of Azure Synapse Analytics](/azure/azure-sql/database/auditing-overview)
-
-## Related content
-
-### Azure Architecture Center guidance
+## Related resources
 
 - [Multitenancy and Azure Cosmos DB](/azure/architecture/guide/multitenant/service/cosmos-db)
 - [Visual search in retail with Azure Cosmos DB](/azure/architecture/industries/retail/visual-search-use-case-overview)
 - [Gaming using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/gaming-using-cosmos-db)
 - [Serverless apps using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
 - [Personalization using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/personalization-using-cosmos-db)
-
-### Cloud Adoption Framework guidance
-
 - [Batch Data application with Azure Cosmos DB](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
-
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Deploy an Azure Cosmos DB for NoSQL account using the a Bicep template](/azure/cosmos-db/nosql/quickstart-template-bicep)
