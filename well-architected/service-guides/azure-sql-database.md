@@ -229,7 +229,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 Azure provides an extensive set of built-in policies related to SQL Database. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
 
-- Microsoft Entra-only authentication is enabled by defaul during creation. 
+- Microsoft Entra-only authentication is enabled by default during creation. 
 - Zone redundancy is enabled to enhance availability and resilience.
 - Long-term, geo-redundant backup should be enabled for Azure SQL databases.
 - Setting the minimal TLS version to 1.2 improves security by ensuring that SQL Database can only be accessed from clients that use TLS 1.2. Don't use earlier versions of TLS because they have well-documented security vulnerabilities.
