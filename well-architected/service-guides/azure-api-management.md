@@ -331,7 +331,7 @@ Azure API Management is often combined with the following services. Be sure to r
 - [Azure Virtual Network](./virtual-network.md)
 - [Azure Web Application Firewall](/azure/web-application-firewall/overview)
 
-## Next steps
+## Related content
 
 The following articles demonstrate some of the recommendations discussed in this article.
 
