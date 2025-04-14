@@ -260,6 +260,8 @@ Start your design strategy based on the [design review checklist for Performance
 
 ### Recommendations
 
+These performance efficiency recommendations can apply either to the service itself or to the traffic that flows through APIs and their policies. The *(Service)* or *(API)* designators indicate whether a recommendation targets the service or the APIs.
+
 | Recommendation | Benefit |
 |:------------- |:------ |
 | *(Service)* Dynamically scale to match demand. Configure [autoscale rules](/azure/api-management/api-management-howto-autoscale) or other automated processes to adjust gateway units to match a target usage capacity. | Allows the system to be elastic based on concurrent usage without depleting resources of the current deployed units or over-allocating capacity. |
