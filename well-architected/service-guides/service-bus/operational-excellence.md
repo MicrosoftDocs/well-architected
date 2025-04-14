@@ -1,8 +1,8 @@
 ---
 title: Service Bus and operational excellence
 description: Focuses on the Service Bus service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Operational excellence.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 01/24/2022
 ms.topic: conceptual
 products:

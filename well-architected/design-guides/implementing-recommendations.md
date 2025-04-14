@@ -2,7 +2,7 @@
 title: Complete an Azure Well-Architected Review assessment
 description: Learn about Azure Well-Architected Review and Azure Advisor recommendations that can help you continuously improve your workload.
 author: ckittel
-ms.author: martinek
+ms.author: chkittel
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---

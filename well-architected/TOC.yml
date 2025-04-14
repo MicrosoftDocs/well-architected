@@ -258,14 +258,8 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: API Management
-          items:
-            - name: Reliability
-              href: service-guides/api-management/reliability.md
-            - name: Cost optimization
-              href: service-guides/api-management/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/api-management/operational-excellence.md
+        - name: Azure API Management
+          href: service-guides/azure-api-management.md
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights
@@ -282,6 +276,8 @@
               href: service-guides/azure-cache-redis/reliability.md
             - name: Operational excellence
               href: service-guides/azure-cache-redis/operational-excellence.md
+        - name: Azure Container Apps
+          href: service-guides/azure-container-apps.md
         - name: Azure Cosmos DB
           href: service-guides/cosmos-db.md
         - name: Azure Databricks
@@ -311,7 +307,7 @@
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric.md
         - name: Azure SQL Database
-          href: service-guides/azure-sql-database-well-architected-framework.md
+          href: service-guides/azure-sql-database.md
         - name: Azure SQL Managed Instance
           items:
             - name: Reliability
