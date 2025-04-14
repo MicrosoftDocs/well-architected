@@ -32,6 +32,8 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Container Apps
 
+:::image type="content" source="./_images/container-apps.svg" alt-text="Diagram that shows the Container Apps architecture." lightbox="./_images/container-apps.svg" border="false":::
+
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
