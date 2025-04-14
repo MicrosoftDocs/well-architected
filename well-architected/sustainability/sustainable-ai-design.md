@@ -10,11 +10,10 @@ ms.date: 03/24/2025
 
 # Sustainable AI Design
 
-Designing, building, and operationalizing [AI workloads](/azure/well-architected/ai/) **sustainably** is crucial as they consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
+Designing, building, and operationalizing [AI workloads](/azure/well-architected/ai/) **sustainably** is crucial as they consume significant energy and carbon throughout their lifetime. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
-Designing AI workloads consists of three primary steps: Model design, data design, and operations. In this article, we look at different  aspects that can be considered for factoring in sustainable design principles in this lifecycle.
+Designing AI workloads consists of three primary steps: Model design, data design, and operations. In this article, we look at different  aspects that can be considered for factoring in sustainable design principles in these steps.
 
-To learn more about the overall AI workload lifecycle, see [MLOps and GenAIOps for AI workloads on Azure](/azure/well-architected/ai/mlops-genaiops).
 
 - **Model design** involves choosing the appropriate model for the business problem that needs to be solved. This choice is dependent on whether we need to solve a prediction scenario or a classification scenario or a content generation scenario.
 - **Data design** activities focus on choosing the right storage and data processing infrastructure that will help support the training and operations of the model. Model and data design activities together are considered as part of the training phase.
@@ -22,7 +21,7 @@ To learn more about the overall AI workload lifecycle, see [MLOps and GenAIOps f
 
 ## Model design recommendations
 
-Model design is the first step in the lifecycle of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, and forecasting.
+Model design is the first step of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, and forecasting.
 
 There are multiple decision points during the model design phase and we will look at some of these considerations from a sustainability perspective :
 
