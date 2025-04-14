@@ -12,7 +12,7 @@ ms.date: 03/24/2025
 
 Designing, building, and operationalizing [AI workloads](/azure/well-architected/ai/) **sustainably** is crucial as they consume significant energy and carbon throughout their lifecycle. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
 
-The AI workload lifecycle consists of three primary steps: Model design, data design, and operations. In this article, we look at different  aspects that can be considered for factoring in sustainable design principles in this lifecycle.
+Designing AI workloads consists of three primary steps: Model design, data design, and operations. In this article, we look at different  aspects that can be considered for factoring in sustainable design principles in this lifecycle.
 
 To learn more about the overall AI workload lifecycle, see [MLOps and GenAIOps for AI workloads on Azure](/azure/well-architected/ai/mlops-genaiops).
 
