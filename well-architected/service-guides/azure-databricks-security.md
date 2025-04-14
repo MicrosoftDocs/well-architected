@@ -1,8 +1,8 @@
 ---
 title: Architecture Best Practices for Azure Databricks and Security
 description: Focuses on the Azure Databricks service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Security.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 08/08/2022
 ms.topic: conceptual
 products:
