@@ -272,14 +272,11 @@ These performance efficiency recommendations can apply either to the service its
 
 ## Azure policies
 
-Azure provides many built-in policies related to API Management and its dependencies. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
+Azure provides many built-in policies related to API Management and its dependencies. These policies help enforce resource governance and align configurations with best practices. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
 
 - The gateway is configured for zone redundancy.
-
 - Proper network controls are in place for the API Management gateway, such as deployment in a virtual network.
-
 - The service configuration endpoints aren't publicly accessible.
-
 - The direct Management REST API is disabled.
 
 For comprehensive governance, review the [Azure Policy built-in definitions](/azure/api-management/policy-reference) and other policies that might affect the security of the API Management gateway.
