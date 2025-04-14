@@ -323,15 +323,15 @@ A fully distributed model, where each workload team manages its own instances, i
 
 ## Related workload services
 
-Azure API Management is often combined with the following services. Be sure to review their service guides or product documentation if your workload will involve these services.
+API Management is often combined with the following services. Be sure to review their service guides or product documentation if your workload will involve these services.
 
-- [Azure Application Gateway](./azure-application-gateway.md)
+- [Application Gateway](./azure-application-gateway.md)
 - [Azure Cache for Redis](./azure-cache-redis/reliability.md)
 - [Azure Front Door](./azure-front-door.md)
-- [Azure Key Vault](/azure/key-vault/general/basic-concepts)
+- [Key Vault](/azure/key-vault/general/basic-concepts)
 - [Azure OpenAI Service](./azure-openai.md)
 - [Azure Virtual Network](./virtual-network.md)
-- [Azure Web Application Firewall](/azure/web-application-firewall/overview)
+- [Web Application Firewall](/azure/web-application-firewall/overview)
 
 ## Related content
 
