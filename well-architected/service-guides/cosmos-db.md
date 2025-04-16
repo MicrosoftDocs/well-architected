@@ -146,7 +146,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 >
 >   Create a strategy to automatically remove older items that are no longer used or necessary. If required, export these items to a lower-cost storage solution before they are removed.
 >
-> - **Optimize your queries:** 
+> - **Optimize your queries for cost:** 
 >
 >   Evaluate your most common queries that minimize cross-partition lookups. Use this information to inform the process of selecting a partition key or customizing an indexing policy.
 >
@@ -218,13 +218,13 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 > [!div class="checklist"]
 >
-> - **TODO:align with PE02 Capacity planning**
+> - **Plan your Cosmos DB capacity:**
 >
 >   Define a performance baseline for your application. Measure how many concurrent users and transactions you might need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
 >
 >   Research your target users. Determine which Azure regions are closest to them.
 >
-> - **TODO:align with PE:08 Data performance -> Optimize index and data design**  
+> - **Optimize your data design:**  
 >
 >   Design items so their corresponding JSON documents are as small as possible. Considering splitting data cross multiple items if necessary.
 >
@@ -234,9 +234,9 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 >
 > - **Optimize the deployment model:** Deploy Azure Cosmos DB for NoSQL to regions closest to your end users. | Reduce latency by deploying Azure Cosmos DB for NoSQL to the regions closest to your end users as much as possible.
 >
-> - **TODO:align with PE:08 Data performance -> Optimize database queries**
+> - **Optimize queries for performance:**
 >
->   For more information, see [query performance tips](/azure/cosmos-db/nosql/performance-tips-query-sdk)
+>   Review the [query performance tips](/azure/cosmos-db/nosql/performance-tips-query-sdk)
 >
 >   Identify queries that use one or more ordering fields. Also, identify operations that impact multiple fields. Include these fields explicitly in the indexing policy design.
 >
@@ -248,22 +248,20 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 >
 >   For the most common queries, determine the number of results you expect per page. This number will help formalize a buffered item count for prefetched results.
 >
-> - **TODO:align with PE:08 Data performance -> Optimize code logic**
->
->   Use the singleton pattern for the `CosmosClient` class in most SDKs. Use the client class in most SDKs as a singleton. The client class manages its own lifecycle and is designed to not be disposed. Constantly creating and disposing of instances can result in reduced performance.
+> - **Optimize code logic:** Use the singleton pattern for the `CosmosClient` class in most SDKs. Use the client class in most SDKs as a singleton. The client class manages its own lifecycle and is designed to not be disposed. Constantly creating and disposing of instances can result in reduced performance.
 
 | Recommendation | Benefit |
 | --- | --- |
-|  **TODO:link-moved** Use tools like the [capacity calculator](https://cosmos.azure.com/capacitycalculator/) to determine the amount of throughput required for your performance baseline. Use features like [autoscale](/azure/cosmos-db/nosql/how-to-provision-autoscale-throughput) to scale your actual throughput to more closely match your actual workload. Monitor your actual throughput consumption afterwards and make adjustments. | **TODO:benefit-added** Using the capacity calculator helps you make informed decisions about provisioning resources initially, ensuring that your database can handle the expected load without unnecessary costs. Autoscale throughput automatically adjusts the provisioned throughput to match the actual workload needs.  |
-|  **TODO:link-moved** Use optimization techniques on the client and server sides when appropriate. Take advantage of the built-in [integrated cache](/azure/cosmos-db/integrated-cache). Configure the SDK to manage how many items are prefetched (buffered) and returned for each page. | **TODO:benefit-added** Code optimization techniques can improve the user experience and make your client and server side application more efficient by helping reduce the RU charges for repeated reads and queries, potentially resulting insignificant cost savings.|
-| **TODO:link-moved** Deploy Azure Cosmos DB for NoSQL to the regions closest to your end users. Configure the ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet)/[Java](/azure/cosmos-db/nosql/best-practice-java)) SDK to prefer regions closer to your end user.</br></br>Take advantage of read replication to provide performant read performance regardless of how you configure write (single or multiple regions). | **TODO:benefit-added**  Deploying your database to the regions closest to your end users helps reduce latency, improving user experience. Read replication enables performant read operations regardless of how the write operations are configured.|
-| Configure the SDK for [Direct mode](/azure/cosmos-db/nosql/sdk-connection-modes) for the best performance. This mode allows your client to open TCP connections directly to partitions in the service and send requests directly with no intermediary gateway.|**TODO:benefit-edited** Direct mode offers better performance because there are fewer network hops. |
-| **TODO:link-moved** Use the [bulk features](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of client SDKs in scenarios that require high throughput. The bulk feature automatically manages and batches operations to maximize throughput.| **TODO:benefit-added** Using the bulk features reduces the number of backend requests and efficiently distributing tasks across partitions, leading to improved performance and better resource utilization.|
-| Disable indexing for bulk operations. If there are many insert/replace/upsert operations, disable indexing to improve the speed of the operation while using the [bulk support](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of the corresponding SDK. Indexing can be immediately reenabled later. | **TODO:benefit-added** Disabling indexing during bulk operations reduces the overhead associated with maintaining the index. Resources are better utilized for the bulk operations, resulting in faster data insertion and updates. |
-| **TODO:link-moved** Create [composite indexes](/azure/cosmos-db/index-overview#composite-indexes) for fields that are used in complex operations. Consider using composite indexes for `ORDER BY` statements with multiple fields.| **TODO:benefit-edited** Composite indexes can increase the efficiency of operations on multiple fields by orders of magnitude, resulting in faster and more efficient data retrieval. |
-| Optimize host client machines for the SDKs. For most common cases, use at least 4-cores and 8-GB memory on 64-bite host machines using the SDKs ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet#checklist)/[Java](/azure/cosmos-db/nosql/best-practice-java)).</br></br>Enable [accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-powershell) on host machines.| **TODO:benefit-added** Using machines with higher specifications ensures that the SDKs can handle more operations simultaneously. Accelerated networking can help reduce latency, resulting in quicker responses. |
-| **TODO:link-moved** Use subqueries strategically to optimize queries that join large data sets. [Optimize self-join expressions](/azure/cosmos-db/nosql/query/subquery#optimize-self-join-expressions) by using subqueries to filter the arrays before [joining arrays within the item](/azure/cosmos-db/nosql/query/join).</br></br>For cross-partition queries, optimize your query to include a filter on the partition key to optimize the routing of your query to the least amount of partitions possible. | **TODO:benefit-edited**  Queries that join child arrays can increase in complexity if multiple arrays are involved and not filtered. By employing subqueries, arrays can be filtered before joining them, increasing the efficiency of self-join expressions.|
-| Use [analytical workloads](/azure/cosmos-db/analytical-store-introduction) for the most complex queries.</br></br> If you run frequent aggregations or join queries over large containers, consider enabling the analytical store and doing queries in Azure Synapse Analytics. | **TODO:benefit-edited** Analytical workloads are isolated from transactional workloads and optimized for handling complex queries, preventing performance degradation and ensuring faster results. |
+| Use tools like the [capacity calculator](https://cosmos.azure.com/capacitycalculator/) to determine the amount of throughput required for your performance baseline. Use features like [autoscale](/azure/cosmos-db/nosql/how-to-provision-autoscale-throughput) to scale your actual throughput to more closely match your actual workload. Monitor your actual throughput consumption afterwards and make adjustments. | Using the capacity calculator helps you make informed decisions about provisioning resources initially, ensuring that your database can handle the expected load without unnecessary costs. Autoscale throughput automatically adjusts the provisioned throughput to match the actual workload needs.  |
+| Use optimization techniques on the client and server sides when appropriate. Take advantage of the built-in [integrated cache](/azure/cosmos-db/integrated-cache). Configure the SDK to manage how many items are prefetched (buffered) and returned for each page. | Code optimization techniques can improve the user experience and make your client and server side application more efficient by helping reduce the RU charges for repeated reads and queries, potentially resulting in significant cost savings.|
+| Deploy Cosmos DB instances in the regions closest to your end users. Configure the ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet)/[Java](/azure/cosmos-db/nosql/best-practice-java)) SDK to prefer regions closer to your end users.</br></br>Take advantage of read replication to provide performant read performance regardless of how you configure write (single or multiple regions). | Deploying your database to the regions closest to your end users helps reduce latency, improving user experience. Read replication enables performant read operations regardless of how the write operations are configured.|
+| Configure the SDK for [Direct mode](/azure/cosmos-db/nosql/sdk-connection-modes) for the best performance. This mode allows your client to open TCP connections directly to partitions in the service and send requests directly with no intermediary gateway.| Direct mode offers better performance because there are fewer network hops. |
+| Use the [bulk features](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of client SDKs in scenarios that require high throughput. The bulk feature automatically manages and batches operations to maximize throughput.| Using the bulk features reduces the number of backend requests and efficiently distributes tasks across partitions, leading to improved performance and better resource utilization.|
+| Disable indexing for bulk operations. If there are many insert/replace/upsert operations, disable indexing to improve the speed of the operation while using the [bulk support](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of the corresponding SDK. Indexing can be immediately reenabled later. | Disabling indexing during bulk operations reduces the overhead associated with maintaining the index. Resources are better utilized for the bulk operations, resulting in faster data insertion and updates. |
+| Create [composite indexes](/azure/cosmos-db/index-overview#composite-indexes) for fields that are used in complex operations. Consider using composite indexes for `ORDER BY` statements with multiple fields.| Composite indexes can increase the efficiency of operations on multiple fields by orders of magnitude, resulting in faster and more efficient data retrieval. |
+| Optimize host client machines for the SDKs. For most common cases, use at least 4-cores and 8-GB memory on 64-bite host machines using the SDKs ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet#checklist)/[Java](/azure/cosmos-db/nosql/best-practice-java)).</br></br>Enable [accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-powershell) on host machines.| Using machines with higher specifications ensures that the SDKs can handle more operations simultaneously. Accelerated networking can help reduce latency, resulting in quicker responses. |
+| Use subqueries strategically to optimize queries that join large data sets. [Optimize self-join expressions](/azure/cosmos-db/nosql/query/subquery#optimize-self-join-expressions) by using subqueries to filter the arrays before [joining arrays within the item](/azure/cosmos-db/nosql/query/join).</br></br>For cross-partition queries, optimize your query to include a filter on the partition key to optimize the routing of your query to the least amount of partitions possible. | Queries that join child arrays can increase in complexity if multiple arrays are involved and not filtered. By employing subqueries, arrays can be filtered before joining them, increasing the efficiency of self-join expressions.|
+| Use [analytical workloads](/azure/cosmos-db/analytical-store-introduction) for the most complex queries.</br></br> If you run frequent aggregations or join queries over large containers, consider enabling the analytical store and doing queries in Azure Synapse Analytics. | Analytical workloads are isolated from transactional workloads and optimized for handling complex queries, preventing performance degradation and ensuring faster results. |
 
 ## Azure policies
 
