@@ -106,6 +106,8 @@ Azure Front Door and Azure Traffic Manager enable you to implement a [blue-green
 
 **Optimizing backups**: Some Azure data services support low-to-no performance impact for point-in-time recovery and indexing. Azure Backup is a reliable and scalable cloud-based backup solution that enables you to protect your data and applications. It provides features like incremental backups, compression, and encryption to minimize the effects on performance during backup operations. Azure Site Recovery helps you protect your applications by replicating them to a secondary location. It provides continuous replication and automated failover capabilities to minimize the downtime and performance impacts during backup and disaster recovery operations.
 
+**Managing business continuity and disaster recovery**: You can also use [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) to streamline backup and disaster recovery management with a unified web interface for configuring backups, setting protection policies, monitoring operations, and reviewing configurations across diverse environments.
+
 ## Related links
 
 - [Deployment slots](/azure/app-service/deploy-staging-slots)
