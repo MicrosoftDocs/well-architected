@@ -107,26 +107,24 @@ The [Security design principles](../security/principles.md) provide a high-level
 >
 >   Reduce surface attack area by using private endpoints in accordance with the [security baseline](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#network-security) for Azure Cosmos DB.
 >
-> - **TODO:align with SE:10 monitoring and threat detection - Implement a holistic security monitoring strategy**
+> - **Implement a holistic security monitoring strategy:**
 >
->   Audit user access, security breaches, and resource operations with [control plane logs.](/azure/cosmos-db/audit-control-plane-logs).
+>   Audit user access, security breaches, and resource operations with [control plane logs](/azure/cosmos-db/audit-control-plane-logs).
 >
 >   Monitor data egress, data changes, usage, and latency with [data plane metrics](/azure/cosmos-db/use-metrics).
 >
-> - **TODO:align with SE:02 securing a development lifecycle->Secure development and testing practices** 
->
->   Follow best software development practices for secure access to data. Follow secure coding practices and perform secure code reviews when developing applications that interact with Azure Cosmos DB.
+> - **Use secure development and testing practices:** Follow best software development practices for secure access to data. Follow secure coding practices and perform secure code reviews when developing applications that interact with Azure Cosmos DB.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
-| **TODO:link-added** Disable public endpoints and use [private endpoints](/azure/cosmos-db/how-to-configure-private-endpoints?tabs=arm-bicep) whenever possible. | **TODO:benefit-edited** Avoid leaving unnecessary or unused public endpoints to reduce the surface area susceptible to attacks on your account. |
-| **TODO:link-added** Use [role-based access control](/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access) to limit control-plane access to specific identities and groups and within the scope of well-defined assignments. |  **TODO:benefit-reviewed** Use role-based access control to prevent unintended access to your account. Assign appropriate roles and permissions to users or applications accessing Azure Cosmos DB. |
-| **TODO:link-added** Create [virtual network](/azure/cosmos-db/how-to-configure-vnet-service-endpoint) endpoints and rules to limit access to the account. Use network security groups (NSGs) to control inbound and outbound traffic to and from the Azure Cosmos DB resources.| **TODO:benefit-reviewed** Virtual network service endpoints and firewall rules help restrict access to your Azure Cosmos DB account and  helps protect your data from unauthorized access. |
-| **TODO:portion moved to echcklist** Protect against common security vulnerabilities like injection attacks, cross-site scripting (XSS), or insecure direct object references (IDOR). Implement input validation, [parameterized queries](/azure/cosmos-db/nosql/query/parameterized-queries), and appropriate error handling for common [HTTP status codes](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) to prevent security risks. | **TODO:benefit-added** Input validation helps prevent malicious data from being processed by your application, blocking potentially harmful data that could lead to security breaches or data corruption.</br></br>Proper error handling enables your application to respond to errors in a controlled manner, preventing the exposure of sensitive information.|
-| **TODO:link-added** [Monitor control-plane logs](/azure/cosmos-db/audit-control-plane-logs) to detect unauthorized modifications to your Cosmos DB account. For more information.| **TODO:benefit-edited** Monitoring helps you track access patterns and audit logs, ensuring that your database remains secure and compliant with relevant data protection regulations. Monitoring data-plane metrics can also help identify unfamiliar patterns that might reveal a security breach. |
-| **TODO:link-added** Enable [Microsoft Defender for Azure Cosmos DB](/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections) so that you can trigger security alerts when anomalies in activity occur. | **TODO:benefit-edited** Microsoft Defender detects attempts to exploit databases in your Azure Cosmos DB for NoSQL account. Defender detects potential SQL injections, suspicious access patterns, and other potential exploitation. |
+| Disable public endpoints and use [private endpoints](/azure/cosmos-db/how-to-configure-private-endpoints?tabs=arm-bicep) whenever possible. | Using private networking through private endpoints reduces the surface area susceptible to attacks on your account. |
+| Use [role-based access control](/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access) (RBAC) to limit control-plane access to specific identities and groups and within the scope of well-defined assignments. | Use RBAC to prevent unauthorized access to your account. Assign appropriate roles and permissions to users or applications accessing Azure Cosmos DB based on the principle of least privilege. |
+| Create [virtual network](/azure/cosmos-db/how-to-configure-vnet-service-endpoint) endpoints and rules to limit access to the account. Use network security groups (NSGs) to control inbound and outbound traffic to and from the Azure Cosmos DB resources.| Virtual network service endpoints, NSGs, and firewall rules help restrict access to your Azure Cosmos DB account and  helps protect your data from unauthorized access. |
+| Protect against common security vulnerabilities like injection attacks, cross-site scripting (XSS), or insecure direct object references (IDOR). Implement input validation, [parameterized queries](/azure/cosmos-db/nosql/query/parameterized-queries), and appropriate error handling for common [HTTP status codes](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) to prevent security risks. | Input validation helps prevent malicious data from being processed by your application, blocking potentially harmful data that could lead to security breaches or data corruption.</br></br>Proper error handling enables your application to respond to errors in a controlled manner, preventing the exposure of sensitive information.|
+| [Monitor control-plane logs](/azure/cosmos-db/audit-control-plane-logs) to detect unauthorized modifications to your Cosmos DB account. | Monitoring helps you track access patterns and audit logs, ensuring that your database remains secure and compliant with relevant data protection regulations. Monitoring data-plane metrics can also help identify unfamiliar patterns that might reveal a security breach. |
+| Enable [Microsoft Defender for Azure Cosmos DB](/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections) to trigger security alerts when anomalous activities occur. | Microsoft Defender detects attempts to exploit databases in your account. Defender detects potential SQL injections, suspicious access patterns, and other potential exploitation activities. |
 
 ## Cost optimization
 
