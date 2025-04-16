@@ -14,7 +14,7 @@ azure.category:
 
 # Architecture best practices for Azure API Management
 
-Azure API Management is a management platform and gateway for APIs across all environments, including hybrid and multicloud. As a platform as a service solution, API Management helps support your workload's API lifecycle.
+Azure API Management is a management platform and gateway for APIs across all environments, including hybrid and multicloud. As a platform as a service (PaaS) solution, API Management helps support your workload's API lifecycle.
 
 This article assumes that as an architect, you've reviewed the [integration services decision tree](/azure/logic-apps/azure-integration-services-choose-capabilities) and chosen API Management as the integration service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
