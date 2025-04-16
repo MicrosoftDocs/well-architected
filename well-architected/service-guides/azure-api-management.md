@@ -335,4 +335,5 @@ API Management is often combined with the following services. Be sure to review 
 The following articles demonstrate some of the recommendations discussed in this article.
 
 - [Access Azure OpenAI and other language models through a gateway](/azure/architecture/ai-ml/guide/azure-openai-gateway-guide)
+- [Automated API deployments using APIOps](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops)
 - [API Management architecture in an application landing zone](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function) and [Azure landing zone platform considerations](/azure/cloud-adoption-framework/scenarios/app-platform/api-management/landing-zone-accelerator) for API Management deployments
