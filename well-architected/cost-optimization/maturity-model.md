@@ -9,39 +9,39 @@ ms.topic: conceptual
 
 # Cost Optimization maturity model
 
-In the context of the Well-Architected Framework, cost optimization is about detecting spend patterns, prioritizing investments in critical areas, and optimizing in others to meet the organization's budget while meeting business requirements.
+In the context of the Azure Well-Architected Framework, cost optimization is about detecting spend patterns, prioritizing investments in critical areas, and optimizing in other areas. These tasks help meet an organization's budget while meeting business requirements.
 
 [add art]
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1 - Trust and accountability**](#tab/level1)
+# [**Level 1: Trust and accountability**](#tab/level1)
 
-![Goal icon](../_images/goal.svg) **Build out the mechanisms to manage workload costs throughout its lifecycle.**
+![Goal icon](../_images/goal.svg) **Build out mechanisms to manage workload costs throughout its lifecycle.**
 
-Level 1 of the maturity model is designed to help workload teams understand their budget and to put processes and tools in place to manage their costs over the course of their workload lifecycle. Before starting on more mature processes, like building a cost model, you should focus on basic cost management best practices that will help you get your workload started without causing issues with the budget.
+Level 1 of the maturity model helps workload teams understand their budget and put processes and tools in place to manage their costs during the workload lifecycle. Before you start on more mature processes, like building a cost model, you should focus on basic cost management best practices to get your workload started without causing problems with the budget.
 
-The recommendations in the following checklist will help you wisely manage costs while allowing you to build your workload efficiently.
+The following recommendations can help you manage costs wisely while building your workload efficiently.
 
-#### &#10003; Share financial goals, budget details, and workload spend with all team members, managers, and decision-makers
+#### &#10003; Share financial goals, budget details, and workload spending with all team members, managers, and decision-makers
 
-Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership piece of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
+Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This practice is **not often thought of but is important** to build trust between the workload team and leadership teams. Share these insights so that leadership knows that the workload team is thinking ahead about how they want to manage their expenses. This collaboration also helps motivate the workload team to remain diligent in their cost management because of their commitments to leadership.
 
-#### &#10003; Define processes and tools for sharing cost-saving ideas and knowledge
+#### &#10003; Define processes and tools to share cost-saving ideas and knowledge
 
-Use collaboration tools to encourage team members to share cost optimization ideas and insights. Providing mechanisms for the team to collaborate on their ideas and insights is a great motivational tool as it empowers team members to offer suggestions that cut across all disciplines of the workload team. By fostering a culture of collaboration on cost optimization, you can reinforce the mindset that managing the workload costs relies on every team member equally.
+Use collaboration tools to encourage team members to share cost optimization ideas and insights. Provide mechanisms for the team to collaborate on their ideas and insights. This approach empowers team members to offer suggestions across all disciplines of the workload team. Foster a culture of collaboration on cost optimization to reinforce the mindset that managing workload costs relies on every team member equally.
 
-To help motivate adopting a cost optimization mindset, consider acknowledging individuals and teams who demonstrate financial responsibility and contribute to cost optimization through performance evaluations, incentives, or other recognition programs.
+To motivate a cost optimization mindset, consider acknowledging individuals and teams who demonstrate financial responsibility and contribute to cost optimization. You could add performance evaluations, incentives, or other recognition programs.
 
-#### &#10003; Gather detailed cost data from all sources, including invoiced (actual billed) and metered (predictive based on billing plans) data
+#### &#10003; Gather detailed cost data from all sources, including invoiced and metered data
 
-Explore all of the available tools and methods provided by your service provider to compile a fully detailed picture of your workload's costs. Relying only on the monthly bill might not give stakeholders enough details about spending. Compile data to save time in investigating vague items and explaining obscure terms. After you've gathered utilization data, centralize that data into a unified system.
+Invoiced data represents actual billed amounts, and metered data is predictive based on billing plans. To get a fully detailed picture of your workload's costs, explore all available tools and methods that your service provider offers. The monthly bill might not give stakeholders enough details about spending. Compile data to save time investigating vague items and explaining obscure terms. After you gather usage data, centralize that data into a unified system.
 
-Take advantage of billing dashboards that can be filtered for different views to make it easier for stakeholders and workload team members to see the information that's most relevant to them.
+Take advantage of billing dashboards that have filters for different views. Stakeholders and workload team members can use the filters to easily see the information that's most relevant to them.
 
-#### &#10003; Determine the cost drivers
+#### &#10003; Determine cost drivers
 
-Using the tools you've adopted to gather billing data, you can identify how different workload components contribute to the overall costs. Pay special attention to costs related to processes, like data transfer or transactions, contribute to the overall costs as these are often not considered when estimating resource costs before deployment. 
+To identify how different workload components contribute to overall costs, use the tools that you adopted to gather billing data. Pay special attention to costs related to processes, like data transfers or transactions, and how they contribute to overall costs. These costs are easily missed during resource cost estimations before deployment. 
 
 You should also understand how factors not directly related to your cloud resources can affect your budget. This can include training for team members, and software licensing not managed by your cloud provider.
 
@@ -49,11 +49,12 @@ You should also understand how factors not directly related to your cloud resour
 
 One of the first decisions the workload team needs to make is whether they should use off-the-shelf solutions or build solutions in-house. Generally speaking, the Well-Architected Framework favors [keeping things simple](../reliability/simplify.md), and using off-the-shelf solutions follows that philosophy. Using well-supported solutions relieves operational burden from your team and decreases the time needed for development, allowing developers to focus on core functionality of the application.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are cost considerations to evaluate when making a decision about building or buying a particular solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development, but recurring costs can be dramatically less as there won't be any support contracts or licensing to maintain. 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: There are cost considerations to evaluate when making a decision about building or buying a particular solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development, but recurring costs can be dramatically less as there won't be any support contracts or licensing to maintain. 
 
 To help you make the right decision for your team, evaluate these points.
 
 - *The desired level of control:* Decide how much control over the functionality provided by a particular solution you really need.
+
 - *The necessary amount of customization:* Determine how much customization you'll need to be able to offer as your workload evolves.
 - *The expected time to market:* Understand stakeholders' expectations for bringing your workload to market and how you can best meet that timeline.
 - *The required technical expertise:* Determine how much expertise that you'll need to retain in order to build and operate a particular solution.
