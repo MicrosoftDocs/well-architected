@@ -24,7 +24,11 @@ This article assumes that as an architect, you've reviewed the [Azure data optio
 > Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Service Fabric and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 >
 
-**TODO:** removed the reference architectures because the ones linked from here have been removed from AAC. AAC doesn't seem to have any reference architecture that showcases Cosmos DB and is representative of best practices recommended here.
+**Technology scope**
+
+This review focuses on the interrelated decisions for the following Azure resources:
+
+- Azure Cosmos DB for NoSQL
 
 ## Reliability
 
@@ -60,12 +64,13 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 >
 >   Consider how your selected [consistency level](/azure/cosmos-db/consistency-levels) and replication mode [impacts the Recovery point objective (RPO)](/azure/cosmos-db/consistency-levels#rto) in a region-wide outage.
 >
->   **TODO:merge into redundancy item** Design an end-to-end test of high availability for your application.
+>   Design an end-to-end test of high availability for your application that includes testing database failover and fail back.
 >
 > - **Use native disaster recovery and backup features:** 
->   **TODO:replace walk through with design or implement and describe options**  Walk through [common backup processes](/azure/cosmos-db/continuous-backup-restore-introduction) including, but not limited to; point-in-time restore, recovering from accidental destructive operations, restoring deleted resources, and restoring to another region at a point-in-time. Configure account with [continuous backup](/azure/cosmos-db/online-backup-and-restore), choosing the appropriate retention period based on your business requirements.
+>   
+>   Implement [database and container backups and restores](/azure/cosmos-db/continuous-backup-restore-introduction) to meet your requirements. Restore scenarios include point-in-time restore, recovering from accidental destructive operations, restoring deleted resources, and restoring to another region at a point-in-time. Configure account with [continuous backup](/azure/cosmos-db/online-backup-and-restore), choosing the appropriate retention period based on your business requirements.
 >
-> - **TODO:align with RE:07 Self preservation -> Application design guidance and patterns**
+> - **Align your Cosmos DB design with industry standard application design guidance and patterns**
 >
 >    Explore the [designing resilient applications guide](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications), review the [default retry policy](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) for the SDKs, and plan for [custom handling for specific transient errors](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications#should-my-application-retry-on-errors). These guides will give best practices to make application code resilient to transient errors.
 >
@@ -74,9 +79,9 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 | Recommendation | Benefit |
 | --- | --- |
-| **TODO:link-added** Distribute your Azure Cosmos DB account across [availability zones](/azure/reliability/reliability-cosmos-db-nosql?context=%2Fazure%2Fcosmos-db%2Fnosql%2Fcontext%2Fcontext) (when available). | **TODO:benefit-reviewed** Availability zones provide distinct power, networking, and cooling isolating hardware failures to a subset of your replicas. Azure Cosmos DB has multiple replicas that span across a single random availability zone when the availability zones feature isn't used. If the availability zone feature is used, replicas span across multiple availability zones. |
-| **TODO:link-added** Configure your Azure Cosmos DB account to span at least [two regions](/azure/cosmos-db/nosql/how-to-multi-master). | **TODO:benefit-reviewed** Spanning multiple regions prevents your account from being entirely unavailable if there's an isolated region outage. |
-| **TODO:link-added, merged two entries** Enable [service-managed failover](/azure/cosmos-db/how-to-manage-database-account#enable-service-managed-failover-for-your-azure-cosmos-db-account) for your account. Understand the tradeoffs with service-managed failover and plan for forced failover if necessary.</br></br>Temporarily disable service-managed failover to validate the end-to-end high availability of your application with a manual failover started using a script or the Azure portal.| **TODO:benefit-edited** Service-managed failover allows Azure Cosmos DB to change the write region of a multiple-region account to preserve availability. This change occurs without user interaction.|
+| Distribute your Azure Cosmos DB account across [availability zones](/azure/reliability/reliability-cosmos-db-nosql?context=%2Fazure%2Fcosmos-db%2Fnosql%2Fcontext%2Fcontext) (when available). | Availability zones provide segregated power, networking, and cooling, isolating hardware failures to a subset of your replicas. Cosmos DB has multiple replicas that span across a single random availability zone when the availability zones feature isn't used. If the availability zone feature is used, replicas span across multiple availability zones. |
+| Configure your Azure Cosmos DB account to span at least [two regions](/azure/cosmos-db/nosql/how-to-multi-master). | Spanning multiple regions helps ensure your workload is resilient to regional outages. |
+| Enable [service-managed failover](/azure/cosmos-db/how-to-manage-database-account#enable-service-managed-failover-for-your-azure-cosmos-db-account) for your account. Understand the tradeoffs with service-managed failover and plan for forced failover if necessary.</br></br>Temporarily disable service-managed failover to validate the end-to-end high availability of your application with a manual failover started using a script or the Azure portal.| Service-managed failover allows Azure Cosmos DB to automatically change the write region of a multiple-region account to preserve availability. This change occurs without user interaction.|
 
 ## Security
 
