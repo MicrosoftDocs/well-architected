@@ -160,8 +160,6 @@ Performance testing and metrics should be considered when making the decision to
 
 # [**Level 3 - Incorporating signals**](#tab/level3)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
-
 ![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating user and stakeholder feedback**
 
 In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it becomes important to open up your feedback loop to internal and external users and to other stakeholders. As you make further Cost Optimization refinements to your workload, you'll also need to start considering tradeoffs with other pillars, especially Performance Efficiency and Reliability. 
@@ -244,15 +242,27 @@ Evaluate your feature development strategy to ensure that valuable features are 
 
 # [Level 4](#tab/level4)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) 
 
-### Strategy focus: Refine operations
+#### Refine the cost model based on production learnings
 
-<!-- No more than 5 H4 headings per tab -->
+Once you have deployed and operated your workload in production for a sufficient time period to understand your normal usage patterns, revisit your cost model to plan for the future. The cost model should project future expenses, allocate funds, and adjust for deviations. In scenario analysis, it evaluates the financial impact of different business changes and anticipates cost implications of customer behavior. For resource optimization, it identifies underutilized cloud resources, forecasts costs of scaling, and compares cloud providers' billing models to choose the most economical option.  
 
-#### Example heading
+As part of this exercise, determine how closely your running costs align with the previously developed cost model and investigate the causes of discrepancies. Finding unexpected costs is common and assigning blame for these is generally unproductive. Instead, evaluate the value of the components driving unexpected costs and work with stakeholders to determine whether the workload design needs to be modified to better align with the cost model, or whether the cost model should be modified. 
 
-<!-- No more than 100 words under each H4 heading. -->
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Keep in mind that it's difficult to accurately project variable costs, especially when you adopt new technologies, so you might have to look for compromises when planning your budget. Make sure stakeholders understand how you've arrived at your estimates for variable costs and how you plan to keep these costs under control.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cost-cutting measures can adversely affect reliability, security, performance, and operational excellence. Carefully analyze the impact of every planned cost-cutting measure and determine if making a given change is worth the potential impact.
+
+#### Optimize your data usage for costs
+
+Use your production learnings to refine your data strategies. In particular, look for optimization opportunities for the following factors:
+
+- Optimize your data lifecycle management. Review your data tiering and make adjustments where practical. You might have data that is no longer being actively used and can be moved to less expensive storage tiers, like archive storage. Likewise, if you haven't already created policies to define what types of data belong in different tiers, creating those based on production learnings will help the on-going management of your data lifecyle more efficient. Finally, implement automation to enforce these policies to further optimize your efforts.
+- Optimize your storage solutions considering ease of management. Evaluate whether the storage solutions you have deployed are the best fit for your use case and whether changing to a different technology can save you operational burden or utilization costs. For example, you might have initially deployed SQL Server on VMs to easily migrate your workload or because that is the technology your workload team was most familiar with. Moving to a platform as a service (PaaS) service can significantly reduce your operational burden and save you costs, depending on certain factors.
+- Optimize your use of file formats. Certain file formats, like Avro, Parquet, and Optimized Row Columnar (ORC) are best suited for [particular input/output (I/O) patterns and query patterns](./optimize-data-costs#optimize-file-formats) Determine whether you should be using specific file formats for your use cases. 
+
+#### 
 
 # [Level 5](#tab/level5)
 
