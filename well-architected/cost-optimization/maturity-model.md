@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Cost Optimization maturity model
 
-In the context of the Azure Well-Architected Framework, cost optimization is about detecting spend patterns, prioritizing investments in critical areas, and optimizing in other areas. These tasks help meet an organization's budget while meeting business requirements.
+In the context of the Well-Architected Framework, cost optimization is about detecting spend patterns, prioritizing investments in critical areas, and optimizing in others to meet the organization's budget while meeting business requirements.
 
 [add art]
 
