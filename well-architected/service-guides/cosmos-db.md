@@ -66,13 +66,9 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 >
 >   Design an end-to-end test of high availability for your application that includes testing database failover and fail back.
 >
-> - **Use native disaster recovery and backup features:** 
->   
->   Implement [database and container backups and restores](/azure/cosmos-db/continuous-backup-restore-introduction) to meet your requirements. Restore scenarios include point-in-time restore, recovering from accidental destructive operations, restoring deleted resources, and restoring to another region at a point-in-time. Configure account with [continuous backup](/azure/cosmos-db/online-backup-and-restore), choosing the appropriate retention period based on your business requirements.
+> - **Use native disaster recovery and backup features:** Implement [database and container backups and restores](/azure/cosmos-db/continuous-backup-restore-introduction) to meet your requirements. Restore scenarios include point-in-time restore, recovering from accidental destructive operations, restoring deleted resources, and restoring to another region at a point-in-time. Configure account with [continuous backup](/azure/cosmos-db/online-backup-and-restore), choosing the appropriate retention period based on your business requirements.
 >
-> - **Align your Cosmos DB design with industry standard application design guidance and patterns**
->
->    Explore the [designing resilient applications guide](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications), review the [default retry policy](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) for the SDKs, and plan for [custom handling for specific transient errors](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications#should-my-application-retry-on-errors). These guides will give best practices to make application code resilient to transient errors.
+> - **Align your Cosmos DB design with industry standard application design guidance and patterns:** Explore the [designing resilient applications guide](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications), review the [default retry policy](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) for the SDKs, and plan for [custom handling for specific transient errors](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications#should-my-application-retry-on-errors). These guides will give best practices to make application code resilient to transient errors.
 >
 
 ### Recommendations
@@ -134,21 +130,17 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 > [!div class="checklist"]
 >
-> - **Optimize your Cosmos DB scaling strategy:**
+> - **Optimize your Cosmos DB scaling strategy:** Understand how [storage and throughput scaling](/azure/cosmos-db/partitioning-overview) are handled in Cosmos DB, and determine the right balance of performance and cost to meet your requirements. 
 >
 >   Select a throughput allocation schema that's appropriate for your workload. Review the benefits of standard and autoscale throughput distributed at the database or container level. Also, consider serverless when appropriate. [Review your workload's traffic patterns](/azure/cosmos-db/how-to-choose-offer#understand-your-traffic-patterns) in the context of selecting a throughput allocation scheme.
 >
 >   Determine a partition key or set of partition keys which have a value that has high cardinality and doesn't change. Use the [existing guidance and best practices](/azure/cosmos-db/partitioning-overview#choose-partitionkey) to help select an appropriate partition key. Also, consider your [indexing policy](/azure/cosmos-db/index-policy) when determining a partition key.
 >
-> - **Optimize your Cosmos DB data costs:**
->
->   Take an inventory of data and calculate the expected overall data storage for your workload. The size of items and indexes both influence your data storage cost. Calculate the impact of replication and backup on storage costs.
+> - **Optimize your Cosmos DB data costs:** Take an inventory of data and calculate the expected overall data storage for your workload. The size of items and indexes both influence your data storage cost. Calculate the impact of replication and backup on storage costs.
 >
 >   Create a strategy to automatically remove older items that are no longer used or necessary. If required, export these items to a lower-cost storage solution before they are removed.
 >
-> - **Optimize your queries for cost:** 
->
->   Evaluate your most common queries that minimize cross-partition lookups. Use this information to inform the process of selecting a partition key or customizing an indexing policy.
+> - **Optimize your queries for cost:** Evaluate your most common queries that minimize cross-partition lookups. Use this information to inform the process of selecting a partition key or customizing an indexing policy.
 >
 >   Use projection to reduce throughput costs of large query result sets. Author queries to only project the minimal number of fields required from a result set. If calculations on fields are necessary, evaluate the throughput cost of performing those calculations server-side versus client-side.
 >
@@ -180,9 +172,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 > [!div class="checklist"]
 >
-> - **Monitor your Cosmos DB instances:**
->
->   Design a monitoring strategy for availability of your solution across regions.
+> - **Monitor your Cosmos DB instances:** Include your Cosmos DB instances across regions in your workload monitoring solution.
 >
 >   Create identifiers in the client application to differentiate workloads. Consider flags, such as the user-agent suffix, to identify what workload each log entry or metric should be associated with.
 >
@@ -192,7 +182,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 >
 >   Plan expected metric thresholds based on partition and index design. Ensure that there's a plan to monitor those metrics to determine how close they are to the planned thresholds.
 >
-> - **Automate deployments through infrastructure-as-code:**
+> - **Automate deployments through infrastructure-as-code:** Incorporate all Cosmos DB changes, including infrastructure deployments and configuration changes in your code deployment practices.
 >
 >   Create and enforce best practices for automating the deployment of your Azure Cosmos DB for NoSQL account and resources.
 >
@@ -218,15 +208,11 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 > [!div class="checklist"]
 >
-> - **Plan your Cosmos DB capacity:**
->
->   Define a performance baseline for your application. Measure how many concurrent users and transactions you might need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
+> - **Plan and proactively manage your Cosmos DB capacity:** Define a performance baseline for your application. Measure how many concurrent users and transactions you might need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
 >
 >   Research your target users. Determine which Azure regions are closest to them.
 >
-> - **Optimize your data design:**  
->
->   Design items so their corresponding JSON documents are as small as possible. Considering splitting data cross multiple items if necessary.
+> - **Optimize your data design:** Design items so their corresponding JSON documents are as small as possible. Considering splitting data cross multiple items if necessary.
 >
 >   Keep item sizes less than **100 KB** in size. Larger items consume more throughput for common read and write operations. Queries on larger items that project all fields can also have a significant throughput cost.
 >
@@ -234,9 +220,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 >
 > - **Optimize the deployment model:** Deploy Azure Cosmos DB for NoSQL to regions closest to your end users. | Reduce latency by deploying Azure Cosmos DB for NoSQL to the regions closest to your end users as much as possible.
 >
-> - **Optimize queries for performance:**
->
->   Review the [query performance tips](/azure/cosmos-db/nosql/performance-tips-query-sdk)
+> - **Optimize queries for performance:** Review the [query performance tips](/azure/cosmos-db/nosql/performance-tips-query-sdk) and apply the strategies that apply to your use cases.
 >
 >   Identify queries that use one or more ordering fields. Also, identify operations that impact multiple fields. Include these fields explicitly in the indexing policy design.
 >
