@@ -25,7 +25,7 @@ The following recommendations can help you manage costs wisely while building yo
 
 #### &#10003; Share financial goals, budget details, and workload spending with all team members, managers, and decision-makers
 
-Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Share detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This practice is **not often thought of but is important**. It help build trust between the workload team and leadership teams and shows that the workload team is thinking ahead about managing expenses. This collaboration also helps motivate the workload team to remain diligent in their cost management because of their commitments to leadership teams.
+Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Share detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This practice is **not often thought of but is important**. It helps build trust between the workload team and leadership teams and shows that the workload team is thinking ahead about managing expenses. This collaboration also helps motivate the workload team to remain diligent in their cost management because of their commitments to leadership teams.
 
 #### &#10003; Define processes and tools to share cost-saving ideas and knowledge
 
@@ -35,7 +35,7 @@ To motivate a cost optimization mindset, consider acknowledging individuals and 
 
 #### &#10003; Gather detailed cost data from all sources, including invoiced and metered data
 
-Invoiced data represents actual billed amounts, and metered data is predictive based on billing plans. To get a fully detailed picture of your workload's costs, explore all available tools and methods that your service provider offers. The monthly bill might not give stakeholders enough details about spending. Compile data to save time investigating vague items and explaining obscure terms. After you gather usage data, centralize that data into a unified system.
+Invoiced data represents actual billed amounts, and metered data is predictive based on billing plans. To get a fully detailed picture of your workload's costs, explore all available tools and methods that your service provider offers. The monthly bill might not give stakeholders enough details about spending. Compile data to save time investigating unclear charges and explaining obscure terms. After you gather usage data, centralize that data into a unified system.
 
 Take advantage of billing dashboards that have filters for different views. Stakeholders and workload team members can use the filters to easily see the information that's most relevant to them.
 
@@ -51,7 +51,7 @@ One of the first decisions the workload team needs to make is whether they shoul
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Consider costs when you decide whether to build or buy a solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development. But you have fewer recurring costs because you don't have to maintain support contracts or licensing.
 
-To help you make the right decision for your team, evaluate these points.
+To help you make the right decision for your team, evaluate the following points.
 
 - *The desired level of control:* Decide how much control you need over the functionality of a solution.
 
