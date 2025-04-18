@@ -137,7 +137,9 @@ Backup is an important part of your overall recovery process. Oftentimes it is j
 
 -   Run regular, scheduled test restores of backup data to ensure that services are working as expected.
 
-## Azure DR facilitation
+## Azure facilitation
+
+### Azure DR facilitation
 
 Many Azure products have built-in failover capabilities. Familiarize yourself with these capabilities and include them in recovery procedures.
 
@@ -159,7 +161,7 @@ For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure
 
 See the [DR for Azure data platform series](/azure/architecture/data-guide/disaster-recovery/dr-for-azure-data-platform-overview) for guidance about preparing an enterprise data estate for DR.
 
-## Azure Backup facilitation
+### Azure Backup facilitation
 
 Many Azure products have built-in backup capabilities. Familiarize yourself with these capabilities and include them in recovery procedures.
 
