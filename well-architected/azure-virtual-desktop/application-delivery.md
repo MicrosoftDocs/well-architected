@@ -1,9 +1,9 @@
 ---
 title: Application Delivery Considerations for Azure Virtual Desktop Workloads
 description: Understand Azure Virtual Desktop application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
-author: PageWriter-MSFT
-ms.author: prwilk
-ms.date: 01/30/2025
+author: roarrioj
+ms.author: roarrioj
+ms.date: 04/17/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
@@ -35,15 +35,15 @@ In general, understand the commonalities between use cases, and standardize host
 |---|---|
 |Understand the criticality of the host pool and the workloads that it supports. Ensure that the combined service-level agreements (SLAs) meet the requirements of the workload. Define each workloads RPO and RTO. Evaluate the benefits and implications of using Active-Active vs. Active-Passive architecture across personal and pooled host pools.| Invoking the appropriate BCDR strategy will ensure that business leaders expectations and end users needs are both met or exceeded. |
 |Target a Stage 3 multi-region deployment if regional failure isn't tolerable. <br> Understand how the metadata is replicated across your AVD objects and resources.|Maintain business continuity for your workload(s) and keep users functional even during a regional outage.|
-|Onboard your Virtual Machines to AVDI using Azure Monitor Agent to monitor your VMs health.|Observability into the state of your VMs will be crucial for operational health and stability.|
-|Use trusted images from the Azure Marketplace and only install software from trusted sources. Regularly update your base image and software. <br><br>For pooled host pools, ensure that you update all session hosts and avoid configuration drift.|Incrases security posture and reduces attack surface from vulnerabilities that could compromise your workload(s). <br><br> Ensures a consistent and realiable user experience no matter the session host a user is brokered to.|
+|Onboard your Virtual Machines to AVD Insights using Azure Monitor Agent to monitor your VMs' health.|Observability into the state of your VMs will be crucial for operational health and stability.|
+|Use trusted images from the Azure Marketplace and only install software from trusted sources. Regularly update your base image and software. <br><br>For pooled host pools, ensure that you update all session hosts and avoid configuration drift.|Increases security posture and reduces attack surface from vulnerabilities that could compromise your workload(s). <br><br> Ensures a consistent and reliable user experience no matter the session host a user is brokered to.|
 |Apply appropriate segmentation for your sensitive workloads, such as isolating high-sensitivity workloads and running them on confidential compute-series VMs.|Hardware-based TEE hardens guest OS memory and state, increasing your security posture.|
 |Understand the cost profile of the host pool's sessionhosts and users, and run cost modeling to create an optimized environment. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to get estimates for the solution. Create budgets in Azure to ensure that the deployment aligns with cost estimates.|Establishing budgets helps remove any surprise in costs for AVD, especially if you include future growth or VMs running more than the expected number of hours.|
 |Evaluate the cost associated with cloud-based desktop solutions, such as Windows 365.| Cloud-based desktop solutions might be more suitable for personal desktop needs because of their lower management overhead and fixed monthly cost, versus the consumption-based model of Azure Virtual Desktop. |
 |Evaluate which applications or users could operate on a multi-session session host. <br><br>Create your use cases with this consideration in mind. You can use FSLogix to restrict application access so that different users get apps than others on the same host pool.|Multi-session host pools usually offer a lower cost per user than Personal Desktop configurations.|
-|Use Azure Policy to promote consistency across Azure Virtual Desktop environments, such as VM configurations, enabling AVDI, tagging, and much more.|Improves resource deployment consistency, avoiding costly redeployments, or risks to security posture.|
+|Use Azure Policy to promote consistency across Azure Virtual Desktop environments, such as VM configurations, enabling AVD Insights, tagging, and much more. |This improves resource deployment consistency, avoiding costly redeployments or risks to security posture.|
 |Use infrastructure as code (IaC) for deployments. Use resources, such as Azure VM Image Builder and the [Virtual Desktop Accelerator](https://github.com/microsoft/AVDAccelerator). |  These approaches facilitate standardization across multiple host pools, which drives repeatability. They also reduce engineering and operations overhead. |
-|Use validation host pools to test incoming AVD updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.|Ensures that any incoming features coming to AVD are tested and validated. If issues arrise, operations can temporarily disable automatic updates of the AVD agents.|
+|Use validation host pools to test incoming AVD updates. Ensure that you have several users that regularly use the environment to ensure thorough testing.|Ensures that any incoming features coming to AVD are tested and validated. Operations can temporarily disable automatic updates of the AVD agents if issues occur.|
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Select the appropriate architecture and hostpool types for each user persona that your Azure Virtual Desktop environment supports. Higher resiliency comes with more cost and added complexity, but lower cost also incurs gaps in resiliency for the sake of simplicity. 
 
@@ -100,7 +100,7 @@ Personal host pools assign each user to a dedicated, persistent VM to ensure tha
 
 - Determine whether you use the *Start VM on Connect* feature.
 - Determine which VMs to start during the ramp-up period.
-- Consider disconnect and sign-off settings. 
+- Consider disconnect and sign out settings. 
 - Consider hibernation.
 
 #### Recommendations
@@ -115,7 +115,7 @@ Personal host pools assign each user to a dedicated, persistent VM to ensure tha
 | For Greenfield workloads, use a thorough proof of concept and user acceptance testing environment to capture adequate data for performance testing. | The results help you determine the optimal values for the appropriate scaling plan configurations. |
 | Review idle time out and disconnect options that minimize disruption when a user returns to work. | Helps optimize the user experience by reducing unnecessary session logouts and allowing users to resume their work quickly. |
 | For personal host pools: <br><br> - Set assigned VMs to start during the ramp-up phase. <br> - Take advantage of hibernation.  | VMs that start during the ramp-up phase improve the connection experience during the start of a user's day. <br><br> Hibernation reduces startup delays and improves user experience while minimizing infrastructure costs. |
-| For pooled host pools: <br><br> - Use breadth-first load balancing to spread the user sessions across available hosts. <br> - Target 80-90% of the maximum session capacity based on your total assigned users and peak concurrent sessions. <br> - Use exclusion tags on faulty session hosts so that the scaling plan doesn't turn on unhealthy session hosts. <br> - Ensure that your host pool capacity can accommodate sudden demand, unplanned maintenance, or outages.| Breadth-first load balancing reduces the impact on users if a session host goes offline or experiences a critical error. <br><br> An 80-90% capacity target helps helps optimize cost while preventing overdeployment. <br><br> Capacity buffers ensure resilience during demand surges, maintenance windows, and infrastructure failures,  reducing the risk of performance degradation. |
+| For pooled host pools: <br><br> - Use breadth-first load balancing to spread the user sessions across available hosts. <br> - Target 80-90% of the maximum session capacity based on your total assigned users and peak concurrent sessions. <br> - Use exclusion tags on faulty session hosts so that the scaling plan doesn't turn on unhealthy session hosts. <br> - Ensure that your host pool capacity can accommodate sudden demand, unplanned maintenance, or outages.| Breadth-first load balancing reduces the impact on users if a session host goes offline or experiences a critical error. <br><br> An 80-90% capacity target helps optimize cost while preventing overdeployment. <br><br> Capacity buffers ensure resilience during demand surges, maintenance windows, and infrastructure failures,  reducing the risk of performance degradation. |
 
 > [!Note]
 > Scaling plans don't create or delete session hosts. If you want to create or delete session hosts, you must create custom automation by using a combination of IaC and continuous integration and continuous delivery (CI/CD) pipelines. 
@@ -127,34 +127,28 @@ For more information, see [Recommendations for optimizing scaling costs](../cost
 
 ## Application groups
 
-You can use application groups in Virtual Desktop to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops that a user can access and how those resources are presented. Application groups help you organize resources and control access in a scalable manner. 
+You can use application groups in Azure Virtual Desktop (AVD) to manage and publish a set of applications or desktops to users. Application groups define which applications or desktops users can access and how they're presented. They help organize resources and control access efficiently, improving both security and user experience.
 
-The two types of application groups in Virtual Desktop include: 
+The two types of application groups in Azure Virtual Desktop include: 
 
-- **Desktop application groups:** Users access the full Windows desktop from a session host. Pooled or personal host pools support desktop application groups. 
+- **Desktop application groups:** Users access a full Windows desktop from a session host. Both pooled and personal host pools support desktop application groups.
 
-- **RemoteApp application groups:** Users access individual applications that you select and publish to the application group. Pooled host pools support RemoteApp application groups. 
+- **RemoteApp application groups:** Users access specific applications that you select and publish to the application group. Only pooled host pools support RemoteApp application groups.
 
-When you use pooled host pools, you can assign both application group types to the same host pool at the same time. You can only assign a single desktop application group to each host pool. But you can assign multiple RemoteApp application groups to the same host pool. 
-
-Users that you assign to multiple RemoteApp application groups in the same host pool can access an aggregate of all the applications in their assigned application groups. 
-
-#### Recommendations
+When using pooled host pools, you can assign both types of application groups to the same host pool. However, each host pool can have only one desktop application group, but it can have multiple RemoteApp application groups.
 
 | Recommendation | Benefit |
 |---|---|
-| Tailor each Virtual Desktop application group to specific user roles or departments. For example, you might create separate application groups for finance, HR, and IT. | Custom application groups help meet business needs effectively. Each application group contains only the applications necessary for their respective workflows. |
-| Develop a criticality scale from 1 to 5 based on business requirements. For example: <br><br>  - *Level 5:* Applications that are essential to business continuity, such as accounting software <br> - *Level 3:* Noncritical but important tools, such as document editing software <br> - *Level 1:* Optional or infrequently used applications | A criticality scale helps you prioritize maintenance, updates, and availability for application groups. |
-| Assign higher priority to application groups that support business-critical operations. Host those application groups on reliable or redundant infrastructure. <br><br> For example, if you rate your finance department's application group a 5 (critical), assign the application group to host pools that have high-availability configurations and fault tolerance, such as availability zones or Azure Premium SSD storage. | TBD |
-| Establish reliability targets for application groups that support business-critical applications. For example, you can define the uptime, such as 99.9% SLA, and recovery time objectives (RTOs). | TBD |
-| Use Azure Site Recovery and Azure Backup for recovery purposes. You can define the RTO and recovery point objectives (RPOs) in Azure Backup policies. | TBD|
-| Assign sensitivity labels to each application group based on the type of data processed and the criticality of the applications. <br><br> For example, for an application group that handles financial data, assign a *Confidential* label. For an application group that has general administrative tools, assign a *General* label. | This practice helps ensure that sensitive applications have higher levels of security and access control. |
-| Use Azure Key Vault to securely store application secrets, such as API keys and database credentials, that the applications in application groups use. Ensure that you encrypt secrets to help protect them from unauthorized access. | TBD |
-| Track and monitor the usage patterns of application groups. | This approach helps you identify unused or underused application groups. Use this data to determine when to deallocate resources, which reduces cost. |
+|Evaluate whether to use RemoteApp or Session Desktop for each application group. If users need access to specific applications based on their department, such as HR or Finance, use RemoteApp to publish only the required applications. If users need a full desktop environment with all applications, use Session Desktop.|This ensures that users have the appropriate level of access, improving security by following the principle of least privilege, while also simplifying management and reducing unnecessary resource usage.|
+| Assign users to application groups using Microsoft Entra ID security groups instead of direct user assignments.| Streamlines user management, ensures scalability, and maintains consistency when onboarding or offboarding users.
+| Set a session limit on each application group and keep the number of applications in a RemoteApp group below 50.| Prevents performance degradation by avoiding excessive session loads.|
+| Enable Diagnostic Settings for Application Groups in Azure Virtual Desktop, and configure them to send logs and metrics to Log Analytics.| Improves proactive monitoring, enabling faster issue detection and troubleshooting.|
+| Evaluate application group criticality (scale 1–5) to validate if the host pool configuration meets availability and performance needs. `Note: Each Application Group is linked to a single Host Pool.` <br> - *Level 5:* Mission-critical apps (for example, finance) → Verify that host pools use Use Availability Zones and Premium SSDs. <br> - *Level 3*: Important apps (for example, document editors) →  Ensure host pools use Availability Sets and Standard SSDs. <br> - *Level 1:* Low-priority apps → Confirm use of cost-optimized VMs (such as B-series)| This approach ensures that infrastructure decisions are justified and aligned with the business importance of applications, optimizing resource use while meeting availability and performance goals.|
+| Assign sensitivity labels to application groups based on data type and business criticality. <br><br> For example, for an application group that handles financial data, assign a *Confidential* label. For an application group that has general administrative tools, assign a *General* label. | Improves security posture by enforcing appropriate access controls based on data sensitivity.|
+| Use Azure Key Vault to securely store application secrets, such as API keys and database credentials, that the applications in application groups use. Ensure that you encrypt secrets to help protect them from unauthorized access. |Enhances security by centralizing secret management and encryption. Reduces the risk of credential exposure, simplifies credential rotation, and improves compliance with security policies. For example, a financial application in an application group connects to an Azure SQL database and a third-party payment API. Without Azure Key Vault: Database credentials and API keys are stored in code or configuration files, increasing the risk of exposure and unauthorized access. |
+| Track and monitor the usage patterns of application groups  through Azure Log Analytics and AVD Insights. | This approach helps you identify unused or underused application groups. Use this data to determine when to deallocate resources so you can reduce cost. |
 | Resize or reduce the number of active VMs that support application groups based on usage patterns. | This practice minimizes the cost of overprovisioned resources. | 
-| Take advantage of IaC tools, like Azure Resource Manager templates (ARM templates), Bicep, or Terraform. <br><br> For example, you can define a declarative ARM template that provisions a host pool, assigns session hosts, and configures application groups with specific application assignments and policies. | This approach standardizes the deployment and configuration of host pools and application groups. You can create deployments that are repeatable, scalable, and consistent across environments. |
-| Define performance targets for session responsiveness in application groups, such as sign-in times, session latency, and application launch times. <br><br> For example, you might establish a target for users to sign in to their sessions within 30 seconds and experience a session latency of less than 150 milliseconds. <br><br> Use Azure Monitor to track these metrics and set up alerts if performance deviates from the defined targets. | Performance targets help ensure that users have a smooth and responsive experience. You can identify and address performance problems before they significantly affect users. |
-| Choose VM sizes and performance tiers in host pools that align with the performance targets of your application groups. Consider factors like resource usage, expected demand fluctuations, and the number of users per session host. <br><br> Use the [session host VM sizing guidelines](/windows-server/remote/remote-desktop-services/virtual-machine-recs). | Appropriate VM sizes and performance tiers optimize resource usage, which reduces waste and cost and improves overall system efficiency. <br><br> Guidelines help you allocate resources effectively for various user workloads in your host pools. |
+| Take advantage of IaC tools, like Azure Resource Manager templates (ARM templates), Bicep, or Terraform. <br><br> For example, you can define a declarative ARM template that provisions a host pool, assigns session hosts, and configures application groups with specific application assignments and policies. | This approach standardizes the deployment and configuration of host pools and application groups and reduces human errors. You can create deployments that are repeatable, scalable, and consistent across environments. |
 
 ## Session host settings
 
@@ -206,7 +200,7 @@ For disaster recovery of session hosts, you can use golden images or backups:
 
 - If your session hosts contain data or applications that don't actively need to be saved, use golden images. Save those images in a redundant fashion to help ensure that you can recover session hosts if a disaster occurs.
 
-- If your session host contains valuable data that you update frequently, consider backups to save those changes. The cost backups is considerably higher than the cost of maintaining golden images.
+- If your session host contains valuable data that you update frequently, consider backups to save those changes. The cost backup is considerably higher than the cost of maintaining golden images.
 
 You should also perform a failure mode analysis (FMA) on your environment. With a proper FMA, you can prepare for future outages and help prevent them. Potential failure points include:
 
