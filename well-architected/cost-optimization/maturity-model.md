@@ -245,7 +245,7 @@ Evaluate your feature development strategy to ensure that valuable features are 
 
 The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to find useful information about its normal running state. At this level, you should take these learnings and apply them in terms of environment refinements. 
 
-Whe you perform any changes in production, you will directly affect other aspects of your workload. So, when you make refinements to achive cost savings, you will impact one or more of the other Well-Architected Framework pillars. For this reason, having mature change management practices is critical. Thoroughly reviewing and testing changes and developing rollback plans are essential to mitigate performance, security, and reliability impacts when making cost savings changes to your workload.
+When you perform any changes in production, you will directly affect other aspects of your workload. So, when you make refinements to achieve cost savings, you will impact one or more of the other Well-Architected Framework pillars. For this reason, having mature change management practices is critical. Thoroughly reviewing and testing changes and developing rollback plans are essential to mitigate performance, security, and reliability impacts when making cost savings changes to your workload.
 
 #### Refine the cost model based on production learnings
 
