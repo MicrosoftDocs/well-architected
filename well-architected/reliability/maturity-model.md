@@ -16,50 +16,48 @@ Reliability is about ensuring that your solution is available and working when y
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1 - Resilient foundation**](#tab/level1)
+# [**Level 1: Resilient foundation**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Establish a solid groundwork for resiliency in workload infrastructure and operations, rather than spending time on optimization tasks.**
 
-Level 1 of the maturity model is designed to help workload teams build a strong foundation for system reliability. The focus is on bootstrapping, that is, setting up the basics for future reliability decisions. This stage mostly involves functional implementation with minor extensions to current practices. 
+Level 1 of the maturity model is designed to help workload teams build a strong foundation for system reliability. The focus is on bootstrapping, which is the process of setting up the basics for future reliability decisions. This stage mostly involves functional implementation with minor extensions to current practices. 
 
-This stage includes researching, gaining insights, and creating an inventory of your systems. Additionally, it leverages Azure's built-in reliability features, like enabling zone redundancy for immediate improvements.
+This stage includes researching, gaining insights, and creating an inventory of your systems. It also uses built-in reliability features on Azure, like enabling zone redundancy for immediate improvements.
 
-By establishing these basics, you can prepare your team to advance through the levels of the reliability maturity model, progressively enhancing your system's resilience and performance.
+By establishing these basics, you can prepare your team to advance through the levels of the reliability maturity model to progressively enhance your system's resilience and performance.
 
 #### &#10003; Evaluate opportunities to offload operational responsibility 
 
-This strategy is fundamentally a _build versus buy or rely_ approach. The decision depends on how much responsibility is manageable at this stage while still supporting future development. While you want to utilize resources relevant to the workload, always explore opportunities to offload their maintenance. Here are some classic use cases where you might want to apply this approach.
+This strategy is fundamentally a _build versus buy or rely_ approach. The decision depends on how much responsibility is manageable at this stage while still supporting future development. You want to use resources that are relevant to the workload, but you should always explore opportunities to offload their maintenance. Here are some classic use cases where you might want to apply this approach.
 
-- **Offload responsibilities to the cloud platform** by preferring PaaS services. They offer ready-made solutions for common resiliency needs like replication, failover, and backup stores. This way, the cloud provider handles hosting, maintenance, and building resilience. For example, replicating across multiple compute nodes, distributing replicas among availability zones, and others. If you build your own solution on VMs, you'll need to manage these aspects yourself, which can be time-consuming and complex. 
+- **Offload responsibilities to the cloud platform** by choosing platform as a servie (PaaS) services. They provide ready-made solutions for common resiliency needs like replication, failover, and backup stores. When you take this approach, the cloud provider handles hosting, maintenance, and building resilience. For example, the cloud provider replicates data across multiple compute nodes and distributes the replicas across availability zones. If you build your own solution on virtual machines (VMs), you need to manage these aspects yourself, which can be time consuming and complex.
 
-- **Offload responsibility of operations** that aren't directly tied to workload's business objectives. Some specialized operations can potentially affect the reliability of your workload, such as database management and security. Explore the possibility of handling those tasks by experienced teams, choice of technology, or both.  
+- **Offload responsibility for operations** that aren't directly tied to the workload's business objectives. Some specialized operations, such as database management and security, can potentially affect the reliability of your workload. Explore the possibility of having experienced teams, technology, or both handle those tasks.
 
-    For example, if your team doesn't have database expertise, then using managed services can help shift the responsibility to the provider. This approach can be useful when starting out, because it allows the team to focus on the functionality of the workload. Many enterprises have shared, centrally managed services. If available, use platform teams to handle these operations. However, this approach may add dependencies and organizational complexity.
+    For example, if your team doesn't have database expertise, then using managed services can help shift the responsibility to the provider. This approach can be useful when you start out because it allows your team to focus on the functionality of the workload. Many enterprises have shared, centrally managed services. If platform teams are available, use them to handle these operations. However, this approach might add dependencies and organizational complexity.
 
-    Alternatively, if the team has the right expertise, you might make an explicit decision to use their skills and select services without management capabilities. 
+    Alternatively, if your team has the right expertise, you might make an explicit decision to use their skills and select services without management capabilities. 
 
-- **Offload responsibility to third-party vendors**. Prefer off-the-shelf products as the starting point. Build customized solutions only when it contributes to your workload's business value. 
+- **Offload responsibility to non-Microsoft vendors.** Choose off-the-shelf products as the starting point. Build customized solutions only when they contribute to your workload's business value.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: If the _buy or rely_ option partially fulfills your requirements, you might need to implement custom extensions. This can often result in a "customization lock-in" situation, where updates and modernization become impractical. Regularly review your requirements and compare them with the solution's capabilities. Develop an exit strategy for when there is a significant deviation between the two.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: If the _buy or rely_ option partially fulfills your requirements, you might need to implement custom extensions. This method can result in a "customization lock-in" situation, where updates and modernization become impractical. Regularly review your requirements and compare them with the solution's capabilities. Develop an exit strategy for when there is a significant deviation between the two.
 >
->  The opposite scenario is also a risk. While the _buy or rely_ option might seem simpler initially, it may require re-evaluation and redesign later if the limitations of the PaaS service, vendor solution, or platform-owned resources don't meet the necessary granularity or level of autonomy needed for the workload.
-
+>  The opposite scenario is also a risk. Although the _buy or rely_ option might seem simpler at first, it might require re-evaluation and redesign later if the limitations of the PaaS service, vendor solution, or platform-owned resources don't meet the necessary granularity or level of autonomy needed for the workload.
 
 #### &#10003; Identify the critical user and system flows 
 
-Decomposing the workload into flows is crucial at this stage. Focus on _user_ and _system_ flows. User flows determine user interactions, while system flows determine communication between workload components that aren't directly associated with user tasks.
+Breaking the workload down into flows is crucial at this stage. Focus on _user_ and _system_ flows. User flows determine user interactions, and system flows determine communication between workload components that aren't directly associated with user tasks.
 
-For example, in an e-commerce application, end users perform front-end activities like browsing and ordering. Meanwhile, backend transactions and system-triggered processes fulfill user requests and handle other tasks. Those distinct flows are part of the same system but involve different components and serve different purposes.  
+For example, in an e-commerce application, customers perform front-end activities like browsing and ordering. Meanwhile, back-end transactions and system-triggered processes fulfill user requests and handle other tasks. Those distinct flows are part of the same system, but they involve different components and serve different purposes.
 
-Start building a catalog of flows at this stage. Observe user interactions and component communication. List and categorize flows, defining their start and end points, and noting dependencies. Document outcomes and exceptions using diagrams for clarity. This catalog can serve as an important tool for initial conversation with business stakeholders to identify the most important aspects from their perspective. This can inform the first level of prioritization.
+Start building a catalog of flows at this stage. Observe user interactions and component communication. List and categorize flows, define their start and end points, and note dependencies. Document outcomes and exceptions by using diagrams for clarity. This catalog can serve as an important tool for the initial conversation with business stakeholders to identify the most important aspects from their perspective. This conversation can inform the first level of prioritization.
 
-Classify a flow as critical by evaluating the risk and impact on primary business activities. If an outage is expected, graceful degradation will focus on maintaining these critical flows. In the e-commerce example, critical flows include product search, adding items to the cart, and checkout, as they are essential for business. Other processes, like updating product data and maintaining product images, aren't as critical. Ensuring critical flows remain operational during an outage prevents revenue loss by allowing users to continue searching for products and adding items to the cart.
+Classify a flow as critical by evaluating the risk and impact on primary business activities. If you expect an outage, graceful degradation focuses on maintaining these critical flows. In the e-commerce example, critical flows include product searches, adding items to the cart, and checkout because these tasks are essential for business. Other processes, like updating product data and maintaining product images, aren't as critical. Ensure that critical flows remain operational during an outage to prevent revenue loss by allowing users to continue searching for products and adding items to the cart.
 
 > [!NOTE]
-> A business process can be critical even if it's not time-sensitive. Time criticality is a key factor. For example, meeting auditing requirements is a critical process, but presenting data for an audit may not need to be immediate. The process remains important, but its reliability isn't as time-critical because recovery within a few hours is acceptable. 
+> A business process can be critical even if it's not time sensitive. Time criticality is a key factor. For example, meeting auditing requirements is a critical process, but you might not need to present data for an audit immediately. The process remains important, but its reliability isn't time critical because recovery within a few hours is acceptable.
 
-> Refer to: [ Well-Architected Framework: Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows).
-
+For more information, see [Azure Well-Architected Framework: Optimize workload design by using flows](/azure/well-architected/design-guides/optimize-workload-using-flows).
 
 #### &#10003; Select the right design model, resources, and features 
 
@@ -84,7 +82,7 @@ This strategy should be applied at these levels:
 
 Within each part of your solution, avoid single points of failure, such as single instances, and instead create multiple instances for redundancy. Azure services often handle redundancy for you, especially with PaaS services, which usually include local redundancy by default and options to upgrade. Preferably, use zone redundancy to spread those instances across multiple Azure datacenters. If you don't, at least ensure local redundancy, but this comes with higher risk. In future levels, you’ll evaluate whether your reliability requirements might be met by extending the solution with geo-redundant components.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: One significant tradeoff is increased cost of redundancy. Also, cross-zone communication can introduce latency. For legacy applications that require minimal latency, there could be a performance hit. 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: One significant trade-off is increased cost of redundancy. Also, cross-zone communication can introduce latency. For legacy applications that require minimal latency, there could be a performance hit. 
 
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: If an application isn't designed for a multi-instance environment, it may struggle with multiple active instances, causing data consistency issues. Also, if it was built for an on-premises setup with low latency, using availability zones could disrupt its performance expectations. 
@@ -102,7 +100,7 @@ For both infrastructure and application, set up [Azure Monitor action groups](/a
 
 Start building your observability at these layers.
 
->  :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: As you collect more logs, you'll need to manage the increasing volume, which will impact cost related storage of those logs. Use retention policies to manage the volume. Those practices are described in Operational Excellence.
+>  :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: As you collect more logs, you'll need to manage the increasing volume, which will impact cost related storage of those logs. Use retention policies to manage the volume. Those practices are described in Operational Excellence.
 
 ##### Infrastructure
 
