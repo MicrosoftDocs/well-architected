@@ -27,9 +27,9 @@ In the context of the Well-Architected Framework, security is about providing co
 
 ![Goal icon](../_images/goal.svg) **Establish a minimum viable security posture to serve as a foundation to build on.**
 
-Level 1 of the maturity model helps workload teams achieve a solid security foundation that they can expand and improve throughout the workload's lifecycle. This foundation, known as the *security baseline*, captures the minimum security requirements and expectations that you need to implement. Anchor the baseline in well-defined and mature industry standards and regulatory framework guidance.
+Level 1 of the maturity model helps workload teams achieve a solid security foundation that they can expand and improve on throughout the workload's lifecycle. This foundation, known as the *security baseline*, captures the minimum security requirements and expectations that you need to implement. Anchor the baseline in well-defined and mature industry standards and regulatory framework guidance.
 
-The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how they interact with other workload components. This practice applies not only to security tools but also to standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
+The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how they interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -41,7 +41,7 @@ As you begin the development phase of your workload implementation, standardize 
 
 Identity and access management can quickly become complex and burdensome as your workload development progresses. Use an IdP, like Microsoft Entra, to help maintain security standards by tightly controlling access to workload components and using nonhuman identities, like managed identities.
 
-IdPs also enhance security and compliance through multifactor authentication (MFA) and detailed access logs. These featuers streamline user interactions while reducing operational burden.
+IdPs also enhance security and compliance through multifactor authentication and detailed access logs. These featuers streamline user interactions while reducing operational burden.
 
 #### &#10003; Observe access patterns of key identities and apply an appropriate level of security
 
@@ -51,13 +51,13 @@ As you implement your IdP solution, take some time to observe access behaviors a
 
 #### &#10003; Encrypt data at rest 
 
-Secure data at rest to help ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption and apply strict access controls on data stores. Azure encrypts all data stores by default at the underlying hardware level. But you can impement encryption to your workload data to add extra security measures. Configure encyrption on your virtual machine (VM) disks, storage accounts, and databases by using built-in mechanisms to keep your design simple.
+Secure data at rest to help ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption and apply strict access controls on data stores. Azure encrypts all data stores by default at the underlying hardware level. But you can impement encryption to your workload data to add extra security measures. Configure encryption on your virtual machine (VM) disks, storage accounts, and databases by using built-in mechanisms to keep your design simple.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** You can bring your own key (BYOK) to many Azure services, instead of using a Microsoft-managed key. BYOK provides more control over your resources and might satisfy regulatory requirements. But BYOK adds operational burden because you must manage your key rotation. And if you lose your key, you risk losing access to your data.
 
 #### &#10003; Encrypt data in transit
 
-Secure data in transit to help protect your workload from attackers that might access your data and systems. If you don't use encryption or use a weak cipher, attackers can intercept your data. Don't use Transport Layer Security (TLS) version 1.1 or lower in any component. Migrate older version to make TLS 1.2 the default version for all systems. All Azure services that send data across networks or the internet use TLS 1.2.
+Secure data in transit to help protect your workload from attackers that might access your data and systems. If you don't use encryption or use a weak cipher, attackers can intercept your data. Don't use Transport Layer Security (TLS) version 1.1 or lower in any component. Migrate older versions to make TLS 1.2 the default version for all systems. All Azure services that send data across networks or the internet use TLS 1.2.
 
 #### &#10003; Protect application secrets
 
