@@ -31,7 +31,7 @@ Align team efforts with business needs while fostering a collaborative culture.
 
 Workload operations are often managed by members from centralized teams, full-time staff dedicated to workload functionality, partners, or vendors. These individuals should function as a collective force, with mutual respect and acknowledgment for each other's expertise. If teams operate as independent parts, complexities and friction can occur. Independent teams undermine the goal of functioning as a single, efficient system that drives business outcomes.
 
-To reduce an isolated sense of ownership, advocate for a unified approach to problem-solving. All efforts should cater to what the business needs. View both successes and failures as shared outcomes.
+To reduce an isolated sense of ownership, advocate for a unified approach to problem-solving. All efforts should cater to the needs of the business. View both successes and failures as shared outcomes.
 
 #### &#10003; Adopt standard collaboration methodologies and tools
 
