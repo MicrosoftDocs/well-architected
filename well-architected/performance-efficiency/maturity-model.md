@@ -23,11 +23,11 @@ Level 1 of the maturity model focuses on gathering performance expectations and 
 
 #### &#10003; Gather requirements and define workload performance targets
 
-Work with stakeholders to understand general expectations for workload performance. These expectations might include targets for page loading times for web apps or response times for interactive systems. At this stage of workload development, treat these targets as guidelines rather than hard requirements since your focus isn't on measuring performance metrics yet. After you gather workload expectations, begin investigating the types of resources that might suit your workload.
+Work with stakeholders to understand general expectations for workload performance. These expectations might include targets for page loading times for web apps or response times for interactive systems. At this stage of workload development, treat these targets as guidelines rather than hard requirements because your focus isn't on measuring performance metrics yet. After you gather workload expectations, begin investigating the types of resources that might suit your workload.
 
 #### &#10003; Choose appropriate networking resources
 
-Assess your network needs to determine appropriate services and configurations. Consider network traffic, bandwidth, latency, and throughput to ensure that the network supports your workload effectively. Use private virtual networks and backbone networks to reduce latency.
+Assess your network needs to determine appropriate services and configurations for your workload. Consider network traffic, bandwidth, latency, and throughput to ensure that the network supports your workload effectively. Use private virtual networks and backbone networks to reduce latency.
 
 Ensure even distribution of network traffic to prevent server overload and reduce response times. Assess different [load balancing services](/azure/architecture/guide/technology-choices/load-balancing-overview) that your cloud provider offers. Consider traffic type, global or regional routing, service-level objectives, and specific features like site acceleration and low-latency load balancing.
 
@@ -57,7 +57,7 @@ Based on the answers to these questions, [choose the best data service](/azure/a
 
 **Because of the wide variety of options for data services in cloud environments, you can tailor your design to use different services to best match the functionality of each component in your workload. This approach helps you optimize the performance of each component.**
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Don't overengineer your data components by choosing different data services for components that you can consolidate into a single data store. Strike a balance between the performance and the cost and complexity.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Don't overengineer your data components by choosing different data services for components that you can consolidate into a single data store. Strike a balance between performance versus cost and complexity.
 
 # [**Level 2 - Baseline performance measurements** ](#tab/level2)
 
