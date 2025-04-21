@@ -170,17 +170,29 @@ Another critical testing function is to build your performance baseline. Baselin
 
 Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance issues. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
 
-# [Level 4](#tab/level4)
+# [Level 4 - Refining in production](#tab/level4)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
-
-![Goal icon](../_images/goal.svg) **Learning from production performance**
+![Goal icon](../_images/goal.svg) **Applying learnings from operating in production to achieve efficiencies in performance**
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### Example heading
+#### Uplifting performance monitoring and testing
 
-<!-- No more than 100 words under each H4 heading. -->
+In Level 4, you should be monitoring and testing for performance in production. To ensure that you're staying ahead of potential performance issues, monitoring and testing should be rigorous and standardized. Consider the following recommendations.
+
+- *Continously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
+- *Shift left in your testing.* Integrate testing earlier in your development cycle to catch potential issues before they appear in production.
+- *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like blue-green or A/B testing.
+- 
+
+####
+
+####
+
+####
+
+####
+
 
 # [Level 5](#tab/level5)
 
