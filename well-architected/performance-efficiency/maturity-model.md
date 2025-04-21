@@ -178,12 +178,12 @@ Foster an environment of continuous improvement where teams learn from productio
 
 #### Uplifting performance monitoring and testing
 
-In Level 4, you should be monitoring and testing for performance in production. To ensure that you're staying ahead of potential performance issues, monitoring and testing should be rigorous and standardized. Consider the following recommendations.
+In Level 4, you should be monitoring and testing for performance in production. You should have well-developed test plans and scenarios and test data already in place. The goal of testing is to ensure that you're staying ahead of potential performance issues before they appear in production. So, monitoring and testing should be rigorous, standardized, and thoroughly documented. Consider the following recommendations.
 
 - *Continously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
 - *Shift left in your testing.* Integrate testing earlier in your development cycle to catch potential issues before they appear in production.
 - *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like blue-green or A/B testing.
-- 
+- *Automate monitoring and testing.* Use industry-proven tools to automate monitoring and alerting against your baseline and for performance testing. Automation reduces manual steps and ensures consistency.
 
 ####
 
