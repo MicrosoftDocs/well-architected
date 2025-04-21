@@ -27,7 +27,7 @@ The recommendations in the following checklist will help you wisely manage costs
 
 #### &#10003; Share financial goals, budget details, and workload spend with all team members, managers, and decision-makers.
 
-Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership piece of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
+Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership peace of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
 
 #### &#10003; Define processes and tools for sharing cost-saving ideas and knowledge.
 
@@ -69,7 +69,7 @@ Invest in upskilling where team knowledge is currently lacking. Strong cloud ski
 
 #### &#10003; Share financial goals, budget details, and workload spend with all team members, managers, and decision-makers
 
-Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership piece of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
+Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership peace of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
 
 #### &#10003; Define processes and tools for sharing cost-saving ideas and knowledge
 
@@ -88,22 +88,6 @@ Take advantage of billing dashboards that can be filtered for different views to
 Using the tools you've adopted to gather billing data, you can identify how different workload components contribute to the overall costs. Pay special attention to costs related to processes, like data transfer or transactions, contribute to the overall costs as these are often not considered when estimating resource costs before deployment. 
 
 You should also understand how factors not directly related to your cloud resources can affect your budget. This can include training for team members, and software licensing not managed by your cloud provider.
-
-#### &#10003; Decide whether to build or buy 
-
-One of the first decisions the workload team needs to make is whether they should use off-the-shelf solutions or build solutions in-house. Generally speaking, the Well-Architected Framework favors [keeping things simple](../reliability/simplify.md), and using off-the-shelf solutions follows that philosophy. Using well-supported solutions relieves operational burden from your team and decreases the time needed for development, allowing developers to focus on core functionality of the application.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are cost considerations to evaluate when making a decision about building or buying a particular solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development, but recurring costs can be dramatically less as there won't be any support contracts or licensing to maintain. 
-
-To help you make the right decision for your team, evaluate these points.
-
-- *The desired level of control:* Decide how much control over the functionality provided by a particular solution you really need.
-- *The necessary amount of customization:* Determine how much customization you'll need to be able to offer as your workload evolves.
-- *The expected time to market:* Understand stakeholders' expectations for bringing your workload to market and how you can best meet that timeline.
-- *The required technical expertise:* Determine how much expertise that you'll need to retain in order to build and operate a particular solution.
-- *The expected operational burden:* Estimate how much time and effort will be required by operations teams to support a particular solution.
-
-Making these evaluations will help you understand the total costs of each option and allow you to weigh them against each other. The total cost may not be the ultimate decision-maker, but if there are drastic differences, using the lower cost option can help you maintain velocity in building your workload.
 
 #### &#10003; Invest in your team's skills
 
