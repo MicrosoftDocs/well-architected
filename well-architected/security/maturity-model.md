@@ -29,7 +29,7 @@ In the context of the Well-Architected Framework, security is about providing co
 
 Level 1 of the maturity model helps workload teams achieve a solid security foundation that they can expand and improve on throughout the workload's lifecycle. This foundation, known as the *security baseline*, captures the minimum security requirements and expectations that you need to implement. Anchor the baseline in well-defined and mature industry standards and regulatory framework guidance.
 
-The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how they interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
+The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how those mechanisms interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
 
 <!-- No more than 5 H4 headings per tab -->
 
@@ -47,11 +47,11 @@ IdPs also enhance security and compliance through multifactor authentication and
 
 As you implement your IdP solution, take some time to observe access behaviors across your workload teams. Learn how users access different workload components so that you can determine the appropriate level of access to grant. Look for opportunities to replace human access to processes, like deployments and database changes, with managed identities. If human accounts require access to sensitive resources, standardize just-in-time access as the default mechanism.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** You might encounter resistance when you adopt these access policies. Some users might think that these policies slow down their work. Ensure that all workload team members understand that security is everyone's responsibility and implementing strong access controls help everyone maintain a secure workload.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** You might encounter resistance when you adopt these access policies. Some users might think that these policies slow down their work. Ensure that all workload team members understand that security is everyone's responsibility and implementing strong access controls helps everyone maintain a secure workload.
 
 #### &#10003; Encrypt data at rest 
 
-Secure data at rest to help ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption and apply strict access controls on data stores. Azure encrypts all data stores by default at the underlying hardware level. But you can impement encryption to your workload data to add extra security measures. Configure encryption on your virtual machine (VM) disks, storage accounts, and databases by using built-in mechanisms to keep your design simple.
+Secure data at rest to help ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption and apply strict access controls on data stores. Azure encrypts all data stores by default at the underlying hardware level. But you can implement encryption to your workload data to add extra security measures. Configure encryption on your virtual machine (VM) disks, storage accounts, and databases by using built-in mechanisms to keep your design simple.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** You can bring your own key (BYOK) to many Azure services, instead of using a Microsoft-managed key. BYOK provides more control over your resources and might satisfy regulatory requirements. But BYOK adds operational burden because you must manage your key rotation. And if you lose your key, you risk losing access to your data.
 
