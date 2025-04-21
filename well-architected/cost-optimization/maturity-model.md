@@ -225,9 +225,9 @@ Evaluate your feature development strategy to ensure that valuable features are 
 
 # [Level 4 - Refining in production](#tab/level4)
 
-![Goal icon](../_images/goal.svg) Apply learnings from operating in production to achive cost optimizations.
+![Goal icon](../_images/goal.svg) Apply learnings from operating in production to achieve cost optimizations.
 
-The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to find useful information about its normal running state. At this level, you should take these learnings and apply them in terms of environment refinements. 
+The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about its normal running state. At this level, you should apply these learnings to your environment.
 
 When you perform any changes in production, you will directly affect other aspects of your workload. So, when you make refinements to achieve cost savings, you will impact one or more of the other Well-Architected Framework pillars. For this reason, having mature change management practices is critical. Thoroughly reviewing and testing changes and developing rollback plans are essential to mitigate performance, security, and reliability impacts when making cost savings changes to your workload.
 
