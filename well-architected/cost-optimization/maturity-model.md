@@ -245,8 +245,8 @@ As part of this exercise, determine how closely your running costs align with th
 
 Use your production learnings to refine your data strategies. In particular, look for optimization opportunities for the following factors:
 
-- Optimize your data lifecycle management. Review your data tiering and make adjustments where practical. You might have data that is no longer being actively used and can be moved to less expensive storage tiers, like archive storage. Likewise, if you haven't already created policies to define what types of data belong in different tiers, creating those based on production learnings will help the on-going management of your data lifecyle more efficient. Finally, implement automation to enforce these policies to further optimize your efforts.
 - Optimize your storage solutions considering ease of management. Evaluate whether the storage solutions you have deployed are the best fit for your use case and whether changing to a different technology can save you operational burden or utilization costs. For example, you might have initially deployed SQL Server on VMs to easily migrate your workload or because that is the technology your workload team was most familiar with. Moving to a platform as a service (PaaS) service can significantly reduce your operational burden and save you costs, depending on certain factors.
+- Optimize your data lifecycle management. Review your data tiering and make adjustments where practical. You might have data that is no longer being actively used and can be moved to less expensive storage tiers, like archive storage. Likewise, if you haven't already created policies to define what types of data belong in different tiers, creating those based on production learnings will help the on-going management of your data lifecyle more efficient. Finally, implement automation to enforce these policies to further optimize your efforts.
 
 #### Increase resource density
 
