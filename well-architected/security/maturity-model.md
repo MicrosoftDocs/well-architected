@@ -21,48 +21,47 @@ In the context of the Well-Architected Framework, security is about providing co
 [add art]
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
-# [**Level 1 - Secure foundation**](#tab/level1)
+# [**Level 1: Secure foundation**](#tab/level1)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-![Goal icon](../_images/goal.svg) **Establish a minimum viable security posture to serve as the foundation to build upon**
+![Goal icon](../_images/goal.svg) **Establish a minimum viable security posture to serve as a foundation to build on.**
 
-Level 1 of the maturity model is designed to help workload teams achieve a solid security foundation that can be expanded and improved as the workload is developed and deployed throughout its lifecylce. This foundation is known as the security baseline and it captures all of the minimum security requirements and expectations that you need to implement. The baseline should be based on well-defined and mature industry standards and regulatory framework guidance.
+Level 1 of the maturity model helps workload teams achieve a solid security foundation that they can expand and improve on throughout the workload's lifecycle. This foundation, known as the *security baseline*, captures the minimum security requirements and expectations that you need to implement. Anchor the baseline in well-defined and mature industry standards and regulatory framework guidance.
 
-The baseline should inform the architectural design of the workload, showing where security mechanisms need to be built and how they interact with other workload components. This practice doesn't only apply to security tools. You also need to standardize processes around the operation of the workload, including DevOps practices. Coding practices like input validation and output encoding must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
+The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how those mechanisms interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### &#10003; Integrate baseline security in the development phases of software development lifecycle (SDLC)
+#### &#10003; Integrate baseline security into the development phases of the software development lifecycle (SDLC)
 
-As you begin the development phase of your workload implementation, standardize practices that align to your security baseline requirements. These practices should include regularly occurring code reviews and automated security scans, input validation, and output encoding. See the guide for [developing secure applications in Azure](/azure/security/develop/secure-develop) for a detailed review of best practices.
+As you begin the development phase of your workload implementation, standardize practices that align to your security baseline requirements. These practices should include regularly occurring code reviews and automated security scans, input validation, and output encoding. For more information about best practices, see [Develop secure applications in Azure](/azure/security/develop/secure-develop).
 
 #### &#10003; Externalize identity and access management to an identity provider (IdP)
 
-Identity and access management can quickly become complex and burdensome as your workload development progresses. Using an IdP, like Microsoft Entra, can help you maintain security standards by tightly controlling access to workload components and using non-human identities, like managed identities. 
+Identity and access management can quickly become complex and burdensome as your workload development progresses. Use an IdP, like Microsoft Entra, to help maintain security standards by tightly controlling access to workload components and using nonhuman identities, like managed identities.
 
-Additionally, identity providers enhance security and compliance with multi-factor authentication (MFA) and detailed access logs. This improves security and streamlines user interactions while reducing operational burden.
+IdPs also enhance security and compliance through multifactor authentication and detailed access logs. These featuers streamline user interactions while reducing operational burden.
 
-#### &#10003; Observe access patterns of key identities and apply appropriate level of security
+#### &#10003; Observe access patterns of key identities and apply an appropriate level of security
 
-As you implement your IdP solution, take some time to observe access behaviors across your workload teams. By learning how users access different workload components, you can determine the appropriate level of access that can safely be granted. Additionally, you can find opportunities to replace human access to processes like deployments and database changes with managed identities. In cases where human accounts require access to sensitive resources, standardize just-in-time access as the default mechanism. 
+As you implement your IdP solution, take some time to observe access behaviors across your workload teams. Learn how users access different workload components so that you can determine the appropriate level of access to grant. Look for opportunities to replace human access to processes, like deployments and database changes, with managed identities. If human accounts require access to sensitive resources, standardize just-in-time access as the default mechanism.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: You may encounter push back when adopting these access policies. Some users may have a perception that their work is being slowed down. It's important that all workload team members understand that security is everyone's responsibility and implementing strong access is part of setting everyone up for success in maintaining a secure workload.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** You might encounter resistance when you adopt these access policies. Some users might think that these policies slow down their work. Ensure that all workload team members understand that security is everyone's responsibility and implementing strong access controls helps everyone maintain a secure workload.
 
 #### &#10003; Encrypt data at rest 
 
-Securing your data at rest helps ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption on all of your data stores, and ensure that you apply strict access controls to the data stores. All data stores in Azure are encrypted by default at the underlying hardware level, but you can add additional security measures by impementing encryption to your workload data. Configure encyrption on your VM disks, storage accounts, and databases using built-in mechanisms to keep your design simple.
+Secure data at rest to help ensure data confidentiality and integrity, two cornerstones of modern security. Use strong encryption and apply strict access controls on data stores. Azure encrypts all data stores by default at the underlying hardware level. But you can implement encryption to your workload data to add extra security measures. Configure encryption on your virtual machine (VM) disks, storage accounts, and databases by using built-in mechanisms to keep your design simple.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many Azure services allow you to bring your own key (BYOK) as an alternative to using a Microsoft-managed key. Bringing your own key gives you more control over your resources and may satisfy some regulartory requirements, but it adds operational burden by managing your key rotation and puts you at risk of losing access to your data if you lose your key.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** You can bring your own key (BYOK) to many Azure services, instead of using a Microsoft-managed key. BYOK provides more control over your resources and might satisfy regulatory requirements. But BYOK adds operational burden because you must manage your key rotation. And if you lose your key, you risk losing access to your data.
 
 #### &#10003; Encrypt data in transit
 
-Securing your data in transit helps protect you from attackers gaining access to your data and your systems. If you are not using encryption or are using a weak cipher, your data can be intercepted by attackers. Don't use TLS versions lower than 1.2 in any component and migrate any older versions up to 1.2, making it the default version for all of your systems. All Azure services that send data across networks or the internet use TLS 1.2.
+Secure data in transit to help protect your workload from attackers that might access your data and systems. If you don't use encryption or use a weak cipher, attackers can intercept your data. Don't use Transport Layer Security (TLS) version 1.1 or lower in any component. Migrate older versions to make TLS 1.2 the default version for all systems. All Azure services that send data across networks or the internet use TLS 1.2.
 
 #### &#10003; Protect application secrets
 
-Application secrets are confidential components that facilitate communication between workload components, including sensitive data such as passwords, API keys, and certificates used for authentication and resource access. Proper management of these secrets is crucial for maintaining security and integrity, as improper handling can lead to data breaches, service disruption, regulatory violations, and other issues. Use a solution like Azure KeyVault to manage secrets securely.
-
+Application secrets are confidential components that facilitate communication between workload components, including sensitive data such as passwords, API keys, and certificates for authentication and resource access. Properly manage these secrets to maintain security and integrity. Improper handling can lead to data breaches, service disruption, regulatory violations, and other problems. Use a solution like Azure Key Vault to manage secrets securely.
 
 # [**Level 2 - Threat prevention controls**](#tab/level2)
 
