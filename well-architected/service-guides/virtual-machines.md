@@ -34,7 +34,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Virtual Machines
 - Azure Virtual Machine Scale Sets
 
-  :::image source="_images/microservice-with-container-apps-deployment.svg" alt-text="Diagram that shows the interrelated decisions for Virtual Machines and Azure Virtual Machine Scale Sets.":::
+  :::image source="_images/microservice-with-container-apps-deployment.svg" alt-text="Diagram that shows the interrelated decisions for Virtual Machines and Azure Virtual Machine Scale Sets." lightbox="_images/microservice-with-container-apps-deployment.svg":::
 
   Disks are a crucial dependency for VM-based architectures but aren't covered in this article. For more information, see [Disks and optimization](/azure/well-architected/service-guides/azure-disks-cost-optimization).
 
