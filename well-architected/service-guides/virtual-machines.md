@@ -264,33 +264,25 @@ Start your design strategy based on the [design review checklist for Performance
 | (VMs) Consider enabling **[accelerated networking](/azure/virtual-network/accelerated-networking-overview)**. | It enables single root I/O virtualization (SR-IOV) to a VM, which greatly improves its networking performance. |
 | (VMs, scale set) **[Set autoscale rules](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)** to increase or decrease the number of VM instances in your scale set based on demand. | If your application demand increases, the load on the VM instances in your scale set increases. Autoscale rules ensure that you have enough resources to meet the demand. |
 
-### Design checklist
-
-Start by reviewing your environment based on the following Azure Policy guidelines for Virtual Machines and related components.
-
-> [!div class="checklist"]
->
-> - **Enable encryption at host.** Ensure that encryption is enabled at the host level to provide extra security for your VM data.
->
-> - **Deploy antimalware extensions.** Verify that antimalware extensions are deployed on VMs that run Windows Server and set for automatic updates to ensure ongoing protection.
->
-> - **Enable automatic OS image patching.** Check that automatic OS image patching is enabled on scale sets to ensure that your VMs stay updated with security patches.
->
-> - **Install only approved VM extensions.** Verify that only approved extensions are installed on your VMs. This approach helps minimize the risk of security vulnerabilities.
->
-> - **Enable monitor and dependency agents.** Ensure that the Monitor agent and dependency agents are enabled on all new VMs to facilitate monitoring and dependency management.
->
-> - **Restrict to only allowed VM SKUs.** Confirm that only approved VM SKUs are deployed. This policy ensures adherence to your cost constraints and resource requirements.
->
-> - **Use private endpoints for disk access.** Ensure that private endpoints are used to securely access disk resources. This approach helps prevent exposure to public networks.
->
-> - **Enable vulnerability detection.** Enable vulnerability detection for your VMs. For Windows machines, configure rules such as daily scans with Windows Defender to detect potential threats.
-
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to Virtual Machines and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-[ADD CONTENT]
+- **Encryption is enabled at the host level.** Ensure that encryption is enabled at the host level to provide extra security for your VM data.
+
+- **Antimalware extensions are deployed.** Verify that antimalware extensions are deployed on VMs that run Windows Server and set for automatic updates to ensure ongoing protection.
+
+- **Automatic OS image patching is enabled.** Check that automatic OS image patching is enabled on scale sets to ensure that your VMs stay updated with security patches.
+
+- **Only approved VM extensions are installed.** Verify that only approved extensions are installed on your VMs. This approach helps minimize the risk of security vulnerabilities.
+
+- **Monitor and dependency agents are enabled.** Ensure that the Monitor agent and dependency agents are enabled on all new VMs to facilitate monitoring and dependency management.
+
+- **Only allowed VM SKUs are deployed.** Confirm that only approved VM SKUs are deployed. This policy ensures adherence to your cost constraints and resource requirements.
+
+- **Private endpoints are used for disk access.** Ensure that private endpoints are used to securely access disk resources. This approach helps prevent exposure to public networks.
+
+- **Vulnerability detection is enabled.** Enable vulnerability detection for your VMs. For Windows machines, configure rules such as daily scans with Windows Defender to detect potential threats.
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Virtual Machines](/azure/virtual-machines/policy-reference) and other policies that might affect the security of the compute layer.
 
