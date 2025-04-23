@@ -39,7 +39,7 @@ Assess your workload's compute needs, including instance type, scalability, and 
 
 Choose a [compute service](/azure/architecture/guide/technology-choices/compute-decision-tree) that can meet your needs, while allowing you to easily scale as your workload evolves. Remember that building your workload is an iterative process and you can start small, using less performant SKUs and fewer instances than you might need later in the workload's lifecycle.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh your immediate needs against your budget. Look for opportunities to shutdown or deallocate compute resources when they're not in use.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Weigh your immediate needs against your budget. Look for opportunities to shutdown or deallocate compute resources when they're not in use.
 
 
 #### &#10003; Choose appropriate data store services 
@@ -58,7 +58,7 @@ Based on the answers to these questions, you can [choose the best data service](
 **Because of the wide variety of options for data services in cloud environments, you can tailor your design to use different services to best match the functionality of each component in your workload. This approach helps you optimize the performance of each component.**
 
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Don't over-engineer your data components by choosing different data services for components that could be consolidated into a single data store. Look to strike a balance between performance vs cost and complexity. 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Don't over-engineer your data components by choosing different data services for components that could be consolidated into a single data store. Look to strike a balance between performance vs cost and complexity. 
 
 
 # [**Level 2 - Baseline performance measurements** ](#tab/level2)
@@ -96,7 +96,7 @@ options, so your ability to thoroughly plan for future needs might be limited. F
 
 There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or by developing a sharding strategy. Review the [design patterns](./design-patterns.md) guide for a comprehensive list of patterns that might help you as you enhance your workload.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Some design patterns may add a degree of complexity to your workload, so weigh the additional management burden against your efficiency gains to determine whether a particular pattern is worth implementing.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Some design patterns may add a degree of complexity to your workload, so weigh the additional management burden against your efficiency gains to determine whether a particular pattern is worth implementing.
 
 #### &#10003; Collect and monitor performance data for resources across your workload
 
@@ -137,7 +137,7 @@ Analyzing trends also helps you plan for how much capacity you'll need. Update y
 
 As you evolve your capacity planning, work closely with business decision-makers to stay aligned with business goals.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh performance capacity planning against your reliability and budget requirements. Engage with stakeholders to find compromises between these considerations when there are conflicting requirements.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Weigh performance capacity planning against your reliability and budget requirements. Engage with stakeholders to find compromises between these considerations when there are conflicting requirements.
 
 #### &#10003; Optimize your scaling strategy
 
@@ -160,7 +160,7 @@ Performance testing should be performed in a dedicated environment as part of yo
 
 Review test results to identify bottlenecks and other inefficiencies and compare results against goals, predefined criteria, or previous runs.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Testing environments can be significant cost drivers. Design test environments with the minimum required resources to emulate the specific scenario being tested and ensure that resources are shutdown or deleted after testing to minimize utilization costs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Testing environments can be significant cost drivers. Design test environments with the minimum required resources to emulate the specific scenario being tested and ensure that resources are shutdown or deleted after testing to minimize utilization costs.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that production data is cleansed of sensitive data before copying it into test environments if you need to use production data. Use synthetic data when practical.
 
@@ -176,7 +176,7 @@ Foster an environment of continuous improvement where teams learn from productio
 
 <!-- No more than 5 H4 headings per tab -->
 
-#### Uplifting performance monitoring and testing
+#### &#10003; Uplift your performance monitoring and testing
 
 In Level 4, you should be monitoring and testing for performance in production. You should have well-developed test plans and scenarios and test data already in place. The goal of testing is to ensure that you're staying ahead of potential performance issues before they appear in production. So, monitoring and testing should be rigorous, standardized, and thoroughly documented. Consider the following recommendations.
 
@@ -185,13 +185,33 @@ In Level 4, you should be monitoring and testing for performance in production. 
 - *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like blue-green or A/B testing.
 - *Automate monitoring and testing.* Use industry-proven tools to automate monitoring and alerting against your baseline and for performance testing. Automation reduces manual steps and ensures consistency.
 
-####
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Testing in production can be complex and normally requires significant effort from DevOps teams. This can impact development velocity and other operational functions. Blue-green and A/B testing can also add costs to the workload by using duplicate resources when testing. Include these considerations in your budget and development planning.
 
-####
+#### &#10003; Implement advanced data management optimizations
 
-####
+In Level 4, you should have many data management optimization strategies in place already. Through your production experience you can make further optimizations to fine-tune your data management to ensure your workload performs efficiently as it continues to evolve.
 
-####
+- Use lossless and lossy data compression to reduce your data footprint. This helps save storage space and bandwidth usage and can lead to faster data transfers and access times.
+- Develop and implement an archive and deletion policy for data that is rarely used or is no longer used. Moving data off to separate, less expensive storage or removing it altogether also helps save storage space and bandwidth usage.
+- Fine-tune your caching and sharding strategies based on production learnings.
+- Replicate data to regions close to your end users to reduce latency. Some database technologies, like Azure Cosmos DB, offer readable and writeable replicas across multiple regions, which further reduces latency when deploying your workload across regions. 
+- Include storage performance monitoring in your workload monitoring solution. Performance issues can quickly appear when storage limits are breached. Many cloud storage services impose throttling when thresholds are crossed, causing bottlenecks that affect downstream application functionalities. Monitoring storage performance and watching for trends can help you proactively avoid limits.
+
+#### &#10003; Optimize critical flows through isolation
+
+When practical, isolate critical flows to ensure they aren't impacted by resource contention and to increase the ease of management. Strategies to consider include:
+
+- Dedicate compute, storage, and networking resources to critical flows. 
+- Use containerization approaches to isolate critical flows at the software (logical) level.
+- Explicitly allocate capacity for CPU, memory, and disk I/O to critical flows to ensure they're properly provisioned.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Isolating flows through dedicated resources is a costlier approach than sharing resources across flows. Perform a cost-benefit analysis before implementing this approach to ensure that it's the best approach for your use case.
+
+#### &#10003; Optimize your software development lifecycle
+
+
+
+#### &#10003;
 
 
 # [Level 5](#tab/level5)
