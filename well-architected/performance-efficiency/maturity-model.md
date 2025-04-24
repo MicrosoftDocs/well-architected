@@ -182,7 +182,7 @@ In Level 4, you should be monitoring and testing for performance in production. 
 
 - *Continously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
 - *Shift left in your testing.* Integrate testing earlier in your development cycle to catch potential issues before they appear in production.
-- *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like blue-green or A/B testing.
+- *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like  blue-green deployments and A/B testing.
 - *Automate monitoring and testing.* Use industry-proven tools to automate monitoring and alerting against your baseline and for performance testing. Automation reduces manual steps and ensures consistency.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Testing in production can be complex and normally requires significant effort from DevOps teams. This can impact development velocity and other operational functions. Blue-green and A/B testing can also add costs to the workload by using duplicate resources when testing. Include these considerations in your budget and development planning.
@@ -207,16 +207,28 @@ When practical, isolate critical flows to ensure they aren't impacted by resourc
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Isolating flows through dedicated resources is a costlier approach than sharing resources across flows. Perform a cost-benefit analysis before implementing this approach to ensure that it's the best approach for your use case.
 
-#### &#10003; Optimize application functions through efficient task handling
+#### &#10003; Fine-tune code optimizations from production learnings
 
-Use design approaches to help your application handle tasks more efficiently. The following techniques can help you improve task handling:
+Revisit the code optimizations that you made earlier in your workload development to find areas for fine-tuning. For example, you should now have telemetry from production that can help you find inefficiencies like memory leaks. You can also confirm the hot paths that you've identified using production runtime data, or find unexpected hot paths. 
 
-- Use optimistic concurrency to handle concurrent updates without locking data. This minimizes contention, reduces wait times, and provides high throughput.
+#### &#10003; Optimize operational tasks
 
-- Use parallelism to divide your application into smaller tasks that run simultaneously across multiple computing resources, utilizing techniques like multiprocessing and distributed computing to optimize code for multicore processors and CPU architecture.
+Operational tasks like virus scans, secret rotations, backups, index optimization (reorganization or rebuilding), and deployments can all affect the perfomance of your workload, so optimizing their efficiency keeps your workload performant. Consider the following strategies for optimizing these types of tasks.
 
-#### &#10003;
+- Fine-tune operational tooling. Test and understand the performance impact of essential tools like file integrity monitoring and virus scanning, then fine-tune configurations for them. For example, create exclusion lists for virus scans to minimize their duration.
+- Fine-tune database operations. Look for opportunities to fine-tune operations like database backups, schema changes, performance tuning, and monitoring. Use native tools like [automatic tuning in Azure SQL Database](/azure/azure-sql/database/automatic-tuning-enable?view=azuresql) to help this effort.
 
+#### &#10003; Evaluate platform features that enhance performance
+
+Investigate and test new platform features that become available to deterimine if they can help you gain efficiencies. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Be aware of how your cloud platform packages capabilities into SKUs. Some SKUs that offer higher performance may be overprovisioned for your present use case but might save you time and effort in the future for migrating.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Adopting some types of services can mean migrating your application or data, which might mean there will be downtime for the migration. As part of your evaluation, determine whether you can tolerate the necessary downtime to successfuly migrate.
+
+
+#### &#10003; Prioritize optimization efforts
+
+Proactively optimizing performance means improving workload efficiency before issues arise by identifying bottlenecks and implementing optimizations. Based on analysis, make specific improvements through code changes, infrastructure adjustments, or configuration updates.
 
 # [Level 5](#tab/level5)
 
