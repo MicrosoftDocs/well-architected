@@ -34,9 +34,9 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Virtual Machines
 - Azure Virtual Machine Scale Sets
 
-  :::image source="_images/microservice-with-container-apps-deployment.svg" alt-text="Diagram that shows the interrelated decisions for Virtual Machines and Azure Virtual Machine Scale Sets." lightbox="_images/microservice-with-container-apps-deployment.svg":::
+  :::image source="_images/microservice-with-container-apps-deployment.svg" border="false" alt-text="Diagram that shows the interrelated decisions for Virtual Machines and Azure Virtual Machine Scale Sets." lightbox="_images/microservice-with-container-apps-deployment.svg":::
 
-Disks are a crucial dependency for VM-based architectures but aren't covered in this article. For more information, see [Disks and optimization](/azure/well-architected/service-guides/azure-disks-cost-optimization).
+Disks are a crucial dependency for VM-based architectures but aren't covered in this article. For more information, see [Architecture best practices for Azure Disk Storage](/azure/well-architected/service-guides/azure-disk-storage).
 
 ## Reliability
 
@@ -65,10 +65,10 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Make VMs and their dependencies redundant across zones.** If a VM fails, the workload should continue to function because of redundancy. Include dependencies in your redundancy choices. For example, use the built-in redundancy options that are available with disks. Use zone-redundant IP addresses to ensure data availability and high uptime.
 >
-> - **Be ready to scale up and scale out** to prevent service level degradation and to avoid failures. [Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have autoscale capabilities that create new instances as required and distribute the load across multiple VMs and availability zones.
+> - **Be ready to scale up and scale out** to prevent service-level degradation and to avoid failures. [Virtual Machine Scale Sets](/azure/virtual-machines/flexible-virtual-machine-scale-sets) have autoscale capabilities that create new instances as required and distribute the load across multiple VMs and availability zones.
 >
 > - **Explore the automatic recovery options.** Azure supports health degradation monitoring and self-healing features for VMs. For example, scale sets provide [automatic instance repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs). In more advanced scenarios, self-healing involves using Azure Site Recovery, having a passive standby to fail over to, or redeploying from infrastructure as code (IaC). The method that you choose should align with the business requirements and your organizational operations. For more information, see [VM service disruptions](/azure/virtual-machines/overview#service-disruptions).
-> - **Rightsize the VMs and their dependencies.** Understand your VM's expected work to ensure it's not undersized and can handle the maximum load. Have extra capacity to mitigate failures.
+> - **Rightsize the VMs and their dependencies.** Understand your VM's expected work to ensure that it's not undersized and can handle the maximum load. Have extra capacity to mitigate failures.
 >
 > - **Create a comprehensive disaster recovery plan.** Disaster preparedness involves creating a comprehensive plan and deciding on a technology for recovery.
 >
@@ -107,7 +107,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Ensure timely and automated security patching and upgrades.** Make sure updates are automatically rolled out and validated by using a well-defined process. Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage OS updates and maintain security compliance by making critical updates.
 >
-> - **Identify the VMs that hold state.** Make sure that data is classified according to the sensitivity labels that your organization provided. Protect data by using security controls like appropriate levels of at-rest and in-transit encryption. If you have high sensitivity requirements, consider using high-security controls like double encryption and Azure confidential computing to protect data-in-use.
+> - **Identify the VMs that hold state.** Make sure that data is classified according to the sensitivity labels that your organization provides. Protect data by using security controls like appropriate levels of at-rest and in-transit encryption. If you have high sensitivity requirements, consider using high-security controls like double encryption and Azure confidential computing to protect data-in-use.
 >
 > - **Provide segmentation** to the VMs and scale sets by setting network boundaries and access controls. Place VMs in resource groups that share the same lifecycle.
 >
@@ -117,7 +117,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Use network controls to restrict ingress and egress traffic.** Isolate VMs and scale sets in Azure Virtual Network and define network security groups to filter traffic. Protect against distributed denial of service (DDoS) attacks. Use load balancers and firewall rules to protect against malicious traffic and data exfiltration attacks.
 >
->     Use [Azure Bastion](/azure/bastion/bastion-overview) to provide secure connectivity to the VMs for operational access.
+>     Use [Azure Bastion](/azure/bastion/bastion-overview) to provide more secure connectivity to the VMs for operational access.
 >
 >     Communication to and from the VMs to platform as a service (PaaS) solutions should be over private endpoints.
 >
@@ -127,14 +127,14 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Threat detection.** Monitor VMs for threats and misconfigurations. Use [Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) to capture VM and OS changes, and maintain an audit trail of access, new accounts, and changes in permissions.
 >
-> - **Threat prevention.** Protect against malware attacks and malicious actors by implementing security controls like firewalls, antivirus software, and intrusion detection systems. Determine if a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment) is required.
+> - **Threat prevention.** Protect against malware attacks and malicious actors by implementing security controls like firewalls, antivirus software, and intrusion detection systems. Determine whether a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment) is required.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 | :--------| :----|
 | (Scale set) **[Assign a managed identity to scale sets](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vmss).** All VMs in the scale set get the same identity through the specified VM profile. <br><br> (VMs) You can also [assign a managed identity to individual VMs](/entra/identity/managed-identities-azure-resources/qs-configure-template-windows-vm) when you create them and then add it to a scale set if needed. | When VMs communicate with other resources, they cross a trust boundary. Scale sets and VMs should authenticate their identity before communication is allowed. Microsoft Entra ID handles that authentication by using managed identities. |
-| (Scale set) **Choose VM SKUs with security features.** <br>For example, [some SKUs support BitLocker encryption](/azure/virtual-machines/windows/disk-encryption-overview#supported-vms-and-operating-systems), and [confidential computing](/azure/confidential-computing/overview) provides encryption of data-in-use. <br> Review the features to understand the limitations. |Azure-provided features are based on signals that are captured across many tenants and can protect resources better than custom controls. You can also use policies to enforce those controls. |
+| (Scale set) **Choose VM SKUs that have security features.** <br>For example, [some SKUs support BitLocker encryption](/azure/virtual-machines/windows/disk-encryption-overview#supported-vms-and-operating-systems), and [confidential computing](/azure/confidential-computing/overview) provides encryption of data-in-use. <br> Review the features to understand the limitations. |Azure-provided features are based on signals that are captured across many tenants and can protect resources better than custom controls. You can also use policies to enforce those controls. |
 | (VMs, scale set) **Apply organization-recommended tags** in the provisioned resources. |[Tagging](/azure/azure-resource-manager/management/tag-resources) is a common way to segment and organize resources and can be crucial during incident management. For more information, see [Purpose of naming and tagging](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#purpose-of-naming-and-tagging). |
 | (VMs, scale set) **Set a security profile** with the security features that you want to enable in the VM configuration. <br> For example, when you specify [encryption at host](/azure/virtual-machines/disks-enable-host-based-encryption-portal) in the profile, the data that's stored on the VM host is encrypted at rest and flows are encrypted to the storage service. |The features in the security profile are automatically enabled when the VM is created. <br> For more information, see [Azure security baseline for Virtual Machine Scale Sets](/security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline#security-profile). |
 | (VMs) **Choose secure networking options** for your VM's network profile. <br><br> Don't directly associate public IP addresses to your VMs and don't enable IP forwarding. <br><br> Ensure that all virtual network interfaces have an associated network security group. |You can set segmentation controls in the networking profile. <br> Attackers scan public IP addresses. This activity makes VMs vulnerable to threats. |
@@ -163,7 +163,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >     The archive tier in Azure Storage is an offline tier that's optimized for storing blob data that's rarely accessed. The archive tier offers the lowest storage costs but higher data retrieval costs and latency compared to the hot and cool online tiers.
 >
->    Consider using [zone to zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for VMs to recover from site failure while reducing the complexity of availability by using zone-redundant services. There can be cost benefits from reduced operational complexity.
+>    Consider using [zone-to-zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for VMs to recover from site failure while reducing the complexity of availability by using zone-redundant services. There can be cost benefits from reduced operational complexity.
 >
 > - **Choose the right billing model.** Evaluate whether commitment-based models for computing optimize costs based on the business requirements of workload. Consider these Azure options:
 >   - **[Azure reservations](/azure/virtual-machines/prepay-reserved-vm-instances)**: Prepay for predictable workloads to reduce costs compared to consumption-based pricing.
@@ -189,7 +189,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 ## Operational Excellence
 
-Operational Excellence primarily focuses on procedures for **development practices, observability, and release management.**
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
@@ -202,7 +202,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Monitor the VM instances.** Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Some common [metrics](/azure/azure-monitor/vm/vminsights-log-query) include CPU usage, number of requests, and input/output (I/O) latency. Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to be notified about problems and to detect configuration changes in your environment.
 >
 > - **Monitor the health of the VMs and their dependencies.**
->    -  Deploy monitoring components to collect logs and metrics that give a comprehensive view of your VMs, guest OS, and boot diagnostics data. Virtual Machine Scale Sets roll up telemetry, which allows you to view health metrics at an individual VM level or as an aggregate. Use Azure Monitor to view this data per VM or aggregated across multiple VMs. For more information, see [Recommendations on monitoring agents](#recommendations-3).
+>    -  Deploy monitoring components to collect logs and metrics that give a comprehensive view of your VMs, guest OS, and boot diagnostics data. Virtual Machine Scale Sets roll up telemetry, which allows you to view health metrics at an individual VM level or as an aggregate. Use Azure Monitor to view this data for each VM or aggregated across multiple VMs. For more information, see [Recommendations on monitoring agents](#recommendations-3).
 >     - Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
 >     - Set up Azure Monitor alert rules. Determine important conditions in your monitoring data to identify and address problems before they affect the system.
 >
@@ -270,7 +270,7 @@ Azure provides an extensive set of built-in policies related to Virtual Machines
 
 - **Encryption is enabled at the host level.** Ensure that encryption is enabled at the host level to provide extra security for your VM data.
 
-- **Antimalware extensions are deployed.** Verify that anti-malware extensions are deployed on VMs that run Windows Server and set for automatic updates to ensure ongoing protection.
+- **Anti-malware extensions are deployed.** Verify that anti-malware extensions are deployed on VMs that run Windows Server and set for automatic updates to ensure ongoing protection.
 
 - **Automatic OS image patching is enabled.** Check that automatic OS image patching is enabled on scale sets to ensure that your VMs stay updated with security patches.
 
@@ -292,7 +292,7 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 
 For more information, see [Azure Advisor](/azure/advisor).
 
-## Related resources
+## Related content
 
 Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
 
