@@ -174,7 +174,13 @@ Foster an environment of continuous improvement where teams learn from productio
 
 ![Goal icon](../_images/goal.svg) **Applying learnings from operating in production to achieve efficiencies in performance**
 
-<!-- No more than 5 H4 headings per tab -->
+The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about its normal running state. At this level, you should apply these learnings to your environment.
+
+Use telemetry and feedback mechanisms to identify performance issues like bottlenecks and develop plans to make improvements. Use mature change management practices to ensure that you don't inadvertantly cause additional issues when making changes to your environment. 
+
+Keep in mind that iterative improvements will reach a point of diminshing returns. You'll need to decide when you've reached a "good enough" running state, when continuing to search for inefficiencies won't outweigh the minor performance improvements you gain.
+
+Also remember that any change you make to your environment to improve performance will directly impact other pillars of the Well-Architected Framework, with cost optimization being the most common trade-off. Carefully assess the impact to other pillars before making performance improvements to maintain the right balance for your requirements.
 
 #### &#10003; Uplift your performance monitoring and testing
 
