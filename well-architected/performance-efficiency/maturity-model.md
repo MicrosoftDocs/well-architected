@@ -174,7 +174,7 @@ Foster an environment of continuous improvement where teams learn from productio
 
 ![Goal icon](../_images/goal.svg) **Applying learnings from operating in production to achieve efficiencies in performance**
 
-The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about its normal running state. At this level, you should apply these learnings to your environment.
+The Level 4 stage of the maturity model assumes that your workload is in production and has been operating for enough time to gather useful information about its normal running state. At this level, you should use this information to make necessary updates and further improvements.
 
 Use telemetry and feedback mechanisms to identify performance issues like bottlenecks and develop plans to make improvements. Use mature change management practices to ensure that you don't inadvertantly cause additional issues when making changes to your environment. 
 
