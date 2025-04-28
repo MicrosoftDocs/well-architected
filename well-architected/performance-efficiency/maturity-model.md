@@ -170,7 +170,7 @@ Another critical testing function is to build your performance baseline. Baselin
 
 Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance issues. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
 
-# [Level 4 - Refining in production](#tab/level4)
+# [Level 4 - Learning from production experience](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) **Applying learnings from operating in production to achieve efficiencies in performance**
 
@@ -189,6 +189,7 @@ In Level 4, you should be monitoring and testing for performance in production. 
 - *Continously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
 - *Shift left in your testing.* Integrate testing earlier in your development cycle to catch potential issues before they appear in production.
 - *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like  blue-green deployments and A/B testing.
+- *Use synthetic transactions in your testing.* Using synthetic transactions allows you to consistently test real-world user experience, helping you identify issues and potential improvements before users are affected.
 - *Automate monitoring and testing.* Use industry-proven tools to automate monitoring and alerting against your baseline and for performance testing. Automation reduces manual steps and ensures consistency.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Testing in production can be complex and normally requires significant effort from DevOps teams. This can impact development velocity and other operational functions. Blue-green and A/B testing can also add costs to the workload by using duplicate resources when testing. Include these considerations in your budget and development planning.
