@@ -215,7 +215,7 @@ When practical, isolate critical flows to ensure they aren't impacted by resourc
 
 #### &#10003; Fine-tune code optimizations from production learnings
 
-Revisit the code optimizations that you made earlier in your workload development to find areas for fine-tuning. For example, you should now have telemetry from production that can help you find inefficiencies like memory leaks. You can also confirm the hot paths that you've identified using production runtime data, or find unexpected hot paths. 
+Revisit the code optimizations that you made earlier in your workload development to find areas for further enhancements. For example, you should now have telemetry from production that can help you find inefficiencies like memory leaks. You can also confirm the hot paths that you've identified using production runtime data, or find unexpected hot paths. 
 
 #### &#10003; Optimize operational tasks
 
@@ -224,7 +224,7 @@ Operational tasks like virus scans, secret rotations, backups, index optimizatio
 - Fine-tune operational tooling. Test and understand the performance impact of essential tools like file integrity monitoring and virus scanning, then fine-tune configurations for them. For example, create exclusion lists for virus scans to minimize their duration.
 - Fine-tune database operations. Look for opportunities to fine-tune operations like database backups, schema changes, performance tuning, and monitoring. Use native tools like [automatic tuning in Azure SQL Database](/azure/azure-sql/database/automatic-tuning-enable?view=azuresql) to help this effort.
 
-#### &#10003; Evaluate platform features that enhance performance
+#### &#10003; Evaluate new platform features that enhance performance
 
 Investigate and test new platform features that become available to deterimine if they can help you gain efficiencies. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
