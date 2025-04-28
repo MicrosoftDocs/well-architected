@@ -213,7 +213,7 @@ When practical, isolate critical flows to ensure they aren't impacted by resourc
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Isolating flows through dedicated resources is a costlier approach than sharing resources across flows. Perform a cost-benefit analysis before implementing this approach to ensure that it's the best approach for your use case.
 
-#### &#10003; Fine-tune code optimizations from production learnings
+#### &#10003; Extend code optimizations derived from production learnings
 
 Revisit the code optimizations that you made earlier in your workload development to find areas for further enhancements. For example, you should now have telemetry from production that can help you find inefficiencies like memory leaks. You can also confirm the hot paths that you've identified using production runtime data, or find unexpected hot paths. 
 
