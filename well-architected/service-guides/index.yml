@@ -11,7 +11,7 @@ metadata:
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 04/29/2024
+  ms.date: 04/29/2025
   featureFlags:
   - clicktale
 highlightedContent:
@@ -36,8 +36,7 @@ highlightedContent:
 
 productDirectory:
   title: Browse the catalog of Azure services
-  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a state of excellence. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
-
+  summary: Service guides help you choose and configure Azure components by highlighting key features needed for a well-architected design. While they don't list every feature, they focus on what matters most for building a solid baseline and addressing common workload challenges.
   items:
     # Card
     - title: API Management
