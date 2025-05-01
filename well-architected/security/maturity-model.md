@@ -104,7 +104,7 @@ Hardening the workload is an iterative process of continuous improvement. Be vig
 
 ![Goal icon](../_images/goal.svg) **Proactively identify and mitigate security threats**
 
-Level 3 of the maturity model is the point where you should build advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Using strategies like threat modelling, network flow classifications, and advanced encryption techniques builds an additional level of preparedness on the foundational mechanisms you should already have in place. Designing an incident response plan ties all of your threat detection and mitigation strategies together and standardizes how you manage security incidents.
+Level 3 of the maturity model is the point where you should implement advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Using strategies like threat modelling, network flow classifications, and advanced encryption techniques builds an additional level of preparedness on the foundational mechanisms you should already have in place. Designing an incident response plan ties all of your threat detection and mitigation strategies together and standardizes how you manage security incidents.
 
 #### &#10003; Incorporate threat modelling into your software development lifecycle (SDLC)
 
@@ -112,7 +112,7 @@ Threat modelling is an engineering technique you can use to help you identify th
 
 - *Validate the workload security requirements.* The process of gathering and codifying the workload security requirements should've been completed early on in your workload development. At Level 3, you should validate the requirements as a premliminary step in the threat modelling exercise.
 - *Validate the workload architectural diagram.* Like gathering requirements, building an architectural diagram with flows should've been completed at an earlier stage in your workload development, and at Level 3, you should validate the diagram.
-- *Identify potential threats.* Analyze potential threats for each component from and outside-in perspective. Determine how an attacker might exploit a given resource to gain further access to your system. Classify threats according to an industry standard methodology like [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to help you understand the nature of each threat and apply appropriate security controls.
+- *Identify potential threats.* Analyze potential threats for each component from an outside-in perspective. Determine how an attacker might exploit a given resource to gain further access. Classify threats according to an industry standard methodology like [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to help you understand the nature of each threat and apply appropriate security controls.
 - *Plan mitigation strategies.* After identifying potential threats, start building mitigation plans to enhance your hardening design. Include these mitigation strategies in your team's backlog for tracking.
 - *Use threat modelling tooling.* Use a tool like the [Microsoft Threat Modelling Tool](/securityengineering/sdl/threatmodeling) to make the exercises more efficient, standardizing the approach and reporting processes.
 
