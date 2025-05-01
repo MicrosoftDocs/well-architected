@@ -140,7 +140,7 @@ Create an incident response plan that allows you to rapidly detect and respond t
 - *Learn from incidents.* Perform post-incident reviews (also known as post mortems) to look for improvement opportunities. Include time in your planning for implementing improvements and include improvements in your BCDR drills.
 - *End-user and stakeholder communications.* Ensure that your users and stakeholders are kept up-to-date as you work through incidents. Define the proper communication channels and cadence to send out updates.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Investigatoin, mitigation, and recovery processes can impact your reliability targets. You may need to disable parts of your system during an incident that affects functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Investigatoin, mitigation, and recovery processes can impact your reliability targets. You may need to disable parts of your system during an incident, affecting functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
 # [Level 4](#tab/level4)
 
