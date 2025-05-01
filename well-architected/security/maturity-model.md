@@ -128,7 +128,7 @@ Review your compliance requirements and reevaluate your encryption configuration
 
 If you need to manage your own keys, use a key management service to mitigate the risk of losing a key or failing to rotate keys according to your requirements. Determine which service is the best match [for your use case](/azure/security/fundamentals/key-management-choose).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure that these strategies are the right decision for your particular requirments before implementing them.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure to research these strategies for your particular requirements before implementing them.
 
 #### &#10003; Build an incident response plan
 
