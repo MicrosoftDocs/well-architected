@@ -4,7 +4,7 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
-ms.subservice: service-guide
+ms.subservice: waf-service-guide
 ms.date: 02/20/2025
 products:
   - azure-cosmos-db
@@ -132,7 +132,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Cosmos DB for No SQL and its environment.
 
-## Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -216,7 +216,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-## Design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure Cosmos DB for NoSQL.
 
