@@ -98,6 +98,15 @@ There are many common application design patterns that can help you optimize you
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Some design patterns may add a degree of complexity to your workload, so weigh the additional management burden against your efficiency gains to determine whether a particular pattern is worth implementing.
 
+#### &#10003; Optimize code performance
+
+Optimizing your code makes your entire workload more efficient. Application tasks run quicker and use less compute resources, so you can maximize the performance of your infrastructure. Consider the following code optimization approaches.
+
+- Instrument your code. Instrumenting your code helps you identify issues in your code performance by capturing telemetry during runtime. This helps you identify and resolve issues early in the development cycle.
+- Identify hot paths. Instrumenting your code also helps identify hot paths, which are critical or frequently executed sections of a program that require high performance and low latency.
+- Optimize code logic. Look for opportunities to simplify your code logic to make it more efficient. Remove unnecessary unnecessary function calls and data processing operations and minimize logging operations, network requests, and memory allocations, and look for opportunitiies to use more performant SDKs and libraries.
+- Use concurrency and parallelism. Using concurrency and parallelism can make your application more efficient by executing tasks more efficiently. Concurrency involves managing multiple tasks by interleaving them, while parallelism involves executing multiple tasks simultaneously.
+
 #### &#10003; Collect and monitor performance data for resources across your workload
 
 Collect application performance data like throughput, latency, and completion times to identify bottlenecks and improve user experience. Use distributed tracing and structured logging for easier analysis. Gather metrics and logs for all resources, and use tools like Azure Monitor Insights for performance monitoring. Collect database and storage data, and gather performance metrics for virtual machines. Store all of the collected data in one place for easy access and analysis.

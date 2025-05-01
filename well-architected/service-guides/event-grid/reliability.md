@@ -1,8 +1,8 @@
 ---
 title: Event Grid and reliability
 description: Focuses on the Event Grid service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 12/08/2021
 ms.topic: conceptual
 products:

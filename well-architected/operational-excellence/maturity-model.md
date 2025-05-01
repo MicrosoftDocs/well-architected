@@ -70,7 +70,7 @@ Prioritize security even at this early stage. Security measures are often based 
 
 Make tools and processes transparent so that vulnerabilities can be easily detected through audits, and peer reviews. Explore industry-standard tools that support vulnerability scanning and security controls, even if not yet fully implemented. 
 
-//TODO for Security: Your tools and deployment practices use the same identity provider as your production environments to avoid issues with duplicated identities and integration problems across different platforms. Minimize the different identity control planes.
+Your tools and deployment practices use the same identity provider as your production environments. Minimize the different identity control planes.
 
 
 # [**Level 2 - Standardization**](#tab/level2)
