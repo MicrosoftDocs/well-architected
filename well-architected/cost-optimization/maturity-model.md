@@ -66,55 +66,53 @@ These evaluations help you understand the total costs of each option so that you
 
 Invest in upskilling in areas where your team lacks knowledge. Strong cloud skills facilitate good long-term decision-making and optimize your daily productivity. Consider training or certifications that your cloud provider or other partners offer. Enhancing the productivity of your workload team and other decision-makers saves you time and money by minimizing costly mistakes.
 
-
-
-# [Level 2 - Financial assessment](#tab/level2)
+# [**Level 2: Financial assessment**](#tab/level2)
 
 ![Goal icon](../_images/goal.svg) **Ensure visibility into spending patterns through systematic analysis and establish team accountability for regular cost data reviews.**
 
-After the initial deployment, it's common to focus on developing new features and sales, often neglecting cost management. At Level 2, spending is expected to increase, making a disciplined approach necessary. This involves assessing the costs of tools and technologies, building a baseline, and identifying main cost drivers. 
+After the initial deployment, it's common to focus on developing new features and sales and to neglect cost management. At Level 2, spending is expected to increase, so you need to take a disciplined approach. Assess the costs of tools and technologies, build a baseline, and identify main cost drivers.
 
-Although cost management may seem overwhelming, systematic cost analysis at an early stage is necessary for maintaining financial control and supporting growth.
+Cost management might seem overwhelming, but systematic cost analysis at an early stage is necessary to maintain financial control and support growth.
 
 #### &#10003; Develop a baseline cost model
 
-A _cost model_ is an estimate of the overall cost of a workload broken down by contributing factors such as platform services, data storage, user and system flows, and operations. At the very least, conduct a systematic cost analysis and create a simple [cost model](./cost-model.md). This exercise helps in making informed decisions about resource allocation and optimization.
+A _cost model_ is an estimate of the overall cost of a workload. The cost is broken down by contributing factors, such as platform services, data storage, user and system flows, and operations. At minimum, you should conduct a systematic cost analysis and create a simple [cost model](./cost-model.md). This exercise helps you make informed decisions about resource allocation and optimization.
 
-- Create an inventory of all Azure resources, specifying which aspects of each resource lead to higher costs.
+- Create an inventory of all Azure resources and specify which aspects of each resource lead to higher costs.
 
-- Ask questions about the technology choices and their alignment with goals like scalability, reliability, within the cost constraints. For each resource, note the cost and determine if the cost is too high or too low. This involves measuring against expected loads, keeping in mind potential growth.
+- Ask questions about the technology choices and their alignment with goals like scalability and reliability within the cost constraints. For each resource, note the cost and determine whether the cost is too high or too low. Measure against expected loads while you keep in mind potential growth.
 
-- Note the cost of flows distinguishing between critical and noncritical flows. Critical flows, such as user experience in an e-commerce application, should be prioritized over noncritical flows, like background jobs for audit purposes.
+- Note the cost of flows and distinguish between critical and noncritical flows. Critical flows, such as user experience in an e-commerce application, should be prioritized over noncritical flows, like background jobs for audit purposes.
 
 - Calculate the cost of data storage and data access patterns.
 
 #### &#10003; Build cost reports
 
-Build basic cost reports for financial visibility and analyzing cost patterns. Also, set up cost alerts for when a certain amount of spending is exceeded.
+Build basic cost reports for financial visibility and to analyze cost patterns. Also, set up cost alerts for when you exceed a specific amount of spending.
 
-It's recommended that you use [Azure Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a report monthly. 
+We recommend that you use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a report monthly.
 
 #### &#10003; Set up accountability
 
-Accountability is non-negotiable for cost management. In the early stages, assign a team member to review budgets and cost reports monthly, keeping the team informed of unexpected spikes. The accountable person should evaluate workload spend and guide the team accordingly. 
+Accountability is nonnegotiable for cost management. In the early stages, assign a team member to review budgets and cost reports monthly and to inform the team of unexpected spikes. The accountable person should evaluate workload spend and guide the team accordingly.
 
 Initially, accountability can be flexible. As the startup matures, enforce stricter controls.
 
 #### &#10003; Evaluate optimization opportunities
 
-Your cost model should give you a good idea of the main cost drivers and the cost reports should provide evidence. Evaluate those drivers and explore opportunities to optimize. Here are some considerations: 
+Your cost model should give you a good understanding of the main cost drivers, and the cost reports should provide evidence. Evaluate those drivers and explore opportunities to optimize. Consider the following strategies:
 
-- Evaluate the billing model for each Azure resource used by the workload. This involves analyzing the features bundled with each plan and determining if they are necessary for your needs. For instance, if you require specific features like a private endpoint with Azure Front Door, you may need the premium plan. Otherwise, consider moving to a lower plan to save costs.
+- Evaluate the billing model for each Azure resource that the workload uses. Determine whether you need all of the features that each plan bundles. For instance, if you require specific features like a private endpoint with Azure Front Door, you might need the premium plan. Otherwise, consider choosing a lower plan to save costs.
 
-- Evaluate the choice between consumption-based billing and commitment-based billing. It's recommended to start with consumption-based billing to understand the incurred costs. If the load is consistent, you can explore discounts offered by Azure for consistent loads at later stages.
+- Choose between consumption-based billing and commitment-based billing. We recommend that you start with consumption-based billing so you can understand the incurred costs. If the load is consistent, you can explore discounts that Azure provides for consistent loads at later stages.
 
-- Evalute coding practices. This requires code instrumentation to identify processes that are expensive to run and provide insight into performance issues, which can incur unnecessary costs. Metrics such as process duration and failure rates should be collected to make data-driven decisions for future optimization.
+- Evaluate coding practices. Use code instrumentation to identify processes that are expensive to run and provide insight into performance problems, which can incur unnecessary costs. Collect metrics like process duration and failure rates to make data-driven decisions for future optimization.
 
 #### &#10003; Decide on an initial scaling strategy
 
-Scaling out is preferred as it's more cost-effective and easier to implement compared to scaling up, which involves downtime and higher costs.
+Scaling out is preferred because it's more cost-effective and easier to implement compared to scaling up. Scaling up involves downtime and higher costs.
 
-Performance testing and metrics should be considered when making the decision to scale to scale out or scale up based on the evaluation.
+Consider performance testing and metrics, and scale out or scale up based on your evaluation.
 
 # [**Level 3 - Incorporating signals**](#tab/level3)
 
