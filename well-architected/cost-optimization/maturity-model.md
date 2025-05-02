@@ -88,7 +88,7 @@ A _cost model_ is an estimate of the overall cost of a workload. The cost is bro
 
 #### &#10003; Build cost reports
 
-Build basic cost reports for financial visibility and to analyze cost patterns. Also, set up cost alerts for when you exceed a specific amount of spending.
+Build basic cost reports for financial visibility and analyze cost patterns. Also, set up cost alerts for when you exceed a specific amount of spending.
 
 We recommend that you use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a report monthly.
 
@@ -142,7 +142,7 @@ Creating spending thresholds and associated alerting is an easy way to enforce c
  
 As you build out your nonproduction and production environments, you might inadvertantly deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized an unused resources is a cornerstone element of the continuous improvement practice of maintaining an optimized cloud environment. Consider the following recommended activities:
 
-- Use the right resource types and SKUs for each environment. Research the infrastructure options your cloud platform provides and choose resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are [targeted specifically for proof-of-concept and Dev/Test environments](https://azure.microsoft.com/en-us/pricing/offers/dev-test/) that are significantly less expensive than standard or high performance resources, but cannot be used for production workloads.
+- Use the right resource types and SKUs for each environment. Research the infrastructure options your cloud platform provides and choose resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are [targeted specifically for proof-of-concept and Dev/Test environments](https://azure.microsoft.com/pricing/offers/dev-test/) that are significantly less expensive than standard or high performance resources, but cannot be used for production workloads.
 - Configure and enforce policies to limit allowed resource types and SKUs, regions, and users with deployment permissions. Automated policies will help you control changes to your environments, minimizing the risk of unauthorized deployments.
 - Standardize using infrastructure-as-code (IaC) for all environment changes. This practice further enforces your environment change policies and simplifies your operations practices, reducing the risk of human error.
 - Monitor utilization metrics like CPU, memory, and storage to help determine if resources are under-utilized and can be scaled down.
