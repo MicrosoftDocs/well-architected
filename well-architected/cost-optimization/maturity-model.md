@@ -49,7 +49,7 @@ You should also understand how factors that aren't directly related to your clou
 
 One of the first decisions the workload team needs to make is whether they should use off-the-shelf solutions or build solutions in-house. Generally, the Well-Architected Framework favors [keeping things simple](../reliability/simplify.md). Using off-the-shelf solutions follows that philosophy. Well-supported solutions relieve your team of operational burden and decrease the time needed for development so that developers can focus on core functionality of the application instead.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Consider costs when you decide whether to build or buy a solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development. But you have fewer recurring costs because you don't have to maintain support contracts or licensing.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Consider costs when you decide whether to build or buy a solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development. But you have fewer recurring costs because you don't have to maintain support contracts or licensing.
 
 To help you make the right decision for your team, evaluate the following points.
 
@@ -76,7 +76,7 @@ Cost management might seem overwhelming, but systematic cost analysis at an earl
 
 #### &#10003; Develop a baseline cost model
 
-A _cost model_ is an estimate of the overall cost of a workload. The cost is broken down by contributing factors, such as platform services, data storage, user and system flows, and operations. At minimum, you should conduct a systematic cost analysis and create a simple [cost model](./cost-model.md). This exercise helps you make informed decisions about resource allocation and optimization.
+A _cost model_ is an estimate of the overall cost of a workload. The cost is broken down by contributing factors, such as platform services, data storage, user and system flows, and operations. At minimum, you should conduct a systematic cost analysis and create a basic [cost model](./cost-model.md). This exercise helps you make informed decisions about resource allocation and optimization.
 
 - Create an inventory of all Azure resources and specify which aspects of each resource lead to higher costs.
 
