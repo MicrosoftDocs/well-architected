@@ -69,7 +69,7 @@ Level 2 of the Performance Efficiency pillar focuses on using information about 
 
 #### &#10003; Identify crucial flows from a performance perspective
 
-Ranking and categorizing your workload flows is an important strategy in each of the Well-Architected Framework pillars. Analyzing flows from the perspective of each pillar helps you identify areas that need to be optimized. You can compare those optimizations to help you determine where to invest. For example, in some scenarios, security concerns for a flow might outweigh performance concerns. After you categorize and rank the flows, focus on the flows that you've identified as crucial to start your optimization planning. Performance-specific criteria that can help you identify crucial flows include:
+Ranking and categorizing your workload flows is an important strategy in each of the Well-Architected Framework pillars. Analyzing flows from the perspective of each pillar helps you identify areas that need to be optimized. You can compare those optimizations to help you determine where to invest. For example, in some scenarios, security concerns for a flow might outweigh performance concerns. After you categorize and rank the flows, focus on the flows that you identify as crucial to start your optimization planning. Performance-specific criteria that can help you identify crucial flows include:
 
 - *Frequency:* The number of times that the flow is performed, like searching for a product.
 
@@ -101,12 +101,15 @@ There are many common application design patterns that can help you optimize you
 
 #### &#10003; Optimize code performance
 
-Optimizing your code makes your entire workload more efficient. Application tasks run quicker and use less compute resources, so you can maximize the performance of your infrastructure. Consider the following code optimization approaches.
+Code optimization makes your entire workload more efficient. Application tasks run quicker and use less compute resources, so you can maximize the performance of your infrastructure. Consider the following code optimization approaches:
 
-- Instrument your code. Instrumenting your code helps you identify issues in your code performance by capturing telemetry during runtime. This helps you identify and resolve issues early in the development cycle.
-- Identify hot paths. Instrumenting your code also helps identify hot paths, which are critical or frequently executed sections of a program that require high performance and low latency.
-- Optimize code logic. Look for opportunities to simplify your code logic to make it more efficient. Remove unnecessary unnecessary function calls and data processing operations and minimize logging operations, network requests, and memory allocations, and look for opportunitiies to use more performant SDKs and libraries.
-- Use concurrency and parallelism. Using concurrency and parallelism can make your application more efficient by executing tasks more efficiently. Concurrency involves managing multiple tasks by interleaving them, while parallelism involves executing multiple tasks simultaneously.
+- **Instrument your code.** Instrumenting your code helps you identify problems in your code performance by capturing telemetry during runtime. This process helps you identify and resolve problems early in the development cycle.
+
+- **Identify hot paths.** Instrumenting your code helps you identify hot paths. Hot paths are essential or high-usage sections of a program that require high performance and low latency.
+
+- **Optimize code logic.** Find ways to simplify your code logic for better efficiency. Remove unnecessary function calls and data processing operations. Minimize logging operations, network requests, and memory allocations. Look for opportunities to use more performant SDKs and libraries.
+
+- **Use concurrency and parallelism.** Using concurrency and parallelism can improve your application's efficiency by managing multiple tasks effectively. Concurrency handles multiple tasks by switching between them, while parallelism processes multiple tasks simultaneously.
 
 #### &#10003; Collect and monitor performance data for resources across your workload
 
