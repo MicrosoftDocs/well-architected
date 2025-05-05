@@ -65,7 +65,7 @@ Based on the answers to these questions, [choose the best data service](/azure/a
 
 ![Goal icon](../_images/goal.svg) **Begin measuring performance by using defined metrics and plan for optimization.**
 
-Level 2 of the Performance Efficiency pillar focuses on using information about your workload to inform your performance optimizations. The first step is to identify crucial workload flows from a performance perspective. Next, break down your workload into its components and set measurable targets and metrics that you can capture and analyze for future optimizations. Finally, you should investigate design patterns that might help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities will help you build a plan for the near-term future of your workload. This approach ensures that performance doesn't suffer as the workload evolves.
+Level 2 of the Performance Efficiency pillar focuses on using information about your workload to inform your performance optimizations. The first step is to identify crucial workload flows from a performance perspective. Next, break down your workload into its components and set measurable targets and metrics that you can capture and analyze for future optimizations. Finally, you should investigate design patterns that might help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities help you build a plan for the immediate future of your workload. This approach ensures that performance doesn't suffer as the workload evolves.
 
 #### &#10003; Identify crucial flows from a performance perspective
 
@@ -83,7 +83,7 @@ Ranking and categorizing your workload flows is an important strategy in each of
 
 #### &#10003; Establish key metrics for your workload resources and components that help you meet your targets
 
-Set performance targets for your workload components and resources based on market research, competitive analysis, and surveys. Focus on key metrics like response time, throughput, and latency. Establish targets for different components, user flows, workflows, data flows, external dependencies, and overall workload performance.
+Set performance targets for your workload components and resources based on market research, competitive analysis, and surveys. Focus on key metrics like response time, throughput, and latency. Establish targets for different components, user flows, workflows, dataflows, external dependencies, and overall workload performance.
 
 Set realistic and measurable targets for each metric while keeping customer expectations in mind. Use percentiles like P99, P95, and P50 to gain a comprehensive perspective. Perform testing to establish baseline performance, but don't overemphasize optimization.
 
@@ -91,13 +91,13 @@ Set realistic and measurable targets for each metric while keeping customer expe
 
 Capacity planning is an iterative process that should be conducted regularly throughout your workload's life cycle. At this stage, you might not yet be fully familiar with all the technologies in use or might still be evaluating different options. This uncertainty can limit your ability to plan comprehensively for future needs. For this initial capacity planning exercise, the goal is to shift from reactive capacity management, which includes adding resources to meet immediate demand. Instead, the focus is on proactive planning, where you anticipate the capacity required for a defined period. To achieve effective capacity planning, collect and analyze data on resource usage, including historical patterns for existing workloads. Use statistical analysis, trend analysis, and predictive modeling to forecast future needs. Ensure that these forecasts align with workload objectives.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: In a traditional, datacenter-based environment, over-provisioning is a common approach for capacity planning. In a cloud environment, over-provisioning can be a waste of money. Carefully consider your business expectations to develop a timeline for adding capacity in a way that will meet your performance needs without negatively affecting your budget.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** In a traditional, datacenter-based environment, over-provisioning is a common approach for capacity planning. In a cloud environment, over-provisioning can be a waste of money. Carefully consider your business expectations to develop a timeline for adding capacity in a way that meets your performance needs without negatively affecting your budget.
 
 #### &#10003; Investigate design patterns to support performance efficiency
 
-There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or developing a sharding strategy. Review the [design patterns](./design-patterns.md) guide for a comprehensive list of patterns that might help you as you enhance your workload.
+There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or developing a sharding strategy. For a comprehensive list of patterns that might help you enhance your workload, [Cloud design patterns](./design-patterns.md).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Some design patterns might add a degree of complexity to your workload. Compare the extra management burden against your efficiency gains to determine whether a specific pattern is worth implementing.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Some design patterns might add a degree of complexity to your workload. Compare the extra management burden against your efficiency gains to determine whether a specific pattern is worth implementing.
 
 #### &#10003; Optimize code performance
 
@@ -115,7 +115,7 @@ Code optimization makes your entire workload more efficient. Application tasks r
 
 Collect application performance data like throughput, latency, and completion times to identify bottlenecks and improve user experience. Use distributed tracing and structured logging for easier analysis. Gather metrics and logs for all resources. Use tools like Azure Monitor Insights for performance monitoring. Collect database and storage data, and gather performance metrics for virtual machines. Store all of the collected data in one place for easy access and analysis.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Ensure that you set up log rotation and retention policies because the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that you set up log rotation and retention policies because the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
 # [**Level 3 - Incorporating performance signals**](#tab/level3)
 
