@@ -44,8 +44,6 @@ landingContent:
             url: principles.md#establish-development-standards
           - text: Evolve operations with observability
             url: principles.md#evolve-operations-with-observability
-          - text: Deploy with confidence
-            url: principles.md#deploy-with-confidence
           - text: Automate for efficiency
             url: principles.md#automate-for-efficiency
           - text: Adopt safe deployment practices
