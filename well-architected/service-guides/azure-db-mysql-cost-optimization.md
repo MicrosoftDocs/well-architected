@@ -1,8 +1,8 @@
 ---
 title: Architecture Best Practices for Azure Database for MySQL and Cost Optimization
 description: Focuses on the Azure Database for MySQL service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Cost Optimization.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 12/08/2021
 ms.topic: conceptual
 products:

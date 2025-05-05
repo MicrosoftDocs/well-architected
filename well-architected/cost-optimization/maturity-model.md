@@ -15,55 +15,56 @@ In the context of the Well-Architected Framework, cost optimization is about det
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1 - Trust and accountability**](#tab/level1)
+# [**Level 1: Trust and accountability**](#tab/level1)
 
-![Goal icon](../_images/goal.svg) **Build out the mechanisms to manage workload costs throughout its lifecycle.**
+![Goal icon](../_images/goal.svg) **Build out mechanisms to manage workload costs throughout its lifecycle.**
 
-Level 1 of the maturity model is designed to help workload teams understand their budget and to put processes and tools in place to manage their costs over the course of their workload lifecycle. Before starting on more mature processes, like building a cost model, you should focus on basic cost management best practices that will help you get your workload started without causing issues with the budget.
+Level 1 of the maturity model helps workload teams understand their budget and set up processes and tools to manage their costs during the workload lifecycle. Before you set up more mature processes, like building a cost model, you should focus on basic cost management best practices to get your workload started without causing problems with the budget.
 
-The recommendations in the following checklist will help you wisely manage costs while allowing you to build your workload efficiently.
+The following recommendations can help you manage costs wisely while building your workload efficiently.
 
-#### &#10003; Share financial goals, budget details, and workload spend with all team members, managers, and decision-makers
+#### &#10003; Share financial goals, budget details, and workload spending with all team members, managers, and decision-makers
 
-Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership piece of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
+Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Share detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This practice is **not often thought of but is important**. It helps build trust between the workload team and leadership teams and shows that the workload team is thinking ahead about managing expenses. This collaboration also helps motivate the workload team to remain diligent in their cost management because of their commitments to leadership teams.
 
-#### &#10003; Define processes and tools for sharing cost-saving ideas and knowledge
+#### &#10003; Define processes and tools to share cost-saving ideas and knowledge
 
-Use collaboration tools to encourage team members to share cost optimization ideas and insights. Providing mechanisms for the team to collaborate on their ideas and insights is a great motivational tool as it empowers team members to offer suggestions that cut across all disciplines of the workload team. By fostering a culture of collaboration on cost optimization, you can reinforce the mindset that managing the workload costs relies on every team member equally.
+Use collaboration tools to encourage team members to share cost optimization ideas and insights. Provide mechanisms for the team to collaborate on their ideas and insights. This approach empowers team members to offer suggestions across all disciplines of the workload team. When you foster a culture of collaboration on cost optimization, you reinforce the mindset that managing workload costs relies on every team member equally.
 
-To help motivate adopting a cost optimization mindset, consider acknowledging individuals and teams who demonstrate financial responsibility and contribute to cost optimization through performance evaluations, incentives, or other recognition programs.
+To motivate a cost optimization mindset, consider acknowledging individuals and teams who demonstrate financial responsibility and contribute to cost optimization. You could use performance evaluations, incentives, or other recognition programs.
 
-#### &#10003; Gather detailed cost data from all sources, including invoiced (actual billed) and metered (predictive based on billing plans) data
+#### &#10003; Gather detailed cost data from all sources, including invoiced and metered data
 
-Explore all of the available tools and methods provided by your service provider to compile a fully detailed picture of your workload's costs. Relying only on the monthly bill might not give stakeholders enough details about spending. Compile data to save time in investigating vague items and explaining obscure terms. After you've gathered utilization data, centralize that data into a unified system.
+Invoiced data represents actual billed amounts, and metered data is predictive based on billing plans. To get a fully detailed picture of your workload's costs, explore all available tools and methods that your service provider offers. The monthly bill might not give stakeholders enough details about spending. Compile data to save time investigating unclear charges and explaining obscure terms. After you gather usage data, centralize that data into a unified system.
 
-Take advantage of billing dashboards that can be filtered for different views to make it easier for stakeholders and workload team members to see the information that's most relevant to them.
+Take advantage of billing dashboards that have filters for different views. Stakeholders and workload team members can use the filters to easily see the information that's most relevant to them.
 
-#### &#10003; Determine the cost drivers
+#### &#10003; Determine cost drivers
 
-Using the tools you've adopted to gather billing data, you can identify how different workload components contribute to the overall costs. Pay special attention to costs related to processes, like data transfer or transactions, contribute to the overall costs as these are often not considered when estimating resource costs before deployment. 
+To identify how different workload components contribute to overall costs, use the tools that you adopted to gather billing data. Pay special attention to costs related to processes, like data transfers or transactions, and how they contribute to overall costs. These costs are often overlooked during initial resource cost estimations before deployment. 
 
-You should also understand how factors not directly related to your cloud resources can affect your budget. This can include training for team members, and software licensing not managed by your cloud provider.
+You should also understand how factors that aren't directly related to your cloud resources can affect your budget. These factors can include training for team members and software licensing that your cloud provider doesn't manage.
 
 #### &#10003; Decide whether to build or buy 
 
-One of the first decisions the workload team needs to make is whether they should use off-the-shelf solutions or build solutions in-house. Generally speaking, the Well-Architected Framework favors [keeping things simple](../reliability/simplify.md), and using off-the-shelf solutions follows that philosophy. Using well-supported solutions relieves operational burden from your team and decreases the time needed for development, allowing developers to focus on core functionality of the application.
+One of the first decisions the workload team needs to make is whether they should use off-the-shelf solutions or build solutions in-house. Generally, the Well-Architected Framework favors [keeping things simple](../reliability/simplify.md). Using off-the-shelf solutions follows that philosophy. Well-supported solutions relieve your team of operational burden and decrease the time needed for development so that developers can focus on core functionality of the application instead.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are cost considerations to evaluate when making a decision about building or buying a particular solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development, but recurring costs can be dramatically less as there won't be any support contracts or licensing to maintain. 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Consider costs when you decide whether to build or buy a solution. Building solutions in-house usually means an up-front investment for the development time and any resources needed to complete the development. But you have fewer recurring costs because you don't have to maintain support contracts or licensing.
 
-To help you make the right decision for your team, evaluate these points.
+To help you make the right decision for your team, evaluate the following points.
 
-- *The desired level of control:* Decide how much control over the functionality provided by a particular solution you really need.
-- *The necessary amount of customization:* Determine how much customization you'll need to be able to offer as your workload evolves.
+- *The desired level of control:* Decide how much control you need over the functionality of a solution.
+
+- *The necessary amount of customization:* Determine the level of customization that you need to adapt to your evolving workload.
 - *The expected time to market:* Understand stakeholders' expectations for bringing your workload to market and how you can best meet that timeline.
-- *The required technical expertise:* Determine how much expertise that you'll need to retain in order to build and operate a particular solution.
-- *The expected operational burden:* Estimate how much time and effort will be required by operations teams to support a particular solution.
+- *The required technical expertise:* Determine how much expertise that you need to retain to build and operate a solution.
+- *The expected operational burden:* Estimate how much time and effort operations teams need to support a solution.
 
-Making these evaluations will help you understand the total costs of each option and allow you to weigh them against each other. The total cost may not be the ultimate decision-maker, but if there are drastic differences, using the lower cost option can help you maintain velocity in building your workload.
+These evaluations help you understand the total costs of each option so that you can weigh them against each other. The total cost might not be the sole deciding factor. But if options have significant differences, choose the lower-cost option to speed up your workload development.
 
 #### &#10003; Invest in your team's skills
 
-Invest in upskilling where team knowledge is currently lacking. Strong cloud skills facilitate good long-term decision making and optimize your daily productivity. Consider training or certifications offered by your cloud provider and other third-parties. Enhancing the productivity of your workload team and other decision-makers will save you time and money by minimizing costly mistakes.
+Invest in upskilling in areas where your team lacks knowledge. Strong cloud skills facilitate good long-term decision-making and optimize your daily productivity. Consider training or certifications that your cloud provider or other partners offer. Enhancing the productivity of your workload team and other decision-makers saves you time and money by minimizing costly mistakes.
 
 
 
@@ -115,17 +116,90 @@ Scaling out is preferred as it's more cost-effective and easier to implement com
 
 Performance testing and metrics should be considered when making the decision to scale to scale out or scale up based on the evaluation.
 
-# [Level 3](#tab/level3)
+# [**Level 3 - Incorporating signals**](#tab/level3)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-### Strategy focus: Prioritize and optimize
+![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating user and stakeholder feedback**
 
-<!-- No more than 5 H4 headings per tab -->
+In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it becomes important to open up your feedback loop to internal and external users and to other stakeholders. As you make further Cost Optimization refinements to your workload, you'll also need to start considering tradeoffs with other pillars, especially Performance Efficiency and Reliability. 
 
-#### Example heading
+Level 3 of the Cost Optimization pillar focuses on making your workload production-ready by incorporating internal and external feedback into your strategy while meeting performance and reliability targets.
 
-<!-- No more than 100 words under each H4 heading. -->
+#### &#10003; Invest in impactful flows and fine-tune others
+
+Reflect on the priorities assigned to you application flows and prioritize development efforts on critical flows, while looking for ways to simplify and reduce the cost of non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
+
+For each flow, eliminate unnecessary elements, choose appropriate performance tiers, adjust scaling settings for variable demand, and fine-tune configurations to align with performance and budget needs. Monitor flows to identify inefficiencies such as idle compute instances, unused data, and low network bandwidth. Use native logging and analysis tools to help aggregate and analyze these metrics for trends.
+
+#### &#10003; Enforce cost guardrails with alerting
+
+Creating spending thresholds and associated alerting is an easy way to enforce cost guardrails, ensuring that the workload stays within budget. Alerts can include the following.
+
+- *Budgets*: Budget alerts allow you to set spending thresholds, monitor costs, and receive notifications to help control expenses and stay informed.
+- *Cost anomalies*: Cost anomaly alerts notify you of unexpected cost variations, allowing you to investigate and address inefficiencies or abnormal spending patterns.
+- *Commitment-based utilization*: Commitment-based plan utilization alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when utilization drops below a desired threshold.
+
+#### &#10003; Develop a strategy to optimize your resource utilization
+ 
+As you build out your nonproduction and production environments, you might inadvertantly deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized an unused resources is a cornerstone element of the continuous improvement practice of maintaining an optimized cloud environment. Consider the following recommended activities:
+
+- Use the right resource types and SKUs for each environment. Research the infrastructure options your cloud platform provides and choose resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are [targeted specifically for proof-of-concept and Dev/Test environments](https://azure.microsoft.com/en-us/pricing/offers/dev-test/) that are significantly less expensive than standard or high performance resources, but cannot be used for production workloads.
+- Configure and enforce policies to limit allowed resource types and SKUs, regions, and users with deployment permissions. Automated policies will help you control changes to your environments, minimizing the risk of unauthorized deployments.
+- Standardize using infrastructure-as-code (IaC) for all environment changes. This practice further enforces your environment change policies and simplifies your operations practices, reducing the risk of human error.
+- Monitor utilization metrics like CPU, memory, and storage to help determine if resources are under-utilized and can be scaled down.
+- Review nonproduction and production environments for unused resources that can safely be shutdown or deleted.
+- Take advantage of tools provided by your cloud platform that help identify resource optimizations. For example, Azure Advisor offers [cost optimization recommendations](/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations) highlighting potential inefficiencies and steps to address them.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Ensure that performance and reliability targets requirements are considered when making adjustments to your resources. Engage with stakeholders when compromises can be made to balance performance, reliability, and costs, or when budget requirements are an obstacle to workload enhancements.
+
+#### &#10003; Optimize licenses and other static costs
+
+As you deploy cloud resources, be strategic in purchasing licenses and other static monthly costs, like server and database licensing, software licensing, and prepurchased reservations. Considerations include:
+
+- Research your options for applying existing licenses to systems that you are migrating into the cloud or for new deployments in the cloud, like [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit). Research any volume licensing or enterprise agreements that your organization already maintains to leverage possible cost savings on cloud resources or software licensing.
+- Use nonproduction and dev/test licensing for applicable systems, like Visual Studio Dev/Test licenses.
+- Prepurchase capacity for cloud resources when practical. Reserving capacity can significantly lower your monthly utilization costs and help keep your costs more consistent month-to-month.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: When purchasing reservations, be sure that it is the most cost-effective model for your use case. For example, if a given resource can be scaled down nightly or seasonally, it might be more cost effective to intelligently scale that resource. Also, be sure that you've identified the right SKU to pre-purchase through baseline testing and capacity planning.
+
+#### &#10003; Refine autoscaling policies
+
+Your initial scaling policies might be based on your internal development feedback loop - adjusting scaling to meet development needs. As your workload evolves, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for simpler workloads with non-critical flows, the unit of scale could simply be based on the number of compute instances of a given SKU that is allocated to the workload. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
+
+#### &#10003; Optimize your data estate
+
+Data is a primary driver of cloud costs and proper data management can help you keep costs consistent and within budget. Strategies for data estate management include:
+
+- Classify and label data to apply appropriate controls and determine the appropriate levels of reliability and performance for different data types and stores.
+- Capture only essential data, compress data for colder storage, delete unneeded data with proper retention policies, deduplicate to eliminate redundant data, and educate users on efficient data storage practices.
+- Optimize backups by using incremental backups, enabling compression, and moving older backups to cold storage.
+- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on your requirements. Continously evaluate your requirements and configuration.
+- Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
+- Use tooling to help optimize queries.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Weigh your backup and replication policies against your recovery targets. Less frequent replication or offloading older backups to cold storage can affect your recovery time, so be mindful about implementing these optimizations.
+
+#### &#10003; Optimize code, software development practices, and feature development strategies
+
+Inefficient code can lead to inefficient system performance, which can mean higher costs for resource utilization. Optimizing your code can help your workload become more efficient, handling more load without needing to scale up your resources. Strategies to optimize code include:
+
+- Analyze runtime data, measure performance with profiling tools, evaluate business logic and user impact, and review language-specific performance recommendations.
+- Optimize by removing unnecessary function calls, minimizing logging, refining loops and conditionals, reducing data processing, minimizing network requests and memory allocations, and assessing cross-cutting implementations.
+- Optimize network paths by:
+   - Minimizing data transfers between components and across geo-distant regions by analyzing and eliminating unnecessary transfers. Ensure only the required data fields are sent, not entire objects or data structures, to reduce the size and frequency of data transfers.
+   - Avoiding transfering redundant data by only sending essential information.
+   - Refactoring your code to reduce repeated requests and batch them when possible.
+ 
+Streamlining development practices increases build velocity, saving your workload teams valuable time getting enhancements to production efficiently. Strategies for streamlining development practices include:
+
+- Reduce build times by reviewing build configuration settings and eliminating unnessary steps or processes, parallelizing build tasks, using caching, and employing incremental builds to avoid unnecessary recompilation of unchanged componnents.
+- Use production mocking to optimize testing. Mocking allows developers to focus testing on simulated scenarios that are impractical to reproduce in a production environment.
+- Optimize development planning practices by defining clear objectives and metrics, using monitoring tools to track KPIs, and prioritizing actionable insights.
+- Use AI coding assistance tools, like Github Copilot, to reduce development time when practical.
+
+Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate internal and external user and stakeholder feedback to determine which features will have the highest impact on user satisfaction, driving increased utilization. In some cases, features might be developed specifically for optimizing costs. Weigh those against functional priorities to determine their relative value.
+
 
 # [Level 4](#tab/level4)
 
