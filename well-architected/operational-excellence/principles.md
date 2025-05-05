@@ -85,26 +85,6 @@ A crucial aspect of monitoring is application **using health modeling to help yo
 |**Aggregate and visualize data** in dashboards to present monitoring data that's catered to audiences and keeps the business context in mind. <br><br> Use **situational dashboards** for surfacing data to drive awareness among the stakeholders.<br><br> **Use operational dashboards and workbooks** with drill-down capabilities for operator activities like incident response. Frequently refresh the dashboards and provide granular data. | With visualizations, you can analyze trends, track against business targets, and manage incidents.<br><br> Dashboards that are tailored to the interest of the customer make interpretation relevant and accelerate time to detection and action.|
 |**Make alerts actionable** by notifying the accountable roles with standardized descriptions and severity levels. Provide information that's collated from various sources and track deviations from business targets. <br><br> **Trigger alerts only for incidents that require action**. <br><br> **Strive for proactive** and thought-provoking alerts that initiate actions before a degraded state becomes a failure.| Alerts bring attention to significant events as defined by the organization. <br><br>A good alert system identifies actions and severity and provides just enough data to drive clarity and purpose. **Operators can start on remediation without delay**. |
 
-## Deploy with confidence
-
-|![Goal icon](../_images/goal.svg) Reach the desired state of deployment with predictability.|
-|--|
-
-Build a workload supply chain that enables you to consistently reach the goal of predictability in all of your environments, across the workload's hosting platforms, applications, data, and configuration resources. **The deployment mechanism must be capable of automation, testing, monitoring, and versioning**. It should be modularized and ready to execute on demand. It shouldn't be represented as a monolithic end-to-end process. The supply chain isn't necessarily for faster execution, but to achieve consistency and self-documentation over multiple iterations.
-
-The workload team is accountable for the supply chain as it relates to their own workload.
-
-|Approach  |Benefits  |
-|---------|---------|
-|**Use Infrastructure as Code (IaC)** to define the repeatable aspects of the supply chain that are production ready. <br><br> Prefer declarative approaches over imperative methods.       | Declarative IaC technologies are designed with automation and reusability in mind. You can offload infrastructure deployments from individuals into tooling and achieve consistent quality. <br><br> From an infrastructure perspective, having fewer technology choices removes variance in tooling and makes configuration drift easy to detect. Maintenance will also be easier. If you align choices with the team's existing skill set, the team can easily adopt them. |
-|**Prepare the team to use the chosen IaC technology**. Learn about its extensibility model, capabilities, and limitations. <br><br> Take advantage of specialization within the team and shared knowledge within the organization.| Upskilling increases productivity and fosters an environment of collaboration through shared learning.<br><br> You can fill gaps with training instead of hiring.   |
-|**Follow software recommendations** for IaC development and maintenance. <br><br>Modularize in moderation. Avoid custom or low-value abstractions. <br><br>  Follow a layered approach to reflect different lifecycles. Form foundational layers where the lower layers stay constant and the upper layers change as needed.<br><br> Deployment artifacts, such as application binaries, IaC templates, and parameters, are part of the attack surface. Apply assurances, such as secret management, access control, and other principles of the Security pillar. | Artifacts experience the same level of engineering rigor as application code. Quality controls through peer reviews and testing give you confidence in deployment.<br><br> A layered approach makes maintenance easier and creates boundaries that establish clear lines of responsibility.<br><br>Adding security controls to artifacts helps harden the system during the deployment process. |
-|Develop a **common deployment** manifest that's used across all environments. Use that manifest as the default mechanism for greenfield projects, incremental workload updates, or disaster recovery.        | Remove the overhead of maintaining multiple assets. <br><br> If there's a disaster, recovery will be quick and reliable because you can deploy a tried and tested manifest instead of creating an improvised environment.|
-|Strive for **immutable and ephemeral infrastructure** that's deployed through IaC automation.   | Prohibit configuration drift and make the deployment idempotent. <br><br> This kind of infrastructure removes significant operational burdens, such as patching. It also benefits core validation scenarios, such as blue-green infrastructure deployments.|
-
-> [!NOTE]
-> Reduce the scope of portal usage to only non-repeating investigatory tasks.
-
 ## Automate for efficiency
 
 |![Goal icon](../_images/goal.svg) **Replace repetitive manual tasks with software automation** that completes them quicker, with greater consistency and accuracy, and reduces risks.|
@@ -124,24 +104,6 @@ Through automation, you save time, effort, and money, and you avoid mistakes.
 
 ## Adopt safe deployment practices
 
-|![Goal icon](../_images/goal.svg) Implement guardrails in the deployment process to minimize the effect of errors or unexpected conditions.|
-|--|
-
-During the development cycle, workload artifacts go through many changes as they get implemented and tested and as bugs are fixed.
-
-The deployment process must follow a standard operating procedure. **Any change must be deployed with the same level of rigor**. This principle applies equally to code, configuration, and all related artifacts. The key is to apply safe practices as early as possible so that you have predictability in production. Even if errors reach the customers, you should be able to roll out recovery changes as soon as possible.
-
-|Approach  |Benefits  |
-|---------|---------|
-|**Standardize the process to deploy any change by using automated deployment processes, such as pipelines**. <br><br> All environments must use pipelines. <br><br> Classify assets and versions per environment to make them **easily** traceable and identifiable.        | **Consistent deployment methods reduce** issues caused by process errors and variance and allow you to focus your effort on the workload concerns. <br><br>Standardization ensures that the deployment is completed safely, reliably, and with repeatability. <br><br> Classification makes it easy to view logs of previous deployments and issues that have occurred. You might be able to use that information to expedite rollback and roll-forward operations.|
-|Deploy **small incremental updates** at a regular cadence. | Frequent, well-tested, small updates make **validation of the release easier**. <br><br>Troubleshoot faster with **minimal customer impact** due to a smaller footprint. |
-|**Test updates rigorously by using different mechanisms** throughout the development lifecycle.    | **Catch issues in the early** stages of development. Iterative fixes and consistent deployment practices cause issues to taper off by the time the update is ready for production.|
-|**Roll out updates gradually, with due diligence**. <br><br>  Use deployment models that give you the control to **progressively increase the number of instances and customers** until the update is safely adopted by all.       | Test each update in a controlled manner so that issues are fixed early in production. Avoid rolling out a faulty update that impacts your entire customer base.<br><br> Test whether the update is backward and forward compatible.       |
-| Have a mitigation strategy to quickly **recover from deployment failures**.  <br><br> The strategy should cover decision making on **rolling back or forward** based on the criticality of the issue.<br><br> Have **well-defined processes and automated systems** that can rapidly roll out fixes by using the standard deployment pipelines.| Reduce the duration of potential impact.<br><br> Restore the system back to the previous working version or roll forward to a version that has fixes that have been thoroughly tested. |
-| Have a fallback plan **that resets the system** to a working state in case of emergency and to recover from unexpected failures. Use this strategy only when necessary and with approval. <br><br>Strive to improve the plan over time. | You can fast-track high-priority fixes, such as security remediation.  <br><br>  The accelerated pipeline might not have all the checks of your standard operating procedures, but you'll get customers to a safe version in the fastest way possible, which outweighs lower-impact faults. |
-
-## Adopt safe deployment practices
-
 |![Goal icon](../_images/goal.svg) Achieve consistency in deployments by using guardrails that reduce the effect of errors and unexpected conditions.|
 |--|
 
@@ -151,21 +113,12 @@ All changes, whether code, configuration, or artifacts, must be deployed with th
 
 |Approach  |Benefits  |
 |---------|---------|
-|**Use Infrastructure as Code (IaC)** to define the repeatable aspects of the supply chain that are production ready. <br><br> Learn about the IaC technology extensibility model, capabilities, and limitations.        | Declarative IaC technologies are designed with automation and reusability in mind. You can offload infrastructure deployments from individuals into tooling and achieve consistent quality. <br><br> From an infrastructure perspective, having fewer technology choices removes variance in tooling and makes configuration drift easy to detect. Maintenance will also be easier. If you align choices with the team's existing skill set, the team can easily adopt them. |
-|**Follow a layered approach to reflect different lifecycles**. Form foundational layers where the lower layers stay constant and the upper layers change as needed.| Artifacts experience the same level of engineering rigor as application code. Quality controls through peer reviews and testing give you confidence in deployment.<br><br> A layered approach makes maintenance easier and creates boundaries that establish clear lines of responsibility. |
-|Develop a **common deployment** manifest that's used across all environments. Use that manifest as the default mechanism for greenfield projects, incremental workload updates, or disaster recovery.        | Remove the overhead of maintaining multiple assets. <br><br> If there's a disaster, recovery will be quick and reliable because you can deploy a tried and tested manifest instead of creating an improvised environment.|
-|Strive for **immutable and ephemeral infrastructure**.   | Prohibit configuration drift and make the deployment idempotent. <br><br> This kind of infrastructure removes significant operational burdens, such as patching. It also benefits core validation scenarios, such as blue-green infrastructure deployments.|
-|||
-|**Standardize the process to deploy any change by using automated deployment processes, such as pipelines**. <br><br> All environments must use pipelines. <br><br> Classify assets and versions per environment to make them **easily** traceable and identifiable.        | **Consistent deployment methods reduce** issues caused by process errors and variance and allow you to focus your effort on the workload concerns. <br><br>Standardization ensures that the deployment is completed safely, reliably, and with repeatability. <br><br> Classification makes it easy to view logs of previous deployments and issues that have occurred. You might be able to use that information to expedite rollback and roll-forward operations.|
-|Deploy **small incremental updates** at a regular cadence. | Frequent, well-tested, small updates make **validation of the release easier**. <br><br>Troubleshoot faster with **minimal customer impact** due to a smaller footprint. |
-|**Test updates rigorously by using different mechanisms** throughout the development lifecycle.    | **Catch issues in the early** stages of development. Iterative fixes and consistent deployment practices cause issues to taper off by the time the update is ready for production.|
-|**Roll out updates gradually, with due diligence**. <br><br>  Use deployment models that give you the control to **progressively increase the number of instances and customers** until the update is safely adopted by all.       | Test each update in a controlled manner so that issues are fixed early in production. Avoid rolling out a faulty update that impacts your entire customer base.<br><br> Test whether the update is backward and forward compatible.       |
-| Have a mitigation strategy to quickly **recover from deployment failures**.  <br><br> The strategy should cover decision making on **rolling back or forward** based on the criticality of the issue.<br><br> Have **well-defined processes and automated systems** that can rapidly roll out fixes by using the standard deployment pipelines.| Reduce the duration of potential impact.<br><br> Restore the system back to the previous working version or roll forward to a version that has fixes that have been thoroughly tested. |
-| Have a fallback plan **that resets the system** to a working state in case of emergency and to recover from unexpected failures. Use this strategy only when necessary and with approval. <br><br>Strive to improve the plan over time. | You can fast-track high-priority fixes, such as security remediation.  <br><br>  The accelerated pipeline might not have all the checks of your standard operating procedures, but you'll get customers to a safe version in the fastest way possible, which outweighs lower-impact faults. |
-
-
-> [!NOTE]
-> Reduce the scope of portal usage to only non-repeating investigatory tasks.
+|**Use Infrastructure as Code (IaC)** to define infrastructure using a modular and layered approach.  <br><br>Avoid unnecessary abstractions and align layers with lifecycle needs, keeping foundational layers stable.|IaC enables automation and consistency, simplifying infrastructure, reducing maintenance, and helping detect configuration drift. |
+|**Prefer small, incremental updates** deployed frequently. | Frequent, well-tested updates simplify validation, speed up troubleshooting, and reduce risk due to smaller change footprints. |
+|Deploy each change by using **automated pipelines** across all environments. | Consistent deployment methods reduce* errors and variance making deployments reliable and repeatable.|
+|**Test updates rigorously** throughout the development lifecycle.    | Early testing catches issues sooner, allowing for iterative fixes and reducing problems by the time the update is ready for production.|
+|**Roll out new features** using deployment patterns that allow for progressive exposure and gradual adoption by users. <br><br> Test for backward and forward compatibility.      | Controlled updates reduce the risk of widespread impact, and compatibility testing ensures stability and confidence in releases..      |
+| Be ready with compensating actions to **recover from faulty deployments**.  <br><br> Use  **automation backed by testing** to roll out fixes. <br><br> For emergency updates, have an expedited process that's pre-approved by stakeholders.| Having a mitigation plan in place will reduce the duration of potential impact.<br><br> You can quickly deploy urgent fixes, like security patches, to get users a safe version faster. |
 
 
 ## Next steps
