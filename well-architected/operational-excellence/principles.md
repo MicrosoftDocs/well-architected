@@ -114,11 +114,11 @@ All changes, whether code, configuration, or artifacts, must be deployed with th
 |Approach  |Benefits  |
 |---------|---------|
 |**Use Infrastructure as Code (IaC)** to define infrastructure using a modular and layered approach.  <br><br>Avoid unnecessary abstractions and align layers with lifecycle needs, keeping foundational layers stable.|IaC enables automation and consistency, simplifying infrastructure, reducing maintenance, and helping detect configuration drift. |
-|**Prefer small, incremental updates** deployed frequently. | Frequent, well-tested updates simplify validation, speed up troubleshooting, and reduce risk due to smaller change footprints. |
-|Deploy each change by using **automated pipelines** across all environments. | Consistent deployment methods reduce* errors and variance making deployments reliable and repeatable.|
-|**Test updates rigorously** throughout the development lifecycle.    | Early testing catches issues sooner, allowing for iterative fixes and reducing problems by the time the update is ready for production.|
-|**Roll out new features** using deployment patterns that allow for progressive exposure and gradual adoption by users. <br><br> Test for backward and forward compatibility.      | Controlled updates reduce the risk of widespread impact, and compatibility testing ensures stability and confidence in releases..      |
-| Be ready with compensating actions to **recover from faulty deployments**.  <br><br> Use  **automation backed by testing** to roll out fixes. <br><br> For emergency updates, have an expedited process that's pre-approved by stakeholders.| Having a mitigation plan in place will reduce the duration of potential impact.<br><br> You can quickly deploy urgent fixes, like security patches, to get users a safe version faster. |
+|**Prefer small, incremental updates** that are deployed frequently. | Smaller updates simplify validation, speed up troubleshooting, and reduce the potential blast radius. |
+|Deploy each change by using **automated pipelines** across all environments. | Consistent deployment methods reduce errors and variance making deployments reliable and repeatable.|
+|**Test updates rigorously** throughout the development lifecycle.    | Early testing catches issues sooner, allows for iterative fixes and reduces problems by the time the update is ready for production.|
+|**Roll out new features** using deployment patterns that allow for progressive exposure and gradual adoption by users. <br><br> Test for backward and forward compatibility.      | Controlled updates reduce the risk of widespread impact, and compatibility testing ensures stability and confidence in releases.      |
+| Be ready with compensating actions to **recover from faulty deployments**.  <br><br> Use  **automation backed by testing** to roll out fixes. <br><br> For emergency updates, have an expedited process that's pre-approved by stakeholders.| Having a mitigation plan  reduces the duration of potential impact.<br><br> You can quickly deploy urgent fixes, like security patches, to get users a safe version faster. |
 
 
 ## Next steps
