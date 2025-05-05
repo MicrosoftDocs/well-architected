@@ -59,25 +59,63 @@ For the previous examples, your scaling strategies could be:
 
 - **Dynamic, irregular, and unpredictable**: You have autoscale thresholds defined to account for unplanned traffic spikes.
 
-### Automate scaling strategies
+### Choose appropriate scale units
 
-When designing your scaling automation, be sure to account for these issues:
+Base your scaling strategy on scale units, which are the logical grouping of components to scale together and the scale increments to use (like moving from one VM SKU to another). Options to consider are:
 
-- **That all components of your workload should be candidates for scaling implementation**. In most cases, global services like [Microsoft Entra ID](/azure/active-directory/fundamentals/whatis) scale automatically and transparently to you and your customers. Be sure to understand the scaling capabilities of your networking ingress and egress controllers and your load balancing solution.
+- **Scaling resources individually**: You might need to only scale individual VMs or databases.
 
-- **Those components that can't be scaled out**. An example would be large, relational databases that don't have sharding enabled and can't be refactored without significant impact. Document the resource limits published by your cloud provider and monitor those resources closely. Include those specific resources in your future planning for migrating to scalable services.
+- **Scaling a full component at the same time:** For example, you might have a microservice API that is composed of an App Service, database, and queues that need to scale simultaneously.
 
-- **The time it takes to perform the scaling operation so that you properly schedule the operation to happen before the extra load hits your infrastructure**. For example, if a component like API Management takes 45 minutes to scale, adjusting the scaling threshold to 65% instead of 90% might help you scale earlier and prepare for the anticipated increase in load.
+- **Scaling the full solution**: For complex or mission critical workloads, scaling the entire solution as a [deployment stamp](/azure/architecture/patterns/deployment-stamp) can simplify your scaling strategy. Rather than managing the scaling schedules and autoscaling thresholds of many distinct resources, you can apply a limited set of scaling definitions to a deployment stamp and then mirror that across stamps as needed.
 
-- **The relationship of the flow’s components in terms of order of scale operations**. Ensure that you don’t inadvertently overload a downstream component by scaling an upstream component first.
+> [!IMPORTANT]
+> Set a maximum limit on the number of scale units that can be automatically allocated to avoid excess costs. 
 
-- **Any stateful application elements that might be interrupted by a scaling operation and any session affinity (or session stickiness) that's implemented**. Stickiness can limit your scaling ability and introduces single points of failure.
+### Automate scaling 
 
-- **Potential bottlenecks**. Scaling out doesn't fix every performance issue. For example, if your backend database is the bottleneck, it doesn't help to add more web servers. Identify and resolve the bottlenecks in the system first before just adding more instances. Stateful parts of the system are the most likely cause of bottlenecks.
+Automate the scaling operations for your workload components to extent practical. When using resources that have configurable autoscaling functionality, build the configuration logic into your infrastructure-as-code (IaC) deployment code. When using resources that don't have offer autoscaling out-of-the-box, build automation to perform scaling operations using native automation tooling and include the automation code in your IaC code.
 
-Following the [deployment stamp](/azure/architecture/patterns/deployment-stamp) design pattern helps with your overall infrastructure management. Basing your scaling design on stamps as units of scale is also beneficial. And it helps you tightly control your scaling operations across multiple workloads and subsets of workloads. Rather than managing the scaling schedules and autoscaling thresholds of many distinct resources, you can apply a limited set of scaling definitions to a deployment stamp and then mirror that across stamps as needed.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Scaling up has cost implications, so optimize your strategy to scale down as soon as possible to help keep costs under control. Ensure that the automation you're employing to scale up also has triggers to scale down.
+### Choose the right technology
+
+Making well-informed technology choices with scaling in mind will help you ensure that your workload can meet your reliability targets as your workload evolves. Research the scaling abilities offered for different resources that offer similar functionality and choose the best combination for your future growth plans. For example, you might have several options for data stores that can host the particular kind of databases you'll use. However, one choice might have better scaling functionality out-of-the box than others, which could make it a better choice for your workload.
+
+- **Take advantage of services that automatically scale.** When practical, use SaaS services that automatically scale without any configuration or input. Global services like [Microsoft Entra ID](/azure/active-directory/fundamentals/whatis) offer this functionality. [Serverless solutions](https://azure.microsoft.com/en-us/solutions/serverless/) also offer automatic scaling and can be good choices for many use cases.
+
+- **Take advantage of services that offer out-of-the-box scaling.** Many PaaS services offer integrated, easy-to-use scaling features that you can configure to meet your reliability requirements. For example, you can configure [throughput scaling for Cosmos DB](/azure/cosmos-db/provision-throughput-autoscale) to meet your particular requirements.
+
+### Optimize the scale unit initialization time
+
+When designing your scaling strategy, keep in mind that different services scale at different timescales. There are some services that scale near-instantaneously and others that scale much slower. For example, API Management instances can take up to 45 minutes to finish thier scaling operations. To account for the scaling operation's timescale, properly plan to perform the scaling operation before the expected increased load hits your workload. Other recommendations to consider include:
+
+- Pre-initialize nodes that will be deployed to reduce the time required for initialization.
+
+- Allow for a buffer time around configuration changes before you make further changes or use the system in an uncommon way. For example, you might deallocate an App Gateway backend instance via a rule change. You'll need to wait for connections to drain from that instance before it can be safely removed.
+
+- Over-provision resources to handle increased load while scaling takes place. You might ensure that VMs normally run at 75% utilization capacity to ensure that they can handle increased load while horizontal scaling takes place.
+
+- Fine-tune your scaling thresholds with monitoring. Use your capcity monitoring to ensure that your scaling thresholds to trigger scaling operations.
+
+### Scale data stores using sharding and partitioning
+
+Optimize the reliability of your data estate by including it in your scaling strategy. Partitioning data spreads a database across logical or physical storage resources, removing single points of failure. Choose the best partitioning strategy for your use case.
+
+- **Horizontal partitioning (sharding)**: Partitions (shards) are placed in separate data stores, but all partitions have the same schema. Each shard holds a subset of the database. This is a good approach to optimizae reliability as it helps facilitate load balancing and miniizes the burden on operations when dealing with issues. Shards can be replicated for higher reliability.
+
+- **Vertical partitioning**: Each partition holds a subset of the fields for items in the data store. The fields are divided according to their usage pattern.
+
+- **Functional partitioning**: Data is aggregated according to how each bounded context in the system uses the data. 
+
+Consider combining these strategies when you design a partitioning scheme. For example, you might divide data into shards and then use vertical partitioning to further subdivide the data in each shard.
+
+**Optimize your partition strategy for scalability**. Analyze data access patterns to determine which operations require the most processing resources and balance your partitions to ensure that each one has enough resources to handle scalability requirements.
+
+For detailed guidance on partitioning and sharding, see the [design guide](../design-guides/partition-data.md)
+
+### Monitor your scaling operations
+
+The autoscaling mechanism should monitor the autoscaling process and log the details of each autoscaling event (what triggered it, what resources were added or removed, and when). If you create a custom autoscaling mechanism, ensure that it incorporates this capability. Proactively analyze the information to help measure the effectiveness of the autoscaling strategy, and tune it if necessary.
 
 ## Azure facilitation
 
@@ -89,15 +127,26 @@ Many Azure services offer APIs that you can use to design custom automatic scali
 
 ## Tradeoffs
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Scaling up has cost implications, so optimize your strategy to scale down as soon as possible to help keep costs under control. Ensure that the automation you're employing to scale up also has triggers to scale down.
 
 
-### Autoscaling considerations
+### Considerations
 
-Autoscaling isn't an instant solution. Simply adding resources to a system or running more instances of a process doesn't guarantee that the performance of the system will improve. Consider the following points when designing an autoscaling strategy:
+When designing your scaling strategy, be sure to account for these issues:
+
+- **Those components that can't be scaled out**. An example would be large, relational databases that don't have sharding enabled and can't be refactored without significant impact. Document the resource limits published by your cloud provider and monitor those resources closely. Include those specific resources in your future planning for migrating to scalable services.
+
+- **The relationship of the flow’s components in terms of order of scale operations**. Ensure that you don’t inadvertently overload a downstream component by scaling an upstream component first.
+
+- **Any stateful application elements that might be interrupted by a scaling operation and any session affinity (or session stickiness) that's implemented**. Stickiness can limit your scaling ability and introduces single points of failure. Design your workload to be stateless to the extent practical.
+
+- **Potential bottlenecks**. Scaling out doesn't fix every performance issue. For example, if your backend database is the bottleneck, it doesn't help to add more web servers. Identify and resolve the bottlenecks in the system first before just adding more instances. Stateful parts of the system are the most likely cause of bottlenecks.
+
+- **Handling long-running tasks**.  Design a long-running task to support both scaling out and scaling in. Without due care, such a task could prevent an instance of a process from being shut down cleanly when the system scales in. Or, it could lose data if the process forcibly terminates. Ideally, refactor a long-running task and break up the processing that it performs into smaller, discrete chunks. The [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters) provides an example of how you can achieve this solution.
+
+
 
 The system must be designed to be horizontally scalable. Avoid making assumptions about instance affinity. Don't design solutions that require that the code is always running in a specific instance of a process. When scaling a cloud service or website horizontally, don't assume that a series of requests from the same source are always routed to the same instance. For the same reason, design services to be stateless to avoid requiring a series of requests from an application to always be routed to the same instance of a service. When designing a service that reads messages from a queue and processes them, don't make any assumptions about which instance of the service handles a specific message. Autoscaling could start more instances of a service as the queue length grows. The [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers) describes how to handle this scenario.
-
-If the solution implements a long-running task, design this task to support both scaling out and scaling in. Without due care, such a task could prevent an instance of a process from being shut down cleanly when the system scales in. Or, it could lose data if the process forcibly terminates. Ideally, refactor a long-running task and break up the processing that it performs into smaller, discrete chunks. The [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters) provides an example of how you can achieve this solution.
 
 Alternatively, you can implement a checkpoint mechanism that records state information about the task at regular intervals. You can then save this state in durable storage that can be accessed by any instance of the process running the task. In this way, if the process is shut down, the work that it was performing can be resumed from the last checkpoint by another instance. There are libraries that provide this functionality, such as NServiceBus and MassTransit. They transparently persist state, where the intervals are aligned with the processing of messages from queues in [Azure Service Bus](/azure/service-bus-messaging/compare-messaging-services#azure-service-bus).
 
@@ -113,13 +162,13 @@ To use critical time in autoscaling decisions, it's helpful to have a library au
 
 If you base your autoscaling strategy on counters that measure business processes, such as the number of orders placed per hour or the average running time of a complex transaction, ensure that you fully understand the relationship between the results from these types of counters and the actual compute capacity requirements. It might be necessary to scale more than one component or compute unit in response to changes in business process counters.
 
-To prevent a system from attempting to scale out excessively, and to avoid the costs associated with running many thousands of instances, consider limiting the maximum number of instances that are automatically added. Most autoscaling mechanisms let you specify the minimum and maximum number of instances for a rule. In addition, consider gracefully degrading the functionality that the system provides if the maximum number of instances have been deployed and the system is still overloaded.
+
 
 Keep in mind that autoscaling might not be the most appropriate mechanism to handle a sudden burst in a workload. It takes time to provision and start new instances of a service or add resources to a system, and the peak demand might pass by the time these extra resources are available. In this scenario, it might be better to throttle the service. For more information, see the [Throttling pattern](/azure/architecture/patterns/throttling).
 
 Conversely, if you need the capacity to process all requests when the volume fluctuates rapidly, and cost isn't a major contributing factor, consider using an aggressive autoscaling strategy that starts more instances more quickly. You can also use a scheduled policy that starts a sufficient number of instances to meet the maximum load before that load is expected.
 
-The autoscaling mechanism should monitor the autoscaling process and log the details of each autoscaling event (what triggered it, what resources were added or removed, and when). If you create a custom autoscaling mechanism, ensure that it incorporates this capability. Analyze the information to help measure the effectiveness of the autoscaling strategy, and tune it if necessary. You can tune both in the short term, as the usage patterns become more obvious, and over the long term, as the business expands or the requirements of the application evolve. If an application reaches the upper limit defined for autoscaling, the mechanism might also alert an operator who could manually start more resources if necessary. Under these circumstances, the operator might also be responsible for manually removing these resources after the workload eases.
+
 
 ## Example
 
