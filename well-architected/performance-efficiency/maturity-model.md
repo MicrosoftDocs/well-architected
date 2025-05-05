@@ -57,7 +57,7 @@ Based on the answers to these questions, you can [choose the best data service](
 
 **Because of the wide variety of options for data services in cloud environments, you can tailor your design to use different services to best match the functionality of each component in your workload. This approach helps you optimize the performance of each component.**
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Don't over-engineer your data components by choosing different data services for components that could be consolidated into a single data store. Aim to find a balance between performance versus cost and complexity.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Don't overengineer your data components by choosing different data services for components that you can consolidate into a single data store. Strike a balance between performance versus cost and complexity.
 
 # [**Level 2: Baseline performance measurements**](#tab/level2)
 
