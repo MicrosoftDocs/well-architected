@@ -95,7 +95,7 @@ Capacity planning is an iterative process that should be conducted regularly thr
 
 #### &#10003; Investigate design patterns to support performance efficiency
 
-There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or developing a sharding strategy. For a comprehensive list of patterns that might help you enhance your workload, [Cloud design patterns](./design-patterns.md).
+There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or developing a sharding strategy. For a comprehensive list of patterns that might help you enhance your workload, see [Cloud design patterns](./design-patterns.md).
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Some design patterns might add a degree of complexity to your workload. Compare the extra management burden against your efficiency gains to determine whether a specific pattern is worth implementing.
 
