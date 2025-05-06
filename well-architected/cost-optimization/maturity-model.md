@@ -70,19 +70,19 @@ Invest in upskilling in areas where your team lacks knowledge. Strong cloud skil
 
 ![Goal icon](../_images/goal.svg) **Ensure visibility into spending patterns through systematic analysis and establish team accountability for regular cost data reviews.**
 
-After the initial deployment, it's common to focus on developing new features and sales and to neglect cost management. At Level 2, spending is expected to increase, so you need to take a disciplined approach. Assess the costs of tools and technologies, build a baseline, and identify main cost drivers.
+After the initial deployment, it's common to focus on developing new features and driving sales while overlooking cost management. At Level 2, spending is expected to increase, so you need to take a structured approach. Assess the costs of tools and technologies, build a baseline, and identify key cost drivers.
 
 Cost management might seem overwhelming, but systematic cost analysis at an early stage is necessary to maintain financial control and support growth.
 
 #### &#10003; Develop a baseline cost model
 
-A _cost model_ is an estimate of the overall cost of a workload. The cost is broken down by contributing factors, such as platform services, data storage, user and system flows, and operations. At minimum, you should conduct a systematic cost analysis and create a basic [cost model](./cost-model.md). This exercise helps you make informed decisions about resource allocation and optimization.
+A *cost model* is an estimate of the overall cost of a workload. The cost is broken down by contributing factors, such as platform services, data storage, user and system flows, and operations. At a minimum, you should conduct a systematic cost analysis and create a basic [cost model](./cost-model.md). This exercise helps you make informed decisions about resource allocation and optimization.
 
-- Create an inventory of all Azure resources and specify which aspects of each resource lead to higher costs.
+- Create an inventory of all Azure resources and specify which aspects of each resource result in higher costs.
 
 - Ask questions about the technology choices and their alignment with goals like scalability and reliability within the cost constraints. For each resource, note the cost and determine whether the cost is too high or too low. Measure against expected loads while you keep in mind potential growth.
 
-- Note the cost of flows and distinguish between critical and noncritical flows. Critical flows, such as user experience in an e-commerce application, should be prioritized over noncritical flows, like background jobs for audit purposes.
+- Note the cost of flows and distinguish between critical and noncritical flows. Prioritize critical flows, such as user experience in an e-commerce application, over noncritical flows, like background jobs for audit purposes.
 
 - Calculate the cost of data storage and data access patterns.
 
@@ -90,7 +90,7 @@ A _cost model_ is an estimate of the overall cost of a workload. The cost is bro
 
 Build basic cost reports for financial visibility and analyze cost patterns. Also, set up cost alerts for when you exceed a specific amount of spending.
 
-We recommend that you use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a report monthly.
+We recommend that you use [Microsoft Cost Management](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a monthly report.
 
 #### &#10003; Set up accountability
 
@@ -100,11 +100,11 @@ Initially, accountability can be flexible. As the startup matures, enforce stric
 
 #### &#10003; Evaluate optimization opportunities
 
-Your cost model should give you a good understanding of the main cost drivers, and the cost reports should provide evidence. Evaluate those drivers and explore opportunities to optimize. Consider the following strategies:
+Your cost model should give you a good understanding of the key cost drivers, and the cost reports should provide evidence. Evaluate those drivers and explore opportunities to optimize. Consider the following strategies:
 
 - Evaluate the billing model for each Azure resource that the workload uses. Determine whether you need all of the features that each plan bundles. For instance, if you require specific features like a private endpoint with Azure Front Door, you might need the premium plan. Otherwise, consider choosing a lower plan to save costs.
 
-- Choose between consumption-based billing and commitment-based billing. We recommend that you start with consumption-based billing so you can understand the incurred costs. If the load is consistent, you can explore discounts that Azure provides for consistent loads at later stages.
+- Choose between consumption-based billing and commitment-based billing. We recommend that you start with consumption-based billing so that you can understand the incurred costs. If the load is consistent, you can explore discounts that Azure provides for consistent loads at later stages.
 
 - Evaluate coding practices. Use code instrumentation to identify processes that are expensive to run and provide insight into performance problems, which can incur unnecessary costs. Collect metrics like process duration and failure rates to make data-driven decisions for future optimization.
 
