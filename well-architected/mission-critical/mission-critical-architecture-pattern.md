@@ -3,7 +3,7 @@ title: Architecture pattern for mission-critical workloads on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
 ms.author: prwilk
-ms.date: 12/15/2022
+ms.date: 05/06/2025
 ms.topic: conceptual
 ---
 
@@ -22,9 +22,9 @@ We recommend that you evaluate [**the key design areas**](/azure/well-architecte
 |Scale limits|What is the expected throughput for that resource? How much scale is provided by the resource to fit that demand? |
 |Availability/disaster recovery|What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?|
 
-> [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
->
+Based on the preceding characteristics, classify and identify mission-critical resources. That activity can help track resource utilization and associated costs, while helping you focus optimization efforts where they matter most. We recommend that you _tag groups of resources deemed critical to your business_. Keep in mind that some of these resources may be shared across multiple workloads.
+ 
+For information on Microsoft-recommended tags, see [Label mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
 
 ## Core architecture pattern
 
