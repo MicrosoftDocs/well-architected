@@ -109,7 +109,7 @@ Through automation, you save time, effort, and money, and you avoid mistakes.
 
 Build an automated and modular workload supply chain to ensure consistent, predictable, and repeatable deployments across all environments. Applying safe practices early ensures confidence in production and enables quick recovery if issues reach customers.
 
-All changes, whether code, configuration, or artifacts, must be deployed with the same level of rigor. Testing, monitoring, and versioning are common practices to achieve consistency and may require multiple iterations.
+All changes, whether code, configuration, or artifacts, must be deployed with the same level of rigor. Testing, monitoring, and versioning are common practices to achieve consistency.
 
 |Approach  |Benefits  |
 |---------|---------|
