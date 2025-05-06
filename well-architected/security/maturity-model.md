@@ -91,7 +91,7 @@ In this phase, focus on building your deployment automation to optimize efficien
 
 #### &#10003; Develop a maintenance plan
 
-In the context of security, a maintenance plan refers to standard practices that you adopt to maintain the security of your code and workload components throughout their lifecycles. Build mechanisms and processes to handle emergency fixes in your deployment pipeline. For example, you might accelerate deployments through quality gates by using direct communication between teams and developing expedited roll-back and roll-forward plans.
+In the context of security, a maintenance plan refers to standard practices that you adopt to maintain the security of your code and workload components throughout their life cycles. Build mechanisms and processes to handle emergency fixes in your deployment pipeline. For example, you might accelerate deployments through quality gates by using direct communication between teams and developing expedited roll-back and roll-forward plans.
 
 Include software, libraries, and infrastructure patching in your standard processes to ensure that all components of your workload are always up to date. Keep a catalog of versioned assets to help during incident response, problem resolution, and system recovery. You can also use automation to compare these versions with known vulnerabilities in the Common Vulnerabilities and Exposures program.
 
