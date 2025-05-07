@@ -4,7 +4,7 @@ description: Design considerations and recommendations for each pillar as relate
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 11/14/2023
+ms.date: 05/07/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
@@ -16,35 +16,45 @@ azure.category:
 
 # Architecture best practices for Azure Database for PostgreSQL
 
-This article provides architectural best practices for Azure Database for PostgreSQL.
-
-The guidance is based on the five pillars of architectural excellence:
-
-- Reliability
-- Security
-- Cost optimization
-- Operational excellence
-- Performance efficiency
-
-## Prerequisites
-
-Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend you review your workload using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
-
 [Azure Database for PostgreSQL](/azure/PostgreSQL/overview) is a relational database service in Azure based on the PostgreSQL open-source relational database. It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. Azure Database for PostgreSQL is built on the community edition of the PostgreSQL database engine. It's compatible with the PostgreSQL server community edition and supports PostgreSQL extension features such as PostGIS and TimescaleDB.
+
+This article assumes that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chose Azure Database for PostgreSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
+
+> [!IMPORTANT]
+>
+>**How to use this guide**
+>
+>Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
+>
+>Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Database for PostgreSQL and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+>
+>Foundational architecture that demonstrates the key recommendations:
+>[Reliable Web App pattern for Java](/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/java/guidance)
+
+**Technology scope**
+
+This review focuses on the interrelated decisions for the following Azure resources:
+
+- Azure Database for PostgreSQL
+
+
 
 > [!NOTE]  
 > To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
 
 ## Reliability
 
-Azure Database for PostgreSQL - Flexible Server offers [high availability](/azure/reliability/reliability-postgresql-flexible-server) support by provisioning physically separate primary and standby replicas either within the same availability zone (zonal) or across availability zones (zone-redundant). This high availability model ensures that committed data is never lost if a failure happens. The model is also designed so the database doesn't become a single point of failure in your software architecture. Azure Database for PostgreSQL - Flexible Server provides features that protect data and mitigate downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, the flexible server has business continuity features that provide fault protection, address recovery time requirements, and reduce data loss exposure.
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-### Reliability design checklist
+[Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+
+### Design checklist
 
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
 > [!div class="checklist"]
->  
+>
+> - Review the Azure Database for PostgreSQL - Flexible Server [high availability](/azure/reliability/reliability-postgresql-flexible-server) article for information about native high availability support.
 > - Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads.
 > - Select the appropriate high-availability configuration.
 > - Configure geo-redundancy backup.
@@ -52,7 +62,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - Test On-Demand Failover for your HA-enabled server to ensure our application behaves as expected.
 > - Monitor your server to ensure it's healthy and performing as expected.
 
-### Reliability recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -73,9 +83,11 @@ Azure Policy definitions help you enforce specific rules and configurations for 
 
 ## Security
 
-Think about [security](/azure/well-architected/security/) throughout the entire lifecycle of an application, from design and implementation to deployment and operations. The Azure platform protects against various threats like network intrusion and DDoS attacks. You still need to build security into your application and your DevOps processes.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-### Security design checklist
+The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Cosmos DB for NoSQL.
+
+### Design checklist
 
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
@@ -86,7 +98,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - Use Microsoft Entra ID for authentication and authorization to enhance identity management.
 > - Configure row-level security.
 
-### Security recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -97,9 +109,12 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 ## Cost optimization
 
-Cost optimization is about understanding your configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. You should review your workload to identify opportunities to reduce costs.
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-### Cost design checklist
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Cosmos DB for No SQL and its environment.
+
+
+### Design checklist
 
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
@@ -116,7 +131,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - High availability oriented cost description.
 > - Consolidate databases and servers.
 
-### Cost recommendations
+### Recommendations
 
 | Recommendations | Benefits |
 | --- | --- |
@@ -141,11 +156,11 @@ Azure Policy definitions help you enforce specific rules and configurations for 
 
 ## Operational excellence
 
-The principles of operational excellence are a series of considerations that can help achieve superior operational practices.
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-To achieve a higher competency in operations, consider and improve how software is developed, deployed, operated, and maintained.
+The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Operational excellence design checklist
+### Design checklist
 
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
@@ -155,7 +170,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date.
 > - Monitor database health and performance using Azure Monitor and set up alerts for critical metrics.
 
-### Operational excellence recommendations
+### Recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
@@ -171,11 +186,11 @@ Azure Policy definitions help you enforce specific rules and configurations for 
 
 ## Performance efficiency
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users efficiently. We recommend you review the Performance efficiency principles.
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-In the design checklist and list of recommendations below, call-outs indicate whether each choice applies to cluster architecture, workload architecture, or both.
+The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Performance efficiency design checklist
+### Design checklist
 
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
@@ -184,7 +199,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - Design your schema and queries for efficiency to minimize resource consumption.
 > - Implement read replicas to offload read traffic and enhance overall performance.
 
-### Performance efficiency recommendations
+### Recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
