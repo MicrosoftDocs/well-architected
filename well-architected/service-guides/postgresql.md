@@ -89,8 +89,6 @@ The [Security design principles](../security/principles.md) provide a high-level
 
 ### Design checklist
 
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
-
 > [!div class="checklist"]
 >  
 > - SSL and enforce encryption to secure data in transit.
@@ -104,8 +102,11 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | SSL and enforce encryption to secure data in transit. | Deploy the DigiCert Global Root certificate from a trusted Certificate Authority (CA) certificate needed to communicate over SSL with client applications. |
 | Implement network security groups and firewalls to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
+| [Connect to your databases over Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link) | Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. |
 | Use Microsoft Entra ID for authentication and authorization to enhance identity management. | Microsoft Entra ID authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
 | Configure row-level security. | [Row level security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
+| When required for compliance reasons, [use customer managed keys (CMK)](/azure/postgresql/flexible-server/concepts-data-encryption#recommendations) for data encryption, and store your keys in Azure Key Vault. | CMK allows you full control of your encryption key's life cycle, including rotation of the key, to align with corporate policies. Storing your keys in Azure Key Vault allows you to centrally manage and organize all your encryption keys in your own instances of Azure Key Vault. |
+| Enable connection throttling for IPs with too many failed login attempts. | Setting the connection_throttling server parameter to enabled protects your databases from malicious login attempts and potential Distributed Denial of Service (DDoS) attacks by throttling connections from IP addresses that have repeated failed logins. |
 
 ## Cost optimization
 
@@ -148,12 +149,6 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | High availability oriented cost description. | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
 | Consolidate databases and servers. | You can consolidate multiple databases and servers into a single server to reduce costs. |
 
-### Azure policy definitions
-
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure cost optimization for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for cost optimization:
-
-- [Optimize costs](/azure/postgresql/flexible-server/how-to-cost-optimization)
-
 ## Operational excellence
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
@@ -178,11 +173,8 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date. | Azure Database for PostgreSQL provides automated patching and updates for your database. You can configure the maintenance window for your server to minimize the impact on your workload. |
 | Monitor database health and performance using Azure Monitor and set up alerts for critical metrics. | Azure Database for PostgreSQL provides built-in monitoring and alerting capabilities. You can monitor the health and performance of your database using Azure Monitor. You can also set up alerts for critical metrics to get notified when your database isn't performing as expected. |
 
-### Operational excellence policy definitions
 
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure Operational excellence for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for Operational excellence:
 
-- [Azure Policy Regulatory Compliance controls for Azure Database for PostgreSQL](/azure/postgresql/single-server/security-controls-policy)
 
 ## Performance efficiency
 
@@ -210,9 +202,22 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure Performance efficiency for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for Performance efficiency:
 
-## Extra resources
+## Azure policies
 
-Consider more resources related to Azure Database for PostgreSQL.
+Azure provides an extensive set of built-in policies related to Azure Database for PostgreSQL and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+
+- [Geo-redundant backup is enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee2f9fd-3968-44be-a863-bd62c9884423)
+
+- [Connection throttling is enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdacf07fa-0eea-4486-80bc-b93fae88ac40)
+
+- [SSL connections are enforced](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc29c38cb-74a7-4505-9a06-e588ab86620a)
+
+- [Data at rest is encryted with CMK](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12c74c95-0efd-48da-b8d9-2a7d68470c92)
+
+- [Private endpoints are enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5375a5bb-22c6-46d7-8a43-83417cfb4460)
+
+## Related resources
+
 
 ### Azure Architecture Center Guidance
 
