@@ -271,7 +271,7 @@ Azure provides an extensive set of built-in policies related to Azure Cosmos DB 
 - Public network access is disabled so that your Azure Cosmos DB account isn't exposed on the public internet.
 - The maximum throughput should be restricted when you create Azure Cosmos DB databases and containers through the resource provider.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Azure Cosmos DB for NoSQL](/azure/cosmos-db/security-controls-policy) and other policies that might affect the security of the [data storage].
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure Cosmos DB for NoSQL](/azure/cosmos-db/security-controls-policy) and other policies that might affect the security of the data storage.
 
 ## Azure Advisor recommendations
 
