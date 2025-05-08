@@ -54,12 +54,16 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 > [!div class="checklist"]
 >
-> - Review the Azure Database for PostgreSQL - Flexible Server [high availability](/azure/reliability/reliability-postgresql-flexible-server) article for information about native high availability support.
-<<<<<<< HEAD
-> - Align your reliability and recovery targets for Azure Database for PostgreSQL with your workload targets.
-> - Determine the appropriate high availability and redundancy configurations for your Azure Database for PostgreSQL instances.
-> - Incorporate your Azure Database for PostgreSQL instances into your disaster recovery (DR) planning and exercises.
-> - Incorporate your Azure Database for PostgreSQL instances into your observability platform.
+> - **Familiarize yourself with Azure Database for PostgreSQL product reliability guidance:**
+>   For more information, see the following resources:
+>   - [Busines continuity overview](/azure/postgresql/flexible-server/concepts-business-continuity)
+>   - [Reliability and high availability](/azure/reliability/reliability-postgresql-flexible-server)
+>   - [Backup and restore](/azure/postgresql/flexible-server/concepts-backup-restore)
+>   - [Geo-disaster recovery](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery)
+> - **Align your reliability and recovery targets for Azure Database for PostgreSQL with your workload targets.** Ensure that you choose an appropriate Azure Database for PostgreSQL SKU that can support your reliability and recovery targets.
+> - **Determine the appropriate high availability and redundancy configurations for your Azure Database for PostgreSQL instances.** Determine whether you need zone-redundant or zonal redundancy to meet your reliability requirements.
+> - **Incorporate your Azure Database for PostgreSQL instances into your disaster recovery (DR) planning and exercises.** Include the recovery of your databases in your DR planning and exercises to ensure that your entire workload is recoverable according to your recovery targets.
+> - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable reliablity metrics like replication to monitor the health of your instance. Include [high availability healt monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
 
 ### Recommendations
 
@@ -69,10 +73,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
 | [Configure geo-redundancy backup](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL - Flexible Server, increasing efficiency and reducing downtime during disasters or region outages.|
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
-| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
-
-> [!TIP]
-> For more details on reliability guidance for Azure Database for PostgreSQL, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
+| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
 
 ### Azure policy definitions
 
@@ -90,8 +91,8 @@ The [Security design principles](../security/principles.md) provide a high-level
 
 > [!div class="checklist"]
 >  
-> - SSL and enforce encryption to secure data in transit.
-> - Implement network security groups and firewalls to control access to your database.
+> - Encrypt data at rest and in tranist by using modern, industry-standard methods to guard confidentiality and integrity.
+> - 
 > - Use Microsoft Entra ID for authentication and authorization to enhance identity management.
 > - Configure row-level security.
 
