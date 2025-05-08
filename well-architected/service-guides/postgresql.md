@@ -60,12 +60,6 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - Determine the appropriate high availability and redundancy configurations for your Azure Database for PostgreSQL instances.
 > - Incorporate your Azure Database for PostgreSQL instances into your disaster recovery (DR) planning and exercises.
 > - Incorporate your Azure Database for PostgreSQL instances into your observability platform.
-> - Define targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads.
-> - Select the appropriate high-availability configuration.
-> - Configure geo-redundancy backup.
-> - Test your disaster recovery plan to ensure rapid data restoration in case of a failure.
-> - Test On-Demand Failover for your HA-enabled server to ensure our application behaves as expected.
-> - Monitor your server to ensure it's healthy and performing as expected.
 
 ### Recommendations
 
