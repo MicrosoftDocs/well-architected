@@ -37,11 +37,6 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 - Azure Database for PostgreSQL
 
-
-
-> [!NOTE]  
-> To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
-
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
@@ -63,7 +58,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - **Align your reliability and recovery targets for Azure Database for PostgreSQL with your workload targets.** Ensure that you choose an appropriate Azure Database for PostgreSQL SKU that can support your reliability and recovery targets.
 > - **Determine the appropriate high availability and redundancy configurations for your Azure Database for PostgreSQL instances.** Determine whether you need zone-redundant or zonal redundancy to meet your reliability requirements.
 > - **Incorporate your Azure Database for PostgreSQL instances into your disaster recovery (DR) planning and exercises.** Include the recovery of your databases in your DR planning and exercises to ensure that your entire workload is recoverable according to your recovery targets.
-> - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable reliablity metrics like replication to monitor the health of your instance. Include [high availability healt monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
+> - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable reliablity metrics like replication to monitor the health of your instance. Include [high availability health monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
 
 ### Recommendations
 
@@ -75,12 +70,6 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
 | [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
 
-### Azure policy definitions
-
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure reliability for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to implement specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for reliability:
-
-- [High availability (Reliability) in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server)
-
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
@@ -90,17 +79,16 @@ The [Security design principles](../security/principles.md) provide a high-level
 ### Design checklist
 
 > [!div class="checklist"]
->  
-> - Encrypt data at rest and in tranist by using modern, industry-standard methods to guard confidentiality and integrity.
-> - 
-> - Use Microsoft Entra ID for authentication and authorization to enhance identity management.
-> - Configure row-level security.
+> 
+> - **Review the security baseline**: To enhance the security posture of your workload, review the [Azure security baseline for Azure Database for PostgreSQL](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline).
+> - **Implement strict, conditional, and auditable identity and access management**: Use Microsoft Entra ID for authentication and authorization to enhance identity management.
+> - **Apply network segmentation and security controls**: Use built-in firewalling at the server level alongside virtual network firewalling mechanisms to isolate your instance from other workload components and public networks.
+> - **Use native security features to add additional layers of protection**: Help prevent malicious activities by configuring row-level security and connection throttling.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
-| SSL and enforce encryption to [secure data in transit](/azure/postgresql/flexible-server/concepts-networking-ssl-tls). | Deploy the DigiCert Global Root certificate from a trusted Certificate Authority (CA) certificate needed to communicate over SSL with client applications. |
 | Implement [network security groups](/azure/postgresql/flexible-server/concepts-security#network-security) and [firewalls](/azure/postgresql/flexible-server/concepts-firewall-rules) to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
 | [Connect to your databases over Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link) | Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. |
 | [Use Microsoft Entra ID](/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication) for authentication and authorization to enhance identity management. | Microsoft Entra ID authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
