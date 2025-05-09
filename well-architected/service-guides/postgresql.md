@@ -64,11 +64,8 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 | Recommendation | Benefit |
 | --- | --- |
-| [Define targets](/azure/cloud-adoption-framework/manage/protect#define-reliability-requirements) for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads. | Derive these values by conducting a risk assessment and ensuring you understand the cost and risk of downtime and data loss. These are nonfunctional requirements of a system and should be dictated by business requirements. |
 | Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
-| [Configure geo-redundancy backup](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL - Flexible Server, increasing efficiency and reducing downtime during disasters or region outages.|
-| Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
-
+| [Configure geo-redundant backup](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL, increasing efficiency and reducing downtime during disasters or region outages.|
 
 ## Security
 
@@ -90,7 +87,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 | Recommendation | Benefit |
 | --- | --- |
 | Implement [network security groups](/azure/postgresql/flexible-server/concepts-security#network-security) and [firewalls](/azure/postgresql/flexible-server/concepts-firewall-rules) to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
-| [Connect to your databases over Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link) | Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. |
+| [Connect to your databases over Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link) | Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL  to bring it inside your virtual network. |
 | [Use Microsoft Entra ID](/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication) for authentication and authorization to enhance identity management. | Microsoft Entra ID authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
 | Configure [row-level security](/azure/postgresql/flexible-server/concepts-security#row-level-security). | Row level security (RLS) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
 | When required for compliance reasons, [use customer managed keys (CMK)](/azure/postgresql/flexible-server/concepts-data-encryption#recommendations) for data encryption, and store your keys in Azure Key Vault. | CMK allows you full control of your encryption key's life cycle, including rotation of the key, to align with corporate policies. Storing your keys in Azure Key Vault allows you to centrally manage and organize all your encryption keys in your own instances of Azure Key Vault. |
@@ -115,8 +112,8 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > - **Take advantage of available discounts**: Consider 1 or 3 year compute reservations. Reserved instances can save you significant costs for compute resources.
 > - **Use your provisioned storage**: There's no extra charge for backup storage up to 100% of your total provisioned server storage.
 > - **Understand redundancy costs**: Using zone-redundant or zonal redundancy effectively doubles your instance costs, so carefully consider your redundancy design.
-> - **Understand protected instance and backup storage cost**: When backing up PostgreSQL - Flexible Server using Azure Backup, you incur Protected Instance Fees (per 250 GB) and Backup Storage Fees (based on total data stored and redundancy type).
-> - **Deploy to the same region as an app**: Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. 
+> - **Understand protected instance and backup storage cost**: When backing up PostgreSQL using Azure Backup, you incur Protected Instance Fees (per 250 GB) and Backup Storage Fees (based on total data stored and redundancy type).
+> - **Deploy to the same region as an app**: Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to s. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. 
 > - **Consolidate databases and servers**: When practical, consolidating multiple databases and servers into a single server can help reduce costs.
 
 ### Recommendations
@@ -125,7 +122,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | Pick the right [tier and SKU](/azure/postgresql/flexible-server/concepts-compute). | Choosing the right tier and SKU helps you avoid wasting money on over-provisioned resources. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
 | [Scale compute and storage resources](/azure/postgresql/flexible-server/concepts-scaling-resources) when your workload demand changes. | You can scale compute resources vertically and horizontally, and you can scale up and down as necessary. Be aware that you cannot scale storage down after scaling up. |
-| Use the Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it. |
+| Use the Start/Stop feature. | The  has a Start/Stop feature that you can use to stop the server from running when you don't need it. |
 
 ## Operational excellence
 
@@ -148,8 +145,8 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Recommendation | Benefits |
 | --- | --- |
 | Use an [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-overview) indvidually or together with the native automated backups to back up databases..| Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days.  <br><br> Azure Backup allows you to define how and when backups are created, the retention period for recovery points, and the rules for data protection and recovery. You can retain recovery points in a Backup vault for up to **10 years**. You can also manage the backup and restore operations using [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview).|
-| Schedule [custom maintenance windows](/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance) to apply service updates. | You can define a custom schedule for each Azure Database for PostgreSQL flexible server in your Azure subscription. With a custom schedule, you can specify your maintenance window for the server, by choosing the day of the week and the start time of a one hour time window. |
-| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
+| Schedule [custom maintenance windows](/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance) to apply service updates. | You can define a custom schedule for each Azure Database for PostgreSQL  in your Azure subscription. With a custom schedule, you can specify your maintenance window for the server, by choosing the day of the week and the start time of a one hour time window. |
+| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | Azure Database for PostgreSQL  provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL  instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
 
 ## Performance efficiency
 
@@ -163,15 +160,19 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 > [!div class="checklist"]
 >  
-> - Design your schema and queries for efficiency to minimize resource consumption.
-> - Implement read replicas to offload read traffic and enhance overall performance.
+> - **Optimize queries**: Use native features to find opportunities to optimize queries.
+> - **Optimize your index**: Use native features to optimize your database index.
+> - **Fine-tune your database**: Use automatic tuning features to optimize performance.
+> - **Offload read-only operations**: If your application supports read-only connection strings, you can offload read-only operations to read replicas.
 
 ### Recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
-| Design your schema and queries for efficiency to minimize resource consumption. | You should design your schema and queries for efficiency to minimize resource consumption. |
-| Implement [read replicas](/azure/postgresql/flexible-server/concepts-read-replicas) to offload read traffic and enhance overall performance. | You can use read replicas to offload read traffic and enhance performance. |
+| Use [Query store](/azure/postgresql/flexible-server/concepts-query-store) to track query performance over time. | Query store simplifies the troubleshooting of performance issues by helping you quickly find the longest running and most resource-intensive queries. |
+| Use [Query Performance Insights](/azure/postgresql/flexible-server/concepts-query-performance-insight) to identify the top resource consuming and long-running queries in your workload. | Using Query Performance Insights helps you identify long-running queries and their changes over time, determine the wait types affecting them, analyze top database queries by execution count, and other benefits. |
+| Use [index tuning](/azure/postgresql/flexible-server/concepts-index-tuning) in conjunction with query store to analyze tracked queries and provide recommendations. | Index tuning analyzes the workload tracked by query store, and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. It helps you identify beneficial indexes, duplicate indexes, and unused indexes. |
+| Use [intelligent tuning](/azure/postgresql/flexible-server/concepts-intelligent-tuning) to enhance performance automatically and help prevent problems. | Intelligent tuning continuously monitors the Azure Database for PostgreSQL flexible server database's status and dynamically adapts the database to your workload. |
 
 ## Azure policies
 
@@ -189,7 +190,6 @@ Azure provides an extensive set of built-in policies related to Azure Database f
 
 ## Related resources
 
-
 ### Azure Architecture Center Guidance
 
 - [Multitenancy and Azure Database for PostgreSQL](/azure/architecture/guide/multitenant/service/postgresql)
@@ -200,8 +200,3 @@ Azure provides an extensive set of built-in policies related to Azure Database f
 ### Cloud Adoption Framework guidance
 
 - [Batch Data application with Azure Database for PostgreSQL](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Azure pricing calculator to estimate and manage your costs effectively](https://azure.microsoft.com/pricing/calculator/)
