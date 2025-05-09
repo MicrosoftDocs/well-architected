@@ -68,13 +68,13 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
 | [Configure geo-redundancy backup](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL - Flexible Server, increasing efficiency and reducing downtime during disasters or region outages.|
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
-| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
+
 
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Cosmos DB for NoSQL.
+The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Azure Database for PostgreSQL.
 
 ### Design checklist
 
@@ -100,7 +100,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Cosmos DB for No SQL and its environment.
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Database for PostgreSQL and its environment.
 
 
 ### Design checklist
@@ -109,33 +109,23 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 > [!div class="checklist"]
 >  
-> - Pick the right tier and SKU.
-> - Understand high availability mode.
-> - Scale compute and storage tiers.
-> - Consider reserved instances.
-> - Use your provisioned storage.
-> - Understand geo-redundancy costs.
-> - Evaluate storage scale-up decisions.
-> - Deploy to the same region as an app.
-> - High availability oriented cost description.
-> - Consolidate databases and servers.
+> - **Estimate the initial cost**: As part of your cost modeling exercise, use the Azure pricing calculator to evaluate the approximate costs associated with Azure Database for PostgreSQL in your workload.
+> - **Choose the right service tier for your workload**: Determine whether Burstable, General Purpose, or Memory Optimized compute resources meet your use case needs.
+> - **Apply a well-informed scaling strategy**: Continuously observe and analyze your workload capacity and demand to determine when and how to scale your Azure Database for PostgreSQL resources.
+> - **Take advantage of available discounts**: Consider 1 or 3 year compute reservations. Reserved instances can save you significant costs for compute resources.
+> - **Use your provisioned storage**: There's no extra charge for backup storage up to 100% of your total provisioned server storage.
+> - **Understand redundancy costs**: Using zone-redundant or zonal redundancy effectively doubles your instance costs, so carefully consider your redundancy design.
+> - **Understand protected instance and backup storage cost**: When backing up PostgreSQL - Flexible Server using Azure Backup, you incur Protected Instance Fees (per 250 GB) and Backup Storage Fees (based on total data stored and redundancy type).
+> - **Deploy to the same region as an app**: Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. 
+> - **Consolidate databases and servers**: When practical, consolidating multiple databases and servers into a single server can help reduce costs.
 
 ### Recommendations
 
 | Recommendations | Benefits |
 | --- | --- |
-| Pick the right [tier and SKU](/azure/postgresql/flexible-server/concepts-compute). | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
-| Understand [high availability mode](/azure/reliability/reliability-postgresql-flexible-server). | High availability makes a standby server always available within the same zone or region. Enabling high availability doubles your cost. |
-| Adjust [compute](/azure/postgresql/flexible-server/concepts-compute) and [storage](/azure/postgresql/flexible-server/concepts-storage) tiers. | You should manually adjust the compute and storage tiers to meet the application's requirements over time. |
+| Pick the right [tier and SKU](/azure/postgresql/flexible-server/concepts-compute). | Choosing the right tier and SKU helps you avoid wasting money on over-provisioned resources. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
+| [Scale compute and storage resources](/azure/postgresql/flexible-server/concepts-scaling-resources) when your workload demand changes. | You can scale compute resources vertically and horizontally, and you can scale up and down as necessary. Be aware that you cannot scale storage down after scaling up. |
 | Use the Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it. |
-| Consider [reserved instances](/azure/postgresql/flexible-server/concepts-reserved-pricing). | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
-| Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage. |
-| Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS. |
-| Understand protected instance and backup storage cost | When backing up PostgreSQL - Flexible Server using Azure Backup, you incur Protected Instance Fees (per 250 GB) and Backup Storage Fees (based on total data stored and redundancy type). | 
-| Evaluate storage scale-up decisions. | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down. |
-| Deploy to the same region as the app. | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. |
-| High availability oriented cost description. | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
-| Consolidate databases and servers. | You can consolidate multiple databases and servers into a single server to reduce costs. |
 
 ## Operational excellence
 
@@ -149,20 +139,17 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 > [!div class="checklist"]
 >  
-> - Set up automated backups and retention policies to maintain data availability and meet compliance requirements.
-> - Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date.
-> - Monitor database health and performance using Azure Monitor and set up alerts for critical metrics.
+> - **Optimize the recoverablility of your databases**: Define backup and retention policies to meet your compliance requirements.
+> - **Automate operational tasks**: Use [automation tasks](/azure/postgresql/flexible-server/create-automation-tasks) to automatically perform tasks like starting and stopping a server, scaling resources, and others.
+> - **Monitor database health and performance:** Collect and analyze logs and metrics from your instance to proactively detect potential or active issues.
 
 ### Recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
-| Set up automated backups and retention policies to maintain data availability and meet compliance requirements. <br><br> Alternatively, use an [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-overview) to back up Azure Database for PostgreSQL Server. <br><br> You can also use this Azure Backup policy to protect Azure Database for PostgreSQL - Flexible Server.| Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days.  <br><br> Azure Backup allows you to define how and when backups are created, the retention period for recovery points, and the rules for data protection and recovery. You can retain recovery points in a Backup vault for up to **10 years**. <br><br> Use [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-flex-overview) for long term protection of Azure Database for PostgreSQL - Flexible Server and to manage the safety and integrity of the database. You can also manage the backup and restore operations using [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview).|
-| Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date. | Azure Database for PostgreSQL provides automated patching and updates for your database. You can configure the maintenance window for your server to minimize the impact on your workload. |
-| [Monitor](/azure/postgresql/flexible-server/concepts-monitoring) database health and performance using Azure Monitor and set up alerts for critical metrics. | Azure Database for PostgreSQL provides built-in monitoring and alerting capabilities. You can monitor the health and performance of your database using Azure Monitor. You can also set up alerts for critical metrics to get notified when your database isn't performing as expected. |
-
-
-
+| Use an [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-overview) indvidually or together with the native automated backups to back up databases..| Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days.  <br><br> Azure Backup allows you to define how and when backups are created, the retention period for recovery points, and the rules for data protection and recovery. You can retain recovery points in a Backup vault for up to **10 years**. You can also manage the backup and restore operations using [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview).|
+| Schedule [custom maintenance windows](/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance) to apply service updates. | You can define a custom schedule for each Azure Database for PostgreSQL flexible server in your Azure subscription. With a custom schedule, you can specify your maintenance window for the server, by choosing the day of the week and the start time of a one hour time window. |
+| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure it's healthy and performing as expected. | Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
 
 ## Performance efficiency
 
@@ -185,10 +172,6 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | Design your schema and queries for efficiency to minimize resource consumption. | You should design your schema and queries for efficiency to minimize resource consumption. |
 | Implement [read replicas](/azure/postgresql/flexible-server/concepts-read-replicas) to offload read traffic and enhance overall performance. | You can use read replicas to offload read traffic and enhance performance. |
-
-### Performance efficiency policy definitions
-
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure Performance efficiency for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for Performance efficiency:
 
 ## Azure policies
 
