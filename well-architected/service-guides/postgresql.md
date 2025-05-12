@@ -4,7 +4,7 @@ description: Design considerations and recommendations for each pillar as relate
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 05/07/2025
+ms.date: 05/12/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
@@ -44,8 +44,6 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Design checklist
-
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
 > [!div class="checklist"]
 >
@@ -104,8 +102,6 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 ### Design checklist
 
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
-
 > [!div class="checklist"]
 >  
 > - **Estimate the initial cost**: As part of your cost modeling exercise, use the Azure pricing calculator to evaluate the approximate costs associated with Azure Database for PostgreSQL in your workload.
@@ -134,8 +130,6 @@ The [Operational Excellence design principles](/azure/well-architected/operation
 
 ### Design checklist
 
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
-
 > [!div class="checklist"]
 >  
 > - **Optimize the recoverability of your databases**: Define backup and retention policies to meet your compliance requirements.
@@ -157,8 +151,6 @@ Performance Efficiency is about **maintaining user experience even when there's 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 ### Design checklist
-
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
 > [!div class="checklist"]
 >  
