@@ -51,21 +51,21 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 >
 > - **Familiarize yourself with Azure Database for PostgreSQL product reliability guidance:**
 >   For more information, see the following resources:
->   - [Busines continuity overview](/azure/postgresql/flexible-server/concepts-business-continuity)
+>   - [Business continuity overview](/azure/postgresql/flexible-server/concepts-business-continuity)
 >   - [Reliability and high availability](/azure/reliability/reliability-postgresql-flexible-server)
 >   - [Backup and restore](/azure/postgresql/flexible-server/concepts-backup-restore)
 >   - [Geo-disaster recovery](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery)
 > - **Align your reliability and recovery targets for Azure Database for PostgreSQL with your workload targets.** Ensure that you choose an appropriate Azure Database for PostgreSQL SKU that can support your reliability and recovery targets.
 > - **Determine the appropriate high availability and redundancy configurations for your Azure Database for PostgreSQL instances.** Determine whether you need zone-redundant or zonal redundancy to meet your reliability requirements.
 > - **Incorporate your Azure Database for PostgreSQL instances into your disaster recovery (DR) planning and exercises.** Include the recovery of your databases in your DR planning and exercises to ensure that your entire workload is recoverable according to your recovery targets.
-> - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable reliablity metrics like replication to monitor the health of your instance. Include [high availability health monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
+> - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable enhanced metrics to monitor the health of your instance. Include [high availability health monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
 
 ### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
 | Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
-| [Configure geo-redundant backup](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL, increasing efficiency and reducing downtime during disasters or region outages.|
+| Configure [geo-redundant backup](/azure/postgresql/flexible-server/concepts-backup-restore#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL, increasing efficiency and reducing downtime during disasters or region outages.|
 
 ## Security
 
@@ -87,11 +87,11 @@ The [Security design principles](../security/principles.md) provide a high-level
 | Recommendation | Benefit |
 | --- | --- |
 | Implement [network security groups](/azure/postgresql/flexible-server/concepts-security#network-security) and [firewalls](/azure/postgresql/flexible-server/concepts-firewall-rules) to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
-| [Connect to your databases over Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link) | Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL  to bring it inside your virtual network. |
-| [Use Microsoft Entra ID](/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication) for authentication and authorization to enhance identity management. | Microsoft Entra ID authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
+| Connect to your databases over [Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link). | Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL  to bring it inside your virtual network. |
+| Use [Microsoft Entra ID](/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication) for authentication and authorization to enhance identity management. | Microsoft Entra ID authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
 | Configure [row-level security](/azure/postgresql/flexible-server/concepts-security#row-level-security). | Row level security (RLS) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
 | When required for compliance reasons, [use customer managed keys (CMK)](/azure/postgresql/flexible-server/concepts-data-encryption#recommendations) for data encryption, and store your keys in Azure Key Vault. | CMK allows you full control of your encryption key's life cycle, including rotation of the key, to align with corporate policies. Storing your keys in Azure Key Vault allows you to centrally manage and organize all your encryption keys in your own instances of Azure Key Vault. |
-| Enable connection throttling for IPs with too many failed login attempts. | Setting the connection_throttling server parameter to enabled protects your databases from malicious login attempts and potential Distributed Denial of Service (DDoS) attacks by throttling connections from IP addresses that have repeated failed logins. |
+| Enable connection throttling for IPs with too many failed login attempts. | Setting the connection_throttling server parameter to "enabled" helps protect your databases from malicious login attempts and Distributed Denial of Service (DDoS) attacks by throttling connections from IP addresses that have repeated failed logins. |
 
 ## Cost optimization
 
@@ -122,7 +122,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | Pick the right [tier and SKU](/azure/postgresql/flexible-server/concepts-compute). | Choosing the right tier and SKU helps you avoid wasting money on over-provisioned resources. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
 | [Scale compute and storage resources](/azure/postgresql/flexible-server/concepts-scaling-resources) when your workload demand changes. | You can scale compute resources vertically and horizontally, and you can scale up and down as necessary. Be aware that you cannot scale storage down after scaling up. |
-| Use the Start/Stop feature. | The  has a Start/Stop feature that you can use to stop the server from running when you don't need it. |
+| Use the Start/Stop feature. | Use the Start/Stop feature to stop the server from running when it isn't needed. |
 
 ## Operational excellence
 
@@ -136,9 +136,9 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 > [!div class="checklist"]
 >  
-> - **Optimize the recoverablility of your databases**: Define backup and retention policies to meet your compliance requirements.
+> - **Optimize the recoverability of your databases**: Define backup and retention policies to meet your compliance requirements.
 > - **Automate operational tasks**: Use [automation tasks](/azure/postgresql/flexible-server/create-automation-tasks) to automatically perform tasks like starting and stopping a server, scaling resources, and others.
-> - **Monitor database health and performance:** Collect and analyze logs and metrics from your instance to proactively detect potential or active issues.
+> - **Monitor database health and performance:** Collect and analyze logs and metrics from your instance to proactively detect potential issues.
 
 ### Recommendations
 
@@ -184,7 +184,7 @@ Azure provides an extensive set of built-in policies related to Azure Database f
 
 - [SSL connections are enforced](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc29c38cb-74a7-4505-9a06-e588ab86620a)
 
-- [Data at rest is encryted with CMK](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12c74c95-0efd-48da-b8d9-2a7d68470c92)
+- [Data at rest is encrypted with CMK](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12c74c95-0efd-48da-b8d9-2a7d68470c92)
 
 - [Private endpoints are enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5375a5bb-22c6-46d7-8a43-83417cfb4460)
 
