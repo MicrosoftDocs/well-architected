@@ -64,8 +64,9 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 | Recommendation | Benefit |
 | --- | --- |
-| Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
+| Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica, ensuring that the service remains available with no loss of data during a zone outage.  |
 | Configure [geo-redundant backup](/azure/postgresql/flexible-server/concepts-backup-restore#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. In case of a regional outage or disaster, you can use Azure Backup to restore the database server to an Azure-paired region, minimizing downtime. <br><br> Azure Backup also offers geo-redundancy for Azure Database for PostgreSQL, increasing efficiency and reducing downtime during disasters or region outages.|
+| Regularly test your backup and restore strategy. | Regularly testing your backup and restore strategy ensures that you can recover your databases and maintain operations in the event of a failure. |
 
 ## Security
 
@@ -92,6 +93,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 | Configure [row-level security](/azure/postgresql/flexible-server/concepts-security#row-level-security). | Row level security (RLS) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
 | When required for compliance reasons, [use customer managed keys (CMK)](/azure/postgresql/flexible-server/concepts-data-encryption#recommendations) for data encryption, and store your keys in Azure Key Vault. | CMK allows you full control of your encryption key's life cycle, including rotation of the key, to align with corporate policies. Storing your keys in Azure Key Vault allows you to centrally manage and organize all your encryption keys in your own instances of Azure Key Vault. |
 | Enable connection throttling for IPs with too many failed login attempts. | Setting the connection_throttling server parameter to "enabled" helps protect your databases from malicious login attempts and Distributed Denial of Service (DDoS) attacks by throttling connections from IP addresses that have repeated failed logins. |
+| Conduct security audits regularly. | Regularly conducting security audits helps identify and remediate potential vulnerabilities. |
 
 ## Cost optimization
 
@@ -161,8 +163,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 > [!div class="checklist"]
 >  
 > - **Optimize queries**: Use native features to find opportunities to optimize queries.
-> - **Optimize your index**: Use native features to optimize your database index.
-> - **Fine-tune your database**: Use automatic tuning features to optimize performance.
+> - **Optimize indexes**: Use features such as index tuning to automatically analyze query patterns and receive actionable recommendations for creating or dropping indexes to improve performance.
 > - **Offload read-only operations**: If your application supports read-only connection strings, you can offload read-only operations to read replicas.
 
 ### Recommendations
