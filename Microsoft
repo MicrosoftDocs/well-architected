@@ -1,31 +1,9 @@
-### YamlMime:Landing
-
-title: Cost optimization quick links
-summary: Apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
-
-metadata:
-  title: Cost optimization quick links
-  description: Learn about resources that can help you apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
-  ms.topic: landing-page
-  author: PageWriter-MSFT
+author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 11/15/2023
+  ms.date: 13-05-2025
 
 landingContent:
-  - title: Learn key points
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Design principles
-            url: principles.md
-          - text: Checklist
-            url: checklist.md
-          - text: Tradeoffs
-            url: tradeoffs.md
-          - text: Cost optimization patterns
-            url: design-patterns.md
-          - text: Azure Well-Architected Review assessment
-            url: /assessments/azure-architecture-review/
+  
       - linkListType: learn
         links:
           - text: Cost optimization
@@ -34,11 +12,11 @@ landingContent:
         links:
           - text: What tradeoffs have you made to optimize for cost?
             url: https://learn-video.azurefd.net/vod/player?id=b9ef84cf-3526-490e-bbd6-15fe906db99b
-  - title: Review design principles
+   title: Review design principles
     linkLists:
-      - linkListType: concept
+       linkListType: concept
         links:
-          - text: Develop cost-management discipline
+           text: Develop cost-management discipline
             url: principles.md#develop-cost-management-discipline
           - text: Design with a cost-efficiency mindset
             url: principles.md#design-with-a-cost-efficiency-mindset
