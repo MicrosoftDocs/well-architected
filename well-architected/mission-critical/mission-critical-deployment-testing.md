@@ -340,7 +340,7 @@ You can apply AIOps methodologies in CI/CD pipelines to supplement traditional t
 - Define the DevOps process data to collect and how to analyze it. Telemetry, like test execution metrics and time series data of changes within each deployment, is important.
   - Expose application observability data from staging, test, and production environments for analysis and correlation within AIOps models.
 
-- Adopt the [MLOps workflow](https://azure.microsoft.com/services/machine-learning/mlops).
+- Adopt the [MLOps workflow](https://azure.microsoft.com/solutions/machine-learning-ops/).
 
 - Develop analytical models that are context-aware and dependency-aware to provide predictions with automated feature engineering to address schema and behavior changes.
 
