@@ -59,59 +59,63 @@ Based on the answers to these questions, [choose the best data service](/azure/a
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Don't overengineer your data components by choosing different data services for components that you can consolidate into a single data store. Strike a balance between performance versus cost and complexity.
 
-# [**Level 2 - Baseline performance measurements** ](#tab/level2)
+# [**Level 2: Baseline performance measurements**](#tab/level2)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
 
-![Goal icon](../_images/goal.svg) **Begin measuring performance using defined metrics and plan for optimization**
+![Goal icon](../_images/goal.svg) **Begin measuring performance by using defined metrics and plan for optimization.**
 
-Level 2 of the Performance Efficiency pillar focuses on using information about your workload to inform your performance optimizations. The first step is to identify critical workload flows from a performance perspective. Next, decompose your workload into its components and set measurable targets and metrics that you can capture and analyze for future optimizations. Finally, you should investigate design patterns that may help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities will help you build a plan for the near-term future of your workload, ensuring that performance doesn't suffer as the workload evolves.
+Level 2 of the Performance Efficiency pillar focuses on using information about your workload to inform your performance optimizations. The first step is to identify critical workload flows from a performance perspective. Next, break down your workload into its components and set measurable targets and metrics that you can capture and analyze for future optimizations. Finally, you should investigate design patterns that might help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities help you build a plan for the immediate future of your workload. This approach ensures that performance doesn't suffer as the workload evolves.
 
 #### &#10003; Identify critical flows from a performance perspective
 
-Ranking and categorizing your workload flows is an important strategy in each of the Well-Architected Framework pillars. Analyzing flows from the perspecive of each pillar helps you identify areas that need to be optimized and you can weigh those optimizations against each other to help you determine the right places to invest in. In some cases security concerns for a given flow might outweigh performance concerns, for example. After you've categorized and ranked the flows, focus on those that you've identified as critical to start your optimization planning. Performance-specific criteria that can help you identify critical flows include:
+Ranking and categorizing your workload flows is an important strategy in each of the Well-Architected Framework pillars. Analyzing flows from the perspective of each pillar helps you identify areas that need to be optimized. You can compare those optimizations to help you determine where to invest. For example, in some scenarios, security concerns for a flow might outweigh performance concerns. After you categorize and rank the flows, focus on the flows that you identify as critical to start your optimization planning. Performance-specific criteria that can help you identify critical flows include:
 
-- *Frequency:* How often the flow is performed, like searching for a product.
-- *Criticality:* How essential the flow is to the overall success of the application, like a user profile lookup.
-- *Risk:* How risky the flow is to overall performance, like generating a complex report.
-- *Data intensiveness:* How much pressure the flow puts on the data layer.
-- *Architecture intensiveness:* How many components the flow touches across the workload.
+- *Frequency:* The number of times that the flow is performed, like searching for a product.
+
+- *Criticality:* The degree of importance that the flow has to the overall success of the application, like a user profile lookup.
+
+- *Risk:* The level of risk that the flow has on overall performance, like generating a complex report.
+
+- *Data intensiveness:* The amount of pressure that the flow puts on the data layer.
+
+- *Architecture intensiveness:* The extent to which the flow interacts with components across the workload.
 
 #### &#10003; Establish key metrics for your workload resources and components that help you meet your targets
 
-Set performance targets for your workload components and resources based on market research, competitive analysis, and surveys. Focus on key metrics like response time, throughput, and latency. Establish targets for different components, user flows, workflows, data flows, external dependencies, and overall workload performance.
+Set performance targets for your workload components and resources based on market research, competitive analysis, and surveys. Focus on key metrics like response time, throughput, and latency. Establish targets for different components, user flows, workflows, dataflows, external dependencies, and overall workload performance.
 
-Define realistic and measurable targets for each metric, considering customer expectations and using percentiles (for example, P99, P95, and P50) for a comprehensive view. Perform testing to establish baseline performance, but don't overemphasize optimization.
+Set realistic and measurable targets for each metric while keeping customer expectations in mind. Use percentiles like P99, P95, and P50 to gain a comprehensive perspective. Perform testing to establish baseline performance, but don't overemphasize optimization.
 
-#### &#10003; Perform your intial capacity planning exercise
+#### &#10003; Perform your initial capacity planning exercise
 
-Capacity planning is an iterative practice that should be regularly performed throughout your workload's lifecycle. At this stage, you might not be fully familiar with all of the technologies in use, or you may still be testing different 
-options, so your ability to thoroughly plan for future needs might be limited. For this initial capacity planning exercise, the goal should be to evolve from reactive capacity management (adding resources to meet immediate demand) to proactive planning (anticipating what capacity you'll need for the next X amount of time). To do this, collect and analyze data on resource usage, including historical patterns for any existing workloads. Use statistical analysis, trend analysis, and predictive modeling to forecast future needs. Ensure these forecasts align with workload objectives.
+Capacity planning is an iterative process that should be conducted regularly throughout your workload's life cycle. At this stage, you might not yet be fully familiar with all the technologies in use or might still be evaluating different options. This uncertainty can limit your ability to plan comprehensively for future needs. For this initial capacity planning exercise, the goal is to shift from reactive capacity management, which includes adding resources to meet immediate demand. Instead, the focus is on proactive planning, where you anticipate the capacity required for a defined period. To achieve effective capacity planning, collect and analyze data on resource usage, including historical patterns for existing workloads. Use statistical analysis, trend analysis, and predictive modeling to forecast future needs. Ensure that these forecasts align with workload objectives.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: In a traditional, datacenter-based environment, over-provisioning is a common approach for capacity planning. In a cloud environment, over-provisioning can be a waste of money and you should take careful consideration of your business expectations to develop a timeline for adding capacity in a way that will meet your performance needs without negatively affecting your budget.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** In a traditional, datacenter-based environment, over-provisioning is a common approach for capacity planning. In a cloud environment, over-provisioning can be a waste of money. Carefully consider your business expectations to develop a timeline for adding capacity in a way that meets your performance needs without negatively affecting your budget.
 
 #### &#10003; Investigate design patterns to support performance efficiency
 
-There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or by developing a sharding strategy. Review the [design patterns](./design-patterns.md) guide for a comprehensive list of patterns that might help you as you enhance your workload.
+There are many common application design patterns that can help you optimize your workload for performance. You might achieve performance gains by adding a cache or developing a sharding strategy. For a comprehensive list of patterns that might help you enhance your workload, see [Cloud design patterns](./design-patterns.md).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Some design patterns may add a degree of complexity to your workload, so weigh the additional management burden against your efficiency gains to determine whether a particular pattern is worth implementing.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Some design patterns might add a degree of complexity to your workload. Compare the extra management burden against your efficiency gains to determine whether a specific pattern is worth implementing.
 
 #### &#10003; Optimize code performance
 
-Optimizing your code makes your entire workload more efficient. Application tasks run quicker and use less compute resources, so you can maximize the performance of your infrastructure. Consider the following code optimization approaches.
+Code optimization makes your entire workload more efficient. Application tasks run quicker and use less compute resources, so you can maximize the performance of your infrastructure. Consider the following code optimization approaches:
 
-- Instrument your code. Instrumenting your code helps you identify issues in your code performance by capturing telemetry during runtime. This helps you identify and resolve issues early in the development cycle.
-- Identify hot paths. Instrumenting your code also helps identify hot paths, which are critical or frequently executed sections of a program that require high performance and low latency.
-- Optimize code logic. Look for opportunities to simplify your code logic to make it more efficient. Remove unnecessary unnecessary function calls and data processing operations and minimize logging operations, network requests, and memory allocations, and look for opportunitiies to use more performant SDKs and libraries.
-- Use concurrency and parallelism. Using concurrency and parallelism can make your application more efficient by executing tasks more efficiently. Concurrency involves managing multiple tasks by interleaving them, while parallelism involves executing multiple tasks simultaneously.
+- **Instrument your code.** Instrumenting your code helps you identify problems in your code performance by capturing telemetry during runtime. This process helps you identify and resolve problems early in the development cycle.
+
+- **Identify hot paths.** Instrumenting your code helps you identify hot paths. Hot paths are essential or high-usage sections of a program that require high performance and low latency.
+
+- **Optimize code logic.** Find ways to simplify your code logic for better efficiency. Remove unnecessary function calls and data processing operations. Minimize logging operations, network requests, and memory allocations. Look for opportunities to use more performant SDKs and libraries.
+
+- **Use concurrency and parallelism.** Using concurrency and parallelism can improve your application's efficiency by managing multiple tasks effectively. Concurrency handles multiple tasks by switching between them, while parallelism processes multiple tasks simultaneously.
 
 #### &#10003; Collect and monitor performance data for resources across your workload
 
-Collect application performance data like throughput, latency, and completion times to identify bottlenecks and improve user experience. Use distributed tracing and structured logging for easier analysis. Gather metrics and logs for all resources, and use tools like Azure Monitor Insights for performance monitoring. Collect database and storage data, and gather performance metrics for virtual machines. Store all of the collected data in one place for easy access and analysis.
+Collect application performance data like throughput, latency, and completion times to identify bottlenecks and improve user experience. Use distributed tracing and structured logging for easier analysis. Gather metrics and logs for all resources. Use tools like Azure Monitor Insights for performance monitoring. Collect database and storage data, and gather performance metrics for virtual machines. Store all of the collected data in one place for easy access and analysis.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be sure to setup log rotation and retention policies as the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
-
-
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that you set up log rotation and retention policies because the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
 # [**Level 3 - Incorporating performance signals**](#tab/level3)
 
