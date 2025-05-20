@@ -119,7 +119,7 @@ A _cost model_ is an estimate of the overall cost of a workload broken down by c
 
 Build basic cost reports for financial visibility and analyzing cost patterns. Also, set up cost alerts for when a certain amount of spending is exceeded.
 
-It's recommended that you use [Azure Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a report monthly. 
+It's recommended that you use [Microsoft Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview) to analyze, monitor, and control your spending on services. If that option isn't available to you, build a system to track consumption and generate a report monthly. 
 
 #### &#10003; Set up accountability
 
@@ -135,7 +135,7 @@ Your cost model should give you a good idea of the main cost drivers and the cos
 
 - Evaluate the choice between consumption-based billing and commitment-based billing. It's recommended to start with consumption-based billing to understand the incurred costs. If the load is consistent, you can explore discounts offered by Azure for consistent loads at later stages.
 
-- Evalute coding practices. This requires code instrumentation to identify processes that are expensive to run and provide insight into performance issues, which can incur unnecessary costs. Metrics such as process duration and failure rates should be collected to make data-driven decisions for future optimization.
+- Evaluate coding practices. This requires code instrumentation to identify processes that are expensive to run and provide insight into performance issues, which can incur unnecessary costs. Metrics such as process duration and failure rates should be collected to make data-driven decisions for future optimization.
 
 #### &#10003; Decide on an initial scaling strategy
 
@@ -153,7 +153,7 @@ Level 3 of the Cost Optimization pillar focuses on making your workload producti
 
 #### &#10003; Invest in impactful flows and fine-tune others
 
-Reflect on the priorities assigned to you application flows and prioritize development efforts on critical flows, while looking for ways to simplify and reduce the cost of non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
+Reflect on the priorities assigned to your application flows and prioritize development efforts on critical flows, while looking for ways to simplify and reduce the cost of non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
 
 For each flow, eliminate unnecessary elements, choose appropriate performance tiers, adjust scaling settings for variable demand, and fine-tune configurations to align with performance and budget needs. Monitor flows to identify inefficiencies such as idle compute instances, unused data, and low network bandwidth. Use native logging and analysis tools to help aggregate and analyze these metrics for trends.
 
@@ -167,9 +167,9 @@ Creating spending thresholds and associated alerting is an easy way to enforce c
 
 #### &#10003; Develop a strategy to optimize your resource utilization
  
-As you build out your nonproduction and production environments, you might inadvertantly deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized an unused resources is a cornerstone element of the continuous improvement practice of maintaining an optimized cloud environment. Consider the following recommended activities:
+As you build out your nonproduction and production environments, you might inadvertently deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized and unused resources is a cornerstone element of the continuous improvement practice of maintaining an optimized cloud environment. Consider the following recommended activities:
 
-- Use the right resource types and SKUs for each environment. Research the infrastructure options your cloud platform provides and choose resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are [targeted specifically for proof-of-concept and Dev/Test environments](https://azure.microsoft.com/en-us/pricing/offers/dev-test/) that are significantly less expensive than standard or high performance resources, but cannot be used for production workloads.
+- Use the right resource types and SKUs for each environment. Research the infrastructure options your cloud platform provides and choose resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are [targeted specifically for proof-of-concept and Dev/Test environments](https://azure.microsoft.com/pricing/offers/dev-test/) that are significantly less expensive than standard or high performance resources, but cannot be used for production workloads.
 - Configure and enforce policies to limit allowed resource types and SKUs, regions, and users with deployment permissions. Automated policies will help you control changes to your environments, minimizing the risk of unauthorized deployments.
 - Standardize using infrastructure-as-code (IaC) for all environment changes. This practice further enforces your environment change policies and simplifies your operations practices, reducing the risk of human error.
 - Monitor utilization metrics like CPU, memory, and storage to help determine if resources are under-utilized and can be scaled down.
@@ -199,7 +199,7 @@ Data is a primary driver of cloud costs and proper data management can help you 
 - Classify and label data to apply appropriate controls and determine the appropriate levels of reliability and performance for different data types and stores.
 - Capture only essential data, compress data for colder storage, delete unneeded data with proper retention policies, deduplicate to eliminate redundant data, and educate users on efficient data storage practices.
 - Optimize backups by using incremental backups, enabling compression, and moving older backups to cold storage.
-- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on your requirements. Continously evaluate your requirements and configuration.
+- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on your requirements. Continuously evaluate your requirements and configuration.
 - Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
 - Use tooling to help optimize queries.
 
@@ -213,15 +213,15 @@ Inefficient code can lead to inefficient system performance, which can mean high
 - Optimize by removing unnecessary function calls, minimizing logging, refining loops and conditionals, reducing data processing, minimizing network requests and memory allocations, and assessing cross-cutting implementations.
 - Optimize network paths by:
    - Minimizing data transfers between components and across geo-distant regions by analyzing and eliminating unnecessary transfers. Ensure only the required data fields are sent, not entire objects or data structures, to reduce the size and frequency of data transfers.
-   - Avoiding transfering redundant data by only sending essential information.
+   - Avoiding transferring redundant data by only sending essential information.
    - Refactoring your code to reduce repeated requests and batch them when possible.
  
 Streamlining development practices increases build velocity, saving your workload teams valuable time getting enhancements to production efficiently. Strategies for streamlining development practices include:
 
-- Reduce build times by reviewing build configuration settings and eliminating unnessary steps or processes, parallelizing build tasks, using caching, and employing incremental builds to avoid unnecessary recompilation of unchanged componnents.
+- Reduce build times by reviewing build configuration settings and eliminating unnecessary steps or processes, parallelizing build tasks, using caching, and employing incremental builds to avoid unnecessary recompilation of unchanged components.
 - Use production mocking to optimize testing. Mocking allows developers to focus testing on simulated scenarios that are impractical to reproduce in a production environment.
 - Optimize development planning practices by defining clear objectives and metrics, using monitoring tools to track KPIs, and prioritizing actionable insights.
-- Use AI coding assistance tools, like Github Copilot, to reduce development time when practical.
+- Use AI coding assistance tools, like GitHub Copilot, to reduce development time when practical.
 
 Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate internal and external user and stakeholder feedback to determine which features will have the highest impact on user satisfaction, driving increased utilization. In some cases, features might be developed specifically for optimizing costs. Weigh those against functional priorities to determine their relative value.
 
@@ -248,7 +248,7 @@ As part of this exercise, determine how closely your running costs align with th
 Use your production learnings to refine your data strategies. In particular, look for optimization opportunities for the following factors:
 
 - Optimize your storage solutions considering ease of management. Evaluate whether the storage solutions you have deployed are the best fit for your use case and whether changing to a different technology can save you operational burden or utilization costs. For example, you might have initially deployed SQL Server on VMs to easily migrate your workload or because that is the technology your workload team was most familiar with. Moving to a platform as a service (PaaS) service can significantly reduce your operational burden and save you costs, depending on certain factors.
-- Optimize your data lifecycle management. Review your data tiering and make adjustments where practical. You might have data that is no longer being actively used and can be moved to less expensive storage tiers, like archive storage. Likewise, if you haven't already created policies to define what types of data belong in different tiers, creating those based on production learnings will help the on-going management of your data lifecyle more efficient. Finally, implement automation to enforce these policies to further optimize your efforts.
+- Optimize your data lifecycle management. Review your data tiering and make adjustments where practical. You might have data that is no longer being actively used and can be moved to less expensive storage tiers, like archive storage. Likewise, if you haven't already created policies to define what types of data belong in different tiers, creating those based on production learnings will help the ongoing management of your data lifecycle more efficient. Finally, implement automation to enforce these policies to further optimize your efforts.
 
 #### Increase resource density
 
@@ -272,7 +272,7 @@ A strategy that can help you optimize your resource scaling costs is regulating 
 
 Appointing a cost DRI (Directly Responsible Individual) can help the workload team take ownership of their workload costs.  The DRI is the person accountable for managing and optimizing cloud expenses. This role involves monitoring cloud usage, implementing cost-saving strategies, and ensuring that the organization's cloud spending aligns with its budget and business objectives. The DRI is responsible for making decisions related to cloud resource allocation, identifying areas of potential cost reduction, and ensuring efficient use of cloud services to avoid unnecessary expenses.
 
-The DRI also acts as the first line of defense for higher than expected workload costs. He or she can help identify the cause of high costs and proactively work with the workload team to reduce them back to their expected range before they become a cost emergency.
+The DRI also acts as the frontline of defense for higher than expected workload costs. He or she can help identify the cause of high costs and proactively work with the workload team to reduce them back to their expected range before they become a cost emergency.
 
 # [Level 5](#tab/level5)
 

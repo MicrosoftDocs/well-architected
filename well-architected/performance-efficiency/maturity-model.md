@@ -87,7 +87,7 @@ Set realistic and measurable targets for each metric while keeping customer expe
 
 Record all performance targets in a centralized location accessible to both development and operations teams. Use dashboards and reports to make targets visible and actionable. 
 
-#### &#10003; Perform your intial capacity planning exercise
+#### &#10003; Perform your initial capacity planning exercise
 
 Capacity planning is an iterative process that should be conducted regularly throughout your workload's life cycle. At this stage, you might not yet be fully familiar with all the technologies in use or might still be evaluating different options. This uncertainty can limit your ability to plan comprehensively for future needs. For this initial capacity planning exercise, the goal is to shift from reactive capacity management, which includes adding resources to meet immediate demand. Instead, the focus is on proactive planning, where you anticipate the capacity required for a defined period. To achieve effective capacity planning, collect and analyze data on resource usage, including historical patterns for existing workloads. Use statistical analysis, trend analysis, and predictive modeling to forecast future needs. Ensure that these forecasts align with workload objectives.
 
@@ -154,7 +154,7 @@ As you evolve your capacity planning, work closely with business decision-makers
 
 #### &#10003; Optimize your scaling strategy
 
-Employ advanced scaling techniques to optimize your resource utilization. Adjust the thresholds used for scaling operations based on internal and external feedback, and build automation to perform scaling operations for components that lack native automatic scaling functionality. Used scheduled scaling for components that are lightly used or idle at known times throughout the day, week, or month. Continously evaluate scaling configurations and make refinements to better meet the fluctuating demands of a workload.
+Employ advanced scaling techniques to optimize your resource utilization. Adjust the thresholds used for scaling operations based on internal and external feedback, and build automation to perform scaling operations for components that lack native automatic scaling functionality. Used scheduled scaling for components that are lightly used or idle at known times throughout the day, week, or month. Continuously evaluate scaling configurations and make refinements to better meet the fluctuating demands of a workload.
 
 #### &#10003; Optimize data management 
 
@@ -167,7 +167,7 @@ Inefficiencies in data management can cause performance issues across your workl
 
 #### &#10003; Conduct performance tests and compare against a baseline
 
-Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that aligns with targets. Review the [performance testing](./performance-test.md) article for detailed guidance.
+Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that align with targets. Review the [performance testing](./performance-test.md) article for detailed guidance.
 
 Performance testing should be performed in a dedicated environment as part of your overall testing strategy. This includes reliability and security testing.
 
@@ -189,9 +189,9 @@ Foster an environment of continuous improvement where teams learn from productio
 
 The Level 4 stage of the maturity model assumes that your workload is in production and has been operating for enough time to gather useful information about its normal running state. At this level, you should use this information to make necessary updates and further improvements.
 
-Use telemetry and feedback mechanisms to identify performance issues like bottlenecks and develop plans to make improvements. Use mature change management practices to ensure that you don't inadvertantly cause additional issues when making changes to your environment. 
+Use telemetry and feedback mechanisms to identify performance issues like bottlenecks and develop plans to make improvements. Use mature change management practices to ensure that you don't inadvertently cause additional issues when making changes to your environment. 
 
-Keep in mind that iterative improvements will reach a point of diminshing returns. You'll need to decide when you've reached a "good enough" running state, when the cost and burden of developing fixes for inefficiencies won't outweigh the minor performance improvements you gain.
+Keep in mind that iterative improvements will reach a point of diminishing returns. You'll need to decide when you've reached a "good enough" running state, when the cost and burden of developing fixes for inefficiencies won't outweigh the minor performance improvements you gain.
 
 Also remember that any change you make to your environment to improve performance will directly impact other pillars of the Well-Architected Framework, with cost optimization being the most common trade-off. Carefully assess the impact to other pillars before making performance improvements to maintain the right balance for your requirements.
 
@@ -199,7 +199,7 @@ Also remember that any change you make to your environment to improve performanc
 
 In Level 4, you should be monitoring and testing for performance in production. You should have well-developed test plans and scenarios and test data already in place. The goal of testing is to ensure that you're staying ahead of potential performance issues before they appear in production. So, monitoring and testing should be rigorous, standardized, and thoroughly documented. Consider the following recommendations.
 
-- *Continously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
+- *Continuously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
 - *Shift left in your testing.* Integrate testing earlier in your development cycle to catch potential issues before they appear in production.
 - *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like  blue-green deployments and A/B testing.
 - *Use synthetic transactions in your testing.* Using synthetic transactions allows you to consistently test real-world user experience, helping you identify issues and potential improvements before users are affected.
@@ -233,14 +233,14 @@ Revisit the code optimizations that you made earlier in your workload developmen
 
 #### &#10003; Optimize operational tasks
 
-Operational tasks like virus scans, secret rotations, backups, index optimization (reorganization or rebuilding), and deployments can all affect the perfomance of your workload, so optimizing their efficiency keeps your workload performant. Consider the following strategies for optimizing these types of tasks.
+Operational tasks like virus scans, secret rotations, backups, index optimization (reorganization or rebuilding), and deployments can all affect the performance of your workload, so optimizing their efficiency keeps your workload performant. Consider the following strategies for optimizing these types of tasks.
 
 - Fine-tune operational tooling. Test and understand the performance impact of essential tools like file integrity monitoring and virus scanning, then fine-tune configurations for them. For example, create exclusion lists for virus scans to minimize their duration.
 - Fine-tune database operations. Look for opportunities to fine-tune operations like database backups, schema changes, performance tuning, and monitoring. Use native tools like [automatic tuning in Azure SQL Database](/azure/azure-sql/database/automatic-tuning-enable?view=azuresql) to help this effort.
 
 #### &#10003; Evaluate new platform features that enhance performance
 
-Investigate and test new platform features that become available to deterimine if they can help you gain efficiencies. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
+Investigate and test new platform features that become available to determine if they can help you gain efficiencies. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Be aware of how your cloud platform packages capabilities into SKUs. Some SKUs that offer higher performance may be overprovisioned for your present use case but might save you time and effort in the future for migrating.
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Adopting some types of services can mean migrating your application or data, which might mean there will be downtime for the migration. As part of your evaluation, determine whether you can tolerate the necessary downtime to successfuly migrate.
