@@ -16,7 +16,7 @@ For values to set, see [Taxonomies for Learn](https://review.learn.microsoft.com
 
 # Security maturity model
 
-In the context of the Well-Architected Framework, security is about providing confidentiality, integrity, and availability guarantees to your workload. This is accomplished through aliging your secuirty mechanisms and processes to your particular business requirements, industry standards, and relevant regulatory frameworks.
+In the context of the Well-Architected Framework, security is about providing confidentiality, integrity, and availability guarantees to your workload. This is accomplished through aligning your security mechanisms and processes to your particular business requirements, industry standards, and relevant regulatory frameworks.
 
 [add art]
 
@@ -29,9 +29,7 @@ In the context of the Well-Architected Framework, security is about providing co
 
 Level 1 of the maturity model helps workload teams achieve a solid security foundation that they can expand and improve on throughout the workload's lifecycle. This foundation, known as the *security baseline*, captures the minimum security requirements and expectations that you need to implement. Anchor the baseline in well-defined and mature industry standards and regulatory framework guidance.
 
-The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how those mechanisms interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built-in by default. Conduct regular code reviews and automated security scans.
-
-<!-- No more than 5 H4 headings per tab -->
+The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how those mechanisms interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built in by default. Conduct regular code reviews and automated security scans.
 
 #### &#10003; Integrate baseline security into the development phases of the software development lifecycle (SDLC)
 
@@ -41,7 +39,7 @@ As you begin the development phase of your workload implementation, standardize 
 
 Identity and access management can quickly become complex and burdensome as your workload development progresses. Use an IdP, like Microsoft Entra, to help maintain security standards by tightly controlling access to workload components and using nonhuman identities, like managed identities.
 
-IdPs also enhance security and compliance through multifactor authentication and detailed access logs. These featuers streamline user interactions while reducing operational burden.
+IdPs also enhance security and compliance through multifactor authentication and detailed access logs. These features streamline user interactions while reducing operational burden.
 
 #### &#10003; Observe access patterns of key identities and apply an appropriate level of security
 
@@ -65,9 +63,7 @@ Application secrets are confidential components that facilitate communication be
 
 # [**Level 2: Threat prevention controls**](#tab/level2)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
-
-![Goal icon](../_images/goal.svg) **Enhance baseline security by using threat prevention measures.**
+![Goal icon](../_images/goal.svg) **Enhance the baseline security with threat prevention measures**
 
 In Level 2 of the Security pillar, you enhance your baseline security configuration to help minimize potential threats when you deploy your workload.
 
@@ -79,6 +75,7 @@ This level focuses on:
 - Securing your network ingress points. 
 - Hardening the workload components. 
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Securing your SDLC is an interative process that requires adopting new processes and sometimes a shift in mindset for developers. Applying controls on deployments can be frustrating for developers, so it helps to foster a culture of shared responsibility for security. While potentially slowing down development velocity, securing your deployments sets your team up for long-term success.
 These measures help you safely build your workload and get it ready for operational use while maintaining a solid security posture.
 
 #### &#10003; Secure the deployment phase of your SDLC
@@ -99,7 +96,7 @@ Include software, libraries, and infrastructure patching in your standard proces
 
 Adopt a data classification system and its supporting processes to help ensure that you maintain confidentiality and integrity. Start with broad categories like Public, General, Confidential, and Highly Confidential, and apply appropriate levels of security to protect those categories throughout your data stores. Consider investing in tooling like [Microsoft Purview](/purview/purview) to govern your data. For detailed best practices, see the [data classification guidance](/compliance/assurance/assurance-create-data-classification-framework) in the Microsoft compliance documentation.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Data classification can be an expensive undertaking in terms of costs and effort, even if you use tooling. After you create your initial categories and perform an initial classification exercise, determine how much effort you plan to apply to ongoing maintenance, either manually or with tooling. Be sure to include time and costs for training in your estimates.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Data classification can be an expensive undertaking in terms of costs and effort, even if you use tooling. Once you've created your initial categories and performed an initial classification exercise, determine how much effort will be involved with ongoing maintenance manually or with tooling. Be sure to factor in time and costs for training in your estimates.
 
 #### &#10003; Apply authorization and authentication controls
 
@@ -121,17 +118,47 @@ In general, choose a native or partner firewall to control all ingress to your w
 
 Hardening the workload is an iterative process that requires continuous improvement. Be vigilant and analyze the workload for vulnerabilities. As your workload matures, use a vulnerability scanning tool to help you easily identify vulnerable components. Early in your development, a better strategy might be to perform the hardening exercise manually. Look at the configurations of your components to find potential weaknesses, such as misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that you can shut down or remove entirely and for unused accounts that you can deactivate.
 
-# [Level 3](#tab/level3)
+# [**Level 3 - Threat evaluation and mitigation** ](#tab/level3)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) **Proactively identify and mitigate security threats**
 
-### Strategy focus: Threat evaluation and mitigation
+Level 3 of the maturity model is the point where you should implement advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Using strategies like threat modeling, network flow classifications, and advanced encryption techniques builds an additional level of preparedness on the foundational mechanisms you should already have in place. Designing an incident response plan ties all of your threat detection and mitigation strategies together and standardizes how you manage security incidents.
 
-<!-- No more than 5 H4 headings per tab -->
+#### &#10003; Incorporate threat modeling into your software development lifecycle (SDLC)
 
-#### Example heading
+Threat modeling is an engineering technique you can use to help you identify threats, attacks, vulnerabilities, and countermeasures that could affect your workload. You can use threat modeling to shape your workload's design, meet your company's security objectives, and reduce risk. When performing a threat modeling exercise, include the following strategies:
 
-<!-- No more than 100 words under each H4 heading. -->
+- *Validate the workload security requirements.* The process of gathering and codifying the workload security requirements should've been completed early on in your workload development. At Level 3, you should validate the requirements as a preliminary step in the threat modeling exercise.
+- *Validate the workload architectural diagram.* Like gathering requirements, building an architectural diagram with flows should've been completed at an earlier stage in your workload development, and at Level 3, you should validate the diagram.
+- *Identify potential threats.* Analyze potential threats for each component from an outside-in perspective. Determine how an attacker might exploit a given resource to gain further access. Classify threats according to an industry standard methodology like [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to help you understand the nature of each threat and apply appropriate security controls.
+- *Plan mitigation strategies.* After identifying potential threats, start building mitigation plans to enhance your hardening design. Include these mitigation strategies in your team's backlog for tracking.
+- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling Tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient, standardizing the approach and reporting processes.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Threat modeling is an intensive exercise and can slow down development velocity. Account for the additional effort required in your development planning.
+
+#### &#10003; Classify network traffic flows
+
+To classify flows, start by examining your workload architecture schematic to understand the flow's intent and characteristics. Consider the flow's network characteristics, such as protocol and packet details, and any compliance requirements. Classify the flow based on its visibility from external networks, distinguishing between public and private workloads, and implement security measures like load balancers or firewalls to protect critical flows.
+
+#### &#10003; Use advanced encryption strategies
+
+Review your compliance requirements and reevaluate your encryption configurations to determine how you can enhance your design with advanced encryption strategies. For example, you might have a requirement to use [double encryption](/azure/security/fundamentals/double-encryption), or you might need to [manage your encryption keys](/azure/security/fundamentals/encryption-customer-managed-keys-support). 
+
+If you need to manage your own keys, use a key management service to mitigate the risk of losing a key or failing to rotate keys according to your requirements. Determine which service is the best match [for your use case](/azure/security/fundamentals/key-management-choose).
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure to research these strategies for your particular requirements before implementing them.
+
+#### &#10003; Build an incident response plan
+
+Create an incident response plan that allows you to rapidly detect and respond to potential and active security compromises. The plan should include the following considerations:
+
+- *Identification of the incident owner(s) on the workload team.* One or more individuals on the workload team should be responsible for receiving alert notifications and working with triage teams to efficiently respond to incidents.
+- *Investigation and triage processes.* Determine the appropriate communication methods, like asynchronous updates vs a bridge call. Only involve necessary personnel to keep the focus on the immediate problem. Ensure architectural diagrams and other documentation about the workload are kept up to date to ensure that the team can work efficiently.
+- *Incident recovery processes.* Treat security incidents like disasters, and align your incident response plan to your business continuity and disaster recovery (BCDR) plan. Minimize the risk of recurrence by mitigating the issue before reintroducing the compromised component.
+- *Learn from incidents.* Perform post-incident reviews (also known as postmortems) to look for improvement opportunities. Include time in your planning for implementing improvements and include improvements in your BCDR drills.
+- *End-user and stakeholder communications.* Ensure that your users and stakeholders are kept up-to-date as you work through incidents. Define the proper communication channels and cadence to send out updates.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Investigatoin, mitigation, and recovery processes can impact your reliability targets. You may need to disable parts of your system during an incident, affecting functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
 # [Level 4](#tab/level4)
 
