@@ -16,158 +16,151 @@ Reliability is about ensuring that your solution is available and working when y
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1 - Resilient foundation**](#tab/level1)
+# [**Level 1: Resilient foundation**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Establish a solid groundwork for resiliency in workload infrastructure and operations, rather than spending time on optimization tasks.**
 
-Level 1 of the maturity model is designed to help workload teams build a strong foundation for system reliability. The focus is on bootstrapping, that is, setting up the basics for future reliability decisions. This stage mostly involves functional implementation with minor extensions to current practices. 
+Level 1 of the maturity model is designed to help workload teams build a strong foundation for system reliability. The focus is on bootstrapping, which is the process of setting up the basics for future reliability decisions. This stage mostly involves functional implementation with minor extensions to current practices. 
 
-This stage includes researching, gaining insights, and creating an inventory of your systems. Additionally, it leverages Azure's built-in reliability features, like enabling zone redundancy for immediate improvements.
+This stage includes researching, gaining insights, and creating an inventory of your systems. It also uses built-in reliability features on Azure, like enabling zone redundancy for immediate improvements.
 
-By establishing these basics, you can prepare your team to advance through the levels of the reliability maturity model, progressively enhancing your system's resilience and performance.
+By establishing these basics, you can prepare your team to advance through the levels of the reliability maturity model to progressively enhance your system's resilience and performance.
 
 #### &#10003; Evaluate opportunities to offload operational responsibility 
 
-This strategy is fundamentally a _build versus buy or rely_ approach. The decision depends on how much responsibility is manageable at this stage while still supporting future development. While you want to utilize resources relevant to the workload, always explore opportunities to offload their maintenance. Here are some classic use cases where you might want to apply this approach.
+This strategy is fundamentally a _build_ versus a _buy or rely_ approach. The decision depends on how much responsibility is manageable at this stage while still supporting future development. You want to use resources that are relevant to the workload, but you should always explore opportunities to offload their maintenance. Here are some classic use cases where you might want to apply this approach.
 
-- **Offload responsibilities to the cloud platform** by preferring PaaS services. They offer ready-made solutions for common resiliency needs like replication, failover, and backup stores. This way, the cloud provider handles hosting, maintenance, and building resilience. For example, replicating across multiple compute nodes, distributing replicas among availability zones, and others. If you build your own solution on VMs, you'll need to manage these aspects yourself, which can be time-consuming and complex. 
+- **Offload responsibilities to the cloud platform** by choosing platform as a service (PaaS) solutions. They provide ready-made solutions for common resiliency needs like replication, failover, and backup stores. When you take this approach, the cloud provider handles hosting, maintenance, and resilience improvements. 
 
-- **Offload responsibility of operations** that aren't directly tied to workload's business objectives. Some specialized operations can potentially affect the reliability of your workload, such as database management and security. Explore the possibility of handling those tasks by experienced teams, choice of technology, or both.  
+   For example, the cloud provider replicates data across multiple compute nodes and distributes the replicas across availability zones. If you build your own solution on virtual machines (VMs), you need to manage these aspects yourself, which can be time-consuming and complex.
 
-    For example, if your team doesn't have database expertise, then using managed services can help shift the responsibility to the provider. This approach can be useful when starting out, because it allows the team to focus on the functionality of the workload. Many enterprises have shared, centrally managed services. If available, use platform teams to handle these operations. However, this approach may add dependencies and organizational complexity.
+- **Offload responsibilities for operations** that aren't directly tied to the workload's business objectives. Some specialized operations, such as database management and security, can potentially affect the reliability of your workload. Explore the possibility of having experienced teams, technology, or both handle those tasks.
 
-    Alternatively, if the team has the right expertise, you might make an explicit decision to use their skills and select services without management capabilities. 
+    For example, if your team doesn't have database expertise, use managed services to help shift the responsibility to the provider. This approach can be useful when you start out because it allows your team to focus on the functionality of the workload. Many enterprises have shared, centrally managed services. If platform teams are available, use them to handle these operations. However, this approach might add dependencies and organizational complexity.
 
-- **Offload responsibility to third-party vendors**. Prefer off-the-shelf products as the starting point. Build customized solutions only when it contributes to your workload's business value. 
+    Alternatively, if your team has the right expertise, you might make an explicit decision to use their skills and select services that don't include management capabilities. 
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: If the _buy or rely_ option partially fulfills your requirements, you might need to implement custom extensions. This can often result in a "customization lock-in" situation, where updates and modernization become impractical. Regularly review your requirements and compare them with the solution's capabilities. Develop an exit strategy for when there is a significant deviation between the two.
+- **Offload responsibilities to non-Microsoft vendors.** Choose off-the-shelf products as the starting point. Build customized solutions only when they contribute to your workload's business value.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If the _buy or rely_ option partially fulfills your requirements, you might need to implement custom extensions. This method can result in a "customization lock-in" situation, where updates and modernization become impractical. Regularly review your requirements and compare them with the solution's capabilities. Develop an exit strategy for when there is a significant deviation between the two.
 >
->  The opposite scenario is also a risk. While the _buy or rely_ option might seem simpler initially, it may require re-evaluation and redesign later if the limitations of the PaaS service, vendor solution, or platform-owned resources don't meet the necessary granularity or level of autonomy needed for the workload.
-
+>  The opposite scenario is also a risk. Although the _buy or rely_ option might seem simpler at first, it might require re-evaluation and redesign later if the limitations of the PaaS service, vendor solution, or platform-owned resources don't meet the necessary granularity or level of autonomy needed for the workload.
 
 #### &#10003; Identify the critical user and system flows 
 
-Decomposing the workload into flows is crucial at this stage. Focus on _user_ and _system_ flows. User flows determine user interactions, while system flows determine communication between workload components that aren't directly associated with user tasks.
+Breaking down the workload into flows is crucial at this stage. Focus on _user_ and _system_ flows. User flows determine user interactions, and system flows determine communication between workload components that aren't directly associated with user tasks.
 
-For example, in an e-commerce application, end users perform front-end activities like browsing and ordering. Meanwhile, backend transactions and system-triggered processes fulfill user requests and handle other tasks. Those distinct flows are part of the same system but involve different components and serve different purposes.  
+For example, in an e-commerce application, customers perform front-end activities like browsing and ordering. Meanwhile, back-end transactions and system-triggered processes fulfill user requests and handle other tasks. Those distinct flows are part of the same system, but they involve different components and serve different purposes.
 
-Start building a catalog of flows at this stage. Observe user interactions and component communication. List and categorize flows, defining their start and end points, and noting dependencies. Document outcomes and exceptions using diagrams for clarity. This catalog can serve as an important tool for initial conversation with business stakeholders to identify the most important aspects from their perspective. This can inform the first level of prioritization.
+Start building a catalog of flows at this stage. Observe user interactions and component communication. List and categorize flows, define their start and end points, and note dependencies. Document outcomes and exceptions by using diagrams for clarity. This catalog can serve as an important tool for the initial conversation with business stakeholders to identify the most important aspects from their perspective. This conversation can inform the first level of prioritization.
 
-Classify a flow as critical by evaluating the risk and impact on primary business activities. If an outage is expected, graceful degradation will focus on maintaining these critical flows. In the e-commerce example, critical flows include product search, adding items to the cart, and checkout, as they are essential for business. Other processes, like updating product data and maintaining product images, aren't as critical. Ensuring critical flows remain operational during an outage prevents revenue loss by allowing users to continue searching for products and adding items to the cart.
+Classify a flow as critical by evaluating the risk and impact on primary business activities. If you expect an outage, graceful degradation focuses on maintaining these critical flows. In the e-commerce example, critical flows include product searches, adding items to the cart, and checkout because these tasks are essential for business. Other processes, like updating product data and maintaining product images, aren't as critical. Ensure that critical flows remain operational during an outage to prevent revenue loss by allowing users to continue searching for products and adding items to the cart.
 
 > [!NOTE]
-> A business process can be critical even if it's not time-sensitive. Time criticality is a key factor. For example, meeting auditing requirements is a critical process, but presenting data for an audit may not need to be immediate. The process remains important, but its reliability isn't as time-critical because recovery within a few hours is acceptable. 
+> A business process can be critical even if it's not time sensitive. Time criticality is a key factor. For example, meeting auditing requirements is a critical process, but you might not need to present data for an audit immediately. The process remains important, but its reliability isn't time critical because recovery within a few hours is acceptable.
 
-> Refer to: [ Well-Architected Framework: Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows).
-
+For more information, see [Azure Well-Architected Framework: Optimize workload design by using flows](/azure/well-architected/design-guides/optimize-workload-using-flows).
 
 #### &#10003; Select the right design model, resources, and features 
 
-This strategy should be applied at these levels: 
+You should apply this strategy at the following levels: 
 
-- **Architecture**. The design of the workload should keep in mind reliability expectations at various infrastructure layers. Initial decisions might be choice between containerization or PaaS for hosting the application. Or, networking setups like hub-spoke or a single virtual network. 
+- **Architecture:** The workload design should account for reliability expectations at various infrastructure layers. Your initial decisions might be the choice between containerization or PaaS for hosting the application. Or, you might consider networking setups like hub and spoke or a single virtual network.
 
-    Also set boundaries that create segmentation based on functionality. For example, Instead of hosting everything on one virtual machine with a single-zone virtual disk, consider splitting compute and data storage, and using dedicated services.
+    You should also set boundaries that create segmentation based on functionality. For example, instead of hosting everything on one VM with a single-zone virtual disk, consider splitting compute and data storage and using dedicated services.
 
     > [!CAUTION]
-    > 
-    > In migration scenarios, adopting a lift-and-shift approach without reviewing new opportunities can lead to missed benefits and inefficiencies. It's important to research modernization early to avoid being stuck with difficult-to-change setups and taking advantage of better options and improvements.
+    > In migration scenarios, adopting a lift-and-shift approach without reviewing new opportunities can lead to missed benefits and inefficiencies. It's important to research modernization early to avoid being stuck with setups that are difficult to change and to take advantage of better options and improvements.
 
-- **Choice of Azure services**. Use decision trees to begin to select the right services for your design. Choose components that meet current needs but remain flexible to switch services as your workload evolves and requires more features.
+- **Azure services:** Use decision trees to help you select the right services for your design. Choose components that meet your current needs, but remain flexible so that you can switch services as your workload evolves and requires more features.
 
-- **Choice of SKUs or tiers within Azure services**. Review the features of each SKU and understand the platform's availability guarantees. Evaluate SLAs to understand the coverage provided around the published percentile.
+- **SKUs or tiers within Azure services:** Review the features of each SKU and understand the platform's availability guarantees. Evaluate service-level agreements to understand the coverage provided around the published percentile.
 
-- **Enable features to support reliability**. Choosing cloud-native services can enhance availability through simple configurations without changing the code. However, it's important to be aware of these options and select configurations mindfully, such as increasing zone redundancy or replicating data to a secondary region.
+- **Features that support reliability:** Choose cloud-native services to enhance availability through simple configurations without changing the code. It's important to understand the options and intentionally select configurations, such as increasing zone redundancy or replicating data to a secondary region.
 
+#### &#10003; Deploy with a basic level of redundancy
 
-#### &#10003; Deploy with the basic level of redundancy 
+Within each part of your solution, avoid single points of failure, such as single instances. Create multiple instances for redundancy instead. Azure services often handle redundancy for you, especially with PaaS services, which usually include local redundancy by default and options to upgrade. Preferably, use zone redundancy to spread those instances across multiple Azure datacenters. If you don't, at least ensure local redundancy, but this method comes with higher risk. In future levels, you evaluate whether your reliability requirements might be met by extending the solution with geo-redundant components.
 
-Within each part of your solution, avoid single points of failure, such as single instances, and instead create multiple instances for redundancy. Azure services often handle redundancy for you, especially with PaaS services, which usually include local redundancy by default and options to upgrade. Preferably, use zone redundancy to spread those instances across multiple Azure datacenters. If you don't, at least ensure local redundancy, but this comes with higher risk. In future levels, you’ll evaluate whether your reliability requirements might be met by extending the solution with geo-redundant components.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** One significant trade-off is the increased cost of redundancy. Also, cross-zone communication can introduce latency. For legacy applications that require minimal latency, redundancy can degrade performance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: One significant tradeoff is increased cost of redundancy. Also, cross-zone communication can introduce latency. For legacy applications that require minimal latency, there could be a performance hit. 
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If an application isn't designed for a multiple-instance environment, it might struggle with multiple active instances, which can lead to inconsistent data. Also, if an application is built for an on-premises setup that has low latency, using availability zones might disrupt its performance.
 
+#### &#10003; Enable metrics, logs, and traces to monitor flows
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: If an application isn't designed for a multi-instance environment, it may struggle with multiple active instances, causing data consistency issues. Also, if it was built for an on-premises setup with low latency, using availability zones could disrupt its performance expectations. 
+Choose platform-native tools like Azure Monitor to ensure visibility of metrics, logs, and traces. Use built-in features to set alerts for potential problems. You should have basic alerting in place to send notifications and get alerts. Take advantage of Azure platform capabilities that indicate changes in the health status of services, such as: 
 
+- [Azure Service Health](/azure/service-health/service-health-overview) to check the platform-level health status.
 
-#### &#10003; Enable metrics, logs, traces to monitor flows 
+- [Azure Resource Health](/azure/service-health/resource-health-overview) to check the resource-level health status.
 
-Prefer platform native tools, like Azure Monitor to ensure visibility of metrics, logs, and traces. Use built-in features to set alerts for potential issues. You should have basic alerting in place to send notifications and get alerts. Take advantage of platform capabilities that indicate changes in the health status of Azure services, such as: 
+Set up [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups) for both the infrastructure and the application.
 
-- Platform-level health, like [Azure Service Health](/azure/service-health/service-health-overview).
+>  :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** As you collect more logs, you need to manage the increasing volume, which affects the storage-related costs of those logs. Use retention policies to manage the volume. Use Azure Monitor to set a daily cap on a workspace. For more information, see [Configuration recommendations for Reliability](/azure/well-architected/service-guides/azure-log-analytics#configuration-recommendations-for-reliability).
 
-- Resource-level health, like [Azure Resource Health](/azure/service-health/resource-health-overview).
-
-For both infrastructure and application, set up [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups).
-
-Start building your observability at these layers.
-
->  :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: As you collect more logs, you'll need to manage the increasing volume, which will impact cost related storage of those logs. Use retention policies to manage the volume. Those practices are described in Operational Excellence.
+Start building observability at the following layers.
 
 ##### Infrastructure
 
-Start by enabling diagnostic logs and making sure native metrics from platform components are gathered for analysis. Make sure you gather information about resource utilization, such as CPU, memory, I/O, and network activity. 
+Start by enabling diagnostic logs and making sure that you gather native metrics from platform components for analysis. Gather information about resource usage, such as CPU, memory, input/output, and network activity. 
 
 ##### Application
 
-From application perspective, collect application-level metrics, such as memory consumption or request latency. Also, log application activities. Do logging operations in a thread or process that's separate from the main application thread. This approach won't cause logging to slow down the application's primary tasks.
+Collect application-level metrics, such as memory consumption or request latency, and log application activities. Do logging operations in a thread or process that's separate from the main application thread. This approach doesn't cause logging to slow down the application's primary tasks.
 
 Also, check the [basic availability tests](/azure/azure-monitor/app/availability) in Application Insights.
 
 ##### Data
 
-To monitor databases at a basic level, collect key metrics emitted by the database resources. Similar to infrastructure components, track resource utilization in the context of data stores, such as networking metrics. Gathering data on how connections are pooled is important for improving efficiency at later stages. 
+To monitor databases at a basic level, collect key metrics that the database resources emit. Similar to infrastructure components, track resource usage in the context of data stores, such as networking metrics. Gathering data about how connections are pooled is important for improving efficiency at later stages. 
 
-From reliability perspective, it's particularly important to track connection metrics, such as monitoring active connections and also  failed connections. For example, in Azure Cosmos DB, 429 status code is returned when the number of requests exceeds the allocated Request Units (RUs) and connections start failing.
+For reliability, it's important to track connection metrics, such as monitoring active and failed connections. For example, in Azure Cosmos DB, a 429 status code is returned when the number of requests exceeds the allocated request units and connections start failing.
 
 #### &#10003; Start building a failure mitigation playbook
 
+Failures range from intermittent to slightly extended transient failures and catastrophic outages.
 
-Failures range from intermittent to slightly longer-than-usual transient failures, to catastrophic outages. 
+In Level 1, focus on platform failures. Even though they're beyond your control, you should still have strategies for handling them. For example, address zonal outages by using availability zones. Anticipate transient faults at the platform level and handle them in your workload.
 
-In Level 1, focus on platform failures, which are beyond your control but you should still have strategies for handling them. For example, for zonal outage, use availability zones to handle them. Transient faults can also happen at the platform level, anticipate those and handle them in your workload.
+The process of handling these failures varies based on complexity. Start documenting potential platform-level failures, their associated risks, and mitigation strategies. This exercise is primarily theoretical and matures with automation at later levels.
 
-The process of handling these failures varies based on complexity. Start documenting potential platform-level failures, their associated risks, and mitigation strategies. This exercise is primarily theoretical and will mature with automation at later levels.
+You should document failures, including factors like their likelihood, impact, and mitigation strategies. Use a criticality scale that aligns with your workload's goals. Your scale might include:
 
-Failures should be documented with factors such as their likelihood, impact, mitigation strategies. Use a criticality scale that aligns with workload goals. For instance,
+- High. A complete system outage that results in significant financial loss and a decline in user trust.
 
-- High. A complete system outage resulting in significant financial loss and a decline in user trust.
+- Medium. A temporary disruption that affects part of the workload and causes user inconvenience.
 
-- Medium. A temporary disruption affecting part of the workload, leading to user inconvenience.
-
-- Low. A minor software issue impacting a non-essential feature of the application, causing minimal downtime for users.
-
+- Low. A minor software problem that affects a nonessential feature of the application and causes minimal downtime for users.
 
 Here's an example template:
 
-|Issue|Risk|Source|Severity|Likelihood|Mitigation
+|Problem|Risk|Source|Severity|Likelihood|Mitigation
 |---|---|---|---|---|---|
-|Transient network failure | Client loses connection to application server | Azure platform| High | Very likely| Use design patterns in client-side logic, such as retry logic and circuit breaker|
-|Zone outage | User can't reach application | Azure platform | High impact | Not likely | Enable zone resiliency on all components |
-|TLS certificate expires | Clients can't establish TLS session to application | Human error | High | Likely | Use automated TLS certificate management |
-|CPU and/or memory usage is maxed out causing the server to choke|Requests time out|Application| Medium| Likely | Implement automatic restarts|
-|Component is unavailable during an update|User experiences unhandled error in the application|Deployment or change in configuration| Low | Higly likely during deployments, not likely at other times | Handle in client-side logic |  
+|Transient network failure | The client loses their connection to the application server. | Azure platform | High | Very likely | Use design patterns in client-side logic, such as retry logic and circuit breakers.|
+|Zone outage | The user can't reach the application. | Azure platform | High | Not likely | Enable zone resiliency on all components. |
+|Transport Layer Security (TLS) certificate expiration | The client can't establish a TLS session with the application. | Human error | High | Likely | Use automated TLS certificate management. |
+|CPU or memory usage reaches defined limits and causes the server to fail. | Requests time out. | Application | Medium | Likely | Implement automatic restarts. |
+|Component is unavailable during an update. | The user experiences an unhandled error in the application. | Deployment or change in configuration | Low | Highly likely during deployments and not likely at other times | Handle components in client-side logic. |
 
-At Level 1, don't strive for completeness because there will always be unforeseen failure cases. If you experience unexpected outages, document the causes and mitigations in the playbook. Treat this asset as a living document that gets updated over time.
+At Level 1, don't strive for completeness because there are always unforeseen failure cases. If you experience unexpected outages, document the causes and mitigations in the playbook. Treat this asset as a living document that you update over time.
 
+#### &#10003; Add mechanisms to recover from transient failures
 
-#### &#10003; Add mechanisms to recover from transient failures 
+In a cloud environment, transient failures are common. They indicate short-term problems that retries can usually resolve within seconds.
 
-In a cloud environment, transient failures are common. They indicate short-term issues that can be resolved with retries, usually within seconds. 
+Use built-in SDKs and configurations to handle these faults to keep the system active. Built-in configurations are often the default setting, so you might need to test to validate the implementation. Also, implement patterns that are designed to handle transient failures in your architecture. For more information, see [Cloud design patterns that support reliability](./design-patterns.md).
 
-Use built-in SDKs and configurations to handle these faults to keep the system going. This is often the default setting, so test work may be needed to validate the implementation. Also, implement patterns in your architecture, which are designed specifically to handle transient failures. For more information, see [Cloud design patterns that support reliability](./design-patterns.md).
+Persistant problems might indicate a failure that isn't transient or the start of an outage. This scenario requires more than just fixing localized problems within the application. It involves examining the critical user and system flows of the system and adding self-preservation techniques and recovery efforts. These methods are mature practices that Level 2 describes.
 
-If issues persist, it may indicate a non-transient failure or the start of an outage. This requires more than just fixing localized issues within the application. It involves examining the critical user and system flows of the system and adding self-preservation techniques and recovery efforts. This is a mature practice that's discussed in Level 2.
+#### &#10003; Run basic tests
 
-#### &#10003; Run basic tests 
+Integrate basic reliability testing in the early stages of the software development lifecycle. Look for opportunities to do testing, starting with unit tests to validate functionality and configurations.
 
-Integrate basic reliability testing in the early stages of software development lifecycle. Look for opportunities to do testing, starting with unit tests to validate functionality and configurations.
+Also, develop simple test cases for the problems that you identify in the risk mitigation playbook. Focus on higher impact, lower effort mitigations. For example, simulate network outages or intermittent connectivity problems to see how your retry logic resolves the disruptions.
 
-Also, develop simple test cases for the issues identified in the risk mitigation playbook. Focus on higher impact, lower effort mitigations. For example, simulate network outages or intermittent connectivity issues to see how your retry logic resolves the disruptions.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Testing often introduces friction in the development cycle. To mitigate this risk, make reliability testing trackable alongside development tasks.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Testing often introduces friction in the development cycle. To mitigate the risk, make reduction in reliability failures trackable alongside development tasks. //TO DO is a diligent step toward improved reliability.
-
-Testing can introduce friction in the development cycle, when the priority is feature development. so it's easier to start from the beginning when there's almost nothing. Designing non-functional aspects from the start allows you to extend them as you add functional capabilities, rather than building up a backlog of issues to address later. Although it requires a bit more effort initially, it's manageable and prevents larger problems down the line.
+Feature development is the priority, and testing can introduce friction in the development cycle. It's easier to start testing before feature development is complete. Designing nonfunctional aspects of the application at the beginning allows you to extend them as you add functional capabilities, rather than building up a backlog of problems to address later. Although this approach requires more effort initially, it's manageable and prevents larger problems later.
 
 # [**Level 2** - Self-preservation](#tab/level2)
 
