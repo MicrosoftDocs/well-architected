@@ -225,7 +225,7 @@ Streamlining development practices increases build velocity, saving your workloa
 
 Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate internal and external user and stakeholder feedback to determine which features will have the highest impact on user satisfaction, driving increased utilization. In some cases, features might be developed specifically for optimizing costs. Weigh those against functional priorities to determine their relative value.
 
-# [Level 4 - Refining in production](#tab/level4)
+# [**Level 4: Applying production learnings**](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) Apply learnings from operating in production to achieve cost optimizations.
 
@@ -274,9 +274,10 @@ Appointing a cost DRI (Directly Responsible Individual) can help the workload te
 
 The DRI also acts as the frontline of defense for higher than expected workload costs. He or she can help identify the cause of high costs and proactively work with the workload team to reduce them back to their expected range before they become a cost emergency.
 
-# [Level 5](#tab/level5)
+# [**Level 5: Advanced cost efficiency techniques](#tab/level5)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) Refine the workload and operational processes to achieve additional cost efficiencies.
+
 
 ### Strategy focus: 
 
