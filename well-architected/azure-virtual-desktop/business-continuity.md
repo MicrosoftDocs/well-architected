@@ -155,6 +155,66 @@ For golden images, it's best to consider three scenarios:
 - Use zone-redundant storage to spread copies of images across availability zones.
 - Create a secondary compute gallery within a secondary region.
 
+## Performance resilience
+
+*Impact: Reliability, Performance*
+
+Ensuring consistent performance during failover scenarios is a critical aspect of business continuity planning. Azure Virtual Desktop deployments should be designed to deliver predictable performance, even in disaster recovery (DR) environments.
+
+To maintain a high-quality user experience during regional outages or planned failovers, consider the following:
+
+- **Proximity Placement Groups (PPGs)**: Use PPGs in the DR region to minimize latency between session hosts and storage resources, such as FSLogix profile containers and MSIX App Attach packages.
+
+- **Warm or pre-staged session hosts**: Pre-warm key session hosts in the DR region by keeping a small subset of VMs hibernated or powered on during business hours. This reduces cold-start delays when initiating a failover.
+
+- **Load simulation and testing**: Validate performance in the DR region by simulating real-world workloads. Use Azure Load Testing or similar tools to ensure the DR infrastructure meets performance expectations under load.
+
+##### Recommendations
+
+- Use Proximity Placement Groups in DR to maintain performance consistency.
+- Pre-stage or hibernate critical DR session hosts to minimize startup latency.
+- Run periodic load tests in the DR region to ensure performance readiness.
+
+## Cost optimization
+
+*Impact: Cost, Efficiency*
+
+A well-architected disaster recovery strategy balances reliability with cost efficiency. Azure provides several options for minimizing standby infrastructure costs while meeting recovery time objectives.
+
+- **Deallocate DR session hosts**: Keep VMs in the DR region deallocated when not in use. This approach eliminates compute charges while retaining storage.
+
+- **Use pay-as-you-go pricing in DR**: Avoid long-term compute commitments in the DR region. Use pay-as-you-go pricing for flexibility and reduced cost during non-failover periods.
+
+- **Apply production scaling logic to DR**: Reuse production auto-scaling or scaling plan rules in DR to optimize resource allocation during failover events.
+
+- **Model DR costs**: Use the Azure Pricing Calculator to assess the financial impact of different DR configurations and determine the most cost-effective approach for your business continuity requirements.
+
+##### Recommendations
+
+- Deallocate DR VMs to avoid unnecessary compute costs.
+- Use consumption-based pricing in DR instead of reserved instances.
+- Replicate scaling policies in DR to manage failover usage effectively.
+- Evaluate DR cost scenarios using the Azure Pricing Calculator.
+
+## Operational excellence
+
+*Impact: Reliability, Governance*
+
+Operational readiness ensures that disaster recovery procedures are well-documented, repeatable, and routinely validated. Regular testing and documentation reviews help identify gaps before an actual failure occurs.
+
+- **Maintain DR runbooks**: Document step-by-step procedures for initiating failover, updating DNS, notifying stakeholders, and restoring services. Store these documents in a centralized repository like Azure DevOps Wiki or SharePoint.
+
+- **Schedule regular DR drills**: Conduct DR drills on a quarterly or biannual basis. Simulate failovers end-to-end, including session access validation and profile availability checks.
+
+- **Perform post-drill reviews**: After each drill or real failover event, perform a retrospective to identify lessons learned and areas for improvement. Update runbooks and automation scripts accordingly.
+
+##### Recommendations
+
+- Maintain centralized, version-controlled documentation of DR workflows.
+- Perform regular DR drills to validate readiness across all teams.
+- Continuously refine disaster recovery plans based on test results and real-world events.
+
+
 ## Next steps
 
 Now that you've examined business continuity considerations, see how to optimize performance and cost considerations when you select storage solutions for your workload.
