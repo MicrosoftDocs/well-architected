@@ -189,7 +189,7 @@ Another critical testing function is to build your performance baseline. Baselin
 
 #### &#10003; Adopt a business-driven mindset to drive performance efficiency
 
-Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance issues. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
+Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance problems. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
 
 # [Level 4 - Learning from production experience](#tab/level4)
 
