@@ -233,7 +233,7 @@ The Level 4 stage of the maturity model assumes that you have deployed into prod
 
 When you perform any changes in your production environment, you will directly affect other aspects of your workload. So, when you make refinements to achieve cost savings, you will impact one or more of the other Well-Architected Framework pillars. For this reason, having mature change management practices is critical. Thoroughly reviewing and testing changes and developing rollback plans are essential to mitigate performance, security, and reliability impacts when making cost savings changes to your workload.
 
-#### Refine the cost model based on production learnings
+#### &#10003; Refine the cost model based on production learnings
 
 Once you have deployed and operated your workload in production for a sufficient time period to understand your normal usage patterns, revisit your cost model to plan for the future. The cost model should project future expenses, allocate funds, and adjust for deviations. In scenario analysis, it evaluates the financial impact of different business changes and anticipates cost implications of customer behavior. For resource optimization, it identifies underutilized cloud resources, forecasts costs of scaling, and compares cloud providers' billing models to choose the most economical option.  
 
@@ -243,14 +243,14 @@ As part of this exercise, determine how closely your running costs align with th
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cost-cutting measures can adversely affect reliability, security, performance, and operational excellence. Carefully analyze the impact of every planned cost-cutting measure and determine if making a given change is worth the potential impact.
 
-#### Optimize your data usage for costs
+#### &#10003; Optimize your data usage for costs
 
 Use your production learnings to refine your data strategies. In particular, look for optimization opportunities for the following factors:
 
 - Optimize your storage solutions considering ease of management. Evaluate whether the storage solutions you have deployed are the best fit for your use case and whether changing to a different technology can save you operational burden or utilization costs. For example, you might have initially deployed SQL Server on VMs to easily migrate your workload or because that is the technology your workload team was most familiar with. Moving to a platform as a service (PaaS) service can significantly reduce your operational burden and save you costs, depending on certain factors.
 - Optimize your data lifecycle management. Review your data tiering and make adjustments where practical. You might have data that is no longer being actively used and can be moved to less expensive storage tiers, like archive storage. Likewise, if you haven't already created policies to define what types of data belong in different tiers, creating those based on production learnings will help the ongoing management of your data lifecycle more efficient. Finally, implement automation to enforce these policies to further optimize your efforts.
 
-#### Increase resource density
+#### &#10003; Increase resource density
 
 When practical, you can optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Database, networking, security and other services can be shared by multiple workloads. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After identifying candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure stakeholders understand the risks.
 
@@ -258,17 +258,17 @@ When practical, you can optimize costs by consolidating shared services across w
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Poorly executed consolidation can lead to future inefficiencies. Review your consolidation plan thoroughly to ensure that you're not creating bottlenecks that can affect you in the future prior to performing the migration. Following the migration, pay extra attention in your monitoring to the consolidated resources to ensure they're performing as expected.
 
-#### Evaluate and optimize your application features
+#### &#10003; Evaluate and optimize your application features
 
 Observe feature usage patterns in production and evaluate whether features align with your cost model. Determine whether a given feature is worth maintaining, refactoring, or removing (deprecating). In some cases, monetizing features might be a good business decision. These features might not be worth the current investment, but are valuable to customers, so offering them as a paid add-on or subscription can offset the investment costs.
 
-#### Minimize scaling costs by regulating demand
+#### &#10003; Minimize scaling costs by regulating demand
 
 A strategy that can help you optimize your resource scaling costs is regulating demand instead of adding capacity. This approach can involve offloading demand to other resources or reducing demand through various strategies like priority queues, buffering, load balancing, caching, and others. When considering any of these tactics, analyze how implementing it can impact other pillars of the Well-Architected Framework. Additionally, controlling supply by capping scaling limits and establishing a budget ensures expenses remain within defined thresholds. Track utilization and use cost management platforms and budget alerts to help monitor and control spending effectively.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Offloading tasks to other resources can reduce scaling costs, but it may introduce operational and maintenance challenges. Conduct a thorough cost-benefit analysis to ensure the chosen offloading method is both efficient and feasible, balancing savings with potential complexities.
 
-#### Enforce cost accountability through ownership
+#### &#10003; Enforce cost accountability through ownership
 
 Appointing a cost DRI (Directly Responsible Individual) can help the workload team take ownership of their workload costs.  The DRI is the person accountable for managing and optimizing cloud expenses. This role involves monitoring cloud usage, implementing cost-saving strategies, and ensuring that the organization's cloud spending aligns with its budget and business objectives. The DRI is responsible for making decisions related to cloud resource allocation, identifying areas of potential cost reduction, and ensuring efficient use of cloud services to avoid unnecessary expenses.
 
@@ -278,15 +278,19 @@ The DRI also acts as the frontline of defense for higher than expected workload 
 
 ![Goal icon](../_images/goal.svg) Refine the workload and operational processes to achieve additional cost efficiencies.
 
+At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes in place already. Level 5 focuses on maximizing your return on investment (ROI) through advanced refinements, maintaining a consistent and predictable workload budget, and producing highly accurate budget forecasts. Consider the following recommendations to achieve these goals.
 
-### Strategy focus: 
+#### &#10003; Introduce spending guardrails into your software development processes
 
-<!-- No more than 5 H4 headings per tab -->
+Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits or resource utilization checks to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
 
-#### Example heading
+#### &#10003;
 
-<!-- No more than 100 words under each H4 heading. -->
+#### &#10003;
 
+#### &#10003;
+
+#### &#10003;
 ---
 
 ## Next steps
