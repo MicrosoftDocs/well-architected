@@ -118,7 +118,7 @@ In general, choose a native or partner firewall to control all ingress to your w
 
 Hardening the workload is an iterative process that requires continuous improvement. Be vigilant and analyze the workload for vulnerabilities. As your workload matures, use a vulnerability scanning tool to help you easily identify vulnerable components. Early in your development, a better strategy might be to perform the hardening exercise manually. Look at the configurations of your components to find potential weaknesses, such as misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that you can shut down or remove entirely and for unused accounts that you can deactivate.
 
-# [**Level 3 - Threat evaluation and mitigation** ](#tab/level3)
+# [**Level 3: Threat evaluation and mitigation** ](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Proactively identify and mitigate security threats**
 
@@ -148,6 +148,10 @@ If you need to manage your own keys, use a key management service to mitigate th
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure to research these strategies for your particular requirements before implementing them.
 
+#### &#10003; Implement system auditing
+
+To maintain system integrity, keep an accurate and up-to-date record of the system state to promptly address any issues. Track resource creation and decommissioning, monitor configuration changes, and ensure logs capture specifics and timing of changes. Additionally, maintain a comprehensive view of patching processes, detect changes in the operating system, and set up alerts for unexpected changes.
+
 #### &#10003; Build an incident response plan
 
 Create an incident response plan that allows you to rapidly detect and respond to potential and active security compromises. The plan should include the following considerations:
@@ -160,17 +164,45 @@ Create an incident response plan that allows you to rapidly detect and respond t
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Investigatoin, mitigation, and recovery processes can impact your reliability targets. You may need to disable parts of your system during an incident, affecting functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
-# [Level 4](#tab/level4)
+# [**Level 4: Production hardening and refinements**](#tab/level4)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) **Refine security mechanisms based on production learnings**
 
-### Strategy focus: Threat prevention operations
+In Level 4, your workload should be running in production for a long enough period to gather and understand useful data about your normal operating conditions. With respect to security, this means that you will have observability data like audit logs and vulnerability scan reports, firewall logs, component usage patterns, incident reports, or other data points that you can analyze for improvement opportunities. Standardizing a regular review of your security mechanisms will keep your workload optimized for security and enforce a continuous improvement mindset.
 
-<!-- No more than 5 H4 headings per tab -->
+Ensure that as you make refinements across your security mechanisms, that you follow mature change management practices. This practice ensures that all changes are performed safely and are auditable.
 
-#### Example heading
+#### &#10003; Continuously revisit and refine the security baseline
 
-<!-- No more than 100 words under each H4 heading. -->
+As part of your operational continuous improvement practices, regularly review the security baseline and look improvement opportunities. As you improve the workload with new features or with new technologies, you might introduce new security vulnerabilities, so keeping your baseline up-to-date is a necessary parallel activity. Likewise, as your team's security expertise grows, you might find configurations in the baseline that can be refined to further improve your security posture. 
+
+Implement automated security governance with tools like Azure Policy and Microsoft Defender for Cloud to simplify the compliance of all resources to your baseline.
+
+#### &#10003; Refine your security monitoring strategy
+
+Apply learnings from operating in production to make improvements to your security monitoring and alerting. When you implmeneted your resource auditing, vulnerability scanning, or other security monitoring, you might have applied a generic approach to logging levels, retention policies, or other settings. Use the data you gather in production to refine settings based on usage patterns aligned with your organizational standards. Likewise, as your workload evolves, continually review your security monitoring and alerting implementation to ensure that all resources are properly configured.
+
+#### &#10003; Tighten your network security at the edge
+
+To enhance your network security, look for opportunities to apply microsegmentation to prevent lateral movement across the workload. That might mean moving components into their own subnets, protected by network security groups, or using built-in features for certain resources to limit traffic. For example, many Azure database services provide a built-in firewall that you can use to limit public and private network access. Other strategies include:
+
+- Standardize using only private networking throughout the workload. In Azure, use Private Link to connect your virtual networks to PaaS and SaaS resources as much as possible. See the list of [supported services](/azure/private-link/availability).
+
+- Protect your APIs. Use an API gateway solution, like Azure API Management, to proxy your API calls. Using a proxy minimizes network access to the backend APIs by exposing only the proxy and none of the backend components to callers.
+
+- Refine your firewall rules. Look for opportunities based on production observation to refine your firewall rules. You might have broadly implemented or relaxed rules in place from early work in development that can be tightened, or unused rules that can be cleaned up. Likewise, new threats and vulnerabilities are constantly being discovered, so keeping up to date with those is a crucial part of maintaining network security. Define a standard review process for your firewalls as part of your continuous improvement practices to regularly review and update your settings.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Microsegmentation configurations and API gateways add costs and complexity to your workload. Apply these measures thoughtfully to avoid unnecessary costs and operational burden. For example, you might not need these measures for nonproduction environments or internal workloads.
+
+#### &#10003; Refine your identity and access management (IaM) configurations
+
+Observe and analyze access patterns to find areas of improvement for your IaM configurations. Apply conditional access  and just-in-time access measures to sensitive components. Review permissions for all human and non-human accounts to ensure that the principle of least privilege is appropriately applied to each one. It is common to find managed identities with inappropriate permissions, so be sure to include them in permissions audits. Regularly perform these audits as part of your operations practices.
+
+
+
+#### &#10003; Refine the incident response plan
+
+Before operating your workload in production, it is impossible to perfectly simulate security incidents. Once you have experienced real-world incidents and gone through your response processes, you'll have the opportunity to apply learnings to your plan. Be sure to engage all team members involved in incident response in retrospective learning sessions to understand what went right and what can be improved. Incorporate learnings into incident drills to make them more realistic.
 
 # [Level 5](#tab/level5)
 
