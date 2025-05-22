@@ -166,7 +166,7 @@ Feature development is the priority, and testing can introduce friction in the d
 
 ![Goal icon](../_images/goal.svg) **Ensure that the system remains functional and stable by incorporating self-preservation capabilities and having a basic recovery plan to manage failures.**
 
-Failures are inevitable in the cloud. Your resiliency strategies should strive to keep the system functional under all conditions. Level 1 introduces methods for addressing transient failures. Level 2 focuses on incorporating self-preservation strategies to prevent, detect, and recover from longer-lasting failures. If left unresolved, these problems can turn into full outages.
+Failures in the cloud are inevitable. Your resiliency strategies should strive to keep the system functional under all conditions. Level 1 introduces methods for addressing transient failures. Level 2 focuses on incorporating self-preservation strategies to prevent, detect, and recover from longer-lasting failures. If left unresolved, these problems can turn into full outages.
 
 The critical flows identified in Level 1 take priority. They require increased resiliency and recovery efforts for all components, including applications, services, and databases. Expect to adjust your initial provisioning sizes, instance counts, and autoscale policies to reduce reliability risks.
 
@@ -233,10 +233,10 @@ Extend your failure mitigation playbook to include bugs and deployment problems.
 | Problem | Risk | Source | Severity | Likelihood | Mitigation |
 | ---------| ------| --------| ----------| ------------| ------------|
 | Code doesn't handle at-least-once message delivery. | Duplicate processing of messages from the bus results in data corruption. | Application | High | Likely | - Redesign to use bus partitioning and build idempotency into the process. <br><br> - Move away from a competing consumers model, which makes performance a trade-off. |
-| Daily storage backup script fails to run. | RPO is violated because the data is older than 24 hours. | Automation execution | High | Not likely | Set up an alert on the backup process. |
+| Daily storage backup script fails to run. | RPO is violated because the data is older than 24 hours. | Automated process | High | Not likely | Set up an alert on the backup process. |
 | Regular user and usage spikes after a new release. | Performance hit on the application and user requests time out. | Application | High | Not likely | Configure schedule-based scale-out operations. |
-| Concurrency bug in code | Unpredictable behavior and possible data corruption. | Application | High | Likely | Use safe forms of concurrency and avoid manual handling of concurrency controls. |
-| Unexpected failure during deployment leaves environment in an inconsistent state. | Application outage | Deployment pipelines | Medium | Likely | Use blue-green deployments, canary deployments, or other approaches to progressively roll out changes. |
+| Concurrency bug in code | Unpredictable behavior and possible data corruption | Application | High | Likely | Use safe forms of concurrency and avoid manual handling of concurrency controls. |
+| Unexpected failure during deployment leaves the environment in an inconsistent state. | Application outage | Deployment pipelines | Medium | Likely | Use blue-green deployments, canary deployments, or other approaches to progressively roll out changes. |
 
 This exercise can become overwhelming if you try to account for every possible failure. To make it easier, focus on the components that are part of the critical user flows. This living document continues to grow as the workload matures.
 
