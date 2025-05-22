@@ -168,7 +168,7 @@ Feature development is the priority, and testing can introduce friction in the d
 
 Failures in the cloud are inevitable. Your resiliency strategies should strive to keep the system functional under all conditions. Level 1 introduces methods for addressing transient failures. Level 2 focuses on incorporating self-preservation strategies to prevent, detect, and recover from longer-lasting failures. If left unresolved, these problems can turn into full outages.
 
-The critical flows identified in Level 1 take priority. They require increased resiliency and recovery efforts for all components, including applications, services, and databases. Expect to adjust your initial provisioning sizes, instance counts, and autoscale policies to reduce reliability risks.
+The critical flows that you identify in Level 1 take priority. They require increased resiliency and recovery efforts for all components, including applications, services, and databases. Expect to adjust your initial provisioning sizes, instance counts, and autoscale policies to reduce reliability risks.
 
 In this level, be intentional about your monitoring and testing practices. Use advanced monitoring techniques that align with technical needs and are scoped to development teams. Expand the simple playbook to cover architectural components that you develop and own, such as application code.
 
@@ -176,33 +176,33 @@ In this level, be intentional about your monitoring and testing practices. Use a
 
 - *Is the level of redundancy good enough to withstand failures?* Define a redundancy strategy that specifies the number of redundant resources to maintain. Determine where to place these resources, whether locally, across zones, or in geographically distributed locations. Evaluate the cloud platform's settings and select a level that meets business needs and acceptable trade-offs.
 
-- *Are the workload components isolated enough to contain their failures?* Patterns like [Bulkhead](/azure/architecture/patterns/bulkhead) help build resilience and fault isolation. The Bulkhead pattern partitions a system into isolated components, known as *bulkheads*, to prevent failures from cascading to other parts of the system.
+- *Are the workload components isolated enough to contain their failures?* Patterns like the [Bulkhead pattern](/azure/architecture/patterns/bulkhead) help build resilience and fault isolation. The Bulkhead pattern partitions a system into isolated components, known as *bulkheads*, to prevent failures from cascading to other parts of the system.
 
 - *Do components on the critical path communicate asynchronously?* If not, use communication methods, such as queues. This approach keeps the system operational even if a downstream component fails. It also prevents the system from entering an indeterminate state. Explore Azure options, including Azure Service Bus for queues and Azure Event Hubs for event streams.
 
-    > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Asynchronous communication can help prevent cascading failures by decoupling processes. However, it introduces added latency in to the communication path, which can pose a problem for critical components. Evaluate the performance impact before you make any design pattern changes.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Asynchronous communication can help prevent cascading failures by decoupling processes. However, it adds latency in the communication path, which can pose a problem for critical components. Evaluate the performance impact before you make any design pattern changes.
 
 - *Are the operations designed for consistency?* Assets such as application secrets and certificates can expire and require regular refreshing. Inconsistencies in routine updates can result in reliability problems.
 
-    Ideally, identify and eliminate ongoing human-operated tasks because they're error-prone and can cause inconsistencies that pose reliability risks. Offload as many operational tasks as possible to the cloud provider. For example, use managed identities that Microsoft Entra ID provides and TLS certificates that Azure Front Door manages.
+    Ideally, identify and eliminate ongoing human-operated tasks because they're error-prone and can cause inconsistencies that pose reliability risks. Offload as many operational tasks as possible to the cloud provider. For example, use managed identities that Microsoft Entra ID provides and Transport Layer Security (TLS) certificates that Azure Front Door manages.
 
     Monitoring is required for proactive measures, such as tracking certificate expiration and receiving notifications. The application should log important events, like a TLS certificate nearing expiration. Using multiple methods to check for potential failures helps ensure that necessary actions are taken.
 
 #### &#10003; Add technical capabilities in your monitoring system
 
-At Level 1, you have monitoring data from the workload components, with a focus on infrastructure. Basic analysis is complete and basic alerts are set. This setup is essential for understanding the baseline performance of workload components and identifying anomalous behavior.
+At Level 1, you gathered monitoring data from the workload components, with a focus on infrastructure. Basic analysis is complete and basic alerts are set. This setup is essential for understanding the baseline performance of workload components and identifying anomalous behavior.
 
-Level 2 takes monitoring a step further by adding advanced observability capabilities to your workload resources and adopting a more structured approach to analyzing monitoring data. Take advantage of analytics tools that your cloud service provides. For example, Azure Monitor's insight tools, such as VM Insights and Network Insights, provide visualizations of health and performance across dependencies.
+Level 2 takes monitoring a step further by adding advanced observability capabilities to your workload resources and adopting a more structured approach to analyzing monitoring data. Take advantage of analytics tools that your cloud service provides. For example, Azure Monitor insight tools, such as VM insights and network insights, provide visualizations of health and performance across dependencies.
 
-Plan observability capabilities at the following layers:
+Plan observability capabilities at the following layers.
 
 ##### Application
 
-- **Respond to health status probing.** Enable the application to respond to health check requests from probes. The application should have dedicated endpoints for health checks that provide status information, such as *healthy* or *unhealthy*, at a minimum. This approach allows monitoring systems to assess if the application is functioning properly and can handle requests, or if there are problems that need to be addressed.
+- **Respond to health status probing.** Enable the application to respond to health check requests from probes. The application should have dedicated endpoints for health checks that provide status information, such as *healthy* or *unhealthy*, at a minimum. This approach allows monitoring systems to assess whether the application is functioning properly and can handle requests, or if there are problems that need to be addressed.
 
     Azure load balancing services, such as Azure Front Door, Azure Traffic Manager, Azure Application Gateway, and Azure Load Balancer, support health probes. Health probes send health check requests to applications.
 
-- **Advance to semantic logging.** Include structured information about events and actions in the application. With structured logging, log data is recorded in a consistent format by using a well-defined schema. This schema makes it easier to search and analyze and build automation in later stages. Include specific fields like timestamps and error codes to help quickly identify and troubleshoot problems.
+- **Advance to semantic logging.** Include structured information about events and actions in the application. With structured logging, log data is recorded in a consistent format by using a well-defined schema. This schema makes it easier to build automation, search, and analyze in later stages. Include specific fields like timestamps and error codes to help quickly identify and troubleshoot problems.
 
 - **Implement distributed tracing.** When a request flows through different components of the system, it's important to capture trace data across boundaries. This data is useful for getting insights into application behavior and identifying performance bottlenecks, errors, and latency problems. Azure Monitor supports OpenTelemetry-based data collection with Application Insights.
 
@@ -218,7 +218,7 @@ Monitor the status of database replication by using the tools and dashboard that
 
 ##### Operations
 
-The focus of Level 1 is on the preceding layers. At Level 2, start building operations around the monitoring system.
+Level 1 focuses on the preceding layers. At Level 2, you start building operations around the monitoring system.
 
 - **Keep logs long enough to get insights.** From a reliability perspective, configure the retention duration so that you can collect enough data to detect failure patterns, troubleshoot problems, and perform root cause analysis.
 
@@ -226,7 +226,7 @@ The focus of Level 1 is on the preceding layers. At Level 2, start building oper
 
 #### &#10003; Extend your failure mitigation playbook
 
-The focus at Level 1 is on the expected platform failures. In this level, address failure points on components and operations within your own workload. As your code runs on the platform, interaction points between the platform and application increase. Expect failures from bugs in your code, unsuccessful deployments, and human errors. Mitigate these problems by using self-preservation or recovery tactics.
+Level 1 focuses on the expected platform failures. In Level 2, you address failure points on components and operations within your own workload. As your code runs on the platform, interaction points between the platform and application increase. Expect failures from bugs in your code, unsuccessful deployments, and human errors. Mitigate these problems by using self-preservation or recovery tactics.
 
 Extend your failure mitigation playbook to include bugs and deployment problems. The following table builds on the template from Level 1:
 
@@ -234,9 +234,9 @@ Extend your failure mitigation playbook to include bugs and deployment problems.
 | ---------| ------| --------| ----------| ------------| ------------|
 | Code doesn't handle at-least-once message delivery. | Duplicate processing of messages from the bus results in data corruption. | Application | High | Likely | - Redesign to use bus partitioning and build idempotency into the process. <br><br> - Move away from a competing consumers model, which makes performance a trade-off. |
 | Daily storage backup script fails to run. | RPO is violated because the data is older than 24 hours. | Automated process | High | Not likely | Set up an alert on the backup process. |
-| Regular user and usage spikes after a new release. | Performance hit on the application and user requests time out. | Application | High | Not likely | Configure schedule-based scale-out operations. |
-| Concurrency bug in code | Unpredictable behavior and possible data corruption | Application | High | Likely | Use safe forms of concurrency and avoid manual handling of concurrency controls. |
-| Unexpected failure during deployment leaves the environment in an inconsistent state. | Application outage | Deployment pipelines | Medium | Likely | Use blue-green deployments, canary deployments, or other approaches to progressively roll out changes. |
+| Regular user and usage spikes after a new release. | Application performance degrades and user requests time out. | Application | High | Not likely | Configure schedule-based scale-out operations. |
+| A concurrency bug is in code. | Unpredictable behavior and possible data corruption. | Application | High | Likely | Use safe forms of concurrency and avoid manual handling of concurrency controls. |
+| Unexpected failure during deployment leaves the environment in an inconsistent state. | Application outage. | Deployment pipelines | Medium | Likely | Use blue-green deployments, canary deployments, or other approaches to progressively roll out changes. |
 
 This exercise can become overwhelming if you try to account for every possible failure. To make it easier, focus on the components that are part of the critical user flows. This living document continues to grow as the workload matures.
 
@@ -246,17 +246,17 @@ The failure mitigation playbook is the basis for creating a basic recovery plan.
 
 Start with a graceful degradation strategy, which includes temporary fixes when parts of the system don't work properly. The goal is to continue to serve users despite failures by disabling nonworking parts and adjusting the user experience. For example, if a database is down, the application can disable the affected feature and inform clients that the service is temporarily unavailable by using HTTP status codes.
 
-For graceful degradation to work, the system should isolate components so that only the affected parts experience problems while the rest of the components continue to function. Use the Bulkhead pattern to achieve fault isolation.
+For graceful degradation to work, isolate system components so that only the affected parts experience problems while the rest of the components continue to function. Use the Bulkhead pattern to achieve fault isolation.
 
-Take this opportunity revisit design choices that might slow recovery. For example, pointing Domain Name System (DNS) records directly to your application on App Service can cause delays during recovery because of DNS propagation. Use a dedicated service like Azure Front Door as the ingress point for easier reconfiguration during recovery steps.
+Take this opportunity revisit design choices that might slow recovery. For example, pointing Domain Name System (DNS) records directly to your application on Azure App Service can cause delays during recovery because of DNS propagation. Use a dedicated service like Azure Front Door as the ingress point for easier reconfiguration during recovery steps.
 
 Expect this basic plan to evolve into a full disaster recovery plan at more mature levels.
 
 #### Create test plans
 
-Create test plans by simulating outages and problems identified in the risk mitigation playbook. Supplement those mitigations with simple test cases to ensure that they work as expected and are feasible. Verify that these features operate correctly and conduct degradation tests to see how the system performs when specific components fail. Keep the outcome simple by ensuring that the test either fails or passes.
+Create test plans by simulating outages and problems identified in the risk mitigation playbook. Supplement those mitigations with simple test cases to ensure that they work as expected and are feasible. Verify that these features operate correctly, and conduct degradation tests to see how the system performs when specific components fail. Keep the outcome simple by ensuring that the test either fails or passes.
 
-Use test tools like mocking frameworks to inject faults into HTTP requests, which help you test retry policies more explicitly. Azure Chaos Studio provides a more comprehensive test suite for simulating component outages and other problems, which provides a good opportunity to explore its capabilities. You can gradually adopt Azure Chaos Studio as you become familiar with its features.
+Use test tools like mocking frameworks to inject faults into HTTP requests, which help you test retry policies more explicitly. Azure Chaos Studio provides a comprehensive test suite for simulating component outages and other problems, which makes it a valuable service to explore. You can gradually adopt Chaos Studio as you become familiar with its features.
 
 #### Assess the impact of scaling operations on reliability
 
@@ -274,7 +274,7 @@ To handle spikes in load, critical components must be able to scale out or scale
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** When you deal with performance-related problems, scaling can be a useful mitigation strategy. However, scaling is a temporary fix and not a solution. Investigate and solve the underlying problem, such as a memory leak or a runaway process. Otherwise, you risk applying the same mitigation again at another tipping point and paying for resources that you don't need. By addressing the root cause, you can ensure long-term stability and cost-efficiency.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Scaling has cost implications. Use platform-provided auto-scaling features but set boundaries to avoid financial problems. Be aware of potential bottlenecks, such as monolithic databases or application kernels that can't scale out.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Scaling has cost implications. Use platform-provided autoscaling features, but set boundaries to avoid financial problems. Be aware of potential bottlenecks, such as monolithic databases or application kernels that can't scale out.
 
 # [Level 3](#tab/level3)
 
