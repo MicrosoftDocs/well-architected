@@ -208,13 +208,13 @@ Plan observability capabilities at the following layers.
 
 ##### Data
 
-Track query duration, failed queries, and other relevant metrics. Long-running queries can indicate resource constraints and possibly a need to adjust schema design.
+- **Track query duration, failed queries, and other relevant metrics.** Long-running queries can indicate resource constraints and possibly a need to adjust schema design.
 
-At this stage, your database has been operating for some time. Pay attention to the data growth rate, especially in tables that grow unexpectedly fast. This information is crucial for planning future storage needs and addressing performance problems early.
+  At this stage, your database has been operating for some time. Pay attention to the data growth rate, especially in tables that grow unexpectedly fast. This information is crucial for planning future storage needs and addressing performance problems early. 
 
-As the database grows, schema problems might become more apparent, which affects performance. To optimize query efficiency, consider adding indexes or modifying the schema because these changes can affect reliability.
-
-Monitor the status of database replication by using the tools and dashboard that the database management system provides. For example, if you use Azure Cosmos DB, use Azure Cosmos DB insights. For Azure SQL Database or Azure SQL Managed Instance, consider using the database watcher to get diagnostic details about your databases.
+- **Monitor the status of database replication by using the tools and dashboard that the database management system provides.** For example, if you use Azure Cosmos DB, use Azure Cosmos DB insights. For Azure SQL Database or Azure SQL Managed Instance, consider using the database watcher to get diagnostic details about your databases.
+  
+  As the database grows, schema problems might become more apparent, which affects performance. To optimize query efficiency, consider adding indexes or modifying the schema because these changes can affect reliability.
 
 ##### Operations
 
