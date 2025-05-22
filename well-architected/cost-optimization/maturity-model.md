@@ -284,13 +284,34 @@ At Level 5 of the maturity model, you should have many cost optimization mechani
 
 Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits or resource utilization checks to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
 
-#### &#10003;
+#### &#10003; Invest is knowledge building
 
-#### &#10003;
+Empower your workload team to take ownership of cost optimization initiatives by developing a skills training program. Encourage team members to learn from industry thought leaders by attending conferences, webinars, and other industry events. Provide in-house training to cross-train skills and provide sandbox environments for hands-on learning experiences. Tie trainings back to cost optimization initiatives like optimizing scaling strategies, for example. Having highly skilled teams makes them more efficient and might help you minimize engaging third parties for new projects.
 
-#### &#10003;
+Ensure that your cost model includes planned trainings for a given fiscal period, like the upcoming quarter.
 
-#### &#10003;
+#### &#10003; Revisit and refine disaster recovery (DR) costs
+
+After running real-world DR drills or after going through real-world DR incidents, you might find areas for cost optimization. You might find that you can afford a less expensive DR strategy for certain components while still meeting your recovery targets. For example, you might not need an active-active design for a non-critical flow, so you can replicate data to the secondary region and spin up the necessary compute infrastructure during recovery, rather than running two identitical deployments full-time. 
+
+As part of your continuous improvement practices, regularly revisit your recovery targets to make sure they are appropriate for both reliability and cost requirements.
+
+#### &#10003; Refine the workload design
+
+After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirmeents. Consider the following strategies:
+
+- *Combine similar flows.* Reduce reduncancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
+
+- *Separate dissimilar flows.* Separating tasks with different computational needs onto dedicated resources improves efficiency and reduces costs. This process enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation based on each task's priority.
+
+- *Rearchitect the workload to gain efficiencies.* Review the entire workload architecture to look for opportunities to improve efficiency. Favor a microservices design and explore using serverless or managed services that relieve operational burden and can easily be right-sized through automatic scaling. Continuously monitor and adjust resource sizes based on usage patterns to optimize costs.
+
+#### &#10003; Optimize operations
+
+Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine if your chosen methodology is the best fit. Determine the costs of tasks per employee (known as unit costs) and look for opportunities to lower those costs. Look at the most expensive tasks and evaluate their return on investment. 
+
+Determine whether tasks can be offloaded to other teams. For example, you might have a centralized cloud team that handles some operational tasks for other business units or workloads, or a centralized security team that handles security monitoring and testing. When you find opportunities to offload tasks, carefully plan the handoff with clear communications across involved teams and follow good change management processes.
+
 ---
 
 ## Next steps
