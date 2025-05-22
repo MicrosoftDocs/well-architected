@@ -274,7 +274,7 @@ Appointing a cost DRI (Directly Responsible Individual) can help the workload te
 
 The DRI also acts as the frontline of defense for higher than expected workload costs. He or she can help identify the cause of high costs and proactively work with the workload team to reduce them back to their expected range before they become a cost emergency.
 
-# [**Level 5: Advanced cost efficiency techniques](#tab/level5)
+# [**Level 5: Advanced cost efficiency techniques**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) Refine the workload and operational processes to achieve additional cost efficiencies.
 
