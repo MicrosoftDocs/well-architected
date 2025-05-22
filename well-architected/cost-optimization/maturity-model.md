@@ -304,7 +304,9 @@ After observing your workload in production for a significant amount of time, yo
 
 - *Separate dissimilar flows.* Separating tasks with different computational needs onto dedicated resources improves efficiency and reduces costs. This process enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation based on each task's priority.
 
-- *Rearchitect the workload to gain efficiencies.* Review the entire workload architecture to look for opportunities to improve efficiency. Favor a microservices design and explore using serverless or managed services that relieve operational burden and can easily be right-sized through automatic scaling. Continuously monitor and adjust resource sizes based on usage patterns to optimize costs.
+- *Rearchitect the workload to gain efficiencies.* Review the entire workload architecture to look for opportunities to improve efficiency. Favor a microservices design and explore using serverless or managed services that relieve operational burden and can easily be right-sized through automatic scaling. An end goal for your architecture might be a point where you can automatically deploy nonproduction environments when they are needed for deployment purposes and destroy them afterwards, minimizing any wasted utilization costs.
+
+Continuously monitor and adjust resource sizes based on usage patterns to optimize costs.
 
 #### &#10003; Optimize operations
 
