@@ -90,6 +90,7 @@ For more information, see:
 - [Backup guide for SAP HANA on Azure Virtual Machines](/azure/backup/sap-hana-database-about)
 - [Backup guide for SAP HANA System Replication databases on Azure VMs](/azure/backup/sap-hana-database-with-hana-system-replication-backup).
 - [Backup guidelines for SAP HANA database instance snapshots on Azure VMs](/azure/backup/sap-hana-database-instances-backup).
+- [SAP ASE (Sybase) database backup on Azure VMs overview](/azure/backup/sap-ase-database-about).
 - [Backup guide for SQL Server on Azure Virtual Machines](/azure/backup/tutorial-sql-backup)
 
 #### Find marketplace backup solutions
