@@ -244,7 +244,7 @@ Extend your failure mitigation playbook to include bugs and deployment issues. H
 
 This exercise can become overwhelming if you try to account for every possible failure. To make it easier, focus on the components that are part of the critical user flows. This is a living document and will continue to grow as the workload matures. 
 
-#### Develop a basic recovery plan
+#### &#10003;  Develop a basic recovery plan
 
 The failure mitigation playbook is the basis for creating a basic recovery plan. Mitigation strategies can include design pattern implementation, platform configuration adjustments, live site incident management, automated tests, and training personnel to catch issues during code reviews.
 
@@ -257,14 +257,14 @@ Take this opportunity revisit design choices that might slow down recovery. For 
 Expect this basic plan to evolve into a full disaster recovery (DR) plan at more mature levels.
 
 
-#### Create test plans
+#### &#10003;  Create test plans
 
 Create test plans by simulating outages and issues identified in the risk mitigation playbook. Supplement those mitigations with with simple test cases to ensure they work as expected and are feasible. Verify that these features behave correctly and conduct degradation tests to see how the system performs when specific components fail. Keep the outcome simple: test fail/pass.
 
 Use test tools like mocking frameworks to inject faults into HTTP requests, which help you test retry policies more explicitly. Azure Chaos Studio provides a more comprehensive test suite for simulating component outages and other problems, making it a good time to explore its capabilities. You can gradually adopt it as you become familiar with it.
 
 
-#### Assess the impact of scaling operations on reliability
+#### &#10003; Assess the impact of scaling operations on reliability
 
 To handle load spikes, the critical components must be able to scale out or scale up efficiently. Take advantage of Azure-provided autoscaling capabilities, which adjusts the capacity limits of a service based on predefined configurations, allowing it to scale up or down as needed.
 
@@ -282,7 +282,6 @@ To handle load spikes, the critical components must be able to scale out or scal
 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Scaling has cost implications. Use platform-provided auto-scaling features but set boundaries to avoid financial issues. Be aware of potential bottlenecks, such as monolithic databases or application kernels that can't scale out. 
-
 
 
 # [Level 3](#tab/level3)
@@ -309,21 +308,102 @@ To handle load spikes, the critical components must be able to scale out or scal
 
 <!-- No more than 100 words under each H4 heading. -->
 
-# [Level 5](#tab/level5)
+# [**Level 5** - Stay resilient](#tab/level5)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) **Remain reslient as the workload architecture evolves, enabling the system to withstand new and unforeseen risks.**
 
-### Strategy focus: 
+By Level 5, the focus of improving your solution's reliability shifts away from implementing technical controls. Your infrastructure, applications, and operations should be reliable enough to be resilient to outages and recover from them within the target recovery times.
 
-<!-- No more than 5 H4 headings per tab -->
+Use data and future business goals to acknowledge that if the business needs to go further, architectural changes might be necessary. As your workload evolves and new features are added, strive to minimize outages related to those features while further reducing outages for existing features even more.
 
-#### Example heading
+#### &#10003; Use reliability insights to guide architecture evolution
 
-<!-- No more than 100 words under each H4 heading. -->
+Decisions at this level are made in collaboration with business stakeholders. Here are some key considerations:
 
----
+- Analyze metrics that indicate how many times reliability thresholds were crossed within a time period and whether that's accetable. For instance, experiencing five major outages in a year might trigger a reassessment of system design and operational practices.
+
+- Evaluate the business criticality of the system. For example, a service supporting mission-critical workflows may need to be redesigned for zero-downtime deployments and instant failover, even if it increases cost or complexity. Conversely, a reduced-use service might need more relaxed service level objectives (SLOs).
+
+- Assess the impact of changes in other pillars on reliability. For example,increased security measures, might need reliability mitigations for extra security hops that can potential be points of failure. 
+
+- Evaluate the operational costs associated with maintaining reliability. If these costs exceed budget constraints, consider making architectural changes to optimize and control spending.
+
+To make it easier for stakeholders, engineers, and product managers to make informed decisions, consider visualizing the the preceding data points and others to give a complete picture of reliability.
+
+#### &#10003; Run controlled tests in production
+
+At this level, controlled experiments in production can be considered only if the workload needs highest guarantees on resilience. These testing practices are known as chaos engineering. The tests are conducted to validate that the system can recover gracefully and continue functioning even under adverse conditions. 
+
+Here are the example test cases:
+
+- **Dependency flow analysis**. A common use case is testing applications designed as microservices. You can turn off random microservice instances to confirm that failures don't cascade or disrupt the user experience. This can be extended to system flows by disabling certain system components to analyze how downstream systems react. The goal is to identify tight coupling or hidden dependencies and test how system redundancy plans perform.
+
+- **Graceful degradation testing**. Evaluate how system functions with reduced functionality during failure without completely breaking. For example, hiding non-critical features if a recommendation engine fails.
+
+- **Third-party failure simulation**. Disable or throttle calls to external APIs to see how your system behaves and whether fallbacks or retries are correctly implemented.
+
+Chaos engineering is a gold standard for testing resilience, however, this practice should be reserved for mature systems and workload teams. There should be safeguards to limit blast radius and prevent user impact.
+
+- Start in non-production environments that simulate real world conditions in lower-risk setups with synthetic transactions. Also, prepare by running game days. This helps uncover process gaps, human error paths, and architectural flaws.
+
+    When non-production testing stops yielding valuable insights, it might be time to move to production if you're confident. Make sure to list all concerns, evaluate resiliency, and address any issues before making the transition.
+
+-  Limit the scope of experiments. For example shutting down only one instance. Clearly define the purpose of the test. Know what you're testing and why. 
+
+- These tests shouldn't violate service level agreements (SLAs) by operating within predefined limits and error budgets. choose the right timeframes for these experiments. Typically, it's best to perform them during a workday when the team is fully staffed and there are ample resources available to respond to any incidents that may arise.
+
+#### &#10003; Conduct disaster recovery (DR) drills
+
+Just as chaos engineering tests the resiliency of technical controls, DR drills test the resiliency of process controls. The goal of this process is to validate the effectiveness of the procedures, coordination, and human actions needed to recover from significant failures or disasters. 
+
+For regulatory workloads, the frequency of DR drills may be dictated by compliance requirements to keep a record of effort. For other workloads, it's recommended to conduct these drills regularly. A six-month interval is a good window to capture changes in workload and update DR procedures accordingly.
+
+Regardless, DR drills should be more than just routine exercises. When done correctly, they are helpful in training new team members, identify gaps in tooling, communication, and  other tasks included in the drill. Additionally, they can highlight fresh perspectives, which might overlooked otherwise.
+
+There are three main ways to conduct DR drills, each with its own level of risk and realism:
+
+- Fully simulated. These are entirely whiteboard exercises. They involve walking through procedures without impacting any systems. They're great for training and initial validation, but they don't offer insights of a real incident.
+
+- Real drills in non-production environments. These drills allow you to validate automation, scripts, and processes without any business risk.
+
+- Real drills in production. These offer the highest level of confidence and realism. Make sure they are conducted only after trying out the preceding two ways. They require thorough planning and rollback strategies to minimize risk. Don't move forward if there's a chance of causing outages.
+
+No matter the type of DR drill, be clear about the workload scenarios for recovery. They should be done as though they are actual incidents. Have clear checklists that the team understands. Also document and classify findings from the drill to drive improvements. Your DR preparation might contain processes, such as:
+
+- Familiarity with incident management systems. Make sure the team is trained on escalation paths.
+
+- List communication tools for collaboration and status updates. Include alternate communication tools in case the primary ones are impacted during the incident.
+
+- Skilling material about the scenarios to test that are relevant to the workload.
+
+- Issue tracking to collect glitches during execution.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Although these drills typically aren't very disruptive, they do require time. Concentrate on the essential aspects and steer clear of unnecessary tasks to get the most out of them. Additionally, make sure to allocate time for this practice in your backlog.
+
+When creating DR plans or running DR drills, especially the first few, consider bringing in specialized expertise. For example, get their input about multi-region design, failover, and failback, and services or tools that might be used in DR drills. If you have a Cloud Center of Excellence (CCoE) team in your organization, include them as part of planning.
+
+#### &#10003; Evaluate your data model, segment if necessary
+
+Data is dynamic and constantly evolving. Unlike other components in your architecture, data almost always continues to grow as users interact with your system. It's important to monitor how data patterns change over time and assess their impact on other parts of your architecture. At this level, explore techniques that can simplify data management and enhance performance with the outcome of better reliability. Partitioning is one key strategy for those outcomes. 
+
+Explore techniques like hot-cold partitioning divides data based on access patterns and stores them separately. Use criteria like frequency of access or relevancy to decide what to partition. 
+
+That technique can be combined with sharding that splits a large database into smaller pieces called shards. Each shard holds part of the data, and together, they form the complete dataset. This approach allows for independent management of data.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Balancing shards requires operational processes to evaluate and confirm their distribution. While this helps avoid hot partitions where one partition is overused, it also demands ongoing effort and resources to maintain balance.
+
+When choosing a partitioning technique, consider its reliability benefits:
+
+- **Enhanced performance**. By directing requests to different partitions, load on individual stores can be reduced. When used effectively, sharding can enable a system to handle millions of write requests per day, enhancing performance and reducing latency.
+
+    Partinioning can make it easier to scale horizontally. For instance, sharding can subdivide users/customers together into approximately even-sized buckets.
+
+- **Improved data management**. Hot-cold partitioning allows for separate rigor of data management applied to different tier. For example, move archival data to a different store to avoid slowing down operations and backups. Similarly, not all log data needs to be in a relational database; it can be stored in another data store, while active workload data stay relational.
+
+- **Tailored reliability policies**. Different reliability policies can be applied to making sure each partition has appropriate level of of resiliency and prevents any single store from becoming a bottleneck. Hot partitions can be fully redundant, including zone and geo redundancy, while cold partitions can rely on backups. Consequently there are cost benefits. An added reliability benefit is that you can reduce the blast radius of some failure types - if a failure affects one shard it might not spread to others.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Maintaining or modifying partitions can be complex due to strong relationships between different partitions of data. It may impact the ability to verify data consistency and integrity compared to a single data store. As the number of partitions grows, the need for strong processes increases to maintain data integrity. Without them, reliability could suffer.
+
 
 ## Next steps
-<!-- Provide at least one next step and no more than three. Include some 
-context so the customer can determine why they would click the link.
--->
+
