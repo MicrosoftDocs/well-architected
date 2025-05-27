@@ -26,23 +26,16 @@ This stage includes researching, gaining insights, and creating an inventory of 
 
 By establishing these basics, you can prepare your team to advance through the levels of the reliability maturity model to progressively enhance your system's resilience and performance.
 
-#### Key strategies
+**Key strategies**
 > [!div class="checklist"]
 >
 > - [Evaluate opportunities to offload operational responsibility](#-evaluate-opportunities-to-offload-operational-responsibility)
->
 > - [Identify the critical user and system flows](#-identify-the-critical-user-and-system-flows)
->
 > - [Select the right design model, resources, and features](#-select-the-right-design-model-resources-and-features)
->
 > - [Deploy with a basic level of redundancy](#-deploy-with-a-basic-level-of-redundancy)
->
 > - [Enable metrics, logs, and traces to monitor flows](#-enable-metrics-logs-and-traces-to-monitor-flows)
->
 > - [Start building a failure mitigation playbook](#-start-building-a-failure-mitigation-playbook)
->
 > - [Add mechanisms to recover from transient failures](#-add-mechanisms-to-recover-from-transient-failures)
->
 > - [Run basic tests](#-run-basic-tests)
 
 #### &#10003; Evaluate opportunities to offload operational responsibility 
