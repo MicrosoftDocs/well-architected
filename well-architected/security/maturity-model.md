@@ -122,7 +122,7 @@ Hardening the workload is an iterative process that requires continuous improvem
 
 ![Goal icon](../_images/goal.svg) **Identify and mitigate security threats proactively.**
 
-At Level 3 of the maturity model, you should integrate advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Using strategies like threat modeling, network flow classifications, and advanced encryption techniques builds an extra level of preparedness on the foundational mechanisms that you should already have in place. An incident response plan unifies your threat detection and mitigation strategies while standardizing the way that you manage security incidents.
+At Level 3 of the maturity model, you should integrate advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Strategies like threat modeling, network flow classifications, and advanced encryption techniques build an extra level of preparedness on the foundational mechanisms that you should already have in place. An incident response plan unifies your threat detection and mitigation strategies while standardizing the way that you manage security incidents.
 
 #### &#10003; Incorporate threat modeling into your software development lifecycle (SDLC)
 
