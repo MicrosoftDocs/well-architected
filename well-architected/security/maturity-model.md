@@ -126,7 +126,7 @@ At Level 3 of the maturity model, you should integrate advanced processes and me
 
 #### &#10003; Incorporate threat modeling into your software development lifecycle (SDLC)
 
-Threat modeling is an engineering technique that you can use to help you identify threats, attacks, vulnerabilities, and countermeasures that could affect your workload. You can use threat modeling to shape your workload's design, meet your company's security objectives, and reduce risk. When you perform a threat modeling exercise, include the following strategies:
+Threat modeling is an engineering technique that you can use to help identify threats, attacks, vulnerabilities, and countermeasures that could affect your workload. You can use threat modeling to shape your workload's design, meet your company's security objectives, and reduce risk. When you perform a threat modeling exercise, include the following strategies:
 
 - *Validate the workload security requirements.* Complete the process of gathering and codifying the workload security requirements early in your workload development. At Level 3, validate the requirements as a preliminary step in the threat modeling exercise.
 
@@ -136,7 +136,7 @@ Threat modeling is an engineering technique that you can use to help you identif
 
 - *Plan mitigation strategies.* After you identify potential threats, start building mitigation plans to enhance your hardening design. Include these mitigation strategies in your team's backlog for tracking.
 
-- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling Tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient, which standardizes the approach and reporting processes.
+- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient, which standardizes the approach and reporting processes.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Threat modeling is an intensive exercise and can slow development. Account for the extra effort required in your development planning.
 
@@ -158,15 +158,15 @@ Create an incident response plan that allows you to rapidly detect and respond t
 
 - *Identify the incident owners on the workload team.* One or more individuals on the workload team should be responsible for receiving alert notifications and working with triage teams to efficiently respond to incidents.
 
-- *Investigation and triage processes.* Determine the appropriate communication methods, like asynchronous updates versus a bridge call. Only include necessary personnel to maintain focus on the immediate problem. Ensure that architectural diagrams and other documentation about the workload are kept current to ensure that the team can work efficiently.
+- *Investigate and triage processes.* Determine the appropriate communication methods, like asynchronous updates versus a bridge call. Only include necessary personnel to maintain focus on the immediate problem. Ensure that you keep architectural diagrams and other documentation about the workload current to ensure that the team can work efficiently.
 
-- *Incident recovery processes.* Treat security incidents like disasters, and align your incident response plan to your business continuity and disaster recovery (BCDR) plan. Minimize the risk of recurrence by mitigating the problem before you reintroduce the compromised component.
+- *Recover from incidents.* Treat security incidents like disasters, and align your incident response plan to your business continuity and disaster recovery (BCDR) plan. Minimize the risk of recurrence by mitigating the problem before you reintroduce the compromised component.
 
-- *Learn from incidents.* Perform post-incident reviews, also known as *postmortems*, to look for improvement opportunities. Include time in your planning for implementing improvements and include improvements in your BCDR drills.
+- *Learn from incidents.* Perform post-incident reviews, also known as *postmortems*, to look for improvement opportunities. Include time in your planning for implementing improvements, and include improvements in your BCDR drills.
 
-- *End-user and stakeholder communications.* Ensure that your users and stakeholders are kept up-to-date as you work through incidents. Define the proper communication channels and cadence to send out updates.
+- *Communicate with end users and stakeholders.* Ensure that you keep users and stakeholders up-to-date as you work through incidents. Define the proper communication channels and cadence to send out updates.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Investigation, mitigation, and recovery processes can affect your reliability targets. You may need to disable parts of your system during an incident. This approach might affect functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Investigation, mitigation, and recovery processes can affect your reliability targets. You might need to disable parts of your system during an incident. This approach might affect functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
 # [Level 4](#tab/level4)
 
