@@ -130,7 +130,7 @@ Threat modeling is an engineering technique that you can use to help identify th
 
 - *Validate the workload security requirements.* Complete the process of gathering and codifying the workload security requirements early in your workload development. At Level 3, validate the requirements as a preliminary step in the threat modeling exercise.
 
-- *Validate the workload architectural diagram.* Like when you gather requirements, finish building an architectural diagram with flows at an earlier stage in your workload development. At Level 3, validate the diagram.
+- *Validate the workload architectural diagram.* An architectural diagram with flows should be completed early in the workload development and implementation process. At Level 3, you should revisit the design to ensure that it meets customer requirements.
 
 - *Identify potential threats.* Analyze potential threats for each component from an outside-in perspective. Determine how an attacker might exploit a specific resource to gain further access. Classify threats according to an industry-standard methodology like [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to help you understand the nature of each threat and apply appropriate security controls.
 
