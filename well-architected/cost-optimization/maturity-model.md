@@ -173,7 +173,7 @@ As you build out your nonproduction and production environments, you might unint
 
 - Use the correct resource types and SKUs for each environment. Research the infrastructure options that your cloud platform provides and select resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are targeted specifically for [PoC and dev/test environments](https://azure.microsoft.com/pricing/offers/dev-test/). These resource types and SKUs are significantly less expensive than standard or high-performance resources, but you can't use them for production workloads.
 
-- Configure and enforce policies to restrict resource types, SKUs, regions, and deployment permissions for users. Automated policies help manage environment changes, which reduces the risk of unauthorized deployments.
+- Configure and enforce policies to restrict resource types, SKUs, regions, and deployment permissions for users. Automated policies help manage environment changes. This process reduces the risk of unauthorized deployments.
 
 - Standardize by using infrastructure as code for all environment changes. This approach helps enforce your environment change policies and simplifies your operations practices to reduce the risk of human error.
 
