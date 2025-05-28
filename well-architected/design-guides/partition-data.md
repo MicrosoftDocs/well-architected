@@ -7,18 +7,9 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for data partitioning
-
-**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
-
-|**RE:06**| Implement a timely and reliable scaling strategy at the application, data, and infrastructure levels. Base the scaling strategy on actual or predicted usage patterns and minimize manual intervention. |
-|---|---|
-
-**Related guide:** [Scaling](scaling.md)
+# Design a data partitioning strategy
 
 This guide describes the recommendations for designing a data partitioning strategy for the database and data storage technology that you deploy. This strategy helps you improve the reliability of your data estate.
-
-## Key design strategies
 
 In many large-scale solutions, *partitions* are used to divide data so that it can be managed and accessed separately. Partitioning data improves scalability, reduces contention, and optimizes performance. Implement data partitioning to divide data by usage pattern. For example, you can archive older data in inexpensive data storage. Choose your partitioning strategy carefully to maximize the benefits and minimize adverse effects.
 
@@ -341,10 +332,3 @@ Data partitioning introduces some challenges and complexities that you need to c
 - [Understand data store models](/azure/architecture/guide/technology-choices/data-store-overview)
 - [Use elastic pools to manage and scale multiple databases in SQL Database](/azure/azure-sql/database/elastic-pool-overview)
 - [What is SQL Data Sync for Azure?](/azure/azure-sql/database/sql-data-sync-data-sql-server-sql-database) 
-
-## Reliability checklist  
-
-Refer to the complete set of recommendations. 
-
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
