@@ -19,14 +19,14 @@ A cost-optimized workload isn't necessarily a low-cost workload. There are signi
 
 The design principles are intended to provide optimization strategies that you need to consider when you design and implement your workload architecture. Start with the recommended approaches and **justify the benefits for a set of business requirements**. After you set your strategy, drive actions by using the [Cost Optimization checklist](checklist.md) as your next step.
 
-As you prioritize business requirements to align with technology needs, expect the initial cost allocation to change. However, you should expect a series of **tradeoffs in areas in which you want to optimize cost, such as security, scalability, resilience, and operability**. If the cost of addressing the challenges in those areas is high and these principles aren't applied properly, you might make risky choices in favor of a cheaper solution, ultimately affecting your organization's business goals and reputation.
+As you prioritize business requirements to align with technology needs, expect the initial cost allocation to change. However, you should expect a series of tradeoffs in areas in which you want to optimize cost, such as security, scalability, resilience, and operability. If the cost of addressing the challenges in those areas is high and these principles aren't applied properly, you might make risky choices in favor of a cheaper solution, ultimately affecting your organization's business goals and reputation.
 
 ## Develop cost-management discipline
 
 |![Goal icon](../_images/goal.svg) Build a team culture that has awareness of budget, expenses, reporting, and cost tracking.| 
 |--| 
 
-Cost optimization is conducted at various levels of the organization. It's important to understand how your workload is aligned with organizational goals and FinOps practices. A view into the business units, resource organization, and centralized audit policies allows you to adopt a standardized financial system.
+Cost optimization is conducted at various levels of the organization. It's important to understand how your workload cost is aligned with organizational FinOps practices. A view into the business units, resource organization, and centralized audit policies allows you to adopt a standardized financial system.
 
 |Approach|Benefit|   
 |-|-|
@@ -49,8 +49,7 @@ Given a set of requirements, optimize and make tradeoff decisions, in relation t
 |Approach    | Benefit |
 |-|-|
 | Establish the initial cost, including the projected growth. Ensure design choices work within the allocated budget to meet the functional and nonfunctional requirements. <br><br> Factor in expenses related to technology choices, automation, acquisition, training, and change management as part of that total cost. | Cost estimates enable you to forecast expenses against the budget and pinpoint key cost drivers. They also help reveal hidden costs that might otherwise go unnoticed, supporting a balanced approach that avoids overengineering.<br><br> This process will also generate decision trees for technology options based on cost considerations. By eliminating high-cost alternatives that lack strong business justification, you can free up budget capacity to invest in higher-value opportunities. <br><br>We don't recommend that you design beyond planned growth as it may result in a lower ROI.
-| Design your architecture to support cost guardrails.  |  Enforcement via governance policies or built-in application design patterns can prevent incidental or unapproved charges.|
-| Apply policies to comply with the design and the design's upper and lower limits. | Governance ensures that only allowed regions and services and their budgeted quantity are provisioned.|
+| Design and enforce cost guardrails in your architecture that keep the resources within the upper and lower limits.  | Enforcement can prevent incidental or unapproved charges and ensure that only budgeted quantity of resources are provisioned.|
 | Treat different SDLC environments differently, and deploy the right number of environments.| You can save money by understanding that not all environments need to simulate production. Nonproduction environments can have different features, SKUs, instance counts, and even logging. <br><br> You also can save costs by creating pre-production environments on-demand and removing them when you no longer need them.|
 
 ## Design for usage optimization
@@ -97,6 +96,7 @@ You should carefully assess the impact of all changes on cost. Monitor changes a
 | Approach      | Benefit   |
 |-|-| 
 | Build capabilities in the system that capture and classify expense. | You'll be able to calculate the costs that reveal technical and business perspectives at different billing boundaries.<br><br>You'll also be able to conduct regular reviews and drive showback and chargeback processes.|
+|Implement cost alerts when spending approaches predefined budget thresholds. <br><br> Regularly review and adjust these alerts to ensure they remain aligned with evolving usage patterns. | Proactive notifications help prevent budget overruns and support timely decision-making.|
 | Continuously evaluate and adjust architecture design decisions around cost of resources, operations, and paid support. | Regular reviews of metrics, performance data, billing reports, and feature usage might lead to fine-tuning that can reduce costs. <br><br>You might also be able to save some costs by evaluating the use of your support contract and right-sizing it.| 
 | Decomission resources that are underutilized, unused, obsolete, or can be replaced with more efficient alternatives. <br><br> Regularly delete unnecessary data.|By resizing or removing underutilized resources, or even changing SKUs, you can reduce costs. Shutting down unused resources and deleting data when you no longer need it reduces waste and frees up funds so you can invest them elsewhere. |
 
