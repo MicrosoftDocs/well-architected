@@ -1,8 +1,8 @@
 ---
 title: Architecture Best Practices for Azure Event Hubs 
 description: Focuses on the Event Hubs service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 01/12/2022
 ms.topic: conceptual
 products:
