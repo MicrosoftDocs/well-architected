@@ -136,7 +136,7 @@ Threat modeling is an engineering technique that you can use to help identify th
 
 - *Plan mitigation strategies.* After you identify potential threats, start building mitigation plans to enhance your hardening design. Include these mitigation strategies in your team's backlog for tracking.
 
-- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient, which standardizes the approach and reporting processes.
+- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient and standardize the approach and reporting processes.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Threat modeling is an intensive exercise and can slow development. Account for the extra effort required in your development planning.
 
