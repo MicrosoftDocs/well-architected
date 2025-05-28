@@ -260,17 +260,17 @@ Level 5 of the maturity model focuses on finding opportunities to make valuable 
 
 Take a proactive approach to achieving efficiencies through experimentation. Start with a hypothesis about an update to the workload that you expect will provide a measureable performance increase and build out a test environement to prove or refute that hypothesis. They hypothesis should be based on observed performance data that identifies a bottleneck or inefficiency. The test should mirror real-world behavior as much as possible to return a valid outcome. After proving your hypothesis, evaluate the return on investment (ROI) of implementing the change to determine if it is valuable enough to move forward. The ROI evaluation should consider all other Well-Architected Framework pillars. If the trade-offs that you'll need to make for other pillars are acceptable, the change is valuable enough to move forward with.
 
-#### &#10003; Optimize upgrade operations
+#### &#10003; Optimize deployment and feature releases
 
 At Level 5, you should have a standardized upgrade process in place that works reliably. At this level, reevaluate your processes and determine whether your strategy is the best fit for your operations efficiency. Determine whether blue-green, canary, or another deployment model is the most efficient for your organization. Consider using feature flags to easily rollout and rollback features to groups of users. Ensure your backup strategy allows you to recover quickly to a known-good state. 
 
-#### &#10003; Optimize monitoring and debugging for performance
+#### &#10003; Optimize the performance of monitoring and debugging processes
 
 Collecting logs and telemetry from your components has an inherent effect on performance. Measure the impact on your workload of your monitoring platform including logging, telemetry, instrumentation, and remote debugging, and look for areas of optimization. If there are processes that degrade performance more than they benefit your observability, consider reconfiguring or disabling those processes. As part of your continuous improvement practices, regularly review the monitoring data you're collecting to ensure that you're only collecting enough **valuable** information to get the performance insights you need.
 
 Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that don't provide enough information to easily understand what the nature of the performance issue is and what components are affected.
 
-#### &#10003; Enhance operations automation
+#### &#10003; Expand operations automation
 
 Look for opportunities to expand your automation of operational tasks to achieve further efficiences. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Examples of performance related tasks include:
 

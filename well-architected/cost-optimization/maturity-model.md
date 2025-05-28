@@ -278,19 +278,19 @@ The DRI also acts as the frontline of defense for higher than expected workload 
 
 ![Goal icon](../_images/goal.svg) Refine the workload and operational processes to achieve additional cost efficiencies.
 
-At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes in place already. Level 5 focuses on maximizing your return on investment (ROI) through advanced refinements, maintaining a consistent and predictable workload budget, and producing highly accurate budget forecasts. Consider the following recommendations to achieve these goals.
+At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes in place already. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate budget forecasts, and through advanced refinements. Consider the following recommendations to achieve these goals.
 
-#### &#10003; Introduce spending guardrails into your software development processes
+#### &#10003; Enforce spending guardrails in your software development processes
 
 Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits or resource utilization checks to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
 
-#### &#10003; Invest is knowledge building
+#### &#10003; Invest in knowledge building
 
 Empower your workload team to take ownership of cost optimization initiatives by developing a skills training program. Encourage team members to learn from industry thought leaders by attending conferences, webinars, and other industry events. Provide in-house training to cross-train skills and provide sandbox environments for hands-on learning experiences. Tie trainings back to cost optimization initiatives like optimizing scaling strategies, for example. Having highly skilled teams makes them more efficient and might help you minimize engaging third parties for new projects.
 
 Ensure that your cost model includes planned trainings for a given fiscal period, like the upcoming quarter.
 
-#### &#10003; Revisit and refine disaster recovery (DR) costs
+#### &#10003; Optimize high availability and disaster recovery (DR) costs
 
 After running real-world DR drills or after going through real-world DR incidents, you might find areas for cost optimization. You might find that you can afford a less expensive DR strategy for certain components while still meeting your recovery targets. For example, you might not need an active-active design for a non-critical flow, so you can replicate data to the secondary region and spin up the necessary compute infrastructure during recovery, rather than running two identitical deployments full-time. 
 
@@ -308,7 +308,7 @@ After observing your workload in production for a significant amount of time, yo
 
 Continuously monitor and adjust resource sizes based on usage patterns to optimize costs.
 
-#### &#10003; Optimize operations
+#### &#10003; Evolve your team's operations
 
 Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine if your chosen methodology is the best fit. Determine the costs of tasks per employee (known as unit costs) and look for opportunities to lower those costs. Look at the most expensive tasks and evaluate their return on investment. 
 
