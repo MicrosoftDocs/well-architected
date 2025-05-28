@@ -46,7 +46,7 @@ Consider combining these strategies when you design a partitioning scheme. For e
 
 The following image shows an example of horizontal partitioning, or sharding. This example divides product inventory data into shards that are based on the product key. Each shard holds the data for a contiguous range of shard keys (A-G and H-Z), organized alphabetically. When you perform sharding, it spreads the load over more computers, which reduces contention and improves performance.
 
-:::image type="content" source="media/partition-data/partition-data-key.png" alt-text="Diagram that shows how to horizontally partition data into shards based on a product key." border="false" lightbox="media/partition-data/partition-data-key.png":::
+:::image type="content" source="_images/partition-data/partition-data-key.png" alt-text="Diagram that shows how to horizontally partition data into shards based on a product key." border="false" lightbox="_images/partition-data/partition-data-key.png":::
 
 The most important factor is the sharding key that you choose. It can be difficult to change the key after the system is in operation. The key must ensure that data is partitioned to spread the workload as evenly as possible across the shards.
 
@@ -64,7 +64,7 @@ For more information, see [Sharding pattern](/azure/architecture/patterns/shardi
 
 The most common use for vertical partitioning is to reduce the I/O and performance costs that are associated with fetching frequently accessed items. The following image shows an example of vertical partitioning. In this example, different properties of an item are stored in different partitions. One partition holds data that's accessed more frequently, including product name, description, and price. Another partition holds inventory data, including the stock count and the last ordered date.
 
-:::image type="content" source="media/partition-data/partition-by-pattern.png" alt-text="Diagram that shows how to vertically partition data by its pattern of use." border="false" lightbox="media/partition-data/partition-by-pattern.png":::
+:::image type="content" source="_images/partition-data/partition-by-pattern.png" alt-text="Diagram that shows how to vertically partition data by its pattern of use." border="false" lightbox="_images/partition-data/partition-by-pattern.png":::
 
 In this example, the application regularly queries the product name, description, and price when it displays the product details to customers. The stock count and last ordered date are in a separate partition because these two items are commonly used together.
 
@@ -82,7 +82,7 @@ Vertical partitioning operates at the entity level within a data store, partiall
 
 When a bounded context can be identified for each distinct business area in an application, functional partitioning can improve isolation and data access performance. Another common use for functional partitioning is to separate read-write data from read-only data. The following image shows an overview of functional partitioning that has inventory data separated from customer data.
 
-:::image type="content" source="media/partition-data/partition-context-or-subdomain.png" alt-text="Diagram that shows how to functionally partition data bounded by context or subdomain." border="false" lightbox="media/partition-data/partition-context-or-subdomain.png":::
+:::image type="content" source="_images/partition-data/partition-context-or-subdomain.png" alt-text="Diagram that shows how to functionally partition data bounded by context or subdomain." border="false" lightbox="_images/partition-data/partition-context-or-subdomain.png":::
 
 This partitioning strategy can help reduce data access contention across different parts of a system.
 
@@ -256,19 +256,19 @@ Elastic Database provides two schemes for mapping data to shardlets and storing 
 
 - A **list shard map** associates a single key with a shardlet. For example, in a multitenant system, the data for each tenant can be associated with a unique key and stored in its own shardlet. To guarantee isolation, each shardlet can be held within its own shard.
 
-   :::image type="content" source="media/partition-data/point-shardlet.svg" alt-text="Diagram that shows shardlets held in their own shard." border="false" lightbox="media/partition-data/point-shardlet.svg":::
+   :::image type="content" source="_images/partition-data/point-shardlet.svg" alt-text="Diagram that shows shardlets held in their own shard." border="false" lightbox="_images/partition-data/point-shardlet.svg":::
 
    *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram.*
 
 - A **range shard map** associates a set of contiguous key values with a shardlet. For example, you can group the data for a set of tenants, each with their own key, within the same shardlet. This scheme is less expensive than a list shard map because tenants share data storage, but it provides less isolation.
 
-   :::image type="content" source="media/partition-data/range-shardlet.svg" alt-text="Diagram that shows sets of tenants within the same shardlets." border="false" lightbox="media/partition-data/range-shardlet.svg":::
+   :::image type="content" source="_images/partition-data/range-shardlet.svg" alt-text="Diagram that shows sets of tenants within the same shardlets." border="false" lightbox="_images/partition-data/range-shardlet.svg":::
 
    *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram*
 
 A single shard can contain the data for several shardlets. For example, you can use list shardlets to store data for different non-contiguous tenants in the same shard. You can also mix range shardlets and list shardlets in the same shard, but then they are addressed via different maps. The following diagram shows this approach:
 
-:::image type="content" source="media/partition-data/multiple-shard-maps.svg" alt-text="Diagram that shows shardlets within the same shard that are addressed via different maps." border="false" lightbox="media/partition-data/multiple-shard-maps.svg":::
+:::image type="content" source="_images/partition-data/multiple-shard-maps.svg" alt-text="Diagram that shows shardlets within the same shard that are addressed via different maps." border="false" lightbox="_images/partition-data/multiple-shard-maps.svg":::
 
 *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram.*
 
