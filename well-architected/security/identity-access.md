@@ -242,8 +242,6 @@ These capabilities natively integrate into the same Microsoft Entra identity and
 
 -   [Microsoft Entra External ID](/azure/active-directory/b2b/). Partners.
 
--   [Azure AD B2C](/azure/active-directory-b2c/). Customers.
-
 -   [Microsoft Entra federation compatibility list](/azure/active-directory/hybrid/connect/how-to-connect-fed-compatibility). Third-party federation solutions.
 
 You can use Microsoft Entra ID for authentication and authorization of custom applications via Microsoft Authentication Library (MSAL) or platform features, like authentication for web apps. It covers the management plane of Azure, the data planes of most of Azure services, and integration capabilities for your applications.

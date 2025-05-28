@@ -135,7 +135,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Evaluate the cost of features.** The traffic view dashboard feature shows where your clients connect from and the associated latency. This information helps optimize performance and refine your design, which contributes to operational excellence and system efficiency. However, it incurs extra costs. For more information, see [Traffic view billing](/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work).
 >
->   Also consider the cost associated with health probes. Traffic Manager pings your defined endpoints from various locations to check their availability. You can choose slow pings and fast pings. Fast pings detect failures quicker but incur higher costs. They also add more load on the workload because health checks are more frequent. 
+>   Also consider the cost associated with health probes. Traffic Manager pings your defined endpoints from various locations to check their availability. You can choose slow pings and fast pings. Fast pings detect failures quicker but incur higher costs. They also add more load on the workload because health checks are more frequent.
 >
 > - **Evaluate the cost of your routing strategy.** For example, if most clients access your endpoint from a high-latency region, you could create another endpoint closer to those users and adjust the routing method in Traffic Manager. This practice reduces latency so that you can process more requests with less capacity, which leads to cost savings.
   
@@ -162,7 +162,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 > - **View traffic data for profiles.** This data helps pinpoint areas for improvement, like expanding your Azure presence in high-latency regions. It also highlights traffic patterns across different regions to help you determine where to increase or decrease investment.
 >
 > - **Implement disaster recovery operations**. Your disaster recovery implementation can be designed to reroute network/web traffic from the main site to a backup site. This disaster recovery method can be implemented using Azure DNS and Azure Traffic Manager (DNS). In the event of a disaster, if the primary endpoint becomes degraded, Traffic Manager redirects traffic to a healthy secondary endpoint. By default, Traffic Manager gives priority to the primary endpoint, but it can also be set up with extra failover endpoints or load balancers to distribute the traffic load. For more information, see [Set up disaster recovery and outage detection](/azure/reliability/reliability-traffic-manager#set-up-disaster-recovery-and-outage-detection).
->    
+>
 > - **Avoid automatic-failback operations.** When you do a failback, don't use automatic failback, which immediately switches back to the original endpoint in the primary when it's available. Instead, disable the original endpoint, and use the secondary endpoint until you want to switch. This approach provides time for stabilization. Immediate failback can create extra load and delays.
 >
 >   For more information, see [Multiregion load balancing reference architecture](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server).
@@ -180,8 +180,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 ## Performance Efficiency
 
-Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and
-optimizing for peak performance.
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
@@ -249,9 +248,7 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 Consider the following resources that demonstrate the recommendations in this article.
 
 - Use the following reference architecture as an example of how you can apply this article's guidance to a workload:
-   - [Multiregion load balancing with Traffic Manager, Azure Firewall, and Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)
+  - [Multiregion load balancing with Traffic Manager, Azure Firewall, and Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)
 
 - Use the following product documentation to improve your implementation expertise:
-   - [Traffic Manager](/azure/traffic-manager/)
-
-
+  - [Traffic Manager](/azure/traffic-manager/)
