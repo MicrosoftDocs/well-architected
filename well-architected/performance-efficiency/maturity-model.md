@@ -117,71 +117,79 @@ Collect application performance data like throughput, latency, and completion ti
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that you set up log rotation and retention policies because the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
-# [**Level 3 - Incorporating performance signals**](#tab/level3)
+# [**Level 3: Incorporate performance signals**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback**
+![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback.**
 
-Level 3 of the Performance Efficiency pillar focuses on incorporating internal and external signals to refine performance targets, workload design and configurations, and related operational practices. In earlier maturity levels, you might have set performance targets and configurations based on development velocity needs, and internal testing. As you evolve your workload, taking internal and external user and stakeholder feedback into account, helps you ensure that there are realistic performance targets for your production workload, and that it meets those targets without sacrificing requirements for other pillars.
+Level 3 of the Performance Efficiency pillar focuses on incorporating internal and external signals to refine performance targets, workload design and configurations, and related operational practices. In earlier maturity levels, you might have set performance targets and configurations based on development velocity needs and internal testing. As you evolve your workload, incorporating feedback from internal and external users and stakeholders helps ensure realistic performance targets for your production workload. This approach allows you to meet those targets without compromising requirements for other pillars.
 
-#### &#10003; Implement robust performance monitoring and alerting to detect performance issues
+#### &#10003; Implement robust performance monitoring and alerting to detect performance problems
 
-Moving to production means that you must be prepared to respond immediately to performance issues. Robust performance monitoring and useful, actionable alerting will help ensure that the right teams are notified of issues and can begin their investigation and troubleshooting activities quickly. Strategies to help you define your performance issue response activities include:
+Moving to production means that you must be prepared to respond immediately to performance problems. Robust performance monitoring and useful, actionable alerting help ensure that the right teams are notified of problems and can begin their investigation and troubleshooting activities quickly. The following strategies can help you define your performance problem response activities:
 
 - Configure performance alerting in your monitoring platform.
-- Tune your alerts to provide actionable warning that the component is at risk of a performance issue. This could be setting a threshold at a static value, or it could be based on trend change for a given metric. Determine the trigger value based on continuous testing to ensure that you don't experience false positives.
-- Analyze logs and performance metrics to identify the underlying causes of issues.
-- Keep stakeholders informed about the status and resolution progress of performance issues.
-- Establish a framework to prioritize performance issues based on their impact.
-- Document all steps, processes, and best practices for responding to performance issues.
 
-As part of your performance monitoring strategy, ensure that you specifically monitor the performance of your flows. Understand each flow's impact on workload performance. For the flows, identify potential issues through user behavior insights. Track response times, errors, and other metrics to optimize critical flows. Analyze logs to trace flow performance and identify issues.
+- Tune your alerts to provide actionable warnings when a component is at risk of a performance problem. This approach can include setting a threshold at a static value or basing it on trend changes for a specific metric. Determine the trigger value through continuous testing to prevent false positives.
 
-#### &#10003; Continuously evaluate and adjust performance targets based on feedback
+- Analyze logs and performance metrics to identify the underlying causes of problems.
 
-Regularly review internal and external user feedback on performance and evaluate whether your targets meet expectations. Explore using customer satisfaction polling, comment systems, and targeted user testing to gather useful feedback.
+- Keep stakeholders informed about the status and resolution progress of performance problems.
 
-When practical for your workload, consider using a Real User Monitoring (RUM) approach. This approach can help you determine whether the user experience is meeting your expectations for performance. [Azure Monitor Application Insights](/azure/azure-monitor/app/javascript-sdk) and [Azure Traffic Manager](/azure/azure-monitor/app/javascript-sdk) offer functionality for capturing RUM data for websites.
+- Establish a framework to prioritize performance problems based on their impact.
 
-#### &#10003; Intelligently perform performance analysis and capacity planning
+- Document all steps, processes, and best practices for responding to performance problems.
 
-Track your app's performance using metrics that match your goals and targets. Compare the metrics against what user and business stakeholder feedback to ensure you're collecting the right data. Keep business-related metrics separate from performance data for easier analysis, even if some overlap exists. This helps everyone understand the data and make smart decisions.
+As part of your performance monitoring strategy, ensure that you specifically monitor the performance of your flows. Understand the effect of each flow on workload performance. For the flows, identify potential problems through user behavior insights. Track response times, errors, and other metrics to optimize critical flows. Analyze logs to trace flow performance and identify problems.
 
-Analyzing trends also helps you plan for how much capacity you'll need. Update your predictions to match the workload goals and user demand, so you always have enough resources. Regularly review your cloud providers SLAs to ensure that you'll be able to add resources as needed without running into service limits.
+#### &#10003; Evaluate and adjust performance targets continuously based on feedback
+
+Regularly review internal and external user feedback on performance to assess whether your targets align with expectations. Consider using customer satisfaction polling, comment systems, and targeted user testing to gather useful feedback.
+
+When practical for your workload, consider using a Real User Monitoring (RUM) approach. This approach can help you determine whether the user experience is meeting your expectations for performance. [Application Insights](/azure/azure-monitor/app/javascript-sdk) and [Azure Traffic Manager](/azure/azure-monitor/app/javascript-sdk) provide functionality for capturing RUM data for websites.
+
+#### &#10003; Perform performance analysis and capacity planning intelligently
+
+Track your app's performance by using metrics that align with your goals and targets. Compare these metrics with user and business stakeholder feedback to ensure that you collect the right data. Keep business-related metrics separate from performance data for easier analysis, even if some overlap exists. This approach makes the data clearer and helps teams make informed decisions.
+
+Analyzing trends helps you plan for your capacity requirements. Update your predictions to match the workload goals and user demand so that you always have enough resources. Regularly review your cloud provider's service-level agreements to ensure that you can add resources as needed without running into service limits.
 
 As you evolve your capacity planning, work closely with business decision-makers to stay aligned with business goals.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Weigh performance capacity planning against your reliability and budget requirements. Engage with stakeholders to find compromises between these considerations when there are conflicting requirements.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Balance performance capacity planning with reliability and budget requirements. Work with stakeholders to find practical compromises when requirements conflict.
 
 #### &#10003; Optimize your scaling strategy
 
-Employ advanced scaling techniques to optimize your resource utilization. Adjust the thresholds used for scaling operations based on internal and external feedback, and build automation to perform scaling operations for components that lack native automatic scaling functionality. Used scheduled scaling for components that are lightly used or idle at known times throughout the day, week, or month. Continuously evaluate scaling configurations and make refinements to better meet the fluctuating demands of a workload.
+Employ advanced scaling techniques to optimize your resource usage. Adjust the thresholds used for scaling operations based on internal and external feedback. Build automation to perform scaling operations for components that lack native automatic scaling functionality. Use scheduled scaling for components that are lightly used or idle at predictable times throughout the day, week, or month. Continuously evaluate scaling configurations and make refinements to better meet the fluctuating demands of a workload.
 
-#### &#10003; Optimize data management 
+#### &#10003; Optimize data management
 
-Inefficiencies in data management can cause performance issues across your workload. Use these strategies to optimize your data estate.
+Inefficiencies in data management can cause performance problems across your workload. Use the following strategies to optimize your data estate:
 
-- Divide large datasets or workloads into smaller parts called partitions for separate storage or processing. This enables parallel processing, reduces contention, and improves resource use and processing times. It also distributes data across multiple storage devices, reducing individual load and enhancing overall performance. Align partitioning types with use cases: partitioning can be horizontal, vertical, or functional. Review the [Performance Efficiency design patterns](./design-patterns.md) to learn about design patterns that use partitioning.
-- Optimize queries using tooling like [Query Performance Insight for Azure SQL Database](/azure/azure-sql/database/query-performance-insight-use).
-- Ensure your data model suits your workload, considering normalization, indexing, and partitioning.
-- Align storage infrastructure with workload requirements, optimizing settings like buffer size and caching.
+- Divide large datasets or workloads into smaller parts, called *partitions*, for separate storage or processing. This approach enables parallel processing, reduces contention, and improves resource use and processing times. It also distributes data across multiple storage devices, which reduces individual load and enhances overall performance. Align partitioning types with specific use cases. Partitioning can be horizontal, vertical, or functional, depending on the system's needs. For more information about design patterns that use partitioning, see [Performance Efficiency design patterns](./design-patterns.md).
 
-#### &#10003; Conduct performance tests and compare against a baseline
+- Optimize queries by using features like [query performance insight for Azure SQL Database](/azure/azure-sql/database/query-performance-insight-use).
 
-Design performance tests that can help you understand how your workload will perform in different production scenarios. Employ a variety of tests like load, stress, soak, spike, and compatibility, based on criteria and metrics to understand different dimensions of your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU utilization. Define acceptance criteria that align with targets. Review the [performance testing](./performance-test.md) article for detailed guidance.
+- Ensure that your data model is well-suited to your workload by considering factors such as normalization, indexing, and partitioning.
 
-Performance testing should be performed in a dedicated environment as part of your overall testing strategy. This includes reliability and security testing.
+- Align storage infrastructure with workload requirements by optimizing settings such as buffer size and caching.
 
-Review test results to identify bottlenecks and other inefficiencies and compare results against goals, predefined criteria, or previous runs.
+#### &#10003; Conduct performance tests and compare the results against a baseline
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Testing environments can be significant cost drivers. Design test environments with the minimum required resources to emulate the specific scenario being tested and ensure that resources are shutdown or deleted after testing to minimize utilization costs.
+Design performance tests that can help you understand how your workload performs in different production scenarios. Employ a variety of tests such as load, stress, soak, spike, and compatibility tests based on criteria and metrics. Measure how each test affects your workload performance. Metrics should include performance aspects like response time, throughput, and memory and CPU usage. Define acceptance criteria that align with targets. For more information, see [Recommendations for performance testing](./performance-test.md).
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that production data is cleansed of sensitive data before copying it into test environments if you need to use production data. Use synthetic data when practical.
+Performance testing should be conducted in a dedicated environment as part of your overall testing strategy. This approach includes reliability and security testing.
 
-Another critical testing function is to build your performance baseline. Baselines provide reference points for comparing performance over time. Identify performance metrics and use these as baseline metrics.  Evaluate future performance against these baselines to identify improvements or degradation. Regularly review and update baselines to capture updated design elements and features. Outdated baselines can lead to unrealistic and unachievable targets as the workload matures and new features are added.
+Review test results to pinpoint bottlenecks and inefficiencies. Compare findings against goals, predefined criteria, or previous runs.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Testing environments can be major cost drivers. Design test environments with only the necessary resources to accurately emulate the specific scenario being tested. To minimize usage costs, ensure that resources are shut down or deleted after testing.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If you need to use production data, ensure that sensitive data is removed before you copy it into test environments. Use synthetic data when practical.
+
+Another critical testing function is to build your performance baseline. Baselines provide reference points for comparing performance over time. Identify performance metrics and use them as baseline metrics. Evaluate future performance against these baselines to identify improvements or degradation. Regularly review and update baselines to capture updated design elements and features. Outdated baselines can result in unrealistic and unachievable targets as the workload matures and new features are added.
 
 #### &#10003; Adopt a business-driven mindset to drive performance efficiency
 
-Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance issues. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
+Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance problems. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
 
 # [**Level 4: Learning from production experience**](#tab/level4)
 

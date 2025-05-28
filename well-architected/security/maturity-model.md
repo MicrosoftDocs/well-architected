@@ -118,35 +118,39 @@ In general, choose a native or partner firewall to control all ingress to your w
 
 Hardening the workload is an iterative process that requires continuous improvement. Be vigilant and analyze the workload for vulnerabilities. As your workload matures, use a vulnerability scanning tool to help you easily identify vulnerable components. Early in your development, a better strategy might be to perform the hardening exercise manually. Look at the configurations of your components to find potential weaknesses, such as misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that you can shut down or remove entirely and for unused accounts that you can deactivate.
 
-# [**Level 3: Threat evaluation and mitigation** ](#tab/level3)
+# [**Level 3: Evaluate and mitigate threats**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Proactively identify and mitigate security threats**
+![Goal icon](../_images/goal.svg) **Identify and mitigate security threats proactively.**
 
-Level 3 of the maturity model is the point where you should implement advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Using strategies like threat modeling, network flow classifications, and advanced encryption techniques builds an additional level of preparedness on the foundational mechanisms you should already have in place. Designing an incident response plan ties all of your threat detection and mitigation strategies together and standardizes how you manage security incidents.
+At Level 3 of the maturity model, you should integrate advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Strategies like threat modeling, network flow classifications, and advanced encryption techniques build an extra level of preparedness on the foundational mechanisms that you should already have in place. An incident response plan unifies your threat detection and mitigation strategies while standardizing the way that you manage security incidents.
 
 #### &#10003; Incorporate threat modeling into your software development lifecycle (SDLC)
 
-Threat modeling is an engineering technique you can use to help you identify threats, attacks, vulnerabilities, and countermeasures that could affect your workload. You can use threat modeling to shape your workload's design, meet your company's security objectives, and reduce risk. When performing a threat modeling exercise, include the following strategies:
+Threat modeling is an engineering technique that you can use to help identify threats, attacks, vulnerabilities, and countermeasures that could affect your workload. You can use threat modeling to shape your workload's design, meet your company's security objectives, and reduce risk. When you perform a threat modeling exercise, include the following strategies:
 
-- *Validate the workload security requirements.* The process of gathering and codifying the workload security requirements should've been completed early on in your workload development. At Level 3, you should validate the requirements as a preliminary step in the threat modeling exercise.
-- *Validate the workload architectural diagram.* Like gathering requirements, building an architectural diagram with flows should've been completed at an earlier stage in your workload development, and at Level 3, you should validate the diagram.
-- *Identify potential threats.* Analyze potential threats for each component from an outside-in perspective. Determine how an attacker might exploit a given resource to gain further access. Classify threats according to an industry standard methodology like [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to help you understand the nature of each threat and apply appropriate security controls.
-- *Plan mitigation strategies.* After identifying potential threats, start building mitigation plans to enhance your hardening design. Include these mitigation strategies in your team's backlog for tracking.
-- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling Tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient, standardizing the approach and reporting processes.
+- *Validate the workload security requirements.* Complete the process of gathering and codifying the workload security requirements early in your workload development. At Level 3, validate the requirements as a preliminary step in the threat modeling exercise.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Threat modeling is an intensive exercise and can slow down development velocity. Account for the additional effort required in your development planning.
+- *Validate the workload architectural diagram.* An architectural diagram with flows should be completed early in the workload development and implementation process. At Level 3, you should revisit the design to ensure that it meets customer requirements.
+
+- *Identify potential threats.* Analyze potential threats for each component from an outside-in perspective. Determine how an attacker might exploit a specific resource to gain further access. Classify threats according to an industry-standard methodology like [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to help you understand the nature of each threat and apply appropriate security controls.
+
+- *Plan mitigation strategies.* After you identify potential threats, start building mitigation plans to enhance your hardening design. Include these mitigation strategies in your team's backlog for tracking.
+
+- *Use threat modeling tooling.* Use a tool like the [Microsoft Threat Modeling tool](/azure/security/develop/threat-modeling-tool) to make the exercises more efficient and standardize the approach and reporting processes.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Threat modeling is an intensive exercise and can slow development. Account for the extra effort required in your development planning.
 
 #### &#10003; Classify network traffic flows
 
-To classify flows, start by examining your workload architecture schematic to understand the flow's intent and characteristics. Consider the flow's network characteristics, such as protocol and packet details, and any compliance requirements. Classify the flow based on its visibility from external networks, distinguishing between public and private workloads, and implement security measures like load balancers or firewalls to protect critical flows.
+To classify network traffic flows, start by examining your workload architecture schematic to understand the flow's intent and characteristics. Consider the flow's network characteristics, such as protocol and packet details, and any compliance requirements. Classify the flow based on its visibility from external networks. Distinguish between public and private workloads. Implement security measures like load balancers or firewalls to protect critical flows.
 
 #### &#10003; Use advanced encryption strategies
 
-Review your compliance requirements and reevaluate your encryption configurations to determine how you can enhance your design with advanced encryption strategies. For example, you might have a requirement to use [double encryption](/azure/security/fundamentals/double-encryption), or you might need to [manage your encryption keys](/azure/security/fundamentals/encryption-customer-managed-keys-support). 
+Review your compliance requirements and reevaluate your encryption configurations to determine how you can enhance your design by using advanced encryption strategies. For example, you might have a requirement to [use double encryption](/azure/security/fundamentals/double-encryption), or you might need to [manage your encryption keys](/azure/security/fundamentals/encryption-customer-managed-keys-support).
 
-If you need to manage your own keys, use a key management service to mitigate the risk of losing a key or failing to rotate keys according to your requirements. Determine which service is the best match [for your use case](/azure/security/fundamentals/key-management-choose).
+If you need to manage your own keys, use a key management service to mitigate the risk of losing a key or failing to rotate keys according to your requirements. Determine which service is the [best match for your use case](/azure/security/fundamentals/key-management-choose).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure to research these strategies for your particular requirements before implementing them.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure to research these strategies for your specific requirements before you implement them.
 
 #### &#10003; Implement system auditing
 
@@ -156,13 +160,17 @@ To maintain system integrity, keep an accurate and up-to-date record of the syst
 
 Create an incident response plan that allows you to rapidly detect and respond to potential and active security compromises. The plan should include the following considerations:
 
-- *Identification of the incident owner(s) on the workload team.* One or more individuals on the workload team should be responsible for receiving alert notifications and working with triage teams to efficiently respond to incidents.
-- *Investigation and triage processes.* Determine the appropriate communication methods, like asynchronous updates vs a bridge call. Only involve necessary personnel to keep the focus on the immediate problem. Ensure architectural diagrams and other documentation about the workload are kept up to date to ensure that the team can work efficiently.
-- *Incident recovery processes.* Treat security incidents like disasters, and align your incident response plan to your business continuity and disaster recovery (BCDR) plan. Minimize the risk of recurrence by mitigating the issue before reintroducing the compromised component.
-- *Learn from incidents.* Perform post-incident reviews (also known as postmortems) to look for improvement opportunities. Include time in your planning for implementing improvements and include improvements in your BCDR drills.
-- *End-user and stakeholder communications.* Ensure that your users and stakeholders are kept up-to-date as you work through incidents. Define the proper communication channels and cadence to send out updates.
+- *Identify the incident owners on the workload team.* One or more individuals on the workload team should be responsible for receiving alert notifications and working with triage teams to efficiently respond to incidents.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Investigatoin, mitigation, and recovery processes can impact your reliability targets. You may need to disable parts of your system during an incident, affecting functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
+- *Investigate and triage processes.* Determine the appropriate communication methods, like asynchronous updates versus a bridge call. Only include necessary personnel to maintain focus on the immediate problem. Ensure that you keep architectural diagrams and other documentation about the workload current to ensure that the team can work efficiently.
+
+- *Recover from incidents.* Treat security incidents like disasters, and align your incident response plan to your business continuity and disaster recovery (BCDR) plan. Minimize the risk of recurrence by mitigating the problem before you reintroduce the compromised component.
+
+- *Learn from incidents.* Perform post-incident reviews, also known as *postmortems*, to look for improvement opportunities. Include time in your planning for implementing improvements, and include improvements in your BCDR drills.
+
+- *Communicate with end users and stakeholders.* Ensure that you keep users and stakeholders up-to-date as you work through incidents. Define the proper communication channels and cadence to send out updates.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Investigation, mitigation, and recovery processes can affect your reliability targets. You might need to disable parts of your system during an incident. This approach might affect functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
 # [**Level 4: Production hardening and refinements**](#tab/level4)
 
