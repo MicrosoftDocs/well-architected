@@ -260,7 +260,7 @@ Proactively optimizing performance means improving workload efficiency before is
 
 # [**Level 5: Advanced performance optimization techniques**](#tab/level5)
 
-Level 5 of the maturity model focuses on finding opportunities to make valuable performance refinements across your workload. Determine the technical debt that you've accumulated and prioritize updates that gain performance efficiencies without compromising other factors like cost, reliability, and security. Adopt a continuous improvment approach to regularly review your workload design and operational practice, looking for improvement opportunities. Use good change management processes to ensure that improvements are made safely and efficiently.
+Level 5 of the maturity model focuses on finding opportunities to make valuable performance refinements across your workload.  Revisit workload design areas like deployment practices, monitoring and debugging, and operational automation to find further optimization opportunities. Adopt a continuous improvement approach to regularly review your workload design and operational practice, looking for improvement opportunities. Use good change management processes to ensure that improvements are made safely and efficiently.
 
 ![Goal icon](../_images/goal.svg) **Implement advanced perfomance optimizations**
 
