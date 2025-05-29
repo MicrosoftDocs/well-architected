@@ -73,7 +73,7 @@ Ensure that your tools and deployment practices use the same identity provider a
 
 ![Goal icon](../_images/goal.svg) **Standardize foundational processes, which streamline decision-making responsibilities, and define the requirements for deployment and monitoring the system.**
 
-At Level 2, the team should adopt a more structured approach and focusing development activities on the core functionality of the workload. Establishing consistency early on helps minimize operational burdens in later stages.
+At Level 2, the team should adopt a more structured approach and focus development activities on the core functionality of the workload. Establishing consistency early on helps minimize operational burdens in later stages.
 
 #### &#10003; Define team roles and decision-making responsibilities 
 
