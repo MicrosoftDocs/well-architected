@@ -47,7 +47,7 @@ To design a reliable scaling strategy for your workloads, focus on identifying l
 
 ### Adapt scaling strategies to fit individual components or flows
 
-There's no one-size-fits-all scaling strategy. Different cloud services have different degrees of support of scaling and different approaches to scaling. For that reason, its important to understand how scaling is supported and implemented across all of your workload components to design your overall scaling strategy. You might apply scaling strategies at the individual component level or at the flow level, depending on your architectural design. When determining how you'll implement scaling across your workload, consider these factors:
+There's no one-size-fits-all scaling strategy. Different cloud services have different degrees of support of scaling and different approaches to scaling. For that reason, it's important to understand how scaling is supported and implemented across all of your workload components to design your overall scaling strategy. You might apply scaling strategies at the individual component level or at the flow level, depending on your architectural design. When determining how you'll implement scaling across your workload, consider these factors:
 
 - **Those components that can't be scaled out**. An example would be large, relational databases that don't have sharding enabled and can't be refactored without significant impact. Document the resource limits published by your cloud provider and monitor those resources closely. Include those specific resources in your future planning for migrating to scalable services.
 
@@ -61,7 +61,7 @@ There's no one-size-fits-all scaling strategy. Different cloud services have dif
 
 ### Choose the right technology
 
-Making well-informed technology choices with scaling in mind will help you ensure that your workload can meet your reliability targets as your workload evolves. Research the scaling abilities offered for different resources that offer similar functionality and choose the best combination for your future growth plans. For example, you might have several options for data stores that can host the particular kind of databases you'll use. However, one choice might have better scaling functionality out-of-the box than others, which could make it a better choice for your workload.
+Making well-informed technology choices with scaling in mind will help you ensure that your workload can meet your reliability targets as your workload evolves. Research the scaling abilities offered for different resources that offer similar functionality and choose the best combination for your future growth plans. For example, you might have several options for data stores that can host the particular kind of databases you'll use. However, one choice might have better scaling functionality out-of-the-box than others, which could make it a better choice for your workload.
 
 - **Take advantage of services that automatically scale.** When practical, use SaaS services that automatically scale without any configuration or input. Global services like [Microsoft Entra ID](/azure/active-directory/fundamentals/whatis) offer this functionality. [Serverless solutions](https://azure.microsoft.com/solutions/serverless/) also offer automatic scaling and can be good choices for many use cases.
 
@@ -93,7 +93,7 @@ Base your scaling strategy on scale units, which are the logical grouping of com
 
 ### Optimize the scale unit initialization time
 
-When designing your scaling strategy, keep in mind that different services scale at different timescales. There are some services that scale near-instantaneously and others that scale much slower. For example, API Management instances can take up to 45 minutes to finish thier scaling operations. To account for the scaling operation's timescale, properly plan to perform the scaling operation before the expected increased load hits your workload. Other recommendations to consider include:
+When designing your scaling strategy, keep in mind that different services scale at different timescales. There are some services that scale near-instantaneously and others that scale much slower. For example, API Management instances can take up to 45 minutes to finish their scaling operations. To account for the scaling operation's timescale, properly plan to perform the scaling operation before the expected increased load hits your workload. Other recommendations to consider include:
 
 - Pre-initialize nodes that will be deployed to reduce the time required for initialization.
 
@@ -101,13 +101,13 @@ When designing your scaling strategy, keep in mind that different services scale
 
 - Over-provision resources to handle increased load while scaling takes place. You might ensure that VMs normally run at 75% utilization capacity to ensure that they can handle increased load while horizontal scaling takes place.
 
-- Fine-tune your scaling thresholds with monitoring. Use your capcity monitoring to ensure that your scaling thresholds to trigger scaling operations.
+- Fine-tune your scaling thresholds with monitoring. Use your capacity monitoring to ensure that your scaling thresholds to trigger scaling operations.
 
 ### Scale data stores using sharding and partitioning
 
 Optimize the reliability of your data estate by including it in your scaling strategy. Partitioning data spreads a database across logical or physical storage resources, removing single points of failure. Choose the best partitioning strategy for your use case.
 
-- **Horizontal partitioning (sharding)**: Partitions (shards) are placed in separate data stores, but all partitions have the same schema. Each shard holds a subset of the database. This is a good approach to optimizae reliability as it helps facilitate load balancing and miniizes the burden on operations when dealing with issues. Shards can be replicated for higher reliability.
+- **Horizontal partitioning (sharding)**: Partitions (shards) are placed in separate data stores, but all partitions have the same schema. Each shard holds a subset of the database. This is a good approach to optimize reliability as it helps facilitate load balancing and minimizes the burden on operations when dealing with issues. Shards can be replicated for higher reliability.
 
 - **Vertical partitioning**: Each partition holds a subset of the fields for items in the data store. The fields are divided according to their usage pattern.
 
