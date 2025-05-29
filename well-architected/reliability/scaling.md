@@ -35,31 +35,15 @@ To use critical time in autoscaling decisions, it's helpful to have a library au
 
 ### Design according to load patterns
 
-To design a reliable scaling strategy for your workloads, focus on identifying load patterns for the user and system flows for each workload that leads to a scaling operation. Here are examples of the different load patterns:
+To design a reliable scaling strategy for your workloads, focus on identifying load patterns for the user and system flows for each workload that leads to a scaling operation. Here are examples of different load patterns and their corresponding scaling strategies:
 
-- **Static**: Every night by 11 PM EST, the number of active users is below 100 and the CPU utilization for the app servers drops by 90% across all nodes.
+- *Static:* Every night by 11 PM EST, the number of active users of your application falls below 100, and the CPU utilization for the app servers drops by 90% across all nodes. To handle this, you can schedule the scale down of your compute nodes to the minimum count (2) between 11 PM and 6 AM EST.
 
-- **Dynamic, regular, and predictable**: Every Monday morning, 1000 employees across multiple regions sign in to the ERP system.
+- *Dynamic, Regular, and Predictable:* Every Monday morning, 1000 employees across multiple regions sign in to the ERP system. To manage this, you can schedule the scale-out of your compute nodes to the normal daily capacity before the first region starts work.
 
-- **Dynamic, irregular, and predictable**: A product launch happens on the first day of the month and there's historical data from previous launches on how the traffic increases in these situations.
+- *Dynamic, Irregular, and Predictable:* A product launch happens on the first day of the month, and there's historical data from previous launches on how the traffic increases in these situations. To address this, you can define a one-time scheduled scale-up of your compute and database instances on the morning of a product launch, and scale back down after one week.
 
-- **Dynamic, irregular, and unpredictable**: A large scale event causes a spike in demand for a product. For example, companies manufacturing and selling dehumidifiers can experience a sudden surge in traffic after a hurricane or other flooding event when people in affected areas need to dry rooms in their home.
-
-After you've identified these types of load patterns, you can:
-
-- Identify how the load change associated with each pattern affects your infrastructure.
-
-- Build automation to address the scaling reliably.
-
-For the previous examples, your scaling strategies could be:
-
-- **Static**: You have a scheduled scale of your compute nodes to the minimum count (2) between 11 PM and 6 AM EST.
-
-- **Dynamic, regular, and predictable**: You have a scheduled scale out of your compute nodes to the normal daily capacity before the first region starts work.
-
-- **Dynamic, irregular, and predictable**: You define a one-time scheduled scale up of your compute and database instances on the morning of a product launch, and you scale back down after one week.
-
-- **Dynamic, irregular, and unpredictable**: You have autoscale thresholds defined to account for unplanned traffic spikes.
+- *Dynamic, Irregular, and Unpredictable:* A large-scale event causes a spike in demand for a product. For example, companies manufacturing and selling dehumidifiers can experience a sudden surge in traffic after a hurricane or other flooding event when people in affected areas need to dry rooms in their homes. To handle this, you can set autoscale thresholds to account for unplanned traffic spikes.
 
 ### Adapt scaling strategies to fit individual components or flows
 
