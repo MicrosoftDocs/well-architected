@@ -147,7 +147,7 @@ Consider performance testing and metrics, and scale out or scale up based on you
 
 ![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating feedback from users and stakeholders.**
 
-In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it's important to expand your feedback loop to include both internal and external users, as well as other stakeholders. As you make Cost Optimization refinements to your workload, you also need to consider trade-offs with other pillars, especially Performance Efficiency and Reliability.
+In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it's important to expand your feedback loop to include both internal and external users, as well as other stakeholders. As you make cost optimization refinements to your workload, you also need to consider trade-offs with other pillars, especially the Performance Efficiency and Reliability pillars.
 
 Level 3 of the Cost Optimization pillar focuses on preparing your workload for production by integrating both internal and external feedback into your strategy while ensuring that performance and reliability targets are met.
 
@@ -165,11 +165,11 @@ Create spending thresholds and associated alerting to enforce cost guardrails. T
 
 - Cost anomaly alerts notify you of unexpected cost variations. They enable you to investigate and address inefficiencies or abnormal spending patterns.
 
-- Commitment-based plan utilization alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when utilization drops below a desired threshold.
+- Commitment-based plan usage alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when usage drops below a desired threshold.
 
-#### &#10003; Develop a strategy to optimize your resource utilization
+#### &#10003; Develop a strategy to optimize your resource usage
 
-As you build out your nonproduction and production environments, you might unintentionally deploy overprovisioned resources. Over time, you might accumulate resources that were deployed for proof-of-concept (PoC) or for testing that are no longer needed. Developing a strategy to identify underutilized and unused resources is essential for continuous improvement in maintaining an optimized cloud environment. Consider the following recommendations:
+As you build out your nonproduction and production environments, you might unintentionally deploy overprovisioned resources. Over time, you might accumulate resources that were deployed for a proof of concept (PoC) or for testing that are no longer needed. Developing a strategy to identify underused and unused resources is essential for continuous improvement in maintaining an optimized cloud environment. Consider the following recommendations:
 
 - Use the correct resource types and SKUs for each environment. Research the infrastructure options that your cloud platform provides and select resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are targeted specifically for [PoC and dev/test environments](https://azure.microsoft.com/pricing/offers/dev-test/). These resource types and SKUs are significantly less expensive than standard or high-performance resources, but you can't use them for production workloads.
 
@@ -177,7 +177,7 @@ As you build out your nonproduction and production environments, you might unint
 
 - Standardize by using infrastructure as code for all environment changes. This approach helps enforce your environment change policies and simplifies your operations practices to reduce the risk of human error.
 
-- Monitor utilization metrics like CPU, memory, and storage to help determine if resources are underutilized and can be scaled down.
+- Monitor usage metrics like CPU, memory, and storage to help determine if resources are underused and can be scaled down.
 
 - Review nonproduction and production environments for unused resources that can be safely shut down or deleted.
 
@@ -189,11 +189,11 @@ As you build out your nonproduction and production environments, you might unint
 
 As you deploy cloud resources, take a strategic approach to purchasing licenses and other fixed monthly costs. These costs include server and database licensing, software licensing, and prepurchased reservations. Consider the following cost-saving strategies:
 
-- Research your options for applying existing licenses to the systems that you migrate to the cloud or for new deployments in the cloud, like [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit). Research any volume licensing or enterprise agreements that your organization maintains to take advantage of possible cost savings on cloud resources or software licensing.
+- Research options, like [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit), for applying existing licenses to the systems that you migrate to the cloud or for new deployments in the cloud. Research any volume licensing or enterprise agreements that your organization maintains to take advantage of possible cost savings on cloud resources or software licensing.
 
 - Use nonproduction and dev/test licensing for applicable systems, like dev/test licenses from Visual Studio.
 
-- Prepurchase capacity for cloud resources when practical. Reserving capacity can significantly reduce your monthly utilization costs and help maintain more consistent expenses month to month.
+- Prepurchase capacity for cloud resources when practical. Reserving capacity can significantly reduce your monthly usage costs and help maintain more consistent expenses.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** When you purchase reservations, ensure that you select the most cost-effective model for your use case. For example, if a resource can be scaled down nightly or seasonally, it might be more cost-effective to adjust its scaling intelligently. Also, identify the correct SKU to prepurchase through baseline testing and capacity planning.
 
@@ -201,7 +201,7 @@ As you deploy cloud resources, take a strategic approach to purchasing licenses 
 
 Your initial scaling policies might be based on your internal development feedback loop. These policies focus on adjusting scaling to meet development needs. As your workload evolves, incorporate both internal and external user feedback to ensure that performance remains within the acceptable range.
 
-Adjust scaling thresholds and introduce cooldown periods to mitigate temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define the units of scale to use moving forward. These units depend on factors such as workload design, use case, components and flows involved, and business requirements.
+Adjust scaling thresholds and introduce cooldown periods to mitigate temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define the units of scale to use moving forward. These units depend on factors such as workload design, use case, components, flows, and business requirements.
 
 For example, for mission-critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp). Alternatively, for simpler workloads that have non-critical flows, the unit of scale might be based on the number of compute instances of a specific SKU that's allocated to the workload. Select units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
 
@@ -225,7 +225,7 @@ Data is a primary driver of cloud costs. Proper data management can help you kee
 
 #### &#10003; Optimize code, software development practices, and feature development strategies
 
-Inefficient code can degrade system performance. This inefficiency can result in higher costs for resource utilization. Optimizing your code can improve efficiency and allow your workload to handle more load without needing to scale up your resources. Use the following strategies to optimize your code:
+Inefficient code can degrade system performance. This inefficiency can result in higher costs for resource usage. Optimizing your code can improve efficiency and allow your workload to handle more load without needing to scale up your resources. Use the following strategies to optimize your code:
 
 - Analyze runtime data and measure performance by using profiling tools.
 
@@ -255,7 +255,7 @@ Streamlining development practices enhances build velocity. This approach helps 
 
 - Use AI coding assistance tools, like GitHub Copilot, to reduce development time when practical.
 
-Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate feedback from both internal and external users and stakeholders to identify the features that most enhance user satisfaction. These insights result in increased utilization. In some scenarios, features might be designed specifically to optimize costs. Compare these features with functional priorities to assess their relative value.
+Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate feedback from both internal and external users and stakeholders to identify the features that most enhance user satisfaction and drive higher engagement. In some scenarios, features might be designed specifically to optimize costs. Compare these features with functional priorities to assess their relative value.
 
 # [Level 4 - Refining in production](#tab/level4)
 
