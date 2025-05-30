@@ -69,7 +69,7 @@ sections:
         src: ./_images/cost-optimization-flow-1.jpg
         alt: "Diagram showing the updated cost optimization principle headers."
       - title: Featured update - Cost Optimization
-        summary: "Achieving long-term financial efficiency requires a strategic approach that includes prioritization, continuous monitoring, and repeatable processes. While cost optimization doesn't always mean minimizing costs, it involves making informed tradeoffs—balancing expenses with critical factors like security, scalability, and resilience. Design principles and tools like the Cost Optimization checklist help align technology decisions with evolving business priorities, ensuring sustainable value without compromising organizational goals."
+        summary: "Cost optimization doesn't always mean minimizing costs, it involves making informed tradeoffs—balancing expenses with key factors like security, scalability, and resilience. Design principles and tools like checklists can help ensure your tech decisions stay aligned with evolving business goals, so you can deliver value without compromising organizational goals."
         componentType: text
         links:
           - componentType: link
