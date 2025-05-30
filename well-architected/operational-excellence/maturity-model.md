@@ -175,7 +175,7 @@ Design a repeatable deployment system that can be automated to minimize errors a
 
 Designing a monitoring system requires you to select what to monitor and understand the importance of those metrics for users.
 
-Start by collecting logs and metrics from all components in the workload. Take advantage of platform-provided monitoring tools. These tools are integrated with the services and provide insights into functional and operational requirements with little configuration. Securely store this data in a dependable storage solution that can be queried for analysis.
+Start by collecting logs and metrics from all components in the workload. Take advantage of platform-provided monitoring tools. These tools are integrated with the services and provide functional and operational insights with little configuration. Securely store this data in a dependable storage solution that can be queried for analysis.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Avoid collecting excessive data because it can create noise and increase costs. Start with basic metrics like CPU, memory usage, and storage usage. Add useful application health metrics over time.
 
