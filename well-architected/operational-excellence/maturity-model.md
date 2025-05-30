@@ -29,7 +29,7 @@ Establish a DevOps mindset at Level 1 to ensure the success of future strategies
 
 Align team efforts with business needs while fostering a collaborative culture.
 
-Workload operations are often managed by members from centralized teams, full-time staff dedicated to workload functionality, partners, or vendors. These individuals should function as a collective force, with mutual respect and acknowledgment for each other's expertise. If teams operate as independent parts, complexities and friction can occur. Independent teams undermine the goal of functioning as a single, efficient system that drives business outcomes.
+Members from centralized teams, full-time staff dedicated to workload functionality, partners, or vendors often manage workload operations. These individuals should function as a collective force, with mutual respect and acknowledgment for each other's expertise. If teams operate as independent parts, complexities and friction can occur. Independent teams undermine the goal of functioning as a single, efficient system that drives business outcomes.
 
 To reduce an isolated sense of ownership, advocate for a unified approach to problem-solving. All efforts should cater to the needs of the business. View both successes and failures as shared outcomes.
 
@@ -71,7 +71,7 @@ Ensure that your tools and deployment practices use the same identity provider a
 
 # [**Level 2: Standardize foundational processes**](#tab/level2)
 
-![Goal icon](../_images/goal.svg) **Standardize foundational processes to streamline decision-making responsibilities and define the requirements for system deployment and monitoring.**
+![Goal icon](../_images/goal.svg) **Standardize foundational processes. This approach streamlines decision-making responsibilities and define the requirements for system deployment and monitoring.**
 
 At Level 2, the team should adopt a more structured approach and focus development activities on the core functionality of the workload. Establishing consistency early on helps minimize operational burdens in later stages.
 
@@ -127,7 +127,7 @@ Day-to-day tools for workloads include development, testing, monitoring, and dep
 
 #### &#10003; Adopt automation across the workload
 
-As you develop a new or existing workload, seek opportunities to integrate automation. Designing a new workload with automation in mind from the start makes future adoption seamless. Similarly, incorporating automation into existing, or *brownfield*, workloads early in their life cycle helps you gain efficiency and maintain consistency over time.
+As you develop a new or existing workload, seek opportunities to integrate automation. Designing a new workload with automation in mind from the start makes future adoption seamless. Similarly, incorporating automation into existing workloads, or *brownfield* workloads, early in their life cycle helps you gain efficiency and maintain consistency over time.
 
 To streamline adoption, use mature, familiar off-the-shelf tools that are compatible with your cloud platform instead of building solutions from scratch. Explore native automation tools from your cloud provider to simplify the design. For example, many Azure services support automatic scaling for performance and failover capabilities for disaster recovery. When you assess non-Microsoft tools, factor in your team's expertise and any relevant business standards.
 
@@ -203,7 +203,7 @@ Create distinct environments for different stages like dev/test, QA, user accept
 
 #### &#10003; Perform sufficient testing
 
-At this level, testing is a non-negotiable strategy to reduce risks associated with changes. Each change is a potential risk and should be tested accordingly. Decide on a strategy where testing is prioritized for the critical parts likely to be affected by the change. Use the following steps to ensure a robust testing strategy:
+At this level, testing is a non-negotiable strategy to reduce risks associated with changes. Each change is a potential risk and should be tested accordingly. Decide on a strategy where testing is prioritized for the critical parts that the changes are likely to affect. Use the following steps to ensure a robust testing strategy:
 
 - **Define test cases.** Create test cases for application code, infrastructure templates, and configuration.
 
@@ -217,7 +217,7 @@ Ideally, keep development and test environments as similar to the production env
 >
 > Find balance between proximity to the production environment and having a cost-efficient non-production environment. For example, consider creating ephemeral dev/test environments, which are torn down after a test pass.
 >
-> Size environments according to the test case. Unit testing might only require matching library and OS versions in a smaller setup. Resiliency testing might need a pre-production environment with identical service SKUs. Performance testing might demand a production-scale deployment to ensure accurate results.
+> Size environments according to the test case. Unit testing might only require matching library and OS versions in a smaller setup. Resiliency testing might need a pre-production environment with identical service SKUs. Performance testing might demand a production-scale deployment.
 
 #### &#10003; Automate testing and other quality checks when possible
 
@@ -236,19 +236,19 @@ As your deployment moves through different environments, it's important to use t
 
 - **Have a separate process for hotfixes:** For critical situations like deploying security patches, you might need an improvised deployment process. Create an emergency process to accelerate these high-priority fixes. This process could include approval from only key stakeholders and technical members. Alternatively, develop a pipeline that bypasses some approvals for quicker deployment.
 
-  Consider the risk to the business or customers when deciding which steps to skip. High-investment and low-risk tests can be skipped in emergencies, while high-risk and low-investment tests should always be run. The designated responsible individual (DRI) should make the final decisions with input from key stakeholders and technical decision makers.
+  Consider the risk to the business or customers when determining which steps to skip. High-investment and low-risk tests can be skipped in emergencies, while high-risk and low-investment tests should always be run. The designated directly responsible individual (DRI) should make the final decisions with input from key stakeholders and technical decision makers.
 
 #### &#10003; Implement automated deployments
 
 Maintain separate deployment cycles for different layers based on their expected rate of change. In some cases, combining cycles might be necessary, depending on interdependencies and downtime requirements. However, in most cases, strive for granularity by independently managing each layer with least privilege. Ensure that changes in one layer don't affect the others.
 
-For example, networking infrastructure changes should be less frequent than application code changes. Manage these changes separately through a streamlined process via quality control. To manage these changes, build deployment pipelines that are aligned with the workload layers. Run tests on infrastructure as code assets in a controlled environment before you deploy them to production.
+For example, networking infrastructure changes should be less frequent than application code changes. Manage these changes separately through a streamlined process via quality control. To manage these changes, build deployment pipelines that are aligned with the workload layers. Run tests on infrastructure-as-code assets in a controlled environment before you deploy them to production.
 
 #### &#10003; Develop a health model
 
 After you have a basic monitoring system in place, combine business context with monitoring data to quantify the overall health status of workload components and the overall status. This exercise, known as *health modeling*, involves contextualizing monitoring values from infrastructure and applications with business context. To build an effective health model, consider the following key principles:
 
-- **Set context to system-observed data.** Setting thresholds is an important part of health modeling. Give numeric values context so that they're relevant to the workload. For example, while high CPU usage between 70% and 90% might generally indicate an **Unhealthy** status in one workload, it could be **Healthy** for another that efficiently uses available resources.
+- **Set context to system-observed data.** Setting thresholds is an important part of health modeling. Give numeric values context so that they're relevant to the workload. For example, while high CPU usage between 70% and 90% might generally indicate an **Unhealthy** status in one workload, it could be **Healthy** for another workload that efficiently uses available resources.
 
 - **Alert on changes.** Changes in these values indicate shifts in health status and should prompt action from DRIs. Therefore, alerting is another core component of health modeling. Avoid turning on standard metrics and sending all alerts to a support center. Instead, raise alerts based on changes in your health model. The information contained in the alerts must be meaningful and actionable, notifying the right teams about specific problems that need investigation or corrective action.
 
