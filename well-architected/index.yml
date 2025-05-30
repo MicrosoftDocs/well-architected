@@ -68,25 +68,24 @@ sections:
       - componentType: image
         src: ./ai/images/ai-architecture-pattern.png
         alt: "Diagram showing the an example architecture pattern for AI workloads."
-      - title: Featured update - Artificial Intelligence Workload
-        summary: "Explore the all new AI Workload:"
+      - title: Featured update - Cost Optimization
+        summary: "Explore the restructured design principles:"
         componentType: text
         links:
           - componentType: link
-            url: ./ai/index.yml
-            text: AI Workload Documentation
+            url: ./cost-optimization/principles.md
+            text: Cost Optimization design principles
         list:
           componentType: list
           style: checklist
           children:
-            - Understand how to address architectural challenges for designing AI workloads, including data and application design, nondeterministic functionality, and operational challenges.
+            - Explore guidance on proactive governance, clear accountability models, and regular financial controls to prevent budget overruns and enforce responsible spending.
 
-            - Get design recommendations when incorporating generative and discriminative AI models.
+            - Find more detailed approaches for cost modeling, realistic budgeting, aligning with FinOps practices, and making informed tradeoffs between penalties and proactive investment, especially in the context of SLAs.
 
-            - Address cross-cutting challenges such as security requirements, large data volumes, model decay, skill gaps, rapid AI innovation, and maintaining ethical standards.
-            
-            - Learn about the recommended practices for managing the lifecycle of models, covering both MLOps and GenAIOps.
-            
+            - Learn more about dynamic scaling, differentiated approaches for SDLC environments, and prioritizing use of discounted resources, active-active deployments, and optimizing support and training investments.
+
+            - New and expanded recommendations stress continuous cost tracking, establishing alerts, regular reviews for underutilized resources, and ongoing adjustments to architecture and spending as usage patterns evolve.
 # cards section (4)
   - componentType: grid
     title: Pillars
