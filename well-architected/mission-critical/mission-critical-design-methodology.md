@@ -18,7 +18,7 @@ This article suggests a design methodology grounded in the Azure Well-Architecte
 ## Design for your reliability objectives
 
 
-Mission citical doesn't mean the same for everyone. They vary in their reliability needs, which should be defined by business requirements and acceptable downtime. Selecting a target reliability tier, such as 99.9% vs. 99.999% availability, directly influences architectural decisions and tradeoffs. 
+Mission critical doesn't mean the same for everyone. They vary in their reliability needs, which should be defined by business requirements and acceptable downtime. A target reliability tier, such as 99.9% vs. 99.999% availability, directly influences architectural decisions and tradeoffs. 
 
 This design methodology encourages tailoring your architecture to the specific Service Level Objective (SLO). Consider availability SLOs to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. 
 
@@ -44,7 +44,7 @@ Zero-downtime deployments ensure users don't experience any disruption during up
 
 This methodology demands rigorous pre-release testing so that updates don't introduce defects, vulnerabilities, or instability. To support this, deployment tools and processes must be highly available and resilient. 
 
-Consistency is also key: the same artifacts and automated processes should be used across all environments to eliminate any chance of manual errors and reduce overall risk. End-to-end automation is not just preferred; it's mandatory for achieving reliable, repeatable, and interruption-free deployments.
+Consistency is also key: the same artifacts and automated processes should be used across all environments to eliminate any chance of manual errors and reduce overall risk. End-to-end automation isn't just preferred; it's mandatory for achieving reliable, repeatable, and interruption-free deployments.
 
 > Refer to [Recommendations for deployment and testing](./mission-critical-deployment-testing.md)
 
