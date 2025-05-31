@@ -3,7 +3,7 @@ title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 03/15/2023
+ms.date: 05/30/2025
 ms.topic: conceptual
 ---
 
@@ -56,73 +56,24 @@ This means clearly identifying what “healthy” and “unhealthy” look like 
 
 > Refer to [Design guide about health modeling](../design-guides/health-modeling.md)
 
-##
+## Evolve with Azure
 
-At the core of this methodology lies a critical design path comprised of:
+Design your architecture with modularity and flexibility, making it easier to adopt new features without major rework. Regularly review and stay aligned with the latest cloud-native capabilities and Azure service updates. Evolve your architecture in step with the Azure platform roadmap to ensure long-term sustainability and optimization.
 
-- Foundational **[design principles](mission-critical-design-principles.md)**
-- Fundamental **[design area](mission-critical-overview.md#what-are-the-key-design-areas)** with heavily interrelated and dependent design decisions.
+> Refer to [Evolve with Azure](/azure/architecture/guide/design-principles/design-for-evolution)
+
+ ## Next step
+
+Start your design journey by review how Well-Architected Framework pillars apply to mission-critical class of workloads.
+
+- [Foundational design principles](mission-critical-design-principles.md)
 
 The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
 
-For example, to define a target architecture it's critical to determine how best to monitor application health across key components. We highly recommend that you review the health modeling design area, using the outlined recommendations to help drive decisions.
-
-## 3&mdash;Deploy your first mission-critical application
+- [Fundamental design areas](mission-critical-overview.md#what-are-the-key-design-areas)
 
 Refer to these reference architectures that describe the design decisions based on this methodology.
 
 - [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
 
 - [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
-
-> [!TIP]
-> ![GitHub logo](./../_images/github.svg) The architecture is backed by [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation that illustrates the design recommendations.
-
-**Production-grade artifacts** Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
-
-**Rooted in real-world experiences** All technical decisions are guided by experiences of Azure customers and lessons learned from deploying those solutions.
-
-**Azure roadmap alignment** The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
-
-## 4&mdash;Integrate your workload in Azure landing zones
-
-[Azure landing zone subscriptions](/azure/cloud-adoption-framework/ready/landing-zone/) provide shared infrastructure for enterprise deployments that need centralized governance. 
-
-> [!VIDEO 9e05a6bd-7d10-4a83-9436-370a75dc1919]
-
-It's crucial to evaluate which connectivity use case is required by your mission-critical application. Azure landing zones support two main archetypes separated into different Management Group scopes: **Online** or **Corp.** as shown in this image.
-
-[ ![Diagram of Online and Corp. management groups and integration with a mission-critical workload.](./images/mission-critical-landing-zones.gif) ](./images/mission-critical-landing-zones.gif)
-
-### Online subscription
-
-A mission-critical workload operates as an independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will be further safeguarded through the [policy-driven governance](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) and will automatically integrate with centralized platform logging through policy.
-
-The [baseline architecture](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro) and [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation align with the Online approach. 
-
-### Corp. subscription
-
-When deployed in a Corp. subscription a mission-critical workload depends on the Azure landing zone to provide connectivity resources. This approach allows integration with other applications and shared services. You'll need to design around  some foundational resources, which will exist up-front as part of the shared-service platform. For example, the regional deployment stamp should no longer encompass an ephemeral Virtual Network or Azure Private DNS Zone because these will exist in the Corp. subscription.
-
-To get started with this use case, we recommend the [**baseline architecture in an Azure landing zone**](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone) reference architecture. 
-
-> [!TIP]
-> ![GitHub logo](./../_images/github.svg) The preceding architecture is backed by [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) implementation.
-
-
-## 5&mdash;Deploy a sandbox application environment
-
-In parallel to design activities, it's highly recommended that a sandbox application environment is established using the Mission-Critical reference implementations.
-
-This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be quickly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
-
-## 6&mdash;Continuously evolve with Azure roadmaps
-
-Application architectures established using this design methodology must continue to [evolve in alignment with Azure platform roadmaps](/azure/architecture/guide/design-principles/design-for-evolution) to support optimized sustainability.
-
-## Next step
-
-Review the design principles for mission-critical application scenarios.
-
-> [!div class="nextstepaction"]
-> [Design principles](mission-critical-design-principles.md)

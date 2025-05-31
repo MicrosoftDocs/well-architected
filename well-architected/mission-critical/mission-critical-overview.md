@@ -64,19 +64,18 @@ The design areas are interrelated and decisions made within one area can impact 
 |[**Security**](mission-critical-security.md)|Protect the application against threats intended to directly or indirectly compromise its reliability.|
 |[**Operational procedures**](mission-critical-operational-procedures.md)|Adoption of DevOps and related deployment methods is used to drive effective and consistent operational procedures.|
 
-## Illustrative examples
+## Reference architecture examples
 
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available that can be used as a basis for further solution development.
 
 - [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
-  > Refer to the implementation: [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
-
 - [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)&mdash;Extends the baseline architecture with strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.
 
 - [Baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone)&mdash;Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
-  > Refer to the implementation: [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected)
+> [!VIDEO 9e05a6bd-7d10-4a83-9436-370a75dc1919]
+
 
 ## Next step
 
