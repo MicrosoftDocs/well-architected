@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 08/15/2022
+ms.date: 05/30/2025
 ms.topic: conceptual
 ---
 
@@ -45,13 +45,15 @@ While the primary focus of mission-critical workloads is [Reliability](/azure/we
 
 Achieving high reliability imposes significant cost tradeoffs, which may not be justifiable for every workload scenario. It is therefore recommended that design decisions be driven by business requirements.
 
-## What are the key design areas?
+## How to use this guidance?
 
-Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
+✔ Start with [Design Methodology](./mission-critical-design-methodology.md), which outlines the rationale and recurring themes across technical and operational areas. This systematic approach helps define requirements and design strategies. Revisit this methodology when facing uncertain choices to stay aligned with the workload's overall goals. 
+
+✔ Proceed to [Design Principles](./mission-critical-design-principles.md) to see how the mission critical design methodology aligns with the core Well-Architected Framework pillars, considering growth evolution. Evaluate the underlying principles for all pillars collectively, including the tradeoffs.
+
+✔ Focus on the design areas that have the biggest impact on your solution. Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.svg "Mission-critical design areas")
-
-The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the **health modeling** design area, using the outlined recommendations to help drive decisions.
 
 |Design area|Summary|
 |---|---|

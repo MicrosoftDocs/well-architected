@@ -74,6 +74,4 @@ The impact of decisions made within each design area will reverberate across oth
 
 Refer to these reference architectures that describe the design decisions based on this methodology.
 
-- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
-
-- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
+- [Reference architecture examples](./mission-critical-overview.md#reference-architecture-examples)
