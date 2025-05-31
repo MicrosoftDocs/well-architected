@@ -38,7 +38,7 @@ RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defi
 
 > Refer to [Recommendations for defining reliability targets](../reliability/metrics.md)
 
-## Design for zer-downtime deployments
+## Design for zero-downtime deployments
 
 Zero-downtime deployments ensure users don't experience any disruption during updates. 
 
@@ -48,7 +48,15 @@ Consistency is also key: the same artifacts and automated processes should be us
 
 > Refer to [Recommendations for deployment and testing](./mission-critical-deployment-testing.md)
 
+## Design for fast failure detection and recovery
 
+Fast failure detection starts with a well-defined health model. Because failures often cascade across components, early detection and clear dependency between workload components is a non-negotiable for minimizing the blast radius and speeding up recovery.
+
+This means clearly identifying what “healthy” and “unhealthy” look like for each component, based on real user flows and business thresholds for performance and availability. These definitions should guide the metrics you monitor and help trace issues back to their root cause. 
+
+> Refer to [Design guide about health modeling](../design-guides/health-modeling.md)
+
+##
 
 At the core of this methodology lies a critical design path comprised of:
 
