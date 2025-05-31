@@ -9,27 +9,20 @@ ms.topic: conceptual
 
 # Design methodology for mission-critical workloads on Azure
 
-Building a mission-critical application on any cloud platform requires significant technical expertise and engineering investment, particularly since there's significant complexity associated with:
+Designing a mission-critical application on any cloud platform demands deep technical expertise and a thoughtful engineering approach. The complexity spans multiple dimensions: understanding the platform’s capabilities, selecting the right services, configuring them correctly, operationalizing them effectively, and staying aligned with evolving best practices and service roadmaps.
 
-- Understanding the cloud platform,
-- Choosing the right services and composition,
-- Applying the correct service configuration, 
-- Operationalizing utilized services, and
-- Constantly aligning with the latest best practices and service roadmaps.
+To navigate this complexity, establish a clear and simple design methodology that aligns with your business requirements, particularly around uptime and recovery. When decision-making becomes challenging or you find yourself stuck in analysis paralysis, return to your methodology as a reference point. It can help validate your choices, keep your design focused, and ensure alignment with your overall goals.
 
-This design methodology strives to provide an easy to follow design path to help navigate this complexity and inform design decisions required to produce an optimal target architecture.
+This article suggests a design methodology grounded in the Azure Well-Architected Framework. It's informed by insights gained from reviewing numerous mission-critical applications deployed on Azure across various organizations.
 
-## 1&mdash;Design for business requirements
+## Design for your reliability objectives
 
-Not all mission-critical workloads have the same requirements. Expect that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different application scenarios.
 
-### Select a reliability tier
+Mission citical doesn't mean the same for everyone. They vary in their reliability needs, which should be defined by business requirements and acceptable downtime. Selecting a target reliability tier, such as 99.9% vs. 99.999% availability, directly influences architectural decisions and tradeoffs. 
 
-Reliability is a relative concept and for any workload to be appropriately reliable it should reflect the business requirements surrounding it. For example, a mission-critical workload with a 99.999% availability Service Level Objective (SLO) requires a much higher level of reliability than another less critical workload with an SLO of 99.9%. 
+This design methodology encourages tailoring your architecture to the specific Service Level Objective (SLO). Consider availability SLOs to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. 
 
-This design methodology applies the concept of reliability tiers expressed as availability SLOs to inform required reliability characteristics. The table below captures permitted error budgets associated with common reliability tiers.  
-
-|Reliability Tier (Availability SLO)|Permitted Downtime (Week)|Permitted Downtime (Month)|Permitted Downtime (Year)|
+|Reliability (SLO)|Permitted Downtime (Week)|Permitted Downtime (Month)|Permitted Downtime (Year)|
 |--|--|--|--|
 |99.9%|10 minutes, 4 seconds|43 minutes, 49 seconds|8 hours, 45 minutes, 56 seconds|
 |99.95%|5 minutes, 2 seconds|21 minutes, 54 seconds|4 hours, 22 minutes, 58 seconds|
@@ -37,16 +30,13 @@ This design methodology applies the concept of reliability tiers expressed as av
 |99.999%|6 seconds|26 seconds|5 minutes, 15 seconds|
 |99.9999%|<1 second|2 seconds|31 seconds|
 
-> [!IMPORTANT]
-> Availability SLO is considered by this design methodology to be more than simple uptime, but rather a consistent level of application service relative to a known healthy application state.
-
-As an initial exercise, readers are advised to select a target reliability tier by determining how much downtime is acceptable? The pursuit of a particular reliability tier will ultimately have a significant bearing on the design path and encompassed design decisions, which will result in a different target architecture. 
-
-This image shows how the different reliability tiers and underlying business requirements influence the target architecture for a conceptual reference implementation, particularly concerning the number of regional deployments and utilized global technologies.
+While a single-region, multi-zone setup may suffice for many critical workloads, higher reliability tiers demand significantly more engineering effort and complexity. Avoid defaulting to overly complex solutions like active-active multi-region unless truly necessary.
 
 ![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
-Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further critical aspects when determining required reliability. For instance, if you're striving to achieve an application RTO of less than a minute then back-up based recovery strategies or an active-passive deployment strategy are likely to be insufficient. 
+RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won’t be fast enough.
+
+> Refer to [Recommendations for defining reliability targets](../reliability/metrics.md)
 
 ## 2&mdash;Evaluate the design areas using the design principles
 
