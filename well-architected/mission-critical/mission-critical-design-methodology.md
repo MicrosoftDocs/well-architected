@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design methodology for mission-critical workloads on Azure
 
-Designing a mission-critical application on any cloud platform demands deep technical expertise and a thoughtful engineering approach. The complexity spans multiple dimensions: understanding the platform’s capabilities, selecting the right services, configuring them correctly, operationalizing them effectively, and staying aligned with evolving best practices and service roadmaps.
+Designing a mission-critical application on any cloud platform demands deep technical expertise and a thoughtful engineering approach. The complexity spans multiple dimensions: understanding the platform's capabilities, selecting the right services, configuring them correctly, operationalizing them effectively, and staying aligned with evolving best practices and service roadmaps.
 
 To navigate this complexity, establish a clear and simple design methodology that aligns with your business requirements, particularly around uptime and recovery. When decision-making becomes challenging or you find yourself stuck in analysis paralysis, return to your methodology as a reference point. It can help validate your choices, keep your design focused, and ensure alignment with your overall goals.
 
@@ -34,11 +34,21 @@ While a single-region, multi-zone setup may suffice for many critical workloads,
 
 ![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
-RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won’t be fast enough.
+RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won't be fast enough.
 
 > Refer to [Recommendations for defining reliability targets](../reliability/metrics.md)
 
-## 2&mdash;Evaluate the design areas using the design principles
+## Design for zer-downtime deployments
+
+Zero-downtime deployments ensure users don't experience any disruption during updates. 
+
+This methodology demands rigorous pre-release testing so that updates don't introduce defects, vulnerabilities, or instability. To support this, deployment tools and processes must be highly available and resilient. 
+
+Consistency is also key: the same artifacts and automated processes should be used across all environments to eliminate any chance of manual errors and reduce overall risk. End-to-end automation is not just preferred; it's mandatory for achieving reliable, repeatable, and interruption-free deployments.
+
+> Refer to [Recommendations for deployment and testing](./mission-critical-deployment-testing.md)
+
+
 
 At the core of this methodology lies a critical design path comprised of:
 
