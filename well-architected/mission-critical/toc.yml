@@ -9,8 +9,6 @@
       href: mission-critical-design-principles.md
     - name: Architecture pattern
       href: mission-critical-architecture-pattern.md                
-    - name: Cross-cutting concerns
-      href: mission-critical-cross-cutting-issues.md
     - name: Design areas
       items:
       - name: Application design

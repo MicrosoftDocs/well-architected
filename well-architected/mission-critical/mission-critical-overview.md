@@ -55,6 +55,8 @@ Achieving high reliability imposes significant cost tradeoffs, which may not be 
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.svg "Mission-critical design areas")
 
+#### Mission-critical design areas
+
 |Design area|Summary|
 |---|---|
 |[**Application design**](mission-critical-application-design.md)|The use of a scale-unit architecture in the context of building a highly reliable application. Also explores the cloud application design patterns that allow for scaling, and error handling.|
