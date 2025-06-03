@@ -14,22 +14,22 @@ Designing, building, and operating [AI workloads](/azure/well-architected/ai/) *
 
 Designing AI workloads consists of three primary steps: Model design, data design, and operations. In this article, we look at different aspects that can be considered for factoring in sustainable design principles in these steps.
 
-- **Model design** involves choosing the appropriate model for the business problem that needs to be solved. This choice is dependent on whether you need to solve a prediction scenario or a classification scenario or a content generation scenario.
-- **Data design** activities focus on choosing the right storage and data processing infrastructure that will help support the training and operations of the model. Model and data design activities together are considered as part of the training phase.
-- **Operations design** phase or the _inference phase_ focuses on deploying the model and running it at scale.
+- **Model design** involves choosing the appropriate model for the business problem that needs to be solved. This choice depends on whether you need to solve a prediction scenario, a classification scenario, or a content generation scenario.
+- **Data design** activities focus on choosing the right storage and data processing infrastructure to support the training and operations of the model. Model and data design activities together are considered part of the training phase.
+- **Operations design** phase, or the _inference phase_, focuses on deploying the model and running it at scale.
 
 ## Model design recommendations
 
-Model design is the first step of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, and forecasting.
+Model design is the first step of an AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems such as classification, prediction, and forecasting.
 
-There are multiple decision points during the model design phase and you will look at some of these considerations from a sustainability perspective:
+There are multiple decision points during the model design phase, and you will look at some of these considerations from a sustainability perspective:
 
 - **Model size**: Choose Small Language Models (SLMs) over Large Language Models (LLMs) where applicable to reduce energy consumption.
   By reducing the size of AI models, developers can decrease the computational resources needed to process them, cutting down the overall energy consumption. This approach not only improves model efficiency but also allows AI to be deployed on resource-constrained devices.
   > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_:  SLMs may not be suitable for handling complex tasks or for maintaining context, and they might impact accuracy. Ensure that the right tradeoff is considered based on business needs. To learn more about where to use SLM vs LLM, see [key differences between small language models and large language models](https://www.microsoft.com/microsoft-cloud/blog/2024/11/11/explore-ai-models-key-differences-between-small-language-models-and-large-language-models/).
 
 - **Model reusability**: Utilize pretrained models to save energy cycles while ensuring security and compliance requirements are met.
-  Using a pretrained model saves energy cycles since you don't have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for you to use and hence is very much a sustainable alternative. Verify model provenance and security scanning for pretrained models.
+  Using a pretrained model saves energy cycles since you don't have to plan for data ingestion, data cleanup, training, pretraining, and fine-tuning, as this is all done and available out of the box for you to use and is therefore a sustainable alternative. Verify model provenance and perform security scanning for pretrained models.
 
 - **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. They leverage techniques like quantization and pruning that help in reducing energy consumption. To learn more about quantization or pruning, see [Advances to low-bit quantization enable LLMs on edge devices](https://www.microsoft.com/en-us/research/blog/advances-to-low-bit-quantization-enable-llms-on-edge-devices/)
 
@@ -85,22 +85,22 @@ There are multiple decision points during the data design phase, including:
 
 The operational design phase involves model deployment, inference optimization, monitoring, maintenance, and scaling. By making informed decisions about the operational infrastructure and processes, you can significantly improve the sustainability of your AI inference workloads.
 
-There are multiple operational design decisions that impact sustainability, and we'll examine key considerations for maintaining efficient AI workloads while minimizing environmental impact:
+There are multiple operational design decisions that impact sustainability, and we will examine key considerations for maintaining efficient AI workloads while minimizing environmental impact:
 
 - **Carbon-aware deployment**: Deploy models in [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources. Implement dynamic region selection based on real-time carbon intensity data and workload requirements.
 
-- **Retraining frequency**: Retrain-orchestration involves automating the retraining models based on new data while balancing accuracy requirements with environmental impact.
+- **Retraining frequency**: Retrain orchestration involves automating the retraining of models based on new data while balancing accuracy requirements with environmental impact.
 
-  This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Consider implementing [model decay detection](/azure/well-architected/ai/test#prevent-model-decay) and threshold-based retraining to minimize unnecessary computational cycles.
+  This ensures that the model stays up to date and maintains its performance over time. Retraining frequently isn't sustainable. Consider implementing [model decay detection](/azure/well-architected/ai/test#prevent-model-decay) and threshold-based retraining to minimize unnecessary computational cycles.
 
     An example where frequent retraining is not required is an image classification or speech processing scenario. Models for recognizing speech patterns in specific languages or dialects can remain effective over extended periods without frequent retraining. Therefore, AI models can maintain their effectiveness over time without the need for constant updates. Balance model accuracy with energy consumption by setting thresholds for retraining.
   > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_: Reducing the frequency of retraining could impact accuracy. For example, models that are used in financial markets need to be highly dynamic, and they need to be frequently retrained to adapt to new market conditions and data. Ensure that the right tradeoff is considered based on business needs. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics to help ensure optimal performance and reliability. For more information, see [GenAIOps monitoring tools](/azure/well-architected/ai/mlops-genaiops#monitoring)
 
-- **Comprehensive monitoring strategy**: Monitoring strategy is leveraged to track data drift, performance, and sustainability metrics. Track model performance to prevent machine learning ops cycles from being wasted due to [model decay](/azure/well-architected/ai/test#prevent-model-decay). When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run.
+- **Comprehensive monitoring strategy**: A monitoring strategy is leveraged to track data drift, performance, and sustainability metrics. Track model performance to prevent machine learning ops cycles from being wasted due to [model decay](/azure/well-architected/ai/test#prevent-model-decay). When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run.
 
    Integrate sustainability metrics into your AI workload monitoring alongside traditional performance, reliability, and security metrics. See [sustainability operational procedures](/azure/well-architected/sustainability/sustainability-operational-procedures) for implementation guidance.
 
-- **Scaling and workload resilientcy**: Implement [auto-scaling strategies](/azure/well-architected/performance-efficiency/optimize-code-infrastructure) that balance  resource allocation with environmental impact. Configure scaling policies to consider both workload requirements and regional carbon intensity, scaling up during low-carbon periods when possible.
+- **Scaling and workload resiliency**: Implement [auto-scaling strategies](/azure/well-architected/performance-efficiency/optimize-code-infrastructure) that balance resource allocation with environmental impact. Configure scaling policies to consider both workload requirements and regional carbon intensity, scaling up during low-carbon periods when possible.
 
    Design [redundancy and fault tolerance patterns](/azure/well-architected/reliability/redundancy) that minimize energy overhead while maintaining required availability levels. Use carbon-aware load balancing that distributes traffic across regions based on both performance metrics and real-time carbon intensity data.
 
