@@ -39,7 +39,7 @@ There are multiple decision points during the model design phase, and you will l
 
 - **Training region**: Model training is energy intensive. It's important that the right region is chosen. Select [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
 
-   Beyond selecting low-carbon regions, implement carbon-aware scheduling that shifts training workloads to times and regions with lower carbon intensity. Integrate with [Azure Carbon Optimization](https://azure.microsoft.com/products/carbon-optimization/) for real-time carbon intensity data.
+   Beyond selecting low-carbon regions, implement carbon-aware scheduling that shifts training workloads to times and regions with lower carbon intensity. Integrate with [Azure Carbon Optimization](/azure/carbon-optimization/overview) for real-time carbon intensity data.
 
 - **Caching strategies**: Use model caching and result caching to reduce redundant computations while maintaining response times. 
 
