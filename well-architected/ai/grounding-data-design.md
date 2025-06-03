@@ -182,7 +182,7 @@ For example, if your source data contains images, they aren't inherently searcha
 
 #### Chunking and the context window size
 
-A context window refers to the maximum amount of text that the model can handle at one time when generating a response. Context window is measured in tokens, which represent chunks of the text. The context window size limits how much input (user query, grounding data, system instructions) the model can process in a single interaction.
+A context window refers to the maximum amount of text that the model can handle at one time when generating a response. The context window size limits how much input (user query, grounding data, system instructions) the model can process in a single interaction.
 
 Grounding data often contains a large volume of information. Models only support up to a certain amount of tokens in one request, beyond which text can be truncated or ignored. If the context window is large, the entire text can be fed directly to the model. This strategy called _full-document grounding_ can improve accuracy, because the model has access to the full content. However, there's a trade-off. Sending large documents consumes a lot of tokens, which can increase costs. 
 
