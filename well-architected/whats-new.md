@@ -16,6 +16,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 ### Updated articles
 
 - [Recommendations for designing a reliable scaling strategy](./reliability/scaling.md): Explore updated content including: Choosing the right technology for scaling; Automating scaling operations, including use of Infrastructure-as-Code; Selecting and optimizing "scale units"; Scaling data stores using sharding and partitioning, and optimizing partition strategies; Monitoring scaling operations and log analysis.
+- [Design a data partitioning strategy](./design-guides/partition-data.md): This article can now be found under "Design guides." 
 - [Cost Optimization design principles](./cost-optimization/principles.md): Find actionable recommendations, such as treating different environments differently, using dynamic scaling, and collaborating with licensing teams. We added guidance on governance and cost guardrails and expanded examples and practical steps for budgeting, rate optimization, and maximizing resource utilization.
 - [Operational Excellence cloud design principles](./operational-excellence/principles.md): We refreshed this article, consolidating guidance and updating safe deployment practices.
 
