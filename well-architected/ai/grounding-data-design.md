@@ -45,7 +45,7 @@ You can augment generative AI models by using context data during inference, or 
 
   This data should be quickly searchable and retrievable by the application. You can store it many ways. You can use a separate index that's accessed in real time. Or, if your source data platform supports built-in indexes, you can run queries directly. 
 
-- **Fine tuning data** is information that's used to influence the model so that it can adapt to specific tasks, domains, or response styles for future inferencing requests. For example, if the model is expected to provide answers in a specific grammatical style, that style guide would serve as fine tuning data.
+- **Behavioral instructions** is information that's used to influence the model so that it can adapt to specific tasks, domains, or response styles for future inferencing requests. For example, if the model is expected to provide answers in a specific grammatical style, that style guide would serve as fine tuning data.
 
 - **User data** includes information provided by users during interactions with the application. When you interact with generative models, stateful interactions occur. These models lack inherent memory and treat each interaction as atomic.
 
@@ -180,11 +180,11 @@ Source data typically exists in various types of data, like text, images, and ta
 
 For example, if your source data contains images, they aren't inherently searchable. They need to be converted into vector representations to enable efficient semantic searches and comparisons. If relevancy is tied to the data behind these formats, invest in extraction of the data. Transform source data types to functional data types that help in querying and analysis.
 
-#### Context window and tokenizing
+#### Chunking and the context window size
 
 A context window refers to the maximum amount of text that the model can handle at one time when generating a response. Context window is measured in tokens, which represent chunks of the text. The context window size limits how much input (user query, grounding data, system instructions) the model can process in a single interaction.
 
-Grounding data often makes up for a large portion of that input. Models can only tokenize a certain amount beyond which text can be truncated or ignored. If the window is large, the entire text can be fed directly to the model. This strategy called _full-document grounding_ can improve accuracy, because the model has access to the full content. However, there's a trade-off. Sending large documents consumes a lot of tokens, which can increase costs. 
+Grounding data often contains a large volume of information. Models only support up to a certain amount of tokens in one request, beyond which text can be truncated or ignored. If the context window is large, the entire text can be fed directly to the model. This strategy called _full-document grounding_ can improve accuracy, because the model has access to the full content. However, there's a trade-off. Sending large documents consumes a lot of tokens, which can increase costs. 
 
 Alternatively, if the context window is smaller, strategies like *chunking* can be efficient. It involves dividing text into smaller pieces that can be individually processed and indexed. This allows for efficient search and retrieval despite token limitations. Check the maximum number of tokens that your choice of model can handle. Your chunks shouldn't exceed that limit.
 
