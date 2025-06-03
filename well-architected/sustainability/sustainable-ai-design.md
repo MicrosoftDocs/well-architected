@@ -10,12 +10,11 @@ ms.date: 03/24/2025
 
 # Sustainable AI Design
 
-Designing, building, and operationalizing [AI workloads](/azure/well-architected/ai/) **sustainably** is crucial as they consume significant energy and carbon throughout their lifetime. To ensure the business value derived from AI doesn't compromise environmental balance, it's essential to adopt sustainable practices.
+Designing, building, and operating [AI workloads](/azure/well-architected/ai/) **sustainably** is critical due to their significant energy consumption and carbon footprint. Adopt sustainable practices aligned with the [Well-Architected Framework pillars](/azure/well-architected/pillars), and carefully balance environmental considerations with your business requirements.
 
-Designing AI workloads consists of three primary steps: Model design, data design, and operations. In this article, we look at different  aspects that can be considered for factoring in sustainable design principles in these steps.
+Designing AI workloads consists of three primary steps: Model design, data design, and operations. In this article, we look at different aspects that can be considered for factoring in sustainable design principles in these steps.
 
-
-- **Model design** involves choosing the appropriate model for the business problem that needs to be solved. This choice is dependent on whether we need to solve a prediction scenario or a classification scenario or a content generation scenario.
+- **Model design** involves choosing the appropriate model for the business problem that needs to be solved. This choice is dependent on whether you need to solve a prediction scenario or a classification scenario or a content generation scenario.
 - **Data design** activities focus on choosing the right storage and data processing infrastructure that will help support the training and operations of the model. Model and data design activities together are considered as part of the training phase.
 - **Operations design** phase or the _inference phase_ focuses on deploying the model and running it at scale.
 
@@ -23,20 +22,28 @@ Designing AI workloads consists of three primary steps: Model design, data desig
 
 Model design is the first step of AI workload where the right model is chosen for solving the business problem. A model is a pretrained package that helps in machine learning problems of the world like classification, prediction, and forecasting.
 
-There are multiple decision points during the model design phase and we will look at some of these considerations from a sustainability perspective :
+There are multiple decision points during the model design phase and you will look at some of these considerations from a sustainability perspective:
 
-- **Model size**: One of the initial considerations is model size. Choose Small Language Models (SLMs) over Large Language Models (LLMs) where applicable to reduce energy consumption.
+- **Model size**: Choose Small Language Models (SLMs) over Large Language Models (LLMs) where applicable to reduce energy consumption.
   By reducing the size of AI models, developers can decrease the computational resources needed to process them, cutting down the overall energy consumption. This approach not only improves model efficiency but also allows AI to be deployed on resource-constrained devices.
   > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_:  SLMs may not be suitable for handling complex tasks or for maintaining context, and they might impact accuracy. Ensure that the right tradeoff is considered based on business needs. To learn more about where to use SLM vs LLM, see [key differences between small language models and large language models](https://www.microsoft.com/microsoft-cloud/blog/2024/11/11/explore-ai-models-key-differences-between-small-language-models-and-large-language-models/).
 
-- **Model reusability**: Utilize pretrained models to save energy cycles.
-  Using a pretrained model saves energy cycles since we don’t have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for us to use and hence is very much a sustainable alternative.
+- **Model reusability**: Utilize pretrained models to save energy cycles while ensuring security and compliance requirements are met.
+  Using a pretrained model saves energy cycles since you don't have to plan for data ingestion, data cleanup, training, pretraining, and fine tuning as this is all done and available out of the box for you to use and hence is very much a sustainable alternative. Verify model provenance and security scanning for pretrained models.
 
 - **Energy-efficient frameworks**: Choose frameworks like TensorFlow and PyTorch for their energy efficiency. They leverage techniques like quantization and pruning that help in reducing energy consumption. To learn more about quantization or pruning, see [Advances to low-bit quantization enable LLMs on edge devices](https://www.microsoft.com/en-us/research/blog/advances-to-low-bit-quantization-enable-llms-on-edge-devices/)
 
-- **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles. Fine-tuning requires significantly less time compared to training a model from scratch, which translates to lower energy consumption. Also fine-tuned models often achieve high accuracy with fewer iterations, leading to more efficient inference and lower energy usage during deployment.
+- **Fine-tuning**: Pretrain models on general datasets before fine-tuning on specific domains to reduce computational cycles. Fine-tuning requires significantly less time compared to training a model from scratch, which translates to lower energy consumption.
 
-- **Hosting provider region**: Model training is energy intensive. It's important that the right region is chosen. Select [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
+   Fine-tuned models often achieve high accuracy with fewer iterations, leading to more efficient inference and lower energy usage during deployment.
+
+- **Training region**: Model training is energy intensive. It's important that the right region is chosen. Select [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
+
+   Beyond selecting low-carbon regions, implement carbon-aware scheduling that shifts training workloads to times and regions with lower carbon intensity. Integrate with [Azure Carbon Optimization](https://azure.microsoft.com/products/carbon-optimization/) for real-time carbon intensity data.
+
+- **Caching strategies**: Use model caching and result caching to reduce redundant computations while maintaining response times. 
+
+   Model caching involves storing loaded or initialized models in memory, allowing subsequent requests to reuse the already loaded model. Result caching, stores the outputs of previous computations or predictions. When the system encounters identical or similar inputs again, it can quickly retrieve the cached results instead of recalculating them
 
 ## Data design recommendations
 
@@ -44,23 +51,66 @@ The data design phase involves data identification, classification, ingestion, s
 
 There are multiple decision points during the data design phase, including:
 
-- **Data processing**: Reuse publicly available datasets and architect data ingestion to pull only relevant data. For example, by using optimized data ingestion methods, such as batch processing and streamlining data pipelines, the computational resources required for data handling are minimized, leading to lower energy consumption. For more considerations around data processing and storage, see [sustainable storage](/azure/well-architected/sustainability/sustainability-storage)  
+- **Public datasets**: Reuse publicly available datasets and ingest only relevant data. Leveraging existing datasets reduces redundant data collection and processing, lowering energy consumption and carbon emissions.
+  
+  Implement data filtering strategies to process only the data required for your specific use case, avoiding unnecessary computational overhead. Consider using data sampling techniques for initial model development before scaling to full datasets. 
+
   > ![Risk icon](../_images/risk.svg) **Risk**: Ensure that licensing considerations are checked for public datasets and whether they have the right open source approvals.
-- **Clean data**: Ensure high-quality data for training to avoid wasted cycles. Clean data reduces the computational power required for [data preparation](/azure/well-architected/ai/grounding-data-design),cleaning and preprocessing, leading to lower energy consumption. Having clean data also minimizes the storage requirements by eliminating redundant and irrelevant data, which in turn reduces the energy needed for data storage.
-- **Move closer to the edge**: You might consider moving data processing, ingestion, computation, and storage to the edge. [Edge computing](https://www.microsoft.com/research/articles/improve-edge-device-ai-efficiency/) enables real-time data processing, which reduces both latency and energy required for continuous data communication between devices and central servers. Edge devices can also be optimized to run AI models efficiently using less power compared to traditional cloud-based processing.
+
+- **Optimized ingestion methods**: Implement optimized data ingestion methods, such as batch processing and streamlined pipelines, to minimize computational overhead and enhance sustainability.
+
+   For more considerations around data processing and storage, see [sustainable storage](/azure/well-architected/sustainability/sustainability-storage)  
+
+- **Data quality optimization**: Ensure high-quality data for training to avoid wasted cycles. Clean data reduces the computational power required for [data preparation](/azure/well-architected/ai/grounding-data-design), cleaning and preprocessing, leading to lower energy consumption.
+
+   Having clean data also minimizes the storage requirements by eliminating redundant and irrelevant data, which in turn reduces the energy needed for data storage.
+
+- **Edge computing**: Consider moving data processing, ingestion, computation, and storage to the edge while maintaining security and compliance requirements. [Edge computing](https://www.microsoft.com/research/articles/improve-edge-device-ai-efficiency/) enables real-time data processing, which reduces both latency and energy required for continuous data communication between devices and central servers.
+
+  Edge devices can be optimized to run AI models efficiently using less power compared to traditional cloud-based processing. Implement edge security controls and monitoring for distributed data processing.
+
+- **Storage requirements optimization**: Implement storage optimization approaches to minimize environmental impact while meeting business requirements. Apply automated data lifecycle management with tiered storage and intelligent archiving to reduce long-term storage needs.
+
+   Use advanced compression algorithms and deduplication techniques to minimize storage footprint and associated energy consumption. Balance retention policies with compliance requirements to avoid unnecessary data storage overhead.
+
+- **Regional data strategy**: Select regions for data storage that optimize both cost and performance while minimizing environmental impact. Store training data in the same region where model training will occur to reduce cross-region data transfer costs and latency.
+
+  Consider regions with lower storage costs and renewable energy availability when planning your data infrastructure. Evaluate the total cost including storage, compute, and data transfer fees when selecting regions for both data storage and model training.
+
+  > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_: Balance data residency and compliance requirements with low-carbon region deployment opportunities. Some organizations may need to store data in specific regions due to regulatory requirements.
+
+- **Disaster recovery and backup**: Design [disaster recovery](/azure/well-architected/reliability/disaster-recovery) and backup strategies that balance data protection with energy efficiency. Implement intelligent tiering, cross-region replication optimization, and [lifecycle management](/azure/well-architected/sustainability/sustainability-storage#implement-lifecycle-management) with deduplication to minimize storage energy consumption while maintaining required recovery objectives.
 
 ## Operational design recommendations
 
-- **Hosting provider region**: Deploy models in [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources.
+The operational design phase involves model deployment, inference optimization, monitoring, maintenance, and scaling. By making informed decisions about the operational infrastructure and processes, you can significantly improve the sustainability of your AI inference workloads.
 
-- **Retraining frequency**: Retrain-orchestration involves automating the retraining models based on new data.
-  This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable.  
+There are multiple operational design decisions that impact sustainability, and we'll examine key considerations for maintaining efficient AI workloads while minimizing environmental impact:
+
+- **Carbon-aware deployment**: Deploy models in [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) using renewable energy sources. Implement dynamic region selection based on real-time carbon intensity data and workload requirements.
+
+- **Retraining frequency**: Retrain-orchestration involves automating the retraining models based on new data while balancing accuracy requirements with environmental impact.
+
+  This ensures that the model stays up-to-date and maintains its performance over time. Retraining frequently isn't sustainable. Consider implementing [model decay detection](/azure/well-architected/ai/test#prevent-model-decay) and threshold-based retraining to minimize unnecessary computational cycles.
+
     An example where frequent retraining is not required is an image classification or speech processing scenario. Models for recognizing speech patterns in specific languages or dialects can remain effective over extended periods without frequent retraining. Therefore, AI models can maintain their effectiveness over time without the need for constant updates. Balance model accuracy with energy consumption by setting thresholds for retraining.
   > ![Tradeoff icon](../_images/trade-off.svg) _Tradeoff_: Reducing the frequency of retraining could impact accuracy. For example, models that are used in financial markets need to be highly dynamic, and they need to be frequently retrained to adapt to new market conditions and data. Ensure that the right tradeoff is considered based on business needs. As a proactive measure, use automated processes for continuous monitoring, and evaluate and retrain to maintain accuracy and relevance. Additionally, you need to monitor infrastructure and workload metrics to help ensure optimal performance and reliability. For more information, see [GenAIOps monitoring tools](/azure/well-architected/ai/mlops-genaiops#monitoring)
 
-- **Monitoring**: Monitoring strategy is leveraged to track data drift and performance. Track model performance to prevent machine learning ops cycles from being wasted due to [model decay](/azure/well-architected/ai/test#prevent-model-decay). When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run. Monitoring ensures that the correct actions are taken to enable the AI workload to operate sustainably.
+- **Comprehensive monitoring strategy**: Monitoring strategy is leveraged to track data drift, performance, and sustainability metrics. Track model performance to prevent machine learning ops cycles from being wasted due to [model decay](/azure/well-architected/ai/test#prevent-model-decay). When model decay occurs, machine learning ops cycles are wasted since the AI workload isn't predicting correct outcomes, but it continues to run.
 
-Implement these sustainable practices to allow your AI developers and data scientists to significantly reduce the environmental impact of AI workloads while maintaining business value.  
+   Integrate sustainability metrics into your AI workload monitoring alongside traditional performance, reliability, and security metrics. See [sustainability operational procedures](/azure/well-architected/sustainability/sustainability-operational-procedures) for implementation guidance.
+
+- **Scaling and workload resilientcy**: Implement [auto-scaling strategies](/azure/well-architected/performance-efficiency/optimize-code-infrastructure) that balance  resource allocation with environmental impact. Configure scaling policies to consider both workload requirements and regional carbon intensity, scaling up during low-carbon periods when possible.
+
+   Design [redundancy and fault tolerance patterns](/azure/well-architected/reliability/redundancy) that minimize energy overhead while maintaining required availability levels. Use carbon-aware load balancing that distributes traffic across regions based on both performance metrics and real-time carbon intensity data.
+
+- **Sustainable MLOps practices**: Integrate sustainability metrics into your [MLOps workflows](/azure/well-architected/ai/mlops-genaiops) throughout the lifecycle. Implement carbon-aware model training schedules that optimize computational workloads during periods of lower carbon intensity.
+
+   Design deployment strategies such as A/B testing and blue/green deployments to validate the sustainability impact of new workload versions, potentially preventing inefficient workloads from reaching full production scale.
+
+   Monitor sustainability metrics during controlled deployments and implement automated rollback mechanisms when sustainability thresholds are exceeded.
+
+Implement these sustainable practices to allow your AI developers and data scientists to significantly reduce the environmental impact of AI workloads while ensuring alignment with all Well-Architected Framework pillars and making appropriate tradeoffs based on your business requirements.
 
 ## Next steps
 
