@@ -93,12 +93,12 @@ You can think of indexes as structures that organize and optimize data for retri
 
     In some situations, you might need multiple search indexes. This approach allows you to independently optimize each index for maximum relevancy from your search queries. For example, an HR employee handbook and a product maintenance manual serve different purposes and audiences. By indexing them separately, you can tailor the schema and search queries for each, which improves user experience. This approach can be complex to implement and requires an orchestrator to facilitate calls to each index. The orchestration component is described in [Application design for AI workloads on Azure](application-design.md).
 
-  > [!NOTE]
-  > The choice between the two topologies and the data segmentation strategy depends on workload requirements, use cases, and user expectations.
-  >
-  > Doing cross-index queries can be challenging and can affect search relevancy. In worst case scenarios, there might be manual sifting through results, deciding which ones fit the criteria. This process introduces latency and adds complexity. In contrast, a single index approach is simpler and more straightforward. Relevancy can be improved by using index capabilities such as filtering.
-  >
-  > In some cases, compliance considerations lead to the need for separate indexes. For instance, if business requirements demand that data is isolated between Europe and America, multiple indexes might be inevitable.
+    > [!NOTE]
+    > The choice between the two topologies and the data segmentation strategy depends on workload requirements, use cases, and user expectations.
+    >
+    > Doing cross-index queries can be challenging and can affect search relevancy. In worst case scenarios, there might be manual sifting through results, deciding which ones fit the criteria. This process introduces latency and adds complexity. In contrast, a single index approach is simpler and more straightforward. Relevancy can be improved by using index capabilities such as filtering.
+    >
+    > In some cases, compliance considerations lead to the need for separate indexes. For instance, if business requirements demand that data is isolated between Europe and America, multiple indexes might be inevitable.
 
   - **Document design**. Align your data design with expected user queries to optimize relevancy. Consider how each document should serve queries. For search indexes, prioritize relevant documents and refine the results to a concise set that's densely packed with relevant information.
 
@@ -110,9 +110,9 @@ Configure the search index fields to return the most relevant set of documents. 
 
 - **Filter, search, and sort options**. Consider these options because they're directly related to use cases for augmentation. For example, _filterable_ determines true or false against a value provided in the query and returns relevant documents. For _searchability_, the attribute indicates whether the search query can reference the field. For instance, you might check if a text field contains specific text or if it's mathematically related to another vector. You can optionally assign a relative weight to that field as part of the search query. You can also make result sets _sortable_, which lists the results by relevance.
 
-One potential use case for filtering is performing **security trimming**.  Security trimming ensures that users only see the data they're authorized to access, even when using a shared index. For example, a single index might include a region field, and queries are filtered based on the user's region or role. The application accesses a shared index of documents but only returns results the user has permission to view. 
+   One potential use case for filtering is performing **security trimming**.  Security trimming ensures that users only see the data they're authorized to access, even when using a shared index. For example, a single index might include a region field, and queries are filtered based on the user's region or role. The application accesses a shared index of documents but only returns results the user has permission to view. 
 
-  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Enabling capabilities to index fields increases space requirements, affecting costs. Only add capabilities that you intend to use.
+   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Enabling capabilities to index fields increases space requirements, affecting costs. Only add capabilities that you intend to use.
 
 - **Metadata**. Indexes typically have metadata associated with index fields. Metadata helps us understand and manage data by providing relevant details about it. When designing indexes, consider whether metadata are retrievable or only used for relevance determination. The decision affects compute costs because the underlying indexing process is different. Excessive metadata can unnecessarily increase the size of the index.
   
