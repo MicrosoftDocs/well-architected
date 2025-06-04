@@ -143,87 +143,119 @@ Scaling out is preferred because it's more cost-effective and easier to implemen
 
 Consider performance testing and metrics, and scale out or scale up based on your evaluation.
 
-# [**Level 3 - Incorporating signals**](#tab/level3)
+# [**Level 3: Incorporate signals**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating user and stakeholder feedback**
+![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating feedback from users and stakeholders.**
 
-In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it becomes important to open up your feedback loop to internal and external users and to other stakeholders. As you make further Cost Optimization refinements to your workload, you'll also need to start considering tradeoffs with other pillars, especially Performance Efficiency and Reliability. 
+In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it's important to expand your feedback loop to include both internal and external users, as well as other stakeholders. As you make cost optimization refinements to your workload, you also need to consider trade-offs with other pillars, especially the Performance Efficiency and Reliability pillars.
 
-Level 3 of the Cost Optimization pillar focuses on making your workload production-ready by incorporating internal and external feedback into your strategy while meeting performance and reliability targets.
+Level 3 of the Cost Optimization pillar focuses on preparing your workload for production by integrating both internal and external feedback into your strategy while ensuring that performance and reliability targets are met.
 
-#### &#10003; Invest in impactful flows and fine-tune others
+#### &#10003; Invest in impactful flows and fine-tune other flows
 
-Reflect on the priorities assigned to your application flows and prioritize development efforts on critical flows, while looking for ways to simplify and reduce the cost of non-critical flows. Non-critical flows might have less stringent reliability requirements, so you might be able to reduce the complexity of their design. 
+Consider the priorities assigned to your application flows. Prioritize development efforts on critical flows while you look for ways to simplify and reduce the cost of non-critical flows. Non-critical flows might have less stringent reliability requirements. As a result, you might be able to simplify their design.
 
-For each flow, eliminate unnecessary elements, choose appropriate performance tiers, adjust scaling settings for variable demand, and fine-tune configurations to align with performance and budget needs. Monitor flows to identify inefficiencies such as idle compute instances, unused data, and low network bandwidth. Use native logging and analysis tools to help aggregate and analyze these metrics for trends.
+For each flow, eliminate unnecessary elements, select the appropriate performance tiers, adjust scaling settings for variable demand, and fine-tune configurations to align with performance and budget needs. Monitor flows to identify inefficiencies such as idle compute instances, unused data, and low network bandwidth. Use native logging and analysis tools to help aggregate and analyze these metrics for trends.
 
-#### &#10003; Enforce cost guardrails with alerting
+#### &#10003; Enforce cost guardrails by using alerting
 
-Creating spending thresholds and associated alerting is an easy way to enforce cost guardrails, ensuring that the workload stays within budget. Alerts can include the following.
+Create spending thresholds and associated alerting to enforce cost guardrails. This approach ensures that the workload stays within budget. Examples of alerts include the following types:
 
-- *Budgets*: Budget alerts allow you to set spending thresholds, monitor costs, and receive notifications to help control expenses and stay informed.
-- *Cost anomalies*: Cost anomaly alerts notify you of unexpected cost variations, allowing you to investigate and address inefficiencies or abnormal spending patterns.
-- *Commitment-based utilization*: Commitment-based plan utilization alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when utilization drops below a desired threshold.
+- Budget alerts allow you to set spending thresholds, monitor costs, and receive notifications to help control expenses and stay informed.
 
-#### &#10003; Develop a strategy to optimize your resource utilization
- 
-As you build out your nonproduction and production environments, you might inadvertently deploy overprovisioned resources. Likewise, over time you might end up with resources that were deployed for proof-of-concept or testing reasons that are no longer needed. Developing a strategy to identify under-utilized and unused resources is a cornerstone element of the continuous improvement practice of maintaining an optimized cloud environment. Consider the following recommended activities:
+- Cost anomaly alerts notify you of unexpected cost variations. They enable you to investigate and address inefficiencies or abnormal spending patterns.
 
-- Use the right resource types and SKUs for each environment. Research the infrastructure options your cloud platform provides and choose resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are [targeted specifically for proof-of-concept and Dev/Test environments](https://azure.microsoft.com/pricing/offers/dev-test/) that are significantly less expensive than standard or high performance resources, but cannot be used for production workloads.
-- Configure and enforce policies to limit allowed resource types and SKUs, regions, and users with deployment permissions. Automated policies will help you control changes to your environments, minimizing the risk of unauthorized deployments.
-- Standardize using infrastructure-as-code (IaC) for all environment changes. This practice further enforces your environment change policies and simplifies your operations practices, reducing the risk of human error.
-- Monitor utilization metrics like CPU, memory, and storage to help determine if resources are under-utilized and can be scaled down.
-- Review nonproduction and production environments for unused resources that can safely be shutdown or deleted.
-- Take advantage of tools provided by your cloud platform that help identify resource optimizations. For example, Azure Advisor offers [cost optimization recommendations](/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations) highlighting potential inefficiencies and steps to address them.
+- Commitment-based plan usage alerts help you monitor and optimize the usage of your commitment-based resources by notifying stakeholders when usage drops below a desired threshold.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Ensure that performance and reliability targets requirements are considered when making adjustments to your resources. Engage with stakeholders when compromises can be made to balance performance, reliability, and costs, or when budget requirements are an obstacle to workload enhancements.
+#### &#10003; Develop a strategy to optimize your resource usage
+
+As you build out your nonproduction and production environments, you might unintentionally deploy overprovisioned resources. Over time, you might accumulate resources that were deployed for a proof of concept (PoC) or for testing that are no longer needed. Developing a strategy to identify underused and unused resources is essential for continuous improvement in maintaining an optimized cloud environment. Consider the following recommendations:
+
+- Use the correct resource types and SKUs for each environment. Research the infrastructure options that your cloud platform provides and select resource types and SKUs that are appropriate for each use case. There are often specific resource types and SKUs that are targeted specifically for [PoC and dev/test environments](https://azure.microsoft.com/pricing/offers/dev-test/). These resource types and SKUs are significantly less expensive than standard or high-performance resources, but you can't use them for production workloads.
+
+- Configure and enforce policies to restrict resource types, SKUs, regions, and deployment permissions for users. Automated policies help manage environment changes. This process reduces the risk of unauthorized deployments.
+
+- Standardize by using infrastructure as code for all environment changes. This approach helps enforce your environment change policies and simplifies your operations practices to reduce the risk of human error.
+
+- Monitor usage metrics like CPU, memory, and storage to help determine if resources are underused and can be scaled down.
+
+- Review nonproduction and production environments for unused resources that can be safely shut down or deleted.
+
+- Take advantage of tools that your cloud platform provides to help identify resource optimizations. For example, Azure Advisor provides [cost optimization recommendations](/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations) that identify potential inefficiencies and suggest steps to address them.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Consider performance and reliability targets when you adjust your resources. Engage with stakeholders when compromises can help balance performance, reliability, and costs, or when budget constraints hinder workload enhancements.
 
 #### &#10003; Optimize licenses and other static costs
 
-As you deploy cloud resources, be strategic in purchasing licenses and other static monthly costs, like server and database licensing, software licensing, and prepurchased reservations. Considerations include:
+As you deploy cloud resources, take a strategic approach to purchasing licenses and other fixed monthly costs. These costs include server and database licensing, software licensing, and prepurchased reservations. Consider the following cost-saving strategies:
 
-- Research your options for applying existing licenses to systems that you are migrating into the cloud or for new deployments in the cloud, like [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit). Research any volume licensing or enterprise agreements that your organization already maintains to leverage possible cost savings on cloud resources or software licensing.
-- Use nonproduction and dev/test licensing for applicable systems, like Visual Studio Dev/Test licenses.
-- Prepurchase capacity for cloud resources when practical. Reserving capacity can significantly lower your monthly utilization costs and help keep your costs more consistent month-to-month.
+- Research options, like [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit), for applying existing licenses to the systems that you migrate to the cloud or for new deployments in the cloud. Research any volume licensing or enterprise agreements that your organization maintains to take advantage of possible cost savings on cloud resources or software licensing.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: When purchasing reservations, be sure that it is the most cost-effective model for your use case. For example, if a given resource can be scaled down nightly or seasonally, it might be more cost effective to intelligently scale that resource. Also, be sure that you've identified the right SKU to pre-purchase through baseline testing and capacity planning.
+- Use nonproduction and dev/test licensing for applicable systems, like dev/test licenses from Visual Studio.
+
+- Prepurchase capacity for cloud resources when practical. Reserving capacity can significantly reduce your monthly usage costs and help maintain more consistent expenses.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** When you purchase reservations, ensure that you select the most cost-effective model for your use case. For example, if a resource can be scaled down nightly or seasonally, it might be more cost-effective to adjust its scaling intelligently. Also, identify the correct SKU to prepurchase through baseline testing and capacity planning.
 
 #### &#10003; Refine autoscaling policies
 
-Your initial scaling policies might be based on your internal development feedback loop - adjusting scaling to meet development needs. As your workload evolves, begin incorporating internal and external user feedback to ensure that performance remains within the acceptable range.  Adjust scaling thresholds and introduce cooldown periods to prevent temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define your units of scale that will be used going forward. Units of scale depend on many factors like the workload's overall design and use case, components and flows involved, and business requirements. For example, for mission critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp), whereas for simpler workloads with non-critical flows, the unit of scale could simply be based on the number of compute instances of a given SKU that is allocated to the workload. Choose units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
+Your initial scaling policies might be based on your internal development feedback loop. These policies focus on adjusting scaling to meet development needs. As your workload evolves, incorporate both internal and external user feedback to ensure that performance remains within the acceptable range.
+
+Adjust scaling thresholds and introduce cooldown periods to mitigate temporary load spikes. Continuously monitor and fine-tune the system to optimize costs and meet requirements. Define the units of scale to use moving forward. These units depend on factors such as workload design, use case, components, flows, and business requirements.
+
+For example, for mission-critical workloads, a unit of scale might be an entire [deployment stamp](/azure/architecture/patterns/deployment-stamp). Alternatively, for simpler workloads that have non-critical flows, the unit of scale might be based on the number of compute instances of a specific SKU that's allocated to the workload. Select units of scale that allow the workload to handle expected increases in load without wasted capacity. Update your cost model to include forecasted scaling needs.
 
 #### &#10003; Optimize your data estate
 
-Data is a primary driver of cloud costs and proper data management can help you keep costs consistent and within budget. Strategies for data estate management include:
+Data is a primary driver of cloud costs. Proper data management can help you keep costs consistent and within budget. Use the following strategies to manage your data estate:
 
-- Classify and label data to apply appropriate controls and determine the appropriate levels of reliability and performance for different data types and stores.
-- Capture only essential data, compress data for colder storage, delete unneeded data with proper retention policies, deduplicate to eliminate redundant data, and educate users on efficient data storage practices.
+- Classify and label data to apply the appropriate controls and determine the appropriate levels of reliability and performance for different data types and stores.
+
+- Capture only essential data, compress data for colder storage, and delete unneeded data by using proper retention policies. Deduplicate data to eliminate redundant data and educate users on efficient data storage practices.
+
 - Optimize backups by using incremental backups, enabling compression, and moving older backups to cold storage.
-- Optimize replication by applying appropriate replication models (synchronous vs asynchronous) and replication frequency depending on your requirements. Continuously evaluate your requirements and configuration.
-- Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
+
+- Optimize replication by applying the appropriate replication models, whether synchronous or asynchronous, to optimize replication based on your requirements. Adjust the replication frequency to align with your specific needs. Continuously evaluate your requirements and configuration.
+
+- Incorporate internal and external feedback to review storage access patterns and adjust your data life cycle management strategies.
+
 - Use tooling to help optimize queries.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Weigh your backup and replication policies against your recovery targets. Less frequent replication or offloading older backups to cold storage can affect your recovery time, so be mindful about implementing these optimizations.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Compare your backup and replication policies against your recovery targets. Less frequent replication or offloading older backups to cold storage can affect your recovery time, so be mindful about implementing these optimizations.
 
 #### &#10003; Optimize code, software development practices, and feature development strategies
 
-Inefficient code can lead to inefficient system performance, which can mean higher costs for resource utilization. Optimizing your code can help your workload become more efficient, handling more load without needing to scale up your resources. Strategies to optimize code include:
+Inefficient code can degrade system performance. This inefficiency can result in higher costs for resource usage. Optimizing your code can improve efficiency and allow your workload to handle more load without needing to scale up your resources. Use the following strategies to optimize your code:
 
-- Analyze runtime data, measure performance with profiling tools, evaluate business logic and user impact, and review language-specific performance recommendations.
-- Optimize by removing unnecessary function calls, minimizing logging, refining loops and conditionals, reducing data processing, minimizing network requests and memory allocations, and assessing cross-cutting implementations.
-- Optimize network paths by:
-   - Minimizing data transfers between components and across geo-distant regions by analyzing and eliminating unnecessary transfers. Ensure only the required data fields are sent, not entire objects or data structures, to reduce the size and frequency of data transfers.
-   - Avoiding transferring redundant data by only sending essential information.
-   - Refactoring your code to reduce repeated requests and batch them when possible.
- 
-Streamlining development practices increases build velocity, saving your workload teams valuable time getting enhancements to production efficiently. Strategies for streamlining development practices include:
+- Analyze runtime data and measure performance by using profiling tools.
 
-- Reduce build times by reviewing build configuration settings and eliminating unnecessary steps or processes, parallelizing build tasks, using caching, and employing incremental builds to avoid unnecessary recompilation of unchanged components.
-- Use production mocking to optimize testing. Mocking allows developers to focus testing on simulated scenarios that are impractical to reproduce in a production environment.
-- Optimize development planning practices by defining clear objectives and metrics, using monitoring tools to track KPIs, and prioritizing actionable insights.
+- Evaluate business logic and its effect on user experience.
+
+- Review language-specific performance recommendations.
+
+- Remove unnecessary function calls, minimize logging, and refine loops and conditionals.
+
+- Reduce data processing, minimize network requests and memory allocations, and assess cross-cutting implementations.
+
+Use the following methods to optimize network paths:
+
+- Minimize data transfers between components and across geo-distant regions by analyzing and eliminating unnecessary transfers. Ensure that only the required data fields are sent and not entire objects or data structures. This approach reduces the size and frequency of data transfers.
+
+- Avoid transferring redundant data by only sending essential information.
+
+- Refactor your code to reduce repeated requests and batch them when possible.
+
+Streamlining development practices enhances build velocity. This approach helps workload teams save valuable time and efficiently deliver enhancements to production. Use the following strategies to streamline development practices:
+
+- Speed up build times by optimizing configuration, removing unnecessary steps and processes, parallelizing tasks, using caching, and enabling incremental builds to prevent redundant compilation.
+
+- Use production mocking to optimize testing. Production mocking allows developers to focus testing on simulated scenarios that are impractical to reproduce in a production environment.
+
+- Optimize development planning practices by defining clear objectives and metrics, using monitoring tools to track key performance indicators, and prioritizing actionable insights.
+
 - Use AI coding assistance tools, like GitHub Copilot, to reduce development time when practical.
 
-Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate internal and external user and stakeholder feedback to determine which features will have the highest impact on user satisfaction, driving increased utilization. In some cases, features might be developed specifically for optimizing costs. Weigh those against functional priorities to determine their relative value.
+Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate feedback from both internal and external users and stakeholders to identify the features that most enhance user satisfaction and drive higher engagement. In some scenarios, features might be designed specifically to optimize costs. Compare these features with functional priorities to assess their relative value.
 
 # [**Level 4: Applying production learnings**](#tab/level4)
 
