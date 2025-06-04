@@ -191,72 +191,83 @@ Another critical testing function is to build your performance baseline. Baselin
 
 Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance problems. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
 
-# [Level 4 - Learning from production experience](#tab/level4)
+# [**Level 4: Learn from production experience**](#tab/level4)
 
-![Goal icon](../_images/goal.svg) **Applying learnings from operating in production to achieve efficiencies in performance**
+![Goal icon](../_images/goal.svg) **Apply what you learn from operating in production to help you achieve performance efficiency.**
 
-The Level 4 stage of the maturity model assumes that your workload is in production and has been operating for enough time to gather useful information about its normal running state. At this level, you should use this information to make necessary updates and further improvements.
+Level 4 of the maturity model assumes that your workload is in production and has been operating for enough time to collect useful insights into how it typically operates. At this level, you should use this information to make necessary updates and further improvements.
 
-Use telemetry and feedback mechanisms to identify performance issues like bottlenecks and develop plans to make improvements. Use mature change management practices to ensure that you don't inadvertently cause additional issues when making changes to your environment. 
+Use telemetry and feedback mechanisms to identify performance problems like bottlenecks, and develop plans to make improvements. Use mature change management practices to ensure that you don't inadvertently cause more problems when you make changes to your environment.
 
-Keep in mind that iterative improvements will reach a point of diminishing returns. You'll need to decide when you've reached a "good enough" running state, when the cost and burden of developing fixes for inefficiencies won't outweigh the minor performance improvements you gain.
+Keep in mind that iterative improvements reach a point of diminishing returns. You need to decide when you reach a running state that meets your requirements. An acceptable state is when the cost and burden of fixing inefficiencies don't outweigh the minor performance improvements that you gain.
 
-Also remember that any change you make to your environment to improve performance will directly impact other pillars of the Well-Architected Framework, with cost optimization being the most common trade-off. Carefully assess the impact to other pillars before making performance improvements to maintain the right balance for your requirements.
+Remember that any change you make to your environment to improve performance directly affects other pillars of the Well-Architected Framework. Cost optimization is the most common trade-off. Carefully assess the impact to other pillars before you make performance improvements to maintain the right balance for your requirements.
 
 #### &#10003; Uplift your performance monitoring and testing
 
-In Level 4, you should be monitoring and testing for performance in production. You should have well-developed test plans and scenarios and test data already in place. The goal of testing is to ensure that you're staying ahead of potential performance issues before they appear in production. So, monitoring and testing should be rigorous, standardized, and thoroughly documented. Consider the following recommendations.
+In Level 4, you should monitor and test for performance in production. You should have well-developed test plans and scenarios and test data already in place. The goal of testing is to catch potential performance problems before they occur in production. So, monitoring and testing should be rigorous, standardized, and thoroughly documented. Consider the following recommendations:
 
-- *Continuously revisit your baseline.* Apply learnings from your performance monitoring to ensure that your baseline reflects actual performance metrics. Your baseline is important to maintain because tests should be run against the baseline to ensure that deployments like feature updates don't negatively impact your performance.
-- *Shift left in your testing.* Integrate testing earlier in your development cycle to catch potential issues before they appear in production.
-- *Shift right in your testing.* Test in production. To ensure that testing is non-disruptive, use strategies like  blue-green deployments and A/B testing.
-- *Use synthetic transactions in your testing.* Using synthetic transactions allows you to consistently test real-world user experience, helping you identify issues and potential improvements before users are affected.
-- *Automate monitoring and testing.* Use industry-proven tools to automate monitoring and alerting against your baseline and for performance testing. Automation reduces manual steps and ensures consistency.
+- **Revisit your baseline continuously.** Apply what you learn from your performance monitoring to ensure that your baseline reflects actual performance metrics. It's important to maintain a baseline because you run tests against that baseline to ensure that deployments like feature updates don't negatively affect performance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Testing in production can be complex and normally requires significant effort from DevOps teams. This can impact development velocity and other operational functions. Blue-green and A/B testing can also add costs to the workload by using duplicate resources when testing. Include these considerations in your budget and development planning.
+- **Shift left in your testing.** Integrate testing earlier in your development cycle to catch potential problems before they occur in production.
+
+- **Shift right in your testing.** Test in production. To ensure that testing isn't disruptive, use strategies like blue-green deployments and A/B testing.
+
+- **Use synthetic transactions in your testing.** Synthetic transactions allow you to consistently test real-world user experience. These tests help you identify problems and potential improvements before users are affected.
+
+- **Automate monitoring and testing.** Use industry-proven tools to automate monitoring and alerting against your baseline and for performance testing. Automation reduces manual steps and ensures consistency.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Testing in production can be complex and usually requires significant effort from DevOps teams. These requirements can affect development velocity and other operational functions. Blue-green deployments and A/B testing can also add costs to the workload by using duplicate resources when testing. Include these considerations in your budget and development planning.
 
 #### &#10003; Implement advanced data management optimizations
 
-In Level 4, you should have many data management optimization strategies in place already. Through your production experience you can make further optimizations to fine-tune your data management to ensure your workload performs efficiently as it continues to evolve.
+In Level 4, you should have many data management optimization strategies already in place. Use your production experience to make further optimizations to fine-tune your data management and ensure that your workload performs efficiently as it continues to evolve.
 
-- Use lossless and lossy data compression to reduce your data footprint. This helps save storage space and bandwidth usage and can lead to faster data transfers and access times.
-- Develop and implement an archive and deletion policy for data that is rarely used or is no longer used. Moving data off to separate, less expensive storage or removing it altogether also helps save storage space and bandwidth usage.
-- Fine-tune your caching and sharding strategies based on production learnings.
-- Replicate data to regions close to your end users to reduce latency. Some database technologies, like Azure Cosmos DB, offer readable and writeable replicas across multiple regions, which further reduces latency when deploying your workload across regions. 
-- Include storage performance monitoring in your workload monitoring solution. Performance issues can quickly appear when storage limits are breached. Many cloud storage services impose throttling when thresholds are crossed, causing bottlenecks that affect downstream application functionalities. Monitoring storage performance and watching for trends can help you proactively avoid limits.
+- Use lossless and lossy data compression to reduce your data footprint. This approach helps save storage space and bandwidth usage and can result in faster data transfers and access times.
+
+- Develop and implement an archive and deletion policy for data that's rarely used or no longer used. Move data to separate, less expensive storage or remove it altogether to help save storage space and bandwidth usage.
+
+- Fine-tune your caching and sharding strategies based on production experience.
+
+- Replicate data to regions that are close to your users to reduce latency. Some database technologies, like Azure Cosmos DB, provide readable and writeable replicas across multiple regions. Replicas further reduce latency when you deploy your workload across regions.
+
+- Include storage performance monitoring in your workload monitoring solution. Performance problems can quickly appear when storage limits are breached. Many cloud storage services impose throttling when thresholds are crossed, which causes bottlenecks that affect downstream application functionalities. Monitoring storage performance and watching for trends can help you proactively avoid limits.
 
 #### &#10003; Optimize critical flows through isolation
 
-When practical, isolate critical flows to ensure they aren't impacted by resource contention and to increase the ease of management. Strategies to consider include:
+When practical, isolate critical flows to prevent resource contention and simplify management. Consider the following strategies:
 
-- Dedicate compute, storage, and networking resources to critical flows. 
-- Use containerization approaches to isolate critical flows at the software (logical) level.
-- Explicitly allocate capacity for CPU, memory, and disk I/O to critical flows to ensure they're properly provisioned.
+- Dedicate compute, storage, and networking resources to critical flows.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Isolating flows through dedicated resources is a costlier approach than sharing resources across flows. Perform a cost-benefit analysis before implementing this approach to ensure that it's the best approach for your use case.
+- Use containerization approaches to isolate critical flows at the software or logical level.
 
-#### &#10003; Extend code optimizations derived from production learnings
+- Explicitly allocate capacity for CPU, memory, and disk input/output to critical flows to ensure that they're properly provisioned.
 
-Revisit the code optimizations that you made earlier in your workload development to find areas for further enhancements. For example, you should now have telemetry from production that can help you find inefficiencies like memory leaks. You can also confirm the hot paths that you've identified using production runtime data, or find unexpected hot paths. 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Isolating flows through dedicated resources is more expensive than sharing resources across flows. Perform a cost-benefit analysis before you implement this approach to ensure that it's the best approach for your use case.
+
+#### &#10003; Extend code optimizations that you derive from production experience
+
+Revisit the code optimizations that you made earlier in your workload development to find areas that need further enhancements. For example, you should now have telemetry from production that can help you find inefficiencies like memory leaks. You can also confirm the hot paths that you identified by using production runtime data, or you can find unexpected hot paths.
 
 #### &#10003; Optimize operational tasks
 
-Operational tasks like virus scans, secret rotations, backups, index optimization (reorganization or rebuilding), and deployments can all affect the performance of your workload, so optimizing their efficiency keeps your workload performant. Consider the following strategies for optimizing these types of tasks.
+Operational tasks like virus scans, secret rotations, backups, index optimization like reorganization or rebuilding, and deployments can all affect the performance of your workload. Optimizing their efficiency keeps your workload running smoothly. Consider the following strategies to optimize these types of tasks:
 
-- Fine-tune operational tooling. Test and understand the performance impact of essential tools like file integrity monitoring and virus scanning, then fine-tune configurations for them. For example, create exclusion lists for virus scans to minimize their duration.
-- Fine-tune database operations. Look for opportunities to fine-tune operations like database backups, schema changes, performance tuning, and monitoring. Use native tools like [automatic tuning in Azure SQL Database](/azure/azure-sql/database/automatic-tuning-enable?view=azuresql) to help this effort.
+- Fine-tune operational tooling. Test and understand how essential tools like file integrity monitoring and virus scanning affect performance. Then fine-tune configurations for them. For example, create exclusion lists for virus scans to minimize their duration.
+
+- Fine-tune database operations. Look for opportunities to fine-tune operations like database backups, schema changes, performance tuning, and monitoring. Use native tools like [automatic tuning in Azure SQL Database](/azure/azure-sql/database/automatic-tuning-enable) to help this effort.
 
 #### &#10003; Evaluate new platform features that enhance performance
 
 Investigate and test new platform features that become available to determine if they can help you gain efficiencies. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Be aware of how your cloud platform packages capabilities into SKUs. Some SKUs that offer higher performance may be overprovisioned for your present use case but might save you time and effort in the future for migrating.
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Adopting some types of services can mean migrating your application or data, which might mean there will be downtime for the migration. As part of your evaluation, determine whether you can tolerate the necessary downtime to successfuly migrate.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Be aware of how your cloud platform packages capabilities into SKUs. Some SKUs that provide higher performance might be overprovisioned for your present use case, but they might save you time and effort in a future migration.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Adopting some types of services can mean migrating your application or data, which might result in downtime to complete the migration. As part of your evaluation, determine whether you can tolerate the necessary downtime to successfully migrate.
 
 #### &#10003; Prioritize optimization efforts
 
-Proactively optimizing performance means improving workload efficiency before issues arise by identifying bottlenecks and implementing optimizations. Based on analysis, make specific improvements through code changes, infrastructure adjustments, or configuration updates.
+Proactively optimizing performance means improving your workload's efficiency before problems occur by identifying bottlenecks and implementing optimizations. Based on analysis, make specific improvements through code changes, infrastructure adjustments, or configuration updates.
 
 # [Level 5](#tab/level5)
 
