@@ -314,7 +314,7 @@ At Level 5 of the maturity model, you should have many cost optimization mechani
 
 #### &#10003; Enforce spending guardrails in your software development processes
 
-Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits or resource utilization quotas to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
+Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
 
 #### &#10003; Invest in knowledge building
 
@@ -324,7 +324,7 @@ Ensure that your cost model includes planned trainings for a given fiscal period
 
 #### &#10003; Optimize high availability and disaster recovery (DR) costs
 
-After running real-world DR drills or after going through real-world DR incidents, you might find areas for cost optimization. You might find that you can afford a less expensive DR strategy for certain components while still meeting your recovery targets. For example, you might not need an active-active design for a non-critical flow, so you can replicate data to the secondary region and spin up the necessary compute infrastructure during recovery, rather than running two identitical deployments full-time. 
+After running real-world DR drills or after going through real-world DR incidents, you might find areas for cost optimization. You might find that you can afford a less expensive DR strategy for certain components while still meeting your recovery targets. For example, you might not need a hot spare design for a non-critical flow, so you can consider implementing a deploy on recovery approach instead. 
 
 As part of your continuous improvement practices, regularly revisit your recovery targets to make sure they are appropriate for both reliability and cost requirements.
 
