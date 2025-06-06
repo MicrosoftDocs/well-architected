@@ -3,7 +3,7 @@ title: Grounding Data Design for AI Workloads on Azure
 description: Learn about data layout considerations and best practices for running AI workloads efficiently, which ensures optimal performance and scalability.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 10/16/2024
+ms.date: 05/28/2025
 ms.topic: conceptual
 ---
 
@@ -41,15 +41,22 @@ You can augment generative AI models by using context data during inference, or 
 
 - **Source data** is existing data in production. This data can be structured, such as data in databases, or semi-structured, like JSON files. It can also be unstructured, like documents, images, and audio files.
 
-- **Grounding data** comes from source data that contains information about topics not covered in the model's initial training data. Grounding data is combined with the user query to form the prompt that's sent to the large language model in the context of a specific inference call. Other data that you can include in the inference call are the system prompt, one-shot or few-shot examples, and contextual data like previous interactions.
+- **Grounding data** is information provided to a language model at inference time to help it generate responses that are more accurate and relevant to a user's query. This process of *grounding the model* involves supplementing the model with data that was not part of its original training. The grounding data can come from internal systems, such as databases, or from external sources. It's combined with the user's query to construct the prompt that is sent to the model during a specific inference call.
 
-  This data should be easily searchable and quickly retrievable. Because of this requirement, you should store the data in an index that's optimized for search. This index is accessed in real time while the user waits for the answer. Without this data, the model might produce incorrect results or not be applicable to what the user is specifically seeking.
+  This data should be quickly searchable and retrievable by the application. You can store it many ways. You can use a separate index that's accessed in real time. Or, if your source data platform supports built-in indexes, you can run queries directly. 
 
-- **Fine tuning data** is information that's used to influence the model so that it can adapt to specific tasks, domains, or response styles for future inferencing requests. For example, if the model is expected to provide answers in a specific grammatical style, that style guide would serve as fine tuning data.
+- **Behavioral instructions** is information that's used to influence the model so that it can adapt to specific tasks, domains, or response styles for future inferencing requests. For example, if the model is expected to provide answers in a specific grammatical style, that style guide would serve as fine tuning data.
 
 - **User data** includes information provided by users during interactions with the application. When you interact with generative models, stateful interactions occur. These models lack inherent memory and treat each interaction as atomic.
 
   When you manage stateful interactions, also known as *TURN data* in chat applications, it's important to store data for the shortest time necessary. Ideally, this data should be destroyed after the session ends. However, there might be operational or compliance reasons that require you to retain certain data, such as the original question or the model's response, beyond the session's duration. When possible, avoid storing this data past the session.
+
+
+## Source data querying
+
+Grounding data can be sourced from the source data platform if it supports advanced querying capabilties. For example, built-in vector indexes, that allows you to run semantic queries directly. Another option is graph databases, which makes it easier to model and query relationships between entities. For example, you can use a graph database to find products preferred by users aged 20–30 by linking user profiles, orders, and product data. This relationship-based querying is more intuitive and efficient in graph databases compared to traditional databases.
+
+Querying the source database directly simplifies security measures, when compared to indexes where techniques like security trimming can be complex and error-prone. However, using the live system for data queries has performance tradeoffs as it can impact current users due to added load. To mitigate this, one option is to create a replica of the database for querying purposes. 
 
 ## Indexing
 
@@ -69,6 +76,7 @@ Some technology options have self-indexing capabilities. Indexes can reach out t
 
 There's an initial cost to import data. After the data is in your index, you won't need to move it again unless there are changes or updates. Data management over time is a crucial aspect of index design. For more information, see [Index maintenance](#index-maintenance).
 
+
 #### Default or custom index
 
 Certain technologies support automatically building a default index for your data. This index is generated on data ingestion with minimal input. The index has out-of-the-box capabilities. A default index might be acceptable for proof of concepts and some production scenarios.
@@ -85,12 +93,12 @@ You can think of indexes as structures that organize and optimize data for retri
 
     In some situations, you might need multiple search indexes. This approach allows you to independently optimize each index for maximum relevancy from your search queries. For example, an HR employee handbook and a product maintenance manual serve different purposes and audiences. By indexing them separately, you can tailor the schema and search queries for each, which improves user experience. This approach can be complex to implement and requires an orchestrator to facilitate calls to each index. The orchestration component is described in [Application design for AI workloads on Azure](application-design.md).
 
-  > [!NOTE]
-  > The choice between the two topologies and the data segmentation strategy depends on workload requirements, use cases, and user expectations.
-  >
-  > Doing cross-index queries can be challenging and can affect search relevancy. In worst case scenarios, there might be manual sifting through results, deciding which ones fit the criteria. This process introduces latency and adds complexity. In contrast, a single index approach is simpler and more straightforward. Relevancy can be improved by using index capabilities such as filtering.
-  >
-  > In some cases, compliance considerations lead to the need for separate indexes. For instance, if business requirements demand that data is isolated between Europe and America, multiple indexes might be inevitable.
+    > [!NOTE]
+    > The choice between the two topologies and the data segmentation strategy depends on workload requirements, use cases, and user expectations.
+    >
+    > Doing cross-index queries can be challenging and can affect search relevancy. In worst case scenarios, there might be manual sifting through results, deciding which ones fit the criteria. This process introduces latency and adds complexity. In contrast, a single index approach is simpler and more straightforward. Relevancy can be improved by using index capabilities such as filtering.
+    >
+    > In some cases, compliance considerations lead to the need for separate indexes. For instance, if business requirements demand that data is isolated between Europe and America, multiple indexes might be inevitable.
 
   - **Document design**. Align your data design with expected user queries to optimize relevancy. Consider how each document should serve queries. For search indexes, prioritize relevant documents and refine the results to a concise set that's densely packed with relevant information.
 
@@ -102,7 +110,9 @@ Configure the search index fields to return the most relevant set of documents. 
 
 - **Filter, search, and sort options**. Consider these options because they're directly related to use cases for augmentation. For example, _filterable_ determines true or false against a value provided in the query and returns relevant documents. For _searchability_, the attribute indicates whether the search query can reference the field. For instance, you might check if a text field contains specific text or if it's mathematically related to another vector. You can optionally assign a relative weight to that field as part of the search query. You can also make result sets _sortable_, which lists the results by relevance.
 
-  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Enabling capabilities to index fields increases space requirements, affecting costs. Only add capabilities that you intend to use.
+   One potential use case for filtering is performing **security trimming**.  Security trimming ensures that users only see the data they're authorized to access, even when using a shared index. For example, a single index might include a region field, and queries are filtered based on the user's region or role. The application accesses a shared index of documents but only returns results the user has permission to view. 
+
+   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Enabling capabilities to index fields increases space requirements, affecting costs. Only add capabilities that you intend to use.
 
 - **Metadata**. Indexes typically have metadata associated with index fields. Metadata helps us understand and manage data by providing relevant details about it. When designing indexes, consider whether metadata are retrievable or only used for relevance determination. The decision affects compute costs because the underlying indexing process is different. Excessive metadata can unnecessarily increase the size of the index.
   
@@ -154,9 +164,7 @@ Here are some broad considerations.
   
     This type of preprocessing is also needed for embeddings, which enables you to compare words based on their context and significance. However, one challenge occurs from the case sensitivity of words. Context matters, and there can be nuances, such as the semantic differences between the adjective "civic" and the proper noun "(Honda) Civic."
 
-- **Data addition**. Augmenting context often relies on metadata, which isn't typically present in source data. For example, consider a text snippet. A human in the loop or AI creates relevant questions that can be answered using the context of the snippet. When you store these questions alongside the grounding data, user queries can be compared to the generated queries to evaluate document relevancy. Colocation of this new data with grounding data is a powerful way to enrich chunked data.
-
-    Another use case is addition entities found while analyzing unstructured data. These entities can be added to the index and used for searching and filtering external systems or used to perform complex calculations. For instance, if we identify a company name, we might look up its industry or other relevant information from an external database and add that to our index.
+- **Data addition**. Augmenting context often relies on a process called _enriching_. This adds extra information, which makes it more meaningful. For instance, consider a text snippet. A human in the loop or AI creates relevant questions that can be answered using the context of the snippet. When you store these questions alongside the grounding data, user queries can be compared to the generated queries to evaluate document relevancy. Colocating this new data with grounding data can make chunked data more useful. Another example of enrichment is tagging content with metadata. This can uncover natural breaks in meaning, or semantic boundaries, which can be used to define chunks. These chunks may be different sizes, but each one is meaningful and can stand alone.
 
   Consider maintaining data lineage. It's important for AI workloads to track the source of data because that information can get lost when a system aggregates various components into one index. This information might not ever be exposed to users, but information about data origins is crucial for internal data governance teams. This metadata isn't necessarily for the model. It helps maintain transparency and accountability.
 
@@ -172,9 +180,15 @@ Source data typically exists in various types of data, like text, images, and ta
 
 For example, if your source data contains images, they aren't inherently searchable. They need to be converted into vector representations to enable efficient semantic searches and comparisons. If relevancy is tied to the data behind these formats, invest in extraction of the data. Transform source data types to functional data types that help in querying and analysis.
 
-#### Chunking and embedding
+#### Chunking and the context window size
 
-Grounding data often contains a large volume of information, but the model is able to tokenize only a certain amount. _Chunking_ is an important data design strategy because it involves dividing a document into smaller pieces that can be individually processed and indexed. This strategy allows for efficient search and retrieval despite token limitations. Check the maximum number of tokens that your choice of large language model can handle. Your chunks shouldn't exceed that limit.
+A context window refers to the maximum amount of text that the model can handle at one time when generating a response. The context window size limits how much input (user query, grounding data, system instructions) the model can process in a single interaction.
+
+Grounding data often contains a large volume of information. Models only support up to a certain amount of tokens in one request, beyond which text can be truncated or ignored. If the context window is large, the entire text can be fed directly to the model. This strategy called _full-document grounding_ can improve accuracy, because the model has access to the full content. However, there's a trade-off. Sending large documents consumes a lot of tokens, which can increase costs. 
+
+Alternatively, if the context window is smaller, strategies like *chunking* can be efficient. It involves dividing text into smaller pieces that can be individually processed and indexed. This allows for efficient search and retrieval despite token limitations. Check the maximum number of tokens that your choice of model can handle. Your chunks shouldn't exceed that limit.
+
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full-document grounding offers high accuracy and simpler implementation by allowing the model to process the entire context at once. However, it comes with high token costs, increased latency, and limited scalability due to context window constraints. In contrast, chunking is more complex to implement and maintain but is more flexible. It enables targeted responses and faster processing though it may be less accurate if the chunks aren't well designed.
 
 There are many techniques for implementing chunking. For more information, see [Chunking approaches](/azure/architecture/ai-ml/guide/rag/rag-chunking-phase#chunking-approaches).
 
