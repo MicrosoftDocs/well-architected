@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure App Service (Web Apps) 
+title: Architecture Best Practices for Azure App Service (Web Apps) 
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for the Web Apps feature of Azure App Service.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -12,7 +12,7 @@ azure.category:
   - compute
 ---
 
-# Azure Well-Architected Framework perspective on Azure App Service (Web Apps)
+# Architecture best practices for Azure App Service (Web Apps)
 
 Azure App Service is a platform as a service (PaaS) that provides a fully managed hosting environment for building, deploying, and scaling web applications. As a PaaS solution, App Service abstracts the underlying infrastructure, which enables you to focus on your application development. The Web Apps feature of App Service runs your apps in the context of an App Service plan. This plan determines the resources, operating system, region, and pricing model (SKU) that's used to host your app.
 

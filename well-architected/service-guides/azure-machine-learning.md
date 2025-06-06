@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework perspective on Azure Machine Learning
+title: Architecture Best Practices for Azure Machine Learning
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Machine Learning.
 author: robbagby
 ms.author: robbag
@@ -12,7 +12,7 @@ azure.category:
   - ai-machine-learning
 ---
 
-# Azure Well-Architected Framework perspective on Azure Machine Learning
+# Architecture best practices for Azure Machine Learning
 
 Azure Machine Learning is a managed cloud service that you can use to train, deploy, and manage machine learning models. There are a wide range of choices and configurations for both training and deploying models, including compute SKUs and configurations. You can deploy Machine learning models to Machine Learning compute or to other Azure services such as Azure Kubernetes Service (AKS).
 
@@ -200,7 +200,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Development standards**: Take advantage of Machine Learning model catalogs and registries to store, version, and share machine learning assets.
 >
-> - **Automate for efficiency**: Follow good [machine learning operations (MLOps)](https://azure.microsoft.com/products/machine-learning/mlops/) practices. When possible, build end-to-end automated pipelines for data preparation, training, and scoring processes. In development, use scripts instead of notebooks for training models, as scripts are easier to integrate into automated pipelines.
+> - **Automate for efficiency**: Follow good [machine learning operations (MLOps)](https://azure.microsoft.com/solutions/machine-learning-ops/) practices. When possible, build end-to-end automated pipelines for data preparation, training, and scoring processes. In development, use scripts instead of notebooks for training models, as scripts are easier to integrate into automated pipelines.
 >
 > - **Deploy with confidence**: Implement infrastructure as code (IaC) for Machine Learning workspaces, compute clusters, compute instances, and other deployment environments.
 >

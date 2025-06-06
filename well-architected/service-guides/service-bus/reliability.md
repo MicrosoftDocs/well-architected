@@ -1,8 +1,8 @@
 ---
 title: Service Bus and reliability
 description: Focuses on the Service Bus service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 01/24/2022
 ms.topic: conceptual
 products:
@@ -28,6 +28,10 @@ To understand how Service Bus contributes to a reliable workload, reference the 
 - [Asynchronous messaging patterns and high availability](/azure/service-bus-messaging/service-bus-async-messaging)
 - [Azure Service Bus Geo-disaster recovery](/azure/service-bus-messaging/service-bus-geo-dr)
 - [Handling outages and disasters](/azure/service-bus-messaging/service-bus-outages-disasters)
+- [Availability zones](/azure/service-bus-messaging/service-bus-outages-disasters#availability-zones)
+
+> [!NOTE]
+> Previously it was required to set the property `zoneRedundant` to `true` to enable availability zones, however this behavior has changed to enable availability zones by default. Existing namespaces are being migrated to availability zones where possible, and the property `zoneRedundant` is being deprecated. The property `zoneRedundant` might still show as `false`, even when availability zones has been enabled.
 
 The following sections are specific to Azure Service Bus and reliability:
 
@@ -51,10 +55,10 @@ Besides the documentation on [Service Bus Premium and Standard messaging tiers](
 - Virtual network integration: Limits the networks that can connect to the Service Bus instance. Requires Service Endpoints to be enabled on the subnet. There are Trusted Microsoft services that are not supported when implementing Virtual Networks(for example, integration with Event Grid). For more information, reference [Allow access to Azure Service Bus namespace from specific virtual networks](/azure/service-bus-messaging/service-bus-service-endpoints).
 - Private endpoints.
 - [IP Filtering/Firewall](/azure/service-bus-messaging/service-bus-ip-filtering): Restrict connections to only defined `IPv4` addresses or `IPv4` address ranges.
-- [Availability zones](/azure/reliability/availability-zones-overview): Provides enhanced availability by spreading replicas across availability zones within one region at no extra cost.
 - Event Grid integration: [Available event types](/azure/event-grid/event-schema-service-bus?tabs=event-grid-event-schema).
 - [Scale messaging units](/azure/service-bus-messaging/service-bus-premium-messaging#how-many-messaging-units-are-needed).
 - [Geo-Disaster Recovery](/azure/service-bus-messaging/service-bus-geo-dr) (paired namespace).
+- [Geo-Replication](/azure/service-bus-messaging/service-bus-geo-replication) (full data replication across regions).
 - [CMK (Customer Managed Key)](/azure/service-bus-messaging/configure-customer-managed-key): Azure Service Bus encrypts data at rest and automatically decrypts it when accessed, but customers can also bring their own customer-managed key.
 
 When deploying Service Bus with Geo-disaster recovery and in availability zones, the Service Level Operation (SLO) increases dramatically, but does not change the uptime SLA.
@@ -87,17 +91,13 @@ Consider the following recommendations to optimize reliability when configuring 
 |Evaluate Premium tier benefits of Azure Service Bus.|Consider migrating to the Premium tier of Service Bus to take advantage of platform-supported outage and disaster protection.|
 |Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
 |Implement geo-replication on the sender and receiver side to protect against outages and disasters.|Standard tier supports only the implementation of sender and receiver-side geo-redundancy. An outage or disaster in an Azure Region could cause downtime for your solution.|
-|Configure Geo-Disaster.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/reliability/cross-region-replication-azure)*.|
+|Configure Geo-Disaster.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- [Geo-Replication (Active/Passive with full data replication)](/azure/service-bus-messaging/service-bus-geo-replication) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/reliability/cross-region-replication-azure)*.|
 |If you need mission-critical messaging with queues and topics, Service Bus Premium is recommended with Geo-Disaster Recovery.| Choosing the pattern is dependent on the business requirements and the recovery time objective (RTO).|
-|Configure Zone Redundancy in the Service Bus namespace.|Zone Redundancy includes three copies of the messaging store. One zone is allocated as the primary messaging store and the other zones are allocated as secondaries. If the primary zone becomes unavailable, a secondary is promoted to primary with no perceivable downtime. *Availability Zones are available in a subset of Azure Regions with new regions added regularly.*|
 |Implement high availability for the Service Bus namespace.|Premium tier supports Geo-disaster recovery and replication at the namespace level. At this level, Premium tier provides high availability for metadata disaster recovery using primary and secondary disaster recovery namespaces.|
 |Ensure related messages are delivered in guaranteed order.|Be aware of the requirement to set a Partition Key, Session ID, or Message ID on each message to ensure related messages send to the same partition in the messaging entity.|
 |Evaluate different JMS features through the JMS API.|Features available through the JMS 2.0 API (and its Software Development Kit (SDK)) are not the same as the features available through the native SDK. For example, Service Bus Sessions are not available in JMS.|
 |Implement resilience for transient fault handling when sending or receiving messages.|It is essential to implement suitable transient fault handling and error handling for send and receive operations to maintain throughput and to prevent message loss.|
 |Implement [auto-scaling of messaging units](/azure/service-bus-messaging/automate-update-messaging-units), to ensure that you have enough resources available for your workloads.|
-
-> [!NOTE]
-> Previously it was required to set the property `zoneRedundant` to `true` to enable availability zones, however this behavior has changed to enable availability zones by default. Existing namespaces are being migrated to availability zones where possible, and the property `zoneRedundant` is being deprecated. The property `zoneRedundant` might still show as `false`, even when availability zones has been enabled.
 
 ## Source artifacts
 
@@ -120,17 +120,6 @@ Consider the following recommendations to optimize reliability when configuring 
     type == 'microsoft.servicebus/namespaces'
   | where
     sku.tier != 'Premium'
-  ```
-
-- To identify premium Service Bus Instances that are not zone redundant, use the following query:
-
-  ```Kusto
-  Resources
-  | where
-    type == 'microsoft.servicebus/namespaces'
-  | where
-    sku.tier == 'Premium'
-    and properties.zoneRedundant == 'false'
   ```
 
 ## Next step

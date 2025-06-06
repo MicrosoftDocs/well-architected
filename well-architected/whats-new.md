@@ -3,13 +3,71 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 02/05/2025
+ms.date: 06/03/2025
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## May 2025
+
+### Updated articles
+
+- [Recommendations for designing a reliable scaling strategy](./reliability/scaling.md): Explore updated content including: Choosing the right technology for scaling; Automating scaling operations, including use of Infrastructure-as-Code; Selecting and optimizing "scale units"; Scaling data stores using sharding and partitioning, and optimizing partition strategies; Monitoring scaling operations and log analysis.
+- [Design a data partitioning strategy](./design-guides/partition-data.md): This article can now be found under "Design guides." 
+- [Cost Optimization design principles](./cost-optimization/principles.md): Find actionable recommendations, such as treating different environments differently, using dynamic scaling, and collaborating with licensing teams. We added guidance on governance and cost guardrails and expanded examples and practical steps for budgeting, rate optimization, and maximizing resource utilization.
+- [Operational Excellence cloud design principles](./operational-excellence/principles.md): We refreshed this article, consolidating guidance and updating safe deployment practices.
+
+#### Service guides
+
+This month, we made significant updates to some of our service guides. Here are the highlights:
+
+- [Architecture Best Practices for Azure Database for PostgreSQL](./service-guides/postgresql.md): Find recommendations for features like high availability, geo-redundant backup, private networking, Microsoft Entra ID integration, cost modeling, automation, monitoring, and intelligent performance tuning.
+- [Architecture Best Practices for Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md): Explore guidance updated to reflect current Azure Cosmos DB best practices, including new features, policy links, and recommendations for using Microsoft Entra ID, private endpoints, Azure Policy, and Azure Advisor.
+
+
+## April 2025
+
+### New articles
+
+- [Architecture Best Practices for Azure Container Apps](./service-guides/azure-container-apps.md): Explore key recommendations and design checklists for implementing Azure Container apps effectively and securely. This guide covers design principles, strategies, and recommendations for achieving architectural goals, including security, performance, and cost optimization.
+
+### Updated articles
+
+- [Application Delivery Considerations for Azure Virtual Desktop Workloads](./azure-virtual-desktop/application-delivery.md): We made significant updates to refactor and refresh the guidance about Azure Virtual Desktop including updated recommendations and best practices.
+- [Recommendations for designing a disaster recovery strategy](./reliability/disaster-recovery.md): We added a new section on Azure Backup facilitation and updated the content to include new Azure Backup features.
+
+#### Service guides
+
+This month, we made significant updates to some of our service guides. Here are the highlights:
+
+- [Architecture Best Practices for Azure API Management](./service-guides/azure-api-management.md): We refactored the guidance for Azure API Management to improve clarity and usability. The updated content includes refreshed design principles, strategies, and recommendations for achieving architectural goals.
+- [Architecture Best Practices for Azure NetApp Files](./service-guides/azure-netapp-files.md): We added new recommendations for cost optimization and operational excellence. Explore the fully updated content including new recommendations for configuring Azure NetApp Files to protect your workloads.
+- [Architecture Best Practices for Azure SQL Database](./service-guides/azure-sql-database.md): We refreshed and expanded this guide to introduce new design considerations and recommendations, including guidance on using Azure SQL Database for secure data storage, managing database performance, and optimizing costs.
+- [Architecture Best Practices for Azure Virtual Machines and Scale Sets](./service-guides/virtual-machines.md): We made updates to the guidance about Azure Virtual Machines and Scale Sets. Explore the fully updated content including new recommendations for configuring automatic recovery options to protect your workloads.
+
+## March 2025
+
+### Updated articles
+
+- [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We added details on deployment strategies and the importance of caching static content to the design checklist. Recommendations were updated to include new links and advice on managing traffic, health probes, and optimizing caching.
+- [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We simplified the design review checklist for Operational Excellence to make the recommendations more concise, focused, and actionable.
+
+## February 2025
+
+### Updated articles
+
+- [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md): We updated this guide for easier readability by streamlining several sections. We also moved the guides for [handling transient faults](./design-guides/handle-transient-faults.md) and [developing background jobs](./design-guides/background-jobs.md) into the design guide area to make the Reliability pillar easier to use.
+- [Design review checklist for Reliability](./reliability/checklist.md): We simplified the design review checklist for Reliability to make the recommendations more concise, focused, and actionable.
+
+#### Service guides
+
+This month, we made significant updates to some of our service guides. Here are the highlights:
+
+- [Azure Front Door](./service-guides/app-service-web-apps.md): We improved content clarity by rephrasing various sections and adding more detailed explanations. We updated links and references to other relevant Azure documentation and removed redundant or outdated information. We aligned content with the latest Azure Front Door features and best practices.
+- [Azure IoT Hub](./service-guides/azure-iot-hub.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on using Azure IoT Hub for secure device-to-cloud communication, managing device identities, and optimizing costs.
 
 ## January 2025
 
@@ -158,53 +216,3 @@ Find updated guidance on using flexible virtual machine scale sets instead of av
 
 - [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md): Learn how Azure carbon optimization can help you reduce the carbon footprint of your workload by providing granular emissions data.
 
-## May 2024
-
-### New articles
-
-- [Azure Well-Architected Framework perspective on Azure Files](./service-guides/azure-files.md): Explore design considerations and recommendations for Azure Files and Azure File Sync. Azure Files is a fully managed file share service that supports the SMB protocol and Network File System (NFS) protocol. Azure File Sync is a service that enables you to centralize your organization's file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server.
-
-### Updated articles
-
-- [Security considerations for Azure VMware Solution workloads](./azure-vmware/security.md): Learn about using resource locks to prevent accidental deletions or changes.
-
-## April 2024
-
-### New articles
-
-This month, we added two new service guides and new documentation about Oracle workloads on Azure infrastructure as a service (IaaS).
-
-**Service guides**
-
-- [Azure Well-Architected Framework perspective on App Service](./service-guides/app-service-web-apps.md): Review design considerations and recommendations for App Service. Azure App Service is a type of platform as a service (PaaS) compute service that allows you to host your workload on the Azure platform.
-- [Azure Well-Architected Framework perspective on Azure Blob Storage](./service-guides/azure-blob-storage.md): Review design considerations and configuration recommendations that are relevant to Azure Blob Storage. Azure Blob Storage is a cloud-based object storage solution that is optimized for storing massive amounts of unstructured data, such as text or binary data.
-
-**Oracle workloads on Azure**
-
-Find new articles and updated guidance about Oracle workloads on Azure. Explore best practices to help you create a performant, secure, and highly available solution. To get started, see [Oracle workloads on Azure infrastructure as a service (IaaS)](./oracle-iaas/index.yml).
-
-## March 2024
-
-### New articles
-
-- [Health modeling for workloads](./design-guides/health-modeling.md): Use health modeling to improve workload reliability in Azure. Differentiate between healthy, degraded, and unhealthy states. Learn how to quantify application health and build your own health model.
-- [Azure Well-Architected Framework review for Log Analytics](./service-guides/azure-log-analytics.md): Learn about the architectural recommendations for Log Analytics workspaces in Azure Monitor. These workspaces are the primary log and metric sink for a large portion of the monitoring data. Workspaces support multiple features in Azure Monitor, including ad-hoc queries, visualizations, and alerts.
-
-### Updated articles
-
-- [Recommendations for standardizing tools and processes](./operational-excellence/tools-processes.md): Find new guidance to implement standards for naming and tagging your resources.
-
-## February 2024
-
-### New articles
-
-- [Azure Well-Architected Framework perspective on Azure Front Door](./service-guides/azure-front-door.md): Find design considerations and configuration recommendations for Azure Front Door. Azure Front Door is a global load balancer and content delivery network that routes HTTP and HTTPS traffic.
-- [Azure Well-Architected Framework perspective on Azure OpenAI](./service-guides/azure-openai.md): Find design considerations and configuration recommendations for Azure OpenAI. This service provides REST API access to the OpenAI large language models (LLMs), adding capabilities for Azure networking and security.
-- [Azure Well-Architected Framework perspective on Azure Machine Learning](./service-guides/azure-machine-learning.md): Find design considerations and configuration recommendations for Azure Machine Learning. This service provides a cloud-based environment you can use to train, deploy, automate, manage, and track machine learning models. 
-
-### Updated articles
-
-- [Architecture design diagrams](./architect-role/design-diagrams.md): We expanded the guidance for using official icons and service names to include examples of links to icons for Microsoft services.
-- [Azure Well-Architected Framework review for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We updated the design checklist and the recommendations for AKS configuration. Find information about Azure Spot Virtual Machines, Cluster Autoscaler, Node Autoprovision, and the AKS Cost Analysis add-on.
-- [Recommendations for securing a development lifecycle](./security/secure-development-lifecycle.md): We streamlined and clarified guidance about the security design patterns that the application code should implement. 
-- [Encryption strategy recommendations](./security/encryption.md): We added information about confidential computing and explained how it fits into key design strategies.

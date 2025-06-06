@@ -1,10 +1,10 @@
 ---
-title: Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL
-description: Design considerations and recommendations for each pillar as related to solutions using Azure Database for PostgreSQL.
+title: Architecture Best Practices for Azure Database for PostgreSQL
+description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Database for PostgreSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 11/14/2023
+ms.date: 05/12/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
@@ -14,202 +14,186 @@ azure.category:
   - databases
 ---
 
-# Azure Well-Architected Framework review - Azure Database for PostgreSQL
+# Architecture best practices for Azure Database for PostgreSQL
 
-This article provides architectural best practices for Azure Database for PostgreSQL.
+[Azure Database for PostgreSQL](/azure/PostgreSQL/overview) is a relational database service in Azure that's based on the PostgreSQL open-source relational database. It's a fully managed, cloud-based database solution that supports mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. Azure Database for PostgreSQL is built on the community edition of the PostgreSQL database engine. It's compatible with the PostgreSQL server community edition and supports PostgreSQL extension features, such as PostGIS and TimescaleDB.
 
-The guidance is based on the five pillars of architectural excellence:
+This article assumes that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chose Azure Database for PostgreSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-- Reliability
-- Security
-- Cost optimization
-- Operational excellence
-- Performance efficiency
+> [!IMPORTANT]
+>
+>**How to use this guide**
+>
+>Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
+>
+>Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Database for PostgreSQL and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
+>
+>Foundational architecture that demonstrates the key recommendations:  
+>[Reliable Web App pattern for Java](/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/java/guidance).
 
-## Prerequisites
+**Technology scope**
 
-Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend you review your workload using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
+This review focuses on the interrelated decisions for the following Azure resources:
 
-[Azure Database for PostgreSQL](/azure/PostgreSQL/overview) is a relational database service in Azure based on the PostgreSQL open-source relational database. It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. Azure Database for PostgreSQL is built on the community edition of the PostgreSQL database engine. It's compatible with the PostgreSQL server community edition and supports PostgreSQL extension features such as PostGIS and TimescaleDB.
-
-> [!NOTE]  
-> To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
+- Azure Database for PostgreSQL
 
 ## Reliability
 
-Azure Database for PostgreSQL - Flexible Server offers [high availability](/azure/reliability/reliability-postgresql-flexible-server) support by provisioning physically separate primary and standby replicas either within the same availability zone (zonal) or across availability zones (zone-redundant). This high availability model ensures that committed data is never lost if a failure happens. The model is also designed so the database doesn't become a single point of failure in your software architecture. Azure Database for PostgreSQL - Flexible Server provides features that protect data and mitigate downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, the flexible server has business continuity features that provide fault protection, address recovery time requirements, and reduce data loss exposure.
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-### Reliability design checklist
+[Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
+### Design checklist
 
 > [!div class="checklist"]
->  
-> - Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads.
-> - Select the appropriate high-availability configuration.
-> - Configure geo-redundancy backup.
-> - Test your disaster recovery plan to ensure rapid data restoration in case of a failure.
-> - Test On-Demand Failover for your HA-enabled server to ensure our application behaves as expected.
-> - Monitor your server to ensure it's healthy and performing as expected.
+>
+> - **Familiarize yourself with Azure Database for PostgreSQL product reliability guidance.**  
+>   For more information, see the following resources:
+>   - [Business continuity overview](/azure/postgresql/flexible-server/concepts-business-continuity)
+>   - [Reliability and high availability](/azure/reliability/reliability-postgresql-flexible-server)
+>   - [Backup and restore](/azure/postgresql/flexible-server/concepts-backup-restore)
+>   - [Geo-disaster recovery](/azure/postgresql/flexible-server/concepts-geo-disaster-recovery)
+>
+> - **Align your reliability and recovery targets for Azure Database for PostgreSQL with your workload targets.** Choose an appropriate Azure Database for PostgreSQL SKU that can support your reliability and recovery targets.
+> - **Determine the appropriate high availability and redundancy configurations for your Azure Database for PostgreSQL instances.** Determine whether you need zone-redundant or zonal configurations to meet your reliability requirements.
+> - **Incorporate the recovery of your Azure Database for PostgreSQL instances into your disaster recovery planning and exercises.** Ensure that your entire workload is recoverable according to your recovery targets.
+> - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable enhanced metrics to monitor the health of your instance. Include [high availability health monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
 
-### Reliability recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
-| Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads. | Derive these values by conducting a risk assessment and ensuring you understand the cost and risk of downtime and data loss. These are nonfunctional requirements of a system and should be dictated by business requirements. |
-| Select the appropriate high availability configuration. | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
-| Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is down. |
-| Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
-| Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
-
-> [!TIP]
-> For more details on reliability guidance for Azure Database for PostgreSQL, see [Reliability with Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
-
-### Azure policy definitions
-
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure reliability for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to implement specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for reliability:
-
-- [High availability (Reliability) in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server)
+| Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. This setup ensures that the service remains available and doesn't lose data during a zone outage.  |
+| Configure [geo-redundant backups](/azure/postgresql/flexible-server/concepts-backup-restore#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo-redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is unavailable. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. If a regional outage or disaster occurs, you can use Backup to restore the database server to an Azure-paired region, which minimizes downtime. <br><br> Azure Backup also provides geo-redundancy for Azure Database for PostgreSQL. This feature increases efficiency and reduces downtime during disasters or regional outages.|
+| Test your backup and restore strategy reguarly. | Regularly testing your backup and restore strategy ensures that you can recover your databases and maintain operations if a failure occurs. |
 
 ## Security
 
-Think about [security](/azure/well-architected/security/) throughout the entire lifecycle of an application, from design and implementation to deployment and operations. The Azure platform protects against various threats like network intrusion and DDoS attacks. You still need to build security into your application and your DevOps processes.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-### Security design checklist
+The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Database for PostgreSQL.
 
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
+### Design checklist
 
 > [!div class="checklist"]
->  
-> - SSL and enforce encryption to secure data in transit.
-> - Implement network security groups and firewalls to control access to your database.
-> - Use Microsoft Entra ID for authentication and authorization to enhance identity management.
-> - Configure row-level security.
+> 
+> - **Review the security baseline.** To enhance the security posture of your workload, review the [Azure security baseline for Azure Database for PostgreSQL](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline).
+>
+> - **Implement strict, conditional, and auditable identity and access management.** Use Microsoft Entra ID for authentication and authorization to enhance identity management.
+> - **Apply network segmentation and security controls.** Use built-in firewalling at the server level alongside virtual network firewalling mechanisms to isolate your instance from other workload components and public networks.
+> - **Use native security features to add extra layers of protection.** Help prevent malicious activities by configuring row-level security and connection throttling.
 
-### Security recommendations
+### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
-| SSL and enforce encryption to secure data in transit. | Deploy the DigiCert Global Root certificate from a trusted Certificate Authority (CA) certificate needed to communicate over SSL with client applications. |
-| Implement network security groups and firewalls to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
-| Use Microsoft Entra ID for authentication and authorization to enhance identity management. | Microsoft Entra ID authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
-| Configure row-level security. | [Row level security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
+| Implement [network security groups](/azure/postgresql/flexible-server/concepts-security#network-security) and [firewalls](/azure/postgresql/flexible-server/concepts-firewall-rules) to control access to your database. | As part of the Zero Trust model for security, use network segmentation to restrict communication paths between components, such as application and database servers, to only what's needed. This feature can be implemented by using network security groups and application security groups. |
+| Connect to your databases over [Azure Private Link](/azure/postgresql/flexible-server/concepts-networking-private-link). | Private Link allows you to create private endpoints for Azure Database for PostgreSQL  to extend the service inside your virtual network. |
+| Use [Microsoft Entra ID](/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication) for authentication and authorization to enhance identity management. | You can use Microsoft Entra authentication to connect to Azure Database for PostgreSQL by using managed identities in Microsoft Entra. |
+| Configure [row-level security](/azure/postgresql/flexible-server/concepts-security#row-level-security). | Row-level security is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an extra filter that you can apply to a PostgreSQL database table. |
+| If needed for compliance, [use customer managed keys (CMKs)](/azure/postgresql/flexible-server/concepts-data-encryption#recommendations) for data encryption, and store your keys in Azure Key Vault. | CMKs give you full control of your encryption key's life cycle, including key rotation, to align with corporate policies. Key Vault enables centralized management and organization of your encryption keys within your own dedicated Key Vault instances. |
+| Enable connection throttling for IP addresses that have excessive failed sign-in attempts. | Setting the `connection_throttling` server parameter to `enabled` helps protect your databases from malicious sign-in attempts and distributed denial of service (DDoS) attacks by limiting repeated connection attempts from the same IP address. |
+| Conduct security audits regularly. | Regularly conducting security audits helps identify and remediate potential vulnerabilities. |
 
-## Cost optimization
+## Cost Optimization
 
-Cost optimization is about understanding your configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. You should review your workload to identify opportunities to reduce costs.
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-### Cost design checklist
+The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Database for PostgreSQL and its environment.
 
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
+### Design checklist
 
 > [!div class="checklist"]
 >  
-> - Pick the right tier and SKU.
-> - Understand high availability mode.
-> - Scale compute and storage tiers.
-> - Consider reserved instances.
-> - Use your provisioned storage.
-> - Understand geo-redundancy costs.
-> - Evaluate storage scale-up decisions.
-> - Deploy to the same region as an app.
-> - High availability oriented cost description.
-> - Consolidate databases and servers.
+> - **Estimate the initial cost.** As part of your cost modeling exercise, use the Azure pricing calculator to evaluate the approximate costs associated with Azure Database for PostgreSQL in your workload.
+>
+> - **Choose the right service tier for your workload.** Determine whether the Burstable, General Purpose, or Memory Optimized pricing tier for compute resources meets your use case needs.
+> - **Apply a well-informed scaling strategy.** To determine when and how to scale your Azure Database for PostgreSQL resources, continuously observe and analyze your workload capacity and demand.
+> - **Take advantage of available discounts.** Consider one or three year compute reservations. Reserved instances can save you significant costs for compute resources.
+> - **Use your provisioned storage.** There's no extra charge for backup storage up to 100% of your total provisioned server storage.
+> - **Understand redundancy costs.** Using zone-redundant or zonal configurations doubles your instance costs, so carefully consider your redundancy design.
+> - **Understand protected instance and backup storage costs.** When you back up Azure Databse for PostgreSQL by using Azure Backup, you incur protected instance fees for every 250 GB and backup storage fees based on total data stored and redundancy type.
+> - **Deploy to the same region as an app.** Deploy to the same region as your applications to minimize transfer costs.
+> - **Consolidate databases and servers.** When practical, consolidating multiple databases and servers into a single server can help reduce costs.
 
-### Cost recommendations
+### Recommendations
 
 | Recommendations | Benefits |
 | --- | --- |
-| Pick the right tier and SKU. | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
-| Understand high availability mode. | High availability makes a standby server always available within the same zone or region. Enabling high availability doubles your cost. |
-| Adjust compute and storage tiers. | You should manually adjust the compute and storage tiers to meet the application's requirements over time. |
-| Use the Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it. |
-| Consider reserved instances. | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
-| Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage. |
-| Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS. |
-| Evaluate storage scale-up decisions. | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down. |
-| Deploy to the same region as the app. | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. |
-| High availability oriented cost description. | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
-| Consolidate databases and servers. | You can consolidate multiple databases and servers into a single server to reduce costs. |
+| Pick the right [tier and SKU](/azure/postgresql/flexible-server/concepts-compute). | Choosing the right tier and SKU helps you avoid wasting money on over-provisioned resources. Azure Advisor provides recommendations, include server rightsizing suggestions, to optimize and reduce your overall Azure spending. |
+| [Scale compute and storage resources](/azure/postgresql/flexible-server/concepts-scaling-resources) when your workload demand changes. | You can scale compute resources vertically (up or down) and horizontally (out or in) as necessary. You can't scale storage down after scaling up. |
+| Use the start/stop feature. | Use the start/stop feature to stop the server from running when it isn't needed. |
 
-### Azure policy definitions
+## Operational Excellence
 
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure cost optimization for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for cost optimization:
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
-- [Optimize costs](/azure/postgresql/flexible-server/how-to-cost-optimization)
+The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-## Operational excellence
-
-The principles of operational excellence are a series of considerations that can help achieve superior operational practices.
-
-To achieve a higher competency in operations, consider and improve how software is developed, deployed, operated, and maintained.
-
-### Operational excellence design checklist
-
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
+### Design checklist
 
 > [!div class="checklist"]
 >  
-> - Set up automated backups and retention policies to maintain data availability and meet compliance requirements.
-> - Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date.
-> - Monitor database health and performance using Azure Monitor and set up alerts for critical metrics.
+> - **Optimize the recoverability of your databases.** Define backup and retention policies to meet your compliance requirements.
+>
+> - **Automate operational tasks.** Use [automation tasks](/azure/postgresql/flexible-server/create-automation-tasks) to automatically perform tasks like starting and stopping a server, scaling resources, and other tasks.
+> - **Monitor database health and performance.** Collect and analyze logs and metrics from your instance to proactively detect potential problems.
 
-### Operational excellence recommendations
+### Recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
-| Set up automated backups and retention policies to maintain data availability and meet compliance requirements. | Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days. |
-| Implement automated patching and updates to keep your PostgreSQL instance secure and up-to-date. | Azure Database for PostgreSQL provides automated patching and updates for your database. You can configure the maintenance window for your server to minimize the impact on your workload. |
-| Monitor database health and performance using Azure Monitor and set up alerts for critical metrics. | Azure Database for PostgreSQL provides built-in monitoring and alerting capabilities. You can monitor the health and performance of your database using Azure Monitor. You can also set up alerts for critical metrics to get notified when your database isn't performing as expected. |
+| Use an [Azure Backup policy](/azure/backup/backup-azure-database-postgresql-overview) individually or together with the native automated backups to back up databases. | Azure Database for PostgreSQL provides automated backups and point-in-time restore for your database. You can configure the retention period for backups up to 35 days. <br><br> Use Azure Backup to define how and when backups are created, the retention period for recovery points, and the rules for data protection and recovery. You can retain recovery points in an Azure Backup vault for up to 10 years. You can also manage the backup and restore operations by using [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview).|
+| Schedule [custom maintenance windows](/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance) to apply service updates. | You can define a custom schedule for each Azure Database for PostgreSQL in your Azure subscription. With a custom schedule, you can specify your maintenance window for the server by choosing the day of the week and the start time of the one-hour maintenance window. |
+| [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure that it's healthy and performing as expected. | Azure Database for PostgreSQL has various metrics that provide insight into the behavior of the resources that support the Azure Database for PostgreSQL instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
 
-### Operational excellence policy definitions
+## Performance Efficiency
 
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure Operational excellence for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for Operational excellence:
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-- [Azure Policy Regulatory Compliance controls for Azure Database for PostgreSQL](/azure/postgresql/single-server/security-controls-policy)
+The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-## Performance efficiency
-
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users efficiently. We recommend you review the Performance efficiency principles.
-
-In the design checklist and list of recommendations below, call-outs indicate whether each choice applies to cluster architecture, workload architecture, or both.
-
-### Performance efficiency design checklist
-
-You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
+### Design checklist
 
 > [!div class="checklist"]
 >  
-> - Design your schema and queries for efficiency to minimize resource consumption.
-> - Implement read replicas to offload read traffic and enhance overall performance.
+> - **Optimize queries.** Use native features to find opportunities to optimize queries.
+>
+> - **Optimize indexes.** Use features such as index tuning to automatically analyze query patterns and receive actionable recommendations for creating or dropping indexes to improve performance.
+> - **Offload read-only operations.** If your application supports read-only connection strings, you can offload read-only operations to read replicas.
 
-### Performance efficiency recommendations
+### Recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
-| Design your schema and queries for efficiency to minimize resource consumption. | You should design your schema and queries for efficiency to minimize resource consumption. |
-| Implement read replicas to offload read traffic and enhance overall performance. | You can use read replicas to offload read traffic and enhance performance. |
+| Use [query store](/azure/postgresql/flexible-server/concepts-query-store) to track query performance over time. | Query store simplifies troubleshooting performance problems by helping you quickly find the longest running and most resource-intensive queries. |
+| Use [Query Performance Insight](/azure/postgresql/flexible-server/concepts-query-performance-insight) to identify the top resource consuming and long-running queries in your workload. | Query Performance Insight helps you identify long-running queries and their changes over time, determine the wait types that affect them, analyze top database queries by frequency, and other benefits. |
+| Use [index tuning](/azure/postgresql/flexible-server/concepts-index-tuning) with query store to analyze tracked queries and provide recommendations. | Index tuning analyzes the workload that query store tracks. It produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. Index tuning helps you identify beneficial indexes, duplicate indexes, and unused indexes. |
+| Use [intelligent tuning](/azure/postgresql/flexible-server/concepts-intelligent-tuning) to enhance performance automatically and help prevent problems. | Intelligent tuning continuously monitors the Azure Database for PostgreSQL flexible server database's status and dynamically adapts the database to your workload. |
 
-### Performance efficiency policy definitions
+## Azure policies
 
-Azure Policy definitions help you enforce specific rules and configurations for resources within your Azure environment. To ensure Performance efficiency for Azure Database for PostgreSQL, you can create custom Azure Policy definitions to enforce specific configurations and best practices. Here's an example of some custom Azure Policy definitions you can create for Performance efficiency:
+Azure provides an extensive set of built-in policies related to Azure Database for PostgreSQL and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-## Extra resources
+- [Geo-redundant backup is enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee2f9fd-3968-44be-a863-bd62c9884423).
 
-Consider more resources related to Azure Database for PostgreSQL.
+- [Connection throttling is enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdacf07fa-0eea-4486-80bc-b93fae88ac40).
 
-### Azure Architecture Center Guidance
+- [Secure Sockets Layer (SSL) connections are enforced](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc29c38cb-74a7-4505-9a06-e588ab86620a).
+
+- [Data at rest is encrypted with CMKs](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12c74c95-0efd-48da-b8d9-2a7d68470c92).
+
+- [Private endpoints are enabled](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5375a5bb-22c6-46d7-8a43-83417cfb4460).
+
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure Database for PostgreSQL](/azure/governance/policy/samples/built-in-policies#sql) and other policies that might affect the security of the data stores.
+
+## Azure Advisor recommendations
+
+Azure Advisor is a personalized cloud consultant that helps you follow
+best practices to optimize your Azure deployments. 
+
+For more information, see [Azure Advisor](/azure/advisor).
+
+## Related content
 
 - [Multitenancy and Azure Database for PostgreSQL](/azure/architecture/guide/multitenant/service/postgresql)
-- [Best practices](https://azure.microsoft.com/blog/performance-best-practices-for-using-azure-database-for-postgresql/)
-- [Optimize performance](https://azure.microsoft.com/blog/optimize-performance-using-azure-database-for-postgresql-recommendations/)
-- [Tuning](https://azure.microsoft.com/blog/performance-updates-and-tuning-best-practices-for-using-azure-database-for-postgresql/)
-
-### Cloud Adoption Framework guidance
-
-- [Batch Data application with Azure Database for PostgreSQL](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Azure pricing calculator to estimate and manage your costs effectively](https://azure.microsoft.com/pricing/calculator/)

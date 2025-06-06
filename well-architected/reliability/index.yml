@@ -7,8 +7,8 @@ metadata:
   title: Reliability quick links
   description: Learn about resources that can help you apply reliability guidance to your architecture to make your workload resilient to malfunction.
   ms.topic: landing-page
-  author: martinekuan
-  ms.author: martinek
+  author: PageWriter-MSFT
+  ms.author: prwilk
   ms.date: 11/15/2023
 
 landingContent:
@@ -76,10 +76,6 @@ landingContent:
             url: scaling.md
           - text: Design for self-healing and preservation
             url: self-preservation.md
-          - text: Use background jobs
-            url: background-jobs.md
-          - text: Handle transient faults
-            url: handle-transient-faults.md
           - text: Design with simplicity
             url: simplify.md
   - title: Test and conduct drills

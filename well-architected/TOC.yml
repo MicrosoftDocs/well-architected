@@ -57,14 +57,8 @@
               href: reliability/redundancy.md
             - name: RE:05 Regions and availability zones
               href: reliability/regions-availability-zones.md
-            - name: RE:06 Data partitioning
-              href: reliability/partition-data.md
             - name: RE:06 Scaling
               href: reliability/scaling.md
-            - name: RE:07 Background jobs
-              href: reliability/background-jobs.md
-            - name: RE:07 Transient faults 
-              href: reliability/handle-transient-faults.md
             - name: RE:07 Self-preservation
               href: reliability/self-preservation.md
             - name: RE:08 Testing
@@ -262,14 +256,8 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: API Management
-          items:
-            - name: Reliability
-              href: service-guides/api-management/reliability.md
-            - name: Cost optimization
-              href: service-guides/api-management/cost-optimization.md
-            - name: Operational excellence
-              href: service-guides/api-management/operational-excellence.md
+        - name: Azure API Management
+          href: service-guides/azure-api-management.md
         - name: Application Gateway
           href: service-guides/azure-application-gateway.md
         - name: Application Insights
@@ -286,6 +274,8 @@
               href: service-guides/azure-cache-redis/reliability.md
             - name: Operational excellence
               href: service-guides/azure-cache-redis/operational-excellence.md
+        - name: Azure Container Apps
+          href: service-guides/azure-container-apps.md
         - name: Azure Cosmos DB
           href: service-guides/cosmos-db.md
         - name: Azure Databricks
@@ -301,11 +291,7 @@
         - name: Azure Front Door
           href: service-guides/azure-front-door.md
         - name: Azure IoT Hub
-          items:
-            - name: Reliability
-              href: service-guides/iot-hub/reliability.md
-            - name: Operational excellence
-              href: service-guides/iot-hub/operational-excellence.md
+          href: service-guides/azure-iot-hub.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -319,7 +305,7 @@
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric.md
         - name: Azure SQL Database
-          href: service-guides/azure-sql-database-well-architected-framework.md
+          href: service-guides/azure-sql-database.md
         - name: Azure SQL Managed Instance
           items:
             - name: Reliability
@@ -362,3 +348,9 @@
         href: ./design-guides/implementing-recommendations.md
       - name: Optimize using flows
         href: ./design-guides/optimize-workload-using-flows.md
+      - name: Handle transient faults
+        href: ./design-guides/handle-transient-faults.md
+      - name: Develop background jobs
+        href: ./design-guides/background-jobs.md
+      - name: Data partitioning
+        href: reliability/partition-data.md

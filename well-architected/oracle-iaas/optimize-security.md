@@ -79,7 +79,7 @@ For more information about network topology, see [Network topology and connectiv
 
 - Secure the VM on which the Oracle Database workload resides against unauthorized access by using Azure-provided features such as [Microsoft Defender for Cloud just-in-time (JIT) access](/azure/defender-for-cloud/just-in-time-access-overview) and [Azure Bastion](/azure/bastion/bastion-overview) features.
 
-- Use SSH port forwarding for X Windows System and Virtual Network Computing (VNC) utilities to tunnel connections through SSH. For more information, see [an example that opens a VNC client and tests a deployment](https://docs.oracle.com/en/learn/install-vnc-oracle-linux/#open-a-vnc-client-and-test-your-deployment).
+- Use SSH port forwarding for X Windows System and Virtual Network Computing (VNC) utilities to tunnel connections through SSH. For more information, see [an example that opens a VNC client and tests a deployment](https://docs.oracle.com/en/learn/ol-install-vnc/#open-a-vnc-client-and-test-your-deployment).
 
 - Direct all traffic through a hub virtual network by placing VMs in a dedicated subnet that's isolated from the internet and the on-premises network.
 

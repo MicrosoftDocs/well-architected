@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected Framework Perspective on Azure Kubernetes Service (AKS)
+title: Architecture Best Practices for Azure Kubernetes Service (AKS)
 description: Learn how to use Azure Kubernetes Service (AKS) features to boost reliability, security, and scalability. Streamline your workload operations and control costs. 
 author: schaffererin
 ms.author: schaffererin
@@ -13,7 +13,7 @@ azure.category:
   - containers
 ---
 
-# Azure Well-Architected Framework perspective on Azure Kubernetes Service (AKS)
+# Architecture best practices for Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use to deploy and manage containerized applications. Similar to other managed services, AKS offloads much of the operational overhead to Azure while providing high availability, scalability, and portability features to the workload.
 
@@ -63,7 +63,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >    Review [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Health modeling for workloads](/azure/well-architected/design-guides/health-modeling) guide for help designing the reliability and health monitoring solution for your AKS solution.
 >
 >   Ensure that workloads are built to support horizontal scaling and report application readiness and health.
-> - (Cluster and workload) **Host application pods in user nodel pools.** By isolating system pods from application workloads, you help ensure that AKS essential services are unaffected by the resource demands or potential problems caused by a workload that runs user node pools.
+> - (Cluster and workload) **Host application pods in user node pools.** By isolating system pods from application workloads, you help ensure that AKS essential services are unaffected by the resource demands or potential problems caused by a workload that runs user node pools.
 >
 >   Ensure that your workload runs on user node pools and choose the right size SKU. At a minimum, include two nodes for user node pools and three nodes for the system node pool.
 > - (Cluster and workload) **Factor the AKS uptime service-level agreement (SLA) into your availability and recovery targets.** To define the reliability and recovery targets for your cluster and workload, follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics). Then formulate a design that meets those targets.
