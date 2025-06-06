@@ -84,7 +84,7 @@ There are multiple decision points during the data design phase:
 
   > ![Trade-off icon](../_images/trade-off.svg) *Trade-off:* Balance data residency and compliance requirements with low-carbon region deployment opportunities. Some organizations might need to store data in specific regions because of regulatory requirements.
 
-- **Disaster recovery and backup:** Design [disaster recovery](/azure/well-architected/reliability/disaster-recovery) and backup strategies that balance data protection with energy efficiency. Implement intelligent tiering, cross-region replication optimization, and [life cycle management](/azure/well-architected/sustainability/sustainability-storage#implement-lifecycle-management) with deduplication to minimize storage energy consumption while maintaining required recovery objectives.
+- **Disaster recovery and backup:** Design [disaster recovery](/azure/well-architected/reliability/disaster-recovery) and backup strategies that balance data protection with energy efficiency. Implement intelligent tiering, cross-region replication optimization, and [life cycle management](/azure/well-architected/sustainability/sustainability-storage) with deduplication to minimize storage energy consumption while maintaining required recovery objectives.
 
 ## Operational design recommendations
 
