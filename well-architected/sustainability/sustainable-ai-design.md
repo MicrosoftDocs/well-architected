@@ -44,7 +44,7 @@ There are multiple decision points during the model design phase. Consider the f
 
 - **Training region:** Model training is energy intensive. It's important that you choose the correct region. Select [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
 
-  Beyond selecting low-carbon regions, implement carbon-aware scheduling that shifts training workloads to times and regions that have lower carbon intensity. Integrate with [Azure Carbon Optimization](/azure/carbon-optimization/overview) for real-time carbon intensity data.
+  Beyond selecting low-carbon regions, implement carbon-aware scheduling that shifts training workloads to times and regions that have lower carbon intensity. Integrate with [Azure carbon optimization](/azure/carbon-optimization/overview) for real-time carbon intensity data.
 
 - **Caching strategies:** Use model caching and result caching to reduce redundant computations while maintaining response times.
 
@@ -102,7 +102,7 @@ There are multiple operational design decisions that affect sustainability. Cons
 
   > ![Trade-off icon](../_images/trade-off.svg) *Trade-off:* Reducing the frequency of retraining could affect accuracy. For example, models that are used in financial markets need to be highly dynamic and frequently retrained to adapt to new market conditions and data. Ensure that you consider the right Trade-off based on business needs. As a proactive measure, use automated processes for continuous monitoring and evaluate and retrain to maintain accuracy and relevance. You also need to monitor infrastructure and workload metrics to help ensure optimal performance and reliability. For more information, see [Generative AI operations monitoring tools](/azure/well-architected/ai/mlops-genaiops#monitoring).
 
-- **Comprehensive monitoring strategy:** A monitoring strategy is used to track data drift, performance, and sustainability metrics. Track model performance to prevent machine learning operations cycles from being wasted because of [model decay](/azure/well-architected/ai/test#prevent-model-decay). When model decay occurs, machine learning operations cycles are wasted because the AI workload doesn't predict correct outcomes but continues to run.
+- **Comprehensive monitoring strategy:** A monitoring strategy is used to track data drift, performance, and sustainability metrics. Track model performance to prevent machine learning operations cycles from being wasted because of model decay. When model decay occurs, machine learning operations cycles are wasted because the AI workload doesn't predict correct outcomes but continues to run.
 
   Integrate sustainability metrics into your AI workload monitoring alongside traditional performance, reliability, and security metrics. For more information about implementation guidance, see [Sustainability operational procedures](/azure/well-architected/sustainability/sustainability-operational-procedures).
 
