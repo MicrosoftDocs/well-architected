@@ -30,7 +30,7 @@ This design methodology encourages tailoring your architecture to the specific S
 |99.999%|6 seconds|26 seconds|5 minutes, 15 seconds|
 |99.9999%|<1 second|2 seconds|31 seconds|
 
-While a single-region, multi-zone setup may suffice for many critical workloads, higher reliability tiers demand significantly more engineering effort and complexity. Avoid defaulting to overly complex solutions like active-active multi-region unless truly necessary.
+While a single-region, multi-zone setup may suffice for many critical workloads, higher reliability tiers demand significantly more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
 
 ![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
@@ -40,7 +40,7 @@ RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defi
 
 ## Design for zero-downtime deployments
 
-Zero-downtime deployments ensure users don't experience any disruption during updates. 
+Zero-downtime deployments ensure users don't experience any disruption during changes. 
 
 This methodology demands rigorous pre-release testing so that updates don't introduce defects, vulnerabilities, or instability. To support this, deployment tools and processes must be highly available and resilient. 
 
