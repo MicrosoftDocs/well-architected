@@ -286,7 +286,7 @@ At Level 3, teams should integrate business insights and technical skills for re
 
 Reliability objectives help set accountability for workload teams. It's important to have a collaborative conversation with business stakeholders to discuss recovery times and costs, and to make compromises that align with business goals. Gather the stakeholders and conduct this discussion as a workshop. Consider the following points for the workshop agenda:
 
-- **Explain the metrics behind objectives.** Start by explaining the key metrics used to define objectives like service-level objectives, recovery time objectives (RTOs), and recovery point objectives (RPOs). Show how those metrics align with business goals. Focus on the critical user flows. For example, in an eCommerce application, the RTO for updating email preferences is less important than users checking out shopping carts.
+- **Explain the metrics behind objectives.** Start by explaining the key metrics used to define objectives like service-level objectives, recovery time objectives (RTOs), and recovery point objectives (RPOs). Show how those metrics align with business goals. Focus on the critical user flows. For example, in an e-commerce application, the RTO for updating email preferences is less important than users checking out shopping carts.
 
 - **Communicate the trade-offs.** Stakeholders often expect more than what can be achieved. Explain how expanding the scope affects the budget, operational requirements, and performance.
 
@@ -327,7 +327,7 @@ FMA requires you to identify potential points of failure within your workload an
 
 It's important to classify actions as *preventative* or *reactive*. Preventative actions identify risks before they cause an outage, which reduces their likelihood or severity. Reactive actions address problems to mitigate a degraded health state or an outage.
 
-In the eCommerce example application, the workload team wants to do FMA to prepare themselves for a major event. One of the key user flows is adding items to the card. The components that are part of the flow are the front end, CartAPI, ProductCatalogAPI, UserProfileAPI, PricingAPI, Azure Cosmos DB, and Azure Event Hubs.
+In the e-commerce example application, the workload team wants to do FMA to prepare themselves for a major event. One of the key user flows is adding items to the card. The components that are part of the flow are the front end, CartAPI, ProductCatalogAPI, UserProfileAPI, PricingAPI, Azure Cosmos DB, and Azure Event Hubs.
 
 | Problem | Risk | Potential source | Severity | Likelihood | Actions |
 | :-------| :------| :------------------| :----------| :------------| :---------|
