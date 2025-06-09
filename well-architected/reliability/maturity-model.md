@@ -278,9 +278,9 @@ To handle spikes in load, critical components must be able to scale out or scale
 
 ![Goal icon](../_images/goal.svg) **Set reliability objectives and targets to keep the team accountable on recovery mechanisms.**
 
-At early levels, teams focus on easy wins and basic capabilities. They start with small improvements, solving simple problems to build a strong foundation while relying mostly on Azure reliability capabilities. As teams grow, they handle more technical challenges related to their own assets and processes.
+At early levels, your teams focus on easy wins and basic capabilities. They start with small improvements, solving simple problems to build a strong foundation while relying mostly on Azure reliability capabilities. As your teams grow, they handle more technical challenges related to their own assets and processes.
 
-At Level 3, teams should integrate business insights and technical skills for recovery planning. They set objectives and plan recovery processes by using advanced monitoring. This approach helps site reliability engineers (SREs) meet reliability targets quickly.
+At Level 3, your teams should integrate business insights and technical skills for recovery planning. They set objectives and plan recovery processes by using advanced monitoring. This approach helps site reliability engineers (SREs) meet reliability targets quickly.
 
 #### &#10003; Formalize reliability capabilities as objectives
 
@@ -300,7 +300,7 @@ At Level 1, monitoring data is collected from workload components, including pla
 
 Level 3 enhances monitoring by adding business context to critical flows and defining *healthy*, *unhealthy*, and *degraded* states through health modeling. Stakeholder agreement is needed to determine acceptable user experience compromises and should be used as input for defining health states.
 
-Health modeling requires operational maturity and expertise in monitoring tools. The team reviews raw data, performance levels, and logs to create custom metrics and thresholds that define the health state of the flow. They must understand how these values relate to the overall health of the system. Communicate clear definitions and thresholds to stakeholders.
+Health modeling requires operational maturity and expertise in monitoring tools. Your team reviews raw data, performance levels, and logs to create custom metrics and thresholds that define the health state of the flow. They must understand how these values relate to the overall health of the system. Communicate clear definitions and thresholds to stakeholders.
 
 Visualize the health model in dashboards to help SREs quickly pinpoint problems by focusing on unhealthy or degraded flows.
 
@@ -360,7 +360,7 @@ DR mainly includes the following actions:
 
   Prepare specific recovery steps based on the chosen approach. Start with a concrete list of steps to restore operations. As the process matures, aim to define the DR plan as a script with minimal manual interaction. Use version control and store the script securely for easy access. This approach requires more up-front effort but minimizes stress during an actual incident.
 
-  For more information, see [Deploy in active-passive for DR](./highly-available-multi-region-design.md#deploy-in-active-passive-for-disaster-recovery).
+  > For more information, see [Deploy in active-passive for DR](./highly-available-multi-region-design.md#deploy-in-active-passive-for-disaster-recovery).
 
 - **Conduct post-incident analysis.** Identify the cause of the incident and find ways to prevent it in the future. Make changes to improve recovery processes. This exercise might also uncover new strategies. For example, if the system switched to the secondary environment, determine if the primary environment is still needed and what the failback process should be.
 
@@ -404,7 +404,7 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
 - **Update your DR plan.** Regularly update your DR plan to keep it relevant and effective. Avoid outdated instructions. This approach ensures that the plan reflects the current state of your system that's deployed to production and relied on by users. Incorporate lessons learned from drills and actual incidents.
 
-For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#tabs=level4#reliable-change-management).
+For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md&tabs=level4).
 
 #### &#10003; Invest in a dedicated team to handle incidents
 
@@ -506,9 +506,9 @@ Regardless of the type of DR drill, clearly define the workload recovery scenari
 
 - Provide skilling materials on relevant test scenarios for the workload.
 
-- Track problems to capture problems encountered during implementation.
+- Track discrepancies to capture problems encountered during implementation.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** These drills aren't typically disruptive, but they do require time. Focus on the essential aspects and avoid unnecessary tasks to maximize their effectiveness. Be sure to allocate time for this practice in your backlog.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** These drills aren't typically disruptive, but they do take time. To maximize their effectiveness, focus on the key aspects and avoid unnecessary tasks. Make sure to allocate time for this practice in your backlog.
 
 When you create DR plans or conduct DR drills, specifically for the first few drills, consider including specialized expertise. Their input on multiregion design, failover and failback strategies, and services or tools can be invaluable. If your organization has a Cloud Center of Excellence team, be sure to include them in the planning process.
 
