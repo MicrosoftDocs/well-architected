@@ -3,118 +3,75 @@ title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 03/15/2023
+ms.date: 06/09/2025
 ms.topic: conceptual
 ---
 
 # Design methodology for mission-critical workloads on Azure
 
-Building a mission-critical application on any cloud platform requires significant technical expertise and engineering investment, particularly since there's significant complexity associated with:
+Designing a mission-critical application on any cloud platform demands a thoughtful engineering approach. There's complexity related to: understanding the platform's capabilities, selecting the right services, configuring them correctly, operationalizing them effectively, and staying aligned with evolving best practices and service roadmaps.
 
-- Understanding the cloud platform,
-- Choosing the right services and composition,
-- Applying the correct service configuration, 
-- Operationalizing utilized services, and
-- Constantly aligning with the latest best practices and service roadmaps.
+To navigate this complexity, establish a clear and simple design methodology that aligns with your business requirements, particularly around uptime and recovery. When decision-making becomes challenging or you find yourself stuck in analysis paralysis, return to your methodology as a reference point. It can help validate your choices, keep your design focused, and ensure alignment with your overall goals.
 
-This design methodology strives to provide an easy to follow design path to help navigate this complexity and inform design decisions required to produce an optimal target architecture.
+This article suggests a design methodology that's informed by insights gained from reviewing numerous mission-critical applications deployed on Azure.
 
-## 1&mdash;Design for business requirements
+## Design for your reliability objectives
 
-Not all mission-critical workloads have the same requirements. Expect that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different application scenarios.
 
-### Select a reliability tier
+Mission critical doesn't mean the same for everyone. The architecture will vary by the workload's business requirements and acceptable downtime. Those are often defined by Service Level Objectives (SLOs), such as 99.9% vs. 99.999% availability. Consider availability objectives to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to determine the tolerable downtime time.  
 
-Reliability is a relative concept and for any workload to be appropriately reliable it should reflect the business requirements surrounding it. For example, a mission-critical workload with a 99.999% availability Service Level Objective (SLO) requires a much higher level of reliability than another less critical workload with an SLO of 99.9%. 
+This design methodology can serve as a starting point for architectural decisions and tradeoffs after objectives have been set. As a draft target architecture takes shape and cost and complexity become clearer, the initial requirements may be revisited, challenged, adjusted, or addressed through alternative solutions.
 
-This design methodology applies the concept of reliability tiers expressed as availability SLOs to inform required reliability characteristics. The table below captures permitted error budgets associated with common reliability tiers.  
+For example, while a single-region, multi-zone setup may suffice for many critical workloads, higher reliability demand more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
 
-|Reliability Tier (Availability SLO)|Permitted Downtime (Week)|Permitted Downtime (Month)|Permitted Downtime (Year)|
-|--|--|--|--|
-|99.9%|10 minutes, 4 seconds|43 minutes, 49 seconds|8 hours, 45 minutes, 56 seconds|
-|99.95%|5 minutes, 2 seconds|21 minutes, 54 seconds|4 hours, 22 minutes, 58 seconds|
-|99.99%|1 minutes|4 minutes 22 seconds|52 minutes, 35 seconds|
-|99.999%|6 seconds|26 seconds|5 minutes, 15 seconds|
-|99.9999%|<1 second|2 seconds|31 seconds|
+![An image that shows the provisioned resources in a single region set up progressing to multi region as the SLO is set to a higher value](./images/mission-critical-slo.gif)
 
-> [!IMPORTANT]
-> Availability SLO is considered by this design methodology to be more than simple uptime, but rather a consistent level of application service relative to a known healthy application state.
+RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are also key in defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won't be fast enough.
 
-As an initial exercise, readers are advised to select a target reliability tier by determining how much downtime is acceptable? The pursuit of a particular reliability tier will ultimately have a significant bearing on the design path and encompassed design decisions, which will result in a different target architecture. 
+> Refer to [Recommendations for defining reliability targets](../reliability/metrics.md)
 
-This image shows how the different reliability tiers and underlying business requirements influence the target architecture for a conceptual reference implementation, particularly concerning the number of regional deployments and utilized global technologies.
+## Strive for end-to-end automation
 
-![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
+Adopt a comprehensive automation strategy that spans both deployment and ongoing management activities. This methodology emphasizes consistency, repeatability, and resilience through automation-first principles. 
 
-Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further critical aspects when determining required reliability. For instance, if you're striving to achieve an application RTO of less than a minute then back-up based recovery strategies or an active-passive deployment strategy are likely to be insufficient. 
+Typical areas for automation are routine tasks, such as patching, scaling, and monitoring, to reduce manual effort and errors. Favor templates for configuration and deployment to ensure consistency and clarity, using scripts only when templates aren't viable.
 
-## 2&mdash;Evaluate the design areas using the design principles
+> Refer to [Recommendations for enabling automation](../operational-excellence/enable-automation.md)
 
-At the core of this methodology lies a critical design path comprised of:
+## Design for zero-downtime deployments
 
-- Foundational **[design principles](mission-critical-design-principles.md)**
-- Fundamental **[design area](mission-critical-overview.md#what-are-the-key-design-areas)** with heavily interrelated and dependent design decisions.
+Zero-downtime deployments ensure users don't experience any disruption during changes. 
 
-The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
+This methodology demands rigorous prerelease testing so that updates don't introduce defects, vulnerabilities, or instability. To support this, deployment tools and processes must be highly available and resilient. 
 
-For example, to define a target architecture it's critical to determine how best to monitor application health across key components. We highly recommend that you review the health modeling design area, using the outlined recommendations to help drive decisions.
+Consistency is key. The same artifacts and automated processes should be used across all environments to eliminate any chance of manual errors and reduce overall risk. End-to-end automation isn't just preferred; it's mandatory for achieving reliable, repeatable, and interruption-free deployments.
 
-## 3&mdash;Deploy your first mission-critical application
+> Refer to [Recommendations for deployment and testing](./mission-critical-deployment-testing.md)
+
+## Design for fast failure detection and recovery
+
+Fast failure detection starts with a well-defined health model. Because failures often cascade across components, early detection and clear dependency between workload components is a non-negotiable for minimizing the blast radius and speeding up recovery.
+
+This means clearly identifying what _healthy_ and _unhealthy_ look like for each component, based on real user flows and business thresholds for performance and availability. These definitions should guide the metrics you monitor and help trace issues back to their root cause. 
+
+> Refer to [Design guide about health modeling](../design-guides/health-modeling.md)
+
+## Evolve with Azure
+
+Design your architecture to be modular and flexible so it’s easier to adopt new features without major changes. Regularly review your design to stay current with Azure’s evolving services and capabilities. Since Azure updates frequently, aligning your architecture with its roadmap helps ensure your application stays optimized and future-ready.
+
+> Refer to [Evolve with Azure](/azure/architecture/guide/design-principles/design-for-evolution) and [Azure updates](https://azure.microsoft.com/updates/) for the latest information about new services and features. 
+
+ ## Next step
+
+Start your design journey by review how Well-Architected Framework pillars apply to mission-critical class of workloads.
+
+- [Foundational design principles](mission-critical-design-principles.md)
+
+Decisions in one design area can affect others. Review the considerations and recommendations to understand potential trade-offs and their broader impact. 
+
+- [Fundamental design areas](mission-critical-overview.md#mission-critical-design-areas)
 
 Refer to these reference architectures that describe the design decisions based on this methodology.
 
-- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
-
-- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
-
-> [!TIP]
-> ![GitHub logo](./../_images/github.svg) The architecture is backed by [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation that illustrates the design recommendations.
-
-**Production-grade artifacts** Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
-
-**Rooted in real-world experiences** All technical decisions are guided by experiences of Azure customers and lessons learned from deploying those solutions.
-
-**Azure roadmap alignment** The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
-
-## 4&mdash;Integrate your workload in Azure landing zones
-
-[Azure landing zone subscriptions](/azure/cloud-adoption-framework/ready/landing-zone/) provide shared infrastructure for enterprise deployments that need centralized governance. 
-
-> [!VIDEO 9e05a6bd-7d10-4a83-9436-370a75dc1919]
-
-It's crucial to evaluate which connectivity use case is required by your mission-critical application. Azure landing zones support two main archetypes separated into different Management Group scopes: **Online** or **Corp.** as shown in this image.
-
-[ ![Diagram of Online and Corp. management groups and integration with a mission-critical workload.](./images/mission-critical-landing-zones.gif) ](./images/mission-critical-landing-zones.gif)
-
-### Online subscription
-
-A mission-critical workload operates as an independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will be further safeguarded through the [policy-driven governance](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) and will automatically integrate with centralized platform logging through policy.
-
-The [baseline architecture](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro) and [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation align with the Online approach. 
-
-### Corp. subscription
-
-When deployed in a Corp. subscription a mission-critical workload depends on the Azure landing zone to provide connectivity resources. This approach allows integration with other applications and shared services. You'll need to design around  some foundational resources, which will exist up-front as part of the shared-service platform. For example, the regional deployment stamp should no longer encompass an ephemeral Virtual Network or Azure Private DNS Zone because these will exist in the Corp. subscription.
-
-To get started with this use case, we recommend the [**baseline architecture in an Azure landing zone**](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone) reference architecture. 
-
-> [!TIP]
-> ![GitHub logo](./../_images/github.svg) The preceding architecture is backed by [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) implementation.
-
-
-## 5&mdash;Deploy a sandbox application environment
-
-In parallel to design activities, it's highly recommended that a sandbox application environment is established using the Mission-Critical reference implementations.
-
-This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be quickly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
-
-## 6&mdash;Continuously evolve with Azure roadmaps
-
-Application architectures established using this design methodology must continue to [evolve in alignment with Azure platform roadmaps](/azure/architecture/guide/design-principles/design-for-evolution) to support optimized sustainability.
-
-## Next step
-
-Review the design principles for mission-critical application scenarios.
-
-> [!div class="nextstepaction"]
-> [Design principles](mission-critical-design-principles.md)
+- [Reference architecture examples](./mission-critical-overview.md#reference-architecture-examples)
