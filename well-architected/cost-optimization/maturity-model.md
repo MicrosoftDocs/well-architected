@@ -263,15 +263,15 @@ Evaluate your feature development strategy to ensure that valuable features are 
 
 The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about how it typically runs. At this level, apply these production insights to your environment.
 
-Changes in your production environment directly affect other aspects of your workload. When you make refinements to achieve cost savings, you affect one or more of the other Well-Architected Framework pillars. For this reason, mature change management practices are crucial. It’s essential to thoroughly review and test changes while developing rollback plans to mitigate performance, security, and reliability impacts when you make cost-saving adjustments to your workload.
+Changes in your production environment directly affect other aspects of your workload. For example, cost-saving refinements might affect one or more of the other Well-Architected Framework pillars. For this reason, mature change management practices are crucial. When you make cost-saving adjustments to your workload, thoroughly review and test changes and develop rollback plans to mitigate performance, security, and reliability impacts.
 
 #### Refine the cost model based on production insights
 
-After you've deployed and operated your workload in production long enough to understand your normal usage patterns, revisit your cost model to plan for the future. The cost model should project future expenses, allocate funds, and adjust for deviations. In scenario analysis, the cost model evaluates the financial impact of different business changes and anticipates the cost implications of customer behavior. For resource optimization, it identifies underused cloud resources, forecasts scaling costs, and compares cloud providers' billing models to choose the most economical option.
+After you deploy and operate your workload in production long enough to understand your normal usage patterns, revisit your cost model to plan for the future. The cost model should project future expenses, allocate funds, and adjust for deviations. In scenario analysis, the cost model evaluates the financial impact of different business changes and anticipates the cost implications of customer behavior. For resource optimization, it identifies underused cloud resources, forecasts scaling costs, and compares cloud providers' billing models so that you can choose the most economical option.
 
 As part of this exercise, determine how closely your running costs align with the previously developed cost model and investigate the causes of discrepancies. Finding unexpected costs is common and assigning blame for them is typically unproductive. Instead, evaluate the value of the components that drive unexpected costs. Collaborate with stakeholders to decide whether to adjust the workload design for better alignment with the cost model, or whether the cost model should be modified.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Keep in mind that it's difficult to accurately project variable costs, especially when you adopt new technologies. You might have to look for compromises when you plan your budget. Make sure that stakeholders understand how you determined your variable cost estimates and your strategy for keeping these costs under control.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Keep in mind that it's difficult to accurately project variable costs, especially when you adopt new technologies. You might have to look for compromises when you plan your budget. Make sure that stakeholders understand how you determine your variable cost estimates and your strategy for keeping these costs under control.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Cost-cutting measures can adversely affect reliability, security, performance, and operational excellence. Carefully analyze the impact of every planned cost-cutting measure and determine if making a change is worth the potential impact.
 
@@ -285,13 +285,13 @@ Use your production insights to refine your data strategies. Specifically, look 
 
 #### Increase resource density
 
-When practical, optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Multiple workloads can share database, networking, security, and other services. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After you identify candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure that stakeholders understand the risks.
+When practical, optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Multiple workloads can share a database, networking, security, and other services. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After you identify candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure that stakeholders understand the risks.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Consolidating resources can introduce single points of failure. Single points of failure can make your workload less reliable and increase your security risks by decreasing segmentation. Mission-critical and business-critical workloads should favor segmentation instead of consolidation. Poorly implemented consolidation can result in future inefficiencies. Thoroughly review your consolidation plan before you perform the migration to ensure that you aren't introducing bottlenecks that could affect future performance. After the migration, closely monitor the consolidated resources to confirm that they're functioning as expected.
 
 #### Evaluate and optimize your application features
 
-Monitor feature usage patterns in production to assess their alignment with your cost model. Determine whether a feature should be maintained, refactored, or removed. In some cases, monetizing features might be a strategic business decision. The features might not justify the current investment, but could still provide value to customers. Offering these features as a paid add-on or subscription can help offset investment costs.
+Monitor feature usage patterns in production to assess their alignment with your cost model. Determine whether a feature should be maintained, refactored, or removed. In some cases, monetizing features might be a strategic business decision. The features might not justify the current investment but could still provide value to customers. Offering these features as paid add-ons or subscriptions can help offset investment costs.
 
 #### Minimize scaling costs by regulating demand
 
@@ -303,7 +303,7 @@ A strategy that can help you optimize your resource scaling costs is regulating 
 
 Appointing a cost directly responsible individual (DRI) helps the workload team take ownership of their workload costs. The DRI is accountable for managing and optimizing costs by monitoring usage, implementing cost-saving strategies, and ensuring that spending aligns with budget and business objectives. The DRI makes decisions related to cloud resource allocation, identifies areas of potential cost reduction, and ensures efficient use of cloud services to avoid unnecessary expenses.
 
-The DRI also serves as the frontline of defense against higher-than-expected workload costs. DRIs can help identify the cause of these high costs and proactively work with the workload team to reduce them to their expected range before it becomes a cost emergency.
+The DRI also serves as the frontline of defense against higher-than-expected workload costs. DRIs can help identify the cause of these high costs and proactively work with the workload team to reduce them to their expected range before they become a cost emergency.
 
 # [Level 5](#tab/level5)
 
