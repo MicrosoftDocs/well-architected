@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design methodology for mission-critical workloads on Azure
 
-Designing a mission-critical application on any cloud platform demands deep technical expertise and a thoughtful engineering approach. The complexity spans multiple dimensions: understanding the platform's capabilities, selecting the right services, configuring them correctly, operationalizing them effectively, and staying aligned with evolving best practices and service roadmaps.
+Designing a mission-critical application on any cloud platform demands a thoughtful engineering approach. There's complexity related to: understanding the platform's capabilities, selecting the right services, configuring them correctly, operationalizing them effectively, and staying aligned with evolving best practices and service roadmaps.
 
 To navigate this complexity, establish a clear and simple design methodology that aligns with your business requirements, particularly around uptime and recovery. When decision-making becomes challenging or you find yourself stuck in analysis paralysis, return to your methodology as a reference point. It can help validate your choices, keep your design focused, and ensure alignment with your overall goals.
 
@@ -18,15 +18,15 @@ This article suggests a design methodology that's informed by insights gained fr
 ## Design for your reliability objectives
 
 
-Mission critical doesn't mean the same for everyone. They vary in their reliability needs, which should be defined by business requirements and acceptable downtime. A target reliability objective, such as 99.9% vs. 99.999% availability, directly influences architectural decisions and tradeoffs. This design methodology can serve as a starting point for the architecture discussion after Service Level Objectives (SLOs) have been set. As a draft target architecture takes shape and cost and complexity become clearer, the initial requirements may be revisited, challenged, adjusted, or addressed through alternative solutions.
+Mission critical doesn't mean the same for everyone. The architecture will vary by the workload's business requirements and acceptable downtime. Those are often defined by Service Level Objectives (SLOs), such as 99.9% vs. 99.999% availability. Consider availability objectives to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to determine the tolerable downtime time.  
 
-Consider availability SLOs to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to detemine the tolerable downtime time.  
+This design methodology can serve as a starting point for architectural decisions and tradeoffs after objectives have been set. As a draft target architecture takes shape and cost and complexity become clearer, the initial requirements may be revisited, challenged, adjusted, or addressed through alternative solutions.
 
-While a single-region, multi-zone setup may suffice for many critical workloads, higher reliability tiers demand significantly more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
+For example, while a single-region, multi-zone setup may suffice for many critical workloads, higher reliability demand more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
 
 ![An image that shows the provisioned resources in a single region set up progressing to multi region as the SLO is set to a higher value](./images/mission-critical-slo.gif)
 
-RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won't be fast enough.
+RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are also key in defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won't be fast enough.
 
 > Refer to [Recommendations for defining reliability targets](../reliability/metrics.md)
 
@@ -34,7 +34,7 @@ RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defi
 
 Adopt a comprehensive automation strategy that spans both deployment and ongoing management activities. This methodology emphasizes consistency, repeatability, and resilience through automation-first principles. 
 
-Typical areas for automation are routine tasks, such as patching, scaling, and monitoring, to reduce manual effort and enhance system reliability. Favor templates for configuration and deployment to ensure consistency and clarity, using scripts only when templates are not viable.
+Typical areas for automation are routine tasks, such as patching, scaling, and monitoring, to reduce manual effort and errors. Favor templates for configuration and deployment to ensure consistency and clarity, using scripts only when templates aren't viable.
 
 > Refer to [Recommendations for enabling automation](../operational-excellence/enable-automation.md)
 
@@ -42,9 +42,9 @@ Typical areas for automation are routine tasks, such as patching, scaling, and m
 
 Zero-downtime deployments ensure users don't experience any disruption during changes. 
 
-This methodology demands rigorous pre-release testing so that updates don't introduce defects, vulnerabilities, or instability. To support this, deployment tools and processes must be highly available and resilient. 
+This methodology demands rigorous prerelease testing so that updates don't introduce defects, vulnerabilities, or instability. To support this, deployment tools and processes must be highly available and resilient. 
 
-Consistency is also key: the same artifacts and automated processes should be used across all environments to eliminate any chance of manual errors and reduce overall risk. End-to-end automation isn't just preferred; it's mandatory for achieving reliable, repeatable, and interruption-free deployments.
+Consistency is key. The same artifacts and automated processes should be used across all environments to eliminate any chance of manual errors and reduce overall risk. End-to-end automation isn't just preferred; it's mandatory for achieving reliable, repeatable, and interruption-free deployments.
 
 > Refer to [Recommendations for deployment and testing](./mission-critical-deployment-testing.md)
 
@@ -68,7 +68,7 @@ Start your design journey by review how Well-Architected Framework pillars apply
 
 - [Foundational design principles](mission-critical-design-principles.md)
 
-The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
+Decisions in one design area can affect others. Review the considerations and recommendations to understand potential trade-offs and their broader impact. 
 
 - [Fundamental design areas](mission-critical-overview.md#mission-critical-design-areas)
 
