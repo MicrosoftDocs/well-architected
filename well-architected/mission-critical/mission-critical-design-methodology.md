@@ -3,7 +3,7 @@ title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 05/30/2025
+ms.date: 06/09/2025
 ms.topic: conceptual
 ---
 
@@ -18,25 +18,21 @@ This article suggests a design methodology grounded in the Azure Well-Architecte
 ## Design for your reliability objectives
 
 
-Mission critical doesn't mean the same for everyone. They vary in their reliability needs, which should be defined by business requirements and acceptable downtime. A target reliability tier, such as 99.9% vs. 99.999% availability, directly influences architectural decisions and tradeoffs. 
+Mission critical doesn't mean the same for everyone. They vary in their reliability needs, which should be defined by business requirements and acceptable downtime. A target reliability objective, such as 99.9% vs. 99.999% availability, directly influences architectural decisions and tradeoffs. This design methodology can serve as a starting point for the architecture discussion after Service Level Objectives (SLOs) have been set. As a draft target architecture takes shape and cost and complexity become clearer, the initial requirements may be revisited, challenged, adjusted, or addressed through alternative solutions.
 
-This design methodology encourages tailoring your architecture to the specific Service Level Objective (SLO). Consider availability SLOs to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. 
-
-|Reliability (SLO)|Permitted Downtime (Week)|Permitted Downtime (Month)|Permitted Downtime (Year)|
-|--|--|--|--|
-|99.9%|10 minutes, 4 seconds|43 minutes, 49 seconds|8 hours, 45 minutes, 56 seconds|
-|99.95%|5 minutes, 2 seconds|21 minutes, 54 seconds|4 hours, 22 minutes, 58 seconds|
-|99.99%|1 minutes|4 minutes 22 seconds|52 minutes, 35 seconds|
-|99.999%|6 seconds|26 seconds|5 minutes, 15 seconds|
-|99.9999%|<1 second|2 seconds|31 seconds|
+Consider availability SLOs to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to detemine the tolerable downtime time.  
 
 While a single-region, multi-zone setup may suffice for many critical workloads, higher reliability tiers demand significantly more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
 
-![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
+![An image that shows the provisioned resources in a single region set up progressing to multi region as the SLO is set to a higher value](./images/mission-critical-slo.gif)
 
 RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defining reliability needs. For example, if your goal is to recover an application in under a minute, backup-based or active-passive strategies likely won't be fast enough.
 
 > Refer to [Recommendations for defining reliability targets](../reliability/metrics.md)
+
+## Strive for end-to-end automation
+
+Adopt a comprehensive automation strategy that spans both deployment and ongoing management activities. This methodology emphasizes consistency, repeatability, and resilience through automation-first principles. Automate routine tasks, such as patching, scaling, and monitoring, to reduce manual effort and enhance system reliability. Favor templates for configuration and deployment to ensure consistency and clarity, using scripts only when templates are not viable.
 
 ## Design for zero-downtime deployments
 
@@ -52,7 +48,7 @@ Consistency is also key: the same artifacts and automated processes should be us
 
 Fast failure detection starts with a well-defined health model. Because failures often cascade across components, early detection and clear dependency between workload components is a non-negotiable for minimizing the blast radius and speeding up recovery.
 
-This means clearly identifying what “healthy” and “unhealthy” look like for each component, based on real user flows and business thresholds for performance and availability. These definitions should guide the metrics you monitor and help trace issues back to their root cause. 
+This means clearly identifying what _healthy_ and _unhealthy_ look like for each component, based on real user flows and business thresholds for performance and availability. These definitions should guide the metrics you monitor and help trace issues back to their root cause. 
 
 > Refer to [Design guide about health modeling](../design-guides/health-modeling.md)
 
