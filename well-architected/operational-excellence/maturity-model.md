@@ -77,7 +77,7 @@ Make tools and processes transparent to easily detect vulnerabilities through au
 
 Ensure that your tools and deployment practices use the same identity provider as your production environments to minimize different identity control planes.
 
-# [**Level 2: Standardize foundational processes**](#tab/level2)
+# [**Level 2: Process standardization**](#tab/level2)
 
 ![Goal icon](../_images/goal.svg) **Standardize foundational processes. This approach streamlines decision-making responsibilities and defines the requirements for system deployment and monitoring.**
 
@@ -193,7 +193,7 @@ Based on the initial analysis, work with the stakeholders to define what both he
 >
 > Collect business metrics as an application feature instead of through monitoring configurations. Monitoring data streams can be sampled and aren't usually recoverable in a disaster. Treat business-critical data as workload data and keep it separate from workload health signals.
 
-# [**Level 3: Achieve go-live proficiency**](#tab/level3)
+# [**Level 3: Release readiness**](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Reduce the risk of deployment errors that could result in downtime. If down time does occur, ensure that site reliability engineers can focus on critical problems without wasting time on collecting metrics for analysis.**
 
