@@ -7,6 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 
 ---
+# Modernize your software development with continuous integration
 
 As code is developed, updated, or even removed, having an intuitive and safe method to integrate these changes into the main code branch enables developers to provide value.
 
@@ -52,7 +53,7 @@ Another popular practice is building small reports or badges that can be present
 
 The following image shows the integration between GitHub and an Azure DevOps pipeline. In this example, the creation of a pull request triggers an Azure DevOps pipeline. The pipeline status appears in the pull request.
 
-![Screenshot of an Azure DevOps status badge in a GitHub repository.](media/release-engineering-continuous-integration/azure-devops-github-status.png)
+![Screenshot of an Azure DevOps status badge in a GitHub repository.](_images/release-engineering-continuous-integration/azure-devops-github-status.png)
 
 ## Incorporate automated tests
 
@@ -80,7 +81,7 @@ The following code snippet shows a test step from an Azure DevOps pipeline. The 
 
 The following image shows test results that appear in the Azure DevOps portal.
 
-![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](media/release-engineering-continuous-integration/azure-devops-tests.png)
+![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](_images/release-engineering-continuous-integration/azure-devops-tests.png)
 
 #### Failed tests
 
@@ -90,7 +91,7 @@ Failed tests should temporarily block a deployment and lead to a deeper analysis
 
 Many developers show that their code quality is high by displaying a status badge in their repository. The following image shows an Azure Pipelines badge displayed on the readme file for an open-source project in GitHub.
 
-![Screenshot of an Azure Pipelines badge on a readme file in GitHub.](media/release-engineering-continuous-integration/github-status-badge.png)
+![Screenshot of an Azure Pipelines badge on a readme file in GitHub.](_images/release-engineering-continuous-integration/github-status-badge.png)
 
 ## Optimize build times
 
@@ -118,7 +119,7 @@ To perform faster builds, you can:
 
 Your organization might choose to create several different kinds of builds to optimize build times. Possible builds include:
 
-- **Continuous integration (CI) build**: The purpose of this build is to ensure code is compiled and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team immediately. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
+- **Continuous integration (CI) build**: The purpose of this build is to ensure code is compiled and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team im_imagestely. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
 
 - **Nightly build**: The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient run on a regular cadence for each build. Usually, these tests include integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
 
