@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 
 ---
-# Recommendations for using continuous integration in release engineering
+# Modernize your software development with continuous integration
 
 As code is developed, updated, or even removed, having an intuitive and safe method to integrate these changes into the main code branch enables developers to provide value.
 

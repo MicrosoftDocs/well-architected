@@ -2346,8 +2346,13 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/operational-excellence/release-engineering-continuous-integration.md",
+			"redirect_url": "/azure/well-architected/design-guides/release-engineering-continuous-integration",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/operational-excellence/release-engineering-performance.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-continuous-integration",
+			"redirect_url": "/azure/well-architected/design-guides/release-engineering-continuous-integration",
 			"redirect_document_id": false
 		},
 		{
