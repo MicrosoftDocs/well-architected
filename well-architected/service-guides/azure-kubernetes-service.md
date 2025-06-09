@@ -99,7 +99,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege access](/azure/aks/azure-ad-rbac). Protect configuration and secrets by minimizing the allocation of administrator privileges.
 >
-> - (Cluster) **Integrate with security monitoring and security information and event management tools.** Use Microsoft Defender for Containers with [Microsoft Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and the workloads that run on them. Enable [AKS connector for Microsoft Sentinel](/azure/sentinel/data-connectors/azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
+> - (Cluster) **Integrate with security monitoring and security information and event management tools.** Use Microsoft Defender for Containers with [Microsoft Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and the workloads that run on them. Enable [AKS connector for Microsoft Sentinel](https://docs.azure.cn/en-us/sentinel/data-connectors/azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
 >
 > - (Cluster and workload) **Implement segmentation and network controls.** To prevent data exfiltration, ensure that only authorized and safe traffic is allowed, and contain the blast radius of a security breach.
 >

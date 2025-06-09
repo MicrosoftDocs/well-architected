@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 08/15/2022
+ms.date: 05/30/2025
 ms.topic: conceptual
 ---
 
@@ -45,13 +45,17 @@ While the primary focus of mission-critical workloads is [Reliability](/azure/we
 
 Achieving high reliability imposes significant cost tradeoffs, which may not be justifiable for every workload scenario. It is therefore recommended that design decisions be driven by business requirements.
 
-## What are the key design areas?
+## How to use this guidance?
 
-Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
+✔ Start with [Design Methodology](./mission-critical-design-methodology.md), which outlines the rationale and recurring themes across technical and operational areas. This systematic approach helps define requirements and design strategies. Revisit this methodology when facing uncertain choices to stay aligned with the workload's overall goals. 
+
+✔ Proceed to [Design Principles](./mission-critical-design-principles.md) to see how the mission critical design methodology aligns with the core Well-Architected Framework pillars, considering growth evolution. Evaluate the underlying principles for all pillars collectively, including the tradeoffs.
+
+✔ Focus on the design areas that have the biggest impact on your solution. Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.svg "Mission-critical design areas")
 
-The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the **health modeling** design area, using the outlined recommendations to help drive decisions.
+#### Mission-critical design areas
 
 |Design area|Summary|
 |---|---|
@@ -64,19 +68,18 @@ The design areas are interrelated and decisions made within one area can impact 
 |[**Security**](mission-critical-security.md)|Protect the application against threats intended to directly or indirectly compromise its reliability.|
 |[**Operational procedures**](mission-critical-operational-procedures.md)|Adoption of DevOps and related deployment methods is used to drive effective and consistent operational procedures.|
 
-## Illustrative examples
+## Reference architecture examples
 
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available that can be used as a basis for further solution development.
 
 - [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
-  > Refer to the implementation: [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
-
 - [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)&mdash;Extends the baseline architecture with strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.
 
 - [Baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone)&mdash;Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
-  > Refer to the implementation: [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected)
+> [!VIDEO 9e05a6bd-7d10-4a83-9436-370a75dc1919]
+
 
 ## Next step
 

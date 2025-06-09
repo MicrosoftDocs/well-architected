@@ -57,8 +57,6 @@
               href: reliability/redundancy.md
             - name: RE:05 Regions and availability zones
               href: reliability/regions-availability-zones.md
-            - name: RE:06 Data partitioning
-              href: reliability/partition-data.md
             - name: RE:06 Scaling
               href: reliability/scaling.md
             - name: RE:07 Self-preservation
@@ -354,3 +352,5 @@
         href: ./design-guides/handle-transient-faults.md
       - name: Develop background jobs
         href: ./design-guides/background-jobs.md
+      - name: Data partitioning
+        href: reliability/partition-data.md
