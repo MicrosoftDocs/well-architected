@@ -13,7 +13,7 @@ Designing a mission-critical application on any cloud platform demands deep tech
 
 To navigate this complexity, establish a clear and simple design methodology that aligns with your business requirements, particularly around uptime and recovery. When decision-making becomes challenging or you find yourself stuck in analysis paralysis, return to your methodology as a reference point. It can help validate your choices, keep your design focused, and ensure alignment with your overall goals.
 
-This article suggests a design methodology grounded in the Azure Well-Architected Framework. It's informed by insights gained from reviewing numerous mission-critical applications deployed on Azure across various organizations.
+This article suggests a design methodology that's informed by insights gained from reviewing numerous mission-critical applications deployed on Azure.
 
 ## Design for your reliability objectives
 
@@ -32,7 +32,11 @@ RTO (Recovery Time Objective) and RPO (Recovery Point Objective) are key to defi
 
 ## Strive for end-to-end automation
 
-Adopt a comprehensive automation strategy that spans both deployment and ongoing management activities. This methodology emphasizes consistency, repeatability, and resilience through automation-first principles. Automate routine tasks, such as patching, scaling, and monitoring, to reduce manual effort and enhance system reliability. Favor templates for configuration and deployment to ensure consistency and clarity, using scripts only when templates are not viable.
+Adopt a comprehensive automation strategy that spans both deployment and ongoing management activities. This methodology emphasizes consistency, repeatability, and resilience through automation-first principles. 
+
+Typical areas for automation are routine tasks, such as patching, scaling, and monitoring, to reduce manual effort and enhance system reliability. Favor templates for configuration and deployment to ensure consistency and clarity, using scripts only when templates are not viable.
+
+> Refer to [Recommendations for enabling automation](../operational-excellence/enable-automation.md)
 
 ## Design for zero-downtime deployments
 
