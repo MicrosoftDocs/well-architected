@@ -169,12 +169,8 @@
               href: operational-excellence/formalize-operations-tasks.md
             - name: OE:03 Software development practices
               href: operational-excellence/formalize-development-practices.md
-            - name: OE:04 Build velocity
-              href: operational-excellence/release-engineering-performance.md
             - name: OE:04 Tools and processes
               href: operational-excellence/tools-processes.md
-            - name: OE:04 Continuous integration 
-              href: operational-excellence/release-engineering-continuous-integration.md
             - name: OE:05 Infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
             - name: OE:06 Supply chain for workload development
@@ -354,3 +350,6 @@
         href: ./design-guides/background-jobs.md
       - name: Data partitioning
         href: reliability/partition-data.md
+      - name: Continuous integration 
+        href: ./design-guides/release-engineering-continuous-integration.md
+

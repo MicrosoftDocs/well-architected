@@ -8,24 +8,11 @@ ms.topic: conceptual
 
 ---
 
-# Recommendations for using continuous integration
-
-**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
-
-|**OE:04**| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For clear role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
-|---|---|
-
-**Related guide**: [Improve build velocity](release-engineering-performance.md) | [Standardize tools and processes](tools-processes.md)
-
 As code is developed, updated, or even removed, having an intuitive and safe method to integrate these changes into the main code branch enables developers to provide value.
 
 As a developer, you can make small code changes, push these changes to a code repository, and get almost instantaneous feedback on the quality, test coverage, and introduced bugs. This process lets you work faster and with more confidence and less risk.
 
 Continuous integration (CI) is a practice where source control systems and software deployment pipelines are integrated to provide automated build, test, and feedback mechanisms for software development teams.
-
-## Key design strategies
-
-Continuous integration is a software development practice that developers use to integrate software updates into a source control system on a regular cadence.
 
 The continuous integration process starts when an engineer creates a GitHub pull request to signal to the CI system that code changes are ready to be integrated. Ideally, the integration process validates the code against several baselines and tests. It then provides feedback to the requesting engineer on the status of these tests.
 
@@ -40,7 +27,7 @@ Continuous integration can help you deliver high-quality software more quickly b
 - Provide quick feedback on detected problems.
 - Where applicable, produce deployable assets or packages that include the updated code.
 
-### Automate continuous integration with pipelines
+## Automate continuous integration with pipelines
 
 To achieve continuous integration, use software solutions to manage, integrate, and automate the process. A common practice is to use a continuous integration pipeline.
 
@@ -55,7 +42,7 @@ In most cases, the pipeline software is attached to source control such that whe
 
 Many solutions, like Azure Pipelines or GitHub Actions, provide the capabilities of continuous integration pipelines.
 
-### Integrate pipelines with source control
+## Integrate pipelines with source control
 
 The integration of your continuous integration pipeline with your source control system is key to enabling fast, self-service code contributions.
 
@@ -67,7 +54,7 @@ The following image shows the integration between GitHub and an Azure DevOps pip
 
 ![Screenshot of an Azure DevOps status badge in a GitHub repository.](media/release-engineering-continuous-integration/azure-devops-github-status.png)
 
-### Incorporate automated tests
+## Incorporate automated tests
 
 A key element of continuous integration is the continual building and testing of code as developers make code contributions. Testing pull requests as they're created gives quick feedback that the commit hasn't introduced breaking changes. The advantage is that the tests in the continuous integration pipeline can be the same tests that run during test-driven development.
 
@@ -105,13 +92,39 @@ Many developers show that their code quality is high by displaying a status badg
 
 ![Screenshot of an Azure Pipelines badge on a readme file in GitHub.](media/release-engineering-continuous-integration/github-status-badge.png)
 
-## Azure facilitation
+## Optimize build times
 
-[Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a collection of services that help you build a collaborative, efficient, and consistent development practice.
+To perform faster builds, you can:
 
-[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and continuous delivery (CI/CD) of your applications.
+- **Choose agents that meet your performance requirements**: Speed up your builds by selecting the right build machines. Fast machines can make the difference between hours and minutes. If your pipelines are in Azure Pipelines, you can run your jobs by using a Microsoft-hosted agent. When you use Microsoft-hosted agents, maintenance and upgrades are taken care of for you. For more information, see [Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true).
 
-[GitHub for Actions for Azure](https://azure.github.io/actions/) enables the automation of CI/CD processes. It integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request in your repository, or that deploy merged pull requests to production.
+- **Optimize the build server location**: When you're building your code, data is sent across the wire. Inputs to the builds are fetched from a source control repository and the artifact repository. The output from the build process needs to be copied, including the compiled artifacts, test reports, code coverage results, and debug symbols. It's important that these copy actions are run quickly. If you use your own build server, ensure that the build server is located near the sources and a target location. Fast uploads and downloads can reduce the overall build time.
+
+- **Scale out build servers**: A single build server might be sufficient for a small product. As the size and scope of the product and the number of teams working on the product increases, a single server might not be enough. Scale your infrastructure horizontally over multiple machines when you reach the limit. For more information, see [Create and manage agent pools](/azure/devops/pipelines/agents/pools-queues?tabs=yaml&view=azure-devops&preserve-view=true).
+
+- **Optimize the build**:
+
+  - Add parallel jobs to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
+
+  - Enable parallel test suite runs, which often save a large amount of time, especially when running integration and UI tests. For more information, see [Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true).
+
+  - Use the notion of a multiplier, where you can scale out your builds over multiple build agents. For more information, see [Specify jobs in your pipeline](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true).
+
+  - Consider moving integration, UI, and smoke tests to a release pipeline. Moving to a release pipeline improves the build speed and the speed of the build feedback loop.
+
+  - Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution lets you reuse your build artifact more easily.
+
+## Implement build types to fit your workflows
+
+Your organization might choose to create several different kinds of builds to optimize build times. Possible builds include:
+
+- **Continuous integration (CI) build**: The purpose of this build is to ensure code is compiled and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team immediately. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
+
+- **Nightly build**: The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient run on a regular cadence for each build. Usually, these tests include integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
+
+- **Release build**: In addition to compiling and running tests, this build also compiles the API documentation, compliance reports, code signing, and other steps that aren't required every time the code is built. This build provides the golden copy that's pushed to the release pipeline to finally deploy in the production environment.
+
+The types of builds needed by your organization depend on factors including your team's and organization's maturity, the kind of product you're working on, and your deployment strategy.
 
 ## Related links
 
@@ -124,8 +137,3 @@ Learn how to display badges in your repositories:
 
 - [Add an Azure Pipelines status badge to your repository](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&tabs=java%2ctfs-2018-2%2cbrowser&view=azure-devops#add-a-status-badge-to-your-repository)
 - [Add a GitHub workflow status badge to your repository](https://docs.github.com/free-pro-team@latest/actions/managing-workflow-runs/adding-a-workflow-status-badge)
-
-## Operational Excellence checklist
-
-> [!div class="nextstepaction"]
-> [Design review checklist for Operational Excellence](checklist.md)

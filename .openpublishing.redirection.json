@@ -2344,6 +2344,11 @@
 			"source_path": "well-architected/service-guides/api-management/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-performance.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-continuous-integration",
+			"redirect_document_id": false
 		}
 	]
 }

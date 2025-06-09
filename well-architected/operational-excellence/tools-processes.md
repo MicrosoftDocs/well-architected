@@ -14,8 +14,6 @@ ms.topic: conceptual
 |**OE:04**| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-**Related guide**: [Improve build velocity](release-engineering-performance.md) | [Use continuous integration](release-engineering-continuous-integration.md)
-
 This guide describes the recommendations for defining standards for software development tools and processes. Defining consistent practices leads to an efficient workload team and high-quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential code errors.
 
 ## Key design strategies
@@ -112,7 +110,7 @@ Implement a shift-left approach to testing by performing unit testing early and 
 
 - *Automate tests as much as possible*. Automated code relieves the burden on your workload team and enforces consistent quality.
 
-For detailed guidance about implementing a DevOps test strategy, see [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable).
+Implement a variety of testing types, such as unit, smoke, integration, and acceptance testing. For a detailed review of these types of tests, see the [testing section](workload-supply-chain.md#incorporate-comprehensive-types-of-testing) of the [workload supply chain](./workload-supply-chain.md) recommendation guide.
 
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
