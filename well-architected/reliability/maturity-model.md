@@ -286,13 +286,13 @@ At Level 3, teams should integrate business insights and technical skills for re
 
 Reliability objectives help set accountability for workload teams. It's important to have a collaborative conversation with business stakeholders to discuss recovery times and costs, and to make compromises that align with business goals. Gather the stakeholders and conduct this discussion as a workshop. Consider the following points for the workshop agenda:
 
-- **Explain the metrics behind objectives.** Start by explaining the key metrics that are used to define objectives like service-level objectives, recovery time objectives (RTOs), and recovery point objectives (RPOs). Show how those metrics align with business goals. Focus on the critical user flows. For example, in an eCommerce application, the RTO for updating email preferences is less important than users checking out shopping carts.
+- **Explain the metrics behind objectives.** Start by explaining the key metrics used to define objectives like service-level objectives, recovery time objectives (RTOs), and recovery point objectives (RPOs). Show how those metrics align with business goals. Focus on the critical user flows. For example, in an eCommerce application, the RTO for updating email preferences is less important than users checking out shopping carts.
 
-- **Be clear on the trade-offs.** Stakeholders often expect more than what can be achieved. Explain how expanding the scope affects the budget, operational requirements, and performance.
+- **Communicate the trade-offs.** Stakeholders often expect more than what can be achieved. Explain how expanding the scope affects the budget, operational requirements, and performance.
 
-- **Propose objective targets:** Based on architectural experience and workload design, recommend targets such as 99.9% uptime, with RPO and RTO set at four hours. Facilitate a discussion for stakeholders to provide feedback and make adjustments. Ensure that both business and technical stakeholders guard against unrealistic expectation. Approach discussions with a collaborative mindset.
+- **Propose objective targets:** Based on architectural experience and workload design, recommend targets such as 99.9% uptime, with RPO and RTO set at four hours. Facilitate a discussion for stakeholders to provide feedback and make adjustments. Ensure that both business and technical stakeholders guard against unrealistic expectations. Approach discussions with a collaborative mindset.
 
-- **Reach consensus or decision.** Aim for a consensus, but if that's not possible, have a decision-maker finalize the targets to ensure progress.
+- **Reach a consensus or decision.** Aim for a consensus, but if that's not possible, have a decision-maker finalize the targets to ensure progress.
 
 #### &#10003; Monitor proactively by using your health model
 
@@ -300,11 +300,11 @@ At Level 1, monitoring data is collected from workload components, including pla
 
 Level 3 enhances monitoring by adding business context to critical flows and defining *healthy*, *unhealthy*, and *degraded* states through health modeling. Stakeholder agreement is needed to determine acceptable user experience compromises and should be used as input for defining health states.
 
-Health modeling requires operational maturity and expertise in monitoring tools. The team reviews raw data, performance levels, and logs to create custom metrics and thresholds that define the health state of the flow. They must understand how these values relate to the overall health of the system. Clear definitions and thresholds should be communicated to stakeholders.
+Health modeling requires operational maturity and expertise in monitoring tools. The team reviews raw data, performance levels, and logs to create custom metrics and thresholds that define the health state of the flow. They must understand how these values relate to the overall health of the system. Communicate clear definitions and thresholds to stakeholders.
 
 Visualize the health model in dashboards to help SREs quickly pinpoint problems by focusing on unhealthy or degraded flows.
 
-The health model defines the application's status and critical flows. Green indicates that all critical flows are operating well. Red indicates a failure. And yellow shows trends towards problems. Iterating through health model versions ensures reliability and accuracy but requires significant effort for large applications.
+The health model defines the application's status and critical flows. Green indicates that all critical flows are operating as expected. Red indicates a failure. And yellow shows trends towards problems. Iterating through health model versions ensures reliability and accuracy but requires significant effort for large applications.
 
 A change in the health state should be configured as alerts. However, to keep alerts intentional, the criticality of the component must be taken into consideration.
 
@@ -322,20 +322,20 @@ Create a single landing page that has all the necessary information to troublesh
 
 #### &#10003; Conduct failure mode analysis
 
-In the earlier levels, you created a simple failure mitigation playbook for individual components. At this level, evolve that playbook into a formal failure mode analysis (FMA) exercise, where the goal is to proactively identify potential failure modes.
+In the earlier levels, you created a simple failure mitigation playbook for individual components. At this level, evolve that playbook into a formal failure mode analysis (FMA) exercise. The purpose of this exercise is to proactively identify potential failure modes.
 
-FMA involves identifying potential points of failure within your workload and planning mitigation actions, such as self-healing or disaster recovery (DR). To start, monitor for increased error rates and detect impacts on critical flows. Use past experiences and test data to identify potential failures and assess their blast radius. Prioritize major problems such as a region-wide outage.
+FMA requires you to identify potential points of failure within your workload and plan mitigation actions, such as self-healing or disaster recovery (DR). To begin, monitor for increased error rates and detect impacts on critical flows. Use past experiences and test data to identify potential failures and assess their blast radius. Prioritize major problems such as a region-wide outage.
 
-It's important to classify the actions as *preventative* or *reactive*. Preventative actions identify risks before they cause an outage, which reduces their likelihood or severity. Reactive actions address problems to mitigate a degraded health state or an outage.
+It's important to classify actions as *preventative* or *reactive*. Preventative actions identify risks before they cause an outage, which reduces their likelihood or severity. Reactive actions address problems to mitigate a degraded health state or an outage.
 
-In the eCommerce example application, the workload team wants to do FMA to prepare themselves for a big event. One of the key user flows is adding items to the card. The components that are part of the flow are the front end, CartAPI, ProductCatalogAPI, UserProfileAPI, PricingAPI, Azure Cosmos DB, and Event Hubs.
+In the eCommerce example application, the workload team wants to do FMA to prepare themselves for a major event. One of the key user flows is adding items to the card. The components that are part of the flow are the front end, CartAPI, ProductCatalogAPI, UserProfileAPI, PricingAPI, Azure Cosmos DB, and Event Hubs.
 
 | Problem | Risk | Potential source | Severity | Likelihood | Actions |
 | :-------| :------| :------------------| :----------| :------------| :---------|
 | The number of orders received drops below 100 per hour, with no corresponding drop in user session activity | Customers are unable to place orders, even though the application is available. | CartAPI, PaymentsAPI | High | Not likely | **Reactive actions:** <br>- Review the health model or monitoring data to identify the problem. <br>- Test the application to validate its functionality. <br>- If a component outage occurs, perform a failover to another set of infrastructure. <br> **Preventative actions:** <br>- Place synthetic orders to verify that the flow is working. <br>- Improve observability to ensure that the end-to-end flow is monitored. |
 | Unexpected increase in load causes timeouts when storing orders to Azure Cosmos DB | Customers are unable to place orders, or receive unsatisfactory performance if they can place orders. | Azure Cosmos DB | High | Not likely | **Reactive actions:** <br>- Verify load based on application telemetry. <br>- Scale up Azure Cosmos DB request units temporarily. <br> **Preventative actions:** <br>- Configure autoscale. <br>- Revisit expected load and recalculate scale rules. <br>- Move some activities to a background process to reduce the database load from this flow. |
-| Recommendations service goes completely offline | Shopping cart page fails to load because of exception invoking recommendations service | Application | Medium | Not likely | **Reactive actions:** <br>- Implement a graceful degradation strategy to either disable the recommendation functionality or display hard-coded recommendation data on the shopping cart page. Apply this approach when an exception occurs while accessing the service. |
-| Intermittent timeouts occur when accessing the pricing API from the shopping cart page under heavy load | Intermittent failures in the shopping cart page because of failures accessing the cart service | Application | Medium | Likely (under heavy load) | **Reactive actions:** <br>- Implement cache pricing value in the shopping cart data store, together with a cache expiry timestamp. <br>- Only access the pricing API when the pricing data cache is expired. |
+| The recommendations service goes completely offline | The shopping cart page fails to load because of an exception invoking recommendations service | Application | Medium | Not likely | **Reactive actions:** <br>- Implement a graceful degradation strategy to either disable the recommendation functionality or display hard-coded recommendation data on the shopping cart page. Apply this approach when an exception occurs while accessing the service. |
+| Intermittent timeouts occur when accessing the pricing API from the shopping cart page under heavy load | Intermittent failures in the shopping cart page because of failures accessing the cart service | Application | Medium | Likely (under heavy load) | **Reactive actions:** <br>- Implement cache pricing value in the shopping cart data store, together with a cache expiry timestamp. <br>- Access the pricing API only when the pricing data cache is expired. |
 
 FMA analyses are complex and can be time-consuming, so build your analysis progressively over time. This process is iterative and continues to evolve at later stages.
 
@@ -349,7 +349,7 @@ First identify the types of disasters to plan for, such as region outages, Azure
 
 DR mainly includes the following actions:
 
-- **Notify the responsible parties.** It's important to have clarity on who to involve and when. The team should be trained in processes, have the right permissions, and understand their roles in recovery. Some responsibilities, like the CEO reporting to the market or handling regulatory requirements, should be identified early.
+- **Notify the responsible parties.** It's important to have clarity on who to involve and when. The team should be trained in the correct processes, have the right permissions, and understand their roles in recovery. Some responsibilities, like the CEO reporting to the market or handling regulatory requirements, should be identified early.
 
   Ideally, you should have separate recovery and communication roles and assign different people to each role. Initially, the IT operations person who discovers the problem might handle both roles. But as the situation escalates, senior personnel handle technical recovery while a business person manages communications.
 
@@ -357,23 +357,23 @@ DR mainly includes the following actions:
 
   Actions taken according to DR plans can be destructive or have significant side effects. It's essential to understand the options, weigh their pros and cons, and determine the right time to apply them. For instance, assess whether recovery to a different region is necessary if the primary region is expected to be operational within an acceptable time frame.
 
-- **Restore system operations.** During a disaster, focus should be on restoring operations and not on identifying the cause. For technical recovery, especially in region failover, decide in advance on approaches like active-active, active-passive, warm, or cold standby.
+- **Restore system operations.** During a disaster, the focus should be on restoring operations and not on identifying the cause. For technical recovery, especially in region failover, decide in advance on approaches like active-active, active-passive, warm, or cold standby.
 
   Prepare specific recovery steps based on the chosen approach. Start with a concrete list of steps to restore operations. As the process matures, aim to define the DR plan as a script with minimal manual interaction. Use version control and store the script securely for easy access. This approach requires more upfront effort but minimizes stress during an actual incident.
 
   For more information, see [Deploy in active-passive for DR](./highly-available-multi-region-design.md#deploy-in-active-passive-for-disaster-recovery).
 
-- **Conduct post-incident analysis.** Identify the cause of the incident and find ways to prevent it in the future. Make changes to improve recovery processes. This exercise might also uncover new strategies. For example, if the system switched to the secondary, determine if the primary is still needed and what the failback process should be.
+- **Conduct post-incident analysis.** Identify the cause of the incident and find ways to prevent it in the future. Make changes to improve recovery processes. This exercise might also uncover new strategies. For example, if the system switched to the secondary environment, determine if the primary environment is still needed and what the failback process should be.
 
-A DR plan is a living document that adapts to changes in your workload. Update it as new components and risks emerge. Also, refine the plan based on insights gained from drills or real disasters and gather realistic information from DR operators.
+A DR plan is a living document that adapts to changes in your workload. Update your DR plan as new components and risks emerge. Refine the plan based on insights gained from drills or real disasters and gather realistic information from DR operators.
 
 # [**Level 4: Maintain stability**](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) **Control risks that stem from technical and operational changes and prioritize incident management.**
 
-In the previous levels, the workload team focuses on building features and getting the system up and running. At maturity level 4, the focus shifts to keeping the system reliable in production. This means that incident management becomes just as important as making sure any changes introduced are thoroughly tested and deployed safely to avoid making the system unstable.
+In the previous levels, the workload team focuses on building features and making the system operational At maturity level 4, the focus shifts to keeping the system reliable in production. This means that incident management becomes as important as making sure that any changes introduced are thoroughly tested and safely deployed to avoid making the system unstable.
 
-This process requires improvements in operational controls, such as investing in dedicated teams to manage reliability incidents. It also requires technical controls to enhance system reliability beyond the critical components reinforced in previous levels. As the system continues running in production, data growth might require redesigns, such as partitioning, to ensure reliable access and maintenance.
+This process requires improvements in operational controls, such as investing in dedicated teams to manage reliability incidents. It also requires technical controls to enhance system reliability beyond the critical components reinforced in previous levels. As the system continues to run in production, data growth might require redesigns, such as partitioning, to ensure reliable access and maintenance.
 
 #### &#10003; Reliable change management
 
@@ -383,19 +383,19 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
 - **React to platform updates.** Azure services have different mechanisms to update services.
 
-  - Familiarize yourself with the maintenance and update policies of each service that you use. This knowledge includes understanding whether the service supports automatic or manual upgrades and the timeframe for manual updates.
+  - Familiarize yourself with maintenance processes and update the policies of each service that you use. This knowledge includes understanding whether the service supports automatic or manual upgrades and the time frame for manual updates.
 
-  - For services that have planned updates, manage them effectively by scheduling them during low-impact times. Avoid automatic updates and defer them until you after you assess the risk. Some services enable you to control the timing, while other other services provide a grace period. For example, with AKS, you have 90 days to opt in before the update becomes automatic. Test updates in a non-production cluster that mirrors your production setup to prevent regressions.
+  - For services that have planned updates, manage these updates effectively by scheduling them during low-impact times. Avoid automatic updates and defer them until after you assess the risk. Some services enable you to control the timing, while other services provide a grace period. For example, with AKS, you have 90 days to opt in before the update becomes automatic. Test updates in a nonproduction cluster that mirrors your production setup to prevent regressions.
 
-    Apply updates gradually. Even if testing shows the update is safe, applying it to all instances simultaneously can be risky. Instead, update a few instances at a time, and wait between each set.
+    Apply updates gradually. Even if testing shows the update is safe, applying it to all instances simultaneously can be risky. Instead, update a few instances at a time and wait between each set.
 
   - Regularly check for notifications about updates, which might be available in activity logs or other service-specific channels.
 
   - Monitor for sudden or gradual changes after an update is applied. Ideally, your health model should notify you of these changes.
 
-- **Thorough testing with automation.** Integrate more testing into your build and deployment pipelines when rolling out changes. Look for opportunities to convert manual processes to automated parts of your pipelines.
+- **Thorough testing with automation.** Integrate more testing into your build and deployment pipelines when you roll out changes. Look for opportunities to convert manual processes to automated parts of your pipelines.
 
-  Do comprehensive testing by using a combination of different types of tests at various stages to confirm that changes work as expected and don't affect other parts of the application. For example, positive testing verifies that the system behaves as expected. It should validate that there are no errors and that traffic flows correctly.
+  Do comprehensive testing by using a combination of different types of tests at various stages to confirm that changes work as expected and don't affect other parts of the application. For example, positive testing verifies that the system operates as expected. It should validate that there are no errors and that traffic flows correctly.
 
   When you plan updates, identify testing gates and the types of tests to apply. Most testing should occur in pre-deployment stages, but smoke tests should also be performed in each environment as it's updated.
 
@@ -403,25 +403,25 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
   For example, in Canary deployments, a small subset of users receives the new version first. This process enables monitoring and validation before deployment to the entire user base. Techniques like feature flags and dark launches facilitate testing in production before releasing changes to all users.
 
-- **Update your disaster recovery plan.** Regularly update your plan to keep it relevant and effective. Avoid outdated instructions, which ensures that the plan reflects the current state of your system now that it's deployed to production and users rely on it. Incorporate lessons learned from drills and actual incidents.
+- **Update your disaster recovery plan.** Regularly update your DR plan to keep it relevant and effective. Avoid outdated instructions. This approach ensures that the plan reflects the current state of your system that's deployed to production and relied on by users. Incorporate lessons learned from drills and actual incidents.
 
-For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#tabs=level4#change-management).
+For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#tabs=level4#reliable-change-management).
 
-#### &#10003; Invest in dedicated team to handle incidents
+#### &#10003; Invest in a dedicated team to handle incidents
 
 Initially, the development team might be involved during incidents. At Level 4, invest in site reliability engineering (SRE) for incident management. SREs specialize in production problems and are experts in efficiency, change management, monitoring, emergency response, and capacity management. A proficient SRE team can significantly reduce dependency on engineering teams.
 
-Provide SREs with the tools, information, and knowledge necessary to handle incidents independently. This preparation reduces dependency on the engineering team. SREs should be trained in the playbooks and workload health model developed in previous levels to quickly recognize common patterns and initiate the mitigation process.
+Provide SREs with the tools, information, and knowledge necessary to handle incidents independently. This preparation reduces dependency on the engineering team. SREs should be trained in the playbooks and the workload health model developed in previous levels to quickly recognize common patterns and initiate the mitigation process.
 
 The engineering team should have time to reflect on recurring problems and develop strategies for dealing with them, instead of addressing them individually.
 
 #### &#10003; Automate self-healing processes
 
-In the previous levels, self-healing strategies are designed by using redundancy and design patterns. Now that the team has gained experience with real-world usage, integrate automation to mitigate common failure patterns and reduce dependency on the engineering team.
+In the previous levels, self-healing strategies are designed by using redundancy and design patterns. Now that the team has experience with real-world usage, integrate automation to mitigate common failure patterns and reduce dependency on the engineering team.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Automation can take time and be costly to set up. Focus on automating the most impactful tasks first, like those that occur often or are likely to cause outages.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Automation can take time and be costly to set up. Focus on automating the most impactful tasks first, like tasks that occur often or are likely to cause outages.
 
-Configure actions based on triggers and automate responses over time to build an automated playbook for SREs. One approach is to enhance the playbook with scripts that implement mitigation steps. Also, explore Azure-native options, such as using Azure Monitor's Action Groups to set up triggers that automatically initiate various tasks.
+Configure actions based on triggers and automate responses over time to build an automated playbook for SREs. One approach is to enhance the playbook with scripts that implement mitigation steps. Explore Azure-native options, such as using Azure Monitor's Action Groups, to set up triggers that automatically initiate various tasks.
 
 #### &#10003; Extend resiliency to background tasks
 
@@ -435,17 +435,17 @@ After you evaluate and improve your primary user flows, consider the background 
 
 - **Ensure consistency.** Prevent the system from entering an inconsistent state if a background task stops during processing. Both checkpointing and task-level idempotency are techniques to enable higher greater consistency across background task executions. Run each task as an atomic transaction. For a task that spans multiple data stores or services, use task-level idempotency or compensating transactions to ensure that it completes.
 
-- **Integrate background tasks in your monitoring system and testing practices.** Detect failures and prevent unnoticed interruptions that can result in functional and non-functional consequences. Your monitoring system should include data from these components, set alerts for disruptions, and use triggers to retry or resume the process automatically. Treat these assets as part of the workload and conduct automated testing the same way that you would for critical components.
+- **Integrate background tasks in your monitoring system and testing practices.** Detect failures and prevent unnoticed interruptions that can result in functional and nonfunctional consequences. Your monitoring system should include data from these components, set alerts for disruptions, and use triggers to retry or resume the process automatically. Treat these assets as part of the workload and conduct automated testing the same way that you would for critical components.
 
-Azure provides several services that are used for background jobs, such as Azure Functions and App Service WebJobs. Review their best practices and limits when you implement flows with focus on reliability.
+Azure provides several services that are used for background jobs, such as Azure Functions and Azure App Service WebJobs. Review their best practices and limits when you implement flows with focus on reliability.
 
 # [**Level 5: Stay resilient**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) **Remain resilient as the workload architecture evolves, which enables the system to withstand new and unforeseen risks.**
 
-At Level 5, the focus of improving your solution's reliability shifts away from implementing technical controls. Your infrastructure, applications, and operations should be reliable enough to be resilient to outages and recover from them within the target recovery times.
+At Level 5, the focus of improving your solution's reliability shifts away from implementing technical controls. Your infrastructure, applications, and operations should be reliable enough to be resilient to outages and recover from outages within the target recovery times.
 
-Use data and future business goals to acknowledge that if the business needs to go further, architectural changes might be necessary. As your workload evolves and new features are added, strive to minimize outages related to those features while further reducing outages for existing features even more.
+Use data and future business goals to acknowledge that if the business needs to go further, architectural changes might be necessary. As your workload evolves and new features are added, strive to minimize outages related to those features while further reducing outages for existing features.
 
 #### &#10003; Use reliability insights to guide architecture evolution
 
@@ -453,17 +453,17 @@ Decisions at this level are made in collaboration with business stakeholders. Co
 
 - Analyze metrics that indicate how many times reliability thresholds were crossed within a time period and whether that's acceptable. For instance, experiencing five major outages in a year might trigger a reassessment of system design and operational practices.
 
-- Evaluate the business criticality of the system. For example, a service supporting mission-critical workflows might require redesigning for zero-downtime deployments and instant failover, even if it increases cost or complexity. Conversely, a reduced-use service might benefit from more relaxed service-level objectives (SLOs).
+- Evaluate the business criticality of the system. For example, a service that supports mission-critical workflows might require redesigning for zero-downtime deployments and instant failover, even if it increases cost or complexity. Conversely, a reduced-use service might benefit from more relaxed service-level objectives.
 
 - Assess how changes in other pillars affect reliability. For example, increased security measures might require reliability mitigations for extra security hops, which could introduce potential points of failure.
 
 - Assess the operational costs of maintaining reliability. If these costs exceed budget constraints, consider architectural changes to optimize and control spending.
 
-To help stakeholders, engineers, and product managers make informed decisions, consider visualizing the preceding data points along with additional insights. This approach provides a complete picture of reliability.
+To help stakeholders, engineers, and product managers make informed decisions, consider visualizing the preceding data points along with extra insights. This approach provides a complete picture of reliability.
 
 #### &#10003; Run controlled tests in production
 
-At this level, controlled experiments in production should be considered only if the workload requires the highest resilience guarantees. These testing practices are known as *chaos engineering*. The tests validate that the system can recover gracefully and continue functioning under adverse conditions.
+At this level, only consider controlled experiments in production if the workload requires the highest resilience guarantees. These testing practices are known as *chaos engineering*. The tests validate that the system can recover gracefully and continue functioning under adverse conditions.
 
 Consider the following example use cases:
 
@@ -471,17 +471,17 @@ Consider the following example use cases:
 
 - **Graceful degradation testing:** Evaluate how the system functions with reduced functionality during failure without completely breaking. For example, hide non-critical features if a recommendation engine fails.
 
-- **Third-party failure simulation:** Disable or throttle calls to external APIs to see how your system behaves and whether fallbacks or retries are correctly implemented.
+- **Third-party failure simulation:** Disable or throttle calls to external APIs to see how your system operates and whether fallbacks or retries are correctly implemented.
 
 Chaos engineering is a gold standard for testing resilience. However, reserve this practice for mature systems and workload teams. Ensure that safeguards are in place to limit the blast radius and prevent user impact.
 
-- Begin in non-production environments that simulate real-world conditions by using lower-risk setups with synthetic transactions. Also, prepare by running game days. This approach helps identify process gaps, human error paths, and architectural flaws.
+- Begin in nonproduction environments that simulate real-world conditions by using lower-risk setups with synthetic transactions. Prepare by running game days. This approach helps identify process gaps, human error paths, and architectural flaws.
 
-  When non-production testing stops yielding valuable insights, it might be time to move to production if you're confident. Make sure to list all concerns, evaluate resiliency, and address any problems before you transition.
+  When nonproduction testing stops yielding valuable insights, it might be time to move to production if you're confident. Make sure to list all concerns, evaluate resiliency, and address any problems before you transition.
 
 - Limit the scope of experiments. For example, shut down only one instance. Clearly define the purpose of the test. Understand what you're testing and why.
 
-These tests must adhere to service-level agreements (SLAs) by operating within predefined limits and error budgets. Select appropriate timeframes for these experiments. Typically, performing them during a workday ensures that the team is fully staffed and has ample resources to respond to any incidents that might occur.
+These tests must adhere to service-level agreements by operating within predefined limits and error budgets. Select appropriate timeframes for these experiments. Typically, performing them during a workday ensures that the team is fully staffed and has ample resources to respond to any incidents that might occur.
 
 #### &#10003; Conduct disaster recovery drills
 
@@ -489,9 +489,9 @@ Chaos engineering tests the resilience of technical controls. DR drills assess t
 
 For regulatory workloads, compliance requirements might dictate the frequency of DR drills to ensure a record of effort. For other workloads, conducting these drills regularly is recommended. A six-month interval provides a good opportunity to capture workload changes and update DR procedures accordingly.
 
-DR drills should be more than routine exercises. When conducted properly, they help train new team members and identify gaps in tooling, communication, and other drill-related tasks. They can also can highlight fresh perspectives that might otherwise be overlooked.
+DR drills should be more than routine exercises. When conducted properly, DR drills help train new team members and identify gaps in tooling, communication, and other drill-related tasks. They can also highlight fresh perspectives that might otherwise be overlooked.
 
-Consider the following key methods for conducting DR drills, each varying in risk and realism:
+Consider the following key methods for conducting DR drills, each varying in risk and practicality:
 
 - **Fully simulated:** These exercises are fully whiteboard-based and include procedural walkthroughs without affecting any systems. They're suitable for training and initial validation. However, they don't provide insights into real incidents.
 
@@ -499,7 +499,7 @@ Consider the following key methods for conducting DR drills, each varying in ris
 
 - **Real drills in production:** These drills provide the highest level of confidence and realism. Conduct these drills only after you test the previous two methods. Thorough planning and rollback strategies are essential to minimize risk. Don't proceed if there's any chance of causing outages.
 
-Regardless of the type of DR drill, clearly define the workload recovery scenarios. Conduct drills as if they're real incidents, which ensures that the team follows well-understood checklists. Document and classify findings to drive continuous improvement. Your DR preparation might include the following processes:
+Regardless of the type of DR drill, clearly define the workload recovery scenarios. Conduct drills as if they're real incidents. This approach ensures that the team follows well-understood checklists. Document and classify findings to drive continuous improvement. Your DR preparation might include the following processes:
 
 - Understand incident management systems and ensure that the team is trained on escalation paths.
 
@@ -509,9 +509,9 @@ Regardless of the type of DR drill, clearly define the workload recovery scenari
 
 - Track problems to capture problems encountered during implementation.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** These drills aren't typically disruptive, but they do require time. Focus on the essential aspects and avoid unnecessary tasks to maximize their effectiveness. Be sure to allocate time for this practice in your backlog.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** These drills aren't typically disruptive, but they do require time. Focus on the essential aspects and avoid unnecessary tasks to maximize their effectiveness. Be sure to allocate time for this practice in your backlog.
 
-When you create DR plans or conduct DR drills, specifically fir the first few drills, consider including specialized expertise. Their input on multiregion design, failover and failback strategies, and services or tools can be invaluable. If your organization has a Cloud Center of Excellence team, be sure to include them in the planning process.
+When you create DR plans or conduct DR drills, specifically for the first few drills, consider including specialized expertise. Their input on multiregion design, failover and failback strategies, and services or tools can be invaluable. If your organization has a Cloud Center of Excellence team, be sure to include them in the planning process.
 
 #### &#10003; Evaluate your data model, segment if necessary
 
@@ -521,7 +521,7 @@ Explore techniques like hot-cold partitioning divides data based on access patte
 
 Hot-cold partitioning can be combined with sharding, which is a process that divides a large database into smaller units called shards. Each shard holds a portion of the data, and together they form the complete dataset. This approach enables independent data management.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Balancing shards requires operational processes to evaluate and confirm their distribution. This approach helps avoid hot partitions where one partition is overused. However, it also requires ongoing effort and resources to maintain balance.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Balancing shards requires operational processes to evaluate and confirm their distribution. This approach helps avoid hot partitions where one partition is overused. However, it also requires ongoing effort and resources to maintain balance.
 
 When you choose a partitioning technique, consider the following reliability benefits:
 
@@ -533,6 +533,6 @@ When you choose a partitioning technique, consider the following reliability ben
 
 - **Tailored reliability policies.** Different reliability policies can be applied to help ensure that each partition has the right level of resiliency and prevent any single store from becoming a bottleneck. Hot partitions can be fully redundant, including zone and geo-redundancy, while cold partitions rely on backups. An added reliability benefit is that you can reduce the blast radius of some types of failures. For example, if a failure affects one shard, it might not affect the other shards.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Maintaining or modifying partitions can be complex because of the strong interdependencies between different data partitions. These changes might impact the ability to verify data consistency and integrity, especially when compared to a single data store. As the number of partitions increases, the need for robust processes to maintain data integrity becomes more crucial. Without these measures, reliability might be compromised.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** It can be difficult ot maintain or modify partitions because of the strong interdependencies between different data partitions. These changes might affect the ability to verify data consistency and integrity, especially when compared to a single data store. As the number of partitions increases, the need for robust processes to maintain data integrity becomes more crucial. Without these measures, reliability might be compromised.
 
 ## Next steps
