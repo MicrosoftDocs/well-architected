@@ -1,9 +1,9 @@
 ---
 title: Sustainable Design for AI Workloads on Azure
 description: The article provides guidance about building AI workloads sustainably. It outlines specific measures to implement during software development phases.
-author: claytonsiemens77
-ms.author: csiemens
-ms.reviewer: tozimmergren
+author: srini1978
+ms.author: srrakhun
+ms.reviewer: csiemens
 ms.topic: best-practice
 ms.date: 03/24/2025
 ---
