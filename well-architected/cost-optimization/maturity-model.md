@@ -286,7 +286,7 @@ Use your production learnings to refine your data strategies. In particular, loo
 
 When practical, you can optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Database, networking, security and other services can be shared by multiple workloads. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After identifying candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure stakeholders understand the risks.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consolidating resources can introduce single points of failure, making your workload less reliable and they can increase your security risks by decreasing segmentation. Mission-critical and business-critical workloads should favor segmentation over consolidation.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consolidating resources can make your workload less reliable and less secure. Mission-critical and business-critical workloads should favor reliability and security over consolidation.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Poorly executed consolidation can lead to future inefficiencies. Review your consolidation plan thoroughly to ensure that you're not creating bottlenecks that can affect you in the future prior to performing the migration. Following the migration, pay extra attention in your monitoring to the consolidated resources to ensure they're performing as expected.
 
