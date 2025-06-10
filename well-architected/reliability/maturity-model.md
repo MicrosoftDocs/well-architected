@@ -276,7 +276,7 @@ To handle spikes in load, critical components must be able to scale out or scale
 
 # [**Level 3: Recovery readiness**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Set reliability objectives and targets to keep the team accountable on recovery mechanisms.**
+![Goal icon](../_images/goal.svg) **Set reliability objectives and targets to keep the team accountable on recovery procedures.**
 
 At early levels, your teams focus on easy wins and basic capabilities. They start with small improvements, solving simple problems to build a strong foundation while relying mostly on Azure reliability capabilities. As your teams grow, they handle more technical challenges related to their own assets and processes.
 
@@ -378,7 +378,7 @@ This process requires improvements in operational controls, such as investing in
 
 The biggest reliability risks occur during changes, such as software updates, configuration adjustments, or process modifications. These events are critical from a reliability standpoint. The goal is to minimize the likelihood of problems, outages, downtime, or data loss. Each type of change requires specific activities to manage its unique risks effectively.
 
-At Level 4, Reliability intersects with safe deployment practices described in Operational Excellence, in maintaining a stable environment and managing change based on production insights. Reliable change management is a requirement for achieving workload stability. Consider the following key aspects:
+At Level 4, Reliability intersects with safe deployment practices described in Operational Excellence, in maintaining a stable environment when managing changes. Reliable change management is a requirement for achieving workload stability. Consider the following key aspects:
 
 - **React to platform updates.** Azure services have different mechanisms to update services.
 
@@ -474,7 +474,7 @@ Consider the following example use cases:
 
 Chaos engineering is a gold standard for testing resilience. However, reserve this practice for mature systems and workload teams. Ensure that safeguards are in place to limit the blast radius and prevent user impact.
 
-- Begin in nonproduction environments that simulate real-world conditions by using lower-risk setups with synthetic transactions. Prepare by running game days. This approach helps identify process gaps, human error paths, and architectural flaws.
+- Prepare by running game days. Begin in nonproduction environments that simulate real-world conditions by using lower-risk setups with synthetic transactions. This approach helps identify process gaps, human error paths, and architectural flaws.
 
   When nonproduction testing stops yielding valuable insights, it might be time to move to production if you're confident. Make sure to list all concerns, evaluate resiliency, and address any problems before you transition.
 
