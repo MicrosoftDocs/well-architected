@@ -1,8 +1,8 @@
 ---
 title: Application platform considerations for sustainable workloads on Azure
 description: This design area explores application platform and infrastructure considerations for sustainable workloads on Azure.
-author: Zimmergren
-ms.author: tozimmergren
+author: lnyswonger
+ms.author: lnyswonger
 ms.topic: conceptual
 ms.date: 10/12/2022
 

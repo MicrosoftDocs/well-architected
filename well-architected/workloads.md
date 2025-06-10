@@ -114,7 +114,7 @@ Every platform partnership is different, but the following areas are common topi
 - Compliance and legal requirements
 - Networking specifics, such as the need for static ingress or egress IP addresses
 - Observability requirements to provide live site triage that's effective
-- Performance requirements, such as network throughput, availability of cloud resources, or regional availability
+- Performance requirements, such as storage and network throughput, availability of cloud resources, or regional availability
 - Expectations for public internet access from an egress and ingress perspective
 - Service-level objectives (SLOs) or SLAs that are offered to the workload's users
 - The availability of technical support
