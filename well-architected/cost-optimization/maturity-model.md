@@ -257,7 +257,7 @@ Streamlining development practices enhances build velocity. This approach helps 
 
 Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate feedback from both internal and external users and stakeholders to identify the features that most enhance user satisfaction and drive higher engagement. In some scenarios, features might be designed specifically to optimize costs. Compare these features with functional priorities to assess their relative value.
 
-# [**Level 4: Refine in production**](#tab/level4)
+# [**Level 4: Apply production learnings**](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) **Apply insights from operating in production to achieve cost optimizations.**
 
@@ -265,7 +265,7 @@ The Level 4 stage of the maturity model assumes that you have deployed into prod
 
 Changes in your production environment directly affect other aspects of your workload. For example, cost-saving refinements might affect one or more of the other Well-Architected Framework pillars. For this reason, mature change management practices are crucial. When you make cost-saving adjustments to your workload, thoroughly review and test changes and develop rollback plans to mitigate performance, security, and reliability impacts.
 
-#### Refine the cost model based on production insights
+#### &#10003; Refine the cost model based on production learnings
 
 After you deploy and operate your workload in production long enough to understand your normal usage patterns, revisit your cost model to plan for the future. The cost model should project future expenses, allocate funds, and adjust for deviations. In scenario analysis, the cost model evaluates the financial impact of different business changes and anticipates the cost implications of customer behavior. For resource optimization, it identifies underused cloud resources, forecasts scaling costs, and compares cloud providers' billing models so that you can choose the most economical option.
 
@@ -275,47 +275,75 @@ As part of this exercise, determine how closely your running costs align with th
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Cost-cutting measures can adversely affect reliability, security, performance, and operational excellence. Carefully analyze the impact of every planned cost-cutting measure and determine if making a change is worth the potential impact.
 
-#### Optimize your data usage for costs
+#### &#10003; Optimize your data usage for costs
 
 Use your production insights to refine your data strategies. Specifically, look for optimization opportunities for the following factors:
 
 - Optimize your storage solutions with ease of management in mind. Assess whether your currently deployed storage solutions best fit your use case and whether transitioning to a different technology could reduce operational burden or usage costs. For example, you might have initially deployed SQL Server on virtual machines to easily migrate your workload or because it was the most familiar technology for your workload team. Moving to a platform-as-a-service (PaaS) solution can significantly reduce operational overhead and lower costs, depending on various factors.
 
-- Optimize your data life cycle management by reviewing your data tiering and making adjustments where practical. Data that's no longer in use can be moved to lower-cost storage tiers, such as archive storage. If you haven't established policies to define which data belongs in specific tiers, create them based on production insights to streamline ongoing life cycle management. Finally, implement automation to enforce these policies and further enhance optimization.
-
-#### Increase resource density
+#### &#10003; Increase resource density
 
 When practical, optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Multiple workloads can share a database, networking, security, and other services. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After you identify candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure that stakeholders understand the risks.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Consolidating resources can introduce single points of failure. Single points of failure can make your workload less reliable and increase your security risks by decreasing segmentation. Mission-critical and business-critical workloads should favor segmentation instead of consolidation. Poorly implemented consolidation can result in future inefficiencies. Thoroughly review your consolidation plan before you perform the migration to ensure that you aren't introducing bottlenecks that could affect future performance. After the migration, closely monitor the consolidated resources to confirm that they're functioning as expected.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consolidating resources can make your workload less reliable and less secure. Mission-critical and business-critical workloads should favor reliability and security over consolidation.
 
-#### Evaluate and optimize your application features
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Poorly executed consolidation can lead to future inefficiencies. Review your consolidation plan thoroughly to ensure that you're not creating bottlenecks that can affect you in the future prior to performing the migration. Following the migration, pay extra attention in your monitoring to the consolidated resources to ensure they're performing as expected.
+
+#### &#10003; Evaluate and optimize your application features
 
 Monitor feature usage patterns in production to assess their alignment with your cost model. Determine whether a feature should be maintained, refactored, or removed. In some cases, monetizing features might be a strategic business decision. The features might not justify the current investment but could still provide value to customers. Offering these features as paid add-ons or subscriptions can help offset investment costs.
 
-#### Minimize scaling costs by regulating demand
+#### &#10003; Minimize scaling costs by regulating demand
 
 A strategy that can help you optimize your resource scaling costs is regulating demand instead of adding capacity. This approach can include offloading demand to other resources or reducing it through various strategies like priority queues, buffering, load balancing, and caching. When you consider these tactics, assess their impact on the other pillars of the Well-Architected Framework. Controlling supply by capping scaling limits and setting a budget helps keep expenses within defined thresholds. Track usage and use cost management platforms and budget alerts to help monitor and control spending effectively.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Offloading tasks to other resources can reduce scaling costs, but it might introduce operational and maintenance challenges. Perform a thorough cost-benefit analysis to confirm that your chosen offloading method is efficient and feasible. Make sure to balance savings with potential complexities.
 
-#### Enforce cost accountability through ownership
+#### &#10003; Enforce cost accountability through ownership
 
 Appointing a cost directly responsible individual (DRI) helps the workload team take ownership of their workload costs. The DRI is accountable for managing and optimizing costs by monitoring usage, implementing cost-saving strategies, and ensuring that spending aligns with budget and business objectives. The DRI makes decisions related to cloud resource allocation, identifies areas of potential cost reduction, and ensures efficient use of cloud services to avoid unnecessary expenses.
 
 The DRI also serves as the frontline of defense against higher-than-expected workload costs. DRIs can help identify the cause of these high costs and proactively work with the workload team to reduce them to their expected range before they become a cost emergency.
 
-# [Level 5](#tab/level5)
+# [**Level 5: Advanced cost efficiency techniques**](#tab/level5)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) Refine the workload and operational processes to achieve additional cost efficiencies.
 
-### Strategy focus: 
+At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes in place already. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate forecasts, and through advanced refinements. Consider the following recommendations to achieve these goals.
 
-<!-- No more than 5 H4 headings per tab -->
+#### &#10003; Enforce spending guardrails in your software development processes
 
-#### Example heading
+Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
 
-<!-- No more than 100 words under each H4 heading. -->
+#### &#10003; Invest in knowledge building
+
+Empower your workload team to take ownership of cost optimization initiatives by developing a skills training program. Encourage team members to learn from industry thought leaders by attending conferences, webinars, and other industry events. Provide in-house training to cross-train skills and provide sandbox environments for hands-on learning experiences. Tie trainings back to cost optimization initiatives like optimizing scaling strategies, for example. Having highly skilled teams makes them more efficient and might help you minimize engaging third parties for new projects.
+
+Ensure that your cost model includes planned trainings for a given fiscal period, like the upcoming quarter.
+
+#### &#10003; Optimize high availability and disaster recovery (DR) costs
+
+After running real-world DR drills or after going through real-world DR incidents, you might find areas for cost optimization. You might find that you can afford a less expensive DR strategy for certain components while still meeting your recovery targets. For example, you might not need a hot spare design for a non-critical flow, so you can consider implementing a deploy on recovery approach instead. 
+
+As part of your continuous improvement practices, regularly revisit your recovery targets to make sure they are appropriate for both reliability and cost requirements.
+
+#### &#10003; Refine the workload design
+
+After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirmeents. Consider the following strategies:
+
+- *Combine similar flows.* Reduce reduncancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
+
+- *Separate dissimilar flows.* Separating tasks with different computational needs onto dedicated resources improves efficiency and reduces costs. This process enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation based on each task's priority.
+
+- *Rearchitect the workload to gain efficiencies.* Review the entire workload architecture to look for opportunities to improve efficiency. Favor a microservices design and explore using serverless or managed services that relieve operational burden and can easily be right-sized through automatic scaling. An end goal for your architecture might be a point where you can automatically deploy nonproduction environments when they are needed for deployment purposes and destroy them afterwards, minimizing any wasted utilization costs.
+
+Continuously monitor and adjust resource sizes based on usage patterns to optimize costs.
+
+#### &#10003; Evolve your team's operations
+
+Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine if your chosen methodology is the best fit. Determine the costs of tasks per employee (known as unit costs) and look for opportunities to lower those costs. Look at the most expensive tasks and evaluate their return on investment. 
+
+Determine whether tasks can be offloaded to other teams. For example, you might have a centralized cloud team that handles some operational tasks for other business units or workloads, or a centralized security team that handles security monitoring and testing. When you find opportunities to offload tasks, carefully plan the handoff with clear communications across involved teams and follow good change management processes.
 
 ---
 
