@@ -16,7 +16,7 @@ Reliability is about ensuring that your solution is available and working when y
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1: Resilient foundation**](#tab/level1)
+# [**Level 1: Get resilient**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Establish a solid groundwork for resiliency in workload infrastructure and operations, rather than spending time on optimization tasks.**
 
