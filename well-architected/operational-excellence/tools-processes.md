@@ -3,7 +3,7 @@ title: Recommendations for standardizing tools and processes
 description: Learn how to optimize development practices by standardizing tools and processes. Define consistent practices to optimize efficiency and quality of work.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 03/06/2024
+ms.date: 06/10/2025
 ms.topic: conceptual
 ---
 
