@@ -1,8 +1,8 @@
 ---
 title: Design principles for sustainability workloads on Azure
 description: Understand the design principles for building a sustainable application on Microsoft Azure.
-author: Zimmergren
-ms.author: tozimmergren
+author: claytonsiemens77
+ms.author: csiemens
 ms.date: 10/12/2022
 ms.topic: conceptual
 ---

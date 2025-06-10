@@ -1,8 +1,8 @@
 ---
 title: Application design of sustainable workloads on Azure
 description: This design area explores application design considerations for sustainable workloads on Azure.
-author: Zimmergren
-ms.author: tozimmergren
+author: claytonsiemens77
+ms.author: csiemens
 ms.topic: conceptual
 ms.date: 10/12/2022
 

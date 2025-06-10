@@ -1,8 +1,8 @@
 ---
 title: Sustainability workloads
 description: Overview of sustainability workloads on Azure that are highly reliable.
-author: Zimmergren
-ms.author: tozimmergren
+author: claytonsiemens77
+ms.author: csiemens
 ms.date: 10/12/2022
 ms.topic: conceptual
 ---
