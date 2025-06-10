@@ -404,7 +404,7 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
 - **Update your DR plan.** Regularly update your DR plan to keep it relevant and effective. Avoid outdated instructions. This approach ensures that the plan reflects the current state of your system that's deployed to production and relied on by users. Incorporate lessons learned from drills and actual incidents.
 
-For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md&tabs=level4).
+For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#tabs=level4#change-management).
 
 #### &#10003; Invest in a dedicated team to handle incidents
 
