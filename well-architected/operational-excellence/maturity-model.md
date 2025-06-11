@@ -274,7 +274,7 @@ When your workload is in production, it's normal to deal with incidents like pla
 
 - Use the health model to run basic tests on incident management readiness, where the operator monitors the impact of a simulated issue while a developer on call may need to troubleshoot problems.
 
-# [**Level 4 - Change management**](#tab/level4)
+# [**Level 4: Change management**](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) **Ensure the system meets the quality standards promised to its users and prevent violation of service-level agreements (SLAs).**
 
@@ -404,7 +404,7 @@ Here are some tactical recommendations for handling technical debt:
 
 Technical debt is a normal part of development and an opportunity for improvement. As new features are added, debt will accumulate. Balance the effort of paying off old debt with the new debt from developing new features.
 
-# [Level 5 - Future adaptability](#tab/level5)
+# [**Level 5: Future adaptability**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) **Keep improving, keep adapting without ever assuming you're done.**
 
