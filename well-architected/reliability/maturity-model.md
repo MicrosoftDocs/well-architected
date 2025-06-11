@@ -16,7 +16,7 @@ Reliability is about ensuring that your solution is available and working when y
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1: Resilient foundation**](#tab/level1)
+# [**Level 1: Get resilient**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Establish a solid groundwork for resiliency in workload infrastructure and operations, rather than spending time on optimization tasks.**
 
@@ -25,6 +25,18 @@ Level 1 of the maturity model is designed to help workload teams build a strong 
 This stage includes researching, gaining insights, and creating an inventory of your systems. It also uses built-in reliability features on Azure, like enabling zone redundancy for immediate improvements.
 
 By establishing these basics, you can prepare your team to advance through the levels of the reliability maturity model to progressively enhance your system's resilience and performance.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Evaluate opportunities to offload operational responsibility](#-evaluate-opportunities-to-offload-operational-responsibility)
+> - [Identify the critical user and system flows](#-identify-the-critical-user-and-system-flows)
+> - [Select the right design model, resources, and features](#-select-the-right-design-model-resources-and-features)
+> - [Deploy with a basic level of redundancy](#-deploy-with-a-basic-level-of-redundancy)
+> - [Enable metrics, logs, and traces to monitor flows](#-enable-metrics-logs-and-traces-to-monitor-flows)
+> - [Start building a failure mitigation playbook](#-start-building-a-failure-mitigation-playbook)
+> - [Add mechanisms to recover from transient failures](#-add-mechanisms-to-recover-from-transient-failures)
+> - [Run basic tests](#-run-basic-tests)
 
 #### &#10003; Evaluate opportunities to offload operational responsibility 
 
@@ -159,8 +171,8 @@ Integrate basic reliability testing in the early stages of the software developm
 Also, develop simple test cases for the problems that you identify in the risk mitigation playbook. Focus on higher impact, lower effort mitigations. For example, simulate network outages or intermittent connectivity problems to see how your retry logic resolves the disruptions.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Testing often introduces friction in the development cycle. To mitigate this risk, make reliability testing trackable alongside development tasks.
-
-Feature development is the priority, and testing can introduce friction in the development cycle. It's easier to start testing before feature development is complete. Designing nonfunctional aspects of the application at the beginning allows you to extend them as you add functional capabilities, rather than building up a backlog of problems to address later. Although this approach requires more effort initially, it's manageable and prevents larger problems later.
+>
+> Feature development is the priority, and testing can introduce friction in the development cycle. It's easier to start testing before feature development is complete. Designing nonfunctional aspects of the application at the beginning allows you to extend them as you add functional capabilities, rather than building up a backlog of problems to address later. Although this approach requires more effort initially, it's manageable and prevents larger problems later.
 
 # [**Level 2: Self-preservation**](#tab/level2)
 
@@ -171,6 +183,16 @@ Failures in the cloud are inevitable. Your resiliency strategies should strive t
 The critical flows that you identify in Level 1 take priority. They require increased resiliency and recovery efforts for all components, including applications, services, and databases. Expect to adjust your initial provisioning sizes, instance counts, and autoscale policies to reduce reliability risks.
 
 In this level, be intentional about your monitoring and testing practices. Use advanced monitoring techniques that align with technical needs and are scoped to development teams. Expand the simple playbook to cover architectural components that you develop and own, such as application code.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Evaluate the current state of resiliency to protect against failures](#-evaluate-the-current-state-of-resiliency-to-protect-against-failures)
+> - [Add technical capabilities in your monitoring system](#-add-technical-capabilities-in-your-monitoring-system)
+> - [Extend your failure mitigation playbook](#-extend-your-failure-mitigation-playbook)
+> - [Develop a basic recovery plan](#--develop-a-basic-recovery-plan)
+> - [Create test plans](#--create-test-plans)
+> - [Assess the impact of scaling operations on reliability](#-assess-the-impact-of-scaling-operations-on-reliability)
 
 #### &#10003; Evaluate the current state of resiliency to protect against failures
 
@@ -274,13 +296,22 @@ To handle spikes in load, critical components must be able to scale out or scale
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** When you deal with performance-related problems, scaling can be a useful mitigation strategy. However, scaling is a temporary fix and not a solution. Investigate and solve the underlying problem, such as a memory leak or a runaway process. Otherwise, you risk applying the same mitigation again at another tipping point and paying for resources that you don't need. By addressing the root cause, you can ensure long-term stability and cost-efficiency.
 
-# [**Level 3 - Recovery readiness**](#tab/level3)
+# [**Level 3: Recovery readiness**](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Set reliability objectives and targets to keep the team accountable on recovery mechanisms.**
 
 At the initial levels, teams focus on easy wins and basic capabilities. They start small, solving simple issues to build a strong foundation, relying mostly on Azure reliability capabiltiies. As teams grow, they handle more technical challenges related to their own assets and processes.
 
 At Level 3, the teams should integrate business insights and technical skills for recovery planning. They set objectives and plan recovery processes with advanced monitoring. This approach helps Site Reliability Engineers (SREs) meet reliability targets quickly.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Formalize reliability capabilities as objectives](#-formalize-reliability-capabilities-as-objectives)
+> - [Monitor proactively using your health model](#-monitor-proactively-using-your-health-model)
+> - [Set actionable alerts](#-set-actionable-alerts)
+> - [Conduct failure mode analysis (FMA)](#-conduct-failure-mode-analysis-fma)
+> - [Prepare a disaster recovery plan](#-prepare-a-disaster-recovery-plan)
 
 #### &#10003; Formalize reliability capabilities as objectives 
 
@@ -295,7 +326,7 @@ Reliability objectives help set accountability on the workload teams. It's impor
 - **Reach consensus or decision**. Aim for consensus, but if it's not possible, have a decision-maker finalize the targets to ensure progress. 
 
 
-#### &#10003; Monitor proactively using your health model 
+#### &#10003; Monitor proactively using your health model
 
 At Level 1, monitoring data from workload components, including platform services and applications, is gathered. Basic analysis and alerts are set to establish baseline performance and identify anomalies. In Level 2, the focus shifts to obtaining observability data from workload components, such as application code.
 
@@ -369,7 +400,7 @@ Disaster recovery mainly involves these actions:
 
 A disaster recovery plan is a living document that evolves with your workload. As new components and risks are introduced, update the plan accordingly. Also, revise it based on experiences from drills or real disasters, gathering realistic information from DR operators.
 
-# [**Level 4 - Maintain stability**](#tab/level4)
+# [**Level 4: Maintain stability**](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) **Control risks stemming from technical and operational changes and prioritize incident management.**
 
@@ -377,6 +408,13 @@ In the previous levels, the workload team was focused on building features and g
 
 This requires enhancements in operational controls, such as investing in dedicated teams to handle reliability incidents, as well as technical controls to further improve system reliability beyond the critical parts bolstered in previous levels.  As the system remains in production, data is expected to grow, which may require some redesign, such as partitioning, to ensure reliable data access and maintenance.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Reliable change management](#-reliable-change-management)
+> - [Invest in dedicated team to handle incidents](#-invest-in-dedicated-team-to-handle-incidents)
+> - [Automate self-healing processes](#-automate-self-healing-processes)
+> - [Extend resiliency to background tasks](#-extend-resiliency-to-background-tasks)
 
 #### &#10003; Reliable change management
 
@@ -408,7 +446,7 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
  - **Update disaster recovery plan**. Regularly update your plan so that remains relevant and effective. Avoid using outdated instructions and make sure the plan reflects the current state of your system now that it's deployed to production and users rely on it. Incorporating lessons learned from drills and actual incidents. 
 
-For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#tabs=level4#change-management).
+For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md).
 
 #### &#10003; Invest in dedicated team to handle incidents
 
@@ -442,13 +480,21 @@ After evaluating and improving your primary user flows, it's a good time to cons
 
 Azure offers several services that are used for background jobs, such as Azure Functions, App Service WebJobs. Review their best practices and limits when implementing flows with focus on reliability. 
 
-# [**Level 5** - Stay resilient](#tab/level5)
+# [**Level 5: Stay resilient**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) **Remain reslient as the workload architecture evolves, enabling the system to withstand new and unforeseen risks.**
 
 By Level 5, the focus of improving your solution's reliability shifts away from implementing technical controls. Your infrastructure, applications, and operations should be reliable enough to be resilient to outages and recover from them within the target recovery times.
 
 Use data and future business goals to acknowledge that if the business needs to go further, architectural changes might be necessary. As your workload evolves and new features are added, strive to minimize outages related to those features while further reducing outages for existing features even more.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Use reliability insights to guide architecture evolution](#-use-reliability-insights-to-guide-architecture-evolution)
+> - [Run controlled tests in production](#-run-controlled-tests-in-production)
+> - [Conduct disaster recovery (DR) drills](#-conduct-disaster-recovery-dr-drills)
+> - [Evaluate your data model, segment if necessary](#-evaluate-your-data-model-segment-if-necessary)
 
 #### &#10003; Use reliability insights to guide architecture evolution
 
@@ -538,6 +584,4 @@ When choosing a partitioning technique, consider its reliability benefits:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Maintaining or modifying partitions can be complex due to strong relationships between different partitions of data. It may impact the ability to verify data consistency and integrity compared to a single data store. As the number of partitions grows, the need for strong processes increases to maintain data integrity. Without them, reliability could suffer.
 
-
 ## Next steps
-
