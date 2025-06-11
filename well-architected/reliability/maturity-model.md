@@ -306,10 +306,10 @@ At Level 3, your teams should integrate business insights and technical skills f
 > [!div class="checklist"]
 >
 > - [Formalize reliability capabilities as objectives](#-formalize-reliability-capabilities-as-objectives)
-> - [Monitor proactively using your health model](#-monitor-proactively-using-your-health-model)
+> - [Monitor proactively using your health model](#-monitor-proactively-by-using-your-health-model)
 > - [Set actionable alerts](#-set-actionable-alerts)
-> - [Conduct failure mode analysis (FMA)](#-conduct-failure-mode-analysis-fma)
-> - [Prepare a disaster recovery plan](#-prepare-a-disaster-recovery-plan)
+> - [Conduct failure mode analysis](#-conduct-failure-mode-analysis)
+> - [Prepare a DR plan](#-prepare-a-dr-plan)
 
 #### &#10003; Formalize reliability capabilities as objectives 
 
@@ -407,7 +407,7 @@ This process requires improvements in operational controls, such as investing in
 > [!div class="checklist"]
 >
 > - [Reliable change management](#-reliable-change-management)
-> - [Invest in dedicated team to handle incidents](#-invest-in-dedicated-team-to-handle-incidents)
+> - [Invest in a dedicated team to handle incidents](#-invest-in-a-dedicated-team-to-handle-incidents)
 > - [Automate self-healing processes](#-automate-self-healing-processes)
 > - [Extend resiliency to background tasks](#-extend-resiliency-to-background-tasks)
 
@@ -488,8 +488,8 @@ Use data and future business goals to acknowledge that if your business needs to
 >
 > - [Use reliability insights to guide architecture evolution](#-use-reliability-insights-to-guide-architecture-evolution)
 > - [Run controlled tests in production](#-run-controlled-tests-in-production)
-> - [Conduct disaster recovery (DR) drills](#-conduct-disaster-recovery-dr-drills)
-> - [Evaluate your data model, segment if necessary](#-evaluate-your-data-model-segment-if-necessary)
+> - [Conduct disaster recovery drills](#-conduct-disaster-recovery-drills)
+> - [Evaluate your data model and segment if necessary](#-evaluate-your-data-model-and-segment-if-necessary)
 
 #### &#10003; Use reliability insights to guide architecture evolution
 
