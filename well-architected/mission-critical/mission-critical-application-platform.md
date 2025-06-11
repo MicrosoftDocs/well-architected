@@ -205,7 +205,7 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 > 
 > When you deploy into an Azure landing zone, the Azure policies to help you ensure consistent reliability and security should be provided by the landing zone implementation.
 >
-> The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
+> The mission-critical [reference implementations](mission-critical-overview.md#reference-architecture-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
 
 #### Design considerations and recommendations for Azure App Service
 

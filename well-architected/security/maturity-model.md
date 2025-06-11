@@ -20,7 +20,8 @@ In the context of the Well-Architected Framework, security is about providing co
 
 [add art]
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
+:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text.":::
+
 # [**Level 1: Secure foundation**](#tab/level1)
 
 <!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
@@ -30,6 +31,16 @@ In the context of the Well-Architected Framework, security is about providing co
 Level 1 of the maturity model helps workload teams achieve a solid security foundation that they can expand and improve on throughout the workload's lifecycle. This foundation, known as the *security baseline*, captures the minimum security requirements and expectations that you need to implement. Anchor the baseline in well-defined and mature industry standards and regulatory framework guidance.
 
 The baseline should inform the architectural design of the workload. It should indicate where to implement security mechanisms and how those mechanisms interact with other workload components. The baseline should inform not only security tools but also standardized processes around workload operations, including DevOps practices. Coding practices, like input validation and output encoding, must have secure processes built in by default. Conduct regular code reviews and automated security scans.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Integrate baseline security into the development phases of the software development lifecycle (SDLC)](#-integrate-baseline-security-into-the-development-phases-of-the-software-development-lifecycle-sdlc)
+> - [Externalize identity and access management to an identity provider (IdP)](#-externalize-identity-and-access-management-to-an-identity-provider-idp)
+> - [Observe access patterns of key identities and apply an appropriate level of security](#-observe-access-patterns-of-key-identities-and-apply-an-appropriate-level-of-security)
+> - [Encrypt data at rest](#-encrypt-data-at-rest)
+> - [Encrypt data in transit](#-encrypt-data-in-transit)
+> - [Protect application secrets](#-protect-application-secrets)
 
 #### &#10003; Integrate baseline security into the development phases of the software development lifecycle (SDLC)
 
@@ -61,7 +72,7 @@ Secure data in transit to help protect your workload from attackers that might a
 
 Application secrets are confidential components that facilitate communication between workload components, including sensitive data such as passwords, API keys, and certificates for authentication and resource access. Properly manage these secrets to maintain security and integrity. Improper handling can lead to data breaches, service disruption, regulatory violations, and other problems. Use a solution like Azure Key Vault to manage secrets securely.
 
-# [**Level 2: Threat prevention controls**](#tab/level2)
+# [**Level 2: Threat prevention**](#tab/level2)
 
 ![Goal icon](../_images/goal.svg) **Enhance the baseline security with threat prevention measures**
 
@@ -77,6 +88,16 @@ This level focuses on:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Securing your SDLC is an interative process that requires adopting new processes and sometimes a shift in mindset for developers. Applying controls on deployments can be frustrating for developers, so it helps to foster a culture of shared responsibility for security. While potentially slowing down development velocity, securing your deployments sets your team up for long-term success.
 These measures help you safely build your workload and get it ready for operational use while maintaining a solid security posture.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Secure the deployment phase of your SDLC](#-secure-the-deployment-phase-of-your-sdlc)
+> - [Develop a maintenance plan](#-develop-a-maintenance-plan)
+> - [Classify data based on sensitivity needs](#-classify-data-based-on-sensitivity-needs)
+> - [Apply authorization and authentication controls](#-apply-authorization-and-authentication-controls)
+> - [Secure your network ingress](#-secure-your-network-ingress)
+> - [Harden the attack surface](#-harden-the-attack-surface)
 
 #### &#10003; Secure the deployment phase of your SDLC
 
@@ -118,11 +139,20 @@ In general, choose a native or partner firewall to control all ingress to your w
 
 Hardening the workload is an iterative process that requires continuous improvement. Be vigilant and analyze the workload for vulnerabilities. As your workload matures, use a vulnerability scanning tool to help you easily identify vulnerable components. Early in your development, a better strategy might be to perform the hardening exercise manually. Look at the configurations of your components to find potential weaknesses, such as misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that you can shut down or remove entirely and for unused accounts that you can deactivate.
 
-# [**Level 3: Evaluate and mitigate threats**](#tab/level3)
+# [**Level 3: Evaluate and mitigate**](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Identify and mitigate security threats proactively.**
 
 At Level 3 of the maturity model, you should integrate advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Strategies like threat modeling, network flow classifications, and advanced encryption techniques build an extra level of preparedness on the foundational mechanisms that you should already have in place. An incident response plan unifies your threat detection and mitigation strategies while standardizing the way that you manage security incidents.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Incorporate threat modeling into your software development lifecycle (SDLC)](#-incorporate-threat-modeling-into-your-software-development-lifecycle-sdlc)
+> - [Classify network traffic flows](#-classify-network-traffic-flows)
+> - [Use advanced encryption strategies](#-use-advanced-encryption-strategies)
+> - [Implement system auditing](#-implement-system-auditing)
+> - [Build an incident response plan](#-build-an-incident-response-plan)
 
 #### &#10003; Incorporate threat modeling into your software development lifecycle (SDLC)
 
@@ -152,6 +182,10 @@ If you need to manage your own keys, use a key management service to mitigate th
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Using double encryption or managing your own keys adds costs and operational burden to your workload. Be sure to research these strategies for your specific requirements before you implement them.
 
+#### &#10003; Implement system auditing
+
+To maintain system integrity, keep an accurate and up-to-date record of the system state to promptly address any issues. Track resource creation and decommissioning, monitor configuration changes, and ensure logs capture specifics and timing of changes. Additionally, maintain a comprehensive view of patching processes, detect changes in the operating system, and set up alerts for unexpected changes.
+
 #### &#10003; Build an incident response plan
 
 Create an incident response plan that allows you to rapidly detect and respond to potential and active security compromises. The plan should include the following considerations:
@@ -168,29 +202,85 @@ Create an incident response plan that allows you to rapidly detect and respond t
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Investigation, mitigation, and recovery processes can affect your reliability targets. You might need to disable parts of your system during an incident. This approach might affect functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
-# [Level 4](#tab/level4)
+# [**Level 4: Hardening and refinements**](#tab/level4)
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+![Goal icon](../_images/goal.svg) **Refine security mechanisms based on production learnings**
 
-### Strategy focus: Threat prevention operations
+In Level 4, your workload should be running in production for a long enough period to gather and understand useful data about your normal operating conditions. With respect to security, this means that you will have observability data like audit logs and vulnerability scan reports, firewall logs, component usage patterns, incident reports, or other data points that you can analyze for improvement opportunities. Standardizing a regular review of your security mechanisms will keep your workload optimized for security and enforce a continuous improvement mindset.
 
-<!-- No more than 5 H4 headings per tab -->
+Ensure that as you make refinements across your security mechanisms, that you follow mature change management practices. This practice ensures that all changes are performed safely and are auditable.
 
-#### Example heading
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Continuously revisit and refine the security baseline](#-continuously-revisit-and-refine-the-security-baseline)
+> - [Refine your security monitoring strategy](#-refine-your-security-monitoring-strategy)
+> - [Tighten your network security at the edge](#-tighten-your-network-security-at-the-edge)
+> - [Refine your identity and access management (IaM) configurations](#-refine-your-identity-and-access-management-iam-configurations)
+> - [Refine the incident response plan](#-refine-the-incident-response-plan)
 
-<!-- No more than 100 words under each H4 heading. -->
+#### &#10003; Continuously revisit and refine the security baseline
 
-# [Level 5](#tab/level5)
+As part of your operational continuous improvement practices, regularly review the security baseline and look improvement opportunities. As you improve the workload with new features or with new technologies, you might introduce new security vulnerabilities, so keeping your baseline up-to-date is a necessary parallel activity. Likewise, as your team's security expertise grows, you might find configurations in the baseline that can be refined to further improve your security posture. 
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+Implement automated security governance with tools like Azure Policy and Microsoft Defender for Cloud to simplify the compliance of all resources to your baseline.
 
-### Strategy focus: 
+#### &#10003; Refine your security monitoring strategy
 
-<!-- No more than 5 H4 headings per tab -->
+Apply learnings from operating in production to make improvements to your security monitoring and alerting. When you implmeneted your resource auditing, vulnerability scanning, or other security monitoring, you might have applied a generic approach to logging levels, retention policies, or other settings. Use the data you gather in production to refine settings based on usage patterns aligned with your organizational standards. Likewise, as your workload evolves, continually review your security monitoring and alerting implementation to ensure that all resources are properly configured.
 
-#### Example heading
+#### &#10003; Tighten your network security at the edge
 
-<!-- No more than 100 words under each H4 heading. -->
+To enhance your network security, look for opportunities to apply microsegmentation to prevent lateral movement across the workload. That might mean moving components into their own subnets, protected by network security groups, or using built-in features for certain resources to limit traffic. For example, many Azure database services provide a built-in firewall that you can use to limit public and private network access. Other strategies include:
+
+- Standardize using only private networking throughout the workload. In Azure, use Private Link to connect your virtual networks to PaaS and SaaS resources as much as possible. See the list of [supported services](/azure/private-link/availability).
+
+- Protect your APIs. Use an API gateway solution, like Azure API Management, to proxy your API calls. Using a proxy minimizes network access to the backend APIs by exposing only the proxy and none of the backend components to callers.
+
+- Refine your firewall rules. Look for opportunities based on production observation to refine your firewall rules. You might have broadly implemented or relaxed rules in place from early work in development that can be tightened, or unused rules that can be cleaned up. Likewise, new threats and vulnerabilities are constantly being discovered, so keeping up to date with those is a crucial part of maintaining network security. Define a standard review process for your firewall configurations as part of your continuous improvement practices to regularly review and update your settings.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Microsegmentation configurations and API gateways add costs and complexity to your workload. Apply these measures thoughtfully to avoid unnecessary costs and operational burden. For example, you might not need these measures for nonproduction environments or internal workloads.
+
+#### &#10003; Refine your identity and access management (IaM) configurations
+
+Observe and analyze access patterns to find areas of improvement for your IaM configurations. Apply conditional access  and just-in-time access measures to sensitive components. Review permissions for all human and non-human accounts to ensure that the principle of least privilege is appropriately applied to each one. It is common to find managed identities with inappropriate permissions, so be sure to include them in permissions audits. Regularly perform these audits as part of your operations practices.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Conditional access and just-in-time access policies add operational burden to maintain and might require training for users. Ensure that they're a good fit for your use case before applying them.
+
+#### &#10003; Refine the incident response plan
+
+Before operating your workload in production, it is impossible to perfectly simulate security incidents. Once you have experienced real-world incidents and gone through your response processes, you'll have the opportunity to apply learnings to your plan. Be sure to engage all team members involved in incident response in retrospective learning sessions to understand what went right and what can be improved. Incorporate learnings into incident drills to make them more realistic.
+
+# [**Level 5: Advanced security**](#tab/level5)
+
+![Goal icon](../_images/goal.svg) **Implement advanced security measures**
+
+Level 5 of the maturity model focuses on advanced security measures for highly mature organizations. Each of the recommendations below should be carefully considered against other pillars of the Well-Architected Framework to ensure that they are a good fit for your workload. You should have a clear understanding of your compliance requirements, other organizational standards, workload lifecycle plans, and other charateristics unique to your environment that inform your decision-making about investing in the recommendations below.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Invest in specialized threat protection](#-invest-in-specialized-threat-protection)
+> - [Invest in security investigation and event monitoring (SIEM) and security orchestration, automation, and response (SOAR) solutions](#-invest-in-security-investigation-and-event-monitoring-siem-and-security-orchestration-automation-and-response-soar-solutions)
+> - [Invest in advanced security testing](#-invest-in-advanced-security-testing)
+
+#### &#10003; Invest in specialized threat protection
+
+Larger organizations and certain industries are more likely to be targets of specialized threats and should therefore consider investing in a higher level of protection to mitigate those threats. Consider whether your use case warrants investing in the following solutions.
+
+- *Distributed denial of service (DDoS) protection.* Organizations with a large public presence are the most common targets for DDoS attacks. Cloud providers like Azure typically include a basic level of DDoS protection that is adequate for many use cases for free. They typically also offer advanced tiers that protect against larger, more sophisticated attacks and offer a higher level of on-call support to help mitigate on-going attacks.
+
+- *Automated data loss prevention (DLP).* Data Loss Prevention (DLP) is a security strategy that identifies, monitors, and protects sensitive data from unauthorized access, misuse, or accidental disclosure. Organizations that handle large volumes of sensitive information, such as financial institutions, healthcare providers, and government agencies, benefit significantly from DLP to ensure data integrity and compliance with regulations. Consider using a tool like Microsoft Purview to automate your DLP policies.
+
+- *Protect data in use with confidential computing.* Cloud providers typically encrypt data at rest and in transit by default. You can take an additional measure by protecting data in use with a confidential computing solution. This is particularly important for regulated industries like healthcare and finance and for government entities. Azure offers confidential [VMs, container services, and other PaaS and SaaS services](/azure/confidential-computing/overview-azure-products) that can help you securely work on sensitive data without exposing it to unauthorized users or systems and meet high compliance requirments.
+
+#### &#10003; Invest in security investigation and event monitoring (SIEM) and security orchestration, automation, and response (SOAR) solutions
+
+SIEM and SOAR solutions, like [Microsoft Sentinel](/azure/sentinel/overview) automate anomolous behavior detection, threat hunting, and various response activities. These solutions can greatly relieve operational burden, especially for larger organizations by handling data gathering and analysis across large, complex environments. Microsoft Sentinel has built-in support for many Azure and other Microsoft products to easily integrate them.
+
+#### &#10003; Invest in advanced security testing
+
+In earlier maturity levels, you should have standardized performing security testing like network, identity, and application testing. At Level 5, consider investing in simulated attack testing like war game exercises and penetration testing. You might be required to engage with a third-party vendor to perform penetration or other testing to meet your compliance requirements, so research and interview reputable vendors to ensure that they provide the best value for your organization.
 
 ---
 
