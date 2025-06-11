@@ -27,6 +27,15 @@ institutionalizing operational excellence with dedicated, skilled teams who meas
 
 Establish a DevOps mindset at Level 1 to ensure the success of future strategies. Implement well-established DevOps methodologies to enhance process efficiency. Focus on building essential and common vocabulary, processes, and tools for stable operations.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Encourage collaboration and foster a blameless culture](#-encourage-collaboration-and-foster-a-blameless-culture)
+> - [Adopt standard collaboration methodologies and tools](#-adopt-standard-collaboration-methodologies-and-tools)
+> - [Set up source control processes](#-set-up-source-control-processes)
+> - [Use infrastructure as code (IaC) as your primary deployment approach](#-use-infrastructure-as-code-iac-as-your-primary-deployment-approach)
+> - [Prioritize security from the start](#-prioritize-security-from-the-start)
+
 #### &#10003; Encourage collaboration and foster a blameless culture 
 
 Align team efforts with business needs while fostering a collaborative culture.
@@ -82,6 +91,18 @@ Ensure that your tools and deployment practices use the same identity provider a
 ![Goal icon](../_images/goal.svg) **Standardize foundational processes. This approach streamlines decision-making responsibilities and defines the requirements for system deployment and monitoring.**
 
 At Level 2, the team should adopt a more structured approach and focus development activities on the core functionality of the workload. Establishing consistency early on helps minimize operational burdens in later stages.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Define team roles and decision-making responsibilities](#-define-team-roles-and-decision-making-responsibilities)
+> - [Strive to make improvements, no matter how small](#-strive-to-make-improvements-no-matter-how-small)
+> - [Standardize foundational processes](#-standardize-foundational-processes)
+> - [Buy tools instead of building custom tools](#-buy-tools-instead-of-building-custom-tools)
+> - [Adopt automation across the workload](#-adopt-automation-across-the-workload)
+> - [Extend your infrastructure-as-code experience to configure your infrastructure and manage your applications](#-extend-your-infrastructure-as-code-experience-to-configure-your-infrastructure-and-manage-your-applications)
+> - [Define your workload's deployment strategy](#-define-your-workloads-deployment-strategy)
+> - [Design the workload monitoring stack](#-design-the-workload-monitoring-stack)
 
 #### &#10003; Define team roles and decision-making responsibilities 
 
@@ -203,6 +224,17 @@ At Level 3, the operations should mature to boost confidence in deployment. Test
 
 Monitoring practices also mature. The monitoring system is extended to implement a health model that turns operational knowledge into actionable insights. Alerts are streamlined to fit the business context, so irrelevant alerts don't cause false alarms and cause distrust in the monitoring system.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Use separate environments for promoting releases](#-use-separate-environments-for-promoting-releases)
+> - [Perform sufficient testing](#-perform-sufficient-testing)
+> - [Automate testing and other quality checks when possible](#-automate-testing-and-other-quality-checks-when-possible)
+> - [Set up approval processes](#-set-up-approval-processes)
+> - [Implement automated deployments](#-implement-automated-deployments)
+> - [Develop a health model](#-develop-a-health-model)
+> - [Set up your incident management process](#-set-up-your-incident-management-process)
+
 #### &#10003; Use separate environments for promoting releases
 
 At this level, it's important to establish *release promotion* as a formal change control protocol before going live. This process progresses proposed changes through various stages with quality gates. Each stage undergoes thorough testing, and changes advance only if they pass these checks and receive approval.
@@ -283,6 +315,17 @@ Until now, the workload team focused on building features and getting the system
 The main strategy is to use real-world experience to drive improvements in those operations. Also, testing becomes a non-negotiable practice. It must be built into every part of development; from fixing bugs to adding features and even refining incident response. Without it, serious issues go undetected until they are already in production.
 
 At this level, technical debt is a real concern. Sometimes teams go live with less-than-ideal implementations, which can complicate maintenance. Teams should analyze the complexity of maintaining these implementations and focus on reducing it.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Use safe deployment practices](#-use-safe-deployment-practices)
+> - [Optimize build operations](#-optimize-build-operations)
+> - [Validate incident response processes](#-validate-incident-response-processes)
+> - [Optimize operations using monitoring data from production](#-optimize-operations-using-monitoring-data-from-production)
+> - [Automate maintenance](#-automate-maintenance)
+> - [Bring efficiency by aligning tools and processes with organizational standards](#-bring-efficiency-by-aligning-tools-and-processes-with-organizational-standards)
+> - [Manage technical debt at a regular cadence](#-manage-technical-debt-at-a-regular-cadence)
 
 
 #### &#10003; Use safe deployment practices
@@ -414,6 +457,15 @@ In the last stage, maturity means operating the workload at scale, keeping it ru
 
 Level 5 isn't the end or a technical checkpoint; it's a mindset shift to modernize people, processes, tools, and technology. Operations are treated with the same rigor, investment, and innovation as the core application.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [ Spot rearchitecture opportunities based on observed growth and future potential](#-spot-rearchitecture-opportunities-based-on-observed-growth-and-future-potential)
+> - [Use automation to further reduce friction](#-use-automation-to-further-reduce-friction)
+> - [Create developer environments per feature or change](#-create-developer-environments-per-feature-or-change)
+> - [Share knowledge, contribute to organizational maturity](#-share-knowledge-contribute-to-organizational-maturity)
+> - [Enable self-service capabilities to your workload's various job functions](#-enable-self-service-capabilities-to-your-workloads-various-job-functions)
+
 #### &#10003; Spot rearchitecture opportunities based on observed growth and future potential
 
 Workload architectures are designed with intentional constraints and have limited lifespans.  Up to Level 4, your architecture effectively meets business requirements. Now, evaluate how the system handles new usage patterns, technologies, growth, and operational challenges.
@@ -484,8 +536,6 @@ Start with high effort or error prone ad-hoc tasks that will be cost effective t
 
 Follow the approach and capabilities described in [Start your platform engineering journey](/platform-engineering/journey).
 
-
 ### Next steps
 
 TBD
-
