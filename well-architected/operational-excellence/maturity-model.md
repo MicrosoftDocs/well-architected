@@ -9,17 +9,18 @@ ms.topic: conceptual
 
 # Operational Excellence maturity model
 
-<!-- Introductory paragraph 
-Required. Lead with a light intro that describes what the article covers.
--->
+The journey of Operational Excellence is one of continuous improvement, where each stage builds on the last to drive greater efficiency and effectiveness across workload design, implementation, and support.
 
-Level 5 is not a checklist—its a long-term investment in people, processes, and platforms.
-institutionalizing operational excellence with dedicated, skilled teams who measure their impact through the resilience and agility of the systems they build.
+At its core, it's about streamlining key practices like deployment, monitoring, testing, and automation. The journey begins with a strong foundation: a shared vocabulary, standardized practices, and a DevOps mindset that encourages collaboration and stability. From there, standardization introduces consistency and predictability into processes. As teams grow more proficient, individual tasks evolve into integrated workflows, supported by production-ready capabilities such as automated testing, intelligent monitoring, and continuous integration.
 
+When systems go live in production, operations become even more advanced. Teams are equipped to manage change quickly and reliably, meeting quality benchmarks and implementing feature requests from product owners with confidence.
 
-[add art]
+The most mature stage is all about optimization and innovation. Here, teams operate at scale, continuously adapting systems in real time to meet evolving business needs and technological shifts. However, this isn't a fixed destination; it's a dynamic mindset of always improving, always adapting.
 
 :::image type="content" source="../_images/operational-excellence.svg" alt-text="Example alt-text.":::
+
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
+
 
 # [**Level 1: DevOps foundation**](#tab/level1)
 
