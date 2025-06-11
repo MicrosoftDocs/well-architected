@@ -296,7 +296,7 @@ To handle spikes in load, critical components must be able to scale out or scale
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** When you deal with performance-related problems, scaling can be a useful mitigation strategy. However, scaling is a temporary fix and not a solution. Investigate and solve the underlying problem, such as a memory leak or a runaway process. Otherwise, you risk applying the same mitigation again at another tipping point and paying for resources that you don't need. By addressing the root cause, you can ensure long-term stability and cost-efficiency.
 
-# [**Level 3 - Recovery readiness**](#tab/level3)
+# [**Level 3: Recovery readiness**](#tab/level3)
 
 ![Goal icon](../_images/goal.svg) **Set reliability objectives and targets to keep the team accountable on recovery mechanisms.**
 
@@ -400,7 +400,7 @@ Disaster recovery mainly involves these actions:
 
 A disaster recovery plan is a living document that evolves with your workload. As new components and risks are introduced, update the plan accordingly. Also, revise it based on experiences from drills or real disasters, gathering realistic information from DR operators.
 
-# [**Level 4 - Maintain stability**](#tab/level4)
+# [**Level 4: Maintain stability**](#tab/level4)
 
 ![Goal icon](../_images/goal.svg) **Control risks stemming from technical and operational changes and prioritize incident management.**
 
@@ -480,7 +480,7 @@ After evaluating and improving your primary user flows, it's a good time to cons
 
 Azure offers several services that are used for background jobs, such as Azure Functions, App Service WebJobs. Review their best practices and limits when implementing flows with focus on reliability. 
 
-# [**Level 5** - Stay resilient](#tab/level5)
+# [**Level 5: Stay resilient**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) **Remain reslient as the workload architecture evolves, enabling the system to withstand new and unforeseen risks.**
 
