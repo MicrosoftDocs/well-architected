@@ -6,8 +6,8 @@ metadata:
   title: Sustainability workload documentation
   description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
   services: na
-  author: Zimmergren
-  ms.author: tozimmergren
+  author: lnyswonger
+  ms.author: lnyswonger
   ms.date: 01/26/2023
   ms.topic: landing-page
   ms.collection: na
@@ -46,6 +46,8 @@ landingContent:
             url: sustainability-storage.md
           - text: Security
             url: sustainability-security.md
+          - text: AI design
+            url: sustainable-ai-design.md
   # Card
   - title: Reference examples
     linkLists:
