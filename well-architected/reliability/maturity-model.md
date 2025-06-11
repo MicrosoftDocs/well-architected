@@ -16,7 +16,7 @@ Reliability is about ensuring that your solution is available and working when y
 
 :::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
 
-# [**Level 1: Resilient foundation**](#tab/level1)
+# [**Level 1: Get resilient**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Establish a solid groundwork for resiliency in workload infrastructure and operations, rather than spending time on optimization tasks.**
 
@@ -184,6 +184,16 @@ The critical flows that you identify in Level 1 take priority. They require incr
 
 In this level, be intentional about your monitoring and testing practices. Use advanced monitoring techniques that align with technical needs and are scoped to development teams. Expand the simple playbook to cover architectural components that you develop and own, such as application code.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Evaluate the current state of resiliency to protect against failures](#-evaluate-the-current-state-of-resiliency-to-protect-against-failures)
+> - [Add technical capabilities in your monitoring system](#-add-technical-capabilities-in-your-monitoring-system)
+> - [Extend your failure mitigation playbook](#-extend-your-failure-mitigation-playbook)
+> - [Develop a basic recovery plan](#--develop-a-basic-recovery-plan)
+> - [Create test plans](#--create-test-plans)
+> - [Assess the impact of scaling operations on reliability](#-assess-the-impact-of-scaling-operations-on-reliability)
+
 #### &#10003; Evaluate the current state of resiliency to protect against failures
 
 - *Is the level of redundancy good enough to withstand failures?* Define a redundancy strategy that specifies the number of redundant resources to maintain. Determine where to place these resources, whether locally, across zones, or in geographically distributed locations. Evaluate the cloud platform's settings and select a level that meets business needs and acceptable trade-offs.
@@ -294,6 +304,15 @@ At the initial levels, teams focus on easy wins and basic capabilities. They sta
 
 At Level 3, the teams should integrate business insights and technical skills for recovery planning. They set objectives and plan recovery processes with advanced monitoring. This approach helps Site Reliability Engineers (SREs) meet reliability targets quickly.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Formalize reliability capabilities as objectives](#-formalize-reliability-capabilities-as-objectives)
+> - [Monitor proactively using your health model](#-monitor-proactively-using-your-health-model)
+> - [Set actionable alerts](#-set-actionable-alerts)
+> - [Conduct failure mode analysis (FMA)](#-conduct-failure-mode-analysis-fma)
+> - [Prepare a disaster recovery plan](#-prepare-a-disaster-recovery-plan)
+
 #### &#10003; Formalize reliability capabilities as objectives 
 
 Reliability objectives help set accountability on the workload teams. It's important to have a collaborative conversation with business stakeholders,  discussing recovery times and costs, and making compromises to align with business goals. Gather the stakeholders and conduct this discussion as a workshop. Here are some points that you can consider as workshop agenda:
@@ -307,7 +326,7 @@ Reliability objectives help set accountability on the workload teams. It's impor
 - **Reach consensus or decision**. Aim for consensus, but if it's not possible, have a decision-maker finalize the targets to ensure progress. 
 
 
-#### &#10003; Monitor proactively using your health model 
+#### &#10003; Monitor proactively using your health model
 
 At Level 1, monitoring data from workload components, including platform services and applications, is gathered. Basic analysis and alerts are set to establish baseline performance and identify anomalies. In Level 2, the focus shifts to obtaining observability data from workload components, such as application code.
 
@@ -389,6 +408,13 @@ In the previous levels, the workload team was focused on building features and g
 
 This requires enhancements in operational controls, such as investing in dedicated teams to handle reliability incidents, as well as technical controls to further improve system reliability beyond the critical parts bolstered in previous levels.  As the system remains in production, data is expected to grow, which may require some redesign, such as partitioning, to ensure reliable data access and maintenance.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Reliable change management](#-reliable-change-management)
+> - [Invest in dedicated team to handle incidents](#-invest-in-dedicated-team-to-handle-incidents)
+> - [Automate self-healing processes](#-automate-self-healing-processes)
+> - [Extend resiliency to background tasks](#-extend-resiliency-to-background-tasks)
 
 #### &#10003; Reliable change management
 
@@ -461,6 +487,14 @@ Azure offers several services that are used for background jobs, such as Azure F
 By Level 5, the focus of improving your solution's reliability shifts away from implementing technical controls. Your infrastructure, applications, and operations should be reliable enough to be resilient to outages and recover from them within the target recovery times.
 
 Use data and future business goals to acknowledge that if the business needs to go further, architectural changes might be necessary. As your workload evolves and new features are added, strive to minimize outages related to those features while further reducing outages for existing features even more.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Use reliability insights to guide architecture evolution](#-use-reliability-insights-to-guide-architecture-evolution)
+> - [Run controlled tests in production](#-run-controlled-tests-in-production)
+> - [Conduct disaster recovery (DR) drills](#-conduct-disaster-recovery-dr-drills)
+> - [Evaluate your data model, segment if necessary](#-evaluate-your-data-model-segment-if-necessary)
 
 #### &#10003; Use reliability insights to guide architecture evolution
 
@@ -550,6 +584,4 @@ When choosing a partitioning technique, consider its reliability benefits:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Maintaining or modifying partitions can be complex due to strong relationships between different partitions of data. It may impact the ability to verify data consistency and integrity compared to a single data store. As the number of partitions grows, the need for strong processes increases to maintain data integrity. Without them, reliability could suffer.
 
-
 ## Next steps
-
