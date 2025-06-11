@@ -446,7 +446,7 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
  - **Update disaster recovery plan**. Regularly update your plan so that remains relevant and effective. Avoid using outdated instructions and make sure the plan reflects the current state of your system now that it's deployed to production and users rely on it. Incorporating lessons learned from drills and actual incidents. 
 
-For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#tabs=level4#change-management).
+For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#level-4---change-management).
 
 #### &#10003; Invest in dedicated team to handle incidents
 
