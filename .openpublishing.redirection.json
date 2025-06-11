@@ -2328,9 +2328,9 @@
 		{
 			"source_path": "well-architected/reliability/partition-data.md",
 			"redirect_url": "/azure/well-architected/design-guides/partition-data",
-      "redirect_document_id": true
-    },
-    {
+			"redirect_document_id": true
+    		},
+    		{
 			"source_path": "well-architected/service-guides/api-management/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
 			"redirect_document_id": false
@@ -2344,6 +2344,16 @@
 			"source_path": "well-architected/service-guides/api-management/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-continuous-integration.md",
+			"redirect_url": "/azure/well-architected/design-guides/release-engineering-continuous-integration",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/operational-excellence/release-engineering-performance.md",
+			"redirect_url": "/azure/well-architected/design-guides/release-engineering-continuous-integration",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/mission-critical/mission-critical-cross-cutting-issues.md",
