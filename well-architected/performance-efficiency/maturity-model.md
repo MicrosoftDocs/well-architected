@@ -321,7 +321,7 @@ Level 5 of the maturity model focuses on identifying opportunities to make valua
 >
 > - [Optimize performance through experimentation](#-optimize-performance-through-experimentation)
 > - [Optimize deployment and feature releases](#-optimize-deployment-and-feature-releases)
-> - [Optimize the performance of monitoring and debugging processes](#-optimize-the-performance-of-monitoring-and-debugging-processes)
+> - [Optimize the performance of monitoring and debugging processes](#-optimize-monitoring-and-debugging-processes)
 > - [Expand operations automation](#-expand-operations-automation)
 
 #### &#10003; Optimize performance through experimentation
