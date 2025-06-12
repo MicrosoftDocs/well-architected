@@ -1,11 +1,9 @@
 ---
 title: Cost Maturity Model
 description: Understand the maturity model levels of the cost optimization pillar.
-
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 02/17/2025  
-
 ms.topic: conceptual
 ---
 
@@ -25,6 +23,16 @@ Level 1 of the maturity model helps workload teams understand their budget and s
 
 The following recommendations can help you manage costs wisely while building your workload efficiently.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Share financial goals, budget details, and workload spending with all team members, managers, and decision-makers](#-share-financial-goals-budget-details-and-workload-spending-with-all-team-members-managers-and-decision-makers)
+> - [Define processes and tools to share cost-saving ideas and knowledge](#-define-processes-and-tools-to-share-cost-saving-ideas-and-knowledge)
+> - [Gather detailed cost data from all sources, including invoiced and metered data](#-gather-detailed-cost-data-from-all-sources-including-invoiced-and-metered-data)
+> - [Determine cost drivers](#-determine-cost-drivers)
+> - [Decide whether to build or buy](#-decide-whether-to-build-or-buy)
+> - [Invest in your team's skills](#-invest-in-your-teams-skills)
+
 #### &#10003; Share financial goals, budget details, and workload spending with all team members, managers, and decision-makers
 
 Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Share detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This practice is **not often thought of but is important**. It helps build trust between the workload team and leadership teams and shows that the workload team is thinking ahead about managing expenses. This collaboration also helps motivate the workload team to remain diligent in their cost management because of their commitments to leadership teams.
@@ -34,7 +42,6 @@ Provide stakeholders with detailed information about the allocated budget, cost 
 Use collaboration tools to encourage team members to share cost optimization ideas and insights. Provide mechanisms for the team to collaborate on their ideas and insights. This approach empowers team members to offer suggestions across all disciplines of the workload team. When you foster a culture of collaboration on cost optimization, you reinforce the mindset that managing workload costs relies on every team member equally.
 
 To motivate a cost optimization mindset, consider acknowledging individuals and teams who demonstrate financial responsibility and contribute to cost optimization. You could use performance evaluations, incentives, or other recognition programs.
-
 
 #### &#10003; Gather detailed cost data from all sources, including invoiced and metered data
 
@@ -69,32 +76,6 @@ These evaluations help you understand the total costs of each option so that you
 
 Invest in upskilling in areas where your team lacks knowledge. Strong cloud skills facilitate good long-term decision-making and optimize your daily productivity. Consider training or certifications that your cloud provider or other partners offer. Enhancing the productivity of your workload team and other decision-makers saves you time and money by minimizing costly mistakes.
 
-#### &#10003; Share financial goals, budget details, and workload spend with all team members, managers, and decision-makers
-
-Provide stakeholders with detailed information about the allocated budget, cost breakdowns, and financial goals for your workload. Offer detailed insights into various expenses, such as infrastructure costs, software licenses, and operational expenses. This is a practice that is **not often thought of, but is important** in building trust between the workload team and leadership teams. Sharing these insights gives leadership peace of mind that the workload team is thinking ahead about how they will manage their expenses. It also helps motivate the workload team to remain diligent in their cost management because they have made commitments to leadership.
-
-#### &#10003; Define processes and tools for sharing cost-saving ideas and knowledge
-
-Use collaboration tools to encourage team members to share cost optimization ideas and insights. Providing mechanisms for the team to collaborate on their ideas and insights is a great motivational tool as it empowers team members to offer suggestions that cut across all disciplines of the workload team. By fostering a culture of collaboration on cost optimization, you can reinforce the mindset that managing the workload costs relies on every team member equally.
-
-To help motivate adopting a cost optimization mindset, consider acknowledging individuals and teams who demonstrate financial responsibility and contribute to cost optimization through performance evaluations, incentives, or other recognition programs.
-
-#### &#10003; Gather detailed cost data from all sources, including invoiced (actual billed) and metered (predictive based on billing plans) data
-
-Explore all of the available tools and methods provided by your service provider to compile a fully detailed picture of your workload's costs. Relying only on the monthly bill might not give stakeholders enough details about spending. Compile data to save time in investigating vague items and explaining obscure terms. After you've gathered utilization data, centralize that data into a unified system.
-
-Take advantage of billing dashboards that can be filtered for different views to make it easier for stakeholders and workload team members to see the information that's most relevant to them.
-
-#### &#10003; Determine the cost drivers
-
-Using the tools you've adopted to gather billing data, you can identify how different workload components contribute to the overall costs. Pay special attention to costs related to processes, like data transfer or transactions, contribute to the overall costs as these are often not considered when estimating resource costs before deployment. 
-
-You should also understand how factors not directly related to your cloud resources can affect your budget. This can include training for team members, and software licensing not managed by your cloud provider.
-
-#### &#10003; Invest in your team's skills
-
-Invest in upskilling where team knowledge is currently lacking. Strong cloud skills facilitate good long-term decision making and optimize your daily productivity. Consider training or certifications offered by your cloud provider and other third-parties. Enhancing the productivity of your workload team and other decision-makers will save you time and money by minimizing costly mistakes.
-
 # [**Level 2: Financial assessment**](#tab/level2)
 
 ![Goal icon](../_images/goal.svg) **Ensure visibility into spending patterns through systematic analysis and establish team accountability for regular cost data reviews.**
@@ -102,6 +83,15 @@ Invest in upskilling where team knowledge is currently lacking. Strong cloud ski
 After the initial deployment, it's common to focus on developing new features and driving sales while overlooking cost management. At Level 2, spending is expected to increase, so you need to take a structured approach. Assess the costs of tools and technologies, build a baseline, and identify key cost drivers.
 
 Cost management might seem overwhelming, but systematic cost analysis at an early stage is necessary to maintain financial control and support growth.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Develop a baseline cost model](#-develop-a-baseline-cost-model)
+> - [Build cost reports](#-build-cost-reports)
+> - [Set up accountability](#-set-up-accountability)
+> - [Evaluate optimization opportunities](#-evaluate-optimization-opportunities)
+> - [Decide on an initial scaling strategy](#-decide-on-an-initial-scaling-strategy)
 
 #### &#10003; Develop a baseline cost model
 
@@ -150,6 +140,17 @@ Consider performance testing and metrics, and scale out or scale up based on you
 In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it's important to expand your feedback loop to include both internal and external users, as well as other stakeholders. As you make cost optimization refinements to your workload, you also need to consider trade-offs with other pillars, especially the Performance Efficiency and Reliability pillars.
 
 Level 3 of the Cost Optimization pillar focuses on preparing your workload for production by integrating both internal and external feedback into your strategy while ensuring that performance and reliability targets are met.
+
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Invest in impactful flows and fine-tune other flows](#-invest-in-impactful-flows-and-fine-tune-other-flows)
+> - [Enforce cost guardrails by using alerting](#-enforce-cost-guardrails-by-using-alerting)
+> - [Develop a strategy to optimize your resource usage](#-develop-a-strategy-to-optimize-your-resource-usage)
+> - [Optimize licenses and other static costs](#-optimize-licenses-and-other-static-costs)
+> - [Refine autoscaling policies](#-refine-autoscaling-policies)
+> - [Optimize your data estate](#-optimize-your-data-estate)
+> - [Optimize code, software development practices, and feature development strategies](#-optimize-code-software-development-practices-and-feature-development-strategies)
 
 #### &#10003; Invest in impactful flows and fine-tune other flows
 
@@ -217,7 +218,7 @@ Data is a primary driver of cloud costs. Proper data management can help you kee
 
 - Optimize replication by applying the appropriate replication models, whether synchronous or asynchronous, to optimize replication based on your requirements. Adjust the replication frequency to align with your specific needs. Continuously evaluate your requirements and configuration.
 
-- Incorporate internal and external feedback to review storage access patterns and adjust your data life cycle management strategies.
+- Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
 
 - Use tooling to help optimize queries.
 
@@ -265,6 +266,16 @@ The Level 4 stage of the maturity model assumes that you have deployed into prod
 
 Changes in your production environment directly affect other aspects of your workload. For example, cost-saving refinements might affect one or more of the other Well-Architected Framework pillars. For this reason, mature change management practices are crucial. When you make cost-saving adjustments to your workload, thoroughly review and test changes and develop rollback plans to mitigate performance, security, and reliability impacts.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Refine the cost model based on production learnings](#-refine-the-cost-model-based-on-production-learnings)
+> - [Optimize your data usage for costs](#-optimize-your-data-usage-for-costs)
+> - [Increase resource density](#-increase-resource-density)
+> - [Evaluate and optimize your application features](#-evaluate-and-optimize-your-application-features)
+> - [Minimize scaling costs by regulating demand](#-minimize-scaling-costs-by-regulating-demand)
+> - [Enforce cost accountability through ownership](#-enforce-cost-accountability-through-ownership)
+
 #### &#10003; Refine the cost model based on production learnings
 
 After you deploy and operate your workload in production long enough to understand your normal usage patterns, revisit your cost model to plan for the future. The cost model should project future expenses, allocate funds, and adjust for deviations. In scenario analysis, the cost model evaluates the financial impact of different business changes and anticipates the cost implications of customer behavior. For resource optimization, it identifies underused cloud resources, forecasts scaling costs, and compares cloud providers' billing models so that you can choose the most economical option.
@@ -311,6 +322,15 @@ The DRI also serves as the frontline of defense against higher-than-expected wor
 
 At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes in place already. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate forecasts, and through advanced refinements. Consider the following recommendations to achieve these goals.
 
+**Key strategies**
+> [!div class="checklist"]
+>
+> - [Enforce spending guardrails in your software development processes](#-enforce-spending-guardrails-in-your-software-development-processes)
+> - [Invest in knowledge building](#-invest-in-knowledge-building)
+> - [Optimize high availability and disaster recovery (DR) costs](#-optimize-high-availability-and-disaster-recovery-dr-costs)
+> - [Refine the workload design](#-refine-the-workload-design)
+> - [Evolve your team's operations](#-evolve-your-teams-operations)
+
 #### &#10003; Enforce spending guardrails in your software development processes
 
 Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
@@ -329,9 +349,9 @@ As part of your continuous improvement practices, regularly revisit your recover
 
 #### &#10003; Refine the workload design
 
-After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirmeents. Consider the following strategies:
+After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirements. Consider the following strategies:
 
-- *Combine similar flows.* Reduce reduncancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
+- *Combine similar flows.* Reduce redundancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
 
 - *Separate dissimilar flows.* Separating tasks with different computational needs onto dedicated resources improves efficiency and reduces costs. This process enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation based on each task's priority.
 

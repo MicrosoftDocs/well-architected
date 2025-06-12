@@ -1,8 +1,8 @@
 ---
 title: Design methodology for sustainability workloads on Azure
 description: Understand the architectural process of building a sustainable application on Microsoft Azure.
-author: Zimmergren
-ms.author: tozimmergren
+author: lnyswonger
+ms.author: lnyswonger
 ms.date: 05/16/2024
 ms.topic: conceptual
 ---
