@@ -311,7 +311,7 @@ When your workload is in production, it's normal to deal with incidents like pla
 
 ![Goal icon](../_images/goal.svg) **Ensure the system meets the quality standards promised to its users and prevent violation of service-level agreements (SLAs).**
 
-Until now, the workload team focused on building features and getting the system into production. Here, the focus shifts from building to maintaining and improving a live system. Now that real users rely on it, the priority is change management through efficient Day-2 operations like triage, maintenance, upgrades, and troubleshooting. 
+Until now, the workload team focused on building features and getting the system into production. Here, the focus shifts from building to maintaining and improving a live system. Now that real users rely on it, the priority is change management through efficient Day-2 operations like triage, maintenance, upgrades, and troubleshooting.
 
 The main strategy is to use real-world experience to drive improvements in those operations. Also, testing becomes a non-negotiable practice. It must be built into every part of development; from fixing bugs to adding features and even refining incident response. Without it, serious issues go undetected until they are already in production.
 
@@ -400,7 +400,7 @@ Here are some Day-2 automation examples:
 |Automate routine maintenance of infrastructure. |Routine infrastructure maintenance requires extensive testing and coordination. Automation can expedite these tasks, reducing manual effort and minimizing risks.|
 |Automate emergency response process.|Without proper automation, people might resort to hasty, uncoordinated actions during an emergency release, potentially leading to further issues.|
 |Automate scaling of resources on load spikes and downs.| Autoscaling ensures that resources are allocated dynamically based on demand.  This leads to more efficient use of resources because when demand decreases, resources are de-allocated, without excessive operational overhead. |
-|Automate data retrieval and delivery.|Reduces the time and effort required to fulfill data requests sent by users. Instead of manually accessing databases, scripts are trigged for accessing the database, retrieving relevant data, and sending it to user.|
+|Automate data retrieval and delivery.|Reduces the time and effort required to fulfill data requests sent by users. Instead of manually accessing databases, scripts are triggered for accessing the database, retrieving relevant data, and sending it to user.|
 |Automate the creation of developer environments given a specific criteria.|This approach ensures that environments are consistently created to facilitate safe changes in the workload, as part of the team's Day-2 operations.|
 
 > [!NOTE]
@@ -432,7 +432,7 @@ Explore these areas of the workload:
   Supportability is another key area. Early on, development teams often handle support themselves, monitoring metrics and fixing live issues. At this stage, consider setting up dedicated roles like on-call engineers. If your organization has a shared support team, use it to reduce the support load on developers. 
 
   > [!NOTE]
-  > If possible, transition day-to-day support to external vendors. The vendors don't have deep context like the development or the architects involved in getting the workload to production. Before handing off to a vendor, make sure the the system is stable in production and management tasks for the vendors are clearly defined. For the vendor team to be successful, they should have key elements in place, defined thresholds of the health model that represent Health, Unhealthy, and Degraded states. They should be also be trained in playbooks, tools, and other troubleshooting information. In case they are unable to identify causes, there should well-defined pathways for escalating and routing problems to the workload team.  
+  > If possible, transition day-to-day support to external vendors. The vendors don't have deep context like the development or the architects involved in getting the workload to production. Before handing off to a vendor, make sure the system is stable in production and management tasks for the vendors are clearly defined. For the vendor team to be successful, they should have key elements in place, defined thresholds of the health model that represent Health, Unhealthy, and Degraded states. They should also be trained in playbooks, tools, and other troubleshooting information. In case they are unable to identify causes, there should be well-defined pathways for escalating and routing problems to the workload team.  
 
 #### &#10003; Manage technical debt at a regular cadence
 
@@ -475,13 +475,13 @@ For example, what works for thousands of users may fail at tens of thousands. In
 
 This is the time to recognize tipping points and *identify areas where you might need to rearchitect*. Here are some common areas:
 
-- Your *initial choice of tools, frameworks, and platform services* may have suited your business needs. However, as your system evolves, these tools might become rigid or tightly coupled, libraries may lack extensiblity, and platform services might reach end-of-life, breaking existing dependencies. 
+- Your *initial choice of tools, frameworks, and platform services* may have suited your business needs. However, as your system evolves, these tools might become rigid or tightly coupled, libraries may lack extensibility, and platform services might reach end-of-life, breaking existing dependencies.
 
   Explore tools and services in the wider ecosystem, with strong support and community adoption. Choose a modular, loosely coupled architecture for easier replacement or upgrades.
 
 - In the early stages, the workload team may *manage the entire technical stack*. While this works initially, it can lead to increased pressure and operational overhead as the system grows. To reduce this burden, consider offloading responsibilities to specialized teams, like those focused on networking, security, or observability. Their expertise allows the core workload team to focus on delivering product value.
 
-- Managing *customer-dedicated (single-tenant) instances* can introduce cost and operational overhead. Consider that to be a strong signal that a multi-tenant architecture may be necessary. This requires broader architectural and operational investment. For example, handling tenant onboarding, data access isolation, and so on.
+- Managing *customer-dedicated (single-tenant) instances* can introduce cost and operational overhead. Consider that to be a strong signal that a multitenant architecture may be necessary. This requires broader architectural and operational investment. For example, handling tenant onboarding, data access isolation, and so on.
 
 - Rethink your deployment strategy to scale predictably and handle failure isolation and performance at scale. Explore proven practices like the Deployment Stamps pattern.
 
@@ -505,22 +505,21 @@ Here are some examples:
 
 - **Automated alert triage and resolution workflows**. Use automation to categorize and prioritize alerts based on predefined rules, and trigger resolution workflows. For high-priority alerts, the system can notify the relevant team and start a resolution process, speeding up response times.
 
-- **Automated incident remediation**. Implement self-healing scrpts to automatically restart services or shift workloads when issues are detected. For example, if a web server crashes, a script can restart it or redirect traffic to a backup server, ensuring minimal downtime.
+- **Automated incident remediation**. Implement self-healing scripts to automatically restart services or shift workloads when issues are detected. For example, if a web server crashes, a script can restart it or redirect traffic to a backup server, ensuring minimal downtime.
 
 - **Automated resource utilization**. As maturity in other pillars progress, you'll likely need to introduce automation to address their goals. For example, you can schedule non-critical resources and environments to be unavailable during off-peak hours to save costs and optimize resource usage.
 
-- **Automated tenant management**. Streamline the onboarding and offboarding of tenants in multi-tenant environments. When a new tenant signs up, automation can create user accounts, provision resources, and configure settings.
-
+- **Automated tenant management**. Streamline the onboarding and offboarding of tenants in multitenant environments. When a new tenant signs up, automation can create user accounts, provision resources, and configure settings.
 
 #### &#10003; Create developer environments per feature or change
 
-Day-2 operations focus on implementing safe changes. Each change goes through different environments set up for specific purposes like development, testing, security, and others. By following Level 4 guidances, it's assumed that you've automated the creation of those environments.
+Day-2 operations focus on implementing safe changes. Each change goes through different environments set up for specific purposes like development, testing, security, and others. By following Level 4 guidance, it's assumed that you've automated the creation of those environments.
 
-At Level 5, consider moving away from having many long-standing environments for different purposes and start creating separate, automated, temporary environments for things like feature development or testing. Each environment should follow the lifecycle of the associated code branch. When a feature branch is created, automatically set up an environment with sample data, load tests, and cloud resources to simulate production. After the work is complete or changes are made, discard that environment. This approach prevents the parallel development of other features from interfering with the current feature, and can help reduce cost. 
+At Level 5, consider moving away from having many long-standing environments for different purposes and start creating separate, automated, temporary environments for things like feature development or testing. Each environment should follow the lifecycle of the associated code branch. When a feature branch is created, automatically set up an environment with sample data, load tests, and cloud resources to simulate production. After the work is complete or changes are made, discard that environment. This approach prevents the parallel development of other features from interfering with the current feature, and can help reduce cost.
 
 #### &#10003; Share knowledge, contribute to organizational maturity
 
-Unlike Levels 1 to 4, which focus on looking internally at production readiness and managing workload change, Level 5 is an opportunity for workload team to share their designs, successes, failures with other workloads across the organization. Workload teams do not need to experience failure themselves in order to learn how to avoid it if they can pre-emptively learn it from others who have gone before them.
+Unlike Levels 1 to 4, which focus on looking internally at production readiness and managing workload change, Level 5 is an opportunity for workload team to share their designs, successes, failures with other workloads across the organization. Workload teams do not need to experience failure themselves in order to learn how to avoid it if they can preemptively learn it from others who have gone before them.
 
 This involves transitioning from Operational Excellence principles at the individual workload level to the organization investing in centralized operations. These centralized teams consist of dedicated engineering groups that build deployment tools with built-in guardrails, automation, observability, and testing.
 
