@@ -24,6 +24,7 @@ Level 1 of the maturity model helps workload teams understand their budget and s
 The following recommendations can help you manage costs wisely while building your workload efficiently.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
 > - [Share financial goals, budget details, and workload spending with all team members, managers, and decision-makers](#-share-financial-goals-budget-details-and-workload-spending-with-all-team-members-managers-and-decision-makers)
