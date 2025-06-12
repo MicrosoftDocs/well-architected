@@ -336,7 +336,7 @@ At Level 5, you should have a standardized upgrade process in place that functio
 
 Collecting logs and telemetry from your components inherently affects your performance. Measure how your monitoring platform affects your workload, including elements like logging, telemetry, instrumentation, and remote debugging. Identify opportunities for optimization. If any of these processes reduce performance more than they improve observability, consider reconfiguring or disabling them. As part of your continuous improvement practices, regularly review the monitoring data that you collect to ensure that you're gathering only the most valuable information for the performance insights that you need.
 
-Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that lack sufficient information to clearly indicate the nature of the performance problem and the affected components.
+Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that lack sufficient information to clearly understand the nature of the performance problem and the affected components.
 
 #### &#10003; Expand operations automation
 
