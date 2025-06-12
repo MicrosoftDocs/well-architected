@@ -324,6 +324,7 @@ The DRI also serves as the frontline of defense against higher-than-expected wor
 At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes already in place. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate forecasts, and applying advanced refinements. Consider the following recommendations to achieve these goals.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
 > - [Enforce spending guardrails in your software development processes](#-enforce-spending-guardrails-in-your-software-development-processes)
