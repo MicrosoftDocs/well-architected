@@ -363,7 +363,7 @@ Continuously monitor and adjust resource sizes based on usage patterns to optimi
 
 Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine if your chosen methodology is the best fit. Determine the costs of tasks for each employee, known as *unit costs*, and look for opportunities to lower those costs. Review the most expensive tasks and evaluate their ROI.
 
-Evaluate whether specific tasks can be offloaded to other teams. For example, a centralized cloud team might manage operational tasks for other business units or workloads, while a centralized security team might handle monitoring and testing. When you offload responsibilities, plan the handoff carefully, ensure clear communication among all involved teams, and follow established change management processes.
+Evaluate whether specific tasks can be offloaded to other teams. For example, a centralized cloud team might manage operational tasks for other business units or workloads, while a centralized security team might handle monitoring and testing. When you offload tasks, plan the handoff carefully, ensure clear communication among all involved teams, and follow established change management processes.
 
 ---
 
