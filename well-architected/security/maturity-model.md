@@ -206,7 +206,7 @@ Create an incident response plan that allows you to rapidly detect and respond t
 
 ![Goal icon](../_images/goal.svg) **Refine security mechanisms based on production learnings**
 
-In Level 4, your workload should be running in production for a long enough period to gather and understand useful data about your normal operating conditions. With respect to security, this means that you will have observability data like audit logs and vulnerability scan reports, firewall logs, component usage patterns, incident reports, or other data points that you can analyze for improvement opportunities. Standardizing a regular review of your security mechanisms will keep your workload optimized for security and enforce a continuous improvement mindset.
+In Level 4, your workload should be running in production for a long enough period to gather and understand useful data about your normal operating conditions. With respect to security, this means that you'll have observability data like audit logs and vulnerability scan reports, firewall logs, component usage patterns, incident reports, or other data points that you can analyze for improvement opportunities. Standardizing a regular review of your security mechanisms will keep your workload optimized for security and enforce a continuous improvement mindset.
 
 Ensure that as you make refinements across your security mechanisms, that you follow mature change management practices. This practice ensures that all changes are performed safely and are auditable.
 
@@ -227,7 +227,7 @@ Implement automated security governance with tools like Azure Policy and Microso
 
 #### &#10003; Refine your security monitoring strategy
 
-Apply learnings from operating in production to make improvements to your security monitoring and alerting. When you implmeneted your resource auditing, vulnerability scanning, or other security monitoring, you might have applied a generic approach to logging levels, retention policies, or other settings. Use the data you gather in production to refine settings based on usage patterns aligned with your organizational standards. Likewise, as your workload evolves, continually review your security monitoring and alerting implementation to ensure that all resources are properly configured.
+Apply learnings from operating in production to make improvements to your security monitoring and alerting. When you implemented your resource auditing, vulnerability scanning, or other security monitoring, you might have applied a generic approach to logging levels, retention policies, or other settings. Use the data you gather in production to refine settings based on usage patterns aligned with your organizational standards. Likewise, as your workload evolves, continually review your security monitoring and alerting implementation to ensure that all resources are properly configured.
 
 #### &#10003; Tighten your network security at the edge
 
@@ -243,19 +243,19 @@ To enhance your network security, look for opportunities to apply microsegmentat
 
 #### &#10003; Refine your identity and access management (IaM) configurations
 
-Observe and analyze access patterns to find areas of improvement for your IaM configurations. Apply conditional access  and just-in-time access measures to sensitive components. Review permissions for all human and non-human accounts to ensure that the principle of least privilege is appropriately applied to each one. It is common to find managed identities with inappropriate permissions, so be sure to include them in permissions audits. Regularly perform these audits as part of your operations practices.
+Observe and analyze access patterns to find areas of improvement for your IaM configurations. Apply conditional access  and just-in-time access measures to sensitive components. Review permissions for all human and non-human accounts to ensure that the principle of least privilege is appropriately applied to each one. It's common to find managed identities with inappropriate permissions, so be sure to include them in permissions audits. Regularly perform these audits as part of your operations practices.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Conditional access and just-in-time access policies add operational burden to maintain and might require training for users. Ensure that they're a good fit for your use case before applying them.
 
 #### &#10003; Refine the incident response plan
 
-Before operating your workload in production, it is impossible to perfectly simulate security incidents. Once you have experienced real-world incidents and gone through your response processes, you'll have the opportunity to apply learnings to your plan. Be sure to engage all team members involved in incident response in retrospective learning sessions to understand what went right and what can be improved. Incorporate learnings into incident drills to make them more realistic.
+Before operating your workload in production, it's impossible to perfectly simulate security incidents. Once you have experienced real-world incidents and gone through your response processes, you'll have the opportunity to apply learnings to your plan. Be sure to engage all team members involved in incident response in retrospective learning sessions to understand what went right and what can be improved. Incorporate learnings into incident drills to make them more realistic.
 
 # [**Level 5: Advanced security**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) **Implement advanced security measures**
 
-Level 5 of the maturity model focuses on advanced security measures for highly mature organizations. Each of the recommendations below should be carefully considered against other pillars of the Well-Architected Framework to ensure that they are a good fit for your workload. You should have a clear understanding of your compliance requirements, other organizational standards, workload lifecycle plans, and other charateristics unique to your environment that inform your decision-making about investing in the recommendations below.
+Level 5 of the maturity model focuses on advanced security measures for highly mature organizations. Each of the recommendations below should be carefully considered against other pillars of the Well-Architected Framework to ensure that they are a good fit for your workload. You should have a clear understanding of your compliance requirements, other organizational standards, workload lifecycle plans, and other characteristics unique to your environment that inform your decision-making about investing in the recommendations below.
 
 **Key strategies**
 > [!div class="checklist"]
@@ -268,15 +268,15 @@ Level 5 of the maturity model focuses on advanced security measures for highly m
 
 Larger organizations and certain industries are more likely to be targets of specialized threats and should therefore consider investing in a higher level of protection to mitigate those threats. Consider whether your use case warrants investing in the following solutions.
 
-- *Distributed denial of service (DDoS) protection.* Organizations with a large public presence are the most common targets for DDoS attacks. Cloud providers like Azure typically include a basic level of DDoS protection that is adequate for many use cases for free. They typically also offer advanced tiers that protect against larger, more sophisticated attacks and offer a higher level of on-call support to help mitigate on-going attacks.
+- *Distributed denial of service (DDoS) protection.* Organizations with a large public presence are the most common targets for DDoS attacks. Cloud providers like Azure typically include a basic level of DDoS protection that is adequate for many use cases for free. They typically also offer advanced tiers that protect against larger, more sophisticated attacks and offer a higher level of on-call support to help mitigate ongoing attacks.
 
 - *Automated data loss prevention (DLP).* Data Loss Prevention (DLP) is a security strategy that identifies, monitors, and protects sensitive data from unauthorized access, misuse, or accidental disclosure. Organizations that handle large volumes of sensitive information, such as financial institutions, healthcare providers, and government agencies, benefit significantly from DLP to ensure data integrity and compliance with regulations. Consider using a tool like Microsoft Purview to automate your DLP policies.
 
-- *Protect data in use with confidential computing.* Cloud providers typically encrypt data at rest and in transit by default. You can take an additional measure by protecting data in use with a confidential computing solution. This is particularly important for regulated industries like healthcare and finance and for government entities. Azure offers confidential [VMs, container services, and other PaaS and SaaS services](/azure/confidential-computing/overview-azure-products) that can help you securely work on sensitive data without exposing it to unauthorized users or systems and meet high compliance requirments.
+- *Protect data in use with confidential computing.* Cloud providers typically encrypt data at rest and in transit by default. You can take an additional measure by protecting data in use with a confidential computing solution. This is particularly important for regulated industries like healthcare and finance and for government entities. Azure offers confidential [VMs, container services, and other PaaS and SaaS services](/azure/confidential-computing/overview-azure-products) that can help you securely work on sensitive data without exposing it to unauthorized users or systems and meet high compliance requirements.
 
 #### &#10003; Invest in security investigation and event monitoring (SIEM) and security orchestration, automation, and response (SOAR) solutions
 
-SIEM and SOAR solutions, like [Microsoft Sentinel](/azure/sentinel/overview) automate anomolous behavior detection, threat hunting, and various response activities. These solutions can greatly relieve operational burden, especially for larger organizations by handling data gathering and analysis across large, complex environments. Microsoft Sentinel has built-in support for many Azure and other Microsoft products to easily integrate them.
+SIEM and SOAR solutions, like [Microsoft Sentinel](/azure/sentinel/overview) automate anomalous behavior detection, threat hunting, and various response activities. These solutions can greatly relieve operational burden, especially for larger organizations by handling data gathering and analysis across large, complex environments. Microsoft Sentinel has built-in support for many Azure and other Microsoft products to easily integrate them.
 
 #### &#10003; Invest in advanced security testing
 

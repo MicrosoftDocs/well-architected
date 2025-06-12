@@ -1,11 +1,9 @@
 ---
 title: Cost Maturity Model
 description: Understand the maturity model levels of the cost optimization pillar.
-
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 02/17/2025  
-
 ms.topic: conceptual
 ---
 
@@ -220,7 +218,7 @@ Data is a primary driver of cloud costs. Proper data management can help you kee
 
 - Optimize replication by applying the appropriate replication models, whether synchronous or asynchronous, to optimize replication based on your requirements. Adjust the replication frequency to align with your specific needs. Continuously evaluate your requirements and configuration.
 
-- Incorporate internal and external feedback to review storage access patterns and adjust your data life cycle management strategies.
+- Incorporate internal and external feedback to review storage access patterns and adjust your data lifecycle management strategies.
 
 - Use tooling to help optimize queries.
 
@@ -266,7 +264,7 @@ Evaluate your feature development strategy to ensure that valuable features are 
 
 The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about its normal running state. At this level, you should apply these learnings to your environment.
 
-When you perform any changes in your production environment, you will directly affect other aspects of your workload. So, when you make refinements to achieve cost savings, you will impact one or more of the other Well-Architected Framework pillars. For this reason, having mature change management practices is critical. Thoroughly reviewing and testing changes and developing rollback plans are essential to mitigate performance, security, and reliability impacts when making cost savings changes to your workload.
+When you perform any changes in your production environment, you'll directly affect other aspects of your workload. So, when you make refinements to achieve cost savings, you'll impact one or more of the other Well-Architected Framework pillars. For this reason, having mature change management practices is critical. Thoroughly reviewing and testing changes and developing rollback plans are essential to mitigate performance, security, and reliability impacts when making cost savings changes to your workload.
 
 **Key strategies**
 > [!div class="checklist"]
@@ -297,7 +295,7 @@ Use your production learnings to refine your data strategies. In particular, loo
 
 #### &#10003; Increase resource density
 
-When practical, you can optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Database, networking, security and other services can be shared by multiple workloads. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After identifying candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure stakeholders understand the risks.
+When practical, you can optimize costs by consolidating shared services across workloads. For example, you can host multiple web apps on a single server or PaaS instance. Database, networking, security, and other services can be shared by multiple workloads. Perform a cost-benefit analysis to determine whether consolidating resources is valuable enough for your team to perform. After identifying candidates for consolidation, carefully plan the implementation and follow good change management practices. Ensure stakeholders understand the risks.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consolidating resources can make your workload less reliable and less secure. Mission-critical and business-critical workloads should favor reliability and security over consolidation.
 
@@ -315,7 +313,7 @@ A strategy that can help you optimize your resource scaling costs is regulating 
 
 #### &#10003; Enforce cost accountability through ownership
 
-Appointing a cost DRI (Directly Responsible Individual) can help the workload team take ownership of their workload costs.  The DRI is the person accountable for managing and optimizing cloud expenses. This role involves monitoring cloud usage, implementing cost-saving strategies, and ensuring that the organization's cloud spending aligns with its budget and business objectives. The DRI is responsible for making decisions related to cloud resource allocation, identifying areas of potential cost reduction, and ensuring efficient use of cloud services to avoid unnecessary expenses.
+Appointing a cost DRI (Directly Responsible Individual) can help the workload team take ownership of their workload costs. The DRI is the person accountable for managing and optimizing cloud expenses. This role involves monitoring cloud usage, implementing cost-saving strategies, and ensuring that the organization's cloud spending aligns with its budget and business objectives. The DRI is responsible for making decisions related to cloud resource allocation, identifying areas of potential cost reduction, and ensuring efficient use of cloud services to avoid unnecessary expenses.
 
 The DRI also acts as the frontline of defense for higher than expected workload costs. He or she can help identify the cause of high costs and proactively work with the workload team to reduce them back to their expected range before they become a cost emergency.
 
@@ -352,9 +350,9 @@ As part of your continuous improvement practices, regularly revisit your recover
 
 #### &#10003; Refine the workload design
 
-After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirmeents. Consider the following strategies:
+After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirements. Consider the following strategies:
 
-- *Combine similar flows.* Reduce reduncancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
+- *Combine similar flows.* Reduce redundancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
 
 - *Separate dissimilar flows.* Separating tasks with different computational needs onto dedicated resources improves efficiency and reduces costs. This process enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation based on each task's priority.
 

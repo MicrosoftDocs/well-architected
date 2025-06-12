@@ -311,7 +311,7 @@ Proactively optimizing performance means improving your workload's efficiency be
 
 # [**Level 5: Advanced performance optimization techniques**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) **Implement advanced perfomance optimizations**
+![Goal icon](../_images/goal.svg) **Implement advanced performance optimizations**
 
 Level 5 of the maturity model focuses on finding opportunities to make valuable performance refinements across your workload.  Adopt an experimentation-based approach to your optimization efforts. Revisit workload design areas like deployment practices, monitoring and debugging, and operational automation to find further optimization opportunities. Adopt a continuous improvement approach to regularly review your workload design and operational practice, looking for improvement opportunities. Use good change management processes to ensure that improvements are made safely and efficiently.
 
@@ -325,11 +325,11 @@ Level 5 of the maturity model focuses on finding opportunities to make valuable 
 
 #### &#10003; Optimize performance through experimentation
 
-Take a proactive approach to achieving efficiencies through experimentation. Start with a hypothesis about an update to the workload that you expect will provide a measureable performance increase and build out a test environement to prove or refute that hypothesis. They hypothesis should be based on observed performance data that identifies a bottleneck or inefficiency. The test should mirror real-world behavior as much as possible to return a valid outcome. After proving your hypothesis, evaluate the return on investment (ROI) of implementing the change to determine if it is valuable enough to move forward. The ROI evaluation should consider all other Well-Architected Framework pillars. If the trade-offs that you'll need to make for other pillars are acceptable, the change is valuable enough to move forward with.
+Take a proactive approach to achieving efficiencies through experimentation. Start with a hypothesis about an update to the workload that you expect will provide a measurable performance increase and build out a test environment to prove or refute that hypothesis. They hypothesis should be based on observed performance data that identifies a bottleneck or inefficiency. The test should mirror real-world behavior as much as possible to return a valid outcome. After proving your hypothesis, evaluate the return on investment (ROI) of implementing the change to determine if it is valuable enough to move forward. The ROI evaluation should consider all other Well-Architected Framework pillars. If the trade-offs that you'll need to make for other pillars are acceptable, the change is valuable enough to move forward with.
 
 #### &#10003; Optimize deployment and feature releases
 
-At Level 5, you should have a standardized upgrade process in place that works reliably. At this level, reevaluate your processes and determine whether your strategy is the best fit for your operations efficiency. Determine whether blue-green, canary, or another deployment model is the most efficient for your organization. Consider using feature flags to easily rollout and rollback features to groups of users. Ensure your backup strategy allows you to recover quickly to a known-good state. 
+At Level 5, you should have a standardized upgrade process in place that works reliably. At this level, reevaluate your processes and determine whether your strategy is the best fit for your operations efficiency. Determine whether blue-green, canary, or another deployment model is the most efficient for your organization. Consider using feature flags to easily roll out and rollback features to groups of users. Ensure your backup strategy allows you to recover quickly to a known-good state. 
 
 #### &#10003; Optimize the performance of monitoring and debugging processes
 
@@ -339,7 +339,7 @@ Reevaluate your performance alerting to determine whether you're only receiving 
 
 #### &#10003; Expand operations automation
 
-Look for opportunities to expand your automation of operational tasks to achieve further efficiences. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Examples of performance related tasks include:
+Look for opportunities to expand your automation of operational tasks to achieve further efficiencies. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Examples of performance related tasks include:
 
 - *Performance testing:* Use well-established, industry standard tools to simulate workloads.
 
