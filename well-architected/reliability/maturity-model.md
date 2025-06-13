@@ -9,10 +9,21 @@ ms.topic: conceptual
 
 # Reliability Maturity Model
 
+The reliability journey is a step-by-step process where each stage builds on the previous one to ensure systems stay available and meet user expectations. This maturity model is intended to help you assess your current state and offer a structured path for improvement.
 
-Reliability is about ensuring that your solution is available and working when your users need and expect it to be. Counterintuitively, the way to achieve high reliability is to accept that things can go wrong. Instead of trying to prevent every problem, it's important to plan how your system responds when there are problems. Your business requirements help you to identify which potential problems you should harden your solution against.
+The foundation begins by bootstrapping basic reliability capabilities offered by Azure by using built-in Azure reliability features like zone redundancy for immediate improvements without extensive optimization overhead.
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
+Counterintuitively, the way to achieve high reliability is to accept failures are inevitable. Rather than trying to prevent every issue, it's more effective to plan how your system will respond when problems occur. Your business requirements help determine which risks are worth addressing proactively. Teams invest in advanced monitoring capabilities with structured observability, extend failure mitigation to include application-level concerns, and begin testing resiliency measures. 
+
+Next, teams integrate business insights with technical skills. Teams implement health modeling, conduct failure mode analysis, and prepare comprehensive disaster recovery plans. This stage ensures accountability through measurable objectives and systematic preparation for various failure scenarios. 
+
+After the system is live, the emphasis moves to managing the challenges of production environments, including change management and dealing with data growth and operational complexity, and how these affect your system's reliability.
+
+The final level runs indefinitely, and staying resilient is its goal. This level represents the evolution beyond technical controls to architectural adaptability. This level focuses on enabling systems to withstand new and unforeseen risks as workloads evolve and grow.
+
+:::image type="content" source="../_images/reliability.svg" alt-text="Reliability pillar diagram showing five progressive maturity levels: resilient foundation, self-preservation, recovery readiness, maintain stability, and stay resilient.":::
+
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
 # [**Level 1: Get resilient**](#tab/level1)
 
@@ -441,7 +452,8 @@ At Level 4, Reliability intersects with safe deployment practices described in O
 
 - **Update your DR plan.** Regularly update your DR plan to keep it relevant and effective. Avoid outdated instructions. This approach ensures that the plan reflects the current state of your system that's deployed to production and relied on by users. Incorporate lessons learned from drills and actual incidents.
 
-For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md).
+For more information, see [Operational Excellence Level 4](../operational-excellence/maturity-model.md#level-4---change-management).
+
 
 #### &#10003; Invest in a dedicated team to handle incidents
 
