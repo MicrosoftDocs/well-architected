@@ -326,7 +326,7 @@ Level 5 of the maturity model focuses on identifying opportunities to make valua
 
 #### &#10003; Optimize performance through experimentation
 
-Take a proactive approach to improving efficiency through experimentation. Begin with a hypothesis for a workload update that you expect to deliver measurable performance gains, based on observed performance data that identifies a bottleneck or inefficiency. Build a test environment that closely mimics real-world conditions as much as possible to validate or refute your hypothesis. After you prove your hypothesis, assess the return on investment of the change to decide whether it's worth implementing. Include all Azure Well-Architected Framework pillars in your ROI evaluation. If the trade-offs that you need to make for other pillars are acceptable, the change is likely worth pursuing.
+Take a proactive approach to improving efficiency through experimentation. Begin with a hypothesis for a workload update that you expect to deliver measurable performance gains, based on observed performance data that identifies a bottleneck or inefficiency. Build a test environment that closely mimics real-world conditions as much as possible to validate or refute your hypothesis. After you prove your hypothesis, assess the return on investment (ROI) of the change to decide whether it's worth implementing. Include all Azure Well-Architected Framework pillars in your ROI evaluation. If the trade-offs that you need to make for other pillars are acceptable, the change is likely worth pursuing.
 
 #### &#10003; Optimize deployment and feature releases
 
