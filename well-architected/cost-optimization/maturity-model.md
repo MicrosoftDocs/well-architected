@@ -344,7 +344,7 @@ Ensure that your cost model includes planned trainings for a specific fiscal per
 
 #### &#10003; Optimize high availability and disaster recovery costs
 
-After you run real-world disaster recovery (DR) drills or experience real-world DR incidents, you might find opportunities for cost optimization. You might discover that a less expensive DR strategy is sufficient for certain components while still meeting your recovery targets. For example, you might not need a hot spare design for non-critical flows. In this scenario, consider implementing a deploy-on-recovery approach instead.
+After you run real-world disaster recovery (DR) drills or experience real-world DR incidents, you might find opportunities for cost optimization. You might discover that a less expensive DR strategy is sufficient for certain components while still meeting your recovery targets. For example, you might not need a hot spare design for noncritical flows. In this scenario, consider implementing a deploy-on-recovery approach instead.
 
 As part of your continuous improvement practices, regularly revisit your recovery targets to ensure that they're appropriate for both reliability and cost requirements.
 
@@ -362,7 +362,7 @@ Continuously monitor and adjust resource sizes based on usage patterns to optimi
 
 #### &#10003; Evolve your team's operations
 
-Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine if your chosen methodology is the best fit. Determine the costs of tasks for each employee, known as *unit costs*, and look for opportunities to lower those costs. Review the most expensive tasks and evaluate their ROI.
+Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine whether your chosen methodology is the best fit. Determine the costs of tasks for each employee, known as *unit costs*, and look for opportunities to lower those costs. Review the most expensive tasks and evaluate their ROI.
 
 Evaluate whether specific tasks can be offloaded to other teams. For example, a centralized cloud team might manage operational tasks for other business units or workloads, while a centralized security team might handle monitoring and testing. When you offload tasks, plan the handoff carefully, ensure clear communication among all involved teams, and follow established change management processes.
 
