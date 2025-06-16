@@ -309,47 +309,48 @@ Investigate and test new platform features that become available to determine if
 
 Proactively optimizing performance means improving your workload's efficiency before problems occur by identifying bottlenecks and implementing optimizations. Based on analysis, make specific improvements through code changes, infrastructure adjustments, or configuration updates.
 
-# [**Level 5: Advanced performance optimization techniques**](#tab/level5)
+# [**Level 5: Advanced performance optimizations**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) **Implement advanced performance optimizations**
+![Goal icon](../_images/goal.svg) **Implement advanced performance optimizations.**
 
-Level 5 of the maturity model focuses on finding opportunities to make valuable performance refinements across your workload.  Adopt an experimentation-based approach to your optimization efforts. Revisit workload design areas like deployment practices, monitoring and debugging, and operational automation to find further optimization opportunities. Adopt a continuous improvement approach to regularly review your workload design and operational practice, looking for improvement opportunities. Use good change management processes to ensure that improvements are made safely and efficiently.
+Level 5 of the maturity model focuses on identifying opportunities to make valuable performance refinements across your workload. Take an experimentation-based approach to your optimization. Revisit workload design areas such as deployment practices, monitoring and debugging, and operational automation to find further improvements. Adopt a continuous improvement mindset by regularly reviewing workload design and operational practices. Use established change management processes to ensure that improvements are implemented safely and efficiently.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
 > - [Optimize performance through experimentation](#-optimize-performance-through-experimentation)
 > - [Optimize deployment and feature releases](#-optimize-deployment-and-feature-releases)
-> - [Optimize the performance of monitoring and debugging processes](#-optimize-the-performance-of-monitoring-and-debugging-processes)
+> - [Optimize the performance of monitoring and debugging processes](#-optimize-monitoring-and-debugging-processes)
 > - [Expand operations automation](#-expand-operations-automation)
 
 #### &#10003; Optimize performance through experimentation
 
-Take a proactive approach to achieving efficiencies through experimentation. Start with a hypothesis about an update to the workload that you expect will provide a measurable performance increase and build out a test environment to prove or refute that hypothesis. They hypothesis should be based on observed performance data that identifies a bottleneck or inefficiency. The test should mirror real-world behavior as much as possible to return a valid outcome. After proving your hypothesis, evaluate the return on investment (ROI) of implementing the change to determine if it is valuable enough to move forward. The ROI evaluation should consider all other Well-Architected Framework pillars. If the trade-offs that you'll need to make for other pillars are acceptable, the change is valuable enough to move forward with.
+Take a proactive approach to improving efficiency through experimentation. Begin with a hypothesis for a workload update that you expect to deliver measurable performance gains, based on observed performance data that identifies a bottleneck or inefficiency. Build a test environment that closely mimics real-world conditions as much as possible to validate or refute your hypothesis. After you prove your hypothesis, assess the return on investment (ROI) of the change to decide whether it's worth implementing. Include all Azure Well-Architected Framework pillars in your ROI evaluation. If the trade-offs that you need to make for other pillars are acceptable, the change is likely worth pursuing.
 
 #### &#10003; Optimize deployment and feature releases
 
-At Level 5, you should have a standardized upgrade process in place that works reliably. At this level, reevaluate your processes and determine whether your strategy is the best fit for your operations efficiency. Determine whether blue-green, canary, or another deployment model is the most efficient for your organization. Consider using feature flags to easily roll out and rollback features to groups of users. Ensure your backup strategy allows you to recover quickly to a known-good state. 
+At Level 5, you should have a standardized upgrade process in place that functions reliably. At this level, reevaluate your processes to determine whether your current strategy is the best fit for operational efficiency. Assess whether blue-green, canary, or another deployment model aligns best with your organization's needs. Consider using feature flags to easily roll out and roll back features to specific user groups. Ensure that your backup strategy supports fast recovery to a known-good state.
 
-#### &#10003; Optimize the performance of monitoring and debugging processes
+#### &#10003; Optimize monitoring and debugging processes
 
-Collecting logs and telemetry from your components has an inherent effect on performance. Measure the impact on your workload of your monitoring platform including logging, telemetry, instrumentation, and remote debugging, and look for areas of optimization. If there are processes that degrade performance more than they benefit your observability, consider reconfiguring or disabling those processes. As part of your continuous improvement practices, regularly review the monitoring data you're collecting to ensure that you're only collecting enough **valuable** information to get the performance insights you need.
+Collecting logs and telemetry from your components inherently affects your performance. Measure how your monitoring platform affects your workload, including elements like logging, telemetry, instrumentation, and remote debugging. Identify opportunities for optimization. If any of these processes reduce performance more than they improve observability, consider reconfiguring or disabling them. As part of your continuous improvement practices, regularly review the monitoring data that you collect to ensure that you're gathering only the most valuable information for the performance insights that you need.
 
-Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that don't provide enough information to easily understand what the nature of the performance issue is and what components are affected.
+Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that lack sufficient information to clearly understand the nature of the performance problem and the affected components.
 
 #### &#10003; Expand operations automation
 
-Look for opportunities to expand your automation of operational tasks to achieve further efficiencies. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Examples of performance related tasks include:
+Look for opportunities to expand your automation of operational tasks to achieve further efficiencies. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Consider the following performance-related tasks:
 
-- *Performance testing:* Use well-established, industry standard tools to simulate workloads.
+- *Performance testing:* Use well-established, industry-standard tools to simulate workloads.
 
-- *Deployments:* Implement continuous integration and continuous deployment (CI/CD) tools for consistent and efficient deployments.
+- *Deployments:* Implement continuous integration and continuous deployment tools for consistent and efficient deployments.
 
 - *Incident management:* Automate alert routing, ticket creation, and assignments.
 
 - *Remediation actions:* Automate actions like restarting services and adjusting resource allocations.
 
-- *Self-healing mechanisms:* Build capabilities to automatically fix known performance issues.
+- *Self-healing mechanisms:* Build capabilities to automatically fix known performance problems.
 
 ---
 
