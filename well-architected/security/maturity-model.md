@@ -234,7 +234,7 @@ Use production insights to make improvements to your security monitoring and ale
 
 Enhance network security by applying microsegmentation to prevent lateral movement across the workload. This strategy might include moving components into separate subnets protected by network security groups or using built-in features for specific resources to limit traffic. For example, many Azure database services include a built-in firewall that you can use to limit public and private network access. Consider the following strategies:
 
-- *Standardize using only private networking throughout the workload.* In Azure, use Azure Private Link to connect your virtual networks to platform-as-a-service and software-as-a-service resources as much as possible. For more information, see [Supported services](/azure/private-link/availability).
+- *Standardize using only private networking throughout the workload.* In Azure, use Azure Private Link to connect your virtual networks to platform-as-a-service and software-as-a-service resources as much as possible. For more information, see [Service availability](/azure/private-link/availability#service-availability).
 
 - *Protect your APIs.* Use an API gateway solution, like Azure API Management, to proxy your API calls. Using a proxy minimizes network access to the back-end APIs by exposing only the proxy and none of the back-end components to callers.
 
