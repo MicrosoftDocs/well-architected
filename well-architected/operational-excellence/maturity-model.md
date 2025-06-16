@@ -309,230 +309,227 @@ When your workload is in production, it's normal to deal with incidents like pla
 
 # [**Level 4: Change management**](#tab/level4)
 
-![Goal icon](../_images/goal.svg) **Ensure the system meets the quality standards promised to its users and prevent violation of service-level agreements (SLAs).**
+![Goal icon](../_images/goal.svg) **Ensure that the system meets the quality standards promised to users and prevents violations of service-level agreements.**
 
-Until now, the workload team focused on building features and getting the system into production. Here, the focus shifts from building to maintaining and improving a live system. Now that real users rely on it, the priority is change management through efficient Day-2 operations like triage, maintenance, upgrades, and troubleshooting.
+At previous levels, the workload team focuses on building features and getting the system into production. At this level, the focus shifts from building features to maintaining and improving a live system. With real users now relying on it, the priority becomes change management through efficient day-2 operations such as triage, maintenance, upgrades, and troubleshooting.
 
-The main strategy is to use real-world experience to drive improvements in those operations. Also, testing becomes a non-negotiable practice. It must be built into every part of development; from fixing bugs to adding features and even refining incident response. Without it, serious issues go undetected until they are already in production.
+The main strategy is to use real-world experience to improve operations. Testing also becomes a nonnegotiable practice. You must integrate testing into every part of development, from fixing bugs to adding features and refining incident response. Without it, serious problems might go undetected until they reach production.
 
-At this level, technical debt is a real concern. Sometimes teams go live with less-than-ideal implementations, which can complicate maintenance. Teams should analyze the complexity of maintaining these implementations and focus on reducing it.
+At this level, technical debt becomes a real concern. Teams might go live with implementations that are less than ideal, which can complicate maintenance. Teams should analyze the maintenance burden and focus on reducing it.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
 > - [Use safe deployment practices](#-use-safe-deployment-practices)
 > - [Optimize build operations](#-optimize-build-operations)
 > - [Validate incident response processes](#-validate-incident-response-processes)
-> - [Optimize operations using monitoring data from production](#-optimize-operations-using-monitoring-data-from-production)
+> - [Optimize operations by using monitoring data from production](#-optimize-operations-by-using-monitoring-data-from-production)
 > - [Automate maintenance](#-automate-maintenance)
 > - [Bring efficiency by aligning tools and processes with organizational standards](#-bring-efficiency-by-aligning-tools-and-processes-with-organizational-standards)
 > - [Manage technical debt at a regular cadence](#-manage-technical-debt-at-a-regular-cadence)
 
-
 #### &#10003; Use safe deployment practices
 
-Post production, there will be mainly three categories of changes: routine updates, new feature updates, emergency updates. Use safe deployment practices to keep the system stable during changes. Regardless of the type of change, treat every change as a potential point of failure for the workload's users.
+After production, the three key types of changes typically include routine updates, new feature updates, and emergency updates. Use safe deployment practices to keep the system stable during these changes. Regardless of the type of change, treat every change as a potential point of failure for the workload's users.
 
-Integrate these strategies in your change control process:
+Integrate the following strategies in your change control process:
 
-- **Validate continuously and comprehensively**. Test early and often throughout the development lifecycle and as the change moves through various environments. Ideally, every time an artifact changes, create tests focused on those changes. Then, run the entire test suite to validate flows end-to-end. Test results serve as validation data, but business stakeholders should still approve changes.
+- **Validate continuously and comprehensively.** Test early and often throughout the development life cycle and as changes progress through different environments. Ideally, each time an artifact changes, create tests focused on those changes. Then run the full test suite to validate flows end-to-end. Test results provide validation data, but business stakeholders should still approve these changes.
 
-  > :::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Running the entire test suite builds confidence in deployments but may not be practical for all changes due to time and cost. Balance thorough testing with cost considerations. Tailor the approval process based on the impact of changes. Minor changes should have a leaner process, while significant changes, like new features, require thorough review.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Running the entire test suite builds confidence in deployments. However, it might not be practical for all changes because of time and cost. Balance thorough testing with cost considerations. Tailor the approval process based on the impact of changes. Minor changes should have a simplified procedure, while significant changes, like new features, require thorough review.
 
-  This level is appropriate for adopting advanced operational concepts, such as regional failovers. The goal is to fully automate these processes, focusing on self-healing for most scenarios. These processes must also be tested extensively.
+  At this level, it's appropriate to adopt advanced operational concepts such as regional failovers. The goal is to fully automate these processes, with a focus on self-healing in most scenarios. These processes must also be tested extensively.
 
-- **Implement versioning for your APIs**. Handle breaking changes to your data model carefully to make sure changes are backward compatible. A versioning strategy for your API will make sure existing systems continue to run smoothly after changes are rolled out. Retrospective versioning can be difficult, so start early.
+- **Implement versioning for your APIs.** Handle breaking changes to your data model carefully to ensure backward compatibility. An API versioning strategy helps existing systems continue to run smoothly after changes are deployed. Retrospective versioning can be difficult, so establish a strategy early.
 
-- **Roll out incremental updates**.  By Level 3, you've already standardized deployment processes using automated pipelines for all environments. At Level 4 maturity, the workload is newly in production and focus should be on mastering incremental updates to their workload, including release cycles.
+- **Roll out incremental updates.** By Level 3, deployment processes are standardized by using automated pipelines across all environments. At Level 4 maturity, the workload is in production. The focus shifts to refining incremental updates, including managing release cycles.
 
-  Deploy small, frequent updates to make validation easier for a small footprint of changes. Fully automate validation tasks like load testing, deploying to test environments, A/B testing. 
+  Deploy small, frequent updates to simplify validation for a small set of changes. Automate validation tasks like load testing, deployment to test environments, and A/B testing.
 
   > [!NOTE]
-  >  Safe deployment patterns, like Canary and Blue-Green deployments, offer flexibility and reliability through side-by-side deployments. For example, in Blue-Green deployments, a new environment is built, traffic is shifted, and the old environment is decommissioned.  Other deployment techniques are feature flags, dark launches, which allow testing in production before rolling out changes to all users. This capability is available with certain Azure services such as Azure App Service, where updates can be rolled out by (gradually) swapping between deployment slots.
+  > Safe deployment patterns, like canary and blue-green deployments, provide flexibility and reliability through side-by-side deployments. For example, in blue-green deployments, a new environment is built, traffic is shifted, and the old environment is decommissioned. Other deployment techniques include feature flags and dark launches. These approaches allow testing in production before changes are rolled out to all users. This capability is available with specific Azure services such as Azure App Service, where updates can be rolled out by gradually swapping between deployment slots.
 
-- **Recover from deployment errors**. Expect updates to fail. With incremental updates, troubleshooting becomes faster if faced with an issue. In such situations, stop the system to prevent further damage and push changes to remediate the issue. Restoring from backups is acceptable if it doesn't disrupt continuity. The goal is to move forward to a stable version rather than strictly opting for rollback procedures.
+- **Recover from deployment errors.** Expect some updates to fail. With incremental updates, troubleshooting becomes faster when problems occur. In these scenarios, stop the system to prevent further damage and implement changes to fix the problem. Restoring from backups is acceptable if it maintains continuity. The goal is to move forward to a stable version instead of relying solely on rollback procedures.
 
 #### &#10003; Optimize build operations
 
-Level 3 recommends having separate deployment cycles for different layers of the architecture, based on their rate of change. At the very least keep infrastructure and code pipelines.
+At Level 3, you should have separate deployment cycles for different layers of the architecture based on their rate of change. At a minimum, keep infrastructure and code pipelines.
 
-Now that the workload has been in production, revisit that layering approach. If possible, further decouple architectural components to allow more flexibility in their release cadence. This minimizes delays and failures on individual components. Also, run tests and long processes as parallel jobs to save time and boost developer productivity.
+Now that the workload is in production, revisit the layering approach. When possible, further decouple architectural components to enable more flexible release cadences. This approach reduces delays and minimizes failures in individual components. Also, run tests and long-running processes as parallel jobs to save time and enhance developer productivity.
 
 #### &#10003; Validate incident response processes
 
-In Level 3, you established an on-call support system with playbooks to define responses for incidents. However, having a playbook is just the first step; now that the workload is in production, you must validate and improve the effectiveness of your incident management process and also develop a mature communication plan. Here are some considerations: 
+At Level 3, you establish an on-call support system with playbooks to define responses to incidents. However, having a playbook is only the first step. Now that the workload is in production, you must validate and enhance the effectiveness of your incident management process and develop a robust communication plan. Consider the following practices:
 
-- **Test responses to incidents**. Include responses from technology, people, and processes. We recommend that you run game days to introduce realism in your validation process. These are planned events where faults are introduced to test the team's ability to detect and fix issues. It ensures they have the right tools, resources, and procedures in place. Chaos engineering can be a valuable tool in this process. It allows you to introduce controlled disruptions and observe the outcomes. Alternatively, manual methods like disabling backends on a global load balancer or performing a database failover can also be used to test the response.
+- **Test responses to incidents.** Incorporate responses from technology, people, and processes. To introduce realism into your validation efforts, we recommend that you run game days. Game days are planned events where faults are introduced to test the team's ability to detect and resolve problems. This approach ensures that the team has the right tools, resources, and procedures in place. Chaos engineering is another valuable technique that introduces controlled disruptions to observe the outcomes. Alternatively, manual methods such as disabling back ends on a global load balancer or performing a database failover can also be used to test the response.
 
-- **Develop a communication plan**. Clearly define communication responsibilities for the workload team, support teams, and emergency response personnel. Standardizing cadence and format for sending internal status updates to business stakeholders fosters an environment of transparency and trust. In certain cases, like security breaches, responsible disclosure to end users is required. Clarify the appropriate type and level of information to share in these external communications.
+- **Develop a communication plan.** Clearly define communication responsibilities across the workload team, support teams, and emergency response personnel. Standardizing the cadence and format of internal status updates to business stakeholders fosters transparency and trust. In specific scenarios, such as security breaches, responsible disclosure to end users is required. Ensure that the appropriate type and level of information are clearly defined in these external communications.
 
-- **Conduct postmortems**. Treat every incident as an opportunity to learn from production. This process should be used to identify weaknesses in deployment and development processes and to commit to making improvements in the system.
+- **Conduct an incident review.** Treat every incident as an opportunity to learn from production. Use this process to identify weaknesses in your deployment and development processes, and commit to making system improvements.
 
+#### &#10003; Optimize operations by using monitoring data from production
 
-#### &#10003; Optimize operations using monitoring data from production
+At Level 4, advanced monitoring should emit, correlate, and analyze metrics within a business context. At this level, improve its accuracy by learning from production. Use monitoring data to refine processes that were built on best guesses. Consider the following key examples:
 
-By Level 4, you should have advanced monitoring to emit, correlate, and analyze metrics with a business context. Now, improve its fidelity by learning from production. Use monitoring data to refine processes that were built on best guesses. Here are some prime examples:
+- The primary focus in Level 3 is developing a health model for the workload. At this level, fine-tune the alerting system and set realistic objectives and service level indicators.
 
-- The primary focus in Level 3 was developing a health model for the workload, At this level, set realistic objectives and service level indicators (SLIs) and fine tuning the alerting system. 
+- As part of day-2 operations, minimizing configuration drift should be a key priority. Without this focus, the runtime environment might gradually diverge from its intended state. Begin by capturing a snapshot of the known-good configuration. Then take advantage of observability metrics from production to compare current behavior against that baseline. This approach ensures ongoing alignment with the intended system state.
 
-- As part of Day-2 operations, efforts to minimize configuration drift should be prioritized. Without this, the runtime might deviate significantly over time. To start, establish a snapshot of the known-good configuration state. Next, use observability metrics from production to compare current behavior to that snapshot, ensuring the system remains aligned with its intended state.
+- This level is ideal for introducing feedback loops to better understand how the system behaves under specific stressors and to predict the impact of new features. System telemetry guides these feedback loops by providing key insights that help forecast workload changes and shape proactive solutions to potential problems. You can also use this data to help you prioritize technical debt.
 
-- This level is appropriate for introducing feedback loops. This process can help you understand how the system behaves under certain stressors and predict the impact of new features. System telemetry guides these feedback loops, providing essential insights for forecasting future changes to the workload and designing solutions to address potential problems in advance. This data can also be used to help you prioritize technical debt.
-
-As a general practice, fine-tune the monitoring stack based on observability data and patterns seen in production. For instance:
+As a general practice, fine-tune the monitoring stack based on observability data and patterns in production. Consider the following practices:
 
 - Adjust logging levels to balance visibility and noise to capture activities on the critical paths.
 
 - Amplify the important alerts ones while suppressing the irrelevant ones.
 
-
 #### &#10003; Automate maintenance
 
-At Level 3, automation efforts were primarily focused on deploying to production. By this level, teams have significantly reduced manual effort by automating build, test, and  deployment processes to production through continuous integration/continuous deployment (CI/CD) pipelines. In addition to quality gates, certain approvals might also be conducted through automated workflows.
+At Level 3, automation efforts primarily focus on deploying to production. At this level, teams have significantly reduced manual work by automating build, test, and deployment processes by using continuous integration and continuous delivery pipelines. Like with quality gates, specific approvals might also be managed through automated workflows.
 
-At Level 4, operational automation should be informed by real-world production experience and addressing technical debt. 
+At Level 4, operational automation should be driven by real-world production experience and focused on addressing technical debt.
 
-Here are some Day-2 automation examples:
+Consider the following day-2 automation examples:
 
-|Process | Benefit|
+| Process | Benefit |
 |---|---|
-|Automate rotation of certificates, API keys, and other secrets.| Automation guarantees timely rotations, eliminating the need for manual intervention, which saves time and reduces the likelihood of human error.|
-|Automate routine maintenance of infrastructure. |Routine infrastructure maintenance requires extensive testing and coordination. Automation can expedite these tasks, reducing manual effort and minimizing risks.|
-|Automate emergency response process.|Without proper automation, people might resort to hasty, uncoordinated actions during an emergency release, potentially leading to further issues.|
-|Automate scaling of resources on load spikes and downs.| Autoscaling ensures that resources are allocated dynamically based on demand.  This leads to more efficient use of resources because when demand decreases, resources are de-allocated, without excessive operational overhead. |
-|Automate data retrieval and delivery.|Reduces the time and effort required to fulfill data requests sent by users. Instead of manually accessing databases, scripts are triggered for accessing the database, retrieving relevant data, and sending it to user.|
-|Automate the creation of developer environments given a specific criteria.|This approach ensures that environments are consistently created to facilitate safe changes in the workload, as part of the team's Day-2 operations.|
+| Automate rotation of certificates, API keys, and other secrets. | Automation guarantees timely rotations, eliminating the need for manual intervention, which saves time and reduces the likelihood of human error. |
+| Automate routine maintenance of infrastructure. | Routine infrastructure maintenance requires extensive testing and coordination. Automation can expedite these tasks, reducing manual effort and minimizing risks. |
+| Automate emergency response process. | Without proper automation, people might resort to hasty, uncoordinated actions during an emergency release, potentially leading to further problems. |
+| Automate scaling of resources on load spikes and downs. | Autoscaling ensures that resources are allocated dynamically based on demand. This allocation results in more efficient use of resources because when demand decreases, resources are deallocated, without excessive operational overhead. |
+| Automate data retrieval and delivery. | Reduces the time and effort required to fulfill data requests sent by users. Instead of manually accessing databases, scripts are triggered for accessing the database, retrieving relevant data, and sending it to the user. |
+| Automate the creation of developer environments given a specific criteria. | This approach ensures that environments are consistently created to facilitate safe changes in the workload, as part of the team's day-2 operations. |
 
 > [!NOTE]
-> When setting a strategy for deployment automation, begin with known and predictable tasks, accounting for common failure points. After those are automated, extend automation to address unforeseen issues, some of which may require manual intervention. For example, start by automating routine tasks like infrastructure updates, because they are more manageable. Then tackle emergency hot fixes as they may involve unknown failure scenarios.
+> When you develop a deployment automation strategy, start with known and predictable tasks. Factor in common points of failure. After these points are automated, extend coverage to handle unforeseen problems, some of which might require manual intervention. For example, start by automating routine tasks like infrastructure updates because they're more manageable. Then tackle emergency hot fixes because they might include unknown failure scenarios.
 >
-> For example, the team routinely deploys the workload using controlled exposure to all users across all geographies, which might take days to be fully deployed. They also want to deploy hot fixes sooner by skipping certain steps. The automation process should account for those expedited deployments.
+> For example, the team routinely deploys the workload by using controlled exposure to users across all geographies. This process might take several days to complete. However, they also need the ability to deploy hot fixes sooner by skipping specific steps. The automation process should account for those expedited deployments.
 
-The primary goal is to identify repetitive, human-driven tasks that might have been overlooked in earlier stages due to deadlines. However, the aim is not to automate everything. Automation should be guided by return on investment. Prefer using existing technologies and knowledge rather than starting with new tools. If lightweight tooling is necessary, consider their lifecycle and maintenance. 
+The primary goal is to identify repetitive, human-driven tasks that might have been overlooked in earlier stages because of deadlines. However, the goal isn't to automate everything. Return on investment should guide automation. Prefer using existing technologies and knowledge instead of starting with entirely new tools. If lightweight tooling is needed, evaluate its life cycle and maintenance requirements.
 
 #### &#10003; Bring efficiency by aligning tools and processes with organizational standards
 
-At Level 4 maturity, focus on gaining operational efficiencies by evaluating engineering assets and processes. Identify which assets are necessary but not core to your business.
+At Level 4 maturity, focus on gaining operational efficiency by evaluating engineering assets and processes. Identify which assets are essential but not core to your business.
 
-For those, look for ways to:
+For these assets, consider the following points:
 
 - Use shared tools already available in your organization.
-- Consider third-party software for specific tasks, like data conversion.
 
-The main benefit is that pre-built assets come with support channels, and can replace custom solutions you developed, reducing the team's operational burden of team-created solutions. Assess how well these resources can meet your needs and address any remaining gaps.
+- Consider non-Microsoft software for specific tasks, like data conversion.
 
-Explore these areas of the workload:
+The main benefit is that prebuilt assets come with support channels and can replace custom solutions. This approach reduces the operational burden of your team-created solutions. Evaluate how well these resources meet your needs and identify any remaining gaps.
 
-- **Evaluate your custom code**.  Instead of writing custom code for tasks like parsing, evaluate existing open source solutions that are industry standards. Using these solutions can reduce the need for code maintenance and result in a smaller code base. Explore options within your organization. There might be existing libraries that can be integrated into your workload to handle basic tasks, such as authentication. 
+Explore the following areas of the workload:
 
-- **Evaluate your tool chain**. Assess areas where you can rely on other teams using similar tools. Adjust your use of libraries, templates, and modules accordingly. Additionally, align Infrastructure as Code (IaC) tools across the organization to streamline operations.
+- **Evaluate your custom code.** Instead of writing custom code for tasks like parsing, evaluate open-source solutions that are considered industry standard. Using these tools can reduce the need for code maintenance and result in a smaller code base. Explore options already available within your organization. There might be existing libraries that you can integrate into your workload to handle routine tasks such as authentication.
 
-- **Evaluate your processes**. Identify centralized processes that can take on tasks you may have implemented yourself, such as security scanning. Instead of managing your own quarantine process for NuGet packages, leverage the organization's existing security team's process by informing them of the modules used in your workload.
+- **Evaluate your tool chain.** Assess areas where you can rely on other teams using similar tools. Adjust your use of libraries, templates, and modules accordingly. Align infrastructure-as-code tools across the organization to streamline operations.
 
-  Supportability is another key area. Early on, development teams often handle support themselves, monitoring metrics and fixing live issues. At this stage, consider setting up dedicated roles like on-call engineers. If your organization has a shared support team, use it to reduce the support load on developers. 
+- **Evaluate your processes.** Identify centralized processes that can take on tasks you might have implemented yourself, such as security scanning. Instead of managing your own quarantine process for NuGet packages, use the organization's existing security team's process by informing them of the modules used in your workload.
+
+  Supportability is another key area. Early on, development teams often handle support themselves by monitoring metrics and fixing live problems. At this stage, consider setting up dedicated roles like on-call engineers. If your organization has a shared support team, use it to reduce the support load on developers.
 
   > [!NOTE]
-  > If possible, transition day-to-day support to external vendors. The vendors don't have deep context like the development or the architects involved in getting the workload to production. Before handing off to a vendor, make sure the system is stable in production and management tasks for the vendors are clearly defined. For the vendor team to be successful, they should have key elements in place, defined thresholds of the health model that represent Health, Unhealthy, and Degraded states. They should also be trained in playbooks, tools, and other troubleshooting information. In case they are unable to identify causes, there should be well-defined pathways for escalating and routing problems to the workload team.  
+  > If possible, transition day-to-day support to external vendors. Vendors don't have deep context like the development team or the architects who got the workload to production. Before you hand off to a vendor, make sure that the system is stable in production and clearly define management tasks. Vendors need key elements to succeed. Define thresholds in the health model that represent *Healthy*, *Unhealthy*, and *Degraded* states. Train vendors on playbooks, tools, and other troubleshooting resources. If they can't identify causes, set up well-defined pathways for escalating and routing problems to the workload team.
 
 #### &#10003; Manage technical debt at a regular cadence
 
-Technical debt is the result of shortcuts taken during development to meet deadlines, leading to less-than-ideal implementations. Teams should work on reducing this debt by analyzing maintenance complexity and time. If not addressed, systems can become more complex and harder to maintain or scale, slowing down innovation as developers spend more time fixing issues instead of working on new features.
+Technical debt is the result of shortcuts taken during development to meet deadlines, which can result in implementations that are less than ideal. Teams should work on reducing this debt by analyzing maintenance complexity and time. If technical debt isn't addressed, systems can become more complex and harder to maintain or scale. This complexity slows innovation as developers spend more time fixing problems instead of working on new features.
 
-Here are some tactical recommendations for handling technical debt:
+Consider the following tactical recommendations for handling technical debt:
 
 - Track technical debt alongside feature work.
 
 - Reserve capacity in every sprint for addressing technical debt, separate from feature development. Occasionally, dedicate entire sprints to addressing technical debt.
 
-- For new features, if you plan on incurring new technical debt, add its proposed resolution to the backlog right away.
+- Add the proposed resolution to the backlog right away if you plan to incur new technical debt for new features.
 
-Technical debt is a normal part of development and an opportunity for improvement. As new features are added, debt will accumulate. Balance the effort of paying off old debt with the new debt from developing new features.
+Technical debt is a normal part of development and an opportunity for improvement. As new features are added, debt accumulates. Balance the effort of paying off old debt with the new debt from developing new features.
 
 # [**Level 5: Future adaptability**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) **Keep improving, keep adapting without ever assuming you're done.**
+![Goal icon](../_images/goal.svg) **Keep improving and adapting, but never assume that you're done.**
 
-Your journey through Levels 1 to 4 established a well-architected workload on Azure. Your design helped set up operational practices like monitoring, testing, deployment, and automation, moving towards production readiness. Once in production, the focus shifted to stabilizing operations and safely managing changes to protect user experience.
+You establish a well-architected workload on Azure as you progress through Levels 1 to 4. Your design sets up operational practices like monitoring, testing, deployment, and automation, which prepares the system for production. After the system is in production, you focus on stabilizing operations and managing changes to protect the user experience.
 
-In the last stage, maturity means operating the workload at scale, keeping it running and up to date. It's also about being proficient at identifying areas where the current design has reached its limit and preparing for changes in business requirements. Acknowledge that assumptions about constraints can become outdated as the ecosystem evolves. Staying static can lead to regression because the environment, practices, and tools change. Without investing in level 5 approaches, you might find your workload falling behind.
+In the final stage, maturity means operating the workload at scale, which keeps it reliable and up-to-date. It also requires proficiency in identifying areas where the current design has reached its limits and preparing for changes in business requirements. Assumptions about constraints can become outdated as the ecosystem evolves. Staying static might result in regression because the environments, practices, and tools continue to evolve. Without investment in Level 5 approaches, your workload risks falling behind.
 
-Level 5 isn't the end or a technical checkpoint; it's a mindset shift to modernize people, processes, tools, and technology. Operations are treated with the same rigor, investment, and innovation as the core application.
+Level 5 isn't an end goal or a technical checkpoint. It's a mindset shift focused on modernizing people, processes, tools, and technology. Operations are treated with the same rigor, investment, and innovation as the core application.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
-> - [ Spot rearchitecture opportunities based on observed growth and future potential](#-spot-rearchitecture-opportunities-based-on-observed-growth-and-future-potential)
+> - [Spot rearchitecture opportunities based on observed growth and future potential](#-spot-rearchitecture-opportunities-based-on-observed-growth-and-future-potential)
 > - [Use automation to further reduce friction](#-use-automation-to-further-reduce-friction)
-> - [Create developer environments per feature or change](#-create-developer-environments-per-feature-or-change)
-> - [Share knowledge, contribute to organizational maturity](#-share-knowledge-contribute-to-organizational-maturity)
+> - [Create developer environments for each feature or change](#-create-developer-environments-for-each-feature-or-change)
+> - [Share knowledge and contribute to organizational maturity](#-share-knowledge-and-contribute-to-organizational-maturity)
 > - [Enable self-service capabilities to your workload's various job functions](#-enable-self-service-capabilities-to-your-workloads-various-job-functions)
 
 #### &#10003; Spot rearchitecture opportunities based on observed growth and future potential
 
-Workload architectures are designed with intentional constraints and have limited lifespans.  Up to Level 4, your architecture effectively meets business requirements. Now, evaluate how the system handles new usage patterns, technologies, growth, and operational challenges.
+Workload architectures are intentionally designed with constraints and have limited lifespans. Through Level 4, your architecture likely meets business requirements effectively. At this level, evaluate how the system handles new usage patterns, technologies, growth, and operational challenges.
 
-For example, what works for thousands of users may fail at tens of thousands. Increased data volume can cause atomicity issues, and higher demands for performance, and compliance can push your architecture to its limits. That pressure can prevent new features and creating scaling bottlenecks.
+For example, a solution that works for thousands of users might fail when scaled to tens of thousands. Increased data volume can introduce atomicity problems, while greater demands for performance and compliance can push your architecture to its limits. These pressures can prevent the delivery of new features and create scaling bottlenecks.
 
-This is the time to recognize tipping points and *identify areas where you might need to rearchitect*. Here are some common areas:
+At this level, recognize tipping points and *identify areas where you might need to rearchitect*. Consider the following areas:
 
-- Your *initial choice of tools, frameworks, and platform services* may have suited your business needs. However, as your system evolves, these tools might become rigid or tightly coupled, libraries may lack extensibility, and platform services might reach end-of-life, breaking existing dependencies.
+- Your *initial choice of tools, frameworks, and platform services* might have suited your business needs. However, as your system evolves, these tools might become rigid or tightly coupled, libraries might lack extensibility, and platform services might reach end-of-life, which breaks existing dependencies.
 
-  Explore tools and services in the wider ecosystem, with strong support and community adoption. Choose a modular, loosely coupled architecture for easier replacement or upgrades.
+  Explore tools and services within the broader ecosystem that provide strong support and widespread community adoption. Select a modular, loosely coupled architecture for easier replacement or upgrades.
 
-- In the early stages, the workload team may *manage the entire technical stack*. While this works initially, it can lead to increased pressure and operational overhead as the system grows. To reduce this burden, consider offloading responsibilities to specialized teams, like those focused on networking, security, or observability. Their expertise allows the core workload team to focus on delivering product value.
+- At earlier levels, the workload team might manage the entire technical stack. This approach can be effective initially, but it often results in increased pressure and operational overhead as the system scales. To ease this burden, consider offloading responsibilities to specialized teams, like those focused on networking, security, or observability. Their expertise enables the core workload team to focus on delivering product value.
 
-- Managing *customer-dedicated (single-tenant) instances* can introduce cost and operational overhead. Consider that to be a strong signal that a multitenant architecture may be necessary. This requires broader architectural and operational investment. For example, handling tenant onboarding, data access isolation, and so on.
+- Managing customer-dedicated (or single-tenant) instances can increase both cost and operational overhead. This challenge often signals the need to adopt a multitenant architecture. This shift requires broader architectural and operational investments, such as handling tenant onboarding and data access isolation.
 
 - Rethink your deployment strategy to scale predictably and handle failure isolation and performance at scale. Explore proven practices like the Deployment Stamps pattern.
 
-  - **Scale unit**. A scale unit is a logical group of resources that can be scaled together to handle increased load while being monitored independently. These units are automatically deployed as repeatable blocks based on threshold criteria and can be replicated as needed. 
+  - **A scale unit** is a logical group of resources that scale together to handle increased load while being monitored independently. These units are automatically deployed as repeatable blocks based on defined thresholds and can be replicated when needed.
   
-    However, this approach can lead to over-scaling certain services, resulting in added costs.
+    However, this approach can lead to over-scaling specific services, which results in added costs.
 
-    For more information, see [Scale-unit architecture](../mission-critical/mission-critical-application-design.md#scale-unit-architecture)
+    For more information, see [Scale-unit architecture](../mission-critical/mission-critical-application-design.md#scale-unit-architecture).
 
-  - **Immutable environments** Instead of updating a deployment stamp in place, tear down the old stamp and redeploy it with changes. This requires side-by-side deployment models like Blue-Green. To adopt this practice, pipelines should be ready to automatically deploy a stamp to handle hyperscaling or replacing unhealthy units. 
+  - **Immutable environments** are deployment setups where systems are never modified after deployment. Instead of updating a deployment stamp in place, tear down the old stamp and redeploy it with the necessary changes. This approach requires side-by-side deployment models such as blue-green deployments. To adopt this practice, pipelines must be prepared to automatically deploy a new stamp to handle hyperscaling or replace unhealthy units.
 
-    Your Level 4 safe deployment practices should prepare you for this. There shouldn't be any regression, and users should transition to the new stamp smoothly. 
+    Your Level 4 safe deployment practices shouldW prepare you for this transition. There should be no regression, and users should transition to the new stamp smoothly.
 
 #### &#10003; Use automation to further reduce friction
 
-Transitioning from Level 4 to Level 5 isn't just about increasing automation; it's about using automation to reduce friction and deciding when these tasks should be executed. 
+Transitioning from Level 4 to Level 5 isn't only about increasing automation. It's also about using automation to reduce friction and deciding when these tasks should run.
 
-Here are some examples:
+Consider the following examples:
 
-- **Automated creation of local developer environments**. Provide a standardized experience where each developer workstation is configured with the same set of tools, library versions, and other developer-centric assets. That way all developers, experienced or new, have access to a consistent development environment. It also facilitates better collaboration, knowledge sharing, and onboarding. Use virtualized development environments to make this process easier.
+- **Automated creation of local developer environments:** Provide a standardized experience by configuring each developer workstation with the same set of tools, library versions, and other development assets. This consistency gives all developers access to a uniform environment, regardless of experience level. It also facilitates better collaboration, knowledge sharing, and onboarding. Use virtualized development environments to simplify this process.
 
-- **Automated alert triage and resolution workflows**. Use automation to categorize and prioritize alerts based on predefined rules, and trigger resolution workflows. For high-priority alerts, the system can notify the relevant team and start a resolution process, speeding up response times.
+- **Automated alert triage and resolution workflows:** Use automation to categorize and prioritize alerts based on predefined rules, and trigger resolution workflows. For high-priority alerts, the system can notify the relevant team and start the resolution process to speed up response times.
 
-- **Automated incident remediation**. Implement self-healing scripts to automatically restart services or shift workloads when issues are detected. For example, if a web server crashes, a script can restart it or redirect traffic to a backup server, ensuring minimal downtime.
+- **Automated incident remediation:** Implement self-healing scripts that automatically restart services or shift workloads when problems are detected. For example, if a web server crashes, a script can restart the service or reroute traffic to a backup server to minimize downtime.
 
-- **Automated resource utilization**. As maturity in other pillars progress, you'll likely need to introduce automation to address their goals. For example, you can schedule non-critical resources and environments to be unavailable during off-peak hours to save costs and optimize resource usage.
+- **Automated resource usage:** As maturity in other pillars progresses, you likely need to introduce automation to support their goals. For example, you can schedule noncritical resources and environments during off-peak hours to reduce costs and optimize resource usage.
 
-- **Automated tenant management**. Streamline the onboarding and offboarding of tenants in multitenant environments. When a new tenant signs up, automation can create user accounts, provision resources, and configure settings.
+- **Automated tenant management:** Streamline the onboarding and offboarding of tenants in multitenant environments. When a new tenant signs up, automation can create user accounts, provision resources, and configure settings.
 
-#### &#10003; Create developer environments per feature or change
+#### &#10003; Create developer environments for each feature or change
 
-Day-2 operations focus on implementing safe changes. Each change goes through different environments set up for specific purposes like development, testing, security, and others. By following Level 4 guidance, it's assumed that you've automated the creation of those environments.
+Day-2 operations focus on implementing safe changes. Each change goes through different environments that are set up for specific purposes such as development, testing, and security. By following Level 4 guidance, it's assumed that you've automated the creation of those environments.
 
-At Level 5, consider moving away from having many long-standing environments for different purposes and start creating separate, automated, temporary environments for things like feature development or testing. Each environment should follow the lifecycle of the associated code branch. When a feature branch is created, automatically set up an environment with sample data, load tests, and cloud resources to simulate production. After the work is complete or changes are made, discard that environment. This approach prevents the parallel development of other features from interfering with the current feature, and can help reduce cost.
+At Level 5, consider moving away from having multiple long-standing environments for various purposes. Instead, create separate, automated, temporary environments for tasks like feature development or testing. Each environment should align with the life cycle of its corresponding code branch. When a feature branch is created, automatically set up an environment with sample data, load tests, and cloud resources to simulate production. After the work is complete or changes are integrated, discard that environment. This approach prevents the parallel development of other features from interfering with the current feature and can help reduce cost.
 
-#### &#10003; Share knowledge, contribute to organizational maturity
+#### &#10003; Share knowledge and contribute to organizational maturity
 
-Unlike Levels 1 to 4, which focus on looking internally at production readiness and managing workload change, Level 5 is an opportunity for workload team to share their designs, successes, failures with other workloads across the organization. Workload teams do not need to experience failure themselves in order to learn how to avoid it if they can preemptively learn it from others who have gone before them.
+Levels 1 through 4 focus on internal readiness and managing workload change. Level 5 is different because it creates an opportunity for workload teams to share their designs, successes, and failures with other teams across the organization. A team doesn't have to experience failure firsthand if it can learn from others who have experienced similar challenges.
 
-This involves transitioning from Operational Excellence principles at the individual workload level to the organization investing in centralized operations. These centralized teams consist of dedicated engineering groups that build deployment tools with built-in guardrails, automation, observability, and testing.
+This shift involves transitioning from Operational Excellence principles at the individual workload level to the organization that invests in centralized operations. These centralized teams are composed of dedicated engineering groups that build deployment tools equipped with guardrails, automation, observability, and testing.
 
-Your workload team to share techniques, tools, and insights that have worked for you to peer workload teams. Start with teams that your workload takes dependencies on, then move to teams that take dependencies on your workload. Also, learn from those teams as you share experiences and outcomes.
-
-You should see increased knowledge sharing through shared platforms, documentation, and community engagement.
-
+Your workload team should share techniques, tools, and insights that have been effective with peer teams. Begin by engaging with teams that your workload depends on. Then connect with teams that depend on your workload. As you share experiences and outcomes, learn from those teams. You should see increased knowledge sharing through shared platforms, documentation, and community engagement.
 
 #### &#10003; Enable self-service capabilities to your workload's various job functions
 
-As you experience repetitive, ad-hoc tasks within the workload's routine development responsibilities; evaluate if those tasks should instead be provided as a scripted solution that the team members can responsibly invoke as needed. Build and maintain self-service capabilities for these ad-hoc tasks to provide agility and autonomy to the team.
+As you experience repetitive, unplanned tasks within the workload's routine development responsibilities, evaluate whether they should instead be delivered as scripted solutions that team members can responsibly invoke when needed. Build and maintain self-service capabilities for these unplanned tasks to enhance team agility and autonomy.
 
-Start with high effort or error prone ad-hoc tasks that will be cost effective to deliver to the workload team as a self-service solution. The solution must optimize the time of the team members and build consistency into those tasks, yielding a return on investment over the life of the self-service solution.
+Start with time-consuming or error-prone unplanned tasks that are cost-effective to deliver to the workload team as a self-service solution. The solution must optimize team members' time and build consistency into these tasks. This approach results in a return on investment over the lifespan of the self-service solution.
 
 Follow the approach and capabilities described in [Start your platform engineering journey](/platform-engineering/journey).
 
