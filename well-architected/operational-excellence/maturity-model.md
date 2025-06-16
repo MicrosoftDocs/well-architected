@@ -479,9 +479,9 @@ At this level, recognize tipping points and *identify areas where you might need
 
   Explore tools and services within the broader ecosystem that provide strong support and widespread community adoption. Select a modular, loosely coupled architecture for easier replacement or upgrades.
 
-- At earlier levels, the workload team might manage the entire technical stack. This approach can be effective initially, but it often results in increased pressure and operational overhead as the system scales. To ease this burden, consider offloading responsibilities to specialized teams, like those focused on networking, security, or observability. Their expertise enables the core workload team to focus on delivering product value.
+- At earlier levels, the workload team might *manage the entire technical stack*. This approach can be effective initially, but it often results in increased pressure and operational overhead as the system scales. To ease this burden, consider offloading responsibilities to specialized teams, like those focused on networking, security, or observability. Their expertise enables the core workload team to focus on delivering product value.
 
-- Managing customer-dedicated (or single-tenant) instances can increase both cost and operational overhead. This challenge often signals the need to adopt a multitenant architecture. This shift requires broader architectural and operational investments, such as handling tenant onboarding and data access isolation.
+- Managing *customer-dedicated (or single-tenant) instances* can increase both cost and operational overhead. This challenge often signals the need to adopt a multitenant architecture. This shift requires broader architectural and operational investments, such as handling tenant onboarding and data access isolation.
 
 - Rethink your deployment strategy to scale predictably and handle failure isolation and performance at scale. Explore proven practices like the Deployment Stamps pattern.
 
