@@ -398,7 +398,7 @@ Consider the following day-2 automation examples.
 | Automate routine maintenance of infrastructure. | Routine infrastructure maintenance requires extensive testing and coordination. Automation can expedite these tasks, reducing manual effort and minimizing risks. |
 | Automate emergency response process. | Without proper automation, people might resort to hasty, uncoordinated actions during an emergency release, potentially leading to further problems. |
 | Automate scaling of resources on load spikes and drops. | Autoscaling ensures that resources are allocated dynamically based on demand. This allocation results in more efficient use of resources because when demand decreases, resources are deallocated, without excessive operational overhead. |
-| Automate data retrieval and delivery. | Reduces the time and effort required to fulfill data requests sent by users. Instead of manually accessing databases, scripts are triggered for accessing the database, retrieving relevant data, and sending it to the user. |
+| Automate data retrieval and delivery. | This approach reduces the time and effort required to fulfill data requests sent by users. Instead of manually accessing databases, scripts are triggered for accessing the database, retrieving relevant data, and sending it to the user. |
 | Automate the creation of developer environments based on specific criteria. | This approach ensures that environments are consistently created to facilitate safe changes in the workload, as part of the team's day-2 operations. |
 
 > [!NOTE]
