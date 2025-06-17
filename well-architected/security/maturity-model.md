@@ -263,7 +263,7 @@ Level 5 of the maturity model focuses on advanced security measures for highly m
 > [!div class="checklist"]
 >
 > - [Invest in specialized threat protection](#-invest-in-specialized-threat-protection)
-> - [Invest in security investigation and event monitoring (SIEM) and security orchestration, automation, and response (SOAR) solutions](#-invest-in-security-investigation-and-event-monitoring-siem-and-security-orchestration-automation-and-response-soar-solutions)
+> - [Invest in security information and event management (SIEM) and security orchestration, automation, and response (SOAR) solutions](#-invest-in-security-investigation-and-event-monitoring-siem-and-security-orchestration-automation-and-response-soar-solutions)
 > - [Invest in advanced security testing](#-invest-in-advanced-security-testing)
 
 #### &#10003; Invest in specialized threat protection
