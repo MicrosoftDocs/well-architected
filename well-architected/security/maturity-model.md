@@ -206,7 +206,7 @@ Create an incident response plan that allows you to rapidly detect and respond t
 
 ![Goal icon](../_images/goal.svg) **Refine security mechanisms based on production insights.**
 
-At Level 4, your workload should have been running in production long enough to gather useful data about normal operating conditions. For security, this means that you have observability data, including audit logs, vulnerability scan reports, firewall logs, component usage patterns, incident reports, and other data points that you can analyze for improvement opportunities. Standardize a regular review of your security mechanisms to help optimize workload security and reinforce a continuous improvement mindset.
+At Level 4, your workload should have been running in production long enough to gather useful data about normal operating conditions. You should have observability data for security purposes, including audit logs, vulnerability scan reports, firewall logs, component usage patterns, incident reports, and other data points that you can analyze for improvement opportunities. Standardize a regular review of your security mechanisms to help optimize workload security and reinforce a continuous improvement mindset.
 
 As you refine your security mechanisms, follow mature change management practices to ensure that all changes are performed safely and remain auditable.
 
@@ -217,7 +217,7 @@ As you refine your security mechanisms, follow mature change management practice
 > - [Revisit and refine the security baseline continuously](#-revisit-and-refine-the-security-baseline-continuously)
 > - [Refine your security monitoring strategy](#-refine-your-security-monitoring-strategy)
 > - [Tighten your network security at the edge](#-tighten-your-network-security-at-the-edge)
-> - [Refine your identity and access management (IAM) configurations](#-refine-your-identity-and-access-management-iam-configurations)
+> - [Refine your identity and access management (IAM) configurations](#-refine-your-iam-configurations)
 > - [Refine the incident response plan](#-refine-the-incident-response-plan)
 
 #### &#10003; Revisit and refine the security baseline continuously
@@ -234,15 +234,15 @@ Use production insights to make improvements to your security monitoring and ale
 
 Enhance network security by applying microsegmentation to prevent lateral movement across the workload. This strategy might include moving components into separate subnets protected by network security groups or using built-in features for specific resources to limit traffic. For example, many Azure database services include a built-in firewall that you can use to limit public and private network access. Consider the following strategies:
 
-- *Standardize using only private networking throughout the workload.* In Azure, use Azure Private Link to connect your virtual networks to platform-as-a-service and software-as-a-service resources as much as possible. For more information, see [Service availability](/azure/private-link/availability#service-availability).
+- *Use private networking only throughout the workload.* In Azure, use Azure Private Link to connect your virtual networks to platform-as-a-service and software-as-a-service resources as much as possible. For more information, see [Service availability](/azure/private-link/availability#service-availability).
 
 - *Protect your APIs.* Use an API gateway solution, like Azure API Management, to proxy your API calls. Using a proxy minimizes network access to the back-end APIs by exposing only the proxy and none of the back-end components to callers.
 
-- *Refine your firewall rules.* Look for opportunities based on production observations to refine your firewall rules. You might have broadly implemented or relaxed rules in place from early work in development that can be tightened, or unused rules that can be removed. Likewise, new threats and vulnerabilities constantly emerge, which makes regular updates crucial for network security. Define a standard review process for your firewall configurations as part of your continuous improvement practices to regularly review and update your settings.
+- *Refine your firewall rules.* Look for opportunities based on production observations to refine your firewall rules. You might have broadly implemented or relaxed rules in place from early work in development that you can tighten, or you might have unused rules that you can remove. Likewise, new threats and vulnerabilities constantly emerge, which makes regular updates crucial for network security. Define a standard review process for your firewall configurations as part of your continuous improvement practices to regularly review and update your settings.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Microsegmentation configurations and API gateways increase costs and complexity for your workload. Apply these measures carefully to avoid unnecessary expenses and operational overhead. For example, these measures might not be necessary for nonproduction environments or internal workloads.
 
-#### &#10003; Refine your identity and access management (IAM) configurations
+#### &#10003; Refine your IAM configurations
 
 Analyze access patterns to identify areas of improvements in your IAM configurations. Apply conditional access and just-in-time (JIT) access controls to sensitive components. Review permissions for all human and non-human accounts to ensure that the principle of least privilege is correctly enforced. Managed identities often have incorrect permissions, so include them in permissions audits. Perform these audits regularly as part of your operational practices.
 
@@ -250,13 +250,13 @@ Analyze access patterns to identify areas of improvements in your IAM configurat
 
 #### &#10003; Refine the incident response plan
 
-Before you operate your workload in production, fully simulating security incidents is impossible. Real-world incidents provide valuable insights that help improve response processes. Engage all team members involved in incident response in retrospective learning sessions to determine what went right and what areas you can improve. Incorporate these insights into incident drills to make them more realistic.
+You can't fully simulate security incidents before you operate your workload in production. Real-world incidents provide valuable insights that help improve response processes. Engage all team members involved in incident response in retrospective learning sessions to determine what went right and what areas you can improve. Incorporate these insights into incident drills to make them more realistic.
 
 # [**Level 5: Advanced security**](#tab/level5)
 
 ![Goal icon](../_images/goal.svg) **Implement advanced security measures.**
 
-Level 5 of the maturity model focuses on advanced security measures for highly mature organizations. Carefully consider each of the following recommendation against other pillars of the Well-Architected Framework's pillars to ensure that they align with your workload. You should have a clear understanding of compliance requirements, organizational standards, workload life cycle plans, and other unique environmental factors that inform your decision-making.
+Level 5 of the maturity model focuses on advanced security measures for highly mature organizations. Carefully consider each of the following recommendations against other pillars of the Well-Architected Framework to ensure that they align with your workload. You should have a clear understanding of compliance requirements, organizational standards, workload life cycle plans, and other unique environmental factors that inform your decision-making.
 
 **Key strategies**
 >
@@ -270,15 +270,15 @@ Level 5 of the maturity model focuses on advanced security measures for highly m
 
 Larger organizations and specific industries are more likely to be targets of specialized threats. To mitigate these risks, evaluate whether you should invest in a higher level of protection. Consider whether your use case warrants investment in the following solutions:
 
-- *Distributed denial of service (DDoS) protection.* Organizations that have a large public presence are the most common targets for DDoS attacks. Cloud providers like Azure typically include a basic level DDoS protection that's sufficient for many use cases for free. They also often provide advanced tiers that defend against larger, more sophisticated attacks and provide a higher level of on-call support to help mitigate ongoing attacks.
+- *Distributed denial of service (DDoS) protection.* Organizations that have a large public presence are the most common targets for DDoS attacks. Cloud providers like Azure typically include free basic-level DDoS protection that's sufficient for many use cases. They also often provide advanced tiers that defend against larger, more sophisticated attacks and provide a higher level of on-call support to help mitigate ongoing attacks.
 
 - *Automated data loss prevention (DLP).* DLP is a security strategy that identifies, monitors, and protects sensitive data from unauthorized access, misuse, or accidental disclosure. Organizations that handle large volumes of sensitive information, such as financial institutions, healthcare providers, and government agencies, benefit significantly from DLP to maintain data integrity and comply with regulations. Consider using a tool like Microsoft Purview to automate your DLP policies.
 
-- *Protect data in use by using confidential computing.* Cloud providers typically encrypt data at rest and in transit by default. To further enhance security, protect data in use by using a confidential computing solution. This solution is especially crucial for regulated industries like healthcare and finance for government entities. Azure provides confidential [virtual machines, container services, and other platform-as-a-service and software-as-a-service services](/azure/confidential-computing/overview-azure-products). These services enable you to securely work on sensitive data while preventing exposure to unauthorized users or systems and meeting compliance requirements.
+- *Protect data in use by using confidential computing.* Cloud providers typically encrypt data at rest and in transit by default. To further enhance security, protect data in use by using a confidential computing solution. This solution is especially crucial for regulated industries like healthcare and finance for government entities. Azure provides confidential [virtual machines, container services, and other platform-as-a-service and software-as-a-service solutions](/azure/confidential-computing/overview-azure-products). These solutions enable you to securely work on sensitive data while preventing exposure to unauthorized users or systems and meeting compliance requirements.
 
-#### &#10003; Invest in security investigation and event monitoring (SIEM) and security orchestration, automation, and response (SOAR) solutions
+#### &#10003; Invest in SIEM and SOAR solutions
 
-SIEM and SOAR solutions, such as [Microsoft Sentinel](/azure/sentinel/overview), automate anomalous behavior detection, threat hunting, and various response activities. These solutions significantly reduce operational burden, especially for larger organizations, by managing data collection and analysis across vast, complex environments. Microsoft Sentinel provides built-in support for many Azure and other Microsoft products. This support ensures seamless integration.
+SIEM and SOAR solutions, such as [Microsoft Sentinel](/azure/sentinel/overview), automate anomalous behavior detection, threat hunting, and various response activities. These solutions significantly reduce operational burden, especially for larger organizations, by managing data collection and analysis across vast, complex environments. Microsoft Sentinel provides built-in support for many Microsoft products. This support ensures seamless integration.
 
 #### &#10003; Invest in advanced security testing
 
