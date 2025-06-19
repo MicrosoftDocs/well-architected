@@ -382,7 +382,7 @@ As a general practice, fine-tune the monitoring stack based on observability dat
 
 - Adjust logging levels to balance visibility and noise to capture activities on the critical paths.
 
-- Amplify the important alerts ones while suppressing the irrelevant ones.
+- Amplify the important alerts while suppressing the irrelevant ones.
 
 #### &#10003; Automate maintenance
 
