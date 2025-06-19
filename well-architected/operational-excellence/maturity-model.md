@@ -326,7 +326,7 @@ At this level, technical debt becomes a real concern. Implementations that are l
 > - [Validate incident response processes](#-validate-incident-response-processes)
 > - [Optimize operations by using monitoring data from production](#-optimize-operations-by-using-monitoring-data-from-production)
 > - [Automate maintenance](#-automate-maintenance)
-> - [Improve efficiency by aligning tools and processes with organizational standards](#-bring-efficiency-by-aligning-tools-and-processes-with-organizational-standards)
+> - [Improve efficiency by aligning tools and processes with organizational standards](#-improve-efficiency-by-aligning-tools-and-processes-with-organizational-standards)
 > - [Manage technical debt at a regular cadence](#-manage-technical-debt-at-a-regular-cadence)
 
 #### &#10003; Use safe deployment practices
