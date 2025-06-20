@@ -17,8 +17,6 @@ When systems go live in production, operations become even more advanced. Teams 
 
 The most mature stage is all about optimization and innovation. Here, teams operate at scale, continuously adapting systems in real time to meet evolving business needs and technological shifts. However, this isn't a fixed destination; it's a dynamic mindset of always improving, always adapting.
 
-:::image type="content" source="../_images/operational-excellence.svg" alt-text="Example alt-text.":::
-
 The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
 
@@ -55,7 +53,7 @@ Initially, use established industry standards to incorporate standardization. Op
 
 #### &#10003; Set up source control processes
 
-Based on the scale of the application, decide how to structure source code. For larger systems, each team should have its own processes for building and deploying components they are responsible for. They should have clearly defined interfaces that allow for component discoverability and sharing with other parts of the system. Select a source control technology and set up processes to ensure team members don't interfere with each other's work.
+Based on the scale of the application, decide how to structure source code. For larger systems, each team should have its own processes for building and deploying components they're responsible for. They should have clearly defined interfaces that allow for component discoverability and sharing with other parts of the system. Select a source control technology and set up processes to ensure team members don't interfere with each other's work.
 
 Similarly, a single deployment pipeline might be more effective for smaller scale applications. This simplifies coordination and might also be better for reliability. However, it can be challenging to update or migrate specific parts of the system. 
 
@@ -287,7 +285,7 @@ For example, networking infrastructure changes should be less frequent than appl
 
 #### &#10003; Develop a health model
 
-After you have a basic monitoring system in place, combine business context with monitoring data to quantify the overall health status of workload components and the overall status. This exercise, known as *health modeling*, involves contextualizing monitoring values from infrastructure and applications with business context. To build an effective health model, consider the following key principles:
+After you've a basic monitoring system in place, combine business context with monitoring data to quantify the overall health status of workload components and the overall status. This exercise, known as *health modeling*, involves contextualizing monitoring values from infrastructure and applications with business context. To build an effective health model, consider the following key principles:
 
 - **Give system-observed data context.** Setting thresholds is an important part of health modeling. To ensure that thresholds are meaningful to your workload, provide numeric values with context. For example, while high CPU usage between 70% and 90% might generally indicate an **unhealthy** status in one workload, it could be **healthy** for another workload that efficiently uses available resources.
 
@@ -313,7 +311,7 @@ When your workload is in production, it's normal to deal with incidents like pla
 
 Until now, the workload team focused on building features and getting the system into production. Here, the focus shifts from building to maintaining and improving a live system. Now that real users rely on it, the priority is change management through efficient Day-2 operations like triage, maintenance, upgrades, and troubleshooting.
 
-The main strategy is to use real-world experience to drive improvements in those operations. Also, testing becomes a non-negotiable practice. It must be built into every part of development; from fixing bugs to adding features and even refining incident response. Without it, serious issues go undetected until they are already in production.
+The main strategy is to use real-world experience to drive improvements in those operations. Also, testing becomes a non-negotiable practice. It must be built into every part of development; from fixing bugs to adding features and even refining incident response. Without it, serious issues go undetected until they're already in production.
 
 At this level, technical debt is a real concern. Sometimes teams go live with less-than-ideal implementations, which can complicate maintenance. Teams should analyze the complexity of maintaining these implementations and focus on reducing it.
 
@@ -404,7 +402,7 @@ Here are some Day-2 automation examples:
 |Automate the creation of developer environments given a specific criteria.|This approach ensures that environments are consistently created to facilitate safe changes in the workload, as part of the team's Day-2 operations.|
 
 > [!NOTE]
-> When setting a strategy for deployment automation, begin with known and predictable tasks, accounting for common failure points. After those are automated, extend automation to address unforeseen issues, some of which may require manual intervention. For example, start by automating routine tasks like infrastructure updates, because they are more manageable. Then tackle emergency hot fixes as they may involve unknown failure scenarios.
+> When setting a strategy for deployment automation, begin with known and predictable tasks, accounting for common failure points. After those are automated, extend automation to address unforeseen issues, some of which may require manual intervention. For example, start by automating routine tasks like infrastructure updates, because they're more manageable. Then tackle emergency hot fixes as they may involve unknown failure scenarios.
 >
 > For example, the team routinely deploys the workload using controlled exposure to all users across all geographies, which might take days to be fully deployed. They also want to deploy hot fixes sooner by skipping certain steps. The automation process should account for those expedited deployments.
 
@@ -432,7 +430,7 @@ Explore these areas of the workload:
   Supportability is another key area. Early on, development teams often handle support themselves, monitoring metrics and fixing live issues. At this stage, consider setting up dedicated roles like on-call engineers. If your organization has a shared support team, use it to reduce the support load on developers. 
 
   > [!NOTE]
-  > If possible, transition day-to-day support to external vendors. The vendors don't have deep context like the development or the architects involved in getting the workload to production. Before handing off to a vendor, make sure the system is stable in production and management tasks for the vendors are clearly defined. For the vendor team to be successful, they should have key elements in place, defined thresholds of the health model that represent Health, Unhealthy, and Degraded states. They should also be trained in playbooks, tools, and other troubleshooting information. In case they are unable to identify causes, there should be well-defined pathways for escalating and routing problems to the workload team.  
+  > If possible, transition day-to-day support to external vendors. The vendors don't have deep context like the development or the architects involved in getting the workload to production. Before handing off to a vendor, make sure the system is stable in production and management tasks for the vendors are clearly defined. For the vendor team to be successful, they should have key elements in place, defined thresholds of the health model that represent Health, Unhealthy, and Degraded states. They should also be trained in playbooks, tools, and other troubleshooting information. In case they're unable to identify causes, there should be well-defined pathways for escalating and routing problems to the workload team.  
 
 #### &#10003; Manage technical debt at a regular cadence
 
@@ -519,7 +517,7 @@ At Level 5, consider moving away from having many long-standing environments for
 
 #### &#10003; Share knowledge, contribute to organizational maturity
 
-Unlike Levels 1 to 4, which focus on looking internally at production readiness and managing workload change, Level 5 is an opportunity for workload team to share their designs, successes, failures with other workloads across the organization. Workload teams do not need to experience failure themselves in order to learn how to avoid it if they can preemptively learn it from others who have gone before them.
+Unlike Levels 1 to 4, which focus on looking internally at production readiness and managing workload change, Level 5 is an opportunity for workload team to share their designs, successes, failures with other workloads across the organization. Workload teams don't need to experience failure themselves in order to learn how to avoid it if they can preemptively learn it from others who have gone before them.
 
 This involves transitioning from Operational Excellence principles at the individual workload level to the organization investing in centralized operations. These centralized teams consist of dedicated engineering groups that build deployment tools with built-in guardrails, automation, observability, and testing.
 
@@ -538,4 +536,4 @@ Follow the approach and capabilities described in [Start your platform engineeri
 
 ### Next steps
 
-TBD
+- Review the [Operational Excellence design review checklist](checklist.md) to get details on the recommendations.

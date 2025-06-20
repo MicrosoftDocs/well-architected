@@ -3,28 +3,21 @@ title: Security Maturity Model
 description: Understand the maturity model levels of the security pillar.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 1/22/2025  
+ms.date: 06/20/2025  
 ms.topic: conceptual
 ---
 
-<!--
-This template provides the basic structure of a maturity model article. Remove all the comments in this template before you sign-off
--->
-
-<!-- for values for the metadata tags (product and categories) see:
-For values to set, see [Taxonomies for Learn](https://review.learn.microsoft.com/help/contribute/metadata-taxonomies?branch=main#azure-category). -->
-
 # Security maturity model
 
-In the context of the Well-Architected Framework, security is about providing confidentiality, integrity, and availability guarantees to your workload. This is accomplished through aligning your security mechanisms and processes to your particular business requirements, industry standards, and relevant regulatory frameworks.
+The security maturity model provides a progressive path to strengthen your workload's security posture. 
 
-[add art]
+Start by establishing essential foundations like encryption and identity management, then build on this base by securing your deployment processes and hardening your systems. As you mature, you'll proactively identify threats through modeling and implement comprehensive monitoring. Use real-world production insights to continuously refine your security mechanisms, and eventually implement specialized protection for organizations facing sophisticated threats.
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text.":::
+> :::image type="icon" source="../_images/risk.svg"::: **Security requires intentional action.** Security incidents can result in significant financial costs, regulatory penalties, and damage to customer trust. A practical, incremental approach can help you implement effective security measures without overwhelming your development process or compromising operational efficiency.
 
-# [**Level 1: Secure foundation**](#tab/level1)
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
-<!-- No more than 1 H3 heading per tab. The H3 should act as the "title" for each level/tab. -->
+# [**Level 1: Core security**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Establish a minimum viable security posture to serve as a foundation to build on.**
 
@@ -74,7 +67,7 @@ Application secrets are confidential components that facilitate communication be
 
 # [**Level 2: Threat prevention**](#tab/level2)
 
-![Goal icon](../_images/goal.svg) **Enhance the baseline security with threat prevention measures**
+![Goal icon](../_images/goal.svg) **Strengthen deployment security and establish threat prevention measures across your workload infrastructure.**
 
 In Level 2 of the Security pillar, you enhance your baseline security configuration to help minimize potential threats when you deploy your workload.
 
@@ -139,9 +132,9 @@ In general, choose a native or partner firewall to control all ingress to your w
 
 Hardening the workload is an iterative process that requires continuous improvement. Be vigilant and analyze the workload for vulnerabilities. As your workload matures, use a vulnerability scanning tool to help you easily identify vulnerable components. Early in your development, a better strategy might be to perform the hardening exercise manually. Look at the configurations of your components to find potential weaknesses, such as misconfigured or unconfigured firewall rules or inappropriate permissions. Look for any unused or unnecessary components that you can shut down or remove entirely and for unused accounts that you can deactivate.
 
-# [**Level 3: Evaluate and mitigate**](#tab/level3)
+# [**Level 3: Risk assessment**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Identify and mitigate security threats proactively.**
+![Goal icon](../_images/goal.svg) **Proactively identify and mitigate security threats with thorough assessment and response capabilities.**
 
 At Level 3 of the maturity model, you should integrate advanced processes and mechanisms into your workload to proactively identify and mitigate security threats. Strategies like threat modeling, network flow classifications, and advanced encryption techniques build an extra level of preparedness on the foundational mechanisms that you should already have in place. An incident response plan unifies your threat detection and mitigation strategies while standardizing the way that you manage security incidents.
 
@@ -202,9 +195,9 @@ Create an incident response plan that allows you to rapidly detect and respond t
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Investigation, mitigation, and recovery processes can affect your reliability targets. You might need to disable parts of your system during an incident. This approach might affect functional or nonfunctional requirements. Business decision-makers must decide what the acceptable recovery target should be during an incident.
 
-# [**Level 4: Hardening and refinements**](#tab/level4)
+# [**Level 4: System hardening**](#tab/level4)
 
-![Goal icon](../_images/goal.svg) **Refine security mechanisms based on production insights.**
+![Goal icon](../_images/goal.svg) **Refine security controls based on production insights and operational data.**
 
 At Level 4, your workload should have been running in production long enough to gather useful data about normal operating conditions. You should have observability data for security purposes, including audit logs, vulnerability scan reports, firewall logs, component usage patterns, incident reports, and other data points that you can analyze for improvement opportunities. Standardize a regular review of your security mechanisms to help optimize workload security and reinforce a continuous improvement mindset.
 
@@ -252,9 +245,9 @@ Analyze access patterns to identify areas of improvements in your IAM configurat
 
 You can't fully simulate security incidents before you operate your workload in production. Real-world incidents provide valuable insights that help improve response processes. Engage all team members involved in incident response in retrospective learning sessions to determine what went right and what areas you can improve. Incorporate these insights into incident drills to make them more realistic.
 
-# [**Level 5: Advanced security**](#tab/level5)
+# [**Level 5: Advanced defense**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) **Implement advanced security measures.**
+![Goal icon](../_images/goal.svg) **Strategically invest in enterprise-grade security solutions and advanced threat defense capabilities.**
 
 Level 5 of the maturity model focuses on advanced security measures for highly mature organizations. Carefully consider each of the following recommendations against other pillars of the Well-Architected Framework to ensure that they align with your workload. You should have a clear understanding of compliance requirements, organizational standards, workload life cycle plans, and other unique environmental factors that inform your decision-making.
 
@@ -284,6 +277,6 @@ SIEM and SOAR solutions, such as [Microsoft Sentinel](/azure/sentinel/overview),
 
 At earlier maturity levels, you standardize security testing, including network, identity, and application assessments. At Level 5, consider investing in simulated attack testing, such as war game exercises and penetration testing. In some scenarios, you might be required to engage with a non-Microsoft vendor to perform penetration testing or other security testing to meet your compliance requirements. Research and evaluate reputable vendors to ensure that they provide the best value for your organization.
 
----
-
 ## Next steps
+
+- Review the [Security design review checklist](./checklist.md) to get details on the recommendations.

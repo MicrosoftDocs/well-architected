@@ -9,15 +9,15 @@ ms.topic: conceptual
 
 # Cost Optimization maturity model
 
-In the context of the Well-Architected Framework, cost optimization is about detecting spend patterns, prioritizing investments in critical areas, and optimizing in others to meet the organization's budget while meeting business requirements.
+This maturity model takes you on a journey from basic cost awareness to advanced optimization mastery. 
 
-[add art]
+Beginning with foundational practices like transparency and accountability, you'll gradually build sophisticated capabilities including systematic analysis, user-driven insights, production learnings, and ultimately advanced efficiency techniques. The progression is designed to transform your approach from simply reacting to cost surprises to proactively shaping financial outcomes that align with your business objectives.
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
-# [**Level 1: Trust and accountability**](#tab/level1)
+# [**Level 1: Cost ownership**](#tab/level1)
 
-![Goal icon](../_images/goal.svg) **Build out mechanisms to manage workload costs throughout its lifecycle.**
+![Goal icon](../_images/goal.svg) **Establish team accountability and foundational processes for managing workload costs throughout its lifecycle.**
 
 Level 1 of the maturity model helps workload teams understand their budget and set up processes and tools to manage their costs during the workload lifecycle. Before you set up more mature processes, like building a cost model, you should focus on basic cost management best practices to get your workload started without causing problems with the budget.
 
@@ -64,8 +64,7 @@ One of the first decisions the workload team needs to make is whether they shoul
 To help you make the right decision for your team, evaluate the following points.
 
 - *The desired level of control:* Decide how much control you need over the functionality of a solution.
-
-- *The necessary amount of customization:* Determine the level of customization that you need to adapt to your evolving workload.
+- *The necessary amount of customization:* Determine the level of customization suitable for your evolving workload.
 - *The expected time to market:* Understand stakeholders' expectations for bringing your workload to market and how you can best meet that timeline.
 - *The required technical expertise:* Determine how much expertise that you need to retain to build and operate a solution.
 - *The expected operational burden:* Estimate how much time and effort operations teams need to support a solution.
@@ -76,9 +75,9 @@ These evaluations help you understand the total costs of each option so that you
 
 Invest in upskilling in areas where your team lacks knowledge. Strong cloud skills facilitate good long-term decision-making and optimize your daily productivity. Consider training or certifications that your cloud provider or other partners offer. Enhancing the productivity of your workload team and other decision-makers saves you time and money by minimizing costly mistakes.
 
-# [**Level 2: Financial assessment**](#tab/level2)
+# [**Level 2: Spend visibility**](#tab/level2)
 
-![Goal icon](../_images/goal.svg) **Ensure visibility into spending patterns through systematic analysis and establish team accountability for regular cost data reviews.**
+![Goal icon](../_images/goal.svg) **Create systematic cost analysis and reporting to understand spending patterns.**
 
 After the initial deployment, it's common to focus on developing new features and driving sales while overlooking cost management. At Level 2, spending is expected to increase, so you need to take a structured approach. Assess the costs of tools and technologies, build a baseline, and identify key cost drivers.
 
@@ -133,9 +132,9 @@ Scaling out is preferred because it's more cost-effective and easier to implemen
 
 Consider performance testing and metrics, and scale out or scale up based on your evaluation.
 
-# [**Level 3: Incorporate signals**](#tab/level3)
+# [**Level 3: Signal integration**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating feedback from users and stakeholders.**
+![Goal icon](../_images/goal.svg) **Incorporate user feedback and operational signals to refine cost optimization strategies.**
 
 In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it's important to expand your feedback loop to include both internal and external users, as well as other stakeholders. As you make cost optimization refinements to your workload, you also need to consider trade-offs with other pillars, especially the Performance Efficiency and Reliability pillars.
 
@@ -258,9 +257,9 @@ Streamlining development practices enhances build velocity. This approach helps 
 
 Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate feedback from both internal and external users and stakeholders to identify the features that most enhance user satisfaction and drive higher engagement. In some scenarios, features might be designed specifically to optimize costs. Compare these features with functional priorities to assess their relative value.
 
-# [**Level 4: Apply production learnings**](#tab/level4)
+# [**Level 4: Production insights**](#tab/level4)
 
-![Goal icon](../_images/goal.svg) **Apply insights from operating in production to achieve cost optimizations.**
+![Goal icon](../_images/goal.svg) **Drive targeted cost optimizations by using operational data from production.**
 
 The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about how it typically runs. At this level, apply these production insights to your environment.
 
@@ -316,9 +315,9 @@ Appointing a cost directly responsible individual (DRI) helps the workload team 
 
 The DRI also serves as the frontline of defense against higher-than-expected workload costs. DRIs can help identify the cause of these high costs and proactively work with the workload team to reduce them to their expected range before they become a cost emergency.
 
-# [**Level 5: Advanced cost efficiency techniques**](#tab/level5)
+# [**Level 5: Optimize at scale**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) **Refine the workload and operational processes to achieve extra cost efficiencies.**
+![Goal icon](../_images/goal.svg) **Transform cost optimization into a competitive advantage through continuous innovation.**
 
 At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes already in place. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate forecasts, and applying advanced refinements. Consider the following recommendations to achieve these goals.
 
@@ -366,9 +365,6 @@ Research and adopt efficient development methodologies like Scrum, Kanban, and w
 
 Evaluate whether specific tasks can be offloaded to other teams. For example, a centralized cloud team might manage operational tasks for other business units or workloads, while a centralized security team might handle monitoring and testing. When you offload tasks, plan the handoff carefully, ensure clear communication among all involved teams, and follow established change management processes.
 
----
-
 ## Next steps
-<!-- Provide at least one next step and no more than three. Include some 
-context so the customer can determine why they would click the link.
--->
+
+- Review the [Cost Optimization design review checklist](./checklist.md) to get details on the recommendations.
