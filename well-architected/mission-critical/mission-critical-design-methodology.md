@@ -58,7 +58,7 @@ This means clearly identifying what _healthy_ and _unhealthy_ look like for each
 
 ## Evolve with Azure
 
-Design your architecture to be modular and flexible so it’s easier to adopt new features without major changes. Regularly review your design to stay current with Azure’s evolving services and capabilities. Since Azure updates frequently, aligning your architecture with its roadmap helps ensure your application stays optimized and future-ready.
+Design your architecture to be modular and flexible so it's easier to adopt new features without major changes. Regularly review your design to stay current with Azure's evolving services and capabilities. Prioritize Azure-native managed services for their lower operational overhead and better integration. Since Azure updates frequently, aligning your architecture with its roadmap helps ensure your application stays optimized and future-ready.
 
 > Refer to [Evolve with Azure](/azure/architecture/guide/design-principles/design-for-evolution) and [Azure updates](https://azure.microsoft.com/updates/) for the latest information about new services and features. 
 
@@ -68,7 +68,7 @@ Start your design journey by review how Well-Architected Framework pillars apply
 
 - [Foundational design principles](mission-critical-design-principles.md)
 
-Decisions in one design area can affect others. Review the considerations and recommendations to understand potential trade-offs and their broader impact. 
+Design areas are interconnected, so changes in one area may impact others. Start with the area most critical to your business, then review the considerations and recommendations to understand how your choices create trade-offs across the architecture.
 
 - [Fundamental design areas](mission-critical-overview.md#mission-critical-design-areas)
 
