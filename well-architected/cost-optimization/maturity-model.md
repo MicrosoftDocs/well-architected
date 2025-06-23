@@ -9,15 +9,15 @@ ms.topic: conceptual
 
 # Cost Optimization maturity model
 
-In the context of the Well-Architected Framework, cost optimization is about detecting spend patterns, prioritizing investments in critical areas, and optimizing in others to meet the organization's budget while meeting business requirements.
+This maturity model takes you on a journey from basic cost awareness to advanced optimization mastery. 
 
-[add art]
+Beginning with foundational practices like transparency and accountability, you'll gradually build sophisticated capabilities including systematic analysis, user-driven insights, production learnings, and ultimately advanced efficiency techniques. The progression is designed to transform your approach from simply reacting to cost surprises to proactively shaping financial outcomes that align with your business objectives.
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
-# [**Level 1: Trust and accountability**](#tab/level1)
+# [**Level 1: Cost ownership**](#tab/level1)
 
-![Goal icon](../_images/goal.svg) **Build out mechanisms to manage workload costs throughout its lifecycle.**
+![Goal icon](../_images/goal.svg) **Establish team accountability and foundational processes for managing workload costs throughout its lifecycle.**
 
 Level 1 of the maturity model helps workload teams understand their budget and set up processes and tools to manage their costs during the workload lifecycle. Before you set up more mature processes, like building a cost model, you should focus on basic cost management best practices to get your workload started without causing problems with the budget.
 
@@ -64,8 +64,7 @@ One of the first decisions the workload team needs to make is whether they shoul
 To help you make the right decision for your team, evaluate the following points.
 
 - *The desired level of control:* Decide how much control you need over the functionality of a solution.
-
-- *The necessary amount of customization:* Determine the level of customization that you need to adapt to your evolving workload.
+- *The necessary amount of customization:* Determine the level of customization suitable for your evolving workload.
 - *The expected time to market:* Understand stakeholders' expectations for bringing your workload to market and how you can best meet that timeline.
 - *The required technical expertise:* Determine how much expertise that you need to retain to build and operate a solution.
 - *The expected operational burden:* Estimate how much time and effort operations teams need to support a solution.
@@ -76,9 +75,9 @@ These evaluations help you understand the total costs of each option so that you
 
 Invest in upskilling in areas where your team lacks knowledge. Strong cloud skills facilitate good long-term decision-making and optimize your daily productivity. Consider training or certifications that your cloud provider or other partners offer. Enhancing the productivity of your workload team and other decision-makers saves you time and money by minimizing costly mistakes.
 
-# [**Level 2: Financial assessment**](#tab/level2)
+# [**Level 2: Spend visibility**](#tab/level2)
 
-![Goal icon](../_images/goal.svg) **Ensure visibility into spending patterns through systematic analysis and establish team accountability for regular cost data reviews.**
+![Goal icon](../_images/goal.svg) **Create systematic cost analysis and reporting to understand spending patterns.**
 
 After the initial deployment, it's common to focus on developing new features and driving sales while overlooking cost management. At Level 2, spending is expected to increase, so you need to take a structured approach. Assess the costs of tools and technologies, build a baseline, and identify key cost drivers.
 
@@ -133,9 +132,9 @@ Scaling out is preferred because it's more cost-effective and easier to implemen
 
 Consider performance testing and metrics, and scale out or scale up based on your evaluation.
 
-# [**Level 3: Incorporate signals**](#tab/level3)
+# [**Level 3: Signal integration**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Refine cost optimization strategies by gathering and incorporating feedback from users and stakeholders.**
+![Goal icon](../_images/goal.svg) **Incorporate user feedback and operational signals to refine cost optimization strategies.**
 
 In the early stages of workload development and operations, you might rely on your internal development feedback loop to optimize your workload. At this maturity level, it's important to expand your feedback loop to include both internal and external users, as well as other stakeholders. As you make cost optimization refinements to your workload, you also need to consider trade-offs with other pillars, especially the Performance Efficiency and Reliability pillars.
 
@@ -258,9 +257,9 @@ Streamlining development practices enhances build velocity. This approach helps 
 
 Evaluate your feature development strategy to ensure that valuable features are prioritized. Incorporate feedback from both internal and external users and stakeholders to identify the features that most enhance user satisfaction and drive higher engagement. In some scenarios, features might be designed specifically to optimize costs. Compare these features with functional priorities to assess their relative value.
 
-# [**Level 4: Apply production learnings**](#tab/level4)
+# [**Level 4: Production insights**](#tab/level4)
 
-![Goal icon](../_images/goal.svg) **Apply insights from operating in production to achieve cost optimizations.**
+![Goal icon](../_images/goal.svg) **Drive targeted cost optimizations by using operational data from production.**
 
 The Level 4 stage of the maturity model assumes that you have deployed into production and have been operating your workload for enough time to gather useful information about how it typically runs. At this level, apply these production insights to your environment.
 
@@ -316,58 +315,56 @@ Appointing a cost directly responsible individual (DRI) helps the workload team 
 
 The DRI also serves as the frontline of defense against higher-than-expected workload costs. DRIs can help identify the cause of these high costs and proactively work with the workload team to reduce them to their expected range before they become a cost emergency.
 
-# [**Level 5: Advanced cost efficiency techniques**](#tab/level5)
+# [**Level 5: Optimize at scale**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) Refine the workload and operational processes to achieve additional cost efficiencies.
+![Goal icon](../_images/goal.svg) **Transform cost optimization into a competitive advantage through continuous innovation.**
 
-At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes in place already. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate forecasts, and through advanced refinements. Consider the following recommendations to achieve these goals.
+At Level 5 of the maturity model, you should have many cost optimization mechanisms and processes already in place. Level 5 focuses on maximizing your return on investment (ROI) by maintaining a consistent and predictable workload budget, producing highly accurate forecasts, and applying advanced refinements. Consider the following recommendations to achieve these goals.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
 > - [Enforce spending guardrails in your software development processes](#-enforce-spending-guardrails-in-your-software-development-processes)
 > - [Invest in knowledge building](#-invest-in-knowledge-building)
-> - [Optimize high availability and disaster recovery (DR) costs](#-optimize-high-availability-and-disaster-recovery-dr-costs)
+> - [Optimize high availability and disaster recovery costs](#-optimize-high-availability-and-disaster-recovery-costs)
 > - [Refine the workload design](#-refine-the-workload-design)
 > - [Evolve your team's operations](#-evolve-your-teams-operations)
 
 #### &#10003; Enforce spending guardrails in your software development processes
 
-Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your CI/CD pipeline to ensure they're included in every deployment.
+Use release gates to serve as spending guardrails by establishing cost-related criteria that must be met to pass the gate. For example, you can set spending limits to ensure that releases don't add unexpected costs to your workload budget. Incorporate these gates into your continuous integration and continuous delivery pipeline to ensure that they're included in each deployment.
 
 #### &#10003; Invest in knowledge building
 
-Empower your workload team to take ownership of cost optimization initiatives by developing a skills training program. Encourage team members to learn from industry thought leaders by attending conferences, webinars, and other industry events. Provide in-house training to cross-train skills and provide sandbox environments for hands-on learning experiences. Tie trainings back to cost optimization initiatives like optimizing scaling strategies, for example. Having highly skilled teams makes them more efficient and might help you minimize engaging third parties for new projects.
+Empower your workload team to take ownership of cost optimization initiatives by developing a skills training program. Encourage team members to learn from industry thought leaders by participating in conferences, webinars, and other relevant events. Provide in-house training to support cross-skilling and create sandbox environments for hands-on learning experiences. Align training with cost optimization initiatives like optimizing scaling strategies. Highly skilled teams improve efficiency and can reduce reliance on third parties for future projects.
 
-Ensure that your cost model includes planned trainings for a given fiscal period, like the upcoming quarter.
+Ensure that your cost model includes planned trainings for a specific fiscal period, like the upcoming quarter.
 
-#### &#10003; Optimize high availability and disaster recovery (DR) costs
+#### &#10003; Optimize high availability and disaster recovery costs
 
-After running real-world DR drills or after going through real-world DR incidents, you might find areas for cost optimization. You might find that you can afford a less expensive DR strategy for certain components while still meeting your recovery targets. For example, you might not need a hot spare design for a non-critical flow, so you can consider implementing a deploy on recovery approach instead. 
+After you run real-world disaster recovery (DR) drills or experience real-world DR incidents, you might find opportunities for cost optimization. You might discover that a less expensive DR strategy is sufficient for certain components while still meeting your recovery targets. For example, you might not need a hot spare design for noncritical flows. In this scenario, consider implementing a deploy-on-recovery approach instead.
 
-As part of your continuous improvement practices, regularly revisit your recovery targets to make sure they are appropriate for both reliability and cost requirements.
+As part of your continuous improvement practices, regularly revisit your recovery targets to ensure that they're appropriate for both reliability and cost requirements.
 
 #### &#10003; Refine the workload design
 
-After observing your workload in production for a significant amount of time, you might decide that you've reached the limits of optimizations that are worth investing in without refactoring elements of it. Refactoring can be a very expensive effort in terms of labor involved, but can be worth the investment if it offers long term cost savings along with extending the lifecycle of the workload by adopting more efficient technologies and management requirements. Consider the following strategies:
+After you observe your workload in production over an extended period, you might determine that you're at the limit of worthwhile optimizations without refactoring parts of it. Refactoring can be labor-intensive and costly. However, refactoring might be a worthwhile investment if it results in long-term cost savings. It can also extend the workload's life cycle by adopting more efficient technologies and management practices. Consider the following strategies:
 
-- *Combine similar flows.* Reduce redundancies or underutilized resources by combining similar flows onto the same resource or set of resources. For example, you can host multiple web apps on a single compute instance, or you can host multiple databases on a single logical server.
+- *Combine similar flows.* Reduce redundancies or underused resource usage by consolidating similar flows onto a shared resource or set of resources. For example, you can host multiple web apps on a single compute instance, or host multiple databases on a single logical server.
 
-- *Separate dissimilar flows.* Separating tasks with different computational needs onto dedicated resources improves efficiency and reduces costs. This process enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation based on each task's priority.
+- *Separate dissimilar flows.* Assigning tasks that have different computational needs to dedicated resources improves efficiency and reduces costs. This approach enhances scalability, fault tolerance, and adaptability by minimizing interference and optimizing resource allocation according to each task's priority.
 
-- *Rearchitect the workload to gain efficiencies.* Review the entire workload architecture to look for opportunities to improve efficiency. Favor a microservices design and explore using serverless or managed services that relieve operational burden and can easily be right-sized through automatic scaling. An end goal for your architecture might be a point where you can automatically deploy nonproduction environments when they are needed for deployment purposes and destroy them afterwards, minimizing any wasted utilization costs.
+- *Rearchitect the workload to gain efficiencies.* Review the entire workload architecture to look for opportunities to improve efficiency. Favor a microservices design and explore by using serverless or managed services that relieve operational burden and can easily be right-sized through automatic scaling. An end goal for your architecture might be to automatically deploy nonproduction environments only when needed for deployment activities. These environments can then be destroyed afterward to minimize unnecessary usage costs.
 
 Continuously monitor and adjust resource sizes based on usage patterns to optimize costs.
 
 #### &#10003; Evolve your team's operations
 
-Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine if your chosen methodology is the best fit. Determine the costs of tasks per employee (known as unit costs) and look for opportunities to lower those costs. Look at the most expensive tasks and evaluate their return on investment. 
+Research and adopt efficient development methodologies like Scrum, Kanban, and waterfall. Reassess your team's efficiency regularly to determine whether your chosen methodology is the best fit. Determine the costs of tasks for each employee, known as *unit costs*, and look for opportunities to lower those costs. Review the most expensive tasks and evaluate their ROI.
 
-Determine whether tasks can be offloaded to other teams. For example, you might have a centralized cloud team that handles some operational tasks for other business units or workloads, or a centralized security team that handles security monitoring and testing. When you find opportunities to offload tasks, carefully plan the handoff with clear communications across involved teams and follow good change management processes.
-
----
+Evaluate whether specific tasks can be offloaded to other teams. For example, a centralized cloud team might manage operational tasks for other business units or workloads, while a centralized security team might handle monitoring and testing. When you offload tasks, plan the handoff carefully, ensure clear communication among all involved teams, and follow established change management processes.
 
 ## Next steps
-<!-- Provide at least one next step and no more than three. Include some 
-context so the customer can determine why they would click the link.
--->
+
+- Review the [Cost Optimization design review checklist](./checklist.md) to get details on the recommendations.

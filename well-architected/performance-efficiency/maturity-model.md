@@ -1,4 +1,4 @@
----
+ ---
 title: Performance Efficiency Maturity Model
 description: Understand the maturity model levels of the performance efficiency pillar.
 author: claytonsiemens77
@@ -11,15 +11,17 @@ ms.topic: conceptual
 
 Performance Efficiency is about maintaining user experience even when there's an increase in load by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-[add art]
+This maturity model guides you through a strategic journey of performance optimization by scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Example alt-text."::: 
+You'll start by selecting the right components and establishing performance targets, then progress to measuring and monitoring your workload's behavior. As you mature, you'll incorporate real user feedback to refine your approach, leverage production insights for targeted improvements, and ultimately achieve advanced optimization through experimentation and automation. Each stage builds upon the previous one, transforming your performance strategy from reactive troubleshooting to proactive efficiency engineering.
 
-# [**Level 1: Establish performance targets**](#tab/level1)
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
-![Goal icon](../_images/goal.svg) **Choose workload components that provide only the necessary performance capabilities.**
+# [**Level 1: Set targets**](#tab/level1)
 
-Level 1 of the maturity model focuses on gathering performance expectations and choosing cloud services that help you meet those expectations. At this level, you investigate those resources and components to find the best fit. Prioritize services that provide only the necessary performance capabilities. This approach helps control costs and maintain your development speed.
+![Goal icon](../_images/goal.svg) **Establish clear performance expectations and select appropriately sized components that align with your requirements.**
+
+Level 1 of the maturity model focuses on gathering performance expectations and choosing cloud services that help you meet those expectations. At this level, you investigate those resources and components to find the best fit. Prioritize services that provide only the necessary performance capabilities. This approach helps control costs and maintains your development speed.
 
 **Key strategies**
 > [!div class="checklist"]
@@ -67,9 +69,9 @@ Based on the answers to these questions, [choose the best data service](/azure/a
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Don't overengineer your data components by choosing different data services for components that you can consolidate into a single data store. Strike a balance between performance versus cost and complexity.
 
-# [**Level 2 - Baseline performance measurements**](#tab/level2)
+# [**Level 2 - Baseline metrics**](#tab/level2)
 
-![Goal icon](../_images/goal.svg) **Begin measuring performance by using defined metrics and plan for optimization.**
+![Goal icon](../_images/goal.svg) **Implement comprehensive performance monitoring to gain visibility into your workload's behavior and identify optimization opportunities.**
 
 Level 2 of the Performance Efficiency pillar focuses on using information about your workload to inform your performance optimizations. The first step is to identify critical workload flows from a performance perspective. Next, break down your workload into its components and set measurable targets and metrics that you can capture and analyze for future optimizations. Finally, you should investigate design patterns that might help you enhance your performance efficiency and perform an initial capacity planning exercise. These activities help you build a plan for the immediate future of your workload. This approach ensures that performance doesn't suffer as the workload evolves.
 
@@ -135,9 +137,9 @@ Collect application performance data like throughput, latency, and completion ti
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Ensure that you set up log rotation and retention policies because the amount of data that you collect and store can grow quickly and costs can increase unexpectedly.
 
-# [**Level 3: Incorporate performance signals**](#tab/level3)
+# [**Level 3: Incorporate signals**](#tab/level3)
 
-![Goal icon](../_images/goal.svg) **Increase performance efficiency through internal and external feedback.**
+![Goal icon](../_images/goal.svg) **Leverage real user insights and system feedback to drive targeted performance improvements that enhance user experience.**
 
 Level 3 of the Performance Efficiency pillar focuses on incorporating internal and external signals to refine performance targets, workload design and configurations, and related operational practices. In earlier maturity levels, you might have set performance targets and configurations based on development velocity needs and internal testing. As you evolve your workload, incorporating feedback from internal and external users and stakeholders helps ensure realistic performance targets for your production workload. This approach allows you to meet those targets without compromising requirements for other pillars.
 
@@ -220,9 +222,9 @@ Another critical testing function is to build your performance baseline. Baselin
 
 Foster an environment of continuous improvement where teams learn from production and listen to internal and external feedback. Equip workload teams with the necessary skills and mindset to optimize performance and handle demand fluctuations. Allocate time for monitoring and addressing performance problems. Set clear expectations with visible performance targets, baselines, and acceptable deviation thresholds.
 
-# [**Level 4: Learn from experience**](#tab/level4)
+# [**Level 4: Learn and adjust**](#tab/level4)
 
-![Goal icon](../_images/goal.svg) **Apply what you learn from operating in production to help you achieve performance efficiency.**
+![Goal icon](../_images/goal.svg) **Transform production insights into systematic performance enhancements through data-driven decision making and proactive optimization.**
 
 Level 4 of the maturity model assumes that your workload is in production and has been operating for enough time to collect useful insights into how it typically operates. At this level, you should use this information to make necessary updates and further improvements.
 
@@ -309,51 +311,50 @@ Investigate and test new platform features that become available to determine if
 
 Proactively optimizing performance means improving your workload's efficiency before problems occur by identifying bottlenecks and implementing optimizations. Based on analysis, make specific improvements through code changes, infrastructure adjustments, or configuration updates.
 
-# [**Level 5: Advanced performance optimization techniques**](#tab/level5)
+# [**Level 5: Tune continuously**](#tab/level5)
 
-![Goal icon](../_images/goal.svg) **Implement advanced performance optimizations**
+![Goal icon](../_images/goal.svg) **Achieve peak performance through experimentation, automation, and cutting-edge optimization techniques that deliver measurable business value.**
 
-Level 5 of the maturity model focuses on finding opportunities to make valuable performance refinements across your workload.  Adopt an experimentation-based approach to your optimization efforts. Revisit workload design areas like deployment practices, monitoring and debugging, and operational automation to find further optimization opportunities. Adopt a continuous improvement approach to regularly review your workload design and operational practice, looking for improvement opportunities. Use good change management processes to ensure that improvements are made safely and efficiently.
+Level 5 of the maturity model focuses on identifying opportunities to make valuable performance refinements across your workload. Take an experimentation-based approach to your optimization. Revisit workload design areas such as deployment practices, monitoring and debugging, and operational automation to find further improvements. Adopt a continuous improvement mindset by regularly reviewing workload design and operational practices. Use established change management processes to ensure that improvements are implemented safely and efficiently.
 
 **Key strategies**
+>
 > [!div class="checklist"]
 >
 > - [Optimize performance through experimentation](#-optimize-performance-through-experimentation)
 > - [Optimize deployment and feature releases](#-optimize-deployment-and-feature-releases)
-> - [Optimize the performance of monitoring and debugging processes](#-optimize-the-performance-of-monitoring-and-debugging-processes)
+> - [Optimize the performance of monitoring and debugging processes](#-optimize-monitoring-and-debugging-processes)
 > - [Expand operations automation](#-expand-operations-automation)
 
 #### &#10003; Optimize performance through experimentation
 
-Take a proactive approach to achieving efficiencies through experimentation. Start with a hypothesis about an update to the workload that you expect will provide a measurable performance increase and build out a test environment to prove or refute that hypothesis. They hypothesis should be based on observed performance data that identifies a bottleneck or inefficiency. The test should mirror real-world behavior as much as possible to return a valid outcome. After proving your hypothesis, evaluate the return on investment (ROI) of implementing the change to determine if it is valuable enough to move forward. The ROI evaluation should consider all other Well-Architected Framework pillars. If the trade-offs that you'll need to make for other pillars are acceptable, the change is valuable enough to move forward with.
+Take a proactive approach to improving efficiency through experimentation. Begin with a hypothesis for a workload update that you expect to deliver measurable performance gains, based on observed performance data that identifies a bottleneck or inefficiency. Build a test environment that closely mimics real-world conditions as much as possible to validate or refute your hypothesis. After you prove your hypothesis, assess the return on investment (ROI) of the change to decide whether it's worth implementing. Include all Azure Well-Architected Framework pillars in your ROI evaluation. If the trade-offs that you need to make for other pillars are acceptable, the change is likely worth pursuing.
 
 #### &#10003; Optimize deployment and feature releases
 
-At Level 5, you should have a standardized upgrade process in place that works reliably. At this level, reevaluate your processes and determine whether your strategy is the best fit for your operations efficiency. Determine whether blue-green, canary, or another deployment model is the most efficient for your organization. Consider using feature flags to easily roll out and rollback features to groups of users. Ensure your backup strategy allows you to recover quickly to a known-good state. 
+At Level 5, you should have a standardized upgrade process in place that functions reliably. At this level, reevaluate your processes to determine whether your current strategy is the best fit for operational efficiency. Assess whether blue-green, canary, or another deployment model aligns best with your organization's needs. Consider using feature flags to easily roll out and roll back features to specific user groups. Ensure that your backup strategy supports fast recovery to a known-good state.
 
-#### &#10003; Optimize the performance of monitoring and debugging processes
+#### &#10003; Optimize monitoring and debugging processes
 
-Collecting logs and telemetry from your components has an inherent effect on performance. Measure the impact on your workload of your monitoring platform including logging, telemetry, instrumentation, and remote debugging, and look for areas of optimization. If there are processes that degrade performance more than they benefit your observability, consider reconfiguring or disabling those processes. As part of your continuous improvement practices, regularly review the monitoring data you're collecting to ensure that you're only collecting enough **valuable** information to get the performance insights you need.
+Collecting logs and telemetry from your components inherently affects your performance. Measure how your monitoring platform affects your workload, including elements like logging, telemetry, instrumentation, and remote debugging. Identify opportunities for optimization. If any of these processes reduce performance more than they improve observability, consider reconfiguring or disabling them. As part of your continuous improvement practices, regularly review the monitoring data that you collect to ensure that you're gathering only the most valuable information for the performance insights that you need.
 
-Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that don't provide enough information to easily understand what the nature of the performance issue is and what components are affected.
+Reevaluate your performance alerting to determine whether you're only receiving valuable alerts. Remove alerts that aren't actionable and reconfigure alerts that lack sufficient information to clearly understand the nature of the performance problem and the affected components.
 
 #### &#10003; Expand operations automation
 
-Look for opportunities to expand your automation of operational tasks to achieve further efficiencies. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Examples of performance related tasks include:
+Look for opportunities to expand your automation of operational tasks to achieve further efficiencies. You should have many repetitive operational tasks automated at Level 5, so take a comprehensive look at operations to identify other valuable automation targets. Consider the following performance-related tasks:
 
-- *Performance testing:* Use well-established, industry standard tools to simulate workloads.
+- *Performance testing:* Use well-established, industry-standard tools to simulate workloads.
 
-- *Deployments:* Implement continuous integration and continuous deployment (CI/CD) tools for consistent and efficient deployments.
+- *Deployments:* Implement continuous integration and continuous deployment tools for consistent and efficient deployments.
 
 - *Incident management:* Automate alert routing, ticket creation, and assignments.
 
 - *Remediation actions:* Automate actions like restarting services and adjusting resource allocations.
 
-- *Self-healing mechanisms:* Build capabilities to automatically fix known performance issues.
+- *Self-healing mechanisms:* Build capabilities to automatically fix known performance problems.
 
----
 
 ## Next steps
-<!-- Provide at least one next step and no more than three. Include some 
-context so the customer can determine why they would click the link.
--->
+
+- Review the [Performance Efficiency design review checklist](checklist.md) to get details on the recommendations.

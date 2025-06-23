@@ -17,8 +17,6 @@ When systems go live in production, operations become even more advanced. Teams 
 
 The most mature stage is all about optimization and innovation. Here, teams operate at scale, continuously adapting systems in real time to meet evolving business needs and technological shifts. However, this isn't a fixed destination; it's a dynamic mindset of always improving, always adapting.
 
-:::image type="content" source="../_images/operational-excellence.svg" alt-text="Example alt-text.":::
-
 The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
 
@@ -55,7 +53,7 @@ Initially, use established industry standards to incorporate standardization. Op
 
 #### &#10003; Set up source control processes
 
-Based on the scale of the application, decide how to structure source code. For larger systems, each team should have its own processes for building and deploying components they are responsible for. They should have clearly defined interfaces that allow for component discoverability and sharing with other parts of the system. Select a source control technology and set up processes to ensure team members don't interfere with each other's work.
+Based on the scale of the application, decide how to structure source code. For larger systems, each team should have its own processes for building and deploying components they're responsible for. They should have clearly defined interfaces that allow for component discoverability and sharing with other parts of the system. Select a source control technology and set up processes to ensure team members don't interfere with each other's work.
 
 Similarly, a single deployment pipeline might be more effective for smaller scale applications. This simplifies coordination and might also be better for reliability. However, it can be challenging to update or migrate specific parts of the system. 
 
@@ -287,7 +285,7 @@ For example, networking infrastructure changes should be less frequent than appl
 
 #### &#10003; Develop a health model
 
-After you have a basic monitoring system in place, combine business context with monitoring data to quantify the overall health status of workload components and the overall status. This exercise, known as *health modeling*, involves contextualizing monitoring values from infrastructure and applications with business context. To build an effective health model, consider the following key principles:
+After you've a basic monitoring system in place, combine business context with monitoring data to quantify the overall health status of workload components and the overall status. This exercise, known as *health modeling*, involves contextualizing monitoring values from infrastructure and applications with business context. To build an effective health model, consider the following key principles:
 
 - **Give system-observed data context.** Setting thresholds is an important part of health modeling. To ensure that thresholds are meaningful to your workload, provide numeric values with context. For example, while high CPU usage between 70% and 90% might generally indicate an **unhealthy** status in one workload, it could be **healthy** for another workload that efficiently uses available resources.
 
@@ -515,7 +513,7 @@ Consider the following examples:
 
 Day-2 operations focus on implementing safe changes. Each change goes through different environments that are set up for specific purposes such as development, testing, and security. By following Level 4 guidance, it's assumed that you've automated the creation of those environments.
 
-At Level 5, consider moving away from having multiple long-standing environments for various purposes. Instead, create separate, automated, temporary environments for tasks like feature development or testing. Each environment should align with the life cycle of its corresponding code branch. When a feature branch is created, automatically set up an environment with sample data, load tests, and cloud resources to simulate production. After the work is complete or changes are integrated, discard that environment. This approach prevents the parallel development of other features from interfering with the current feature and can help reduce cost.
+Unlike Levels 1 to 4, which focus on looking internally at production readiness and managing workload change, Level 5 is an opportunity for workload team to share their designs, successes, failures with other workloads across the organization. Workload teams don't need to experience failure themselves in order to learn how to avoid it if they can preemptively learn it from others who have gone before them.
 
 #### &#10003; Share knowledge and contribute to organizational maturity
 
@@ -535,4 +533,4 @@ Follow the approach and capabilities described in [Start your platform engineeri
 
 ### Next steps
 
-TBD
+- Review the [Operational Excellence design review checklist](checklist.md) to get details on the recommendations.

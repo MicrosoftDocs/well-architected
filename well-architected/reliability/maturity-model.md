@@ -21,8 +21,6 @@ After the system is live, the emphasis moves to managing the challenges of produ
 
 The final level runs indefinitely, and staying resilient is its goal. This level represents the evolution beyond technical controls to architectural adaptability. This level focuses on enabling systems to withstand new and unforeseen risks as workloads evolve and grow.
 
-:::image type="content" source="../_images/reliability.svg" alt-text="Reliability pillar diagram showing five progressive maturity levels: resilient foundation, self-preservation, recovery readiness, maintain stability, and stay resilient.":::
-
 The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
 # [**Level 1: Get resilient**](#tab/level1)
@@ -367,7 +365,7 @@ FMA requires you to identify potential points of failure within your workload an
 
 It's important to classify actions as *preventative* or *reactive*. Preventative actions identify risks before they cause an outage, which reduces their likelihood or severity. Reactive actions address problems to mitigate a degraded health state or an outage.
 
-In the e-commerce example application, the workload team wants to do FMA to prepare themselves for a major event. One of the key user flows is adding items to the card. The components that are part of the flow are the front end, CartAPI, ProductCatalogAPI, UserProfileAPI, PricingAPI, Azure Cosmos DB, and Azure Event Hubs.
+In the e-commerce example application, the workload team wants to do FMA to prepare themselves for a major event. One of the key user flows is adding items to the cart. The components that are part of the flow are the front end, CartAPI, ProductCatalogAPI, UserProfileAPI, PricingAPI, Azure Cosmos DB, and Azure Event Hubs.
 
 | Problem | Risk | Potential source | Severity | Likelihood | Actions |
 | :-------| :------| :------------------| :----------| :------------| :---------|
@@ -587,8 +585,10 @@ When you choose a partitioning technique, consider the following reliability ben
 
 - **Improved data management:** Hot-cold partitioning allows different levels of data management to be applied to each storage tier. For example, moving archival data to a separate store helps prevent slowdowns in operations and backups. Similarly, not all log data needs to be stored in a relational database. It can be stored in another data store while active workload data remains relational.
 
-- **Tailored reliability policies:** Different reliability policies can be applied to help ensure that each partition has the right level of resiliency and prevent any single store from becoming a bottleneck. Hot partitions can be fully redundant, including zone-redundancy and geo-redundancy, while cold partitions rely on backups. An added reliability benefit is that you can reduce the blast radius of some types of failures. For example, if a failure affects one shard, it might not affect the other shards.
+- **Tailored reliability policies:** Different reliability policies can be applied to help ensure that each partition has the right level of resiliency and prevents any single store from becoming a bottleneck. Hot partitions can be fully redundant, including zone-redundancy and geo-redundancy, while cold partitions rely on backups. An added reliability benefit is that you can reduce the blast radius of some types of failures. For example, if a failure affects one shard, it might not affect the other shards.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** It can be difficult to maintain or modify partitions because of the strong interdependencies between different data partitions. These changes might affect the ability to verify data consistency and integrity, especially when compared to a single data store. As the number of partitions increases, the need for robust processes to maintain data integrity becomes more crucial. Without these measures, reliability might be compromised.
 
 ## Next steps
+
+- Review the [Reliability design review checklist](checklist.md) to get details on the recommendations.
