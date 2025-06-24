@@ -73,7 +73,7 @@ sections:
         componentType: text
         links:
           - componentType: link
-            url: what-is-well-architected-framework#adopt-a-maturity-model
+            url: what-is-well-architected-framework.md#adopt-a-maturity-model
             text: Adopt a maturity model
 # cards section (4)
   - componentType: grid
