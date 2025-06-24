@@ -66,15 +66,15 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/cost-optimization-flow-1.jpg
-        alt: "Diagram showing the updated cost optimization principle headers."
-      - title: Featured update - Cost Optimization
-        summary: "Cost optimization doesn't always mean minimizing costs, it involves making informed tradeoffs—balancing expenses with key factors like security, scalability, and resilience. Design principles and tools like checklists can help ensure your tech decisions stay aligned with evolving business goals, so you can deliver value without compromising organizational goals."
+        src: ./_images/maturity-model.png
+        alt: "Diagram showing the maturity model levels with descriptions."
+      - title: Featured update - Adopt a maturity model
+        summary: "The Well-Architected Framework provides a structured five-level maturity model to help workload teams incrementally adopt best practices. Start with foundational Azure capabilities, then evolve through building workload assets, achieving production readiness, learning from operations, and finally future-proofing with agility. This phased approach works for all teams—from startups establishing foundational strategies to mature enterprises optimizing existing workloads—allowing you to balance architectural improvements with business requirements at every stage."
         componentType: text
         links:
           - componentType: link
-            url: ./cost-optimization/principles.md
-            text: Cost Optimization design principles
+            url: what-is-well-architected-framework#adopt-a-maturity-model
+            text: Adopt a maturity model
 # cards section (4)
   - componentType: grid
     title: Pillars
