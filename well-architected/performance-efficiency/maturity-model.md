@@ -1,4 +1,4 @@
- ---
+---
 title: Performance Efficiency Maturity Model
 description: Understand the maturity model levels of the performance efficiency pillar.
 author: claytonsiemens77
