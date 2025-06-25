@@ -3,13 +3,26 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 06/03/2025
+ms.date: 06/24/2025
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## June 2025
+
+### Maturity models
+
+This month, we introduced maturity models for the Azure Well-Architected Framework. Maturity models help you assess your current state and identify areas for improvement across the five pillars of the framework. Each model provides a structured approach to evaluate your workload's architecture and operations, enabling you to prioritize enhancements and track progress over time.
+
+- [Reliability maturity model](./reliability/maturity-model.md)
+- [Security maturity model](./security/maturity-model.md)
+- [Cost Optimization maturity model](./cost-optimization/maturity-model.md)
+- [Operational Excellence maturity model](./operational-excellence/maturity-model.md)
+- [Performance Efficiency maturity model](./performance-efficiency/maturity-model.md)
+- [Assessment]
 
 ## May 2025
 
@@ -207,12 +220,3 @@ Find updated guidance on using flexible virtual machine scale sets instead of av
 ### Carrier Grade retirement
 
 - This month, we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.
-
-## June 2024
-
-### Updated articles
-
-- [Recommendations for defining reliability targets](./reliability/metrics.md): Find updated SLO and SLA guidance to help you set and measure reliability targets for your workload.
-
-- [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md): Learn how Azure carbon optimization can help you reduce the carbon footprint of your workload by providing granular emissions data.
-
