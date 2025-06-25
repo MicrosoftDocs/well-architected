@@ -119,7 +119,7 @@ In Azure Virtual Desktop, VMs are registered to a host pool and are assigned a t
 
 To prevent tokens from expiring, the Azure Virtual Desktop team should use automation to regularly turn on each VM. For instance, an automated solution might turn on each VM for 20 minutes every 90 days. Then each VM's token is refreshed before it expires or becomes invalid. The agent and side-by-side stack components are also updated.
 
-VMs that have been turned off for more than 90 days experience registration problems. To use a VM again, follow the steps in [Troubleshoot common Azure Virtual Desktop agent issues](/azure/virtual-desktop/troubleshoot-agent#your-issue-isnt-listed-here-or-wasnt-resolved). These instructions explain how to remove the VM from your host pool, reinstall the agent, and register the VM again with your host pool.
+VMs that have been turned off for more than 90 days experience registration problems. To use a VM again, follow the steps in [Troubleshoot common Azure Virtual Desktop agent issues](/troubleshoot/azure/virtual-desktop/troubleshoot-agent#your-issue-isnt-listed-here-or-wasnt-resolved). These instructions explain how to remove the VM from your host pool, reinstall the agent, and register the VM again with your host pool.
 
 ##### Recommendations
 
