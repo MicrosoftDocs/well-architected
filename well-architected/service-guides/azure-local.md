@@ -77,7 +77,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   **Improper Azure Local operations** can affect patching and upgrades, testing, and consistency of deployments. Here are some examples:
 >
->   - If the Azure Local platform doesn't _evolve with the latest hardware original equipment manufacturer (OEM) firmware, drivers, and innovations_, the platform might not take advantage of the latest resiliency features. Apply hardware OEM driver and firmware updates regularly. For more information, see [Solution Builder Extension updates for Azure Local](/azure/azure-local/update/solution-builder-extension?view=azloc-2504) or speak to your hardware OEM partner for how to obtain firmware and driver updates.
+>   - If the Azure Local platform doesn't _evolve with the latest hardware original equipment manufacturer (OEM) firmware, drivers, and innovations_, the platform might not take advantage of the latest resiliency features. Apply hardware OEM driver and firmware updates regularly. For more information, see [Solution Builder Extension updates for Azure Local](/azure/azure-local/update/solution-builder-extension) or speak to your hardware OEM partner for how to obtain firmware and driver updates.
 >
 >   - You must test the target environment for connectivity, hardware, and identity and access management before your deployment. Otherwise, you might deploy the Azure Local solution to an unstable environment, which can create reliability problems. You can use the [environmental checker tool in standalone mode](/azure-stack/hci/manage/use-environment-checker) to detect problems, even before the instance hardware is available.
 >
