@@ -531,6 +531,8 @@ Start with time-consuming or error-prone unplanned tasks that are cost-effective
 
 Follow the approach and capabilities described in [Start your platform engineering journey](/platform-engineering/journey).
 
+---
+
 ### Next steps
 
 - Review the [Operational Excellence design review checklist](checklist.md) to get details on the recommendations.

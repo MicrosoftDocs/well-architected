@@ -277,6 +277,8 @@ SIEM and SOAR solutions, such as [Microsoft Sentinel](/azure/sentinel/overview),
 
 At earlier maturity levels, you standardize security testing, including network, identity, and application assessments. At Level 5, consider investing in simulated attack testing, such as war game exercises and penetration testing. In some scenarios, you might be required to engage with a non-Microsoft vendor to perform penetration testing or other security testing to meet your compliance requirements. Research and evaluate reputable vendors to ensure that they provide the best value for your organization.
 
+---
+
 ## Next steps
 
 - Review the [Security design review checklist](./checklist.md) to get details on the recommendations.

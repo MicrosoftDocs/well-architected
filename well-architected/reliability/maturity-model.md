@@ -588,6 +588,8 @@ When you choose a partitioning technique, consider the following reliability ben
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** It can be difficult to maintain or modify partitions because of the strong interdependencies between different data partitions. These changes might affect the ability to verify data consistency and integrity, especially when compared to a single data store. As the number of partitions increases, the need for robust processes to maintain data integrity becomes more crucial. Without these measures, reliability might be compromised.
 
+---
+
 ## Next steps
 
 - Review the [Reliability design review checklist](checklist.md) to get details on the recommendations.
