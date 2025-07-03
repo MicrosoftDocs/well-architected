@@ -92,11 +92,11 @@ There are workload responsibilities throughout the life cycle of user interactio
 
     In addition to response feedback, collect feedback about the efficacy of the user experience. Collect engagement metrics through your monitoring stack of the system.
 
-    Ensure that the feedback mechanism provides functionality to allow users **to contest AI decisions**. For example, a financial institution may use AI to automatically pre-approve or reject credit applications, and users should be able to contest rejections. Establish clear procedures for the workload team to review and address contested decisions. 
+    Ensure that the feedback mechanism provides functionality to allow users **to contest AI decisions**. For example, a financial institution may use AI to automatically approve or reject credit applications, and users should be able to contest rejections. Establish clear procedures for the workload team to review and address contested decisions. 
 
 - **Apply ethical safeguards for AI-genereated audio and video.**  Users have the right to know when they're interacting with AI-generated media rather than human-created content. Implement clear disclosure mechanisms that inform users when content is AI-generated without disrupting the user experience, and provide options for human interaction when users prefer or require human oversight for sensitive scenarios. 
 
-   Consider implementing content watermarking or metadata tagging for AI-generated media to support transparency and traceability. Document your approach to handling requests for content verification and establish clear policies for content authenticity disclosure. 
+    Consider implementing content watermarking or metadata tagging for AI-generated media to support transparency and traceability. Document your approach to handling requests for content verification and establish clear policies for content authenticity disclosure. 
 
 ## Implement agentic AI safeguards 
 
