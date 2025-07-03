@@ -4,7 +4,7 @@ description: Learn how to deploy Azure Local so that you can create and manage W
 author: neilbird
 ms.author: nebird
 ms.topic: conceptual
-ms.date: 03/07/2025
+ms.date: 07/03/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: 
