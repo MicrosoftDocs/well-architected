@@ -4,7 +4,7 @@ description: Learn how to deploy Azure Local so that you can create and manage W
 author: neilbird
 ms.author: nebird
 ms.topic: conceptual
-ms.date: 06/28/2024
+ms.date: 03/07/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: 
@@ -17,7 +17,7 @@ categories:
 
 Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 
-This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
+This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local, for additional information review [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-local-baseline) in Azure Architecture Center. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
 > [!IMPORTANT]
 >
@@ -30,18 +30,18 @@ This article assumes you have an understanding of hybrid systems and have workin
 > Foundational architecture that demonstrates the key recommendations:  
 > [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
 
-#### Technology scope
+### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:
 
 - Azure Local (_platform_), version 23H2 and later
-- Azure Arc VMs (_workload_)
+- Azure Local VMs (_workload_)
 
 > [!NOTE]
 >
 > This article covers the preceding scope and provides checklists and recommendations that are organized by **platform architecture** and **workload architecture**. Platform concerns are the responsibility of the platform administrators. Workload concerns are the responsibility of the workload operator and application developers. These roles and responsibilities are distinct and can be owned by separate teams or individuals. Keep that distinction in mind when you apply the guidance.
 
-This guidance doesn't focus on specific resource types that you can deploy on Azure Local, such as [Azure Arc VMs](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Kubernetes Service (AKS)](/azure/aks/hybrid/cluster-architecture), and [Azure Virtual Desktop](/azure/virtual-desktop/azure-stack-hci-overview). When you deploy these resource types on Azure Local, refer to the respective workload guidance to design solutions that meet your business requirements.
+This guidance doesn't focus on specific resource types that you can deploy on Azure Local, such as [Azure Local VMs](/azure-stack/hci/manage/create-arc-virtual-machines), [Azure Kubernetes Service (AKS)](/azure/aks/hybrid/cluster-architecture), and [Azure Virtual Desktop](/azure/virtual-desktop/azure-stack-hci-overview). When you deploy these resource types on Azure Local, refer to the respective workload guidance to design solutions that meet your business requirements.
 
 ## Reliability
 
@@ -77,7 +77,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   **Improper Azure Local operations** can affect patching and upgrades, testing, and consistency of deployments. Here are some examples:
 >
->   - If the Azure Local platform doesn't _evolve with the latest hardware original equipment manufacturer (OEM) firmware, drivers, and innovations_, the platform might not take advantage of the latest resiliency features. Apply hardware OEM driver and firmware updates regularly. For more information, see [Azure Local solution catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
+>   - If the Azure Local platform doesn't _evolve with the latest hardware original equipment manufacturer (OEM) firmware, drivers, and innovations_, the platform might not take advantage of the latest resiliency features. Apply hardware OEM driver and firmware updates regularly. For more information, see [Solution Builder Extension updates for Azure Local](/azure/azure-local/update/solution-builder-extension?view=azloc-2504) or speak to your hardware OEM partner for how to obtain firmware and driver updates.
 >
 >   - You must test the target environment for connectivity, hardware, and identity and access management before your deployment. Otherwise, you might deploy the Azure Local solution to an unstable environment, which can create reliability problems. You can use the [environmental checker tool in standalone mode](/azure-stack/hci/manage/use-environment-checker) to detect problems, even before the instance hardware is available.
 >
@@ -112,7 +112,7 @@ Start your design strategy based on the [design review checklist for Reliability
 |Reserve the equivalent of [**one capacity disk worth of space per machine**](/azure-stack/hci/concepts/plan-volumes#reserve-capacity) within the Storage Spaces Direct storage pool.|If you choose to create workload volumes after you deploy an Azure Local instance (_Advanced option: "create required infrastructure volumes only"_), we recommend that you **leave 5% to 10% of the total pool capacity unallocated in the storage pool**. This reserved and unused, or free, capacity enables Storage Spaces Direct to repair "in-place" when a physical disk fails, which improves data resiliency and performance if a physical disk failure occurs.|
 |Ensure that all physical machines have network access to the list of [**required outbound HTTPS endpoints**](/azure-stack/hci/concepts/firewall-requirements) for Azure Local and Azure Arc.| To reliably manage, monitor, and operate Azure Local instances or workload resources, the required outbound network endpoints must have access, either directly or through a proxy server. A temporary interruption doesn't affect the running status of the workload but might affect manageability.|
 |If you opt to create workload volumes (_virtual disks_) manually, use the most appropriate [**resiliency type**](/azure-stack/hci/concepts/plan-volumes#choosing-the-resiliency-type) to maximize workload resiliency and performance. For any user volumes that you create manually after you deploy the instance, [create a storage path for the volumes in Azure](/azure-stack/hci/manage/create-storage-path). The volume can store workload VM configuration files, VM virtual hard disks (VHDs), and VM images via the storage path.|For Azure Local instances with three or more machines, consider using a three-way mirror to provide the highest resiliency and performance capabilities. We recommend that you use mirrored volumes for business-critical or mission-critical workloads.|
-|Consider implementing [**workload anti-affinity rules**](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure that the VMs that host multiple instances of the same service run on separate physical hosts. This concept is similar to "_availability sets_" in Azure.|Make all components redundant. For business-critical or mission-critical workloads, use multiple Azure Arc VMs or Kubernetes replica sets or pods to deploy multiple instances of your applications or services. This approach increases resiliency if an unplanned outage of a single physical machine occurs.|
+|Consider implementing [**workload anti-affinity rules**](/azure-stack/hci/manage/vm-affinity#anti-affinity-rule-examples) to ensure that the VMs that host multiple instances of the same service run on separate physical hosts. This concept is similar to "_availability sets_" in Azure.|Make all components redundant. For business-critical or mission-critical workloads, use multiple Azure Local VMs or Kubernetes replica sets or pods to deploy multiple instances of your applications or services. This approach increases resiliency if an unplanned outage of a single physical machine occurs.|
 
 ## Security
 
@@ -140,7 +140,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   We recommend that you enable Defender for Cloud on Azure Local. Enable the basic Defender for Cloud plan (_free tier_) by using Defender Cloud Security Posture Management to monitor and identify steps that you can take to secure your Azure Local platform, along with other Azure and Azure Arc resources.
 >
->   To benefit from the enhanced security features, including security alerts for individual servers and Azure Arc VMs, enable Microsoft Defender for Servers on your Azure Local instance machines and Azure Arc VMs.
+>   To benefit from the enhanced security features, including security alerts for individual servers and Azure Local VMs, enable Microsoft Defender for Servers on your Azure Local instance machines and Azure Local VMs.
 >
 >   - Use [Defender for Cloud](/azure-stack/hci/manage/manage-security-with-defender-for-cloud) to measure the security posture of Azure Local machines and workloads. Defender for Cloud provides a single pane of glass experience to help manage security compliance.
 >   - Use [Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) to monitor the hosted VMs for threats and misconfigurations. You can also enable endpoint detection and response capabilities on Azure Local machines.
@@ -163,13 +163,13 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   - Data-at-rest encryption is enabled on data volumes that you create during deployment. These data volumes include both infrastructure volumes and workload volumes. For more information, see [Manage BitLocker encryption](/azure-stack/hci/manage/manage-bitlocker).
 >
->   - Use [trusted launch for Azure Arc VMs](/azure-stack/hci/manage/trusted-launch-vm-overview) to improve security of Gen 2 VMs by using OS features of modern operating systems, such as Secure Boot, which can use a virtual Trusted Platform Module.
+>   - Use [trusted launch for Azure Local VMs](/azure-stack/hci/manage/trusted-launch-vm-overview) to improve security of Gen 2 VMs by using OS features of modern operating systems, such as Secure Boot, which can use a virtual Trusted Platform Module.
 >
 > - **Operationalize secret management**. Based on your organizational requirements, change the credentials that are associated with the deployment user identity for Azure Local. For more information, see [Manage secrets rotation](/azure-stack/hci/manage/manage-secrets-rotation).
 >
 > - (Azure Local platform architecture) **Enforce security controls**. Use Azure Policy to audit and enforce built-in policies, such as "_Application control policies should be consistently enforced_" or "_Encrypted volumes should be implemented_". You can use these Azure policies to audit security settings and assess the compliance status of Azure Local. For examples of the available policies, see [Azure policies](#azure-policies).
 >
-> - (Workload architecture) **Improve workload security posture with built-in policies**. To assess Azure Arc VMs that run on Azure Local, you can apply built-in policies via the security benchmark, Azure Update Manager, or the Azure Policy guest configuration extension. You can use various policies to check the following conditions:
+> - (Workload architecture) **Improve workload security posture with built-in policies**. To assess Azure Local VMs that run on Azure Local, you can apply built-in policies via the security benchmark, Azure Update Manager, or the Azure Policy guest configuration extension. You can use various policies to check the following conditions:
 >
 >   - Log Analytics agent installation
 >   - Out-of-date system updates that need to be up to date with the latest security patches
@@ -206,7 +206,7 @@ Azure Local incurs costs for hardware, software licensing, workloads, guest VMs 
 >
 > - (Azure Local platform architecture and workload architecture) **Optimize the cost of Azure Local hardware**. Choose a hardware OEM partner that aligns with your business and commercial requirements. To explore the certified list of validated machines, integrated systems, and premier solutions, see [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#catalog). Communicate your workload characteristics, size, quantity, and performance with your hardware partner so that you can rightsize a cost-effective hardware solution for the Azure Local machine and instance size.
 >
-> - (Azure Local platform architecture) **Optimize your licensing costs**. Azure Local software is licensed and billed on a "_per physical CPU core_" basis. Use existing on-premises core licenses with [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit) to reduce licensing costs for Azure Local workloads, such as Azure Arc VMs that run Windows Server, SQL Server, or AKS and Azure Arc-enabled Azure SQL Managed Instance. For more information, see [Azure Hybrid Benefit cost calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit).
+> - (Azure Local platform architecture) **Optimize your licensing costs**. Azure Local software is licensed and billed on a "_per physical CPU core_" basis. Use existing on-premises core licenses with [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit) to reduce licensing costs for Azure Local workloads, such as Azure Local VMs that run Windows Server, SQL Server, or AKS and Azure Arc-enabled Azure SQL Managed Instance. For more information, see [Azure Hybrid Benefit cost calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit).
 >
 > - (Azure Local platform architecture) **Save on environment costs**. Evaluate whether the following options can help optimize your resource usage.
 >
@@ -252,9 +252,9 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >    - [Azure Local (_platform_) network reference architecture and IP requirements](/azure-stack/hci/plan/cloud-deployment-network-considerations#network-design-framework)
 >
->    - Workloads deployed on Azure Local require [logical networks](/azure-stack/hci/manage/create-logical-networks). For specific examples, see [Network requirements for AKS clusters](/azure/aks/hybrid/aks-hci-network-system-requirements#networking-for-aks-cluster-vms), [Logical networks for Azure Arc VMs](/azure-stack/hci/manage/create-logical-networks), and [Virtual Desktop with Azure Local](/azure/virtual-desktop/azure-stack-hci-overview).
+>    - Workloads deployed on Azure Local require [logical networks](/azure-stack/hci/manage/create-logical-networks). For specific examples, see [Network requirements for AKS clusters](/azure/aks/hybrid/aks-hci-network-system-requirements#networking-for-aks-cluster-vms), [Logical networks for Azure Local VMs](/azure-stack/hci/manage/create-logical-networks), and [Virtual Desktop with Azure Local](/azure/virtual-desktop/azure-stack-hci-overview).
 >
-> - (Workload configuration) **Enable monitoring and alerting for workloads that you deploy on Azure Local**. You can use [Azure Monitor for virtual machines](https://aka.ms/vmmonitoringdocs), or [VM Insights for Arc VMs](https://aka.ms/vminsightsdocs), or use [Container Insights and managed Prometheus AKS clusters](/azure/azure-monitor/containers/kubernetes-monitoring-enable).
+> - (Workload configuration) **Enable monitoring and alerting for workloads that you deploy on Azure Local**. You can use [Azure Monitor for virtual machines](https://aka.ms/vmmonitoringdocs), or [VM Insights for Azure Local VMs](https://aka.ms/vminsightsdocs), or use [Container Insights and managed Prometheus AKS clusters](/azure/azure-monitor/containers/kubernetes-monitoring-enable).
 >
 >   Evaluate whether you should use a centralized Log Analytics workspace for your workload. For an example of a shared log sink (_data location_), see [Workload management and monitoring recommendations](/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-workloads#workload-management-and-monitoring-recommendations).
 >
@@ -338,9 +338,9 @@ Azure provides an extensive set of built-in policies related to Azure Local and 
 
 Review the [Azure Local built-in policies](/azure/governance/policy/samples/built-in-policies#stack-hci). Defender for Cloud has [new recommendations](/azure/defender-for-cloud/upcoming-changes#four-new-recommendations-for-azure-stack-hci-resource-type) that show the compliance state for the built-in policies. For more information, see [Built-in policies for Azure Security Center](/azure/governance/policy/samples/built-in-policies#security-center).
 
-If your workload runs on Azure Arc VMs that you deploy on Azure Local, consider built-in policies, such as denying the creation or modification of Extended Security Updates licenses. For more information, see [Built-in policy definitions for Azure Arc-enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
+If your workload runs on Azure Local VMs that you deploy on Azure Local, consider built-in policies, such as denying the creation or modification of Extended Security Updates licenses. For more information, see [Built-in policy definitions for Azure Arc-enabled workloads](/azure/governance/policy/samples/built-in-policies#azure-arc).
 
-Consider creating custom policies to provide extra governance for both the Azure Local resources and Azure Arc VMs that you deploy on an Azure Local instance. For example:
+Consider creating custom policies to provide extra governance for both the Azure Local resources and Azure Local VMs that you deploy on an Azure Local instance. For example:
 
 - Auditing Azure Local host registration with Azure
 - Ensuring that hosts run the latest OS version
