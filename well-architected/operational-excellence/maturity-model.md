@@ -242,7 +242,7 @@ Create distinct environments for different stages like dev/test, quality assuran
 
 #### &#10003; Perform sufficient testing
 
-At this level, decide on a strategy where testing is prioritized for the critical parts that the changes are likely to affect. Use the following steps to ensure a robust testing strategy:
+At this level, decide on a strategy where testing is prioritized for the critical parts of the system. Use the following steps to ensure a robust testing strategy:
 
 - **Define test cases.** Create test cases for application code, infrastructure templates, and configuration.
 
