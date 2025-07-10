@@ -453,7 +453,7 @@ You establish a well-architected workload on Azure as you progress through Level
 
 In the final stage, maturity means operating the workload at scale, which keeps it reliable and up-to-date. It also requires proficiency in identifying areas where the current design has reached its limits and preparing for changes in business requirements. Assumptions about constraints can become outdated as the ecosystem evolves. Staying static might result in regression because the environments, practices, and tools continue to evolve. Without investment in Level 5 approaches, your workload risks falling behind.
 
-Level 5 isn't an end goal or a technical checkpoint. It's a mindset shift focused on modernizing people, processes, tools, and technology. Operations are treated with the same rigor, investment, and innovation as the core application.
+Level 5 isn't an end goal or a technical checkpoint. It's a mindset shift focused on modernizing culture, processes, tools, and technology. Operations are treated with the same rigor, investment, and innovation that the workload's application receives.
 
 **Key strategies**
 >
