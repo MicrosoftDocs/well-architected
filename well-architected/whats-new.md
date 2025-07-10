@@ -3,7 +3,7 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 06/24/2025
+ms.date: 07/07/2025
 ms.topic: whats-new
 ---
 
@@ -24,12 +24,23 @@ This month, we introduced maturity models for the Azure Well-Architected Framewo
 - [Performance Efficiency maturity model](./performance-efficiency/maturity-model.md)
 - [Assessment]
 
+### New article
+
+- [Sustainable design for AI workloads on Azure](./sustainability/sustainable-ai-design.md): Find guidance about how to build AI workloads sustainably by incorporating environmental considerations into model design, data design, and operations phases. Learn how to reduce energy consumption and carbon footprint while maintaining performance and business requirements for AI workloads on Azure.
+
+### Updated articles
+
+- [Design methodology for mission-critical workloads on Azure](./mission-critical/mission-critical-design-methodology.md): We refreshed this article by restructuring the design methodology to focus on core design fundamentals through a principle-based approach. The article now emphasizes designing for reliability objectives, end-to-end automation, zero-downtime deployments, fast failure detection and recovery, and evolving with Azure. We streamlined the content to be more concise and actionable while maintaining focus on essential design principles.
+- [Mission-critical workloads](./mission-critical/mission-critical-overview.md): We restructured the mission-critical workloads overview article to improve user experience by adding a new **How to use this guidance?** section that provides step-by-step navigation instructions. We reorganized the content to improve the information hierarchy, moving from a reference-style presentation to a guided learning approach that walks users through the methodology, principles, and design areas systematically. We also renamed the **Illustrative examples** section to **Reference architecture examples** and added video content.
+- [Design principles of a mission-critical workload](./mission-critical/mission-critical-design-principles.md): We updated the **Next step** section. Both the link destination and link text changed from "Cross-cutting concerns" to "Architecture pattern" while keeping the same descriptive text about reviewing cross-cutting concerns for mission-critical workloads.
+- [Grounding data design for AI workloads on Azure](./ai/grounding-data-design.md): We refreshed our guidance on grounding data by making it clear that data can come from various sources, such as databases with vector indexes and external systems, not only traditional indexes. The updates reflect the benefits of larger context windows in newer models, clarifies previous terminology around fine-tuning data, and highlights the importance of validating grounding data through real-world queries. Other improvements include updated guidance about security trimming, support for multi-media embeddings, and new considerations for agentic solutions.
+
 ## May 2025
 
 ### Updated articles
 
 - [Recommendations for designing a reliable scaling strategy](./reliability/scaling.md): Explore updated content including: Choosing the right technology for scaling; Automating scaling operations, including use of Infrastructure-as-Code; Selecting and optimizing "scale units"; Scaling data stores using sharding and partitioning, and optimizing partition strategies; Monitoring scaling operations and log analysis.
-- [Design a data partitioning strategy](./design-guides/partition-data.md): This article can now be found under "Design guides." 
+- [Design a data partitioning strategy](./design-guides/partition-data.md): This article can now be found under "Design guides."
 - [Cost Optimization design principles](./cost-optimization/principles.md): Find actionable recommendations, such as treating different environments differently, using dynamic scaling, and collaborating with licensing teams. We added guidance on governance and cost guardrails and expanded examples and practical steps for budgeting, rate optimization, and maximizing resource utilization.
 - [Operational Excellence cloud design principles](./operational-excellence/principles.md): We refreshed this article, consolidating guidance and updating safe deployment practices.
 
@@ -39,7 +50,6 @@ This month, we made significant updates to some of our service guides. Here are 
 
 - [Architecture Best Practices for Azure Database for PostgreSQL](./service-guides/postgresql.md): Find recommendations for features like high availability, geo-redundant backup, private networking, Microsoft Entra ID integration, cost modeling, automation, monitoring, and intelligent performance tuning.
 - [Architecture Best Practices for Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md): Explore guidance updated to reflect current Azure Cosmos DB best practices, including new features, policy links, and recommendations for using Microsoft Entra ID, private endpoints, Azure Policy, and Azure Advisor.
-
 
 ## April 2025
 
