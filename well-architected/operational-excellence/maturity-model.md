@@ -242,7 +242,7 @@ Create distinct environments for different stages like dev/test, quality assuran
 
 #### &#10003; Perform sufficient testing
 
-At this level, testing is a non-negotiable strategy to reduce risks associated with changes. Each change is a potential risk and should be tested accordingly. Decide on a strategy where testing is prioritized for the critical parts that the changes are likely to affect. Use the following steps to ensure a robust testing strategy:
+At this level, decide on a strategy where testing is prioritized for the critical parts that the changes are likely to affect. Use the following steps to ensure a robust testing strategy:
 
 - **Define test cases.** Create test cases for application code, infrastructure templates, and configuration.
 
@@ -311,7 +311,7 @@ When your workload is in production, it's normal to deal with incidents like pla
 
 At previous levels, the workload team focuses on building features and getting the system into production. At this level, the focus shifts from building features to maintaining and improving a live system. With real users now relying on it, the priority becomes change management through efficient day-2 operations such as triage, maintenance, upgrades, and troubleshooting.
 
-The main strategy is to use real-world experience to improve operations. Testing also becomes a nonnegotiable practice. You must integrate testing into every part of development, from fixing bugs to adding features and refining incident response. Without it, serious problems might go undetected until they reach production.
+The main strategy is to use real-world experience to improve operations. Testing also becomes a non-negotiable practice to reduce risks associated with changes. You must integrate testing into every part of development, from fixing bugs to adding features and refining incident response. Without it, serious problems might go undetected until they reach production.
 
 At this level, technical debt becomes a real concern. Implementations that are less than ideal might go live, which can complicate maintenance. Teams should analyze the maintenance burden and focus on reducing it.
 
