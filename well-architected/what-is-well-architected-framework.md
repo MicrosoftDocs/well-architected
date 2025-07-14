@@ -151,6 +151,8 @@ In each level, explore the tabbed views that highlight the strategy focus for ea
 - [Operational Excellence maturity model](./operational-excellence/maturity-model.md)
 - [Performance Efficiency maturity model](./performance-efficiency/maturity-model.md)
 
+The guidance includes an assessment to help you pinpoint the recommendations that align with your target maturity level. Take the assessment here: [Azure Well-Architected Framework Maturity Model Assessment](/assessments/af7d9889-8cb2-4b8b-b6bb-e5a2e2f2a59c).
+
 ## Take a pragmatic approach
 
 It's important to adopt a pragmatic approach to avoid analysis paralysis. Here are some key considerations:
