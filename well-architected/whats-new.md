@@ -3,7 +3,7 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 07/07/2025
+ms.date: 07/14/2025
 ms.topic: whats-new
 ---
 
