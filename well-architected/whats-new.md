@@ -3,7 +3,7 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 07/07/2025
+ms.date: 07/14/2025
 ms.topic: whats-new
 ---
 
@@ -12,6 +12,17 @@ ms.topic: whats-new
 Find out about recent changes in the Azure Well-Architected Framework.
 
 ## June 2025
+
+### Maturity models
+
+This month, we introduced maturity models for the Azure Well-Architected Framework. Maturity models help you assess your current state and identify areas for improvement across the five pillars of the framework. Each model provides a structured approach to evaluate your workload's architecture and operations, enabling you to prioritize enhancements and track progress over time.
+
+- [Reliability maturity model](./reliability/maturity-model.md)
+- [Security maturity model](./security/maturity-model.md)
+- [Cost Optimization maturity model](./cost-optimization/maturity-model.md)
+- [Operational Excellence maturity model](./operational-excellence/maturity-model.md)
+- [Performance Efficiency maturity model](./performance-efficiency/maturity-model.md)
+- [Assessment](/assessments/af7d9889-8cb2-4b8b-b6bb-e5a2e2f2a59c)
 
 ### New article
 
