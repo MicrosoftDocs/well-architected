@@ -22,7 +22,7 @@ This month, we introduced maturity models for the Azure Well-Architected Framewo
 - [Cost Optimization maturity model](./cost-optimization/maturity-model.md)
 - [Operational Excellence maturity model](./operational-excellence/maturity-model.md)
 - [Performance Efficiency maturity model](./performance-efficiency/maturity-model.md)
-- [Assessment]
+- [Assessment](/assessments/af7d9889-8cb2-4b8b-b6bb-e5a2e2f2a59c)
 
 ### New article
 
