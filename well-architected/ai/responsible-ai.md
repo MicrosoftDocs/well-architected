@@ -114,7 +114,7 @@ Agentic AI systems require specialized responsible AI practices beyond tradition
 
 Different types of agents require varying levels of these safeguards because the potential risks and impact of their actions increase with their capabilities and autonomy. As agents move from simple retrieval tasks to complex autonomous decision-making, the need for comprehensive oversight and control mechanisms becomes more critical. 
 
-Additionally, the level of complexity increases significantly, making it more difficult to implement responsible AI principless like fairness and transparency: 
+Additionally, the level of complexity increases significantly, making it more difficult to implement responsible AI principles like fairness and transparency: 
 
 - **Retrieval agents (read-only):** Focus on data access controls and audit logging. 
 
