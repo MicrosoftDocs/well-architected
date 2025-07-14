@@ -69,15 +69,7 @@ Application secrets are confidential components that facilitate communication be
 
 ![Goal icon](../_images/goal.svg) **Strengthen deployment security and establish threat prevention measures across your workload infrastructure.**
 
-In Level 2 of the Security pillar, you enhance your baseline security configuration to help minimize potential threats when you deploy your workload.
-
-This level focuses on:
-
-- Strengthening your deployment practices.
-- Developing a maintenance plan for your code assets and workload components.
-- Developing a data classification framework.
-- Securing your network ingress points. 
-- Hardening the workload components. 
+In Level 2 of the Security pillar, you build on your baseline security configuration to further reduce potential threats during workload deployment. This stage emphasizes strengthening deployment practices, establishing a maintenance plan for code assets and workload components, developing a data classification framework, securing network ingress points, and hardening workload components—all essential steps to enhance your overall security posture.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off**: Securing your SDLC is an interative process that requires adopting new processes and sometimes a shift in mindset for developers. Applying controls on deployments can be frustrating for developers, so it helps to foster a culture of shared responsibility for security. While potentially slowing down development velocity, securing your deployments sets your team up for long-term success.
 These measures help you safely build your workload and get it ready for operational use while maintaining a solid security posture.
