@@ -116,11 +116,11 @@ Different types of agents require varying levels of these safeguards because the
 
 Additionally, the level of complexity increases significantly, making it more difficult to implement responsible AI principless like fairness and transparency: 
 
-- **Retrieval agents (read-only):** Focus on data access controls and audit logging 
+- **Retrieval agents (read-only):** Focus on data access controls and audit logging. 
 
-- **Task-based agents (read and write):** Require comprehensive authorization and transaction monitoring 
+- **Task-based agents (read and write):** Require comprehensive authorization and transaction monitoring. 
 
-- **Fully autonomous agents (multi-turn):** Need all three aspects with the highest level of oversight 
+- **Fully autonomous agents (multi-turn):** Need all three aspects with the highest level of oversight.
 
 ## Operationalize content safety measures
 
