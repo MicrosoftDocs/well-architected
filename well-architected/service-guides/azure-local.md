@@ -19,7 +19,7 @@ Azure Local extends Azure to customer-owned infrastructure, enabling local execu
 
 This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
-#### Technology scope
+### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:
 
