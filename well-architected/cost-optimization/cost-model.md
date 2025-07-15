@@ -124,7 +124,7 @@ Update the cost model whenever you change services. Use the cloud platform's cal
 
 The Azure [pricing calculator](https://azure.microsoft.com/pricing/calculator/) is a tool that allows you to estimate the hourly or monthly costs of your workload. Input the services that you plan to use to generate an estimate of the associated costs. This estimate helps you plan and budget for your Azure usage.
 
-The [total cost of ownership (TCO) calculator](https://azure.microsoft.com/pricing/tco/calculator/) helps you estimate the cost savings of migrating your workload to Azure. It takes into account factors such as infrastructure, management, and labor costs to provide an estimate of the total cost of ownership. This estimate helps you make informed decisions about the financial aspects of your Azure migration.
+[Azure Migrate](https://azure.microsoft.com/products/azure-migrate) allows you to automate the discovering and migration of your on-premises workloads and understand the cost savings of migrating them to Azure.  
 
 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that cloud service providers, like Azure, offer. It allows customers to use their own licenses for certain software products on the cloud. Use your own license to take advantage of discounted pricing for using that software on the cloud platform. Sometimes Azure Hybrid Benefit is part of the customer agreement between the cloud service provider and the customer. This agreement outlines the terms and conditions for utilizing the benefit and the eligible software products that are covered under it.
 

@@ -129,7 +129,7 @@ Windows event logs are data sources that Log Analytics agents collect on Windows
 
 A Windows event is triggered whenever the terms of the event are met in the environment. Machines in healthy states send fewer events than machines in unhealthy states.
 
-It's important to monitor the event logs for connection problems that can come up with the Azure Virtual Desktop agent. For more information, see [Troubleshoot common Azure Virtual Desktop agent issues](/azure/virtual-desktop/troubleshoot-agent).
+It's important to monitor the event logs for connection problems that can come up with the Azure Virtual Desktop agent. For more information, see [Troubleshoot common Azure Virtual Desktop agent issues](/troubleshoot/azure/virtual-desktop/troubleshoot-agent).
 
 ### Storage performance thresholds and monitoring
 

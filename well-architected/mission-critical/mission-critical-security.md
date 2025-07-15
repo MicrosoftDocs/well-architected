@@ -20,7 +20,6 @@ It's also important to note that there are often significant trade-offs associat
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](https://github.com/azure/alwayson)
 >
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets adopt a Zero Trust model to structure and guide the security design and implementation approach.
 
 ## Alignment with the Zero Trust model
 
