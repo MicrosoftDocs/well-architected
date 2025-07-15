@@ -19,16 +19,6 @@ Azure Kubernetes Service (AKS) is a managed Kubernetes service that you can use 
 
 This article assumes that, as an architect, you reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose AKS as the compute for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for AKS and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [AKS baseline architecture](/azure/architecture/reference-architectures/containers/aks/baseline-aks).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:
@@ -46,7 +36,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features of AKS and its dependencies. Extend the strategy to include more approaches as needed.
 
@@ -69,7 +59,8 @@ Start your design strategy based on the [design review checklist for Reliability
 > - (Cluster and workload) **Factor the AKS uptime service-level agreement (SLA) into your availability and recovery targets.** To define the reliability and recovery targets for your cluster and workload, follow the guidance in [Recommendations for defining reliability targets](/azure/well-architected/reliability/metrics). Then formulate a design that meets those targets.
 >
 > -  (Cluster and workload) Protect the AKS cluster service using Azure Backup by storing recovery points in a Backup vault and perform restore during any disaster scenario. To back up and restore the containerized applications and data running in AKS clusters, follow the guidance in the AKS backup overview for configuring protection.
-### Recommendations
+
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -89,7 +80,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of AKS.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Familiarize yourself with [AKS security concepts](/azure/aks/concepts-security) and evaluate the security hardening recommendations based on the [CIS Kubernetes benchmark](/azure/aks/cis-kubernetes). Extend the strategy to include more approaches as needed.
 
@@ -113,7 +104,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >   - Payment Card Industry Data Security Standard (PCI-DSS 3.2.1):  [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
 >   - DoD Impact Level 5 (IL5) support and requirements with AKS: [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service). 
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
@@ -136,7 +127,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to AKS and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -162,7 +153,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - (Cluster and workload) **Collect and analyze cost data.** The foundation of enabling cost optimization is the spread of a cost-saving cluster. Develop a cost-efficiency mindset that includes collaboration between finance, operations, and engineering teams to drive alignment on cost-saving goals and bring transparency to cloud costs.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
@@ -181,7 +172,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment. See [AKS best practices](/azure/aks/best-practices) and [Day-2 operations guide](/azure/architecture/operator-guides/aks/day-2-operations-guide) to learn about key considerations to understand and implement.
 
@@ -217,7 +208,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   See [Sustainable software engineering principles in AKS](/azure/aks/concepts-sustainable-software-engineering) to learn how to build sustainable and efficient AKS workloads.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -230,7 +221,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for AKS.
 
@@ -247,7 +238,7 @@ Start your design strategy based on the [design review checklist for Performance
 >   
 > - (Cluster and workload) **Scale workloads and flows independently.** Separate workloads and flows into different node pools to allow independent scaling. Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. 
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -291,6 +282,10 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#containers)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations#containers)
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [AKS baseline architecture](/azure/architecture/reference-architectures/containers/aks/baseline-aks).
 
 ## Related content
 

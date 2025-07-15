@@ -19,17 +19,6 @@ Azure Firewall is a cloud-native and intelligent network firewall security servi
 
 This article assumes that as an architect, you've reviewed the [virtual network security options](/azure/architecture/example-scenario/gateway/firewall-application-gateway) and chosen Azure Firewall as the network security service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Firewall and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments. 
->
-> Foundational architecture that demonstrates the key recommendations:
-> [Hub-spoke network topology in Azure](/azure/architecture/networking/architecture/hub-spoke).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -47,7 +36,7 @@ The [**Reliability design principles**](/azure/well-architected/resiliency/princ
 provide a high-level design strategy applied for individual components,
 system flows, and the system as a whole.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the
 [design review checklist for Reliability](../reliability/checklist.md). Determine
@@ -68,7 +57,7 @@ as needed.
 > [!NOTE]
 > The availability of network services differs between the traditional hub-and-spoke model and the Virtual WAN-managed secured hubs model. For example, in a Virtual WAN hub, the Azure Firewall public IP can't come from a public IP prefix and can't have Azure DDoS Protection enabled. When you choose your model, consider your requirements across all five pillars of the Well-Architected Framework.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -81,7 +70,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Firewall.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the
 [design review checklist for Security](../security/checklist.md). Identify
@@ -109,7 +98,7 @@ strategy to include more approaches as needed.
 >
 >   For more information, see [Detect abuse](../security/monitor-threats.md#detect-abuse).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -132,7 +121,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Firewall and its environment.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -145,7 +134,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - **Optimize traffic through the firewall.** Regularly review traffic that Azure Firewall processes. Find opportunities to reduce the amount of traffic that traverses the firewall. 
 > - **Decrease the amount of log data that you store.** Azure Firewall can use Azure Event Hubs to comprehensively log the traffic's metadata and send it to Log Analytics workspaces, Azure Storage, or non-Microsoft solutions. All logging solutions incur costs to process data and provide storage. Large amounts of data can incur significant costs. Consider a cost-effective approach and [alternative to Log Analytics](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/scale-your-azure-firewall-monitoring-with-azure-data-explorer/ba-p/3611826), and estimate the cost. Consider whether you need to log traffic metadata for all logging categories.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -161,7 +150,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Firewall.
 
@@ -176,7 +165,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Define alerts for key events** so that operators can quickly respond to them.
 > - **Take advantage of platform-provided detection mechanisms in Azure to detect abuse.** Integrate Azure Firewall with [Microsoft Defender for Cloud](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/azure-network-security-using-microsoft-defender-for-cloud/ba-p/2228222) and [Microsoft Sentinel](https://azuremarketplace.microsoft.com/marketplace/apps/sentinel4azurefirewall.sentinel4azurefirewall) if possible. Integrate with Defender for Cloud so you can visualize the status of network infrastructure and network security in one place, including Azure network security across all virtual networks and virtual hubs in different regions in Azure. Integrate with Microsoft Sentinel to provide threat-detection and prevention capabilities.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -192,7 +181,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Firewall.
 
@@ -213,7 +202,7 @@ Start your design strategy based on the [design review checklist for Performance
 >    A /26 address space ensures that the firewall has enough IP addresses available to accommodate the scaling. Azure Firewall doesn't require a subnet that's larger than /26. Name the Azure Firewall subnet **AzureFirewallSubnet**.
 > - **Don't enable advanced logging if you don't need it.** Azure Firewall provides some advanced logging capabilities that can incur significant costs to keep active. Instead, you can use these capabilities for troubleshooting purposes only and for limited amounts of time. Disable capabilities when you don't need them. For example, [top flows and flow trace logs](/azure/firewall/monitor-firewall-reference#top-flows) are expensive and can cause excessive CPU and storage usage on the Azure Firewall infrastructure.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -243,6 +232,11 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology in Azure](/azure/architecture/networking/architecture/hub-spoke).
+
 
 ## Next steps
 

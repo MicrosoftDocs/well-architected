@@ -17,17 +17,6 @@ Azure Front Door is a global load balancer and content delivery network (CDN) th
 
 This article assumes that as an architect you've reviewed the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) and chosen Azure Front Door as the load balancer for your workload. It also assumes that your application is deployed to multiple regions in an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern and design strategies that are localized to the technology scope. 
->
-> This article also includes *recommendations* on the technology capabilities that help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Front Door and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:
-> [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
-
 ### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -43,7 +32,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the tiers and CDN capabilities. Extend the strategy to include more approaches as needed.
 
@@ -69,7 +58,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   - If you absolutely need redundant routing, see [Global routing redundancy](/azure/architecture/guide/networking/global-web-applications/overview).
 >   - If you need redundancy only to serve cached content, see [Global content delivery](/azure/architecture/guide/networking/global-web-applications/mission-critical-content-delivery).
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -87,7 +76,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [**Security design principles**](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design in restricting traffic coming through Azure Front Door.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -116,7 +105,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Monitor anomalous activity**. Regularly review the logs to check for attacks and false positives. Send [WAF logs from Azure Front Door](/azure/web-application-firewall/afds/waf-front-door-monitor) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. 
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -132,7 +121,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Front Door and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -162,7 +151,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Pay attention to the amount of data logged**. Costs related to both bandwidth and storage can accrue if certain requests aren't necessary or if logging data is retained for a long period of time.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -176,7 +165,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Front Door.
 
@@ -194,7 +183,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Offload certificate management to Azure**. Ease the operational burden associated with certification rotation and renewals.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -210,7 +199,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Front Door.
 
@@ -251,7 +240,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >     For more information, see [Traffic by location report](/azure/frontdoor/standard-premium/how-to-reports#traffic-by-location-report). 
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -278,6 +267,10 @@ For comprehensive governance, review the [built-in definitions for Azure Content
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations are aligned with Well-Architected Framework pillars. 
 
 For more information, see the recommendations in [Azure Advisor](/azure/advisor/).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
 
 ## Next steps
 

@@ -18,17 +18,6 @@ azure.category:
 
 Azure OpenAI Service provides REST API access to OpenAI large language models (LLMs), adding Azure networking and security capabilities. This article provides architectural recommendations to help you make informed decisions when you use Azure OpenAI as part of your workload's architecture. The guidance is based on the [**Azure Well-Architected Framework pillars**](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure OpenAI and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:
-> [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
-
 ### Technology scope
 
 This review focuses solely on Azure OpenAI.
@@ -39,7 +28,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [**Reliability design principles**](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements. Extend the strategy to include more approaches as needed.
 
@@ -57,7 +46,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Recovery**: Define a recovery strategy that includes a recovery plan for models that are fine-tuned and for training data uploaded to Azure OpenAI. Because Azure OpenAI doesn't have automatic failover, you must design a strategy that encompasses the entire service and all dependencies, such as storage that contains training data.
 >
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -72,7 +61,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [**Security design principles**](../security/security-principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Azure OpenAI.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Then, review the [Azure security baseline for Azure OpenAI](/security/benchmark/azure/baselines/azure-openai-security-baseline). Finally, extend the strategy to include more approaches as needed.
 
@@ -88,7 +77,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Protect availability**: Use security controls to prevent attacks that might exhaust model usage quotas. You might configure controls to isolate the service on a network. If the service must be accessible from the internet, consider using a gateway to block suspected abuse by using routing or throttling.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -104,7 +93,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 Read the [Cost Optimization design principles](../cost-optimization/principles.md) to learn about approaches for achieving those goals and the tradeoffs necessary in technical design choices related to Azure OpenAI.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with its allocated budget. Your design should use the appropriate Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -132,7 +121,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Monitor and optimize**: Set up a cost-tracking system that monitors model usage. Use that information to help inform model choices and prompt sizes.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -147,7 +136,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals toward the workload's operational requirements.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md). This checklist defines processes for observability, testing, and deployment related to Azure OpenAI.
 
@@ -165,7 +154,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Automate for efficiency**: If you use key-based authentication, implement an automated key-rotation strategy.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -177,7 +166,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure OpenAI workloads.
 
@@ -203,7 +192,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Achieve performance**: Consider using dedicated model deployments per consumer group to provide per-model usage isolation that can help prevent noisy neighbors between your consumer groups.
 
-### Recommendations
+### Configuration recommendations
 
 There are no recommended configurations for Performance Efficiency for Azure OpenAI.
 
@@ -218,6 +207,10 @@ Azure provides an extensive set of built-in policies related to Azure OpenAI and
 - [Enable data encryption with customer-managed keys](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d)
 
 These Azure Policy definitions are also [Azure Advisor](https://azure.microsoft.com/products/advisor) security best-practice recommendations for Azure OpenAI.
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
 
 ## Next steps
 

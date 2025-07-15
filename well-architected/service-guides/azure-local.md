@@ -19,17 +19,6 @@ Azure Local extends Azure to customer-owned infrastructure, enabling local execu
 
 This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Local and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:  
-> [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
-
 #### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:
@@ -53,7 +42,7 @@ In hybrid cloud deployments, the goal is to reduce the effects of one component 
 
 It's important to distinguish between *platform reliability* and *workload reliability*. Workload reliability has a dependency on the platform. Application owners or developers must design applications that can deliver the defined reliability targets.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of Azure Local. Extend the strategy to include more approaches as needed.
 
@@ -105,7 +94,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Business requirements for _data recovery and retention_ drive the strategy for workload backups. A comprehensive strategy includes considerations for _workload operating system (OS) and application persistent data_, with the ability to restore individual (_point-in-time_) file-level and folder-level data. Configure the backup retention policies based on your data recovery and compliance requirements, which determine the number and age of available data recovery points. Explore Azure Backup as an option to enable host-level or VM guest-level backups for Azure Local. Review data protection solutions from Backup independent software vendor partners where relevant. For more information, see [Azure Backup guidance and best practices](/azure/backup/guidance-best-practices) and [Azure Backup for Azure Local](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -124,7 +113,7 @@ Azure Local is a secure-by-default product that has more than 300 security setti
 
 Default security features in Azure Local include hardened OS security settings, Windows Defender Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure-stack/hci/concepts/security-features).
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -176,7 +165,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >   - Vulnerability assessment and potential mitigations
 >   - Use of secure communication protocols
 
-#### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
@@ -194,7 +183,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Local and its environment.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time. 
 
@@ -222,7 +211,7 @@ Azure Local incurs costs for hardware, software licensing, workloads, guest VMs 
 >
 > - (Workload architecture) **Evaluate density over isolation**. Use AKS on Azure Local to improve density and simplify workload management so that you can enable containerized applications to scale across multiple datacenter or edge locations. For more information, see [AKS on Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
@@ -238,7 +227,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 Monitoring and diagnostics are crucial. You can use metrics to measure performance statistics and to troubleshoot and remediate problems quickly. For more information about how to troubleshoot problems, see [Operational Excellence design principles](../devops/principles.md) and [Collect diagnostic logs for Azure Local](/azure-stack/hci/manage/collect-logs).
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Local.
 
@@ -264,7 +253,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Use Update Manager to update the platform and manage the OS, core agents, and services, including solution extensions. Stay current, and consider using the "Enable automatic upgrade" setting where possible for extensions.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -279,7 +268,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key indicators for Azure Local.
 
@@ -300,7 +289,7 @@ Start your design strategy based on the [design review checklist for Performance
 >   As a minimum requirement, plan to reserve `1 x physical machines (N+1)` worth of capacity across the instance to ensure that instance machines can be drained when they perform updates via Update Management. Consider reserving `2 physical machines (N+2)` machines work of capacity for business-critical or mission-critical use cases.
 >
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -358,6 +347,10 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
 
 ## Next steps
 
