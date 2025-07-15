@@ -1,8 +1,8 @@
 ---
 title: Security considerations for sustainable workloads on Azure
 description: This design area explores security design considerations for sustainable workloads on Azure.
-author: Zimmergren
-ms.author: tozimmergren
+author: lnyswonger
+ms.author: lnyswonger
 ms.topic: conceptual
 ms.date: 10/12/2022
 ---
@@ -157,7 +157,7 @@ It can be a challenge to quickly find and report on all security appliances in y
 
 ## Next step
 
-Review the design principles for sustainability.
+Review the considerations and recommendations for designing sustainable AI workloads.
 
 > [!div class="nextstepaction"]
-> [Design principles](sustainability-design-principles.md)
+> [Sustainable AI design](sustainable-ai-design.md)

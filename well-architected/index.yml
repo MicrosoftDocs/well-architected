@@ -8,7 +8,7 @@ metadata:
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 07/02/2024
+  ms.date: 07/14/2025
 sections:
   # Intro
   - componentType: text 
@@ -66,27 +66,15 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./ai/images/ai-architecture-pattern.png
-        alt: "Diagram showing the an example architecture pattern for AI workloads."
-      - title: Featured update - Artificial Intelligence Workload
-        summary: "Explore the all new AI Workload:"
+        src: ./_images/maturity-model.png
+        alt: "Diagram showing the maturity model levels with descriptions."
+      - title: Featured update - Adopt a maturity model
+        summary: "The Well-Architected Framework provides a structured five-level maturity model to help workload teams incrementally adopt best practices. Start with foundational Azure capabilities, then evolve through building workload assets, achieving production readiness, learning from operations, and finally future-proofing with agility. This phased approach works for all teams—from startups establishing foundational strategies to mature enterprises optimizing existing workloads—allowing you to balance architectural improvements with business requirements at every stage."
         componentType: text
         links:
           - componentType: link
-            url: ./ai/index.yml
-            text: AI Workload Documentation
-        list:
-          componentType: list
-          style: checklist
-          children:
-            - Understand how to address architectural challenges for designing AI workloads, including data and application design, nondeterministic functionality, and operational challenges.
-
-            - Get design recommendations when incorporating generative and discriminative AI models.
-
-            - Address cross-cutting challenges such as security requirements, large data volumes, model decay, skill gaps, rapid AI innovation, and maintaining ethical standards.
-            
-            - Learn about the recommended practices for managing the lifecycle of models, covering both MLOps and GenAIOps.
-            
+            url: what-is-well-architected-framework.md#adopt-a-maturity-model
+            text: Adopt a maturity model
 # cards section (4)
   - componentType: grid
     title: Pillars
