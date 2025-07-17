@@ -1,14 +1,10 @@
 {
-  "BaseConfiguration": "docutune-default.json",
-  "DocSets": [
+  "Docsets": [
     {
       "DocsetName": "well-architected",
-      "BasePath": "/azure/well-architected"
+      "BuildSourceFolder": "well-architected"
     }
   ],
-  "MarkdownListIndicator": "-",
-  "MetadataMultilineValues": true,
-  "MetadataRemoveEmptyAttributes": true,
   "Exclude": [
     "SECURITY.md"
   ],
@@ -16,9 +12,5 @@
     "Bundle-Standard.txt",
     "Bundle-Cloud.txt",
     "Dictionary-EntraRebrand.ps1"
-  ],
-  "RemoveTermSets": [
-    "invalid-microsoft-can-may",
-    "*azure-batch*"
   ]
 }
