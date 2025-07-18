@@ -15,7 +15,7 @@ categories:
 
 # Architecture best practices for Azure Local
 
-Azure Local extends Azure to customer-owned infrastructure using Azure Arc, enabling modern and traditional applications to run consistently across distributed or edge locations. This solution provides a unified management experience using Azure and supports a wide range of validated hardware from trusted Microsoft partners. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+Azure Local extends Azure to customer-owned infrastructure using Azure Arc, enabling modern and traditional applications to run consistently across distributed or edge locations. The solution provides a unified management experience using Azure and supports a wide range of validated hardware from trusted Microsoft partners. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 
 This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
