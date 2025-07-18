@@ -34,7 +34,7 @@ This article assumes you have an understanding of hybrid systems and have workin
 
 This review focuses on the interrelated decisions for the following Azure resources:
 
-- Azure Local (_platform_), 2411 and later
+- Azure Local (_platform_), 2311 and later
 - Azure Local VMs (_workload_)
 
 > [!NOTE]
@@ -229,7 +229,7 @@ Azure Local incurs costs for hardware, software licensing, workloads, guest VMs 
 |----------------------------------|-----------|
 |Use [**Azure Hybrid Benefit for Azure Local**](/azure/azure-local/concepts/azure-hybrid-benefit) if you have Windows Server Datacenter licenses with Software Assurance.|With Azure Hybrid Benefit for Azure Local, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Local at no additional cost.|
 |Choose either the Windows Server subscription add-on or bring your own license to license and activate the Windows Server VMs and use them on Azure Local. For more information, see [**License Windows Server VMs on Azure Local**](/azure/azure-local/manage/vm-activate#windows-server-subscription).| While you can use any existing Windows Server licenses and activation methods available, optionally, you can enable "Windows Server subscription add-on" available for Azure Local only to subscribe Windows Server guest licenses through Azure which is charged for the total number of physical cores in the Azure Local instance.|
-|Use the [**Azure verification for VMs**](/azure/azure-local/deploy/azure-verification) benefit extended to Azure Local so that supported Azure-exclusive workloads can work outside of the cloud.|This benefit is enabled by default on Azure Local 2411 or later. Use this benefit so that the VMs can operate in other Azure environments and workloads can benefit from offers that are available only in Azure, such as Extended Security Updates enabled by Azure Arc.|
+|Use the [**Azure verification for VMs**](/azure/azure-local/deploy/azure-verification) benefit extended to Azure Local so that supported Azure-exclusive workloads can work outside of the cloud.|This benefit is enabled by default on Azure Local 2311 or later. Use this benefit so that the VMs can operate in other Azure environments and workloads can benefit from offers that are available only in Azure, such as Extended Security Updates enabled by Azure Arc.|
 
 ## Operational Excellence
 
