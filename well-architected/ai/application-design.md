@@ -83,11 +83,9 @@ For generative AI workloads, consider taking an agent-based, sometimes referred 
 
 Agentic approaches are ideal when you have a common UI surface that has multiple, evolving features that can be plugged into the experience to add more skills and grounding data to the flow over time.
 
-For complex workloads that have many agents, it's more efficient to allow agents to dynamically collaborate rather than using an orchestrator to break up tasks and assign them.
+For complex workloads that have many agents, it's common to allow agents to dynamically collaborate rather than using an orchestrator to break up tasks and assign them. There are multiple common agent collaboration patterns, and you should consider these [AI agent orchestration patterns](/azure/architecture/ai-ml/guide/ai-agent-design-patterns) before designing a custom approach.
 
 Communication between the orchestrator and agents should follow a topic-queue pattern, where agents are subscribers to a topic and the orchestrator sends out tasks via a queue.
-
-Using an agentic approach works best with an orchestration pattern rather than a [choreography pattern](/azure/architecture/patterns/choreography).
 
 For more information, see [Considerations for the orchestration platform](./application-platform.md#considerations-for-the-orchestration-platform).
 

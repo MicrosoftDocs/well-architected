@@ -11,7 +11,7 @@ metadata:
   ms.topic: hub-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 04/29/2025
+  ms.date: 07/17/2025
   featureFlags:
   - clicktale
 highlightedContent:
@@ -61,7 +61,7 @@ productDirectory:
     - title: Azure App Service
       summary: Quickly create powerful cloud apps for web and mobile.
       imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-      url: ./app-service-web-apps.md
+      url: app-service-web-apps.md
       azureCategories:
         - featured
         - compute
@@ -85,7 +85,7 @@ productDirectory:
     - title: Application Insights
       summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
-      url: ./application-insights.md
+      url: application-insights.md
       azureCategories:
         - devops
         - management-and-governance
@@ -280,7 +280,7 @@ productDirectory:
     - title: Disk storage
       summary: Use high-performance, highly durable block storage for Azure Virtual Machines.
       imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
-      url: azure-disks-cost-optimization.md
+      url: azure-disk-storage.md
       azureCategories:
         - storage
     # Card
@@ -295,7 +295,7 @@ productDirectory:
     - title: Azure IoT Hub
       summary: Connect, monitor, and manage IoT assets at scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: iot-hub.md
+      url: azure-iot-hub.md
       azureCategories:
         - iot
 additionalContent:
