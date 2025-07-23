@@ -19,21 +19,13 @@ Azure Blob Storage is a Microsoft object storage solution for the cloud. Blob St
 
 This article assumes that as an architect, you reviewed your [storage options](/azure/architecture/guide/technology-choices/storage-options) and chose Blob Storage as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies.
->
-> Also included are *recommendations* on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Blob Storage and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
-
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
 The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md).
 
@@ -53,7 +45,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Monitor potential availability problems**: Subscribe to the [Azure Service Health dashboard](https://azure.microsoft.com/status/) to monitor potential availability problems. Use storage metrics in Azure Monitor and diagnostic logs to investigate alerts.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -69,7 +61,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your Blob Storage configuration.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -91,7 +83,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Detect threats**: Enable [Microsoft Defender for Storage](/azure/storage/common/azure-defender-storage-configure) to detect threats. Security alerts are triggered when anomalies in activity occur. The alerts notify subscription administrators via email with details of suspicious activity and recommendations on how to investigate and remediate threats.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -111,7 +103,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Blob Storage and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -143,7 +135,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Monitor usage**: Continuously monitor usage patterns and detect unused or underutilized accounts and containers. Use [Storage insights](/azure/storage/blobs/blob-storage-monitoring-scenarios#identify-storage-accounts-with-no-or-low-use) to identity accounts with no or low use. Enable blob inventory reports, and use tools such as [Azure Databricks](/azure/storage/blobs/storage-blob-calculate-container-statistics-databricks) or [Azure Synapse Analytics](/azure/storage/blobs/storage-blob-inventory-report-analytics) and Power BI to analyze cost data. Watch out for unexpected increases in capacity, which might indicate that you're collecting numerous log files, blob versions, or soft-deleted blobs. Develop a strategy for expiring or transitioning objects to more cost-effective access tiers.Have a plan for expiring objects or moving objects to more affordable access tiers.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -162,7 +154,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your Blob Storage configuration.
 
@@ -176,7 +168,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Set up policies that delete blobs or move them to cost-efficient access tiers**: Create a lifecycle management policy with an initial set of conditions. Policy runs automatically delete or set the access tier of blobs based on the conditions you define. Periodically analyze container use by using Monitor metrics and blob inventory reports so that you can refine conditions to optimize cost efficiency.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -189,7 +181,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for your Blob Storage configuration.
 
@@ -209,7 +201,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Collect performance data**: Monitor your storage account to identify performance bottlenecks that occur from throttling. For more information, see [Monitoring your storage service with Monitor Storage insights](/azure/storage/common/storage-insights-overview#view-from-azure-monitor). Use both metrics and logs. Metrics provide numbers such as throttling errors. Logs describe activity. If you see throttling metrics, you can use logs to identity which clients are receiving throttling errors. For more information, see [Auditing data plane operations](/azure/storage/blobs/blob-storage-monitoring-scenarios#auditing-data-plane-operations).
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|

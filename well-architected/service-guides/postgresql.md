@@ -20,17 +20,6 @@ azure.category:
 
 This article assumes that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chose Azure Database for PostgreSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
->**How to use this guide**
->
->Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
->Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Database for PostgreSQL and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
->Foundational architecture that demonstrates the key recommendations:  
->[Reliable Web App pattern for Java](/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/java/guidance).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:
@@ -43,7 +32,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >
@@ -59,7 +48,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 > - **Incorporate the recovery of your Azure Database for PostgreSQL instances into your disaster recovery planning and exercises.** Ensure that your entire workload is recoverable according to your recovery targets.
 > - **Incorporate your Azure Database for PostgreSQL instances into your observability platform.** Enable enhanced metrics to monitor the health of your instance. Include [high availability health monitoring](/azure/postgresql/flexible-server/how-to-monitor-high-availability) in your monitoring solution.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -73,7 +62,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Database for PostgreSQL.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 > 
@@ -83,7 +72,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 > - **Apply network segmentation and security controls.** Use built-in firewalling at the server level alongside virtual network firewalling mechanisms to isolate your instance from other workload components and public networks.
 > - **Use native security features to add extra layers of protection.** Help prevent malicious activities by configuring row-level security and connection throttling.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -101,7 +90,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Database for PostgreSQL and its environment.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >  
@@ -116,7 +105,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 > - **Deploy to the same region as an app.** Deploy to the same region as your applications to minimize transfer costs.
 > - **Consolidate databases and servers.** When practical, consolidating multiple databases and servers into a single server can help reduce costs.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendations | Benefits |
 | --- | --- |
@@ -130,7 +119,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >  
@@ -139,7 +128,7 @@ The [Operational Excellence design principles](/azure/well-architected/operation
 > - **Automate operational tasks.** Use [automation tasks](/azure/postgresql/flexible-server/create-automation-tasks) to automatically perform tasks like starting and stopping a server, scaling resources, and other tasks.
 > - **Monitor database health and performance.** Collect and analyze logs and metrics from your instance to proactively detect potential problems.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
@@ -153,7 +142,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >  
@@ -162,7 +151,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 > - **Optimize indexes.** Use features such as index tuning to automatically analyze query patterns and receive actionable recommendations for creating or dropping indexes to improve performance.
 > - **Offload read-only operations.** If your application supports read-only connection strings, you can offload read-only operations to read replicas.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefits |
 | --- | --- |
@@ -193,6 +182,10 @@ Azure Advisor is a personalized cloud consultant that helps you follow
 best practices to optimize your Azure deployments. 
 
 For more information, see [Azure Advisor](/azure/advisor).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Reliable Web App pattern for Java](/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/java/guidance).
 
 ## Related content
 

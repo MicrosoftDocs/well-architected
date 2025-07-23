@@ -29,7 +29,7 @@ Azure Database for MySQL includes the following design considerations:
 - The cloud native design of the Single-Server service allows it to support `99.99%` of availability, eliminating the cost of passive *hot* standby.
 - Consider using Flexible Server SKU for non-production workloads. Flexible servers provide better cost optimization controls with ability to stop and start your server. They provide a burstable compute tier that is ideal for workloads that don't need continuous full compute capacity.
 
-## Checklist
+## Workload design checklist
 
 **Have you configured Azure Database for MySQL with cost optimization in mind?**
 ***

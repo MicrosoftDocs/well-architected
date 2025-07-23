@@ -18,16 +18,6 @@ Azure Virtual Network is a fundamental building block for establishing a private
 
 This article assumes that as an architect, you'are familiar with the networking constructs on Azure. The guidance is focused on architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Virtual Network and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology in Azure](/azure/architecture/networking/architecture/hub-spoke).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:
@@ -50,7 +40,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features of Virtual Network and its dependencies. Extend the strategy to include more approaches as needed.
 
@@ -90,7 +80,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Monitor network traffic for reliability effects**. Traffic flow monitoring is a crucial operation for reliability. For example, you want to identify high-volume communicators in your network to determine whether they can cause disruptions. Azure provides flow logging capabilities. For more information, see [Operational Excellence](#operational-excellence).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
@@ -103,7 +93,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of virtual network.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -121,7 +111,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Limit public IP addresses**. Use shared public IP addresses from services like Azure Front Door for better security and initial request checks. Managing a dedicated public IP address requires you to oversee its security, including port management and request validation. When possible, use private connectivity.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
@@ -137,7 +127,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your networking environment.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -167,7 +157,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Take advantage of resources in the centralized virtual network**. Use centralized resources to reduce duplication and overhead. Also, offloading responsibilities to existing teams can further help optimize costs and allow for delegation of expertise for specific functions.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
@@ -180,7 +170,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your networking environment.
 
@@ -231,7 +221,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on the key performance indicators.
 
@@ -249,7 +239,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Monitor traffic across regions**. It's important to consider that workload resources might be located in different regions. Communication across regions can add significant latency. Traffic across availability zones in the same region has low latency, but it might not be fast enough for some specialized workloads.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation|Benefit|
 |-----------|-------- |
@@ -298,6 +288,10 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 - [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology in Azure](/azure/architecture/networking/architecture/hub-spoke).
 
 ## Next steps
 

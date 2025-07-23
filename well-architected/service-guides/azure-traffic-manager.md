@@ -16,16 +16,6 @@ Azure Traffic Manager is a global load balancer that can distribute traffic acro
 
 This article assumes that as an architect, you've reviewed the [load-balancing options in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview) and chose Azure Traffic Manager for your workload, which is deployed across multiple regions in either an active-active or active-passive model. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Traffic Manager and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
->
-> Foundational architecture that demonstrates the key recommendations: [Multiregion load balancing with Traffic Manager, Azure Firewall, and Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resource:  
@@ -50,7 +40,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the nature of your application and the criticality of its components. Extend the strategy to include more approaches as needed.
 
@@ -82,7 +72,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Include the endpoints as part of your resiliency testing.** Simulate unavailable endpoints to see how Traffic Manager handles failures. Suppose your workload uses a load balancer like Application Gateway in a private virtual network. You can use network security group (NSG) rules in Azure Chaos Studio to simulate failures of the endpoint. You can block access to the subnet where Application Gateway resides.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -97,7 +87,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Traffic Manager.
 
-#### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >
@@ -114,7 +104,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 >   For more information, see [Prevent dangling DNS entries](/azure/security/fundamentals/subdomain-takeover#prevent-dangling-dns-entries).
 
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -127,7 +117,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Traffic Manager and its environment.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -139,7 +129,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Evaluate the cost of your routing strategy.** For example, if most clients access your endpoint from a high-latency region, you could create another endpoint closer to those users and adjust the routing method in Traffic Manager. This practice reduces latency so that you can process more requests with less capacity, which leads to cost savings.
   
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -153,7 +143,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-#### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >
@@ -169,7 +159,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 >
 > - **Test configuration settings.** Misconfigurations can affect all aspects of the workload, especially reliability. Test the configurations with multiple clients at various locations. For more information, see [Verify Traffic Manager settings](/azure/traffic-manager/traffic-manager-testing-settings).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -184,7 +174,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Traffic Manager.
 
@@ -200,7 +190,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   For more complex scenarios, consider creating a hierarchy of profiles to combine different routing methods. For example, you might prioritize regions and then use performance-based routing within regions.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -242,6 +232,10 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 :::image type="icon" source="../_images/trade-off.svg"::: **Reliability and Cost Optimization**
 
 - **Health probes.** Traffic Manager uses health probes to ping your endpoints from various locations to check their availability. You can choose slow pings or fast pings. Fast pings detect failures quicker but add cost. Slow pings take longer to detect failures but cost less. Balance the speed of failure detection and recovery with the associated costs.
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Multiregion load balancing with Traffic Manager, Azure Firewall, and Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway).
 
 ## Next step 
 

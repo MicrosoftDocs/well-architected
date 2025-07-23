@@ -19,16 +19,6 @@ Azure Functions is a serverless compute service that you can use to run event-dr
 
 This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Azure Functions as the compute solution for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Functions. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [Web applications architecture design](/azure/architecture/web-apps).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resource:
@@ -46,7 +36,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the specific features and configurations of Azure Functions. Extend the strategy to include more approaches as needed.
 
@@ -72,7 +62,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Monitor the health of your solution:** Integrate your Azure Functions solution into your overall workload health monitoring and alerting system.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -87,7 +77,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Azure Functions.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -99,7 +89,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Apply network security controls:** Understand the available [Azure Functions networking options](/azure/azure-functions/functions-networking-options) for your hosting model to help secure the Azure Functions networking configuration. Secure the networking to meet your requirements.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -113,7 +103,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [**Cost Optimization design principles**](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Functions and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -127,7 +117,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Monitor and analyze costs:** Regularly monitor function app usage and costs by using [Microsoft Cost Management](/azure/cost-management-billing/costs/overview-cost-management) and set up alerts to detect cost anomalies.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -141,7 +131,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [**Operational Excellence design principles**](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Functions.
 
@@ -155,7 +145,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Plan for disaster recovery (DR):** [Implement DR strategies](/azure/reliability/reliability-functions) by using cross-region DR and availability zones for critical functions.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -169,7 +159,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [**Performance Efficiency design principles**](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Functions.
 
@@ -183,7 +173,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Monitor performance metrics:** Use Application Insights to [monitor key performance metrics](/azure/azure-functions/monitor-functions), such as operation time, CPU, and memory usage. Set up alerts for performance degradation.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -206,6 +196,10 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Web applications architecture design](/azure/architecture/web-apps).
 
 ## Next steps
 
