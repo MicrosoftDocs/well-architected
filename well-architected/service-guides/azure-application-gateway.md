@@ -1,8 +1,8 @@
 ---
 title: Architecture Best Practices for Azure Application Gateway v2
 description: Learn about architectural best practices for the Azure Application Gateway v2 family of SKUs and for WAF on Application Gateway.
-author: greg-lindsay
-ms.author: greglin
+author: lnyswonger
+ms.author: lnyswonger
 ms.topic: conceptual
 ms.date: 10/02/2024
 ms.service: azure-waf

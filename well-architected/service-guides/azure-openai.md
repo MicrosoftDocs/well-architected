@@ -1,8 +1,8 @@
 ---
 title: Architecture Best Practices for Azure OpenAI Service
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure OpenAI.
-author: robbagby
-ms.author: robbag
+author: lnyswonger
+ms.author: lnyswonger
 ms.date: 03/05/2024
 ms.topic: conceptual
 ms.service: azure-waf

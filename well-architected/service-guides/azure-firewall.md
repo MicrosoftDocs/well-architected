@@ -1,8 +1,8 @@
 ---
 title: Architecture Best Practices for Azure Firewall
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Firewall.
-author: igorpag
-ms.author: igorpag
+author: lnyswonger
+ms.author: lnyswonger
 ms.reviewer: tozimmergren
 ms.topic: conceptual
 ms.service: azure-waf
