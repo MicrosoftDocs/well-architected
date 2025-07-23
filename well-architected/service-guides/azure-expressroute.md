@@ -17,23 +17,6 @@ Azure ExpressRoute enables you to create private connections between Azure data-
 
 This article assumes that you have working knowledge of Azure ExpressRoute and are well versed with all of its features. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of
-> concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can
-> help materialize those strategies. The recommendations don't represent an
-> exhaustive list of all configurations available for Azure ExpressRoute and its
-> dependencies. Instead, they list the key recommendations mapped to the design
-> perspectives. Use the recommendations to build your proof-of-concept or
-> optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:
-> [Implement Cloud Adoption Framework enterprise-scale landing zones in Azure](/azure/cloud-adoption-framework/ready/enterprise-scale/implementation).
-
 ### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -49,7 +32,7 @@ Highly reliable, resilient, and available network connections are fundamental to
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features and capabilities of Azure ExpressRoute. Extend the strategy to include more approaches as needed.
 
@@ -105,7 +88,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Use health indicators to identify disruptions:** Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -130,7 +113,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure ExpressRoute.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [**design review checklist for Security**](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -151,7 +134,7 @@ Start your design strategy based on the [**design review checklist for Security*
 > - **Configure Activity log to send logs to archive:** Activity logs are essential for auditing, compliance, incident response, operational visibility, and policy enforcement for ExpressRoute. Configure Activity log to send logs to an archive for long-term retention and analysis.
 >
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -168,7 +151,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The Cost Optimization design principles provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to your web apps and the environment in which they run.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the design review checklist for [Cost Optimization](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -184,7 +167,7 @@ Start your design strategy based on the design review checklist for [Cost Optimi
 >
 > - **Deprovision and delete unused ExpressRoute circuits:** Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -200,7 +183,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational excellence design principles](../devops/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to ExpressRoute.
 
@@ -218,7 +201,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Collect, analyze, and visualize metrics and logs:**  Collect metrics and logs as part of the overall [monitoring strategy](/azure/well-architected/operational-excellence/observability) of your solution. Set alerts to proactively notify you when a certain threshold is met. Review metrics and dashboards available through ExpressRoute Insights to view details of your peering components all in a single place.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -236,7 +219,7 @@ Start your design strategy based on the [design review checklist for Operational
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 The [Performance Efficiency design principles](/azure/well-architected/scalability/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the design review checklist for Performance Efficiency for defining a baseline based on key performance indicators for Azure ExpressRoute.
 Plan for scaling the network to meet the demands of your workloads. Failure to plan for scaling correctly may result in downtime or extra costs. Ensure proper scaling when it comes to both circuit planning and gateway planning.
@@ -249,7 +232,7 @@ Plan for scaling the network to meet the demands of your workloads. Failure to p
 >
 > - **Monitor the performance of ExpressRoute resources:**  Collect and analyze the performance telemetry in accordance with the [WAF Recommendations for collecting performance data](/azure/well-architected/performance-efficiency/collect-performance-data#key-design-strategies). Validate that it meets your performance targets and set up alerts to proactively notify you when a certain threshold is met.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -263,6 +246,10 @@ Plan for scaling the network to meet the demands of your workloads. Failure to p
 ## Azure Policy
 
 Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Implement Cloud Adoption Framework enterprise-scale landing zones in Azure](/azure/cloud-adoption-framework/ready/enterprise-scale/implementation).
 
 ## Next steps
 
