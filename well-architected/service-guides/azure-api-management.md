@@ -18,16 +18,6 @@ Azure API Management is a management platform and gateway for APIs across all en
 
 This article assumes that as an architect, you've reviewed the [integration services decision tree](/azure/logic-apps/azure-integration-services-choose-capabilities) and chosen API Management as the integration service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for API Management or the back-end API servers of your workload. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [API Management landing zone architecture](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resource:
@@ -52,7 +42,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the tiers and features of API Management and its dependencies. Extend the strategy to include more approaches as needed.
 
@@ -80,7 +70,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Plan for disaster recovery (DR):** Review options for backing up and restoring the gateway infrastructure and APIs. Built-in [backup and restore capabilities](/azure/api-management/api-management-howto-disaster-recovery-backup-restore) might be useful in some scenarios. But customer-managed options such as [APIOps](/azure/architecture/example-scenario/devops/automated-api-deployments-apiops) tooling and infrastructure as code (IaC) solutions can also be considered. Develop strategies for maintaining other system data, including user subscriptions.
 
-### Recommendations
+### Configuration recommendations
 
 These reliability recommendations can apply either to the service itself or to the traffic that flows through APIs and their policies. The *(Service)* or *(API)* designators indicate whether a recommendation targets the service or the APIs.
 
@@ -103,7 +93,7 @@ The [Security design principles](/azure/well-architected/security/security-princ
 > [!NOTE]
 > The checklist and recommendations in this section focus on securing the API Management gateway resource. Securing the APIs themselves is only briefly addressed. For more information, see [Mitigate OWASP API security top 10 in API Management](/azure/api-management/mitigate-owasp-api-threats).
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -127,7 +117,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Identify secrets that workloads require:** Gateway operation might require certificates, API keys, or other secret values. Review the requirements and capabilities of Azure Key Vault to store secrets and certificates. Or review the built-in API Management capabilities such as [named values](/azure/api-management/api-management-howto-properties) and [managed certificates](/azure/api-management/configure-custom-domain#domain-certificate-options).
 
-### Recommendations
+### Configuration recommendations
 
 These security recommendations can apply either to the service itself or to the traffic that flows through APIs and their policies. The *(Service)* or *(API)* designators indicate whether a recommendation targets the service or the APIs.
 
@@ -159,7 +149,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to API Management and its environment.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >
@@ -177,7 +167,7 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 >
 > - **Optimize logic placement:** Assess whether back-end servers are more cost-effective for processing logic or if the gateway should handle the resource usage. The gateway is a strong component for implementing cross-cutting concerns, but it might perform excessive functions in certain scenarios. Identify resource-heavy request processing tasks that the gateway performs, and determine whether moving that logic to back-end servers can reduce costs.
 
-### Recommendations
+### Configuration recommendations
 
 These cost optimization recommendations can apply either to the service itself or to the traffic that flows through APIs and their policies. The *(Service)* or *(API)* designators indicate whether a recommendation targets the service or the APIs.
 
@@ -201,7 +191,7 @@ The [Operational Excellence design principles](/azure/well-architected/operation
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to API Management.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >
@@ -217,7 +207,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Identify operational tasks beyond CI/CD or IaC processes** that require automation. Plan automation in areas such as API Management policy source management, Azure policies, and specific developer portal configurations.
 
-### Recommendations
+### Configuration recommendations
 
 These operational excellence recommendations can apply to either the service itself or to the traffic that flows through APIs and their policies. The *(Service)* or *(API)* designators indicate whether a recommendation targets the service or the APIs.
 
@@ -242,7 +232,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for API Management.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 >
@@ -258,7 +248,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Review the documented limits and constraints:** [API Management has limits and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-api-management-limits). Review the documented constraints and compare them against your workload's requirements to see if you need to design a solution that avoids these constraints.
 
-### Recommendations
+### Configuration recommendations
 
 These performance efficiency recommendations can apply either to the service itself or to the traffic that flows through APIs and their policies. The *(Service)* or *(API)* designators indicate whether a recommendation targets the service or the APIs.
 
@@ -317,6 +307,10 @@ A fundamental decision in API Management is whether to colocate disparate worklo
 API Management workspaces enable efficient operation as a multitenant colocation platform for multiple API teams. The tiered pricing models are designed to allow service costs to be shared across all tenants that use the gateways. However, like any colocation platform, outages or misconfigurations can result in widespread effects on unrelated workloads that share the same infrastructure.
 
 A fully distributed model, where each workload team manages its own instances, introduces duplicative costs and redundancy in routine operations. However, it provides inherent blast radius mitigation for reliability, security, and performance-related incidents.
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [API Management landing zone architecture](/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function).
 
 ## Next steps
 

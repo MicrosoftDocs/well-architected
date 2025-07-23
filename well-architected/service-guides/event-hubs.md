@@ -34,7 +34,7 @@ The following sections are specific to Azure Event Hubs from a Well Architected 
 
 Azure Event Hubs provides an uptime SLA. For more information, reference [SLA for Event Hubs](https://azure.microsoft.com/support/legal/sla/event-hubs/v1_0/).
 
-## Checklist
+## Workload design checklist
 
 **Have you configured Azure Event Hubs with operational excellence in mind?**
 

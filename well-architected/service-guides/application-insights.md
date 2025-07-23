@@ -17,16 +17,7 @@ azure.category:
 
 # Architecture best practices for Application Insights
 
-
 Application Insights is an extensible application performance management service that you can use to monitor live applications and automatically detect performance anomalies. It includes powerful analytics tools to help you diagnose problems and understand how users interact with your application. This architecture guide provides best practices for Application Insights based on the five pillars of the [Azure Well-Architected Framework pillars](/azure/architecture/framework/).
-
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern and design strategies that are localized to the technology scope.
->
-> Also included are recommendations on the technology capabilities that can help materialize those strategies. The recommendations aren't an exhaustive list of all configurations that are available for Application Insights and its dependencies. Instead, they provide the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
 
 ### Technology scope
 
@@ -44,7 +35,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist for Reliability
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements and keep in mind the dependency on Log Analytics. Extend the strategy to include more approaches as needed.
 
@@ -71,7 +62,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Ensure quick recovery of your application monitoring solution in case of service failure.** Adopt infrastructure as code and use [Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create or re-create your user experience in Application Insights, including [alerts](/azure/azure-monitor/app/availability?tabs=standard#availability-alerts), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard), and [queries](/azure/azure-monitor/logs/queries). This approach helps ensure that all critical components are quickly restored, which minimizes downtime and maintains service reliability.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|----------|
@@ -85,7 +76,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The **[Security design principles](/azure/well-architected/security/security-principles)** provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights. Use the following information to maximize the security of Application Insights and help ensure that only authorized users access collected data.
 
-### Design checklist for Security
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -105,7 +96,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](azure-log-analytics.md#design-checklist-for-security) to learn about how to secure the data that you collect.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -123,7 +114,7 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 For more information on how data charges are calculated for the underlying Log Analytics workspaces of your Application Insights resources, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/cost-usage).
 
-### Design checklist for Cost Optimization
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine tune the design so that the workload aligns with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -149,7 +140,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Optimize personnel time.** Use Application Insights experiences such as the [application map](/azure/azure-monitor/app/app-map) and [failure and performance views](/azure/azure-monitor/app/failures-and-performance-views), and customize saved [queries](/azure/azure-monitor/logs/queries), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) for your specific workload needs. Keep track of your deployments and other events with [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---------------|:--------|
@@ -168,7 +159,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist for Operational Excellence
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Application Insights.
 
@@ -186,7 +177,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Clearly define your workload's safe deployment practices.** Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to keep track of your deployments and other events.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -200,7 +191,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist for Performance Efficiency
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Use key performance indicators for Application Insights to define a baseline.
 
@@ -220,7 +211,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Continuously optimize performance.** Use built-in features like [Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics), [queries](/azure/azure-monitor/logs/queries), and [dashboards](/azure/azure-monitor/app/overview-dashboard) to find components that show deteriorating performence.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---------------|:--------|

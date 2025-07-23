@@ -28,16 +28,6 @@ Use the familiar protocols and tools that you use for on-premises enterprise app
 
 This article assumes that as an architect, you reviewed the [file storage options](/azure/architecture/guide/storage/storage-start-here) and chose Azure NetApp Files as the service for your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a _design checklist_ that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are _recommendations_ for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure NetApp Files and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [Moodle deployment with Azure NetApp Files](/azure/architecture/example-scenario/file-storage/moodle-azure-netapp-files).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resource:
@@ -49,7 +39,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the scalability and performance of your workloads. Extend the strategy to include more approaches as needed.
 
@@ -60,7 +50,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Define reliability targets and recovery targets.** Visualize recovery targets and drive actions to achieve reliability goals and recoverability goals for your workload. To improve reliability and recovery, define these targets and develop an understanding of Azure NetApp Files solutions. Targets help optimize snapshots, high availability between availability zones, cross-zone and cross-region replication, and SMB continuous availability for supported applications.
 > - **Build redundancy.** Deploy your workload across availability zones and regions to build redundancy in the workload and supporting infrastructure. This approach ensures that you can quickly recover from failures. Active-passive deployments can handle production loads only in the primary region, but the deployment fails over to the secondary passive region when necessary.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | - | - |
@@ -78,7 +68,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of your file storage configuration.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -91,7 +81,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Develop a security strategy.** Azure NetApp Files supports NFS, SMB, and dual-protocol volumes. If you use dual-protocol volumes, understand the security needs of those volumes and determine which security style suits your workload's needs. If you need a Windows Server Active Directory connection for SMB, NFSv4.1 Kerberos, or LDAP lookups, you should align that security baseline to compliance requirements, industry standards, and platform recommendations. Azure NetApp Files uses standard CryptoMod to generate AES-256 encryption keys, which you can apply to your SMB server. To develop an appropriate security strategy, enable LDAP over TLS, encrypt SMB connections to the domain controller, assign administrator privileged users for SMB volumes, and ensure that you have a backup policy and security protocols. 
 > - **Set appropriate access and ownership configurations.** Set user privileges and restricted roles to help mitigate mistakes and improper actions. To maintain security, set appropriate share-access permissions, ownership roles, and the ownership mode for shares, files, and folders. To achieve optimal security and mitigate mistakes, identify and understand the various access management solutions for NFS, SMB, and dual-protocol shares. 
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | - | - |
@@ -117,7 +107,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure NetApp Files and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -130,7 +120,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - **Optimize scalability costs.** Use Azure NetApp Files to meet your shifting business needs and respond to changes in workloads. For example, you might move volumes to improve performance and lower costs. You can use dynamic volume sizing to efficiently scale your Azure NetApp Files volumes to meet performance and capacity requirements on demand.
 > - **Use partner solutions to optimize costs.** Azure NetApp Files integrates with products like Azure VMware Solution and Microsoft SQL Server and is optimized for Oracle and SAP workloads. Understand Azure NetApp Files features and benefits to optimize your deployments and reduce the TCO. For example, you can use Azure NetApp Files data stores to increase storage capacity in Azure VMware Solution without using extra Azure VMware Solution nodes. You can also use the [TCO estimator](https://bluexp.netapp.com/anf-avs/tcoestimator) to calculate estimated costs for Azure VMware Solution and Azure NetApp Files.
 
-### Recommendations
+### Configuration recommendations
 
 Consider the following recommendations to optimize cost when you configure your Azure NetApp Files account. 
 
@@ -158,7 +148,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist 
+### Workload design checklist 
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your file storage configuration.
 
@@ -169,7 +159,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Monitor your routine operations** to help optimize performance and better understand various workloads. Azure NetApp Files provides performance and capacity management tools, Azure-native monitoring features, and tools to manage your regional quotas and resource limits.
  Regularly test your production environment to adjust performance targets and optimize performance. Use snapshot-based cloning and other features in Azure NetApp Files to simulate your production workloads and environments and optimize your performance.
 
-### Recommendations
+### Configuration recommendations
 
 Consider the following recommendations to optimize operational excellence when you configure your Azure NetApp Files account.
 
@@ -192,7 +182,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure NetApp Files.
 
@@ -203,7 +193,7 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Select the right service.** When you define the needs of your Azure NetApp Files deployment, understand the different performance, capacity, data protection, and disaster recovery requirements. Based on your requirements, calibrate Azure NetApp Files to meet your specific throughput and general performance needs. In some cases, you can reduce storage costs.
 > - **Continually optimize performance.** Monitor your volume performance to understand the shifting demands of your production workloads. Use these monitoring insights to optimize and tune your performance.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit|
 | - | - |
@@ -239,6 +229,10 @@ Consider the following Advisor recommendations for reliability:
 - Implement disaster recovery strategies for your Azure NetApp Files resources.
 - Enable continuous availability for SMB volumes.
 - Review SAP configurations for time out values that you use with Azure NetApp Files.
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Moodle deployment with Azure NetApp Files](/azure/architecture/example-scenario/file-storage/moodle-azure-netapp-files).
 
 ## Next steps
 

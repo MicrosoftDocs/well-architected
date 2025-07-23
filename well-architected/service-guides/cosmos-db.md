@@ -16,14 +16,6 @@ Azure Cosmos DB is a fully managed database solution that can host multiple data
 
 This article assumes that as an architect, you've reviewed the [Azure data options](/azure/architecture/guide/technology-choices/data-options) and chose Azure Cosmos DB for NoSQL as the data store for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
->**How to use this guide**
->
->Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
->Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure Cosmos DB for NoSQL and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:
@@ -36,7 +28,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the consistency levels, cross-region replication, and provisioned throughput. Extend the strategy to include more approaches as needed.
 
@@ -72,7 +64,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Align your Azure Cosmos DB design with industry-standard application design guidance and patterns.** Explore the [guide to design resilient applications](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications), review the [default retry policy](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) for the SDKs, and plan for [custom handling for specific transient errors](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications#should-my-application-retry-on-errors). These guides provide best practices to make application code resilient to transient errors.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -86,7 +78,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure Cosmos DB for NoSQL.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -112,7 +104,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Use secure development and testing practices.** Follow best software development practices for secure access to data. Follow secure coding practices and perform secure code reviews when you develop applications that interact with Azure Cosmos DB.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -129,7 +121,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Cosmos DB for No SQL and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -153,7 +145,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   Design an indexing policy that considers the common operations and queries in your workload.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -173,7 +165,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Cosmos DB for NoSQL.
 
@@ -195,7 +187,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Ensure that your team uses the same templates to deploy to other nonproduction environments.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
@@ -213,7 +205,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Azure Cosmos DB for NoSQL.
 
@@ -245,7 +237,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Optimize code logic.** Use the singleton pattern for the `CosmosClient` class in most SDKs. Use the client class in most SDKs as a singleton. The client class manages its own lifecycle and is designed to not be disposed. Constantly creating and disposing instances can result in reduced performance.
 
-## Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | --- | --- |

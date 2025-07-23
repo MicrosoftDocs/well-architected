@@ -20,14 +20,6 @@ Azure IoT Hub is a managed cloud-based service that serves as a central message 
 
 This article assumes that as an architect, you've reviewed the [technologies and services that you can use to create IoT solutions](/azure/iot/iot-services-and-technologies) and chose [IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub) as the Azure IoT platform service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for IoT Hub and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -46,7 +38,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of IoT Hub. Extend the strategy to include more approaches as needed.
 
@@ -64,7 +56,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Plan for capacity.** Plan for service quotas and throttles, and account for latency that occurs between detection and action. Establish benchmarks at the production scale to support uninterrupted data flow.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -81,7 +73,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of IoT Hub.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -103,7 +95,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Ensure highly secure connections.** Ensure that all data that's transmitted between the IoT device and the IoT cloud services is confidential and tamperproof.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -120,7 +112,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to IoT Hub and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -146,7 +138,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Implement cost alerts and budgets.** Set up cost alerts and budgets in Microsoft Cost Management to effectively track and control your spending. Use cost management APIs for [IoT Hub](/rest/api/iothub) and [DPS](/rest/api/iot-dps).
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -165,7 +157,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to IoT Hub.
 
@@ -183,7 +175,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Use automation and DevOps.** An IoT device is essentially a small computer that has specialized hardware and software. IoT devices are often constrained in hardware. For example, they might have limited memory or compute capacity. Automation and DevOps help ensure the proper upload and deployment of OS and software to IoT devices and gateways, which minimize operational downtime. Use automation and DevOps to monitor and manage the lifecycle of IoT devices.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -205,7 +197,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for IoT Hub.
 
@@ -217,7 +209,7 @@ Start your design strategy based on the [design review checklist for Performance
 > 
 > - **Continuously monitor for performance in production.** To monitor different types of devices in multiple geographical regions, use a distributed monitoring solution. Balance memory and performance costs against the amount of information that you monitor and send to the cloud. Tune transmission for diagnostic scenarios, and monitor at multiple levels and layers. Expose gateway metrics for industrial or gateway-enabled solutions.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
