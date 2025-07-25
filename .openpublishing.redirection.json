@@ -2384,6 +2384,16 @@
 			"source_path": "well-architected/reliability/regions-availability-zones.md",
 			"redirect_url": "/azure/well-architected/design-guides/regions-availability-zones",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "service-guides/service-bus/reliability.md",
+			"redirect_url": "service-guides/azure-service-bus",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "service-guides/service-bus/operational-excellence.md",
+			"redirect_url": "service-guides/azure-service-bus",
+			"redirect_document_id": false
 		}			
 	]
 }

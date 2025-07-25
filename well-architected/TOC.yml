@@ -313,11 +313,7 @@
         - name: Azure NetApp Files 
           href: service-guides/azure-netapp-files.md 
         - name: Azure Service Bus
-          items:
-            - name: Reliability
-              href: service-guides/service-bus/reliability.md
-            - name: Operational excellence
-              href: service-guides/service-bus/operational-excellence.md 
+          href: service-guides/azure-service-bus.md
         - name: Azure Service Fabric
           href: service-guides/azure-service-fabric.md
         - name: Azure SQL Database
