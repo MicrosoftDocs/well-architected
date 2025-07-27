@@ -89,9 +89,9 @@ Performance tuning is a continuous cycle of monitoring, optimizing, testing, and
 
 |Approach|Benefit|
 |-|-|
-| Set aside dedicated time for performance optimization to address technical debt caused by past time or budget constraints. |This fosters a culture of accountability, where the team actively monitors and continuously improves system performance. |
+| Set aside dedicated time for performance optimization to address technical debt caused by past time or budget constraints. |This approach fosters a culture of accountability, where the team actively monitors and continuously improves system performance. |
 | Revisit nonfunctional requirements and establish new targets by analyzing historical trends in production to enhance the architecture with improved design patterns and components. | New designs and components, like caching or a CDN, can optimize the system and improve the user experience.|
-| Get current and stay current with technology innovations that can improve performance. <br><br>Take advantage of the new versions released for the dependent frameworks and libraries.<br><br>Similarly, use the new features for platform resources as they're updated and patched. | Performance targets provides justification for adopting new technology. <br><br>Code that might have been slow in the past can become faster with these updates. You also want to be aware of how certain updates negatively affect performance. |
+| Get current and stay current with technology innovations that can improve performance. <br><br>Take advantage of the new versions released for the dependent frameworks and libraries.<br><br>Similarly, use the new features for platform resources as they're updated and patched. | Performance targets provide justification for adopting new technology. <br><br>Code that might have been slow in the past can become faster with these updates. You also want to be aware of how certain updates negatively affect performance. |
 
 ## Next steps
 
