@@ -14,9 +14,9 @@ azure.category:
 
 # Architecture best practices for Log Analytics
 
-Well-Architected Framework workload functionality and performance must be monitored in diverse ways and for diverse reasons. Azure Monitor Log Analytics workspaces are the primary log and metric sink for a large portion of the monitoring data. Workspaces support multiple features in Azure Monitor including ad-hoc queries, visualizations, and alerts. For general monitoring principles, see [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring). The guidance presents general monitoring principles. It identifies the different types of data. It identifies the required analysis that Azure Monitor supports and it also identifies the data stored in the workspace that enables the analysis.
+Log Analytics workspaces in Azure Monitor are centralized repositories for collecting, storing, and analyzing log and performance data from various sources across your Azure environment. These workspaces serve as the primary data sink for monitoring information and support advanced querying, visualization, and alerting capabilities to help you gain insights into your workload's health and performance.
 
-This article assumes that you understand system design principles. You also need a working knowledge of Log Analytics workspaces and features in Azure Monitor that populate operational workload data. For more information, see [Log Analytics workspace overview](/azure/azure-monitor/logs/log-analytics-workspace-overview).
+This article assumes that as an architect, you understand the importance of comprehensive monitoring and observability for your workload and have chosen Log Analytics workspaces as part of your monitoring strategy. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
 <!-- markdownlint-disable-next-line MD036 -->
 **Technology scope**
@@ -24,7 +24,6 @@ This article assumes that you understand system design principles. You also need
 This review focuses on the interrelated decisions for the following Azure resources:
 
 - Log Analytics workspaces
-- Workload operational log data
 
 ## Reliability
 
