@@ -15,10 +15,12 @@ azure.category:
 # Architecture best practices for Log Analytics
 
 Log Analytics workspaces in Azure Monitor are centralized repositories for collecting, storing, and analyzing log and performance data from various sources across your Azure environment. These workspaces serve as the primary data sink for monitoring information and support advanced querying, visualization, and alerting capabilities to help you gain insights into your workload's health and performance.
+
 This article assumes that as an architect, you understand the importance of comprehensive monitoring and observability for your workload and have chosen Log Analytics workspaces as part of your monitoring strategy. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
 <!-- markdownlint-disable-next-line MD036 -->
 **Technology scope**
+
 This review focuses on the interrelated decisions for the following Azure resources:
 
 - Log Analytics workspaces
@@ -26,6 +28,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
+
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Workload design checklist
@@ -65,7 +68,9 @@ Start your design strategy based on the [design review checklist for Reliability
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
+
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving these goals by applying approaches to the technical design around your monitoring and logging solution.
+
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
@@ -110,6 +115,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 ### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+
 > [!div class="checklist"]
 >
 > - **Perform cost modeling exercises:** These exercises help you understand your current workspace costs and forecast your costs relative to workspace growth. Analyze your growth trends in your workload and ensure that you understand plans for workload expansion to properly forecast your future operational logging costs.
@@ -145,6 +151,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 ### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Log Analytics workspaces.
+
 > [!div class="checklist"]
 >
 > - **Use infrastructure as code (IaC) for all functions related to your workload's Log Analytics workspaces:** Minimize the risk of human error that can occur from manually administering and operating your log collection, ingestion, storage and querying functions, including saved queries and query packs, by automating as many of those functions as possible through code.
@@ -178,12 +185,14 @@ Start your design strategy based on the [design review checklist for Operational
 ## Performance efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. This strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
+
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Log Analytics workspaces.
+
 > [!div class="checklist"]
 >
 > - **Familiarize yourself with the fundamentals of [log data ingestion latency in Azure Monitor](/azure/azure-monitor/logs/data-ingestion-time):** There are several factors that contribute to latency when ingesting logs into your workspaces. Many of these factors are inherent to the Azure Monitor platform.
