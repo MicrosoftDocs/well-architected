@@ -103,7 +103,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Control network traffic.** Consider private connectivity for accessing Azure services. Private connectivity effectively isolates your traffic from the public internet. Data flows for private networking include both data ingestion and query operations, each targeting distinct endpoints. These endpoints can be managed independently. This approach allows you to configure private ingestion while maintaining public query access, or vice versa. By doing so, you can apply defense-in-depth principles by creating localized network controls at all available network boundaries.
 >
-> - **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](azure-log-analytics.md#design-checklist-for-security) to learn about how to secure the data that you collect.
+> - **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](/azure/well-architected/service-guides/azure-log-analytics#design-checklist-for-security) to learn about how to secure the data that you collect.
 
 #### Recommendations
 
@@ -137,7 +137,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.
 >
-> - **Review costs like regional pricing and available pricing tiers regularly.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) or the [Cost Optimization section](azure-log-analytics.md#design-checklist-for-cost-optimization) in the Log Analytics service guide.
+> - **Review costs like regional pricing and available pricing tiers regularly.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) or the [Cost Optimization section](/azure/well-architected/service-guides/azure-log-analytics#design-checklist-for-cost-optimization) in the Log Analytics service guide.
 >
 > - **Remove or optimize legacy, unneeded, and underutilized components of your application monitoring solution regularly.** [Edit ApplicationInsights.config](/azure/azure-monitor/app/configuration-with-applicationinsights-config) to turn off collection modules that you don't need. For example, you might decide that performance counters or dependency data isn't required. Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.
 >
