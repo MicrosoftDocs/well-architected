@@ -34,6 +34,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 ### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the nature of your application and the criticality of its components. Extend the strategy to include more approaches as needed.
+
 > [!div class="checklist"]
 >
 - **Review [service limits for Log Analytics workspaces](/azure/azure-monitor/service-limits#log-analytics-workspaces):** The service limits section explains restrictions on data collection, data retention, and other aspects of the service. These limits help you design an effective workload observability strategy. Make sure that you review [Azure Monitor service limits](/azure/azure-monitor/service-limits) because many functions, such as queries, work in tandem with Log Analytics workspaces.
@@ -75,6 +76,7 @@ The [Security design principles](/azure/well-architected/security/security-princ
 ### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
+
 > [!div class="checklist"]
 >
 > - **Review the Azure Monitor [security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline):** Review the Azure Monitor [security baseline](/security/benchmark/azure/baselines/azure-monitor-security-baseline) and [Manage access to Log Analytics workspaces](/azure/azure-monitor/logs/manage-access) topics. These topics provide guidance about security best practices.
