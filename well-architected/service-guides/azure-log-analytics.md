@@ -240,4 +240,4 @@ For more information, see [Azure Advisor](/azure/advisor).
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Monitor Azure resources with Azure Monitor](/azure/azure-monitor/best-practices)
+> [Best practices for a complete deployment of Azure Monitor](/azure/azure-monitor/best-practices)
