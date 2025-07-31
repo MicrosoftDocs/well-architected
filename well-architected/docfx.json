@@ -85,6 +85,9 @@
       "ms.collection": {
         "ai/**/*.*": "ce-skilling-ai-copilot",
         "saas/**/*.*": "learn-startups"
+      },
+      "ms.update-cycle": {
+        "ai/**/*.*": "180-days"
       }
     },
     "template": [
