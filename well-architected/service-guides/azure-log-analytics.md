@@ -37,7 +37,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-- **Review [service limits for Log Analytics workspaces](/azure/azure-monitor/service-limits#log-analytics-workspaces):** The service limits section explains restrictions on data collection, data retention, and other aspects of the service. These limits help you design an effective workload observability strategy. Make sure that you review [Azure Monitor service limits](/azure/azure-monitor/service-limits) because many functions, such as queries, work in tandem with Log Analytics workspaces.
+> - **Review [service limits for Log Analytics workspaces](/azure/azure-monitor/service-limits#log-analytics-workspaces):** The service limits section explains restrictions on data collection, data retention, and other aspects of the service. These limits help you design an effective workload observability strategy. Make sure that you review [Azure Monitor service limits](/azure/azure-monitor/service-limits) because many functions, such as queries, work in tandem with Log Analytics workspaces.
 >
 > - **Plan for workspace resilience and recovery:** Log Analytics workspaces are regional and don't have built-in support for cross-regional redundancy or replication. Availability zone redundancy options are limited. Because of these limitations, you should determine the reliability requirements of your workspaces and strategize to meet those targets.
 >
@@ -239,4 +239,4 @@ For more information, see [Azure Advisor](/azure/advisor).
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Get best practices for a complete deployment of Azure Monitor](/azure/azure-monitor/best-practices)
+> [Monitor Azure resources with Azure Monitor](/azure/azure-monitor/best-practices)
