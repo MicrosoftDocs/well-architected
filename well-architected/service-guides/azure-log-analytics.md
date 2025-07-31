@@ -233,7 +233,8 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that Azure Advisor might provide for Log Analytics workspaces:
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. 
+
 For more information, see [Azure Advisor](/azure/advisor).
 
 ## Next step
