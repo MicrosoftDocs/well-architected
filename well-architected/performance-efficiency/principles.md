@@ -9,11 +9,11 @@ ms.topic: conceptual
 
 # Performance Efficiency design principles
 
-Performance efficiency is about effective use of workload resources. Without a good strategy, you might not be able to anticipate and meet user demands. You might have to resort to an approach of long-term forecasting and pre-provisioned capacity, which doesn't let you take full advantage of your cloud platform.
+Performance efficiency is about effective use of workload resources. Without a good strategy, you might not be able to anticipate and meet user demands. You might have to resort to an approach of pre-provisioning capacity based on your long-term forecasting, which doesn't let you take full advantage of your cloud platform.
 
 Performance efficiency is the ability of a workload to adapt to changing demands by scaling up to meet increased load without impacting user experience, and scaling down to conserve resources during low demand. Capacity plays a central role, but relying solely on pre-provisioned resources can lead to performance issues under high load and unnecessary costs during low usage.
 
-Rather than treating performance as an afterthought, make it a core consideration from the start. Begin without strict performance targets, then test and refine throughout development. This ongoing optimization, informed by real-world usage, helps prevent future issues and ensures consistent performance.
+Rather than treating performance as an afterthought, make it a core consideration from the start. Begin early, even if you don't have strict performance targets, then test and refine throughout development. This ongoing optimization, informed by real-world usage, helps prevent future issues and ensures consistent performance.
 
 A well-planned strategy helps align resource capacity with business needs while minimizing waste. Once your approach is defined, use the [Performance Efficiency checklist](checklist.md) to validate your design. Without a proactive strategy, you risk relying on static forecasting and missing the full benefits of scalable cloud infrastructure.
 
@@ -49,10 +49,10 @@ Examine the system as a whole, rather than focusing on individual components. Av
 
 |Approach|Benefit|
 |-|-|
-| Evaluate dynamic scaling needs for the prioritized flow based on usage requirements. Understand expected demand patterns and determining how elastic each flow must be to meet those requirements.| You're able to define scalability requirements on existing components that need more capacity and the areas where you need extra components to distribute load.|
-| Choose the right resources and right size them across the technology stack, which enables you to meet performance goals. <br><br>Consider features that can fulfill the scalability requirements.| The overall system will and perform as per the defined targets. You can use built-in features that automatically scale when needed. It also helps you avoid overprovisioning, saving costs while still handling demand changes. |
+| Evaluate dynamic scaling needs for the prioritized flows based on usage requirements. Understand expected demand patterns and determining how elastic each flow must be to meet those requirements.| You're able to define scalability requirements on existing components that need more capacity and the areas where you need extra components to distribute load.|
+| Choose the right resources and rightsize them across the technology stack, which enables you to meet performance goals. <br><br>Consider features that can fulfill the scalability requirements.| The overall system will and perform as per the defined targets. You can use built-in features that automatically scale when needed. It also helps you avoid overprovisioning, saving costs while still handling demand changes. |
 | Do capacity planning based on the performance model and the capability of selected resources. <br> <br>Use predictive modeling techniques to forecast anticipated changes in capacity.| The system will be able to meet performance goals while staying prepared for future demand. Predictive modeling helps you plan ahead, avoiding resource shortages or overprovisioning, which improves reliability and cost efficiency. |
-| Implement a proof of concept that validates the technical requirements and design choices. |A proof of concept helps validate if the design can meet performance targets and anticipated load. |
+| Implement proof of concept and validate proposed design choices to meet technical requirements. |A proof of concept helps validate if the design can meet performance targets and anticipated load. |
 
 
 ## Achieve and sustain performance
@@ -89,7 +89,7 @@ Performance tuning is a continuous cycle of monitoring, optimizing, testing, and
 
 |Approach|Benefit|
 |-|-|
-| Set aside dedicated time for performance optimization to address technical debt caused by past time or budget constraints. |This approach fosters a culture of accountability, where the team actively monitors and continuously improves system performance. |
+| Set aside dedicated time for performance optimization as a regular practice throughout the development lifecycle.  | In a performance-driven culture, this approach reinforces accountability, where the team actively monitors and continuously improves system performance. |
 | Revisit nonfunctional requirements and establish new targets by analyzing historical trends in production to enhance the architecture with improved design patterns and components. | New designs and components, like caching or a CDN, can optimize the system and improve the user experience.|
 | Get current and stay current with technology innovations that can improve performance. <br><br>Take advantage of the new versions released for the dependent frameworks and libraries.<br><br>Similarly, use the new features for platform resources as they're updated and patched. | Performance targets provide justification for adopting new technology. <br><br>Code that might have been slow in the past can become faster with these updates. You also want to be aware of how certain updates negatively affect performance. |
 
