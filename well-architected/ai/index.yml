@@ -66,8 +66,8 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Baseline OpenAI end-to-end chat reference architecture
-            url: /azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat  
+          - text: Baseline Azure AI Foundry chat reference architecture
+            url: /azure/architecture/ai-ml/architecture/baseline-azure-ai-foundry-chat
 
  # Card
   - title: Related services
