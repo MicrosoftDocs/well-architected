@@ -209,13 +209,7 @@ Azure provides an extensive set of built-in policies related to Azure OpenAI and
 
 These Azure Policy definitions are also [Azure Advisor](https://azure.microsoft.com/products/advisor) security best-practice recommendations for Azure OpenAI.
 
-## Example architecture
-
-Foundational architecture that demonstrates the key recommendations: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
-
 ## Next steps
 
-Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
 
-- Use this reference architecture as an example of how you can apply this article's guidance to a workload: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
-- Build implementation expertise by using [Azure Machine Learning](/azure/ai-services/openai/) product documentation.
+- Build implementation expertise by using [Azure OpenAI Service](/azure/ai-foundry/openai/overview) product documentation.
