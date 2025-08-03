@@ -244,4 +244,4 @@ For more information, see [Advisor](/azure/advisor).
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Best practices for a complete deployment of Azure Monitor](/azure/azure-monitor/best-practices)
+> [Best practices for a complete deployment of Azure Monitor](/azure/cloud-adoption-framework/manage/monitor)
