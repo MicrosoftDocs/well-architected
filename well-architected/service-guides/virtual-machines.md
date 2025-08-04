@@ -17,16 +17,6 @@ Azure Virtual Machines is a type of compute service that you can use to create a
 
 This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Virtual Machines as the compute service for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are recommendations on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Virtual Machines and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations: [Virtual Machines baseline architecture](/azure/architecture/virtual-machines/baseline).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -44,7 +34,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the SKUs and features of VMs and their dependencies. Extend the strategy to include more approaches as needed.
 
@@ -76,7 +66,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Run operations with rigor.** Reliability design choices must be supported by effective operations based on the principles of monitoring, resiliency testing in production, automated application VM patches and upgrades, and consistency of deployments. For operational guidance, see [Operational Excellence](#operational-excellence).
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | :-----------------| :-----------|
@@ -95,7 +85,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Virtual Machines.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -129,7 +119,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Threat prevention.** Protect against malware attacks and malicious actors by implementing security controls like firewalls, antivirus software, and intrusion detection systems. Determine whether a [Trusted Execution Environment (TEE)](/azure/confidential-computing/trusted-execution-environment) is required.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | :--------| :----|
@@ -147,7 +137,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Virtual Machines and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -176,7 +166,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Look for ways to optimize.** Some strategies include choosing the most cost-effective approach between increasing resources in an existing system, or scaling up, and adding more instances of that system, or scaling out. You can offload demand by distributing it to other resources, or you can reduce demand by implementing priority queues, gateway offloading, buffering, and rate limiting. For more information, see the recommendations in [Performance Efficiency](#performance-efficiency).
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | :------------------------------| :-----------|
@@ -193,7 +183,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Virtual Machines and scale sets.
 
@@ -202,7 +192,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Monitor the VM instances.** Collect logs and metrics from VM instances to monitor resource usage and measure the health of the instances. Some common [metrics](/azure/azure-monitor/vm/vminsights-log-query) include CPU usage, number of requests, and input/output (I/O) latency. Set up Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) to be notified about problems and to detect configuration changes in your environment.
 >
 > - **Monitor the health of the VMs and their dependencies.**
->    -  Deploy monitoring components to collect logs and metrics that give a comprehensive view of your VMs, guest OS, and boot diagnostics data. Virtual Machine Scale Sets roll up telemetry, which allows you to view health metrics at an individual VM level or as an aggregate. Use Azure Monitor to view this data for each VM or aggregated across multiple VMs. For more information, see [Recommendations on monitoring agents](#recommendations-3).
+>    -  Deploy monitoring components to collect logs and metrics that give a comprehensive view of your VMs, guest OS, and boot diagnostics data. Virtual Machine Scale Sets roll up telemetry, which allows you to view health metrics at an individual VM level or as an aggregate. Use Azure Monitor to view this data for each VM or aggregated across multiple VMs. For more information, see [Recommendations on monitoring agents](#configuration-recommendations-3).
 >     - Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
 >     - Set up Azure Monitor alert rules. Determine important conditions in your monitoring data to identify and address problems before they affect the system.
 >
@@ -221,7 +211,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Manage your quota.** Plan what level of quota your workload requires and review that level regularly as the workload evolves. If you need to increase or decrease your quota, [request those changes early](/azure/azure-portal/supportability/per-vm-quota-requests).
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | :--------| :----|
@@ -238,7 +228,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Virtual Machines and scale sets.
 
@@ -256,7 +246,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Proximity placement groups.** Use [proximity placement groups](/azure/virtual-machine-scale-sets/proximity-placement-groups) in workloads where low latency is required to ensure that VMs are physically located close to each other.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | :--------| :----|
@@ -292,6 +282,10 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Virtual Machines baseline architecture](/azure/architecture/virtual-machines/baseline).
 
 ## Related content
 

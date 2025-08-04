@@ -25,4 +25,4 @@ These questions are designed to help you benchmark your workload's maturity and 
 
 See the following reference architecture, which describes design choices for a production-ready implementation:
 
-- [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat)
+- [Baseline Azure AI Foundry chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-azure-ai-foundry-chat)

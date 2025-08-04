@@ -4,37 +4,26 @@ description: Learn how to deploy Azure Local so that you can create and manage W
 author: neilbird
 ms.author: nebird
 ms.topic: conceptual
-ms.date: 07/03/2025
+ms.date: 07/18/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: 
-    - azure-stack-hci
+    - azure-local
 categories: 
     - hybrid
 ---
 
 # Architecture best practices for Azure Local
 
-Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
+Azure Local extends Azure to customer-owned infrastructure using Azure Arc, enabling modern and traditional applications to run consistently across distributed or edge locations. The solution provides a unified management experience using Azure and supports a wide range of validated hardware from trusted Microsoft partners. You can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
 
 This article assumes you have an understanding of hybrid systems and have working knowledge of Azure Local. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
-
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Local and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:  
-> [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
 
 ### Technology scope
 
 This review focuses on the interrelated decisions for the following Azure resources:
 
-- Azure Local (_platform_), version 23H2 and later
+- Azure Local (_platform_), 2311 and later
 - Azure Local VMs (_workload_)
 
 > [!NOTE]
@@ -53,7 +42,7 @@ In hybrid cloud deployments, the goal is to reduce the effects of one component 
 
 It's important to distinguish between *platform reliability* and *workload reliability*. Workload reliability has a dependency on the platform. Application owners or developers must design applications that can deliver the defined reliability targets.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance of Azure Local. Extend the strategy to include more approaches as needed.
 
@@ -69,9 +58,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   **Degraded performance of the instance** or its dependencies can make the Azure Local platform unavailable. For example:
 >
->   - Without proper workload capacity planning, it's challenging to _rightsize Azure Local instances_ in the design phase, which is a requirement so that the workload can meet the desired reliability targets. Use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) during instance design. Consider the "_N+1 minimum requirement for number of machines_" if you require highly available VMs. For business-critical or mission-critical workloads, consider using a "_N+2 number of machines_" for the instance size if resiliency is paramount.
+>   - Without proper workload capacity planning, it's challenging to _rightsize Azure Local instances_ in the design phase, which is a requirement so that the workload can meet the desired reliability targets. Use the [Azure Local sizer tool](https://azurelocalsolutions.azure.microsoft.com/#/sizer) during instance design. Consider the "_N+1 minimum requirement for number of machines_" if you require highly available VMs. For business-critical or mission-critical workloads, consider using a "_N+2 number of machines_" for the instance size if resiliency is paramount.
 >
->   - The reliability of the platform depends on how well the critical platform dependencies, such as physical disk types, perform. _You must choose the right disk types for your requirements_. For workloads that need low-latency and high-throughput storage, we recommend an all-flash (_NVMe/SSD only_) storage configuration. For general purpose compute, a hybrid storage (_NVMe or SSDs for cache and HDDs for capacity_) configuration might provide more storage space. But the tradeoff is that spinning disks have significantly lower performance if your workload exceeds the [cache working set](/azure/azure-local/concepts/cache#sizing-the-cache), and HDDs have a much lower _mean time between failure_ value compared to NVMe/SSDs.
+>   - The reliability of the platform depends on how well the critical platform dependencies, such as physical disk types, perform. _You must choose the right disk types for your requirements_. For workloads that need low-latency and high-throughput storage, we recommend an all-flash (_NVMe/SSD only_) storage configuration. For general purpose compute, a hybrid storage (_NVMe or SSDs for cache and HDDs for capacity_) configuration might provide more storage space. But the tradeoff is that spinning disks have significantly lower performance if your workload exceeds the [cache working set](/azure/azure-local/concepts/cache#sizing-the-cache), and HDDs have a much lower _mean time between failure_ value compared to NVMe/SSDs. For more information, review the [physical disk drives section](/azure/architecture/hybrid/azure-local-baseline#physical-disk-drives) of the Azure Local baseline reference architecture.
 >
 >     [Performance Efficiency](#performance-efficiency) describes these examples in more detail.
 >
@@ -105,7 +94,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Business requirements for _data recovery and retention_ drive the strategy for workload backups. A comprehensive strategy includes considerations for _workload operating system (OS) and application persistent data_, with the ability to restore individual (_point-in-time_) file-level and folder-level data. Configure the backup retention policies based on your data recovery and compliance requirements, which determine the number and age of available data recovery points. Explore Azure Backup as an option to enable host-level or VM guest-level backups for Azure Local. Review data protection solutions from Backup independent software vendor partners where relevant. For more information, see [Azure Backup guidance and best practices](/azure/backup/guidance-best-practices) and [Azure Backup for Azure Local](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -125,7 +114,7 @@ Azure Local is a secure-by-default product that has more than 300 security setti
 
 Default security features in Azure Local include hardened OS security settings, Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, and Microsoft Defender for Cloud. For more information, see [Review security features](/azure/azure-local/concepts/security-features).
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -177,7 +166,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >   - Vulnerability assessment and potential mitigations
 >   - Use of secure communication protocols
 
-#### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
@@ -195,7 +184,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure Local and its environment.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time. 
 
@@ -205,31 +194,31 @@ Azure Local incurs costs for hardware, software licensing, workloads, guest VMs 
 >
 > - (Azure Local platform architecture and workload architecture) **Estimate realistic costs as part of cost modeling**. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to select and configure services like Azure Local, Azure Arc, and AKS on Azure Local. Experiment with various configurations and payment options to model costs.
 >
-> - (Azure Local platform architecture and workload architecture) **Optimize the cost of Azure Local hardware**. Choose a hardware OEM partner that aligns with your business and commercial requirements. To explore the certified list of validated machines, integrated systems, and premier solutions, see [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#catalog). Communicate your workload characteristics, size, quantity, and performance with your hardware partner so that you can rightsize a cost-effective hardware solution for the Azure Local machine and instance size.
+> - (Azure Local platform architecture and workload architecture) **Optimize the cost of Azure Local hardware**. Choose a hardware OEM partner that aligns with your business and commercial requirements. To explore the certified list of validated machines, integrated systems, and premier solutions, see [Azure Local solutions catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog). Communicate your workload characteristics, size, quantity, and performance with your hardware partner so that you can rightsize a cost-effective hardware solution for the Azure Local machine and instance size.
 >
 > - (Azure Local platform architecture) **Optimize your licensing costs**. Azure Local software is licensed and billed on a "_per physical CPU core_" basis. Use existing on-premises core licenses with [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit) to reduce licensing costs for Azure Local workloads, such as Azure Local VMs that run Windows Server, SQL Server, or AKS and Azure Arc-enabled Azure SQL Managed Instance. For more information, see [Azure Hybrid Benefit cost calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#why-azure-hybrid-benefit).
 >
 > - (Azure Local platform architecture) **Save on environment costs**. Evaluate whether the following options can help optimize your resource usage.
 >
->   - **Take advantage of discount programs that Microsoft offers**. Consider using Azure Hybrid Benefit to reduce the cost to run Azure Local and Windows Server workloads. For more information, see [Azure Hybrid Benefit for Azure Local](/azure/azure-local/concepts/azure-hybrid-benefit-hci).
+>   - **Take advantage of discount programs that Microsoft offers**. Consider using Azure Hybrid Benefit to reduce the cost to run Azure Local and Windows Server workloads. For more information, see [Azure Hybrid Benefit for Azure Local](/azure/azure-local/concepts/azure-hybrid-benefit).
 >
 >   - **Explore promotional offers**. Take advantage of the Azure Local 60-day free trial after registration for initial proof of concepts or validations.
 >
 > - (Azure Local platform architecture) **Save on operational costs**.
 >
->   - **Evaluate technology options for patching, updating, and other operations**. Update Manager is free for Azure Local instances that have Azure Hybrid Benefit and Azure Arc VM management enabled. For more information, see [Update Manager FAQ](/azure/update-manager/update-manager-faq#is-azure-update-manager-chargeable-on-azure-stack-hci) and [Update Manager pricing](https://azure.microsoft.com/pricing/details/azure-update-management-center).
+>   - **Evaluate technology options for patching, updating, and other operations**. Update Manager is free for Azure Local instances and Azure Local VMs, for more information, see [Update Manager FAQ](/azure/update-manager/update-manager-faq#what-is-the-pricing-for-azure-update-manager) and [Update Manager pricing](https://azure.microsoft.com/pricing/details/azure-update-management-center).
 >
 >   - **Evaluate costs related to observability**. Set up alert rules and data collection rules (DCRs) to meet your monitoring and auditing needs. The amount of data that your workload ingests, processes, and retains directly influences costs. Optimize by using smart retention policies, limiting the number and frequency of alerts, and choosing the right storage tier for storing logs. For more information, see [Cost Optimization guidance for Log Analytics](../service-guides/azure-log-analytics.md#cost-optimization).
 >
-> - (Workload architecture) **Evaluate density over isolation**. Use AKS on Azure Local to improve density and simplify workload management so that you can enable containerized applications to scale across multiple datacenter or edge locations. For more information, see [AKS on Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
+> - (Workload architecture) **Evaluate density over isolation**. Use AKS on Azure Local to improve density and simplify workload management so that you can enable containerized applications to scale across multiple datacenter or edge locations. Azure Kubernetes Service (AKS) on Azure Local is included as part of Azure Local pricing, for more information, see [AKS on Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|Use [**Azure Hybrid Benefit for Azure Local**](/azure/azure-local/concepts/azure-hybrid-benefit-hci) if you have Windows Server Datacenter licenses with Software Assurance.|With Azure Hybrid Benefit for Azure Local, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Local at no additional cost.|
+|Use [**Azure Hybrid Benefit for Azure Local**](/azure/azure-local/concepts/azure-hybrid-benefit) if you have Windows Server Datacenter licenses with Software Assurance.|With Azure Hybrid Benefit for Azure Local, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Local at no additional cost.|
 |Choose either the Windows Server subscription add-on or bring your own license to license and activate the Windows Server VMs and use them on Azure Local. For more information, see [**License Windows Server VMs on Azure Local**](/azure/azure-local/manage/vm-activate#windows-server-subscription).| While you can use any existing Windows Server licenses and activation methods available, optionally, you can enable "Windows Server subscription add-on" available for Azure Local only to subscribe Windows Server guest licenses through Azure which is charged for the total number of physical cores in the Azure Local instance.|
-|Use the [**Azure verification for VMs**](/azure/azure-local/deploy/azure-verification) benefit extended to Azure Local so that supported Azure-exclusive workloads can work outside of the cloud.|This benefit is enabled by default on Azure Local version 23H2 or later. Use this benefit so that the VMs can operate in other Azure environments and workloads can benefit from offers that are available only in Azure, such as Extended Security Updates enabled by Azure Arc.|
+|Use the [**Azure verification for VMs**](/azure/azure-local/deploy/azure-verification) benefit extended to Azure Local so that supported Azure-exclusive workloads can work outside of the cloud.|This benefit is enabled by default on Azure Local 2311 or later. Use this benefit so that the VMs can operate in other Azure environments and workloads can benefit from offers that are available only in Azure, such as Extended Security Updates enabled by Azure Arc.|
 
 ## Operational Excellence
 
@@ -239,7 +228,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 Monitoring and diagnostics are crucial. You can use metrics to measure performance statistics and to troubleshoot and remediate problems quickly. For more information about how to troubleshoot problems, see [Operational Excellence design principles](../devops/principles.md) and [Collect diagnostic logs for Azure Local](/azure/azure-local/manage/collect-logs).
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure Local.
 
@@ -261,18 +250,18 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - (Azure Local platform architecture) **Use proper validation techniques for a safe deployment**. Use the [environmental checker tool in standalone mode](/azure/azure-local/manage/use-environment-checker) to assess the readiness of the target environment before you deploy an Azure Local solution. This tool validates the proper configuration of required connectivity, hardware, Windows Server Active Directory, networks, and Azure Arc integration prerequisites.
 >
-> - (Azure Local platform architecture) **Get current and stay current**. Use the [Azure Local solution catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog) to stay current with the latest hardware OEM innovations for Azure Local instance deployments. Consider using premium solutions to benefit from extra integration, turn-key deployment capabilities, and a simplified update experience.
+> - (Azure Local platform architecture) **Get current and stay current**. Use the [Azure Local solution catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog) to stay current with the latest hardware OEM innovations for Azure Local instance deployments. Consider using premium solutions to benefit from extra integration, turn-key deployment capabilities, and a simplified update experience.
 >
 >   Use Update Manager to update the platform and manage the OS, core agents, and services, including solution extensions. Stay current, and consider using the "Enable automatic upgrade" setting where possible for extensions.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
-|[**Enable Monitor Insights on Azure Local instances**](/azure/azure-local/concepts/monitoring-overview) to enhance monitoring and alerting by using native Azure capabilities. <br><br> Insights can monitor key Azure Local features by using the instance performance counters and event log channels that are collected by the data collection rule (DCR). <br><br>For certain hardware infrastructure, such as Dell APEX, you can visualize hardware events in real time.<br><br>For more information, see [Feature workbooks](/azure/azure-local/manage/monitor-features#monitor-dell-apex-cloud-platform).|Azure manages Insights, so it's always up to date, it's scalable across multiple instances, and it's highly customizable.<br><br>Insights provides access to default workbooks with basic metrics, along with specialized workbooks that are created for monitoring key features of Azure Local. This feature provides near real-time monitoring. You can create graphs and customized visualization by using aggregation and the filter functionality. You can also configure custom alert rules.<br><br>The cost of Insights is based on the quantity of data ingested and the data retention settings of the Log Analytics workspace. When you [enable Azure Local Insights](/azure/azure-local/manage/monitor-hci-single-23h2#enable-insights), we **recommended** that you use the DCR created by the Insights creation experience. The prefix of the DCR name is `AzureStackHCI-`. It's configured to collect only the required data.|
+|[**Enable Monitor Insights on Azure Local instances**](/azure/azure-local/concepts/monitoring-overview) to enhance monitoring and alerting by using native Azure capabilities. <br><br> Insights can monitor key Azure Local features by using the instance performance counters and event log channels that are collected by the data collection rule (DCR). <br><br>For certain hardware infrastructure, such as Dell APEX, you can visualize hardware events in real time.<br><br>For more information, see [Feature workbooks](/azure/azure-local/manage/monitor-features#monitor-dell-apex-cloud-platform).|Azure manages Insights, so it's always up to date, it's scalable across multiple instances, and it's highly customizable.<br><br>Insights provides access to default workbooks with basic metrics, along with specialized workbooks that are created for monitoring key features of Azure Local. This feature provides near real-time monitoring. You can create graphs and customized visualization by using aggregation and the filter functionality. You can also configure custom alert rules.<br><br>The cost of Insights is based on the quantity of data ingested and the data retention settings of the Log Analytics workspace. When you [enable Azure Local Insights](/azure/azure-local/manage/monitor-single-23h2#enable-insights), we **recommended** that you use the DCR created by the Insights creation experience. The prefix of the DCR name is `AzureStackHCI-`. It's configured to collect only the required data.|
 |**Set up alerts**, and configure the alert processing rules based on your organizational requirements. Get notified of changes in health, metrics, logs, or other types of observability data. <br><br> - [Health alerts](/azure/azure-local/manage/health-alerts-via-azure-monitor-alerts)<br>- [Log alerts](/azure/azure-local/manage/setup-system-alerts) <br> - [Metric alerts](/azure/azure-local/manage/setup-metric-alerts)<br><br>For more information, see [Recommended rules for metric alerts](/azure/azure-local/manage/set-up-recommended-alert-rules). |Integrate Monitor alerts with Azure Local to get several key benefits at no extra cost. Get near real-time monitoring and customize alerts to notify the right team or admin for remediation. <br><br>You can collect a comprehensive list of metrics for compute, storage, and network resources in Azure Local. Perform advanced logic operations on your log data and evaluate metrics of your Azure Local instance at regular intervals.|
-|Use the update feature to integrate and manage various aspects of the Azure Local solution in one place. For more information, see [**About updates in Azure Local**](/azure/azure-local/update/about-updates-23h2). |The update orchestrator is installed during the initial Azure Local instance deployment. This feature automates updates and management operations. To keep Azure Local in a supported state, make sure that you update your instances on a regular cadence to move to new baseline builds when they become available. This method provides new capabilities and improvements to the platform.<br><br>For more information about _release trains_, the cadence of updates, and the support window of each baseline build, see [Azure Local version 23H2 release information](/azure/azure-local/release-information-23h2#about-azure-stack-hci-version-23h2-releases).|
-|To help with hands-on skilling, labs, training events, product demos, or proof-of-concept projects, consider using [Azure Arc Jumpstart](https://jumpstart.azure.com/azure_jumpstart_localbox). Rapidly deploy Azure Local without the need for physical hardware by using a VM on Azure to deploy the solution.|[LocalBox](https://jumpstart.azure.com/azure_jumpstart_localbox) supports Azure Local version 23H2 to enable rapid testing and evaluation of the latest capabilities of Azure edge products, such as native Azure Arc and AKS integration in a self-contained sandbox.<br><br>You can deploy this sandbox to an Azure subscription by using a VM that supports nested virtualization to emulate an Azure Local instance inside an Azure VM. Get Azure Local features like the new [cloud deployment feature](/azure/azure-local/deploy/deployment-azure-resource-manager-template) with minimal manual effort.<br><br>For more information, see [Microsoft Tech Community blog](https://techcommunity.microsoft.com/t5/azure-arc-blog/announcing-hcibox-support-for-azure-stack-hci-23h2/ba-p/4035596).|
+|Use the update feature to integrate and manage various aspects of the Azure Local solution in one place. For more information, see [**About updates in Azure Local**](/azure/azure-local/update/about-updates-23h2). |The update orchestrator is installed during the initial Azure Local instance deployment. This feature automates updates and management operations. To keep Azure Local in a supported state, make sure that you update your instances on a regular cadence to move to new baseline builds when they become available. This method provides new capabilities and improvements to the platform.<br><br>For more information about _release trains_, the cadence of updates, and the support window of each baseline build, see [Azure Local release information](/azure/azure-local/release-information-23h2#about-azure-stack-hci-version-23h2-releases).|
+|To help with hands-on skilling, labs, training events, product demos, or proof-of-concept projects, consider using [Azure Arc Jumpstart](https://jumpstart.azure.com/azure_jumpstart_localbox). Rapidly deploy Azure Local without the need for physical hardware by using a VM on Azure to deploy the solution.|[LocalBox](https://jumpstart.azure.com/azure_jumpstart_localbox) supports virtualized deployments of Azure Local to enable rapid testing and evaluation of the latest capabilities of Azure edge products, such as native Azure Arc and AKS integration in a self-contained sandbox.<br><br>You can deploy this sandbox to an Azure subscription by using a VM that supports nested virtualization to emulate an Azure Local instance inside an Azure VM. Get Azure Local features like the new [cloud deployment feature](/azure/azure-local/deploy/deployment-azure-resource-manager-template) with minimal manual effort.<br><br>For more information, see [Microsoft Tech Community blog](https://techcommunity.microsoft.com/t5/azure-arc-blog/announcing-hcibox-support-for-azure-stack-hci-23h2/ba-p/4035596).|
 
 ## Performance Efficiency
 
@@ -280,17 +269,17 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key indicators for Azure Local.
 
 > [!div class="checklist"]
 >
-> - (Azure Local platform architecture) **Use the Azure Local-validated hardware** or integrated systems from OEM partner offerings. Consider using the premium solution builders in the [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#catalog) to optimize the performance of your Azure Local environment.
+> - (Azure Local platform architecture) **Use the Azure Local-validated hardware** or integrated systems from OEM partner offerings. Consider using the premium solution builders in the [Azure Local catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog) to optimize the performance of your Azure Local environment.
 >
 > - (Azure Local platform storage architecture) Choose the right [**physical disk types for the Azure Local machines**](/azure/azure-local/concepts/cache#drive-types-and-deployment-options) based on your workload performance and capacity requirements. For high-performance workloads that require low latency and high-throughput storage, consider using an all-flash (NVMe/SSD only) storage configuration. For general purpose compute or large storage capacity requirements, consider using hybrid storage (SSD or NVMe for cache tier and HDDs for capacity tier), which might provide increased storage capacity.
 >
-> - (Azure Local platform architecture) **Use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) during the instance design (_pre-deployment_) phase**. Azure Local instances should be sized appropriately by using the workload capacity, performance, and resiliency requirements as inputs. The size determines the maximum number of physical machines that can be offline simultaneously (_cluster quorum_), such as any planned (_maintenance_) or unplanned (_power or hardware failure_) events. For more information, see [Cluster quorum overview](/azure/azure-local/concepts/quorum#cluster-quorum-overview).
+> - (Azure Local platform architecture) **Use the [Azure Local sizer tool](https://azurelocalsolutions.azure.microsoft.com/#/sizer) during the instance design (_pre-deployment_) phase**. Azure Local instances should be sized appropriately by using the workload capacity, performance, and resiliency requirements as inputs. The size determines the maximum number of physical machines that can be offline simultaneously (_cluster quorum_), such as any planned (_maintenance_) or unplanned (_power or hardware failure_) events. For more information, see [Cluster quorum overview](/azure/azure-local/concepts/quorum#cluster-quorum-overview).
 >
 > - (Azure Local platform architecture) **Use all-flash (NVMe or SSD) based solutions for workloads that have high-performance or low-latency requirements**. These workloads include but are not limited to highly transactional database technologies, production AKS clusters, or any mission-critical or business-critical workloads with low-latency or high-throughput storage requirements. Use all-flash deployments to maximize storage performance. All-NVMe or all-SSD configurations (_especially at a very small scale_) improve storage efficiency and maximize performance because no drives are used as a cache tier. For more information, see [All-flash-based storage](/azure/azure-local/concepts/cache#all-flash-deployment-possibilities).
 >
@@ -301,7 +290,7 @@ Start your design strategy based on the [design review checklist for Performance
 >   As a minimum requirement, plan to reserve `1 x physical machines (N+1)` worth of capacity across the instance to ensure that instance machines can be drained when they perform updates via Update Management. Consider reserving `2 physical machines (N+2)` machines work of capacity for business-critical or mission-critical use cases.
 >
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -360,16 +349,20 @@ Azure Advisor is a personalized cloud consultant that helps you follow best prac
 - [Performance](/azure/advisor/advisor-reference-performance-recommendations)
 - [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
+
 ## Next steps
 
 - Consider the following articles in Azure Architecture Center as resources that demonstrate the recommendations highlighted in this article.
     -   Foundational architecture that demonstrates the key recommendations: [Azure Local baseline reference architecture](/azure/architecture/hybrid/azure-stack-hci-baseline).
     -   If your organization needs a hybrid approach, carefully select your design choices related to a hybrid network architecture. For more information, see [Hybrid architecture design](/azure/architecture/hybrid/hybrid-start-here).
 
-- Build implementation expertise by using the following Azure Local product documentation: 
+- Build implementation expertise by using the following Azure Local product documentation:
   - [Azure Local overview](/azure/azure-local/overview)
   - [Azure Local network deployment considerations](/azure/azure-local/plan/cloud-deployment-network-considerations)
-  - [About Azure Local version 23H2 deployment](/azure/azure-local/deploy/deployment-introduction)
+  - [About Azure Local deployment](/azure/azure-local/deploy/deployment-introduction)
 
 - Review Cloud Adoption Framework guidance:
 

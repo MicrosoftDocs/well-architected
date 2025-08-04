@@ -33,6 +33,7 @@ The following table summarizes the recommendations in this article.
 |**Develop policies that enforce moral practices at each stage of the life cycle.** |Include checklist items that explicitly state safety requirements and are tailored to the workload context. Examples include user data transparency, consent configuration, and procedures for how to handle the right to be forgotten (RTBF).<br><br>&#9642; [Develop your policies for responsible AI](#develop-policies-for-responsible-ai)<br>&#9642; [Enforce governance on policies for responsible AI](#enforce-governance-on-policies-for-responsible-ai)|
 |**Protect user data with the goal to maximize privacy.** |Collect only what's necessary and with proper user consent. Apply technical controls to protect the profiles of users, their data, and access to that data. <br><br>&#9642; [Handle user data appropriately](#handle-user-data-appropriately)<br>&#9642; [Inspect incoming and outgoing data](#inspect-incoming-and-outgoing-data)|
 |**Keep AI decisions clear and understandable.** |Clearly explain how recommendation algorithms work. Provide users with insights into data usage and algorithmic decision-making to help them understand and trust the process. <br><br>&#9642; [Make the user experience safe](#make-the-user-experience-safe)|
+|**Implement responsible practices for agentic AI systems.** |For agents accessing public and private data, executing tasks in internal and external systems, and autonomously driving decisions, implement auditability of agent activities, role-based access control, and circuit breaker functionality. <br><br>&#9642; [Implement agentic AI safeguards](#implement-agentic-ai-safeguards)| 
 
 ## Develop policies for responsible AI
 
@@ -91,11 +92,41 @@ There are workload responsibilities throughout the life cycle of user interactio
 
     In addition to response feedback, collect feedback about the efficacy of the user experience. Collect engagement metrics through your monitoring stack of the system.
 
+    Ensure that the feedback mechanism provides functionality to allow users **to contest AI decisions**. For example, a financial institution may use AI to automatically approve or reject credit applications, and users should be able to contest rejections. Establish clear procedures for the workload team to review and address contested decisions. 
+
+- **Apply ethical safeguards for AI-genereated audio and video.**  Users have the right to know when they're interacting with AI-generated media rather than human-created content. Implement clear disclosure mechanisms that inform users when content is AI-generated without disrupting the user experience, and provide options for human interaction when users prefer or require human oversight for sensitive scenarios. 
+
+    Consider implementing content watermarking or metadata tagging for AI-generated media to support transparency and traceability. Document your approach to handling requests for content verification and establish clear policies for content authenticity disclosure. 
+
+## Implement agentic AI safeguards 
+
+For agents accessing public and private data, executing tasks in internal and external systems, and autonomously driving decisions, **implement auditability of agent activities, role-based access control, and circuit breaker functionality to prevent catastrophic outcomes**. 
+
+Agentic AI systems require specialized responsible AI practices beyond traditional machine learning models, built on three foundational aspects: 
+
+- **Robust data ingress and egress control.** Establish comprehensive governance for data flows into and out of agentic systems. This includes validating data quality and security at system boundaries, ensuring proper authorization for data access, and maintaining clear separation between different agent contexts and external systems. 
+
+- **Data validation and integrity assurance.** Maintain data quality and consistency throughout multi-agent interactions. This involves continuous monitoring of data transformations, comprehensive audit trails for decision-making processes, and verification mechanisms to prevent data corruption or manipulation across agent workflows. 
+
+- **Autonomous agentic execution with independent guardrails.** Deploy oversight mechanisms that operate independently from the agents themselves. This includes monitoring systems that can detect anomalous behavior, automated controls that can halt problematic executions, and human intervention capabilities that allow operators to override agent decisions at any point. 
+
+### Agent complexity considerations 
+
+Different types of agents require varying levels of these safeguards because the potential risks and impact of their actions increase with their capabilities and autonomy. As agents move from simple retrieval tasks to complex autonomous decision-making, the need for comprehensive oversight and control mechanisms becomes more critical. 
+
+Additionally, the level of complexity increases significantly, making it more difficult to implement responsible AI principles like fairness and transparency: 
+
+- **Retrieval agents (read-only):** Focus on data access controls and audit logging. 
+
+- **Task-based agents (read and write):** Require comprehensive authorization and transaction monitoring. 
+
+- **Fully autonomous agents (multi-turn):** Need all three aspects with the highest level of oversight.
+
 ## Operationalize content safety measures
 
 Integrate content safety into every stage of the AI life cycle by using custom solution code, appropriate tools, and effective security practices. Consider the following strategies:
 
-- **Anonymize data.** As data moves from ingestion to training or evaluation, implement checks along the way to minimize the risk of personal information leakage and avoid raw user data exposure.
+- **Anonymize data.** As data moves from ingestion to training or evaluation, implement checks along the way to minimize the risk of personal information leakage and avoid raw user data exposure. Use intelligent tooling like [Azure AI Language Personally Identifiable Information (PII) detection](/azure/ai-services/language-service/personally-identifiable-information/overview?tabs=text-pii) to automatically detect and redact personal information like phone numbers, email addresses, and other types of personal information. 
 
 - **Moderate content.** Use the content safety API that evaluates requests and responses in real time. Ensure that these APIs are reachable.
 
@@ -109,6 +140,21 @@ Integrate content safety into every stage of the AI life cycle by using custom s
 
     You should implement this explainability aspect throughout the entire AI life cycle. Data cleaning, lineage, selection criteria, and processing are critical stages where decisions should be tracked.
 
+- **Build escape hatches into your agentic design.** For agentic solutions, implement mechanisms that allow human intervention or override at critical decision points. This approach ensures that risky behaviors can be avoided or corrected early in the execution process. Escape hatches are particularly important in complex agentic workflows where multiple agents interact and make autonomous decisions that can have significant business or safety implications. 
+
+    Design your architecture to enable continuous tracing and monitoring of agent interactions across the digital ecosystem. Implement governance agents that operate across different system components to identify and flag concerns before they escalate. Consider these essential patterns:
+    
+    - **Coordinator agents** that monitor task execution and escalate anomalies to human operators when predefined thresholds are exceeded or unusual patterns are detected.
+    - **Human-in-the-loop checkpoints** where agents pause execution for validation before proceeding with high-risk or high-impact actions.
+
+    Build interception points at all critical junctures in the execution path, including routing decisions, resource allocation choices, and external system integrations. This multi-layered approach provides multiple opportunities to prevent unintended consequences while maintaining system efficiency.
+
+- **Make technical decisions about the AI system auditable.** Ensure that decisions made about AI technologies are recorded and auditable. You might include the record of these decisions in a larger audit trail for the workload, but ensure that necessary details are included to meet governance and compliance standards and requirements. Decisions for AI technologies can include:
+    - Model selections
+    - Model updates
+    - Algorithm adjustments and hyper-parameters
+    - Changes to your data processing design
+ 
 ### Tools
 
  Integrate tools for content safety and data traceability, like [Microsoft Purview](/purview/purview). [Azure AI Content Safety](/azure/ai-services/content-safety/overview) APIs can be called from your testing to facilitate content safety testing.
@@ -126,6 +172,9 @@ In some cases, you need to make multiple model invocations, such as through Azur
 **Inspections should be multimodal** and cover various formats. When you use multimodal inputs, such as images, it's important to analyze them for hidden messages that might be harmful or violent. These messages might not be immediately visible, so they require careful inspection. Use tools like Content Safety APIs for this purpose.
 
 To help enforce privacy and data security policies, inspect user data and grounding data for compliance with privacy regulations. Make sure that the data is sanitized or filtered as it flows through the system. For example, data from prior customer support conversations can serve as grounding data. This data should be sanitized before reuse.
+
+>[!IMPORTANT]
+> **Content safety validation is essential for all AI scenarios**, regardless of architecture complexity. Implement content safety checks using services like [Azure AI Content Safety](/azure/ai-services/content-safety/overview) to evaluate both requests and responses before they reach or leave your AI models. 
 
 ## Handle user data appropriately
 

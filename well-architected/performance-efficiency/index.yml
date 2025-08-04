@@ -9,7 +9,7 @@ metadata:
   ms.topic: landing-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 11/15/2023
+  ms.date: 07/27/2025
 
 landingContent:
   - title: Learn key points
@@ -22,6 +22,8 @@ landingContent:
             url: checklist.md
           - text: Tradeoffs
             url: tradeoffs.md
+          - text: Maturity model
+            url: maturity-model.md
           - text: Performance efficiency patterns
             url: design-patterns.md
           - text: Azure Well-Architected Review assessment
@@ -45,7 +47,7 @@ landingContent:
           - text: Achieve and sustain performance
             url: principles.md#achieve-and-sustain-performance
           - text: Improve efficiency through optimization
-            url: principles.md#improve-efficiency-through-optimization
+            url: principles.md#optimize-for-long-term-improvement
   - title: Achieve performance targets
     linkLists:
       - linkListType: how-to-guide

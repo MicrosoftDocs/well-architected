@@ -14,17 +14,6 @@ The load balancing process distributes network traffic to a group of two or more
 
 This article assumes that as an architect, you've reviewed the [load-balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) in Azure and chose Load Balancer for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
->[!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Load Balancer and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
->
-> Foundational architecture that demonstrates the key recommendations:  
->[Azure Virtual Machines baseline architecture](/azure/architecture/virtual-machines/baseline).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -50,7 +39,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the tiers and features of virtual machines (VMs). Extend the strategy to include more approaches as needed.
 
@@ -82,7 +71,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   
 >   You can configure the health probe on Load Balancer. For more information, see [Design guidance on health probes](/azure/load-balancer/load-balancer-custom-probe-overview#design-guidance).
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -97,7 +86,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Load Balancer.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -120,7 +109,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > 
 > - **Encrypt network traffic.** Load Balancer works at Layer 4 and fully supports load balancing TCP and UDP traffic. Load Balancer doesn't support Secure Sockets Layer (SSL) and TLS termination. For HTTPS load balancing at the application layer, use Application Gateway.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -133,7 +122,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Load Balancer and its environment.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -153,7 +142,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Evaluate the cost of operations.** Consider resource expenses and operational costs, like maintenance, scaling, and compliance. Load balancer rules can significantly affect costs. Reduce the number of rules to optimize financial and management costs.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -167,7 +156,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Load Balancer.
 
@@ -179,7 +168,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Implement a comprehensive networking monitoring system.** Impelement diagnostic capabilities, like multidimensional metrics for real-time insights and alerts, resource logs based on the health event schema, and the Azure Monitor Insights dashboard for comprehensive load balancer monitoring.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -194,7 +183,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline that's based on key performance indicators for Load Balancer.
 
@@ -216,7 +205,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Optimize network traffic.** Don't process the same data multiple times in separate steps. Instead, perform all necessary calculations in a batch, and then persist the data. This approach reduces latency and minimizes network traffic, which improves overall performance.
 
-#### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
@@ -238,6 +227,10 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations are aligned with Well-Architected Framework pillars. 
 
 For more information, see the recommendations in [Azure Advisor](/azure/advisor/).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Azure Virtual Machines baseline architecture](/azure/architecture/virtual-machines/baseline).
 
 ## Related resources
 

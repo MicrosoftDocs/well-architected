@@ -19,21 +19,13 @@ Azure Files is a Microsoft file storage solution for the cloud. Azure Files prov
 
 This article assumes that as an architect, you've reviewed the [storage options](/azure/architecture/guide/technology-choices/storage-options) and chosen Azure Files as the storage service on which to run your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can help implement those strategies. The recommendations don't represent an exhaustive list of all configurations available for Azure Files and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or optimize your existing environments.
-
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
 The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, workloads, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md).
 
@@ -53,7 +45,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Monitor potential availability problems**: Subscribe to the [Azure Service Health dashboard](https://azure.microsoft.com/status/) to monitor potential availability problems. Use storage metrics and diagnostic logs in Azure Monitor to investigate alerts.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -71,7 +63,7 @@ Security requirements and recommendations vary depending on whether your workloa
 
 As a best practice, you should keep SMB and NFS file shares in separate storage accounts because they have different security requirements. Use this approach to provide your workload with strong security and high flexibility.
 
-### Design checklist for SMB file shares
+### Workload design checklist for SMB file shares
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -89,7 +81,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Detect threats**: Enable [Microsoft Defender for Storage](/azure/storage/common/azure-defender-storage-configure) to detect potentially harmful attempts to access or exploit your Azure file shares over SMB or FileREST protocols. Subscription administrators get email alerts with details of suspicious activity and recommendations about how to investigate and remediate threats. Defender for Storage doesn't support antivirus capabilities for Azure file shares. If you use Defender for Storage, transaction-heavy file shares incur significant costs, so consider opting out of Defender for Storage for specific storage accounts.
 
-### Recommendations for SMB file shares
+### Configuration recommendations for SMB file shares
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -104,7 +96,7 @@ Start your design strategy based on the [design review checklist for Security](.
 |[Configure your storage account](/azure/storage/common/transport-layer-security-configure-minimum-version) so that TLS 1.2 is the minimum version for clients to send and receive data. | TLS 1.2 is more secure and faster than TLS 1.0 and 1.1, which don't support modern cryptographic algorithms and cipher suites.|
 |Use only the most recent supported SMB protocol version (currently 3.1.1.), and use only AES-256-GCM for SMB channel encryption.<br><br> Azure Files exposes settings that you can use to toggle the SMB protocol and make it more compatible or more secure, depending on your organization's requirements. By default, all SMB versions are allowed. However, SMB 2.1 is disallowed if you enable *Require secure transfer* because SMB 2.1 doesn't support encryption of data in transit.<br><br> If you restrict these settings to a high level of security, some clients might not be able to connect to the file share. | SMB 3.1.1, released with Windows 10, contains important security and performance updates. AES-256-GCM offers more secure channel encryption.|
 
-### Design checklist for NFS file shares
+### Workload design checklist for NFS file shares
 
 > [!div class="checklist"]
 >
@@ -114,7 +106,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Use network-level security and controls to restrict ingress and egress traffic**: Identity-based authentication isn't available for NFS Azure file shares, so you must use network-level security and controls to grant the minimum required level of access to users and applications. For more information, see [How to approach network security for your storage account](/azure/storage/common/storage-network-security).
 
-### Recommendations for NFS file shares
+### Configuration recommendations for NFS file shares
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -129,7 +121,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to file storage and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -155,7 +147,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Monitor usage**: Continuously monitor usage patterns to detect unused or underused storage accounts and file shares. Check for unexpected increases in capacity, which might indicate that you're collecting numerous log files or soft-deleted files. Develop a strategy for deleting files or moving files to more cost-effective access tiers.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -172,7 +164,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your file storage configuration.
 
@@ -184,7 +176,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Periodically review file share activity**: Share activity can change over time. Move standard file shares to cooler access tiers, or you can provision or deprovision capacity for premium shares. When you move standard file shares to a different access tier, you incur a transaction charge. Move standard file shares only when needed to reduce your monthly bill.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -198,7 +190,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for your file storage configuration.
 
@@ -218,7 +210,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Optimize for hybrid deployments**: If you use Azure File Sync, sync performance depends on many factors: your Windows Server and the underlying disk configuration, network bandwidth between the server and the Azure storage, file size, total dataset size, and the activity on the dataset. To measure the performance of a solution that's based on Azure File Sync, determine the number of objects, such as files and directories, that you process per second.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|

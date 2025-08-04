@@ -23,17 +23,6 @@ This article assumes that as an architect, you've reviewed the [data store optio
 
 This article also assumes that you're familiar with the SQL Database core concepts. For more information, see [Core concepts of SQL Database](/azure/azure-sql/database/sql-database-paas-overview) and [What's new in SQL Database?](/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure SQL Database and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> Foundational architecture that demonstrates the key recommendations:  
-> [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:
@@ -46,7 +35,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](../reliability/principles.md) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliability of SQL Database. Extend the strategy to include more approaches as needed.
 
@@ -68,7 +57,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Implement retry logic and backoff logic:** Use these features to handle transient faults in your application.
 > - **Back up your TDE encryption keys:** When you use customer-managed keys for Transparent Data Encryption (TDE), back up the keys to Azure Key Vault.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |--------------|-----------|
@@ -84,7 +73,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](../security/principles.md) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of SQL Database.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -107,7 +96,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   Review the [SQL Database connectivity architecture](/azure/azure-sql/database/connectivity-architecture). Use the `Redirect` or `Proxy` [connection policy](/azure/azure-sql/database/connectivity-architecture#connection-policy) when practical.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation|Benefit|
 |--------|----|
@@ -128,7 +117,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](../cost-optimization/principles.md) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to SQL Database.
 
-### Design checklist
+### Workload design checklist
 
 > [!div class="checklist"]
 > - **Familiarize yourself with SQL Database cost management resources:** Review the [Plan and manage costs for SQL Database](/azure/azure-sql/database/cost-management) article. This resource contains cost-saving strategies, including recommendations about how to optimize cost-effective instances and resources and how to choose the right billing model for your workload.
@@ -146,7 +135,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 >
 >   To reduce costs, scale down databases during periods of low usage. Examples include seasonal workloads that have weeks or months of decreased load or workloads that are idle overnight.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |--------------|-----------|
@@ -163,7 +152,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to SQL Database.
 
@@ -178,7 +167,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Optimize management of business continuity and disaster recovery:** Use Azure Backup to protect SQL Database and regularly test your backup strategy.
 > - **Use native database administration features:** Adopt SQL Database to relieve database administrators of many of their traditional tasks, like infrastructure-related administration, backup management, and high availability and disaster recovery operations. Encourage their growth in cloud-native administration and integration with DevOps teams as they adopt a data-as-code mindset.
 
-### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |--------------|-----------|
@@ -192,7 +181,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for SQL Database.
 
@@ -212,7 +201,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   When you use elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation|Benefit|
 |--------|----|
@@ -236,6 +225,10 @@ Azure provides an extensive set of built-in policies related to SQL Database. A 
 - SQL servers should have auditing enabled to ensure that you capture the operations performed against your SQL assets.
 
 For comprehensive governance, review the built-in definitions for SQL Database policies that are listed in [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
 ## Related resources
 

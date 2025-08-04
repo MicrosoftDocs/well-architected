@@ -1,9 +1,10 @@
 ---
 title: Architecture Best Practices for Azure Machine Learning
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Machine Learning.
-author: robbagby
-ms.author: robbag
+author: lnyswonger
+ms.author: lnyswonger
 ms.date: 03/11/2024
+ms.update-cycle: 180-days
 ms.topic: conceptual
 ms.collection: ce-skilling-ai-copilot
 products:
@@ -17,16 +18,6 @@ azure.category:
 Azure Machine Learning is a managed cloud service that you can use to train, deploy, and manage machine learning models. There are a wide range of choices and configurations for both training and deploying models, including compute SKUs and configurations. You can deploy Machine learning models to Machine Learning compute or to other Azure services such as Azure Kubernetes Service (AKS).
 
 This article provides architectural recommendations for making informed decisions when you use Machine Learning to train, deploy, and manage machine learning models. The guidance is based on the [Azure Well-Architected Framework pillars](../pillars.md).
-
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope.
->
-> Also included are *recommendations* on the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations available for Machine Learning and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments.
->
-> The foundational architecture [baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) demonstrates many of the key recommendations.
 
 ##### Technology scope
 
@@ -44,7 +35,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 The [Reliability design principles](/azure/well-architected/reliability/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-##### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md) and determine its relevance to your business requirements. Extend the strategy to include more approaches as needed.
 
@@ -64,7 +55,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Recovery**: Ensure you have a recovery strategy defined. Machine Learning doesn't have automatic failover. Therefore, you must design a strategy that encompasses the workspace and all its dependencies, such as Key Vault, Azure Storage, and Azure Container Registry.
 
-##### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -78,7 +69,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design around Machine Learning.
 
-##### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -104,7 +95,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Integrity**: Establish trust and verified access by implementing encryption for data at rest and data in transit.
 
-##### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -156,7 +147,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 Read the [Cost Optimization design principles](../cost-optimization/principles.md) to understand the approaches to achieve those goals and the necessary tradeoffs in technical design choices related to training and deploying models in their environments. 
 
-##### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments and fine tune the design so that the workload is aligned with the budget allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -174,7 +165,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Monitor and optimize**: Monitor your resource usage such as CPU and GPU usage when training models. If the resources aren't being fully used, modify your code to better use resources or scale down to smaller or cheaper VM sizes.
 
-##### Recommendations
+### Configuration recommendations
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
@@ -192,7 +183,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals towards the operational requirements of the workload.
 
-##### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Machine Learning.
 
@@ -210,7 +201,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Simplicity**: Use curated environments optimized for Machine Learning, when available.
 
-##### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -226,7 +217,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-##### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Machine Learning workloads.
 
@@ -246,7 +237,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Achieve and sustain performance**: Continuously monitor the performance of your infrastructure of deployed models, review results, and take appropriate actions. Monitor training infrastructure to ensure you're meeting your requirements for training time.
 
-##### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -290,7 +281,7 @@ Advisor is a personalized cloud consultant that helps you follow best practices 
 
 Consider the following [Advisor](https://azure.microsoft.com/products/advisor) recommendations for security:
 
-- Workspaces should be encrypted with a customer-managed key (CMK). 
+- Workspaces should be encrypted with a customer-managed key (CMK).
 - Workspaces should use private link.
 - Workspaces should disable public network access.
 - Compute should be in a virtual network.
@@ -302,7 +293,4 @@ Consider the following [Advisor](https://azure.microsoft.com/products/advisor) r
 
 ## Next steps
 
-Consider these articles as resources that demonstrate the recommendations highlighted in this article.
-
-- Use the [baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) as an example of how these recommendations can be applied to a workload.
-- Use [Machine Learning](/azure/machine-learning) product documentation to build implementation expertise.
+Use [Machine Learning](/azure/machine-learning) product documentation to build implementation expertise.

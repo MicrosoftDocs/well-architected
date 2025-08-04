@@ -16,16 +16,6 @@ Azure Container Apps is a fully managed serverless container service that runs m
 
 This article assumes that as an architect, you've reviewed the [compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree) and chose Container Apps as the compute platform for your workload. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-> [!IMPORTANT]
->
-> **How to use this guide**
->
-> Each section has a *design checklist* that presents architectural areas of concern along with design strategies localized to the technology scope. 
->
-> Also included are recommendations for the technology capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Container Apps and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. 
->
-> Foundational architecture that demonstrates the key recommendations: [Microservices with Azure Container Apps](/azure/architecture/example-scenario/serverless/microservices-with-container-apps).
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resources:  
@@ -40,7 +30,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the performance and reliability of your applications. Extend the strategy to include more approaches as needed.
 
@@ -63,7 +53,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications. They help ensure quick recovery from failures without manual intervention. Use health probes to detect failing containers and configure resiliency policies to automatically handle retries and circuit breakers.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |--------|----|
@@ -81,7 +71,7 @@ The purpose of the Security pillar is to provide **confidentiality, integrity, a
 
 The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Container Apps.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
@@ -109,7 +99,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >   *Enforce HTTPS.* Configure Envoy proxy to redirect all HTTP traffic to HTTPS. The default configuration for Envoy is `allowInsecure: false`.  
 > - **Implement a security monitoring strategy.** Capture detailed logs for monitoring and auditing. Send system and console logs to a Log Analytics workspace, Event Hubs, or a non-Microsoft solution for monitoring and auditing purposes. Scrub sensitive data from logs. Console logs originate from the `stderr` and `stdout` streams in the app.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -128,7 +118,7 @@ Cost Optimization focuses on **detecting spend patterns, prioritizing investment
 
 The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Container Apps and its environment.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
@@ -149,7 +139,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >    These tools provide detailed visibility into cloud spending, help identify cost-saving opportunities, ensure adherence to budgetary constraints, and allow for granular tracking and reporting of costs associated with specific workloads, applications, and environments.  
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -163,7 +153,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-#### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Container Apps.
 
@@ -185,7 +175,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Implement consistent resource tagging** across all container apps and other workload resources. Consistent tagging facilitates efficient resource management, cost tracking, and automation.
 > - **Enforce workload governance.** Azure Policy helps ensure consistent compliance with organizational standards, automates policy enforcement, and provides centralized visibility and control over your workload's resources.
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -199,7 +189,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Container Apps.
 
@@ -213,7 +203,7 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Conduct load testing.** Perform regular load testing to evaluate the performance and scalability of your container apps under different conditions. Testing helps ensure that container apps can handle expected traffic levels.  
 > - **Separate workloads.** Deploy critical and sensitive workloads in separate Container Apps environments to avoid noisy neighbor problems. Distribute workloads across multiple environments to ensure that critical applications have dedicated resources. This method also ensures that the performance demands of less-critical applications don't affect critical applications.  
 
-### Recommendations
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -246,6 +236,10 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. 
 
 For more information, see [Azure Advisor](/azure/advisor).
+
+## Example architecture
+
+Foundational architecture that demonstrates the key recommendations: [Microservices with Azure Container Apps](/azure/architecture/example-scenario/serverless/microservices-with-container-apps).
 
 ## Next steps
 
