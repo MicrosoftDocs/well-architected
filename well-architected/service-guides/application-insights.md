@@ -71,7 +71,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Ensure quick recovery of your application monitoring solution in case of service failure.** Adopt infrastructure as code and use [Bicep templates](/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#azure-resource-manager-templates) to create or re-create your user experience in Application Insights, including [alerts](/azure/azure-monitor/app/availability?tabs=standard#availability-alerts), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard), and [queries](/azure/azure-monitor/logs/queries). This approach helps ensure that all critical components are quickly restored, which minimizes downtime and maintains service reliability.
 
-#### Recommendations
+#### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|----------|
@@ -105,7 +105,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Enhance data protection by securing storage systems and limiting access.** Visit the [Log Analytics service guide](/azure/well-architected/service-guides/azure-log-analytics#security) to learn about how to secure the data that you collect.
 
-#### Recommendations
+#### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -149,7 +149,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Optimize personnel time.** Use Application Insights experiences such as the [application map](/azure/azure-monitor/app/app-map) and [failure and performance views](/azure/azure-monitor/app/failures-and-performance-views), and customize saved [queries](/azure/azure-monitor/logs/queries), [dashboards](/azure/azure-monitor/app/overview-dashboard#create-a-new-dashboard) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview) for your specific workload needs. Keep track of your deployments and other events with [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations).
 
-#### Recommendations
+#### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---------------|:--------|
@@ -186,7 +186,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Clearly define your workload's safe deployment practices.** Use [Release Annotations](/azure/azure-monitor/app/release-and-work-item-insights?tabs=release-annotations) as part of your failure mitigation strategies to keep track of your deployments and other events.
 
-#### Recommendations
+#### Configuration recommendations
 
 | Recommendation | Benefit |
 |----------------|---------|
@@ -220,7 +220,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Continuously optimize performance.** Use built-in features like [Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics), [queries](/azure/azure-monitor/logs/queries), and [dashboards](/azure/azure-monitor/app/overview-dashboard) to find components that show deteriorating performence.
 
-#### Recommendations
+#### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---------------|:--------|
