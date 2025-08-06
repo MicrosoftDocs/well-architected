@@ -207,18 +207,3 @@ We reviewed all tradeoff and design pattern articles for alignment with the cont
 ### Updated articles
 
 - [Azure Well-Architected Framework perspective on Azure Firewall](./service-guides/azure-firewall.md): We made significant updates to the guidance about Azure Firewall. Explore the fully updated content including new recommendations for configuring Azure Firewall to protect your workloads.
-
-## August 2024
-
-### Updated articles
-
-- [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates, including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states.
-
-We added guidance about ensuring that the VMs in your backup environment run on [OSs that have supportability](/azure/virtual-machines/enable-nvme-interface):
-
-- [Operations considerations for Azure VMware Solution workloads](azure-vmware/operations.md)
-- [Optimize business continuity and disaster recovery](oracle-iaas/optimize-business-continuity-disaster-recovery.md)
-
-### Hybrid retirement
-
-- This month, we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
