@@ -275,14 +275,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-For more information, see [Azure Advisor](/azure/advisor/advisor-reference-operational-excellence-recommendations#api-management).
-
-Advisor might surface other recommendations in your production system as well, such as:
-
-- Failure to require long JWT key sizes in the validate-jwt policy.
-- You used a legacy Resource Manager API version to deploy the resource.
-- API key tokens are close to their expiration date.
-- Failure in a certificate rotation operation.
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Tradeoffs
 

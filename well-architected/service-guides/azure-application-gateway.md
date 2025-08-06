@@ -211,13 +211,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
  
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Application Gateway.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#application-gateway)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#make-sure-you-have-enough-instances-in-your-application-gateway-to-support-your-traffic)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#networking)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
