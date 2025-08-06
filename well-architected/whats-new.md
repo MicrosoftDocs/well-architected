@@ -11,6 +11,12 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## July 2025
+
+### Updated articles
+
+- [Responsible AI in Azure Workloads](./ai/responsible-ai.md)  ([#475c648c](https://github.com/MicrosoftDocs/well-architected/commit/475c648c))
+
 ## June 2025
 
 ### Maturity models
@@ -210,23 +216,3 @@ We added guidance about ensuring that the VMs in your backup environment run on 
 ### Hybrid retirement
 
 - This month, we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
-
-## July 2024
-
-### New articles
-
-- [Azure Well-Architected Framework perspective on Azure Local](./service-guides/azure-local.md): Explore design considerations and configuration recommendations for Azure Local. Azure Local is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
-
-### Updated articles
-
-- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
-- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
-
-Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
-
-- [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
-- [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
-
-### Carrier Grade retirement
-
-- This month, we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.
