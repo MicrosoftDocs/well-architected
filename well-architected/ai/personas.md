@@ -3,7 +3,7 @@ title: Workload team personas for AI workloads
 description: Different personas work on different aspects of the workload. This article highlights their roles and responsibilities and interactions with each other. 
 author: jostrm
 ms.author: prwilk
-ms.date: 10/29/2024
+ms.date: 08/06/2025
 ms.topic: conceptual
 ---
 
@@ -33,6 +33,23 @@ Unlike roles, which are relatively static functions or positions within an organ
 - **Ensuring appropriate levels of access.** You should use personas to define security and access needs by mapping personas to processes, architectures, and services. This mapping helps to ensure appropriate access levels.
 - **Facilitating project planning and communication.** In project planning, personas help identify key interactions to facilitate the setup of sync meetings and overall planning. Typically, personas are integrated into the hierarchy of tracking user stories, features, and requirements to streamline project management.
 
+## Personas for agentic workloads
+
+Agentic workloads need different persona management than traditional human-centered roles because they work fundamentally differently from predictable systems. Unlike traditional systems where you know exactly which services will be called and in what order, agentic systems make decisions on their own at runtime. These decisions depend on the data they receive and how well the AI models perform. This creates complexity in managing authentication, authorization, and controlling what tools and agents can access.
+
+Agentic workloads require specialized persona management built on key areas:
+
+- **Multi-cloud and cross-system persona definition**. Set up persona governance that works across different cloud platforms, SaaS services, and Model Context Protocol (MCP) servers, and not just a single cloud environment. This means defining agent personas with the right access permissions, dynamic authentication methods like agent-to-agent (A2A), and clear rules for interactions across different platforms.
+
+- **Dynamic persona permissions**. Create persona models that support flexible, workflow-aware access control. This includes providing permissions just when they're needed, granting tool-specific access during different phases, and being able to increase or restrict agent capabilities based on the situation and risk level. Unlike traditional managed identities that follow predictable patterns, agent personas must handle unpredictable decision-making and runtime tool selection.
+
+- **Autonomous agent persona accountability**. Set up persona governance that keeps clear accountability chains for what agents do, since they make their own decisions at runtime. This includes audit trails that connect agent decisions back to responsible human personas, ways for humans to step in and override agent decisions, and clear escalation paths when agents go beyond their defined boundaries. Because agent behavior is unpredictable, calling different tools and agents based on data and model performance, you need stronger monitoring and governance than traditional systems.
+
+Consider a travel booking workload with agent personas for regional travel, corporate travel, and budget coordination. When a user submits a request, an orchestration agent picks the right agent persona based on what each agent says it can do, such as handling corporate expenses or knowing about regional destinations. Unlike traditional systems with fixed routing rules, this approach allows agent personas to join or leave the system dynamically, creating unpredictable behavior that needs specialized persona management for governance, security, and accountability.
+
+Each agent persona needs different permissions. For example, the corporate travel agent needs access to expense management systems and approval workflows. Because agent interactions are dynamic, you need just-in-time permission provisioning and audit trails that connect autonomous agent decisions back to responsible human personas. This ensures accountability even when agents make unexpected tool choices at runtime.
+
+
 ## How to define personas
 
 Identify your team members' specializations and align them with the appropriate roles in your AI operations or design. Create a template to document personas' skill expectations, team information, and the processes in which they'll be involved.
@@ -55,6 +72,8 @@ In certain cases, you can use a combination of tools. For example, each architec
 
 ### Example personas
 
+The example personas represent the teams that participate in developing and operating AI workload solutions. These include both human personas and automated agent personas that help build and manage the solution, which are distinct from the agents that implement the actual business functionality. Even in non-agentic solutions, automated processes run under specific identities to support development and operations workflows.
+
 You can use cards to define the services a persona needs to be able to access within a process and outline the skills required for each persona (whether it's a person or an agent).
 
 > [!IMPORTANT]
@@ -62,29 +81,46 @@ You can use cards to define the services a persona needs to be able to access wi
 >
 > It's important that these personas align with your processes, organization, and users.
 
-|AI Data Engineer (P001)|
-|---|
-| Team: Data Ingestion Team<br>&#128313; Primary interaction: AI Development Team<br>&#128313; Component access: Azure Data Factory, Azure Databricks, Azure SQL Database, Azure Storage <br>&#128313; Processes: DataOps, ETL, ELT<br>&#128313; Skills: SQL, Python, PySpark
+#### Development personas 
 
-|BI Analyst (P003)|
-|---|
-| Team: Analytics Team<br>&#128313; Primary interaction: Data Ingestion Team<br>&#128313; Component access: Power BI, Azure Data Explorer, Azure Storage <br>&#128313; Processes: Data analysis, data warehousing<br>&#128313; Skills: SQL, Python, PySpark
+|GenAI Data Scientist (P006)| 
+|---| 
+| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team<br>&#128313; Component access: Azure AI Foundry, Azure OpenAI Service, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps, inner loop development<br>&#128313; Skills: Azure AI Foundry, Azure OpenAI Service, Python, model knowledge (LLM, SLM), fine-tuning, RAG, agentic solutions 
 
-|Discriminative AI Data Scientist (P004)|
-|---|
-| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team<br>&#128313; Component access: Azure Machine Learning, Azure Databricks, Azure Storage, Azure Key Vault <br>&#128313; Processes: MLOps, MLflow<br>&#128313; Skills: Azure Machine Learning, Python, Model training
+|GenAI Chat Developer (P007)| 
+|---| 
+| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Azure AI Foundry , Azure Web Apps, Azure API Management, Azure Cosmos DB, Azure Container Apps, Azure Functions <br>&#128313; Processes: DevOps, event-driven processing, microservices, inner loop development<br>&#128313; Skills: Web application architecture (front end/back end), React, Node.js, HTML, CSS,  agentic solutions 
 
-|GenAI Data Scientist (P006)|
-|---|
-| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team<br>&#128313; Component access: Azure AI Foundry portal, Azure OpenAI Service, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps<br>&#128313; Skills: Azure Machine Learning, Python, model knowledge (LLM, SLM), fine-tuning, RAG, agentic concept
+|Dev Router Agent (P010)| 
+|---| 
+| Team: Engineering Team (automation)<br>&#128313; Primary interaction: Unit Test Agent, Load Test Agent<br>&#128313; Component access: Azure DevOps, GitHub, Azure AI Foundry, Azure Container Registry<br>&#128313; Processes: Automated agent routing, DevOps<br>&#128313; Skills: Python, Agent-2-Agent 
 
-|GenAI Chat Developer (P007)|
-|---|
-| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Azure Web Apps, Azure API Management, Azure Cosmos DB, Azure Container Apps, Azure Functions <br>&#128313; Processes: DevOps, event-driven processing, microservices<br>&#128313; Skills: Web application architecture (front end/back end), React, Node.js, HTML, CSS
+|Dev Unit Test Agent (P011)| 
+|---| 
+| Team: Engineering Team (automated)<br>&#128313; Primary interaction: Dev Router Agent , AI Team, Engineering Team<br>&#128313; Component access: Azure DevOps, GitHub, Azure AI Foundry, Azure Container Apps, MCP Server Tools<br>&#128313; DevOps<br>&#128313; Skills: Test automation, code coverage analysis, performance benchmarking, mcp-testing frameworks 
 
-|Build Agent MLOps (P009)|
-|---|
-| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Azure Machine Learning, Azure DevOps, GitHub <br>&#128313; Processes: Processing and serving of Lambda, outer loop MLOps <br>&#128313; Skills: Python, Pyspark
+
+#### Operations personas
+
+|AI Data Engineer (P001)| 
+|---| 
+| Team: Data Ingestion Team<br>&#128313; Primary interaction: AI Development Team, Operations Team<br>&#128313; Component access: Azure Data Factory, Azure Databricks, Azure AI Foundry, Azure SQL Database, Azure Storage <br>&#128313; Processes: DataOps, ETL, ELT<br>&#128313; Skills: SQL, Python, PySpark 
+
+|BI Analyst (P003)| 
+|---| 
+| Team: Analytics Team<br>&#128313; Primary interaction: Data Ingestion Team<br>&#128313; Component access: Power BI, Azure Data Explorer, Azure AI Foundry, Azure Storage <br>&#128313; Processes: Data analysis, data warehousing<br>&#128313; Skills: SQL, Python, PySpark | 
+
+|Discriminative AI Data Scientist (P004)| 
+|---| 
+| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team, Operations Team<br>&#128313; Component access: Azure Machine Learning (for training scenarios), Azure AI Foundry, Azure Databricks, Azure Storage, Azure Key Vault <br>&#128313; Processes: MLOps, MLflow<br>&#128313; Skills: Azure AI Foundry, Azure Machine Learning, Python, model training, production model monitoring 
+
+|Build Agent MLOps (P009)| 
+|---| 
+| Team: Engineering Team (automated)<br>&#128313; Primary interaction: AI Team, Operations Team<br>&#128313; Component access: Azure AI Foundry, Azure Machine Learning (for training scenarios), Azure DevOps, GitHub <br>&#128313; Processes: Processing and serving of Lambda, outer loop MLOps, automated deployment<br>&#128313; Skills: Python, PySpark, model versioning 
+
+|Production Monitoring Agent (P012)| 
+|---| 
+|Team: Operations Team (automated)<br>&#128313; Primary interaction: AI Team, Engineering Team, Operations Team<br>&#128313; Component access: Azure Monitor, Azure Application Insights, Azure Log Analytics, Azure AI Foundry<br>&#128313; Processes: Continuous monitoring, anomaly detection, performance tracking, automated alerting<br>&#128313; Skills: Monitoring automation, log analysis, performance metrics, alerting workflows 
 
 ## Use case: Personas for AI processes
 
