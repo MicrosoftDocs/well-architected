@@ -11,11 +11,17 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## August 2025
+
+### Updated article
+
+- [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. It now emphasizes building systems that adapt to changing demand, with less reliance on preprovisioned resources. The revised content encourages teams to think about performance early in the design process and to test and monitor throughout development. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
+
 ## July 2025
 
-### Updated articles
+### Updated article
 
-- [Responsible AI in Azure Workloads](./ai/responsible-ai.md)  ([#475c648c](https://github.com/MicrosoftDocs/well-architected/commit/475c648c))
+- [Responsible AI in Azure Workloads](./ai/responsible-ai.md): We refreshed this article with new guidance for agentic AI systems, including safeguards for retrieval and autonomous agents, auditability, and human oversight. Content safety recommendations now include watermarking, metadata tagging, and clear disclosure of AI-generated media. Ethical updates emphasize the ability to contest AI decisions and ensure transparency in system changes. These additions support more responsible and secure deployment of advanced AI solutions.
 
 ## June 2025
 
