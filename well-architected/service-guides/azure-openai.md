@@ -207,7 +207,11 @@ Azure provides an extensive set of built-in policies related to Azure OpenAI and
 - [Use Azure Private Link](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcddd188c-4b82-4c48-a19d-ddf74ee66a01)
 - [Enable data encryption with customer-managed keys](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d)
 
-These Azure Policy definitions are also [Azure Advisor](https://azure.microsoft.com/products/advisor) security best-practice recommendations for Azure OpenAI.
+## Azure Advisor recommendations
+
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Next steps
 
