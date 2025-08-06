@@ -21,7 +21,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated article
 
-- [Responsible AI in Azure Workloads](./ai/responsible-ai.md): We refreshed this article with new guidance for agentic AI systems, including safeguards for retrieval and autonomous agents, auditability, and human oversight. Content safety recommendations now include watermarking, metadata tagging, and clear disclosure of AI-generated media. Ethical updates emphasize the ability to contest AI decisions and ensure transparency in system changes. These additions support more responsible and secure deployment of advanced AI solutions.
+- [Responsible AI in Azure workloads](./ai/responsible-ai.md): We refreshed this article with new guidance for agentic AI systems, including safeguards for retrieval and autonomous agents, auditability, and human oversight. Content safety recommendations now include watermarking, metadata tagging, and clear disclosure of AI-generated media. Ethical updates emphasize the ability to contest AI decisions and ensure transparency in system changes. These additions support more responsible and secure deployment of advanced AI solutions.
 
 ## June 2025
 
