@@ -15,7 +15,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated article
 
-- [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. It now emphasizes building systems that adapt to changing demand, with less reliance on preprovisioned resources. The revised content encourages teams to think about performance early in the design process and to test and monitor throughout development. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
+- [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
 
 ## July 2025
 
