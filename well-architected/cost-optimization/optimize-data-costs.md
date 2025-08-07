@@ -185,6 +185,8 @@ Here are a few use cases:
 
 - *Moving from a relational database to a flat file store*: In some cases, storing data in flat files instead of a traditional relational database can provide advantages such as simplicity and cost-effectiveness. Flat files are well suited for certain types of data, such as log files or data that doesn't require complex querying. For example, you can store binary images in a SQL database, but it's more cost-effective to store them in a storage service that's specifically for handling binary data.
 
+- *Optimize log data costs with summarization*: For high-volume log data streams, consider using summarization techniques to reduce storage costs while maintaining analytical capabilities. 
+
 - *Moving from infrastructure as a service (IaaS) to platform as a service (PaaS)*: IaaS database solutions can be time-consuming and resource-intensive properties that divert a technical team's attention from core tasks. The growth in data volume and the challenges of manual scaling, backups, and infrastructure maintenance can make a PaaS solution more cost-effective and efficient.
 
 - *Adding a cache*: To reduce resource usage on the main database server, consider using a cache solution for caching complex query results. Rightsizing the database server might help in optimizing the cost. With applicable use cases, consider using time to live (TTL) with the cached data to reduce the storage needs and reduce the cost.
@@ -221,6 +223,8 @@ Here are some of the service's features:
 
 To choose the most suitable storage solution and configuration, it's important to assess your data access patterns, retention needs, and performance requirements. Regularly monitoring and optimizing your storage usage by using tools like Azure Advisor can help you further optimize costs.
 
+**Optimizing queries** [Azure Monitor Log Analytics Summary rules](/azure/azure-monitor/logs/summary-rules) enable automated summarization of high-ingestion-rate data streams across different service tiers. This approach provides cost-effective long-term data retention by creating tiered architectures where detailed raw data is aggregated into summarized datasets for analysis and reporting, significantly reducing storage expenses while preserving analytical insights.
+
 ## Related links
 
 - [Recommendations for consolidation](consolidation.md)
@@ -237,3 +241,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Cost Optimization checklist](checklist.md)
+
+<!-- Updated: August 5, 2025 for Azure Update 498558 -->
