@@ -16,6 +16,8 @@ Find out about recent changes in the Azure Well-Architected Framework.
 ### Updated article
 
 - [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
+- [Architecture best practices for Azure OpenAI](./service-guides/azure-openai.md): We updated references to the newly updated AAC Azure OpenAI baseline reference architecture, which is now implemented by using Azure AI Foundry.
+- [Architecture best practices for Azure SQL Database](./service-guides/azure-sql-database.md): We clarified how zone redundancy works in Azure SQL Database by specifying that both compute and storage components are distributed across two or three availability zones, rather than just spreading data. This update emphasizes that Azure selects the optimal zone configuration for resilience and that these zones are physically separate with independent infrastructure. The change provides a more complete picture of how zone redundancy ensures high availability.
 
 ## July 2025
 
@@ -23,9 +25,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Responsible AI in Azure workloads](./ai/responsible-ai.md): We refreshed this article with new guidance for agentic AI systems, including safeguards for retrieval and autonomous agents, auditability, and human oversight. Content safety recommendations now include watermarking, metadata tagging, and clear disclosure of AI-generated media. Ethical updates emphasize the ability to contest AI decisions and ensure transparency in system changes. These additions support more responsible and secure deployment of advanced AI solutions.
 - [Architecture best practices for Azure Local](./service-guides/azure-local.md): We updated this guidance to reflect the latest platform version (2311), refreshed documentation links, clarified pricing details, clarified role definitions, and simplified terminology. We also improved how we describe security, monitoring, and licensing features to make the guidance easier to follow and more relevant to current deployments.
-- [Architecture best practices for Azure SQL Database](./service-guides/azure-sql-database.md): We clarified how zone redundancy works in Azure SQL Database by specifying that both compute and storage components are distributed across two or three availability zones, rather than just spreading data. This update emphasizes that Azure selects the optimal zone configuration for resilience and that these zones are physically separate with independent infrastructure. The change provides a more complete picture of how zone redundancy ensures high availability.
 - [Application design for AI workloads on Azure](./ai/application-design.md) We added a link to common AI agent orchestration patterns to help teams explore proven strategies before designing their own.
-- [Architecture best practices for Azure OpenAI](./service-guides/azure-openai.md): We updated references to the newly updated AAC Azure OpenAI baseline reference architecture, which is now implemented by using Azure AI Foundry.
 
 ## June 2025
 
