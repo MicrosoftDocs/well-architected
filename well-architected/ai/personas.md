@@ -49,7 +49,6 @@ Consider a travel booking workload with agent personas for regional travel, corp
 
 Each agent persona needs different permissions. For example, the corporate travel agent needs access to expense management systems and approval workflows. Because agent interactions are dynamic, you need just-in-time permission provisioning and audit trails that connect autonomous agent decisions back to responsible human personas. This ensures accountability even when agents make unexpected tool choices at runtime.
 
-
 ## How to define personas
 
 Identify your team members' specializations and align them with the appropriate roles in your AI operations or design. Create a template to document personas' skill expectations, team information, and the processes in which they'll be involved.
@@ -58,7 +57,7 @@ Here's an example baseline template:
 
 |Persona template|
 |---|
-|&#128313;Persona name: [Name]<br>&#128313;Team: [Team responsible for the persona]<br>&#128313;Primary interaction: [Other teams the persona interacts with]<br>&#128313;Component access: [Security and access requirements for processes and system components]<br>&#128313;Processes: [Processes the persona is responsible for or contributes to]<br>&#128313;Skills: [Skills required to complete the tasks, including domain and technology specifics like model training or search index optimization]
+|&#128313;Persona name: [Name]<br>&#128313;Team: [Team responsible for the persona]<br>&#128313;Primary interaction: [Other teams or agents the persona interacts with]<br>&#128313;Component access: [Security and access requirements for processes and system components]<br>&#128313;Processes: [Processes the persona is responsible for or contributes to]<br>&#128313;Skills: [Skills required to complete the tasks, including domain and technology specifics like model training or search index optimization]
 
 ### Tools
 
