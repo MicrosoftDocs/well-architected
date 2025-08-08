@@ -170,6 +170,8 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Enable blob inventory reports**: Enable blob inventory reports to review the retention, legal hold, or encryption status of your storage account contents. You can also use blob inventory reports to understand the total data size, age, tier distribution, or other attributes of your data. Use tools such as [Azure Databricks](/azure/storage/blobs/storage-blob-calculate-container-statistics-databricks) or [Azure Synapse Analytics](/azure/storage/blobs/storage-blob-inventory-report-analytics) and Power BI to better visualize inventory data and to create reports for stakeholders.
 >
 > - **Set up policies that delete blobs or move them to cost-efficient access tiers**: Create a lifecycle management policy with an initial set of conditions. Policy runs automatically delete or set the access tier of blobs based on the conditions you define. Periodically analyze container use by using Monitor metrics and blob inventory reports so that you can refine conditions to optimize cost efficiency.
+>
+> - **Ensure policy consistency across regions**. When data is stored globally, have data lifecycle management strategies that meet data residency requirements. Take advantage of the native automation capabilities that enable  consistent storage policies across regions.
 
 ### Configuration recommendations
 
@@ -177,6 +179,7 @@ Start your design strategy based on the [design review checklist for Operational
 |------------------------------|-----------|
 |Use infrastructure as code (IaC) to define the details of your storage accounts in [Azure Resource Manager templates (ARM templates)](/azure/azure-monitor/logs/resource-manager-workspace), [Bicep](/azure/azure-monitor/logs/resource-manager-workspace), or [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace.html). | You can use your existing DevOps processes to deploy new storage accounts, and use [Azure Policy](/azure/governance/policy/overview) to enforce their configuration.|
 |Use Storage insights to track the health and performance of your storage accounts. Storage insights provides a unified view of the failures, performance, availability, and capacity for all your storage accounts. | You can track the health and operation of each of your accounts. Easily create dashboards and reports that stakeholders can use to track the health of your storage accounts.|
+|Take advantage of regional automation capabilities with [Azure Storage Actions](/azure/storage-actions/overview) for unified data lifecycle management that automatically segments data based on access patterns and delete expired content according to retention policies while meeting data residency requirements. | Enables automated storage management and lifecycle policies across more geographic regions, reducing manual operational overhead for global organizations.|
 
 ## Performance Efficiency
 
@@ -212,6 +215,26 @@ Start your design strategy based on the [design review checklist for Performance
 |For broad consumption by web clients (streaming video, audio, or static website content), consider using a content delivery network through Azure Front Door. | Content is delivered to clients faster because it uses the Microsoft global edge network with hundreds of global and local points of presence around the world.|
 |Add a hash character sequence (such as three digits) as early as possible in the partition key of a blob. The partition key is the account name, container name, virtual directory name, and blob name. If you plan to use timestamps in names, then consider adding a seconds value to the beginning of that stamp. For more information, see [Partitioning](/azure/storage/blobs/storage-performance-checklist#partitioning).| Using a hash code or seconds value nearest the beginning of a partition key reduces the time required to list query and read blobs. |
 |When uploading blobs or blocks, use a blob or block size that's greater than 256 KiB. | Blob or block sizes above 256 KiB takes advantage of performance enhancements in the platform made specifically for larger blobs and block sizes. |
+
+## Tradeoffs
+
+You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Access tiers and cost optimization**
+
+- **Cooler access tiers:** Moving data to cooler access tiers (cool, cold, or archive) can reduce storage costs, especially for infrequently accessed data. Archive tier offers the low storage cost but requires rehydration to access data, which takes time and incurs additional costs.
+
+  Consider the disadvantages of cooler tiers, including higher access costs and retrieval times. Archive tier can take significant time for standard-priority rehydration. The cost of frequent tier changes can exceed storage savings if access patterns are unpredictable. For critical data that needs immediate access, hot tier provides fastest access but at higher storage costs. Evaluate your access patterns carefully to avoid unnecessary costs from frequent tier transitions.
+
+- **Lifecycle management policies:** Automated lifecycle policies can optimize costs by moving data to appropriate tiers based on age or access patterns. These policies reduce manual operational overhead and ensure consistent cost optimization across your storage accounts.
+
+  As a disadvantage, overly aggressive lifecycle policies might move frequently accessed data to cooler tiers, resulting in higher access costs and slower performance. Policies that are too conservative might keep data in expensive tiers longer than necessary. Monitor your access patterns and adjust policies based on actual usage data rather than assumptions.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Data redundancy and regional distribution**
+
+A robust redundancy strategy ensures data durability and availability but involves cost and complexity tradeoffs. Geo-redundant storage (GRS) and geo-zone-redundant storage (GZRS) provide protection against regional outages but cost significantly more than locally redundant storage (LRS). Zone-redundant storage (ZRS) offers a middle ground with protection against availability zone failures within a region.
+
+  Consider the disadvantages of higher redundancy levels. GRS and GZRS require data synchronization across regions, which can introduce slight delays in data consistency. The cost can be higher than LRS. For applications that can tolerate some data loss or have alternative backup strategies, LRS might provide sufficient protection at lower cost. Evaluate your recovery time objectives (RTO) and recovery point objectives (RPO) to determine the appropriate redundancy level.
 
 ## Azure policies
 
