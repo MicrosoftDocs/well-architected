@@ -53,7 +53,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Ensure that your observability systems are healthy:** Like any other component of your workload, ensure that your monitoring and logging systems are functioning properly. To achieve reliable observability, enable features that send health data signals to your operations teams. Set up health data signals specific to your Log Analytics workspaces and associated resources.
 
-### Configuration recommendations for Reliability
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---|:---|
@@ -96,7 +96,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Protect sensitive log data through obfuscation:** Just like workload data that resides in production systems, you must take extra measures to ensure that confidentiality is retained for sensitive information that might be intentionally or unintentionally present in operational logs. When you use obfuscation methods, it helps you hide sensitive log data from unauthorized access.
 
 <!-- markdownlint-disable-next-line MD024 -->
-### Configuration recommendations for Security
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---|:---|
@@ -132,7 +132,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - **Treat nonproduction environments differently than production environments:** Review your nonproduction environments to ensure that your diagnostic settings and retention policies are configured appropriately. These settings and policies can often be significantly less robust than in production, especially for dev/test or sandbox environments.
 
 <!-- markdownlint-disable-next-line MD024 -->
-### Configuration recommendations for Cost Optimization
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---|:---|
@@ -177,7 +177,7 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Ensure that the operations staff is trained on Kusto Query Language:** Train staff to create or modify queries when needed. If operators are unable to write or modify queries, it can slow critical troubleshooting or other functions because operators must rely on other teams to do that work for them.
 
 <!-- markdownlint-disable-next-line MD024 -->
-### Configuration recommendations for Operational Excellence
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---|:---|
@@ -212,7 +212,7 @@ Start your design strategy based on the [design review checklist for Performance
 >    You might need to weigh the performance benefits of deploying your workspaces and DCEs in the same region as your workload against your reliability requirements if you have already deployed your workload into a region that can't support those requirements for your log data.
 
 <!-- markdownlint-disable-next-line MD024 -->
-### Configuration recommendations for Performance Efficiency
+### Configuration recommendations
 
 | Recommendation | Benefit |
 |:---|:---|
