@@ -9,7 +9,7 @@ metadata:
   ms.topic: landing-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 07/14/2025
+  ms.date: 07/27/2025
 
 landingContent:
   - title: Learn key points
@@ -47,7 +47,7 @@ landingContent:
           - text: Achieve and sustain performance
             url: principles.md#achieve-and-sustain-performance
           - text: Improve efficiency through optimization
-            url: principles.md#improve-efficiency-through-optimization
+            url: principles.md#optimize-for-long-term-improvement
   - title: Achieve performance targets
     linkLists:
       - linkListType: how-to-guide

@@ -4,6 +4,7 @@ description: See Azure Well-Architected Framework design considerations and conf
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 03/11/2024
+ms.update-cycle: 180-days
 ms.topic: conceptual
 ms.collection: ce-skilling-ai-copilot
 products:
@@ -280,7 +281,7 @@ Advisor is a personalized cloud consultant that helps you follow best practices 
 
 Consider the following [Advisor](https://azure.microsoft.com/products/advisor) recommendations for security:
 
-- Workspaces should be encrypted with a customer-managed key (CMK). 
+- Workspaces should be encrypted with a customer-managed key (CMK).
 - Workspaces should use private link.
 - Workspaces should disable public network access.
 - Compute should be in a virtual network.
@@ -290,13 +291,6 @@ Consider the following [Advisor](https://azure.microsoft.com/products/advisor) r
 
 - Resource logs in Machine Learning workspaces should be enabled.
 
-## Example architecture
-
-Foundational architecture that demonstrates the key recommendations: [Baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat).
-
 ## Next steps
 
-Consider these articles as resources that demonstrate the recommendations highlighted in this article.
-
-- Use the [baseline OpenAI end-to-end chat reference architecture](/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat) as an example of how these recommendations can be applied to a workload.
-- Use [Machine Learning](/azure/machine-learning) product documentation to build implementation expertise.
+Use [Machine Learning](/azure/machine-learning) product documentation to build implementation expertise.
