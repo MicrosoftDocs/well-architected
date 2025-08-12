@@ -55,7 +55,7 @@ Create a workload team that has team members with a wide range of technical and 
 |---| ---|
 |Application security engineers <br>Business stakeholders<br>Cloud developer or software engineers <br>Cloud solution architects <br>Data scientists or analysts <br>Database administrators <br>|DevOps engineers <br>Infrastructure engineers <br>Product managers or owners <br>Quality assurance (QA) engineers <br>Site reliability engineers (SREs)<br>Support team members <br>|
 
-These individuals might be broken into sub-teams, pods, or other organizational structures to support your workload's lifecycle. The Well-Architected Framework will typically address all of these individuals collectively as the workload team.
+These individuals might be broken into subteams, pods, or other organizational structures to support your workload's lifecycle. The Well-Architected Framework will typically address all of these individuals collectively as the workload team.
 
 ## Centralized teams and stakeholders
 
@@ -75,7 +75,7 @@ Workloads exist within the context of your organization. An organization often h
 
 In accordance with the Cloud Adoption Framework for Azure, standardize your workload's cloud resources. Rigorously apply standardization to provide a governed platform to help with onboarding workload teams. Apply this governance in accordance with your organization's cloud operating model.
 
-You can use Azure landing zones to help you perform standardization. Platform landing zones and application landing zones are available in Azure. Deploy your workload in an application landing zone, which is a collection of dedicated subscriptions to match the needs of the workload's resource organization, including all of its pre-production and production environments.
+You can use Azure landing zones to help you perform standardization. Platform landing zones and application landing zones are available in Azure. Deploy your workload in an application landing zone, which is a collection of dedicated subscriptions to match the needs of the workload's resource organization, including all of its preproduction and production environments.
 
 Your organization might have a cloud platform offering that's rigorously formalized and fully aligns with Azure landing zones. Or your organization might have a different adoption strategy or no implementation. If there's no implementation, workload teams are nearly fully autonomous entities.
 
@@ -87,7 +87,7 @@ Throughout the Well-Architected Framework, such as the core pillars and the work
 
 The direct workload team handles most workload requirements. Some requirements are handled as a joint effort with centralized teams. For example, the implementation choices might be based on guardrails that a centralized team sets. Or a centralized team might exclusively handle the implementation choices.
 
-There are sometimes special infrastructure components that are not considered directly part of an individual workload, such as cross-premises connectivity infrastructure. These are instead treated as dependencies that the workload uses. These centralized utilities are consumed only when there is a functional or nonfunctional requirement that justifies that dependency, and the support provided is sufficient.
+There are sometimes special infrastructure components that aren't considered directly part of an individual workload, such as cross-premises connectivity infrastructure. These are instead treated as dependencies that the workload uses. These centralized utilities are consumed only when there's a functional or nonfunctional requirement that justifies that dependency, and the support provided is sufficient.
 
 Your workload team must build a working relationship with other teams to help codeliver on workload goals. If you outsource components or responsibilities, you must successfully deliver on those obligations.
 
