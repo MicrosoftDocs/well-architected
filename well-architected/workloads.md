@@ -166,3 +166,4 @@ Workload teams have an obligation to communicate with platform teams about propo
 ## Achieve a successful outcome
 
 Workloads have many expectations from users, shareholders, regulatory bodies, employees, the center of excellence, and chief experience officers. Expectations can set the directional compass spinning. The Well-Architected Framework provides clarity related to the design and implementation by offering explicit rationalizations for architectural decisions to achieve a successful outcome. Develop a successful workload, and share in that success with your organization.
+ <!-- Updated: August 12, 2025 for a full review -->
