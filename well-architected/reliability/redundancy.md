@@ -36,6 +36,7 @@ For example, you might have multiple web server nodes running at once. The criti
 When you design for redundancy in the context of performance efficiency, distribute the load across multiple redundant nodes to ensure that each node performs optimally. In the context of reliability, build in spare capacity to absorb failures or malfunctions that affect one or more nodes. Ensure that the spare capacity can absorb failures for the entire time that's needed to recover the affected nodes. With this distinction in mind, both strategies need to work together. If you spread traffic across two nodes for performance and they both run at 60 percent utilization and one node fails, your remaining node is at risk of becoming overwhelmed because it can't operate at 120 percent. Spread the load out with another node to ensure that your performance and reliability targets are upheld.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
+>
 > - More workload redundancy equates to more costs. Carefully consider adding redundancy and regularly review your architecture to ensure that you're managing costs, especially when you use overprovisioning. When you use overprovisioning as a resiliency strategy, balance it with a well-defined [scaling strategy](scaling.md) to minimize cost inefficiencies.
 
 > - There can be performance tradeoffs when you build in a high degree of redundancy. For example, resources that spread across availability zones or locations can affect performance because you have to send traffic over high-latency connections between redundant resources, like web servers or database instances.
@@ -44,19 +45,27 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 > - Using a low-latency redundancy design means that you accept the risk of losing those components in the event of a large-scale event, like a geographic disaster, that takes all instances offline. Having a geo-distant disaster recovery environment helps mitigate this risk, while increasing costs.
 
-### Simplify your design and reduce your operational burden with managed infrastructure
+### Prefer serverless and fully managed services to reduce operational burden
 
-Take advantage of [serverless](https://azure.microsoft.com/en-us/solutions/serverless), software as a service (SaaS), and platforma as a service (PaaS) services to easily add redundancy to your workload without needing to manage data replication or failover operations. Serverless and SaaS services transparently scale as demand changes helping you maintain your reliability targets without creating custom scaling strategies. These services also transparently failover when localized issues occur. PaaS services can have different degrees of support for automatic scaling and failover. Some may require you to configure policies and perform manual actions, while others have built-in capabilities. Review your cloud provider's options for workload components that fit your use case and determine which of those are the best match for you when balancing reliability, performance, and costs.
+Take advantage of [serverless](https://azure.microsoft.com/en-us/solutions/serverless), software as a service (SaaS), and platform as a service (PaaS) services to easily add redundancy to your workload without needing to manage data replication or failover operations. These services implement redundancy transparently, removing the operational burden of designing and maintaining your own redundancy mechanisms. When evaluating service options, prioritize managed services that handle redundancy automatically over infrastructure-based approaches that require manual redundancy configuration.
 
-### Deploy multiple instances of your workload
+Azure managed services provide redundancy through different models, each offering varying levels of abstraction and operational simplicity:
 
-The starting point for all redundant design strategies is to deploy a secondary instance of your workload alongside the primary instance. As a first step, determine how many instances of your workload satisfies your reliability targets and whether you need full instances of your workload, or if you only need to deploy multiple instances of certain components. Your workload design should influence these decisions. If you use managed compute services, you might only need to deploy a secondary database and configure replication to achieve redundancy. Likewise, your automation maturity should also influence this approach. When you have the ability to efficiently deploy your full application at any time through automation, your redundancy requirements might be significantly different than being at a state where you must deploy components manually. When deploying redundant infrastructure, consider the following recommendations.
+**Global services with built-in redundancy**: Services like Azure Active Directory, Azure DNS, and Azure Key Vault operate as global services with automatic redundancy across multiple regions. These services provide inherent resilience without requiring any redundancy configuration from you. They automatically handle failover and recovery scenarios transparently.
+
+**Abstracted capacity models**: Services like Azure Cosmos DB, Azure Databricks, and Azure OpenAI managed endpoints abstract the underlying infrastructure complexity behind capacity units, DTUs, or other logical metrics. These services automatically distribute your workload across multiple instances, zones, and regions while presenting a simplified billing and management model. You specify capacity requirements rather than managing individual redundant instances.
+
+When architecting your solution, evaluate whether a managed service option exists for each component before implementing infrastructure-based redundancy. Managed services reduce your operational overhead and often provide more robust redundancy implementations than custom solutions, though they may involve tradeoffs in control and potentially higher costs per unit of capacity.
+
+### Deploy multiple instances of your infrastructure components and services
+
+Deploy multiple instances of your infrastructure components and services to achieve the resilience your workload needs. This fundamental redundancy strategy ensures that if one instance fails, other instances can continue to handle the workload. You can achieve multiple instances through different approaches: some scenarios require you to manually configure redundancy by deploying multiple resources individually (such as multiple ExpressRoute circuits or configuring Traffic Manager in multiple regions), while other services are designed to support multiple instances directly (such as setting VM Scale Sets to 5 instances or configuring App Service to run 10 instances). When possible, prefer services that offer built-in support for multiple instances and auto-scaling capabilities, as they simplify redundancy management and can respond to both reliability and performance needs.
+
+When deploying redundant infrastructure components, determine how many instances of each component satisfies your reliability targets. Consider whether you need multiple instances of all components or only certain critical ones, and determine the geographical distribution of those instances to meet your resilience requirements. When deploying redundant infrastructure, consider the following recommendations.
 
 **Compute resources**
 
-- When using VMs, prefer services that have support for redundancy built-in, like Azure VM Scale Sets.
-
-- Use Azure Virtual Machine Scale Sets if you need to deploy virtual machines (VMs). With Virtual Machine Scale Sets, you can automatically spread your compute evenly across availability zones.
+- Prefer services that have support for redundancy built-in. These services allow you to specify the number of instances you need and may handle the distribution and management of those instances for you.
 
 - Keep your compute layer *clean of any state* because individual nodes that serve requests might be deleted, faulted, or replaced at any time.
 
@@ -64,13 +73,13 @@ The starting point for all redundant design strategies is to deploy a secondary 
 
 **Data resources**
 
+- Replicate data across geographical regions to provide resilience to regional outages and catastrophic failures.
+
+- Understand the built-in replication and redundancy capabilities of the stateful platform services that you use. For specific redundancy capabilities of stateful data services, see [Related links](#related-links).
+
 - Determine whether synchronous or asynchronous data replication is necessary for your workload's functionality. To help you make this determination, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
 
-- Consider the growth rate of your data. For capacity planning, plan for data growth, data retention, and archiving to ensure your reliability requirements are met as the amount of data in your solution increases.  
-
 - Distribute data geographically, as supported by your service, to minimize the effect of geographically localized failures.
-
-- Replicate data across geographical regions to provide resilience to regional outages and catastrophic failures.
 
 - Automate failover after a database instance failure. You can configure automated failover in multiple Azure PaaS data services. Automated failover isn't required for data stores that support multi-region writes, like Azure Cosmos DB. For more information, see [Recommendations for designing a disaster recovery strategy](disaster-recovery.md).
 
@@ -80,9 +89,7 @@ The starting point for all redundant design strategies is to deploy a secondary 
 
 - Partition data for availability. [Database partitioning](/azure/architecture/best-practices/data-partitioning) improves scalability and it can also improve availability. If one shard goes down, the other shards are still reachable. A failure in one shard only disrupts a subset of the total transactions.
 
-- If sharding isn't an option, you can use the [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to separate your read-write and read-only data models. Add more redundant read-only database instances to provide more resilience.  
-
-- Understand the built-in replication and redundancy capabilities of the stateful platform services that you use. For specific redundancy capabilities of stateful data services, see [Related links](#related-links).
+- If sharding isn't an option, you can use the [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to separate your read-write and read-only data models. Add more redundant read-only database instances to provide more resilience.  
 
 **Networking resources**
 
@@ -98,73 +105,93 @@ The starting point for all redundant design strategies is to deploy a secondary 
 
 - Ensure that your design for handling DNS is built with a focus on resilience and supports redundant infrastructure.
 
-### Use a redundant architecture design
+### Deploy redundant instances of the workload or logical groups of resources
 
-Active-active and active-passive are the two fundamental approaches to designing a highly available cloud environment. Both designs can be deployed across geo-distant datacenters (known as regions in the Azure platform) or across physically independent datacenter sectors (known as availability zones in the Azure platform). Active-active environments are designed to handle production loads in every location in which you deploy your workload. Active-passive environments are designed to handle production loads only in the primary location but fail over to the secondary (passive) location when necessary. 
+Beyond redundancy for individual infrastructure components and services, extend your redundancy strategy to the workload level by deploying multiple instances of your entire workload or logical groups of resources. Follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to create repeatable, self-contained units that include all the resources required to deliver your workload to a specific subset of users or requirements.
 
-This section describes design options that you should consider when you evaluate each pattern and refine your architecture to meet your business requirements.
+Deployment stamps represent a shift from component-level to workload-level redundancy. Each stamp serves as a complete unit of scale containing all necessary resources—compute, storage, networking, and dependencies—that can operate independently. This approach provides key benefits: isolated failure domains that contain blast radius, horizontal scaling through additional stamp deployment rather than individual component scaling, flexible segmentation by geography or requirements, and simplified operations through identical repeatable units.
 
-The following sections describe the design options of the two patterns.
+Whether you deploy stamps in an active-active model (where all stamps actively serve traffic simultaneously) or active-passive model (where one stamp serves traffic while others remain on standby), design each stamp to be a complete, self-sufficient deployment that can handle its designated workload independently.
 
-#### Deploy in active-active for zero downtime
+#### Deploy redundant instances in active-active configuration for zero downtime
 
--   **Active-active at capacity**: Mirrored deployment stamps in two or more locations, each configured to handle production workloads for the location or locations they serve and scalable to handle loads from other locations in case of a regional outage.
+When deploying redundant instances of your workload, you can configure them in an active-active pattern that delivers the highest level of service availability by distributing production workloads across multiple simultaneously operating instances. This approach provides immediate business continuity when individual components fail, eliminates recovery time delays through automatic traffic distribution, and maximizes resource utilization by keeping all instances productive.
 
-    -   Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among locations.
+Consider an e-commerce platform running during peak shopping season: with active-active redundancy, if one deployment experiences issues, traffic seamlessly continues flowing through healthy instances without customers noticing any service disruption. Each instance handles real production load, so the platform maintains full performance capacity while providing built-in resilience. The system automatically balances requests across all available instances, ensuring optimal response times and zero downtime during both planned maintenance and unexpected failures.
 
-    -   Data replication and consistency: Use a globally distributed data store like [Azure Cosmos DB](/azure/cosmos-db/introduction) for multi-region read and write capabilities. For relational databases, use [readable replicas](/azure/azure-sql/database/read-scale-out) with read-only connection strings.
+Active-active configurations provide the highest level of reliability by eliminating single points of failure across your entire workload and ensuring continuous service availability even when individual components experience issues. This approach is ideal for mission-critical workloads that cannot tolerate any service interruptions. However, this enhanced reliability comes with increased infrastructure costs and operational complexity, as you must provision and maintain multiple production-ready environments, implement sophisticated traffic distribution and data consistency mechanisms, and coordinate deployments across all active components.
 
-    -   Advantage of this design: Lower operating costs than an overprovisioned design.
+The following sections describe configuration options for active-active deployments.
 
-    -   Disadvantage of this design: Possible degradation of the user experience when scaling up to meet the demands of a full load if another location experiences an outage.
+- **Active-active at capacity**: Mirrored deployment stamps in two or more locations, each configured to handle production workloads for the location or locations they serve and scalable to handle loads from other locations in case of a regional outage.
 
--   **Active-active overprovisioned**: Mirrored deployment stamps in two or more locations, each overprovisioned to handle production workloads for the location or locations they serve and to handle loads from other locations in case of a regional outage.
+  - Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among locations.
 
-    -   Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among locations.
+  - Data replication and consistency: Use a globally distributed data store like [Azure Cosmos DB](/azure/cosmos-db/introduction) for multi-region read and write capabilities. For relational databases, use [readable replicas](/azure/azure-sql/database/read-scale-out) with read-only connection strings.
 
-    -   Data replication and consistency: Use a globally distributed data store like [Azure Cosmos DB](/azure/cosmos-db/introduction) for multi-region read and write capabilities. For relational databases, use [readable replicas](/azure/azure-sql/database/read-scale-out) with read-only connection strings.
+  - Advantage of this design: Lower operating costs than an overprovisioned design.
 
-    -   Advantage of this design: The most resilient design possible.
+  - Disadvantage of this design: Possible degradation of the user experience when scaling up to meet the demands of a full load if another location experiences an outage.
 
-    -   Disadvantage of this design: Higher operating costs than a scalable design.
+- **Active-active overprovisioned**: Mirrored deployment stamps in two or more locations, each overprovisioned to handle production workloads for the location or locations they serve and to handle loads from other locations in case of a regional outage.
 
--   Common advantages of both designs: High resiliency and low risk of full workload outage.
+  - Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among locations.
 
--   Common disadvantages of both designs: Higher operating costs and management burden due to various factors, including the necessity of managing the synchronization of application state and data.
+  - Data replication and consistency: Use a globally distributed data store like [Azure Cosmos DB](/azure/cosmos-db/introduction) for multi-region read and write capabilities. For relational databases, use [readable replicas](/azure/azure-sql/database/read-scale-out) with read-only connection strings.
 
-#### Deploy in active-passive for disaster recovery
+  - Advantage of this design: The most resilient design possible.
 
--   **Warm spare**: One primary location and one or more secondary locations. The secondary location is deployed with the minimum possible compute and data sizing and runs without load. This location is known as a *warm spare* location. Upon failover, the compute and data resources are scaled to handle the load from the primary location.
+  - Disadvantage of this design: Higher operating costs than a scalable design.
 
-    -   Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
+- Common advantages of both designs: High resiliency and low risk of full workload outage.
 
-    -   Data replication and consistency: Replicate your database to your passive location and use the automatic failover capabilities of platform as a service (PaaS) solutions like [Azure Cosmos DB](/azure/cosmos-db/how-to-manage-database-account#automatic-failover) and [Azure SQL Database](/azure/azure-sql/database/auto-failover-group-sql-db).
+- Common disadvantages of both designs: Higher operating costs and management burden due to various factors, including the necessity of managing the synchronization of application state and data.
 
-    -   Advantage of this design: Shortest recovery time among the active-passive designs.
+#### Deploy redundant instances in active-passive configuration for disaster recovery
 
-    -   Disadvantage of this design: Highest operating cost among the active-passive designs.
+When deploying redundant instances of your workload, you can configure them in an active-passive pattern that provides reliable disaster recovery capabilities while optimizing operational costs. This approach maintains one primary instance actively serving all traffic while keeping secondary instances ready but idle, activating them only when the primary instance fails or requires maintenance.
 
--   **Cold spare**: One primary location and one or more secondary locations. The secondary location is scaled to handle full load, but all compute resources are stopped. This location is known as a *cold spare* location. You need to start the resources before failover.
+Consider a financial trading platform that processes transactions continuously: with active-passive redundancy, the primary deployment handles all trading activity while a secondary deployment remains synchronized but idle. When the primary deployment experiences an outage, automated failover procedures activate the secondary deployment to resume trading operations. Although there's a brief interruption during failover, the platform quickly restores service and maintains data consistency, ensuring minimal impact on trading activities and regulatory compliance.
 
-    -   Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
+Active-passive configurations provide strong reliability protection against catastrophic failures while balancing cost considerations more effectively than active-active deployments. This approach is ideal for workloads that can tolerate brief recovery periods in exchange for lower infrastructure costs and operational complexity. While active-passive offers less immediate availability than active-active configurations, it delivers substantial reliability improvements over single-instance deployments with reduced resource requirements and simpler coordination mechanisms.
 
-    -   Data replication and consistency: Replicate your database to your passive location and use the automatic failover capabilities of PaaS solutions like [Azure Cosmos DB](/azure/cosmos-db/how-to-manage-database-account#automatic-failover) and [Azure SQL Database](/azure/azure-sql/database/auto-failover-group-sql-db).
+The following sections describe configuration options for active-passive deployments.
 
-    -   Advantage of this design: Lower operating costs than the warm spare design.
+- **Warm spare**: One primary location and one or more secondary locations. The secondary location is deployed with the minimum possible compute and data sizing and runs without load. This location is known as a *warm spare* location. Upon failover, the compute and data resources are scaled to handle the load from the primary location.
 
-    -   Disadvantage of this design: Longer recovery time than the warm spare design.
+  - Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 
-### Use the deployment stamp design pattern
+  - Data replication and consistency: Replicate your database to your passive location and use the automatic failover capabilities of platform as a service (PaaS) solutions like [Azure Cosmos DB](/azure/cosmos-db/how-to-manage-database-account#automatic-failover) and [Azure SQL Database](/azure/azure-sql/database/auto-failover-group-sql-db).
 
-Whether you deploy in an active-active or active-passive model, follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to ensure that you deploy your workload in a repeatable, scalable way. Deployment stamps are the groupings of resources that are required to deliver your workload to a given subset of your customers. For example, the subset might be a geographic subset or a subset with all the same data privacy requirements as your workload. Think of each stamp as a *unit of scale* that you can duplicate to scale your workload horizontally or to perform blue-green deployments. Design your workload with deployment stamps to optimize your active-active or active-passive implementation for resiliency and management burden. Planning for multi-region scale out is also important to overcome potential temporary resource capacity constraints in a region.
+  - Advantage of this design: Shortest recovery time among the active-passive designs.
 
-### Use low-latency datacenter redundancy
+  - Disadvantage of this design: Highest operating cost among the active-passive designs.
 
-Deploying to datacenters, or independent datacenter sectors in close proximity to one another can give you the benefits of redundancy while allowing you to deploy your high-performance workload as if all deployment stamps were deployed on colocated infrastructure. In the Azure platform, you can use [availability zones](../design-guides/regions-availability-zones.md) to spread your workload across independent infrastructure within a region. Using this approach let's you take advantage of the inherent low latency to achieve transparent network load balancing and near real-time data replication. This approach is best suited for workloads with low latency requirements due to the inherent risk of losing all active workload instances in a large scale event.
+- **Cold spare**: One primary location and one or more secondary locations. The secondary location is scaled to handle full load, but all compute resources are stopped. This location is known as a *cold spare* location. You need to start the resources before failover.
 
-### Use geo-distant datacenter redundancy
+  - Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 
-Deploying your workload across geo-distant datacenters (known as regions in the Azure platform) increases your reliability by protecting it against the risk of a large-scale event that takes an entire datacenter offline. When designing this approach, test the latency between your deployment locations and understand how the latency will affect the performance of your application. Determine whether an active-active or active-passive approach is the best fit for your use case.
+  - Data replication and consistency: Replicate your database to your passive location and use the automatic failover capabilities of PaaS solutions like [Azure Cosmos DB](/azure/cosmos-db/how-to-manage-database-account#automatic-failover) and [Azure SQL Database](/azure/azure-sql/database/auto-failover-group-sql-db).
+
+  - Advantage of this design: Lower operating costs than the warm spare design.
+
+  - Disadvantage of this design: Longer recovery time than the warm spare design.
+
+### Deploy across nearby independent datacenters (availability zones)
+
+Deploying across nearby independent datacenters provides redundancy benefits while maintaining high-performance characteristics by leveraging physically separated but geographically proximate infrastructure. This approach achieves fault isolation without introducing significant latency penalties, allowing your workload to operate as if deployed on colocated infrastructure while gaining protection against localized failures such as power outages, network issues, or hardware problems within individual facilities.
+
+Consider a real-time gaming platform that requires sub-millisecond response times: by distributing game servers across nearby independent datacenters within the same metropolitan area, the platform maintains ultra-low latency for players while protecting against datacenter-level failures. When one facility experiences a power outage, traffic automatically shifts to servers in neighboring datacenters without players experiencing noticeable latency increases. The transparent load balancing and near real-time data replication ensure seamless gameplay continuity even during infrastructure disruptions.
+
+With this deployment approach, the low latency between nearby datacenters enables transparent network load balancing across facilities, allows for synchronous data replication with minimal performance impact, and makes failover operations nearly invisible to users. These low-latency characteristics enable workloads to operate seamlessly across multiple facilities while maintaining the performance characteristics of a single-location deployment. However, this approach accepts the inherent risk that large-scale regional events—such as natural disasters, widespread power grid failures, or metropolitan network outages—could simultaneously affect all deployment locations, potentially causing complete service interruption.
+
+### Deploy across geographically distributed datacenters (regions)
+
+Deploying across geographically distributed datacenters provides the highest level of protection against large-scale disasters by distributing your workload across locations that are hundreds or thousands of miles apart. This approach protects against catastrophic events that could affect entire metropolitan areas or regions, ensuring business continuity even when facing natural disasters, widespread infrastructure failures, or geopolitical disruptions.
+
+Consider a global financial services platform that manages critical banking operations: by deploying across multiple continents, the platform ensures that even if an earthquake disrupts all datacenters in one region, customer banking services continue operating seamlessly from deployments in other geographic regions. The platform automatically routes traffic away from affected regions while maintaining data consistency across global deployments. Customers in unaffected regions experience no service disruption, while customers in affected regions can still access their accounts through alternative routing paths once connectivity is restored.
+
+This deployment pattern provides maximum protection against catastrophic failures that could simultaneously affect multiple nearby datacenters, making it essential for mission-critical workloads that require the highest levels of business continuity. Geographic distribution enables comprehensive disaster recovery capabilities and regulatory compliance for workloads that must operate across multiple jurisdictions. However, this approach introduces performance challenges due to increased network latency between regions, requires sophisticated data replication and consistency strategies, and significantly increases operational complexity in managing deployments across multiple geographic locations. Organizations must carefully balance the enhanced reliability benefits against the increased costs and complexity of operating truly global infrastructure.
 
 ## Azure facilitation
 
@@ -174,9 +201,11 @@ The Azure platform helps you optimize the resiliency of your workload and add re
 
 - Providing built-in redundancy with many PaaS and SaaS solutions, some of which are configurable.
 
+- Offering global managed services like Azure Active Directory, Azure DNS, and Azure Key Vault that implement redundancy transparently without requiring configuration.
+
 - Allowing you to design and implement intra-region redundancy by using [availability zones](/azure/reliability/availability-zones-overview) and inter-region redundancy.
 
-- Providing zone-redundant compute solutions, like [Azure VM Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets)
+- Providing zone-redundant compute solutions, like [Azure VM Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets), which can automatically spread your compute evenly across availability zones when you deploy virtual machines (VMs).
 
 - Offering replica-aware load balancing services like [Azure Application Gateway](/azure/application-gateway/), [Azure Front Door](/azure/frontdoor/), and [Azure Load Balancer](/azure/load-balancer/).
 
@@ -218,7 +247,7 @@ To learn more about redundancy, see the following resources:
 
 ## Reliability checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)
