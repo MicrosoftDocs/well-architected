@@ -9,9 +9,9 @@ ms.topic: conceptual
 
 # Azure Well-Architected Framework workloads
 
-In the context of the Azure Well-Architected Framework, the term *workload* refers to a collection of application resources, custom code, AI models, data, and supporting infrastructure that function together to achieve defined business outcomes. A workload consists of components and also development and operational procedures.
+In the context of the Azure Well-Architected Framework, the term *workload* refers to a collection of application resources, custom code, AI models, data, and supporting infrastructure that function together to achieve defined business outcomes. Architects design workloads to achieve functional and nonfunctional business requirements, and a workload team implements them. 
 
-Architects design workloads, and a workload team implements them. A workload is designed and implemented to achieve functional and nonfunctional business requirements. Those requirements frequently evolve which results in new or deprecated features. These requirements also drive prioritization for fixing bug and addressing technical debt.
+It's common practice for an architect to decompose workloads into logical components, viewed through both technical and business lenses, and identify optimization opportunities. That's done by analyzing user interactions, data flows, and operational processes related to those components. The insights frequently lead to the introduction of new features or the deprecation of legacy ones, helping the system to evolve with the cloud ecosystem while systematically addressing technical debt.
 
 Workloads can be classified into many types. Typical criteria for workload classification include:
 
@@ -55,7 +55,7 @@ Create a workload team that has team members with a wide range of technical and 
 |---| ---|
 |Application security engineers <br>Business stakeholders<br>Cloud developer or software engineers <br>Cloud solution architects <br>Data scientists or analysts <br>Database administrators <br>|DevOps engineers <br>Infrastructure engineers <br>Product managers or owners <br>Quality assurance (QA) engineers <br>Site reliability engineers (SREs)<br>Support team members <br>|
 
-These individuals might be broken into subteams, pods, or other organizational structures to support your workload's lifecycle. The Well-Architected Framework will typically address all of these individuals collectively as the workload team.
+To support the full lifecycle of a workload, individuals may be organized into subteams, pods, or other structures. The Well-Architected Framework typically refers to all of these contributors collectively as the _workload team_.
 
 ## Centralized teams and stakeholders
 
@@ -87,7 +87,7 @@ Throughout the Well-Architected Framework, such as the core pillars and the work
 
 The direct workload team handles most workload requirements. Some requirements are handled as a joint effort with centralized teams. For example, the implementation choices might be based on guardrails that a centralized team sets. Or a centralized team might exclusively handle the implementation choices.
 
-There are sometimes special infrastructure components that aren't considered directly part of an individual workload, such as cross-premises connectivity infrastructure. These are instead treated as dependencies that the workload uses. These centralized utilities are consumed only when there's a functional or nonfunctional requirement that justifies that dependency, and the support provided is sufficient.
+Certain infrastructure components, such as cross-premises connectivity, aren't considered part of an individual workload. Instead, they are treated as _dependencies_ that the workload consumes. These, often, centralized utilities are used only when a functional or nonfunctional requirement justifies the dependency, and when the provided support meets the workload's needs.
 
 Your workload team must build a working relationship with other teams to help codeliver on workload goals. If you outsource components or responsibilities, you must successfully deliver on those obligations.
 
