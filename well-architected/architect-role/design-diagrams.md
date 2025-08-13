@@ -3,39 +3,37 @@ title: Architecture design diagrams
 description: Learn about diagramming practices and types of architecture diagrams that you can create to communicate effectively.
 author: ckittel
 ms.author: chkittel
-ms.date: 07/18/2024
+ms.date: 08/13/2025
 ms.topic: conceptual
 ---
 
 # Architecture design diagrams
 
-Architects often communicate through diagrams. Diagrams are powerful communication tools that help implementers and stakeholders see the broad vision or dive deep into highly sensitive or nuanced areas of a system. To communicate with intention, an architect must select which diagram is useful in each situation.
+Architects often communicate through diagrams. Well‑designed visuals are a powerful tool that help implementers, security reviewers, and business stakeholders converge on a shared mental model, expose risks earlier, and reduce rework. To communicate with intention, an architect must select and often layer diagram types that match the message, audience, and lifecycle stage.
 
-The list of diagrams in this article isn't exhaustive. Diagrams are often a composite of multiple types.
-
-Ultimately, the choice of architecture diagram depends on what you're trying to convey and the audience profile. An architect uses multiple types of diagrams throughout activities for design, refinement of requirements, and communication.
+Ultimately, the choice of architecture diagram depends on what you're trying to convey and your audience's questions. Architects use multiple types of diagrams throughout design activities, requirements refinement, and stakeholder communication. Expect to maintain multiple diagrams across envisioning, design elaboration, threat modeling, implementation, operations, and governance.
 
 ## Diagramming practices
 
-Diagrams present substantial information without the need for textual explanation. Avoid ambiguity in diagrams. Here are some recommendations:
+Effective diagrams convey substantial information without requiring extensive textual explanation. To avoid ambiguity and ensure clear communication, follow these recommendations:
 
-**Use standard notations**. Use widely recognized symbols, icons, and presentation conventions for good readability and interpretation of a diagram.
+**Use standard notations**. Use widely recognized symbols, icons, and presentation conventions to ensure good readability and consistent interpretation across different audiences.
 
-**Avoid ambiguous lines**. Diagrams often show relationships between entities represented as lines. Be consistent in how you use the lines.
+**Avoid ambiguous lines**. Diagrams often show relationships between entities using lines. Be consistent in how you represent these relationships throughout your diagrams.
 
-**Avoid lines without arrows**. It's hard to know what the relationship is without direction, so use arrows. Label all lines without arrows to denote the relationships.
+**Use directional arrows**. Lines without arrows make relationships unclear. Always use arrows, and when bi‑directional communication exists, either show two separate flows (preferred) or annotate a single arrow with request/response notes.
 
-**Avoid lines with double arrows**. Double arrows imply a bidirectional dependency. Prefer using a single-ended arrow to represent the flow from the dependent (client) to the dependency (server).
+**Avoid bidirectional arrows**. Double arrows imply bidirectional dependencies, which can create confusion. Use single-ended arrows to represent the flow from the initiating component (client) to the dependency (server).
 
-**Label everything**. Provide clear, accurate, and meaningful labels for each icon. Label lines when the relationships aren't clear.
+**Label everything clearly**. Provide clear, accurate, and meaningful labels for each icon, grouping container, and relationship. Label lines when relationships aren't immediately obvious from context.
 
-**Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line types, arrow heads, and other representations for similar elements throughout a diagram. Stay consistent across all diagrams created for your workload's design and documentation. Draw from existing data or taxonomies.
+**Maintain consistency**. Use standardized colors, casing, icons, icon sizes, line weights, line types, arrow heads, and border styles for similar elements. Apply the same taxonomy across every diagram in the solution set. Draw from existing organizational standards or taxonomies.
 
-**Be accurate**. Diagrams are abstractions, but don't sacrifice accuracy in the process. For example, don't represent a service in a virtual network if it's not present in that virtual network. A diagram is a communication tool, so you need to avoid miscommunication from inaccuracies.
+**Be accurate**. While diagrams are abstractions, don't sacrifice accuracy for unnecessary simplicity. For example, don't depict a PaaS service inside a subnet if it's actually accessed over a private endpoint. Inaccuracies in diagrams can lead to serious miscommunication and implementation delays or errors. Retire diagrams that no longer accurately answer an active stakeholder question.
 
-**Include metadata**. Ensure that a diagram contains metadata that provides essential information about the purpose of the diagram. Metadata also gives context to help viewers understand the diagram's scope and significance. Include items such as title, description, last updated date, author, and external references.
+**Include metadata**. Ensure each diagram contains metadata that provides essential context about its purpose, scope, and significance. Include elements such as title, description, last updated date, author, version, and external references. This information helps viewers understand the diagram's intent and freshness. After a diagram is first shared broadly, maintaining a linked change log helps returning viewers know what's changed.
 
-**Use official icons and service names**. When you're representing a specific technology, use the latest official icons from your technology provider. If identifying the technology is important, use the official name for the service.
+**Use official icons and service names**. When representing specific technologies, always use the latest official icons and naming conventions. Don't stretch or recolor brand shapes arbitrarily. Don't substitute marketing logos for conceptual elements for example, using vendor logos for generic *API gateway* blocks.
 
 For example, here are the icons for Microsoft services:
 
@@ -43,67 +41,107 @@ For example, here are the icons for Microsoft services:
 - [Microsoft 365 icons](/microsoft-365/solutions/architecture-icons-templates)
 - [Microsoft Dynamics 365 icons](/dynamics365/get-started/icons)
 - [Microsoft Entra ID architecture icons](/entra/architecture/architecture-icons)
+- [Microsoft Fabric icons](/fabric/fundamentals/icons)
 - [Microsoft Power Platform icons](/power-platform/guidance/icons)
+
+**Provide a legend**. If you introduce border or line semantics, for example, solid is a synchronous call while dash is asynchronous, include a compact legend.
+
+**Design for accessibility**. Ensure sufficient color contrast. Avoid relying solely on color to distinguish types, instead consistently pair color with pattern.
+
+**Layer, don't overload**. Resist the urge to encode every subsystem, data classification, and runtime path in a single diagram. Provide progressive disclosure: a context diagram leads to a container diagram, which leads to a focused component or sequence diagram for a critical use case.
+
+**Version control**. Store diagram source files in the same repository or documentation store as the workload's other versioned assets.
 
 ## Types of design diagrams
 
-Workload architecture is complex and multidimensional. Each dimension type focuses on a specific aspect of the system by providing a level of detail that's specific to that dimension. For instance, flowcharts illustrate process flow. Entity-relationship diagrams depict relationships between system components.
+Workload architecture is complex and multidimensional. Different diagram types focus on specific aspects of the system, providing targeted levels of detail for each dimension. For example, flowcharts illustrate process flow, while entity-relationship diagrams show relationships between system components.
 
-Having different types of diagrams allows for a comprehensive understanding of dimensions. It helps encourage effective communication, problem-solving, and decision-making among stakeholders.
+Using different diagram types enables comprehensive understanding across all architectural dimensions. This approach facilitates effective communication, problem-solving, and decision-making among diverse stakeholders with varying technical backgrounds and concerns. Your [architecture decision records](./architecture-decision-record.md) reference these diagrams to visualize the decision.
 
-##### High-level system diagram
+The types that follow include common cloud architecture communication artifacts plus several high‑value additions. The list of diagram types isn't exhaustive. In practice, many artifacts are hybrid or evolve. To visualize your workload, favor a minimal set of purposeful diagrams over creating every possible type. Start broad, progressively narrow, then apply scenario and cross‑cutting views.
 
-A high-level system diagram serves as a broad overview of a whole workload or of a subsection within a workload. It includes the main components, their relationships to each other, and the rough order in which data flows through the system. Arrows show the direction of interaction.
+### Context diagram
 
-These diagrams are good for reaching a common understanding so that you can start deeper discussions or for stakeholder communication.
+A context diagram presents the workload as a single black box in its external environment. It names the system, briefly states its purpose, and shows the external personas, upstream and downstream systems, and data sources or sinks that interact with it. Only the high level communication or integration paths appear; internal structure is deliberately omitted so the audience focuses on scope boundaries and dependencies, not implementation. Rely on generic shapes for external systems rather than product logos, and always include an explicit boundary so readers don't have to infer scope.
 
-##### Block diagram
+### High-level system or container diagram
 
-A block diagram breaks down a workload into its major functional blocks. The blocks are usually technology agnostic. They refer to the functionality that's being performed instead of a specific component.
+A high-level system diagram provides a broad overview of an entire workload or a major subsection within a workload. It decomposes the workload into its main components, their relationships, and the general flow of data through the system. Arrows indicate the direction of interactions and dependencies.
 
-For example, a block diagram might reference a "messaging bus" instead of a specific message-bus technology. This type of diagram can help explain a system's structure, data flow, and processing flow without distracting the audience with fine details.
+Use this diagram after context alignment to expose macro structure, hosting models such as PaaS or self-managed, and external dependencies. These diagrams are excellent for establishing a common understanding among stakeholders before diving into deeper technical discussions. They're also valuable for executive and stakeholder communication where high-level understanding is more important than technical details.
 
-##### Component diagram
+### Block or functional diagram
 
-A component diagram works like a block diagram but replaces generic functionality blocks with specific technologies. It presents a detailed view with the goal of communicating the system's individual technology components and their relationships, such as client/server. These diagrams are a sort of visual bill of materials for the scope of the diagram.
+A block diagram breaks down a workload into major functional capabilities using technology agnostic blocks, focusing on the functionality being performed rather than the specific component.
 
-##### Deployment diagram
+For example, a block diagram might reference an *order queue* or *messaging bus* instead of specifying a particular message-bus technology like Azure Service Bus or Apache Kafka. This abstraction level helps explain a system's structure, data flow, and processing flow without overwhelming the audience with implementation specifics, making it ideal for early domain modeling discussions and requirements gathering.
 
-A deployment diagram focuses on the deployment of infrastructure, commercial off-the-shelf (COTS) software, and custom code across the workload. It shows how the software and code are distributed across the hosting infrastructure.
+### Component diagram
 
-##### Data-flow diagram
+A component diagram builds upon block diagrams by replacing generic functional blocks with specific technologies and integration points. It presents a detailed view that communicates the system's concrete technology and their relationships, such as client-server interactions. These diagrams serve as a visual bill of materials for the architecture, showing exactly which technologies will be implemented.
 
-A data-flow diagram (DFD) illustrates how data moves through a system, which is useful when you're modeling data-centric systems. In a diagram like this, it's a good idea to note if data is moved in batches or in real time to remove ambiguity.
+### Deployment diagram
 
-##### Sequence diagram
+A deployment diagram focuses on how infrastructure, commercial off-the-shelf (COTS) software, and custom code are deployed into the hosting environment. It shows the mapping between software components and the physical or virtual infrastructure that hosts them.
 
-A sequence diagram depicts the communication exchanges between workload components over time. It illustrates client/server relationships and their synchronous or asynchronous nature. It also highlights dependencies in these exchanges and evaluates fault scenarios within them.
+These diagrams are useful for DevOps planning, environment setup, and understanding the operational aspects of the architecture. They help teams visualize scaling boundaries, deployment units, infrastructure dependencies, and environments.
 
-##### User-flow diagram
+### Data-flow diagram (DFD)
 
-A user-flow diagram focuses on a scoped interaction between workloads, users, or actors and the workload. It's helpful for clarifying and visualizing functional requirements across various ways that a user and the user's data interact with the system.
+A data-flow diagram (DFD) illustrates how data moves, transforms, is stored, and exits the system. Emphasize sources, sinks, transformation stages, classification (public, confidential, regulated), and whether movement is batch, streaming, or near real time. It helps with data lineage analysis, governance controls, and performance bottleneck identification.
 
-##### Entity-relationship diagram
+Security threat modeling, such as the [STRIDE model](https://wikipedia.org/wiki/STRIDE_model), uses a specialized DFD. The diagram shows processes, data stores, external entities, trust boundaries, and data flows crossing those boundaries. It focuses on annotating flows with protocols and encryption, and highlights assets requiring protection. This illustration drives mitigation identification and security control validation.
 
-An entity-relationship diagram (ERD) is a modeling diagram that represents the structure of a database or another storage system. It shows the relationship between entities (such as tables) through industry-standard attributes and association symbology.
+### Sequence diagram
 
-##### Network diagram
+A sequence diagram depicts temporal ordering of interactions for a single use case or scenario. For example, *user places order*. It illustrates client-server relationships and clearly shows whether interactions are synchronous or asynchronous. These diagrams also highlight dependencies in communication patterns and help evaluate potential fault scenarios within component interactions. Sequence diagrams are particularly valuable for API design.
 
-A network diagram illustrates the solution from the perspective of the network that it runs on or interacts with. These diagrams are useful in visualizing the workload's network segmentation, network points of failure, and key network transitions such as internet egress and ingress points.
+### User-flow or journey diagram
 
-Network diagrams usually have a life past implementation. Network diagrams are often used in audits and incident response.
+A user-flow diagram shows end‑to‑end steps a user or persona takes across interfaces and services. It visualizes the user journey through the system, showing how users and their data interact with various components and processes. These diagrams are helpful for clarifying functional requirements, validating user experience design, and ensuring that all user scenarios are properly addressed in the architecture. Annotate with performance or service-level expectations on critical flows.
 
-##### State diagram
+### Entity-relationship diagram (ERD)
 
-A state diagram is a specialized visualization. It shows the state that a flow (or an individual component) is in. It also shows how the flow transitions between states in response to conditions or events.
+An entity-relationship diagram (ERD) represents logical or physical data model structure: entities (tables and collections), attributes, keys, and cardinalities. Use logical ERDs for domain alignment and physical ERDs for implementation detail (indexes, partitioning). Sometimes added details such as sharding ranges can be communicated in this diagram. These diagrams help developers understand data relationships and constraints before implementation begins.
 
-##### Flowchart
+### Network connectivity diagram
 
-Although it's not an architecture diagram specifically, a flowchart is another way to bring clarity to a design. Flowcharts are often useful when they represent complex workflows or logic. You can use them to help refine requirements and to help drive implementation choices.
+A network diagram illustrates the workload from a network infrastructure perspective, showing where components communicate across network boundaries. These diagrams visualize network segmentation, potential network failure points, and critical network transitions such as internet ingress and egress points. A workload can benefit from having one network diagram that focuses on east-west traffic and another network diagram for north-south traffic.
 
-Flowcharts are useful to include in workload incident response plans to help highlight key decision points and their associated actions or notification channels.
+Network diagrams often have extended utility beyond the initial implementation phase. They're frequently referenced during security audits, compliance reviews, and incident response activities, making them valuable long term documentation assets.
+
+### State diagram
+
+A state diagram is a specialized visualization that shows possible states of a domain object, workflow, or subsystem. It includes the conditions or events that trigger transitions between states. For example, describing how an *order* progresses from draft, submitted, reviewed, fulfilled, to closed.
+
+State diagrams help highlight potential concurrency concerns, transition handling, and compensating transaction needs. This helps reduce the likelihood of unanticipated state change behaviors in production.
+
+### Flowchart and activity diagram
+
+Flowcharts and activity diagrams bring clarity to complex workflows, decision logic, and business processes within your workload. They're useful for representing approval processes and conditional branching scenarios, which helps you document operational runbooks, business process automation, and incident response flows.
+
+### Other specialized diagrams
+
+| Type | When it adds distinct value | Focus |
+|------|-----------------------------|-------|
+| Availability & resilience map | During disaster recovery (DR) planning and service level objective (SLO) reviews | Show redundancy, failover paths, RPO/RTO annotations. |
+| Compliance data residency map | Regulated workloads | Show data location, replication, classification, retention. |
+| Identity & access flow diagram | Security and compliance reviews | Show authentication and authorization flows. Identify where token issuance occurs, where trust boundaries change, and where on-behalf-of flows occur. |
+
+## Specification-based diagraming
+
+Several open specifications exist that you can base diagrams on. Adopting one is a workload team decision; do so only if it adds required shared vocabulary to reduce ambiguity. If your current visual communication approach already works, avoid adding process weight just for formality. Even when you don't adopt a specification, selectively borrowing proven conventions (layering, cardinality notation, event labeling, legend patterns) can raise clarity and consistency across your diagram set.
+
+Examples of diagraming and modeling specifications:
+
+- [Business Process Model and Notation](https://www.omg.org/spec/BPMN)
+- [C4 model](https://c4model.com)
+- [Decision Model and Notation](https://www.omg.org/spec/DMN)
+- [Unified Modeling Language (UML)](https://www.omg.org/spec/UML)
 
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Architect's checklist](checklist.md)
+
+<!-- Updated: August 13, 2025 for a full review -->
