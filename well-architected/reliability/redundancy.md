@@ -3,7 +3,7 @@ title: Recommendations for designing for redundancy
 description: Learn how to design for redundancy in your workload to meet your reliability targets and to keep problems contained to a single resource.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 08/13/2025
 ms.topic: conceptual
 ---
 
@@ -115,11 +115,9 @@ Whether you deploy stamps in an active-active model (where all stamps actively s
 
 #### Deploy redundant instances in active-active configuration for zero downtime
 
-When deploying redundant instances of your workload, you can configure them in an active-active pattern that delivers the highest level of service availability by distributing production workloads across multiple simultaneously operating instances. This approach provides immediate business continuity when individual components fail, eliminates recovery time delays through automatic traffic distribution, and maximizes resource utilization by keeping all instances productive.
+Active-active deployments maximize service availability by running multiple instances of a workload simultaneously, each actively handling traffic. This setup ensures immediate failover, eliminates downtime, and optimizes resource use by keeping all instances productive. If one instance fails, traffic is automatically rerouted to healthy ones without disrupting service.
 
-Consider an e-commerce platform running during peak shopping season: with active-active redundancy, if one deployment experiences issues, traffic seamlessly continues flowing through healthy instances without customers noticing any service disruption. Each instance handles real production load, so the platform maintains full performance capacity while providing built-in resilience. The system automatically balances requests across all available instances, ensuring optimal response times and zero downtime during both planned maintenance and unexpected failures.
-
-Active-active configurations provide the highest level of reliability by eliminating single points of failure across your entire workload and ensuring continuous service availability even when individual components experience issues. This approach is ideal for mission-critical workloads that cannot tolerate any service interruptions. However, this enhanced reliability comes with increased infrastructure costs and operational complexity, as you must provision and maintain multiple production-ready environments, implement sophisticated traffic distribution and data consistency mechanisms, and coordinate deployments across all active components.
+For example, an e-commerce platform during peak season can maintain seamless operations even if one deployment encounters issues. Active-active configurations are ideal for mission-critical workloads that require uninterrupted availability, but they come with higher infrastructure costs and complexity. Managing multiple live environments, ensuring data consistency, and coordinating updates across all instances demand advanced operational strategies.
 
 The following sections describe configuration options for active-active deployments.
 
@@ -149,11 +147,9 @@ The following sections describe configuration options for active-active deployme
 
 #### Deploy redundant instances in active-passive configuration for disaster recovery
 
-When deploying redundant instances of your workload, you can configure them in an active-passive pattern that provides reliable disaster recovery capabilities while optimizing operational costs. This approach maintains one primary instance actively serving all traffic while keeping secondary instances ready but idle, activating them only when the primary instance fails or requires maintenance.
+Active-passive deployment configurations offer a cost-effective way to ensure disaster recovery by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary fails or undergoes maintenance, minimizing resource usage while still providing reliable failover capabilities.
 
-Consider a financial trading platform that processes transactions continuously: with active-passive redundancy, the primary deployment handles all trading activity while a secondary deployment remains synchronized but idle. When the primary deployment experiences an outage, automated failover procedures activate the secondary deployment to resume trading operations. Although there's a brief interruption during failover, the platform quickly restores service and maintains data consistency, ensuring minimal impact on trading activities and regulatory compliance.
-
-Active-passive configurations provide strong reliability protection against catastrophic failures while balancing cost considerations more effectively than active-active deployments. This approach is ideal for workloads that can tolerate brief recovery periods in exchange for lower infrastructure costs and operational complexity. While active-passive offers less immediate availability than active-active configurations, it delivers substantial reliability improvements over single-instance deployments with reduced resource requirements and simpler coordination mechanisms.
+For example, a financial trading platform can use this setup to maintain service continuity. The primary system manages all transactions, while the secondary remains synchronized in the background. If the primary goes down, the secondary quickly takes over, restoring operations with minimal disruption. This approach balances reliability and cost, making it ideal for workloads that can tolerate brief recovery times without the complexity or expense of active-active deployments.
 
 The following sections describe configuration options for active-passive deployments.
 
