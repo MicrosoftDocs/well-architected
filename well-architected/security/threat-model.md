@@ -1,5 +1,5 @@
 ---
-title: Application threat analysis
+title: Key design strategies for application threat analysis
 description: Use threat modeling to identify threats, attacks, vulnerabilities, and countermeasures that can affect an application.
 author: PageWriter-MSFT
 ms.author: prwilk 

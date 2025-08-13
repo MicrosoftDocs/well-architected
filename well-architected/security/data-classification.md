@@ -1,5 +1,5 @@
 ---
-title: Data classification recommendations
+title: Key design strategies for data classification
 description: Learn about data classification and how to apply it to your workloads. Categorize data based on its sensitivity levels, information type, and scope of compliance so that you can apply the correct level of protection.
 author: PageWriter-MSFT
 ms.author: prwilk 

@@ -1,5 +1,5 @@
 ---
-title: Failure mode analysis recommendations
+title: Key design strategies for failure mode analysis
 description: Learn how to identify potential points of failure within your workload and the associated flows, and plan mitigation actions accordingly.
 author: claytonsiemens77
 ms.author: csiemens

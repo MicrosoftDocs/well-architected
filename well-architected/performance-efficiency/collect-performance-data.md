@@ -1,5 +1,5 @@
 ---
-title: Collect workload performance data
+title: Key design strategies for collecting performance data
 description: Learn recommendations for collecting performance data (metrics and logs) to help you assess the performance of a workload.  
 author: stephen-sumner
 ms.author: ssumner

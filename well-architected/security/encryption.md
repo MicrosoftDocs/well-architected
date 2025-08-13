@@ -1,5 +1,5 @@
 ---
-title: Encryption strategy recommendations
+title: Key design strategies for encryption
 description: Learn about recommendations for encryption, including encryption mechanisms, encryption keys, encryption algorithms, hashes, checksums, and secret management.
 author: PageWriter-MSFT
 ms.author: prwilk 
