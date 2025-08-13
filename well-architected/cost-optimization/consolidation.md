@@ -1,5 +1,5 @@
 --- 
-title: Recommendations for consolidation 
+title: Key design strategies for consolidation 
 description: Learn how to use consolidation to restructure your workloads, resources, and team roles to achieve maximum cost efficiency.
 author: stephen-sumner 
 ms.author: ssumner 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual 
 --- 
 
-# Recommendations for consolidation
+# Key design strategies for consolidation
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -27,7 +27,6 @@ Consolidation can reduce redundant resources and licenses, and increase density.
 | Consolidate | The act of combining components to optimally meet workload requirements.|
 | Resource density  | A measure of logical separation within a resource. Increased density typically equates to higher utilization due to the collocation of disparate components, consumers, or environments. |
 
-## Key design strategies
 
 The primary objective of consolidation is optimization, not reduction. Consolidation involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike [optimizing component costs](optimize-component-costs.md), consolidation is a process that requires careful consideration.
 
@@ -39,7 +38,7 @@ Almost every consolidation effort has tradeoffs and potential risks but can sign
 
 1. *Communication and implementation*: If you determine that consolidation is beneficial, announce the impending changes and apply them.
 
-### Consolidate resources
+## Consolidate resources
 
 Consolidating resources involves combining resources within a workload. You can collocate functionalities or consumers. For example, you might consolidate three web servers into a single server or three databases into a single database server. You might consolidate multiple firewalls into a single firewall that serves multiple environments.
 
@@ -67,13 +66,13 @@ Common types of services that you can consolidate include application platforms,
 >
 > - Resource consolidation results in less redundancy. Carefully plan to ensure that you have the proper amount of reliability in the workload.
 
-### Consolidate responsibilities
+## Consolidate responsibilities
 
 The goal of consolidating workload responsibilities is to reduce the workload team's responsibilities. It’s a strategic cost optimization effort that requires organizational awareness and collaboration outside the workload team.
 
 There are two principal ways to consolidate your workload team's responsibilities. You can use external shared or centralized resources and not run that resource in the workload environment. You can also offload workload responsibilities to other teams in your organization, so your team isn't directly responsible for those tasks or personnel.
 
-#### Use external centralized resources
+### Use external centralized resources
 
 External centralized resources refer to shared resources outside the workload environment. For example, an organization might have a centralized gateway that serves multiple workloads. The goal of external centralized resources is to minimize duplication and overhead. Instead of having a dedicated resource for your workload, you can use a shared resource to optimize costs. Consider the following recommendations:
 
@@ -91,7 +90,7 @@ External centralized resources refer to shared resources outside the workload en
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Over-consolidation can result in resource contention, which can lead to performance issues. Consolidation might limit the flexibility and agility of individual teams and workloads because they must adhere to centralized standards that can inhibit customization.
 
-#### Offload responsibilities to external teams
+### Offload responsibilities to external teams
 
 Offloading workload responsibilities to external teams refers to using expert centralized teams that perform specialized services such as a security operations team. You can offload responsibilities to existing teams to help optimize costs and delegate expertise for specific functions.
 

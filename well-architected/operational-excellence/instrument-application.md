@@ -1,5 +1,5 @@
 ---
-title: Recommendations for instrumenting an application
+title: Key design strategies for instrumenting an application
 description: Learn how to instrument an application as it relates to the health modeling and monitoring component of the Operational Excellence pillar.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for instrumenting an application
+# Key design strategies for instrumenting an application
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
@@ -18,7 +18,6 @@ ms.topic: conceptual
 
 This guide describes the recommendations for enabling observability of your application by using instrumentation. Generate meaningful telemetry that can be ingested and integrated into your monitoring system. By using instrumentation, you can gather information without signing in to a remote production server to manually perform tracing or debugging. Instrumentation data includes metrics and logs that you can use to assess performance, diagnose problems, and make workload decisions.
 
-## Key design strategies
 
 To optimize telemetry for your workload, instrument your application to generate the following data:
 
@@ -31,7 +30,7 @@ To optimize telemetry for your workload, instrument your application to generate
 > [!NOTE]
 > You can use tools like Application Insights, Dynatrace, and Elastic Application Performance Monitoring to automatically instrument your application. These tools make instrumentation easier, but they can also be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
 
-### Use structured logs and tracing
+## Use structured logs and tracing
 
 Use structured logging to easily integrate logs into monitoring and analysis platforms. Instrument your application so the levels of verbosity can be changed. Constant verbose logging can waste storage resources, so it should be switched on and off as needed for troubleshooting.
 
@@ -42,11 +41,11 @@ Categorize logs and use separate logs to record the trace output from each opera
 > [!NOTE]
 > A log might be implemented as a file in the file system, or it might be held in some other format, such as a blob in blob storage. Log information might also be held in structured storage, such as rows in a table.
 
-### Capture application metrics
+## Capture application metrics
 
 Metrics, or *samples*, are a count of some aspect or resource in the system at a specific time, with one or more associated tags or dimensions. A single instance of a metric isn't useful in isolation, metrics should be captured over time. Consider which metrics you should record and how frequently. Data that's generated too often can impose a heavy load on the system, but infrequent data capture can cause you to miss the circumstances that lead to a significant event. The appropriate frequency for capturing data might vary from metric to metric. For example, CPU usage on a server might vary significantly from second to second, but high usage only becomes an issue if it's consistent over many minutes.
 
-### Facilitate correlation across components
+## Facilitate correlation across components
 
 You can easily monitor individual and system-level performance counters, capture metrics for resources, and obtain application trace information from various log files. Some monitoring requires data correlation during the analysis and diagnostics stage in the monitoring pipeline. This data can take several forms and the analysis process must be provided with sufficient instrumentation data to map these different forms. For example, at the application framework level, a thread ID might identify a task. Within an application, the same work might be associated with the user ID for the user who completes that task.
 
@@ -57,11 +56,11 @@ All monitoring data should be timestamped in the same way. For consistency, reco
 > [!NOTE]
 > Computers that operate in different time zones and networks might not be synchronized. Don't depend on timestamps alone for correlating instrumentation data that spans multiple machines.
 
-### Capture relevant data
+## Capture relevant data
 
 Consider the following points when you decide which instrumentation data you need to collect.
 
-#### Human-readable data
+### Human-readable data
 
 Ensure that information captured by trace events is both machine and human readable. Adopt well-defined schemas for this information to help implement automated processing of log data across systems, and to provide consistency for operations and engineering staff reading the logs.
 
@@ -72,7 +71,7 @@ Include the following environmental information in your data:
 - Details of the process
 - Call stack
 
-#### Invest in traceability and correlation
+### Invest in traceability and correlation
 
 Provide sufficient context, such as an activity ID that's associated with a specific instance of a  request, so that the developer or administrator can determine the source of each request.
 
@@ -80,13 +79,13 @@ Data context might also include information that's used to correlate an activity
 
 For metering, the context should directly or indirectly include a reference to the customer who caused the request. This context provides valuable information about the application state at the time that the monitoring data was captured.
 
-#### Capture all relevant data
+### Capture all relevant data
 
 Record all requests and the locations or regions where they're made. You can use this information to help identify location-specific hotspots. This information can also be useful to determine whether to repartition an application or the data that it uses.
 
 Record and capture the details of exceptions carefully. Critical debug information is often lost because of poor exception handling. Capture all exception details that the application throws, including any inner exceptions or other contextual information, such as the call stack, if possible.
 
-#### Strive for data consistency
+### Strive for data consistency
 
 Consistent data can help you analyze events and correlate them with user requests. Consider using a comprehensive and configurable logging package to gather information. Logging packages can help you avoid dependence on developers to adopt your approach as they implement different parts of the system.
 
@@ -98,7 +97,7 @@ Gather data, such as input/output volume, number of requests, and memory, networ
 
 Applications might also define their own performance counters.
 
-#### Consider external dependencies
+### Consider external dependencies
 
 Log all external service calls. Externals calls might be made to:
 
@@ -108,7 +107,7 @@ Log all external service calls. Externals calls might be made to:
   
 Record information about the duration of each call and the success or failure of the call. If possible, capture information about all retry attempts and failures for any transient errors that occur.
 
-### Ensure telemetry system compatibility
+## Ensure telemetry system compatibility
 
 In many cases, the instrumentation information is generated as a series of events and passed to a separate telemetry system for processing and analysis. A telemetry system is typically independent of any specific application or technology.
 
@@ -132,7 +131,7 @@ Establish domain fields that produce the same set of events to build a set of co
 
 [OpenTelemetry](https://opentelemetry.io/) is a vendor-neutral collection of APIs, SDKs, and other tools. You can use OpenTelemetry to instrument applications and generate meaningful telemetry consistently across languages. OpenTelemetry is tool-agnostic, so it's compatible with many observability platforms including open-source and commercial offerings. [Microsoft is adopting OpenTelemetry](/azure/azure-monitor/app/opentelemetry-overview?tabs=aspnetcore#opentelemetry) as the standard tool for instrumentation.
 
-### Optimize instrumentation code
+## Optimize instrumentation code
 
 The following list summarizes best practices for instrumenting a distributed application running in the cloud:
 
@@ -166,7 +165,7 @@ The following list summarizes best practices for instrumenting a distributed app
 
 - Treat instrumentation as an ongoing iterative process and review logs regularly.
 
-### Use application profiling
+## Use application profiling
 
 - Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
 

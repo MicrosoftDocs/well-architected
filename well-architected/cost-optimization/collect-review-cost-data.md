@@ -1,5 +1,5 @@
 ---
-title: Recommendations for collecting and reviewing cost data
+title: Key design strategies for collecting and reviewing cost data
 description: Learn how to collect and review cost data for a workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for collecting and reviewing cost data
+# Key design strategies for collecting and reviewing cost data
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 
@@ -27,11 +27,10 @@ Collected data allows you to understand the cost of architecture decisions and b
 |Resource utilization     | The amount of resource capacity a workload uses.        |
 |Showback     |  An accounting model in which you show departments the cost of their workload usage, and you don't receive payment from them.       |
 
-## Key design strategies
 
 Data collection is essential for identifying cost-saving opportunities, accounting (*showback* and *chargeback*), and for efficient resource usage. You must prioritize the collection and review of cost data from all relevant sources. You should centralize the collected data for streamlined analysis and regular review, assign resource owners, and automate alerts where possible.
 
-### Collect cost data
+## Collect cost data
 
 Effective cost management of cloud workloads requires a comprehensive grasp of associated expenses, from computing to network usage. Data collected provides a granular view of where and how resources are being consumed. It allows you to identify inefficiencies, make informed decisions about resource allocation, and ultimately optimize costs to ensure you're getting the best value for your investment.
 
@@ -45,7 +44,7 @@ Design custom views if they're required for your specific workload. Beyond nativ
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. To minimize cost, store older data as aggregated data points without the granularity of newer data. Also, determine the best retention period based on your analysis needs.
 
-### Group data
+## Group data
 
 Grouping data allows you to gain better insights to manage costs effectively. You can break down costs based on different dimensions, such as departments or projects, allowing you to accurately allocate costs to the respective stakeholders. Grouping data promotes transparency, accountability, and cost awareness.
 
@@ -57,7 +56,7 @@ Grouping data allows you to gain better insights to manage costs effectively. Yo
 
 - *Apply metadata.* Metadata can be used to group data and help generate meaningful cost reports. It enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Using metadata, you can design a mechanism to group costs in a way that reflects your application's core business model. For example, tagging resources with tenant identifiers instead of shared resources in a multitenant solution. The ability to pivot cost data based on your application's pricing model can deliver key insights.
 
-### Generate cost reports
+## Generate cost reports
 
 After collecting cost data, you need to use it to generate cost reports. Cost reports provide visibility into spending and facilitate the analysis of your workload spending patterns. You can identify areas where cost optimization is needed and make informed decisions to optimize your spending. Cost reports enable you to allocate costs to different teams, departments, or projects. This allocation helps in understanding distribution and facilitates accurate chargeback or showback.
 
@@ -93,7 +92,7 @@ After collecting cost data, you need to use it to generate cost reports. Cost re
 
 - *Cost variance*: Cost variance in a cost report refers to the difference between the actual costs incurred and the expected or budgeted costs. It helps you identify deviations from the planned costs and understand the reasons behind them.
 
-### Assign resource owners
+## Assign resource owners
 
 Each cost item should have a directly responsible individual (DRI) as the *resource owner*. Assigning a resource owner to each cost item ensures clear accountability for the associated costs. It helps identify who is responsible for managing and optimizing the usage and cost of specific resources or services. Resource owners are important for:
 
@@ -103,19 +102,19 @@ Each cost item should have a directly responsible individual (DRI) as the *resou
 
 - *Decision-making*: Resource owners play a crucial role in decision-making related to resource provisioning, scaling, and optimization. They have the necessary insights and ownership to make informed decisions that align with business objectives and cost optimization goals. Resource owners can actively monitor and analyze the costs associated with their resources. They can identify cost-saving opportunities, optimize resource usage, and make decisions to control and reduce costs.
 
-### Review cost data
+## Review cost data
 
 Regularly review spending against the budget and cost model with stakeholders. Regular reviews help in identifying cost trends, outliers, and areas for optimization. It's important to involve stakeholders such as finance teams, operations teams, and decision-makers in these reviews to drive cost optimization initiatives. Reviews ensure that costs are aligned with expectations and allow for adjustments if necessary. Monitor changes in usage patterns, adjust resource allocations as needed, and implement cost-saving measures based on ongoing analysis of cost data.
 
-#### Analyze cost data
+### Analyze cost data
 
 Review the cost data collected from your workload to gain insights into your spending patterns. Reviews can include analyzing resource utilization, identifying cost drivers, and understanding the distribution of costs across different components of your workload. You should also notice increases and decreases in costs, for example, in compute usage and network transfer costs. Look for areas where you can optimize costs without sacrificing performance or functionality. For example, identify underutilized resources, rightsizing instances, or cost-saving features provided by your cloud provider.
 
-#### Review architectural choices
+### Review architectural choices
 
 When examining the architectural decisions of your workload, it's essential to focus on cost implications. Utilizing alternative patterns or cloud-native offerings can lead to significant cost savings. Opting for platform as a service (PaaS) or software as a service (SaaS) over infrastructure as a service (IaaS) can be more economical. With PaaS, not only are infrastructure expenses part of the service's pricing, but the platform also simplifies the provisioning and management of these resources under a unified cost. For instance, deploying a lower tier virtual machine as a jump box might introduce extra costs for storage, server management, and public IP configuration. In contrast, PaaS handles these complexities, offering a consolidated cost that often encompasses enhanced security.
 
-### Automate cost alerts
+## Automate cost alerts
 
 Implementing automated alerts can trigger budget notifications at key thresholds. These alerts can be set up to notify stakeholders and DRIs when costs exceed predefined limits or when there are significant deviations from expected spending patterns. Budget alerts and forecast alerts are two different types of cost alerts used for automating cost alerts.
 

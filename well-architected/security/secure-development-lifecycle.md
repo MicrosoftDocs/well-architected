@@ -1,5 +1,5 @@
 ---
-title: Recommendations for securing a development lifecycle
+title: Key design strategies for securing a development lifecycle
 description: Learn about Well-Architected Framework Security recommendations for securing a development lifecycle. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for securing a development lifecycle
+# Key design strategies for securing a development lifecycle
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -37,7 +37,6 @@ It's not enough to secure just the infrastructure plane by using controls on ide
 | Security Development Lifecycle (SDL) | A set of practices provided by Microsoft that supports security assurance and compliance requirements. |
 | Software development lifecycle (SDLC) | A multistage, systematic process for developing software systems. |
 
-## Key design strategies
 
 Security measures should be integrated at multiple points into your existing Software Development Lifecycle (SDLC) to ensure: 
 
@@ -60,7 +59,7 @@ Security measures should be integrated at multiple points into your existing Sof
 The following sections provide security strategies for the commonly practiced phases of SDLC.
 
 
-### Collect and document the security requirements
+## Collect and document the security requirements
 
 The goal of the requirements phase is to **gather and analyze the functional and non-functional requirements** for an application or a new feature of an application. This phase is important because it facilitates the creation of guardrails that are tailored to the objectives of the application. Protecting the data and integrity of your application should be a core requirement throughout every phase of the development lifecycle.  
 
@@ -70,15 +69,15 @@ All these decisions should lead to a good definition of the security posture of 
 
 Security requirement gathering is a critical part of this phase. Without this effort, the design and implementation phases will be based on unstated choices, which can lead to security gaps. You might need to change the implementation later to accommodate security, which can be expensive.
 
-### Translate security requirements to technical requirements
+## Translate security requirements to technical requirements
 
 During the design phase, **the security requirements are converted to technical requirements**. In your technical specification, document all design decisions to prevent ambiguity during implementation. Here are some typical tasks:
 
-#### Define the security dimension of the system architecture
+### Define the security dimension of the system architecture
 
   Overlay the architecture with security controls. For example, controls that are practical on the isolation boundaries per your [segmentation strategy](segmentation.md), the types of identities needed for the components of the application, and the type of encryption methods to use. For some example architectures, see the illustrations in the Example sections of the [Identity and access management](identity-access.md#example) and [Networking](networking.md#example) articles.
 
-#### Evaluate platform-provided affordances
+### Evaluate platform-provided affordances
 
   It's important to understand the **division of responsibility between you and the cloud provider**. Avoid overlap with Azure native security controls, for example. You'll get better security coverage and be able to reallocate development resources to the needs of the application.
 
@@ -88,17 +87,17 @@ During the design phase, **the security requirements are converted to technical 
 
   To ensure that this guidance is followed by all contributors to the software, **maintain a list of approved and/or unapproved frameworks, libraries, and vendors**. When possible, place guardrails in the development pipelines to support the list. As much as possible, **automate the use of tools to scan dependencies** for vulnerabilities. 
 
-#### Determine the security design patterns that the application code should implement.
+### Determine the security design patterns that the application code should implement.
 
 Patterns can support security concerns like segmentation and isolation, strong authorization, uniform application security, and modern protocols. Some operational patterns, such as the Quarantine pattern, can help verify and block the use of software that could potentially introduce security vulnerabilities.
 
   For more information, see [Cloud design patterns that support security](design-patterns.md).
 
-#### Store application secrets securely
+### Store application secrets securely
 
   Securely implement the use of application secrets and pre-shared keys that your application uses. **Credentials and application secrets should never be stored in the source code tree.** Use external resources like Azure Key Vault to ensure that, if your source code becomes available to a potential attacker, no further access can be obtained. In general, find ways to avoid secrets. Using managed identities, when possible, is one way to achieve that goal. For more information, see [Recommendations for managing application secrets](application-secrets.md).
 
-#### Define test plans
+### Define test plans
 
   Define clear test cases for security requirements. Evaluate whether you can **automate those tests in your pipelines**. If your team has processes for manual testing, include security requirements for those tests. 
 
@@ -109,11 +108,11 @@ Patterns can support security concerns like segmentation and isolation, strong a
 
   For more information, see [Recommendations for threat analysis](threat-model.md).
 
-### Secure development and testing practices
+## Secure development and testing practices
 
 During the development and testing phase, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
 
-#### Be well-trained in secure code practices
+### Be well-trained in secure code practices
 
   The development team should **have formal and specialized training in secure coding practices**. For example, web and API developers might need specific training to protect against cross-site scripting attacks, and back-end developers can benefit from in-depth training to avoid database-level attacks like SQL injection attacks.
 
@@ -121,7 +120,7 @@ During the development and testing phase, the goal is to **prevent security defe
 
   You should also perform internal peer code reviews to promote continuous learning.  
 
-#### Use security test tools
+### Use security test tools
 
   Perform threat modeling to evaluate the security of the application's architecture.
 
@@ -137,7 +136,7 @@ During the development and testing phase, the goal is to **prevent security defe
 
   Use a combination of tests. For information about security testing in general, see [Recommendations for security testing](test.md).
 
-#### Write just enough code
+### Write just enough code
 
   When you reduce your code footprint, you also reduce the chances of security defects. **Reuse code and libraries that are already in use and have been through security validations** instead of duplicating code.
 
@@ -145,7 +144,7 @@ During the development and testing phase, the goal is to **prevent security defe
 
   **Write code with a deny-all approach by default.** Create allowlists only for entities that need access.  For example, if you have code that needs to determine whether a privileged operation should be allowed, you should write it so that the *deny* outcome is the default case and the *allow* outcome  occurs only when specifically permitted by code.
 
-#### Protect developer environments
+### Protect developer environments
 
   **Developer workstations need to be protected** with strong network and identity controls to prevent exposure. Make sure security updates are applied diligently. 
 
@@ -155,37 +154,37 @@ During the development and testing phase, the goal is to **prevent security defe
 
   **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to avoid attacks. **Have a thorough process to review code** for security vulnerabilities. Use security groups for that purpose, and implement an approval process that's based on business justifications.
 
-### Protect code in deployment pipelines
+## Protect code in deployment pipelines
 
   It's not enough to just secure code. If it runs in exploitable pipelines, all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent bad actors from running malicious code in your pipeline. 
 
-#### Maintain an up-to-date inventory of every component that's integrated into your application
+### Maintain an up-to-date inventory of every component that's integrated into your application
 
   Every new component that's integrated into an application increases the attack surface. To ensure proper accountability and alerting when new components are added or updated, you should have an inventory of these components. Store it outside of the build environment. **On a regular basis, check that your manifest matches what's in your build process.** Doing so helps ensure that no new components that contain back doors or other malware are added unexpectedly.
 
-####  Pipeline tasks
+###  Pipeline tasks
 
 - **Pull tasks in your pipeline from trusted sources**, like Azure Marketplace. Run tasks that are written by your pipeline vendor. We recommend GitHub tasks or GitHub Actions. If you use GitHub workflows, prefer Microsoft-authored tasks. Also, validate tasks because they run in the security context of your pipeline. 
 
 - **Pipeline secrets.**  Deployment assets that run inside a pipeline have access to all the secrets in that pipeline. **Have proper segmentation in place for different stages of the pipeline** to avoid unnecessary exposure. Use secret stores that are built into the pipeline. Remember that you can avoid using secrets in some situations. Explore the use of workload identities (for pipeline authentication) and managed identities (for service-to-service authentication).
 
-#### Keep different environments separate
+### Keep different environments separate
 
   Data used in different environments must be kept separate. **Production data shouldn't be used in lower environments** because those environments might not have the strict security controls that production has. Avoid connecting from a non-production application to a production database, and avoid connecting non-production components to production networks.
 
-#### Progressive exposure
+### Progressive exposure
 
   Use progressive exposure to **release features to a subset of users** based on chosen criteria. If there are issues, the impact is minimized to those users. This approach is a common risk mitigation strategy because it reduces surface area. As the feature matures and you have more confidence in security assurances, you can gradually release it to a broader set of users. 
 
-### Protect code in production
+## Protect code in production
 
 The production phase presents the **last responsible opportunity to fix security gaps**. Keep a record of the golden image that's released in production. 
 
-#### Keep versioned artifacts
+### Keep versioned artifacts
 
   **Keep a catalog of all deployed assets and their versions.** This information is useful during incident triage, when you're mitigating issues, and when you're getting the system back to working state. Versioned assets can also be compared against published Common Vulnerabilities and Exposures (CVE) notices. You should use automation to perform these comparisons.
 
-#### Emergency fixes
+### Emergency fixes
 
   Your automated pipeline design should have the flexibility to **support both regular and emergency deployments**. This flexibility is important to support rapid and responsible security fixes. 
 
@@ -196,7 +195,7 @@ The production phase presents the **last responsible opportunity to fix security
 
 
 
-### Maintain code security throughout its lifecycle
+## Maintain code security throughout its lifecycle
 
 The goal of this phase is to **make sure security posture doesn't decay over time**. SDLC is an ongoing agile process. Concepts covered in the preceding phases apply to this phase because requirements change over time.
 

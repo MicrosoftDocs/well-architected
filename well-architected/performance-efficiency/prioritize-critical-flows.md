@@ -1,5 +1,5 @@
 ---
-title: Recommendations for prioritizing the performance of critical flows
+title: Key design strategies for prioritizing the performance of critical flows
 description: Learn about recommendations for prioritizing the performance of critical flows. Ensure that critical flows get the resources they need before lower-priority flows get those resources.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for prioritizing the performance of critical flows
+# Key design strategies for prioritizing the performance of critical flows
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -26,19 +26,18 @@ This guide describes the recommendations for prioritizing the performance of cri
 |System flow |The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality. |
 |User flow | The sequence that a user follows to accomplish a task. |
 
-## Key design strategies
 
 Critical flows refer to the key user flows for customers or the system and data flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload.
 
 Critical flows significantly affect the user experience or business operations. Critical flows have higher performance targets and service-level agreements than noncritical flows. Where resources are limited, noncritical flows should yield resource usage to critical flows. You need to identify, monitor, and prioritize all flows before isolating and optimizing critical flows.
 
-### Identify all flows
+## Identify all flows
 
 The first step in prioritizing the performance of critical flows is identifying all the flows within your workload. Flow identification involves systematically mapping and understanding every user paths and component communication. The focus is on understanding the performance metrics and potential impact of flows on workload performance.
 
 By dissecting the workload into discrete flows, you can find performance bottlenecks, inefficient resource utilization, and opportunities for performance optimization. This knowledge exposes areas of needed improvement and is the first step to identifying critical flows. For more information, see [Identify and rate user and system flows](../reliability/identify-flows.md).
 
-### Monitor flow performance metrics
+## Monitor flow performance metrics
 
 After you identify all flows within your workload, you need to collect performance metrics on each flow and monitor those metrics. Flow metrics provide insights into response times, error rates, and throughput. The goal is to consistently observe and record performance-related metrics to further refine your understanding of each flow's impact on workload performance. To monitor flow metrics, you can use the following tools to collect data:
 
@@ -48,7 +47,7 @@ After you identify all flows within your workload, you need to collect performan
 
 - *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
 
-### Identify critical flows
+## Identify critical flows
 
 With the performance data available, you can begin ranking all the flows and identifying the critical flows. The identification of critical flows involves evaluating the performance impact and criticality of each flow. Effective flow prioritization ensures that the most important flows receive the resources needed before less critical flows. To prioritize flows in your application, consider these steps:
 
@@ -74,7 +73,7 @@ With the performance data available, you can begin ranking all the flows and ide
 | Important tasks | Nonessential tasks |
 | High-revenue accounts | Low-revenue accounts |
 
-### Isolate critical flows
+## Isolate critical flows
 
 The process of isolating critical flows is about providing dedicated resources or capacity to support critical flows. You want to allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage the resources that support critical flows. Here are recommendations for isolating critical flows:
 
@@ -86,7 +85,7 @@ The process of isolating critical flows is about providing dedicated resources o
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource segmentation affects costs. When you dedicate resources to a flow, you often increase the cost and leave some resources underutilized. To justify the performance enhancements to critical flows, the increase in business impact must outweigh the increase in cost.
 
-### Optimize capacity allocation
+## Optimize capacity allocation
 
 When you can't isolate critical flows, the next best option is to prioritize critical flows in accessing available capacity. The optimization of capacity allocation is about strategically distributing available capacity to different flows based on their criticality. Capacity includes CPU, memory, storage, and network bandwidth. The goal is to ensure that the most critical flows (highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
 

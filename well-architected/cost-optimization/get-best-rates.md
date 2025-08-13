@@ -1,5 +1,5 @@
 ---
-title: Recommendations for getting the best rates from providers
+title: Key design strategies for getting the best rates from providers
 description: Learn how to get the best rates from providers for your workload without modifying architecture, resources, or functionality.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for getting the best rates from providers
+# Key design strategies for getting the best rates from providers
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -24,13 +24,12 @@ This guide describes the recommendations for getting the best rates from provide
 | Commitment-based billing model | A pricing model where you reserve and pay for a specific amount of usage in advance and can often get a discounted rate compared to consumption pricing. |
 | Rate | The unit price for using a service or license. |
 
-## Key design strategies
 
 Getting the best rates requires actively searching for the most cost-effective pricing models for all workload components. It weighs the benefits of different billing models, such as consumption (pay-as-you-go) versus commitment-based billing, software licenses and corporate discount plans, and the  price differences between regions. 
 
 To get the best rates on the resources and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from providers, and choose the right discounts based on workload needs. Regularly check for discounts and reduce licensing fees where possible. Determine if it's more cost effective to build or buy new workload solutions.
 
-### Uncover workload spending patterns
+## Uncover workload spending patterns
 
 Understanding the workload is the first step to finding and using the best rates on infrastructure, resources, licenses, and third-party services. It prepares you to make informed decisions and implement cost optimization strategies that are specific to the needs of the workload.
 
@@ -42,13 +41,13 @@ Here are actions that you can take to understand the workload rates:
 
 - *Create an ordered list of workload expenses.* List the most expensive components and work your way down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest effects on cost.
 
-### Determine the right billing model
+## Determine the right billing model
 
 For your billing model, you choose between consumption (pay-as-you-go) and commitment-based billing models. You base the selection of consumption versus commitment-based pricing on the predictability, duration, and usage consistency of workload components. When you make this decision, you must collaborate with development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimization ideas.
 
 Selecting the right billing model is crucial for cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. To determine the right billing model, consider the following strategies:
 
-#### Understand the consumption-based billing model
+### Understand the consumption-based billing model
 
 Consumption-based billing model (pay-as-you-go) is a flexible pricing model that allows you to pay for services as you use them. Cost variables for consumption pricing include how long a resource is running. Service meters have various billing increments, such as per hour or per second. This model provides flexibility and cost control, because you pay for only what you consume.
 
@@ -62,7 +61,7 @@ The consumption-based billing model is best suited for the following scenarios:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many on-premises environments are always on and always available. Being intentional about services might lower rates, but you must account for some creation time and operational overhead.
 
-#### Understand the commitment-based billing model
+### Understand the commitment-based billing model
 
 Commitment-based pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage up front, you can get a discounted rate compared to consumption-based billing.
 
@@ -74,7 +73,7 @@ The amount you save with commitment-based pricing depends on factors such as the
 
 - *Long-term projects*: Commitment-based billing can be cost-effective for projects that have long-term resource requirements, even if they aren't highly predictable.
 
-#### Discuss options with the workload team
+### Discuss options with the workload team
 
 To ensure effective optimization of workload costs, the development team (or architect) and the purchasing team must work together. Combining their expertise enables you to identify opportunities to optimize costs and make informed decisions.
 
@@ -86,7 +85,7 @@ Here's a suggested process for collaborating on rate reduction efforts:
 
 1. *Evaluate options*: Assess your options for cost optimization, such as pay-as-you-go versus commitment-based plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the performance tiers in each service and the pricing differences between them.
 
-#### Determine component permanence
+### Determine component permanence
 
 It's important to assess how long you need a particular component to determine if committing to a commitment-based plan makes sense. If the expected usage duration is less than a year, don't commit to a commitment-based plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements.
 
@@ -102,7 +101,7 @@ To determine the duration of component usage, you can follow this process:
 
    Anticipating future developments can help you assess the long-term commitment required and whether it aligns with your objectives. This assessment helps you determine the appropriate duration for component usage.
 
-#### Determine usage consistency
+### Determine usage consistency
 
 When you're considering a commitment-based plan, commit to the maximum consistent usage of a component. By committing to the maximum consistent usage, you can maximize the potential savings and cost optimization. However, there are a few factors to consider:
 
@@ -114,7 +113,7 @@ When you're considering a commitment-based plan, commit to the maximum consisten
 
 - *Cost analysis*: Perform a cost analysis to assess whether the potential savings of committing to a higher usage level outweighs the risks of not fully utilizing the commitment.
 
-#### Select the right commitment-based plan
+### Select the right commitment-based plan
 
 Strategic usage of commitment-based plan can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources. To select the right commitment-based plan, consider the following strategies:
 
@@ -132,7 +131,7 @@ Strategic usage of commitment-based plan can significantly minimize costs for ap
 
     Modify the commitment-based plan. Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused commitment-based plans, try exchanging unused quantity or canceling and refunding plans.
 
-### Evaluate and commit to available discounts
+## Evaluate and commit to available discounts
 
 Assess and analyze the potential discounts that can be applied to a specific workload. This process helps you identify opportunities for cost reduction and optimize the expenditure associated with the workload. It also helps you allocate resources more efficiently.
 
@@ -152,7 +151,7 @@ Try these tasks:
 
 Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
-### Decide whether to build or buy a solution
+## Decide whether to build or buy a solution
 
 Building a solution in-house allows for granular control over the features and configuration. This control can help you eliminate unnecessary functionality and optimize rates. However, building a solution in-house requires significant upfront investment in development time and maintenance.
 
@@ -176,7 +175,7 @@ Here are key considerations when you're deciding whether to build or buy a solut
 
   Also consider the billing cycles. For example, subscription billing cycles are incentivized to maintain the quality of the solution over time. One-time purchases don't have the same cost incentive to maintain the solution.
 
-### Optimize licensing costs
+## Optimize licensing costs
 
 Optimizing licensing costs means using various licensing programs and options to minimize expenses while maximizing value. This approach helps ensure you get the best rates from providers, preventing overpayment for software and services. It's important to review the license associated with its design, build, and deployment phases. This review should encompass tools used in its software development, security, monitoring, and design components. These licensing programs might include options for:
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing for redundancy
+title: Key design strategies for designing for redundancy
 description: Learn how to design for redundancy in your workload to meet your reliability targets and to keep problems contained to a single resource.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing for redundancy
+# Key design strategies for designing for redundancy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -28,7 +28,6 @@ This guide describes the recommendations for adding redundancy throughout critic
 | Partitioning | The process of physically dividing data into separate data stores. |
 | Shard | A horizontal database partitioning strategy that supports multiple storage instances with a common schema. Data isn't replicated in all instances. |
 
-## Key design strategies
 
 In the context of reliability, use redundancy to contain problems that affect a single resource and ensure that those problems don't affect the reliability of the entire system. Use the information that you identified about your critical flows and reliability targets to make informed decisions that are required for each flow's redundancy.
 
@@ -43,19 +42,19 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 > - Different flows within the same workload might have different reliability requirements. Flow-specific redundancy designs can potentially introduce complexity into the overall design.
 
-#### Redundant architecture design
+### Redundant architecture design
 
 Consider two approaches when you design a redundant architecture: active-active or active-passive. Choose your approach depending on the criticality of the user flow and system flow that the infrastructure components support. In terms of reliability, a multi-region active-active design helps you achieve the highest level of reliability possible, but it's significantly more expensive than an active-passive design. Deciding the appropriate geographic regions become the next critical choice. You can also use these design approaches for a single region by using availability zones. For more information, see [Recommendations for highly available multi-region design](highly-available-multi-region-design.md).
 
-#### Deployment stamps and units of scale
+### Deployment stamps and units of scale
 
 Whether you deploy in an active-active or active-passive model, follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to ensure that you deploy your workload in a repeatable, scalable way. Deployment stamps are the groupings of resources that are required to deliver your workload to a given subset of your customers. For example, the subset might be a regional subset or a subset with all the same data privacy requirements as your workload. Think of each stamp as a *unit of scale* that you can duplicate to scale your workload horizontally or to perform blue-green deployments. Design your workload with deployment stamps to optimize your active-active or active-passive implementation for resiliency and management burden. Planning for multi-region scale out is also important to overcome potential temporary resource capacity constraints in a region.
 
-#### Availability zones within Azure regions
+### Availability zones within Azure regions
 
 Whether you deploy an active-active or an active-passive design, take advantage of [availability zones](regions-availability-zones.md) within the active regions to fully optimize your resiliency. Many Azure regions provide multiple availability zones, which are separated groups of data centers within a region. Depending on the Azure service, you can take advantage of availability zones by deploying elements of your workload redundantly across zones or pinning elements to specific zones. For more information, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
 
-### Implement zone redundancy for compute resources
+## Implement zone redundancy for compute resources
 
 - Choose the appropriate [compute service](/azure/architecture/guide/technology-choices/compute-decision-tree) for your workload. Depending on the type of workload that you design, there might be several options available. Research the available services and understand which types of workloads work best on a given compute service. For example, SAP workloads are typically best suited for infrastructure as a service (IaaS) compute services. For a containerized application, determine the specific functionality you need to have control over to determine whether to use Azure Kubernetes Service (AKS) or a platform as a service (PaaS) solution. Your cloud platform fully manages a PaaS service.
 
@@ -71,7 +70,7 @@ Whether you deploy an active-active or an active-passive design, take advantage 
 
 - Deploy IaaS services manually or via automation in each availability zone or region in which you intend to implement your solution. Some PaaS services have built-in capabilities that are automatically replicated across availability zones and regions.
 
-### Implement zone redundancy for data resources
+## Implement zone redundancy for data resources
 
 - Determine whether synchronous or asynchronous data replication is necessary for your workload's functionality. To help you make this determination, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
 
@@ -93,7 +92,7 @@ Whether you deploy an active-active or an active-passive design, take advantage 
 
 - Understand the built-in replication and redundancy capabilities of the stateful platform services that you use. For specific redundancy capabilities of stateful data services, see [Related links](#related-links).
 
-### Implement zone redundancy for networking resources
+## Implement zone redundancy for networking resources
 
 - Decide on a reliable and scalable network topology. Use a hub-and-spoke model or an Azure Virtual WAN model to help you organize your cloud infrastructure in logical patterns that make your redundancy design easier to build and scale.
 

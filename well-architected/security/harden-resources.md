@@ -1,5 +1,5 @@
 ---
-title: Recommendations for hardening resources
+title: Key design strategies for hardening resources
 description: Learn how to reduce an attack surface and increase attackers' costs to limit opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for hardening resources
+# Key design strategies for hardening resources
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -29,13 +29,12 @@ Security hardening is an intentional self-preservation exercise. The goal is to 
 | Secure administrative workstation (SAW) | A specialized PAW that's used by critical impact accounts.|
 |Surface area|A logical footprint of a workload that contains vulnerabilities. |
 
-## Key design strategies
 
 Security hardening is a highly localized exercise that **strengthens controls at the component level**, whether it's resources or processes. When you tighten the security of each component, it improves the aggregate security assurance of your workload.
 
 Security hardening doesn't consider the functionality of the workload, and it doesn't detect threats or perform automated scanning. **Security hardening focuses on configuration tuning with an assume-breach and defense-in-depth mentality.** The goal is to make it difficult for an attacker to gain control of a system. Hardening shouldn't alter the intended utility of a workload or its operations.
 
-### Build an inventory of workload assets
+## Build an inventory of workload assets
 
 The first step of the hardening process is to gather a comprehensive inventory of all hardware, software, and data assets. Keep your inventory records up to date by adding new assets and removing decommissioned assets. For all assets in your inventory, consider the following best practices:
 
@@ -57,7 +56,7 @@ For recommendations about security for your supply chain, see [Recommendations f
 
 Hardening can be cumbersome, but it's a crucial security exercise that you must document. Harden the core components first, and then expand to other areas, such as automated processes and human processes, to tighten up potential gaps. Be meticulous about changes. For example, a necessary step is to disable the default settings because changes to default values can affect the stability of the system. Even if the replacement configuration is the same as the default, it must be defined. The following sections describe common targets for hardening. Evaluate key design areas of your workload and follow the key strategies to harden at a component level.
 
-### Harden networking components
+## Harden networking components
 
 **Divide the network into segments** to isolate critical assets and sensitive data from less secure assets, which reduces lateral movements by attackers. In those segments, apply a *deny-by-default* approach. Only add access to the allowlist if it's justified.
 
@@ -71,7 +70,7 @@ For internet-facing applications, **restrict access by adding a layer-7** servic
 
 Domain Name System (DNS) hardening is another network security practice. To ensure that the DNS infrastructure is secure, we recommend that you **use trusted DNS resolvers**. To validate information from DNS resolvers and provide an extra layer of security, when possible, use a DNS security protocol for highly sensitive DNS zones. To prevent attacks such as DNS cache poisoning, DDoS attacks, and amplification attacks, explore other DNS-related security controls such as query rate limiting, response rate limiting, and DNS cookies.
 
-### Harden identity access controls
+## Harden identity access controls
 
 **Remove unused or default accounts.** Disable unused authentication and authorization methods.
 
@@ -85,7 +84,7 @@ Domain Name System (DNS) hardening is another network security practice. To ensu
 
 **Use the least-privilege approach for your management processes.** Remove unnecessary role assignments and perform regular Microsoft Entra access reviews. Use role assignment descriptions to keep a paper trail of justifications, which is crucial for audits.
 
-### Harden cloud resource configurations
+## Harden cloud resource configurations
 
 The preceding hardening recommendations for networking and identity apply to individual cloud services. For networking, pay special attention to **service-level firewalls**, and evaluate their inbound rules.
 
@@ -95,7 +94,7 @@ Always **keep up with the Azure roadmap and the workload roadmap**. Apply patchi
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cloud resources often have requirements for allowances or must run in documented configurations to be considered *supported*. Some hardening techniques, such as aggressively blocking outbound traffic, can cause a service to fall outside a supported configuration, even if the service operates normally. Understand each cloud resource's runtime requirements from your platform to ensure that you maintain support for that resource.
 
-### Harden code assets
+## Harden code assets
 
 Evaluate areas where your application might inadvertently leak information. For example, suppose you have an API that retrieves user information. A request might have a valid user ID, and your application returns a 403 error. But with an invalid customer ID, the request returns a 404 error. Then you're effectively leaking information about your user IDs.
 
@@ -115,7 +114,7 @@ Consider implementing application hardening in the following areas:
 
 Follow secure coding practices when you develop and maintain applications. Regularly conduct code reviews and scan applications for vulnerabilities. For more information, see [Recommendations for securing a development lifecycle](secure-development-lifecycle.md).
 
-### Harden management operations
+## Harden management operations
 
 Also harden other non-runtime resources. For example, **reduce your build operations footprint** by taking an inventory of all assets and removing unused assets from your pipeline. Then, **pull in tasks that are published by trusted sources**, and only run tasks that are validated.
 

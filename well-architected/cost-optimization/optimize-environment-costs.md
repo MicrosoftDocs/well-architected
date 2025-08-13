@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing environment costs
+title: Key design strategies for optimizing environment costs
 description: Learn how to optimize environment costs by tailoring each environment to its specific purpose and optimize it for cost effectiveness.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing environment costs
+# Key design strategies for optimizing environment costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -24,11 +24,10 @@ This guide describes the recommendations for cost optimizing workload environmen
 | Recovery time objective (RTO) | The maximum acceptable time that an application can be unavailable after an incident. |
 | Service-level agreement (SLA) | A contractual agreement between the service provider and the service customer. The agreement defines the service-level objectives (SLOs). Failure to meet the agreement might have financial consequences for the service provider. |
 
-## Key design strategies
 
 The goal of optimizing environment costs is to find the right balance of value, cost, and risk for each environment, including production, preproduction, and disaster recovery (DR) environments. Customize each environment for its particular use to save money and efficiently use resources. Determine the benefits of each environment, like efficiency or customer satisfaction. You want to evaluate the return on investment (ROI) for the environment, even if it doesn't make a direct profit. Spend more money on high-risk environments to reduce issues and save money on low-risk environments. Aim to balance value, cost, and risk in each environment.
 
-### Assess environment value
+## Assess environment value
 
 Assessing the value of each environment means understanding its broader effect on business, gauging user satisfaction, and determining how it aligns with overarching organizational goals. This assessment helps you make informed decisions about resource allocation and align cost with environmental priorities. The essence of value extends beyond how much revenue an environment generates. When evaluating an environment's value, you need to prioritize spending in a manner that resonates with the goals of the workload. To assess the value of each environment, consider the following factors:
 
@@ -40,7 +39,7 @@ Assessing the value of each environment means understanding its broader effect o
 
 - *Align with organizational measures of value*: Align your cost-cutting efforts with your organization's priorities, like profit or employee satisfaction. For each environment, understand how success is defined, so you can keep your actions on target. For example, if your organization focuses on profit maximization or employee satisfaction, align your spending decisions with those metrics.
 
-### Determine environment costs
+## Determine environment costs
 
 Determining environment costs is about knowing the costs of infrastructure, services, licenses, and operational expenses in each workload environment. Cost management tools are key to gaining insights into spending patterns and trends across environments. To determine environment costs, consider these strategies:
 
@@ -50,7 +49,7 @@ Determining environment costs is about knowing the costs of infrastructure, serv
 
 - *Monitor and adjust your spending*: Continuously monitor and analyze spending patterns, value delivery, and risk factors. Regularly review and adjust your spending optimization strategies as the needs of the environment and business evolve.
 
-### Optimize the production environment
+## Optimize the production environment
 
 Optimizing costs in the production environment involves implementing strategies to reduce unnecessary expenses and improve operational efficiencies. Focus on differentiating production deployments and meeting the needs of users. Here are recommendations for optimizing the production environment:
 
@@ -62,7 +61,7 @@ Optimizing costs in the production environment involves implementing strategies 
 
 - *Tune tenant models*: Customize the environment based on the tenant model. For example, spend more on services and features for paid tenants and spend less for nonpaying tenants.
 
-### Optimize disaster recovery environments
+## Optimize disaster recovery environments
 
 A DR environment refers to infrastructure and processes that a workload uses to recover after a disruptive event. Disruptive events include natural disasters, cyber attacks, and hardware failures. Balance the cost of maintaining a DR environment and the potential affects of a disruptive event. Consider the following strategies:
 
@@ -78,11 +77,11 @@ A DR environment refers to infrastructure and processes that a workload uses to 
 
 - *Optimize a warm DR environment*: A warm DR approach is a middle ground between a cold DR environment and a hot DR environment. A warm environment is partially active and periodically syncs with the primary site. It offers a balance between cost and recovery time. However, it’s the least cost-optimized approach. Consider a cold or hot approach to optimize costs.
 
-### Optimize preproduction environments
+## Optimize preproduction environments
 
 Optimizing preproduction environments involves strategically managing resources within development, testing, and staging areas to closely simulate production while reducing unnecessary costs. Preproduction environments don't require the full scale and availability of production environments. The most opportunities lie in tailoring these environments to specific testing and development needs without duplicating production exactly. Areas of cost reduction include using lower-cost resources, turning off unneeded services, and applying discounts offered for preproduction usage. Consider the following strategies to optimize preproduction environments:
 
-#### Evaluate preproduction environments
+### Evaluate preproduction environments
 
 Insufficient or improper allocation of preproduction environments might lead to over-provisioning or under-provisioning of resources. To evaluate your preproduction environments for your workload, consider the following guidance:
 
@@ -104,7 +103,7 @@ The following table provides examples of common preproduction environments.
 | User acceptance testing environment | In this environment, end users and stakeholders test an application to validate its functionality and ensure that it meets requirements and expectations. |
 | Staging environment| This environment closely resembles the production environment. It's for final testing and validation before deploying to production.|
 
-#### Apply governance
+### Apply governance
 
 Applying governance is about limiting deployment options in preproduction environments to control expenses and mitigate risks. In preproduction, you have flexibility to tailor configurations and deploy resources. The more the preproduction environment deviates from the production environment, the greater the potential risk. Use governance to constrain preproduction environments. Consider the following guidelines:
 
@@ -126,7 +125,7 @@ Applying governance is about limiting deployment options in preproduction enviro
   
 - *Restrict available regions*: Consider the potential benefit of running preproduction environments in different regions where Azure resources might be cheaper. Restrict preproduction deployments to these regions to optimize the cost of these environments.
 
-#### Balance similarity with production
+### Balance similarity with production
 
 It's often unnecessary and expensive for preproduction environments to mirror the production environment exactly. The goal is to ensure each preproduction environment is appropriately different from production to avoid unnecessary costs. However, when preproduction and production are different, there's a risk of deploying a bug into production. The more different these environments are, the more risk there is. Tailoring the preproduction environment to meet your needs can help you manage risks while optimizing cost. To balance the similarity with production, consider the following recommendations:
 
@@ -138,7 +137,7 @@ It's often unnecessary and expensive for preproduction environments to mirror th
 
 - *Review licenses*: Review the licensing plans for your security tools. If the number of nodes vary significantly between your production and preproduction setups, reassess your needs to fine-tune costs without compromising security.
 
-#### Optimize development environments
+### Optimize development environments
 
 Development environments are designed for development, testing, and debugging purposes. They have shorter lifecycles and are often created as needed and exist for a short time. Development environments typically have lower requirements for reliability, capacity, and security compared to other preproduction and production environments. They might have fewer capabilities and can accept lower resource utilization. To optimize your development environment:
 
@@ -154,7 +153,7 @@ Development environments are designed for development, testing, and debugging pu
 
 - *Optimize data management*: Development environments might have low needs for data retention and backup frequency.
 
-#### Consider endpoint emulation
+### Consider endpoint emulation
 
 You can optimize costs in a preproduction environment by using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify components or services in your preproduction environment that are the most expensive or resource-intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. To simulate API responses, you can use commercial or open source API mocking servers, or custom implementations.
 

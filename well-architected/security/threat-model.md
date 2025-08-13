@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for threat analysis
+# Key design strategies for threat analysis
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -28,7 +28,6 @@ This guide describes the recommendations for doing threat modeling so that you c
 |STRIDE| A Microsoft-defined taxonomy for categorizing types of threats.|
 |Threat modeling| A process for identifying potential security vulnerabilities in the application and system, mitigating risks, and validating security controls.|
 
-## Key design strategies
 
 Threat modeling is a crucial process that an organization should integrate into its SDLC. Threat modeling is not solely a developer's task. It's a shared responsibility between:
 
@@ -41,25 +40,25 @@ When the workload team is doing a threat modeling exercise, it should consider b
 
 The security requirements serve as guide for the entire process of threat modeling. To make it an effective exercise, the workload team should have a security mindset and be trained in threat modeling tools.
 
-### Understand the scope of the exercise
+## Understand the scope of the exercise
 
 A clear understanding of the scope is crucial for effective threat modeling. It helps focus efforts and resources on the most critical areas. This strategy involves defining the boundaries of the system, taking inventory of the assets that need to be protected, and understanding the level of investment that's required in security controls.
 
-### Gather information about each component
+## Gather information about each component
 
 A workload architecture diagram is a starting point for gathering information because it provides a visual representation of the system. The diagram highlights technical dimensions of the system. For example, it shows user flows, how data moves through the network, data sensitivity levels and information types, and identity access paths.
 
 This detailed analysis can often provide insight into potential vulnerabilities in the design. It's important to understand the functionality of each component and its dependencies.
 
-### Evaluate the potential threats
+## Evaluate the potential threats
 
 Analyze each component from an outside-in perspective. For example, how easily can an attacker gain access to sensitive data? If attackers gain access to the environment, can they move laterally and potentially access or even manipulate other resources? These questions help you understand how an attacker might exploit workload assets.
 
-### Classify the threats by using an industry methodology
+## Classify the threats by using an industry methodology
 
 One methodology for classifying threats is [STRIDE](/azure/security/develop/threat-modeling-tool-threats), which the Microsoft Security Development Lifecycle uses. Classifying threats helps you understand the nature of each threat and use appropriate security controls.
 
-### Mitigate the threats
+## Mitigate the threats
 
 Document all the identified threats. For each threat, define security controls and the response to an attack if those controls fail. Define a process and timeline that minimize exposure to any identified vulnerabilities in the workload, so that those vulnerabilities can't be left unaddressed.
 
@@ -78,7 +77,7 @@ Here's an example:
 |Does the application store sign-in credentials or keys to access other applications, databases, or services?| Identify whether an attack can use your application to attack other systems.|
 |Do the application controls allow you to fulfill regulatory requirements?| Protect users' private data and avoid compliance fines.|
 
-### Track threat modeling results
+## Track threat modeling results
 
 We highly recommend that you use a *threat modeling tool*. Tools can automate the process of identifying threats and produce a comprehensive report of all identified threats. Be sure to communicate the results to all interested teams.
 
@@ -86,7 +85,7 @@ Track the results as part of the workload team's backlog to allow for accountabi
 
 As you add new features to the solution, update the threat model and integrate it into the code management process. If you find a security problem, make sure there's a process to triage the problem based on severity. The process should help you determine when and how to remediate the problem (for example, in the next release cycle or in a faster release).
 
-### Review business-critical workload requirements regularly
+## Review business-critical workload requirements regularly
 
 Meet regularly with executive sponsors to define requirements. These reviews provide an opportunity to align expectations and ensure operational resource allocation to the initiative.
 

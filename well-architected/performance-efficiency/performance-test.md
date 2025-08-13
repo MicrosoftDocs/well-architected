@@ -1,5 +1,5 @@
 ---
-title: Recommendations for performance testing
+title: Key design strategies for performance testing
 description: Learn best practices for performance testing. See how to select tools, configure environments, and take other steps to help workloads meet performance targets.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for performance testing
+# Key design strategies for performance testing
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -28,15 +28,14 @@ Testing helps to prevent performance issues. It also helps ensure that your work
 | Stress test | A performance test that overloads a system until it breaks. |
 | Synthetic test | A performance test that simulates user requests in an application. |
 
-## Key design strategies
 
 Performance testing helps you gather measurable data on a workload. When you run tests early enough, they also help you build workloads to the right specifications. You should conduct performance tests as early as possible in the software development lifecycle. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof of concept (POC) if production code isn't ready.
 
-### Prepare the test
+## Prepare the test
 
 Preparing performance tests refers to setting up and arranging the resources, configurations, and test scenarios that you need to conduct performance testing effectively.
 
-#### Define acceptance criteria
+### Define acceptance criteria
 
 Acceptance criteria specify the performance requirements that a workload needs to meet to be considered acceptable or successful. Define criteria that align with the performance targets.
 
@@ -58,7 +57,7 @@ When you define acceptance criteria, it's important to focus on users and their 
 
 *Define passing criteria.* Establish the criteria for determining whether the workload passed or failed the performance test. You might define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
 
-#### Select the test type
+### Select the test type
 
 To select the right type of performance test, it's important to align the test with your acceptance criteria. The acceptance criteria define the conditions that need to be met for a requirement or bug fix to be considered done. Performance tests should aim to verify whether a workload meets these acceptance criteria and performs as expected under specified conditions. Aligning the performance test type with the acceptance criteria helps ensure that the test focuses on meeting the performance expectations that the criteria define.
 
@@ -80,7 +79,7 @@ The following table provides a sample of test types and their use cases.
 
 Prioritize your selected test types based on the characteristics and requirements of your workload. Consider factors such as the criticality of performance metrics, user expectations, business priorities, and known issues or vulnerabilities.
 
-#### Select testing tools
+### Select testing tools
 
 Choose appropriate tools based on the type of performance testing that you want to run. Evaluate the testing environment's infrastructure, resources, and constraints. Choose testing tools that support the desired test types and provide the necessary features for monitoring, measurement, analysis, and reporting.
 
@@ -108,7 +107,7 @@ The following steps can help you select the appropriate testing tools:
 
 - *Consider support and training*. Evaluate the level of support and training that the tool's vendor or community provides. Determine the availability of documentation, tutorials, and technical support channels to assist with any challenges or issues that might arise during the testing process.
 
-#### Create test scenarios
+### Create test scenarios
 
 Creating test scenarios refers to the process of designing specific situations or conditions that are suitable for testing the performance of a workload. Test scenarios are created to emulate realistic user behavior and workload patterns. These scenarios provide a way for performance testers to evaluate how the workload performs under various conditions.
 
@@ -124,7 +123,7 @@ Test scenarios make it possible to replicate various workload patterns, such as 
 
 - *Iteratively refine scripts*. Continuously refine and enhance test scripts based on feedback, test results, or changing requirements. Consider optimizing script logic, parameterization, and error handling, or adding extra validation and checkpoints.
 
-#### Configure the test environment
+### Configure the test environment
 
 Configuring a test environment refers to the process of setting up the infrastructure, software, and network configurations that you need to create an environment that closely resembles your production environment.
 
@@ -142,7 +141,7 @@ To set up your testing environment in a way that boosts performance efficiency, 
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Production data can contain sensitive information. Without a robust scrubbing and masking strategy, you risk leaking sensitive data when you use production data for testing.
 
-### Perform the tests
+## Perform the tests
 
 Run the performance tests by using the chosen testing tool. Testing involves measuring and recording performance metrics, monitoring health, and capturing any performance issues that arise.
 
@@ -150,7 +149,7 @@ Monitor and collect performance metrics such as response time, throughput, CPU a
 
 Use the defined test scenarios to put the workload under expected loads.  Conduct tests under these varying load conditions. For example, use levels, such as normal, peak, and stress levels, to analyze the behavior of the workload in various scenarios.
 
-### Analyze the results
+## Analyze the results
 
 Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the performance of the workload. The goal is to identify performance issues and use the feedback to adjust priorities in application development. The following actions are key steps for analyzing test results.
 
@@ -166,7 +165,7 @@ Analyzing the test results involves examining the collected data and metrics fro
 
 Based on the analysis of the test results, prioritize identified performance issues and implement necessary improvements. The improvements can involve optimizing code, tuning database queries, improving caching mechanisms, and optimizing network configurations.
 
-### Establish baselines
+## Establish baselines
 
 Baselines provide a reference point for comparing performance results over time. Baselines should be meaningful snapshots of workload performance—you don't need to use every test as a baseline.
 
@@ -183,7 +182,7 @@ To establish baselines for performance testing and use them as a benchmark for f
 
 - *Compare future tests*. In subsequent performance tests, compare the performance metrics against the established baselines and thresholds. The comparison allows you to identify any improvements or degradation in performance.
 
-### Test continuously
+## Test continuously
 
 Continuous testing involves the ongoing monitoring and refinement of your tests. Continuous testing helps you maintain consistent and acceptable levels of performance. A workload should provide a consistent and acceptable level of performance relative to the baseline. You should tune the workload over time to produce consistent performance that's within the acceptable limits of performance. Here are some key practices:
 

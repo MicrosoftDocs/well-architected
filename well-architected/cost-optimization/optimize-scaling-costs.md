@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing scaling costs
+title: Key design strategies for optimizing scaling costs
 description: Learn how to optimize scaling costs using specific strategies.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing scaling costs
+# Key design strategies for optimizing scaling costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -30,13 +30,12 @@ This guide provides recommendations for optimizing scaling costs. Cost optimizin
 | Stock keeping unit (SKU) | A service tier for an Azure service.|
 | Usage data | Usage data is either direct information (real) or indirect/representative information (proxy) about how much a task, service, or application is being used. |
 
-## Key design strategies
 
 The goal of cost optimizing scaling is to scale up and out at the last responsible moment and to scale down and in as soon as it’s practical. To optimize scaling for your workload, you can evaluate alternative scaling options within the scale units and align them with the cost model. A scale unit represents a specific grouping of resources that can be scaled independently or together. You should design scale units to handle a specific amount of load, and they can comprise multiple instances, servers, or other resources. You need to evaluate the cost effectiveness of your workload scale units and model alternates.
 
 If you don't use scaling, see guidance on [scaling the workload](../performance-efficiency/scale-partition.md). You need to figure out if your application can scale. Stateless applications are easier to scale because they can handle multiple requests at the same time. Also, evaluate if the application is built using distributed systems principles. Distributed systems can handle increased load by distributing the workload across multiple nodes. However, a singleton application is designed to have only one instance running at any given time. So scaling might not be appropriate for all workloads.
 
-### Evaluate scale out versus scale up
+## Evaluate scale out versus scale up
 
 Evaluating scale out versus scale up involves determining the most cost-effective approach between increasing resources in an existing system (scale up) or adding more instances of that system (scale out) based on various factors like pricing, workload requirements, and acceptable downtime. Choosing the right scaling approach can lead to significant savings, ensuring you pay for only what you need while still meeting performance and reliability standards.
 
@@ -52,7 +51,7 @@ The goal is to determine the most cost-efficient choice based on service-tier pr
 - *Test scaling*: Create tests for different scaling scenarios, including scale out and scale up options. Applying the usage data, simulate the workload behavior under different scaling configurations. Conduct real-world testing using the modeled scaling scenarios.
 - *Calculate costs*: Use the gathered data and cost metrics to calculate the costs associated with each scaling configuration. Consider factors such as instance pricing, resource utilization, and any extra costs related to scaling.
 
-### Optimize autoscaling
+## Optimize autoscaling
 
 Optimizing the autoscaling policy involves refining autoscaling to react to load changes based on the workload’s nonfunctional requirements. You can limit excessive scaling activities by adjusting thresholds and using the right cooldown period. To optimize autoscaling, consider the following recommendations:
 
@@ -65,7 +64,7 @@ Optimizing the autoscaling policy involves refining autoscaling to react to load
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Reducing the number of scaling events raises the chances of encountering issues related to scaling. It means you're eliminating the extra cushion or buffer that could help manage potential problems or delays from scaling.
 
-### Use event-based scaling
+## Use event-based scaling
 
 Event-driven autoscaling allows the application to dynamically adjust resources based on specific events or triggers rather than traditional metrics like CPU or memory utilization. For example, Kubernetes event-driven autoscaling (KEDA) can scale applications based on scalers such as the length of a Kafka topic. Precision helps prevent unnecessary scaling fluctuations and resource waste. A high level of precision ultimately optimizes costs. To use event-based scaling, follow these steps:
 
@@ -79,11 +78,11 @@ Event-driven autoscaling allows the application to dynamically adjust resources 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration might lead to over-provisioning or under-provisioning of resources.
 
-### Optimize demand and supply
+## Optimize demand and supply
 
 Control demand against your supply. On workloads where usage determines scaling, cost correlates with the scaling. To optimize the costs of scaling, you can minimize scaling spend. You can offload demand by distributing demand to other resources, or you can reduce demand by implementing priority queues, gateway offloading, buffering, and rate limiting. Both strategies can prevent undesired costs due to scaling and resource consumption. You can also control supply by capping the scaling limits. To optimize workload demand and supply, consider the following recommendations.
 
-#### Offload demand
+### Offload demand
 
 Offloading demand refers to the practice of distributing or transferring resource demand to other resources or services. You can use various technologies or strategies:
 
@@ -98,7 +97,7 @@ Offloading demand refers to the practice of distributing or transferring resourc
 
    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Offloading specific tasks to alternate resources helps reduce or avoid extra scaling and costs associated with scaling. However, it's important to consider the operational and maintenance challenges that might arise from offloading. Conducting a comprehensive cost-benefit analysis is crucial when selecting the most appropriate offloading techniques for your workload. This analysis ensures that the chosen method is both efficient and feasible in relation to the anticipated savings and operational complexities.
 
-#### Reduce demand
+### Reduce demand
 
 Reducing resource demand means implementing strategies that help minimize resource utilization in a workload. Offloading demand shifts demand to other resources. Reducing demand decreases demand on the workload. Reducing demand allows you to avoid overprovisioning resources and paying for unused or underutilized capacity. You should use code-level design patterns to reduce the demand on workload resources. To reduce demand through design patterns, follow these steps:
 
@@ -126,7 +125,7 @@ Use these design patterns to reduce demand:
 - *Throttling*: This pattern puts limits on the rate (rate limiting) or throughput of incoming requests to a resource or component. It helps inform cost modeling and can be tied directly to the business model of the application.
 - *Valet key*: This pattern grants secure and exclusive access to a resource without involving more components, reducing the need for intermediary resources and improving efficiency.
 
-#### Control supply
+### Control supply
 
 Defining an upper limit on the amount that you're willing to spend on a particular resource or service is one way to control supply. It's an important strategy for controlling costs and ensuring that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined amount. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
 

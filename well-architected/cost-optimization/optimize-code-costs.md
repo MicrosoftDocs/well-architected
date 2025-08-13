@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing code costs
+title: Key design strategies for optimizing code costs
 description: Learn how to optimize costs related to code with specific recommendations.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing code costs
+# Key design strategies for optimizing code costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -27,7 +27,6 @@ By optimizing code, you can identify and eliminate inefficiencies that might lea
 | Data serialization  | The process of converting data objects into a format that can be stored or transmitted and then reconstructing them back to their original form when needed. |
 | Hot paths | Critical or frequently run sections of a program that require high performance and low latency. |
 
-## Key design strategies
 
 Cost optimizing code means improving code to achieve the same functionality with fewer per-instance resources, such as CPU cycles, memory, and storage. By reducing resource consumption, you can save money when applications handle large volumes of data or experience high traffic loads.
 
@@ -35,7 +34,7 @@ Code improvements are most effective when you're following other cost optimizati
 
 You might not know if you have inefficient code. Serverless, autoscale, and reliability features can mask code inefficiencies. The following strategies can help you identify and fix application code that costs more than it should.
 
-### Instrument your code
+## Instrument your code
 
 Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. It allows developers to gather information about key metrics, such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
 
@@ -45,7 +44,7 @@ Automate as much of this code analysis as possible. Use dynamic and static tools
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
-### Optimize hot paths
+## Optimize hot paths
 
 By instrumenting your code, you can measure the resource consumption of code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They're critical or frequently run sections of a program that require high performance and low latency.
 
@@ -79,7 +78,7 @@ To identify hot paths, consider these tasks:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies. These highly skilled individuals might need to spend time on other tasks.
 
-### Evaluate the use of concurrency
+## Evaluate the use of concurrency
 
 Evaluating the use of concurrency involves assessing whether asynchronous processing, multithreading, or multiprocessing can maximize resource utilization and reduce expenses. By using asynchronous processing, multithreading, or multiprocessing, you can handle more tasks with the same resources. However, it's crucial to ensure proper implementation to avoid more overhead and to maintain cost-effectiveness.
 
@@ -103,7 +102,7 @@ To evaluate whether using concurrency is a good fit, you can follow these guidel
 
   Use multiprocessing APIs or libraries to create and manage parallel processes. Distribute the workload among these APIs or libraries. To enable coordination and data sharing among multiple processes, implement communication mechanisms like interprocess communication (IPC), shared memory, or message passing, depending on your programming language or framework.
 
-### Use the right SDKs
+## Use the right SDKs
 
 For cost optimization, select SDKs that are designed to optimize resource usage and improve performance. It's important to evaluate the features and capabilities of each SDK. Consider its compatibility with your programming language and development environment.
 
@@ -113,7 +112,7 @@ Here's guidance to help choose the best SDKs for your workload:
 
 - *Monitor resource usage and optimize code*: Monitor resource usage with the implemented SDK. Gather insights from monitoring and analysis to optimize your code.
 
-### Choose the right operating system
+## Choose the right operating system
 
 Most coding languages can run on various operating systems, so it's important to evaluate your operating system against cheaper alternatives. If an alternative operating system supports the same or similar functionality at less cost, it's worth considering. By choosing a cheaper operating system, you can potentially reduce the cost of licensing fees and infrastructure costs.
 
@@ -133,13 +132,13 @@ The right operating system can contribute to overall cost optimization for your 
 
 - *Consider vendor support*: Evaluate the level of vendor support that's available for the alternative operating system. Check if there are official support channels, documentation, and a community of users who can provide assistance if you need it.
 
-### Optimize network traffic
+## Optimize network traffic
 
 Optimizing network traversal is about minimizing network traffic between workload components. Data transfer often has an associated cost. By minimizing network traffic, you can reduce the amount of data that needs to be transferred while lowering costs.
 
 Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information. For example, if a component repeatedly requests the same data from another component, it's a candidate for optimization. You can refactor your code to reduce unnecessary calls or to batch requests, minimizing the data transferred. Applications might send entire objects or data structures when only a few fields are needed. By optimizing the code to send only the required data, you minimize the size of each data transfer.
 
-#### Optimize network protocols
+### Optimize network protocols
 
 Network protocols play a crucial role in the efficiency of network communication. By optimizing network protocols, you can improve the overall efficiency of data transfer and reduce resource consumption.
 
@@ -153,7 +152,7 @@ Consider these suggestions:
 
 - *Implement other optimizations*: Explore other optimizations that are specific to your workload and network environment. For example, you can use content caching, load balancing, and traffic shaping to further optimize network traversal.
 
-#### Minimize network overhead
+### Minimize network overhead
 
 Minimize the amount of network traffic and data transfer between components of your workload. By reducing network overhead, you can lower costs associated with data egress and ingress and improve overall network performance.
 
@@ -178,11 +177,11 @@ Consider these techniques:
 
   Depending on the serialization format, you need to implement logic to serialize objects or data structures into the chosen format and deserialize them back into their original form. You can implement this logic by using libraries or frameworks that provide serialization capabilities for the format.
 
-### Optimize data access
+## Optimize data access
 
 Optimizing data access refers to streamlining the patterns and techniques for retrieving and storing data, to minimize unnecessary operations. When you optimize data access, you can save costs by reducing resource usage, reducing data retrieval, and improving the efficiency of data processing. Consider techniques such as data caching, efficient data querying, and data compression.
 
-#### Use caching mechanisms
+### Use caching mechanisms
 
 Caching involves storing frequently accessed data closer to the components that require it. This technique reduces the need for network traversal by serving the data from the cache instead of fetching it over the network.
 
@@ -194,7 +193,7 @@ Consider these caching mechanisms:
 
 - *Use in-memory caching*: In addition to external caching solutions, consider implementing in-memory caching in your application. In-memory caching can help utilize idle compute resources and increase the compute density of allocated resources.
 
-#### Optimize database traffic
+### Optimize database traffic
 
 You can enhance the efficiency of application communication to the database. Here are some key considerations and techniques for optimizing database traffic:
 
@@ -210,7 +209,7 @@ You can enhance the efficiency of application communication to the database. Her
 
 - *Optimize stored procedures*: Analyze and optimize the logic and performance of stored procedures. The goal is to avoid unnecessary computations or redundant queries in stored procedures. Optimize the use of temporary tables, variables, and cursors to minimize resource consumption.
 
-#### Organize data
+### Organize data
 
 Organizing data for efficient access and retrieval involves structuring and storing data in a way that maximizes performance and minimizes resource consumption. It can improve query response times, reduce data transfer costs, and optimize storage utilization.
 
@@ -224,13 +223,13 @@ Here are some techniques for organizing data efficiently:
 
 For example, consider a scenario where you have a large dataset of customer information. By partitioning the data based on customer regions or demographics, you can distribute the workload across multiple servers and improve query performance. You can also compress the data to reduce storage costs and improve the efficiency of data transfer.
 
-### Optimize solution design
+## Optimize solution design
 
 Evaluate your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job.
 
 To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services, and optimize resource allocation. By optimizing your architecture, you can meet the functional and nonfunctional requirements while consuming fewer per-instance resources.
 
-#### Use design patterns
+### Use design patterns
 
 Design patterns are reusable solutions that help developers solve recurring design problems. They provide a structured approach to designing code that's efficient, maintainable, and scalable.
 
@@ -248,15 +247,15 @@ To implement design patterns, developers need to understand the principles and g
 
 Various resources are available, such as documentation, tutorials, and sample code. These resources can help developers learn and implement design patterns effectively.
 
-#### Change configurations
+### Change configurations
 
 Regularly review and update your workload configuration to ensure that it aligns with your current requirements. Consider adjusting resource sizing and configuration settings based on workload demands. By optimizing configurations, you can effectively allocate resources and avoid overprovisioning to save costs.
 
-#### Refactor architecture
+### Refactor architecture
 
 Evaluate your workload architecture and identify opportunities for refactoring or redesigning components to optimize resource consumption. Consider techniques such as adopting a microservices architecture, implementing the Circuit Breaker pattern, and using serverless computing. By optimizing your architecture, you can achieve better resource utilization and cost efficiency.
 
-#### Modify resource sizes
+### Modify resource sizes
 
 Continuously monitor and analyze the resource utilization of your workload. Based on the observed patterns and trends, adjust resource sizing and configuration settings to optimize resource consumption.
 

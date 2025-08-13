@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing operational tasks
+title: Key design strategies for optimizing operational tasks
 description: Learn about Well-Architected Framework recommendations for optimizing operational tasks.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing operational tasks
+# Key design strategies for optimizing operational tasks
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -28,11 +28,10 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 |In-place upgrades|  The process of upgrading a component or an application without replacing it or migrating it to a new environment.|
 |Infrastructure as code (IaC)     |         A descriptive model for defining and deploying infrastructure, including networks, virtual machines, load balancers, and connection topologies.|
 
-## Key design strategies
 
 You need to take measures to reduce the effects of the software development lifecycle and other routine operations on workload performance. The goal is to ensure that routine operations, like virus scans, secret rotations, backups, index optimization (reorganization or rebuilding), and deployments, don't significantly degrade the performance of the workload.
 
-### Account for operational tasks
+## Account for operational tasks
 
 It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. To account for operational tasks in performance targets, here are some key points to consider:
 
@@ -40,7 +39,7 @@ It's important to consider operational tasks when you set performance targets. B
 
 - *Evaluate performance targets.* Evaluate current performance targets and adjust them to account for operational tasks that are specific to the workload. Doing so ensures that performance targets align with the workload's operational requirements.
 
-### Optimize deployments
+## Optimize deployments
 
 Optimizing deployments refers to refining the process of releasing resources and code to guarantee seamless performance and minimal interruptions. It involves planning, effective resource distribution, and thorough testing of both the infrastructure-as-code (IaC) and the application code before they are introduced to a live environment. Deployment inadequacies can lead to reduced speed and efficiency of a workload, potential resource constraints, and a compromised user experience in the operational setting. To optimize deployments, consider these strategies:
 
@@ -66,17 +65,17 @@ Optimizing deployments refers to refining the process of releasing resources and
 
 **Consider feature flags.** Feature flags are used in software development to control the visibility and behavior of certain features in an application. By using feature flags, developers can enable or disable specific features without needing to redeploy the application. Feature flags work by introducing conditional logic in the code that determines whether a feature should be enabled or disabled. This logic can be based on various factors, like user roles, user preferences, or specific conditions that are defined by the development team. By using feature flags, developers can gradually roll out new features to a subset of users or enable features for specific groups for testing (canary testing).
 
-### Optimize upgrades
+## Optimize upgrades
 
 An in-place upgrade is an upgrade to an existing resource or application. In-place  upgrades can temporarily slow down or interrupt a workload. It's important to ensure that upgrades are compatible with the workload. Before you apply an upgrade, we recommend that you test it in a separate environment to identify any potential issues. Provide a rollback plan in case any issues arise during the upgrade process. It's crucial to take a complete backup of critical data and configurations before you apply the upgrade. Monitor the upgraded system closely after the upgrade to ensure that everything functions as expected. The backup allows you to restore to a good state if you need to. You should prioritize scheduling the upgrade during off-peak hours to minimize the effect on users and workload performance. Notify users in advance about the planned upgrade, including the expected downtime and any necessary actions they need to take.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Waiting to perform operations activities during off-peak hours can affect operational efficiency. It might be less convenient to have the personnel with the right skill set work during off-peak hours.
 
-### Optimize tooling
+## Optimize tooling
 
 Essential tools for file integrity monitoring, virus scanning, intrusion detection, and other operational tasks can affect workload performance. They consume compute resources and can add latency and performance overhead. You need to test and understand the effects your tools have on workload performance. Based on the test results, you should fine-tune tool configurations, adjust scan frequency, and reallocate compute resources. For virus scanning, you could create a relevant exclusion list to minimize the duration of scans.
 
-### Optimize database operations
+## Optimize database operations
 
 Optimizing database operations refers to the process of refining and fine-tuning database tasks to ensure maximum efficiency and minimal resource utilization. These operations include tasks like backups, schema changes, performance tuning, and monitoring. Efficient database operations lead to faster query responses, reduced system overhead, and an overall smoother user experience.
 
@@ -84,11 +83,11 @@ Schema changes involve modifying the structure of a database, such as adding or 
 
 To minimize these effects, you should plan and test schema changes in a nonproduction environment. You can use various deployment techniques to implement schema updates. You should also use available schema changing tools to optimize the process. Archiving data and partitioning can help reduce the effects of schema changes.
 
-### Optimize backups
+## Optimize backups
 
 Backups consume workload resources like processing power, network bandwidth, and disk I/O. You need to test and select a backup strategy that minimizes these effects. You should perform backups during off-peak hours when you can. Your strategy should include incremental backups instead of full backups each time. Snapshots can be less resource intensive than backups. You should consider built-in platform backup and restore features rather than building a custom solution. You need to test these options and use a combination that provides the best performance for your workload.
 
-### Optimize monitoring and debugging
+## Optimize monitoring and debugging
 
 Excessive or poorly implemented logging, telemetry, instrumentation, and distributed tracing capture and collection can affect performance. Likewise, convenience features like remote debugging can also affect performance. You need to measure and know their performance effects on the environment. You don't want these processes to degrade performance. You should configure or disable any processes whose performance effects outweigh their benefits.
 

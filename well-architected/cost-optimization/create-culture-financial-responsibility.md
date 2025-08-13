@@ -1,5 +1,5 @@
 --- 
-title: Recommendations for creating a culture of financial responsibility 
+title: Key design strategies for creating a culture of financial responsibility 
 description: Get recommendations for creating a culture of financial responsibility in your organization. 
 author: stephen-sumner 
 ms.author: ssumner 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual 
 --- 
 
-# Recommendations for creating a culture of financial responsibility
+# Key design strategies for creating a culture of financial responsibility
 
 **Applies to this Azure Well-Architected-Framework Cost Optimization checklist recommendation:**
 
@@ -24,11 +24,10 @@ Without this culture, there's often a disconnect between resource utilization an
 | Financial responsibility | The sense of shared ownership of cost outcomes.|
 | Microsoft learning partner | An organization that meets program requirements to teach training content developed by Microsoft and that employs Microsoft Certified Trainers to deliver content.|
 
-## Key design strategies
 
 Creating a culture of financial responsibility involves cost transparency, skill development, and clear communication. Be open about budgets and costs with the team. Hold regular workshops to teach cost-saving strategies. Invest in training for skills like budgeting and cloud cost management. Finally, set clear financial goals and encourage open communication for sharing ideas on cost optimization.
 
-### Make budgets and costs transparent
+## Make budgets and costs transparent
 
 Making budgets and costs transparent requires openly communicating financial information about a workload or project with stakeholders. It helps cultivate an environment of trust and accountability, where everyone understands the financial implications of their actions and works collaboratively towards cost optimization. To make costs transparent, consider these strategies:
 
@@ -38,7 +37,7 @@ Making budgets and costs transparent requires openly communicating financial inf
 
 A benefit of sharing cost details is early detection of overspending. Transparent budgets provide a clear threshold for spending. If a team is approaching or exceeding a budget, it can take corrective actions early to avoid overspending.
 
-### Encourage continuous improvement
+## Encourage continuous improvement
 
 Encouraging a culture of continuous improvement is about fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialog, training, and team-building focused on cost optimization. With this mindset, the workload team is more likely to be proactive in identifying and implementing cost optimization strategies. To encourage continuous improvement, consider these suggestions:
 
@@ -51,7 +50,7 @@ Encouraging a culture of continuous improvement is about fostering an environmen
 - *Open dialog*: Create an environment where personnel feel comfortable speaking up about cost optimization ideas. Encourage open discussions, provide a platform for feedback, and welcome alternative suggestions. This environment helps create a culture of continuous improvement and innovation.
 - *Empowerment:* Give the workload team the authority and responsibility to evaluate and propose the adoption of new technologies. The workload team should assess the suitability of new tools and technologies for their specific workload. They should consider factors such as compatibility, scalability, ease of integration, and potential cost savings.
 
-### Develop skills in-house
+## Develop skills in-house
 
 Developing skills in-house means investing in training the workload team. The goal is for the team to gain the necessary expertise to optimize costs within a workload.
 
@@ -69,7 +68,7 @@ This effort involves providing training programs, resources, and support to enha
    Set aside time (a day or a week) for people to explore new technologies, build new tools, and express their creative thinking. Employees are closest to the challenges they face daily. They often find ways to optimize their time when they're given space to think about it.
 - *Encourage continuous learning*: Encourage employees to attend conferences, webinars, and industry events, and to participate in online communities and forums. Arrange opportunities for employees to shadow and learn from experienced individuals who have a deep understanding of cost optimization practices. This practical experience can provide valuable insights and guidance.
 
-### Communicate financial expectations
+## Communicate financial expectations
 
 Communicating financial expectations to a workload team involves conveying financial goals and establishing open channels for exchanging cost-saving ideas and knowledge. This process includes reshaping organizational values to emphasize financial responsibility, clear goals, and cross-functional communication. Consider these recommendations:
 

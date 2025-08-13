@@ -1,5 +1,5 @@
 ---
-title: Recommendations for responding to live performance issues
+title: Key design strategies for responding to live performance issues
 description: Review recommendations for responding to live-site performance issues. See how to use root cause analysis, triage plans, and other steps to resolve problems. 
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for responding to live performance issues
+# Key design strategies for responding to live performance issues
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -25,11 +25,10 @@ This guide describes the best practices for responding to live performance issue
 | Self-healing | The ability to automatically repair issues without human intervention. |
 | Self-prevention | Implementations within a workload to prevent potential issues and failures. |
 
-## Key design strategies
 
 When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The primary objective is to implement solutions that facilitate a quick return to regular operations and provide insights from the incident. Integrating preventive measures into your workflow is a pivotal strategy. The goal is to either prevent the same issue from happening again or lessen its effects on performance if it isn't preventable.
 
-### Prepare for issues
+## Prepare for issues
 
 The ideal response to live-site performance issues is precise and fast. Precision and speed in performance remediation require preparation. To effectively respond to live performance issues, it's crucial to monitor key performance metrics, identify the root cause of the issues, and implement appropriate solutions or optimizations. To take these steps, you might need to analyze workload logs, conduct performance testing, optimize code or configurations, and scale resources. The following examples outline a few critical areas of preparation:
 
@@ -39,7 +38,7 @@ The ideal response to live-site performance issues is precise and fast. Precisio
 
 - *Set automatic alerts.* Alerts can help you identify and address issues as soon as they occur. Alerts should generate notifications when workload performance deviates from performance baselines. Over time, you should tweak alert configurations to avoid generating too many or too few notifications. The monitoring solutions that you use need to collect enough data to generate alerts. These alerts should align with performance targets and established baselines. You should avoid generating alerts on issues that are relevant to your goals. Examples of alerts include degradations in CPU usage, memory, response times, and database performance.
 
-### Create a triage plan
+## Create a triage plan
 
 Creating a triage plan involves devising a structured approach to identify, escalate, analyze, prioritize, and communicate live-site performance issues. A triage plan is a strategy for responding to live performance issues. It ensures that performance disruptions are addressed promptly and effectively, with clear roles and procedures. Most performance issues don't merit disaster recovery protocols, but they can affect workload functionality enough to require triage planning. A well-documented triage plan ensures all team members are aligned and can act swiftly, minimizing the impact on users and workloads. A triage plan should include the following components:
 
@@ -55,11 +54,11 @@ Creating a triage plan involves devising a structured approach to identify, esca
 
 - *Documentation*: Document the triage plan, including all its steps, processes, and best practices. This documentation should be easily accessible to the team members who are involved in responding to performance issues.
 
-### Develop methods to identify and resolve issues
+## Develop methods to identify and resolve issues
 
 Resolving live performance issues involves identifying and addressing any factors that can cause performance degradation or inefficiencies in a live workload. Data that you collect during monitoring is invaluable when you investigate and resolve performance-related incidents. This data provides a historical record of performance metrics. When you have monitoring data available, you can analyze root causes and identify contributing factors. You should use all relevant monitoring data to understand and fix each performance issue.
 
-#### Use root cause analysis
+### Use root cause analysis
 
 Root cause analysis requires hypothesis testing. After you review monitoring data, you should list potential causes of the performance issue and test them. To conduct a root cause analysis on a live performance issue, you can follow these steps:
 
@@ -81,7 +80,7 @@ Root cause analysis requires hypothesis testing. After you review monitoring dat
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: If you perform a root cause analysis without proper security guardrails, there's a risk that you expose sensitive information when you provide access to logs and data.
 
-#### Engage vendor support
+### Engage vendor support
 
 Vendor support can be an essential step when you deal with ongoing performance issues. Vendors have the expertise, tools, resources, and experience to help fix issues with their products. Your support agreement with your supplier determines the level of support a vendor provides.
 
@@ -89,7 +88,7 @@ It's often best to work in parallel with vendors. You should create a plan to ha
 
 You need to have contact information available for your personnel. Vendors might also need access to data to effectively engage in problem-solving. You need to have a plan in place for authenticating and authorizing external or guest accounts to access monitoring data.
 
-### Learn from findings
+## Learn from findings
 
 After you fix a live-site performance issue, you need to review what happened. The goal is to learn from performance issues, not just identify problems. The best way to learn is through documentation. Document each issue and explain how to fix it. If a vendor helped, work with the vendor to enhance your documentation, train your team, and modify your workload accordingly.
 

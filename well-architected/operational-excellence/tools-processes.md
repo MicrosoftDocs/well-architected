@@ -1,5 +1,5 @@
 ---
-title: Recommendations for standardizing tools and processes
+title: Key design strategies for standardizing tools and processes
 description: Learn how to optimize development practices by standardizing tools and processes. Define consistent practices to optimize efficiency and quality of work.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 06/10/2025
 ms.topic: conceptual
 ---
 
-# Recommendations for standardizing tools and processes
+# Key design strategies for standardizing tools and processes
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
@@ -16,11 +16,10 @@ ms.topic: conceptual
 
 This guide describes the recommendations for defining standards for software development tools and processes. Defining consistent practices leads to an efficient workload team and high-quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential code errors.
 
-## Key design strategies
 
 The first step of optimizing development practices is standardizing tools and processes. When possible, use industry-proven solutions rather than developing in-house solutions. To further optimize your practices, adopt low-code and no-code tools. These tools enable you to focus efforts on your application and help you save time. For all tools and processes that you standardize, implement training so your teams understand and use them efficiently. To define standards that help optimize your development practices, consider the following recommendations.
 
-### Use well-known and mature off-the-shelf tools
+## Use well-known and mature off-the-shelf tools
 
 Use well-known and mature off-the-shelf tools and standardize their use. Highly effective engineering teams adopt the best-in-class tools. This approach minimizes the need to develop solutions for planning, development, testing, collaboration, and continuous integration and continuous delivery (CI/CD). Many enterprises give developers a choice between a few tools, but all options are standard tools for the organization and are validated internally. Most importantly, choose tools that meet the requirements for your workload. Off-the-shelf tools should provide the following functions:
 
@@ -40,11 +39,11 @@ Determine if you should invest in expensive tools or premium versions of tools. 
 
 **Use low-code, no-code, and AI tools** when practical. Low-code and no-code tools save experienced developers time by allowing them to easily plug in functionality rather than performing the entire code development process. These tools also allow workload team members that might not be trained developers to contribute to the operation of the workload. AI tools can help with code development, reviews, and optimization.
 
-### Standardize your branching strategy
+## Standardize your branching strategy
 
 Choose a trunk-based model when possible. Trunk-based branching keeps the workload development team in sync and encourages continuous delivery. Define branch policies to protect important branches, like the main branch. For more information, see [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) and [Branch policies and settings](/azure/devops/repos/git/branch-policies).
 
-### Evaluate metrics to quantify development effectiveness
+## Evaluate metrics to quantify development effectiveness
 
 Software development and quality assurance teams can improve only if they can quantify their effectiveness. To quantify effectiveness, they must identify the metrics that measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity) and define KPIs. Examples of these metrics include:
 
@@ -58,7 +57,7 @@ Software development and quality assurance teams can improve only if they can qu
 
 To help stakeholders and the workload team easily track velocity, visualize KPIs by using dashboards or other reporting tools.
 
-### Standardize how your workload team writes, reviews, and documents code
+## Standardize how your workload team writes, reviews, and documents code
 
 Standardize how your workload team writes, reviews, and documents code by using a style guide. A standard style makes collaboration easy and helps with on-boarding new developers. To work effectively, new developers need to know how the workload team operates. A style guide with clearly defined standards can ease their training process. In the style guide, define standards for development languages, libraries, frameworks, and other conventions.
 
@@ -82,19 +81,19 @@ In your ADR, include:
 
 - The context of the decision-making process, like the problem that was addressed.
 
-### Implement standards for addressing technical debt
+## Implement standards for addressing technical debt
 
 Adopt a mindset that technical debt is intentional and necessary for your workload team's deliverables. This mindset motivates your team to consider and address technical debt regularly to avoid accumulation. Address technical debt as a regularly recurring task in the backlog.
 
 For example, suppose your team standardized on a library. Over time, you need to switch to a different library for new functionality in the workload. That transition might result in technical debt. Frequently, transitions like this can leave the workload team supporting two technologies because they can't fully transition smoothly. The workload team must prioritize completing the transition because when the workload achieves the new functionality, stakeholders are satisfied and are less likely to consider the technical debt.
 
-### Standardize how you apply versioning to your artifacts
+## Standardize how you apply versioning to your artifacts
 
 Standardize how you apply versioning to your artifacts and how versioning is exposed internally and externally. For example, client-facing systems should expose their running version in the user interface. This technique is helpful when the workload team troubleshoots issues because the customer can easily communicate which version they use. REST interfaces can expose versions for certain components or databases. You might use a specific table in the metadata for a schema to expose the schema version.
 
 **Use industry-proven application [design patterns](/azure/architecture/patterns)** to ensure that your application is reliable, performant, and secure. Use these patterns to save time and effort compared to developing your own solutions for your application. Choose the patterns that benefit your workload. Regularly review design patterns to ensure that you use the right patterns as your workload evolves.
 
-### Implement a shift-left approach to testing
+## Implement a shift-left approach to testing
 
 Implement a shift-left approach to testing by performing unit testing early and often throughout the development process. Frequent testing in each development environment helps developers gain confidence in their applications. To help create your testing strategy with a shift-left approach, consider the following principles:
 
@@ -114,7 +113,7 @@ Implement a variety of testing types, such as unit, smoke, integration, and acce
 
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
-### Implement standards for naming and tagging resources
+## Implement standards for naming and tagging resources
 
 Implementing tagging and naming conventions is a best practice for managing and organizing Azure resources. Tagging and naming conventions help to identify, classify, and group resources based on common attributes, such as environment, application, owner, or cost center. They also enable security, automation, reporting, and governance of resources across subscriptions and resource groups.
 

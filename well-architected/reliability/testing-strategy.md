@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing a reliability testing strategy
+title: Key design strategies for designing a reliability testing strategy
 description: Learn how to design a reliability testing strategy that focuses on validating and optimizing the reliability of your workload.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing a reliability testing strategy
+# Key design strategies for designing a reliability testing strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -27,9 +27,8 @@ This guide describes the recommendations for designing a reliability testing str
 | Resiliency | An application workload's ability to withstand and recover from failure modes. |
 
 
-## Key design strategies
 
-### Test reliability preparedness
+## Test reliability preparedness
 
 - Routinely perform testing to validate existing thresholds, targets, and assumptions. When a major change occurs in your workload, run regular testing. Perform most testing in testing and staging environments. It's also beneficial to run a subset of tests against the production system. Plan a one-to-one parity of key test environments with the production environment.
 
@@ -59,15 +58,15 @@ This guide describes the recommendations for designing a reliability testing str
 
 - Test your workload's ability to degrade gracefully and minimize the blast radius of component malfunction by using fault injection.
 
-### Take advantage of planned and unplanned outages
+## Take advantage of planned and unplanned outages
 
 When your workload is offline due to planned maintenance or an unplanned outage, you have a unique opportunity to perform testing and improve your understanding of your workload. The following sections provide recommendations for each scenario.
 
-#### Planned maintenance
+### Planned maintenance
 
 When you have planned maintenance windows for updates or patches, you can test components and flows that aren't involved in the maintenance work. Perform tests without the potential risk of unexpectedly degrading the workload or taking it offline altogether. If you have enough time during your maintenance window, you can also test the components and flows that are involved in the maintenance after the maintenance work is complete.
 
-#### Unplanned outage
+### Unplanned outage
 
 Use every outage incident as an opportunity to learn more about your workload and improve its resiliency by following these steps, ordered by priority:
 
@@ -79,7 +78,7 @@ Use every outage incident as an opportunity to learn more about your workload an
 
 - Use your findings to improve your testing strategy. Ensure that you have successfully addressed the root cause and similar problems by directly testing the same failure.
 
-### Use fault injection and chaos engineering
+## Use fault injection and chaos engineering
 
 Fault-injection testing follows the principles of chaos engineering by highlighting the workload's ability to react to component failures. Perform fault-injection testing in pre-production and production environments. Apply testing to infrastructure and application layers. Apply the information that you learned [Recommendations for performing failure mode analysis](failure-mode-analysis.md) to ensure that you test only faults that you prioritize and that you have mitigation strategies that address faults. The key guidelines of chaos engineering are:
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing code and infrastructure
+title: Key design strategies for optimizing code and infrastructure
 description: Learn how to optimize your code and infrastructure by using components only for their core purpose and only when necessary.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing code and infrastructure
+# Key design strategies for optimizing code and infrastructure
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -27,15 +27,14 @@ This guide describes the recommendations for optimizing code and infrastructure 
 | Memory leak | When a workload fails to release allocated memory after the memory is no longer needed.|
 | Parallelism | When multiple tasks or processes are performed at the same time.|
 
-## Key design strategies
 
 Optimizing code and infrastructure entails fine-tuning the code and the supporting infrastructure to improve performance efficiency. It requires performant code that executes tasks quickly and doesn’t waste resources. It requires a well-designed infrastructure that is streamlined to avoid unnecessary complexity. A workload should use the inherent capabilities of the platform. It's an approach that helps ensure both code and infrastructure are used primarily for their core purposes and only when necessary.
 
-### Optimize code performance
+## Optimize code performance
 
 To optimize code performance, modify code to reduce resource usage, minimize runtime, and enhance performance. You can modify code to improve the efficiency and speed of a software program. Don't mask performance issues with brute force. Brute force means adding compute resources to compensate for code performance, like adding extra capacity instead of addressing the source. You need to fix performance issues with optimization. When you optimize code performance, it helps maximize the utilization of system resources, improves response time, reduces latency, and enhances the user experience.
 
-#### Instrument your code
+### Instrument your code
 
 Instrumenting code refers to the practice of adding code snippets or libraries to code that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics such as resource consumption (CPU, memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better performance efficiency.
 
@@ -43,7 +42,7 @@ In an ideal environment, you should do code analysis early in the software devel
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
-#### Identify hot paths
+### Identify hot paths
 
 By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They're critical or frequently executed sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
 
@@ -53,7 +52,7 @@ By instrumenting your code, you can measure the resource consumption for differe
 
 - *Consider business logic and user effect*: Evaluate the importance of different code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
 
-#### Optimize code logic
+### Optimize code logic
 
 Optimizing code logic is about refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that might affect performance. Prioritize optimizing hot paths to see the greatest performance efficiency gains. To optimize code logic, consider the following strategies:
 
@@ -83,7 +82,7 @@ Review the performance recommendations specific to the programming language you'
 > - Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
 > - SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
-#### Optimize memory management
+### Optimize memory management
 
 Optimizing memory management involves refining the way a workload uses, allocates, and releases memory resources to improve efficiency. Proper memory management improves code performance because it reduces the overhead of memory operations. Efficient memory usage reduces latency, prevents system slowdowns or crashes, and maximizes the throughput of computational tasks. Consider the following strategies to optimize memory management.
 
@@ -115,7 +114,7 @@ Caches store frequently accessed data close to the processor, which improves per
 
 For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-topics/performance) and [The large object heap on Windows systems](/dotnet/standard/garbage-collection/large-object-heap).
 
-#### Use concurrency and parallelism
+### Use concurrency and parallelism
 
 Using concurrency and parallelism involves executing multiple tasks or processes either simultaneously or in an overlapping manner to make efficient use of computing resources. These techniques increase the overall throughput and the number of tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application and decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
 
@@ -131,7 +130,7 @@ Using concurrency and parallelism involves executing multiple tasks or processes
 
 - *Queues*: A queue is a storage buffer located between a requesting component (producer) and the processing component (consumer) of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until a consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-#### Use connection pooling
+### Use connection pooling
 
 Connection pooling is the practice of reusing established database connections instead of creating a new connection for every request. It can be expensive to establish a connection to a database. You have to create an authenticated network connection to the remote database server. Database connections are especially expensive for applications that frequently open new connections. Connection pooling reuses existing connections and eliminates the expense of opening a new connection for each request. Connection pooling reduces connection latency and enables high database throughput (transactions per second) on the server. You should choose a pool size that can handle more connections than you currently have. The goal is to have the connection pool quickly handle new incoming requests.
 
@@ -141,11 +140,11 @@ Connection pooling is the practice of reusing established database connections i
 
   > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Connection pooling can create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
 
-#### Optimize background jobs
+### Optimize background jobs
 
 Many applications require background tasks that run independently of the UI. The application can start the job and continue to process interactive requests from users. Examples of background jobs include batch jobs, processor-intensive tasks, and long-running processes, such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. To improve performance, you can scale compute instances that host background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
 
-### Optimize infrastructure performance
+## Optimize infrastructure performance
 
 Optimizing infrastructure performance means enhancing and adjusting infrastructure elements to ensure peak operation and the best use of resources for a workload. By fine-tuning infrastructure, you can minimize waste, reduce lags, and achieve more with the available resources. It ensures that workloads run reliably and swiftly, leading to improved user experiences and cost savings. To optimize infrastructure performance, consider the following strategies:
 

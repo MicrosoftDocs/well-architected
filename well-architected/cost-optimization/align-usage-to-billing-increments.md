@@ -1,5 +1,5 @@
 ---
-title: Recommendations for aligning billing and usage
+title: Key design strategies for aligning billing and usage
 description: Learn how to align usage to billing increments by adapting a resource to your workload usage or adapting your workload to the resource billing increments.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for aligning usage to billing increments
+# Key design strategies for aligning usage to billing increments
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -23,13 +23,12 @@ This guide describes the recommendations for aligning resource usage to billing 
 | Billing increment | A usage amount that incurs a cost (*meter*), such as a unit of time, number of instances, or size of data. |
 | Billing factor  | The type of usage that incurs costs, such as time, storage amount, data transfer amount, or number of requests. |
 
-## Key design strategies
 
 Aligning resource usage to billing increments is about making sure that your resource consumption closely matches the intervals or quantities that you're charged for. For instance, if a service charges by the hour but you use it only for a fraction of that time, you can adjust operations to maximize the use of that hour.
 
 To save money, ensure that you understand how you're billed for a service. You need to understand specific increments like hourly rates, per gigabyte charges, or per request costs. Adjust the service's configuration or how you consume the service to fit the billing increments and ensure that you don't incur unnecessary costs. Evaluate your workload's specific needs and understand how you're billed for various resources. Based on your findings, adjust the usage or the resource to optimize costs.
 
-### Determine billing factors
+## Determine billing factors
 
 Billing factors differ among services. Billing factors include the instance number, time, transaction rate, and transaction size. They also include availability zone, location, storage amount, ingress data, and egress data. Familiarize yourself with the pricing thresholds of the services that you use. You can align your usage to maximize the value of the resource and only run incur charges when necessary.
 
@@ -41,7 +40,7 @@ Here are some common billing factors:
 - *Virtual CPUs (vCPUs):* The utilization of vCPUs within a resource is the vCPU usage. Resources such as virtual machines are often billed based on the number of vCPUs allocated to them. Monitor and optimize vCPU usage, so you can ensure efficient utilization of resources and minimize unnecessary costs.
 - *Uptime guarantees:* Uptime guarantees refer to the service-level agreements (SLAs) that cloud providers offer on the availability and reliability of their services. Uptime guarantees aren't directly related to billing, but they're important to consider when you want to optimize costs. Higher uptime guarantees can coincide with higher costs. Evaluate the tradeoff between the cost and the service availability.
 
-### Determine billing increments
+## Determine billing increments
 
 Billing increments determine how resource usage is measured and billed. For each billing factor, there's a billing increment. Familiarize yourself with the billing increments of each service, so you can align resource usage to these billing increments.
 
@@ -52,7 +51,7 @@ Here are some common types of billing increments:
 - *Data transfer increments:* Data transfer costs are measured in increments, such as gigabytes (GB) or terabytes (TB).
 - *Storage increments:* Storage costs are often measured in increments, such as GB or TB.
 
-### Map usage to billing increments
+## Map usage to billing increments
 
 Mapping usage to billing increments is an exercise to identify where resource consumption doesn't align with the billing increments. This mapping involves analyzing resource usage against billing increments in each billing factor to spot inefficiencies. At this step, you're only identifying areas where usage and billing increment aren't aligned. Later, you implement the changes. Consider the following guidance when mapping usage to billing increments:
 
@@ -62,7 +61,7 @@ Mapping usage to billing increments is an exercise to identify where resource co
 - *Analyze billing increments*. If the calculator provides billing granularity for each component, align your actual or expected usage with the billing increments (hourly, daily, or per request).
 - *Simulate scenarios*. Use the pricing calculator to simulate usage scenarios in order to understand how resource usage affects costs.
 
-### Consider building a proof of concept (POC)
+## Consider building a proof of concept (POC)
 
 A proof of concept is a concrete way to validate your understanding of billing factors and billing increments. A POC helps you see the effects of design decisions on cost. It can help you refine your workload design to align with billing increments. A POC is important for leading cost drivers, such as the application platform and resources that scale.
 
@@ -74,7 +73,7 @@ If you're unsure about your billing knowledge or want to gain more confidence in
 
 **Limit POC duration:** Limit the lifespan of the POC, so you can gather conclusive evidence, but you don't incur unnecessary costs. Extend the POC slightly beyond a billing threshold to guarantee a comprehensive understanding of costs. For instance, if a resource is billed hourly, the POC might run for just over an hour or however long it takes to capture how costs accrue at the threshold. After you have the corroborating evidence, you can confidently make decisions based on your findings. When the POC provides a clear picture of billing implications, use the findings to make informed financial decisions for the actual environment.
 
-### Align usage to maximize resource value
+## Align usage to maximize resource value
 
 Aligning usage to maximize resource value involves implementing the changes identified in the mapping exercise to realign resource usage with billing increments. This step is about making adjustments to how resources are consumed. There are two primary options for aligning usage to billing increments:
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing personnel time
+title: Key design strategies for optimizing personnel time
 description: Learn about Azure Well-Architected Framework recommendations for maximizing the productivity and efficiency of employees.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing personnel time
+# Key design strategies for optimizing personnel time
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 
@@ -24,11 +24,10 @@ This guide describes the recommendations for optimizing personnel time. This opt
 | Signal| Meaningful and relevant information that provides insights into the behavior and performance of a system or application. |
 | Technical debt | The accumulated inefficiencies, suboptimal design choices, or shortcuts intentionally taken during the development process to deliver code faster.|
 
-## Key design strategies
 
 Personnel typically create the most significant expense in a workload. Personnel cost and value underscore the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Given that employees can't work all day and night, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
 
-### Set optimization targets
+## Set optimization targets
 
 Setting personnel time optimization targets is a process of establishing clear, measurable goals. These targets serve as guidelines for desired improvements in tasks and functions. You can use these benchmarks to evaluate outcomes against the targets. First, define the metrics for measuring the success of personnel time optimization efforts. Determine the specific objectives that you want to achieve through optimization. Example objectives might be to reduce time spent on administrative tasks or to reduce the time it takes to respond to customer inquiries. To set targets for personnel time optimization, consider the following strategies:
 
@@ -38,15 +37,15 @@ Setting personnel time optimization targets is a process of establishing clear, 
 
 - *Set targets*: Set realistic and achievable targets for each selected metric. These targets should be based on the current performance levels and the desired level of improvement.
 
-### Optimize development time
+## Optimize development time
 
 Optimizing development involves refining the software development processes to achieve greater efficiency. As a result, developers can invest more time in refining features, innovating within the constraints of a particular workload, and addressing any unique challenges that the workload presents.
 
-#### Keep features lean
+### Keep features lean
 
 When you design and customize features, keep them lean and simple. Avoid unnecessary complexity and configuration options that can increase the time required to develop, test, and maintain the workload. Keeping the workload simple and focused leads to easier adaptability and optimization over time.
 
-#### Reduce build times
+### Reduce build times
 
 Reducing build times is the process of minimizing the time it takes to compile and generate a deployment. Shorter build times enable developers to spend less time waiting for builds to finish and allows them to focus on writing code and delivering features. Reducing build times also helps ensure that developers receive feedback on their code changes more quickly. Quicker feedback allows them to iterate and fix issues faster, which supports the Agile development model. Faster build times facilitate more frequent builds, enabling teams to adopt Agile development practices like continuous integration and continuous delivery (CI/CD). Here are some strategies for reducing build times:
 
@@ -62,7 +61,7 @@ Reducing build times is the process of minimizing the time it takes to compile a
 
 - *Optimize infrastructure*: Ensure that the build environment has sufficient resources, like CPU, memory, and disk I/O, to handle the build.
 
-#### Use production mocking
+### Use production mocking
 
 By mocking components or services, developers can isolate their code for focused testing by simulating dependencies. Mocking enables developers to create specific scenarios and edge cases that are difficult or impractical to reproduce in a real production environment. It can speed up testing cycles, facilitate parallel work, and eliminate troubleshooting dependencies. Here are some approaches to implementing production mocking:
 
@@ -76,7 +75,7 @@ By mocking components or services, developers can isolate their code for focused
 
 - *Dynamic and conditional mocking*: Design the application to support dynamic and conditional mocking, which enable developers to switch between real and mock components depending on specific conditions or scenarios.
 
-#### Optimize the development environment
+### Optimize the development environment
 
 The goal is for developers to get fast feedback on changes. Make necessary technology changes to improve the development experience.
 
@@ -86,19 +85,19 @@ The goal is for developers to get fast feedback on changes. Make necessary techn
 
 *Developer environments*: Developers' environments shouldn't be too constrained. Developers should have the permissions necessary to complete tasks without undue restrictions so they can work efficiently and effectively.
 
-#### Optimize preproduction environments
+### Optimize preproduction environments
 
 In general, the closer preproduction environments are to production environments, the more time you save. This increased consistency also helps to minimize risk. The closer the two environments are, the better you can test and validate the functionality and performance of your releases before deploying them to the production environment. This similarity in environments helps you identify and address any issues or bottlenecks early on, which reduces the risk of problems occurring in the production environment.
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: You need to balance personnel time against resource costs. The closer an environment is to the production environment, the more it costs.
 
-#### Reuse components and libraries
+### Reuse components and libraries
 
 Reusable components and libraries can save developers substantial amounts of time. Instead of writing, testing, and debugging code, developers can reuse validated components and libraries and develop or fix application features faster. Be sure to provide documentation for each component or library. Store the code and documentation in a central repository that has version control like GitHub.
 
 Additionally, use open-source software or libraries from trusted publishers that are available in package managers, like NuGet or Maven. These package managers provide a centralized and reliable source for accessing and managing libraries. Using trusted libraries from package managers can further enhance productivity and reduce the time spent on developing and maintaining code.
 
-#### Remove technical debt
+### Remove technical debt
 
 Removing technical debt is essential for maintaining a healthy and efficient codebase. By following specific standards and implementing mechanisms like quality gates, you can effectively address technical debt and improve the overall quality of your code. Here's how you can incorporate this guidance into your approach:
 
@@ -114,7 +113,7 @@ Removing technical debt is an ongoing process. It requires a proactive approach 
 
 - *Implement quality gates*: Quality gates are mechanisms that enforce the defined coding standards and catch potential issues early in the development process. They can include automated code reviews, static code analysis tools, and continuous integration pipelines. By integrating quality gates into your development workflow, you can identify and address code quality issues before they become technical debt.
 
-### Optimize personnel collaboration
+## Optimize personnel collaboration
 
 Optimizing personnel collaboration is a process of enhancing team dynamics, communication, and knowledge-sharing. The goal is to prevent misunderstandings, duplicated efforts, and wasted time. It involves breaking down silos, revising unnecessary standards, creating shared knowledge repositories, and investing in relevant training. Effective collaboration reduces repeated errors and maximizes the collective expertise of a team. To optimize personnel collaboration, consider the following strategies:
 
@@ -126,7 +125,7 @@ Optimizing personnel collaboration is a process of enhancing team dynamics, comm
 
 - *Invest in training*: Make a substantial investment in training for the processes, tools, and project. Doing so ensures that a baseline requirement is met before people start contributing to the project. Ensure that teams are trained on the established standards and processes to enable them to work efficiently and effectively within the defined guidelines. Team members should be trained on those standards and processes so that they don't waste effort identifying them on their own.
 
-### Optimize processes
+## Optimize processes
 
 Optimizing processes involves refining workflows to eliminate unnecessary steps, reduce manual effort, and streamline roles and change management. This enhancement ensures that tasks are more efficient. Streamlined processes reduce the time and resources needed for tasks. The time reduction leads to improved productivity and saves money. To optimize processes, consider these recommendations:
 
@@ -136,11 +135,11 @@ Optimizing processes involves refining workflows to eliminate unnecessary steps,
 
 - *Streamline change management*: Positive receptiveness to change ensures smoother transitions and better outcomes. Make the process of implementing change smooth and accepted. Cultivate a culture of active participation rather than resistance. Promote change adoption via coaching and continuous learning. Adapt to change constructively.
 
-### Optimize operational tasks
+## Optimize operational tasks
 
 Optimizing workload operational tasks is a process of making job tasks faster and more straightforward. The goal is to streamline activities to enhance efficiency and ensure the most effective use of resources. This streamlining ensures that tasks are completed with fewer errors, distractions, and delays. It conserves personnel time, which leads to faster decision-making, reduced troubleshooting durations, and overall improved efficiency and cost savings. To optimize operational tasks, consider the following strategies.
 
-#### Reduce the noise-to-signal ratio
+### Reduce the noise-to-signal ratio
 
 Distinguishing signal from noise is crucial to observability because it enables teams to focus on the most critical aspects of their systems and applications. Filtering out noise can help teams make informed decisions, troubleshoot problems, and optimize the workload faster. Identifying and addressing issues more efficiently and quickly leads to a reduction in personnel costs.
 
@@ -148,7 +147,7 @@ To differentiate signal from noise, you need to define clear objectives and metr
 
 Prioritize actionable insights. Focus on insights that point to degradations in the workload and prioritize them for further investigation or action. Regularly review and update your monitoring strategy based on feedback.
 
-#### Use high fidelity debugging
+### Use high fidelity debugging
 
 *High fidelity debugging* refers to the ability to accurately diagnose and fix issues in software applications. You gain detailed insights into the application's behavior and state during runtime. High fidelity debugging is crucial for effective software development and troubleshooting. With high fidelity debugging, developers can reproduce and analyze issues with greater precision, which reduces the time and effort required to fix bugs. An understanding of the application's behavior enables developers to make informed decisions faster to improve code quality.
 
@@ -158,19 +157,19 @@ Prioritize actionable insights. Focus on insights that point to degradations in 
 
 - *Analyze error messages and stack traces*: Carefully examine error messages and stack traces to understand the context and sequence of events leading to an issue.
 
-#### Enhance technical support
+### Enhance technical support
 
 Improve the efficiency and efficacy of technical support operations. Reducing recurring issues saves time and improves user satisfaction. Identify recurring support issues, integrate engineering and support teams via support shadowing, and adopt IT classic deployment model processes to reduce overall support load.
 
-#### Learn from incidents
+### Learn from incidents
 
 Analyzing incidents can prevent recurrence and improve reaction times. Use past incidents as learning opportunities for future improvement. Conduct retrospectives to analyze incidents, identify improved actions and contact protocols, and enhance system observability through comprehensive logs and metrics.
 
-#### Implement robust governance
+### Implement robust governance
 
 Standardization reduces errors and rework to ensure consistent quality and cost optimization. Strengthen compliance and standardization within your organization. Automate compliance checks, and advocate for standardized solutions, architectures, and blueprints. To streamline decision-making, minimize choices that don't align with organizational constraints or SLAs.
 
-### Optimize personnel skills
+## Optimize personnel skills
 
 Better skills lead to increased efficiency and fewer mistakes. Invest in the development and improvement of your team's skills. To optimize personnel skills, here are some recommendations to consider:
 

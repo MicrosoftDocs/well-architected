@@ -1,5 +1,5 @@
 ---
-title: Recommendations for defining reliability targets
+title: Key design strategies for defining reliability targets
 description: Learn how to define reliability targets for your critical workloads, and discover key design strategies that prioritize operations.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 08/16/2024
 ms.topic: conceptual
 ---
 
-# Recommendations for defining reliability targets
+# Key design strategies for defining reliability targets
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -30,7 +30,6 @@ Consider using the following metrics to quantify your business requirements.
 |Recovery time objective (RTO)     | The maximum acceptable time that an application can be unavailable after an incident.        |
 |Recovery point objective (RPO)     | The maximum acceptable duration of data loss during an incident.        |
 
-## Key design strategies
 
 **Reliability targets represent the desired quality goal of a workload,** as promised to its users and the business stakeholders. That goal includes both availability and recoverability of the workload. Keep in mind that reliability targets differ from performance targets, but you should include performance targets in reliability targets. Consider the following reliability targets:
 
@@ -46,7 +45,7 @@ To set reliability targets, business stakeholders define broad requirements. The
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: You might have a gap between the technical limits of your system and its business impact, like throughput versus transactions per second. Bridging this gap can be tough. Aim for a practical and cost-effective solution instead of overengineering.
 
-### Set availability objectives
+## Set availability objectives
 
 The overall SLO of a workload reflects the **holistic quality, including all its dependencies.** A mature declaration of the SLO should indicate the overall business target for that workload, not just a composite of those dependencies. For example, if customers expect 99.99% availability, the overall SLO should aim for that goal, even if one part only achieves 99.80%.
 
@@ -72,7 +71,7 @@ Workload architects **make many technical decisions based on SLOs.** SLOs can:
 >
 > Cloud platform and technology providers publish SLAs on their offerings. You should consider the SLAs as part of the SLO calculation, but you shouldn't use them as is without understanding the SLA's scope of coverage. For more information, see [Assess the impact of Microsoft SLAs](#assess-the-impact-of-microsoft-slas).
 
-#### Consider common SLOs and influencing factors
+### Consider common SLOs and influencing factors
 
 Every SLO targets a specific quality criteria. Consider these common SLOs for reliability. This list isn't exhaustive. Add SLOs based on your business requirements. 
 
@@ -89,13 +88,13 @@ Understand the scenarios and tolerances for your workload on Azure. Both Azure s
 |---|---|---|
 |- Does it expose **request or response APIs?**<br> - Does it have **query APIs**?<br> - Is it a **compute** component?<br> - Is it a **job processing** component?|- **Control plane and management plane access** for public-facing Azure services.<br> - **Data plane access**, for example create, read, update, and delete (CRUD) operations.|- Does your **release process** involve downtime?<br> - What's the likelihood of **introducing bugs**? If the workload integrates with other systems, you might need to consider integration bugs.<br> - How do **routine operations** like patching affect the availability target? Have you factored in partner dependencies?<br> - Is your **staffing** sufficient to support constant emergency and emergency backup on-call rotation?<br> - Does the application have **noisy neighbors** outside of your scope of control that can potentially cause disruptions?|
 
-#### Determine the SLO scope
+### Determine the SLO scope
 
 You can set SLOs at various levels, such as for each application, workload, or a specific flow, in your system. Set level-specific SLOs so that you can customize SLOs based on each component's importance.
 
 In software as a service (SaaS) solutions, measure SLOs per customer to optimize each customer's experience. Customers might have different infrastructure resources in their segments. For such cases, a system-wide SLO that aggregates all resources across customer segments might not make sense. Instead, measure SLOs that align with each customer's specific context. For more information, see [Tenancy models for a multitenant solution](/azure/architecture/guide/multitenant/considerations/tenancy-models).
 
-#### Define composite SLO targets
+### Define composite SLO targets
 
 SLOs must be **measurable** and **measured within an observability window**.
 
@@ -131,7 +130,7 @@ A good SLI shows when you might breach an SLO. It's usually measured in percenti
 > For an illustrative example of how to define and measure SLOs and SLIs, see the [Example](#example) section.
 
 
-### Assess the impact of Microsoft SLAs
+## Assess the impact of Microsoft SLAs
 
 A Microsoft SLA provides insight into the availability of areas that Microsoft commits to. **SLAs don't guarantee an offering as a whole**. When you evaluate SLAs, have a good understanding of the coverage that's provided around the published percentile.
 
@@ -141,7 +140,7 @@ So, if your workload relies on deployment slots, you can't derive your SLO solel
 
 Consider another example. If Azure Front Door has 99.99% availability, your design must adhere to specific criteria that's published in the agreement. For example, your back end must include storage, you need a `GET` operation that can retrieve a file of at least 50 KB in size, and you need to deploy agents across multiple places in at least five geographically diverse locations. This narrow use case of Azure Front Door doesn't guarantee features like caching, routing rules, or a web application firewall. These aspects fall outside the scope of the SLA.
 
-### Implement multiregion targets
+## Implement multiregion targets
 
 From a reliability perspective, multiregion deployment is an implementation of the principle of redundancy. The goal is to mitigate the risk of a regional outage or degraded performance. This strategy, when properly designed, can improve SLOs because it adds a secondary region for failover purposes.
 
@@ -155,7 +154,7 @@ There are two main use cases:
 
 Pay attention to how much redundancy you need to meet high SLOs. For example, Microsoft guarantees higher SLAs for multiregion deployments of Azure Cosmos DB than it guarantees for single-region deployments.
 
-### Define recovery metrics
+## Define recovery metrics
 
 Definitions for realistic recovery targets, like RTO, RPO, MTTR, and MTBF metrics, rely on your [failure mode analysis](failure-mode-analysis.md) and your plans and testing for business continuity and [disaster recovery](disaster-recovery.md). When you define these targets, factor in the platform-provided recovery guarantees. Microsoft publishes RTO and RPO guarantees only for some products, like [Azure SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
@@ -166,7 +165,7 @@ Before you finish this work, discuss aspirational targets with stakeholders, and
 
 When you define recovery targets, define thresholds to initiate a recovery. For example, if a web node is unavailable for more than five minutes, automatically add a new node to the pool. Define thresholds for all components, and consider what the recovery for a specific component involves, including the effect on other components and dependencies. Your thresholds should also account for [transient faults](handle-transient-faults.md) to ensure that you don't start recovery actions too quickly. Document and share with the stakeholders the potential risks, like data loss or session interruptions for customers, of recovery operations.
 
-### Monitor and visualize the targets
+## Monitor and visualize the targets
 
 Use the data that you gather for your reliability targets to build your health model for each workload and the associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. When the state changes, the model should alert the responsible parties. For detailed design considerations and recommendations, see [Health modeling guidance](../design-guides/health-modeling.md).
 

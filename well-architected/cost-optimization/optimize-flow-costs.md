@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing flow costs
+title: Key design strategies for optimizing flow costs
 description: Learn about Azure Well-Architected Framework recommendations for strategically optimizing the cost of each of your workload's flows.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing flow costs
+# Key design strategies for optimizing flow costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -25,7 +25,6 @@ This guide describes the recommendations for optimizing the cost of each of the 
 |System flow | The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality.                            |
 |User flow  | The paths or sequences of actions that users take within an application or system.|
 
-## Key design strategies
 
 Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending can involve decoupling flows that currently share the same resource. It can also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, like user registration, sign-in, and data processing. These flows run on a single server, even though they have different resource needs. To optimize both costs and performance, you might separate flows or combine flows:
 
@@ -39,7 +38,7 @@ In a workload, there can be different types of flows or paths that you need to c
 
 - *User flows*. Optimizing user flows involves improving the user experience, reducing friction points, and ensuring smooth navigation and interaction within the application or system.
 
-### Create an inventory of flows
+## Create an inventory of flows
 
 A flow inventory is a comprehensive list and description of all the sequences of actions, data transitions, and system interactions within a workload. A flow inventory is the first step to ensuring investments align with the priority of flows. You should only optimize flows when you fully understand their purpose and dependencies. Here are steps for creating an inventory of workload flows:
 
@@ -49,7 +48,7 @@ A flow inventory is a comprehensive list and description of all the sequences of
 
 3. *Categorize flows*. Bundle similar flows, taking into account attributes like their functionality (for example, authentication, data retrieval, and transaction processing), criticality to business, or the resources they use (CPU, memory, or bandwidth).
 
-### Prioritize flows
+## Prioritize flows
 
 Flow prioritization is the process of classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows often require higher levels of availability, faster recovery times, and better performance to meet workload objectives. By prioritizing flows, you can better align spending to flow priority. To prioritize flows, consider the following steps:
 
@@ -59,7 +58,7 @@ Flow prioritization is the process of classifying flows based on their influence
 
 - *Consider flow metrics*. If you're struggling to prioritize your flows, consider the availability and recovery goals that you assigned to them. Critical flows often have high availability requirements and service-level agreements (SLAs). Flows associated with a lower RPO and RTO are more important than flows that have a higher RPO and RTO.
 
-### Optimize independent flows
+## Optimize independent flows
 
 Sometimes your flows are already running on different resources. In these cases, you can more easily evaluate and optimize spending. Evaluate the components and processes involved in each independent flow to determine whether there are ways to optimize or simplify them. To optimize independent flows, you can follow these steps:
 
@@ -73,13 +72,13 @@ Sometimes your flows are already running on different resources. In these cases,
 
 - *Fine-tune configurations*. Fine-tune other settings, like networking or data storage options, to better align with the flow's performance and budget requirements.
 
-### Separate dissimilar flows
+## Separate dissimilar flows
 
 Separating dissimilar flows onto different resources is a process of allocating distinct tasks with varying computational needs to dedicated resources. Dissimilar flows are flows that have different attributes. These attributes can include computational requirements, data dependencies, I/O operations, latency sensitivity, security needs, and compliance requirements. It's often more cost efficient to run different types of flows on separate resources. Doing so enables precise resource allocation to each flow, which reduces unnecessary expenditures and ensures maximum efficiency.
 
 Consider separating dissimilar flows that are currently combined. This separation boosts scalability, fault tolerance, and adaptability and also streamlines costs. By ensuring that each flow operates independently, you reduce interference risks and can allocate resources more cost-effectively based on each flow's priority. For example, assume that you colocate CRM (user flow) with a data engine (data flow). User traffic to the CRM system during office hours might slow down the data engine. When you decouple flows, the data engine can scale each component or service independently based on workload demand. This decoupling optimizes resource allocation and reduces costs.
 
-### Combine similar flows
+## Combine similar flows
 
 Combining similar flows onto a single resource is a process of consolidating tasks or processes with comparable attributes and using shared resources for them. This strategy eliminates redundancies and ensures more efficient use of resources, leading to significant cost savings. Similar types of flows share similar attributes. You might consider the same attributes that you look at when you separate dissimilar flows: computational requirements, data dependencies, I/O operations, latency sensitivity, security needs, and compliance requirements. Here are some examples where combining similar workload flows to use the same resource can lead to substantial savings:
 
@@ -93,7 +92,7 @@ Combining similar flows onto a single resource is a process of consolidating tas
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Don't mistake coincidence with design. Two flows that look similar don't necessarily serve the same purpose. You need to understand the function and design of each flow before merging or changing them. Misinterpreting a flow by focusing solely on its appearance can lead to unintended consequences and disrupt the service or process that it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
 
-### Monitor flows continuously
+## Monitor flows continuously
 
 The nature of flows and workloads can change over time, so you need to review flow spending to ensure that costs align with priorities. Evaluate the resource utilization of each flow by analyzing the compute, storage, and network usage associated with each flow. Identify any inefficiencies or areas where resources are underutilized. This analysis helps you pinpoint opportunities for cost optimization. Here are some considerations to take into account when you review flow utilization:
 

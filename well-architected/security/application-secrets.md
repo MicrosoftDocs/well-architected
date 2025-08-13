@@ -1,5 +1,5 @@
 ---
-title: Recommendations for protecting application secrets
+title: Key design strategies for protecting application secrets
 description: Learn about recommendations for managing application secrets. Find out how to create, store, and distribute secrets securely.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for protecting application secrets
+# Key design strategies for protecting application secrets
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -39,7 +39,6 @@ Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure She
 >
 > Application configuration settings, such as URLs for APIs that the application uses, are an example of nonsecrets. This information shouldn't be stored with the application code or application secrets. Consider using a dedicated configuration management system such as Azure App Configuration to manage these settings. For more information, see [What is Azure App Configuration?](/azure/azure-app-configuration/overview).
 
-## Key design strategies
 
 Your secret management strategy should minimize secrets as much as possible and integrate them into the environment by taking advantage of platform features. For example, if you use a managed identity for your application, access information isn't embedded in connection strings and it's safe to store the information in a configuration file. Consider the following areas of concern before storing and managing secrets:
 
@@ -53,13 +52,13 @@ Your secret management strategy should minimize secrets as much as possible and 
 
 Build a strategy around these points to help prevent identity theft, avoid repudiation, and minimize unnecessary exposure to information.
 
-### Manage workload secrets
+## Manage workload secrets
 
 If possible, avoid creating secrets. Find ways to **delegate responsibility to the platform**. For example, use the platform's built-in managed identities to handle credentials. Fewer secrets result in reduced surface area and less time spent on secret management.
 
 We recommend that keys have three distinct roles: user, administrator, and auditor. Role distinction helps to ensure that only trusted identities have access to secrets with the appropriate level of permission. Educate developers, administrators, and other relevant personnel about the importance of secret management and security best practices.
 
-#### Preshared keys
+### Preshared keys
 
 **You can control access by creating distinct keys for each consumer.** For example, a client communicates with a third-party API using a preshared key. If another client needs to access the same API, they must use another key. Don't share keys even if two consumers have the same access patterns or roles. Consumer scopes might change over time, and you can't independently update permissions or distinguish usage patterns after a key is shared. Distinct access also makes revocation easier. If a consumer's key is compromised, it's easier to revoke or rotate that key without affecting other consumers.
 
@@ -67,7 +66,7 @@ This guidance applies to different environments. The same key shouldn't be used 
 
 For more information, see [Recommendations for identity and access management](identity-access.md).
 
-#### Secret storage
+### Secret storage
 
 **Use a secret management system**, like Azure Key Vault, to store secrets in a hardened environment, encrypt at-rest and in-transit, and audit access and changes to secrets. If you need to store application secrets, keep them outside the source code for easy rotation.
 
@@ -81,7 +80,7 @@ A dedicated secret management system makes it easy to store, distribute, and con
 
 **Implement auditing and monitoring for secret access.** Log who accesses secrets and when to identify unauthorized or suspicious activity. For information about logging from a security perspective, see [Recommendations on security monitoring and threat detection](./monitor-threats.md).
 
-#### Secret rotation
+### Secret rotation
 
 **Have a process in place that maintains secret hygiene.** The longevity of a secret influences the management of that secret. To reduce attack vectors, secrets should be retired and replaced with new secrets as frequently as possible.
 
@@ -93,11 +92,11 @@ Handle OAuth access tokens carefully, taking into consideration their time to li
 
 Rotation processes should be automated and deployed without any human interaction. Storing secrets in a secret management store that natively supports rotation concepts can simplify this operational task.
 
-### Use workload secrets safely
+## Use workload secrets safely
 
 As a secret generator or operator, you should be able to distribute secrets in a safe manner. Many organizations use tools to securely share secrets both within the organization and externally to partners. In absence of a tool, have a process for properly  handing off credentials to authorized recipients. Your disaster recovery plans should include secret recovery procedures. Have a process for situations where a key is compromised or leaked and needs to be regenerated on demand. Consider the following best practices for safety when using secrets:
 
-#### Prevent hardcoding
+### Prevent hardcoding
 
 **Don't hard code secrets as static text** in code artifacts such as application code, configuration files, and build-deployment pipelines. This high-risk practice makes the code vulnerable because secrets are exposed to everyone with read access.
 
@@ -108,7 +107,7 @@ You can avoid this situation by using managed identities to eliminate the need t
 > [!NOTE]
 > If the scanning tools discover a secret, that secret must be considered compromised. It should be revoked.
 
-#### Respond to secret rotation
+### Respond to secret rotation
 
 As a workload owner, you need to **understand the secret rotation plan and policies so that you can incorporate new secrets with minimal disruption to users.** When a secret is rotated, there might be a window when the old secret isn't valid, but the new secret hasn't been placed. During that window, the component that the application is trying to reach doesn't acknowledge requests. You can minimize these issues by building retry logic into the code. You can also use concurrent access patterns that allow you to have multiple credentials that can be safely changed without affecting each other.
 
