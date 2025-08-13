@@ -5,6 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2024
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # AI workload operations on Azure

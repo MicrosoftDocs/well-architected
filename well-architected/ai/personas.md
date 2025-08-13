@@ -5,6 +5,7 @@ author: jostrm
 ms.author: prwilk
 ms.date: 10/29/2024
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # Workload team personas for AI workloads

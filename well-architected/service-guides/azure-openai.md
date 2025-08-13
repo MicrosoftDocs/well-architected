@@ -13,6 +13,7 @@ products:
   - azure-openai
 azure.category:
   - ai-machine-learning
+ms.update-cycle: 180-days  
 ---
 
 # Architecture best practices for Azure OpenAI Service
