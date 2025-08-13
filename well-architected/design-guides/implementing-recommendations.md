@@ -64,7 +64,7 @@ Work with your [Microsoft partner](https://appsource.microsoft.com/marketplace/p
 
 ## Specialized Well-Architected reviews
 
-The Microsoft Assessments platform has multiple assessments that applies the Well-Architected Framework perspective to a narrower scope such as a specific technology or workload classification. You use these assessments as you are fine-tuning your design decisions for that specific technology or workload. Take these assessments in addition to the "Core Well-Architected Review" for a more complete evaluation of your design.
+The Microsoft Assessments platform has multiple assessments that apply the Well-Architected Framework perspective to a narrower scope such as a specific technology or workload classification. You use these assessments as you are fine-tuning your design decisions for that specific technology or workload. Take these assessments in addition to the "Core Well-Architected Review" for a more complete evaluation of your design.
 
 Examples of other Well-Architected review assessments:
 
