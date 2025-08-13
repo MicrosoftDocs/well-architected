@@ -143,3 +143,5 @@ Examples of diagraming and modeling specifications:
 
 > [!div class="nextstepaction"]
 > [Architect's checklist](checklist.md)
+
+<!-- Updated: August 13, 2025 for a full review -->
