@@ -266,12 +266,13 @@ Health data gradually diminishes in value over time. To optimize operational eff
 
 Health modeling is a logical exercise that is tooling and technology agnostic. However, it's an intensive process that is often complex and requires significant engineering investment.
 
-[Azure Monitor health models](/azure/azure-monitor/health-models/overview) enable you to build and interact with health models natively in Azure. Each model that you build is a data platform that integrates with the rest of Azure Monitor across monitoring data stores, alerting, and out-of-the-box visualizations, both graphical and tabular. For advanced users, query/API data plane experiences allow flexible utilization of health states so you can use health insights with your existing operational stack, such as a Grafana dashboard.
+[Azure Monitor health models](/azure/azure-monitor/health-models/overview) let you easily create, manage, and interact with health models directly within Azure. They provide a unified data platform that seamlessly integrates with the rest of Azure Monitor, offering built-in alerting and ready-to-use visualizations—both graphical and tabular—for your health data. For advanced scenarios, the query and API data-plane capabilities enable flexible use of health states, making it easy to incorporate health insights into your existing operational tools, such as Grafana dashboards.
 
 ![A screen grab of Azure Monitor health models.](./_images/azure-monitor-health-models.png)
 
 ## Related links
 
+- For information on Azure-native health models, see [Azure Monitor health models overview](/azure/azure-monitor/health-models/overview).
 - For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
 - For information on monitoring metrics, see [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 - For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview).
