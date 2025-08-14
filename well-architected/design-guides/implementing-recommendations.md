@@ -5,8 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 08/13/2025
 ms.topic: conceptual
-ms.update-cycle: 1095-days  
-ms.update-cycle: 1095-days  
+ms.update-cycle: 1095-days
 ---
 
 # Complete an Azure Well-Architected Review assessment
