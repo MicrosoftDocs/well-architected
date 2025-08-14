@@ -139,7 +139,7 @@ For more information, see [Segmentation strategies](segmentation.md).
 
 #### Subnet firewalls
 
-It's important to inspect each subnet's inbound and outbound traffic. Use the three main strategies discussed earlier in this article, in [Key design strategies](#key-design-strategies). Check whether the flow is expected, allowed, and safe. To verify this information, **define firewall rules that are based on the protocol, source, and destination** of the traffic.
+It's important to inspect each subnet's inbound and outbound traffic. Use the three main strategies discussed earlier in this article. Check whether the flow is expected, allowed, and safe. To verify this information, **define firewall rules that are based on the protocol, source, and destination** of the traffic.
 
 On Azure, you set firewall rules in network security groups. For more information, see the [Network security groups](#network-security-groups) section in this article.
 
