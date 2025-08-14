@@ -175,13 +175,13 @@ The following sections describe configuration options for active-passive deploym
 
 ### Deploy across proximate independent infrastructure
 
-Deploying workloads across nearby independent datacenters or datacenter sectors offers redundancy without sacrificing performance. By leveraging geographically close but physically separate facilities, this setup ensures fault isolation with minimal latency impact—providing the resilience of distributed infrastructure while maintaining the responsiveness of a single-site deployment.
+Deploying workloads across nearby independent datacenters or datacenter sectors offers redundancy without sacrificing performance. By leveraging geographically close but physically separate facilities, this setup ensures fault isolation with minimal latency impact—providing the resilience of distributed infrastructure while maintaining the responsiveness of a single-site deployment. In Azure, this functionality is provide by availability zones, which are physically independent datacenters or datacenter sectors that are designed to let you easily deploy fault-tolerant, low-latency workloads.
 
 For latency-sensitive applications like real-time gaming, this approach enables seamless failover and uninterrupted user experience. Game servers distributed across local datacenters can instantly reroute traffic during outages, with transparent load balancing and near real-time data replication preserving gameplay continuity. However, this strategy does carry some risk, as large-scale regional events could still impact all sites simultaneously.
 
 ### Deploy across geo-distant infrastructure
 
-Deploying across geographically distributed datacenters offers the strongest protection against large-scale disasters by spreading workloads across regions hundreds or thousands of miles apart. This ensures business continuity during events like natural disasters, infrastructure failures, or geopolitical disruptions that could impact entire metropolitan areas.
+Deploying across geographically distributed datacenters offers the strongest protection against large-scale disasters by spreading workloads across regions hundreds or thousands of miles apart. This ensures business continuity during events like natural disasters, infrastructure failures, or geopolitical disruptions that could impact entire metropolitan areas. In Azure, you can deploy workloads into regions, which are spread across the globe. When using this design approach, choose regions that are close to your users, but are geographically distant, like West US and East US for example.
 
 For example, a global financial platform can maintain uninterrupted service by routing traffic to unaffected regions if one area experiences a major outage. While this approach maximizes resilience and supports regulatory compliance across jurisdictions, it introduces higher latency, complex data consistency requirements, and increased operational overhead—factors that must be carefully weighed against the benefits of global redundancy.
 
