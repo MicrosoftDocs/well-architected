@@ -5,7 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.update-cycle: 1095-days  
+ms.update-cycle: 1095-days
 ---
 
 # Design review checklist for Reliability

@@ -5,6 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 07/18/2024
 ms.topic: conceptual
+ms.update-cycle: 1095-days
 ---
 
 # Architecture design diagrams
