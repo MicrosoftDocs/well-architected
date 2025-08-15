@@ -5,6 +5,7 @@ author: ferantivero
 ms.author: chkittel
 ms.date: 10/10/2024
 ms.topic: conceptual
+ms.update-cycle: 1095-days  
 ---
 
 # Operational Excellence tradeoffs

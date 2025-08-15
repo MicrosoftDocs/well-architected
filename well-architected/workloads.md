@@ -5,6 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 08/12/2025
 ms.topic: conceptual
+ms.update-cycle: 1095-days
 ---
 
 # Azure Well-Architected Framework workloads

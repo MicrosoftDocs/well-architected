@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
 ms.topic: conceptual
-
+ms.update-cycle: 1095-days  
 ---
 
 # Security design principles
