@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Virtual Machines and Scale Sets
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Machines.
 author: PageWriter-MSFT
 ms.author: mattmcinnes
-ms.date: 03/27/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 products:
   - azure-virtual-machines
