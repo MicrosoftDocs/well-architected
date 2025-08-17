@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Functions
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations for Azure Functions.
 author: PageWriter-MSFT
 ms.author: mohamad
-ms.date: 02/12/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 ms. service: waf
 ms. subservice: waf-service-guide
