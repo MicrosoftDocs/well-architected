@@ -7,7 +7,7 @@ ms.reviewer: lnyswonger
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.date: 09/26/2024
+ms.date: 08/17/2025
 products: azure-firewall
 azure.category:
   - networking
@@ -143,6 +143,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | Identify and delete unused Azure Firewall deployments. Analyze [monitoring metrics](/azure/firewall/metrics#firewall-metrics) and UDRs that are associated with subnets that point to the firewall's private IP. Also consider other validations and internal documentation about your environment and deployments. For example, analyze any classic NAT, network, and application rules for Azure Firewall. And consider your settings. For example, you might configure the DNS proxy setting to **Disabled**. <br><br> For more information, see [Monitor Azure Firewall](/azure/firewall/monitor-firewall). | Use this approach to detect cost-effective deployments over time and eliminate unused resources, which prevents unnecessary costs.|
 | Review your Firewall Manager policies, associations, and inheritance carefully to optimize cost. Policies are billed based on firewall associations. A policy with zero or one firewall association is free. A policy with multiple firewall associations is billed at a fixed rate.<br><br> For more information, see [Firewall Manager pricing](https://azure.microsoft.com/pricing/details/firewall-manager).| Properly use Firewall Manager and its policies to reduce operational costs, increase efficiency, and reduce management overhead. |
 | Review all the public IP addresses in your configuration, and disassociate and delete the ones that you don't use. Evaluate source network address translation (SNAT) port usage before you remove any IP addresses. <br><br> For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port usage](/azure/firewall/metrics#firewall-metrics).| Delete unused IP addresses to reduce costs.|
+| Reduce cost through [ingestion-time transformation](/azure/firewall/firewall-logs) in Log Analytics for selective firewall log processing. <br><br> Configure advanced filtering and data transformation before log storage to optimize costs while maintaining security visibility. | Significant cost reduction in log analytics expenses for high-traffic environments while preserving relevant security events for analysis. |
 
 ## Operational Excellence
 
@@ -160,9 +161,13 @@ Start your design strategy based on the [design review checklist for Operational
 >    Migrate Azure Firewall [classic rules](/azure/firewall-manager/policy-overview#classic-rules-and-policies) to Firewall Manager policies for existing deployments. Use Firewall Manager to centrally manage your firewalls and policies. For more information, see [Migrate to Azure Firewall Premium](/azure/firewall/premium-migrate).
 >
 > - **Maintain regular backups of Azure Policy artifacts.** If you use an infrastructure-as-code approach to maintain Azure Firewall and all dependencies, you should have backup and versioning of Azure Firewall policies in place. If you don't, you can deploy a [companion mechanism](https://techcommunity.microsoft.com/t5/azure-network-security-blog/backup-azure-firewall-and-azure-firewall-policy-with-logic-apps/ba-p/3613928) that's based on an external logic app to provide an effective automated solution.
+>
 > - **Monitor Azure Firewall logs and metrics.** Take advantage of diagnostic logs for firewall monitoring and troubleshooting and activity logs for auditing operations.
+>
 > - **Analyze monitoring data to assess the overall health of the system.** Use the built-in Azure Firewall monitoring workbook, familiarize yourself with Kusto Query Language (KQL) queries, and use the policy analytics dashboard to identify potential problems.
+>
 > - **Define alerts for key events** so that operators can quickly respond to them.
+>
 > - **Take advantage of platform-provided detection mechanisms in Azure to detect abuse.** Integrate Azure Firewall with [Microsoft Defender for Cloud](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/azure-network-security-using-microsoft-defender-for-cloud/ba-p/2228222) and [Microsoft Sentinel](https://azuremarketplace.microsoft.com/marketplace/apps/sentinel4azurefirewall.sentinel4azurefirewall) if possible. Integrate with Defender for Cloud so you can visualize the status of network infrastructure and network security in one place, including Azure network security across all virtual networks and virtual hubs in different regions in Azure. Integrate with Microsoft Sentinel to provide threat-detection and prevention capabilities.
 
 ### Configuration recommendations
@@ -174,6 +179,9 @@ Start your design strategy based on the [design review checklist for Operational
 |[Monitor Azure Firewall logs and metrics](/azure/firewall/monitor-firewall), and create alerts for Azure Firewall capacity. Create alerts to monitor *Throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics.|Set up alerts for key events to notify operators before potential problems arise, help prevent disruptions, and initiate quick capacity adjustments.|
 | Regularly review the [policy analytics dashboard](/azure/firewall/policy-analytics) to identify potential problems. | Use policy analytics to analyze the impact of your Azure Firewall policies. Identify potential problems in your policies, such as meeting policy limits, improper rules, and improper IP groups usage. Get recommendations to improve your security posture and rule-processing performance. |
 | Understand KQL queries so you can use Azure Firewall logs to quickly analyze and troubleshoot problems. Azure Firewall provides [sample queries](/azure/firewall/firewall-structured-logs#structured-log-queries).  | Use KQL queries to quickly identify events inside your firewall and check to see which rule is triggered or which rule allows or blocks a request. |
+| Configure [customer-controlled maintenance](/azure/firewall/customer-controlled-maintenance) with minimum 5-hour windows and daily recurrence. <br><br> Plan maintenance schedules around business requirements and low-traffic periods. Consider geographic distribution of maintenance windows for multi-region deployments. | Predictable maintenance reduces unexpected downtime while ensuring firewall infrastructure receives necessary security updates. Aligns infrastructure maintenance with business availability requirements. |
+| Use [FQDNs in DNAT rules](/azure/firewall/destination-nat-rules) to route inbound traffic to backend infrastructure instead of static IP addresses. | Reduces operational overhead when backend infrastructure changes IP addresses due to scaling operations, deployments, or infrastructure updates. |
+| Configure [DNAT on private IP addresses](/azure/firewall/destination-nat-rules) for complex hybrid and enterprise networking scenarios. <br><br> Enable connectivity between networks with overlapping IP address ranges through port translation capabilities. | This is especially useful in scenarios with overlapping IP ranges, common in mergers, partner networks, or multi-tenant environments. |
 
 ## Performance Efficiency
 
@@ -266,3 +274,5 @@ recommendations in this article.
 - [Follow just enough administration (least privilege principle)](/security/benchmark/azure/baselines/advisor-security-baseline?toc=/azure/advisor/toc.json#pa-7-follow-just-enough-administration-least-privilege-principle)
 - [Protect your network resources with Microsoft Defender for Cloud](/azure/defender-for-cloud/protect-network-resources)
 -->
+
+<!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568 -->

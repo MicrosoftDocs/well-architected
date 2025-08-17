@@ -133,6 +133,8 @@ Microsoft Defender for Cloud offers several hardening capabilities:
 - [Adaptive network hardening](/azure/defender-for-cloud/adaptive-network-hardening)
 - Docker host hardening
 
+Enhance threat analysis with AI-powered security capabilities. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for WAF events from both Azure Front Door and Azure Application Gateway. This integration enables automatic threat identification, contextual analysis, and response suggestions to reduce alert fatigue in security operations centers handling hundreds of WAF alerts daily.
+
 The Center for Internet Security (CIS) offers hardened images in Azure Marketplace.
 
 You can use Azure VM Image Builder to build a repeatable process for hardened OS images. Common Base Linux-Mariner is a hardened Linux distribution that's developed by Microsoft that follows security standards and industry certifications. You can use it with Azure infrastructure products to build workload implementations.
@@ -169,3 +171,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 496536 -->

@@ -211,6 +211,11 @@ Pattern 2 provides containment but has the added complexity of virtual network m
 |**Network-level traffic filtering**     |  Traffic between the segments is allowed by default. Use NSGs or ASGs to filter traffic.                                           | Within the virtual network, same as pattern 1. <br> Between the networks, you can filter both ingress and egress traffic through a firewall.   |
 |**Unintended open public endpoints**     |   Network interface cards (NICs) don't get public IPs. Virtual networks aren't exposed to internet API management.      |  Same as pattern 1. Intended open public endpoint on one virtual network, which can be misconfigured to accept more traffic.       |
 
+##### Pattern 3: PaaS isolation
+
+Consider using [**Azure Network Security Perimeter**](/azure/private-link/network-security-perimeter-concepts) to create logical boundaries around PaaS services with strict rules incoming and outgoing traffic. This pattern prevents data exfiltration to nonauthorized destinations,  without requiring individual private endpoints for each service.
+
+
 ### Resource organization
 
 ##### Organize Azure resources based on ownership responsibility
@@ -247,3 +252,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 496002 -->

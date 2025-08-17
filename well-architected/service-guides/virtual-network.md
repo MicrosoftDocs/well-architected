@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Virtual Network
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Network and its supported features.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 01/08/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 ms.subservice: waf-service-guide
 products:
@@ -120,6 +120,7 @@ Start your design strategy based on the [design review checklist for Security](.
 |Enable [Azure DDoS Protection](/azure/ddos-protection/manage-ddos-protection) for the virtual network. Alternatively, you can protect individual public IP addresses through [Azure DDoS IP Protection](/azure/ddos-protection/manage-ddos-ip-protection-portal). <br><br>  [Review the security features](/azure/ddos-protection/ddos-protection-sku-comparison) provided in DDoS IP Protection and DDoS Network Protection and choose one that fits your requirements. For example, the DDoS Network Protection tier provides support from the Rapid Response Team when attacks occur. The DDoS IP Protection tier doesn't provide this support. |You're able to safeguard against distributed denial-of-service attacks.|
 |Safeguard segments within a virtual network by using [NSGs](/azure/virtual-network/network-security-groups-overview). <br><br> When possible, use ASGs to define the rules. |Traffic that enters and leaves the network can be filtered based on IP address and port ranges. <br> ASGs simplify management by abstracting the underlying IP address ranges. |
 |Use [private endpoints](/azure/private-link/private-endpoint-overview) to access Azure services over a private IP address within the virtual network. <br><br> Another way to implement private networking is through [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview). These endpoints route traffic to a service over the Azure network backbone. If available for the service, choose private endpoints over service endpoints.| Private endpoints remove the need for public IP addresses, which reduces the attack surface.|
+|Consider the use of [Network Security Perimeter](/azure/private-link/network-security-perimeter-concepts) for logical isolation of PaaS services that exist outside virtual network boundaries. <br><br> Group related PaaS services under unified access policies without requiring individual private endpoints for each service.|Provides simplified management for complex multi-service scenarios while maintaining security. Enables hybrid connectivity and consistent access policies across related PaaS services.|
 
 ## Cost Optimization
 
@@ -214,6 +215,9 @@ Start your design strategy based on the [design review checklist for Operational
 | Deploy [Virtual Network Manager](/azure/virtual-network-manager/overview). |Instead of configuring each virtual network individually, Virtual Network Manager centrally manages connectivity based on rules. This approach streamlines networking operations.|
 | Use networking monitoring tools. <br><br> Regularly use [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to identify changes in demand and patterns. <br> Use the [connection monitor feature](/azure/network-watcher/connection-monitor-overview) to analyze and identify problems like connection drops before they affect applications.|You're able to understand how data flows through your network, identify bottlenecks, and identify unusual or unauthorized access attempts. |
 |When you define routes, use [service tags](/azure/virtual-network/service-tags-overview) instead of specific IP addresses. <br><br> Similarly, use ASGs when you define traffic rules for NSGs.| This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules that you can set by using more generic names.|
+|Use [Azure Virtual Network Manager IP address management](/azure/virtual-network-manager/concept-ip-address-management) for centralized IP planning across complex virtual network environments. <br><br> Implement centralized visibility and control over IP allocation to prevent conflicts and simplify network planning across multiple subscriptions.|Prevents IP address conflicts in large enterprise environments with hundreds of virtual networks. Reduces operational overhead through centralized IP management and conflict detection.|
+|Leverage [Network Watcher VM Network Troubleshooter](/azure/network-watcher/network-watcher-monitoring-overview) for integrated network diagnostics in Azure Portal. <br><br> Use built-in troubleshooting tools to quickly identify connectivity issues and blocked ports without requiring external diagnostic tools.|Enhances operational efficiency through immediate network diagnostics. Reduces time to resolution for VM connectivity issues and simplifies troubleshooting workflows.|
+
 
 ## Performance Efficiency
 
@@ -304,3 +308,6 @@ The following articles demonstrate the recommendations that are discussed in thi
   - [Virtual Network](/azure/virtual-network/virtual-networks-overview)
   - [Virtual Network IP Services documentation](/azure/virtual-network/ip-services/)
   
+<!-- Azure Update: 496002 - 2025-01-25 -->
+<!-- Azure Update: 484347 - 2025-07-23 -->
+<!-- Azure Update: 491437 - 2025-05-21 -->

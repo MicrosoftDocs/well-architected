@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Front Door
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Front Door.
 author: halkazwini
 ms.author: halkazwini
-ms.date: 02/26/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 products:
   - azure-front-door
@@ -191,7 +191,7 @@ Start your design strategy based on the [design review checklist for Operational
 |[Capture logs and metrics](/azure/frontdoor/front-door-diagnostics). <br><br> Include resource activity logs, access logs, health probe logs, and WAF logs. <br><br>[Set up alerts](/azure/frontdoor/standard-premium/how-to-monitor-metrics#configure-alerts-in-the-azure-portal).|Monitoring ingress flow is a crucial part of monitoring an application. You want to track requests and make performance and security improvements. You need data to debug your Azure Front Door configuration. <br><br> With alerts in place, you can get instant notifications of any critical operational issues.|
 |Review the [built-in analytics reports](/azure/frontdoor/standard-premium/how-to-reports).|A holistic view of your Azure Front Door profile helps drive improvements based on traffic and security reports through WAF metrics.|
 | [Use managed TLS certificates](/azure/frontdoor/domain#azure-front-door-managed-tls-certificates) when possible. | Azure Front Door can issue and manage certificates for you. This feature eliminates the need for certificate renewals and minimizes the risk of an outage due to an invalid or expired TLS certificate.|
-|[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain).|  You don't need to modify the configuration to add or specify each subdomain separately. |
+|[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain) with managed certificate support for automatic provisioning and renewal. <br><br> Configure managed certificates for wildcard domains to enable automatic certificate lifecycle management for multiple subdomains under a single certificate.|  You don't need to modify the configuration to add or specify each subdomain separately. Managed wildcard certificates provide automatic provisioning and renewal for all subdomains, reducing operational overhead for organizations with multiple branded storefronts or services. |
 
 ## Performance Efficiency
 
@@ -281,3 +281,5 @@ Consider the following articles as resources that demonstrate the recommendation
 - Build implementation expertise by using the following product documentation:
    - [Azure Front Door](/azure/frontdoor/)
    - [Best practices for Azure Front Door](/azure/frontdoor/best-practices)
+
+<!-- Updated: August 17, 2025 for Azure Update 496631 -->

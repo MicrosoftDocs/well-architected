@@ -352,9 +352,25 @@ Keep the following recommendations in mind when you use private endpoints:
 
 DNS management can be complex in common network topologies. You might have to introduce DNS forwarders and other components.
 
+### Azure Network Security Perimeter
+
+While private endpoints provide direct virtual network integration for PaaS services, [**Azure Network Security Perimeter**](/azure/private-link/network-security-perimeter-concepts) offers logical network isolation for PaaS services outside your  virtual networks. This is beneficial when you need to group related PaaS services under unified access policies without requiring individual private endpoints for each service. 
+
+For example you can use this logical segmentation around all PaaS services supporting a specific workload or business unit. Or, implement uniform perimeter policies for development, staging, and production environments, allowing appropriate access levels while maintaining isolation.
+
+Be aware of the limitations around logging, scalability, and others aspects that comes with this feature. For more information, see [Limitations of a network security perimeter?](/azure/private-link/network-security-perimeter-concepts#limitations-of-a-network-security-perimeter)
+
 ### Virtual network injection
 
 You can use the **virtual network injection process** to deploy some Azure services into your network. Examples of such services include Azure App Service, Functions, Azure API Management, and Azure Spring Apps. This process **isolates the application** from the internet, systems in private networks, and other Azure services. Inbound and outbound traffic from the application is allowed or denied based on network rules.
+
+### Azure Network Security Perimeter
+
+While private endpoints enable direct integration of PaaS services into your virtual network, the [**Azure Network Security Perimeter**](/azure/private-link/network-security-perimeter-concepts) provides logical network isolation for PaaS resources that remain outside your VNet. This approach is useful when you want to apply centralized access policies across related PaaS services without configuring individual private endpoints for each one.
+
+For instance, you can logically group all PaaS services that support a specific workload or business unit, or define consistent perimeter policies across development, staging, and production environments—ensuring appropriate access levels while maintaining separation.
+
+Keep in mind that this feature has some limitations, including around logging, scalability, and other operational aspects. For details, see L[imitations of a network security perimeter]((/azure/private-link/network-security-perimeter-concepts#limitations-of-a-network-security-perimeter)).
 
 ### Azure Bastion
 
@@ -442,3 +458,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 496002, 497535 -->
