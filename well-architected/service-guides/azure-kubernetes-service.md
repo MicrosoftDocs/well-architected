@@ -4,7 +4,7 @@ description: Learn how to use Azure Kubernetes Service (AKS) features to boost r
 author: schaffererin
 ms.author: schaffererin
 ms.topic: conceptual
-ms.date: 01/17/2025
+ms.date: 08/17/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products:
