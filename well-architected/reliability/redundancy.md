@@ -21,7 +21,7 @@ This guide describes the recommendations for adding redundancy throughout critic
 | Term | Definition |
 |---------|---------|
 | Redundancy | The implementation of multiple identical instances of a workload component. |
-| Region | This guide uses the term region to refer to [Azure datacenter locations](azure/reliability/regions-list). |
+| Region | This guide uses the term region to refer to [Azure datacenter locations](/azure/reliability/regions-list). |
 | Polyglot persistence | The concept of using different storage technologies by the same application or solution to take advantage of the best capabilities of each component. |
 | Data consistency | The measure of how in sync or out of sync a given dataset is across multiple stores. |
 | Partitioning | The process of physically dividing data into separate data stores. |
@@ -47,7 +47,7 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 ### Prefer serverless and fully managed services to reduce operational burden
 
-Take advantage of [serverless](https://azure.microsoft.com/en-us/solutions/serverless), software as a service (SaaS), and platform as a service (PaaS) services to easily add redundancy to your workload without needing to manage data replication or failover operations. These services implement redundancy transparently, removing the operational burden of designing and maintaining your own redundancy mechanisms. When evaluating service options, prioritize managed services that handle redundancy automatically over infrastructure-based approaches that require manual redundancy configuration.
+Take advantage of [serverless](https://azure.microsoft.com/solutions/serverless), software as a service (SaaS), and platform as a service (PaaS) services to easily add redundancy to your workload without needing to manage data replication or failover operations. These services implement redundancy transparently, removing the operational burden of designing and maintaining your own redundancy mechanisms. When evaluating service options, prioritize managed services that handle redundancy automatically over infrastructure-based approaches that require manual redundancy configuration.
 
 Azure managed services provide redundancy through different models, each offering varying levels of abstraction and operational simplicity:
 
