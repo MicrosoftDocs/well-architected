@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure SQL Database
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure SQL Database.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 03/21/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -108,6 +108,7 @@ Start your design strategy based on the [design review checklist for Security](.
 | Scan for vulnerabilities with the Microsoft Defender for SQL Database [vulnerability assessment](/azure/azure-sql/database/sql-vulnerability-assessment). | The SQL vulnerability assessment is a built-in service for SQL Database that identifies and helps remediate potential security vulnerabilities. It provides actionable steps and customized remediation scripts based on Microsoft best practices. |
 | Detect anomalous activities by using [advanced threat protection for SQL Database](/azure/azure-sql/database/threat-detection-configure). These activities can indicate unusual and potentially harmful attempts to access or exploit databases. | Advanced threat protection provides security alerts for anomalous activities, which helps you detect and respond to potential threats when they occur. Alerts are integrated into Microsoft Defender for Cloud. |
 | Track database events by using [SQL Database auditing](/azure/azure-sql/database/auditing-overview).| Auditing helps you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations. |
+| Enable [enhanced server audit](/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions) for security monitoring without impacting database performance. | These capabilities support auditing server-level activities with efficient use of CPU and memory because it uses a single extended events session at the server level, rather than creating multiple sessions per database.|
 | Configure a [user-assigned managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity) as the server identity. | Managed identities for Azure resources eliminate the need to manage credentials in code. |
 | Disable SQL-based authentication and [allow Microsoft Entra authentication only](/azure/azure-sql/database/authentication-aad-configure). | Microsoft Entra for authentication centralizes your identity, access, and authorization management and provides granular permissions to SQL Database resources. |
 
@@ -121,7 +122,9 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 > [!div class="checklist"]
 > - **Familiarize yourself with SQL Database cost management resources:** Review the [Plan and manage costs for SQL Database](/azure/azure-sql/database/cost-management) article. This resource contains cost-saving strategies, including recommendations about how to optimize cost-effective instances and resources and how to choose the right billing model for your workload.
+>
 > - **Estimate the initial cost:** As part of your cost modeling exercise, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator) to evaluate the approximate costs associated with SQL Database in your workload.
+>
 > - **Choose the right SQL Database service tier for your workload:** Evaluate the SQL Database [Serverless](/azure/azure-sql/database/serverless-tier-overview) and [Hyperscale](/azure/azure-sql/database/service-tier-hyperscale) tiers to better align pricing with your use case.
 >
 >   Consider [elastic pools](/azure/azure-sql/database/elastic-pool-overview) to manage and scale multiple databases.
@@ -131,6 +134,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 >   Fine-tune backup storage consumption to avoid charges for excess usage.
 >
 > - **Optimize application code costs:** Optimize queries and other operations to reduce resource consumption, minimize runtime, and improve overall performance.
+>
 > - **Optimize scaling costs:** Incorporate cost optimization considerations into your database scaling strategies.
 >
 >   To reduce costs, scale down databases during periods of low usage. Examples include seasonal workloads that have weeks or months of decreased load or workloads that are idle overnight.
@@ -200,6 +204,8 @@ Start your design strategy based on the [design review checklist for Performance
 >   Applications that connect to SQL Database should use the latest connection providers, for example the latest [OLE DB driver](/sql/connect/oledb/oledb-driver-for-sql-server) or [ODBC driver](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 >
 >   When you use elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
+>
+> - **Prefer native SQL functions:** You can improve query performance by reducing application processing overhead while providing SQL standard compliance. This is a concern for international applications that require Unicode support.
 
 ### Configuration recommendations
 
@@ -237,3 +243,5 @@ Foundational architecture that demonstrates the key recommendations: [Baseline h
 - [Resolve Transact-SQL differences during migration to SQL Database](/azure/azure-sql/database/transact-sql-tsql-differences-sql-server)
 - [Azure Database Migration Guides](/data-migration/)
 - [Video: Data exposed](/shows/data-exposed/)
+
+<!-- Updated: August 17, 2025 for Azure Update 467635, 497258, 498943 -->

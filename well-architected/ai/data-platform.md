@@ -23,7 +23,9 @@ Ask yourself the following questions so that you can avoid designing an overly c
 
 If you answer yes to these questions, then you can simplify your architecture by allowing the application to access the data source directly. This approach eliminates the need for big data architecture components like data ingestion, analytical store integration, and external data processing. If the source database can handle the required searches, integrating the search index capability directly into the source database can be a practical approach. Make sure that the source can cost-effectively scale to meet new demands.
 
-For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
+For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. 
+
+Also, take advantage of the database's built-in capabilities to simplify the architecture as much as possible. Consider using [vector data types and functions](/sql/t-sql/functions/vector-functions-transact-sql) in Azure SQL Database, which supports native vector data types for storing and querying embeddings directly within the database for semantic search and machine learning applications. Vector data types eliminate the need for separate vector databases reducing architectural complexity and data movement while improving query performance for machine learning operations.
 
 A data platform architecture for large-scale workloads is more complex.
 

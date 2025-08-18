@@ -4,7 +4,7 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 05/12/2025
+ms.date: 08/17/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: conceptual
@@ -126,7 +126,10 @@ The [Operational Excellence design principles](/azure/well-architected/operation
 > - **Optimize the recoverability of your databases.** Define backup and retention policies to meet your compliance requirements.
 >
 > - **Automate operational tasks.** Use [automation tasks](/azure/postgresql/flexible-server/create-automation-tasks) to automatically perform tasks like starting and stopping a server, scaling resources, and other tasks.
+>
 > - **Monitor database health and performance.** Collect and analyze logs and metrics from your instance to proactively detect potential problems.
+>
+> - **Stay current with PostgreSQL versions.** Latest versions come with in-place upgrade capabilities with zero-downtime, enabling major version transitions without service disruption.
 
 ### Configuration recommendations
 
@@ -190,3 +193,5 @@ Foundational architecture that demonstrates the key recommendations: [Reliable W
 ## Related content
 
 - [Multitenancy and Azure Database for PostgreSQL](/azure/architecture/guide/multitenant/service/postgresql)
+
+<!-- Updated: August 17, 2025 for Azure Update 498180, 467663 -->

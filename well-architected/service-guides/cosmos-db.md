@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
 ms.subservice: waf-service-guide
-ms.date: 02/20/2025
+ms.date: 08/17/2025
 products:
   - azure-cosmos-db
 ---
@@ -91,6 +91,8 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Implement strict, conditional, and auditable identity and access management.** Use Microsoft Entra ID for your workload's authentication and authorization needs. Microsoft Entra ID provides centralized authorization and access management.
 >
 >   For control plane and data plane access to your account, create roles, groups, and assignments based on the principle of [least-privilege access](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#privileged-access). Consider [disabling key-based authentication](/azure/cosmos-db/how-to-setup-rbac#disable-local-auth).
+>
+>   If applicable and the data platform support is available, take advantage of multi-user access control, to enforce least-privilege principles. For MongoDB vCore clusters, configure [secondary users](/azure/cosmos-db/mongodb/vcore/secondary-users) to enable granular access control. Multiple user accounts with configurable permissions allow development teams to implement role-specific access for different team members while maintaining operational flexibility and security governance.
 >
 > - **Encrypt data.** [Encrypt data](/azure/cosmos-db/database-encryption-at-rest) at rest or data in motion by using service-managed keys or customer-managed keys.
 >
@@ -276,4 +278,6 @@ For more information, see [Azure Advisor](/azure/advisor).
 - [Multitenancy and Azure Cosmos DB](/azure/architecture/guide/multitenant/service/cosmos-db)
 - [Common Azure Cosmos DB use cases](/azure/cosmos-db/use-cases)
 - [Serverless database computing by using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
+
+<!-- Updated: August 17, 2025 for Azure Update 470102 -->
 
