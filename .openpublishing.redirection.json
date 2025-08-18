@@ -2359,6 +2359,11 @@
 			"source_path": "well-architected/mission-critical/mission-critical-cross-cutting-issues.md",
 			"redirect_url": "/azure/well-architected/mission-critical/mission-critical-design-methodology",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "/well-architected/reliability/highly-available-multi-region-design.md",
+			"redirect_url": "/azure/well-architected/reliability/redundancy",
+			"redirect_document_id": true
 		}			
 	]
 }
