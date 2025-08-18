@@ -88,7 +88,7 @@ You can use cards to define the services a persona needs to be able to access wi
 
 |GenAI Chat Developer (P007)| 
 |---| 
-| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Azure AI Foundry , Azure Web Apps, Azure API Management, Azure Cosmos DB, Azure Container Apps, Azure Functions <br>&#128313; Processes: DevOps, event-driven processing, microservices, inner loop development<br>&#128313; Skills: Web application architecture (front end/back end), React, Node.js, HTML, CSS,  agentic solutions 
+| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Azure AI Foundry, Azure Web Apps, Azure API Management, Azure Cosmos DB, Azure Container Apps, Azure Functions <br>&#128313; Processes: DevOps, event-driven processing, microservices, inner loop development<br>&#128313; Skills: Web application architecture (front end/back end), React, Node.js, HTML, CSS,  agentic solutions 
 
 |Dev Router Agent (P010)| 
 |---| 
@@ -96,7 +96,7 @@ You can use cards to define the services a persona needs to be able to access wi
 
 |Dev Unit Test Agent (P011)| 
 |---| 
-| Team: Engineering Team (automated)<br>&#128313; Primary interaction: Dev Router Agent , AI Team, Engineering Team<br>&#128313; Component access: Azure DevOps, GitHub, Azure AI Foundry, Azure Container Apps, MCP Server Tools<br>&#128313; DevOps<br>&#128313; Skills: Test automation, code coverage analysis, performance benchmarking, mcp-testing frameworks 
+| Team: Engineering Team (automated)<br>&#128313; Primary interaction: Dev Router Agent, AI Team, Engineering Team<br>&#128313; Component access: Azure DevOps, GitHub, Azure AI Foundry, Azure Container Apps, MCP Server Tools<br>&#128313; DevOps<br>&#128313; Skills: Test automation, code coverage analysis, performance benchmarking, mcp-testing frameworks 
 
 
 #### Operations personas
