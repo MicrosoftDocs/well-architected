@@ -77,7 +77,7 @@ When deploying redundant infrastructure components, determine how many instances
 
 - Understand the built-in replication and redundancy capabilities of the stateful platform services that you use. For specific redundancy capabilities of stateful data services, see [Related links](#related-links).
 
-- Determine whether synchronous or asynchronous data replication is necessary for your workload's functionality. To help you make this determination, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
+- Determine whether synchronous or asynchronous data replication is necessary for your workload's functionality. To help you make this determination, see [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md).
 
 - Distribute data geographically, as supported by your service, to minimize the effect of geographically localized failures.
 
