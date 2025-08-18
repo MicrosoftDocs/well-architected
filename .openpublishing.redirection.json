@@ -722,7 +722,7 @@
 		},
 		{
 			"source_path": "well-architected/resiliency/regions-availability-zones.md",
-			"redirect_url": "/azure/well-architected/reliability/regions-availability-zones",
+			"redirect_url": "/azure/well-architected/design-guides/regions-availability-zones",
 			"redirect_document_id": true
 		},
 		{
@@ -2361,7 +2361,7 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "/well-architected/reliability/highly-available-multi-region-design.md",
+			"source_path": "well-architected/reliability/highly-available-multi-region-design.md",
 			"redirect_url": "/azure/well-architected/reliability/redundancy",
 			"redirect_document_id": true
 		}			

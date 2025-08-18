@@ -164,7 +164,7 @@ From a design perspective, [Azure load balancers](/azure/architecture/guide/tech
 
 - [Recommendations for continuous performance optimization](../performance-efficiency/continuous-performance-optimize.md)
 - [Recommendations for defining reliability targets](../reliability/metrics.md)
-- [Recommendations for highly available multi-region design](../reliability/highly-available-multi-region-design.md)
+- [Recommendations for highly available multi-region design](../reliability/redundancy.md#deploy-redundant-instances-in-active-active-configuration-for-zero-downtime)
 - [Recommendations for optimizing scaling and partitioning](../performance-efficiency/scale-partition.md)
 - [Recommendations for setting spending guardrails](set-spending-guardrails.md)
 
