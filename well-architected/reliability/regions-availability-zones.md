@@ -135,7 +135,7 @@ If you operate under a constrained budget, it's important to consider the costs 
 
 #### Complexity
 
-It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it becomes to make decisions about your architecture. Complex architectures are harder to operate, harder to secure, and often less performant.  Follow the [principle of simplicity](principles.md#keep-it-simple).
+It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it becomes to make decisions about your architecture. Complex architectures are harder to operate, harder to secure, and often less performant.  Follow the [principle of simplicity](../reliability/principles.md#keep-it-simple).
 
 ## Example scenario
 
