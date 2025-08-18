@@ -4,7 +4,6 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 03/05/2024
-ms.update-cycle: 180-days
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -13,6 +12,7 @@ products:
   - azure-openai
 azure.category:
   - ai-machine-learning
+ms.update-cycle: 180-days  
 ---
 
 # Architecture best practices for Azure OpenAI Service

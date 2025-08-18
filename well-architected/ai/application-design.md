@@ -5,6 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/18/2024
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # Application design for AI workloads on Azure

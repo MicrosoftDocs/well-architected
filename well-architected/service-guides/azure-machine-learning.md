@@ -4,13 +4,13 @@ description: See Azure Well-Architected Framework design considerations and conf
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 03/11/2024
-ms.update-cycle: 180-days
 ms.topic: conceptual
 ms.collection: ce-skilling-ai-copilot
 products:
   - azure-machine-learning
 azure.category:
   - ai-machine-learning
+ms.update-cycle: 180-days  
 ---
 
 # Architecture best practices for Azure Machine Learning

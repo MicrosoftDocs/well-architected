@@ -5,8 +5,9 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 06/10/2025
 ms.topic: conceptual
-
+ms.update-cycle: 1095-days  
 ---
+
 # Modernize your software development with continuous integration
 
 As code is developed, updated, or even removed, having an intuitive and safe method to integrate these changes into the main code branch enables developers to provide value.
