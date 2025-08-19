@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for optimizing operational tasks
+title: Architecture design strategies for optimizing operational tasks
 description: Learn about Well-Architected Framework recommendations for optimizing operational tasks.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for optimizing operational tasks
+# Architecture design strategies for optimizing operational tasks
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

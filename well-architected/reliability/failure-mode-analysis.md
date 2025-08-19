@@ -1,12 +1,12 @@
 ---
-title: Key design strategies for failure mode analysis
+title: Architecture design strategies for failure mode analysis
 description: Learn how to identify potential points of failure within your workload and the associated flows, and plan mitigation actions accordingly.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 10/08/2024
 ms.topic: conceptual
 ---
-# Key design strategies for performing failure mode analysis
+# Architecture design strategies for performing failure mode analysis
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for designing a workload development supply chain
+title: Architecture design strategies for designing a workload development supply chain
 description: Learn how to design a workload development supply chain based on CI/CD pipelines that ensure a predictable, efficient workload lifecycle. 
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for designing a workload development supply chain
+# Architecture design strategies for designing a workload development supply chain
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

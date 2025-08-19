@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for designing for redundancy
+title: Architecture design strategies for designing for redundancy
 description: Learn how to design for redundancy in your workload to meet your reliability targets and to keep problems contained to a single resource.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for designing for redundancy
+# Architecture design strategies for designing for redundancy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

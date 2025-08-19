@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for selecting the right services
+title: Architecture design strategies for selecting the right services
 description: Learn how to select the appropriate services that best meet the requirements and demands of your workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for selecting the right services
+# Architecture design strategies for selecting the right services
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

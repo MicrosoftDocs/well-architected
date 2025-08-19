@@ -1,5 +1,5 @@
 --- 
-title: Key design strategies for creating a culture of financial responsibility 
+title: Architecture design strategies for creating a culture of financial responsibility 
 description: Get recommendations for creating a culture of financial responsibility in your organization. 
 author: stephen-sumner 
 ms.author: ssumner 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual 
 --- 
 
-# Key design strategies for creating a culture of financial responsibility
+# Architecture design strategies for creating a culture of financial responsibility
 
 **Applies to this Azure Well-Architected-Framework Cost Optimization checklist recommendation:**
 

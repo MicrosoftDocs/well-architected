@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for responding to live performance issues
+title: Architecture design strategies for responding to live performance issues
 description: Review recommendations for responding to live-site performance issues. See how to use root cause analysis, triage plans, and other steps to resolve problems. 
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for responding to live performance issues
+# Architecture design strategies for responding to live performance issues
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

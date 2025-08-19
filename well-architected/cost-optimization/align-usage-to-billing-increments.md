@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for aligning billing and usage
+title: Architecture design strategies for aligning billing and usage
 description: Learn how to align usage to billing increments by adapting a resource to your workload usage or adapting your workload to the resource billing increments.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for aligning usage to billing increments
+# Architecture design strategies for aligning usage to billing increments
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

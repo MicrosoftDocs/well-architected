@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for securing a development lifecycle
+title: Architecture design strategies for securing a development lifecycle
 description: Learn about Well-Architected Framework Security recommendations for securing a development lifecycle. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for securing a development lifecycle
+# Architecture design strategies for securing a development lifecycle
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

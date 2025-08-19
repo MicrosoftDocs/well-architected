@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for defining performance targets
+title: Architecture design strategies for defining performance targets
 description: Learn how to drive continuous improvement by setting and exposing performance targets for your workload. Identify workload objectives, key metrics, and performance targets. Monitor performance and evaluate customer feedback to drive improvement.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for defining performance targets
+# Architecture design strategies for defining performance targets
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

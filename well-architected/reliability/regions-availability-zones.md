@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for using availability zones and regions 
+title: Architecture design strategies for using availability zones and regions 
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
@@ -7,7 +7,7 @@ ms.date: 11/13/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for using availability zones and regions
+# Architecture design strategies for using availability zones and regions
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

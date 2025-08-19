@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for performance testing
+title: Architecture design strategies for performance testing
 description: Learn best practices for performance testing. See how to select tools, configure environments, and take other steps to help workloads meet performance targets.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for performance testing
+# Architecture design strategies for performance testing
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

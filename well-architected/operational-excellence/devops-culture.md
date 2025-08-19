@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for fostering DevOps culture
+title: Architecture design strategies for fostering DevOps culture
 description: Learn how to embrace DevOps culture principles and practices in your workload team to strengthen the team.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for fostering DevOps culture
+# Architecture design strategies for fostering DevOps culture
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

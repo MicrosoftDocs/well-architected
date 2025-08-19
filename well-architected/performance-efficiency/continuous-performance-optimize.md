@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for continuous performance optimization
+title: Architecture design strategies for continuous performance optimization
 description: Get recommendations for continuous performance optimization.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for continuous performance optimization
+# Architecture design strategies for continuous performance optimization
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

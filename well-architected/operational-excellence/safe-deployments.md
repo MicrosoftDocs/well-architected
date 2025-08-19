@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for safe deployment practices
+title: Architecture design strategies for safe deployment practices
 description: Learn about recommendations for safe deployment practices (SDP). Define how to safely make any change to your workload through deployments.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for safe deployment practices
+# Architecture design strategies for safe deployment practices
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

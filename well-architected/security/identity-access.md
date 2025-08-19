@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for identity and access management 
+title: Architecture design strategies for identity and access management 
 description: Learn about recommendations for authenticating and authorizing identities that are attempting to access workload resources.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for identity and access management 
+# Architecture design strategies for identity and access management 
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

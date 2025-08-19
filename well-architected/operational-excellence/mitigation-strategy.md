@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for designing a deployment failure mitigation strategy
+title: Architecture design strategies for designing a deployment failure mitigation strategy
 description: Design a strategy for handling deployment failures. Enable your workload team to efficiently mitigate failures while minimizing the impact on end users.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for designing a deployment failure mitigation strategy
+# Architecture design strategies for designing a deployment failure mitigation strategy
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

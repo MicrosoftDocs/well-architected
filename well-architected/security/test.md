@@ -1,13 +1,13 @@
 ---
-title: Key design strategies for security testing
-description: Learn about the key design strategies for security testing, including the tools and methodologies you can use to test the security posture of your workload.
+title: Architecture design strategies for security testing
+description: Learn about the Architecture design strategies for security testing, including the tools and methodologies you can use to test the security posture of your workload.
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for security testing
+# Architecture design strategies for security testing
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

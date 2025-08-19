@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for data classification
+title: Architecture design strategies for data classification
 description: Learn about data classification and how to apply it to your workloads. Categorize data based on its sensitivity levels, information type, and scope of compliance so that you can apply the correct level of protection.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for data classification
+# Architecture design strategies for data classification
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for defining reliability targets
+title: Architecture design strategies for defining reliability targets
 description: Learn how to define reliability targets for your critical workloads, and discover key design strategies that prioritize operations.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 08/16/2024
 ms.topic: conceptual
 ---
 
-# Key design strategies for defining reliability targets
+# Architecture design strategies for defining reliability targets
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

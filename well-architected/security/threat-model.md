@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for application threat analysis
+title: Architecture design strategies for application threat analysis
 description: Use threat modeling to identify threats, attacks, vulnerabilities, and countermeasures that can affect an application.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for threat analysis
+# Architecture design strategies for threat analysis
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

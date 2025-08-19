@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for prioritizing the performance of critical flows
+title: Architecture design strategies for prioritizing the performance of critical flows
 description: Learn about recommendations for prioritizing the performance of critical flows. Ensure that critical flows get the resources they need before lower-priority flows get those resources.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for prioritizing the performance of critical flows
+# Architecture design strategies for prioritizing the performance of critical flows
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

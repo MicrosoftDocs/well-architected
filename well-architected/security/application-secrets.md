@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for protecting application secrets
+title: Architecture design strategies for protecting application secrets
 description: Learn about recommendations for managing application secrets. Find out how to create, store, and distribute secrets securely.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for protecting application secrets
+# Architecture design strategies for protecting application secrets
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for enabling automation in a workload
+title: Architecture design strategies for enabling automation in a workload
 description: Learn how to design your workload to enable automation. Automation simplifies maintenance tasks, allowing you to update, patch, and upgrade your systems more efficiently and reliably.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 03/28/2024
 ms.topic: conceptual
 ---
 
-# Key design strategies for enabling automation
+# Architecture design strategies for enabling automation
 
 **Applies to this Azure Well-Architected Framework Operation Excellence checklist recommendation:**
 

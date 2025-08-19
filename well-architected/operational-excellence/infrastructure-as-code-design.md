@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for using infrastructure as code
+title: Architecture design strategies for using infrastructure as code
 description: Learn how to use infrastructure as code (IaC) as the standard for all of your infrastructure deployments.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for using infrastructure as code
+# Architecture design strategies for using infrastructure as code
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
 

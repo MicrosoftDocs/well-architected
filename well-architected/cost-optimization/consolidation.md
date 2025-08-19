@@ -1,5 +1,5 @@
 --- 
-title: Key design strategies for consolidation 
+title: Architecture design strategies for consolidation 
 description: Learn how to use consolidation to restructure your workloads, resources, and team roles to achieve maximum cost efficiency.
 author: stephen-sumner 
 ms.author: ssumner 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual 
 --- 
 
-# Key design strategies for consolidation
+# Architecture design strategies for consolidation
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

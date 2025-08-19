@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for formalizing routine and nonroutine tasks
+title: Architecture design strategies for formalizing routine and nonroutine tasks
 description: Learn how to formalize routine and nonroutine tasks by using documentation, checklists, or automation.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for formalizing routine and nonroutine tasks
+# Architecture design strategies for formalizing routine and nonroutine tasks
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

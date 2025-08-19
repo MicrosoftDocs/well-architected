@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for formalizing software development management practices
+title: Architecture design strategies for formalizing software development management practices
 description: Learn how to establish standards for managing your workload team's software development practices.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for formalizing software development and management
+# Architecture design strategies for formalizing software development and management
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

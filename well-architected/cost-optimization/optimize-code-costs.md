@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for optimizing code costs
+title: Architecture design strategies for optimizing code costs
 description: Learn how to optimize costs related to code with specific recommendations.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for optimizing code costs
+# Architecture design strategies for optimizing code costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

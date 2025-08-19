@@ -1,5 +1,5 @@
 ---
-title: Key design strategies for designing and creating a monitoring system
+title: Architecture design strategies for designing and creating a monitoring system
 description: Learn the recommendations for designing and creating an observability system. The system provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Key design strategies for designing and creating a monitoring system
+# Architecture design strategies for designing and creating a monitoring system
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
 
