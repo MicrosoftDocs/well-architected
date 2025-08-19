@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for instrumenting an application
+title: Architecture strategies for instrumenting an application
 description: Learn how to instrument an application as it relates to the health modeling and monitoring component of the Operational Excellence pillar.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for instrumenting an application
+# Architecture strategies for instrumenting an application
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

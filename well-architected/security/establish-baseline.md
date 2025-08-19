@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for establishing a security baseline
+title: Architecture strategies for establishing a security baseline
 description: Learn about hardening resources recommendations for security. Reduce the attack surface and increase attackers' costs in the remaining area to limit the opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/11/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for establishing a security baseline
+# Architecture strategies for establishing a security baseline
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:** 
 

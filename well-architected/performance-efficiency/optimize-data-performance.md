@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing data performance
+title: Architecture strategies for optimizing data performance
 description: Learn how to optimize data access, retrieval, storage, and processing operations to enhance the overall performance of your workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing data performance
+# Architecture strategies for optimizing data performance
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

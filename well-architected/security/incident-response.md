@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for security incident response
+title: Architecture strategies for security incident response
 description: Learn how to reduce the time that's required to identify, manage, and mitigate security incidents that threaten the confidentiality and integrity of software systems.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for security incident response
+# Architecture strategies for security incident response
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for highly available multi-region design 
+title: Architecture strategies for highly available multi-region design 
 description: Learn about recommendations that you can apply to designing a highly available multi-region cloud environment.   
 author: claytonsiemens77 
 ms.author: csiemens 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for highly available multi-region design
+# Architecture strategies for highly available multi-region design
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

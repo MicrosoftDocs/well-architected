@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for self-healing and self-preservation
+title: Architecture strategies for self-healing and self-preservation
 description: Learn how to build self-healing and self-preservation capabilities into your application architecture to optimize reliability.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for self-healing and self-preservation
+# Architecture strategies for self-healing and self-preservation
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

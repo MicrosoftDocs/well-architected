@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for implementing automation
+title: Architecture strategies for implementing automation
 description: Learn how to automate tasks that are repetitive and prone to human error to gain efficiency, adhere to standards, and create consistency.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for implementing automation
+# Architecture strategies for implementing automation
 
 **Applies to this Well-Architected Framework Operational Excellence checklist recommendation:**
 

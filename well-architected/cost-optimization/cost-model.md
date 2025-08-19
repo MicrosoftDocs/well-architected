@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for creating a cost model
+title: Architecture strategies for creating a cost model
 description: Learn how to create an estimate that focuses on predicting the combined costs of services and their associated expenses.
 author: stephen-sumner
 ms.author: ssumner
@@ -8,7 +8,7 @@ ms.topic: conceptual
 ---
 
 
-# Architecture design strategies for creating a cost model
+# Architecture strategies for creating a cost model
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing component costs.
+title: Architecture strategies for optimizing component costs.
 description: Learn how to optimize component costs by eliminating sources of wasted spending from an existing workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing component costs
+# Architecture strategies for optimizing component costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

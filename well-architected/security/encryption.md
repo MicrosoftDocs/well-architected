@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for encryption
+title: Architecture strategies for encryption
 description: Learn about recommendations for encryption, including encryption mechanisms, encryption keys, encryption algorithms, hashes, checksums, and secret management.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for data encryption
+# Architecture strategies for data encryption
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 

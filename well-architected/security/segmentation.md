@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for building a segmentation strategy
+title: Architecture strategies for building a segmentation strategy
 description: Learn about the recommendations for building a unified segmentation strategy using perimeters and isolation boundaries. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for building a segmentation strategy
+# Architecture strategies for building a segmentation strategy
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing data costs
+title: Architecture strategies for optimizing data costs
 description: Learn how to optimize data costs for a workload by aligning data spending to data priority.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing data costs
+# Architecture strategies for optimizing data costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

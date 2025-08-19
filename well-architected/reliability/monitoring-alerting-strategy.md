@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for designing a reliable monitoring and alerting strategy
+title: Architecture strategies for designing a reliable monitoring and alerting strategy
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for designing a reliable monitoring and alerting strategy
+# Architecture strategies for designing a reliable monitoring and alerting strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

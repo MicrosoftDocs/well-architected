@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for monitoring and threat detection
+title: Architecture strategies for monitoring and threat detection
 description: Learn how to get information about events, capture information about the workload, and gain awareness of suspicious activities. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for monitoring and threat detection
+# Architecture strategies for monitoring and threat detection
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

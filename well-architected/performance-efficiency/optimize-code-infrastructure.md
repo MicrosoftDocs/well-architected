@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing code and infrastructure
+title: Architecture strategies for optimizing code and infrastructure
 description: Learn how to optimize your code and infrastructure by using components only for their core purpose and only when necessary.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing code and infrastructure
+# Architecture strategies for optimizing code and infrastructure
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for designing an emergency response strategy
+title: Architecture strategies for designing an emergency response strategy
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for designing an emergency response strategy
+# Architecture strategies for designing an emergency response strategy
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

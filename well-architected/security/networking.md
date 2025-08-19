@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for networking and connectivity
+title: Architecture strategies for networking and connectivity
 description: Learn about network security controls that can filter, block, and detect adversaries who cross network boundaries at various depths of your architecture.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for networking and connectivity
+# Architecture strategies for networking and connectivity
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

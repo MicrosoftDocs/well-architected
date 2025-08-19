@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for getting the best rates from providers
+title: Architecture strategies for getting the best rates from providers
 description: Learn how to get the best rates from providers for your workload without modifying architecture, resources, or functionality.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for getting the best rates from providers
+# Architecture strategies for getting the best rates from providers
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

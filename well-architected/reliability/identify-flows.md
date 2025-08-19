@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for identifying and rating flows
+title: Architecture strategies for identifying and rating flows
 description: Learn how to create a catalog of user and system flows for your workload to better understand the basis for your design decisions as they relate to reliability.
 author: claytonsiemens77
 ms.author: csiemens
@@ -8,7 +8,7 @@ ms.date: 12/01/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for identifying and rating flows
+# Architecture strategies for identifying and rating flows
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

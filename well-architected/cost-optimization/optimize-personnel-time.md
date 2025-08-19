@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing personnel time
+title: Architecture strategies for optimizing personnel time
 description: Learn about Azure Well-Architected Framework recommendations for maximizing the productivity and efficiency of employees.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing personnel time
+# Architecture strategies for optimizing personnel time
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 

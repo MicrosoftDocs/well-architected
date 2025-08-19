@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing scaling and partitioning
+title: Architecture strategies for optimizing scaling and partitioning
 description: Learn best practices for optimizing scaling and partitioning to achieve performance efficiency in workloads.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing scaling and partitioning
+# Architecture strategies for optimizing scaling and partitioning
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

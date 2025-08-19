@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing flow costs
+title: Architecture strategies for optimizing flow costs
 description: Learn about Azure Well-Architected Framework recommendations for strategically optimizing the cost of each of your workload's flows.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing flow costs
+# Architecture strategies for optimizing flow costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for optimizing environment costs
+title: Architecture strategies for optimizing environment costs
 description: Learn how to optimize environment costs by tailoring each environment to its specific purpose and optimize it for cost effectiveness.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for optimizing environment costs
+# Architecture strategies for optimizing environment costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 

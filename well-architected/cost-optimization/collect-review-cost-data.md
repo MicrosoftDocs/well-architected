@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for collecting and reviewing cost data
+title: Architecture strategies for collecting and reviewing cost data
 description: Learn how to collect and review cost data for a workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for collecting and reviewing cost data
+# Architecture strategies for collecting and reviewing cost data
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 

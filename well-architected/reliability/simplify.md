@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for designing for simplicity and efficiency
+title: Architecture strategies for designing for simplicity and efficiency
 description: Learn how to minimize unnecessary complexity and overhead by keeping your workloads simple and efficient. 
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for designing for simplicity and efficiency
+# Architecture strategies for designing for simplicity and efficiency
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

@@ -1,13 +1,13 @@
 ---
-title: Architecture design strategies for security testing
-description: Learn about the Architecture design strategies for security testing, including the tools and methodologies you can use to test the security posture of your workload.
+title: Architecture strategies for security testing
+description: Learn about the Architecture strategies for security testing, including the tools and methodologies you can use to test the security posture of your workload.
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for security testing
+# Architecture strategies for security testing
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

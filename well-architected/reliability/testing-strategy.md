@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for designing a reliability testing strategy
+title: Architecture strategies for designing a reliability testing strategy
 description: Learn how to design a reliability testing strategy that focuses on validating and optimizing the reliability of your workload.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for designing a reliability testing strategy
+# Architecture strategies for designing a reliability testing strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

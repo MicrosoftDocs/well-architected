@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for hardening resources
+title: Architecture strategies for hardening resources
 description: Learn how to reduce an attack surface and increase attackers' costs to limit opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for hardening resources
+# Architecture strategies for hardening resources
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 

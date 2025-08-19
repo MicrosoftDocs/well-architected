@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for designing a disaster recovery strategy
+title: Architecture strategies for designing a disaster recovery strategy
 description: Learn how to design a disaster recovery strategy for a workload. 
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for designing a disaster recovery strategy
+# Architecture strategies for designing a disaster recovery strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 

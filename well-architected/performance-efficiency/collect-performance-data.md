@@ -1,5 +1,5 @@
 ---
-title: Architecture design strategies for collecting performance data
+title: Architecture strategies for collecting performance data
 description: Learn recommendations for collecting performance data (metrics and logs) to help you assess the performance of a workload.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Architecture design strategies for collecting performance data
+# Architecture strategies for collecting performance data
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 

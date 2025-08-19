@@ -39,12 +39,12 @@
           href: reliability/checklist.md
         - name: Tradeoffs
           href: reliability/tradeoffs.md
+        - name: Reliability patterns
+          href: reliability/design-patterns.md
         - name: Maturity model 
           href: reliability/maturity-model.md
         - name: Key design strategies   
           items:
-            - name: Reliability patterns
-              href: reliability/design-patterns.md
             - name: RE:01 Simplicity and efficiency
               href: reliability/simplify.md
             - name: RE:02 Critical flows
@@ -79,12 +79,12 @@
           href: security/checklist.md
         - name: Tradeoffs
           href: security/tradeoffs.md
+        - name: Security patterns            
+          href: security/design-patterns.md
         - name: Maturity model 
           href: security/maturity-model.md
         - name: Key design strategies    
           items:
-            - name: Security patterns            
-              href: security/design-patterns.md
             - name: SE:01 Security baseline
               href: security/establish-baseline.md
             - name: SE:02 Secured development lifecycle
@@ -121,12 +121,12 @@
           href: cost-optimization/checklist.md
         - name: Tradeoffs
           href: cost-optimization/tradeoffs.md
+        - name: Cost optimization patterns
+          href: cost-optimization/design-patterns.md
         - name: Maturity model
           href: cost-optimization/maturity-model.md
         - name: Key design strategies   
           items:
-            - name: Cost optimization patterns
-              href: cost-optimization/design-patterns.md
             - name: CO:01 Financial responsibility
               href: cost-optimization/create-culture-financial-responsibility.md
             - name: CO:02 Cost model
@@ -165,12 +165,12 @@
           href: operational-excellence/checklist.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
+        - name: Operational excellence patterns
+          href: operational-excellence/design-patterns.md 
         - name: Maturity model 
           href: operational-excellence/maturity-model.md          
         - name: Key design strategies
           items:
-            - name: Operational excellence patterns
-              href: operational-excellence/design-patterns.md 
             - name: OE:01 DevOps culture
               href: operational-excellence/devops-culture.md
             - name: OE:02 Task execution process
@@ -207,12 +207,12 @@
           href: performance-efficiency/checklist.md
         - name: Tradeoffs
           href: performance-efficiency/tradeoffs.md
+        - name: Performance efficiency patterns
+          href: performance-efficiency/design-patterns.md
         - name: Maturity model
           href: performance-efficiency/maturity-model.md
         - name: Key design strategies   
           items:
-            - name: Performance efficiency patterns
-              href: performance-efficiency/design-patterns.md
             - name: PE:01 Performance targets
               href: performance-efficiency/performance-targets.md
             - name: PE:02 Capacity planning
