@@ -62,7 +62,7 @@ landingContent:
             url: formalize-development-practices.md
           - text: Standardize tools and processes
             url: tools-processes.md
-          - text: Use safe deployment practices (SPD)
+          - text: Use safe deployment practices (SDP)
             url: safe-deployments.md
   - title: Use automation
     linkLists:
