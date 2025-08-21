@@ -57,7 +57,7 @@ Azure managed services provide redundancy through different models, each offerin
 
 When architecting your solution, evaluate whether a managed service option exists for each component before implementing infrastructure-based redundancy. Managed services reduce your operational overhead and often provide more robust redundancy implementations than custom solutions, though they may involve tradeoffs in control and potentially higher costs per unit of capacity.
 
-### Deploy multiple instances of your infrastructure components and services
+### Build redundancy into your workload with multiple component instances
 
 Deploy multiple instances of your infrastructure components and services to achieve the resilience your workload needs. This fundamental redundancy strategy ensures that if one instance fails, other instances can continue to handle the workload. You can achieve multiple instances through different approaches: some scenarios require you to manually configure redundancy by deploying multiple resources individually (such as multiple ExpressRoute circuits or configuring Traffic Manager in multiple regions), while other services are designed to support multiple instances directly (such as setting VM Scale Sets to 5 instances or configuring App Service to run 10 instances). When possible, prefer services that offer built-in support for multiple instances and auto-scaling capabilities, as they simplify redundancy management and can respond to both reliability and performance needs.
 
@@ -105,7 +105,7 @@ When deploying redundant infrastructure components, determine how many instances
 
 - Ensure that your design for handling DNS is built with a focus on resilience and supports redundant infrastructure.
 
-### Deploy redundant instances of the workload or logical groups of resources
+### Use the deployment stamps pattern to streamline your redundancy approach
 
 Beyond redundancy for individual infrastructure components and services, extend your redundancy strategy to the workload level by deploying multiple instances of your entire workload or logical groups of resources. Follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to create repeatable, self-contained units that include all the resources required to deliver your workload to a specific subset of users or requirements.
 
@@ -113,7 +113,7 @@ Deployment stamps represent a shift from component-level to workload-level redun
 
 Whether you deploy stamps in an active-active model (where all stamps actively serve traffic simultaneously) or active-passive model (where one stamp serves traffic while others remain on standby), design each stamp to be a complete, self-sufficient deployment that can handle its designated workload independently.
 
-#### Deploy redundant instances in active-active configuration for zero downtime
+#### Achieve zero downtime through active-active redundancy
 
 Active-active deployments maximize service availability by running multiple instances of a workload simultaneously, each actively handling traffic. This setup ensures immediate failover, eliminates downtime, and optimizes resource use by keeping all instances productive. If one instance fails, traffic is automatically rerouted to healthy ones without disrupting service.
 
@@ -145,7 +145,7 @@ The following sections describe configuration options for active-active deployme
 
 - Common disadvantages of both designs: Higher operating costs and management burden due to various factors, including the necessity of managing the synchronization of application state and data.
 
-#### Deploy redundant instances in active-passive configuration for disaster recovery
+#### Use an active-passive architecture design to provide disaster recovery reslience
 
 Active-passive deployment configurations offer a cost-effective way to ensure disaster recovery by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary fails or undergoes maintenance, minimizing resource usage while still providing reliable failover capabilities.
 
@@ -173,13 +173,13 @@ The following sections describe configuration options for active-passive deploym
 
   - Disadvantage of this design: Longer recovery time than the warm spare design.
 
-### Deploy across proximate independent infrastructure
+### Distribute workloads across proximate independent infrastructure
 
 Deploying workloads across nearby independent datacenters or datacenter sectors offers redundancy without sacrificing performance. By leveraging geographically close but physically separate facilities, this setup ensures fault isolation with minimal latency impact—providing the resilience of distributed infrastructure while maintaining the responsiveness of a single-site deployment. In Azure, this functionality is provide by availability zones, which are physically independent datacenters or datacenter sectors that are designed to let you easily deploy fault-tolerant, low-latency workloads.
 
 For latency-sensitive applications like real-time gaming, this approach enables seamless failover and uninterrupted user experience. Game servers distributed across local datacenters can instantly reroute traffic during outages, with transparent load balancing and near real-time data replication preserving gameplay continuity. However, this strategy does carry some risk, as large-scale regional events could still impact all sites simultaneously.
 
-### Deploy across geo-distant infrastructure
+### Strengthen fault tolerance with geo-distant deployments
 
 Deploying across geographically distributed datacenters offers the strongest protection against large-scale disasters by spreading workloads across regions hundreds or thousands of miles apart. This ensures business continuity during events like natural disasters, infrastructure failures, or geopolitical disruptions that could impact entire metropolitan areas. In Azure, you can deploy workloads into regions, which are spread across the globe. When using this design approach, choose regions that are close to your users, but are geographically distant, like West US and East US for example.
 
