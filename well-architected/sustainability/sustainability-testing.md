@@ -120,8 +120,8 @@ Adding tests and quality gates into the deployment and testing pipeline helps av
 
 - Configure alerts or test failures if established baseline values are surpassed. This configuration helps avoid deploying nonsustainable workloads.
 
-- *Consider the following trade-off:* As applications grow, the baseline might need to shift to avoid failing the tests when you introduce new features.
+- **Consider the following trade-off:** As applications grow, the baseline might need to shift to avoid failing the tests when you introduce new features.
 
 ## Related resource
 
-- [Operational procedures](sustainability-operational-procedures.md)
+- [Operational procedure considerations for sustainable workloads](sustainability-operational-procedures.md)
