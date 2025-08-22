@@ -32,7 +32,7 @@ Running underused or inactive continuous integration and continuous delivery (CI
 
 *Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)*
 
-**Recommendation:**
+**Recommendations:**
 
 - Keep the compute utilization high, based on the current demand, which avoids unnecessary capacity allocation.
 
@@ -46,7 +46,7 @@ Using caching mechanisms during CI/CD can reduce compute time, which reduces car
 
 *Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
-**Recommendation:**
+**Recommendations:**
 
 - Store results from steps in a cache and reuse them between different CI/CD runs when possible. When a step requires CPU time to produce an artifact that doesn't often change between runs, save the artifact for future use. This optimization avoids wasting CPU time on every run that generates the same artifact repeatedly.
 
@@ -58,15 +58,9 @@ Splitting large repositories can help the CI/CD phases where only the changed pa
 
 *Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
-**Recommendation:**
+**Recommendations:**
 
 - Split large code repositories into smaller repositories and separate the main code from libraries and dependencies.
-
-- Publish and reuse artifacts and libraries of code that are common across multiple repositories.
-
-**Recommendation:**
-
-- Split large repositories of code into smaller repositories of code and separate main code from libraries and dependencies.
 
 - Publish and reuse artifacts and libraries of code that are common across multiple repositories.
 
@@ -80,7 +74,7 @@ Without properly profiling and testing workloads, it's difficult to know whether
 
 *Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
-**Recommendation:**
+**Recommendations:**
 
 - Test your applications to understand concurrent requests, simultaneous processing, and other factors.
 
@@ -96,7 +90,7 @@ Running integration, performance, and load tests increases the reliability of a 
 
 *Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)*
 
-**Recommendation:**
+**Recommendations:**
 
 - Use load testing or [chaos engineering](/azure/well-architected/reliability/testing-strategy) to assess how the workload handles platform outages and traffic spikes or dips. This practice helps increase service resilience and the ability to react to failures, which allows for more optimized fault handling.
 
@@ -112,7 +106,7 @@ Adding tests and quality gates into the deployment and testing pipeline helps av
 
 *Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)*
 
-**Recommendation:**
+**Recommendations:**
 
 - Monitor CPU and memory allocations when you run integration tests or unit tests.
 
