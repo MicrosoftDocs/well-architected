@@ -24,7 +24,7 @@ To learn more about how Azure Databricks improves the security of big data analy
 
 ## Recent enhancements
 
-<! keeping this to make sure it's included in the refactored guide.>
+<!-- keeping this to make sure it's included in the refactored guide. -->
 
 Azure Databricks continues to evolve with new integration capabilities that enhance operational excellence while maintaining security:
 

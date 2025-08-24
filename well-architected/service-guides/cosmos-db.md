@@ -92,7 +92,6 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   For control plane and data plane access to your account, create roles, groups, and assignments based on the principle of [least-privilege access](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#privileged-access). Consider [disabling key-based authentication](/azure/cosmos-db/how-to-setup-rbac#disable-local-auth).
 >
->   If applicable and the data platform support is available, take advantage of multi-user access control, to enforce least-privilege principles. For MongoDB vCore clusters, configure [secondary users](/azure/cosmos-db/mongodb/vcore/secondary-users) to enable granular access control. Multiple user accounts with configurable permissions allow development teams to implement role-specific access for different team members while maintaining operational flexibility and security governance.
 >
 > - **Encrypt data.** [Encrypt data](/azure/cosmos-db/database-encryption-at-rest) at rest or data in motion by using service-managed keys or customer-managed keys.
 >
