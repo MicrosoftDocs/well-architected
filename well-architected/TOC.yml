@@ -266,7 +266,7 @@
           href: service-guides/azure-api-management.md
         - name: Azure Application Gateway
           href: service-guides/azure-application-gateway.md
-        - name: Azure Application Insights
+        - name: Application Insights
           href: service-guides/application-insights.md
         - name: Azure App Service
           href: service-guides/app-service-web-apps.md
@@ -316,7 +316,7 @@
           href: service-guides/azure-load-balancer.md
         - name: Azure Local
           href: service-guides/azure-local.md
-        - name: Azure Log Analytics
+        - name: Log Analytics
           href: service-guides/azure-log-analytics.md
         - name: Azure Machine Learning
           href: service-guides/azure-machine-learning.md
