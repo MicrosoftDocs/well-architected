@@ -264,9 +264,9 @@ For comprehensive governance, review the [built-in definitions for Azure Content
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations are aligned with Well-Architected Framework pillars. 
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-For more information, see the recommendations in [Azure Advisor](/azure/advisor/).
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 

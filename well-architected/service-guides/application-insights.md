@@ -229,12 +229,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Currently, Azure provides no Azure Advisor recommendations that are specific to Application Insights.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-The following are recommendations that can help you improve the cost effectiveness and operational excellence of Azure Monitor.
-
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations#management-and-governance)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#management-and-governance)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Related content
 
