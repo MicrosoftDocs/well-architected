@@ -205,7 +205,5 @@ Foundational architecture that demonstrates the key recommendations: [Web applic
 
 Consider the following resources to further explore the recommendations highlighted in this document:
 
-- Reference architectures:
-  - [Serverless web application architecture](/azure/architecture/web-apps/serverless/architectures/web-app)
-  - [Serverless event processing](/azure/architecture/reference-architectures/serverless/event-processing)
-  
+- [Serverless event processing](/azure/architecture/reference-architectures/serverless/event-processing)
+- [Getting started with Azure Functions](/azure/azure-functions/functions-get-started)

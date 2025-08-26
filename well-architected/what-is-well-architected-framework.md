@@ -140,7 +140,7 @@ The model is categorized by pillars and divided into five levels. While the leve
 |Level 2|Build workload assets|Address technical challenges on components directly owned by the workload team, including application code, deployment assets, and operational procedures.|
 |Level 3|Be production-ready|Involve business stakeholders in decision-making and consider tradeoffs with other pillars. For new workloads, this is usually the final step before going to production.|
 |Level 4|Learn from production|Shift focus to maintaining a stable environment, managing change, and accommodating new requirements based on business changes and production learnings.|
-|Level 5|Future-proof with agility|Strive for aspirational quality. You're adept a change so you can handle new market conditions and changes external influences like technology, business requirements, or regulatory concerns.|
+|Level 5|Future-proof with agility|Strive for aspirational quality. You're adept at change so you can handle new market conditions and changes to external influences like technology, business requirements, or regulatory concerns.|
 
 These boundaries are suggested guidelines and don't need to be taken as strict rules. The actual journey will depend on your organizational goals and workload requirements.
 
