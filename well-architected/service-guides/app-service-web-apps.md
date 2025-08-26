@@ -89,7 +89,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   You can use WebJobs to run background tasks in your web app. To run those tasks reliably, ensure that the app that hosts your job runs continuously on a schedule or based on event-driven triggers.
 >
->   For more information, see [Cloud design patterns that support reliability](/azure/well-architected/reliability/design-patterns).
+>   For more information, see [Architecture design patterns that support reliability](/azure/well-architected/reliability/design-patterns).
 >
 > - **Conduct reliability testing:** Conduct load testing to evaluate your application's reliability and performance under load. Test plans should include scenarios that validate your automated recovery operations.
 >

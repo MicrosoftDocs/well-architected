@@ -91,7 +91,7 @@ During the design phase, **the security requirements are converted to technical 
 
 Patterns can support security concerns like segmentation and isolation, strong authorization, uniform application security, and modern protocols. Some operational patterns, such as the Quarantine pattern, can help verify and block the use of software that could potentially introduce security vulnerabilities.
 
-  For more information, see [Cloud design patterns that support security](design-patterns.md).
+  For more information, see [Architecture design patterns that support security](design-patterns.md).
 
 ### Store application secrets securely
 
@@ -243,7 +243,7 @@ Validate the security of any open-source code in your application. These free to
 
 ## Related links
 
-- [Cloud design patterns that support security](design-patterns.md)
+- [Architecture design patterns that support security](design-patterns.md)
 - [Design secure applications on Azure](/azure/security/develop/secure-design)
 - [Deploy secure applications on Azure](/azure/security/develop/secure-deploy)
 - [Develop secure applications on Azure](/azure/security/develop/secure-develop)
