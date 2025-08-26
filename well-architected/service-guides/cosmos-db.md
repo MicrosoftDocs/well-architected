@@ -267,7 +267,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. 
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
 
