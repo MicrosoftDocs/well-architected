@@ -8,23 +8,16 @@ ms.topic: conceptual
 ms.update-cycle: 180-days  
 ---
 
-# Test and evaluate AI workloads on Azure
+# Test and evaluate GenAI workloads on Azur
+This article focuses on two distinct aspects: evaluating the models and testing the entire system. Evaluation and testing are often used interchangeably, but they should be considered separate processes that use distinct datasets. 
 
-The purpose of testing in AI workloads is to help **ensure quality when a change is introduced to the system**. Testing can validate whether the workload meets identified targets and fulfills user expectations. It also prevents quality regressions. This process includes conducting tests across various functional areas and assessing the quality of functionality, load handling, predictability, and other criteria based on workload requirements.
+Evaluation is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. Then, evaluating the model based on various metrics. 
 
-Test results provide critical **data points for decisions** like whether AI components are ready for release and which SKUs or features are appropriate. Additionally, testing can serve as a **notification system for failures** and help detect problems in production through routine or synthetic tests.
+Testing includes verifying the entire system, when a change is introduced, including the tuned model and non-AI components. The goal of validate whether the workload meets identified targets and fulfills user expectations. It also is a nonnegotiable change management strategy that prevents quality regressions. 
 
-The Azure Well-Architected Framework outlines a comprehensive testing methodology. You should **use various types of tests at different stages of the development life cycle and across different system components and flows**. Without these tests, rolled-out changes can degrade system quality. For example, minor code errors might become large system failures. System behavior might become unpredictable or produce biased results because of the nondeterministic nature of AI systems. Also, resource allocation might be inefficient, and real user data or system resources can be exploited because these systems are vulnerable to abuse.
+Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is nonnegotiable before production, we recommend that you do conduct the process in production by using real data and synthetic data.
 
-You must **design and develop workload assets with testing in mind**. For instance, when you perform data manipulation and reshape source data for feature engineering, adhere to good coding practices and ensure that you structure the code to support testing. This strategy includes designing the code to facilitate effective unit testing and isolating the tests from the code's functionality and its dependencies. In this example, you must design a system that can perform in a test environment with sufficiently representative test data in terms of volume and likeness.
-
-You must deploy workload components to production safely. Part of any workload's safe deployment practices is strategic testing to help ensure correct behavior before users or data consume the system. Strategic testing is essential during the initial deployment and as the system evolves and undergoes code or infrastructure changes. Test all proposed changes to AI-related code and infrastructure before you deploy the changes to production.
-
-This article focuses on applying that methodology to the AI aspects of the architecture. How to conduct those tests isn't in scope.
-
-## Recommendations
-
-Here's the summary of recommendations provided in this article.
+//TODO
 
 |Recommendation|Description|
 |---|---|
@@ -37,26 +30,80 @@ Here's the summary of recommendations provided in this article.
 |**Test the orchestrator to validate its functionality and security**.|Conduct unit, functional, integration, and runtime tests, including load and failure mode testing, to ensure performance and reliability. Security and content safety testing are also crucial to protect the system and data.<br><br>&#9642; [Test the orchestrator](#test-the-orchestrator)|
 |**Test for model decay**.|Model decay is an inevitable problem that affects most AI workloads. Testing for data and concept drift can help you catch model decay early and mitigate the problem before it adversely affects your workload.<br><br>&#9642; [Prevent model decay](#prevent-model-decay)|
 
-## Define success metrics
+## Use quality metrics for model evaluation
 
-We recommend that you have a baseline and measure the predictive power of the model by using well-defined metrics. Here are some common metrics.
+Establish a baseline and measure model quality by using metrics that align with your business goals. 
 
-- **Accuracy** represents the ratio of correctly predicted instances to the total instances in the test dataset. It's a common measure of overall model performance.
+Have processes that evaluate and quantify results of the user experience against a set of metrics. For instance, **Groundedness** evaluates whether a generative model's response is supported by the provided context, rather than fabricated. Suppose a legal firm develops an AI assistant that cites statutes. Without proper validation, it could draw from outdated or misclassified documents, resulting in serious consequences. A high groundedness score helps ensure that the model's output remains aligned with trusted source material.
 
-- **Precision** is the ratio of true positive predictions to the sum of true positives and false positives. It's useful when minimizing false positives is important, like in medical diagnoses, for example.
+Select and prioritize metrics based on your specific use case, monitor them continuously, and use them as decision gates for model tuning and deployment. Avoid relying on a single metric, use a combination to capture different dimensions of quality. For example, even if a model demonstrates strong groundedness, it may still produce biased outputs. Incorporate fairness evaluations for more balanced and responsible outcomes.
 
-- **Sensitivity** measures the ratio of true positives to the sum of true positives and false negatives. It's valuable when avoiding false negatives, or missing relevant cases, is critical.
+For information about metrics, see [Monitoring evaluation metrics descriptions and use cases](/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics).
 
-- **Specificity** calculates the ratio of true negatives to the sum of true negatives and false positives. It's relevant when you optimize for accurate negative predictions.
+The strategy of baselining also applies to model training, where various combinations of models, parameters, and features are evaluated using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml?view=azureml-api-2#regressionforecasting-metrics).
 
-> [!NOTE]
-> When you define success metrics for regression models, consider adding the following metrics:
->
-> - **Mean Absolute Error (MAE)** measures the average absolute difference between the predicted values and the actual values. Calculate it by taking the mean of the absolute differences between each actual value and its corresponding predicted value. MAE is less sensitive to outliers compared to MSE and RMSE.
->
-> - **Mean Squared Error (MSE)** measures the average squared difference between the actual values and the predicted values. Calculate it by taking the mean of the squared differences between each actual value and its corresponding predicted value. MSE penalizes larger errors more heavily than MAE because the errors are squared.
->
-> - **Root Mean Squared Error (RMSE)** is the square root of the MSE. It provides a measure of the average absolute error between the actual and predicted values, but in the same units as the original data. RMSE is more sensitive to outliers compared to MAE because it squares the errors before averaging.
+## Test the grounding data
+
+The quality of grounding data directly impacts a generative model's relevance and reliability. This data is preprocessed, chunked, and indexed before reaching the model, and the index is queried in real time while users wait for a response. Testing should be integrated early in the data design process and continue throughout the system lifecycle.
+
+To ensure a high-quality experience, test the entire data flow—including source documents, preprocessing, orchestration logic, and the index itself. Key testing considerations include:
+
+- **Functional and integration testing.** Validate that all data loads correctly and completely. Ensure the pipeline handles missing, empty, or synthetic data as expected.
+
+- **Index schema compatibility**. Test schema changes to ensure backward compatibility. Any field or document changes must preserve support for older data formats.
+
+- **Preprocessing and orchestration testing**. Grounding data preparation involves preprocessing, chunking, and embedding computation, often orchestrated by tools like Azure AI Search skill sets. Test the orchestration pipeline to ensure all steps execute correctly and the resulting data is accurate and relevant.
+
+- **Data freshness and quality checks**. Include tests for stale data, versioning mismatches, synthetic artifacts, and empty or partial tables. Update queries or index settings as needed to reflect the most current and clean data.
+
+- **Index load testing**. Indexes can behave differently under varying loads. Test query performance against realistic usage scenarios to inform decisions about scaling, compute SKUs, and storage requirements.
+
+- **Security testing**. If documents are partitioned with access controls, rigorously test those controls. Ensure that each user or role only accesses permitted content to maintain confidentiality and compliance.
+
+
+## Validate the agentic workflows 
+
+As architectures are evolving to use AI, functionality that was once handled by static or deterministic code is now offloaded to autonomous agents. These agents make decisions often with dynamic behavior.
+
+Consider a RAG application where the orchestrator itself is implemented as an agent. Unlike traditional orchestration, agents can invoke tools, interpret prompts, collaborate with other agents, and adapt in real time, making them more flexible, but harder to validate.
+
+This architecture introduces new challenges for testing and evaluation. Because agents operate non-deterministically, traditional static tests are insufficient. Testing strategy should validate the complete flow from user input to final response, including grounding data retrieval, tool invocation, and response generation. For example, 
+
+- Apply unit testing to deterministic components within the agent logic, especially if you're using agent frameworks like Semantic Kernel. These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
+
+- Verify that agents are calling external tools, APIs, and other agents correctly. Use mock dependencies to validate that data is passed correctly. Simulate tool or agent failures to test reliability in behavior.
+
+- Design scenario-based tests using predefined prompts and expected outputs. Because outputs may vary, evaluate results using automated scoring with another model. Also using human-based review, especially for sensitive or subjective tasks.
+
+- Integrate content safety tools to detect harmful, biased, or inappropriate outputs. Include red teaming exercises to identify unexpected behaviors or jailbreak vulnerabilities. Monitor for fairness, transparency, and compliance with ethical standards.
+
+In addition, conduct regular performance and load testing. Assess the agent's ability to scale under concurrent requests, handle long execution paths, and manage interactions across multiple agents. Continuously monitor for regressions in both logic and performance as the system evolves through iterative releases.
+
+## Test deterministic orchestration code
+
+In some architectures, you might use static, deterministic code, such as a central orchestrator, to coordinate tasks related to a user's request. In a RAG system, for example, the orchestrator interprets user intent, queries the index for grounding data, and calls the model inference endpoint. It may also handle tool calls (like REST APIs) required by agents, depending on the design.
+
+You can build orchestration logic using any general-purpose language, or with frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain.
+
+From a testing perspective, consider Foundry Evaluation SDK, which supports:
+
+- Intent resolution: Does the agent/orchestrator correctly understand the user's request?
+- Tool call accuracy: Are the correct tools called, with the right parameters?
+- Task adherence: Does the final output align with the assigned task and prior reasoning steps?
+
+There are other open source libraries available such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
+
+Treat this orchestration code like any critical system component, running performance, reliability, and functional tests especially on its routing logic. Security applies equally to both orchestration code and the underlying model:
+
+- Jailbreak testing. Always test for jailbreak attempts. Attackers typically target the orchestration layer first, which parses and forwards requests to the model. If malicious inputs aren't filtered, they can compromise model behavior.
+
+- Content safety: In chat-based applications, run both user prompts and grounding context through a content safety service. 
+
+- Endpoint security: For RESTful interfaces, enforce strong authentication and thoroughly test security controls to prevent unauthorized access.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, you can simulate the inference endpoint.
+
+//TODO
 
 ## Test data ingestion
 
@@ -119,22 +166,12 @@ Consider a situation where monitoring indicates performance degradation. To miti
 > [!NOTE]
 > Testing and monitoring serve different purposes. Conduct tests to evaluate potential changes to the system, typically before you implement any changes. Conduct monitoring continuously to assess the overall health of the system.
 
-## Test the training workflow
 
-Train a model by using custom code, such as PyTorch scripts, which do the actual training work. These scripts run on compute, such as in notebooks or Azure Machine Learning jobs, which also require memory and networking resources. We recommend load testing during the design phase to evaluate compute needs and ensure that the proposed SKUs are suitable. You often need manual testing to determine the best configuration to efficiently run the workload within the time limit.
-
-Write the scripts by using specialized SDKs, which handle most of the tasks. However, because scripts are still code, you should integrate unit testing as part of development. These tests help you ensure that no regressions occur when you update dependencies. If unit testing isn't possible, manual testing is necessary before you deploy new code to prevent quality regressions.
-
-These scripts run as part of a workflow, like Azure Machine Learning studio, which can provide insight as to when and whether the script ran. But we recommend that you run integration tests to make sure that these scripts are invoked reliably.
 
 ## Evaluate and test the model
 
-> [!NOTE]
-> Model evaluation and testing are often used interchangeably, but they should be considered separate processes that use distinct datasets. Evaluation is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. It includes adjusting hyperparameters, configurations, or features and then evaluating the model based on various metrics. After you identify the best model, conduct tests during deployment.
->
-> Testing includes verifying the entire system, including the tuned model and non-AI components, to check that they function correctly, integrate well, and deliver the expected results in accordance with quality standards. Evaluate a model in situ alongside other components of the workload. The process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. Although testing is nonnegotiable before production, we recommend that you also conduct tests in production by using real data and synthetic data.
 
-### Use data to evaluate and test
+### Use the right data set
 
 Typically there are three key datasets partitioned from the source data: training, evaluation, and testing.
 
@@ -144,33 +181,8 @@ All datasets should contain high-quality data to minimize noise. Your test cases
 
 To avoid bias in predictions, keep all datasets distinct. You shouldn't use training data for evaluation, and you shouldn't use evaluation data for testing. Reserve unique data for model evaluation and final testing.
 
-### Use evaluation metrics
 
-Training a model and selecting the right one for production are interdependent processes. You need to choose a model initially, but it might change after experimentation and evaluation.
 
-Model evaluation follows as an experimentation loop that assesses numerous permutations of models, parameters, and features by using metrics. These metrics provide scientific ratings, which you must iteratively compare across different versions and configurations to determine the best model. For more information, see [Evaluation metrics](/azure/machine-learning/component-reference/evaluate-model#metrics).
-
-A similar approach applies to generative AI models. Have processes that evaluate and quantify results of the user experience based on the performance of the model. For example, groundedness is one of the key metrics that quantifies how well the model aligns with source data. Relevancy is another important metric that indicates how pertinent the response is to the query. For example metrics, see [Evaluation and monitoring metrics for generative AI](/azure/ai-studio/concepts/evaluation-metrics-built-in).
-
-Evaluate different types of models by using various metrics. The importance of each metric can vary depending on the scenario. Prioritize metrics based on the use case. For example, fairness is crucial in responsible AI. Despite good testing, models can still exhibit unfair bias because of biased source data. Results might score high in relevancy but low in fairness. Integrate fairness evaluations into the process to ensure unbiased outcomes.
-
-Generative AI integrates with orchestration code, routing logic, and an index for retrieval-augmented generation (RAG), which complicates evaluation. Although you should assess the models individually by using metrics, it's also important to evaluate other system components.
-
-### Test the model
-
-Fine-tuning is essentially testing because it modifies a pretrained model to change its behavior. It requires starting with a baseline to understand the model's initial performance. After fine-tuning, reevaluate the model's performance to ensure that it meets quality standards. Consider the following common evaluation metrics:
-
-- **Groundedness** refers to the model's alignment with the source data. A grounded model generates answers that are consistent with reality.
-
-- **Relevancy** indicates how pertinent the response is to a given question. A highly grounded answer might lack relevancy if it doesn't address the question directly.
-
-- **Similarity** measures the similarity between a source data text and the generated response. Did the model use precise wording? A lack of editorial governance can lower the similarity score.
-
-- **Retrieval** indicates the effectiveness of index queries. Evaluate how well the retrieved index data aligns with the question. Irrelevant data from the index search lowers this score. Higher retrieval scores indicate lower variability because they rely solely on the index queries.
-
-- **Fluency** relates to the vocabulary usage. If the model adheres to a style guide and presents content in the appropriate format, it can be fluent even if it lacks grounding or relevancy.
-
-- **Coherence** evaluates whether the model's speech flows naturally and coherently. It assesses whether the conversation feels like a genuine exchange.
 
 ### Test hyperparameters
 
@@ -210,48 +222,6 @@ Regardless of whether you use an inferencing server or a PaaS option, security i
 
 It's important to test if the system can inadvertently expose information it shouldn't. For example, the system shouldn't expose personal information in the response payload. Also, test to make sure a client can't access endpoints that are meant for other identities. Conduct security tests to verify that the API, with its authentication and authorization mechanisms, doesn't leak confidential information and maintains proper user segmentation.
 
-## Test the grounding data
-
-Data design influences a generative model's efficiency, and grounding data is the critical component. Grounding data provides more context to boost the relevance of the response. It's indexed before it reaches the model. This index is accessed in real time as the user waits for an answer.
-
-Conduct end-to-end testing and incorporate that process as part of data design. Implement a testing process that evaluates and quantifies the results of the customer's experience based on the model's performance, orchestration, index, preprocessing, and source data. Monitor and measure the quality metrics iteratively. Here are some considerations:
-
-- Thoroughly test data processing by using functional and integration testing. Verify that data is loaded as expected and that all data is present.
-
-- Test the index schema for backward compatibility. You should test any change to a document or field to ensure that the new version can still accommodate previous versions of data.
-
-- Before data is indexed, it undergoes preparation to reduce noise and bias and enable efficient querying. This process includes preprocessing, chunking, and calculating embeddings, and each step saves data to the context or files in the index. An orchestration pipeline, such as skill sets provided by Azure AI Search, conducts these steps. You must test the orchestration code to ensure that no steps are missed and the processed data is high quality. 
-
-   Tests should check for old data, synthetic values, empty tables, data refresh, and processing on the latest version. If test failures occur, you might need to tweak the search query and index. This process includes adjusting filters and other elements discussed previously. You should think of testing as an iterative activity.
-
-- Indexes are complex and query performance can vary based on index structure, which requires load estimation. Proper load testing can help determine the different SKUs for storage, compute, and other resources that are available to support your requirements.
-
-- You must test all security controls. For example, data might be partitioned into separate documents. Each partition has access controls. You must properly test those controls to protect confidentiality.
-
-## Test the orchestrator
-
-A key component of a RAG application is the central orchestrator. This code coordinates various tasks that relate to the initial user question. Orchestrator tasks typically require an understanding of user intent, a connection to the index to look up grounding data, and calling the inference endpoint. If agents need to do tasks, such as calling REST APIs, this code handles those tasks within the context.
-
-You can develop orchestration code in any language or write it from scratch. However, we recommend that you use technologies like prompt flow in [Azure AI Foundry portal](https://ai.azure.com?cid=learnDocs) or Apache Airflow's Directed Acyclic Graphs (DAGs) to speed up and simplify the development process. Prompt flow provides a design-time experience. Use it to modularize tasks as units and connect inputs and outputs of each unit, ultimately forming the orchestration code, which represents the entire process.
-
-Isolate your orchestration code. **Develop it separately and deploy it as a microservice** with an online endpoint and REST API for access. This approach ensures modularity and ease of deployment.
-
-From a testing perspective, treat this code like any other code and **conduct unit tests**. However, the more important aspect is its functionality, such as its routing logic, which you can validate through functional and integration testing. **Test prompt engineering to ensure that the code can detect user intent and route calls appropriately**. There are several frameworks and libraries for testing, such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
-
-Also, conduct runtime tests, such as failure mode testing. For example, test potential failures that are related to token limitations.
-
-Certain runtime tests can help you make a decision. **Run load tests** to understand how this code behaves under stress and use the results for capacity planning. Because this code is positioned at a crucial point in the architecture where it needs to reach other services, it can help collect telemetry from all those calls. This data can provide insights into how much time is spent on local processing versus network calls and determine the behavior of other components, such as potential latency. Technologies like prompt flow have built-in telemetry capabilities to facilitate this process. Otherwise, incorporate telemetry in your custom code.
-
-> [!NOTE]
->
-> Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, you can simulate the inference endpoint.
-
-
-Security concerns apply to both the orchestration code and the model. **Include testing for jailbreaking**, where the goal is to break the model's security. Attackers don't interact with the model directly. They interact with the orchestration code first. The orchestration code receives user requests and parses them. If the orchestration code receives a malicious request, it can forward that request to the model and potentially compromise the model.
-
-Content safety is another important aspect. In a chatbot application, orchestration code receives chat text. In the code, **consider calling a content safety service**. Send both the user prompt and the grounding context for analysis and receive an assessment of the risk. [Prompt Shields](/azure/ai-services/content-safety/concepts/jailbreak-detection) is a unified API that analyzes large language model inputs and detects user-prompt attacks and document attacks, which are two common types of adversarial inputs.
-
-**Security control and authentication are crucial** for a RESTful endpoint. You need to manage authentication and ensure thorough testing.
 
 ## Prevent model decay
 
@@ -275,6 +245,14 @@ Use **Machine Learning model monitoring** to implement monitoring. Machine Learn
 
 - See [Machine Learning model monitoring](/azure/machine-learning/concept-model-monitoring) to learn about the monitoring capabilities of Machine Learning and the [metrics](/azure/machine-learning/concept-model-monitoring#monitoring-signals-and-metrics) that it captures and analyzes.
 - See the [best practices](/azure/machine-learning/concept-model-monitoring#best-practices-for-model-monitoring) for more recommendations for monitoring.
+
+## Test the training workflow
+
+Train a model by using custom code, such as PyTorch scripts, which do the actual training work. These scripts run on compute, such as in notebooks or Azure Machine Learning jobs, which also require memory and networking resources. We recommend load testing during the design phase to evaluate compute needs and ensure that the proposed SKUs are suitable. You often need manual testing to determine the best configuration to efficiently run the workload within the time limit.
+
+Write the scripts by using specialized SDKs, which handle most of the tasks. However, because scripts are still code, you should integrate unit testing as part of development. These tests help you ensure that no regressions occur when you update dependencies. If unit testing isn't possible, manual testing is necessary before you deploy new code to prevent quality regressions.
+
+These scripts run as part of a workflow, like Azure Machine Learning studio, which can provide insight as to when and whether the script ran. But we recommend that you run integration tests to make sure that these scripts are invoked reliably.
 
 ## Next steps
 
