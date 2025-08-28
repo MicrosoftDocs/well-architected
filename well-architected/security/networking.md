@@ -364,7 +364,6 @@ Be aware of the limitations around logging, scalability, and others aspects that
 
 You can use the **virtual network injection process** to deploy some Azure services into your network. Examples of such services include Azure App Service, Functions, Azure API Management, and Azure Spring Apps. This process **isolates the application** from the internet, systems in private networks, and other Azure services. Inbound and outbound traffic from the application is allowed or denied based on network rules.
 
-### Azure Network Security Perimeter
 ### Azure Bastion
 
 You can use [Azure Bastion](/azure/bastion/bastion-overview) to connect to a VM by using your browser and the Azure portal. Azure Bastion **enhances the security of RDP and SSH connections**. A typical use case includes connecting to a jump box in the same virtual network or a peered virtual network. Using Azure Bastion removes the need for the VM to have a public IP address.
