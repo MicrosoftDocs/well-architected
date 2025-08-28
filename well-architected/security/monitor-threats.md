@@ -195,7 +195,7 @@ Review all logs, including raw traffic, from your network devices.
 
    For an example, see [Monitor networks proactively with alerts and Azure Functions using Packet Capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture).
 
-- Enhance threat analysis with AI-powered security capabilities. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for WAF events from both Azure Front Door and Azure Application Gateway. [Azure Firewall is also integrated with the Microsoft Security Copilot](/azure/firewall/firewall-copilot) to that does investigations of the malicious traffic intercepted by the IDPS feature.|
+- Enhance threat analysis with AI-powered security capabilities. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for WAF events from both Azure Front Door and Azure Application Gateway. [Azure Firewall is also integrated with the Microsoft Security Copilot](/azure/firewall/firewall-copilot) that does investigations of the malicious traffic intercepted by the IDPS feature.|
 
 
 ### Identity
