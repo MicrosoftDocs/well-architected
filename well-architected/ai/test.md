@@ -3,7 +3,7 @@ title: Test and Evaluate AI Workloads on Azure
 description: Learn about AI workload testing operations and metrics that help you maintain the quality of your workload on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 11/01/2024
+ms.date: 08/27/2025
 ms.topic: conceptual
 ms.update-cycle: 180-days  
 ---
@@ -17,17 +17,19 @@ Testing includes verifying the entire system when a change is introduced, includ
 
 Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is nonnegotiable before production, we recommend that you do conduct the process in production by using real data and synthetic data.
 
-The primary focus here is on generative AI models. If you're working with discriminative models, skip ahead to [section/link].
+The primary focus here is on generative AI models. If you're working with discriminative models, skip ahead to [Guidance for testing training models](#guidance-for-testing-training-models).
 
 ## Use quality metrics for model evaluation
 
 Establish a baseline and measure model quality by using metrics that align with your business goals. 
 
-Have processes that evaluate and quantify results of the user experience against a set of metrics. For instance, **Groundedness** evaluates whether a generative model's response is supported by the provided context, rather than fabricated. Suppose a legal firm develops an AI assistant that cites statutes. Without proper validation, it could draw from outdated or misclassified documents, resulting in serious consequences. A high groundedness score helps ensure that the model's output remains aligned with trusted source material.
+Have processes that evaluate and quantify results of the user experience against a set of metrics. For instance, *Groundedness* evaluates whether a generative model's response is supported by the provided context, rather than fabricated. Suppose a legal firm develops an AI assistant that cites statutes. Without proper validation, it could draw from outdated or misclassified documents, resulting in serious consequences. A high groundedness score helps ensure that the model's output remains aligned with trusted source material.
 
 Select and prioritize metrics based on your specific use case, monitor them continuously, and use them as decision gates for model tuning and deployment. Avoid relying on a single metric, use a combination to capture different dimensions of quality. For example, even if a model demonstrates strong groundedness, it may still produce biased outputs. Incorporate fairness evaluations for more balanced and responsible outcomes.
 
 For information about metrics, see [Monitoring evaluation metrics descriptions and use cases](/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics).
+
+
 ## Use the right data set
 
 Refine your model through an iterative process using evaluation data. This dataset, often referred to as the _golden dataset_ consists of trusted input-output pairs, typically created or validated by humans. It serves as the objective benchmark to assess model performance against defined quality metrics.
@@ -38,19 +40,19 @@ In addition to evaluation data, use a separate test dataset to validate model pe
 
 ## Validate agentic workflows 
 
-As architectures are evolving to use AI, functionality that was once handled by deterministic code is now offloaded to autonomous agents. These agents make decisions often with dynamic behavior.
+As architectures are evolving to use AI, functionality that was once handled by deterministic code is now offloaded to *autonomous agents*. These agents make decisions often with dynamic behavior.
 
-Consider a RAG application where the orchestrator itself is implemented as an agent. Unlike traditional orchestration, agents can invoke tools, interpret prompts, collaborate with other agents, and adapt in real time, making them more flexible, but harder to validate.
+Consider a RAG application where the *orchestrator* itself is implemented as an agent. Unlike traditional orchestration, agents can invoke tools, interpret prompts, collaborate with other agents, and adapt in real time, making them more flexible, but harder to validate.
 
-This type of architecture introduces new challenges for testing and evaluation. Because agents operate non-deterministically, traditional static tests are insufficient. Testing strategy should validate the complete flow from user input to final response, including grounding data retrieval, tool invocation, and response generation. For example, 
+This type of architecture introduces new challenges for testing and evaluation. Because agents operate non-deterministically, traditional static tests are insufficient. Testing strategy should validate the complete flow from user input to final response, including *grounding data* retrieval, tool invocation, and response generation. For example, 
 
-- Apply unit testing to deterministic components within the agent logic, especially if you're using agent frameworks like Semantic Kernel. These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
+- **Apply unit testing to deterministic components within the agent logic, especially if you're using agent frameworks like Semantic Kernel.** These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
 
-- Verify that agents are calling external tools, APIs, and other agents correctly. Use mock dependencies to validate that data is passed correctly. Simulate tool or agent failures to test reliability in behavior.
+- **Verify that agents are calling external tools, APIs, and other agents correctly.** Use mock dependencies to validate that data is passed correctly. Simulate tool or agent failures to test reliability in behavior.
 
-- Design scenario-based tests using predefined prompts and expected outputs. Because outputs may vary, evaluate results using automated scoring with another model. Also using human-based review, especially for sensitive or subjective tasks.
+- **Design scenario-based tests using predefined prompts and expected outputs.** Because outputs may vary, evaluate results using automated scoring with another model. Also using human-based review, especially for sensitive or subjective tasks.
 
-- Integrate content safety tools to detect harmful, biased, or inappropriate outputs. Include red teaming exercises to identify unexpected behaviors or jailbreak vulnerabilities. Monitor for fairness, transparency, and compliance with ethical standards.
+- **Integrate content safety tools to detect harmful, biased, or inappropriate outputs.** Include red teaming exercises to identify unexpected behaviors or jailbreak vulnerabilities. Monitor for fairness, transparency, and compliance with ethical standards.
 
 From a tooling perspective, consider [Azure AI Evaluation SDK](/azure/ai-foundry/how-to/develop/agent-evaluate-sdk), which supports checks like:
 
@@ -62,17 +64,17 @@ In addition, conduct regular performance and load testing. Assess the agent's ab
 
 ## Test deterministic orchestration
 
-In some architectures, you might use static or deterministic code, to coordinate tasks related to a user's request. In a RAG system, for example, the orchestrator interprets user intent, queries the index for grounding data, and calls the model inference endpoint. It may also handle tool calls (like REST APIs) required by agents, depending on the design.
+In some architectures, you might use static or deterministic code, to coordinate tasks related to a user's request. In a RAG system, for example, the orchestrator interprets user intent, queries the index for grounding data, and calls the model *inference endpoint*. It may also handle tool calls (like REST APIs) required by agents, depending on the design.
 
 You can build orchestration logic using any general-purpose language, or with frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain.
 
 From a testing perspective, treat this orchestration code like any critical system component, running performance, reliability, and functional tests especially on its routing logic. Security applies equally to both orchestration code and the underlying model:
 
-- Jailbreak testing. Always test for jailbreak attempts. Attackers typically target the orchestration layer first, which parses and forwards requests to the model. If malicious inputs aren't filtered, they can compromise model behavior.
+- **Jailbreak testing.** Always test for jailbreak attempts. Attackers typically target the orchestration layer first, which parses and forwards requests to the model. If malicious inputs aren't filtered, they can compromise model behavior.
 
-- Content safety. In chat-based applications, run both user prompts and grounding context through a content safety service. 
+- **Content safety.** In chat-based applications, run both user prompts and grounding context through a content safety service. 
 
-- Endpoint security. For RESTful interfaces, enforce strong authentication and thoroughly test security controls to prevent unauthorized access.
+- **Endpoint security.** For RESTful interfaces, enforce strong authentication and thoroughly test security controls to prevent unauthorized access.
 
 There are other open source libraries available such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
 
@@ -83,36 +85,36 @@ There are other open source libraries available such as Scikit-learn, PyTorch's 
 
 Inference endpoints expose your generative models through REST APIs and must be tested beyond just model accuracy whether you're using PaaS platforms or self-hosted servers, test the endpoint just like you would for any other endpoint to ensure reliability, scalability, and security.
 
-- Functional and integration testing. Validate request handling, response structure, and integration with other components.
+- **Functional and integration testing.** Validate request handling, response structure, and integration with other components.
 
-- Performance and load testing. Simulate realistic conditions to evaluate throughput, latency, and resource usage. For PaaS inference endpoints, focus on token-level metrics (tokens/sec or tokens/min), which are more meaningful than traditional request sizes of REST APIs.
+- **Performance and load testing.** Simulate realistic conditions to evaluate throughput, latency, and resource usage. For PaaS inference endpoints, focus on token-level metrics (tokens/sec or tokens/min), which are more meaningful than traditional request sizes of REST APIs.
 
-- Scaling and GPU optimization. Test under varying load to determine the right GPU SKU or autoscaling configuration. Avoid overprovisioning by monitoring actual GPU usage.
+- **Scaling and GPU optimization.** Test under varying load to determine the right GPU SKU or autoscaling configuration. Avoid overprovisioning by monitoring actual GPU usage.
 
    > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** GPU SKUs are expensive. It's important to continuously check whether GPU resources are underused and rightsize them, when possible. After you make adjustments, test resource usage to maintain the balance between cost efficiency and performance optimization. 
 
-- Failure handling. Simulate throttling, like HTTP 429 errors, backend timeouts, and service unavailability. Validate that your client handles retries, backoff, and circuit breaking appropriately.
+- **Failure handling.** Simulate throttling, like HTTP 429 errors, backend timeouts, and service unavailability. Validate that your client handles retries, backoff, and circuit breaking appropriately.
 
-- Security and content safety. For public or self-hosted endpoints, perform penetration tests and validate access controls. Use content moderation tools like Azure AI Content Safety to test and filter unsafe input/output.
+- **Security and content safety.** For public or self-hosted endpoints, perform penetration tests and validate access controls. Use content moderation tools like Azure AI Content Safety to test and filter unsafe input/output.
 
 
 ## Test the grounding data workflow
 
-The relevance of a generative AI model depends on the quality and integrity of its grounding data. Grounding data can be seeded to the model by using data processing pipelines. This data is preprocessed, chunked, and indexed before reaching the model. The model queries the index in real time during user interaction, making indexing performance and accuracy critical to the user experience. Integrate testing early and maintain it throughout the system lifecycle.
+The relevance of a generative AI model depends on the quality and integrity of its *grounding data*. Grounding data can be seeded to the model by using data processing pipelines. This data is preprocessed, chunked, and indexed before reaching the model. The model queries the index in real time during user interaction, making indexing performance and accuracy critical to the user experience. Integrate testing early and maintain it throughout the system lifecycle.
 
 Poorly tested data pipelines can lead to inconsistent results and lead to cross-cutting concerns like security breaches. To ensure a high-quality experience, test the entire data flow, including source documents, preprocessing, orchestration logic, and the index itself. Key testing considerations include:
 
 - **Functional and integration testing.** Validate that all data loads correctly and completely. Ensure the pipeline handles missing, empty, or synthetic data as expected.
 
-- **Index schema compatibility**. Test schema changes to ensure backward compatibility. Any field or document changes must preserve support for older data formats.
+- **Index schema compatibility.** Test schema changes to ensure backward compatibility. Any field or document changes must preserve support for older data formats.
 
-- **Preprocessing and orchestration testing**. Grounding data preparation involves preprocessing, chunking, and embedding computation, often orchestrated by tools like Azure AI Search skill sets. Test the orchestration pipeline to ensure all steps execute correctly and the resulting data is accurate and relevant.
+- **Preprocessing and orchestration testing.** Grounding data preparation involves preprocessing, chunking, and embedding computation, often orchestrated by tools like Azure AI Search skill sets. Test the orchestration pipeline to ensure all steps execute correctly and the resulting data is accurate and relevant.
 
-- **Data freshness and quality checks**. Include tests for stale data, versioning mismatches, synthetic artifacts, and empty or partial tables. Update queries or index settings as needed to reflect the most current and clean data.
+- **Data freshness and quality checks.** Include tests for stale data, versioning mismatches, synthetic artifacts, and empty or partial tables. Update queries or index settings as needed to reflect the most current and clean data.
 
-- **Index load testing**. Indexes can behave differently under varying loads. Test query performance against realistic usage scenarios to inform decisions about scaling, compute SKUs, and storage requirements.
+- **Index load testing.** Indexes can behave differently under varying loads. Test query performance against realistic usage scenarios to inform decisions about scaling, compute SKUs, and storage requirements.
 
-- **Security testing**. If documents are partitioned with access controls, rigorously test those controls. Ensure that each user or role only accesses permitted content to maintain confidentiality and compliance.
+- **Security testing.** If documents are partitioned with access controls, rigorously test those controls. Ensure that each user or role only accesses permitted content to maintain confidentiality and compliance.
 
 
 ## Guidance for testing training models
@@ -123,21 +125,21 @@ For more information, see [Regression/forecasting metrics](/azure/machine-learni
 
 ### Training data workflow
 
-- **Data pipeline technologies**. Combine functional, load, and performance tests using synthetic data to assess scalability and make informed decisions about sizing or product suitability, required SKUs, and system integration.
+- **Data pipeline technologies.** Combine functional, load, and performance tests using synthetic data to assess scalability and make informed decisions about sizing or product suitability, required SKUs, and system integration.
 
-- **Ingestion workflow**. Test ETL/ELT pipelines end-to-end to make sure that they ingest data reliably and that the data is high quality.  Also, test integration with all connected systems and monitor external dependencies. Use synthetic data to validate end-to-end processing, particularly for complex or high-volume workloads.
+- **Ingestion workflow.** Test ETL/ELT pipelines end-to-end to make sure that they ingest data reliably and that the data is high quality.  Also, test integration with all connected systems and monitor external dependencies. Use synthetic data to validate end-to-end processing, particularly for complex or high-volume workloads.
 
    Test scheduled jobs to validate that ingestion tasks complete on time and return expected volumes.
 
-- **Data quality on ingestion**. Verify that data cleansing and processing include tests to confirm that data manipulation functions as intended. Include checks for completeness, freshness, schema consistency, uniqueness, and relevance. Also structured data is ingested without duplicates, missing values, or invalid entries.
+- **Data quality on ingestion.** Verify that data cleansing and processing include tests to confirm that data manipulation functions as intended. Include checks for completeness, freshness, schema consistency, uniqueness, and relevance. Also structured data is ingested without duplicates, missing values, or invalid entries.
 
-- **Feature and label integrity**. Validate that features are correctly calculated and labels accurately assigned, especially when using complex rules. Check for data leakage to prevent future or label-derived information from contaminating training data. Also, verify that data splits are appropriate to avoid biased or overlapping samples because even subtle leakage can harm model performance.
+- **Feature and label integrity.** Validate that features are correctly calculated and labels accurately assigned, especially when using complex rules. Check for data leakage to prevent future or label-derived information from contaminating training data. Also, verify that data splits are appropriate to avoid biased or overlapping samples because even subtle leakage can harm model performance.
 
-- **Hyperparameter testing**. Hyperparameter testing is an iterative process where model parameters are tuned to meet accuracy goals based on your workload's use case. This involves repeatedly training on selected data and evaluating on test data to validate performance. Start with a smaller dataset to quickly assess model behavior, then scale testing to the full set. Be mindful of the trade-off between model accuracy and the computational cost and time required for repeated training and evaluation.
+- **Hyperparameter testing.** Hyperparameter testing is an iterative process where model parameters are tuned to meet accuracy goals based on your workload's use case. This involves repeatedly training on selected data and evaluating on test data to validate performance. Start with a smaller dataset to quickly assess model behavior, then scale testing to the full set. Be mindful of the trade-off between model accuracy and the computational cost and time required for repeated training and evaluation.
 
-- **Code quality**. When training models using custom code, like with PyTorch script, run load tests during the design phase to evaluate compute requirements and select appropriate SKUs. Use unit tests to catch regressions during development, and rely on manual testing when automation isn't feasible. Since these scripts run within workflows, add integration tests to verify that scripts are executed reliably within the pipeline.
+- **Code quality.** When training models using custom code, like with PyTorch script, run load tests during the design phase to evaluate compute requirements and select appropriate SKUs. Use unit tests to catch regressions during development, and rely on manual testing when automation isn't feasible. Since these scripts run within workflows, add integration tests to verify that scripts are executed reliably within the pipeline.
 
-- **Live-site testing**. Extend functional testing into the live system. Run scheduled tests to validate data volumes, detect missing or duplicate records, and confirm data freshness. Use synthetic data to safely validate end-to-end transformations and logic under production conditions. Incorporate A/B tests to evaluate new experiences and prevent quality regressions before full deployment. Configure alerting to trigger immediate investigation when tests fail.
+- **Live-site testing.** Extend functional testing into the live system. Run scheduled tests to validate data volumes, detect missing or duplicate records, and confirm data freshness. Use synthetic data to safely validate end-to-end transformations and logic under production conditions. Incorporate A/B tests to evaluate new experiences and prevent quality regressions before full deployment. Configure alerting to trigger immediate investigation when tests fail.
 
 Integrate data testing into CI/CD pipelines by automating unit and functional tests, especially during code changes or pipeline updates. Add quality checks before retraining, and use side-by-side deployments to safely test in production. Set up alerting for test failures or ingestion anomalies.
 
