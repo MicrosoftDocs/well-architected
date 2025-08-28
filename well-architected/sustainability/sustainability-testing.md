@@ -66,7 +66,7 @@ Splitting large repositories can help the CI/CD phases where only the changed pa
 
 ## Profile and measure workloads
 
-Measuring, profiling, and testing workloads is imperative to understanding how to best use allocated resources.
+Measuring, profiling, and testing a workload is imperative to understanding how to best use allocated resources.
 
 ### Assess where parallelization is possible
 
