@@ -94,9 +94,10 @@ strategy to include more approaches as needed.
 >
 >   Use fully qualified domain names (FQDN) and service tags when you define network rules to simplify management.
 >
->- **Use detection mechanisms** to diligently monitor for threats and signs of abuse. Take advantage of platform-provided detection mechanisms and measures. Enable the intrusion detection and prevention system (IDPS). Associate an Azure DDoS Protection plan with your hub virtual network.
+>- **Use detection mechanisms** to diligently monitor for threats and signs of abuse. Take advantage of platform-provided detection mechanisms and measures. Enable the intrusion detection and prevention system (IDPS). Associate an Azure DDoS Protection plan with your hub virtual network. Where possible, explore capabilities that enhance threat analysis with AI-powered security capabilities.
 >
 >   For more information, see [Detect abuse](../security/monitor-threats.md#detect-abuse).
+
 
 ### Configuration recommendations
 
@@ -114,6 +115,9 @@ strategy to include more approaches as needed.
 | Enable the [IDPS](/azure/firewall/premium-features#idps) in *Alert* or *Alert and deny* mode. Consider the [performance impact](#cost-optimization) of this feature. |Enable IDPS filtering in Azure Firewall provides real-time monitoring and analysis of network traffic to detect and prevent malicious activities. This feature uses signature-based detection to swiftly identify known threats and block them before they cause harm. <br><br> For more information, see [Detect abuse](../security/monitor-threats.md#detect-abuse). |
 | Use an [internal enterprise certification authority (CA)](/azure/firewall/premium-certificates) to generate certificates when you use [TLS inspection](/azure/firewall/premium-features#tls-inspection) with Azure Firewall Premium. Use self-signed certificates only for [testing and proof of concept (PoC) purposes](https://techcommunity.microsoft.com/t5/azure-network-security-blog/building-a-poc-for-tls-inspection-in-azure-firewall/ba-p/3676723). | Enable TLS inspection so that Azure Firewall Premium terminates and inspects TLS connections to detect, alert, and mitigate malicious activity in HTTPS. |
 | Use Firewall Manager to create and associate an [Azure DDoS Protection plan](/azure/firewall-manager/configure-ddos) with your hub virtual network. This approach doesn't apply to Virtual WAN. | Configure an Azure DDoS Protection plan so that you can centrally manage DDoS protection alongside your firewall policies. This approach streamlines how you manage your network security and simplifies how you deploy and monitor processes. |
+|Use [integration in Security Copilot](/azure/firewall/firewall-copilot) to do investigations of the malicious traffic. |This integration helps analysts perform detailed investigations of the malicious traffic intercepted by the IDPS feature.|
+
+
 
 ## Cost Optimization
 
@@ -275,4 +279,4 @@ recommendations in this article.
 - [Protect your network resources with Microsoft Defender for Cloud](/azure/defender-for-cloud/protect-network-resources)
 -->
 
-<!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568 -->
+<!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568, public-preview-azure-firewall-integration-in-microsoft-copilot-for-security -->
