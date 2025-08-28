@@ -36,7 +36,6 @@ Refine your model through an iterative process using evaluation data. This datas
 
 Ensure the dataset is representative of the domain or task, with diverse, high-quality examples and minimal noise. A limited sample size can lead to poor evaluation quality, so consider generating synthetic data to improve balance and coverage.
 
-In addition to evaluation data, use a separate test dataset to validate model performance once it meets your quality standards. To avoid bias and data leakage, keep all datasets (training, evaluation, and testing) strictly separate. Avoid reusing source data for evaluation or using evaluation data for final testing.
 
 ## Validate agentic workflows 
 
