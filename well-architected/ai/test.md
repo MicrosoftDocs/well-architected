@@ -121,7 +121,7 @@ Poorly tested data pipelines can lead to inconsistent results and lead to cross-
 
 Similar to generative AI models, ehe strategy of baselining also applies to model training for measuring model quality, where various combinations of models, parameters, and features are evaluated using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
 
-For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml?view=azureml-api-2#regressionforecasting-metrics). 
+For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml#regressionforecasting-metrics). 
 
 ### Training data workflow
 
