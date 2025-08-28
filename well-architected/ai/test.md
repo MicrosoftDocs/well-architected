@@ -11,9 +11,9 @@ ms.update-cycle: 180-days
 # Test and evaluate GenAI workloads on Azure
 This article focuses on two distinct aspects: evaluating the models and testing the entire system. Evaluation and testing are often used interchangeably, but they should be considered separate processes that use distinct datasets. 
 
-Evaluation is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. Then, evaluating the model based on various metrics. 
+_Evaluation_ is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. Then, evaluating the model based on various metrics. 
 
-Testing includes verifying the entire system when a change is introduced, including the tuned model and non-AI components. The goal is to validate whether the workload meets identified targets and fulfills user expectations. It is also a non‑negotiable change management strategy that prevents quality regressions.
+_Testing_ includes verifying the entire system when a change is introduced, including the tuned model and non-AI components. The goal is to validate whether the workload meets identified targets and fulfills user expectations. It is also a non‑negotiable change management strategy that prevents quality regressions.
 
 Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is nonnegotiable before production, we recommend that you do conduct the process in production by using real data and synthetic data.
 
