@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Functions
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations for Azure Functions.
 author: PageWriter-MSFT
 ms.author: mohamad
-ms.date: 02/12/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 ms. service: waf
 ms. subservice: waf-service-guide
@@ -67,7 +67,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | Recommendation | Benefit |
 |----------------|---------|
 | Configure **automatic retries** for transient errors. Learn more about [Azure Functions error handling and retries](/azure/azure-functions/functions-bindings-error-pages). | Improves reliability by automatically retrying failed runs, which reduces the likelihood of data loss or interruption. |
-| Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable operation of long-running workflows, with built-in state management and automatic retries. |
+| Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable operation of long-running workflows, with built-in state management and automatic retries.  |
 | Implement **monitoring** and **centralized logging** by using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function operations and dependencies. |
 |**Scale out automatically** based on the Functions hosting plan, trigger type, and demand. [Learn more about scaling](/azure/azure-functions/functions-scale). | Helps ensure that your application can handle increases in traffic without manual intervention, which improves reliability and performance. |
 
@@ -207,3 +207,5 @@ Consider the following resources to further explore the recommendations highligh
 
 - [Serverless event processing](/azure/architecture/reference-architectures/serverless/event-processing)
 - [Getting started with Azure Functions](/azure/azure-functions/functions-get-started)
+
+<!-- Updated: August 17, 2025 for Azure Update 498149 -->
