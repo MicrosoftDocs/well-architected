@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing for simplicity and efficiency
+title: Architecture strategies for designing for simplicity and efficiency
 description: Learn how to minimize unnecessary complexity and overhead by keeping your workloads simple and efficient. 
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing for simplicity and efficiency
+# Architecture strategies for designing for simplicity and efficiency
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -22,7 +22,6 @@ This guide describes the recommendations for minimizing unnecessary complexity a
 |---------|---------|
 |Workload | A discrete capability or computing task that you can logically separate from other tasks. |
 
-## Key design strategies
 
 A key tenet of designing for reliability is to keep things simple and efficient. Focus your workload design on meeting business requirements to reduce the risk of unnecessary complexity or excess overhead. Consider the recommendations in this article to help you make decisions about your design to create a lean, efficient, and reliable workload. Different workloads might have different requirements for availability, scalability, data consistency, and disaster recovery.
 
@@ -30,7 +29,7 @@ You must justify every design decision with a business requirement. This design 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components. Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
 
-### Collaborate with stakeholders on design exercises
+## Collaborate with stakeholders on design exercises
 
 Work with stakeholders to:
 
@@ -44,7 +43,7 @@ Work with stakeholders to:
 
 - **Define availability and recovery targets** for your flows to inform your workload's architecture. Business metrics include service-level objectives (SLOs), service-level agreements (SLAs), mean time to recover (MTTR), mean time between failure (MTBF), recovery time objectives (RTOs), and recovery point objectives (RPOs). Define target values for these metrics. This exercise might require compromise and mutual understanding between technology and business teams to ensure that each team's goals meet business objectives and are realistic. For more information, see [Recommendations for defining reliability targets](metrics.md).
 
-### Favor simpler design choices
+## Favor simpler design choices
 
 You can perform the following recommendations without stakeholder engagement:
 
@@ -62,7 +61,7 @@ You can perform the following recommendations without stakeholder engagement:
 
 - **Evaluate the suitability of common patterns and practices** for your needs. Avoid following trends or recommendations that might not be best for your context or requirements. For example, microservices aren't the best option for every application because they can introduce complexity, overhead, and dependency issues.
 
-### Develop just enough code
+## Develop just enough code
 
 The principles of simplicity, efficiency, and reliability also apply to your development practices. In a loosely coupled, componentized workload, determine the functionality that a component provides. Develop your flows to take advantage of that functionality. Consider these recommendations for your development practices:
 
@@ -74,7 +73,7 @@ The principles of simplicity, efficiency, and reliability also apply to your dev
 
 - Implement an approach to identify *dead code*. Be skeptical of the code that your automated tests don't cover.
 
-### Select the right data store
+## Select the right data store
 
 In the past, many organizations stored all their data in large relational SQL databases. Relational databases provide atomic, consistent, isolated, and durable (ACID) guarantees for relational data transactions. But these databases come with disadvantages:
 
@@ -84,7 +83,7 @@ In the past, many organizations stored all their data in large relational SQL da
 
 - Lock contention can affect performance.
 
-#### Alternatives to relational databases
+### Alternatives to relational databases
 
 In a large solution, a single data store technology likely doesn't meet all your needs. Alternatives to relational databases include:
 
@@ -104,7 +103,7 @@ Each option has pros and cons. Different data types are better suited for differ
 
 For example, you might store a product catalog in a document database, such as Azure Cosmos DB, which supports a flexible schema. Each product description is a self-contained document. For queries over the entire catalog, you might index the catalog and store the index in Azure Cognitive Search. Product inventory might go into a SQL database because that data requires ACID guarantees.
 
-#### Recommendations
+### Recommendations
 
 - Consider other data stores. Relational databases aren't always appropriate. For more information, see [Understand data store models](/azure/architecture/guide/technology-choices/data-store-overview).
 

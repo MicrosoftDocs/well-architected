@@ -1,5 +1,5 @@
 ---
-title: Recommendations for selecting the right services
+title: Architecture strategies for selecting the right services
 description: Learn how to select the appropriate services that best meet the requirements and demands of your workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for selecting the right services
+# Architecture strategies for selecting the right services
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -32,11 +32,10 @@ This guide describes the recommendations for selecting appropriate services for 
 | Stock keeping unit (SKU) | A service tier for an Azure service. |
 |Storage service| A service that provides storage for objects, blocks, and files.|
 
-## Key design strategies
 
 The services you choose should align with your workload's performance targets and be adaptable to future capacity needs. As the workload expands or evolves, the services you use should match your performance standards without requiring major adjustments. Consider the balance between platform features and custom implementations. Platform features provide immediate solutions, but custom-built options offer precise tailoring. Your service selections should be both forward-thinking and tailored to your specific needs, taking into account the trade-offs between convenience and customization.
 
-### Understand workload requirements
+## Understand workload requirements
 
 Understanding workload requirements refers to grasping the technical and functional demands of a workload. This analysis helps determine the resources, storage, compute, network, and other specifications needed to run the workload. Aligning services with the specific needs of a workload helps prevent overprovisioning or underutilizing resources.
 
@@ -52,23 +51,23 @@ Evaluate the needs and characteristics of your workload to determine the require
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Specialized services offer specific functionalities but might limit customization. Flexible resources require more management and configuration compared to specialized services. Managed services offer ease of management, but you might have less control over the underlying infrastructure compared to self-managed resources.
 
-### Understand services
+## Understand services
 
 Understanding services is about knowing the capabilities, limits, and functionalities of a vendor's tools and offerings. An understanding of services helps you use built-in features, reducing the need for complex custom solutions and improving performance efficiency.
 
 Consider various factors and gain a comprehensive understanding of a service before you choose it. Research and assess services and tools that the provider offers. Determine which services and tools best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services.
 
-#### Understand service limits
+### Understand service limits
 
 Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately. Your planning takes into account factors such as data volume, processing capacity, and data residency requirements.
 
-#### Prefer platform features
+### Prefer platform features
 
 Preferring platform features is about using built-in functionalities provided by a provider to handle specific tasks without custom code. Vendors design platform features to handle specific tasks efficiently at scale, and they regularly maintain these features. Platform features allow you to better take advantage of cloud infrastructure capabilities. Choose services that allow you to offload functionality to the platform instead of writing and maintaining your own custom code. In many cases, platform-as-a-service (PaaS) solutions provide better performance efficiency than custom code. Custom code adds complexity and makes the workload prone to performance issues. Only develop custom code when service features aren't sufficient.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The best service for your workload might be a technology that your team isn't skilled at, can't afford, or it might require extra security layers. For example, a public load balancer might fit your performance needs. But if you don't have a web application firewall, you might have to deploy a firewall to secure the workload.
 
-### Evaluate infrastructure requirements
+## Evaluate infrastructure requirements
 
 The performance efficiency of resources is tied to the infrastructure they reside on. It makes the selection of the right infrastructure critical to service performance efficiency. Evaluating infrastructure requirements means to identify the geographical region and availability zones best suited to support your workload. Key considerations in this decision-making include:
 
@@ -82,7 +81,7 @@ The performance efficiency of resources is tied to the infrastructure they resid
 
 - *Understand datacenter mapping.* Availability zones might not map consistently to the same datacenters across different subscriptions. For instance, 'Zone 1' in 'Subscription A' might be different from 'Zone 1' in 'Subscription B'. When operating with multiple subscriptions, you should know these mappings to select zones that bolster performance optimally.
 
-### Evaluate networking requirements
+## Evaluate networking requirements
 
 Assess your network needs to determine the appropriate workload services and configurations. Ensure that the network can support your workload. To evaluate networking requirements, consider:
 
@@ -96,7 +95,7 @@ Assess your network needs to determine the appropriate workload services and con
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Private virtual networking limits public access and makes it difficult to deploy and manage resources.
 
-### Evaluate compute requirements
+## Evaluate compute requirements
 
 Evaluating compute requirements involves assessing the specific compute needs of a workload, including factors such as instance type, scalability, and containerization. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently. Consider the following strategies:
 
@@ -119,7 +118,7 @@ Evaluating compute requirements involves assessing the specific compute needs of
 
 - *Determine the instance count.* Determine the minimum instance count that your workload requires. Some workloads, even at minimal load, might require more than one instance of a compute resource. Set the minimum instance count accordingly.
 
-### Evaluate load balancing requirements
+## Evaluate load balancing requirements
 
 Load balancing ensures that network traffic is distributed evenly and prevents any single server from being overwhelmed with requests. Load balancing helps prevent bottlenecks and reduce response times. Evaluate the different load balancing services that your cloud provider offers. Review the cloud provider's documentation and comparison tools to understand the features. Select the most suitable service for your workload. To select a load balancing service, consider:
 
@@ -131,11 +130,11 @@ Load balancing ensures that network traffic is distributed evenly and prevents a
 
 - *Understand features*: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency layer-4 load balancing.
 
-### Evaluate data store requirements
+## Evaluate data store requirements
 
 Evaluating data store requirements is about assessing the specific needs and conditions for storing, retrieving, and managing data. This assessment considers factors like data volume, access speed, consistency, and durability. A workload might require multiple types of data stores based on varying business and technical requirements. Identifying the right data store services and proper implementation helps prevent bottlenecks and ensures quick data access.
 
-#### Evaluate database requirements
+### Evaluate database requirements
 
 The database can affect factors such as data storage and retrieval, transaction processing, consistency guarantees, and handling of large or rapidly changing data. Assess the needs and criteria for your database. Select a database system that can meet those requirements. Evaluate the database requirements before you choose a database. To evaluate the database requirements and choose the appropriate database, follow these steps:
 
@@ -147,11 +146,11 @@ The database can affect factors such as data storage and retrieval, transaction 
 
 - *Assess the load.* Consider factors such as data volume, transaction rates, read/write ratios, and expected growth. Choose a database that can handle the anticipated workload to ensure smooth operation and prevent performance bottlenecks as your workload is scaled. Consider the scalability requirements of your workload. These requirements include anticipated data growth, concurrent user access, and the need for horizontal or vertical scaling. Evaluate the scalability options and availability features that different database systems provide.
 
-#### Evaluate storage requirements
+### Evaluate storage requirements
 
 Choose storage services that align with your data access patterns, durability requirements, and performance needs. Most cloud workloads use a combination of storage technologies. This technique is known as the polyglot persistence approach. Determine the appropriate combination of storage services for your workload. You might also want to separate data to avoid contamination. For example, you might have separate storage accounts for monitoring data and business data. Choosing the right mix and correct implementation is important for optimizing application performance.
 
-### Evaluate cache requirements
+## Evaluate cache requirements
 
 A cache stores frequently accessed data. Caching reduces data access latency and lowers the load on data storage components. It allows the workload to handle more requests without scaling. It's common to cache workload data and static content. A Redis cache can store session data, database results, API responses, and reference data, such as configuration settings. A content delivery network or static web app can cache and serve static content. Consider caching data to improve your workload performance. Choose the right caching option for your workload, preferring the platform caching services, such as Azure Redis Cache, over custom or self-hosted ones.
 

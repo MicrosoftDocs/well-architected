@@ -42,7 +42,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > 
 >   Azure Front Door supports several routing methods, which you can configure to distribute traffic in an active-active or active-passive model.
 >
->   The preceding models have many variations. For example, you can deploy the active-passive model with a warm spare. In this case, the secondary hosted service deploys with the minimum possible compute and data sizing and runs without load. Upon failover, the compute and data resources scale to handle the load from the primary region. For more information, see [Key design strategies for multiregion design](/azure/well-architected/reliability/highly-available-multi-region-design#key-design-strategies).
+>   The preceding models have many variations. For example, you can deploy the active-passive model with a warm spare. In this case, the secondary hosted service deploys with the minimum possible compute and data sizing and runs without load. Upon failover, the compute and data resources scale to handle the load from the primary region. For more information, see [Architecture strategies for multiregion design](/azure/well-architected/reliability/highly-available-multi-region-design#key-design-strategies).
 >
 >   Some applications need the user connections to stay on the same origin server during the user session. From a reliability perspective, we don't recommend keeping user connections on the same origin server. Avoid session affinity as much as possible.
 >

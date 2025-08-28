@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing and creating a monitoring system
+title: Architecture strategies for designing and creating a monitoring system
 description: Learn the recommendations for designing and creating an observability system. The system provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing and creating a monitoring system
+# Architecture strategies for designing and creating a monitoring system
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
 
@@ -25,7 +25,6 @@ This guide describes the recommendations for designing and creating a monitoring
 | Logs | Recorded system events. Logs can contain different types of data in a  structured or free-form text format. They contain a timestamp. |
 | Metrics | Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time. |
 
-## Key design strategies
 
 To implement a comprehensive monitoring system design for your workload, follow these core tenets:
 
@@ -55,7 +54,7 @@ This workflow pipeline illustrates the monitoring system:
 
 :::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring system as a pipeline." lightbox="media/observability/monitor-pipeline.png" border="false":::
 
-### Collect instrumentation data
+## Collect instrumentation data
 
 > [!Note]
 > You need to instrument your application to enable logging. For more information, see the [instrumentation guide](./instrument-application.md).
@@ -66,7 +65,7 @@ Logs are primarily useful for detecting and investigating anomalies. Typically, 
 
 Metrics are primarily useful for [building a health model](../design-guides/health-modeling.md) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behavior of your customers. These trends can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
 
-#### Application data
+### Application data
 
 For applications, the collecting service can be an application performance management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you have clear visibility into important metrics, in real time and historically. Use an appropriate level of logging. Verbose logging can incur significant costs. Set log levels according to the environment. Lower environments don't need the same level of verbosity as production, for example.
 
@@ -78,13 +77,13 @@ You should capture application events in structured data types with machine-read
 
 Data should be in an agnostic format that's independent of the machine, operating system, or network protocol. For example, emit information in a self-describing format like JSON, MessagePack, or Protobuf rather than ETL/ETW. A standard format enables the system to construct processing pipelines. Components that read, transform, and send data in the standard format can be easily integrated.
 
-#### Infrastructure data
+### Infrastructure data
 
 For infrastructure resources in your workload, ensure that you collect both logs and metrics. For infrastructure as a service (IaaS) systems, capture OS, application-layer, and diagnostic logs in addition to metrics related to workload health. For platform as a service (PaaS) resources, you might be limited in your ability to capture logs that are related to underlying infrastructure, but be sure that you can capture diagnostic logs in addition to metrics related to workload health. 
 
 As much as possible, collect logs from your cloud platform. You might be able to collect activity logs for your subscription and diagnostic logs for the management plane. 
 
-#### Collection strategies
+### Collection strategies
 
 Avoid retrieving telemetry data manually from every component. Move data to a central location and consolidate it there. For a multi-region solution, we recommend that you first collect, consolidate, and store data on a region-by-region basis, and then aggregate the regional data into a single central system. 
 
@@ -127,14 +126,14 @@ The data collected from a single instance of an application provides a localized
 
 The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, you can amalgamate instrumentation data that includes the same correlation information, like an activity ID. (A user might start a business operation on one node and then get transferred to another node if the first node fails, or because of how load balancing is configured.) This process can also detect and remove any duplicated data. (Duplication can occur if the telemetry service uses message queues to push instrumentation data out to storage.)
 
-### Store data for query and analysis
+## Store data for query and analysis
 
 When you choose a storage solution, consider the type of data, how it's used, and how urgently it's required. 
 
 > [!NOTE]
 > Use separate storage solutions for non-production and production environments to ensure that data from each environment is easy to identify and manage.
 
-#### Storage technologies
+### Storage technologies
 
 Consider a polyglot persistence approach, where different types of information are stored in technologies that are most appropriate to the way each type is likely to be used.
 
@@ -152,7 +151,7 @@ Be sure to enable functionality to protect the data from accidental deletion, li
 
 Also, be sure that you secure access to storage by using role-based access control to help ensure that only individuals who need to access the data can do so.
 
-#### Consolidation service
+### Consolidation service
 
 You can implement another service that periodically retrieves the data from shared storage, partitions and filters it according to its purpose, and then writes it to an appropriate set of data stores.
 
@@ -162,11 +161,11 @@ An alternative approach is to include this functionality in the consolidation an
 
 Each approach has its advantages and disadvantages. Implementing a separate partitioning service reduces the load on the consolidation and cleanup service, and it enables at least some of the partitioned data to be regenerated if necessary (depending on how much data is retained in shared storage). However, this approach consumes additional resources. Also, there might be a delay between the receipt of instrumentation data from each application instance and the conversion of this data into actionable information.
 
-#### Querying considerations
+### Querying considerations
 
 Consider how urgently the data is required. Data that generates alerts must be accessed quickly, so it should be held in fast data storage and indexed or structured to optimize the queries that the alerting system performs. In some cases, it might be necessary for the collection service to format and save data locally so that a local instance of the alerting system can send notifications quickly. The same data can be dispatched to the storage writing service shown in the previous diagrams and stored centrally if it's also required for other purposes.
 
-#### Data retention considerations
+### Data retention considerations
 
 In some cases, after data is processed and transferred, you can remove the original raw source data that was stored locally. In other cases, it might be necessary or useful to save the raw information. For example, you might want to keep data that's generated for debugging available in its raw form but then discard it quickly after any bugs are resolved.
 
@@ -178,7 +177,7 @@ Data gathered for metering and billing customers might need to be saved indefini
 
 To ensure that you comply with laws and regulations, minimize the storage of any identifiable information. If you do need to store identifiable information, be sure, when you design your solution, to take into account requirements that allow individuals to request that their information be deleted.
 
-### Analyze data to understand the health of a workload
+## Analyze data to understand the health of a workload
 
 After you collect data from various data sources, analyze it to assess the overall well-being of the system. For this analysis, have a clear understanding of:
 
@@ -198,7 +197,7 @@ For example, a three-tier application might have:
 
 The usage data for a single business operation might span all three tiers. This information needs to be correlated to provide an overall view of the resource and processing usage for the operation. The correlation might involve some preprocessing and filtering of data on the database tier. On the middle tier, aggregation and formatting are common tasks.
 
-#### Recommendations
+### Recommendations
 
 - **Correlate application-level and resource-level logs.** Evaluate data at both levels to optimize the detection of issues and the troubleshooting of those issues. You can aggregate the data in a single data sink or take advantage of methods that query events across both levels. We recommend a unified solution, like Azure Log Analytics, to aggregate and query application-level and resource-level logs.
 
@@ -208,9 +207,9 @@ The usage data for a single business operation might span all three tiers. This 
 
 For detailed guidance about these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md).
 
-### Visualize workload health reports
+## Visualize workload health reports
 
-#### Dashboards
+### Dashboards
 
 The most common way to visualize data is to use dashboards that can display information as a series of chart or graphs, or in some other visual form. These items can be parameterized, and an analyst can select the important parameters, like the time period, for any specific situation.
 
@@ -225,7 +224,7 @@ A good dashboard doesn't just display information. It also enables an analyst to
 > [!NOTE]
 > Restrict dashboard access to authorized personnel. Information on dashboards might be commercially sensitive. You should also protect the underlying data to prevent users from changing it.
 
-#### Reporting
+### Reporting
 
 Reporting is used to generate an overall view of the system. It might incorporate historical data and current information. Reporting requirements fall into two broad categories: operational reporting and security reporting.
 
@@ -247,11 +246,11 @@ Security reporting tracks customer use of the system. It can include:
 
 In many cases, batch processes can generate reports according to a defined schedule. Latency isn't normally an issue. You should also have batch processes that can generate reports on a spontaneous basis, as needed. For example, if you store data in a relational database like Azure SQL Database, you can use a tool like SQL Server Reporting Services to extract and format data and present it as a set of reports.
 
-### Define alerts for key events
+## Define alerts for key events
 
 To help ensure that the system remains healthy, responsive, and secure, set alerts so that operators can respond to them in a timely manner. An alert can contain enough contextual information to help them quickly get started on diagnostic activities. Alerting can be used to invoke remediation functions like [autoscaling or other self-healing mechanisms](../reliability/monitoring-alerting-strategy.md). Alerts can also enable cost-awareness by providing visibility into budgets and limits.
 
-#### Recommendations
+### Recommendations
 
 - Define a process for alert response that identifies the accountable owners and actions.
 
@@ -263,7 +262,7 @@ To help ensure that the system remains healthy, responsive, and secure, set aler
 
 - Track the health of your cloud platform services in regions, communication about outages, planned maintenance activities, and other health advisories.
 
-#### Thresholds
+### Thresholds
 
 Alerts are generated when thresholds are crossed, as detected by your monitoring system. Ensure that the thresholds you set generally give you enough time to implement the necessary changes to your workload to avoid degradation or outages. For example, set your automatic scaling threshold to initiate scaling before any of the running systems become overwhelmed to the point of a degraded user experience. Base the threshold values that you assign on your past experience in managing infrastructure and validate them through the testing that you perform as part of your testing practices.
 

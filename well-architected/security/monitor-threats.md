@@ -1,5 +1,5 @@
 ---
-title: Recommendations for monitoring and threat detection
+title: Architecture strategies for monitoring and threat detection
 description: Learn how to get information about events, capture information about the workload, and gain awareness of suspicious activities. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
-# Recommendations for monitoring and threat detection
+# Architecture strategies for monitoring and threat detection
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -28,7 +28,6 @@ Monitoring is an Operational Excellence approach that's applied across all Well-
 | Threat intelligence |A strategy for interpreting threat detection data to detect suspicious activity or threats by examining patterns. |
 | Threat prevention |Security controls that are placed in a workload at various altitudes to protect its assets. |
 
-## Key design strategies
 
 The main purpose of security monitoring is **threat detection**. The primary objective is to prevent potential security breaches and maintain a secure environment. However, it's equally important to recognize that not all threats can be preemptively blocked. In such instances, monitoring also serves as a mechanism to identify the cause of a security incident that has occurred despite the prevention efforts. 
 
@@ -52,7 +51,7 @@ Monitoring can be approached from various perspectives:
 
 The following sections provide recommended practices that incorporate the preceding monitoring perspectives.
 
-### Capture data to keep a trail of activities
+## Capture data to keep a trail of activities
 
 The objective is to maintain a **comprehensive audit trail** of events that are significant from a security perspective. Logging is the most common way to capture access patterns. Logging must be performed for the application and the platform. 
 
@@ -60,7 +59,7 @@ For an audit trail, you need to **establish the *what*, *when*, and *who* that's
 
 The following sections describe use cases for some common altitudes of a workload.
 
-##### Application user flows
+#### Application user flows
 
 Your application should be designed to provide runtime visibility when events occur. **Identify critical points within your application and establish logging for these points.** For example, when a user logs into the application, capture the user's identity, source location, and other relevant information. It's important to acknowledge any escalation in user privileges, the actions performed by the user, and whether the user accessed sensitive information in a secure data store. Keep track of activities for the user and the user session.
 
@@ -69,7 +68,7 @@ To facilitate this tracking, code should be **instrumented via structured loggin
 > [!IMPORTANT]
 > You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking personal data and other compliance requirements when you capture this log data.
 
-##### Identity and access monitoring
+#### Identity and access monitoring
 
 Maintain a thorough **record of access patterns for the application and modifications to platform resources**. Have robust activity logs and threat detection mechanisms, particularly for identity-related activities, because attackers often attempt to manipulate identities to gain unauthorized access.
 
@@ -79,7 +78,7 @@ Implement comprehensive logging by **using all available data points**. For exam
 
 Although logging successful actions is important, **recording failures is necessary from a security perspective**. Document any violations, like a user attempting an action but encountering an authorization failure, access attempts for nonexistent resources, and other actions that seem suspicious.
 
-##### Network monitoring
+#### Network monitoring
 
 By monitoring network packets and their sources, destinations, and structures, you gain visibility into access patterns at the network level.
 
@@ -95,7 +94,7 @@ It's important to monitor unexpected DNS requests or DNS requests that are direc
 
 Because of the tradeoffs, you should consider whether the benefit of network monitoring of your workload is sufficient to justify the costs. If you have a web application solution with a high request volume and your system makes extensive use of managed Azure resources, the cost might outweigh the benefits. On the other hand, if you have a solution that's designed to use virtual machines with various ports and applications, it might be important to capture and analyze network logs.
 
-### Capture system changes
+## Capture system changes
 
 To maintain the integrity of your system, you should have an accurate and up-to-date record of system state. If there are changes, you can use this record to promptly address any issues that arise.
 
@@ -116,7 +115,7 @@ You should set up alerts for these changes, particularly if you don't expect the
 
 In your test plans, **include the validation of logging and alerting** as prioritized test cases. 
 
-### Store, aggregate, and analyze data
+## Store, aggregate, and analyze data
 
 Data collected from these monitoring activities must be stored in data sinks where it can be thoroughly **examined, normalized, and correlated**. Security data should be persisted outside the system's own data stores. Monitoring sinks, whether they're localized or central, must outlive the data sources. The **sinks can't be ephemeral** because sinks are the source for intrusion detection systems.
 
@@ -124,7 +123,7 @@ Networking logs can be verbose and take up storage. **Explore different tiers in
 
 The flows of your workload are typically a composite of multiple logging sources. Monitoring data must be **analyzed intelligently across all those sources**. For example, your firewall will only block traffic that reaches it. If you have a network security group that has already blocked certain traffic, that traffic isn't visible to the firewall. To reconstruct the sequence of events, you need to aggregate data from all components that are in flow and then aggregate data from all flows. This data is particularly useful in a post-incident response scenario when you're trying to understand what happened. Accurate timekeeping is essential. For security purposes, all systems need to use a network time source so that they're always in sync.
 
-##### Centralized threat detection with correlated logs
+#### Centralized threat detection with correlated logs
 
 You can use a system like security information and event management (SIEM) to **consolidate security data in a central location** where it can be correlated across various services. These systems have **built-in threat detection** mechanisms. They can **connect to external feeds** to obtain threat intelligence data. Microsoft, for example, publishes threat intelligence data that you can use. You can also buy threat intelligence feeds from other providers, like Anomali and FireEye. These feeds can provide valuable insights and enhance your security posture. For threat insights from Microsoft, see [Security Insider](https://www.microsoft.com/security/business/security-insider/). 
 
@@ -138,7 +137,7 @@ Some cost-effective options are provided by Microsoft. Many Microsoft Defender p
 
 By combining several smaller tools, you can emulate some functions of a SIEM system. However, you need to know that these makeshift solutions might not be able to perform correlation analysis. These alternatives can be useful, but they might not fully replace the functionality of a dedicated SIEM system.
 
-### Detect abuse
+## Detect abuse
 
 **Be proactive about threat detection** and be vigilant for signs of abuse, like identity brute force attacks on an SSH component or an RDP endpoint. Although external threats might generate a lot of noise, especially if the application is exposed to the internet, **internal threats are often a greater concern**. An unexpected brute force attack from a trusted network source or an inadvertent misconfiguration, for instance, should be investigated immediately.
 
