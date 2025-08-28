@@ -11,11 +11,11 @@ ms.update-cycle: 180-days
 # Test and evaluate GenAI workloads on Azure
 This article focuses on two distinct aspects: evaluating the models and testing the entire system. Evaluation and testing are often used interchangeably, but they should be considered separate processes that use distinct datasets. 
 
-_Evaluation_ is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. Then, evaluating the model based on various metrics. 
+_Evaluation_ is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. Then, evaluate the model based on various metrics.
 
-_Testing_ includes verifying the entire system when a change is introduced, including the tuned model and non-AI components. The goal is to validate whether the workload meets identified targets and fulfills user expectations. It is also a non‑negotiable change management strategy that prevents quality regressions.
+_Testing_ includes verifying the entire system when a change is introduced, including the tuned model and non-AI components. The goal is to validate whether the workload meets identified targets and fulfills user expectations. It's also a non‑negotiable change management strategy that prevents quality regressions.
 
-Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is nonnegotiable before production, we recommend that you do conduct the process in production by using real data and synthetic data.
+Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is non‑negotiable before production, we recommend that you conduct the process in production using a mix of real and synthetic data.
 
 The primary focus here is on generative AI models. If you're working with discriminative models, skip ahead to [Guidance for testing training models](#guidance-for-testing-training-models).
 
@@ -49,7 +49,7 @@ This type of architecture introduces new challenges for testing and evaluation. 
 
 - **Verify that agents are calling external tools, APIs, and other agents correctly.** Use mock dependencies to validate that data is passed correctly. Simulate tool or agent failures to test reliability in behavior.
 
-- **Design scenario-based tests using predefined prompts and expected outputs.** Because outputs may vary, evaluate results using automated scoring with another model. Also using human-based review, especially for sensitive or subjective tasks.
+- **Design scenario-based tests using predefined prompts and expected outputs.** Because outputs may vary, evaluate results using automated scoring with another model. Also use human-based review, especially for sensitive or subjective tasks.
 
 - **Integrate content safety tools to detect harmful, biased, or inappropriate outputs.** Include red teaming exercises to identify unexpected behaviors or jailbreak vulnerabilities. Monitor for fairness, transparency, and compliance with ethical standards.
 
@@ -63,11 +63,11 @@ In addition, conduct regular performance and load testing. Assess the agent's ab
 
 ## Test deterministic orchestration
 
-In some architectures, you might use static or deterministic code, to coordinate tasks related to a user's request. In a RAG system, for example, the orchestrator interprets user intent, queries the index for grounding data, and calls the model *inference endpoint*. It may also handle tool calls (like REST APIs) required by agents, depending on the design.
+In some architectures, you might use static or deterministic code to coordinate tasks related to a user's request. In a RAG system, for example, the orchestrator interprets user intent, queries the index for grounding data, and calls the model *inference endpoint*. It may also handle tool calls (like REST APIs) required by agents, depending on the design.
 
 You can build orchestration logic using any general-purpose language, or with frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain.
 
-From a testing perspective, treat this orchestration code like any critical system component, running performance, reliability, and functional tests especially on its routing logic. Security applies equally to both orchestration code and the underlying model:
+From a testing perspective, treat this orchestration code like any critical system component: run performance, reliability, and functional tests, especially on its routing logic. Security applies equally to both orchestration code and the underlying model:
 
 - **Jailbreak testing.** Always test for jailbreak attempts. Attackers typically target the orchestration layer first, which parses and forwards requests to the model. If malicious inputs aren't filtered, they can compromise model behavior.
 
@@ -82,7 +82,7 @@ There are other open source libraries available such as Scikit-learn, PyTorch's 
 
 ## Test the inferencing layer
 
-Inference endpoints expose your generative models through REST APIs and must be tested beyond just model accuracy whether you're using PaaS platforms or self-hosted servers, test the endpoint just like you would for any other endpoint to ensure reliability, scalability, and security.
+Inference endpoints expose your generative models through REST APIs and must be tested beyond just model accuracy. Whether you're using PaaS platforms or self-hosted servers, test the endpoint like any other endpoint to ensure reliability, scalability, and security.
 
 - **Functional and integration testing.** Validate request handling, response structure, and integration with other components.
 
@@ -118,7 +118,7 @@ Poorly tested data pipelines can lead to inconsistent results and lead to cross-
 
 ## Guidance for testing training models
 
-Similar to generative AI models, ehe strategy of baselining also applies to model training for measuring model quality, where various combinations of models, parameters, and features are evaluated using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
+Similar to generative AI models, the strategy of baselining also applies to model training for measuring model quality, where various combinations of models, parameters, and features are evaluated using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
 
 For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml#regressionforecasting-metrics). 
 
@@ -130,7 +130,7 @@ For more information, see [Regression/forecasting metrics](/azure/machine-learni
 
    Test scheduled jobs to validate that ingestion tasks complete on time and return expected volumes.
 
-- **Data quality on ingestion.** Verify that data cleansing and processing include tests to confirm that data manipulation functions as intended. Include checks for completeness, freshness, schema consistency, uniqueness, and relevance. Also structured data is ingested without duplicates, missing values, or invalid entries.
+- **Data quality on ingestion.** Verify that data cleansing and processing include tests to confirm that data manipulation functions as intended. Include checks for completeness, freshness, schema consistency, uniqueness, and relevance. Also verify that structured data is ingested without duplicates, missing values, or invalid entries.
 
 - **Feature and label integrity.** Validate that features are correctly calculated and labels accurately assigned, especially when using complex rules. Check for data leakage to prevent future or label-derived information from contaminating training data. Also, verify that data splits are appropriate to avoid biased or overlapping samples because even subtle leakage can harm model performance.
 
@@ -149,9 +149,9 @@ Integrate data testing into CI/CD pipelines by automating unit and functional te
 
 Model performance degrades over time mainly due to data drift: 
 
-- **Data drift** happens when input data changes, making the model outdated. For example, model that predicts voting pattern becomes irrelavent because of demographic shifts after redistricting. 
+- **Data drift** happens when input data changes, making the model outdated. For example, a model that predicts voting patterns becomes irrelevant because of demographic shifts after redistricting. 
 
-- **Concept drift** occurs when external conditions change, causing the model's predictions to no longer reflect reality. For example, a model that predicts sales trends becomes irrelavent because there's change in consumer behavior after a competitor launches a new product.
+- **Concept drift** occurs when external conditions change, causing the model's predictions to no longer reflect reality. For example, a model that predicts sales trends becomes irrelevant because there's a change in consumer behavior after a competitor launches a new product.
 
 To detect decay, use automated testing to compare predictions against actual outcomes, and monitor for drift using statistical metrics. User feedback, for example using thumbs up/down, is also a valuable signal for identifying issues. When potential decay is detected, the operations team should alert data scientists to investigate and determine root causes and next steps.
 
