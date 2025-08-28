@@ -247,6 +247,12 @@ Plan for scaling the network to meet the demands of your workloads. Failure to p
 
 Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
 
+## Azure Advisor recommendations
+
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+
+For more information, see [Azure Advisor](/azure/advisor).
+
 ## Example architecture
 
 Foundational architecture that demonstrates the key recommendations: [Implement Cloud Adoption Framework enterprise-scale landing zones in Azure](/azure/cloud-adoption-framework/ready/enterprise-scale/implementation).

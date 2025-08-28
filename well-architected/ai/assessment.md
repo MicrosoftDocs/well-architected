@@ -5,6 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # Well-Architected Framework AI workload assessment

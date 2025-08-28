@@ -277,13 +277,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of AKS.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#azure-kubernetes-service-aks)
-- [Security](/azure/defender-for-cloud/plan-multicloud-security-get-started)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#containers)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#containers)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
