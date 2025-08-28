@@ -195,6 +195,9 @@ Review all logs, including raw traffic, from your network devices.
 
    For an example, see [Monitor networks proactively with alerts and Azure Functions using Packet Capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture).
 
+- Use AI-powered security capabilities to improve threat detection. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for WAF events from both Azure Front Door and Azure Application Gateway. [Azure Firewall also integrates with Microsoft Security Copilot](/azure/firewall/firewall-copilot) to investigate malicious traffic intercepted by the IDPS feature.|
+
+
 ### Identity
 
 Monitor identity-related risk events on potentially compromised identities and remediate those risks. Review the reported risk events in these ways:
