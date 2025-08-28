@@ -214,7 +214,7 @@ Pattern 2 provides containment but has the added complexity of virtual network m
 
 ##### Pattern 3: PaaS isolation
 
-Consider using [**Azure Network Security Perimeter**](/azure/private-link/network-security-perimeter-concepts) to create logical boundaries around PaaS services with strict rules incoming and outgoing traffic. This pattern prevents data exfiltration to nonauthorized destinations,  without requiring individual private endpoints for each service. For this setup, you don't need to place them explicity in a vNET as the segmentation boundary.
+Consider using [**Azure Network Security Perimeter**](/azure/private-link/network-security-perimeter-concepts) to create logical boundaries around PaaS services with strict rules incoming and outgoing traffic. This pattern prevents data exfiltration to nonauthorized destinations,  without requiring individual private endpoints for each service. 
 
 
 ### Resource organization
