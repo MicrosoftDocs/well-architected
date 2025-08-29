@@ -51,6 +51,9 @@ Azure Event Hubs provides an uptime SLA. For more information, reference [SLA fo
 > - The number of partitions reflect the degree of downstream parallelism you can achieve.
 > - Ensure each consuming application uses a separate consumer group and only one active receiver per consumer group is in place.
 > - When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.
+> - Plan to address nontransient errors processing specific events. Event Hubs does not have a built-in dead-letter queue.
+>
+>   Create a custom dead-letter mechanism within your workload. If processing a event results in a nontransient failure, copy the event onto a custom dead-letter queue. Replicating the event into an dedicated queue allows you to retry processing the event later, apply a compensating transaction, or take some other action.
 
 ## Configuration recommendations
 
@@ -70,7 +73,6 @@ Consider the following recommendations to optimize reliability when configuring 
 |The number of partitions reflect the degree of downstream parallelism you can achieve.|For maximum throughput, use the maximum number of partitions supported by the SKU when creating the Event Hub. Increasing the number of partitions enables you to scale concurrent processing entities to match the partitions, ensuring optimal send and receive availability.|
 |When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.|Data Lake gen2 will charge for  minimal transaction size. If you set the time window so low that the file hasn't reached minimum size, you'll incur extra cost.|
 |Require that consumers [perform checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).|Checkpointing allows consumers to keep track of the last successfully processed event, enabling them to resume from that point in case of processing failures. This is crucial for ensuring no events are lost and for maintaining processing efficiency so clients minimize duplicate processing to only those since the last checkpoint and the failure.|
-|Create a custom dead-letter mechanism within your workload. <br><br> If processing a event results in a nontransient failure, put the message onto a dead-letter queue, so that you can address it apart from the core event processing loop.|Event Hubs does not have any built-in dead-letter queue functionality. Replicating the event into an dedicated queue allows you to retry processing the event later, apply a compensating transaction, or take some other action. |
 
 ## Source artifacts
 
